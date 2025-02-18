@@ -1,0 +1,154 @@
+From 6874385b527cf5d5a43a01484ea58f3912a06b67 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 20 Aug 2024 15:57:36 +0200
+Subject: [PATCH 02/46] [gdb/testsuite] Fix gdb.python/py-mi-cmd.exp with
+ python 3.13
+
+When running test-case gdb.python/py-mi-cmd.exp with python 3.13, I run into:
+...
+Expecting: ^(-pycmd exp[^M
+]+)?(.*&"Traceback \(most recent call last\):.."^M
+&"[^^M
+]+py-mi-cmd.py[^^M
+]+"^M
+&"[^^M
+]+raise gdb.GdbError\(\).."^M
+&"gdb.GdbError.."^M
+\^error,msg="Error occurred in Python\."[^M
+]+[(]gdb[)] ^M
+[ ]*)
+-pycmd exp^M
+&"Traceback (most recent call last):\n"^M
+&"  File \"py-mi-cmd.py\", line 76, in invoke\n    raise gdb.GdbError()\n"^M
+&"gdb.GdbError\n"^M
+^error,msg="Error occurred in Python."^M
+(gdb) ^M
+FAIL: gdb.python/py-mi-cmd.exp: -pycmd exp (unexpected output)
+...
+
+In contrast, with python 3.12 I have:
+...
+Expecting: ^(-pycmd exp[^M
+]+)?(.*&"Traceback \(most recent call last\):.."^M
+&"[^^M
+]+py-mi-cmd.py[^^M
+]+"^M
+&"[^^M
+]+raise gdb.GdbError\(\).."^M
+&"gdb.GdbError.."^M
+\^error,msg="Error occurred in Python\."[^M
+]+[(]gdb[)] ^M
+[ ]*)
+-pycmd exp^M
+&"Traceback (most recent call last):\n"^M
+&"  File \"py-mi-cmd.py\", line 76, in invoke\n"^M
+&"    raise gdb.GdbError()\n"^M
+&"gdb.GdbError\n"^M
+^error,msg="Error occurred in Python."^M
+(gdb) ^M
+PASS: gdb.python/py-mi-cmd.exp: -pycmd exp
+...
+
+To make it easier to understand what we're looking at, let's take this out of
+the mi interpreter context and use the cli interpreter:
+...
+$ gdb -q -batch -ex "set trace-commands on" -x gdb.in
++set python print-stack full
++source py-mi-cmd.py
++python pycmd1('-pycmd')
++python pycmd1.invoke (pycmd1, ["exp"])
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "py-mi-cmd.py", line 76, in invoke
+    raise gdb.GdbError()
+gdb.GdbError
+gdb.in:4: Error in sourced command file:
+Error occurred in Python.
+...
+
+Interestingly, this is what we're seeing with both python 3.12 and 3.13.
+
+The difference between the python versions is that:
+- with python 3.12 each line is printed by itself, and
+- with python 3.13 two particular lines are printed toghether.
+
+With the cli interpreter, that makes no difference, because the '\n' is
+interpreted.
+
+But with the mi interpreter, that causes a difference in output because the
+'\n' is not interpreted, but rather printed literally.
+
+Fix this by accepting the new output in addition to the old one.
+
+Tested on aarch64-linux.
+
+Reviewed-by: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+
+PR testsuite/31913
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31913
+---
+ gdb/testsuite/gdb.python/py-mi-cmd.exp | 48 ++++++++++++++++++++++----
+ 1 file changed, 41 insertions(+), 7 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.python/py-mi-cmd.exp b/gdb/testsuite/gdb.python/py-mi-cmd.exp
+index 28c71cd75f3..52914099e6d 100644
+--- a/gdb/testsuite/gdb.python/py-mi-cmd.exp
++++ b/gdb/testsuite/gdb.python/py-mi-cmd.exp
+@@ -119,13 +119,47 @@ mi_gdb_test "-pycmd dash-key" \
+ # With this argument the command raises a gdb.GdbError with no message
+ # string.  GDB considers this a bug in the user program, so prints a
+ # backtrace, and a generic error message.
+-mi_gdb_test "-pycmd exp" \
+-    [multi_line ".*&\"Traceback \\(most recent call last\\):..\"" \
+-	 "&\"\[^\r\n\]+${testfile}.py\[^\r\n\]+\"" \
+-	 "&\"\[^\r\n\]+raise gdb.GdbError\\(\\)..\"" \
+-	 "&\"gdb.GdbError..\"" \
+-	 "\\^error,msg=\"Error occurred in Python\\.\""] \
+-    "-pycmd exp"
++
++set line1 \
++    [string_to_regexp {Traceback (most recent call last):\n}]
++set line2 \
++    [string cat \
++	 [string_to_regexp {  File \"}] \
++	 "\[^\r\n\]+" \
++	 [string_to_regexp ${testfile}.py] \
++	 [string_to_regexp {\", line }] \
++	 $decimal \
++	 [string_to_regexp {, in invoke\n}]]
++set line3 \
++    [string_to_regexp {    raise gdb.GdbError()\n}]
++set line4 \
++    [string_to_regexp {gdb.GdbError\n}]
++set errline \
++    [string_to_regexp {^error,msg="Error occurred in Python."}]
++
++set start_line \
++    [string_to_regexp {&"}]
++set end_line \
++    [string_to_regexp {"}]
++
++# With python <= 3.12.
++set re1 \
++    [multi_line \
++	 $start_line$line1$end_line \
++	 $start_line$line2$end_line \
++	 $start_line$line3$end_line \
++	 $start_line$line4$end_line \
++	 $errline]
++
++# With python >= 3.13.
++set re2 \
++    [multi_line \
++	 $start_line$line1$end_line \
++	 $start_line$line2$line3$end_line \
++	 $start_line$line4$end_line \
++	 $errline]
++
++mi_gdb_test "-pycmd exp" ($re1|$re2)
+ 
+ mi_gdb_test "python pycmd2('-pycmd')" \
+     ".*\\^done" \
+-- 
+2.43.0
+

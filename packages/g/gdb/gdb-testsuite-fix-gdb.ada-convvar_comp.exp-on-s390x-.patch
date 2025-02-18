@@ -1,0 +1,113 @@
+From ac9c99f7f6b86d536c60fcb4b5ecdd4a2e767603 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 4 Feb 2025 14:06:20 +0100
+Subject: [PATCH 45/46] [gdb/testsuite] Fix gdb.ada/convvar_comp.exp on
+ s390x-linux
+
+When running test-case gdb.ada/convvar_comp.exp on s390x-linux, I get:
+...
+(gdb) run ^M
+Starting program: pb16_063 ^M
+^M
+Breakpoint 1, pck.break_me (item=...) at pck.adb:17^M
+17        function Break_Me (Item : T) return Boolean is^M
+(gdb) print item.started^M
+Cannot access memory at address 0x0^M
+(gdb) FAIL: gdb.ada/convvar_comp.exp: print item.started
+...
+
+This happens as follows.
+
+The parameter item is available in (DW_OP_fbreg: -168):
+...
+ <2><912>: Abbrev Number: 18 (DW_TAG_formal_parameter)
+    <913>   DW_AT_name        : (indirect string, offset: 0x14ca): item
+    <919>   DW_AT_type        : <0x929>
+    <91d>   DW_AT_location    : 3 byte block: 91 d8 7e  (DW_OP_fbreg: -168)
+...
+and according to the rules of -O0, it's considered to be available after the
+prologue, which looks like this:
+...
+0000000001002998 <pck__break_me>:
+ 1002998:       b3 c1 00 2b             ldgr    %f2,%r11
+ 100299c:       b3 c1 00 0f             ldgr    %f0,%r15
+ 10029a0:       e3 f0 ff 58 ff 71       lay     %r15,-168(%r15)
+ 10029a6:       b9 04 00 bf             lgr     %r11,%r15
+ 10029aa:       e3 20 b0 a0 00 24       stg     %r2,160(%r11)
+...
+
+To detect the prologue, gdb checks the line info, which looks like this:
+...
+pck.adb:
+File name                Line number    Starting address    View    Stmt
+pck.adb                           17           0x1002998               x
+pck.adb                           17           0x1002998       1       x
+pck.adb                           19           0x10029b0               x
+pck.adb                           20           0x10029b8               x
+pck.adb                            -           0x10029c6
+...
+and gdb concludes that it's an empty prologue, so we stop at 0x1002998 and
+try to print parameter item, which is not available yet.
+
+For more details, see this comment in skip_prologue_using_sal:
+...
+  /* For languages other than assembly, treat two consecutive line
+     entries at the same address as a zero-instruction prologue.
+...
+
+The same thing happens on x86_64-linux, but it causes no problem there,
+because amd64_skip_prologue decides not to trust the result:
+...
+      struct compunit_symtab *cust = find_pc_compunit_symtab (func_addr);
+
+      /* LLVM backend (Clang/Flang) always emits a line note before the
+	 prologue and another one after.  We trust clang and newer Intel
+	 compilers to emit usable line notes.  */
+      if (post_prologue_pc
+	  && (cust != NULL
+	      && cust->producer () != nullptr
+	      && (producer_is_llvm (cust->producer ())
+	      || producer_is_icc_ge_19 (cust->producer ()))))
+	return std::max (start_pc, post_prologue_pc);
+...
+because the producer is GCC.
+
+Work around this by setting a breakpoint on the first statement of
+pck.break_me instead.
+
+Tested on s390x-linux.
+---
+ gdb/testsuite/gdb.ada/convvar_comp.exp     | 4 +++-
+ gdb/testsuite/gdb.ada/convvar_comp/pck.adb | 2 +-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.ada/convvar_comp.exp b/gdb/testsuite/gdb.ada/convvar_comp.exp
+index d59a19a40c3..e7ff3baa624 100644
+--- a/gdb/testsuite/gdb.ada/convvar_comp.exp
++++ b/gdb/testsuite/gdb.ada/convvar_comp.exp
+@@ -25,7 +25,9 @@ if {[gdb_compile_ada "${srcfile}" "${binfile}" executable [list debug ]] != "" }
+ 
+ clean_restart ${testfile}
+ 
+-if {![runto "break_me"]} {
++set bp_location [gdb_get_line_number "BREAK" "$testdir/pck.adb"]
++
++if {![runto pck.adb:$bp_location]} {
+   return
+ }
+ 
+diff --git a/gdb/testsuite/gdb.ada/convvar_comp/pck.adb b/gdb/testsuite/gdb.ada/convvar_comp/pck.adb
+index be5d8d719d8..b7bf3efe8f9 100644
+--- a/gdb/testsuite/gdb.ada/convvar_comp/pck.adb
++++ b/gdb/testsuite/gdb.ada/convvar_comp/pck.adb
+@@ -16,6 +16,6 @@
+ package body Pck is
+   function Break_Me (Item : T) return Boolean is
+   begin
+-     return False;
++     return False; -- BREAK
+    end Break_Me;
+ end Pck;
+-- 
+2.43.0
+

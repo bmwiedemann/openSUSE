@@ -1,0 +1,64 @@
+From 44651f4eae0a9ecf4a734e996bf75c9cd67e5f63 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 10 Dec 2024 20:30:05 +0100
+Subject: [PATCH 20/46] Use setVariable in gdb.dap/scopes.exp
+
+The test-case gdb.dap/scopes.exp contains the following outdated comment:
+...
+ # setVariable isn't implemented yet, so use the register name.
+...
+
+Now that setVariable is implemented, use it to set variable scalar, and remove
+the bit that sets the first register.  That part is known to fail on s390x,
+because the first register isn't writeable [1].
+
+Tested on x86_64-linux.
+
+Suggested-By: Tom Tromey <tom@tromey.com>
+Approved-By: Tom Tromey <tom@tromey.com>
+
+[1] https://sourceware.org/pipermail/gdb-patches/2024-December/213823.html
+---
+ gdb/testsuite/gdb.dap/scopes.exp | 27 +++++++++------------------
+ 1 file changed, 9 insertions(+), 18 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.dap/scopes.exp b/gdb/testsuite/gdb.dap/scopes.exp
+index aa3bb688c0e..c78ae6e1202 100644
+--- a/gdb/testsuite/gdb.dap/scopes.exp
++++ b/gdb/testsuite/gdb.dap/scopes.exp
+@@ -133,23 +133,14 @@ set val [dap_check_request_and_response "fetch first register" \
+ 	     "variables" \
+ 	     [format {o variablesReference [i %d] count [i 1]} $num]]
+ 
+-# Try setting the value to something else.
+-set val [dict get [lindex $val 0] body variables]
+-set name [dict get [lindex $val 0] name]
+-set val [dict get [lindex $val 0] value]
+-# Just make sure it is different from the original value.
+-set val [expr {$val ^ 7}]
+-
+-# setVariable isn't implemented yet, so use the register name.  Note
+-# that we sneak the "$" into the name, written in a slightly funny way
+-# to work around apparent TON limitations.
+-set response [dap_check_request_and_response "set first register" \
+-		  setExpression \
+-		  [format {o expression [s \$%s] value [s %d] frameId [i %d]} \
+-		       $name $val $frame_id]]
+-set response [lindex $response 0]
+-
+-gdb_assert {[dict get $response body value] == $val} \
+-    "setting register yields updated value"
++set num [dict get $scope variablesReference]
++set refs [lindex [dap_check_request_and_response "set variable scalar" \
++		      "setVariable" \
++		      [format {o variablesReference [i %d] name [s scalar] \
++				   value [s 32]} \
++			   $num]] \
++	      0]
++gdb_assert { [dict get $refs body value] == 32 } \
++    "setting variable yields updated value"
+ 
+ dap_shutdown
+-- 
+2.43.0
+

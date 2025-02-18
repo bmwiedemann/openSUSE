@@ -1,0 +1,220 @@
+From 29b185c531fcd933da62142debcb088321be7c4c Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 15 Jan 2025 17:02:00 +0100
+Subject: [PATCH 24/46] Add gdbarch_dwarf2_reg_piece_offset hook
+
+In rw_pieced_value, when reading/writing part of a register, DW_OP_piece and
+DW_OP_bit_piece are handled the same, but the standard tells us:
+- DW_OP_piece: if the piece is located in a register, but does not occupy the
+  entire register, the placement of the piece within that register is defined
+  by the ABI.
+- DW_OP_bit_piece: if the location is a register, the offset is from the least
+  significant bit end of the register.
+
+Add a new hook gdbarch_dwarf2_reg_piece_offset that allows us to define the
+ABI-specific behaviour for DW_OP_piece.
+
+The default implementation of the hook is the behaviour of DW_OP_bit_piece, so
+there should not be any functional changes.
+
+Tested on s390x-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/dwarf2/expr.c         | 31 +++++++++++++++++++++++++------
+ gdb/findvar.c             | 18 ++++++++++++++++++
+ gdb/gdbarch-gen.h         |  8 ++++++++
+ gdb/gdbarch.c             | 22 ++++++++++++++++++++++
+ gdb/gdbarch_components.py | 16 ++++++++++++++++
+ gdb/value.h               |  2 ++
+ 6 files changed, 91 insertions(+), 6 deletions(-)
+
+diff --git a/gdb/dwarf2/expr.c b/gdb/dwarf2/expr.c
+index 03107f90575..ece713ee7cd 100644
+--- a/gdb/dwarf2/expr.c
++++ b/gdb/dwarf2/expr.c
+@@ -211,14 +211,33 @@ rw_pieced_value (value *v, value *from, bool check_optimized)
+ 	    ULONGEST reg_bits = 8 * register_size (arch, gdb_regnum);
+ 	    int optim, unavail;
+ 
+-	    if (gdbarch_byte_order (arch) == BFD_ENDIAN_BIG
+-		&& p->offset + p->size < reg_bits)
++	    if (p->offset + p->size < reg_bits)
+ 	      {
+-		/* Big-endian, and we want less than full size.  */
+-		bits_to_skip += reg_bits - (p->offset + p->size);
++		/* We want less than full size.  */
++
++		if (p->op == DW_OP_piece)
++		  {
++		    gdb_assert (p->offset == 0);
++
++		    /* If the piece is located in a register, but does not
++		       occupy the entire register, the placement of the piece
++		       within that register is defined by the ABI. */
++		    bits_to_skip
++		      += 8 * gdbarch_dwarf2_reg_piece_offset (arch, gdb_regnum,
++							      p->size / 8);
++		  }
++		else if (p->op == DW_OP_bit_piece)
++		  {
++		    /* If the location is a register, the offset is from the
++		       least significant bit end of the register.  */
++		    if (gdbarch_byte_order (arch) == BFD_ENDIAN_BIG)
++		      bits_to_skip += reg_bits - (p->offset + p->size);
++		    else
++		      bits_to_skip += p->offset;
++		  }
++		else
++		  error (_("Don't know how to get part of implicit pointer"));
+ 	      }
+-	    else
+-	      bits_to_skip += p->offset;
+ 
+ 	    this_size = bits_to_bytes (bits_to_skip, this_size_bits);
+ 	    buffer.resize (this_size);
+diff --git a/gdb/findvar.c b/gdb/findvar.c
+index df4ab1a28b9..3b20974474a 100644
+--- a/gdb/findvar.c
++++ b/gdb/findvar.c
+@@ -541,6 +541,24 @@ default_value_from_register (gdbarch *gdbarch, type *type, int regnum,
+   return value;
+ }
+ 
++/* Default implementation of gdbarch_dwarf2_reg_piece_offset.  Implements
++   DW_OP_bits_piece for DW_OP_piece.  */
++
++ULONGEST
++default_dwarf2_reg_piece_offset (gdbarch *gdbarch, int gdb_regnum, ULONGEST size)
++{
++  ULONGEST reg_size = register_size (gdbarch, gdb_regnum);
++  gdb_assert (size <= reg_size);
++  if (reg_size == size)
++    return 0;
++
++  if (gdbarch_byte_order (gdbarch) == BFD_ENDIAN_BIG)
++    return reg_size - size;
++
++  return 0;
++}
++
++
+ /* VALUE must be an lval_register value.  If regnum is the value's
+    associated register number, and len the length of the value's type,
+    read one or more registers in VALUE's frame, starting with register REGNUM,
+diff --git a/gdb/gdbarch-gen.h b/gdb/gdbarch-gen.h
+index b982fd7cd09..2e20a9dbccd 100644
+--- a/gdb/gdbarch-gen.h
++++ b/gdb/gdbarch-gen.h
+@@ -430,6 +430,14 @@ typedef struct value * (gdbarch_value_from_register_ftype) (struct gdbarch *gdba
+ extern struct value * gdbarch_value_from_register (struct gdbarch *gdbarch, struct type *type, int regnum, const frame_info_ptr &this_frame);
+ extern void set_gdbarch_value_from_register (struct gdbarch *gdbarch, gdbarch_value_from_register_ftype *value_from_register);
+ 
++/* For a DW_OP_piece located in a register, but not occupying the
++   entire register, return the placement of the piece within that
++   register as defined by the ABI. */
++
++typedef ULONGEST (gdbarch_dwarf2_reg_piece_offset_ftype) (struct gdbarch *gdbarch, int regnum, ULONGEST size);
++extern ULONGEST gdbarch_dwarf2_reg_piece_offset (struct gdbarch *gdbarch, int regnum, ULONGEST size);
++extern void set_gdbarch_dwarf2_reg_piece_offset (struct gdbarch *gdbarch, gdbarch_dwarf2_reg_piece_offset_ftype *dwarf2_reg_piece_offset);
++
+ typedef CORE_ADDR (gdbarch_pointer_to_address_ftype) (struct gdbarch *gdbarch, struct type *type, const gdb_byte *buf);
+ extern CORE_ADDR gdbarch_pointer_to_address (struct gdbarch *gdbarch, struct type *type, const gdb_byte *buf);
+ extern void set_gdbarch_pointer_to_address (struct gdbarch *gdbarch, gdbarch_pointer_to_address_ftype *pointer_to_address);
+diff --git a/gdb/gdbarch.c b/gdb/gdbarch.c
+index 58e9ebbdc59..ed5b5859277 100644
+--- a/gdb/gdbarch.c
++++ b/gdb/gdbarch.c
+@@ -109,6 +109,7 @@ struct gdbarch
+   gdbarch_register_to_value_ftype *register_to_value = nullptr;
+   gdbarch_value_to_register_ftype *value_to_register = nullptr;
+   gdbarch_value_from_register_ftype *value_from_register = default_value_from_register;
++  gdbarch_dwarf2_reg_piece_offset_ftype *dwarf2_reg_piece_offset = default_dwarf2_reg_piece_offset;
+   gdbarch_pointer_to_address_ftype *pointer_to_address = unsigned_pointer_to_address;
+   gdbarch_address_to_pointer_ftype *address_to_pointer = unsigned_address_to_pointer;
+   gdbarch_integer_to_address_ftype *integer_to_address = nullptr;
+@@ -371,6 +372,7 @@ verify_gdbarch (struct gdbarch *gdbarch)
+   /* Skip verify of value_from_register, invalid_p == 0 */
+   /* Skip verify of pointer_to_address, invalid_p == 0 */
+   /* Skip verify of address_to_pointer, invalid_p == 0 */
++  /* Skip verify of dwarf2_reg_piece_offset, invalid_p == 0.  */
+   /* Skip verify of integer_to_address, has predicate.  */
+   /* Skip verify of return_value, invalid_p == 0 */
+   if ((gdbarch->return_value_as_value == default_gdbarch_return_value) == (gdbarch->return_value == nullptr))
+@@ -783,6 +785,9 @@ gdbarch_dump (struct gdbarch *gdbarch, struct ui_file *file)
+   gdb_printf (file,
+ 	      "gdbarch_dump: value_from_register = <%s>\n",
+ 	      host_address_to_string (gdbarch->value_from_register));
++  gdb_printf (file,
++	      "gdbarch_dump: dwarf2_reg_piece_offset = <%s>\n",
++	      host_address_to_string (gdbarch->dwarf2_reg_piece_offset));
+   gdb_printf (file,
+ 	      "gdbarch_dump: pointer_to_address = <%s>\n",
+ 	      host_address_to_string (gdbarch->pointer_to_address));
+@@ -2573,6 +2578,23 @@ set_gdbarch_value_from_register (struct gdbarch *gdbarch,
+   gdbarch->value_from_register = value_from_register;
+ }
+ 
++ULONGEST
++gdbarch_dwarf2_reg_piece_offset (struct gdbarch *gdbarch, int regnum, ULONGEST size)
++{
++  gdb_assert (gdbarch != NULL);
++  gdb_assert (gdbarch->dwarf2_reg_piece_offset != NULL);
++  if (gdbarch_debug >= 2)
++    gdb_printf (gdb_stdlog, "gdbarch_dwarf2_reg_piece_offset called\n");
++  return gdbarch->dwarf2_reg_piece_offset (gdbarch, regnum, size);
++}
++
++void
++set_gdbarch_dwarf2_reg_piece_offset (struct gdbarch *gdbarch,
++				     gdbarch_dwarf2_reg_piece_offset_ftype dwarf2_reg_piece_offset)
++{
++  gdbarch->dwarf2_reg_piece_offset = dwarf2_reg_piece_offset;
++}
++
+ CORE_ADDR
+ gdbarch_pointer_to_address (struct gdbarch *gdbarch, struct type *type, const gdb_byte *buf)
+ {
+diff --git a/gdb/gdbarch_components.py b/gdb/gdbarch_components.py
+index 4006380076d..4a228b5d27c 100644
+--- a/gdb/gdbarch_components.py
++++ b/gdb/gdbarch_components.py
+@@ -829,6 +829,22 @@ allocate and return a struct value with all value attributes
+     invalid=False,
+ )
+ 
++Method(
++    comment="""
++For a DW_OP_piece located in a register, but not occupying the
++entire register, return the placement of the piece within that
++register as defined by the ABI.
++""",
++    type="ULONGEST",
++    name="dwarf2_reg_piece_offset",
++    params=[
++        ("int", "regnum"),
++        ("ULONGEST", "size")
++    ],
++    predefault="default_dwarf2_reg_piece_offset",
++    invalid=False,
++)
++
+ Method(
+     type="CORE_ADDR",
+     name="pointer_to_address",
+diff --git a/gdb/value.h b/gdb/value.h
+index 9d7e88d9433..47df66e0961 100644
+--- a/gdb/value.h
++++ b/gdb/value.h
+@@ -1128,6 +1128,8 @@ extern value *default_value_from_register (gdbarch *gdbarch, type *type,
+ 					   int regnum,
+ 					   const frame_info_ptr &this_frame);
+ 
++extern ULONGEST default_dwarf2_reg_piece_offset (gdbarch *gdbarch, int regnum, ULONGEST size);
++
+ extern struct value *value_from_register (struct type *type, int regnum,
+ 					  const frame_info_ptr &frame);
+ 
+-- 
+2.43.0
+

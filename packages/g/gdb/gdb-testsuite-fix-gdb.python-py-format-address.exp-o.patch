@@ -1,0 +1,88 @@
+From 37ce118a44994fb178065eaed671c7036f3d93a5 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 20 Jun 2024 16:54:47 +0200
+Subject: [PATCH 34/46] [gdb/testsuite] Fix gdb.python/py-format-address.exp on
+ arm
+
+When running test-case gdb.python/py-format-address.exp on arm-linux, I get:
+...
+(gdb) python print("Got: " + gdb.format_address(0x103dd))^M
+Got: 0x103dd <main at py-format-address.c:30>^M
+(gdb) FAIL: $exp: symbol_filename=on: gdb.format_address, \
+result should have an offset
+...
+
+What is expected here is:
+...
+Got: 0x103dd <main+1 at py-format-address.c:30>^M
+...
+
+Main starts at main_addr:
+...
+(gdb) print /x &main^M
+$1 = 0x103dc^M
+...
+and we obtained next_addr 0x103dd by adding 1 to it:
+...
+set next_addr [format 0x%x [expr $main_addr + 1]]
+...
+
+Adding 1 to $main_addr results in an address for a thumb function starting at
+address 0x103dc, which is incorrect because main is an arm function (because
+I'm running with target board unix/-marm).
+
+At some point during the call to format_addr, arm_addr_bits_remove removes
+the thumb bit, which causes the +1 offset to be dropped, causing the FAIL.
+
+Fix this by using the address of the breakpoint on main, provided it's not at
+the very start of main.
+
+Tested on arm-linux.
+
+PR testsuite/31452
+Bug: https://www.sourceware.org/bugzilla/show_bug.cgi?id=31452
+---
+ .../gdb.python/py-format-address.exp          | 20 +++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.python/py-format-address.exp b/gdb/testsuite/gdb.python/py-format-address.exp
+index 8e7cf47e03a..ab8022c753b 100644
+--- a/gdb/testsuite/gdb.python/py-format-address.exp
++++ b/gdb/testsuite/gdb.python/py-format-address.exp
+@@ -40,7 +40,23 @@ if ![runto_main] {
+ # for the program space and architecture (these will be selected based
+ # on the current inferior).
+ set main_addr [get_hexadecimal_valueof "&main" "UNKNOWN"]
+-set next_addr [format 0x%x [expr $main_addr + 1]]
++require {!string equal $main_addr {UNKNOWN}}
++
++set next_addr "UNKNOWN"
++gdb_test_multiple "info break 1" "" {
++    -re -wrap " y +($hex) +in .*" {
++	set next_addr $expect_out(1,string)
++	set next_addr [regsub {^0x0+} $next_addr "0x"]
++	pass $gdb_test_name
++    }
++}
++if { $next_addr == "UNKNOWN" || $next_addr == $main_addr } {
++    set next_addr [format 0x%x [expr $main_addr + 1]]
++}
++
++verbose -log "main_addr: $main_addr"
++verbose -log "next_addr: $next_addr"
++
+ 
+ foreach_with_prefix symbol_filename { on off } {
+     gdb_test_no_output "set print symbol-filename ${symbol_filename}"
+@@ -56,7 +72,7 @@ foreach_with_prefix symbol_filename { on off } {
+ 	"gdb.format_address, result should have no offset"
+ 
+     gdb_test "python print(\"Got: \" + gdb.format_address($next_addr))" \
+-	"Got: $next_addr <main\\+1${filename_pattern}>" \
++	"Got: $next_addr <main\\+$decimal${filename_pattern}>" \
+ 	"gdb.format_address, result should have an offset"
+ }
+ 
+-- 
+2.43.0
+

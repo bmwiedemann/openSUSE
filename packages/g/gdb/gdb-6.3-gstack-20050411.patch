@@ -16,7 +16,7 @@ Subject: gdb-6.3-gstack-20050411.patch
 diff --git a/gdb/Makefile.in b/gdb/Makefile.in
 --- a/gdb/Makefile.in
 +++ b/gdb/Makefile.in
-@@ -2035,7 +2035,7 @@ info install-info clean-info dvi pdf install-pdf html install-html: force
+@@ -2071,7 +2071,7 @@ info install-info clean-info dvi install-dvi pdf install-pdf html install-html:
  install: all
  	@$(MAKE) $(FLAGS_TO_PASS) install-only
  
@@ -25,7 +25,7 @@ diff --git a/gdb/Makefile.in b/gdb/Makefile.in
  	transformed_name=`t='$(program_transform_name)'; \
  			  echo gdb | sed -e "$$t"` ; \
  		if test "x$$transformed_name" = x; then \
-@@ -2085,7 +2085,25 @@ install-guile:
+@@ -2121,7 +2121,25 @@ install-guile:
  install-python:
  	$(SHELL) $(srcdir)/../mkinstalldirs $(DESTDIR)$(GDB_DATADIR)/python/gdb
  
@@ -52,7 +52,7 @@ diff --git a/gdb/Makefile.in b/gdb/Makefile.in
  	transformed_name=`t='$(program_transform_name)'; \
  			  echo gdb | sed -e $$t` ; \
  		if test "x$$transformed_name" = x; then \
-@@ -2116,6 +2134,18 @@ uninstall: force $(CONFIG_UNINSTALL)
+@@ -2152,6 +2170,28 @@ uninstall: force $(CONFIG_UNINSTALL)
  	rm -f $(DESTDIR)$(bindir)/$$transformed_name
  	@$(MAKE) DO=uninstall "DODIRS=$(SUBDIRS)" $(FLAGS_TO_PASS) subdir_do
  
@@ -68,9 +68,19 @@ diff --git a/gdb/Makefile.in b/gdb/Makefile.in
 +		rm -f $(DESTDIR)$(bindir)/$$transformed_name$(EXEEXT) \
 +		      $(DESTDIR)$(man1dir)/$$transformed_name.1
 +
- # The C++ name parser can be built standalone for testing.
- test-cp-name-parser.o: cp-name-parser.c
- 	$(COMPILE) -DTEST_CPNAMES cp-name-parser.c
++# The C++ name parser can be built standalone for testing.
++test-cp-name-parser.o: cp-name-parser.c
++	$(COMPILE) -DTEST_CPNAMES cp-name-parser.c
++	$(POSTCOMPILE)
++
++test-cp-name-parser$(EXEEXT): test-cp-name-parser.o $(LIBIBERTY)
++	$(ECHO_CXXLD) $(CC_LD) $(INTERNAL_LDFLAGS) \
++		-o test-cp-name-parser$(EXEEXT) test-cp-name-parser.o \
++		$(LIBIBERTY)
++
+ # We do this by grepping through sources.  If that turns out to be too slow,
+ # maybe we could just require every .o file to have an initialization routine
+ # of a given name (top.o -> _initialize_top, etc.).
 diff --git a/gdb/gstack.sh b/gdb/gstack.sh
 new file mode 100644
 --- /dev/null
@@ -226,7 +236,7 @@ new file mode 100644
 +# exiting the function.  Still we could retry the gstack command if we fail.
 +
 +set test "spawn gstack"
-+set command "sh -c GDB=$GDB\\ GDBARGS=-data-directory\\\\\\ $BUILD_DATA_DIRECTORY\\ sh\\ ${srcdir}/../gstack.sh\\ $pid\\;echo\\ GSTACK-END"
++set command "sh -c GDB=$GDB\\ GDBARGS=-data-directory\\\\\\ $GDB_DATA_DIRECTORY\\ sh\\ ${srcdir}/../gstack.sh\\ $pid\\;echo\\ GSTACK-END"
 +set res [remote_spawn host $command];
 +if { $res < 0 || $res == "" } {
 +    perror "Spawning $command failed."

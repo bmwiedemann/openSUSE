@@ -1,0 +1,144 @@
+From 0ac8e9af3cd6713f4b230e9e335e1398c3161210 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 10 Jan 2025 21:25:53 +0100
+Subject: [PATCH 26/46] Fix gdb.ada/O2_float_param.exp on s390x-linux
+
+With test-case gdb.ada/O2_float_param.exp on s390x-linux, I get:
+...
+ (gdb) frame^M
+ #0  callee.increment (val=99.0, val@entry=<error reading variable: \
+   register has not been saved in frame>, msg=...) at callee.adb:19^M
+ 19         procedure Increment (Val : in out Float; Msg: String) is^M
+ (gdb) FAIL: $exp: scenario=all: frame
+...
+
+The frame command calls read_frame_arg to get:
+- the current value of val, and
+- the value of val at function entry.
+
+The first scenario succeeds, and the second scenario fails.
+
+For context and contrast, let's also investigate the first scenario: getting
+the current value of val.
+
+Function parameter val:
+...
+ <2><b51>: Abbrev Number: 4 (DW_TAG_formal_parameter)
+    <b52>   DW_AT_name        : val
+    <b58>   DW_AT_type        : <0xb86>
+    <b5c>   DW_AT_location    : 0xab (location list)
+...
+has location list:
+...
+    000000ab 0000000001002928 0000000001002967
+      (DW_OP_reg16 (f0))
+    000000be 0000000001002967 0000000001002968
+      (DW_OP_reg24 (f8))
+    000000d1 0000000001002968 0000000001002974
+      (DW_OP_GNU_regval_type: 24 (f8) <0xb29>;
+       DW_OP_GNU_const_type: <0xb29>  4 byte block: 3f 80 0 0 ; DW_OP_plus;
+       DW_OP_stack_value)
+    000000ef 0000000001002974 0000000001002982
+      (DW_OP_GNU_entry_value: (DW_OP_GNU_regval_type: 16 (f0) <0xb29>);
+       DW_OP_GNU_const_type: <0xb29>  4 byte block: 3f 80 0 0 ; DW_OP_plus;
+       DW_OP_stack_value)
+    0000010f <End of list>
+...
+and since we're stopped at address 0x1002928:
+...
+(gdb) print $pc
+$1 = (access procedure) 0x1002928 <callee.increment>
+...
+we get the value from dwarf register 16.
+
+The s390x ABI [1] specifies that dwarf register 16 maps onto 8-byte register
+f0 or 16-byte register v0 (where f0 is part of v0), and in this case (because
+the v0 register is available) s390_dwarf_reg_to_regnum maps it to v0.
+
+Val is only 4 bytes:
+...
+(gdb) ptype val
+type = <4-byte float>
+...
+and s390_value_from_register takes care to get the value from the correct part
+of v0.
+
+The value of v0 is found in the prologue cache, and the value of parameter val
+is printed.
+
+Now the second scenario: getting the value of val at function entry.
+
+FWIW, since we're stopped at function entry, we could simply return the same
+value, reading the same register, but that's currently not implemented [2].
+
+Instead we start from the fact that val is in dwarf reg 16 at function entry,
+and then use call site information:
+...
+ <4><cf7>: Abbrev Number: 13 (DW_TAG_GNU_call_site)
+    <cf8>   DW_AT_low_pc      : 0x1002a46
+    <d00>   DW_AT_abstract_origin: <0xdda>
+ <5><d04>: Abbrev Number: 12 (DW_TAG_GNU_call_site_parameter)
+    <d05>   DW_AT_location    : 1 byte block: 60        (DW_OP_reg16 (f0))
+    <d07>   DW_AT_GNU_call_site_value: 3 byte block: f5 18 2d   \
+              (DW_OP_GNU_regval_type: 24 (f8) <0xc42>)
+ <5><d0b>: Abbrev Number: 12 (DW_TAG_GNU_call_site_parameter)
+...
+to conclude that the value we're looking for is in dwarf reg 24, which
+s390_dwarf_reg_to_regnum maps to v8.
+
+As before, s390_value_from_register takes care to get the value from the
+correct part of v8.
+
+However, v8 is not available in the prologue cache, and we take a different
+path and end up in s390_unwind_pseudo_register, where v8 and similar
+(regnum_is_vxr_full) is unhandled, and we get:
+...
+   return value::allocate_optimized_out (type);
+...
+which eventually causes the "error reading variable: register has not been
+saved in frame".
+
+Fix this by handling the regnum_is_vxr_full case in
+s390_unwind_pseudo_register, similar to how that is done in
+s390_pseudo_register_read.
+
+Tested on s390x-linux.
+
+This also fixes test-case gdb.base/savedregs.exp.
+
+[1] https://github.com/IBM/s390x-abi
+[2] https://sourceware.org/pipermail/gdb-patches/2024-September/211589.html
+---
+ gdb/s390-tdep.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/gdb/s390-tdep.c b/gdb/s390-tdep.c
+index a7c58b37276..31730296ef1 100644
+--- a/gdb/s390-tdep.c
++++ b/gdb/s390-tdep.c
+@@ -2332,6 +2332,22 @@ s390_unwind_pseudo_register (const frame_info_ptr &this_frame, int regnum)
+ 	return value_cast (type, val);
+     }
+ 
++  if (regnum_is_vxr_full (tdep, regnum))
++    {
++      struct value *val = value::allocate_register (this_frame, regnum);
++
++      int reg = regnum - tdep->v0_full_regnum;
++      struct value *val1
++	= frame_unwind_register_value (this_frame, S390_F0_REGNUM + reg);
++      struct value *val2
++	= frame_unwind_register_value (this_frame, S390_V0_LOWER_REGNUM + reg);
++
++      val1->contents_copy (val, 0, 0, 8);
++      val2->contents_copy (val, 8, 0, 8);
++
++      return value_cast (type, val);
++    }
++
+   return value::allocate_optimized_out (type);
+ }
+ 
+-- 
+2.43.0
+

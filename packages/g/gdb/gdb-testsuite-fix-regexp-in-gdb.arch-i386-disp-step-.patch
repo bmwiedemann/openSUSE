@@ -1,0 +1,71 @@
+From da8d1a26f1015678245f23abc0b96ee6fba9f16d Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 29 Aug 2024 07:31:12 +0200
+Subject: [PATCH 32/46] [gdb/testsuite] Fix regexp in
+ gdb.arch/i386-disp-step-self-call.exp
+
+Usually, with test-case gdb.arch/i386-disp-step-self-call.exp I get:
+...
+(gdb) x/1wx 0xffffc4f8^M
+0xffffc4f8:     0x08048472^M
+(gdb) PASS: $exp: check return address was updated correctly
+...
+but sometimes I run into:
+...
+(gdb) x/1wx 0xffffc5c8^M
+0xffffc5c8:     0x0804917e^M
+(gdb) FAIL: $exp: check return address was updated correctly
+...
+
+The problem is that here:
+...
+set next_insn_addr 0x[format %08X $next_insn_addr]
+gdb_test "x/1wx 0x[format %x $sp]" "$hex:\\s+$next_insn_addr" \
+    "check return address was updated correctly"
+...
+we're trying to match string 0x0804917e against regexp 0x0804917E due to using
+"%08X" as format string.
+
+We only run into this problem if the address contains letters, which apparently
+usually isn't the case.
+
+Fix this by using "%08x" instead as format string.
+
+Likewise in test-case gdb.arch/amd64-disp-step-self-call.exp.
+
+Tested on x86_64-linux.
+
+PR testsuite/32121
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32121
+---
+ gdb/testsuite/gdb.arch/amd64-disp-step-self-call.exp | 2 +-
+ gdb/testsuite/gdb.arch/i386-disp-step-self-call.exp  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.arch/amd64-disp-step-self-call.exp b/gdb/testsuite/gdb.arch/amd64-disp-step-self-call.exp
+index 762d19a2960..2db3ff228c9 100644
+--- a/gdb/testsuite/gdb.arch/amd64-disp-step-self-call.exp
++++ b/gdb/testsuite/gdb.arch/amd64-disp-step-self-call.exp
+@@ -77,6 +77,6 @@ gdb_assert {[expr $sp == $new_sp]} \
+     "check stack pointer was updated as expected"
+ 
+ # Check the contents of the stack were updated to the expected value.
+-set next_insn_addr 0x[format %016X $next_insn_addr]
++set next_insn_addr 0x[format %016x $next_insn_addr]
+ gdb_test "x/1gx 0x[format %x $sp]" "$hex:\\s+$next_insn_addr" \
+     "check return address was updated correctly"
+diff --git a/gdb/testsuite/gdb.arch/i386-disp-step-self-call.exp b/gdb/testsuite/gdb.arch/i386-disp-step-self-call.exp
+index b2cb902f8ed..5de7ebcd69f 100644
+--- a/gdb/testsuite/gdb.arch/i386-disp-step-self-call.exp
++++ b/gdb/testsuite/gdb.arch/i386-disp-step-self-call.exp
+@@ -77,6 +77,6 @@ gdb_assert {[expr $sp == $new_sp]} \
+     "check stack pointer was updated as expected"
+ 
+ # Check the contents of the stack were updated to the expected value.
+-set next_insn_addr 0x[format %08X $next_insn_addr]
++set next_insn_addr 0x[format %08x $next_insn_addr]
+ gdb_test "x/1wx 0x[format %x $sp]" "$hex:\\s+$next_insn_addr" \
+     "check return address was updated correctly"
+-- 
+2.43.0
+

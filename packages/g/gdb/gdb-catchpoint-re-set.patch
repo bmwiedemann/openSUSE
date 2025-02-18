@@ -1,0 +1,575 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Andrew Burgess <aburgess@redhat.com>
+Date: Wed, 14 Aug 2024 15:16:46 +0100
+Subject: gdb-catchpoint-re-set.patch
+
+    ;; Backport upstream commit a92e943014f to fix rhbz2304296.
+
+gdb: implement ::re_set method for catchpoint class
+
+It is possible to attach a condition to a catchpoint.  This can't be
+done when the catchpoint is created, but can be done with the
+'condition' command, this is documented in the GDB manual:
+
+     You can also use the 'if' keyword with the 'watch' command.  The
+  'catch' command does not recognize the 'if' keyword; 'condition' is the
+  only way to impose a further condition on a catchpoint.
+
+A GDB crash was reported against Fedora GDB where a user had attached
+a condition to a catchpoint and then restarted the inferior.  When the
+catchpoint was hit GDB would immediately segfault.  I was able to
+reproduce the failure on upstream GDB:
+
+  (gdb) file ./some/binary
+  (gdb) catch syscall write
+  (gdb) run
+  ...
+  Catchpoint 1 (returned from syscall write), 0x00007ffff7b594a7 in write () from /lib64/libc.so.6
+  (gdb) condition 1 $_streq((char *) $rsi, "foobar") == 0
+  (gdb) run
+  ...
+  Fatal signal: Segmentation fault
+  ...
+
+What happened here is that on the system in question we had debug
+information available for both the main application and also for
+libc.
+
+When the condition was attached GDB was stopped inside libc and as the
+debug information was available GDB found a reference to the 'char'
+type (for the cast) inside libc's debug information.
+
+When the inferior is restarted GDB discards all of the objfiles
+associated with shared libraries, and this includes libc.  As such the
+'char' type, which is objfile owned, is discarded and the reference to
+it from the catchpoint's condition expression becomes invalid.
+
+Now, if it were a breakpoint instead of a catchpoint, what would
+happen is that after the shared library objfiles had been discarded
+we'd call the virtual breakpoint::re_set method on the breakpoint, and
+this would update the breakpoint's condition expression.  This is
+because user breakpoints are actually instances of the code_breakpoint
+class and the code_breakpoint::re_set method contains the code to
+recompute the breakpoint's condition expression.
+
+However, catchpoints are instances of the catchpoint class which
+inherits from the base breakpoint class.  The catchpoint class does
+not override breakpoint::re_set, and breakpoint::re_set is empty!
+
+The consequence of this is that catchpoint condition expressions are
+never recomputed, and the dangling pointer to the now deleted, objfile
+owned type 'char' is left around, and, when the catchpoint is hit, the
+invalid pointer is used when GDB tries to evaluate the condition
+expression.
+
+In this commit I have implemented catchpoint::re_set.  This is pretty
+simple and just recomputes the condition expression as you'd expect.
+If the condition doesn't evaluate then the catchpoint is marked as
+disabled_by_cond.
+
+I have also made breakpoint::re_set pure virtual.  With the addition
+of catchpoint::re_set every sub-class of breakpoint now implements the
+::re_set method, and if new sub-classes are added in the future I
+think that they _must_ implement ::re_set in order to avoid this
+problem.  As such falling back to an empty breakpoint::re_set doesn't
+seem helpful.
+
+For testing I have not relied on stopping in libc and having libc
+debug information available, this doesn't seem like a good idea for
+the GDB testsuite.  Instead I create a (rather pointless) condition
+check that uses a type defined only within a shared library.  When the
+inferior is restarted the catchpoint will temporarily be marked as
+disabled_by_cond (due to the type not being available), but once the
+shared library is loaded again the catchpoint will be re-enabled.
+Without the fixes above then the same crashing behaviour can be
+observed.
+
+One point of note: the dangling pointer of course exposes undefined
+behaviour, with no guarantee of a crash.  Though a crash is what I
+usually see I have see GDB throw random errors from the expression
+evaluation code, and once, I saw no problem at all!  If you recompile
+GDB with the address sanitizer, or run under valgrind, then the bug
+will be exposed every time.
+
+After fixing this bug I checked bugzilla and found PR gdb/29960 which
+is the same bug.  I was able to reproduce the bug before this commit,
+and after this commit GDB is no longer crashing.
+
+Before:
+
+  (gdb) file /tmp/hello.x
+  Reading symbols from /tmp/hello.x...
+  (gdb) run
+  Starting program: /tmp/hello.x
+  Hello World
+  [Inferior 1 (process 1101855) exited normally]
+  (gdb) catch syscall 1
+  Catchpoint 1 (syscall 'write' [1])
+  (gdb) condition 1 write.fd == 1
+  (gdb) run
+  Starting program: /tmp/hello.x
+
+  Fatal signal: Segmentation fault
+  ...
+
+And after:
+
+  (gdb) file /tmp/hello.x
+  Reading symbols from /tmp/hello.x...
+  (gdb) run
+  Starting program: /tmp/hello.x
+  Hello World
+  Args: ( 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 )
+  [Inferior 1 (process 1102373) exited normally]
+  (gdb) catch syscall 1
+  Catchpoint 1 (syscall 'write' [1])
+  (gdb) condition 1 write.fd == 1
+  (gdb) r
+  Starting program: /tmp/hello.x
+  Error in testing condition for breakpoint 1:
+  Attempt to extract a component of a value that is not a structure.
+
+  Catchpoint 1 (call to syscall write), 0x00007ffff7eb94a7 in write ()
+     from /lib64/libc.so.6
+  (gdb) ptype write
+  type = <unknown return type> ()
+  (gdb)
+
+Notice we get the error now when the condition fails to evaluate.
+This seems reasonable given that 'write' will be a function, and
+indeed the final 'ptype' shows that it's a function, not a struct.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=29960
+
+Reviewed-By: Tom de Vries <tdevries@suse.de>
+
+diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
+--- a/gdb/breakpoint.c
++++ b/gdb/breakpoint.c
+@@ -8146,6 +8146,60 @@ catchpoint::catchpoint (struct gdbarch *gdbarch, bool temp,
+   pspace = current_program_space;
+ }
+ 
++/* See breakpoint.h.  */
++
++void
++catchpoint::re_set ()
++{
++  /* All catchpoints are associated with a specific program_space.  */
++  gdb_assert (pspace != nullptr);
++
++  /* Catchpoints have a single dummy location.  */
++  gdb_assert (locations ().size () == 1);
++  bp_location &bl = m_locations.front ();
++
++  if (cond_string == nullptr)
++    {
++      /* It shouldn't be possible to have a parsed condition expression
++	 cached on this location if the catchpoint doesn't have a condition
++	 string set.  */
++      gdb_assert (bl.cond == nullptr);
++
++      /* Nothing to re-compute, and the catchpoint cannot change.  */
++      return;
++    }
++
++  bool previous_disabled_by_cond = bl.disabled_by_cond;
++
++  /* Start by marking the location disabled and discarding the previously
++     computed condition expression.  Now if we get an exception, even if
++     it's a quit exception, we'll leave the location disabled and there
++     will be no (possibly invalid) expression cached.  */
++  bl.disabled_by_cond = true;
++  bl.cond = nullptr;
++
++  const char *s = cond_string.get ();
++  try
++    {
++      switch_to_program_space_and_thread (pspace);
++
++      bl.cond = parse_exp_1 (&s, bl.address, block_for_pc (bl.address),
++			     nullptr);
++      bl.disabled_by_cond = false;
++    }
++  catch (const gdb_exception_error &e)
++    {
++      /* Any exception thrown must be from either the parse_exp_1 or
++	 earlier in the try block.  As such the following two asserts
++	 should be true.  */
++      gdb_assert (bl.disabled_by_cond);
++      gdb_assert (bl.cond == nullptr);
++    }
++
++  if (previous_disabled_by_cond != bl.disabled_by_cond)
++    notify_breakpoint_modified (this);
++}
++
+ /* Notify interpreters and observers that breakpoint B was created.  */
+ 
+ static void
+diff --git a/gdb/breakpoint.h b/gdb/breakpoint.h
+--- a/gdb/breakpoint.h
++++ b/gdb/breakpoint.h
+@@ -702,11 +702,10 @@ struct breakpoint : public intrusive_list_node<breakpoint>
+ 
+   /* Reevaluate a breakpoint.  This is necessary after symbols change
+      (e.g., an executable or DSO was loaded, or the inferior just
+-     started).  */
+-  virtual void re_set ()
+-  {
+-    /* Nothing to re-set.  */
+-  }
++     started).  This is pure virtual as, at a minimum, each sub-class must
++     recompute any cached condition expressions based off of the
++     cond_string member variable.  */
++  virtual void re_set () = 0;
+ 
+   /* Insert the breakpoint or watchpoint or activate the catchpoint.
+      Return 0 for success, 1 if the breakpoint, watchpoint or
+@@ -1120,6 +1119,10 @@ struct catchpoint : public breakpoint
+   catchpoint (struct gdbarch *gdbarch, bool temp, const char *cond_string);
+ 
+   ~catchpoint () override = 0;
++
++  /* If the catchpoint has a condition set then recompute the cached
++     expression within the single dummy location.  */
++  void re_set () override;
+ };
+ 
+ 
+diff --git a/gdb/testsuite/gdb.base/reset-catchpoint-cond-lib.c b/gdb/testsuite/gdb.base/reset-catchpoint-cond-lib.c
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/reset-catchpoint-cond-lib.c
+@@ -0,0 +1,76 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2024 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#include <stdio.h>
++#include <signal.h>
++#include <unistd.h>
++#include <sys/types.h>
++#include <sys/wait.h>
++#include <unistd.h>
++#include <assert.h>
++#include <stdlib.h>
++
++/* This type is used by GDB.  */
++struct lib_type
++{
++  int a;
++  int b;
++  int c;
++};
++
++/* Ensure the type above is used.  */
++volatile struct lib_type global_lib_object = { 1, 2, 3 };
++
++/* This pointer is checked by GDB.  */
++volatile void *opaque_ptr = 0;
++
++void
++lib_func_test_syscall (void)
++{
++  puts ("Inside library\n");
++  fflush (stdout);
++}
++
++static void
++sig_handler (int signo)
++{
++  /* Nothing.  */
++}
++
++void
++lib_func_test_signal (void)
++{
++  signal (SIGUSR1, sig_handler);
++
++  kill (getpid (), SIGUSR1);
++}
++
++void
++lib_func_test_fork (void)
++{
++  pid_t pid = fork ();
++  assert (pid != -1);
++
++  if (pid == 0)
++    {
++      /* Child: just exit.  */
++      exit (0);
++    }
++
++  /* Parent.  */
++  waitpid (pid, NULL, 0);
++}
+diff --git a/gdb/testsuite/gdb.base/reset-catchpoint-cond.c b/gdb/testsuite/gdb.base/reset-catchpoint-cond.c
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/reset-catchpoint-cond.c
+@@ -0,0 +1,50 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2024 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++extern void lib_func_test_syscall (void);
++extern void lib_func_test_signal (void);
++extern void lib_func_test_fork (void);
++
++/* We use this to perform some filler work.  */
++volatile int global_var = 0;
++
++/* Just somewhere for GDB to put a breakpoint.  */
++void
++breakpt_before_exit (void)
++{
++  /* Nothing.  */
++}
++
++int
++main (void)
++{
++#if defined TEST_SYSCALL
++  lib_func_test_syscall ();
++#elif defined TEST_SIGNAL
++  lib_func_test_signal ();
++#elif defined TEST_FORK
++  lib_func_test_fork ();
++#else
++# error compile with suitable -DTEST_xxx macro defined
++#endif
++
++  ++global_var;
++
++  breakpt_before_exit ();
++
++  return 0;
++}
+diff --git a/gdb/testsuite/gdb.base/reset-catchpoint-cond.exp b/gdb/testsuite/gdb.base/reset-catchpoint-cond.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/reset-catchpoint-cond.exp
+@@ -0,0 +1,169 @@
++# Copyright 2024 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Test that the condition for a catchpoint is correctly reset after
++# shared libraries are unloaded, as happens when an inferior is
++# restarted.
++#
++# If this is not done then, when the catchpoint is hit on the second
++# run, we'll evaluate the parsed expression from the first run, which
++# might include references to types owned by the now deleted objfile
++# (for the shared library loaded in the first run).
++#
++# This scripts tests a number of different catchpoint types.  Inside
++# GDB these are all sub-classes of the 'catchpoint' type, which is
++# where the fix for the above issue resides, so all catchpoint types
++# should work correctly.
++
++standard_testfile .c -lib.c
++
++set libfile $binfile-lib.so
++
++set pyfile [gdb_remote_download host ${srcdir}/${subdir}/${testfile}.py]
++
++if {[build_executable "build shared library" $libfile $srcfile2 \
++	 {debug shlib}] == -1} {
++    return
++}
++
++# Depending on whether or not libc debug info is installed, when we
++# hit a syscall catchpoint inside libc there might be a source line
++# included in the output.
++#
++# This regexp will match an optional line and can be added to the
++# expected catchpoint output to ignore the (possibly missing) source
++# line.
++set libc_src_line_re "(?:\r\n\[^\r\n\]+)?"
++
++# Check the Python bp_modified_list and then reset the list back to
++# empty.  TESTNAME is just a string.  BP_NUM is a list of breakpoint
++# numbers that are expected to appear (in the given order) in the
++# bp_modified_list.
++
++proc check_modified_bp_list { testname bp_num } {
++    if { [allow_python_tests] } {
++	set expected [join $bp_num ", "]
++
++	gdb_test "python print(bp_modified_list)" "\\\[$expected\\\]" \
++	    $testname
++	gdb_test_no_output -nopass "python bp_modified_list=\[\]" \
++	    "reset bp_modified_list after $testname"
++    }
++}
++
++# Build an executable and run tests on 'catch MODE'.
++
++proc run_test { mode } {
++    set exec_name ${::binfile}-${mode}
++
++    set macro TEST_[string toupper $mode]
++
++    if {[build_executable "build test executable" $exec_name $::srcfile \
++	     [list debug shlib=$::libfile additional_flags=-D${macro}]] == -1} {
++	return
++    }
++
++    clean_restart $exec_name
++    gdb_load_shlib $::libfile
++
++    if {![runto_main]} {
++	return
++    }
++
++    if { $mode eq "syscall" } {
++	gdb_test "catch syscall write" \
++	    "Catchpoint $::decimal \\(syscall 'write' \[^)\]+\\)"
++	set catch_re "call to syscall write"
++    } elseif { $mode eq "signal" } {
++	gdb_test "catch signal SIGUSR1" \
++	    "Catchpoint $::decimal \\(signal SIGUSR1\\)"
++	set catch_re "signal SIGUSR1"
++    } elseif { $mode eq "fork" } {
++	gdb_test "catch fork" \
++	    "Catchpoint $::decimal \\(fork\\)"
++	set catch_re "forked process $::decimal"
++    } else {
++	error "unknown mode $mode"
++    }
++    set cp_num [get_integer_valueof "\$bpnum" "*UNKNOWN*"]
++
++    gdb_breakpoint "breakpt_before_exit"
++
++    gdb_test "continue" \
++	"Catchpoint ${cp_num} \[^\r\n\]+$::libc_src_line_re"
++
++    if { [allow_python_tests] } {
++	gdb_test_no_output "source $::pyfile" "import python scripts"
++	check_modified_bp_list \
++	    "check b/p modified observer has not yet triggered" {}
++    }
++
++    with_test_prefix "with false condition" {
++	gdb_test_no_output "condition $cp_num ((struct lib_type *) opaque_ptr) != 0" \
++	    "set catchpoint condition"
++
++	check_modified_bp_list \
++	    "catchpoint modified once by setting condition" \
++	    [list $cp_num]
++
++	gdb_run_cmd
++	gdb_test "" [multi_line \
++			 "Breakpoint $::decimal, main \\(\\) \[^\r\n\]+" \
++			 "$::decimal\\s+\[^\r\n\]+"]
++
++	check_modified_bp_list "catchpoint modified twice at startup" \
++	    [list $cp_num $cp_num "$::decimal"]
++
++	gdb_test "continue" \
++	    [multi_line \
++		 "Breakpoint $::decimal, breakpt_before_exit \\(\\) at \[^\r\n\]+" \
++		 "$::decimal\\s+\[^\r\n\]+"] \
++	    "continue to breakpt_before_exit"
++    }
++
++    # Check the bp_modified_list against '.*'.  We don't care at this
++    # point what's in the list (nothing relevant has happened since we
++    # last checked), but this has the side effect of clearing the list.
++    check_modified_bp_list "clear bp modified list" { .* }
++
++    with_test_prefix "with true condition" {
++	gdb_test_no_output "condition $cp_num ((struct lib_type *) opaque_ptr) == 0" \
++	    "set catchpoint condition"
++
++	check_modified_bp_list \
++	    "catchpoint modified once by setting condition" \
++	    [list $cp_num]
++
++	gdb_run_cmd
++	gdb_test "" [multi_line \
++			 "Breakpoint $::decimal, main \\(\\) \[^\r\n\]+" \
++			 "$::decimal\\s+\[^\r\n\]+"]
++
++	check_modified_bp_list "catchpoint modified twice at startup" \
++	    [list $cp_num $cp_num "$::decimal"]
++
++	gdb_test "continue" \
++	    "Catchpoint $cp_num \\($catch_re\\), \[^\r\n\]+$::libc_src_line_re" \
++	    "continue until catchpoint hit"
++
++	check_modified_bp_list "catchpoint modified again when hit" \
++	    [list $cp_num]
++    }
++}
++
++# Run the tests.
++foreach_with_prefix mode { syscall signal fork } {
++    run_test $mode
++}
+diff --git a/gdb/testsuite/gdb.base/reset-catchpoint-cond.py b/gdb/testsuite/gdb.base/reset-catchpoint-cond.py
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/reset-catchpoint-cond.py
+@@ -0,0 +1,21 @@
++# Copyright (C) 2024 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++bp_modified_list = []
++
++def bp_modified(bp):
++    bp_modified_list.append (bp.number)
++
++gdb.events.breakpoint_modified.connect(bp_modified)

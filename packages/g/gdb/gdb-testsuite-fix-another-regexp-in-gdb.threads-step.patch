@@ -1,0 +1,40 @@
+From 002b882370fb3d69b7c89fc99e85fc1b767567b9 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 29 Aug 2024 11:39:02 +0200
+Subject: [PATCH 2/2] [gdb/testsuite] Fix another regexp in
+ gdb.threads/stepi-over-clone.exp
+
+On openSUSE Tumbleweed, I run into:
+...
+(gdb) PASS: gdb.threads/stepi-over-clone.exp: catch process syscalls
+continue^M
+Continuing.^M
+^M
+Catchpoint 2 (call to syscall clone3), __clone3 () at clone3.S:62^M
+(gdb) FAIL: gdb.threads/stepi-over-clone.exp: continue
+...
+
+Fix this by updating another (see commit 8fbf220321d) regexp to also recognize
+__clone3.
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.threads/stepi-over-clone.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.threads/stepi-over-clone.exp b/gdb/testsuite/gdb.threads/stepi-over-clone.exp
+index da8bbf6a215..b93cfe69c7f 100644
+--- a/gdb/testsuite/gdb.threads/stepi-over-clone.exp
++++ b/gdb/testsuite/gdb.threads/stepi-over-clone.exp
+@@ -50,7 +50,7 @@ gdb_test_multiple "catch syscall group:process" "catch process syscalls" {
+ 
+ set re_loc1 "$hex in (__)?clone\[23\]? \\(\\)"
+ set re_loc2 "$decimal\[ \t\]+in \[^\r\n\]+"
+-set re_loc3 "clone\[23\]? \\(\\) at \[^:\]+:$decimal"
++set re_loc3 "(__)?clone\[23\]? \\(\\) at \[^:\]+:$decimal"
+ 
+ gdb_test "continue" \
+     "Catchpoint $decimal \\(call to syscall clone\[23\]?\\), ($re_loc1|$re_loc3).*"
+-- 
+2.43.0
+

@@ -1,0 +1,92 @@
+From fc88d3c31d277ad466ae961b585fbb2fac982d3e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 24 Jan 2025 16:37:36 +0100
+Subject: [PATCH 1/2] [gdb/testsuite] Record less in
+ gdb.reverse/time-reverse.exp
+
+While stepping through gdb.reverse/time-reverse.exp I realized that we're
+recording the instructions for resolving the PLT entries for functions time
+and syscall, while that's not really the focus of the test-case.
+
+Limit the scope of the test, by calling the functions once before starting
+to record.
+
+Also call "info record" after recording to make it clear how many
+instructions were recorded.
+
+On x86_64-linux, before this patch (but with info record added), we have:
+...
+$ grep "Log contains" gdb.log
+Log contains 750 instructions.
+Log contains 1218 instructions.
+...
+and with this patch we have:
+...
+$ grep "Log contains" gdb.log
+Log contains 24 instructions.
+Log contains 19 instructions.
+...
+
+Tested on x86_64-linux.
+
+Approved-By: Guinevere Larsen <guinevere@redhat.com>
+---
+ gdb/testsuite/gdb.reverse/time-reverse.c   | 12 ++++++++++++
+ gdb/testsuite/gdb.reverse/time-reverse.exp |  7 +++----
+ 2 files changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.reverse/time-reverse.c b/gdb/testsuite/gdb.reverse/time-reverse.c
+index c22ecd849d8..0ed52244a30 100644
+--- a/gdb/testsuite/gdb.reverse/time-reverse.c
++++ b/gdb/testsuite/gdb.reverse/time-reverse.c
+@@ -41,8 +41,20 @@ time_t time_global = -1;
+ int
+ main (void)
+ {
++  /* Call once before recording to resolve the PLT, if any.  This reduces the
++     amount of instructions that is recorded.  */
++  my_time (&time_global);
++
++  /* Reset back to initial value.  */
++  time_global = -1;
++
++  /* Start recording here.  */
+   marker1 ();
++
+   my_time (&time_global);
++
++  /* Stop recording here.  */
+   marker2 ();
++
+   return 0;
+ }
+diff --git a/gdb/testsuite/gdb.reverse/time-reverse.exp b/gdb/testsuite/gdb.reverse/time-reverse.exp
+index 91f9911c33a..b02245c6c77 100644
+--- a/gdb/testsuite/gdb.reverse/time-reverse.exp
++++ b/gdb/testsuite/gdb.reverse/time-reverse.exp
+@@ -38,7 +38,7 @@ proc test {mode} {
+ 	return
+     }
+ 
+-    runto_main
++    runto marker1
+ 
+     if [supports_process_record] {
+ 	# Activate process record/replay
+@@ -51,9 +51,8 @@ proc test {mode} {
+ 
+     gdb_continue_to_breakpoint "marker2" ".*$::srcfile:.*"
+ 
+-    gdb_test "break marker1" \
+-	"Breakpoint $::decimal at $::hex: file .*$::srcfile, line $::decimal.*" \
+-	"set breakpoint at marker1"
++    # Show how many instructions we've recorded.
++    gdb_test "info record" "Active record target: .*"
+ 
+     gdb_test "reverse-continue" ".*$::srcfile:$::decimal.*" "reverse to marker1"
+ 
+
+base-commit: 8764f9e601b4ef996d9b1d8eab16f8cfec3561c4
+-- 
+2.43.0
+

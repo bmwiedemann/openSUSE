@@ -14,62 +14,87 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1339862
 diff --git a/gdb/solib-svr4.c b/gdb/solib-svr4.c
 --- a/gdb/solib-svr4.c
 +++ b/gdb/solib-svr4.c
-@@ -1320,14 +1320,28 @@ svr4_read_so_list (svr4_info *info, CORE_ADDR lm, CORE_ADDR prev_lm,
+@@ -347,11 +347,13 @@ lm_addr_check (const solib &so, bfd *abfd)
+ 
+ struct svr4_so
+ {
+-  svr4_so (const char *name, lm_info_svr4_up lm_info)
+-    : name (name), lm_info (std::move (lm_info))
++  svr4_so (const char *name, lm_info_svr4_up lm_info, const char *orig_name = nullptr)
++    : name (name), original_name (orig_name == nullptr ? name : orig_name),
++    lm_info (std::move (lm_info))
+   {}
+ 
+   std::string name;
++  std::string original_name;
+   lm_info_svr4_up lm_info;
+ };
+ 
+@@ -1002,6 +1004,7 @@ so_list_from_svr4_sos (const std::vector<svr4_so> &sos)
+ 
+       newobj->so_name = so.name;
+       newobj->so_original_name = so.name;
++      newobj->so_original_name = so.original_name;
+       newobj->lm_info = std::make_unique<lm_info_svr4> (*so.lm_info);
+ 
+       dst.push_back (*newobj);
+@@ -1263,11 +1266,28 @@ svr4_read_so_list (svr4_info *info, CORE_ADDR lm, CORE_ADDR prev_lm,
+ 	  continue;
  	}
  
-       {
--	struct bfd_build_id *build_id;
-+	struct bfd_build_id *build_id = NULL;
++      /* Preserve original name since name may be changed below.  */
++      gdb::unique_xmalloc_ptr<char> original_name = make_unique_xstrdup (name.get ());
+ 	{
+-	  struct bfd_build_id *build_id;
++	  struct bfd_build_id *build_id = nullptr;
  
- 	strncpy (newobj->so_original_name, buffer.get (), SO_NAME_MAX_PATH_SIZE - 1);
- 	newobj->so_original_name[SO_NAME_MAX_PATH_SIZE - 1] = '\0';
- 	/* May get overwritten below.  */
- 	strcpy (newobj->so_name, newobj->so_original_name);
- 
--	build_id = build_id_addr_get (((lm_info_svr4 *) newobj->lm_info)->l_ld);
-+	/* In the case the main executable was found according to its build-id
-+	   (from a core file) prevent loading a different build of a library
-+	   with accidentally the same SO_NAME.
+-	  build_id = build_id_addr_get (li->l_ld);
+-	  if (build_id != NULL)
++	  /* In the case the main executable was found according to its build-id
++	     (from a core file) prevent loading a different build of a library
++	     with accidentally the same SO_NAME.
 +
-+	   It suppresses bogus backtraces (and prints "??" there instead) if
-+	   the on-disk files no longer match the running program version.
++	     It suppresses bogus backtraces (and prints "??" there instead) if
++	     the on-disk files no longer match the running program version.
++	     If the main executable was not loaded according to its build-id do
++	     not do any build-id checking of the libraries.  There may be missing
++	     build-ids dumped in the core file and we would map all the libraries
++	     to the only existing file loaded that time - the executable.  */
++	  if (current_program_space->symfile_object_file != NULL
++	      && (current_program_space->symfile_object_file->flags
++		  & OBJF_BUILD_ID_CORE_LOADED) != 0)
++	    build_id = build_id_addr_get (li->l_ld);
 +
-+	   If the main executable was not loaded according to its build-id do
-+	   not do any build-id checking of the libraries.  There may be missing
-+	   build-ids dumped in the core file and we would map all the libraries
-+	   to the only existing file loaded that time - the executable.  */
-+	if (current_program_space->symfile_object_file != NULL
-+	    && (current_program_space->symfile_object_file->flags
-+	         & OBJF_BUILD_ID_CORE_LOADED) != 0)
-+	  build_id = build_id_addr_get (li->l_ld);
- 	if (build_id != NULL)
- 	  {
- 	    char *name, *build_id_filename;
-@@ -1342,23 +1356,7 @@ svr4_read_so_list (svr4_info *info, CORE_ADDR lm, CORE_ADDR prev_lm,
- 		xfree (name);
- 	      }
- 	    else
--	      {
--		debug_print_missing (newobj->so_name, build_id_filename);
--
--		/* In the case the main executable was found according to
--		   its build-id (from a core file) prevent loading
--		   a different build of a library with accidentally the
--		   same SO_NAME.
--
--		   It suppresses bogus backtraces (and prints "??" there
--		   instead) if the on-disk files no longer match the
--		   running program version.  */
--
--		if (current_program_space->symfile_object_file != NULL
--		    && (current_program_space->symfile_object_file->flags
--			& OBJF_BUILD_ID_CORE_LOADED) != 0)
--		  newobj->so_name[0] = 0;
--	      }
-+	      debug_print_missing (newobj->so_name, build_id_filename);
++
++	  if (build_id != nullptr)
+ 	    {
+ 	      char *bid_name, *build_id_filename;
  
- 	    xfree (build_id_filename);
- 	    xfree (build_id);
+@@ -1280,23 +1300,7 @@ svr4_read_so_list (svr4_info *info, CORE_ADDR lm, CORE_ADDR prev_lm,
+ 		  xfree (bid_name);
+ 		}
+ 	      else
+-		{
+-		  debug_print_missing (name.get (), build_id_filename);
+-
+-		  /* In the case the main executable was found according to
+-		     its build-id (from a core file) prevent loading
+-		     a different build of a library with accidentally the
+-		     same SO_NAME.
+-
+-		     It suppresses bogus backtraces (and prints "??" there
+-		     instead) if the on-disk files no longer match the
+-		     running program version.  */
+-
+-		  if (current_program_space->symfile_object_file != NULL
+-		      && (current_program_space->symfile_object_file->flags
+-			  & OBJF_BUILD_ID_CORE_LOADED) != 0)
+-		    name = make_unique_xstrdup ("");
+-		}
++		debug_print_missing (name.get (), build_id_filename);
+ 
+ 	      xfree (build_id_filename);
+ 	      xfree (build_id);
 diff --git a/gdb/testsuite/gdb.base/gcore-buildid-exec-but-not-solib-lib.c b/gdb/testsuite/gdb.base/gcore-buildid-exec-but-not-solib-lib.c
 new file mode 100644
 --- /dev/null
@@ -130,7 +155,7 @@ diff --git a/gdb/testsuite/gdb.base/gcore-buildid-exec-but-not-solib.exp b/gdb/t
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.base/gcore-buildid-exec-but-not-solib.exp
-@@ -0,0 +1,105 @@
+@@ -0,0 +1,104 @@
 +# Copyright 2016 Free Software Foundation, Inc.
 +
 +# This program is free software; you can redistribute it and/or modify
@@ -146,9 +171,7 @@ new file mode 100644
 +# You should have received a copy of the GNU General Public License
 +# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 +
-+if {[skip_shlib_tests]} {
-+    return 0
-+}
++require allow_shlib_tests
 +
 +set testfile "gcore-buildid-exec-but-not-solib"
 +set srcmainfile ${testfile}-main.c
@@ -226,7 +249,8 @@ new file mode 100644
 +remote_exec build "ln -s /lib64     ${debugdir}/"
 +# /usr is not needed, all the libs are in /lib64: libm.so.6 libc.so.6 ld-linux-x86-64.so.2
 +
-+gdb_test "set solib-absolute-prefix $debugdir"
++gdb_test_no_output "set solib-absolute-prefix $debugdir" \
++    "set solib-absolute-prefix"
 +
 +gdb_test_no_output "set debug-file-directory $debugdir" "set debug-file-directory"
 +

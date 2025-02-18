@@ -1,0 +1,25 @@
+From 388654c78086e5240fec47260e47d1deff4af43d Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 6 Feb 2025 13:27:57 +0100
+Subject: [PATCH 43/46] fixup-gdb-6.5-gcore-buffer-limit-test.patch
+
+---
+ gdb/testsuite/gdb.base/gcore-excessive-memory.exp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.base/gcore-excessive-memory.exp b/gdb/testsuite/gdb.base/gcore-excessive-memory.exp
+index 31cf88ce78a..1ef595923ad 100644
+--- a/gdb/testsuite/gdb.base/gcore-excessive-memory.exp
++++ b/gdb/testsuite/gdb.base/gcore-excessive-memory.exp
+@@ -14,6 +14,8 @@
+ # along with this program; if not, write to the Free Software
+ # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ 
++require can_spawn_for_attach
++
+ if {[use_gdb_stub]} {
+     untested "skipping test because of use_gdb_stub"
+     return -1
+-- 
+2.43.0
+

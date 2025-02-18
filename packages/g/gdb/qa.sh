@@ -139,13 +139,20 @@ report_sum ()
 
 kfail=(
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=32608
+    "FAIL: gdb.threads/step-over-thread-exit-while-stop-all-threads.exp: displaced-stepping=auto: target-non-stop=on: iter .*: continue"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31721
+    "FAIL: gdb.base/list-dot-nodebug.exp: debug=none: print before start"
+    "FAIL: gdb.base/list-dot-nodebug.exp: debug=some: print before start"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26971
     "FAIL: gdb.arch/amd64-init-x87-values.exp: check_x87_regs_around_init: check post FLD1 value of .fop"
     "FAIL: gdb.arch/amd64-init-x87-values.exp: check_x87_regs_around_init: check post FLD1 value of .fioff"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=24845
-    "FAIL: gdb.base/step-over-syscall.exp: clone: displaced=off: single step over clone"
-    "FAIL: gdb.base/step-over-syscall.exp: clone: displaced=off: continue to marker \(clone\)"
+    "FAIL: gdb.base/step-over-syscall.exp: clone: displaced=(off|on): single step over clone"
+    "FAIL: gdb.base/step-over-syscall.exp: clone: displaced=(off|on): continue to marker \(clone\)"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=19436#c1
     "FAIL: gdb.cp/no-dmgl-verbose.exp: setting breakpoint at 'f\(std::string\)'"
@@ -351,6 +358,12 @@ kfail=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=32439
     "FAIL: gdb.base/step-over-syscall.exp: (fork|vfork): displaced=on: check_pc_after_cross_syscall: single step over (fork|vfork) final pc"
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=32619
+    "FAIL: gdb.dap/eof.exp: exceptions in log file"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=32167
+    "FAIL: gdb.base/bp-cmds-continue-ctrl-c.exp: (attach|run): stop with control-c"
+
 ) # kfail
 
 kfail_sle12=(
@@ -420,6 +433,7 @@ kfail_sle12=(
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step back into foo"
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step into bar"
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step into foo"
+    "FAIL: gdb.base/list-dot-nodebug.exp: debug=none: runto: run to bar"
 
     # Fails on both i586 and s390x/-m31 for SLE-12-SP3, but does not reproduce
     # on s390x/-m31 for SLE-12-SP5 with trunk.
@@ -433,6 +447,13 @@ kfail_sle12=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30531
     "FAIL: gdb.threads/clone-thread_db.exp: continue to clone_fn \(the program exited\)"
     "FAIL: gdb.threads/clone-thread_db.exp: continue to end \(the program is no longer running\)"
+
+    # FAILs due to gcc 4.8.5 DW_TAG_lexical_block oddity.
+    "FAIL: gdb.python/py-type.exp: lang_cpp: test_fields: python print \(gdb.lookup_type \('main\(\)::IntType'\)\)"
+    "FAIL: gdb.python/py-type.exp: lang_cpp: test_fields: python print \(gdb.lookup_type \('main\(\)::IntType'\).target \(\)\)"
+
+    # SLE-12, aarch64, ppc64le, g++ missing.
+    "FAIL: gdb.dwarf2/missing-type-name-for-templates.exp:"
 
 ) # kfail_sle12
 
@@ -528,8 +549,8 @@ kfail_factory=(
 kfail_aarch64=(
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29405
-    "FAIL: gdb.base/step-over-syscall.exp: (fork|vfork): displaced=(on|off): pc after stepi matches insn addr after syscall"
-    "FAIL: gdb.base/step-over-syscall.exp: (fork|vfork): displaced=(on|off): check_pc_after_cross_syscall: single step over fork final pc"
+    "FAIL: gdb.base/step-over-syscall.exp: (clone|fork|vfork): displaced=(on|off): pc after stepi matches insn addr after syscall"
+    "FAIL: gdb.base/step-over-syscall.exp: (clone|fork|vfork): displaced=(on|off): check_pc_after_cross_syscall: single step over (clone|fork|vfork) final pc"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29423
     "FAIL: gdb.base/watchpoint-unaligned.exp: continue \(timeout\)"
@@ -630,6 +651,11 @@ kfail_powerpc64le=(
     "FAIL: gdb.python/py-breakpoint.exp: test_watchpoints: Test watchpoint write \(the program exited\)"
     "FAIL: gdb.python/py-breakpoint.exp: test_bkpt_internal: Test watchpoint write \(the program exited\)"
     "FAIL: gdb.python/py-breakpoint.exp: test_bkpt_eval_funcs: Test watchpoint write \(the program exited\)"
+    "FAIL: gdb.base/memops-watchpoint.exp: continue until memcpy watchpoint hits"
+    "FAIL: gdb.base/memops-watchpoint.exp: continue until memmove watchpoint hits"
+    "FAIL: gdb.base/memops-watchpoint.exp: continue until memset watchpoint hits"
+    "FAIL: gdb.base/watchpoint-running.exp: all-stop: hardware: watchpoint hit"
+    "FAIL: gdb.base/watchpoint-running.exp: non-stop: hardware: watchpoint hit"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=31004
     "FAIL: gdb.base/run-control-while-bg-execution.exp: action1=.*: action2=run: run"
@@ -741,6 +767,9 @@ kfail_i586=(
     "FAIL: gdb.base/valgrind-disp-step.exp:"
     "FAIL: gdb.base/valgrind-infcall-2.exp:"
     "FAIL: gdb.base/valgrind-infcall.exp:"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=32678
+    "FAIL: gdb.reverse/time-reverse.exp: mode=c:"
 )
 
 kfail_arm=(
@@ -858,6 +887,8 @@ case $n in
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=32446
 	    "linux-nat.c:[0-9]*: internal-error: mark_lwp_dead: Assertion .lp->status == 0. failed\."
 
+	    # https://sourceware.org/bugzilla/show_bug.cgi?id=32712
+	    "thread\.c:[0-9]*: internal-error: set_thread_options: Assertion .!this->executing \(\). failed\."
 	)
 
 	kfail_re=$(join "|" "${kfail[@]}")
@@ -869,8 +900,8 @@ case $n in
     4)
 	for id in SLE-12 \
 		      SLE-15 \
+		      16.0 \
 		      SLFO \
-		      openSUSE_Leap_15.5 \
 		      openSUSE_Leap_15.6 \
 		      openSUSE_Factory; \
 	    do
@@ -883,11 +914,11 @@ case $n in
 
 			config=$id.$arch
 			case $config in
-			    SLE-15.i586|SLE-12.i586|SLFO.i586)
+			    SLE-15.i586|SLE-12.i586|SLFO.i586|16.0.i586)
 				# No such config.
 				continue
 				;;
-			    SLFO.ppc64le|openSUSE_Factory.ppc64le|*.s390x)
+			    SLFO.ppc64le|16.0.ppc64le|openSUSE_Factory.ppc64le|*.s390x)
 				# Not cleaned up yet.
 				continue
 				;;
@@ -986,7 +1017,7 @@ case $n in
 				SLE-12)
 				    kfail+=("${kfail_sle12[@]}")
 				    ;;
-				SLFO|openSUSE_Factory)
+				SLFO|openSUSE_Factory|16.0)
 				    kfail+=("${kfail_factory[@]}")
 				    ;;
 				*)

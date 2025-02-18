@@ -1,0 +1,97 @@
+From 6775ce3f5e936a50d883abfb60cafa80f8b76cf6 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 10 Dec 2024 11:53:31 +0100
+Subject: [PATCH 19/46] Fix gdb.dap/step-out.exp on s390x
+
+With test-case gdb.dap/step-out.exp on s390x-linux, I get:
+...
+>>> {"seq": 7, "type": "request", "command": "scopes", "arguments": {"frameId": 0}}
+Content-Length: 569^M
+^M
+{"request_seq": 7, "type": "response", "command": "scopes", "body": {"scopes": [{"variablesReference": 1, "name": "Locals", "presentationHint": "locals", "expensive": false, "namedVariables": 1, "line": 35, "source": {"name": "step-out.c", "path": "/home/vries/gdb/src/gdb/testsuite/gdb.dap/step-out.c"}}, {"variablesReference": 2, "name": "Registers", "presentationHint": "registers", "expensive": false, "namedVariables": 114, "line": 35, "source": {"name": "step-out.c", "path": "/home/vries/gdb/src/gdb/testsuite/gdb.dap/step-out.c"}}]}, "success": true, "seq": 21}PASS: gdb.dap/step-out.exp: get scopes success
+FAIL: gdb.dap/step-out.exp: three scopes
+...
+
+The problem is that the test-case expects three scopes:
+...
+lassign $scopes scope reg_scope return_scope
+...
+but the return_scope is missing because this doesn't work:
+...
+$ gdb -q -batch outputs/gdb.dap/step-out/step-out \
+    -ex "b function_breakpoint_here" \
+    -ex run \
+    -ex finish
+  ...
+Value returned has type: struct result. Cannot determine contents
+...
+
+This is likely caused by a problem in gdb, but there's nothing wrong the DAP
+support.
+
+Fix this by:
+- allowing two scopes, and
+- declaring the tests of return_scope unsupported.
+
+Tested on s390x-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/gdb.dap/step-out.exp | 42 ++++++++++++++++--------------
+ 1 file changed, 23 insertions(+), 19 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.dap/step-out.exp b/gdb/testsuite/gdb.dap/step-out.exp
+index 757f4ebdaca..491eaf71197 100644
+--- a/gdb/testsuite/gdb.dap/step-out.exp
++++ b/gdb/testsuite/gdb.dap/step-out.exp
+@@ -59,24 +59,28 @@ set scopes [dap_check_request_and_response "get scopes" scopes \
+ 		[format {o frameId [i %d]} $frame_id]]
+ set scopes [dict get [lindex $scopes 0] body scopes]
+ 
+-gdb_assert {[llength $scopes] == 2} "two scopes"
+-
+-lassign $scopes scope reg_scope
+-gdb_assert {[dict get $scope name] == "Locals"} "scope is locals"
+-gdb_assert {[dict get $scope presentationHint] == "locals"} \
+-    "locals presentation hint"
+-gdb_assert {[dict get $scope namedVariables] == 2} "two vars in scope"
+-
+-set num [dict get $scope variablesReference]
+-set refs [lindex [dap_check_request_and_response "fetch arguments" \
+-		      "variables" \
+-		      [format {o variablesReference [i %d]} $num]] \
+-	      0]
+-set varlist [lindex [dict get $refs body variables] 0]
+-
+-gdb_assert {[dict get $varlist variablesReference] > 0} \
+-    "variable has children"
+-gdb_assert {[dict get $varlist name] == "(return)"} \
+-    "variable is return value"
++gdb_assert {[llength $scopes] == 2 || [llength $scopes] == 3} "two or three scopes"
++lassign $scopes scope reg_scope return_scope
++
++set test "scope is locals"
++if { $return_scope == "" } {
++    unsupported $test
++} else {
++    gdb_assert {[dict get $scope presentationHint] == "locals"} \
++	"locals presentation hint"
++    gdb_assert {[dict get $scope namedVariables] == 2} "two vars in scope"
++
++    set num [dict get $scope variablesReference]
++    set refs [lindex [dap_check_request_and_response "fetch arguments" \
++			  "variables" \
++			  [format {o variablesReference [i %d]} $num]] \
++		  0]
++    set varlist [lindex [dict get $refs body variables] 0]
++
++    gdb_assert {[dict get $varlist variablesReference] > 0} \
++	"variable has children"
++    gdb_assert {[dict get $varlist name] == "(return)"} \
++	"variable is return value"
++}
+ 
+ dap_shutdown
+-- 
+2.43.0
+

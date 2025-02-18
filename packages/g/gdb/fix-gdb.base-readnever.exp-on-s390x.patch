@@ -1,0 +1,187 @@
+From 1d761604714b32883d2bbc4a5f274fc3e2c668fe Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 9 Jan 2025 14:32:19 +0100
+Subject: [PATCH 22/46] Fix gdb.base/readnever.exp on s390x
+
+On s390x-linux, I run into:
+...
+ (gdb) backtrace
+ #0  0x000000000100061a in fun_three ()
+ #1  0x000000000100067a in fun_two ()
+ #2  0x000003fffdfa9470 in ?? ()
+ Backtrace stopped: frame did not save the PC
+ (gdb) FAIL: gdb.base/readnever.exp: backtrace
+...
+
+This is really due to a problem handling the fun_three frame.  When generating
+a backtrace from fun_two, everying looks ok:
+...
+ $ gdb -readnever -q -batch outputs/gdb.base/readnever/readnever \
+     -ex "b fun_two" \
+     -ex run \
+     -ex bt
+   ...
+ #0  0x0000000001000650 in fun_two ()
+ #1  0x00000000010006b6 in fun_one ()
+ #2  0x00000000010006ee in main ()
+...
+
+For reference the frame info with debug info (without -readnever) looks like this:
+...
+$ gdb -q -batch outputs/gdb.base/readnever/readnever \
+    -ex "b fun_three" \
+    -ex run \
+    -ex "info frame"
+  ...
+Stack level 0, frame at 0x3fffffff140:
+ pc = 0x1000632 in fun_three (readnever.c:20); saved pc = 0x100067a
+ called by frame at 0x3fffffff1f0
+ source language c.
+ Arglist at 0x3fffffff140, args: a=10, b=49 '1', c=0x3fffffff29c
+ Locals at 0x3fffffff140, Previous frame's sp in v0
+...
+
+But with -readnever, like this instead:
+...
+Stack level 0, frame at 0x0:
+ pc = 0x100061a in fun_three; saved pc = 0x100067a
+ called by frame at 0x3fffffff140
+ Arglist at 0xffffffffffffffff, args:
+ Locals at 0xffffffffffffffff, Previous frame's sp in r15
+...
+
+An obvious difference is the "Previous frame's sp in" v0 vs. r15.
+
+Looking at the code:
+...
+0000000001000608 <fun_three>:
+ 1000608:	b3 c1 00 2b       	ldgr	%f2,%r11
+ 100060c:	b3 c1 00 0f       	ldgr	%f0,%r15
+ 1000610:	e3 f0 ff 50 ff 71 	lay	%r15,-176(%r15)
+ 1000616:	b9 04 00 bf       	lgr	%r11,%r15
+...
+it becomes clear what is going on.  This is an unusual prologue.
+
+Rather than saving r11 (frame pointer) and r15 (stack pointer) to stack,
+instead they're saved into call-clobbered floating point registers.
+
+[ For reference, this is the prologue of fun_two:
+...
+0000000001000640 <fun_two>:
+ 1000640:	eb bf f0 58 00 24 	stmg	%r11,%r15,88(%r15)
+ 1000646:	e3 f0 ff 50 ff 71 	lay	%r15,-176(%r15)
+ 100064c:	b9 04 00 bf       	lgr	%r11,%r15
+...
+where the first instruction stores registers r11 to r15 to stack. ]
+
+Gdb fails to properly analyze the prologue, which causes the problems getting
+the frame info.
+
+Fix this by:
+- adding handling of the ldgr insn [1] in s390_analyze_prologue, and
+- recognizing the insn as saving a register in
+  s390_prologue_frame_unwind_cache.
+
+This gets us instead:
+...
+Stack level 0, frame at 0x0:
+ pc = 0x100061a in fun_three; saved pc = 0x100067a
+ called by frame at 0x3fffffff1f0
+ Arglist at 0xffffffffffffffff, args:
+ Locals at 0xffffffffffffffff, Previous frame's sp in f0
+...
+and:
+...
+ (gdb) backtrace^M
+ #0  0x000000000100061a in fun_three ()^M
+ #1  0x000000000100067a in fun_two ()^M
+ #2  0x00000000010006b6 in fun_one ()^M
+ #3  0x00000000010006ee in main ()^M
+ (gdb) PASS: gdb.base/readnever.exp: backtrace
+...
+
+Tested on s390x-linux.
+
+PR tdep/32417
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32417
+
+Approved-By: Andreas Arnez <arnez@linux.ibm.com>
+
+[1] https://www.ibm.com/support/pages/sites/default/files/2021-05/SA22-7871-10.pdf
+---
+ gdb/s390-tdep.c | 39 +++++++++++++++++++++++++++++++++++++++
+ gdb/s390-tdep.h |  1 +
+ 2 files changed, 40 insertions(+)
+
+diff --git a/gdb/s390-tdep.c b/gdb/s390-tdep.c
+index 4e7dce70c12..2609b42f797 100644
+--- a/gdb/s390-tdep.c
++++ b/gdb/s390-tdep.c
+@@ -855,6 +855,11 @@ s390_analyze_prologue (struct gdbarch *gdbarch,
+ 	       || is_rre (insn64, op_lgr, &r1, &r2))
+ 	data->gpr[r1] = data->gpr[r2];
+ 
++      /* LDGR r1, r2 --- load from register to floating-point register
++	 (64-bit version).  */
++      else if (is_rre (insn64, op_ldgr, &r1, &r2))
++	data->fpr[r1] = data->gpr[r2];
++
+       /* L r1, d2(x2, b2) --- load.  */
+       /* LY r1, d2(x2, b2) --- load (long-displacement version).  */
+       /* LG r1, d2(x2, b2) --- load (64-bit version).  */
+@@ -2542,6 +2547,40 @@ s390_prologue_frame_unwind_cache (const frame_info_ptr &this_frame,
+ 	&& data.fpr_slot[i] != 0)
+       info->saved_regs[S390_F0_REGNUM + i].set_addr (cfa - data.fpr_slot[i]);
+ 
++  /* Handle this type of prologue:
++       ldgr    %f2,%r11
++       ldgr    %f0,%r15
++     where call-clobbered floating point registers are used as register save
++     slots.  */
++  for (i = 0; i < S390_NUM_FPRS; i++)
++    {
++      int fpr = S390_F0_REGNUM + i;
++
++      /* Check that fpr is a call-clobbered register.  */
++      if (s390_register_call_saved (gdbarch, fpr))
++	continue;
++
++      /* Check that fpr contains the value of a register at function
++	 entry.  */
++      if (data.fpr[i].kind != pvk_register)
++	continue;
++
++      int entry_val_reg = data.fpr[i].reg;
++
++      /* Check that entry_val_reg is a call-saved register.  */
++      if (!s390_register_call_saved (gdbarch, entry_val_reg))
++	continue;
++
++      /* In the prologue, we've copied:
++	 - the value of a call-saved register (entry_val_reg) at function
++	   entry, to
++	 - a call-clobbered floating point register (fpr).
++
++	 Heuristic: assume that makes the floating point register a register
++	 save slot, leaving the value constant throughout the function.  */
++      info->saved_regs[entry_val_reg].set_realreg (fpr);
++    }
++
+   /* Function return will set PC to %r14.  */
+   info->saved_regs[S390_PSWA_REGNUM] = info->saved_regs[S390_RETADDR_REGNUM];
+ 
+diff --git a/gdb/s390-tdep.h b/gdb/s390-tdep.h
+index 10f775f468f..b098d735a13 100644
+--- a/gdb/s390-tdep.h
++++ b/gdb/s390-tdep.h
+@@ -82,6 +82,7 @@ enum
+   op1_lgfi = 0xc0,   op2_lgfi = 0x01,
+   op_lr    = 0x18,
+   op_lgr   = 0xb904,
++  op_ldgr  = 0xb3c1,
+   op_l     = 0x58,
+   op1_ly   = 0xe3,   op2_ly   = 0x58,
+   op1_lg   = 0xe3,   op2_lg   = 0x04,
+-- 
+2.43.0
+

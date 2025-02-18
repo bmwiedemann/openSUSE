@@ -1,0 +1,62 @@
+From f74652042d7330cd5db2fe1c2f6f4e9cd23f2d55 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 4 Feb 2025 14:06:20 +0100
+Subject: [PATCH 44/46] [gdb/testsuite] Fix gdb.ada/big_packed_array.exp on
+ s390x-linux
+
+When running test-case gdb.ada/big_packed_array.exp on s390x-linux, I run
+into:
+...
+(gdb) print bad^M
+$2 = (0 => 0 <repeats 24 times>, 1)^M
+(gdb) FAIL: gdb.ada/big_packed_array.exp: scenario=minimal: print bad
+...
+
+This is with gcc 7.5.0, and this xfail should trigger:
+...
+           if { $have_xfail && [string is integer $last] \
+                   && [expr ($last & 0xf) == 0] } {
+                # gcc/101643
+                setup_xfail *-*-*
+            }
+...
+but it doesn't because $last is '1'.
+
+Fix this by using 0xf0 as mask for big endian.
+
+Tested on s390x-linux.
+---
+ gdb/testsuite/gdb.ada/big_packed_array.exp | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.ada/big_packed_array.exp b/gdb/testsuite/gdb.ada/big_packed_array.exp
+index 1ba2c4853c8..1a10ea1d2a5 100644
+--- a/gdb/testsuite/gdb.ada/big_packed_array.exp
++++ b/gdb/testsuite/gdb.ada/big_packed_array.exp
+@@ -21,6 +21,8 @@ standard_ada_testfile foo_ra24_010
+ 
+ set old_gcc [expr [test_compiler_info {gcc-[0-8]-*}]]
+ 
++set endian [target_endianness]
++
+ foreach_with_prefix scenario {all minimal} {
+     set flags [list debug additional_flags=-fgnat-encodings=$scenario]
+ 
+@@ -54,8 +56,13 @@ foreach_with_prefix scenario {all minimal} {
+        }
+        -re -wrap $re_xfail2 {
+ 	   set last $expect_out(1,string)
++	   if { $endian == "little" } {
++	       set mask 0x0f
++	   } else {
++	       set mask 0xf0
++	   }
+            if { $have_xfail && [string is integer $last] \
+-		    && [expr ($last & 0xf) == 0] } {
++		    && [expr ($last & $mask) == 0] } {
+                # gcc/101643
+                setup_xfail *-*-*
+            }
+-- 
+2.43.0
+

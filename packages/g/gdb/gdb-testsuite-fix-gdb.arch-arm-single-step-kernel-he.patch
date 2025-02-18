@@ -1,0 +1,79 @@
+From eb20b0f725b114eb117093971cf0146113517e6b Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 16 Aug 2024 14:22:46 +0200
+Subject: [PATCH 33/46] [gdb/testsuite] Fix
+ gdb.arch/arm-single-step-kernel-helper.exp
+
+On arm-linux I run into:
+...
+(gdb) p *kernel_user_helper_version^M
+Cannot access memory at address 0xffff0ffc^M
+(gdb) FAIL: gdb.arch/arm-single-step-kernel-helper.exp: check kernel helper version
+...
+
+What the test-case is trying to do, is to access a special address in the arm
+linux kernel [1] using ptrace, which doesn't seem to work.
+
+This is with kernel version 6.1.55.  Perhaps this used to work, but the kernel
+was modified to be more strict with respect to access to this special address.
+
+Fix this by making the inferior access that special address instead.
+
+Tested on arm-linux.
+
+Approved-By: Luis Machado <luis.machado@arm.com>
+
+PR testsuite/32070
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32070
+
+[1] https://www.kernel.org/doc/Documentation/arm/kernel_user_helpers.txt
+---
+ gdb/testsuite/gdb.arch/arm-single-step-kernel-helper.c   | 5 ++++-
+ gdb/testsuite/gdb.arch/arm-single-step-kernel-helper.exp | 5 ++++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.arch/arm-single-step-kernel-helper.c b/gdb/testsuite/gdb.arch/arm-single-step-kernel-helper.c
+index 393004e623a..9b5e137992d 100644
+--- a/gdb/testsuite/gdb.arch/arm-single-step-kernel-helper.c
++++ b/gdb/testsuite/gdb.arch/arm-single-step-kernel-helper.c
+@@ -15,7 +15,8 @@
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+ 
+-static int *kernel_user_helper_version = (int *) 0xffff0ffc;
++static int *kernel_user_helper_version_ptr = (int *) 0xffff0ffc;
++static int kernel_user_helper_version;
+ 
+ typedef void * (kernel_user_func_t)(void);
+ #define kernel_user_get_tls (*(kernel_user_func_t *) 0xffff0fe0)
+@@ -25,6 +26,8 @@ main (void)
+ {
+   int i;
+ 
++  kernel_user_helper_version = *kernel_user_helper_version_ptr;
++
+   for (i = 0; i < 8; i++)
+     kernel_user_get_tls ();
+ }
+diff --git a/gdb/testsuite/gdb.arch/arm-single-step-kernel-helper.exp b/gdb/testsuite/gdb.arch/arm-single-step-kernel-helper.exp
+index 27be5d56883..788bc863799 100644
+--- a/gdb/testsuite/gdb.arch/arm-single-step-kernel-helper.exp
++++ b/gdb/testsuite/gdb.arch/arm-single-step-kernel-helper.exp
+@@ -26,10 +26,13 @@ if { ![runto_main] } {
+     return -1
+ }
+ 
++# Initialize kernel_user_helper_version.
++gdb_test "next" "for .*"
++
+ # Check kernel helpers are supported or not.
+ 
+ set kernel_helper_supported 0
+-gdb_test_multiple "p *kernel_user_helper_version" \
++gdb_test_multiple "p kernel_user_helper_version" \
+     "check kernel helper version" {
+ 	-re " = ($decimal)\r\n$gdb_prompt $" {
+ 	    if { $expect_out(1,string) >= 1 } {
+-- 
+2.43.0
+

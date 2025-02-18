@@ -1,0 +1,50 @@
+From d9da3935f1be9c0d008764d6fff4b5dc277a5cd7 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 30 Jul 2024 21:50:17 +0200
+Subject: [PATCH 04/46] [gdb/testsuite] Fix regexp in gdb.ada/mi_var_access.exp
+ some more
+
+When running test-case gdb.ada/mi_var_access.exp on arm-linux (debian trixie),
+I run into:
+...
+Expecting: ^(-var-create A_String_Access \* A_String_Access[
+]+)?((\^done,name="A_String_Access",numchild="[0-9]+",.*|\^error,msg="Value out of range.".*)[
+]+[(]gdb[)]
+[ ]*)
+-var-create A_String_Access * A_String_Access
+^error,msg="Cannot access memory at address 0x4"
+(gdb)
+FAIL: gdb.ada/mi_var_access.exp: Create varobj (unexpected output)
+...
+
+This is similar to the problem fixed by commit c5a72a8d1c3 ("[gdb/testsuite]
+Fix regexp in gdb.ada/mi_var_access.exp").
+
+The problem in both cases is that we're printing an uninitialized variable,
+and consequently we can run into various error messages during printing.
+
+Fix this as in the other commit, by accepting the error message.
+
+Tested on arm-linux.
+---
+ gdb/testsuite/gdb.ada/mi_var_access.exp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.ada/mi_var_access.exp b/gdb/testsuite/gdb.ada/mi_var_access.exp
+index b71c8f32151..e797a1576cb 100644
+--- a/gdb/testsuite/gdb.ada/mi_var_access.exp
++++ b/gdb/testsuite/gdb.ada/mi_var_access.exp
+@@ -42,8 +42,9 @@ mi_continue_to_line \
+ # to match possible values.
+ set re_ok "\\^done,name=\"A_String_Access\",numchild=\"$decimal\",.*"
+ set re_error "\\^error,msg=\"Value out of range\.\".*"
++set re_error2 "\\^error,msg=\"Cannot access memory at address $hex\""
+ mi_gdb_test "-var-create A_String_Access * A_String_Access" \
+-    "($re_ok|$re_error)" \
++    "($re_ok|$re_error|$re_error2)" \
+     "Create varobj"
+ 
+ set bp_location [gdb_get_line_number "STOP2" ${testdir}/mi_access.adb]
+-- 
+2.43.0
+

@@ -1,0 +1,60 @@
+From 3048a9807737063118adfd0addbcf7218a5d8681 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 4 Feb 2025 10:34:39 +0100
+Subject: [PATCH 37/46] [gdb/testsuite] Fix gdb.base/list-dot-nodebug.exp on
+ openSUSE
+
+On openSUSE Leap 15.6 with test-case gdb.base/list-dot-nodebug.exp I run into:
+...
+(gdb) list .^M
+warning: 1      ../sysdeps/x86_64/crtn.S: No such file or directory^M
+(gdb) FAIL: $exp: debug=none: print before start
+...
+
+The intent of the debug=none case is to generate an executable with no debug
+info.  However, we have quite a few CUs with debug info:
+...
+$ readelf -wi outputs/gdb.base/list-dot-nodebug/list-dot-nodebug-none \
+    | egrep -c " @ "
+431
+...
+
+This is because this code:
+...
+  gdb_gnu_strip_debug $executable no-debuglink
+...
+uses $executable, and the variable is set here:
+...
+	set executable ${testfile}-none
+...
+which sets it to "list-dot-nodebug-none" and consequently
+gdb_gnu_strip_debug cannot find it.
+
+Fix this by using "[standard_output_file $executable]" instead.
+
+Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR testsuite/31721
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31721
+---
+ gdb/testsuite/gdb.base/list-dot-nodebug.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/list-dot-nodebug.exp b/gdb/testsuite/gdb.base/list-dot-nodebug.exp
+index b7359be1a45..107669de04d 100644
+--- a/gdb/testsuite/gdb.base/list-dot-nodebug.exp
++++ b/gdb/testsuite/gdb.base/list-dot-nodebug.exp
+@@ -55,7 +55,7 @@ foreach_with_prefix debug {"none" "some"} {
+ 
+ 	# Stripping is a backup in case the system has static libc debuginfo.
+ 	# We can continue the test even if it fails.
+-	gdb_gnu_strip_debug $executable no-debuglink
++	gdb_gnu_strip_debug [standard_output_file $executable] no-debuglink
+ 
+ 	clean_restart ${executable}
+ 
+-- 
+2.43.0
+

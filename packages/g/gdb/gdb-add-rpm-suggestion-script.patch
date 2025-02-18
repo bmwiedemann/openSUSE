@@ -1,0 +1,180 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Andrew Burgess <aburgess@redhat.com>
+Date: Thu, 7 Mar 2024 15:14:23 +0000
+Subject: gdb-add-rpm-suggestion-script.patch
+
+;; Not a backport.  Add a new script which hooks into GDB and suggests
+;; RPMs to install when GDB finds an objfile with no debug info.
+
+gdb: add script which will suggest debuginfo RPMs to install
+
+This script hooks into GDB's missing debug info Python API and
+suggests debuginfo RPMs to install.
+
+diff --git a/gdb/data-directory/Makefile.in b/gdb/data-directory/Makefile.in
+--- a/gdb/data-directory/Makefile.in
++++ b/gdb/data-directory/Makefile.in
+@@ -89,6 +89,7 @@ PYTHON_FILE_LIST = \
+ 	gdb/command/missing_debug.py \
+ 	gdb/command/pretty_printers.py \
+ 	gdb/command/prompt.py \
++	gdb/command/rpm-suggestions.py \
+ 	gdb/command/type_printers.py \
+ 	gdb/command/unwinders.py \
+ 	gdb/command/xmethods.py \
+diff --git a/gdb/python/lib/gdb/command/rpm-suggestions.py b/gdb/python/lib/gdb/command/rpm-suggestions.py
+new file mode 100644
+--- /dev/null
++++ b/gdb/python/lib/gdb/command/rpm-suggestions.py
+@@ -0,0 +1,134 @@
++# Copyright 2023 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++import sys
++import gdb
++import gdb.missing_debug
++try:
++    import rpm
++except ModuleNotFoundError:
++    # The "RPM suggestions" mechanism will not work without the (python)
++    # rpm module.  Inform the user of this, but wait to do so until
++    # just prior to printing the GDB prompt.  If we do it right away,
++    # the message typically appears before the version and copyright
++    # info, which is easily missed by many users.  Additionally, it
++    # seems that several other packages which parse GDB version info
++    # are confused by an early error message regarding a missing
++    # python3-rpm package, so waiting to print the error allows those
++    # applications to work as they used to.
++    def before_prompt():
++        print(
++            ("\nUnable to load the Python 'rpm' module.  Lack of this module disables\n"
++             "the RPM suggestions mechanism which recommends shell commands for\n"
++             "installing missing debuginfo packages.  To enable this functionality,\n"
++             "please install the python3-rpm package."),
++            file=sys.stderr
++        )
++        gdb.events.before_prompt.disconnect(before_prompt)
++
++    gdb.events.before_prompt.connect(before_prompt)
++else:
++    # Track all the RPMs suggested during a single debug session so we
++    # don't suggest the same RPM twice.  This is only cleared when the
++    # main executable is changed.
++    __missing_rpms = {}
++
++    # Track any missing RPMs that have been discovered since the last time
++    # the prompt was displayed.  RPMs in here are also present in the
++    # __MISSING_RPMS dictionary, but this dictionary is cleared each time
++    # the prompt is shown.
++    __suggest_rpms = {}
++
++
++    # Lookup RPMs that might provide the debug information for FILENAME,
++    # which is a string containing the path to an object file GDB could
++    # not find any debug information for.
++    #
++    # If a possible RPM is found then this is added to the globals
++    # __MISSING_RPMS and __SUGGEST_RPMS, which are used elsewhere in this
++    # script.
++    def find_suggestions(filename):
++        ts = rpm.TransactionSet()
++
++        mi = ts.dbMatch(rpm.RPMDBI_BASENAMES, filename)
++        for h in mi:
++            # Build the debuginfo package name.
++            obj = h.format("%{name}-debuginfo-%{version}-%{release}.%{arch}")
++
++            # Check to see if the package is installed.
++            mi2 = ts.dbMatch(rpm.RPMDBI_LABEL, str(obj))
++            if len(mi2) > 0:
++                continue
++
++            # Now build the name of the package FILENAME came from.
++            obj = h.format("%{name}-%{version}-%{release}.%{arch}")
++            rpm_name = str(obj)
++            if not rpm_name in __missing_rpms:
++                __suggest_rpms[rpm_name] = True
++                __missing_rpms[rpm_name] = True
++
++
++    # A missing debug handler class.  Just forwards the name of the
++    # objfile for which we are missing debug information to
++    # find_suggestions.
++    class RPMSuggestionHandler(gdb.missing_debug.MissingDebugHandler):
++        def __init__(self):
++            super().__init__("rpm-suggestions")
++
++        def __call__(self, objfile):
++            # Traditionally the 'build-id-verbose' parameter is what
++            # controlled all RPM suggestion.  Maybe once all the RPM
++            # suggestion is performed via Python extensions then we might
++            # consider renaming this parameter to something else, but for
++            # now, for backward compatibility, I've retained this name.
++            if gdb.parameter("build-id-verbose") > 0:
++                find_suggestions(objfile.filename)
++                return False
++            return None
++
++
++    # Called before GDB displays its prompt.  If the global __SUGGEST_RPMS
++    # dictionary is not empty, then this hook prints treats the keys of
++    # this dictionary as strings which are the names of RPMs.  This hook
++    # formats each RPM name into a suggested debuginfo-install command and
++    # suggests this to the user.
++    def before_prompt():
++        global __suggest_rpms
++
++        if len(__suggest_rpms) > 0:
++            for p in __suggest_rpms.keys():
++                print("Missing debuginfo, try: dnf debuginfo-install " + p)
++            __suggest_rpms = {}
++
++
++    # Called when the executable within a progrm space is changed.  Clear
++    # the lists of RPM suggestions.  We only clear the previous suggestion
++    # list when the executable really changes.  If the user simply
++    # recompiles the executable, then we don't both clearing this list.
++    def executable_changed_handler(event):
++        global __missing_rpms
++        global __suggest_rpms
++
++        if not event.reload:
++            __missing_rpms = {}
++            __suggest_rpms = {}
++
++
++    # Attach to the required GDB events.
++    gdb.events.executable_changed.connect(executable_changed_handler)
++    gdb.events.before_prompt.connect(before_prompt)
++
++    # Register the missing debug handler with GDB.
++    gdb.missing_debug.register_handler(None, RPMSuggestionHandler())
+diff --git a/gdb/testsuite/gdb.python/py-missing-debug.py b/gdb/testsuite/gdb.python/py-missing-debug.py
+--- a/gdb/testsuite/gdb.python/py-missing-debug.py
++++ b/gdb/testsuite/gdb.python/py-missing-debug.py
+@@ -19,6 +19,13 @@ from enum import Enum
+ import gdb
+ from gdb.missing_debug import MissingDebugHandler
+ 
++# This is a RHEL/Fedora work around: There's already a
++# missing-debug-info handler registered for these versions of GDB.
++# Discard the handler now so that the tests will pass (the tests
++# assume no handler is currently registered).
++gdb.missing_debug_handlers = []
++
++
+ # A global log that is filled in by instances of the LOG_HANDLER class
+ # when they are called.
+ handler_call_log = []

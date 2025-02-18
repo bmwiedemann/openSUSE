@@ -1,0 +1,96 @@
+From 9625fc9c035b75f7e55350ad72c37ce1b7e8fe55 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 22 Jan 2025 10:46:08 +0100
+Subject: [PATCH 27/46] [gdb/testsuite] Fix gdb.base/branch-to-self.exp on
+ arm-linux
+
+On arm-linux (ubuntu 24.04 with gcc 13.3.0) with target board unix/-marm and
+test-case gdb.base/branch-to-self.exp I run into:
+...
+(gdb) continue^M
+Continuing.^M
+^M
+Breakpoint 2, main () at branch-to-self.c:38^M
+38        for (;;); /* loop-line */^M
+(gdb) PASS: $exp: single-step: continue to breakpoint: hit breakpoint
+si^M
+0x0040058c      38        for (;;); /* loop-line */^M
+(gdb) FAIL: $exp: single-step: si
+...
+
+In contrast, on the same machine but with debian testing and gcc 14.2.0 we have:
+...
+(gdb) continue^M
+Continuing.^M
+^M
+Breakpoint 2, main () at branch-to-self.c:38^M
+38        for (;;); /* loop-line */^M
+(gdb) PASS: $exp: single-step: continue to breakpoint: hit breakpoint
+si^M
+^M
+Breakpoint 2, main () at branch-to-self.c:38^M
+38        for (;;); /* loop-line */^M
+(gdb) PASS: $exp: single-step: stepi
+...
+
+The difference is in the instruction(s) generated for the loop.
+
+In the passing case, we have:
+...
+ 588:   eafffffe        b       588 <main+0x24>
+...
+and in the failing case:
+...
+ 588:   e320f000        nop     {0}
+ 58c:   eafffffd        b       588 <main+0x24>
+...
+
+The purpose of this part of the test-case is to:
+- generate a branch instruction that jumps to itself, and
+- set a breakpoint on it, and check that stepi-ing from that breakpoint
+  triggers the breakpoint again.
+
+As we can see, in the failing case we failed to generate a branch instruction
+that jumps to itself, and consequently we cannot expect to hit the breakpoint
+again after issuing a single si.
+
+Fix this by issuing stepi until we hit the breakpoint.
+
+Tested on arm-linux.
+
+Reviewed-by: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+---
+ gdb/testsuite/gdb.base/branch-to-self.exp | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/branch-to-self.exp b/gdb/testsuite/gdb.base/branch-to-self.exp
+index 9b4f7467498..71859d71e0d 100644
+--- a/gdb/testsuite/gdb.base/branch-to-self.exp
++++ b/gdb/testsuite/gdb.base/branch-to-self.exp
+@@ -35,7 +35,22 @@ with_test_prefix "single-step" {
+     gdb_test "break ${testfile}.c:${line_num}" "Breakpoint .*" \
+ 	"set breakpoint"
+     gdb_continue_to_breakpoint "hit breakpoint"
+-    gdb_test "si" ".*${testfile}.c:${line_num}.*"
++
++    set stepi_count 1
++    gdb_test_multiple "stepi" "" {
++	-re -wrap ".*${testfile}.c:${line_num}.*" {
++	    pass $gdb_test_name
++	}
++	-re -wrap "" {
++	    if { $stepi_count == 10 } {
++		fail $gdb_test_name
++	    } else {
++		incr stepi_count
++		send_gdb "stepi\n"
++		exp_continue
++	    }
++	}
++    }
+ }
+ 
+ with_test_prefix "break-cond" {
+-- 
+2.43.0
+

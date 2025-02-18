@@ -1,0 +1,42 @@
+From 2140bfdb0f523bcfd4475bc9ef779d693f0852fc Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 21 Jun 2024 16:53:19 +0200
+Subject: [PATCH 1/2] [gdb/testsuite] Fix regexp in
+ gdb.threads/stepi-over-clone.exp
+
+On fedora rawhide, I ran into:
+...
+(gdb) continue^M
+Continuing.^M
+^M
+Catchpoint 2 (call to syscall clone3), 0x000000000042097d in __clone3 ()^M
+(gdb) FAIL: gdb.threads/stepi-over-clone.exp: continue
+...
+
+Fix this by updating a regexp to also recognize __clone3.
+
+Tested on x86_64-linux.
+
+Tested-By: Guinevere Larsen <blarsen@redhat.com>
+---
+ gdb/testsuite/gdb.threads/stepi-over-clone.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.threads/stepi-over-clone.exp b/gdb/testsuite/gdb.threads/stepi-over-clone.exp
+index f671fd7b8bd..da8bbf6a215 100644
+--- a/gdb/testsuite/gdb.threads/stepi-over-clone.exp
++++ b/gdb/testsuite/gdb.threads/stepi-over-clone.exp
+@@ -48,7 +48,7 @@ gdb_test_multiple "catch syscall group:process" "catch process syscalls" {
+     }
+ }
+ 
+-set re_loc1 "$hex in clone\[23\]? \\(\\)"
++set re_loc1 "$hex in (__)?clone\[23\]? \\(\\)"
+ set re_loc2 "$decimal\[ \t\]+in \[^\r\n\]+"
+ set re_loc3 "clone\[23\]? \\(\\) at \[^:\]+:$decimal"
+ 
+
+base-commit: 1b57388d5731941f69010502bb59c24bd1db9f68
+-- 
+2.43.0
+

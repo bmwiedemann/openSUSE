@@ -1,0 +1,188 @@
+From de696a57729423bf643e530fdb638dff6cf3c08b Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 4 Jan 2025 11:31:02 +0100
+Subject: [PATCH 21/46] Fix gdb.base/finish-pretty.exp on s390x
+
+On s390x-linux, with test-case gdb.base/finish-pretty.exp I ran into:
+...
+(gdb) finish
+Run till exit from #0  foo () at finish-pretty.c:28
+main () at finish-pretty.c:40
+40	  return v.a + v.b;
+Value returned has type: struct s. Cannot determine contents
+(gdb) FAIL: $exp: finish foo prettyprinted function result
+...
+
+The function being finished is foo, which returns a value of type struct s.
+
+The ABI [1] specifies:
+- that the value is returned in a storage buffer allocated by the caller, and
+- that the address of this buffer is passed as a hidden argument in r2.
+
+GDB fails to print the value when finishing foo, because it doesn't know the
+address of the buffer.
+
+Implement the gdbarch_get_return_buf_addr hook for s390x to fix this.
+
+This is based on ppc_sysv_get_return_buf_addr, the only other implementation
+of gdbarch_get_return_buf_addr.  For readability I've factored out
+dwarf_reg_on_entry.
+
+There is one difference with ppc_sysv_get_return_buf_addr: only
+NO_ENTRY_VALUE_ERROR is caught.  If this patch is approved, I intend to submit
+a follow-up patch to fix this in ppc_sysv_get_return_buf_addr as well.
+
+The hook is not guaranteed to work, because it attempts to get the value r2
+had at function entry.
+
+The hook can be called after function entry, and the ABI doesn't guarantee
+that r2 is the same throughout the function.
+
+Using -fvar-tracking adds debug information, which allows the hook to succeed
+more often, and indeed after adding this to the test-case, it passes.
+
+Do likewise in one more test-case.
+
+Tested on s390x-linux.
+
+Fixes:
+- gdb.ada/finish-large.exp
+- gdb.base/finish-pretty.exp
+- gdb.base/retval-large-struct.exp
+- gdb.cp/non-trivial-retval.exp
+- gdb.ada/array_return.exp
+
+AFAICT, I've also enabled the hook for s390 and from the ABI I get the
+impression that it should work, but I haven't been able to test it.
+
+[1] https://github.com/IBM/s390x-abi
+---
+ gdb/s390-tdep.c                          | 58 ++++++++++++++++++++++++
+ gdb/testsuite/gdb.ada/array_return.exp   |  8 +++-
+ gdb/testsuite/gdb.base/finish-pretty.exp |  8 +++-
+ 3 files changed, 72 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/s390-tdep.c b/gdb/s390-tdep.c
+index 4844b7e9bc8..4e7dce70c12 100644
+--- a/gdb/s390-tdep.c
++++ b/gdb/s390-tdep.c
+@@ -40,6 +40,7 @@
+ #include "trad-frame.h"
+ #include "value.h"
+ #include "inferior.h"
++#include "dwarf2/loc.h"
+ 
+ #include "features/s390-linux32.c"
+ #include "features/s390x-linux64.c"
+@@ -2119,6 +2120,62 @@ s390_return_value (struct gdbarch *gdbarch, struct value *function,
+   return rvc;
+ }
+ 
++/* Try to get the value of DWARF_REG in FRAME at function entry.  If successful,
++   return it as value of type VAL_TYPE.  */
++
++static struct value *
++dwarf_reg_on_entry (int dwarf_reg, struct type *val_type,
++		    const frame_info_ptr &frame)
++{
++  enum call_site_parameter_kind kind = CALL_SITE_PARAMETER_DWARF_REG;
++  union call_site_parameter_u kind_u = { .dwarf_reg = dwarf_reg };
++
++  try
++    {
++      return value_of_dwarf_reg_entry (val_type, frame, kind, kind_u);
++    }
++  catch (const gdb_exception_error &e)
++    {
++      if (e.error == NO_ENTRY_VALUE_ERROR)
++	return nullptr;
++
++      throw;
++    }
++}
++
++/* Both the 32-bit and 64-bit ABIs specify that values of some types are
++   returned in a storage buffer provided by the caller.  Return the address of
++   that storage buffer, if possible.  Implements the
++   gdbarch_get_return_buf_addr hook.  */
++
++static CORE_ADDR
++s390_get_return_buf_addr (struct type *val_type,
++			  const frame_info_ptr &cur_frame)
++{
++  /* The address of the storage buffer is provided as a hidden argument in
++     register r2.  */
++  int dwarf_reg = 2;
++
++  /* The ABI does not guarantee that the register will not be changed while
++     executing the function.  Hence, it cannot be assumed that it will still
++     contain the address of the storage buffer when execution reaches the end
++     of the function.
++
++     Attempt to determine the value on entry using the DW_OP_entry_value DWARF
++     entries.  This requires compiling the user program with -fvar-tracking.  */
++  struct value *val_on_entry
++    = dwarf_reg_on_entry (dwarf_reg, lookup_pointer_type (val_type), cur_frame);
++
++  if (val_on_entry == nullptr)
++    {
++      warning ("Cannot determine the function return value.\n"
++	       "Try compiling with -fvar-tracking.");
++      return 0;
++    }
++
++  return value_as_address (val_on_entry);
++}
++
+ /* Frame unwinding.  */
+ 
+ /* Implement the stack_frame_destroyed_p gdbarch method.  */
+@@ -7183,6 +7240,7 @@ s390_gdbarch_init (struct gdbarch_info info, struct gdbarch_list *arches)
+   set_gdbarch_dummy_id (gdbarch, s390_dummy_id);
+   set_gdbarch_frame_align (gdbarch, s390_frame_align);
+   set_gdbarch_return_value (gdbarch, s390_return_value);
++  set_gdbarch_get_return_buf_addr (gdbarch, s390_get_return_buf_addr);
+ 
+   /* Frame handling.  */
+   /* Stack grows downward.  */
+diff --git a/gdb/testsuite/gdb.ada/array_return.exp b/gdb/testsuite/gdb.ada/array_return.exp
+index c6edee11f17..d1fc2ac2c98 100644
+--- a/gdb/testsuite/gdb.ada/array_return.exp
++++ b/gdb/testsuite/gdb.ada/array_return.exp
+@@ -19,7 +19,13 @@ require allow_ada_tests
+ 
+ standard_ada_testfile p
+ 
+-if {[gdb_compile_ada "${srcfile}" "${binfile}" executable {debug}] != ""} {
++set opts {}
++lappend opts debug
++if { [have_fvar_tracking] } {
++    lappend opts "additional_flags=-fvar-tracking"
++}
++
++if {[gdb_compile_ada "${srcfile}" "${binfile}" executable $opts] != ""} {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.base/finish-pretty.exp b/gdb/testsuite/gdb.base/finish-pretty.exp
+index 44f3340f41c..0b6bea6681d 100644
+--- a/gdb/testsuite/gdb.base/finish-pretty.exp
++++ b/gdb/testsuite/gdb.base/finish-pretty.exp
+@@ -18,7 +18,13 @@
+ 
+ standard_testfile
+ 
+-if { [prepare_for_testing "failed to prepare" $testfile $srcfile] } {
++set opts {}
++lappend opts debug
++if { [have_fvar_tracking] } {
++    lappend opts "additional_flags=-fvar-tracking"
++}
++
++if { [prepare_for_testing "failed to prepare" $testfile $srcfile $opts] } {
+     return -1
+ }
+ 
+-- 
+2.43.0
+

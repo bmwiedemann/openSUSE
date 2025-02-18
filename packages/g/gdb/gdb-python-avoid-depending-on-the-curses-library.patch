@@ -1,0 +1,108 @@
+From a4ebf1e476b56777474584b653485bf3dc7068cc Mon Sep 17 00:00:00 2001
+From: Andrew Burgess <aburgess@redhat.com>
+Date: Mon, 9 Sep 2024 17:33:54 +0100
+Subject: [PATCH] gdb/python: avoid depending on the curses library
+
+The commit:
+
+  commit 29c70787112e01cd52b53bf14bdcacb0a11e0725
+  Date:   Sun Sep 8 07:46:09 2024 +0200
+
+      [gdb/testsuite] Handle missing curses in gdb.python/py-missing-debug.exp
+
+Highlighted that in some cases we might be running on a system with an
+older version of Python (earlier than 3.7), and on a system for which
+the curses library has not been installed.
+
+In these circumstances the gdb.missing_debug module will not load as
+it uses curses to provide isalnum() and isascii() functions.
+
+To avoid this problem I propose that we copy the isalnum() and
+isascii() from the Python curses library.  These functions are
+basically trivial and removing the curses dependency means GDB will
+work in more cases without increasing its dependencies.
+
+I did consider keeping the uses of curses and only having the function
+definitions be a fallback for when the curses library failed to load,
+but this felt like overkill.  The function definitions are both tiny
+and I think "obvious" given their specifications, so I figure we might
+as well just use our own definitions if they are not available as
+builtin methods on the str class.
+
+For testing I changed this line:
+
+  if sys.version_info >= (3, 7):
+
+to
+
+  if sys.version_info >= (3, 7) and False:
+
+then reran gdb.python/py-missing-debug.exp, there were no failures.
+
+Approved-By: Tom de Vries <tdevries@suse.de>
+---
+ gdb/python/lib/gdb/missing_debug.py | 30 ++++++++++++++++++++++++++---
+ 1 file changed, 27 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/python/lib/gdb/missing_debug.py b/gdb/python/lib/gdb/missing_debug.py
+index 4256947ff77..cdeea30256d 100644
+--- a/gdb/python/lib/gdb/missing_debug.py
++++ b/gdb/python/lib/gdb/missing_debug.py
+@@ -32,9 +32,33 @@ if sys.version_info >= (3, 7):
+         return ch.isalnum()
+ 
+ else:
+-    # Fall back to curses.ascii.isascii() and curses.ascii.isalnum() for
+-    # earlier versions.
+-    from curses.ascii import isalnum, isascii
++    # Older version of Python doesn't have str.isascii() and
++    # str.isalnum() so provide our own.
++    #
++    # We could import isalnum() and isascii() from the curses library,
++    # but that adds an extra dependency.  Given these functions are
++    # both small and trivial lets implement them here.
++    #
++    # These definitions are based on those in the curses library, but
++    # simplified as we know C will always be a single character 'str'.
++
++    def isdigit(c):
++        return 48 <= ord(c) <= 57
++
++    def islower(c):
++        return 97 <= ord(c) <= 122
++
++    def isupper(c):
++        return 65 <= ord(c) <= 90
++
++    def isalpha(c):
++        return isupper(c) or islower(c)
++
++    def isalnum(c):
++        return isalpha(c) or isdigit(c)
++
++    def isascii(c):
++        return 0 <= ord(c) <= 127
+ 
+ 
+ def _validate_name(name):
+
+base-commit: b3f9f8454fe3f83754b130dd7aa26b62d4311bde
+prerequisite-patch-id: 77507b16457eeed54f9c51f9d3899c91bc6739ca
+prerequisite-patch-id: aec1fa16069ec9c14b671130354a5006b1739a34
+prerequisite-patch-id: a02aede530a3b3d0c64cd96ef7c2181e2886c3c5
+prerequisite-patch-id: 720d8081d37ae4b658b7e82ec96a39a82fdc8015
+prerequisite-patch-id: de6a537726187fa4b145246307af23449ae8fd3b
+prerequisite-patch-id: 4c8aa2b7f59cde2aa886b3a8e134b58f58ed92de
+prerequisite-patch-id: 913a84de7152200996b8bc6c6d241f95b4206294
+prerequisite-patch-id: af18dce2bc2a8c529dfd4b67c4514d4a94fe1f28
+prerequisite-patch-id: 07d1b82048ab34b0a037cf1c0ba1cb25bf7ec6eb
+prerequisite-patch-id: f7311861f758921d385103bcae9d72ccfb12db4d
+prerequisite-patch-id: 15dbe4af0de7b6c098c38a8c767d7166033e03c1
+prerequisite-patch-id: d27daff5cb15b862e7b48a41389b219040702c9d
+prerequisite-patch-id: 581089bf2af1e30e5e1e00d01df5b164cb5794cf
+prerequisite-patch-id: d2419f88c98cd8c7be804fd246eeb38d18dd0bda
+prerequisite-patch-id: b1806f9e902e5ceb32f31438cb059843461d78eb
+prerequisite-patch-id: c73d4526570e04107c3278cb8b5142d4a6665374
+-- 
+2.43.0
+

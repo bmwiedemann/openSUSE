@@ -3270,4 +3270,519 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
     <comment></comment>
     <requestid>1239238</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>90bf19e04c38443a8f1f2432df3d93d4</srcmd5>
+    <version>15.2</version>
+    <time>1739902137</time>
+    <user>anag+factory</user>
+    <comment>- Maintenance script qa.sh:
+  * Add PR32712 kfail.
+- Mention changes in GDB 15:
+  * The MPX commands &quot;show/set mpx bound&quot; have been deprecated, as
+  Intel listed MPX as removed in 2019.
+  * GDB index now contains information about the main function.
+  * This speeds up startup when it is being used for some large
+    binaries.
+  * On hosts where threading is available, DWARF reading is now
+    done in the background, resulting in faster startup.  This can
+    be controlled using &quot;maint set dwarf synchronous&quot;.
+  * Changed commands:
+    * disassemble:
+      Attempting to use both the 'r' and 'b' flags with the
+      disassemble command will now give an error.  Previously the
+      'b' flag would always override the 'r' flag.
+    * gcore, generate-core-file:
+      GDB now generates sparse core files, on systems that support
+      it.
+    * maintenance info line-table:
+      Add an EPILOGUE-BEGIN column to the output of the command.
+      It indicates if the line is considered the start of the
+      epilogue, and thus a point at which the frame can be
+      considered destroyed.
+    * set unwindonsignal on|off, show unwindonsignal:
+      These commands are now aliases for the new
+      set/show unwind-on-signal.
+    * target record-full:
+      This command now gives an error if any unexpected arguments
+      are found after the command.
+    * list .:
+      When using the command &quot;list .&quot; in a location that has no
+      debug information or no file loaded, GDB now says that there
+      is no debug information to print lines.  This makes it more
+      obvious that there is no information, as opposed to implying
+      there is no inferior loaded.
+  * New commands:
+    * info missing-debug-handler:
+      List all the registered missing debug handlers.
+    * enable missing-debug-handler LOCUS HANDLER,
+      disable missing-debug-handler LOCUS HANDLER:
+      Enable or disable a missing debug handler with a name
+      matching the regular expression HANDLER, in LOCUS.
+      LOCUS can be 'global' to operate on global missing debug
+      handler, 'progspace' to operate on handlers within the
+      current program space, or can be a regular expression which
+      is matched against the filename of the primary executable in
+      each program space.
+    * maintenance info linux-lwps:
+      List all LWPs under control of the linux-nat target.
+    * set remote thread-options-packet,
+      show remote thread-options-packet:
+      Set/show the use of the thread options packet.
+    * set direct-call-timeout SECONDS, show direct-call-timeout,
+      set indirect-call-timeout SECONDS,
+      show indirect-call-timeout:
+      These new settings can be used to limit how long GDB will
+      wait for an inferior function call to complete.  The direct
+      timeout is used for inferior function calls from e.g. 'call'
+      and 'print' commands, while the indirect timeout is used for
+      inferior function calls from within a conditional breakpoint
+      expression.
+      The default for the direct timeout is unlimited, while the
+      default for the indirect timeout is 30 seconds.
+      These timeouts will only have an effect for targets that are
+      operating in async mode.  For non-async targets the timeouts
+      are ignored, GDB will wait indefinitely for an inferior
+      function to complete, unless interrupted by the user using
+      Ctrl-C.
+    * set unwind-on-timeout on|off, show unwind-on-timeout:
+      These commands control whether GDB should unwind the stack
+      when a timeout occurs during an inferior function call.  The
+      default is off, in which case the inferior will remain in
+      the frame where the timeout occurred.  When on, GDB will
+      unwind the stack removing the dummy frame that was added for
+      the inferior call, and restoring the inferior state to how
+      it was before the inferior call started.
+    * set unwind-on-signal on|off, show unwind-on-signal:
+      These new commands replaces the existing set/show
+      unwindonsignal.  The old command is maintained as an alias.
+  * New features in the GDB remote stub, GDBserver:
+    * The --remote-debug and --event-loop-debug command line
+      options have been removed.
+    * The --debug command line option now takes an optional comma
+      separated list of components to emit debug for.  The
+      currently supported components are: all, threads,
+      event-loop, and remote.  If no components are given then
+      threads is assumed.
+    * The 'monitor set remote-debug' and 'monitor set
+      event-loop-debug' command have been removed.
+    * The 'monitor set debug 0|1' command has been extended to
+      take a component name, e.g.: 'monitor set debug COMPONENT
+      off|on'.  Possible component names are: all, threads,
+      event-loop, and remote.
+  * Python API:
+    * New function gdb.notify_mi(NAME, DATA), that emits custom
+      GDB/MI async notification.
+    * New read/write attribute gdb.Value.bytes that contains a
+      bytes object holding the contents of this value.
+    * New module gdb.missing_debug that facilitates dealing with
+      objfiles that are missing any debug information.
+    * New function gdb.missing_debug.register_handler that can
+      register an instance of a sub-class of
+      gdb.missing_debug.MissingDebugInfo as a handler for objfiles
+      that are missing debug information.
+    * New class gdb.missing_debug.MissingDebugInfo which can be
+      sub-classed to create handlers for objfiles with missing
+      debug information.
+    * Stop events now have a &quot;details&quot; attribute that holds a
+      dictionary that carries the same information as an MI
+      &quot;*stopped&quot; event.
+    * New function gdb.interrupt(), that interrupts GDB as if the
+      user typed control-c.
+    * New gdb.InferiorThread.ptid_string attribute.  This
+      read-only attribute contains the string that appears in the
+      'Target Id' column of the 'info threads' command output.
+    * It is no longer possible to create new gdb.Progspace object
+      using 'gdb.Progspace()', this will result in a TypeError.
+      Progspace objects can still be obtained through calling
+      other API functions, for example 'gdb.current_progspace()'.
+    * User defined attributes can be added to a gdb.Inferior
+      object, these will be stored in the object's new
+      Inferior.__dict__ attribute.
+    * User defined attributes can be added to a gdb.InferiorThread
+      object, these will be stored in the object's new
+      InferiorThread.__dict__ attribute.
+    * New constants gdb.SYMBOL_TYPE_DOMAIN,
+      gdb.SYMBOL_FUNCTION_DOMAIN, and gdb.SEARCH_*_DOMAIN
+      corresponding to all the existing symbol domains.  Symbol
+      lookup can now search in multiple domains at once, and can
+      also narrowly search for just a type or function.
+  * Debugger Adapter Protocol changes:
+    * GDB now emits the &quot;process&quot; event.
+    * GDB now supports the &quot;cancel&quot; request.
+    * The &quot;attach&quot; request now supports specifying the program.
+    * New command &quot;set debug dap-log-level&quot; controls DAP logging.
+    * The &quot;set debug dap-log-file&quot; command is now documented.
+      This command was available in GDB 14 but not documented.
+  * Guile API:
+    * New constants SYMBOL_TYPE_DOMAIN, SYMBOL_FUNCTION_DOMAIN,
+      and SEARCH_*_DOMAIN corresponding to all the existing symbol
+      domains.  Symbol lookup can now search in multiple domains
+      at once, and can also narrowly search for just a type or
+      function.
+  * Remote packets:
+    * New stop reason clone:
+      Indicates that a clone system call was executed.
+  * New remote packets:
+    * QThreadOptions:
+      Enable/disable optional event reporting, on a per-thread
+      basis.  Currently supported options are
+      GDB_THREAD_OPTION_CLONE, to enable clone event reporting,
+      and GDB_THREAD_OPTION_EXIT to enable thread exit event
+      reporting.
+    * QThreadOptions in qSupported:
+    * The qSupported packet allows GDB to inform the stub it
+      supports the QThreadOptions packet, and the qSupported
+      response can contain the set of thread options the remote
+      stub supports.
+    * qIsAddressTagged:
+      This new packet allows GDB to query the stub about a given
+      address to check if it is tagged or not.  Many memory
+      tagging-related GDB commands need to perform this check
+      before they read/write the allocation tag related to an
+      address.  Currently, however, this is done through a 'vFile'
+      request to read the file /proc/&lt;PID&gt;/smaps and check if the
+      address is in a region reported as memory tagged.  Since not
+      all targets have a notion of what the smaps file is about,
+      this new packet provides a more generic way to perform such
+      a check.
+- Maintenance script qa.sh:
+  * Fix 16.0 handling.
+- Patches added:
+  * gdb-testsuite-fix-gdb.python-py-format-string.exp-wi.patch
+  * gdb-testsuite-fix-gdb.python-py-mi-cmd.exp-with-pyth.patch
+  * gdb-testsuite-fix-gdb.ada-mi_task_arg.exp-on-arm-lin.patch
+  * gdb-testsuite-fix-regexp-in-gdb.ada-mi_var_access.ex.patch
+  * gdb-testsuite-check-gnatmake-version-in-gdb.ada-scal.patch
+  * gdb-testsuite-fix-gdb.arch-arm-pseudo-unwind.exp-wit.patch
+  * gdb-symtab-fix-target-type-of-complex-long-double-on.patch
+  * gdb-testsuite-don-t-use-set-auto-solib-add-off.patch
+  * gdb-tdep-fix-arm-thumb2-hw-breakpoint.patch
+  * gdb-testsuite-fix-gdb.cp-m-static.exp-on-arm.patch
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-fixed-point.exp-on-.patch
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-lines.exp-on-arm-li.patch
+  * gdb-exp-fix-gdb.fortran-intrinsics.exp-fail-on-arm.patch
+  * gdb-tdep-handle-sycall-statx-for-arm-linux.patch
+  * gdb-tdep-fix-recording-of-t1-push.patch
+  * gdb-tdep-handle-syscall-clock_gettime64-for-arm-linu.patch
+  * fix-gdb.dwarf2-shortpiece.exp-on-s390x.patch
+  * handle-address-class-annotation-for-s390x-in-some-te.patch
+  * fix-gdb.dap-step-out.exp-on-s390x.patch
+  * use-setvariable-in-gdb.dap-scopes.exp.patch
+  * fix-gdb.base-finish-pretty.exp-on-s390x.patch
+  * fix-gdb.base-readnever.exp-on-s390x.patch
+  * add-dwarf_expr_piece.op.patch
+  * add-gdbarch_dwarf2_reg_piece_offset-hook.patch
+  * fix-gdb.base-store.exp-on-s390x.patch
+  * fix-gdb.ada-o2_float_param.exp-on-s390x-linux.patch
+  * gdb-testsuite-fix-gdb.base-branch-to-self.exp-on-arm.patch
+  * gdb-tdep-fix-gdb.cp-non-trivial-retval.exp-on-riscv6.patch
+  * gdb-testsuite-fix-gdb.cp-non-trivial-retval.exp-on-a.patch
+  * gdb-testsuite-fix-gdb.rust-completion.exp-timeout-on.patch
+  * gdb-testsuite-require-supports_process_record-in-gdb.patch
+  * gdb-testsuite-fix-regexp-in-gdb.arch-i386-disp-step-.patch
+  * gdb-testsuite-fix-gdb.arch-arm-single-step-kernel-he.patch
+  * gdb-testsuite-fix-gdb.python-py-format-address.exp-o.patch
+  * gdb-testsuite-fix-gdb.arch-riscv-tdesc-regs.exp.patch
+  * gdb-testsuite-fix-gdb.base-list-dot-nodebug-and-make.patch
+  * gdb-testsuite-fix-gdb.base-list-dot-nodebug.exp-on-o.patch
+  * gdb-testsuite-fix-gdb.base-empty-host-env-vars.exp.patch
+  * gdb-prune-inferior-after-switching-inferior.patch
+  * gdb-testsuite-use-nostdlib-in-gdb.base-list-dot-node.patch
+  * gdb-testsuite-fix-timeout-in-gdb.mi-mi-multi-command.patch
+  * gdb-testsuite-require-can_spawn_for_attach-in-gdb.ba.patch
+  * fixup-gdb-6.5-gcore-buffer-limit-test.patch
+  * gdb-testsuite-fix-gdb.ada-big_packed_array.exp-on-s3.patch
+  * gdb-testsuite-fix-gdb.ada-convvar_comp.exp-on-s390x-.patch
+  * gdb-testsuite-fix-regexp-in-gdb.threads-stepi-over-c.patch
+- Maintenance script qa.sh:
+  * Add kfail for PR32678.
+  * Add kfail for missing g++ on SLE-12.
+  * Drop Leap 15.5, add 16.0.
+  * Move PR32167 kfail from kfail_sle12 to kfail, and extend
+    pattern.
+- Use gcc 11 instead gcc 9 for SLE-12.
+- Maintenance script qa-local.sh:
+  * Drop Leap 15.5, add 16.0.
+- Patches dropped:
+  * gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
+  * gdb-test-bt-cfi-without-die.patch
+  * fixup-gdb-rhbz1261564-aarch64-hw-watchpoint-test.pat.patch
+  * fixup-gdb-test-bt-cfi-without-die.patch
+- Maintenance script import-fedora.sh:
+  * Add gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch and
+    gdb-test-bt-cfi-without-die.patch to skip_patches.
+- Update to fedora rawhide @ a2f2e9e.
+- Patches dropped:
+  * gdb-6.5-bz243845-stale-testing-zombie-test.patch
+  * fixup-gdb-6.5-bz243845-stale-testing-zombie-test.patch
+- Update to fedora rawhide @ 1116b36.
+- Patches dropped:
+  * gdb-test-dw2-aranges.patch
+  * fixup-gdb-test-dw2-aranges.patch
+- Update to fedora rawhide @ 7c66c1c.
+- Patches dropped:
+  * gdb-6.6-testsuite-timeouts.patch
+- Update to fedora rawhide @ 2294280.
+- Patches dropped:
+  * gdb-simultaneous-step-resume-breakpoint-test.patch
+- Update to fedora rawhide @ 926c064 (gdb 15.2).
+- Patches dropped:
+  * gdb-6.5-section-num-fixup-test.patch
+  * gdb-rhbz1007614-memleak-infpy_read_memory-test.patch
+- Maintenance script qa-local.sh:
+  * Update version to 15.2.
+- Update to fedora rawhide @ 4b0a2e1.
+- Patches added:
+  * gdb-catchpoint-re-set.patch
+- Update to fedora rawhide @ d8b64d9.
+- Patches dropped:
+  * gdb-6.6-bz229517-gcore-without-terminal.patch
+- Update to fedora rawhide @ a93b826.
+- Patches dropped:
+  * gdb-rhbz947564-findvar-assertion-frame-failed-testcase.patch
+- Maintenance script import-fedora.sh:
+  * Add gdb-remove-use-of-py-isascii to skip_patches.
+  * Remove gdb-6.7-ppc-clobbered-registers-O2-test.patch from
+    skip_patches.
+- Always BuildRequire gcc-c++ to fix missing testing compiler on
+  SLE-12.
+- Patches added:
+  * gdb-testsuite-handle-unordered-dict-in-gdb.python-py.patch
+- Maintenance script qa.sh:
+  * Add PR32167 kfail.
+- Maintenance script qa.sh:
+  * Extend SLE-12 -static unix/-fPIE/-fpie kfails.
+  * Extend ppc64le watchpoint kfail.
+  * Extend PR29405 kfail.
+- Patches added:
+  * gdb-testsuite-fix-gdb.threads-leader-exit-attach.exp.patch
+  * gdb-testsuite-use-c-flag-in-c-test-cases.patch
+- Update to fedora rawhide @ a8e0b3d (gdb 15.1).
+- Use gcc-9 for SLE-12 (default gcc 4.8.5 doesn't support C++17).
+- Maintenance script qa-local.sh:
+  * Update version to 15.1.
+- Maintenance script qa.sh:
+  * Add kfails due to gcc 4.8.5 DW_TAG_lexical_block oddity.
+  * Extend PR24845 kfails.
+  * Add PR31721 and PR32608 kfails.
+- Patches added:
+  * gdb-guile-use-scm_debug_typing_strictness-0.patch
+  * gdb-doc-fix-gdb.unwinder-docs.patch
+  * gdb-doc-fix-qisaddresstagged-anchor.patch
+  * gdb-doc-fix-standard-replies-xref.patch
+  * gdb-testsuite-fix-gdb_py_module_available-for-python.patch
+  * gdb-testsuite-fix-another-regexp-in-gdb.threads-step.patch
+  * gdb-testsuite-fix-timeouts-in-gdb.threads-step-over-.patch
+- Patches updated:
+  * gdb-6.3-gstack-20050411.patch
+  * gdb-6.6-buildid-locate-solib-missing-ids.patch
+  * gdb-6.6-buildid-locate.patch
+  * gdb-add-rpm-suggestion-script.patch
+  * gdb-gcore-bash.patch
+  * gdb-python-avoid-depending-on-the-curses-library.patch
+  * gdb-python-finishbreakpoint-update.patch
+- Patches dropped:
+  * gdb-add-missing-debug-ext-lang-hook.patch
+  * gdb-add-missing-debug-info-python-hook.patch
+  * gdb-do-not-import-py-curses-ascii-module.patch
+  * gdb-ftbs-swapped-calloc-args.patch
+  * gdb-handle-no-python-gdb-module.patch
+  * gdb-merge-debug-symbol-lookup.patch
+  * gdb-refactor-find-and-add-separate-symbol-file.patch
+  * gdb-reformat-missing-debug-py-file.patch
+  * gdb-remove-path-in-test-name.patch
+  * gdb-rhbz-2232086-cpp-ify-mapped-symtab.patch
+  * gdb-rhbz-2232086-generate-dwarf-5-index-consistently.patch
+  * gdb-rhbz-2232086-generate-gdb-index-consistently.patch
+  * gdb-rhbz-2232086-reduce-size-of-gdb-index.patch
+  * gdb-rhbz2232086-refactor-selftest-support.patch
+  * gdb-rhbz2250652-avoid-PyOS_ReadlineTState.patch
+  * gdb-rhbz2250652-gdbpy_gil.patch
+  * gdb-rhbz2261580-intrusive_list-assertion-fix.patch
+  * gdb-rhbz2277160-apx-disasm.patch
+  * gdb-rhel2295897-pre-read-DWZ-file-in-DWARF-reader.patch
+  * gdb-sync-coffread-with-elfread.patch
+  * gdb-remove-use-of-py-isascii
+  * change-gdb.base-examine-backwards.exp-for-aix.patch
+  * fix-regression-on-aarch64-linux-gdbserver.patch
+  * fix-the-gdb.ada-inline-section-gc.exp-test.patch
+  * fixup-powerpc-and-aarch64-fix-reverse-stepping-failu.patch
+  * gdb-arm-fix-epilogue-frame-id.patch
+  * gdb-arm-remove-thumb-bit-in-arm_adjust_breakpoint_ad.patch
+  * gdb-arm-remove-tpidruro-register-from-non-freebsd-ta.patch
+  * gdb-build-fix-gdbserver-linux-aarch64-low.cc-build.patch
+  * gdb-exp-fix-cast-handling-for-indirection.patch
+  * gdb-exp-fix-printing-of-out-of-bounds-struct-members.patch
+  * gdb-exp-redo-cast-handling-for-indirection.patch
+  * gdb-fix-heap-use-after-free-in-select_event_lwp.patch
+  * gdb-fix-segfault-in-for_each_block-part-1.patch
+  * gdb-fix-segfault-in-for_each_block-part-2.patch
+  * gdb-python-fix-gdb.python-py-disasm.exp-on-arm-linux.patch
+  * gdb-python-make-gdb.unwindinfo.add_saved_register-mo-fixup.patch
+  * gdb-python-make-gdb.unwindinfo.add_saved_register-mo.patch
+  * gdb-remote-fix-abort-on-remote_close_error.patch
+  * gdb-s390-add-arch14-record-replay-support.patch
+  * gdb-symtab-add-producer_is_gas.patch
+  * gdb-symtab-don-t-defer-backward-refs-inter-cu-intra-.patch
+  * gdb-symtab-factor-out-m_deferred_entries-usage.patch
+  * gdb-symtab-factor-out-m_die_range_map-usage.patch
+  * gdb-symtab-fix-dw_tag_inlined_subroutine-entries-in-.patch
+  * gdb-symtab-handle-nullptr-parent-in-parent_map-set_p.patch
+  * gdb-symtab-keep-track-of-all-parents-for-cooked-inde.patch
+  * gdb-symtab-keep-track-of-processed-dies-in-shard.patch
+  * gdb-symtab-refactor-condition-in-scan_attributes.patch
+  * gdb-symtab-resolve-deferred-entries-inter-shard-case.patch
+  * gdb-symtab-resolve-deferred-entries-intra-shard-case.patch
+  * gdb-symtab-work-around-gas-pr28629.patch
+  * gdb-symtab-work-around-pr-gas-29517-dwarf2-case.patch
+  * gdb-symtab-work-around-pr-gas-29517.patch
+  * gdb-symtab-workaround-pr-gas-31115.patch
+  * gdb-tdep-fix-catching-syscall-execve-exit-for-arm.patch
+  * gdb-tdep-fix-gdb.base-watch-bitfields.exp-on-aarch64.patch
+  * gdb-tdep-fix-gdb.base-watchpoint-running-on-arm-ppc6.patch
+  * gdb-tdep-fix-gdb.base-watchpoint-unaligned.exp-on-aa.patch
+  * gdb-tdep-fix-nr-array-elements-in-ppc64_aggregate_ca.patch
+  * gdb-tdep-fix-reverse-execution-of-ldr-immediate-t4.patch
+  * gdb-testsuite-add-gdb.dwarf2-backward-spec-inter-cu..patch
+  * gdb-testsuite-add-gdb.dwarf2-forward-spec-inter-cu.e.patch
+  * gdb-testsuite-add-missing-include-in-gdb.base-ctf-pt.patch
+  * gdb-testsuite-add-missing-include-in-gdb.base-rtld-s.patch
+  * gdb-testsuite-add-missing-includes-in-gdb.trace-coll.patch
+  * gdb-testsuite-add-missing-no-prompt-anchor-in-gdb.ba.patch
+  * gdb-testsuite-add-pr-gdb-26967-kfail-in-two-more-tes.patch
+  * gdb-testsuite-call-ldd-version-in-gdb.testsuite-dump.patch
+  * gdb-testsuite-factor-out-proc-get_portnum.patch
+  * gdb-testsuite-factor-out-proc-lock_dir.patch
+  * gdb-testsuite-factor-out-proc-with_lock.patch
+  * gdb-testsuite-fix-gdb.ada-verylong.exp-on-32-bit-tar.patch
+  * gdb-testsuite-fix-gdb.base-eh_return.exp.patch
+  * gdb-testsuite-fix-gdb.base-ending-run.exp-on-manjaro.patch
+  * gdb-testsuite-fix-gdb.base-list-no-debug.exp-on-debi.patch
+  * gdb-testsuite-fix-gdb.cp-namespace.exp-with-read1.patch
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-gas-workaround.exp.patch
+  * gdb-testsuite-fix-gdb.mi-mi-dprintf.exp-with-read1.patch
+  * gdb-testsuite-fix-gdbserver-pid-in-gdb.server-server.patch
+  * gdb-testsuite-fix-gdb.server-server-connect.exp-for-.patch
+  * gdb-testsuite-fix-license-text-in-gdb.reverse-map-to.patch
+  * gdb-testsuite-fix-missing-return-type-in-gdb.linespe.patch
+  * gdb-testsuite-fix-regexp-in-vgdb_start.patch
+  * gdb-testsuite-fix-spurious-fails-with-examine-backwa.patch
+  * gdb-testsuite-fix-test-case-gdb.threads-attach-stopp.patch
+  * gdb-testsuite-fix-test-in-gdb.python-py-finish-break.patch
+  * gdb-testsuite-fix-typo-in-gdb.base-catch-syscall.exp.patch
+  * gdb-testsuite-fix-valgrind-tests-on-debian.patch
+  * gdb-testsuite-further-handle-long-filenames-in-gdb.b.patch
+  * gdb-testsuite-handle-core-without-build-id-in-gdb.ba.patch
+  * gdb-testsuite-handle-pac-marker.patch
+  * gdb-testsuite-make-gdb.base-solib-search.exp-more-ro.patch
+  * gdb-testsuite-make-portnum-a-persistent-global.patch
+  * gdb-testsuite-move-gpu-parallel.lock-to-cache-dir.patch
+  * gdb-testsuite-remove-spurious-in-save_vars.patch
+  * gdb-testsuite-reset-errcnt-and-warncnt-in-default_gd.patch
+  * gdb-testsuite-simplify-gdb.server-server-kill-python.patch
+  * gdb-testsuite-use-find_gnatmake-instead-of-gdb_find_.patch
+  * gdb-testsuite-use-more-progbits-for-arm.patch
+  * gdb-testsuite-use-unique-portnum-in-parallel-testing-check-slash-slash-case.patch
+  * gdb-testsuite-use-unique-portnum-in-parallel-testing.patch
+  * gdb-tui-allow-command-window-of-1-or-2-lines.patch
+  * gdb-tui-fix-resizing-of-terminal-to-1-or-2-lines.patch
+  * gdb-tui-fix-wmaybe-uninitialized-in-tui_find_disasse.patch
+  * make-pascal_language-print_type-handle-varstring-nul.patch
+  * powerpc-and-aarch64-fix-reverse-stepping-failure.patch
+  * powerpc-fix-test-gdb.ada-finish-large.exp.patch
+  * riscv-lrsc.patch
+  * rs6000-unwind-on-each-instruction-fix.patch
+  * s390-provide-ibm-z16-arch14-instruction-descriptions.patch
+- Patches added:
+  * gdb-testsuite-record-less-in-gdb.reverse-time-revers.patch
+  * gdb-cli-print-at_hwcap3-and-at_hwcap4.patch
+- Update to fedora rawhide @ a455470.
+- Patches added:
+  * gdb-rhel2295897-pre-read-DWZ-file-in-DWARF-reader.patch
+- Update to fedora rawhide @ 62add57.
+- Patches updated:
+  * gdb-add-rpm-suggestion-script.patch
+- Update to fedora rawhide @ 199e8a4.
+- Patches dropped:
+  * fixup-gdb-glibc-strstr-workaround.patch
+  * gdb-glibc-strstr-workaround.patch
+- Update to fedora rawhide @ a247406.
+- Patches dropped:
+  * gdb-core-open-vdso-warning.patch
+- Update to fedora rawhide @ 485076c.
+- Patches updated:
+  * gdb-add-rpm-suggestion-script.patch
+- Update to fedora rawhide @ 1672291.
+- Patches updated:
+  * gdb-6.6-buildid-locate-rpm-suse.patch
+  * gdb-add-rpm-suggestion-script.patch
+- Update to fedora rawhide @ f9386b1.
+- Patches dropped:
+  * gdb-fedora-libncursesw.patch
+- Update to fedora rawhide @ 93db514.
+- Patches added:
+  * gdb-rhbz2277160-apx-disasm.patch
+- Update to fedora rawhide @ deb8227.
+- Patches dropped:
+  * fixup-gdb-linux_perf-bundle.patch
+  * gdb-linux_perf-bundle.patch
+- Update to fedora rawhide @ 7b0d0c4.
+- Patches dropped:
+  * gdb-6.5-bz185337-resolve-tls-without-debuginfo-v2.patch
+- Patches updated:
+  * gdb-6.6-buildid-locate.patch
+  * gdb-add-missing-debug-info-python-hook.patch
+- Update to fedora rawhide @ 94829f0.
+- Patches dropped:
+  * fixup-gdb-bz634108-solib_address.patch
+  * gdb-bz634108-solib_address.patch
+- Update to fedora rawhide @ 2024966.
+- Maintenance script import-fedora.sh:
+  * Remove gdb-container-rh-pkg.patch from skip_patches.
+- Patches dropped (unused):
+  * fixup-gdb-6.3-attach-see-vdso-test.patch
+- Update to fedora rawhide @ a54b5ef.
+- Patches dropped:
+  * gdb-6.3-attach-see-vdso-test.patch
+- Update to fedora rawhide @ 08bfd0a.
+- Patches dropped:
+  * fixup-gdb-6.3-gstack-20050411.patch
+  * fixup-skip-tests.patch
+  * gdb-6.6-buildid-locate-rpm-librpm-workaround.patch
+  * gdb-6.6-buildid-locate-rpm.patch
+- Patches added:
+  * gdb-add-missing-debug-ext-lang-hook.patch
+  * gdb-add-missing-debug-info-python-hook.patch
+  * gdb-add-rpm-suggestion-script.patch
+  * gdb-do-not-import-py-curses-ascii-module.patch
+  * gdb-handle-no-python-gdb-module.patch
+  * gdb-merge-debug-symbol-lookup.patch
+  * gdb-python-avoid-depending-on-the-curses-library.patch
+  * gdb-refactor-find-and-add-separate-symbol-file.patch
+  * gdb-reformat-missing-debug-py-file.patch
+  * gdb-remove-path-in-test-name.patch
+  * gdb-remove-use-of-py-isascii
+  * gdb-sync-coffread-with-elfread.patch
+- Patches updated:
+  * fixup-gdb-bz634108-solib_address.patch
+  * gdb-6.3-gstack-20050411.patch
+  * gdb-6.6-buildid-locate-rpm-suse.patch
+  * gdb-6.6-buildid-locate-solib-missing-ids.patch
+  * gdb-6.6-buildid-locate.patch
+  * gdb-archer-next-over-throw-cxx-exec.patch
+  * gdb-bz634108-solib_address.patch
+  * gdb-fedora-libncursesw.patch
+  * gdb-glibc-strstr-workaround.patch
+  * gdb-rhbz1007614-memleak-infpy_read_memory-test.patch
+- Update to fedora rawhide @ f379362.
+- Patches modified:
+  * gdb-6.6-buildid-locate.patch
+- Update to fedora rawhide @ e27fd6f.
+- Patches modified:
+  * gdb-6.6-buildid-locate-rpm.patch
+  * gdb-6.6-buildid-locate.patch
+- Add &quot;BuildRequires: libgo23&quot; to fix unresolved for factory.
+</comment>
+    <requestid>1246565</requestid>
+  </revision>
 </revisionlist>

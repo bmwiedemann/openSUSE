@@ -8,13 +8,14 @@ skip_patches=(
     gdb-6.3-rh-testversion-20041202.patch
     gdb-6.6-buildid-locate-misleading-warning-missing-debuginfo-rhbz981154.patch
     gdb-6.8-bz466901-backtrace-full-prelinked.patch
-    gdb-container-rh-pkg.patch
 
-    # Fragile test-case, requires glibc to fail in a certain way.
+    # Dropped by fedora.
     gdb-rhbz1156192-recursive-dlopen-test.patch
-
-    # Obsolete.
-    gdb-6.7-ppc-clobbered-registers-O2-test.patch
+    gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
+    gdb-test-bt-cfi-without-die.patch
+    
+    # No longer needed.
+    gdb-remove-use-of-py-isascii
 )
 
 usage ()

@@ -1,0 +1,232 @@
+From 1e295ef5fa3a5a89e9ee08d6e60d971ddb9e6e46 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 31 Jul 2024 13:11:48 +0200
+Subject: [PATCH 13/46] [gdb/exp] Fix gdb.fortran/intrinsics.exp fail on arm
+
+When running test-case gdb.fortran/intrinsics.exp on arm-linux, I get:
+...
+(gdb) p cmplx (4,4,16)^M
+/home/linux/gdb/src/gdb/f-lang.c:1002: internal-error: eval_op_f_cmplx: \
+  Assertion `kind_arg->code () == TYPE_CODE_COMPLEX' failed.^M
+A problem internal to GDB has been detected,^M
+further debugging may prove unreliable.^M
+----- Backtrace -----^M
+FAIL: gdb.fortran/intrinsics.exp: p cmplx (4,4,16) (GDB internal error)
+...
+
+The problem is that 16-byte floats are unsupported:
+...
+$ gfortran test.f90
+test.f90:2:17:
+
+    2 |     REAL(kind=16) :: foo = 1
+      |                 1
+Error: Kind 16 not supported for type REAL at (1)
+...
+and consequently we end up with a builtin_real_s16 and builtin_complex_s16 with
+code TYPE_CODE_ERROR.
+
+Fix this by bailing out asap when encountering such a type.
+
+Without this patch we're able to do the rather useless:
+...
+(gdb) ptype real*16
+type = real*16
+(gdb) ptype real_16
+type = real*16
+...
+but with this patch we get:
+...
+(gdb) ptype real*16
+unsupported kind 16 for type real*4
+(gdb) ptype real_16
+unsupported type real*16
+...
+
+Tested on arm-linux.
+
+PR fortran/30537
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30537
+---
+ gdb/f-exp.y                              | 39 +++++++++++++++++-------
+ gdb/testsuite/gdb.fortran/intrinsics.exp |  8 +++--
+ gdb/testsuite/gdb.fortran/type-kinds.exp | 22 ++++++++++---
+ gdb/testsuite/gdb.fortran/types.exp      | 19 +++++++++++-
+ 4 files changed, 70 insertions(+), 18 deletions(-)
+
+diff --git a/gdb/f-exp.y b/gdb/f-exp.y
+index bdf9c32a81b..259f274d341 100644
+--- a/gdb/f-exp.y
++++ b/gdb/f-exp.y
+@@ -754,7 +754,11 @@ typebase  /* Implements (approximately): (type-qualifier)* type-specifier */
+ 	|       REAL_S8_KEYWORD
+ 			{ $$ = parse_f_type (pstate)->builtin_real_s8; }
+ 	|	REAL_S16_KEYWORD
+-			{ $$ = parse_f_type (pstate)->builtin_real_s16; }
++			{ $$ = parse_f_type (pstate)->builtin_real_s16;
++			  if ($$->code () == TYPE_CODE_ERROR)
++			    error (_("unsupported type %s"),
++				   TYPE_SAFE_NAME ($$));
++			}
+ 	|	COMPLEX_KEYWORD
+ 			{ $$ = parse_f_type (pstate)->builtin_complex; }
+ 	|	COMPLEX_S4_KEYWORD
+@@ -762,7 +766,11 @@ typebase  /* Implements (approximately): (type-qualifier)* type-specifier */
+ 	|	COMPLEX_S8_KEYWORD
+ 			{ $$ = parse_f_type (pstate)->builtin_complex_s8; }
+ 	|	COMPLEX_S16_KEYWORD 
+-			{ $$ = parse_f_type (pstate)->builtin_complex_s16; }
++			{ $$ = parse_f_type (pstate)->builtin_complex_s16;
++			  if ($$->code () == TYPE_CODE_ERROR)
++			    error (_("unsupported type %s"),
++				   TYPE_SAFE_NAME ($$));
++			}
+ 	|	SINGLE PRECISION
+ 			{ $$ = parse_f_type (pstate)->builtin_real;}
+ 	|	DOUBLE PRECISION
+@@ -1156,12 +1164,9 @@ push_kind_type (LONGEST val, struct type *type)
+   type_stack->push (tp_kind);
+ }
+ 
+-/* Called when a type has a '(kind=N)' modifier after it, for example
+-   'character(kind=1)'.  The BASETYPE is the type described by 'character'
+-   in our example, and KIND is the integer '1'.  This function returns a
+-   new type that represents the basetype of a specific kind.  */
++/* Helper function for convert_to_kind_type.  */
+ static struct type *
+-convert_to_kind_type (struct type *basetype, int kind)
++convert_to_kind_type_1 (struct type *basetype, int kind)
+ {
+   if (basetype == parse_f_type (pstate)->builtin_character)
+     {
+@@ -1211,13 +1216,25 @@ convert_to_kind_type (struct type *basetype, int kind)
+ 	return parse_f_type (pstate)->builtin_integer_s8;
+     }
+ 
+-  error (_("unsupported kind %d for type %s"),
+-	 kind, TYPE_SAFE_NAME (basetype));
+-
+-  /* Should never get here.  */
+   return nullptr;
+ }
+ 
++/* Called when a type has a '(kind=N)' modifier after it, for example
++   'character(kind=1)'.  The BASETYPE is the type described by 'character'
++   in our example, and KIND is the integer '1'.  This function returns a
++   new type that represents the basetype of a specific kind.  */
++static struct type *
++convert_to_kind_type (struct type *basetype, int kind)
++{
++  struct type *res = convert_to_kind_type_1 (basetype, kind);
++
++  if (res == nullptr || res->code () == TYPE_CODE_ERROR)
++    error (_("unsupported kind %d for type %s"),
++	   kind, TYPE_SAFE_NAME (basetype));
++
++  return res;
++}
++
+ struct f_token
+ {
+   /* The string to match against.  */
+diff --git a/gdb/testsuite/gdb.fortran/intrinsics.exp b/gdb/testsuite/gdb.fortran/intrinsics.exp
+index 60c79f956dc..060bb53db97 100644
+--- a/gdb/testsuite/gdb.fortran/intrinsics.exp
++++ b/gdb/testsuite/gdb.fortran/intrinsics.exp
+@@ -112,10 +112,14 @@ gdb_test "ptype cmplx (4,4)" "= complex\\*4"
+ gdb_test "p cmplx (-14,-4)" "= \\(-14,-4\\)"
+ gdb_test "p cmplx (4,4,4)" "\\(4,4\\)"
+ gdb_test "p cmplx (4,4,8)" "\\(4,4\\)"
+-gdb_test "p cmplx (4,4,16)" "\\(4,4\\)"
++set re_unsupported_kind_16 \
++    [string_to_regexp "unsupported kind 16 for type complex*4"]
++gdb_test "p cmplx (4,4,16)" \
++    ([string_to_regexp " = (4,4)"]|$re_unsupported_kind_16)
+ gdb_test "ptype cmplx (4,4,4)" "= complex\\*4"
+ gdb_test "ptype cmplx (4,4,8)" "= complex\\*8"
+-gdb_test "ptype cmplx (4,4,16)" "= complex\\*16"
++gdb_test "ptype cmplx (4,4,16)" \
++    ([string_to_regexp " = complex*16"]|$re_unsupported_kind_16)
+ 
+ gdb_test "p cmplx (4,4,1)" "unsupported kind 1 for type complex\\*4"
+ gdb_test "p cmplx (4,4,-1)" "unsupported kind -1 for type complex\\*4"
+diff --git a/gdb/testsuite/gdb.fortran/type-kinds.exp b/gdb/testsuite/gdb.fortran/type-kinds.exp
+index ab5f19f97a4..a6f2aa4e870 100644
+--- a/gdb/testsuite/gdb.fortran/type-kinds.exp
++++ b/gdb/testsuite/gdb.fortran/type-kinds.exp
+@@ -43,12 +43,20 @@ proc test_basic_parsing_of_type_kinds {} {
+     test_cast_1_to_type_kind "complex" "" "\\(1,0\\)" "8"
+     test_cast_1_to_type_kind "complex" "4" "\\(1,0\\)" "8"
+     test_cast_1_to_type_kind "complex" "8" "\\(1,0\\)" "16"
+-    test_cast_1_to_type_kind "complex" "16" "\\(1,0\\)" "32"
++    set re_unsupported_kind \
++	[string_to_regexp "unsupported kind 16 for type complex*4"]
++    test_cast_1_to_type_kind "complex" "16" \
++	[string_to_regexp (1,0)]|$re_unsupported_kind \
++	32|$re_unsupported_kind
+ 
+     test_cast_1_to_type_kind "real" "" "1" "4"
+     test_cast_1_to_type_kind "real" "4" "1" "4"
+     test_cast_1_to_type_kind "real" "8" "1" "8"
+-    test_cast_1_to_type_kind "real" "16" "1" "16"
++    set re_unsupported_kind \
++	[string_to_regexp "unsupported kind 16 for type real*4"]
++    test_cast_1_to_type_kind "real" "16" \
++	1|$re_unsupported_kind \
++	16|$re_unsupported_kind
+ 
+     test_cast_1_to_type_kind "logical" "" "\\.TRUE\\." "4"
+     test_cast_1_to_type_kind "logical" "1" "\\.TRUE\\." "1"
+@@ -83,11 +91,17 @@ proc test_old_star_type_sizes {} {
+ 
+     gdb_test "p ((complex*4) 1)" " = \\(1,0\\)"
+     gdb_test "p ((complex*8) 1)" " = \\(1,0\\)"
+-    gdb_test "p ((complex*16) 1)" " = \\(1,0\\)"
++    set re_unsupported_kind \
++	[string_to_regexp "unsupported kind 16 for type complex*4"]
++    gdb_test "p ((complex*16) 1)" \
++	[string_to_regexp " = (1,0)"]|$re_unsupported_kind
+ 
+     gdb_test "p ((real*4) 1)" " = 1"
+     gdb_test "p ((real*8) 1)" " = 1"
+-    gdb_test "p ((real*16) 1)" " = 1"
++    set re_unsupported_kind \
++	[string_to_regexp "unsupported kind 16 for type real*4"]
++    gdb_test "p ((real*16) 1)" \
++	"( = 1|$re_unsupported_kind)"
+ 
+     gdb_test "p ((logical*1) 1)" " = \\.TRUE\\."
+     gdb_test "p ((logical*4) 1)" " = \\.TRUE\\."
+diff --git a/gdb/testsuite/gdb.fortran/types.exp b/gdb/testsuite/gdb.fortran/types.exp
+index 83b109869e6..edbf5abee97 100644
+--- a/gdb/testsuite/gdb.fortran/types.exp
++++ b/gdb/testsuite/gdb.fortran/types.exp
+@@ -94,7 +94,24 @@ proc test_primitive_types_known {} {
+ 	# While TYPE_KIND is allowed as input, GDB will always return the
+ 	# Fortran notation TYPE*KIND
+ 	regsub -all "_" $type "\*" type_res
+-	gdb_test "ptype $type" [string_to_regexp "type = $type_res"]
++	set re [string_to_regexp "type = $type_res"]
++	switch $type {
++	    real*16 - complex*16 {
++		regexp {^[^*_]*} $type base
++		set re_unsupported \
++		    [string_to_regexp \
++			 "unsupported kind 16 for type $base*4"]
++		set re ($re|$re_unsupported)
++	    }
++	    real_16 - complex_16 {
++		set re_unsupported \
++		    [string_to_regexp \
++			 "unsupported type $type_res"]
++		set re ($re|$re_unsupported)
++	    }
++	}
++
++	gdb_test "ptype $type" $re
+     }
+ }
+ 
+-- 
+2.43.0
+

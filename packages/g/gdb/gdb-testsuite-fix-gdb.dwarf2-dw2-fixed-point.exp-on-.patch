@@ -1,0 +1,54 @@
+From 80150dc7ac41e767d857905702bf4b57eb1c0029 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 16 Aug 2024 14:22:46 +0200
+Subject: [PATCH 11/46] [gdb/testsuite] Fix gdb.dwarf2/dw2-fixed-point.exp on
+ arm-linux
+
+With test-case gdb.dwarf2/dw2-fixed-point.exp on arm-linux I run into:
+...
+(gdb) PASS: gdb.dwarf2/dw2-fixed-point.exp: set lang ada
+print pck.fp1_var^M
+$1 = 0.3125^M
+(gdb) FAIL: gdb.dwarf2/dw2-fixed-point.exp: print pck.fp1_var
+...
+
+The problem is that the thumb prologue analyzer overshoot, setting the
+breakpoint for main after line 49:
+...
+    46  int
+    47  main (void)
+    48  {
+    49    pck__fp1_var++;
+...
+and consequently we see the value of pck.fp1_var after line 49 instead of
+before line 49.  This is PR tdep/31981.
+
+Work around this by removing line 49 and all similar subsequent lines, which
+turn out to be dead code.
+
+Approved-By: Luis Machado <luis.machado@arm.com>
+
+Tested on arm-linux.
+---
+ gdb/testsuite/gdb.dwarf2/dw2-fixed-point.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-fixed-point.c b/gdb/testsuite/gdb.dwarf2/dw2-fixed-point.c
+index 58b97caf055..2789e6ac0fb 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-fixed-point.c
++++ b/gdb/testsuite/gdb.dwarf2/dw2-fixed-point.c
+@@ -46,11 +46,5 @@ int8_t pck__fp1_range_var = 16;
+ int
+ main (void)
+ {
+-  pck__fp1_var++;
+-  pck__fp1_var2++;
+-  pck__fp2_var++;
+-  pck__fp3_var++;
+-  pck__fp1_range_var++;
+-
+   return 0;
+ }
+-- 
+2.43.0
+

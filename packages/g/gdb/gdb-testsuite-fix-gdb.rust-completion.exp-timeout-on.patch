@@ -1,0 +1,70 @@
+From 90e16cc4b30a742387b6d8324a862a5e4a91b24e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 10 Jan 2025 08:53:29 +0100
+Subject: [PATCH 30/46] [gdb/testsuite] Fix gdb.rust/completion.exp timeout on
+ riscv64-linux
+
+On riscv64-linux, with test-case gdb.rust/completion.exp I run into the
+following timeout:
+...
+(gdb) complete break pars^M
+FAIL: gdb.rust/completion.exp: complete break pars (timeout)
+...
+
+Replaying the scenario outside the testsuite show us that the command takes
+~13 seconds:
+...
+$ gdb -q -batch -x gdb.in
+  ...
+2025-01-08 12:23:46.853 - command started
++complete break pars
+break parse.rs
+break parse_printf_format
+break parse_running_mmaps_unix.rs
+break parser.rs
+2025-01-08 12:23:59.600 - command finished
+Command execution time: 12.677752 (cpu), 12.748565 (wall)
+...
+while the timeout is 10 seconds.
+
+The riscv64 processor on the server (cfarm91) is not fast (a fair amount of
+the skip_huge_test test-cases times out), but something else is going on as
+well.
+
+For x86_64-linux, roughly measuring the size of debug info in the exec get us:
+...
+$ readelf -wi outputs/gdb.rust/completion/completion | wc -l
+2007
+...
+while on the riscv64 server I get:
+...
+$ readelf -wi outputs/gdb.rust/completion/completion | wc -l
+1606950
+...
+
+So it seems reasonable that the test is somewhat slower on riscv64.
+
+Fix this by using timeout factor 2.
+
+Tested on riscv64-linux and x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/gdb.rust/completion.exp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.rust/completion.exp b/gdb/testsuite/gdb.rust/completion.exp
+index 02fbdcdf92c..1b0638ad21a 100644
+--- a/gdb/testsuite/gdb.rust/completion.exp
++++ b/gdb/testsuite/gdb.rust/completion.exp
+@@ -31,4 +31,6 @@ if {![runto ${srcfile}:$line]} {
+     return -1
+ }
+ 
+-gdb_test "complete break pars" ".*"
++with_timeout_factor 2 {
++    gdb_test "complete break pars" ".*"
++}
+-- 
+2.43.0
+

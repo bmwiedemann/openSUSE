@@ -1,0 +1,191 @@
+From 680379be6e3bcd4f8e1fcc85055e9dd0d6bbbaff Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 10 Jan 2025 10:32:00 +0100
+Subject: [PATCH 28/46] [gdb/tdep] Fix gdb.cp/non-trivial-retval.exp on
+ riscv64-linux
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+With test-case gdb.cp/non-trivial-retval.exp on riscv64-linux, I ran into:
+...
+(gdb) finish^M
+Run till exit from #0  f1 (i1=i1@entry=23, i2=i2@entry=100) \
+  at non-trivial-retval.cc:34^M
+main () at non-trivial-retval.cc:163^M
+163       B b = f2 (i1, i2);^M
+Value returned is $6 = {a = -5856}^M
+(gdb) FAIL: $exp: finish from f1
+...
+where "Value returned is $6 = {a = 123}" is expected.
+
+The problem is that gdb thinks that the return value is in $a0:
+...
+$ gdb -q -batch non-trivial-retval \
+  -ex "b f1" \
+  -ex run \
+  -ex "set debug riscv infcall on" \
+  -ex finish
+Breakpoint 1 at 0x80a: file non-trivial-retval.cc, line 34.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/riscv64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, f1 (i1=i1@entry=23, i2=i2@entry=100) at non-trivial-retval.cc:34
+34      {
+[riscv-infcall] riscv_return_value: \
+  [R] type: 'A', length: 0x4, alignment: 0x4, register a0
+[riscv-infcall] riscv_return_value: \
+  [R] type: 'A', length: 0x4, alignment: 0x4, register a0
+[riscv-infcall] riscv_return_value: \
+  [R] type: 'A', length: 0x4, alignment: 0x4, register a0
+main () at non-trivial-retval.cc:163
+163       B b = f2 (i1, i2);
+Value returned is $1 = {a = -3568}
+...
+while $a0 actually contains a pointer to the returned value 123:
+...
+(gdb) p /x $a0
+$3 = 0x3ffffff210
+(gdb) p  *((unsigned int *)$a0)
+$5 = 123
+...
+
+The returned type is:
+...
+class A
+{
+public:
+  A () {}
+  A (A &obj);
+
+  int a;
+};
+...
+which is a C++ aggregate with a nontrivial (because it's user-defined) copy
+constructor:
+
+According to the ABI [1], indeed this is returned by reference:
+...
+Values are returned in the same manner as a first named argument of the same
+type would be passed.  If such an argument would have been passed by
+reference, the caller allocates memory for the return value, and passes the
+address as an implicit first parameter.
+  ...
+Aggregates larger than 2×XLEN bits are passed by reference and are replaced in
+the argument list with the address, as are C++ aggregates with nontrivial copy
+constructors, destructors, or vtables.
+...
+
+Fix this in riscv_call_arg_scalar_int by checking for
+language_pass_by_reference ().trivially_copy_constructible.
+
+The vtable case is explictly mentioned in the ABI, but AFAIU already covered
+by the nontrivial copy constructor case.
+
+The nontrivial destructor case is also not supported, but the testsuite
+doesn't seem to trigger this.
+
+Fix this by:
+- extending the test-case to cover this scenario, and
+- fixing it in riscv_call_arg_scalar_int by checking for
+  language_pass_by_reference ().trivially_destructible.
+
+Tested on riscv64-linux.
+
+PR tdep/32152
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32152
+
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+
+[1] https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-cc.adoc
+---
+ gdb/riscv-tdep.c                            |  6 +++++-
+ gdb/testsuite/gdb.cp/non-trivial-retval.cc  | 19 +++++++++++++++++++
+ gdb/testsuite/gdb.cp/non-trivial-retval.exp |  6 ++++++
+ 3 files changed, 30 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/riscv-tdep.c b/gdb/riscv-tdep.c
+index d592d2dc0c4..edb40d6babf 100644
+--- a/gdb/riscv-tdep.c
++++ b/gdb/riscv-tdep.c
+@@ -2857,8 +2857,12 @@ static void
+ riscv_call_arg_scalar_int (struct riscv_arg_info *ainfo,
+ 			   struct riscv_call_info *cinfo)
+ {
++  auto lang_req = language_pass_by_reference (ainfo->type);
++
+   if (TYPE_HAS_DYNAMIC_LENGTH (ainfo->type)
+-      || ainfo->length > (2 * cinfo->xlen))
++      || ainfo->length > (2 * cinfo->xlen)
++      || !lang_req.trivially_copy_constructible
++      || !lang_req.trivially_destructible)
+     {
+       /* Argument is going to be passed by reference.  */
+       ainfo->argloc[0].loc_type
+diff --git a/gdb/testsuite/gdb.cp/non-trivial-retval.cc b/gdb/testsuite/gdb.cp/non-trivial-retval.cc
+index 4bba0f1c3af..4e812516d63 100644
+--- a/gdb/testsuite/gdb.cp/non-trivial-retval.cc
++++ b/gdb/testsuite/gdb.cp/non-trivial-retval.cc
+@@ -142,6 +142,24 @@ f4 (int i1, int i2)
+   return e;
+ }
+ 
++class F
++{
++public:
++  ~F () {}
++
++  int f;
++};
++
++F
++f5 (int i1, int i2)
++{
++  F f;
++
++  f.f = i1 + i2;
++
++  return f;
++}
++
+ /* We place a breakpoint on the call to this function.  */
+ 
+ void
+@@ -164,6 +182,7 @@ main (void)
+   B1 b1 = f22 (i1, i2);
+   C c = f3 (i1, i2);
+   E e = f4 (i1, i2);
++  F f = f5 (i1, i2);
+ 
+   return 0;
+ }
+diff --git a/gdb/testsuite/gdb.cp/non-trivial-retval.exp b/gdb/testsuite/gdb.cp/non-trivial-retval.exp
+index 89035e178ed..6c9f7e13d2a 100644
+--- a/gdb/testsuite/gdb.cp/non-trivial-retval.exp
++++ b/gdb/testsuite/gdb.cp/non-trivial-retval.exp
+@@ -42,12 +42,14 @@ gdb_test "p f2 (i1, i2)" ".* = {b = 123}"
+ gdb_test "p f22 (i1, i2)" ".* = {b1 = 123}"
+ gdb_test "p f3 (i1, i2)" ".* = {.* c = 123}"
+ gdb_test "p f4 (i1, i2)" ".* = {.* e = 123}"
++gdb_test "p f5 (i1, i2)" ".* = {f = 123}"
+ 
+ gdb_breakpoint "f1"
+ gdb_breakpoint "f2"
+ gdb_breakpoint "f22"
+ gdb_breakpoint "f3"
+ gdb_breakpoint "f4"
++gdb_breakpoint "f5"
+ 
+ gdb_continue_to_breakpoint "Break in f1"
+ gdb_test "finish" " = {a = 123}" \
+@@ -68,3 +70,7 @@ gdb_test "finish" " = {.* c = 123}" \
+ gdb_continue_to_breakpoint "Break in f4"
+ gdb_test "finish" " = {.* e = 123}" \
+     "finish from f4"
++
++gdb_continue_to_breakpoint "Break in f5"
++gdb_test "finish" " = {f = 123}" \
++    "finish from f5"
+-- 
+2.43.0
+

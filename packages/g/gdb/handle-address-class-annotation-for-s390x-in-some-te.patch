@@ -1,0 +1,125 @@
+From f6d4de8ce34365107106c4af60a9a1fb86a9977d Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 24 Jul 2024 14:56:56 +0200
+Subject: [PATCH 18/46] Handle address class annotation for s390x in some
+ test-cases
+
+On s390x-linux, I ran into:
+...
+(gdb) ptype crash^M
+type = class crash {^M
+^M
+  public:^M
+    crash(int (class {...}::*)(class {...} * const @mode32));^M
+}^M
+(gdb) FAIL: gdb.dwarf2/dw2-anon-mptr.exp: ptype crash
+...
+
+The problem is that the test-case doesn't expect the address class annotation
+@mode32.
+
+The test-case uses a .S file, with the address size hard-coded to 4 bytes, and
+that's something that is annotated with @mode32 on s390x (which uses 8 byte
+addresses).
+
+Fix this by allowing the annotation in the regexp.
+
+Likewise in two other test-cases.
+
+Tested on s390-linux and x86_64-linux.
+---
+ gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.exp      | 16 +++++++++++++++-
+ gdb/testsuite/gdb.dwarf2/dw2-opt-structptr.exp  | 17 ++++++++++++-----
+ .../gdb.dwarf2/member-ptr-forwardref.exp        | 16 +++++++++++++++-
+ 3 files changed, 42 insertions(+), 7 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.exp b/gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.exp
+index 5935ba628b6..fa98e413ad8 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.exp
++++ b/gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.exp
+@@ -36,5 +36,19 @@ gdb_test "show cp-abi" {The currently selected C\+\+ ABI is "gnu-v3".*}
+ 
+ gdb_load $binfile
+ 
++set re_address_class "@\[^\r\n\]+"
++
++set re_class_ptr_const \
++    [string cat \
++	 [string_to_regexp "class {...} * const"] "( $re_address_class)?"]
++
+ gdb_test "ptype crash" \
+-    "type = class crash {\[\r\n \t\]*public:\[\r\n \t\]*crash\\(int \\(class {\\.\\.\\.}::\\*\\)\\(class {\\.\\.\\.} \\* const\\)\\);\[\r\n \t\]*}"
++    [multi_line \
++	 "type = class crash {" \
++	 "" \
++	 "  public:" \
++	 [string cat \
++	      [string_to_regexp "    crash(int (class {...}::*)("] \
++	      $re_class_ptr_const \
++	      [string_to_regexp "));"]] \
++	 "}"]
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-opt-structptr.exp b/gdb/testsuite/gdb.dwarf2/dw2-opt-structptr.exp
+index cebed1d292b..d73f4a892ba 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-opt-structptr.exp
++++ b/gdb/testsuite/gdb.dwarf2/dw2-opt-structptr.exp
+@@ -126,6 +126,8 @@ proc build_test_program {} {
+     }
+ }
+ 
++set re_address_class "@\[^\r\n\]+"
++
+ # Test access to an optimized-out pointer-to-struct using the
+ # console interpreter.
+ 
+@@ -210,13 +212,18 @@ proc do_mi_test {} {
+ 	
+ 	# Test that -var-create for 'ptr' is successful.
+ 	mi_create_varobj "var1" "ptr" "create varobj for ptr"
++
++	set struct_foo_ptr \
++	    [string cat \
++		 [string_to_regexp "struct foo *"] "( $::re_address_class)?"]
+ 	
+ 	# Test that -var-list-children of 'ptr' is successful.
+-	mi_list_varobj_children "var1" { \
+-	    {var1.a a 0 integer} \
+-	    {var1.x x 128 foo__array_type} \
+-	    {var1.y y 3 "struct foo \\*"} \
+-	} "get children of var1 (ptr)"
++	mi_list_varobj_children "var1" \
++	    [list \
++		 {var1.a a 0 integer} \
++		 {var1.x x 128 foo__array_type} \
++		 [list "var1.y" "y" "3" $struct_foo_ptr]] \
++	    "get children of var1 (ptr)"
+ 
+ 	# Test that dereferencing 'ptr' will throw an error.
+ 	mi_gdb_test "-var-create var2 * &((ptr)->a)" \
+diff --git a/gdb/testsuite/gdb.dwarf2/member-ptr-forwardref.exp b/gdb/testsuite/gdb.dwarf2/member-ptr-forwardref.exp
+index c97c887d5a1..21ad111c9ac 100644
+--- a/gdb/testsuite/gdb.dwarf2/member-ptr-forwardref.exp
++++ b/gdb/testsuite/gdb.dwarf2/member-ptr-forwardref.exp
+@@ -34,5 +34,19 @@ gdb_test "show cp-abi" {The currently selected C\+\+ ABI is "gnu-v3".*}
+ 
+ gdb_load ${binfile}
+ 
++set re_address_class "@\[^\r\n\]+"
++
++set re_C_ptr \
++    [string cat \
++	 [string_to_regexp "C *"] "( const)?( $re_address_class)?"]
++
+ gdb_test_no_output "set language c++"
+-gdb_test "ptype c" "type = struct C {\[\r\n \t\]*private:\[\r\n \t\]*int \\(C::\\*fp\\)\\(C \\*( const)?\\);\[\r\n \t\]*}"
++gdb_test "ptype c" \
++    [multi_line \
++	 "type = struct C {" \
++	 "  private:" \
++	 [string cat \
++	      [string_to_regexp "    int (C::*fp)("] \
++	      $re_C_ptr \
++	      [string_to_regexp ");"]] \
++	 "}"]
+-- 
+2.43.0
+

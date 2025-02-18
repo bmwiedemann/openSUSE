@@ -1,0 +1,36 @@
+From e910a619716a2554f583679ff062a363699b2b93 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 8 Jan 2025 12:48:08 +0100
+Subject: [PATCH 31/46] [gdb/testsuite] Require supports_process_record in
+ gdb.reverse/test_ioctl_TCSETSW.exp
+
+I ran test-case gdb.reverse/test_ioctl_TCSETSW.exp on riscv64-linux, and got:
+...
+(gdb) record full^M
+Process record: the current architecture doesn't support record function.^M
+(gdb) FAIL: gdb.reverse/test_ioctl_TCSETSW.exp: record full
+...
+
+Fix this by requiring supports_process_record.
+
+Tested on riscv64-linux and x86_64-linux.
+---
+ gdb/testsuite/gdb.reverse/test_ioctl_TCSETSW.exp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.reverse/test_ioctl_TCSETSW.exp b/gdb/testsuite/gdb.reverse/test_ioctl_TCSETSW.exp
+index f6346bc86bf..6d54683982d 100644
+--- a/gdb/testsuite/gdb.reverse/test_ioctl_TCSETSW.exp
++++ b/gdb/testsuite/gdb.reverse/test_ioctl_TCSETSW.exp
+@@ -16,6 +16,8 @@
+ # Test ioctl TCSETSW record for PowerPC.
+ #
+ 
++require supports_process_record
++
+ standard_testfile .c
+ 
+ if { [prepare_for_testing "failed to prepare" ${testfile} ${srcfile}] } {
+-- 
+2.43.0
+

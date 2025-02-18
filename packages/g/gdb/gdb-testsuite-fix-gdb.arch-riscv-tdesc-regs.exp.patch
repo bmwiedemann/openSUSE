@@ -1,0 +1,84 @@
+From cb85331b671b668aaea1e10b2a37d49e9260bac3 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 4 Sep 2024 15:37:28 +0200
+Subject: [PATCH 35/46] [gdb/testsuite] Fix gdb.arch/riscv-tdesc-regs.exp
+
+On riscv64-linux, with test-case gdb.arch/riscv-tdesc-regs.exp I get:
+...
+(gdb) info registers fflags^M
+fflags         0x0      NV:0 DZ:0 OF:0 UF:0 NX:0^M
+(gdb) FAIL: gdb.arch/riscv-tdesc-regs.exp: info registers fflags
+info registers frm^M
+frm            0x0      FRM:0 [RNE (round to nearest; ties to even)]^M
+(gdb) FAIL: gdb.arch/riscv-tdesc-regs.exp: info registers frm
+...
+
+The FAILs are produced by:
+...
+foreach reg {fflags frm} {
+    gdb_test_multiple "info registers $reg" "" {
+        -re "^info registers $reg\r\n" {
+            exp_continue
+        }
+
+        -wrap -re "^Invalid register `$reg`" {
+            fail $gdb_test_name
+        }
+
+        -wrap -re "^$reg\\s+\[^\r\n\]+" {
+            pass $gdb_test_name
+	}
+    }
+}
+...
+
+The first clause is meant to consume the command.
+
+The '^' char was updated to mean "consume command", so that clause no longer
+works since it now attempts to consume the command twice.
+
+Also, it's unnecessary because the following clauses start with ^.
+
+Then, the second clause is unnecessary because there's a default clause
+producing the FAIL.
+
+Fix this by simplifying to:
+...
+foreach reg {fflags frm} {
+    gdb_test "info registers $reg" "^$reg\\s+\[^\r\n\]+"
+}
+...
+
+Tested on riscv64-linux.
+
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+---
+ gdb/testsuite/gdb.arch/riscv-tdesc-regs.exp | 14 +-------------
+ 1 file changed, 1 insertion(+), 13 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.arch/riscv-tdesc-regs.exp b/gdb/testsuite/gdb.arch/riscv-tdesc-regs.exp
+index bd4ba38390a..58859d161b6 100644
+--- a/gdb/testsuite/gdb.arch/riscv-tdesc-regs.exp
++++ b/gdb/testsuite/gdb.arch/riscv-tdesc-regs.exp
+@@ -156,17 +156,5 @@ gdb_test_no_output "set tdesc filename $remote_file" \
+     "load the target description that lacks fflags and frm"
+ 
+ foreach reg {fflags frm} {
+-    gdb_test_multiple "info registers $reg" "" {
+-	-re "^info registers $reg\r\n" {
+-	    exp_continue
+-	}
+-
+-	-wrap -re "^Invalid register `$reg`" {
+-	    fail $gdb_test_name
+-	}
+-
+-	-wrap -re "^$reg\\s+\[^\r\n\]+" {
+-	    pass $gdb_test_name
+-	}
+-    }
++    gdb_test "info registers $reg" "^$reg\\s+\[^\r\n\]+"
+ }
+-- 
+2.43.0
+

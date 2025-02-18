@@ -1,0 +1,56 @@
+From 2ccefe53891d9c1393853f5179f8e8046c95a6ce Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 19 Jun 2024 10:04:22 +0200
+Subject: [PATCH 17/46] Fix gdb.dwarf2/shortpiece.exp on s390x
+
+On s390x-linux, I run into:
+...
+(gdb) p (short []) s1^M
+$3 = {0, 1, 0, <optimized out>}^M
+(gdb) FAIL: gdb.dwarf2/shortpiece.exp: p (short []) s1
+...
+while this is expected:
+...
+(gdb) p (short []) s1^M
+$3 = {1, 0, 0, <optimized out>}^M
+(gdb) PASS: gdb.dwarf2/shortpiece.exp: p (short []) s1
+...
+
+The type of s1 is:
+...
+(gdb) ptype s1
+type = struct S {
+    myint a;
+    myushort b;
+}
+...
+so the difference is due the fact that viewing an int as two shorts gives
+different results depending on the endianness.
+
+Fix this by allowing both results.
+
+Tested on x86_64-linux and s390x-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/gdb.dwarf2/shortpiece.exp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.dwarf2/shortpiece.exp b/gdb/testsuite/gdb.dwarf2/shortpiece.exp
+index f7ff805de7c..4fcdfcae57a 100644
+--- a/gdb/testsuite/gdb.dwarf2/shortpiece.exp
++++ b/gdb/testsuite/gdb.dwarf2/shortpiece.exp
+@@ -138,7 +138,9 @@ gdb_test "p s2" \
+ # This test verifies that GDB can print a pieced value casted to a
+ # different type.
+ gdb_test "p (int \[\]) s1" " = \\{1, <optimized out>\\}"
+-gdb_test "p (short \[\]) s1" " = \\{1, 0, 0, <optimized out>\\}"
++set re_little [string_to_regexp "{1, 0, 0, <optimized out>}"]
++set re_big  [string_to_regexp "{0, 1, 0, <optimized out>}"]
++gdb_test {p (short []) s1} " = ($re_little|$re_big)"
+ 
+ # Test for correct output if the size of the original object is not a
+ # multiple of the array's element size.
+-- 
+2.43.0
+

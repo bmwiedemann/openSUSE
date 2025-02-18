@@ -1,0 +1,103 @@
+From 2723a9ea67f16593591c4db9101e423ff73e6353 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 16 Jan 2025 09:39:55 +0100
+Subject: [PATCH 31/37] [gdb/testsuite] Fix timeouts in
+ gdb.threads/step-over-thread-exit.exp
+
+Once in a while, I run into a timeout in test-case
+gdb.threads/step-over-thread-exit.exp:
+...
+(gdb) continue^M
+Continuing.^M
+[New Thread 0xfffff7cff1a0 (LWP 2874854)]^M
+^M
+Thread 97 "step-over-threa" hit Breakpoint 2, 0x0000000000410314 in \
+  my_exit_syscall () at gdb/testsuite/lib/my-syscalls.S:74^M
+74      SYSCALL (my_exit, __NR_exit)^M
+(gdb) [Thread 0xfffff7cff1a0 (LWP 2874853) exited]^M
+FAIL: $exp: step_over_mode=displaced: non-stop=on: target-non-stop=on: \
+  schedlock=off: cmd=continue: ns_stop_all=0: iter 95: continue (timeout)
+...
+
+I can reproduce it more frequently by running with taskset -c <slow core id>.
+
+Fix this by using -no-prompt-anchor.
+
+This requires us to add -no-prompt-anchor to proc gdb_test_multiple.
+
+Tested on aarch64-linux.
+
+PR testsuite/32489
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32489
+---
+ gdb/testsuite/gdb.threads/step-over-thread-exit.exp | 5 +++--
+ gdb/testsuite/lib/gdb.exp                           | 9 ++++++++-
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.threads/step-over-thread-exit.exp b/gdb/testsuite/gdb.threads/step-over-thread-exit.exp
+index 8eb93995657..98cc94e9528 100644
+--- a/gdb/testsuite/gdb.threads/step-over-thread-exit.exp
++++ b/gdb/testsuite/gdb.threads/step-over-thread-exit.exp
+@@ -193,7 +193,7 @@ proc test {step_over_mode non-stop target-non-stop schedlock cmd ns_stop_all} {
+ 		with_test_prefix "iter $i" {
+ 		    set ok 0
+ 		    set thread "<unknown>"
+-		    gdb_test_multiple "continue" "" {
++		    gdb_test_multiple "continue" "" -no-prompt-anchor {
+ 			-re -wrap "Thread ($::decimal) .*hit Breakpoint $::decimal.* my_exit_syscall .*" {
+ 			    set thread $expect_out(1,string)
+ 			    set ok 1
+@@ -206,7 +206,8 @@ proc test {step_over_mode non-stop target-non-stop schedlock cmd ns_stop_all} {
+ 		    }
+ 
+ 		    if {${non-stop}} {
+-			gdb_test -nopass "thread $thread" "Switching to thread .*" \
++			gdb_test -nopass -no-prompt-anchor "thread $thread" \
++			    "Switching to thread .*" \
+ 			    "switch to event thread"
+ 		    }
+ 		}
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index c32dccab43e..008c1b83c1e 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -977,6 +977,10 @@ proc fill_in_default_prompt {prompt_regexp with_anchor} {
+ #   if one of them matches.  If MESSAGE is empty COMMAND will be used.
+ # -prompt PROMPT_REGEXP specifies a regexp matching the expected prompt
+ #   after the command output.  If empty, defaults to "$gdb_prompt $".
++# -no-prompt-anchor specifies that if the default prompt regexp is used, it
++#   should not be anchored at the end of the buffer.  This means that the
++#   pattern can match even if there is stuff output after the prompt.  Does not
++#   have any effect if -prompt is specified.
+ # -lbl specifies that line-by-line matching will be used.
+ # EXPECT_ARGUMENTS will be fed to expect in addition to the standard
+ #   patterns.  Pattern elements will be evaluated in the caller's
+@@ -1076,6 +1080,7 @@ proc gdb_test_multiple { command message args } {
+ 
+     set line_by_line 0
+     set prompt_regexp ""
++    set prompt_anchor 1
+     for {set i 0} {$i < [llength $args]} {incr i} {
+ 	set arg [lindex $args $i]
+ 	if { $arg  == "-prompt" } {
+@@ -1083,6 +1088,8 @@ proc gdb_test_multiple { command message args } {
+ 	    set prompt_regexp [lindex $args $i]
+ 	} elseif { $arg == "-lbl" } {
+ 	    set line_by_line 1
++	} elseif { $arg == "-no-prompt-anchor" } {
++	    set prompt_anchor 0
+ 	} else {
+ 	    set user_code $arg
+ 	    break
+@@ -1094,7 +1101,7 @@ proc gdb_test_multiple { command message args } {
+ 	error "Too few arguments to gdb_test_multiple"
+     }
+ 
+-    set prompt_regexp [fill_in_default_prompt $prompt_regexp true]
++    set prompt_regexp [fill_in_default_prompt $prompt_regexp $prompt_anchor]
+ 
+     if { $message == "" } {
+ 	set message $command
+-- 
+2.43.0
+

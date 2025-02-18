@@ -1,0 +1,39 @@
+From 7992b582e5a55bf2fd64f2f94b854d335c36c6a5 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 28 Jan 2025 17:44:42 +0100
+Subject: [PATCH] [gdb/testsuite] Fix gdb_py_module_available for python 3.4
+
+On SLE-12, I run into:
+...
+(gdb) python import pygments
+Python Exception <class 'ImportError'>: No module named 'pygments'
+Error occurred in Python: No module named 'pygments'
+(gdb) FAIL: gdb.base/style.exp: python import pygments
+...
+
+Fix this by handling the output string in gdb_py_module_available.
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/lib/gdb-python.exp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/gdb/testsuite/lib/gdb-python.exp b/gdb/testsuite/lib/gdb-python.exp
+index e27d5c17769..f8141193596 100644
+--- a/gdb/testsuite/lib/gdb-python.exp
++++ b/gdb/testsuite/lib/gdb-python.exp
+@@ -64,6 +64,9 @@ proc gdb_py_module_available { name } {
+ 	-re -wrap "ImportError: No module named '?${name}'?.*" {
+ 	    set available false
+ 	}
++	-re -wrap "Python Exception <class 'ImportError'>: No module named '?${name}'?.*" {
++	    set available false
++	}
+ 	-re -wrap "python import ${name}" {
+ 	    set available true
+ 	}
+
+base-commit: 94df6741bbabaa9a51960446b2af4c0bed01b54b
+-- 
+2.43.0
+

@@ -1,0 +1,41 @@
+From 442c996a4de355459eeabd280649ddb282d7de41 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 25 Jan 2025 10:08:53 +0100
+Subject: [PATCH 2/2] [gdb/cli] Print AT_HWCAP3 and AT_HWCAP4
+
+PR cli/32590
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32590
+---
+ gdb/auxv.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/gdb/auxv.c b/gdb/auxv.c
+index 8cda0b687b4..bb4c7ea70a0 100644
+--- a/gdb/auxv.c
++++ b/gdb/auxv.c
+@@ -453,6 +453,13 @@ fprint_auxv_entry (struct ui_file *file, const char *name,
+     }
+ }
+ 
++#ifndef AT_HWCAP3
++#define AT_HWCAP3 29
++#endif
++#ifndef AT_HWCAP4
++#define AT_HWCAP4 30
++#endif
++
+ /* The default implementation of gdbarch_print_auxv_entry.  */
+ 
+ void
+@@ -495,6 +502,8 @@ default_print_auxv_entry (struct gdbarch *gdbarch, struct ui_file *file,
+ 	   AUXV_FORMAT_STR);
+       TAG (AT_RANDOM, _("Address of 16 random bytes"), AUXV_FORMAT_HEX);
+       TAG (AT_HWCAP2, _("Extension of AT_HWCAP"), AUXV_FORMAT_HEX);
++      TAG (AT_HWCAP3, _("Extension of AT_HWCAP"), AUXV_FORMAT_HEX);
++      TAG (AT_HWCAP4, _("Extension of AT_HWCAP"), AUXV_FORMAT_HEX);
+       TAG (AT_RSEQ_FEATURE_SIZE, _("rseq supported feature size"),
+ 	   AUXV_FORMAT_DEC);
+       TAG (AT_RSEQ_ALIGN, _("rseq allocation alignment"),
+-- 
+2.43.0
+

@@ -1,0 +1,46 @@
+From 559ec501f594101dd786ce7dad1c89069934c965 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 13 Nov 2024 19:37:04 +0100
+Subject: [PATCH 14/46] [gdb/tdep] Handle sycall statx for arm-linux
+
+When running test-case gdb.reverse/fstatat-reverse.exp on arm-linux, I run
+into:
+...
+(gdb) continue^M
+Continuing.^M
+Process record and replay target doesn't support syscall number 397^M
+Process record does not support instruction 0xdf00 at address 0xf7ebf774.^M
+Process record: failed to record execution log.^M
+^M
+Program stopped.^M
+0xf7ebf774 in ?? () from /lib/arm-linux-gnueabihf/libc.so.6^M
+(gdb) FAIL: gdb.reverse/fstatat-reverse.exp: continue to breakpoint: marker2
+...
+
+Syscall number 397 stands for statx on arm-linux.
+
+Fix this by handling 397 in arm_canonicalize_syscall.
+
+Tested on arm-linux.
+
+Reviewed-By: Guinevere Larsen <guinevere@redhat.com>
+Approved-By: Luis Machado <luis.machado@arm.com>
+---
+ gdb/arm-linux-tdep.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gdb/arm-linux-tdep.c b/gdb/arm-linux-tdep.c
+index 43869e4fcfe..bb3d808bd5a 100644
+--- a/gdb/arm-linux-tdep.c
++++ b/gdb/arm-linux-tdep.c
+@@ -1644,6 +1644,7 @@ arm_canonicalize_syscall (int syscall)
+     case 379: return gdb_sys_finit_module;
+       */
+     case 384: return gdb_sys_getrandom;
++    case 397: return gdb_sys_statx;
+     case 983041: /* ARM_breakpoint */ return gdb_sys_no_syscall;
+     case 983042: /* ARM_cacheflush */ return gdb_sys_no_syscall;
+     case 983043: /* ARM_usr26 */ return gdb_sys_no_syscall;
+-- 
+2.43.0
+

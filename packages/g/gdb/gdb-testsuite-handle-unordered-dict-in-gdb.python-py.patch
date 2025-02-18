@@ -1,0 +1,65 @@
+From 83fafbe970614f89e7e106542bdb9181b0568f0f Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 30 Jan 2025 13:21:56 +0100
+Subject: [PATCH] [gdb/testsuite] Handle unordered dict in
+ gdb.python/py-mi-notify.exp
+
+With test-case gdb.python/py-mi-notify.exp and python 3.4, I occasionally run
+into:
+...
+python gdb.notify_mi('-test-notification', { 'data1' : 1 , 'data2' : 2 })
+&"python gdb.notify_mi('-test-notification', { 'data1' : 1 , 'data2' : 2 })\n"
+=-test-notification,data2="2",data1="1"
+^done
+(gdb)
+FAIL: $exp: python notification, with additional data (unexpected output)
+...
+
+In contrast, a passing version looks like:
+...
+python gdb.notify_mi('-test-notification', { 'data1' : 1 , 'data2' : 2 })
+&"python gdb.notify_mi('-test-notification', { 'data1' : 1 , 'data2' : 2 })\n"
+=-test-notification,data1="1",data2="2"
+^done
+(gdb)
+PASS: gdb.python/py-mi-notify.exp: python notification, with additional data
+...
+
+The python method "gdb.notify_mi(name, data)" has parameter data which is a
+dictionary, and it iterates over that dictionary.
+
+The problem is that dictionaries are only guaranteed to be iterating in
+insertion order starting python 3.7 (though cpython does this starting python
+3.6).
+
+Fix this in the same way as in commit 362a867f2ac ("[gdb/testsuite] Handle
+unordered dict in gdb.python/py-mi-cmd.exp"): by allowing the alternative
+order.
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.python/py-mi-notify.exp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.python/py-mi-notify.exp b/gdb/testsuite/gdb.python/py-mi-notify.exp
+index f808fb2502e..7776976613e 100644
+--- a/gdb/testsuite/gdb.python/py-mi-notify.exp
++++ b/gdb/testsuite/gdb.python/py-mi-notify.exp
+@@ -42,8 +42,11 @@ mi_gdb_test "python gdb.notify_mi('-test-notification', None)" \
+     ".*=-test-notification\r\n\\^done" \
+     "python notification, no additional data"
+ 
++set re_data1 {data1="1"}
++set re_data2 {data2="2"}
++set re_data1_data2 ($re_data1,$re_data2|$re_data2,$re_data1)
+ mi_gdb_test "python gdb.notify_mi('-test-notification', \{ 'data1' : 1 , 'data2' : 2 })" \
+-    ".*=-test-notification,data1=\"1\",data2=\"2\"\r\n\\^done" \
++    ".*=-test-notification,$re_data1_data2\r\n\\^done" \
+     "python notification, with additional data"
+ 
+ mi_gdb_test "python gdb.notify_mi('-test-notification', 1)" \
+
+base-commit: 625cadfb85ae46901ee8cbed08638ed3be8d96f5
+-- 
+2.43.0
+

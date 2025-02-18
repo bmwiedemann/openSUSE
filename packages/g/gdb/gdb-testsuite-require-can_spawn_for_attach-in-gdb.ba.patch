@@ -1,0 +1,40 @@
+From 86ab8a78a6947891eaf93fc6910febf3eb7fa8f0 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 8 Jan 2025 16:07:08 +0100
+Subject: [PATCH 42/46] [gdb/testsuite] Require can_spawn_for_attach in
+ gdb.base/gstack.exp
+
+I ran test-case gdb.base/gstack.exp on a machine with kernel.yama.ptrace_scope
+set to 1 and ran into:
+...
+PASS: gdb.base/gstack.exp: spawn gstack
+ptrace: Operation not permitted.^M
+GSTACK-END^M
+PASS: gdb.base/gstack.exp: gstack exits with no error
+PASS: gdb.base/gstack.exp: gstack's exit status is 0
+FAIL: gdb.base/gstack.exp: got backtrace
+...
+
+Fix this by requiring can_spawn_for_attach.
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.base/gstack.exp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.base/gstack.exp b/gdb/testsuite/gdb.base/gstack.exp
+index a5dacd582ff..d8a6d78e550 100644
+--- a/gdb/testsuite/gdb.base/gstack.exp
++++ b/gdb/testsuite/gdb.base/gstack.exp
+@@ -13,6 +13,8 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++require can_spawn_for_attach
++
+ set testfile gstack
+ set executable ${testfile}
+ set binfile [standard_output_file $executable]
+-- 
+2.43.0
+

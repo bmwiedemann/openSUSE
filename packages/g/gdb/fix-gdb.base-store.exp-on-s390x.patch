@@ -1,0 +1,143 @@
+From 69e165afa3d45cfac89ed6be298ac6465c84c0fd Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 15 Jan 2025 17:02:00 +0100
+Subject: [PATCH 25/46] Fix gdb.base/store.exp on s390x
+
+On s390x-linux, I get:
+...
+(gdb) print l^M
+$29 = 0^M
+(gdb) FAIL: gdb.base/store.exp: var doublest l; print old l, expecting -1
+...
+
+So, we're in wack_doublest trying to print l, which is a copy of parameter u:
+...
+  register doublest l = u, r = v;
+...
+which does have the expected value:
+...
+(gdb) p u
+$1 = -1
+...
+which is a long double, 16 bytes and looks like this:
+...
+(gdb) p /x u
+$3 = 0xbfff0000000000000000000000000000
+...
+
+Parameter u is passed in two registers:
+...
+ <2><6a5>: Abbrev Number: 15 (DW_TAG_formal_parameter)
+    <6a6>   DW_AT_name        : v
+    <69e>   DW_AT_location    : 6 byte block: 50 93 8 51 93 8 \
+      (DW_OP_reg0 (r0); DW_OP_piece: 8; DW_OP_reg1 (r1); DW_OP_piece: 8)
+...
+and indeed we find the msw in r0 and the lsw in r1:
+...
+(gdb) p /x $r0
+$4 = 0xbfff000000000000
+(gdb) p /x $r1
+$5 = 0x0
+(gdb)
+...
+
+Likewise, variable l consists of two registers:
+...
+ <2><6b5>: Abbrev Number: 13 (DW_TAG_variable)
+    <6b6>   DW_AT_name        : l
+    <6be>   DW_AT_location    : 6 byte block: 68 93 8 69 93 8 \
+      (DW_OP_reg24 (f8); DW_OP_piece: 8; DW_OP_reg25 (f10); DW_OP_piece: 8)
+...
+and we find the same values there:
+...
+(gdb) p /x $f8
+$6 = 0xbfff000000000000
+(gdb) p /x $f10
+$7 = 0x0
+...
+
+So, we get the expected results when fetching the value from two gprs, but not
+when fetching the value from two fprs.
+
+When fetching the values from the two fprs, we stumble upon a particularity of
+the DWARF register numbers as defined by the s390x ABI [1]: dwarf register 24
+maps to both floating-point register f8 (8 bytes), and vector register v8
+(16 bytes).
+
+In s390_dwarf_reg_to_regnum, it's determined which of the two is chosen, and
+if available vector registers are preferred over floating-point registers, so
+v8 is chosen, and used to fetch the value.
+
+Since the size of the DW_OP_piece is 8 bytes, and the register size is 16
+bytes, this bit in rw_pieced_value is activated:
+...
+		    /* If the piece is located in a register, but does not
+		       occupy the entire register, the placement of the piece
+		       within that register is defined by the ABI. */
+		    bits_to_skip
+		      += 8 * gdbarch_dwarf2_reg_piece_offset (arch, gdb_regnum,
+							      p->size / 8);
+...
+but since the default implemention default_dwarf2_reg_piece_offset does not
+match the s390x ABI, we get the wrong answer.
+
+This is a known problem, see FOSDEM 2018 presentation "DWARF Pieces And Other
+DWARF Location Woes" [2].
+
+Fix this by adding s390_dwarf2_reg_piece_offset, roughly implementing the same
+logic as in s390_value_from_register.
+
+Tested on s390x-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+[1] https://github.com/IBM/s390x-abi
+[2] https://archive.fosdem.org/2018/schedule/event/dwarfpieces
+---
+ gdb/s390-tdep.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/gdb/s390-tdep.c b/gdb/s390-tdep.c
+index 2609b42f797..a7c58b37276 100644
+--- a/gdb/s390-tdep.c
++++ b/gdb/s390-tdep.c
+@@ -1260,6 +1260,28 @@ s390_value_from_register (gdbarch *gdbarch, type *type, int regnum,
+   return value;
+ }
+ 
++/* Implementation of the gdbarch_dwarf2_reg_piece_offset hook.  */
++
++static ULONGEST
++s390_dwarf2_reg_piece_offset (gdbarch *gdbarch, int gdb_regnum, ULONGEST size)
++{
++  s390_gdbarch_tdep *tdep = gdbarch_tdep<s390_gdbarch_tdep> (gdbarch);
++
++  /* Floating point register.  */
++  if (gdb_regnum >= S390_F0_REGNUM && gdb_regnum <= S390_F15_REGNUM)
++    return 0;
++
++  /* Vector register, v0 - v15.  */
++  if (regnum_is_vxr_full (tdep, gdb_regnum))
++    return 0;
++
++  /* Vector register, v16 - v31.  */
++  if (gdb_regnum >= S390_V16_REGNUM && gdb_regnum <= S390_V31_REGNUM)
++    return 0;
++
++  return default_dwarf2_reg_piece_offset (gdbarch, gdb_regnum, size);
++}
++
+ /* Implement pseudo_register_name tdesc method.  */
+ 
+ static const char *
+@@ -7259,6 +7281,7 @@ s390_gdbarch_init (struct gdbarch_info info, struct gdbarch_list *arches)
+   set_gdbarch_stab_reg_to_regnum (gdbarch, s390_dwarf_reg_to_regnum);
+   set_gdbarch_dwarf2_reg_to_regnum (gdbarch, s390_dwarf_reg_to_regnum);
+   set_gdbarch_value_from_register (gdbarch, s390_value_from_register);
++  set_gdbarch_dwarf2_reg_piece_offset (gdbarch, s390_dwarf2_reg_piece_offset);
+ 
+   /* Pseudo registers.  */
+   set_gdbarch_pseudo_register_read (gdbarch, s390_pseudo_register_read);
+-- 
+2.43.0
+

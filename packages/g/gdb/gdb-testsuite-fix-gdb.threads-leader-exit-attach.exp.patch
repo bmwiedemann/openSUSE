@@ -1,0 +1,80 @@
+From e0c1db6156fa8ee35661a9964062eeb69a963576 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 29 Jul 2024 14:05:52 +0200
+Subject: [PATCH] [gdb/testsuite] Fix gdb.threads/leader-exit-attach.exp with
+ check-read1
+
+With test-case gdb.threads/leader-exit-attach.exp and check-read1, I run into:
+...
+(gdb) attach 18591^M
+Attaching to program: leader-exit-attach, process 18591^M
+warning: process 18591 is a zombie - the process has already terminatedKFAIL: $exp: attach (PRMS: gdb/31555)
+^M
+ptrace: Operation not permitted.^M
+(gdb) FAIL: $exp: get valueof "$_inferior_thread_count"
+...
+
+The problem is that the gdb_test_multiple in the test-case doesn't consume the
+prompt in all clauses:
+...
+gdb_test_multiple "attach $testpid" "attach" {
+    -re "Attaching to process $testpid failed.*" {
+	# GNU/Linux gdbserver.  Linux ptrace does not let you attach
+	# to zombie threads.
+	setup_kfail "gdb/31555" *-*-linux*
+	fail $gdb_test_name
+    }
+    -re "warning: process $testpid is a zombie - the process has already terminated.*" {
+	# Native GNU/Linux.  Linux ptrace does not let you attach to
+	# zombie threads.
+	setup_kfail "gdb/31555" *-*-linux*
+	fail $gdb_test_name
+    }
+    -re "Attaching to program: $escapedbinfile, process $testpid.*$gdb_prompt $" {
+	pass $gdb_test_name
+	set attached 1
+    }
+}
+...
+
+Fix this by using -wrap in the first two clauses.
+
+While we're at it, also use -wrap in the third clause.
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.threads/leader-exit-attach.exp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.threads/leader-exit-attach.exp b/gdb/testsuite/gdb.threads/leader-exit-attach.exp
+index c1ed1baaa67..a1bc2d470d5 100644
+--- a/gdb/testsuite/gdb.threads/leader-exit-attach.exp
++++ b/gdb/testsuite/gdb.threads/leader-exit-attach.exp
+@@ -41,19 +41,19 @@ set is_gdbserver [target_is_gdbserver]
+ set attached 0
+ 
+ gdb_test_multiple "attach $testpid" "attach" {
+-    -re "Attaching to process $testpid failed.*" {
++    -re -wrap "Attaching to process $testpid failed.*" {
+ 	# GNU/Linux gdbserver.  Linux ptrace does not let you attach
+ 	# to zombie threads.
+ 	setup_kfail "gdb/31555" *-*-linux*
+ 	fail $gdb_test_name
+     }
+-    -re "warning: process $testpid is a zombie - the process has already terminated.*" {
++    -re -wrap "warning: process $testpid is a zombie - the process has already terminated.*" {
+ 	# Native GNU/Linux.  Linux ptrace does not let you attach to
+ 	# zombie threads.
+ 	setup_kfail "gdb/31555" *-*-linux*
+ 	fail $gdb_test_name
+     }
+-    -re "Attaching to program: $escapedbinfile, process $testpid.*$gdb_prompt $" {
++    -re -wrap "Attaching to program: $escapedbinfile, process $testpid.*" {
+ 	pass $gdb_test_name
+ 	set attached 1
+     }
+
+base-commit: 6d7adb1f1e6ecad5a6b94319e4d272a82be16277
+-- 
+2.43.0
+

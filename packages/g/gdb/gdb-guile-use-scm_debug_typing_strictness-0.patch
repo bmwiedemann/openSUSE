@@ -1,0 +1,68 @@
+From fe0e6edbcb65ab5eca50c1a0ad8ddc9844f8ea98 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 27 Jan 2025 09:23:18 +0100
+Subject: [PATCH] [gdb/guile] Use SCM_DEBUG_TYPING_STRICTNESS 0
+
+I build gdb with libguile v2.0.9, and ran into:
+...
+In file included from /usr/include/guile/2.0/libguile.h:56,
+                 from ../../gdb/guile/guile-internal.h:30,
+                 from ../../gdb/guile/scm-arch.c:26:
+/usr/include/guile/2.0/libguile/inline.h: In function 'int scm_is_pair(SCM)':
+/usr/include/guile/2.0/libguile/tags.h:97:53: error: \
+  operation on '*0' may be undefined [-Werror=sequence-point]
+ #   define SCM_UNPACK(x) ((scm_t_bits) (0? (*(SCM*)0=(x)): x))
+                                            ~~~~~~~~~^~~~~
+...
+
+Fix this by using SCM_DEBUG_TYPING_STRICTNESS 0.
+
+We were already using this for c++20 due to a Werror=volatile in SCM_UNPACK
+when using libguile v2.0.10.
+
+Tested on x86_64-linux.
+---
+ gdb/guile/guile-internal.h | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/guile/guile-internal.h b/gdb/guile/guile-internal.h
+index be16fee0dd2..6665bfc7813 100644
+--- a/gdb/guile/guile-internal.h
++++ b/gdb/guile/guile-internal.h
+@@ -27,10 +27,30 @@
+ #include "hashtab.h"
+ #include "extension-priv.h"
+ #include "symtab.h"
+-#include "libguile.h"
+ #include "objfiles.h"
+ #include "top.h"
+ 
++/* For libguile v2.0.9 and SCM_DEBUG_TYPING_STRICTNESS == 1, SCM_UNPACK(x) is
++   defined as:
++
++     ((scm_t_bits) (0? (*(SCM*)0=(x)): x))
++
++   and for v2.0.10 it's defined as:
++
++     ((scm_t_bits) (0? (*(volatile SCM *)0=(x)): x))
++
++   The volatile was added to avoid a clang warning.
++
++   The latter form causes a Werror=volatile with C++20.
++   This was reported upstream (
++   https://debbugs.gnu.org/cgi/bugreport.cgi?bug=65333 ).
++
++   The former form causes a Werror=sequence-point with gcc 7-14.
++
++   Work around these problem by using SCM_DEBUG_TYPING_STRICTNESS == 0.  */
++#define SCM_DEBUG_TYPING_STRICTNESS 0
++#include "libguile.h"
++
+ struct block;
+ struct frame_info;
+ struct objfile;
+
+base-commit: 94df6741bbabaa9a51960446b2af4c0bed01b54b
+-- 
+2.43.0
+

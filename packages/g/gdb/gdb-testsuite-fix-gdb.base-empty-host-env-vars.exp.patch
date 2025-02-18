@@ -1,0 +1,132 @@
+From bb7497a27dc37f9775c2c00ecb464b7b44a9e8bb Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 23 Sep 2024 07:57:49 +0200
+Subject: [PATCH 38/46] [gdb/testsuite] Fix gdb.base/empty-host-env-vars.exp
+
+On aarch64-linux (debian testing) with test-case
+gdb.base/empty-host-env-vars.exp I ran into:
+...
+(gdb) show index-cache directory^M
+The directory of the index cache is "/home/linux/.cache/gdb".^M
+(gdb) FAIL: $exp: env_var_name=HOME: show index-cache directory
+...
+
+Without changing any environment variables, the value of the index-cache dir
+is:
+...
+$ gdb -q -batch -ex "show index-cache directory"
+The directory of the index cache is "/home/linux/.cache/gdb".
+...
+and the expectation of the test-case is that setting HOME to empty will
+produce an empty dir, but what it actually produces is:
+...
+$ HOME= gdb -q -batch -ex "show index-cache directory"
+The directory of the index cache is "/home/linux/.cache/gdb".
+...
+
+There's nothing wrong with that behaviour, the dir is simply constructed using
+XDG_CACHE_HOME which happens to be explictly set to its default value
+$HOME/.cache [1]:
+...
+$ echo $XDG_CACHE_HOME
+/home/linux/.cache
+...
+and indeed also setting that variable to empty gets us the expected empty dir:
+...
+$ XDG_CACHE_HOME= HOME= gdb -q -batch -ex "show index-cache directory"
+gdb: warning: Couldn't determine a path for the index cache directory.
+The directory of the index cache is "".
+...
+
+Furthermore, the test-case assumption that setting variables to empty either
+produces the original dir or an empty dir is incorrect.
+
+Say that XDG_CACHE_HOME has a non-default value:
+...
+$ echo $XDG_CACHE_HOME
+/home/linux/my-xdg-cache-home
+$ gdb -q -batch -ex "show index-cache directory"
+The directory of the index cache is "/home/linux/my-xdg-cache-home/gdb".
+...
+then setting that variable to empty:
+...
+$ XDG_CACHE_HOME= gdb -q -batch -ex "show index-cache directory"
+The directory of the index cache is "/home/linux/.cache/gdb".
+...
+does change the value of the dir.
+
+Fix this by making the test-case less specific.
+
+While we're at it, factor out regexps re_pre and re_post to make regexps more
+readable, and use string_to_regexp to reduce quoting.
+
+Tested on aarch64-linux.
+
+PR testsuite/32132
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32132
+
+[1] https://specifications.freedesktop.org/basedir-spec/latest/index.html#variables
+---
+ .../gdb.base/empty-host-env-vars.exp          | 32 ++++++-------------
+ 1 file changed, 9 insertions(+), 23 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/empty-host-env-vars.exp b/gdb/testsuite/gdb.base/empty-host-env-vars.exp
+index e6e9d6e3156..5fab65a3607 100644
+--- a/gdb/testsuite/gdb.base/empty-host-env-vars.exp
++++ b/gdb/testsuite/gdb.base/empty-host-env-vars.exp
+@@ -21,16 +21,14 @@ require {!is_remote host}
+ 
+ set all_env_vars { HOME XDG_CACHE_HOME LOCALAPPDATA XDG_CONFIG_HOME }
+ 
+-# Record the initial value of the index-cache directory.
++set re_pre \
++    [string_to_regexp {The directory of the index cache is "}]
++set re_post \
++    [string_to_regexp {".}]
++
++# Show the initial value of the index-cache directory.
+ clean_restart
+-set index_cache_directory ""
+-gdb_test_multiple "show index-cache directory" "" {
+-    -re -wrap "The directory of the index cache is \"(.*)\"\\." {
+-	set index_cache_directory $expect_out(1,string)
+-	set index_cache_directory [string_to_regexp $index_cache_directory]
+-	pass $gdb_test_name
+-    }
+-}
++gdb_test "show index-cache directory" $re_pre\[^\r\n\]*$re_post
+ 
+ foreach_with_prefix env_var_name $all_env_vars {
+     # Restore the original state of the environment variable.
+@@ -38,18 +36,7 @@ foreach_with_prefix env_var_name $all_env_vars {
+ 	set env($env_var_name) {}
+ 	clean_restart
+ 
+-	# Verify that the empty environment variable didn't affect the
+-	# index-cache directory setting, that we still see the initial value.
+-	# "HOME" is different, because if that  one is unset, GDB isn't even
+-	# able to compute the default location.  In that case, we expect it to
+-	# be empty.
+-	if { $env_var_name == "HOME" } {
+-	    gdb_test "show index-cache directory" \
+-		"The directory of the index cache is \"\"\\."
+-	} else {
+-	    gdb_test "show index-cache directory" \
+-		"The directory of the index cache is \"$index_cache_directory\"\\."
+-	}
++	gdb_test "show index-cache directory" $re_pre\[^\r\n\]*$re_post
+     }
+ }
+ 
+@@ -69,7 +56,6 @@ with_test_prefix "all env vars" {
+ 
+ 	clean_restart
+ 
+-	gdb_test "show index-cache directory" \
+-	    "The directory of the index cache is \"\"\\."
++	gdb_test "show index-cache directory" $re_pre$re_post
+     }
+ }
+-- 
+2.43.0
+

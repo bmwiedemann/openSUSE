@@ -1,0 +1,70 @@
+From 58e1c193329c4e919272f01e5626b912d36ff65d Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 23 Jul 2024 14:27:36 +0200
+Subject: [PATCH 03/46] [gdb/testsuite] Fix gdb.ada/mi_task_arg.exp on
+ arm-linux
+
+On arm-linux, I run into:
+...
+PASS: gdb.ada/mi_task_arg.exp: mi runto task_switch.break_me
+Expecting: ^(-stack-list-arguments 1[^M
+]+)?(\^done,stack-args=\[frame={level="0",args=\[\]},frame={level="1",args=\[{name="<_task>",value="0x[0-9A-Fa-f]+"}(,{name="<_taskL>",value="[0-9]+"})?\]},frame={level="2",args=\[({name="self_id",value="(0x[0-9A-Fa-f]+|<optimized out>)"})?\]},.*[^M
+]+[(]gdb[)] ^M
+[ ]*)
+-stack-list-arguments 1^M
+^done,stack-args=[frame={level="0",args=[]},frame={level="1",args=[{name="<_task>",value="0x40bc48"}]},frame={level="2",args=[]}]^M
+(gdb) ^M
+FAIL: gdb.ada/mi_task_arg.exp: -stack-list-arguments 1 (unexpected output)
+...
+
+The problem is that the test-case expects a level 3 frame, but there is none.
+
+This can be reproduced using cli bt:
+...
+ $ gdb -q -batch outputs/gdb.ada/mi_task_arg/task_switch \
+   -ex "b task_switch.break_me" \
+   -ex run \
+   -ex bt
+ Breakpoint 1 at 0x34b4: file task_switch.adb, line 57.
+
+ Thread 3 "my_caller" hit Breakpoint 1, task_switch.break_me () \
+   at task_switch.adb:57
+ 57	      null;
+ #0  task_switch.break_me () at task_switch.adb:57
+ #1  0x00403424 in task_switch.caller (<_task>=0x40bc48) at task_switch.adb:51
+ #2  0xf7f95a08 in ?? () from /lib/arm-linux-gnueabihf/libgnarl-12.so
+ Backtrace stopped: previous frame identical to this frame (corrupt stack?)
+...
+
+The purpose of the test-case is printing the frame at level 1, so I don't
+think we should bother about the presence of the frame at level 3.
+
+Fix this by allowing the backtrace to stop at level 2.
+
+Tested on arm-linux.
+
+Approved-By: Luis Machado <luis.machado@arm.com>
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+---
+ gdb/testsuite/gdb.ada/mi_task_arg.exp | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.ada/mi_task_arg.exp b/gdb/testsuite/gdb.ada/mi_task_arg.exp
+index 098396d5c09..b4b7b4997f3 100644
+--- a/gdb/testsuite/gdb.ada/mi_task_arg.exp
++++ b/gdb/testsuite/gdb.ada/mi_task_arg.exp
+@@ -49,7 +49,8 @@ set frame1 "frame=\{level=\"1\",args=\\\[${frame1_args}(,$frame1_opt_args)?\\\]\
+ # Frame for system.tasking.stages.task_wrapper
+ set frame2_args "(\{name=\"self_id\",value=\"($hex|<optimized out>)\"\})?"
+ set frame2 "frame=\{level=\"2\",args=\\\[$frame2_args\\\]\}"
+-mi_gdb_test "-stack-list-arguments 1" \
+-            "\\^done,stack-args=\\\[$frame0,$frame1,$frame2,.*" \
+-            "-stack-list-arguments 1"
+ 
++set frames "$frame0,$frame1,${frame2}(,.*)?"
++mi_gdb_test "-stack-list-arguments 1" \
++    "\\^done,stack-args=\\\[$frames\\\]" \
++    "-stack-list-arguments 1"
+-- 
+2.43.0
+

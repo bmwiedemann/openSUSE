@@ -1,7 +1,7 @@
-From adfcabe4cc43766996a61bdf08ce1e9db7f18dcc Mon Sep 17 00:00:00 2001
+From 086a725aa02b1195f63b2df4c2a2b4516788b2c6 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Thu, 18 Apr 2024 14:27:04 +0200
-Subject: [PATCH] gdb-python-finishbreakpoint-update
+Subject: [PATCH 42/46] gdb-python-finishbreakpoint-update
 
 [gdb/python] FinishBreakPoint update
 
@@ -337,10 +337,10 @@ and running the test-cases:
  4 files changed, 35 insertions(+), 2 deletions(-)
 
 diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
-index db7d2e6a8e5..01f187ca4fe 100644
+index 5653842ce76..6e10914a316 100644
 --- a/gdb/breakpoint.c
 +++ b/gdb/breakpoint.c
-@@ -14683,6 +14683,10 @@ breakpoint_free_objfile (struct objfile *objfile)
+@@ -14693,6 +14693,10 @@ breakpoint_free_objfile (struct objfile *objfile)
  
  static struct cmd_list_element *enablebreaklist = NULL;
  
@@ -351,7 +351,7 @@ index db7d2e6a8e5..01f187ca4fe 100644
  /* See breakpoint.h.  */
  
  cmd_list_element *commands_cmd_element = nullptr;
-@@ -15243,8 +15247,14 @@ This is useful for formatted output in user-defined commands."));
+@@ -15255,8 +15259,14 @@ This is useful for formatted output in user-defined commands."));
  
    gdb::observers::about_to_proceed.attach (breakpoint_about_to_proceed,
  					   "breakpoint");
@@ -367,10 +367,10 @@ index db7d2e6a8e5..01f187ca4fe 100644
  					   "breakpoint");
  }
 diff --git a/gdb/doc/python.texi b/gdb/doc/python.texi
-index 99670cca025..ba414b4e2c3 100644
+index 86ccc140c6d..e49cc580b1b 100644
 --- a/gdb/doc/python.texi
 +++ b/gdb/doc/python.texi
-@@ -6648,7 +6648,7 @@ is not writable.
+@@ -6882,7 +6882,7 @@ is not writable.
  @tindex gdb.FinishBreakpoint
  
  A finish breakpoint is a temporary breakpoint set at the return address of
@@ -379,7 +379,7 @@ index 99670cca025..ba414b4e2c3 100644
  extends @code{gdb.Breakpoint}.  The underlying breakpoint will be disabled 
  and deleted when the execution will run out of the breakpoint scope (i.e.@: 
  @code{Breakpoint.stop} or @code{FinishBreakpoint.out_of_scope} triggered).
-@@ -6667,7 +6667,9 @@ details about this argument.
+@@ -6901,7 +6901,9 @@ details about this argument.
  In some circumstances (e.g.@: @code{longjmp}, C@t{++} exceptions, @value{GDBN} 
  @code{return} command, @dots{}), a function may not properly terminate, and
  thus never hit the finish breakpoint.  When @value{GDBN} notices such a
@@ -391,7 +391,7 @@ index 99670cca025..ba414b4e2c3 100644
  You may want to sub-class @code{gdb.FinishBreakpoint} and override this
  method:
 diff --git a/gdb/python/py-finishbreakpoint.c b/gdb/python/py-finishbreakpoint.c
-index 42a7e0706d2..fa7ec43fbb4 100644
+index c74a2473a81..957d4ebc142 100644
 --- a/gdb/python/py-finishbreakpoint.c
 +++ b/gdb/python/py-finishbreakpoint.c
 @@ -433,6 +433,24 @@ bpfinishpy_handle_exit (struct inferior *inf)
@@ -402,9 +402,9 @@ index 42a7e0706d2..fa7ec43fbb4 100644
 +   scope notifications.  */
 +
 +static void
-+bpfinishpy_handle_thread_exit (struct thread_info *tp, gdb::optional<ULONGEST>, bool)
++bpfinishpy_handle_thread_exit (struct thread_info *tp, std::optional<ULONGEST>, bool)
 +{
-+  gdbpy_enter enter_py (target_gdbarch (), current_language);
++  gdbpy_enter enter_py (target_thread_architecture (tp->ptid), current_language);
 +
 +  for (breakpoint &bp : all_breakpoints_safe ())
 +    {
@@ -429,7 +429,7 @@ index 42a7e0706d2..fa7ec43fbb4 100644
    return 0;
  }
 diff --git a/gdb/testsuite/gdb.python/py-finish-breakpoint2.exp b/gdb/testsuite/gdb.python/py-finish-breakpoint2.exp
-index 66587b8b9a0..31479a05e6f 100644
+index b837bb3a108..7d99aad2fd2 100644
 --- a/gdb/testsuite/gdb.python/py-finish-breakpoint2.exp
 +++ b/gdb/testsuite/gdb.python/py-finish-breakpoint2.exp
 @@ -87,6 +87,7 @@ if { $need_continue } {
@@ -440,8 +440,6 @@ index 66587b8b9a0..31479a05e6f 100644
  gdb_test "python ExceptionFinishBreakpoint(gdb.newest_frame())" \
      "init ExceptionFinishBreakpoint" "set FinishBP after the exception again"
  
-
-base-commit: 6de9111c512de99fd8cb3ea89f9890b1d72f6ef0
 -- 
-2.35.3
+2.43.0
 

@@ -1,0 +1,454 @@
+From e20cbb7c969752fb039c7ecfba5d7c3211e3238b Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 24 Apr 2023 16:15:48 +0200
+Subject: [PATCH] [gdb/testsuite] Use c++ flag in c++ test-cases
+
+In some cases, test-cases use c++, but don't add "c++" to the compilation
+flags.  This can cause problems with some compilers.
+
+Fix this in some test-cases.
+
+PR testsuite/30380
+https://sourceware.org/bugzilla/show_bug.cgi?id=30380
+---
+ gdb/testsuite/gdb.arch/amd64-entry-value.exp     |  4 +++-
+ gdb/testsuite/gdb.arch/amd64-tailcall-cxx.exp    |  4 +++-
+ .../gdb.base/condbreak-multi-context.exp         |  6 +++++-
+ gdb/testsuite/gdb.base/main-psymtab.exp          |  6 +++++-
+ gdb/testsuite/gdb.base/persistent-lang.exp       |  6 +++++-
+ gdb/testsuite/gdb.base/skipcxx.exp               |  6 +++++-
+ gdb/testsuite/gdb.base/start-cpp.exp             |  6 +++++-
+ gdb/testsuite/gdb.cp/call-method-register.exp    | 15 +++++++++++----
+ gdb/testsuite/gdb.cp/empty-enum.exp              |  1 +
+ .../gdb.cp/incomplete-type-overload.exp          | 15 ++++++++++++---
+ gdb/testsuite/gdb.cp/main-cp.exp                 |  6 +++++-
+ gdb/testsuite/gdb.cp/method-call-in-c.exp        |  1 +
+ gdb/testsuite/gdb.cp/minsym-fallback.exp         | 14 +++++++++++---
+ gdb/testsuite/gdb.cp/vla-cxx.exp                 |  6 +++++-
+ gdb/testsuite/gdb.dwarf2/gdb-index-cxx.exp       |  1 +
+ gdb/testsuite/gdb.dwarf2/method-ptr.exp          |  2 +-
+ .../missing-type-name-for-templates.exp          | 16 ++++++++++++++--
+ gdb/testsuite/gdb.dwarf2/subrange.exp            |  2 +-
+ gdb/testsuite/gdb.guile/types-module.exp         |  6 +++++-
+ gdb/testsuite/gdb.linespec/cpcompletion.exp      |  4 ++++
+ gdb/testsuite/gdb.linespec/cpls-ops.exp          |  6 +++++-
+ 21 files changed, 108 insertions(+), 25 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.arch/amd64-entry-value.exp b/gdb/testsuite/gdb.arch/amd64-entry-value.exp
+index 4a28b7ed1fd..3d119d07219 100644
+--- a/gdb/testsuite/gdb.arch/amd64-entry-value.exp
++++ b/gdb/testsuite/gdb.arch/amd64-entry-value.exp
+@@ -19,7 +19,9 @@ set opts {nopie}
+ if [info exists COMPILE] {
+     # make check RUNTESTFLAGS="gdb.arch/amd64-entry-value.exp COMPILE=1"
+     set srcfile ${testfile}.cc
+-    lappend opts debug optimize=-O2
++    lappend opts debug
++    lappend opts optimize=-O2
++    lappend opts c++
+ } else {
+     require is_x86_64_m64_target
+ }
+diff --git a/gdb/testsuite/gdb.arch/amd64-tailcall-cxx.exp b/gdb/testsuite/gdb.arch/amd64-tailcall-cxx.exp
+index 8bd26c4611b..24d99450f06 100644
+--- a/gdb/testsuite/gdb.arch/amd64-tailcall-cxx.exp
++++ b/gdb/testsuite/gdb.arch/amd64-tailcall-cxx.exp
+@@ -19,7 +19,9 @@ standard_testfile amd64-tailcall-cxx1.S amd64-tailcall-cxx2.S
+ if [info exists COMPILE] {
+     # make check RUNTESTFLAGS="gdb.arch/amd64-tailcall-cxx.exp COMPILE=1"
+     standard_testfile amd64-tailcall-cxx1.cc amd64-tailcall-cxx2.cc
+-    lappend opts debug optimize=-O2
++    lappend opts debug
++    lappend opts optimize=-O2
++    lappend opts c++
+ } else {
+     require is_x86_64_m64_target
+ }
+diff --git a/gdb/testsuite/gdb.base/condbreak-multi-context.exp b/gdb/testsuite/gdb.base/condbreak-multi-context.exp
+index 3af37081e44..3a4fe37317b 100644
+--- a/gdb/testsuite/gdb.base/condbreak-multi-context.exp
++++ b/gdb/testsuite/gdb.base/condbreak-multi-context.exp
+@@ -18,7 +18,11 @@
+ 
+ standard_testfile .cc
+ 
+-if {[prepare_for_testing "failed to prepare" ${binfile} ${srcfile}]} {
++set flags {}
++lappend flags debug
++lappend flags c++
++
++if {[prepare_for_testing "failed to prepare" ${binfile} ${srcfile} $flags]} {
+     return
+ }
+ 
+diff --git a/gdb/testsuite/gdb.base/main-psymtab.exp b/gdb/testsuite/gdb.base/main-psymtab.exp
+index 2cd0d6145bf..cc0ca65ef89 100644
+--- a/gdb/testsuite/gdb.base/main-psymtab.exp
++++ b/gdb/testsuite/gdb.base/main-psymtab.exp
+@@ -15,7 +15,11 @@
+ 
+ standard_testfile persistent-lang.cc
+ 
+-if {[build_executable "failed to prepare" $testfile $srcfile debug]} {
++set flags {}
++lappend flags debug
++lappend flags c++
++
++if {[build_executable "failed to prepare" $testfile $srcfile $flags]} {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.base/persistent-lang.exp b/gdb/testsuite/gdb.base/persistent-lang.exp
+index f8139159a4f..d3bedae1007 100644
+--- a/gdb/testsuite/gdb.base/persistent-lang.exp
++++ b/gdb/testsuite/gdb.base/persistent-lang.exp
+@@ -15,7 +15,11 @@
+ 
+ standard_testfile .cc
+ 
+-if {[build_executable "failed to prepare" $testfile $srcfile debug]} {
++set flags {}
++lappend flags debug
++lappend flags c++
++
++if {[build_executable "failed to prepare" $testfile $srcfile $flags]} {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.base/skipcxx.exp b/gdb/testsuite/gdb.base/skipcxx.exp
+index 60b8fa19cd5..73beed8bb75 100644
+--- a/gdb/testsuite/gdb.base/skipcxx.exp
++++ b/gdb/testsuite/gdb.base/skipcxx.exp
+@@ -15,7 +15,11 @@
+ 
+ standard_testfile .cc
+ 
+-if {[prepare_for_testing "failed to prepare" $testfile $srcfile debug]} {
++set flags {}
++lappend flags debug
++lappend flags c++
++
++if {[prepare_for_testing "failed to prepare" $testfile $srcfile $flags]} {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.base/start-cpp.exp b/gdb/testsuite/gdb.base/start-cpp.exp
+index b4a036eac28..330c6ea9a67 100644
+--- a/gdb/testsuite/gdb.base/start-cpp.exp
++++ b/gdb/testsuite/gdb.base/start-cpp.exp
+@@ -17,7 +17,11 @@ require !use_gdb_stub
+ 
+ standard_testfile .cc
+ 
+-if {[prepare_for_testing "failed to prepare" $testfile $srcfile debug]} {
++set flags {}
++lappend flags debug
++lappend flags c++
++
++if {[prepare_for_testing "failed to prepare" $testfile $srcfile $flags]} {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.cp/call-method-register.exp b/gdb/testsuite/gdb.cp/call-method-register.exp
+index 1019d4fd8f3..b06620fcb2d 100644
+--- a/gdb/testsuite/gdb.cp/call-method-register.exp
++++ b/gdb/testsuite/gdb.cp/call-method-register.exp
+@@ -23,8 +23,15 @@ load_lib dwarf.exp
+ 
+ standard_testfile .cc -dw.S
+ 
+-if {[prepare_for_testing "failed to prepare" $testfile $srcfile \
+-	 {debug c++}]} {
++set flags_debug {}
++lappend flags_debug debug
++lappend flags_debug c++
++
++set flags_nodebug {}
++lappend flags_nodebug nodebug
++lappend flags_nodebug c++
++
++if {[prepare_for_testing "failed to prepare" $testfile $srcfile $flags_debug]} {
+     return -1
+ }
+ 
+@@ -32,7 +39,7 @@ set asm_file [standard_output_file $srcfile2]
+ Dwarf::assemble $asm_file {
+ 
+     set main_result \
+-	[function_range main ${::srcdir}/${::subdir}/${::srcfile}]
++	[function_range main ${::srcdir}/${::subdir}/${::srcfile} $::flags_debug]
+     set main_start [lindex $main_result 0]
+     set main_length [lindex $main_result 1]
+ 
+@@ -97,7 +104,7 @@ Dwarf::assemble $asm_file {
+ }
+ 
+ if { [prepare_for_testing "failed to prepare" ${testfile} \
+-	  [list $srcfile $asm_file] {nodebug}] } {
++	  [list $srcfile $asm_file] $::flags_nodebug] } {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.cp/empty-enum.exp b/gdb/testsuite/gdb.cp/empty-enum.exp
+index 6acae551845..2a0f695a35a 100644
+--- a/gdb/testsuite/gdb.cp/empty-enum.exp
++++ b/gdb/testsuite/gdb.cp/empty-enum.exp
+@@ -31,6 +31,7 @@ standard_testfile .cc
+ 
+ set opts {}
+ lappend opts debug
++lappend opts c++
+ lappend opts additional_flags=-std=c++11
+ 
+ if {[prepare_for_testing "failed to prepare" $testfile $srcfile $opts]} {
+diff --git a/gdb/testsuite/gdb.cp/incomplete-type-overload.exp b/gdb/testsuite/gdb.cp/incomplete-type-overload.exp
+index 1f94c3e6bc7..83f09282df4 100644
+--- a/gdb/testsuite/gdb.cp/incomplete-type-overload.exp
++++ b/gdb/testsuite/gdb.cp/incomplete-type-overload.exp
+@@ -25,7 +25,15 @@ require dwarf2_support allow_cplus_tests
+ standard_testfile .cc .S
+ set asm_file [standard_output_file ${srcfile2}]
+ 
+-if [prepare_for_testing "failed to prepare" $testfile $srcfile {debug c++}] {
++set flags_debug {}
++lappend flags_debug debug
++lappend flags_debug c++
++
++set flags_nodebug {}
++lappend flags_nodebug nodebug
++lappend flags_nodebug c++
++
++if [prepare_for_testing "failed to prepare" $testfile $srcfile $flags_debug] {
+     return
+ }
+ 
+@@ -38,7 +46,7 @@ set int_size [get_sizeof "int" -1]
+ set addr_size [get_sizeof "void *" -1]
+ set struct_base_size [get_sizeof "base" 4]
+ set struct_complete_size [get_sizeof "complete" 4]
+-get_func_info foo
++get_func_info foo $flags_debug
+ 
+ # Create fake DWARF for the .cc file.
+ # This is the best way to ensure we have an incomplete type.
+@@ -159,7 +167,8 @@ Dwarf::assemble ${asm_file} {
+     }
+ }
+ 
+-if [prepare_for_testing "failed to prepare" $testfile [list $asm_file $srcfile] {}] {
++if [prepare_for_testing "failed to prepare" $testfile \
++	[list $asm_file $srcfile] $flags_nodebug] {
+     return
+ }
+ 
+diff --git a/gdb/testsuite/gdb.cp/main-cp.exp b/gdb/testsuite/gdb.cp/main-cp.exp
+index 6c247e9d22f..98024bf3664 100644
+--- a/gdb/testsuite/gdb.cp/main-cp.exp
++++ b/gdb/testsuite/gdb.cp/main-cp.exp
+@@ -20,7 +20,11 @@ standard_testfile main.cc
+ 
+ require !readnow
+ 
+-if { [prepare_for_testing "failed to prepare" $testfile $srcfile] } {
++set opts {}
++lappend opts debug
++lappend opts c++
++
++if { [prepare_for_testing "failed to prepare" $testfile $srcfile $opts] } {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.cp/method-call-in-c.exp b/gdb/testsuite/gdb.cp/method-call-in-c.exp
+index 4676a1b06c6..1c2b432c142 100644
+--- a/gdb/testsuite/gdb.cp/method-call-in-c.exp
++++ b/gdb/testsuite/gdb.cp/method-call-in-c.exp
+@@ -22,6 +22,7 @@ standard_testfile .cc
+ 
+ set opts {}
+ lappend opts debug
++lappend opts c++
+ lappend opts additional_flags=-std=c++11
+ 
+ if { [prepare_for_testing "failed to prepare" $testfile $srcfile $opts] } {
+diff --git a/gdb/testsuite/gdb.cp/minsym-fallback.exp b/gdb/testsuite/gdb.cp/minsym-fallback.exp
+index 19ff264893a..6d8fd485840 100644
+--- a/gdb/testsuite/gdb.cp/minsym-fallback.exp
++++ b/gdb/testsuite/gdb.cp/minsym-fallback.exp
+@@ -21,13 +21,21 @@ standard_testfile .cc minsym-fallback-main.cc
+ 
+ include_file minsym-fallback.h
+ 
++set debug_flags {}
++lappend debug_flags debug
++lappend debug_flags c++
++
++set nodebug_flags {}
++lappend nodebug_flags nodebug
++lappend nodebug_flags c++
++
+ set executable $testfile
+ set objfile [standard_output_file ${testfile}.o]
+ set objmainfile [standard_output_file ${testfile}-main.o]
+ 
+-if {[gdb_compile $srcdir/$subdir/$srcfile $objfile object {}] != ""
+-    || [gdb_compile $srcdir/$subdir/$srcfile2 $objmainfile object {debug}] != ""
+-    || [gdb_compile "$objfile $objmainfile" $binfile executable {c++}] != ""} {
++if {[gdb_compile $srcdir/$subdir/$srcfile $objfile object $nodebug_flags] != ""
++    || [gdb_compile $srcdir/$subdir/$srcfile2 $objmainfile object $debug_flags] != ""
++    || [gdb_compile "$objfile $objmainfile" $binfile executable $debug_flags] != ""} {
+     untested "failed to compile"
+     return -1
+ }
+diff --git a/gdb/testsuite/gdb.cp/vla-cxx.exp b/gdb/testsuite/gdb.cp/vla-cxx.exp
+index bf3ca792d58..4303383d8f4 100644
+--- a/gdb/testsuite/gdb.cp/vla-cxx.exp
++++ b/gdb/testsuite/gdb.cp/vla-cxx.exp
+@@ -15,7 +15,11 @@
+ 
+ standard_testfile .cc
+ 
+-if { [prepare_for_testing "failed to prepare" ${testfile} ${srcfile}] } {
++set flags {}
++lappend flags debug
++lappend flags c++
++
++if { [prepare_for_testing "failed to prepare" ${testfile} ${srcfile} $flags] } {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.dwarf2/gdb-index-cxx.exp b/gdb/testsuite/gdb.dwarf2/gdb-index-cxx.exp
+index a62de7b1c72..7083ab7be17 100644
+--- a/gdb/testsuite/gdb.dwarf2/gdb-index-cxx.exp
++++ b/gdb/testsuite/gdb.dwarf2/gdb-index-cxx.exp
+@@ -19,6 +19,7 @@ standard_testfile index.cc
+ 
+ set opts {}
+ lappend opts debug
++lappend opts c++
+ lappend opts additional_flags=-std=c++11
+ 
+ if {[prepare_for_testing "failed to prepare" "${testfile}" \
+diff --git a/gdb/testsuite/gdb.dwarf2/method-ptr.exp b/gdb/testsuite/gdb.dwarf2/method-ptr.exp
+index 4b4c2229fc2..9bb477681af 100644
+--- a/gdb/testsuite/gdb.dwarf2/method-ptr.exp
++++ b/gdb/testsuite/gdb.dwarf2/method-ptr.exp
+@@ -76,7 +76,7 @@ Dwarf::assemble $asm_file {
+ }
+ 
+ if { [prepare_for_testing "failed to prepare" ${testfile} \
+-	  [list $srcfile $asm_file] {nodebug}] } {
++	  [list $srcfile $asm_file] {nodebug c++}] } {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.dwarf2/missing-type-name-for-templates.exp b/gdb/testsuite/gdb.dwarf2/missing-type-name-for-templates.exp
+index 06bd896c56a..869b29f09f6 100644
+--- a/gdb/testsuite/gdb.dwarf2/missing-type-name-for-templates.exp
++++ b/gdb/testsuite/gdb.dwarf2/missing-type-name-for-templates.exp
+@@ -25,6 +25,17 @@ require dwarf2_support
+ 
+ standard_testfile .cc .S
+ 
++set debug_flags {}
++lappend debug_flags debug
++lappend debug_flags c++
++
++set nodebug_flags {}
++lappend nodebug_flags nodebug
++lappend nodebug_flags c++
++
++get_func_info main $debug_flags
++
++
+ set asm_file [standard_output_file $srcfile2]
+ Dwarf::assemble $asm_file {
+     cu {} {
+@@ -47,7 +58,8 @@ Dwarf::assemble $asm_file {
+ 
+ 	    DW_TAG_subprogram {
+ 		{DW_AT_name "main"}
+-		{MACRO_AT_range "main"}
++		{DW_AT_low_pc $::main_start DW_FORM_addr}
++		{DW_AT_high_pc $::main_end DW_FORM_addr}
+ 		{DW_AT_type :$int}
+ 		{DW_AT_external 1 DW_FORM_flag}
+ 	    } {
+@@ -141,7 +153,7 @@ Dwarf::assemble $asm_file {
+ }
+ 
+ if { [prepare_for_testing "failed to prepare" ${testfile} \
+-	[list $srcfile $asm_file] {nodebug c++}] } {
++	[list $srcfile $asm_file] $nodebug_flags] } {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.dwarf2/subrange.exp b/gdb/testsuite/gdb.dwarf2/subrange.exp
+index 2671f829fe8..d384fb6d491 100644
+--- a/gdb/testsuite/gdb.dwarf2/subrange.exp
++++ b/gdb/testsuite/gdb.dwarf2/subrange.exp
+@@ -102,7 +102,7 @@ Dwarf::assemble $asm_file {
+ }
+ 
+ if { [prepare_for_testing "failed to prepare" ${testfile} \
+-	  [list $srcfile $asm_file] {nodebug}] } {
++	  [list $srcfile $asm_file] {nodebug c++}] } {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.guile/types-module.exp b/gdb/testsuite/gdb.guile/types-module.exp
+index d95ff21df5e..0da28ad0506 100644
+--- a/gdb/testsuite/gdb.guile/types-module.exp
++++ b/gdb/testsuite/gdb.guile/types-module.exp
+@@ -22,7 +22,11 @@ require allow_guile_tests
+ 
+ standard_testfile .cc
+ 
+-if { [prepare_for_testing "failed to prepare" ${testfile} ${srcfile}] } {
++set flags {}
++lappend flags debug
++lappend flags c++
++
++if { [prepare_for_testing "failed to prepare" ${testfile} ${srcfile} $flags] } {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.linespec/cpcompletion.exp b/gdb/testsuite/gdb.linespec/cpcompletion.exp
+index 480e03406f2..355a05dd014 100644
+--- a/gdb/testsuite/gdb.linespec/cpcompletion.exp
++++ b/gdb/testsuite/gdb.linespec/cpcompletion.exp
+@@ -22,8 +22,12 @@ standard_testfile cpls.cc cpls2.cc cpls-hyphen.cc
+ 
+ set opts {}
+ lappend opts debug
++lappend opts c++
+ lappend opts additional_flags=-std=c++11
+ 
++set flags {}
++lappend flags debug
++
+ if {[prepare_for_testing "failed to prepare" $testfile \
+ 	 [list $srcfile $srcfile2 $srcfile3] $opts]} {
+     return -1
+diff --git a/gdb/testsuite/gdb.linespec/cpls-ops.exp b/gdb/testsuite/gdb.linespec/cpls-ops.exp
+index 22428da905f..7ffcc5c768e 100644
+--- a/gdb/testsuite/gdb.linespec/cpls-ops.exp
++++ b/gdb/testsuite/gdb.linespec/cpls-ops.exp
+@@ -19,8 +19,12 @@ load_lib completion-support.exp
+ 
+ standard_testfile cpls-ops.cc
+ 
++set flags {}
++lappend flags debug
++lappend flags c++
++
+ if {[prepare_for_testing "failed to prepare" $testfile \
+-	 [list $srcfile] {debug}]} {
++	 [list $srcfile] $flags]} {
+     return -1
+ }
+ 
+
+base-commit: e0c1db6156fa8ee35661a9964062eeb69a963576
+-- 
+2.43.0
+

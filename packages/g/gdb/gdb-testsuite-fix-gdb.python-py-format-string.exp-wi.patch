@@ -1,0 +1,65 @@
+From ae564bb3259a6ae34efa3dd48561709d116dc3bc Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 1 Aug 2024 09:23:24 +0200
+Subject: [PATCH 01/46] [gdb/testsuite] Fix gdb.python/py-format-string.exp
+ with python 3.13
+
+On fedora rawhide, with python 3.13, I run into:
+...
+(gdb) python print (gdb.parse_and_eval ('a_point_t').format_string (invalid=True))^M
+Python Exception <class 'TypeError'>: \
+  this function got an unexpected keyword argument 'invalid'^M
+Error occurred in Python: \
+  this function got an unexpected keyword argument 'invalid'^M
+(gdb) FAIL: $exp: format_string: lang_c: test_all_common: test_invalid_args: \
+  a_point_t with option invalid=True
+...
+
+A passing version with an older python version looks like:
+...
+(gdb) python print (gdb.parse_and_eval ('a_point_t').format_string (invalid=True))^M
+Python Exception <class 'TypeError'>: \
+  'invalid' is an invalid keyword argument for this function^M
+Error occurred in Python: \
+  'invalid' is an invalid keyword argument for this function^M
+(gdb) PASS: $exp: format_string: lang_c: test_all_common: test_invalid_args: \
+  a_point_t with option invalid=True
+...
+
+Fix this by accepting the updated error message.
+
+Tested on aarch64-linux.
+
+PR testsuite/31912
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31912
+---
+ gdb/testsuite/gdb.python/py-format-string.exp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.python/py-format-string.exp b/gdb/testsuite/gdb.python/py-format-string.exp
+index 0c70ad562c7..92092139639 100644
+--- a/gdb/testsuite/gdb.python/py-format-string.exp
++++ b/gdb/testsuite/gdb.python/py-format-string.exp
+@@ -1104,10 +1104,16 @@ proc_with_prefix test_invalid_args {} {
+     "12" \
+     "TypeError.*: format_string\\(\\) takes 0 positional arguments but 1 were given.*"
+ 
++  # For python <= 3.12.
++  set re1 \
++    "TypeError.*: 'invalid' is an invalid keyword argument for this function"
++  # For python >= 3.13.
++  set re2 \
++    "TypeError.*: this function got an unexpected keyword argument 'invalid'"
+   check_format_string \
+     "a_point_t" \
+     "invalid=True" \
+-    "TypeError.*: 'invalid' is an invalid keyword argument for this function.*"
++    "($re1|$re2).*"
+ 
+   check_format_string \
+     "a_point_t" \
+
+base-commit: 735d4dc480bcdcb0eddde33b687bd5f11d4f86ee
+-- 
+2.43.0
+

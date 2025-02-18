@@ -1,0 +1,41 @@
+From c23182d85ad9b5b6a45ba74993de55eac00a71bc Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 27 Jan 2025 11:22:12 +0100
+Subject: [PATCH] [gdb/doc] Fix qIsAddressTagged anchor
+
+When building gdb with an older makeinfo (4.13), I run into:
+...
+gdb/doc/gdb.texinfo:44159: @anchor expected braces.
+gdb/doc/gdb.texinfo:44159: ` {qIsAddressTagged}
+...
+
+This is related to this line:
+...
+@anchor {qIsAddressTagged}
+...
+
+Fix this by removing the space before the left brace.
+
+Tested by rebuilding the documentation.
+---
+ gdb/doc/gdb.texinfo | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/doc/gdb.texinfo b/gdb/doc/gdb.texinfo
+index 6b08838862c..97508863776 100644
+--- a/gdb/doc/gdb.texinfo
++++ b/gdb/doc/gdb.texinfo
+@@ -44156,7 +44156,7 @@ tags found in the requested memory range.
+ @cindex check if a given address is in a memory tagged region
+ @cindex @samp{qIsAddressTagged} packet
+ @item qIsAddressTagged:@var{address}
+-@anchor {qIsAddressTagged}
++@anchor{qIsAddressTagged}
+ Check if address @var{address} is in a memory tagged region; if it is, it's
+ said to be @dfn{tagged}.  The target is responsible for checking it, as this
+ is architecture-specific.
+
+base-commit: 3e2d8d7edd244dd5a82588c3e7145c47c7b539ab
+-- 
+2.43.0
+

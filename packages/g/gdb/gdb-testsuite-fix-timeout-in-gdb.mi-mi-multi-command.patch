@@ -1,0 +1,69 @@
+From 25157766c1f81deecb53f2b784177a0d14c3d945 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 23 Sep 2024 07:45:54 +0200
+Subject: [PATCH 41/46] [gdb/testsuite] Fix timeout in
+ gdb.mi/mi-multi-commands.exp
+
+On aarch64-linux, with test-case gdb.mi/mi-multi-commands.exp once in a while
+I run into (edited for readability):
+...
+(gdb) ^M
+<LOTS-OF-SPACES>-data-evaluate-expression $a^M
+-data-evaluate-^done,value="\"FIRST COMMAND\""^M
+expression $b(gdb) ^M
+^M
+^done,value="\"TEST COMPLETE\""^M
+(gdb) ^M
+PASS: $exp: args=: look for first command output, command length 236
+FAIL: $exp: args=: look for second command output, command length 236 (timeout)
+...
+
+This is more likely to trigger when running the test-case using
+taskset -c <cpu> (where in a big.little setup we pick a little cpu).
+
+The setup here is that the test-case issues these two commands at once:
+...
+-data-evaluate-expression $a
+-data-evaluate-expression $b
+...
+where the length of the first command is artificially increased by prefixing
+it with spaces, show as <LOTS-OF-SPACES> above.
+
+What happens is that gdb, after parsing the first command, executes it.
+Then the output of the first command intermixes with the echoing of the second
+command, which produces this line containing the first prompt:
+...
+expression $b(gdb) ^M
+...
+which doesn't match the \r\n prefix of the regexp supposed to consume the
+first prompt:
+...
+           -re "\r\n$mi_gdb_prompt" {
+...
+
+Fix this by dropping the \r\n prefix.
+
+Tested on aarch64-linux.
+
+PR testsuite/29781
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=29781
+---
+ gdb/testsuite/gdb.mi/mi-multi-commands.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.mi/mi-multi-commands.exp b/gdb/testsuite/gdb.mi/mi-multi-commands.exp
+index 3a2e774bddc..028e187366a 100644
+--- a/gdb/testsuite/gdb.mi/mi-multi-commands.exp
++++ b/gdb/testsuite/gdb.mi/mi-multi-commands.exp
+@@ -103,7 +103,7 @@ proc run_test { args } {
+ 		set seen_first_message true
+ 		exp_continue
+ 	    }
+-	    -re "\r\n$mi_gdb_prompt" {
++	    -re "$mi_gdb_prompt" {
+ 		gdb_assert $seen_first_message $gdb_test_name
+ 	    }
+ 	}
+-- 
+2.43.0
+

@@ -1,0 +1,274 @@
+From 42f3a32877ab455607662c7a12c7a793f3744e4e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 10 Jun 2024 10:43:10 +0200
+Subject: [PATCH 08/46] [gdb/testsuite] Don't use set auto-solib-add off
+
+In test-case gdb.mi/mi-var-child-f.exp, we have:
+...
+mi_gdb_test "-gdb-set auto-solib-add off" "\\^done"
+mi_runto prog_array
+mi_gdb_test "nosharedlibrary" ".*\\^done"
+...
+
+This was added to avoid a name clash between the array variable as defined in
+gdb.mi/array.f90 and debug info in shared libraries, and used in other places
+in the testsuite.
+
+The same workaround is also used to ignore symbols from shared libraries when
+excercising for instance a command that prints all symbols.
+
+However, this approach can cause problems for targets like arm that require
+symbol info for some libraries like ld.so and libc to fully function.
+
+While absense of debug info for shared libraries should be handled gracefully
+(which does need fixing, see PR31817), failure to do so should not result
+in failures in unrelated test-cases.
+
+Fix this by removing "set auto-solib-add off".
+
+This ensures that we don't run into PR31817, while the presence of
+nosharedlibrary still ensures that in the rest of the test-case we're not
+bothered by shared library symbols.
+
+Likewise in other test-cases.
+
+Approved-by: Kevin Buettner <kevinb@redhat.com>
+
+Tested on arm-linux.
+---
+ gdb/testsuite/gdb.base/gold-gdb-index.exp             | 4 ++--
+ gdb/testsuite/gdb.base/info-types.exp.tcl             | 3 ++-
+ gdb/testsuite/gdb.base/print-symbol-loading.exp       | 4 +++-
+ gdb/testsuite/gdb.dwarf2/dw2-zero-range.exp           | 6 ++----
+ gdb/testsuite/gdb.fortran/allocated.exp               | 3 ---
+ gdb/testsuite/gdb.fortran/array-slices-bad.exp        | 3 ---
+ gdb/testsuite/gdb.fortran/array-slices-sub-slices.exp | 3 ---
+ gdb/testsuite/gdb.fortran/array-slices.exp            | 3 ---
+ gdb/testsuite/gdb.fortran/info-modules.exp            | 3 ---
+ gdb/testsuite/gdb.fortran/lbound-ubound.exp           | 3 ---
+ gdb/testsuite/gdb.fortran/module.exp                  | 3 ---
+ gdb/testsuite/gdb.fortran/subarray.exp                | 3 ---
+ gdb/testsuite/gdb.mi/mi-fortran-modules.exp           | 3 ---
+ gdb/testsuite/gdb.mi/mi-var-child-f.exp               | 3 ---
+ 14 files changed, 9 insertions(+), 38 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/gold-gdb-index.exp b/gdb/testsuite/gdb.base/gold-gdb-index.exp
+index c9c6598c3fa..0309dd353ad 100644
+--- a/gdb/testsuite/gdb.base/gold-gdb-index.exp
++++ b/gdb/testsuite/gdb.base/gold-gdb-index.exp
+@@ -32,12 +32,12 @@ if { [have_index $binfile] != "gdb_index" } {
+     return -1
+ }
+ 
+-gdb_test_no_output "set auto-solib-add off"
+-
+ if {![runto_main]} {
+     return 0
+ }
+ 
++gdb_test_no_output "nosharedlibrary"
++
+ gdb_test_no_output "set breakpoint pending off"
+ gdb_test "break N1::misspelled" "Function \"N1::misspelled\" not defined\."
+ 
+diff --git a/gdb/testsuite/gdb.base/info-types.exp.tcl b/gdb/testsuite/gdb.base/info-types.exp.tcl
+index 69d53b9f8de..0a33afedf86 100644
+--- a/gdb/testsuite/gdb.base/info-types.exp.tcl
++++ b/gdb/testsuite/gdb.base/info-types.exp.tcl
+@@ -32,12 +32,13 @@ proc run_test { lang } {
+ 	     "${testfile}" $srcfile "debug $lang"]} {
+ 	return -1
+     }
+-    gdb_test_no_output "set auto-solib-add off"
+ 
+     if ![runto_main] then {
+ 	return 0
+     }
+ 
++    gdb_test_no_output "nosharedlibrary"
++
+     set file_re "File .*[string_to_regexp $srcfile]:"
+ 
+     if { $lang == "c++" } {
+diff --git a/gdb/testsuite/gdb.base/print-symbol-loading.exp b/gdb/testsuite/gdb.base/print-symbol-loading.exp
+index b61dba33377..b3520f1e032 100644
+--- a/gdb/testsuite/gdb.base/print-symbol-loading.exp
++++ b/gdb/testsuite/gdb.base/print-symbol-loading.exp
+@@ -95,10 +95,12 @@ proc test_load_shlib { print_symbol_loading } {
+     global gdb_prompt
+     with_test_prefix "shlib ${print_symbol_loading}" {
+ 	clean_restart ${binfile}
+-	gdb_test_no_output "set auto-solib-add off"
+ 	if ![runto_main] {
+ 	    return -1
+ 	}
++
++	gdb_test_no_output "nosharedlibrary"
++
+ 	gdb_test_no_output "set print symbol-loading $print_symbol_loading"
+ 	set test_name "load shared-lib"
+ 	set libc_re \
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-zero-range.exp b/gdb/testsuite/gdb.dwarf2/dw2-zero-range.exp
+index 59840b8d0e2..e2e4f240c88 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-zero-range.exp
++++ b/gdb/testsuite/gdb.dwarf2/dw2-zero-range.exp
+@@ -29,14 +29,12 @@ proc_with_prefix test_relocated { exec_path lib_path complaint_re readnow_p } {
+     clean_restart $exec_path
+     gdb_load_shlib $lib_path
+ 
+-    # Don't load the symbols for $lib_path during runto_main.
+-    # Instead, we do this afterwards using "sharedlibrary $lib_path".
+-    gdb_test_no_output "set auto-solib-add off"
+-
+     if { ![runto_main] } {
+ 	return
+     }
+ 
++    gdb_test_no_output "nosharedlibrary"
++
+     # Test for presence of complaint.
+     with_complaints 1 {
+ 	set have_complaint 0
+diff --git a/gdb/testsuite/gdb.fortran/allocated.exp b/gdb/testsuite/gdb.fortran/allocated.exp
+index d8aee441d7f..1d87bf76244 100644
+--- a/gdb/testsuite/gdb.fortran/allocated.exp
++++ b/gdb/testsuite/gdb.fortran/allocated.exp
+@@ -25,9 +25,6 @@ if {[prepare_for_testing ${testfile}.exp ${testfile} ${srcfile} \
+     return -1
+ }
+ 
+-# Avoid shared lib symbols.
+-gdb_test_no_output "set auto-solib-add off"
+-
+ if ![fortran_runto_main] {
+     return -1
+ }
+diff --git a/gdb/testsuite/gdb.fortran/array-slices-bad.exp b/gdb/testsuite/gdb.fortran/array-slices-bad.exp
+index 8f23b38599f..ac4a77d2e39 100644
+--- a/gdb/testsuite/gdb.fortran/array-slices-bad.exp
++++ b/gdb/testsuite/gdb.fortran/array-slices-bad.exp
+@@ -30,9 +30,6 @@ if {![runto [gdb_get_line_number "First Breakpoint"]]} {
+     return -1
+ }
+ 
+-# Avoid shared lib symbols.
+-gdb_test_no_output "set auto-solib-add off"
+-
+ # Avoid libc symbols, in particular the 'array' type.
+ gdb_test_no_output "nosharedlibrary"
+ 
+diff --git a/gdb/testsuite/gdb.fortran/array-slices-sub-slices.exp b/gdb/testsuite/gdb.fortran/array-slices-sub-slices.exp
+index 5bdc7d59f16..5a0f0406afe 100644
+--- a/gdb/testsuite/gdb.fortran/array-slices-sub-slices.exp
++++ b/gdb/testsuite/gdb.fortran/array-slices-sub-slices.exp
+@@ -25,9 +25,6 @@ if {[prepare_for_testing ${testfile}.exp ${testfile} ${srcfile} \
+     return -1
+ }
+ 
+-# Avoid shared lib symbols.
+-gdb_test_no_output "set auto-solib-add off"
+-
+ if ![fortran_runto_main] {
+     return -1
+ }
+diff --git a/gdb/testsuite/gdb.fortran/array-slices.exp b/gdb/testsuite/gdb.fortran/array-slices.exp
+index f2928676bf3..919a2c6e7eb 100644
+--- a/gdb/testsuite/gdb.fortran/array-slices.exp
++++ b/gdb/testsuite/gdb.fortran/array-slices.exp
+@@ -58,9 +58,6 @@ proc run_test { repack } {
+ 
+     clean_restart ${binfile}
+ 
+-    # Avoid shared lib symbols.
+-    gdb_test_no_output "set auto-solib-add off"
+-
+     if ![fortran_runto_main] {
+ 	return -1
+     }
+diff --git a/gdb/testsuite/gdb.fortran/info-modules.exp b/gdb/testsuite/gdb.fortran/info-modules.exp
+index e6c515ff70f..c8ae7362223 100644
+--- a/gdb/testsuite/gdb.fortran/info-modules.exp
++++ b/gdb/testsuite/gdb.fortran/info-modules.exp
+@@ -28,9 +28,6 @@ if { [prepare_for_testing "failed to prepare" $testfile \
+     return -1
+ }
+ 
+-# Avoid shared lib symbols.
+-gdb_test_no_output "set auto-solib-add off"
+-
+ if { ![fortran_runto_main] } {
+     perror "Could not run to main."
+     return
+diff --git a/gdb/testsuite/gdb.fortran/lbound-ubound.exp b/gdb/testsuite/gdb.fortran/lbound-ubound.exp
+index 01597ca23ff..781d3614f4c 100644
+--- a/gdb/testsuite/gdb.fortran/lbound-ubound.exp
++++ b/gdb/testsuite/gdb.fortran/lbound-ubound.exp
+@@ -25,9 +25,6 @@ if {[prepare_for_testing ${testfile}.exp ${testfile} ${srcfile} \
+     return -1
+ }
+ 
+-# Avoid shared lib symbols.
+-gdb_test_no_output "set auto-solib-add off"
+-
+ if ![fortran_runto_main] {
+     return -1
+ }
+diff --git a/gdb/testsuite/gdb.fortran/module.exp b/gdb/testsuite/gdb.fortran/module.exp
+index eea83ad71f1..df7ee3b9605 100644
+--- a/gdb/testsuite/gdb.fortran/module.exp
++++ b/gdb/testsuite/gdb.fortran/module.exp
+@@ -31,9 +31,6 @@ gdb_test "p modmany::var_i" " = 14" "stopped language detection"
+ 
+ gdb_test "print mod1::var_const" " = 20" "fully qualified name of DW_TAG_constant"
+ 
+-# Avoid shared lib symbols.
+-gdb_test_no_output "set auto-solib-add off"
+-
+ if {![fortran_runto_main]} {
+     return
+ }
+diff --git a/gdb/testsuite/gdb.fortran/subarray.exp b/gdb/testsuite/gdb.fortran/subarray.exp
+index 1ec80e78fe4..70a7a2345ba 100644
+--- a/gdb/testsuite/gdb.fortran/subarray.exp
++++ b/gdb/testsuite/gdb.fortran/subarray.exp
+@@ -27,9 +27,6 @@ if {[prepare_for_testing "failed to prepare" $testfile $srcfile {debug f90}]} {
+     return -1
+ }
+ 
+-# Avoid shared lib symbols.
+-gdb_test_no_output "set auto-solib-add off"
+-
+ if {![fortran_runto_main]} {
+     return
+ }
+diff --git a/gdb/testsuite/gdb.mi/mi-fortran-modules.exp b/gdb/testsuite/gdb.mi/mi-fortran-modules.exp
+index 13996b9547f..5441d8f15e5 100644
+--- a/gdb/testsuite/gdb.mi/mi-fortran-modules.exp
++++ b/gdb/testsuite/gdb.mi/mi-fortran-modules.exp
+@@ -30,9 +30,6 @@ if {[build_executable "failed to prepare" ${testfile} \
+ 
+ mi_clean_restart $binfile
+ 
+-# Avoid shared lib symbols.
+-mi_gdb_test "-gdb-set auto-solib-add off" "\\^done"
+-
+ mi_runto_main
+ 
+ # Avoid libc symbols.
+diff --git a/gdb/testsuite/gdb.mi/mi-var-child-f.exp b/gdb/testsuite/gdb.mi/mi-var-child-f.exp
+index 258cbe7cb40..441c3a09366 100644
+--- a/gdb/testsuite/gdb.mi/mi-var-child-f.exp
++++ b/gdb/testsuite/gdb.mi/mi-var-child-f.exp
+@@ -32,9 +32,6 @@ if {[mi_clean_restart $binfile]} {
+     return
+ }
+ 
+-# Avoid shared lib symbols.
+-mi_gdb_test "-gdb-set auto-solib-add off" "\\^done"
+-
+ mi_runto prog_array
+ 
+ # Avoid libc symbols, in particular the 'array' type.
+-- 
+2.43.0
+

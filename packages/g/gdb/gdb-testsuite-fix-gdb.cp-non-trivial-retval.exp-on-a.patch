@@ -1,0 +1,99 @@
+From 23574ea1b3502dd13efa9b3ebf32fee3118e6ff0 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 20 Jan 2025 05:41:01 +0100
+Subject: [PATCH 29/46] [gdb/testsuite] Fix gdb.cp/non-trivial-retval.exp on
+ arm-linux with gcc 13
+
+On arm-linux, with target board unix/-mthumb, we get:
+...
+(gdb) PASS: gdb.cp/non-trivial-retval.exp: continue to breakpoint: Break here
+p f1 (i1, i2)^M
+$1 = {a = -136274256}^M
+(gdb) FAIL: gdb.cp/non-trivial-retval.exp: gdb-command<p f1 (i1, i2)>
+...
+
+This is not a problem with the inferior call, which works fine:
+...
+(gdb) p f1 (23, 100)
+$3 = {a = 123}
+...
+but instead it's a problem with the location information:
+...
+(gdb) p i1
+$1 = -136274356
+(gdb) p i2
+$2 = 100
+...
+which tells us to find the value of i1 in (DW_OP_fbreg: -12).
+
+The test-case passes if we drop -fvar-tracking, in which case the debug info
+tells us to find the value of i1 in (DW_OP_fbreg: -20).
+
+This is with gcc 13.3.0 on Ubuntu 24.04.  With gcc 14.2.0 on Debian testing,
+the code is the same, but -fvar-tracking does use the correct
+'(DW_OP_fbreg: -20)'.
+
+There seems to be some bugfix in -fvar-tracking for gcc 14.
+
+Workaround the bug by using constants 23 and 100 instead of i1 and i2 when
+using -fvar-tracking and gcc < 14.
+
+Tested on arm-linux.
+
+PR testsuite/32549
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32549
+---
+ gdb/testsuite/gdb.cp/non-trivial-retval.exp | 28 ++++++++++++++++-----
+ 1 file changed, 22 insertions(+), 6 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.cp/non-trivial-retval.exp b/gdb/testsuite/gdb.cp/non-trivial-retval.exp
+index 6c9f7e13d2a..64c0867368d 100644
+--- a/gdb/testsuite/gdb.cp/non-trivial-retval.exp
++++ b/gdb/testsuite/gdb.cp/non-trivial-retval.exp
+@@ -21,8 +21,18 @@ require allow_cplus_tests
+ 
+ standard_testfile .cc
+ 
++set i1 i1
++set i2 i2
++
+ if {[have_fvar_tracking]} {
+     set additional_flags "additional_flags= -fvar-tracking"
++
++    if { [gcc_major_version] < 14 } {
++	# For armv7, target board unix/-mthumb, -fvar-tracking and gcc 13 we
++	# get incorrect location info.  Work around this by using constants instead.
++	set i1 23
++	set i2 100
++    }
+ }
+ 
+ if {[prepare_for_testing "failed to prepare" $testfile $srcfile [list debug c++ $additional_flags]]} {
+@@ -37,12 +47,18 @@ if {![runto_main]} {
+ gdb_breakpoint [gdb_get_line_number "Break here"]
+ gdb_continue_to_breakpoint "Break here"
+ 
+-gdb_test "p f1 (i1, i2)" ".* = {a = 123}"
+-gdb_test "p f2 (i1, i2)" ".* = {b = 123}"
+-gdb_test "p f22 (i1, i2)" ".* = {b1 = 123}"
+-gdb_test "p f3 (i1, i2)" ".* = {.* c = 123}"
+-gdb_test "p f4 (i1, i2)" ".* = {.* e = 123}"
+-gdb_test "p f5 (i1, i2)" ".* = {f = 123}"
++gdb_test "p f1 ($i1, $i2)" ".* = {a = 123}" \
++    "p f1 (i1, i2)"
++gdb_test "p f2 ($i1, $i2)" ".* = {b = 123}" \
++    "p f2 (i1, i2)"
++gdb_test "p f22 ($i1, $i2)" ".* = {b1 = 123}" \
++    "p f22 (i1, i2)"
++gdb_test "p f3 ($i1, $i2)" ".* = {.* c = 123}" \
++    "p f3 (i1, i2)"
++gdb_test "p f4 ($i1, $i2)" ".* = {.* e = 123}" \
++    "p f4 (i1, i2)"
++gdb_test "p f5 ($i1, $i2)" ".* = {f = 123}" \
++    "p f5 (i1, i2)"
+ 
+ gdb_breakpoint "f1"
+ gdb_breakpoint "f2"
+-- 
+2.43.0
+

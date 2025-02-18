@@ -1,0 +1,44 @@
+From 2004e74e0e28ed0b762d98380972b1e6984b9c46 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 28 Jan 2025 08:01:46 +0100
+Subject: [PATCH] [gdb/doc] Fix "Standard Replies" xref
+
+When building gdb with an older makeinfo (4.13), I run into:
+...
+gdb/doc/gdb.texinfo:42613: warning: `.' or `,' must follow @xref, not `f'.
+...
+
+This is related to this line:
+...
+@xref{Standard Replies} for standard error responses, and how to
+respond indicating a command is not supported.
+...
+
+Fix this by adding a comma.
+
+Tested by rebuilding the docs.
+
+Reviewed-By: Eli Zaretskii <eliz@gnu.org>
+Co-Authored-By: Eli Zaretskii <eliz@gnu.org>
+---
+ gdb/doc/gdb.texinfo | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/doc/gdb.texinfo b/gdb/doc/gdb.texinfo
+index e5d562c00b4..0bfe6be6126 100644
+--- a/gdb/doc/gdb.texinfo
++++ b/gdb/doc/gdb.texinfo
+@@ -42610,7 +42610,7 @@ seven repeats (@samp{$}) can be expanded using a repeat count of only
+ five (@samp{"}).  For example, @samp{00000000} can be encoded as
+ @samp{0*"00}.
+ 
+-@xref{Standard Replies} for standard error responses, and how to
++@xref{Standard Replies}, for standard error responses, and how to
+ respond indicating a command is not supported.
+ 
+ In describing packets (commands and responses), each description has a
+
+base-commit: 7992b582e5a55bf2fd64f2f94b854d335c36c6a5
+-- 
+2.43.0
+

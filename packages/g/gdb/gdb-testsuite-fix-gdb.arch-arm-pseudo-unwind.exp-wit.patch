@@ -1,0 +1,88 @@
+From 23c9940a62f31071c03e54142e57aea3b8ab1eff Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 17 Jul 2024 17:04:02 +0200
+Subject: [PATCH 06/46] [gdb/testsuite] Fix gdb.arch/arm-pseudo-unwind.exp with
+ unix/mthumb
+
+When running test-case gdb.arch/arm-pseudo-unwind.exp with target board
+unix/mthumb, we run into:
+...
+(gdb) continue^M
+Continuing.^M
+^M
+Program received signal SIGILL, Illegal instruction.^M
+0x00400f38 in ?? ()^M
+(gdb) FAIL: $exp: continue to breakpoint: continue to callee
+...
+
+The test-case attempts to force arm-pseudo-unwind.c to be compiled in arm mode
+using additional_flags=-marm, but that's overridden by using target board
+unix/mthumb.
+
+This causes function main to be in thumb mode, and consequently function
+caller (which is called from main) is is executed as if it's in thumb mode,
+while it's actually in arm mode.
+
+Fix this by adding an intermediate function caller_trampoline in
+arm-pseudo-unwind.c, and hardcoding it to arm mode using
+__attribute__((target("arm"))).
+
+Likewise for test-case gdb.arch/arm-pseudo-unwind-legacy.exp.
+
+Tested on arm-linux.
+
+Approved-By: Luis Machado <luis.machado@arm.com>
+---
+ gdb/testsuite/gdb.arch/arm-pseudo-unwind-legacy.c | 9 ++++++++-
+ gdb/testsuite/gdb.arch/arm-pseudo-unwind.c        | 9 ++++++++-
+ 2 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.arch/arm-pseudo-unwind-legacy.c b/gdb/testsuite/gdb.arch/arm-pseudo-unwind-legacy.c
+index 49b0553ade4..adda4b8b298 100644
+--- a/gdb/testsuite/gdb.arch/arm-pseudo-unwind-legacy.c
++++ b/gdb/testsuite/gdb.arch/arm-pseudo-unwind-legacy.c
+@@ -24,10 +24,17 @@ break_here_c (uint64_t value)
+ {
+ }
+ 
++__attribute__((target("arm")))
++uint64_t
++caller_trampoline (void)
++{
++  return caller ();
++}
++
+ int
+ main (void)
+ {
+-  uint64_t value = caller ();
++  uint64_t value = caller_trampoline ();
+   break_here_c (value);
+   return 0;
+ }
+diff --git a/gdb/testsuite/gdb.arch/arm-pseudo-unwind.c b/gdb/testsuite/gdb.arch/arm-pseudo-unwind.c
+index 49b0553ade4..adda4b8b298 100644
+--- a/gdb/testsuite/gdb.arch/arm-pseudo-unwind.c
++++ b/gdb/testsuite/gdb.arch/arm-pseudo-unwind.c
+@@ -24,10 +24,17 @@ break_here_c (uint64_t value)
+ {
+ }
+ 
++__attribute__((target("arm")))
++uint64_t
++caller_trampoline (void)
++{
++  return caller ();
++}
++
+ int
+ main (void)
+ {
+-  uint64_t value = caller ();
++  uint64_t value = caller_trampoline ();
+   break_here_c (value);
+   return 0;
+ }
+-- 
+2.43.0
+

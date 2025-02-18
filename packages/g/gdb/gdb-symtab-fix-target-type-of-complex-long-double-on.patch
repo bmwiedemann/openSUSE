@@ -1,0 +1,337 @@
+From e485fec626c14303a31bf7eab35c4288f9710c9d Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 19 Jun 2024 17:32:55 +0200
+Subject: [PATCH 07/46] [gdb/symtab] Fix target type of complex long double on
+ arm
+
+When running test-case gdb.base/complex-parts.exp on arm-linux, I get:
+...
+(gdb) p $_cimag (z3)^M
+$6 = 6.5^M
+(gdb) PASS: gdb.base/complex-parts.exp: long double imaginary: p $_cimag (z3)
+ptype $^M
+type = double^M
+(gdb) FAIL: gdb.base/complex-parts.exp: long double imaginary: ptype $
+...
+
+Given that z3 is a complex long double, the test-case expects the type of the
+imaginary part of z3 to be long double, but it's double instead.
+
+This is due to the fact that the dwarf info doesn't specify an explicit target
+type:
+...
+    <5b>   DW_AT_name        : z3
+    <60>   DW_AT_type        : <0xa4>
+  ...
+ <1><a4>: Abbrev Number: 2 (DW_TAG_base_type)
+    <a5>   DW_AT_byte_size   : 16
+    <a6>   DW_AT_encoding    : 3        (complex float)
+    <a7>   DW_AT_name        : complex long double
+...
+and consequently we're guessing in dwarf2_init_complex_target_type based on
+the size:
+...
+	case 64:
+	  tt = builtin_type (gdbarch)->builtin_double;
+	  break;
+	case 96: /* The x86-32 ABI specifies 96-bit long double.  */
+	case 128:
+	  tt = builtin_type (gdbarch)->builtin_long_double;
+	  break;
+...
+
+For arm-linux, complex long double is 16 bytes, so the target type is assumed
+to be 8 bytes, which is handled by the "case 64", which gets us double
+instead of long double.
+
+Fix this by searching for "long" in the name_hint parameter, and using long
+double instead.
+
+Note that base types in dwarf are not allowed to contain references to other
+types, and the complex types are base types, so the missing explicit target
+type is standard-conformant.
+
+A gcc PR was filed to add this as a dwarf extension (
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=115272 ).
+
+Tested on arm-linux.
+---
+ gdb/dwarf2/read.c                             |  10 +-
+ .../gdb.dwarf2/dw2-complex-parts.exp          | 244 ++++++++++++++++++
+ 2 files changed, 253 insertions(+), 1 deletion(-)
+ create mode 100644 gdb/testsuite/gdb.dwarf2/dw2-complex-parts.exp
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index 7cd1d2b4c4e..18054d0070d 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -15123,7 +15123,15 @@ dwarf2_init_complex_target_type (struct dwarf2_cu *cu,
+ 	  tt = builtin_type (gdbarch)->builtin_float;
+ 	  break;
+ 	case 64:
+-	  tt = builtin_type (gdbarch)->builtin_double;
++	  if (builtin_type (gdbarch)->builtin_long_double->length () == 8
++	      && name_hint != nullptr
++	      && strstr (name_hint, "long") != nullptr)
++	    {
++	      /* Use "long double" for "complex long double".  */
++	      tt = builtin_type (gdbarch)->builtin_long_double;
++	    }
++	  else
++	    tt = builtin_type (gdbarch)->builtin_double;
+ 	  break;
+ 	case 96:	/* The x86-32 ABI specifies 96-bit long double.  */
+ 	case 128:
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-complex-parts.exp b/gdb/testsuite/gdb.dwarf2/dw2-complex-parts.exp
+new file mode 100644
+index 00000000000..281e87d2fc8
+--- /dev/null
++++ b/gdb/testsuite/gdb.dwarf2/dw2-complex-parts.exp
+@@ -0,0 +1,244 @@
++# Copyright 2024 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Test complex types, and their parts.  Dwarf assembly counterpart of
++# gdb.base/complex-parts.exp.
++#
++# In dwarf, base types are not allowed to have references to other types.  And
++# because complex types are modeled as base types, gdb has to figure out what
++# the part type is.
++#
++# It would be easier for gdb if compilers would add a dwarf extension and
++# supply this information, but that may or may not happen
++# ( https://gcc.gnu.org/bugzilla/show_bug.cgi?id=115272 ).
++
++load_lib dwarf.exp
++
++# This test can only be run on targets which support DWARF-2 and use gas.
++require dwarf2_support
++
++standard_testfile main.c -debug.S
++
++if [prepare_for_testing "failed to prepare" $testfile \
++	"${srcfile}" {}] {
++    return -1
++}
++
++set float_size [get_sizeof float 0]
++set double_size [get_sizeof double 0]
++set long_double_size [get_sizeof "long double" 0]
++
++set int_size [get_sizeof int 0]
++
++# Create the DWARF.
++set asm_file [standard_output_file $srcfile2]
++Dwarf::assemble $asm_file {
++    cu { version 2 } {
++	compile_unit {} {
++	    # Main.
++
++	    declare_labels int_type
++
++	    int_type: DW_TAG_base_type {
++		{DW_AT_byte_size $::int_size DW_FORM_sdata}
++		{DW_AT_encoding	 @DW_ATE_signed}
++		{DW_AT_name int}
++	    }
++
++	    DW_TAG_subprogram {
++		{MACRO_AT_func {main}}
++		{type :$int_type}
++	    }
++
++	    # GCC complex float.
++
++	    declare_labels cf_type cd_type cld_type
++
++	    cf_type: DW_TAG_base_type {
++		{DW_AT_byte_size [expr 2 * $::float_size] DW_FORM_sdata}
++		{DW_AT_encoding	 @DW_ATE_complex_float}
++		{DW_AT_name	 "complex float"}
++	    }
++
++	    cd_type: DW_TAG_base_type {
++		{DW_AT_byte_size [expr 2 * $::double_size] DW_FORM_sdata}
++		{DW_AT_encoding	 @DW_ATE_complex_float}
++		{DW_AT_name	 "complex double"}
++	    }
++
++	    cld_type: DW_TAG_base_type {
++		{DW_AT_byte_size [expr 2 * $::long_double_size] DW_FORM_sdata}
++		{DW_AT_encoding	 @DW_ATE_complex_float}
++		{DW_AT_name	 "complex long double"}
++	    }
++
++	    DW_TAG_variable {
++		{name var_complex_float}
++		{DW_AT_type :$cf_type}
++	    }
++
++	    DW_TAG_variable {
++		{name var_complex_double}
++		{DW_AT_type :$cd_type}
++	    }
++
++	    DW_TAG_variable {
++		{name var_complex_long_double}
++		{DW_AT_type :$cld_type}
++	    }
++
++	    # GCC complex int.
++	    # This is what gcc currently generates, see gcc PR debug/93988.
++
++	    declare_labels ci_type
++
++	    ci_type: DW_TAG_base_type {
++		{DW_AT_byte_size [expr 2 * $::int_size] DW_FORM_sdata}
++		{DW_AT_encoding	 @DW_ATE_lo_user}
++		{DW_AT_name	 "complex int"}
++	    }
++
++	    DW_TAG_variable {
++		{name var_complex_int}
++		{DW_AT_type :$ci_type}
++	    }
++
++	    # Clang complex float.
++	    # This is what clang currently generates, see this issue (
++	    # https://github.com/llvm/llvm-project/issues/52996 ).
++
++	    declare_labels clang_cf_type clang_cd_type clang_cld_type
++
++	    clang_cf_type: DW_TAG_base_type {
++		{DW_AT_byte_size [expr 2 * $::float_size] DW_FORM_sdata}
++		{DW_AT_encoding	 @DW_ATE_complex_float}
++		{DW_AT_name	 "complex"}
++	    }
++
++	    DW_TAG_variable {
++		{name var_complex_clang_float}
++		{DW_AT_type :$clang_cf_type}
++	    }
++
++	    clang_cd_type: DW_TAG_base_type {
++		{DW_AT_byte_size [expr 2 * $::double_size] DW_FORM_sdata}
++		{DW_AT_encoding	 @DW_ATE_complex_float}
++		{DW_AT_name	 "complex"}
++	    }
++
++	    DW_TAG_variable {
++		{name var_complex_clang_double}
++		{DW_AT_type :$clang_cd_type}
++	    }
++
++	    clang_cld_type: DW_TAG_base_type {
++		{DW_AT_byte_size [expr 2 * $::long_double_size] DW_FORM_sdata}
++		{DW_AT_encoding	 @DW_ATE_complex_float}
++		{DW_AT_name	 "complex"}
++	    }
++
++	    DW_TAG_variable {
++		{name var_complex_clang_long_double}
++		{DW_AT_type :$clang_cld_type}
++	    }
++	}
++    }
++}
++
++if [prepare_for_testing "failed to prepare" $testfile \
++	"${asm_file} ${srcfile}" {}] {
++    return -1
++}
++
++if ![runto_main] {
++    return -1
++}
++
++proc do_test { type {clang 0}} {
++    with_test_prefix $type {
++	with_test_prefix clang=$clang {
++
++	    if { $clang } {
++		set type_id [regsub -all " " $type _]
++		set var "var_complex_clang_$type_id"
++
++		# Gdb could try to synthesize better names, see enhancement
++		# PR symtab/31858.
++		set ctype "complex"
++		set ctype_id "complex"
++	    } else {
++		set ctype "complex $type"
++		set type_id [regsub -all " " $type _]
++		set ctype_id [regsub -all " " $ctype _]
++		set var "var_$ctype_id"
++	    }
++
++	    gdb_test "ptype '$type'" \
++		"type = $type"
++
++	    gdb_test "ptype '$ctype'" \
++		"type = $ctype"
++
++	    eval set type_size \$::${type_id}_size
++
++	    gdb_test "p sizeof ('$type')" \
++		" = $type_size"
++
++	    if { ! $clang } {
++		# With clang, the ctype name does not uniquely map to a type,
++		# so the size is unpredictable.
++		gdb_test "p sizeof ('$ctype')" \
++		    " = [expr 2 * $type_size]"
++	    }
++
++	    set re_kfail \
++		[string_to_regexp \
++		     "'var_complex_int' has unknown type; cast it to its declared type"]
++
++	    foreach f { {$_cimag} {$_creal} } {
++		gdb_test_multiple "p $f ($var)" "" {
++		    -re -wrap " = <optimized out>" {
++			pass $gdb_test_name
++		    }
++		    -re -wrap $re_kfail {
++			kfail gdb/31857 $gdb_test_name
++		    }
++		}
++
++		if { $clang } {
++		    # Without a specific complex type name, it's
++		    # unpredictable which type name the part will have.
++		    gdb_test {ptype $} \
++			"type = (float|double|long double)" \
++			"ptype $f"
++		} else {
++		    gdb_test {ptype $} \
++			"type = $type" \
++			"ptype $f"
++		}
++	    }
++	}
++    }
++}
++
++do_test "float"
++do_test "double"
++do_test "long double"
++
++do_test "int"
++
++do_test "float" 1
++do_test "double" 1
++do_test "long double" 1
+-- 
+2.43.0
+

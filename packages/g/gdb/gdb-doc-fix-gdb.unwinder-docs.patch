@@ -1,0 +1,61 @@
+From b57066d1eaafab3100a8d7d788feba5802c409b7 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 27 Jan 2025 10:33:28 +0100
+Subject: [PATCH] [gdb/doc] Fix gdb.unwinder docs
+
+When building gdb with an older makeinfo (4.13), I run into:
+...
+gdb/doc/python.texi:3015: warning: `(' follows defined name \
+  `gdb.unwinder.Unwinder.__init__' instead of whitespace.
+gdb/doc/python.texi:3041: warning: `(' follows defined name \
+  `gdb.unwinder.FrameId.__init__' instead of whitespace.
+...
+
+The warnings are related to these two lines:
+...
+@defun gdb.unwinder.Unwinder.__init__(name)
+  ...
+@defun gdb.unwinder.FrameId.__init__(sp, pc, special = @code{None})
+...
+
+Indeed, when checking the command and variable index, we can see that it
+contains an incorrect entry:
+...
+  gdb.unwinder.FrameId.__init__(sp,:          Unwinding Frames in Python
+...
+
+Fix this by adding a space before the left parenthesis.
+
+Tested by rebuilding the documentation and checking the command and variable
+index.
+---
+ gdb/doc/python.texi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/doc/python.texi b/gdb/doc/python.texi
+index e49cc580b1b..58904298c71 100644
+--- a/gdb/doc/python.texi
++++ b/gdb/doc/python.texi
+@@ -3011,7 +3011,7 @@ unwinders can derive, though it is not required that unwinders derive
+ from this class, so long as any user created unwinder has the required
+ @code{name} and @code{enabled} attributes.
+ 
+-@defun gdb.unwinder.Unwinder.__init__(name)
++@defun gdb.unwinder.Unwinder.__init__ (name)
+ The @var{name} is a string used to reference this unwinder within some
+ @value{GDBN} commands (@pxref{Managing Registered Unwinders}).
+ @end defun
+@@ -3037,7 +3037,7 @@ most cases this class will be sufficient.
+ 
+ @code{gdb.unwinder.FrameId} has the following method:
+ 
+-@defun gdb.unwinder.FrameId.__init__(sp, pc, special = @code{None})
++@defun gdb.unwinder.FrameId.__init__ (sp, pc, special = @code{None})
+ The @var{sp} and @var{pc} arguments are required and should be either
+ a @code{gdb.Value} object, or an integer.
+ 
+
+base-commit: fe0e6edbcb65ab5eca50c1a0ad8ddc9844f8ea98
+-- 
+2.43.0
+

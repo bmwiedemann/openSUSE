@@ -1,0 +1,48 @@
+From 889debbb7270408fa96401d5482dc2b9caec494d Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 8 Jan 2025 16:24:11 +0100
+Subject: [PATCH 05/46] [gdb/testsuite] Check gnatmake version in
+ gdb.ada/scalar_storage.exp
+
+On a system with gcc 14.2.0 and gnatmake 13.3.0 I run into:
+...
+(gdb) PASS: gdb.ada/scalar_storage.exp: print V_LE
+get_compiler_info: gcc-14-2-0
+print V_BE^M
+$2 = (value => 126, another_value => 12, color => red)^M
+(gdb) FAIL: gdb.ada/scalar_storage.exp: print V_BE
+...
+
+The test-case contains a corresponding kfail:
+...
+ # This requires a compiler fix that is in GCC 14.
+ if {[gcc_major_version] < 14} {
+     setup_kfail "DW_AT_endianity on enum types" *-*-*
+ }
+...
+which doesn't trigger because it checks the gcc version rather than the
+gnatmake version.
+
+Fix this by checking the gnatmake version instead.
+
+Tested on aarch64-linux and x86_64-linux.
+---
+ gdb/testsuite/gdb.ada/scalar_storage.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.ada/scalar_storage.exp b/gdb/testsuite/gdb.ada/scalar_storage.exp
+index e01e75fe5d2..5dccaef8f14 100644
+--- a/gdb/testsuite/gdb.ada/scalar_storage.exp
++++ b/gdb/testsuite/gdb.ada/scalar_storage.exp
+@@ -36,7 +36,7 @@ if {![runto "storage.adb:$bp_location"]} {
+ gdb_test "print V_LE" "= \\(value => 126, another_value => 12, color => green\\)"
+ 
+ # This requires a compiler fix that is in GCC 14.
+-if {[gcc_major_version] < 14} {
++if { ![gnatmake_version_at_least 14] }	{
+     setup_kfail "DW_AT_endianity on enum types" *-*-*
+ }
+ gdb_test "print V_BE" "= \\(value => 126, another_value => 12, color => green\\)"
+-- 
+2.43.0
+

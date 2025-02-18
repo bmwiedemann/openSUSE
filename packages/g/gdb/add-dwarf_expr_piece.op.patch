@@ -1,0 +1,100 @@
+From 89cf6ba4a207f5342db58d9e43178ae516cc220e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 15 Jan 2025 17:02:00 +0100
+Subject: [PATCH 23/46] Add dwarf_expr_piece.op
+
+Add a new field "dwarf_location_atom op" to dwarf_expr_piece to keep track of
+which dwarf_location_atom caused a dwarf_expr_piece to be added.
+
+This is used in the following patch.
+
+Tested on s390x-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/dwarf2/expr.c | 10 ++++++----
+ gdb/dwarf2/expr.h |  6 +++++-
+ 2 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/gdb/dwarf2/expr.c b/gdb/dwarf2/expr.c
+index cb80dbf60b1..03107f90575 100644
+--- a/gdb/dwarf2/expr.c
++++ b/gdb/dwarf2/expr.c
+@@ -1198,13 +1198,15 @@ dwarf_expr_context::stack_empty_p () const
+ 
+ /* Add a new piece to the dwarf_expr_context's piece list.  */
+ void
+-dwarf_expr_context::add_piece (ULONGEST size, ULONGEST offset)
++dwarf_expr_context::add_piece (ULONGEST size, ULONGEST offset,
++			       enum dwarf_location_atom op)
+ {
+   dwarf_expr_piece &p = this->m_pieces.emplace_back ();
+ 
+   p.location = this->m_location;
+   p.size = size;
+   p.offset = offset;
++  p.op = op;
+ 
+   if (p.location == DWARF_VALUE_LITERAL)
+     {
+@@ -2169,7 +2171,7 @@ dwarf_expr_context::execute_stack_op (const gdb_byte *op_ptr,
+ 
+ 	    /* Record the piece.  */
+ 	    op_ptr = safe_read_uleb128 (op_ptr, op_end, &size);
+-	    add_piece (8 * size, 0);
++	    add_piece (8 * size, 0, op);
+ 
+ 	    /* Pop off the address/regnum, and reset the location
+ 	       type.  */
+@@ -2187,7 +2189,7 @@ dwarf_expr_context::execute_stack_op (const gdb_byte *op_ptr,
+ 	    /* Record the piece.  */
+ 	    op_ptr = safe_read_uleb128 (op_ptr, op_end, &size);
+ 	    op_ptr = safe_read_uleb128 (op_ptr, op_end, &uleb_offset);
+-	    add_piece (size, uleb_offset);
++	    add_piece (size, uleb_offset, op);
+ 
+ 	    /* Pop off the address/regnum, and reset the location
+ 	       type.  */
+@@ -2389,7 +2391,7 @@ dwarf_expr_context::execute_stack_op (const gdb_byte *op_ptr,
+      pointer, then make a pieced value.  This is ok because we can't
+      have implicit pointers in contexts where pieces are invalid.  */
+   if (this->m_location == DWARF_VALUE_IMPLICIT_POINTER)
+-    add_piece (8 * this->m_addr_size, 0);
++    add_piece (8 * this->m_addr_size, 0, DW_OP_implicit_pointer);
+ 
+   this->m_recursion_depth--;
+   gdb_assert (this->m_recursion_depth >= 0);
+diff --git a/gdb/dwarf2/expr.h b/gdb/dwarf2/expr.h
+index b02cc531640..957c58f30c4 100644
+--- a/gdb/dwarf2/expr.h
++++ b/gdb/dwarf2/expr.h
+@@ -24,6 +24,7 @@
+ 
+ #include "leb128.h"
+ #include "dwarf2/call-site.h"
++#include "dwarf2.h"
+ 
+ struct dwarf2_per_objfile;
+ 
+@@ -54,6 +55,9 @@ enum dwarf_value_location
+ /* A piece of an object, as recorded by DW_OP_piece or DW_OP_bit_piece.  */
+ struct dwarf_expr_piece
+ {
++  /* The DWARF operation for which the piece was created.  */
++  enum dwarf_location_atom op;
++
+   enum dwarf_value_location location;
+ 
+   union
+@@ -208,7 +212,7 @@ struct dwarf_expr_context
+   struct type *address_type () const;
+   void push (struct value *value, bool in_stack_memory);
+   bool stack_empty_p () const;
+-  void add_piece (ULONGEST size, ULONGEST offset);
++  void add_piece (ULONGEST size, ULONGEST offset, enum dwarf_location_atom op);
+   void execute_stack_op (const gdb_byte *op_ptr, const gdb_byte *op_end);
+   void pop ();
+   struct value *fetch (int n);
+-- 
+2.43.0
+

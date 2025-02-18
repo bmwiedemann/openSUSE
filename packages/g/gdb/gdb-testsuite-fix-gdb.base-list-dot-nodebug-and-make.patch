@@ -1,0 +1,83 @@
+From 755699757fc57172c5c9a173fae9bfaf75bc1b6a Mon Sep 17 00:00:00 2001
+From: Guinevere Larsen <blarsen@redhat.com>
+Date: Fri, 31 May 2024 10:48:54 -0300
+Subject: [PATCH 36/46] gdb,testsuite: fix gdb.base/list-dot-nodebug and make
+ it more robust
+
+Thiago Jung Bauermann noticed that gdb.base/list-dot-nodebug was not
+actually compiling the test with some debuginfo in the relevant part,
+and while fixing I noticed that the base assumption of the "some" case
+was wrong, GDB would select some symtab as a default location and the
+test would always fail. This fix makes printing the default location
+only be tested when there is no debuginfo.
+
+When testing with no debuginfo, if a system had static libc debuginfo,
+the test would also fail. To add an extra layer of robustness to the
+test, this rewrite also strips any stray debuginfo from the executable.
+The test would only fail now if it runs in a system that can't handle
+stripped debuginfo and has static debuginfo pre-installed.
+
+Reported-By: Tom de Vries <tdevries@suse.de>
+Reported-By: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31721
+Reviewed-by: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+---
+ gdb/testsuite/gdb.base/list-dot-nodebug.exp | 37 +++++++++++++++------
+ 1 file changed, 26 insertions(+), 11 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/list-dot-nodebug.exp b/gdb/testsuite/gdb.base/list-dot-nodebug.exp
+index c9d732e801b..b7359be1a45 100644
+--- a/gdb/testsuite/gdb.base/list-dot-nodebug.exp
++++ b/gdb/testsuite/gdb.base/list-dot-nodebug.exp
+@@ -34,21 +34,36 @@ standard_testfile .c -extra.c
+ 
+ foreach_with_prefix debug {"none" "some"} {
+ 
+-    set flags "nodebug"
+     if {$debug == "some"} {
+-	set flags "debug"
+-    }
++	if {[prepare_for_testing_full "failed to prepare" \
++		[list ${testfile}-${debug} $linkflags \
++		    $srcfile [list nodebug] \
++		    $srcfile2 [list debug]]]} {
++	    return -1
++	}
+ 
+-    if {[prepare_for_testing_full "failed to prepare" \
+-	    [list ${testfile}-${debug} $linkflags \
+-		$srcfile [list nodebug] \
+-		$srcfile2 [list $debug]]]} {
+-	return -1
++	# We don't test "list ." before starting with some debug info
++	# because GDB will choose the symtab that has debuginfo, and
++	# print the copyright blurb.  This test isn't interested (yet?)
++	# in checking if this default location choice is consistent.
++    } else {
++	set executable ${testfile}-none
++	if {[build_executable "failed to prepare" ${executable} \
++		[list $srcfile $srcfile2] $linkflags]} {
++	    return -1
++	}
++
++	# Stripping is a backup in case the system has static libc debuginfo.
++	# We can continue the test even if it fails.
++	gdb_gnu_strip_debug $executable no-debuglink
++
++	clean_restart ${executable}
++
++	gdb_test "list ." \
++	    "^Insufficient debug info for showing source lines at default location" \
++	    "print before start"
+     }
+ 
+-    gdb_test "list ." \
+-	"^Insufficient debug info for showing source lines at default location" \
+-	"print before start"
+ 
+     if { ![runto bar] } {
+ 	return -1
+-- 
+2.43.0
+
