@@ -1,7 +1,7 @@
 #
 # spec file for package rmpc
 #
-# Copyright (c) 2024 mantarimay
+# Copyright (c) 2025 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           rmpc
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Rusty Music Player Client for MPD
 License:        BSD-3-Clause

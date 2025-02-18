@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 16 21:47:24 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.0
+  + Another quite a big release which brings many new features and
+    fixes. Highlights are the new layout system which allows you to
+    further customize the appearance of rmpc, the new Property pane
+    and many others! You can check CHANGELOG.md for a more refined
+    list of changes.
+  + Unfortunately there are also minor (cosmetic) breaking changes
+    this time around:
+    - border_type in tabs config. It has been replaced by the new
+      and more powerful borders
+    - theme.tab_bar.enabled. It has been replaced by the layout
+      system
+
+-------------------------------------------------------------------
 Wed Jan  1 09:50:25 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Removed cargo_audit from _service due that contains vendor now
