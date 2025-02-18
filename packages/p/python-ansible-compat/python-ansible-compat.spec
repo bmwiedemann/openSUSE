@@ -1,7 +1,7 @@
 #
 # spec file for package python-ansible-compat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        25.1.2
+Version:        25.1.3
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT

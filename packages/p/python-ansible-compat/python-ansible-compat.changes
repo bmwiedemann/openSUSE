@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 18 12:31:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.1.3:
+  * Bugfixes
+    - Avoid get_cache_dir errors with read only virtualenvs (#465)
+      @ssbarnea
+
+-------------------------------------------------------------------
 Fri Feb  7 17:17:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.1.2:
