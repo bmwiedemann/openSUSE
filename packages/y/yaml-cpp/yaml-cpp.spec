@@ -1,7 +1,7 @@
 #
 # spec file for package yaml-cpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/jbeder/yaml-cpp/
 Source:         https://github.com/jbeder/yaml-cpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source98:       baselibs.conf
+# https://github.com/jbeder/yaml-cpp/commit/7b469b4220f96fb3d036cf68cd7bd30bd39e61d2
+Patch0:         yaml-cpp-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  sed
