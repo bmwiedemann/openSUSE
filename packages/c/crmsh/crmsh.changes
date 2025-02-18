@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 18 08:24:48 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250218.87655e09:
+  * Dev: behave: Add test case for schema change
+  * Dev: doc: Improve documentation for `configure schema` command
+  * Dev: ui_configure: Get schema statically when cluster is not running
+  * Dev: schema: Make sure schema changed after setting new schema by `configure schema`
+
+-------------------------------------------------------------------
 Mon Feb 17 02:01:56 UTC 2025 - nicholas.yang@suse.com
 
 - Update to version 5.0.0+20250217.8bb3232e:
