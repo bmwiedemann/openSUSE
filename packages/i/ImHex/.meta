@@ -1,0 +1,5 @@
+<package name="ImHex" project="openSUSE:Factory">
+  <title>ImHex</title>
+  <description>A Hex Editor for Reverse Engineers, Programmers</description>
+  <devel project="editors" package="ImHex"/>
+</package>

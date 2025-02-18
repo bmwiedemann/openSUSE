@@ -1,0 +1,5 @@
+# filter some stuff from the sdk
+addFilter("W: hidden-file-or-dir /usr/share/imhex/sdk/*")
+addFilter("E: non-executable-script /usr/share/imhex/sdk/*")
+addFilter("E: zero-length /usr/share/imhex/sdk/*")
+addFilter("E: version-control-internal-file /usr/share/imhex/sdk/*")

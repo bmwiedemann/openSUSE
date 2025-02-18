@@ -1,0 +1,340 @@
+-------------------------------------------------------------------
+Mon Feb 17 10:50:01 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.37.0:
+  Features
+  * ImHex now properly supports HiDPI scaling.
+  * You can now set separate fonts for the main UI, the Hex Editor
+    and the Pattern Editor.
+  * Added messaging support.
+  Improvements
+  * Replaced the app icon with the one from the Papyrus Icon
+    Project.
+  Pattern Language
+  * The evaluator now tries to keep as many patterns as it
+    possibly can when an error occurs
+  Bugfixes
+  * Lots of fixed bugs
+  Full changelog
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.37.0
+- Use distro provided nlohmann_json
+
+-------------------------------------------------------------------
+Sat Dec 28 16:30:50 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.36.2:
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.36.2
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.36.1
+
+-------------------------------------------------------------------
+Wed Dec 25 17:57:19 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.36.0
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.36.0
+
+-------------------------------------------------------------------
+Thu Nov  7 18:37:52 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.35.4
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.35.4
+- Update to version 1.35.3
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.35.3
+- Update to version 1.35.2
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.35.2
+- Update to version 1.35.1
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.35.1
+- Update to version 1.35.0
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.35.0
+- Update to version 1.34.0
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.34.0
+- Update to version 1.33.0
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.33.0
+- Drop patches (not longer needed)
+  * llvm_demangler_signature.patch
+  * installation.patch
+- Add patch:
+  * ImHex-llvm_demangler-linking.patch
+
+-------------------------------------------------------------------
+Thu Dec 28 18:59:37 UTC 2023 - mardnh@gmx.de
+
+- Update to version 1.32.1:
+  Bugfix release
+  * ImHex doesn't crash anymore when opening the diffing view.
+
+-------------------------------------------------------------------
+Thu Dec 28 15:24:44 UTC 2023 - mardnh@gmx.de
+
+- Update to version 1.32.0:
+  Additions
+  * Added a shortcut manager to the Settings.
+  * Added Markdown reports.
+  * Greatly improve the Undo/Redo system.
+  * Added option to specify custom highlighting rules to set the
+    foreground color of bytes according to boolean equations.
+  * Added Workspaces.
+  * Added a minimal layout.
+  * Added automatic backups.
+  * Added a interactive tutorial.
+  Improvements
+  * Rewrote, restructured and redesigned Settings interface.
+  * Updated ImGui to v1.90.
+  * Lots and lots of UI improvements.
+  * Lots and lots of internal rewrites, restructures and refactors.
+  * Scrolling in the hex editor now works much nicer.
+  Bug Fixes
+  * Fixed issue where no provider was being selected when closing
+    a provider in some cases.
+  * Moving windows that overlap with the main window title bar no
+    longer move the main window.
+  Pattern Language
+  * Ongoing: Big parts of the Pattern Language are currently being
+    rewritten in order to drastically improve usability, speed and
+    reliability.
+  * Added support for writing back to the data source.
+  * Added support for decompressing data.
+- Drop patch:
+  * llvm_demangler_signature.patch (no longer needed)
+- Add ImHex-rpmlintrc to workaround some sdk related rpmlint
+  warnings.
+  
+-------------------------------------------------------------------
+Mon Nov 20 11:23:01 UTC 2023 - Michael Gumsley <gumsley_6@hotmail.com>
+
+- Fix openSUSE Tumbleweed build:
+  * Backport fix from upstream commit
+    498d8c1d65c1a74c3f2c21806803254c61df6d01 regarding 
+    llvm::itaniumDemangle signature used in crash_handlers.cpp
+
+-------------------------------------------------------------------
+Mon Sep 25 06:24:29 UTC 2023 - mardnh@gmx.de
+
+- Update to version 1.31.0:
+  Additions
+  * Added a command line interface to ImHex.
+  * Added initial support for .NET scripts.
+  * Added Achievements.
+  * Added a new and much nicer splash screen.
+  * Allow memory files to be saved to project files and be renamed .
+  * Added built-in logging console.
+  * Allow hex editor data visualizers to be switched to big-endian
+    mode.
+  * Upgraded to Capstone V5.
+  * Encoding names are now being displayed in the header of the
+    hex editor.
+  * Added a "Update All" button to the content store.
+  * Linux now uses the GTK filepicker whenever possible.
+  * The hex editor editing mode is now being entered when
+    pressing Enter.
+  * Added a setting to remember the current main window size and
+    position.
+  * Added option to fill a selected region with bytes.
+  * Added option to switch between human-readable sizes and bytes
+    in the hex editor footer.
+  * Added authors and descriptions to things in the content store
+  * Added shortcuts to switch between providers, evaluate
+    patterns and interact with the pattern debugger
+  Improvements
+  * Improved the data information diagrams look and field.
+  * Multi-window support is now being disabled properly by
+    default on Linux.
+  * Plugins are now being loaded asynchronously to improve
+    startup times.
+  * Pattern console is automatically scrolled to the bottom now
+    when new lines are being added.
+  * Unidentifiable data is being handled better now in the data
+    information view.
+  * Allow hex editor view to be scrolled slightly past the end.
+  * Made demangler results selectable and copyable.
+  * ImHex should now exit cleanly when crashing.
+  * Bytes per row count setting in the hex editor is being
+    remembered now.
+  Bug Fixes
+  * Fixed raw disk provider not working correctly on non-windows
+    platforms.
+  * Fixed disassembler view not clearning selection when typing
+    in the region field.
+  * Fixed page count displaying wrongly in empty files.
+  * Fixed crash when trying to paste bytes without a selection.
+  * Fixed occasional crash when evaluating patterns.
+  * Fixed scaling not being applied properly in some cases.
+  * Fixed bookmarks not being loaded correctly from project files.
+  * Fixed menu bar being scrollable sideways.
+  * Fixed loading projects when an existing project is loaded
+    already.
+  * Fixed issues where the cursor started flickering when hovering
+    certain elements.
+  * Fixed crash when clicking on "Open in new view" in a bookmark.
+  * Fixed occasional crash when loading incorrect data processor
+    node files.
+  * Fixed writing to non-zero pages in the hex editor when a custom
+    base address has been set.
+  * Fixed issue where libmagic dumped a bunch of compiled files
+    into the cwd on Linux and macOS.
+  * Fixed endianess of all CRC hashes.
+  * Fixed highest/lowest entropy block address in the data
+    information view being wrong.
+  * Fixed issue where downloading items from the store was
+    suceptible for path traversal.
+  * Fixed various data processor issues.
+  Pattern Language
+  * Added typenameof operator.
+  * Added [[hex::favorite]] attribute to mark patterns as favorites
+    directly.
+  * Added [[hex::group]] attribute to add patterns to custom groups
+    in the pattern data view.
+  * Added single-stepping feature to pattern debugger.
+  * Added coordinates visualizer.
+  * Added timestamp visualizer.
+  * Images in the pattern image and bitmap visualizer can now be
+    scaled.
+  * Added various new inline visualizers such as "color", "guage"
+    and "button".
+  * Format functions are no longer being evaluated during
+    highlighting.
+  * Sections without a name are being hidden now and treated as
+    "internal" sections
+  * Added [[hex::spec_name]] attribute to document names for
+    pattern variables taken from the documentation.
+  * Added string in/out variables.
+  * Fixed issue where pattern local variables sometimes allocated
+    huge amounts of memory.
+
+
+-------------------------------------------------------------------
+Mon Jul  3 20:42:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.30.1:
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.30.1
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.30.0
+
+-------------------------------------------------------------------
+Fri Jun  9 15:11:13 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.29.0
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.29.0
+
+-------------------------------------------------------------------
+Fri Apr  7 14:43:06 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.28.0
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.28.0
+
+-------------------------------------------------------------------
+Wed Feb 15 20:00:08 UTC 2023 - mardnh@gmx.de
+
+- Update to version 1.27.1
+  * Bugfix Release
+
+-------------------------------------------------------------------
+Sun Feb 12 21:22:57 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.27.0:
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.27.0
+
+-------------------------------------------------------------------
+Thu Jan 05 16:44:41 UTC 2023 - mardnh@gmx.de
+
+- Update to version 1.26.2:
+  Additions
+  * Added a "Save Project" menu entry to quickly save the current
+    project without specifying a path.
+  * Added byte Type distribution, digram and layered distribution
+    plots to information view.
+  * Added support for pasting byte strings with 0x prefixes or
+    commas inbetween in the hex editor view.
+  * Added native theming support
+    + New themes can now simply be placed in the %IMHEX%/themes
+      folder for them to be loaded.
+  Improvements
+  * ImHex now automatically disables unicode support if the used
+    GPU doesn't have enough VRAM to load all glyphs.
+  * The localization system has been completely revamped and now
+    uses simple json files.
+  * Improved speed of entropy graph calculation
+  * Improved German translation.
+  * Improved Chinese (Simplified) translation.
+  Bug Fixes
+  * Fixed building with LTO enabled.
+  * Fixed patterns not appearing if pattern editor is not visible.
+  * Fixed a crash when closing a section view while bytes were
+    selected.
+  * Fixed file provider adding additional zero bytes at the end of
+    the file when saving.
+  * Fixed issues where the hex editor view would sometimes jump
+    back to the start of the file after searching.
+  * Fixed searching for negative floating point values.
+  * Fixed a crash when printing NULL bytes to the pattern console.
+  * Fixed bookmarks displaying too many bytes in some cases.
+  * Fixed saving of projects to paths containing non-ASCII
+    characters.
+  * Fixed various issues where iterators and containers got
+    accessed incorrectly which could lead to issues and crashes.
+  * Fixed template types being placable through the hex editor
+    right click menu.
+  Pattern Language
+  * Added the ability to modify values in the pattern data view.
+  * Added visualizers.
+
+-------------------------------------------------------------------
+Tue Nov 15 19:38:47 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Reenable LTO
+
+-------------------------------------------------------------------
+Mon Nov 14 23:58:21 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.25.0:
+  Highlights
+  * custom Sections / Back Buffers for the pattern language which
+    allows you to allocate dynamic memory, write data to it and
+    then place patterns in there. Helpful for compressed, encrypted
+    or otherwise transformed file formats.
+  * New view providers to open a region of an existing provider in
+    a new tab.
+  * Full Changelog
+    https://github.com/WerWolv/ImHex/releases/tag/v1.25.0
+
+-------------------------------------------------------------------
+Sun Oct 30 23:50:43 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.3
+  * https://github.com/WerWolv/ImHex/releases/tag/v1.24.3
+- Drop patches:
+  * system-libs.patch
+  * memleak.patch
+  * installation.patch
+- Switch to a tarball created with the tar_scm since we need also
+  need the bundled libs.
+- Introduce subpackage for libimhex
+
+-------------------------------------------------------------------
+Sat Feb 20 15:37:49 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to 1.7.0
+- add installation.patch
+- add memleak.patch
+- add system-libs.patch     
+
+-------------------------------------------------------------------
+Sat Jan 30 20:15:54 UTC 2021 - Matthias Mailänder <matthias@mailaender.name>
+
+- Update to version 1.6.1
+- Drop llvm-demangle.patch
+- Remove the wrapper script
+
+-------------------------------------------------------------------
+Wed Dec  9 15:56:04 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Udate to version 1.5.0
+- Drop license.patch
+
+-------------------------------------------------------------------
+Tue Dec  8 16:29:57 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Add icons and desktop shortcuts
+
+-------------------------------------------------------------------
+Sat Dec  5 17:28:45 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- initial packaging of version 1.4.0
