@@ -853,4 +853,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1242850</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>fb680ce86de043df23323ba2fd13993a</srcmd5>
+    <version>2.0.6</version>
+    <time>1739902142</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1246590</requestid>
+  </revision>
 </revisionlist>

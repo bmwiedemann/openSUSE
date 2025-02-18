@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Feb 14 13:22:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.6:
+  + This release adds the following features:
+    - Add 'fwupdtool efiboot-hive' to allow setting the nmbl cmdline
+    - Allow setting the inhibit reason from fwupdmgr
+    - Allow USB-provided hidraw devices to use DS-20 descriptors
+  + This release fixes the following bugs:
+    - Correctly deploy the dbx on MSI hardware
+    - Correctly extract the milestone from Lenovo version numbers
+    - Do not add invalid CoSWID entities to fix a fuzzing hang
+    - Fix Logitech HID++ child device detection
+    - Get the correct internal network VID and PID from Redfish
+    - Include the payload length in the Wacom scaler update start command
+    - Only use emulated devices when using device-emulate
+    - Reload the thunderbolt retimer version after the payload is deployed
+    - Speed up startup by ~1% by limiting the precision of percentage updates
+    - Support new version formats for future Huddly devices
+    - Updating the Logitech Rallybar in a more reliable way
+  + This release adds support for the following hardware:
+    -  HPE Gen10/Gen10+ devices using Redfish
+
+-------------------------------------------------------------------
 Mon Feb  3 14:12:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.5:

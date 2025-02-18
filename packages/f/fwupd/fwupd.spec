@@ -40,7 +40,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
