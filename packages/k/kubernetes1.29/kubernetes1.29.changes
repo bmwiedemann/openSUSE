@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:46:17 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.29.14 (final upstream patch release):
+  * Bump images, dependencies and versions to go 1.22.12 and distroless iptables
+  * Kubelet server handler cleanup
+  * Fix Go vet errors for master golang
+  * Update pkg/controlplane/apiserver/config_test.go
+  * prioritize user EtcdOptions.StorageConfig.StorageObjectCountTracker
+  * Fix: StorageObjectCountTracker is nil, apf estimator got ObjectCountNotFoundErr
+  * Bump govulncheck to 1.1.2
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.22.12`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.29.14/build/dependencies.yaml#L119-L121
+
+- version 1.29.14 contain fix for CVE-2025-0426, bsc#1237189
+  * Refer: https://github.com/kubernetes/kubernetes/issues/130016#issue-2836467448
+
+- version 1.29.14 is the final patch release by the upstream project, and will be EOL on Feb 28, 2025.
+  * Refer: https://kubernetes.io/releases/patch-releases/#non-active-branch-history
+
+-------------------------------------------------------------------
 Thu Jan 16 10:26:42 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.29.13:
