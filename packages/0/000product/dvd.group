@@ -687,6 +687,7 @@
     <package name="grub2-snapper-plugin" supportstatus="unsupported"/> <!-- reason: dvd:grub2-snapper-plugin -->
     <package name="grub2-systemd-sleep-plugin" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="grub2-x86_64-efi" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="grub2-x86_64-efi-bls" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="grub2-x86_64-xen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="gsettings-backend-dconf" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gsettings-desktop-schemas" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2687,7 +2688,7 @@
     <package name="librevenge-stream-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="librist4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librmt1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="librpmbuild10" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="librpmbuild10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="librscg1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librsvg-2-2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librubberband2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3709,7 +3710,7 @@
     <package name="python311-requests" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-requests-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python311-rich" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python311-rpm" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python311-rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python311-salt" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-scour" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python311-scrypt" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->

@@ -84,6 +84,8 @@ unsorted:
   - IPAddress 
   - IPAddress-javadoc 
   - IccXML 
+  - ImHex 
+  - ImHex-devel 
   - ImageMagick-config-7-upstream-limited 
   - ImageMagick-config-7-upstream-open 
   - ImageMagick-config-7-upstream-secure 
@@ -2243,9 +2245,6 @@ unsorted:
   - clang15 
   - clang15-devel 
   - clang15-doc 
-  - clang16 
-  - clang16-devel 
-  - clang16-doc 
   - clang17 
   - clang17-devel 
   - clang17-doc 
@@ -3790,8 +3789,6 @@ unsorted:
   - elixir 
   - elixir-doc 
   - elixir-hex 
-  - elixir115 
-  - elixir115-doc 
   - elk 
   - elk-data 
   - elk-openmpi4 
@@ -7262,6 +7259,7 @@ unsorted:
   - gkrellm-cpupower 
   - gkrellm-devel 
   - gkrellm-lang 
+  - gkrellm-nvidia 
   - gkrellmd 
   - gl2ps-devel 
   - gl3w-devel 
@@ -8891,6 +8889,7 @@ unsorted:
   - ibmtss 
   - ibmtss-base 
   - ibmtss-devel 
+  - ibp 
   - ibsim 
   - ibus-anthy 
   - ibus-anthy-devel 
@@ -10881,7 +10880,6 @@ unsorted:
   - kwin6-devel 
   - kwindowsystem-devel 
   - kwrite 
-  - kwrited5 
   - kxml 
   - kxml-javadoc 
   - kxmlgui-devel 
@@ -11188,7 +11186,8 @@ unsorted:
   - lha 
   - lhasa-devel 
   - lib2geom-devel 
-  - lib3270-5_4 
+  - lib3270-5_5 
+  - lib3270-5_5-lang 
   - lib3270-devel 
   - lib3ds-1-3 
   - lib3ds-devel 
@@ -11385,7 +11384,6 @@ unsorted:
   - libLHAPDF-6_5_4 
   - libLLVM15 
   - libLLVM15-32bit 
-  - libLLVM16 
   - libLLVM17 
   - libLLVM17-32bit 
   - libLLVM18-32bit 
@@ -11393,7 +11391,6 @@ unsorted:
   - libLLVMSPIRVLib-devel 
   - libLLVMSPIRVLib19 
   - libLTO15 
-  - libLTO16 
   - libLTO17 
   - libLTO18 
   - libLTO19 
@@ -12649,7 +12646,6 @@ unsorted:
   - libclFFT2 
   - libclang-cpp15 
   - libclang-cpp15-32bit 
-  - libclang-cpp16 
   - libclang-cpp17 
   - libclang-cpp17-32bit 
   - libclang-cpp18 
@@ -14135,6 +14131,7 @@ unsorted:
   - libime-devel 
   - libime-dicts 
   - libime-tools 
+  - libimhex1_37_0 
   - libiml0 
   - libimobiledevice-1_0-6-32bit 
   - libimobiledevice-devel 
@@ -14497,7 +14494,6 @@ unsorted:
   - liblittleb0 
   - libllama 
   - liblldb15 
-  - liblldb16 
   - liblldb17 
   - liblldb18 
   - liblldb19 
@@ -15125,7 +15121,6 @@ unsorted:
   - libomnithread4 
   - libomp-devel 
   - libomp15-devel 
-  - libomp16-devel 
   - libomp17-devel 
   - libomp18-devel 
   - libomp19-devel 
@@ -17331,6 +17326,7 @@ unsorted:
   - libxdg-basedir1 
   - libxdot4 
   - libxdp-devel 
+  - libxeme0 
   - libxerces-c-3_3 
   - libxerces-c-devel 
   - libxfce4ui-branding-upstream 
@@ -17663,7 +17659,6 @@ unsorted:
   - llcbench 
   - lld 
   - lld15 
-  - lld16 
   - lld17 
   - lld18 
   - lld19 
@@ -17675,8 +17670,6 @@ unsorted:
   - lldb-devel 
   - lldb15 
   - lldb15-devel 
-  - lldb16 
-  - lldb16-devel 
   - lldb17 
   - lldb17-devel 
   - lldb18 
@@ -17707,19 +17700,6 @@ unsorted:
   - llvm15-polly 
   - llvm15-polly-devel 
   - llvm15-vim-plugins 
-  - llvm16 
-  - llvm16-devel 
-  - llvm16-doc 
-  - llvm16-gold 
-  - llvm16-libc++-devel 
-  - llvm16-libc++1 
-  - llvm16-libc++abi-devel 
-  - llvm16-libc++abi1 
-  - llvm16-libclang13 
-  - llvm16-opt-viewer 
-  - llvm16-polly 
-  - llvm16-polly-devel 
-  - llvm16-vim-plugins 
   - llvm17 
   - llvm17-devel 
   - llvm17-doc 
@@ -19313,6 +19293,7 @@ unsorted:
   - mpv-zsh-completion 
   - mpvpaper 
   - mpvqt-devel 
+  - mpy-tools 
   - mr 
   - mraa 
   - mraa-devel 
@@ -21276,8 +21257,6 @@ unsorted:
   - pcaudiolib-devel 
   - pcb 
   - pcb-doc 
-  - pcfclock 
-  - pcfclock-kmp-default 
   - pciutils-devel 
   - pciutils-devel-32bit 
   - pcm 
@@ -23974,7 +23953,6 @@ unsorted:
   - python3-cinderclient 
   - python3-clang 
   - python3-clang15 
-  - python3-clang16 
   - python3-clang17 
   - python3-clang18 
   - python3-clang19 
@@ -24080,7 +24058,6 @@ unsorted:
   - python3-linkchecker 
   - python3-lldb 
   - python3-lldb15 
-  - python3-lldb16 
   - python3-lldb17 
   - python3-lldb18 
   - python3-lldb19 
@@ -48114,6 +48091,7 @@ unsorted:
   - typelib-1_0-XApp-1_0 
   - typelib-1_0-XdpGtk3-1_0 
   - typelib-1_0-XdpGtk4-1_0 
+  - typelib-1_0-Xeme-1_0 
   - typelib-1_0-Xkl-1_0 
   - typelib-1_0-Xmlb-1_0 
   - typelib-1_0-XplayerPlParser-1_0 
@@ -49079,6 +49057,8 @@ unsorted:
   - xemacs-packages 
   - xemacs-packages-el 
   - xemacs-packages-info 
+  - xeme-devel 
+  - xeme-doc 
   - xen-devel 
   - xen-doc-html 
   - xen-tools-xendomains-wait-disk 
