@@ -51,7 +51,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        9.9p1
+Version:        9.9p2
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
@@ -138,21 +138,11 @@ Patch103:       openssh-6.6p1-privsep-selinux.patch
 Patch104:       openssh-6.6p1-keycat.patch
 Patch105:       openssh-6.6.1p1-selinux-contexts.patch
 Patch106:       openssh-7.6p1-cleanup-selinux.patch
-
 # 200 - 300  --  Patches submitted to upstream
 # PATCH-FIX-UPSTREAM -- https://github.com/openssh/openssh-portable/pull/452 boo#1229010
 Patch200:       0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
 # PATCH-FIX-UPSTREAM -- https://bugzilla.mindrot.org/show_bug.cgi?id=3655#c4
 Patch201:       fix-x11-regression-bsc1229449.patch
-# PATCH-FIX-UPSTREAM -- From the V_9_9 branch
-Patch202:       0001-fix-utmpx-ifdef.patch
-# PATCH-FIX-UPSTREAM -- From the V_9_9 branch
-Patch203:       0002-upstream-fix-regression-introduced-when-I-switched-the-Match.patch
-# PATCH-FIX-UPSTREAM -- From the V_9_9 branch
-Patch204:       0003-upstream-fix-previous-change-to-ssh_config-Match_-which-broken-on.patch
-# PATCH-FIX-UPSTREAM -- From the V_9_9 branch
-Patch205:       0004-upstream-fix-ML-KEM768x25519-KEX-on-big-endian-systems-spotted-by.patch
-
 # 1000 - 2000  --  Conditional patches
 %if %{with crypto_policies}
 # PATCH-FIX-OPENSUSE bsc#1211301 Add crypto-policies support

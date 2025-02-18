@@ -18,7 +18,7 @@
 
 %define _name openssh
 Name:           openssh-askpass-gnome
-Version:        9.9p1
+Version:        9.9p2
 Release:        0
 Summary:        A GNOME-Based Passphrase Dialog for OpenSSH
 License:        BSD-2-Clause
