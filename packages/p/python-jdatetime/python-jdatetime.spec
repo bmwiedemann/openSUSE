@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jdatetime
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        Jalali datetime binding for python
 License:        Python-2.0

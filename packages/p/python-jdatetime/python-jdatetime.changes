@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 18 13:45:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.2.0
+  * Support for validating %A %a in strptime #161
+
+-------------------------------------------------------------------
 Wed Jan 22 12:35:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.1.0
