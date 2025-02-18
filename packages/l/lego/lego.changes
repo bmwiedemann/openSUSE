@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 18 06:03:13 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.22.2:
+  * Prepare release v4.22.2
+  * chore: update goreleaser configuration
+  * acme-dns: use new registred account (#2445)
+  * Detach v4.22.1
+
+-------------------------------------------------------------------
+Tue Feb 18 06:01:15 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.22.1:
+  * Prepare release v4.22.1
+  * acme-dns: continue the process when the CNAME is handled by the
+    storage (#2443)
+  * Detach v4.22.0
+
+-------------------------------------------------------------------
 Mon Feb 17 14:36:06 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.22.0:
