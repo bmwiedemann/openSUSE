@@ -1,5 +1,0 @@
-<package name="elixir115" project="openSUSE:Factory">
-  <title>elixir115</title>
-  <description>Older elixir for rabbitmq</description>
-  <devel project="devel:languages:erlang" package="elixir115"/>
-</package>
