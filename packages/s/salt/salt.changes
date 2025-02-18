@@ -2,7 +2,7 @@
 Wed Jan 29 10:34:28 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
 
 - Fix error to stat '/root/.gitconfig' on gitfs
-  (bsc#1230944) (bsc#1234881)
+  (bsc#1230944) (bsc#1234881) (bsc#1220905)
 
 - Added:
   * fix-failed-to-stat-root-.gitconfig-issue-on-gitfs-bs.patch
