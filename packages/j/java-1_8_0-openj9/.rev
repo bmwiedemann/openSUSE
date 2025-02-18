@@ -223,4 +223,12 @@
     <comment>January 2025 CPU</comment>
     <requestid>1244142</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>3d961546a2b93709a31447ff4ca01a3b</srcmd5>
+    <version>1.8.0.442</version>
+    <time>1739908989</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1235844</comment>
+    <requestid>1246735</requestid>
+  </revision>
 </revisionlist>

@@ -123,6 +123,7 @@ Patch203:       system-lcms.patch
 Patch210:       openj9-no-werror.patch
 Patch211:       openj9-openssl.patch
 Patch212:       openssl-OSSL_LIB_CTX.patch
+Patch213:       openj9-nasm-noexecstack.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -355,6 +356,7 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch -P 210
 %patch -P 211 -p1
 %patch -P 212 -p1
+%patch -P 213
 
 %patch -P 1 -p1
 %patch -P 2 -p1
