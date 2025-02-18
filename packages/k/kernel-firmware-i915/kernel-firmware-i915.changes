@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:59:19 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250217 (git commit 487f2f2421ae):
+  * i915: Update Xe3LPD DMC to v2.17
+- Drop duplicated aliases
+
+-------------------------------------------------------------------
 Tue Feb 11 09:26:37 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix license description for kernel-firmware-tools package
