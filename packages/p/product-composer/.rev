@@ -301,4 +301,13 @@
   generate sha256 files for install.iso</comment>
     <requestid>1244745</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0e718e04b3dc32594bc5ec16d24e50a2</srcmd5>
+    <version>0.5.5</version>
+    <time>1739977406</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.5.5
+  Suport architecture specific meta data</comment>
+    <requestid>1247104</requestid>
+  </revision>
 </revisionlist>
