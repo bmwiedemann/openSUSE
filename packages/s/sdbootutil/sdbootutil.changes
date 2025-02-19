@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Feb 19 12:20:52 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250219.a796c24:
+  * generator: exit if /etc/crypttab is missing
+  * Fix measure-pcr-validator StandardOutput
+
+-------------------------------------------------------------------
+Mon Feb 17 13:58:10 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250217.f216443:
+  * Remove .conf suffix from grubenv (bsc#1237198)
+
+-------------------------------------------------------------------
+Fri Feb 14 17:03:06 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250214.ef3b642:
+  * Add banner reporting PCR 15 mismatch
+  * Generate PCR 15 predictions if crypttab changed
+  * Create predictions for PCR 15
+  * Add measure-pcr-validator service
+  * Order devices when FIDO2 keys are used
+  * Set BuildArch to noarch
+  * Add dracut measure-pcr module with generator
+  * Add tpm2-pcr-measure crypttab parameter
+  * Fix help indentation
+
+-------------------------------------------------------------------
 Mon Feb 10 09:38:33 UTC 2025 - aplanas@suse.com
 
 - Update to version 1+git20250210.45458c4:

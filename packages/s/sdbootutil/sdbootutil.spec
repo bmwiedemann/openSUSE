@@ -17,18 +17,20 @@
 
 
 Name:           sdbootutil
-Version:        1+git20250210.45458c4
+Version:        1+git20250219.a796c24
 Release:        0
 Summary:        bootctl wrapper for BLS boot loaders
 License:        MIT
 URL:            https://github.com/openSUSE/sdbootutil
 Source:         %{name}-%{version}.tar
 BuildRequires:  systemd-rpm-macros
+Requires:       %{name}-dracut-measure-pcr
 Requires:       dialog
 Requires:       dracut-pcr-signature
 Requires:       efibootmgr
 Requires:       jq
 Requires:       keyutils
+Requires:       openssl
 Requires:       pcr-oracle
 Requires:       qrencode
 Requires:       sed
@@ -42,6 +44,7 @@ Requires:       tpm2.0-tools
 Requires:       udev
 Supplements:    (grub2-x86_64-efi-bls and shim)
 Supplements:    (systemd-boot and shim)
+BuildArch:      noarch
 ExclusiveArch:  aarch64 ppc64le riscv64 x86_64
 %{?systemd_requires}
 
@@ -55,6 +58,7 @@ Summary:        plugin script for snapper
 Requires:       %{name} = %{version}
 Requires:       btrfsprogs
 Requires:       snapper
+BuildArch:      noarch
 
 %description snapper
 Plugin scripts for snapper to handle BLS config files
@@ -63,6 +67,7 @@ Plugin scripts for snapper to handle BLS config files
 Summary:        plugin script for tukit
 Requires:       %{name} = %{version}
 Requires:       tukit
+BuildArch:      noarch
 
 %description tukit
 Plugin scripts for tukit to handle BLS config files
@@ -72,6 +77,7 @@ Summary:        Hook script for kernel-install
 Requires:       %{name} = %{version}
 # While kernel-install is in udev
 Requires:       udev
+BuildArch:      noarch
 
 %description kernel-install
 Plugin script for kernel-install. Note: installation of this
@@ -80,6 +86,7 @@ package may disable other plugin scripts that are incompatible.
 %package enroll
 Summary:        Full disk encryption enrollment
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description enroll
 Systemd service and script for full disk encryption enrollment.
@@ -89,6 +96,7 @@ Summary:        JEOS module for full disk encryption enrollment
 Requires:       %{name} = %{version}
 Requires:       %{name}-enroll = %{version}
 Requires:       jeos-firstboot
+BuildArch:      noarch
 
 %description jeos-firstboot-enroll
 JEOS module for full disk encryption enrollment. The module
@@ -97,14 +105,25 @@ service the effective enrollment.
 
 %package bash-completion
 Summary:        Bash completions for sdbootutil
+Requires:       %{name} = %{version}
 Requires:       bash
 Requires:       bash-completion
-Requires:       sdbootutil >= %{version}-%{release}
+BuildArch:      noarch
 
 %description bash-completion
 Bash completions script for sdbootutil.
 Allows the user to press TAB to see available commands,
 options and parameters.
+
+%package dracut-measure-pcr
+Summary:        Dracut module to measure PCR 15
+BuildRequires:  pkgconfig
+BuildRequires:  rpm-config-SUSE
+BuildRequires:  pkgconfig(dracut)
+BuildArch:      noarch
+
+%description dracut-measure-pcr
+Dracut module from sdbootutil to measure PCR 15 in non-UKIs systems
 
 %prep
 %setup -q
@@ -136,8 +155,16 @@ install -D -m 755 10-%{name}.tukit %{buildroot}%{_prefix}/lib/tukit/plugins/10-%
 # kernel-install
 install -D -m 755 50-%{name}.install %{buildroot}%{_prefix}/lib/kernel/install.d/50-%{name}.install
 
-#bash completions
+# Bash completions
 install -D -m 755 completions/bash_sdbootutil %{buildroot}%{_datadir}/bash-completion/completions/sdbootutil
+
+# Dracut module
+install -D -m 755 module-setup.sh %{buildroot}%{_prefix}/lib/dracut/modules.d/50measure-pcr/module-setup.sh
+install -D -m 755 measure-pcr-generator.sh %{buildroot}%{_prefix}/lib/dracut/modules.d/50measure-pcr/measure-pcr-generator.sh
+install -D -m 755 measure-pcr-validator.sh %{buildroot}%{_prefix}/lib/dracut/modules.d/50measure-pcr/measure-pcr-validator.sh
+install -D -m 644 measure-pcr-validator.service %{buildroot}/%{_prefix}/lib/dracut/modules.d/50measure-pcr/measure-pcr-validator.service
+
+install -d -m 700 %{buildroot}%{_sharedstatedir}/%{name}
 
 # tmpfiles
 install -D -m 755 kernel-install-%{name}.conf \
@@ -178,8 +205,18 @@ sdbootutil update
 %posttrans kernel-install
 %tmpfiles_create kernel-install-%{name}.conf
 
+%post dracut-measure-pcr
+%{?regenerate_initrd_post}
+
+%posttrans dracut-measure-pcr
+%{?regenerate_initrd_posttrans}
+
+%postun dracut-measure-pcr
+%{?regenerate_initrd_post}
+
 %files
 %license LICENSE
+%dir %{_sharedstatedir}/%{name}
 %{_bindir}/%{name}
 %{_unitdir}/%{name}-update-predictions.service
 
@@ -214,5 +251,10 @@ sdbootutil update
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/sdbootutil
+
+%files dracut-measure-pcr
+%dir %{_prefix}/lib/dracut
+%dir %{_prefix}/lib/dracut/modules.d
+%{_prefix}/lib/dracut/modules.d/50measure-pcr
 
 %changelog
