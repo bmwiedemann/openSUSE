@@ -5,7 +5,7 @@ Fri Feb  7 18:41:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix a crash when enabling Skia CPU rendering.
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2025-24143, CVE-2025-24150, CVE-2025-24158,
-    CVE-2024-24162.
+    CVE-2025-24162.
 - Drop 63f7badbada070ebaadd318b2801818ecf7e7ea0.patch: Fixed
   upstream.
 
