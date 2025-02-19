@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Wed Feb 19 02:06:56 UTC 2025 - william.brown@suse.com
+
+- Update to version 3.1.2~git24.744df65e:
+  * Issue 6615 - test_custom_path CI test fails (#6616)
+  * Issue 6604 - Fix coverity scan issues CID 1591261 - CID 1591269 (#6605)
+  * Issue 6611 - db_home_test.py CI tests should be skipped on lmdb (#6612)
+  * Issue 6561 - TLS 1.2 stickiness in FIPS mode
+  * Issue 6599 - Implement option to write access log in jSON
+  * Issue 6596 - BUG - Compilation Regresion (#6597)
+  * Issue 6554 - During import of entries without nsUniqueId, a supplier generates duplicate nsUniqueId (LMDB only) (#6582)
+  * Issue 6555 - V2 - Potential crash when deleting a replicated backend (#6585)
+  * Issue 6574 - Move pblock access from switch to func table
+  * Bump openssl from 0.10.66 to 0.10.70 in /src
+  * Issue 6566 - RI plugin failure to handle a modrdn for rename of member of multiple groups (#6567)
+  * Issue 6568 - Fix failing webUI tests
+  * Issue 6489 - After log rotation refresh the FD pointer
+  * Issue 6465 - Create optional meta-package for replication reporting dependencies (#6560)
+  * Issue 6555 - Potential crash when deleting a replicated backend (#6559)
+  * Issue 6436 - MOD on a large group slow if substring index is present (#6437)
+  * Issue 6476 - Fix build failure with GCC 15
+  * Issue 6468 - Fix building for older versions of Python
+  * Issue 4815 - RFE - Add Replication Log Analysis Tool with CLI Support (#6466)
+  * Issue 6544 - logconv.py: python3-magic conflicts with python3-file-magic
+  * Issue 4596 - Build with clang/lld fails when LTO enabled
+  * Issue 4596 - BUG - lto linking issues
+  * Issue 6542 - RPM build errors on Fedora 42
+  * Issue 6446 - Fix test_acct_policy_consumer test to wait enough for lastLoginHistory update (#6530)
+  * Bump version to 3.1.2
+  * Issue 3342 - RFE logconv.pl should have a replacement in CLI tools (#6444)
+  * Issue 6531 - Fix CI Tests - Decrease mdb map size for large topologies (#6532)
+  * Issue 6359 - Fix incorrect License tag
+  * Issue 6424 - Filling in dsidm group tests
+  * Issue 6516 - Allow to configure the password scheme not updated on bind (#6517)
+  * Issue 6521 - Typo in dsidm (unique)group add_member prompt
+  * Issue 6523 - dsidm uniquegroup members not implemented
+  * Issue 6513 - Add basic dsidm uniquegroup tests
+  * Issue 6525 - Fix srpm generation in COPR
+  * Issue 6505 - Add basic dsidm role tests
+  * Issue 6509 - Race condition with Paged Result searches
+  * Issue 6507 - changelog modifiers operation not displayed in dbscan (#6511)
+  * Issue 6453 - (cont) Fix memory leaks in entryrdn (#6504)
+  * Issue 6481 - UI - When ports that are in use are used to update a DS instance the error message is not helpful (#6482)
+  * Issue 6497 - lib389 - Configure replication for multiple suffixes (#6498)
+  * Issue 6470 - Some replication status data are reset upon a restart (#6471)
+  * Issue 6453 - Fix memory leaks in entryrdn
+  * Issue 6490 - Add a new macro function and print rounds on startup (#6496)
+  * Issue 6494 - Various errors when using extended matching rule on vlv sort filter (#6495)
+  * Issue 6417 - (3rd) If an entry RDN is identical to the suffix, then Entryrdn gets broken during a reindex (#6480)
+  * Issue 6490 - Remove the rust error log message for pbkdf2 rounds
+  * Issue 6485 - Fix double free in USN cleanup task
+  * Issue 6483 - CI - fix filter_test - test_match_large_valueset
+  * Issue 6269 - RFE - Add nsslapd-pwdPBKDF2Rounds configuration to PBKDF2-* plugins (#6447)
+  * Issue 6478 - fix compilation warning related to deferred memberof delay (#6479)
+  * Issue 6372 - Deadlock while doing online backup (#6475)
+  * Issue 6438 - Add basic dsidm organizational unit tests
+  * Issue 6439 - Fix dsidm service get_dn option
+  * Issue 6468 - CLI - Remove security log settings that don't exist
+  * Issue 6468 - RFE - CLI - Add logging settings to dsconf
+  * Issue 6472 - CLI - Improve error message format
+  * Issue 6417 - (2nd) If an entry RDN is identical to the suffix, then Entryrdn gets broken during a reindex (#6460)
+  * Issue 6459 - crash on 3.0/3.1 branch (#6461)
+  * Issue 6368 - Fix crash when testing access json logging
+  * Issue 6464 - UI - Fixed spelling in cockpit messages
+  * PR 6462 - UI - Fix spelling error in cockpit-389-ds certificateManagement.jsx
+  * Issue 6441 - Add basic dsidm posixgroup tests
+  * Issue 6442 - Fix latest covscan memory leaks (part 2)
+  * Issue 6442 - Fix latest covscan memory leaks
+  * Issue 3555 - UI - Fix issues reported by npm audit
+  * Issue 6368 - fix basic test suite
+  * Issue 6446 - on replica consumer, account policy plugin fails to manage the last login history (#6448)
+  * Issue 6424 - Add basic dsidm group tests
+  * Issue 6258 - Mitigate race condition in paged_results_test.py (#6433)
+  * Issue 6432 - Crash during bind when acct policy plugin does not have "alwaysrecordlogin" set
+  * Issue 5798 - Fix dsconf config multi-valued attr operations (#6426)
+  * Issue 6302 - Allow to run replication status without a prompt (#6410)
+  * Issue 6368 - UI - fix regression with onChange parameters for new settings on the access log page
+  * Issue  6268 - write access log format infrastructure (part 1)
+  * Issue 6427 - fix various memory leaks
+  * Issue 6375 - UI - Update cockpit.js code to the latest version (#6376)
+  * Issue 6417 - If an entry RDN is identical to the suffix, then Entryrdn gets broken during a reindex (#6418)
+  * Issue 6367 - RFE support of Session Tracking Control internet draft (#6403)
+  * Issue 6422 - test_db_home_dir_online_backup CI test break other tests (#6423)
+
+-------------------------------------------------------------------
 Fri Nov 29 04:47:33 UTC 2024 - william.brown@suse.com
 
 - Remove 389-ds-link-icu-uc.patch - upstreamed

@@ -1,7 +1,7 @@
 #
 # spec file for package 389-ds
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        3.1.1~git57.65773c3
+Version:        3.1.2~git24.744df65e
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -239,6 +239,9 @@ df -h
 # Make sure python3 is used in shebangs
 # FIX ME!!  This should be fixed in the source code !!!
 sed -r -i '1s|^#!\s*%{_bindir}.*python.*|#!%{_bindir}/%{use_python}|' ldap/admin/src/scripts/{*.py,ds-replcheck} src/lib389/cli/ds*
+
+# 389-ds expects the vendor dir in the root.
+ln -s ./src/vendor ./vendor
 
 # TODO:
 # seems to have no effect --enable-perl \
