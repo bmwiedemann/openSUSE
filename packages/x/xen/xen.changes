@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 11 09:43:18 MST 2025 - carnold@suse.com
+
+- bsc#1233796 - [XEN][15-SP7-BEAT3] Xen call trace and APIC Error
+  found after reboot operation on AMD machine.
+  x86-shutdown-offline-APs-with-interrupts-disabled-on-all-CPUs.patch
+
+-------------------------------------------------------------------
 Mon Feb 10 06:02:04 MST 2025 - carnold@suse.com
 
 - Update to Xen 4.20.0 RC4 release

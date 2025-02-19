@@ -160,6 +160,7 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
+Patch1:         x86-shutdown-offline-APs-with-interrupts-disabled-on-all-CPUs.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch
