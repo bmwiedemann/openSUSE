@@ -13,7 +13,7 @@ is also included a pre-configured Name Service Switch (NSS) configuration
 file (`/etc/nsswitch.conf`).
 
 ```ShellSession
-$ podman run -it --rm -p 3389:3389 -p 3636:3636 registry.opensuse.org/opensuse/389-ds:%%389ds_version%%
+$ podman run -it --rm -p 3389:3389 -p 3636:3636 registry.opensuse.org/opensuse/389-ds:3.1
 ```
 
 ## Volumes
@@ -26,7 +26,7 @@ To mount a host directory as a volume for your database, run the following
 command:
 
 ```ShellSession
-$ podman run -it --rm -v /my/own/datadir:/data:Z -p 3389:3389 -p 3636:3636 registry.opensuse.org/opensuse/389-ds:%%389ds_version%%
+$ podman run -it --rm -v /my/own/datadir:/data:Z -p 3389:3389 -p 3636:3636 registry.opensuse.org/opensuse/389-ds:3.1
 ```
 
 ## Certificates

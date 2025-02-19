@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 19 11:33:09 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- fix image references in README
+
+-------------------------------------------------------------------
 Fri Jan 31 13:55:15 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - set exclusivearch to exclude 32bit platforms from building
