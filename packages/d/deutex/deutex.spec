@@ -1,7 +1,7 @@
 #
 # spec file for package deutex
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           deutex
-Version:        5.2.2
+Version:        5.2.3
 Release:        0
 Summary:        WAD composer for Doom and related games
 License:        GPL-2.0-or-later
@@ -25,7 +25,6 @@ Group:          Development/Tools/Other
 #Historic-URL:  http://www.teaser.fr/~amajorel/deutex/
 URL:            https://github.com/Doom-Utils/deutex
 Source:         https://github.com/Doom-Utils/deutex/releases/download/v%version/%name-%version.tar.zst
-Source2:        https://github.com/Doom-Utils/deutex/releases/download/v%version/%name-%version.tar.zst.sig
 BuildRequires:  asciidoc
 BuildRequires:  automake
 BuildRequires:  pkg-config
@@ -43,13 +42,7 @@ example, from PPM to Doom picture format). In addition, DeuTex has
 functions such as merging WADs.
 
 %prep
-%if 0%{?suse_version} < 1550
-# Leap <= 15.3 does not support tar with zstd
-%setup -T -c
-tar -I zstd --strip-components=1 -xf %{SOURCE0}
-%else
 %autosetup -p1
-%endif
 
 %build
 autoreconf -fiv

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 18 21:06:58 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.2.3
+  * DeuTex now checks the position of the directory offset in a WAD
+    file instead of an arbitrary value, which may get exceeded for
+    reasonably large files. This fixes the extraction of extras.wad
+    in modern Doom releases.
+
+-------------------------------------------------------------------
 Thu Apr 29 12:32:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to new upstream release 5.2.2
