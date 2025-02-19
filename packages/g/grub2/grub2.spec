@@ -22,7 +22,7 @@
 %if %{defined sbat_distro}
 # SBAT metadata
 %define sbat_generation 1
-%define sbat_generation_grub 4
+%define sbat_generation_grub 5
 %else
 %{error please define sbat_distro, sbat_distro_summary and sbat_distro_url}
 %endif
@@ -417,6 +417,26 @@ Patch235:       0002-Requiring-authentication-after-tpm-unlock-for-CLI-ac.patch
 Patch236:       0001-kern-main-Fix-cmdpath-in-root-directory.patch
 Patch237:       grub2-s390x-secure-execution-support.patch
 Patch238:       0001-powerpc-increase-MIN-RMA-size-for-CAS-negotiation.patch
+Patch239:       0001-misc-Implement-grub_strlcpy.patch
+Patch240:       0002-fs-ufs-Fix-a-heap-OOB-write.patch
+Patch241:       0003-fs-hfs-Fix-stack-OOB-write-with-grub_strcpy.patch
+Patch242:       0004-fs-tar-Integer-overflow-leads-to-heap-OOB-write.patch
+Patch243:       0005-fs-hfsplus-Set-a-grub_errno-if-mount-fails.patch
+Patch244:       0006-kern-file-Ensure-file-data-is-set.patch
+Patch245:       0007-kern-file-Implement-filesystem-reference-counting.patch
+Patch246:       0008-net-Fix-OOB-write-in-grub_net_search_config_file.patch
+Patch247:       0009-video-readers-jpeg-Do-not-permit-duplicate-SOF0-mark.patch
+Patch248:       0010-commands-extcmd-Missing-check-for-failed-allocation.patch
+Patch249:       0011-commands-pgp-Unregister-the-check_signatures-hooks-o.patch
+Patch250:       0012-normal-Remove-variables-hooks-on-module-unload.patch
+Patch251:       0013-gettext-Remove-variables-hooks-on-module-unload.patch
+Patch252:       0014-gettext-Integer-overflow-leads-to-heap-OOB-write-or-.patch
+Patch253:       0015-gettext-Integer-overflow-leads-to-heap-OOB-write.patch
+Patch254:       0016-commands-read-Fix-an-integer-overflow-when-supplying.patch
+Patch255:       0017-commands-minicmd-Block-the-dump-command-in-lockdown-.patch
+Patch256:       0018-fs-bfs-Disable-under-lockdown.patch
+Patch257:       0019-fs-Disable-many-filesystems-under-lockdown.patch
+Patch258:       0020-fs-Prevent-overflows-when-allocating-memory-for-arra.patch
 
 %if 0%{?suse_version} <= 1600
 Requires:       gettext-runtime

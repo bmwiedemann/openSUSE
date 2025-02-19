@@ -1,15 +1,15 @@
-From af8b106667aa2ca7a7613e10d8746959e182f8f1 Mon Sep 17 00:00:00 2001
+From 0ed98269c5631c4d094b2cee81ce385687803730 Mon Sep 17 00:00:00 2001
 From: Michael Chang <mchang@suse.com>
 Date: Thu, 29 Aug 2024 13:27:30 +0800
 Subject: [PATCH 2/2] Requiring authentication after tpm unlock for CLI access
 
-GRUB may use TPM to verify the integrity of boot components, and the
+The GRUB may use TPM to verify the integrity of boot components and the
 result can determine whether a previously sealed key can be released. If
 everything checks out, showing nothing has been tampered with, the key
-is released, and grub unlocks the encrypted root partition for the next
+is released and GRUB unlocks the encrypted root partition for the next
 stage of booting.
 
-However, the liberal command line interface (CLI) can be misused by
+However, the liberal Command Line Interface (CLI) can be misused by
 anyone in this case to access files in the encrypted partition one way
 or another. Despite efforts to keep the CLI secure by preventing utility
 command output from leaking file content, many techniques in the wild
@@ -20,25 +20,26 @@ where a hack could be applied.
 Therefore, to mitigate potential misuse of the CLI after the root device
 has been successfully unlocked via TPM, the user should be required to
 authenticate using the LUKS password. This added layer of security
-ensures that only authorized users can access the CLI, reducing the risk
+ensures that only authorized users can access the CLI reducing the risk
 of exploitation or unauthorized access to the encrypted partition.
 
 Fixes: CVE-2024-49504
 
 Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
 ---
- grub-core/disk/cryptodisk.c   | 80 +++++++++++++++++++++++++++++++++++
- grub-core/kern/main.c         | 12 ++++++
+ grub-core/disk/cryptodisk.c   | 84 +++++++++++++++++++++++++++++++++++
+ grub-core/kern/main.c         | 12 +++++
  grub-core/normal/auth.c       | 30 +++++++++++++
  grub-core/normal/main.c       |  4 ++
  grub-core/normal/menu_entry.c |  4 ++
  include/grub/auth.h           |  1 +
  include/grub/cryptodisk.h     |  3 ++
  include/grub/misc.h           |  2 +
- 8 files changed, 136 insertions(+)
+ 8 files changed, 140 insertions(+)
 
 diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
-index babc94868..77bc782fd 100644
+index babc94868d..21bf22ead1 100644
 --- a/grub-core/disk/cryptodisk.c
 +++ b/grub-core/disk/cryptodisk.c
 @@ -1188,6 +1188,7 @@ grub_cryptodisk_scan_device_real (const char *name,
@@ -49,7 +50,7 @@ index babc94868..77bc782fd 100644
  #endif
  	      goto cleanup;
  	    }
-@@ -1706,6 +1707,85 @@ luks_script_get (grub_size_t *sz)
+@@ -1706,6 +1707,89 @@ luks_script_get (grub_size_t *sz)
    return ret;
  }
  
@@ -74,25 +75,30 @@ index babc94868..77bc782fd 100644
 +      source = grub_disk_open (cr_dev->source);
 +
 +      if (source == NULL)
-+	goto error_out;
++	{
++	  ret = grub_errno;
++	  goto error_out;
++	}
 +
 +      FOR_CRYPTODISK_DEVS (cr)
 +      {
 +	dev = cr->scan (source, &cargs);
 +	if (grub_errno)
-+	  goto error_out;
-+	if (!dev)
++	  {
++	    ret = grub_errno;
++	    goto error_out;
++	  }
++	if (dev == NULL)
 +	  continue;
 +	break;
 +      }
 +
 +      if (dev == NULL)
 +	{
-+	  grub_error (GRUB_ERR_BAD_MODULE,
-+		      "no cryptodisk module can handle this device");
++	  ret = grub_error (GRUB_ERR_BAD_MODULE, "no cryptodisk module can handle this device");
 +	  goto error_out;
 +	}
-+      
++
 +      part = grub_partition_get_name (source->partition);
 +      grub_printf_ (N_("Enter passphrase for %s%s%s (%s): "), source->name,
 +		    source->partition != NULL ? "," : "",
@@ -101,22 +107,22 @@ index babc94868..77bc782fd 100644
 +
 +      cargs.key_data = grub_malloc (GRUB_CRYPTODISK_MAX_PASSPHRASE);
 +      if (cargs.key_data == NULL)
-+	goto error_out;
++	{
++	  ret = grub_errno;
++	  goto error_out;
++	}
 +
 +      if (!grub_password_get ((char *) cargs.key_data, GRUB_CRYPTODISK_MAX_PASSPHRASE))
 +	{
-+	  grub_error (GRUB_ERR_BAD_ARGUMENT, "passphrase not supplied");
++	  ret = grub_error (GRUB_ERR_BAD_ARGUMENT, "passphrase not supplied");
 +	  goto error_out;
 +	}
 +      cargs.key_len = grub_strlen ((char *) cargs.key_data);
 +      ret = cr->recover_key (source, dev, &cargs);
-+      if (ret != GRUB_ERR_NONE)
-+	goto error_out;
 +
 + error_out:
-+      if (source)
-+	grub_disk_close (source);
-+      if (dev)
++      grub_disk_close (source);
++      if (dev != NULL)
 +	cryptodisk_close (dev);
 +      if (cargs.key_data)
 +	{
@@ -124,8 +130,7 @@ index babc94868..77bc782fd 100644
 +	  grub_free (cargs.key_data);
 +	}
 +
-+      if (grub_errno != GRUB_ERR_NONE)
-+	return grub_errno;
++      return ret;
 +    }
 +
 +  return GRUB_ERR_NONE;
@@ -136,7 +141,7 @@ index babc94868..77bc782fd 100644
  {
    .name = "luks_script",
 diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
-index 07b6940d2..ef3b3756d 100644
+index 07b6940d2e..ef3b3756de 100644
 --- a/grub-core/kern/main.c
 +++ b/grub-core/kern/main.c
 @@ -37,6 +37,7 @@
@@ -166,7 +171,7 @@ index 07b6940d2..ef3b3756d 100644
  check_is_cli_disabled (void)
  {
 diff --git a/grub-core/normal/auth.c b/grub-core/normal/auth.c
-index d94020186..2931ba604 100644
+index d940201866..2931ba604a 100644
 --- a/grub-core/normal/auth.c
 +++ b/grub-core/normal/auth.c
 @@ -25,6 +25,10 @@
@@ -214,7 +219,7 @@ index d94020186..2931ba604 100644
  grub_auth_check_authentication (const char *userlist)
  {
 diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
-index 8e58ced67..b08fd6977 100644
+index 8e58ced679..b08fd6977d 100644
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
 @@ -560,9 +560,13 @@ grub_cmdline_run (int nested, int force_auth)
@@ -232,7 +237,7 @@ index 8e58ced67..b08fd6977 100644
        return;
      }
 diff --git a/grub-core/normal/menu_entry.c b/grub-core/normal/menu_entry.c
-index e5ba91ea4..06682a396 100644
+index e5ba91ea4d..06682a396d 100644
 --- a/grub-core/normal/menu_entry.c
 +++ b/grub-core/normal/menu_entry.c
 @@ -1256,9 +1256,13 @@ grub_menu_entry_run (grub_menu_entry_t entry)
@@ -250,7 +255,7 @@ index e5ba91ea4..06682a396 100644
        return;
      }
 diff --git a/include/grub/auth.h b/include/grub/auth.h
-index 747334451..21d5190f0 100644
+index 7473344517..21d5190f04 100644
 --- a/include/grub/auth.h
 +++ b/include/grub/auth.h
 @@ -33,5 +33,6 @@ grub_err_t grub_auth_unregister_authentication (const char *user);
@@ -261,7 +266,7 @@ index 747334451..21d5190f0 100644
  
  #endif /* ! GRUB_AUTH_HEADER */
 diff --git a/include/grub/cryptodisk.h b/include/grub/cryptodisk.h
-index 0b41e249e..b3291519b 100644
+index 0b41e249e8..b3291519b1 100644
 --- a/include/grub/cryptodisk.h
 +++ b/include/grub/cryptodisk.h
 @@ -203,4 +203,7 @@ grub_util_get_geli_uuid (const char *dev);
@@ -273,7 +278,7 @@ index 0b41e249e..b3291519b 100644
 +#endif
  #endif
 diff --git a/include/grub/misc.h b/include/grub/misc.h
-index 1578f36c3..6e94d18f5 100644
+index 1578f36c3c..6e94d18f5a 100644
 --- a/include/grub/misc.h
 +++ b/include/grub/misc.h
 @@ -392,6 +392,8 @@ grub_uint64_t EXPORT_FUNC(grub_divmod64) (grub_uint64_t n,
@@ -286,5 +291,5 @@ index 1578f36c3..6e94d18f5 100644
  /* Must match softdiv group in gentpl.py.  */
  #if !defined(GRUB_MACHINE_EMU) && (defined(__arm__) || defined(__ia64__) || \
 -- 
-2.47.0
+2.47.1
 

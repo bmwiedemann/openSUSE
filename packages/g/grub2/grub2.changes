@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Feb 14 03:49:09 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Security fixes for 2024
+  * 0001-misc-Implement-grub_strlcpy.patch
+- Fix CVE-2024-45781 (bsc#1233617)
+  * 0002-fs-ufs-Fix-a-heap-OOB-write.patch
+- Fix CVE-2024-56737 (bsc#1234958)
+- Fix CVE-2024-45782 (bsc#1233615)
+  * 0003-fs-hfs-Fix-stack-OOB-write-with-grub_strcpy.patch
+- Fix CVE-2024-45780 (bsc#1233614)
+  * 0004-fs-tar-Integer-overflow-leads-to-heap-OOB-write.patch
+- Fix CVE-2024-45783 (bsc#1233616)
+  * 0005-fs-hfsplus-Set-a-grub_errno-if-mount-fails.patch
+  * 0006-kern-file-Ensure-file-data-is-set.patch
+  * 0007-kern-file-Implement-filesystem-reference-counting.patch
+- Fix CVE-2025-0624 (bsc#1236316)
+  * 0008-net-Fix-OOB-write-in-grub_net_search_config_file.patch
+- Fix CVE-2024-45774 (bsc#1233609)
+  * 0009-video-readers-jpeg-Do-not-permit-duplicate-SOF0-mark.patch
+- Fix CVE-2024-45775 (bsc#1233610)
+  * 0010-commands-extcmd-Missing-check-for-failed-allocation.patch
+- Fix CVE-2025-0622 (bsc#1236317)
+  * 0011-commands-pgp-Unregister-the-check_signatures-hooks-o.patch
+- Fix CVE-2025-0622 (bsc#1236317)
+  * 0012-normal-Remove-variables-hooks-on-module-unload.patch
+- Fix CVE-2025-0622 (bsc#1236317)
+  * 0013-gettext-Remove-variables-hooks-on-module-unload.patch
+- Fix CVE-2024-45776 (bsc#1233612)
+  * 0014-gettext-Integer-overflow-leads-to-heap-OOB-write-or-.patch
+- Fix CVE-2024-45777 (bsc#1233613)
+  * 0015-gettext-Integer-overflow-leads-to-heap-OOB-write.patch
+- Fix CVE-2025-0690 (bsc#1237012)
+  * 0016-commands-read-Fix-an-integer-overflow-when-supplying.patch
+- Fix CVE-2025-1118 (bsc#1237013)
+  * 0017-commands-minicmd-Block-the-dump-command-in-lockdown-.patch
+- Fix CVE-2024-45778 (bsc#1233606)
+- Fix CVE-2024-45779 (bsc#1233608)
+  * 0018-fs-bfs-Disable-under-lockdown.patch
+- Fix CVE-2025-0677 (bsc#1237002)
+- Fix CVE-2025-0684 (bsc#1237008)
+- Fix CVE-2025-0685 (bsc#1237009)
+- Fix CVE-2025-0686 (bsc#1237010)
+- Fix CVE-2025-0689 (bsc#1237011)
+  * 0019-fs-Disable-many-filesystems-under-lockdown.patch
+- Fix CVE-2025-1125 (bsc#1237014)
+- Fix CVE-2025-0678 (bsc#1237006)
+  * 0020-fs-Prevent-overflows-when-allocating-memory-for-arra.patch
+- Updated to upstream version
+  * 0002-Requiring-authentication-after-tpm-unlock-for-CLI-ac.patch
+- Bump upstream SBAT generation to 5
+
+-------------------------------------------------------------------
 Thu Feb 13 15:28:50 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Fix out of memory issue on PowerPC by increasing RMA size (bsc#1236744)
