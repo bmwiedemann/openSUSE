@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Feb 18 18:26:01 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-build-give-libisobusfs-a-version.patch
+
+-------------------------------------------------------------------
+Mon Feb 10 13:21:56 UTC 2025 - pgajdos@suse.com
+
+- version update to 2025.01
+  * Support of new kernel features:
+  * Full CAN XL support for candump, canplayer, cangen, log2asc,
+    asc2log, lib
+  * cangen: support socket priority
+  * Improvements and features:
+  * ISOBUS (ISO11783-13) File Server Interface (isobusfs-srv,
+    isobusfs-cli)
+  * Add j1939_datatime_cli
+  * cansequence: allow to bind on "any" interface
+  * cansequence: add support to send and receive CAN-FD
+  * canfdtest: add support for loopback testing
+  * isotpdump: option to capture functional addressing traffic
+  * isotpdump: add color support for functional addressing traffic
+  * isotprecv: add option to enable dynamic flow control
+    parameters (Linux 6.9+)
+  * cangen: add missing long CAN frame view for len8_dlc and eff
+  * canbusload: add auto detection of CAN interfaces
+  * canbusload: show RX/TX direction in bargraph
+  * canbusload: support busload statistic and busload visualization
+
+-------------------------------------------------------------------
 Wed Mar 15 13:35:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.03

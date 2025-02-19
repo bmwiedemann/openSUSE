@@ -1,7 +1,7 @@
 #
 # spec file for package canutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           canutils
-Version:        2023.03
+%define lname   libisobusfs-suse0
+Version:        2025.01
 Release:        0
 Summary:        Utilities for Controller Area Networks from the Linux-CAN project
-License:        BSD-3-Clause AND GPL-2.0-only
+License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/linux-can/can-utils
 Source:         https://github.com/linux-can/can-utils/archive/refs/tags/v%version.tar.gz
-BuildRequires:  libtool
+Patch1:         0001-build-give-libisobusfs-a-version.patch
+BuildRequires:  cmake >= 3.5
 BuildRequires:  pkg-config
 BuildRequires:  xz
 Obsoletes:      canutils-linuxcan
@@ -42,20 +44,34 @@ Research to the Linux kernel.
 This package contains some userspace utilities for the Linux
 SocketCAN subsystem.
 
+%package -n libisobusfs0
+Summary:        Component library for can-utils
+Group:          System/Libraries
+License:        LGPL-2.0-only
+
+%description -n libisobusfs0
+Component library for the CAN utilities.
+
 %prep
 %autosetup -n can-utils-%version -p1
 
 %build
-if test ! -e configure; then ./autogen.sh; fi
-%configure --disable-static
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install
+%cmake_install
+# headers are useless at present - https://github.com/linux-can/can-utils/issues/578
+rm -Rf "%buildroot/%_includedir" "%buildroot/%_libdir/libisobusfs.so"
+
+%ldconfig_scriptlets -n libisobusfs0
 
 %files
-%_bindir/*
 %doc *.md
 %license LICENSES/*
+%_bindir/*
+
+%files -n libisobusfs0
+%_libdir/libisobusfs.so.*
 
 %changelog

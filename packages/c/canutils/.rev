@@ -127,4 +127,13 @@
     <comment>- Update to release 2023.03</comment>
     <requestid>1072111</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>490c549f4131e7be7301434ecb3aa4f0</srcmd5>
+    <version>2025.01</version>
+    <time>1739977124</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-build-give-libisobusfs-a-version.patch
+- version update to 2025.01</comment>
+    <requestid>1246784</requestid>
+  </revision>
 </revisionlist>

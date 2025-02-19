@@ -1,0 +1,24 @@
+From 2e71e396c5bfb00d506b2f228bb11d0959e99db2 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Mon, 10 Feb 2025 15:32:27 +0100
+Subject: [PATCH] build: give libisobusfs a version
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 01f90f9..236fba0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -126,6 +126,7 @@ if(NOT ANDROID)
+ 
+   set_target_properties(isobusfs PROPERTIES
+     PUBLIC_HEADER "${PUBLIC_HEADER_ISOBUSFS}"
++    SOVERSION 0
+   )
+ 
+   install(TARGETS isobusfs
+-- 
+2.48.1
+
