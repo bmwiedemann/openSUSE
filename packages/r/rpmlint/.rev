@@ -5173,4 +5173,13 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
     <comment></comment>
     <requestid>1245428</requestid>
   </revision>
+  <revision rev="500" vrev="1">
+    <srcmd5>5729c7375563de9c75ab4c5283854e4e</srcmd5>
+    <version>2.6.1+git20250217.bfa2b434</version>
+    <time>1739977099</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20250217.bfa2b434:
+  * dbus-services: whitelist systemd-sysupdated (bsc#1237106)</comment>
+    <requestid>1246468</requestid>
+  </revision>
 </revisionlist>
