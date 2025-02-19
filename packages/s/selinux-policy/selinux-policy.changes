@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 18 12:41:08 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250218:
+  * Enable postfix_local_write_mail_spool boolean by default for targeted only
+  * Revert "Enable postfix_local_write_mail_spool boolean by default"
+  * Support openSUSE-specific krb5kdc paths (bsc#1237064)
+
+-------------------------------------------------------------------
 Wed Feb 12 09:15:02 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250212:

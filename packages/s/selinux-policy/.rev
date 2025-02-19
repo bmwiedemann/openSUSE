@@ -1523,4 +1523,16 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1245274</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>44ec9060de0edcc624dc5bcb8a469a7d</srcmd5>
+    <version>20250218</version>
+    <time>1739977105</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250218:
+  * Enable postfix_local_write_mail_spool boolean by default for targeted only
+  * Revert &quot;Enable postfix_local_write_mail_spool boolean by default&quot;
+  * Support openSUSE-specific krb5kdc paths (bsc#1237064)
+</comment>
+    <requestid>1246667</requestid>
+  </revision>
 </revisionlist>
