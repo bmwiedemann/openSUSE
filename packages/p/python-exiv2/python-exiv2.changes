@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 19 07:49:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.17.2
+  * Binary wheels incorporate libexiv2 v0.28.4.
+  * Fix TimeValue test when run with local negative UTC offset.
+
+-------------------------------------------------------------------
 Mon Nov 25 23:34:32 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix building

@@ -136,4 +136,12 @@
   * Set datum value from Python object directly instead of via</comment>
     <requestid>1227179</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d069f64c2d0164460c2f70b4738cad69</srcmd5>
+    <version>0.17.2</version>
+    <time>1739977177</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1246961</requestid>
+  </revision>
 </revisionlist>
