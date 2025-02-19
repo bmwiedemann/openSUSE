@@ -1,6 +1,0 @@
-<package name="drkonqi5" project="openSUSE:Factory">
-  <title>Crash handler for KDE software</title>
-  <description>drkonqi gives the user feedback in case of crashes affecting KDE software.
-</description>
-  <devel project="KDE:Frameworks5" package="drkonqi5"/>
-</package>
