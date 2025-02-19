@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:56:17 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
+
+- mkfs: fix filesize function compilation error on 32-bit archs
+  - add mkfs-fix-filesize-function-compilation-error-on-32-b.patch
+
+-------------------------------------------------------------------
+Mon Feb 17 13:15:41 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.13.0
+  - xfs_protofile: fix device number encoding
+  - xfs_protofile: fix mode formatting error
+  - mkfs: fix file size setting when interpreting a protofile
+  - xfs_repair: require zeroed quota/rt inodes in metadir superblocks
+  - mkfs: use a default sector size that is also suitable for the rtdev
+  - xfs_scrub_all.timer: don't run if /var/lib/xfsprogs is readonly
+  - xfs_logprint: Fix super block buffer interpretation issue
+  - mkfs: allow sizing realtime allocation groups for concurrency
+  - build: initialize stack variables to zero by default
+  - m4: fix statx override selection if /usr/include doesn't define it
+  - mkfs: fix parsing of value-less -d/-l concurrency cli option
+  - xfs_db: improve error message when unknown btree type given to btheight
+  - xfs_repair: don't obliterate return codes
+  - xfs_db: fix multiple dblock commands
+  - xfs: don't return an error from xfs_update_last_rtgroup_size for !XFS_RT
+  - xfs_io: add extsize command support
+  - xfs_io: allow foreign FSes to show FS_IOC_FSGETXATTR details
+  - mkfs: enable rt quota options
+  - xfs_quota: report warning limits for realtime space quotas
+  - mkfs: add quota flags when setting up filesystem
+  - xfs_repair: try not to trash qflags on metadir filesystems
+  - xfs_repair: support quota inodes in the metadata directory
+  - xfs_db: support metadir quotas
+  - libfrog: scrub quota file metapaths
+  - mkfs: format realtime groups
+  - mkfs: add headers to realtime bitmap blocks
+  - xfs_scrub: use histograms to speed up phase 8 on the realtime volume
+  - xfs_scrub: trim realtime volumes too
+  - xfs_scrub: call GETFSMAP for each rt group in parallel
+  - xfs_scrub: cleanup fsmap keys initialization
+  - xfs_scrub: check rtgroup metadata directory connections
+  - xfs_scrub: scrub realtime allocation group metadata
+  - xfs_spaceman: report on realtime group health
+  - xfs_mdrestore: restore rt group superblocks to realtime device
+  - xfs_io: display rt group in verbose fsmap output
+  - xfs_io: display rt group in verbose bmap output
+  - xfs_io: add a command to display realtime group information
+  - xfs_io: add a command to display allocation group information
+  - xfs_io: support scrubbing rtgroup metadata paths
+  - xfs_io: support scrubbing rtgroup metadata
+  - xfs_db: report rt group and block number in the bmap command
+  - xfs_db: dump rt summary blocks
+  - xfs_db: dump rt bitmap blocks
+  - xfs_db: metadump realtime devices
+  - xfs_db: metadump metadir rt bitmap and summary files
+  - xfs_db: enable conversion of rt space units
+  - xfs_db: support changing the label and uuid of rt superblocks
+  - xfs_db: support dumping realtime group data and superblocks
+  - xfs_db: listify the definition of enum typnm
+  - xfs_db: enable rtconvert to handle segmented rtblocks
+  - xfs_db: enable the rtblock and rtextent commands for segmented rt block numbers
+  - xfs_repair: repair rtbitmap and rtsummary block headers
+  - xfs_repair: support realtime superblocks
+  - xfs_repair: find and clobber rtgroup bitmap and summary files
+  - xfs_repair: support realtime groups
+  - xfs_repair: add a real per-AG bitmap abstraction
+  - xfs_repair: simplify rt_lock handling
+  - xfs_repair: improve rtbitmap discrepancy reporting
+  - xfs_repair: refactor offsetof+sizeof to offsetofend
+  - xfs_repair: refactor phase4
+  - xfs_repair: adjust rtbitmap/rtsummary word updates to handle big endian values
+  - xfs_logprint: report realtime EFIs
+  - libfrog: add bitmap_clear
+  - libfrog: report rt groups in output
+  - libfrog: support scrubbing rtgroup metadata paths
+  - man: document rgextents geom field
+  - man: document the rt group geometry ioctl
+  - mkfs: add a utility to generate protofiles
+  - mkfs: support copying in xattrs
+  - mkfs: support copying in large or sparse files
+  - mkfs.xfs: enable metadata directories
+  - xfs_repair: do not count metadata directory files when doing quotacheck
+  - xfs_repair: truncate and unmark orphaned metadata inodes
+  - xfs_repair: drop all the metadata directory files during pass 4
+  - xfs_repair: metadata dirs are never plausible root dirs
+  - xfs_repair: mark space used by metadata files
+  - xfs_repair: update incore metadata state whenever we create new files
+  - xfs_repair: don't let metadata and regular files mix
+  - xfs_repair: rebuild the metadata directory
+  - xfs_repair: check metadata inode flag
+  - xfs_repair: dont check metadata directory dirent inumbers
+  - xfs_repair: handle sb_metadirino correctly when zeroing supers
+  - xfs_scrub: re-run metafile scrubbers during phase 5
+  - xfs_scrub: scan metadata directories during phase 3
+  - xfs_scrub: tread zero-length read verify as an IO error
+  - xfs_spaceman: report health of metadir inodes too
+  - xfs_io: support scrubbing metadata directory paths
+  - xfs_io: support flag for limited bulkstat of the metadata directory
+  - xfs_db: drop the metadata checking code from blockget
+  - xfs_db: display di_metatype
+  - xfs_db: show the metadata root directory when dumping superblocks
+  - xfs_db: support metadata directories in the path command
+  - xfs_db: don't obfuscate metadata directories and attributes
+  - xfs_db: report metadir support for version command
+  - xfs_db: disable xfs_check when metadir is enabled
+  - xfs_io: support scrubbing metadata directory paths
+  - libfrog: report metadata directories in the geometry report
+  - man: update scrub ioctl documentation for metadir
+  - man2: document metadata directory flag in fsgeom ioctl
+  - man: document the -n parent mkfs option
+  - man: fix ioctl_xfs_commit_range man page install
+  - xfs_repair: fix maximum file offset comparison
+
+- update to 6.12.0
+  - xfs_io: add support for atomic write statx fields
+  - xfs_repair: fix crasher in pf_queuing_worker
+  - xfs: Reduce unnecessary searches when searching for the best extents
+  - xfs_spaceman: add dependency on libhandle target
+  - mkfs: add a config file for 6.12 LTS kernels
+  - xfs_scrub_all: wait for services to start activating
+  - xfs_repair: checking rt free space metadata must happen during phase 4
+  - xfs_db: allow setting current address to log blocks
+  - xfs_db: convert rtsummary geometry
+  - xfs_db: convert rtbitmap geometry
+  - xfs_db: enable conversion of rt space units
+  - xfs_db: access arbitrary realtime blocks and extents
+  - xfs_db: access realtime file blocks
+  - xfs_db: make the daddr command target the realtime device
+  - xfs_db: report the realtime device when associated with each io cursor
+  - xfs_db: support passing the realtime device to the debugger
+  - xfs_io: add atomic file update commands to exercise file commit range
+  - xfs_io: add a commitrange option to the exchangerange command
+  - xfs_fsr: port to new file exchange library function
+
+ -------------------------------------------------------------------
 Sat Oct 19 11:09:09 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.11.0

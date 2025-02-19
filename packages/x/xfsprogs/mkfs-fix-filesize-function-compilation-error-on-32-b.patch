@@ -1,0 +1,35 @@
+From c849e53e4389da08901cef99a9d9dcd0cb4b0ef1 Mon Sep 17 00:00:00 2001
+From: Anthony Iliopoulos <ailiop@suse.com>
+Date: Tue, 18 Feb 2025 15:06:29 +0100
+Subject: mkfs: fix filesize function compilation error on 32-bit archs
+
+Commit 73fb78e5ee89 changed the return type of filesize() from long to
+off_t, without changing the corresponding earlier declaration of the
+function.
+
+On 32-bit archs this breaks compilation as the off_t type is 8 bytes
+(since the unit is compiled with -D_FILE_OFFSET_BITS=64) and that is
+causing a conflicting type mismatch with the long type declaration.
+
+Fixes: 73fb78e5ee89 ("mkfs: support copying in large or sparse files")
+Signed-off-by: Anthony Iliopoulos <ailiop@suse.com>
+---
+ mkfs/proto.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mkfs/proto.c b/mkfs/proto.c
+index 6dd3a2005b15..981f5b11567f 100644
+--- a/mkfs/proto.c
++++ b/mkfs/proto.c
+@@ -20,7 +20,7 @@ static struct xfs_trans * getres(struct xfs_mount *mp, uint blocks);
+ static void rsvfile(xfs_mount_t *mp, xfs_inode_t *ip, long long len);
+ static int newregfile(char **pp, char **fname);
+ static void rtinit(xfs_mount_t *mp);
+-static long filesize(int fd);
++static off_t filesize(int fd);
+ static int slashes_are_spaces;
+ 
+ /*
+-- 
+2.47.0
+
