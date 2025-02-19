@@ -1,0 +1,13 @@
+Index: fossil-2.25/src/th.c
+===================================================================
+--- fossil-2.25.orig/src/th.c
++++ fossil-2.25/src/th.c
+@@ -2878,7 +2878,7 @@ int Th_SetResultInt(Th_Interp *interp, i
+ 
+   if( iVal<0 ){
+     isNegative = 1;
+-    uVal = iVal * -1;
++    uVal = uVal * -1;
+   }
+   *(--z) = '\0';
+   *(--z) = (char)(48+(uVal%10));

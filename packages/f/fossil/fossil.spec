@@ -1,7 +1,7 @@
 #
 # spec file for package fossil
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,7 @@ License:        BSD-2-Clause
 Group:          Development/Tools/Version Control
 URL:            https://fossil-scm.org/
 Source:         https://fossil-scm.org/home/tarball/%{fossil_uuid}/%{name}-%{version}.tar.gz
+Patch0:         overflow.patch
 BuildRequires:  pkgconfig
 BuildRequires:  tcl
 BuildRequires:  pkgconfig(fuse)
@@ -48,7 +49,7 @@ these features:
 * sqlite-backed database
 
 %prep
-%autosetup -p0
+%autosetup -p1
 # test package version and source version match
 grep -qFx %{version} VERSION
 
