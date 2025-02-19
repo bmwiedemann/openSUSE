@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 19 06:52:40 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Switch sources to the recent tip of upstream repository, since our
+  PR has been accepted
+
+-------------------------------------------------------------------
 Thu Oct 31 00:22:20 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 4.7.6
