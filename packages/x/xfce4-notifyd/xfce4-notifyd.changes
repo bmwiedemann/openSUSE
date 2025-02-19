@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Feb 17 08:47:40 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.9.7:
+  * meson-build: Use SPDX license expression
+  * meson-build: Update debug/optimization flag management
+  * build: Add meson build files to autotools generated tarball
+  * Do a full windowing system support check on startup
+  * Fix string leaks in notification_plugin_menu_new
+  * Fix button padding for top-position notifications with the
+    XP-Balloon theme
+  * Fix class names and rule application.
+  * Add XP-Balloon theme to build system
+  * Add XP-Balloon theme
+  * Add positioning style classes to XfceNotifyWindow
+  * Add gitlab issue template
+  * Add more compiler flags to the meson build
+  * Terminate cleanly on SIGQUIT
+  * Shut up warning about maybe uninitialized variable
+  * Meson build updates
+  * Add false-positives file for scan-build
+  * Fix two memory leaks
+  * Quiet a gcc static analyzer warning about NULL deref
+  * Toplevel meson.build update
+  * Clean up clang warnings
+  * Translation Updates
+- Remove obsolete xfce4-notifyd-relax-x11-version.patch
+
+-------------------------------------------------------------------
 Thu Aug 15 07:08:19 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - update to 0.9.6:
