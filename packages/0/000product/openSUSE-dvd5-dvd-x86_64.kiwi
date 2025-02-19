@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20250218" schemaversion="4.1">
+<image name="OBS__openSUSE___20250219" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250218</productvar>
+      <productvar name="VERSION">20250219</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250218,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250219,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250218/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250219/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -362,8 +362,6 @@
       <repopackage name="dosfstools"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-pcr-signature"/>
-      <repopackage name="drkonqi5"/>
-      <repopackage name="drkonqi5-lang"/>
       <repopackage name="drkonqi6"/>
       <repopackage name="drkonqi6-lang"/>
       <repopackage name="dump-rmt"/>
@@ -1101,7 +1099,6 @@
       <repopackage name="kirigami-addons6-lang"/>
       <repopackage name="kirigami2"/>
       <repopackage name="kirigami2-lang"/>
-      <repopackage name="kitemmodels-imports"/>
       <repopackage name="kiten"/>
       <repopackage name="kiten-lang"/>
       <repopackage name="kitinerary"/>
@@ -1187,8 +1184,6 @@
       <repopackage name="ktouch-lang"/>
       <repopackage name="kuiviewer"/>
       <repopackage name="kuiviewer-lang"/>
-      <repopackage name="kuserfeedback-imports"/>
-      <repopackage name="kuserfeedback-lang"/>
       <repopackage name="kvm_stat"/>
       <repopackage name="kwallet-tools"/>
       <repopackage name="kwallet-tools-lang"/>
@@ -1918,8 +1913,6 @@
       <repopackage name="libKF5I18n5-lang"/>
       <repopackage name="libKF5IconThemes5"/>
       <repopackage name="libKF5IconThemes5-lang"/>
-      <repopackage name="libKF5IdleTime5"/>
-      <repopackage name="libKF5ItemModels5"/>
       <repopackage name="libKF5ItemViews5"/>
       <repopackage name="libKF5ItemViews5-lang"/>
       <repopackage name="libKF5JobWidgets5"/>
@@ -2171,8 +2164,6 @@
       <repopackage name="libksysguard6-lang"/>
       <repopackage name="libksysguard6-plugins"/>
       <repopackage name="libKSysGuardSystemStats2"/>
-      <repopackage name="libKUserFeedbackCore1"/>
-      <repopackage name="libKUserFeedbackWidgets1"/>
       <repopackage name="libkwalletbackend5-5"/>
       <repopackage name="libKWaylandClient6"/>
       <repopackage name="libkwin6"/>
@@ -3911,6 +3902,7 @@
       <repopackage name="sbl"/>
       <repopackage name="screen"/>
       <repopackage name="sdbootutil"/>
+      <repopackage name="sdbootutil-dracut-measure-pcr"/>
       <repopackage name="sdbootutil-snapper"/>
       <repopackage name="sddm-branding-openSUSE"/>
       <repopackage name="sddm-greeter-qt5"/>
@@ -4013,7 +4005,6 @@
       <repopackage name="swtpm"/>
       <repopackage name="swtpm-selinux"/>
       <repopackage name="syntax-highlighting"/>
-      <repopackage name="syntax-highlighting-imports"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
       <repopackage name="syslinux"/>

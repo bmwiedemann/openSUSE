@@ -2399,7 +2399,6 @@ unsorted:
   - cockpit-doc 
   - cockpit-kdump 
   - cockpit-machines 
-  - cockpit-pcp 
   - cockpit-selinux 
   - cockpit-storaged 
   - code-minimap 
@@ -10389,6 +10388,7 @@ unsorted:
   - kissfft 
   - kissfft-devel 
   - kitemmodels-devel 
+  - kitemmodels-imports 
   - kitemviews-devel 
   - kiten-devel 
   - kitinerary-devel 
@@ -10848,6 +10848,8 @@ unsorted:
   - kured 
   - kured-k8s-yaml 
   - kuserfeedback-devel 
+  - kuserfeedback-imports 
+  - kuserfeedback-lang 
   - kuserfeedback-server 
   - kuserfeedback-tools 
   - kustomize 
@@ -11316,6 +11318,8 @@ unsorted:
   - libKF5Emoticons5 
   - libKF5Holidays5 
   - libKF5Holidays5-lang 
+  - libKF5IdleTime5 
+  - libKF5ItemModels5 
   - libKF5JS5 
   - libKF5JSApi5 
   - libKF5JsEmbed5 
@@ -11376,6 +11380,8 @@ unsorted:
   - libKTorrent6 
   - libKTorrent6-lang 
   - libKUnifiedPush1 
+  - libKUserFeedbackCore1 
+  - libKUserFeedbackWidgets1 
   - libKWeatherCore6 
   - libKWeatherCore6-lang 
   - libKasten4 
@@ -14206,6 +14212,7 @@ unsorted:
   - libiso9660-12 
   - libiso9660-12-32bit 
   - libisoburn-devel 
+  - libisobusfs0 
   - libisofs-devel 
   - libispcrt1 
   - libite-devel 
@@ -16905,7 +16912,7 @@ unsorted:
   - libuv-devel 
   - libuv1-32bit 
   - libuwac0-0 
-  - libv3270-5_4 
+  - libv3270-5_5 
   - libv3270-config 
   - libv3270-devel 
   - libv4l-32bit 
@@ -23053,8 +23060,6 @@ unsorted:
   - plasma-pass 
   - plasma-pass-lang 
   - plasma-wayland-protocols 
-  - plasma5-pk-updates 
-  - plasma5-pk-updates-lang 
   - plasma5support6-devel 
   - plasma6-activities-devel 
   - plasma6-activities-stats-devel 
@@ -23719,7 +23724,8 @@ unsorted:
   - putty 
   - pv 
   - pw3270 
-  - pw3270-branding 
+  - pw3270-branding-upstream 
+  - pw3270-lang 
   - pwgen 
   - py3c-devel 
   - pybind11-abseil-devel 
@@ -37839,6 +37845,7 @@ unsorted:
   - syndication-devel 
   - synergy 
   - syntax-highlighting-devel 
+  - syntax-highlighting-imports 
   - sypper 
   - sysbench 
   - sysctl-logger 
