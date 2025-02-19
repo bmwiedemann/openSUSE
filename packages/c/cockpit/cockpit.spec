@@ -1,3 +1,4 @@
+#
 # Copyright (C) 2014-2020 Red Hat, Inc.
 #
 # Cockpit is free software; you can redistribute it and/or modify it
@@ -11,7 +12,7 @@
 # Lesser General Public License for more details.
 #
 # You should have received a copy of the GNU Lesser General Public License
-# along with Cockpit; If not, see <http://www.gnu.org/licenses/>.
+# along with Cockpit; If not, see <https://www.gnu.org/licenses/>.
 #
 
 #
@@ -49,12 +50,13 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        322
+Version:        332
 Release:        0
 Source0:        cockpit-%{version}.tar.gz
 Source1:        cockpit.pam
 Source2:        cockpit-rpmlintrc
 Source3:        cockpit-suse-theme.tar
+Source4:        cockpit-no-pamoath.pam
 Source10:       update_version.sh
 Source99:       README.packaging
 Source98:       package-lock.json
@@ -69,11 +71,11 @@ Patch5:         storage-btrfs.patch
 Patch101:       hide-pcp.patch
 Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
 Patch107:       0006-totp-motd.patch
+Patch108:       0007-Remove-DynamicUser-setting-as-these-conflict-with-re.patch
 # For anything based on SLES 15 codebase (including Leap, SLE Micro)
 Patch103:       0004-leap-gnu18-removal.patch
 Patch104:       selinux_libdir.patch
 Patch105:       fix-libexecdir.patch
-Patch106:       0005-cockpit-ws-user-remove-default-deps.patch
 
 Patch201:       remove_rh_links.patch
 
@@ -108,14 +110,6 @@ Patch201:       remove_rh_links.patch
 ExcludeArch: %{ix86}
 %endif
 
-# pcp stopped building on ix86 in Fedora 40+, and broke hard on 39: https://bugzilla.redhat.com/show_bug.cgi?id=2284431
-%define build_pcp 1
-%if 0%{?fedora} >= 40 || 0%{?rhel} >= 10 || 0%{?suse_version} > 1500
-%ifarch %ix86
-%define build_pcp 0
-%endif
-%endif
-
 %define enable_multihost 1
 %if 0%{?fedora} >= 41 || 0%{?rhel} >= 10
 %define enable_multihost 0
@@ -141,7 +135,6 @@ BuildRequires: make
 BuildRequires: /usr/bin/python3
 BuildRequires: python3-devel
 BuildRequires: gettext >= 0.21
-BuildRequires: libssh-devel >= 0.8.5
 BuildRequires: openssl-devel
 BuildRequires: gnutls-devel >= 3.4.3
 BuildRequires: zlib-devel
@@ -155,21 +148,12 @@ BuildRequires: glib2-devel >= 2.50.0
 BuildRequires: pkgconfig(libsystemd) >= 235
 %if 0%{?suse_version}
 BuildRequires: distribution-release
-%if %{build_pcp}
-BuildRequires: libpcp-devel
-BuildRequires: pcp-devel
-BuildRequires: libpcp3
-BuildRequires: libpcp_import1
-%endif
 BuildRequires: openssh
 BuildRequires: distribution-logos
 BuildRequires: wallpaper-branding
 # needed for /var/lib/pcp directory ownership
 BuildRequires: pcp
 %else
-%if %{build_pcp}
-BuildRequires: pcp-libs-devel
-%endif
 BuildRequires: openssh-clients
 BuildRequires: docbook-style-xsl
 %endif
@@ -200,7 +184,7 @@ Requires: cockpit-system
 # Optional components
 Recommends: (cockpit-storaged if udisks2)
 Recommends: (cockpit-packagekit if (dnf or zypper))
-Suggests: cockpit-pcp
+Suggests: python3-pcp
 
 %if 0%{?rhel} == 0
 Recommends: (cockpit-networkmanager if NetworkManager)
@@ -217,11 +201,8 @@ BuildRequires:  python3-pip
 %if 0%{?rhel} == 0 && !0%{?suse_version}
 # All of these are only required for running pytest (which we only do on Fedora)
 BuildRequires:  procps-ng
-BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python3-pytest-asyncio
-BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-pytest-timeout
-BuildRequires:  python3-tox-current-env
 %endif
 
 %prep
@@ -231,12 +212,12 @@ BuildRequires:  python3-tox-current-env
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
-%patch -P 106 -p1
-%patch -P 107 -p1
+
 
 # SLE Micro specific patches
 %if 0%{?is_smo}
 %patch -P 101 -p1
+%patch -P 107 -p1
 # Patches for versions lower then SLE Micro 5.5
 %if 0%{?sle_version} < 150500
 %patch -P 102 -p1
@@ -245,13 +226,20 @@ BuildRequires:  python3-tox-current-env
 # For anything based on SLES 15 codebase (including Leap, SLEM)
 %if 0%{?suse_version} == 1500
 %patch -P 103 -p1
-%patch -P 104 -p0
+%patch -P 104 -p1
 %patch -P 105 -p1
+%patch -P 108 -p1
+%else
+%patch -P 107 -p1
 %endif
 
 %patch -P 201 -p1
 
+%if 0%{?suse_version} > 1500
 cp %SOURCE1 tools/cockpit.pam
+%else
+cp %SOURCE4 tools/cockpit.pam
+%endif
 #
 local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
 
@@ -271,9 +259,6 @@ autoreconf -fvi -I tools
     --libexecdir=%_libexecdir \
 %endif
     --with-pamdir='%{pamdir}' \
-%if %{build_pcp} == 0
-    --disable-pcp \
-%endif
 %if %{enable_multihost}
     --enable-multihost \
 %endif
@@ -325,8 +310,7 @@ popd
 
 %if 0%{?suse_version} == 1500
 sed -i -e 's#"/lib/systemd/system#"%{_unitdir}#' \
-  %{buildroot}%{_datadir}/cockpit/packagekit/manifest.json \
-  %{buildroot}%{_datadir}/cockpit/pcp/manifest.json
+  %{buildroot}%{_datadir}/cockpit/packagekit/manifest.json
 %endif
 
 # Build the package lists for resource packages
@@ -336,57 +320,6 @@ echo '%dir %{_datadir}/cockpit/base1' >> base.list
 find %{buildroot}%{_datadir}/cockpit/base1 -type f -o -type l >> base.list
 echo '%{_sysconfdir}/cockpit/machines.d' >> base.list
 echo %{buildroot}%{_datadir}/polkit-1/actions/org.cockpit-project.cockpit-bridge.policy >> base.list
-echo '%{_libexecdir}/cockpit-ssh' >> base.list
-
-%if %{build_pcp}
-echo '%dir %{_datadir}/cockpit/pcp' > pcp.list
-find %{buildroot}%{_datadir}/cockpit/pcp -type f >> pcp.list
-%endif
-
-# when not building basic packages, remove their files
-%if 0%{?build_basic} == 0
-for pkg in base1 branding motd kdump networkmanager selinux shell sosreport static systemd users metrics; do
-    rm -r %{buildroot}/%{_datadir}/cockpit/$pkg
-    rm -f %{buildroot}/%{_datadir}/metainfo/org.cockpit-project.cockpit-${pkg}.metainfo.xml
-done
-for data in doc man pixmaps polkit-1; do
-    rm -r %{buildroot}/%{_datadir}/$data
-done
-rm -r %{buildroot}/%{_prefix}/%{__lib}/tmpfiles.d
-find %{buildroot}/%{_unitdir}/ -type f ! -name 'cockpit-session*' -delete
-for libexec in cockpit-askpass cockpit-session cockpit-ws cockpit-tls cockpit-wsinstance-factory cockpit-client cockpit-client.ui cockpit-desktop cockpit-certificate-helper cockpit-certificate-ensure; do
-    rm -f %{buildroot}/%{_libexecdir}/$libexec
-done
-rm -rf %{buildroot}/%{_sysconfdir}/pam.d %{buildroot}/%{_sysconfdir}/motd.d %{buildroot}/%{_sysconfdir}/issue.d
-%if 0%{?suse_version} > 1500
-rm -rf %{buildroot}/%{_pam_vendordir}
-%else
-rm -rf %{buildroot}/%{_sysconfdir}/pam.d
-%endif
-rm -f %{buildroot}/%{_libdir}/security/pam_*
-rm -f %{buildroot}/usr/bin/cockpit-bridge
-rm -f %{buildroot}%{_libexecdir}/cockpit-ssh
-rm -f %{buildroot}%{_datadir}/metainfo/cockpit.appdata.xml
-rm -rf %{buildroot}%{python3_sitelib}/cockpit*
-%endif
-
-# when not building optional packages, remove their files
-%if 0%{?build_optional} == 0
-for pkg in apps packagekit pcp playground storaged; do
-    rm -rf %{buildroot}/%{_datadir}/cockpit/$pkg
-done
-# files from -pcp
-rm -rf %{buildroot}/%{_libexecdir}/cockpit-pcp %{buildroot}/%{_localstatedir}/lib/pcp/
-# files from -storaged
-rm -f %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-storaged.metainfo.xml
-%endif
-
-%if 0%{?build_tests} == 0
-rm -rf %{buildroot}%{_datadir}/cockpit/playground
-rm -f %{buildroot}/%{pamdir}/mock-pam-conv-mod.so
-rm -f %{buildroot}/%{_unitdir}/cockpit-session.socket
-rm -f %{buildroot}/%{_unitdir}/cockpit-session@.service
-%endif
 
 echo '%dir %{_datadir}/cockpit/shell' >> system.list
 find %{buildroot}%{_datadir}/cockpit/shell -type f >> system.list
@@ -421,12 +354,49 @@ find %{buildroot}%{_datadir}/cockpit/apps -type f >> packagekit.list
 echo '%dir %{_datadir}/cockpit/selinux' > selinux.list
 find %{buildroot}%{_datadir}/cockpit/selinux -type f >> selinux.list
 
-# echo '%dir %{_datadir}/cockpit/playground' > tests.list
-# find %{buildroot}%{_datadir}/cockpit/playground -type f >> tests.list
-
 echo '%dir %{_datadir}/cockpit/static' > static.list
 echo '%dir %{_datadir}/cockpit/static/fonts' >> static.list
 find %{buildroot}%{_datadir}/cockpit/static -type f >> static.list
+
+# when not building basic packages, remove their files
+%if 0%{?build_basic} == 0
+for pkg in base1 branding motd kdump networkmanager selinux shell sosreport static systemd users metrics; do
+    rm -r %{buildroot}/%{_datadir}/cockpit/$pkg
+    rm -f %{buildroot}/%{_datadir}/metainfo/org.cockpit-project.cockpit-${pkg}.metainfo.xml
+done
+for data in doc man pixmaps polkit-1; do
+    rm -r %{buildroot}/%{_datadir}/$data
+done
+rm -r %{buildroot}/%{_prefix}/%{__lib}/tmpfiles.d
+for libexec in cockpit-askpass cockpit-session cockpit-ws cockpit-tls cockpit-wsinstance-factory cockpit-client cockpit-client.ui cockpit-desktop cockpit-certificate-helper cockpit-certificate-ensure; do
+    rm -f %{buildroot}/%{_libexecdir}/$libexec
+done
+rm -rf %{buildroot}/%{_sysconfdir}/pam.d %{buildroot}/%{_sysconfdir}/motd.d %{buildroot}/%{_sysconfdir}/issue.d
+%if 0%{?suse_version} > 1500
+rm -rf %{buildroot}/%{_pam_vendordir}
+%else
+rm -rf %{buildroot}/%{_sysconfdir}/pam.d
+%endif
+rm -f %{buildroot}/%{_libdir}/security/pam_*
+rm -f %{buildroot}/usr/bin/cockpit-bridge
+rm -f %{buildroot}%{_libexecdir}/cockpit-ssh
+rm -f %{buildroot}%{_datadir}/metainfo/cockpit.appdata.xml
+rm -rf %{buildroot}%{python3_sitelib}/cockpit*
+%endif
+
+# when not building optional packages, remove their files
+%if 0%{?build_optional} == 0
+for pkg in apps packagekit playground storaged; do
+    rm -rf %{buildroot}/%{_datadir}/cockpit/$pkg
+done
+# files from -storaged
+rm -f %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-storaged.metainfo.xml
+%endif
+
+%if 0%{?build_tests} == 0
+rm -rf %{buildroot}%{_datadir}/cockpit/playground
+rm -f %{buildroot}/%{pamdir}/mock-pam-conv-mod.so
+%endif
 
 sed -i "s|%{buildroot}||" *.list
 
@@ -437,14 +407,16 @@ pushd %{buildroot}/%{_datadir}/cockpit/branding
 ls --hide={default,kubernetes,opensuse,registry,suse} | xargs rm -rv
 popd
 # need this in SUSE as post build checks dislike stale symlinks
-install -m 644 -D /dev/null %{buildroot}/run/cockpit/motd
+install -m 644 -D /dev/null %{buildroot}/run/cockpit/issue
+
 test -e %{buildroot}/usr/share/cockpit/branding/opensuse/default-1920x1200.jpg  || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/opensuse/default-1920x1200.jpg
 test -e %{buildroot}/usr/share/cockpit/branding/suse/apple-touch-icon.png  || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/suse/apple-touch-icon.png
 test -e %{buildroot}/usr/share/cockpit/branding/suse/default-1920x1200.png || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/suse/default-1920x1200.png
+
 # remove files of not installable packages
 rm -r %{buildroot}%{_datadir}/cockpit/sosreport
-rm -f %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-sosreport.metainfo.xml
-rm -f %{buildroot}%{_datadir}/pixmaps/cockpit-sosreport.png
+rm -f %{buildroot}/%{_prefix}/share/metainfo/org.cockpit_project.cockpit_sosreport.metainfo.xml
+rm -f %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/cockpit-sosreport.png
 %else
 %global _debugsource_packages 1
 %global _debuginfo_subpackages 0
@@ -482,22 +454,16 @@ troubleshooting, interactive command-line sessions, and more.
 %{_docdir}/cockpit/AUTHORS
 %{_docdir}/cockpit/COPYING
 %{_docdir}/cockpit/README.md
-%{_datadir}/metainfo/cockpit.appdata.xml
-%{_datadir}/pixmaps/cockpit.png
+%{_datadir}/metainfo/org.cockpit_project.cockpit.appdata.xml
+%dir %{_datadir}/icons/hicolor/128x128/apps
+%dir %{_datadir}/icons/hicolor/128x128
+%dir %{_datadir}/icons/hicolor
+%{_datadir}/icons/hicolor/128x128/apps/cockpit.png
 %doc %{_mandir}/man1/cockpit.1.gz
 
 
 %package bridge
 Summary: Cockpit bridge server-side component
-Requires: glib-networking
-Provides: cockpit-ssh = %{version}-%{release}
-# 233 dropped jquery.js, pages started to bundle it (commit 049e8b8dce)
-Conflicts: cockpit-dashboard < 233
-Conflicts: cockpit-networkmanager < 233
-Conflicts: cockpit-storaged < 233
-Conflicts: cockpit-system < 233
-Conflicts: cockpit-tests < 233
-Conflicts: cockpit-docker < 233
 
 %description bridge
 The Cockpit bridge component installed server side and runs commands on the
@@ -539,21 +505,21 @@ Provides: cockpit-shell = %{version}-%{release}
 Provides: cockpit-systemd = %{version}-%{release}
 Provides: cockpit-tuned = %{version}-%{release}
 Provides: cockpit-users = %{version}-%{release}
-Obsoletes: cockpit-dashboard < %{version}-%{release}
 %if 0%{?rhel}
 Requires: NetworkManager >= 1.6
-Requires: kexec-tools
 Requires: sos
 Requires: sudo
 Recommends: PackageKit
 Recommends: setroubleshoot-server >= 3.3.3
-Recommends: /usr/bin/kdumpctl
+Recommends: kexec-tools
 Suggests: NetworkManager-team
+Suggests: python3-pcp
 Provides: cockpit-kdump = %{version}-%{release}
 Provides: cockpit-networkmanager = %{version}-%{release}
 Provides: cockpit-selinux = %{version}-%{release}
 Provides: cockpit-sosreport = %{version}-%{release}
 %endif
+Obsoletes: cockpit-tests <  %{version}
 %if 0%{?fedora}
 Recommends: (reportd if abrt)
 %endif
@@ -578,19 +544,23 @@ Requires(post): (policycoreutils if selinux-policy-%{selinuxtype})
 Conflicts: firewalld < 0.6.0-1
 Recommends: sscg >= 2.3
 Recommends: system-logos
-Suggests: sssd-dbus >= 2.6.2
+Suggests: sssd-dbus
 %if 0%{?suse_version}
 Requires(pre): permissions
 Requires: distribution-logos
+%if 0%{?suse_version} > 1500
 Requires: pam_oath >= 2.6.11.12
+%endif
 Requires: wallpaper-branding
 %endif
 # for cockpit-desktop
 Suggests: python3
-Provides:       group(cockpit-ws)
-Provides:       group(cockpit-wsinstance)
-Provides:       user(cockpit-ws)
-Provides:       user(cockpit-wsinstance)
+Obsoletes: cockpit-tests < 331
+Provides:       group(cockpit-wsinstance-socket)
+Provides:       group(cockpit-session-socket)
+Provides:       user(cockpit-wsinstance-socket)
+Provides:       user(cockpit-session-socket)
+Provides:       user(cockpit-systemd-service)
 
 # prevent hard python3 dependency for cockpit-desktop, it falls back to other browsers
 %global __requires_exclude_from ^%{_libexecdir}/cockpit-client$
@@ -621,23 +591,25 @@ authentication via sssd/FreeIPA.
 %ghost %{_sysconfdir}/motd.d/cockpit
 %ghost %attr(0644, root, root) %{_sysconfdir}/cockpit/disallowed-users
 %ghost %dir /run/cockpit
-%ghost /run/cockpit/motd
-%dir %{_datadir}/cockpit/motd
-%{_datadir}/cockpit/motd/update-motd
-%{_datadir}/cockpit/motd/inactive.motd
+%ghost /run/cockpit/issue
+%dir %{_datadir}/cockpit/issue
+%{_datadir}/cockpit/issue/update-issue
+%{_datadir}/cockpit/issue/inactive.issue
 %{_unitdir}/cockpit.service
-%{_unitdir}/cockpit-motd.service
+%{_unitdir}/cockpit-issue.service
 %{_unitdir}/cockpit.socket
-%{_unitdir}/cockpit-ws-user.service
+%{_unitdir}/cockpit-session-socket-user.service
+%{_unitdir}/cockpit-session.socket
+%{_unitdir}/cockpit-session@.service
 %{_unitdir}/cockpit-wsinstance-http.socket
 %{_unitdir}/cockpit-wsinstance-http.service
 %{_unitdir}/cockpit-wsinstance-https-factory.socket
 %{_unitdir}/cockpit-wsinstance-https-factory@.service
 %{_unitdir}/cockpit-wsinstance-https@.socket
 %{_unitdir}/cockpit-wsinstance-https@.service
+%{_unitdir}/cockpit-wsinstance-socket-user.service
 %{_unitdir}/system-cockpithttps.slice
 %{_prefix}/%{__lib}/tmpfiles.d/cockpit-ws.conf
-%{_sysusersdir}/cockpit-wsinstance.conf
 %{pamdir}/pam_ssh_add.so
 %{pamdir}/pam_cockpit_cert.so
 %{_libexecdir}/cockpit-ws
@@ -648,7 +620,7 @@ authentication via sssd/FreeIPA.
 %{_libexecdir}/cockpit-desktop
 %{_libexecdir}/cockpit-certificate-ensure
 %{_libexecdir}/cockpit-certificate-helper
-%{?suse_version:%verify(not mode) }%attr(4750, root, cockpit-wsinstance) %{_libexecdir}/cockpit-session
+%{?suse_version:%verify(not mode) }%attr(4750, root, cockpit-wsinstance-socket) %{_libexecdir}/cockpit-session
 %{_datadir}/cockpit/branding
 %if 0%{?with_selinux}
 %{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
@@ -660,8 +632,11 @@ authentication via sssd/FreeIPA.
 %pre ws
 # HACK: old RPM and even Fedora's current RPM don't properly support sysusers
 # https://github.com/rpm-software-management/rpm/issues/3073
-getent group cockpit-wsinstance >/dev/null || groupadd -r cockpit-wsinstance
-getent passwd cockpit-wsinstance >/dev/null || useradd -r -g cockpit-wsinstance -d /nonexisting -s /sbin/nologin -c "User for cockpit-ws instances" cockpit-wsinstance
+getent group cockpit-wsinstance-socket >/dev/null || groupadd -r cockpit-wsinstance-socket
+getent group cockpit-session-socket >/dev/null || groupadd -r cockpit-session-socket
+getent passwd cockpit-wsinstance-socket >/dev/null || useradd -r -g cockpit-wsinstance-socket -d /nonexisting -s /sbin/nologin -c "User for cockpit-ws instances" cockpit-wsinstance-socket
+getent passwd cockpit-session-socket >/dev/null || useradd -r -g cockpit-session-socket -d /nonexisting -s /sbin/nologin -c "User for cockpit-session instances" cockpit-session-socket
+getent passwd cockpit-systemd-service >/dev/null || useradd -r -g cockpit-wsinstance-socket -d /nonexisting -s /sbin/nologin -c "User for cockpit.service" cockpit-systemd-service
 
 if %{_sbindir}/selinuxenabled 2>/dev/null; then
     %selinux_relabel_pre -s %{selinuxtype}
@@ -683,22 +658,31 @@ fi
 # disable root login on first-time install; so existing installations aren't changed
 if [ "$1" = 1 ]; then
     mkdir -p /etc/motd.d /etc/issue.d
-    ln -s ../../run/cockpit/motd /etc/motd.d/cockpit
-    ln -s ../../run/cockpit/motd /etc/issue.d/cockpit.issue
+    ln -s ../../run/cockpit/issue /etc/motd.d/cockpit
+    ln -s ../../run/cockpit/issue /etc/issue.d/cockpit.issue
     printf "# List of users which are not allowed to login to Cockpit\n" > /etc/cockpit/disallowed-users
     printf "root\n" >> /etc/cockpit/disallowed-users
     chmod 644 /etc/cockpit/disallowed-users
 fi
-# switch old self-signed cert group from cockpit-wsintance to cockpit-ws on upgrade
+
 if [ "$1" = 2 ]; then
+    # switch old self-signed cert group from cockpit-wsintance to cockpit-ws on upgrade
     certfile=/etc/cockpit/ws-certs.d/0-self-signed.cert
     test -f $certfile && stat -c '%G' $certfile | grep -q cockpit-wsinstance && chgrp cockpit-ws $certfile
+
+    # on upgrades, adjust motd/issue links to changed target if they still exist (changed in 331)
+    if [ "$(readlink /etc/motd.d/cockpit 2>/dev/null)" = "../../run/cockpit/motd" ]; then
+        ln -sfn ../../run/cockpit/issue /etc/motd.d/cockpit
+    fi
+    if [ "$(readlink /etc/issue.d/cockpit.issue 2>/dev/null)" = "../../run/cockpit/motd" ]; then
+        ln -sfn ../../run/cockpit/issue /etc/issue.d/cockpit.issue
+    fi
 fi
 
 %if 0%{?suse_version}
 %set_permissions %{_libexecdir}/cockpit-session
 %endif
-%tmpfiles_create cockpit-tempfiles.conf
+%tmpfiles_create cockpit-ws.conf
 %systemd_post cockpit.socket cockpit.service
 # firewalld only partially picks up changes to its services files without this
 test -f %{_bindir}/firewall-cmd && firewall-cmd --reload --quiet || true
@@ -709,6 +693,11 @@ if test -f %{_sysconfdir}/pam.d/cockpit &&  grep -q pam_cockpit_cert %{_sysconfd
     echo '**** WARNING: pam_cockpit_cert is a no-op and will be removed in a'
     echo '**** WARNING: future release; remove it from your /etc/pam.d/cockpit.'
     echo '**** WARNING:'
+fi
+
+# remove obsolete system user on upgrade (replaced with DynamicUser in version 330)
+if getent passwd cockpit-wsinstance >/dev/null; then
+    userdel cockpit-wsinstance
 fi
 
 %preun ws
@@ -750,7 +739,7 @@ BuildArch: noarch
 The Cockpit component for configuring kernel crash dumping.
 
 %files kdump -f kdump.list
-%{_datadir}/metainfo/org.cockpit-project.cockpit-kdump.metainfo.xml
+%{_datadir}/metainfo/org.cockpit_project.cockpit_kdump.metainfo.xml
 
 %if !0%{?suse_version}
 %package sosreport
@@ -783,7 +772,7 @@ BuildArch: noarch
 The Cockpit component for managing networking.  This package uses NetworkManager.
 
 %files networkmanager -f networkmanager.list
-%{_datadir}/metainfo/org.cockpit-project.cockpit-networkmanager.metainfo.xml
+%{_datadir}/metainfo/org.cockpit_project.cockpit_networkmanager.metainfo.xml
 
 %endif
 
@@ -805,7 +794,7 @@ This package contains the Cockpit user interface integration with the
 utility setroubleshoot to diagnose and resolve SELinux issues.
 
 %files selinux -f selinux.list
-%{_datadir}/metainfo/org.cockpit-project.cockpit-selinux.metainfo.xml
+%{_datadir}/metainfo/org.cockpit_project.cockpit_selinux.metainfo.xml
 
 %endif
 
@@ -835,27 +824,13 @@ BuildArch: noarch
 The Cockpit component for managing storage.  This package uses udisks.
 
 %files -n cockpit-storaged -f storaged.list
-%{_datadir}/metainfo/org.cockpit-project.cockpit-storaged.metainfo.xml
+%{_datadir}/metainfo/org.cockpit_project.cockpit_storaged.metainfo.xml
 
-%if 0%{?build_tests}
-%package -n cockpit-tests
-Summary: Tests for Cockpit
-Requires: cockpit-bridge >= %{required_base}
-Requires: cockpit-system >= %{required_base}
-Requires: openssh-clients
-Provides: cockpit-test-assets = %{version}-%{release}
-
-%description -n cockpit-tests
-This package contains tests and files used while testing Cockpit.
-These files are not required for running Cockpit.
-
-%files -n cockpit-tests -f tests.list
-%{pamdir}/mock-pam-conv-mod.so
-%{_unitdir}/cockpit-session.socket
-%{_unitdir}/cockpit-session@.service
-
-# /build_tests
-%endif
+%post storaged
+# version 332 moved the btrfs temp mounts db to /run
+if [ "$1" = 2 ] && [ -d /var/lib/cockpit/btrfs ]; then
+    rm -rf --one-file-system  /var/lib/cockpit/btrfs || true
+fi
 
 %package devel
 Summary: Development files for for Cockpit
@@ -865,24 +840,6 @@ This package contains files used to develop cockpit modules
 
 %files devel
 %{_datadir}/cockpit/devel
-
-%if %{build_pcp}
-%package -n cockpit-pcp
-Summary: Cockpit PCP integration
-Requires: cockpit-bridge >= %{required_base}
-Requires: pcp
-
-%description -n cockpit-pcp
-Cockpit support for reading PCP metrics and loading PCP archives.
-
-%files -n cockpit-pcp -f pcp.list
-%{_libexecdir}/cockpit-pcp
-%{_localstatedir}/lib/pcp/config/pmlogconf/tools/cockpit
-
-%post -n cockpit-pcp
-systemctl reload-or-try-restart pmlogger
-
-%endif
 
 %package -n cockpit-packagekit
 Summary: Cockpit user interface for packages

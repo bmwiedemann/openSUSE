@@ -1,0 +1,57 @@
+From 730d204ff5a1f0382c3edffe51ce62c890cf86f2 Mon Sep 17 00:00:00 2001
+From: Alice Brooks <alice.brooks@suse.com>
+Date: Thu, 30 Jan 2025 10:45:46 +0000
+Subject: [PATCH 1/1] Remove DynamicUser setting as these conflict with real
+ users
+
+Real users are having to be created due to Leap15.6's nsswitch not
+containing systemd, so dynamic users cannot be resolved inter
+service due to this we must manually create the users postinstall
+---
+ src/systemd/cockpit-wsinstance-http.service.in   | 2 +-
+ src/systemd/cockpit-wsinstance-https@.service.in | 2 +-
+ src/systemd/cockpit.service.in                   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/systemd/cockpit-wsinstance-http.service.in b/src/systemd/cockpit-wsinstance-http.service.in
+index 539b90345..17ab21df1 100644
+--- a/src/systemd/cockpit-wsinstance-http.service.in
++++ b/src/systemd/cockpit-wsinstance-http.service.in
+@@ -7,7 +7,7 @@ After=cockpit-session.socket
+ 
+ [Service]
+ ExecStart=@libexecdir@/cockpit-ws --no-tls --port=0
+-DynamicUser=yes
++DynamicUser=no
+ Group=cockpit-session-socket
+ 
+ PrivateDevices=yes
+diff --git a/src/systemd/cockpit-wsinstance-https@.service.in b/src/systemd/cockpit-wsinstance-https@.service.in
+index f66c9f874..db53247c0 100644
+--- a/src/systemd/cockpit-wsinstance-https@.service.in
++++ b/src/systemd/cockpit-wsinstance-https@.service.in
+@@ -8,7 +8,7 @@ After=cockpit-session.socket
+ [Service]
+ Slice=system-cockpithttps.slice
+ ExecStart=@libexecdir@/cockpit-ws --for-tls-proxy --port=0
+-DynamicUser=yes
++DynamicUser=no
+ Group=cockpit-session-socket
+ 
+ PrivateDevices=yes
+diff --git a/src/systemd/cockpit.service.in b/src/systemd/cockpit.service.in
+index 97adda221..ec50118aa 100644
+--- a/src/systemd/cockpit.service.in
++++ b/src/systemd/cockpit.service.in
+@@ -10,7 +10,7 @@ After=cockpit-wsinstance-http.socket cockpit-wsinstance-https-factory.socket
+ RuntimeDirectory=cockpit/tls
+ ExecStartPre=+@libexecdir@/cockpit-certificate-ensure --for-cockpit-tls
+ ExecStart=@libexecdir@/cockpit-tls
+-DynamicUser=yes
++DynamicUser=no
+ # otherwise systemd uses 'cockpit' even if it exists as a normal user account
+ User=cockpit-systemd-service
+ Group=cockpit-wsinstance-socket
+-- 
+2.48.1
+

@@ -1,5 +1,5 @@
---- a/src/systemd/inactive.motd
-+++ b/src/systemd/inactive.motd
+--- a/src/systemd/inactive.issue
++++ b/src/systemd/inactive.issue
 @@ -1,2 +1,7 @@
  Activate the web console with: systemctl enable --now cockpit.socket
  

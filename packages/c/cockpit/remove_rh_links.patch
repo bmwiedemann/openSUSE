@@ -1,12 +1,49 @@
-Index: cockpit-309/pkg/systemd/overview-cards/cryptoPolicies.jsx
-===================================================================
---- cockpit-309.orig/pkg/systemd/overview-cards/cryptoPolicies.jsx
-+++ cockpit-309/pkg/systemd/overview-cards/cryptoPolicies.jsx
+diff --git a/pkg/networkmanager/bond.jsx b/pkg/networkmanager/bond.jsx
+index 80956bd7b..de8e667aa 100644
+--- a/pkg/networkmanager/bond.jsx
++++ b/pkg/networkmanager/bond.jsx
+@@ -142,16 +142,6 @@ export const BondDialog = ({ connection, dev, settings }) => {
+                                       {_("A network bond combines multiple network interfaces into one logical interface with higher throughput or redundancy.")}
+                                   </div>
+                               }
+-                              footerContent={
+-                                  <Button component='a'
+-                                          rel="noopener noreferrer" target="_blank"
+-                                          variant='link'
+-                                          isInline
+-                                          icon={<ExternalLinkSquareAltIcon />} iconPosition="right"
+-                                          href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-network-bonding_configuring-and-managing-networking#proc_configuring-a-network-bond-by-using-the-rhel-web-console_configuring-network-bonding">
+-                                      {_("Learn more")}
+-                                  </Button>
+-                              }
+                           >
+                               <Button id="bond-help-popup-button" variant="plain" aria-label="Help">
+                                   <HelpIcon />
+diff --git a/pkg/systemd/hwinfo.jsx b/pkg/systemd/hwinfo.jsx
+index 30196f0dc..d53948374 100644
+--- a/pkg/systemd/hwinfo.jsx
++++ b/pkg/systemd/hwinfo.jsx
+@@ -201,11 +201,6 @@ const CPUSecurityMitigationsDialog = () => {
+                             <DataListCell key="primary content">
+                                 <span>
+                                     <div className='nosmt-heading'>{ _("Disable simultaneous multithreading") } (nosmt)</div>
+-                                    <small className='nosmt-read-more-link'>
+-                                        <a href="https://access.redhat.com/security/vulnerabilities/L1TF" target="_blank" rel="noopener noreferrer">
+-                                            <ExternalLinkAltIcon /> { _("Read more...") }
+-                                        </a>
+-                                    </small>
+                                 </span>
+                             </DataListCell>,
+                         ]}
+diff --git a/pkg/systemd/overview-cards/cryptoPolicies.jsx b/pkg/systemd/overview-cards/cryptoPolicies.jsx
+index dc8b996ec..2f6fc8ac4 100644
+--- a/pkg/systemd/overview-cards/cryptoPolicies.jsx
++++ b/pkg/systemd/overview-cards/cryptoPolicies.jsx
 @@ -115,7 +115,7 @@ const CryptoPolicyDialog = ({
                      variant='link'
                      isInline
                      icon={<ExternalLinkSquareAltIcon />} iconPosition="right"
--                    href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/security_hardening/assembly_installing-the-system-in-fips-mode_security-hardening">
+-                    href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/security_hardening/switching-rhel-to-fips-mode_security-hardening">
 +                    href="https://documentation.suse.com/sle-micro/6.0/html/Micro-selinux/selinux-article.html">
                  {_("Learn more")}
              </Button>
@@ -21,20 +58,20 @@ Index: cockpit-309/pkg/systemd/overview-cards/cryptoPolicies.jsx
 -                        variant='link'
 -                        isInline
 -                        icon={<ExternalLinkSquareAltIcon />} iconPosition="right"
--                        href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/security_hardening/using-the-system-wide-cryptographic-policies_security-hardening">
+-                        href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/security_hardening/using-the-system-wide-cryptographic-policies_security-hardening">
 -                    {_("Learn more")}
 -                </Button>
 -            }
          >
              <Button variant="plain" aria-label={_("Help")}>
                  <HelpIcon />
-Index: cockpit-309/pkg/systemd/overview-cards/tuned-dialog.jsx
-===================================================================
---- cockpit-309.orig/pkg/systemd/overview-cards/tuned-dialog.jsx
-+++ cockpit-309/pkg/systemd/overview-cards/tuned-dialog.jsx
-@@ -273,36 +273,10 @@ const TunedDialog = ({
-                 .finally(() => setLoading(false));
-     }, [updateButton, poll, tunedService, tunedDbus]);
+diff --git a/pkg/systemd/overview-cards/tuned-dialog.jsx b/pkg/systemd/overview-cards/tuned-dialog.jsx
+index 258f42640..3ec591cb7 100644
+--- a/pkg/systemd/overview-cards/tuned-dialog.jsx
++++ b/pkg/systemd/overview-cards/tuned-dialog.jsx
+@@ -275,36 +275,10 @@ const TunedDialog = ({
+         };
+     }, [tunedService]);
  
 -    const help = (
 -        <Popover
@@ -50,7 +87,7 @@ Index: cockpit-309/pkg/systemd/overview-cards/tuned-dialog.jsx
 -                        variant='link'
 -                        isInline
 -                        icon={<ExternalLinkSquareAltIcon />} iconPosition="right"
--                        href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/managing_systems_using_the_rhel_9_web_console/index#performance-tuning-options-in-the-web-console_optimizing-the-system-performance-using-the-web-console">
+-                        href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/monitoring_and_managing_system_status_and_performance/index">
 -                    {_("Learn more")}
 -                </Button>
 -            }
@@ -66,43 +103,6 @@ Index: cockpit-309/pkg/systemd/overview-cards/tuned-dialog.jsx
                 className="ct-m-stretch-body"
                 isOpen
 -               help={help}
-                onClose={Dialogs.close}
+                onClose={() => dialogResult.resolve()}
                 title={_("Change performance profile")}
                 footer={
-Index: cockpit-309/pkg/systemd/hwinfo.jsx
-===================================================================
---- cockpit-309.orig/pkg/systemd/hwinfo.jsx
-+++ cockpit-309/pkg/systemd/hwinfo.jsx
-@@ -201,11 +201,6 @@ const CPUSecurityMitigationsDialog = () => {
-                             <DataListCell key="primary content">
-                                 <span>
-                                     <div className='nosmt-heading'>{ _("Disable simultaneous multithreading") } (nosmt)</div>
--                                    <small className='nosmt-read-more-link'>
--                                        <a href="https://access.redhat.com/security/vulnerabilities/L1TF" target="_blank" rel="noopener noreferrer">
--                                            <ExternalLinkAltIcon /> { _("Read more...") }
--                                        </a>
--                                    </small>
-                                 </span>
-                             </DataListCell>,
-                         ]}
-Index: cockpit-309/pkg/networkmanager/bond.jsx
-===================================================================
---- cockpit-309.orig/pkg/networkmanager/bond.jsx
-+++ cockpit-309/pkg/networkmanager/bond.jsx
-@@ -142,16 +142,6 @@ export const BondDialog = ({ connection, dev, settings }) => {
-                                       {_("A network bond combines multiple network interfaces into one logical interface with higher throughput or redundancy.")}
-                                   </div>
-                               }
--                              footerContent={
--                                  <Button component='a'
--                                          rel="noopener noreferrer" target="_blank"
--                                          variant='link'
--                                          isInline
--                                          icon={<ExternalLinkSquareAltIcon />} iconPosition="right"
--                                          href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/configuring-network-bonds-using-the-web-console_system-management-using-the-rhel-9-web-console">
--                                      {_("Learn more")}
--                                  </Button>
--                              }
-                           >
-                               <Button id="bond-help-popup-button" variant="plain" aria-label="Help">
-                                   <HelpIcon />

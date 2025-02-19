@@ -1,40 +1,38 @@
-From b95f55365f3b221be032b1008bb8032856e31a12 Mon Sep 17 00:00:00 2001
+From ecfe5445feb2bdf4ad092b340b72a6b1f78d29e6 Mon Sep 17 00:00:00 2001
 From: Jacek Tomasiak <jacek.tomasiak@gmail.com>
-Date: Tue, 15 Mar 2022 23:57:12 +0100
+Date: Wed, 20 Nov 2024 12:28:39 +0530
 Subject: [PATCH] Add branding for SLE Micro
 
-This change requires distribution-logos-SLE and wallpaper-branding-SLE
-to be available during build and installed on the target system to work
-properly.
 ---
- Makefile.am                            |  1 +
- src/branding/suse/Makefile.am  | 11 ++++
- src/branding/suse/branding.css | 87 ++++++++++++++++++++++++++
+ Makefile.am                    |  1 +
+ src/branding/suse/Makefile.am  | 11 +++++
+ src/branding/suse/branding.css | 87 ++++++++++++++++++++++++++++++++++
  3 files changed, 99 insertions(+)
  create mode 100644 src/branding/suse/Makefile.am
  create mode 100644 src/branding/suse/branding.css
 
-Index: cockpit-309/Makefile.am
-===================================================================
---- cockpit-309.orig/Makefile.am
-+++ cockpit-309/Makefile.am
-@@ -175,6 +175,7 @@ include src/branding/default/Makefile.am
+diff --git a/Makefile.am b/Makefile.am
+index 22fa06617..6dee293ae 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -166,6 +166,7 @@ include src/branding/debian/Makefile.am
+ include src/branding/default/Makefile.am
  include src/branding/fedora/Makefile.am
- include src/branding/kubernetes/Makefile.am
  include src/branding/opensuse/Makefile.am
 +include src/branding/suse/Makefile.am
- include src/branding/registry/Makefile.am
  include src/branding/rhel/Makefile.am
  include src/branding/scientific/Makefile.am
-Index: cockpit-309/src/branding/suse/Makefile.am
-===================================================================
+ include src/branding/ubuntu/Makefile.am
+diff --git a/src/branding/suse/Makefile.am b/src/branding/suse/Makefile.am
+new file mode 100644
+index 000000000..4a1e7ab72
 --- /dev/null
-+++ cockpit-309/src/branding/suse/Makefile.am
++++ b/src/branding/suse/Makefile.am
 @@ -0,0 +1,11 @@
 +slemicrobrandingdir = $(datadir)/cockpit/branding/suse
 +
 +dist_slemicrobranding_DATA = \
-+	src/branding/suse/branding.css \
++    src/branding/suse/branding.css \
 +	$(NULL)
 +
 +install-data-hook::
@@ -42,10 +40,12 @@ Index: cockpit-309/src/branding/suse/Makefile.am
 +	ln -sf /usr/share/pixmaps/distribution-logos/square-hicolor.svg $(DESTDIR)$(slemicrobrandingdir)/square-hicolor.svg
 +	ln -sf /usr/share/pixmaps/distribution-logos/favicon.ico $(DESTDIR)$(slemicrobrandingdir)/favicon.ico
 +	ln -sf /usr/share/pixmaps/distribution-logos/apple-touch-icon.png $(DESTDIR)$(slemicrobrandingdir)/apple-touch-icon.png
-Index: cockpit-309/src/branding/suse/branding.css
-===================================================================
+\ No newline at end of file
+diff --git a/src/branding/suse/branding.css b/src/branding/suse/branding.css
+new file mode 100644
+index 000000000..baea6f560
 --- /dev/null
-+++ cockpit-309/src/branding/suse/branding.css
++++ b/src/branding/suse/branding.css
 @@ -0,0 +1,87 @@
 +/* Extra overrides */
 +:root {
@@ -71,11 +71,11 @@ Index: cockpit-309/src/branding/suse/branding.css
 +
 +/* Nav & sidebar overwrites */
 +.navbar-pf {
-+   background: var(--eos-bc-pine-500);
++    background: var(--eos-bc-pine-500);
 +}
 +
 +.navbar-pf-vertical {
-+  border-top: none;
++    border-top: none;
 +}
 +
 +
@@ -100,6 +100,7 @@ Index: cockpit-309/src/branding/suse/branding.css
 +        background-size: cover;
 +    }
 +}
++
 +/* Hide badge on desktops (already included in background) */
 +@media(max-width: 1023px) {
 +    #badge {
@@ -118,6 +119,7 @@ Index: cockpit-309/src/branding/suse/branding.css
 +    font-size: 2em;
 +    white-space: nowrap;
 +}
++
 +/* Switch to small font faster to not clip long name */
 +@media(max-width: 560px) {
 +    #brand {
@@ -132,5 +134,7 @@ Index: cockpit-309/src/branding/suse/branding.css
 +#index-brand:before {
 +    content: "${PRETTY_NAME}";
 +}
-+
-+
+\ No newline at end of file
+-- 
+2.47.0
+

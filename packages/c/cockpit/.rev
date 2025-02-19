@@ -562,4 +562,41 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
     <comment>Resubmit same rev, kick legalbot</comment>
     <requestid>1208034</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>c26a352412076d54376b1e40efbf8139</srcmd5>
+    <version>332</version>
+    <time>1739977104</time>
+    <user>anag+factory</user>
+    <comment>- Update to 332
+  - Updated naming convention for motd to issue and relevant patches
+- Added 0007-Remove-DynamicUser-setting-as-these-conflict-with-re.patch
+  since dynamic users can't be resolved since systemd is missing in nsswitch
+  bsc#1230638
+
+- Remove 0005-cockpit-ws-user-remove-default-deps.patch
+- Fix dynamic users for 330 since systemd isn't included in the
+  nsswitch.conf
+- Tidy up pam_oath removal for leap
+  - Ship a new pam file since Leap15 doesn't have pam_oath
+  - Don't change motd if we don't have pam_oath
+- Properly fix pidfd_getpid
+  - This can be dropped once we update again as it's been upstreamed
+
+- Update to 330
+    - Web server: Increased sandboxing, setuid removal, bootc support
+    - Development: New install mode using systemd-sysext
+
+- update to 329.1:
+  - cockpit.js: Put back cockpit.{resolve,reject}() to fix subscription-manager-cockpit
+- Past updates:
+  * 329
+      - Shell: Extra warnings when connecting to remote hosts
+  * 328:
+      - Bug fixes and performance improvements
+  * 327:
+      - Connect to similar servers without Cockpit installed
+  * 326:
+      - cockpit-pcp package is now obsolete</comment>
+    <requestid>1246484</requestid>
+  </revision>
 </revisionlist>

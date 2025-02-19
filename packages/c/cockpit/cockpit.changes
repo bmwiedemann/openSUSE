@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Feb  7 09:24:33 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 332
+  - Updated naming convention for motd to issue and relevant patches
+- Added 0007-Remove-DynamicUser-setting-as-these-conflict-with-re.patch
+  since dynamic users can't be resolved since systemd is missing in nsswitch
+  bsc#1230638
+
+-------------------------------------------------------------------
+Thu Jan 30 12:59:34 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Remove 0005-cockpit-ws-user-remove-default-deps.patch
+- Fix dynamic users for 330 since systemd isn't included in the
+  nsswitch.conf
+- Tidy up pam_oath removal for leap
+  - Ship a new pam file since Leap15 doesn't have pam_oath
+  - Don't change motd if we don't have pam_oath
+- Properly fix pidfd_getpid
+  - This can be dropped once we update again as it's been upstreamed
+
+-------------------------------------------------------------------
+Fri Dec  6 06:32:31 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
+
+- Update to 330
+    - Web server: Increased sandboxing, setuid removal, bootc support
+    - Development: New install mode using systemd-sysext
+
+-------------------------------------------------------------------
+Mon Nov 25 06:18:44 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
+
+- update to 329.1:
+  - cockpit.js: Put back cockpit.{resolve,reject}() to fix subscription-manager-cockpit
+- Past updates:
+  * 329
+      - Shell: Extra warnings when connecting to remote hosts
+  * 328:
+      - Bug fixes and performance improvements
+  * 327:
+      - Connect to similar servers without Cockpit installed
+  * 326:
+      - cockpit-pcp package is now obsolete
+      - cockpit/ws container: Connect to servers without installed Cockpit
+      - cockpit/ws container: Support host specific SSH keys
+      - Storage: Support for Stratis filesystem sizes and limits
+  * 325:
+      - client: Properly handle unknown SSH host keys
+  * 324:
+      - Bug fixes and performance improvements
+  * 323.1:
+      - Translation updates
+  * 323:
+      - login: Prevent multiple logins in a single browser session
+      - Update documentation links
+-------------------------------------------------------------------
 Wed Oct  9 12:14:14 UTC 2024 - Alice Brooks <alice.brooks@suse.com>
 
 - suse_docs.patch: update documentation to point at new links (bsc#1226050)

@@ -1,6 +1,8 @@
---- selinux_bak/cockpit.fc	2024-02-28 13:34:16.748028079 +0100
-+++ selinux/cockpit.fc	2024-02-28 13:35:10.425549063 +0100
-@@ -2,11 +2,24 @@
+diff --git a/selinux/cockpit.fc b/selinux/cockpit.fc
+index 9fd56a0..17f420f 100644
+--- a/selinux/cockpit.fc
++++ b/selinux/cockpit.fc
+@@ -2,10 +2,21 @@
  /etc/systemd/system/cockpit.*	--	gen_context(system_u:object_r:cockpit_unit_file_t,s0)
  
  /usr/libexec/cockpit-ws		--	gen_context(system_u:object_r:cockpit_ws_exec_t,s0)
@@ -10,18 +12,15 @@
  /usr/libexec/cockpit-wsinstance-factory	--	gen_context(system_u:object_r:cockpit_ws_exec_t,s0)
 +/usr/lib/cockpit-wsinstance-factory	--	gen_context(system_u:object_r:cockpit_ws_exec_t,s0)
 +
-+# missing libexec transition on SLE Micro
-+/usr/lib/cockpit-askpass		--	gen_context(system_u:object_r:bin_t,s0)
-+/usr/lib/cockpit-certificate-ensure	--	gen_context(system_u:object_r:bin_t,s0)
-+/usr/lib/cockpit-certificate-helper	--	gen_context(system_u:object_r:bin_t,s0)
-+/usr/lib/cockpit-client			--	gen_context(system_u:object_r:bin_t,s0)
-+/usr/lib/cockpit-desktop		--	gen_context(system_u:object_r:bin_t,s0)
-+/usr/lib/cockpit-pcp			--	gen_context(system_u:object_r:bin_t,s0)
++# missing libexec transition on SLE Micro                                        
++/usr/lib/cockpit-askpass		--	gen_context(system_u:object_r:bin_t,s0)           
++/usr/lib/cockpit-certificate-ensure	--	gen_context(system_u:object_r:bin_t,s0) 
++/usr/lib/cockpit-certificate-helper	--	gen_context(system_u:object_r:bin_t,s0) 
++/usr/lib/cockpit-client			--	gen_context(system_u:object_r:bin_t,s0)         
++/usr/lib/cockpit-desktop		--	gen_context(system_u:object_r:bin_t,s0)           
  
  /usr/libexec/cockpit-session	--	gen_context(system_u:object_r:cockpit_session_exec_t,s0)
 +/usr/lib/cockpit-session	--	gen_context(system_u:object_r:cockpit_session_exec_t,s0)
- /usr/libexec/cockpit-ssh	--	gen_context(system_u:object_r:cockpit_session_exec_t,s0)
-+/usr/lib/cockpit-ssh	--	gen_context(system_u:object_r:cockpit_session_exec_t,s0)
  
- /usr/share/cockpit/motd/update-motd    -- gen_context(system_u:object_r:cockpit_ws_exec_t,s0)
+ /usr/share/cockpit/issue/update-issue    -- gen_context(system_u:object_r:shell_exec_t,s0)
  

@@ -200,16 +200,16 @@ Index: cockpit/pkg/playground/test.html
  </head>
 Index: cockpit/pkg/shell/index.html
 ===================================================================
---- cockpit.orig/pkg/shell/index.html
-+++ cockpit/pkg/shell/index.html
+--- a/pkg/shell/index.html
++++ b/pkg/shell/index.html
 @@ -6,6 +6,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      <link href="shell.css" rel="stylesheet" />
      <link href="../../static/branding.css" rel="stylesheet" />
 +    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
-     <script src="../manifests.js"></script>
-     <!-- HACK: C bridge loads translations via glob and Python via manifest.js -->
+     <script src="../manifests-i18n.js"></script>
+     <script src="po.js"></script>
 Index: cockpit/pkg/shell/shell.html
 ===================================================================
 --- cockpit.orig/pkg/shell/shell.html
