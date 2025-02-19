@@ -755,4 +755,15 @@
   * Update pci and vendor ids</comment>
     <requestid>1235818</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>ce3379d79519f5668005ceecf03a5759</srcmd5>
+    <version>0.392</version>
+    <time>1739977111</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.392:
+  * Update pci and vendor ids
+
+- Update to version 0.391:</comment>
+    <requestid>1246699</requestid>
+  </revision>
 </revisionlist>
