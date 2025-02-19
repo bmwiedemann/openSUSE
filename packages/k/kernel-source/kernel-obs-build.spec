@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.13.2
+%define patchversion 6.13.3
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -38,16 +38,16 @@
 %endif
 %endif
 %endif
-%global kernel_package kernel%kernel_flavor-srchash-306384da757d1f1cabb91679032b92768bfda336
+%global kernel_package kernel%kernel_flavor-srchash-36519ec3af82e21a270f0469dac7d6113ffedd98
 %endif
 %if 0%{?rhel_version}
 %global kernel_package kernel
 %endif
 
 Name:           kernel-obs-build
-Version:        6.13.2
+Version:        6.13.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g306384d
+Release:        <RELEASE>.g36519ec
 %else
 Release:        0
 %endif
