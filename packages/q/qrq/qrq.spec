@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later AND MIT
 Group:          Productivity/Hamradio/Other
 URL:            https://fkurz.net/ham/qrq.html
 Source:         https://fkurz.net/ham/qrq/%{name}-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(ncurses)
@@ -36,7 +37,10 @@ example for Contesting.
 
 %prep
 %autosetup -p1
+mtime=$(stat --format=%Y ChangeLog)
 dos2unix ChangeLog COPYING README AUTHORS
+# keep mtime from before conversion for use in BUILD_INFO
+touch -d @$mtime ChangeLog COPYING README AUTHORS
 
 %build
 %make_build
