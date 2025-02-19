@@ -1,7 +1,7 @@
 #
 # spec file for package sonobuoy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           sonobuoy
-Version:        0.57.2
+Version:        0.57.3
 Release:        0
 Summary:        Conformance test suite for diagnosing a Kubernetes cluster
 License:        Apache-2.0

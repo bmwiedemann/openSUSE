@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 19 06:05:57 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.57.3:
+  * Release v0.57.3 (#2008)
+  * Refactor script of update_docs. So it generates correct version
+    in doc (#2009)
+  * Update errcheck func (#2007)
+  * Fix vulnerabilities (#2005)
+  * Fix docs for v0.57.2 (#1987)
+  * chore: Run gather_e2e.sh (#1979)
+  * driver/daemonset: Align node selection behavior with Kubernetes
+    scheduler (#1958)
+  * Fix potential deadlock retrieving results (#1941)
+  * chore: pkg import only once (#1942)
+  * update golang (#1990)
+
+-------------------------------------------------------------------
 Fri Sep 13 18:46:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.57.2:
