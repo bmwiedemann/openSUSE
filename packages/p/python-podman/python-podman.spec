@@ -1,7 +1,7 @@
 #
 # spec file for package python-podman
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,8 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-podman%{psuffix}
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        A library to interact with a Podman server
 License:        Apache-2.0
@@ -42,7 +43,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-tomli >= 1.2.3 if python-base < 3.11)
-Requires:       python-requests
+Requires:       python-requests >= 2.24
 Requires:       python-urllib3
 BuildArch:      noarch
 %if %{with test}

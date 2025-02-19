@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Feb 19 09:16:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- drop skip_python2 from spec
+- add sle15_python_module_pythons macro
+- update to 5.4.0:
+  * /run/user/$UID as fallback if XDG_RUNTIME_DIR is not set by
+    @eighthave in #475
+  * fix: /run/user/ is based on UID not username by @eighthave in
+    #478
+  * Add all, external, and label to Image.prune() by @inknos in
+    #413
+  * Add pre-commit workflow by @inknos in #473
+  * [skip-ci] Update pre-commit/action action to v3.0.1 by
+    @renovate in #479
+  * New CI Images by @Luap99 in #482
+  * Add edward5hen as reviewer by @jwhonce in #481
+  * Support uppercase mount attributes by @D3vil0p3r in #487
+  * chore(deps): update dependency containers/automation_images to
+    v20250107 by @renovate in #494
+  * Implement "decode" parameter in pull() by @D3vil0p3r in #484
+  * Add support for container initialization by @vmsh0 in #491
+  * fix: accept a string for the command argument of
+    Container.start by @vmsh0 in #497
+  * Clarify documentation of container removal flags by @vmsh0 in
+    #498
+  * Add compatMode raw JSON output and fix tls_verify init on
+    pull() by @D3vil0p3r in #500
+  * Honor port numbers in urls for image.pull by @inknos in #504
+  * Enable many ruff checks by @inknos in #476
+  * Onboard TMT by @inknos in #503
+  * Update dependency containers/automation_images to v20250131 by
+    @renovate in #508
+  * Add `**kwargs` to Network.connect call by @inknos in #507
+  * Use pyproject toml and enable workflow for publishing on PyPI
+    by @inknos in #480
+  * Add upstream tests to tmt by @inknos in #509
+  * Bump release to 5.4.0 by @inknos in #510
+
+-------------------------------------------------------------------
 Tue Nov 26 13:55:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.3.0:
