@@ -371,4 +371,13 @@
     <comment></comment>
     <requestid>1244790</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>f910bd4023a409b0a8ad78e30d033590</srcmd5>
+    <version>1.1.0</version>
+    <time>1739977112</time>
+    <user>anag+factory</user>
+    <comment>- Enable internal testsuite
+- Refresh vendored dependencies</comment>
+    <requestid>1246705</requestid>
+  </revision>
 </revisionlist>

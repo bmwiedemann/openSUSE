@@ -47,9 +47,7 @@ A suite of tools for thin provisioning on Linux.
 make install STRIP="/bin/true" MANPATH=%{buildroot}%{_mandir} BINDIR=%{buildroot}%{_sbindir}
 
 %check
-# temporarily disabled as tests fail due to insufficient space in build
-# envirnment
-#%%{cargo_test} --skip thin_shrink
+%{cargo_test}
 
 %post
 %{?regenerate_initrd_post}
