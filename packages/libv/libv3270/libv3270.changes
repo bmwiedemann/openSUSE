@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 12 19:21:39 UTC 2024 - perry.werneck@gmail.com
+
+- Update to version 5.5.0+git20241211:
+  * Disabling glade catalog on windows build.
+  * Disabling static libraries
+  * Updating codeql workflow.
+  * Fixing glade install.
+  * Refactoring deb packages.
+  * Adding link to documentation.
+  * Fixing static sdk.
+  * Fixing pkg-config control file.
+  * Adding headers.
+  * Updating windows resources.
+  * Refactoring to meson build system.
+  * Adding new color themes received by e-mail from Rudy Koetsier
+  * Replacing Paul Mattes e-mail as requested.
+  * Updating package control files.
+
+-------------------------------------------------------------------
 Sun Aug 18 15:24:29 UTC 2024 - perry.werneck@gmail.com
 
 - Update to version 5.4+git20240219:

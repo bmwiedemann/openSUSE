@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>1194800</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e84141feae4ce8db97edb55046439d58</srcmd5>
+    <version>5.5.0+git20241211</version>
+    <time>1739981552</time>
+    <user>dimstar_suse</user>
+    <comment>Updating to version 5.5.0 and latest lib3270.</comment>
+    <requestid>1246813</requestid>
+  </revision>
 </revisionlist>
