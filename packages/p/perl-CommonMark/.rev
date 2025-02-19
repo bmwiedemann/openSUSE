@@ -7,4 +7,12 @@
     <comment>This is a new dependency for openQA. To make Markdown comment rendering faster and more secure.</comment>
     <requestid>718850</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>35e1fc9d24cb3f212e3cf6d7c723840e</srcmd5>
+    <version>0.310.100</version>
+    <time>1739977402</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1247052</requestid>
+  </revision>
 </revisionlist>

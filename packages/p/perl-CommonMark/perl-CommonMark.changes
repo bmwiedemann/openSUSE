@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 11 18:28:54 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
+Wed Aug 14 05:29:32 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.310100
+   see /usr/share/doc/packages/perl-CommonMark/Changes
+
+  0.310100  2024-08-13
+      - Recommend and test with libcmark 0.31.1
+      - Fix build with libcmark 0.25
+      - Expand and improve the documentation (David E. Wheeler)
+      - Move from Travis/Appveyor to Github CI. Thanks to David E. Wheeler
+        for the initial commit!
+
+-------------------------------------------------------------------
 Fri Jul 25 11:30:00 CET 2019 - sriedel@suse.de
 
 - initial version (0.290000)
