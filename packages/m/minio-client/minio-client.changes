@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 18 22:39:21 UTC 2025 - mrueckert@suse.de
+
+- Update to version 20250215T103616Z:
+  * update all dependencies (#5143)
+  * More fixes to custom arch hotfix building (#5135)
+  * test: add tags copy test for mirror (#5141)
+  * Add CRC64NVME checksum type. (#5142)
+  * Improve docs to hint to the user that MD5 is not stored (#5138)
+  * feat: support --custom-header flags (#5127)
+  * fix: explicit fd close fix (#5129)
+  * feat: add tags copy for mirror (#5137)
+  * Fix vet check (#5134)
+  * make custom ARCH based hotfixes
+  * remove fips build
+
+-------------------------------------------------------------------
 Sat Feb 08 22:52:48 UTC 2025 - mrueckert@suse.de
 
 - Update to version 20250208T191421Z:
