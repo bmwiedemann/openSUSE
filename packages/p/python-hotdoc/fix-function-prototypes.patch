@@ -1,0 +1,24 @@
+From adf8518431fafb78c9b47862a0a9a58824b6a421 Mon Sep 17 00:00:00 2001
+From: Mathieu Duponchelle <mathieu@centricular.com>
+Date: Thu, 6 Feb 2025 12:44:31 +0100
+Subject: [PATCH] c_comment_scanner: fix function prototypes
+
+---
+ hotdoc/parsers/c_comment_scanner/scanner.l | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hotdoc/parsers/c_comment_scanner/scanner.l b/hotdoc/parsers/c_comment_scanner/scanner.l
+index 0408601c..7bccd64f 100644
+--- a/hotdoc/parsers/c_comment_scanner/scanner.l
++++ b/hotdoc/parsers/c_comment_scanner/scanner.l
+@@ -34,8 +34,8 @@
+ extern int yylex (PyObject *comments);
+ #define YY_DECL int yylex (PyObject *comments)
+ static int yywrap (void);
+-static int parse_comment ();
+-static int parse_define ();
++static int parse_comment (PyObject *);
++static int parse_define (PyObject *);
+ %}
+ 
+ %option nounput

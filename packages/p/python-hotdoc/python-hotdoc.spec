@@ -1,7 +1,7 @@
 #
 # spec file for package python-hotdoc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,22 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-hotdoc
-Version:        0.16
+Version:        0.17.4
 Release:        0
 Summary:        A documentation tool micro-framework
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Doc Generators
 URL:            https://github.com/hotdoc/hotdoc
 Source:         https://files.pythonhosted.org/packages/source/h/hotdoc/hotdoc-%{version}.tar.gz
+Patch:          https://github.com/hotdoc/hotdoc/commit/adf8518431fafb78c9b47862a0a9a58824b6a421.patch#/fix-function-prototypes.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  clang
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -71,7 +75,7 @@ gobject-introspection (gir) files, highlighting the syntax of code snippets
 with prism, etc.
 
 %prep
-%setup -q -n hotdoc-%{version}
+%autosetup -p1 -n hotdoc-%{version}
 sed -i -e "s/wheezy.template==/wheezy.template>=/" setup.py
 sed -i -e "s/pkgconfig==/pkgconfig>=/" setup.py
 sed -i -e "s/networkx==/networkx>=/" setup.py
@@ -79,10 +83,10 @@ sed -i -e "s/networkx==/networkx>=/" setup.py
 sed -i -e '1s,#! %{_bindir}/env sh,#!%{_bindir}/sh,' ./hotdoc/extensions/gi/transition_scripts/translate_sections.sh
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/hotdoc
 %python_clone -a %{buildroot}%{_bindir}/hotdoc_dep_printer
 %python_expand %fdupes %{buildroot}%{$python_sitearch}

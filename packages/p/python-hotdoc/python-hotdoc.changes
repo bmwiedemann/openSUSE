@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Feb  7 09:02:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.17.4
+  * gst: Handle cached files that do not have tracer details
+- from version 0.17.3
+  * loggable: expose options to select enabled warnings
+- from version 0.17.2
+  * Update installing documentation to include clang
+  * c_extension: fix support for anonymous structs / enums
+  * gi_annotation: add missing space for element-type
+  * c-extension: Use the LLVM_CONFIG env variable if present
+  * gst: Render tracer objects
+  * gst: Fix property alias name resolution
+- from version 0.17.1
+  * gi: update GParam and GInterface links
+  * parsers/gtk_doc: hardcode online locations
+  * gtk_doc/parsers: create valid names for gi-docgen symbols
+  * gtk_doc/parsers: hardcode links for basic types
+- from version 0.17
+  * Add backports.entry_points_selectable dep
+  * hotdoc.utils: Eliminate pkg_resources
+  * extensions.gi.utils: Eliminate pkg_resources
+  * extensions.gi.utils: Add missing imports
+  * Stringify entry_point when logging
+  * Add importlib_metadata dep for Python < 3.10
+  * Break entry-point loading out into function
+  * Informative docstrings
+  * Fix --extra-extension-path handling
+  * utils: Fix typo
+  * gi: Don't assume position of callback child within fields
+  * search_module: add page title and section name to search
+  * update theme submodule
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Cherry-pick upstream patch to fix function prototypes
+  * fix-function-prototypes.patch
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Thu Dec  7 22:05:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16:

@@ -71,4 +71,12 @@ documentation generator framework, used by gstreamer 1.18.0</comment>
   * Inlines: Ensure that the delimiter stack is freed in subject.</comment>
     <requestid>1131711</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ec18260d918c431d868e0496d37626dc</srcmd5>
+    <version>0.17.4</version>
+    <time>1739977176</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1246957</requestid>
+  </revision>
 </revisionlist>
