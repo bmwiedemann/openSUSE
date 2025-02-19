@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:48:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 14001.patch: Add meson BuildRequires generator.
+
+-------------------------------------------------------------------
 Mon Jan 27 08:03:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.7.0:

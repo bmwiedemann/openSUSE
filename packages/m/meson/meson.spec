@@ -48,6 +48,8 @@ Source2:        meson.keyring
 Patch0:         meson-test-installed-bin.patch
 # PATCH-FIX-OPENSUSE give more time to testsuites that run emulated
 Patch1:         extend-test-timeout-on-qemu-builds.patch
+# PATCH-FEATURE-UPSTREAM -- based on https://github.com/mesonbuild/meson/pull/14001/commits
+Patch2:         14001.patch
 
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
@@ -216,6 +218,9 @@ rm -r meson.py mesonbuild
 install -Dpm 0644 data/macros.meson \
   %{buildroot}%{_rpmconfigdir}/macros.d/macros.meson
 
+install -Dpm 0755 data//mesongenbuildreq.py \
+  %{buildroot}%{_rpmconfigdir}/mesongenbuildreq
+
 install -Dpm 0644 data/syntax-highlighting/vim/ftdetect/meson.vim \
   -t %{buildroot}%{vim_data_dir}/site/ftdetect/
 install -Dpm 0644 data/syntax-highlighting/vim/indent/meson.vim \
@@ -263,6 +268,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %dir %{_datadir}/polkit-1/actions/
 %{_datadir}/polkit-1/actions/com.mesonbuild.install.policy
 %{_rpmconfigdir}/macros.d/macros.meson
+%{_rpmconfigdir}/mesongenbuildreq
 %{_mandir}/man1/meson.1%{?ext_man}
 
 %files vim
