@@ -2306,4 +2306,13 @@ for 12.3</comment>
     <comment></comment>
     <requestid>1245431</requestid>
   </revision>
+  <revision rev="249" vrev="1">
+    <srcmd5>fb0d2954af19ab7ddb1ba043061e8fc6</srcmd5>
+    <version>1550+20250217.25d4aef</version>
+    <time>1739977098</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1550+20250217.25d4aef:
+  * profiles: add systemd-sysupdated (bsc#1237106)</comment>
+    <requestid>1246467</requestid>
+  </revision>
 </revisionlist>

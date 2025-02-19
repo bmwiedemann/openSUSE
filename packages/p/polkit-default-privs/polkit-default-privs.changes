@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 17 14:42:27 UTC 2025 - matthias.gerstner@suse.com
+
+- Update to version 1550+20250217.25d4aef:
+  * profiles: add systemd-sysupdated (bsc#1237106)
+
+-------------------------------------------------------------------
 Wed Feb 12 16:03:12 UTC 2025 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20250212.5d3f04e:
