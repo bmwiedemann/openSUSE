@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 19 05:55:32 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.8:
+  * Added --output-folder flag to scaffold (#3805)
+  * build(deps): bump google.golang.org/api from 0.220.0 to 0.221.0
+    (#3893)
+
+-------------------------------------------------------------------
+Wed Feb 19 05:49:57 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.7:
+  * Stack unit path validation (#3897)
+  * feat: Clean up TF commands help (#3895)
+  * build(deps): bump ruby/setup-ruby from 1.215.0 to 1.221.0
+    (#3894)
+  * refactor: replace `golang.org/x/exp` with stdlib (#3881)
+
+-------------------------------------------------------------------
 Sun Feb 16 09:40:48 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.73.6:
