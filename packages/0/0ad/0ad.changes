@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Feb 18 21:16:40 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Cleanup spec file.
+
+-------------------------------------------------------------------
+Tue Feb 18 13:27:36 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Mention 0ad-rpmlintrc as source in specfile to make factory-auto happy
+
+-------------------------------------------------------------------
+Wed Feb 12 10:03:04 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Update to 0.27.0
+  * Vulkan Renderer
+  * Multiplayer Savegames
+  * Tips & Tricks Page
+  * Naval Overhaul
+  * Observer Flares
+  * New random maps: Foothills, Migration, Coast Range
+  * New skirmish map: Isthmus of Corint
+  * Updated skirmish maps: Watering Holes, Sporades Islands
+  * New and updated art
+- Remove obsolete patches:
+  * 0ad-link-icu-76.patch
+  * avoid_duplicate_global_symbol_from_asm.patch
+  * no-version-check.patch
+  * PrepareZoneForGC.patch
+  * premake-no-automatic-rpath.patch
+  * fix-gcc13-build.patch
+  * fix-fmt10-build.patch
+  * fix-boost-1.85-build.patch
+- Add patch (as source as it is appliad via premake build script)
+  * premake-disable-rpath.patch (replaces
+    premake-no-automatic-rpath.patch)
+
+-------------------------------------------------------------------
 Fri Dec 20 17:19:01 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace wxWidgets-3_0-nostl-devel with wxWidgets-devel

@@ -1,7 +1,7 @@
 #
 # spec file for package 0ad
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,40 +22,29 @@
 %else
 %bcond_with nvtt
 %endif
-# We can use the system mozjs on Tumbleweed and Leap 15.4.
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+
 %bcond_without system_mozjs
-%else
-%bcond_with system_mozjs
-%endif
+
 # Use provided library
 %bcond_without system_nvtt
+
+# 0ad needs a c++17 compiler at least
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%global force_gcc_version 13
+%endif
+
 Name:           0ad
-Version:        0.0.26
+Version:        0.27.0
 Release:        0
 Summary:        A real-time strategy game of ancient warfare
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT AND ISC AND MPL-2.0
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://play0ad.com/
-Source:         https://releases.wildfiregames.com/%{name}-%{version}-alpha-unix-build.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         avoid_duplicate_global_symbol_from_asm.patch
-# PATCH-FIX-OPENSUSE -- Disable the mozjs version check
-Patch1:         no-version-check.patch
-# PATCH-FIX-OPENSUSE -- Use the newer variant of this function (related to mozjs78 upgrade)
-Patch2:         PrepareZoneForGC.patch
-# PATCH-FIX-OPENSUSE -- Skip automatic addition of an RPATH.
-Patch3:         premake-no-automatic-rpath.patch
-# PATCH-FIX-UPSTREAM -- Fix build with GCC 13
-Patch4:         fix-gcc13-build.patch
-# PATCH-FIX-UPSTREAM -- Fix build with fmt 10
-Patch5:         fix-fmt10-build.patch
-# PATCH-FIX-UPSTREAM -- Fix build with boost 1.85
-Patch6:         fix-boost-1.85-build.patch
-# PATCH-FIX-UPSTREAM -- Fix build with icu 76.x
-Patch7:         0ad-link-icu-76.patch
+Source:         https://releases.wildfiregames.com/%{name}-%{version}-unix-build.tar.xz
+Source1:        premake-disable-rpath.patch
+Source100:      0ad-rpmlintrc
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libXcursor-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
@@ -63,6 +52,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-curses
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel
 BuildRequires:  pkgconfig(IL)
@@ -77,16 +67,17 @@ BuildRequires:  pkgconfig(libsodium) >= 1.0.13
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
 Requires:       0ad-data = %{version}
+BuildRequires:  m4
 %if %{with nvtt} && %{with system_nvtt}
 BuildRequires:  nvidia-texture-tools >= 2.1
 %endif
 %if %{with system_mozjs}
 #FIXME: Depends on source/scriptinterface/ScriptTypes.h
-# This is "fixed" by disabling the version check.
-BuildRequires:  pkgconfig(mozjs-78) >= 78.7
+BuildRequires:  pkgconfig(mozjs-115)
 %else
 BuildRequires:  cargo
 BuildRequires:  rust
@@ -102,27 +93,23 @@ The project contains 3D graphics, detailed artwork, sound, and a
 flexible game engine.
 
 %prep
-%setup -q -n %{name}-%{version}-alpha
-%patch -P 0 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%if %{with system_mozjs}
-%patch -P 1 -p1
-%patch -P 2 -p1
-%endif
-%if %{pkg_vcmp libboost_filesystem-devel >= 1.74}
-%patch -P 6 -p1
-%endif
-%patch -P 7 -p1
+%setup -q -n %{name}-%{version}
+cp %SOURCE1 libraries/source/premake-core/patches/
+sed -i -e 's_# patch_# patch\npatch -d "premake-core-${PV}" -p1 <patches/premake-disable-rpath.patch_' libraries/source/premake-core/build.sh
 
 %build
+%if 0%{?force_gcc_version}
+export CXX="g++-%{force_gcc_version}"
+%endif
 export CFLAGS="%{optflags}"
 # bundled Collada uses CCFLAGS
 export CCFLAGS="%{optflags}"
 export CPPFLAGS="%{optflags} -fpermissive"
 # Copied from macros.cmake.
 export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now"
+libraries/source/cxxtest-4.4/build.sh
+libraries/source/fcollada/build.sh
+libraries/source/premake-core/build.sh
 build/workspaces/update-workspaces.sh \
     %{?_smp_mflags} \
     --bindir=%{_bindir} \
@@ -168,8 +155,8 @@ install -Dm 0644 build/resources/0ad.png %{buildroot}%{_datadir}/pixmaps/%{name}
 %suse_update_desktop_file %{name}
 
 %files
-%doc README.txt
-%license LICENSE.txt license_gpl-2.0.txt license_lgpl-2.1.txt license_mit.txt
+%doc README.md
+%license LICENSE.md license_gpl-2.0.txt license_lgpl-2.1.txt license_mit.txt
 %{_bindir}/0ad
 %{_bindir}/pyrogenesis
 %{_bindir}/ActorEditor

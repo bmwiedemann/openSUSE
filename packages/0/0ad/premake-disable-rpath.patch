@@ -1,0 +1,11 @@
+diff -ru a/src/tools/gcc.lua b/src/tools/gcc.lua
+--- a/src/tools/gcc.lua	2024-11-11 14:47:41.000000000 +0100
++++ b/src/tools/gcc.lua	2025-02-13 12:36:59.187969711 +0100
+@@ -431,7 +431,6 @@
+ 				rpath = "-Wl,-rpath,'" .. rpath .. "'"
+ 			end
+ 
+-			table.insert(result, rpath)
+ 		end
+ 
+ 		return result

@@ -122,4 +122,35 @@
 </comment>
     <requestid>1232902</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a858effce77ad1dffc3e7d5d2e2160bc</srcmd5>
+    <version>0.27.0</version>
+    <time>1739977141</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.27.0
+  * Vulkan Renderer
+  * Multiplayer Savegames
+  * Tips &amp; Tricks Page
+  * Naval Overhaul
+  * Observer Flares
+  * New random maps: Foothills, Migration, Coast Range
+  * New skirmish map: Isthmus of Corint
+  * Updated skirmish maps: Watering Holes, Sporades Islands
+  * New and updated art
+- Remove obsolete patches:
+  * 0ad-link-icu-76.patch
+  * avoid_duplicate_global_symbol_from_asm.patch
+  * no-version-check.patch
+  * PrepareZoneForGC.patch
+  * premake-no-automatic-rpath.patch
+  * fix-gcc13-build.patch
+  * fix-fmt10-build.patch
+  * fix-boost-1.85-build.patch
+- Add patch (as source as it is appliad via premake build script)
+  * premake-disable-rpath.patch (replaces
+    premake-no-automatic-rpath.patch)
+- Mention 0ad-rpmlintrc as source in specfile to make factory-auto happy
+- Cleanup spec file.</comment>
+    <requestid>1246822</requestid>
+  </revision>
 </revisionlist>
