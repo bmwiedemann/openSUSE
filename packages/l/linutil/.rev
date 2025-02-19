@@ -321,4 +321,24 @@
 </comment>
     <requestid>1238484</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eaa73794a4056edb2e3c861734a3f756</srcmd5>
+    <version>2025.02.13~0</version>
+    <time>1739977148</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2025.02.13~0:
+  * update version
+  * dm fixes and posix
+  * refactor: misc restructering (#1015)
+  * allow different os-releases and hyprland setup (#1013)
+  * feat: Zen Browser installation (#940)
+  * remove shfmt (#1012)
+  * Fix grep error in alpine linux (#979)
+  * refact: categorize dev scripts &amp; add zed editor installation (#929)
+  * refactor: Use a macro to simplify shortcut creation (#973)
+  * refact: fix (almost) all shellcheck errors (#997)
+  * chore: remove redundant files (#995)
+</comment>
+    <requestid>1246823</requestid>
+  </revision>
 </revisionlist>

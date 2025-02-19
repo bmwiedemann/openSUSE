@@ -22,7 +22,7 @@ Chris Titus Tech's Linux Toolbox - Linutil is a distro-agnostic toolbox
 designed to simplify everyday Linux tasks.}
 %bcond_without check
 Name:           linutil
-Version:        2025.01.10~0
+Version:        2025.02.13~0
 Release:        0
 Summary:        Linutil is a toolbox designed to simplify everyday Linux tasks
 URL:            https://github.com/ChrisTitusTech/linutil

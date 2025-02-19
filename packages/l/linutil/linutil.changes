@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 19 00:26:31 UTC 2025 - solomoncyj@gmail.com
+
+- Update to version 2025.02.13~0:
+  * update version
+  * dm fixes and posix
+  * refactor: misc restructering (#1015)
+  * allow different os-releases and hyprland setup (#1013)
+  * feat: Zen Browser installation (#940)
+  * remove shfmt (#1012)
+  * Fix grep error in alpine linux (#979)
+  * refact: categorize dev scripts & add zed editor installation (#929)
+  * refactor: Use a macro to simplify shortcut creation (#973)
+  * refact: fix (almost) all shellcheck errors (#997)
+  * chore: remove redundant files (#995)
+
+-------------------------------------------------------------------
 Mon Jan 13 13:58:04 UTC 2025 - solomoncyj@gmail.com
 
 - Update to version 2025.01.10~0:
