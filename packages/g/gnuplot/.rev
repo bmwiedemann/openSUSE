@@ -1333,4 +1333,12 @@ removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
   * FIX prevent use-after-free if a function block has no &quot;return&quot;     Bug 2745</comment>
     <requestid>1235564</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>d32c1321214d1a4487690bf2cb628295</srcmd5>
+    <version>6.0.2</version>
+    <time>1739977107</time>
+    <user>anag+factory</user>
+    <comment>- Use openspecfun only for opensuse builds</comment>
+    <requestid>1246676</requestid>
+  </revision>
 </revisionlist>

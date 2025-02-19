@@ -38,7 +38,9 @@ BuildRequires:  glib2-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  lua-devel
 BuildRequires:  netpbm
+%if 0%{?is_opensuse}
 BuildRequires:  openspecfun-devel
+%endif
 BuildRequires:  pango-devel
 BuildRequires:  plotutils-devel
 BuildRequires:  readline-devel
