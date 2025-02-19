@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 18 16:59:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix bogus prefix / include path in Cflags (boo#1237310)
+
+-------------------------------------------------------------------
 Tue Feb 27 11:01:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

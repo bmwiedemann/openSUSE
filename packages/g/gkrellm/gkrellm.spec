@@ -2,6 +2,7 @@
 # spec file for package gkrellm
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +23,7 @@ Release:        0
 Summary:        Manages Multiple Stacked Monitors
 License:        GPL-3.0-or-later
 Group:          System/Monitoring
-Url:            http://gkrellm.srcbox.net/
+URL:            http://gkrellm.srcbox.net/
 Source:         http://gkrellm.srcbox.net/releases/%{name}-%{version}.tar.bz2
 Source1:        %name.desktop
 Source2:        gkrellm-16.png
@@ -105,16 +106,17 @@ Requires:       gkrellm = %{version}
 Files needed to build plugins for gkrellm2
 
 %lang_package
+
 %prep
 %autosetup -p1
 
 %build
 cd src
-# run configure to build against libsensors; otherwise it leads to 
+# run configure to build against libsensors; otherwise it leads to
 #e. g. bnc#803967 bnc#803081
 ./configure
 cd ..
-make CFLAGS="%{optflags}" X11_LIBS="-L/usr/X11R6/%{_lib} -lX11 -lSM -lICE" GTOP_LIBS="-lgmodule-2.0"
+make CFLAGS="%{optflags}" X11_LIBS="-L/usr/X11R6/%{_lib} -lX11 -lSM -lICE" GTOP_LIBS="-lgmodule-2.0" PREFIX=%{_prefix}
 
 %install
 make install STRIP= \
