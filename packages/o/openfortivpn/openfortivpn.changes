@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 18 15:11:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.23.1:
+  * Fix Coverity defect
+- update to 1.23.0:
+  * Clear otp after each run
+  * Fix some compiler warnings
+  * Support SAML login authentication
+  * tests: update checkpatch.pl from Linux kernel
+  * Clear otp after initial run
+  * Add Alpine Linux package to README.md
+  * Work around a new checkpatch.pl warning 
+  * Proper size and initialisation for array data
+  * Patch certificate login error for FortiOS 7.4.4
+  * Support older mac0S versions that lack vdprintf()
+  * tests: update checkpatch.pl from Linux kernel
+- remove patch fix-certificate-login-error.patch, as the commit is
+  now integrated
+- use more moacros
+- remove Leap < 1500
+
+-------------------------------------------------------------------
 Fri Nov 29 22:16:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix an issue where an error happened with certificate logins for

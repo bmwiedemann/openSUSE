@@ -1,7 +1,7 @@
 #
 # spec file for package openfortivpn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           openfortivpn
-Version:        1.22.1
+Version:        1.23.1
 Release:        0
 Summary:        Client for PPP+SSL VPN tunnel services
 License:        GPL-3.0-or-later
@@ -26,7 +26,6 @@ URL:            https://github.com/adrienverge/openfortivpn
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         harden_openfortivpn@.service.patch
 Patch1:         openfortivpn-fix-usr-bin-env.patch
-Patch2:         https://github.com/adrienverge/openfortivpn/commit/a6fe5cbd57a754cf46942642c57dae452e07c852.patch#/fix-certificate-login-error.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig(openssl)
@@ -43,13 +42,10 @@ It is compatible with Fortinet VPNs.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} < 1500
-export CFLAGS="%{optflags} -std=gnu99"
-%endif
 autoreconf -fiv
 %configure \
     --with-systemdsystemunitdir=%{_unitdir}
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -70,10 +66,10 @@ rm -f %{buildroot}/%{_datadir}/openfortivpn/config.template
 %files
 %license LICENSE LICENSE.OpenSSL
 %doc README.md
-%{_bindir}/openfortivpn
-%{_mandir}/man1/openfortivpn.1%{?ext_man}
-%dir %{_sysconfdir}/openfortivpn
-%config(noreplace) %{_sysconfdir}/openfortivpn/config
-%{_unitdir}/openfortivpn@.service
+%{_bindir}/%{name}
+%{_mandir}/man?/%{name}.?%{?ext_man}
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}/config
+%{_unitdir}/%{name}@.service
 
 %changelog

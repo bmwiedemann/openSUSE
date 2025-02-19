@@ -239,4 +239,29 @@
     <comment>FortiOS 7.4.4 by adding fix-certificate-login-error.patch (forwarded request 1227386 from rrahl0)</comment>
     <requestid>1227387</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8230238f87a3dca8417ea54519441b7e</srcmd5>
+    <version>1.23.1</version>
+    <time>1739977135</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.23.1:
+  * Fix Coverity defect
+- update to 1.23.0:
+  * Clear otp after each run
+  * Fix some compiler warnings
+  * Support SAML login authentication
+  * tests: update checkpatch.pl from Linux kernel
+  * Clear otp after initial run
+  * Add Alpine Linux package to README.md
+  * Work around a new checkpatch.pl warning 
+  * Proper size and initialisation for array data
+  * Patch certificate login error for FortiOS 7.4.4
+  * Support older mac0S versions that lack vdprintf()
+  * tests: update checkpatch.pl from Linux kernel
+- remove patch fix-certificate-login-error.patch, as the commit is
+  now integrated
+- use more moacros
+- remove Leap &lt; 1500 (forwarded request 1246792 from rrahl0)</comment>
+    <requestid>1246793</requestid>
+  </revision>
 </revisionlist>
