@@ -2696,4 +2696,12 @@ Without this fix, VBox always shows &quot;VirtualBox is not currently allowed to
     <comment>- add: kernel-6-13.patch (bsc#1235146)</comment>
     <requestid>1239250</requestid>
   </revision>
+  <revision rev="287" vrev="7">
+    <srcmd5>c603b401b84c9232832822e5f4d20218</srcmd5>
+    <version>7.1.4</version>
+    <time>1739977122</time>
+    <user>anag+factory</user>
+    <comment>- Add newer-pythons.patch</comment>
+    <requestid>1247018</requestid>
+  </revision>
 </revisionlist>

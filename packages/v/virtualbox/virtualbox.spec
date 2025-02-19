@@ -118,6 +118,7 @@ Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
 Patch12:        host-source.patch
 Patch13:        kernel-6-13.patch
+Patch14:        newer-pythons.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
