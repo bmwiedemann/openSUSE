@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 19 06:11:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.7.3:
+  * What's Changed
+    - [release/v1.7] go generate by @rancherbot in #3775
+    - [release/v1.7] go generate by @rancherbot in #3783
+  * RKE Kubernetes versions
+    - v1.28.15-rancher1-1
+    - v1.29.13-rancher1-1
+    - v1.30.9-rancher1-1
+    - v1.31.5-rancher1-1 (default)
+
+-------------------------------------------------------------------
 Wed Jan 22 05:57:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.7.2:
