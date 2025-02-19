@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 19 08:33:29 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Fix boo#1237326. Jameica can not be start.
+  Remove BuildArch: noarch and add rpmlintrc file.
+  If BuildArch is set to noarch, then an arch query no longer seems
+  to work under Tumbleweed.
+
+-------------------------------------------------------------------
 Fri Feb 14 09:46:49 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.10.5

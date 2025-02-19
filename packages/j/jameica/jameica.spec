@@ -32,7 +32,7 @@ License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zl
 Group:          Productivity/Office/Finance
 URL:            http://www.willuhn.de/products/jameica/
 Source:         https://github.com/willuhn/jameica/archive/%{_tag}.tar.gz
-BuildArch:      noarch
+Source99:       %{name}-rpmlintrc
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes

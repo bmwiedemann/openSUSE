@@ -1,0 +1,2 @@
+# BuildArch_ noarch can not be set under Tumebleweed.
+addFilter("no-binary")
