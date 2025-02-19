@@ -10,8 +10,13 @@
 #patches:
 #  foo.patch: -p1
 #  bar.patch:
-#preamble: |-
-# BuildRequires:  gcc-c++
+preamble: |-
+  Recommends:     perl(CGI::FastTemplate) >= 1.09
+  Recommends:     perl(CGI::SSI) >= 0.92
+  Recommends:     perl(CGI::Session) >= 3.95
+  Recommends:     perl(HTML::Template) >= 2.06
+  Recommends:     perl(Template) >= 2.08
+  Recommends:     perl(Text::Template) >= 1.43
 #post_prep: |-
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
 # sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
@@ -19,7 +24,7 @@
 # rm unused.files
 #post_install: |-
 # sed on %{name}.files
-#license: SUSE-NonFree
+license: perl
 #skip_noarch: 1
 #custom_build: |-
 #./Build build flags=%{?_smp_mflags} --myflag
