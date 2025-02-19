@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:55:05 CET 2025 - ma@suse.com
+
+- version 0.6.5
+
+-------------------------------------------------------------------
+Mon Feb 17 16:25:05 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+- Build package for multiple Python flavors on the SLE15 family
+  (fixes #4)
+
+-------------------------------------------------------------------
 Mon Jul 15 15:51:49 CEST 2024 - ma@suse.com
 
 - Fix stomp header regex to include '-' (bsc#1227793)
