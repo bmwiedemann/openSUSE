@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 17 15:35:12 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 0.11.0:
+  * fix: goreleaser --clean flag instead of --rm-dist
+  * Bump golangci-lint and github actions versions
+  * refac: new internal package app
+  * refac: new internal package module
+  * go tool: add helper function to test if it's supported
+  * Add support for Go 1.24 tools (#60)
+  * Don't stop at first path when `force` flag is set
+
+-------------------------------------------------------------------
 Mon Apr 08 13:56:12 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 0.10.0:

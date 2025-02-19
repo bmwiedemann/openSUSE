@@ -1,7 +1,7 @@
 #
 # spec file for package go-mod-upgrade
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           go-mod-upgrade
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Update outdated Go dependencies interactively
 License:        MIT
@@ -36,7 +36,8 @@ Update outdated Go dependencies interactively
 %autosetup -D -a 1
 
 %build
-GOFLAGS="-buildmode=pie" GIT_TAG="v%{version}" go build ./...
+# Temporarily use explicit build until goreleaser is packaged for openSUSE.
+GOFLAGS="-buildmode=pie" GIT_TAG="v%{version}" go build -o go-mod-upgrade main.go
 
 %check
 ./go-mod-upgrade --version

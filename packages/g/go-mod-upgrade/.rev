@@ -21,4 +21,19 @@
   * Add ignore flag (closes #42) (forwarded request 1166222 from ph03nix)</comment>
     <requestid>1166249</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>892b048b49eec363b68aeebe682f2079</srcmd5>
+    <version>0.11.0</version>
+    <time>1739977145</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.11.0:
+  * fix: goreleaser --clean flag instead of --rm-dist
+  * Bump golangci-lint and github actions versions
+  * refac: new internal package app
+  * refac: new internal package module
+  * go tool: add helper function to test if it's supported
+  * Add support for Go 1.24 tools (#60)
+  * Don't stop at first path when `force` flag is set (forwarded request 1246579 from ph03nix)</comment>
+    <requestid>1246821</requestid>
+  </revision>
 </revisionlist>
