@@ -204,4 +204,20 @@
 - Fix systemd units folder for leap and sle (Similar issue like boo#1226541)</comment>
     <requestid>1221454</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3fc9ce622d7f6219643e18819ec6a938</srcmd5>
+    <version>100</version>
+    <time>1739977109</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 100
+  * dropped: correct-container-search.patch as this behaviour is
+    fixed upstream
+
+- New version 99, updates since 91:
+    * Update to translations
+    * Bug fixes
+    * pull images from registries without search API
+    * Render ports are ranges in container integration tab</comment>
+    <requestid>1246697</requestid>
+  </revision>
 </revisionlist>
