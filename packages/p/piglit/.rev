@@ -471,4 +471,20 @@
   * glsl-1.10: test mesa bug with forward declaration</comment>
     <requestid>1238040</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3a7b0aaedb090cca6cee18b84a4e536f</srcmd5>
+    <version>1~20250217</version>
+    <time>1739977172</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1~20250217:
+  * arb_direct_state_access: disable dithering
+  * arb_program_interface_query: set vs_input2[1][0] as valid name
+  * perf/pixel-rate: new pixel throughput microbenchmark
+  * OVR_multiview: another num_views validation test
+  * glx: don't fail test if the X server is inconsistent
+  * ovr_multiview: add some basic glsl tests
+  * arb_clear_texture: use floating point verification for format type GL_FLOAT
+  * glx: don't expect a glx error</comment>
+    <requestid>1246958</requestid>
+  </revision>
 </revisionlist>
