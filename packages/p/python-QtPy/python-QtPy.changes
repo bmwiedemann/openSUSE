@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:25:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.4.3
+  * Breaking change related to QMenu in 2.4.2 (PR 507) by @dalthviz
+  * Hijacked PyQt types are not returned from native Qt APIs (PR 507) by @dalthviz
+  * Check/fix several CI warnings (PR 511) by @dalthviz
+  * PR: Remove `Mambaforge` usage and update Linux setup (CI), by @dalthviz) #501
+  * PR: Ensure `QMenu` and `QToolBar` `isinstance` checks succeed and remove
+    unneeded wrapper classes , by @dalthviz #505, #502
+  * PR: Ignore PySide6 `QSqlDatabase.exec` `DeprecationWarning`, by @juliangilbey
+
+-------------------------------------------------------------------
 Thu Nov  7 16:24:15 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2.4.2

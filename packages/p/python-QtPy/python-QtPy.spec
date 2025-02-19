@@ -1,7 +1,7 @@
 #
 # spec file for package python-QtPy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ BuildArch:      noarch
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-QtPy%{psuffix}
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        Abstraction layer on top of Qt bindings
 License:        MIT
