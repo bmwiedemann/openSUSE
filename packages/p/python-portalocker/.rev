@@ -155,4 +155,14 @@
     only 3.9 and up are supported now.</comment>
     <requestid>1225315</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>de62563a6de6a450fb909f08f0c8d3f1</srcmd5>
+    <version>3.0.0</version>
+    <time>1740069590</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1247376 from varkoly
+
+- Adapt licence</comment>
+    <requestid>1247410</requestid>
+  </revision>
 </revisionlist>

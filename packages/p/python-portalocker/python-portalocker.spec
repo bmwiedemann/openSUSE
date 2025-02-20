@@ -1,7 +1,7 @@
 #
 # spec file for package python-portalocker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           python-portalocker
 Version:        3.0.0
 Release:        0
 Summary:        Locking library for Python
-License:        Python-2.0
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/WoLpH/portalocker
 Source:         https://github.com/WoLpH/portalocker/archive/v%{version}.tar.gz
