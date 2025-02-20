@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 19 09:37:34 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to v2025.01:
+  * SOF v2.12 firmware and tools
+  * New platforms: NXP IMX95
+  * Zephyr RTOS support added: AMD ACP6.0, MediaTek 8195/86/88
+  * HIFI5 optimization added to multiple components: IIR core, ARIA and volume
+  * Zephyr loadable module (LLEXT) support extended in SOF with capability to handle libraries of loadable modules
+  * Support added to mark module functions as "cold", allowing code to be run directly from DRAM and save on SRAM usage on platforms supporting the feature
+  * Topology: support for new product configurations for Intel LNL/ARL/MTL and NXP IMX95
+  * Topology: microphone (IIR and DRC) and speaker processing (IIR, FIR and DRC) added to Intel DSP topologies with Soundwire codecs.
+- Update alias for snd-sof-pci-intel-ptl
+
+-------------------------------------------------------------------
 Thu Jan  2 10:42:13 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - update to v2024.09.02: (jsc#PED-9993 jsc#PED-10202)
