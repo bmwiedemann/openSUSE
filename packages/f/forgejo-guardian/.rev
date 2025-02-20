@@ -30,4 +30,23 @@
   * Enhance ban/sus logs to display the location (forwarded request 1242012 from rrahl0)</comment>
     <requestid>1242013</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>88ee6d43bd0defeaeae5512c2258e87b</srcmd5>
+    <version>0.6.0</version>
+    <time>1740065800</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.0:
+  * Add German translation
+  * Add safe_mode to prevent banning active users and notify moderation team
+  * Add support for Matrix bot alongside Telegram bot
+  * Don't send alerts of ignored users
+  * Option to hide users email
+  * Update fetcher to fetch updated users
+  * bot command to ban a user
+  * New local not_specified used for the regex reason
+  * Rename only_new_users to check_existing_users
+  * Rename expressions.only_new_users to expressions.check_existing_users
+  * Fetch all new users instead of only the first page (forwarded request 1247022 from rrahl0)</comment>
+    <requestid>1247023</requestid>
+  </revision>
 </revisionlist>

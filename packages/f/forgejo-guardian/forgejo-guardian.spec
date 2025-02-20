@@ -17,7 +17,7 @@
 
 
 Name:           forgejo-guardian
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        Simple Forgejo instance guardian
 License:        AGPL-3.0-or-later

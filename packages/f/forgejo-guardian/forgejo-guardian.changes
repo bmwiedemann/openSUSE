@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 19 10:31:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.6.0:
+  * Add German translation
+  * Add safe_mode to prevent banning active users and notify moderation team
+  * Add support for Matrix bot alongside Telegram bot
+  * Don't send alerts of ignored users
+  * Option to hide users email
+  * Update fetcher to fetch updated users
+  * bot command to ban a user
+  * New local not_specified used for the regex reason
+  * Rename only_new_users to check_existing_users
+  * Rename expressions.only_new_users to expressions.check_existing_users
+  * Fetch all new users instead of only the first page
+
+-------------------------------------------------------------------
 Sat Feb  1 00:28:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.5.1:
