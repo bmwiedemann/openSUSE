@@ -115,4 +115,14 @@
 </comment>
     <requestid>1242784</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f72d55d1b78320859d6836848afc1caf</srcmd5>
+    <version>2.1.2.1</version>
+    <time>1740066051</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.2.1:
+  * Add buffer check
+</comment>
+    <requestid>1247290</requestid>
+  </revision>
 </revisionlist>
