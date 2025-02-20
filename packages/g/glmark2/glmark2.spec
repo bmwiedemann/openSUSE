@@ -1,7 +1,7 @@
 #
 # spec file for package glmark2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015-2016 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,25 +18,24 @@
 
 
 Name:           glmark2
-Version:        20240425
+Version:        20250212
 Release:        0
 Summary:        OpenGL 2.0 and ES 2.0 benchmark
 License:        GPL-3.0-only
 Group:          System/X11/Utilities
 URL:            https://github.com/glmark2/glmark2
 Source0:        %{name}-%{version}.tar.gz
-BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 5.0
 BuildRequires:  libjpeg-devel
+BuildRequires:  meson >= 0.45
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(libdrm)
-BuildRequires:  pkgconfig(libpng16)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl)
@@ -52,18 +51,13 @@ arrays, VBOs, texturing and shaders.
 %autosetup
 
 %build
-export CXXFLAGS="%{optflags}"
-python3 waf configure \
-  --with-flavors=x11-gl,x11-glesv2,wayland-gl,wayland-glesv2,drm-gl,drm-glesv2 \
-  --prefix=%{_prefix}
-python3 waf --verbose %{?_smp_mflags}
+%meson \
+  -Dflavors=x11-gl,x11-glesv2,wayland-gl,wayland-glesv2,drm-gl,drm-glesv2
+%meson_build
 
 %install
-python3 waf install --destdir=%{buildroot}
-#FIXME Clean up runtime warning - libpng warning: iCCP: known incorrect sRGB profile
-pushd %{buildroot}%{_datadir}/%{name}/textures
-convert effect-2d.png -strip effect-2d.png
-popd
+%meson_install
+
 %fdupes -s %{buildroot}
 
 %files

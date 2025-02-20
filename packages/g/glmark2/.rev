@@ -382,4 +382,19 @@
   * NativeStateX11: Fix WM_DELETE_WINDOW handling</comment>
     <requestid>1179225</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0a9d0d68de11419dde934a3fb0db7738</srcmd5>
+    <version>20250212</version>
+    <time>1740065602</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250212:
+  * Add a missing include for std::copy
+  * github: Add CI build for dispmanx-glesv2
+  * Add missing include headers
+  * build: Remove WAF build system support
+  * build: Add dispmanx flavor support in meson build
+  * NativeStateDispmanx: Support building using GLAD EGL
+  * NativeStateDispmanx: Fix compiler warning</comment>
+    <requestid>1246971</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 19 08:56:24 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20250212:
+  * Add a missing include for std::copy
+  * github: Add CI build for dispmanx-glesv2
+  * Add missing include headers
+  * build: Remove WAF build system support
+  * build: Add dispmanx flavor support in meson build
+  * NativeStateDispmanx: Support building using GLAD EGL
+  * NativeStateDispmanx: Fix compiler warning
+
+-------------------------------------------------------------------
 Fri Jun  7 13:03:20 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20240425:
