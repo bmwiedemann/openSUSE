@@ -1,7 +1,7 @@
 #
 # spec file for package wdiff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,13 @@ URL:            https://www.gnu.org/software/wdiff/
 Source0:        https://ftp.gnu.org/gnu/wdiff/wdiff-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/wdiff/wdiff-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
+# build with gcc15
+Patch0:         wdiff-gcc15.patch
+BuildRequires:  help2man
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 
 %description
 wdiff compares two files and finds which words have been deleted or
@@ -41,7 +44,7 @@ Xwdiff is a handy X Window System front-end, based on Tcl/Tk.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \

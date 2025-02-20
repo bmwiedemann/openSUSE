@@ -1,0 +1,11 @@
+--- wdiff-1.2.2/src/mdiff.c	2014-04-14 22:05:53.000000000 +0200
++++ wdiff-1.2.2/src/mdiff.c	2025-02-19 15:54:26.678366353 +0100
+@@ -53,8 +53,6 @@
+ #include <ctype.h>
+ #include <string.h>
+ 
+-char *strstr ();
+-
+ #if HAVE_TPUTS
+ # if HAVE_TERMCAP_H
+ #  include <termcap.h>

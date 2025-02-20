@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 19 15:01:43 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + wdiff-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Jan 13 09:36:35 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - Do not recommend lang package. The lang package has automatic
