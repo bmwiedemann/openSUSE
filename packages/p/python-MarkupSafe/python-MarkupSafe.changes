@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:14:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- split test dependencies into a multibuild to break cycle
+  with pytest
+
+-------------------------------------------------------------------
 Wed Dec  4 23:21:41 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - The test suite survives without

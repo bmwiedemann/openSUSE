@@ -281,4 +281,13 @@ minor spec improvement (forwarded request 121844 from HighwayStar)</comment>
 </comment>
     <requestid>1228575</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>ec61a511b95e6277dbe36eb80d012a0c</srcmd5>
+    <version>2.1.5</version>
+    <time>1740065339</time>
+    <user>anag+factory</user>
+    <comment>- split test dependencies into a multibuild to break cycle
+  with pytest</comment>
+    <requestid>1247287</requestid>
+  </revision>
 </revisionlist>
