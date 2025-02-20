@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-     <param name="srctar">typst-0.12.0.tar.gz</param>
+     <param name="srctar">typst-0.13.0.tar.gz</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
      <!-- needs a fixed cargo-vendor-filtered package

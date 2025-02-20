@@ -1,7 +1,7 @@
 #
 # spec file for package typst
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,11 @@
 %define force_gcc_version 13
 %endif
 
-%global hayagriva_version 0.8.0
+%global hayagriva_version 0.8.1
 %global hayagriva_vendor_dir vendor/hayagriva-%{hayagriva_version}
 
 Name:           typst
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
