@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 19 22:21:20 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 6.9.2
+
+  * narrow: stricter validation of narrowspec patterns
+  * narrow: stricter validation of narrowspec patterns in rhg
+  * rhg: fix a bug where only the first pattern in narrowspec was validated
+  * extensions: allow wrapping a function with a bytes name again
+  * upgrade: fix a reference to a missing attribute
+  * bundles: filter out unsupported requirements for non-packed1 format
+  * dirstate-race: add more output to highlight a "to-be-revealed" bug
+  * dirstate-race: simplify some output match to highligh an error
+  * dirstate-race: fix a missing synchronisation in the python code
+  * dirstatemap: stop setting identity after reading the data
+  * sshpeer: fix deadlock on short writes
+  * sshpeer: fix another occurrence of short write handling
+
+-------------------------------------------------------------------
 Fri Feb  7 21:02:10 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 6.9.1
