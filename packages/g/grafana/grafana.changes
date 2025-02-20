@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 20 10:45:49 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Use /bin/bash in wrapper scripts
+  * Change 0002-Use-bash-instead-of-env.patch
+
+-------------------------------------------------------------------
 Tue Feb 11 13:16:26 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Explicitly set CGO_ENABLED environment variable for architectures
