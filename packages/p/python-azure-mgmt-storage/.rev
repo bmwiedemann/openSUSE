@@ -285,4 +285,15 @@
 - Update Requires from setup.py (forwarded request 1239201 from glaubitz)</comment>
     <requestid>1239291</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>998389526f7c98c1dc13b1f64e3f1869</srcmd5>
+    <version>22.1.0</version>
+    <time>1740065859</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 22.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1246978 from glaubitz)</comment>
+    <requestid>1247069</requestid>
+  </revision>
 </revisionlist>
