@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:45:13 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.1
+- Too many changes to list here
+- Drop patch, now upstream:
+  * 0001-core-outputlayer-guard-against-null-m_output.patch
+
+-------------------------------------------------------------------
 Mon Feb 10 12:59:16 UTC 2025 - Fusion Future <qydwhotmail@gmail.com>
 
 - Add patch to fix crash on login on X11
