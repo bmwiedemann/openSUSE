@@ -23,7 +23,7 @@
 %define         psuffix %nil
 %endif
 Name:           streamlink%{psuffix}
-Version:        7.1.2
+Version:        7.1.3
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause

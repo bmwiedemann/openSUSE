@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 17 16:14:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.1.3:
+  * Fixed: validate.contains() to allow all kinds of Container object inputs
+  * Docs: replaced Windows and Linux AppImage nightly builds with preview builds triggered on each commit to master
+  * Docs: added optional/secondary Linux AppImage builds with FFmpeg being bundled
+  * Tests: bumped freezegun requirement to >=1.5.0
+  * Updated plugins:
+      - ceskatelevize: rewritten and fixed plugin
+      - nos: fixed validation schema, updated matcher
+      - pandalive: fixed user_id retieval, updated matcher
+      - pluzz: fixed video ID schemas
+      - streamable: removed plugin
+      - tv4play: removed plugin
+      - twitch: refactored TwitchAPI class and access token retrieval
+      - wwenetwork: rewritten and fixed plugin
+
+-------------------------------------------------------------------
 Mon Jan 27 04:18:43 UTC 2025 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to 7.1.2:
