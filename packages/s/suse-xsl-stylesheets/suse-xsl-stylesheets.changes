@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 19 09:36:22 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.4
+
+- Update to 2.95.4
+  * #677: Enable SUSE font
+  * #675: Readd publishing date for SBP
+  * #637: Footer runs into the second line
+  * #632: Changes proposed by Korean translators
+  * #592: Make subscript/superscript work for Asian
+  * #589: Overlapping product text in cover page
+  * #200: Introduce global numbering of FAQs
+
+
+-------------------------------------------------------------------
 Wed Feb 12 15:57:23 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.3
 
 - Update to 2.95.3
