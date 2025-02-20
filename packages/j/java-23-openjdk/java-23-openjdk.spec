@@ -1,7 +1,7 @@
 #
 # spec file for package java-23-openjdk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      23
 %global interimver      0
-%global updatever       1
-%global buildver        11
+%global updatever       2
+%global buildver        7
 %global openjdk_repo    jdk23u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}

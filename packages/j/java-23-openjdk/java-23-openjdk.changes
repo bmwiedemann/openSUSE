@@ -1,4 +1,357 @@
 -------------------------------------------------------------------
+Wed Feb 19 08:24:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to uptream tag jdk-23.0.2+7 (January 2025 CPU)
+  * Security fix
+    + JDK-8330045, CVE-2025-21502, bsc#1236278: Enhance array
+      handling
+  * Fixes:
+    + JDK-8340586: JdkJfrEvent::get_all_klasses stores non-strong
+      oops in JNI handles
+    + JDK-8342962: [s390x] TestOSRLotsOfLocals.java crashes
+    + JDK-8342489: compiler/c2/irTests/
+      /TestVectorizationMismatchedAccess.java fails on big-endian
+      platforms
+    + JDK-8337753: Target class of upcall stub may be unloaded
+    + JDK-8336942: Improve test coverage for class loading elements
+      with annotations of different retentions
+    + JDK-8342681: TestLoadBypassesNullCheck.java fails improperly
+      specified VM option
+    + JDK-8342905: Thread.setContextClassloader from thread in FJP
+      commonPool task no longer works after JDK-8327501 redux
+    + JDK-8342496: C2/Shenandoah: SEGV in compiled code when
+      running jcstress
+    + JDK-8324672: Update jdk/java/time/tck/java/time/
+      /TCKInstant.java now() to be more robust
+    + JDK-8337968: Problem list
+      compiler/vectorapi/VectorRebracket128Test.java
+    + JDK-8342701: [PPC64] TestOSRLotsOfLocals.java crashes
+    + JDK-8342114: Change milestone to fcs for all releases
+    + JDK-8341966: Broken annotated module may lead to an exception
+      in javac
+    + JDK-8338751: ConfigureNotify behavior has changed in KWin 6.2
+    + JDK-8334560: [PPC64]: postalloc_expand_java_dynamic_call_sched
+      does not copy all fields
+    + JDK-8325937: runtime/handshake/HandshakeDirectTest.java
+      causes "monitor end should be strictly below the frame
+      pointer" assertion failure on AArch64
+    + JDK-8333824: Unused ClassValue in VarHandles
+    + JDK-8342612: Increase memory usage of
+      compiler/c2/TestScalarReplacementMaxLiveNodes.java
+    + JDK-8339154: Cleanups and JUnit conversion of
+       test/jdk/java/util/zip/Available.java
+    + JDK-8340824: C2: Memory for TypeInterfaces not reclaimed by
+       hashcons()
+    + JDK-8340313: Crash due to invalid oop in nmethod after C1
+      patching
+    + JDK-8339637: (tz) Update Timezone Data to 2024b
+    + JDK-8342145: File libCreationTimeHelper.c compile fails on
+      Alpine
+    + JDK-8333391: Test com/sun/jdi/InterruptHangTest.java failed:
+      Thread was never interrupted during sleep
+    + JDK-8331391: Enhance the keytool code by invoking the
+      buildTrustedCerts method for essential options
+    + JDK-8335267: [XWayland] move screencast tokens from .awt to
+      .java folder
+    + JDK-8338109: java/awt/Mouse/EnterExitEvents/
+      /ResizingFrameTest.java duplicate in ProblemList
+    + JDK-8337320: Update ProblemList.txt with tests known to fail
+      on XWayland
+    + JDK-8336413: gtk headers : Fix typedef redeclaration of
+      GMainContext and GdkPixbuf
+    + JDK-8341881: [REDO] java/nio/file/attribute/
+      /BasicFileAttributeView/CreationTime.java#tmp fails on alinux3
+    + JDK-8336914: Shenandoah: Missing verification steps after
+      JDK-8255765
+    + JDK-8337622: IllegalArgumentException in
+      java.lang.reflect.Field.get
+    + JDK-8337066: Repeated call of StringBuffer.reverse with
+      double byte string returns wrong result
+    + JDK-8340684: Reading from an input stream backed by a closed
+      ZipFile has no test coverage
+    + JDK-8340109: Ubsan: ciEnv.cpp:1660:65: runtime error: member
+      call on null pointer of type 'struct CompileTask'
+    + JDK-8340214: C2 compilation asserts with "no node with a side
+      effect" in PhaseIdealLoop::try_sink_out_of_loop
+    + JDK-8341997: Tests create files in src tree instead of
+      scratch dir
+    + JDK-8342014: RISC-V: ZStoreBarrierStubC2 clobbers rflags
+    + JDK-8339787: Add some additional diagnostic output to
+      java/net/ipv6tests/UdpTest.java
+    + JDK-8338759: Add extra diagnostic to
+      java/net/InetAddress/ptr/Lookup.java
+    + JDK-8337886: java/awt/Frame/MaximizeUndecoratedTest.java
+      fails in OEL due to a slight color difference
+    + JDK-8341024: [test] build/AbsPathsInImage.java fails with OOM
+      when using ubsan-enabled binaries
+    + JDK-8340398: [JVMCI] Unintuitive behavior of UseJVMCICompiler
+      option
+    + JDK-8337998: CompletionFailure in getEnclosingType attaching
+      type annotations
+    + JDK-8341235: Improve default instruction frame title in
+      PassFailJFrame
+    + JDK-8340799: Add border inside instruction frame in
+      PassFailJFrame
+    + JDK-8340785: Update description of PassFailJFrame and samples
+    + JDK-8317116: Provide layouts for multiple test UI in
+      PassFailJFrame
+    + JDK-8340466: Add description for PassFailJFrame constructors
+    + JDK-8340899: Remove wildcard bound in
+      PositionWindows.positionTestWindows
+    + JDK-8340365: Position the first window of a window list
+    + JDK-8339560: Unaddressed comments during code review of
+      JDK-8337664
+    + JDK-8341146: RISC-V: Unnecessary fences used for load-acquire
+      in template interpreter
+    + JDK-8339803: Acknowledge case insensitive unambiguous
+      keywords in tzdata files
+    + JDK-8302111: Serialization considerations
+    + JDK-8340073: Support "%z" time zone abbreviation format in TZ
+      files
+    + JDK-8339644: Improve parsing of Day/Month in tzdata rules
+    + JDK-8335530: Java file extension missing in AuthenticatorTest
+    + JDK-8339386: Assertion on AIX - original PC must be in the
+      main code section of the compiled method
+    + JDK-8341658: RISC-V: Test DateFormatProviderTest.java run
+      timeouted
+    + JDK-8341806: Gcc version detection failure on Alinux3
+    + JDK-8341688: Aarch64: Generate comments in
+      -XX:+PrintInterpreter to link to source code
+    + JDK-8332697: ubsan: shenandoahSimpleBitMap.inline.hpp:68:23:
+      runtime error: signed integer overflow:
+      -9223372036854775808 - 1 cannot be represented in type
+      'long int'
+    + JDK-8341668: Shenandoah: assert(tail_bits <
+      (idx_t)BitsPerWord) failed: precondition
+    + JDK-8341261: Tests assume UnlockExperimentalVMOptions is
+      disabled by default
+    + JDK-8335709: C2: assert(!loop->is_member(get_loop(useblock)))
+      failed: must be outside loop
+    + JDK-8335142: compiler/c1/TestTraceLinearScanLevel.java
+      occasionally times out with -Xcomp
+    + JDK-8323688: C2: Fix UB of jlong overflow in
+      PhaseIdealLoop::is_counted_loop()
+    + JDK-8340812: LambdaForm customization via
+      MethodHandle::updateForm is not thread safe
+    + JDK-8333306: gc/arguments/TestParallelGCErgo.java fails when
+      largepage are enabled
+    + JDK-8333317: Test sun/security/pkcs11/sslecc/
+      /ClientJSSEServerJSSE.java failed with: Invalid ECDH
+      ServerKeyExchange signature
+    + JDK-8341709: Change milestone to ea for JDK23.0.2
+    + JDK-8334147: Shenandoah: Avoid taking lock for disabled free
+      set logging
+    + JDK 8341554: Shenandoah: Missing heap lock when updating usage
+      for soft ref policy
+    + JDK-8333791: Fix memory barriers for @Stable fields
+    + JDK-8332461: ubsan : dependencies.cpp:906:3: runtime error:
+      load of value 4294967295, which is not a valid value for type
+      'DepType'
+    + JDK-8340590: RISC-V: C2: Small improvement to vector gather
+      load and scatter store
+    + JDK-8341562: RISC-V: Generate comments in
+      -XX:+PrintInterpreter to link to source code
+    + JDK-8337067: Test runtime/classFileParserBug/
+      /Bad_NCDFE_Msg.java won't compile
+    + JDK-8340461: Amend description for logArea
+    + JDK-8341127: Extra call to MethodHandle::asType from memory
+      segment var handles fails to inline
+    + JDK-8339487: ProcessHandleImpl os_getChildren sysctl call -
+      retry in case of ENOMEM and enhance exception message
+    + JDK-8339648: ZGC: Division by zero in
+      rule_major_allocation_rate
+    + JDK-8340923: The class LogSelection copies uninitialized
+      memory
+    + JDK-8333728: ubsan: shenandoahFreeSet.cpp:1347:24: runtime
+      error: division by zero
+    + JDK-8340657: [PPC64] SA determines wrong unextendedSP
+    + JDK-8340815: Add SECURITY.md file
+    + JDK-8340383: VM issues warning failure to find kernel32.dll
+      on Windows nanoserver
+    + JDK-8340418: GHA: MacOS AArch64 bundles can be removed
+      prematurely
+    + JDK-8333098: ubsan: bytecodeInfo.cpp:318:59: runtime error:
+      division by zero
+    + JDK-8340387: Update OS detection code to recognize Windows
+      Server 2025
+    + JDK-8340804: doc/building.md update Xcode instructions to
+      note that full install is required
+    + JDK-8338380: Update TLSCommon/interop/AbstractServer to
+      specify an interface to listen for connections
+    + JDK-8341059: Change Entrust TLS distrust date to November 12,
+      2024
+    + JDK-8341057: Add 2 SSL.com TLS roots
+    + JDK-8337795: Type annotation attached to incorrect type
+      during class reading
+    + JDK-8335789: [TESTBUG] XparColor.java test fails with Error.
+      Parse Exception: Invalid or unrecognized bugid: @
+    + JDK-8340306: Add border around instructions in PassFailJFrame
+    + JDK-8340210: Add positionTestUI() to PassFailJFrame.Builder
+    + JDK-8340308: PassFailJFrame: Make rows default to number of
+      lines in instructions
+    + JDK-8332901: Select{Current,New}ItemTest.java for Choice
+      don't open popup on macOS
+    + JDK-8340007: Refactor KeyEvent/FunctionKeyTest.java
+    + JDK-8340008: KeyEvent/KeyTyped/Numpad1KeyTyped.java has 15
+      seconds timeout
+    + JDK-8338924: C1: assert(0 <= i && i < _len) failed: illegal
+      index 5 for length 5
+    + JDK-8335664: Parsing jsr broken: assert(bci>= 0 && bci <
+      c->method()->code_size()) failed: index out of bounds
+    + JDK-8338389: [JFR] Long strings should be added to the string
+      pool
+    + JDK-8339180: Enhanced Building of Processes: Follow-on Issue
+    + JDK-8337876: [IR Framework] Add support for IR tests with
+      @Stable
+    + JDK-8338112: Test testlibrary_tests/ir_framework/tests/
+      /TestPrivilegedMode.java fails with release build
+    + JDK-8334057: JLinkReproducibleTest.java support receive
+      test.tool.vm.opts
+    + JDK-8339725: Concurrent GC crashed due to
+      GetMethodDeclaringClass
+    + JDK-8339384: Unintentional IOException in jdk.jdi module when
+      JDWP end of stream occurs
+    + JDK-8326616: tools/javac/patterns/Exhaustiveness.java
+      intermittently Timeout signalled after 480 seconds
+    + JDK-8339416: [s390x] Provide implementation for
+      resolve_global_jobject
+    + JDK-8334405: java/nio/channels/Selector/
+      /SelectWithConsumer.java#id0 failed in testWakeupDuringSelect
+    + JDK-8334229: Optimize InterpreterOopMap layout
+    + JDK-8340230: Tests crash: assert(is_in_encoding_range ||
+      k->is_interface() || k->is_abstract()) failed: sanity
+    + JDK-8339731: java.desktop/share/classes/javax/swing/text/html/
+      /default.css typo in margin settings
+    + JDK-8336640: Shenandoah: Parallel worker use in
+      parallel_heap_region_iterate
+    + JDK-8319933: Disable tests for JDK-8280481 on Graal
+    + JDK-8336240: Test com/sun/crypto/provider/Cipher/DES/
+      /PerformanceTest.java fails with java.lang.ArithmeticException
+    + JDK-8333248: VectorGatherMaskFoldingTest.java failed when
+      maximum vector bits is 64
+    + JDK-8339591: Mark jdk/jshell/ExceptionMessageTest.java
+      intermittent
+    + JDK-8339741: RISC-V: C ABI breakage for integer on stack
+    + JDK-8334562: Automate com/sun/security/auth/callback/
+      /TextCallbackHandler/Default.java test
+    + JDK-8335344: test/jdk/sun/security/tools/keytool/NssTest.java
+      fails to compile
+    + JDK-8339548: GHA: RISC-V: Use Debian snapshot archive for
+      bootstrap
+    + JDK-8338402: GHA: some of bundles may not get removed
+    + JDK-8339248: RISC-V: Remove li64 macro assembler routine and
+      related code
+    + JDK-8337664: Distrust TLS server certificates issued after
+      Oct 2024 and anchored by Entrust Root CAs
+    + JDK-8337958: Out-of-bounds array access in
+      secondary_super_cache
+    + JDK-8335397: Improve reliability of
+      TestRecursiveMonitorChurn.java
+    + JDK-8336148: Test runtime/locking/
+      /TestRecursiveMonitorChurn.java failed: Unexpected Inflation
+    + JDK-8333522: JFR SwapSpace event might read wrong free swap
+      space size
+    + JDK-8334567: [test] runtime/os/TestTracePageSizes move ppc
+      handling
+    + JDK-8337780: RISC-V: C2: Change C calling convention for sp
+      to NS
+    + JDK-8335449: runtime/cds/DeterministicDump.java fails with
+      File content different at byte ...
+    + JDK-8338286: GHA: Demote x86_32 to hotspot build only
+    + JDK-8335172: Add manual steps to run security/auth/callback/
+      /TextCallbackHandler/Password.java test
+    + JDK-8338696: (fs) BasicFileAttributes.creationTime() falls
+      back to epoch if birth time is unavailable (Linux)
+    + JDK-8333354: ubsan: frame.inline.hpp:91:25: and
+      src/hotspot/share/runtime/frame.inline.hpp:88:29: runtime
+      error: member call on null pointer of type 'const struct
+      SmallRegisterMap'
+    + JDK-8336854: CAInterop.java#actalisauthenticationrootca
+      conflicted with /manual and /timeout
+    + JDK-8337331: crash: pinned virtual thread will lead to jvm
+      crash when running with the javaagent option
+    + JDK-8336284: Test TestClhsdbJstackLock.java/
+      /TestJhsdbJstackLock.java fails with -Xcomp after JDK-8335743
+    + JDK-8335743: jhsdb jstack cannot print some information on
+      the waiting thread
+    + JDK-8335150: Test LogGeneratedClassesTest.java fails on
+      rpmbuild mock enviroment
+    + JDK-8338101: remove old remap assertion in
+      map_or_reserve_memory_aligned  after JDK-8338058
+    + JDK-8333088: ubsan: shenandoahAdaptiveHeuristics.cpp:245:44:
+      runtime error: division by zero
+    + JDK-8338110: Exclude Fingerprinter::do_type from ubsan checks
+    + JDK-8336926: jdk/internal/util/ReferencedKeyTest.java can
+      fail with ConcurrentModificationException
+    + JDK-8335007: Inline OopMapCache table
+    + JDK-8338058: map_or_reserve_memory_aligned Windows enhance
+      remap assertion
+    + JDK-8337971: Problem list several jvmci tests on
+      linux-riscv64 until JDK-8331704 is fixed
+    + JDK-8337810: ProblemList
+      BasicDirectoryModel/LoaderThreadCount.java on Windows
+    + JDK-8028127: Regtest java/security/Security/
+      /SynchronizedAccess.java is incorrect
+    + JDK-8336342: Fix known X11 library locations in sysroot
+    + JDK-8337283: configure.log is truncated when build dir is on
+      different filesystem
+    + JDK-8336343: Add more known sysroot library locations for ALSA
+    + JDK-8332113: Update nsk.share.Log to be always verbose
+    + JDK-8336315: tools/jpackage/windows/WinChildProcessTest.java
+      Failed: Check is calculator process is alive
+    + JDK-8336928: GHA: Bundle artifacts removal broken
+    + JDK-8334618: ubsan: support setting additional ubsan check
+      options
+    + JDK-8333639: ubsan: cppVtables.cpp:81:55: runtime error:
+      index 14 out of bounds for type 'long int [1]'
+    + JDK-8337819: Update GHA JDKs to 22.0.2
+    + JDK-8333754: Add a Test against ECDSA and ECDH NIST Test
+      vector
+    + JDK-8336564: Enhance mask blit functionality redux
+    + JDK-8335428: Enhanced Building of Processes
+    + JDK-8328723: IP Address error when client enables HTTPS
+      endpoint check on server socket
+    + JDK-8330702: Update failure handler to don't generate Error
+      message if cores actions are empty
+    + JDK-8334166: Enable binary check
+    + JDK-8321509: False positive in get_trampoline fast path
+      causes crash
+    + JDK-8336692: Redo fix for JDK-8284620
+    + JDK-8335904: Fix invalid comment in ShenandoahLock
+    + JDK-8334482: Shenandoah: Deadlock when safepoint is pending
+      during nmethods iteration
+    + JDK-8335237: ubsan: vtableStubs.hpp  is_vtable_stub exclude
+      from ubsan checks
+    + JDK-8334564: VM startup: fatal error: FLAG_SET_ERGO cannot be
+      used to set an invalid value for NonNMethodCodeHeapSize
+    + JDK-8333363: ubsan: instanceKlass.cpp: runtime error: member
+      call on null pointer of type 'struct AnnotationArray'
+    + JDK-8332699: ubsan: jfrEventSetting.inline.hpp:31:43: runtime
+      error: index 163 out of bounds for type 'jfrNativeEventSetting
+      [162]'
+    + JDK-8335283: Build failure due to 'no_sanitize' attribute
+      directive ignored
+    + JDK-8335493: check_gc_overhead_limit should reset
+      SoftRefPolicy::_should_clear_all_soft_refs
+    + JDK-8333277: ubsan: mlib_ImageScanPoly.c:292:43: runtime
+      error: division by zero
+    + JDK-8332903: ubsan: opto/output.cpp:1002:18: runtime error:
+      load of value 171, which is not a valid value for type 'bool'
+    + JDK-8333730: ubsan: FieldIndices/
+      /libFieldIndicesTest.cpp:276:11: runtime error: null pointer
+      passed as argument 2, which is declared to never be null
+    + JDK-8334769: Shenandoah: Move CodeCache_lock close to its use
+      in ShenandoahConcurrentNMethodIterator
+    + JDK-8333361: ubsan,test : libHeapMonitorTest.cpp:518:9:
+      runtime error: null pointer passed as argument 2, which is
+      declared to never be null
+    + JDK-8337024: Bump version numbers for 23.0.2
+    + JDK-8335713: Enhance vectorization analysis
+    + JDK-8336363: Update the release version after forking Oct
+      CPU24_10
+
+
+-------------------------------------------------------------------
 Fri Nov  1 16:45:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upsteam tag jdk-23.0.1+11 (October 2024 CPU)
