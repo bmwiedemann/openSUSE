@@ -167,4 +167,12 @@ This patch is applied during compilation as perftest-license.patch</comment>
   - Fix Integer overflow issue</comment>
     <requestid>1221163</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ca40e63fb1be9f7fff7770aef3f31bf4</srcmd5>
+    <version>24.10.0</version>
+    <time>1740065982</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1247213</requestid>
+  </revision>
 </revisionlist>

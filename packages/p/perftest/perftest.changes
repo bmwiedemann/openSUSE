@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Feb 19 16:50:32 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v24.10.0-0.66 (jsc#PED-11327)
+  - Perftest: fix qp_timeout with rdma_cm and UD
+  - Set qp_timeout for create_rdma_cm_connection path
+  - create_comm_struct: Copy in user_param->qp_timeout
+  - Perftest: Fix failure in creating cq when create cq ex is not supported by providers
+  - Add support for SRD unsolicited write w/ imm. receive
+  - Write cuda device id to json file
+  - Perftest: Fix TD lock-free mode not working for QP
+  - perftest: Set Ack timeout for rdma_cm connection id
+  - Perftest: Add support for TD lock-free mode
+  - Perftest: add error message for DC runs with small queue depth
+  - Add 0xefa3 pciid to the database
+  - Add support for Cambricon devices
+  - perftest: Add minimum rx_depth size in case of SRQ and UD/UC qp type
+  - Perftest: Support selecting congestion control algorithms
+  - Perftest: Fix rx_depth check for XRC
+  - Implement get_cycles for hppa architecture
+  - Fix syntax of script run_perftest_loopback
+  - Fix format of man pages
+  - Perftest: Fix indentation between results after the fix of the BW unit
+  - Display proper unit for MiB/sec results
+  - Support RDMA with Tegra integrated GPUs
+  - Fix Integer overflow issue
+  - Fix out-of-tree man page build when top_srcdir is an absolute path
+  - Ignore generated config files from git
+  - Fix type in print
+  - Perftest: Add condition to force stop polling in write_with_imm
+
+-------------------------------------------------------------------
 Mon Nov  4 17:21:05 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v24.07.0-0.44 (jsc#PED-11328)
