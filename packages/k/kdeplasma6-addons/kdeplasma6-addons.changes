@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:44:45 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.1
+- Changes since 6.3.0:
+  * update version for new release
+  * applets/colorpicker: fix RadioButton
+  * applets/colorpicker: fix tooltips
+  * applets/katesessions: fix keyboard activation
+  * runners/datetime: Fix datetimerunnertest
+  * applets/weather: Promote bbcukmet quality
+  * wallpapers/potd: fix typo
+  * update version for new release
+
+-------------------------------------------------------------------
 Thu Feb  6 13:46:42 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.0:
