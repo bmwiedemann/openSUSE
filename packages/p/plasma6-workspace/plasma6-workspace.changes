@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:46:01 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.1
+- Changes since 6.3.0:
+  * update version for new release
+  * weather/bbcukmet: Filter out regions from search results (kde#500065)
+  * klipper: also show highlight for currentItem
+  * appmenu: Place appmenu in the top left screen corner (kde#500141)
+  * [kicker] Fix properties dialog for recent files (kde#499845)
+  * applets/digitalclock: only show separator with date (kde#499945)
+  * applets/systemmonitor: Fixed typo causing undefined constant being used
+  * plasma-windowed: adapt to resizeEvent change in Qt 6.9
+  * weather/dwd: Capitalize letters after slash
+  * update version for new release
+  * Multiply floating panel shadow margin by scale factor on X11 (kde#496928)
+  * panelview: Fix autohide panel hiding while dragging in task manager (kde#495828)
+  * appiumtests: make clipboardtest less flaky
+  * kcms/users: handle non-existing/readable profile img
+  * klipper: Avoid breaking Listview (kde#448833)
+  * applets/notification: make the new indicator 1px taller
+
+-------------------------------------------------------------------
 Thu Feb  6 13:47:16 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.0:
