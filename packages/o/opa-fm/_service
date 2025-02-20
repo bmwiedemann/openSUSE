@@ -1,5 +1,5 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/01org/opa-fm.git</param>
     <param name="package-meta">no</param>
@@ -8,9 +8,9 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">6f1eb4579fc975a1e9e7f669a8afbf6569d09dd3</param>
+    <param name="revision">acde83417bb3bd96261f84497993dbb962f1ac9c</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">opa-fm*.tar</param>
     <param name="compression">gz</param>
   </service>

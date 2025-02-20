@@ -160,4 +160,12 @@ Fix build with rdma-core (vs previous OFED)</comment>
     <comment>Prepare for RPM 4.20 (forwarded request 1151390 from dimstar)</comment>
     <requestid>1151414</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>94a86130eac531ecf83fa0ed9fbbc224</srcmd5>
+    <version>10.14.4.0.20</version>
+    <time>1740065979</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1247212</requestid>
+  </revision>
 </revisionlist>

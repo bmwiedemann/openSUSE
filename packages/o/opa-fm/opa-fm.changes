@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 19 15:40:29 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 10.14.4.0.20 (jsc#PED-8565)
+  - No changelog available
+
+-------------------------------------------------------------------
 Mon Feb 26 12:42:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
