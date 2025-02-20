@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 16 09:05:59 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 0001-Fix-build-error-with-poppler-25.02.0.patch: Fix build
+  with poppler 25.02.0.
+
+-------------------------------------------------------------------
 Thu Jan  9 18:00:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.6.3. Check the ChangeLog file for the full list of
