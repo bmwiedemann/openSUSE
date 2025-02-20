@@ -108,4 +108,17 @@
     <comment>- Skip a test broken by nodejs feature.</comment>
     <requestid>1229975</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7d65ce2a60f672d2d5779bbc8267b922</srcmd5>
+    <version>0.8.0</version>
+    <time>1740069593</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1247396 from glaubitz
+
+- Update to 0.8.0
+    * Modernize repo.
+    * Officially support Python up to 3.13.
+  - Update BuildRequires from pyproject.toml</comment>
+    <requestid>1247412</requestid>
+  </revision>
 </revisionlist>

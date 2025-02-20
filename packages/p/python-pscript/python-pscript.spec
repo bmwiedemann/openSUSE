@@ -1,7 +1,7 @@
 #
 # spec file for package python-pscript
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define modname pscript
 Name:           python-pscript
-Version:        0.7.7
+Version:        0.8.0
 Release:        0
 Summary:        Python to JavaScript compiler
 License:        BSD-2-Clause
 URL:            https://github.com/flexxui/pscript
 Source:         https://github.com/flexxui/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -53,13 +54,12 @@ of Python that this compiler supports.
 
 %check
 # https://github.com/flexxui/pscript/issues/69
-%pytest -k 'not test_async_and_await' pscript/tests
+%pytest -k 'not test_async_and_await' tests
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/pscript
-%{python_sitelib}/pscript_legacy
 %{python_sitelib}/pscript-%{version}.dist-info
 
 %changelog
