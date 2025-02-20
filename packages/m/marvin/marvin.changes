@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:49:13 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.8:
+  * Update dependencies (#85)
+  * Fix tests (#78)
+  * Fix various naming inconsistencies (#74)
+  * Fix invalid slugs (#67)
+
+-------------------------------------------------------------------
 Fri Oct 25 16:53:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.7:
