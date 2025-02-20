@@ -1,7 +1,7 @@
 #
 # spec file for package zxcvbn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,15 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
+%{!?set_build_flags:%global set_build_flags \
+  CONFIG_SHELL="${CONFIG_SHELL:-/usr/bin/bash}" ; export CONFIG_SHELL ; \
+  CFLAGS="${CFLAGS:-%{?build_cflags}}" ; export CFLAGS ; \
+  CXXFLAGS="${CXXFLAGS:-%{?build_cxxflags}}" ; export CXXFLAGS ; \
+  FFLAGS="${FFLAGS:-%{?build_fflags}}" ; export FFLAGS ; \
+  FCFLAGS="${FCFLAGS:-%{?build_fflags}}" ; export FCFLAGS ; \
+  LDFLAGS="${LDFLAGS:-%{?build_ldflags}}" ; export LDFLAGS
+}
+
 %define soversion 0.0.0
 
 Name:           zxcvbn
@@ -26,6 +35,8 @@ Summary:        Password strength estimation library for C/C++
 License:        MIT
 URL:            https://github.com/tsyrogit/%{name}-c
 Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/tsyrogit/zxcvbn-c/commit/b9f30993c88d9057d7d95a1b059989f7853fd1b0
+Patch0:         zxcvbn-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -50,7 +61,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}
 
 %prep
-%autosetup -n %{name}-c-%{version}
+%autosetup -p1 -n %{name}-c-%{version}
 
 %build
 %set_build_flags

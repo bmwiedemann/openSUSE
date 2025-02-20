@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 12 09:09:35 UTC 2025 - pgajdos@suse.com
+
+- fix build with gcc15
+- added patches
+  fix https://github.com/tsyrogit/zxcvbn-c/commit/b9f30993c88d9057d7d95a1b059989f7853fd1b0
+  + zxcvbn-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Apr  5 11:49:50 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Make use of distro build flags
