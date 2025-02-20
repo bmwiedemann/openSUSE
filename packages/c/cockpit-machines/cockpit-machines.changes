@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Feb 19 18:01:04 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 327:
+  * Translation updates
+- Changes from 326:
+  * Download and install unsupported and older operating systems
+- Changes from 325:
+  * Improve rendering of VM descriptions
+  * Translation updates
+
+-------------------------------------------------------------------
+Tue Dec  3 09:14:16 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
+
+- Update to 324:
+    * Limit size of descriptions
+- Changes from 323:
+    * Action to add a TPM
+- Changes from 322:
+    * Bug fixes and translation updates
+- Changes form 321:
+    * Drop usage of virtinterfaced
+- Changes from 320:
+    * Improve snapshot memory path handling
+    * Add support for VM descriptions
+- Changes from 319:
+    * Translation updates
+    * Bug fixes
+- Changes from 318.1:
+    * Translation updates
+- Changes from 318:
+    * Translation updates
+    * Test fixes
+- Changes from 317:
+    * Bug fixes
+
+-------------------------------------------------------------------
 Wed Jul 31 12:39:14 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - update_version.sh: add script for auto-updates

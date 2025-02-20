@@ -204,4 +204,40 @@
     * Don't list disks in snapshot XML</comment>
     <requestid>1190946</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b1b87743adeccfc331db33ae08fcc0ff</srcmd5>
+    <version>327</version>
+    <time>1740066135</time>
+    <user>anag+factory</user>
+    <comment>- Update to 327:
+  * Translation updates
+- Changes from 326:
+  * Download and install unsupported and older operating systems
+- Changes from 325:
+  * Improve rendering of VM descriptions
+  * Translation updates
+
+- Update to 324:
+    * Limit size of descriptions
+- Changes from 323:
+    * Action to add a TPM
+- Changes from 322:
+    * Bug fixes and translation updates
+- Changes form 321:
+    * Drop usage of virtinterfaced
+- Changes from 320:
+    * Improve snapshot memory path handling
+    * Add support for VM descriptions
+- Changes from 319:
+    * Translation updates
+    * Bug fixes
+- Changes from 318.1:
+    * Translation updates
+- Changes from 318:
+    * Translation updates
+    * Test fixes
+- Changes from 317:
+    * Bug fixes</comment>
+    <requestid>1247400</requestid>
+  </revision>
 </revisionlist>
