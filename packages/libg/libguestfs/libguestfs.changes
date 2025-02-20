@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 19 10:08:10 MST 2025 - carnold@suse.com
+
+- Update to version 1.55.6 (jsc#PED-8910)
+  * appliance: add dhcpcd support on Debian
+  * appliance: add support for sfdisk on Debian
+  * mlcustomize, mltools: Replace $TEST_FUNCTIONS
+  * ruby: Make sure all object files are cleaned up
+  * daemon: New command_out and sh_out APIs
+
+-------------------------------------------------------------------
+Wed Feb 12 15:34:38 MST 2025 - carnold@suse.com
+
+- Update to version 1.55.4 (jsc#PED-8910)
+  * appliance/init: Fix /usr/sbin symlinks in Fedora 42+
+  * Various translation updates
+
+-------------------------------------------------------------------
 Thu Jan 30 10:29:58 MST 2025 - carnold@suse.com
 
 - Update to version 1.55.3 (jsc#PED-8910)

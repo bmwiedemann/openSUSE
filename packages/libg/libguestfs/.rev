@@ -1198,4 +1198,12 @@
     <comment>Update libguestfs to version 1.55.3</comment>
     <requestid>1241512</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>95dc1294ecb945da6027adec321c7f1c</srcmd5>
+    <version>1.55.6</version>
+    <time>1740087312</time>
+    <user>dimstar_suse</user>
+    <comment>Update libguestfs to version 1.55.6</comment>
+    <requestid>1247499</requestid>
+  </revision>
 </revisionlist>
