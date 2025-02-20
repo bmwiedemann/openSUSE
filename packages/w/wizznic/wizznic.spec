@@ -1,7 +1,7 @@
 #
 # spec file for package wizznic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright Vincent Petry <PVince81@yahoo.fr>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ Group:          Amusements/Games/Board/Puzzle
 URL:            http://wizznic.org/
 Source0:        https://github.com/DusteDdk/Wizznic/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.desktop
+# https://github.com/DusteDdk/Wizznic/issues/21
+Patch0:         wizznic-gcc15.patch
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
@@ -42,7 +44,7 @@ to each other, this sounds a lot easier than it is.
 The bricks are heavy, so you can only push them, not lift them up.
 
 %prep
-%setup -q -n Wizznic-%{version}
+%autosetup -p1 -n Wizznic-%{version}
 
 # Correct Permissions
 sed -i 's|chmod -R 755|#chmod -R 755|' Makefile.linux

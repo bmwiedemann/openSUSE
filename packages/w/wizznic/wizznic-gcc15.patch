@@ -1,0 +1,65 @@
+--- Wizznic-1.1/src/credits.h	2020-04-04 01:15:06.000000000 +0200
++++ Wizznic-1.1/src/credits.h	2025-02-18 13:33:02.693787645 +0100
+@@ -20,7 +20,7 @@
+ 
+ #include <SDL/SDL.h>
+ 
+-void initCredits();
++void initCredits(SDL_Surface* screen);
+ void clearCredits();
+ void runCredits(SDL_Surface* screen);
+ 
+--- Wizznic-1.1/src/main.c	2020-04-04 01:15:06.000000000 +0200
++++ Wizznic-1.1/src/main.c	2025-02-18 13:34:22.240365198 +0100
+@@ -378,7 +378,7 @@ int main(int argc, char *argv[])
+   }
+ 
+   //Scan userlevels dir
+-  makeUserLevelList(screen);
++  makeUserLevelList();
+ 
+   //Init particles
+   initParticles(screen);
+--- Wizznic-1.1/src/menu.h	2020-04-04 01:15:06.000000000 +0200
++++ Wizznic-1.1/src/menu.h	2025-02-18 13:33:02.693951149 +0100
+@@ -29,7 +29,7 @@
+ #include "particles.h"
+ 
+ int initMenu(SDL_Surface* screen); //Loads menu graphics
+-int runMenu();
++int runMenu(SDL_Surface *);
+ void setMenu(int mstate);
+ void setMenuPosX(int x);
+ void setMenuPosY(int Y);
+--- Wizznic-1.1/src/platform/dumplevelimages.c	2020-04-04 01:15:06.000000000 +0200
++++ Wizznic-1.1/src/platform/dumplevelimages.c	2025-02-18 13:33:02.694110107 +0100
+@@ -56,7 +56,7 @@ void dumplevelimages(SDL_Surface* screen
+     }
+ 
+     //Switch off cursor graphics
+-    drawDisableCursor(1);
++    drawDisableCursor();
+ 
+     //Show the "start image"
+     si=0;
+@@ -120,7 +120,7 @@ void dumpOneLevelFile(SDL_Surface* scree
+     }
+ 
+     //Switch off cursor graphics
+-    drawDisableCursor(1);
++    drawDisableCursor();
+ 
+ 
+     //Draw the image
+--- Wizznic-1.1/src/skipleveldialog.h	2020-04-04 01:15:06.000000000 +0200
++++ Wizznic-1.1/src/skipleveldialog.h	2025-02-18 13:33:02.694256640 +0100
+@@ -18,6 +18,8 @@
+ #ifndef SKIPLVLDLG_H_INCLUDED
+ #define SKIPLVLDLG_H_INCLUDED
+ 
+-int skipLevelDialog();
++#include <SDL/SDL.h>
++
++int skipLevelDialog(SDL_Surface* screen);
+ 
+ #endif

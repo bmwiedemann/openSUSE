@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 12:37:07 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/DusteDdk/Wizznic/issues/21
+  + wizznic-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Sep 10 19:19:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.1:
