@@ -5395,4 +5395,12 @@ boo#1224178</comment>
   * fix-build-with-pipewire-1.3.82.patch (forwarded request 1245846 from alarrosa)</comment>
     <requestid>1245847</requestid>
   </revision>
+  <revision rev="450" vrev="1">
+    <srcmd5>369507a3dd64e5fb28bebee389592915</srcmd5>
+    <version>133.0.6943.126</version>
+    <time>1740065614</time>
+    <user>anag+factory</user>
+    <comment>Chromium 133.0.6943.126 (boo#1237343)  untested (forwarded request 1246972 from AndreasStieger)</comment>
+    <requestid>1246987</requestid>
+  </revision>
 </revisionlist>

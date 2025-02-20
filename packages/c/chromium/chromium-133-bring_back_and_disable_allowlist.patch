@@ -1,0 +1,60 @@
+--- chromium-133.0.6943.98/media/base/media_switches.h	2025/02/18 15:56:48	1.1
++++ chromium-133.0.6943.98/media/base/media_switches.h	2025/02/18 15:57:20
+@@ -516,6 +516,8 @@
+ 
+ MEDIA_EXPORT BASE_DECLARE_FEATURE(kUseWindowBoundsForPip);
+ 
++MEDIA_EXPORT BASE_DECLARE_FEATURE(kFFmpegAllowLists);
++
+ MEDIA_EXPORT BASE_DECLARE_FEATURE(kMediaLogToConsole);
+ 
+ MEDIA_EXPORT BASE_DECLARE_FEATURE(kLibvpxUseChromeThreads);
+--- chromium-133.0.6943.98/media/base/media_switches.cc	2025/02/18 15:56:07	1.1
++++ chromium-133.0.6943.98/media/base/media_switches.cc	2025/02/18 15:56:48
+@@ -1657,6 +1657,11 @@
+              "UseWindowBoundsForPip",
+              base::FEATURE_ENABLED_BY_DEFAULT);
+ 
++// Enables FFmpeg allow lists for supported codecs / containers.
++BASE_FEATURE(kFFmpegAllowLists,
++             "FFmpegAllowLists",
++             base::FEATURE_DISABLED_BY_DEFAULT);
++
+ #if BUILDFLAG(IS_WIN)
+ // Enables audio offload when supported by endpoints.
+ BASE_FEATURE(kAudioOffload, "AudioOffload", base::FEATURE_DISABLED_BY_DEFAULT);
+--- chromium-133.0.6943.98/media/ffmpeg/ffmpeg_common.cc	2025/02/18 16:03:18	1.1
++++ chromium-133.0.6943.98/media/ffmpeg/ffmpeg_common.cc	2025/02/18 16:04:02
+@@ -19,6 +19,7 @@
+ #include "media/base/audio_decoder_config.h"
+ #include "media/base/decoder_buffer.h"
+ #include "media/base/encryption_scheme.h"
++#include "media/base/media_switches.h"
+ #include "media/base/media_util.h"
+ #include "media/base/supported_types.h"
+ #include "media/base/video_aspect_ratio.h"
+@@ -76,7 +76,8 @@
+ void ApplyCodecContextSecuritySettings(AVCodecContext* codec_context) {
+   // Future versions of ffmpeg may copy the allow list from the format
+   // context.
+-  if (!codec_context->codec_whitelist) {
++  if (base::FeatureList::IsEnabled(kFFmpegAllowLists) &&
++      !codec_context->codec_whitelist) {
+     // Note: FFmpeg will try to free this string, so we must duplicate it.
+     codec_context->codec_whitelist =
+         av_strdup(codec_context->codec_type == AVMEDIA_TYPE_AUDIO
+--- chromium-133.0.6943.98/media/filters/ffmpeg_glue.cc	2025/02/18 16:06:06	1.1
++++ chromium-133.0.6943.98/media/filters/ffmpeg_glue.cc	2025/02/18 16:07:06
+@@ -131,8 +131,10 @@
+   // memory usage.
+   //
+   // Note: FFmpeg will try to free these strings, so we must duplicate them.
+-  format_context_->codec_whitelist = av_strdup(GetAllowedAudioDecoders());
+-  format_context_->format_whitelist = av_strdup(GetAllowedDemuxers());
++  if (base::FeatureList::IsEnabled(kFFmpegAllowLists)) {
++    format_context_->codec_whitelist = av_strdup(GetAllowedAudioDecoders());
++    format_context_->format_whitelist = av_strdup(GetAllowedDemuxers());
++  }
+ }
+ 
+ bool FFmpegGlue::OpenContext(bool is_local_file) {

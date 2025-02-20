@@ -27,10 +27,10 @@
 # suse_version 1699 tw
 %if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150400
 %bcond_without gtk4
-%bcond_without qt
+%bcond_without qt5
 %else
 %bcond_with gtk4
-%bcond_with qt
+%bcond_with qt5
 %endif
 %ifarch aarch64
 %bcond_with swiftshader
@@ -115,7 +115,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        133.0.6943.98
+Version:        133.0.6943.126
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -163,6 +163,7 @@ Patch364:       chromium-129-revert-AVFMT_FLAG_NOH264PARSE.patch
 Patch368:       chromium-131-clang-stack-protector.patch
 Patch369:       chromium-132-pdfium-explicit-template.patch
 Patch370:       fix-build-with-pipewire-1.3.82.patch
+Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
 # conditionally applied patches
 # patch where ffmpeg < 5
 Patch1001:      chromium-94-ffmpeg-roll.patch
@@ -358,7 +359,7 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libyuv)
 %endif
-%if %{with qt}
+%if %{with qt5}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
@@ -992,7 +993,7 @@ myconf_gn+=" safe_browsing_use_unrar=false"
 %if %{with gtk4}
 myconf_gn+=" gtk_version=4"
 %endif
-%if %{without qt}
+%if %{without qt5}
 myconf_gn+=" use_qt=false"
 %else
 myconf_gn+=" moc_qt5_path=\"%{_libqt5_bindir}\""
