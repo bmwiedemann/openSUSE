@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:29:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.2:
+  + Fix ABI break accidentally introduced in the 1.16.1 release.
+- Changes from version 1.16.1:
+  + Add support for non-discrete gamepad button values. This allows
+    representing button pressure sensitivity for devices with
+    analog button inputs.
+- Changes from version 1.16.0:
+  + New API to override the default to override the default
+    implementation for subprocess launch and termination.
+  + New API for handling pointer lock events.
+  + Properly handle the EGL library when available without a
+    pkg-config module file present.
+  + Allow resetting the full screen client to a null pointer.
+
+-------------------------------------------------------------------
 Thu Aug 24 10:56:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.1:
