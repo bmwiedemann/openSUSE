@@ -1,7 +1,7 @@
 #
 # spec file for package libXt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ URL:            http://xorg.freedesktop.org/
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXt/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch0:         u_pkgconfig-file-move-sm-from-private-to-public-Requir.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
@@ -84,7 +85,7 @@ This package contains the development headers for the library found
 in %lname.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --docdir=%_docdir/%name --disable-static

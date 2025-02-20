@@ -180,4 +180,15 @@
   * quiet a couple of unused-parameter warnings</comment>
     <requestid>1225101</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>99d66b9e9679b843aa218ce812ee78b5</srcmd5>
+    <version>1.3.1</version>
+    <time>1740065239</time>
+    <user>anag+factory</user>
+    <comment>- u_pkgconfig-file-move-sm-from-private-to-public-Requir.patch 
+  * pkgconfig file: move 'sm' from private to public Requires
+    Since &lt;X11/Shell.h&gt; includes &lt;X11/SM/SMlib.h&gt; 'sm' should be a
+    public Requires in xt.pc. (boo#1237276)</comment>
+    <requestid>1247049</requestid>
+  </revision>
 </revisionlist>

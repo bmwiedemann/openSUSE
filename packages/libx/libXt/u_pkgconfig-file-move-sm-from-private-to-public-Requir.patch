@@ -1,0 +1,28 @@
+From 04de31e49032aed32839065ec11d9a291850b7a9 Mon Sep 17 00:00:00 2001
+From: Stefan Dirsch <sndirsch@suse.de>
+Date: Wed, 19 Feb 2025 12:34:38 +0100
+Subject: [PATCH] pkgconfig file: move 'sm' from private to public Requires
+
+Since <X11/Shell.h> includes <X11/SM/SMlib.h> 'sm' should be a public
+Requires in xt.pc.
+---
+ xt.pc.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/xt.pc.in b/xt.pc.in
+index 1950523..4af66a5 100644
+--- a/xt.pc.in
++++ b/xt.pc.in
+@@ -10,7 +10,7 @@ xfilesearchpath=@XFILESEARCHPATHDEFAULT@
+ Name: Xt
+ Description: X Toolkit Library
+ Version: @VERSION@
+-Requires: xproto x11
+-Requires.private: ice sm
++Requires: sm xproto x11
++Requires.private: ice
+ Cflags: -I${includedir}
+ Libs: -L${libdir} -lXt
+-- 
+2.43.0
+
