@@ -17,7 +17,7 @@
 
 
 Name:           sequoia-sq
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Command-line frontend for Sequoia
 Group:          Productivity/Security
@@ -81,6 +81,9 @@ mkdir -p .cargo
 %build
 %{cargo_build}
 
+%check
+%{cargo_test}
+
 %install
 %{cargo_install}
 # install man pages
@@ -90,9 +93,6 @@ cp -pav target/release/build/%{crate}-*/out/man-pages/sq*.1 %{buildroot}/%{_mand
 install -Dpm 0644 target/release/build/%{crate}-*/out/shell-completions/sq.bash %{buildroot}%{_datadir}/bash-completion/completions/sq.bash
 install -Dpm 0644 target/release/build/%{crate}-*/out/shell-completions/sq.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/sq.fish
 install -Dpm 0644 target/release/build/%{crate}-*/out/shell-completions/_sq %{buildroot}%{_datadir}/zsh/site-functions/_sq
-
-%check
-%{cargo_test}
 
 %files
 %license LICENSE.txt

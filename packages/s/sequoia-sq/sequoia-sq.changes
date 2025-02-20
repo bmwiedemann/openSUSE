@@ -1,4 +1,252 @@
 -------------------------------------------------------------------
+Tue Feb 04 19:51:59 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 1.2.0:
+  * Release 1.2.0.
+  * Update Cargo.lock.
+  * Use authenticated identifiers in sq verify.
+  * Improve quoting.
+  * Improve sq download's output.
+  * Add a parameter to the authenticate function to control the output.
+  * Move helper function to common.
+  * Add a mechanism to replace an argument in a hint with a placeholder.
+  * Avoid crash parsing arguments to Strings.
+  * Make sq cert lint less quiet when there are no issues.
+  * Add sq key rotate.
+  * Extend replay to optionally take a signer.
+  * tests: Move utility function to the common module.
+  * Move function to the common module.
+  * Extend replay to allow the caller to limit what is replayed.
+  * Improve output.
+  * Allow the caller to specify an indentation level.
+  * Disable tracing.
+  * Fix test helper function.
+  * Add sq pki vouch replay.
+  * Move certification listing code to the common module.
+  * Move code in common to the sole function that uses it.
+  * Move the sq pki link list implement to its own module.
+  * Extend sq pki vouch list to list certifications of a certificate.
+  * Improve test.
+  * Simplify specifying certificate designators in tests.
+  * Require that certificate designators are authenticated.
+  * Use an explicit type for the trust amount parameter.
+  * Fix sq --cli-version.
+  * Improve sq pki link list's help text.
+  * Improve error messages.
+  * Avoid unnecessary lookups.
+  * Relax sq pki link list's certificate designators.
+  * Fix examples.
+  * Don't export non-exportable sigs and components when exporting keys.
+  * Add missing NEWS entry.
+  * Fix duplicating packets when dumping.
+  * Prevent monomorphization of Sq::resolve_cert.
+  * Prevent monomorphization of Sq::resolve_certs_filter.
+  * Add new command sq pki vouch list.
+  * Move the code for listing certification to common.
+  * Release 1.1.0.
+  * Relax subplot dependency.
+  * Relax rusqlite dependency.
+  * Update Cargo.lock.
+  * Fix output.
+  * Add a lint for uncertified user IDs.
+  * Show certificates without user IDs with --gossip.
+  * Improve sq cert list's documentation.
+  * Improve help text lints.
+  * Fix long help generation for cert designators.
+  * Update NEWS file.
+  * Add option --unusable to sq cert list, etc.
+  * Show hints about unusable bindings when --gossip is provided.
+  * Change how we refer to unusable bindings in sq cert list.
+  * Change sq cert list to not show warnings if --quiet is given.
+  * Distinguish unauthenticated and invalid bindings in sq cert list.
+  * Improve linting for sq cert list.
+  * Don't list revoke user IDs.
+  * Fix listing certificates by fingerprint or key ID.
+  * Remove duplicate code.
+  * Rework sq cert list's human readable output.
+  * Improve UserIDDesignator::argument_value.
+  * Fix UserIDDesignator::argument_value.
+  * Add some helper functions.
+  * tests: Add tests for sq cert list.
+  * Fix sq cert list --gossip.
+  * Fix output.
+  * Release 1.0.0.
+  * Fix NEWS.
+  * Align `sq download` with `sq verify`.
+  * Fix displaying preferred user IDs.
+  * Write to temporary file first, then persist it under the final name.
+  * Avoid using absolute paths in name of scratch files.
+  * Automatically import certificates from GnuPG's certificate store.
+  * Escape user IDs.
+  * Escape preferred keyserver and policy URI.
+  * Escape notation name and data.
+  * Escape literal data file name and data prefix.
+  * Escape all regular expressions.
+  * Escape all reason for revocation messages.
+  * Improve output sanitization.
+  * Use the visual idiom for cert,userid pairs authenticating downloads.
+  * Use the visual idiom for cert, userid pairs when decrypting.
+  * Use the visual idiom for cert, userid pairs when importing revs.
+  * Use the visual idiom for cert, userid pairs when certifying.
+  * Improve argument and value formatting in hints.
+  * Improve help output.
+  * Revert "Refine sq pki {authenticate,lookup}'s user ID designators."
+  * Fix commands embedded in the documentation.
+  * Make verifying detached signatures more efficient.
+  * Require sequoia-openpgp 1.22.
+  * Fix hint.
+  * Refine sq key userid revoke's user ID designators.
+  * Refine sq pki vouch {add,authorize}'s user ID designators.
+  * Refine sq pki {authenticate,lookup}'s user ID designators.
+  * Refine sq pki link retract's user ID designators.
+  * Refine sq pki link {add,authorize}'s user ID designators.
+  * Add sq pki path --userid-by-email.
+  * Gracefully handle unencrypted Autocrypt messages.
+  * Align output emitted when importing certificates.
+  * Don't unconditionally show provenance messages.
+  * Fix importing unencrypted Autocrypt messages.
+  * Improve error handling opening the cert store.
+  * Do not hide errors from keyrings in verify.
+  * Refactor packet and keyring files in /cli to new example framework.
+  * Refactor files in /cli/network to new example framework.
+  * Refactor files in /cli/pki to new example framework.
+  * Refactor files in /cli to new example framework.
+  * Remove the unstable CLI warning.
+  * Don't make impossible recommendations.
+  * Remove useless code.
+  * Disable the --name and --add-name arguments.
+  * Rename --userid-or-add to --add-userid, etc.
+  * Extend and adjust the set of user ID designators.
+  * Refactor the user ID designators.
+  * Update all dependencies.
+  * Fix test.
+  * Trim unused features on sequoia-cert-store.
+  * Update sequoia-net and reqwest.
+  * Add argument `sq network search --iterations`.
+  * Add argument `sq network search --use-dane`.
+  * Add argument `sq network search --use-wkd`.
+  * Better handle user ID's matched by --all.
+  * Make --all conflict with other user ID designators.
+  * Fix test for sq pki link retract.
+  * Make `sq cert list` display certificates without user IDs.
+  * Prepare for userid-less certificates in common::pki::authenticate.
+  * Split OutputFormat::add_paths into two functions.
+  * Fix listing certificates without authenticated bindings.
+  * Apply the input lints to all certs.
+  * Only show hints about an empty cert store if it is indeed empty.
+  * Change `sq config inspect policy` to explain the policy.
+  * Fix warnings about elided lifetimes that have a name.
+  * Add tests for sq key approvals update.
+  * tests: Improve sq key approvals update help functions.
+  * Add tests for sq key approvals list.
+  * Add tests for sq key userid revoke.
+  * Add tests for sq pki lookup.
+  * Add tests for sq pki authenticate.
+  * Add tests for sq pki vouch {add,authorize}.
+  * tests: Rename Sq::pki_vouch_authorize_p.
+  * tests: Simplify Sq::try_pki_vouch_add and Sq::pki_vouch_authorize_p.
+  * Add tests for sq pki link retract.
+  * Add tests for sq pki link authorize.
+  * Add tests for sq pki link add.
+  * Simplify comments.
+  * Lint CLI help texts.
+  * Align CLI help texts with our UI guidelines.
+  * Make long help texts configurable for cert designators.
+  * Deduplicate and rework the signature notation argument handling.
+  * Require explicit opt-out for encrypting without signing.
+  * Use cert designators for `sq cert list`.
+  * Add examples for `sq cert list`
+  * Refactor files in /cli/cert to new example framework
+  * Modify examples
+  * Refactor files under .../cli/key to use example framework
+  * Fix generation of user ID-less keys.
+  * Upgrade hickory-proto to avoid vulnerable idna 0.4.0.
+  * Gracefully handle missing ui section in config file.
+  * Add `sq encrypt --profile` in preparation for RFC9580.
+  * Add `sq key generate --profile` in preparation for RFC9580.
+  * Parse key.generate.cipher-suite case sensitively.
+  * Mention the configuration key in the augmented help texts.
+  * Make `sq network dane generate` require cert designators or `--all`.
+  * Make `sq pki link list` fail if a designated cert has no link.
+  * Refactor user ID matching when resolving certificates.
+  * Generalize the filter for `Sq::resolve_certs_filter.
+  * Align `sq sign --detached-file` with `sq verify --detached-file`.
+  * Make the default third-party certification expiration configurable.
+  * Introduce a specialization for third-party certifications.
+  * Make ExpirationArg configurable.
+  * Manually implement clap::Args for ExpirationArg.
+  * Add tests for sq pki link list.
+  * Add tests for sq key list.
+  * Listing an empty certificate store should not be an error.
+  * Fix hint.
+  * Hide --without-password from the sq key generate examples.
+  * Make it possible to hide parts of an example.
+  * Change the default third-party certification expiration to 10y.
+  * Implement `sq pki vouch {add,authorize} --certifier-self`.
+  * Improve the `--self-signer` help texts and add to the template.
+  * Add a pattern argument to `sq pki link list`.
+  * Add missing conflict for `sq key list`.
+  * Change sq config inspect network to use stdout.
+  * Change sq config inspect paths to use stdout.
+  * Change sq cert import and sq key import to use stdout.
+  * Improve sq network wkd publish's output.
+  * Change sq network wkd publish to use stdout.
+  * Convert a hint to a warning.
+  * Change sq network keyserver publish to use stdout.
+  * Change sq pki link add, etc. to use stdout.
+  * Generalize make_qprintln to write to a different stream.
+  * Change sq pki link list to use stdout.
+  * Before printing a hint, flush stdout.
+  * Change sq cert list, sq pki authenticate, etc. to use stdout.
+  * Generalize the authentication output routines to use any stream.
+  * Change sq key approvals list to use stdout.
+  * Change sq key list to use stdout.
+  * Add new macro wwrintln.
+  * Generalize weprintln and iweprintln to write to any stream.
+  * Rename wprintln to weprintln.
+  * Clean up sq key list's output.
+  * Implement `sq config inspect network`.
+  * Implement `sq config inspect paths`.
+  * Implement `sq config inspect policy`.
+  * Make `sq key list` fail without key store, align error messages.
+  * Align error messages when listing certs.
+  * Import the secret key so that the example has something to list.
+  * Change sq inspect to show the cert associated with a recipient.
+  * policy: Update certificates.
+  * Simplify code.
+  * Remove unreachable code.
+  * Fix resolving `--signer-self`.
+  * Improve formatting of message.
+  * Implement `sq sign --signer-self` and `sq encrypt --signer-self`.
+  * Make the number of iterations configurable for `sq network search`.
+  * Make use of DANE configurable when doing `sq network search`.
+  * Make use of WKD configurable when doing `sq network search`.
+  * Make the path to the backend servers configurable.
+  * Fix displaying effective configuration.
+  * Make hints configurable.
+  * Generalize function.
+  * Make verbosity configurable.
+  * Introduce accessors for sq.quiet and sq.verbose.
+  * Use platform-specific prompt in hints.
+  * Indent hints so that they look different from shell prompts.
+  * Improve the `--for-self` encryption hint.
+  * Don't show hint if a recipient is listed in encrypt.for-self.
+  * Don't explicitly create `Recipient`s.
+  * Show the configuration file's location in sq config --help.
+  * Fix message.
+  * Display a hint if encrypting a message that one can not decrypt.
+  * Implement `sq encrypt --for-self`.
+  * When encrypting a message, list signers.
+  * When encrypting a message, list recipients and passwords.
+  * Use BufferedReader::copy to avoid an extra copy.
+  * Rework encryption subkey selection.
+  * Fix handling of `--home=default` and `--home=none`.
+  * Drop superfluous mut.
+  * Align user ID designators in `sq pki link retract`.
+  * Add support for addressing shadow CAs by symbolic names.
+  * Make `sq config get policy.path` reflect SEQUOIA_CONFIG_POLICY.
+
+-------------------------------------------------------------------
 Fri Jan 03 11:00:32 UTC 2025 - felix.niederwanger@suse.com
 
 - Update to version 1.1.0:
