@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 31 15:05:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add fix-doc-link.patch to fix build with new Sphinx
+- Also convert to pyproject macros to prepare for python 3.14
+
+-------------------------------------------------------------------
 Fri Jul 28 15:36:31 UTC 2023 - jgleissner@suse.com
 
 - Update to version 2.1.1:

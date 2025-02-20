@@ -1,0 +1,92 @@
+From 178e99067d52a5690b949531df8dc6626be2ee26 Mon Sep 17 00:00:00 2001
+From: Joachim Gleissner <jgleissner@suse.com>
+Date: Tue, 3 Dec 2024 12:41:43 +0000
+Subject: [PATCH 1/4] Fix link to OBS documentation
+
+---
+ doc/source/image_definition.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/source/image_definition.rst b/doc/source/image_definition.rst
+index 890308a..5d58d15 100644
+--- a/doc/source/image_definition.rst
++++ b/doc/source/image_definition.rst
+@@ -411,7 +411,7 @@ etc., apply as for the image dictionary.
+ Custom XML files can be useful when generating image descriptions for use in
+ the Open Build Service, which accepts build configuration directives via XML
+ source files, like the :file:`_constraints` file. See
+-`<https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.build_job_constraints.html>`__
++`<https://openbuildservice.org/help/manuals/obs-user-guide/cha-obs-build-constraints>`__
+ for details.
+ 
+ schema
+
+From 0f49f67928775e2ced5ce5c9ecc52c861cff32b5 Mon Sep 17 00:00:00 2001
+From: Joachim Gleissner <jgleissner@suse.com>
+Date: Tue, 3 Dec 2024 15:07:28 +0000
+Subject: [PATCH 2/4] Use newer docbook schema
+
+---
+ doc/DC-keg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/DC-keg b/doc/DC-keg
+index d372dbc..fe0353e 100644
+--- a/doc/DC-keg
++++ b/doc/DC-keg
+@@ -5,4 +5,4 @@ MAIN=xml/book.xml
+ ADOC_POST=yes
+ ADOC_TYPE=book
+ STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
+-DOCBOOK5_RNG_URI="file:///usr/share/xml/docbook/schema/rng/5.1/docbookxi.rnc"
++DOCBOOK5_RNG_URI="file:///usr/share/xml/docbook/schema/rng/5.2/docbookxi.rnc"
+
+From 83502d13bf7face68fe3a2a1d57d7701afec7242 Mon Sep 17 00:00:00 2001
+From: Joachim Gleissner <jgleissner@suse.com>
+Date: Tue, 3 Dec 2024 15:09:01 +0000
+Subject: [PATCH 3/4] Avoid Sphinx warning
+
+Do not set html_theme_path. It is not required in recent Sphinx and this
+avoids a deprecation warning wrt get_html_theme_path().
+---
+ doc/source/conf.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/doc/source/conf.py b/doc/source/conf.py
+index 4462038..ce05d6b 100644
+--- a/doc/source/conf.py
++++ b/doc/source/conf.py
+@@ -89,8 +89,6 @@
+ 
+ html_theme = "sphinx_rtd_theme"
+ 
+-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+-
+ html_theme_options = {
+     'collapse_navigation': False,
+     'display_version': False
+
+From 15b981f98792a872ded73c5b47c9f459a349e719 Mon Sep 17 00:00:00 2001
+From: Joachim Gleissner <jgleissner@suse.com>
+Date: Tue, 3 Dec 2024 15:26:27 +0000
+Subject: [PATCH 4/4] Fix Sphinx warning about theme options
+
+Do not set obsolete display_version parameter in html_theme_options.
+---
+ doc/source/conf.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/doc/source/conf.py b/doc/source/conf.py
+index ce05d6b..e02f6ba 100644
+--- a/doc/source/conf.py
++++ b/doc/source/conf.py
+@@ -90,8 +90,7 @@
+ html_theme = "sphinx_rtd_theme"
+ 
+ html_theme_options = {
+-    'collapse_navigation': False,
+-    'display_version': False
++    'collapse_navigation': False
+ }
+ 
+ # -- Options for manual page output ---------------------------------------

@@ -1,7 +1,7 @@
 #
 # spec file for package python-kiwi-keg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2022 SUSE Software Solutions Germany GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,11 +31,16 @@ URL:            https://github.com/SUSE-Enceladus/keg
 Summary:        KEG - Image Composition Tool
 License:        GPL-3.0-or-later
 Source:         keg-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/SUSE-Enceladus/keg/pull/154 Fix link to OBS documentation
+Patch0:         fix-doc-link.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sphinx_rtd_theme}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildArch:      noarch
 Requires:       python-Jinja2
@@ -51,7 +56,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       python3-kiwi-keg = %version
@@ -77,17 +82,17 @@ more given git repositories that contain keg-recipes source tree. It supports
 auto-generation of change log files from commit history.
 
 %prep
-%setup -q -n keg-%{version}
+%autosetup -p1 -n keg-%{version}
 
 %build
 # Build Python 3 version
-%python_build
+%pyproject_wheel
 
 # Build man pages
 make -C doc man
 
 %install
-%python_install
+%pyproject_install
 make buildroot=%{buildroot}/ docdir=%{_defaultdocdir}/ install
 
 %python_clone -a %{buildroot}%{_bindir}/keg
