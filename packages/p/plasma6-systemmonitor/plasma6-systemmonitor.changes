@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:45:54 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.1
+- Changes since 6.3.0:
+  * update version for new release
+  * table: Fix row hovering with Qt 6.9+
+  * update version for new release
+  * faces/applications: Filter out applications with 0 processes
+  * faces/applications: Use the memory column for application details
+
+-------------------------------------------------------------------
 Thu Feb  6 13:47:11 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.0:
