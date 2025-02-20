@@ -1,4 +1,4 @@
-From e06f78e09fa03680ce51c8a080447fbc62156d3d Mon Sep 17 00:00:00 2001
+From d14bce9bafde35ad958f38f608bf3e0481d98ad7 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
 Subject: [PATCH 4/5] bsc1073877: apparmor: clobber docker-default profile on
@@ -85,5 +85,5 @@ index f152685e6026..dee4c33471d5 100644
  	}
  
 -- 
-2.47.1
+2.48.1
 

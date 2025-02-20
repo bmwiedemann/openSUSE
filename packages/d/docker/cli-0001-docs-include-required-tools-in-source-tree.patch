@@ -1,4 +1,4 @@
-From 8fbd3c8cfba959ec3b0db555d10158745cd01456 Mon Sep 17 00:00:00 2001
+From 72764aa64ffcebcebe20a46ffacd177f6b378336 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Mon, 16 Dec 2024 17:21:02 +1100
 Subject: [PATCH] docs: include required tools in source tree
@@ -337,7 +337,7 @@ index c4ed0d567de3..7da8d1a2fa95 100755
  mkdir -p docs/yaml
  set -x
 diff --git a/vendor.mod b/vendor.mod
-index e1e7975baebc..1ceb5d5c6fa2 100644
+index eee224ca3e43..ae60187da312 100644
 --- a/vendor.mod
 +++ b/vendor.mod
 @@ -9,6 +9,7 @@ go 1.22.0
@@ -348,22 +348,22 @@ index e1e7975baebc..1ceb5d5c6fa2 100644
  	github.com/creack/pty v1.1.21
  	github.com/distribution/reference v0.6.0
  	github.com/docker/cli-docs-tool v0.8.0
-@@ -87,6 +88,7 @@ require (
- 	github.com/prometheus/common v0.44.0 // indirect
+@@ -88,6 +89,7 @@ require (
+ 	github.com/prometheus/common v0.55.0 // indirect
  	github.com/prometheus/procfs v0.15.1 // indirect
  	github.com/rivo/uniseg v0.2.0 // indirect
 +	github.com/russross/blackfriday/v2 v2.1.0 // indirect
- 	github.com/stretchr/testify v1.9.0 // indirect
  	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
  	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
+ 	go.etcd.io/etcd/raft/v3 v3.5.6 // indirect
 @@ -102,4 +104,5 @@ require (
- 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240604185151-ef581f913117 // indirect
+ 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240701130421-f6361c86f094 // indirect
  	google.golang.org/grpc v1.66.3 // indirect
  	google.golang.org/protobuf v1.35.1 // indirect
 +	gopkg.in/yaml.v3 v3.0.1 // indirect
  )
 diff --git a/vendor.sum b/vendor.sum
-index 204aad33c6cb..7f450e74144e 100644
+index cd64a4b400a4..dd7bd042e3d3 100644
 --- a/vendor.sum
 +++ b/vendor.sum
 @@ -42,6 +42,7 @@ github.com/containerd/log v0.1.0/go.mod h1:VRRf09a7mHDIRezVKTRCrOq78v577GXq3bSa3
@@ -374,10 +374,10 @@ index 204aad33c6cb..7f450e74144e 100644
  github.com/cpuguy83/go-md2man/v2 v2.0.4/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
  github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
  github.com/creack/pty v1.1.21 h1:1/QdRyBaHHJP61QkWMXlOIBfsgdDeeKfK8SYVUWJKf0=
-@@ -249,6 +250,7 @@ github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
+@@ -251,6 +252,7 @@ github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
  github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
- github.com/rogpeppe/go-internal v1.11.0 h1:cWPaGQEPrBb5/AsnsZesgZZ9yb1OQ+GOISoDNXVBh4M=
- github.com/rogpeppe/go-internal v1.11.0/go.mod h1:ddIwULY96R17DhadqLgMfk9H9tvdUzkipdSkR5nkCZA=
+ github.com/rogpeppe/go-internal v1.12.0 h1:exVL4IDcn6na9z1rAb56Vxr+CgyK3nn3O+epU5NdKM8=
+ github.com/rogpeppe/go-internal v1.12.0/go.mod h1:E+RYuTGaKKdloAfM02xzb0FW3Paa99yedzYV+kq4uf4=
 +github.com/russross/blackfriday/v2 v2.1.0 h1:JIOH55/0cWyOuilr9/qlrm0BSXldqnqwMsf35Ld67mk=
  github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
  github.com/sirupsen/logrus v1.0.6/go.mod h1:pMByvHTf9Beacp5x1UXfOR9xyW/9antXMhjMPG0dEzc=
@@ -23179,7 +23179,7 @@ index 000000000000..e88f9c54aecb
 +
 +}
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index 9c7ffb832403..224253dd728a 100644
+index 2a6c2df36893..61bda3f867e9 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
 @@ -29,6 +29,10 @@ github.com/containerd/log
@@ -23201,7 +23201,7 @@ index 9c7ffb832403..224253dd728a 100644
  github.com/docker/cli-docs-tool/annotation
  # github.com/docker/distribution v2.8.3+incompatible
  ## explicit
-@@ -263,12 +268,16 @@ github.com/prometheus/procfs/internal/util
+@@ -267,12 +272,16 @@ github.com/prometheus/procfs/internal/util
  # github.com/rivo/uniseg v0.2.0
  ## explicit; go 1.12
  github.com/rivo/uniseg
@@ -23218,7 +23218,7 @@ index 9c7ffb832403..224253dd728a 100644
  # github.com/spf13/pflag v1.0.5
  ## explicit; go 1.12
  github.com/spf13/pflag
-@@ -519,6 +528,9 @@ google.golang.org/protobuf/types/known/wrapperspb
+@@ -527,6 +536,9 @@ google.golang.org/protobuf/types/known/wrapperspb
  # gopkg.in/yaml.v2 v2.4.0
  ## explicit; go 1.15
  gopkg.in/yaml.v2
@@ -23229,5 +23229,5 @@ index 9c7ffb832403..224253dd728a 100644
  ## explicit; go 1.17
  gotest.tools/v3/assert
 -- 
-2.47.1
+2.48.1
 
