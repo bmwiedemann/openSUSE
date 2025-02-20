@@ -138,4 +138,19 @@
   + Detect COSMIC protocols properly</comment>
     <requestid>1232893</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c6aec2efddb4cc1290ff7221de3c49e7</srcmd5>
+    <version>1.6.0</version>
+    <time>1740065855</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.6.0
+  + Update upstream protocol list to v1.41
+  + Add COSMIC A11y and AT-SPI protocols
+  + Add ChromeOS aura-output-management protocol
+  + Add Gamescope reshade protocol
+  + Add Treeland protocols
+  + Correct identifiers of KDE virtual desktop and external brightness protocols
+  + Expand default window width to show all tabs</comment>
+    <requestid>1247080</requestid>
+  </revision>
 </revisionlist>

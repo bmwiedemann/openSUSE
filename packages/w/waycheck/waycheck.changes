@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 19 12:16:34 UTC 2025 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 1.6.0
+  + Update upstream protocol list to v1.41
+  + Add COSMIC A11y and AT-SPI protocols
+  + Add ChromeOS aura-output-management protocol
+  + Add Gamescope reshade protocol
+  + Add Treeland protocols
+  + Correct identifiers of KDE virtual desktop and external brightness protocols
+  + Expand default window width to show all tabs
+
+-------------------------------------------------------------------
 Fri Dec 20 21:58:31 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 1.5.0

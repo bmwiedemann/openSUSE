@@ -19,7 +19,7 @@
 %global qt6_minver 6.5
 
 Name:           waycheck
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        GUI that displays protocols implemented by a Wayland compositor
 
@@ -62,7 +62,7 @@ export CXX=g++-11
 
 
 %files
-%license LICENSE.txt
+%license LICENSES/*
 %doc README.md
 %{_bindir}/waycheck
 %{_datadir}/applications/dev.serebit.Waycheck.desktop
