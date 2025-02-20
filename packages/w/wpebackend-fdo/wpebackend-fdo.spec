@@ -1,7 +1,7 @@
 #
 # spec file for package wpebackend-fdo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,15 @@
 %define sover 1
 
 Name:           wpebackend-fdo
-Version:        1.14.2
+Version:        1.14.3
 Release:        0
 Summary:        A WPE backend designed for Linux desktop systems
 License:        BSD-2-Clause
 URL:            https://github.com/Igalia/WPEBackend-fdo
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM wpebackend-fdo-gcc15.patch -- https://github.com/Igalia/WPEBackend-fdo/commit/923ebd634949c11444fbdb6b1ee9ac62ac538ec7
+Patch0:         wpebackend-fdo-gcc15.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  meson >= 0.49
