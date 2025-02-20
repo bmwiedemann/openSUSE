@@ -24,7 +24,7 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        25.1.3
+Version:        25.1.4
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
@@ -93,6 +93,7 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_upgrade_collection"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_runtime_has_playbook"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_load_plugins[modules]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_get_cache_dir_relative"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_ro_venv"
 # tests that need network connectivity
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[0]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[1]"

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 19 05:49:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.1.4:
+  * Bugfixes
+    - Add site-package to the end of collection inclusion path
+      (#470) @ssbarnea
+
+-------------------------------------------------------------------
 Tue Feb 18 12:31:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.1.3:
