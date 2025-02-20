@@ -1,6 +1,6 @@
 --- pppd/auth.c.orig
 +++ pppd/auth.c
-@@ -2184,9 +2184,10 @@ check_access(FILE *f, char *filename)
+@@ -2202,9 +2202,10 @@ check_access(FILE *f, char *filename)
  
      if (fstat(fileno(f), &sbuf) < 0) {
  	warn("cannot stat secret file %s: %m", filename);
@@ -16,7 +16,7 @@
  
 --- pppd/lcp.c.orig
 +++ pppd/lcp.c
-@@ -2243,7 +2243,7 @@ lcp_received_echo_reply (fsm *f, int id,
+@@ -2330,7 +2330,7 @@ lcp_received_echo_reply (fsm *f, int id,
      if (lcp_gotoptions[f->unit].neg_magicnumber
  	&& magic == lcp_gotoptions[f->unit].magicnumber) {
  	warn("appear to have received our own echo-reply!");
@@ -24,10 +24,10 @@
 +	/* M$-Software did get this wrong so we also accept those packets. */
      }
  
-     /* Reset the number of outstanding echo frames */
+     if (lcp_rtt_file_fd && len >= 16) {
 --- pppd/pppd-private.h.orig
 +++ pppd/pppd-private.h
-@@ -545,15 +545,7 @@ int parse_dotted_ip(char *, u_int32_t *)
+@@ -552,15 +552,7 @@ int parse_dotted_ip(char *, u_int32_t *)
  #define DEBUGCHAP	1
  #endif
  

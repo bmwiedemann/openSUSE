@@ -1,7 +1,7 @@
 #
 # spec file for package ppp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _group dialout
 Name:           ppp
-Version:        2.5.0
+Version:        2.5.2
 Release:        0
 Summary:        The Point to Point Protocol for Linux
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -50,14 +50,10 @@ Source17:       %{name}.keyring
 Patch0:         ppp-smpppd.patch
 # PATCH-FIX-UPSTREAM ppp-var_run_resolv_conf.patch -- Move resolv.conf to /var/run
 Patch3:         ppp-var_run_resolv_conf.patch
-# PATCH-FIX-UPSTREAM ppp-fix-bashisms.patch -- Remove bashism from posix shell interpreted script https://github.com/ppp-project/ppp/issues/348
-Patch4:         ppp-fix-bashisms.patch
 # PATCH-FIX-UPSTREAM ppp-fork-fix.patch -- fix safe_fork to not close needed file descriptors
 Patch5:         ppp-fork-fix.patch
 # misc tiny stuff
 Patch6:         ppp-misc.patch
-Patch7:         ppp-mkdir-run.patch
-Patch8:         ppp-pidfiles.patch
 
 # Of cause any other compatible libc would work, like musl, but 2.24 required for SOL_NETLINK
 BuildRequires:  glibc-devel >= 2.24
@@ -106,7 +102,6 @@ you can disable unnecessary or disable everything.
 %prep
 %autosetup -p0
 
-sed -i -e '1s/local\///' scripts/secure-card
 find scripts -type f | xargs chmod a-x
 find -type f -name '*.orig' | xargs rm -f
 
@@ -123,6 +118,9 @@ find -type f -name '*.orig' | xargs rm -f
 
 %install
 make install DESTDIR=%{buildroot}
+for f in %{buildroot}%{_sysconfdir}/ppp/*.example; do
+    mv $f ${f%.example}
+done
 install -dm 750 %{buildroot}%{_sysconfdir}/ppp
 install -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/ppp/options
 install -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/ppp/filters

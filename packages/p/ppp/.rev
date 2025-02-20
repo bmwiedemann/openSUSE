@@ -467,4 +467,41 @@ GPL-2.0 matches found in ppp-2.4.5/include/linux/if_pppol2tp.h             (forw
     <comment></comment>
     <requestid>1187482</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>438e34f2f52d98935381706c00b30654</srcmd5>
+    <version>2.5.2</version>
+    <time>1740065249</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.5.2:
+  * Some old and probably unused code has been removed, notably
+    the pppgetpass program and the passprompt plugin, and some of
+    the files in the sample and scripts directories.
+  * If a remote number has been set, it is available to scripts in
+    the REMOTENUMBER environment variable.
+  * Various other bug fixes and minor enhancements.
+- Obsoleted patches:
+  * ppp-fix-bashisms.patch
+
+- Update to version 2.5.1:
+  * Pppd can now measure and log the round-trip time (RTT) of LCP
+    echo-requests and record them in a binary file structured as a
+    circular buffer.  Other programs or scripts can examine the
+    file and provide real-time statistics on link latency.
+    This is enabled by a new &quot;lcp-rtt-file&quot; option.
+  * New scripts net-init, net-pre-up and net-down are executed in
+    the process of bringing the network interface up and down.
+    They provide additional, more deterministic ways for pppd to
+    interact with the rest of the networking configuration.
+  * New options have been added to allow the system administrator
+    to set the location of various scripts and secrets files.
+  * A new &quot;noresolvconf&quot; option tells pppd not to write the
+    /etc/ppp/resolv.conf file; DNS server addresses, if obtained
+    from the peer, are still passed to scripts in the environment.
+  * Pppd will now create the directory for the TDB connection
+    database if it doesn't already exist.
+- Obsoleted patches:
+  * ppp-mkdir-run.patch
+  * ppp-pidfiles.patch</comment>
+    <requestid>1247103</requestid>
+  </revision>
 </revisionlist>

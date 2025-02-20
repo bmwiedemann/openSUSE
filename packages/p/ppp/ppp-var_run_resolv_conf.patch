@@ -22,11 +22,14 @@ Move the resolv.conf written by pppd to /var/run [bnc#401648]
  
 --- pppd/ipcp.c.orig
 +++ pppd/ipcp.c
-@@ -2151,10 +2151,13 @@ static void
+@@ -2155,13 +2155,16 @@ static void
  create_resolv(u_int32_t peerdns1, u_int32_t peerdns2)
  {
      FILE *f;
 +    char rcfilename[PATH_MAX];
+ 
+     if (noresolvconf)
+ 	return;
  
 -    f = fopen(PPP_PATH_RESOLV, "w");
 +    slprintf(rcfilename, sizeof(rcfilename), "%s.%s", PPP_PATH_RESOLV, ifname);
@@ -38,7 +41,7 @@ Move the resolv.conf written by pppd to /var/run [bnc#401648]
  	return;
      }
  
-@@ -2165,7 +2168,7 @@ create_resolv(u_int32_t peerdns1, u_int3
+@@ -2172,7 +2175,7 @@ create_resolv(u_int32_t peerdns1, u_int3
  	fprintf(f, "nameserver %s\n", ip_ntoa(peerdns2));
  
      if (ferror(f))
@@ -54,20 +57,18 @@ Move the resolv.conf written by pppd to /var/run [bnc#401648]
  #define PPP_PATH_TTYOPT         PPP_PATH_CONFDIR "/options."
  #define PPP_PATH_PEERFILES      PPP_PATH_CONFDIR "/peers/"
 -#define PPP_PATH_RESOLV         PPP_PATH_CONFDIR "/resolv.conf"
-+#define PPP_PATH_RESOLV         PPP_PATH_VARRUN  "/ppp_resolv.conf"
++#define PPP_PATH_RESOLV         PPP_PATH_VARRUN  "/ppp/resolv.conf"
  
- #define PPP_PATH_CONNERRS       PPP_PATH_VARLOG  "/connect-errors"
- 
+ #define PPP_PATH_NET_INIT	PPP_PATH_CONFDIR "/net-init"
+ #define PPP_PATH_NET_PREUP	PPP_PATH_CONFDIR "/net-pre-up"
 --- pppd/pppd.8.orig
 +++ pppd/pppd.8
-@@ -1189,8 +1189,8 @@ Ask the peer for up to 2 DNS server addr
+@@ -1199,7 +1199,7 @@ Ask the peer for up to 2 DNS server addr
  by the peer (if any) are passed to the /etc/ppp/ip\-up script in the
  environment variables DNS1 and DNS2, and the environment variable
  USEPEERDNS will be set to 1.  In addition, pppd will create an
 -/etc/ppp/resolv.conf file containing one or two nameserver lines with
--the address(es) supplied by the peer.
-+/run/ppp_resolv.conf.$INTERFACE file containing one or two nameserver
-+lines with the address(es) supplied by the peer.
++/run/ppp/resolv.conf.$INTERFACE file containing one or two nameserver lines with
+ the address(es) supplied by the peer (unless the \fInoresolvconf\fR
+ option is given).
  .TP
- .B usepeerwins
- Ask the peer for up to 2 WINS server addresses.  The addresses supplied
