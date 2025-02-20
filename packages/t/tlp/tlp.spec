@@ -25,7 +25,7 @@
 %endif
 %{!?_udevrulesdir: %define _udevrulesdir %{_udevdir}/rules.d}
 Name:           tlp
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Tools to save battery power on laptops
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
