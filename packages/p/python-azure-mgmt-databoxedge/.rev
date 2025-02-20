@@ -80,4 +80,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173287</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>91d0bea2d67815cd6ee42dd7dec45daa</srcmd5>
+    <version>2.0.0</version>
+    <time>1740066121</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove temporary version override
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update files matched in %files section
+- Update Requires from setup.py (forwarded request 1247367 from glaubitz)</comment>
+    <requestid>1247368</requestid>
+  </revision>
 </revisionlist>
