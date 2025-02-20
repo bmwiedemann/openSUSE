@@ -374,4 +374,15 @@
     <comment></comment>
     <requestid>1235120</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>88e517607ae8c12098692c81257676c2</srcmd5>
+    <version>8.13.55</version>
+    <time>1740069591</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1247389 from glaubitz
+
+- Update to 8.13.55
+    * Merge upstream 8.13.55 phonenumber updates</comment>
+    <requestid>1247411</requestid>
+  </revision>
 </revisionlist>
