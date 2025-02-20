@@ -388,4 +388,16 @@
   * Add utils.h to dist_noinst_HEADERS</comment>
     <requestid>1229784</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>184bfc1e58a9d46db50d8d466fdee6f6</srcmd5>
+    <version>1.20.0+git.20250104</version>
+    <time>1740065246</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.20.0+git.20250104:
+  * Add CHAP SHA3-256 support
+  * Add support for CHAP with SHA-256
+  * Add support for CHAP using SHA1
+  * Don't use inet_ntoa, it is deprecated</comment>
+    <requestid>1247082</requestid>
+  </revision>
 </revisionlist>

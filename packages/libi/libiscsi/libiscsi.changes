@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:08:14 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.20.0+git.20250104:
+  * Add CHAP SHA3-256 support
+  * Add support for CHAP with SHA-256
+  * Add support for CHAP using SHA1
+  * Don't use inet_ntoa, it is deprecated
+
+-------------------------------------------------------------------
 Tue Dec 10 13:25:26 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.20.0+git.20241207:
