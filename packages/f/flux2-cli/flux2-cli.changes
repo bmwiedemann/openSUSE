@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Feb 20 15:03:56 UTC 2025 - rombert@apache.org
+
+- Update to version 2.5.0:
+  * Update kubectl in flux-cli image
+  * Update flux-cli image
+  * Update Kubernetes min supported version to 1.30
+  * Update integration tests dependencies for Flux 2.5
+  * Update toolkit components
+  * [RFC-007] Flux cmd support for GitHub provider: This commit includes the following changes -
+  * Update toolkit components
+  * build(deps): bump github.com/distribution/distribution/v3
+  * Upgrade pkg/runtime
+  * Update conformance test suite
+  * build(deps): bump the ci group across 1 directory with 13 updates
+  * Align skipping of resources in flux diff to kustomize-controller
+  * Update dependencies
+  * Clarify expression evaluation logic
+  * Apply suggestions from code review
+  * Explain the evaluation logic based on conditions
+  * Add ClusterAPI example to RFC
+  * Add `SealedSecret` example to RFC
+  * Add Custom Health Check Library to RFC
+  * Rework the custom health check spec
+  * Add RFC - Custom Health Checks for Kustomization using Common Expression Language(CEL)
+  * handle len(args) < 1  case
+  * pass args to enable more detailed error message
+  * fix golden file
+  * Improve "flux resume" error message on non-existent object
+  * Fix create command always using imageRepositoryType
+  * Add OpenShift 4.16 & 4.17 to conformance testing
+  * Add RFC 0008 - Custom Event Metadata from Annotations
+  * Make `flux debug hr` single flag selection required
+  * Add links to status docs in `flux debug` commands
+  * Add name completion to debug commands
+  * Implement `flux debug kustomization` command
+  * Add missing copyright headers
+  * Add preview note to `debug hr`
+  * Update dependencies to Kubernetes 1.32.0 and Go 1.23.0
+  * Run conformance tests for Kubernetes 1.32.0
+  * Implement `flux debug helmrelease` command
+  * workflows: Use setup-terraform to install latest
+  * Update dependencies
+  * build(deps): bump the ci group across 1 directory with 11 updates
+  * fix misplaced quotes
+  * fix: skip remote Kustomizations on recursive diff
+  * docs: Mention Flux upgrade guide in release notes
+  * fix: error message for missing kind
+  * Update conformance.yaml
+
+-------------------------------------------------------------------
 Wed Oct 02 06:44:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.4.0:
