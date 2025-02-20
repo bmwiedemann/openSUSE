@@ -326,4 +326,30 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
 - Disable LLVM JIT on loongarch64</comment>
     <requestid>1245713</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8c3ac04d8cd35c40999b3f445b6e7274</srcmd5>
+    <version>14.17</version>
+    <time>1740077206</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 14.17:
+  * Improve behavior of libpq's quoting functions:
+    The changes made for CVE-2025-1094 had one serious oversight:
+    PQescapeLiteral() and PQescapeIdentifier() failed to honor
+    their string length parameter, instead always reading to the
+    input string's trailing null. This resulted in including
+    unwanted text in the output, if the caller intended to
+    truncate the string via the length parameter. With very bad
+    luck it could cause a crash due to reading off the end of
+    memory.
+    In addition, modify all these quoting functions so that when
+    invalid encoding is detected, an invalid sequence is
+    substituted for just the first byte of the presumed
+    character, not all of it. This reduces the risk of problems
+    if a calling application performs additional processing on
+    the quoted string.
+  * Fix small memory leak in pg_createsubscriber.
+  * https://www.postgresql.org/docs/release/14.17/
+  * https://www.postgresql.org/about/news/p-3018/</comment>
+    <requestid>1247460</requestid>
+  </revision>
 </revisionlist>
