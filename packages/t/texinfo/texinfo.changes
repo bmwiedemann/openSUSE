@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Fri Feb  2 13:05:43 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 7.1 (18 October 2023)
+  * Language
+   . new generic definition commands, @defblock, @defline and @deftypeline,
+     for definitions without automatic index entries
+   . new @linemacro facility eases use of generic definition commands
+   . new command @link creates plain links (supported output formats only)
+   . @cartouche takes an argument to specify the cartouche title
+   . you can use the new commands @nodedescription and @nodedescriptionblock
+     to give text to be used in menu descriptions in Info and HTML output
+  * texi2any
+   . @itemx at the beginning of a @table is now an error, not a warning
+   . better validity checking of deeply nested commands
+   . check that @set and @clear only appear at the start of a line
+   . warn about missing menu entries even if CHECK_NORMAL_MENU_STRUCTURE is
+     not set.  you can turn this off by setting CHECK_MISSING_MENU_ENTRY to 0.
+   . no longer use --enable-encoding and --disable-encoding to determine
+     whether to output encoded characters (instead of entities or commands)
+     for HTML, XML, DocBook and LaTeX; instead, use the value of the
+     OUTPUT_CHARACTERS customization variable.
+   . stricter checks on input encoding, in particular more warnings and
+     errors with malformed UTF-8
+   . support any input file encoding if support exists in the operating
+     system, not just a selected list of encodings
+   . resolve an alias referring to another alias at definition time
+   . internally, use "source marks" to keep all Texinfo source information that
+     is not in the final tree (location of macros, values and included files
+     expansion, @if* blocks, DEL comment, and @ protecting end of line on @def*
+     lines)
+   . HTML output:
+      . format @subentry and index entries with @seealso or @seeentry in a more
+        similar way to printed output
+      . output @shortcontents before @contents by default
+      . omit colons after index entries by default.  this can still be
+        configured with INDEX_ENTRY_COLON.
+      . add @example syntax highlighting as a texi2any extension
+      . no more capitalization of @sc argument in HTML Cross-references
+      . change @point expansion to U+22C6 in HTML Cross-references
+      . if a @node is not associated with a sectioning command but is
+        followed by a heading command not usually associated to nodes
+        such as @heading and this command appears before other formatted
+        content, the heading command is assumed to supply the node heading.
+        you can customize this with USE_NEXT_HEADING_FOR_LONE_NODE.
+   . Info output:
+      . new variable ASCII_DASHES_AND_QUOTES, on by default,
+        outputs ASCII characters for literal quote or hyphen characters
+        in source, rather than UTF-8.  this makes it easier to search
+        Info files.
+      . new ASCII_GLYPH variable for using ASCII renditions for glyph
+        commands (like @bullet)
+      . ASCII_PUNCTUATION still includes the effect of these new variables.
+      . new variables AUTO_MENU_DESCRIPTION_ALIGN_COLUMN and AUTO_MENU_MAX_WIDTH
+        control the format of descriptions in generated menus
+   . XML output:
+      . place menu leading text and menu separators in elements instead
+        of attributes
+  * texi2dvi
+   . macro expansion with texi2any requires at least version 5.0 (only
+     happens with --expand option or with very old texinfo.tex)
+  * texinfo.tex
+   . in @code, ` and ' output by default with backtick and undirected
+     single quote glyphs in the typewriter font.  you can still configure
+     this using the @codequoteundirected/@codequotebacktick commands.
+   . do not insert a space for @ def line continuation, matching the behavior
+     of texi2any
+   . align section titles in table of contents when more than 10 sections
+   . microtype is off by default, for speed
+   . page headings generation is no longer linked to the @titlepage command
+  * info
+   . when going Up, position cursor on menu entry for current node
+   . allow mouse scrolling support regardless of termcap entries.  this
+     supports some more xterm configurations.
+   . do not use "/index" as a possible file extension for Info files
+  * texi2any
+    . fix performance regression when Perl binary extension (XS) modules
+      are not being used (e.g. with TEXINFO_XS=omit)
+  * info
+    . further fix of recoding of UTF-8 files to ASCII to avoid text
+      disappearing from nodes
+    . avoid possible freeze at start of a file with `-v nodeline=pointers'
+  * texi2any
+    . do not distribute architecture-dependent files
+    . build fixed on OpenIndiana 11
+  * info
+    . further fix of recoding of UTF-8 files to ASCII
+    . fix check for presence of man pages on Solaris
+  * install-info
+    . fix build by avoiding function name clash on some platforms
+    . compiler warning re strncat silenced
+  * texi2any
+    . avoid crashes on empty @image argument and other potential crashes
+      (with "Can't use an undefined value as an ARRAY reference" message)
+    . avoid hang on @ref command inside section command
+  * info
+    . fix recoding of UTF-8 files to ASCII when run in C locale
+  * js
+    . index search fixed for new HTML output
+    . some obsolete files removed from distribution
+- Port patch texinfo-zlib.patch
+- Use libzio 1.09 to support compressed 'dir' data base files
+
+-------------------------------------------------------------------
 Sun Mar 26 19:52:00 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - texinfo 7.0.3:

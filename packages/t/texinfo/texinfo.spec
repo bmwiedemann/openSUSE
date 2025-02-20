@@ -1,7 +1,7 @@
 #
 # spec file for package texinfo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # perl modules are not installed in global path
 %global __provides_exclude ^(libtool|perl)\\(
 Name:           texinfo
-Version:        7.0.3
+Version:        7.1
 Release:        0
 Summary:        Tools for creating documentation from texinfo sources
 License:        GPL-3.0-or-later
@@ -34,13 +34,13 @@ BuildRequires:  automake
 BuildRequires:  glibc-locale
 BuildRequires:  help2man
 BuildRequires:  libbz2-devel
-BuildRequires:  libzio-devel
+BuildRequires:  libzio-devel >= 1.09
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
 BuildRequires:  perl-Text-Unidecode
-BuildRequires:  perl-gettext
 BuildRequires:  perl-macros
 BuildRequires:  zlib-devel
+BuildRequires:  perl(Locale::gettext)
 Requires:       makeinfo = %{version}
 Requires:       perl
 Requires:       perl-Text-Unidecode
@@ -167,7 +167,11 @@ end
 --
 }
 
+%if 0%{?suse_version} >= 1699
+%transfiletriggerin -n info -p <lua> -- %{_infodir}
+%else
 %filetriggerin -n info -p <lua> -- %{_infodir}
+%endif
 %trigger_functions
 file = rpm.next_file()
 while file do
@@ -180,7 +184,11 @@ while file do
     file = rpm.next_file()
 end
 
+%if 0%{?suse_version} >= 1699
+%transfiletriggerun -n info -p <lua> -- %{_infodir}
+%else
 %filetriggerun -n info -p <lua> -- %{_infodir}
+%endif
 %trigger_functions
 file = rpm.next_file()
 while file do

@@ -1,6 +1,21 @@
-diff -Nur texinfo-6.8/install-info/install-info.c new/install-info/install-info.c
---- texinfo-6.8/install-info/install-info.c	2021-06-15 22:02:27.000000000 +0200
-+++ new/install-info/install-info.c	2022-04-25 12:38:13.573744683 +0200
+---
+ install-info/Makefile.in    |    2 -
+ install-info/install-info.c |   76 +++++++++++++++++++++++++++++++-------------
+ 2 files changed, 56 insertions(+), 22 deletions(-)
+
+--- a/install-info/Makefile.in
++++ b/install-info/Makefile.in	2024-01-31 13:40:04.106538986 +0000
+@@ -263,7 +263,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
+ PROGRAMS = $(bin_PROGRAMS)
+ am_ginstall_info_OBJECTS = install-info.$(OBJEXT)
+ ginstall_info_OBJECTS = $(am_ginstall_info_OBJECTS)
+-ginstall_info_LDADD = $(LDADD)
++ginstall_info_LDADD = $(LDADD) -lzio
+ am__DEPENDENCIES_1 =
+ ginstall_info_DEPENDENCIES = $(top_builddir)/gnulib/lib/libgnu.a \
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+--- a/install-info/install-info.c
++++ b/install-info/install-info.c	2024-01-31 14:05:20.746208687 +0000
 @@ -19,6 +19,7 @@
  #include <getopt.h>
  #include <regex.h>
@@ -9,84 +24,113 @@ diff -Nur texinfo-6.8/install-info/install-info.c new/install-info/install-info.
  
  #define TAB_WIDTH 8
  
-@@ -852,22 +853,33 @@
+@@ -823,25 +824,43 @@ determine_file_type:
  
    if (*compression_program)
      {
 -      /* Redirect stdin to the file and fork the decompression process
 -         reading from stdin.  This allows shell metacharacters in filenames. */
 -      char *command = concat (*compression_program, " -d", "");
--
+-      FILE *f2;
++      FILE *fz = f;
+ 
        if (fclose (f) < 0)
          return 0;
--      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+-      f2 = freopen (*opened_filename, FOPEN_RBIN, stdin);
 -      if (!f)
 -        return 0;
 -      f = popen (command, "r");
+-      fclose (f2);
 -      if (!f)
--        {
 +
 +      if (**compression_program == 'g' || **compression_program == 'z')
-+        f = fzopen (*opened_filename, "rg");
++        fz = fzopen (*opened_filename, "rg");
 +      if (**compression_program == 'b')
-+        f = fzopen (*opened_filename, "rb");
++        fz = fzopen (*opened_filename, "rb");
 +      if (**compression_program == 'Z')
-+        f = fzopen (*opened_filename, "rZ");
++        fz = fzopen (*opened_filename, "rZ");
 +      if (**compression_program == 'l')
-+        f = fzopen (*opened_filename, "rl");
++        fz = fzopen (*opened_filename, "rl");
 +      if (**compression_program == 'x')
-+        f = fzopen (*opened_filename, "rx");
-+      if (!f) {
-+        /* Redirect stdin to the file and fork the decompression process
-+           reading from stdin.  This allows shell metacharacters in filenames. */
-+        char *command = concat (*compression_program, " -d", "");
-+        f = freopen (*opened_filename, FOPEN_RBIN, stdin);
-+        if (!f)
-+          return 0;
-+        f = popen (command, "r");
-+        if (!f) {
-           /* Used for error message in calling code. */
-           *opened_filename = command;
-           return 0;
-         }
-+      }
++        fz = fzopen (*opened_filename, "rx");
++      if (!fz)
+         {
+-          /* Used for error message in calling code. */
+-          *opened_filename = command;
+-          return 0;
+-        }
+-      free (command);
++          /* Redirect stdin to the file and fork the decompression process
++             reading from stdin.  This allows shell metacharacters in filenames. */
++          char *command = concat (*compression_program, " -d", "");
++          FILE *f2;
++
++          f2 = freopen (*opened_filename, FOPEN_RBIN, stdin);
++          if (!f)
++            return 0;
++          f = popen (command, "r");
++          fclose (f2);
++          if (!f)
++            {
++              /* Used for error message in calling code. */
++              *opened_filename = command;
++              return 0;
++            }
++          free (command);
++        } 
++      else
++        f = fz;
      }
    else
      {
-@@ -957,8 +969,22 @@
+@@ -932,7 +951,7 @@ output_dirfile (char *dirfile, int dir_n
+   FILE *output;
+   int tempfile;
+   static char *tempname;
+-  int dirfile_len;
++  int dirfile_len, lzio;
+   mode_t um;
  
+   /* Create temporary file in the same directory as dirfile.  This ensures
+@@ -957,13 +976,28 @@ output_dirfile (char *dirfile, int dir_n
+       pfatal_with_name (tempname);
+     }
+ 
++  lzio = 1;
    if (compression_program)
      {
--      char *command = concat (compression_program, ">", dirfile);
+-      char *command;
+       close (tempfile);
+-      command = concat (compression_program, ">", tempname);
 -      output = popen (command, "w");
+-      free (command);
 +      output = NULL;
 +      if (*compression_program == 'g' || *compression_program == 'z')
-+        output = fzopen (dirfile, "wg");
++        output = fzopen (tempname, "wg");
 +      if (*compression_program == 'b')
-+        output = fzopen (dirfile, "wb");
++        output = fzopen (tempname, "wb");
 +      if (*compression_program == 'Z')
-+        output = fzopen (dirfile, "wZ");
++        output = fzopen (tempname, "wZ");
 +      if (*compression_program == 'l')
-+        output = fzopen (dirfile, "wl");
++        output = fzopen (tempname, "wl");
 +      if (*compression_program == 'x')
-+        output = fzopen (dirfile, "wx");
++        output = fzopen (tempname, "wx");
 +      if (!output)
-+      {
-+        char *command = concat (compression_program, ">", dirfile);
-+        output = popen (command, "w");
-+      }
++        {
++          char *command = concat (compression_program, ">", tempname);
++          output = popen (command, "w");
++          free (command);
++          lzio = 0;
++        }
      }
    else
-     output = fopen (dirfile, "w");
-diff -Nur texinfo-6.8/install-info/Makefile.in new/install-info/Makefile.in
---- texinfo-6.8/install-info/Makefile.in	2021-07-03 11:13:01.000000000 +0200
-+++ new/install-info/Makefile.in	2022-04-25 12:30:06.593744741 +0200
-@@ -239,7 +239,7 @@
- PROGRAMS = $(bin_PROGRAMS)
- am_ginstall_info_OBJECTS = install-info.$(OBJEXT)
- ginstall_info_OBJECTS = $(am_ginstall_info_OBJECTS)
--ginstall_info_LDADD = $(LDADD)
-+ginstall_info_LDADD = $(LDADD) -lzio
- am__DEPENDENCIES_1 =
- ginstall_info_DEPENDENCIES = $(top_builddir)/gnulib/lib/libgnu.a \
- 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+     output = fdopen (tempfile, "w");
+@@ -1076,7 +1110,7 @@ output_dirfile (char *dirfile, int dir_n
+   /* Some systems, such as MS-DOS, simulate pipes with temporary files.
+      On those systems, the compressor actually gets run inside pclose,
+      so we must call pclose.  */
+-  if (compression_program)
++  if (lzio == 0)
+     pclose (output);
+   else
+     fclose (output);
