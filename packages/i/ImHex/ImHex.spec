@@ -1,7 +1,7 @@
 #
 # spec file for package ImHex
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _plutovg_version 0.0.4
 
-%define sover 1_37_0
+%define sover 1_37_1
 Name:           ImHex
-Version:        1.37.0
+Version:        1.37.1
 Release:        0
 Summary:        A Hex Editor for Reverse Engineers, Programmers
 License:        GPL-2.0-only
@@ -28,16 +29,16 @@ URL:            https://imhex.werwolv.net/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        https://github.com/sammycage/plutovg/archive/refs/tags/v%{_plutovg_version}.tar.gz#/plutovg-%{_plutovg_version}.tar.gz
 # Patch to workaround libLLVMDemangle.so() not found which may be a SUSE issue
-Source99:        %{name}-rpmlintrc
+Source99:       %{name}-rpmlintrc
 Patch0:         ImHex-llvm_demangler-linking.patch
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  file-devel >= 5.39
 BuildRequires:  gcc-c++
-BuildRequires:  fdupes
+BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  llvm-devel
 BuildRequires:  mbedtls-devel
-BuildRequires:  git-core
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
@@ -58,8 +59,8 @@ Provides:       bundled(capstone) = 5.0.0-rc2
 Provides:       bundled(gnulib)
 Provides:       bundled(imgui)
 Provides:       bundled(intervaltree)
-Provides:       bundled(libromfs)
 Provides:       bundled(libpl)
+Provides:       bundled(libromfs)
 Provides:       bundled(microtar)
 Provides:       bundled(plutovg) = %{_plutovg_version}
 
@@ -138,6 +139,7 @@ echo %{version} > VERSION
 %{_datadir}/mime/packages/imhex.xml
 %{_datadir}/pixmaps/imhex.svg
 %{_datadir}/applications/imhex.desktop
+
 %files -n libimhex%{sover}
 %{_libdir}/libimhex.so.%{version}
 
