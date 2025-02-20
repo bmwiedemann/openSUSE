@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 18 16:21:23 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to release 3.19.1:
+  * Improve portability of makefiles and configure scripts.
+  * Fix a bug in the concat_ws() function, introduced in version
+    3.44.0, that could lead to a memory error if the separator
+    string is very large (hundreds of megabytes).
+  * Enhanced the SQLITE_DBCONFIG_LOOKASIDE interface to make it
+    more robust against misuse.
+
+-------------------------------------------------------------------
 Thu Feb  6 17:58:46 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Update to release 3.49.0:
