@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:46:15 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.1
+- Changes since 6.3.0:
+  * update version for new release
+  * KeyboardBrightnessController: Drop isValid() check for upower interface (kde#486067)
+  * applets/battery: Fix navigation keyboard cycle for the Up key (kde#489099)
+  * kcm: Set buddyFor mnemonics
+  * applets/battery: Fix Space Key on inhibition buttons
+
+-------------------------------------------------------------------
 Thu Feb  6 13:47:21 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.0:
