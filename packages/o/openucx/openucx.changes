@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Wed Feb 19 15:47:23 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to ucx 1.18.0
+  - UCP
+    - Enabled using CUDA staging buffers for pipeline protocols by default
+    - Added endpoint reconfiguration support for non-reused p2p scenarios
+    - Enabled non-cacheable memory domains, activated for gdr_copy
+    - Added user_data parameter to ucp_ep_query
+    - Added support for host memory pipeline through CUDA buffers for rendezvous protocol
+    - Added global VA infrastructure and memory region in absence of error handling
+    - Made protocol performance node names more informative
+    - Enforced always running on the same thread in single thread mode
+    - Multiple improvements in protocols selection infrastructure
+    - Added UCP_MEM_MAP_LOCK API flag to enforce locked memory mapping
+    - Allowed up-to 64 endpoint lanes for systems with many transports or devices
+    - Added usage tracker to worker
+    - Improved various logging messages
+    - Fixed stack overflow in exported rkey unpack
+    - Removed extra remote-cpu overhead from protocol estimation for zcopy
+    - Fixed performance estimation for rndv pipeline protocols
+    - Fixed ATP sending by picking the correct lane
+    - Fixed missing reg_id on memh creation
+    - Fixed repeated invalidations by retaining existing access flags
+    - Fixed abort reason propagation for rendezvous RTR mtype
+    - Do not check transport availability if it is disabled by UCX_TLS environment variable
+    - Fixed wrong flag being used for checking BCOPY capability
+    - Fixed sending too many ATPs for small messages
+    - Enforced 16 bits size for Active Messages identifiers
+    - Fixed unnecessary status check for emulated AMO
+    - Fixed more than one fragment sending in rendezvous pipeline
+    - Fixed crash by using biggest max frag across all lanes
+    - Fixed missing memory handle flags by copying from parent to child
+    - Fixed worker interface activate count
+    - Fixed flush requests by replacing ATP/flush lane map with lane indexes
+    - Fixed lost uct_flags when merging memory regions
+  - UCT
+    - Fixed memory domain UCT flags description
+  - RDMA CORE (IB, ROCE, etc.)
+    - Added environment variable to manage DC initiator capacity
+    - Added DC dcs_hybrid policy
+    - Reduced MLX5/DV stack size consumption
+    - Added ODP support for verbs and mlx5dv
+    - Added support of CUDA managed memory on IB when ODP is available
+    - Added support of Adaptive Routing on RoCE
+    - Enabled use of implicit ODP with relaxed ordering
+    - Improved GPU-Direct detection in IB transport
+    - Increased DC initiator default count to 32 for performance optimization
+    - Added ConnectX-8 device support with DDP
+    - Added support for subnet filter list for RoCE interfaces
+    - Enhanced the error message to provide more details when a connection cannot be
+      established due to unreachable transports
+    - Added IB MLX5 as a separate UCX module with separate RPM sub-package
+    - Added initial support for GGA transport, for fast DPU memory access
+    - Set IB DevX atomic mode based on device capabilities
+    - Removed DC keepalive mechanism, since the keepalive is done on UCP layer
+    - Optimized cross-gVMI memory registration using indirect memory keys cache
+    - Improved various logging messages
+    - Fixed FETCH_ADD remote access error for ODP/KSM case
+    - Fixed missing conditional compilation checks for DM
+    - Fixed IB MD allocation naming typo
+    - Fixed invalid GIDs filter in IB
+    - Fixed flags usage in MLX5 zcopy_post
+    - Do not limit ODP registration retries
+    - Fixed JUCX failures by considering the number of supported completion vectors
+  - UCS
+    - Added support for wildcards in configuration parameter names
+    - Added ASAN protection to several internal data structures
+    - Reduced stack usage in topology detection code
+    - Improved bitmaps configuration parsing with wider bitfield
+    - Added options to set topology distance between devices
+    - Optimized VFS unix socket watch by using user private folder
+    - Added general IP subnet matching infrastructure
+    - Extend array data structure to support user-provided array copy routine
+    - Improved time units description
+    - Fixed a crash by using heap allocation to process expired timers in batch
+    - Fixed allocation issue on memtrack dump
+    - Fixed deletion of the monitored folder in VFS
+    - Fixed unsafe resize for DC initiator array
+    - Fixed function macro invocation to match C standard
+    - Fixed calling async handler on already released resource
+    - Fixed performance by setting higher bandwidth for different NUMA nodes on Grace
+    - Fixed undeclared value error in timer conversion routine
+    - Fixed uninitialized value access in registration cache
+  - UCM
+    - Extend CUDA memory hooks to include memory mapping APIs
+    - Fixed race condition in parsing proc maps
+    - Fixed mremap failure while parsing /proc/self/maps
+  - TCP
+    - Always bind endpoint to interface
+  - Tools
+    - Improved performance by increasing window size for put_bw and add get_bw in ucx_perftest
+    - Added multi-send flag for receive operations in bandwidth benchmarks in ucx_perftest
+    - Improved ucx_perftest uni-directional test with added fence
+    - Detailed ucx_perftest batch section of command-line documentation
+    - Fixed buffer size potential overflow in ucx_perftest
+    - Fixed missing address when packing memory keys on ucx_perftest
+    - Fixed memory leak for endpoint report in ucx_info
+    - Fixed build without openmp in ucx_perftest
+    - Fixed UCT device override on server side on ucx_perftest
+  - Documentation
+    - Added a section regarding adaptive routing on RoCE
+  - Architecture
+    - Added CPU Model for MI300A
+    - Added Fujitsu ARM specific values to ucx.conf
+    - Added AMD Turin support
+    - Added an optimized non-temporal memory copy implementation for AMD CPU
+  - Build
+    - Improved compiler error reporting with added flag
+    - Improved coverity script to allow faster turnaround time
+    - Improved Intel Compiler detection and support
+    - Fixed using correct ASAN version for running tests
+  - Configuration
+    - Used POSIX bourne syntax to check equality
+    - Fixed build failure by using proper flags in compiler.m4
+    - Fixed perftest MAD support default guessing
+  - GO
+    - Added multi-send flag and user memh support in request params
+    - Added serialized thread mode to avoid subtle races between threads
+    - Fixed make distcheck
+  - Packaging
+    - Improved dpkg-buildpackage sample command by explicitly adding mlx5 related arguments
+- Delete UCS-TIME-Add-math.h-to-provide-INFINITY.patch which was merged upstream
+- Refresh openucx-s390x-support.patch due to API changes
+
+-------------------------------------------------------------------
 Sat Sep  7 14:22:20 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Refresh openucx-s390x-support.patch to fix compilation on s390x

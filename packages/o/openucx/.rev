@@ -337,4 +337,41 @@
     <comment></comment>
     <requestid>1199376</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6c571900e8e1105fcc655c087ebf33f0</srcmd5>
+    <version>1.18.0</version>
+    <time>1740065283</time>
+    <user>anag+factory</user>
+    <comment>- Update to ucx 1.18.0
+  - UCP
+    - Enabled using CUDA staging buffers for pipeline protocols by default
+    - Added endpoint reconfiguration support for non-reused p2p scenarios
+    - Enabled non-cacheable memory domains, activated for gdr_copy
+    - Added user_data parameter to ucp_ep_query
+    - Added support for host memory pipeline through CUDA buffers for rendezvous protocol
+    - Added global VA infrastructure and memory region in absence of error handling
+    - Made protocol performance node names more informative
+    - Enforced always running on the same thread in single thread mode
+    - Multiple improvements in protocols selection infrastructure
+    - Added UCP_MEM_MAP_LOCK API flag to enforce locked memory mapping
+    - Allowed up-to 64 endpoint lanes for systems with many transports or devices
+    - Added usage tracker to worker
+    - Improved various logging messages
+    - Fixed stack overflow in exported rkey unpack
+    - Removed extra remote-cpu overhead from protocol estimation for zcopy
+    - Fixed performance estimation for rndv pipeline protocols
+    - Fixed ATP sending by picking the correct lane
+    - Fixed missing reg_id on memh creation
+    - Fixed repeated invalidations by retaining existing access flags
+    - Fixed abort reason propagation for rendezvous RTR mtype
+    - Do not check transport availability if it is disabled by UCX_TLS environment variable
+    - Fixed wrong flag being used for checking BCOPY capability
+    - Fixed sending too many ATPs for small messages
+    - Enforced 16 bits size for Active Messages identifiers
+    - Fixed unnecessary status check for emulated AMO
+    - Fixed more than one fragment sending in rendezvous pipeline
+    - Fixed crash by using biggest max frag across all lanes
+    - Fixed missing memory handle flags by copying from parent to child</comment>
+    <requestid>1247274</requestid>
+  </revision>
 </revisionlist>

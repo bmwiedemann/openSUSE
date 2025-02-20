@@ -1,6 +1,6 @@
-commit 70e243c8a6685a03d5faa65e706d318196ad712b
+commit ba1d7048df80ee535e01335992f70568e2f88c80
 Author: Nicolas Morey <nmorey@suse.com>
-Date:   Wed Jun 26 17:36:58 2024 +0200
+Date:   Wed Feb 19 16:46:33 2025 +0100
 
     openucx s390x support
     
@@ -33,10 +33,10 @@ index e5e66266d695..ef7e4ede93ce 100644
  AS_IF([test "x$bistro_hooks_happy" = "xyes"],
        [AC_DEFINE([UCM_BISTRO_HOOKS], [1], [Enable BISTRO hooks])],
 diff --git src/ucm/Makefile.am src/ucm/Makefile.am
-index fa7a722f2d31..e6df414a4ecb 100644
+index 7866aa0ac13b..2d44e20f124d 100644
 --- src/ucm/Makefile.am
 +++ src/ucm/Makefile.am
-@@ -34,6 +34,7 @@ noinst_HEADERS = \
+@@ -35,6 +35,7 @@ noinst_HEADERS = \
  	bistro/bistro_aarch64.h \
  	bistro/bistro_ppc64.h \
  	bistro/bistro_rv64.h
@@ -45,7 +45,7 @@ index fa7a722f2d31..e6df414a4ecb 100644
  libucm_la_SOURCES = \
  	event/event.c \
 diff --git src/ucm/bistro/bistro.h src/ucm/bistro/bistro.h
-index 8d0b90751676..a0b9d3f064c3 100644
+index fffbe738b116..31859a84b159 100644
 --- src/ucm/bistro/bistro.h
 +++ src/ucm/bistro/bistro.h
 @@ -23,6 +23,8 @@ typedef struct ucm_bistro_restore_point ucm_bistro_restore_point_t;
@@ -91,7 +91,7 @@ index 000000000000..2beb5de54fab
 +
 +#endif
 diff --git src/ucs/Makefile.am src/ucs/Makefile.am
-index 4a05f47b6369..c1cd2fb2cb57 100644
+index 86a469a60bcc..6751bad764b8 100644
 --- src/ucs/Makefile.am
 +++ src/ucs/Makefile.am
 @@ -24,6 +24,7 @@ nobase_dist_libucs_la_HEADERS = \
@@ -140,7 +140,7 @@ index 849647902fab..a328c37e2020 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/bitops.h src/ucs/arch/bitops.h
-index 3e0e530f1336..f887e03ebac0 100644
+index f8e51c45888a..476631d95eb6 100644
 --- src/ucs/arch/bitops.h
 +++ src/ucs/arch/bitops.h
 @@ -23,6 +23,8 @@ BEGIN_C_DECLS
@@ -153,7 +153,7 @@ index 3e0e530f1336..f887e03ebac0 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/cpu.c src/ucs/arch/cpu.c
-index 307fb61bfc4a..4356fff36f8b 100644
+index 6fe5e31dba31..f92c53f303cd 100644
 --- src/ucs/arch/cpu.c
 +++ src/ucs/arch/cpu.c
 @@ -64,6 +64,10 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
@@ -167,15 +167,15 @@ index 307fb61bfc4a..4356fff36f8b 100644
      [UCS_CPU_VENDOR_FUJITSU_ARM] = {
          .min = UCS_MEMUNITS_INF,
          .max = UCS_MEMUNITS_INF
-@@ -89,6 +93,7 @@ const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
-     [UCS_CPU_VENDOR_GENERIC_ARM]   = UCS_CPU_EST_BCOPY_BW_DEFAULT,
-     [UCS_CPU_VENDOR_GENERIC_PPC]   = UCS_CPU_EST_BCOPY_BW_DEFAULT,
-     [UCS_CPU_VENDOR_GENERIC_RV64G] = UCS_CPU_EST_BCOPY_BW_DEFAULT,
-+    [UCS_CPU_VENDOR_GENERIC_IBM] = UCS_CPU_EST_BCOPY_BW_DEFAULT,
-     [UCS_CPU_VENDOR_FUJITSU_ARM]   = UCS_CPU_EST_BCOPY_BW_FUJITSU_ARM,
-     [UCS_CPU_VENDOR_ZHAOXIN]       = UCS_CPU_EST_BCOPY_BW_DEFAULT,
-     [UCS_CPU_VENDOR_NVIDIA]        = UCS_CPU_EST_BCOPY_BW_DEFAULT
-@@ -183,6 +188,7 @@ const char *ucs_cpu_vendor_name()
+@@ -82,7 +86,6 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
+     }
+ };
+ 
+-
+ static void ucs_sysfs_get_cache_size()
+ {
+     char type_str[32];  /* Data/Instruction/Unified */
+@@ -167,6 +170,7 @@ const char *ucs_cpu_vendor_name()
          [UCS_CPU_VENDOR_GENERIC_ARM]   = "Generic ARM",
          [UCS_CPU_VENDOR_GENERIC_PPC]   = "Generic PPC",
          [UCS_CPU_VENDOR_GENERIC_RV64G] = "Generic RV64G",
@@ -183,7 +183,7 @@ index 307fb61bfc4a..4356fff36f8b 100644
          [UCS_CPU_VENDOR_FUJITSU_ARM]   = "Fujitsu ARM",
          [UCS_CPU_VENDOR_ZHAOXIN]       = "Zhaoxin",
          [UCS_CPU_VENDOR_NVIDIA]        = "Nvidia"
-@@ -212,6 +218,7 @@ const char *ucs_cpu_model_name()
+@@ -197,6 +201,7 @@ const char *ucs_cpu_model_name()
          [UCS_CPU_MODEL_ZHAOXIN_WUDAOKOU]   = "Wudaokou",
          [UCS_CPU_MODEL_ZHAOXIN_LUJIAZUI]   = "Lujiazui",
          [UCS_CPU_MODEL_RV64G]              = "RV64G",
@@ -192,10 +192,10 @@ index 307fb61bfc4a..4356fff36f8b 100644
      };
  
 diff --git src/ucs/arch/cpu.h src/ucs/arch/cpu.h
-index ca25e714d141..e97405c30d52 100644
+index 857b8b804cf7..89461d52d406 100644
 --- src/ucs/arch/cpu.h
 +++ src/ucs/arch/cpu.h
-@@ -39,6 +39,7 @@ typedef enum ucs_cpu_model {
+@@ -41,6 +41,7 @@ typedef enum ucs_cpu_model {
      UCS_CPU_MODEL_ZHAOXIN_WUDAOKOU,
      UCS_CPU_MODEL_ZHAOXIN_LUJIAZUI,
      UCS_CPU_MODEL_RV64G,
@@ -203,7 +203,7 @@ index ca25e714d141..e97405c30d52 100644
      UCS_CPU_MODEL_NVIDIA_GRACE,
      UCS_CPU_MODEL_LAST
  } ucs_cpu_model_t;
-@@ -68,6 +69,7 @@ typedef enum ucs_cpu_vendor {
+@@ -70,6 +71,7 @@ typedef enum ucs_cpu_vendor {
      UCS_CPU_VENDOR_AMD,
      UCS_CPU_VENDOR_GENERIC_ARM,
      UCS_CPU_VENDOR_GENERIC_PPC,
@@ -211,7 +211,7 @@ index ca25e714d141..e97405c30d52 100644
      UCS_CPU_VENDOR_FUJITSU_ARM,
      UCS_CPU_VENDOR_ZHAOXIN,
      UCS_CPU_VENDOR_GENERIC_RV64G,
-@@ -107,6 +109,8 @@ typedef struct ucs_cpu_builtin_memcpy {
+@@ -109,6 +111,8 @@ typedef struct ucs_cpu_builtin_memcpy {
  #  include "aarch64/cpu.h"
  #elif defined(__riscv)
  #  include "rv64/cpu.h"
@@ -278,10 +278,10 @@ index 000000000000..ce48ff1ff451
 +#endif
 diff --git src/ucs/arch/s390x/cpu.h src/ucs/arch/s390x/cpu.h
 new file mode 100644
-index 000000000000..0aee278010d2
+index 000000000000..e1d41a0ef8b8
 --- /dev/null
 +++ src/ucs/arch/s390x/cpu.h
-@@ -0,0 +1,84 @@
+@@ -0,0 +1,86 @@
 +/**
 +* Copyright (C) Mellanox Technologies Ltd. 2001-2013.  ALL RIGHTS RESERVED.
 +* Copyright (C) ARM Ltd. 2016-2017.  ALL RIGHTS RESERVED.
@@ -347,7 +347,9 @@ index 000000000000..0aee278010d2
 +{
 +}
 +
-+static inline void *ucs_memcpy_relaxed(void *dst, const void *src, size_t len)
++static inline void *ucs_memcpy_relaxed(void *dst, const void *src, size_t len,
++                                       ucs_arch_memcpy_hint_t hint,
++                                       size_t total_len)
 +{
 +    return memcpy(dst, src, len);
 +}
@@ -428,7 +430,7 @@ index 000000000000..225e4e5e896a
 +#endif
 +
 diff --git src/ucs/sys/sys.c src/ucs/sys/sys.c
-index 42ff75f64af5..b22418e3f4b0 100644
+index d0b5effe11a3..ce22a2097f18 100644
 --- src/ucs/sys/sys.c
 +++ src/ucs/sys/sys.c
 @@ -1258,8 +1258,19 @@ void *ucs_sys_realloc(void *old_ptr, size_t old_length, size_t new_length)

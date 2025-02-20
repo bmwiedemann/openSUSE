@@ -1,7 +1,7 @@
 #
 # spec file for package openucx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define version_suf %{nil}
 
 Name:           openucx
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        Communication layer for Message Passing (MPI)
 License:        BSD-3-Clause
@@ -32,7 +32,6 @@ URL:            http://openucx.org/
 Source:         https://github.com/openucx/ucx/releases/download/v%version%{?version_suf}/ucx-%version.tar.gz
 Patch1:         openucx-s390x-support.patch
 Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
-Patch3:         UCS-TIME-Add-math.h-to-provide-INFINITY.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.10
 BuildRequires:  binutils-devel
@@ -158,7 +157,8 @@ export UCX_CFLAGS="$UCX_CFLAGS -mno-sse -mno-sse2"
 		 --disable-debug --disable-assertions \
 		 --disable-params-check \
 		 --with-rc --with-ud --with-dc \
-		 --with-mlx5-dv --with-rdmacm
+                 --with-ib-hw-tm --with-dm --with-devx \
+		 --with-mlx5 --with-rdmacm
 
 # Override BASE_CFLAGS to disable Werror (boo#1121267)
 make %{?_smp_mflags} V=1 BASE_CFLAGS="-g -Wall"
@@ -230,6 +230,7 @@ mv %buildroot/%_bindir/io_demo  %buildroot/%_libexecdir/%{name}/
 %_libdir/libuct.so.*
 %dir %_libdir/ucx/
 %_libdir/ucx/libuct_*.so.*
+%_libdir/ucx/libucx_perftest_mad.so.*
 
 %files -n libuct-devel
 %defattr(-,root,root)
@@ -237,9 +238,11 @@ mv %buildroot/%_bindir/io_demo  %buildroot/%_libexecdir/%{name}/
 %_libdir/libuct.so
 %dir %_libdir/ucx/
 %_libdir/ucx/libuct_*.so
+%_libdir/ucx/libucx_perftest_mad.so
 %_libdir/pkgconfig/ucx-uct.pc
 %_libdir/pkgconfig/ucx-cma.pc
 %_libdir/pkgconfig/ucx-ib.pc
+%_libdir/pkgconfig/ucx-ib-mlx5.pc
 %_libdir/pkgconfig/ucx-rdmacm.pc
 
 %changelog
