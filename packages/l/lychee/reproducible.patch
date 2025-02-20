@@ -1,0 +1,48 @@
+https://github.com/servo/string-cache/pull/290
+
+Author: Ygg01
+Date: 2025-02-18
+
+Eliminates a source of non-reproducibility from codegen.
+This should have no impact since it's at codegen.
+It affects servo/html5ever#573
+
+diff --git a/string_cache_codegen-0.5.3/.cargo-checksum.json b/string_cache_codegen-0.5.3/.cargo-checksum.json
+index b1bbb320..0484a0e6 100644
+--- a/string_cache_codegen-0.5.3/.cargo-checksum.json
++++ b/vendor/string_cache_codegen-0.5.3/.cargo-checksum.json
+@@ -1 +1 @@
+-{"files":{"Cargo.lock":"f98ea82a18b8b6e3494f512dc9588094abe1458072c64fb13bb40029cb60aaa5","Cargo.toml":"5917f5f8eff47b56b62e891b06b0eba57fb69ec87a5325c35841be8c5159777c","LICENSE-APACHE":"a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2","LICENSE-MIT":"62065228e42caebca7e7d7db1204cbb867033de5982ca4009928915e4095f3a3","lib.rs":"2d06d1598c6fde62b6dc41f4979849bfb16269946588a461d0e1ae7ef5fce3f9"},"package":"244292f3441c89febe5b5bdfbb6863aeaf4f64da810ea3050fd927b27b8d92ce"}
+\ No newline at end of file
++{"files":{"Cargo.lock":"f98ea82a18b8b6e3494f512dc9588094abe1458072c64fb13bb40029cb60aaa5","Cargo.toml":"5917f5f8eff47b56b62e891b06b0eba57fb69ec87a5325c35841be8c5159777c","LICENSE-APACHE":"a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2","LICENSE-MIT":"62065228e42caebca7e7d7db1204cbb867033de5982ca4009928915e4095f3a3","lib.rs":"c99977b2308a2ddf45737c552aa46d49bf7da98a21fbf34f2250ebc03005b766"},"package":"244292f3441c89febe5b5bdfbb6863aeaf4f64da810ea3050fd927b27b8d92ce"}
+diff --git a/string_cache_codegen-0.5.3/lib.rs b/string_cache_codegen-0.5.3/lib.rs
+index 3228946d..ad64db19 100644
+--- a/string_cache_codegen-0.5.3/lib.rs
++++ b/vendor/string_cache_codegen-0.5.3/lib.rs
+@@ -69,7 +69,7 @@
+ #![recursion_limit = "128"]
+ 
+ use quote::quote;
+-use std::collections::HashSet;
++use std::collections::BTreeSet;
+ use std::fs::File;
+ use std::io::{self, BufWriter, Write};
+ use std::path::Path;
+@@ -81,7 +81,7 @@ pub struct AtomType {
+     static_set_doc: Option<String>,
+     macro_name: String,
+     macro_doc: Option<String>,
+-    atoms: HashSet<String>,
++    atoms: BTreeSet<String>,
+ }
+ 
+ impl AtomType {
+@@ -114,7 +114,7 @@ impl AtomType {
+             atom_doc: None,
+             static_set_doc: None,
+             macro_doc: None,
+-            atoms: HashSet::new(),
++            atoms: BTreeSet::new(),
+         }
+     }
+ 
