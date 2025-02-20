@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 19 12:39:42 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details.
+  I found no reverse dependencies in devel:languages:perl depending
+  on a certain version higher than the normalized.
+
+-------------------------------------------------------------------
+Tue Feb 18 05:33:29 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.17030
+   see /usr/share/doc/packages/perl-Error/ChangeLog
+
+-------------------------------------------------------------------
 Wed Jan 29 03:12:19 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.17029
