@@ -206,8 +206,8 @@ components.
 Summary:        SSH (Secure Shell) common files
 Group:          Productivity/Networking/SSH
 Conflicts:      nonfreessh
-Conflicts:      %{name}-fips < %{version}-%{release}
-Conflicts:      %{name}-fips > %{version}-%{release}
+Provides:       %{name}-fips = %{version}-%{release}
+Obsoletes:      %{name}-fips < %{version}-%{release}
 
 %description common
 SSH (Secure Shell) is a program for logging into and executing commands
@@ -319,18 +319,6 @@ also be forwarded over the secure channel.
 This package contains helper applications for OpenSSH which retrieve
 keys from various sources.
 %endif
-
-%package fips
-Summary:        OpenSSH FIPS crypto module HMACs
-Group:          Productivity/Networking/SSH
-Requires:       %{name}-common = %{version}-%{release}
-Conflicts:      %{name}-common < %{version}-%{release}
-Conflicts:      %{name}-common > %{version}-%{release}
-Obsoletes:      %{name}-hmac
-
-%description fips
-This package contains hashes that, together with the main openssh packages,
-form the FIPS certifiable crypto module.
 
 %package cavs
 Summary:        OpenSSH FIPS crypto module CAVS tests
@@ -531,14 +519,7 @@ test -f /etc/ssh/sshd_config && (grep -q "^Include /etc/ssh/sshd_config\.d/\*\.c
 %service_del_preun sshd.service sshd.socket
 
 %postun server
-# The openssh-fips trigger script for openssh will normally restart sshd once
-# it gets installed, so only restart the service here if openssh-fips is not
-# present.
-if rpm -q openssh-fips >/dev/null 2>/dev/null; then
-%service_del_postun_without_restart sshd.service sshd.socket
-else
 %service_del_postun sshd.service sshd.socket
-fi
 
 %if %{with crypto_policies}
 %if ! %{defined _distconfdir}
@@ -583,9 +564,6 @@ test -f /etc/ssh/ssh_config && (grep -q "^Include /etc/ssh/ssh_config\.d/\*\.con
 test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ssh/ssh_config ||:
 %endif
 
-%triggerin -n openssh-fips -- %{name} = %{version}-%{release}
-%restart_on_update sshd
-
 %files
 # openssh is an empty package that depends on -clients and -server,
 # resulting in a clean upgrade path from prior to the split even when
@@ -610,6 +588,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 
 %files server
 %attr(0755,root,root) %{_sbindir}/sshd
+%attr(0444,root,root) %{_sbindir}/sshd%{CHECKSUM_SUFFIX}
 %if 0%{?suse_version} < 1600
 %attr(0755,root,root) %{_sbindir}/rcsshd
 %endif
@@ -640,6 +619,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0444,root,root) %{_mandir}/man8/sftp-server.8*
 %attr(0444,root,root) %{_mandir}/man8/sshd.8*
 %attr(0755,root,root) %{_libexecdir}/ssh/sftp-server
+%attr(0444,root,root) %{_libexecdir}/ssh/sftp-server%{CHECKSUM_SUFFIX}
 %attr(0755,root,root) %{_libexecdir}/ssh/sshd-session
 %if 0%{?suse_version} < 1600
 %dir %{_sysconfdir}/slp.reg.d
@@ -679,6 +659,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/ssh/ssh_config
 %endif
 %attr(0755,root,root) %{_bindir}/ssh
+%attr(0444,root,root) %{_bindir}/ssh%{CHECKSUM_SUFFIX}
 %attr(0755,root,root) %{_bindir}/scp*
 %attr(0755,root,root) %{_bindir}/sftp*
 %attr(0755,root,root) %{_bindir}/ssh-add*
@@ -712,11 +693,6 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0444,root,root) %{_mandir}/man8/ssh-ldap*
 %doc HOWTO.ldap-keys openssh-lpk-openldap.schema openssh-lpk-sun.schema
 %endif
-
-%files fips
-%attr(0444,root,root) %{_bindir}/ssh%{CHECKSUM_SUFFIX}
-%attr(0444,root,root) %{_sbindir}/sshd%{CHECKSUM_SUFFIX}
-%attr(0444,root,root) %{_libexecdir}/ssh/sftp-server%{CHECKSUM_SUFFIX}
 
 %files cavs
 %attr(0755,root,root) %{_libexecdir}/ssh/cavs*
