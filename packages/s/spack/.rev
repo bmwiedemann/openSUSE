@@ -598,4 +598,36 @@
     <comment>- Work towards a reproducible doc build (boo#1235144): (forwarded request 1235521 from eeich)</comment>
     <requestid>1235522</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>d9210ea71c60e7f2ac9b2f301ad4b7cd</srcmd5>
+    <version>0.23.1</version>
+    <time>1740066124</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.23.1
+  * Fix a correctness issue of `ArchSpec.intersects`.
+  * Make extra_attributes order independent in Spec hashing.
+  * Fix issue where system proxy settings were not respected in OCI
+    build caches.
+  * Fix an issue where the `--test` concretizer flag was not
+    forwarded correctly.
+  * Fix an issue where `codesign` and `install_name_tool` would
+    not preserve hardlinks on Darwin.
+  * Fix an issue on Darwin where codesign would run on unmodified
+    binaries.
+  * Patch configure scripts generated with libtool &lt; 2.5.4, to
+    avoid redundant flags when creating shared libraries on Darwin.
+  * Ensure proper UTF-8 encoding/decoding in logging.
+  * Fix issues related `to filter_file`.
+  * Fix an issue related to creating bootstrap source mirrors.
+  * Fix an issue where command line config arguments were not
+    always top level.
+  * Fix an incorrect typehint of `concretized()`.
+  * Improve mention of next Spack version in warning.
+    Tests: fix forward compatibility with Python 3.13.
+  * Docs: encourage use of `--oci-username-variable` and
+    `--oci-password-variable`.
+  * Docs: ensure Getting Started has bootstrap list output in
+    correct place. (forwarded request 1247374 from eeich)</comment>
+    <requestid>1247375</requestid>
+  </revision>
 </revisionlist>

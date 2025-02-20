@@ -63,7 +63,7 @@ ExclusiveArch:  do_not_build
 %define mypython python%{?mypyver}
 
 Name:           spack
-Version:        0.23.0
+Version:        0.23.1
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause

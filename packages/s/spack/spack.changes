@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb 20 10:04:20 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Update to version 0.23.1
+  * Fix a correctness issue of `ArchSpec.intersects`.
+  * Make extra_attributes order independent in Spec hashing.
+  * Fix issue where system proxy settings were not respected in OCI
+    build caches.
+  * Fix an issue where the `--test` concretizer flag was not
+    forwarded correctly.
+  * Fix an issue where `codesign` and `install_name_tool` would
+    not preserve hardlinks on Darwin.
+  * Fix an issue on Darwin where codesign would run on unmodified
+    binaries.
+  * Patch configure scripts generated with libtool < 2.5.4, to
+    avoid redundant flags when creating shared libraries on Darwin.
+  * Ensure proper UTF-8 encoding/decoding in logging.
+  * Fix issues related `to filter_file`.
+  * Fix an issue related to creating bootstrap source mirrors.
+  * Fix an issue where command line config arguments were not
+    always top level.
+  * Fix an incorrect typehint of `concretized()`.
+  * Improve mention of next Spack version in warning.
+    Tests: fix forward compatibility with Python 3.13.
+  * Docs: encourage use of `--oci-username-variable` and
+    `--oci-password-variable`.
+  * Docs: ensure Getting Started has bootstrap list output in
+    correct place.
+
+-------------------------------------------------------------------
 Mon Jan  6 19:01:00 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Work towards a reproducible doc build (boo#1235144):
