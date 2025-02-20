@@ -4,9 +4,9 @@
 # Copyright (c) 2021 Walter Fey DL8FCL
 # Copyright (c) 2022 Walter Fey DL8FCL
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
-#
 # This file is under MIT license
 #
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
@@ -19,6 +19,11 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Hamradio/Logging
 URL:            https://tucnak.nagano.cz/
 Source:         https://tucnak.nagano.cz/%{name}-%{version}.tar.gz
+Patch0:         reproducible.patch
+# for reproducible.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+#
 BuildRequires:  gpm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
@@ -28,6 +33,7 @@ BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(hamlib)
 BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(libftdi1)
+BuildRequires:  pkgconfig(librtlsdr)
 # From https://tucnak.nagano.cz/download.php
 # "Tucnak requires the libzia library of same version"
 BuildRequires:  pkgconfig(libzia) = %{version}
@@ -43,8 +49,15 @@ sound recorder and more. User interface is based on Taclog.
 %autosetup -p1
 
 %build
+# for reproducible.patch
+autoreconf -fiv
+#
 export CFLAGS="%{optflags} -fcommon"
-%configure
+%configure \
+	--with-gpm \
+	--with-rtlsdr \
+	--enable-pedantic \
+	%{nil}
 %make_build
 
 %install

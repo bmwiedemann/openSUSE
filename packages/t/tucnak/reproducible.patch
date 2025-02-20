@@ -1,0 +1,36 @@
+diff -ru tucnak-4.67.orig/configure.ac tucnak-4.67/configure.ac
+--- tucnak-4.67.orig/configure.ac	2025-02-11 08:32:21.000000000 +0100
++++ tucnak-4.67/configure.ac	2025-02-19 21:41:16.006019458 +0100
+@@ -69,11 +69,11 @@
+ AC_MSG_CHECKING([whether linker supports -Wl,-Map (GNU)])
+ tucnak_ld_wlmap=unchecked
+ OLDLDFLAGS=$LDFLAGS
+-LDFLAGS="$LDFLAGS -Wl,-Map,tucnak.map"
++LDFLAGS="$LDFLAGS -Wl,-Map,%"
+ AC_LINK_IFELSE(
+     [AC_LANG_PROGRAM([],[])],
+     [tucnak_ld_wlmap=yes
+-     tucnak_ld_flags="-Wl,-Map,tucnak.map"],
++     tucnak_ld_flags="-Wl,-Map,%"],
+     [tucnak_ld_wlmap=no
+      LDFLAGS=$OLDLDFLAGS])
+ 
+@@ -81,16 +81,15 @@
+     AC_MSG_CHECKING([whether linker supports -Wl,-map (BSD)])
+     tucnak_ld_wlmap=unchecked
+     OLDLDFLAGS=$LDFLAGS
+-    LDFLAGS="$LDFLAGS -Wl,-map,tucnak.map"
++    LDFLAGS="$LDFLAGS -Wl,-map,%"
+     AC_LINK_IFELSE(
+         [AC_LANG_PROGRAM([],[])],
+         [tucnak_ld_wlmap=yes
+-         tucnak_ld_flags="-Wl,-map,tucnak.map"],
++         tucnak_ld_flags="-Wl,-map,%"],
+         [tucnak_ld_wlmap=no
+          LDFLAGS=$OLDLDFLAGS])
+ fi    
+ 
+-rm -f tucnak.map
+ AC_MSG_RESULT([$tucnak_ld_wlmap])
+ 
+ 

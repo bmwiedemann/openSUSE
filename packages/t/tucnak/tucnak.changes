@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 19 20:42:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- build with console mouse support and rtlsdr support
+- build with all warnings (--pedantic)
+- remove map file race condition to make build reproducible
+  add reproducible.patch, boo#1237211
+
+-------------------------------------------------------------------
 Thu Feb 13 08:01:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - require same version of libtia as per upstream guidance
