@@ -1,7 +1,7 @@
 #
 # spec file for package praat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.4.25
+Version:        6.4.27
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -61,7 +61,7 @@ provisions for communicating with other programs.
 %autosetup -p1
 
 %build
-cp makefiles/makefile.defs.linux.pulse ./makefile.defs
+cp makefiles/makefile.defs.linux.pulse-gcc ./makefile.defs
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 %make_build
