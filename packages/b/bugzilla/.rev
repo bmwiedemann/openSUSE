@@ -194,4 +194,23 @@
     <comment></comment>
     <requestid>1204351</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5ecaa9bf984c607ed03eb7970d7d7fb7</srcmd5>
+    <version>5.2</version>
+    <time>1740065596</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2
+  - Improved Mobile Rendering
+  - Explicit MariaDB Support
+  - MySQL 8+ Support
+  - Demo Docker Configuration
+  + Other Enhancements and Changes
+    - Enhancements for Users
+    - Enhancements for Administrators and Developers
+    - WebService Changes
+    - Code Changes Which May Affect Customizations and Extensions
+  See for details: https://www.bugzilla.org/releases/5.2/
+</comment>
+    <requestid>1247019</requestid>
+  </revision>
 </revisionlist>

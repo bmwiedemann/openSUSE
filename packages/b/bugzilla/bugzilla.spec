@@ -1,7 +1,7 @@
 #
 # spec file for package bugzilla
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           bugzilla
-Version:        5.0.6
+Version:        5.2
 Release:        0
 Summary:        Bug tracker for software development
 License:        MPL-2.0
 Group:          Development/Tools/Other
 URL:            http://bugzilla.org/
-Source:         http://ftp.mozilla.org/pub/mozilla.org/webtools/%{name}-%{version}.tar.gz
+#Source:         http://ftp.mozilla.org/pub/mozilla.org/webtools/%%{name}-%%{version}.tar.gz
+Source:         https://ftp.mozilla.org/pub/webtools/bugzilla/5.2-branch/%{name}-%{version}.tar.gz
 Source2:        http://downloads.sourceforge.net/project/bugzilla-de/5.0/5.0.4/%{name}-de-5.0.4-2.utf-8.tar.gz
 Source3:        MPL-2.0.html
 Source4:        %{name}.conf
@@ -40,10 +41,11 @@ Requires:       perl-Authen-SASL
 #Recommends:		RadiusPerl
 Requires:       perl-Cache-Memcached
 Requires:       perl-Chart >= 2.4.1
+Requires:       perl-DBD-MariaDB
 Requires:       perl-DBD-Pg >= 2.7.0
 Requires:       perl-DBD-SQLite >= 1.29
-Requires:       perl-DBD-mysql >= 4.001
 Requires:       perl-DBI >= 1.614
+Requires:       perl-DBIx-Connector >= 0.56
 Requires:       perl-Daemon-Generic
 Requires:       perl-DateTime >= 0.75
 Requires:       perl-DateTime-TimeZone >= 1.64
@@ -51,7 +53,7 @@ Requires:       perl-Digest-SHA1
 Requires:       perl-Email-MIME >= 1.904
 Requires:       perl-Email-Reply
 Requires:       perl-Email-Send >= 2.02
-Requires:       perl-Email-Sender >= v1.300011
+Requires:       perl-Email-Sender >= 2.600
 Requires:       perl-Encode >= 2.21
 Requires:       perl-Encode-Detect
 Requires:       perl-File-Copy-Recursive
@@ -71,22 +73,36 @@ Requires:       perl-List-MoreUtils >= 0.32
 Requires:       perl-MIME-tools >= 5.406
 Requires:       perl-Math-Random-ISAAC >= 1.0.1
 Requires:       perl-Module-Pluggable
+Requires:       perl-Moo >= 2.003004
 Requires:       perl-Net-SMTP-SSL >= 1.01
 Requires:       perl-Object-Pluggable
 Requires:       perl-PatchReader >= 0.9.6
 Requires:       perl-SOAP-Lite >= 0.712
 Requires:       perl-Template-GD
 Requires:       perl-Template-Toolkit >= 2.24
-Requires:       perl-Test-Taint >= 1.0.6
+Requires:       perl-Test-Taint >= 1.06
 Requires:       perl-TheSchwartz >= 1.07
 Requires:       perl-TimeDate >= 2.23
 Requires:       perl-URI >= 1.55
 Requires:       perl-XML-Twig
 Requires:       perl-XMLRPC-Lite >= 0.712
-Requires:       perl-base >= 5.8.1
+Requires:       perl-base >= 5.14
 Requires:       perl-ldap
 Requires:       perl-libwww-perl
-Requires:       perl(CGI) >= 5.8.1
+Requires:       perl(CGI) >= 3.51
+# This are packages as extra in upstream documentation but does not exists in suse
+#Requires:       perl-Apache2-SizeLimit >= 0.96
+#Requires:       perl-Chart-Lines >= 2.41
+#Requires:       perl-Date-Format >= 2.23
+#Requires:       perl-Email-Adress-XS >= 1.05
+#Requires:       perl-File-MimeInfo:Magic
+#Requires:       perl-IO-Scalar
+#Requires:       perl-Net-LDAP
+#Requires:       perl-LWP-UserAgent
+#Requires:       perl-MIME-Parser >= 5.406
+#Requires:       perl-Template >= 3.008
+#Requires:       perl-Template-Plugin-GD-Image
+Recommends:     perl-DBD-mysql >= 4.032
 Recommends:     perl-DBD-Oracle >= 1.19
 BuildArch:      noarch
 %{?systemd_requires}
@@ -150,15 +166,17 @@ for file in `find -type f -perm /111`; do
   fi
 done
 # Hello bugzilla devs...
-find . -type d "(" -name .bzr -o -name .git ")" \
+find . -type d "(" -name .bzr -o -name .git -o -name .github ")" \
 	-exec rm -Rf "{}" "+"
-find . -type f "(" -name ".git*" -o -name ".bzr*" -o -name ".travis*" -o -name ".buildinfo*" ")" \
+find . -type f "(" -name ".git*" -o -name ".bzr*" -o -name ".travis*" -o -name ".buildinfo*" -o -name ".perltidyrc" -o -name ".readthedocs.yaml" ")" \
     -exec rm -Rf "{}" "+"
 find . -type f -print0 | xargs -0r grep -l '^#!' | xargs -r chmod a+x
 find . -type f -print0 | xargs -0r grep -l '^#!' | \
 	xargs -r perl -i -pe 's{^#!%{_prefix}/local/}{#!%{_prefix}/}' "{}" "+"
 mkdir -p "%{buildroot}%{apache_serverroot}"
 cp -a . "%{buildroot}%{apache_serverroot}/%{name}"
+# Remove docker files
+rm -rf docker
 
 %if %{suse_version} >= 1600
 # both occurences of /usr/bin/python3 are introduced by our patches, is there a more straightforward way?

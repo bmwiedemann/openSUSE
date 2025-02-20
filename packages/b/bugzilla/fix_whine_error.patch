@@ -1,9 +1,9 @@
-diff --git a/whine.pl b/whine.pl
-index 39c9aeed2e766824a900459c4364c6831ba82744..c81ca2022db3d8e6b32dfe1464569b17f6e75374 100755
---- a/whine.pl
-+++ b/whine.pl
+Index: bugzilla-5.2/whine.pl
+===================================================================
+--- bugzilla-5.2.orig/whine.pl
++++ bugzilla-5.2/whine.pl
 @@ -13,14 +13,13 @@
- use 5.10.1;
+ use 5.14.0;
  use strict;
  use warnings;
 -
@@ -17,3 +17,4 @@ index 39c9aeed2e766824a900459c4364c6831ba82744..c81ca2022db3d8e6b32dfe1464569b17
 +use Bugzilla::Mailer qw(MessageToMTA generate_email);
  use Bugzilla::Util;
  use Bugzilla::Group;
+ 

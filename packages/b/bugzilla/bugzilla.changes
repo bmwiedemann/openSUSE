@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 18 11:32:32 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.2
+  - Improved Mobile Rendering
+  - Explicit MariaDB Support
+  - MySQL 8+ Support
+  - Demo Docker Configuration
+  + Other Enhancements and Changes
+    - Enhancements for Users
+    - Enhancements for Administrators and Developers
+    - WebService Changes
+    - Code Changes Which May Affect Customizations and Extensions
+  See for details: https://www.bugzilla.org/releases/5.2/
+
+-------------------------------------------------------------------
 Sat Sep 28 12:02:42 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix installcheck failure from obs staging-bot after last change
