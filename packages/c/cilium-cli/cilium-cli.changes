@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:42:05 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.0:
+  A Breaking Change
+  * Cilium CLI removes the External workloads feature in this
+    release (cilium/cilium#37418). More specifically, it removes:
+    - cilium clustermesh external-workload command.
+    - --enable-external-workloads flag in cilium clustermesh enable
+      command.
+    - Connectivity tests related to external workloads.
+    - Sysdump support for external workloads.
+    Cilium community plans to stop maintaining the external
+    workload feature in all the stable release branches (v1.15,
+    v1.16, and v1.17), and the feature will be removed in v1.18
+    release.
+  * Minor Changes:
+    - Cilium CLI IPsec fixes (cilium/cilium#37018,
+      @viktor-kurchenko)
+    - cli: Improve fetching of Cilium component logs in failure
+      scenarios (cilium/cilium#37160, @joestringer)
+    - Remove external-workload feature from Cilium and cilium-cli.
+      Use previous version of cilium-cli if needed to provision
+      unsupported external-workload clusters. (cilium/cilium#37418,
+      @brb)
+  * CI Changes:
+    - cilium-cli/connectivity: additionally check for container
+      restarts (cilium/cilium#36299, @giorio94)
+    - cilium-cli: add explicit IPv6 testing to PodToK8sLocal
+      (cilium/cilium#37461, @saiaunghlyanhtet)
+    - cilium-cli: extend no-interrupted-connections to test
+      NodePort from outside (cilium/cilium#37294, @ysksuzuki)
+    - cilium-cli: Fix GITHUB_WORKFLOW_REF parsing
+      (cilium/cilium#37686, @joestringer)
+    - CLI: Attribute tests to codeowners (cilium/cilium#37027,
+      @joestringer)
+    - Update stable release to v0.16.24 by @michi-covalent in #2921
+    - chore(deps): update all github action dependencies (patch) by
+      @renovate in #2922
+    - chore(deps): update ubuntu:24.04 docker digest to 7229784 by
+      @renovate in #2923
+    - chore(deps): update golangci/golangci-lint-action action to
+      v6.3.0 by @renovate in #2925
+    - Remove v0.15.22 from the release list by @michi-covalent in
+      #2930
+    - chore(deps): update docker/setup-buildx-action action to
+      v3.9.0 by @renovate in #2928
+    - chore(deps): update golangci/golangci-lint-action action to
+      v6.3.1 by @renovate in #2929
+    - chore(deps): update dependency go to v1.23.6 by @renovate in
+      #2927
+    - chore(deps): update aws-actions/configure-aws-credentials
+      action to v4.1.0 by @renovate in #2932
+    - chore(deps): update golangci/golangci-lint-action action to
+      v6.3.2 by @renovate in #2931
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v1.64.2 by @renovate in #2933
+    - .github: Pass through GITHUB_WORKFLOW_REF by @joestringer in
+      #2936
+    - chore(deps): update golangci/golangci-lint-action action to
+      v6.4.0 by @renovate in #2938
+    - ci: avoid using deprecated tls.secretsBackend flag by
+      @tklauser in #2934
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v1.64.4 by @renovate in #2935
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v1.64.5 by @renovate in #2940
+    - chore(deps): update dependency cilium/cilium to v1.16.7 by
+      @renovate in #2943
+    - chore(deps): update all github action dependencies (patch) -
+      autoclosed by @renovate in #2937
+    - chore(deps): update dependency kubernetes-sigs/kind to
+      v0.27.0 by @renovate in #2941
+    - github: Remove externalworkloads.yaml by @michi-covalent in
+      #2944
+    - chore(deps): update golangci/golangci-lint-action action to
+      v6.5.0 by @renovate in #2945
+    - chore(deps): update docker/build-push-action action to
+      v6.14.0 by @renovate in #2946
+    - Prepare for v0.17.0 release by @michi-covalent in #2947
+  * Misc Changes:
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#37341, @cilium-renovate[bot])
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#37660, @cilium-renovate[bot])
+    - chore(deps): update docker.io/library/golang docker tag to
+      v1.24.0 (main) (cilium/cilium#37603, @cilium-renovate[bot])
+    - chore(deps): update go to v1.23.6 (main)
+      (cilium/cilium#37495, @cilium-renovate[bot])
+    - cilium-cli/connectivity: ignore hubble-ui warning in
+      no-errors-in-logs test (cilium/cilium#37563, @tklauser)
+    - cilium-cli/sysdump: drop obsolete CiliumEgressNATPolicy entry
+      (cilium/cilium#37584, @giorio94)
+    - cilium-cli: enable websockets for k8s exec
+      (cilium/cilium#37538, @asauber)
+    - cilium-cli: re-fix GITHUB_WORKFLOW_REF parsing
+      (cilium/cilium#37707, @kaworu)
+    - cli: Ensure EGW tests trigger failures via actions
+      (cilium/cilium#37649, @joestringer)
+    - connectivity: Add curl retry params for TLS inspection test
+      (cilium/cilium#37424, @sayboras)
+    - connectivity: Avoid hard-coded external target in warning log
+      (cilium/cilium#37443, @sayboras)
+    - Preparation to test IPv4 and IPv6 explicitly in connectivity
+      tests (cilium/cilium#37468, @gentoo-root)
+    - Revert "cli: Use error def of github.com/cilium/ebpf"
+      (cilium/cilium#37687, @joestringer)
+    - test: Update negative test case for TLS SNI
+      (cilium/cilium#37386, @sayboras)
+    - wireguard: introduce v2 pod-to-pod connectivity tests
+      (cilium/cilium#37533, @ldelossa)
+
+-------------------------------------------------------------------
 Thu Jan 30 05:54:35 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.24:
