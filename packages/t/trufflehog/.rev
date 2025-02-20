@@ -1901,4 +1901,20 @@
   * fixed sourcegraph analyzer (#3877) (forwarded request 1244969 from ph03nix)</comment>
     <requestid>1245132</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>736c50ea2b6e685d84b5590ff2111168</srcmd5>
+    <version>3.88.11</version>
+    <time>1740069616</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.88.11:
+  * [Feature] Airtable Analyzer for OAuth Tokens (#3879)
+  * Updated Sendgrid Analyzer (#3906)
+  * Export git.handleBinary and getSafeRemoteURL (#3921)
+  * refactor(handlers): move timeout to archive file (#3918)
+  * Updated job completion status for Postman (#3922)
+
+- Update to version 3.88.10:
+  * updated go-re2 to v1.9.0 to fix panics for go1.24 (#3923) (forwarded request 1247282 from ph03nix)</comment>
+    <requestid>1247428</requestid>
+  </revision>
 </revisionlist>

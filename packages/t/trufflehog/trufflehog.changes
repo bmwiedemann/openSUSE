@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Feb 20 07:53:55 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 3.88.11:
+  * [Feature] Airtable Analyzer for OAuth Tokens (#3879)
+  * Updated Sendgrid Analyzer (#3906)
+  * Export git.handleBinary and getSafeRemoteURL (#3921)
+  * refactor(handlers): move timeout to archive file (#3918)
+  * Updated job completion status for Postman (#3922)
+
+-------------------------------------------------------------------
+Wed Feb 19 13:15:02 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 3.88.10:
+  * updated go-re2 to v1.9.0 to fix panics for go1.24 (#3923)
+
+-------------------------------------------------------------------
+Wed Feb 19 07:19:38 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 3.88.10:
+  * remove magnetic from default (#3920)
+  * Replace `golang.org/x/exp` with stdlib (#3916)
+  * Differentiate postman folder from request when at collection root (#3912)
+  * add protos for github realtime (#3911)
+  * Make log command extensible internally (#3888)
+  * Implemented collection authorization scanning (#3910)
+  * [tempfix] - add bounds check check to avoid panics (#3867)
+  * feat(azure): log unhandled error codes (#3865)
+  * fixed uri regex issue (#3815)
+  * anthropic api key analyzer (#3878)
+  * [Update] Fixed the Return of the GCP Detector (#3905)
+  * Add Jenkins happy-path logging (#3908)
+  * Reinstated Postman body scanning (#3904)
+  * [Feat] implementation Notion analyzer (#3869)
+  * Fix double summary printing introduced in 03ca8aaa08 (#3903)
+  * [fix] False Positive Verification in Auth0oauth Detectors (#3901)
+  * dockerhub analyzer (#3861)
+  * updated openai analyzer output (#3902)
+
+- Update to version 3.88.9
+
+  * [tempfix] - add bounds check check to avoid panics (#3867)
+  * Implemented Postman collection authorization scanning (#3910)
+  * Make log command extensible internally (#3888)
+  * Add protos for GitHub Realtime (#3911)
+
+- Update to version 3.88.8
+
+  * Reinstated Postman body scanning (#3904)
+  * Add Jenkins happy-path logging (#3908)
+  * [Update] Fixed the Return of the GCP Detector (#3905)
+  * anthropic api key analyzer (#3878)
+  * fixed uri regex issue (#3815)
+  * Update Azure Refresh Token errors (#3865)
+
+- Update to version 3.88.7
+
+  * optimized and updated mailgun analyzer (#3899)
+  * updated openai analyzer output (#3902)
+  * dockerhub analyzer (#3861)
+  * [fix] False Positive Verification in Auth0oauth Detectors (#3901)
+  * Fix double summary printing (#3903)
+  * [Feat] implementation Notion analyzer (#3869)
+
+
+-------------------------------------------------------------------
 Tue Feb 11 07:18:11 UTC 2025 - felix.niederwanger@suse.de
 
 - Update to version 3.88.6:
