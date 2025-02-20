@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:25:55 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied additonal patches(bsc#1237344)
+  * openssl-ibmca-07-engine-Fix-Do-not-report-errors-if-libica-does-not-support-EC.patch
+  * openssl-ibmca-08-Fix-compiler-error-for-undefined-ERR_pop_to_mark.patch
+
+-------------------------------------------------------------------
 Wed Feb  5 10:28:31 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied additional patch (bsc#1236770)

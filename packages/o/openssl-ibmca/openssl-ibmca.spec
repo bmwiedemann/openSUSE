@@ -66,6 +66,8 @@ Patch12:        openssl-ibmca-03-test-provider-Explicitly-initialize-OpenSSL-aft
 Patch13:        openssl-ibmca-04-engine-Fix-compile-error.patch
 Patch14:        openssl-ibmca-05-provider-Fix-segfault-with-openssl-list-key-managers.patch
 Patch15:        openssl-ibmca-06-Provider-Fix-segfault-with-openssl-list-signature-algorithms-verbose.patch
+Patch16:        openssl-ibmca-07-engine-Fix-Do-not-report-errors-if-libica-does-not-support-EC.patch
+Patch17:        openssl-ibmca-08-Fix-compiler-error-for-undefined-ERR_pop_to_mark.patch
 ###
 
 %description

@@ -1,0 +1,29 @@
+From 5cdcbf0d5b7169a60826c7c0893d7f59798fc409 Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Wed, 19 Feb 2025 13:48:12 +0100
+Subject: [PATCH] Fix compiler error for undefined ERR_pop_to_mark
+
+    ibmca_ec.c:342:5: error: implicit declaration of function
+           'ERR_pop_to_mark' [-Wimplicit-function-declaration]
+      342 |     ERR_pop_to_mark();
+          |     ^~~~~~~~~~~~~~~
+
+Fixes: 6bc53d814762b24045bfd5bb6003949a163fa58b
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ src/engine/ibmca_ec.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/engine/ibmca_ec.c b/src/engine/ibmca_ec.c
+index c264f32..1bbb37e 100644
+--- a/src/engine/ibmca_ec.c
++++ b/src/engine/ibmca_ec.c
+@@ -17,6 +17,7 @@
+ 
+ #include <stdlib.h>
+ #include <pthread.h>
++#include <openssl/err.h>
+ #include "ibmca.h"
+ #include "e_ibmca_err.h"
+ 

@@ -1,0 +1,52 @@
+From 6bc53d814762b24045bfd5bb6003949a163fa58b Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Tue, 18 Feb 2025 09:00:59 +0100
+Subject: [PATCH] engine: Do not report errors if libica does not support EC
+ key
+
+In case EC key creation using libica fails (for whatever reason), and
+the software fallback is used to perform the operation, do not report
+the errors that have been put to the error stack by the failing attempt
+to use libica.
+
+Fixes: a462093d2478b287cb9a7a25131788eba16b7640
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ src/engine/ibmca_ec.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/engine/ibmca_ec.c b/src/engine/ibmca_ec.c
+index 5206ae3..c264f32 100644
+--- a/src/engine/ibmca_ec.c
++++ b/src/engine/ibmca_ec.c
+@@ -337,7 +337,9 @@ int ibmca_ecdh_compute_key(unsigned char **pout, size_t *poutlen,
+     }
+ 
+     /* Create ICA_EC_KEY object for private key */
++    ERR_set_mark();
+     ica_privkey = ibmca_ec_make_and_cache_ica_key((EC_KEY*)ecdh, &privlen);
++    ERR_pop_to_mark();
+     if (ica_privkey == NULL) {
+         /* This curve is not supported by libica. */
+     #ifdef OLDER_OPENSSL
+@@ -502,7 +504,9 @@ ECDSA_SIG *ibmca_ecdsa_sign_sig(const unsigned char *dgst, int dgst_len,
+     }
+ 
+     /* Create ICA_EC_KEY object */
++    ERR_set_mark();
+     icakey = ibmca_ec_make_and_cache_ica_key(eckey, &privlen);
++    ERR_pop_to_mark();
+     if (icakey == NULL) {
+         /* This curve is not supported by libica. */
+  #ifdef OLDER_OPENSSL
+@@ -633,7 +637,9 @@ int ibmca_ecdsa_verify_sig(const unsigned char *dgst, int dgst_len,
+     }
+ 
+     /* Create ICA_EC_KEY object */
++    ERR_set_mark();
+     icakey = ibmca_ec_make_and_cache_ica_key(eckey, &privlen);
++    ERR_pop_to_mark();
+     if (icakey == NULL) {
+         /* This curve is not supported by libica. */
+  #ifdef OLDER_OPENSSL
