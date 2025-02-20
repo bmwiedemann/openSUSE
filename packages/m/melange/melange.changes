@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 20 18:19:36 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.21.0:
+  * feat(pipelines/go/build): add extra-args input variable by
+    @maxgio92 in #1792
+  * rebuild: add e2e test by @imjasonh in #1789
+  * Add annotations field map[string]string by @jvanzyl in #1793
+
+-------------------------------------------------------------------
 Mon Feb 17 06:17:18 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.20.1:
