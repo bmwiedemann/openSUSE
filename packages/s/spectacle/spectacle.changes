@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 19 09:45:47 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.1.2:
+  * New bugfix release
+  * Tarball built from the correct branch now
+
+-------------------------------------------------------------------
+Tue Feb 18 14:46:19 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.1
+- No code changes since 6.3.0
+
+-------------------------------------------------------------------
+Sat Feb 15 17:10:36 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * Now part of Plasma
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- No code changes since 24.12.2
+
+-------------------------------------------------------------------
 Tue Feb  4 12:30:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2

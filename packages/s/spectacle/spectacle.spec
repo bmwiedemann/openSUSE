@@ -1,7 +1,7 @@
 #
 # spec file for package spectacle
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,30 @@
 #
 
 
-%define kf6_version 6.6.0
-%define plasma6_version 5.27.80
-%define qt6_version 6.6.0
-
+%define kf6_version 6.10.0
+%define qt6_version 6.7.0
+%define rname spectacle
+# Full Plasma 6 version (e.g. 6.0.0)
+%{!?_plasma6_bugfix: %global _plasma6_bugfix %{version}}
+# Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
+%{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           spectacle
-Version:        24.12.2
+Version:        6.3.1.2
+%global _plasma6_bugfix 6.3.1
 Release:        0
 Summary:        Screen Capture Program
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://apps.kde.org/spectacle
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/plasma/6.3.1/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
+Source1:        https://download.kde.org/stable/plasma/6.3.1/%{rname}-%{version}.tar.xz.sig
+Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  cmake(OpenCV)
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
@@ -54,8 +57,10 @@ BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
-BuildRequires:  cmake(KPipeWire) >= %{plasma6_version}
-BuildRequires:  cmake(LayerShellQt) >= %{plasma6_version}
+BuildRequires:  cmake(OpenCV)
+# _plasma6_version requires awk which OBS can't do, but MACRO results in have choice.
+BuildRequires:  cmake(KPipeWire) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(LayerShellQt) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}

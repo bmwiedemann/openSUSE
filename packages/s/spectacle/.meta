@@ -1,5 +1,5 @@
 <package name="spectacle" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="KDE:Applications" package="spectacle"/>
+  <devel project="KDE:Frameworks" package="spectacle"/>
 </package>

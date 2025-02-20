@@ -904,4 +904,16 @@
     <comment>KDE release gear 24.12.2 (forwarded request 1243167 from krop)</comment>
     <requestid>1243874</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>2769abfb358d8480ae87aac5d484051c</srcmd5>
+    <version>6.3.1.2</version>
+    <time>1740065501</time>
+    <user>anag+factory</user>
+    <comment>Sigh.
+
+- Update to 6.3.1.2:
+  * New bugfix release
+  * Tarball built from the correct branch now (forwarded request 1246996 from Vogtinator)</comment>
+    <requestid>1246997</requestid>
+  </revision>
 </revisionlist>
