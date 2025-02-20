@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 19 05:51:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 5.0.11:
+  * build fixes to mo files, package them
+
+-------------------------------------------------------------------
+Tue Feb 18 17:34:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 5.0.10:
+  * more build system tweaks and fixes for other platforms
+
+-------------------------------------------------------------------
 Mon Feb 10 19:44:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 5.0.6:

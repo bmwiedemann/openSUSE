@@ -19,7 +19,7 @@
 
 %define sover 5
 Name:           di
-Version:        5.0.6
+Version:        5.0.11
 Release:        0
 Summary:        Disk Information Utility
 License:        Zlib
@@ -66,13 +66,14 @@ This package contains the files needed to develop using libdi.
 
 %install
 %cmake_install
+%find_lang %{name}
 
 %check
 %ctest
 
 %ldconfig_scriptlets -n libdi%{sover}
 
-%files
+%files -f %{name}.lang
 %license LICENSE.txt
 %doc README.txt
 %{_bindir}/di
