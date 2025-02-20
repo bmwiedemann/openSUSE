@@ -299,4 +299,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1223870 from glaubitz)</comment>
     <requestid>1223949</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0331f1e526905a11db287f66568c89cf</srcmd5>
+    <version>5.14.0</version>
+    <time>1740069606</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 5.14.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1246349 from glaubitz)</comment>
+    <requestid>1247431</requestid>
+  </revision>
 </revisionlist>
