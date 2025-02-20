@@ -1,5 +1,7 @@
---- virt-manager-5.0.0/virtinst/install/urldetect.py.orig	2025-01-17 13:13:11.582745934 -0700
-+++ virt-manager-5.0.0/virtinst/install/urldetect.py	2025-01-17 13:15:08.122748711 -0700
+Index: virt-manager-5.0.0/virtinst/install/urldetect.py
+===================================================================
+--- virt-manager-5.0.0.orig/virtinst/install/urldetect.py
++++ virt-manager-5.0.0/virtinst/install/urldetect.py
 @@ -279,6 +279,10 @@ class _SUSEContent(object):
              else:
                  if "SUSE SL Micro" in self.product_name:
@@ -11,3 +13,20 @@
                  else:
                      sle_version = self.product_name.strip().rsplit(' ')[4]
              if len(self.product_name.strip().rsplit(' ')) > 5 and not " Micro " in self.product_name:
+@@ -521,10 +525,16 @@ class _SuseDistro(_RHELDistro):
+             content_str = cache.acquire_file_content("content")
+             if content_str is None:
+                 products_str = cache.acquire_file_content("media.1/products")
++                if not products_str:
++                    # For SLES16 install iso (not agama)
++                    products_str = cache.acquire_file_content("install/media.1/products")
+                 if products_str:
+                     products_str = products_str.replace('/', ' ,', 1)
+                     products_str = "DISTRO " + products_str.replace('-', ' ')
+                 media_str = cache.acquire_file_content("media.1/media")
++                if not media_str:
++                    # For SLES16 install iso (not agama)
++                    media_str = cache.acquire_file_content("install/media.1/media")
+                 if media_str:
+                     media_arch = "x86_64"
+                     if 'aarch64' in media_str:

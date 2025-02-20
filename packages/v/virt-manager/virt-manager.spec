@@ -212,15 +212,13 @@ machine).
 %install
 %meson_install
 
-#python3 setup.py \
-#    --no-update-icon-cache \
-#    --no-compile-schemas install \
-#    --prefix=%{_prefix} \
-#    -O1 --root=%{buildroot}
+# YaST is not used on SLES16
+%if %{?suse_version} != 1600
 mkdir -p %{buildroot}/%{_datadir}/YaST2/clients/
 install -m644 %SOURCE1 %{buildroot}/%{_datadir}/YaST2/clients/virt-install.rb
 mkdir -p %{buildroot}/%{_datadir}/applications/YaST2/
 install -m644 %SOURCE2 %{buildroot}/%{_datadir}/applications/YaST2/virt-install.desktop
+%endif
 # Oddly, supportconfig doesn't execute plugins with '-' in the name, so use 'virt_manager'
 mkdir -p %{buildroot}/usr/lib/supportconfig/plugins
 install -m 755 %SOURCE3 %{buildroot}/usr/lib/supportconfig/plugins/virt_manager
@@ -321,7 +319,9 @@ fi
 
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
+%if %{?suse_version} != 1600
 %{_datadir}/applications/YaST2/virt-install.desktop
+%endif
 %{_datadir}/glib-2.0/schemas/org.virt-manager.virt-manager.gschema.xml
 %dir /usr/lib/supportconfig
 %dir /usr/lib/supportconfig/plugins
@@ -346,10 +346,12 @@ fi
 %{_bindir}/virt-xml
 %{_datadir}/bash-completion/completions/virt-xml
 
+%if %{?suse_version} != 1600
 %dir %{_datadir}/YaST2
 %dir %{_datadir}/YaST2/clients
 %dir %{_datadir}/applications/YaST2
 %{_datadir}/YaST2/clients/virt-install.rb
+%endif
 %endif
 
 %changelog

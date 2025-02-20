@@ -2118,4 +2118,12 @@
     <comment>Includes various upstream features and bug fixes on top of virt-manager version 5.0.0</comment>
     <requestid>1241008</requestid>
   </revision>
+  <revision rev="268" vrev="4">
+    <srcmd5>2d80573a69ee040d45c86234ee9288ce</srcmd5>
+    <version>5.0.0</version>
+    <time>1740065222</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1246809</requestid>
+  </revision>
 </revisionlist>
