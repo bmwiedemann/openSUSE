@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Feb 19 21:55:34 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update list of skipped tests
+
+-------------------------------------------------------------------
+Wed Feb 19 07:05:37 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- drop unknown options, this yields nothing in the sources:
+  grep -rwE 'WITH_LIBEVENT|WITH_LIBEDIT|WITH_EDITLINE|WITH_XTRADB_STORAGE_ENGINE|WITH_CSV_STORAGE_ENGINE|WITH_HANDLERSOCKET_STORAGE_ENGINE|WITH_INNODB_MEMCACHED|WITH_INNODB_DISALLOW_WRITES|WITH_LIBARCHIVE'
+- set -DWITH_READLINE=OFF as it is a bool (and not =0)
+- drop DEFAULT_CHARSET=utf8mb4 and
+  DEFAULT_COLLATION=utf8mb4_unicode_520_ci to pick up the defaults
+  (still utf8mb4, but utf8mb4_uca1400_ai_ci).
+  See https://jira.mariadb.org/browse/MDEV-36113
+- add readline-devel to requires, so it is picked up (WITH_READLINE=OFF above
+  translates to "use lib from system"). Now we have:
+  CMakeCache.txt:READLINE_LIBRARY:FILEPATH=/usr/lib64/libreadline.so
+
+-------------------------------------------------------------------
+Fri Feb 14 14:41:28 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 11.7.2:
+    https://mariadb.com/kb/en/mariadb-11-7-2-release-notes/
+    https://mariadb.com/kb/en/mariadb-11-7-2-changelog/
+  * fixes for the following security vulnerabilities:
+    11.7.2: CVE-2025-21490
+  * fixes bsc#1236823 
+- Remove extra compiler flags. These don't seem to be needed anymore
+  and were overwriting predefined flags
+
+-------------------------------------------------------------------
 Tue Nov 26 19:23:02 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 11.6.2:

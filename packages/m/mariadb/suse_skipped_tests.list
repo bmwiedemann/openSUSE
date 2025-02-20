@@ -52,4 +52,5 @@ plugins.parsec                                   : since 11.6.1 - all
 unit.conc_connection                             : since 11.6.2 - all
 innodb.log_file_name                             : since 11.6.2 - all
 main.connect                                     : since 11.6.2 - all
+main.ssl_cipher                                  : since 11.7.2 - all
 

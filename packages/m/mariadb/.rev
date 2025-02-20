@@ -1976,4 +1976,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment></comment>
     <requestid>1230057</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>c0b5523457fc8f0b0dd11126439eb93c</srcmd5>
+    <version>11.7.2</version>
+    <time>1740065335</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1247284</requestid>
+  </revision>
 </revisionlist>

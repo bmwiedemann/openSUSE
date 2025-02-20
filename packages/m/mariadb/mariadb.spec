@@ -52,7 +52,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        11.6.2
+Version:        11.7.2
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -113,6 +113,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  procps
 # Some tests and myrocks_hotbackup script need python3
 BuildRequires:  python3
+BuildRequires:  readline-devel
 BuildRequires:  sqlite
 BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
@@ -392,22 +393,14 @@ cat %{SOURCE50} | tee -a mysql-test/unstable-tests
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-EXTRA_FLAGS="-Wno-unused-but-set-variable -fno-strict-aliasing -Wno-unused-parameter"
-# Mariadb devs seems to fall in love with -Werror option
-EXTRA_FLAGS="${EXTRA_FLAGS} -Wno-error"
-export CFLAGS="%{optflags} -DOPENSSL_LOAD_CONF -DPIC -fPIC -DFORCE_INIT_OF_VARS $EXTRA_FLAGS"
-export CXXFLAGS="$CFLAGS -felide-constructors"
 %cmake -DWITH_SSL=system                                            \
        -DWITH_LIBWRAP=ON                                            \
        -DENABLED_PROFILING=ON                                       \
        -DENABLE_DEBUG_SYNC=OFF                                      \
        -DWITH_PIC=ON                                                \
        -DWITH_ZLIB=system                                           \
-       -DWITH_LIBEVENT=system                                       \
        -DWITH_JEMALLOC=no                                           \
-       -DWITH_READLINE=0                                            \
-       -DWITH_LIBEDIT=0                                             \
-       -DWITH_EDITLINE=system                                       \
+       -DWITH_READLINE=OFF                                          \
        -DINSTALL_LAYOUT=RPM                                         \
        -DWITH_LZ4=system                                            \
        -DMYSQL_UNIX_ADDR="%{_rundir}/mysql/mysql.sock"              \
@@ -415,8 +408,6 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
        -DINSTALL_MYSQLSHAREDIR=share/%{name}                        \
        -DWITH_COMMENT="MariaDB rpm"                                 \
        -DWITH_EXTRA_CHARSET=all                                     \
-       -DDEFAULT_CHARSET=utf8mb4                                    \
-       -DDEFAULT_COLLATION=utf8mb4_unicode_520_ci                   \
        -DWITH_INNOBASE_STORAGE_ENGINE=1                             \
        -DWITH_PERFSCHEMA_STORAGE_ENGINE=1                           \
 %if 0%{with_oqgraph} < 1
@@ -429,28 +420,18 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
        -DPLUGIN_ROCKSDB=NO                                          \
 %endif
        -DPYTHON_SHEBANG=%{python_path}                              \
-       -DWITH_XTRADB_STORAGE_ENGINE=1                               \
-       -DWITH_CSV_STORAGE_ENGINE=1                                  \
-       -DWITH_HANDLERSOCKET_STORAGE_ENGINE=1                        \
-       -DWITH_INNODB_MEMCACHED=ON                                   \
        -DWITH_EMBEDDED_SERVER=true                                  \
 %if %{with galera}
        -DWITH_WSREP=ON                                              \
-       -DWITH_INNODB_DISALLOW_WRITES=1                              \
 %endif
-       -DWITH_LIBARCHIVE=ON                                         \
        -DWITH_MARIABACKUP=ON                                        \
        -DCOMPILATION_COMMENT="MariaDB package"                      \
        -DDENABLE_DOWNLOADS=false                                    \
        -DINSTALL_PLUGINDIR_RPM="%{_lib}/mysql/plugin"               \
        -DINSTALL_LIBDIR_RPM="%{_lib}"                               \
        -DINSTALL_SYSCONF2DIR="%{_sysconfdir}/my.cnf.d"              \
-       -DCMAKE_C_FLAGS_RELWITHDEBINFO="$CFLAGS"                     \
-       -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$CXXFLAGS"                 \
        -DCMAKE_BUILD_TYPE=RelWithDebInfo                            \
        -DINSTALL_SQLBENCHDIR=share                                  \
-       -DCMAKE_C_FLAGS="$CFLAGS"                                    \
-       -DCMAKE_CXX_FLAGS="$CXXFLAGS"                                \
        -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -pie -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
        -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -pie -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
        -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -pie -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
