@@ -5760,4 +5760,20 @@ I cannot test locally unfortunately.
     Firefox ESR 128.7, and Thunderbird 128.7</comment>
     <requestid>1243477</requestid>
   </revision>
+  <revision rev="355" vrev="1">
+    <srcmd5>4eec6e4d10b5443a16c12aada2138c33</srcmd5>
+    <version>128.7.1</version>
+    <time>1740065994</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 128.7.1
+  * Users may not have been notified if messages arrived in multiple
+    folders at once
+  * Message list scrolled to the wrong place on start-up
+  * Unified folders could become unusable instead of being
+    automatically rebuilt
+  * Some messages may have been threaded incorrectly in unified folders
+  * Middle-click autoscroll cursor appeared without arrows instead
+    of expected design</comment>
+    <requestid>1247240</requestid>
+  </revision>
 </revisionlist>

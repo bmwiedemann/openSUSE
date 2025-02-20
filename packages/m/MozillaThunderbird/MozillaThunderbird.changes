@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 19 08:17:56 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 128.7.1
+  * Users may not have been notified if messages arrived in multiple
+    folders at once
+  * Message list scrolled to the wrong place on start-up
+  * Unified folders could become unusable instead of being
+    automatically rebuilt
+  * Some messages may have been threaded incorrectly in unified folders
+  * Middle-click autoscroll cursor appeared without arrows instead
+    of expected design
+
+-------------------------------------------------------------------
 Wed Feb  5 07:26:07 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 128.7.0
