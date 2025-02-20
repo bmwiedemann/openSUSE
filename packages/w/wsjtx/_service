@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">wsjtx</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">wsjtx-2.6.1</param>
+    <param name="revision">wsjtx-2.7.0</param>
     <param name="versionrewrite-pattern">wsjtx-(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>

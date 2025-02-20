@@ -9,10 +9,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 #FIXME upstream fixing needed so lto can be re-enabled.
 %define _lto_cflags %{nil}
 Name:           wsjtx
-Version:        2.6.1
+Version:        2.7.0
 Release:        0
 Summary:        Weak signal hamradio software
 License:        GPL-3.0-or-later
