@@ -62,7 +62,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://gitlab.com/apparmor/apparmor/
 Source0:        https://gitlab.com/apparmor/apparmor/-/archive/%{tarversion}/apparmor-%{tarversion}.tar.gz
-# from https://gitlab.com/apparmor/apparmor/-/wikis/%{version}_Signatures
+# from https://gitlab.com/apparmor/apparmor/-/wikis/%%{version}_Signatures
 Source1:        apparmor-%{tarversion}.tar.gz.asc
 Source2:        %{name}.keyring
 
@@ -620,7 +620,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/chromium
 %config(noreplace) %{_sysconfdir}/apparmor.d/code
 # exclude crun, podman and runc profiles until the updated container engines (including updated profile with "signal peer=runc") has arrived
-#config(noreplace) %{_sysconfdir}/apparmor.d/crun
+#config(noreplace) %%{_sysconfdir}/apparmor.d/crun
 %exclude %{_sysconfdir}/apparmor.d/crun
 %exclude %{_sysconfdir}/apparmor.d/podman
 %exclude %{_sysconfdir}/apparmor.d/runc
@@ -668,7 +668,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/rootlesskit
 %config(noreplace) %{_sysconfdir}/apparmor.d/rpm
 %config(noreplace) %{_sysconfdir}/apparmor.d/rssguard
-#config(noreplace) %{_sysconfdir}/apparmor.d/runc
+#config(noreplace) %%{_sysconfdir}/apparmor.d/runc
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-bgqd
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-dcerpcd
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-rpcd

@@ -2931,4 +2931,12 @@ Note: I checked the GPG signature with both the expired and the refreshed key, a
 - update to AppArmor 2.7.0 beta1, for details see (forwarded request 1243410 from dirkmueller)</comment>
     <requestid>1243514</requestid>
   </revision>
+  <revision rev="218" vrev="3">
+    <srcmd5>09cc7a44fd89fd4a4db0812ec83deec3</srcmd5>
+    <version>4.0.3</version>
+    <time>1740065275</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1247245</requestid>
+  </revision>
 </revisionlist>
