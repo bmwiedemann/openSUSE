@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 20 09:05:57 UTC 2025 - chris@computersalat.de
+
+- fix for boo#1236889 (CVE-2024-57392)
+  https://github.com/proftpd/proftpd/issues/1866
+  Some of the fuzzing tests submitted in the advisory ran into existing null
+  pointer dereferences (not buffer overflows); let's correct them.
+- Add proftpd-null_pointer.patch
+
+-------------------------------------------------------------------
 Thu Jan  9 17:25:19 UTC 2025 - chris@computersalat.de
 
 - 1.3.8c - Released 11-Dec-2024

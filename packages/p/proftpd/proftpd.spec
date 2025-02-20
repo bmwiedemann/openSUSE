@@ -60,6 +60,8 @@ Patch104:       %{name}-no_BuildDate.patch
 Patch105:       %{name}_env-script-interpreter.patch
 #openSUSE:Security_Features#Systemd_hardening_effort
 Patch106:       harden_proftpd.service.patch
+#PATCH-FIX-Upstream: Mitigation CVE-2024-57392 / GHSA-cf42-x7h8-3v3q #1866
+Patch200:       %{name}-null_pointer.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #BuildRequires:  gpg-offline
 BuildRequires:  cyrus-sasl-devel
