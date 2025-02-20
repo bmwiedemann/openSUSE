@@ -415,4 +415,16 @@
       join-less -&gt; joined query.</comment>
     <requestid>1223791</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>bc93d4ea47a8f2691ac7b32089a985ef</srcmd5>
+    <version>3.17.9</version>
+    <time>1740069587</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1247372 from glaubitz
+
+- Update to 3.17.9
+    * Fix incorrect handling of fk constraint name in migrator.
+    * Fix test-only issue that can occur in Python 3.14a4.</comment>
+    <requestid>1247409</requestid>
+  </revision>
 </revisionlist>
