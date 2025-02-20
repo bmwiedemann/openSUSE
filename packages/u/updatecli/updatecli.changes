@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:42:22 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.94.1:
+  * Bug Fixes
+    - fix: use the right action configuration in autodiscovery
+      @olblak (#3956)
+  * Maintenance
+    - deps(go): bump module github.com/drone/go-scm to v1.39.2
+      @updateclibot[bot] (#3943)
+
+-------------------------------------------------------------------
+Wed Feb 19 09:17:28 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.94.0:
+  * Features
+    - feat: set oauth2 as default github username when username is
+      not provided. @treezio (#3920)
+    - feat: autodiscovery set default action title @olblak (#3797)
+  * Bug Fixes
+    - fix(maven): check all configured repositories before
+      returning an error @lorenzobenvenuti (#3903)
+  * Maintenance
+    - deps: bump golangci-lint to v1.64.5 @updateclibot[bot]
+      (#3878)
+    - deps(go): bump module golang.org/x/mod @updateclibot[bot]
+      (#3869)
+    - deps(go): bump module helm.sh/helm/v3 @updateclibot[bot]
+      (#3836)
+    - deps: bump golangci-lint to v1.64.2 @updateclibot[bot]
+      (#3816)
+    - deps(go): bump module golang.org/x/oauth2 @updateclibot[bot]
+      (#3807)
+    - deps(go): bump module github.com/goccy/go-yaml
+      @updateclibot[bot] (#3799)
+    - deps: Bump Golang version to 1.23.6 @updateclibot[bot]
+      (#3785)
+    - feat: switch to official github action to obtain app token
+      @loispostula (#3774)
+
+-------------------------------------------------------------------
 Fri Feb 07 08:49:49 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.93.1:
