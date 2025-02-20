@@ -15,22 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _buildshell /bin/bash
 %define nameupper Pixelorama
 
 Name:           pixelorama
-Version:        0.11.4
+Version:        1.0.5
 Release:        0
 Summary:        2D sprite editor
 License:        MIT
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://github.com/Orama-Interactive/Pixelorama
-Source0:        https://codeload.github.com/Orama-Interactive/%{nameupper}/tar.gz/refs/tags/v%{version}#/%{nameupper}-%{version}.tar.gz
-BuildRequires:  godot3-headless
-BuildRequires:  godot3-runner
-BuildRequires:  update-desktop-files
-BuildRequires:  vendored_licenses_packager
+Source0:        https://github.com/Orama-Interactive/Pixelorama/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  godot >= 4.3
+BuildRequires:  godot-runner >= 4.3
+BuildRequires:  vendored_licenses_packager
 ExcludeArch:    %arm
 ExcludeArch:    %power64
 
@@ -39,8 +39,8 @@ Graphical tool based on the Godot Engine to create and edit
 animated pixel art, game graphics, tiles and many kinds of pixel art
 
 %prep
-%setup -q -n %{nameupper}-%{version}
-template_dir=$(godot3-headless --version | grep --extended-regexp --only-matching --regexp ^\([0-9]+\\.\)+stable -)
+%autosetup -n %{nameupper}-%{version}
+template_dir=$(godot-runner --version | grep --extended-regexp --only-matching --regexp ^\([0-9]+\\.\)+stable -)
 r=$(echo $?)
 if [[ x"$template_dir" != x ]]
   then
@@ -50,21 +50,32 @@ if [[ x"$template_dir" != x ]]
     fi
   else echo template_dir empty; exit 1
 fi
-template_name=linux_x11_%{__isa_bits}_release
-target_dir=$HOME/.local/share/godot3/templates/$template_dir
+%ifarch %{arm} %{arm64}
+template_name=linux_release.arm%{__isa_bits}
+%elifarch %{ix86} %{x86_64}
+template_name=linux_release.x86_%{__isa_bits}
+%else
+template_name=linux_release.%{_arch}
+%endif
+target_dir=$HOME/.local/share/godot/export_templates/$template_dir
 target_file_path=$target_dir/$template_name
 mkdir -p $target_dir
-cp %{_bindir}/godot3-runner $target_file_path
+cp %{_bindir}/godot-runner $target_file_path
 sed -i "s/binary_format\/embed_pck=false/binary_format\/embed_pck=true/" ./export_presets.cfg
 cp addons/README.md addons_README.md
 cp Misc/Linux/com.orama_interactive.%{nameupper}.desktop com.orama_interactive.%{nameupper}.desktop
-rm pixelorama_data/.gdignore
 mkdir binary
 %vendored_licenses_packager_prep addons
 
 %build
-export_name="Linux/X11 %{__isa_bits}-bit"
-godot3-headless --verbose --export "$export_name" binary/%{name}
+%ifarch %{arm} %{arm64}
+export_name="Linux ARM%{__isa_bits}"
+%else
+export_name="Linux %{__isa_bits}-bit"
+%endif
+
+godot --headless --verbose --import
+godot --headless --verbose --export-release "$export_name" binary/%{name}
 
 %install
 v=('Brushes' 'Palettes' 'Patterns')
@@ -76,8 +87,8 @@ for d in "${v[@]}"
   done
 install -D -p -m 0755 binary/%{name} %{buildroot}%{_bindir}/%{name}
 install -D -p -m 0644 assets/graphics/icons/icon.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
+install -D -p -m 0644 Misc/Linux/com.orama_interactive.%{nameupper}.desktop %{buildroot}%{_datadir}/applications/com.orama_interactive.%{nameupper}.desktop
 install -D -p -m 0644 Misc/Linux/com.orama_interactive.%{nameupper}.appdata.xml  %{buildroot}%{_datadir}/metainfo/com.orama_interactive.%{nameupper}.appdata.xml
-%suse_update_desktop_file -i com.orama_interactive.%{nameupper}
 %vendored_licenses_packager_install
 %fdupes -s %{buildroot}/%{_prefix}
 

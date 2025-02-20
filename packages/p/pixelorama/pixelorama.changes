@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Feb  6 16:02:01 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 1.0.5
+  Some noteworthy changes from 1.0
+  * The config file has been renamed from "cache.ini" to
+    "config.ini". This effectively means that preferences edited in
+    v0.x will not be automatically be carried over to v1.0.
+  * The file format of pxo files has been changed. Pxo files are
+    now zip files in disguise.
+  * Similarly, the file format of Pixelorama's palette files has
+    been changed from .tres back to .json as they used to be in the
+    past. This change had to happen due to security concerns
+    regarding Godot's resource files.
+
+  Changes from 1.0.5:
+  Added:
+  * Add density to the square & circle brushes. 100% density means
+    that the brush gets completely drawn. Anything less leaves gaps
+    inside the brush, acting like a spray tool.
+  * Selection expanding, shrinking and borders have been added as
+    options in the Select menu.
+  * Mouse buttons can now be used as menu shortcuts. #1070
+  * Added confirm and cancel buttons in the selection tool options
+    to confirm/cancel an active transformation.
+  * OKHSL Lightness sorting in palettes has been implemented. #1126
+  Changed:
+  * The brush size no longer changes by Control + Mouse
+    Wheel when resizing the timeline cels or the palette swatches.
+  * Improved the UI of the Tile Mode Offsets dialog and added an
+    "Isometric" preset button.
+  * The Recorder panel now automatically records for the current
+    project. This also allows for multiple projects to be recorded
+    at the same time.
+  Fixed:
+  * Opening the Tile Mode Offsets dialog no longer crashes the
+    application.
+  * Panels no longer get scrolled when using the mouse wheel over a
+    slider.
+  * Fixed layer effect slider values being rounded to the nearest
+    integer.
+  * Fixed memory leak where the project remained referenced by a
+    drawing tool, even when its tab was closed.
+  * Fixed memory leak where the first project remained forever
+    references in memory by the Recorder panel.
+  * Slightly optimize circle brushes by only calling the ellipse
+    algorithms once while drawing
+  Removed:
+  * The Recorder panel has been removed from the Web version. It
+    wasn't functional anyway in a way that was useful, and it's
+    unsure if we can find a way to make it work.
+
+  For a full list of changes since the last release see the github
+  release notes at
+  https://github.com/Orama-Interactive/Pixelorama/releases
+
+-------------------------------------------------------------------
 Mon Apr 22 12:00:00 UTC 2024 - cunix@mail.de
 
 - Update to 0.11.4

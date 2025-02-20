@@ -23,4 +23,12 @@
     <comment>Update to 0.11.4</comment>
     <requestid>1170500</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b9ba34bd4ef544bda28ccef6d30a453</srcmd5>
+    <version>1.0.5</version>
+    <time>1740087309</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1247481</requestid>
+  </revision>
 </revisionlist>
