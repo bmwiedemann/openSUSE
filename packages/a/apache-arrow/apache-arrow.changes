@@ -1,4 +1,373 @@
 -------------------------------------------------------------------
+Wed Feb 19 15:58:28 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- disable flight because of gh#grpc/grpc#37968 boo#1237422
+
+-------------------------------------------------------------------
+Mon Feb 17 19:17:26 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 19.0.1
+  ## Bug Fixes
+  * [C++] Fix overflow issues for large build side in swiss join
+    (#45108)
+  * [C++][Fuzzing] Fix Negation bug discovered by fuzzing (#45181)
+  * [C++][Parquet] Omit level histogram when max level is 0
+    (#45285)
+  * [Parquet][C++] Fix statistics load logic for no row group and
+    multiple row groups (#45350)
+  * [C++] Disable Flight test (#45232)
+  ## Improvements
+  * [C++][Parquet] Improve performance of generating size
+    statistics (#45202)
+  * [C++][S3] Workaround compatibility issue between AWS SDK and
+    MinIO (#45310)
+- Release 19.0.0
+  ## New Features and Improvements
+  * [CI][C++] Add a nightly job to test offline build (#44721)
+  * [C++] GcsFileSystem::Make should return Result (#44503)
+  * [C++][Parquet] Implement SizeStatistics (#40594)
+  * [C++] Reduce string inlining in Substrait serde (#45174)
+  * [C++][Acero] Enhance asof_join to work in multi-threaded
+    execution by sequencing input (#44083)
+  * [C++] Support the AWS S3 SSE-C encryption (#43601)
+  * [C++][Parquet] Parquet Metadata Printer supports print
+    sort-columns (#43599)
+  * [C++] Add C++ implementation of Async C Data Interface (#44495)
+  * [C++][Acero] Support AVX2 swiss join decoding (#43832)
+  * [C++] skip -0117 in StrptimeZoneOffset for old glibc (#44621)
+  * [C++] Add arrow::RecordBatch::MakeStatisticsArray() (#44252)
+  * [C++] Improve merge step in chunked sorting (#44217)
+  * [C++][Parquet] Tools: Debug Print for Json should be valid JSON
+    (#44532)
+  * [C++][FS][Azure] Implement SAS token authentication (#45021)
+  * [C++] Don’t export template class (#44365)
+  * [C++][Docs] Update the URL to C++ Development in README.md
+    (#44427)
+  * [C++] Added rvalue-reference-qualified overload for
+    arrow::Result::status() returning value instead of reference
+    (#44477)
+  * [C++] StatusConstant- cheaply copied const Status (#44493)
+  * [C++][Compute] Allow casting struct to bigger nullable struct
+    (#44587)
+  * [C++] Use array type to compute min/max statistics Arrow type
+    (#45094)
+  * [C++] Minor: ArrayData ctor can assign null_count directly
+    (#44582)
+  * [C++] Add const and & to arrow::Array::statistics() return type
+    (#44592)
+  * [Python][C++] Add version suffix to libarrow_python* libraries
+    (#44702)
+  * [C++] NumericBuilder::AppendValues append vector prevent from
+    ub (#44794)
+  * [C++][Parquet] Remove obsolete parquet_constants generated
+    files from old thrift (#44772)
+  * [Docs][C++] Add arrow::ArrayStatistics to API doc (#44764)
+  * [C++] Upgrade ORC to 2.0.3 (#44745)
+  * [C++][Parquet] Add arrow::Result version of
+    parquet::arrow::OpenFile() (#44785)
+  * [C++] Fix a couple of maybe-uninitialized warnings (#44789)
+  * [C++] Use arrow::util::span on
+    arrow::util::bitmap_builders_utilities instead of std::vector
+    (#44796)
+  * [C++][Parquet] Add arrow::Result version of
+    parquet::arrow::FileReader::GetRecordBatchReader() (#44809)
+  * [C++] minor optimize cancel and thread pool (#44812)
+  * [C++][Parquet] Add an example to dump statistics read as
+    arrow::ArrayStatistics (#44816)
+  * [C++] Add the Expm1(exponent) scalar arithmetic function
+    (#44904)
+  * [C++] Add WithinUlp testing functions (#44906)
+  * [C++][Python] Add Hyperbolic Trig functions (#44630)
+  * [C++] Enable mimalloc by default, disable jemalloc by default
+    and more (#44951)
+  * [C++] Add support for building system OpenTelemetry (#44983)
+  * [C++][CMake] Use librt only for Linux (#44984)
+  * [C++] Support for fixed-size list in conversion of range tuple
+    (#45008)
+  * [C++][Parquet] Allow configuring the default footer read size
+    (#45016)
+  * [C++] Remove result_internal.h (#45066)
+  * [FlightRPC][C++] Deprecate InitializeFlightUcx before removing
+    UCX (#45080)
+  * [C++][Parquet] Add GetReadRanges function to FileReader
+    (#45093)
+  * [C++] Apply a cstdint patch to bundled Thrift for GCC 15
+    (#45097)
+  * [C++] Remove useless “hash table ready” states in swiss join
+    (#45136)
+  * [CI][C++] Add a GCC 15 job (#45138)
+  * [C++] Ensure using cpp/cmake_modules/*.cmake (#45143)
+  * [CI][C++] Upgrade Alpine Linux to 3.18 from 3.16 (#45168)
+  ## Bug Fixes
+  * [C++] Fix CopyFiles when destination is a FileSystem with
+    background_writes (#44897)
+  * [C++][Python] Fix ORC crash when file contains unknown timezone
+    (#45051)
+  * [C++] Replace std::aligned_storage that is deprecated in C++23
+    (#45019)
+  * [C++][Parquet] Refuse writing non-nullable column that contains
+    nulls (#44921)
+  * [C++] Initialize offset vector head as 0 after memory allocated
+    in grouper.cc (#43123)
+  * [C++] io::BufferedInput: Fix invalid state after SetBufferSize
+    (#44387)
+  * [C++][Parquet] Fix schema conversion from two-level encoding
+    nested list (#43995)
+  * [C++] Use “lib” for generating bundled dependencies even with
+    “clang-cl” (#44391)
+  * [C++] Fix unaligned load/store implementation for clang-18
+    (#44468)
+  * [C++] Use CMAKE_LIBTOOL on macOS (#44385)
+  * [CI][C++] Use setup-python on hosted runner (#44411)
+  * [C++] Update vendored date to 3.0.3 (#44482)
+  * [GLib][C++] Meson searches libraries with specific versions.
+    (#44475)
+  * [C++][Acero] Fix crash when thread in asof_join is not running
+    (#44584)
+  * [C++] NumericArray should not use ctor from parent directly
+    (#44542)
+  * [C++] FunctionOptions::{Serialize,Deserialize}() return an
+    error without ARROW_IPC (#45171)
+  * [C++][Acero] Enhance partition sort example (#44678)
+  * [C++][Python] Fix Flight Timestamp precision, revert workaround
+    from #43537 (#44681)
+  * [C++] Add S3 option to ignore SIGPIPE signals (#44735)
+  * [C++] Keep field metadata for keys and values when importing a
+    map type via the C data interface (#44715)
+  * [C++][CI] Fix arrow-c-bridge-test timeout with threading
+    disabled (#44737)
+  * [C++] Use lowercased windows.h to enable cross-platform builds
+    (#44755)
+  * [C++] Fix Float16.To{Little,Big}Endian on big endian machines
+    (#44768)
+  * [C++][Parquet] Fix read/write of metadata length footer on
+    big-endian systems (#44787)
+  * [C++][CI] Migrate to arrow::Result based
+    parquet::arrow::OpenFile() API in example tutorials (#44807)
+  * [C++] Fix thread-unsafe access in ConcurrentQueue::UnsyncFront
+    (#44849)
+  * [C++] Fix compilation error on GCC 8 (#44899)
+  * [C++][CI] Silence protobuf-generated deprecations (#44955)
+  * [C++] Use recommended downloads URLs for ORC and Thrift
+    (#44977)
+  * [C++] Include path in the documentation is wrong (#45031)
+  * [C++] Remove Parquet requirement from Arrow Acero and from
+    Arrow Dataset when not necessary (#45035)
+  * [C++] Add support for Boost 1.87.0 (#45057)
+  * [C++][CI] Fix test-build-cpp-fuzz failures (#45060)
+  * [C++][Parquet] Fix generation of repetition levels for
+    encryption test data (#45074)
+  * [C++] Avoid static const variable in the status.h (#45100)
+  * [C++][Parquet] Fix Null-dereference READ in
+    parquet::arrow::ListToSchemaField (#45152)
+  * [C++][Release] Add llvm-dev back to setup-ubuntu.sh (#45184)
+  * [C++][Parquet] test-conda-cpp-valgrind fails on
+    arrow-dataset-file-parquet-encryption-test
+- Release 18.1.0
+  ## Bug Fixes
+  * [C++] Add support for overwriting grpc_cpp_plugin path for
+    cross-compiling (#44507)
+  * [Docs][C++] Fix documentation directive for ChunkLocation
+    (#44505)
+  * [C++] Add find module for abseil that handles missing version
+    (#44613)
+  * [C++][Dev] Update bundled Thrift, update mirrors to use CDN
+    (#44685)
+  ## New Features and Improvements
+  * [C++] Move ChunkResolver to the public API (#44357)
+- Release 18.0.0
+  ## Bug Fixes
+  * [C++] data corruption when using `group_by` and `aggregate` on
+    large data sets
+  * [C++] Use PutObject request for S3 in OutputStream when only
+    uploading small data (#41564)
+  * [C++] Clean up implicit fallthrough warnings (#41892)
+  * [C++] Fix avx2 gather rows more than 2^31 issue in
+    CompareColumnsToRows (#43065)
+  * [C++][ArrowFlight] Crash due to UCS thread mode
+  * [C++] Add workaround for missing Boost dependency of Thrift
+    (#43328)
+  * [C++] Skip not Emscripten ready tests in CSV tests (#43724)
+  * [C++] Add date{32,64} to date{32,64} cast (#43192)
+  * [C++][Compute] Detect and explicit error for offset overflow in
+    row table (#43226)
+  * [C++] Fix decimal benchmarks to avoid out-of-bounds accesses
+    (#43212)
+  * [C++] Resolve Abseil like any other dependency in the build
+    system (#43219)
+  * [C++][Parquet] Refactor parquet::encryption::AesEncryptor to
+    use unique_ptr (#43222)
+  * [C++] Fix Abseil compile error on GCC 13 (#43157)
+  * [C++] Add missing serde methods to Location (#43332)
+  * [C++][Parquet] min-max Statistics doesn’t work well when one of
+    min-max is truncated (#43383)
+  * [C++][Parquet] parquet-dump-footer: Remove redundant link and
+    fix –debug processing (#43375)
+  * [C++] Ensure using bundled GoogleTest when we use bundled
+    GoogleTest (#43465)
+  * [C++][Compute] Fix invalid memory access when resizing
+    var-length buffer in row table (#43415)
+  * [C++][FlightRPC] Fix Flight UCX build issues (#43430)
+  * [C++] FIlter out zero length buffers on gRPC transport (#43448)
+  * [C++][Gandiva] Always use gdv_function_stubs.h in
+    context_helper.cc (#43464)
+  * [C++] Add support for the official LZ4 CMake package (#43468)
+  * [C++] Register the new Opaque extension type by default
+    (#43788)
+  * [C++][Acero] Fix typos in join benchmark (#43871)
+  * [C++][CI] Catch potential integer overflow in PoolBuffer
+    (#43886)
+  * [C++] Leak S3 structures if finalization happens too late
+    (#44090)
+  * [C++][Parquet] Fix reported metrics in
+    parquet-arrow-reader-writer-benchmark (#44082)
+  * [C++] Don’t use Boost.Process with Emscripten (#44097)
+  * [C++] Add home made _mm256_set_m128i for compilers who are
+    missing it (#44116)
+  * [C++] JsonExtensionType equality check ignores storage type
+    (#44215)
+  * [CI][C++][AppVeyor] Use conda instead of Mamba (#44235)
+  * [C++][FS][Azure] Fix edgecase where GetFileInfo incorrectly
+    returns NotFound on flat namespace and Azurite (#44302)
+  * [C++][FS][Azure] Catch missing exceptions on HNS support check
+    (#44274)
+  * [C++][FS][Azure] Fix minor hierarchical namespace bugs (#44307)
+  * [C++] Fix S3 error handling in ObjectOutputStream (#44335)
+  * [C++] Disable jemalloc by default on ARM (#44380)
+  ## New Features and Improvements
+  * [C++][Python] Native support for UUID (#37298)
+  * [C++][Python] Bool8 Extension Type Implementation (#43488)
+  * [C++][Parquet] Add JSON canonical extension type (#13901)
+  * [C++][Compute] Replace explicit checking with DCHECK for
+    invariants in row segmenter (#44236)
+  * [C++][CI] Improve IPC fuzzing seed corpus (#43621)
+  * [Documentation][C++] Explicitly note that compute is optional
+    (#43629)
+  * [C++] Azure file system write buffering & async writes (#43096)
+  * [C++][Parquet] Separate encoders and decoder (#43972)
+  * [C++][Python][Parquet] Support reading/writing key-value
+    metadata from/to ColumnChunkMetaData (#41580)
+  * [Docs][C++] Is arrow::dataset namespace still experimental?
+  * [C++] Add arrow::ArrayStatistics (#43273)
+  * [CI][C++] Update Minio version (#44225)
+  * [C++][Parquet] Add binary that extracts a footer from a parquet
+    file (#42174)
+  * [C++] Support casting to and from utf8_view/binary_view
+    (#43302)
+  * [C++] Update bundled vendor/datetime to support for building
+    with libc++ and C++20 (#43094)
+  * [C++] Implement PathFromUri support for Azure file system
+    (#43098)
+  * [C++][Compute] Fix the unnecessary allocation of extra bytes
+    when encoding row table (#43125)
+  * [C++][Parquet] Replace use of int with int32_t in the internal
+    Parquet encryption APIs (#43413)
+  * [C++][Parquet] Refactor Encryptor API to use arrow::util::span
+    instead of raw pointers (#43195)
+  * [C++][Parquet] Default initialize some parquet metadata
+    variables (#43144)
+  * [C++] Fix CMake link order for AWS SDK (#43230)
+  * [C++] Suggest a cast when Concatenate fails due to offsets
+    overflow (#43190)
+  * [C++] Support basic is_in predicate simplification (#43761)
+  * [C++][AzureFS] Ignore password field in URI (#44220)
+  * [C++] Add lint for DCHECK in public headers (#43248)
+  * [C++][FlightRPC] Reduce repetition in flight/types.cc in serde
+    functions (#43237)
+  * [C++][Parquet] remove useless template parameter of
+    DeltaLengthByteArrayEncoder (#43250)
+  * [C++] Always prefer mimalloc to jemalloc (#40875)
+  * [C++][Flight] Use a Base CRTP type for the types used in RPC
+    calls (#43255)
+  * [C++] Expand the ‘take’ function tests to cover more
+    chunked-array cases (#43292)
+  * [C++][Parquet] Enhance the comment for ColumnReader/Decoder
+    (#44003)
+  * [C++] Order classes in flight/types.h according to Flight.proto
+    (#43330)
+  * [C++][Parquet] Deprecate ColumnChunk::file_offset field and no
+    longer write Metadata at end of Chunk (#43428)
+  * [C++] Add benchmark for binary view builder (#43445)
+  * [C++][Python] Add Opaque canonical extension type (#43458)
+  * [Java][C++] Support more CsvFragmentScanOptions in JNI call
+    (#43482)
+  * [C++] Thirdparty: Bump lz4 to 1.10.0 (#43493)
+  * [C++][Compute] Widen the row offset of the row table to 64-bit
+    (#43389)
+  * [C++] Use ViewOrCopyTo instead of CopyTo when pretty printing
+    non-CPU data (#43508)
+  * [FlightRPC][C++] Reduce the number of references to
+    protobuf::Any (#43544)
+  * [C++] Simplify arrow::ArrayStatistics::ValueType (#43581)
+  * [C++][GLib] Don’t install arrow-cuda.pc/arrow-cuda-glib.pc on
+    Windows (#43593)
+  * [C++] Remove redundant default constructor/deconstructor in
+    arrow::ArrayStatistics (#43579)
+  * [C++] Remove std::optional from
+    arrow::ArrayStatistics::is_{min,max}_exact (#43595)
+  * [C++][FlightRPC] Move the FlightTestServer to its own .cc and
+    .h files (#43678)
+  * [C++] Compute: fix register kernel SimdLevel for
+    AddMinMax512AggKernels (#43704)
+  * [C++] Prevent Snappy from disabling RTTI when bundled (#43706)
+  * [C++][FS][Azure] Use the latest Azurite and update the bundled
+    Azure SDK for C++ to azure-identity_1.9.0 (#43723)
+  * [C++][Parquet][CI] Parquet: Introducing more bad_data for
+    testing (#43708)
+  * [C++][Parquet] Dataset: Handle num-nulls in Parquet correctly
+    when !HasNullCount() (#43726)
+  * [C++] Clarify the way SIMD-enabled agg kernels come from the
+    same code in different compilation units (#43720)
+  * [C++] Fix Scalar boolean handling in row encoder (#43734)
+  * [C++] Add support for Boost 1.86 (#43766)
+  * [C++] Compute: More comment in RowEncoder (#43763)
+  * [C++] Acero: Minor code enhancement for Join (#43760)
+  * [C++] Fix the case when boolean_{any 	all} meets constant input
+    with length in Acero (#43799)
+  * [C++] Add chunked Take benchmarks with a small selection factor
+    (#43772)
+  * [C++] Indent preprocessor directives (#43798)
+  * [C++] Attach arrow::ArrayStatistics to arrow::ArrayData
+    (#43801)
+  * [C++] Enable filesystem automatically when one of
+    ARROW_{AZURE,GCS,HDFS,S3}=ON is specified (#43806)
+  * [C++] Expose the set of device types where a ChunkedArray is
+    allocated (#43853)
+  * [C++] Make ChunkResolver::ResolveMany output a list of
+    ChunkLocations (#43928)
+  * [C++][Parquet] Add support for arrow::ArrayStatistics: non
+    zero-copy int based types (#43945)
+  * [C++][Parquet] Guard against use of cleared decryptor/encryptor
+    (#43947)
+  * [C++] Add tests based on random data and benchmarks to
+    ChunkResolver::ResolveMany (#43954)
+  * [C++] Enhance error message for URI parsing (#43938)
+  * [CI][C++][Dev] Add cpplint to pre-commit (#43982)
+  * [C++][Parquet] Add support for arrow::ArrayStatistics:
+    zero-copy types (#43984)
+  * [C++][Acero] Some code cleanup to Grouper (#43988)
+  * [C++] Add missing std::move() in array_nested.cc (#43993)
+  * [C++][Docs] Add missing install command in building docs
+    (#44000)
+  * [C++][Parquet] Add support for arrow::ArrayStatistics: boolean
+    (#44009)
+  * [C++] IPC: ipc reader/writer code enhancement (#44019)
+  * [C++][Compute] Reduce the complexity of row segmenter (#44053)
+  * [C++][Parquet] Add Float16 reading benchmarks (#44073)
+  * [C++][Parquet] Remove deprecated APIs (#44080)
+  * [C++][Acero] Add more row segmenter tests (#44166)
+  * [C++][Parquet] Fix typo in parquet/column_writer.cc (#40856)
+  * [C++] Avoid repeated ArrayData::offset lookups (#44190)
+  * [C++][Gandiva] Accept LLVM 19.1 (#44233)
+  * [C++] Unify simd header includings (#44250)
+  * [C++][Decimal] Use 0E+1 not 0.E+1 for broader compatibility
+    (#44275)
+  * [Packaging][C++] Enable Azure file system for deb/rpm (#44348)
+- Drop apache-arrow-pr43766-boost1_86.patch
+- Release notes for 18.0.0 and 19.0.0
+  
+
+-------------------------------------------------------------------
 Fri Sep 27 05:31:41 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Set the appropriate C++ complier for the given platform so

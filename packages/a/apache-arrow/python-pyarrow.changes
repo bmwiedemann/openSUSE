@@ -1,7 +1,160 @@
 -------------------------------------------------------------------
+Mon Feb 17 19:17:26 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 19.0.1
+  ## Bug Fixes
+  * [Python][CI] Make download_tzdata_on_windows more robust and
+    use tzdata package for tzinfo database on Windows for ORC
+    (#45425)
+  * [Python] Only enable the string dtype on pandas export for
+    pandas>=2.3 (#45383) [Python] Fix version comparison in pandas
+    compat for pandas 2.3 dev version (#45428)
+  ## Improvements
+  * [CI][Python] Temporarily avoid newer boto3 version (#45311)
+    [CI] Bump Minio version and unpin boto3 (#45320)
+- Release 19.0.0
+  ## New Features and Improvements
+  * [Python] Add more FlightInfo / FlightEndpoint attributes
+    (#43537)
+  * [Python] Support Arrow PyCapsule stream objects in
+    write_dataset (#43771)
+  * [Python] Support pandas future default string dtype
+  * [CI][Python] Use GitHub Packages for vcpkg cache (#44644)
+  * [Python] Add Python wrapper for JsonExtensionType (#44070)
+  * [Python][C++] Add version suffix to libarrow_python* libraries
+    (#44702)
+  * [Python] Add support for Decimal32 and Decimal64 types (#44882)
+  * [C++][Python] Add Hyperbolic Trig functions (#44630)
+  * [Python] Clean-up name / field_name handling in pandas compat
+    (#44963)
+  * [CI][Python][Packaging] Test 3.12 wheels on Ubuntu 24.04
+    (#45042)
+  * [CI][Packaging][Python] Simplify
+    dev/tasks/python-wheels/github.linux.yml (#45077)
+  * [Python] Honor the strings_to_categorical keyword in to_pandas
+    for string view type (#45176)
+  ## Bug Fixes
+  * [C++][Python] Fix ORC crash when file contains unknown timezone
+    (#45051)
+  * [Python] Converting month_day_nano_interal to numpy crashes
+  * [Python] Allow from_buffers to work with StringView on Python
+    (#44701)
+  * [C++][Python] Fix Flight Timestamp precision, revert workaround
+    from #43537 (#44681)
+  * [Docs][Python] Add missing canonical extension types to PyArrow
+    arrays and datatypes docs (#44880)
+  * [Python] Trigger manual Garbage collection before checking
+    allocated bytes for dlpack tests (#44793)
+  * [Python][Packaging] Use delvewheel to repair Windows wheels
+    (#35323)
+  * [CI][Python] Fix and modernize AppVeyor build (#44999)
+  * [Python][Docs] Update docstrings for metadata methods on Field
+    and Schema classes (#45004)
+  * [CI][Python] Fix test_memory failures (#45007)
+  * [CI][Packaging][Python] Fix Docker push step for free-threaded
+    wheel builds (#45040)
+  * [Packaging][Python] Use ORC from vcpkg instead of bundled on
+    Linux and macOS (#45046)
+- Release 18.1.0
+  ## Bug Fixes
+  * [Release][Packacing][Python] Set PARQUET_TEST_DATA on
+    verify-release-candidate-wheels.bat (#44462)
+  ## New Features and Improvements
+- Release 18.0.0
+  ## Bug Fixes
+  * [Python][Packaging] Bump MACOSX_DEPLOYMENT_TARGET to 12 instead
+    of 11 (#43137)
+  * [Release][Packaging][Python] Add tzdata as conda env
+    requirement to avoid ORC failure (#43233)
+  * [Python] Give precedence to pycapsule interface in
+    pa.schema(..) (#43486)
+  * [Python] Sanitize Python reference handling in UDF
+    implementation (#43557)
+  * [Python] Allow tuple for rename columns (#43609)
+  * [Packaging][Python] Fix vcpkg version detection in macOS wheel
+    build jobs (#43615)
+  * [Python] Fix compilation on Cython<3 (#43765)
+  * [Python][CI] Correct PARQUET_TEST_DATA path in wheel tests
+    (#43786)
+  * [CI][Packaging][Python] Avoid uploading wheel to gemfury if
+    version already exists (#43816)
+  * [CI][Python] Skip test that requires PARQUET_TEST_DATA env on
+    emscripten (#43906)
+  * [Python] Fix threading issues with borrowed refs and pandas
+    (#44047)
+  * [Benchmarking][Python] Avoid uwsgi install failure on macOS
+    (#44221)
+  * [CI][Release][Python] Do not verify Python on Ubuntu 20.04
+    (#44254)
+  * [CI][Python] Remove ds requirement from test collection on
+    test_dataset.py (#44370)
+  ## New Features and Improvements
+  * [C++][Python] Native support for UUID (#37298)
+  * [C++][Python] Bool8 Extension Type Implementation (#43488)
+  * [Python] Make NumPy an optional runtime dependency (#41904)
+  * [Python] Add StructType attribute to access all its fields
+    (#43481)
+  * [CI][Python] Use pipx to install GCS testbench (#43852)
+  * [Python][CI][Packaging] Don’t upload sdist to scientific-python
+    nightly channel (only wheels) (#43943)
+  * [Python][CI][Packaging] Upload nightly wheels to main label of
+    scientific-python-nightly-wheels channel (#43932)
+  * [CI][Packaging][Python] Upload pyarrow nightly wheels to
+    scientific python channel on Anaconda (#43862)
+  * [C++][Python][Parquet] Support reading/writing key-value
+    metadata from/to ColumnChunkMetaData (#41580)
+  * [Python] Ensure (Chunked)Array/RecordBatch/Table methods don’t
+    crash with non-CPU data
+  * [Python] Let StructArray.from_array accept a type in addition
+    to names or fields (#43047)
+  * [Python] Test FlightStreamReader iterator (#42086)
+  * [Python] Add bindings for CopyTo on RecordBatch and Array
+    classes (#42223)
+  * [Python] Use Py_IsFinalizing from pythoncapi_compat.h (#43767)
+  * [Python] Add bindings for memory manager and device to Context
+    class (#43392)
+  * [C++][Python] Add Opaque canonical extension type (#43458)
+  * [Python] Deprecate passing build flags to setup.py (#43515)
+  * [Python][Packaging][CI] Drop Python 3.8 support (#43970)
+  * [Python][CI] Add Python 3.13 conda test build (#44192)
+  * [Python][CI][Packaging] Use released versions to build and test
+    wheels on Python 3.13 (#44193)
+  * [Python] Set up wheel building for Python 3.13 (#43539)
+  * [Python] Remove usage of deprecated pkg_resources in setup.py
+    (#43602)
+  * [Python][CI] Add a Crossbow job with the free-threaded build
+    (#43671)
+  * [Python] Do not use borrowed references APIs (#43540)
+  * [Python] Declare support for free-threading in Cython (#43606)
+  * [Python][CI] Add a Crossbow job with a debug CPython
+    interpreter (#43565)
+  * [Python][Dataset] Python / Cython interface to C++
+    arrow::dataset::Partitioning::Format (#43740)
+  * [Python][CI] Simplify python/requirements-wheel-test.txt file
+    (#43691)
+  * [Python] RecordBatch fails gracefully on non-cpu devices
+    (#43729)
+  * [Python] ChunkedArray fails gracefully on non-cpu devices
+    (#43795)
+  * [Python][Packaging] Remove numpy dependency from pyarrow
+    packaging (#44148)
+  * [Python] Build macOS and manylinux wheels for free-threading
+    (#43965)
+  * [Python] Table fails gracefully on non-cpu devices (#43974)
+  * [Python] Deprecate the no longer used serialize/deserialize
+    Pyarrow C++ functions (#44064)
+  * [CI][Python] Enable S3 testing on Windows wheel builds (#44093)
+  * [CI][Python] Enable S3 tests on macOS CI (#44129)
+  * [Packaging][Python] Use macOS 12 as deployment target to have
+    macOS 12 pyarrow wheels (#44315)
+  * [Packaging][Python] Disable interactive deb configuration in
+    wheel-manylinux--cp313t- (#44362)
+- Drop pyarrow-pr433325-extradirs.patch
+
+-------------------------------------------------------------------
 Thu Sep 26 23:24:22 UTC 2024 - Guang Yee <gyee@suse.com>
 
-- Enable sle15_python_module_pythons. 
+- Enable sle15_python_module_pythons.
 
 -------------------------------------------------------------------
 Wed Aug 14 20:27:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
@@ -356,12 +509,12 @@ Mon Jan 15 20:42:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Nov 14 23:29:03 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- Fix cve in changelog 
+- Fix cve in changelog
 
 -------------------------------------------------------------------
 Tue Nov 14 09:28:23 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- Update to 14.0.1 
+- Update to 14.0.1
 - drop pyarrow-pr37481-pandas2.1.patch
 - fixes boo#1216991 CVE-2023-47248
  * GH-38431 - [Python][CI] Update fs.type_name checks for s3fs tests
@@ -544,7 +697,7 @@ Sun Mar 12 05:31:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
   * [Python][Docs] adding info about TableGroupBy.aggregation with empty list (#14482)
   * [Python] DataFrame Interchange Protocol for pyarrow Table
   * [Python] Drop older versions of Pandas (<1.0) (#14631)
-  * [Python] Pass Cmake args to Python CPP 
+  * [Python] Pass Cmake args to Python CPP
   * [Docs][Python] Improve docs for S3FileSystem (#14599)
   * [Python] Add missing value accessor to temporal types (#14746)
   * [Python] Expose time32/time64 scalar values (#14637)
@@ -572,7 +725,7 @@ Sun Mar 12 05:31:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
   * [Python] Support passing create_dir thru pq.write_to_dataset (#14459)
   * [CI][Python] Fix pandas master/nightly build failure related to timedelta (#14460)
   * [Python] Fix writing files with multi-byte characters in file name (#14764)
-  * [Python] Handle pytest 8 deprecations about pytest.warns(None) 
+  * [Python] Handle pytest 8 deprecations about pytest.warns(None)
   * [Python] Remove ARROW_BUILD_DIR in building pyarrow C++ (#14498)
   * [Python] Honor default memory pool in Dataset scanning (#14516)
   * [Python] Fully support filesystem in parquet.write_metadata (#14574)

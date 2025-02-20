@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyarrow
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,15 @@
 %bcond_with xsimd
 %define plainpython python
 # See git submodule /testing pointing to the correct revision
-%define arrow_testing_commit 735ae7128d571398dd798d7ff004adebeb342883
+%define arrow_testing_commit d2a13712303498963395318a4eb42872e66aead7
+# See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
+%define parquet_testing_commit c7cf1374cf284c0c73024cd1437becea75558bf8
 %if %{suse_version} <= 1500
 # requires __has_builtin with keywords
 %define gccver 13
 %endif
 Name:           python-pyarrow
-Version:        17.0.0
+Version:        19.0.1
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -34,9 +36,8 @@ URL:            https://arrow.apache.org/
 # SourceRepository: https://github.com/apache/arrow
 Source0:        apache-arrow-%{version}.tar.gz
 Source1:        arrow-testing-%{version}.tar.gz
+Source2:        parquet-testing-%{version}.tar.gz
 Source99:       python-pyarrow.rpmlintrc
-# PATCH-FIX-UPSTREAM pyarrow-pr433325-extradirs.patch gh#apache/arrow/pull/43325
-Patch0:         pyarrow-pr433325-extradirs.patch
 BuildRequires:  %{python_module Cython >= 0.29.31}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.25}
@@ -96,10 +97,8 @@ This package provides the header files within the python
 platlib for consuming modules using cythonization.
 
 %prep
-%setup -n arrow-apache-arrow-%{version} -a1
+%setup -n arrow-apache-arrow-%{version} -a1 -a2
 %autopatch -p1
-# we disabled the jemalloc backend in apache-arrow
-sed -i 's/should_have_jemalloc = sys.platform == "linux"/should_have_jemalloc = False/' python/pyarrow/tests/test_memory.py
 
 %build
 pushd python
@@ -136,6 +135,7 @@ popd
 %{?gccver:export CXX=g++-%{gccver}}
 %{?gccver:export CC=gcc-%{gccver}}
 export ARROW_TEST_DATA="${PWD}/arrow-testing-%{arrow_testing_commit}/data"
+export PARQUET_TEST_DATA="${PWD}/parquet-testing-%{parquet_testing_commit}/data"
 # flaky tests
 donttest="test_total_bytes_allocated"
 donttest="$donttest or test_batch_lifetime"

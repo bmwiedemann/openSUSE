@@ -1,7 +1,7 @@
 #
 # spec file for package apache-arrow
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,23 @@
 # Required for runtime dispatch, not yet packaged
 %bcond_with xsimd
 
+# does not work with current grpc: gh#grpc/grpc#37968
+%bcond_with flight
+
 %if %{suse_version} <= 1500
 # requires __has_builtin with keywords
 %define gccver 13
 %endif
 
-%define sonum   1700
+%define sonum   1900
 # See git submodule /testing pointing to the correct revision
-%define arrow_testing_commit 735ae7128d571398dd798d7ff004adebeb342883
+%define arrow_testing_commit d2a13712303498963395318a4eb42872e66aead7
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
-%define parquet_testing_commit 74278bc4a1122d74945969e6dec405abd1533ec3
+%define parquet_testing_commit c7cf1374cf284c0c73024cd1437becea75558bf8
+# See cpp/thirdparty/versions.txt, replace by BuildRequires: pkgconfig(mimalloc) as soon as gh#apache/arrow#42211 is resolved
+%define arrow_mimalloc_build_version v2.0.6
 Name:           apache-arrow
-Version:        17.0.0
+Version:        19.0.1
 Release:        0
 Summary:        A development platform for in-memory data
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -43,8 +48,7 @@ URL:            https://arrow.apache.org/
 Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.tar.gz
 Source1:        https://github.com/apache/arrow-testing/archive/%{arrow_testing_commit}.tar.gz#/arrow-testing-%{version}.tar.gz
 Source2:        https://github.com/apache/parquet-testing/archive/%{parquet_testing_commit}.tar.gz#/parquet-testing-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM apache-arrow-pr43766-boost1_86.patch gh#apache/arrow#43766
-Patch1:         apache-arrow-pr43766-boost1_86.patch
+Source3:        https://github.com/microsoft/mimalloc/archive/%{arrow_mimalloc_build_version}.tar.gz#/mimalloc-%{arrow_mimalloc_build_version}.tar.gz
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
@@ -185,14 +189,18 @@ Group:          Development/Libraries/C and C++
 Requires:       libarrow%{sonum} = %{version}
 Requires:       libarrow_acero%{sonum} = %{version}
 Requires:       libarrow_dataset%{sonum} = %{version}
+%if %{with flight}
 Requires:       libarrow_flight%{sonum} = %{version}
 Requires:       libarrow_flight_sql%{sonum} = %{version}
+%endif
 %if %{with static}
 Suggests:       %{name}-devel-static = %{version}
 Suggests:       %{name}-acero-devel-static = %{version}
 Suggests:       %{name}-dataset-devel-static = %{version}
+%if %{with flight}
 Suggests:       %{name}-flight-devel-static = %{version}
 Suggests:       %{name}-flight-sql-devel-static = %{version}
+%endif
 %endif
 
 %description    devel
@@ -341,6 +349,7 @@ sed -i 's/find_package(Protobuf/find_package(Protobuf CONFIG/' cpp/cmake_modules
 %{?gccver:export CC=gcc-%{gccver}}
 export CFLAGS="%{optflags} -ffat-lto-objects"
 export CXXFLAGS="%{optflags} -ffat-lto-objects"
+export ARROW_MIMALLOC_URL=%{SOURCE3}
 
 pushd cpp
 %cmake \
@@ -361,14 +370,15 @@ pushd cpp
    -DARROW_CSV:BOOL=ON \
    -DARROW_DATASET:BOOL=ON \
    -DARROW_FILESYSTEM:BOOL=ON \
+%if %{with flight}
    -DARROW_FLIGHT:BOOL=ON \
    -DARROW_FLIGHT_SQL:BOOL=ON \
+%endif
    -DARROW_GANDIVA:BOOL=OFF \
    -DARROW_SKYHOOK:BOOL=OFF \
    -DARROW_HDFS:BOOL=ON \
    -DARROW_HIVESERVER2:BOOL=OFF \
    -DARROW_IPC:BOOL=ON \
-   -DARROW_JEMALLOC:BOOL=OFF \
    -DARROW_JSON:BOOL=ON \
    -DARROW_ORC:BOOL=OFF \
    -DARROW_PARQUET:BOOL=ON \
@@ -397,16 +407,20 @@ pushd cpp
 popd
 %if %{with tests}
 rm %{buildroot}%{_libdir}/libarrow_testing.so*
-rm %{buildroot}%{_libdir}/libarrow_flight_testing.so*
 rm %{buildroot}%{_libdir}/pkgconfig/arrow-testing.pc
+rm -Rf %{buildroot}%{_libdir}/cmake/ArrowTesting
+rm -Rf %{buildroot}%{_includedir}/arrow/testing
+%if %{with flight}
+rm %{buildroot}%{_libdir}/libarrow_flight_testing.so*
 rm %{buildroot}%{_libdir}/pkgconfig/arrow-flight-testing.pc
+rm -Rf %{buildroot}%{_libdir}/cmake/ArrowFlightTesting
+%endif
 %if %{with static}
 rm %{buildroot}%{_libdir}/libarrow_testing.a
+%if %{with flight}
 rm %{buildroot}%{_libdir}/libarrow_flight_testing.a
 %endif
-rm -Rf %{buildroot}%{_libdir}/cmake/ArrowTesting
-rm -Rf %{buildroot}%{_libdir}/cmake/ArrowFlightTesting
-rm -Rf %{buildroot}%{_includedir}/arrow/testing
+%endif
 %endif
 rm -r %{buildroot}%{_datadir}/doc/arrow/
 %fdupes %{buildroot}%{_libdir}/cmake
@@ -431,7 +445,7 @@ if [ -n "${GTEST_failing}" ]; then
 fi
 %ifarch s390x
 # bsc#1218592
-exclude_regex='--exclude-regex (arrow-dataset-file-parquet-test|parquet-internals-test|parquet-reader-test|parquet-arrow-test|parquet-arrow-internals-test|parquet-encryption-test|arquet-encryption-key-management-test)'
+exclude_regex='--exclude-regex (arrow-dataset-file-parquet-test|parquet-internals-test|parquet-reader-test|parquet-arrow-test|parquet-arrow-internals-test|parquet-encryption-test|parquet-encryption-key-management-test)'
 %endif
 %ctest --label-regex unittest $exclude_regex
 popd
@@ -441,10 +455,12 @@ popd
 %postun -n libarrow%{sonum}   -p /sbin/ldconfig
 %post   -n libarrow_acero%{sonum}  -p /sbin/ldconfig
 %postun -n libarrow_acero%{sonum}  -p /sbin/ldconfig
+%if %{with flight}
 %post   -n libarrow_flight%{sonum}  -p /sbin/ldconfig
 %postun -n libarrow_flight%{sonum}  -p /sbin/ldconfig
 %post   -n libarrow_flight_sql%{sonum}  -p /sbin/ldconfig
 %postun -n libarrow_flight_sql%{sonum}  -p /sbin/ldconfig
+%endif
 %post   -n libarrow_dataset%{sonum}   -p /sbin/ldconfig
 %postun -n libarrow_dataset%{sonum}   -p /sbin/ldconfig
 %post   -n libparquet%{sonum} -p /sbin/ldconfig
@@ -463,6 +479,7 @@ popd
 %license LICENSE.txt NOTICE.txt header
 %{_libdir}/libarrow_acero.so.*
 
+%if %{with flight}
 %files -n libarrow_flight%{sonum}
 %license LICENSE.txt NOTICE.txt header
 %{_libdir}/libarrow_flight.so.*
@@ -470,6 +487,7 @@ popd
 %files -n libarrow_flight_sql%{sonum}
 %license LICENSE.txt NOTICE.txt header
 %{_libdir}/libarrow_flight_sql.so.*
+%endif
 
 %files -n libarrow_dataset%{sonum}
 %license LICENSE.txt NOTICE.txt header
@@ -487,8 +505,10 @@ popd
 %{_libdir}/libarrow.so
 %{_libdir}/libarrow_acero.so
 %{_libdir}/libarrow_dataset.so
+%if %{with flight}
 %{_libdir}/libarrow_flight.so
 %{_libdir}/libarrow_flight_sql.so
+%endif
 %{_libdir}/pkgconfig/arrow*.pc
 %dir %{_datadir}/arrow
 %{_datadir}/arrow/gdb
@@ -511,6 +531,7 @@ popd
 %license LICENSE.txt NOTICE.txt header
 %{_libdir}/libarrow_dataset.a
 
+%if %{with flight}
 %files flight-devel-static
 %license LICENSE.txt NOTICE.txt header
 %{_libdir}/libarrow_flight.a
@@ -518,6 +539,7 @@ popd
 %files flight-sql-devel-static
 %license LICENSE.txt NOTICE.txt header
 %{_libdir}/libarrow_flight_sql.a
+%endif
 %endif
 
 %files -n apache-parquet-devel
