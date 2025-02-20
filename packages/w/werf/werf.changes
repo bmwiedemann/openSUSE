@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 19 05:53:18 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.27.1:
+  * chore: release 2.27.1
+  * refactor(build): remove unused code
+  * fix(build, buildah, dockerfile, staged): fix <bin>: no found
+    (invalid PATH)
+  * test(dev): add mockgen to mock generation
+  * chore(build): remove warning in docker mode
+
+-------------------------------------------------------------------
 Wed Feb 12 11:44:37 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.27.0:
