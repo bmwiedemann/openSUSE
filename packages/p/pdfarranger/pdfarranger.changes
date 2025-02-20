@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:37:26 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Use pythons so we can build also for Leap with python311.
+
+-------------------------------------------------------------------
 Thu Oct 17 09:06:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.11.1
