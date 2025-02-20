@@ -58,4 +58,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6b0c1bfcb36900d925d8f59158d5504b</srcmd5>
+    <version>3.6</version>
+    <time>1740069599</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.6</comment>
+    <requestid>1247407</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb 20 13:01:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6
+  * A bug was fixed with sidedef packing where if multiple
+    scrolling walls would share a sidedef, those walls would scroll
+    at the wrong speed. This has been fixed in a generic way that
+    should also cover other potential bugs related to animated
+    walls.
+  * Compression of Hexen format levels is now supported.
+  * PSX/Doom 64 format levels are now handled correctly.
+  * There is now a `-q` command line option to suppress normal
+    output.
+  * Static limits on the number of lumps in a WAD and the number of
+    sidedefs in a level have been removed.
+  * This release adds support for BLOCKMAP lump compression.
+  * Two new arguments, `-extblocks` and `-extsides`, have been
+    added to allow use of the extended blockmap and sidedef limits
+    that are supported by some source ports.
+  * The list command (-l) no longer hides level sub-lumps like
+    BLOCKMAP or SIDEDEFS. The full set of lumps is always listed.
+- Delete wadptr-gcc15.patch (obsolete), wadptr-automake.diff
+  (no replacement).
+
+-------------------------------------------------------------------
+Thu Feb 20 09:07:18 UTC 2025 - pgajdos@suse.com
+
+- added patch wadptr-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Dec  2 13:18:44 UTC 2011 - coolo@suse.com
 
 - add automake as buildrequire to avoid implicit dependency

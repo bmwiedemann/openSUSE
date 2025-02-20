@@ -1,7 +1,7 @@
 #
 # spec file for package wadptr
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           wadptr
-Version:        2.4
+Version:        3.6
 Release:        0
 Group:          Development/Tools/Building
 Summary:        Redundancy compressor for Doom WAD files
-License:        GPL-2.0+
-Url:            http://soulsphere.org/projects/wadptr/
-
-Source:         wadptr-%version.tar.xz
-Patch1:         wadptr-automake.diff
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+License:        GPL-2.0-or-later
+URL:            http://soulsphere.org/projects/wadptr/
+#Git-Clone:     https://github.com/fragglet/wadptr
+Source:         https://github.com/fragglet/wadptr/archive/refs/tags/%name-%version.tar.gz
 BuildRequires:  automake
 BuildRequires:  xz
 
@@ -37,22 +35,17 @@ program works by exploiting the WAD file format to combine repeated /
 redundant material.
 
 %prep
-%setup
-%patch -P 1 -p1
+%autosetup -p1 -n %name-%name-%version
 
 %build
-autoreconf -fi;
-%configure --docdir=%_docdir/%name
-make %{?_smp_mflags};
-perl -i -pe 's/\x0d//gs' wadptr.txt;
+%make_build CFLAGS="%optflags"
 
 %install
-b="%buildroot";
-make install DESTDIR="$b";
+%make_install PREFIX="%_prefix"
 
 %files
-%defattr(-,root,root)
 %_bindir/*
-%doc %_docdir/%name
+%_mandir/man*/*.[0-9]*
+%license COPYING.md
 
 %changelog
