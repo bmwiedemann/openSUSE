@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 19 11:49:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.15.5
+  * Add PQ_DEFAULT enum to aws_tls_cipher_pref by @alexw91 in (#707)
+
+-------------------------------------------------------------------
 Thu Jan 30 11:58:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.15.4
