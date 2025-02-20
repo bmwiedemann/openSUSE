@@ -43,4 +43,12 @@
   * Bump github.com/hashicorp/go-retryablehttp from 0.7.6 to 0.7.7 (forwarded request 1194079 from ph03nix)</comment>
     <requestid>1194109</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>72e91c5e1114ae5802e0995b5f09db05</srcmd5>
+    <version>1.0.6+git0.63db4bd</version>
+    <time>1740065870</time>
+    <user>anag+factory</user>
+    <comment>- Add build option for position-independent executables (forwarded request 1247086 from ph03nix)</comment>
+    <requestid>1247100</requestid>
+  </revision>
 </revisionlist>

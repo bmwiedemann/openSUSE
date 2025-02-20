@@ -1,7 +1,7 @@
 #
 # spec file for package neonmodem
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,9 @@ Neon Modem Overdrive is a BBS-style command line client that supports Discourse,
 %autosetup -D -a 1
 
 %build
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
 go build
 
 %install
