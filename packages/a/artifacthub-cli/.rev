@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c9bdbf1cc681672020cb80dc3f7874c</srcmd5>
+    <version>1.20.0</version>
+    <time>1740087306</time>
+    <user>dimstar_suse</user>
+    <comment>new package artifacthub-cli: check that your packages are ready to be listed on AH by using the lint subcommand</comment>
+    <requestid>1247487</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Fri Feb 14 11:40:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package artifacthub-cli: check that your packages are ready
+  to be listed on AH by using the lint subcommand
