@@ -1,6 +1,8 @@
 <multibuild>
   <package>openmpi4-gnu-hpc</package>
   <package>openmpi4</package>
+  <package>openmpi5-gnu-hpc</package>
+  <package>openmpi5</package>
   <package>mpich-gnu-hpc</package>
   <package>mpich-ofi-gnu-hpc</package>
   <package>mpich-ofi</package>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 19 20:09:26 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add openmpi5 to flavours (jsc#PED-11356)
+
+-------------------------------------------------------------------
 Tue Jun 25 13:21:10 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable 32b builds of hpc flavours.

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,7 @@
 %define implem_list_dir %{_datadir}/mpitests/implem.d/
 %define sles_pre_15 (0%{?sle_version} > 120000 && 0%{?sle_version} < 150000)
 %define sles_pre_or_15 (0%{?sle_version} > 120000 && 0%{?sle_version} <= 150000)
+%define sles_pre_16 (0%{?sle_version} > 120000 && 0%{?sle_version} < 160000)
 
 Name:           mpitests%{pack_suff}
 %if "%{flavor}" == ""
@@ -132,6 +133,24 @@ ExcludeArch:    ppc64
 ExclusiveArch:  do_not_build
 %else
 ExcludeArch:    i586 %arm s390 ppc64
+%endif
+%endif
+
+%if "%{flavor}" == "openmpi5"
+%if %{sles_pre_16}
+# Disable openmpi5 builds for SLES < 16
+ExclusiveArch:  do_not_build
+%else
+ExcludeArch:    ppc64 %{arm} %ix86
+%endif
+%endif
+
+%if "%{flavor}" == "openmpi5-gnu-hpc"
+%if %{sles_pre_16}
+# Disable openmpi5 builds for SLES < 16
+ExclusiveArch:  do_not_build
+%else
+ExcludeArch:    %ix86 %arm s390 ppc64
 %endif
 %endif
 
