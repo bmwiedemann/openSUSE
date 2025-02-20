@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:44:26 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.1
+- Changes since 6.3.0:
+  * Fix crash in some non-KDE apps (kde#499960)
+  * update version for new release
+
+-------------------------------------------------------------------
 Thu Feb  6 13:46:34 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.0:
