@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 20 09:48:43 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch for reproducible builds (boo#1062303)
+
+-------------------------------------------------------------------
+Thu Feb 20 04:26:43 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Added missing dependencies in subpackages. 
+
+-------------------------------------------------------------------
+Wed Feb 19 08:59:10 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Plugins are moved to subpackages. 
+
+-------------------------------------------------------------------
+Wed Feb 19 06:55:55 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- The build of built-in plugins is involved. 
+
+-------------------------------------------------------------------
 Wed Feb  5 04:53:16 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.102.0:
