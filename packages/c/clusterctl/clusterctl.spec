@@ -20,7 +20,7 @@
 %define version_git_minor 8
 
 Name:           clusterctl
-Version:        1.9.4
+Version:        1.9.5
 Release:        0
 Summary:        CLI tool to handle the lifecycle of a Cluster API management cluster
 License:        Apache-2.0

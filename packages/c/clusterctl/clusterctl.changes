@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 19 05:47:34 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.5:
+  CLI-related changes from the changelog
+  https://github.com/kubernetes-sigs/cluster-api/releases/tag/v1.9.5
+  * Implement clusterctl move support for cross-ns CC
+  * Add ClusterctlVariables to QuickStartSpecInput
+
+-------------------------------------------------------------------
 Wed Jan 22 06:07:58 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.4:
