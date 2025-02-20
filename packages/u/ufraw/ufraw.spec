@@ -1,7 +1,7 @@
 #
 # spec file for package ufraw
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,15 @@
 #
 
 
+%if 0%{?suse_version} < 1599
+# Leap 15.X do have GIMP2...
+%bcond_without gimpui
 # gimptool-2.0 --gimpplugindir
 %define _gimpplugindir %(gimptool-2.0 --gimpplugindir)
+%else
+# ...but 16.0 and upwards (incl. TW) do not
+%bcond_with gimpui
+%endif
 
 Name:           ufraw
 Version:        0.22
@@ -49,18 +56,20 @@ BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(exiv2) >= 0.20
-BuildRequires:  pkgconfig(gimpui-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.12
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(gtkimageview) >= 1.6
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(lensfun) >= 0.2.5
 BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(libtiff-4)
+%if %{with gimpui}
+BuildRequires:  desktop-file-utils
+BuildRequires:  pkgconfig(gimpui-2.0)
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtkimageview) >= 1.6
+%endif
 
 %description
 ufraw is "The Unidentified Flying Raw". It is an application to read and
@@ -68,6 +77,7 @@ manipulate raw images from digital cameras. It takes care of the color
 management, handles the Nikon curve formats and has an editor for the tone
 curves. For batch processing of images, the command line can be used.
 
+%if %{with gimpui}
 %package -n gimp-ufraw
 Summary:        Raw photo loader plugin for The GIMP
 Group:          Productivity/Graphics/Other
@@ -91,6 +101,8 @@ cameras. It can be used as a GIMP plug-in. It reads raw images using
 Dave Coffin's raw conversion utility DCRaw, and it supports basic color
 management using Little CMS, allowing the user to apply color profiles.
 
+%endif
+
 %lang_package
 
 %prep
@@ -106,28 +118,38 @@ export CXXFLAGS="$CFLAGS"
 autoreconf -fi
 %configure \
 	--enable-contrast \
-	--enable-dst-correction
+	--enable-dst-correction \
+  --with-gtk=%{?with_gimpui:yes}%{!?with_gimpui:no}
 %make_build
 
 %install
 %make_install
-%suse_update_desktop_file -i ufraw Photography
 %find_lang %{name}
+%if %{with gimpui}
+mkdir -p %{buildroot}%{_datadir}/applications
+desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{name}.desktop
+%else
+rm %{buildroot}%{_datadir}/pixmaps/*
+%endif
 
 %files lang -f %{name}.lang
 
 %files
 %license COPYING
 %doc MANIFEST README TODO
-%{_bindir}/ufraw
 %{_bindir}/ufraw-batch
 %{_mandir}/man?/*
+%if %{with gimpui}
+%{_bindir}/ufraw
 %{_datadir}/pixmaps/ufraw.png
 %{_datadir}/applications/*.desktop
+%endif
 
+%if %{with gimpui}
 %files -n gimp-ufraw
 %dir %{_libdir}/gimp/
 %dir %{_libdir}/gimp/2.0
 %{_gimpplugindir}/plug-ins/
+%endif
 
 %changelog

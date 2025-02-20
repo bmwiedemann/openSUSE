@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 11:01:22 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable building the Gimp plugin for openSUSE >= 1600, since
+  GIMP 2.0 is no more for these distros.
+- Drop use of obsolete suse_update_desktop_file macro.
+
+-------------------------------------------------------------------
 Tue Jul 11 11:25:13 UTC 2023 - munix9@googlemail.com
 
 - Add ufraw-0.22-exiv2-0.28.patch to fix build with exiv 0.28.

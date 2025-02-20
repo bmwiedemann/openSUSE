@@ -411,4 +411,12 @@
   (https://cgit.freebsd.org/ports/tree/graphics/ufraw/files/patch-ufraw__exiv2.cc)</comment>
     <requestid>1104305</requestid>
   </revision>
+  <revision rev="55" vrev="13">
+    <srcmd5>3cd55e850440721b75c6b081b71dff31</srcmd5>
+    <version>0.22</version>
+    <time>1740066106</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1247339</requestid>
+  </revision>
 </revisionlist>
