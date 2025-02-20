@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:41:06 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.24.0:
+  * Make paths and fingerprints platform-agnostic (#1622)
+  * Add Sonar rule (#1756)
+  * Minor false positive improvements (#1758)
+  * Add support for streaming DetectReader (#1760)
+  * chore: Update github.com/wasilibs/go-re2 to v1.9.0 (#1763)
+  * docs: describe extended rules take precedence over base rules
+    (#1563)
+  * feat(git): disable link generation (#1748)
+  * added sourcegraph token rule (#1736)
+  * feat(config): add rule for .p12 files (#1738)
+  * add deno.lock to default exclusions (#1740)
+
+-------------------------------------------------------------------
 Thu Jan 30 05:54:54 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.23.3:
