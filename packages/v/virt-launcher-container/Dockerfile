@@ -64,6 +64,7 @@ RUN if [ "$(uname -m)" = "x86_64" ]; then \
 RUN if [ "$(uname -m)" = "aarch64" ]; then \
         zypper -n install \
                   qemu-arm \
+                  qemu-hw-display-virtio-gpu-pci \
                   qemu-uefi-aarch64 && \
         mkdir -p /usr/share/AAVMF && \
         ln -s ../qemu/aavmf-aarch64-code.bin /usr/share/AAVMF/AAVMF_CODE.fd && \
