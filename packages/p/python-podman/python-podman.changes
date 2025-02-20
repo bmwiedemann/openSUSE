@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 20 09:01:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.4.0.1:
+  * pyproject toml fixed for podman submodules invisibility by
+    @jyejare in #515
+  * Bump release to 5.4.0.1 by @inknos in #517
+
+-------------------------------------------------------------------
 Wed Feb 19 09:16:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - drop skip_python2 from spec
