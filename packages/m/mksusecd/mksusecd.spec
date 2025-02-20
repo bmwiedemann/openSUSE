@@ -18,7 +18,7 @@
 
 
 Name:           mksusecd
-Version:        3.3
+Version:        3.5
 Release:        0
 Summary:        Tool to create SUSE Linux installation ISOs
 License:        GPL-3.0+
@@ -48,6 +48,10 @@ Requires:       gpg2
 Requires:       mtools
 Requires:       squashfs
 Requires:       xz
+Requires:       perl-JSON
+BuildRequires:  pkgconfig(blkid)
+BuildRequires:  pkgconfig(uuid)
+BuildRequires:  pkgconfig(json-c)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -61,6 +65,7 @@ This is a tool to create SUSE Linux installation ISOs.
 %install
 make DESTDIR=%{buildroot} LIBDIR=%{_libexecdir} BINDIR=%{_bindir} install %{?_smp_mflags}
 install -D -m 644 mksusecd.1 %{buildroot}%{_mandir}/man1/mksusecd.1
+install -D -m 644 verifymedia.1 %{buildroot}%{_mandir}/man1/verifymedia.1
 
 %files
 %defattr(-,root,root)
@@ -68,6 +73,7 @@ install -D -m 644 mksusecd.1 %{buildroot}%{_mandir}/man1/mksusecd.1
 %{_libexecdir}/%{name}
 %doc README* *.md
 %doc %{_mandir}/man1/mksusecd.*
+%doc %{_mandir}/man1/verifymedia.*
 %if %suse_version >= 1500
 %license COPYING*
 %else

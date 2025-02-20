@@ -1,4 +1,23 @@
 --------------------------------------------------------------------
+Thu Feb 20 15:06:26 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#83
+- add missing perl-JSON dependency
+- rework signature test wording
+- change --ignore option to accept only one argument
+- 3.5
+
+--------------------------------------------------------------------
+Wed Feb 19 13:56:09 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#82
+- add verifymedia tool to check SUSE media for technical
+  correctness (bsc#1236828)
+- moved isohybrid into separate directory
+- add sligthly stripped down version of parti
+- 3.4
+
+--------------------------------------------------------------------
 Fri Feb 7 11:56:42 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#79
