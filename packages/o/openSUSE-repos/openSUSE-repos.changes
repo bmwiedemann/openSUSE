@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 20 18:11:50 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250220.13a9986:
+  * Use arch specific repodata on Leap 16.0 (#77)
+
+-------------------------------------------------------------------
 Tue Feb  4 12:32:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.20: the construct %else ifarch … was never

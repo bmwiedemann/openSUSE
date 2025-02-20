@@ -1,6 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/openSUSE/openSUSE-repos.git</param>
-              <param name="changesrevision">dd8c2eba1d76c85200ebd71b26ee3c4d207f96f7</param></service><service name="tar_scm">
+              <param name="changesrevision">13a998655ae8a7ca7e63967167b099a1b24ba8c1</param></service><service name="tar_scm">
                 <param name="url">https://github.com/lkocman/openSUSE-repos.git</param>
               <param name="changesrevision">16902ba1ccff43679a254e87d11103f4ef88a1d0</param></service></servicedata>
