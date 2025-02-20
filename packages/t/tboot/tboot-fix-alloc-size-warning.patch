@@ -1,7 +1,7 @@
-Index: tboot-1.11.4/lcptools-v2/pconf_legacy.c
+Index: tboot-1.11.9/lcptools-v2/pconf_legacy.c
 ===================================================================
---- tboot-1.11.4.orig/lcptools-v2/pconf_legacy.c
-+++ tboot-1.11.4/lcptools-v2/pconf_legacy.c
+--- tboot-1.11.9.orig/lcptools-v2/pconf_legacy.c
++++ tboot-1.11.9/lcptools-v2/pconf_legacy.c
 @@ -324,7 +324,7 @@ static lcp_policy_element_t *create(void
              ERROR("Error: no pcrs were selected.\n");
              return NULL;

@@ -1,8 +1,8 @@
-Index: tboot-1.9.8/tboot/20_linux_tboot
+Index: tboot-1.11.9/tboot/20_linux_tboot
 ===================================================================
---- tboot-1.9.8.orig/tboot/20_linux_tboot
-+++ tboot-1.9.8/tboot/20_linux_tboot
-@@ -72,7 +72,7 @@ CLASS="--class gnu-linux --class gnu --c
+--- tboot-1.11.9.orig/tboot/20_linux_tboot
++++ tboot-1.11.9/tboot/20_linux_tboot
+@@ -60,7 +60,7 @@ CLASS="--class gnu-linux --class gnu --c
  if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
    OS=GNU/Linux
  else
@@ -11,11 +11,11 @@ Index: tboot-1.9.8/tboot/20_linux_tboot
    CLASS="--class $(echo ${GRUB_DISTRIBUTOR} | tr '[A-Z]' '[a-z]' | cut -d' ' -f1) ${CLASS}"
  fi
  
-Index: tboot-1.9.8/tboot/20_linux_xen_tboot
+Index: tboot-1.11.9/tboot/20_linux_xen_tboot
 ===================================================================
---- tboot-1.9.8.orig/tboot/20_linux_xen_tboot
-+++ tboot-1.9.8/tboot/20_linux_xen_tboot
-@@ -63,7 +63,7 @@ CLASS="--class gnu-linux --class gnu --c
+--- tboot-1.11.9.orig/tboot/20_linux_xen_tboot
++++ tboot-1.11.9/tboot/20_linux_xen_tboot
+@@ -69,7 +69,7 @@ CLASS="--class gnu-linux --class gnu --c
  if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
    OS=GNU/Linux
  else

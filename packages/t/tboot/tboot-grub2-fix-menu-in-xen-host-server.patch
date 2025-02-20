@@ -23,10 +23,10 @@ v3:
 References: bnc#865815
 Porting to tboot in order to fix duplicated xen entries
 
-Index: tboot-1.11.1/tboot/20_linux_tboot
+Index: tboot-1.11.9/tboot/20_linux_tboot
 ===================================================================
---- tboot-1.11.1.orig/tboot/20_linux_tboot
-+++ tboot-1.11.1/tboot/20_linux_tboot
+--- tboot-1.11.9.orig/tboot/20_linux_tboot
++++ tboot-1.11.9/tboot/20_linux_tboot
 @@ -219,6 +219,49 @@ while [ "x${tboot_list}" != "x" ] && [ "
  		break
  	    fi
@@ -77,10 +77,10 @@ Index: tboot-1.11.1/tboot/20_linux_tboot
  	if test -n "${initrd}" ; then
  	    echo "Found initrd image: ${dirname}/${initrd}" >&2
  	else
-Index: tboot-1.11.1/tboot/20_linux_xen_tboot
+Index: tboot-1.11.9/tboot/20_linux_xen_tboot
 ===================================================================
---- tboot-1.11.1.orig/tboot/20_linux_xen_tboot
-+++ tboot-1.11.1/tboot/20_linux_xen_tboot
+--- tboot-1.11.9.orig/tboot/20_linux_xen_tboot
++++ tboot-1.11.9/tboot/20_linux_xen_tboot
 @@ -58,6 +58,12 @@ fi
  export TEXTDOMAIN=grub
  export TEXTDOMAINDIR=${prefix}/share/locale

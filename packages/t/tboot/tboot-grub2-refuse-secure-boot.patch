@@ -1,7 +1,7 @@
-Index: tboot-1.9.12/tboot/20_linux_tboot
+Index: tboot-1.11.9/tboot/20_linux_tboot
 ===================================================================
---- tboot-1.9.12.orig/tboot/20_linux_tboot
-+++ tboot-1.9.12/tboot/20_linux_tboot
+--- tboot-1.11.9.orig/tboot/20_linux_tboot
++++ tboot-1.11.9/tboot/20_linux_tboot
 @@ -34,6 +34,28 @@ if test -e ${sysconfdir}/default/grub-tb
    .  ${sysconfdir}/default/grub-tboot
  fi
@@ -31,10 +31,10 @@ Index: tboot-1.9.12/tboot/20_linux_tboot
  # Set the following variables in /etc/default/grub-tboot to customize command lines
  # (empty values are treated as if the variables were unset).
  [ -z "${GRUB_CMDLINE_TBOOT}" ] && unset GRUB_CMDLINE_TBOOT
-Index: tboot-1.9.12/tboot/20_linux_xen_tboot
+Index: tboot-1.11.9/tboot/20_linux_xen_tboot
 ===================================================================
---- tboot-1.9.12.orig/tboot/20_linux_xen_tboot
-+++ tboot-1.9.12/tboot/20_linux_xen_tboot
+--- tboot-1.11.9.orig/tboot/20_linux_xen_tboot
++++ tboot-1.11.9/tboot/20_linux_xen_tboot
 @@ -34,6 +34,28 @@ if test -e ${sysconfdir}/default/grub-tb
    .  ${sysconfdir}/default/grub-tboot
  fi

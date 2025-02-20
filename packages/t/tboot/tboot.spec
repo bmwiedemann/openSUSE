@@ -1,7 +1,7 @@
 #
 # spec file for package tboot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           tboot
-%define ver 1.11.4
-Version:        20210614_%{ver}
+%define ver 1.11.9
+Version:        20250219_%{ver}
 Release:        0
 Summary:        Program for performing a verified launch using Intel TXT
 License:        BSD-3-Clause
@@ -26,12 +26,12 @@ Group:          Productivity/Security
 URL:            https://sourceforge.net/projects/tboot/
 Source0:        https://downloads.sourceforge.net/project/tboot/tboot/tboot-%{ver}.tar.gz
 Source1:        tboot.rpmlintrc
-Patch3:         tboot-grub2-fix-menu-in-xen-host-server.patch
-Patch4:         tboot-grub2-fix-xen-submenu-name.patch
-Patch7:         tboot-distributor.patch
-Patch8:         tboot-grub2-refuse-secure-boot.patch
-Patch9:         tboot-bsc#1207833-copy-mbi.patch
-Patch10:        tboot-fix-alloc-size-warning.patch
+Patch1:         tboot-grub2-fix-menu-in-xen-host-server.patch
+Patch2:         tboot-grub2-fix-xen-submenu-name.patch
+Patch3:         tboot-distributor.patch
+Patch4:         tboot-grub2-refuse-secure-boot.patch
+Patch5:         tboot-bsc#1207833-copy-mbi.patch
+Patch6:         tboot-fix-alloc-size-warning.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64
 BuildRequires:  openssl-devel

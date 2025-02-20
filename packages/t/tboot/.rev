@@ -718,4 +718,23 @@
   bit of memory.</comment>
     <requestid>1196424</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>fe4167b478958a0fd8ec785f41d75ddf</srcmd5>
+    <version>20250219_1.11.9</version>
+    <time>1740065808</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.11.9 :
+  - Merge TXT Protected Range support branch.
+  - Remove unncessary OPENSSL_free from lcputils.c and add a functionality to
+    move ACM modules from the address range below TBOOT to above TBOOT, to
+    allow the usage of ACMs bigger than 256KB.
+  - Restore call to configure_vtd.
+- refresh and adjust tboot-bsc#1207833-copy-mbi.patch
+- refresh tboot-distributor.patch
+- refresh tboot-fix-alloc-size-warning.patch
+- refresh tboot-grub2-fix-menu-in-xen-host-server.patch
+- refresh tboot-grub2-fix-xen-submenu-name.patch
+- refresh tboot-grub2-refuse-secure-boot.patch</comment>
+    <requestid>1247027</requestid>
+  </revision>
 </revisionlist>
