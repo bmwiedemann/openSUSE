@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:44:04 UTC 2025 - dmueller@suse.com
+
+- Update to version 10.2+git20250219.c99462c:
+  * query_array: Convert None to empty string
+  * Add filecaps support
+
+-------------------------------------------------------------------
 Mon Feb 17 19:54:03 UTC 2025 - dmueller@suse.com
 
 - Update to version 10.2+git20250217.98df3ef:

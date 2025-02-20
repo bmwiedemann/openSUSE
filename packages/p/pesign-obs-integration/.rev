@@ -532,4 +532,14 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
   * use a stronger password that passes strength cehck in FIPS mode bsc#1228433</comment>
     <requestid>1246510</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>b040451f58daa0c8e161d5f3b07e0f96</srcmd5>
+    <version>10.2+git20250219.c99462c</version>
+    <time>1740065247</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 10.2+git20250219.c99462c:
+  * query_array: Convert None to empty string
+  * Add filecaps support</comment>
+    <requestid>1247099</requestid>
+  </revision>
 </revisionlist>
