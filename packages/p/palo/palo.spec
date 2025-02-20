@@ -25,6 +25,7 @@ License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/
 Source:         https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/snapshot/%{name}-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  help2man
 # lynx is required for generation of README
 BuildRequires:  lynx

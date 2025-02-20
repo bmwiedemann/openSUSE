@@ -1,0 +1,21 @@
+Author: Bernhard M. Wiedemann
+Date: 2025-01-17
+
+Allow for reproducible builds outside of Debian
+
+This patch was done while working on reproducible builds for openSUSE.
+
+Index: palo-2.27/palo/Makefile
+===================================================================
+--- palo-2.27.orig/palo/Makefile
++++ palo-2.27/palo/Makefile
+@@ -18,7 +18,8 @@ endif
+ ifneq ("$(wildcard /etc/debian_version)","")
+ BLDINFO := $(shell echo https://parisc.docs.kernel.org - `dpkg-parsechangelog -l../debian/changelog -SDate`)
+ else
+-BLDINFO := $(shell echo https://parisc.docs.kernel.org - `LC_TIME=C date`)
++SOURCE_DATE_EPOCH ?= $(shell date +%s)
++BLDINFO := $(shell echo https://parisc.docs.kernel.org - `LC_TIME=C date -d @$(SOURCE_DATE_EPOCH)`)
+ endif
+ 
+ # LDFLAGS=-Wl,-Bstatic 
