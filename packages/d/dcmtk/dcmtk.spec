@@ -30,6 +30,12 @@ Patch0:         dcmtk-fix-DCMTKTargets.cmake.patch
 Patch1:         0001-Added-check-to-make-sure-HighBit-BitsAllocated.patch
 Patch2:         0001-Replaced-call-of-delete-by-delete.patch
 Patch3:         0001-Fixed-issue-rendering-invalid-monochrome-image.patch
+# CVE-2025-25472
+Patch4:         0001-Fixed-another-issue-with-invalid-mono-images.patch
+# CVE-2025-25474
+Patch5:         0001-Fixed-another-issue-with-invalid-DICOM-images.patch
+# CVE-2025-25475
+Patch6:         0001-Fixed-issue-with-invalid-RLE-compressed-DICOM-images.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes

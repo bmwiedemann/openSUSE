@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 19 14:09:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patches:
+  * 0001-Fixed-another-issue-with-invalid-mono-images.patch
+    (CVE-2025-25472, boo#1237369)
+  * 0001-Fixed-another-issue-with-invalid-DICOM-images.patch
+    (CVE-2025-25474, boo#1237365)
+  * 0001-Fixed-issue-with-invalid-RLE-compressed-DICOM-images.patch
+    (CVE-2025-25475, boo#1237355)
+
+-------------------------------------------------------------------
 Mon Jan 13 18:43:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.6.9. See DOCS/CHANGES.368 for the full list of changes

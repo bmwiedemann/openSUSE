@@ -1,0 +1,41 @@
+From 8d66178e559e53ce8658ff671a68b6462865b0d5 Mon Sep 17 00:00:00 2001
+From: Joerg Riesmeier <dicom@jriesmeier.com>
+Date: Tue, 21 Jan 2025 11:12:28 +0100
+Subject: [PATCH] Fixed another issue with invalid DICOM images.
+
+Fixed issue when processing an invalid DICOM image where the number of
+pixels stored does not match the expected number of pixels (too less)
+and the combination of BitsAllocated and BitsStored is really unusual
+(e.g. 1 bit stored, but 52 bits allocated). In cases where the last
+pixel (e.g. a single bit) does not fit into the buffer of the input
+pixel data, a buffer overflow occurred on the heap. Now, the last entry
+of the buffer is filled with the smallest possible value (e.g. 0 in case
+of unsigned data).
+
+Thanks to Ding zhengzheng <xiaozheng.ding399@gmail.com> for the report
+and the sample file (PoC).
+---
+ dcmimgle/include/dcmtk/dcmimgle/diinpxt.h | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/dcmimgle/include/dcmtk/dcmimgle/diinpxt.h b/dcmimgle/include/dcmtk/dcmimgle/diinpxt.h
+index 6a37c2d..420e73c 100644
+--- a/dcmimgle/include/dcmtk/dcmimgle/diinpxt.h
++++ b/dcmimgle/include/dcmtk/dcmimgle/diinpxt.h
+@@ -643,6 +643,13 @@ class DiInputPixelTemplate
+                             skip -= times * bitsof_T1;
+                         }
+                     }
++                    /* fill the remaining entry (if any) with the smallest value that is possible */
++                    if (q < Data + Count)
++                    {
++                        DCMIMGLE_TRACE("not enough data, filling last entry of input buffer with value = " << getAbsMinimum());
++                        *q = OFstatic_cast(T2, getAbsMinimum());
++                    }
++
+                 }
+             } else
+                 DCMIMGLE_DEBUG("cannot allocate memory buffer for 'Data' in DiInputPixelTemplate::convert()");
+-- 
+2.48.1
+

@@ -302,4 +302,18 @@
     (CVE-2024-47796, boo#1235810)</comment>
     <requestid>1237553</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>ca019a826b0a4a05a1c7b5ad1acaeb8b</srcmd5>
+    <version>3.6.9</version>
+    <time>1740065885</time>
+    <user>anag+factory</user>
+    <comment>- Add patches:
+  * 0001-Fixed-another-issue-with-invalid-mono-images.patch
+    (CVE-2025-25472, boo#1237369)
+  * 0001-Fixed-another-issue-with-invalid-DICOM-images.patch
+    (CVE-2025-25474, boo#1237365)
+  * 0001-Fixed-issue-with-invalid-RLE-compressed-DICOM-images.patch
+    (CVE-2025-25475, boo#1237355)</comment>
+    <requestid>1247146</requestid>
+  </revision>
 </revisionlist>

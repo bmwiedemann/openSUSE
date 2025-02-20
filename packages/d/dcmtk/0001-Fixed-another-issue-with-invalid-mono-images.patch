@@ -1,0 +1,54 @@
+From 410ffe2019b9db6a8f4036daac742a6f5e4d36c2 Mon Sep 17 00:00:00 2001
+From: Joerg Riesmeier <dicom@jriesmeier.com>
+Date: Fri, 17 Jan 2025 17:53:50 +0100
+Subject: [PATCH] Fixed another issue with invalid mono images.
+
+Fixed issue when rendering an invalid monochrome DICOM image where the
+number of pixels stored does not match the expected number of pixels.
+In this case, only a single pixel is processed, but the pixel matrix is
+much larger. Filling the rest of the pixel matrix with the smallest
+possible value for the image is not working because of an optimized
+memory usage (value would be out of range). Now, the pixel value to be
+used is double-checked before it is actually filled into the "background"
+of the image.
+
+Thanks to Ding zhengzheng <xiaozheng.ding399@gmail.com> for the report
+and the sample file (PoC).
+---
+ dcmimgle/include/dcmtk/dcmimgle/dimoipxt.h | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/dcmimgle/include/dcmtk/dcmimgle/dimoipxt.h b/dcmimgle/include/dcmtk/dcmimgle/dimoipxt.h
+index 50389a540..f67967310 100644
+--- a/dcmimgle/include/dcmtk/dcmimgle/dimoipxt.h
++++ b/dcmimgle/include/dcmtk/dcmimgle/dimoipxt.h
+@@ -28,6 +28,7 @@
+ #include "dcmtk/ofstd/ofbmanip.h"
+ #include "dcmtk/ofstd/ofcast.h"
+ #include "dcmtk/ofstd/ofdiag.h"      /* for DCMTK_DIAGNOSTIC macros */
++#include "dcmtk/ofstd/oflimits.h"    /* for OFnumeric_limits<> */
+ 
+ #include "dcmtk/dcmimgle/dimopxt.h"
+ #include "dcmtk/dcmimgle/diinpx.h"
+@@ -72,9 +73,16 @@ class DiMonoInputPixelTemplate
+                 rescale(pixel);                     // "copy" or reference pixel data
+                 this->determineMinMax(OFstatic_cast(T3, this->Modality->getMinValue()), OFstatic_cast(T3, this->Modality->getMaxValue()));
+             }
+-            /* erase empty part of the buffer (= fill the background with the smallest possible value) */
++            /* erase empty part of the buffer */
+             if ((this->Data != NULL) && (this->InputCount < this->Count))
+-                OFBitmanipTemplate<T3>::setMem(this->Data + this->InputCount, OFstatic_cast(T3, this->Modality->getAbsMinimum()), this->Count - this->InputCount);
++            {
++                /* that means, fill the background with the smallest value that is possible */
++                const T3 minOut = OFnumeric_limits<T3>::min();
++                const T3 background = (this->Modality->getAbsMinimum() < OFstatic_cast(double, minOut)) ? minOut : OFstatic_cast(T3, this->Modality->getAbsMinimum());
++                const size_t count = (this->Count - this->InputCount);
++                DCMIMGLE_DEBUG("filing empty part of the intermediate pixel data (" << count << " pixels) with value = " << OFstatic_cast(double, background));
++                OFBitmanipTemplate<T3>::setMem(this->Data + this->InputCount, background, count);
++            }
+         }
+     }
+ 
+-- 
+2.48.1
+
