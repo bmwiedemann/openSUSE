@@ -64,4 +64,16 @@
   * init symbols in fdopen()</comment>
     <requestid>1229838</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>db81f67b101b9afbd88129a74aefb6ac</srcmd5>
+    <version>0+git.20250213</version>
+    <time>1740065875</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0+git.20250213:
+  * bash: unset systemd varibles respected by chronyd
+  * fix assertions for struct sockaddr_un length
+  * bash: use debuginfo option instead of unsetting variable
+  * bash: fix missing CLKNETSIM_TMPDIR use</comment>
+    <requestid>1247092</requestid>
+  </revision>
 </revisionlist>
