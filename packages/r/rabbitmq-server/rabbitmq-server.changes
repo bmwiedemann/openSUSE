@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 19 16:07:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add rabbitmq-server-allow-elixir-1.18.patch: Allow building CLI
+  with elixir 1.18.x. Based on upstream commit 5086e283.
+
+-------------------------------------------------------------------
 Fri Sep 13 08:44:59 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update to 3.13.7 see
