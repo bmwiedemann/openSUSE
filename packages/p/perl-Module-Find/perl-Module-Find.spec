@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Find
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,20 @@
 
 %define cpan_name Module-Find
 Name:           perl-Module-Find
-Version:        0.16
+Version:        0.170.0
 Release:        0
+# 0.17 -> normalize -> 0.170.0
+%define cpan_version 0.17
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Find and use installed modules in a (sub)category
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/C/CR/CRENZ/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/C/CR/CRENZ/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Module::Find) = %{version}
+%undefine       __perllib_provides
 Recommends:     perl(Test::Pod) >= 1.14
 Recommends:     perl(Test::Pod::Coverage) >= 1.04
 %{perl_requires}
@@ -42,7 +46,7 @@ If you want Module::Find to search in a certain directory on your harddisk
 you modify '@INC' before you call the Module::Find functions.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
