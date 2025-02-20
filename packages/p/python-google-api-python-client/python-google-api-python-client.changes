@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:34:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.161.0
+  * **aiplatform:** Update the api
+  * **analyticshub:** Update the api
+  * **androidenterprise:** Update the api
+  * **apigee:** Update the api
+  * **appengine:** Update the api
+  * **apphub:** Update the api
+  * **backupdr:** Update the api
+  * **batch:** Update the api
+  * **bigquery:** Update the api
+  * **bigquery:** Update the api
+  * **certificatemanager:** Update the api
+  * **chat:** Update the api
+  * **chromemanagement:** Update the api
+  * **clouddeploy:** Update the api
+  * **cloudfunctions:** Update the api
+  * **cloudfunctions:** Update the api
+  * **cloudidentity:** Update the api
+  * **compute:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **connectors:** Update the api
+  * **containeranalysis:** Update the api
+  * **container:** Update the api
+  * **container:** Update the api
+  * **content:** Update the api
+  * **dataflow:** Update the api
+  * **dataform:** Update the api
+  * **dataform:** Update the api
+  * **datafusion:** Update the api
+  * **datamigration:** Update the api
+  * **dataproc:** Update the api
+  * **datastream:** Update the api
+  * **datastream:** Update the api
+  * **developerconnect:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **displayvideo:** Update the api
+  * **documentai:** Update the api
+  * **drive:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebaseml:** Update the api
+  * **firebaseml:** Update the api
+  * **firestore:** Update the api
+  * **forms:** Update the api
+  * **gkehub:** Update the api
+  * **healthcare:** Update the api
+  * **identitytoolkit:** Update the api
+  * **integrations:** Update the api
+  * **logging:** Update the api
+  * **logging:** Update the api
+  * **memcache:** Update the api
+  * **merchantapi:** Update the api
+  * **migrationcenter:** Update the api
+  * **monitoring:** Update the api
+  * **monitoring:** Update the api
+  * **netapp:** Update the api
+  * **netapp:** Update the api
+  * **networksecurity:** Update the api
+  * **networksecurity:** Update the api
+  * **pubsub:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **redis:** Update the api
+  * **run:** Update the api
+  * **run:** Update the api
+  * **securitycenter:** Update the api
+  * **serviceconsumermanagement:** Update the api
+  * **servicecontrol:** Update the api
+  * **servicemanagement:** Update the api
+  * **servicenetworking:** Update the api
+  * **serviceusage:** Update the api
+  * **spanner:** Update the api
+  * **sqladmin:** Update the api
+  * **tagmanager:** Update the api
+  * **toolresults:** Update the api
+  * **vault:** Update the api
+  * **vault:** Update the api
+  * **walletobjects:** Update the api
+  * **webfonts:** Update the api
+  * **workloadmanager:** Update the api
+  * **workstations:** Update the api
+  * **youtube:** Update the api
+  * **youtube:** Update the api
+  * **admin:** Update the api
+  * **calendar:** Update the api
+  * **datalineage:** Update the api
+  * **dataportability:** Update the api
+  * **dlp:** Update the api
+  * **dlp:** Update the api
+  * **meet:** Update the api
+  * **secretmanager:** Update the api
+  * **secretmanager:** Update the api
+  * **sts:** Update the api
+
+-------------------------------------------------------------------
 Mon Feb  3 10:05:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.160.0
