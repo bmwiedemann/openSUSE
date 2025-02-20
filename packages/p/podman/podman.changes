@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 20 07:23:15 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- Register missing podman-clean-transient.service
+- Deregister podman-user-wait-network-online.service from non-user
+  service registration (bsc#1237261)
+
+
+-------------------------------------------------------------------
 Wed Feb 12 07:05:01 UTC 2025 - madhankumar.chellamuthu@suse.com
 
 - Update to version 5.4.0:

@@ -256,19 +256,20 @@ install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 %tmpfiles_create %{_tmpfilesdir}/podman-docker.conf
 
 %pre
-%service_add_pre podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
+%service_add_pre podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
+%systemd_user_pre podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
 
 %post
-%service_add_post podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
+%service_add_post podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
 %tmpfiles_create %{_tmpfilesdir}/podman.conf
-%systemd_user_post podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
+%systemd_user_post podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
 
 %preun
-%service_del_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
+%service_del_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
 %systemd_user_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
 
 %postun
-%service_del_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
+%service_del_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
 %systemd_user_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
 
 %changelog
