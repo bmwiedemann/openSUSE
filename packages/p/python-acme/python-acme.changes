@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 13 09:33:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Python 3.13 support
+  * certbot and its acme library now require cryptography>=43.0.0.
+  * certbot-nginx and our acme library now require pyOpenSSL>=25.0.0.
+  * Deprecated gen_ss_cert in acme.crypto_util as it uses deprecated
+    pyOpenSSL API.
+
+-------------------------------------------------------------------
 Mon Jan 27 13:58:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.1.0
@@ -9,7 +19,7 @@ Mon Jan 27 13:58:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
 Tue Dec  3 14:42:56 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.0.1
-  * Support for Python 3.8 was deprecated and will be removed in 
+  * Support for Python 3.8 was deprecated and will be removed in
     our next planned release.
 
 -------------------------------------------------------------------

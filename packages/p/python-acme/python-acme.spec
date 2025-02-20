@@ -19,16 +19,16 @@
 %{?sle15_python_module_pythons}
 %define libname acme
 Name:           python-%{libname}
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
 Source0:        https://files.pythonhosted.org/packages/source/a/%{libname}/%{libname}-%{version}.tar.gz
-BuildRequires:  %{python_module cryptography >= 3.2.1}
+BuildRequires:  %{python_module cryptography >= 43.0.0}
 BuildRequires:  %{python_module josepy >= 1.13.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyOpenSSL >= 17.5.0}
+BuildRequires:  %{python_module pyOpenSSL >= 25.0.0}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2019.3}
@@ -37,9 +37,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cryptography >= 3.2.1
+Requires:       python-cryptography >= 43.0.0
 Requires:       python-josepy >= 1.13.0
-Requires:       python-pyOpenSSL >= 17.5.0
+Requires:       python-pyOpenSSL >= 25.0.0
 Requires:       python-pyRFC3339
 Requires:       python-pytz >= 2019.3
 Requires:       python-requests >= 2.20.0

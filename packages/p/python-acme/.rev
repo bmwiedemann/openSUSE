@@ -801,4 +801,12 @@
 - Convert to pip-based build</comment>
     <requestid>1240554</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>a97cc9fef81880176280886c9a46c384</srcmd5>
+    <version>3.2.0</version>
+    <time>1740066111</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1247351</requestid>
+  </revision>
 </revisionlist>
