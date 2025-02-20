@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 16.7
+%define pgversion 16.8
 %define pgmajor 16
 %define buildlibs 0
 %define tarversion %{pgversion}
