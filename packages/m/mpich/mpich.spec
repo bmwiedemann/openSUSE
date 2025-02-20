@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@
 # % define build_static_devel 1
 
 %define pname mpich
-%define vers  4.2.2
-%define _vers 4_2_2
+%define vers  4.3.0
+%define _vers 4_3_0
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -259,6 +259,7 @@ Source3:        macros.hpc-mpich
 Source100:      _multibuild
 Patch1:         autogen-only-deal-with-json-yaksa-if-enabled.patch
 Patch2:         autoconf-pull-dynamic-and-not-static-libs-from-pkg-config.patch
+Patch3:         romio-disable-tests.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  fdupes
