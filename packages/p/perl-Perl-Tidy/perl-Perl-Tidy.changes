@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb 13 16:25:55 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20250214.0.0 (20250214)
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+
+  ## 2025 02 14
+      - A new option --keep-old-blank-lines-exceptions=s, or --kblx=s,
+        allows selected blank lines to be ignored when an input stream
+        is read. The parameter s is used to select the blank lines to
+        be ignored. This option provides an inverse to other blank line
+        parameters. The manual has details. See discussion git #180.
+      - A new option --warn-unused-keys, or -wuk, has been added which will
+        produce warnings for unused hash keys during formatting. This is similar
+        to --dump-unused-keys, which just exits and does not continue formatting.
+        A related new parameter --warn-unused-keys-cutoff=N provides control
+        over a filter which prevents warnings for keys which appear to be
+        members of large hashes used to communicate with external packages.
+        The manual has details.  See git #177.
+      - A new option --pack-opening-types='->' has been added to provide more
+        control over breaks of method call chains.  It tells perltidy not to
+        break at every method call when a chain of calls spans multiple lines.
+        This was the behavior in versions prior to 20250105. The default
+        starting with 20250105 is to break at each call of a method call chain
+        which spans multiple lines. See git #171.
+
+-------------------------------------------------------------------
 Sun Jan  5 05:32:07 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20250105.0.0 (20250105)

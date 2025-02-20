@@ -18,10 +18,10 @@
 
 %define cpan_name Perl-Tidy
 Name:           perl-Perl-Tidy
-Version:        20250105.0.0
+Version:        20250214.0.0
 Release:        0
-# 20250105 -> normalize -> 20250105.0.0
-%define cpan_version 20250105
+# 20250214 -> normalize -> 20250214.0.0
+%define cpan_version 20250214
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Indent and reformat perl scripts
@@ -65,7 +65,7 @@ completion. Additional discuss of errors is contained below in the ERROR
 HANDLING section.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
