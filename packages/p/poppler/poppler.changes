@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:01:53 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 25.02.0:
+  + core:
+    - cairo: fix issue for images reaching MAX_CAIRO_IMAGE_SIZE
+    - Improve rendering in some malformed documents
+    - Internal code improvements
+  + glib:
+   - Add new api to allow selecting annotations to render
+   - Fix a crash when getting a font description for a free text
+     annotation if it was not set
+- Bump poppler sover following upstream changes.
+
+-------------------------------------------------------------------
 Fri Jan  3 17:08:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 25.01.0:
