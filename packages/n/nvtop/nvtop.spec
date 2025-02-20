@@ -1,8 +1,8 @@
 #
 # spec file for package nvtop
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2020-2024 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2020-2025 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           nvtop
-Version:        3.1.0+89
+Version:        3.1.0+100
 Release:        0
 Summary:        A (h)top like task monitor for NVIDIA and AMD GPUs
 License:        GPL-3.0-or-later

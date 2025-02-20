@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 09 22:56:56 UTC 2025 - malcolmlewis@opensuse.org
+
+- Update to version 3.1.0+100:
+  * Make shared encoder/decoder utilization longer.
+  * AMD: Fix encode/decode usage being dropped when it is shared.
+  * Add missing va_end() call.
+
+-------------------------------------------------------------------
 Wed Dec 25 01:10:39 UTC 2024 - malcolmlewis@opensuse.org
 
 - Update to version 3.1.0+89:
