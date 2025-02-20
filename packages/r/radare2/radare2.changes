@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 17 16:04:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add CVE-2025-1378.patch (bsc#1237250, CVE-2025-1378)
+
+-------------------------------------------------------------------
 Tue Dec  3 09:56:42 UTC 2024 - Alexander Bergmann <abergmann@suse.com>
 
 - Update to version 5.9.8:
@@ -10,7 +15,7 @@ Tue Dec  3 09:56:42 UTC 2024 - Alexander Bergmann <abergmann@suse.com>
   https://github.com/radareorg/radare2/releases/tag/5.9.6
   https://github.com/radareorg/radare2/releases/tag/5.9.4
   https://github.com/radareorg/radare2/releases/tag/5.9.2
-  https://github.com/radareorg/radare2/releases/tag/5.9.0 
+  https://github.com/radareorg/radare2/releases/tag/5.9.0
 
 -------------------------------------------------------------------
 Wed Oct 18 10:53:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -85,27 +90,27 @@ Tue Feb  1 09:04:08 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.5.4:
   * New IOBanks APis and commands replacing skyline and making io faster (2-10x)
-  * Faster analysis, type matching, binary parsing (2-4x) 
+  * Faster analysis, type matching, binary parsing (2-4x)
   * [] and =[] esil operations has been removed (size is mandatory)
   * Lots of important bugs fixed in bin parsers and disassemblers
   * Add support for the latest iOS15 dyld4 Atlas-style cache formats
   * Autorename signature matching collisions and faster search
-  * Add assembler for riscv and disassemblers for PDP11, Alpha64 and armv7.v35 
-  * Improved integration with r2frida remote filesystems 
-  * Cleaning debugger for windows (32 and 64) and macOS makes it more reliable and stable 
+  * Add assembler for riscv and disassemblers for PDP11, Alpha64 and armv7.v35
+  * Improved integration with r2frida remote filesystems
+  * Cleaning debugger for windows (32 and 64) and macOS makes it more reliable and stable
   * Add seven segment printing (?ea for ascii-art text titles)
   * Improved xrefs visualization with new axfm and axtm commands
   * Add avg command to manage global variables
   * The sixref plugin is now easier to use to find xrefs on arm64 code
   * Improved multibin (select all bins or one) and multidex support in apk://
-  * Better build scripts for Windows (add asan and w32 profiles) 
+  * Better build scripts for Windows (add asan and w32 profiles)
   * Added armv7.v35 and improves esil emulation with the arm64.v35
   * Add more help messages and set scr.prompt.tabhelp true by default
-  * AES key wrap algorithm support in rahash2 
+  * AES key wrap algorithm support in rahash2
   * Fix var serialization issues in debugger reloading (ood) and projects saving (Ps)
   * Add Amiga and MSX rom/bin parser plugin and test @romerojoseant @trufae
   * Visual slides (r2s) allow interactive content to be used within r2
-  * Print and convert ternary values back and forth 
+  * Print and convert ternary values back and forth
   * Add the vector35 arm64 for analysis, esil and disasm and r2 can be built without capstone
   * Improved integration to use r2ghidra analysis and disassemble mainly tested for avr, v850 and arm64
   * Fix emulation of several x86 and arm64 instructions, including an scripted way
@@ -168,7 +173,7 @@ Mon Jan 11 15:03:37 UTC 2021 - Daniel Molkentin <daniel.molkentin@suse.com>
 -------------------------------------------------------------------
 Wed Aug 12 13:23:38 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
-- Update to 4.5.0 
+- Update to 4.5.0
   * Analysis
     - Initial API for base type kinds (enum, struct, union)
     - Rename PowerPC to PPC
@@ -473,7 +478,7 @@ Mon Mar 30 07:03:07 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
     FIx 32bit windows
     Rename "asan" to "sanitize" (#15412)
     Fix build for 32bit Linux systems
-    Fix build of the onefied shared lib 
+    Fix build of the onefied shared lib
 
   command
     Very simple tree sitter integration (#15414)
@@ -931,7 +936,7 @@ Fri Sep  6 06:33:25 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 
   r2pipe
     Initial support for r2pipe.html
- 
+
   rop
     Add ROP chain execution support in ragg2
 
@@ -1438,7 +1443,7 @@ Thu Sep  5 10:11:03 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
   * Avoid all recursive cases
   * Avoid warnings
   * use r_anal_bb_opaddr_i
- 
+
 
 -------------------------------------------------------------------
 Wed Aug 14 11:18:02 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
@@ -1930,7 +1935,7 @@ Wed Aug 14 11:18:02 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
   * Still true for latest binutils (v2.32 2019-02-02).
   * Renesas chip hardware manuals and IDA Pro only use bf/s and bt/s.
   * Complete R_CONS_ATTR_ series (#14411)
-  * 
+  *
 - Update to version 3.6.0
 
   * drop radare2-sysmagic.patch
@@ -2328,7 +2333,7 @@ Tue May 21 08:26:15 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
   * Honor anal.ignhintbits for hintbits
   * Honor fcn->bits in disassembly
   * Update capstone to use the NEXT branch
-  * Enable asm.jmpsub by default 
+  * Enable asm.jmpsub by default
   * Add asm.fcnsig instead of making function signature depend on asm.var
 
   esil
@@ -2849,7 +2854,7 @@ anal
   * Add avrr and aao in aaa
   * m68k architecture is always 32 bits and big endian
   * Implement jmptbl for Thumb TBB and TBH instructions
-  * Fix m68k analysis issues 
+  * Fix m68k analysis issues
   * Add R_ANAL_OP_MASK_OPEX
   * Add support for Thumb jmptbl based on TBH
   * Fix glitch found in analyzing jmptbl in debug
@@ -4164,7 +4169,7 @@ Mon Feb 25 09:38:58 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
   *  Add the missing fail arc for SBRx instruction
   *  Fix wrong splitting of functions in aac
   *  Initial implementation of emu.ssa
-  *  Fix infinite loop bug related to anal.nopskip 
+  *  Fix infinite loop bug related to anal.nopskip
   *  Use add-sorted instead of append+sort
   *  Heavy refactoring and sdbify the classes storage+logic
   *  Implement support for nword in ahi
@@ -4192,7 +4197,7 @@ Mon Feb 25 09:38:58 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
 
   build
 
-  *  Appveyor cleaning 
+  *  Appveyor cleaning
   *  Fix musl build (required for Alpine)
   *  Do not statically link binaries by default in sys/static.sh
   *  meson: Do not use glob with meson
@@ -4400,7 +4405,7 @@ Thu Jan 10 10:38:06 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
   * Add the missing fail arc for SBRx instruction
   * Fix wrong splitting of functions in aac
   * Initial implementation of emu.ssa
-  * Fix infinite loop bug related to anal.nopskip 
+  * Fix infinite loop bug related to anal.nopskip
   * Use add-sorted instead of append+sort
   * Heavy refactoring and sdbify the classes storage+logic
   * Implement support for nword in ahi
@@ -4428,7 +4433,7 @@ Thu Jan 10 10:38:06 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
 
   build
 
-  * Appveyor cleaning 
+  * Appveyor cleaning
   * Fix musl build (required for Alpine)
   * Do not statically link binaries by default in sys/static.sh
   * meson: Do not use glob with meson
@@ -4653,7 +4658,7 @@ Thu Jan 10 10:38:06 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
 Tue Jan  8 14:39:34 UTC 2019 - atoptsoglou@suse.com
 
 - Update to 3.2.0
-  
+
   anal
 
   * Add asm.hint.cdiv
@@ -4663,7 +4668,7 @@ Tue Jan  8 14:39:34 UTC 2019 - atoptsoglou@suse.com
   * Add the missing fail arc for SBRx instruction
   * Fix wrong splitting of functions in aac
   * Initial implementation of emu.ssa
-  * Fix infinite loop bug related to anal.nopskip 
+  * Fix infinite loop bug related to anal.nopskip
   * Use add-sorted instead of append+sort
   * Heavy refactoring and sdbify the classes storage+logic
   * Implement support for nword in ahi
@@ -4692,7 +4697,7 @@ Tue Jan  8 14:39:34 UTC 2019 - atoptsoglou@suse.com
 
   build
 
-  * Appveyor cleaning 
+  * Appveyor cleaning
   * Fix musl build (required for Alpine)
   * Do not statically link binaries by default in sys/static.sh
   * meson: Do not use glob with meson
@@ -5132,27 +5137,27 @@ Fri Nov 30 14:31:58 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
   * Fix asm.flags.inbytes not showing in graph
 
   magic
- 
+
   * Add help in wtf!? and add bitcode magic signature
 
   panels
- 
+
   * First step to support xrefs in visual panels
 
   port
- 
+
   * self plugin is now working in DragonFlyBSD
   * Support DragonflyBSD build and backtrace
   * Adding self proc support for FreeBSD
 
   print
- 
+
   * Implement , and ; in pf to rewind and be able to support unions
   * Fix #12116 - Implement bytesize for pvj
   * Add pfj Z format
 
   projects
- 
+
   * Open radare2 project after loading plugins and keep the -e flags
 
   refactor
@@ -5182,7 +5187,7 @@ Fri Nov 30 14:31:58 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
   * Remove "referenced" from RBinObject and remove get_object
 
   search
- 
+
   * /Cd is now using a proper bitmask to search the values
   * Fix regression in /rc and avoid repeated errors
   * Fix #11977 - Handle arg in on /r subcommands
@@ -5196,7 +5201,7 @@ Fri Nov 30 14:31:58 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
   * Fix #12166 - Implement tt* to list all types at once
 
   visual
- 
+
   * Add support for shift-arrows in st and rxvt-unicode
   * Fix #12307 - Escape ansi chars in cbin
   * Improve the Visual xrefs with from/to disasm and handle JK
@@ -5227,7 +5232,7 @@ Fri Nov 30 14:31:58 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
   * Initial ESIL support for WASM
 
   windows
- 
+
   * Fix gmtime_r for msvc
   * Fix visual panels crash on Windows
   * Fix unicode path issues in Windows
@@ -5235,24 +5240,24 @@ Fri Nov 30 14:31:58 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
 - Update to version 3.0.1
 
   anal
-  
+
   * Fix cyclomatic complexity computation when jump tables are involved
   * Fix #11838 - Use op.val in aar and honor asm.var.submin
 
   bin
-  
+
   * Revert "Fix #11869 by using r_bin_elf_p2v_new (#11876)
   * Fix #11869 by using r_bin_elf_p2v_new (#11876)
   * Support the new Apple Watch arm64_32 mach0 cputype
   * Complete mach0.lc.toString for better rabin2 -H
   * Revert "Fix #11869 by using r_bin_elf_p2v_new (#11876) bugs
- 
+
   bugs
 
   * core/cbin: vaddr/paddr were switched in iz
-  
+
   build
- 
+
   * Fix static blob build for android and disable libuv
   * Fix the build of the static merged shared library
   * Rewrite libr.a make target without partial-ld
@@ -5262,24 +5267,24 @@ Fri Nov 30 14:31:58 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
   * Don't strip binaries in static.sh (#11832)
 
   port
-  
+
   * Fix build for ptrace-wrap with musl
   * Fix #11834 - Check fbsd/nbsd versions for clock_nanosleep refactor
-  
+
   * API cleanup and support RCorebind in RSocket.R2Pipe
   * Fix gcc8 warnings and rename core/asm.c to casm.c
   * Fix #11553 - Remove the R_NOTNULL bad practice
 
   rules
-  
+
   * Add sys/release-notes.sh and define commit message conventions
 
   tools
-  
+
   * Allow multiple packages as arguments for r2pm -i,-c,-ci
 
   visual
-  
+
   * Fix visual panels glitch and handle 's' in zoom mode
   * Fix #11851 - Cursor and echo glitches in Visual
   * Fix displaying ESIL function comments in the graph
@@ -5334,7 +5339,7 @@ Tue Oct 16 10:43:58 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
   * Reimplement TCP Server with libuv and add configure/meson flags (#11403)
 
   Binaries
- 
+
   * Improvements for ELF section resizing
   * Fix entrypoint resolution when program headers is missing
   * Improve program headers handling in ELF
@@ -5345,7 +5350,7 @@ Tue Oct 16 10:43:58 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
   * rabin2 -OC, WIP requires proper refactoring and redesign
 
   IO
- 
+
   * Make r_io_plugin_{read,write}_at not seek character devices.
   * Add r_io_{desc,fd}_is_chardevice.
   * Add r_io_desc_open_plugin.
@@ -5421,13 +5426,13 @@ Tue Oct 16 10:43:58 UTC 2018 - Daniel Molkentin <daniel.molkentin@suse.com>
     implementation making it use less memory and perform better
 
   Heap
- 
+
   * dmh with glibc now works without symbols
   * linux_heap_glibc: fix dmhf and allows dmhf @thread_arena (#11441)
   * linux_heap_glibc : dmha and dmht, check threaded arenas free status (#11390)
 
   Bugs
- 
+
   * syscall: do not reload sdb database if nothing changes (#11801)
   * Fix more crashes related to the RStrBuficization of RAsmOp
   * Added main detection for linux64 endbr64 (#11731)
@@ -5537,7 +5542,7 @@ Tue Jul 10 10:21:46 UTC 2018 - daniel.molkentin@suse.com
   * Handle JK in vv, add _hud
   * Visual function browser - enter seeks to the function
   * In visual panels make JK scroll more instead of change frame selection
-  * 
+  *
   Graphs
 
   * Add colorized shortcuts to (mini)graph
@@ -5657,7 +5662,7 @@ Tue Jul 10 10:21:46 UTC 2018 - daniel.molkentin@suse.com
   * Support for every output format for callgraph (agc and agC)
   * Support every output format for the bb graph
   * switch/case edges are now also added to graph view via afbe
- 
+
   Types
 
   * Refactored and optimized afta command
@@ -5666,7 +5671,7 @@ Tue Jul 10 10:21:46 UTC 2018 - daniel.molkentin@suse.com
   * Array of struct now works with ts
   * Implement tss to show struct size
   * Implement ts* command
- 
+
   Build
 
   * Bring back libr.* targets in libr even without BUILD_MERGED
@@ -5783,7 +5788,7 @@ Tue Jul 10 10:21:46 UTC 2018 - daniel.molkentin@suse.com
   * Make av, avr and avra breakable by the user
   * In visual disassembly, add a shortcut ( ;[n]) on jump hints
   * Add ?a command in to show ASCII table
-   
+
 -------------------------------------------------------------------
 Mon Mar 12 10:22:28 UTC 2018 - daniel.molkentin@suse.com
 
@@ -5886,7 +5891,7 @@ Mon Jan  8 05:30:33 UTC 2018 - daniel.molkentin@suse.com
 Thu Aug 17 08:52:45 UTC 2017 - daniel.molkentin@suse.com
 
 - update to version 1.6.0
-  * drop radare2-cmd-fix-lock.patch 
+  * drop radare2-cmd-fix-lock.patch
   * drop CVE-2017-10929.patch
 
 -------------------------------------------------------------------
@@ -5900,12 +5905,12 @@ Thu Jul  6 09:46:56 UTC 2017 - daniel.molkentin@suse.com
 Sat Jul  1 00:49:50 UTC 2017 - daniel.molkentin@suse.com
 
 - add patch (already upstream)
-  * radare2-cmd-fix-lock.patch 
+  * radare2-cmd-fix-lock.patch
 
 -------------------------------------------------------------------
 Fri Jun 30 13:11:58 UTC 2017 - daniel.molkentin@suse.com
 
-- add dependencies to the devel package 
+- add dependencies to the devel package
 - ran spec cleaner
 
 -------------------------------------------------------------------
@@ -5917,7 +5922,7 @@ Fri Jun 30 11:03:33 UTC 2017 - mpluskal@suse.com
 - Small cleanup with spec-clenaer
 
 -------------------------------------------------------------------
-Fri Jun 30 08:30:56 UTC 2017 - daniel.molkentin@suse.com 
+Fri Jun 30 08:30:56 UTC 2017 - daniel.molkentin@suse.com
 
 - update to version 1.5.0
 - rebased patch
@@ -5967,7 +5972,7 @@ Wed Jun 29 23:17:35 UTC 2016 - boris@steki.net
   *  Parse LDID sha signatures with rabin2.
 - fixed patch to apply cleanly
 
- 
+
 
 -------------------------------------------------------------------
 Sun Mar 20 19:03:10 UTC 2016 - boris@steki.net
@@ -6006,7 +6011,7 @@ Sun Mar 20 19:03:10 UTC 2016 - boris@steki.net
      i4004, i8080, java, Malbolge, SH-4, M68K, ARC and LH5801 (that
      you can access with ?d or e asm.describe=true)
   *  axg to get a graph of the function xrefs to reach a specific point.
- 
+
 
 -------------------------------------------------------------------
 Tue Dec 30 21:59:07 UTC 2014 - mardnh@gmx.de

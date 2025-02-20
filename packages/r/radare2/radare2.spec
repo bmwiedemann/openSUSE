@@ -1,7 +1,7 @@
 #
 # spec file for package radare2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://www.radare.org
 Source:         https://github.com/radareorg/radare2/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         https://github.com/radareorg/radare2/commit/c6c772d2eab692ce7ada5a4227afd50c355ad545.patch#/CVE-2025-1378.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  file-devel
