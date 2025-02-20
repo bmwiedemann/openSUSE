@@ -22,17 +22,17 @@
 %define rname kdecoration
 
 %global sover 6
-%global private_sover 11
+%global private_sover 1
 %bcond_without released
 Name:           kdecoration6
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        KDE's window decorations library
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         %{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -53,6 +53,10 @@ Plugin based library to create window decorations.
 
 %package -n libkdecorations3private%{private_sover}
 Summary:        KDE's window decorations library
+%if "%{private_sover}" == "1"
+# Had wrong name once
+Obsoletes:      libkdecorations3private11 <= %{version}
+%endif
 
 %description -n libkdecorations3private%{private_sover}
 Plugin based library to create window decorations.
@@ -87,9 +91,11 @@ plugin based library to create window decorations.
 
 %files -n libkdecorations3-%{sover}
 %license LICENSES/*
+%{_kf6_libdir}/libkdecorations3.so.%{sover}
 %{_kf6_libdir}/libkdecorations3.so.*
 
 %files -n libkdecorations3private%{private_sover}
+%{_kf6_libdir}/libkdecorations3private.so.%{private_sover}
 %{_kf6_libdir}/libkdecorations3private.so.*
 
 %files devel

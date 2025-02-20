@@ -143,4 +143,15 @@
     <comment>Plasma 6.3</comment>
     <requestid>1244571</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f341b95d79b5b6cea0d1c8aa9ce0c88a</srcmd5>
+    <version>6.3.1</version>
+    <time>1740065508</time>
+    <user>anag+factory</user>
+    <comment>- Fix libkdecorations3private1 package name:
+  * SOVER is 1, not 11
+  * Add Obsoletes to replace the broken package
+  * Mention sover in %files to prevent this in the future (forwarded request 1247076 from Vogtinator)</comment>
+    <requestid>1247122</requestid>
+  </revision>
 </revisionlist>
