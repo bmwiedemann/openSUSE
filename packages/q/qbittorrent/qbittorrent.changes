@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 19 06:59:11 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.0.4
+  Bug fixes:
+  * Fix cannot remove trackers via WebAPI
+  * Fix torrent content checkbox state under certain conditions
+  * Hide zero and infinity values in peer list only when that
+    setting is set to `Always`
+  * Remove stopped torrent from "error" tracker filter
+  Web UI:
+  * Fix memory leak in context menus
+  Web API:
+  * Don't trim string parameters
+
+-------------------------------------------------------------------
 Wed Dec 18 06:43:48 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.0.3
