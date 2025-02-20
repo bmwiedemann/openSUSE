@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 19 05:47:09 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.40.5:
+  * Rel 0.40.5 (#3136)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.32.1 to
+    0.32.2 (#3126)
+
+-------------------------------------------------------------------
 Tue Feb 18 07:23:06 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.40.4:
