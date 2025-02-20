@@ -4788,4 +4788,13 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
   bsc#1236378</comment>
     <requestid>1242924</requestid>
   </revision>
+  <revision rev="416" vrev="3">
+    <srcmd5>ebb2b0a020a3a92b32870edd4fa04261</srcmd5>
+    <version>11.0.0</version>
+    <time>1740065225</time>
+    <user>anag+factory</user>
+    <comment>- spec: Add note about packages with no files
+  bsc#1237228</comment>
+    <requestid>1246814</requestid>
+  </revision>
 </revisionlist>

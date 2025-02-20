@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 18 23:48:40 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- spec: Add note about packages with no files
+  bsc#1237228
+
+-------------------------------------------------------------------
 Mon Feb  3 21:44:39 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - spec: Change hooks dependency from libvirtd to the qemu driver

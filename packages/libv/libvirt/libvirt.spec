@@ -112,14 +112,15 @@
     %endif
 %endif
 
-# Items to exclude in ALP-based products
+# Items to exclude in SLFO:Main based products
 %if 0%{?suse_version} == 1600
-    %define with_libxl     0
     %define with_apparmor  0
-    %define with_interface 0
-    %define with_sanlock   0
-    %define with_numad     0
     %define with_esx       0
+    %define with_interface 0
+    %define with_libxl     0
+    %define with_lxc       0
+    %define with_numad     0
+    %define with_sanlock   0
     %define with_storage_gluster 0
 %endif
 
@@ -300,6 +301,8 @@ the ability to run multiple instances of Operating Systems concurrently
 on a single hardware system where the basic resources are driven by a
 Linux instance. The library aims to provide long term stable C API
 to interact with Linux virtualization technologies.
+
+This package does not contain files, it just requires the necessary packages.
 
 %package doc
 Summary:        API reference and website documentation for libvirt
@@ -600,6 +603,8 @@ The storage driver plugin for the libvirtd daemon, providing
 an implementation of the storage APIs using LVM, iSCSI,
 parted and more.
 
+This package does not contain files, it just requires the necessary packages.
+
 %package daemon-driver-qemu
 Summary:        Qemu driver plugin for the libvirtd daemon
 Requires:       %{name}-daemon-common = %{version}-%{release}
@@ -698,6 +703,8 @@ Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
 Server side daemon and driver required to manage the virtualization
 capabilities of the QEMU emulators
 
+This package does not contain files, it just requires the necessary packages.
+
 %package daemon-lxc
 Summary:        Server side daemon & driver required to run LXC guests
 %if %{with_modular_daemons}
@@ -718,6 +725,8 @@ Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
 %description daemon-lxc
 Server side daemon and driver required to manage the virtualization
 capabilities of LXC
+
+This package does not contain files, it just requires the necessary packages.
 
 %package daemon-xen
 Summary:        Server side daemon & driver required to run XEN guests
@@ -741,6 +750,8 @@ Requires:       xen
 Server side daemon and driver required to manage the virtualization
 capabilities of XEN
 
+This package does not contain files, it just requires the necessary packages.
+
 %package daemon-vbox
 Summary:        Server side daemon & driver required to run VirtualBox guests
 %if ! %{with_modular_daemons}
@@ -762,6 +773,8 @@ Requires:       virtualbox < 5.3
 %description daemon-vbox
 Server side daemon and driver required to manage the virtualization
 capabilities of VirtualBox
+
+This package does not contain files, it just requires the necessary packages.
 
 %package client
 Summary:        Client side utilities of the libvirt library
