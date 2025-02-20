@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Feb 19 14:56:41 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 1.4+71:
+  * Fix building with poppler 25.02.0
+  * Pass document antialias setting to make a bitmap copy
+  * Fix Paste when SVG Mode is set to "new"
+  * Refresh doc rsrc dialog after deleting objects
+  * Fix PDF import w/ consecutive clippings
+  * Batch export: swap is-file and missing-directory cases to intended use
+  * Don't use std::regex for parsing page size
+  * Cherry-Pick: Fix undo history dialog destruction
+  * Fix file extension defaulting to WMF if unset
+  * Avoid dangling window in app.preferences action
+  * Fix copy+paste of cloned group
+  * Fix modular grid drawing when Y axis is pointing up
+  * Fix crash loading user palettes
+  * Fix circle updates with unset attributes
+  * Page numbers must have a range to be valid for 'all'
+  * Distance to move needs to stay a double
+  * Remove aggressive blind cleaning in path to stroke
+  * Update the app data screenshots to 1.4
+  * Add double-click hint to guide statusbar tooltip
+  * Fixes inbox#11133: restored missing parameters for perspective LPE.
+  * Allow changing color of Asian patterns
+  * Don't block NodeTool::selection_changed
+  * Modernise some Node Tool constructs
+  * Don't create a new document when closing StartScreen
+  * Fix snap package: printing and print-preview (backport to 1.4.x)
+  * Make comments available to translators
+  * Labels for modifiers can be localised.
+  * Collapse additional children in Commands Toolbar
+  * Updated translations.
+
+-------------------------------------------------------------------
 Fri Dec 27 14:21:08 UTC 2024 - bjorn.lie@gmail.com
 
 - Update to version 1.4+39:
