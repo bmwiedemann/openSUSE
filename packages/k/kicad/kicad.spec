@@ -20,8 +20,8 @@
 # symbol libraries from version 8.0.0
 %define compatversion 8.0.0
 Name:           kicad
-Version:        8.0.8
-%define file_version 8.0.8
+Version:        8.0.9
+%define file_version 8.0.9
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
