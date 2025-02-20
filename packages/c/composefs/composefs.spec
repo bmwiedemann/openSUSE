@@ -17,6 +17,11 @@
 
 
 %define         sover 1
+%if 0%{?suse_version} >= 1600
+%define         pythons python3
+%else
+%define         pythons python311
+%endif
 Name:           composefs
 Version:        1.0.8
 Release:        0
@@ -24,10 +29,13 @@ Summary:        The reliability of disk images, the flexibility of files
 License:        Apache-2.0 OR GPL-2.0-or-later
 URL:            https://github.com/containers/composefs
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         001-enable-experimental-tools.patch
+Patch1:         002-fix-leap-tests.patch
+BuildRequires:  %{pythons}-base
 BuildRequires:  go-md2man
 BuildRequires:  meson
 BuildRequires:  pkgconfig(fuse3) >= 3.10.0
-BuildRequires:  pkgconfig(openssl) >= 3.0.0
+BuildRequires:  pkgconfig(libcrypto)
 
 %description
 Tools to handle creating and mounting composefs images. The composefs
@@ -49,8 +57,18 @@ Requires:       lib%{name}%{sover} = %{version}
 %description devel
 Devel files for %{name}.
 
+%package experimental
+Summary:        This package contains all things experimental for %{name}
+
+%description experimental
+%{summary}.
+
 %prep
-%autosetup
+%autosetup -N
+%patch -P0 -p1
+%if 0%{?suse_version} < 1600
+%patch -P1 -p1
+%endif
 
 %build
 %meson \
@@ -83,6 +101,10 @@ rm -rf %{buildroot}%{_libdir}/libcomposefs.{a,la}
 %{_includedir}/lib%{name}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+
+%files experimental
+%{_bindir}/%{name}-dump
+%{_bindir}/%{name}-fuse
 
 %files -n lib%{name}%{sover}
 %{_libdir}/lib%{name}.so.%{sover}*

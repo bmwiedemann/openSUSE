@@ -1,0 +1,19 @@
+diff -rub composefs-1.0.8/tools/meson.build composefs-1.0.8-patched/tools/meson.build
+--- composefs-1.0.8/tools/meson.build	2025-01-02 18:53:04.000000000 +0100
++++ composefs-1.0.8-patched/tools/meson.build	2025-02-19 15:08:22.452392235 +0100
+@@ -31,13 +31,13 @@
+     'composefs-dump.c',
+     link_with: [libcomposefs_internal],
+     dependencies : [libcomposefs_dep],
+-    install : false,
++    install : true,
+ )
+ 
+ if fuse3_dep.found()
+     executable('composefs-fuse',
+         'cfs-fuse.c',
+         dependencies : [libcomposefs_dep, fuse3_dep],
+-        install : false,
++        install : true,
+     )
+ endif

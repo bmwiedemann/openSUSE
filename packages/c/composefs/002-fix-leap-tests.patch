@@ -1,0 +1,18 @@
+diff -rub composefs-1.0.8/tests/dumpdir composefs-1.0.8-patched/tests/dumpdir
+--- composefs-1.0.8/tests/dumpdir	2025-01-02 18:53:04.000000000 +0100
++++ composefs-1.0.8-patched/tests/dumpdir	2025-02-19 17:24:12.066916567 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/python3.11
+ 
+ import os
+ import sys
+diff -rub composefs-1.0.8/tests/gendir composefs-1.0.8-patched/tests/gendir
+--- composefs-1.0.8/tests/gendir	2025-01-02 18:53:04.000000000 +0100
++++ composefs-1.0.8-patched/tests/gendir	2025-02-19 15:42:44.393188936 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/python3.11
+ 
+ import argparse
+ import hashlib

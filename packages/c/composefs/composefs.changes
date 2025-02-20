@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 19 14:16:57 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- create an experimental package for things which are not yet stable
+  * add patch 001-enable-experimental-tools.patch
+- BR libcrypto rather than openssl directly
+- fix leap builds by fixing the shebang (we need the newer python311 stack
+  * add patch 002-fix-leap-tests.patch
+
+-------------------------------------------------------------------
 Sun Jan  5 22:40:11 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - for some reason s390x times out on verifying checksums in the tests,
