@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 19 12:50:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- switch to PEP517 build
+
+-------------------------------------------------------------------
 Thu Aug 17 11:02:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add setuptools build requirement for building, distutils is not
@@ -63,7 +68,7 @@ Fri Aug 17 13:47:34 UTC 2018 - tchvatal@suse.com
 Tue Aug 14 10:13:51 UTC 2018 - ms@suse.com
 
 - Submission to SUSE:SLE-12-SP3:Update:PubClouds
-    
+
   This commit tracks the submission for fate#326575
   and bsc#1103542
 

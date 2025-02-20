@@ -109,4 +109,12 @@
     <comment></comment>
     <requestid>1104366</requestid>
   </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>571714252f4af23957db794b17ec8008</srcmd5>
+    <version>1.4.4</version>
+    <time>1740065243</time>
+    <user>anag+factory</user>
+    <comment>- switch to PEP517 build</comment>
+    <requestid>1247079</requestid>
+  </revision>
 </revisionlist>

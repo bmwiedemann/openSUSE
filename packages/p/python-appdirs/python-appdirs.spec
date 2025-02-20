@@ -1,7 +1,7 @@
 #
 # spec file for package python-appdirs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,6 @@
 
 # in order to avoid rewriting for subpackage generator
 %define mypython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-appdirs
 Version:        1.4.4
@@ -28,7 +27,9 @@ License:        MIT
 URL:            https://github.com/ActiveState/appdirs
 Source:         https://files.pythonhosted.org/packages/source/a/appdirs/appdirs-%{version}.tar.gz
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -55,10 +56,10 @@ help you choose an appropriate:
 sed -r -i '1s/^#!.*$//' appdirs.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,6 +70,6 @@ sed -r -i '1s/^#!.*$//' appdirs.py
 %doc CHANGES.rst README.rst
 %pycache_only %{python_sitelib}/__pycache__/*
 %{python_sitelib}/appdirs.py*
-%{python_sitelib}/appdirs-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/appdirs-%{version}.dist-info
 
 %changelog
