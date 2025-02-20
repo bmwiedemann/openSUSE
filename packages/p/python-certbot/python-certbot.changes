@@ -1,9 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb 13 11:23:18 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * certbot-nginx now requires pyparsing>=2.4.7.
+  * certbot and its acme library now require
+    cryptography>=43.0.0.
+  * certbot-nginx and our acme library now require
+    pyOpenSSL>=25.0.0.
+  * Deprecated `gen_ss_cert` in `acme.crypto_util` as it uses
+    deprecated pyOpenSSL API.
+  * Add `make_self_signed_cert` to `acme.crypto_util` to replace
+    `gen_ss_cert.
+  * Directory hooks are now run on all commands by default, not
+    just `renew`
+  * Help output now shows `False` as default when it can be set
+    via `cli.ini` instead of `None`
+  * Changed terms of service agreement text to have a newline
+    after the TOS link
+  * certbot-cloudflare-dns is now pinned to version 2.19 of
+    Cloudflare's python library
+
+-------------------------------------------------------------------
 Mon Jan 27 14:08:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.1.0
   * Python 3.8 support was removed.
-  * Our runtime dependency on setuptools has been dropped from all 
+  * Our runtime dependency on setuptools has been dropped from all
     Certbot components.
   * Certbot's packages no longer depend on library importlib_resources.
 - Convert to pip-based build
@@ -13,20 +35,20 @@ Tue Dec  3 14:46:41 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.0.1
   * The update_symlinks command was removed.
-  * The csr_dir and key_dir attributes on 
+  * The csr_dir and key_dir attributes on
     certbot.configuration.NamespaceConfig were removed.
   * The --manual-public-ip-logging-ok command line flag was removed.
-  * Support for Python 3.8 was deprecated and will be removed in our 
+  * Support for Python 3.8 was deprecated and will be removed in our
     next planned release.
 
 -------------------------------------------------------------------
 Tue Jun 25 12:15:06 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to 2.11.0
-  * Fixed a bug in Certbot where a CSR's SANs did not always follow 
-    the order of the domain names that the user requested interactively. 
-    In some cases, the resulting cert's common name might seem picked 
-    up randomly from the SANs when it should be the first item the user 
+  * Fixed a bug in Certbot where a CSR's SANs did not always follow
+    the order of the domain names that the user requested interactively.
+    In some cases, the resulting cert's common name might seem picked
+    up randomly from the SANs when it should be the first item the user
     had in mind.
 
 -------------------------------------------------------------------
