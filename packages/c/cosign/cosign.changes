@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 20 14:58:15 UTC 2025 - meissner@suse.com
+
+- Update to version 2.4.3:
+  * Enable fetching signatures without remote get. (#4047)
+  * Bump sigstore/sigstore to support KMS plugins (#4073)
+  * sort properly Go imports (#4071)
+  * sync comment with parameter name in function signature (#4063)
+  * fix go imports order to be alphabetical (#4062)
+  * fix comment typo and imports order (#4061)
+  * Feat/file flag completion improvements (#4028)
+  * Udpate builder to use go1.23.6 (#4052)
+  * Refactor verifyNewBundle into library function (#4013)
+  * fix parsing error in --only for cosign copy (#4049)
+  * Fix codeowners syntax, add dep-maintainers (#4046)
+
+-------------------------------------------------------------------
 Wed Feb 05 09:23:59 UTC 2025 - meissner@suse.com
 
 - Update to version 2.4.2:

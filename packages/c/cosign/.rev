@@ -600,4 +600,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1245604</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ef06c2d130337b5239b7748386af1274</srcmd5>
+    <version>2.4.3</version>
+    <time>1740077200</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.4.3:
+  * Enable fetching signatures without remote get. (#4047)
+  * Bump sigstore/sigstore to support KMS plugins (#4073)
+  * sort properly Go imports (#4071)
+  * sync comment with parameter name in function signature (#4063)
+  * fix go imports order to be alphabetical (#4062)
+  * fix comment typo and imports order (#4061)
+  * Feat/file flag completion improvements (#4028)
+  * Udpate builder to use go1.23.6 (#4052)
+  * Refactor verifyNewBundle into library function (#4013)
+  * fix parsing error in --only for cosign copy (#4049)
+  * Fix codeowners syntax, add dep-maintainers (#4046) (forwarded request 1247438 from msmeissn)</comment>
+    <requestid>1247439</requestid>
+  </revision>
 </revisionlist>
