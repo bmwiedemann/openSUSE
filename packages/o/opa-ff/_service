@@ -1,5 +1,5 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/cornelisnetworks/opa-ff.git</param>
     <param name="package-meta">no</param>
@@ -8,9 +8,9 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">d62756adb09f53cf960ad6bfe6695678da8266b1</param>
+    <param name="revision">ca78f36481aacf730f188984a254a0054a5f2e15</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">opa-ff*.tar</param>
     <param name="compression">gz</param>
   </service>
