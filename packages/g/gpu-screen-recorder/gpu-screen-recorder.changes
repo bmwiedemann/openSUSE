@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Feb 19 16:53:24 UTC 2025 - mantarimay@pm.me
+
+- Update to version 20250217:
+  * Only show codec warning for image output
+  * Support taking a screenshot (-o image.jpg/image.png)
+  * Revert kde plasma 6.2 hdr workaround code
+  * Info about hdr
+  * Revert readme for hdr
+  * Revert hdr color fix. It looked better for fullscreen hdr games
+    before
+  * Change hdr colors again
+  * Make hdr better for limited range colors
+  * Attempt to fix incorrect hdr colors on kde plasma 6.2
+  * HDR: always set has_primaries and has_luminance, otherwise
+    data will be missing from file
+  * hdr works, for fullscreen applications?
+  * Fix crash when trying to capture hdr and it fails
+  * Increase replay max allowed duration to 3 hours
+  * fix: proper cleanup for init_filter_graph
+  * Pipewire: support 10-bit formats (where alpha is 2 bits, total
+    32-bits)
+
+-------------------------------------------------------------------
 Sun Jan 26 21:54:53 UTC 2025 - mantarimay@pm.me
 
 - Update to version 20250125:
