@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 19 11:32:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.2
+  * Bump AWS_EVENT_STREAM_MAX_MESSAGE_SIZE to 256MB by @waahm7 in (#122)
+
+-------------------------------------------------------------------
 Thu Jan 30 12:22:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.5.1
