@@ -1,7 +1,7 @@
 #
 # spec file for package step-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define pkg_name cli
 %define pkg_version %{version}
 Name:           step-cli
-Version:        0.28.2
+Version:        0.28.3
 Release:        0
 Summary:        Zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc
 License:        Apache-2.0
