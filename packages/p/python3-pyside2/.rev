@@ -304,4 +304,14 @@
   * avoids patch like deb#1051886 for libqt5-qtbase</comment>
     <requestid>1142577</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>c2a732ea008c256367e48776b924e658</srcmd5>
+    <version>5.15.12</version>
+    <time>1740066139</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patches to fix build with Python 3.13:
+  * AsLong.patch
+  * python312.patch</comment>
+    <requestid>1247426</requestid>
+  </revision>
 </revisionlist>

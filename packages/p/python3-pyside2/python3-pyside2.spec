@@ -1,7 +1,7 @@
 #
 # spec file for package python3-pyside2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,12 +55,16 @@ Patch1:         0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
 Patch2:         0001-cmake-Don-t-assume-qhelpgenerator-is-in-PATH.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         AsLong.patch
+# PATCH-FIX-UPSTREAM, adapted to older codebase
+Patch5:         python312.patch
 # Provide the PyPI names
 Provides:       %{mypython}-PySide2 = %{version}-%{release}
 Provides:       %{mypython}-shiboken2 = %{version}-%{release}
 Provides:       %{mypython}-shiboken2_generator = %{version}-%{release}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # SECTION common_dependencies
 %if 0%{?suse_version} > 1500
 # boo#1210176 - PYSIDE-2268

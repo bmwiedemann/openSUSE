@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 20 13:00:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patches to fix build with Python 3.13:
+  * AsLong.patch
+  * python312.patch
+
+-------------------------------------------------------------------
 Fri Jan 26 14:34:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Enable SLE15 python module for a more modern python than 3.6

@@ -1,0 +1,55 @@
+From 82219d035526f2e587db3adc90c03d4901bfba77 Mon Sep 17 00:00:00 2001
+From: Christian Tismer <tismer@stackless.com>
+Date: Thu, 30 Sep 2021 18:51:43 +0200
+Subject: [PATCH] pep386impl: fix a left-over from the Python 2 cleanup
+
+_PepLong_AsInt still existed. This may be again a
+rebasing glitch.
+
+Found when doing the first attempt to build PySide
+on PyPy with Windows :)
+
+Pick-to: 6.2
+Task-number: PYSIDE-535
+Change-Id: Ic0b6167bc08c9da8e0d34d6ef2d5b71c8ee548c1
+Reviewed-by: Friedemann Kleint <Friedemann.Kleint@qt.io>
+---
+ sources/shiboken6/libshiboken/pep384impl.h          | 11 -----------
+ sources/shiboken6/libshiboken/sbkarrayconverter.cpp |  2 +-
+ 2 files changed, 1 insertion(+), 12 deletions(-)
+
+Index: pyside-setup-opensource-src-5.15.16/sources/shiboken2/libshiboken/pep384impl.h
+===================================================================
+--- pyside-setup-opensource-src-5.15.16.orig/sources/shiboken2/libshiboken/pep384impl.h
++++ pyside-setup-opensource-src-5.15.16/sources/shiboken2/libshiboken/pep384impl.h
+@@ -178,17 +178,6 @@ LIBSHIBOKEN_API const char *PepType_GetN
+ 
+ /*****************************************************************************
+  *
+- * RESOLVED: longobject.h
+- *
+- */
+-#ifdef Py_LIMITED_API
+-LIBSHIBOKEN_API int _PepLong_AsInt(PyObject *);
+-#else
+-#define _PepLong_AsInt _PyLong_AsInt
+-#endif
+-
+-/*****************************************************************************
+- *
+  * RESOLVED: pydebug.h
+  *
+  */
+Index: pyside-setup-opensource-src-5.15.16/sources/shiboken2/libshiboken/sbkarrayconverter.cpp
+===================================================================
+--- pyside-setup-opensource-src-5.15.16.orig/sources/shiboken2/libshiboken/sbkarrayconverter.cpp
++++ pyside-setup-opensource-src-5.15.16/sources/shiboken2/libshiboken/sbkarrayconverter.cpp
+@@ -161,7 +161,7 @@ static void sequenceToCppIntArray(PyObje
+ {
+     auto *handle = reinterpret_cast<ArrayHandle<int> *>(cppOut);
+     handle->allocate(PySequence_Size(pyIn));
+-    convertPySequence(pyIn, _PepLong_AsInt, handle->data());
++    convertPySequence(pyIn, PyLong_AsLong, handle->data());
+ }
+ 
+ static PythonToCppFunc sequenceToCppIntArrayCheck(PyObject *pyIn, int dim1, int /* dim2 */)
