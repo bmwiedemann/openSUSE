@@ -1,7 +1,7 @@
 #
 # spec file for package python-Cython
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with test
 %{?sle15_python_module_pythons}
 Name:           python-Cython
-Version:        3.0.11
+Version:        3.0.12
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
