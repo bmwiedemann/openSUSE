@@ -13,10 +13,10 @@ Subject: [PATCH GnuPG] gpg: Merge --rfc4880bis features into --gnupg
 (read_parameter_file): Activate the v4 and v5 keywords.
 --
 
-Index: gnupg-2.5.1/g10/gpg.c
+Index: gnupg-2.5.4/g10/gpg.c
 ===================================================================
---- gnupg-2.5.1.orig/g10/gpg.c
-+++ gnupg-2.5.1/g10/gpg.c
+--- gnupg-2.5.4.orig/g10/gpg.c
++++ gnupg-2.5.4/g10/gpg.c
 @@ -254,6 +254,7 @@ enum cmd_and_opt_values
      oGnuPG,
      oRFC2440,
@@ -25,7 +25,7 @@ Index: gnupg-2.5.1/g10/gpg.c
      oOpenPGP,
      oPGP7,
      oPGP8,
-@@ -653,6 +654,7 @@ static gpgrt_opt_t opts[] = {
+@@ -654,6 +655,7 @@ static gpgrt_opt_t opts[] = {
    ARGPARSE_s_n (oGnuPG, "no-pgp8", "@"),
    ARGPARSE_s_n (oRFC2440, "rfc2440", "@"),
    ARGPARSE_s_n (oRFC4880, "rfc4880", "@"),
@@ -33,7 +33,7 @@ Index: gnupg-2.5.1/g10/gpg.c
    ARGPARSE_s_n (oOpenPGP, "openpgp", N_("use strict OpenPGP behavior")),
    ARGPARSE_s_n (oPGP7, "pgp6", "@"),
    ARGPARSE_s_n (oPGP7, "pgp7", "@"),
-@@ -1006,7 +1008,6 @@ static gpgrt_opt_t opts[] = {
+@@ -1008,7 +1010,6 @@ static gpgrt_opt_t opts[] = {
    ARGPARSE_s_n (oNoop, "no-allow-multiple-messages", "@"),
    ARGPARSE_s_s (oNoop, "aead-algo", "@"),
    ARGPARSE_s_s (oNoop, "personal-aead-preferences","@"),
@@ -41,7 +41,7 @@ Index: gnupg-2.5.1/g10/gpg.c
    ARGPARSE_s_n (oNoop, "override-compliance-check", "@"),
  
  
-@@ -2261,7 +2262,7 @@ static struct gnupg_compliance_option co
+@@ -2263,7 +2264,7 @@ static struct gnupg_compliance_option co
    {
      { "gnupg",      oGnuPG },
      { "openpgp",    oOpenPGP },
@@ -50,7 +50,7 @@ Index: gnupg-2.5.1/g10/gpg.c
      { "rfc4880",    oRFC4880 },
      { "rfc2440",    oRFC2440 },
      { "pgp6",       oPGP7 },
-@@ -2277,8 +2278,28 @@ static struct gnupg_compliance_option co
+@@ -2279,8 +2280,29 @@ static struct gnupg_compliance_option co
  static void
  set_compliance_option (enum cmd_and_opt_values option)
  {
@@ -76,26 +76,19 @@ Index: gnupg-2.5.1/g10/gpg.c
 +      opt.s2k_digest_algo = DIGEST_ALGO_SHA256;
 +      opt.s2k_cipher_algo = CIPHER_ALGO_AES256;
 +      break;
-     case oOpenPGP:
-     case oRFC4880:
-       /* This is effectively the same as RFC2440, but with
-@@ -2322,6 +2343,7 @@ set_compliance_option (enum cmd_and_opt_
-     case oPGP8:  opt.compliance = CO_PGP8;  break;
++
      case oGnuPG:
+       /* set up default options affected by policy compliance: */
        opt.compliance = CO_GNUPG;
+@@ -2299,6 +2321,7 @@ set_compliance_option (enum cmd_and_opt_
+       opt.s2k_digest_algo = 0;
+       opt.s2k_cipher_algo = DEFAULT_CIPHER_ALGO;
+       opt.flags.allow_old_cipher_algos = 0;
 +      opt.flags.rfc4880bis = 1;
        break;
  
-     case oDE_VS:
-@@ -2526,6 +2548,7 @@ main (int argc, char **argv)
-     opt.weak_digests = NULL;
-     opt.with_subkey_fingerprint = 1;
-     opt.compliance = CO_GNUPG;
-+    opt.flags.rfc4880bis = 1;
- 
-     /* Check special options given on the command line.  */
-     orig_argc = argc;
-@@ -3085,6 +3108,7 @@ main (int argc, char **argv)
+     case oOpenPGP:
+@@ -3090,6 +3113,7 @@ main (int argc, char **argv)
            case oOpenPGP:
            case oRFC2440:
            case oRFC4880:
@@ -103,7 +96,7 @@ Index: gnupg-2.5.1/g10/gpg.c
            case oPGP7:
            case oPGP8:
            case oGnuPG:
-@@ -3990,6 +4014,11 @@ main (int argc, char **argv)
+@@ -4000,6 +4024,11 @@ main (int argc, char **argv)
      if( may_coredump && !opt.quiet )
  	log_info(_("WARNING: program may create a core file!\n"));
  
@@ -115,7 +108,7 @@ Index: gnupg-2.5.1/g10/gpg.c
      if (eyes_only) {
        if (opt.set_filename)
  	  log_info(_("WARNING: %s overrides %s\n"),
-@@ -4212,7 +4241,7 @@ main (int argc, char **argv)
+@@ -4222,7 +4251,7 @@ main (int argc, char **argv)
      /* Check our chosen algorithms against the list of legal
         algorithms. */
  
@@ -124,20 +117,20 @@ Index: gnupg-2.5.1/g10/gpg.c
        {
  	const char *badalg=NULL;
  	preftype_t badtype=PREFTYPE_NONE;
-Index: gnupg-2.5.1/g10/keygen.c
+Index: gnupg-2.5.4/g10/keygen.c
 ===================================================================
---- gnupg-2.5.1.orig/g10/keygen.c
-+++ gnupg-2.5.1/g10/keygen.c
-@@ -453,7 +453,7 @@ keygen_set_std_prefs (const char *string
+--- gnupg-2.5.4.orig/g10/keygen.c
++++ gnupg-2.5.4/g10/keygen.c
+@@ -489,7 +489,7 @@ keygen_set_std_prefs (const char *string
  	      strcat(dummy_string,"S7 ");
  	    strcat(dummy_string,"S2 "); /* 3DES */
  
 -            if (!openpgp_aead_test_algo (AEAD_ALGO_OCB))
-+            if (opt.flags.rfc4880bis && !openpgp_aead_test_algo (AEAD_ALGO_OCB))
++        if (opt.flags.rfc4880bis && !openpgp_aead_test_algo (AEAD_ALGO_OCB))
  	      strcat(dummy_string,"A2 ");
  
              if (personal)
-@@ -938,7 +938,7 @@ keygen_upd_std_prefs (PKT_signature *sig
+@@ -974,7 +974,7 @@ keygen_upd_std_prefs (PKT_signature *sig
    /* Make sure that the MDC feature flag is set if needed.  */
    add_feature_mdc (sig,mdc_available);
    add_feature_aead (sig, aead_available);
@@ -146,7 +139,7 @@ Index: gnupg-2.5.1/g10/keygen.c
    add_keyserver_modify (sig,ks_modify);
    keygen_add_keyserver_url(sig,NULL);
  
-@@ -3974,7 +3974,10 @@ parse_key_parameter_part (ctrl_t ctrl,
+@@ -4118,7 +4118,10 @@ parse_key_parameter_part (ctrl_t ctrl,
                  }
              }
            else if (!ascii_strcasecmp (s, "v5"))
@@ -158,7 +151,7 @@ Index: gnupg-2.5.1/g10/keygen.c
            else if (!ascii_strcasecmp (s, "v4"))
              keyversion = 4;
            else
-@@ -4235,7 +4238,7 @@ parse_key_parameter_part (ctrl_t ctrl,
+@@ -4379,7 +4382,7 @@ parse_key_parameter_part (ctrl_t ctrl,
   *   ecdsa := Use algorithm ECDSA.
   *   eddsa := Use algorithm EdDSA.
   *   ecdh  := Use algorithm ECDH.
@@ -167,7 +160,7 @@ Index: gnupg-2.5.1/g10/keygen.c
   *
   * There are several defaults and fallbacks depending on the
   * algorithm.  PART can be used to select which part of STRING is
-@@ -5206,9 +5209,9 @@ read_parameter_file (ctrl_t ctrl, const
+@@ -5353,9 +5356,9 @@ read_parameter_file (ctrl_t ctrl, const
  	    }
  	}
  
@@ -180,7 +173,7 @@ Index: gnupg-2.5.1/g10/keygen.c
          else
            {
              r = xmalloc_clear( sizeof *r + strlen( value ) );
-@@ -5303,11 +5306,14 @@ quickgen_set_para (struct para_data_s *p
+@@ -5450,11 +5453,14 @@ quickgen_set_para (struct para_data_s *p
    r->next = para;
    para = r;
  

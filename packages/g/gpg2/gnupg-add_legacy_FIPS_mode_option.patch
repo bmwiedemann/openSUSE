@@ -3,10 +3,10 @@
  g10/gpg.c    |    9 +++++++++
  2 files changed, 27 insertions(+)
 
-Index: gnupg-2.5.1/doc/gpg.texi
+Index: gnupg-2.5.4/doc/gpg.texi
 ===================================================================
---- gnupg-2.5.1.orig/doc/gpg.texi
-+++ gnupg-2.5.1/doc/gpg.texi
+--- gnupg-2.5.4.orig/doc/gpg.texi
++++ gnupg-2.5.4/doc/gpg.texi
 @@ -2340,6 +2340,24 @@ implies, this option is for experts only
  understand the implications of what it allows you to do, leave this
  off. @option{--no-expert} disables this option.
@@ -32,10 +32,10 @@ Index: gnupg-2.5.1/doc/gpg.texi
  @end table
  
  
-Index: gnupg-2.5.1/g10/gpg.c
+Index: gnupg-2.5.4/g10/gpg.c
 ===================================================================
---- gnupg-2.5.1.orig/g10/gpg.c
-+++ gnupg-2.5.1/g10/gpg.c
+--- gnupg-2.5.4.orig/g10/gpg.c
++++ gnupg-2.5.4/g10/gpg.c
 @@ -455,6 +455,7 @@ enum cmd_and_opt_values
      oForceSignKey,
      oForbidGenKey,
@@ -44,15 +44,15 @@ Index: gnupg-2.5.1/g10/gpg.c
      oCompatibilityFlags,
      oAddDesigRevoker,
      oAssertSigner,
-@@ -906,6 +907,7 @@ static gpgrt_opt_t opts[] = {
+@@ -907,6 +908,7 @@ static gpgrt_opt_t opts[] = {
    ARGPARSE_s_s (oCipherAlgo, "cipher-algo", "@"),
    ARGPARSE_s_s (oDigestAlgo, "digest-algo", "@"),
    ARGPARSE_s_s (oCertDigestAlgo, "cert-digest-algo", "@"),
 +  ARGPARSE_s_n (oSetLegacyFips, "set-legacy-fips", "@"),
    ARGPARSE_s_n (oRequirePQCEncryption, "require-pqc-encryption", "@"),
+   ARGPARSE_s_n (oDisablePQCEncryption, "disable-pqc-encryption", "@"),
  
-   ARGPARSE_header (NULL, N_("Options for unattended use")),
-@@ -3855,6 +3857,14 @@ main (int argc, char **argv)
+@@ -3865,6 +3867,14 @@ main (int argc, char **argv)
              keybox_set_buffersize (pargs.r.ret_ulong, 0);
              break;
  

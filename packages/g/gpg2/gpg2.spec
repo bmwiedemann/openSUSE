@@ -18,7 +18,7 @@
 
 
 Name:           gpg2
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -167,7 +167,6 @@ cp systemd-user/README.systemd %{buildroot}%{_docdir}/gpg2/
 %license COPYING*
 %doc AUTHORS NEWS THANKS TODO ChangeLog
 %{_infodir}/gnupg*
-%dir %{_mandir}/manh/
 %{_mandir}/*/[aghsw]*%{ext_man}
 %doc %{_docdir}/%{name}
 %{_bindir}/[gkw]*
