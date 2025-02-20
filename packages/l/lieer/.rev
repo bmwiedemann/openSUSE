@@ -15,4 +15,12 @@
     <comment>Add 0002-Import-notmuch-instead-of-notmuch2.patch</comment>
     <requestid>1245744</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>320310cecf1a3388f2052a82e63f1eec</srcmd5>
+    <version>1.6+21</version>
+    <time>1740069582</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1247424</requestid>
+  </revision>
 </revisionlist>

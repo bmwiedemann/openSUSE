@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb 20 13:40:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change _service file to declare services as 'manual' instead of
+  deprecated 'disabled'.
+- Strip the 'v' prefix of the version using service rewrite
+  pattern.
+
+-------------------------------------------------------------------
+Tue Feb 18 19:49:10 UTC 2025 - rbm@opensuse.org
+
+- Update to version v1.6+21:
+  * Fix links in documentation
+  * Update documentation on using your own OAuth 2 client
+  * docs: fix indentation
+  * Bump actions/download-artifact from 2 to 4.1.7 in /.github/workflows
+  * Only update bar.total when bar is instantiated
+  * Remove tests from installed packages
+  * Specifically mention git-send-email in setup
+  * Handle the old python3-google-auth in Debian (1.5.x)
+  * Require Notmuch 0.30+ for `notmuch2` Python bindings
+  * Enable ruff rule flake8-bandit (S)
+
+- Rename 0001-Fix-shebangs-to-remove-env-dependency.patch to Fix-shebangs-to-remove-env-dependency.patch
+- Remove 0002-Import-notmuch-instead-of-notmuch2.patch
+
+-------------------------------------------------------------------
 Thu Feb 13 00:09:36 UTC 2025 - Ricardo B. Marlière <rbm@opensuse.org>
 
 - Add 0002-Import-notmuch-instead-of-notmuch2.patch

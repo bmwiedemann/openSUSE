@@ -1,6 +1,6 @@
-From 75d93e8ba34ea7b47e7890223164a89a4cbea1c1 Mon Sep 17 00:00:00 2001
-From: "Ricardo B. Marlière" <rbm@opensuse.org>
-Date: Thu, 6 Feb 2025 16:28:04 -0300
+From 85ef2988fc53e6155759209a504a80c26eee99a5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ricardo=20B=2E=20Marli=C3=A8re?= <rbm@opensuse.org>
+Date: Tue, 18 Feb 2025 16:49:51 -0300
 Subject: [PATCH] Fix shebangs to remove `env` dependency
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -25,8 +25,7 @@ Signed-off-by: Ricardo B. Marlière <rbm@opensuse.org>
 ---
  gmi                | 2 +-
  lieer/gmailieer.py | 2 +-
- lieer/nobar.py     | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/gmi b/gmi
 index c3e65691cf84..b2df42b66eb3 100755
@@ -39,7 +38,7 @@ index c3e65691cf84..b2df42b66eb3 100755
  # Copyright © 2020  Gaute Hope <eg@gaute.vetsj.com>
  #
 diff --git a/lieer/gmailieer.py b/lieer/gmailieer.py
-index 381ab4f2be50..a719f91bdf75 100755
+index 67ff6f7d3d96..4fb5ce3d70e4 100755
 --- a/lieer/gmailieer.py
 +++ b/lieer/gmailieer.py
 @@ -1,4 +1,4 @@
@@ -48,16 +47,6 @@ index 381ab4f2be50..a719f91bdf75 100755
  #
  # Copyright © 2020  Gaute Hope <eg@gaute.vetsj.com>
  # Author: Gaute Hope <eg@gaute.vetsj.com> / 2017-03-05
-diff --git a/lieer/nobar.py b/lieer/nobar.py
-index 347816de008b..03d1fd35be05 100644
---- a/lieer/nobar.py
-+++ b/lieer/nobar.py
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python3
-+#! /usr/bin/python3
- #
- # Regular non-TTY drop-in replacement for tqdm
- #
 -- 
 2.48.1
 

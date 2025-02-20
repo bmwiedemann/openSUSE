@@ -20,17 +20,15 @@
 %define pythons python3
 
 Name:           lieer
-Version:        1.6
+Version:        1.6+21
 Release:        0
 Summary:        Email-fetching, sending, and two-way tag sync between notmuch and GMail
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            http://lieer.gaute.vetsj.com/
-Source:         https://github.com/gauteh/lieer/archive/v%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE Remove usage of /usr/bin/env shebangs
-Patch1:         0001-Fix-shebangs-to-remove-env-dependency.patch
-# PATCH-FIX-OPENSUSE Import the correct python binding
-Patch2:         0002-Import-notmuch-instead-of-notmuch2.patch
+Patch1:         Fix-shebangs-to-remove-env-dependency.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module google-api-python-client}
 BuildRequires:  %{python_module google-auth-oauthlib}
@@ -62,8 +60,6 @@ database may be pushed back remotely to your GMail account.
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 chmod +x %{buildroot}/%{python_sitelib}/lieer/gmailieer.py
-chmod +x %{buildroot}/%{python_sitelib}/lieer/nobar.py
-#/usr/lib/python3.11/site-packages/lieer/nobar.py
 
 %files %{python_files}
 %doc README.md
