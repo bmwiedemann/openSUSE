@@ -1,0 +1,21 @@
+<package name="linsim" project="openSUSE:Factory">
+  <title>Amateur Radio Digital Mode evaluation under varying HF propagation conditions</title>
+  <description>Linsim is designed to read and then add path simulation to any monophonic wav
+file recorded at any sampling rate. It works particularly well with files that
+were created using fldigi’s audio capture and audio generate functions. The
+entire wav file will be saved to computer memory and then duplicated during the
+signal processing. The user should try to keep the length of the wav file at 20
+Mg or less, but the author has tested some 200 Mg files on both Linux and
+Windows-8 without causing a program fault. These files were original VOAR
+broadcasts of about 30 minutes duration. The objective of this type of
+simulation is to finally measure the character error rate (CER) and bit error
+rate (BER) of a specific modem type and decoder design. For most modems a
+sequence of 1000 characters provides a sufficient level of confidence in the
+CER measurment.
+
+Simulations include path delay, doppler, frequency shift and band limited
+Gaussian white noise. All simulations are constrained to a 3000 Hz bandwidth.
+The input signal is filtered by a FIR bandpass filter (400 - 3400 Hz).</description>
+  <devel project="hamradio" package="linsim"/>
+  <url>https://www.w1hkj.org/</url>
+</package>

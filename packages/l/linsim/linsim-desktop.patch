@@ -1,0 +1,8 @@
+--- a/data/linsim.desktop
++++ b/data/linsim.desktop
+@@ -6,4 +6,4 @@ Exec=linsim
+ Icon=linsim
+ Terminal=false
+ Type=Application
+-Categories=Other;HamRadio;
++Categories=Science;HamRadio;
