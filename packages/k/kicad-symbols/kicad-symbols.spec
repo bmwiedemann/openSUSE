@@ -20,8 +20,8 @@
 %define compatversion 8.0.0
 
 Name:           kicad-symbols
-Version:        8.0.8
-%define file_version 8.0.8
+Version:        8.0.9
+%define file_version 8.0.9
 Release:        0
 Summary:        Schematic symbol library for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
