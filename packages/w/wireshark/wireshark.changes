@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 19 21:05:06 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.4.4
+  * Bundle Protocol and CBOR dissector crash. 
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.4.4.html
+
+-------------------------------------------------------------------
 Tue Feb  4 10:46:24 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Leap.

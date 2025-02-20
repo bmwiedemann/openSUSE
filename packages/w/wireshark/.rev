@@ -1981,4 +1981,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment></comment>
     <requestid>1243433</requestid>
   </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>7da1f5bf32a886d1a20fabb6ec5397f5</srcmd5>
+    <version>4.4.4</version>
+    <time>1740065270</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1247242</requestid>
+  </revision>
 </revisionlist>

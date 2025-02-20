@@ -30,7 +30,7 @@
 # have an option to still build with qt5
 %bcond_without qt6
 Name:           wireshark
-Version:        4.4.3
+Version:        4.4.4
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
