@@ -161,4 +161,19 @@
     <comment>Plasma 6.3</comment>
     <requestid>1244599</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8cbeb15b4b9b7eced8643ae1b61c9178</srcmd5>
+    <version>6.3.1.1</version>
+    <time>1740065504</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.3.1.1:
+  * New bugfix release
+- Changes since 6.3.1:
+  * 6.3.1 reroll
+  * kcms/libkwindevices: put template functions in the header (kde#500345)
+  * folderview: Fix drag selection (kde#499898)
+  * pager: remove onContainsMouseChanged, refresh model after desktopMouseArea.clicked (kde#500236)
+  * update version for new release (forwarded request 1247029 from Vogtinator)</comment>
+    <requestid>1247048</requestid>
+  </revision>
 </revisionlist>

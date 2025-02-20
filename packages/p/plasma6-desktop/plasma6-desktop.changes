@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Feb 19 10:37:43 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.1.1:
+  * New bugfix release
+- Changes since 6.3.1:
+  * 6.3.1 reroll
+  * kcms/libkwindevices: put template functions in the header (kde#500345)
+  * folderview: Fix drag selection (kde#499898)
+  * pager: remove onContainsMouseChanged, refresh model after desktopMouseArea.clicked (kde#500236)
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Feb 18 14:45:39 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.1
+- Changes since 6.3.0:
+  * kcms/tablet: Fix appearance of input area if changing it is unsupported (kde#500052)
+  * update version for new release
+  * applets/kicker: focus correct item on arrow key
+  * applets/kicker: actually select delegate on arrow (kde#499971)
+  * applets/TaskManager: don't set non-existing property
+  * Kickoff: Disable triangle filter when switch-on hover is disabled
+  * applets/kickoff: don't forceActiveFocus nothing (kde#500228)
+  * applets/taskmanager: fix TriangleMouseFiler in RtL
+  * kcms/tablet: Apply calibration matrix immediately
+  * applets/kicker: fix direct activation for other cols
+  * update version for new release
+  * applets/kickoff: fix crash when dragging items not in favorite page on Wayland (kde#449426,kde#450215)
+  * [kcms/touchpad] Make toggle touchpad shortcut consistent with Wayland session
+  * Treat StackingOrder as int instead of list (kde#497506)
+  * kcms/access: fix typo top -> to
+  * Use Image for user-selected non-square Kickoff icons (kde#494389)
+  * applets/taskmanager: guard against null contextMenu
+
+-------------------------------------------------------------------
 Thu Feb  6 13:47:03 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.0:
