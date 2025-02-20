@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 15 12:32:39 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add Jamulus-version.patch to fix wrong version in about jamulus.
+- Fix missing icon in desktop file.
+  Drop manuel and old icon. Use icon from source instead.
+
+-------------------------------------------------------------------
 Mon Nov 25 11:26:37 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.11.0

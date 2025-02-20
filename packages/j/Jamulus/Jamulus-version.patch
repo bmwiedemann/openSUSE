@@ -1,0 +1,9 @@
+diff -Pdpru jamulus-r3_10_0.orig/Jamulus.pro jamulus-r3_10_0/Jamulus.pro
+--- jamulus-r3_10_0.orig/Jamulus.pro	2023-09-03 22:17:25.000000000 +0200
++++ jamulus-r3_10_0/Jamulus.pro	2025-02-15 13:31:10.033528111 +0100
+@@ -1,4 +1,4 @@
+-VERSION = 3.10.0
++VERSION = 3.11.0
+ 
+ # use target name which does not use a capital letter at the beginning
+ contains(CONFIG, "noupcasename") {

@@ -1,7 +1,7 @@
 #
 # spec file for package Jamulus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,7 +31,6 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://jamulus.io/
 Source0:        https://github.com/jamulussoftware/jamulus/archive/r%{tarball_version}/%{name}-%{version}.tar.gz
-Source1:        %{name}_icon.png
 Source10:       %{name}-public.service
 Source11:       %{name}-private.service
 Source12:       %{name}-newrec.service
@@ -39,6 +38,7 @@ Source13:       %{name}-togglerec.service
 Source20:       %{name}.sysconfig
 Source21:       %{name}.firewalld
 Source90:       README.SUSE
+Patch1:         %{name}-version.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
@@ -74,7 +74,6 @@ and sends the mix back to each client.
 
 %prep
 %autosetup -p1 -n jamulus-r%{tarball_version}
-install %{SOURCE1} .
 install -m644 %{SOURCE90} .
 
 %build
@@ -83,15 +82,21 @@ install -m644 %{SOURCE90} .
 
 %install
 install -D -m0755 Jamulus %{buildroot}%{_bindir}/%{name}
+
+# icons
 for s in 16 22 32 48 64 72 96 128 192; do
    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps
-   convert -strip -resize ${s}x${s} %{name}_icon.png \
-    %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/%{name}.png
+   #convert -strip -resize ${s}x${s} %{name}_icon.png \
+   convert -strip -resize ${s}x${s} src/res/io.jamulus.jamulus.png \
+    %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/io.jamulus.jamulus.png
 done
-install -Dm0644 %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/%{name}.png \
-                %{buildroot}%{_datadir}/pixmaps/%{name}.png
+install -Dm0644 %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/io.jamulus.jamulus.png \
+                %{buildroot}%{_datadir}/pixmaps/io.jamulus.jamulus.png
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
+install -Dm0644 src/res/io.jamulus.*.svg \
+                %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 
-# sysconfig
+                # sysconfig
 install -d -m0755 %{buildroot}%{_fillupdir}
 install -D -m0644 %{SOURCE20} %{buildroot}%{_fillupdir}/sysconfig.jamulus
 
@@ -145,8 +150,9 @@ getent passwd jamulus >/dev/null || \
 %license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/io.jamulus.*.png
+%{_datadir}/icons/hicolor/scalable/apps/io.jamulus.*.svg
+%{_datadir}/pixmaps/io.jamulus.*.png
 # sysconfig
 %{_fillupdir}/sysconfig.jamulus
 # firewalld
