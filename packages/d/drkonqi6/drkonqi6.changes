@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:44:33 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.1
+- Changes since 6.3.0:
+  * sentry: send rich gpu context when available
+  * preambletest: repair test_sentry_image_mapping_fail
+  * preamble: limit stack var detection to crashing thread
+  * sentry: tie the python event and drkonqi event together when the payload failed
+  * Fix mapping for kactivitymanagerd
+  * preamble: flush for longer
+  * update version for new release
+
+-------------------------------------------------------------------
 Thu Feb  6 13:46:38 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.0:
