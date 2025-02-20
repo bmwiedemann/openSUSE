@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:47:34 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.14:
+  * Bump version to 0.2.14
+  * Fix #48 - Cannot select "None" as Exit Node
+  * README re-structure and moving into sub-pages etc
+  * update README.md (#47)
+  * Fix compile error on Debian/Ubuntu with older QT version
+  * Tailscale DNS settings UI #35 (#46)
+  * More github runner cleanups
+  * Use different QT versions for Linux and Windows
+  * UI polish of Settings window layouts etc (#45)
+  * Add advertiseRoutes in TailRunner (#44)
+  * Update Linux CMake build steps a bit
+  * Main layout - Fix account button + list layout a bit
+
+-------------------------------------------------------------------
 Mon Feb 17 06:17:50 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.13:
