@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Specio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Specio
 Name:           perl-Specio
-Version:        0.490.0
+Version:        0.500.0
 Release:        0
-# 0.49 -> normalize -> 0.490.0
-%define cpan_version 0.49
+# 0.50 -> normalize -> 0.500.0
+%define cpan_version 0.50
 License:        Artistic-2.0
 Summary:        Type constraints and coercions for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -119,7 +119,7 @@ Instead, you can explicitly check a value against a type, and optionally
 coerce values to that type.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

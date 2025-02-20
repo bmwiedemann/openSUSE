@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 19 05:34:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.500.0 (0.50)
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.50     2025-02-18
+
+  - Fixed a bug in the Int type that caused it to accept numbers like 124512.000000000123, which when
+    stringified, are stringified as integers.
+
+-------------------------------------------------------------------
 Tue Dec 24 05:34:28 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.490.0 (0.49)
