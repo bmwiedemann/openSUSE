@@ -2,7 +2,7 @@
 Wed Feb 19 21:05:06 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.4.4
-  * Bundle Protocol and CBOR dissector crash. 
+  * CVE-2025-1492: Bundle Protocol and CBOR dissector crash (boo#1237414).
 - Many more features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.4.4.html
 

@@ -27,8 +27,12 @@
 %else
 %bcond_with lz4
 %endif
-# have an option to still build with qt5
+# have an option to switch qt versions, but with a working default
+%if 0%{?suse_version} >= 1600
 %bcond_without qt6
+%else
+%bcond_with qt6
+%endif
 Name:           wireshark
 Version:        4.4.4
 Release:        0
@@ -188,7 +192,7 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE2} | grep SHA256 | head -n1 | cut 
 export CC=gcc-13
 export CXX=g++-13
 %endif
-%if %{with qt5}
+%if %{without qt6}
 %cmake -DCMAKE_INSTALL_LIBDIR='%{_lib}/' -DUSE_qt6=OFF
 %else
 %cmake -DCMAKE_INSTALL_LIBDIR='%{_lib}/'
