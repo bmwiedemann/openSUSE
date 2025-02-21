@@ -357,4 +357,12 @@
   * Add a logrotate config for `warewulfd.log`.</comment>
     <requestid>1237396</requestid>
   </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>eb7bf5b2e35ce9edca1078486d9388b3</srcmd5>
+    <version>4.5.8</version>
+    <time>1740170257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1247592</requestid>
+  </revision>
 </revisionlist>

@@ -35,6 +35,7 @@ Source5:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
 Source11:       adjust_overlays.sh
 Source20:       README.dnsmasq
+Source21:       README.RKE2.md
 
 BuildRequires:  distribution-release
 BuildRequires:  dracut
@@ -100,8 +101,18 @@ Obsoletes:      warewulf4-slurm <= 4.4.0
 Provides:       warewulf4-slurm = %version
 
 %description overlay-slurm
-This package install the necessary configuration files in order to run a slurm
+This package installs the necessary configuration files in order to run a slurm
 cluster on the configured warewulf nodes.
+
+%package overlay-rke2
+Summary:        Configuration template for RKE2
+Requires:       %{name} = %{version}
+Requires:       slurm
+BuildArch:      noarch
+
+%description overlay-rke2
+This package provides a template that is used to share a connection token
+and server endpoint information across an RKE2 cluster.
 
 %package dracut
 Summary:        Dracut module for loading a Warewulf container image
@@ -173,7 +184,7 @@ mv -v %{buildroot}%{_sysconfdir}/bash_completion.d/wwctl \
   %{buildroot}%{_datadir}/bash-completion/completions/wwctl
 # copy the LICESNSE.md via %%doc
 rm -f %{buildroot}/usr/share/doc/packages/warewulf/LICENSE.md
-cp %{S:20} .
+cp %{S:20} %{S:21} .
 
 # use ipxe-bootimgs images from distribution
 yq e '
@@ -211,6 +222,17 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/
 cat >  %{buildroot}%{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/slurm/slurm.conf.ww <<EOF
 {{ Include "/etc/slurm/slurm.conf" }}
 EOF
+# prepare RKE2 configuration template
+mkdir -p %{buildroot}%{_localstatedir}/lib/warewulf/overlays/rke2-config/etc/rancher/rke2
+cat > %{buildroot}%{_localstatedir}/lib/warewulf/overlays/rke2-config/etc/rancher/rke2/config.yaml.ww <<EOF
+{{ if ne (index .Tags "server") "" -}}
+server: https://{{ index .Tags "server" }}:9345
+{{ end -}}
+{{ if ne (index .Tags "clienttoken") "" -}}
+token: {{ index .Tags "connectiontoken" }}
+{{ end -}}
+EOF
+chmod 600 %{buildroot}%{_localstatedir}/lib/warewulf/overlays/rke2-config/etc/rancher/rke2/config.yaml.ww
 # move the other example templates for client overlays to package documentation
 mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}
 mv %{buildroot}/%{_sysconfdir}/warewulf/examples %{buildroot}%{_defaultdocdir}/%{name}/example-templates
@@ -273,6 +295,7 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/warewulfd.conf %{buildroot}/%{_syscon
 %exclude %{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/slurm
 %exclude %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/slurm
 %exclude %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge
+%exclude %{_localstatedir}/lib/warewulf/overlays/rke2-config
 
 %files overlay-slurm
 %dir %{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/slurm
@@ -283,6 +306,14 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/warewulfd.conf %{buildroot}/%{_syscon
 %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge/munge.key.ww
 %dir %attr(0700,munge,munge) %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge
 %attr(0600,munge,munge) %config(noreplace) %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge/munge.key.ww
+
+%files overlay-rke2
+%doc README.RKE2.md
+%dir %{_localstatedir}/lib/warewulf/overlays/rke2-config
+%dir %{_localstatedir}/lib/warewulf/overlays/rke2-config/etc
+%dir %{_localstatedir}/lib/warewulf/overlays/rke2-config/etc/rancher
+%dir %{_localstatedir}/lib/warewulf/overlays/rke2-config/etc/rancher/rke2
+%attr(0600,root,root) %{_localstatedir}/lib/warewulf/overlays/rke2-config/etc/rancher/rke2/config.yaml.ww
 
 %files dracut
 %defattr(-, root, root)

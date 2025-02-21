@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 21 08:17:53 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Provide an overlay package for the cluster-wide configuration
+  of an RKE2 cluster. This allows to share the connection token
+  across all node and sthe first server endpoint across all agents.
+
+-------------------------------------------------------------------
 Tue Oct 22 06:53:46 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - removing build rules for sle12 and fixing logrotate name
