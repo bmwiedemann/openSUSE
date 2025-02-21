@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 20 11:25:09 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250219 (git commit 5faab136de1a):
+  * amdgpu: Update ISP FW for isp v4.1.1
+
+-------------------------------------------------------------------
 Tue Feb 11 09:26:37 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix license description for kernel-firmware-tools package
