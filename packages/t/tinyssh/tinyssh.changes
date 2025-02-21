@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 10 19:40:54 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 20250201:
+  * Relicensed under CC0-1.0 OR 0BSD OR MIT-0 OR MIT
+  * Final reformatting using clang-format
+- Included from 20241111 to 20250126:
+  * Fixed more compiler warnings
+  * More used cryptoint
+  * Switched to cryptoint
+  * Switched to tests from SUPERCOP for crypto primitives
+  * Fixed various compiler warnings
+  * Fixed implicit-function-declaration warning packet_put.c (tnx @lanodan)
+  * Modification of the build system to a simple Makefile (old build system
+    still in directory 'old')
+  * Added support for external librandombytes, lib25519, libntruprime library
+  * Dropped support for other NaCl-compatible external libraries
+- Update spec file to new build system
+- Add tinyssh.keyring
+- Enable %check on code streams that support it
+
+-------------------------------------------------------------------
 Thu Jun 13 10:28:06 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Compatibility fix for upcoming gcc14 release.
