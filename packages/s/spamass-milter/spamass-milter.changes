@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 21 07:28:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add Requires(pre): group(postfix): the sa-milter user is supposed
+  to be added to the postfix group, which can only work when that
+  group exists.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:34:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
