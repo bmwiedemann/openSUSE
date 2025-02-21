@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 06:20:25 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: tinyxml-devel as it is an impediment to
+  inclusion in Leap:16 and its dropping anyway does not seen to
+  disable any features.
+
+-------------------------------------------------------------------
 Thu Feb 13 12:00:20 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.7.3:

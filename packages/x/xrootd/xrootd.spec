@@ -71,7 +71,6 @@ BuildRequires:  readline-devel
 BuildRequires:  scitokens-cpp-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  tinyxml-devel
 BuildRequires:  pkgconfig(davix)
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(json-c)
