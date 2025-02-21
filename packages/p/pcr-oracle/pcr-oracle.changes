@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 21 02:20:27 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update the License tag to GPL-2.0-or-later to match the license
+  declaration in the source files
+
+-------------------------------------------------------------------
 Thu Dec 26 05:57:07 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fix-event-reshash-for-cryptouuid.patch to detect the crypto
