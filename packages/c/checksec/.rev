@@ -57,4 +57,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1174590</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c991462bcfb288d08abd89eb076ca9c2</srcmd5>
+    <version>3.0.0</version>
+    <time>1740170299</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.0.0 release:
+  - rewritten in go (forwarded request 1247666 from msmeissn)</comment>
+    <requestid>1247667</requestid>
+  </revision>
 </revisionlist>

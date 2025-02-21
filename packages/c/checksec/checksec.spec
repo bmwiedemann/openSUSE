@@ -1,7 +1,7 @@
 #
 # spec file for package checksec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013-2021 Fedora Project Authors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,22 +18,18 @@
 
 
 Name:           checksec
-Version:        2.7.1
+Version:        3.0.0
 Release:        0
 Summary:        Utility to check binaries for system hardening
 License:        BSD-3-Clause
 URL:            https://github.com/slimm609/checksec.sh
 Source0:        https://github.com/slimm609/checksec.sh/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Requires:       binutils
-Requires:       file
-Requires:       findutils
-Requires:       gawk
-Requires:       procps
-Requires:       which
-BuildArch:      noarch
+Source1:        vendor.tar.bz2
+BuildRequires:  golang-packaging
+BuildRequires:  golang(API)
 
 %description
-Checksec is a bash script to check the properties of executables (like PIE,
+Checksec is a GO program to check the properties of executables (like PIE,
 RELRO, PaX, Canaries, ASLR, Fortify Source). It has been originally written by
 Tobias Klein and the original source is available here:
 http://www.trapkit.de/tools/checksec.html
@@ -47,21 +43,23 @@ designed to test what *standard* Linux OS and PaX (http://pax.grsecurity.net/)
 security features are being used.
 
 %prep
-%autosetup -n %{name}.sh-%{version} -p 1
-
-sed -i 's~^#!%{_bindir}/env bash~#!%{_bindir}/bash~' checksec
-sed -i 's/pkg_release=false/pkg_release=true/' checksec
+%autosetup -p 1
+tar xf %SOURCE1
 
 %build
-# noop
+mkdir build
+cd build
+go build ..
 
 %install
+cd build
 mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1
 install -pm 0755 %{name} %{buildroot}%{_bindir}
+cd ..
 install -pm 0644 extras/man/%{name}.1 %{buildroot}%{_mandir}/man1
 
 %files
-%license LICENSE.txt
+%license LICENSE
 %doc ChangeLog README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}

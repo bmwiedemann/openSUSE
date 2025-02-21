@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 21 14:33:40 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 3.0.0 release:
+  - rewritten in go
+
+-------------------------------------------------------------------
 Thu May  9 13:35:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.1:
