@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 21 09:00:55 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250221.19f7d1a:
+  * Reformat the spec file
+  * Rework keyctl calls to keep the session keyring
+
+-------------------------------------------------------------------
 Wed Feb 19 12:20:52 UTC 2025 - aplanas@suse.com
 
 - Update to version 1+git20250219.a796c24:
