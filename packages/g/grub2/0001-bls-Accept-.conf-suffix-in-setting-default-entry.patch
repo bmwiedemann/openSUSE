@@ -1,0 +1,44 @@
+From e873743f4ed7841542dd7dc11a183cb136670382 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 19 Feb 2025 14:52:52 +0800
+Subject: [PATCH] bls: Accept .conf suffix in setting default entry
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/normal/menu.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
+index b11b28e0d9..dfdf0c7268 100644
+--- a/grub-core/normal/menu.c
++++ b/grub-core/normal/menu.c
+@@ -557,6 +557,26 @@ get_entry_number (grub_menu_t menu, const char *name)
+ 	      entry = i;
+ 	      break;
+ 	    }
++
++	  if (e->bls)
++	    {
++	      char *v, *ext;
++
++	      if ((v = grub_strdup (val)) &&
++		  (ext = grub_strrchr (v, '.')) &&
++		  grub_strcmp (ext, ".conf") == 0)
++		{
++		  *ext = '\0';
++		  if (menuentry_eq (e->id, v))
++		    {
++		      entry = i;
++		      grub_free (v);
++		      break;
++		    }
++		}
++	      grub_free (v);
++	    }
++
+ 	  e = e->next;
+ 
+ 	  /* Skip hidden entries */
+-- 
+2.48.1
+

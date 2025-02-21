@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 19 07:12:23 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix grub-bls does not rollback via setting new default (bsc#1237198)
+  * 0001-bls-Accept-.conf-suffix-in-setting-default-entry.patch
+
+-------------------------------------------------------------------
 Fri Feb 14 03:49:09 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Security fixes for 2024

@@ -437,6 +437,7 @@ Patch255:       0017-commands-minicmd-Block-the-dump-command-in-lockdown-.patch
 Patch256:       0018-fs-bfs-Disable-under-lockdown.patch
 Patch257:       0019-fs-Disable-many-filesystems-under-lockdown.patch
 Patch258:       0020-fs-Prevent-overflows-when-allocating-memory-for-arra.patch
+Patch259:       0001-bls-Accept-.conf-suffix-in-setting-default-entry.patch
 
 %if 0%{?suse_version} <= 1600
 Requires:       gettext-runtime
