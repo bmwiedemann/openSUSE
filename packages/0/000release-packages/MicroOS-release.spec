@@ -17,7 +17,7 @@
 
 
 Name:           MicroOS-release
-Version:        20250220
+Version:        20250221
 Release:        0
 Summary:        openSUSE MicroOS 
 License:        GPL-2.0-or-later
@@ -179,9 +179,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = MicroOS
-Provides:       product(MicroOS) = 20250220-0
+Provides:       product(MicroOS) = 20250221-0
 Provides:       product-label() = openSUSE%20MicroOS
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20250220
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20250221
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(MicroOS)
@@ -197,7 +197,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
-Provides:       product_flavor(MicroOS) = 20250220-0
+Provides:       product_flavor(MicroOS) = 20250221-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description dvd
@@ -213,7 +213,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(MicroOS) = 20250220-0
+Provides:       product_flavor(MicroOS) = 20250221-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -243,7 +243,8 @@ mkdir -p %{buildroot}%{_sysconfdir} %{buildroot}%{_prefix}/lib/issue.d %{buildro
 echo -e "\nWelcome to openSUSE MicroOS (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
 echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS
 
-VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
+VERSION_ID=$(echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;')
+SYSEXT_LEVEL=$(rpm -q --qf '%%{NAME}-%%{VERSION}' glibc)
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
 # We do thus not add it to the os-release file
 cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
@@ -253,6 +254,7 @@ ID="opensuse-microos"
 ID_LIKE="suse opensuse opensuse-tumbleweed microos sl-micro"
 VERSION_ID="$VERSION_ID"
 PRETTY_NAME="openSUSE MicroOS"
+SYSEXT_LEVEL="$SYSEXT_LEVEL"
 ANSI_COLOR="0;32"
 CPE_NAME="cpe:/o:opensuse:microos:%{version}"
 BUG_REPORT_URL="https://bugzilla.opensuse.org"
@@ -278,11 +280,11 @@ cat >%{buildroot}%{_sysconfdir}/products.d/MicroOS.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>MicroOS</name>
-  <version>20250220</version>
+  <version>20250221</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:microos:20250220</cpeid>
+  <cpeid>cpe:/o:opensuse:microos:20250221</cpeid>
   <productline>MicroOS</productline>
   <register>
     <pool>
