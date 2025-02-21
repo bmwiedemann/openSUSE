@@ -144,7 +144,7 @@
  esac
  done
 --- configure
-+++ configure	2025-01-20 07:16:39.818905917 +0000
++++ configure	2025-02-17 08:46:35.088413807 +0000
 @@ -6788,7 +6788,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
@@ -165,7 +165,7 @@
  		;;
  	(mingw*msvc*)
  		cf_cv_shlib_version=msvcdll
-@@ -8409,7 +8409,7 @@ echo "${ECHO_T}$with_pcre2" >&6
+@@ -8411,7 +8411,7 @@ echo "${ECHO_T}$with_pcre2" >&6
  
  if test "x$with_pcre2" != xno ; then
  	cf_with_pcre2_ok=no
@@ -174,7 +174,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -15654,12 +15654,12 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15656,12 +15656,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -189,7 +189,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -15669,7 +15669,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15671,7 +15671,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -198,7 +198,7 @@
  CF_EOF
  fi
  
-@@ -15712,7 +15712,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15714,7 +15714,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -207,7 +207,7 @@
  CF_EOF
  fi
  
-@@ -15721,31 +15721,31 @@ case "$MANPAGE_FORMAT" in
+@@ -15723,31 +15723,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -246,7 +246,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -15755,7 +15755,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15757,7 +15757,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -255,7 +255,7 @@
  							then
  								continue
  							fi
-@@ -15765,18 +15765,18 @@ CF_EOF
+@@ -15767,18 +15767,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -277,7 +277,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -15796,9 +15796,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15798,9 +15798,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -290,7 +290,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -15819,6 +15819,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15821,6 +15821,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -444,7 +444,7 @@
  
  	if [ $name = $MAIN_LIBRARY ]
 --- misc/terminfo.src
-+++ misc/terminfo.src	2025-01-07 10:21:05.669586356 +0000
++++ misc/terminfo.src	2025-02-10 07:16:43.367706284 +0000
 @@ -305,7 +305,9 @@ dumb|80-column dumb tty,
  	am,
  	cols#80,
@@ -583,7 +583,7 @@
  	kf21=\E[23$, kf22=\E[24$, kf23=\E[11\^, kf24=\E[12\^,
  	kf25=\E[13\^, kf26=\E[14\^, kf27=\E[15\^, kf28=\E[17\^,
  	kf29=\E[18\^, kf30=\E[19\^, kf31=\E[20\^, kf32=\E[21\^,
-@@ -6927,6 +6956,38 @@ rxvt-cygwin-native|rxvt terminal emulato
+@@ -6926,6 +6955,38 @@ rxvt-cygwin-native|rxvt terminal emulato
  	     \302x\263y\363z\362{\343|\330~\376,
  	use=rxvt-cygwin,
  
@@ -622,7 +622,7 @@
  # This variant is supposed to work with rxvt 2.7.7 when compiled with
  # NO_BRIGHTCOLOR defined.  rxvt needs more work...
  rxvt-16color|rxvt with 16 colors like aixterm,
-@@ -8369,7 +8430,7 @@ pty|4bsd pseudo teletype,
+@@ -8427,7 +8488,7 @@ pty|4bsd pseudo teletype,
  # https://github.com/emacs-mirror/emacs/blob/master/lisp/term.el
  #
  # The codes supported by the term.el terminal emulation in GNU Emacs 19.30
@@ -631,7 +631,7 @@
  	am, mir, xenl,
  	cols#80, lines#24,
  	bel=^G, bold=\E[1m, cr=\r, csr=\E[%i%p1%d;%p2%dr, cub1=^H,
-@@ -8379,6 +8440,13 @@ eterm|GNU Emacs term.el terminal emulati
+@@ -8437,6 +8498,13 @@ eterm|GNU Emacs term.el terminal emulati
  	smir=\E[4h, smso=\E[7m, smul=\E[4m, use=ansi+cpr,
  	use=ansi+erase, use=ansi+idl, use=ansi+local,
  	use=xterm+alt47,
@@ -645,7 +645,7 @@
  
  # The codes supported by the term.el terminal emulation in GNU Emacs 22.2
  eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
-@@ -8621,11 +8689,18 @@ screen.xterm-xfree86|screen.xterm-new|sc
+@@ -8679,11 +8747,18 @@ screen.xterm-xfree86|screen.xterm-new|sc
  	E3@, use=screen+italics, use=screen+fkeys,
  	use=xterm+x11mouse, use=ecma+index, use=ansi+rep,
  	use=ecma+strikeout, use=xterm+pcfkeys,
@@ -665,7 +665,7 @@
  
  # xterm-r6 does not really support khome/kend unless it is propped up by
  # the translations resource.
-@@ -8710,7 +8785,7 @@ screen-w|VT 100/ANSI X3.64 virtual termi
+@@ -8768,7 +8843,7 @@ screen-w|VT 100/ANSI X3.64 virtual termi
  screen2|VT 100/ANSI X3.64 virtual terminal (old 2.x),
  	cols#80, lines#24,
  	clear=\E[2J\E[H, cr=\r, cub1=^H, cup=\E[%i%p1%d;%p2%dH,
@@ -674,7 +674,7 @@
  	kf2=\ET, kf3=\EU, kf4=\EV, kf5=\EW, kf6=\EP, kf7=\EQ, kf8=\ER,
  	kf9=\E0I, khome=\EH, nel=\r\n, rc=\E8, ri=\EM, rmso=\E[23m,
  	rmul=\E[24m, rs1=\Ec, sc=\E7, sgr0=\E[m, smso=\E[3m,
-@@ -10623,7 +10698,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
+@@ -10681,7 +10756,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
  	ri=\Ej, rmir=\Er, rmso=\EG0$<10/>, rmul=\EG0$<10/>,
  	sgr0=\EG0$<10/>, smir=\Eq, smso=\EG4$<10/>,
  	smul=\EG8$<10/>, tbc=\E0, vpa=\E[%p1%{32}%+%c,
@@ -683,7 +683,7 @@
  	am, da, db, xhp,
  	cols#80, lh#2, lines#24, lm#0, lw#8, nlab#8,
  	acsc=0cjgktlrmfn/q\,t5u6v8w7x., bel=^G, blink=\E&dA,
-@@ -18093,7 +18168,7 @@ ibm3101|i3101|IBM 3101-10,
+@@ -18151,7 +18226,7 @@ ibm3101|i3101|IBM 3101-10,
  	cup=\EY%p1%{32}%+%c%p2%{32}%+%c, cuu1=\EA, ed=\EJ,
  	el=\EI, home=\EH, hts=\E0, ind=\n, nel=\r\n, tbc=\EH,
  	use=vt52+arrows,
@@ -692,7 +692,7 @@
  	is2=\E S, rmacs=\E>B, rs2=\E S,
  	sgr=\E4%{64}%?%p1%t%{65}%|%;%?%p2%t%{66}%|%;%?%p3%t%{65}%|%;
  	    %?%p4%t%{68}%|%;%?%p5%t%{64}%|%;%?%p6%t%{72}%|%;%?%p7%t
-@@ -18329,7 +18404,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
+@@ -18387,7 +18462,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
  
  # "Megapel" refers to the display adapter, which was used with the IBM RT
  # aka IBM 6150.

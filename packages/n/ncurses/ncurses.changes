@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Feb 17 08:40:50 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250216
+  + add limit-checks in alloc_entry.c and alloc_ttype.c to avoid indexing
+    errors when using infocmp to compare all capabilities when processing
+    a malformed terminfo binary which has a valid header (testcase by
+    "Ekkosun").
+- Add ncurses patch 20250215
+  + add gzip option for suppressing filename/timestamp information to an
+    overlooked case (cf: 20240330).
+  + correct spelling errors found with codespell.
+  + fix some typos in manpages (report by Sven Joachim)
+  + amend change to lib_set_term.c to work with thread configuration
+    (report by Rajeev Pillai, cf: 20250208).
+
+-------------------------------------------------------------------
+Mon Feb 10 07:08:11 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250208
+  + change etip.h.in to include either/both of <new> and <exception>,
+    needed for another old BSD.
+  + update st (report by Alexander Kashpir) -TD
+  + add note for ghostty 1.1.0 -TD
+  + fix a few issues found with coverity.
+- Correct offset of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.4.dif
+  * ncurses-6.5-ghostty.dif
+
+-------------------------------------------------------------------
 Mon Feb  3 07:50:38 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250201
