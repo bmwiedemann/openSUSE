@@ -1,3 +1,9 @@
+gpxsee (13.36) stable; urgency=low
+
+  * Improved IMG nautical charts rendering.
+
+ -- Martin Tuma <tumic@cbox.cz>  Fri, 21 Feb 2025 00:23:03 +0100
+
 gpxsee (13.35) stable; urgency=low
 
   * Added support for geo URIs (RFC 5870).
