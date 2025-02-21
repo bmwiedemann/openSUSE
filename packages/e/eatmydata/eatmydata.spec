@@ -2,6 +2,7 @@
 # spec file for package eatmydata
 #
 # Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           eatmydata
-Version:        130
+Version:        131
 Release:        0
 Summary:        A library to disable fsync calls
 License:        GPL-3.0-only
@@ -27,6 +28,7 @@ Source0:        http://www.flamingspork.com/projects/libeatmydata/libeatmydata-%
 Source1:        http://www.flamingspork.com/projects/libeatmydata/libeatmydata-%{version}.tar.gz.asc
 Source2:        https://www.flamingspork.com/stewart.gpg#/%{name}.keyring
 Source3:        eatmydata-rpmlintrc
+BuildRequires:  strace
 
 %description
 libeatmydata is a small LD_PRELOAD library designed to (transparently)
@@ -38,17 +40,17 @@ this software no longer crash safe.
 %autosetup -n lib%{name}-%{version} -p1
 
 %build
-%configure
+%configure \
+	--disable-static \
+	%{nil}
 %make_build
 
 %install
 %make_install
-rm -rf %{buildroot}%{_libexecdir}/debug
 find %{buildroot} -type f -name "*.la" -delete -print
-find %{buildroot} -name "*.a" -print -delete
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%check
+%make_build check
 
 %files
 %license COPYING

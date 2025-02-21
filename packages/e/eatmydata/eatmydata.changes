@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 20 20:03:23 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 131:
+  * tst-invalidfd: include fcntl.h for sync_file_range
+- run tests
+
+-------------------------------------------------------------------
 Fri Dec 24 09:58:03 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 130:
