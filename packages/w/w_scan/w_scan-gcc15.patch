@@ -1,0 +1,30 @@
+--- w_scan-20170107/emulate.c	2017-01-07 10:06:17.000000000 +0100
++++ w_scan-20170107/emulate.c	2025-02-20 11:21:47.931253180 +0100
+@@ -199,7 +199,7 @@ int  em_getproperty(struct dtv_propertie
+ }
+ 
+ 
+-void em_lnb(int high_band, uint32_t high_val, uint32_t low_val) {
++void em_lnb(bool high_band, uint32_t high_val, uint32_t low_val) {
+   em_device.highband = high_band;
+   em_device.lnb_low = low_val;
+   em_device.lnb_high = high_val;
+--- w_scan-20170107/tools.h	2017-01-07 10:06:17.000000000 +0100
++++ w_scan-20170107/tools.h	2025-02-20 11:00:58.779112611 +0100
+@@ -28,15 +28,11 @@
+ 
+ #include <stdint.h>
+ #include <time.h>     // link with -lrt
++#include <stdbool.h>
+ 
+ /*******************************************************************************
+ /* common typedefs && logging.
+  ******************************************************************************/
+-#ifndef bool
+-  typedef int bool;
+-  #define false 0
+-  #define true  !(false)
+-#endif
+ 
+ #define min(a,b)  (b<a?b:a)
+ #define max(a,b)  (b>a?b:a)

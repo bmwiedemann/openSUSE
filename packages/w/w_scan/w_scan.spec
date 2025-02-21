@@ -1,7 +1,7 @@
 #
 # spec file for package w_scan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 Group:          Hardware/TV
 URL:            http://wirbel.htpc-forum.de/w_scan/index2.html
 Source0:        http://wirbel.htpc-forum.de/w_scan/w_scan-%{version}.tar.bz2
+# build with gcc 15
+Patch0:         w_scan-gcc15.patch
 BuildRequires:  linux-kernel-headers
 
 %description
@@ -34,7 +36,7 @@ It's based on the utility scan from linuxtv-dvb-apps, but meanwhile it was
 heavily changed and has different features.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fcommon"
