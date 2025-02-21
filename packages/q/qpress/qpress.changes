@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 20 18:43:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20230507 from a new upstream:
+  * general code cleanup and build system updates
+  * portability and compiler fixes
+- drop qpress-1.1-isatty-include.patch, included
+
+-------------------------------------------------------------------
 Tue Feb 20 13:51:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

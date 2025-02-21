@@ -1,8 +1,8 @@
 #
 # spec file for package qpress
 #
+# Copyright (c) 2025 Andreas Stieger <andreas.stieger@gmx.de>
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2013 Andreas Stieger <andreas.stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,14 @@
 
 
 Name:           qpress
-Version:        1.1
+Version:        20230507
 Release:        0
 Summary:        File archiver designed for speed
-License:        GPL-2.0-only
+License:        GPL-1.0-only AND GPL-2.0-only AND GPL-3.0-only
 Group:          Productivity/Archiving/Compression
-URL:            https://www.quicklz.com/
-Source0:        http://www.quicklz.com/%{name}-11-source.zip
-Source1:        COPYING
-Patch0:         qpress-1.1-isatty-include.patch
-BuildRequires:  gcc-c++
-BuildRequires:  unzip
+URL:            https://github.com/PierreLvx/qpress
+Source0:        https://github.com/PierreLvx/qpress/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  c++_compiler
 
 %description
 qpress is a portable file archiver using QuickLZ and designed to utilize
@@ -45,25 +42,27 @@ because the destination is smaller than the source. A few features:
 * data recovery of damaged archives with 64 Kbyte grannularity
 
 %prep
-%autosetup -p1 -c
-
-cp %{SOURCE1} .
+%autosetup -p1
 
 %build
+export CFLAGS="%{optflags}"
 %if %{do_profiling}
-  c++ %{optflags} %{cflags_profile_generate} -o qpress qpress.cpp aio.cpp quicklz.c utilities.cpp -lpthread
+  %make_build CFLAGS="$CFLAGS %{cflags_profile_generate}" LDFLAGS="-fprofile-arcs"
   ./qpress -o *.cpp | ./qpress -dio > /dev/null
-  c++ %{optflags} %{cflags_profile_feedback} -o qpress qpress.cpp aio.cpp quicklz.c utilities.cpp -lpthread
+  %make_build CFLAGS="$CFLAGS %{cflags_profile_feedback}" LDFLAGS="-fprofile-arcs"
 %else
-  c++ %{optflags} -o qpress qpress.cpp aio.cpp quicklz.c utilities.cpp -lpthread
+  %make_build
 %endif
 
 %install
-install -Dpm 0755 qpress \
-  %{buildroot}%{_bindir}/qpress
+mkdir -p %{buildroot}/usr/bin
+%make_install PREFIX=%{buildroot}/usr
 
 %files
-%license COPYING
+%license LICENSE.GPL-1.0
+%license LICENSE.GPL-2.0
+%license LICENSE.GPL-3.0
+%doc readme.md
 %{_bindir}/qpress
 
 %changelog
