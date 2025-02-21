@@ -1,7 +1,7 @@
 #
 # spec file for package gpgme
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -339,8 +339,9 @@ GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $
 %doc AUTHORS ChangeLog ChangeLog-2011 README NEWS THANKS TODO VERSION
 %{_bindir}/gpgme-tool
 %{_bindir}/gpgme-json
-%{_datadir}/common-lisp
-%{_datadir}/common-lisp/source
+%dir %{_datadir}/common-lisp
+%dir %{_datadir}/common-lisp/source
+%{_datadir}/common-lisp/source/gpgme
 %{_infodir}/gpgme*
 %{_mandir}/man1/gpgme-json.*
 
