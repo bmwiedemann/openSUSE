@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Feb 20 11:17:19 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250220:
+  * cellMic: Implement SIGSTATE_MICENG
+  * CI: Use windows-2025 Runner
+  * Add missing NotFound error handling in LeaveRoom reply
+  * Reset presence when terminating NP
+  * Fix ARM matrix and review comments
+  * Add arm64 build, update Qt version and docker image for github actions
+  * GitHub Actions CI Port
+
+-------------------------------------------------------------------
+Mon Feb 17 13:25:36 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250217:
+  * Remove xxHash submodule
+  * Fix SignalingHelper notification
+  * RSX: ProgramStateCache logic cleanup and microoptimizations
+  * RSX: Use checksum with rotated inputs for shader hashing instead of FNV
+
+-------------------------------------------------------------------
+Sun Feb 16 02:41:32 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250215:
+  * CMakeLists.txt: add option to disable LTO
+  * cmake: fix build after 3rdparty updates
+  * Fix sendto for p2ps packets
+  * Qt: enable updater for linux arm
+  * CI: drop fragile bundled libc++ on FreeBSD
+  * CI: only use headers from bundled libc++ on FreeBSD
+  * CI: unbreak bundled libc++ on FreeBSD after 363a225
+  * CI: unbreak bundled libc++ on FreeBSD after 67703b4
+  * CI: upgrade FreeBSD to 13.4
+  * cpu_stats: restore a header for BSDs after cd87a64
+  * Add Cubeb log callback (#16510)
+  * Fix build without vulkan
+  * Fix Aarch Linux CI
+  * Fix Change Password dialog not saving the new password on success
+  * Fix missing NoError error checking in a few sceNpGUI functions
+
+-------------------------------------------------------------------
+Wed Feb 12 19:57:27 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250212:
+  * RPCN v1.4
+  * cmake: Enable LTO for rpcs3_emu target
+  * rsx: Fix internal res tracking
+  * Headers cleanup
+  * Remove ppu_acontext
+  * SPU LLVM: Add two dependency chains for SPU verification
+  * gl: Fix stencil resolve for NVIDIA cards
+  * rsx: Implement framebuffer statistics to track the internal render resolution at runtime.
+  * gl: Implement MSAA transparency (sample-to-coverage)
+  * gl: Fix crash when launching multiple games with MSAA enabled
+  * Allow MSAA selection in the UI
+  * Fix compilation on clang
+  * vk: Silence spec validation error on NV cards
+  * gl: Add support for "hw MSAA resolve" option
+  * gl: Add extra checks around invalid render/compute passes
+  * gl: Fix crash in texture cache due to incorrect surface handling
+  * gl: Implement remaining resolvers
+  * gl: Implement basic MSAA rendertarget support
+  * vk: Fix extension initialization during device creation
+  * vk: Redesign resource binding for overlay passes
+  * gl: Enforce full image creation argument declaration
+  * gl: Upgrade the surface cache to become MSAA-aware
+  * gl: Implement MSAA resolve/unresolve for color images
+  * gl: Implement multisampled image creation
+  * vk: Move MSAA resolve/unresolve shaders to common GPU program layer
+  * gl: Plumb stubbed MSAA support into the render target handlers
+
+-------------------------------------------------------------------
 Mon Feb 10 18:00:46 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.34~git20250209:
