@@ -86,4 +86,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173270</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a90a38e15fb055f2e19687dbd5226dc9</srcmd5>
+    <version>1.2.0</version>
+    <time>1740170283</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove vendored python-azure-storage-blob package
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update BuildRequires and Requires from setup.py (forwarded request 1247612 from glaubitz)</comment>
+    <requestid>1247618</requestid>
+  </revision>
 </revisionlist>
