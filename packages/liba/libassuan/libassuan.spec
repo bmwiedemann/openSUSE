@@ -1,7 +1,7 @@
 #
 # spec file for package libassuan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define soversion 9
 Name:           libassuan
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        IPC library used by GnuPG version 2
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
