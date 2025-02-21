@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 487f2f2421ae4e05530de28b9acd0ab7db3ff6d9
+%define git_version 5faab136de1a0f70f9bdcb3d9e29e7261aeeb9b4
 
 Name:           kernel-firmware-sound
-Version:        20250217
+Version:        20250219
 Release:        0
 Summary:        Kernel firmware files for various sound drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware

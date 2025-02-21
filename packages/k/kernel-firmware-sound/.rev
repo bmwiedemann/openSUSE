@@ -25,4 +25,12 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment></comment>
     <requestid>1246633</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>57b6ab1cef34dc1617114cff34388802</srcmd5>
+    <version>20250219</version>
+    <time>1740170090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1247386</requestid>
+  </revision>
 </revisionlist>

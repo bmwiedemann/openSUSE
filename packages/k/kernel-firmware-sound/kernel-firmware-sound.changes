@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 20 11:28:04 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250219 (git commit 5faab136de1a):
+  * cirrus: cs35l56: Add and update firmware for Cirrus CS35L56 for two HP laptops
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some ASUS laptops
+  * cirrus: cs35l56: Add and update firmware for Cirrus CS35L56 for various Lenovo laptops
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for some Dell laptops
+
+-------------------------------------------------------------------
 Tue Feb 18 10:00:36 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250217 (git commit 487f2f2421ae):
