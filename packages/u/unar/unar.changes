@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 20 10:15:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Use %autosetup
+
+-------------------------------------------------------------------
+Fri Feb  7 11:47:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix checksum calculation on big endian archs
+  (boo#1236917, gh#MacPaw/XADMaster#168)
+  * Revert-Switch-to-faster-CRC-implementations.patch
+
+-------------------------------------------------------------------
 Tue Oct 22 07:37:23 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Fix build against GCC14

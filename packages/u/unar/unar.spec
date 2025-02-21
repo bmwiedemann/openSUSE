@@ -1,7 +1,7 @@
 #
 # spec file for package unar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,9 @@ Summary:        Multi-format unarchiver
 License:        LGPL-2.1-or-later
 URL:            https://unarchiver.c3.cx/commandline
 Source0:        https://github.com/MacPaw/XADMaster/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}.changes
-Source2:        https://github.com/MacPaw/universal-detector/archive/%{_dver}/universal-detector-%{_dver}.tar.gz
+Source1:        https://github.com/MacPaw/universal-detector/archive/%{_dver}/universal-detector-%{_dver}.tar.gz
+# PATCH-FIX-UPSTREAM -- Fix wrong checksum on BE archs
+Patch0:         Revert-Switch-to-faster-CRC-implementations.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-objc
 BuildRequires:  gnustep-base-devel
@@ -46,31 +47,29 @@ well as disc images in ISO, BIN, MDF, NRG, CDI. It supports filenames
 in foreign character sets.
 
 %prep
-%setup -q -T -c
-tar xf %{SOURCE0}
-mv XADMaster-%{version} %{name}
-tar -xf %{SOURCE2}
-mv universal-detector-%{_dver} UniversalDetector
+%autosetup -p1 -a1 -n XADMaster-%{version}
+# The code and Makefile.linux want to find UniversalDetector in the parent dir...
+mv universal-detector-%{_dver} ../UniversalDetector
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-int-conversion"
 export CXXFLAGS="%{optflags}"
 export OBJCFLAGS="$(gnustep-config --objc-flags)"
-%make_build -C %{name} -f Makefile.linux
+%make_build -f Makefile.linux
 
 %install
 install -d %{buildroot}%{_bindir}
-install -m755 %{name}/lsar %{name}/unar -t %{buildroot}%{_bindir}
+install -m755 lsar unar -t %{buildroot}%{_bindir}
 install -d %{buildroot}%{_mandir}/man1
-install -m644 %{name}/Extra/lsar.1 %{name}/Extra/unar.1 -t %{buildroot}%{_mandir}/man1
+install -m644 Extra/lsar.1 Extra/unar.1 -t %{buildroot}%{_mandir}/man1
 
 install -d %{buildroot}%{_datadir}/bash-completion/completions
-install -m644 %{name}/Extra/lsar.bash_completion %{buildroot}%{_datadir}/bash-completion/completions/lsar
-install -m644 %{name}/Extra/unar.bash_completion %{buildroot}%{_datadir}/bash-completion/completions/unar
+install -m644 Extra/lsar.bash_completion %{buildroot}%{_datadir}/bash-completion/completions/lsar
+install -m644 Extra/unar.bash_completion %{buildroot}%{_datadir}/bash-completion/completions/unar
 
 %files
-%license %{name}/LICENSE
-%doc %{name}/README.md
+%license LICENSE
+%doc README.md
 %{_bindir}/lsar
 %{_bindir}/unar
 %{_mandir}/man1/lsar.1%{?ext_man}

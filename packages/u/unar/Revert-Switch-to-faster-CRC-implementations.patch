@@ -1,0 +1,56 @@
+From e1b3bae57127178805415f5f3251145fbbfd04a3 Mon Sep 17 00:00:00 2001
+From: Bastian Germann <bage@debian.org>
+Date: Tue, 16 Apr 2024 20:30:37 +0000
+Subject: [PATCH] Revert "Switch to faster CRC implementations in some
+ archives"
+
+This reverts commit 2da64b6b62be7532fb28621164d5213fe4f37fe4 because the
+faster CRC implementation calculates a wrong Gzip CRC on big endian machines.
+---
+ XADCRCHandle.m      | 2 +-
+ XADGzipParser.m     | 2 +-
+ XADRARInputHandle.m | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/XADCRCHandle.m b/XADCRCHandle.m
+index d927046..43ffff4 100644
+--- a/XADCRCHandle.m
++++ b/XADCRCHandle.m
+@@ -127,7 +127,7 @@ correctCRC:(uint32_t)correctcrc CRCTable:(const uint32_t *)crctable
+ - (int)streamAtMost:(int)num toBuffer:(void *)buffer
+ {
+     int actual=[parent readAtMost:num toBuffer:buffer];
+-    crc=XADCalculateCRCFast(crc,buffer,actual,XADCRCTable_sliced16_edb88320);
++    crc=XADCalculateCRC(crc,buffer,actual,XADCRCTable_edb88320);
+     return actual;
+ }
+ @end
+diff --git a/XADGzipParser.m b/XADGzipParser.m
+index 71c6e5b..dc16746 100644
+--- a/XADGzipParser.m
++++ b/XADGzipParser.m
+@@ -259,7 +259,7 @@ name:(NSString *)name propertiesToAdd:(NSMutableDictionary *)props
+ 		case DataState:
+ 		{
+ 			int actual=[currhandle readAtMost:num-bytesread toBuffer:&bytebuf[bytesread]];
+-			crc=XADCalculateCRCFast(crc,&bytebuf[bytesread],actual,XADCRCTable_sliced16_edb88320);
++			crc=XADCalculateCRC(crc,&bytebuf[bytesread],actual,XADCRCTable_edb88320);
+ 
+ 			bytesread+=actual;
+ 
+diff --git a/XADRARInputHandle.m b/XADRARInputHandle.m
+index 33ae966..11ca1d4 100644
+--- a/XADRARInputHandle.m
++++ b/XADRARInputHandle.m
+@@ -68,7 +68,7 @@
+ 
+ 		[parent readBytes:numbytes toBuffer:&bytebuf[total]];
+ 
+-        crc=XADCalculateCRCFast(crc,&bytebuf[total],numbytes,XADCRCTable_sliced16_edb88320);
++		crc=XADCalculateCRC(crc,&bytebuf[total],numbytes,XADCRCTable_edb88320);
+ 
+ 		total+=numbytes;
+ 
+-- 
+2.48.1
+
