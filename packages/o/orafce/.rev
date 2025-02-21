@@ -206,4 +206,12 @@
     <comment>- Stop building for EOL postgresql12.</comment>
     <requestid>1245881</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>744553de7df74589434dc10d2b725abb</srcmd5>
+    <version>4.14.2+git0.eb0e492</version>
+    <time>1740170320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1247695</requestid>
+  </revision>
 </revisionlist>

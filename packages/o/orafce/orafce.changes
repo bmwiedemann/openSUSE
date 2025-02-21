@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 21 16:15:04 UTC 2025 - emiliano.langella@suse.com
+
+- Update to version 4.14.2+git0.eb0e492:
+  * prepare for 4.14.2
+  * fix crash when arguments of plvstr.rvrs specified substring out of passed string
+  * fix check number of digits of umask value
+  * remove security definer from dbms_alert.signal - it is not necessary since c40d56b
+  * remove unsupported releases
+  * fix build on old meson (tested 0.58.2)
+  * enhancing meson build
+
+-------------------------------------------------------------------
 Fri Feb 14 12:06:20 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Stop building for EOL postgresql12.
