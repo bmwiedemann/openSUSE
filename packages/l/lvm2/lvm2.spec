@@ -1,5 +1,5 @@
 #
-# spec file for package lvm2
+# spec file
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -107,7 +107,7 @@ Requires:       modutils
 Requires:       (udev >= 255.7 if udev)
 Requires:       (multipath-tools >= 0.9.9 if multipath-tools)
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 Provides:       lvm = %{version}
 Obsoletes:      lvm2-cmirrord <= %{lvm2_cmirrord_version}
 %{?systemd_requires}
@@ -133,6 +133,8 @@ BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(udev)
 # building lvm2 needs thin-provisioning-tools, see bsc#1236749
 BuildRequires:  thin-provisioning-tools >= %{thin_provisioning_version}
+# see bsc#1236788 for dont_stop_blk_availability_service
+Provides:       dont_stop_blk_availability_service = 0.1
 %endif
 %endif
 
@@ -554,7 +556,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 /sbin/ldconfig
 %{?regenerate_initrd_post}
 %service_del_postun lvm2-lvmpolld.service lvm2-lvmpolld.socket
-%service_del_postun_without_restart blk-availability.service lvm2-monitor.service
+%service_del_postun_without_restart lvm2-monitor.service
 
 %files
 %license COPYING COPYING.LIB

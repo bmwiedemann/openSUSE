@@ -1,3 +1,11 @@
+Thu Feb 20 05:33:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
+
+- system with LVM on iSCSI hangs on shutdown because blk-availability.service is not enabled (bsc#1236788)
+  * update lvm2.spec
+    - remove blk-availability.service from %postun
+    - add new Provides 'dont_stop_blk_availability_service'
+
+-------------------------------------------------------------------
 Wed Feb  5 03:18:37 UTC 2025 - Glass Su <glass.su@suse.com>
 
 - thin-provisioning-tools 1.1.0 requires device-mapper-devel, this creates a cycle (boo#1236749)
