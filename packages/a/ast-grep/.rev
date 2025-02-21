@@ -775,4 +775,19 @@
   * chore(deps): update dependency @types/node to v22.12.0 ea05951</comment>
     <requestid>1242307</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f67a9ddcca055ff4c4f3bd8a5dc68340</srcmd5>
+    <version>0.35.0</version>
+    <time>1740170323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.35.0:
+  * fix: ensure SerializableStopBy serialization matches deserialization #1802
+  * fix: ensure SerializableStopBy serialization matches deserialization (#1802) #1802
+  * feat: allow ERROR node in pattern to match everything #1791
+  * Breaking change: feat: use php-only-language for php #900
+  * Breaking change: refactor: better apis d91b5c5
+  * chore(deps): update dependency @ast-grep/napi to v0.34.4 a7ca599
+  * fix(deps): update dependency @babel/core to v7.26.8 bf5b3a4</comment>
+    <requestid>1247686</requestid>
+  </revision>
 </revisionlist>

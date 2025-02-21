@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 21 15:54:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.35.0:
+  * fix: ensure SerializableStopBy serialization matches deserialization #1802
+  * fix: ensure SerializableStopBy serialization matches deserialization (#1802) #1802
+  * feat: allow ERROR node in pattern to match everything #1791
+  * Breaking change: feat: use php-only-language for php #900
+  * Breaking change: refactor: better apis d91b5c5
+  * chore(deps): update dependency @ast-grep/napi to v0.34.4 a7ca599
+  * fix(deps): update dependency @babel/core to v7.26.8 bf5b3a4
+
+-------------------------------------------------------------------
 Mon Feb  3 07:09:13 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.34.4:
