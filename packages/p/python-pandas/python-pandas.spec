@@ -72,8 +72,10 @@ URL:            https://pandas.pydata.org/
 # SourceRepository: https://github.com/pandas-dev/pandas
 # Must be created by cloning through `osc service runall`: gh#pandas-dev/pandas#54903, gh#pandas-dev/pandas#54907
 Source0:        pandas-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pandas-pr60545-arrow-exception.patch gh#pandas-dev/pandas#60545
+Patch0:         https://github.com/pandas-dev/pandas/pull/60545.patch#/pandas-pr60545-arrow-exception.patch
 # PATCH-FIX-UPSTREAM pandas-pr60584-60586-mpl-vert.patch gh#pandas-dev/pandas#60584 gh#pandas-dev/pandas#60586
-Patch0:         https://github.com/pandas-dev/pandas/pull/60586.patch#/pandas-pr60584-60586-mpl-vert.patch
+Patch1:         https://github.com/pandas-dev/pandas/pull/60586.patch#/pandas-pr60584-60586-mpl-vert.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}
@@ -522,8 +524,10 @@ SKIP_TESTS+=" or (test_scalar_unary and numexpr-pandas)"
 SKIP_TESTS+=" or test_array_inference[data7-expected7]"
 # numpy 2.1 issues?
 SKIP_TESTS+=" or test_frame_setitem_dask_array_into_new_col"
-# too new xarray https://github.com/pandas-dev/pandas/pull/60109
+# too new xarray, gh#pandas-dev/pandas#60109 backport too much
 SKIP_TESTS+=" or (TestDataFrameToXArray and test_to_xarray_index_types)"
+# too new pyarrow, gh#pandas-dev/pandas#60755 backport too much
+SKIP_TESTS+=" or (TestParquetPyArrow and test_roundtrip_decimal)"
 
 %ifarch %{ix86} %{arm32}
 # https://github.com/pandas-dev/pandas/issues/31856

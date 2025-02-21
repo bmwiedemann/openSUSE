@@ -1,0 +1,23 @@
+From f97f5e107f145fd09133d21cb1902c84c936754c Mon Sep 17 00:00:00 2001
+From: Matthew Roeschke <10647082+mroeschke@users.noreply.github.com>
+Date: Wed, 11 Dec 2024 13:20:10 -0800
+Subject: [PATCH] Backport PR #60544: CI/TST: Use tm.external_error_raised for
+ test_from_arrow_respecting_given_dtype_unsafe
+
+---
+ pandas/tests/extension/test_arrow.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pandas/tests/extension/test_arrow.py b/pandas/tests/extension/test_arrow.py
+index 03ab7c7f1dad8..470ca0673c60e 100644
+--- a/pandas/tests/extension/test_arrow.py
++++ b/pandas/tests/extension/test_arrow.py
+@@ -1637,7 +1637,7 @@ def test_from_arrow_respecting_given_dtype():
+ 
+ def test_from_arrow_respecting_given_dtype_unsafe():
+     array = pa.array([1.5, 2.5], type=pa.float64())
+-    with pytest.raises(pa.ArrowInvalid, match="Float value 1.5 was truncated"):
++    with tm.external_error_raised(pa.ArrowInvalid):
+         array.to_pandas(types_mapper={pa.float64(): ArrowDtype(pa.int64())}.get)
+ 
+ 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 20 11:23:33 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Support pyarrow 19
+  * Add pandas-pr60545-arrow-exception.patch
+    gh#pandas-dev/pandas#60545
+  * Skip TestParquetPyArrow.test_roundtrip_decimal: Would require
+    gh#pandas-dev/pandas#60755 and all other backports of the new
+    string type system.
+
+-------------------------------------------------------------------
 Fri Feb  7 18:40:46 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Add pandas-pr60584-60586-mpl-vert.patch
