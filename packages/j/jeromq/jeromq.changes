@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Feb 21 02:58:36 UTC 2025 - ming li <mli@suse.com>
+
+- Update to version 0.5.3:
+  * Add peer support disconnect
+  * Fix issue where socket identity was failing with overflow when
+    identity was bigger than 127
+  * Make JeroMQ compatiable with Android API Level 19
+  * Add tests and build on Java 17. Helping dependecies resolution
+    by activating more profiles and don't try to publish on forks  
+  * ZMQ_HEARTBEAT is not useful without sending an hello message.
+    To solve that, the majordomo worker still has to implement heartbeat.
+    With this new option, whenever the connection drops and reconnects
+    the hello message will be sent, greatly simplify the majordomo protocol,
+    as now READY and HEARTBEAT can be handled by zeromq.
+  * Jeromq is not thread-safe, so port CLIENT and SERVER sockets from libzmq,
+    which are thread-safe sockets.
+  * Add Client/Server support to ZFrame.
+  * Radio-Dish implementation.
+  * Port of https://github.com/zeromq/libzmq/pull/3871, router can handle peer
+    disconnected.
+  * Adding critical and notification exceptions handlers in zmq.poll.Poller.
+  * Many improvement to error handling, with more error messages.
+  * Fix ZMQ_REQ_CORRELATE.
+  * A new ZBeacon implementation.
+  * IPC protocol now comply to java.net.preferIPv4Stack or java.net.preferIPv6Addresses
+    for the choice of the TCP stack to use.
+  * Improved monitor, with added events in some mechanisms.
+
+-------------------------------------------------------------------
 Sat Sep  9 14:22:05 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp

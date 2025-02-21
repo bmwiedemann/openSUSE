@@ -1,7 +1,7 @@
 #
 # spec file for package jeromq
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jeromq
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Pure Java implementation of libzmq
 License:        MPL-2.0+
