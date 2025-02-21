@@ -23,7 +23,7 @@
 %endif
 
 Name:           product-composer
-Version:        0.5.5
+Version:        0.5.7
 Release:        0
 Summary:        Product Composer
 License:        GPL-2.0-or-later
@@ -47,7 +47,7 @@ Requires:       createrepo_c
 Requires:       inst-source-utils
 Requires:       libsolv-tools
 Requires:       mkisofs
-Requires:       mksusecd >= 3.3
+Requires:       mksusecd >= 3.5
 BuildArch:      noarch
 
 %description

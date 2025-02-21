@@ -310,4 +310,18 @@
   Suport architecture specific meta data</comment>
     <requestid>1247104</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1b8c1c63b56462a4df452587e66d84cf</srcmd5>
+    <version>0.5.7</version>
+    <time>1740170285</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5.7
+  Fixing splitted repodata handling with splitted source medium
+
+- update to version 0.5.6
+  Call verifymedia on generated bootable media for verbose output
+  in log file. It is not fatal yet, due to a known issue in agama
+  base images, but that will be changed.</comment>
+    <requestid>1247645</requestid>
+  </revision>
 </revisionlist>
