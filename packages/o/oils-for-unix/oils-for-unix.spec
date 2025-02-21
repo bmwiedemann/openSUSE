@@ -1,7 +1,7 @@
 #
 # spec file for package oils-for-unix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           oils-for-unix
-Version:        0.26.0
+Version:        0.27.0
 Release:        0
 Summary:        A bash compatible shell and a new modern shell
 License:        Apache-2.0 AND CNRI-Python-GPL-Compatible
