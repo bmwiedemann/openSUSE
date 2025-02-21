@@ -19,9 +19,9 @@
 
 
 %global _lto_cflags %nil
-%global _v8_version 130.0.7
+%global _v8_version 134.4.0
 Name:           deno
-Version:        2.1.10
+Version:        2.2.0
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
