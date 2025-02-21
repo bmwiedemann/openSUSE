@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 20 11:26:53 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250219 (git commit 5faab136de1a):
+  * qcom: add firmware for Adreno A225
+
+-------------------------------------------------------------------
 Tue Feb 11 09:26:37 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix license description for kernel-firmware-tools package
