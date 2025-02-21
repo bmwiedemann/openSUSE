@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 17 13:55:06 UTC 2025 - Darragh O'Reilly <doreilly@suse.com>
+
+- Use the latest llvm/clang on tumbleweed
+
+-------------------------------------------------------------------
 Tue Jan 28 15:46:54 UTC 2025 - Darragh O'Reilly <doreilly@suse.com>
 
 - Use llvm17 for SLE15SP6+

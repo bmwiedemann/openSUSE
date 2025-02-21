@@ -137,10 +137,16 @@ BuildRequires:  npm >= 18
 
 %if %{with bpf}
 %if 0%{?suse_version}
+# Use latest llvm/clang on TW
+%if 0%{?suse_version} == 1699
+BuildRequires:  clang
+BuildRequires:  llvm
+%else
 BuildRequires:  clang%{?llvm_version}
 BuildRequires:  llvm%{?llvm_version}
 %if 0%{?sle_version} == 150500 && !0%{?is_opensuse}
 BuildRequires:  llvm16-libclang13
+%endif
 %endif
 BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel
