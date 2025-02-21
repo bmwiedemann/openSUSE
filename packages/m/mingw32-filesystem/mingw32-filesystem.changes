@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 21 15:49:16 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 20250221
+  * Reverse the use of the current directory in %_mingw32_debug_package;
+    it prevents the building of many packages
+
+-------------------------------------------------------------------
+Thu Feb 20 11:51:39 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 20250220
+- mingw32.macros:
+  * Add parameter '-N' to %_mingw32_debug_package
+    to be able to specify a full package name, which is required
+    by the wine package
+  * Add parameter '-C' to %_mingw32_debug_package to be able
+    to add a Conflicts tag, which is required
+    by the wine package
+  * In %_mingw32_debug_package use actual directory to find
+    the debuginfo files list to be in sync with the native
+    debug package
+
+-------------------------------------------------------------------
 Sun Feb  2 20:32:09 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Syntax fix in %_mingw32_debug_package on Leap 15.x 

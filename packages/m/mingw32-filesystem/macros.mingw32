@@ -100,18 +100,21 @@
 # Template for combined debuginfo and debugsource sub-package.
 # Parameter:
 #    -e exclude BuildArch: noarch
-#    -n package name (-debug will be appended)
+#    -n <name> package name (-debug will be appended)
+#    -C <name> add package conflicts
+#    -N <name> full package name
 #
-%_mingw32_debug_package(en:) \
-%package %{-n:-n %{-n*}-}debug \
+%_mingw32_debug_package(en:C:N:) \
+%package %{-N:-n %{-N*}}%{!-N:%{-n:-n %{-n*}-debug}%{!-n:debug}} \
 Summary: Debug information for package %{name} \
 Group: Development/Sources \
 %{!-e:BuildArch: noarch} \
-%description %{-n:-n %{-n*}-}debug \
+%{-C:Conflicts:%{-C*}} \
+%description %{-N:-n %{-N*}}%{!-N:%{-n:-n %{-n*}-debug}%{!-n:debug}} \
 This package provides debug information for package %{name}.\
 Debug information is useful when developing applications that use this\
 package or when debugging this package.\
-%files %{-n:-n %{-n*}-}debug -f %{_builddir}/mingw32-debugfiles.list\
+%files %{-N:-n %{-N*}}%{!-N:%{-n:-n %{-n*}-debug}%{!-n:debug}} -f  %{_builddir}/mingw32-debugfiles.list\
 %defattr(-,root,root)\
 %{nil}
 
