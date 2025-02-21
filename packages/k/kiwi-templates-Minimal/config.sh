@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -76,7 +76,7 @@ systemctl mask systemd-firstboot.service
 systemctl enable jeos-firstboot.service
 
 # Enable firewalld if installed except on VMware
-if [ -x /usr/sbin/firewalld ]  && [ "$kiwi_profiles" != "VMware" ]; then
+if [ -x /usr/sbin/firewalld ] && [ "$kiwi_profiles" != "VMware" ]; then
         systemctl enable firewalld.service
 fi
 
@@ -88,7 +88,7 @@ fi
 #======================================
 # Add repos from control.xml
 #--------------------------------------
-if grep -q opensuse /usr/lib/os-release; then
+if rpm -q live-add-yast-repos; then
 	add-yast-repos
 	zypper --non-interactive rm -u live-add-yast-repos
 fi
@@ -96,18 +96,18 @@ fi
 #=====================================
 # Configure snapper
 #-------------------------------------
-if [ "${kiwi_btrfs_root_is_snapshot-false}" = 'true' ]; then
-        echo "creating initial snapper config ..."
-        # we can't call snapper here as the .snapshots subvolume
-        # already exists and snapper create-config doesn't like
-        # that.
-        cp /etc/snapper/config-templates/default /etc/snapper/configs/root \
-                || cp /usr/share/snapper/config-templates/default /etc/snapper/configs/root
-        # Change configuration to match SLES12-SP1 values
-        sed -i -e '/^TIMELINE_CREATE=/s/yes/no/' /etc/snapper/configs/root
-        sed -i -e '/^NUMBER_LIMIT=/s/50/10/'     /etc/snapper/configs/root
+if [ -x /usr/bin/snapper ]; then
+	echo "creating initial snapper config ..."
+	# we can't call snapper here as the .snapshots subvolume
+	# already exists and snapper create-config doesn't like
+	# that.
+	cp /etc/snapper/config-templates/default /etc/snapper/configs/root \
+		|| cp /usr/share/snapper/config-templates/default /etc/snapper/configs/root
+	# Change configuration to match SLES12-SP1 values
+	sed -i -e '/^TIMELINE_CREATE=/s/yes/no/' /etc/snapper/configs/root
+	sed -i -e '/^NUMBER_LIMIT=/s/50/10/'     /etc/snapper/configs/root
 
-        baseUpdateSysConfig /etc/sysconfig/snapper SNAPPER_CONFIGS root
+	baseUpdateSysConfig /etc/sysconfig/snapper SNAPPER_CONFIGS root
 fi
 
 #=====================================
@@ -117,14 +117,36 @@ if [ -f /etc/chrony.conf ]; then
 	systemctl enable chronyd
 fi
 
+#======================================
+# Add default kernel boot options
+#--------------------------------------
+cmdline=('rw' 'quiet' 'systemd.show_status=1' 'console=ttyS0,115200' 'console=tty0')
+
+case "${kiwi_profiles}" in
+	*Cloud*) cmdline+=('net.ifnames=0') ;;
+	*HyperV*) cmdline+=('earlyprintk=ttyS0,115200' 'rootdelay=300') ;;
+esac
+
 # Configure SELinux if installed
 # Note: Because of https://github.com/OSInside/kiwi/issues/2709, the root filesystem
 # isn't fully labelled, but the first system snapshot is created after autorelabel
 # so this is never visible.
 if [[ -e /etc/selinux/config ]]; then
-        sed -i -e 's|^SELINUX=.*|SELINUX=enforcing|g' \
-            -e 's|^SELINUXTYPE=.*|SELINUXTYPE=targeted|g' \
-            "/etc/selinux/config"
+	cmdline+=('security=selinux' 'selinux=1')
+
+	sed -i -e 's|^SELINUX=.*|SELINUX=enforcing|g' \
+	       -e 's|^SELINUXTYPE=.*|SELINUXTYPE=targeted|g' \
+	       "/etc/selinux/config"
+fi
+
+if rpm -q sdbootutil; then
+	mkdir -p /etc/kernel
+	echo "${cmdline[*]}" > /etc/kernel/cmdline
+elif [ -e /etc/default/grub ]; then
+	sed -i "s#^GRUB_CMDLINE_LINUX_DEFAULT=.*\$#GRUB_CMDLINE_LINUX_DEFAULT=\"${cmdline[*]}\"#" /etc/default/grub
+else
+	echo "Unknown bootloader"
+	exit 1
 fi
 
 #======================================
@@ -140,19 +162,9 @@ sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp
 #======================================
 # Configure FDE/BLS specifics
 #--------------------------------------
-# [[ "$kiwi_profiles" == *"kvm-and-xen-"* ]]
 if rpm -q sdbootutil; then
- 	for d in /usr/lib/modules/*; do
- 		test -d "$d" || continue
- 		depmod -a "${d##*/}"
- 	done
- 	ENTRY_TOKEN=$(. /usr/lib/os-release; echo $ID)
- 	mkdir -p /etc/kernel
- 	echo "$ENTRY_TOKEN" > /etc/kernel/entry-token
- 	# FIXME: kiwi needs /boot/efi to exist before syncing the disk image
- 	mkdir -p /boot/efi
-
-	echo "rw security=selinux selinux=1 quiet systemd.show_status=1 console=ttyS0,115200 console=tty0" > /etc/kernel/cmdline
+	# FIXME: kiwi needs /boot/efi to exist before syncing the disk image
+	mkdir -p /boot/efi
 
 	[ -e /var/lib/YaST2/reconfig_system ] && systemctl enable sdbootutil-enroll.service
 fi

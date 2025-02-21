@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 21 10:30:41 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Clean up config.sh and disk.sh
+- Move kernelcmdline from .kiwi to config.sh
+- Fix snapper config adjustment (boo#1237466)
+
+-------------------------------------------------------------------
 Thu Jan 16 09:37:46 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Switch to SELinux
