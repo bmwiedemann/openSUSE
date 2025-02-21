@@ -19,7 +19,7 @@
 %global __requires_exclude_from ^%{_libdir}/crates/rusty_v8/.*$
 
 Name:           rusty_v8
-Version:        130.0.7
+Version:        134.4.0
 Release:        0
 Summary:        Build tooling for Deno (do not install or use!)
 License:        MIT
