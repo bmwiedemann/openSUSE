@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 21 17:24:23 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250221:
+  * Try to parse TSV lines from a paste
+  * new sources mapy73.pl
+  * Fix getting grid cursor on wx 4.0.x
+  * uv17pro: Avoid decode crash on garbage names
+  * Fix insert row missing undo action coverage
+
+-------------------------------------------------------------------
 Fri Feb 14 18:30:14 UTC 2025 - andreas.stieger@gmx.de
 
 - Update to version 20250214:
