@@ -9,7 +9,7 @@ References: fate#323663 - Run Xenstore in stubdomain
 -## Default: daemon
 +## Default: domain
  #
- # Select type of xentore service.
+ # Select type of xenstore service.
  #
 @@ -80,14 +80,14 @@ XENSTORED_TRACE=
  XENSTORE_DOMAIN_KERNEL=

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 20 10:09:41 MST 2025 - carnold@suse.com
+
+- Update to Xen 4.20.0 RC5 release
+  * x86/shutdown: offline APs with interrupts disabled on all CPUs
+  * x86/smp: perform disabling on interrupts ahead of AP shutdown
+  * x86/pci: disable MSI(-X) on all devices at shutdown
+  * x86/iommu: disable interrupts at shutdown
+  * x86/HVM: use XVFREE() in hvmemul_cache_destroy()
+  * xen/console: Fix truncation of panic() messages
+  * xen/memory: Make resource_max_frames() to return 0 on unknown
+    type
+  * x86/svm: Separate STI and VMRUN instructions in
+    svm_asm_do_resume()
+  * x86/MCE-telem: adjust cookie definition
+- Drop patch contained in new tarball
+  x86-shutdown-offline-APs-with-interrupts-disabled-on-all-CPUs.patch
+
+-------------------------------------------------------------------
 Tue Feb 11 09:43:18 MST 2025 - carnold@suse.com
 
 - bsc#1233796 - [XEN][15-SP7-BEAT3] Xen call trace and APIC Error
