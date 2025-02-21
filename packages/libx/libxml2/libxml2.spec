@@ -26,7 +26,7 @@
 
 %{?sle15allpythons}
 Name:           libxml2%{?dash}%{flavor}
-Version:        2.13.5
+Version:        2.13.6
 Release:        0
 License:        MIT
 Summary:        A Library to Manipulate XML Files
@@ -54,8 +54,6 @@ Patch1:         libxml2-python3-string-null-check.patch
 ## SUSE-specific? If so, shouldn't it be applied only for SLE distributions?
 # PATCH-FIX-SUSE bsc#1135123 Added a new configurable variable XPATH_DEFAULT_MAX_NODESET_LENGTH to avoid nodeset limit
 Patch2000:      libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
-# https://gitlab.gnome.org/nwellnhof/libxml2/-/commit/6208f86edd59e31a51a8d9b300d428504adb25a7
-Patch2001:      libxml2-support-compressed-input-from-stdin.patch
 #
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig

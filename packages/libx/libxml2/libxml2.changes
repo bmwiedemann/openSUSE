@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Feb 18 22:04:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.13.6 ([bsc#1237363], [bsc#1237370], [bsc#1237418]):
+  + Security:
+    - [CVE-2025-24928] Fix stack-buffer-overflow in
+      xmlSnprintfElements
+    - [CVE-2024-56171] Fix use-after-free after
+      xmlSchemaItemListAdd
+    - pattern: Fix compilation of explicit child axis
+  + Regressions:
+    - xmllint: Support compressed input from stdin
+    - uri: Fix handling of Windows drive letters
+    - reader: Fix return value of xmlTextReaderReadString again
+    - SAX2: Fix xmlSAX2ResolveEntity if systemId is NULL
+  + Portability:
+    - dict: Handle ENOSYS from getentropy gracefully
+    - Fix compilation with uclibc (Dario Binacchi)
+    - python: Declare init func with PyMODINIT_FUNC
+    - tests: Fix sanitizer version check on old Apple clang
+    - cmake: Work around broken sys/random.h in old macOS SDKs
+  + Build:
+    - autotools: Set AC_CONFIG_AUX_DIR
+    - cmake: Always build Python module as shared library
+    - cmake: add missing `Bcrypt` link on Windows
+    - cmake: Fix compatibility in package version file
+    - xmlIO: Fix reading from non-regular files like pipes
+    - xmlreader: Fix return value of xmlTextReaderReadString
+    - parser: Fix loading of parameter entities in external DTDs
+    - parser: Fix downstream code that swaps DTDs
+    - parser: Fix detection of duplicate attributes
+    - string: Fix va_copy fallback
+    - xpath: Fix parsing of non-ASCII names
+- Drop libxml2-support-compressed-input-from-stdin.patch: Fixed
+  upstream.
+- Also CVE-2025-27113 was assigned to this release.
+
+-------------------------------------------------------------------
 Wed Jan 29 08:20:52 UTC 2025 - pgajdos@suse.com
 
 - fix decompression from stdin [bsc#1236346]
