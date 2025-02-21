@@ -1,7 +1,7 @@
 #
 # spec file for package menu-cache
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           menu-cache
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        A tool speed up menus
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/LXDE
 URL:            https://www.lxde.org
 Source0:        https://github.com/lxde/%{name}/archive/%{version}.tar.gz
-# https://github.com/lxde/menu-cache/commit/583c1901719f2ef2aa3aa0034bd370983a7ed523
-Patch0:         upstream-libmenu-cache_Fix-memory-leaks.patch
-# https://github.com/archlinux/svntogit-community/blob/packages/menu-cache/trunk/menu-cache-1.1.0-0001-Support-gcc10-compilation.patch
-Patch1:         https://raw.githubusercontent.com/archlinux/svntogit-community/packages/menu-cache/trunk/menu-cache-1.1.0-0001-Support-gcc10-compilation.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
@@ -90,7 +86,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libmenu-cache.pc
 
 %files -n libmenu-cache3
-%{_libdir}/libmenu-cache.so.3
-%{_libdir}/libmenu-cache.so.3.2.0
+%{_libdir}/libmenu-cache.so.*
 
 %changelog

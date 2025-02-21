@@ -256,4 +256,18 @@
     <comment></comment>
     <requestid>848364</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f2ae8e34a3f4d1d674c5453dc123bea8</srcmd5>
+    <version>1.1.1</version>
+    <time>1740170317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * Fixed memory leaks
+  * GCC 10 compilation support
+  * Removed unused libmenu-cache-uninstalled.pc.in
+- Drop upstreamed:
+  * menu-cache-1.1.0-0001-Support-gcc10-compilation.patch
+  * upstream-libmenu-cache_Fix-memory-leaks.patch</comment>
+    <requestid>1247687</requestid>
+  </revision>
 </revisionlist>
