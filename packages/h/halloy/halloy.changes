@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 20 21:15:23 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2025.2          :
+  + Added:
+    - Emoji picker accessible via : in text input
+    - Automatically replace :shortcode: with corresponding emoji
+    - Added an option to show or hide images in preview cards by
+      default
+  + Fixed:
+    - infinite_scroll was defaulting to false, contrary to its
+      documented default value. Now defaults to true
+    - A rare issue where the app opens smaller than when closed
+
+-------------------------------------------------------------------
 Wed Feb  5 17:56:27 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2025.1:
