@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 20 23:12:19 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1740087754.059e123a:
+  * t: Use Test::Exception method instead of manual eval checks
+  * Test saving new needle using image from existing needle
+  * Test whether the needle editor canvas show the correct needle image
+  * t: Use Test::Exception only instead of Test::Fatal
+  * t: Use more simple prototyped Test::Exceptions functions
+  * t: Use implicit Test::Exception in all places
+  * Bump @eslint/plugin-kit from 0.2.5 to 0.2.6
+  * t: Ensure we use implicit Test::Exception in all places
+  * Avoid errors about deadlocks
+  * Bump flatted from 3.3.2 to 3.3.3
+
+-------------------------------------------------------------------
 Sun Feb 16 17:11:12 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1739720201.6fbd2ed1:
