@@ -1,7 +1,7 @@
 #
 # spec file for package notmuch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,7 @@
 #
 
 
+%define pythons python3
 %define libversion 5
 Name:           notmuch
 Version:        0.38.3
@@ -65,7 +66,12 @@ BuildRequires:  emacs-el
 BuildRequires:  emacs-nox
 %endif
 %if %{with python3}
-BuildRequires:  python3-base
+BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module cffi}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 %endif
 %if %{with ruby}
 BuildRequires:  ruby-devel
@@ -120,6 +126,12 @@ Summary:        Documentation of Python bindings for %{name}
 
 %description -n python-%{name}-doc
 Documentation of Python interface (bindings) for %{name}
+
+%package -n python3-%{name}2
+Summary:        Python3 bindings v2 for %{name}
+
+%description -n python3-%{name}2
+Python3 interface (bindings v2) for %{name}
 %endif
 
 %if %{with emacs}
@@ -172,6 +184,10 @@ pushd docs
 rm -f build/dirhtml/.buildinfo
 popd
 popd
+
+pushd python-cffi
+%pyproject_wheel
+popd
 %endif
 
 popd
@@ -183,6 +199,11 @@ popd
 pushd bindings/python3
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 popd
+pushd bindings/python-cffi
+%pyproject_install
+popd
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 %endif
 
 %check
@@ -246,6 +267,12 @@ fi
 %files -n python-%{name}-doc
 %license COPYING COPYING-GPL-3
 %doc bindings/python3/docs/build/dirhtml/
+
+%files -n python3-%{name}2
+%license COPYING COPYING-GPL-3
+%doc bindings/python/README
+%{python3_sitearch}/%{name}2
+%{python3_sitearch}/%{name}2*dist-info
 %endif
 
 %if %{with emacs}

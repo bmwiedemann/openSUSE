@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:10:42 UTC 2025 - Ricardo B. Marlière <rbm@opensuse.org>
+
+- Add python3-notmuch2 package with the cffi bindings.
+
+-------------------------------------------------------------------
 Fri Dec  6 11:27:06 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Add patch to fix build failure with sphinx 8:
