@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 20 23:23:43 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1739982034.e663ac9:
+  * Fix test API function `force_soft_failure`
+  * Fix return value of _dbus_call
+  * Fix log colors
+  * Use more Mojo::File operations in baseclass
+  * consoles: Simplify s3270 code
+  * Extract while loop body method in consoles::s3270
+  * Simplify consoles::s3270
+  * Add support for newline seperator in SCHEDULE variable
+
+-------------------------------------------------------------------
 Sun Feb 16 17:22:17 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1739536098.bc54195:
