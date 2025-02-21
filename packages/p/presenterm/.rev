@@ -277,4 +277,15 @@
   * Add notes on running bat directly (#397).</comment>
     <requestid>1242306</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>59e3d57b84bf0a06a43419eeae779d81</srcmd5>
+    <version>0.10.1</version>
+    <time>1740170347</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.1:
+  Fixes:
+  * Don't error out if options in front matter doesn't include auto_render_languages (#454)
+  * Bump sixel-rs to 0.4.1 to fix build in aarch64 and riscv64 (#452)</comment>
+    <requestid>1247712</requestid>
+  </revision>
 </revisionlist>

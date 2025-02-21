@@ -17,7 +17,7 @@
 
 
 Name:           presenterm
-Version:        0.10.0+0
+Version:        0.10.1
 Release:        0
 Summary:        A terminal slideshow tool
 License:        BSD-2-Clause
