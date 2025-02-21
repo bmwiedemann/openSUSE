@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb 18 11:36:44 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Upgrade to 17.4:
+  * Improve behavior of libpq's quoting functions:
+    The changes made for CVE-2025-1094 had one serious oversight:
+    PQescapeLiteral() and PQescapeIdentifier() failed to honor
+    their string length parameter, instead always reading to the
+    input string's trailing null. This resulted in including
+    unwanted text in the output, if the caller intended to
+    truncate the string via the length parameter. With very bad
+    luck it could cause a crash due to reading off the end of
+    memory.
+    In addition, modify all these quoting functions so that when
+    invalid encoding is detected, an invalid sequence is
+    substituted for just the first byte of the presumed
+    character, not all of it. This reduces the risk of problems
+    if a calling application performs additional processing on
+    the quoted string.
+  * Fix small memory leak in pg_createsubscriber.
+  * https://www.postgresql.org/docs/release/17.4/
+  * https://www.postgresql.org/about/news/p-3018/
+
+-------------------------------------------------------------------
 Tue Feb 11 12:02:37 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Upgrade to 17.3:
