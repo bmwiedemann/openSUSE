@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 21 06:16:39 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.15:
+  * Bump version to 0.2.15
+  * Hot fix: Crash when no entries in dns status fix for #49
+
+-------------------------------------------------------------------
 Thu Feb 20 08:47:34 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.14:
