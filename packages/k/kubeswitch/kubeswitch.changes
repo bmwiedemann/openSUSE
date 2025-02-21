@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb 21 06:17:24 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.9.3:
+  * update version
+  * Provider Exoscale: Add missing project license header
+  * Provider Exoscale: Use names instead of uuid for selection
+  * Provider Exoscale
+  * Actually use the discovered endpoint
+  * feat: Support all preferring all types of GKE endpoint types
+  * chore: Update google deps
+  * only ignore `NoKindMatch` errors when implicitly looking for
+    CAPI kubeconfig
+  * add support for searching for CAPI clusters in the current
+    context
+  * ci: use golangci for all tests
+  * ci: update addlicense and ignore right files
+  * feat: add a grpc plugin system
+  * refactor: move store types in their own package
+  * feat: update gooogle/grpc + add hashicorp/go-plugin
+  * chore: use k8s.io/utils/ptr
+  * feat: add capi
+  * feat: add cluster-api dep
+  * feat: add akamai/linode provider
+  * feat: add linodego dependency
+
+-------------------------------------------------------------------
 Wed Nov 20 09:25:23 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package kubeswitch: kubeswitch (lazy: switch) is the single
