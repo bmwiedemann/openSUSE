@@ -20,18 +20,18 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 4ccb15a9dbfad4490f3b40382eb1789e97115821
+%define git_version 5faab136de1a0f70f9bdcb3d9e29e7261aeeb9b4
 
 Name:           kernel-firmware-bluetooth
-Version:        20250208
+Version:        20250219
 Release:        0
 Summary:        Kernel firmware files for various Bluetooth drivers
-License:        SUSE-Firmware AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
 # URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250211.tar.xz
+Source1:        kernel-firmware-tools-20250218.tar.xz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -88,7 +88,6 @@ Supplements:    modalias(usb:v8087p0A5Ad*dc*dsc*dp*ic*isc*ip*in*)
 
 %description
 This package contains kernel firmware files for various Bluetooth drivers.
-
 
 %prep
 %autosetup -a1 -p1
