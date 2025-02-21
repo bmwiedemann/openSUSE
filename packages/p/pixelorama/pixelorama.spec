@@ -1,7 +1,7 @@
 #
 # spec file for package pixelorama
 #
-# Copyright (c) 2023-2024 cunix
+# Copyright (c) 2023-2025 cunix
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,15 @@ Summary:        2D sprite editor
 License:        MIT
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://github.com/Orama-Interactive/Pixelorama
-Source0:        https://github.com/Orama-Interactive/Pixelorama/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://codeload.github.com/Orama-Interactive/%{nameupper}/tar.gz/refs/tags/v%{version}#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  godot >= 4.3
 BuildRequires:  godot-runner >= 4.3
 BuildRequires:  vendored_licenses_packager
+# currently no godot binary
 ExcludeArch:    %arm
+# build fails: Segmentation fault godot --headless --verbose --import
+ExcludeArch:    %ix86
 ExcludeArch:    %power64
 
 %description
@@ -64,6 +67,7 @@ cp %{_bindir}/godot-runner $target_file_path
 sed -i "s/binary_format\/embed_pck=false/binary_format\/embed_pck=true/" ./export_presets.cfg
 cp addons/README.md addons_README.md
 cp Misc/Linux/com.orama_interactive.%{nameupper}.desktop com.orama_interactive.%{nameupper}.desktop
+rm pixelorama_data/.gdignore
 mkdir binary
 %vendored_licenses_packager_prep addons
 
