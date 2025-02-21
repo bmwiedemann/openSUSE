@@ -1,0 +1,27 @@
+From b044fcc731d3b7f81ec7f8cb390a6fd928f0c5fb Mon Sep 17 00:00:00 2001
+From: Alan Griffiths <alan@octopull.co.uk>
+Date: Wed, 19 Feb 2025 15:35:45 +0000
+Subject: [PATCH] Workaround for LXQt panel
+
+---
+ src/miral/basic_window_manager.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/miral/basic_window_manager.cpp b/src/miral/basic_window_manager.cpp
+index c514092bab..bc1c9f6a24 100644
+--- a/src/miral/basic_window_manager.cpp
++++ b/src/miral/basic_window_manager.cpp
+@@ -2118,6 +2118,13 @@ auto antipodes(MirPlacementGravity rect_gravity) -> MirPlacementGravity
+ 
+ auto constrain_to(mir::geometry::Rectangle const& rect, Point point) -> Point
+ {
++    // The LXQt panel items sets anchor rects outside their window geometry,
++    // conditionally allow this as a workaround
++    if (getenv("MIR_ANCHOR_RECTANGLE_UNCONSTRAINED") != nullptr)
++    {
++        return point;
++    }
++
+     if (point.x < rect.top_left.x)
+         point.x = rect.top_left.x;
+ 

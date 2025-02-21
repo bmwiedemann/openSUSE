@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 20 17:04:43 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add:
+  - 0003-workaround-for-LXQt-panel.patch (gh#canonical/mir#3764)
+  - 0004-check-buffer-size.patch (gh#canonical/mir#3766)
+
+-------------------------------------------------------------------
 Mon Jan 20 16:20:10 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.19.3:
@@ -6,7 +13,7 @@ Mon Jan 20 16:20:10 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
   * kms: skip simple-framebuffer devices (#3721)
 - Add:
   * 0002-remove-use-of-env-to-call-bash.patch
-  
+
 -------------------------------------------------------------------
 Wed Dec 25 18:44:49 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 

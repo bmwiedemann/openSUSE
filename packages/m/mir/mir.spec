@@ -2,7 +2,7 @@
 # spec file for package mir
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) Shawn W Dunn
+# Copyright (c) Shawn W Dunn <sfalken@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,10 @@ Source:         https://github.com/canonical/%{name}/releases/download/v%{versio
 Patch0:         0001-Fix-include-paths.patch
 # PATCH-FIX-OPENSUSE 0002-remove-use-of-env-to-call-bash.patch
 Patch1:         0002-remove-use-of-env-to-call-bash.patch
+# PATCH-FIX-UPSTREAM 0003-workaround-for-LXQt-panel.patch sfalken@opensuse.org (gh#canonical/mir#3761)
+Patch2:         0003-workaround-for-LXQt-panel.patch
+# PATCH-FIX-UPSTREAM 0004-check-buffer-size.patch sfalken@opensuse.org (gh#canonical/mir#3761)
+Patch3:         0004-check-buffer-size.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils

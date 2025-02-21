@@ -1,0 +1,28 @@
+From 73de77f186b03fea4906f4dd358deb21d5fb6889 Mon Sep 17 00:00:00 2001
+From: Alan Griffiths <alan@octopull.co.uk>
+Date: Thu, 20 Feb 2025 10:50:26 +0000
+Subject: [PATCH] Check we have a buffer size before using it
+
+---
+ src/server/frontend_wayland/wl_data_device.cpp | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/server/frontend_wayland/wl_data_device.cpp b/src/server/frontend_wayland/wl_data_device.cpp
+index 5381db1ab4d..282abe53bfa 100644
+--- a/src/server/frontend_wayland/wl_data_device.cpp
++++ b/src/server/frontend_wayland/wl_data_device.cpp
+@@ -374,8 +374,11 @@ mf::WlDataDevice::DragIconSurface::DragIconSurface(WlSurface* icon, std::shared_
+     icon->set_role(this);
+ 
+     auto spec = shell::SurfaceSpecification();
+-    spec.width = surface.value().buffer_size()->width;
+-    spec.height = surface.value().buffer_size()->height;
++    if (auto const size = surface.value().buffer_size())
++    {
++        spec.width = size->width;
++        spec.height = size->height;
++    }
+     spec.streams = std::vector<shell::StreamSpecification>{};
+     spec.input_shape = std::vector<Rectangle>{};
+     spec.depth_layer = mir_depth_layer_overlay;
+
