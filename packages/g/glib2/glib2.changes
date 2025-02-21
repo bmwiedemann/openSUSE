@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 20 14:35:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.82.5:
+  + Bugs fixed:
+    - gosxappinfo: Correctly launch list of files
+    - Don't mark test setups as default in subprojects
+    - gdatetime: Fix integer overflow when parsing very long
+      ISO8601 inputs
+
+-------------------------------------------------------------------
 Wed Jan 15 18:14:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.82.4:
