@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:53:09 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.17.1
+  * Changes of v1.17.1
+    + Fix bug in MemberSubstitution were argument indices were
+      resolved by one digit off.
+    + Update Class File API integration to avoid that parameter
+      annotations are lost.
+
+-------------------------------------------------------------------
 Wed Jan 29 22:22:17 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.17.0
