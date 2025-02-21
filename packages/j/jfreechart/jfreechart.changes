@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 21 03:02:54 UTC 2025 - ming li <mli@suse.com>
+
+- Update to version 1.5.5
+  * added XYBezierRenderer by Javier Robes
+  * fix cross-hair painting
+  * parameter range check for CompassPlot
+
+-------------------------------------------------------------------
 Fri Oct  6 10:21:34 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to version 1.5.4
