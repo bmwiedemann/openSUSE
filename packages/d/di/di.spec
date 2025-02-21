@@ -19,7 +19,7 @@
 
 %define sover 5
 Name:           di
-Version:        5.0.11
+Version:        5.0.12
 Release:        0
 Summary:        Disk Information Utility
 License:        Zlib
