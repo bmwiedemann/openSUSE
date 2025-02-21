@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 08:18:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Adjust bconds to build the package in SLFO without xvidcore.
+
+-------------------------------------------------------------------
 Fri Sep  6 15:06:21 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-5-CVE-2024-7055.patch:

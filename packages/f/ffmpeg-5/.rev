@@ -283,4 +283,12 @@ https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=s
     <comment>- Add ffmpeg-5-CVE-2024-7055.patch:</comment>
     <requestid>1201543</requestid>
   </revision>
+  <revision rev="32" vrev="14">
+    <srcmd5>913b01980ab94addb62b3ef566383d31</srcmd5>
+    <version>5.1.4</version>
+    <time>1740170264</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust bconds to build the package in SLFO without xvidcore.</comment>
+    <requestid>1247599</requestid>
+  </revision>
 </revisionlist>
