@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 20 18:31:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.1.0:
+  * Add new platforms_from_ids and groups_from_ids methods to
+    retrieve platforms and groups from a collection of IDs.
+  * Allow a platform to be fetched by its ID from a group with the
+    group[platform_id] item getter syntax.
+  * Add new ALL_PLATFORM_IDS, ALL_GROUP_IDS and ALL_IDS constants.
+  * Removes ALL_OS_LABELS.
+  * Add windows-2025 to the test matrix.
+  * Mark Python 3.14 tests as stable.
+
+-------------------------------------------------------------------
 Fri Jan  3 08:46:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.0.0:

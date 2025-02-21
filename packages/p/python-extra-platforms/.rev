@@ -23,4 +23,21 @@
     <comment></comment>
     <requestid>1234707</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac160477fc0f908791084968c86c0235</srcmd5>
+    <version>2.1.0</version>
+    <time>1740170261</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * Add new platforms_from_ids and groups_from_ids methods to
+    retrieve platforms and groups from a collection of IDs.
+  * Allow a platform to be fetched by its ID from a group with the
+    group[platform_id] item getter syntax.
+  * Add new ALL_PLATFORM_IDS, ALL_GROUP_IDS and ALL_IDS constants.
+  * Removes ALL_OS_LABELS.
+  * Add windows-2025 to the test matrix.
+  * Mark Python 3.14 tests as stable.
+</comment>
+    <requestid>1247628</requestid>
+  </revision>
 </revisionlist>
