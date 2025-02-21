@@ -867,6 +867,7 @@ for the C APIs.
 %endif
         -Dsshdprivsepdir=no \
         -Dsysupdate=%{enabled_with experimental} \
+        -Dsysupdated=%{enabled_with experimental} \
         -Dvmspawn=%{enabled_with experimental} \
         \
         -Dtests=%{when testsuite unsafe} \

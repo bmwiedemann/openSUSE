@@ -7519,4 +7519,12 @@ handle manual pages that consist only of a .so directive such as
   2c8382881f systemd-pull: support .asc and .sha256.* signature (bsc#1236887)</comment>
     <requestid>1245900</requestid>
   </revision>
+  <revision rev="442" vrev="2">
+    <srcmd5>cc487ea7db718ba97f2505734bec36eb</srcmd5>
+    <version>257.3</version>
+    <time>1740170092</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable systemd-sysupdated and updatectl as experimental subpackage</comment>
+    <requestid>1247443</requestid>
+  </revision>
 </revisionlist>

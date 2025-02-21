@@ -7,6 +7,11 @@ Fri Feb 14 09:00:29 UTC 2025 - Franck Bui <fbui@suse.com>
   https://github.com/openSUSE/systemd/compare/7fa3b5018bfffa176c77a2a5794dce792eebadcb...e03ffd74c4a30c1c75e05874ce18d31e503437b7
 
 -------------------------------------------------------------------
+Wed Feb 12 14:12:10 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable systemd-sysupdated and updatectl as experimental subpackage
+
+-------------------------------------------------------------------
 Fri Feb  7 14:14:01 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Import commit 47794646786ae4ddb6d3deb2030e2761447999ec

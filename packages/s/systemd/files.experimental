@@ -24,14 +24,21 @@
 %if %{with sd_boot}
 %{_bindir}/ukify
 %endif
+%{_bindir}/updatectl
 %{_datadir}/bash-completion/completions/oomctl
 %{_datadir}/bash-completion/completions/run0
 %{_datadir}/bash-completion/completions/systemd-vmspawn
 %{_datadir}/dbus-1/interfaces/org.freedesktop.oom1.Manager.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.portable1.Image.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.portable1.Manager.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.sysupdate1.Job.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.sysupdate1.Manager.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.sysupdate1.Target.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.oom1.service
+%{_datadir}/dbus-1/system-services/org.freedesktop.sysupdate1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.oom1.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.sysupdate1.conf
+%{_datadir}/polkit-1/actions/org.freedesktop.sysupdate1.policy
 %{_datadir}/zsh/site-functions/_oomctl
 %{_datadir}/zsh/site-functions/_run0
 %{_distconfdir}/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
@@ -48,9 +55,11 @@
 %if %{with sd_boot}
 %{_mandir}/man1/ukify.1.gz
 %endif
+%{_mandir}/man1/updatectl.1.gz
 %{_mandir}/man5/oomd.conf.5.gz
 %{_mandir}/man5/oomd.conf.d.5.gz
 %{_mandir}/man5/org.freedesktop.oom1.5.gz
+%{_mandir}/man5/org.freedesktop.sysupdate1.5.gz
 %{_mandir}/man5/systemd.pcrlock.5.gz
 %{_mandir}/man5/systemd.pcrlock.d.5.gz
 %{_mandir}/man5/sysupdate.d.5.gz
@@ -84,6 +93,8 @@
 %{_mandir}/man8/systemd-sysupdate.8.gz
 %{_mandir}/man8/systemd-sysupdate.service.8.gz
 %{_mandir}/man8/systemd-sysupdate.timer.8.gz
+%{_mandir}/man8/systemd-sysupdated.8.gz
+%{_mandir}/man8/systemd-sysupdated.service.8.gz
 %{_mandir}/man8/systemd-tpm2-generator.8.gz
 %if %{with sd_boot}
 %{_mandir}/man8/systemd-tpm2-setup-early.service.8.gz
@@ -121,6 +132,7 @@
 %{_systemd_util_dir}/systemd-ssh-proxy
 %{_systemd_util_dir}/systemd-storagetm
 %{_systemd_util_dir}/systemd-sysupdate
+%{_systemd_util_dir}/systemd-sysupdated
 %if %{with sd_boot}
 %{_systemd_util_dir}/systemd-tpm2-setup
 %{_systemd_util_dir}/ukify
@@ -129,6 +141,7 @@
 %{_systemdgeneratordir}/systemd-ssh-generator
 %{_systemdgeneratordir}/systemd-tpm2-generator
 %{_sysusersdir}/systemd-oom.conf
+%{_unitdir}/dbus-org.freedesktop.sysupdate1.service
 %{_unitdir}/initrd.target.wants/systemd-bsod.service
 %if %{with sd_boot}
 %{_unitdir}/initrd.target.wants/systemd-pcrphase-initrd.service
@@ -170,6 +183,7 @@
 %{_unitdir}/systemd-sysupdate-reboot.timer
 %{_unitdir}/systemd-sysupdate.service
 %{_unitdir}/systemd-sysupdate.timer
+%{_unitdir}/systemd-sysupdated.service
 %if %{with sd_boot}
 %{_unitdir}/systemd-tpm2-setup-early.service
 %{_unitdir}/systemd-tpm2-setup.service
