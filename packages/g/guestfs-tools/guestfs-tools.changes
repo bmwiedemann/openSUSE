@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:33:55 MST 2025 - carnold@suse.com
+
+- Update to version 1.53.7 (jsc#PED-8910)
+  * mlcustomize, mltools: Replace $TEST_FUNCTIONS
+  * mldrivers/linux_bootloaders.ml: Don't overwrite EFI grub2 wrapper
+  * resize: Use stderr consistently for debug messages
+  * resize/test-virt-resize.pl: Various fixes and adjustments
+
+-------------------------------------------------------------------
+Wed Feb 12 15:39:37 MST 2025 - carnold@suse.com
+
+- Update to version 1.53.6 (jsc#PED-8910)
+  * build: Move baseline OCaml to 4.08
+  * builder: add various templates for rhel and fedora
+  * po-docs: A couple adjustments and updates
+
+-------------------------------------------------------------------
 Fri Jan  3 14:50:33 MST 2025 - carnold@suse.com
 
 - Update to version 1.53.5 (jsc#PED-8910)

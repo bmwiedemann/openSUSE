@@ -31,7 +31,7 @@
 
 Summary:        Tools to access and modify virtual machine disk images
 Name:           guestfs-tools
-Version:        1.53.5
+Version:        1.53.7
 Release:        0
 License:        GPL-2.0-or-later
 
@@ -76,7 +76,7 @@ BuildRequires:  unzip
 BuildRequires:  xorriso
 BuildRequires:  xz-devel
 BuildRequires:  zip
-BuildRequires:  ocaml(ocaml_base_version) >= 4.07
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  perl(Expect)
 BuildRequires:  perl(Locale::TextDomain)
 BuildRequires:  perl(Module::Build)
