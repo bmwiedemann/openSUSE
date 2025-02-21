@@ -1,7 +1,7 @@
 #
 # spec file for package libfm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libfm
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        A glib/gio-based lib used to develop file managers
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ URL:            http://www.lxde.org/
 Source:         https://github.com/lxde/libfm/archive/%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch0:         libfm-default-config.patch
-# PATCH-FIX-UPSTREAM https://github.com/lxde/libfm/commit/fbcd183335729fa3e8dd6a837c13a23ff3271000
-Patch1:         fix-gcc14.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 # Optional: HTML developers documentation
