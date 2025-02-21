@@ -161,4 +161,12 @@
     <comment></comment>
     <requestid>1233736</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>4efcec541bbb51abc593a53ac7a7e4da</srcmd5>
+    <version>1.6.6</version>
+    <time>1740170294</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1237464</comment>
+    <requestid>1247668</requestid>
+  </revision>
 </revisionlist>

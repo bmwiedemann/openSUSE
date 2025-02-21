@@ -1,6 +1,16 @@
-diff -rupN a/desktop/build-scripts/tuxguitar-linux-swt/pom.xml b/desktop/build-scripts/tuxguitar-linux-swt/pom.xml
---- a/desktop/build-scripts/tuxguitar-linux-swt/pom.xml	2024-05-30 23:36:15.886360893 +0200
-+++ b/desktop/build-scripts/tuxguitar-linux-swt/pom.xml	2024-06-06 21:34:00.007347138 +0200
+From bf2a8c3a0e9956d5a33ba7eb0d2591d706146b40 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Fri, 21 Feb 2025 15:11:42 +0100
+Subject: [PATCH 1/4] no-lv2
+
+---
+ desktop/build-scripts/tuxguitar-linux-swt/pom.xml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/desktop/build-scripts/tuxguitar-linux-swt/pom.xml b/desktop/build-scripts/tuxguitar-linux-swt/pom.xml
+index dfe2105b4..67f8bd972 100644
+--- a/desktop/build-scripts/tuxguitar-linux-swt/pom.xml
++++ b/desktop/build-scripts/tuxguitar-linux-swt/pom.xml
 @@ -379,7 +379,7 @@
  				<module>../native-modules/tuxguitar-alsa-linux</module>
  				<module>../native-modules/tuxguitar-jack-linux</module>
@@ -23,3 +33,6 @@ diff -rupN a/desktop/build-scripts/tuxguitar-linux-swt/pom.xml b/desktop/build-s
  										<!-- /PLUGINS FILES -->
  									</target>
  								</configuration>
+-- 
+2.48.1
+

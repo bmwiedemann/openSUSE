@@ -1,14 +1,14 @@
-From b6e4f0ec0712b117cc0787cbea550912368fd47f Mon Sep 17 00:00:00 2001
+From a5c036eeddba8d956431f2b537fa7aba10ead8aa Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
-Date: Thu, 11 Apr 2024 08:30:38 +0200
-Subject: [PATCH 12/13] startscript
+Date: Fri, 21 Feb 2025 15:17:53 +0100
+Subject: [PATCH 4/4] startscript
 
 ---
  .../common-linux/tuxguitar.sh                 | 151 +++++++++++++++++-
  1 file changed, 144 insertions(+), 7 deletions(-)
 
 diff --git a/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh b/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh
-index a213786a..f059e32f 100755
+index a213786ad..f059e32fb 100755
 --- a/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh
 +++ b/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh
 @@ -1,20 +1,157 @@
@@ -177,5 +177,5 @@ index a213786a..f059e32f 100755
 -${JAVA} ${VM_ARGS} -cp :${CLASSPATH} -Dtuxguitar.home.path="${TG_DIR}" -Dtuxguitar.share.path="share/" -Djava.library.path="${LD_LIBRARY_PATH}" ${MAINCLASS} "$@"
 +${JAVA} ${VM_ARGS} -cp :${CLASSPATH} -Dtuxguitar.share.path="${SHAREPATH}/" -Djava.library.path="${LD_LIBRARY_PATH}" ${MAINCLASS} "$@"
 -- 
-2.44.0
+2.48.1
 

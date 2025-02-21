@@ -1,7 +1,7 @@
 #
 # spec file for package tuxguitar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/helge17/tuxguitar
 Source0:        https://github.com/helge17/tuxguitar/archive/refs/tags/%{version}.tar.gz
-Patch11:        0009-no-lv2.patch
-Patch12:        0010-no-fluidsynth.patch
-Patch20:        0011-default-soundfont.patch
-Patch21:        0012-startscript.patch
+Patch1:         0001-no-lv2.patch
+Patch2:         0002-no-fluidsynth.patch
+Patch3:         0003-default-soundfont.patch
+Patch4:         0004-startscript.patch
 BuildRequires:  alsa-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -42,10 +42,10 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.eclipse.swt:org.eclipse.swt)
 Requires:       apache-commons-compress
 Requires:       eclipse-swt >= 4.13
+Requires:       fluid-soundfont-gm
 Recommends:     snd_sf2
 Recommends:     timidity
 Recommends:     wqy-zenhei-fonts
-Suggests:       fluid-soundfont-gm
 %if 0%{?suse_version} >= 1500
 BuildRequires:  fluidsynth-devel
 BuildRequires:  liblilv-0-devel
@@ -79,14 +79,14 @@ find . \( -name "*.xml" -or -name "*.gradle"  -or -name "*.properties" -or -name
 sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME = (TGApplication.NAME + \" %{version}\");/" desktop/TuxGuitar/src/org/herac/tuxguitar/app/view/dialog/about/TGAboutDialog.java
 
 %if 0%{?suse_version} <= 1500
-%patch -P 11 -p1
+%patch -P 1 -p1
 %endif
 %if 0%{?suse_version} < 1500
-%patch -P 12 -p1
+%patch -P 2 -p1
 %endif
 
-%patch -P 20 -p1
-%patch -P 21 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
 
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-windows']]" desktop/pom.xml
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-macos-cocoa']]" desktop/pom.xml

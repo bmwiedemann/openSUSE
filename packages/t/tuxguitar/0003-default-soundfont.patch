@@ -1,0 +1,43 @@
+From bf226888243de791fcd2866d969f41fb826302ae Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Fri, 21 Feb 2025 15:17:31 +0100
+Subject: [PATCH 3/4] default-soundfont
+
+---
+ .../TuxGuitar-synth-gervill/share/tuxguitar-synth-gervill.cfg  | 2 +-
+ .../common-linux/dist/tuxguitar-fluidsynth.cfg                 | 3 ++-
+ .../common-resources/common/dist/tuxguitar-jsa.cfg             | 2 +-
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/desktop/TuxGuitar-synth-gervill/share/tuxguitar-synth-gervill.cfg b/desktop/TuxGuitar-synth-gervill/share/tuxguitar-synth-gervill.cfg
+index df24eec86..18d0572ba 100644
+--- a/desktop/TuxGuitar-synth-gervill/share/tuxguitar-synth-gervill.cfg
++++ b/desktop/TuxGuitar-synth-gervill/share/tuxguitar-synth-gervill.cfg
+@@ -1,2 +1,2 @@
+ ## Default Settings ##
+-tuxguitar-synth-gervill.soundbank.path=${tuxguitar.home.path}/share/soundfont/MagicSFver2.sf2
++tuxguitar-synth-gervill.soundbank.path=/usr/share/sounds/sf2/FluidR3_GM.sf2
+diff --git a/desktop/build-scripts/common-resources/common-linux/dist/tuxguitar-fluidsynth.cfg b/desktop/build-scripts/common-resources/common-linux/dist/tuxguitar-fluidsynth.cfg
+index 02bac12bf..b9e892549 100644
+--- a/desktop/build-scripts/common-resources/common-linux/dist/tuxguitar-fluidsynth.cfg
++++ b/desktop/build-scripts/common-resources/common-linux/dist/tuxguitar-fluidsynth.cfg
+@@ -1,6 +1,7 @@
+ # tuxguitar-fluidsynth settings for Linux
+ soundfont.count=1
+-soundfont.path0=${tuxguitar.home.path}/share/soundfont/MagicSFver2.sf2
++soundfont.path0=/usr/share/sounds/sf2/FluidR3_GM.sf2
++soundfont.path1=/usr/share/sounds/sf2/Vintage_Dreams_Waves_v2.sf2
+ 
+ synth.gain=1.1
+ synth.chorus.active=yes
+diff --git a/desktop/build-scripts/common-resources/common/dist/tuxguitar-jsa.cfg b/desktop/build-scripts/common-resources/common/dist/tuxguitar-jsa.cfg
+index 5b0c9556a..1887b4841 100644
+--- a/desktop/build-scripts/common-resources/common/dist/tuxguitar-jsa.cfg
++++ b/desktop/build-scripts/common-resources/common/dist/tuxguitar-jsa.cfg
+@@ -1,2 +1,2 @@
+ # Default tuxguitar-jsa settings
+-soundbank.custom.path=${tuxguitar.home.path}/share/soundfont/MagicSFver2.sf2
++soundbank.custom.path=/usr/share/sounds/sf2/FluidR3_GM.sf2
+-- 
+2.48.1
+

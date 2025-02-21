@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 21 14:44:29 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix problem with default font not being installed (bsc#1237464)
+- Modified patches:
+  * 0009-no-lv2.patch -> 0001-no-lv2.patch
+  * 0010-no-fluidsynth.patch -> 0002-no-fluidsynth.patch
+  * 0012-startscript.patch -> 0004-startscript.patch
+    + rediff
+  * 0011-default-soundfont.patch -> 0003-default-soundfont.patch
+    + use consistently FluidR3_GM.sf2 instead of the bundled
+      MagicSFver2.sf2 that cannot be distributed
+- Make the fluid-soundfont-gm that contains the FluidR3_GM.sf2 a
+  hard requirement
+
+-------------------------------------------------------------------
 Sat Dec 28 15:14:50 UTC 2024 - guiv42 <guiv42@tuta.io>
 
 - Updated to new upstream release 1.6.6
