@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Thu Feb 20 18:08:32 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.18.0:
+  * gopls: update go.mod for v0.18.0-pre.6
+  * gopls/internal/analysis/modernize: fix rangeint bug
+  * gopls/internal/analysis/modernize: disable unsound maps.Clone fix
+  * gopls: update go.mod for v0.18.0-pre.5
+  * gopls: tweak release notes
+  * gopls: update go.mod for v0.18.0-pre.4
+  * gopls: fix a few bugs related to the new modcache imports source
+  * gopls/internal/analysis/modernize: sortslice: fix crash
+  * gopls: update go.mod for v0.18.0-pre.3
+  * gopls/internal/analysis/modernize: improve rangeint transformation
+  * gopls/internal/golang: avoid PackageSymbols errors with missing packages
+  * gopls/internal/analysis/gofix: rename local
+  * gopls/internal/analysis/gofix: check package visibility
+  * gopls: update go.mod for v0.18.0-pre.2
+  * gopls/internal/telemetry/cmd/stacks: remove leading \b match
+  * gopls: record telemetry counters for settings that are used
+  * gopls/internal/golang: folding range: remove FoldingRangeInfo
+  * gopls/internal/golang: add comment about SymbolKind
+  * gopls/internal/analysis/modernize: appendclipped: unclip
+  * gopls/internal/analysis/modernize: strings.Split -> SplitSeq
+  * gopls: update go.mod for v0.18.0-pre.1
+  * gopls/internal/analysis/modernize: slices.Delete: import slices
+  * gopls/internal/analysis/modernize: remove SortStable
+  * gopls: update go.mod for v0.18.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.18
+  * gopls/internal/cache: downgrade bug reports for inconsistent metadata
+  * gopls/internal/test/integration: reduce flakes in TestTelemetryPrompt
+  * gopls/internal/analysis/modernize: mapsloop: fix two bugs
+  * gopls/internal/analysis/modernize/cmd/modernize: create
+  * gopls/internal/analysis/gofix: use cursor API
+  * gopls/internal/util/moreiters: iterator functions
+  * gopls/internal/telemetry/cmd/stacks: tweak IgnoreSymbolContains
+  * gopls/doc/release/v0.18.0: describe inline analyzer
+  * gopls/internal/analysis/gofix: move and rename
+  * gopls/internal/analysis/modernize: for i := 0; i < n; i++ -> range n
+  * gopls/internal/cache/testfuncs: fix matching of test names
+  * gopls/doc/release: document the new workspaceFiles option
+  * gopls/internal/golang: support package symbols
+  * gopls/imports: use a module cache index
+  * gopls/internal/golang: hide signature help
+  * gopls/internal/server: embed style metadata in vulncheck progress
+  * gopls: skip unusedparams for generated files
+  * gopls/internal/golang: downgrade bug report in ExtractToNewFile
+  * gopls/internal/analysis/modernize: fix bug in slicescontains
+  * gopls/internal/protocol: delete MappedRange
+  * gopls/internal/server: gopls.vulncheck return both vuln report and token
+  * gopls/internal/golang: don't apply edits in codeAction/resolve
+  * gopls/internal/analysis: use Cursor.Edge in two analyzers
+  * gopls/internal/analysis/fillstruct: preserve existing formatting
+  * gopls: remove go.sum files from integration tests
+  * gopls: report SemanticHighlight for format string directives
+  * gopls: add WorkspaceFiles option
+  * gopls/internal/cache: add more debugging for golang/go#64235
+  * gopls/internal/telemetry/cmd/stacks: add dry run flag
+  * gopls/internal/test: update hover test to be tolerant proxy changes
+  * gopls/doc/release: add semantic token config change
+  * gopls/internal/settings: include deprecation message in api-json
+  * gopls/internal/analysis/modernize: slicesdelete
+  * gopls/internal/golang/completion: fix crash adding receiver type params
+  * gopls/internal/golang/completion: avoid crash in comment completion
+  * gopls/internal/analysis/modernize: omitzero
+  * gopls/internal/telemetry/cmd/stacks: build compiler from root
+  * gopls/internal/golang: improve "toggle compiler opt details"
+  * gopls/internal/protocol/command: remove the redundant gopls.test command
+  * gopls/internal/highlight: DocumentHighlight for format strings
+  * gopls/internal/golang: customize semantic token types and modifiers
+  * gopls/internal/telemetry/cmd/stacks: don't forward GOEXPERIMENT from env
+  * gopls/internal/telemetry/cmd/stacks: paginate issue search
+  * gopls/internal/analysis/modernize: replace loop with slices.Contains
+  * gopls/internal/telemetry/cmd/stacks: support cmd/compile
+  * gopls/internal/telemetry/cmd/stacks: refactor report processing to support different programs
+  * gopls/internal/telemetry/cmd/stacks: add cmd/compile support to readPCLineTable
+  * gopls/internal/util/frob: Decode: improve panic on empty
+  * gopls: filter out hints for closed files and make modernizers hints
+  * gopls/internal/protocol: optimized DocumentURI.Path for MODCACHE
+  * gopls/internal/analysis/modernize: fix bug in minmax
+  * gopls/internal/analysis/modernize: fix bug in mapsloop
+  * gopls: prepare for mod cache index
+  * gopls/internal/analysis/modernize: replace WithCancel with t.Cancel
+  * gopls/internal/analysis: unusedvariable
+  * gopls/internal/settings: document why unusedvariable is off
+  * gopls/internal/protocol: modernize to use any
+  * gopls/internal/settings: set severity=Info for modernizers
+  * gopls/internal/analysis/hostport: report net.Dial("%s:%d") addresses
+  * gopls/internal/util/persistent: {Map,Set}: use iter.Seq2
+  * gopls: update toolchain to go1.23.4
+  * gopls/internal/analysis/unusedfunc: analyzer for unused funcs/methods
+  * gopls/internal/golang: make GCDetails a code action, not a code lens
+  * gopls/internal/cache: remove overzealous bug.Report
+  * gopls/internal/filecache: Get: mitigate failure due to ENOSPC
+  * gopls: update telemetry dependency for crashmonitor fix
+  * gopls/internal/server: fix nil panic in findMatchingDiagnostics
+  * gopls/internal/cache/parsego: fix OOB panic in fixAST
+  * gopls/internal/util/moremaps: use Sorted throughout gopls
+  * gopls/internal/golang: definition support break, goto and continue statements
+  * gopls/internal/analysis/modernize: string formatting
+  * gopls/doc/features: add missing `
+  * gopls/internal/analysis/modernize: check FileVersions throughout
+  * gopls/internal/analysis/modernize: for...{m[k]=v} -> maps.Collect et al
+  * gopls/internal/cmd: update codelens.hlp, change -run to -exec
+  * gopls/internal/analysis/modernize: b.N -> b.Loop()
+  * gopls/internal/golang: check for nil ReceiverNamed
+  * gopls/internal/analysis/modernize: simplify append(base, s...)
+  * gopls/internal/analysis/modernize: replace interface{} with any
+  * gopls/internal/analysis/modernize: sort.Slice -> slices.Sort
+  * gopls/internal/analysis/modernize: quick fixes to modernize Go code
+  * gopls/internal/golang: hover support return statements
+  * gopls/internal/util/astutil: fix tiny doc typo
+  * gopls/internal/util/astutil: NodeContains: workaround for ast.File
+  * gopls/internal/golang: fix DocLink markup
+  * gopls/internal/cache: move symbols to the file cache
+  * gopls/internal/cache/testfuncs: fix crash with *error argument
+  * gopls/internal/golang/completion: fix crash in instance conversion
+  * gopls/internal/codeaction: replace all occurrences of expression (refactor.extract.variable.all)
+  * gopls/internal/golang: fix bug browsing assembly for (T).f methods
+  * gopls/internal/golang: definition support return statements
+  * gopls/internal/settings: drop experimental hoverKind=Structured
+  * gopls/go.mod: update dependencies following the v0.17.0 release
+  * gopls/internal/golang: Implementations: support generics
+  * internal/typesinternal: rollback of Zero{Value,Expr} for gopls
+  * gopls/internal/cache: move Snapshot.Symbols to symbols.go
+  * gopls/internal/cache/methodsets: support generics
+  * gopls/internal/golang: eliminate CollectScopes
+  * gopls/doc/release: tweak wording following feedback
+  * gopls/doc: update relnotes for v0.17.0
+
+-------------------------------------------------------------------
 Fri Jan 31 05:13:20 UTC 2025 - Timothy Brown <stimut@gmail.com>
 
 - Update to version 0.17.1:

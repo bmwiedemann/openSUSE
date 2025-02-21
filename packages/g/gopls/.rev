@@ -225,4 +225,41 @@
   * gopls/internal/golang/completion: fix crash in instance conversion</comment>
     <requestid>1241677</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3667378b691b54d9ff8a58353d5c7259</srcmd5>
+    <version>0.18.0</version>
+    <time>1740170207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18.0:
+  * gopls: update go.mod for v0.18.0-pre.6
+  * gopls/internal/analysis/modernize: fix rangeint bug
+  * gopls/internal/analysis/modernize: disable unsound maps.Clone fix
+  * gopls: update go.mod for v0.18.0-pre.5
+  * gopls: tweak release notes
+  * gopls: update go.mod for v0.18.0-pre.4
+  * gopls: fix a few bugs related to the new modcache imports source
+  * gopls/internal/analysis/modernize: sortslice: fix crash
+  * gopls: update go.mod for v0.18.0-pre.3
+  * gopls/internal/analysis/modernize: improve rangeint transformation
+  * gopls/internal/golang: avoid PackageSymbols errors with missing packages
+  * gopls/internal/analysis/gofix: rename local
+  * gopls/internal/analysis/gofix: check package visibility
+  * gopls: update go.mod for v0.18.0-pre.2
+  * gopls/internal/telemetry/cmd/stacks: remove leading \b match
+  * gopls: record telemetry counters for settings that are used
+  * gopls/internal/golang: folding range: remove FoldingRangeInfo
+  * gopls/internal/golang: add comment about SymbolKind
+  * gopls/internal/analysis/modernize: appendclipped: unclip
+  * gopls/internal/analysis/modernize: strings.Split -&gt; SplitSeq
+  * gopls: update go.mod for v0.18.0-pre.1
+  * gopls/internal/analysis/modernize: slices.Delete: import slices
+  * gopls/internal/analysis/modernize: remove SortStable
+  * gopls: update go.mod for v0.18.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.18
+  * gopls/internal/cache: downgrade bug reports for inconsistent metadata
+  * gopls/internal/test/integration: reduce flakes in TestTelemetryPrompt
+  * gopls/internal/analysis/modernize: mapsloop: fix two bugs
+  * gopls/internal/analysis/modernize/cmd/modernize: create (forwarded request 1247517 from jfkw)</comment>
+    <requestid>1247518</requestid>
+  </revision>
 </revisionlist>
