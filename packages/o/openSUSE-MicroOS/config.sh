@@ -68,16 +68,20 @@ sed -i 's/^multiversion =.*/multiversion =/g' /etc/zypp/zypp.conf
 #=====================================
 # Configure snapper
 #-------------------------------------
-if [ "${kiwi_btrfs_root_is_snapshot-false}" = 'true' ]; then
-        echo "creating initial snapper config ..."
-        cp /etc/snapper/config-templates/default /etc/snapper/configs/root \
+if [ -x /usr/bin/snapper ]; then
+	echo "creating initial snapper config ..."
+	cp /etc/snapper/config-templates/default /etc/snapper/configs/root \
 		|| cp /usr/share/snapper/config-templates/default /etc/snapper/configs/root
-        baseUpdateSysConfig /etc/sysconfig/snapper SNAPPER_CONFIGS root
+	baseUpdateSysConfig /etc/sysconfig/snapper SNAPPER_CONFIGS root
 
 	# Adjust parameters
 	sed -i'' 's/^TIMELINE_CREATE=.*$/TIMELINE_CREATE="no"/g' /etc/snapper/configs/root
 	sed -i'' 's/^NUMBER_LIMIT=.*$/NUMBER_LIMIT="2-10"/g' /etc/snapper/configs/root
 	sed -i'' 's/^NUMBER_LIMIT_IMPORTANT=.*$/NUMBER_LIMIT_IMPORTANT="4-10"/g' /etc/snapper/configs/root
+else
+	# Avoid boo#1237466 from reoccuring
+	echo "snapper not installed?"
+	exit 1
 fi
 
 #=====================================
@@ -156,7 +160,7 @@ case "${kiwi_profiles}" in
 	*OpenStack*) ignition_platform='openstack' ;;
 	*VirtualBox*) ignition_platform='virtualbox' ;;
 	*HyperV*) ignition_platform='metal'
-		  cmdline+=('rootdelay=300') ;;
+	          cmdline+=('rootdelay=300') ;;
 	*Pine64*|*RaspberryPi*|*Rock64*|*Vagrant*) ignition_platform='metal' ;;
 	# Use autodetection on selfinstall. The first boot doesn't use the grub
 	# cmdline anyway, it's started with kexec using kiwi's builtin default.
@@ -184,8 +188,14 @@ if [[ -e /etc/selinux/config ]]; then
 	test -f /.autorelabel && mv /.autorelabel /etc/selinux/.autorelabel
 fi
 
-if [ -e /etc/default/grub ]; then
+if rpm -q sdbootutil; then
+	mkdir -p /etc/kernel
+	echo "${cmdline[*]}" > /etc/kernel/cmdline
+elif [ -e /etc/default/grub ]; then
 	sed -i "s#^GRUB_CMDLINE_LINUX_DEFAULT=.*\$#GRUB_CMDLINE_LINUX_DEFAULT=\"${cmdline[*]}\"#" /etc/default/grub
+else
+	echo "Unknown bootloader"
+	exit 1
 fi
 
 #======================================
@@ -242,21 +252,21 @@ fi
 # Configure Vagrant specifics
 #--------------------------------------
 if [[ "$kiwi_profiles" == *"Vagrant"* ]]; then
-        echo "Add user vagrant"
-        # create vagrant user
-        useradd vagrant
-        # allow password-less sudo
-        echo "vagrant ALL=(ALL)NOPASSWD:ALL" > /etc/sudoers.d/vagrant
-        # add vagrant's insecure key
-        mkdir -p /home/vagrant/.ssh
-        chmod 0700 /home/vagrant/.ssh
-        cat > /home/vagrant/.ssh/authorized_keys << EOF
+	echo "Add user vagrant"
+	# create vagrant user
+	useradd vagrant
+	# allow password-less sudo
+	echo "vagrant ALL=(ALL)NOPASSWD:ALL" > /etc/sudoers.d/vagrant
+	# add vagrant's insecure key
+	mkdir -p /home/vagrant/.ssh
+	chmod 0700 /home/vagrant/.ssh
+	cat > /home/vagrant/.ssh/authorized_keys << EOF
 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7gHzIw+niNltGEFHzD8+v1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoPkcmF0aYet2PkEDo3MlTBckFXPITAMzF8dJSIFo9D8HfdOV0IAdx4O7PtixWKn5y2hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL+GPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZEnDkbUvxhMmBYSdETk1rRgm+R4LOzFUGaHqHDLKLX+FIPKcF96hrucXzcWyLbIbEgE98OHlnVYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key
 EOF
-        chmod 0600 /home/vagrant/.ssh/authorized_keys
-        chown -R vagrant /home/vagrant
+	chmod 0600 /home/vagrant/.ssh/authorized_keys
+	chown -R vagrant /home/vagrant
 
-        echo "Disable jeos-firstboot.service for Vagrant boxes"
+	echo "Disable jeos-firstboot.service for Vagrant boxes"
 	systemctl disable jeos-firstboot.service
 	systemctl mask jeos-firstboot.service
 fi
@@ -264,19 +274,10 @@ fi
 #======================================
 # Configure FDE/BLS specifics
 #--------------------------------------
-# [[ "$kiwi_profiles" == *"kvm-and-xen-"* ]]
+
 if rpm -q sdbootutil; then
-	for d in /usr/lib/modules/*; do
-		test -d "$d" || continue
-		depmod -a "${d##*/}"
-	done
-	ENTRY_TOKEN=$(. /usr/lib/os-release; echo "$ID")
-	mkdir -p /etc/kernel
-	echo "$ENTRY_TOKEN" > /etc/kernel/entry-token
 	# FIXME: kiwi needs /boot/efi to exist before syncing the disk image
 	mkdir -p /boot/efi
-
-	echo "${cmdline[*]}" > /etc/kernel/cmdline
 
 	[ -e /var/lib/YaST2/reconfig_system ] && systemctl enable sdbootutil-enroll.service
 fi

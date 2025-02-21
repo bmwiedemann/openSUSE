@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 21 12:38:04 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Do not rely on $kiwi_btrfs_root_is_snapshot (boo#1237466)
+
+-------------------------------------------------------------------
+Thu Feb 20 16:07:14 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Clean up config.sh and disk.sh
+
+-------------------------------------------------------------------
 Tue Nov 12 12:25:21 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Use the enrollment packages from sdbootutil
