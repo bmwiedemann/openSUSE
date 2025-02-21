@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 17 13:05:58 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.0.0
+  - Add bash completions.
+  - Fix installation on FreeBSD (thanks to Isaac Freund).
+  - Follow (new) C standard by replacing noop() function (thanks to Ben
+    Buse).
+  - Allow compiling with clang via -Wno-strict-prototypes.
+  - Fix file permissions of man page.
+- fixes build with gcc 15
+- removed Makefile.patch, not needed
+
+-------------------------------------------------------------------
 Sun Jun  5 12:02:56 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - add Makefile.patch:

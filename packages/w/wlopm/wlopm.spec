@@ -1,7 +1,7 @@
 #
 # spec file for package wlopm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           wlopm
-Version:        0.1.0
+Version:        1.0.0
 Release:        0
 Summary:        Wayland output power management
 License:        GPL-3.0-only
 URL:            https://git.sr.ht/~leon_plickat/wlopm
 Source0:        https://git.sr.ht/~leon_plickat/wlopm/archive/v%{version}.tar.gz
-Patch0:         Makefile.patch
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
 BuildRequires:  pkgconfig(wayland-client)
@@ -37,9 +36,10 @@ and turning it on e.g. laptops after opening the lid
 %autosetup -n %{name}-v%{version}
 
 %build
-%make_build PREFIX=/usr
+%make_build PREFIX="/usr" CFLAGS="%{optflags} $(pkg-config --cflags wayland-client)"
 
 %install
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
 %make_install PREFIX=/usr
 
 %files
@@ -47,5 +47,6 @@ and turning it on e.g. laptops after opening the lid
 %doc README
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_datadir}/bash-completion/completions/wlopm
 
 %changelog
