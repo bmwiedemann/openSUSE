@@ -43,4 +43,12 @@
 - Add kquickimageeditor6, required by neochat</comment>
     <requestid>1153262</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>89ddd24612ebf1b5626485b2d5e138cb</srcmd5>
+    <version>0.5.0</version>
+    <time>1740170153</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.5.0</comment>
+    <requestid>1246610</requestid>
+  </revision>
 </revisionlist>
