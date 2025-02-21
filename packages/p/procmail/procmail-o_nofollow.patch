@@ -1,0 +1,55 @@
+---
+ src/exopen.c |    4 ++--
+ src/robust.c |   14 +++++++++++++-
+ 2 files changed, 15 insertions(+), 3 deletions(-)
+
+--- src/exopen.c
++++ src/exopen.c	2025-02-12 09:33:08.114189510 +0000
+@@ -110,7 +110,7 @@ in:	if(flags&doMAILDIR)
+ #define ropen(path,type,mode)	creat(path,mode)
+ #endif
+   while((!i||errno!=ENOENT||	      /* casually check if it already exists */
+-	 (0>(i=ropen(full,O_WRONLY|O_CREAT|O_EXCL,mode))&&errno==EEXIST))&&
++	 (0>(i=ropen(full,O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW,mode))&&errno==EEXIST))&&
+ 	(i= -1,retry--));
+   if(flags&doCHOWN&&didnice)
+      nice(nicediff);		   /* put back the priority to the old level */
+@@ -180,7 +180,7 @@ int hlink(old,newn)const char*const old,
+    { int fd;
+ #ifdef O_CREAT				       /* failure due to filesystem? */
+      if(stbuf.st_nlink<2&&errno==EXDEV&&     /* try it by conventional means */
+-	0<=(fd=ropen(newn,O_WRONLY|O_CREAT|O_EXCL,stbuf.st_mode)))
++	0<=(fd=ropen(newn,O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW,stbuf.st_mode)))
+ 	return fd+1;
+ #endif
+      return -1;
+--- src/robust.c
++++ src/robust.c	2025-02-12 10:06:32.165135534 +0000
+@@ -10,6 +10,7 @@
+ static /*const*/char rcsid[]=
+  "$Id$";
+ #endif
++#include <libgen.h>
+ #include "procmail.h"
+ #include "robust.h"
+ #include "misc.h"
+@@ -121,7 +122,18 @@ void opnlog(file)const char*file;
+ int opena(a)const char*const a;
+ { yell("Opening",a);
+ #ifdef O_CREAT
+-  return ropen(a,O_WRONLY|O_APPEND|O_CREAT,NORMperm);
++  int flags = O_WRONLY|O_APPEND|O_CREAT;
++  struct stat stbuf;
++  char *d, *t = tstrdup(a);
++  d = dirname(t);
++  if (stat(d,&stbuf) < 0) {
++      free(t);
++      return -1;
++  }
++  free(t);
++  if (stbuf.st_mode & S_IWOTH)
++      flags |= O_NOFOLLOW;
++  return ropen(a,flags,NORMperm);
+ #else
+   ;{ int fd;
+      return (fd=ropen(a,O_WRONLY,0))<0?creat(a,NORMperm):fd;

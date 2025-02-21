@@ -11,7 +11,7 @@ diff --git a/src/autoconf b/src/autoconf
 index b0fef8a..f2f8351 100755
 --- a/src/autoconf
 +++ b/src/autoconf
-@@ -1302,8 +1302,7 @@ int main(argc,argv)int argc;const char*argv[];
+@@ -1303,8 +1303,7 @@ int main(argc,argv)int argc;const char*argv[];
  	   if(!setrgid(groups[i])&&getgid()!=groups[i])
  	      puts("#define setrgid_BRAIN_DAMAGE");
  	 }

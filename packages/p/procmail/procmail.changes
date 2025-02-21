@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 12 09:30:38 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch procmail-o_nofollow.patch
+  * Avoid to follow symblic link below /var/spool/mail/
+
+-------------------------------------------------------------------
 Thu Feb 29 14:34:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,7 +1,7 @@
 #
 # spec file for package procmail
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Patch3:         procmail-3.22-headerconcat.dif
 Patch4:         procmail-3.22-owl-truncate.dif
 Patch5:         procmail-3.22-autoconf.dif
 Patch6:         procmail-3.22-ipv6.patch
+# PATCH-FIX-SUSE Avoid that link() follows symbolic links
+Patch7:         procmail-o_nofollow.patch
 # PATCH-FIX-SUSE bmwiedemann -- make build reproducible
 Patch8:         reproducible.patch
 Patch10:        procmail-fix-Werror=return-type.patch
@@ -59,6 +61,7 @@ done
 %patch -P 4
 %patch -P 5
 %patch -P 6
+%patch -P 7 -b .nofollow
 %patch -P 8 -p1
 %patch -P 10 -p1
 %patch -P 11 -p1
