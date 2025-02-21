@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 21 10:40:41 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250220 (git commit 6cf959daab2a):
+  * linux-firmware: update firmware for MT7920 WiFi device
+
+-------------------------------------------------------------------
 Tue Feb 11 09:26:37 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix license description for kernel-firmware-tools package
