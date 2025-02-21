@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 20 16:56:18 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Dev: don't use pacemaker-3.0.0 deprecated functions (bsc#1237259) 
+
+-------------------------------------------------------------------
 Fri Nov  6 17:28:01 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
 
 -  Version 0.0.4:
