@@ -1,7 +1,7 @@
 #
 # spec file for package virt-p2v
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           virt-p2v
-Version:        1.42.3
+Version:        1.42.4
 Release:        0
 Summary:        Tools to convert a physical machine to run on KVM
 URL:            https://libguestfs.org/

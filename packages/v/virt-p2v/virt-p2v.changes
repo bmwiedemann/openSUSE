@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 14 11:13:49 MST 2025 - carnold@suse.com
+
+- Update to version 1.42.4 (jsc#PED-8910)
+  * disks.c: skip SCSI floppy drives with no disk inserted
+  * ssh: shield virt-v2v from bash RC files
+  * make-disk: Various fixes and adjustments
+  * Introduce "p2v.output.misc" for passing "-oo" options to
+    virt-v2v
+  * gui: Various fixes and adjustments
+
+-------------------------------------------------------------------
 Wed Nov  2 15:49:00 MDT 2022 - carnold@suse.com
 
 - Update to version 1.42.3
