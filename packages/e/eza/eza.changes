@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 21 15:31:15 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.22:
+  Features:
+  * Add prettier icon for *.prettierignore
+  * Add icon for *.hrl
+  * Add photoshop icon for *.psb
+  * Add eslint icon for .eslintignore
+  * Add renovate icon for renovate.json
+  * Add elixir icon for *.eex, *.leex and mix.lock
+  Build:
+  * Bump once_cell from 1.20.2 to 1.20.3
+
+-------------------------------------------------------------------
 Fri Feb 14 08:24:19 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.21:

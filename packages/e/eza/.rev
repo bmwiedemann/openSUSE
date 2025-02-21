@@ -1002,4 +1002,21 @@
   * Start publishing libgit arm builds</comment>
     <requestid>1245841</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>be6819e4a349a5fc0b4232ea531da84d</srcmd5>
+    <version>0.20.22</version>
+    <time>1740170308</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.22:
+  Features:
+  * Add prettier icon for *.prettierignore
+  * Add icon for *.hrl
+  * Add photoshop icon for *.psb
+  * Add eslint icon for .eslintignore
+  * Add renovate icon for renovate.json
+  * Add elixir icon for *.eex, *.leex and mix.lock
+  Build:
+  * Bump once_cell from 1.20.2 to 1.20.3</comment>
+    <requestid>1247683</requestid>
+  </revision>
 </revisionlist>
