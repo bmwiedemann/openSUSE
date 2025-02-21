@@ -1,0 +1,9 @@
+<package name="kappanhang" project="openSUSE:Factory">
+  <title>Remotely open audio channels and a serial port to an Icom transceiver</title>
+  <description>kappanhang remotely opens audio channels and a serial port to an Icom RS-BA1
+server. The app is mainly developed for connecting to the Icom IC-705
+transceiver, which has built-in Wi-Fi and RS-BA1 server. All features of the
+protocol are implemented including packet retransmission on packet loss.</description>
+  <devel project="hamradio" package="kappanhang"/>
+  <url>https://github.com/nonoo/kappanhang</url>
+</package>
