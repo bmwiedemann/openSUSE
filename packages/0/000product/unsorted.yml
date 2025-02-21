@@ -927,6 +927,7 @@ unsorted:
   - artem 
   - artha 
   - arti 
+  - artifacthub-cli 
   - artifacts 
   - artifacts-validator 
   - artikulate 
@@ -2516,6 +2517,7 @@ unsorted:
   - complexity 
   - composefs 
   - composefs-devel 
+  - composefs-experimental 
   - compsize 
   - compton 
   - compton-conf 
@@ -7174,7 +7176,6 @@ unsorted:
   - gimp-help-zh 
   - gimp-lang 
   - gimp-plugin-gmic 
-  - gimp-ufraw 
   - gimp-vala 
   - ginac 
   - ginac-devel 
@@ -11162,9 +11163,6 @@ unsorted:
   - lego 
   - leiningen 
   - lekha 
-  - lemon 
-  - lemon-devel 
-  - lemon-doc 
   - lemonbar 
   - lensfun-devel 
   - lensfun-doc 
@@ -12068,11 +12066,9 @@ unsorted:
   - libarmnnTfLiteParser24-opencl 
   - libarpack2 
   - libarprec0 
-  - libarrow1700 
-  - libarrow_acero1700 
-  - libarrow_dataset1700 
-  - libarrow_flight1700 
-  - libarrow_flight_sql1700 
+  - libarrow1900 
+  - libarrow_acero1900 
+  - libarrow_dataset1900 
   - libart_lgpl-devel 
   - libart_lgpl_2-2 
   - libasan4 
@@ -13074,7 +13070,6 @@ unsorted:
   - libembree3 
   - libemf2svg-devel 
   - libemf2svg1 
-  - libemon1_3_1 
   - libenca0 
   - libenca0-32bit 
   - libenchant-2-2-32bit 
@@ -14137,7 +14132,7 @@ unsorted:
   - libime-devel 
   - libime-dicts 
   - libime-tools 
-  - libimhex1_37_0 
+  - libimhex1_37_1 
   - libiml0 
   - libimobiledevice-1_0-6-32bit 
   - libimobiledevice-devel 
@@ -15376,7 +15371,7 @@ unsorted:
   - libparlatype7 
   - libparpack2-openmpi4 
   - libparpack2-openmpi5 
-  - libparquet1700 
+  - libparquet1900 
   - libparserutils-devel 
   - libparserutils0 
   - libpartio1 
@@ -15535,7 +15530,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler145-32bit 
+  - libpoppler146-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -17617,6 +17612,7 @@ unsorted:
   - linphone-cli 
   - linphone-desktop 
   - linphone-devel 
+  - linsim 
   - linssid 
   - linstor 
   - linutil 
@@ -18073,6 +18069,10 @@ unsorted:
   - luajit-devel 
   - luajit2 
   - luajit2-devel 
+  - luanti 
+  - luanti-data 
+  - luanti-lang 
+  - luantiserver 
   - luaposix-doc 
   - lucene++-devel 
   - lucene-analyzers-common 
@@ -19260,14 +19260,14 @@ unsorted:
   - mpich-ofi-gnu-hpc-devel 
   - mpich-ofi-gnu-hpc-devel-static 
   - mpich-ofi-gnu-hpc-macros-devel 
-  - mpich-ofi_4_2_2-gnu-hpc 
-  - mpich-ofi_4_2_2-gnu-hpc-devel 
-  - mpich-ofi_4_2_2-gnu-hpc-devel-static 
-  - mpich-ofi_4_2_2-gnu-hpc-macros-devel 
-  - mpich_4_2_2-gnu-hpc 
-  - mpich_4_2_2-gnu-hpc-devel 
-  - mpich_4_2_2-gnu-hpc-devel-static 
-  - mpich_4_2_2-gnu-hpc-macros-devel 
+  - mpich-ofi_4_3_0-gnu-hpc 
+  - mpich-ofi_4_3_0-gnu-hpc-devel 
+  - mpich-ofi_4_3_0-gnu-hpc-devel-static 
+  - mpich-ofi_4_3_0-gnu-hpc-macros-devel 
+  - mpich_4_3_0-gnu-hpc 
+  - mpich_4_3_0-gnu-hpc-devel 
+  - mpich_4_3_0-gnu-hpc-devel-static 
+  - mpich_4_3_0-gnu-hpc-macros-devel 
   - mpitests 
   - mpitests-mpich 
   - mpitests-mpich-gnu-hpc 
@@ -19279,6 +19279,8 @@ unsorted:
   - mpitests-mvapich2-psm2-gnu-hpc 
   - mpitests-openmpi4 
   - mpitests-openmpi4-gnu-hpc 
+  - mpitests-openmpi5 
+  - mpitests-openmpi5-gnu-hpc 
   - mplus-code-latin-variable-fonts 
   - mplus-code-latin50-fonts 
   - mplus-code-latin60-fonts 
@@ -20025,6 +20027,14 @@ unsorted:
   - nuosu-fonts 
   - nuoveXT2-icon-theme 
   - nushell 
+  - nushell-plugin_custom_values 
+  - nushell-plugin_example 
+  - nushell-plugin_formats 
+  - nushell-plugin_gstat 
+  - nushell-plugin_inc 
+  - nushell-plugin_polars 
+  - nushell-plugin_query 
+  - nushell-plugin_stress_internals 
   - nuspell 
   - nuspell-devel 
   - nuspell-doc 
@@ -20714,7 +20724,6 @@ unsorted:
   - opensp-doc 
   - openspecfun-devel 
   - openssh-cavs 
-  - openssh-fips 
   - openssh-helpers 
   - openssh-server-config-rootlogin 
   - openssl-3-doc 
@@ -20913,9 +20922,6 @@ unsorted:
   - owncloud-extensions-resources 
   - owntone 
   - oxipng 
-  - oxygen5-icon-theme 
-  - oxygen5-icon-theme-large 
-  - oxygen5-icon-theme-scalable 
   - oxygen6 
   - oxygen6-cursors 
   - oxygen6-decoration 
@@ -24212,7 +24218,6 @@ unsorted:
   - python310-doc-devhelp 
   - python310-gpt4all 
   - python310-idle 
-  - python310-kiwi-keg 
   - python310-testsuite 
   - python310-tk 
   - python310-tools 
