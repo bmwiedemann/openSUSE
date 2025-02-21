@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-eventhub-checkpointstoreblob
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-eventhub-checkpointstoreblob
-Version:        1.1.4
+Version:        1.2.0
 Release:        0
 Summary:        Azure EventHubs Checkpoint Store client library for Python using Storage Blobs
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-eventhub-checkpointstoreblob/azure-eventhub-checkpointstoreblob-%{version}.zip
-Source1:        LICENSE.txt
-BuildRequires:  %{python_module azure-core >= 1.10.0}
+Source:         https://files.pythonhosted.org/packages/source/a/azure_eventhub_checkpointstoreblob/azure_eventhub_checkpointstoreblob-%{version}.tar.gz
 BuildRequires:  %{python_module azure-eventhub < 6.0.0}
 BuildRequires:  %{python_module azure-eventhub >= 5.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
-BuildRequires:  %{python_module cryptography >= 2.1.4}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module msrest >= 0.6.18}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-cryptography >= 2.1.4
-Requires:       python-msrest >= 0.6.18
-Requires:       (python-azure-core >= 1.10.0 with python-azure-core < 2.0.0)
 Requires:       (python-azure-eventhub >= 5.0.0 with python-azure-eventhub < 6.0.0)
+Requires:       (python-azure-storage-blob >= 12.0.0 with python-azure-storage-blob < 13.0.0)
 
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
@@ -62,10 +55,12 @@ Please note that this is a sync library, for async version of the Azure EventHub
 Store client library, please refer to the package azure-eventhub-checkpointstoreblob-aio.
 
 %prep
-%setup -q -n azure-eventhub-checkpointstoreblob-%{version}
+%setup -q -n azure_eventhub_checkpointstoreblob-%{version}
+# Remove vendoring of python-azure-storage-blob
+sed -i 's/._vendor/azure/g' azure/eventhub/extensions/checkpointstoreblob/_blobstoragecs.py
+rm -rf azure/eventhub/extensions/checkpointstoreblob/_vendor
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-eventhub-checkpointstoreblob-%{version}
 %pyproject_wheel
 
 %install
@@ -76,7 +71,7 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-eventhub-checkpointstoreblob-%{vers
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/eventhub/extensions/checkpointstoreblob
 %{python_sitelib}/azure_eventhub_checkpointstoreblob-*.dist-info
 

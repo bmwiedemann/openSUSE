@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 21 11:04:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove vendored python-azure-storage-blob package
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Fri May  3 16:42:40 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Change version setting of Obsoletes to <= to trigger python3
