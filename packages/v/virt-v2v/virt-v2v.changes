@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:40:50 MST 2025 - carnold@suse.com
+
+- Update to virt-v2v 2.7.6 (jsc#PED-8910)
+  * mldrivers/linux_bootloaders.ml: Don't overwrite EFI grub2 wrapper
+  * convert: Use yum/apt/... for package removals, not rpm/dpkg
+  * convert: Reload augeas after package remove
+
+-------------------------------------------------------------------
+Wed Feb 12 15:45:33 MST 2025 - carnold@suse.com
+
+- Update to virt-v2v 2.7.5 (jsc#PED-8910)
+  * Various language translation updates
+  * po-docs: fixes and adjustments
+  * valgrind: Add suppressions for two new memory leaks in glib
+
+-------------------------------------------------------------------
 Fri Jan  3 15:21:51 MST 2025 - carnold@suse.com
 
 - Update to virt-v2v 2.7.4 (jsc#PED-8910)
