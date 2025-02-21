@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Fri Feb 21 12:24:20 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 3.14.0
+  * New features and improvements
+    + Enable GitHub Issues
+    + MCOMPILER-579: allow module-version configuration
+    + Bump org.codehaus.plexus:plexus-java from 1.2.0 to 1.4.0 -
+      JDK 24 support
+    + Update release-drafter configuration, PR automation
+    + MCOMPILER-588: JUnit4 test framework to JUnit5 migration
+  * Bug Fixes
+    + Fix release-drafter config
+    + MCOMPILER-591: testCompile - fix detections of target less
+      than 1.9
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus-java from 1.2.0 to 1.4.0 -
+      JDK 24 support
+    + Bump mavenVersion from 3.6.3 to 3.9.9
+    + Bump org.mockito:mockito-core from 4.8.0 to 4.11.0
+    + Bump org.apache.maven.plugins:maven-plugins from 42 to 43
+    + MCOMPILER-590: Bump org.apache.maven.plugins:maven-plugins
+      from 41 to 42
+  * Maintenance
+    + Update scm tag according to branch
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    + Use JUnit version from parent
+    + MCOMPILER-529: Update docs about version schema (Maven 3)
+    + Use default Maven versions for build on GitHub
+    + Remove Maven 3 note
+    + Remove info about old versions
+  * Build
+    + Exclude JDK 8 - temurin, adopt-openj9 on macos, use defaults
+      values
+- Changes of release 3.13.0
+  * New features and improvements
+    + MCOMPILER-574: Propagate cause of exception in
+      AbstractCompilerMojo
+    + MCOMPILER-582: Automatic detection of release option for
+      JDK < 9
+    + MCOMPILER-583: Require Maven 3.6.3
+    + MCOMPILER-577: Rename parameter "forceJavacCompilerUse"
+    + MCOMPILER-570: Add links to javac documentation of JDK17
+    + MCOMPILER-576: Deprecate parameter "compilerVersion"
+  * Dependency updates
+    + MCOMPILER-575: Bump plexusCompilerVersion from 2.14.2
+      to 2.15.0
+    + Bump apache/maven-gh-actions-shared from 3 to 4
+  * Documentation updates
+    + MCOMPILER-548: JDK 21 throws annotations processing warning
+      that can not be turned off
+  * Maintenance
+    + MCOMPILER-584: Refresh page - Using Non-Javac Compilers
+    + MCOMPILER-585: Refresh plugins versions in ITs
+- Changes of release 3.12.1
+  * Bug Fixes
+    + MCOMPILER-567: Fail to compile if the
+      generated-sources/annotations does not exist
+  * Dependency updates
+    + MCOMPILER-568: Bump plexusCompilerVersion from 2.14.1 to
+      2.14.2
+- Changes of release 3.12.0
+  * New features and improvements
+    + MCOMPILER-562: Add property maven.compiler.outputDirectory to
+      CompilerMojo
+    + MCOMPILER-381: Refactor incremental detection
+    + MCOMPILER-542: Clean JDK patch version in module-info.class
+    + MCOMPILER-558: compileSourceRoots in testCompile should be
+      writable
+    + MCOMPILER-559: Warn if overwriting the project's artifact's
+      file to a different value
+    + MCOMPILER-550: make outputDirectory writable
+    + MCOMPILER-549: Improve log message in case of recompilation -
+      fix jenkins build
+    + MCOMPILER-549: Improve log message in case of recompilation
+    + MCOMPILER-391: Use dep mgmt when resolving annotation
+      processors and their deps
+    + MCOMPILER-531: Prepare for Java 20(-ea)
+  * Bug Fixes
+    + MCOMPILER-333: Cleanup generated source files
+    + MCOMPILER-544: don't add items to classpath that are not used
+      for that
+    + MCOMPILER-547: Initialize pathElements to empty
+  * Dependency updates
+    + MCOMPILER-564: Bump plexusCompilerVersion from 2.13.0 to
+      2.14.1
+    + MCOMPILER-557: Upgrade maven-plugin parent to 41 - fix build
+    + MCOMPILER-554: Update plexus-java to 1.2.0
+    + MCOMPILER-551: Upgrade Parent to 40
+    + MCOMPILER-541: update maven-shared-utils to 3.4.2
+    + Bump apache/maven-gh-actions-shared from 2 to 3
+    + Bump maven-invoker-plugin from 3.4.0 to 3.5.0
+  * Maintenance
+    + MCOMPILER-565: Allow project build by Maven 4
+    + MCOMPILER-552: Refresh download page
+    + Remove references to old Maven versions.
+    + (doc) Drop unused and vulnerable dependency to log4j
+    + MNG-6829: Replace StringUtils#isEmpty(String) &
+      #isNotEmpty(String)
+    + Update plexus-utils to 3.0.24 - in its
+
+-------------------------------------------------------------------
 Wed Feb 21 14:50:23 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

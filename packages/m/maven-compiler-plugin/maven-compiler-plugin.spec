@@ -1,7 +1,7 @@
 #
 # spec file for package maven-compiler-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-compiler-plugin
-Version:        3.11.0
+Version:        3.14.0
 Release:        0
 Summary:        Maven Compiler Plugin
 License:        Apache-2.0
@@ -42,6 +42,7 @@ BuildRequires:  maven-shared-utils
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-compiler >= 2.13
 BuildRequires:  plexus-languages
+BuildRequires:  plexus-utils
 BuildRequires:  unzip
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
@@ -111,9 +112,9 @@ build-jar-repository -s lib \
     maven-shared-utils/maven-shared-utils \
     objectweb-asm/asm-all \
     plexus-compiler/plexus-compiler-api \
-    plexus-compiler/plexus-compiler-javac \
     plexus-compiler/plexus-compiler-manager \
-    plexus-languages/plexus-java
+    plexus-languages/plexus-java \
+    plexus/utils
 %{ant} -Dtest.skip=true jar
 %else
 xmvn --batch-mode --offline \
