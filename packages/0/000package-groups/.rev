@@ -2105,4 +2105,12 @@ Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</commen
     <comment>no transactional role on the main dvd</comment>
     <requestid>1244352</requestid>
   </revision>
+  <revision rev="295" vrev="293">
+    <srcmd5>325e64970484a3f2ffae570f26fec090</srcmd5>
+    <version>unknown</version>
+    <time>1740170136</time>
+    <user>dimstar_suse</user>
+    <comment>Add SYSEXT_LEVEL to os-release on MicroOS</comment>
+    <requestid>1247638</requestid>
+  </revision>
 </revisionlist>

@@ -202,7 +202,8 @@ mkdir -p %{buildroot}%{_sysconfdir} %{buildroot}%{_prefix}/lib/issue.d %{buildro
 echo -e "\nWelcome to ___SUMMARY___ (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
 echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS
 
-VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
+VERSION_ID=$(echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;')
+SYSEXT_LEVEL=$(rpm -q --qf '%%{NAME}-%%{VERSION}' glibc)
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
 # We do thus not add it to the os-release file
 cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
@@ -212,6 +213,7 @@ ID="opensuse-microos"
 ID_LIKE="suse opensuse opensuse-tumbleweed microos sl-micro"
 VERSION_ID="$VERSION_ID"
 PRETTY_NAME="openSUSE MicroOS"
+SYSEXT_LEVEL="$SYSEXT_LEVEL"
 ANSI_COLOR="0;32"
 CPE_NAME="cpe:/o:opensuse:microos:%{version}"
 BUG_REPORT_URL="https://bugzilla.opensuse.org"
