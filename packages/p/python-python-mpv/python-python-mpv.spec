@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-mpv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,16 +25,17 @@ License:        GPL-2.0-or-later OR LGPL-2.1-or-later
 URL:            https://github.com/jaseg/python-mpv
 Source0:        https://files.pythonhosted.org/packages/source/p/python-mpv/python_mpv-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
+BuildRequires:  %{python_module PyVirtualDisplay}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 61}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Needed to be able to set the proper dependency to the library
 BuildRequires:  mpv-devel
-# workaround via define needed as python_ubpackages wants to interpret Requires: lines
-%define libmpv  %(rpm -qf $(readlink -f %{_libdir}/libmpv.so) --qf "%%{name}")
-Requires:       %libmpv
+# workaround via define needed as python_subpackages wants to interpret Requires: lines
+# do not use %_libdir
+Requires:       %(rpm -q --queryformat "%%{NAME}" -f $(readlink -f /usr/lib*/libmpv.so))
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,11 +54,14 @@ just like the lua interface does.
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest -k 'test_array_property_bounce'
+
 %files %{python_files}
 %license LICENSE.GPL LICENSE.LGPL
 %doc README.rst
 %{python_sitelib}/mpv.py
-%{python_sitelib}/__pycache__/mpv.cpython*
+%{python_sitelib}/__pycache__/mpv.cpython*pyc
 %{python_sitelib}/python_mpv-%{version}.dist-info
 
 %changelog

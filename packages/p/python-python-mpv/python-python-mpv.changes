@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 14 03:26:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not use %_libdir, it doesn't expand correctly on 64 bit arches.
+- Run a portion of the testsuite.
+
+-------------------------------------------------------------------
 Mon Jun 24 15:32:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.7:

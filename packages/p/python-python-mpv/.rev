@@ -262,4 +262,12 @@
   * Readme: Add PyGtk embedding example</comment>
     <requestid>1183035</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>6b479f55bb3c79de7bb24cc1ef4361ee</srcmd5>
+    <version>1.0.7</version>
+    <time>1740170196</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1247514</requestid>
+  </revision>
 </revisionlist>
