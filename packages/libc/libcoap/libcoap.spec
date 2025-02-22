@@ -26,7 +26,7 @@
 Name:           libcoap
 Version:        4.3.5
 Release:        0
-Summary:        C-Implementation of CoAP
+Summary:        C implementation of Constrained Application Protocol (CoAP)
 License:        BSD-2-Clause
 URL:            https://libcoap.net/
 Source:         https://github.com/obgm/libcoap/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -52,15 +52,15 @@ BuildRequires:  graphviz >= 2.26.0
 %endif
 
 %description
-libcoap implements a lightweight application-protocol for devices that are
+libcoap implements a lightweight application protocol for devices that are
 constrained their resources such as computing power, RF range, memory,
 bandwith, or network packet sizes.
 
 %package -n %{name}%{sover}-%{sover}
-Summary:        C-Implementation of CoAP
+Summary:        C implementation of Constrained Application Protocol (CoAP)
 
 %description -n %{name}%{sover}-%{sover}
-libcoap implements a lightweight application-protocol for devices that are
+libcoap implements a lightweight application protocol for devices that are
 constrained their resources such as computing power, RF range, memory,
 bandwith, or network packet sizes.
 
@@ -71,17 +71,17 @@ Summary:        Development files for %{name}
 Requires:       %{name}%{sover}-%{sover} = %{version}
 
 %description devel
-libcoap implements a lightweight application-protocol for devices that are
+libcoap implements a lightweight application protocol for devices that are
 constrained their resources such as computing power, RF range, memory,
 bandwith, or network packet sizes.
 
 This package contains files required for building with %{name}.
 
 %package utils
-Summary:        C-Implementation of CoAP
+Summary:        Utilities for Constrained Application Protocol (CoAP)
 
 %description utils
-libcoap implements a lightweight application-protocol for devices that are
+libcoap implements a lightweight application protocol for devices that are
 constrained their resources such as computing power, RF range, memory,
 bandwith, or network packet sizes.
 
