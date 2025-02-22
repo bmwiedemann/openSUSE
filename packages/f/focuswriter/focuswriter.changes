@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 21 15:41:48 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.10:
+  General:
+  * Added support for DICPATH to find dictionaries
+  * Improved code for building translations
+  * Updated Unicode symbols database
+  * Updated Windows dictionaries
+  Translation Updates:
+  * Slovenian
+
+-------------------------------------------------------------------
 Tue Oct 15 09:11:36 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.9:
