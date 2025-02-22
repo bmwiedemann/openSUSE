@@ -88,4 +88,12 @@
   * 150 glyph corrections and improvements</comment>
     <requestid>1216770</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>06f9e9bcc30ef3bce92e25b4c12c5d0a</srcmd5>
+    <version>16.0.3</version>
+    <time>1740247516</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1247779</requestid>
+  </revision>
 </revisionlist>

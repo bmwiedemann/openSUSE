@@ -1,19 +1,26 @@
 -------------------------------------------------------------------
-Mon Oct 21 15:22:40 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+Sat Feb 15 03:27:37 UTC 2025 - litma leung <pi_cla@disroot.org>
+
+- Update to 16.0.3
+  * 42 additional CJK unified ideographs
+  * 47 glyph corrections and improvements
+
+-------------------------------------------------------------------
+Mon Oct 21 15:22:40 UTC 2024 - litma Leung <pirateclip@protonmail.com>
 
 - Update to 16.0.2
   * 1,265 additional CJK unified ideographs
   * 150 glyph corrections and improvements
 
 -------------------------------------------------------------------
-Sun Mar 24 18:13:17 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+Sun Mar 24 18:13:17 UTC 2024 - litma Leung <pirateclip@protonmail.com>
 
 - Update to 15.1.4
   * 463 additional CJK unified ideographs
   * 17 glyph corrections and improvements
 
 -------------------------------------------------------------------
-Sat Jan  6 00:37:43 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+Sat Jan  6 00:37:43 UTC 2024 - litma Leung <pirateclip@protonmail.com>
 
 - Update to 15.1.3
  * 1,176 additional CJK unified ideographs
@@ -23,13 +30,13 @@ Sat Jan  6 00:37:43 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
  * 56 glyph corrections and improvements
 
 -------------------------------------------------------------------
-Fri Nov 10 17:57:34 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+Fri Nov 10 17:57:34 UTC 2023 - litma Leung <pirateclip@protonmail.com>
 
 - Update to 15.1.2
  * 49 glyph corrections and improvements
 
 -------------------------------------------------------------------
-Wed Sep 13 04:50:14 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+Wed Sep 13 04:50:14 UTC 2023 - litma Leung <pirateclip@protonmail.com>
 
 - Update to 15.1.1
  * 128 PUA characters added from BabelStone Han PUA version 1.357
@@ -38,7 +45,7 @@ Wed Sep 13 04:50:14 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
  * 786 Latin letters and non-Han symbols removed (due to the 65,535 glyph limit on TrueType fonts)
  * Glyph corrections and glyph improvements for 337 CJK unified ideographs
 -------------------------------------------------------------------
-Fri Jan  6 08:49:10 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+Fri Jan  6 08:49:10 UTC 2023 - litma Leung <pirateclip@protonmail.com>
 
 - update: 15.0.4 -> 15.0.5
  * Change license ID from SUSE-Arphic to Arphic-1999
@@ -47,7 +54,7 @@ Fri Jan  6 08:49:10 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
  * 10 duplicate PUA characters removed and about 60 PUA characters removed (now supported as IVS sequences)
 
 -------------------------------------------------------------------
-Sun Nov 13 01:35:19 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+Sun Nov 13 01:35:19 UTC 2022 - litma Leung <pirateclip@protonmail.com>
 
 update: 8.0.2 -> 15.0.4
 - Added lots of new glyphs
