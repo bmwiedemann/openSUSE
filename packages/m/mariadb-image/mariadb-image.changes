@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 21 10:12:28 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- Bump mariadb version to 11.7
+
+-------------------------------------------------------------------
 Fri Jan 31 13:55:15 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - set exclusivearch to exclude 32bit platforms from building
