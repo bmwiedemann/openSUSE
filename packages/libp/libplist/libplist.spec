@@ -1,7 +1,7 @@
 #
 # spec file for package libplist
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define cname libplist-2_0-4
 %define cppname libplist++-2_0-4
 Name:           libplist
-Version:        2.3.0
+Version:        2.6.0
 Release:        0
 Summary:        Library for handling Apple Binary and XML Property Lists
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -32,8 +32,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Cython >= 0.17
-BuildRequires:  python3-setuptools
+BuildRequires:  python311-Cython >= 0.17
+BuildRequires:  python311-setuptools
 BuildRequires:  pkgconfig(python3)
 
 %description
@@ -102,7 +102,7 @@ This package contains the python bindings.
 
 %build
 autoreconf -fvi
-%configure --disable-static PACKAGE_VERSION=%{version}
+%configure --disable-static PACKAGE_VERSION=%{version} PYTHON=/usr/bin/python3
 %make_build
 
 %check
