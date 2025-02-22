@@ -17,4 +17,15 @@ Provides the miriway wayland compositor</comment>
     <comment></comment>
     <requestid>1247725</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>68531fcd073d78c6cb7aaabfd794a401</srcmd5>
+    <version>24.11.1</version>
+    <time>1740247558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version 24.11.1:
+  - Fix class invariants for
+    WorkspaceManager::activate_workspace_containing()
+    (gh#Miriway/Miriway#142) (forwarded request 1247834 from sfalken)</comment>
+    <requestid>1247836</requestid>
+  </revision>
 </revisionlist>

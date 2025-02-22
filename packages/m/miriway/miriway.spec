@@ -1,6 +1,7 @@
 #
 # spec file for package miriway
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Neal Gompa
 # Copyright (c) 2024 Shawn W Dunn
 #
@@ -15,13 +16,15 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %define _name Miriway
 
 Name:           miriway
-Version:        24.11
+Version:        24.11.1
 Release:        0
 Summary:        Simple Wayland compositor built on Mir
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            https://github.com/Miriway/Miriway
 Source:         https://github.com/%{_name}/%{_name}/archive/v%{version}/%{_name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE 0001-Fix-xkbcommon-includes.patch
@@ -103,6 +106,4 @@ mv %{buildroot}/%{_sysconfdir}/sddm.conf.d %{buildroot}%{_prefix}/lib/sddm
 %dir %{_prefix}/lib/sddm/sddm.conf.d
 %{_prefix}/lib/sddm/sddm.conf.d/%{name}.conf
 
-
 %changelog
-

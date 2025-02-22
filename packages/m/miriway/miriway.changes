@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:38:31 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update version 24.11.1:
+  - Fix class invariants for
+    WorkspaceManager::activate_workspace_containing()
+    (gh#Miriway/Miriway#142) 
+
+-------------------------------------------------------------------
 Thu Feb 20 17:52:54 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add:
