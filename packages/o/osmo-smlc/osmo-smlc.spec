@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-smlc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osmo-smlc
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Osmocom Serving Mobile Location Centre
 License:        AGPL-3.0-or-later
@@ -30,8 +30,7 @@ BuildRequires:  automake
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
-BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.9.0
-BuildRequires:  pkgconfig(libosmo-sccp) >= 1.9.0
+BuildRequires:  pkgconfig(libosmo-sigtran) >= 2.0.0
 BuildRequires:  pkgconfig(libosmocore) >= 1.10.0
 BuildRequires:  pkgconfig(libosmoctrl) >= 1.10.0
 BuildRequires:  pkgconfig(libosmogsm) >= 1.10.0
