@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Fri Feb 21 19:05:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- resurrect package, update to 0.9.0:
+  * Maintenance update
+  * Align with Hamlib 4.x
+  * Various cosmetic fixes
+- drop glib-deprecated.patch, add rename-connect.patch
+- and large spec rewrite
+
+-------------------------------------------------------------------
+Mon Sep 23 18:25:22 UTC 2013 - dl8fcl@darc.de
+
+- glib-deprecated.patch for new glib versions
+
+-------------------------------------------------------------------
+Fri Sep  2 06:39:49 UTC 2011 - dl8fcl@darc.de
+
+- update to version 0.8.0
+-------------------------------------------------------------------
+* Sat Oct 04 2008 - dl8fcl@darc.de
+- updated for openSUSE_Factory
+* Sat Aug 18 2007 - dg7gt@online.de
+- Makefile fixes for openSUSE 10.3
+* Thu Feb 22 2007 - dl9pf@gmx.de
+- import into buildservice
+* Sat Dec 16 2006 - dg7gt@online.de
+- Updated to the brand new version 0.7.2 for openSUSE 10.2 :-)
+* Thu Jun 20 2006 - dg7gt@online.de
+- initial spec file for SUSE 10.1 
+
