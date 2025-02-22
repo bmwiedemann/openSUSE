@@ -62,7 +62,7 @@ Requires:       %{name}-unixd-clients
 %if 0%{?is_opensuse}
 ExclusiveArch:  %{rust_tier1_arches}
 %else
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 %endif
 
 %description
