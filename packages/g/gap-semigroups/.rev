@@ -64,4 +64,12 @@
     <comment>- Update to release 5.4.0</comment>
     <requestid>1211089</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3b68ac6b0646b2e9d82ef96c20f6c7b</srcmd5>
+    <version>5.5.0</version>
+    <time>1740247505</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.5.0</comment>
+    <requestid>1247770</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gap-semigroups
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-semigroups
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        GAP: Computing with Semigroups of Transformations and Partial Permutations
 License:        GPL-2.0-or-later
@@ -29,13 +29,13 @@ Patch1:         no-avx.patch
 BuildRequires:  automake
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  gap-devel >= 4.12
+BuildRequires:  gap-devel >= 4.12.1
 BuildRequires:  gap-rpm-devel
 BuildRequires:  gmp-devel
 BuildRequires:  libtool
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libsemigroups)
-Requires:       gap-core >= 4.12
+Requires:       gap-core >= 4.12.1
 Requires:       gap-datastructures >= 0.2.5
 Requires:       gap-digraphs >= 1.6.2
 Requires:       gap-genss >= 1.6.5
