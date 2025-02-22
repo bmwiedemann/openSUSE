@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 21 19:43:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.10 (0.73.9 was broken):
+  * fix #3824 add `if` parameter to `hook` block. (#3913)
+  * feat: Adding auto-generated docs scaffold (#3876)
+  * Remove unnecessary slash (#3912)
+  * feat: Handling of incorrectly used flag (#3901)
+  * build(deps-dev): bump nokogiri from 1.16.5 to 1.18.3 in /docs
+    (#3905)
+  * Updated stack output help flags (#3899)
+
+-------------------------------------------------------------------
 Wed Feb 19 05:55:32 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.73.8:
