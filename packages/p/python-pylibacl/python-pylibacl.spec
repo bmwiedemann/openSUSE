@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylibacl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013-2020 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pylibacl
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        POSIX1e ACLs for python
 License:        LGPL-2.1-or-later
