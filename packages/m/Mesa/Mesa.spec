@@ -43,7 +43,7 @@
 %define glamor 1
 %define _name_archive mesa
 %ifnarch s390x
-%define _version 24.3.4
+%define _version 25.0.0
 %else
 %define _version 24.1.7
 %endif
@@ -150,7 +150,7 @@
 
 Name:           Mesa%{psuffix}
 %ifnarch s390x
-Version:        24.3.4
+Version:        25.0.0
 %else
 Version:        24.1.7
 %endif
@@ -181,8 +181,8 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
-Source20:       https://archive.mesa3d.org/%{_name_archive}-24.3.4.tar.xz
-Source21:       https://archive.mesa3d.org/%{_name_archive}-24.3.4.tar.xz.sig
+Source20:       https://archive.mesa3d.org/%{_name_archive}-25.0.0.tar.xz
+Source21:       https://archive.mesa3d.org/%{_name_archive}-25.0.0.tar.xz.sig
 Patch2:         n_add-Mesa-headers-again.patch
 Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
@@ -203,7 +203,8 @@ Patch500:       u_dep_xcb.patch
 Patch500:       u_dep_xcb-s390x.patch
 %endif
 %ifnarch s390x
-Patch600:       U_radeonsi-disallow-compute-queues-on-Raven-Raven2-due.patch
+Patch700:       u_meson-lower-python-version-requirement.patch
+Patch701:       u_intel-drop-annotations-from-spv2hex.patch
 %endif
 %ifnarch s390x
 Patch1222040:   u_mesa-CVE-2023-45913.patch
@@ -383,7 +384,9 @@ Requires:       Mesa-libEGL-devel = %{version}
 Requires:       Mesa-libGL-devel = %{version}
 Requires:       Mesa-libGLESv1_CM-devel = %{version}
 Requires:       Mesa-libGLESv2-devel = %{version}
+%ifarch s390x
 Requires:       Mesa-libglapi-devel = %{version}
+%endif
 Requires:       libOSMesa-devel = %{version}
 Requires:       libgbm-devel = %{version}
 Provides:       Mesa-devel-static = %{version}
@@ -490,7 +493,7 @@ This package includes headers and static libraries for compiling
 programs with Mesa.
 
 %package libGLESv1_CM-devel
-Summary:        Development files for the OpenGL ES 1.x API
+Summary:        Development files for the OpenGL ES 1.x Common Profile API
 Group:          Development/Libraries/C and C++
 Requires:       Mesa-KHR-devel = %{version}
 Requires:       libglvnd-devel >= 0.1.0
@@ -505,7 +508,7 @@ extensions for the special needs of embedded systems.
 OpenGL|ES 1.x provides an API for fixed-function hardware.
 
 This package provides a development environment for building programs
-using the OpenGL|ES 1.x APIs.
+using the OpenGL|ES 1.x Common Profile APIs.
 
 %package libGLESv2-devel
 Summary:        Development files for the OpenGL ES 2.x API
@@ -553,16 +556,6 @@ OSmesa is a Mesa extension that allows programs to render to an
 off-screen buffer using the OpenGL API without having to create a
 rendering context on an X Server. It uses a pure software renderer.
 
-%package -n libOSMesa-devel
-Summary:        Development files for the Mesa Offscreen Rendering extension
-Group:          Development/Libraries/C and C++
-Requires:       libOSMesa8 = %{version}
-
-%description -n libOSMesa-devel
-Development files for the OSmesa Mesa extension that allows programs to render to an
-off-screen buffer using the OpenGL API without having to create a
-rendering context on an X Server. It uses a pure software renderer.
-
 %package libglapi0
 Summary:        Free implementation of the GL API
 Group:          System/Libraries
@@ -582,6 +575,16 @@ Development files for the Mesa GL API module which is responsible for
 dispatching all the gl* functions. It is intended to be mainly used by
 the Mesa-libGLES* packages.
 
+%package -n libOSMesa-devel
+Summary:        Development files for the Mesa Offscreen Rendering extension
+Group:          Development/Libraries/C and C++
+Requires:       libOSMesa8 = %{version}
+
+%description -n libOSMesa-devel
+Development files for the OSmesa Mesa extension that allows programs to render to an
+off-screen buffer using the OpenGL API without having to create a
+rendering context on an X Server. It uses a pure software renderer.
+
 %package -n Mesa-dri
 Summary:        DRI plug-ins for 3D acceleration
 Group:          System/Libraries
@@ -591,6 +594,8 @@ Supplements:    Mesa
 # merged into libgallium in 24.2.3
 Provides:       libvdpau_gallium = %{version}-%{release}
 Obsoletes:      libvdpau_gallium < %{version}-%{release}
+# merged into libgallium in 25.0.0
+Obsoletes:      Mesa-libglapi0 < 25.0.0
 
 %description -n Mesa-dri
 This package contains Mesa DRI drivers for 3D acceleration.
@@ -886,7 +891,8 @@ cp %{SOURCE6} subprojects/packagecache/
 %patch -P 400 -p1
 %patch -P 500 -p1
 %ifnarch s390x
-%patch -P 600 -p1
+%patch -P 700 -p1
+%patch -P 701 -p1
 %endif
 %patch -P 1222040 -p1
 %patch -P 1222041 -p1
@@ -1023,77 +1029,78 @@ export MESON_PACKAGE_CACHE_DIR="%{_sourcedir}"
 find %{buildroot} -type f -name "*.la" -delete -print
 
 # libwayland-egl is provided by wayland itself
-rm -f %{buildroot}/%{_libdir}/libwayland-egl.so*
-rm -f %{buildroot}/%{_libdir}/pkgconfig/wayland-egl.pc
+rm -fv %{buildroot}/%{_libdir}/libwayland-egl.so* \
+	%{buildroot}/%{_libdir}/pkgconfig/wayland-egl.pc
 
 %if "%{flavor}" == "drivers"
 # Delete things that we do not package in the Mesa-drivers variant, but can
 # not disable from buildling and installing.
 
-rm -f %{buildroot}/%{_libdir}/libEGL.so*
+rm -fv %{buildroot}/%{_libdir}/libEGL.so*
 # in Mesa-libEGL-devel
-rm %{buildroot}/%{_includedir}/EGL/egl.h
-rm %{buildroot}/%{_includedir}/EGL/eglext.h
-rm %{buildroot}/%{_includedir}/EGL/eglext_angle.h
-rm %{buildroot}/%{_includedir}/EGL/eglmesaext.h
-rm %{buildroot}/%{_includedir}/EGL/eglplatform.h
+rm -v %{buildroot}/%{_includedir}/EGL/egl.h \
+	%{buildroot}/%{_includedir}/EGL/eglext.h \
+	%{buildroot}/%{_includedir}/EGL/eglext_angle.h \
+	%{buildroot}/%{_includedir}/EGL/eglmesaext.h \
+	%{buildroot}/%{_includedir}/EGL/eglplatform.h
 
 # in Mesa-libGL-devel
-rm -rf %{buildroot}/%{_includedir}/GL
+rm -Rfv %{buildroot}/%{_includedir}/GL
 
 #in Mesa-libGLESv1_CM-devel
-rm -rf %{buildroot}/%{_includedir}/GLES
+rm -Rfv %{buildroot}/%{_includedir}/GLES
 
 #in Mesa-libGLESv2-devel
-rm -rf %{buildroot}/%{_includedir}/GLES2
+rm -Rfv %{buildroot}/%{_includedir}/GLES2
 
 #in Mesa-libGLESv3-devel
-rm -rf %{buildroot}/%{_includedir}/GLES3
+rm -Rfv %{buildroot}/%{_includedir}/GLES3
 
 #in Mesa-libEGL1
-rm -f %{buildroot}/%{_libdir}/libEGL_mesa.so*
-rm -rf %{buildroot}/%{_datadir}/glvnd
+rm -Rfv %{buildroot}/%{_libdir}/libEGL_mesa.so* \
+	%{buildroot}/%{_datadir}/glvnd
 
 # in Mesa-libglapi0
-rm %{buildroot}/%{_libdir}/libglapi.so*
+%ifarch s390x
+rm -v %{buildroot}/%{_libdir}/libglapi.so*
+%endif
 
 # in libwayland-egl1
-rm -f %{buildroot}/%{_libdir}/libwayland-egl.so*
-rm -f %{buildroot}/%{_libdir}/pkgconfig/wayland-egl.pc
+rm -fv %{buildroot}/%{_libdir}/libwayland-egl.so* \
+	%{buildroot}/%{_libdir}/pkgconfig/wayland-egl.pc
 
 # in Mesa-dri-devel
-rm %{buildroot}/%{_libdir}/pkgconfig/dri.pc
+rm -v %{buildroot}/%{_libdir}/pkgconfig/dri.pc
 
 # in KHR-devel
-rm -rf %{buildroot}/%{_includedir}/KHR
+rm -Rfv %{buildroot}/%{_includedir}/KHR
 
 # in libgbm-devel
-rm -f %{buildroot}%{_includedir}/gbm.h
-rm -f %{buildroot}%{_libdir}/libgbm.so*
-rm -f %{buildroot}%{_libdir}/pkgconfig/gbm.pc
+rm -fv %{buildroot}%{_includedir}/gbm.h \
+	%{buildroot}%{_libdir}/libgbm.so* \
+	%{buildroot}%{_libdir}/pkgconfig/gbm.pc
 
 %else
 # package in Mesa-dri
-rm -rf %{buildroot}/%{_datadir}/drirc.d
+rm -Rfv %{buildroot}/%{_datadir}/drirc.d
 
-rm -f %{buildroot}/%{_libdir}/dri/*_dri.so
-rm -f %{buildroot}%{_libdir}/libgallium-*.so
-rm -rf %{buildroot}%{_libdir}/gbm/
-
-rm -f %{buildroot}%{_libdir}/libGLES*
+rm -Rfv %{buildroot}/%{_libdir}/dri/*_dri.so \
+	%{buildroot}%{_libdir}/libgallium-*.so \
+	%{buildroot}%{_libdir}/gbm/ \
+	%{buildroot}%{_libdir}/libGLES*
 # glvnd needs a default provider for indirect rendering where it cannot
 # determine the vendor
-ln -s %{_libdir}/libGLX_mesa.so.0 %{buildroot}%{_libdir}/libGLX_indirect.so.0
+ln -sv %{_libdir}/libGLX_mesa.so.0 %{buildroot}%{_libdir}/libGLX_indirect.so.0
 
 # pickup pkgconfig files from libglvnd build
-rm -f %{buildroot}/%{_libdir}/pkgconfig/{gl,egl,glesv1_cm,glesv2}.pc
-install -m 0644 /usr/share/doc/packages/libglvnd/pkgconfig/{gl,egl,glesv1_cm,glesv2}.pc \
+rm -fv %{buildroot}/%{_libdir}/pkgconfig/{gl,egl,glesv1_cm,glesv2}.pc
+install -vm 0644 /usr/share/doc/packages/libglvnd/pkgconfig/{gl,egl,glesv1_cm,glesv2}.pc \
    %{buildroot}/%{_libdir}/pkgconfig/
 
 for dir in ../xc/doc/man/{GL/gl,GL/glx}; do
  pushd $dir
    xmkmf -a
-   make %{?_smp_mflags} V=1
+   %make_build V=1
    make install.man DESTDIR=%{buildroot} MANPATH=%{_mandir} LIBMANSUFFIX=3gl
  popd
 done
@@ -1106,37 +1113,14 @@ done
 echo "The \"Mesa\" package does not have the ability to render, but is supplemented by \"Mesa-dri\" and \"Mesa-gallium\" which contain the drivers for rendering" > docs/README.package.%{_arch}
 %endif
 
-%post   -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
-%post   libEGL1 -p /sbin/ldconfig
-
-%postun libEGL1 -p /sbin/ldconfig
-
-%post   libGL1 -p /sbin/ldconfig
-
-%postun libGL1 -p /sbin/ldconfig
-
-%post   -n libOSMesa8 -p /sbin/ldconfig
-
-%postun -n libOSMesa8 -p /sbin/ldconfig
-
-%post   -n libgbm1 -p /sbin/ldconfig
-
-%postun -n libgbm1 -p /sbin/ldconfig
-
-%post   -n libxatracker2 -p /sbin/ldconfig
-
-%postun -n libxatracker2 -p /sbin/ldconfig
-
-%post   libglapi0 -p /sbin/ldconfig
-
-%postun libglapi0 -p /sbin/ldconfig
-
-%post -n Mesa-libd3d -p /sbin/ldconfig
-
-%postun -n Mesa-libd3d -p /sbin/ldconfig
+%ldconfig_scriptlets
+%ldconfig_scriptlets libEGL1
+%ldconfig_scriptlets libGL1
+%ldconfig_scriptlets -n libOSMesa8
+%ldconfig_scriptlets -n libgbm1
+%ldconfig_scriptlets -n libxatracker2
+%ldconfig_scriptlets libglapi0
+%ldconfig_scriptlets -n Mesa-libd3d
 
 %if "%{flavor}" != "drivers"
 %files
@@ -1247,12 +1231,14 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 %endif
 
+%ifarch s390x
 %if "%{flavor}" != "drivers"
 %files libglapi0
 %{_libdir}/libglapi.so.0*
 
 %files libglapi-devel
 %{_libdir}/libglapi.so
+%endif
 %endif
 
 %if "%{flavor}" == "drivers"

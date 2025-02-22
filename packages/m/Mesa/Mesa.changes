@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 21 14:04:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add explanation for the "CM" in "GLESv1_CM".
+- Drop idempotent %if..%endif guards that do nothing.
+- Combine some rm calls in the build recipe.
+- Add -v argument to all rm calls to see the result of the
+  deletion in the build log.
+
+-------------------------------------------------------------------
+Thu Feb 20 12:58:48 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 25.0.0
+   --> https://docs.mesa3d.org/relnotes/25.0.0 
+- adjusted u_dep_xcb.patch
+- supersedes U_radeonsi-disallow-compute-queues-on-Raven-Raven2-due.patch
+- libglapi merged into libgallium
+- add patches to fix compilation with Python 3.6 (SLE15 SP7, SLE16, Leap 15.6)
+  * u_intel-drop-annotations-from-spv2hex.patch
+  * u_meson-lower-python-version-requirement.patch
+  --> credits go to "Mikhail Paulyshka" <me@mixaill.net>
+
+-------------------------------------------------------------------
 Fri Jan 31 23:39:37 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_radeonsi-disallow-compute-queues-on-Raven-Raven2-due.patch 
