@@ -1,7 +1,7 @@
 #
 # spec file for package go
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           go
-Version:        1.23
+Version:        1.24
 # Version must always be a valid golang(API) version
 %define api_version %{version}
 Release:        0
