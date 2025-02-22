@@ -437,4 +437,17 @@
     <comment></comment>
     <requestid>1164315</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6822ce4a6d9be9c2d61e3b91edf2033b</srcmd5>
+    <version>1.5.7</version>
+    <time>1740247454</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.5.7:
+  * zstd now employs multiple threads by default
+  * Fix a rare bug in 32-bit mode
+  * Enhanced Compression Speed for Small Data Blocks
+  * Substantial --patch-from performance improvements
+- Drop pzstd.1.patch - not upstream, but also not needed</comment>
+    <requestid>1247255</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@
 %define with_gzip 1
 %endif
 Name:           zstd
-Version:        1.5.6
+Version:        1.5.7
 Release:        0
 Summary:        Zstandard compression tools
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -33,7 +33,6 @@ Source0:        https://github.com/facebook/zstd/releases/download/v%{version}/%
 Source1:        https://github.com/facebook/zstd/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        zstd.keyring
 Source99:       baselibs.conf
-Patch1:         pzstd.1.patch
 BuildRequires:  gcc
 # C++ is needed for pzstd only
 BuildRequires:  gcc-c++
