@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 21 19:34:57 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.10:
+  * fix cost limit option
+
+-------------------------------------------------------------------
+Fri Feb 21 19:33:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.9:
+  * feat: add --cost-limit flag (#86)
+
+-------------------------------------------------------------------
 Thu Feb 20 08:49:13 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.8:

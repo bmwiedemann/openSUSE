@@ -17,7 +17,7 @@
 
 
 Name:           marvin
-Version:        0.2.8
+Version:        0.2.10
 Release:        0
 Summary:        Scans a k8s cluster for misconfigurations and vulnerabilities
 License:        Apache-2.0
