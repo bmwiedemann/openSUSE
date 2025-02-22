@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 21 18:42:55 UTC 2025 - felix.niederwanger@suse.com
+
+- Update to version 3.88.12:
+  * fix(deps): update module github.com/xo/dburl to v0.23.3 (#3898)
+  * fix(deps): update module github.com/google/go-containerregistry to v0.20.3 (#3897)
+  * Remove duplicate `github.com/jedib0t/go-pretty` dependency (#3924)
+
+-------------------------------------------------------------------
 Thu Feb 20 07:53:55 UTC 2025 - felix.niederwanger@suse.de
 
 - Update to version 3.88.11:

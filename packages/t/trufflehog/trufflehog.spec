@@ -17,7 +17,7 @@
 
 
 Name:           trufflehog
-Version:        3.88.11
+Version:        3.88.12
 Release:        0
 Summary:        CLI tool to find exposed secrets in source and archives
 License:        AGPL-3.0-or-later

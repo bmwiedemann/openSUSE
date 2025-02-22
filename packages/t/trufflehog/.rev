@@ -1917,4 +1917,15 @@
   * updated go-re2 to v1.9.0 to fix panics for go1.24 (#3923) (forwarded request 1247282 from ph03nix)</comment>
     <requestid>1247428</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>35b01e9cb91d4f4db18e057dfc57087a</srcmd5>
+    <version>3.88.12</version>
+    <time>1740247481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.88.12:
+  * fix(deps): update module github.com/xo/dburl to v0.23.3 (#3898)
+  * fix(deps): update module github.com/google/go-containerregistry to v0.20.3 (#3897)
+  * Remove duplicate `github.com/jedib0t/go-pretty` dependency (#3924) (forwarded request 1247726 from ph03nix)</comment>
+    <requestid>1247732</requestid>
+  </revision>
 </revisionlist>
