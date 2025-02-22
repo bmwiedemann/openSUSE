@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 22 13:16:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.1
+  * fixed horizontal scroll with track pad ignored.
+  * reduce initial file load time
+  * ignore encoding errors during merge this will become a warning.
+  * adjust flatpak default flags.
+  * drop unused Qt6Core5Compat depenancy check.
+
+-------------------------------------------------------------------
 Sun Dec  8 11:05:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.12.0
