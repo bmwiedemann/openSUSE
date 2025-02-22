@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Feb 22 01:08:42 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.2.1:
+  * fix(publish): support jsx/tsx
+  * chore: fix more flakey otel tests
+  * fix(outdated): hint to use `--latest` if new versions are available in `outdated --update`
+  * fix(coverage): exclude scripts with invalid URLs from raw coverage output
+  * docs: add examples for SubtleCrypto
+  * docs(canvas): Add examples to createImageBitmap jsdocs
+  * chore: fix otel test flakiness
+  * docs(console): update console documentation 
+  * docs(web): update docs for `globalThis.caches`
+  * fix(check): remove instability in loading lib files
+  * fix(ext/node): rewrite SQLite named parameter handing
+  * fix(ext/node): Fix handling of sqlite large integers
+  * fix: don't panic when running with // as a filepath
+  * fix(check/lsp): fall back to `@types/*` packages if npm package doesn't have types
+  * fix: better jsx workspace config resolution
+  * refactor(publish): create ModuleContentProvider
+  * fix: move extension file declarations to cli/tsc/dts
+  * fix(ext/cache): add missing Cargo feature
+
+-------------------------------------------------------------------
 Thu Feb 20 06:17:53 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Deno now requires rusty_v8 version 134.4.0

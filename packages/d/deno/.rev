@@ -4046,4 +4046,31 @@
 </comment>
     <requestid>1247550</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>e04576dd3354a540064bf3e532a36517</srcmd5>
+    <version>2.2.1</version>
+    <time>1740247522</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.1:
+  * fix(publish): support jsx/tsx
+  * chore: fix more flakey otel tests
+  * fix(outdated): hint to use `--latest` if new versions are available in `outdated --update`
+  * fix(coverage): exclude scripts with invalid URLs from raw coverage output
+  * docs: add examples for SubtleCrypto
+  * docs(canvas): Add examples to createImageBitmap jsdocs
+  * chore: fix otel test flakiness
+  * docs(console): update console documentation 
+  * docs(web): update docs for `globalThis.caches`
+  * fix(check): remove instability in loading lib files
+  * fix(ext/node): rewrite SQLite named parameter handing
+  * fix(ext/node): Fix handling of sqlite large integers
+  * fix: don't panic when running with // as a filepath
+  * fix(check/lsp): fall back to `@types/*` packages if npm package doesn't have types
+  * fix: better jsx workspace config resolution
+  * refactor(publish): create ModuleContentProvider
+  * fix: move extension file declarations to cli/tsc/dts
+  * fix(ext/cache): add missing Cargo feature
+</comment>
+    <requestid>1247796</requestid>
+  </revision>
 </revisionlist>
