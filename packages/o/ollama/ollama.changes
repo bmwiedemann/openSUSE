@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Feb 15 02:48:59 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use Ninja instead of Make and update the build script to
+  match the new version 
+
+- Update to version 0.5.11:
+  * No notable changes for Linux
+
+- Update to version 0.5.10:
+  * Fixed issue on multi-GPU Windows and Linux machines where
+    memory estimations would be incorrect
+
+- Update to version 0.5.9:
+  * New model: DeepScaleR
+  * New model: OpenThinker
+
+- Update to version 0.5.8:
+  * Ollama will now use AVX-512 instructions where available for
+    additional CPU acceleration
+  * Fixed indexing error that would occur when downloading a model
+    with ollama run or ollama pull
+  * Fixes cases where download progress would reverse
+
+-------------------------------------------------------------------
 Mon Jan 27 14:21:42 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - Make ollama configurable by the admin via /etc/sysconfig/ollama

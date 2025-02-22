@@ -17,7 +17,7 @@
 
 
 Name:           ollama
-Version:        0.5.7
+Version:        0.5.11
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -29,9 +29,11 @@ Source3:        %{name}-user.conf
 Source4:        sysconfig.ollama
 BuildRequires:  cmake >= 3.24
 BuildRequires:  git
+BuildRequires:  ninja
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.22
+Requires(pre):  %fillup_prereq
 # 32bit seems not to be supported anymore
 ExcludeArch:    %{ix86} %{arm}
 %sysusers_requires
@@ -41,7 +43,6 @@ BuildRequires:  libstdc++6-gcc12
 %else
 BuildRequires:  gcc-c++ >= 11.4.0
 %endif
-Requires(pre):  %{fillup_prereq}
 
 %description
 Ollama is a tool for running AI models on one's own hardware.
@@ -55,6 +56,8 @@ can be imported.
 %autosetup -a1 -p1
 
 %build
+%define __builder ninja
+
 %sysusers_generate_pre %{SOURCE3} %{name} %{name}-user.conf
 
 %ifnarch ppc64
@@ -69,14 +72,19 @@ export GOFLAGS="-mod=vendor"
 
 export GOFLAGS="${GOFLAGS} -v"
 
-%make_build
+%cmake -UOLLAMA_INSTALL_DIR -DOLLAMA_INSTALL_DIR=%{_libdir}/ollama
+%cmake_build
+
+cd ..
+go build -mod=vendor -buildmode=pie -o %{name} .
 
 %install
+%cmake_install
 install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
 
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}-user.conf
-install -D -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%name
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -d %{buildroot}%{_localstatedir}/lib/%{name}
 
 mkdir -p "%{buildroot}/%{_docdir}/%{name}"
@@ -111,7 +119,8 @@ go test -v ./...
 %{_bindir}/%{name}
 %{_unitdir}/%{name}.service
 %{_sysusersdir}/%{name}-user.conf
-%{_fillupdir}/sysconfig.%name
+%{_prefix}/lib/ollama
+%{_fillupdir}/sysconfig.%{name}
 %attr(-, ollama, ollama) %{_localstatedir}/lib/%{name}
 
 %changelog
