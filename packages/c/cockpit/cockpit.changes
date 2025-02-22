@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 21 08:03:00 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Always apply 0007-Remove-DynamicUser-setting-as-these-conflict-with-re.patch
+  for every build system. Fixes bsc#1237451
+
+-------------------------------------------------------------------
+Thu Feb 20 22:22:32 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Add functionality to cockpit-packagekit that allows selecting what updates
+  should be applied
+- Added packagekit-single-install.patch file that adds this functionality
+
+-------------------------------------------------------------------
 Fri Feb  7 09:24:33 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to 332
@@ -52,6 +65,7 @@ Mon Nov 25 06:18:44 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
   * 323:
       - login: Prevent multiple logins in a single browser session
       - Update documentation links
+
 -------------------------------------------------------------------
 Wed Oct  9 12:14:14 UTC 2024 - Alice Brooks <alice.brooks@suse.com>
 

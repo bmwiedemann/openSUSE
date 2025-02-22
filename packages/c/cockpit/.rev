@@ -599,4 +599,17 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
       - cockpit-pcp package is now obsolete</comment>
     <requestid>1246484</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>180b219c321aa0a2408cf65d54073f1f</srcmd5>
+    <version>332</version>
+    <time>1740247464</time>
+    <user>dimstar_suse</user>
+    <comment>- Always apply 0007-Remove-DynamicUser-setting-as-these-conflict-with-re.patch
+  for every build system. Fixes bsc#1237451
+
+- Add functionality to cockpit-packagekit that allows selecting what updates
+  should be applied
+- Added packagekit-single-install.patch file that adds this functionality</comment>
+    <requestid>1247655</requestid>
+  </revision>
 </revisionlist>

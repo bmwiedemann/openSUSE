@@ -76,6 +76,7 @@ Patch108:       0007-Remove-DynamicUser-setting-as-these-conflict-with-re.patch
 Patch103:       0004-leap-gnu18-removal.patch
 Patch104:       selinux_libdir.patch
 Patch105:       fix-libexecdir.patch
+Patch106:       packagekit-single-install.patch
 
 Patch201:       remove_rh_links.patch
 
@@ -212,7 +213,8 @@ BuildRequires:  python3-pytest-timeout
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
-
+%patch -P 106 -p1
+%patch -P 108 -p1
 
 # SLE Micro specific patches
 %if 0%{?is_smo}
@@ -228,7 +230,6 @@ BuildRequires:  python3-pytest-timeout
 %patch -P 103 -p1
 %patch -P 104 -p1
 %patch -P 105 -p1
-%patch -P 108 -p1
 %else
 %patch -P 107 -p1
 %endif

@@ -1,0 +1,372 @@
+From 291aba8127cb3e44e82b164e75d1063f3ae7fe9c Mon Sep 17 00:00:00 2001
+From: Miika Alikirri <miika.alikirri@suse.com>
+Date: Wed, 29 Jan 2025 14:04:39 +0200
+Subject: pkg/pacagekit: Update individual packages
+
+Ability to select individual packages allows more control for updates.
+
+The exact behavior is distrobution specific. For example, on tumbleweed
+packagekit backend will ignore the list of packages and run "zypper dup"
+instead.
+
+The selection of individual packages is implemented by using a context
+provider and a reducer to make the UI updates snappy. A more naive
+approach that requires rendering the whole list of packages will freeze
+up the UI for multiple seconds when there's hundreds of packages. And
+tens of seconds when there are thousands of packages.
+---
+ pkg/packagekit/updates.jsx  | 239 ++++++++++++++++++++++++++++++++----
+ pkg/packagekit/updates.scss |   6 +-
+ 2 files changed, 219 insertions(+), 26 deletions(-)
+
+diff --git a/pkg/packagekit/updates.jsx b/pkg/packagekit/updates.jsx
+index 1feb57a0f..4fb68847f 100644
+--- a/pkg/packagekit/updates.jsx
++++ b/pkg/packagekit/updates.jsx
+@@ -77,6 +77,7 @@ import * as python from "python.js";
+ import callTracerScript from './callTracer.py';
+ 
+ import "./updates.scss";
++import { Checkbox } from '@patternfly/react-core';
+ 
+ const _ = cockpit.gettext;
+ 
+@@ -90,6 +91,7 @@ const UPDATES = {
+     ALL: 0,
+     SECURITY: 1,
+     KPATCHES: 2,
++    SELECTED: 3,
+ };
+ 
+ function init() {
+@@ -114,6 +116,196 @@ function init() {
+     PK_STATUS_LOG_STRINGS[PK.Enum.STATUS_SIGCHECK] = _("Verified");
+ }
+ 
++/**
++ * @typedef SelecetedState
++ * @type {object}
++ * @property {boolean} allSelected - Are all items selected
++ * @property {Object.<string, boolean>} selected - (Un)selected items.
++ * If allSelected is set, this refers to unselecetd
++ */
++
++/**
++ * @typedef SelecetedAction
++ * @type {object}
++ * @property {"ADD" | "REMOVE" | "ALL" | "NONE"} type - Type of reducer action
++ * @property {string=} id - Added removed item, only used by "ADD" and "REMOVE"
++ */
++
++const SelectedContext = React.createContext({selected: {}, allSelected: true});
++
++const SelectedStore = props => {
++
++    /**
++     * @argument {SelecetedState} state
++     * @argument {SelecetedAction} action
++     */
++    const reducer = (state, action) => {
++        switch (action.type) {
++            case "ADD":
++                if (action.id) {
++                    if (state.allSelected)
++                        delete state.selected[action.id];
++                    else
++                        state.selected[action.id] = true;
++                }
++                break;
++            case "REMOVE":
++                if (action.id) {
++                    if (state.allSelected)
++                        state.selected[action.id] = true;
++                    else
++                        delete state.selected[action.id];
++                }
++                break;
++            case "ALL":
++                state.allSelected = true;
++                state.selected = {};
++                break;
++            case "NONE":
++                state.allSelected = false;
++                state.selected = {};
++                break;
++            default:
++                break;
++        }
++
++        return {...state};
++    }
++
++  const [state, dispatch] = React.useReducer(reducer, {selected: {}, allSelected: true});
++
++  return <SelectedContext.Provider value={{ state, dispatch }} {...props} />;
++};
++
++/**
++ * @returns {{state: SelecetedState, dispatch: (arg: SelecetedAction) => void}}
++ */
++export const useSelected = () => React.useContext(SelectedContext);
++
++/**
++ * @param {{
++ *      onClick: (state: SelecetedState) => void
++ *      updates: string[],
++ *      num_updates: number
++ * }} props;
++ */
++const SelectedButton = (props) => {
++    const { state, dispatch } = useSelected();
++    const {
++        onClick,
++        updates,
++        num_updates,
++    } = props;
++
++
++    const buttonText = () => {
++        if (state.allSelected && Object.keys(state.selected).length == 0 ||
++            !state.allSelected && Object.keys(state.selected).length == num_updates)
++            return _("Install all updates");
++
++        const selectLen = calculateSelected(updates, state).length;
++        return `${_("Install selected updates")} (${selectLen})`;
++    }
++
++    return (
++        <Button isDisabled={calculateSelected(updates, state).length === 0} id="install-all" variant="primary" onClick={ () => {onClick(state); dispatch({type: "ALL"})} }>
++            {buttonText()}
++        </Button>
++    );
++}
++
++const SelectedAllButton = (props) => {
++    const { state, dispatch } = useSelected();
++
++    const dispatchSelect = () => {
++        if (state.allSelected) {
++            dispatch({type: "NONE"});
++        } else {
++            dispatch({type: "ALL"});
++        }
++    }
++
++    return (
++        <Button id="install-selected" variant="secondary" onClick={ () => dispatchSelect() }>
++            {state.allSelected ? _("Unselect all") : _("Select all") }
++        </Button>
++    );
++}
++
++const SelectedSwitch = (props) => {
++    const { state, dispatch } = useSelected();
++
++    const dispatchChecked = checked => {
++        if (checked) {
++            dispatch({type: "ADD", id: props.id});
++        } else {
++            dispatch({type: "REMOVE", id: props.id});
++        }
++    }
++
++    const isChecked = () => {
++        if (state.allSelected) {
++            return !!!state.selected[props.id];
++        } else {
++            return !!state.selected[props.id];
++        }
++    }
++
++    return (
++        <Checkbox aria-label="select-update-checkbox" isChecked={isChecked()} id={`selectable-${props.id}`} onChange={(_event, checked) => dispatchChecked(checked)} />
++    );
++}
++
++/**
++ * @param {{
++*      updates: string[],
++* }} props;
++*/
++const WebConsoleRestartWarn = (props) => {
++    const { state } = useSelected();
++
++    if (calculateSelected(props.updates, state).findIndex((value) => value.includes("cockpit-ws")) === -1)
++        return null;
++
++    return (
++        <Flex flex={{ default: 'inlineFlex' }} className="cockpit-update-warning">
++            <FlexItem>
++                <ExclamationTriangleIcon className="ct-icon-exclamation-triangle cockpit-update-warning-icon" />
++                <strong className="cockpit-update-warning-text">
++                    <span className="pf-screen-reader">{_("Danger alert:")}</span>
++                    {_("Web Console will restart")}
++                </strong>
++            </FlexItem>
++            <FlexItem>
++                <Popover aria-label="More information popover"
++                         bodyContent={_("When the Web Console is restarted, you will no longer see progress information. However, the update process will continue in the background. Reconnect to continue watching the update process.")}>
++                    <Button variant="link" isInline>{_("More info...")}</Button>
++                </Popover>
++            </FlexItem>
++        </Flex>
++    );
++}
++
++/**
++ * @param {string[]} allIds
++ * @param {SelecetedState} state
++ * @returns {string[]}
++ */
++function calculateSelected(allIds, state) {
++    const selected = Object.keys(state.selected);
++
++    if (!state.allSelected) {
++        return selected;
++    }
++
++    if (selected.length === 0) {
++        return allIds;
++    }
++
++    return allIds.filter((id) => !!!state.selected[id]);
++}
++
++
+ // parse CVEs from an arbitrary text (changelog) and return URL array
+ function parseCVEs(text) {
+     if (!text)
+@@ -398,6 +590,7 @@ function updateItem(remarkable, info, pkgNames, key) {
+             { title: <TableText wrapModifier="truncate">{info.version}</TableText>, props: { className: "version" } },
+             { title: <TableText wrapModifier="nowrap">{type}</TableText>, props: { className: "type" } },
+             { title: descriptionFirstLine, props: { className: "changelog" } },
++            { title: <SelectedSwitch id={ key }/>, props: { className: "select-update" } },
+         ],
+         props: {
+             key,
+@@ -448,6 +641,7 @@ const UpdatesList = ({ updates }) => {
+                     { title: _("Version"), transforms: [cellWidth(15)] },
+                     { title: _("Severity"), transforms: [cellWidth(15)] },
+                     { title: _("Details"), transforms: [cellWidth(30)] },
++                    { title: _("Select update") },
+                 ]}
+                 rows={update_ids.map(id => updateItem(remarkable, updates[id], packageNames[id].sort((a, b) => a.name > b.name), id))} />
+     );
+@@ -933,25 +1127,12 @@ class CardsPage extends React.Component {
+                 id: "available-updates",
+                 title: _("Available updates"),
+                 actions: (<div className="pk-updates--header--actions">
+-                    {this.props.cockpitUpdate &&
+-                        <Flex flex={{ default: 'inlineFlex' }} className="cockpit-update-warning">
+-                            <FlexItem>
+-                                <ExclamationTriangleIcon className="ct-icon-exclamation-triangle cockpit-update-warning-icon" />
+-                                <strong className="cockpit-update-warning-text">
+-                                    <span className="pf-screen-reader">{_("Danger alert:")}</span>
+-                                    {_("Web Console will restart")}
+-                                </strong>
+-                            </FlexItem>
+-                            <FlexItem>
+-                                <Popover aria-label="More information popover"
+-                                         bodyContent={_("When the Web Console is restarted, you will no longer see progress information. However, the update process will continue in the background. Reconnect to continue watching the update process.")}>
+-                                    <Button variant="link" isInline>{_("More info...")}</Button>
+-                                </Popover>
+-                            </FlexItem>
+-                        </Flex>}
++                    <WebConsoleRestartWarn updates={Object.keys(this.props.updates)} />
+                     {this.props.applyKpatches}
+                     {this.props.applySecurity}
+                     {this.props.applyAll}
++                    {this.props.applySelected}
++                    {this.props.applySelectAll}
+                 </div>),
+                 containsList: true,
+                 body: <UpdatesList updates={this.props.updates} />
+@@ -1325,13 +1506,19 @@ class OsUpdates extends React.Component {
+                 });
+     }
+ 
+-    applyUpdates(type) {
++    /**
++     * @param {SelecetedState=} selected
++     */
++    applyUpdates(type, selected) {
+         let ids = Object.keys(this.state.updates);
+         if (type === UPDATES.SECURITY)
+             ids = ids.filter(id => this.state.updates[id].severity === PK.Enum.INFO_SECURITY);
+         if (type === UPDATES.KPATCHES) {
+             ids = ids.filter(id => isKpatchPackage(this.state.updates[id].name));
+         }
++        if (type === UPDATES.SELECTED && selected) {
++            ids = calculateSelected(ids, selected);
++        }
+ 
+         PK.transaction()
+                 .then(transactionPath => {
+@@ -1354,7 +1541,7 @@ class OsUpdates extends React.Component {
+     }
+ 
+     renderContent() {
+-        let applySecurity, applyKpatches, applyAll;
++        let applySecurity, applyKpatches, applyAll, applySelected, applySelectAll;
+ 
+         /* On unregistered RHEL systems we need some heuristics: If the "main" OS repos (which provide coreutils) require
+          * a subscription, then point this out and don't show available updates, even if there are some auxiliary
+@@ -1409,12 +1596,8 @@ class OsUpdates extends React.Component {
+             const num_kpatches = count_kpatch_updates(this.state.updates);
+             const highest_severity = find_highest_severity(this.state.updates);
+ 
+-            applyAll = (
+-                <Button id={num_updates == num_security_updates ? "install-security" : "install-all"} variant="primary" onClick={ () => this.applyUpdates(UPDATES.ALL) }>
+-                    { num_updates == num_security_updates
+-                        ? _("Install security updates")
+-                        : _("Install all updates") }
+-                </Button>);
++            applySelected = <SelectedButton updates={Object.keys(this.state.updates)} num_updates={num_updates} onClick={ (items) => this.applyUpdates(UPDATES.SELECTED, items) }/>;
++            applySelectAll = <SelectedAllButton />;
+ 
+             if (num_security_updates > 0 && num_updates > num_security_updates) {
+                 applySecurity = (
+@@ -1455,6 +1638,8 @@ class OsUpdates extends React.Component {
+                             <CardsPage handleRefresh={this.handleRefresh}
+                                        applySecurity={applySecurity}
+                                        applyAll={applyAll}
++                                       applySelected={applySelected}
++                                       applySelectAll={applySelectAll}
+                                        applyKpatches={applyKpatches}
+                                        highestSeverity={highest_severity}
+                                        onValueChanged={this.onValueChanged}
+@@ -1645,5 +1830,9 @@ document.addEventListener("DOMContentLoaded", () => {
+     document.title = cockpit.gettext(document.title);
+     init();
+     const root = createRoot(document.getElementById('app'));
+-    root.render(<OsUpdates />);
++    root.render(
++        <SelectedStore>
++            <OsUpdates />
++        </SelectedStore>
++    );
+ });
+diff --git a/pkg/packagekit/updates.scss b/pkg/packagekit/updates.scss
+index 00718eff2..12bc5de2b 100644
+--- a/pkg/packagekit/updates.scss
++++ b/pkg/packagekit/updates.scss
+@@ -72,7 +72,7 @@
+     }
+ 
+     &, p {
+-      max-inline-size: 60vw;
++      max-inline-size: 54vw;
+       margin-block-end: 0;  // counter-act <Markdown>
+       overflow: hidden;
+       text-overflow: ellipsis;
+@@ -273,3 +273,7 @@ table.header-buttons {
+ .ct-info-circle {
+   color: var(--pf-v5-global--info-color--100);
+ }
++
++td.select-update {
++  min-width: 8vw;
++}
+-- 
+2.48.1
+
