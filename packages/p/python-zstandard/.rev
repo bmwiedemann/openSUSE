@@ -138,4 +138,14 @@
     <comment>Remove Conflict with python-zstd - they should be co-installable</comment>
     <requestid>1191781</requestid>
   </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>ae43f8868d5a9d9db5cda8e663afb86e</srcmd5>
+    <version>0.22.0</version>
+    <time>1740247457</time>
+    <user>dimstar_suse</user>
+    <comment>Add fix-zstd-1.5.7.patch to make it work with zstd-1.5.7
+- Drop fix-zstd-1.5.6.patch
+- Require libzstd1 = 1.5.7</comment>
+    <requestid>1247620</requestid>
+  </revision>
 </revisionlist>

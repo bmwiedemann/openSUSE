@@ -1,0 +1,79 @@
+Index: zstandard-0.22.0/tests/test_compressor_compress.py
+===================================================================
+--- zstandard-0.22.0.orig/tests/test_compressor_compress.py
++++ zstandard-0.22.0/tests/test_compressor_compress.py
+@@ -52,7 +52,7 @@ class TestCompressor_compress(unittest.T
+ 
+         cctx = zstd.ZstdCompressor(level=3, write_content_size=False)
+         result = cctx.compress(b"".join(chunks))
+-        self.assertEqual(len(result), 999)
++        self.assertEqual(len(result), 1029)
+         self.assertEqual(result[0:4], b"\x28\xb5\x2f\xfd")
+ 
+         # This matches the test for read_to_iter() below.
+Index: zstandard-0.22.0/tests/test_compressor_compressobj.py
+===================================================================
+--- zstandard-0.22.0.orig/tests/test_compressor_compressobj.py
++++ zstandard-0.22.0/tests/test_compressor_compressobj.py
+@@ -39,7 +39,7 @@ class TestCompressor_compressobj(unittes
+         cobj = cctx.compressobj()
+ 
+         result = cobj.compress(b"".join(chunks)) + cobj.flush()
+-        self.assertEqual(len(result), 999)
++        self.assertEqual(len(result), 1029)
+         self.assertEqual(result[0:4], b"\x28\xb5\x2f\xfd")
+ 
+         params = zstd.get_frame_parameters(result)
+Index: zstandard-0.22.0/tests/test_compressor_copy_stream.py
+===================================================================
+--- zstandard-0.22.0.orig/tests/test_compressor_copy_stream.py
++++ zstandard-0.22.0/tests/test_compressor_copy_stream.py
+@@ -50,7 +50,7 @@ class TestCompressor_copy_stream(unittes
+         r, w = cctx.copy_stream(source, dest)
+ 
+         self.assertEqual(r, 255 * 16384)
+-        self.assertEqual(w, 999)
++        self.assertEqual(w, 1029)
+ 
+         params = zstd.get_frame_parameters(dest.getvalue())
+         self.assertEqual(params.content_size, zstd.CONTENTSIZE_UNKNOWN)
+Index: zstandard-0.22.0/tests/test_compressor_stream_writer.py
+===================================================================
+--- zstandard-0.22.0.orig/tests/test_compressor_stream_writer.py
++++ zstandard-0.22.0/tests/test_compressor_stream_writer.py
+@@ -301,7 +301,7 @@ class TestCompressor_stream_writer(unitt
+         d = zstd.train_dictionary(8192, samples)
+ 
+         h = hashlib.sha1(d.as_bytes()).hexdigest()
+-        self.assertEqual(h, "a46d2f7a3bc3357c9d717d3dadf9a26fde23e93d")
++        self.assertEqual(h, "f32ddfbe0878bbd428afc00b17810387c6752191")
+ 
+         buffer = io.BytesIO()
+         cctx = zstd.ZstdCompressor(level=9, dict_data=d)
+
+Index: zstandard-0.22.0/c-ext/backend_c.c
+===================================================================
+--- zstandard-0.22.0.orig/c-ext/backend_c.c
++++ zstandard-0.22.0/c-ext/backend_c.c
+@@ -152,7 +152,7 @@ void zstd_module_init(PyObject *m) {
+     PyObject *features = NULL;
+     PyObject *feature = NULL;
+     unsigned zstd_ver_no = ZSTD_versionNumber();
+-    unsigned our_hardcoded_version = 10505;
++    unsigned our_hardcoded_version = 10507;
+     if (ZSTD_VERSION_NUMBER != our_hardcoded_version ||
+         zstd_ver_no != our_hardcoded_version) {
+         PyErr_Format(
+Index: zstandard-0.22.0/tests/test_module_attributes.py
+===================================================================
+--- zstandard-0.22.0.orig/tests/test_module_attributes.py
++++ zstandard-0.22.0/tests/test_module_attributes.py
+@@ -5,7 +5,7 @@ import zstandard as zstd
+ 
+ class TestModuleAttributes(unittest.TestCase):
+     def test_version(self):
+-        self.assertEqual(zstd.ZSTD_VERSION, (1, 5, 5))
++        self.assertEqual(zstd.ZSTD_VERSION, (1, 5, 7))
+ 
+         self.assertEqual(zstd.__version__, "0.22.0")
+ 

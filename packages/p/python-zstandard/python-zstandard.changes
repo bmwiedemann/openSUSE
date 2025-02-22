@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 21 10:44:16 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix-zstd-1.5.7.patch to make it work with zstd-1.5.7
+- Drop fix-zstd-1.5.6.patch
+- Require libzstd1 = 1.5.7
+
+-------------------------------------------------------------------
 Tue Aug  6 03:43:14 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Remove Conflict with python-zstd - they should be co-installable
