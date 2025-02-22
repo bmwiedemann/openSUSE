@@ -9979,6 +9979,7 @@ unsorted:
   - kapidox 
   - kapman 
   - kapman-lang 
+  - kappanhang 
   - karchive-devel 
   - kargo-cli 
   - kargo-cli-bash-completion 
@@ -10555,8 +10556,6 @@ unsorted:
   - kpublictransport-lang 
   - kquickcharts 
   - kquickcharts-devel 
-  - kquickimageeditor-devel 
-  - kquickimageeditor-imports 
   - kquickimageeditor6-devel 
   - kquickimageeditor6-imports 
   - kraft 
@@ -24092,6 +24091,7 @@ unsorted:
   - python3-newt 
   - python3-notcurses 
   - python3-notmuch 
+  - python3-notmuch2 
   - python3-novaclient 
   - python3-ntp 
   - python3-obexftp 
@@ -26173,6 +26173,7 @@ unsorted:
   - python311-mercantile 
   - python311-merge3 
   - python311-mergedeep 
+  - python311-meshtastic 
   - python311-meson-python 
   - python311-metaextract 
   - python311-metakernel 
@@ -29840,6 +29841,7 @@ unsorted:
   - python312-mercantile 
   - python312-merge3 
   - python312-mergedeep 
+  - python312-meshtastic 
   - python312-meson-python 
   - python312-metaextract 
   - python312-metakernel 
@@ -33558,6 +33560,7 @@ unsorted:
   - python313-mercantile 
   - python313-merge3 
   - python313-mergedeep 
+  - python313-meshtastic 
   - python313-meson-python 
   - python313-metaextract 
   - python313-metakernel 
@@ -48696,6 +48699,7 @@ unsorted:
   - warewulf4-dracut 
   - warewulf4-man 
   - warewulf4-overlay 
+  - warewulf4-overlay-rke2 
   - warewulf4-overlay-slurm 
   - warp 
   - warp-lang 
@@ -49457,7 +49461,6 @@ unsorted:
   - yast2-core-devel 
   - yast2-devtools 
   - yast2-dns-manager 
-  - yast2-docker 
   - yast2-drbd 
   - yast2-fcoe-client 
   - yast2-firstboot-wsl 
