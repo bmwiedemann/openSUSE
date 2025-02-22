@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 22 00:35:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.0.0
+  * ELF: use of memfd_create to support Enforcing mode of SELinux
+  * ELF: two-step de-compression enables future per-PT_LOAD work
+  * ELF: --unmap-all-pages completely avoids /proc/self/exe
+
+-------------------------------------------------------------------
 Thu May  9 10:36:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.2.4
