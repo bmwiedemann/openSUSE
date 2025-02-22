@@ -87,4 +87,12 @@
     <comment>- Add gcc14.patch</comment>
     <requestid>1220180</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b05b9801851a0e974339260bef718a0a</srcmd5>
+    <version>4.2.1</version>
+    <time>1740247505</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.2.1</comment>
+    <requestid>1247768</requestid>
+  </revision>
 </revisionlist>

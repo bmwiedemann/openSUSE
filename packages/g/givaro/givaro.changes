@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Feb 22 00:42:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.2.1
+  * Givaro now forces a signed representation for GF(q)
+  * Implemented Polynomial Middle product
+  * Some build fixed, including but not limited to, GCC 15
+
+-------------------------------------------------------------------
+Mon Dec  9 12:53:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 4.2.0~alpha0
+  * Fix dom_power issue on 32bit machines
+  * Remove colors from XML output
+  * Force a signed representation for GFq
+  * Add ModularExtended to the ring and field test suites
+- Delete 0001-Add-missing-include-cstdint-for-u-int64_t.patch,
+  gcc14.patch (merged)
+
+-------------------------------------------------------------------
 Mon Aug 19 21:14:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add gcc14.patch

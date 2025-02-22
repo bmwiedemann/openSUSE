@@ -3,10 +3,10 @@ Date: Thu May 23 16:16:10 UTC 2013
 
 Delete timestamp from documentation.
 
-Index: givaro-3.7.2/docs/Doxyfile.mod
+Index: givaro-3.7.2/docs/Doxyfile.in
 ===================================================================
---- givaro-3.7.2.orig/docs/Doxyfile.mod
-+++ givaro-3.7.2/docs/Doxyfile.mod
+--- givaro-3.7.2.orig/docs/Doxyfile.in
++++ givaro-3.7.2/docs/Doxyfile.in
 @@ -974,7 +974,7 @@ HTML_COLORSTYLE_GAMMA  = 80
  # page will contain the date and time when the page was generated. Setting
  # this to NO can help when comparing the output of multiple runs.
