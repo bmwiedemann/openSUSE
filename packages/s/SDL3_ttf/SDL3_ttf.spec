@@ -18,14 +18,14 @@
 
 Name:           SDL3_ttf
 %define lname	libSDL3_ttf0
-Version:        3.1.0
+Version:        3.1.2
 Release:        0
 Summary:        Simple DirectMedia Layer Truetype library
 License:        Zlib
 Group:          Development/Libraries/X11
 URL:            https://github.com/libsdl-org/SDL_ttf
-Source:         https://github.com/libsdl-org/SDL_ttf/releases/download/preview-%version/SDL3_ttf-%version.tar.gz
-Source2:        https://github.com/libsdl-org/SDL_ttf/releases/download/preview-%version/SDL3_ttf-%version.tar.gz.sig
+Source:         https://github.com/libsdl-org/SDL_ttf/releases/download/prerelease-%version/SDL3_ttf-%version.tar.gz
+Source2:        https://github.com/libsdl-org/SDL_ttf/releases/download/prerelease-%version/SDL3_ttf-%version.tar.gz.sig
 Source9:        %name.keyring
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
