@@ -19,7 +19,7 @@
 
 %bcond_without test
 Name:           niri
-Version:        25.01
+Version:        25.02
 Release:        0
 Summary:        Scrollable-tiling Wayland compositor
 License:        GPL-3.0-or-later
@@ -80,8 +80,6 @@ install -Dm644 -t %{buildroot}%{_userunitdir} resources/niri{.service,-shutdown.
 
 %check
 %if %{with test}
-export XDG_RUNTIME_DIR="$(mktemp -d)"
-export RAYON_NUM_THREADS=1
 %cargo_test -- --workspace --exclude niri-visual-tests
 %endif
 
