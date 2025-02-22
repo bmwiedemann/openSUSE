@@ -17,7 +17,7 @@
 
 
 Name:           texstudio
-Version:        4.8.5
+Version:        4.8.6
 Release:        0
 Summary:        LaTeX Editor
 License:        Apache-2.0 AND GPL-2.0-only AND GPL-3.0-only AND MPL-1.1

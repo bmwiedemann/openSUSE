@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Feb 21 14:21:09 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 4.8.6
+  * provide command completion for expl3 commands
+  * hide grammar errors in math/non-text environments (word repetition and
+    language tool)
+  * hide spelling errors in picture envs like tikzpicture
+  * better handle \newtcbox gh#texstudio-org/texstudio#3878
+  * fix rare crash gh#texstudio-org/texstudio#3936
+  * repair user macro trigger (?highlight-as:…), still not usable for math
+    env detection
+  * add new user macro trigger (?inEnv:…)
+  * add Grid menu to windowed and embedded pdf-viewer’s context menu
+    gh#texstudio-org/texstudio#3942
+  * fix pdf-viewer’s scrollbar with Fit to Width/Window and changing
+    Continuous mode gh#texstudio-org/texstudio#3928
+  * fix pdf-viewer’s Custom Grid dialog not preset with current Grid settings
+    in Continuous mode gh#texstudio-org/texstudio#3929
+  * fix pfd-viewer’s page display in non continuous mode 3952
+  * fix pdf-viewer has a small issue when activating single page step 3957
+  * add maximize button to Packages Help (Texdoc) dialog
+    gh#texstudio-org/texstudio#3911
+  * fix option ‘all packages’ no longer checked in Packages Help with no tex
+    documents opened gh#texstudio-org/texstudio#3917
+  * when context menu of a package name is used to open the Packages Help
+    dialog then preset search filter with the name gh#texstudio-org/texstudio#3918
+  * fix both View menu actions ‘Show embedded PDF large/small’ available,
+    whether PDF area is large or small gh#texstudio-org/texstudio#3931
+
+-------------------------------------------------------------------
 Tue Jan 14 10:17:06 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to 4.8.5
