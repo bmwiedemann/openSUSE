@@ -57,7 +57,7 @@
 %bcond_with    x265
 %bcond_with    xvid
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1600
 %bcond_without libaom
 %bcond_without mysofa
 %bcond_without vidstab
@@ -73,6 +73,15 @@
 %bcond_without opencore
 %bcond_without xvid
 %else
+%if 0%{?suse_version} > 1500
+%bcond_without mysofa
+%bcond_without vidstab
+%bcond_without codec2
+%bcond_without rubberband
+%bcond_without vulkan
+%bcond_without amrwb
+%bcond_without opencore
+%else
 %bcond_with libaom
 %bcond_with mysofa
 %bcond_with vidstab
@@ -84,6 +93,7 @@
 %bcond_with soxr
 %bcond_with zmq
 %bcond_with vulkan
+%endif
 %endif
 
 %if 0%{?suse_version} >= 1500

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 08:18:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Adjust bconds to build the package in SLFO without xvidcore.
+
+-------------------------------------------------------------------
 Mon Jan  6 11:53:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.4.5

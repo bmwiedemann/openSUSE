@@ -677,4 +677,12 @@
     <comment>- Update to release 4.4.5</comment>
     <requestid>1235206</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>1dd550de5008c8ff6c003f5a399e7f65</srcmd5>
+    <version>4.4.5</version>
+    <time>1740251132</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust bconds to build the package in SLFO without xvidcore.</comment>
+    <requestid>1247765</requestid>
+  </revision>
 </revisionlist>
