@@ -141,9 +141,6 @@ unsorted:
   - Mesa-libd3d-32bit 
   - Mesa-libd3d-devel 
   - Mesa-libd3d-devel-32bit 
-  - Mesa-libglapi-devel 
-  - Mesa-libglapi-devel-32bit 
-  - Mesa-libglapi0-32bit 
   - Mesa-libva-32bit 
   - Mesa-vulkan-device-select 
   - Mesa-vulkan-device-select-32bit 
@@ -8141,6 +8138,7 @@ unsorted:
   - grex 
   - grfcodec 
   - gri 
+  - grig 
   - grilo-devel 
   - grilo-plugin-dleyna 
   - grilo-plugins-devel 
@@ -17126,6 +17124,7 @@ unsorted:
   - libwebrtc-audio-processing-1-3-32bit 
   - libwebrtc-audio-processing-1-devel 
   - libwebrtc-audio-processing-1-devel-static 
+  - libwebrtc-audio-processing-2-1 
   - libwebrtc-audio-processing-2-1-32bit 
   - libwebrtc-audio-processing-devel 
   - libwebrtc-audio-processing-devel-static 

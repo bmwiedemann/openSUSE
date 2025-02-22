@@ -14,7 +14,6 @@
     <package name="Mesa-gallium" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="Mesa-libEGL1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="Mesa-libGL1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="Mesa-libglapi0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="Mesa-libva" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ModemManager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ModemManager-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1908,7 +1907,7 @@
     <package name="libdrm_amdgpu1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdrm_intel1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdrm_nouveau2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libdrm_radeon1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libdrm_radeon1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libduktape207" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdv4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdvbpsi10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2934,7 +2933,6 @@
     <package name="libwebpdemux2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwebpmux3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwebrtc-audio-processing-1-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libwebrtc-audio-processing-2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwinpr3-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwireplumber-0_5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwmf-0_2-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4574,7 +4572,7 @@
     <package name="zisofs-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zoo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="zsh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="zstd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="zstd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="zypper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zypper-log" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zypper-needs-restarting" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
