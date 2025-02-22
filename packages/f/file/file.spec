@@ -1,7 +1,7 @@
 #
 # spec file for package file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,7 @@ Patch31:        file-5.19-biorad.dif
 Patch32:        file-5.19-clicfs.dif
 Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
+Patch42:        boo1237209.patch
 Patch43:        file-seccomp.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
@@ -127,6 +128,7 @@ to develop applications that require the magic "file" interface.
 %patch -P 37 -p1 -b .getenv
 %patch -P 39 -p1 -b .btrfs
 %patch -P 0 -b .0
+%patch -P 42 -p1
 %patch -P 43 -p1 -b .seccomp
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h

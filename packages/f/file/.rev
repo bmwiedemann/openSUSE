@@ -1711,4 +1711,13 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
     upstream now has a huge rework and extended features</comment>
     <requestid>1227112</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>cdc39d5961ed98bcd2d5a452bfc17468</srcmd5>
+    <version>5.46</version>
+    <time>1740247456</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch boo1237209.patch temporary
+  * Fix stack overrun (boo#1237209)</comment>
+    <requestid>1247564</requestid>
+  </revision>
 </revisionlist>
