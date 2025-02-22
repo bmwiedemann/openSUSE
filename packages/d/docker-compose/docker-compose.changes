@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Feb 21 14:47:15 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.33.1:
+  * Improvements
+    - Add support for gw_priority, enable_ipv4 (requires docker
+      v28.0) by @thaJeztah in #12570
+  * Fixes
+    - Run watch standalone if menu fails to start by @ndeloof in
+      #12536
+    - Report error using non-file secret|config with read-only
+      service by @ndeloof in #12531
+    - Don't display bake suggestion when using --progress with
+      quiet or json option by @glours in #12561
+    - Fix pull --parallel and --no-parallel deprecation warnings
+      missing by @maxproske in #12555
+    - Fix error message when detach is implied by wait by @ndeloof
+      in #12566
+  * Dependencies
+    - build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+      by @dependabot in #12556
+    - build(deps): bump google.golang.org/grpc from 1.68.1 to
+      1.70.0 by @dependabot in #12494
+    - go.mod: update to docker v28.0.0 by @thaJeztah in #12545
+
+-------------------------------------------------------------------
 Wed Feb 12 09:56:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - remove docker-compose-switch dependency
