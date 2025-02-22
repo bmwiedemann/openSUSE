@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Feb 21 21:34:10 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Version bump to fix bsc#1237359 (fixed as of 9.1.1115).
+- Update to 9.1.1134.
+ * 9.1.1134: filetype: Guile init file not recognized
+ * 9.1.1133: filetype: xkb files not recognized everywhere
+ * 9.1.1132: Mark positions wrong after triggering multiline completion
+ * 9.1.1131: potential out-of-memory issue in search.c
+ *           remove resolved complete item from todo list
+ * 9.1.1130: 'listchars' "precedes" is not drawn on Tabs.
+ *           set fileformat=dos in filetype plugin
+ * 9.1.1129: missing out-of-memory test in buf_write()
+ *           add commentstring '> %s' to ftplugin
+ * 9.1.1128: 9.1.1119 caused a regression with imports
+ *           include simple filetype plugin
+ * 9.1.1127: preinsert text is not cleaned up correctly
+ * 9.1.1126: 9.1.1121 used a wrong way to handle enter
+ * 9.1.1125: cannot loop through pum menu with multiline items
+ * 9.1.1124: No test for 'listchars' "precedes" with double-width char
+ * 9.1.1123: popup hi groups not falling back to defaults
+ *           Add support for # comments to ftplugin
+ * 9.1.1122: too many strlen() calls in findfile.c
+ * 9.1.1121: Enter does not insert newline with "noselect"
+ *           fix s:NetrwHome() regression
+ * 9.1.1120: tests: Test_registers fails
+ *           add reference to extendnew() at extend()
+ * 9.1.1119: Vim9: Not able to use an autoloaded class from another
+ *           autoloaded script
+ * 9.1.1118: tests: test_termcodes fails
+ *           Update base-syntax, improve performance
+ * 9.1.1117: there are a few minor style issues
+ * 9.1.1116: Vim9: super not supported in lambda expressions
+ *           Update the 'specifies' keyword documentation, slightly
+ *           reformat
+ * 9.1.1115: [security]: use-after-free in str_to_reg()
+ * 9.1.1114: enabling termguicolors automatically confuses users
+ *           Add ukrainian-enhanced keymap
+ * 9.1.1113: tests: Test_terminal_builtin_without_gui waits 2 seconds
+ * 9.1.1112: Inconsistencies in get_next_or_prev_match()
+ *           document ComplMatchIns highlight for insert-completion
+ *           upstream snapshot of v177
+ * 9.1.1111: Vim9: variable not found in transitive import
+ * 9.1.1110: Vim tests are slow and flaky
+ * 9.1.1109: cmdexpand.c hard to read
+ *           include simple filetype plugin
+ *           include simple filetype plugin
+ * 9.1.1108: 'smoothscroll' gets stuck with 'listchars' "eol"
+ * 9.1.1107: cannot loop through completion menu with fuzzy
+ *           Update base-syntax, always match continuation comments to EOL
+ *           set define option & add matchit config in ftplugin
+ *           Update base-syntax, match Vim9 boolean and null literals in
+ *           parens
+ * 9.1.1106: tests: Test_log_nonexistent() causes asan failure
+ * 9.1.1105: Vim9: no support for protected new() method
+ * 9.1.1104: CI: using Ubuntu 22.04 Github runners
+ * ci: syntax tests spam output
+ * 9.1.1103: if_perl: still some compile errors with Perl 5.38
+ * 9.1.1102: tests: Test_WinScrolled_Resized_eiw() uses wrong filename
+
+-------------------------------------------------------------------
 Tue Feb 11 10:35:40 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.1101
