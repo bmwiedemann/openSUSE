@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 21 08:46:54 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Be prepared for Mesa update to versionm 25.0.0 
+
+-------------------------------------------------------------------
+Tue Feb 18 12:28:00 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Use zlib-ng-compat only for opensuse builds
+
+-------------------------------------------------------------------
 Mon Oct 21 14:20:10 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Use zlib-ng-compat-devel

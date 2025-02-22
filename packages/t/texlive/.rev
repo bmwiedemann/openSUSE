@@ -1186,4 +1186,14 @@
 - Let texlive-pdfjam-bin depend on /usr/bin/pdflatex (boo#1231783)</comment>
     <requestid>1216763</requestid>
   </revision>
+  <revision rev="99" vrev="102">
+    <srcmd5>d5591face07c3b2b2b92077f1612e2a9</srcmd5>
+    <version>unknown</version>
+    <time>1740247460</time>
+    <user>dimstar_suse</user>
+    <comment>- Be prepared for Mesa update to versionm 25.0.0 
+
+- Use zlib-ng-compat only for opensuse builds</comment>
+    <requestid>1247593</requestid>
+  </revision>
 </revisionlist>

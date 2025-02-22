@@ -1,7 +1,7 @@
 #
 # spec file for package texlive
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,7 +122,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gd-devel
 BuildConflicts: ghostscript-mini
 BuildRequires:  %{name}-filesystem
-BuildRequires:  Mesa-libglapi-devel
 BuildRequires:  ghostscript-devel
 BuildRequires:  ghostscript-library
 BuildRequires:  glibc-devel
@@ -132,10 +131,10 @@ BuildRequires:  gsl-devel
 BuildRequires:  harfbuzz-devel >= 7.1
 %endif
 BuildRequires:  jpeg
-BuildRequires:  libOSMesa-devel
 %if 0%{?suse_version} > 1550
 BuildRequires:  libicu-devel >= 72.1
 %endif
+BuildRequires:  Mesa-dri-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libpaper-devel
@@ -164,7 +163,7 @@ BuildRequires:  unzip
 BuildRequires:  xaw3d-devel
 BuildRequires:  xz
 BuildRequires:  zip
-%if 0%{?suse_version} > 1550
+%if 0%{?suse_version} > 1550 && 0%{is_opensuse}
 BuildRequires:  zlib-ng-compat-devel
 %else
 BuildRequires:  zlib-devel
@@ -4470,13 +4469,18 @@ popd
 
     pushd utils/asymptote
 	autoreconf
-	(cat>libOSMesa.so)<<-'EOF'
+	if pkg-config --atleast-version 25 dri
+	then
+	    (cat>libOSMesa.so)<<-'EOF'
+		/* GNU ld script */
+		INPUT(%{_libdir}/libOSMesa.so AS_NEEDED(-lgallium))
+		EOF
+	else
+	    (cat>libOSMesa.so)<<-'EOF'
 		/* GNU ld script */
 		INPUT(%{_libdir}/libOSMesa.so AS_NEEDED(-lglapi))
-	EOF
-%if 0%{?suse_version} <= 1350
-	sed -ri '/^namespace camp \{/{ s/$/ using glm::value_ptr;/; }'  glrender.cc
-%endif
+		EOF
+	fi
 	PATH=$prefix/bin:$PATH			\
 	TEXMFLOCAL=%{_texmfmaindir}		\
 	TEXMFCNF=$texmfcnf			\
@@ -4485,13 +4489,8 @@ popd
 	LDFLAGS="$LDFLAGS -L$PWD"		\
 	CFLAGS="${CFLAGS/-Wno-unprototyped-calls/}"	\
 	CXXFLAGS="${CXXFLAGS/-Wno-unprototyped-calls/}"	\
-%if 0%{?suse_version} <= 1350
-	CFLAGS="${CFLAGS/-std=gnu99/-std=gnu++11} -DGLM_FORCE_RADIANS"		\
-	CXXFLAGS="${CXXFLAGS/-std=gnu99/-std=gnu++11} -DGLM_FORCE_RADIANS"	\
-%else
 	CFLAGS="${CFLAGS/-std=gnu99/}"		\
 	CXXFLAGS="${CXXFLAGS/-std=gnu99/}"	\
-%endif
 	./configure				\
 	    --host=${HOST}			\
 	    --build=${BUILD}			\
