@@ -1,7 +1,7 @@
 #
 # spec file for package sdcc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define with_non_free 0
 
 Name:           sdcc
-Version:        4.2.0
+Version:        4.5.0
 Release:        0
 Summary:        Small Device C Compiler
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -28,7 +29,6 @@ Source1:        %{name}-rpmlintrc
 Source2:        sdccman.pdf
 Patch0:         0001-Doc-Disable-fallback-to-dvipdfm-remove-non-pdftex-ta.patch
 Patch2:         sdcc_enable_additional_target_libs.patch
-Patch4:         sdcc-pcode.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -55,11 +55,7 @@ BuildRequires:  texlive-makeindex-bin
 BuildRequires:  texlive-ulem
 BuildRequires:  zlib-devel
 BuildRequires:  tex(footnote.sty)
-%if 0%{?suse_version} >= 1500
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
+BuildRequires:  libboost_headers-devel >= 1.79
 %if 0%{?suse_version} >= 1500
 BuildRequires:  texlive-footnotehyper
 %endif
@@ -102,27 +98,26 @@ development.
 %setup -q
 rm support/regression/tests/bug3304184.c
 # remove non-free libraries, see doc/README.txt: Licenses
-find device/non-free/ \( -iname \*.h -o -iname \*.c -o -iname \*.S \) -delete
+# now breaks build, disabled
+# find device/non-free/ \( -iname \*.h -o -iname \*.c -o -iname \*.S \) -delete
 # remove spurious x bits from source files to make rpmlint happy.
 find -name '*.[ch]' -perm -u=x | xargs chmod a-x
 %patch -P 0 -p1
 %patch -P 2 -p1
-%patch -P 4
 sed -i '1 s@.*@#!%{_bindir}/python3@' support/scripts/as2gbmap.py
 
 %build
-# Force configure to ignore missing, but unused TeX binaries
-export LATEX2HTML=%{_bindir}/true
-export DVIPDFM=%{_bindir}/true
 export PYTHON=%{_bindir}/python3
 %configure \
     --docdir=%{_docdir}/sdcc \
-    --disable-non-free \
-    --disable-doc
+    --libexecdir=%{_libdir} \
+%if ! 0%{with_non_free}
+   --disable-non-free
+%endif
 
 inkscape --export-area-drawing --export-pdf=doc/MCS51_named.pdf doc/MCS51_named.svg
 export LDFLAGS=-s
-%make_build
+%make_build VERBOSE= 
 %if 0%{?suse_version} > 1500
 %make_build -C doc sdccman.pdf
 %else
@@ -175,6 +170,15 @@ mv %{buildroot}%{_datadir}/%{name}/src %{buildroot}%{_datadir}/%{name}/lib/src
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/include
 %{_datadir}/%{name}/lib
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/*-suse-linux*
+%dir %{_libdir}/%{name}/*-suse-linux*/12.1.0
+%{_libdir}/%{name}/*-suse-linux*/12.1.0/cc1
+%if 0%{with_non_free}
+%dir %{_datadir}/%{name}/non-free
+%{_datadir}/%{name}/non-free/include
+%{_datadir}/%{name}/non-free/lib
+%endif
 %exclude %{_datadir}/%{name}/lib/src
 %dir %{_datadir}/emacs/site-lisp
 %{_datadir}/emacs/site-lisp/*.el

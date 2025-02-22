@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Feb 12 22:35:06 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.5.0
+  * New Feature List:
+    - Full atomic_flag support for msc51 and ds390 ports
+    - Experimental f8 port
+    - ISO C2y case range expressions
+    - ISO C2y _Generic selection expression with a type operand
+    - K&R-style function syntax (preliminarily with the semantics
+      of non-K&R ISO-style functions)
+    - ISO C23 enums with user-specified underlying type
+    - struct / union in initializers
+- Workaround for VERBOSE=1 option in %make_build 
+
+-------------------------------------------------------------------
+Sun Jan 19 22:42:22 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.4.0
+  * New Feature List:
+    - Optimizations for rotations.
+    - struct / union parameters for hc08, s08 and mos6502.
+    - Many bug fixes for -ms08 --stack-auto.
+    - struct / union return support for hc08 and s08 (caller side only).
+    - Generalized constant propagation.
+    - New command line option --syntax-only to only parse the input.
+    - Added C99 header inttypes.h
+    - Added library functions imaxabs, imaxdiv, llabs, strtoimax, strtoll, strtoull, strtoumax, wcsncmp, wcstoimax, wcstol, wcstoll, wcstoul, wcstoull, wcstoumax
+    - New r800 port to better support the ASCII Corp R800 and Zilog Z280.
+    - Changed the default calling convention for r2k, r2ka, r3ka, tlcs90, ez80-z80 from version 0 to 1 (this is an ABI break, and will require changes to user-written asm functions or their declarations).
+    - Improved optimizations for code speed for stm8, pdk, z80 (and related).
+    - New mos65c02 port to better support the WDC 65C02.
+- Update to version 4.3.0
+  * New Feature List:
+    - C2X bit-precise integer types and bit-fields thereof for
+      (except for pic14, pic16).
+    - Added all new general mnemonics from ASxxxx 5.40 except for
+      .bank and enabled for all ports
+    - sm83: sdasgb now can output cycles in listing and sz80 has
+      accurate cycles for this processor except for branching
+    - struct / union return (except for ds390, hc08, s08, mos6502,
+      pic14, pic16).
+    - div standard library function family.
+    - struct / union parameters (except for hc08, s08, mos6502,
+      pic14, pic16).
+    - C2X nullptr.
+    - Many fixes for the type system and _Generic.
+    - Adopted more of GCC, QuickC and tinycc tests.
+    - C2X char8_t.
+    - C2X memalignment.
+    - C2X unreachable.
+    - C2X typeof, typeof_unqual.
+    - C2X auto.
+    - C2X keywords bool, true, false, alignas, alignof, static_assert.
+    - C90-C17 function declarators without prototypes.
+    - C99 variably modified types.
+    - C2X bit and byte utilities.
+    - call_once.
+    - _sdcc_external_startup renamed to __sdcc_external_startup
+      and supported for all ports.
+    - makeshift support for long double as another alias for float.
+- Add option to build sdcc with non-free components (disabled now)
+- Remove some non-working stuff from specfile
+- Do not remove non-free stuff before building (breaks the build)
+- Remove patch sdcc-pcode.patch (applied upstream)
+
+-------------------------------------------------------------------
 Wed Apr  3 13:49:43 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Fix build for Tumbleweed (missing amstext.sty file)
