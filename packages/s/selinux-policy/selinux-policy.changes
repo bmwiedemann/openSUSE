@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 21 13:36:08 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250221:
+  * Allow named_filetrans_domain filetrans raid/mdadm named content (bsc#1236807)
+  * Grant privoxy_t the sys_chroot capability (bsc#1237375)
+  * Allow init_t nnp_transition to tor_t (bsc#1237375)
+
+-------------------------------------------------------------------
 Tue Feb 18 12:41:08 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250218:

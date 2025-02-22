@@ -1535,4 +1535,16 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1246667</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>d37b04cbf248111143cc042fc9c066a2</srcmd5>
+    <version>20250221</version>
+    <time>1740247463</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250221:
+  * Allow named_filetrans_domain filetrans raid/mdadm named content (bsc#1236807)
+  * Grant privoxy_t the sys_chroot capability (bsc#1237375)
+  * Allow init_t nnp_transition to tor_t (bsc#1237375)
+</comment>
+    <requestid>1247652</requestid>
+  </revision>
 </revisionlist>
