@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Fri Feb 21 08:29:09 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 25.1.0
+  New features
+  + Component properties dialog redesign #1054
+  + CDL netlist export #1165
+  + Implemented plotting XSPICE digital nodes #1138
+  + Add individual CLI oparameters setting for each simulator #1152
+  + Add .CSPARAM virtual device #1136
+  + Add Qt aplication style selection #1118
+  + Add default graph line thickness setting #1066
+  + Add setting for grid visibility #1065
+  + Allow parameter passing for SPICE file device #1197
+  + S-parameter files viewer improvements #1133
+  + Added background when renderign DC bias labels #1121
+  + Added possibility to create libraries from SpiceLibraryDevice components #944 #1210
+  + Added two new wire forms #1232
+  + QucsatorRF updated to v1.0.4
+  Bugfixes and general improvemnt
+  + CI improvement #1103 #1091 #1086
+  + Fixed graph renderign performance #984
+  + Fixed SPICE models processing bugs #861 #1055 #1090 #1142
+  + Default shorted resistance changed from 0 Ohms to 1/GMIN #1116
+  + Fixed diagram memory leak #1139
+  + Added offset parameter for AC current source #1218
+  + Fixed schematic editing issues #1159 #1134
+  Component library
+  This release contains a massive library extention:
+  + Added libraries for 74HC, 74LV, CD4000 digital ICs for analog mode #1034 #1160
+  + Added XSPICE generic logic gates library for analog mode #1199
+  + Added XSPICE digital auxillary devices #1193
+  + Added Laser diode library #942
+  + Added generic triac device in Thyristor.lib #924
+  + Added vaccum tubes extended library #846 #1216
+  + Added neon bulb model #846 #1216
+  + dded MOC3063/MOC3062 optocouple models #846 #1216
+  + Added Analog ICs and dual gate MOSFET libraries #1229
+  + Added RC with parasitics library #1240
+  Packaging
+  + Qt5 build deprecated; switch to Qt6 by default #938
+  Localization
+  + Update Turkish translation #1094
+  What's Changed
+  + Prepare for CDL netlist export by @ThomasZecha in #1049
+  + Move component search box to top of component browser by @iwbnwif in #1064
+  + Allow document grid visibilty to be toggled via menu and shortcut key by @iwbnwif in #1065
+  + Add grid color setting option by @iwbnwif in #1063
+  + Allow a default graph line thickness to be set by @iwbnwif in #1066
+  + New Component Properties dialog by @iwbnwif in #1054
+  + Solving Issue 1072 by @ThomasZecha in #1073
+  + Fix #1055 and #861 by @ra3xdh in #1074
+  + Fix sweep steps and number of points issues (see #1077) by @iwbnwif in #1079
+  + fix! MSVC build drag component cause a crash. by @dsm in #1086
+  + Fixed crash in SpiceLibComp dialog by @ra3xdh in #1090
+  + Update the 'values' field of simulation sweep in component dialog by @iwbnwif in #1093
+  + update turkish translate. by @dsm in #1094
+  + CI improvements by @dsm in #1091
+  + CI improvements. by @dsm in #1103
+  + Do not add export statement for certain models by @iwbnwif in #1106
+  + update Qt version to 6.8.1 by @dsm in #1109
+  + Fixed parsing SPICE library by @ra3xdh in #1113
+  + optimize SVGs. by @dsm in #1122
+  + inno setup improvements by @dsm in #1123
+  + AC power source amplitude fix by @KrzysztofHerman in #1112
+  + Add style selection by @dsm in #1125
+  + fix path. by @dsm in #1124
+  + Allow free text editing for .IC components. by @iwbnwif in #1129
+  + add ngspice scripts to share folder. by @dsm in #1141
+  + Refactor SpiceLibComp dialog by @ThomasZecha in #1084
+  + fix #1121 by @dsm in #1130
+  + Add .CSPARAM Support by @Radvall in #1136
+  + S-parameter Viewer: Some improvements by @andresmmera in #1133
+  + Plug diagram memory leak by @ivandi69 in #1139
+  + Fix #1143 by @ivandi69 in #1144
+  + fix launchTool method. by @dsm in #1147
+  + Small fixes by @ra3xdh in #1161
+  + Fixed SpiceLibComp dilaog and ID dialog by @ra3xdh in #1162
+  + Fix digital simulation with subcircuits by @ra3xdh in #1167
+  + update bundled ngspice to v44 for windows. by @dsm in #1170
+  + Different fixes by @ra3xdh in #1173
+  + Fix M units processing with tuner by @ra3xdh in #1178
+  + Power amplifier THD vs. output voltage RMS ngspice template by @ivandi69 in #1180
+  + Digital libraries by @ra3xdh in #1182
+  + Deprecate Qt5 by @ra3xdh in #1181
+  + Update digital libraries and README by @ra3xdh in #1184
+  + Upload Laser diode library and update digital libraries verison by @ra3xdh in #1185
+  + Fix 'Set Diagram Limits' not updating the diagram by @ivandi69 in #1186
+  + Add CD4066 model by @ra3xdh in #1187
+  + Update python code by @milssky in #1189
+  + Temporary fix for #1117 and upload CD4069 model by @ra3xdh in #1190
+  + Set CLI parameters for each simulator individually by @ra3xdh in #1192
+  + Fix plotting XSPICE digital nodes by @ra3xdh in #1194
+  + New feature CDL netlist export by @ThomasZecha in #1165
+  + Fix compiler warnings by @ThomasZecha in #1196
+  + Allow passing parameters for SPICE subcircuits by @ra3xdh in #1197
+  + Fix log calculation in componentdialog.cpp by @ra3xdh in #1198
+  + Upload digital XSPICE library by @ra3xdh in #1200
+  + Fix SPICE multilitne header parsing by @ra3xdh in #1203
+  + Fixed schematic editor issues by @ra3xdh in #1206
+  + Fix rectangle resize by @ra3xdh in #1208
+  + Create Library from Spice library device by @ra3xdh in #1210
+  + Fixed nested subcircuits processing in Spice Library Device by @ra3xdh in #1211
+  + Library update by @ra3xdh in #1216
+  + Add offset and Td parameters for AC current source by @ra3xdh in #1218
+  + Update NEWS and VERSION before release by @ra3xdh in #1226
+  + Introduce optional netlisting to console by @ThomasZecha in #1201
+  + Library update by @ra3xdh in #1229
+  + Add NE592 model by @ra3xdh in #1231
+  + Add two new wire forms by @wawuwo in #1232
+  + Refactor Schematic::sizeOfSelection() and its usages by @wawuwo in #1235
+  + Refactor Schematic::setComponentNumber() by @wawuwo in #1236
+  + update qt and ngspice by @dsm in #1239
+  + Replace some Q3PtrList usages with QList by @wawuwo in #1237
+  + Library update by @ra3xdh in #1240
+
+-------------------------------------------------------------------
 Tue Nov 19 23:50:22 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 24.4.1:
