@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 21 22:33:17 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 4.5.2:
+
+  Fixed
+  * core: fix build with gcc 15 (#2229, #2230)
+
+-------------------------------------------------------------------
 Mon Jan 06 04:50:15 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 4.5.1:
