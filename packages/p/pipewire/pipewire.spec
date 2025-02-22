@@ -32,11 +32,7 @@
 %ifnarch s390 s390x ppc64
 %define with_ldacBT 1
 %define with_webrtc_audio_processing 1
-%if 0%{?suse_version} >= 1600
-%define webrtc_audio_processing_major_version 2
-%else
 %define webrtc_audio_processing_major_version 1
-%endif
 %else
 %define with_ldacBT 0
 %define with_webrtc_audio_processing 0
@@ -73,7 +69,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.3.82
+Version:        1.3.83
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
