@@ -3773,4 +3773,12 @@
     <comment>Softwarestack update</comment>
     <requestid>1245419</requestid>
   </revision>
+  <revision rev="508" vrev="1">
+    <srcmd5>1d8e56874a40f0ea6774007c47cf081e</srcmd5>
+    <version>17.36.2</version>
+    <time>1740247465</time>
+    <user>dimstar_suse</user>
+    <comment>Softwarestack update</comment>
+    <requestid>1247662</requestid>
+  </revision>
 </revisionlist>
