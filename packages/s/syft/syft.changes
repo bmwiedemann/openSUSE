@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Feb 22 09:40:22 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.20.0:
+  * Added Features
+    - Add file catalogers to selection configuration [#3505
+      @wagoodman]
+    - Configuration for including license contents in SBOM [#3626
+      #3631 @spiffcs]
+    - Support Bitnami embedded SBOMs [#3065 #3341 @juan131]
+  * Bug Fixes
+    - Version parse caused by line breaks on different platforms
+      [#3672 @idhyt]
+    - find bitnami files even when no relationships [#3676
+      @willmurphyscode]
+    - License files which do not match an SPDX expression are
+      erroneously handled as 'unlicensed' [#3412 #3366
+      @HeyeOpenSource]
+    - Incorrect URL encoding of package url (purl) [#3533 #3678
+      @kzantow]
+    - syft should not warn on known bad package.json [#3470 #3645
+      @kzantow]
+    - Scanning a project with many DLLs is slow [#3455 #3677
+      @rogueai]
+    - cyclone-dx presenter drops files, includes only packages
+      [#3435 #3539 @spiffcs]
+    - "syft config" output swaps comments for
+      search-indexed-archives / search-unindexed-archives [#3624
+      #3630 @spiffcs]
+    - dpkg license improvement for non SPDX licenses [#3090 #3366
+      @HeyeOpenSource]
+    - RPM-based PURLs sometimes have incorrect namespace
+      (specifically OpenSUSE) [#3534 #3615 @mprpic]
+  * Additional Changes
+    - update to go 1.24.x [#3660 @westonsteimel]
+    - replace all shorthand tags of mapstruct -> mapstructure
+      [#3633 @spiffcs]
+
+-------------------------------------------------------------------
 Thu Jan 23 05:36:08 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.19.0:
