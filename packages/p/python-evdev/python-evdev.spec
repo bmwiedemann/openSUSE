@@ -19,7 +19,7 @@
 %define modname evdev
 %{?sle15_python_module_pythons}
 Name:           python-evdev
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Python bindings to the Linux input handling subsystem
 License:        BSD-3-Clause

@@ -183,4 +183,14 @@
 - Remove fix-tests.patch as it was included upstream.</comment>
     <requestid>1244849</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>087b64bf8056e209ffac40bc66661beb</srcmd5>
+    <version>1.9.1</version>
+    <time>1740247554</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.1
+  * Fix fox missing UI_FF constants in generated ecodes.py.
+  * More type annotations.</comment>
+    <requestid>1247823</requestid>
+  </revision>
 </revisionlist>

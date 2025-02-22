@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 22 11:48:15 UTC 2025 - Matthias Bach <marix@marix.org> - 1.9.1
+
+- Update to 1.9.1
+  * Fix fox missing UI_FF constants in generated ecodes.py.
+  * More type annotations.
+
+-------------------------------------------------------------------
 Mon Feb 10 19:03:30 UTC 2025 - Matthias Bach <marix@marix.org> - 1.9.0
 
 - Update to 1.9.0
