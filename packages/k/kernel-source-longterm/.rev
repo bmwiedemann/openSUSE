@@ -465,4 +465,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>6.12.15</comment>
     <requestid>1246953</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>661baf52bf67dcd902468302a997161b</srcmd5>
+    <version>6.12.16</version>
+    <time>1740324380</time>
+    <user>dimstar_suse</user>
+    <comment>6.12.16</comment>
+    <requestid>1247801</requestid>
+  </revision>
 </revisionlist>
