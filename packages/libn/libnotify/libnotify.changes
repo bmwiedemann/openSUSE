@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb 20 10:10:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.8.4:
+  + notification:
+    - Set the icon-name property as image hint instead of as
+      app-icon
+    - Modernize the NotifyNotification class definition (and add
+      support for auto-pointers)
+  + notify-send:
+    - Require valid UTF-8 for Summary and Body
+    - Allow sending an empty summary
+    - Flush stdout after printing notification ID
+  + build: Improve mapfile and support building in solaris
+  + Bugs fixed:
+    - notify-send dumps core if notification message is invalid
+      UTF-8
+    - libnotify should be quiet
+    - fdo documentation link outdated in README.md
+- Replace docbook5-xsl-stylesheets with docbook-xsl-stylesheets
+  BuildRequires: Following upstream changes.
+
+-------------------------------------------------------------------
 Tue Jan 16 11:51:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert to source service for easier updating.
