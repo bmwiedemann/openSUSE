@@ -536,6 +536,7 @@ unsorted:
   - alacritty-bash-completion 
   - alacritty-fish-completion 
   - alacritty-zsh-completion 
+  - aldo 
   - aldusleaf-crimson-text-fonts 
   - alee-fonts 
   - alembic-devel 
@@ -878,6 +879,7 @@ unsorted:
   - argon2 
   - argon2-devel 
   - argon2-doc 
+  - argparse-devel 
   - args4j 
   - args4j-javadoc 
   - args4j-tools 
@@ -13634,7 +13636,7 @@ unsorted:
   - libgnomesu-devel 
   - libgnt-devel 
   - libgnt0 
-  - libgnuastro20 
+  - libgnuastro21 
   - libgnudos2 
   - libgnunetarm2 
   - libgnunetblock0 
@@ -14483,8 +14485,7 @@ unsorted:
   - liblinphone-data 
   - liblinphone-devel 
   - liblinphone10 
-  - libliquid 
-  - libliquid-devel 
+  - libliquid1 
   - liblirc0 
   - liblirc0-32bit 
   - liblirc_client0-32bit 
@@ -17626,6 +17627,7 @@ unsorted:
   - linuxptp 
   - linuxrc 
   - linuxrc-devtools 
+  - liquid-dsp-devel 
   - liquidshell 
   - liquidshell-lang 
   - lirc-config 
@@ -49042,6 +49044,7 @@ unsorted:
   - xcursorgen 
   - xcwd 
   - xdbedizzy 
+  - xdemorse 
   - xdg-desktop-portal-cosmic 
   - xdg-desktop-portal-devel 
   - xdg-desktop-portal-devel-docs 
