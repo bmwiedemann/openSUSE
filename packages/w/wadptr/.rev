@@ -66,4 +66,12 @@
     <comment>- Update to release 3.6</comment>
     <requestid>1247407</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>48dbcb2c2949b124fd2b0452e1fce034</srcmd5>
+    <version>3.7</version>
+    <time>1740324400</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.7</comment>
+    <requestid>1247894</requestid>
+  </revision>
 </revisionlist>
