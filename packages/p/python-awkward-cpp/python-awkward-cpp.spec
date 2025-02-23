@@ -1,7 +1,7 @@
 #
 # spec file for package python-awkward-cpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,26 +19,26 @@
 %{?sle15_python_module_pythons}
 %define srcname awkward_cpp
 Name:           python-awkward-cpp
-Version:        41
+Version:        44
 Release:        0
 Summary:        CPU kernels and compiled extensions for Awkward Array
 License:        BSD-3-Clause
 URL:            https://awkward-array.org/
-# SourceRepository:  https://github.com/scikit-hep/awkward/awkward-cpp
+# SourceRepository:  https://github.com/scikit-hep/awkward/tree/main/awkward-cpp
 Source0:        https://files.pythonhosted.org/packages/source/a/awkward-cpp/%{srcname}-%{version}.tar.gz
 Source99:       awkward-cpp.rpmlintrc
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel}
-BuildRequires:  %{python_module scikit-build-core-pyproject >= 0.2}
-BuildRequires:  cmake
+BuildRequires:  %{python_module scikit-build-core-pyproject >= 0.10}
+BuildRequires:  cmake >= 3.29
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.17.0
+Requires:       python-numpy >= 1.18.0
 Provides:       python-awkward_cpp = %{version}-%{release}
 # SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.17.0}
+BuildRequires:  %{python_module numpy >= 1.18.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

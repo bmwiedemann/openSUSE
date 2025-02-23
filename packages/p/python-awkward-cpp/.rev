@@ -277,4 +277,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1227333</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6b2eac17698802e49efc297e67c23f0a</srcmd5>
+    <version>44</version>
+    <time>1740324393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 44
+  * no changelog available
+  * this release corresponds to python-awkward 2.7.4</comment>
+    <requestid>1247854</requestid>
+  </revision>
 </revisionlist>
