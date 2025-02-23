@@ -1,7 +1,7 @@
 #
 # spec file for package gummi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,17 +24,17 @@ License:        MIT
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://github.com/alexandervdm/gummi
 Source0:        https://github.com/alexandervdm/gummi/releases/download/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  texlive-synctex-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gtksourceview-3.0) >= 3.4
 BuildRequires:  pkgconfig(gtkspell3-3.0) >= 3.0
 BuildRequires:  pkgconfig(poppler-glib)
-Requires:       gtkspell
 Requires:       texlive-latex
+Requires:       texlive-synctex
 Recommends:     %{name}-lang
 
 %description
@@ -44,7 +44,7 @@ simplicity in mind, but is useful for both novice and advanced LaTeX writers.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
@@ -53,7 +53,6 @@ simplicity in mind, but is useful for both novice and advanced LaTeX writers.
 %install
 %make_install
 %find_lang %{name}
-%suse_update_desktop_file %{name} Office WordProcessor
 %fdupes %{buildroot}%{_datadir}/
 
 %files
