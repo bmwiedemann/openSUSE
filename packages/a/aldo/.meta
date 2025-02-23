@@ -1,0 +1,8 @@
+<package name="aldo" project="openSUSE:Factory">
+  <title>Console-based morse tutor</title>
+  <description>Aldo is a morse code learning tool which provides multiple types of training
+exercises: Classic exercise, Koch method, Read from file (text file), Callsign
+exercies (random callsigns).</description>
+  <devel project="hamradio" package="aldo"/>
+  <url>https://www.nongnu.org/aldo</url>
+</package>
