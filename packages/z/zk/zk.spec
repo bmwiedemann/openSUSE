@@ -1,7 +1,7 @@
 #
 # spec file for package zk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zk
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 Summary:        Plain text note-taking assistant for markdown
 License:        BSD-2-Clause
@@ -26,7 +26,6 @@ URL:            https://github.com/zk-org/zk
 Source0:        https://github.com/zk-org/zk/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 # PATCH-FIX-UPSTREAM fix_test.patch -- based on commit e3c5784fb84a792491724fe4cc1f26e2c9d01b60
-Patch0:         fix_test.patch
 BuildRequires:  c_compiler
 BuildRequires:  zstd
 BuildRequires:  golang(API)
@@ -40,7 +39,6 @@ It is a command-line tool helping you to maintain a plain text Zettelkasten or p
 
 %prep
 %setup -qa1
-%autopatch -p1
 
 %build
 %ifarch ppc64
@@ -60,6 +58,6 @@ make test
 %files
 %{_bindir}/%{name}
 %license LICENSE
-%doc CHANGELOG.md README.md docs/*.md
+%doc CHANGELOG.md README.md
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:24:08 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.14.2
+  * Path in .zk/config.toml for the default note template now accepts
+    UNIX "~/paths"
+  * Find notes without tags with zk list --tagless
+  * fix: LSP ignores magnet links as links to notes
+  * fix: Note titles with double quoted words no longer break json output
+  * fix: Grammar in error output
+  * fix: Group rules could not be nested
+
+- dropped fix_test.patch as already included in upstream
+
+-------------------------------------------------------------------
 Sun Nov 24 19:36:45 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - added fix_test.patch to fix build fail due to test TestFormatDateHelperElapsedYear
