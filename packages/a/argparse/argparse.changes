@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sun Feb 23 10:35:11 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Adapt conditional for gcc version to allow default version
+  (14.2) on Leap 16+.
+
+-------------------------------------------------------------------
+Sat Feb 22 17:38:00 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

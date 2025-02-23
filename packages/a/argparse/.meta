@@ -1,0 +1,6 @@
+<package name="argparse" project="openSUSE:Factory">
+  <title>Argument Parser for Modern C++</title>
+  <description>argparse is a header-only command-line argument parser for modern C++.</description>
+  <devel project="devel:libraries:c_c++" package="argparse"/>
+  <url>https://github.com/p-ranav/argparse</url>
+</package>

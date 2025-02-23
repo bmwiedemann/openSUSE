@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70925c25da52e9abd999bcd50e235e86</srcmd5>
+    <version>3.2</version>
+    <time>1740324403</time>
+    <user>dimstar_suse</user>
+    <comment>
+(Needed for linux-enable-ir-emitter, on the way to being packaged)
+
+argparse is a header-only command-line argument parser for modern C++.
+</comment>
+    <requestid>1247899</requestid>
+  </revision>
+</revisionlist>
