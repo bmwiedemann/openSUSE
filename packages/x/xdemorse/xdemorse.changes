@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Sat Feb 22 17:11:23 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 3.6.7, license is GPL-2.0-or-later
+- replace xdemorse-fix-build.patch with spec construct
+- Fix patch in message about xdemorserc during start-up
+  xdemorse-3.6.7-xdemorserc-message.patch
+
+-------------------------------------------------------------------
+Wed Oct  2 17:05:32 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Fix build for Tumbleweed and Factory
+
+-------------------------------------------------------------------
+Wed Nov 10 08:41:52 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 3.6.5
+  * see /usr/share/doc/packages/xdemorse/README for changelog
+  * fixes build for latest relkeases (Leap 15.3 and Tumbleweed)
+- Patch xdemorse-fix-build.patch rebased
+
+-------------------------------------------------------------------
+Thu Feb 21 09:58:22 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- add minimum version for gtk3
+
+-------------------------------------------------------------------
+Tue Jan  8 23:41:26 UTC 2019 - mardnh@gmx.de
+
+- Update to version 3.6.2
+  * see /usr/share/doc/packages/xdemorse/README for changelog
+- Specfile cleanup
+- Add patch:
+  - xdemorse-fix-build.patch
+
+-------------------------------------------------------------------
+Wed Mar 15 00:24:13 UTC 2017 - dl8fcl@darc.de
+
+- updated to version 3.0
+
+-------------------------------------------------------------------
+Wed Dec 31 22:22:37 UTC 2014 - wk@ire.pw.edu.pl
+
+- updated to version 2.9
+
+-------------------------------------------------------------------
+Mon Sep 15 20:42:34 UTC 2014 - wk@ire.pw.edu.pl
+
+- updated to version 2.8
+
+-------------------------------------------------------------------
+Fri Apr  4 22:00:29 UTC 2014 - wk@ire.pw.edu.pl
+
+- updated to version 2.7
+
+-------------------------------------------------------------------
+Wed Oct  9 23:10:25 UTC 2013 - wk@ire.pw.edu.pl
+
+- updated to version 2.5
+
+-------------------------------------------------------------------
+Sun Feb  3  2012 - wk@ire.pw.edu.pl
+
+- updated to version 2.3
+- some cleanup to spec file
+
+-------------------------------------------------------------------
+Thu Aug  5  2010 - dl8fcl@darc.de
+
+- updated to version 2.1
+- desktop file, icon and README_openSUSE added
+
+-------------------------------------------------------------------
+Fri Apr 17  2009 - dl9pf@gmx.de
+
+- updated to new version
+
+-------------------------------------------------------------------
+Sat Oct  4  2008 - dl8fcl@darc.de
+  
+- updated for openSUSE_Factory
+
+

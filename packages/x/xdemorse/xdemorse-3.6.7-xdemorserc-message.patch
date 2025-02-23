@@ -1,0 +1,13 @@
+diff -ru xdemorse-3.6.7.orig/src/utils.c xdemorse-3.6.7/src/utils.c
+--- xdemorse-3.6.7.orig/src/utils.c	2025-02-22 18:08:41.140744692 +0100
++++ xdemorse-3.6.7/src/utils.c	2025-02-22 18:09:32.610637532 +0100
+@@ -359,7 +359,7 @@
+         _("Failed to open .xdemorse/xdemorserc file.\n"\
+           "Quit xdemorse and correct.\n"\
+           "(You may need to copy the file:\n"\
+-          "/usr/local/share/examples/xdemorse/xdemorserc.example\n"\
++          "/usr/share/doc/packages/xdemorse/xdemorserc\n"\
+           "to your <home-directory>/.xdemorse/xdemorserc and edit.)") );
+     return( FALSE );
+   }
+Only in xdemorse-3.6.7.orig/src: .utils.c.swp

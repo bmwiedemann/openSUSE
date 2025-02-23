@@ -1,0 +1,5 @@
+<package name="xdemorse" project="openSUSE:Factory">
+  <title>xdemorse is a simple morse decoder for x11</title>
+  <description>xdemorse is a simple morse decoder for x11</description>
+  <devel project="hamradio" package="xdemorse"/>
+</package>
