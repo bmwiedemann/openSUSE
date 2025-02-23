@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:14:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.3.1:
+  * Bugfixes
+    - Fix molecule matrix with no scenario name. (#4400) @Qalthos
+
+-------------------------------------------------------------------
+Wed Feb 19 06:06:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.3.0:
+  * Enhancements
+    - Select and exclude multiple scenarios (#4388) @Qalthos
+  * Bugfixes
+    - Avoid errors when running with readonly virtualenvs (#4398)
+      @ssbarnea
+
+-------------------------------------------------------------------
 Tue Jan 28 14:34:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.2.0:

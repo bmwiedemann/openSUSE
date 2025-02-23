@@ -39,7 +39,7 @@
 
 %bcond_without test
 Name:           molecule
-Version:        25.2.0
+Version:        25.3.1
 Release:        0
 Summary:        Aids in the development and testing of Ansible roles
 License:        MIT
@@ -68,7 +68,7 @@ BuildRequires:  %{ansible_python}-yamllint
 # https://github.com/ansible/molecule/blob/main/.config/requirements.in
 BuildRequires:  %{ansible_python}-base >= 3.9
 BuildRequires:  ansible-core >= 2.12.10
-BuildRequires:  %{ansible_python}-ansible-compat >= 25.1.0
+BuildRequires:  %{ansible_python}-ansible-compat >= 25.1.4
 BuildRequires:  %{ansible_python}-click >= 8.0
 BuildRequires:  %{ansible_python}-click-help-colors >= 0.9
 BuildRequires:  %{ansible_python}-enrich >= 1.2.7
@@ -82,7 +82,7 @@ BuildRequires:  %{ansible_python}-wcmatch >= 8.1.2
 BuildRequires:  fdupes
 # https://github.com/ansible/molecule/blob/main/.config/requirements.in
 Requires:       %{ansible_python}-base >= 3.9
-Requires:       %{ansible_python}-ansible-compat >= 25.1.0
+Requires:       %{ansible_python}-ansible-compat >= 25.1.4
 Requires:       ansible-core >= 2.12.10
 Requires:       %{ansible_python}-click >= 8.0
 Requires:       %{ansible_python}-click-help-colors >= 0.9
