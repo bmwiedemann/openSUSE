@@ -2,7 +2,7 @@
 # spec file for package gnuastro
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 #
 
 
-%define sover 20
+%define sover 21
 %bcond_with     tests
 Name:           gnuastro
-Version:        0.22
+Version:        0.23
 Release:        0
 Summary:        GNU Astronomy Utilities
 License:        GPL-3.0-or-later
@@ -40,9 +40,7 @@ BuildRequires:  pkgconfig(wcslib)
 Recommends:     %{name}-doc
 Recommends:     curl
 Recommends:     ghostscript_any >= 9.10
-%if %{with tests}
 BuildRequires:  ghostscript_any
-%endif
 
 %description
 The GNU Astronomy Utilities (Gnuastro) contains various programs and
@@ -82,7 +80,7 @@ BuildArch:      noarch
 Bash command line completion support for %{name}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -103,13 +101,13 @@ mv -v %{buildroot}/%{_datadir}/%{name}/completion.bash %{buildroot}/%{_datadir}/
 %make_build check
 %endif
 
-%post -n libgnuastro%{sover} -p /sbin/ldconfig
-%postun -n libgnuastro%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgnuastro%{sover}
 
 %files
 %license COPYING*
 %doc ChangeLog README NEWS THANKS AUTHORS
-%config %{_sysconfdir}/*.conf
+%dir %{_sysconfdir}/gnuastro
+%config %{_sysconfdir}/gnuastro/*
 %{_bindir}/*
 %{_datadir}/gnuastro
 %{_mandir}/man1/*.1%{?ext_man}

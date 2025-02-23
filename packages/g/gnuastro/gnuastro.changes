@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 22 19:49:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.23 (library 21.0.0):
+  * Configuration files are installed in /etc/gnuastro
+  * User configuration files are installed in ~/.local/etc/gnuastro
+  * --append to already existing output files
+  * --concentration feature for statistics
+  * Many new operators and options, along with behavioral changes
+
+-------------------------------------------------------------------
 Sun Feb  4 13:05:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Astronomy Utilities 0.22 (library 20.0.0):
