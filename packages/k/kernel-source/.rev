@@ -6904,4 +6904,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.13.3 &amp; thermal fix &amp; HID fix; bugs: bsc#1012628 bsc#1236843 bsc#1237219</comment>
     <requestid>1246571</requestid>
   </revision>
+  <revision rev="769" vrev="1">
+    <srcmd5>3b69ceb78102947798fc7db6e550a66b</srcmd5>
+    <version>6.13.4</version>
+    <time>1740324379</time>
+    <user>dimstar_suse</user>
+    <comment>6.13.4 &amp; pci fix; bugs: bsc#1012628 bsc#1237325</comment>
+    <requestid>1247781</requestid>
+  </revision>
 </revisionlist>

@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.13
-%define patchversion 6.13.3
-%define git_commit 36519ec3af82e21a270f0469dac7d6113ffedd98
+%define patchversion 6.13.4
+%define git_commit 9f6800f48735a0091adb7cfdc77664341034c799
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -37,9 +37,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-64kb
-Version:        6.13.3
+Version:        6.13.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g36519ec
+Release:        <RELEASE>.g9f6800f
 %else
 Release:        0
 %endif
@@ -72,6 +72,9 @@ BuildRequires:  pesign-obs-integration
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 # pahole for CONFIG_DEBUG_INFO_BTF
 BuildRequires:  dwarves >= 1.22
+%endif
+%if 0%{?suse_version} == 1600
+BuildRequires:  gcc13
 %endif
 # for objtool
 BuildRequires:  libelf-devel
@@ -778,6 +781,9 @@ Requires:       dwarves >= 1.22
 Provides:       kernel-preempt-devel = %version-%release
 %endif
 %endif
+%if 0%{?suse_version} == 1600
+Requires:       gcc13
+%endif
 %obsolete_rebuilds %name-devel
 PreReq:         coreutils
 
@@ -1366,6 +1372,10 @@ EOF
 	fi
 	../scripts/config --set-str CONFIG_MODULE_SIG_KEY ".kernel_signing_key.pem"
 fi
+
+%if 0%{?suse_version} == 1600
+        MAKE_ARGS="$MAKE_ARGS CC=gcc-13"
+%endif
 
 case %cpu_arch in
     x86_64 | i386)
