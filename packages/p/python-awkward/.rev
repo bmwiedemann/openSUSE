@@ -513,4 +513,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1227362</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5aacbe82298bde1d4701c50f2deea343</srcmd5>
+    <version>2.7.4</version>
+    <time>1740324392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.4
+  * feat: add a non-touching ak.zip, called 'ak.zip_no_broadcast'
+    by @pfackeldey in #3390
+- Release 2.7.3
+  ## New features
+  * feat: add pretty nbytes repr to .show and jupyter repr by
+    @pfackeldey in #3348
+  * feat: improve error message when indexing placeholder arrays by
+    @pfackeldey in #3353
+  # Bug-fixes and performance
+  * perf: make the ak.Array.mask weakly dependent on the array
+    itself by @pfackeldey in #3347
+  * perf: add caches to reduce python overhead by @pfackeldey in
+    #3359
+  * fix: current failing jax tests for jax&gt;=0.4.36 by @pfackeldey
+    in #3340
+  * fix: placeholder arrays in record __repr__ by @pfackeldey in
+    #3342
+  * fix: stacktraces for custom exception handling by @pfackeldey
+    in #3343
+  * fix: control attrs better as described in issue #3277 by
+    @pfackeldey in #3344
+  * fix: enforce string-only keys in .attrs by @pfackeldey in #3350
+  * fix: nbytes property of ak.Record by @pfackeldey in #3352
+  * fix: hash of HashableDict by @pfackeldey in #3355
+  * fix: datetime.datetime.utcfromtimestamp deprecation warning by
+    @ianna in #3338
+  * fix: version check in to_cudf for API change by @martindurant
+    in #3339
+  * fix: nbytes repr for typetracers with nbytes=unknown_length by</comment>
+    <requestid>1247853</requestid>
+  </revision>
 </revisionlist>

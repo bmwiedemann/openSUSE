@@ -1,0 +1,22 @@
+From 45ac470e8465f7410de66643a1daf03c9f9c2829 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Sat, 22 Feb 2025 19:49:28 +0100
+Subject: [PATCH] No local_dict.clear() on Python 3.13
+
+---
+ src/awkward/_connect/numexpr.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/awkward/_connect/numexpr.py b/src/awkward/_connect/numexpr.py
+index 50c3e0485f..c4e600b24d 100644
+--- a/src/awkward/_connect/numexpr.py
++++ b/src/awkward/_connect/numexpr.py
+@@ -66,7 +66,7 @@ def getArguments(names, local_dict=None, global_dict=None):
+                 a = global_dict[name]
+             arguments.append(a)  # <--- different from NumExpr
+     finally:
+-        if clear_local_dict:
++        if clear_local_dict and hasattr(local_dict, 'clear'):
+             local_dict.clear()
+ 
+     return arguments

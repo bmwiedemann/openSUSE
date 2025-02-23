@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sat Feb 22 17:39:50 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.7.4
+  * feat: add a non-touching ak.zip, called 'ak.zip_no_broadcast'
+    by @pfackeldey in #3390
+- Release 2.7.3
+  ## New features
+  * feat: add pretty nbytes repr to .show and jupyter repr by
+    @pfackeldey in #3348
+  * feat: improve error message when indexing placeholder arrays by
+    @pfackeldey in #3353
+  # Bug-fixes and performance
+  * perf: make the ak.Array.mask weakly dependent on the array
+    itself by @pfackeldey in #3347
+  * perf: add caches to reduce python overhead by @pfackeldey in
+    #3359
+  * fix: current failing jax tests for jax>=0.4.36 by @pfackeldey
+    in #3340
+  * fix: placeholder arrays in record __repr__ by @pfackeldey in
+    #3342
+  * fix: stacktraces for custom exception handling by @pfackeldey
+    in #3343
+  * fix: control attrs better as described in issue #3277 by
+    @pfackeldey in #3344
+  * fix: enforce string-only keys in .attrs by @pfackeldey in #3350
+  * fix: nbytes property of ak.Record by @pfackeldey in #3352
+  * fix: hash of HashableDict by @pfackeldey in #3355
+  * fix: datetime.datetime.utcfromtimestamp deprecation warning by
+    @ianna in #3338
+  * fix: version check in to_cudf for API change by @martindurant
+    in #3339
+  * fix: nbytes repr for typetracers with nbytes=unknown_length by
+    @pfackeldey in #3361
+  * fix: update Chicago Taxi Dataset URL to Zenodo by @jpivarski in
+    #3357
+  * fix: always check '.length' for 'unknown_length' by @jpivarski
+    in #3332
+  * fix: _getitem_at_placeholder checks by @pfackeldey in #3368
+  * fix: resulting setitem layout type for ak.Record by @pfackeldey
+    in #3372
+  * fix: change primitive_policy to allow converting Numpy arrays
+    by @ianna in #3375
+  * fix: placeholder array repr with extra info by @pfackeldey in
+    #3378
+  * fix: set allow_lazy to True to avoid touching potential
+    placeholders by @pfackeldey in #3379
+  * fix: remove unsafe lru cache by @pfackeldey in #3384
+  * fix: test Pyodide with cibuildwheel and fix 32-bit issue by
+    @henryiii in #3270
+- Release 2.7.2
+  ## New features
+  * feat: Content.form_with_key_path() by @jpivarski in #3311
+  * feat: allow np.arrays in ak.full_like as fill_value by
+    @pfackeldey in #3315
+  ## Bug-fixes and performance
+  * fix: sorting of record arrays without fields
+    (ak.zip(tuple(...))) by @pfackeldey in #3314
+  * fix: concatenation of empty records by @pfackeldey in #3316
+  * fix: extend limit on number of regular arrays to concatenate by
+    @ianna in #3312
+  * fix: typetracer lengths for optiontypes in 'ak.where'
+    broadcastings by @pfackeldey in #3322
+  * fix: handle type tracer correctly in indexed option array
+    flattening by @lgray in #3325
+  * fix: Upstream API changes in cuDF 24.10 by @jpivarski in #3328
+    (but actually by @martindurant; see #3309)
+- Enable Python 3.13
+- No special numba treatment
+- Disable some pyarrow tests, known to fail
+  * gh#scikit-hep/awkward#3402
+- Add awkward-py313-clearlocaldict.patch gh#scikit-hep/awkward#3404
+
+-------------------------------------------------------------------
 Fri Nov 22 13:19:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.1:
