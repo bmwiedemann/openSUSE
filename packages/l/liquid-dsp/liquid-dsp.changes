@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Feb 23 13:42:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- switch to cmake and remove spec constructs no longer needed
+- do not build examples, run tests, disable SIMD fixing aarch64
+- add fix-chromosome-32bit.patch for armv7l builds
+- The devel package is now liquid-dsp-devel
+
+-------------------------------------------------------------------
+Fri Feb  7 13:18:10 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  framing
+  * added more description to method definitions such as
+    qpacketmodem and qdetector.
+  * dsssframe64: extended functionality to use qdsync, added
+    standard methods such as copy(), added interfaces for
+    specifying thresholds, reduced default spreading gain.
+  filter
+  * firinterp: added flush() method to run zeros through filter.
+  * rresamp: allow for default bandwidth with an input of -1.
+  nco
+  * fixed issue where frequency was being set improperly, added
+    more extensive testing.
+  * improved the NCO object with VCO precision.
+  random
+  * added more extensive testing for various distributions to
+    ensure values are generated properly.
+
+-------------------------------------------------------------------
 Tue Aug 29 08:25:28 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Avoid compile-time CPU-detection (boo#1100677)

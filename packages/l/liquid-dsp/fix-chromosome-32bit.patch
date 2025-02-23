@@ -1,0 +1,72 @@
+Description: Fix chromosomes for sizeof (unsigned long) == 32
+ In the chromosome struct, the maximum value of a trait is stored in an
+ unsigned long (which is 32 bits on a typical 32 bit architecture) and up to 32
+ bits per trait are allowed.  When the full 32 bits per trait were used, the
+ value stored in max_value is 1 << 32 which is truncated to zero on 32 bit
+ architectures. This causes the limit check in chromosome_init() to always
+ fail.
+ .
+ While it would be sufficient to change the comparison from v >= max_value to
+ v > (max_value - 1), change the setting of max_value to "(1<<bits)-1". This
+ has the advantage of being the actual maximum value and therefore more
+ appropriate for the name.
+Author: Andreas Bombe <aeb@debian.org>
+Last-Update: 2023-10-18
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/optim/src/chromosome.c
++++ b/src/optim/src/chromosome.c
+@@ -62,7 +62,7 @@
+     for (i=0; i<q->num_traits; i++) {
+         q->bits_per_trait[i] = _bits_per_trait[i];
+ 
+-        q->max_value[i] = 1LU << q->bits_per_trait[i];
++        q->max_value[i] = (1ULL << q->bits_per_trait[i]) - 1;
+         q->traits[i] = 0LU;
+ 
+         q->num_bits += q->bits_per_trait[i];
+@@ -80,7 +80,7 @@
+     // validate input
+     if (_num_traits == 0)
+         return liquid_error_config("chromosome_create_basic(), must have at least one trait");
+-    if (_bits_per_trait == 0 || _bits_per_trait > 64)
++    if (_bits_per_trait == 0 || _bits_per_trait > LIQUID_CHROMOSOME_MAX_SIZE)
+         return liquid_error_config("chromosome_create_basic(), bits per trait out of range");
+ 
+     unsigned int * bpt = (unsigned int *) malloc(_num_traits*sizeof(unsigned int));
+@@ -179,7 +179,7 @@
+     unsigned int i;
+     for (i=0; i<_c->num_traits; i++) {
+         //printf("===> [%3u] bits:%3u, max:%12lu, value:%12lu\n", i, _c->bits_per_trait[i], _c->max_value[i], _v[i]);
+-        if (_v[i] >= _c->max_value[i])
++        if (_v[i] > _c->max_value[i])
+             return liquid_error(LIQUID_EIRANGE,"chromosome_init(), value exceeds maximum");
+ 
+         _c->traits[i] = _v[i];
+@@ -197,7 +197,7 @@
+             return liquid_error(LIQUID_EIRANGE,"chromosome_initf(), value must be in [0,1]");
+ 
+         // quantize sample
+-        unsigned long N = 1LU << _c->bits_per_trait[i];
++        unsigned long N = (1ULL << _c->bits_per_trait[i]) - 1;
+         _c->traits[i] = (unsigned long) floorf( _v[i] * N );
+         //printf("===> [%3u] quantizing %8.2f, bits:%3u, N:%12lu, trait:%12lu/%12lu => %12.8f\n",
+         //    i, _v[i], _c->bits_per_trait[i], N, _c->traits[i], _c->max_value[i], chromosome_valuef(_c,i));
+@@ -295,7 +295,7 @@
+ {
+     unsigned int i;
+     for (i=0; i<_q->num_traits; i++)
+-        _q->traits[i] = rand() & (_q->max_value[i]-1LU);
++        _q->traits[i] = rand() & _q->max_value[i];
+     return LIQUID_OK;
+ }
+ 
+@@ -306,7 +306,7 @@
+         liquid_error(LIQUID_EIRANGE,"chromosome_valuef(), trait index exceeded");
+         return 0.0f;
+     }
+-    return (float) (_q->traits[_index]) / (float)(_q->max_value[_index]-1LU);
++    return (float) (_q->traits[_index]) / (float)_q->max_value[_index];
+ }
+ 
+ unsigned int chromosome_value(chromosome   _q,
