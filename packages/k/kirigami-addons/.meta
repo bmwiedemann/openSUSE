@@ -1,5 +1,0 @@
-<package name="kirigami-addons" project="openSUSE:Factory">
-  <title>Kirigami Add-ons</title>
-  <description>Add-ons for the Kirigami framework</description>
-  <devel project="KDE:Frameworks5" package="kirigami-addons"/>
-</package>
