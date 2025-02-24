@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:05:13 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 5.6.0:
+  * Add support for 'secret_key' rotation
+  * Add support for username recovery in simple login flows
+  * Add support for changing username
+  * Add support for Python 3.13
+  * Unify Register forms (and split out re-type password option) Please read 
+    https://github.com/pallets-eco/flask-security/blob/main/CHANGES.rst#id11
+  * Fix duplicate HTML ids in templates.
+  * Fix more duplicate HTML ids in templates.
+  * Ensure templates pass W3C validation (see below)
+
+# Backwards Compatibility Concerns
+  The fixes to all the templates to pass W3C validation could
+  introduce some incompatibilities:
+  * All templates now have a default <title> - before, the <title>
+    element was empty.
+  * The HTML id of the rescue form submit button was changed to
+    'rescue'
+  * The HTML id of the webauthn delete form name field was changed
+    to 'delete-name'
+  * Some template headings were changed to improve consistency
+  * The csrf_token HTML id was changed on us_setup.html,
+    wan_register.html, two_factor_setup.html
+    two_factor_verify_code.html, us_verify.html, verify.html for the
+    second form on the page.
+  * On us_setup.html and two_factor_setup.html the submit code
+    button HTML id was changed.
+
+Refresh patches:
+- ignore-resourcewarning.patch
+- no-mongodb.patch
+
+-------------------------------------------------------------------
 Fri Dec  6 03:40:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Rename back to Flask-Security!

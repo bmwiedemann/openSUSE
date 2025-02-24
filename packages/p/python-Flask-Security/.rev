@@ -20,4 +20,40 @@
   * Ignore ResourceWarnings about unclosed databases.</comment>
     <requestid>1228649</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3b8e81d887f59c249114d97e8d4300c9</srcmd5>
+    <version>5.6.0</version>
+    <time>1740408614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.6.0:
+  * Add support for 'secret_key' rotation
+  * Add support for username recovery in simple login flows
+  * Add support for changing username
+  * Add support for Python 3.13
+  * Unify Register forms (and split out re-type password option) Please read 
+    https://github.com/pallets-eco/flask-security/blob/main/CHANGES.rst#id11
+  * Fix duplicate HTML ids in templates.
+  * Fix more duplicate HTML ids in templates.
+  * Ensure templates pass W3C validation (see below)
+# Backwards Compatibility Concerns
+  The fixes to all the templates to pass W3C validation could
+  introduce some incompatibilities:
+  * All templates now have a default &lt;title&gt; - before, the &lt;title&gt;
+    element was empty.
+  * The HTML id of the rescue form submit button was changed to
+    'rescue'
+  * The HTML id of the webauthn delete form name field was changed
+    to 'delete-name'
+  * Some template headings were changed to improve consistency
+  * The csrf_token HTML id was changed on us_setup.html,
+    wan_register.html, two_factor_setup.html
+    two_factor_verify_code.html, us_verify.html, verify.html for the
+    second form on the page.
+  * On us_setup.html and two_factor_setup.html the submit code
+    button HTML id was changed.
+Refresh patches:
+- ignore-resourcewarning.patch
+- no-mongodb.patch</comment>
+    <requestid>1248075</requestid>
+  </revision>
 </revisionlist>

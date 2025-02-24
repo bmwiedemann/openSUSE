@@ -2,11 +2,11 @@
  tests/conftest.py |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: flask_security-5.5.2/tests/conftest.py
+Index: flask_security-5.6.0/tests/conftest.py
 ===================================================================
---- flask_security-5.5.2.orig/tests/conftest.py
-+++ flask_security-5.5.2/tests/conftest.py
-@@ -941,7 +941,6 @@ def client_nc(request, sqlalchemy_app):
+--- flask_security-5.6.0.orig/tests/conftest.py
++++ flask_security-5.6.0/tests/conftest.py
+@@ -918,7 +918,6 @@ def client_nc(request, app, sqlalchemy_d
      params=[
          "cl-fsqlalchemy",
          "cl-sqla-session",
@@ -14,7 +14,7 @@ Index: flask_security-5.5.2/tests/conftest.py
          "cl-peewee",
          "cl-fsqlalite",
      ]
-@@ -999,7 +998,6 @@ def get_message_local(app):
+@@ -977,7 +976,6 @@ def get_message_local(app):
      params=[
          "sqlalchemy",
          "sqlalchemy-session",
