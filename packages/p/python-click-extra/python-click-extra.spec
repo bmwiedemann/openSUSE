@@ -32,7 +32,7 @@ BuildRequires:  %{python_module wheel}
 # SECTION Build dependencies
 # https://github.com/kdeldycke/click-extra/blob/v4.8.3/pyproject.toml#L67
 BuildRequires:  %{python_module PyYAML >= 6.0.0}
-BuildRequires:  %{python_module boltons >= 24.1.0}
+BuildRequires:  %{python_module boltons >= 25.0.0}
 BuildRequires:  %{python_module click >= 8.1.8}
 BuildRequires:  %{python_module cloup >= 3.0.5}
 BuildRequires:  %{python_module extra-platforms >= 2.0.0}
@@ -55,10 +55,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # https://github.com/kdeldycke/click-extra/blob/v4.8.3/pyproject.toml#L67
 Requires:       python-PyYAML >= 6.0.0
-Requires:       python-boltons >= 24.1.0
+Requires:       python-boltons >= 25.0.0
 Requires:       python-click >= 8.1.4
 Requires:       python-cloup >= 3.0.5
-Requires:       python-extra-platforms >= 1.6.0
+Requires:       python-extra-platforms >= 2.0.0
 Requires:       python-mergedeep >= 1.3.4
 Requires:       python-requests >= 2.32.3
 Requires:       python-tabulate >= 0.9

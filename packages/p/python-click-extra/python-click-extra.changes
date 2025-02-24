@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 23 16:35:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.14.2:
+  * Extract rendering part of the print_cli_run() helper to
+    render_cli_run().
+  * Remove unused click_extra.testing.run_cmd.
+  * Relax requirement on extra-platforms.
+  * Add tests on windows-2025. Remove tests on windows-2019.
+
+-------------------------------------------------------------------
 Sat Feb  8 09:42:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.14.1:
