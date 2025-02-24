@@ -1,7 +1,7 @@
 #
 # spec file for package libsrtp2-linphone
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver	1
 Name:           libsrtp2-linphone
-Version:        2.4.2~git.20230516
+Version:        2.4.2~git.20240220
 Release:        0
 Summary:        BC's fork of the Secure Real-Time Transport Protocol (SRTP) library
 License:        BSD-3-Clause
