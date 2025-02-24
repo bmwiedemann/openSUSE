@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb 23 18:23:21 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.3:
+  * Fix some instances of use-after-free that can be reached before
+    authentication takes place. Those should be viewed as potential
+    vulnerabilities, so it would be prudent to upgrade ASAP if you're
+    running Neat VNC on the internet.
+  * Fix a few issues with WebSockets. One of those bugs will allow
+    an unauthenticated client to put the server into an endless
+    loop when parsing HTTP headers. There were also problems with
+    ping message handling and the way some legacy clients/browsers
+    were being dealt with that he fixed.
+
+-------------------------------------------------------------------
 Mon Dec 30 11:06:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.2:

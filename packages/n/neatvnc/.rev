@@ -219,4 +219,21 @@
   * Buffers with 24 bits per pixel will now result in 32 bpp being reported to</comment>
     <requestid>1235573</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0ce5405e2da39e24ea73c86581bceabf</srcmd5>
+    <version>0.9.3</version>
+    <time>1740408522</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.3:
+  * Fix some instances of use-after-free that can be reached before
+    authentication takes place. Those should be viewed as potential
+    vulnerabilities, so it would be prudent to upgrade ASAP if you're
+    running Neat VNC on the internet.
+  * Fix a few issues with WebSockets. One of those bugs will allow
+    an unauthenticated client to put the server into an endless
+    loop when parsing HTTP headers. There were also problems with
+    ping message handling and the way some legacy clients/browsers
+    were being dealt with that he fixed.</comment>
+    <requestid>1247934</requestid>
+  </revision>
 </revisionlist>

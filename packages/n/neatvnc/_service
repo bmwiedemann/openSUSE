@@ -3,8 +3,8 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/any1/neatvnc.git</param>
-    <param name="revision">4c37ae9349f16a255cd3e95ed7931c71e6abf8fc</param>
-    <param name="versionformat">0.9.2</param>
+    <param name="revision">af5811b75e63f53d1d1f1f3f337387553a96786a</param>
+    <param name="versionformat">0.9.3</param>
   </service>
   <service name="tar" mode="manual"/>
   <service name="recompress" mode="manual">
