@@ -1,7 +1,7 @@
 #
 # spec file for package eatmydata
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -50,7 +50,10 @@ this software no longer crash safe.
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
+# qemu does not implement ptrace
+%if !0%{?qemu_user_space_build}
 %make_build check
+%endif
 
 %files
 %license COPYING

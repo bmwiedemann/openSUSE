@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 22 08:32:24 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Skip testsuite in qemu build
+
+-------------------------------------------------------------------
 Thu Feb 20 20:03:23 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 131:
