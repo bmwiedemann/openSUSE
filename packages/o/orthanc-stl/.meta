@@ -1,0 +1,5 @@
+<package name="orthanc-stl" project="openSUSE:Factory">
+  <title>Orthanc plugin to provide support for DICOM STL in Orthanc (Encapsulated 3D Manufacturing Model IODs)</title>
+  <description></description>
+  <devel project="graphics" package="orthanc-stl"/>
+</package>
