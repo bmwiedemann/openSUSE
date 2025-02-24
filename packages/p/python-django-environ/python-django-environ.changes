@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:38:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.0:
+  * Include prefix in the ImproperlyConfigured error message
+    #513.
+  * Add support for Python 3.12 and 3.13 #538.
+  * Add support for Django 5.1 #535.
+  * Add support for Django CockroachDB driver #509.
+  * Add support for Django Channels #266.
+  * Disabled inline comments handling by default due to potential
+    side effects. While the feature itself is useful, the
+    project's philosophy dictates that it should not be enabled
+    by default for all users #499.
+  * Removed support of Python 3.6, 3.7 and 3.8 #538.
+  * Removed support of Django 1.x. #538.
+
+-------------------------------------------------------------------
 Sat Nov 23 17:51:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.2:
