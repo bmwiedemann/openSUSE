@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-synapse-artifacts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-synapse-artifacts
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Microsoft Azure Synapse Artifacts Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-synapse-artifacts/azure-synapse-artifacts-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_synapse_artifacts/azure_synapse_artifacts-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-synapse-nspkg >= 1.0.0}
 BuildRequires:  %{python_module pip}
@@ -35,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-synapse-nspkg >= 1.0.0
+Requires:       python-typing_extensions >= 4.6.0
 Requires:       (python-azure-core >= 1.3.2 with python-azure-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
@@ -51,10 +51,9 @@ This is the Microsoft Azure Synapse Artifacts Client Library.
 This package has been tested with Python 2.7, 3.5, 3.6, 3.7 and 3.8.
 
 %prep
-%setup -q -n azure-synapse-artifacts-%{version}
+%setup -q -n azure_synapse_artifacts-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-synapse-artifacts-%{version}
 %pyproject_wheel
 
 %install
@@ -70,7 +69,7 @@ rm -rf %{buildroot}%{$python_sitelib}/tests/
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/synapse/artifacts
 %{python_sitelib}/azure_synapse_artifacts-*.dist-info
 
