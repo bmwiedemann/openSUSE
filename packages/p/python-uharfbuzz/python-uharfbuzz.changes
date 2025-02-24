@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:45:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.45.0:
+  * No longer require building HarfBuzz with experimental APIs
+    enabled
+  * Add missing license files for some test fonts
+- update to 0.44.0:
+  * Bind hb_face_count API as Face.count
+  * Bind hb_style_get_value API as Font.get_style_value()
+  * Bind hb_face_reference_table API as Face.reference_table()
+  * Fix Blob.__len__() for blobs created from C pointers
+- update to 0.43.0:
+  * Support hb-ot-name APIs
+
+-------------------------------------------------------------------
 Wed Nov 20 16:53:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.42.0:
