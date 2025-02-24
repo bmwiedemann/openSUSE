@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan  9 17:30:01 UTC 2025 - Manu Maier <mmanu84@outlook.de>
+
+- Update to 4.7.0
+  * Fix zombie reaping for Motion processes
+  * Fix network camera processing for non compliant codec
+  * Fix v4l2M2M encoding
+  * Fix fps conversion specifier
+  * Allow for large date time and event numbers
+  * Remove outdated MMAL camera code
+
+-------------------------------------------------------------------
 Thu Mar 21 15:14:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.6.0

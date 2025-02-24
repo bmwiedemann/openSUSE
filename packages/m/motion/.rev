@@ -260,4 +260,12 @@
   anymore or are disabled in the default configuration file (forwarded request 1160447 from krop)</comment>
     <requestid>1160801</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>03296d01826e86ae9bc5a812911d6cde</srcmd5>
+    <version>4.7.0</version>
+    <time>1740408617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248067</requestid>
+  </revision>
 </revisionlist>
