@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 23 18:54:29 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.1
+  * RustScan is now guaranteed to always be fast.
+  * Added benchmarks for UDP and TCP scanning.
+  * Bump dependencies
+
+-------------------------------------------------------------------
 Sun Oct 13 15:36:31 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.3.0:

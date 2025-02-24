@@ -1,21 +1,21 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/RustScan/RustScan.git</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">2.3.0</param>
-    <param name="match-tag">2.3.0</param>
+    <param name="revision">2.4.1</param>
+    <param name="match-tag">2.4.1</param>
     <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">disable</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
-  <service name="cargo_vendor" mode="disabled">
+  <service name="set_version" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
      <param name="srcdir">RustScan</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
