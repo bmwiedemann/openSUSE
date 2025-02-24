@@ -18,13 +18,13 @@
 
 
 Name:           golang-github-prometheus-node_exporter
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        Prometheus exporter for machine metrics
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://prometheus.io/
-Source:         node_exporter-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 # Generated after applying fix_arp_collector.patch
 Source1:        vendor.tar.gz
 Source2:        prometheus-node_exporter.service
@@ -45,10 +45,11 @@ ExcludeArch:    s390
 %endif
 
 %description
-Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written in Go with pluggable metric collectors.
+Prometheus exporter for hardware and OS metrics exposed by *NIX kernels,
+written in Go with pluggable metric collectors.
 
 %prep
-%autosetup -a1 -p1 -n node_exporter-%{version}
+%autosetup -a1 -p1
 
 %build
 %ifarch i586 s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
@@ -58,7 +59,7 @@ export GOFLAGS="-buildmode=pie"
 promu build -v $BUILD_CGO_FLAG
 
 %install
-install -D -m 0755 %{_builddir}/node_exporter-%{version}/node_exporter %{buildroot}/%{_bindir}/node_exporter
+install -D -m 0755 %{_builddir}/%{name}-%{version}/node_exporter %{buildroot}/%{_bindir}/node_exporter
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/prometheus-node_exporter.service
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.prometheus-node_exporter
 %fdupes %{buildroot}
