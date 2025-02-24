@@ -73,4 +73,12 @@
   * Handle being called as /usr/bin/4ti2_circuits.</comment>
     <requestid>1240220</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>ed04ae120174f5dd3f2113da738806c8</srcmd5>
+    <version>1.6.10</version>
+    <time>1740410443</time>
+    <user>dimstar_suse</user>
+    <comment>since there is no popd matching the pushd, this is trivially replacable by cd</comment>
+    <requestid>1248181</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package 4ti2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,9 +42,9 @@ Group:          System/Libraries
 %description -n lib4ti2-0
 This package contains the 4ti2 program library, which comes in three
 flavors:
-- 32-bit precision integers
-- 64-bit precision integers
-- arbitrary precision integer support through use of GNU MP
+* 32-bit precision integers
+* 64-bit precision integers
+* arbitrary precision integer support through use of GNU MP
 
 %package -n libzsolve0
 Summary:        Library for solving linear systems over integers for 4ti2
@@ -78,7 +78,7 @@ b="%buildroot"
 rm -f "$b/%_libdir"/*.la
 mkdir -p "$b/%_bindir" "$b/%_libexecdir/%name"
 mv "$b/%_bindir"/* "$b/%_libexecdir/%name/"
-pushd "$b/%_libexecdir/%name"
+cd "$b/%_libexecdir/%name"
 for i in *; do
 	ln -s "%_libexecdir/%name/$i" "$b/%_bindir/4ti2_$i"
 done

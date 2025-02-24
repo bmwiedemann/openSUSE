@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 14:48:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bashisms from build recipe
+
+-------------------------------------------------------------------
 Fri Jan 24 21:01:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Edit 4ti2-handle-prefix.diff [boo#1233672]
