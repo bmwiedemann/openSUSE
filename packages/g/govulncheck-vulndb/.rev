@@ -466,4 +466,15 @@
   * GO-2025-3458 CVE-2025-24366 GHSA-vj7w-3m8c-6vpx (forwarded request 1244298 from jfkw)</comment>
     <requestid>1244300</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c55cc13216aa6f8416bd1147c0d67808</srcmd5>
+    <version>0.0.20250218T203201</version>
+    <time>1740408535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.20250218T203201 2025-02-18T20:32:01Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3321 CVE-2024-45337 GHSA-v778-237x-gjrc (forwarded request 1247974 from jfkw)</comment>
+    <requestid>1247975</requestid>
+  </revision>
 </revisionlist>
