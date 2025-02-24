@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:54:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.6.2
+  * Fix MED effect 1Fxy (delay and retrigger). The new
+    implementation supports both delay and retrigger at the same
+    time and repeats.
+  * Fix MED effect FF3 (revert change from 4.6.1). The buggy
+    version of this effect prior to OctaMED v5 is not currently
+    supported.
+  * Fix MED3 and MED4 time factor and tempos 1-10.
+  * Fix MED4 effect 9xx (set speed).
+  * Add support for MED3 and MED4 song files.
+  * Handle IT modules with edit history but no MIDI configuration.
+
+-------------------------------------------------------------------
 Wed Jan  1 07:23:48 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.6.1
