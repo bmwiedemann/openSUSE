@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-extensions
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,6 +101,9 @@ skips="$skips or test_migration_is_last_applied or test_installed_apps_no_resolv
 
 # many DumpScriptTests fail with pytest 8 https://github.com/django-extensions/django-extensions/issues/1877
 skips="$skips or DumpScriptTests"
+
+# skip failing test with latest pygments, related to https://github.com/django-extensions/django-extensions/pull/1797
+skips="$skips or test_should_highlight_python_syntax_with_name"
 
 # test_export_emails, test_set_fake_emails and test_set_fake_emails fail in setup due to missing fixtures in sdist
 %pytest -rs -v -k "not ($skips)" --ignore tests/management/commands/test_set_fake_passwords.py --ignore tests/management/commands/test_set_fake_emails.py --ignore tests/management/commands/test_export_emails.py

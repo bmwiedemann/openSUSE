@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 12:27:11 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip failing test with latest pygments
+
+-------------------------------------------------------------------
 Mon Dec 16 10:27:01 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Fix build
