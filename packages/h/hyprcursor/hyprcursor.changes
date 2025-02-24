@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 09:39:40 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add hyprcursor-fstream.patch: Fix build for Tumbleweed.
+
+-------------------------------------------------------------------
 Fri Dec 20 14:37:57 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - Update to version 0.1.10:

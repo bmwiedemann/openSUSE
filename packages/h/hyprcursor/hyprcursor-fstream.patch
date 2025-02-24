@@ -1,0 +1,10 @@
+Index: hyprcursor-0.1.10/hyprcursor-util/src/main.cpp
+===================================================================
+--- hyprcursor-0.1.10.orig/hyprcursor-util/src/main.cpp
++++ hyprcursor-0.1.10/hyprcursor-util/src/main.cpp
+@@ -1,4 +1,5 @@
+ #include <iostream>
++#include <fstream>
+ #include <zip.h>
+ #include <optional>
+ #include <filesystem>

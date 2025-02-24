@@ -1,7 +1,7 @@
 #
 # spec file for package hyprcursor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Florian "sp1rit" <sp1rit@disroot.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ Summary:        Library and utilities for the hyprland cursor format
 License:        BSD-3-Clause
 URL:            https://wiki.hyprland.org/hypr-ecosystem/hyprcursor/
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         hyprcursor-fstream.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
