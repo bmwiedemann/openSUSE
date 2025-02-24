@@ -1,7 +1,7 @@
 #
 # spec file for package hardinfo2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hardinfo2
-Version:        2.2.4
+Version:        2.2.7
 Release:        0
 Summary:        A System Information and Benchmark for Linux
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-only
@@ -46,8 +46,8 @@ BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     Mesa-demo-x
 Recommends:     dmidecode
+Recommends:     gawk
 Recommends:     iperf
-Recommends:     lsscsi
 Recommends:     sensors
 Recommends:     sysbench
 Recommends:     udisks2

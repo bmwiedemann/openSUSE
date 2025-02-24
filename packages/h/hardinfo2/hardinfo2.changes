@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Feb 22 16:39:23 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.2.7:
+  * PACKAGING: Removed lsscsi from depends/recommends IMPORTANT
+  * PACKAGING: Added gawk to depends/recommends (used by service
+    script) IMPORTANT
+  * CMake compatibility: 3.02->3.31.0+
+  * AppStream metainfo checking and fixes for all tested distros
+  * Single User System granted access to extra info
+  * Add New Cache/RAM benchmark
+  * Improve Storage Benchmark - model detection
+  * Support for Astra Linux, RevyOS Linux, Asahi Fedora Linux
+    Remix
+  * Improved support for MACs - Battery, arm cpus
+  * Fix null pointer in storage benchmark decoding for Fedora
+  * Fix libsoup3 proxy handling crash
+  * Fix ARM core count (all previous benchmarks could be wrong)
+  * Fix Cross module access error
+  * Minor fixes: GCC 15, GPL2 removed/New Virtual detect, fix
+    cross compile build, add some ARM cpus
+  * Minor fixes: Mandriva CPack required package names,
+    Old-Function-Style->new
+- Drop Recommends lsscsi
+- Add Recommends gawk
+
+-------------------------------------------------------------------
 Sat Nov  9 09:06:43 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 2.2.4:
