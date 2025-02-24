@@ -1,7 +1,7 @@
 #
 # spec file for package hyprland-protocols
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           hyprland-protocols
 Summary:        Wayland extension protocol for Hyprland
 Group:          Development/Libraries/Other
 License:        BSD-3-Clause
-Version:        0.4.0
+Version:        0.6.2
 Release:        0
 URL:            https://github.com/hyprwm/hyprland-protocols
 Source0:        https://github.com/hyprwm/hyprland-protocols/archive/refs/tags/v%{version}.tar.gz#/hyprland-protocols-%{version}.tar.gz

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 14 15:20:33 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 0.6.2:
+  * protocols: add hyprland_ctm_control_manager_v1.blocked
+- Update to version 0.6.1:
+  * hyprland-surface: add set_visible_region
+- Update to version 0.6.0:
+  * protocols: add hyprland-lock-notify-v1
+- Update to version 0.5.0:
+  * protocols: add hyprland-surface-v1
+
+-------------------------------------------------------------------
 Wed Oct  9 10:46:15 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 0.4.0:
