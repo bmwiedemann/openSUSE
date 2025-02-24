@@ -1,7 +1,7 @@
 #
 # spec file for package python-flask-restx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ URL:            https://github.com/python-restx/flask-restx
 Source:         https://github.com/python-restx/flask-restx/archive/%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/python-restx/flask-restx/pull/622
 Patch0:         Replace-pytz-with-zoneinfo-datetime-timezone.patch
+Patch1:         Fix-testing-with-flask.patch
 BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Werkzeug}

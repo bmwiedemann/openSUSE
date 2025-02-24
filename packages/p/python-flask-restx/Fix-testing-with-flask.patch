@@ -1,0 +1,22 @@
+From ffb079c696e7901b0b27526810ff32c52beb8aa0 Mon Sep 17 00:00:00 2001
+From: Peter Doggart <10991724+peter-doggart@users.noreply.github.com>
+Date: Thu, 28 Nov 2024 16:29:08 +0000
+Subject: [PATCH] Fix testing for Flask 3.1.0 changes. (#629)
+
+* Fix testing for Flask 3.1.0 changes.
+
+* Deprecate python 3.8.
+
+---------
+
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -44,7 +44,7 @@ def get_specs(self, prefix="", status=200, **kwargs):
+ 
+ @pytest.fixture
+ def app():
+-    app = Flask(__name__)
++    app = Flask(__name__, subdomain_matching=True)
+     app.test_client_class = TestClient
+     yield app
+ 

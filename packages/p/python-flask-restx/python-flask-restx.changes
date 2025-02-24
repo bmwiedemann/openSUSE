@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:33:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add Fix-testing-with-flask.patch
+
+-------------------------------------------------------------------
 Thu Nov 14 13:38:54 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Add Replace-pytz-with-zoneinfo-datetime-timezone.patch
@@ -123,4 +128,4 @@ Thu Sep 24 05:53:07 UTC 2020 - Petr Cervinka <petr@cervinka.net>
 -------------------------------------------------------------------
 Sat May  2 17:48:15 UTC 2020 - Petr Cervinka <petr@cervinka.net>
 
-- Initial version 
+- Initial version

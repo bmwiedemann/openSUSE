@@ -124,4 +124,14 @@
     <comment></comment>
     <requestid>1224216</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>d27c9b725482eb2d319be9916491dff3</srcmd5>
+    <version>1.3.0</version>
+    <time>1740408616</time>
+    <user>dimstar_suse</user>
+    <comment>- add Fix-testing-with-flask.patch
+
+- Initial version</comment>
+    <requestid>1248078</requestid>
+  </revision>
 </revisionlist>
