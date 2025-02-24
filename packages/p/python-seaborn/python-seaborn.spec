@@ -1,7 +1,7 @@
 #
 # spec file for package python-seaborn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ URL:            https://github.com/mwaskom/seaborn
 Source:         https://files.pythonhosted.org/packages/source/s/seaborn/seaborn-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#mwaskom/seaborn#3685
 Patch0:         support-numpy-2.patch
+# PATCH-FIX-UPSTREAM gh#mwaskom/seaborn#3802
+Patch1:         mpl-tick.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module matplotlib >= 3.6.2}

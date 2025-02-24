@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 13:15:18 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream mpl-tick.patch to support matplotlib 3.10
+
+-------------------------------------------------------------------
 Tue Jul  2 05:13:27 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-numpy-2.patch:
