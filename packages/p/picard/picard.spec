@@ -1,7 +1,7 @@
 #
 # spec file for package picard
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           picard
-Version:        2.12.3
+Version:        2.13.3
 Release:        0
 Summary:        The Next Generation MusicBrainz Tagger
 License:        GPL-2.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libofa-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.8
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
@@ -41,6 +41,7 @@ Requires:       python3-Markdown >= 3.2
 Requires:       python3-PyJWT >= 2.0
 Requires:       python3-PyQt5 >= 5.11
 Requires:       python3-PyYAML >= 5.1
+Requires:       python3-charset-normalizer >= 3.3
 Requires:       python3-discid >= 1.0
 Requires:       python3-fasteners >= 0.14
 Requires:       python3-mutagen >= 1.37
@@ -51,6 +52,7 @@ BuildRequires:  python3-Markdown >= 3.2
 BuildRequires:  python3-PyJWT >= 2.0
 BuildRequires:  python3-PyQt5 >= 5.11
 BuildRequires:  python3-PyYAML >= 5.1
+BuildRequires:  python3-charset-normalizer >= 3.3
 BuildRequires:  python3-discid >= 1.0
 BuildRequires:  python3-fasteners >= 0.14
 BuildRequires:  python3-mutagen >= 1.37

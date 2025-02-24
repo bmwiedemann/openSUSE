@@ -1,16 +1,16 @@
-Index: picard-release-2.10/requirements.txt
+Index: picard-release-2.13/requirements.txt
 ===================================================================
---- picard-release-2.10.orig/requirements.txt
-+++ picard-release-2.10/requirements.txt
-@@ -1,12 +1,8 @@
+--- picard-release-2.13.orig/requirements.txt
++++ picard-release-2.13/requirements.txt
+@@ -1,13 +1,9 @@
 -discid~=1.0
 -fasteners~=0.14
 -Markdown~=3.2
 -mutagen~=1.37
 -PyJWT~=2.0
--pyobjc-core>=6.2, <10; sys_platform == 'darwin'
--pyobjc-framework-Cocoa>=6.2, <10; sys_platform == 'darwin'
--PyQt5-sip<=12.9.1; python_version < '3.7'
+-pyobjc-core>=6.2, <11; sys_platform == 'darwin'
+-pyobjc-framework-Cocoa>=6.2, <11; sys_platform == 'darwin'
+-PyQt5-sip<=12.15.0; python_version < '3.9'
 -PyQt5~=5.11
 -python-dateutil~=2.7
 -pywin32; sys_platform == 'win32'
@@ -22,3 +22,5 @@ Index: picard-release-2.10/requirements.txt
 +PyQt5>=5.11
 +python-dateutil>=2.7
  PyYAML>=5.1, <7
+-charset-normalizer~=3.3
++charset-normalizer>=3.3

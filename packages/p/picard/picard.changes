@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Feb 23 21:37:04 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 2.13.3:
+  * Bugfixes
+    - PICARD-2909 - libopus fails to read METADATA_BLOCK_PICTURE without bit
+      depth set
+    - PICARD-3034 - Windows: SSL errors if conflicting libssl is installed
+      system wide
+- Update to 2.13.2:
+  * Bugfixes
+    - PICARD-3030 - Crash when right-clicking on multi-selection of new tag values
+- Update to 2.13.1:
+  * Tasks
+    - PICARD-3027 - Fix PyPI packaging task
+- Update to 2.13:
+  * Bugfixes
+    - PICARD-2989 - Endless recursion when reading settings after script editor
+      dialog was opened
+    - PICARD-2991 - File naming options inaccessible on permission errors to
+      target path
+    - PICARD-3000 - Children's Music is shown as "Children'S Music" in Picard
+    - PICARD-3001 - Picard requires charset-normalizer < 3.4.0
+    - PICARD-3008 - Poorly formatted date tags crash Picard with uncaught
+      Overflow Exception
+    - PICARD-3012 - Wrong disc numbers when submitting release
+    - PICARD-3013 - Case only renaming broken on case-insensitive filesystems
+    - PICARD-3014 - Sorting on macOS does not sort empty values as expected
+  * Tasks
+    - PICARD-3002 - Update Windows code signing certificate
+    - PICARD-3018 - Drop support for Python 3.7
+    - PICARD-3022 - Support Python 3.13
+  * Improvements
+    - PICARD-736 - Avoid manual copying of authentication token
+    - PICARD-2882 - Support PKCE for OAuth2 authorization
+    - PICARD-2886 - OAuth2: Implement token revocation on the server
+    - PICARD-3021 - Add context menu action to metadata box to merge original
+      and new values
+- Refresh picard-requirements.patch
+
+-------------------------------------------------------------------
 Mon Sep  9 06:46:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update 2.12.3:
