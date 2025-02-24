@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:23:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.8.3
+  * Bump docker/build-push-action from 6.10.0 to 6.11.0 (#1220)
+  * Bump docker/build-push-action from 6.11.0 to 6.12.0 (#1221)
+  * Bump docker/build-push-action from 6.12.0 to 6.13.0 (#1222)
+  * [pre-commit.ci] pre-commit autoupdate (#1229)
+  * Update bug template to include latest released versions (#1218)
+  * Add markupsafe.Markup XSS plugin (#1225)
+  * Warn not error on an nonexistant test given (#1230)
+  * Bump sigstore/cosign-installer from 3.7.0 to 3.8.0 (#1233)
+  * Bump docker/setup-buildx-action from 3.8.0 to 3.9.0 (#1234)
+  * B107: Skip None values in hardcoded password detection (#1232)
+  * Pytorch fix (#1231)
+
+-------------------------------------------------------------------
 Mon Feb  3 08:12:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.2:

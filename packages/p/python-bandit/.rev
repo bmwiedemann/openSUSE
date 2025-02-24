@@ -316,4 +316,12 @@
 - cli tool, don't build with multiple python versions</comment>
     <requestid>1242593</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f8840865a0461f7d69cd5cb2ed47d6b1</srcmd5>
+    <version>1.8.3</version>
+    <time>1740408675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248121</requestid>
+  </revision>
 </revisionlist>
