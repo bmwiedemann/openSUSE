@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Feb 24 06:03:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.45.0:
+  * Breaking Changes
+    - Test helpers: Refactor by @tony in #578
+      Test helper functionality has been split into focused modules
+      (#578):
+      libtmux.test module split into:
+      - libtmux.test.constants: Test-related constants
+        (TEST_SESSION_PREFIX, etc.)
+      - libtmux.test.environment: Environment variable mocking
+      - libtmux.test.random: Random string generation utilities
+      - libtmux.test.temporary: Temporary session/window management
+    - Breaking: Import paths have changed. Update imports:
+      # Old (0.44.x and earlier)
+      from libtmux.test import (
+          TEST_SESSION_PREFIX,
+          get_test_session_name,
+          get_test_window_name,
+          namer,
+          temp_session,
+          temp_window,
+          EnvironmentVarGuard,
+      )
+      # New (0.45.0+)
+      from libtmux.test.constants import TEST_SESSION_PREFIX
+      from libtmux.test.environment import EnvironmentVarGuard
+      from libtmux.test.random import get_test_session_name, get_test_window_name, namer
+      from libtmux.test.temporary import temp_session, temp_window
+  * Misc
+    - Cursor rules: Add Cursor Rules for Development and Git Commit
+      Standards by @tony in #575
+  * CI
+    - tests(ci) Check runtime deps import correctly by @tony in
+      #574
+
+-------------------------------------------------------------------
 Tue Feb 18 06:01:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.44.2:
