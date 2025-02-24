@@ -155,4 +155,21 @@
 </comment>
     <requestid>1230056</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0e26456fee717fa01b7a76346aecfd98</srcmd5>
+    <version>0.11.1</version>
+    <time>1740408612</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.1:
+  * Ignore ZipFile compresslevel for Python &lt; 3.7
+
+- version 0.9.3
+  * Write opendocument stream directly to the ZipFile
+- version 0.8.0
+  * Remove soft-page-break
+- Version 0.7.0
+- LICENSE file added
+- Version 0.6.1</comment>
+    <requestid>1248073</requestid>
+  </revision>
 </revisionlist>
