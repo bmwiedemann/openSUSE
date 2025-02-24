@@ -17,14 +17,12 @@
 
 
 Name:           python-beartype
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Unbearably fast runtime type checking in pure Python
 License:        MIT
 URL:            https://github.com/beartype/beartype
 Source:         https://files.pythonhosted.org/packages/source/b/beartype/beartype-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-python313.patch from commit: gh#a565eb2
-Patch0:         fix-python313.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

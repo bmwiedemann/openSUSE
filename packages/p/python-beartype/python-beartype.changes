@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:29:41 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.20.0:
+  * see upstream release announcement: 
+    https://github.com/beartype/beartype/releases/tag/v0.20.0
+- Drop fix-python313.patch
+
+-------------------------------------------------------------------
 Thu Jan  2 17:09:42 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.19.0:
