@@ -1,7 +1,7 @@
 #
 # spec file for package libfprint
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 Mariusz Fik <fisiu@opensuse.org>.
 # Copyright (c) 2021/22 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 #
@@ -31,7 +31,7 @@
 %endif
 
 Name:           libfprint
-Version:        1.94.8+%{todapiver}
+Version:        1.94.9+%{todapiver}
 Release:        0
 Summary:        Library for fingerprint reader support
 License:        LGPL-2.1-or-later
@@ -53,6 +53,7 @@ BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(gusb)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(nss)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(udev)
 
@@ -176,6 +177,7 @@ This package contains the introspection bindings for the libfprint.
 
 %files doc
 %{_datadir}/gtk-doc/html/%{name}-%{apiver}
+%{_datadir}/metainfo/org.freedesktop.libfprint.metainfo.xml
 
 %files devel
 %dir %{_includedir}/%{name}-%{apiver}

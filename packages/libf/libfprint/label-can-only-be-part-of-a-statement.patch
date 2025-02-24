@@ -1,11 +1,11 @@
 diff -purN a/libfprint/drivers/realtek/realtek.c b/libfprint/drivers/realtek/realtek.c
---- a/libfprint/drivers/realtek/realtek.c	2024-09-03 07:05:42.000000000 +0200
-+++ b/libfprint/drivers/realtek/realtek.c	2024-10-20 21:04:05.015338035 +0200
+--- a/libfprint/drivers/realtek/realtek.c	2025-02-20 19:15:46.000000000 +0100
++++ b/libfprint/drivers/realtek/realtek.c	2025-02-21 19:08:26.808065191 +0100
 @@ -1026,6 +1026,8 @@ fp_enroll_sm_run_state (FpiSsm *ssm, FpD
    GVariant *data = NULL;
    gsize user_id_len;
    guint finger;
-+  guint8 *trans_id = NULL;
++  gchar *valid_uid = NULL;
 +  gint payload_len;
  
    switch (fpi_ssm_get_cur_state (ssm))
@@ -14,7 +14,7 @@ diff -purN a/libfprint/drivers/realtek/realtek.c b/libfprint/drivers/realtek/rea
        break;
  
      case FP_RTK_ENROLL_COMMIT:
--      guint8 *trans_id = NULL;
+-      gchar *valid_uid = NULL;
 -      gint payload_len;
 -
        payload_len = UID_PAYLOAD_LEN_DEFAULT;

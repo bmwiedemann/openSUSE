@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb 21 17:52:58 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.94.9+tod1
+  * uru4000: Use OpenSSL to perform AES-ECB encryption, as per this
+    libfprint does not support on NSS, but on openssl (>= 3.0).
+  * goodixmoc: New PIDs 0x60C2, 0x689A
+  * synaptics: New PIDs 0x016C, 0x0174, 0x0107, 0x0108, 0x00C2, 0x00F0
+  * fpcmoc: New PID 0xC844
+  * focaltech_moc: New PIDs 0xA99A, 0xA57A, 0xA78A
+  * elanmoc: New PIDs 0x0C98, 0x0C9D, 0x0CA3
+  * elanspi: New PIDs 0x3128, 0x2766
+  * fp-device: Add FP_DEVICE_RETRY_TOO_FAST retry error
+  * data: AppStream meta info listing supported USB devices.
+  * fixed various memory issues in multiple devices
+- rebase patch
+  % label-can-only-be-part-of-a-statement.patch
+
+-------------------------------------------------------------------
 Sun Oct 20 18:26:51 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.94.8+tod1
