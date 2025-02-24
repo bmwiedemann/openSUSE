@@ -1,0 +1,5 @@
+<package name="lkl" project="openSUSE:Factory">
+  <title>Linux Kernel Library binaries and development tools</title>
+  <description></description>
+  <devel project="filesystems" package="lkl"/>
+</package>

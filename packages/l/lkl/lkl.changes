@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Fri Feb 21 13:51:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Ensure reproducible builds results (boo#1237474)
+
+-------------------------------------------------------------------
+Wed Feb 19 06:18:24 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Create lklfuse user and group during %pre
+  * Add shadow dependency for user/groupadd
+- Set fsname=$DEV and subtype=lkl.$FS FUSE mount options by default
+
+-------------------------------------------------------------------
+Wed Feb 19 02:13:24 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Add warnings about LKL / lklfuse being experimental (jsc#PED-8577)
+  * Drop read-only from default mount options
+- Drop tools/lkl/bin/* removal
+  * Already handled by d8559e616dc10 ("tools/lkl: delete binary blobs")
+
+-------------------------------------------------------------------
+Tue Feb 18 12:42:09 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Run as fixed lklfuse user via systemd system service, instead of logged in
+  UACCESS user service.
+  * This avoids the pain of double mounts and allows for easier sandboxing
+- Rename 51-lklfuse.rules -> 61-lklfuse.rules
+  * ENV{ID_FS_TYPE} filtering now works properly, so drop systemd ID_FS_TYPE
+    ExecCondition.
+- Add manual udev remove event to stop lklfuse-mount@%k
+- Document sandboxing mount namespace caveat in service file
+- Don't run for Btrfs storage
+  * lklfuse lacks multi-device support
+- Update to 0.6.4+git.d156fd7786d
+  * Build lkl with exfat and without Btrfs for now
+
+-------------------------------------------------------------------
+Tue Feb 18 01:31:48 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Merge opensuse-kernel/SLE15-SP6 109163f858bc
+- Cherry pick lkl-upstream cleanups:
+  * 1d9401f042c7 ("lkl: host: drop unused timer parameter")
+  * 62c2bd35bde0 ("Revert "lkl: posix: implement wrapper for timer callback"")
+  * 3566194fd1a2 ("lkl: syscalls: use void pointers to store syscall handlers")
+  * 31c328a651d2 ("lkl: posix: add thread wrapper function")
+  * 0fe731a5b1da ("lkl: posix: implement wrapper for timer callback")
+  * 0db4841b44b1 ("lkl: fix redundant generic-y build warnings")
+  * ba5865e7065d ("lkl: don't install tests")
+  * 32f38143dca8 ("lkl: add tests build barrier")
+- Remove upstream patches:
+  * 0002-lkl-add-tests-build-barrier.patch
+  * 0003-lkl-don-t-install-tests.patch
+
+-------------------------------------------------------------------
+Thu Feb  6 06:20:45 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Merge opensuse-kernel/SLE15-SP6 48e05f5e51ac
+- Fix parallel builds:
+  * 0001-tools-build-Fix-s-detection-code-in-tools-build-Make.patch
+  * 0002-lkl-add-tests-build-barrier.patch
+- Don't install tests
+  * 0003-lkl-don-t-install-tests.patch
+
+-------------------------------------------------------------------
+Mon Feb  3 02:22:39 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Switch source tarball to zstd for faster decompress
+- Fix lklfuse clock_settime on 32-bit architectures
+
+-------------------------------------------------------------------
+Fri Jan 24 09:02:12 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Migrate to openSUSE expanded kernel source based repo, with:
+  * openSUSE expanded kernel branch SLE15-SP6 at 6d3d7f74b53f9
+  * upstream lkl 6757641d398 ("Merge pull request #530 from ddiss/lkl_64")
+    merged atop SLE15-SP6
+  * a bunch of upstream lkl post 6.4 cherry picked fixes
+  * upstream lkl fuse3 conversion
+  * merged SLE15-SP6 69bc9d1462c
+  * unauditable Windows and Android binaries from tools/lkl/bin dropped
+  * added Kconfig with SUSE_VERSION and SUSE_PATCHLEVEL
+  * fix some compiler warnings
+
+-------------------------------------------------------------------
+Wed May 15 09:02:54 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Split out lklfuse package, with remaining binaries in lkl-test
+- Fix library sover symlinks
+- Run boot binary as sanity test
+
+-------------------------------------------------------------------
+Tue May 14 14:19:31 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Update to lkl upstream 6.4.0-6757641d3982
+  * enable CONFIG_TRACING for kasan
+  * fix clang-build and lkl-fuzzers build targets
+- Mount USB block devices via an unprivileged systemd user service
+  * add 51-lklfuse.rules and lklfuse-mount@.service as downstream sources
+
+-------------------------------------------------------------------
+Fri May  3 12:16:55 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Update to lkl upstream 6.1.0-970883c348b61
+  * cptofs: remount as read-only prior to exiting
+  * cptofs: allow to override owner/group when copying files
+  * lkl/tests: add disk parameters check to avoid segfaulting
+  * lkl: Mark the stack non-executable to fix a binutils warning
+    - drop lkl-Mark-the-stack-non-executable-to-fix-a-binutils-.patch
+  * lkl/fs2tar: cleanup ARGP_KEY_END handling
+  * lkl: allow some Makefile install paths to be overridden
+    - drop lkl-allow-some-Makefile-install-paths-to-be-overridd.patch
+  * lkl tools: fix cpfromfs relative path handling
+
+-------------------------------------------------------------------
+Fri Sep 15 22:21:18 UTC 2023 - David Disseldorp <ddiss@suse.de>
+
+- Fix tumbleweed build failure
+  * lkl-Mark-the-stack-non-executable-to-fix-a-binutils-.patch
+
+-------------------------------------------------------------------
+Tue Sep 12 14:43:22 UTC 2023 - David Disseldorp <ddiss@suse.de>
+
+- Initial packaging, mainline v6.1 with LKL patches on top
+- Override /usr/lib/ default install path via LIBDIR
+  * lkl-allow-some-Makefile-install-paths-to-be-overridd.patch

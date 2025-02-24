@@ -1,0 +1,17 @@
+<services>
+        <service name="tar_scm" mode="manual">
+                <param name="scm">git</param>
+                <param name="url">https://github.com/ddiss/opensuse-kernel</param>
+                <param name="revision">SLE15-SP6-LKL</param>
+                <param name="filename">lkl</param>
+                <param name="versionformat">0.6.4+git.%h</param>
+                <param name="changesgenerate">disable</param>
+        </service>
+        <service name="recompress" mode="manual">
+                <param name="file">*.tar</param>
+                <param name="compression">zstd</param>
+        </service>
+        <service name="set_version" mode="manual">
+                <param name="file">lkl.spec</param>
+        </service>
+</services>
