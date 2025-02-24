@@ -25,6 +25,7 @@ Fri Oct 25 15:24:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
     .com/protocolbuffers/protobuf/commit/3ea568a9b6107ebf0d617c47
     6f53a31490fd3182)
   * Mute the minor version warning
+  * fixed (bsc#1230778, CVE-2024-7254)
 
 -------------------------------------------------------------------
 Thu Oct 24 20:56:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
