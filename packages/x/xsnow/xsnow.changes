@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 23 17:56:00 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.8.3:
+  * with the exception of xdo.c: 
+    make 'gcc-14 -fanalyzer -O2 -Wno-analyzer-imprecise-fp-arithmetic'
+    happy
+- Changes in version 3.8.2
+  * po/Makevars: disable changing .po and/or .pot files by
+    po/Makefile.in.in
+  * configure.ac: Add flag --mode="a+rwX" to tar replacement to
+    get reproducible build.
+  * snow.c: fix a real bug: first EraseSnowFlake1(flake) and then
+    DelFlake(flake), and not the other way around.
+  * main.c: do not printf() in sighandler
+
+-------------------------------------------------------------------
 Fri Dec 20 13:27:38 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 3.8.1:
