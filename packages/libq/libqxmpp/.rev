@@ -343,4 +343,13 @@ Qt5 alternative.</comment>
     <comment>Update to 1.9.4</comment>
     <requestid>1242108</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>cd27d7d5600787fba794553b97a9279b</srcmd5>
+    <version>1.10.0</version>
+    <time>1740408620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.0:
+  * Implement XEP-0392: Consistent Color Generation (#672) (forwarded request 1248071 from jubalh)</comment>
+    <requestid>1248072</requestid>
+  </revision>
 </revisionlist>

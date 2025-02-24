@@ -1,7 +1,7 @@
 #
 # spec file for package libqxmpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ ExclusiveArch:  do_not_build
 %endif
 %define sover 5
 Name:           libqxmpp%{?pkg_suffix}
-Version:        1.9.4
+Version:        1.10.0
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
@@ -116,6 +116,7 @@ already found by CMake.
 
 
 # No need to build it twice
+
 %package -n libqxmpp-doc
 Summary:        Qxmpp library documentation
 Group:          Documentation/HTML
