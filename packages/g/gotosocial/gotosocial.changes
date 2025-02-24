@@ -1,0 +1,1032 @@
+-------------------------------------------------------------------
+Sat Feb 22 16:20:40 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+
+- Update to version 0.18.0:
+  * Status edit support: You can now edit your own statuses, and see
+    instance edit history from other accounts too.
+  * Push notifications: GoToSocial can now send push notifications
+    to clients via their configured push providers.
+  * Global instance css customization: admins can now apply custom
+    CSS across their entire instance via the settings panel.
+  * Domain permission subscriptions: it's now possible to configure
+    your instance to subscribe to CSV, JSON, or plaintext lists
+    of domain permissions.
+  * Trusted-proxies helper: instances with improperly configured
+    trusted-proxies settings will now show a warning on the homepage,
+    so admins can make sure their instance is configured correctly.
+  * Better outbox sorting: messages from GoToSocial are now delivered
+    more quickly to people you mention, so conversations across
+    instances should feel snappier.
+  * Log in button: there's now a login button in the top right of the
+    instance homepage, which leads to a helpful page about clients,
+    with a link to the settings panel.
+  * Granular stats controls: with the instance-stats-mode setting,
+    admins can now choose if and how their instance serves stats via
+    the nodeinfo endpoints.
+  * Maintenance router will now be used while your instance is
+    starting up / running migrations. It serves a nice status page
+    informing visitors to wait while migrations complete.
+  * [bugfix] Return 404 when web context target status hidden
+    (gh#superseriousbusiness/gotosocial#3792)
+  * [feature] Implement backfilling statuses thru scheduled_at
+    (gh#superseriousbusiness/gotosocial#3685)
+  * [bugfix] respect X-Robots-Tag and robots.txt on api/v1/instance
+    and nodeinfo (gh#superseriousbusiness/gotosocial#3756)
+  * [bugfix] Suggest lowercase username when creating via OIDC
+    (gh#superseriousbusiness/gotosocial#3780)
+  * [feature] make account sign-up / backlog limits configurable
+    (gh#superseriousbusiness/gotosocial#3768)
+  * [bugfix] Fix POST to create account endpoint
+    (gh#superseriousbusiness/gotosocial#3767)
+  * [bugfix] Fix missing hasChanged func
+    (gh#superseriousbusiness/gotosocial#3764)
+  * [feature/frontend] add light mode color scheme of base css, adapt
+    to prefers-color-scheme (gh#superseriousbusiness/gotosocial#3765)
+  * [bugfix] Reduce Web Push record size
+    (gh#superseriousbusiness/gotosocial#3762)
+  * [bugfix] Add missing group property to the Account model
+    (gh#superseriousbusiness/gotosocial#3746)
+  * [feature] Forward-compatibility with Approval objects
+    (gh#superseriousbusiness/gotosocial#3807)
+  * [feature] Add page-specific class per template
+    (gh#superseriousbusiness/gotosocial#3814)
+  * [bugfix] Drop status indices AFTER updating visibility
+    (gh#superseriousbusiness/gotosocial#3795)
+  * [bugfix] update fedi api to support multiple separate votes
+    in the same multiple choice poll
+    (gh#superseriousbusiness/gotosocial#3809)
+  * [performance] Batch migration queries
+    (gh#superseriousbusiness/gotosocial#3798)
+
+-------------------------------------------------------------------
+Wed Feb 12 17:31:24 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+
+- Update to version 0.17.4:
+  * SECURITY: this release addresses a dereferencing bug which,
+    when triggered under a specific set of circumstances,
+    can cause loss of account data on affected instances.
+- Exclude build for failing architectures
+
+-------------------------------------------------------------------
+Tue Jan 28 21:21:41 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+
+- Adjust config file permissions and AppArmor profile
+
+-------------------------------------------------------------------
+Tue Jan 28 18:55:45 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+
+- Move templates to config dir
+
+-------------------------------------------------------------------
+Fri Jan 10 13:39:57 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+
+- Build web assets in OBS instead of using the upstream binaries
+  by vendoring the yarn dependencies with the help of vendor_yarn.sh
+  inspired by https://build.opensuse.org/requests/1221612/changes
+
+-------------------------------------------------------------------
+Wed Nov  6 17:49:49 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
+
+- Update to version 0.17.3:
+  * [bugfix] sets the max value placeholders to MaxInt32 instead of
+    MaxInt (gh#superseriousbusiness/gotosocial#3517)
+  * [docs] add zh translation to docs
+    (gh#superseriousbusiness/gotosocial#3507)
+
+-------------------------------------------------------------------
+Tue Nov  5 15:56:24 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
+
+- Update to version 0.17.2:
+  * [feature] add support for hinting via api/v_/instance
+    preferred image / video max sizes
+    (gh#superseriousbusiness/gotosocial#3505)
+  * [bugfix] incorrect /api/v_/instance domain uri fields
+    (gh#superseriousbusiness/gotosocial#3477)
+  * [bugfix] support classifying correct video codec
+    without audio as webm (gh#superseriousbusiness/gotosocial#3494)
+  * [bugfix] determine mime-type to use during ffprobe
+    evaluation stage, don't bother checking against file extension
+    (gh#superseriousbusiness/gotosocial#3506)
+  * [bugfix] Fix setting immediate expires_at value
+    on filter endpoints (gh#superseriousbusiness/gotosocial#3513)
+  * [docs] Clarify what Visibility Level means
+    (gh#superseriousbusiness/gotosocial#3500)
+  * [docs] Fix typos (gh#superseriousbusiness/gotosocial#3498)
+
+
+-------------------------------------------------------------------
+Mon Oct 21 14:15:20 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
+
+- Enable Wazero / WASM cache by default
+- Rebase default-settings.patch
+- Update to version 0.17.1:
+  * [feature] Add image descriptions for default avatar + header;
+    don't allow editing default description
+    (gh#superseriousbusiness/gotosocial#3473)
+  * [bugfix] Fix occasionally streaming empty messages
+    (gh#superseriousbusiness/gotosocial#3456)
+  * [bugfix] Fix filter title unique constraint
+    (gh#superseriousbusiness/gotosocial#3458)
+  * [docs] remove duplicate entry from supported platforms
+    (gh#superseriousbusiness/gotosocial#3442)
+  * [docs/bugfix] Fix access to /dev and /tmp in AppArmor profile
+    (gh#superseriousbusiness/gotosocial#3444)
+
+-------------------------------------------------------------------
+Tue Oct 15 15:10:35 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
+
+- Remove vendor.tar.gz, upstream already delivers this as part
+  of the release tarball
+- Rebase default-settings.patch
+- Update to version 0.17.0:
+  * [feature] Implement types[] param for notifications
+    (gh#superseriousbusiness/gotosocial#3009)
+  * [feature/frontend] Reports frontend v2
+    (gh#superseriousbusiness/gotosocial#3022)
+  * [feature] add worker task serialization logic
+    (gh#superseriousbusiness/gotosocial#2989)
+  * [feature/frontend] Rain Forest Theme
+    (gh#superseriousbusiness/gotosocial#3021)
+  * [feature] Default to WASM-based SQLite driver
+    (gh#superseriousbusiness/gotosocial#3053)
+  * [feature] Set some security related headers
+    (gh#superseriousbusiness/gotosocial#3065)
+  * [feature/frontend] Allow setting alt-text for avatar + header
+    (gh#superseriousbusiness/gotosocial#3086)
+  * [feature] support processing of (many) more media types
+    (gh#superseriousbusiness/gotosocial#3090)
+  * [feature/frontend] Better visual separation between "main" thread
+    and "replies" (gh#superseriousbusiness/gotosocial#3093)
+  * [feature/frontend] Add player for audio files; use thumbnail
+    for poster (gh#superseriousbusiness/gotosocial#3099)
+  * [feature] more filetype support!
+    (gh#superseriousbusiness/gotosocial#3107)
+  * [feature] Allow users to set default interaction policies
+    per status visibility (gh#superseriousbusiness/gotosocial#3108)
+  * [feature] use webp for thumbnails
+    (gh#superseriousbusiness/gotosocial#3116)
+  * [feature/frontend] Respect prefers-reduced-motion for avatars,
+    headers, and emojis (gh#superseriousbusiness/gotosocial#3118)
+  * [feature] add flac support
+    (gh#superseriousbusiness/gotosocial#3121)
+  * [feature] Conversations API
+    (gh#superseriousbusiness/gotosocial#3013)
+  * [feature] Allow user to set "bot" flag; show bot icon on profile
+    (gh#superseriousbusiness/gotosocial#3135)
+  * [feature] Federate interaction policies + Accepts;
+    enforce policies (gh#superseriousbusiness/gotosocial#3138)
+  * [feature] Implement following hashtags
+    (gh#superseriousbusiness/gotosocial#3141)
+  * [feature] persist worker queues to db
+    (gh#superseriousbusiness/gotosocial#3042)
+  * [performance] limit ffprobe read time to at most 1s after
+    start of file (gh#superseriousbusiness/gotosocial#3155)
+  * [feature] Object store custom URL (S3)
+    (gh#superseriousbusiness/gotosocial#3046)
+  * [feature] Allow users to export data via the settings panel
+    (gh#superseriousbusiness/gotosocial#3140)
+  * [feature] Implement Mastodon-compatible roles
+    (gh#superseriousbusiness/gotosocial#3136)
+  * [feature] Allow import of following and blocks via CSV
+    (gh#superseriousbusiness/gotosocial#3150)
+  * [feature] Beef up our AI opt-outs
+    (gh#superseriousbusiness/gotosocial#3165)
+  * [feature] Use gifv type for short soundless mp4 videos
+    (gh#superseriousbusiness/gotosocial#3182)
+  * [feature] Add db-postgres-connection-string option
+    (gh#superseriousbusiness/gotosocial#3178)
+  * [performance] move thumbnail generation to go code where possible
+    (gh#superseriousbusiness/gotosocial#3183)
+  * [performance] use native Go code to probe JPEGs
+    (gh#superseriousbusiness/gotosocial#3206)
+  * [feature] Use local_only field, deprecate federated field
+    (gh#superseriousbusiness/gotosocial#3222)
+  * [performance] ffmpeg ffprobe wrapper improvements
+    (gh#superseriousbusiness/gotosocial#3225)
+  * [feature] Interaction requests client api + settings panel
+    (gh#superseriousbusiness/gotosocial#3215)
+  * [performance] use single-threaded image transforms
+    (gh#superseriousbusiness/gotosocial#3252)
+  * [feature/frontend] ecks pee theme
+    (gh#superseriousbusiness/gotosocial#3274)
+  * [feature/frontend] Add brutalist b&w theme
+    (gh#superseriousbusiness/gotosocial#3275)
+  * [feature/frontend] Add options to include Unlisted posts or
+    hide all posts (gh#superseriousbusiness/gotosocial#3272)
+  * [feature] Implement exclusive lists
+    (gh#superseriousbusiness/gotosocial#3280)
+  * [feature] Process Reject of interaction via fedi API,
+    put rejected statuses in the "sin bin" 😈
+    (gh#superseriousbusiness/gotosocial#3271)
+  * [feature/frontend] Add dark version of brutalist theme
+    (gh#superseriousbusiness/gotosocial#3294)
+  * [performance] cache more database calls, reduce required database
+    calls overall (gh#superseriousbusiness/gotosocial#3290)
+  * [feature] Allow users to submit interaction_policy on new statuses
+    (gh#superseriousbusiness/gotosocial#3314)
+  * [feature/frontend] Add solarized light + dark themes
+    (gh#superseriousbusiness/gotosocial#3325)
+  * [feature] Show info for pending replies, allow implicit accept of
+    pending replies (gh#superseriousbusiness/gotosocial#3322)
+  * [performance] remove the pragma optimize analysis limit
+    on connection close (gh#superseriousbusiness/gotosocial#3386)
+  * [feature/frontend] Add Moonlight hunt theme
+    (gh#superseriousbusiness/gotosocial#3393)
+  * [feature] Distribute + ingest Accepts to followers
+    (gh#superseriousbusiness/gotosocial#3404)
+  * [feature] for an sqlite database with journal mode != WAL,
+    use maximum of 1 open conn (gh#superseriousbusiness/gotosocial#3428)
+  * [feature/OFFICIALLY UNSUPPORTED] add nowasm build tag to disable
+    building with WebAssembly (gh#superseriousbusiness/gotosocial#3429)
+  * [bugfix] rename include_types[] to types[]
+    (gh#superseriousbusiness/gotosocial#3023)
+  * [bugfix] add Date and Message-ID headers for email
+    (gh#superseriousbusiness/gotosocial#3031)
+  * [bugfix] Fix typo in instance cache copyF
+    (gh#superseriousbusiness/gotosocial#3052)
+  * [bugfix] use instance configured emoji maxsize on emoji update
+    validation (gh#superseriousbusiness/gotosocial#3056)
+  * [bugfix] update SignupURL routing in email template.
+    (gh#superseriousbusiness/gotosocial#3055)
+  * [bugfix] Handle ErrHideStatus when preparing timeline statuses
+    (gh#superseriousbusiness/gotosocial#3071)
+  * [bugfix] Don't throw error when parent statuses are missing
+    (gh#superseriousbusiness/gotosocial#2011) (gh#superseriousbusiness/gotosocial#3088)
+  * [bugfix] Fix panic in isStatusHomeTimelineable
+    (gh#superseriousbusiness/gotosocial#3096)
+  * [bugfix] update common get target account / status
+    doing refresh async (gh#superseriousbusiness/gotosocial#3124)
+  * [bugfix] media.Processor{}.GetFile() returning 404s on first call,
+    correctly loading on 2nd (gh#superseriousbusiness/gotosocial#3129)
+  * [bugfix] Serialize empty conversation account list as empty list,
+    not null (gh#superseriousbusiness/gotosocial#3137)
+  * [bugfix] Use punycode for host part of resource query param when
+    doing webfinger requests (gh#superseriousbusiness/gotosocial#3133)
+  * [bugfix] moves file rename to earlier in media pipeline so
+    ffmpeg calls ALWAYS have extension (gh#superseriousbusiness/gotosocial#3146)
+  * [bugfix] take into account rotation when generating thumbnail
+    (gh#superseriousbusiness/gotosocial#3147)
+  * [bugfix] close files before error return
+    (gh#superseriousbusiness/gotosocial#3163)
+  * [bugfix] fix emoji recaching operations
+    (gh#superseriousbusiness/gotosocial#3167)
+  * [bugfix] send back Sec-Websocket-Protocol header for streaming
+    WebSocket (gh#superseriousbusiness/gotosocial#3169)
+  * [bugfix] ensure testrig package only compiled-in when debug enabled
+    (gh#superseriousbusiness/gotosocial#3185)
+  * [bugfix] updated pinned counts on status delete
+    (gh#superseriousbusiness/gotosocial#3188)
+  * [bugfix] incorrect AP serialize function used serializing worker data
+    (gh#superseriousbusiness/gotosocial#3196)
+  * [bugfix] relax missing preferred_username, instead using
+    webfingered username (gh#superseriousbusiness/gotosocial#3189)
+  * [bugfix] permit unspecified orientation data
+    (gh#superseriousbusiness/gotosocial#3205)
+  * [bugfix/frontend] Fix error on submitting domain perm with enter key
+    (gh#superseriousbusiness/gotosocial#3218)
+  * [bugfix/frontend] Small safari + gnome web fixes
+    (gh#superseriousbusiness/gotosocial#3219)
+  * [bugfix] Carry-over ApprovedByURI to avoid marking already-approved
+    remote statuses as pending approval (gh#superseriousbusiness/gotosocial#3231)
+  * [bugfix] Let prometheus client do its own compression handling
+    (gh#superseriousbusiness/gotosocial#3232)
+  * [bugfix] Fix incorrect json-ld @context serialization
+    (gh#superseriousbusiness/gotosocial#3243)
+  * [bugfix/frontend] Fix TypeError: gtsError is undefined
+    (gh#superseriousbusiness/gotosocial#3245)
+  * [bugfix] Fix temp table deletion causing runaway allocations
+    (gh#superseriousbusiness/gotosocial#3278)
+  * [bugfix] Swagger: add missing filter_action param for v2 filter PUT
+    (gh#superseriousbusiness/gotosocial#3281)
+  * [bugfix] Update home timeline query to ignore exclusive list entries
+    (gh#superseriousbusiness/gotosocial#3289)
+  * [bugfix] Hoist filterable text field extraction out of loop
+    (gh#superseriousbusiness/gotosocial#3297)
+  * [bugfix/chore] Always set the status sensitive if media
+    + content-warning present (gh#superseriousbusiness/gotosocial#3308)
+  * [bugfix] Use better plaintext representation of status for filtering
+    (gh#superseriousbusiness/gotosocial#3301)
+  * [bugfix] Be more lenient when parsing mastodown following.csv
+    (gh#superseriousbusiness/gotosocial#3311)
+  * [bugfix] Ensure id set on outgoing Reject + Accept
+    (gh#superseriousbusiness/gotosocial#3312)
+  * [bugfix] Fix incorrect policy value parsing
+    (gh#superseriousbusiness/gotosocial#3315)
+  * [bugfix] Fix pending approval check
+    (gh#superseriousbusiness/gotosocial#3316)
+  * [bugfix/email] Don't use plainAuth when no smtp username/password provided
+    (gh#superseriousbusiness/gotosocial#3332)
+  * [bugfix] add support for media with rotation contained in
+    stream side data (gh#superseriousbusiness/gotosocial#3335)
+  * [bugfix] Fix incorrect reply shown in interaction request
+    (gh#superseriousbusiness/gotosocial#3344)
+  * [bugfix] s3 media uploaded without content-type
+    (gh#superseriousbusiness/gotosocial#3353)
+  * [bugfix] fix media limit reader check
+    (gh#superseriousbusiness/gotosocial#3363)
+  * [bugfix] better handle ogg container format
+    (gh#superseriousbusiness/gotosocial#3365)
+  * [bugfix] visibility after implicit approval not getting invalidated
+    (gh#superseriousbusiness/gotosocial#3370)
+  * [bugfix] Carry-over "PinnedAt" when refreshing status
+    (gh#superseriousbusiness/gotosocial#3373)
+  * [bugfix] Include own account in conversation when
+    no other accounts involved (gh#superseriousbusiness/gotosocial#3387)
+  * [bugfix] Don't try to add nil filtered statuses to context
+    (gh#superseriousbusiness/gotosocial#3388)
+  * [bugfix] Account for nil reply when serializing int req
+    (gh#superseriousbusiness/gotosocial#3389)
+  * [bugfix] Update select of pending interaction requests
+    to account for potential nil URI (gh#superseriousbusiness/gotosocial#3392)
+  * [bugfix] Return 501 (not implemented) if user tries to schedule post
+    (gh#superseriousbusiness/gotosocial#3395)
+  * [bugfix] Only allow boosting post from non-interaction-policy-aware
+    instance if public or unlisted (gh#superseriousbusiness/gotosocial#3396)
+  * [bugfix] Fix replies not being stored pending approval
+    (gh#superseriousbusiness/gotosocial#3409)
+  * [bugfix] Add missing </a> on about page
+    (gh#superseriousbusiness/gotosocial#3410)
+  * [bugfix/frontend] Don't show replies to hidden parents; return 404
+    if no "main" thread (gh#superseriousbusiness/gotosocial#3411)
+  * [bugfix] Ensure pending_approval set on statuses + status faves
+    (gh#superseriousbusiness/gotosocial#3415)
+  * [bugfix] Check interaction policies properly on incoming Likes
+    (gh#superseriousbusiness/gotosocial#3416)
+  * [bugfix] Account.last_status_at is a date, not datetime
+    (gh#superseriousbusiness/gotosocial#3419)
+  * [docs] fix: traefik redirect regex
+    (gh#superseriousbusiness/gotosocial#3032)
+  * [docs] restructure federation section
+    (gh#superseriousbusiness/gotosocial#3038)
+  * [docs] Tidy up API auth docs a little bit
+    (gh#superseriousbusiness/gotosocial#3050)
+  * [docs] Update how to enable http2 on nginx
+    (gh#superseriousbusiness/gotosocial#3066)
+  * [docs] update README with our corporate sponsorship policy
+    (gh#superseriousbusiness/gotosocial#3112)
+  * [docs] Add separate migration section + instructions for moving to GtS
+    and not just away (gh#superseriousbusiness/gotosocial#3139)
+  * [docs] Update system requirements, move things around a bit
+    (gh#superseriousbusiness/gotosocial#3157)
+  * [docs/chore] update list of library deps on readme
+    (gh#superseriousbusiness/gotosocial#3288)
+  * [docs] Update readme alpha -> beta, add more feature examples
+    (gh#superseriousbusiness/gotosocial#3333)
+  * [docs] Add rainforest theme to readme.md
+    (gh#superseriousbusiness/gotosocial#3334)
+  * [docs] Don't run SQLite on networked storage
+    (gh#superseriousbusiness/gotosocial#3369)
+  * [docs] Update smtp docs to mention starttls + port 587
+    (gh#superseriousbusiness/gotosocial#3378)
+  * [docs] Make protocol config option really explicit
+    (gh#superseriousbusiness/gotosocial#3391)
+  * [docs] fix httpsig repo typo
+    (gh#superseriousbusiness/gotosocial#3426)
+  * [docs] Document experimental, unsupported nowasm tag
+    (gh#superseriousbusiness/gotosocial#3436)
+
+-------------------------------------------------------------------
+Sat Sep 28 17:15:13 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
+
+- Use build flags recommended by upstream
+- Replace the pre-compiled assets with the ones provided by upstream
+
+-------------------------------------------------------------------
+Sun Jun 16 13:27:56 UTC 2024 - tux93@opensuse.org
+
+- Update to version 0.16.0:
+  * [performance] massively improved ActivityPub delivery worker efficiency
+    gh#superseriousbusiness/gotosocial#2812
+  * [feature] New user sign-up via web page
+    gh#superseriousbusiness/gotosocial#2796
+  * [performance] update GetAccountsByIDs() to use the new
+    multi cache loader endpoint gh#superseriousbusiness/gotosocial#2828
+  * [feature] Admin accounts endpoints; approve/reject sign-ups
+    gh#superseriousbusiness/gotosocial#2826
+  * [performance] cached oauth database types
+    gh#superseriousbusiness/gotosocial#2838
+  * [feature/performance] Store account stats in separate table
+    gh#superseriousbusiness/gotosocial#2831
+  * [feature] Stub status history endpoint
+    gh#superseriousbusiness/gotosocial#2847
+  * [feature] Status source endpoint
+    gh#superseriousbusiness/gotosocial#2848
+  * [feature] Stub account mutes endpoint
+    gh#superseriousbusiness/gotosocial#2852
+  * [feature] Stub conversations endpoint
+    gh#superseriousbusiness/gotosocial#2853
+  * [performance] update remaining worker pools to use queues
+    gh#superseriousbusiness/gotosocial#2865
+  * [feature] Page through accounts as moderator
+    gh#superseriousbusiness/gotosocial#2881
+  * [feature] Add HTTP header permission section to frontend
+    gh#superseriousbusiness/gotosocial#2893
+  * [feature] filters v2 server-side warning/hiding
+    gh#superseriousbusiness/gotosocial#2793
+  * [performance] update go-structr -> v0.8.2 which includes
+    some minor memory usage improvements
+    gh#superseriousbusiness/gotosocial#2904
+  * [performance] update go-structr and go-mutexes with
+    memory usage improvements gh#superseriousbusiness/gotosocial#2909
+  * [performance] cache v2 filter keyword regular expressions
+    gh#superseriousbusiness/gotosocial#2903
+  * [performance] update storage backend and make use of seek syscall
+    when available gh#superseriousbusiness/gotosocial#2924
+  * [experiment] add alternative wasm sqlite3 implementation available
+    via build-tag gh#superseriousbusiness/gotosocial#2863
+  * [feature/frontend] Let admins send test email to validate
+    SMTP config gh#superseriousbusiness/gotosocial#2934
+  * [feature] Debug admin endpoint to clear caches
+    gh#superseriousbusiness/gotosocial#2940
+  * [feature] Implement profile API gh#superseriousbusiness/gotosocial#2926
+  * [feature] Implement Filter API v2 gh#superseriousbusiness/gotosocial#2936
+  * [feature] Add from: search operator and account_id query param
+    gh#superseriousbusiness/gotosocial#2943
+  * [feature/frontend] Add debug sections to settings panel
+    gh#superseriousbusiness/gotosocial#2950
+  * [performance] bump go-structr to v0.8.5 to improve memory usage
+    gh#superseriousbusiness/gotosocial#2955
+  * [feature] log worker startup counts gh#superseriousbusiness/gotosocial#2958
+  * [feature] do not uncache status / emoji media if attached status is bookmarked
+    gh#superseriousbusiness/gotosocial#2956
+  * [feature] Self-serve email change for users
+    gh#superseriousbusiness/gotosocial#2957
+  * [feature] User muting gh#superseriousbusiness/gotosocial#2960
+  * [feature] Implement filters_changed stream event
+    gh#superseriousbusiness/gotosocial#2972
+  * [feature] filter API v2: restore keywords_attributes and statuses_attributes
+    gh#superseriousbusiness/gotosocial#2995
+  * [bugfix] Include MIME email headers to avoid mangling non-ascii text
+    gh#superseriousbusiness/gotosocial#2827
+  * [bugfix] fix get all tokens gh#superseriousbusiness/gotosocial#2841
+  * [bugfix] Fix minor API issue w/ boosted statuses
+    gh#superseriousbusiness/gotosocial#2846
+  * [bugfix] nil panic when deleting status gh#superseriousbusiness/gotosocial#2849
+  * [bugfix] Fix incorrect field name for status source, add helpful message
+    gh#superseriousbusiness/gotosocial#2854
+  * [bugfix] fix error string typo gh#superseriousbusiness/gotosocial#2873
+  * [bugfix] paging rel links gh#superseriousbusiness/gotosocial#2883
+  * [bugfix] retry on http 500 errors inclusive
+    gh#superseriousbusiness/gotosocial#2886
+  * [bugfix] further paging mishaps gh#superseriousbusiness/gotosocial#2884
+  * [bugfix] flaky paging test gh#superseriousbusiness/gotosocial#2888
+  * [bugfix] function queue memory pools limitlessly grow
+    gh#superseriousbusiness/gotosocial#2882
+  * [bugfix/chore] Tidy up remaining references to workers in cmd
+    gh#superseriousbusiness/gotosocial#2889
+  * [bugfix] Lock when checking/creating notifs to avoid race
+    gh#superseriousbusiness/gotosocial#2890
+  * [bugfix] add missing caches to the main cache sweep command
+    gh#superseriousbusiness/gotosocial#2891
+  * [bugfix] close + drain body if response is too large
+    gh#superseriousbusiness/gotosocial#2897
+  * [bugfix] fix cache size calculations gh#superseriousbusiness/gotosocial#2907
+  * [bugfix/frontend] Fix emoji values not resetting on upload
+    gh#superseriousbusiness/gotosocial#2905
+  * [bugfix] concurrent map writes in dereferencer media processing maps
+    gh#superseriousbusiness/gotosocial#2964
+  * [bugfix] Don't nil emojis + fields on blocked accounts
+    gh#superseriousbusiness/gotosocial#2968
+  * [bugfix] update media if more than just url changes
+    gh#superseriousbusiness/gotosocial#2970
+  * [bugfix] Filter fixes gh#superseriousbusiness/gotosocial#2971
+  * [bugfix/frontend] Use re2 syntax for regex validation
+    gh#superseriousbusiness/gotosocial#2978
+  * [bugfix] boost and account recursion gh#superseriousbusiness/gotosocial#2982
+  * [bugfix] Deref stats async, serve stub collections if handshaking
+    gh#superseriousbusiness/gotosocial#2990
+  * [bugfix] Correct Swagger path for poll voting
+    gh#superseriousbusiness/gotosocial#2996
+  * [bugfix] Ensure side effects handled for local unlocked follows
+    gh#superseriousbusiness/gotosocial#2998
+  * [bugfix] avoid v. long notification clear query
+    gh#superseriousbusiness/gotosocial#3007
+  * [docs] Remove last references to RPi
+    gh#superseriousbusiness/gotosocial#2885
+  * [docs] Fix link in general configuration
+    gh#superseriousbusiness/gotosocial#2946
+  * [docs]: Document build tag for WASM SQLite
+    gh#superseriousbusiness/gotosocial#2942
+  * [docs] Add optional instructions for replicating SQLite
+    for disaster recovery gh#superseriousbusiness/gotosocial#2981
+  * [docs] Rework README a bit, import into docs
+    gh#superseriousbusiness/gotosocial#3006
+  * [docs] Update roadmap gh#superseriousbusiness/gotosocial#3011
+
+-------------------------------------------------------------------
+Thu Apr 11 09:32:24 UTC 2024 - tux93@opensuse.org
+
+- Update to version 0.15.0:
+  * [feature] Filters v1 gh#superseriousbusiness/gotosocial#2594
+  * [feature/chore] Add Move database functions + cache
+    gh#superseriousbusiness/gotosocial#2647
+  * [feature] Process incoming Move activity
+    gh#superseriousbusiness/gotosocial#2724
+  * [feature] Process outgoing Move from clientAPI
+    gh#superseriousbusiness/gotosocial#2750
+  * [feature] Add healthcheck endpoints /livez and /readyz
+    gh#superseriousbusiness/gotosocial#2783
+  * [feature] User-selectable preset CSS themes for accounts
+    gh#superseriousbusiness/gotosocial#2777
+  * [feature] Add enable command to mirror existing disable command;
+    update docs gh#superseriousbusiness/gotosocial#2792
+  * [feature] Option to hide followers/following
+    gh#superseriousbusiness/gotosocial#2788
+  * [chore/bugfix] Little DB fixes gh#superseriousbusiness/gotosocial#2726
+  * [bugfix] Fix Swagger spec and add test script
+    gh#superseriousbusiness/gotosocial#2698
+  * [bugfix] add workaround for Xsqlite_interrupt() permanently breaking
+    connection gh#superseriousbusiness/gotosocial#2731
+  * [bugfix] Don't error when populating MovedTo if account not found
+    gh#superseriousbusiness/gotosocial#2741
+  * [bugfix] Fix whitespace move_id issue
+    gh#superseriousbusiness/gotosocial#2742
+  * [bugfix] bump modernc.org/sqlite to fixed version (v1.28.0 -> v1.29.4)
+    gh#superseriousbusiness/gotosocial#2749
+  * [bugfix] only check replyTo visibility during permission checks IF status
+    is local gh#superseriousbusiness/gotosocial#2757
+  * [bugfix] Don't return 500 when searching for unpermitted status
+    gh#superseriousbusiness/gotosocial#2753
+  * [bugfix] Parse links that contain non-ascii characters
+    gh#superseriousbusiness/gotosocial#2762
+  * [bugfix] add all possible busy result codes to the sqlite errBusy
+    catching check gh#superseriousbusiness/gotosocial#2775
+  * [bugfix] Mitigate empty public/local timeline query pages
+    gh#superseriousbusiness/gotosocial#2784
+  * [bugfix] Serve correct URI for AP following collection
+    gh#superseriousbusiness/gotosocial#2787
+  * [bugfix] httpclient not signing subsequent redirect requests
+    gh#superseriousbusiness/gotosocial#2798
+  * [bugfix] set the host header within the signing transport
+    gh#superseriousbusiness/gotosocial#2799
+  * [bugfix] Set domain for empty-domain Friendica accounts
+    gh#superseriousbusiness/gotosocial#2800
+  * [bugfix] Ensure side effects for local -> local follows get processed
+    (gh#superseriousbusiness/gotosocial#2820)
+  * [bugfix] temporarily replace modernc.org/sqlite-v1.29.5 with
+    gitlab.com/NyaaaWhatsUpDoc/sqlite-v1.29.5-concurrency-workaround
+    (gh#superseriousbusiness/gotosocial#2811)
+  * [bugfix] fix possible nil panic (gh#superseriousbusiness/gotosocial#2809)
+  * [bugfix] Sort follows chronologically
+    (gh#superseriousbusiness/gotosocial#2801)
+  * [bugfix] improved authenticate post inbox error handling
+    (gh#superseriousbusiness/gotosocial#2803)
+  * [chore] Move local account settings to separate db table
+    gh#superseriousbusiness/gotosocial#2770
+  * [chore] Different error message for email validation from net/mail parsing
+    on go 1.21.8 and above gh#superseriousbusiness/gotosocial#2760
+  * [chore] Expose move endpoint again, small settings panel fixes
+    gh#superseriousbusiness/gotosocial#2752
+
+-------------------------------------------------------------------
+Mon Mar 11 10:13:44 UTC 2024 - tux93@opensuse.org
+
+- Update to version 0.14.2:
+  * [bugfix] Don't error when populating MovedTo if account not found
+    (gh#superseriousbusiness/gotosocial#2741)
+  * [chore] seperate snapshot from release in goreleaser
+    (gh#superseriousbusiness/gotosocial#2740)
+
+-------------------------------------------------------------------
+Fri Mar  8 12:33:33 UTC 2024 - tux93@opensuse.org
+
+- Update to version 0.14.1:
+  * [chore] Downgrade sqlite v1.29.2 -> v1.28.0
+    (gh#superseriousbusiness/gotosocial#2736)
+  * [bugfix] add workaround for Xsqlite_interrupt() permanently
+    breaking connection (gh#superseriousbusiness/gotosocial#2731)
+
+-------------------------------------------------------------------
+Wed Mar  6 14:32:16 UTC 2024 - tux93@opensuse.org
+
+- Update to version 0.14.0:
+  * [performance] simpler throttling logic
+    gh#superseriousbusiness/gotosocial#2407
+  * [feature] Run ANALYZE after migrations on SQLite
+    gh#superseriousbusiness/gotosocial#2428
+  * [feature] Push status edit messages into open streams
+    gh#superseriousbusiness/gotosocial#2418
+  * [feature] request blocking by http headers
+    gh#superseriousbusiness/gotosocial#2409
+  * [feature] Parse instance descriptors as markdown,
+    show T&C on /about gh#superseriousbusiness/gotosocial#2481
+  * [feature] Allow webp emoji uploads / derefs
+    gh#superseriousbusiness/gotosocial#2484
+  * [feature] Log pubKeyID for incoming http-signed requests
+    gh#superseriousbusiness/gotosocial#2501
+  * [feature] Account alias / move API + db models
+    gh#superseriousbusiness/gotosocial#2518
+  * [feature] Move + alias account via settings panel
+    gh#superseriousbusiness/gotosocial#2519
+  * [performance] overhaul struct (+ result) caching library
+    for simplicity, performance and multiple-result lookups
+    gh#superseriousbusiness/gotosocial#2535
+  * [feature] Allow "charset=utf8" in incoming AP POST requests
+    gh#superseriousbusiness/gotosocial#2564
+  * [feature] Ratelimit + serve emoji images on separate router group
+    gh#superseriousbusiness/gotosocial#2548
+  * [performance] cache library performance enhancements
+    (updates go-structr => v0.2.0)
+    gh#superseriousbusiness/gotosocial#2575
+  * Improve context descendant sorting
+    gh#superseriousbusiness/gotosocial#2579
+  * [feature] Try HTTP signature validation with and without
+    query params for incoming requests
+    gh#superseriousbusiness/gotosocial#2591
+  * [feature] serdes for moved/also_known_as
+    gh#superseriousbusiness/gotosocial#2600
+  * [feature/performance] sqlite pragma optimize on close
+    gh#superseriousbusiness/gotosocial#2596
+  * [performance] temporarily cache account status counts to reduce
+    no. account counts gh#superseriousbusiness/gotosocial#2620
+  * [feature] Add metrics for instance user count, statuses count and
+    federating instances count gh#superseriousbusiness/gotosocial#2592
+  * [feature] add Mastodon-compatible HTTP signature fallback
+    gh#superseriousbusiness/gotosocial#2659
+  * [feature] Add requested_by to relationship model
+    gh#superseriousbusiness/gotosocial#2672
+  * [feature] Add "what is this" section to index template
+    gh#superseriousbusiness/gotosocial#2680
+  * [feature] Add experimental instance-federation-spam-filter option
+    gh#superseriousbusiness/gotosocial#2685
+  * [feature] Block Amazonbot gh#superseriousbusiness/gotosocial#2692
+  * [feature/oidc] Add support for very basic RBAC
+    gh#superseriousbusiness/gotosocial#2642
+  * [feature] add script to test import / export cycle of a
+    gotosocial instance gh#superseriousbusiness/gotosocial#2693
+  * [bugfix] fix poll total vote double count
+    gh#superseriousbusiness/gotosocial#2464
+  * [bugfix] increases sleep time before check in throttle test,
+    to give more leeway gh#superseriousbusiness/gotosocial#2482
+  * [bugfix] fix check for closed poll to account for non-zero
+    closed time gh#superseriousbusiness/gotosocial#2486
+  * [bugfix] Outdent placeholder from <aside> when returning unknown
+    media attachments gh#superseriousbusiness/gotosocial#2485
+  * [bugfix] misc dereferencer fixes
+    gh#superseriousbusiness/gotosocial#2475
+  * [bugfix] fix higher-level explicit domain rules causing issues
+    with lower-level domain blocking gh#superseriousbusiness/gotosocial#2513
+  * [bugfix] Replace named unique constraint on header filter header
+    with generic unique directive gh#superseriousbusiness/gotosocial#2525
+  * [bugfix] Better Postgres search case insensitivity
+    gh#superseriousbusiness/gotosocial#2526
+  * [bugfix] Ensure domain block side effects skipped if allow
+    in place (blocklist mode) gh#superseriousbusiness/gotosocial#2542
+  * [bugfix] Prevent URL + URI for same account being used as
+    alias target gh#superseriousbusiness/gotosocial#2545
+  * [bugfix] Downgrade OTEL libraries to 1.20
+    gh#superseriousbusiness/gotosocial#2546
+  * [bugfix/frontend] Break word on profile field names and values
+    gh#superseriousbusiness/gotosocial#2551
+  * [bugfix] fix array type for also_known_as_uris
+    gh#superseriousbusiness/gotosocial#2553
+  * [bugfix] Don't return Internal Server Error when searching
+    for URIs that don't return AP JSON
+    gh#superseriousbusiness/gotosocial#2550
+  * [bugfix] Don't return Account or Status if new and
+    dereferencing failed, other small fixes
+    gh#superseriousbusiness/gotosocial#2563
+  * Fix EmptyJSONObject/EmptyJSONArray
+    gh#superseriousbusiness/gotosocial#2576
+  * [bugfix] Fix Postgres emoji delete, emoji category change
+    gh#superseriousbusiness/gotosocial#2570
+  * [bugfix] update go-structr v0.2.0 => v0.3.0 to fix possible
+    hash collision issues gh#superseriousbusiness/gotosocial#2586
+  * [bugfix] parent status replied to status not dereferenced sometimes
+    gh#superseriousbusiness/gotosocial#2587
+  * [bugfix] fix possible infinite loops in media / emoji cleanup
+    gh#superseriousbusiness/gotosocial#2590
+  * [bugfix] stop paged endpoints returning null for empty items
+    gh#superseriousbusiness/gotosocial#2597
+  * [bugfix] Ensure activities sender always = activities actor
+    gh#superseriousbusiness/gotosocial#2608
+  * [bugfix] fix postgres connection wrapping panic
+    gh#superseriousbusiness/gotosocial#2636
+  * [bugfix] add stricter checks during all stages of dereferencing
+    remote AS objects gh#superseriousbusiness/gotosocial#2639
+  * [bugfix] Fix dereferencing ancestors on new status create
+    gh#superseriousbusiness/gotosocial#2652
+  * [bugfix] Refactor parse mention, fix local mention bug
+    gh#superseriousbusiness/gotosocial#2657
+  * [bugfix] Ensure local statuses always get a threadID so they can
+    be muted gh#superseriousbusiness/gotosocial#2665
+  * [bugfix] Use ptr for instance stats entries to avoid skipping
+    0 values gh#superseriousbusiness/gotosocial#2666
+  * [bugfix] use start + end line in regex when validating emoji
+    via API gh#superseriousbusiness/gotosocial#2671
+  * [bugfix] fix possible mutex lockup during streaming code
+    gh#superseriousbusiness/gotosocial#2633
+  * [bugfix] Fix wide images being squished when used as
+    instance avatar gh#superseriousbusiness/gotosocial#2669
+  * [bugfix] 2643 bug search for account url doesnt always work
+    when redirected gh#superseriousbusiness/gotosocial#2673
+  * [bugfix] Allow access to TMP directories in example AppArmor config
+    gh#superseriousbusiness/gotosocial#2683
+  * [bugfix] Account timeline: exclude self-replies that mention other
+    accounts gh#superseriousbusiness/gotosocial#2670
+  * [bugfix] check remote status permissibility
+    (gh#superseriousbusiness/gotosocial#2703)
+  * [bugfix] Sanitize incoming PropertyValue fields
+    (gh#superseriousbusiness/gotosocial#2722)
+  * [bugfix/tracing] fix broken tracing due to conflicting schema url
+    (gh#superseriousbusiness/gotosocial#2712)
+  * [bugfix] update postgresqlstmt to correctly use postgres err hook
+    (gh#superseriousbusiness/gotosocial#2711)
+  * [bugfix] unwrap boosts when checking in-reply-to status
+    (gh#superseriousbusiness/gotosocial#2702)
+    [docs]: Update FAQ and ROADMAP gh#superseriousbusiness/gotosocial#2458
+  * [docs] Describe how to block IPs using a firewall
+    gh#superseriousbusiness/gotosocial#2459
+  * [docs] Update roadmap for 2024 onwards
+    gh#superseriousbusiness/gotosocial#2521
+  * [docs] Updates for DB, swap and HTTP/2 on nginx
+    gh#superseriousbusiness/gotosocial#2547
+  * [docs] Add a few things to the FAQ.
+    gh#superseriousbusiness/gotosocial#2557
+  * [docs] use latest cavage link for http signatures
+    gh#superseriousbusiness/gotosocial#2565
+  * [docs] Correct wrong tracing transport option
+    gh#superseriousbusiness/gotosocial#2566
+  * [docs] Fix log-timestamp-format
+    gh#superseriousbusiness/gotosocial#2572
+  * [docs] Add media attachments section to user docs
+    gh#superseriousbusiness/gotosocial#2578
+  * [docs] Revamp storage migration
+    gh#superseriousbusiness/gotosocial#2571
+  * [docs] Mounting config file in container
+    gh#superseriousbusiness/gotosocial#2622
+  * [docs] Enable some new features
+    gh#superseriousbusiness/gotosocial#2623
+  * [docs] Fix a few things in the bare metal install
+    gh#superseriousbusiness/gotosocial#2624
+  * [docs] Inform new contributors to git fetch
+    gh#superseriousbusiness/gotosocial#2637
+  * [docs] Add oauth token authentication workflow
+    gh#superseriousbusiness/gotosocial#2655
+  * [chore/docs] Various little docs updates
+    gh#superseriousbusiness/gotosocial#2691
+  * [docs] Update HTTP signature docs a bit
+    (gh#superseriousbusiness/gotosocial#2721)
+  * [docs] Use human sizes for size limitations
+    (gh#superseriousbusiness/gotosocial#2706)
+- Rebase default-settings.patch
+
+-------------------------------------------------------------------
+Fri Feb 23 15:33:25 UTC 2024 - tux93@opensuse.org
+
+- Move templates and mark them as config to allow for
+  local modifications
+- Also package the Docs
+- Rename default-paths.patch to default-settings.patch
+
+-------------------------------------------------------------------
+Thu Feb 15 14:38:16 UTC 2024 - tux93@opensuse.org
+
+- Update to version 0.13.3:
+  * [bugfix] add stricter checks during all stages of dereferencing
+    remote AS objects (gh#superseriousbusiness/gotosocial#2639)
+  * [bugfix] Don't return Account or Status if new and dereferencing
+    failed, other small fixes (gh#superseriousbusiness/gotosocial#2563)
+  * [bugfix] Don't return Internal Server Error when searching for
+    URIs that don't return AP JSON (gh#superseriousbusiness/gotosocial#2550)
+  * [feature] Allow "charset=utf8" in incoming AP POST requests
+    (gh#superseriousbusiness/gotosocial#2564)
+  * [chore] chore rationalise http return codes for activitypub
+    handlers (gh#superseriousbusiness/gotosocial#2540)
+  * [chore] also allow text/xml in place of application/xml
+    (gh#superseriousbusiness/gotosocial#2640)
+
+-------------------------------------------------------------------
+Tue Feb  6 12:27:55 UTC 2024 - tux93@opensuse.org
+
+- Update to version 0.13.2:
+  * Security: Fixes some issues where remote accounts could potentially
+    imitate other accounts in order to deliver a subset of activities
+    to a GtS inbox as those accounts
+
+-------------------------------------------------------------------
+Fri Jan 26 21:39:22 UTC 2024 - tux93@opensuse.org
+
+- Remove log direcory as the default is so log to journal only
+- Fix AppArmor profile and use it by default
+- Add missing assets, pre-compiled locally
+
+-------------------------------------------------------------------
+Wed Jan 10 15:00:39 UTC 2024 - tux93@opensuse.org
+
+- Update to version 0.13.1:
+  * [bugfix] fix higher-level explicit domain rules causing issues
+    with lower-level domain blocking (gh#superseriousbusiness/gotosocial#2513)
+  * [bugfix] misc dereferencer fixes (gh#superseriousbusiness/gotosocial#2475)
+  * [feature] Log pubKeyID for http-signed requests
+    (gh#superseriousbusiness/gotosocial#2501)
+  * [bugfix] fix check for closed poll to account for non-zero
+    closed time but in the future (gh#superseriousbusiness/gotosocial#2486)
+  * [bugfix] fix poll total vote double count
+    (gh#superseriousbusiness/gotosocial#2464)
+- Use release tarballs instead of git
+
+-------------------------------------------------------------------
+Fri Dec 15 15:22:12 UTC 2023 - tux93@opensuse.org
+
+- Update to version 0.13.0+git.0.f4fcffc:
+  * [bugfix] use a much shorter refresh limit for statuses with polls (#2453)
+  * [bugfix] Let templates deref pointers, as a treat (#2448)
+  * [bugfix] poll vote count fixes (#2444)
+  * [bugfix] ensure the 'Closing' flag doesn't get cached (#2443)
+  * [chore]: Bump github.com/KimMachineGun/automemlimit from 0.3.0 to 0.4.0 (#2440)
+  * [chore]: Bump github.com/miekg/dns from 1.1.56 to 1.1.57 (#2439)
+  * [chore]: Bump golang.org/x/oauth2 from 0.13.0 to 0.15.0 (#2438)
+  * [chore]: Bump github.com/coreos/go-oidc/v3 from 3.7.0 to 3.9.0 (#2442)
+  * [bugfix] Make screenreaders read out Language of posts properly (#2436)
+  * [bugfix] Narrow search scope for accounts starting with '@'; don't LOWER SQLite text searches (#2435)
+  * [bugfix] Ensure `pre` renders as expected, fix orderedCollectionPage (#2434)
+  * [bugfix] Fix web media not showing as sensitive (#2433)
+  * [bugfix] Fix wrong notification type sent for poll end (#2429)
+  * [chore] Run ANALYZE for SQLite after latest migrations (#2427)
+  * [bug] Fix an import statement in the gen template (#2426)
+  * [chore/frontend] Refactor status templates slightly, put polls behind CWs if present (#2419)
+  * [chore]: Bump go.opentelemetry.io/otel/exporters/prometheus (#2412)
+  * [chore]: Bump github.com/tdewolff/minify/v2 from 2.20.7 to 2.20.9 (#2416)
+  * [chore]: Bump github.com/minio/minio-go/v7 from 7.0.63 to 7.0.65 (#2415)
+  * [chore]: Bump golang.org/x/crypto from 0.15.0 to 0.16.0 (#2413)
+  * [chore]: Bump github.com/gorilla/feeds from 1.1.1 to 1.1.2 (#2414)
+  * [docs] Change configuration creation instructions  (#2408)
+  * [bugfix/chore] `Announce` reliability updates (#2405)
+  * [bugfix] in fedi API CreateStatus(), handle case of data-race and return early (#2403)
+  * [bugfix] return 400 Bad Request on more cases of malformed AS data (#2399)
+  * [bugfix] always go through status parent dereferencing on isNew, even on data-race (#2402)
+  * [chore] Re-add indexes, rename account actions indexes (#2401)
+  * [bugfix] Update exif-terminator (fix png issue) (#2391)
+  * [performance/postgres] Rename constraints, remove duplicate indexes (#2392)
+  * [bugfix] Correctly handle range > content-length (#2395)
+  * [chore]: Bump github.com/gorilla/websocket from 1.5.0 to 1.5.1 (#2335)
+  * [bugfix] Don't copy ptr fields in caches (#2386)
+  * [docs] Add docs about memory requirements and swap (#2385)
+  * [feature] Add `/api/v1/admin/debug/apurl` endpoint (#2359)
+  * [performance] http response encoding / writing improvements (#2374)
+  * [chore]: Bump codeberg.org/gruf/go-mutexes from 1.3.0 to 1.3.1 (#2387)
+  * [chore]: Bump codeberg.org/gruf/go-byteutil from 1.1.2 to 1.2.0 (#2389)
+  * [chore]: Bump github.com/gin-contrib/cors from 1.4.0 to 1.5.0 (#2388)
+  * [bugfix] Add Actor to outgoing poll vote Create; other fixes (#2384)
+  * [chore]: Bump golang.org/x/net from 0.17.0 to 0.18.0 (#2390)
+  * [docs] Explain how to secure metrics endpoints (#2382)
+  * [chore/bugfix] Fix double gzip on prometheus endpoint (#2383)
+  * [documentation] add poll and poll vote details to gotosocial federating doc (#2381)
+  * [docs] Add a warning about SQLite cache sizes (#2378)
+  * [bugfix/chore] id poll options properly (#2379)
+  * [chore]: Bump github.com/go-jose/go-jose/v3 from 3.0.0 to 3.0.1 (#2375)
+  * [feature] Poll web view (#2377)
+  * [feature] Federate status language in and out (#2366)
+  * [docs] Annotate split-domain setup (#2372)
+  * [chore/security] refactor AuthenticateFederatedRequest() to handle account deref + suspension checks (#2371)
+  * [feature] Initial Prometheus metrics implementation (#2334)
+  * [bugfix] self-referencing collection pages for status replies (#2364)
+  * [chore]: Bump github.com/tdewolff/minify/v2 from 2.20.6 to 2.20.7 (#2370)
+  * [chore]: Bump go.opentelemetry.io/otel from 1.20.0 to 1.21.0 (#2369)
+  * [chore]: Bump golang.org/x/image from 0.13.0 to 0.14.0 (#2367)
+  * [chore/whoops] re-add missing languages flag (#2365)
+  * [feature] Set/show instance language(s); show post language on frontend (#2362)
+  * [bugfix] process account delete side effects in serial, not in parallel (#2360)
+  * [bugfix] Update poll delete/update db queries (#2361)
+  * [feature/performance] Wrap incoming HTTP requests in timeout handler (#2353)
+  * [chore] update otel -> v1.20.0 (#2358)
+  * [bugfix] support endless polls, and misskey's' method of inferring expiry in closed polls (#2349)
+  * [feature] Media attachment placeholders (#2331)
+  * [chore/bugfix/horror] Allow `expires_in` and poll choices to be parsed from strings (#2346)
+  * [bugfix] Don't try to update suspended accounts (#2348)
+  * [bugfix/docs] Poll api fixups + swagger docs (#2345)
+  * [bugfix] actually decrement votes during poll vote delete ... (#2344)
+  * [bugfix] fix poll vote count responses on client and fedi API vote creation (#2343)
+  * [feature] add support for polls + receiving federated status edits (#2330)
+  * [chore]: Bump github.com/spf13/cobra from 1.7.0 to 1.8.0 (#2338)
+  * [chore]: Bump github.com/jackc/pgx/v5 from 5.4.3 to 5.5.0 (#2336)
+  * [chore]: Bump github.com/tdewolff/minify/v2 from 2.20.0 to 2.20.6 (#2337)
+  * [chore]: Bump modernc.org/sqlite from 1.26.0 to 1.27.0 (#2339)
+  * [feature] support canceling scheduled tasks, some federation API performance improvements (#2329)
+  * [docs/bugfix] fix link to swagger yaml (#2333)
+  * Remove account_suspended_at_idx to resolve slow query issues (#2310)
+  * :see_no_evil: (#2322)
+  * [feature] add per-uri dereferencer locks (#2291)
+  * [bugfix] Relax `Mention` parsing, allowing either href or name (#2320)
+  * [bugfix] Allow blocked accounts to show in precise search (#2321)
+  * [feature] Customizable media cleaner schedule (#2304)
+  * [chore]: Bump github.com/google/uuid from 1.3.1 to 1.4.0 (#2315)
+  * [chore] Bump browserify-sign from 4.2.1 to 4.2.2 in /web/source (#2305)
+  * [chore]: Bump github.com/yuin/goldmark from 1.5.6 to 1.6.0 (#2318)
+  * [chore]: Bump github.com/tdewolff/minify/v2 from 2.19.10 to 2.20.0 (#2316)
+  * [docs] added split-domain configuration for Caddy 2 (#2288)
+  * [bugfix] Extract description as `summary` first, fall back to `name` (#2303)
+  * [chore]: Bump google.golang.org/grpc from 1.58.2 to 1.58.3 (#2301)
+  * [feature] attach any request errors if found, only set level=ERROR if code >= 500 (#2300)
+
+-------------------------------------------------------------------
+Wed Oct 25 14:32:52 UTC 2023 - tux93@opensuse.org
+
+- Update to version 0.12.0+git.11.c7b6cd7:
+  * [feature] Status thread mute/unmute functionality (#2278)
+  * [bugfix] allow store smaller PNG image than 261 bytes (#2263) (#2298)
+  * [bugfix/frontend] Export/import CSV correctly (#2294)
+  * [bugfix] serialize instance terms via API (#2293)
+  * [chore] bump go swagger version in build (#2292)
+  * [bugfix/frontend] Add `nosubmit` option to form fields + use it when instance custom CSS disabled (#2290)
+  * [chore] update minify library (#2286)
+  * Bump @babel/traverse from 7.23.0 to 7.23.2 in /web/source (#2269)
+  * [chore] bump go version -> 1.21.x (#2287)
+  * [chore] de-interface{} the federator and dereferencer structs (#2285)
+  * [chore]: Bump github.com/coreos/go-oidc/v3 from 3.6.0 to 3.7.0 (#2284)
+
+-------------------------------------------------------------------
+Mon Oct 23 09:33:36 UTC 2023 - tux93@opensuse.org
+
+- Update to version 0.12.0+git.0.9114c5c:
+  * [bugfix/frontend] fix typo and other oddness in patchRemoteEmojis (#2281)
+  * [docs] Update README.md (#2279)
+  * [bugfix] add missing "local" param in public timeline link headers (#2277)
+  * [bugfix] Postgres error wrapping fix (#2276)
+  * [frontend/bugfix] bulk import export link (#2275)
+  * [bugfix/frontend] Fix 'steal this look' emoji promise mapping (#2270)
+  * [feature] Allow import/export/creation of domain allows via admin panel (#2264)
+  * [chore]: Bump github.com/microcosm-cc/bluemonday from 1.0.25 to 1.0.26 (#2266)
+  * [chore]: Bump golang.org/x/net from 0.16.0 to 0.17.0 (#2262)
+  * [chore]: Bump golang.org/x/oauth2 from 0.12.0 to 0.13.0 (#2258)
+  * [chore]: Bump golang.org/x/image from 0.12.0 to 0.13.0 (#2256)
+  * [chore]: Bump github.com/abema/go-mp4 from 1.0.0 to 1.1.1 (#2257)
+  * [chore]: Bump golang.org/x/net from 0.15.0 to 0.16.0 (#2260)
+  * [chore] Convert some settings / admin panel JS to TypeScript (#2247)
+  * updates markdown parsing to reduce allocations in the same way as the plain text formatter (#2252)
+  * [docs]  statuses-query-pinned  #2250 (#2251)
+  * [feature] tentatively start adding polls support (#2249)
+  * [chore] internal/ap: add pollable AS types, code reformatting, general niceties (#2248)
+  * [chore]: Bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp from 1.18.0 to 1.19.0 (#2246)
+  * [chore]: Bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc (#2244)
+  * [chore]: Bump modernc.org/sqlite from 1.25.0 to 1.26.0 (#2243)
+  * [chore]: Bump go.opentelemetry.io/otel/sdk from 1.18.0 to 1.19.0 (#2242)
+  * [feature] Block a bunch of "AI" crawlers (#2239)
+  * [bugfix] Fix paging for empty items (#2236)
+  * [frontend] Add `discoverable` flag to settings panel (#2235)
+  * [chore/bugfix] Deinterface text.Formatter, allow underscores in hashtags (#2233)
+  * [bugfix] Move follow.show_reblogs check further up to avoid showing unwanted reblogs in home timeline (#2234)
+  * [chore] Enable S256 code challenge (#2224)
+  * [chore]: Bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc (#2221)
+  * [chore]: Bump golang.org/x/oauth2 from 0.11.0 to 0.12.0 (#2223)
+  * [chore]: Bump github.com/abema/go-mp4 from 0.13.0 to 1.0.0 (#2222)
+  * [bugfix] support both CollectionPage AND OrderedCollectionPage in status replies (#2220)
+  * [chore] deinterface the typeutils.Converter and update to use state structure (#2217)
+  * [chore] fix typo in slice.go (#2219)
+  * [docs] ahs article milestone a (#2218)
+  * [feature] Implement explicit domain allows + allowlist federation mode (#2200)
+  * [docs] Add a note on cluster support (#2214)
+  * [feature] add paging to AP following / followers endpoints (#2198)
+  * [chore]: Bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp from 1.17.0 to 1.18.0 (#2207)
+  * [chore]: Bump github.com/miekg/dns from 1.1.55 to 1.1.56 (#2204)
+  * [bugfix] fix flakey paging test (#2210)
+  * [chore] bump bun (and related libraries) versions to v1.1.16 (#2209)
+  * [feature] add paging to account follows, followers and follow requests endpoints (#2186)
+  * [feature] Allow admins to expire remote public keys; refetch expired keys on demand (#2183)
+  * [feature] Support Actor URIs for webfinger queries (#2187)
+  * [chore] bump bun v1.1.14 -> v1.1.15 (#2195)
+  * [chore]: Bump golang.org/x/net from 0.14.0 to 0.15.0 (#2193)
+  * [chore]: Bump github.com/tdewolff/minify/v2 from 2.12.8 to 2.12.9 (#2194)
+  * [chore]: Bump golang.org/x/crypto from 0.12.0 to 0.13.0 (#2190)
+  * [docs] add fail2ban regex in the doc (#2189)
+  * [chore] much improved paging package (#2182)
+  * [feature] Support OTLP HTTP, drop Jaeger (#2184)
+  * [bugfix] fix checks for deref the same status descendants / ascendants (#2181)
+  * [chore] Add script for downloading latest snapshot tar.gz (#2157)
+  * [feature] Don't trace non-existing routes (#2172)
+  * [feature] Store admin actions in the db, prevent conflicting actions (#2167)
+  * [chore]: Bump golang.org/x/image from 0.11.0 to 0.12.0 (#2178)
+  * [chore]: Bump github.com/minio/minio-go/v7 from 7.0.62 to 7.0.63 (#2180)
+  * [chore]: Bump golang.org/x/text from 0.12.0 to 0.13.0 (#2177)
+  * [bugfix] move SQLite pragmas into connection string (#2171)
+  * [bugfix] wrap bun.Tx to add our own error processing (#2169)
+  * [chore]: Bump github.com/google/uuid from 1.3.0 to 1.3.1 (#2166)
+  * [chore]: Bump github.com/KimMachineGun/automemlimit from 0.2.6 to 0.3.0 (#2165)
+  * [chore/frontend] Make line-height a wee little bit bigger (#2159)
+  * [docs] Update backup docs (#2153)
+  * [bugfix/frontend] Normalize header sizes (#2152)
+  * [feature] list commands for both attachment and emojis (#2121)
+  * [feature] Add rate limit exceptions option, use ISO8601 for rate limit reset (#2151)
+  * [performance] Rework home timeline query to use cache more (#2148)
+  * [feature] Make log format configurable (#2130)
+
+-------------------------------------------------------------------
+Mon Aug 21 17:43:54 UTC 2023 - tux93@opensuse.org
+
+- Update to version 0.11.0+git.12.638f023:
+  * [performance] Tweak media attachment cleanup; replace stale index (#2143)
+  * [chore]: Bump codeberg.org/gruf/go-kv from 1.6.3 to 1.6.4 (#2142)
+  * [chore]: Bump github.com/minio/minio-go/v7 from 7.0.61 to 7.0.62 (#2141)
+  * [chore]: Bump github.com/yuin/goldmark from 1.5.5 to 1.5.6 (#2140)
+  * [feature/bugfix] Probe S3 storage for CSP uri, add config flag for extra URIs (#2134)
+  * [feature] Instance rules (#2125)
+  * [bugfix] fix double firing bun.DB query hooks (#2124)
+  * [chore]: Bump github.com/jackc/pgx/v5 from 5.4.2 to 5.4.3 (#2112)
+  * [chore]: Bump github.com/abema/go-mp4 from 0.12.0 to 0.13.0 (#2113)
+  * [chore]: Bump modernc.org/sqlite from 1.24.0 to 1.25.0 (#2114)
+
+-------------------------------------------------------------------
+Thu Dec  1 19:22:31 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package 

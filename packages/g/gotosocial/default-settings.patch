@@ -1,0 +1,179 @@
+From 080b2400828d6eaa1246437d406a6ce12d40981f Mon Sep 17 00:00:00 2001
+From: Flann van der Eik <fl4nn@posteo.de>
+Date: Tue, 15 Oct 2024 16:55:22 +0200
+Subject: [PATCH] Modify default paths to match packaging
+
+---
+ example/apparmor/gotosocial | 43 +++++--------------------------------
+ example/config.yaml         | 27 +++++++++++++----------
+ example/gotosocial.service  |  7 +++---
+ 3 files changed, 25 insertions(+), 52 deletions(-)
+
+diff --git a/example/apparmor/gotosocial b/example/apparmor/gotosocial
+index 44192428c..636425e9c 100644
+--- a/example/apparmor/gotosocial
++++ b/example/apparmor/gotosocial
+@@ -7,59 +7,26 @@ profile gotosocial flags=(attach_disconnected, mediate_deleted) {
+   include <abstractions/nameservice>
+   include <abstractions/user-tmp>
+ 
+-  # Allow common binary install paths.
+-  #
+-  # You can change or remove these depending on
+-  # where you've installed your GoToSocial binary.
+-  /gotosocial/gotosocial mrix,
+-  /usr/local/bin/gotosocial mrix,
+-  /usr/bin/gotosocial mrix,
+   /usr/sbin/gotosocial mrix,
+ 
+-  # Allow access to GoToSocial's storage and database paths.
+-  # Change these depending on your db + storage locations.
+-  owner /gotosocial/{,**} r,
+-  owner /gotosocial/db/* wk,
+-  owner /gotosocial/storage/** wk,
+-
+-  # Embedded ffmpeg needs read
+-  # permission on /dev/urandom.
++  # Embedded ffmpeg needs read permission on /dev/urandom.
+   /dev/ r,
+   /dev/urandom r,
+ 
+-  # Temp dir access is needed for storing
+-  # files briefly during media processing.
+-  /tmp/ r,
+-  owner /tmp/* rwk,
+-
+   # If running with GTS_WAZERO_COMPILATION_CACHE set,
+   # change + uncomment the below lines as appropriate:
+-  # owner /your/wazero/cache/directory/ r,
+-  # owner /your/wazero/cache/directory/** rwk,
++  owner /var/lib/gotosocial/.cache r,
++  owner /var/lib/gotosocial/.cache/** rwk,
+ 
+   # If you've enabled logging to syslog, allow GoToSocial
+   # to write logs by uncommenting the following line:
+   # /var/log/syslog w,
+ 
+-  # These directories are not currently used by any of
+-  # the recommended GoToSocial installation methods, but
+-  # may be used in the future and/or for custom installs.
+-  # Delete them if you prefer.
+-  owner /etc/gotosocial/{,**} r,
+-  owner /usr/local/etc/gotosocial/{,**} r,
+-  owner /usr/share/gotosocial/{,**} r,
+-  owner /usr/local/share/gotosocial/{,**} r,
+-  owner /usr/lib/gotosocial/{,**} r,
+-  owner /usr/lib/gotosocial/db/* wk,
+-  owner /usr/lib/gotosocial/storage/** wk,
+-  owner /usr/local/lib/gotosocial/{,**} r,
+-  owner /usr/local/lib/gotosocial/db/* wk,
+-  owner /usr/local/lib/gotosocial/storage/** wk,
++  /etc/gotosocial/{,**} r,
++  /usr/share/gotosocial/{,**} r,
+   owner /var/lib/gotosocial/{,**} r,
+   owner /var/lib/gotosocial/db/* wk,
+   owner /var/lib/gotosocial/storage/** wk,
+-  owner /opt/gotosocial/{,**} r,
+-  owner /run/gotosocial/{,**} r,
+ 
+   /etc/mime.types r,
+   /etc/services r,
+diff --git a/example/config.yaml b/example/config.yaml
+index 644b51575..7bfe4a800 100644
+--- a/example/config.yaml
++++ b/example/config.yaml
+@@ -44,8 +44,9 @@ log-client-ip: true
+ # documented on https://pkg.go.dev/time#pkg-constants.
+ #
+ # Examples: ["2006-01-02T15:04:05.000Z07:00", ""]
+-# Default: "02/01/2006 15:04:05.000"
+-log-timestamp-format: "02/01/2006 15:04:05.000"
++# Upstream Default: "02/01/2006 15:04:05.000"
++# openSUSE Default: ""
++log-timestamp-format: ""
+ 
+ # String. Application name to use internally.
+ # Examples: ["My Application","gotosocial"]
+@@ -259,7 +260,7 @@ db-sqlite-busy-timeout: "30m"
+ # String. Full Database connection string
+ #
+ # This connection string is only applicable for Postgres. When this field is defined, all other database related configuration field will be ignored. This field allow you to fine tune connection with Postgres
+-# 
++#
+ # Examples: ["postgres://user:pass@localhost/db?search_path=gotosocial", "postgres://user:pass@localhost:9999/db"]
+ # Default: ""
+ db-postgres-connection-string: ""
+@@ -281,13 +282,15 @@ cache:
+ 
+ # String. Directory from which gotosocial will attempt to load html templates (.tmpl files).
+ # Examples: ["/some/absolute/path/", "./relative/path/", "../../some/weird/path/"]
+-# Default: "./web/template/"
+-web-template-base-dir: "./web/template/"
++# Upstream Default: "./web/template/"
++# openSUSE Default: "/etc/gotosocial/template/"
++web-template-base-dir: "/etc/gotosocial/template/"
+ 
+ # String. Directory from which gotosocial will attempt to serve static web assets (images, scripts).
+ # Examples: ["/some/absolute/path/", "./relative/path/", "../../some/weird/path/"]
+-# Default: "./web/assets/"
+-web-asset-base-dir: "./web/assets/"
++# Upstream Default: "./web/assets/"
++# openSUSE Default: "/usr/share/gotosocial/assets/"
++web-asset-base-dir: "/usr/share/gotosocial/assets/"
+ 
+ ###########################
+ ##### INSTANCE CONFIG #####
+@@ -592,8 +595,9 @@ storage-backend: "local"
+ # this directory, and create new subdirectories and files within it.
+ # Only required when running with the local storage backend.
+ # Examples: ["/home/gotosocial/storage", "/opt/gotosocial/datastorage"]
+-# Default: "/gotosocial/storage"
+-storage-local-base-path: "/gotosocial/storage"
++# Upstream Default: "/gotosocial/storage"
++# openSUSE Default: "/var/lib/gotosocial/storage"
++storage-local-base-path: "/var/lib/gotosocial/storage"
+ 
+ # String. API endpoint of the S3 compatible service.
+ # Only required when running with the s3 storage backend.
+@@ -732,8 +736,9 @@ letsencrypt-port: 80
+ # backup easier, but you might wish to move them elsewhere if they're also accessed by other services.
+ # In any case, make sure GoToSocial has permissions to write to / read from this directory.
+ # Examples: ["/home/gotosocial/storage/certs", "/acmecerts"]
+-# Default: "/gotosocial/storage/certs"
+-letsencrypt-cert-dir: "/gotosocial/storage/certs"
++# Upstream Default: "/gotosocial/storage/certs"
++# openSUSE Default: "/var/lib/gotosocial/storage/certs"
++letsencrypt-cert-dir: "/var/lib/gotosocial/storage/certs"
+ 
+ # String. Email address to use when registering LetsEncrypt certs.
+ # Most likely, this will be the email address of the instance administrator.
+diff --git a/example/gotosocial.service b/example/gotosocial.service
+index b59f6b5a6..9848bd117 100644
+--- a/example/gotosocial.service
++++ b/example/gotosocial.service
+@@ -12,6 +12,7 @@ Group=gotosocial
+ 
+ Type=exec
+ Restart=on-failure
++AppArmorProfile=gotosocial
+ 
+ # For speedier restart times, you can uncomment the following Environment line to have GoToSocial cache compiled
+ # Wazero artifacts in the given directory between restarts, so that it doesn't need to compile on startup every time.
+@@ -20,11 +21,11 @@ Restart=on-failure
+ # installed at "~/gotosocial" then change the value to "GTS_WAZERO_COMPILATION_CACHE=~/gotosocial/.cache".
+ #
+ # Whatever you do, make sure the dir exists and that the gotosocial user has permission to write + read from it.
+-#Environment="GTS_WAZERO_COMPILATION_CACHE=/gotosocial/.cache"
++Environment="GTS_WAZERO_COMPILATION_CACHE=/var/lib/gotosocial/.cache"
+ 
+ # change if your path to the GoToSocial binary is different
+-ExecStart=/gotosocial/gotosocial --config-path config.yaml server start
+-WorkingDirectory=/gotosocial
++ExecStart=/usr/sbin/gotosocial --config-path /etc/gotosocial/config.yaml server start
++WorkingDirectory=/var/lib/gotosocial
+ 
+ # Sandboxing options to harden security
+ # Details for these options: https://www.freedesktop.org/software/systemd/man/systemd.exec.html
+-- 
+2.48.1
+

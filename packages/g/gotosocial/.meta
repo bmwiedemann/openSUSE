@@ -1,0 +1,9 @@
+<package name="gotosocial" project="openSUSE:Factory">
+  <title>An ActivityPub social network server, written in Golang</title>
+  <description>With GoToSocial, you can keep in touch with your friends, post, read, and share
+images and articles. All without being tracked or advertised to!
+
+</description>
+  <devel project="server:messaging" package="gotosocial"/>
+  <url>https://docs.gotosocial.org/en/latest/</url>
+</package>
