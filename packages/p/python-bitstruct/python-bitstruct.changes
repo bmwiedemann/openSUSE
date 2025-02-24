@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 24 08:14:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.20.0
+  * Python 3.13 instead of 3.7.
+  * Bump CI artifact to v4.
+  * CI release stuff.
+
+-------------------------------------------------------------------
 Wed Nov 29 12:21:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.19.0:

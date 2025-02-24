@@ -63,4 +63,12 @@
   * Only build C extension for CPython 3.</comment>
     <requestid>1129796</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bd04e3d6d118135368cae95276e6ec58</srcmd5>
+    <version>8.20.0</version>
+    <time>1740408555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248022</requestid>
+  </revision>
 </revisionlist>
