@@ -450,4 +450,12 @@ The developers of dar included a special exception to link against openSSL (forw
     <comment></comment>
     <requestid>1191539</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>1181afa6b2021fefb4cdce44e0dc26dd</srcmd5>
+    <version>2.7.16</version>
+    <time>1740408581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248048</requestid>
+  </revision>
 </revisionlist>
