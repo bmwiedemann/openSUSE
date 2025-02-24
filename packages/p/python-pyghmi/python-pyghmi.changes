@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Feb 24 11:05:34 UTC 2025 - cloud-devel@suse.de
+
+- update to version 1.5.76:
+  * Handle redfish modeling of some IB adapters
+  * Add XCC3 specific health check
+  * General fixup for sensor handling
+  * Suspend use of token for remote media attach
+  * Add standard NTP handling to redfish
+  * Attempt to get half-working sysurl if broken
+  * Handle inventory for systemless redfish endpoint
+  * Prefer generic sensors and handle system-less
+  * Relocate event log to oem, override for SMMv3
+  * Add reseat for SMMv3
+  * Fix coordinate calculation for XCC3 in new DWC chassis
+  * Implement next gen SMM3 support
+  * Fix redfish reset BMC to defaults
+  * Handle new variants of USB ethernet configuration in XCC3
+  * Add FFDC support for XCC3
+  * Provide update for backup XCC3 bank
+  * Implement normalized bmc settings for XCC3
+  * Ignore exhaust when looking for inlet
+  * Fix omitted comma in replace call
+  * Move normalized CPU and power to OEM
+  * Fix returning too much data when asked only for names
+  * Repair session token implicitly on expiration in OEM
+  * Fix IPMI identify on/off for IMM/XCC systems
+  * Add RDOC support for XCC3
+  * Fix issues with OEM retrieval
+  * Attempt generic height information extraction
+  * Add expanded/emulated expanded redfish support
+  * Negotiate a redfish session, if possible
+  * Add blink support to Lenovo "IPMI" support
+  * Rework get description to enable it to work fer XCC3
+  * Modify build for snap versions
+  * Amend deb package build to avoid extranoeus content
+  * Use approved method to determine XCC vintage
+  * Implement fixup of firmware inventory
+  * Prefer XCC3 detection over XCC2
+  * Fix str concatenation on redfish spec violations
+  * Refactor redfish settings and leverage in XCC3
+  * Wire up redfish for getting extended BMC settings
+  * Add generic redfish license handling
+  * Extend MAC collection in redfish
+  * Normalize UUID format
+  * Add multipart update support to redfish updates
+  * Add BMC reset to redfish implementation
+  * Fix the extended bmc configuration
+  * Exposed advanced, extended BMC configuration
+  * Restore UEFI configuration to IMM systems
+
+-------------------------------------------------------------------
 Tue Sep  3 13:09:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.70:

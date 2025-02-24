@@ -427,4 +427,41 @@
   * Handle out of order setting instances</comment>
     <requestid>1198498</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f990578afd869e76ecab454828ba9fd4</srcmd5>
+    <version>1.5.76</version>
+    <time>1740408648</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.5.76:
+  * Handle redfish modeling of some IB adapters
+  * Add XCC3 specific health check
+  * General fixup for sensor handling
+  * Suspend use of token for remote media attach
+  * Add standard NTP handling to redfish
+  * Attempt to get half-working sysurl if broken
+  * Handle inventory for systemless redfish endpoint
+  * Prefer generic sensors and handle system-less
+  * Relocate event log to oem, override for SMMv3
+  * Add reseat for SMMv3
+  * Fix coordinate calculation for XCC3 in new DWC chassis
+  * Implement next gen SMM3 support
+  * Fix redfish reset BMC to defaults
+  * Handle new variants of USB ethernet configuration in XCC3
+  * Add FFDC support for XCC3
+  * Provide update for backup XCC3 bank
+  * Implement normalized bmc settings for XCC3
+  * Ignore exhaust when looking for inlet
+  * Fix omitted comma in replace call
+  * Move normalized CPU and power to OEM
+  * Fix returning too much data when asked only for names
+  * Repair session token implicitly on expiration in OEM
+  * Fix IPMI identify on/off for IMM/XCC systems
+  * Add RDOC support for XCC3
+  * Fix issues with OEM retrieval
+  * Attempt generic height information extraction
+  * Add expanded/emulated expanded redfish support
+  * Negotiate a redfish session, if possible
+  * Add blink support to Lenovo &quot;IPMI&quot; support</comment>
+    <requestid>1248096</requestid>
+  </revision>
 </revisionlist>
