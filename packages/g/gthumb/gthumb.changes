@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 20 09:38:55 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Disable libchamplain. It pulls in libsoup 3, while gthumb is
+  still using libsoup 2 (boo#1237098).
+
+-------------------------------------------------------------------
 Sun Feb  9 20:29:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.12.7:

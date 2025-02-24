@@ -39,8 +39,6 @@ BuildRequires:  libtiff-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(appstream) >= 0.14.6
-BuildRequires:  pkgconfig(champlain-0.12) >= 0.12.0
-BuildRequires:  pkgconfig(champlain-gtk-0.12) >= 0.12.0
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(colord) >= 1.3
@@ -96,7 +94,6 @@ slide shows, set your desktop background, and more.
 
 %build
 %meson \
-	-Dlibchamplain=true \
 	%{nil}
 %meson_build
 
