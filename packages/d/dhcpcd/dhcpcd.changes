@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 12:29:09 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 10.2.1
+  * Fix building with different options
+  * Only drop IPv4 LL addresses if configured to handle them
+
+-------------------------------------------------------------------
 Wed Feb 12 16:47:00 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 10.2.0
