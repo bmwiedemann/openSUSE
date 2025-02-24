@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 24 08:06:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.21.0
+  * Fix: close connection correctly when BaseException raised
+    in connection (#317)
+  * Metadata improvements
+  * Tested and supported on Python 3.13
+  * Drop support for Python 3.8
+  * Drop testing on PyPy
+- Drop CHANGELOG.md from %files section, removed upstream
+
+-------------------------------------------------------------------
 Sat Apr 20 13:51:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.0:
