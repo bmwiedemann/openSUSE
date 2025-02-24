@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 06:03:12 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.21.1:
+  * Give better names for invalid pipelines errors (#1805)
+  * Fix pkgconf lint (#1802)
+
+-------------------------------------------------------------------
 Thu Feb 20 18:19:36 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.21.0:
