@@ -348,4 +348,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment></comment>
     <requestid>1240133</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>fc8538738b9b20a135be8d5a0bf8eddd</srcmd5>
+    <version>15.0.1</version>
+    <time>1740408588</time>
+    <user>dimstar_suse</user>
+    <comment>- Use LLVM 19 on Leap 15 to avoid potential runtime issues</comment>
+    <requestid>1248059</requestid>
+  </revision>
 </revisionlist>

@@ -67,8 +67,9 @@ Patch12:        0001-Disable-some-plugins.patch
 BuildRequires:  cmake
 # clang-devel in Leap 15 points to clang7...
 %if 0%{?suse_version} == 1500
-BuildRequires:  clang15-devel
-BuildRequires:  llvm15-devel
+# Use the same version as qt6-tools
+BuildRequires:  clang19-devel
+BuildRequires:  llvm19-devel
 %else
 BuildRequires:  clang-devel >= 10.0
 BuildRequires:  llvm-devel
