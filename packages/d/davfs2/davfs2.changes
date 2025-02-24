@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 21 07:33:41 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename davfs2-1.7.0-neon-33.patch to
+  davfs2-1.7.0-newer-neon.patch and add compatibility to libneon
+  0.34.
+
+-------------------------------------------------------------------
 Tue May 21 04:45:15 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add davfs2-1.7.0-neon-33.patch to fix build with neon 33

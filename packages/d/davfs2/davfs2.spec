@@ -1,7 +1,7 @@
 #
 # spec file for package davfs2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Source2:        %{name}-rpmlintrc
 # Taken from https://savannah.nongnu.org/project/release-gpgkeys.php?group=davfs2&download=1
 Source3:        davfs2.keyring
 Source4:        davfs2.sysusers
-Patch0:         davfs2-1.7.0-neon-33.patch
+Patch0:         davfs2-1.7.0-newer-neon.patch
 BuildRequires:  automake >= 1.16
 BuildRequires:  fuse-devel >= 2.2
 BuildRequires:  neon-devel
