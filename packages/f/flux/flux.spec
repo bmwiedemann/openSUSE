@@ -21,7 +21,7 @@
 %define libflux_suffix %(echo %{version} | tr . _)
 
 Name:           flux
-Version:        0.195.2
+Version:        0.196.1
 Release:        0
 Summary:        Influx data language
 License:        Apache-2.0 AND MIT AND (Apache-2.0 OR MIT) AND Apache-2.0 WITH LLVM-exception AND CC-BY-3.0 AND CC-BY-SA-4.0 AND (Apache-2.0 OR BSL-1.0) AND BSD-3-Clause AND MPL-2.0 AND Zlib AND X11 AND Unicode-DFS-2016 AND Unicode-TOU
@@ -30,8 +30,9 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Patch1:         disable-static-library.patch
 Patch2:         fix-unsigned-char.patch
-BuildRequires:  cargo1.81
-BuildRequires:  rust1.81
+Patch3:         allow-missing-docs-for-tests-modules.patch
+BuildRequires:  cargo
+BuildRequires:  rust
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -65,6 +66,7 @@ tar -Jxf %{SOURCE1}
 
 patch -p2 < %{PATCH1}
 patch -p2 < %{PATCH2}
+patch -p2 < %{PATCH3}
 patch -p2 <<EOF
 --- a/libflux/flux/build.rs
 +++ b/libflux/flux/build.rs

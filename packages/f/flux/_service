@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="manual">
 		<param name="url">https://github.com/influxdata/flux.git</param>
 		<param name="scm">git</param>
-		<param name="revision">v0.195.2</param>
+		<param name="revision">v0.196.1</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="changesgenerate">disable</param>
 		<param name="versionrewrite-pattern">v(.*)</param>

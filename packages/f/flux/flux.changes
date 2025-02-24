@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 08:46:16 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 0.196.1, see:
+  https://github.com/influxdata/flux/releases/
+- Add allow-missing-docs-for-tests-modules.patch: fix %check build
+
+-------------------------------------------------------------------
 Sun Feb  2 08:01:45 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Use Rust 1.81 for build since build is known to be broken on 1.82+
