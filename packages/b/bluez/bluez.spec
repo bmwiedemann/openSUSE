@@ -1,7 +1,7 @@
 #
 # spec file for package bluez
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010-2020 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -208,6 +208,7 @@ License:        GPL-2.0-or-later
 Group:          Hardware/Mobile
 Requires:       bluez = %{version}
 Supplements:    bluedevil5
+Supplements:    bluedevil6
 Supplements:    blueman
 Supplements:    gnome-bluetooth
 

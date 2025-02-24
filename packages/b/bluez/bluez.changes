@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 17 23:17:03 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Add supplements bluedevil6 for bluez-obexd
+  * In Plasma 6 bluedevil5 got renamed to bluedevil6.
+    While bluedevil6 provides bluedevil5 on Tumbleweed it's a good
+    idea to add it for future proofing.
+
+-------------------------------------------------------------------
 Wed Nov  6 08:16:30 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to 5.79:
