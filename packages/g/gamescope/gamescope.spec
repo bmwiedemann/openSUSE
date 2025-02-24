@@ -1,7 +1,7 @@
 #
 # spec file for package gamescope
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.15.14
+Version:        3.16.1
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
@@ -82,6 +82,7 @@ BuildRequires:  pkgconfig(libinput) >= 1.14.0
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(vulkan) >= 1.2.182
 BuildRequires:  pkgconfig(wayland-client)
@@ -135,5 +136,9 @@ sed -i "s|#include <libei-1.0/libeis.h>|#include <libeis.h>|g" src/InputEmulatio
 %{_libdir}/libVkLayer_FROG_gamescope_wsi_%{_arch}.so
 %dir %{_datadir}/vulkan/implicit_layer.d/
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.%{_arch}.json
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/scripts/
+%{_datadir}/%{name}/scripts/00-gamescope
+%doc %{_datadir}/%{name}/scripts/README.md
 
 %changelog

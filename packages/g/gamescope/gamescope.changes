@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 10 14:32:30 UTC 2025 - me@levitati.ng
+
+- Update to version 3.16.1:
+  * layer: Fix oldSwapchain when going in/out of XWayland bypassing
+  * steamcompmgr: Fix some shutdown hangs
+  * WaylandBackend: Filter more libdecor surfaces
+  * layer: Move strict -> ensure
+  * layer: Force up swapchain minImageCount
+  * WaylandBackend: Ignore events on unknown surfaces
+  * WaylandBackend: Fix scale equation and unscale libdecor frame commit
+  * rendervulkan: Fix a CVulkanCmdBuffer leak that could result in screenshot request failures
+  * DRMBackend: Add libliftoff log handler
+  * Fixed conversion from RGB to full range BT.709 YCbCr
+
+-------------------------------------------------------------------
 Mon Dec 02 18:17:00 UTC 2024 - antonio.teixeira@suse.com
 
 - Update to version 3.15.14:
