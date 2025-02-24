@@ -1,20 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 23 10:20:14 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- explicitly enable KMP for kernel-longterm: this will be needed
+  for the transition period, until all KMPs are enabled
+
+-------------------------------------------------------------------
 Tue Feb 18 17:37:31 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - In the module install path revert the order of the 'updates'
   subdirectory and the package name & version. This satisfies
   the kmp dependency checker (boo#1237308).
-
---------------------------------------------------------------------
-Tue Feb  4 07:39:11 UTC 2025 - Egbert Eich <eich@suse.com>
-
-- Add a directory identifying the KMP and its version to the module
-  install path - i.e.:
-  <kernel_version>/nvidia-open-driver-G06-signed-<version>/updates
-  instead of:
-  <kernel_version>/updates
-  This avoids conflicts when a new version is built against the
-  same kernel release.
 
 -------------------------------------------------------------------
 Tue Feb  4 07:39:11 UTC 2025 - Egbert Eich <eich@suse.com>
@@ -45,7 +40,7 @@ Mon Feb  3 12:28:48 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed version of 'Provides: nvidia-open-signed-kmp = <version>'
   of nvidia-open-signed-cuda-kmp in preamble file
-- fixed 
+- fixed
   warning: File listed twice: /usr/src/kernel-modules/nvidia-570.86.16-default
 
 -------------------------------------------------------------------

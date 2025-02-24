@@ -691,4 +691,12 @@
   same kernel release.</comment>
     <requestid>1246759</requestid>
   </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>c4e51606189c2cfe716b493c38d847bd</srcmd5>
+    <version>570.86.16</version>
+    <time>1740408571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248030</requestid>
+  </revision>
 </revisionlist>

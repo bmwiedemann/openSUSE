@@ -97,6 +97,10 @@ BuildRequires:  zstd
 BuildRequires:  kernel-syms-azure
 %endif
 %endif
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
+# build KPMs for kernel-longterm in Factory
+BuildRequires:  kernel-syms-longterm
+%endif
 ExclusiveArch:  x86_64 aarch64
 
 %if 0%{!?kmp_template_name:1}
