@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-auth-ldap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-auth-ldap
-Version:        4.8.0
+Version:        5.1.0
 Release:        0
 Summary:        Django LDAP authentication backend
 License:        BSD-2-Clause
 URL:            https://github.com/django-auth-ldap/django-auth-ldap
-Source:         https://files.pythonhosted.org/packages/source/d/django-auth-ldap/django-auth-ldap-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-auth-ldap/django_auth_ldap-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module ldap >= 3.1}
 BuildRequires:  %{python_module pip}
@@ -47,7 +47,7 @@ Configuration can be as simple as a single distinguished name template, but ther
 are many rich configuration options for working with users, groups, and permissions.
 
 %prep
-%setup -q -n django-auth-ldap-%{version}
+%setup -q -n django_auth_ldap-%{version}
 
 %build
 %pyproject_wheel
@@ -59,7 +59,12 @@ are many rich configuration options for working with users, groups, and permissi
 %check
 export LANG=en_US.UTF8
 export PATH=/sbin:/usr/sbin:/usr/local/bin:/usr/bin:/bin
+# Running in short path to avoid slapdtest issue with long paths
+TEST_PATH=$(mktemp -d)
+cp -r tests django_auth_ldap $TEST_PATH
+pushd $TEST_PATH
 %python_exec -m django test --settings tests.settings -v2
+popd
 
 %files %{python_files}
 %license LICENSE

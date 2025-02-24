@@ -166,4 +166,33 @@
     <comment></comment>
     <requestid>1188344</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>77ffd9a07c29951b9d8a1aee1e00c687</srcmd5>
+    <version>5.1.0</version>
+    <time>1740408680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0:
+  * Allow importing the backend without loading apps by @francoisfreitag in #382 (Closes #380)
+  * Drop support for EOL Python 3.8 by @francoisfreitag in #383
+- 5.0.0:
+  * Breaking changes: 
+  An LDAPError during an LDAP search operation would cause the library
+  to assume an empty result set.
+  
+  When mirroring groups, only a portion of a user groups would be
+  mirrored. Allowing them to proceed with authentication may then break
+  application access controls, as membership to a group (imagine an
+  exclude group) would be missing.
+  
+  The library now systematically sends the ldap_error django signal. If
+  an LDAPError occurs during an operation, the operation is aborted. In
+  particular, when mirroring groups (LDAPUser._mirror_groups), an
+  AuthenticationFailed might now be raised.
+  See #378 for details.
+  * Drop support for django 3.2 by @francoisfreitag in #371
+  * Add support for Django 5.1 by @francoisfreitag in #373
+  * Restore testing for Python 3.8 and 3.9 by @francoisfreitag in #375
+  * Test support for Python 3.13 by @francoisfreitag in #374</comment>
+    <requestid>1248126</requestid>
+  </revision>
 </revisionlist>
