@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>13a71485de2028c15af95979a6e48ecc</srcmd5>
+    <version>0.24.5.26</version>
+    <time>1740408527</time>
+    <user>dimstar_suse</user>
+    <comment>Hello,
+I want to introduce a new package to factory:
+
+trash-cli is a command line application that mimics the rm command and moves the files to the XDG trash location
+https://github.com/andreafrancia/trash-cli
+
+It is useful for terminal users, because it prevents the accidental deletion of files when aliased to rm
+Therefore it would be important to have the package available in the main repos.</comment>
+    <requestid>1247940</requestid>
+  </revision>
+</revisionlist>

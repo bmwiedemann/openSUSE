@@ -1,0 +1,5 @@
+<package name="trash-cli" project="openSUSE:Factory">
+  <title>Command line interface to the freedesktop.org trashcan</title>
+  <description></description>
+  <devel project="utilities" package="trash-cli"/>
+</package>

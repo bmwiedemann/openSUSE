@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Sat Feb 22 15:09:37 UTC 2025 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
+
+- added patch "remove_six.patch" that removes dependency for python3-six 
+
+-------------------------------------------------------------------
+Mon Feb  3 08:01:22 UTC 2025 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
+
+- initial package 

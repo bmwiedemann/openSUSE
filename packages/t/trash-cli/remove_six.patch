@@ -1,0 +1,336 @@
+From: Alexandre Detiste <tchet@debian.org>
+Date: February 9, 2025 at 3:05:29 PM GMT+1
+Subject: 'release'
+Patch-mainline: yes
+Git-commit: 264aa2193cee6b7b6661b1e9e46d50f298a3c786
+References: 264aa219
+
+https://salsa.debian.org/debian/trash-cli/-/blob/master/debian/patches/remove_six.patch
+
+This patch removes the six dependency from trash-cli.
+
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,5 +1,4 @@
+ psutil
+-six
+ typing; python_version < '3.8'
+ typing_extensions; python_version < '3.8'
+-enum34; python_version < '3.4'
+\ No newline at end of file
++enum34; python_version < '3.4'
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -36,7 +36,6 @@
+ 
+ install_requires =
+     psutil
+-    six
+     typing; python_version < '3.8'
+     typing_extensions; python_version < '3.8'
+     enum34; python_version < '3.4'
+--- a/trashcli/fstab/mount_points_listing.py
++++ b/trashcli/fstab/mount_points_listing.py
+@@ -2,11 +2,8 @@
+ import os
+ from abc import ABCMeta, abstractmethod
+ 
+-import six
+ 
+-
+-@six.add_metaclass(ABCMeta)
+-class MountPointsListing:
++class MountPointsListing(metaclass=ABCMeta):
+     @abstractmethod
+     def list_mount_points(self):
+         raise NotImplementedError()
+--- a/trashcli/fstab/volume_listing.py
++++ b/trashcli/fstab/volume_listing.py
+@@ -1,14 +1,12 @@
+ import os
+ from abc import ABCMeta, abstractmethod
+ 
+-import six
+ 
+ from trashcli.fstab.mount_points_listing import MountPointsListing, \
+     RealMountPointsListing
+ 
+ 
+-@six.add_metaclass(ABCMeta)
+-class VolumesListing:
++class VolumesListing(metaclass=ABCMeta):
+     @abstractmethod
+     def list_volumes(self, environ):  # type (dict) -> Iterable[str]
+         raise NotImplementedError()
+--- a/trashcli/fstab/volumes.py
++++ b/trashcli/fstab/volumes.py
+@@ -1,6 +1,5 @@
+ from abc import ABCMeta
+ 
+-import six
+ import os
+ from trashcli.fstab.mount_points_listing import MountPointsListing, \
+     RealMountPointsListing
+@@ -8,8 +7,7 @@
+ from trashcli.fstab.real_volume_of import RealVolumeOf
+ 
+ 
+-@six.add_metaclass(ABCMeta)
+-class Volumes(VolumeOf, MountPointsListing):
++class Volumes(VolumeOf, MountPointsListing, metaclass=ABCMeta):
+     pass
+ 
+ 
+--- a/trashcli/lib/my_input.py
++++ b/trashcli/lib/my_input.py
+@@ -1,11 +1,7 @@
+ from abc import abstractmethod, ABCMeta
+ 
+-import six
+-from six.moves import input as _my_input
+ 
+-
+-@six.add_metaclass(ABCMeta)
+-class Input:
++class Input(metaclass=ABCMeta):
+     @abstractmethod
+     def read_input(self, prompt):  # type: (str) -> str
+         raise NotImplementedError
+@@ -13,7 +9,7 @@
+ 
+ class RealInput(Input):
+     def read_input(self, prompt):  # type: (str) -> str
+-        return _my_input(prompt)
++        return input(prompt)
+ 
+ 
+ class HardCodedInput(Input):
+--- a/trashcli/lib/print_version.py
++++ b/trashcli/lib/print_version.py
+@@ -1,11 +1,7 @@
+ # Copyright (C) 2007-2023 Andrea Francia Trivolzio(PV) Italy
+ 
+-from __future__ import absolute_import
+-from __future__ import print_function
+-
+ import os
+ 
+-import six
+ from typing import NamedTuple
+ 
+ 
+@@ -30,4 +26,4 @@
+ 
+ 
+ def print_version(out, program_name, version):
+-    print("%s %s" % (program_name, six.text_type(version)), file=out)
++    print("%s %s" % (program_name, str(version)), file=out)
+--- a/trashcli/list/fs.py
++++ b/trashcli/list/fs.py
+@@ -1,12 +1,9 @@
+ import abc
+ 
+-from six import add_metaclass
+-
+ from trashcli.fs import IsSymLink, ContentsOf, EntriesIfDirExists, PathExists, \
+     IsStickyDir, HasStickyBit
+ 
+ 
+-@add_metaclass(abc.ABCMeta)
+ class FileSystemReaderForListCmd(
+     IsStickyDir,
+     HasStickyBit,
+@@ -14,5 +11,6 @@
+     ContentsOf,
+     EntriesIfDirExists,
+     PathExists,
++    metaclass=abc.ABCMeta
+ ):
+     pass
+--- a/trashcli/parse_trashinfo/parse_trashinfo.py
++++ b/trashcli/parse_trashinfo/parse_trashinfo.py
+@@ -1,7 +1,7 @@
+ from __future__ import absolute_import
+ 
+ import datetime
+-from six.moves.urllib.parse import unquote
++from urllib.parse import unquote
+ 
+ 
+ def do_nothing(*argv, **argvk): pass
+--- a/trashcli/put/format_trash_info.py
++++ b/trashcli/put/format_trash_info.py
+@@ -1,6 +1,6 @@
+ import datetime
+ 
+-from six.moves.urllib.parse import quote as url_quote
++from urllib.parse import quote as url_quote
+ 
+ 
+ def format_trashinfo(original_location,  # type: str
+--- a/trashcli/put/fs/size_counter.py
++++ b/trashcli/put/fs/size_counter.py
+@@ -1,7 +1,5 @@
+ import os
+ 
+-from six.moves import map as imap
+-
+ from trashcli.put.fs.fs import Fs
+ 
+ 
+@@ -16,7 +14,7 @@
+             return self.fs.getsize(path)
+ 
+         files = self.list_all_files(path)
+-        files_sizes = imap(self.fs.getsize, files)
++        files_sizes = map(self.fs.getsize, files)
+         return sum(files_sizes, 0)
+ 
+     def list_all_files(self,
+--- a/trashcli/restore/file_system.py
++++ b/trashcli/restore/file_system.py
+@@ -2,8 +2,6 @@
+ from abc import ABCMeta, abstractmethod
+ from trashcli.compat import Protocol
+ 
+-import six
+-
+ from trashcli import fs
+ from trashcli.fs import FsMethods, RealListFilesInDir, ListFilesInDir, \
+     RealContentsOf
+@@ -30,8 +28,7 @@
+         return self.contents
+ 
+ 
+-@six.add_metaclass(ABCMeta)
+-class RestoreReadFileSystem:
++class RestoreReadFileSystem(metaclass=ABCMeta):
+     @abstractmethod
+     def path_exists(self, path):  # type: (str) -> bool
+         raise NotImplementedError()
+@@ -42,8 +39,7 @@
+         return os.path.exists(path)
+ 
+ 
+-@six.add_metaclass(ABCMeta)
+-class RestoreWriteFileSystem:
++class RestoreWriteFileSystem(metaclass=ABCMeta):
+     @abstractmethod
+     def mkdirs(self, path):  # type: (str) -> None
+         raise NotImplementedError()
+@@ -68,8 +64,7 @@
+         return fs.remove_file(path)
+ 
+ 
+-@six.add_metaclass(ABCMeta)
+-class ReadCwd:
++class ReadCwd(metaclass=ABCMeta):
+     @abstractmethod
+     def getcwd_as_realpath(self):  # type: () -> str
+         raise NotImplementedError()
+--- a/trashcli/restore/output.py
++++ b/trashcli/restore/output.py
+@@ -1,12 +1,9 @@
+ from abc import ABCMeta, abstractmethod
+ 
+-import six
+-
+ from trashcli.restore.output_event import OutputEvent
+ 
+ 
+-@six.add_metaclass(ABCMeta)
+-class Output:
++class Output(metaclass=ABCMeta):
+     @abstractmethod
+     def quit(self):
+         raise NotImplementedError
+--- a/trashcli/restore/range.py
++++ b/trashcli/restore/range.py
+@@ -1,5 +1,3 @@
+-from six.moves import range
+-
+ 
+ class Range:
+     def __init__(self, start, stop):
+--- a/trashcli/restore/real_output.py
++++ b/trashcli/restore/real_output.py
+@@ -1,7 +1,5 @@
+ from __future__ import print_function
+ 
+-import six
+-
+ from trashcli.restore.output import Output
+ from trashcli.restore.output_event import Println, Die, Quit, Exiting, \
+     OutputEvent
+@@ -17,10 +15,10 @@
+         self.die('')
+ 
+     def printerr(self, msg):
+-        print(six.text_type(msg), file=self.stderr)
++        print(str(msg), file=self.stderr)
+ 
+     def println(self, line):
+-        print(six.text_type(line), file=self.stdout)
++        print(str(line), file=self.stdout)
+ 
+     def die(self, error):
+         self.printerr(error)
+--- a/trashcli/restore/restore_asking_the_user.py
++++ b/trashcli/restore/restore_asking_the_user.py
+@@ -1,7 +1,5 @@
+ from typing import TypeVar, Generic, List, NamedTuple, Callable
+ 
+-from six.moves import range
+-
+ from trashcli.lib.my_input import Input
+ from trashcli.restore.index import Sequence
+ from trashcli.restore.output import Output
+--- a/trashcli/restore/run_restore_action.py
++++ b/trashcli/restore/run_restore_action.py
+@@ -1,7 +1,6 @@
+ import os
+ from abc import ABCMeta, abstractmethod
+ 
+-import six
+ from typing import Optional, Iterable
+ 
+ from trashcli.restore.args import RunRestoreArgs
+@@ -38,8 +37,7 @@
+                 yield trashed_file
+ 
+ 
+-@six.add_metaclass(ABCMeta)
+-class Handler:
++class Handler(metaclass=ABCMeta):
+     @abstractmethod
+     def handle_trashed_files(self,
+                              trashed_files,
+--- a/trashcli/restore/trash_directories.py
++++ b/trashcli/restore/trash_directories.py
+@@ -1,7 +1,6 @@
+ # Copyright (C) 2007-2023 Andrea Francia Trivolzio(PV) Italy
+ from abc import abstractmethod, ABCMeta
+ 
+-import six
+ from typing import Optional
+ 
+ from trashcli.fstab.volume_of import VolumeOf
+@@ -11,8 +10,7 @@
+     volume_trash_dir1, volume_trash_dir2, home_trash_dir)
+ 
+ 
+-@six.add_metaclass(ABCMeta)
+-class TrashDirectories:
++class TrashDirectories(metaclass=ABCMeta):
+     @abstractmethod
+     def list_trash_dirs(self, trash_dir_from_cli):
+         raise NotImplementedError()
+--- a/trashcli/parse_trashinfo/parse_path.py
++++ b/trashcli/parse_trashinfo/parse_path.py
+@@ -1,6 +1,4 @@
+-from __future__ import absolute_import
+-
+-from six.moves.urllib.parse import unquote
++from urllib.parse import unquote
+ 
+ from trashcli.parse_trashinfo.parser_error import ParseError
