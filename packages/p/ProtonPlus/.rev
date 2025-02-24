@@ -76,4 +76,14 @@
   * Fix libadwaita version minimum requirement (forwarded request 1246413 from rrahl0)</comment>
     <requestid>1246414</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9a389abc711eccede83d0d96cb9b0f95</srcmd5>
+    <version>0.4.25</version>
+    <time>1740408531</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.25:
+  * Fix DXVK names
+  * Fix German localization typo (forwarded request 1247960 from rrahl0)</comment>
+    <requestid>1247961</requestid>
+  </revision>
 </revisionlist>
