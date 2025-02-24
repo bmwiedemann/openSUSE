@@ -1,7 +1,7 @@
 #
 # spec file for package zellij
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.41.1
+Version:        0.41.2
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
@@ -88,32 +88,32 @@ rm -v zellij-utils/assets/plugins/*
 # First rebuilt plugins we just deleted
 # Note: RUSTFLAGS break linking with WASM-files, so we don't use the cargo_build-macro here
 pushd default-plugins/compact-bar
-cargo --offline build --release --target=wasm32-wasi
+cargo --offline build --release --target=wasm32-wasip1
 popd
 pushd default-plugins/status-bar
-cargo --offline build --release --target=wasm32-wasi
+cargo --offline build --release --target=wasm32-wasip1
 popd
 pushd default-plugins/tab-bar
-cargo --offline build --release --target=wasm32-wasi
+cargo --offline build --release --target=wasm32-wasip1
 popd
 pushd default-plugins/strider
-cargo --offline build --release --target=wasm32-wasi
+cargo --offline build --release --target=wasm32-wasip1
 popd
 pushd default-plugins/session-manager
-cargo --offline build --release --target=wasm32-wasi
+cargo --offline build --release --target=wasm32-wasip1
 popd
 pushd default-plugins/fixture-plugin-for-tests
-cargo --offline build --release --target=wasm32-wasi
+cargo --offline build --release --target=wasm32-wasip1
 popd
 pushd default-plugins/configuration
-cargo --offline build --release --target=wasm32-wasi
+cargo --offline build --release --target=wasm32-wasip1
 popd
 pushd default-plugins/plugin-manager
-cargo --offline build --release --target=wasm32-wasi
+cargo --offline build --release --target=wasm32-wasip1
 popd
 
 # Move the results to the place they are expected
-mv -v target/wasm32-wasi/release/*.wasm zellij-utils/assets/plugins/
+mv -v target/wasm32-wasip1/release/*.wasm zellij-utils/assets/plugins/
 
 # Build zellij proper
 %{cargo_build} --features unstable

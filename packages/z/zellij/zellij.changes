@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Feb 12 21:31:52 UTC 2025 - gerald_chen@foxmail.com
+
+- Update to version 0.41.2:
+  * chore(release): v0.41.2
+  * chore(version): set patch version
+  * style(fmt): remove warnings
+  * docs(changelog): derive hash and ord for paneid
+  * fix(plugins): derive hash and ord for PaneId (#3790)
+  * docs(changelog): vendor common_path
+  * chore(package): vendor common_path (#3780)
+  * docs(changelog): plugin cache folder url
+  * docs(changelog): plugin cache folder
+  * feat(plugins): add /cache folder (#3787)
+  * docs(changelog): pane-closed event
+  * fix(screen): send PaneClosed event to plugins also when closing the whole tab (#3781)
+  * docs(changelog): shortcut change
+  * fix(ux): change plugin manager shortcut (#3779)
+  * docs(changelog): vendored curl option
+  * chore: add vendored_curl feature (#3766)
+  * docs(changelog): invalid state handling
+  * fix(panes): handle various invalid state situations (#3776)
+  * docs(changelog): occasional slow startup fix
+  * fix(statup): slow startup on some occasions (#3767)
+  * docs(changelog): config dir crash fix
+  * fix(config): crash if unable to watch config folder (#3761)
+  * docs(changelog): kitty reset fix
+  * fix(terminal): reset kitty keyboard support when resetting terminal state (#3760)
+  * docs(changelog): do not duplicate built-in plugins
+  * fix(plugins): do not open extra instances of aliases (#3759)
+  * docs(changelog): event ordering fix
+  * fix(tabs): maintain event order for MoveTab (#3758)
+  * docs(changelog): output-buffer fix
+  * fix(output-buffer): truncate grid height when not rendering it fully (#3750)
+  * docs(changelog): plugin fixes
+  * fix(plugins): cwd and usability fixes (#3749)
+  * docs(changelog): refix ctrl-j
+  * fix(input): refix ctrl-j (#3746)
+  * docs(changelog): kitty input fix
+  * fix(input): remove support for extra modifiers (#3725)
+  * chore(repo): bump development version
+
+-------------------------------------------------------------------
 Tue Nov 05 10:16:30 UTC 2024 - gerald_chen@foxmail.com
 
 - Update _service file
