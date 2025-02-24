@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 12:02:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- explicitly depend on six
+
+-------------------------------------------------------------------
 Mon Aug  9 18:53:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - switch to wallaby template

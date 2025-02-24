@@ -90,4 +90,12 @@
     <comment>- switch to wallaby template</comment>
     <requestid>983765</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>503f259c17bab28e67eea11d2c41955a</srcmd5>
+    <version>1.7.0</version>
+    <time>1740408673</time>
+    <user>dimstar_suse</user>
+    <comment>- explicitly depend on six</comment>
+    <requestid>1248120</requestid>
+  </revision>
 </revisionlist>
