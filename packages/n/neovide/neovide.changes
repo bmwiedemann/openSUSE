@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:43:23 UTC 2025 - lujianhua000@gmail.com
+
+- Update to version 0.14.1:
+  * Bump the version number (#3022)
+  * fix: mousemanager regression (#3018)
+  * - remove redundant code for macos key event handling in `format_normal_key` (#3014)
+  * Fix mouse manager rounding (#3015)
+  * fix: Update dependencies (#3005)
+  * Call format_key_text when delivering IME input (#3004)
+  * fix: Use drop for filedrop (#3002)
+  * fix: Statically link the msvc runtime when deploying (#3003)
+  * Remove duplicate nvim bin argument for WSL (#3001)
+  * chore: bump `winit` to `0.30.9` (#2964)
+  * fix: Glyph offsets within a single cluster (#2998)
+  * Ensure that the target directory exists before writing backtrace (#2997)
+  * fix: separate text underline from baseline by at least 1 pixel (#2987)
+  * cli-docs: add notes for macOS (#2993)
+  * ci: action setup vim has been fixed (#2996)
+  * ci: temporary fix using neovim v0.10.3 in the github action setup
+  * - update funding links for neovide on github and open collective
+  * fix build failure on case sensitive file system (#2988)
+  * docs: clarify link includes details about config file settings (#2967)
+  * chore: prepare for objc2 frameworks v0.3 (#2980)
+  * De-globalize RUNNING_TRACKER and SETTINGS (#2835)
+  * fix(metal): respect text_gamma and text_contrast setting (#2956)
+  * docs: add quake mode accessibility like terminals (with different spaces) (#2971)
+  * - persist linux dependencies installation step for testing guarantees
+  * fix: --wsl error if using non-POSIX shell as login shell (#2950)
+  * fix: execute login using zsh shell configuration (#2928)
+  * docs: refine login shell session  (#2946)
+  * docs: macOS login shells (#2945)
+  * chore: remove the exclusion of files in the `extra` directory
+  * build: add exclusion for files in `website/` directory (#2934)
+  * chore: update `neovide-derive` to `0.1.1` (#2935)
+  * chore: refactor package dependencies to latest versions (#2933)
+
+-------------------------------------------------------------------
 Sat Jan 04 05:48:59 UTC 2025 - lujianhua000@gmail.com
 
 - Update to version 0.14.0:

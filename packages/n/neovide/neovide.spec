@@ -16,11 +16,11 @@
 #
 
 
-%define skia_version m131-0.79.1
+%define skia_version m132-0.81.0
 %define wuffs_commit e3f919ccfe3ef542cfc983a82146070258fb57f8
 
 Name:           neovide
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        Simple Neovim GUI
 License:        MIT
