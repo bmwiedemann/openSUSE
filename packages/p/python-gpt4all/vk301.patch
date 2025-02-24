@@ -1,0 +1,46 @@
+Index: gpt4all-3.4.2/gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute/src/include/kompute/Manager.hpp
+===================================================================
+--- gpt4all-3.4.2.orig/gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute/src/include/kompute/Manager.hpp
++++ gpt4all-3.4.2/gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute/src/include/kompute/Manager.hpp
+@@ -255,7 +255,11 @@ class Manager
+     bool mFreeInstance = false;
+     std::shared_ptr<vk::PhysicalDevice> mPhysicalDevice = nullptr;
+     std::shared_ptr<vk::Device> mDevice = nullptr;
++#if VK_HEADER_VERSION >= 301
++    std::shared_ptr<vk::detail::DynamicLoader> mDynamicLoader = nullptr;
++#else
+     std::shared_ptr<vk::DynamicLoader> mDynamicLoader = nullptr;
++#endif
+     bool mFreeDevice = false;
+ 
+     // -------------- ALWAYS OWNED RESOURCES
+@@ -271,8 +275,12 @@ class Manager
+ 
+ #ifndef KOMPUTE_DISABLE_VK_DEBUG_LAYERS
+     vk::DebugReportCallbackEXT mDebugReportCallback;
++#if VK_HEADER_VERSION >= 301
++    vk::detail::DispatchLoaderDynamic mDebugDispatcher;
++#else
+     vk::DispatchLoaderDynamic mDebugDispatcher;
+ #endif
++#endif
+ 
+     // Create functions
+     void createInstance();
+Index: gpt4all-3.4.2/gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute/src/Manager.cpp
+===================================================================
+--- gpt4all-3.4.2.orig/gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute/src/Manager.cpp
++++ gpt4all-3.4.2/gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute/src/Manager.cpp
+@@ -181,7 +181,12 @@ Manager::createInstance()
+     }
+ 
+     try {
++#if VK_HEADER_VERSION >= 301
++        mDynamicLoader = std::make_shared<vk::detail::DynamicLoader>();
++#else
+         mDynamicLoader = std::make_shared<vk::DynamicLoader>();
++#endif
++
+     } catch (const std::exception & err) {
+         return;
+     }

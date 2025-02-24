@@ -1,7 +1,7 @@
 #
 # spec file for package python-gpt4all
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Source1:        https://github.com/nomic-ai/llama.cpp/archive/%{llamavers}.tar.g
 # Apache-2.0
 Source2:        https://github.com/nomic-ai/kompute/archive/%{komputevers}.tar.gz#/kompute-%{komputevers}.tar.gz
 Source3:        %{name}.rpmlintrc
+# PATCH-FIX-OPENSUSE vk301.patch gh#KhronosGroup/Vulkan-Samples#1269
+Patch1:         vk301.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -87,14 +89,17 @@ Libnrairy for aessing the models
 %prep
 %setup -n gpt4all-%{version}
 
-cd gpt4all-backend/deps/
+pushd gpt4all-backend/deps/
 rmdir llama.cpp-mainline
 tar xzf %{S:1}
 mv llama.cpp-%{llamavers}* llama.cpp-mainline
-cd llama.cpp-mainline/ggml/src
+pushd llama.cpp-mainline/ggml/src
 rmdir kompute
 tar xzf %{S:2}
 mv kompute-%{komputevers}* kompute
+popd
+popd
+%patch -P1 -p1
 
 %build
 %if 0%{?sle_version} == 150600
