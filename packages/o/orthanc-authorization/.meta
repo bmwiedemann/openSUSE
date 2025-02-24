@@ -1,0 +1,5 @@
+<package name="orthanc-authorization" project="openSUSE:Factory">
+  <title>The authorization plugin for orthanc</title>
+  <description></description>
+  <devel project="graphics" package="orthanc-authorization"/>
+</package>
