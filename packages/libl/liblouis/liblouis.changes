@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 20 10:08:36 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.32.0:
+  + A lot of intense work by Matt, Paul, Leonard, Eric, Sarah and
+    Bert went into this release. There are new tables for Biblical
+    Language and Ancient Near Eastern Studies. We have improvements
+    for UEB, Spanish, Turkish and Hungarian. There are also a
+    couple of new features, for example the handling of the
+    language metadata has been extended to handle language ranges.
+
+-------------------------------------------------------------------
 Thu Oct  3 21:20:35 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.31.0:
