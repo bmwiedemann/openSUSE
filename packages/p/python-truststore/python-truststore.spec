@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-truststore
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Verify certificates using OS trust stores
 License:        MIT

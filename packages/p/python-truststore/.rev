@@ -53,4 +53,17 @@
     <comment></comment>
     <requestid>1240789</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>593ab7c7b7083097fe045bf563ec843c</srcmd5>
+    <version>0.10.1</version>
+    <time>1740408634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.1:
+  * Fixed the patching of Requests' globally-cached
+    `ssl.SSLContext` object to work automagically with
+    ``truststore.inject_into_ssl()`` regardless of import-order.
+  * Speed up import times by skipping feature-checking for known
+    Python implementations (CPython and PyPy).</comment>
+    <requestid>1248088</requestid>
+  </revision>
 </revisionlist>
