@@ -8,12 +8,6 @@ Thu Feb 20 10:04:20 UTC 2025 - Egbert Eich <eich@suse.com>
     build caches.
   * Fix an issue where the `--test` concretizer flag was not
     forwarded correctly.
-  * Fix an issue where `codesign` and `install_name_tool` would
-    not preserve hardlinks on Darwin.
-  * Fix an issue on Darwin where codesign would run on unmodified
-    binaries.
-  * Patch configure scripts generated with libtool < 2.5.4, to
-    avoid redundant flags when creating shared libraries on Darwin.
   * Ensure proper UTF-8 encoding/decoding in logging.
   * Fix issues related `to filter_file`.
   * Fix an issue related to creating bootstrap source mirrors.
