@@ -704,4 +704,13 @@
   * Simplify backend code</comment>
     <requestid>1246255</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>5748de31caca68e53aa513bb9ced432f</srcmd5>
+    <version>5.8.0</version>
+    <time>1740408668</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 5.8.0
+  * Add mullvad-brower</comment>
+    <requestid>1248114</requestid>
+  </revision>
 </revisionlist>
