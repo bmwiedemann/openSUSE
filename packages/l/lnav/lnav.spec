@@ -26,7 +26,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc6-c++
 %endif
 Name:           lnav
-Version:        0.12.2
+Version:        0.12.3
 Release:        0
 Summary:        Logfile Navigator
 License:        BSD-2-Clause

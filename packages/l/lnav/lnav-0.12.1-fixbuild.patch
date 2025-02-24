@@ -1,20 +1,20 @@
-Index: lnav-0.12.1/src/bookmarks.cc
+Index: lnav-0.12.3/src/bookmarks.cc
 ===================================================================
---- lnav-0.12.1.orig/src/bookmarks.cc
-+++ lnav-0.12.1/src/bookmarks.cc
-@@ -77,6 +77,7 @@ bookmark_metadata::empty(bookmark_metada
-             return this->bm_comment.empty() && this->bm_tags.empty()
-                 && this->bm_annotations.la_pairs.empty();
+--- lnav-0.12.3.orig/src/bookmarks.cc
++++ lnav-0.12.3/src/bookmarks.cc
+@@ -79,6 +79,7 @@ bookmark_metadata::empty(bookmark_metada
+         case categories::opid:
+             return this->bm_opid.empty();
      }
 +		return false;
  }
  
  void
-Index: lnav-0.12.1/src/md2attr_line.cc
+Index: lnav-0.12.3/src/md2attr_line.cc
 ===================================================================
---- lnav-0.12.1.orig/src/md2attr_line.cc
-+++ lnav-0.12.1/src/md2attr_line.cc
-@@ -563,6 +563,7 @@ left_border_string(border_line_width wid
+--- lnav-0.12.3.orig/src/md2attr_line.cc
++++ lnav-0.12.3/src/md2attr_line.cc
+@@ -617,6 +617,7 @@ left_border_string(border_line_width wid
          case border_line_width::medium:
              return "\u258E";
          case border_line_width::thick:
@@ -22,7 +22,7 @@ Index: lnav-0.12.1/src/md2attr_line.cc
              return "\u258C";
      }
  }
-@@ -576,6 +577,7 @@ right_border_string(border_line_width wi
+@@ -630,6 +631,7 @@ right_border_string(border_line_width wi
          case border_line_width::medium:
              return "\u2595";
          case border_line_width::thick:
