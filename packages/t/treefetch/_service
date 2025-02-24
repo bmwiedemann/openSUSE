@@ -1,28 +1,24 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/angelofallars/treefetch.git</param>
-    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v2.0.0</param>
+    <param name="revision">5b3eac18e2d7b878ee80d4a0127d122f177f9415</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">danilo.spinella@suse.com</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recomprizz">
+    <param name="target">*.tar</param>
+    <param name="compression">zst</param>
   </service>
-  <service mode="disabled" name="set_version"/>
-  <service name="cargo_vendor" mode="disabled">
+  <service mode="manual" name="set_version"/>
+  <service name="cargo_vendor" mode="manual">
      <param name="srcdir">treefetch</param>
-     <param name="compression">xz</param>
      <param name="update">true</param>
-  </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">treefetch</param>
   </service>
 </services>
 

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov  8 09:29:58 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Refresh _service file.
+- Update to version 2.0.0:
+  * chore: bump version in Cargo.toml to 2.0.0 2022
+  * docs: add Usage from help in README
+  * feat: add version in help message
+  * feat: make bonsai pot gray and bold
+  * feat: add error if passed with old -xmas arg
+  * BREAKING CHANGE: use double hyphen for long args
+  * feat: add help message
+  * feat: make bonsai tree smaller
+  * docs: add donation link
+
+-------------------------------------------------------------------
 Mon Jun 20 03:24:45 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
