@@ -1,7 +1,7 @@
 #
 # spec file for package python-extract-msg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-extract-msg
-Version:        0.52.0
+Version:        0.53.1
 Release:        0
 Summary:        Extracts emails and attachments saved in Microsoft Outlook's msg files
 License:        GPL-3.0-only
