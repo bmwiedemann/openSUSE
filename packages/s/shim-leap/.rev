@@ -194,4 +194,12 @@
     <user>dimstar_suse</user>
     <comment>- RelEng emergency fix: fux source number to install shim-install.</comment>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>7d9b8f6960a3cdb90fc1ad249cd0c035</srcmd5>
+    <version>15.8</version>
+    <time>1740408537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1247976</requestid>
+  </revision>
 </revisionlist>

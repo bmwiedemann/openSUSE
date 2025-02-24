@@ -1,7 +1,7 @@
 #
 # spec file for package shim-leap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,7 +65,7 @@ rpm2cpio %{SOURCE1} | cpio --extract --unconditional --preserve-modification-tim
 
 %install
 # purely repackaged
-cp -a * %{buildroot}
+cp -a etc usr %{buildroot}
 cp %{S:2} .
 
 # Override shim-install
