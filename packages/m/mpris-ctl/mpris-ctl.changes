@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun Feb 23 19:28:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.0.0:
+  Ooops, we've run out of minor versions
+  - The only significant addition to this release is the "raise"
+    command that can be used to make players pop up after being
+    minimized or hidden.
+- Update to 0.9.100:
+  Shuffle boogie
+  - The shuffle command was broken for a while in some builds
+    (maybe even from the start?), resulting in a crash from
+    inside the DBUS library. We fixed it, and shuffle can safely
+    be used again.
+- Update to 0.9.99.1:
+  Absolute unit of a volume
+  - This release only contains a fix for parsing absolute volumes
+    from the command arguments.
+- Update to 0.9.99:
+  Pipe up
+  - Added a new command for getting and setting the volume.
+  - Added formatting for time properties.
+- Update to 0.9.98:
+  Still seeking the best in others
+  - Fixed an issue with parsing negative seek times.
+- Update to 0.9.96:
+  The final countdown (take 2)
+  - Added commands to change shuffle and repeat modes.
+  - Improved how we're showing the metadata values that are
+    string arrays (like artist, and album artist).
+  - Fixed a double free for a dbus reply on seek method.
+- Update to 0.9.95:
+  The final countdown (take 1)
+  - Added commands to change shuffle and repeat modes.
+  - Improved how we're showing the metadata values that are
+    string arrays (like artist, and album artist).
+- Update to 0.9:
+  The "Those who seek, will find"
+  - Add "seek" command capable of back or forward seeking into
+    current track.
+  - Improve active/inactive/named player selection for commands.
+  - Improve documentation.
+- Update to 0.8.6:
+  The "Backstreet's back all right"
+  - Fix a crash when loading player names from the --player flag.
+  - Many thanx and apologies to github users vaygr and JosefLitos
+    for their bug reports and reminders.
+
+-------------------------------------------------------------------
 Sun Dec  4 14:51:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.5:

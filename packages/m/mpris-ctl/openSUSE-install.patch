@@ -2,9 +2,11 @@
  Makefile |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
---- a/Makefile
-+++ b/Makefile
-@@ -82,8 +82,8 @@ clean:
+Index: mpris-ctl-v1.0.0/Makefile
+===================================================================
+--- mpris-ctl-v1.0.0.orig/Makefile	2024-08-21 14:16:05.000000000 +0200
++++ mpris-ctl-v1.0.0/Makefile	2025-02-23 20:34:23.671639298 +0100
+@@ -78,8 +78,8 @@
  	$(RM) $(BIN_NAME).1
  
  install: $(BIN_NAME) $(BIN_NAME).1
