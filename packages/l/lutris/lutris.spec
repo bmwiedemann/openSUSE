@@ -1,7 +1,7 @@
 #
 # spec file for package lutris
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,24 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define         _py 311
 %define         _pyb 3.11
 %define         appid net.lutris.Lutris
+%{?sle15_python_module_pythons}
 Name:           lutris
-Version:        0.5.18
+Version:        0.5.19
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
 URL:            https://lutris.net
-Source0:        https://lutris.net/releases/lutris_%{version}.tar.xz
+Source0:        https://github.com/lutris/lutris/archive/refs/tags/v%{version}.tar.gz
 Source1:        %{name}.apparmor
+Requires:       xrandr
+# boo#1213440
+Recommends:     ca-certificates-steamtricks
+Recommends:     winetricks
+BuildArch:      noarch
+%lang_package
 %if 0%{?suse_version} >= 1600
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
@@ -51,12 +57,12 @@ Requires:       python3-PyYAML
 Requires:       python3-certifi
 Requires:       python3-dbus-python
 Requires:       python3-distro
-Requires:       python3-protobuf
 # controller support
 Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-lxml
+Requires:       python3-protobuf
 Requires:       python3-requests
 %if %{with discord}
 Requires:       python3-pypresence
@@ -98,12 +104,6 @@ Requires:       python%{_py}-pypresence
 Requires:       python%{_py}-moddb
 %endif
 %endif
-Requires:       xrandr
-# boo#1213440
-Recommends:     ca-certificates-steamtricks
-Recommends:     winetricks
-BuildArch:      noarch
-%lang_package
 
 %description
 Lutris allows to gather and manage (install, configure and launch)
@@ -120,7 +120,7 @@ Supplements:    (%{name} and apparmor-profiles)
 %{summary}.
 
 %prep
-%autosetup -n %{name}
+%autosetup
 
 %build
 %if 0%{?suse_version} >= 1600
@@ -154,9 +154,9 @@ install -Dm0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{name}
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{appid}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_datadir}/icons/hicolor/??x??/apps/%{name}.png
-%{_datadir}/icons/hicolor/???x???/apps/%{name}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/??x??/apps/%{appid}.png
+%{_datadir}/icons/hicolor/???x???/apps/%{appid}.png
 %{python_sitelib}/%{name}
 %{_datadir}/metainfo/%{appid}.metainfo.xml
 

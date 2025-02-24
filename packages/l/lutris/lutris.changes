@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 24 08:50:06 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.19:
+  * Fix Proton integration bugs so Proton-fixes are applied
+  * Do not offer DXVK, VKD3D, D3D Extras or DDXVK-NVAPI on Proton versions;
+    Proton will handle these.
+  * The "Enable Esync" and "Enable Fsync" settings are now passed on to Proton
+  * DXVK's integrated D8VK will be enabled in Proton
+  * Emulator BIOS file location (used by libretro) may be set in Preferences
+  * Obtain the release year from GOG and Itch.io.
+  * MAME Machine setting uses a searchable entry for its enourmous list
+  * Support for importing Commodore 64 ROMs
+
+-------------------------------------------------------------------
 Mon Dec 16 17:52:17 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add BuildRequires apparmor-abstractions, apparmor-rpm-macros for
