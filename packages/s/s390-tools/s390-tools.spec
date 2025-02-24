@@ -154,6 +154,9 @@ Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
 Patch912:       s390-tools-ALP-zdev-live.patch
 Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
 ###
+Patch920:       s390-tools-01-Add-zpwr-tool.patch
+Patch921:       s390-tools-02-zpwr-Add-man-page-for-zpwr-tool.patch
+###
 Patch990:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
 ###
 

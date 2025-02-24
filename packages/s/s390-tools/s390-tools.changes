@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 06:51:08 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied additional patches (jsc#PED-10303 (IBM-1575))
+ * s390-tools-01-Add-zpwr-tool.patch
+ * s390-tools-02-zpwr-Add-man-page-for-zpwr-tool.patch
+
+-------------------------------------------------------------------
 Mon Feb 10 07:36:08 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tools to 2.37 (jsc#PED-9591, jsc#PED-10303, jesc#PED-11870 (jsc#IBM-1062)) 
