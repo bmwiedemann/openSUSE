@@ -83,4 +83,27 @@
   * fix: fix incorrect root finding (forwarded request 1246447 from rrahl0)</comment>
     <requestid>1246451</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7dc37cc3307716282368eba32dc1137d</srcmd5>
+    <version>1.7.0</version>
+    <time>1740408529</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+  * docs: fix broken documentation link in rust_analyzer config
+  * feat(harper-ls): added new languages and updated links
+  * feat: dts-lsp
+  * fix(health.lua): increased version check cmd timeout
+  * feat: add wasm-language-tools
+  * docs: don't skip VIMRUNTIME in lua lsp if ~/.config/nvim/.luarc.json exists
+  * docs(atlas): add treesitter instructions
+  * feat(oxc_language_server): add OxcFixAll command
+  * fix(angularls): trim leading characters from version
+  * fix(nushell): root_dir should avoid returning nil
+  * docs: heading levels for veridian fixed
+  * feat(r_language_server): add quarto filetype
+  * fix(lua_ls): return longest root path
+  * Add config for turbo-language-server
+  * feat: add air lsp (forwarded request 1247962 from rrahl0)</comment>
+    <requestid>1247963</requestid>
+  </revision>
 </revisionlist>

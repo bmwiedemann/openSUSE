@@ -17,7 +17,7 @@
 
 
 Name:           nvim-lspconfig
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Quickstart configs for Nvim LSP
 License:        Apache-2.0
