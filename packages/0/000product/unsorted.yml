@@ -524,7 +524,6 @@ unsorted:
   - akonadi-devel 
   - akonadi-import-wizard-devel 
   - akonadi-mime-devel 
-  - akonadi-notes-devel 
   - akonadi-search-devel 
   - akonadiconsole 
   - akonadiconsole-lang 
@@ -8007,6 +8006,7 @@ unsorted:
   - gosec 
   - goss 
   - gotestsum 
+  - gotosocial 
   - gource 
   - govc 
   - goverlay 
@@ -10360,9 +10360,6 @@ unsorted:
   - kio_iso 
   - kio_perldoc 
   - kio_perldoc-lang 
-  - kirigami-addons 
-  - kirigami-addons-devel 
-  - kirigami-addons-lang 
   - kirigami-addons6-devel 
   - kirigami-gallery 
   - kirigami-gallery-lang 
@@ -10847,11 +10844,6 @@ unsorted:
   - kupfer 
   - kured 
   - kured-k8s-yaml 
-  - kuserfeedback-devel 
-  - kuserfeedback-imports 
-  - kuserfeedback-lang 
-  - kuserfeedback-server 
-  - kuserfeedback-tools 
   - kustomize 
   - kustomize-bash-completion 
   - kustomize-fish-completion 
@@ -11327,6 +11319,7 @@ unsorted:
   - libKF5KHtml5 
   - libKF5KHtml5-lang 
   - libKF5MediaPlayer5 
+  - libKF5MediaWiki5 
   - libKF5ModemManagerQt-devel 
   - libKF5ModemManagerQt6 
   - libKF5NetworkManagerQt-devel 
@@ -11357,8 +11350,6 @@ unsorted:
   - libKOSMIndoorRouting1 
   - libKOpeningHours1 
   - libKPim6AddressbookImportExport6-devel 
-  - libKPim6AkonadiNotes6 
-  - libKPim6AkonadiNotes6-lang 
   - libKPim6GAPIBlogger6 
   - libKPim6GAPILatitude6 
   - libKPim6GAPIMaps6 
@@ -11377,8 +11368,6 @@ unsorted:
   - libKTorrent6 
   - libKTorrent6-lang 
   - libKUnifiedPush1 
-  - libKUserFeedbackCore1 
-  - libKUserFeedbackWidgets1 
   - libKWeatherCore6 
   - libKWeatherCore6-lang 
   - libKasten4 
@@ -13293,7 +13282,7 @@ unsorted:
   - libfluidsynth3 
   - libfluidsynth3-32bit 
   - libflux-devel 
-  - libflux0_195_2 
+  - libflux0_196_1 
   - libflxmlrpc1 
   - libfm 
   - libfm-devel 
@@ -14348,7 +14337,6 @@ unsorted:
   - libkioarchive-devel 
   - libkioarchive5 
   - libkioarchive6-devel 
-  - libkipi-devel 
   - libkissfft-float131 
   - libkkc-devel 
   - libkkc2 
@@ -14492,6 +14480,7 @@ unsorted:
   - liblirc_driver0 
   - liblirc_driver0-32bit 
   - liblittleb0 
+  - liblkl0 
   - libllama 
   - liblldb15 
   - liblldb17 
@@ -17655,6 +17644,9 @@ unsorted:
   - live555-devel 
   - livedtd 
   - livi 
+  - lkl-devel 
+  - lkl-test 
+  - lklfuse 
   - lksctp-tools 
   - lksctp-tools-devel 
   - llamacpp 
@@ -20053,7 +20045,11 @@ unsorted:
   - nvidia-modprobe 
   - nvidia-open-driver-G06-signed-cuda-default-devel 
   - nvidia-open-driver-G06-signed-cuda-kmp-default 
+  - nvidia-open-driver-G06-signed-cuda-kmp-longterm 
+  - nvidia-open-driver-G06-signed-cuda-longterm-devel 
   - nvidia-open-driver-G06-signed-default-devel 
+  - nvidia-open-driver-G06-signed-kmp-longterm 
+  - nvidia-open-driver-G06-signed-longterm-devel 
   - nvidia-settings 
   - nvidia-texture-tools 
   - nvim-lspconfig 
@@ -20806,6 +20802,7 @@ unsorted:
   - oro 
   - oro-javadoc 
   - orthanc 
+  - orthanc-authorization 
   - orthanc-devel 
   - orthanc-dicomweb 
   - orthanc-doc 
@@ -20817,6 +20814,7 @@ unsorted:
   - orthanc-postgresql 
   - orthanc-python 
   - orthanc-source 
+  - orthanc-stl 
   - orthanc-tcia 
   - orthanc-volview 
   - orthanc-webviewer 
@@ -23897,7 +23895,6 @@ unsorted:
   - python-rpm-macros 
   - python-rpm-packaging 
   - python-rtslib-fb-common 
-  - python-saharaclient-doc 
   - python-senlinclient-doc 
   - python-shodan-doc 
   - python-sip4-common 
@@ -24172,7 +24169,6 @@ unsorted:
   - python3-rgw 
   - python3-rpmconf 
   - python3-rrdtool 
-  - python3-saharaclient 
   - python3-satyr 
   - python3-sbommage 
   - python3-seccomp 
@@ -24200,7 +24196,6 @@ unsorted:
   - python3-vigranumpy 
   - python3-virt-scenario 
   - python3-virt-tuner 
-  - python3-virtualbox 
   - python3-vtk 
   - python3-vtk-openmpi4 
   - python3-xcb-proto-devel 
@@ -24217,7 +24212,6 @@ unsorted:
   - python310-devel 
   - python310-doc 
   - python310-doc-devhelp 
-  - python310-gpt4all 
   - python310-idle 
   - python310-testsuite 
   - python310-tk 
@@ -27654,6 +27648,7 @@ unsorted:
   - python311-vim-vint 
   - python311-vine 
   - python311-virtkey 
+  - python311-virtualbox 
   - python311-virtualenv 
   - python311-virtualenv-clone 
   - python311-virtualenvwrapper 
@@ -37602,6 +37597,7 @@ unsorted:
   - stax2-api-javadoc 
   - stb-devel 
   - stdman 
+  - steampipe 
   - steinberg-bravura-fonts 
   - stellarbatchsolver 
   - stellarium 
@@ -47559,6 +47555,7 @@ unsorted:
   - transmission-qt 
   - transmission-qt-lang 
   - transset 
+  - trash-cli 
   - tre-devel 
   - tree-sitter 
   - tree-sitter-arduino 
