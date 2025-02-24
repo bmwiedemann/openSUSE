@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 24 12:42:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.28.0:
+  * chore: release 2.28.0
+  * chore(deps): update nelm/3p-helm
+  * docs(cleanup): small improvement (#6654)
+  * feat(host-cleanup): support Buildah backend (#6575)
+  * feat(config): add .Files.Exists and .Files.IsDir Go template
+    functions
+  * refactor(giterminism): add file system layer to make it
+    mockable
+  * refactor(giterminism): use errors.As() instead of switch type
+    for custom error type
+  * refactor(giterminism): improve code readability through
+    simplification of logboek debugging
+  * chore(release, cleanup): add cleanup policy (#6650)
+  * docs(cleanup): improve clarity of the article
+  * chore(release): 2 alpha,beta,ea,rock-solid
+
+-------------------------------------------------------------------
 Wed Feb 19 05:53:18 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.27.1:
