@@ -2704,4 +2704,16 @@ Without this fix, VBox always shows &quot;VirtualBox is not currently allowed to
     <comment>- Add newer-pythons.patch</comment>
     <requestid>1247018</requestid>
   </revision>
+  <revision rev="288" vrev="8">
+    <srcmd5>3cd0fdeb86c0ce214eb98711fe7f2bb1</srcmd5>
+    <version>7.1.4</version>
+    <time>1740408510</time>
+    <user>dimstar_suse</user>
+    <comment>- Build python bindings for python311, do not use python3 since
+  virtualbox doesn't support python3.13 yet.
+
+rpmfusion/debian patches did not work ultimately
+(they probably did not move to 3.13 yet, and only had 3.13 mentioned on a chance)</comment>
+    <requestid>1248094</requestid>
+  </revision>
 </revisionlist>

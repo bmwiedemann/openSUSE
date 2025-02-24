@@ -53,6 +53,11 @@
 	%define _vbox_instdir %{_prefix}/lib/virtualbox
 	%define _udevrulesdir %{_prefix}/lib/udev/rules.d
 %endif
+
+%global mypython python311
+%global __mypython %{expand:%%__%{mypython}}
+%global mypython_sitelib %{expand:%%%{mypython}_sitelib}
+
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
 Version:        7.1.4
@@ -118,7 +123,6 @@ Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
 Patch12:        host-source.patch
 Patch13:        kernel-6-13.patch
-Patch14:        newer-pythons.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -175,7 +179,9 @@ BuildRequires:  lzfse
 BuildRequires:  lzfse-devel
 BuildRequires:  pulseaudio-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel
+BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-pip
 BuildRequires:  qt6-tools-linguist
 BuildRequires:  rpm
 BuildRequires:  sed
@@ -328,28 +334,28 @@ Requires(pre):  net-tools-deprecated
 %description guest-tools
 VirtualBox guest addition tools.
 
-%package -n python3-%{name}
+%package -n %{mypython}-%{name}
 Summary:        Python bindings for %{name}
 Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 #rename from "ose" version:
-Provides:       python3-%{name} = %{version}-%{release}
+Provides:       %{mypython}-%{name} = %{version}-%{release}
 Obsoletes:      python-%{name} < %{version}-%{release}
 Obsoletes:      python2-%{name} < %{version}-%{release}
 Obsoletes:      python3-%{name} < %{version}-%{release}
-Provides:       python3-%{name}-ose = %{version}
+Provides:       %{mypython}-%{name}-ose = %{version}
 Obsoletes:      python-%{name}-ose < %{version}
 Obsoletes:      python2-%{name}-ose < %{version}
 Obsoletes:      python3-%{name}-ose < %{version}
 
-%description -n python3-%{name}
+%description -n %{mypython}-%{name}
 Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 %package devel
 Summary:        Devel files for %{name}
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
-Requires:       python3-%{name} = %{version}
+Requires:       %{mypython}-%{name} = %{version}
 #rename from "ose" version:
 Provides:       %{name}-ose-devel = %{version}
 Obsoletes:      %{name}-ose-devel < %{version}
@@ -648,7 +654,7 @@ EOF
 install -m 0755 -D src/VBox/Installer/linux/VBoxCreateUSBNode.sh %{buildroot}%{_vbox_instdir}/VBoxCreateUSBNode.sh
 echo "entering python-virtualbox install section"
 pushd out/linux.*/release/bin/sdk/installer/python
-VBOX_INSTALL_PATH=%{_vbox_instdir} python3 vboxapisetup.py install --prefix=%{_prefix} --root=%{buildroot}
+VBOX_INSTALL_PATH=%{_vbox_instdir} %{__mypython} vboxapisetup.py install --prefix=%{_prefix} --root=%{buildroot}
 popd
 install -d -m 755 %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 cp -r out/linux.*/release/bin/sdk/bindings/xpcom/python %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
@@ -911,14 +917,14 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %dir /media
 %endif
 
-%files -n python3-%{name}
+%files -n %{mypython}-%{name}
 %dir %{_vbox_instdir}/sdk
 %dir %{_vbox_instdir}/sdk/bindings
 %dir %{_vbox_instdir}/sdk/bindings/xpcom
 %{_vbox_instdir}/sdk/bindings/xpcom/python
 %{_vbox_instdir}/VBoxPython*.so
-%{python3_sitelib}/vboxapi-1.0-*.egg-info
-%{python3_sitelib}/vboxapi/
+%{mypython_sitelib}/vboxapi-*.egg-info
+%{mypython_sitelib}/vboxapi/
 
 %files devel
 %dir %{_vbox_instdir}/sdk

@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
-Wed Feb 19 10:11:07 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+Wed Feb 12 10:00:50 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
-- Add newer-pythons.patch
+- Build python bindings for python311, do not use python3 since
+  virtualbox doesn't support python3.13 yet.
 
 -------------------------------------------------------------------
 Tue Jan 21 11:17:17 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
