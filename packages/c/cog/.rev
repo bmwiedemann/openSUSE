@@ -32,4 +32,12 @@
     <comment>- Properly tag patches. (forwarded request 1171354 from dimstar)</comment>
     <requestid>1171404</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>db0468d10335f84e7aef55601d477af8</srcmd5>
+    <version>0.18.4</version>
+    <time>1740408585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248058</requestid>
+  </revision>
 </revisionlist>

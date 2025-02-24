@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:40:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.18.4:
+  + meson: Fix the build in systems where the "ln" command cannot
+    calculate relative symlink target paths.
+  + wl:
+    - Fix some items in popup menus not being rendered.
+    - Add support for weston-protocols version 14.
+- Changes from version 0.18.3:
+  + drm: Fix handling of the scaling factor setting.
+  + gtk4: Take scaling factor into account for pointer events.
+  + launcher: Support toggling WebKit features with a new
+    --features/-F command line option, when built against WebKit
+    2.42.0 or newer.
+- Rebase cog-fix-load-backend-fdo-lib.patch.
+
+-------------------------------------------------------------------
 Thu Apr  4 13:57:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Properly tag patches.

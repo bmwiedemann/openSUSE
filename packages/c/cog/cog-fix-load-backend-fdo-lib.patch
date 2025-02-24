@@ -1,10 +1,9 @@
-Index: cog/platform/drm/cog-platform-drm.c
-===================================================================
---- cog.orig/platform/drm/cog-platform-drm.c
-+++ cog/platform/drm/cog-platform-drm.c
-@@ -1360,7 +1360,7 @@ cog_drm_platform_setup(CogPlatform *plat
- 
+diff -Nur cog-0.18.4/platform/drm/cog-platform-drm.c cog-0.18.4-patched/platform/drm/cog-platform-drm.c
+--- cog-0.18.4/platform/drm/cog-platform-drm.c	2024-05-15 14:39:19.000000000 +0200
++++ cog-0.18.4-patched/platform/drm/cog-platform-drm.c	2025-02-19 15:15:16.653576012 +0100
+@@ -1409,7 +1409,7 @@
      init_config(COG_DRM_PLATFORM(platform), shell, params);
+     g_signal_connect(shell, "notify::device-scale-factor", G_CALLBACK(cog_drm_platform_shell_device_factor_changed), NULL);
  
 -    if (!wpe_loader_init ("libWPEBackend-fdo-1.0.so")) {
 +    if (!wpe_loader_init ("libWPEBackend-fdo-1.0.so.1")) {
