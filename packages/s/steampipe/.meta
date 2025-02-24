@@ -1,0 +1,6 @@
+<package name="steampipe" project="openSUSE:Factory">
+  <title>Query various APIs and services via SQL language</title>
+  <description>Steampipe is the zero-ETL way to query APIs and services. Use it to expose data sources to SQL.</description>
+  <devel project="devel:languages:go" package="steampipe"/>
+  <url>https://github.com/turbot/steampipe</url>
+</package>

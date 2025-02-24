@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/turbot/steampipe.git</param>
+    <param name="scm">git</param>
+    <param name="revision">main</param>
+    <param name="version">v1.0.3</param>
+  	<param name="versionrewrite-pattern">v(.*)</param>
+	<param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="go_modules" mode="manual"/>
+</services>
