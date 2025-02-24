@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Feb 21 15:43:03 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  * Clarify documentation of 'rotate' option. #3580
+  * Fix std::bad_casts in tray module #3604
+  * fix: return app_identifier as itself in AAppIconLabel if it's an absolute path #3613
+  * Fixes for Sway modes and wlr_scene support #3528
+  * fix(custom): stop mixing manual and automatic arg indexing #3617
+  * cava: Add format_silent option and css triggers #3523
+  * Fix: 3383. Clock. Default value for cldYearShift_ = 1900/01/01 #3632
+  * nix: remove patches from downstream #3640
+  * cava bump #3646
+  * .github/workflows: don't run on forks #3651
+  * nix/default: cava bump #3650
+  * .github/workflows: allow forks to manually run flake lock update #3652
+  * #2275 Backlight: Add minimum brightness #3637
+  * flake.lock: Update #3658
+  * Fix a crash after handling SIGINT and a data race when initializing the Hyprland workspace modules #3695
+  * pulseaudio: volume indicator update on default output switch #3464
+  * Add warning threshold to temperature module #3674
+  * Add signals section to manpage #3758
+  * fix hyprland's grouped window flags #3747
+  * flake.lock: Update #3736
+  * Add stretching of modules and modules-center toggling #3730
+  * fix null-deref due to unconstructed PrivacyNodeInfo #3768
+  * flake.lock: Update #3800
+  * Let network module handle ipv4 and ipv6 simultaneously #3809
+  * sway/workspaces: use X11 class for XWayland windows #3801
+  * Add locking for interacting with the pulseaudio thread #3806
+  * Using 'auto' instead of 'self' in backlight module #3808
+  * sway: fix "Mapping is not an object" warning #3831
+  * fix: hyprland/window get empty ipc json data #3826
+  * Escape markup characters in dwl/window #3827
+  * Update LICENSE, fix copyright license year #3860
+  * flake.lock: Update #3859
+  * Fix compilation with libc++ #3866
+  * fix: never sleep cava when sleep_timer is 0 #3875
+  * Escape tray tooltip text #3877
+  * Allow using wildcards in config include paths #3862
+  * Hide vacant tags config option on River #3823
+  * Make battery module update on plugging/unplugging again (refs #2519) #3474
+  * Revert "Make battery module update on plugging/unplugging again (refs #2519)" #3902
+  * fix: JSON format for Hyprland keyboard example #3913
+  * Hide upower module when specified device disconnected #3919
+  * flake.lock: Update #3914
+  * [hyprland/window] enable tooltip for hyprland window module #3898
+  * Fix workspacerules not taking into account defaultName #3947
+  * fix: battery runtime estimation with negative sysfs values #3942
+  * update(docs): link #3940
+  * Hyprland IPC improvements #3945
+  * hyprland/workspaces: fixed urgent for special workspaces #3932
+  * turn off ellipsize for niri/language module #3922
+- Drop upstreamed: tray-fix.patch
+
+-------------------------------------------------------------------
 Mon Sep 23 11:09:48 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Add tray-fix.patch "Fix std::bad_casts in tray module"
