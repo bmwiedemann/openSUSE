@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 25 11:36:03 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 24.12.1
+  Bug fixes:
+  * Don't set nowPlayingItem in playNextFileUrl
+  * Don't use EGL for Nvidia and log display devices
+  * Fix mpv_render_context_render invocation
+  * Use reverse DNS + app naming for the .desktop file and
+    advertise it
+  Other changes:
+  * Use Logger::log instead of LogStream wherever possible
+  * Send the first log message as early as possible
+  * Re-enable aspect ratio when changing it
+
+-------------------------------------------------------------------
 Sat Dec  7 12:20:04 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 24.12
