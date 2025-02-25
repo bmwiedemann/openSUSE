@@ -1,7 +1,7 @@
 #
 # spec file for package xonsh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           xonsh
-Version:        0.16.0
+Version:        0.19.2
 Release:        0
 Summary:        A general purpose, Python-powered shell
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -34,7 +34,8 @@ Recommends:     python3-distro
 Recommends:     python3-ply
 Recommends:     python3-prompt_toolkit >= 2.0
 Recommends:     python3-setproctitle
-Requires:       python3-base >= 3.5
+# python3-base has no readline, required for tab completion, history lookup and basic command editing
+Requires:       python3 >= 3.5
 Suggests:       %{name}-doc
 Provides:       python3-xonsh = %{version}
 Obsoletes:      python3-xonsh < %{version}
