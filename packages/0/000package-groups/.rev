@@ -2113,4 +2113,11 @@ Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</commen
     <comment>Add SYSEXT_LEVEL to os-release on MicroOS</comment>
     <requestid>1247638</requestid>
   </revision>
+  <revision rev="296" vrev="294">
+    <srcmd5>881a271e1ff297f3af3f8af638d01e23</srcmd5>
+    <version>unknown</version>
+    <time>1740514299</time>
+    <user>dimstar_suse</user>
+    <comment>mozjs78 is gone</comment>
+  </revision>
 </revisionlist>
