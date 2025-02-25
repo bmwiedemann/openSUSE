@@ -120,6 +120,10 @@ Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
+Patch16:        ffmpeg-7-CVE-2025-22919.patch
+Patch17:        ffmpeg-7-CVE-2025-0518.patch
+Patch18:        ffmpeg-7-CVE-2025-25473.patch
+Patch19:        ffmpeg-7-CVE-2025-22921.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel >= 3.98.3
@@ -257,6 +261,14 @@ Requires:       (libavutil59 = %version-%release or ffmpeg-7-mini-libs = %versio
 Requires:       (libpostproc58 = %version-%release or ffmpeg-7-mini-libs = %version-%release)
 Requires:       (libswresample5 = %version-%release or ffmpeg-7-mini-libs = %version-%release)
 Requires:       (libswscale8 = %version-%release or ffmpeg-7-mini-libs = %version-%release)
+%if "%flavor" == "ffmpeg-7-mini"
+# Patches may subtly change internal APIs, so we're sticking %%release in
+# Requires lines. It also conveniently blocks openSUSE libav* being combined
+# with Packman libav*, due to PM's unique %%release numbers.
+# This use of %%release with %flavor however requires bcnt synchro:
+#
+#!BcntSyncTag:  ffmpeg-7
+%endif
 
 %description
 FFmpeg is a multimedia framework, able to decode, encode,

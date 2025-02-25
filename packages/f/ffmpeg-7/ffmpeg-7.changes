@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Feb 19 05:17:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2025-22921.patch:
+  Backporting 7f9c7f98 from upstream, clear array length when
+  freeing it.
+  (CVE-2025-22921, bsc#1237382)
+
+-------------------------------------------------------------------
+Fri Feb 19 04:27:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2025-25473.patch:
+  Backporting c08d3004 from upstream, clear FFFormatContext packet.
+  When packet_buffer is used in mux.c, and if a muxing process fails
+  at a point where packets remained in said queue.
+  (CVE-2025-25473, bsc#1237351)
+
+-------------------------------------------------------------------
+Fri Feb 19 03:18:02 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2025-0518.patch:
+  Backporting b5b6391d from upstream, fixes memory data leak when
+  use sscanf().
+  (CVE-2025-0518, bsc#1236007)
+
+-------------------------------------------------------------------
+Fri Feb 19 02:58:01 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2025-22919.patch:
+  Backporting 1446e37d from upstream, check for valid sample rate
+  As the sample rate <= 0 is invalid.
+  (CVE-2025-22919, bsc#1237371)
+
+-------------------------------------------------------------------
 Tue Oct 15 08:18:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Adjust bconds to build the package in SLFO without xvidcore.
@@ -22,6 +55,8 @@ Wed Oct  2 08:20:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
     disposition
   * LCEVC enhancement data exporting in H.26x and MP4/ISOBMFF
   * LCEVC filter
+  * avcodec/mpegvideo_enc: Add check for av_packet_new_side_data (CVE-2024-12361, bsc#1237358)
+  * avformat/dump: print only the actual streams in a tile grid group (CVE-2025-22920, bsc#1237380)
 - Delete patches/ffmpeg-7-fix-crashes.patch,
   0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch (merged)
 
@@ -70,6 +105,8 @@ Wed Aug  7 07:37:24 UTC 2024 - Cliff Zhao <qzhao@suse.com>
   * avfilter/vf_tiltandshift: fix buffer offset for yuv422p input (CVE-2024-32229, bsc#1227295)
   * avcodec/mpegvideo_enc: Fix 1 line and one column images (CVE-2024-32230, bsc#1227296)
   * avcodec/pnmdec: Use 64bit for input size check (CVE-2024-7055, bsc#1229026)
+  * fftools/ffmpeg_mux_init: Fix double-free on error (CVE-2024-35365, bsc#1235091)
+  * avformat/dxa: Adjust order of operations around block align (CVE-2024-36613, bsc#1235092)
 - Drop ffmpeg-7-CVE-2024-32228.patch:
   The fix has been merged.
 - Drop ffmpeg-7-CVE-2024-32229.patch:
