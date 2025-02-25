@@ -45,12 +45,13 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libexpat-devel >= 2.2.8
 BuildRequires:  liblcms2-devel >= 2.2
-BuildRequires:  openexr-devel
+BuildRequires:  openexr-devel >= 3
 BuildRequires:  pkgconfig
 BuildRequires:  pystring-devel >= 1.1.3
 BuildRequires:  python3-devel
 BuildRequires:  python3-pybind11-devel
 BuildRequires:  yaml-cpp-devel >= 0.6.3
+BuildRequires:  pkgconfig(Imath) >= 3.1.1
 BuildRequires:  pkgconfig(minizip-ng) >= 4.0.4
 Recommends:     %{pkg_name}-doc = %{version}
 %if %{with ocio_tools}

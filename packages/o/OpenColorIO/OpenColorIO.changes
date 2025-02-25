@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 15 00:28:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump openexr to >= 3 match the rest of the stack
+- Have an explicite BR for pkgconfig(Imath) and do not rely on it
+  being pulled via openexr
+
+-------------------------------------------------------------------
 Sat Feb  1 22:20:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Lock OpenImageIO to < 3
