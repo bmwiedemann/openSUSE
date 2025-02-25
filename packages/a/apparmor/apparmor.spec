@@ -88,6 +88,10 @@ Patch10:        mesa-cachedir.diff
 # add python 3.13 fixes/workarounds
 Patch11:        python313.patch
 
+# PATCH-FIX-UPSTREAM https://gitlab.com/apparmor/apparmor/-/merge_requests/1495 utils: adjusts aa-notify tests to handle Python 3.13+
+# to finish python313 support
+Patch12:        py313-aa-notify.patch
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -357,6 +361,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %endif
 %patch -p1 -P 10
 %patch -p1 -P 11
+%patch -p1 -P 12
 
 %build
 export SUSE_ASNEEDED=0

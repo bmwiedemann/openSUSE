@@ -2939,4 +2939,12 @@ Note: I checked the GPG signature with both the expired and the refreshed key, a
     <comment></comment>
     <requestid>1247245</requestid>
   </revision>
+  <revision rev="219" vrev="4">
+    <srcmd5>28dd3fcc3884fd07599342ea8c9abd4d</srcmd5>
+    <version>4.0.3</version>
+    <time>1740498030</time>
+    <user>dimstar_suse</user>
+    <comment>- add py313-aa-notify.patch to adapt the last bits to python 3.13 (forwarded request 1247658 from mcalabkova)</comment>
+    <requestid>1248250</requestid>
+  </revision>
 </revisionlist>

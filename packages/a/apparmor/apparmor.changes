@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 21 13:29:19 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- add py313-aa-notify.patch to adapt the last bits to python 3.13
+
+-------------------------------------------------------------------
 Wed Feb 19 13:36:20 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix commented out macros
