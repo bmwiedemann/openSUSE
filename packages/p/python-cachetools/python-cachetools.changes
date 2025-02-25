@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 24 08:18:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.5.2
+  * Reduce number of ``@cached`` lock/unlock operations.
+  * Improve documentation.
+  * Update CI environment.
+
+-------------------------------------------------------------------
 Mon Jan 27 13:37:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.5.1
