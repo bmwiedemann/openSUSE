@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Feb 17 13:53:53 UTC 2025 - dcermak@suse.com
+
+- Update to version 20250217.a1e48a0:
+  * test: Add migration tests
+  * migrate: Migrate TCP flows
+  * repair, passt-repair: Build and warning fixes for musl
+  * tcp_splice: A typo three years ago and SO_RCVLOWAT is gone
+  * tcp_splice: Don't wake up on input data if we can't write it anywhere
+  * vhost_user: Clear ring address on GET_VRING_BASE
+  * tcp, tcp_splice: Don't set SO_SNDBUF and SO_RCVBUF to maximum values
+  * tcp: Keep updating window and checking for socket data after FIN from guest
+  * contrib/selinux: Enable mapping guest memory for libvirt guests
+  * selinux: Add rules needed to run tests
+  * rampstream: Add utility to test for corruption of data streams
+  * tcp: Get bound address for connected inbound sockets too
+  * vhost_user: Make source quit after reporting migration state
+  * Add interfaces and configuration bits for passt-repair
+  * migrate: Migrate guest observed addresses
+  * migrate: Skeleton of live migration logic
+  * passt-repair: Fix off-by-one in check for number of file descriptors
+  * tcp_vu: Fix off-by one in header count array adjustment
+  * tcp: Implement conservative zero-window probe on ACK timeout
+  * tcp: Don't discard window information on keep-alive segments
+  * dhcp, dhcpv6: Add hostname and client fqdn ops
+  * conf: Don't map DNS traffic to host, if host gateway is a resolver
+  * passt-repair: Send one confirmation *per command*, not *per socket*
+  * dhcp: Don't re-use request message for reply
+  * passt-repair: Dodge "structurally unreachable code" warning from Coverity
+  * passt-repair: Fix calculation of payload length from cmsg_len
+  * passt-repair: Don't use perror(), accept ECONNRESET as termination
+  * conf, passt.1: Un-deprecate --host-lo-to-ns-lo
+  * debug: Add tcpdump to mbuto.img
+  * apparmor: Workaround for unconfined libvirtd when triggered by unprivileged user
+  * passt-repair.1: Fix indication of TCP_REPAIR constants
+  * passt-repair: Build fixes for musl
+  * passt-repair: use _exit() over return
+  * treewide: use _exit() over exit()
+  * tcp: Simplify handling of getsockname()
+  * migrate: Fix several errors with passt-repair
+  * doc: Add mock of migration source and target
+  * tcp: Get socket port and address using getsockname() when connecting from guest
+  * Introduce passt-repair
+  * vhost_user: Turn some vhost-user message reports to trace()
+  * util: Add read_remainder() and read_all_buf()
+  * tcp_splice, udp_flow: fcntl64() support on PPC64 depends on glibc version
+  * vhost_user: On 32-bit ARM, mmap() is not available, mmap2() is used instead
+  * tcp: Don't reset outbound connection on SYN retries
+  * pasta.te: fix demo.sh and remove one duplicate rule
+  * tcp: Add HOSTSIDE(x), HOSTFLOW(x) macros
+  * util: Rename and make global vu_remove_watch()
+  * tcp: Always pass NULL event with EPOLL_CTL_DEL
+  * vhost-user: Implement an empty VHOST_USER_SEND_RARP command
+  * netlink: Skip loopback interface while looking for a template
+
+-------------------------------------------------------------------
 Wed Jan 22 08:34:13 UTC 2025 - dcermak@suse.com
 
 - Update to version 20250121.4f2c8e7:

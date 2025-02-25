@@ -45,7 +45,7 @@
 
 %global selinuxtype targeted
 Name:           passt
-Version:        20250121.4f2c8e7
+Version:        20250217.a1e48a0
 Release:        0
 Summary:        User-mode networking daemons for virtual machines and namespaces
 License:        GPL-2.0-or-later AND BSD-3-Clause
@@ -161,6 +161,7 @@ fi
 %{_bindir}/passt
 %{_bindir}/pasta
 %{_bindir}/qrap
+%{_bindir}/passt-repair
 %if %{with apparmor}
 %dir %{_sysconfdir}/apparmor.d
 %dir %{_sysconfdir}/apparmor.d/abstractions/
@@ -171,6 +172,7 @@ fi
 %{_mandir}/man1/passt.1*
 %{_mandir}/man1/pasta.1*
 %{_mandir}/man1/qrap.1*
+%{_mandir}/man1/passt-repair.1*
 %ifarch x86_64
 %{_bindir}/passt.avx2
 %{_mandir}/man1/passt.avx2.1*

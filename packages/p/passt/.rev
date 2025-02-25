@@ -168,4 +168,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment></comment>
     <requestid>1239598</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>45cf0e1787aaf03b4754c70d60c2465a</srcmd5>
+    <version>20250217.a1e48a0</version>
+    <time>1740497945</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release 20250121.4f2c8e7 (forwarded request 1247132 from dancermak)</comment>
+    <requestid>1248011</requestid>
+  </revision>
 </revisionlist>
