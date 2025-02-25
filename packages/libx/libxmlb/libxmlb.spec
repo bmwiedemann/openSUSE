@@ -19,7 +19,7 @@
 
 %define sover 2
 Name:           libxmlb
-Version:        0.3.19
+Version:        0.3.21
 Release:        0
 Summary:        Library for querying compressed XML metadata
 License:        LGPL-2.1-or-later
