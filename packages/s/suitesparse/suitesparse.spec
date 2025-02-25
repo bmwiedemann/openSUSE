@@ -1,7 +1,7 @@
 #
 # spec file for package suitesparse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -670,65 +670,26 @@ export GRAPHBLAS_CACHE_PATH=$(mktemp -d GraphBlas_JIT_cache_XXX)
 export JOBS="%(echo %{?_smp_mflags} | cut -c 3-)"
 %make_build demos
 
-%post   -n %{amdlib} -p /sbin/ldconfig
-%postun -n %{amdlib} -p /sbin/ldconfig
-
-%post   -n %{btflib} -p /sbin/ldconfig
-%postun -n %{btflib} -p /sbin/ldconfig
-
-%post   -n %{camdlib} -p /sbin/ldconfig
-%postun -n %{camdlib} -p /sbin/ldconfig
-
-%post   -n %{ccolamdlib} -p /sbin/ldconfig
-%postun -n %{ccolamdlib} -p /sbin/ldconfig
-
-%post   -n %{cholmodlib} -p /sbin/ldconfig
-%postun -n %{cholmodlib} -p /sbin/ldconfig
-
-%post   -n %{colamdlib} -p /sbin/ldconfig
-%postun -n %{colamdlib} -p /sbin/ldconfig
-
-%post   -n %{cxsparselib} -p /sbin/ldconfig
-%postun -n %{cxsparselib} -p /sbin/ldconfig
-
-%post   -n %{graphblaslib} -p /sbin/ldconfig
-%postun -n %{graphblaslib} -p /sbin/ldconfig
-
-%post   -n %{klulib} -p /sbin/ldconfig
-%postun -n %{klulib} -p /sbin/ldconfig
-
-%post   -n %{ldllib} -p /sbin/ldconfig
-%postun -n %{ldllib} -p /sbin/ldconfig
-
-%post   -n %{suitesparse_mongooselib} -p /sbin/ldconfig
-%postun -n %{suitesparse_mongooselib} -p /sbin/ldconfig
-
-%post   -n %{rbiolib} -p /sbin/ldconfig
-%postun -n %{rbiolib} -p /sbin/ldconfig
-
-%post   -n %{spexlib} -p /sbin/ldconfig
-%postun -n %{spexlib} -p /sbin/ldconfig
-
-%post   -n %{spqrlib} -p /sbin/ldconfig
-%postun -n %{spqrlib} -p /sbin/ldconfig
-
-%post   -n %{umfpacklib} -p /sbin/ldconfig
-%postun -n %{umfpacklib} -p /sbin/ldconfig
-
-%post   -n %{lagraphlib} -p /sbin/ldconfig
-%postun -n %{lagraphlib} -p /sbin/ldconfig
-
-%post   -n %{lagraphxlib} -p /sbin/ldconfig
-%postun -n %{lagraphxlib} -p /sbin/ldconfig
-
-%post   -n %{parulib} -p /sbin/ldconfig
-%postun -n %{parulib} -p /sbin/ldconfig
-
-%post   -n %{klu_cholmodlib} -p /sbin/ldconfig
-%postun -n %{klu_cholmodlib} -p /sbin/ldconfig
-
-%post   -n %{configlib} -p /sbin/ldconfig
-%postun -n %{configlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{amdlib}
+%ldconfig_scriptlets -n %{btflib}
+%ldconfig_scriptlets -n %{camdlib}
+%ldconfig_scriptlets -n %{ccolamdlib}
+%ldconfig_scriptlets -n %{cholmodlib}
+%ldconfig_scriptlets -n %{colamdlib}
+%ldconfig_scriptlets -n %{cxsparselib}
+%ldconfig_scriptlets -n %{graphblaslib}
+%ldconfig_scriptlets -n %{klulib}
+%ldconfig_scriptlets -n %{ldllib}
+%ldconfig_scriptlets -n %{suitesparse_mongooselib}
+%ldconfig_scriptlets -n %{rbiolib}
+%ldconfig_scriptlets -n %{spexlib}
+%ldconfig_scriptlets -n %{spqrlib}
+%ldconfig_scriptlets -n %{umfpacklib}
+%ldconfig_scriptlets -n %{lagraphlib}
+%ldconfig_scriptlets -n %{lagraphxlib}
+%ldconfig_scriptlets -n %{parulib}
+%ldconfig_scriptlets -n %{klu_cholmodlib}
+%ldconfig_scriptlets -n %{configlib}
 
 %files devel
 %doc ChangeLog README.md
