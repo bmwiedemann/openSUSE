@@ -47,4 +47,20 @@
     `typing.IO[bytes]` (previously `typing.BinaryIO`)</comment>
     <requestid>1219216</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eaf3219812ff905cea5dfe3590eb2e5b</srcmd5>
+    <version>1.2.0</version>
+    <time>1740497974</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Always preserve `decimal.Decimal` type in parse round trips
+  * Improved
+  * Better `TypeError` message on invalid mapping keys
+  * Unify type representation in error messages
+  * Performance
+  * Improve import time by removing `typing` import
+  * Improve import time by removing `string` import
+  * Improve import time by lazy importing `decimal`</comment>
+    <requestid>1248089</requestid>
+  </revision>
 </revisionlist>
