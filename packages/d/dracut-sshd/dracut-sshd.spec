@@ -1,7 +1,7 @@
 #
 # spec file for package dracut-sshd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,17 @@
 #
 
 
-%define pkg_rel -2
 Name:           dracut-sshd
-Version:        0.6.1
+Version:        0.6.7
 Release:        0
 Summary:        Provide SSH access to initramfs early user space
 License:        GPL-3.0-or-later
 Group:          System/Boot
 URL:            https://github.com/gsauthof/dracut-sshd
-Source:         https://github.com/gsauthof/dracut-sshd/archive/%{version}%{pkg_rel}/%{name}-%{version}%{pkg_rel}.tar.gz
-Patch1:         0001-Give-some-guidance-through-motd-prompt.patch
-Patch2:         0002-Support-OpenSSH-9.8.patch
-Patch3:         0003-Support-OpenSSH-9.8-for-openSUSE.patch
+Source:         https://github.com/gsauthof/dracut-sshd/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  dracut
 Requires:       dracut
+Suggests:       systemd-network
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -40,7 +37,7 @@ root filesystem and remote access to the Dracut emergency shell
 (i.e. early userspace).
 
 %prep
-%autosetup -p1 -n %{name}-%{version}%{pkg_rel}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 # empty

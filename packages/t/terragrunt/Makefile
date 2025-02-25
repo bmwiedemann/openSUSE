@@ -21,7 +21,7 @@ tar:
 	cp -r ./terragrunt/ ./tmpdir/src && \
 	cd ./tmpdir/src/ && \
 	echo "Installing mockery" && \
-	go install github.com/vektra/mockery/v2@v2.43.0 && \
+	go install github.com/vektra/mockery/v2@v2.52.3 && \
 	echo "Starting go generate" && \
 	go generate ./... && \
 	go mod download && \

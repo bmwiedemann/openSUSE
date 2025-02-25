@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 24 20:05:48 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.18.1:
+  * gopls: update go.mod for v0.18.1-pre.2
+  * gopls/internal/settings: fix misleading error messages
+  * gopls/internal/golang: add missing json tags for hoverResult
+  * gopls: update go.mod for v0.18.1-pre.1
+  * gopls: temporarily reinstate the "Structured" hover kind
+  * gopls/internal/analysis/modernize: fix minmax bug
+  * gopls/internal/analysis/modernize: fix bug in minmax
+
+-------------------------------------------------------------------
 Thu Feb 20 18:08:32 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.18.0:

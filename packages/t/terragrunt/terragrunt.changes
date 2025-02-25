@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 25 05:56:13 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.13:
+  * fix #2072 make sure the `generated` code is formatted before
+    writing it to a file. (#3917)
+
+-------------------------------------------------------------------
+Mon Feb 24 13:42:30 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.12:
+  * Stacks: values generation (#3914)
+  * fix: More docs fixes (#3919)
+- Update to version 0.73.11:
+  * fix: Preventing log enrichment for bare mode (#3916)
+  * fix: Adding explicit test for missing dependency (#3915)
+  * build(deps): bump github.com/puzpuzpuz/xsync/v3 from 3.5.0 to
+    3.5.1 (#3892)
+
+-------------------------------------------------------------------
 Fri Feb 21 19:43:45 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.73.10 (0.73.9 was broken):

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 25 06:42:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.3:
+  * Minor Changes
+    - ansible-test - Automatically retry HTTP GET/PUT/DELETE
+      requests on exceptions.
+    - ansible-test - Use Python's urllib instead of curl for HTTP
+      requests.
+  * Bugfixes
+    - include_vars - fixed erroneous warning if an unreserved
+      variable name contains a single character that matches a
+      reserved variable. (#84623)
+    - linear strategy - fix executing end_role meta tasks for each
+      host, instead of handling these as implicit run_once tasks
+      (#84660).
+
+-------------------------------------------------------------------
 Tue Jan 28 18:55:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.2:

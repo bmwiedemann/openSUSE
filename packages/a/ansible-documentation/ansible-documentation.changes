@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 25 06:39:56 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.18.3:
+  * address broken links in dev and appendices sections (#2402)
+    (#2423)
+  * Fix YAML syntax, adjust more code block languages (#2408)
+    (#2419)
+  * Fix broken link markup. (#2412) (#2415)
+  * Bump wntrblm/nox from 2024.10.09 to 2025.02.09 (#2409)
+  * Update RST files to specify codeblock language attributes
+    (#2382) (#2407)
+  * Add SC member forum names (#2392) (#2395)
+  * intro_inventory: Update ignore extension setting (#2372)
+    (#2401)
+  * Clarify handlers insertion order (#2359) (#2398)
+  * Remove incorrect parts from docs. (#2388) (#2391)
+  * Update Ansible 11 porting guide for 11.2.0 release. (#2380)
+    (#2381)
+  * Skip auto-generated porting guides for rstcheck. (#2376)
+    (#2379)
+
+-------------------------------------------------------------------
 Tue Jan 28 18:52:58 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.18.2:

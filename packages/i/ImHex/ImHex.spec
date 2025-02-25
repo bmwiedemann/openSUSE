@@ -18,9 +18,9 @@
 
 %define _plutovg_version 0.0.4
 
-%define sover 1_37_1
+%define sover 1_37_2
 Name:           ImHex
-Version:        1.37.1
+Version:        1.37.2
 Release:        0
 Summary:        A Hex Editor for Reverse Engineers, Programmers
 License:        GPL-2.0-only
@@ -119,9 +119,7 @@ echo %{version} > VERSION
 %license LICENSE
 %exclude %{_datadir}/licenses/imhex/LICENSE
 %{_bindir}/imhex
-%{_bindir}/imhex-updater
-%{_libdir}/fonts.hexpluglib
-%{_libdir}/ui.hexpluglib
+%exclude %{_bindir}/imhex-updater
 %dir %{_libdir}/imhex
 %dir %{_libdir}/imhex/plugins
 %{_libdir}/imhex/plugins/builtin.hexplug

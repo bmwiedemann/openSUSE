@@ -324,4 +324,16 @@
   base images, but that will be changed.</comment>
     <requestid>1247645</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1ad4c496b62bfb8886f81e69af84550a</srcmd5>
+    <version>0.5.9</version>
+    <time>1740499097</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5.9
+  Crash fix for offline media build using splitted repodata
+
+- update to version 0.5.8
+  Added missing bits for splitted source medium</comment>
+    <requestid>1248399</requestid>
+  </revision>
 </revisionlist>

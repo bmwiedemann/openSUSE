@@ -1,7 +1,7 @@
 #
 # spec file for package python-zc.customdoctests
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zc.customdoctests
 Version:        1.0.1
 Release:        0
+Summary:        Use doctest with other languages
 License:        ZPL-2.1
-Summary:        zc.customdoctests -- Use doctest with other languages
-URL:            http://pypi.python.org/pypi/zc.customdoctests
 Group:          Development/Languages/Python
+URL:            https://pypi.python.org/pypi/zc.customdoctests
 Source:         https://files.pythonhosted.org/packages/source/z/zc.customdoctests/zc.customdoctests-%{version}.zip
 Source1:        LICENSE.txt
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module manuel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.testing}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -54,24 +52,27 @@ JavaScript, and sh.
 
 %prep
 %setup -q -n zc.customdoctests-%{version}
+cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand rm -r %{buildroot}%{$python_sitelib}/zc.customdoctests-%{version}-py3.12-nspkg.pth
 
 %check
-cd build/lib
-%{python_expand export PYTHONPATH='.'
+%{python_expand export PYTHONPATH='.:%{buildroot}%{$python_sitelib}'
 $python -m unittest -v zc.customdoctests.tests.test_suite
-$python -m doctest -v zc/customdoctests/tests.py
+$python -m doctest -v src/zc/customdoctests/tests.py
 }
 
 %files %{python_files}
-%license ../../SOURCES/LICENSE.txt
+%license LICENSE.txt
 %doc README.txt
-%{python_sitelib}/*
+%dir %{python_sitelib}/zc
+%{python_sitelib}/zc/customdoctests
+%{python_sitelib}/zc.customdoctests-%{version}*info
 
 %changelog

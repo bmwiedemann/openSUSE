@@ -15,4 +15,18 @@
     <comment></comment>
     <requestid>1247285</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>977e3c12166af610c855117d7f544f99</srcmd5>
+    <version>1.37.2</version>
+    <time>1740499094</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1248248 from mnhauke
+
+- Update to version 1.37.2
+  Bugfix release
+  * https://github.com/WerWolv/ImHex/compare/v1.37.1...v1.37.2
+
+- Don't package imhex-updater.</comment>
+    <requestid>1248251</requestid>
+  </revision>
 </revisionlist>

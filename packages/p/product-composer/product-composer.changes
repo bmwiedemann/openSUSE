@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:04:48 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.9
+
+  Crash fix for offline media build using splitted repodata
+
+-------------------------------------------------------------------
+Mon Feb 24 10:35:48 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.8
+
+  Added missing bits for splitted source medium 
+
+-------------------------------------------------------------------
 Fri Feb 21 13:25:46 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.5.7

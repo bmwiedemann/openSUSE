@@ -33,4 +33,17 @@
     <comment></comment>
     <requestid>1190662</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c5183d8ed03ad45b60c9307636738208</srcmd5>
+    <version>0.6.7</version>
+    <time>1740499119</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.7
+  * Enable SFTP access
+  * Removed 0001-Give-some-guidance-through-motd-prompt.patch (upstream)
+  * Removed 0002-Support-OpenSSH-9.8.patch (upstream)
+  * Removed 0003-Support-OpenSSH-9.8-for-openSUSE.patch (upstream)
+- Add Suggests: systemd-network to go with included docs and examples</comment>
+    <requestid>1248361</requestid>
+  </revision>
 </revisionlist>
