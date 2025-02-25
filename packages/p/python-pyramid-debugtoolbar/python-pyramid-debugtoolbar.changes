@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 25 13:38:57 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch to fix tests with latest pyramid
+  0001-Adapt-tests-to-latest-pygments.patch
+
+-------------------------------------------------------------------
 Fri Feb  9 21:57:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.12.1:

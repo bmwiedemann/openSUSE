@@ -84,4 +84,13 @@
     deprecated attributes in Pyramid like ``effective_principals``.</comment>
     <requestid>1145530</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f63a8a5d9a99cc01a9d2ed16ad179f43</srcmd5>
+    <version>4.12.1</version>
+    <time>1740498497</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix tests with latest pyramid
+  0001-Adapt-tests-to-latest-pygments.patch</comment>
+    <requestid>1248380</requestid>
+  </revision>
 </revisionlist>

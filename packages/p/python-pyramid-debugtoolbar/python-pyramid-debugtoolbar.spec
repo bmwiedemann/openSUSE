@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid-debugtoolbar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ Summary:        An interactive HTML debugger for Pyramid application development
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
 URL:            https://docs.pylonsproject.org
 Source:         https://files.pythonhosted.org/packages/source/p/pyramid_debugtoolbar/pyramid_debugtoolbar-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 0001-Adapt-tests-to-latest-pygments.patch gh#Pylons/pyramid_debugtoolbar#393
+Patch1:         0001-Adapt-tests-to-latest-pygments.patch
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module WebTest}
@@ -59,7 +61,7 @@ Summary:        Documentation files for %{name}
 Documentation and examples for %{name}.
 
 %prep
-%setup -q -n pyramid_debugtoolbar-%{version}
+%autosetup -p1 -n pyramid_debugtoolbar-%{version}
 rm -r demo/.gitignore demo/debugtoolbar_demo.egg-info
 
 %build
