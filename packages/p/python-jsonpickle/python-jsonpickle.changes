@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 24 13:37:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.0.2
+  * The unpickler is now more resilient to malformed "py/id" and "py/repr" data. (+546)
+  * The unpickler is now more resilient to invalid "py/b85" and "py/b64" data. (+547)
+  * The unpickler's support for read-only str attributes was improved. (+548) (#478)
+
+-------------------------------------------------------------------
 Wed Feb  5 07:24:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.0.1
