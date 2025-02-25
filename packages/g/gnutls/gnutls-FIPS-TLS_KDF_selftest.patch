@@ -1,8 +1,8 @@
-Index: gnutls-3.8.5/lib/fips.c
+Index: gnutls-3.8.9/lib/fips.c
 ===================================================================
---- gnutls-3.8.5.orig/lib/fips.c
-+++ gnutls-3.8.5/lib/fips.c
-@@ -593,6 +593,26 @@ int _gnutls_fips_perform_self_checks2(vo
+--- gnutls-3.8.9.orig/lib/fips.c
++++ gnutls-3.8.9/lib/fips.c
+@@ -621,6 +621,26 @@ int _gnutls_fips_perform_self_checks2(vo
  		return gnutls_assert_val(GNUTLS_E_SELF_TEST_ERROR);
  	}
  

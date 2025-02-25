@@ -1,7 +1,7 @@
 #
 # spec file for package gnutls
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@
 %endif
 %bcond_with tpm
 Name:           gnutls
-Version:        3.8.8
+Version:        3.8.9
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -71,6 +71,8 @@ Patch102:       gnutls-FIPS-jitterentropy.patch
 #PATCH-FIX-SUSE bsc#1221242 Fix memleak in gnutls' jitterentropy collector
 Patch103:       gnutls-FIPS-jitterentropy-deinit-threads.patch
 %endif
+Patch104:       gnutls-set-cligen-python-interp.patch
+Patch105:       gnutls-skip-pqx-test.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
@@ -318,7 +320,7 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %postun -n libgnutlsxx%{gnutlsxx_sover} -p /sbin/ldconfig
 
 %files -f libgnutls.lang
-%license LICENSE
+%license COPYING COPYING.LESSERv2
 %doc THANKS README.md NEWS ChangeLog AUTHORS doc/TODO
 %{_bindir}/certtool
 %{_bindir}/gnutls-cli
@@ -339,22 +341,22 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %{_mandir}/man1/*
 
 %files -n libgnutls%{gnutls_sover}
-%license LICENSE
+%license COPYING COPYING.LESSERv2
 %{_libdir}/libgnutls.so.%{gnutls_sover}*
 %{_libdir}/.libgnutls.so.%{gnutls_sover}*.hmac
 
 %if %{with dane}
 %files -n libgnutls-dane%{gnutls_dane_sover}
-%license LICENSE
+%license COPYING COPYING.LESSERv2
 %{_libdir}/libgnutls-dane.so.%{gnutls_dane_sover}*
 %endif
 
 %files -n libgnutlsxx%{gnutlsxx_sover}
-%license LICENSE
+%license COPYING COPYING.LESSERv2
 %{_libdir}/libgnutlsxx.so.%{gnutlsxx_sover}*
 
 %files -n libgnutls-devel
-%license LICENSE
+%license COPYING COPYING.LESSERv2
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/abstract.h
 %{_includedir}/%{name}/crypto.h
@@ -383,7 +385,7 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 
 %if %{with dane}
 %files -n libgnutls-dane-devel
-%license LICENSE
+%license COPYING COPYING.LESSERv2
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/dane.h
 %{_libdir}/pkgconfig/gnutls-dane.pc
@@ -391,7 +393,7 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %endif
 
 %files -n libgnutlsxx-devel
-%license LICENSE
+%license COPYING COPYING.LESSERv2
 %{_libdir}/libgnutlsxx.so
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/gnutlsxx.h

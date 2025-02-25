@@ -1,8 +1,8 @@
-Index: gnutls-3.7.8/tests/Makefile.am
+Index: gnutls-3.8.9/tests/Makefile.am
 ===================================================================
---- gnutls-3.7.8.orig/tests/Makefile.am
-+++ gnutls-3.7.8/tests/Makefile.am
-@@ -508,7 +508,7 @@ if !WINDOWS
+--- gnutls-3.8.9.orig/tests/Makefile.am
++++ gnutls-3.8.9/tests/Makefile.am
+@@ -530,7 +530,7 @@ if !WINDOWS
  # List of tests not available/functional under windows
  #
  

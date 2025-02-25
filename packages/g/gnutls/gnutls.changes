@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Feb 24 11:15:52 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 3.8.9 
+  - libgnutls: leancrypto was added as an interim option for PQC
+    The library can now be built with leancrypto instead of liboqs for
+    post-quantum cryptography (PQC), when configured with
+    --with-leancrypto option instead of --with-liboqs.
+  - libgnutls: Experimental support for ML-DSA signature algorithm
+    The library and certtool now support ML-DSA signature algorithm as
+    defined in FIPS 204 and based on
+    draft-ietf-lamps-dilithium-certificates-04. This feature is
+    currently marked as experimental and can only be enabled when
+    compiled with --with-leancrypto or --with-liboqs.
+    Contributed by David Dudas.
+  - libgnutls: Support for ML-KEM-1024 key encapsulation mechanism
+    The support for ML-KEM post-quantum key encapsulation mechanisms
+    has been extended to cover ML-KEM-1024, in addition to ML-KEM-768.
+    MLKEM1024 is only offered as SecP384r1MLKEM1024 hybrid as per
+    draft-kwiatkowski-tls-ecdhe-mlkem-03.
+  - libgnutls: Fix potential DoS in handling certificates with numerous name
+    constraints, as a follow-up of CVE-2024-12133 in libtasn1. The
+    bundled copy of libtasn1 has also been updated to the latest 4.20.0
+    release to complete the fix.  Reported by Bing Shi (#1553).
+    [GNUTLS-SA-2025-02-07, CVSS: medium] [bsc#1236974, CVE-2024-12243
+  - Licensing information moved to REAMDE.md, COPYING, COPYING.LESSERv2
+  * Rebased gnutls-FIPS-140-3-references.patch
+  * Rebased gnutls-FIPS-TLS_KDF_selftest.patch
+  * Rebased gnutls-FIPS-jitterentropy.patch
+  * Rebased gnutls-disable-flaky-test-dtls-resume.patch
+  * Rebased gnutls-srp-test-SIGPIPE.patch
+  * Rebased gnutls-3.5.11-skip-trust-store-tests.patch
+  * Add gnutls-set-cligen-python-interp.patch
+  * Add gnutls-skip-pqx-test.patch
+
+-------------------------------------------------------------------
 Mon Nov 11 10:04:31 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.8.8:
