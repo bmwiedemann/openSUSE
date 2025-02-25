@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:04:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.18.1
+  * Update build for/on fedora41
+  * Remove entry point
+- from version 0.18.0
+  * Avoid "id" as a varname, because it clashes with a python built-in name
+  * Remove remaining Python2 compat layer
+  * Clean-up pydistman/cookiecutter fluff before PyPI
+  * Clean-up pydistman/cookiecutter fluff before prepping a PyPI package
+- Adjust sed statement to drop shebangs instead of modifying them
+- Drop python-pysol-cards-no-six.patch, fixed upstream
+- Remove pysol_cards binary from %files section
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+
+-------------------------------------------------------------------
 Thu Nov 28 08:40:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - remove unneeded dependencies

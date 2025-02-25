@@ -54,4 +54,12 @@
     <comment>- remove unneeded dependencies</comment>
     <requestid>1227062</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3084924ca3fabfebdc1eb936f56457d3</srcmd5>
+    <version>0.18.1</version>
+    <time>1740498508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248408</requestid>
+  </revision>
 </revisionlist>
