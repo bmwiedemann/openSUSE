@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Feb 23 12:14:10 UTC 2025 - Aesara Binder <aesara@mailbox.org>
+
+- update to 2.14.0
+  * Extended Lenovo Yoga X1 Gen5 support, improved the Huion mini
+    keydial (KD100)
+  * Fixed missing Strip in the Huion Kamvas Pro 16
+  * Corrected entry for Elan 5515
+  * Fixed outdated properties for Lenovo Yoga 9 14IAP7
+  * Add support for Dial status LEDs
+  * .tablet files shadow any ones with the same name
+  * New XP Pen devices supported: Artist 22R Pro, 24 Pro, Deco Fun
+    L, ACK05 Remote, Pro Pen 3E
+  * New Lenovo device ssupported: Yoga 9 14IAP7, Active Pen 3
+    (2023), Digital Pen 2, X1 Fold 16 Gen1, Precision Pen 2 (2023)
+    stylus
+  * New ELAN devices supported: ELAN-2514 variant 04f3:2f9d, ELAN
+    9008 and 9009 (Asus Zenbook Duo UX8406MA 1200p), ELAN 2F2A and
+    41A1 (ZenBook Pro Duo UX8402VV)
+  * New Wacom devices supported: HID 5214 (IdeaPad Flex 5 14ARE05
+    rev.81X2), HID 52C6 Pen.
+  * New HP devices supported: Spectre x360, Elite Chromebook C1030
+  * Other devices supported: StarLite Mk V; HP Spectre x360
+    13-aw0020ng; Huion RTP-700, Huion KeyDial K20
+  * Database: support $XDG_CONFIG_HOME/libwacom as additional path
+  * tools/clean_svg: allow passing in a .tablet file
+  * tools/list-local-devices: print the vid/pid if available
+  * tools/debug-device: print the device class too
+
+-------------------------------------------------------------------
 Fri Aug 16 06:17:39 UTC 2024 - Aesara Binder <aesara@mailbox.org>
 
 - update to 2.12.2
@@ -14,8 +43,8 @@ Fri Aug 16 06:17:39 UTC 2024 - Aesara Binder <aesara@mailbox.org>
     - Set the device name in new_from_path() to override the
     fallback name
   * Tests:
-      test: run ruff format over test_svg.py
-      test: add support for testing new_from_path() through uinput
+    - test: run ruff format over test_svg.py
+    - test: add support for testing new_from_path() through uinput
 
 - update to 2.12.1
   * Device Fixes:
