@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 24 12:57:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.18:
+  * Drop support for Python < 3.8. This means Python 2 is no longer 
+    supported.
+  * Drop setuptools dependency. Instead, use a native pkgutil namespace 
+    package.
+  * Now requires docutils >= 0.18.1. This effectively requires Sphinx 
+    versions newer than 5.0.
+  * Add the language option. Added in :pr:`62` by Even Rouault.
+
+-------------------------------------------------------------------
 Fri Jan  5 12:36:56 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
