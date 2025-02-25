@@ -85,4 +85,21 @@
   * Enable logging in rustls and tracing-using dependencies, see #390</comment>
     <requestid>1235826</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8dacd77c09b304c84addfcf1a29de508</srcmd5>
+    <version>0.24.0</version>
+    <time>1740498701</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.24.0:
+  Features:
+  * Add --generate option to generate the man page and shell completions at runtime, see #393
+  * Add support for Elvish and Nushell shell completions, see #393
+  * Add --compress for compressing request body, see #403
+  Bug fixes:
+  * Store default paths for cookies without an explicit path attribute, see #401
+  Other:
+  * Support generating man page with reproducible timestamp via SOURCE_DATE_EPOCH, see #402
+  * Upgrade cookie_store to 0.21.1, see #397</comment>
+    <requestid>1248379</requestid>
+  </revision>
 </revisionlist>
