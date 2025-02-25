@@ -251,4 +251,22 @@
     <comment></comment>
     <requestid>1230197</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>cc31e7f8148c164a2a559ba25453b8c6</srcmd5>
+    <version>1.68.0</version>
+    <time>1740498425</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.68.0
+  * Add field `experimental_features` to message `PythonSettings` (#249)
+  * Add FieldInfo.referenced_types for generics (#247)
+- from version 1.67.0
+  * A new field `unversioned_package_disabled` is added to message
+    `.google.api.PythonSettings` (eb554e8)
+  * Add support for field generate_omitted_as_internal in selective
+    gapic generation (#13482)
+  * A comment for field `content` in message `.google.api.Page` is
+    changed (eb554e8)
+  * A comment for message `RoutingRule` is changed (eb554e8) (forwarded request 1248135 from glaubitz)</comment>
+    <requestid>1248165</requestid>
+  </revision>
 </revisionlist>
