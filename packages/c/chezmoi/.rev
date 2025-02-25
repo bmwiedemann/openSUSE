@@ -731,4 +731,25 @@
 </comment>
     <requestid>1245471</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>97ed455e87baeefa293a7751c9d60b82</srcmd5>
+    <version>2.60.0</version>
+    <time>1740498473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.60.0:
+  - Features
+    * feat: Add promptMultiChoice{,Once}
+    * feat: Add -0 flag to ignored, managed, and unmanaged commands
+  - Fixes
+    * fix: Fix persistent state mode when using cd command with an argument
+  - Documentation updates
+    * docs: Reference templates in password managers
+    * docs: Add warnings about HCP Vault Secrets and hcp
+    * docs: Add a warning about nested --exact --recursive
+    * docs: Add link to auto-commit docs to quick-start
+    * docs: Extend special files and directories docs
+    * docs: Add fish-chezmoi to related software
+</comment>
+    <requestid>1248232</requestid>
+  </revision>
 </revisionlist>

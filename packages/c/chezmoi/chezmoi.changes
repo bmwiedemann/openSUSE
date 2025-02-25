@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 24 18:48:34 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.60.0:
+  - Features
+    * feat: Add promptMultiChoice{,Once}
+    * feat: Add -0 flag to ignored, managed, and unmanaged commands
+  - Fixes
+    * fix: Fix persistent state mode when using cd command with an argument
+  - Documentation updates
+    * docs: Reference templates in password managers
+    * docs: Add warnings about HCP Vault Secrets and hcp
+    * docs: Add a warning about nested --exact --recursive
+    * docs: Add link to auto-commit docs to quick-start
+    * docs: Extend special files and directories docs
+    * docs: Add fish-chezmoi to related software
+
+-------------------------------------------------------------------
 Wed Feb 12 19:13:10 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.59.1:
