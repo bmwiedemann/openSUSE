@@ -20,19 +20,17 @@
 %if "%flavor" == "qt6"
 %define pkg_suffix 6
 %define qt6 1
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 %define library_name libKF6PulseAudioQt5
 %else
-%define kf5_version 5.90
-%define qt5_version 5.15.2
-%define library_name libKF5PulseAudioQt5
+ExclusiveArch: do_not_build
 %endif
 
 %define rname pulseaudio-qt
 %bcond_without released
 Name:           pulseaudio-qt%{?pkg_suffix}
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        Qt bindings for PulseAudio
 License:        LGPL-2.1-or-later
@@ -50,12 +48,6 @@ BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
-%else
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
-BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Qml) >= %{qt5_version}
 %endif
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libpulse)
@@ -74,8 +66,6 @@ Summary:        Development files for pulseaudio-qt, Qt bindings for PulseAudio
 Requires:       %{library_name} = %{version}
 %if 0%{?qt6}
 Requires:       cmake(Qt6Core) >= %{qt6_version}
-%else
-Requires:       cmake(Qt5Core) >= %{qt5_version}
 %endif
 
 %description devel
@@ -87,18 +77,13 @@ PulseAudio.
 
 %build
 %if 0%{?qt6}
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
 %kf6_build
-%else
-%cmake_kf5 -d build
-%cmake_build
 %endif
 
 %install
 %if 0%{?qt6}
 %kf6_install
-%else
-%kf5_makeinstall -C build
 %endif
 
 %ldconfig_scriptlets -n %{library_name}
@@ -107,8 +92,6 @@ PulseAudio.
 %license LICENSES/*
 %if 0%{?qt6}
 %{_kf6_libdir}/libKF6PulseAudioQt.so.*
-%else
-%{_kf5_libdir}/libKF5PulseAudioQt.so.*
 %endif
 
 %files devel
@@ -119,12 +102,6 @@ PulseAudio.
 %{_kf6_includedir}/pulseaudioqt_version.h
 %{_kf6_libdir}/libKF6PulseAudioQt.so
 %{_kf6_pkgconfigdir}/KF6PulseAudioQt.pc
-%else
-%{_kf5_cmakedir}/KF5PulseAudioQt/
-%{_kf5_includedir}/KF5PulseAudioQt/
-%{_kf5_includedir}/pulseaudioqt_version.h
-%{_kf5_libdir}/libKF5PulseAudioQt.so
-%{_kf5_libdir}/pkgconfig/KF5PulseAudioQt.pc
 %endif
 
 %changelog

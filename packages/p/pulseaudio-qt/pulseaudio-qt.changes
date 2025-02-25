@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:44:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.7.0
+  * Remove Qt 5 support
+  * bump compiler setting to 6.0
+  * bump c++ to 20
+  * change all dptrs to unique_ptr
+  * debug: correctly mark updates
+  * card: don't mutate the container we iterate on
+  * context: add support for loading and unloading modules
+  * server: consider pipewire/wireplumber the default
+  * Add missing license text
+- Drop the Qt 5 flavor (but keep the _multibuild setup)
+
+-------------------------------------------------------------------
 Fri Oct 25 20:18:21 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.6.1:
