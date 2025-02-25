@@ -1,7 +1,7 @@
 #
 # spec file for package python-javaproperties
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-javaproperties
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Read & Write Java Properties Files
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jwodder/javaproperties
 Source:         https://files.pythonhosted.org/packages/source/j/javaproperties/javaproperties-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock >= 2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.6}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
