@@ -1,0 +1,518 @@
+From a630c6a707a1d5227b4a1fa8f0f751fefd3ef47f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 19 Feb 2025 13:56:01 +0000
+Subject: [PATCH] Fix tests failures after "repo.saltproject.io"
+ deprecation (#704)
+
+* Use broadcom.com instead of repo.saltproject.io for test_cp
+
+* Change repo.saltproject.io to new url
+
+---------
+
+Co-authored-by: Daniel A. Wozniak <daniel.wozniak@broadcom.com>
+Co-authored-by: twangboy <shane.d.lee@gmail.com>
+---
+ README.rst                                    |   4 +-
+ doc/_themes/saltstack2/layout.html            |  15 +--
+ doc/conf.py                                   |  12 +-
+ doc/ref/configuration/delta_proxy.rst         |   6 +-
+ doc/topics/cloud/windows.rst                  |   2 +-
+ pkg/tests/support/helpers.py                  | 115 ++++++++++++------
+ salt/modules/saltutil.py                      |   4 +-
+ salt/runners/manage.py                        |   5 +-
+ salt/states/pkgrepo.py                        |   6 +-
+ tests/integration/modules/test_cp.py          |  41 ++++---
+ tests/pytests/functional/modules/test_pkg.py  |   8 +-
+ .../functional/states/pkgrepo/test_debian.py  |   6 +-
+ .../integration/netapi/test_ssh_client.py     |   3 +-
+ tests/support/win_installer.py                |   1 +
+ 14 files changed, 135 insertions(+), 93 deletions(-)
+
+diff --git a/README.rst b/README.rst
+index f5121f1a74..77806aa14a 100644
+--- a/README.rst
++++ b/README.rst
+@@ -93,7 +93,9 @@ for more information.
+ 
+ To download and install Salt, see:
+ * `The Salt install guide <https://docs.saltproject.io/salt/install-guide/en/latest/index.html>`_
+-* `Salt Project repository <https://repo.saltproject.io/>`_
++* `Salt Project repository <https://packages.broadcom.com/artifactory/saltproject-generic/>`_
++* `Salt Project debian repository <https://packages.broadcom.com/artifactory/saltproject-deb/>`_
++* `Salt Project redhat repository <https://packages.broadcom.com/artifactory/saltproject-rpm/>`_
+ 
+ 
+ Technical support
+diff --git a/doc/_themes/saltstack2/layout.html b/doc/_themes/saltstack2/layout.html
+index 04bff89e1f..83918a7fb3 100644
+--- a/doc/_themes/saltstack2/layout.html
++++ b/doc/_themes/saltstack2/layout.html
+@@ -157,16 +157,11 @@
+                     <!-- Collect the nav links, forms, and other content for toggling -->
+                     <div class="collapse navbar-collapse" id="navbarCollapse">
+                         <ul class="nav navbar-nav">
+-                <li><a href="/en/latest/">Overview</a></li>
+-                <li><a href="https://docs.saltproject.io/salt/user-guide/en/latest/">Salt User Guide</a></li>
+-                <li><a href="/en/latest/contents.html">Documentation</a></li>
+-                <li><a href="https://repo.saltproject.io">Downloads</a></li>
+-                <li><a href="/en/latest/topics/development/">Develop</a></li>
+-                            <!--<li><a href="/en/2016.3/faq/">FAQ</a></li>
+-                            <li><a href="/en/2016.3/samples/">Code Samples</a></li>-->
+-                            <!--                <li><a href="https://repo.saltproject.io" target="_blank">Downloads</a></li>-->
+-                            <!--<li><a href="http://saltstack.com/training" target="_blank">Training</a></li>
+-                            <li><a href="http://saltstack.com/support" target="_blank">Support</a></li>-->
++                            <li><a href="/en/latest/">Overview</a></li>
++                            <li><a href="https://docs.saltproject.io/salt/user-guide/en/latest/">Salt User Guide</a></li>
++                            <li><a href="/en/latest/contents.html">Documentation</a></li>
++                            <li><a href="https://packages.broadcom.com/artifactory/saltproject-generic/">Downloads</a></li>
++                            <li><a href="/en/latest/topics/development/">Develop</a></li>
+                         </ul>
+                     </div>
+                 </div>
+diff --git a/doc/conf.py b/doc/conf.py
+index 653d912c20..24420d402e 100644
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -178,17 +178,17 @@ rst_prolog = """\
+ .. |windownload| raw:: html
+ 
+      <p>Python3 x86: <a
+-     href="https://repo.saltproject.io/windows/Salt-Minion-{release}-Py3-x86-Setup.exe"><strong>Salt-Minion-{release}-x86-Setup.exe</strong></a>
+-      | <a href="https://repo.saltproject.io/windows/Salt-Minion-{release}-Py3-x86-Setup.exe.md5"><strong>md5</strong></a></p>
++     href="https://packages.broadcom.com/artifactory/saltproject-generic/windows/{release}/Salt-Minion-{release}-Py3-x86-Setup.exe"><strong>Salt-Minion-{release}-x86-Setup.exe</strong></a>
++      | <a href="https://packages.broadcom.com/artifactory/saltproject-generic/windows/{release}/Salt-Minion-{release}-Py3-x86-Setup.exe.md5"><strong>md5</strong></a></p>
+ 
+      <p>Python3 AMD64: <a
+-     href="https://repo.saltproject.io/windows/Salt-Minion-{release}-Py3-AMD64-Setup.exe"><strong>Salt-Minion-{release}-AMD64-Setup.exe</strong></a>
+-      | <a href="https://repo.saltproject.io/windows/Salt-Minion-{release}-Py3-AMD64-Setup.exe.md5"><strong>md5</strong></a></p>
++     href="https://packages.broadcom.com/artifactory/saltproject-generic/windows/{release}/Salt-Minion-{release}-Py3-AMD64-Setup.exe"><strong>Salt-Minion-{release}-AMD64-Setup.exe</strong></a>
++      | <a href="https://packages.broadcom.com/artifactory/saltproject-generic/windows/{release}/Salt-Minion-{release}-Py3-AMD64-Setup.exe.md5"><strong>md5</strong></a></p>
+ 
+ .. |osxdownloadpy3| raw:: html
+ 
+-     <p>x86_64: <a href="https://repo.saltproject.io/osx/salt-{release}-py3-x86_64.pkg"><strong>salt-{release}-py3-x86_64.pkg</strong></a>
+-      | <a href="https://repo.saltproject.io/osx/salt-{release}-py3-x86_64.pkg.md5"><strong>md5</strong></a></p>
++     <p>x86_64: <a href="https://packages.broadcom.com/artifactory/saltproject-generic/macos/{release}/salt-{release}-py3-x86_64.pkg"><strong>salt-{release}-py3-x86_64.pkg</strong></a>
++      | <a href="https://packages.broadcom.com/artifactory/saltproject-generic/macos/{release}/salt-{release}-py3-x86_64.pkg.md5"><strong>md5</strong></a></p>
+ 
+ """.format(
+     release=stripped_release
+diff --git a/doc/ref/configuration/delta_proxy.rst b/doc/ref/configuration/delta_proxy.rst
+index be1831da39..bce5f821c9 100644
+--- a/doc/ref/configuration/delta_proxy.rst
++++ b/doc/ref/configuration/delta_proxy.rst
+@@ -146,10 +146,8 @@ Before installing the delta proxy minion, ensure that:
+ Install or upgrade Salt
+ -----------------------
+ Ensure your Salt masters are running at least Salt version 3004. For instructions
+-on installing or upgrading Salt, see `repo.saltproject.io
+-<http://repo.saltproject.io/>`_. For RedHat systems, see `Install or Upgrade Salt
+-<https://enterprise.saltproject.io/en/latest/docs/install-salt.html>`_.
+-
++on installing or upgrading Salt, see the `Salt install guide
++<https://docs.saltproject.io/salt/install-guide>`_.
+ 
+ 
+ .. _delta-proxy-install:
+diff --git a/doc/topics/cloud/windows.rst b/doc/topics/cloud/windows.rst
+index 9dfdde6db5..79d6665a5a 100644
+--- a/doc/topics/cloud/windows.rst
++++ b/doc/topics/cloud/windows.rst
+@@ -62,7 +62,7 @@ from saltstack.com:
+ 
+ * `SaltStack Download Area`__
+ 
+-.. __: https://repo.saltproject.io/windows/
++.. __: https://packages.broadcom.com/artifactory/saltproject-generic/windows/
+ 
+ .. _new-pywinrm:
+ 
+diff --git a/pkg/tests/support/helpers.py b/pkg/tests/support/helpers.py
+index 90abf8b88e..ce23f699b6 100644
+--- a/pkg/tests/support/helpers.py
++++ b/pkg/tests/support/helpers.py
+@@ -636,8 +636,7 @@ class SaltPkgInstall:
+ 
+     def install_previous(self):
+         """
+-        Install previous version. This is used for
+-        upgrade tests.
++        Install previous version. This is used for upgrade tests.
+         """
+         major_ver = self.major
+         minor_ver = self.minor
+@@ -648,16 +647,12 @@ class SaltPkgInstall:
+         distro_name = self.distro_name
+         if distro_name == "centos" or distro_name == "fedora":
+             distro_name = "redhat"
+-        root_url = "salt/py3/"
+-        if self.classic:
+-            root_url = "py3/"
++        root_url = "https://packages.broadcom.com/artifactory"
+ 
+         if self.distro_name in ["redhat", "centos", "amazon", "fedora", "vmware"]:
+             for fp in pathlib.Path("/etc", "yum.repos.d").glob("epel*"):
+                 fp.unlink()
+-            gpg_key = "SALTSTACK-GPG-KEY.pub"
+-            if self.distro_version == "9":
+-                gpg_key = "SALTSTACK-GPG-KEY2.pub"
++
+             if platform.is_aarch64():
+                 arch = "aarch64"
+             else:
+@@ -694,46 +689,86 @@ class SaltPkgInstall:
+                 arch = "arm64"
+             else:
+                 arch = "amd64"
++
+             pathlib.Path("/etc/apt/keyrings").mkdir(parents=True, exist_ok=True)
++            gpg_full_path = "/etc/apt/keyrings/salt-archive-keyring.gpg"
++
++            # download the gpg pub key
+             download_file(
+-                f"https://repo.saltproject.io/{root_url}{distro_name}/{self.distro_version}/{arch}/{major_ver}/salt-archive-keyring.gpg",
+-                "/etc/apt/keyrings/salt-archive-keyring.gpg",
++                f"{root_url}/api/security/keypair/SaltProjectKey/public",
++                f"{gpg_full_path}",
+             )
+-            with open(
++            with salt.utils.files.fopen(
+                 pathlib.Path("/etc", "apt", "sources.list.d", "salt.list"), "w"
+             ) as fp:
+                 fp.write(
+-                    f"deb [signed-by=/etc/apt/keyrings/salt-archive-keyring.gpg arch={arch}] "
+-                    f"https://repo.saltproject.io/{root_url}{distro_name}/{self.distro_version}/{arch}/{major_ver} {self.distro_codename} main"
++                    f"deb [signed-by={gpg_full_path} arch={arch}] "
++                    f"{root_url}/saltproject-deb/ {self.distro_codename} main"
+                 )
+-            ret = self.proc.run(self.pkg_mngr, "update")
+-            self._check_retcode(ret)
+-            ret = self.proc.run(
+-                self.pkg_mngr,
+-                "install",
+-                *self.salt_pkgs,
+-                "-y",
+-            )
+             self._check_retcode(ret)
++
++            cmd = [self.pkg_mngr, "install", *self.salt_pkgs, "-y"]
++
++            if downgrade:
++                pref_file = pathlib.Path("/etc", "apt", "preferences.d", "salt.pref")
++                pref_file.parent.mkdir(exist_ok=True)
++                # TODO: There's probably something I should put in here to say what version
++                # TODO: But maybe that's done elsewhere, hopefully in self.salt_pkgs
++                pref_file.write_text(
++                    textwrap.dedent(
++                        f"""\
++                Package: salt*
++                Pin: origin "{root_url}/saltproject-deb"
++                Pin-Priority: 1001
++                """
++                    ),
++                    encoding="utf-8",
++                )
++                cmd.append("--allow-downgrades")
++            env = os.environ.copy()
++            env["DEBIAN_FRONTEND"] = "noninteractive"
++            extra_args = [
++                "-o",
++                "DPkg::Options::=--force-confdef",
++                "-o",
++                "DPkg::Options::=--force-confold",
++            ]
++            self.proc.run(self.pkg_mngr, "update", *extra_args, env=env)
++
++            cmd.extend(extra_args)
++
++            ret = self.proc.run(*cmd, env=env)
++            # Pre-relenv packages down get downgraded to cleanly programmatically
++            # They work manually, and the install tests after downgrades will catch problems with the install
++            # Let's not check the returncode if this is the case
++            if not (
++                downgrade
++                and packaging.version.parse(self.prev_version)
++                < packaging.version.parse("3006.0")
++            ):
++                self._check_retcode(ret)
++            if downgrade:
++                pref_file.unlink()
+             self.stop_services()
+         elif platform.is_windows():
+             self.onedir = True
+             self.installer_pkg = True
+             self.bin_dir = self.install_dir / "bin"
+-            self.run_root = self.bin_dir / f"salt.exe"
+-            self.ssm_bin = self.bin_dir / "ssm.exe"
+-            if self.file_ext == "msi":
+-                self.ssm_bin = self.install_dir / "ssm.exe"
++            self.run_root = self.bin_dir / "salt.exe"
++            self.ssm_bin = self.install_dir / "ssm.exe"
+ 
+-            if not self.classic:
+-                win_pkg = f"salt-{full_version}-windows-amd64.{self.file_ext}"
+-                win_pkg_url = f"https://repo.saltproject.io/salt/py3/windows/{full_version}/{win_pkg}"
++            if self.file_ext == "exe":
++                win_pkg = (
++                    f"Salt-Minion-{self.prev_version}-Py3-AMD64-Setup.{self.file_ext}"
++                )
++            elif self.file_ext == "msi":
++                win_pkg = f"Salt-Minion-{self.prev_version}-Py3-AMD64.{self.file_ext}"
+             else:
+-                if self.file_ext == "msi":
+-                    win_pkg = f"Salt-Minion-{min_ver}-1-Py3-AMD64.{self.file_ext}"
+-                elif self.file_ext == "exe":
+-                    win_pkg = f"Salt-Minion-{min_ver}-1-Py3-AMD64-Setup.{self.file_ext}"
+-                win_pkg_url = f"https://repo.saltproject.io/windows/{win_pkg}"
++                log.debug(f"Unknown windows file extension: {self.file_ext}")
++
++            win_pkg_url = (
++                f"{root_url}/saltproject-generic/windows/{major_ver}/{win_pkg}"
++            )
+             pkg_path = pathlib.Path(r"C:\TEMP", win_pkg)
+             pkg_path.parent.mkdir(exist_ok=True)
+             ret = requests.get(win_pkg_url)
+@@ -763,12 +798,16 @@ class SaltPkgInstall:
+                 self._install_system_service()
+ 
+         elif platform.is_darwin():
+-            if self.classic:
+-                mac_pkg = f"salt-{min_ver}.{minor_ver}-1-py3-x86_64.pkg"
+-                mac_pkg_url = f"https://repo.saltproject.io/osx/{mac_pkg}"
++            if relenv and platform.is_aarch64():
++                arch = "arm64"
++            elif platform.is_aarch64() and self.classic:
++                arch = "arm64"
+             else:
+-                mac_pkg = f"salt-{min_ver}.{minor_ver}-1-macos-x86_64.pkg"
+-                mac_pkg_url = f"https://repo.saltproject.io/salt/py3/macos/{major_ver}.{minor_ver}-1/{mac_pkg}"
++                arch = "x86_64"
++
++            mac_pkg = f"salt-{self.prev_version}-py3-{arch}.pkg"
++            mac_pkg_url = f"{root_url}/saltproject-generic/macos/{major_ver}/{mac_pkg}"
++
+             mac_pkg_path = f"/tmp/{mac_pkg}"
+             if not os.path.exists(mac_pkg_path):
+                 download_file(
+diff --git a/salt/modules/saltutil.py b/salt/modules/saltutil.py
+index a692c3f34d..320b9c34fa 100644
+--- a/salt/modules/saltutil.py
++++ b/salt/modules/saltutil.py
+@@ -128,8 +128,8 @@ def _sync(form, saltenv=None, extmod_whitelist=None, extmod_blacklist=None):
+ def update(version=None):
+     """
+     Update the salt minion from the URL defined in opts['update_url']
+-    VMware, Inc provides the latest builds here:
+-    update_url: https://repo.saltproject.io/windows/
++    Broadcom, Inc provides the latest builds here:
++    update_url: https://packages.broadcom.com/artifactory/saltproject-generic/windows/
+ 
+     Be aware that as of 2014-8-11 there's a bug in esky such that only the
+     latest version available in the update_url can be downloaded and installed.
+diff --git a/salt/runners/manage.py b/salt/runners/manage.py
+index 9dc67ed728..81197ca41f 100644
+--- a/salt/runners/manage.py
++++ b/salt/runners/manage.py
+@@ -772,7 +772,7 @@ def bootstrap_psexec(
+ 
+     installer_url
+         URL of minion installer executable. Defaults to the latest version from
+-        https://repo.saltproject.io/windows/
++        https://packages.broadcom.com/artifactory/saltproject-generic/windows/
+ 
+     username
+         Optional user name for login on remote computer.
+@@ -790,6 +790,9 @@ def bootstrap_psexec(
+         salt-run manage.bootstrap_psexec hosts='host1,host2' installer_url='http://exampledomain/salt-installer.exe'
+     """
+ 
++    # TODO: Need to make this gets the latest version from the new repo location
++    # TODO: Similar to tests/support/win_installer.py
++    # TODO: Maybe need to move that ^^^^ to a salt util
+     if not installer_url:
+         base_url = "https://repo.saltproject.io/windows/"
+         source = urllib.request.urlopen(base_url).read()
+diff --git a/salt/states/pkgrepo.py b/salt/states/pkgrepo.py
+index f041644287..4ef5fd9c2f 100644
+--- a/salt/states/pkgrepo.py
++++ b/salt/states/pkgrepo.py
+@@ -99,17 +99,17 @@ Using ``aptkey: False`` with ``key_url`` example:
+ 
+ .. code-block:: yaml
+ 
+-    deb [signed-by=/etc/apt/keyrings/salt-archive-keyring.gpg arch=amd64] https://repo.saltproject.io/py3/ubuntu/18.04/amd64/latest bionic main:
++    deb [signed-by=/etc/apt/keyrings/salt-archive-keyring.gpg arch=amd64] https://packages.broadcom.com/artifactory/saltproject-deb/ bionic main:
+       pkgrepo.managed:
+         - file: /etc/apt/sources.list.d/salt.list
+-        - key_url: https://repo.saltproject.io/py3/ubuntu/18.04/amd64/latest/salt-archive-keyring.gpg
++        - key_url: https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public
+         - aptkey: False
+ 
+ Using ``aptkey: False`` with ``keyserver`` and ``keyid``:
+ 
+ .. code-block:: yaml
+ 
+-    deb [signed-by=/etc/apt/keyrings/salt-archive-keyring.gpg arch=amd64] https://repo.saltproject.io/py3/ubuntu/18.04/amd64/latest bionic main:
++    deb [signed-by=/etc/apt/keyrings/salt-archive-keyring.gpg arch=amd64] https://packages.broadcom.com/artifactory/saltproject-deb/ bionic main:
+       pkgrepo.managed:
+         - file: /etc/apt/sources.list.d/salt.list
+         - keyserver: keyserver.ubuntu.com
+diff --git a/tests/integration/modules/test_cp.py b/tests/integration/modules/test_cp.py
+index cd3e4c2f5a..d417f90ddc 100644
+--- a/tests/integration/modules/test_cp.py
++++ b/tests/integration/modules/test_cp.py
+@@ -231,12 +231,15 @@ class CPModuleTest(ModuleCase):
+         """
+         cp.get_url with https:// source given
+         """
+-        self.run_function("cp.get_url", ["https://repo.saltproject.io/index.html", tgt])
++        self.run_function(
++            "cp.get_url",
++            ["https://packages.broadcom.com/artifactory/saltproject-generic/", tgt],
++        )
+         with salt.utils.files.fopen(tgt, "r") as instructions:
+             data = salt.utils.stringutils.to_unicode(instructions.read())
+-        self.assertIn("Salt Project", data)
+-        self.assertIn("Package", data)
+-        self.assertIn("Repo", data)
++        self.assertIn("Index of saltproject", data)
++        self.assertIn("onedir", data)
++        self.assertIn("Artifactory Online Server", data)
+         self.assertNotIn("AYBABTU", data)
+ 
+     @pytest.mark.slow_test
+@@ -245,14 +248,15 @@ class CPModuleTest(ModuleCase):
+         cp.get_url with https:// source given and destination omitted.
+         """
+         ret = self.run_function(
+-            "cp.get_url", ["https://repo.saltproject.io/index.html"]
++            "cp.get_url",
++            ["https://packages.broadcom.com/artifactory/saltproject-generic/"],
+         )
+ 
+         with salt.utils.files.fopen(ret, "r") as instructions:
+             data = salt.utils.stringutils.to_unicode(instructions.read())
+-        self.assertIn("Salt Project", data)
+-        self.assertIn("Package", data)
+-        self.assertIn("Repo", data)
++        self.assertIn("Index of saltproject", data)
++        self.assertIn("onedir", data)
++        self.assertIn("Artifactory Online Server", data)
+         self.assertNotIn("AYBABTU", data)
+ 
+     @pytest.mark.slow_test
+@@ -266,16 +270,19 @@ class CPModuleTest(ModuleCase):
+         tgt = None
+         while time.time() - start <= timeout:
+             ret = self.run_function(
+-                "cp.get_url", ["https://repo.saltproject.io/index.html", tgt]
++                "cp.get_url",
++                ["https://packages.broadcom.com/artifactory/saltproject-generic/", tgt],
+             )
+             if ret.find("HTTP 599") == -1:
+                 break
+             time.sleep(sleep)
+         if ret.find("HTTP 599") != -1:
+-            raise Exception("https://repo.saltproject.io/index.html returned 599 error")
+-        self.assertIn("Salt Project", ret)
+-        self.assertIn("Package", ret)
+-        self.assertIn("Repo", ret)
++            raise Exception(
++                "https://packages.broadcom.com/artifactory/saltproject-generic/ returned 599 error"
++            )
++        self.assertIn("Index of saltproject", ret)
++        self.assertIn("onedir", ret)
++        self.assertIn("Artifactory Online Server", ret)
+         self.assertNotIn("AYBABTU", ret)
+ 
+     @pytest.mark.slow_test
+@@ -344,11 +351,11 @@ class CPModuleTest(ModuleCase):
+         """
+         cp.get_file_str with https:// source given
+         """
+-        src = "https://repo.saltproject.io/index.html"
++        src = "https://packages.broadcom.com/artifactory/saltproject-generic/"
+         ret = self.run_function("cp.get_file_str", [src])
+-        self.assertIn("Salt Project", ret)
+-        self.assertIn("Package", ret)
+-        self.assertIn("Repo", ret)
++        self.assertIn("Index of saltproject", ret)
++        self.assertIn("onedir", ret)
++        self.assertIn("Artifactory Online Server", ret)
+         self.assertNotIn("AYBABTU", ret)
+ 
+     @pytest.mark.slow_test
+diff --git a/tests/pytests/functional/modules/test_pkg.py b/tests/pytests/functional/modules/test_pkg.py
+index 82d0801965..addb3da3d1 100644
+--- a/tests/pytests/functional/modules/test_pkg.py
++++ b/tests/pytests/functional/modules/test_pkg.py
+@@ -130,12 +130,8 @@ def test_mod_del_repo(grains, modules, refresh_db):
+         elif grains["os_family"] == "RedHat":
+             repo = "saltstack"
+             name = "SaltStack repo for RHEL/CentOS {}".format(grains["osmajorrelease"])
+-            baseurl = "https://repo.saltproject.io/py3/redhat/{}/x86_64/latest/".format(
+-                grains["osmajorrelease"]
+-            )
+-            gpgkey = "https://repo.saltproject.io/py3/redhat/{}/x86_64/latest/SALTSTACK-GPG-KEY.pub".format(
+-                grains["osmajorrelease"]
+-            )
++            baseurl = "https://packages.broadcom.com/artifactory/saltproject-rpm/"
++            gpgkey = "https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public"
+             gpgcheck = 1
+             enabled = 1
+             ret = modules.pkg.mod_repo(
+diff --git a/tests/pytests/functional/states/pkgrepo/test_debian.py b/tests/pytests/functional/states/pkgrepo/test_debian.py
+index 7bda100b63..307fcb5819 100644
+--- a/tests/pytests/functional/states/pkgrepo/test_debian.py
++++ b/tests/pytests/functional/states/pkgrepo/test_debian.py
+@@ -616,8 +616,8 @@ class Repo:
+     @alt_repo.default
+     def _default_alt_repo(self):
+         """
+-        Use an alternative repo, packages do not
+-        exist for the OS on repo.saltproject.io
++        Use an alternative repo, packages do not exist for the OS on
++        packages.broadcom.com
+         """
+         if (
+             self.grains["osfullname"] == "Ubuntu"
+@@ -777,7 +777,7 @@ def test_adding_repo_file_signedby_alt_file(pkgrepo, states, repo):
+     assert repo.repo_content in ret.comment
+ 
+     key_file = repo.key_file.parent / "salt-alt-key.gpg"
+-    repo_content = "deb [arch=amd64 signed-by={}] https://repo.saltproject.io/py3/debian/10/amd64/latest buster main".format(
++    repo_content = "deb [arch=amd64 signed-by={}] https://packages.broadcom.com/artifactory/saltproject-deb/ buster main".format(
+         str(key_file)
+     )
+     ret = states.pkgrepo.managed(
+diff --git a/tests/pytests/integration/netapi/test_ssh_client.py b/tests/pytests/integration/netapi/test_ssh_client.py
+index 457c151c94..7dd540d9b9 100644
+--- a/tests/pytests/integration/netapi/test_ssh_client.py
++++ b/tests/pytests/integration/netapi/test_ssh_client.py
+@@ -149,7 +149,8 @@ def test_shell_inject_ssh_priv(
+     """
+     # ZDI-CAN-11143
+     path = tmp_path / "test-11143"
+-    tgts = ["repo.saltproject.io", "www.zerodayinitiative.com"]
++    tgts = ["packages.broadcom.com", "www.zerodayinitiative.com"]
++    ret = None
+     for tgt in tgts:
+         low = {
+             "roster": "cache",
+diff --git a/tests/support/win_installer.py b/tests/support/win_installer.py
+index 6a2f387dc8..d67105e8a0 100644
+--- a/tests/support/win_installer.py
++++ b/tests/support/win_installer.py
+@@ -10,6 +10,7 @@
+ """
+ 
+ import hashlib
++from html.parser import HTMLParser
+ 
+ import requests
+ 
+-- 
+2.48.1
+

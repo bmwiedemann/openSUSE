@@ -1,0 +1,81 @@
+From 1772da828f40e36d2a9eceb7055a1fa1a2257830 Mon Sep 17 00:00:00 2001
+From: Georg <georg@lysergic.dev>
+Date: Fri, 21 Feb 2025 10:23:38 +0000
+Subject: [PATCH] Fixed file client private attribute reference on
+ `SaltMakoTemplateLookup` (#694)
+
+Fixes #64280
+
+Signed-off-by: Pedro Algarvio <palgarvio@vmware.com>
+(cherry picked from commit 560ab52ccf94c7974d5a418dfbba7409e0493066)
+
+Co-authored-by: Pedro Algarvio <palgarvio@vmware.com>
+---
+ changelog/64280.fixed.md              |  1 +
+ salt/utils/mako.py                    |  6 ++++--
+ tests/pytests/unit/utils/test_mako.py | 28 +++++++++++++++++++++++++++
+ 3 files changed, 33 insertions(+), 2 deletions(-)
+ create mode 100644 changelog/64280.fixed.md
+ create mode 100644 tests/pytests/unit/utils/test_mako.py
+
+diff --git a/changelog/64280.fixed.md b/changelog/64280.fixed.md
+new file mode 100644
+index 0000000000..5a9b905dd0
+--- /dev/null
++++ b/changelog/64280.fixed.md
+@@ -0,0 +1 @@
++Fixed file client private attribute reference on `SaltMakoTemplateLookup`
+diff --git a/salt/utils/mako.py b/salt/utils/mako.py
+index 037d5d86de..4397ae8cc7 100644
+--- a/salt/utils/mako.py
++++ b/salt/utils/mako.py
+@@ -99,8 +99,10 @@ if HAS_MAKO:
+                 )
+ 
+         def destroy(self):
+-            if self.client:
++            if self._file_client:
++                file_client = self._file_client
++                self._file_client = None
+                 try:
+-                    self.client.destroy()
++                    file_client.destroy()
+                 except AttributeError:
+                     pass
+diff --git a/tests/pytests/unit/utils/test_mako.py b/tests/pytests/unit/utils/test_mako.py
+new file mode 100644
+index 0000000000..952cf44652
+--- /dev/null
++++ b/tests/pytests/unit/utils/test_mako.py
+@@ -0,0 +1,28 @@
++import pytest
++
++from tests.support.mock import Mock, call, patch
++
++pytest.importorskip("mako")
++
++# This import needs to be after the above importorskip so that no ImportError
++# is raised if Mako is not installed
++from salt.utils.mako import SaltMakoTemplateLookup
++
++
++def test_mako_template_lookup(minion_opts):
++    """
++    The shudown method can be called without raising an exception when the
++    file_client does not have a destroy method
++    """
++    # Test SaltCacheLoader creating and destroying the file client created
++    file_client = Mock()
++    with patch("salt.fileclient.get_file_client", return_value=file_client):
++        loader = SaltMakoTemplateLookup(minion_opts)
++        assert loader._file_client is None
++        assert loader.file_client() is file_client
++        assert loader._file_client is file_client
++        try:
++            loader.destroy()
++        except AttributeError:
++            pytest.fail("Regression when calling SaltMakoTemplateLookup.destroy()")
++        assert file_client.mock_calls == [call.destroy()]
+-- 
+2.48.1
+

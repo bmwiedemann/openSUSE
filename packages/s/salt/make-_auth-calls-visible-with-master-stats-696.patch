@@ -1,0 +1,142 @@
+From 32099b97c2fa549cb050d3ae618b5200c07328c8 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Fri, 21 Feb 2025 11:59:00 +0100
+Subject: [PATCH] Make `_auth` calls visible with master stats (#696)
+
+* Put _auth calls to the master stats
+
+* Add _auth master stats tests
+
+* test small fix
+---
+ salt/channel/server.py                    |  9 ++++--
+ salt/master.py                            |  5 ++++
+ tests/pytests/unit/channel/__init__.py    |  0
+ tests/pytests/unit/channel/test_server.py | 34 +++++++++++++++++++++++
+ tests/pytests/unit/test_master.py         | 25 +++++++++++++++++
+ 5 files changed, 70 insertions(+), 3 deletions(-)
+ create mode 100644 tests/pytests/unit/channel/__init__.py
+ create mode 100644 tests/pytests/unit/channel/test_server.py
+
+diff --git a/salt/channel/server.py b/salt/channel/server.py
+index f1b6f701a9..59da3a2dc2 100644
+--- a/salt/channel/server.py
++++ b/salt/channel/server.py
+@@ -9,6 +9,7 @@ import hashlib
+ import logging
+ import os
+ import shutil
++import time
+ 
+ import salt.crypt
+ import salt.ext.tornado.gen
+@@ -149,9 +150,11 @@ class ReqServerChannel:
+         # intercept the "_auth" commands, since the main daemon shouldn't know
+         # anything about our key auth
+         if payload["enc"] == "clear" and payload.get("load", {}).get("cmd") == "_auth":
+-            raise salt.ext.tornado.gen.Return(
+-                self._auth(payload["load"], sign_messages)
+-            )
++            start = time.time()
++            ret = self._auth(payload["load"], sign_messages)
++            if self.opts.get("master_stats", False):
++                yield self.payload_handler({"cmd": "_auth", "_start": start})
++            raise salt.ext.tornado.gen.Return(ret)
+ 
+         nonce = None
+         if version > 1:
+diff --git a/salt/master.py b/salt/master.py
+index 49cfb68860..c0cd9a366b 100644
+--- a/salt/master.py
++++ b/salt/master.py
+@@ -1036,6 +1036,11 @@ class MWorker(salt.utils.process.SignalHandlingProcess):
+ 
+         :param dict payload: The payload route to the appropriate handler
+         """
++        if payload.get("cmd") == "_auth":
++            if self.opts["master_stats"]:
++                self.stats["_auth"]["runs"] += 1
++                self._post_stats(payload["_start"], "_auth")
++            return
+         key = payload["enc"]
+         load = payload["load"]
+         if key == "aes":
+diff --git a/tests/pytests/unit/channel/__init__.py b/tests/pytests/unit/channel/__init__.py
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/pytests/unit/channel/test_server.py b/tests/pytests/unit/channel/test_server.py
+new file mode 100644
+index 0000000000..3fa5d94bea
+--- /dev/null
++++ b/tests/pytests/unit/channel/test_server.py
+@@ -0,0 +1,34 @@
++import time
++
++import pytest
++
++import salt.channel.server as server
++import salt.ext.tornado.gen
++from tests.support.mock import MagicMock, patch
++
++
++def test__auth_cmd_stats_passing():
++    req_server_channel = server.ReqServerChannel({"master_stats": True}, None)
++
++    fake_ret = {"enc": "clear", "load": b"FAKELOAD"}
++
++    def _auth_mock(*_, **__):
++        time.sleep(0.03)
++        return fake_ret
++
++    future = salt.ext.tornado.gen.Future()
++    future.set_result({})
++
++    with patch.object(req_server_channel, "_auth", _auth_mock):
++        req_server_channel.payload_handler = MagicMock(return_value=future)
++        req_server_channel.handle_message(
++            {"enc": "clear", "load": {"cmd": "_auth", "id": "minion"}}
++        )
++        cur_time = time.time()
++        req_server_channel.payload_handler.assert_called_once()
++        assert req_server_channel.payload_handler.call_args[0][0]["cmd"] == "_auth"
++        auth_call_duration = (
++            cur_time - req_server_channel.payload_handler.call_args[0][0]["_start"]
++        )
++        assert auth_call_duration >= 0.03
++        assert auth_call_duration < 0.05
+diff --git a/tests/pytests/unit/test_master.py b/tests/pytests/unit/test_master.py
+index 679229066d..7fccb24d73 100644
+--- a/tests/pytests/unit/test_master.py
++++ b/tests/pytests/unit/test_master.py
+@@ -282,3 +282,28 @@ def test_syndic_return_cache_dir_creation_traversal(encrypted_requests):
+     )
+     assert not (cachedir / "syndics").exists()
+     assert not (cachedir / "mamajama").exists()
++
++
++def test_collect__auth_to_master_stats():
++    """
++    Check if master stats is collecting _auth calls while not calling neither _handle_aes nor _handle_clear
++    """
++    opts = {
++        "master_stats": True,
++        "master_stats_event_iter": 10,
++    }
++    req_channel_mock = MagicMock()
++    mworker = salt.master.MWorker(opts, {}, {}, [req_channel_mock])
++    with patch.object(mworker, "_handle_aes") as handle_aes_mock, patch.object(
++        mworker, "_handle_clear"
++    ) as handle_clear_mock:
++        mworker._handle_payload({"cmd": "_auth", "_start": time.time() - 0.02})
++        assert mworker.stats["_auth"]["runs"] == 1
++        assert mworker.stats["_auth"]["mean"] >= 0.02
++        assert mworker.stats["_auth"]["mean"] < 0.04
++        mworker._handle_payload({"cmd": "_auth", "_start": time.time() - 0.02})
++        assert mworker.stats["_auth"]["runs"] == 2
++        assert mworker.stats["_auth"]["mean"] >= 0.02
++        assert mworker.stats["_auth"]["mean"] < 0.04
++        handle_aes_mock.assert_not_called()
++        handle_clear_mock.assert_not_called()
+-- 
+2.48.1
+

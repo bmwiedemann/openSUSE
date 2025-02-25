@@ -1,0 +1,69 @@
+From 73d18711314738796e802a6d929f4b609cee1f67 Mon Sep 17 00:00:00 2001
+From: Georg <georg@lysergic.dev>
+Date: Fri, 21 Feb 2025 10:26:25 +0000
+Subject: [PATCH] Repair fstab_present test mode (#702)
+
+Return no pending changes if the configuration already matches.
+
+Signed-off-by: Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+(cherry picked from commit fc7ed2b53152ab255d7763f200e8d28d526c5e52)
+---
+ changelog/67065.fixed.md                | 1 +
+ salt/states/mount.py                    | 1 +
+ tests/pytests/unit/states/test_mount.py | 6 +++---
+ 3 files changed, 5 insertions(+), 3 deletions(-)
+ create mode 100644 changelog/67065.fixed.md
+
+diff --git a/changelog/67065.fixed.md b/changelog/67065.fixed.md
+new file mode 100644
+index 0000000000..7b210dc297
+--- /dev/null
++++ b/changelog/67065.fixed.md
+@@ -0,0 +1 @@
++Repaired mount.fstab_present always returning pending changes
+diff --git a/salt/states/mount.py b/salt/states/mount.py
+index 36b9a16b5d..97dddbe3b0 100644
+--- a/salt/states/mount.py
++++ b/salt/states/mount.py
+@@ -1228,6 +1228,7 @@ def fstab_present(
+         if out == "present":
+             msg = "{} entry is already in {}."
+             ret["comment"].append(msg.format(fs_file, config))
++            ret["result"] = True
+         elif out == "new":
+             msg = "{} entry will be written in {}."
+             ret["comment"].append(msg.format(fs_file, config))
+diff --git a/tests/pytests/unit/states/test_mount.py b/tests/pytests/unit/states/test_mount.py
+index 5e4d5274e8..382fe6d0e8 100644
+--- a/tests/pytests/unit/states/test_mount.py
++++ b/tests/pytests/unit/states/test_mount.py
+@@ -701,7 +701,7 @@ def test_fstab_present_macos_test_present():
+     """
+     ret = {
+         "name": "/dev/sda1",
+-        "result": None,
++        "result": True,
+         "changes": {},
+         "comment": ["/home entry is already in /etc/auto_salt."],
+     }
+@@ -730,7 +730,7 @@ def test_fstab_present_aix_test_present():
+     """
+     ret = {
+         "name": "/dev/sda1",
+-        "result": None,
++        "result": True,
+         "changes": {},
+         "comment": ["/home entry is already in /etc/filesystems."],
+     }
+@@ -761,7 +761,7 @@ def test_fstab_present_test_present():
+     """
+     ret = {
+         "name": "/dev/sda1",
+-        "result": None,
++        "result": True,
+         "changes": {},
+         "comment": ["/home entry is already in /etc/fstab."],
+     }
+-- 
+2.48.1
+

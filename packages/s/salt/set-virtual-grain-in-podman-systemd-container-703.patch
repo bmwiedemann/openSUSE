@@ -1,0 +1,84 @@
+From dde665763bd2f043022f9601dd25d0ca8aa716be Mon Sep 17 00:00:00 2001
+From: Georg <georg@lysergic.dev>
+Date: Fri, 21 Feb 2025 10:24:51 +0000
+Subject: [PATCH] Set virtual grain in Podman systemd container (#703)
+
+Correctly handle the systemd-detect-virt output to identify a Podman
+container running systemd as what it is instead of as a physical machine.
+
+Signed-off-by: Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+(cherry picked from commit cf504a06859fb4a4fe9b8ebdd76380697f1f0c25)
+---
+ changelog/67733.fixed.md               |  1 +
+ salt/grains/core.py                    |  4 ++++
+ tests/pytests/unit/grains/test_core.py | 31 ++++++++++++++++++++++++++
+ 3 files changed, 36 insertions(+)
+ create mode 100644 changelog/67733.fixed.md
+
+diff --git a/changelog/67733.fixed.md b/changelog/67733.fixed.md
+new file mode 100644
+index 0000000000..242f65ec76
+--- /dev/null
++++ b/changelog/67733.fixed.md
+@@ -0,0 +1 @@
++Set correct virtual grain in systemd based Podman containers
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 84d5b179dd..ceb142a7b8 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -911,6 +911,10 @@ def _virtual(osdata):
+                 grains["virtual"] = "container"
+                 grains["virtual_subtype"] = "LXC"
+                 break
++            elif "podman" in output:
++                grains["virtual"] = "container"
++                grains["virtual_subtype"] = "Podman"
++                break
+             elif "amazon" in output:
+                 grains["virtual"] = "Nitro"
+                 grains["virtual_subtype"] = "Amazon EC2"
+diff --git a/tests/pytests/unit/grains/test_core.py b/tests/pytests/unit/grains/test_core.py
+index 3d2beaa2c9..072287248f 100644
+--- a/tests/pytests/unit/grains/test_core.py
++++ b/tests/pytests/unit/grains/test_core.py
+@@ -1752,6 +1752,37 @@ def test_lxc_virtual_with_virt_what():
+         assert ret["virtual_subtype"] == "LXC"
+ 
+ 
++@pytest.mark.skip_on_windows
++def test_podman_virtual_with_systemd_detect_virt():
++    """
++    Test if virtual grains are parsed correctly in Podman using systemd-detect-virt.
++    """
++
++    def _which_side_effect(path):
++        if path == "systemd-detect-virt":
++            return "/usr/bin/systemd-detect-virt"
++        return None
++
++    with patch.object(
++        salt.utils.platform, "is_windows", MagicMock(return_value=False)
++    ), patch.object(
++        salt.utils.path,
++        "which",
++        MagicMock(return_value=True, side_effect=_which_side_effect),
++    ), patch.dict(
++        core.__salt__,
++        {
++            "cmd.run_all": MagicMock(
++                return_value={"pid": 78, "retcode": 0, "stderr": "", "stdout": "podman"}
++            )
++        },
++    ):
++        osdata = {"kernel": "test"}
++        ret = core._virtual(osdata)
++        assert ret["virtual"] == "container"
++        assert ret["virtual_subtype"] == "Podman"
++
++
+ @pytest.mark.skip_on_windows
+ def test_container_inside_virtual_machine():
+     """
+-- 
+2.48.1
+

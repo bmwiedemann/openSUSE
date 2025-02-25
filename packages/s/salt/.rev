@@ -2524,4 +2524,37 @@ let build start it or we will get libvirt errors.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1246398</requestid>
   </revision>
+  <revision rev="167" vrev="31">
+    <srcmd5>d4c6b60552bcbd8451771e1c8e855a93</srcmd5>
+    <version>3006.0</version>
+    <time>1740498062</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix issue of using update-alternatives with alts
+
+- Fix virt_query outputter and add support for block devices
+- Make _auth calls visible with master stats
+- Repair mount.fstab_present always returning pending changes
+- Set virtual grain in Podman systemd container
+- Fix crash due wrong client reference on `SaltMakoTemplateLookup`
+- Enhace batch async and fix some detected issues
+- Added:
+  * repair-virt_query-outputter-655.patch
+  * make-_auth-calls-visible-with-master-stats-696.patch
+  * repair-fstab_present-test-mode-702.patch
+  * set-virtual-grain-in-podman-systemd-container-703.patch
+  * fixed-file-client-private-attribute-reference-on-sal.patch
+  * backport-batch-async-fixes-and-improvements-701.patch
+
+- Enhacement of Salt packaging
+  * Use update-alternatives for all salt scripts
+  * Use flexible dependencies for the subpackages
+  * Make salt-minion to require flavored zypp-plugin
+  * Make zyppnotify to use update-alternatives
+  * Drop unused yumnotify plugin
+  * Add dependency to python3-dnf-plugins-core for RHEL based
+- Fix tests failures after &quot;repo.saltproject.io&quot; deprecation
+- Added:
+  * fix-tests-failures-after-repo.saltproject.io-depreca.patch</comment>
+    <requestid>1248212</requestid>
+  </revision>
 </revisionlist>
