@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruamel.yaml
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ruamel.yaml
-Version:        0.18.6
+Version:        0.18.10
 Release:        0
 Summary:        Python YAML parser
 License:        MIT

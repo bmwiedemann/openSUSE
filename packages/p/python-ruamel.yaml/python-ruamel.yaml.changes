@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:16:18 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.10:
+  * implemented changes to the setup.py for Python 3.14 as
+    suggested by Miro Hrončok
+  * fix issue with roundtripping 0 in YAML 1.1
+  * added warning to README.md that PyPI might block updates due
+    to breaking changes
+  * fixes for README
+  * fixes preserving anchor on scalar integer `0`
+  * fix for formatting of README suggested by Michael R.
+    Crusoe
+
+-------------------------------------------------------------------
 Sat Mar 16 16:33:40 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.18.6:

@@ -402,4 +402,21 @@
     <comment></comment>
     <requestid>1159078</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e8f9776f2521f4c5cab169ff289ef738</srcmd5>
+    <version>0.18.10</version>
+    <time>1740497969</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.18.10:
+  * implemented changes to the setup.py for Python 3.14 as
+    suggested by Miro Hrončok
+  * fix issue with roundtripping 0 in YAML 1.1
+  * added warning to README.md that PyPI might block updates due
+    to breaking changes
+  * fixes for README
+  * fixes preserving anchor on scalar integer `0`
+  * fix for formatting of README suggested by Michael R.
+    Crusoe</comment>
+    <requestid>1248074</requestid>
+  </revision>
 </revisionlist>
