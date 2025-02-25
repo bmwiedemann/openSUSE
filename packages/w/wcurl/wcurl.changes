@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 25 08:45:01 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2025.02.24
+  * Allow -o and -O to be used without whitespaces (e.g.: -oNAME).
+  * Use the standard copyright header in manpage.
+  * Update manpage to describe that --output can be used without
+    the equal sign.
+  * Throw an error message on tests if shunit's version is lower
+    than 2.1.8.
+
+-------------------------------------------------------------------
 Sat Jan 18 20:19:52 UTC 2025 - Samuel Henrique <samueloph@debian.org>
 
 - new upstream release 2024.12.08

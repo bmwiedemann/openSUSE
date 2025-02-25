@@ -17,12 +17,12 @@
 
 
 Name:           wcurl
-Version:        2024.12.08
+Version:        2025.02.24
 Release:        0
 Summary:        A simple wrapper around curl to easily download files
 License:        curl
 URL:            https://github.com/curl/wcurl
-Source:         https://github.com/curl/wcurl/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/curl/wcurl/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  curl >= 7.46.0
 %if 0%{?sle_version} > 150500 || 0%{?suse_version} >= 1600
 BuildRequires:  shunit2
