@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 13 03:13:34 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable python and imageviewer on leap
+
+-------------------------------------------------------------------
+Thu Feb 13 02:36:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- on Leap use a newer libboost for getting blender to work
+
+-------------------------------------------------------------------
 Sun Feb  2 21:25:39 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Port the fonts handling solution from the OpenImageIO-3 package

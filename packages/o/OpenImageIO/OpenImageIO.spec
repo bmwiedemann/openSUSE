@@ -16,20 +16,30 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %ifarch aarch64 %{arm}
 %bcond_with imageviewer
 %else
 %bcond_without imageviewer
 %endif
+%else
+%bcond_with imageviewer
+%endif
+
 %if 0%{?suse_version} > 1500
 %bcond_without libheif
+%bcond_without python_bindings
 %else
 %bcond_with libheif
+%bcond_with python_bindings
 %endif
 %bcond_without opencv
-%bcond_without python_bindings
 %bcond_with apidocs
 %bcond_with ptex
+
+%if 0%{?suse_version} == 1500
+%global force_boost_version 1_75_0
+%endif
 
 %define images_ts 20241104T095817
 %define so_ver 2_5
@@ -56,10 +66,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel >= 5.0
 BuildRequires:  hdf5-devel
 # can be dropped when upgrading to 3.x again
-BuildRequires:  libboost_atomic-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
+BuildRequires:  libboost_atomic%{?force_boost_version}-devel
+BuildRequires:  libboost_filesystem%{?force_boost_version}-devel
+BuildRequires:  libboost_system%{?force_boost_version}-devel
+BuildRequires:  libboost_thread%{?force_boost_version}-devel
 #/ can be dropped when upgrading to 3.x again
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel >= 1.6.0
@@ -265,7 +275,9 @@ export disabled_tests="heif|ptex|cmake-consumer|docs-examples-cpp"
 %doc src/doc/CHANGES-0.x.md src/doc/CHANGES-1.x.md
 %license LICENSE.md
 %{_bindir}/*
+%if %{with imageviewer}
 %{_mandir}/man1/*.1%{ext_man}
+%endif
 
 %if %{with apidocs}
 %files devel-doc
