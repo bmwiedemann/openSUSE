@@ -67,4 +67,13 @@
     `TOMLDecodeError`</comment>
     <requestid>1225346</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>afef789960abf2a4de852793e562ec4b</srcmd5>
+    <version>2.2.1</version>
+    <time>1740497957</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.1:
+  * mypyc generated binary wheels for common platforms</comment>
+    <requestid>1248028</requestid>
+  </revision>
 </revisionlist>
