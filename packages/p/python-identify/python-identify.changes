@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 24 13:34:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.8
+  * [pre-commit.ci] pre-commit autoupdate
+  * feat: Register sas as an extension
+  * extensions: Introduce wsdl
+
+-------------------------------------------------------------------
 Tue Feb 11 09:43:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.7
