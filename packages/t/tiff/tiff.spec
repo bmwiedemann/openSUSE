@@ -48,7 +48,7 @@ Patch0:         tiff-4.0.3-seek.patch
 # PATCH-FIX-UPSTREAM tiff-4.7.0-test_directory.patch based on commit ea6f6bd7bccb bsc#1236834
 Patch1:         tiff-4.7.0-test_directory.patch
 %if %{with tiff_manpages}
-BuildRequires:  %{primary_python}-Sphinx
+BuildRequires:  python3-Sphinx
 %endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

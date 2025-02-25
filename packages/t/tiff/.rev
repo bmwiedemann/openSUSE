@@ -1019,4 +1019,12 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     <comment></comment>
     <requestid>1243575</requestid>
   </revision>
+  <revision rev="101" vrev="5">
+    <srcmd5>abe7b7e860726ec40e198081a7ba2528</srcmd5>
+    <version>4.7.0</version>
+    <time>1740498006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248192</requestid>
+  </revision>
 </revisionlist>

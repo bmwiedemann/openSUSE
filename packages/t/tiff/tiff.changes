@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 15:19:23 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Use python3-Sphinx instead of  %{primary_python}-Sphinx
+  based on recommendation from python maintainers.
+  * Fixes build issue of man flavor on 15.6
+
+-------------------------------------------------------------------
 Wed Feb  5 16:26:35 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update test/test_directory.c not to fail on big-endian machines.
