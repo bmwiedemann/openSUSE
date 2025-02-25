@@ -78,8 +78,6 @@ Recommends:     chrony
 Recommends:     cifs-utils
 # prefer the full version for installation
 Recommends:     cracklib-dict-full
-# bnc#480879
-Recommends:     crda
 # crypto partitions
 Recommends:     cryptsetup
 Recommends:     db-utils
