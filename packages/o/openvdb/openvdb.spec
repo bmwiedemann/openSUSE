@@ -1,7 +1,7 @@
 #
 # spec file for package openvdb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2024 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@
 %define libname libopenvdb11_0
 %if 0%{suse_version} <= 1500
 # force a recent gcc version on 15.X, default would be gcc7 which is too old
-%define gcc_major 10
+%define gcc_major 14
 %endif
 
 Name:           openvdb
@@ -64,9 +64,8 @@ BuildRequires:  pkgconfig(jemalloc)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(log4cpp)
 %if %{with openvdb_tool}
-BuildRequires:  cmake(Alembic)
+BuildRequires:  cmake(Alembic) >= 1.8.8
 BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(pdal)
 BuildRequires:  pkgconfig(tinfo)
 %endif
 # 32-bit: linker errors
@@ -139,7 +138,6 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
     -DOPENVDB_TOOL_USE_ABC:BOOL=ON \
     -DOPENVDB_TOOL_USE_JPG:BOOL=ON \
     -DOPENVDB_TOOL_USE_NANO:BOOL=OFF \
-    -DOPENVDB_TOOL_USE_PDAL:BOOL=ON \
     -DOPENVDB_TOOL_USE_PNG:BOOL=ON \
 %endif
 %if %{with pyopenvdb}

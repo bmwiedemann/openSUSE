@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 21 19:36:09 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- we need a newer alembic than what leap has
+- sync gcc with the other packages for blender
+
+-------------------------------------------------------------------
+Sat Feb 15 00:31:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop unused PDAL dependency and option
+
+-------------------------------------------------------------------
 Thu Nov 14 18:57:04 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 11.0.0 again as blender 4.2.x now supports this
