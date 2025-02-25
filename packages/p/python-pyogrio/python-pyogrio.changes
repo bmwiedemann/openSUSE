@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 15:03:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream skip-test.patch to fix build
+
+-------------------------------------------------------------------
 Mon Sep  2 08:03:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.9.0

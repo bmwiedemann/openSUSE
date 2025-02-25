@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyogrio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ License:        MIT
 URL:            https://github.com/geopandas/pyogrio
 Source:         https://files.pythonhosted.org/packages/source/p/pyogrio/pyogrio-%{version}.tar.gz
 Source99:       python-pyogrio.rpmlintrc
+# PATCH-FIX-UPSTREAM https://github.com/geopandas/pyogrio/pull/479 TST: skip multisurface test with arrow to avoid crash
+Patch:          skip-test.patch
 BuildRequires:  %{python_module Cython >= 0.29}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
