@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 25 07:35:36 UTC 2025 - pgajdos@suse.com
+
+- version update to 6.12
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+        mbind.2
+                MPOL_PREFERRED_MANY
+        set_mempolicy.2
+
+-------------------------------------------------------------------
 Mon Feb 17 07:58:11 UTC 2025 - pgajdos@suse.com
 
 - version update to 6.11

@@ -2195,4 +2195,18 @@
   + man-pages-6.11.tar.sign</comment>
     <requestid>1246348</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>627ba0743e80b0675ac36fdb9ad4d1ed</srcmd5>
+    <version>6.12</version>
+    <time>1740498034</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 6.12
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+        mbind.2
+                MPOL_PREFERRED_MANY
+        set_mempolicy.2</comment>
+    <requestid>1248290</requestid>
+  </revision>
 </revisionlist>
