@@ -26,6 +26,16 @@
 %global min_llvm_version 16
 %global max_llvm_version 18.9
 
+%if 0%{?suse_version} >= 1600
+%bcond_without qt
+%else
+%bcond_with    qt
+%endif
+
+%if 0%{?suse_version} == 1500
+%global force_boost_version 1_75_0
+%endif
+
 Name:           OpenShadingLanguage
 Version:        1.13.11.0
 Release:        0
@@ -41,17 +51,19 @@ BuildRequires:  bison
 BuildRequires:  cmake >= 3.15
 BuildRequires:  flex
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
+BuildRequires:  libboost_filesystem%{?force_boost_version}-devel
+BuildRequires:  libboost_system%{?force_boost_version}-devel
+BuildRequires:  libboost_thread%{?force_boost_version}-devel
 BuildRequires:  (OpenImageIO >= 2.4 with OpenImageIO < 3)
 BuildRequires:  (cmake(Clang) >= %{min_llvm_version} with cmake(Clang) =< %{max_llvm_version})
 BuildRequires:  (cmake(LLVM)  >= %{min_llvm_version} with cmake(LLVM)  =< %{max_llvm_version})
+%if %{with qt}
 BuildRequires:  cmake(Qt6)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6OpenGLWidgets)
 BuildRequires:  cmake(Qt6Widgets)
+%endif
 %ifnarch %{arm}
 # Build fails with partio on armv7/armv6
 BuildRequires:  partio-devel
@@ -199,6 +211,9 @@ find . -iname CMakeLists.txt -exec sed "-i" "-e s/COMMAND python/COMMAND python3
 %build
 %define _lto_cflags %{nil}
 %cmake \
+%if %{without qt}
+      -DUSE_QT:BOOL=FALSE \
+%endif
       -DCMAKE_SKIP_RPATH:BOOL=TRUE \
       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
       -DOSL_SHADER_INSTALL_DIR:PATH=%{_datadir}/%{name}/shaders/ \

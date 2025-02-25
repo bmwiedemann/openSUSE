@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 13 03:53:06 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Force newer boost on leap for blender
+
+-------------------------------------------------------------------
+Thu Feb 13 03:45:32 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable Qt on leap
+
+-------------------------------------------------------------------
 Sat Feb  1 22:02:06 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Also lock the cmake(OpenImageIO) to the version smaller than 3
