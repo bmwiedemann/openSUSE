@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-exiv2
-Version:        0.17.2
+Version:        0.17.3
 Release:        0
 Summary:        Python3 bindings for the exiv2 library
 License:        GPL-3.0-only
