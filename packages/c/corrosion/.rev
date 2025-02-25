@@ -7,4 +7,12 @@
     <comment>Add corrosion to factory. It will be needed for the upcoming KDE applications updates</comment>
     <requestid>1175905</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c62fb49a27faf5cc89646b828f1c7722</srcmd5>
+    <version>0.5.1</version>
+    <time>1740497960</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.5.1</comment>
+    <requestid>1248035</requestid>
+  </revision>
 </revisionlist>

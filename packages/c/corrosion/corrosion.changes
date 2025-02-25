@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 24 08:55:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.5.1
+  * fix: Update FindRust to work with rustup v1.28.0
+
+-------------------------------------------------------------------
 Wed May 22 07:25:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Init corrosion
