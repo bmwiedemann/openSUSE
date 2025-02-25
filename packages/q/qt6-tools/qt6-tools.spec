@@ -47,7 +47,8 @@ Source14:       linguist6.png
 Source99:       qt6-tools-rpmlintrc
 # clang-devel in Leap 15 points to clang7...
 %if 0%{?suse_version} == 1500
-BuildRequires:  clang17-devel
+# Leap 15.6 has llvm 19 since 2025-02-12, we need to use it to avoid doc build issues
+BuildRequires:  clang19-devel
 %else
 BuildRequires:  clang-devel >= 17
 %endif

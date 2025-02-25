@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 09:34:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Use clang 19 on Leap 15.6.
+  The 15.6 update repo got a new llvm version which causes issues
+  if both llvm 17 and 19 are present
+
+-------------------------------------------------------------------
 Fri Jan 31 10:23:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.2

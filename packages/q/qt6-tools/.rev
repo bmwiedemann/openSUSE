@@ -361,4 +361,14 @@
     <comment>Qt 6.8.2 + pyside (forwarded request 1241751 from krop)</comment>
     <requestid>1242071</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>02329f78433d758bb53a8ea966131b17</srcmd5>
+    <version>6.8.2</version>
+    <time>1740497962</time>
+    <user>dimstar_suse</user>
+    <comment>- Use clang 19 on Leap 15.6.
+  The 15.6 update repo got a new llvm version which causes qdoc
+  crashes if both llvm 17 and 19 are present</comment>
+    <requestid>1248057</requestid>
+  </revision>
 </revisionlist>
