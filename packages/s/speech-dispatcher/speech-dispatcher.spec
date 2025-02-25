@@ -1,7 +1,7 @@
 #
 # spec file for package speech-dispatcher
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ Name:           speech-dispatcher
 %else
 Name:           speech-dispatcher-%{_python}
 %endif
-Version:        0.12.0~rc4
+Version:        0.12.0
 Release:        0
 # FIXME missing backends: festival lite, ibmeci (ibm tts), dumbtts/ivona, nas
 # The API and bindings are LGPL-2.1-or-later, other parts are
@@ -56,7 +56,7 @@ Summary:        Device independent layer for speech synthesis
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            https://devel.freebsoft.org/speechd
-Source0:        https://github.com/brailcom/speechd/releases/download/0.12.0-rc4/speech-dispatcher-0.12.0-rc4.tar.gz
+Source0:        https://github.com/brailcom/speechd/releases/download/%{version}/speech-dispatcher-%{version}.tar.gz
 Patch0:         harden_speech-dispatcherd.service.patch
 # Logrotate file taken from Debian
 Source2:        speech-dispatcher.logrotate
@@ -212,7 +212,7 @@ devices directly nor to handle concurrent access, sound output and other
 tricky aspects of the speech subsystem.
 
 %prep
-%autosetup -p1 -n speech-dispatcher-0.12.0-rc4
+%autosetup -p1
 # dummy module must almost never be disabled
 sed -i "s/#AddModule \"dummy\"/AddModule \"dummy\"/" -i config/speechd.conf
 # you must enable at least one module (except dummy), otherwise it will load

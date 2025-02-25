@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 23 21:44:39 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.12.0:
+  * Add libspeechd-module library for making it simpler to create
+    external spd modules.
+  * Update CLDR to version 45, symbols from orca 45.2, and symbols
+    from NVDA.
+  * Also support loading symbols from home directory.
+
+-------------------------------------------------------------------
 Tue Oct 29 18:29:19 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.12.0~rc4:
