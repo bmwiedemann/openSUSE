@@ -121,4 +121,31 @@
     <comment>- Skip python39: no longer supported since ipython 8.19</comment>
     <requestid>1155328</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>72d3a72e09c54e6df0d10b28567cd989</srcmd5>
+    <version>4.1.0</version>
+    <time>1740498699</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.0:
+  * allow pandas &gt;= 1.5
+
+  * Bump vega-lite from 4.1.1 to 4.3.1
+  * Bump vega from 5.9.0 to 5.9.1
+  * Bump @types/webpack-env from 1.14.1 to 1.15.0
+  * Bump webpack from 4.41.4 to 4.41.5
+  * Bump webpack from 4.41.2 to 4.41.4
+  * Bump vega from 5.8.1 to 5.9.0
+  * Bump vega-embed from 6.0.0 to 6.1.0
+  * Bump vega from 5.7.3 to 5.8.0
+  * Bump ts-loader from 6.2.0 to 6.2.1
+  * Bump vega-embed from 5.1.3 to 6.0.0
+  * Bump webpack from 4.41.0 to 4.41.1
+  * Bump vega from 5.6.0 to 5.7.0
+  * Bump webpack from 4.40.2 to 4.41.0
+  * Bump ts-loader from 6.1.0 to 6.1.2
+  * Bump webpack from 4.39.3 to 4.40.2
+  * Bump webpack-cli from 3.3.7 to 3.3.8
+  * Bump vega-embed from 4.2.4 to 5.1.2</comment>
+    <requestid>1248352</requestid>
+  </revision>
 </revisionlist>
