@@ -1,7 +1,7 @@
 #
 # spec file for package poco
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Version:        1.13.1
 Release:        0
 Summary:        C++ Framework for Network-based Applications
 License:        BSL-1.0
-Group:          System/Libraries
+Group:          Development/Libraries/C and C++
 URL:            https://pocoproject.org
 Source:         https://github.com/pocoproject/%{name}/archive/%{name}-%{version}-release.tar.gz
 BuildRequires:  cmake >= 2.8.12
@@ -44,7 +44,7 @@ BuildRequires:  pkgconfig(zlib)
 C++ class libraries and frameworks for building
 network- and Internet-based applications.
 
-%package -n poco-devel
+%package devel
 Summary:        C++ Framework for Network-based Applications
 Group:          Development/Libraries/C and C++
 Requires:       libPocoCppParser%{sover} = %{version}
@@ -75,7 +75,7 @@ Requires:       poco-cpspc = %{version}
 Requires:       unixODBC-devel
 Provides:       libpoco-devel = %{version}
 
-%description -n poco-devel
+%description devel
 C++ class libraries and frameworks for building
 network- and Internet-based applications.
 
@@ -87,11 +87,11 @@ Group:          System/Libraries
 ActiveRecord is a simple and lightweight object-relational mapping (ORM)
 framework based on the Active Record pattern and the Data library.
 
-%package -n poco-cpspc
+%package cpspc
 Summary:        POCO C++ Server Page Compiler
 Group:          Development/Tools/Doc Generators
 
-%description -n poco-cpspc
+%description cpspc
 This program compiles web pages containing embedded C++ code into a C++ class
 that can be used with the HTTP server from the POCO Net library.
 
@@ -267,7 +267,7 @@ C++ class libraries and frameworks for building
 network- and Internet-based applications.
 
 %prep
-%setup -q -n "poco-poco-%{version}-release"
+%autosetup -p1 -n poco-poco-%{version}-release
 
 %build
 # ENABLE_APPACHECONNECTOR
@@ -311,127 +311,88 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 %ctest
 %endif
 
+%ldconfig_scriptlets -n libPocoActiveRecord%{sover}
+%ldconfig_scriptlets -n libPocoCrypto%{sover}
+%ldconfig_scriptlets -n libPocoCppParser%{sover}
+%ldconfig_scriptlets -n libPocoData%{sover}
+%ldconfig_scriptlets -n libPocoDataMySQL%{sover}
+%ldconfig_scriptlets -n libPocoDataODBC%{sover}
+%ldconfig_scriptlets -n libPocoDataSQLite%{sover}
+%ldconfig_scriptlets -n libPocoEncodings%{sover}
+%ldconfig_scriptlets -n libPocoFoundation%{sover}
+%ldconfig_scriptlets -n libPocoJSON%{sover}
+%ldconfig_scriptlets -n libPocoMongoDB%{sover}
+%ldconfig_scriptlets -n libPocoNet%{sover}
+%ldconfig_scriptlets -n libPocoNetSSL%{sover}
+%ldconfig_scriptlets -n libPocoPDF%{sover}
+%ldconfig_scriptlets -n libPocoPrometheus%{sover}
+%ldconfig_scriptlets -n libPocoRedis%{sover}
+%ldconfig_scriptlets -n libPocoUtil%{sover}
+%ldconfig_scriptlets -n libPocoXML%{sover}
+%ldconfig_scriptlets -n libPocoZip%{sover}
+%ldconfig_scriptlets -n libPocoJWT%{sover}
+
 %files -n libPocoActiveRecord%{sover}
 %{_libdir}/libPocoActiveRecord.so.%{sover}
-
-%post   -n libPocoActiveRecord%{sover} -p /sbin/ldconfig
-%postun -n libPocoActiveRecord%{sover} -p /sbin/ldconfig
 
 %files -n libPocoCrypto%{sover}
 %{_libdir}/libPocoCrypto.so.%{sover}
 
-%post   -n libPocoCrypto%{sover} -p /sbin/ldconfig
-%postun -n libPocoCrypto%{sover} -p /sbin/ldconfig
-
 %files -n libPocoCppParser%{sover}
 %{_libdir}/libPocoCppParser.so.%{sover}
-
-%post   -n libPocoCppParser%{sover} -p /sbin/ldconfig
-%postun -n libPocoCppParser%{sover} -p /sbin/ldconfig
 
 %files -n libPocoData%{sover}
 %{_libdir}/libPocoData.so.%{sover}
 
-%post   -n libPocoData%{sover} -p /sbin/ldconfig
-%postun -n libPocoData%{sover} -p /sbin/ldconfig
-
 %files -n libPocoDataMySQL%{sover}
 %{_libdir}/libPocoDataMySQL.so.%{sover}
-
-%post   -n libPocoDataMySQL%{sover} -p /sbin/ldconfig
-%postun -n libPocoDataMySQL%{sover} -p /sbin/ldconfig
 
 %files -n libPocoDataODBC%{sover}
 %{_libdir}/libPocoDataODBC.so.%{sover}
 
-%post   -n libPocoDataODBC%{sover} -p /sbin/ldconfig
-%postun -n libPocoDataODBC%{sover} -p /sbin/ldconfig
-
 %files -n libPocoDataSQLite%{sover}
 %{_libdir}/libPocoDataSQLite.so.%{sover}
-
-%post   -n libPocoDataSQLite%{sover} -p /sbin/ldconfig
-%postun -n libPocoDataSQLite%{sover} -p /sbin/ldconfig
 
 %files -n libPocoEncodings%{sover}
 %{_libdir}/libPocoEncodings.so.%{sover}
 
-%post   -n libPocoEncodings%{sover} -p /sbin/ldconfig
-%postun -n libPocoEncodings%{sover} -p /sbin/ldconfig
-
 %files -n libPocoFoundation%{sover}
 %{_libdir}/libPocoFoundation.so.%{sover}
-
-%post   -n libPocoFoundation%{sover} -p /sbin/ldconfig
-%postun -n libPocoFoundation%{sover} -p /sbin/ldconfig
 
 %files -n libPocoJSON%{sover}
 %{_libdir}/libPocoJSON.so.%{sover}
 
-%post   -n libPocoJSON%{sover} -p /sbin/ldconfig
-%postun -n libPocoJSON%{sover} -p /sbin/ldconfig
-
 %files -n libPocoMongoDB%{sover}
 %{_libdir}/libPocoMongoDB.so.%{sover}
-
-%post   -n libPocoMongoDB%{sover} -p /sbin/ldconfig
-%postun -n libPocoMongoDB%{sover} -p /sbin/ldconfig
 
 %files -n libPocoNet%{sover}
 %{_libdir}/libPocoNet.so.%{sover}
 
-%post   -n libPocoNet%{sover} -p /sbin/ldconfig
-%postun -n libPocoNet%{sover} -p /sbin/ldconfig
-
 %files -n libPocoNetSSL%{sover}
 %{_libdir}/libPocoNetSSL.so.%{sover}
-
-%post   -n libPocoNetSSL%{sover} -p /sbin/ldconfig
-%postun -n libPocoNetSSL%{sover} -p /sbin/ldconfig
 
 %files -n libPocoPDF%{sover}
 %{_libdir}/libPocoPDF.so.%{sover}
 
-%post   -n libPocoPDF%{sover} -p /sbin/ldconfig
-%postun -n libPocoPDF%{sover} -p /sbin/ldconfig
-
 %files -n libPocoPrometheus%{sover}
 %{_libdir}/libPocoPrometheus.so.%{sover}
-
-%post   -n libPocoPrometheus%{sover} -p /sbin/ldconfig
-%postun -n libPocoPrometheus%{sover} -p /sbin/ldconfig
 
 %files -n libPocoRedis%{sover}
 %{_libdir}/libPocoRedis.so.%{sover}
 
-%post   -n libPocoRedis%{sover} -p /sbin/ldconfig
-%postun -n libPocoRedis%{sover} -p /sbin/ldconfig
-
 %files -n libPocoUtil%{sover}
 %{_libdir}/libPocoUtil.so.%{sover}
-
-%post   -n libPocoUtil%{sover} -p /sbin/ldconfig
-%postun -n libPocoUtil%{sover} -p /sbin/ldconfig
 
 %files -n libPocoXML%{sover}
 %{_libdir}/libPocoXML.so.%{sover}
 
-%post   -n libPocoXML%{sover} -p /sbin/ldconfig
-%postun -n libPocoXML%{sover} -p /sbin/ldconfig
-
 %files -n libPocoZip%{sover}
 %{_libdir}/libPocoZip.so.%{sover}
-
-%post   -n libPocoZip%{sover} -p /sbin/ldconfig
-%postun -n libPocoZip%{sover} -p /sbin/ldconfig
 
 %files -n libPocoJWT%{sover}
 %{_libdir}/libPocoJWT.so.%{sover}
 
-%post   -n libPocoJWT%{sover} -p /sbin/ldconfig
-%postun -n libPocoJWT%{sover} -p /sbin/ldconfig
-
-%files -n poco-devel
+%files devel
 %license LICENSE
 %doc CHANGELOG CONTRIBUTORS README
 %{_includedir}/Poco
@@ -440,7 +401,7 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 %dir %{_libdir}/cmake/Poco/
 %{_libdir}/cmake/Poco/*.cmake
 
-%files -n poco-cpspc
+%files cpspc
 %{_bindir}/cpspc
 %{_bindir}/f2cpsp
 

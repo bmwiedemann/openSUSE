@@ -108,4 +108,12 @@
   * GH #4392 Environment_WIN32U nodeIdImpl access violation in</comment>
     <requestid>1144940</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b3e131bbfe6d715fccd3c0f21fc8dda3</srcmd5>
+    <version>1.13.1</version>
+    <time>1740498501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248382</requestid>
+  </revision>
 </revisionlist>
