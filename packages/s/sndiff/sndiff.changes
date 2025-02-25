@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Feb 20 13:16:23 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add sndiff.8.md manual page
+
+-------------------------------------------------------------------
+Thu Feb 20 09:21:52 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Fix license declaration and summary
+
+-------------------------------------------------------------------
+Wed Feb 19 20:35:18 UTC 2025 - aplanas@suse.com
+
+- Update to version v0.2~0:
+  * Rename option --full-diff to --diff
+  * Rename README file
+  * Add --short option
+  * Adapt colors based on theme
+  * Improve error messages
+  * Add README file
+  * Create LICENSE
+
+-------------------------------------------------------------------
+Tue Feb 18 20:41:00 UTC 2025 - aplanas@suse.com
+
+- Update to version v0.1~1:
+  * Remove bright white
+
+-------------------------------------------------------------------
+Tue Feb 18 18:30:00 UTC 2025 - aplanas@suse.com
+
+- Update to version v0.1~0:
+  * Initial version

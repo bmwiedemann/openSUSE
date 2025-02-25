@@ -1,0 +1,28 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/aplanas/sndiff.git</param>
+    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.1</param>
+    <param name="revision">main</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">aplanas@suse.com</param>
+  </service>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <!-- <service name="cargo_vendor" mode="manual"> -->
+  <!--    <param name="src">sndiff</param> -->
+  <!--    <param name="compression">zst</param> -->
+  <!--    <param name="update">true</param> -->
+  <!-- </service> -->
+  <!-- <service name="cargo_audit" mode="manual"> -->
+  <!--   <param name="srcdir">sndiff</param> -->
+  <!-- </service> -->
+</services>
