@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 22 18:45:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.11.3:
+  * Report read error for corrupted encrypted file data
+  * Avoid unnecessary seeks when writing archive
+  * Don't hardcode _Nullable support in zip.h to allow it to be
+    used with different compilers
+
+-------------------------------------------------------------------
 Thu Nov  7 18:06:35 UTC 2024 - Yann BOYER <yann.boyer742@gmail.com>
 
 - version update to 1.11.2
