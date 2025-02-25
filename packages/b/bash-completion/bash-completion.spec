@@ -120,30 +120,23 @@ popd
 %install
 %if %{build_core}
 %make_install
+del=""
 # shipping in latest systemd now
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/udevadm
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/nmcli
+del="$del nmcli udevadm"
 # shipping in latest util-linux now
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/cal
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/chsh
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/dmesg
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/eject
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/hexdump
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/hwclock
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/ionice
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/look
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/mount
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/newgrp
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/renice
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/rtcwake
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/su
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/umount
+del="$del cal chsh dmesg eject hexdump hwclock ionice look mount newgrp renice rtcwake su umount"
 # shipping in devscripts now
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/bts
+del="$del bts"
 # shipped as part of libsecret
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/secret-tool
+del="$del secret-tool"
 # Seems to be broken (boo#1161136)
-rm -vf %{buildroot}%{_datadir}/bash-completion/completions/_adb
+del="$del _adb"
+# shipped as part of kmod
+del="$del insmod insmod.static modinfo modprobe rmmod"
+
+for i in $del; do
+	rm -fv "%{buildroot}%{_datadir}/bash-completion/completions/$i"
+done
 %endif
 %if %{build_doc}
 pushd doc
