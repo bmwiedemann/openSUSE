@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 22 16:36:41 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.25.0:
+  * Version 0.25.0
+  * Update attohttpc to 0.29.0 (#327)
+  * Bump the all group across 1 directory with 2 updates (#324)
+  * Bump clap from 4.5.28 to 4.5.29 in the all group (#322)
+  * Switch to Rust edition 2021 & update attohttpc (#321)
+  * Bump the all group across 1 directory with 4 updates (#318)
+  * Bump dirs from 5.0.1 to 6.0.0 (#312)
+  * Bump the all group across 1 directory with 2 updates (#311)
+
+-------------------------------------------------------------------
 Wed Jan 08 07:53:37 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.24.1:
