@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:27:58 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250224:
+  * Label /run/systemd/pcrlock.json systemd_pcrlock_var_lib_t
+  * systemd_pcrlock_t needs to filetrans when recreating /var/lib/pcrlock.d
+  * Allow snapper access to keys
+  * Add rules for pcrlock (bsc#1233358)
+  * allow snapper to call pcrlock and manage its files
+  * allow unconfined_t to execute pcrlock
+  * label rules for default systemd_pcrlock_var_lib_t locations
+  * new interfaces: systemd_domtrans_pcrlock and systemd_pcrlock_exec
+  * introduce systemd_pcrlock_var_lib_t and systemd_manage_pcrlock_files
+  * Introduce interfaces snapper_manage_tmp_files and snapper_manage_tmp_dirs
+
+-------------------------------------------------------------------
 Fri Feb 21 13:36:08 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250221:
