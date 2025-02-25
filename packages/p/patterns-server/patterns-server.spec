@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-server
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with betatest
 Name:           patterns-server
-Version:        20210330
+Version:        20250225
 Release:        0
 Summary:        Patterns for Installation (server patterns)
 License:        MIT
@@ -38,8 +38,8 @@ not make sense.
 This particular package contains all the server related patterns
 
 
-################################################################################
 
+################################################################################
 %package dhcp_dns_server
 %pattern_serverfunctions
 Summary:        DHCP and DNS Server
@@ -49,12 +49,20 @@ Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 3040
 Provides:       pattern-visible()
 Requires:       bind
+%if 0%{?is_opensuse}
 Requires:       dhcp-server
+%else
+Requires:       kea
+%endif
 Requires:       pattern() = basesystem
 Recommends:     bind-chrootenv
 Recommends:     bind-doc
+%if 0%{?is_opensuse}
 Recommends:     dhcp
 Recommends:     dhcp-relay
+%else
+Recommends:     kea-hooks
+%endif
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-dhcp_dns_server = %{version}
 Obsoletes:      patterns-openSUSE-dhcp_dns_server < %{version}
@@ -80,13 +88,14 @@ Provides:       pattern() = directory_server
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 3060
 Provides:       pattern-visible()
+%ifnarch %ix86
+Requires:       389-ds
+%endif
 Requires:       pattern() = basesystem
-# bsc#1084789
-Recommends:     389-ds
-Recommends:     nss_ldap
-Recommends:     pam_ldap
-Recommends:     yast2-ldap-server
+Recommends:     sssd
+Recommends:     sssd-ldap
 %if 0%{?is_opensuse}
+Recommends:     yast2-ldap-server
 Provides:       patterns-openSUSE-directory_server = %{version}
 Obsoletes:      patterns-openSUSE-directory_server < %{version}
 %else
@@ -95,7 +104,7 @@ Obsoletes:      patterns-sles-directory_server < %{version}
 %endif
 
 %description directory_server
-Software to set up a directory server with OpenLDAP. The Lightweight Directory Access Protocol (LDAP) is used to access online directory services.
+Software to set up a directory server with 389-DS. The Lightweight Directory Access Protocol (LDAP) is used to access online directory services.
 
 %files directory_server
 %dir %{_docdir}/patterns
@@ -152,18 +161,27 @@ Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 3020
 Provides:       pattern-visible()
 Requires:       pattern() = basesystem
+%if !0%{?is_opensuse}
+Requires:       wireshark
+%endif
 Recommends:     arptables
 Recommends:     calamaris
 Recommends:     ddclient
 Recommends:     fetchmail
 Recommends:     fetchmailconf
 Recommends:     ipsec-tools
+%if 0%{?is_opensuse}
 Recommends:     quagga
+%else
+Recommends:     frr
+%endif
 Recommends:     radvd
 Recommends:     rarpd
 Recommends:     squid
 Recommends:     whois
+%if !0%{?is_opensuse}
 Recommends:     wireshark
+%endif
 Recommends:     wondershaper
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-gateway_server = %{version}
@@ -369,7 +387,7 @@ remote print server and for setting up a print server.
 %{_docdir}/patterns/printing.txt
 
 ################################################################################
-
+%if 0%{?is_opensuse}
 # BSC#1088175
 %ifarch x86_64
 %package xen_server
@@ -450,7 +468,7 @@ single physical machine.
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/xen_tools.txt
 %endif
-
+%endif
 ################################################################################
 
 %prep
@@ -473,6 +491,7 @@ for i in kvm_tools kvm_server
     echo "This file marks the pattern $i to be installed." \
         > "%{buildroot}%{_docdir}/patterns/$i.txt"
 done
+%if 0%{?is_opensuse}
 # XEN is only available on x86_64
 %ifarch x86_64
     for i in xen_server xen_tools; do
@@ -480,7 +499,7 @@ done
         >"%{buildroot}%{_docdir}/patterns/$i.txt"
 done
 %endif
-
+%endif
 #
 # This file is created at check-in time. Sorry for the inconsistent workflow :(
 #

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 25 11:09:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not require 389-ds on %ix86: it's not built for 32bit intel
+  arch.
+
+-------------------------------------------------------------------
+Wed Dec 11 09:35:45 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
+
+- Adapt patterns for SLES 16.0.
+
+-------------------------------------------------------------------
 Thu Feb 22 06:17:49 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Do not recommend mailman: pulls a 2nd python stack.

@@ -133,4 +133,15 @@
     <user>dimstar_suse</user>
     <comment>- Do not recommend mailman: pulls a 2nd python stack.</comment>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ff90534908948d8d0b7c53a11371ea3a</srcmd5>
+    <version>20250225</version>
+    <time>1740498048</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not require 389-ds on %ix86: it's not built for 32bit intel
+  arch.
+
+- Adapt patterns for SLES 16.0.</comment>
+    <requestid>1248341</requestid>
+  </revision>
 </revisionlist>
