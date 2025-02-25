@@ -13,18 +13,18 @@ The proposed patch fixes this deficiency
 
 Patch-mainline: never
 ---
- libkmod/libkmod-config.c | 13 +++++++++++++
- libkmod/libkmod.h        |  1 +
- tools/modprobe.c         |  5 +++++
+ libkmod/libkmod-config.c |   13 +++++++++++++
+ libkmod/libkmod.h        |    1 +
+ tools/modprobe.c         |    5 +++++
  3 files changed, 19 insertions(+)
 
-diff --git a/libkmod/libkmod-config.c b/libkmod/libkmod-config.c
-index 550a612..0fc2250 100644
---- a/libkmod/libkmod-config.c
-+++ b/libkmod/libkmod-config.c
-@@ -1008,6 +1008,19 @@ static struct kmod_config_iter *kmod_config_iter_new(const struct kmod_ctx* ctx,
-  * @short_description: retrieve current libkmod configuration
-  */
+Index: kmod-34/libkmod/libkmod-config.c
+===================================================================
+--- kmod-34.orig/libkmod/libkmod-config.c
++++ kmod-34/libkmod/libkmod-config.c
+@@ -1204,6 +1204,19 @@ static struct kmod_config_iter *kmod_con
+ 	return iter;
+ }
  
 +/*
 + * kmod_config_unsupported_allowed:
@@ -39,26 +39,26 @@ index 550a612..0fc2250 100644
 +	return !config->block_unsupported;
 +}
 +
- /**
-  * kmod_config_get_blacklists:
-  * @ctx: kmod library context
-diff --git a/libkmod/libkmod.h b/libkmod/libkmod.h
-index 352627e..c2b9657 100644
---- a/libkmod/libkmod.h
-+++ b/libkmod/libkmod.h
-@@ -115,6 +115,7 @@ const char *kmod_config_iter_get_key(const struct kmod_config_iter *iter);
- const char *kmod_config_iter_get_value(const struct kmod_config_iter *iter);
- bool kmod_config_iter_next(struct kmod_config_iter *iter);
+ KMOD_EXPORT struct kmod_config_iter *kmod_config_get_blacklists(const struct kmod_ctx *ctx)
+ {
+ 	if (ctx == NULL)
+Index: kmod-34/libkmod/libkmod.h
+===================================================================
+--- kmod-34.orig/libkmod/libkmod.h
++++ kmod-34/libkmod/libkmod.h
+@@ -530,6 +530,7 @@ bool kmod_config_iter_next(struct kmod_c
+  * Since: 4
+  */
  void kmod_config_iter_free_iter(struct kmod_config_iter *iter);
 +bool kmod_config_unsupported_allowed(const struct kmod_ctx *ctx);
  
- /*
-  * kmod_module
-diff --git a/tools/modprobe.c b/tools/modprobe.c
-index aa4033d..4f1c54a 100644
---- a/tools/modprobe.c
-+++ b/tools/modprobe.c
-@@ -201,6 +201,11 @@ static int show_config(struct kmod_ctx *ctx)
+ /**
+  * SECTION:libkmod-module
+Index: kmod-34/tools/modprobe.c
+===================================================================
+--- kmod-34.orig/tools/modprobe.c
++++ kmod-34/tools/modprobe.c
+@@ -198,6 +198,11 @@ static int show_config(struct kmod_ctx *
  		kmod_config_iter_free_iter(iter);
  	}
  
@@ -70,6 +70,3 @@ index aa4033d..4f1c54a 100644
  	puts("\n# End of configuration files. Dumping indexes now:\n");
  	fflush(stdout);
  
--- 
-2.20.1
-

@@ -1,7 +1,7 @@
 #
 # spec file for package kmod
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 Name:           kmod
 %define lname	libkmod2
-Version:        33
+Version:        34
 Release:        0
 Summary:        Utilities to load modules into the kernel
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -41,7 +41,6 @@ Patch3:         0009-libkmod-Implement-filtering-of-unsupported-modules-o.patch
 Patch4:         0010-modprobe-Implement-allow-unsupported-modules.patch
 Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
-Patch7:         0001-testsuite-fix-path-for-test-user.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libopenssl-devel >= 1.1.0
@@ -66,6 +65,8 @@ Requires:       suse-module-tools
 Obsoletes:      module-init-tools < 3.16
 Provides:       module-init-tools = 3.16
 Provides:       modutils
+Obsoletes:      %name-bash-completion < %version-%release
+Provides:       %name-bash-completion = %version-%release
 
 %description
 kmod is a set of tools to handle common tasks with Linux kernel
@@ -75,18 +76,6 @@ dependencies and aliases.
 These tools are designed on top of libkmod, a library that is shipped
 with kmod. The aim is to be compatible with tools, configurations and
 indexes from module-init-tools project.
-
-%package bash-completion
-Summary:        Bash completion routines for the kmod utilities
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Shells
-BuildArch:      noarch
-Requires:       %{name}
-Requires:       bash-completion
-Supplements:    (%{name} and bash-completion)
-
-%description bash-completion
-Contains bash completion support for kmod utilities.
 
 %package -n %lname
 Summary:        Library to interact with Linux kernel modules
@@ -115,6 +104,8 @@ in %lname.
 cp %{SOURCE4} .
 
 %build
+rm -f m4/gtk-doc.m4 libkmod/docs/gtk-doc.make # dangling symlinks
+touch m4/gtk-doc.m4 libkmod/docs/gtk-doc.make
 GTKDOCIZE=/bin/true autoreconf -fi
 export LDFLAGS="-Wl,-z,relro,-z,now"
 # The extra --includedir gives us the possibility to detect dependent
@@ -138,15 +129,6 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 b="%buildroot"
 %make_install
 rm -f "$b/%_libdir"/*.la
-
-mkdir -p "$b/%_sbindir" "$b/sbin"
-for i in depmod insmod lsmod modinfo modprobe rmmod; do
-	ln -s "%_bindir/kmod" "$b/%_sbindir/$i"
-	rm "$b/%_bindir/$i"
-%if 0%{?suse_version} < 1550
-	ln -s "%_bindir/kmod" "$b/sbin/$i"
-%endif
-done
 mkdir -p "$b/%_bindir" "$b/bin"
 for i in lsmod; do
 	ln -s "%_bindir/kmod" "$b/%_bindir/$i"
@@ -161,8 +143,7 @@ done
 %posttrans
 %{?regenerate_initrd_posttrans}
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %if 0%{?suse_version} > 1500
@@ -187,9 +168,9 @@ done
 /sbin/modprobe
 /sbin/rmmod
 %endif
-
-%files bash-completion
 %_datadir/bash-completion/
+%_datadir/fish/
+%_datadir/zsh/
 
 %files -n %lname
 %_libdir/libkmod.so.2*

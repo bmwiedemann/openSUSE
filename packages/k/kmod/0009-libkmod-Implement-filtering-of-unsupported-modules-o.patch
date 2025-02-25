@@ -12,13 +12,13 @@ Patch-mainline: never
  libkmod/libkmod-module.c   |   31 +++++++++++++++++++++++++++++++
  3 files changed, 42 insertions(+), 2 deletions(-)
 
-Index: kmod-33/libkmod/libkmod-config.c
+Index: kmod-34/libkmod/libkmod-config.c
 ===================================================================
---- kmod-33.orig/libkmod/libkmod-config.c
-+++ kmod-33/libkmod/libkmod-config.c
-@@ -869,8 +869,16 @@ static int kmod_config_parse(struct kmod
+--- kmod-34.orig/libkmod/libkmod-config.c
++++ kmod-34/libkmod/libkmod-config.c
+@@ -856,8 +856,16 @@ static int kmod_config_parse(struct kmod
  			ERR(ctx, "%s: command %s is deprecated and not parsed anymore\n",
- 								filename, cmd);
+ 			    filename, cmd);
  		} else if (streq(cmd, "allow_unsupported_modules")) {
 -			/* dummy option for now */
 -			;
@@ -35,23 +35,23 @@ Index: kmod-33/libkmod/libkmod-config.c
  		} else {
  syntax_error:
  			ERR(ctx, "%s line %u: ignoring bad line starting with '%s'\n",
-Index: kmod-33/libkmod/libkmod-internal.h
+Index: kmod-34/libkmod/libkmod-internal.h
 ===================================================================
---- kmod-33.orig/libkmod/libkmod-internal.h
-+++ kmod-33/libkmod/libkmod-internal.h
-@@ -131,6 +131,7 @@ struct kmod_config {
+--- kmod-34.orig/libkmod/libkmod-internal.h
++++ kmod-34/libkmod/libkmod-internal.h
+@@ -105,6 +105,7 @@ struct kmod_config {
  	struct kmod_list *weakdeps;
  
  	struct kmod_list *paths;
 +	int block_unsupported;
  };
  
- int kmod_config_new(struct kmod_ctx *ctx, struct kmod_config **config, const char * const *config_paths) __attribute__((nonnull(1, 2,3)));
-Index: kmod-33/libkmod/libkmod-module.c
+ _nonnull_all_ int kmod_config_new(struct kmod_ctx *ctx, struct kmod_config **config, const char * const *config_paths);
+Index: kmod-34/libkmod/libkmod-module.c
 ===================================================================
---- kmod-33.orig/libkmod/libkmod-module.c
-+++ kmod-33/libkmod/libkmod-module.c
-@@ -767,6 +767,24 @@ KMOD_EXPORT const char *kmod_module_get_
+--- kmod-34.orig/libkmod/libkmod-module.c
++++ kmod-34/libkmod/libkmod-module.c
+@@ -568,6 +568,24 @@ KMOD_EXPORT const char *kmod_module_get_
  	return mod->name;
  }
  
@@ -62,7 +62,7 @@ Index: kmod-33/libkmod/libkmod-module.c
 +	struct kmod_elf *elf;
 +
 +	elf = kmod_file_get_elf(mod->file);
-+	count = kmod_elf_get_strings(elf, ".modinfo", &strings);
++	count = kmod_elf_get_modinfo_strings(elf, &strings);
 +	if (count < 0)
 +		return count;
 +	for (i = 0; i < count; i++)
@@ -73,10 +73,10 @@ Index: kmod-33/libkmod/libkmod-module.c
 +	return 0;
 +}
 +
- /**
-  * kmod_module_get_path:
-  * @mod: kmod module
-@@ -947,6 +965,7 @@ KMOD_EXPORT int kmod_module_insert_modul
+ KMOD_EXPORT const char *kmod_module_get_path(const struct kmod_module *mod)
+ {
+ 	if (mod == NULL)
+@@ -690,6 +708,7 @@ KMOD_EXPORT int kmod_module_insert_modul
  	int err;
  	const char *path;
  	const char *args = options ? options : "";
@@ -84,7 +84,7 @@ Index: kmod-33/libkmod/libkmod-module.c
  
  	if (mod == NULL)
  		return -ENOENT;
-@@ -965,6 +984,18 @@ KMOD_EXPORT int kmod_module_insert_modul
+@@ -708,6 +727,18 @@ KMOD_EXPORT int kmod_module_insert_modul
  		}
  	}
  

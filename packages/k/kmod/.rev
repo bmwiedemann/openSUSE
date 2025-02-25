@@ -756,4 +756,12 @@ Kernel:stable/kernel-source#kernel-default succeeds with this</comment>
   * Stop parsing .alias files from modprobe.d directories</comment>
     <requestid>1195204</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>ec06ff2c79f2f7f1c06f7702a1c438ad</srcmd5>
+    <version>34</version>
+    <time>1740497939</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 34</comment>
+    <requestid>1247761</requestid>
+  </revision>
 </revisionlist>

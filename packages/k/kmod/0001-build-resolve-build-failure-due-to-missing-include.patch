@@ -1,0 +1,53 @@
+From a8a2fd5a84a74726e11edb92ac20b5c5918b2edd Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 22 Feb 2025 00:17:40 +0100
+Subject: [PATCH] build: resolve build failure due to missing include
+
+On openSUSE Tumbleweed with gcc-14.2.1, I observe:
+
+```
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -include ./config.h -I.
+-DSYSCONFDIR=\"/etc\" -DDISTCONFDIR=\"/usr/lib\"
+-DMODULE_DIRECTORY=\"/usr/lib/modules\" -pipe -fdata-sections
+-fdiagnostics-show-option -ffunction-sections -fno-common -fvisibility=hidden
+-W -Wall -Wchar-subscripts -Wdeclaration-after-statement -Wendif-labels -Wextra
+-Wfloat-equal -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations
+-Wmissing-include-dirs -Wmissing-noreturn -Wmissing-prototypes -Wnested-externs
+-Wno-unused-parameter -Wold-style-definition -Wpointer-arith -Wredundant-decls
+-Wshadow -Wsign-compare -Wstrict-aliasing=3 -Wstrict-prototypes -Wtype-limits
+-Wundef -Wuninitialized -Wvla -Wwrite-strings -O2 -Wall -U_FORTIFY_SOURCE
+-D_FORTIFY_SOURCE=3 -fstack-protector-strong -funwind-tables
+-fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type
+-flto=auto -g -c libkmod/libkmod-unsupported.c  -fPIC -DPIC -o
+libkmod/.libs/libkmod-unsupported.o
+In file included from libkmod/libkmod-internal.h:8,
+                 from libkmod/libkmod-unsupported.c:1:
+shared/macro.h: In function 'freep':
+shared/macro.h:69:9: error: implicit declaration of function 'free'
+[-Wimplicit-function-declaration]
+   69 |         free(*(void **)p);
+shared/macro.h:69:9: warning: incompatible implicit declaration of built-in
+function 'free' [-Wbuiltin-declaration-mismatch]
+   69 |         free(*(void **)p);
+shared/macro.h:69:9: note: include '<stdlib.h>' or provide a declaration of 'free'
+make[2]: *** [Makefile:1597: libkmod/libkmod-unsupported.lo] Error 1
+```
+---
+ shared/macro.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/shared/macro.h b/shared/macro.h
+index 8829d0b..e684884 100644
+--- a/shared/macro.h
++++ b/shared/macro.h
+@@ -5,6 +5,7 @@
+ #pragma once
+ 
+ #include <stddef.h>
++#include <stdlib.h>
+ 
+ #if defined(HAVE_STATIC_ASSERT)
+ #define assert_cc(expr) _Static_assert((expr), #expr)
+-- 
+2.48.1
+

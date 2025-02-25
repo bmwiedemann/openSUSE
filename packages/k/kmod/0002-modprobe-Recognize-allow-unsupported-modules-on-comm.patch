@@ -10,23 +10,23 @@ either.
 References: fate#316971
 Patch-mainline: never
 ---
- tools/modprobe.c | 5 +++++
+ tools/modprobe.c |    5 +++++
  1 file changed, 5 insertions(+)
 
-diff --git a/tools/modprobe.c b/tools/modprobe.c
-index a9e2331..3be2989 100644
---- a/tools/modprobe.c
-+++ b/tools/modprobe.c
-@@ -85,6 +85,8 @@ static const struct option cmdopts[] = {
- 	{"dirname", required_argument, 0, 'd'},
- 	{"set-version", required_argument, 0, 'S'},
+Index: kmod-34/tools/modprobe.c
+===================================================================
+--- kmod-34.orig/tools/modprobe.c
++++ kmod-34/tools/modprobe.c
+@@ -78,6 +78,8 @@ static const struct option cmdopts[] = {
+ 	{ "dirname", required_argument, 0, 'd' },
+ 	{ "set-version", required_argument, 0, 'S' },
  
 +	{"allow-unsupported-modules", no_argument, 0, 128},
 +
- 	{"syslog", no_argument, 0, 's'},
- 	{"quiet", no_argument, 0, 'q'},
- 	{"verbose", no_argument, 0, 'v'},
-@@ -843,6 +845,9 @@ static int do_modprobe(int argc, char **orig_argv)
+ 	{ "syslog", no_argument, 0, 's' },
+ 	{ "quiet", no_argument, 0, 'q' },
+ 	{ "verbose", no_argument, 0, 'v' },
+@@ -859,6 +861,9 @@ static int do_modprobe(int argc, char **
  		case 'S':
  			kversion = optarg;
  			break;
@@ -35,7 +35,4 @@ index a9e2331..3be2989 100644
 +			break;
  		case 's':
  			env_modprobe_options_append("-s");
- 			use_syslog = 1;
--- 
-2.20.1
-
+ 			use_syslog = true;

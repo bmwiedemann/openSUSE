@@ -1,7 +1,7 @@
 #
 # spec file for package kmod-testsuite
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 Name:           kmod-testsuite
 %define lname	libkmod2
-Version:        33
+Version:        34
 Release:        0
 Summary:        Testsuite of the kmod package
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -40,7 +40,6 @@ Patch3:         0009-libkmod-Implement-filtering-of-unsupported-modules-o.patch
 Patch4:         0010-modprobe-Implement-allow-unsupported-modules.patch
 Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
-Patch7:         0001-testsuite-fix-path-for-test-user.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -72,6 +71,8 @@ buildloop with the kernel.
 %autopatch -p1
 
 %build
+rm -f m4/gtk-doc.m4 libkmod/docs/gtk-doc.make # dangling symlinks
+touch m4/gtk-doc.m4 libkmod/docs/gtk-doc.make
 GTKDOCIZE=/bin/true autoreconf -fi
 export LDFLAGS="-Wl,-z,relro,-z,now"
 # The extra --includedir gives us the possibility to detect dependent
