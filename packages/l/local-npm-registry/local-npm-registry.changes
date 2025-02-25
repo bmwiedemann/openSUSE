@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 21 14:05:43 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.1.0
+  * always run npm with --no-package-lock. This will fix all weird
+    errors and no loger require cleaning package-lock.json from
+    upstream
+  * `quilt setup` script is now in the utility
+  * everything is run in JS now, so you can run directly with
+    node version of change. Either,
+      local-npm-registry
+    or
+      node22 /usr/bin/local-npm-registry
+
+-------------------------------------------------------------------
 Tue Jan 30 14:43:02 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - update to 1.0.2

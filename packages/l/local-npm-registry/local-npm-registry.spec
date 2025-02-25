@@ -1,7 +1,7 @@
 #
 # spec file for package local-npm-registry
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           local-npm-registry
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        Localhost-only version of NPM registry
 License:        GPL-3.0-or-later
@@ -42,16 +42,9 @@ mkdir -p %{buildroot}%{_datadir}/%{name}
 mkdir -p %{buildroot}%{_bindir}
 cp -r dist node_modules %{buildroot}%{_datadir}/%{name}
 cat > %{buildroot}%{_bindir}/local-npm-registry << EOF
-#!/bin/sh
-
-if [ "x\$QUILT_COMMAND" = "xsetup" ]
-then
-        echo "Run in setup mode. 'npm install' skipped. Run 'npm ci' manually."
-        cp "\$RPM_SOURCE_DIR/package-lock.json" .
-        exit 0
-fi
-
-exec node %{_datadir}/%{name}/dist/ "\$@"
+#!/usr/bin/node
+const foo = await import("%{_datadir}/%{name}/dist/index.js")
+foo.mainEntryFunction()
 EOF
 
 %files

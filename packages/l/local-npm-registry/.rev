@@ -60,4 +60,21 @@
   * adds support for non-standard alternative versions</comment>
     <requestid>1142809</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a08c3c8e9b183e4f0e75b217dc1b2582</srcmd5>
+    <version>1.1.0</version>
+    <time>1740498059</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0
+  * always run npm with --no-package-lock. This will fix all weird
+    errors and no loger require cleaning package-lock.json from
+    upstream
+  * `quilt setup` script is now in the utility
+  * everything is run in JS now, so you can run directly with
+    node version of change. Either,
+      local-npm-registry
+    or
+      node22 /usr/bin/local-npm-registry</comment>
+    <requestid>1247661</requestid>
+  </revision>
 </revisionlist>
