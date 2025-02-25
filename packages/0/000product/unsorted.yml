@@ -11334,7 +11334,6 @@ unsorted:
   - libKF5Plotting5 
   - libKF5Pty5 
   - libKF5Pty5-lang 
-  - libKF5PulseAudioQt5 
   - libKF5Runner5 
   - libKF5Su5 
   - libKF5Su5-lang 
@@ -14120,7 +14119,7 @@ unsorted:
   - libime-devel 
   - libime-dicts 
   - libime-tools 
-  - libimhex1_37_1 
+  - libimhex1_37_2 
   - libiml0 
   - libimobiledevice-1_0-6-32bit 
   - libimobiledevice-devel 
@@ -14138,7 +14137,7 @@ unsorted:
   - libini_config-devel 
   - libinih-devel 
   - libiniparser-devel 
-  - libiniparser1 
+  - libiniparser4 
   - libinjeqt1 
   - libinotifytools0 
   - libinput-debug-gui 
@@ -14798,7 +14797,6 @@ unsorted:
   - libmowgli-2-0 
   - libmowgli2-devel 
   - libmozjs-115-0 
-  - libmozjs-78-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit 
   - libmp4tag-devel 
@@ -17644,6 +17642,7 @@ unsorted:
   - live555-devel 
   - livedtd 
   - livi 
+  - lix-installer 
   - lkl-devel 
   - lkl-test 
   - lklfuse 
@@ -19178,8 +19177,6 @@ unsorted:
   - mozjs115-devel 
   - mozjs128 
   - mozjs128-devel 
-  - mozjs78 
-  - mozjs78-devel 
   - mozldap-devel 
   - mozldap-libs 
   - mozldap-tools 
@@ -23712,7 +23709,6 @@ unsorted:
   - pulseaudio-module-lirc 
   - pulseaudio-module-x11 
   - pulseaudio-module-zeroconf 
-  - pulseaudio-qt-devel 
   - pulseaudio-qt6-devel 
   - pulseaudio-system-wide 
   - pulseaudio-utils-32bit 
@@ -24159,7 +24155,6 @@ unsorted:
   - python3-pyside2 
   - python3-pyside2-devel 
   - python3-pyside2-examples 
-  - python3-pysol-cards 
   - python3-pytest-ansible 
   - python3-pytest-cookies 
   - python3-rados 
@@ -26295,6 +26290,7 @@ unsorted:
   - python311-node-semver 
   - python311-nodeenv 
   - python311-noiseprotocol 
+  - python311-normflows 
   - python311-nornir 
   - python311-nose2 
   - python311-notebook 
@@ -26820,6 +26816,7 @@ unsorted:
   - python311-pysnmp-lextudio 
   - python311-pysnmpcrypto 
   - python311-pysofaconventions 
+  - python311-pysol-cards 
   - python311-pysolr 
   - python311-pyspnego 
   - python311-pysrt 
@@ -29970,6 +29967,7 @@ unsorted:
   - python312-node-semver 
   - python312-nodeenv 
   - python312-noiseprotocol 
+  - python312-normflows 
   - python312-nornir 
   - python312-nose2 
   - python312-notebook 
@@ -30519,6 +30517,7 @@ unsorted:
   - python312-pysnmp-lextudio 
   - python312-pysnmpcrypto 
   - python312-pysofaconventions 
+  - python312-pysol-cards 
   - python312-pysolr 
   - python312-pyspnego 
   - python312-pysrt 
@@ -33698,6 +33697,7 @@ unsorted:
   - python313-nogil-tk 
   - python313-nogil-tools 
   - python313-noiseprotocol 
+  - python313-normflows 
   - python313-nornir 
   - python313-nose2 
   - python313-notebook 
@@ -34245,6 +34245,7 @@ unsorted:
   - python313-pysnmp-lextudio 
   - python313-pysnmpcrypto 
   - python313-pysofaconventions 
+  - python313-pysol-cards 
   - python313-pysolr 
   - python313-pyspnego 
   - python313-pysrt 
@@ -36820,6 +36821,7 @@ unsorted:
   - s2n-devel 
   - s390-tools 
   - s3backer 
+  - s3cmd 
   - s3fs 
   - sablot 
   - sablot-devel 
@@ -37352,6 +37354,7 @@ unsorted:
   - snapshot-lang 
   - snd 
   - snd_sf2 
+  - sndiff 
   - sndio 
   - sndio-devel 
   - sndioctl 
