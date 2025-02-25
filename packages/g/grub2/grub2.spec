@@ -439,7 +439,7 @@ Patch257:       0019-fs-Disable-many-filesystems-under-lockdown.patch
 Patch258:       0020-fs-Prevent-overflows-when-allocating-memory-for-arra.patch
 Patch259:       0001-bls-Accept-.conf-suffix-in-setting-default-entry.patch
 
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
 %ifnarch s390x
@@ -467,7 +467,7 @@ Recommends:     memtest86+
 %endif
 %endif
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 # Always requires a default cpu-platform package
 Requires:       grub2-%{grubarch} = %{version}-%{release}
 %else
@@ -488,7 +488,7 @@ highly configurable and customizable bootloader with modular
 architecture.  It support rich scale of kernel formats, file systems,
 computer architectures and hardware devices.
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %package common
 Summary:        Utilies to manage grub
 Group:          System/Boot
@@ -525,7 +525,7 @@ This package includes user space utlities to manage GRUB on your system.
 Summary:        Upstream branding for GRUB2's graphical console
 Group:          System/Fhs
 BuildArch:      noarch
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 Requires:       %{name}-common = %{version}
 %else
 Requires:       %{name} = %{version}
@@ -542,7 +542,7 @@ Group:          System/Boot
 %if "%{platform}" != "emu"
 BuildArch:      noarch
 %endif
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 Requires:       %{name}-common = %{version}
 Requires(post): %{name}-common = %{version}
 %else
@@ -596,7 +596,7 @@ BuildArch:      noarch
 # Without it grub-install is broken so break the package as well if unavailable
 Requires:       efibootmgr
 Requires(post): efibootmgr
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 Requires:       %{name}-common = %{version}
 Requires(post): %{name}-common = %{version}
 %else
@@ -614,7 +614,7 @@ bootloader with modular architecture.  It supports rich variety of kernel format
 file systems, computer architectures and hardware devices.  This subpackage
 provides support for EFI systems.
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %package %{grubefiarch}-bls
 Summary:        Image for Boot Loader Specification (BLS) support on %{grubefiarch}
 Group:          System/Boot
@@ -700,7 +700,7 @@ https://www.cnblogs.com/coryxie/archive/2013/03/12/2956807.html
 Summary:        Grub2's snapper plugin
 Group:          System/Fhs
 Requires:       libxml2-tools
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 Requires:       (grub2 or grub2-common)
 Supplements:    ((grub2 or grub2-common) and snapper)
 %else
@@ -718,7 +718,7 @@ Grub2's snapper plugin for advanced btrfs snapshot boot menu management
 Summary:        Grub2's systemd-sleep plugin
 Group:          System/Fhs
 Requires:       util-linux
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 Requires:       (grub2 or grub2-common)
 Supplements:    ((grub2 or grub2-common) and systemd)
 %else
@@ -873,7 +873,7 @@ mksquashfs ./fonts memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
 ./grub-mkimage -O %{grubefiarch} -o grub.efi --memdisk=./memdisk.sqsh --prefix= %{?sbat_generation:--sbat sbat.csv} \
 		-d grub-core ${GRUB_MODULES}
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 rm memdisk.sqsh
 
 # Building grubbls.efi
@@ -1134,7 +1134,7 @@ install -m 644 grub.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
 %ifarch x86_64
 ln -srf %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub-tpm.efi
 %endif
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 install -m 644 grubbls.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
 %endif
 
@@ -1158,7 +1158,7 @@ EoM
 %endif
 
 %ifarch x86_64 aarch64
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 export BRP_PESIGN_FILES="%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{_datadir}/%{name}/%{grubefiarch}/grubbls.efi"
 %else
 export BRP_PESIGN_FILES="%{_datadir}/%{name}/%{grubefiarch}/grub.efi"
@@ -1299,7 +1299,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %fdupes %buildroot%{_libdir}
 %fdupes %buildroot%{_datadir}
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %pre common
 %else
 
@@ -1307,7 +1307,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %endif
 %service_add_pre grub2-once.service
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %post common
 %else
 
@@ -1340,7 +1340,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 
 %endif
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %preun common
 %else
 
@@ -1348,7 +1348,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %endif
 %service_del_preun grub2-once.service
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %postun common
 %else
 
@@ -1356,7 +1356,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %endif
 %service_del_postun grub2-once.service
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %files
 %else
 
@@ -1371,7 +1371,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %doc README.ibm3215
 %endif
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %files common -f %{name}.lang
 %defattr(-,root,root,-)
 %endif
@@ -1568,7 +1568,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{sysefidir}/grub.der
 %endif
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %files %{grubefiarch}-bls
 %defattr(-,root,root,-)
 %{_datadir}/%{name}/%{grubefiarch}/grubbls.efi
