@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 21 16:45:11 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Allow to specify pervasive encryption's APQNs and key type
+  (jsc#PED-10950).
+- 5.0.2
+
+-------------------------------------------------------------------
 Fri Sep 22 10:36:42 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Added several LUKS-related elements to the partitioning schema

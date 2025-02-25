@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-schema
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Name:           yast2-schema
 Name:           yast2-schema-%{flavor}
 %endif
 
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -48,8 +48,8 @@ BuildRequires:  yast2-devtools
 # All packages providing RNG files for AutoYaST
 # in /usr/share/YaST2/schema/autoyast/rng/*.rng
 
-# LUKS-related elements in the partitioning schema
-BuildRequires:  autoyast2 >= 5.0.1
+# pervasive APQNS and key type elements in the partitioning schema
+BuildRequires:  autoyast2 >= 5.0.4
 BuildRequires:  yast2
 # add_on_products and add_on_others types
 BuildRequires:  yast2-add-on >= 4.3.3
