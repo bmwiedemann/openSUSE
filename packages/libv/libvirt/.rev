@@ -4797,4 +4797,13 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
   bsc#1237228</comment>
     <requestid>1246814</requestid>
   </revision>
+  <revision rev="417" vrev="4">
+    <srcmd5>3af7915f7a18f8eb50f0c0d155f2007b</srcmd5>
+    <version>11.0.0</version>
+    <time>1740498022</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust downstream patch 'Add virt-create-rootfs utility' to only
+  install virt-create-rootfs when building the LXC driver</comment>
+    <requestid>1248244</requestid>
+  </revision>
 </revisionlist>

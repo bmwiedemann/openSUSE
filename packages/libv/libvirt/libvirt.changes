@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 24 19:06:04 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- Adjust downstream patch 'Add virt-create-rootfs utility' to only
+  install virt-create-rootfs when building the LXC driver
+
+-------------------------------------------------------------------
 Tue Feb 18 23:48:40 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - spec: Add note about packages with no files
