@@ -259,4 +259,12 @@
     <comment></comment>
     <requestid>1164137</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ba6a68400bd66a7134ad3dce1c988f14</srcmd5>
+    <version>3.7</version>
+    <time>1740497994</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1248166</requestid>
+  </revision>
 </revisionlist>

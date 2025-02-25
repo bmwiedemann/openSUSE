@@ -1,3 +1,35 @@
+--------------------------------------------------------------------
+Mon Feb 24 14:27:13 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#47
+- fix building on non-x86 architectures
+- 3.7
+
+--------------------------------------------------------------------
+Mon Feb 24 13:48:55 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#46
+- fix a buffer overflow in x86emu_log (bsc#1237557)
+- 3.6
+
+--------------------------------------------------------------------
+Mon Feb 24 12:46:06 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#44
+- prim_ops: fix some indentation
+
+--------------------------------------------------------------------
+Mon Feb 24 12:45:06 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#42
+- Fix a bug in R/M 01 decoding
+
+--------------------------------------------------------------------
+Mon Feb 24 12:42:18 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#41
+- fix NEG remark typos
+
 -------------------------------------------------------------------
 Thu Jan 18 12:47:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
