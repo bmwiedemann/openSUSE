@@ -2315,4 +2315,13 @@ for 12.3</comment>
   * profiles: add systemd-sysupdated (bsc#1237106)</comment>
     <requestid>1246467</requestid>
   </revision>
+  <revision rev="250" vrev="1">
+    <srcmd5>12d9efa22c4812a7b4695c1f79d2e552</srcmd5>
+    <version>1550+20250225.49f846d</version>
+    <time>1740498053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20250225.49f846d:
+  * profiles: whitelist kio-admin (bsc#1229913) (forwarded request 1248366 from mgerstner)</comment>
+    <requestid>1248373</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 25 12:57:38 UTC 2025 - matthias.gerstner@suse.com
+
+- Update to version 1550+20250225.49f846d:
+  * profiles: whitelist kio-admin (bsc#1229913)
+
+-------------------------------------------------------------------
+Mon Feb 24 13:23:15 UTC 2025 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20250224.8d1bf49:
+  * profiles: whitelist apparmor-utils (bsc#1237329)
+
+-------------------------------------------------------------------
 Mon Feb 17 14:42:27 UTC 2025 - matthias.gerstner@suse.com
 
 - Update to version 1550+20250217.25d4aef:
