@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 20 14:29:46 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Update the partitioning schema to support the pervasive encryption
+  apqns and key type elements (jsc#PED-10950).
+- 5.0.4
+
+-------------------------------------------------------------------
 Tue Oct  1 13:30:17 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Removed obsolete USERADD_CMD, USERDEL_PRECMD, USERDEL_POSTCMD 
