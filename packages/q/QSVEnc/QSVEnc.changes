@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 21:07:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- The build scans for SSE4, therefore add an ExclusiveArch line.
+
+-------------------------------------------------------------------
 Wed Oct 30 01:30:15 UTC 2024 - malcolmlewis@opensuse.org
 
 - Initial build at version 7.71+0.

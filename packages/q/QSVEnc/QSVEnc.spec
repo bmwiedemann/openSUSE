@@ -1,6 +1,7 @@
 #
 # spec file for package QSVEnc
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,10 +35,11 @@ BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig(dovi)
 BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libplacebo) 
+BuildRequires:  pkgconfig(libplacebo)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(vapoursynth)
 BuildRequires:  pkgconfig(vulkan)
+ExclusiveArch:  %ix86 x86_64
 
 %description
 Investigate performance and image quality of HW encoder (QSV) of Intel.
@@ -65,4 +67,3 @@ install -m 0755 qsvencc %{buildroot}%{_bindir}/qsvencc
 %{_bindir}/qsvencc
 
 %changelog
-

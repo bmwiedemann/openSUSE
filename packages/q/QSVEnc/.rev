@@ -7,4 +7,12 @@
     <comment>New package submission for Tumbleweed.</comment>
     <requestid>1221780</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>02e541466439169019e3a9b8e44835d0</srcmd5>
+    <version>7.71+0</version>
+    <time>1740498476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248241</requestid>
+  </revision>
 </revisionlist>
