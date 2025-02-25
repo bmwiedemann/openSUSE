@@ -1,3 +1,4 @@
+%if 0%{?is_opensuse}
 %package apparmor-32bit
 Summary:        AppArmor
 Recommends:     apparmor-abstractions-32bit
@@ -19,6 +20,7 @@ Supplements:    packageand(patterns-base-32bit:patterns-base-apparmor)
 
 %description apparmor-32bit
 The 32bit pattern complementing apparmor.
+%endif
 #
 #-------------------------------------------------------------------
 #

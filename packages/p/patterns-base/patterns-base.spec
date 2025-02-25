@@ -60,6 +60,7 @@ This will install the 32-bit variant of all selected patterns. This allows to ex
 
 ################################################################################
 
+%if 0%{?is_opensuse}
 %package apparmor
 %pattern_basetechnologies
 Summary:        AppArmor
@@ -89,6 +90,7 @@ AppArmor is an application security framework that provides mandatory access con
 %files apparmor
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/apparmor.txt
+%endif
 
 ################################################################################
 
@@ -138,7 +140,9 @@ Requires:       systemd
 Requires:       util-linux
 Requires:       user(nobody)
 # Add some static base tool in case system explodes; Recommend only on traditional systems, as users are free to uninstall it
+%if 0%{?is_opensuse}
 %{requires_on_transactional busybox}
+%endif
 %{recommends_on_traditional busybox-static}
 %{recommends_on_traditional elfutils}
 %{requires_on_transactional_recommends_otherwise glibc-locale-base}
@@ -679,10 +683,9 @@ This pattern holds files required for booting the system
 
 ################################################################################
 
-%if 0%{?is_opensuse}
 %package selinux
 %pattern_basetechnologies
-Summary:        SELinux
+Summary:        SELinux Support
 Group:          Metapackages
 Provides:       pattern() = selinux
 Provides:       pattern-icon() = pattern-selinux
@@ -691,14 +694,19 @@ Provides:       pattern-visible()
 Requires:       policycoreutils
 Requires:       selinux-autorelabel
 Requires:       selinux-policy
+%if 0%{?is_opensuse}
 Requires:       selinux-policy-base
+# Use targeted as default policy if none was explicitly requested.
+Suggests:       selinux-policy-targeted
+%else
+Requires:       selinux-policy-targeted
+%endif
+
 Requires:       selinux-tools
 Requires:       pattern() = minimal_base
 # Needed for podman et al.
 Requires:       (container-selinux if libcontainers-common)
 Recommends:     checkpolicy
-# Use targeted as default policy if none was explicitly requested.
-Suggests:       selinux-policy-targeted
 
 %description selinux
 Security-Enhanced Linux (SELinux) provides a mechanism for supporting access control security policies, including mandatory access controls (MAC).
@@ -707,7 +715,6 @@ Its architecture strives to separate enforcement of security decisions from the 
 %files selinux
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/selinux.txt
-%endif
 
 ################################################################################
 
@@ -1107,7 +1114,11 @@ The X Window System provides the only standard platform-independent networked gr
 
 %install
 mkdir -p %{buildroot}%{_docdir}/patterns
-for i in apparmor base enhanced_base minimal_base sw_management x11 x11_enhanced; do
+for i in \
+%if 0%{?is_opensuse}
+apparmor \
+%endif
+base enhanced_base minimal_base sw_management x11 x11_enhanced; do
     echo "This file marks the pattern $i to be installed." \
     >"%{buildroot}%{_docdir}/patterns/$i.txt"
     echo "This file marks the pattern $i to be installed." \
@@ -1115,11 +1126,11 @@ for i in apparmor base enhanced_base minimal_base sw_management x11 x11_enhanced
 done
 
 # These packages don't generate a 32bit pattern
-for i in basesystem bootloader basic_desktop documentation fips transactional_base \
+for i in basesystem bootloader basic_desktop documentation fips transactional_base selinux \
 %if 0%{?is_opensuse}
-console selinux update_test \
+console update_test \
 %else
-%ifnarch s390 s390x
+%ifnarch s390 s390x aarch64 ppc64le
 32bit \
 %endif
 %endif
