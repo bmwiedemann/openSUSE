@@ -685,4 +685,12 @@
     <comment>- Adjust bconds to build the package in SLFO without xvidcore.</comment>
     <requestid>1247765</requestid>
   </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>b7b7471a71f1e0f83ed858b0f3c6ef69</srcmd5>
+    <version>4.4.5</version>
+    <time>1740498019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248239</requestid>
+  </revision>
 </revisionlist>

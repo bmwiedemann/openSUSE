@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Feb 19 05:17:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2025-22921.patch:
+  Backporting 7f9c7f98 from upstream, clear array length when
+  freeing it.
+  (CVE-2025-22921, bsc#1237382)
+
+-------------------------------------------------------------------
+Fri Feb 19 04:27:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2025-25473.patch:
+  Backporting c08d3004 from upstream, clear FFFormatContext packet.
+  When packet_buffer is used in mux.c, and if a muxing process fails
+  at a point where packets remained in said queue.
+  (CVE-2025-25473, bsc#1237351)
+
+-------------------------------------------------------------------
+Fri Feb 19 03:18:02 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2025-0518.patch:
+  Backporting b5b6391d from upstream, fixes memory data leak when
+  use sscanf().
+  (CVE-2025-0518, bsc#1236007)
+
+-------------------------------------------------------------------
+Fri Feb 19 02:58:01 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2025-22919.patch:
+  Backporting 1446e37d from upstream, check for valid sample rate
+  As the sample rate <= 0 is invalid.
+  (CVE-2025-22919, bsc#1237371)
+
+-------------------------------------------------------------------
+Fri Feb 19 01:48:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2024-12361.patch:
+  Backporting 4065ff69 from upstream, add check for av_packet_new_side_data()
+  to avoid null pointer dereference if allocation fails.
+  (CVE-2024-12361, bsc#1237358)
+
+-------------------------------------------------------------------
 Tue Oct 15 08:18:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Adjust bconds to build the package in SLFO without xvidcore.
@@ -8,6 +49,9 @@ Mon Jan  6 11:53:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.4.5
   * Reliability/bug fixes
+  Fixes: 51896/clusterfuzz-testcase-minimized-ffmpeg_dem_DXA_fuzzer-5730576523198464
+  Fixes: signed integer overflow: 2147483566 + 82 cannot be represented in type 'int'
+  (CVE-2024-36613, bsc#1235092)
 - Delete
   0001-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
   0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
