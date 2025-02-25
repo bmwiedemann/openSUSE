@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-desktop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,11 +34,11 @@ This is an internal package that is used to create the patterns as part
 of the installation source setup.  Installation of this package does
 not make sense.
 
-This particular package contains all the desktop related patterns that are not 
+This particular package contains all the desktop related patterns that are not
 specific too one particular desktop environment
 
-################################################################################
 
+################################################################################
 %package books
 %pattern_documentation
 Summary:        Documentation
@@ -114,7 +114,6 @@ Provides:       pattern() = imaging
 Provides:       pattern-icon() = pattern-x11
 Provides:       pattern-order() = 1860
 Provides:       pattern-visible()
-Requires:       pattern() = x11
 Provides:       patterns-openSUSE-imaging = %{version}
 Obsoletes:      patterns-openSUSE-imaging < %{version}
 # from data/IMAGE
@@ -154,7 +153,6 @@ Obsoletes:      patterns-openSUSE-mobile < %{version}
 
 Recommends:     wpa_supplicant
 # bnc#480879
-Recommends:     crda
 Recommends:     iw
 Suggests:       irda
 Suggests:       smbios-utils-python
@@ -180,11 +178,11 @@ Provides:       pattern-order() = 1580
 Provides:       pattern-visible()
 Obsoletes:      patterns-openSUSE-multimedia < %{version}
 
-Recommends:     yast2-sound
-Recommends:     dvd+rw-tools
-Recommends:     vorbis-tools
 Recommends:     ImageMagick
+Recommends:     dvd+rw-tools
 Recommends:     mjpegtools
+Recommends:     vorbis-tools
+Recommends:     yast2-sound
 Suggests:       blender
 Suggests:       ripit
 # maintained by coolo - must be good
@@ -215,14 +213,14 @@ Provides:       pattern-order() = 2000
 Provides:       pattern-visible()
 Obsoletes:      patterns-openSUSE-technical_writing < %{version}
 
-Recommends:     xmlto
 Recommends:     docbook-dsssl-stylesheets
 Recommends:     docbook-xsl-stylesheets
-Recommends:     psutils
 Recommends:     emacs
 Recommends:     emacs-x11
-Recommends:     xmlgraphics-fop
+Recommends:     psutils
 Recommends:     svg-schema
+Recommends:     xmlgraphics-fop
+Recommends:     xmlto
 Recommends:     xslide
 # General XML Packages
 Recommends:     xmlgraphics-batik
@@ -238,8 +236,8 @@ Recommends:     xmlstarlet
 Recommends:     dbsplit-tools
 #LATER docbook2odf
 Recommends:     docbook_5
-Recommends:     docbook5-xsl-stylesheets
 Recommends:     docbook-xml-website
+Recommends:     docbook5-xsl-stylesheets
 #LATER doclifter
 Recommends:     susedoc
 #LATER texi2db

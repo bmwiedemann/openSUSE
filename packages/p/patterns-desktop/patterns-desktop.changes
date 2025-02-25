@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 24 19:38:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change pattern 'imaging' not forcibly to require X11: The world
+  is moving on and wayland-only is a thing.
+
+-------------------------------------------------------------------
+Mon Feb 24 16:38:59 CET 2025 - ro@suse.de
+
+- drop crda, obsolete since kernel 4.15 
+
+-------------------------------------------------------------------
 Thu May 23 08:18:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend tlp: we have three (conflicting) power tuners

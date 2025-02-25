@@ -102,4 +102,13 @@
     with the other two though).</comment>
     <requestid>1176039</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>d729bf5132f5a0115183be7ea94db0e0</srcmd5>
+    <version>20201106</version>
+    <time>1740498051</time>
+    <user>dimstar_suse</user>
+    <comment>- Change pattern 'imaging' not forcibly to require X11: The world
+  is moving on and wayland-only is a thing. (forwarded request 1248342 from iznogood)</comment>
+    <requestid>1248343</requestid>
+  </revision>
 </revisionlist>
