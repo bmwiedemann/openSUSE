@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/s3tools/s3cmd</param>
+              <param name="changesrevision">9d17075b77e933cf9d7916435c426d38ab5bca5e</param></service></servicedata>

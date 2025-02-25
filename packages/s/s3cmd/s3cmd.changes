@@ -1,0 +1,208 @@
+-------------------------------------------------------------------
+Mon Feb 24 17:40:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- change Source URL, as this package uses a obs_scm service
+
+-------------------------------------------------------------------
+Wed Mar 20 17:39:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- add sles15 macro to build for new python3.11 stack
+- Update to version 2.4.0:
+  * Update version to 2.4.0
+  * s3cmd: handle cases of empty key or value for settagging
+  * cosmetic: typo fix
+  * Fixes #1359 - add setownership and setblockpublicaccess
+    commands + related entries in info
+  * cleanup: update copyright headers and other values
+  * cosmetic: comment typo fixes
+  * Fixes error "'compute_content_md5' is not defined" for
+    setversioning
+  * cleanup: fixes "invalid escape sequence" Syntax Warnings
+  * Fixes #1343 - bytes to be used for repl string in
+    stripNameSpace
+  * CI: Add python 3.11 and 3.12 to the test matrix
+  * fix SignatureDoesNotMatch error when modifying an object on
+    Cloudflare R2
+  * [DATALAD RUNCMD] run codespell throughout
+  * Fixed manually some ambigous typos
+  * ignores for codespell
+  * Add rudimentary codespell config
+  * Add github action to codespell master on push and PRs
+  * Fix type error(#1313)
+  * Add setobjectretention and setobjectlegalhold commands
+  * Pass --include to curl
+  * Fixes #1292 - cloudfront: Parse all aws possible urls in
+    httpurl_to_s3uri
+  * Support bucket/object tagging command
+  * Refactoring
+  * Don't use os.path for handling s3 paths
+  * Cleanup of remote2local attributes setting code
+  * Fixes #1288 - More explicit errors when setting attributes for
+    remote2local
+  * Use "mkdir" prefix instead of "make dir" for remote2local
+    output messages
+  * make error message consistent
+  * bug: require object in abortmp
+  * Set correct mime type when uploading directories
+  * Refactor to treat copy_pairs like remote_list and update_list
+    for sync commands
+  * run-tests.py: Add test for keep-dirs feature
+  * remote2local: Use rmdir to delete folders
+  * remote2sync: children files and folders have to be deleted
+    before parent folders
+  * SortedDict: Add support for reversed() and ensure
+    SortedDictIterator is recognized as an iterable
+  * Add "--keep-dirs" option to have the folder structure preserved
+    on remote side
+  * Support versioning configuration
+  * Add to ls command a "DIROBJ" tag for directory objects in S3
+    remote
+  * Fixes #976 - Fixes recursive delete of objects named with
+    whitespace
+  * Move hash functions into Crypto module
+  * Crypto: Remove old python legacy code
+  * Fixes #1256 - Add cfinval command to request cloudfront to
+    invalidate paths
+  * Cloudfront: Fixes crash because of error reporting for retries
+  * Cloudfront: Fixes paths with wildcard or special characters to
+    not be invalidated
+  * Cloudfront: Remove wildcard import for exceptions
+  * Return additional pip install from `setup.py`
+  * Extract deps from `setup.py` to `requirements.txt`
+  * Enable pip cache in actions/setup-python
+  * Bump GitHub actions
+  * Update CI test.yml to use last minio version and use python
+    3.10 instead of 3.10-dev
+  * run-tests.py: Added server profiles to skip tests depending on
+    the server type
+  * run-tests.py: Fixes os error when trying to skip first tests
+  * Improve error message to be more explicit for upload errors
+    after retries
+  * Don't retry upload when server is full
+  * Fixes #914 - Add "--max-retries" and "max_retries" config
+    option
+  * Retry a file download in case of SlowDown or TooManyRequests
+    error
+  * Better error message in case of connection error or host
+    unreachable
+  * fix: Use NextMarker if only prefixes are returned
+  * Update help message
+  * Fixes #1005 - Fixes object is not callable error because of md5
+    FIPS test
+  * Change version to development 2.3.0-dev
+  * Add option to skip destination validation when applying
+    notification config
+  * Move md5 to BaseUtils
+  * Add FIPS support
+  * Add missing return
+
+-------------------------------------------------------------------
+Wed Mar 20 17:37:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.3.0:
+  * Update version to 2.3.0
+  * Use quotes around files in FileLists for debug logs
+  * Use str instead of repr in FileList debug logs
+  * Fixes ConnectionRefusedError not found error for python 2
+  * Fixes #1261 - Additional fix for CannotSendRequest at startup
+  * Fixes #1247 - Update expire command to use Rule/Filter/Prefix
+    for LifecycleConfiguration
+  * Fixes #996 - Avoid crashing when setup.py test is called
+  * feat: add `--list-allow-unorderd` command-line switch
+  * feat: implement list objects allow-onordered option as a config
+  * Add notification commands
+  * Fixes #1009 - Fixes --continue behavior for the "get" command
+  * Ensure 404 exc content is filled even for object_info
+  * Fixes #1259 - Correct typo when retrieving response from IMDSv2
+  * Fixes #1259 - Fixes unicode issue with fixbucket
+  * Fixes #1261 - Always read a conn after a request to be able to
+    reuse it
+  * make IMDSv2 optional
+  * use IMDSv2 to retrieve instance metadata
+  * excepting/handling tcp connection refused error
+  * Update CI test.yml to run on PR
+  * treat 0 byte cache files as nonexistent
+  * fix os walk when excluding directories
+  * Take into account the AWS_STS_REGIONAL_ENDPOINTS
+  * List support of Python 3.9, 3.10
+  * fixes cloudfront invalidate retry
+
+-------------------------------------------------------------------
+Wed Jan 19 09:22:40 UTC 2022 - Robert Munteanu <rombert@apache.org>
+
+- spec cleanups:
+  * stop recording the file list, it is not needed
+  * remove unneeded %clean section
+
+-------------------------------------------------------------------
+Wed Jan 19 07:20:46 UTC 2022 - rombert@apache.org
+
+- Update to version 2.2.0:
+  * Update version to 2.2.0
+  * Fixes #1201 - Raise an explicit error when only env var AWS_ACCESS_KEY is set
+  * CI: Add python 3.10 to test matrix
+  * Fixed RestoreRequest XML namespace URL (#1203)
+  * Migrate CI tests to use github actions
+  * Fixes #1190 - Set properly PARTIAL exit code for object_get when needed
+  * Cleanup: Factor unicodise/deunicodise to be reused inside Config
+  * Fixes s3cmd#1197 - add custom header for s3cmd mb
+  * Add info about sync defaults
+
+-------------------------------------------------------------------
+Mon Jul  9 13:50:30 UTC 2018 - rjschwei@suse.com
+
+- Add missing dependency (boo#1100607)
+
+-------------------------------------------------------------------
+Fri Nov 10 17:29:36 UTC 2017 - alarrosa@suse.com
+
+- Update to 2.0.1:
+  - Support for Python 3 is now stable
+  - Fixed signature issues due to upper cases in hostname
+  - Improved support for Minio Azure gateway
+  - Added signurl_use_https option to use https prefix for signurl
+  - Fixed a lot of remaining issues and regressions for Python 3
+  - Fixed --configure option with Python 3
+  - Fixed non string cmdline parameters being ignored
+  - Windows support fixes
+  - Don't force anymore to have a / on last parameter for the "modify" command
+  - Removed the python3 support warning
+  - Detect and report error 403 in getpolicy for info command
+  - Added a specific error message when getting policy by non owner
+  - Many other bug fixes
+
+- Use python3 and drop some very old code from the spec file
+
+-------------------------------------------------------------------
+Wed Aug  9 11:52:40 UTC 2017 - alarrosa@suse.com
+
+- Update to 2.0.0:
+  - Added support for Python 3 (Shaform, Florent Viard)
+  - Added getlifecycle command (Daniel Gryniewicz)
+  - Added --cf-inval for invalidating multiple CF distributions (Joe Mifsud)
+  - Added --limit to "ls" and "la" commands to return the specified number of objects (Masashi Ozawa)
+  - Added --token-refresh and --no-token-refresh and get the access token from the environment (Marco Jakob)
+  - Added --restore-priority and --restore-days for S3 Glacier (Robert Palmer)
+  - Fixed requester pays header with HEAD requests (Christian Rodriguez)
+  - Don't allow mv/cp of multiple files to single file (Guy Gur-Ari)
+  - Generalize wildcard certificate forgiveness (Mark Titorenko)
+  - Multiple fixes for SSL connections and proxies
+  - Added support for HTTP 100-CONTINUE
+  - Fixes for s3-like servers
+  - Big cleanup and many unicode fixes
+  - Many other bug fixes
+
+-------------------------------------------------------------------
+Thu Mar 17 13:27:25 UTC 2016 - kmroz@suse.com
+
+- New upstream version (1.6.1):
+  - Added --host and --host-bucket
+  - Added --stats
+  - Fix for newer python 2.7.x SSL library updates
+  - Many other bug fixes
+
+-------------------------------------------------------------------
+Fri Oct 23 21:19:24 UTC 2015 - kmroz@suse.com
+
+- Initial commit of s3cmd (1.6.0).
+
