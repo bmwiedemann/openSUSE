@@ -612,4 +612,12 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
 - Added packagekit-single-install.patch file that adds this functionality</comment>
     <requestid>1247655</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>7072df371f48c4aaa7383a6e02c0aa9c</srcmd5>
+    <version>332</version>
+    <time>1740498064</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with latest local-npm-registry</comment>
+    <requestid>1248217</requestid>
+  </revision>
 </revisionlist>
