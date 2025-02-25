@@ -17,27 +17,31 @@
 
 
 # if bumping this, also update baselibs.conf
-%define sonum 1
+%define sonum 4
+%define unity_version 2.6.1
 Name:           iniparser
-Version:        4.2.1
+Version:        4.2.6
 Release:        0
 Summary:        Library to parse ini files
 License:        MIT
 Group:          System/Libraries
-URL:            http://ndevilla.free.fr/iniparser/
-Source:         https://github.com/ndevilla/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source2:        baselibs.conf
-Patch00:        iniparser_remove_rpath.patch
+URL:            https://gitlab.com/iniparser/iniparser
+Source:         https://gitlab.com/iniparser/iniparser/-/archive/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source2:        https://github.com/ThrowTheSwitch/Unity/archive/refs/tags/v%{unity_version}.tar.gz#/unity-%{unity_version}.tar.gz
+Source3:        baselibs.conf
+# PATCH-FIX-UPSTREAM - https://gitlab.com/iniparser/iniparser/-/merge_requests/171
+Patch:          fix-tests.patch
+BuildRequires:  cmake
 BuildRequires:  doxygen
+BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
+# Test requires
+BuildRequires:  ruby
 
 %description
 Libiniparser offers parsing of ini files from the C level.
 
-%if 0%{?suse_version} == 0 || 0%{?suse_version} > 1100
 %define libiniparser_name libiniparser%{sonum}
-%else
-%define libiniparser_name libiniparser
-%endif
 
 %package -n %{libiniparser_name}
 Summary:        Library to parse ini files
@@ -51,11 +55,7 @@ This package includes the libiniparser%{sonum} library.
 %package -n libiniparser-devel
 Summary:        Libraries and Header Files to Develop Programs with libiniparser Support
 Group:          Development/Libraries/C and C++
-%if 0%{?suse_version} == 0 || 0%{?suse_version} > 1100
 Requires:       %{libiniparser_name} = %{version}
-%else
-Requires:       libiniparser = %{version}
-%endif
 
 %description -n libiniparser-devel
 This package contains the static libraries and header files needed to
@@ -70,34 +70,37 @@ html/index.html with any HTML-capable browser.
 Libraries and Header Files to Develop Programs with iniparser Support.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1 -b2 -n %{name}-v%{version}
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags} -fPIC"
-make %{?_smp_mflags} CFLAGS="%{optflags} -fPIC" docs
+%cmake \
+	-DBUILD_STATIC_LIBS:BOOL=OFF \
+	-DBUILD_DOCS:BOOL=ON \
+	-DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/libiniparser-devel \
+	-DBUILD_TESTING:BOOL=ON \
+	-DFETCHCONTENT_SOURCE_DIR_UNITY:PATH=%{_builddir}/Unity-%{unity_version}
+%cmake_build
 
 %install
-install -d -m 0755 %{buildroot}%{_includedir}
-install -d -m 0755 %{buildroot}%{_libdir}
-install -m 0755 libiniparser.so.%{sonum} %{buildroot}%{_libdir}
-install -m 0644 src/{dictionary,iniparser}.h %{buildroot}%{_includedir}
-ln -s -f libiniparser.so.%{sonum} %{buildroot}%{_libdir}/libiniparser.so
+%cmake_install
 
 %check
-ln -s libiniparser.so.%{sonum} libiniparser.so
-make %{?_smp_mflags} check
+%ctest
 
 %post -n %{libiniparser_name} -p /sbin/ldconfig
 %postun -n %{libiniparser_name} -p /sbin/ldconfig
 
 %files -n %{libiniparser_name}
-%{_libdir}/libiniparser.so.*
-%doc LICENSE
+%{_libdir}/*.so.*
 
 %files -n libiniparser-devel
-%{_includedir}/*.h
-%{_libdir}/libiniparser.so
-%doc html
+%doc html/
+%{_libdir}/*.so
+%{_libdir}/cmake/%{name}
+%{_libdir}/cmake/unity
+%{_libdir}/pkgconfig/%{name}.pc
+%{_includedir}/%{name}
+%{_includedir}/unity
+%exclude %{_libdir}/*.a
 
 %changelog

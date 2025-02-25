@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Jan 23 17:31:42 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Add fix-tests.patch: Makes the tests work with the "offline"
+  CMake option (FETCHCONTENT_SOURCE_DIR_UNITY)
+- Drop iniparser_remove_rpath.patch: Not needed anymore because of
+  the switch to CMake
+- Update to version 4.2.6:
+  * CVE-2025-0633 (bsc#1237377)
+    Fix heap overflow in iniparser_dumpsection_ini()
+  * Add test to reproduce heap overflow in
+    iniparser_dumpsection_ini()
+  * Fix links to FAQ sites in doxygen generated documentation
+  * Add packaging status badge to give users and me an overview
+  * Enable command line arguments for tests
+- Update to version 4.2.5:
+  * Fix stack buffer overflow in iniparser dump functions
+  * Update doxygen main page, merge it with README and use it as
+  * new main page
+    Explain how to build documentation as it not build per default
+  * Stylize the name iniParser as it used to be done
+  * Mention CMake options to prevent them from being overlooked
+  * Add build instructions for MinGW
+  * Replace outdated installation instructions by link to README
+    sections
+  * Remove section numbers from README
+  * add DESCRIPTION, HOMEPAGE_URL and LANGUAGES in cmake project()
+  * Fix MSVC build issues
+- Update to version 4.2.4:
+  * Fix paths in generated pkgconfig file
+- Update to version 4.2.3:
+  * Replace our own unit test framework (CuTest) by Unity
+  * Do not install tests but make them execute in build directory
+  * Build and run tests and examples on Windows CI runner
+  * Fix pkgconfig file
+- Update to version 4.2.2:
+  * add CMake Support
+  * update README
+  * add Gitlab CI configuration
+  * This release makes iniparser-meta obsolete. 
+
+-------------------------------------------------------------------
 Wed May 15 19:07:26 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 4.2.1
