@@ -242,4 +242,15 @@
     FIRST or NULLS LAST (issue532).</comment>
     <requestid>1194657</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2310e6ed7c45605f5538c9dd4fe3f9e9</srcmd5>
+    <version>0.5.3</version>
+    <time>1740497965</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.3:
+  * EXTENSION is now recognized as a keyword (issue785).
+  * SQL hints are not removed when removing comments (issue262,
+    by skryzh).</comment>
+    <requestid>1248061</requestid>
+  </revision>
 </revisionlist>
