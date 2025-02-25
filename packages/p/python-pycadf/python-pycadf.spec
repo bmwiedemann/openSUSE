@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycadf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-pycadf
-Version:        3.1.1
+Version:        4.0.1
 Release:        0
 Summary:        DMTF Cloud Audit (CADF) data model
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/pycadf
-Source0:        https://files.pythonhosted.org/packages/source/p/pycadf/pycadf-3.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pycadf/pycadf-4.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-oslo.config >= 5.2.0
@@ -41,11 +41,11 @@ DMTF Cloud Audit (CADF) data model
 %package -n python3-pycadf
 Summary:        DMTF Cloud Audit (CADF) data model
 Requires:       python-pycadf-common
-Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-debtcollector
 Requires:       python3-oslo.config >= 5.2.0
 Requires:       python3-oslo.serialization >= 2.18.0
-Requires:       python3-pytz >= 2013.6
-Requires:       python3-six >= 1.10.0
+Requires:       python3-pytz
+Requires:       python3-six
 
 %description -n python3-pycadf
 DMTF Cloud Audit (CADF) data model
@@ -68,14 +68,14 @@ Summary:        Common files for the DMTF Cloud Audit (CADF) data model
 Configuration files for the DMTF Cloud Audit (CADF) data model.
 
 %prep
-%autosetup -n pycadf-3.1.1
+%autosetup -n pycadf-4.0.1
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # generate html docs
-PBR_VERSION=3.1.1 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=4.0.1 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -86,7 +86,7 @@ mkdir -p %{buildroot}/%{_sysconfdir}
 mv %{buildroot}%{_prefix}%{_sysconfdir}/pycadf %{buildroot}/%{_sysconfdir}/
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-pycadf
 %doc README.rst

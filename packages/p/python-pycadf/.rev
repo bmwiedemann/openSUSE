@@ -285,4 +285,28 @@
     <comment>- fix build against python 3.10</comment>
     <requestid>977087</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f0c0c623d94499b0e4355b60d784969c</srcmd5>
+    <version>4.0.1</version>
+    <time>1740498504</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.1
+  - Remove audit map for retired ceilometer-api and panko
+  - Remove unused debtcollector
+  - Add Python 3.11 to supported version
+  - Update zuul job templates
+  - Remove Python 3.8 support
+  - Fix pep8 gate
+  - Remove usage of six
+  - Add doc/requirements
+  - Update setup.cfg classifiers
+  - Replace deprecated datetime.utcnow call
+  - doc: Drop DJANGO_SETTINGS_MODULE environment
+  - Drop lower-constraints.txt and its testing
+  - Add Python3 wallaby unit tests
+  - Add missing maps into setup.cfg
+  - Bump hacking
+  - remove unicode prefix from code</comment>
+    <requestid>1248395</requestid>
+  </revision>
 </revisionlist>

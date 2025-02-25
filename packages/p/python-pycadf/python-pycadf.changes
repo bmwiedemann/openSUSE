@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:18:28 UTC 2025 - cloud-devel@suse.de
+
+- update to version 4.0.1
+  - Remove audit map for retired ceilometer-api and panko
+  - Remove unused debtcollector
+  - Add Python 3.11 to supported version
+  - Update zuul job templates
+  - Remove Python 3.8 support
+  - Fix pep8 gate
+  - Remove usage of six
+  - Add doc/requirements
+  - Update setup.cfg classifiers
+  - Replace deprecated datetime.utcnow call
+  - doc: Drop DJANGO_SETTINGS_MODULE environment
+  - Drop lower-constraints.txt and its testing
+  - Add Python3 wallaby unit tests
+  - Add missing maps into setup.cfg
+  - Bump hacking
+  - remove unicode prefix from code
+
+-------------------------------------------------------------------
 Fri May 13 18:30:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - fix build against python 3.10 
