@@ -19,19 +19,13 @@
 %define typelib typelib-1_0-Accounts-1_0
 %define sover   0
 Name:           libaccounts-glib
-Version:        1.26
+Version:        1.27
 Release:        0
 Summary:        Account management library for GLib Applications
 License:        LGPL-2.1-only
 URL:            https://gitlab.com/accounts-sso/libaccounts-glib
-Source:         https://gitlab.com/accounts-sso/libaccounts-glib/-/archive/%{version}/libaccounts-glib-%{version}.tar.gz
+Source:         https://gitlab.com/accounts-sso/libaccounts-glib/-/archive/VERSION_%{version}/libaccounts-glib-VERSION_%{version}.tar.bz2
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-ag-account-fix-incorrect-cleanup-in-ag_account_final.patch
-Patch1:         0002-Build-Don-t-install-Python-overrides-by-default.patch
-Patch2:         0003-Lib-do-not-attempt-to-terminate-the-GTask-twice.patch
-Patch3:         0004-ag-provider-fix-memory-leak-on-provider-tags.patch
-Patch4:         0006-ag-account-do-not-emit-misleading-enabled-signals-on.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -89,7 +83,7 @@ Requires:       libaccounts-glib%{sover} = %{version}
 This package contains the tools for the accounts-glib library.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n libaccounts-glib-VERSION_%{version}
 
 %build
 %meson
@@ -105,8 +99,7 @@ This package contains the tools for the accounts-glib library.
 %doc NEWS
 %license COPYING
 %{_libdir}/libaccounts-glib.so.%{sover}*
-# The library version wasn't updated in the 1.26 release
-%{_libdir}/libaccounts-glib.so.1.25
+%{_libdir}/libaccounts-glib.so.1.27
 
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/Accounts-1.0.typelib

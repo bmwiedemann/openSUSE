@@ -79,4 +79,12 @@
 - Spec cleanup</comment>
     <requestid>1156440</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>354f803a2f748df2b1537742f2302753</srcmd5>
+    <version>1.27</version>
+    <time>1740497951</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.27</comment>
+    <requestid>1248018</requestid>
+  </revision>
 </revisionlist>
