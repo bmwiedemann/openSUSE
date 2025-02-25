@@ -2442,4 +2442,41 @@
 - libs: Log if a TLS certificate is close to expiration. (forwarded request 1243603 from yan_gao)</comment>
     <requestid>1243604</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>e4028582696153ec077dbfb5a3e3b78c</srcmd5>
+    <version>3.0.0+20250218.3d0ffefd9e</version>
+    <time>1740497948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.0+20250218.3d0ffefd9e:
+- build: Fix default pacemaker-remoted path
+
+- Update to version 3.0.0+20250210.af3642fbf6:
+- libcrmcluster: prevent external callers from triggering assertion when connecting to cluster (gh#ClusterLabs/pacemaker#3821)
+
+- Update to version 3.0.0+20250207.d06c888ba7:
+- libpacemaker: Reset scheduler object in pcmk_simulate()
+- libpe_status: Make cluster_status() idempotent
+- tools: Fix overflow in crm_simulate --repeat
+- libpacemaker: Handle scandir() error in pcmk__profile_dir()
+- libpacemaker: Fix mem leak in pcmk__profile_dir()
+- tools: Avoid crash in crm_simulate --profile
+
+- Update to version 3.0.0+20250205.88e9ec1325:
+- libcrmservices: Unref the dbus connection... (gh#ClusterLabs/pacemaker#3816)
+- libcrmservices: Don't leak msg if systemd_proxy is NULL. (gh#ClusterLabs/pacemaker#3816)
+
+- Update to version 3.0.0+20250203.f950b1d05d:
+- python: Add python value for new CRM_EX_NO_DC exit code. (gh#ClusterLabs/pacemaker#3815)
+- libcrmcommon: Fix memory leak in text_end_list()/curses_end_list() (gh#ClusterLabs/pacemaker#3814)
+- crmadmin: return error if DC is not elected #2902 #3606 (gh#ClusterLabs/pacemaker#3716)
+
+- Update to version 3.0.0+20250128.0de22e5f75:
+- libraries: Update version numbers in so names
+- Rebase:
+  * bug-995365_pacemaker-cts-restart-systemd-journald.patch
+
+- Update to version 3.0.0+20250114.7dc494a96f:
+- controller: best practices for send_stonith_update() (gh#ClusterLabs/pacemaker#3796) (forwarded request 1248014 from yan_gao)</comment>
+    <requestid>1248015</requestid>
+  </revision>
 </revisionlist>

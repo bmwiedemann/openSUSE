@@ -1,7 +1,7 @@
-Index: pacemaker-2.1.9+20241118.394d77ec98/python/pacemaker/_cts/audits.py
+Index: pacemaker-3.0.0+20250128.0de22e5f75/python/pacemaker/_cts/audits.py
 ===================================================================
---- pacemaker-2.1.9+20241118.394d77ec98.orig/python/pacemaker/_cts/audits.py
-+++ pacemaker-2.1.9+20241118.394d77ec98/python/pacemaker/_cts/audits.py
+--- pacemaker-3.0.0+20250128.0de22e5f75.orig/python/pacemaker/_cts/audits.py
++++ pacemaker-3.0.0+20250128.0de22e5f75/python/pacemaker/_cts/audits.py
 @@ -82,13 +82,9 @@ class LogAudit(ClusterAudit):
  
          for node in nodes:
@@ -9,12 +9,12 @@ Index: pacemaker-2.1.9+20241118.394d77ec98/python/pacemaker/_cts/audits.py
 -                (rc, _) = self._cm.rsh(node, "systemctl stop systemd-journald.socket")
 +                (rc, _) = self._cm.rsh(node, "systemctl restart systemd-journald.socket")
                  if rc != 0:
--                    self._cm.log("ERROR: Cannot stop 'systemd-journald' on %s" % node)
+-                    self._cm.log(f"ERROR: Cannot stop 'systemd-journald' on {node}")
 -
 -                (rc, _) = self._cm.rsh(node, "systemctl start systemd-journald.service")
 -                if rc != 0:
--                    self._cm.log("ERROR: Cannot start 'systemd-journald' on %s" % node)
-+                    self._cm.log("ERROR: Cannot restart 'systemd-journald' on %s" % node)
+-                    self._cm.log(f"ERROR: Cannot start 'systemd-journald' on {node}")
++                    self._cm.log(f"ERROR: Cannot restart 'systemd-journald' on {node}")
  
              if "syslogd" in self._cm.env:
-                 (rc, _) = self._cm.rsh(node, "service %s restart" % self._cm.env["syslogd"])
+                 (rc, _) = self._cm.rsh(node, f"service {self._cm.env['syslogd']} restart")

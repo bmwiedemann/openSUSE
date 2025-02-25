@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Fri Feb 21 09:34:47 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250218.3d0ffefd9e:
+- build: Fix default pacemaker-remoted path
+
+-------------------------------------------------------------------
+Fri Feb 21 09:12:35 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250210.af3642fbf6:
+- libcrmcluster: prevent external callers from triggering assertion when connecting to cluster (gh#ClusterLabs/pacemaker#3821)
+
+-------------------------------------------------------------------
+Fri Feb 21 09:03:55 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250207.d06c888ba7:
+- libpacemaker: Reset scheduler object in pcmk_simulate()
+- libpe_status: Make cluster_status() idempotent
+- tools: Fix overflow in crm_simulate --repeat
+- libpacemaker: Handle scandir() error in pcmk__profile_dir()
+- libpacemaker: Fix mem leak in pcmk__profile_dir()
+- tools: Avoid crash in crm_simulate --profile
+
+-------------------------------------------------------------------
+Wed Feb 19 17:01:34 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250205.88e9ec1325:
+- libcrmservices: Unref the dbus connection... (gh#ClusterLabs/pacemaker#3816)
+- libcrmservices: Don't leak msg if systemd_proxy is NULL. (gh#ClusterLabs/pacemaker#3816)
+
+-------------------------------------------------------------------
+Wed Feb 19 13:58:59 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250203.f950b1d05d:
+- python: Add python value for new CRM_EX_NO_DC exit code. (gh#ClusterLabs/pacemaker#3815)
+- libcrmcommon: Fix memory leak in text_end_list()/curses_end_list() (gh#ClusterLabs/pacemaker#3814)
+- crmadmin: return error if DC is not elected #2902 #3606 (gh#ClusterLabs/pacemaker#3716)
+
+-------------------------------------------------------------------
+Tue Feb 18 15:11:05 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250128.0de22e5f75:
+- libraries: Update version numbers in so names
+
+- Rebase:
+  * bug-995365_pacemaker-cts-restart-systemd-journald.patch
+
+-------------------------------------------------------------------
+Mon Feb 17 20:29:03 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250114.7dc494a96f:
+- controller: best practices for send_stonith_update() (gh#ClusterLabs/pacemaker#3796)
+- controller: drop unused argument
+- libcrmcluster: better detect remote nodes in peer cache
+- pacemaker-attrd: drop unused struct member
+- pacemaker-attrd: track node XML IDs independent of attribute values
+- pacemaker-attrd: use variable for whether to write
+- pacemaker-attrd: rename flag to match recent change
+- pacemaker-attrd: track node CIB ID rather than cluster ID
+- libcrmcluster: track local node XML ID in cluster object
+- libcrmcluster: use pcmk__cluster_get_xml_id() when possible
+- libcrmcluster: rename pcmk__cluster_node_uuid()
+- libcrmcluster: allow searching by XML ID in pcmk__search_node_caches()
+- pacemaker-attrd: bail earlier if value won't be written
+- pacemaker-attrd: use API to get peer XML ID
+- pacemaker-attrd: don't use "uuid" to mean "XML ID"
+- pacemaker-attrd: always add remoteness to attribute value XML (gh#ClusterLabs/pacemaker#3796)
+
+-------------------------------------------------------------------
+Mon Feb 17 19:50:01 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250114.9931db7727:
+- Makefile: drop asciidoc references
+- crm_diff: Replace variable name
+- controller: address format-overflow warnings (gh#ClusterLabs/pacemaker#3794)
+- libcrmcommon: Catch correct errors for remote connection sockets (gh#ClusterLabs/pacemaker#3793)
+- Drop deprecated '--sync-call' option from cibadmin
+- Drop deprecated '-l/--local' option from cibadmin in multiple places
+- various: Correct some printf specifiers (gh#ClusterLabs/pacemaker#3793)
+- schedulerd: Resetting error and warning flags. (gh#ClusterLabs/pacemaker#3791)
+- raise minimum GnuTLS dependency to 3.4.6
+- sysconfig: document when logs may show sensitive info
+- pacemaker-attrd: reduce log spam at shutdown
+- executor: avoid misleading log when cancelling a recurring monitor
+- scheduler: improve restart-needed log
+- scheduler: don't show node capacity for bundle nodes
+- scheduler: clarify no-quorum effects
+- libcrmcommon: improve flag set/clear messages
+- libcrmcommon: improve message for unsupported XPath match
+- libstonithd: improve action re-attempt message
+- libcib: Don't send CRM_OP_REGISTER from cib_remote client
+- tools: mention potential issues with crm_resource --restart
+- tools: indicate crm_resource --interval can take units
+- tools: clarify that crm_mon updates are automatic when interactive
+- controller: round timeout when checking remaining remote command time (gh#ClusterLabs/pacemaker#3781)
+- agents: Replace the egrep command with the EGREP definition in ping RA
+- libcrmcluster: fix format typos
+- doc: drop Inkscape dependency
+- tools: validate stonith_admin --timeout value
+- libpacemaker: set fail-count to INFINITY for fatal failures
+- libpacemaker: add PCMK__XA_FAILED_START_OFFSET and PCMK__XA_FAILED_STOP_OFFSET
+- tools: Deprecate cibadmin --sync-call
+- OCF: controld.in: Remove gfs_controld command as it's already obsoleted
+- xml: Warn about post-transform behavior changes for ACLs with xpath
+- sysconfig: Document using certificates for remote nodes.
+- sysconfig: Explain permissions needed on TLS-related files.
+- libcrmcluster: restore CPG header size compatibility
+- libcrmcluster: improve messages in pcmk__cpg_message_data()
+- liblrmd: Enable TLS support for Pacemaker Remote clients.
+- daemons: Enable TLS support for Pacemaker Remote nodes.
+- libcrmcommon: Set *tls = NULL in a few more locations.
+- libcib: Enable TLS certs for remote CIB operations.
+- libs: Log if a TLS certificate is close to expiration.
+- libcrmcommon: If the server supports certs, require them...
+- daemons: Set up X509 auth in based if enabled.
+- sysconfig: Add env settings needed for X509 authentication.
+- libcrmcluster: don't assert for CPG decompression error
+- libcrmcluster: avoid redundant log for invalid CPG messages
+- libcrmcluster: initialize from in pcmk__cpg_message_data()
+- scheduler: avoid memory leak in bundles
+- xml: Preserve ACL reference behavior for replaced constraints
+- xml: Ensure ACL permissions are valid after XSL transformations
+- xml: Warn if schema transformation drops remove-after-stop property
+- xml: Warn if schema transformation drops moon phase
+- xml: Info if schema transformation drops empty groups or clones
+- xml: Warn if schema transformation drops colocation/order lifetimes
+- xml: Warn if schema transformation drops can_fail or...
+- xml: Warn if schema transformation drops restart-type meta-attr
+- xml: Warn if schema transformation drops rkt bundles
+- xml: Warn if schema transformation drops nagios/upstart resources
+- log: Allow CIB upgrade messages to start with W, I, D
+- various: clean up library memory at child exit
+- pacemaker-remoted: improve exit codes for schema failures
+- controller: avoid memory leak when updating join phase
+- scheduler: avoid memory leak when freeing node copies
+- libcrmcommon: drop unhelpful trace message
+- systemd: If the state is Pending at the time of probe, execute follow up monitor. (gh#ClusterLabs/pacemaker#3746)
+- systemd: Fix when monitor of systemd resource continues to be pending. (gh#ClusterLabs/pacemaker#3746)
+
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+
+-------------------------------------------------------------------
 Mon Feb 03 10:44:36 UTC 2025 - Yan Gao <ygao@suse.com>
 
 - Update to version 3.0.0+20250128.fa492f5181:
