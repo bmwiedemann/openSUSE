@@ -17,15 +17,13 @@
 
 Name:           lkl
 # Downstream made-up version number, reflects corrseponding kernel version.
-Version:        0.6.4+git.d156fd7786d
+Version:        0.6.4+git.3bed300d452
 Release:        0
 Summary:        EXPERIMENTAL: Linux Kernel Library (LKL) utilities
 License:        GPL-2.0-only
 Group:          System/Kernel
 Url:            https://lkl.github.io
 Source:         %{name}-%{version}.tar.zst
-Source1:        61-lklfuse.rules
-Source2:        lklfuse-mount@.service
 Patch1:		0001-tools-build-Fix-s-detection-code-in-tools-build-Make.patch
 # regular Linux kernel build dependencies
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
@@ -140,8 +138,9 @@ ln -s cptofs %{buildroot}/%{_bindir}/cpfromfs
 
 rm %{buildroot}/%{_libdir}/liblkl.a
 
-install -m 0644 -D %{SOURCE1} %{buildroot}/%{_udevrulesdir}/61-lklfuse.rules
-install -m 0644 -D %{SOURCE2} %{buildroot}/%{_unitdir}/lklfuse-mount@.service
+# lklfuse systemd integration needs to be explicitly installed
+install -m 0644 -D tools/lkl/systemd/61-lklfuse.rules %{buildroot}/%{_udevrulesdir}/61-lklfuse.rules
+install -m 0644 -D tools/lkl/systemd/lklfuse-mount@.service %{buildroot}/%{_unitdir}/lklfuse-mount@.service
 
 %check
 # tests aren't installed so we need to be in the correct _builddir path

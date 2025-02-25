@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 25 05:35:51 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Merge opensuse-kernel/SLE15-SP6 fde8b0a13a2
+- lkl: systemd: add iso9660 and udf to udev filter
+  * Enable corresponding opensuse_defconfig options
+- lklfuse: fallback to read-only mount on EACCES
+- lkl: posix: use preadv/pwritev for block I/O
+- lkl: systemd: add example udev and systemd service files
+  * Drop downstream source files
+- lkl: posix: rework do_rw() types
+- lkl: fix regression on environment variable config
+
+-------------------------------------------------------------------
 Fri Feb 21 13:51:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Ensure reproducible builds results (boo#1237474)
