@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 24 21:26:41 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.4.5
+  * GRPC: protobuf_json only displays the truncated string value.
+  * Wireshark crashes when clicking on a column title/header.
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.4.5.html
+
+-------------------------------------------------------------------
 Wed Feb 19 21:05:06 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.4.4
