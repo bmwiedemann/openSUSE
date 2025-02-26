@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zodbpickle
-Version:        4.1.1
+Version:        4.2
 Release:        0
 Summary:        Fork of Python 3 pickle module
 License:        Python-2.0 AND ZPL-2.1

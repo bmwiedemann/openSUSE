@@ -152,4 +152,15 @@
   * Add final support for Python 3.13.</comment>
     <requestid>1244905</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>31c039c7c55c9c10acd51306d6325053</srcmd5>
+    <version>4.2</version>
+    <time>1740586624</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2:
+  * Drop support for Python 3.8.
+  * Add preliminary support for Python 3.14 as of 3.14a4.
+  * Remove unused setuptools install requirement.</comment>
+    <requestid>1248471</requestid>
+  </revision>
 </revisionlist>

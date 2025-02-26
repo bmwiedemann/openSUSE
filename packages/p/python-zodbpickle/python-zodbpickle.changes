@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 25 20:09:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2:
+  * Drop support for Python 3.8.
+  * Add preliminary support for Python 3.14 as of 3.14a4.
+  * Remove unused setuptools install requirement.
+
+-------------------------------------------------------------------
 Mon Feb 10 21:56:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.1:
