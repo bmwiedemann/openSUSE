@@ -32,4 +32,12 @@ Obsoletes openSUSE-software package</comment>
     <comment></comment>
     <requestid>1138738</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fb0adbe33f8ed31f6f9b601e3e358cf0</srcmd5>
+    <version>0.3.0</version>
+    <time>1740586965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248536</requestid>
+  </revision>
 </revisionlist>

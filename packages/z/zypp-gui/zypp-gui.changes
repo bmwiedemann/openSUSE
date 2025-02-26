@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 26 02:32:51 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add 0001-Adapt-to-the-zypper-new-printout-format.patch: Support
+  zypper new printout format.
+
+-------------------------------------------------------------------
 Fri Jan 12 06:05:06 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update version to 0.3.0

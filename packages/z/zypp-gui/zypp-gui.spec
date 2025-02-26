@@ -1,7 +1,7 @@
 #
 # spec file for package zypp-gui
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/sunwxg/zypp-gui
 Source0:        https://github.com/sunwxg/zypp-gui/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        additional.json
 
+Patch0:         0001-Adapt-to-the-zypper-new-printout-format.patch
+
 BuildRequires:  blueprint-compiler
 BuildRequires:  cargo
 BuildRequires:  meson
@@ -47,7 +49,7 @@ Requires:       pkexec
 Application can update the system, search, install and remove the package, configure the repos. It achieves some functions of command zypper.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson
