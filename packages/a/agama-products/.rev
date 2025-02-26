@@ -110,4 +110,23 @@
   (gh#agama-project/agama#1937)</comment>
     <requestid>1240161</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>9033db84d51f440f1658fa3e5ed8e4f3</srcmd5>
+    <version>0</version>
+    <time>1740586474</time>
+    <user>dimstar_suse</user>
+    <comment>- drop sles_sap for aarch64 (bsc#1236370#c8)
+
+- Adjust product name of sles_sap_160 and some sizes for the
+  storage proposal of several products (gh#openSUSE/agama#2004).
+
+- Add sudo-policy-wheel-auth-self package as mandatory for products
+  that do not do it automatic to allow just non-root user for
+  initial login (jsc#PM-2128)
+
+- Change the default lsm to SELinux in enforcing for both Leap and Tumblweed
+  keep AppArmor around as an option jsc#PED-12021
+  https://news.opensuse.org/2025/02/13/tw-plans-to-adopt-selinux-as-default/</comment>
+    <requestid>1248594</requestid>
+  </revision>
 </revisionlist>
