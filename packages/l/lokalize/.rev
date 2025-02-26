@@ -1142,4 +1142,12 @@
     <comment>KDE release gear 24.12.2 (forwarded request 1243167 from krop)</comment>
     <requestid>1243845</requestid>
   </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>7999f03a37a412b5427d3f37f3ac1108</srcmd5>
+    <version>24.12.2</version>
+    <time>1740586486</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the missing qsqlite runtime dependency</comment>
+    <requestid>1248289</requestid>
+  </revision>
 </revisionlist>

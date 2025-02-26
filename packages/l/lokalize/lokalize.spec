@@ -50,8 +50,9 @@ BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
+Requires:       qt6-sql-sqlite >= %{qt6_version}
+Obsoletes:      lokalize5 < %{version}
+Provides:       lokalize5 = %{version}
 
 %description
 This package contains lokalize, an editor for translations
