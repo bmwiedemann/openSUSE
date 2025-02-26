@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Feb 19 15:57:56 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 5.0.7 (jsc#PED-11356):
+  - Updated UCX version requirement to v1.9
+  - Documentation Improvements
+    - Updated `coll tuned` rules file documentation to reflect changes in versioning and features.
+    - Updated CUDA-related networking documentation for consistency.
+    - Improved descriptions for `mpirun` options, including ``--pmixmca`` and ``--prtemca``.
+    - Fixed typos and formatting issues in `mpirun` man pages.
+  - Functionality Enhancements
+    - Improved argument checking for ``MPI_Comm_create_from_group`` and ``MPI_Intercomm_create_from_groups`` to align with MPI 4.0 standards.
+    - Addressed potential race conditions in `PMIx_Group_construct` calls by adding discriminators.
+    - Fixed ``MPI_Wtime`` to initialize timing relative to ``MPI_Init`` for accurate session-level measurements.
+    - Added support for the `alltoall_algorithm_max_requests` parameter in the `coll tuned` rules file, maintaining backward compatibility.
+    - Introduced a version identifier for the `coll tuned` rules file for better parser handling.
+    - Adjusted MCA variable scopes across multiple components to allow setting via the `MPI_T` interface: `coll adapt,ucc, han, basic, hcoll`
+  - Bug Fixes and Minor Enhancements
+    - Ensures that singletons properly create their own sessions directory trees.
+    - Fixed community Jenkins build pipeline to handle branch commits properly.
+    - Resolved missing profiling symbols in the `mpi_f08` Fortran library.
+    - Corrected parameter mismatches in `coll/cuda` functions to avoid type issues.
+    - Fixed build issues on Hurd.
+    - Removed unused portions of rcache base structure.
+    - Fixed oshmem base segment address exchange.
+    - Fixed UCC collective fallback issue.
+    - Updated Nvidia/Mellanox platform file
+- openMPI 5 is now the default openmpi for suse_version >= 1600
+- Switch to dist tarball to drop Sphinx and other python dependencies
+- Add Fix-type-mismatch-error.patch to fix a compilation error
+
+-------------------------------------------------------------------
 Fri Dec 20 11:50:25 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add mtl-ofi-fix-missing-definition-of-container_of.patch to fix

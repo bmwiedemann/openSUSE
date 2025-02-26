@@ -86,4 +86,12 @@ as the default openmpi implementation is still openmpi4.</comment>
     <comment></comment>
     <requestid>1232846</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d2026f381944ff74f7ce869514f4bc01</srcmd5>
+    <version>5.0.7</version>
+    <time>1740586426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1247230</requestid>
+  </revision>
 </revisionlist>

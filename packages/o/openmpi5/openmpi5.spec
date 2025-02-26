@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -42,7 +42,7 @@
 # % define build_static_devel 1
 
 %define pname openmpi
-%define _vers 5_0_6
+%define _vers 5_0_7
 %define m_f_ver 5
 %bcond_with ringdisabled
 
@@ -102,7 +102,12 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 
+# Detect whether we are the default openMPI implemantation or not
+%if "%{flavor}" == "standard" && (%{suse_version} >= 1600)
+%define default_openmpi 1
+%else
 %define default_openmpi 0
+%endif
 
 %if %{with hpc}
 %{!?compiler_family:%global compiler_family gnu}
@@ -113,8 +118,6 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
 %endif
 
-%define git_ver .0.8a5c2ef25dc8
-
 #############################################################################
 #
 # Preamble Section
@@ -122,19 +125,20 @@ ExclusiveArch:  do_not_build
 #############################################################################
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        5.0.6
+Version:        5.0.7
 Release:        0
 Summary:        An implementation of MPI/SHMEM (Version %{m_f_ver})
 License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
 URL:            http://www.open-mpi.org/
-Source0:        openmpi-%{version}%{git_ver}.tar.bz2
+Source0:        https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-%{version}.tar.bz2
 Source2:        openmpi5-rpmlintrc
 Source3:        macros.hpc-openmpi
 Source4:        mpivars.sh
 Source5:        mpivars.csh
 Patch1:         romio341-backport-fixes-from-mpich.patch
 Patch2:         mtl-ofi-fix-missing-definition-of-container_of.patch
+Patch3:         Fix-type-mismatch-error.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Exclude 32b archs
@@ -151,8 +155,6 @@ BuildRequires:  libtool
 # net-tools is required to run hostname
 BuildRequires:  net-tools
 BuildRequires:  python3
-BuildRequires:  python3-Sphinx >= 4.2.0
-BuildRequires:  python3-recommonmark
 %if 0%{?testsuite}
 BuildArch:      noarch
 BuildRequires:  %{package_name} = %{version}
@@ -401,7 +403,7 @@ echo with HPC
 %if %{without hpc}
 echo without HPC
 %endif
-%autosetup -p0 -n  openmpi-%{version}%{git_ver}
+%autosetup -p0 -n openmpi-%{version}
 
 # Live patch the VERSION file
 sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{version}%{git_ver}/' \
@@ -426,8 +428,6 @@ export HOSTNAME=OBS
 # configure: error: Please remove this directive and re-run configure.
 %global _lto_cflags %{nil}
 %{?with_hpc:%hpc_debug}
-# Remove .gitmodules so autogen.pl does not try to run git commands
-find . -name .gitmodules -delete
 ./autogen.pl --force --no-3rdparty libevent,hwloc
 %if %{with hpc}
 %{hpc_setup}
