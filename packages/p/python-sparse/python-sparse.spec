@@ -1,7 +1,7 @@
 #
 # spec file for package python-sparse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ ExcludeArch:    %{ix86} %{arm} ppc
 
 %{?sle15_python_module_pythons}
 Name:           python-sparse%{psuffix}
-Version:        0.15.4
+Version:        0.15.5
 Release:        0
 Summary:        Sparse n-dimensional arrays for Python
 License:        BSD-3-Clause

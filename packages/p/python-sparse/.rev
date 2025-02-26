@@ -161,4 +161,34 @@
     <comment></comment>
     <requestid>1226481</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d96e18c16483f81f82cf32dace29111a</srcmd5>
+    <version>0.15.5</version>
+    <time>1740586641</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.5:
+  * Make sure [r]matmul__ returns NotImplemented on invalid types.
+
+- Limit numpy to &lt; 2.
+- skip python 3.6 build
+  * Fix TypingError on sparse.dot with complex dtypes. (Issue #403,
+    PR #404)
+  * Improve the performance of sparse.dot. (Issue #331, PR #389,
+  * Added multi-axis 1-D indexing support. (PR #343, thanks
+  * Fix outer for arrays that weren’t one-dimensional. (Issue #346,
+  * Fix for COO constructor accepting invalid inputs. (Issue #385,
+  * Fixed a bug where converting an empty DOK array to COO leads to
+  * Remove broadcasting restriction between sparse arrays and dense
+  * Implement deterministic dask tokenization. (Issue #300, PR
+  * Improve testing around densification (PR #321, thanks
+  * Replace linear_loc with ravel_multi_index, which is 3x faster.
+  * Add error msg to tensordot operation when ndim==0 (Issue #332,
+  * Maintainence fixes for Sphinx 3.0 and Numba 0.49, and dropping
+  * Fixed a bug where indexing with an empty list could lead to
+  * Add the diagonal and diagonalize functions. (Issue #288, PR
+  * Add stack and concatenate for GCXS. (Issue #301, PR #303,
+  * Fix issue where functions dispatching to an attribute access
+  * Add partial support for constructing and mirroring COO objects</comment>
+    <requestid>1248473</requestid>
+  </revision>
 </revisionlist>
