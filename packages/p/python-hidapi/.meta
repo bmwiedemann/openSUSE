@@ -1,0 +1,5 @@
+<package name="python-hidapi" project="openSUSE:Factory">
+  <title></title>
+  <description>Needed by rivalcfg ==&gt; https://build.opensuse.org/package/show/home:sbradnick/python-rivalcfg</description>
+  <url>https://pypi.org/project/hidapi/</url>
+</package>

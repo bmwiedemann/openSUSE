@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ebb350bd73f02b928337916a9a13cd36</srcmd5>
+    <version>0.14.0.post2</version>
+    <time>1740586629</time>
+    <user>dimstar_suse</user>
+    <comment>new package python-hidapi, required by python-pynitrokey &gt;= 0.7.x</comment>
+    <requestid>1248469</requestid>
+  </revision>
+</revisionlist>
