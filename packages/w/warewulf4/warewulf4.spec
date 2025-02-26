@@ -18,18 +18,24 @@
 
 %global tftpdir /srv/tftpboot
 %global srvdir %{_sharedstatedir}
-#%%global githash 5b0de8ea5397ca42584335517fd4959d7ffe3da5
+#%%global githash fd49254ac592d325056aa58a564933a008539607
+%if 0%{?githash}
+%define srcdir warewulf-%{githash}
+%else
+%define srcdir warewulf-%{version}
+%endif
 
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        4.5.8
+Version:        4.6.0rc3
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            https://warewulf.org
 Source0:        warewulf-%{version}.tar
+#Source0:        https://github.com/mslacken/warewulf/archive/%{githash}.tar.gz#/warewulf-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source5:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
@@ -126,7 +132,7 @@ an initramfs that can fetch and boot a Warewulf container image from a
 Warewulf server.
 
 %prep
-%autosetup -a1 -p1 -n warewulf-%{version}
+%autosetup -a1 -p1 -n %{srcdir}
 echo %{version} > VERSION
 
 %build
@@ -197,8 +203,9 @@ yq e '
   .["container mounts"] += {"source": "/etc/zypp/credentials.d/SCCcredentials", "dest": "/etc/zypp/credentials.d/SCCcredentials", "readonly": true}' \
   -i %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
 # SUSE starts user UIDs at 1000
-sed -i -e 's@\(.* \$_UID \(>\|-ge\) \)500\(.*\)@\11000\3@' %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/profile.d/ssh_setup.*sh.ww
+#sed -i -e 's@\(.* \$_UID \(>\|-ge\) \)500\(.*\)@\11000\3@' %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/profile.d/ssh_setup.*sh.ww
 # fix dhcp for SUSE
+mv %{buildroot}%{_prefix}/share/warewulf/overlays %{buildroot}%{_localstatedir}/lib/warewulf/
 mv %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/dhcp/dhcpd.conf.ww %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/dhcpd.conf.ww
 rmdir %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/dhcp
 
@@ -244,7 +251,14 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/warewulfd.conf %{buildroot}/%{_syscon
 
 %post
 %service_add_post warewulfd.service
+if [$1 -eq 1 ] ; then
+cp %{_sysconfdir}/warewulf/nodes.conf %{_sysconfdir}/warewulf/nodes.conf.4.5.x
+cp %{_sysconfdir}/warewulf/warewulf.conf %{_sysconfdir}/warewulf/warewulf.conf.4.5.x
+%{_bindir}/wwctl upgrade nodes --replace-overlay --add-defaults
+%{_bindir}/wwctl upgrade config
+else
 %{_datadir}/warewulf/scripts/config-warewulf.sh
+fi
 
 %preun
 %service_del_preun warewulfd.service

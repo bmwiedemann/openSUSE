@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:13:23 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- Update to version 4.6.0rc3 what is a major upgrade with following
+  highlights:
+  * renamed container to images
+  * "sprig" functions in overlays
+  * support for yaml and json formatted output
+  * completely re-designed kernel selection support
+  * nested profiles
+  * arbitrary node and profile data in new "resources" structure
+  * moved NFS mount options to resources / fstab overlay
+  * split overlays by function
+  * split overlays, site vs distribution
+  * replaced defaults.conf with settings on default profile
+  * improved tabular output
+  * parallel overlay build
+  * improved networking functionality (static route, vlans, and bonds)
+  * kernel arguments as a list
+  * non-zero exit codes on wwctl errors
+  * fixed argument parsing for wwctl image exec
+  * Defined menu for ipxe boot
+  * Re-order SSH key types to make ed25519 default.
+- The configuation files nodes.conf and warewulf.conf will be updated
+  on upgrade and the unmodified configuration files will be saved 
+  as nodes.conf.4.5.x and warewulf.conf.4.5.x
+
+-------------------------------------------------------------------
 Fri Feb 21 08:17:53 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Provide an overlay package for the cluster-wide configuration
