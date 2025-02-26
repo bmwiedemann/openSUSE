@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 16 01:50:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.0:
+  * portal: Support migration from legacy keyring format
+  * service: Add signals for collection create/delete/change
+  * client: Add a generic Secret type
+  * client: Don't panic if a cryptography operation fails
+- disable some tests, as they need dbus
+
+-------------------------------------------------------------------
 Sat Jun 22 16:17:31 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 0.3.3:

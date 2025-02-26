@@ -25,4 +25,17 @@
   * client: Use async UnixStream (forwarded request 1182655 from rrahl0)</comment>
     <requestid>1182656</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1b14e9083540229e46bc4d3a9ffd988b</srcmd5>
+    <version>0.4.0</version>
+    <time>1740586579</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.0:
+  * portal: Support migration from legacy keyring format
+  * service: Add signals for collection create/delete/change
+  * client: Add a generic Secret type
+  * client: Don't panic if a cryptography operation fails
+- disable some tests, as they need dbus (forwarded request 1248437 from rrahl0)</comment>
+    <requestid>1248438</requestid>
+  </revision>
 </revisionlist>
