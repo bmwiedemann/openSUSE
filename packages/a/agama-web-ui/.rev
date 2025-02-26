@@ -157,4 +157,40 @@
   the registration alert (gh#agama-project/agama#1938).</comment>
     <requestid>1240160</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>7bc24a18e0eb2822c6bca20e7db4becf</srcmd5>
+    <version>0</version>
+    <time>1740587006</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 12
+
+- Add fonts for CJK characters and monospaced text
+  (gh#agama-project/agama#2076, bsc#1237457).
+
+- Display the file system labels in most selectors for disks and
+  partitions (gh#agama-project/agama#2070).
+
+- Use the backend's language as fallback, ignoring the browser's one
+  It reduces the chances to produce unwanted side-effects when connecting
+  to the web user interface (gh#agama-project/agama#2071).
+- Do not block when connecting during system installation.
+- Make some small fixes/improvements to the overview, localization
+  and software pages markup.
+
+- Synchronous system probing when choosing or registering the
+  product (gh#agama-project/agama#2072).
+
+- Display network edition errors instead of navigating back
+  (gh#agama-project/agama#2064).
+
+- Ignore non-critical issues to avoid preventing the installation
+  in valid scenarios (gh#agama-project/agama#2061).
+
+- Prevented table overflow to avoid hiding the actions column
+  (gh#agama-project/agama#2044).
+
+- Some visual changes at the form to add and edit partitions
+  (gh#agama-project/agama#2054).</comment>
+    <requestid>1248590</requestid>
+  </revision>
 </revisionlist>
