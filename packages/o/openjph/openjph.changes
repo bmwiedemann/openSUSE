@@ -1,0 +1,244 @@
+-------------------------------------------------------------------
+Tue Feb 25 14:45:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim redundancies from descriptions and fix spellos
+- Use SRPM base name for -devel subpackage
+- Delete empty %check
+- Restore ldconfig calls
+
+-------------------------------------------------------------------
+Tue Feb 25 10:01:06 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Remove ldconfig scriptlets
+- Hide specific cmake files and just list the dir
+
+-------------------------------------------------------------------
+Fri Feb 21 15:55:04 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.1:
+  * This enables compilation for 32bit systems.
+    I never intended to support 32bit properly; so, this version allows
+    compilation for 32bit systems with many warnings.
+    For Linux you need the -m32 flag. Run export CXXFLAGS="-m32" and
+    export CXXFLAGS="-m32" before running cmake.
+    To have TIFF support, you need the 32bit TIFF library. #181
+  * Update CMakeLists.txt for config file naming convention in #180
+
+-------------------------------------------------------------------
+Mon Feb  3 07:10:19 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.0:
+  * Added lossy compression to data samples that are originally floating
+    point numbers, and that are undergoing non-linear type3 transform,
+    which stored with the help of the NLT marker segment.
+  * Better support for components with differing properties; these
+    involve using the QCC and COC marker segments.  These are exposed
+    using the API, but not in the applications.
+  * OpenJPH can now be added using cmake's find_package().
+  * For WASM, cmake configuration now generates one version only, with
+    SIMD support; this support can be disabled through a command line option.
+  * Fixes a bug when a resolution has one 64bit line. #162
+  * Makes all colour components involved in colour transform employ the s… #163
+  * Allow OpenJPH to be exported #166
+  * Supporting differing components in QCD #169
+  * Adding NLT implementation to the lossy path #170
+  * This adds support for COC. #172
+  * Add support for find_package(), clean-up EMCC support and clean-up TIFF support #173
+  * Adding Support for WASM without SIMD. #174
+  * This is a better way of packet header parsing. #176
+  * Support for lossy floating point with NLT segment marker. #178
+
+-------------------------------------------------------------------
+Fri Dec 27 16:50:41 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.2:
+  * This fixes a bug which wrongly sets implementation precision #161
+
+-------------------------------------------------------------------
+Fri Dec 27 16:49:50 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.1:
+  This addresses the illegal instruction issue when -flto flag is used
+  (link time optimization) as details in this thread:
+  https://bugzilla.redhat.com/show_bug.cgi?id=2307795
+  See #160
+
+-------------------------------------------------------------------
+Wed Nov 27 08:19:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.0:
+  * This release adds support for 32bit lossless compression of integer and
+    floating-point data, where floating-point data can benefit from the
+    non-linear (NLT) segment marker, which represent negative values in a more
+    compression-friendly format.
+    This required the addition of 64 bit processing path for lossless
+    compression, which is automatically employed if needed.
+  * This version also addresses issue #157, which causes illegal instruction
+    fault on machines that do not support AVX or more recent instruction sets,
+    when the code in compiled with clang and in the Release mode only.
+
+-------------------------------------------------------------------
+Mon Sep 23 07:06:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Adding support for NLT marker segment of type 3.
+    The code is not very complete, but it is in a useful state
+    for publishing.  To make use of the NLT marker segment for
+    type 3, partial support for the .pfm file format has been added.
+    For .pfm files, lossy compression is not supported -- it is
+    possible to add support at some future point.  Reversible coding
+    of .pfm files is supported, where the NLT marker is automatically inserted.
+    However, the current implementation supports only 28-bit
+    for encoding 27-bit for decoding.  Therefore floating point
+    values stored in a .pfm file, which are 32-bit, need to be truncated.
+    Using the '-bit_depth' option, ojph_compress can perform this truncation.
+    'ojph_compress' should work correctly with codestreams generated
+    with ojph_compress, converting truncated values
+    back to normal floating point values.
+  * Adding support for NLT marker segment of type 3 #154
+
+-------------------------------------------------------------------
+Mon Sep  9 06:25:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Add AVX2 support for block encoding and decoding.
+  * Fix what I think is a bug in AVX512 block encoding.
+  * Add avx2 optimization for encoder and decoder #153.
+
+-------------------------------------------------------------------
+Mon Jul 22 08:29:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.0:
+  * This addresses a few small issues #146, #147, and #148.
+    The most important changes are:
+  * Added "-fexceptions" flag to subprojects/js/CMakeLists.txt, which I forgot to do.
+  * Added a function "set_message_level()" to ojph_message.h, which
+    controls the severity level at which info/warn/error messages are printed.
+    By adjusting the message level, users can tailor the verbosity of the
+    output to their specific needs.
+
+-------------------------------------------------------------------
+Thu Jul  4 09:08:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.2:
+  * This should fix installation folders for both relative and
+    absolute folders
+
+-------------------------------------------------------------------
+Wed Jul  3 10:16:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.1:
+  * Fix includedir/libdir in pkg-config file when
+    CMAKE_INSTALL_INCLUDEDIR/CMAKE_INSTALL_LIBDIR are absolute 
+    paths #145
+
+-------------------------------------------------------------------
+Thu Jun 20 07:14:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Fix a mistake in the last commit. #141
+  * doc: trivial typo fixes #143
+  * Add some documentation and a bug fix. #144
+
+-------------------------------------------------------------------
+Wed May 22 13:24:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.3:
+  * Fixes a mistake
+
+-------------------------------------------------------------------
+Wed May 22 13:24:07 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.2:
+  * Better preprocessor directives for ARM, supports 32 and 64 bits.
+    This also sets the default memory to 128MB for WASM-based javascript
+    programs in the subprojects/js directory.
+
+-------------------------------------------------------------------
+Wed May 15 05:31:17 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.1:
+  * This is a small change to the preprocess settings
+    + It removes defining OJPH_DISABLE_SIMD by default for ARM.
+    + It prevents defining OJPH_DISABLE_SIMD twice, which may happen
+      when building for WASM.
+
+-------------------------------------------------------------------
+Fri May  3 10:47:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  * Add options to disable instruction sets #111 and #121.
+  * Better arm support #139.
+
+-------------------------------------------------------------------
+Tue Apr 30 06:24:06 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  * doc: trivial typo fixes #136
+  * Adding a simple RTP client that is compliant with
+    draft-ietf-avtcore-rtp-j2k-scl-00 #137
+
+-------------------------------------------------------------------
+Mon Apr 15 08:19:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.0:
+  * This removes the hardcoded TIFF_PATH, must use CMAKE_PREFIX_PATH.
+  * Adding DFS support and partial support for ATK to support
+    low-latency HTJ2K images
+
+-------------------------------------------------------------------
+Tue Feb 13 13:14:22 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.5:
+  * This release addresses issues #127 and #128
+
+-------------------------------------------------------------------
+Thu Feb  8 06:57:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.4:
+  * Add getter for TLM marker request #118
+  * Make comment_exchange string const #119
+  * Add accessors for tilepart division #120
+  * Include ojph_arch.h in ojph_codestream.h and ojph_params.h to
+	  compensate for OJPH_EXPORT definition #123
+  * Update ojph_codestream_local.cpp, fix typo #124
+  * This fixes tile_size calculation. #125
+  * Fixing irv97 transform #126
+
+-------------------------------------------------------------------
+Tue Jan  9 10:10:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.3:
+  * Another change to CMakeLists.txt to better handle PKG-Config
+
+-------------------------------------------------------------------
+Mon Jan  8 11:28:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.2:
+  * Small modification to PKG-Config Setting
+
+-------------------------------------------------------------------
+Mon Jan  8 08:18:50 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.1:
+  * Add library path to pkg-config file #116
+
+-------------------------------------------------------------------
+Sat Jan  6 09:20:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  * Refactor codestream_local into multiple source/header files #93
+  * Options to insert a TLM marker, and create tileparts #87
+  * Adds AVX512 support #103
+  * Walk around overflow when block width is bigger than 64 #104
+  * Add support for writing a user-specified COM marker #105
+  * CMake tweaks -- Adding a CMake option to disable building
+    executables. #109
+  * Feature - dpx file input support for ojph_compress #110
+  * Improving the way CMakeLists.txt files are arranged, and also
+    addressing issues with building for MinGW and MSYS. #115
+
+-------------------------------------------------------------------
+Thu Dec 21 09:04:37 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of openjph 0.9.0 for openSUSE
