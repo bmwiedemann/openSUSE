@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Tue Feb 25 15:06:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- remove leading v from version
+- refactor spec to not hardcode kubernetes versions etc.
+
+-------------------------------------------------------------------
+Tue Feb 25 13:26:00 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version v4.18.0:
+  * Address `github.com/docker/docker` CVE
+  * OCPBUGS-38975: monitor should not exit for temp api disconnect
+  * fix oc adm node-image create --pxe command to copy the correct
+    artifacts
+  * OCPBUGS-45991: Mark --report and --pxe flags as experimental
+  * adm node-logs: Also parse logs when encountered with standard
+    html header
+  * Revert "OCPBUGS-37344: Skip inspection of the daemonset pods
+    running on data plane"
+  * OTA-1393: status: recognize the process of migration to
+    multi-arch
+  * make create and monitor logs more similar and uniform
+  * NO-JIRA: adm release: cleanups (#1914)
+  * pkg/cli/admin/upgrade/recommend: Fix "no updates to
+    <MAJOR>.<MINOR> available" error message
+  * pkg/cli/admin/upgrade/recommend: Expand "URL" to "Release URL"
+  * pkg/cli/admin/upgrade/recommend: "no known issues..."
+    placeholder
+  * upgrade status: show updating cluster operator names in the
+    output
+  * added report flag to force saving the report
+  * save automatically the report in case of failure
+  * added progress on create command using the workflow report
+  * manage error code from workflow report
+  * refactor for checking explicitly min supported version
+  * OTA-1224: status: simplify worker status line
+  * Fix newapp unit test failure by using different image
+  * pkg/cli/admin/upgrade/recommend: Treat Upgradeable=False as a
+    conditional update risk
+  * always retry in case of image pull error
+  * pkg/cli/admin/upgrade: Propagate --force for --to-multi-arch
+  * pkg/cli/admin/upgrade: Error on --to-multi-arch with
+    --to-latest
+  * add MCO owners file
+  * ensure mcs secret type before rotation
+  * Add test to check RsyncInclude for PXE and ISO
+  * OCPBUGS-43513: Show node-joiner container logs when error
+    occurs
+  * pkg/cli/admin/upgrade/recommend: Add --version option for
+    specific releases
+  * gather discovery when using inspect
+  * Do not allow new line in user in create user
+  * WRKLDS-1320: Support PXE files with "node-image create"
+  * Remove redundant defaulting message in description
+  * day2: additional rbac policy rules
+  * NO-JIRA: Use suggested functions instead of deprecated ones
+    (#1894)
+  * pkg/cli/admin/upgrade/recommend: Show most-recent update
+    options
+  * Change kube version in image components
+  * React to changes in kubectl/cmd.go
+  * React to interface changes in commands
+  * Bump k8s dependencies to 1.31.1 and go mod tidy/vendor
+  * Update to new go version 1.22.5
+  * OWNERS_ALIASES: Update username of David Hurta
+  * pkg/cli/admin/upgrade/recommend/examples: Update examples
+  * nodeimage create: fix outputname flag
+  * Skip inspection of the daemonset pods running on data plane
+  * pkg/cli/admin/upgrade/recommend: Add end-to-end output test
+    coverage
+  * Update root-approvers of oc
+  * Check cast result in adm prune deployments to prevent panic
+  * Rename rsync'd ISO file to -output-name value
+  * Fixing -o flag in command example
+  * Add HOST env var in oc debug for sos report collects more
+  * OCPBUGS-38450: Fix copy artifacts for all CPU architectures
+  * Fixing line that should be commented out
+  * Updating ose-cli-artifacts-container image to be consistent
+    with ART for 4.18 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/827ab4ccce9cbbcf82c9dbaf6398b61d6cff8d7a/images/ose-cli-artifacts.yml
+  * Updating openshift-enterprise-deployer-container image to be
+    consistent with ART for 4.18 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/827ab4ccce9cbbcf82c9dbaf6398b61d6cff8d7a/images/openshift-enterprise-deployer.yml
+  * Updating ose-tools-container image to be consistent with ART
+    for 4.18 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/827ab4ccce9cbbcf82c9dbaf6398b61d6cff8d7a/images/ose-tools.yml
+  * pkg/cli/admin/upgrade/: Add `oc adm upgrade recommend`
+    subcommand
+  * Updating openshift-enterprise-cli-container image to be
+    consistent with ART for 4.18 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/827ab4ccce9cbbcf82c9dbaf6398b61d6cff8d7a/images/openshift-enterprise-cli.yml
+  * Update push targets of digest with new appended tags
+  * OTA-1292: upgrade-status: improve messages for
+    NotReady/DiskPressure/NetworkUnavailable
+  * pkg/cli/admin/upgrade: --to-latest help "next" -> "latest"
+  * OTA-1153: update-status: re-title "Operator Health"
+  * OTA-1309: hide the empty "Worker Upgrade" section
+  * node-joiner: use proxy settings when required
+  * OTA-1292: upgrade-status: handle the OS image annotation better
+  * make the idle command's scale update unconditional
+  * OTA-1292: upgrade-status: handle unschedulable nodes better
+  * upgrade-status: handle expected MCD state better
+  * OTA-1212: Hide or condense control plane sections once
+    successfully updated
+  * `upgrade status`: improve tests for missing annotations
+  * Adding examples for add-cluster-role-to-* and
+    remove-cluster-role-from-* so they show in the CLI docs
+  * upgrade-status: bubble up the reason for unavailable nodes
+
+-------------------------------------------------------------------
 Wed Oct 02 05:56:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.17.0:

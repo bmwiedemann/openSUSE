@@ -1,7 +1,7 @@
 #
 # spec file for package oc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,20 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
-%define OC_KUBE_GIT_VERSION v1.28.2
-%define OC_KUBE_GIT_MAJOR_VERSION 1
-%define OC_KUBE_GIT_MINOR_VERSION 28
-%define OC_VERSION openshift-clients-4.14.0-202310201027
-%define OC_COMMIT 0c63f9da
-
 Name:           oc
-Version:        4.17.0
+Version:        4.18.0
 Release:        0
 Summary:        Openshift / OKD Client CLI
 License:        Apache-2.0
 URL:            https://github.com/openshift/oc
 Source:         oc-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.21
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  go >= 1.22.5
 BuildRequires:  krb5-devel
 BuildRequires:  libgpgme-devel
+BuildRequires:  zsh
 
 # this package contains a kubectl link, so we need a Conflicts
 Conflicts:      kubernetes-client
@@ -42,7 +37,10 @@ Conflicts:      kuberlr
 Conflicts:      kubernetes-client-provider
 
 %description
-With OpenShift Client CLI (oc), you can create applications and manage OpenShift resources. It is built on top of kubectl which means it provides its full capabilities to connect with any kubernetes compliant cluster, and on top adds commands simplifying interaction with an OpenShift cluster.
+With OpenShift Client CLI (oc), you can create applications and manage
+OpenShift resources. It is built on top of kubectl which means it provides its
+full capabilities to connect with any kubernetes compliant cluster, and on top
+adds commands simplifying interaction with an OpenShift cluster.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
@@ -82,28 +80,37 @@ zsh command line completion support for %{name}.
 %autosetup -p 1 -a 1
 
 %build
+# hash will be shortened by COMMIT_HASH:0:8 later
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+
+OC_KUBE_GIT_VERSION="$(awk -F '"' '/^KUBE_GIT_VERSION/ {print $2}' Makefile)"
+OC_KUBE_GIT_MAJOR_VERSION="$(awk -F '.' '/^KUBE_GIT_VERSION/ {gsub(/^.*v/, "", $1); print $1}' Makefile)"
+OC_KUBE_GIT_MINOR_VERSION="$(awk -F '.' '/^KUBE_GIT_VERSION/ {print $2}' Makefile)"
+OC_GO_TAGS="$(awk -F "'" '/^GO_BUILD_FLAGS :=/ {print $2}' Makefile)"
+
 go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags=" \
-   -X k8s.io/component-base/version.gitMajor=%{OC_KUBE_GIT_MAJOR_VERSION} \
-   -X k8s.io/component-base/version.gitMinor=%{OC_KUBE_GIT_MINOR_VERSION} \
-   -X k8s.io/component-base/version.gitVersion=%{OC_KUBE_GIT_VERSION} \
-   -X k8s.io/component-base/version.gitCommit=%{OC_COMMIT} \
+   -X k8s.io/component-base/version.gitMajor=${OC_KUBE_GIT_MAJOR_VERSION} \
+   -X k8s.io/component-base/version.gitMinor=${OC_KUBE_GIT_MINOR_VERSION} \
+   -X k8s.io/component-base/version.gitVersion=${OC_KUBE_GIT_VERSION} \
+   -X k8s.io/component-base/version.gitCommit=${COMMIT_HASH:0:8} \
    -X k8s.io/component-base/version.buildDate=${BUILD_DATE} \
    -X k8s.io/component-base/version.gitTreeState=clean \
    -X github.com/openshift/oc/pkg/version.versionFromGit=v%{version} \
-   -X github.com/openshift/oc/pkg/version.commitFromGit=%{OC_COMMIT} \
+   -X github.com/openshift/oc/pkg/version.commitFromGit=${COMMIT_HASH:0:8} \
    -X github.com/openshift/oc/pkg/version.gitTreeState=clean \
    -X github.com/openshift/oc/pkg/version.buildDate=${BUILD_DATE}" \
-   -tags='include_gcs include_oss containers_image_openpgp gssapi' \
+   -tags="${OC_GO_TAGS}" \
    -o bin/ ./cmd/oc ./tools/genman
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 # Install man1 man pages
 install -d -m 0755 %{buildroot}%{_mandir}/man1
@@ -124,9 +131,9 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{buildroot}/%{_bindir}/kubectl completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/kubectl.fish
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
-%{buildroot}/%{_bindir}/kubectl completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_kubectl
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+%{buildroot}/%{_bindir}/kubectl completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_kubectl
 
 %check
 
@@ -138,20 +145,15 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_mandir}/man1/oc*
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 %{_datarootdir}/bash-completion/completions/kubectl
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 %{_datarootdir}/fish/vendor_completions.d/kubectl.fish
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
-%{_datarootdir}/zsh_completion.d/_kubectl
+%{_datarootdir}/zsh/site-functions/_%{name}
+%{_datarootdir}/zsh/site-functions/_kubectl
 
 %changelog

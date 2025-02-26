@@ -3,10 +3,10 @@
     <param name="url">https://github.com/openshift/oc</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">openshift-clients-4.17.0-202409111134</param>
+    <param name="revision">openshift-clients-v4.18.0-202502040032</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="versionrewrite-pattern">openshift-clients-(.*)-20..........</param>
+    <param name="versionrewrite-pattern">openshift-clients-v(.*)-20..........</param>
   </service>
   <service name="set_version" mode="manual">
   </service>
