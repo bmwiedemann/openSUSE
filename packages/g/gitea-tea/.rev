@@ -15,4 +15,13 @@
     <comment>- fix build for non x86_64 and aarch64 (CGO_ENABLED=0 was set as default) (forwarded request 1195621 from rrahl0)</comment>
     <requestid>1195622</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>937b9c6dea26a4fb8e5ea6255a77b428</srcmd5>
+    <version>0.9.2</version>
+    <time>1740586526</time>
+    <user>dimstar_suse</user>
+    <comment>- adding newer-dependencies.patch, for updating dependencies,
+  fixing bsc#1234598 (forwarded request 1248392 from rrahl0)</comment>
+    <requestid>1248393</requestid>
+  </revision>
 </revisionlist>

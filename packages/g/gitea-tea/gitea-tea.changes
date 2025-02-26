@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 25 13:51:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- adding newer-dependencies.patch, for updating dependencies,
+  fixing bsc#1234598
+
+-------------------------------------------------------------------
 Thu Aug 22 22:33:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix build for non x86_64 and aarch64 (CGO_ENABLED=0 was set as default)
