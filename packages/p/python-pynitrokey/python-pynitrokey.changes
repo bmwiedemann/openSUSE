@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Feb 25 19:55:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.4:
+  * Nethsm: Read host from NETHSM_HOST if not set on the command
+    line (#617)
+  * Nethsm: Fix add-key command (#627)
+  * PIV: fix admin authentication with 1.8.1 (#625)
+
+-------------------------------------------------------------------
+Fri Jan 10 14:02:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.3:
+  - Fix type hints for Python 3.11 and older by @robin-nitrokey in
+    #611
+
+-------------------------------------------------------------------
+Thu Jan  9 11:57:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.2:
+  - Update click and click-aliases dependencies by @robin-nitrokey
+    in #597
+  - Update cryptography dependency by @robin-nitrokey in #596
+  - fido2: Limit VID/PID for Nitrokey FIDO2 commands by
+    @robin-nitrokey in #604
+  - Support Python 3.13 by @mmerklinger in #607
+  - fido2 verify: Add support for Nitrokey Passkey by
+    @robin-nitrokey in #603
+- update to 0.7.1:
+  - Restrict hidapi dependency and release v0.7.1 by
+    @robin-nitrokey in #602
+- update to 0.7.0:
+  - Add confirm option to allow automated updates on nk3 devices by
+    @anotherbridge in #575
+  - Use config field availability information from the sdk by
+    @sosthene-nitrokey in #577
+  - Remove asn1crypto by @sosthene-nitrokey in #582
+  - fixed URL for Nitrokey3/Linux/udev rules troubleshooting by
+    @hardcodes in #586
+  - Make pyscard dependency optional by @sosthene-nitrokey in #580
+  - Fix deprecation warning with TripleDES by @sosthene-nitrokey in
+    #589
+  - remove unused .gitlab-ci.yml by @daringer in #590
+  - Remove unused dependencies by @robin-nitrokey in #591
+
+-------------------------------------------------------------------
 Sun Nov 10 12:03:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.0:

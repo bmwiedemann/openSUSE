@@ -1,7 +1,7 @@
 #
 # spec file for package python-pynitrokey
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pynitrokey
-Version:        0.6.0
+Version:        0.7.4
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        Apache-2.0 OR MIT
@@ -26,29 +26,26 @@ URL:            https://github.com/Nitrokey/pynitrokey
 Source:         https://files.pythonhosted.org/packages/source/p/pynitrokey/pynitrokey-%{version}.tar.gz
 Source1:        LICENSE-MIT
 Source2:        LICENSE-APACHE
-BuildRequires:  %{python_module certifi >= 14.5.14}
+BuildRequires:  %{python_module flit}
+BuildRequires:  %{python_module pip}
+#
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module click >= 8.1.6}
-BuildRequires:  %{python_module click-aliases}
-BuildRequires:  %{python_module cryptography >= 41.0.4 with %python-cryptography < 44}
+BuildRequires:  %{python_module click-aliases >= 1.0.5 with %python-click-aliases < 2}
+BuildRequires:  %{python_module cryptography >= 41.0.4 with %python-cryptography < 45}
 BuildRequires:  %{python_module ecdsa}
-BuildRequires:  %{python_module fido2 >= 1.1.0 with %python-fido2 < 2}
-BuildRequires:  %{python_module flit}
-BuildRequires:  %{python_module frozendict >= 2.3.4}
+BuildRequires:  %{python_module fido2 >= 1.2.0 with %python-fido2 < 2}
+# https://github.com/Nitrokey/pynitrokey/issues/601
+BuildRequires:  %{python_module hidapi >= 0.14.0.post1 with %python-hidapi < 0.14.0.post4}
 BuildRequires:  %{python_module nethsm >= 1.2.1 with %python-nethsm < 2}
-BuildRequires:  %{python_module nitrokey}
+BuildRequires:  %{python_module nitrokey >= 0.2.1 with %python-nitrokey < 0.3}
 BuildRequires:  %{python_module nkdfu}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf >= 3.17.3}
-BuildRequires:  %{python_module pyserial}
-BuildRequires:  %{python_module python-dateutil >= 2.7.0}
 BuildRequires:  %{python_module pyusb}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module semver}
-BuildRequires:  %{python_module spsdk >= 2.0 with %python-spsdk < 2.2}
 BuildRequires:  %{python_module tlv8}
 BuildRequires:  %{python_module tqdm}
-BuildRequires:  %{python_module typing_extensions >= 4.3.0}
 BuildRequires:  fdupes
 BuildRequires:  intelhex
 BuildRequires:  python-rpm-macros
@@ -56,27 +53,22 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       intelhex
-Requires:       python-certifi >= 14.5.14
 Requires:       python-cffi
 Requires:       python-click >= 8.1.6
-Requires:       python-click-aliases
-Requires:       python-cryptography
 Requires:       python-ecdsa
-Requires:       python-frozendict >= 2.3.4
-Requires:       python-nitrokey
 Requires:       python-nkdfu
 Requires:       python-protobuf >= 3.17.3
-Requires:       python-pyserial
-Requires:       python-python-dateutil >= 2.7.0
 Requires:       python-pyusb
 Requires:       python-requests
 Requires:       python-semver
 Requires:       python-tlv8
 Requires:       python-tqdm
-Requires:       python-typing_extensions >= 4.3.0
-Requires:       python-urllib3 >= 1.26.7
-Requires:       (python-fido2 >= 1.1.0 with python-fido2 < 2)
+Requires:       (python-click-aliases >= 1.0.5 with python-click-aliases < 2)
+Requires:       (python-cryptography >= 41.0.4 with python-cryptography < 45)
+Requires:       (python-fido2 >= 1.2.0 with python-fido2 < 2)
+Requires:       (python-hidapi >= 0.14.0.post1 with python-hidapi < 0.14.0.post4)
 Requires:       (python-nethsm >= 1.2.1 with python-nethsm < 2)
+Requires:       (python-nitrokey >= 0.2.1 with python-nitrokey < 0.3)
 Requires:       (python-spsdk >= 2.0 with python-spsdk < 2.2)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
