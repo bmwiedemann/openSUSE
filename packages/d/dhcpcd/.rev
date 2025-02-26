@@ -48,4 +48,15 @@
     <comment>- Update to 10.2.1</comment>
     <requestid>1248130</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f4518079d8966dd8dfe31192707e53db</srcmd5>
+    <version>10.2.2</version>
+    <time>1740587111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.2.2
+  * DHCP6: Fix dhcpcd vendor class option
+  * options: Allow interface block to be pattern matching
+</comment>
+    <requestid>1248739</requestid>
+  </revision>
 </revisionlist>

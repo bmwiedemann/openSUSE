@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:56:29 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 10.2.2
+  * DHCP6: Fix dhcpcd vendor class option
+  * options: Allow interface block to be pattern matching
+
+-------------------------------------------------------------------
 Mon Feb 24 12:29:09 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 10.2.1
