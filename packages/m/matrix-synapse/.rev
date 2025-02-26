@@ -1176,4 +1176,15 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.124.0</comment>
     <requestid>1245106</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>d3792207c8f42b6e7defe8a81272dd13</srcmd5>
+    <version>1.125.0</version>
+    <time>1740586575</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1248433 from darix
+
+- include both license files
+- Update to 1.125.0</comment>
+    <requestid>1248434</requestid>
+  </revision>
 </revisionlist>

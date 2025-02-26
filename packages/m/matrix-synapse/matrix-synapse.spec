@@ -159,7 +159,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.124.0
+Version:        1.125.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -395,7 +395,7 @@ install -d -m 0750 %{buildroot}%{_localstatedir}/log/%{pkgname}
 
 %files -n %{pkgname}
 %doc *.rst CHANGES.md README.SUSE
-%license LICENSE
+%license LICENSE*
 %config(noreplace) %attr(-,root,synapse) %{_sysconfdir}/%{pkgname}/
 %dir %attr(0750,%{modname},%{modname}) %{_localstatedir}/lib/%{pkgname}
 %dir %attr(0750,%{modname},%{modname}) %{_localstatedir}/log/%{pkgname}
