@@ -42,6 +42,7 @@ Source10:       config-ww4.sh
 Source11:       adjust_overlays.sh
 Source20:       README.dnsmasq
 Source21:       README.RKE2.md
+Patch0:         WWWORKER-overwrites-runtime.NumCPU.patch
 
 BuildRequires:  distribution-release
 BuildRequires:  dracut
