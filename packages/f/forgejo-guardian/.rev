@@ -49,4 +49,20 @@
   * Fetch all new users instead of only the first page (forwarded request 1247022 from rrahl0)</comment>
     <requestid>1247023</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ee0a61f0e5e57e0e57a79329ec926492</srcmd5>
+    <version>0.7.0</version>
+    <time>1740586560</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.0:
+  * A notice if the sus user is active
+  * Check the existing users for the sus expressions
+  * Lazy purge
+  * Retry when Matrix bot stops
+  * Change the bot message if the ban is immediately or added to the queue
+  * Move inactive.check_tokens|check_oauth2 to global scope
+  * Store last 7 users in updated_users fetcher
+  * Prevent mutiple alerts for the same user update (forwarded request 1248427 from rrahl0)</comment>
+    <requestid>1248428</requestid>
+  </revision>
 </revisionlist>

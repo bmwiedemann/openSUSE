@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 25 13:08:00 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.7.0:
+  * A notice if the sus user is active
+  * Check the existing users for the sus expressions
+  * Lazy purge
+  * Retry when Matrix bot stops
+  * Change the bot message if the ban is immediately or added to the queue
+  * Move inactive.check_tokens|check_oauth2 to global scope
+  * Store last 7 users in updated_users fetcher
+  * Prevent mutiple alerts for the same user update
+
+-------------------------------------------------------------------
 Wed Feb 19 10:31:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.6.0:
