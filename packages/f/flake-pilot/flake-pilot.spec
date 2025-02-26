@@ -83,7 +83,9 @@ BuildRequires:  clang
 BuildRequires:  clang-devel
 %endif
 Requires:       rsync
+%if 0%{?suse_version} > 1600
 Requires:       firecracker
+%endif
 Requires:       xz
 Requires:       e2fsprogs
 Requires:       sudo

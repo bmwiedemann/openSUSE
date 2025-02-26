@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 26 09:35:26 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix firecracker requirement
+
+  Require firefracker only for TW as it exists in no
+  other version of SUSE. In case the firecracker-pilot
+  is installed on a system that has no firecracker it
+  must be installed to this system in an alternative
+  way which is easily possible because firefracker
+  is also a rust application only depending on libc
+
+-------------------------------------------------------------------
 Tue Feb 11 21:41:40 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.17 → 3.1.18

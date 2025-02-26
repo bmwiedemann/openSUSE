@@ -162,4 +162,18 @@ https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
   is a permission problem detected.</comment>
     <requestid>1245362</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>11ffe53ec87a76d5d5b6ffe2a9ab7615</srcmd5>
+    <version>3.1.18</version>
+    <time>1740587059</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix firecracker requirement
+  Require firefracker only for TW as it exists in no
+  other version of SUSE. In case the firecracker-pilot
+  is installed on a system that has no firecracker it
+  must be installed to this system in an alternative
+  way which is easily possible because firefracker
+  is also a rust application only depending on libc</comment>
+    <requestid>1248634</requestid>
+  </revision>
 </revisionlist>
