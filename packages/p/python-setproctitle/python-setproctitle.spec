@@ -1,7 +1,7 @@
 #
 # spec file for package python-setproctitle
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-setproctitle
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Python module to allow customization of the process title
 License:        BSD-3-Clause
@@ -28,6 +28,7 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -47,6 +48,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 # This is incompatible with qemu emulation
