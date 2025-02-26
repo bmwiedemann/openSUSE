@@ -1,7 +1,7 @@
 #
 # spec file for package cpuinfo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,24 @@
 
 
 Name:           cpuinfo
-Version:        0~git1720582619.ca67895
+Version:        0~git1739936485.b73ae6c
 Release:        0
 Summary:        Tools for obtaining CPU information
 License:        BSD-2-Clause
 URL:            https://github.com/pytorch/cpuinfo
 Source:         %name-%version.tar.xz
-Patch1: soname.patch
+Patch1:         soname.patch
 BuildRequires:  cmake
-ExcludeArch: s390x
+ExcludeArch:    s390x
 
 %description
 cpuinfo is a library to detect essential for performance optimization
 information about host CPU.
 
-%define lname libcpuinfo0
+%define lname libcpuinfo-suse0
+
 %package -n %lname
-Summary:        CPU INFOrmation library
+Summary:        CPU information library
 
 %description -n %lname
 cpuinfo is a library to detect essential for performance optimization
@@ -68,8 +69,8 @@ scripts.
 
 %install
 %cmake_install
-mkdir -p %buildroot/usr/share/cmake
-mv %buildroot/usr/share/{,cmake/}cpuinfo
+# second part of soname.patch (cmake does not support libtool-style -release option)
+mv %buildroot/%_libdir/libcpuinfo-suse.so %buildroot/%_libdir/libcpuinfo.so
 
 %ldconfig_scriptlets -n %lname
 
@@ -84,12 +85,12 @@ mv %buildroot/usr/share/{,cmake/}cpuinfo
 %endif
 
 %files -n %lname
-%_libdir/libcpuinfo.so.*
+%_libdir/libcpuinfo-*.so.*
 
 %files devel
 %_includedir/cpuinfo.h
 %_libdir/libcpuinfo.so
 %_libdir/pkgconfig/libcpuinfo.pc
-%_datadir/cmake/cpuinfo
+%_datadir/cpuinfo/
 
 %changelog

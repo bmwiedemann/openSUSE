@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 23 21:04:45 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot b73ae6ce38d
+  * Add a API to check SVE Length support on ARM CPU. (#255)
+  * Add detection for `sme` and `sme2` on `aarch64`.
+  * Detect AMD Zen 5 microarchitecture
+  * Update cpuinfo to support AVX10.2 ISA detection
+- Ditch the build-time move of /usr/share/cpuinfo to
+  /usr/share/cmake, as this breaks e.g. SVT-AV1 3.x.
+- Rework soname.patch so the package actually follows SLPP.
+
+-------------------------------------------------------------------
 Wed Jan  8 15:48:32 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - ExcludeArch s390x because it is not supported by IBM boo#1235402

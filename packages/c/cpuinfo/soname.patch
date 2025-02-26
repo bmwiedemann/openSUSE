@@ -1,3 +1,10 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2025-02-23 21:57:59.617153408 +0100
+
+Unversioned libraries are uncool; add an unambiguous suffix to it.
+(To mimic libtool's -release, the build recipe needs to rename
+libcpuinfo-suse.so back to libcpuinfo.so.)
+
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 4634a22..87178a9 100644
 --- a/CMakeLists.txt
@@ -6,7 +13,7 @@ index 4634a22..87178a9 100644
  ELSE()
    MESSAGE(FATAL_ERROR "Unsupported library type ${CPUINFO_LIBRARY_TYPE}")
  ENDIF()
-+set_target_properties(cpuinfo PROPERTIES VERSION 0.0.0 SOVERSION 0)
++set_target_properties(cpuinfo PROPERTIES OUTPUT_NAME cpuinfo-suse SOVERSION 0)
  ADD_LIBRARY(cpuinfo_internals STATIC ${CPUINFO_SRCS})
  CPUINFO_TARGET_ENABLE_C99(cpuinfo)
  CPUINFO_TARGET_ENABLE_C99(cpuinfo_internals)

@@ -3,7 +3,7 @@
     <param name="url">https://github.com/pytorch/cpuinfo</param>
     <param name="scm">git</param>
     <param name="versionformat">0~git%ct.%h</param>
-    <param name="revision">ca678952a9a8eaa6de112d154e8e104b22f9ab3f</param>
+    <param name="revision">b73ae6ce38d5dd0b7fe46dbe0a4b5f4bab91c7ea</param>
   </service>
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">
