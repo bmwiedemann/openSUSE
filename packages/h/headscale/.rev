@@ -93,4 +93,18 @@
     * Rehaul HTTP errors, return better status code and errors to users (forwarded request 1245699 from rrahl0)</comment>
     <requestid>1245711</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ce8a7210ed38fe78ccf1eaf245158220</srcmd5>
+    <version>0.25.1</version>
+    <time>1740586774</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.25.1:
+  * Fix issue where registration errors are sent correctly
+  * Fix issue where routes are passed on registration were not saved
+  * Fix issue where registration page was displayed twice
+  * fix double login URL with OIDC
+  * fix routes not being saved when new nodes registers
+  * hand register auth rerrors (forwarded request 1248516 from rrahl0)</comment>
+    <requestid>1248517</requestid>
+  </revision>
 </revisionlist>
