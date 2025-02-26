@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 25 17:41:52 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_CVE-2025-26595-0001-xkb-Fix-buffer-overflow-in-XkbVModMaskText.patch 
+  * Buffer overflow in XkbVModMaskText() (CVE-2025-26595, bsc#1237429)
+
+-------------------------------------------------------------------
 Mon Feb  5 11:51:49 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 1.1.3
