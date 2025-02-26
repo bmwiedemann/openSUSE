@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 11:35:47 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+
+- Update to version 0.18.1:
+  * [feature] Use ETag for robots.txt to prevent mishaps
+    (gh#superseriousbusiness/gotosocial#3829)
+
+-------------------------------------------------------------------
 Sat Feb 22 16:20:40 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
 
 - Update to version 0.18.0:
