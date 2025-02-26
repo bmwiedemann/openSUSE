@@ -71,4 +71,12 @@
     <comment>- Update to release 3.16.2</comment>
     <requestid>1238727</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>92337daeb1b481ca919ea005be95a837</srcmd5>
+    <version>3.16.2</version>
+    <time>1740586742</time>
+    <user>dimstar_suse</user>
+    <comment>- Deactivate tests on non-x86</comment>
+    <requestid>1248483</requestid>
+  </revision>
 </revisionlist>

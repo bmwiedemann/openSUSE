@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 25 20:18:53 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Deactivate tests on non-x86
+
+-------------------------------------------------------------------
 Sat Jan 18 15:56:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.16.2

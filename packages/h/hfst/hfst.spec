@@ -107,8 +107,11 @@ rm -fv "%buildroot/%_libdir"/*.la
 rm -fv "%buildroot/%_libdir/"{libfoma,libfst,libsfst}.so
 %fdupes %buildroot/%_prefix
 
+%ifarch %ix86 x86_64
 %check
+# https://github.com/hfst/hfst/issues/584 / other distros also do not run check
 %make_build check -j1
+%endif
 
 %ldconfig_scriptlets -n libhfst55
 %ldconfig_scriptlets -n libhfst_c0
