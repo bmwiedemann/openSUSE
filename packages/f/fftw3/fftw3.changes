@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 20 11:17:48 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable openmpi for 32b non-hpc builds as OpenMPI >= 5 has no support
+  for these architectures.
+- Cleanup flags handling mpi with s390/s390x
+
+-------------------------------------------------------------------
 Wed Oct 25 11:53:29 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Disable HPC flavors on %ix86

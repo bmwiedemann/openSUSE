@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,9 @@ ExclusiveArch:  do_not_build
 
 %if "%{flavor}" == "standard"
 %define mpi_flavor standard
+%ifnarch %{arm} %ix86 s390 s390x
 %bcond_without mpi
+%endif
 %bcond_with hpc
 %bcond_without system_packages
 %endif
@@ -328,7 +330,7 @@ BuildRequires:  %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macr
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 Requires:       %{package_name}-libs = %{version}
-%ifnarch s390 s390x
+%if %{with mpi}
 BuildRequires:  openmpi-macros-devel
 %endif
 %endif
@@ -436,7 +438,7 @@ Transform (DFT) in one or more dimensions, of both real and complex
 data, and of arbitrary input size.
 %endif
 
-%ifnarch s390 s390x
+%if %{with mpi}
 %package -n libfftw3_mpi3
 Summary:        Discrete Fourier Transform (DFT) C subroutine library
 Group:          Productivity/Scientific/Math
@@ -482,7 +484,7 @@ EOF
 %if %{with hpc}
 %hpc_setup
 %endif
-%ifnarch s390 s390x
+%if %{with mpi}
 %if "%{mpi_flavor}" == "standard"
 %setup_openmpi
 %endif
@@ -495,14 +497,12 @@ EOF
 %hpc_configure \
   --enable-static \
 %endif
-%ifnarch s390 s390x
 %if %{with mpi}
   --enable-mpi \
 %endif
 %ifarch %ix86 x86_64
   --enable-sse2 \
   --enable-avx \
-%endif
 %endif
   --enable-shared \
   --enable-threads \
@@ -522,7 +522,7 @@ make %{?_smp_mflags}
 # hack to also compile/install single-precision version:
 make distclean
 
-%ifnarch s390 s390x
+%if %{with mpi}
 %if "%{mpi_flavor}" == "standard"
 %setup_openmpi
 %endif
@@ -534,10 +534,8 @@ make distclean
 %hpc_configure \
 %endif
 	--enable-shared --enable-threads --enable-float --enable-openmp \
-%ifnarch s390 s390x
 %if %{with mpi}
   --enable-mpi \
-%endif
 %endif
 %ifarch %ix86 x86_64
   --enable-sse2 \
@@ -550,7 +548,7 @@ make %{?_smp_mflags}
 # hack to also compile/install long-double-precision version:
 make distclean
 
-%ifnarch s390 s390x
+%if %{with mpi}
 %if "%{mpi_flavor}" == "standard"
 %setup_openmpi
 %endif
@@ -561,10 +559,8 @@ make distclean
 %hpc_configure \
 %endif
 	--enable-shared --enable-threads --enable-long-double --enable-openmp \
-%ifnarch s390 s390x
 %if %{with mpi}
   --enable-mpi \
-%endif
 %endif
   --disable-static
 
@@ -642,7 +638,7 @@ rm -rf %{buildroot}%{package_libdir}/cmake
 
 %postun -n libfftw3_omp3 -p /sbin/ldconfig
 
-%ifnarch s390 s390x
+%if %{with mpi}
 %post -n libfftw3_mpi3 -p /sbin/ldconfig
 
 %postun -n libfftw3_mpi3 -p /sbin/ldconfig
@@ -672,7 +668,6 @@ rm -rf %{buildroot}%{package_libdir}/cmake
 %{package_libdir}/libfftw3f_omp.so.3*
 %{package_libdir}/libfftw3l_omp.so.3*
 
-%ifnarch s390 s390x
 %if %{with mpi}
 %if %{without hpc}
 %files -n libfftw3_mpi3
@@ -683,8 +678,6 @@ rm -rf %{buildroot}%{package_libdir}/cmake
 %{package_libdir}/libfftw3l_mpi.so.3*
 %endif
 # ENDIF FOR {without mpi}
-%endif
-# ENDIF FOR ARCH s390 s390x
 
 %files devel
 %if %{with hpc}
@@ -728,7 +721,6 @@ rm -rf %{buildroot}%{package_libdir}/cmake
 %{package_libdir}/libfftw3f_omp.so
 %{package_libdir}/libfftw3l_omp.so
 
-%ifnarch s390 s390x
 %if %{with mpi}
 %if %{without hpc}
 %files mpi-devel
@@ -741,8 +733,6 @@ rm -rf %{buildroot}%{package_libdir}/cmake
 %{package_includedir}/fftw3l-mpi.f03
 %endif
 # ENDIF FOR {with mpi}
-%endif
-# ENDIF FOR arch s390 s390x
 
 %if %{with hpc}
 %files devel-static
