@@ -1,7 +1,7 @@
 #
 # spec file for package cppcheck
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cppcheck
-Version:        2.16.2
+Version:        2.17.1
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
@@ -27,18 +27,18 @@ BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
+BuildRequires:  qt6-linguist-devel
 BuildRequires:  xsltproc
 BuildRequires:  z3-devel
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Help)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Help)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(libpcre)
 ExcludeArch:    %ix86 %arm
 Requires:       python3-Pygments
@@ -83,6 +83,7 @@ doesn't see.
   -DBUILD_GUI=ON \
   -DBUILD_TESTS=ON \
   -DHAVE_RULES=yes \
+  -DUSE_QT6=yes \
   -DUSE_Z3=yes
 %cmake_build
 
