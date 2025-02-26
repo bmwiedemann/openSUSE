@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 25 18:50:34 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Ignore an unraisable exception occuring on python 3.13
+  (test_room_handler_doc_client_should_cleanup_room_file)
+
+-------------------------------------------------------------------
 Wed Jan 29 15:39:26 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.1.0

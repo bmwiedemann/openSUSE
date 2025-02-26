@@ -67,7 +67,7 @@ popd
 
 %check
 # test the whole stack
-%pytest
+%pytest -p no:unraisableexception
 
 %files %{python_files}
 %doc README.md CHANGELOG.md
