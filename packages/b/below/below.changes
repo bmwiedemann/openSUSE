@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Wed Feb 26 08:30:20 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.9.0~0:
+  * Bump to 0.9.0
+  * update async_trait: 0.1.71 -> 0.1.86
+  * Setup log and store dir with systemd (#8241)
+  * Upgrade dependencies used by streampager
+  * Add process state aggregate in summary view in 'below'
+  * third-party: enable signal feature in crate `nix`
+  * Revert D68497030: Upgrade clap* packages
+  * Upgrade clap* packages
+  * update "bytes" crate: 1.6.0 -> 1.9.0
+  * Fix non-determinism in test
+  * add internal manpage
+  * Update `libbpf-rs` & `libbpf-cargo` to `0.25.0-beta.1`
+  * upgrade anyhow: 1.0.86 -> 1.0.95
+  * update itertools: 13.0.0 -> 14.0.0
+  * remove scuba commands from man page
+  * Add a man page for below
+  * upgrade nix to 0.29.0
+  * Update thiserror from 1.0.69 to 2.0.3
+  * Store slabinfo in vec
+  * Fix procfs read
+  * upgrade nix to 0.26.4
+  * update tar from 0.4.42 to 0.4.43
+  * update serde 1.0.203->1.0.214, serde_json 1.0.125->1.0.132
+  * update and improve cgroup memory aggregation
+  * Vendor ractor 0.12.4 and upgrade tokio to 1.41.0
+  * Update `libbpf-rs` & `libbpf-cargo` to `0.24.6`
+  * Removed vulnerable mio 0.7.7 by upgrading crates to use mio 0.8+
+  * update itertools 0.12.1 -> 0.13.0
+  * update itertools 0.11.0 -> 0.12.1
+  * Update tar from 0.4.40 to 0.4.42
+  * Upgrade clap, clap_complete
+  * Upgrade serde_json to 1.0.125
+  * Update gitoxide to version with lenient tag parsing
+  * switch cgroup memoryevents to be rates for below
+  * Fix io.stat parsing
+  * collapse immediate children on '='
+  * Enable `futures` feature on `indicatif`
+  * Upgrade bitflags
+  * Bump anyhow to 1.0.86
+  * Update `libbpf-rs` & `libbpf-cargo` to `0.24.4`
+  * Update `libbpf-rs` & `libbpf-cargo` to 0.24.2
+  * Update `libbpf-rs` & `libbpf-cargo` to 0.24.2
+  * Update `libbpf-rs` & `libbpf-cargo` to 0.24.1
+  * Bump clap{,_complete} to 4.5.11
+  * Add init guard
+  * Change `flows_per_sec` to flows in `tc` module (#8237)
+  * clippy lints (#8236)
+  * ethtool: clippy lints + license header
+  * config: clippy lints
+  * btrfs: clippy lints
+  * dump: clippy lints
+  * common: clippy lints
+  * tc: clippy lints + license header
+  * view: clippy lints
+  * store: clippy lints
+  * render: clippy lints
+  * gpu_stats: clippy lints
+  * model: clippy lints
+  * procfs: clippy lints
+  * below_derive: clippy lints
+  * below_derive: Make EnumToString implement Format instead of ToString
+  * Update `libbpf-rs` & `libbpf-cargo` to `0.23.3`
+  * Support resolved macros in named deps in autocargo
+  * Dodge collisions with _arguments options
+  * below: cmdline: Avoid MPSC queue overhead in priority inversion avoidance
+  * below: exitstat: Read MM_{ANON,SHMEM}PAGES per-CPU counters for v6.2
+  * below: treewide: .split_whitespace() -> .split_ascii_whitespace()
+  * Update clap to 4.5.6 and clap_complete to 4.5.4
+  * below: main: Log panics to all log sources
+  * below: cgroupfs: Provide buffer for CgroupReader lifetime
+  * below: procfs: Extract internal buffer handling into a function
+  * below: procfs: Use RefCell for internal file buffer
+  * below: read_all_pids: Use byte iteration for pid walking
+  * below: ioctl: Ensure ioctl(SIOCETHTOOL) compat across libc implementations
+  * below: uptime: Reduce syscall overhead with clock_gettime(CLOCK_BOOTTIME)
+  * below: pid_cgroup: Avoid intermediate vector alloc
+  * below: stat: Avoid intermediate split vector allocation
+  * below: procfs: Reinterpret internal buffer as &str without realloc
+  * below: procfs: Amortise file buffer allocation
+  * below: pidwalk: Avoid statx() and use DT_* where possible
+  * below: cgroupfs: Parse KV format without vector alloc
+  * below: cgroupfs: Parse eq-based format without vector alloc
+  * below: cmdline: Avoid perverse std::io::Read::read_to_end heuristics
+  * Fix system model cpu irq
+  * ksm view
+  * ksm render model and config
+  * ksm reading capability
+  * Update `libbpf-rs` & `libbpf-cargo` to `0.23.1`
+  * set timezone in test before dumping timestamp
+  * update authors
+  * fix description
+  * Record memory.events.local
+  * Fix open source build
+  * Support summary view extra rows
+  * Make viewrc part of view state
+  * Rename core_view to system_view
+  * Rename system_view to summary_view
+  * Add sub-module for reading `tc` stats (#8210)
+  * update 'clap-4' crate to 4.5.4
+  * Add local mm_rss_stat definition
+  * Update tokio: 1.36.0 -> 1.37.0
+  * QueriableContainer
+  * [below[ Add below_derive::queriable_derives
+  * Fix integration test
+  * third-party/rust: Bump bytes 1.1 -> 1.6.0
+
+-------------------------------------------------------------------
 Fri Jan 10 18:40:14 UTC 2025 - Alessio Biancalana <alessio.biancalana@suse.com>
 
 - Add %pre hook

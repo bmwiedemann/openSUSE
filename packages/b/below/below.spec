@@ -17,7 +17,7 @@
 
 
 Name:           below
-Version:        0.8.1~0
+Version:        0.9.0~0
 Release:        0
 Summary:        A time traveling resource monitor for modern Linux systems
 License:        Apache-2.0
