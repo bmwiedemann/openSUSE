@@ -1,7 +1,7 @@
 #
 # spec file for package python-pkginfo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pkginfo
-Version:        1.12.0
+Version:        1.12.1.2
 Release:        0
 Summary:        Python package for querying metadatdata from sdists/bdists/installed packages
 License:        MIT

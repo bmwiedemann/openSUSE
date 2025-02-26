@@ -116,4 +116,21 @@
     <comment></comment>
     <requestid>1229913</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6638ee4183ead25802e8bb72cfffc903</srcmd5>
+    <version>1.12.1.2</version>
+    <time>1740586462</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.1.2:
+  * Fix *another* packaging error (more missing testcase data!).
+    LP #2098833
+  * Fix packaging error which prevents running tests from the
+    released sdist.
+  * Disuse the metadata of the installed 'pkginfo' package for
+    testing:
+  * during creation of the various 'tox' environments,
+    different versions of 'setuptools' will overwrite that file
+    with different metadata (version, 'Dynamic' headers, etc).</comment>
+    <requestid>1248500</requestid>
+  </revision>
 </revisionlist>

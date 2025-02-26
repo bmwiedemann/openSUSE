@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 25 21:03:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.1.2:
+  * Fix *another* packaging error (more missing testcase data!).
+    LP #2098833
+  * Fix packaging error which prevents running tests from the
+    released sdist.
+  * Disuse the metadata of the installed 'pkginfo' package for
+    testing:
+  * during creation of the various 'tox' environments,
+    different versions of 'setuptools' will overwrite that file
+    with different metadata (version, 'Dynamic' headers, etc).
+
+-------------------------------------------------------------------
 Tue Dec 10 13:42:20 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.12.0
