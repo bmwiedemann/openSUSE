@@ -17,7 +17,7 @@
 
 
 Name:           gap-smallsemi
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        GAP data library of semigroups of small size
 License:        GPL-3.0-or-later
