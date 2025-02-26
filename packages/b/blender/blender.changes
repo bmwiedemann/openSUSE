@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 13 10:35:29 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- force gcc 14 on Leap 
+
+-------------------------------------------------------------------
+Thu Feb 13 03:07:32 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- it fails to build with OSL 1.11 force the TW version
+
+-------------------------------------------------------------------
+Thu Feb 13 02:46:41 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- force newer boost for the whole stack
+
+-------------------------------------------------------------------
 Tue Feb 11 16:09:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - For the desktop file we do not need the 2nd copy 

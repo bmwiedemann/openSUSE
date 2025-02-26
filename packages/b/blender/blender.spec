@@ -37,20 +37,15 @@
 %bcond_with optix
 %define optix_version 7.4
 
-%if 0%{?gcc_version} < 10
-%bcond_without clang
-%bcond_with    lld
-%else
-%bcond_with    clang
-%bcond_without lld
-%endif
-
 %if 0%{?suse_version} >= 1550
-#global force_gcc_version 10
 %bcond_without system_audaspace
 %else
 %bcond_with system_audaspace
+%global force_boost_version 1_75_0
+%global force_gcc_version 14
 %endif
+
+%bcond_with clang
 
 %bcond_with blender_ua
 
@@ -60,6 +55,10 @@
 # Define the version of python3 that blender is going to build against.
 %define py3ver 3.11
 %define py3pkg python311
+# this is mostly needed on leap for PySound.cpp as we build the intree audaspace
+%if 0%{?suse_version} == 1500
+%define numpy_include_path %{_libdir}/python%{py3ver}/site-packages/numpy/core/include/
+%endif
 
 # Blender version: source/blender/blenkernel/BKE_blender_version.h
 # blender has versions like x.xxy which have x.xx (notice the missing
@@ -106,6 +105,9 @@ Patch1:         Add_missing_system_error_handler.patch
 Patch2:         cmake_manpage_fix.patch
 # PATCH-FIX-UPSTREAM https://gitlab.archlinux.org/archlinux/packaging/packages/blender/-/blob/main/ffmpeg-7-1.patch?ref_type=heads
 Patch3:         ffmpeg-7-1.patch
+%if %{with mold}
+BuildRequires:  mold
+%endif
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
@@ -114,6 +116,7 @@ BuildRequires:  OpenEXR-devel
 BuildRequires:  OpenImageIO < 3
 BuildRequires:  OpenImageIO-devel < 3
 BuildRequires:  SDL2-devel
+BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  distribution-release
@@ -124,21 +127,27 @@ BuildRequires:  graphviz
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jack-audio-connection-kit-devel
-BuildRequires:  libboost_atomic-devel
-BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_iostreams-devel
-BuildRequires:  libboost_locale-devel
+BuildRequires:  libboost_atomic%{?force_boost_version}-devel
+BuildRequires:  libboost_date_time%{?force_boost_version}-devel
+BuildRequires:  libboost_filesystem%{?force_boost_version}-devel
+BuildRequires:  libboost_iostreams%{?force_boost_version}-devel
+BuildRequires:  libboost_locale%{?force_boost_version}-devel
+%if "%{?force_boost_version}" == ""
 BuildRequires:  libboost_numpy3-devel
-BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_python3-devel
-BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_serialization-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
-BuildRequires:  libboost_wave-devel
+%else
+BuildRequires:  libboost_numpy-py3-%{?force_boost_version}-devel
+BuildRequires:  libboost_python-py3-%{?force_boost_version}-devel
+%endif
+BuildRequires:  libboost_program_options%{?force_boost_version}-devel
+BuildRequires:  libboost_regex%{?force_boost_version}-devel
+BuildRequires:  libboost_serialization%{?force_boost_version}-devel
+BuildRequires:  libboost_system%{?force_boost_version}-devel
+BuildRequires:  libboost_thread%{?force_boost_version}-devel
+BuildRequires:  libboost_wave%{?force_boost_version}-devel
 BuildRequires:  libharu-devel
 BuildRequires:  libjpeg-devel
+BuildRequires:  libomp-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libpulse-devel
 BuildRequires:  libspnav-devel
@@ -204,21 +213,8 @@ Recommends:     %name-demo = %version
 # current locale handling doesn't create locale(..) provides correctly
 Recommends:     %name-lang = %version
 Provides:       %{pkg_name}-%{_suffix} = %{version}
-BuildRequires:  pkgconfig(OpenEXR)
-%if %{with clang}
-BuildRequires:  clang
-%if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
-BuildRequires:  libomp9-devel
-%else
-BuildRequires:  libomp-devel
-%endif
-%if %{with lld}
-BuildRequires:  lld
-#!BuildIgnore:  gcc-c++
-%endif
-%else
 BuildRequires:  gcc%{?force_gcc_version}-c++
-%endif
+BuildRequires:  pkgconfig(OpenEXR)
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(gmpxx)
 %else
@@ -244,7 +240,7 @@ BuildRequires:  cmake(embree)
 BuildRequires:  OpenImageDenoise-devel >= 2
 %endif
 %if %{with openpgl}
-BuildRequires:  openpgl-devel
+BuildRequires:  openpgl-devel >= 0.5
 %endif
 %if %{with opensubdiv}
 BuildRequires:  OpenSubdiv-devel
@@ -258,7 +254,7 @@ BuildRequires:  pkgconfig(blosc)
 BuildRequires:  nvidia-optix-headers
 %endif
 %if %{with osl}
-BuildRequires:  OpenShadingLanguage-devel
+BuildRequires:  OpenShadingLanguage-devel > 1.13
 %endif
 %if %{with system_audaspace}
 BuildRequires:  pkgconfig(audaspace) >= 1.5
@@ -270,8 +266,10 @@ Obsoletes:      %{pkg_name}-cycles-devel = %{version}
 Provides:       %{pkg_name}-cycles-devel = %{version}
 %endif
 ExcludeArch:    %{ix86} %{arm}
+%if %{with blender_ua}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 
 %description
 Blender is a 3D modelling and rendering package. It is the in-house
@@ -341,6 +339,9 @@ export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %endif
 %endif
+%if %{with mold}
+%define build_ldflags -fuse-ld=mold
+%endif
 
 echo "optflags: " %{optflags}
 mkdir -p build && pushd build
@@ -356,8 +357,11 @@ cmake ../ \
       -DWITH_MEM_VALGRIND:BOOL=ON \
       -DWITH_ASSERT_ABORT:BOOL=ON \
 %else
-      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC -fopenmp" \
-      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC -fopenmp" \
+      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC -fopenmp %{?numpy_include_path:-I%{numpy_include_path}}" \
+      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC -fopenmp %{?numpy_include_path:-I%{numpy_include_path}}" \
+      -DCMAKE_EXE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now" \
+      -DCMAKE_MODULE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed" \
+      -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now" \
       -DWITH_MEM_VALGRIND:BOOL=OFF \
       -DWITH_ASSERT_ABORT:BOOL=OFF \
 %endif
