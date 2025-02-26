@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-instrumentation-asgi%{?psuffix}
-Version:        0.50b0
+Version:        0.51b0
 Release:        0
 Summary:        ASGI instrumentation for OpenTelemetry
 License:        Apache-2.0
@@ -26,10 +26,10 @@ URL:            https://github.com/open-telemetry/opentelemetry-python-contrib/t
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry_instrumentation_asgi/opentelemetry_instrumentation_asgi-%{version}.tar.gz
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module opentelemetry-api >= 1.12}
-BuildRequires:  %{python_module opentelemetry-instrumentation == %{version}}
-BuildRequires:  %{python_module opentelemetry-semantic-conventions == %{version}}
-BuildRequires:  %{python_module opentelemetry-test-utils == %{version}}
-BuildRequires:  %{python_module opentelemetry-util-http == %{version}}
+BuildRequires:  %{python_module opentelemetry-instrumentation = %{version}}
+BuildRequires:  %{python_module opentelemetry-semantic-conventions = %{version}}
+BuildRequires:  %{python_module opentelemetry-test-utils = %{version}}
+BuildRequires:  %{python_module opentelemetry-util-http = %{version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -38,9 +38,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asgiref >= 3.0
 Requires:       python-opentelemetry-api >= 1.12
-Requires:       python-opentelemetry-instrumentation == %{version}
-Requires:       python-opentelemetry-semantic-conventions == %{version}}
-Requires:       python-opentelemetry-util-http == %{version}}
+Requires:       python-opentelemetry-instrumentation = %{version}
+Requires:       python-opentelemetry-semantic-conventions = %{version}
+Requires:       python-opentelemetry-util-http = %{version}
 BuildArch:      noarch
 %python_subpackages
 
