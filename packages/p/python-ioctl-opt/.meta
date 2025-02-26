@@ -1,0 +1,4 @@
+<package name="python-ioctl-opt" project="openSUSE:Factory">
+  <title>ioctl-opt</title>
+  <description>Pythonified linux asm-generic/ioctl.h</description>
+</package>
