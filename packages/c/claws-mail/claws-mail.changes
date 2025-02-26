@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Feb 25 09:50:16 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.3.1:
+  * The configuration option, "Don't popup error dialog on receive error"
+    has been changed to "Show error dialog on receive error". Your previous
+    choice will be automatically changed to the new format.
+  * The option "Warn when pasting files as attachments" has been added to
+    the Compose/Writing preferences page. This option was previously
+    hidden.
+  * chmod 0600 is now set on *history files in the configuration directory.
+  * A new preference has been added to enable setting the chmod value of
+    saved attachments: "Save attachments with chmod [   ]", found on the
+    Other/Miscelleanous preferences page. The default value is 600.
+  * The creation and updating of .mh_sequences files in MH mailbox folders
+    is now optional and disabled by default. This is controlled by a new
+    hidden preference, mh_compat_mode. If you were previously relying on
+    this feature, set mh_compat_mode=1 in clawsrc before running this
+    version.
+  * A new hidden preference has been added, passphrase_dialog_msg_title_switch.
+    This switches the placement of the dialogue message with the dialogue
+    title in the passphrase dialogue. This can be useful for interacting with
+    third-party programs such as KeePassXC.
+  * The top-level 'Mark' menu item has been renamed to 'Marks'. If you have
+    set custom hotkeys for any items in this menu you will need to re-set
+    them.
+  * New accounts now have all secure options activated by default,
+    including TLS connections and SMTP AUTH.
+  * The option to accept valid TLS certificates is now activated by default
+    on new accounts.
+  * Notification plugin: support for Ayatana indicator has been added.
+  * PDF Viewer plugin: support for image/x-eps (encapsulated postscript)
+    images has been added.
+  * Libravatar plugin: the https URL, https://seccdn.libravatar.org/avatar,
+    is now used by default.
+  * vCalendar plugin: CREATED/LAST_MODIFIED are correctly handled, and the
+    VTIMEZONE component is used when present
+  * Various code cleanups.
+  * The English, Spanish and French manuals have been updated.
+  * Updated translations: Albanian, Brazilian Portuguese, British English,
+    Catalan, Czech, Dutch, French, Polish, Portuguese, Romanian, Russian,
+    Simplified Chinese, Slovak, Spanish, Swedish, Turkish.
+  * bug fixes:
+    * bug 3964, 'Attachment icon doesn't show in message list unless
+      the message is clicked and then disappears later'
+    * bug 4658, 'Headers unfolded incorrectly in message view'
+    * bug 4817, 'Edit button in Messages view->Text settings not
+      translatable'
+    * bug 4818, 'Your Claws Mail configuration is from a newer...'
+      dialog is shown more than once'
+    * bug 4819, 'Text wrapping broken when text contains an URL'
+    * bug 4821, 'If the Mail folder is on another partition, folder
+      chmod settings are not applied to draft and queue'
+    * bug 4824, 'No syntax highlighting after exiting external editor'
+    * bug 4828, '"Mark" not translated anymore'
+    * bug 4835, 'Disallow a forward slash in (IMAP) account names'
+    * bug 4840, 'core dump unsubscribing from newsgroups'
+    * CID 1491093: attrib leaked if attvalue is null
+    * CID 1491370: unchecked return value.
+    * archive plugin build in debug mode.
+    * keep newsgroup subscription window on top when 'subscribe to
+      newsgroup...' fails and newsgroup list can't be retrieved
+    * don't silently fail to save a sent msg
+    * IMAP: show the clip icon in the message list as soon as
+      possible
+    * stop needlessly checking which folders want sycnhronising every
+      time we select a msg in an MH mailbox
+
+-------------------------------------------------------------------
 Wed Feb  5 07:03:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(webkit2gtk-4.0) with pkgconfig(webkit2gtk-4.1)

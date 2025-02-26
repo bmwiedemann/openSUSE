@@ -32,7 +32,7 @@
 %endif
 
 Name:           claws-mail
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        A configurable email client
 License:        GPL-3.0-or-later
