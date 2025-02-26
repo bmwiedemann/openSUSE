@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 25 20:17:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * Bugfix where it was impossible to use a signal as an
+    `ok_code` #699
+  * Bugfix where `async` and `return_cmd` does not raise
+    exceptions #746
+  * `return_cmd` with `await` now works correctly #743
+  * Formal support for Python 3.12
+
+-------------------------------------------------------------------
 Mon Oct 28 22:44:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:

@@ -197,4 +197,18 @@
   * Add contrib command `sh.contrib.bash` #736</comment>
     <requestid>1218888</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>55d4149223bebd5b794b30d431018391</srcmd5>
+    <version>2.2.2</version>
+    <time>1740586447</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.2:
+  * Bugfix where it was impossible to use a signal as an
+    `ok_code` #699
+  * Bugfix where `async` and `return_cmd` does not raise
+    exceptions #746
+  * `return_cmd` with `await` now works correctly #743
+  * Formal support for Python 3.12</comment>
+    <requestid>1248475</requestid>
+  </revision>
 </revisionlist>
