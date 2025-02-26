@@ -47,4 +47,19 @@
     <comment></comment>
     <requestid>1189110</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ca017fed2fb9dd8d2db5547956e4c563</srcmd5>
+    <version>0.930</version>
+    <time>1740587076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.930
+  * added nflows.py, adding support for torch and normflows
+  * Fixed numpy deprecation warning.
+  * Updating transformations in interpm.
+  * Fixing string transfers c++ - python.
+  * new string.py for force_bytes_string
+- Skip test failing on aarch64
+</comment>
+    <requestid>1248726</requestid>
+  </revision>
 </revisionlist>
