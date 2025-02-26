@@ -239,4 +239,14 @@
   * Removed file mame-0273-only-fix.patch (upstreamed).</comment>
     <requestid>1242007</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>984fb7e086c97f765005d5ed80333964</srcmd5>
+    <version>0.275</version>
+    <time>1740587079</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.275
+  * Changed file mame-bgfx.patch.
+  * /usr/share/doc/packages/mame/whatsnew-0.275.txt</comment>
+    <requestid>1248718</requestid>
+  </revision>
 </revisionlist>
