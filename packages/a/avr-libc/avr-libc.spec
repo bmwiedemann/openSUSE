@@ -1,7 +1,7 @@
 #
 # spec file for package avr-libc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define into_sysroot 1
-%define doc_vers %{version}
+%define doc_vers 2.2.0
 %if %{into_sysroot}
 %define PREFIX /usr/avr/sys-root
 %else
@@ -32,60 +32,72 @@
 %{!?gcc_version: %define gcc_version 7}
 
 Name:           avr-libc
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        The C Runtime Library for AVR Microcontrollers
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://savannah.nongnu.org/projects/avr-libc
-Source:         http://savannah.nongnu.org/download/%{name}/%{name}-%{version}.tar.bz2
-Source1:        http://savannah.nongnu.org/download/%{name}/%{name}-%{version}.tar.bz2.sig
-Source2:        http://savannah.nongnu.org/download/%{name}/%{name}-manpages-%{doc_vers}.tar.bz2
-Source3:        http://savannah.nongnu.org/download/%{name}/%{name}-manpages-%{doc_vers}.tar.bz2.sig
-Source4:        http://savannah.nongnu.org/download/%{name}/%{name}-user-manual-%{doc_vers}.tar.bz2
-# fails gpg check Source5:        http://savannah.nongnu.org/download/%{name}/%{name}-user-manual-%{doc_vers}.tar.bz2.sig
-Source6:        http://savannah.nongnu.org/download/%{name}/%{name}-user-manual-%{doc_vers}.pdf.bz2
-Source7:        http://savannah.nongnu.org/download/%{name}/%{name}-user-manual-%{doc_vers}.pdf.bz2.sig
+Source:         https://github.com/avrdudes/avr-libc/releases/download/%{name}-2_2_1-release/%{name}-%{version}.tar.bz2
+Source1:        https://github.com/avrdudes/avr-libc/releases/download/%{name}-2_2_1-release/%{name}-%{version}.tar.bz2.sig
+Source4:        https://avrdudes.github.io/avr-libc/%{name}-user-manual-%{doc_vers}.tar.bz2
+Source6:        https://avrdudes.github.io/avr-libc/%{name}-user-manual-%{doc_vers}.pdf
 # from http://pgp.mit.edu/pks/lookup?op=vindex&search=0x7E9EADC3030D34EB (Joerg Wunsch)
 Source8:        %{name}.keyring
 # from ?? - poor man's logic analyzer by 'jw'
 Source9:        logicp-1.02.tgz
 Source100:      %{name}-rpmlintrc
+Patch0:         0001-Return-files-missed-in-the-release-tarball.patch
+Patch1:         0002-dox_latex_header.tex-Add-to-EXTRA_DIST-969-1023.patch
+Patch2:         0003-dox-api-Makefile.am-EXTRA_DIST-Add-filter-dox.sh-avr.patch
+# required for ./bootstrap
+BuildRequires:  autoconf
+# required for ./bootstrap
+BuildRequires:  automake
 BuildRequires:  cross-avr-binutils
 BuildRequires:  cross-avr-gcc%{gcc_version}-bootstrap
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  findutils
+BuildRequires:  ghostscript
+# required for autosetup -S git
+BuildRequires:  git
 BuildRequires:  netpbm
+# required for ./bootstrap
+BuildRequires:  python3
+BuildRequires:  transfig
 Recommends:     avr-example
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # does not depend on host arch. bnc#233520
 BuildArch:      noarch
-%if 0%{?suse_version} < 1100
-BuildRequires:  libgmp3
-BuildRequires:  libmpfr1
-%endif
 
 %description
 The C runtime library for the AVR family of microcontrollers for use
 with the GNU toolset (cross-avr-binutils, cross-avr-gcc, uisp, etc.).
 
 %prep
-%setup -q -a2 -a4 -b9
+# -S git is a workaround for:
+# File avr-libc-logo-large.png: git binary diffs are not supported.
+%autosetup -a4 -b9 -S git
 cp -a %{SOURCE6} .
-bunzip2 %{name}-user-manual-%{doc_vers}.pdf.bz2
 
 %build
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
-./configure --prefix=%{PREFIX} --host=avr
+# required for 0002-dox_latex_header.tex-Add-to-EXTRA_DIST-969-1023.patch
+#          and 0003-dox-api-Makefile.am-EXTRA_DIST-Add-filter-dox.sh-avr.patch
+./bootstrap
+./configure --prefix=%{PREFIX} --host=avr --mandir=%{PREFIX}/man
 make %{?_smp_mflags} CC="avr-gcc -pipe" CCAS="avr-gcc -pipe"
+# dox-html target builds man pages
+make %{?_smp_mflags} -C doc/api dox-html
 
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
+make -C doc/api DESTDIR=%{buildroot} install-dox-man %{?_smp_mflags}
 
 mkdir -p %{buildroot}%{_docdir}/%{name}
-cp -pr AUTHORS ChangeLog* LICENSE NEWS README *.pdf %{buildroot}%{_docdir}/%{name}
+cp -pr AUTHORS LICENSE NEWS README.md *.pdf %{buildroot}%{_docdir}/%{name}
 cp -pr %{name}-user-manual-%{doc_vers} %{buildroot}%{_docdir}/%{name}/user-manual-%{doc_vers}
 ln -s %{_docdir}/%{name}/user-manual-%{doc_vers} %{buildroot}/%{PREFIX}/share/doc/%{name}-%{version}/user-manual
 ln -s %{PREFIX}/share/doc/%{name}-%{version}/examples %{buildroot}%{_docdir}/%{name}
@@ -97,13 +109,11 @@ EOF
 mv %{buildroot}/%{PREFIX}/avr/* %{buildroot}/%{PREFIX}/
 rm -Rf %{buildroot}/%{PREFIX}/avr
 
-mkdir -p %{buildroot}/%{PREFIX}/
-cp -pr man %{buildroot}/%{PREFIX}/.
-
 # do not run brp-strip-debug on our avr-elf objects.
 export NO_BRP_STRIP_DEBUG=true
 
-%fdupes %{buildroot}
+%fdupes %{buildroot}/%{PREFIX}
+%fdupes -s %{buildroot}%{_docdir}/%{name}
 
 %check
 ### selftest ###

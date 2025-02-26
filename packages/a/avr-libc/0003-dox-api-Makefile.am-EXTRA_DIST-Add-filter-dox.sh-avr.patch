@@ -1,0 +1,33 @@
+From 544990952e25d6eed6b504320a62d0533b22a1f3 Mon Sep 17 00:00:00 2001
+From: Georg-Johann Lay <avr@gjlay.de>
+Date: Fri, 21 Feb 2025 19:04:42 +0100
+Subject: [PATCH 3/3] dox/api/Makefile.am (EXTRA_DIST): Add filter-dox.sh,
+ avr-libc-logo-large.png #969 #1023
+
+---
+ doc/api/Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/doc/api/Makefile.am b/doc/api/Makefile.am
+index fa1f23b5..81459c45 100644
+--- a/doc/api/Makefile.am
++++ b/doc/api/Makefile.am
+@@ -47,6 +47,7 @@ EXTRA_DIST           = dox.css dox_html_header dox_html_footer \
+                        acknowledge.dox \
+                        malloc.dox \
+                        $(IMAGE_SRC) \
++                       avr-libc-logo-large.png \
+                        sections.dox \
+                        sfr.dox \
+                        tools-install.dox \
+@@ -61,6 +62,7 @@ EXTRA_DIST           = dox.css dox_html_header dox_html_footer \
+                        overview.dox \
+                        pgmspace.dox \
+                        library.dox \
++                       filter-dox.sh \
+                        gen-vectortable-dox.sh \
+                        isrs-to-dox.py \
+                        mcus-to-isrs.sh \
+-- 
+2.43.0
+

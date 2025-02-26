@@ -1,0 +1,24 @@
+From 35dbb37b93f830d52819c881f5a64c0cd68b4d14 Mon Sep 17 00:00:00 2001
+From: Georg-Johann Lay <avr@gjlay.de>
+Date: Fri, 21 Feb 2025 18:37:25 +0100
+Subject: [PATCH 2/3] dox_latex_header.tex: Add to EXTRA_DIST #969 #1023
+
+---
+ doc/api/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/doc/api/Makefile.am b/doc/api/Makefile.am
+index 41066fb8..fa1f23b5 100644
+--- a/doc/api/Makefile.am
++++ b/doc/api/Makefile.am
+@@ -38,6 +38,7 @@ CLEANFILES           = *.html *.pdf *.ma *.mas \
+                        doxygen.config main_page.dox doxygen-pdf.config
+ 
+ EXTRA_DIST           = dox.css dox_html_header dox_html_footer \
++                       dox_latex_header.tex \
+                        doxygen.config.in \
+                        main_page.dox.in \
+                        assembler.dox \
+-- 
+2.43.0
+
