@@ -711,4 +711,14 @@ additions, including new UTF-8 compose sequences for:
   so packagers should be sure to update to libXrender 0.9.12 as well.</comment>
     <requestid>1242420</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>60ff42aa051153f7a8d440e67c073828</srcmd5>
+    <version>1.8.11</version>
+    <time>1740586417</time>
+    <user>dimstar_suse</user>
+    <comment>- U_CVE-2025-26597-0001-xkb-Fix-buffer-overflow-in-XkbChangeTypesOfKey.patch 
+  * Buffer overflow in XkbChangeTypesOfKey() 
+    (CVE-2025-26597, bsc#1237431)</comment>
+    <requestid>1248446</requestid>
+  </revision>
 </revisionlist>

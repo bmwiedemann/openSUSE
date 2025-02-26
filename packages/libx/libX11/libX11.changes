@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 25 17:49:10 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_CVE-2025-26597-0001-xkb-Fix-buffer-overflow-in-XkbChangeTypesOfKey.patch 
+  * Buffer overflow in XkbChangeTypesOfKey() 
+    (CVE-2025-26597, bsc#1237431)
+
+-------------------------------------------------------------------
 Mon Feb  3 09:09:16 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 1.8.11; this release includes:
