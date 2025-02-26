@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-import-export
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-import-export
-Version:        4.2.1
+Version:        4.3.7
 Release:        0
 Summary:        Django data importing and exporting
 License:        BSD-2-Clause
 URL:            https://github.com/django-import-export/django-import-export
 Source:         https://files.pythonhosted.org/packages/source/d/django-import-export/django_import_export-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Override x-comma-seperated-values to csv
+Patch0:         override-x-csv.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
@@ -35,11 +38,18 @@ Requires:       python-tablib >= 3.7
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module diff-match-patch}
+BuildRequires:  %{python_module odfpy}
+BuildRequires:  %{python_module openpyxl >= 2.6}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module tablib >= 3.7}
+BuildRequires:  %{python_module tabulate}
+BuildRequires:  %{python_module xlrd}
+BuildRequires:  %{python_module xlwt}
 # /SECTION
 %python_subpackages
 
@@ -47,7 +57,7 @@ BuildRequires:  %{python_module tablib >= 3.7}
 Django application and library for importing and exporting data with included admin integration.
 
 %prep
-%setup -q -n django_import_export-%{version}
+%autosetup -p1 -n django_import_export-%{version}
 # Fix postgres specific field
 sed -i '/data_field/d' tests/core/migrations/0004_bookwithchapters.py
 

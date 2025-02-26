@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 26 00:36:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.3.7:
+  * Update French translation
+  * Add flag to ignore empty rows in XLSX import
+  * Add support for Django 5.2
+  * Fix Chinese translation
+  * Clarify documentation on creating non-existent relations
+  * Update Turkish translations
+  * Handle QuerySets called with values() on export
+  * Update all translations
+  * Updated Farsi translation
+  * Updated German translation
+  * Fix imports for openpyxl
+  * Addition of import & export management commands
+  * Handle IllegalCharacterError in xlsx exports
+  * Add __repr__ method to InvalidRow for improved debugging
+- Add patch override-x-csv.patch:
+  * Hackily override CSV mimetype.
+
+-------------------------------------------------------------------
 Wed Nov 13 05:11:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.2.1:

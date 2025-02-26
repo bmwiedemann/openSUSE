@@ -121,4 +121,28 @@
   * fix documentation to show correct method for reading form data on export</comment>
     <requestid>1224052</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dd912901ba6df26d69cb479d9b74d18a</srcmd5>
+    <version>4.3.7</version>
+    <time>1740586780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.7:
+  * Update French translation
+  * Add flag to ignore empty rows in XLSX import
+  * Add support for Django 5.2
+  * Fix Chinese translation
+  * Clarify documentation on creating non-existent relations
+  * Update Turkish translations
+  * Handle QuerySets called with values() on export
+  * Update all translations
+  * Updated Farsi translation
+  * Updated German translation
+  * Fix imports for openpyxl
+  * Addition of import &amp; export management commands
+  * Handle IllegalCharacterError in xlsx exports
+  * Add __repr__ method to InvalidRow for improved debugging
+- Add patch override-x-csv.patch:
+  * Hackily override CSV mimetype.</comment>
+    <requestid>1248528</requestid>
+  </revision>
 </revisionlist>
