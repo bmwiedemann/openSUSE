@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 25 17:28:41 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.1:
+  * Fixes:
+    - Fix a bug introduced in kustomize-controller v1.5.0 that was
+      causing spurious logging for deprecated API versions and
+      health check failures.
+    - Sanitize the kustomize-controller logs when encountering
+      errors during SOPS decryption.
+- fix zsh completion subpackage
+
+-------------------------------------------------------------------
 Thu Feb 20 15:03:56 UTC 2025 - rombert@apache.org
 
 - Update to version 2.5.0:

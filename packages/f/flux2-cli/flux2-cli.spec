@@ -16,8 +16,6 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define executable_name flux
 
 # check these versions on updates
@@ -25,12 +23,12 @@
 %define helm_controller_version             v1.2.0
 %define image_automation_controller_version v0.40.0
 %define image_reflector_controller_version  v0.34.0
-%define kustomize_controller_version        v1.5.0
+%define kustomize_controller_version        v1.5.1
 %define notification_controller_version     v1.5.0
 %define source_controller_version           v1.5.0
 
 Name:           flux2-cli
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        CLI for Flux2CD
 License:        Apache-2.0
@@ -51,10 +49,13 @@ Source21:       source-controller.crds.yaml
 Source22:       source-controller.deployment.yaml
 Source101:      Packaging_README.md
 Source102:      download_yaml.sh
+BuildRequires:  bash-completion
+BuildRequires:  fish
 BuildRequires:  git-core
 BuildRequires:  go >= 1.22
 BuildRequires:  helm
 BuildRequires:  kustomize
+BuildRequires:  zsh
 
 %description
 Flux is a tool for keeping Kubernetes clusters in sync with sources of
@@ -155,8 +156,8 @@ mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/flux completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{executable_name}
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
-%{buildroot}/%{_bindir}/flux completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{executable_name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions
+%{buildroot}/%{_bindir}/flux completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{executable_name}
 
 # create the fish completion file
 mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
@@ -168,17 +169,12 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{_bindir}/%{executable_name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{executable_name}
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{executable_name}
+%{_datarootdir}/zsh/site-functions/_%{executable_name}
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
 
 %changelog
