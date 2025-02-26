@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 11:30:35 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.2
+  * Improved documentation: https://tttapa.github.io/py-build-cmake/
+  * Perform environment variable substitution before generating build hooks
+  * Fix verbose output on Python 3.7
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue Feb 11 09:32:04 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.4.1:

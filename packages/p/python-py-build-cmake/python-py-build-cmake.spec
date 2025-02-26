@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-py-build-cmake
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Modern, PEP 517 compliant build backend for creating Python packages with
 License:        MIT
