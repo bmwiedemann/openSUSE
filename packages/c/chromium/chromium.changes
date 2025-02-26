@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 26 02:05:16 CET 2025 - ro@suse.de
+
+- Chromium 133.0.6943.141 (boo#1237699)
+  This update includes 1 security fix.
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
+Mon Feb 24 14:31:33 CET 2025 - ro@suse.de
+
+- fix build with qt6 and enable qt6 also for 15.x
+- added patches:
+  chromium-131-fix-qt-ui.pach (from fedora) 
+
+-------------------------------------------------------------------
 Wed Feb 19 07:13:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 133.0.6943.126 (boo#1237343)

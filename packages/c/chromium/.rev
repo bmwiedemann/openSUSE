@@ -5403,4 +5403,18 @@ boo#1224178</comment>
     <comment>Chromium 133.0.6943.126 (boo#1237343)  untested (forwarded request 1246972 from AndreasStieger)</comment>
     <requestid>1246987</requestid>
   </revision>
+  <revision rev="451" vrev="1">
+    <srcmd5>1dd65440983483443c1acb90b34d4f79</srcmd5>
+    <version>133.0.6943.141</version>
+    <time>1740586785</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 133.0.6943.141 (boo#1237699)
+  This update includes 1 security fix.
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+- fix build with qt6 and enable qt6 also for 15.x
+- added patches:
+  chromium-131-fix-qt-ui.pach (from fedora)</comment>
+    <requestid>1248531</requestid>
+  </revision>
 </revisionlist>

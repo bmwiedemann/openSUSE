@@ -45,7 +45,7 @@
 # //chrome/browser/ui/lens:unit_tests(//build/toolchain/linux/unbundle:default)
 #   needs //third_party/icu:icuuc_public(//build/toolchain/linux/unbundle:default)
 #bcond_without system_icu
-%bcond_with qt6
+%bcond_without qt6
 %bcond_without ffmpeg_51
 %define ffmpeg_version 59
 %else
@@ -53,7 +53,7 @@
 %bcond_with system_freetype
 %bcond_with arm_bti
 %bcond_with system_icu
-%bcond_with qt6
+%bcond_without qt6
 %bcond_with ffmpeg_51
 %define ffmpeg_version 58
 %endif
@@ -115,7 +115,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        133.0.6943.126
+Version:        133.0.6943.141
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -164,6 +164,7 @@ Patch368:       chromium-131-clang-stack-protector.patch
 Patch369:       chromium-132-pdfium-explicit-template.patch
 Patch370:       fix-build-with-pipewire-1.3.82.patch
 Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
+Patch375:       chromium-131-fix-qt-ui.pach
 # conditionally applied patches
 # patch where ffmpeg < 5
 Patch1001:      chromium-94-ffmpeg-roll.patch
