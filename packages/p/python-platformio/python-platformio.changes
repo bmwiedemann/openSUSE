@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb 25 20:36:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.17:
+  * Introduced the PLATFORMIO_RUN_JOBS environment variable,
+    allowing manual override of the number of parallel build jobs
+    (issue #5077)
+  * Added support for ``tar.xz`` tarball dependencies (pull
+    #4974)
+  * Ensured that dependencies of private libraries are no longer
+    unnecessarily re-installed, optimizing dependency management
+    and reducing redundant operations (issue #4987)
+  * Resolved an issue where the ``compiledb`` target failed to
+    properly escape compiler executable paths containing spaces
+    (issue #4998)
+  * Resolved an issue with incorrect path resolution when linking
+    static libraries via the build_flags option (issue #5004)
+  * Resolved an issue where the ``--project-dir`` flag did not
+    function correctly with the pio check and pio debug commands
+    (issue #5029)
+  * Resolved an issue where the LDF occasionally excluded bundled
+    platform libraries from the dependency graph (pull #4941)
+
+-------------------------------------------------------------------
 Thu Oct  3 08:30:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.16:
