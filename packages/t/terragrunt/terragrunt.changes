@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 26 05:49:57 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.14:
+  * feat: Adding retry for clone errors (#3933)
+  * fix: Fixing more gaps in the docs (#3924)
+  * docs: Updating pre-release process (#3925)
+
+-------------------------------------------------------------------
 Tue Feb 25 05:56:13 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.73.13:
