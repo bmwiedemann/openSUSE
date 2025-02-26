@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Wed Feb 26 06:51:38 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 12
+
+-------------------------------------------------------------------
+Mon Feb 24 17:07:07 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed build in SLE16, some packages to remove are not
+  preinstalled in SLE16, do not fail in that case
+
+-------------------------------------------------------------------
+Mon Feb 24 16:19:03 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Reduce the PPC initrd size (gh#agama-project/agama#2026),
+  use the same solution from installation-images
+  (gh#openSUSE/installation-images#754)
+
+-------------------------------------------------------------------
+Mon Feb 24 13:35:04 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Use a TrueType font in xterm
+
+-------------------------------------------------------------------
+Fri Feb 21 16:34:08 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- ISO size reduction, delete not needed packages (python, Mesa,
+  libyui-qt, Qt libs,...)
+- Use XZ compression for initrd to have a smaller image
+  (esp. important for PPC) (part of gh#agama-project/agama#2026)
+
+-------------------------------------------------------------------
+Fri Feb 21 16:03:42 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed broken "live.password_dialog" boot option
+  (gh#agama-project/agama#2043)
+
+-------------------------------------------------------------------
+Wed Feb 19 10:38:45 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add the QEMU guest agent (gh#agama-project/agama#1816,
+  gh#agama-project/agama#2025).
+
+-------------------------------------------------------------------
+Wed Feb 19 08:49:24 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Added support for giving a file URL with extra kernel cmdline
+  arguments (agama.info) which was known as the info file in 
+  linuxrc.
+- Added basic support for translating the ifcfg kernel cmdline arg
+  to its ip equivalent (gh#agama-project/agama#1896).
+- Moved the kernel cmdline conf under /run/agama/cmdline.d
+
+-------------------------------------------------------------------
+Wed Feb 19 07:37:51 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed reboot delay caused by the root shell service
+  (gh#agama-project/agama#2018)
+- Run the shell at tty8 (there was a collision with the login
+  prompt at tty2)
+
+-------------------------------------------------------------------
+Tue Feb 18 13:14:30 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Rename kiwi profiles to avoid using dashes, using underscores
+  instead (gh#agama-project/agama#2014).
+- Enable PXE support for SLE 16 distributions.
+- Add Agama CLI Bash completion support.
+
+-------------------------------------------------------------------
+Tue Feb 18 11:10:22 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Add the xhci-pci-renesas driver to the initrd if available
+  (workaround for bsc#1237235)
+
+-------------------------------------------------------------------
+Wed Feb 12 12:02:39 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Do not print details about removed kernel drivers and firmware
+  files during build, this speeds up the build significantly
+  (~1 minute faster build) and avoids huge build log.
+- Uncompress the kernel drivers, no need to compress them twice
+  (they are compressed by the squashfs as well). Compressing
+  all drivers together in the image is more effective than
+  compressing several thousands individual files.
+  This makes the image about 33MB smaller (on x86_64). (boo#1192457)
+- Hardlink the duplicate licenses, makes the ISO ~1MB smaller
+
+-------------------------------------------------------------------
+Wed Feb 12 10:17:47 UTC 2025 - Giacomo Leidi <giacomo.leidi@suse.com>
+
+- Add ISO publisher (gh#agama-project/agama#1967)
+
+-------------------------------------------------------------------
+Wed Feb 12 08:04:11 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Start root shell in a free terminal (usually tty2)
+- Fixed restarting the x11-autologin service
+- Do not ask to restore the browser session after restarting it
+- Print only kernel errors or more severe messages on the console,
+  avoid spamming the terminal with useless texts (bsc#1237056)
+
+-------------------------------------------------------------------
+Fri Feb  7 16:31:50 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- live: fix_bootconfig.s390x: restore initrd.off naming for the initrd offset
+  This essentially reverts the previous change (bsc#1236781, gh#agama-project/agama#1969,
+  gh#agama-project/agama#1974)
+
+-------------------------------------------------------------------
+Fri Feb  7 09:15:02 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- In local installation prefer the language configured in the
+  UEFI firmware
+
+-------------------------------------------------------------------
+Fri Feb  7 08:21:29 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Implemented media check functionality (bsc#1236103)
+
+-------------------------------------------------------------------
+Fri Feb  7 08:10:46 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Use better ISO Volume ID labels (bsc#1236401)
+- Improve also the boot menu labels
+- Use the graphical boot menu also in SLE
+- Added UEFI firmware settings boot menu option
+
+-------------------------------------------------------------------
+Tue Feb  4 13:25:35 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- configure xterm to use the default fixed font also in the
+  configuration popup menu (Ctrl + click) to avoid crash
+- bsc#1235478
+  - tuned IceWM setup to disable some desktop functionality like
+    opening main menu using the Win key (by mfilka@suse.com)
+
+-------------------------------------------------------------------
+Mon Feb  3 23:08:34 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- live: fix_bootconfig.s390x: use initrd.ofs for the initrd
+  offset filename (gh#agama-project/agama#1969)
+
+-------------------------------------------------------------------
+Mon Feb  3 23:01:37 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- fix_bootimage: exit on failures (gh#agama-project/agama#1969)
+
+-------------------------------------------------------------------
 Mon Jan 20 10:37:43 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Add SUSE licenses (jsc#PED-11987).

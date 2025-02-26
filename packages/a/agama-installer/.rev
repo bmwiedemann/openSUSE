@@ -112,4 +112,41 @@
   (gh#agama-project/agama#1893).</comment>
     <requestid>1239075</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>89eb5787d669b5bba0d2533950d2a8b9</srcmd5>
+    <version>12.0.0</version>
+    <time>1740587016</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 12
+
+- Fixed build in SLE16, some packages to remove are not
+  preinstalled in SLE16, do not fail in that case
+
+- Reduce the PPC initrd size (gh#agama-project/agama#2026),
+  use the same solution from installation-images
+  (gh#openSUSE/installation-images#754)
+
+- Use a TrueType font in xterm
+
+- ISO size reduction, delete not needed packages (python, Mesa,
+  libyui-qt, Qt libs,...)
+- Use XZ compression for initrd to have a smaller image
+  (esp. important for PPC) (part of gh#agama-project/agama#2026)
+
+- Fixed broken &quot;live.password_dialog&quot; boot option
+  (gh#agama-project/agama#2043)
+
+- Add the QEMU guest agent (gh#agama-project/agama#1816,
+  gh#agama-project/agama#2025).
+
+- Added support for giving a file URL with extra kernel cmdline
+  arguments (agama.info) which was known as the info file in 
+  linuxrc.
+- Added basic support for translating the ifcfg kernel cmdline arg
+  to its ip equivalent (gh#agama-project/agama#1896).
+- Moved the kernel cmdline conf under /run/agama/cmdline.d
+
+- Fixed reboot delay caused by the root shell service</comment>
+    <requestid>1248593</requestid>
+  </revision>
 </revisionlist>
