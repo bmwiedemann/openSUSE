@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Feb 25 18:37:57 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.4.1:
+  * Bug Fixes
+    - Findings produced by (unredacted-secrets) now use the correct
+      ID and link to the correct URL in the audit documentation
+      (#566)
+
+-------------------------------------------------------------------
+Tue Feb 25 18:24:40 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.4.0:
+  * New Features
+    - zizmor now has official Docker images! You can find them on
+      the GitHub Container Registry under ghcr.io/woodruffw/zizmor
+      (#532)
+    - New audit: unredacted-secrets detects secret accesses that
+      are not redacted in logs (#549)
+  * Improvements
+    - SARIF outputs are now slightly more aligned with GitHub Code
+      Scanning expectations (#528)
+    - # zizmor: ignore[rule] comments can now have trailing
+      explanations, e.g. # zizmor: ignore[rule] because reasons
+      (#531)
+    - The bot-conditions audit now detects github.triggering_actor
+      as another spoofable actor check (#559)
+  * Bug Fixes
+    - Fixed a bug where zizmor would fail to parse workflows with
+      workflow_dispatch triggers that contained non-string inputs
+      (#563)
+  * Upcoming Changes
+    - The next minor release of zizmor will be built with Rust
+      2024. This should have no effect on most users, but may
+      require users who build zizmor from source to update their
+      Rust toolchain.
+
+-------------------------------------------------------------------
 Mon Feb 10 07:39:35 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.3.1:
