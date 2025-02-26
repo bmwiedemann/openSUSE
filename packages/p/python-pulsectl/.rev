@@ -108,4 +108,12 @@
   * pulsectl: check return from pa_context_new to be not NULL</comment>
     <requestid>1225955</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>01efa1cfd4b4450e3ade11c4c592f0a0</srcmd5>
+    <version>24.12.0</version>
+    <time>1740595199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248762</requestid>
+  </revision>
 </revisionlist>
