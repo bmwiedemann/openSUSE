@@ -1,7 +1,7 @@
 #
 # spec file for package python-proto-plus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define modname proto_plus
 %{?sle15_python_module_pythons}
 Name:           python-proto-plus%{psuffix}
-Version:        1.25.0
+Version:        1.26.0
 Release:        0
 Summary:        Pythonic Protocol Buffers
 License:        Apache-2.0

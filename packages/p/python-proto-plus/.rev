@@ -121,4 +121,20 @@
     <comment></comment>
     <requestid>1225835</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4b5a5c2ab9411f44ab729dcd1b5514d2</srcmd5>
+    <version>1.26.0</version>
+    <time>1740586678</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.0:
+  * Migrate to pyproject.toml
+  * Construct messages with nested duration in protobuf 5.28+
+  * Fix enums initialization in PyPy
+  * Incorrect return type annotation for Message.to_dict
+  * Use include rather than exclude to find_namespace_packages in
+    setup.py
+
+- Explicitly BuildRequires on pytz, the testsuite uses it.</comment>
+    <requestid>1248479</requestid>
+  </revision>
 </revisionlist>

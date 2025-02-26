@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 25 20:34:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.0:
+  * Migrate to pyproject.toml
+  * Construct messages with nested duration in protobuf 5.28+
+  * Fix enums initialization in PyPy
+  * Incorrect return type annotation for Message.to_dict
+  * Use include rather than exclude to find_namespace_packages in
+    setup.py
+
+-------------------------------------------------------------------
 Fri Nov 22 13:28:52 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.25.0
@@ -13,7 +24,7 @@ Fri Nov 22 13:28:52 UTC 2024 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Wed Oct  2 06:05:52 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Explicitly BuildRequires on pytz, the testsuite uses it. 
+- Explicitly BuildRequires on pytz, the testsuite uses it.
 
 -------------------------------------------------------------------
 Thu Jun 20 12:43:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
