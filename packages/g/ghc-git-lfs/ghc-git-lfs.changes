@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 18 17:32:40 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-lfs to version 1.2.5.
+  haskell-git-lfs (1.2.5) unstable; urgency=medium
+
+    * Export mkEndpoint.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 18 Feb 2025 13:31:48 -0400
+
+  haskell-git-lfs (1.2.4) unstable; urgency=medium
+
+    * In guessEndpoint, when converting a http URL with a nonstandard
+      port to https, guess the standard https port, rather than
+      trying to use the same nonstandard port.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 18 Feb 2025 13:09:54 -0400
+
+-------------------------------------------------------------------
 Mon Jan 20 20:22:43 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update git-lfs to version 1.2.3.
