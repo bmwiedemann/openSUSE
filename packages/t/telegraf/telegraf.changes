@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Feb 25 23:56:30 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- golang is now requried to be at 1.24 
+
+-------------------------------------------------------------------
+Tue Feb 25 20:44:17 UTC 2025 - mrueckert@suse.de
+
+- Update to version 1.33.3:
+  * Telegraf v1.33.3
+  * Update changelog for v1.33.3
+  * Update build_version.txt for v1.33.3
+  * test(outputs.sql): Fix integration tests (#16543)
+  * chore(linters): Enforce import grouping with gci linter (#16526)
+  * chore: Update go to v1.24.0 (#16549)
+  * chore(deps): Bump github.com/vishvananda/netlink from 1.3.0 to 1.3.1-0.20250221194427-0af32151e72b (#16534)
+  * fix(agent): Add authorization and user-agent when watching remote configs (#16546)
+  * fix(processors.execd): Detect line-protocol parser correctly (#16535)
+  * fix(logging): Handle closing correctly and fix tests (#16539)
+  * chore(outputs.event_hubs): Switch to maintained library (#16478)
+  * fix(internal): Fix plural acronyms in SnakeCase function (#16530)
+  * fix(inputs.gnmi): Allow to disable using first namespace as origin (#16507)
+  * chore(deps): Bump github.com/nats-io/nats.go from 1.37.0 to 1.39.0 (#16522)
+  * chore(deps): Bump go.opentelemetry.io/collector/pdata from 1.12.0 to 1.25.0 (#16521)
+  * fix(inputs.proxmox): Allow search domain to be empty (#16511)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/cloudwatch from 1.43.1 to 1.43.14 (#16519)
+  * chore(deps): Bump golangci-lint from v1.63.4 to v1.64.5 (#16512)
+  * chore(deps): Bump github.com/antchfx/xmlquery from 1.4.1 to 1.4.4 (#16502)
+  * docs(outputs.mqtt): Add reference to sprig (#16490)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/dynamodb from 1.36.2 to 1.40.0 (#16503)
+  * chore(deps): Bump golang.org/x/net from 0.34.0 to 0.35.0 (#16504)
+  * chore(deps): Bump github.com/srebhan/cborquery from 1.0.1 to 1.0.3 (#16505)
+  * chore(deps): Bump github.com/ClickHouse/clickhouse-go/v2 from 2.30.1 to 2.30.3 (#16506)
+
+-------------------------------------------------------------------
 Mon Feb 10 22:37:16 UTC 2025 - mrueckert@suse.de
 
 - Update to version 1.33.2:
