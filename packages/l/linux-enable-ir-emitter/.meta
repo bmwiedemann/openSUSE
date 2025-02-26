@@ -1,0 +1,8 @@
+<package name="linux-enable-ir-emitter" project="openSUSE:Factory">
+  <title>Support for infrared cameras that are not directly enabled out-of-the box</title>
+  <description>linux-enable-ir-emitter provides support for infrared cameras that are not
+directly enabled out-of-the box (at the very least, the kernel must recognize
+your infrared camera). It can automatically configure almost any (UVC) infrared
+emitter.</description>
+  <url>https://github.com/EmixamPP/linux-enable-ir-emitter</url>
+</package>
