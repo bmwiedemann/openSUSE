@@ -15,10 +15,10 @@ Index: boost_1_64_0/libs/mpi/build/__init__.py
 -    import DLFCN as dl
 -    flags = sys.getdlopenflags()
 -    sys.setdlopenflags(dl.RTLD_NOW|dl.RTLD_GLOBAL)
--    import mpi
+-    from . import mpi
 -    sys.setdlopenflags(flags)
 -else:
--    import mpi
+-    from . import mpi
 +import DLFCN as dl
 +flags = sys.getdlopenflags()
 +sys.setdlopenflags(dl.RTLD_NOW|dl.RTLD_GLOBAL)

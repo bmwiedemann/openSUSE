@@ -1,7 +1,7 @@
 #
 # spec file for package boost
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.86.0
-%define _ver 1_86_0
-%define package_version 1_86_0
+%define ver 1.87.0
+%define _ver 1_87_0
+%define package_version 1_87_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -57,6 +57,7 @@ ExclusiveArch:  do_not_build
 %define build_base 1
 %define name_suffix -base
 %bcond_with hpc
+%bcond_with python3
 %bcond_with mpi
 %endif
 
@@ -64,7 +65,10 @@ ExclusiveArch:  do_not_build
 %define build_base 0
 %define name_suffix -extra
 %bcond_without python3
+%ifnarch %{arm} %ix86
+# OpenMPI 5 has no support for 32bit architectures
 %bcond_without mpi
+%endif
 %endif
 
 %if "%{flavor}" == "gnu-hpc"
@@ -167,19 +171,12 @@ ExclusiveArch:  do_not_build
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %else
-ExcludeArch:    s390x %{ix86} ppc64 ppc64le
+ExcludeArch:    s390x %{ix86} ppc64 ppc64le %{arm}
 %endif
 %endif
 
-# Python NumPy library is only available on Leap 42.1 OpenSUSE onward
-# and is not available in SLE
-%if 0%{?suse_version} >= 1330 || 0%{?is_opensuse}
-%bcond_without python_numpy
-%else
-%bcond_with python_numpy
-%endif
-# context hasn't been ported to most architectures yet
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips ppc ppc64 ppc64le riscv64 s390x
+# context hasn't been ported to all architectures yet (looks complete now - aschnell - 2024-12-11)
+%ifarch %{ix86} %{x86_64} %{arm} aarch64 mips ppc ppc64 ppc64le riscv64 s390x
 %bcond_without build_context
 %else
 %bcond_with build_context
@@ -213,14 +210,14 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.86.0
+Version:        1.87.0
 Release:        0
-%define library_version 1_86_0
+%define library_version 1_87_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.boost.org
-Source0:        https://boostorg.jfrog.io/artifactory/main/release/%{version}/source/boost_%{_ver}.tar.bz2
+Source0:        https://archives.boost.io/release/%{version}/source/boost_%{_ver}.tar.bz2
 Source1:        boost-rpmlintrc
 Source3:        https://downloads.sourceforge.net/project/boost/boost-docs/1.56.0/boost_1_56_pdf.tar.bz2
 Source4:        existing_extra_docs
@@ -240,11 +237,9 @@ Patch15:        boost-1.57.0-python-abi_letters.patch
 Patch16:        boost-1.55.0-python-test-PyImport_AppendInittab.patch
 Patch17:        python_mpi.patch
 Patch18:        dynamic_linking.patch
-Patch19:        boost-compute-uuid.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
-# PATCH-FIX-UPSTREAM boost-1.85.0-python-numpy-2.patch -- gh#boostorg/python/pull/432
-Patch24:        boost-1.85.0-python-numpy-2.patch
+Patch22:        boost-smart-ptr.patch
 %{?suse_build_hwcaps_libs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -259,9 +254,7 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  dos2unix
 %if %{with python3}
 BuildRequires:  python3-devel
-%if %{with python_numpy}
 BuildRequires:  python3-numpy-devel
-%endif
 %endif
 %if %{with build_docs}
 BuildRequires:  docbook
@@ -375,7 +368,6 @@ This package contains all that is needed to develop/compile
 applications that use the Boost C++ libraries. For documentation see
 the documentation packages (html, man or pdf).
 
-%if %{with hpc}
 %package     -n %{package_name}-python3
 Summary:        Boost.MPI Python 3.x serialization library
 Group:          System/Libraries
@@ -384,7 +376,6 @@ Requires:       %{package_name}
 %description -n %{package_name}-python3
 This package contains the Boost.MPI Python 3.x serialization
 interface.
-%endif
 
 %package     -n boost%{library_version}-jam
 Summary:        A Boost Make Replacement
@@ -620,6 +611,7 @@ Group:          Development/Libraries/C and C++
 Requires:       libboost_atomic%{library_version}-devel = %{version}
 Requires:       libboost_filesystem%{library_version} = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
+Requires:       libboost_system%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_filesystem-devel-impl
@@ -670,6 +662,8 @@ Summary:        Development headers for Boost.IOStreans library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_iostreams%{library_version} = %{version}
+Requires:       libboost_random%{library_version}-devel = %{version}
+Requires:       libboost_regex%{library_version}-devel = %{version}
 Requires:       pkgconfig(bzip2)
 Requires:       pkgconfig(liblzma)
 Requires:       pkgconfig(libzstd)
@@ -700,6 +694,7 @@ Requires:       libboost_date_time%{library_version}-devel = %{version}
 Requires:       libboost_filesystem%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_log%{library_version} = %{version}
+Requires:       libboost_random%{library_version}-devel = %{version}
 Requires:       libboost_regex%{library_version}-devel = %{version}
 Requires:       libboost_thread%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
@@ -873,7 +868,7 @@ Summary:        Development headers for Boost.Process library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_process%{library_version} = %{version}
-Conflicts:      boost-devel < 1.86
+Conflicts:      boost-devel < 1.87
 Conflicts:      libboost_process-devel-impl
 Provides:       libboost_process-devel-impl = %{version}
 
@@ -915,6 +910,8 @@ bindings.
 %package     -n libboost_python-py3-%{library_version}-devel
 Summary:        Development headers for Boost.Python library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_container%{library_version}-devel = %{version}
+Requires:       libboost_graph%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_python-py3-%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
@@ -1289,10 +1286,9 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch -P 16 -p1
 %patch -P 17 -p1
 %patch -P 18 -p1
-%patch -P 19 -p1
 %patch -P 20 -p1
 %patch -P 21 -p1
-%patch -P 24 -p1
+%patch -P 22 -p1
 
 %build
 find . -type f -exec chmod u+w {} +
@@ -1508,7 +1504,7 @@ module load gnu %mpi_flavor
 ln -s libboost_python-py3.so %{buildroot}%{package_libdir}/libboost_python3.so
 %endif
 
-%if %{with python3}
+%if %{with python3} && %{with mpi}
 mkdir -p %{buildroot}%{package_python3_sitearch}/boost/parallel/mpi/
 install -m 0644 libs/mpi/build/__init__.py %{buildroot}%{package_python3_sitearch}/boost/parallel/mpi/
 install -m 0644 %{SOURCE11} %{buildroot}%{package_python3_sitearch}/boost/parallel
@@ -1556,6 +1552,8 @@ find %{buildroot}%{package_datadir}/boost-build/ -type f \! -name \*.py \! -name
 find %{buildroot}%{package_datadir}/boost-build/ -type f -exec chmod 644 {} +
 %endif
 
+rm -r %{buildroot}%{package_datadir}/boost_predef
+
 # Remove exception library, but only if the symbols are not
 # actually used. For now, the only symbol that is linked is
 # should never be used as it's only available on Windows. So,
@@ -1582,6 +1580,14 @@ rm %{buildroot}%{package_libdir}/cmake/BoostDetectToolset-%{version}.cmake
 rm -r %{buildroot}%{package_libdir}/cmake/Boost-%{version}
 rm -r %{buildroot}%{package_libdir}/cmake/boost_headers-%{version}
 rm -rf %{buildroot}%{package_libdir}/cmake/boost_{w,}serialization-%{version}
+rm -r %{buildroot}%{package_libdir}/cmake/boost_container-%{version}
+rm -f %{buildroot}%{package_libdir}/libboost_container.so*
+rm -r %{buildroot}%{package_libdir}/cmake/boost_graph-%{version}
+rm -f %{buildroot}%{package_libdir}/libboost_graph.so*
+# If no library was needed to be built, system was built to avoid building everything.
+# If needs to be removed from the extra package in that case
+rm -Rf %{buildroot}%{package_libdir}/cmake/boost_system-%{version}
+rm -Rf %{buildroot}%{package_libdir}/libboost_system.so*
 
 rm -r %{buildroot}%{package_includedir}/boost
 rm -f %{buildroot}%{package_libdir}/libboost_{w,}serialization*
@@ -1629,112 +1635,55 @@ EOF
 %endif
 
 %if %{build_base}
-%post -n libboost_atomic%{library_version} -p /sbin/ldconfig
-%post -n libboost_container%{library_version} -p /sbin/ldconfig
-%post -n libboost_context%{library_version} -p /sbin/ldconfig
-%post -n libboost_contract%{library_version} -p /sbin/ldconfig
-%post -n libboost_coroutine%{library_version} -p /sbin/ldconfig
-%post -n libboost_date_time%{library_version} -p /sbin/ldconfig
-%post -n libboost_fiber%{library_version} -p /sbin/ldconfig
-%post -n libboost_filesystem%{library_version} -p /sbin/ldconfig
-%post -n libboost_iostreams%{library_version} -p /sbin/ldconfig
-%post -n libboost_log%{library_version} -p /sbin/ldconfig
-%post -n libboost_test%{library_version} -p /sbin/ldconfig
-%post -n libboost_process%{library_version} -p /sbin/ldconfig
-%post -n libboost_program_options%{library_version} -p /sbin/ldconfig
-%post -n libboost_regex%{library_version} -p /sbin/ldconfig
-%post -n libboost_serialization%{library_version} -p /sbin/ldconfig
-%post -n libboost_thread%{library_version} -p /sbin/ldconfig
-%post -n libboost_type_erasure%{library_version} -p /sbin/ldconfig
-%post -n libboost_json%{library_version} -p /sbin/ldconfig
-%post -n libboost_charconv%{library_version} -p /sbin/ldconfig
-%post -n libboost_math%{library_version} -p /sbin/ldconfig
-%post -n libboost_nowide%{library_version} -p /sbin/ldconfig
-%post -n libboost_graph%{library_version} -p /sbin/ldconfig
-%post -n libboost_stacktrace%{library_version} -p /sbin/ldconfig
-%post -n libboost_system%{library_version} -p /sbin/ldconfig
-%post -n libboost_wave%{library_version} -p /sbin/ldconfig
-%post -n libboost_url%{library_version} -p /sbin/ldconfig
-%post -n libboost_random%{library_version} -p /sbin/ldconfig
-%post -n libboost_chrono%{library_version} -p /sbin/ldconfig
-%post -n libboost_locale%{library_version} -p /sbin/ldconfig
-%post -n libboost_timer%{library_version} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libboost_atomic%{library_version}
+%ldconfig_scriptlets -n libboost_container%{library_version}
+%ldconfig_scriptlets -n libboost_context%{library_version}
+%ldconfig_scriptlets -n libboost_contract%{library_version}
+%ldconfig_scriptlets -n libboost_coroutine%{library_version}
+%ldconfig_scriptlets -n libboost_date_time%{library_version}
+%ldconfig_scriptlets -n libboost_fiber%{library_version}
+%ldconfig_scriptlets -n libboost_filesystem%{library_version}
+%ldconfig_scriptlets -n libboost_iostreams%{library_version}
+%ldconfig_scriptlets -n libboost_log%{library_version}
+%ldconfig_scriptlets -n libboost_test%{library_version}
+%ldconfig_scriptlets -n libboost_process%{library_version}
+%ldconfig_scriptlets -n libboost_program_options%{library_version}
+%ldconfig_scriptlets -n libboost_regex%{library_version}
+%ldconfig_scriptlets -n libboost_serialization%{library_version}
+%ldconfig_scriptlets -n libboost_thread%{library_version}
+%ldconfig_scriptlets -n libboost_type_erasure%{library_version}
+%ldconfig_scriptlets -n libboost_json%{library_version}
+%ldconfig_scriptlets -n libboost_charconv%{library_version}
+%ldconfig_scriptlets -n libboost_math%{library_version}
+%ldconfig_scriptlets -n libboost_nowide%{library_version}
+%ldconfig_scriptlets -n libboost_graph%{library_version}
+%ldconfig_scriptlets -n libboost_stacktrace%{library_version}
+%ldconfig_scriptlets -n libboost_system%{library_version}
+%ldconfig_scriptlets -n libboost_wave%{library_version}
+%ldconfig_scriptlets -n libboost_url%{library_version}
+%ldconfig_scriptlets -n libboost_random%{library_version}
+%ldconfig_scriptlets -n libboost_chrono%{library_version}
+%ldconfig_scriptlets -n libboost_locale%{library_version}
+%ldconfig_scriptlets -n libboost_timer%{library_version}
 %else
 
 %if %{with python3}
-%post -n libboost_python-py3-%{library_version} -p /sbin/ldconfig
-%if %{with python_numpy}
-%post -n libboost_numpy-py3-%{library_version} -p /sbin/ldconfig
-%endif
+%ldconfig_scriptlets -n libboost_python-py3-%{library_version}
+%ldconfig_scriptlets -n libboost_numpy-py3-%{library_version}
 %endif
 
 %if %{with mpi}
-%post -n libboost_mpi%{library_version} -p /sbin/ldconfig
-%post -n libboost_graph_parallel%{library_version} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libboost_mpi%{library_version}
+%ldconfig_scriptlets -n libboost_graph_parallel%{library_version}
 
 %if %{with python3}
-%post -n libboost_mpi_python-py3-%{library_version} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libboost_mpi_python-py3-%{library_version}
 %endif
 %endif
 
 %endif
 %if %{with hpc}
-%post -n %base_name -p /sbin/ldconfig
-%endif
-
-%if %{build_base}
-%postun -n libboost_atomic%{library_version} -p /sbin/ldconfig
-%postun -n libboost_container%{library_version} -p /sbin/ldconfig
-%postun -n libboost_context%{library_version} -p /sbin/ldconfig
-%postun -n libboost_contract%{library_version} -p /sbin/ldconfig
-%postun -n libboost_coroutine%{library_version} -p /sbin/ldconfig
-%postun -n libboost_date_time%{library_version} -p /sbin/ldconfig
-%postun -n libboost_fiber%{library_version} -p /sbin/ldconfig
-%postun -n libboost_filesystem%{library_version} -p /sbin/ldconfig
-%postun -n libboost_iostreams%{library_version} -p /sbin/ldconfig
-%postun -n libboost_log%{library_version} -p /sbin/ldconfig
-%postun -n libboost_test%{library_version} -p /sbin/ldconfig
-%postun -n libboost_process%{library_version} -p /sbin/ldconfig
-%postun -n libboost_program_options%{library_version} -p /sbin/ldconfig
-%postun -n libboost_regex%{library_version} -p /sbin/ldconfig
-%postun -n libboost_serialization%{library_version} -p /sbin/ldconfig
-%postun -n libboost_thread%{library_version} -p /sbin/ldconfig
-%postun -n libboost_type_erasure%{library_version} -p /sbin/ldconfig
-%postun -n libboost_json%{library_version} -p /sbin/ldconfig
-%postun -n libboost_charconv%{library_version} -p /sbin/ldconfig
-%postun -n libboost_math%{library_version} -p /sbin/ldconfig
-%postun -n libboost_nowide%{library_version} -p /sbin/ldconfig
-%postun -n libboost_graph%{library_version} -p /sbin/ldconfig
-%postun -n libboost_stacktrace%{library_version} -p /sbin/ldconfig
-%postun -n libboost_system%{library_version} -p /sbin/ldconfig
-%postun -n libboost_wave%{library_version} -p /sbin/ldconfig
-%postun -n libboost_url%{library_version} -p /sbin/ldconfig
-%postun -n libboost_random%{library_version} -p /sbin/ldconfig
-%postun -n libboost_chrono%{library_version} -p /sbin/ldconfig
-%postun -n libboost_locale%{library_version} -p /sbin/ldconfig
-%postun -n libboost_timer%{library_version} -p /sbin/ldconfig
-%else
-
-%if %{with python3}
-%postun -n libboost_python-py3-%{library_version} -p /sbin/ldconfig
-%if %{with python_numpy}
-%postun -n libboost_numpy-py3-%{library_version} -p /sbin/ldconfig
-%endif
-%endif
-
-%if %{with mpi}
-%postun -n libboost_mpi%{library_version} -p /sbin/ldconfig
-%postun -n libboost_graph_parallel%{library_version} -p /sbin/ldconfig
-
-%if %{with python3}
-%postun -n libboost_mpi_python-py3-%{library_version} -p /sbin/ldconfig
-%endif
-%endif
-
-%endif
-
-%if %{with hpc}
-%postun -n %{base_name} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %base_name
 %endif
 
 %if %{with hpc}
@@ -1875,8 +1824,10 @@ EOF
 %endif
 
 %files -n libboost_math%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_math-%{version}
 %dir %{package_libdir}/cmake/boost_math_c99*-%{version}
 %dir %{package_libdir}/cmake/boost_math_tr1*-%{version}
+%{package_libdir}/cmake/boost_math-%{version}/*
 %{package_libdir}/cmake/boost_math_c99*-%{version}/*
 %{package_libdir}/cmake/boost_math_tr1*-%{version}/*
 %{package_libdir}/libboost_math_c99f.so
@@ -1983,7 +1934,6 @@ EOF
 %{package_libdir}/libboost_python3.so
 %{package_libdir}/libboost_python-py3.so
 
-%if %{with python_numpy}
 %files -n libboost_numpy-py3-%{library_version}
 %{package_libdir}/libboost_numpy-py3.so.1*
 
@@ -1993,7 +1943,6 @@ EOF
 %{package_libdir}/cmake/boost_numpy-%{version}/*
 %{package_libdir}/libboost_numpy-py3.so
 
-%endif
 %endif
 %endif
 

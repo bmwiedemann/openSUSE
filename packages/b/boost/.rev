@@ -1558,4 +1558,29 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
     <comment></comment>
     <requestid>1198434</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>3c3f01d980669ea8a91a72ed1848571f</srcmd5>
+    <version>1.87.0</version>
+    <time>1740586434</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed required of process devel
+- Modernize specfile: use ldconfig_scriptlets
+- Remove idempotent %if..%endif guards
+- Remove dependency from boost-extra to openmpi for 32b systems
+  as OpenMPI &gt;= 5 has dropped support for 32b architectures.
+- Exclude arm 32b builds for HPC flavours.
+- added boost-smart-ptr.patch from upstream (bsc#1234430)
+- updated source URL
+- update to 1.87.0
+  * new libraries:
+    + Parser (framework for building parsers)
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_87_0.html
+- boost-strict_aliasing.patch: updated
+- python_mpi.patch: updated
+- dynamic_linking.patch: updated
+- boost-compute-uuid.patch: included upstream
+- boost-1.85.0-python-numpy-2.patch: included upstream</comment>
+    <requestid>1248410</requestid>
+  </revision>
 </revisionlist>

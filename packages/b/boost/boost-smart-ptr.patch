@@ -1,0 +1,28 @@
+See https://github.com/boostorg/smart_ptr/commit/e7433ba54596da97cb7859455cd37ca140305a9c.
+
+diff --git a/include/boost/smart_ptr/intrusive_ptr.hpp b/include/boost/smart_ptr/intrusive_ptr.hpp
+index ddb20c0b0e..11b476513a 100644
+--- a/boost/smart_ptr/intrusive_ptr.hpp
++++ b/boost/smart_ptr/intrusive_ptr.hpp
+@@ -285,7 +285,7 @@ template<class T, class U> intrusive_ptr<T> dynamic_pointer_cast( intrusive_ptr<
+ 
+ // operator<<
+ 
+-template<class Y> std::ostream & operator<< (std::ostream & os, intrusive_ptr<Y> const & p)
++template<class E, class T, class Y> std::basic_ostream<E, T> & operator<< (std::basic_ostream<E, T> & os, intrusive_ptr<Y> const & p)
+ {
+     os << p.get();
+     return os;
+diff --git a/include/boost/smart_ptr/shared_ptr.hpp b/include/boost/smart_ptr/shared_ptr.hpp
+index 2431a33590..2deed9b632 100644
+--- a/boost/smart_ptr/shared_ptr.hpp
++++ b/boost/smart_ptr/shared_ptr.hpp
+@@ -775,7 +775,7 @@ template<class T> inline typename shared_ptr<T>::element_type * get_pointer(shar
+ 
+ // operator<<
+ 
+-template<class Y> std::ostream & operator<< (std::ostream & os, shared_ptr<Y> const & p)
++template<class E, class T, class Y> std::basic_ostream<E, T> & operator<< (std::basic_ostream<E, T> & os, shared_ptr<Y> const & p)
+ {
+     os << p.get();
+     return os;
