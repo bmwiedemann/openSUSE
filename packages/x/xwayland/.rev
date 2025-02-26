@@ -643,4 +643,32 @@
   * xwayland: prevent potential null pointer dereference</comment>
     <requestid>1243618</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>690d17f4ae71a3b8b46317a39eadadd4</srcmd5>
+    <version>24.1.5</version>
+    <time>1740586421</time>
+    <user>dimstar_suse</user>
+    <comment>- U_CVE-2025-26594-0001-Cursor-Refuse-to-free-the-root-cursor.patch
+  U_CVE-2025-26594-0002-dix-keep-a-ref-to-the-rootCursor.patch
+  * Use-after-free of the root cursor (CVE-2025-26594, bsc#1237427)
+- U_CVE-2025-26595-0001-xkb-Fix-buffer-overflow-in-XkbVModMaskText.patch
+  * Buffer overflow in XkbVModMaskText() (CVE-2025-26595, bsc#1237429)
+- U_CVE-2025-26596-0001-xkb-Fix-computation-of-XkbSizeKeySyms.patch
+  * Heap overflow in XkbWriteKeySyms() (CVE-2025-26596, bsc#1237430)
+- U_CVE-2025-26597-0001-xkb-Fix-buffer-overflow-in-XkbChangeTypesOfKey.patch
+  * Buffer overflow in XkbChangeTypesOfKey() (CVE-2025-26597, bsc#1237431)
+- U_CVE-2025-26598-0001-Xi-Fix-barrier-device-search.patch
+  * Out-of-bounds write in CreatePointerBarrierClient() (CVE-2025-26598, bsc#1237432)
+- U_CVE-2025-26599-0001-composite-Handle-failure-to-redirect-in-compRedirect.patch
+  U_CVE-2025-26599-0002-composite-initialize-border-clip-even-when-pixmap-al.patch
+  * Use of uninitialized pointer in compRedirectWindow() (CVE-2025-26599, bsc#1237433)
+- U_CVE-2025-26600-0001-dix-Dequeue-pending-events-on-frozen-device-on-remov.patch
+  * Use-after-free in PlayReleasedEvents() (CVE-2025-26600, bsc#1237434)
+- U_CVE-2025-26601-0001-sync-Do-not-let-sync-objects-uninitialized.patch
+  U_CVE-2025-26601-0002-sync-Check-values-before-applying-changes.patch
+  U_CVE-2025-26601-0003-sync-Do-not-fail-SyncAddTriggerToSyncObject.patch
+  U_CVE-2025-26601-0004-sync-Apply-changes-last-in-SyncChangeAlarmAttributes.patch
+  * Use-after-free in SyncInitTrigger() (CVE-2025-26601, bsc#1237435)</comment>
+    <requestid>1248449</requestid>
+  </revision>
 </revisionlist>
