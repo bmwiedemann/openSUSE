@@ -58,4 +58,13 @@
 - Update BuildRequires and Requires from pyproject.toml (forwarded request 1235910 from glaubitz)</comment>
     <requestid>1235924</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a7699008ca8bd59ddce8c3cfdfe54233</srcmd5>
+    <version>0.51b0</version>
+    <time>1740586457</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.51b0:
+  * fix requires to 1.30.0</comment>
+    <requestid>1248489</requestid>
+  </revision>
 </revisionlist>
