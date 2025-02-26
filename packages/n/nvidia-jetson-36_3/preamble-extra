@@ -1,3 +1,0 @@
-Summary:  Open-Source NVIDIA Jetson Orin drivers
-Requires: kernel-firmware-nvidia-jetson-36_3 = %{-v*}
-Requires: kernel-%1
