@@ -1,0 +1,47 @@
+From 6590305637da64e0b1898bbb2ecd9700aef7c06b Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Wed, 26 Feb 2025 13:00:45 +0100
+Subject: [PATCH] Use SO_REUSEPORT only for AF_INET sockets
+
+The latest python version changes the behavior, now if it's used with
+other kind of sockets (ex AF_UNIX) it raises OSError:
+
+https://github.com/python/cpython/issues/128916
+---
+ thriftpy2/contrib/aio/socket.py | 4 +++-
+ thriftpy2/transport/socket.py   | 4 +++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/thriftpy2/contrib/aio/socket.py b/thriftpy2/contrib/aio/socket.py
+index 8f4195a..28b0cc8 100644
+--- a/thriftpy2/contrib/aio/socket.py
++++ b/thriftpy2/contrib/aio/socket.py
+@@ -281,7 +281,9 @@ class TAsyncServerSocket(object):
+             _sock = socket.socket(self.socket_family, socket.SOCK_STREAM)
+ 
+         _sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+-        if hasattr(socket, "SO_REUSEPORT"):
++        # valid socket https://github.com/python/cpython/issues/128916
++        valid_family = (socket.AF_INET, socket.AF_INET6)
++        if _sock.family in valid_family and hasattr(socket, "SO_REUSEPORT"):
+             try:
+                 _sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+             except socket.error as err:
+diff --git a/thriftpy2/transport/socket.py b/thriftpy2/transport/socket.py
+index edd78ab..b98b4c8 100644
+--- a/thriftpy2/transport/socket.py
++++ b/thriftpy2/transport/socket.py
+@@ -201,7 +201,9 @@ class TServerSocket(object):
+             _sock = socket.socket(self.socket_family, socket.SOCK_STREAM)
+ 
+         _sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+-        if hasattr(socket, "SO_REUSEPORT"):
++        # valid socket https://github.com/python/cpython/issues/128916
++        valid_family = (socket.AF_INET, socket.AF_INET6)
++        if _sock.family in valid_family and hasattr(socket, "SO_REUSEPORT"):
+             try:
+                 _sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+             except socket.error as err:
+-- 
+2.48.0
+

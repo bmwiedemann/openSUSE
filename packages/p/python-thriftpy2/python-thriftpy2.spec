@@ -1,7 +1,7 @@
 #
 # spec file for package python-thriftpy2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-thriftpy2
-Version:        0.5.0
+Version:        0.5.2
 Release:        0
 Summary:        Pure python implementation of Apache Thrift
 License:        MIT
 URL:            https://github.com/Thriftpy/thriftpy2
 Source0:        https://github.com/Thriftpy/thriftpy2/archive/v%{version}.tar.gz
 Source1:        new_certs.tar.xz
+# PATCH-FIX-UPSTREAM 0001-Use-SO_REUSEPORT-only-for-AF_INET-sockets.patch gh#Thriftpy/thriftpy2#303
+Patch1:         0001-Use-SO_REUSEPORT-only-for-AF_INET-sockets.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module devel}
@@ -38,7 +40,6 @@ BuildRequires:  %{python_module tornado >= 5.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-pytest-asyncio
 Requires:       python-ply >= 3.4
 Requires:       python-six
 Recommends:     python-tornado >= 5.0
@@ -67,10 +68,14 @@ find %{buildroot}%{$python_sitearch} -name '*.c' -exec rm {} \;
 }
 
 %check
-cd tests
 # the two tests fail in OBS on timeout
 # test_asynchronous_exception/test_asynchronous_result - needs old tornado to work
-%pytest_arch -k 'not (test_able_to_communicate or test_zero_length_string or test_asynchronous_exception or test_asynchronous_result or test_api_ipv6)'
+donttest="test_able_to_communicate or test_zero_length_string or test_asynchronous_exception or test_asynchronous_result or test_api_ipv6"
+# Requires python-pytest-reraise
+donttest+=" or test_load_in_sub_thread or test_load_fp_in_sub_thread"
+
+cd tests
+%pytest_arch -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE

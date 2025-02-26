@@ -109,4 +109,20 @@
     <comment></comment>
     <requestid>1177583</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>79172e49b06e80d56115a808d8113cb6</srcmd5>
+    <version>0.5.2</version>
+    <time>1740587072</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch 0001-Use-SO_REUSEPORT-only-for-AF_INET-sockets.patch to
+  make it compatible with latest cpython. gh#Thriftpy/thriftpy2#303
+- Update to 0.5.2:
+  * Fix an issue where loading a thrift file in a sub-thread will cause an error with load_fp.
+  * Move static metadata from setup.py to pyproject.toml.
+  * Using a thread pool to avoid TAsyncSocket.open block the event loop.
+- 0.5.1:
+  * Fix an issue where loading a thrift file in a sub-thread will cause an error.
+  * Some typo fixes.</comment>
+    <requestid>1248709</requestid>
+  </revision>
 </revisionlist>
