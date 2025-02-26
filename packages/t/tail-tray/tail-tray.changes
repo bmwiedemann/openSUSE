@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 25 05:53:39 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.16:
+  * Bump version to 0.2.16
+  * UI/UI fixes for older qt (#50)
+  * update nix-os.md (#51)
+
+-------------------------------------------------------------------
 Fri Feb 21 06:16:39 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.15:
