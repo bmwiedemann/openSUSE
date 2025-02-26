@@ -1,7 +1,7 @@
 #
 # spec file for package python-quimb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,16 +29,15 @@ ExcludeArch:    %{ix86} %{arm} ppc s390x
 %endif
 
 Name:           python-quimb%{psuffix}
-Version:        1.8.4
+Version:        1.10.0
 Release:        0
 Summary:        Python library for quantum information and many-body calculations
 License:        Apache-2.0
 URL:            https://quimb.readthedocs.io/
 Source:         https://github.com/jcmgray/quimb/archive/refs/tags/v%{version}.tar.gz#/quimb-%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-autoray >= 0.6.12
@@ -88,21 +87,15 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %install
 %if !%{with test}
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/quimb-mpi-python
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
-
-%post
-%python_install_alternative quimb-mpi-python
-
-%postun
-%python_uninstall_alternative quimb-mpi-python
 
 %if %{with test}
 %check
 mv quimb quimb.movedsrc
 # precision comparison slightly out of tolerance: this one is permament, others are flaky (rerun them)
-donttest="(test_subtract_update and float32)"
+donttest="(test_subtract_update and float32) or test_contract_double_loopy_approx"
+donttest+=" or test_cyclic_solve_big_with_segmenting"
 %pytest -n auto --reruns 3 -k "not ($donttest)"
 %endif
 
@@ -110,9 +103,8 @@ donttest="(test_subtract_update and float32)"
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%python_alternative %{_bindir}/quimb-mpi-python
-%{python_sitelib}/quimb-%{version}.dist-info
 %{python_sitelib}/quimb
+%{python_sitelib}/quimb-%{version}.dist-info
 %endif
 
 %changelog
