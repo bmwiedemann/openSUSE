@@ -1,7 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 25 20:36:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 12.1.1:
+  * Fixed ReadTheDocs build
+  * `build.os` is now a required parameter
+  * `python.version` is replaced by `build.tools`
+  * New features in `pyee.asyncio.AsyncIOEventEmitter`:
+  * `wait_for_complete` method to wait for all running handlers
+    to complete execution
+  * `cancel` method to cancel execution of all running handlers
+  * `complete` property that's `True` when no handlers are
+    currently running
+  * Updated changelog for v12 release to describe where to find
+    alternatives to deprecated and removed imports
+  * Add support for Python 3.13
+
+-------------------------------------------------------------------
 Thu Sep 26 21:02:27 UTC 2024 - Guang Yee <gyee@suse.com>
 
-- Enable sle15_python_module_pythons. 
+- Enable sle15_python_module_pythons.
 
 -------------------------------------------------------------------
 Sat Aug 31 12:19:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
