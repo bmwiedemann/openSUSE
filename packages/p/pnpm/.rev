@@ -441,4 +441,32 @@
 </comment>
     <requestid>1246518</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5259c062568bf32910313440cee16a8b</srcmd5>
+    <version>10.5.0</version>
+    <time>1740586770</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.5.0:
+  * The pnpm.* settings from package.json can now be specified in
+    the pnpm-workspace.yaml file instead #9121.
+  * Added support for automatically syncing files of injected 
+    workspace packages after pnpm run #9081. Use the sync-injected
+    -deps-after-scripts setting to specify which scripts build 
+    the workspace package. This tells pnpm when syncing is needed.
+    The setting should be defined in a .npmrc file at the root of
+    the workspace.
+  * The packages field in pnpm-workspace.yaml became optional.
+  * pnpm link with no parameters should work as if --global is
+    specified #9151
+  * Allow scope registry CLI option without --config. prefix such
+    as --@scope:registry=https://scope.example.com/npm #9089
+  * pnpm link &lt;path&gt; should calculate relative path from the root
+    of the workspace directory #9132
+  * Fix a bug causing catalog snapshots to be removed from the
+    pnpm-lock.yaml file when using --fix-lockfile and --filter. #8639
+  * Fix a bug causing catalog protocol dependencies to not re-
+    resolve on a filtered install #8638
+</comment>
+    <requestid>1248515</requestid>
+  </revision>
 </revisionlist>
