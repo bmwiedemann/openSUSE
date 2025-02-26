@@ -590,4 +590,41 @@
   * chainparams: Remove seed.bitcoinstats.com</comment>
     <requestid>1238012</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>0b1a4938cf76cd91ace9a0b2b332f929</srcmd5>
+    <version>28.1</version>
+    <time>1740586520</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 28.1:
+  * doc: Update 28.1 release notes
+  * doc: generate 28.1 manpages
+  * build: bump to 28.1
+  * depends: Fix CXXFLAGS on NetBSD
+  * test: generateblocks called by multiple threads
+  * rpc: Extend scope of validation mutex in generateblock
+  * doc: update release notes for 28.1rc2
+  * examples: Generate example bitcoin.conf
+  * doc: Generate manpages
+  * build: Bump to 28.1rc2
+  * Add release note for #31223
+  * test: add functional test for -port behavior
+  * net, init: derive default onion port if a user specified a -port
+  * test: fix MIN macro-redefinition
+  * util: use explicit cast in MultiIntBitSet::Fill()
+  * fuzz: add cstdlib to FuzzedDataProvider
+  * doc: update manual pages for 28.1rc1
+  * build: bump version to 28.1rc1
+  * doc: update release notes for 28.1rc1
+  * build: disable compiling fuzz/utxo_snapshot.cpp with MSVC
+  * refactor: Drop deprecated space in operator&quot;&quot;_mst
+  * addrman: change nid_type from int to int64_t
+  * addrman, refactor: introduce user-defined type for internal nId
+  * depends: For mingw cross compile use -gcc-posix to prevent library conflict
+  * key: clear out secret data in `DecodeExtKey`
+  * ci: add LLVM_SYMBOLIZER_PATH to Valgrind fuzz job
+  * test: add missing sync to feature_fee_estimation.py
+  * doc: add testnet4 section header for config file
+  * doc: Archive 28.0 release notes</comment>
+    <requestid>1248346</requestid>
+  </revision>
 </revisionlist>
