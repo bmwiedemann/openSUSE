@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 26 09:01:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add jwe-avoid-unbounded-splits.patch (bsc#1237618,
+  CVE-2025-27144)
+
+-------------------------------------------------------------------
+Tue Feb 25 14:46:22 UTC 2025 - dmueller@suse.com
+
+- Update to version 0.59.1:
+  * release: v0.59.1 [release/v0.59] (#8334)
+  * fix(misconf): do not log scanners when misconfig scanning is disabled [backport: release/v0.59] (#8349)
+  * chore(deps): bump Go to `v1.23.5` [backport: release/v0.59] (#8343)
+  * fix(python): add `poetry` v2 support [backport: release/v0.59] (#8335)
+  * fix(sbom): preserve OS packages from multiple SBOMs [backport: release/v0.59] (#8333)
+
+-------------------------------------------------------------------
 Fri Feb  7 11:33:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - bump go version
@@ -97,7 +113,8 @@ Wed Jan 29 11:56:12 UTC 2025 - dmueller@suse.com
 
 - Update to version 0.58.2 (
       bsc#1234512, CVE-2024-45337,
-      bsc#1235265, CVE-2024-45338):
+      bsc#1235265, CVE-2024-45338,
+      bsc#1232948, CVE-2024-51744):
   * release: v0.58.2 [release/v0.58] (#8216)
   * fix(misconf): allow null values only for tf variables [backport: release/v0.58] (#8238)
   * fix(suse): SUSE - update OSType constants and references for compatility [backport: release/v0.58] (#8237)

@@ -1,0 +1,49 @@
+From 99b346cec4e86d102284642c5dcbe9bb0cacfc22 Mon Sep 17 00:00:00 2001
+From: Matthew McPherrin <mattm@letsencrypt.org>
+Date: Mon, 24 Feb 2025 15:06:34 -0500
+Subject: [PATCH] Don't allow unbounded amounts of splits (#167)
+
+In compact JWS/JWE, don't allow unbounded number of splits.
+Count to make sure there's the right number, then use SplitN.
+---
+ jwe.go      | 5 +++--
+ jws.go      | 5 +++--
+ jws_test.go | 3 +++
+ 3 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/jwe.go b/jwe.go
+index 89f03ee..9f1322d 100644
+--- a/jwe.go
++++ b/jwe.go
+@@ -288,10 +288,11 @@ func ParseEncryptedCompact(
+ 	keyAlgorithms []KeyAlgorithm,
+ 	contentEncryption []ContentEncryption,
+ ) (*JSONWebEncryption, error) {
+-	parts := strings.Split(input, ".")
+-	if len(parts) != 5 {
++	// Five parts is four separators
++	if strings.Count(input, ".") != 4 {
+ 		return nil, fmt.Errorf("go-jose/go-jose: compact JWE format must have five parts")
+ 	}
++	parts := strings.SplitN(input, ".", 5)
+ 
+ 	rawProtected, err := base64.RawURLEncoding.DecodeString(parts[0])
+ 	if err != nil {
+diff --git a/jws.go b/jws.go
+index 3a91230..d09d8ba 100644
+--- a/jws.go
++++ b/jws.go
+@@ -327,10 +327,11 @@ func parseSignedCompact(
+ 	payload []byte,
+ 	signatureAlgorithms []SignatureAlgorithm,
+ ) (*JSONWebSignature, error) {
+-	parts := strings.Split(input, ".")
+-	if len(parts) != 3 {
++	// Three parts is two separators
++	if strings.Count(input, ".") != 2 {
+ 		return nil, fmt.Errorf("go-jose/go-jose: compact JWS format must have three parts")
+ 	}
++	parts := strings.SplitN(input, ".", 3)
+ 
+ 	if parts[1] != "" && payload != nil {
+ 		return nil, fmt.Errorf("go-jose/go-jose: payload is not detached")
