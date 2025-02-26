@@ -243,6 +243,20 @@ Patch2000:      u_fbdevhw_kernel6.9_break_fbdev_open.patch
 
 Patch1218176:   u_miCloseScreen_check_for_null_pScreen_dev_private.patch
 
+Patch1237451:   U_CVE-2025-26594-0001-Cursor-Refuse-to-free-the-root-cursor.patch
+Patch1237452:   U_CVE-2025-26594-0002-dix-keep-a-ref-to-the-rootCursor.patch
+Patch1237453:   U_CVE-2025-26595-0001-xkb-Fix-buffer-overflow-in-XkbVModMaskText.patch
+Patch1237454:   U_CVE-2025-26596-0001-xkb-Fix-computation-of-XkbSizeKeySyms.patch
+Patch1237455:   U_CVE-2025-26597-0001-xkb-Fix-buffer-overflow-in-XkbChangeTypesOfKey.patch
+Patch1237456:   U_CVE-2025-26598-0001-Xi-Fix-barrier-device-search.patch
+Patch1237457:   U_CVE-2025-26599-0001-composite-Handle-failure-to-redirect-in-compRedirect.patch
+Patch1237458:   U_CVE-2025-26599-0002-composite-initialize-border-clip-even-when-pixmap-al.patch
+Patch1237459:   U_CVE-2025-26600-0001-dix-Dequeue-pending-events-on-frozen-device-on-remov.patch
+Patch1237460:   U_CVE-2025-26601-0001-sync-Do-not-let-sync-objects-uninitialized.patch
+Patch1237461:   U_CVE-2025-26601-0002-sync-Check-values-before-applying-changes.patch
+Patch1237462:   U_CVE-2025-26601-0003-sync-Do-not-fail-SyncAddTriggerToSyncObject.patch
+Patch1237463:   U_CVE-2025-26601-0004-sync-Apply-changes-last-in-SyncChangeAlarmAttributes.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -394,6 +408,20 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 2000 -p1
 
 %patch -P 1218176 -p1
+
+%patch -P 1237451 -p1
+%patch -P 1237452 -p1
+%patch -P 1237453 -p1
+%patch -P 1237454 -p1
+%patch -P 1237455 -p1
+%patch -P 1237456 -p1
+%patch -P 1237457 -p1
+%patch -P 1237458 -p1
+%patch -P 1237459 -p1
+%patch -P 1237460 -p1
+%patch -P 1237461 -p1
+%patch -P 1237462 -p1
+%patch -P 1237463 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):
