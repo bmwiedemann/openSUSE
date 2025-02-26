@@ -5426,4 +5426,27 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 10.0 release</comment>
     <requestid>1239801</requestid>
   </revision>
+  <revision rev="459" vrev="2">
+    <srcmd5>2ef49deebd989f636ba1fd58b6444d96</srcmd5>
+    <version>10.0</version>
+    <time>1740586502</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for adding the debuginfo package for Windows binaries as
+  requested on https://build.opensuse.org/request/show/1244505
+  * Use suffix -debuginfo for Windows debuginfo package name
+  * Add a conflict tag to the wine*-win-debuginfo package to
+    prevent parallel installations
+- Other fixes related to the debuginfo package for Windows binaries
+  * add build requirement for mingw32|64-filesystem &gt;= 20250221
+    as this package depends on them
+  * Use shorter package name for Windows binaries (wine*-win-debuginfo)
+  * Install debug files for Windows binaries in /usr/lib/debug because
+    post-build-checks require this
+  * Add the empty directory /usr/src/debug/wine-&lt;version&gt; to debuginfo
+    Package for Windows binaries, as required by post-build-checks
+- Fix wine-devel.x86_64: E: suse-zypp-otherproviders otherproviders(*)
+  The 'otherproviders(symbol)' syntax is deprecated, it is not needed
+  and you can use the 'symbol' directly: 'conflicts: symbol' (forwarded request 1248193 from rhabacker)</comment>
+    <requestid>1248325</requestid>
+  </revision>
 </revisionlist>

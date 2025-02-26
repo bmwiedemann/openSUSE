@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Feb 20 11:51:39 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fixes for adding the debuginfo package for Windows binaries as
+  requested on https://build.opensuse.org/request/show/1244505
+  * Use suffix -debuginfo for Windows debuginfo package name
+  * Add a conflict tag to the wine*-win-debuginfo package to
+    prevent parallel installations
+- Other fixes related to the debuginfo package for Windows binaries
+  * add build requirement for mingw32|64-filesystem >= 20250221
+    as this package depends on them
+  * Use shorter package name for Windows binaries (wine*-win-debuginfo)
+  * Install debug files for Windows binaries in /usr/lib/debug because
+    post-build-checks require this
+  * Add the empty directory /usr/src/debug/wine-<version> to debuginfo
+    Package for Windows binaries, as required by post-build-checks
+- Fix wine-devel.x86_64: E: suse-zypp-otherproviders otherproviders(*)
+  The 'otherproviders(symbol)' syntax is deprecated, it is not needed
+  and you can use the 'symbol' directly: 'conflicts: symbol'
+  
+-------------------------------------------------------------------
+Wed Feb 12 22:25:05 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Removed architecture from the Windows debug symbol package
+  name, as different architectures can be included
+- Fixed exclusion of debug symbols in the list of included files
+
+-------------------------------------------------------------------
+Mon Feb  3 07:19:46 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add debug symbols for cross compiled binaries as separate
+  package (boo#1236187)
+- Fix warning 'non-standard-group Unspecified'
+- Remove duplicated entry from changelog
+
+-------------------------------------------------------------------
 Thu Jan 23 10:04:26 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - updated to 10.0 release
@@ -202,15 +237,6 @@ Sun Jun 23 11:23:40 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - 0001-winewayland-Avoid-crashing-when-the-dummy-window-sur.patch:
   fixed wayland
-
--------------------------------------------------------------------
-Sat Jun 15 14:49:37 UTC 2024 - Marcus Meissner <meissner@suse.com>
-
-- Updated to 9.11 release
-  - C++ exception handling on ARM platforms.
-  - More DPI Awareness support improvements.
-  - Various bug fixes.
-- update staging to 9.11 release
 
 -------------------------------------------------------------------
 Sat Jun 15 14:49:37 UTC 2024 - Marcus Meissner <meissner@suse.com>

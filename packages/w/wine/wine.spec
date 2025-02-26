@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package wine
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -34,12 +34,51 @@
 %define         staging 1
 %endif
 
+%global _mingw32_find_debuginfo \
+    rm -f %{_builddir}/mingw32-debugfiles.list; \
+    bash -x /usr/lib/rpm/mingw32-find-debuginfo.sh --no-debug-source-package %{_builddir}; \
+    mkdir -p %{buildroot}/usr/lib/debug%{_libdir}/wine/i386-windows; \
+    mv %{buildroot}%{_libdir}/wine/i386-windows/*.debug %{buildroot}/usr/lib/debug%{_libdir}/wine/i386-windows; \
+    sed -i 's,^%{_libdir},/usr/lib/debug%{_libdir},g' %{_builddir}/mingw32-debugfiles.list; \
+    mkdir -p %{buildroot}/usr/src/debug/%{name}-%{version}; \
+    echo "%dir /usr/src/debug/%{name}-%{version}" >>  %{_builddir}/mingw32-debugfiles.list; \
+    %{nil}
+
+%global _mingw64_find_debuginfo \
+    rm -f %{_builddir}/mingw64-debugfiles.list; \
+    bash -x /usr/lib/rpm/mingw64-find-debuginfo.sh --no-debug-source-package %{_builddir}; \
+    mkdir -p %{buildroot}/usr/lib/debug%{_libdir}/wine/x86_64-windows; \
+    mv %{buildroot}%{_libdir}/wine/x86_64-windows/*.debug %{buildroot}/usr/lib/debug%{_libdir}/wine/x86_64-windows; \
+    sed -i 's,^%{_libdir},/usr/lib/debug%{_libdir},g' %{_builddir}/mingw64-debugfiles.list; \
+    mkdir -p %{buildroot}/usr/src/debug/%{name}-%{version}; \
+    echo "%dir /usr/src/debug/%{name}-%{version}" >> %{_builddir}/mingw64-debugfiles.list; \
+    %{nil}
+
+%if %wow64
+%global __arch_install_post \
+    %_mingw32_find_debuginfo \
+    %_mingw64_find_debuginfo \
+    cat %{_builddir}/mingw32-debugfiles.list >> %{_builddir}/mingw64-debugfiles.list; \
+    %{nil}
+%global _win_debug_package %_mingw64_debug_package -e -C wine%{psuffix}-win-debuginfo -N wine%{psuffix}-win-debuginfo
+%else
+%ifarch %{ix86}
+%global __arch_install_post %_mingw32_find_debuginfo
+%global _win_debug_package %_mingw32_debug_package -e -C wine%{psuffix}-win-debuginfo -N wine%{psuffix}-win-debuginfo
+%endif
+%ifarch x86_64
+%global __arch_install_post %_mingw64_find_debuginfo
+%global _win_debug_package %_mingw64_debug_package -e -C wine%{psuffix}-win-debuginfo -N wine%{psuffix}-win-debuginfo
+%endif
+%endif
+
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
 %define downloadver  10.0
 Version:        10.0
 Release:        0
 Summary:        An MS Windows Emulator
+Group:          System/Emulators/PC
 License:        LGPL-2.1-or-later
 URL:            https://winehq.org
 Source0:        https://dl.winehq.org/wine/source/10.0/wine-%{downloadver}.tar.xz
@@ -120,11 +159,14 @@ BuildRequires:  llvm
 %endif
 %ifarch %{ix86}
 BuildRequires:  mingw32-cross-gcc
+BuildRequires:  mingw32-filesystem >= 20250221
 %endif
 %ifarch x86_64
 BuildRequires:  mingw64-cross-gcc
+BuildRequires:  mingw64-filesystem >= 20250221
 %if %{wow64}
 BuildRequires:  mingw32-cross-gcc
+BuildRequires:  mingw32-filesystem >= 20250221
 %endif
 %endif
 %if 0%{?suse_version} < 1600
@@ -155,16 +197,16 @@ Requires:       samba-winbind
 Recommends:     wine-gecko >= 2.47.4
 Recommends:     wine-mono >= 9.4.0
 Recommends:     winetricks
+Conflicts:      wine
 Conflicts:      wine-gecko < 2.47.4
 Conflicts:      wine-mono < 9.4.0
-Conflicts:      otherproviders(wine)
 Provides:       wine-mp3 = %version
 Obsoletes:      wine-mp3 < %version
 %if "%{flavor}" != ""
 Provides:       wine = %{version}-%{release}
 %endif
 %if "%{flavor}" == "wow64" || "%{flavor}" == "staging-wow64"
-Conflicts:      otherproviders(wine-32bit)
+Conflicts:      wine-32bit
 Provides:       wine-32bit = %{version}-%{release}
 %endif
 ExclusiveArch:  aarch64 %{ix86} x86_64
@@ -187,11 +229,13 @@ Summary:        Files for Wine development
 %if "%{flavor}" != ""
 Provides:       wine-devel = %{version}
 %endif
-Conflicts:      otherproviders(wine-devel)
+Conflicts:      wine-devel
 
 %description devel
 This RPM contains the header files and development tools for the WINE
 libraries.
+
+%_win_debug_package
 
 %prep
 %autosetup -n wine-%{downloadver}
@@ -262,10 +306,6 @@ cat %SOURCE97
 
 %install
 %make_install DESTDIR=%{buildroot}
-
-%ifarch %{ix86} x86_64
-find %{buildroot}/usr/lib*/wine/*-windows/ -type f -exec strip --strip-debug {} +
-%endif
 
 rm -rf %{buildroot}%{_mandir}/{pl,de,fr}.UTF-8
 
