@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-crypton-x509-store
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.9
+Version:        1.6.10
 Release:        0
 Summary:        X.509 collection accessing and storing methods
 License:        BSD-3-Clause
