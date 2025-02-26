@@ -39,8 +39,10 @@ BuildRequires:  gnutls
 BuildRequires:  opensc
 BuildRequires:  p11-kit-devel
 BuildRequires:  p11-kit-server
-BuildRequires:  softhsm-devel
 BuildRequires:  pkgconfig(nss)
+%if 0%{?suse_version} >= 1699
+BuildRequires:  softhsm-devel
+%endif
 
 %description
 This is an Openssl 3.x provider to access Hardware or Software Tokens using
