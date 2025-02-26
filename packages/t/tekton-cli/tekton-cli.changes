@@ -1,0 +1,373 @@
+-------------------------------------------------------------------
+Wed Feb 26 05:49:29 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.40.0:
+  * New version v0.40.0
+  * Bump github.com/go-jose/go-jose/v4 from 4.0.4 to 4.0.5
+  * Bump github.com/google/go-cmp from 0.6.0 to 0.7.0
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump github.com/sigstore/cosign/v2 from 2.4.2 to 2.4.3
+  * Bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+  * Use go v1.23.4 and bump goreleaser to v2.5.0
+  * Bump the go-k8s-dependencies group with 4 updates
+  * Bump github.com/golangci/golangci-lint from 1.64.4 to 1.64.5 in
+    /tools
+  * Bump github.com/golangci/golangci-lint from 1.63.4 to 1.64.4 in
+    /tools
+  * Bump github.com/tektoncd/chains from 0.23.1 to 0.24.0
+  * Bump gotest.tools/v3 from 3.5.1 to 3.5.2
+  * Bump github.com/tektoncd/triggers from 0.30.1 to 0.31.0
+  * Bump github.com/tektoncd/hub from 1.19.2 to 1.20.0
+  * Bump github.com/google/go-containerregistry from 0.20.2 to
+    0.20.3
+  * Bump golang.org/x/term from 0.28.0 to 0.29.0
+  * Bump clockwork from 0.4.0 to 0.5.0
+  * Add buffer for pod event
+  * Bump github.com/tektoncd/pipeline from 0.66.0 to 0.68.0
+  * Bump to goreleasr v2.2.0
+  * Bump readme for v0.39.1
+  * Bump github.com/spf13/pflag from 1.0.5 to 1.0.6
+  * feat(rpmbuild): update bash-completion handling
+  * Bump github.com/tektoncd/chains from 0.23.0 to 0.23.1
+  * Bump the go-k8s-dependencies group with 4 updates
+  * Bump github.com/tektoncd/hub from 1.19.1 to 1.19.2
+  * Bump github.com/tektoncd/triggers from 0.30.0 to 0.30.1
+  * Bump golang.org/x/net from 0.30.0 to 0.33.0
+  * Bump the go-docker-dependencies group across 1 directory with 2
+    updates
+  * Bump github.com/sigstore/sigstore from 1.8.11 to 1.8.12
+  * Fix eventlistener permissions and tests
+  * Remove create clusterrole in triggers test
+  * Bump github.com/tektoncd/hub from 1.19.0 to 1.19.1
+  * Bump github.com/golangci/golangci-lint from 1.63.2 to 1.63.4 in
+    /tools
+  * Bump golang.org/x/term from 0.27.0 to 0.28.0
+  * Add pratap0007 and divyansh42 as reviewer
+  * Bump github.com/sigstore/sigstore from 1.8.10 to 1.8.11
+  * Bump github.com/golangci/golangci-lint from 1.62.2 to 1.63.2 in
+    /tools
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump golang.org/x/crypto from 0.28.0 to 0.31.0
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump github.com/tektoncd/pipeline from 0.65.3 to 0.66.0
+  * Bump the go-k8s-dependencies group with 4 updates
+  * Bump golang.org/x/term from 0.26.0 to 0.27.0
+  * Bump github.com/tektoncd/pipeline from 0.65.2 to 0.65.3
+  * Update choco and release docs to v0.39.0
+  * Fix debbuild
+  * Do not print twice Cancelled when listing
+
+-------------------------------------------------------------------
+Fri Jan 31 05:41:35 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.39.1:
+  This is a bug fix release for CVEs GHSA-w32m-9786-jp63 on
+  golang.org/x/net and GHSA-v778-237x-gjrc on golang.org/x/crypto.
+  * New version v0.39.1
+  * Bump golang.org/x/net from 0.30.0 to 0.33.0
+  * Bump golang.org/x/crypto from 0.28.0 to 0.31.0
+
+-------------------------------------------------------------------
+Tue Nov 26 14:02:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.39.0:
+  * New version v0.39.0
+  * Use io.ReadFull to read the bundle content
+  * Bump github.com/golangci/golangci-lint from 1.62.0 to 1.62.2 in
+    /tools
+  * Bump the go-k8s-dependencies group with 4 updates
+  * Bump github.com/tektoncd/pipeline from 0.65.1 to 0.65.2
+  * Bump github.com/golangci/golangci-lint from 1.61.0 to 1.62.0 in
+    /tools
+  * Reword variable name to fix lint issues
+  * Bump go to 1.22.8 and remove toolchain
+  * Bump golang.org/x/term from 0.25.0 to 0.26.0
+  * Bump github.com/tektoncd/chains from 0.22.2 to 0.23.0
+  * Bump github.com/tektoncd/triggers from 0.29.1 to 0.30.0
+  * refactor RemoveFieldForExport function
+  * Bump github.com/tektoncd/hub from 1.18.0 to 1.19.0
+  * Bump github.com/tektoncd/pipeline from 0.65.0 to 0.65.1
+  * Bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1
+  * Set status to succeeded when the reason is Completed
+  * Bump the go-k8s-dependencies group with 4 updates
+  * Bump github.com/creack/pty from 1.1.23 to 1.1.24
+  * Bump github.com/tektoncd/pipeline from 0.64.0 to 0.65.0
+  * Bump github.com/fatih/color from 1.17.0 to 1.18.0
+  * Bump cosign to v2.4.1
+  * Bump golang.org/x/term from 0.24.0 to 0.25.0
+  * Bump github.com/tektoncd/pipeline from 0.63.0 to 0.64.0
+  * Bump github.com/tektoncd/chains from 0.22.1 to 0.22.2
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump the go-docker-dependencies group with 2 updates
+  * Fix hard link for Mac
+  * Bump github.com/tektoncd/chains from 0.22.0 to 0.22.1
+  * Bump the go-k8s-dependencies group with 4 updates
+  * Bump github.com/tektoncd/pipeline from 0.62.2 to 0.63.0
+  * Bump github.com/golangci/golangci-lint from 1.60.3 to 1.61.0 in
+    /tools
+  * Bump golang.org/x/term from 0.23.0 to 0.24.0
+  * Update docs for tkn 0.38.1
+  * Bump github.com/sigstore/sigstore from 1.8.8 to 1.8.9
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump github.com/tektoncd/triggers from 0.29.0 to 0.29.1
+  * Bump tektoncd/pipeline to v0.62.3
+  * Refactored delete.go file for customrun
+  * Bump the go-docker-dependencies group with 2 updates
+  * Fix golint error
+  * Remove hardcoded golangci-lint and go version
+  * Fix ubuntu launchpad build
+  * Bump github.com/tektoncd/pipeline from 0.62.1 to 0.62.2
+  * Bump github.com/golangci/golangci-lint from 1.60.2 to 1.60.3 in
+    /tools
+  * Update docs for 0.38.0 release
+  * Move to goreleaser v2
+  * Bump github.com/golangci/golangci-lint from 1.60.1 to 1.60.2 in
+    /tools
+
+-------------------------------------------------------------------
+Fri Sep 13 18:45:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.38.1:
+  * New version v0.38.1
+  * Bump github.com/tektoncd/triggers from 0.29.0 to 0.29.1
+  * Bump tektoncd/pipeline to v0.62.3
+
+-------------------------------------------------------------------
+Fri Sep 13 18:34:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.38.0:
+  * New version v0.38.0
+  * Bump github.com/tektoncd/triggers from 0.28.0 to 0.29.0
+  * Re-use printer for multiple elements
+  * Bump to golangci-lint v1.60.1
+  * Bump github.com/tektoncd/hub from 1.17.0 to 1.18.0
+  * Deleting a customrun on the basis of name
+  * Bump github.com/tektoncd/chains from 0.21.1 to 0.22.0
+  * Bump the go-k8s-dependencies group with 4 updates
+  * Bump github.com/golangci/golangci-lint from 1.59.1 to 1.60.1 in /tools
+  * Bump github.com/creack/pty from 1.1.21 to 1.1.23
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump github.com/google/go-containerregistry from 0.20.1 to 0.20.2
+  * Bump github.com/sigstore/cosign/v2 from 2.3.0 to 2.4.0
+  * Bump github.com/sigstore/sigstore from 1.8.7 to 1.8.8
+  * Bump golang.org/x/term from 0.22.0 to 0.23.0
+  * Bump github.com/tektoncd/pipeline from 0.62.0 to 0.62.1
+  * Bump go version to 1.22.5 as min rquirement
+  * Bump github.com/sigstore/cosign/v2 from 2.2.4 to 2.3.0
+  * Fix tests based on pipeline 0.62.0 spec
+  * Bump github.com/tektoncd/pipeline from 0.61.1 to 0.62.0
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump the go-k8s-dependencies group with 4 updates
+  * Bump github.com/google/go-containerregistry from 0.20.0 to 0.20.1
+  * Bump github.com/sigstore/sigstore from 1.8.6 to 1.8.7
+  * Bump github.com/google/go-containerregistry from 0.19.2 to 0.20.0
+  * Bump github.com/tektoncd/pipeline from 0.61.0 to 0.61.1
+  * Bump google.golang.org/grpc from 1.64.0 to 1.64.1
+  * Bump github.com/tektoncd/triggers from 0.27.0 to 0.28.0
+  * Bump golang.org/x/term from 0.21.0 to 0.22.0
+  * Try to fix  alibabacloud-go/cr-20160607 license
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump github.com/sigstore/sigstore from 1.8.5 to 1.8.6
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump tektoncd/pipeline to v0.61.0
+  * Bump github.com/sigstore/sigstore from 1.8.4 to 1.8.5
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump github.com/hashicorp/go-retryablehttp from 0.7.5 to 0.7.7
+  * Bump github.com/google/go-containerregistry from 0.19.1 to 0.19.2
+  * Bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+  * Bump the go-k8s-dependencies group with 3 updates
+  * Bump github.com/docker/docker in the go-docker-dependencies group
+  * Bump github.com/Azure/azure-sdk-for-go/sdk/azidentity
+  * Bump github.com/tektoncd/chains from 0.21.0 to 0.21.1
+  * Bump github.com/tektoncd/pipeline from 0.60.1 to 0.60.2
+  * Bump github.com/golangci/golangci-lint from 1.59.0 to 1.59.1 in /tools
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump golang.org/x/term from 0.20.0 to 0.21.0
+  * Bump github.com/tektoncd/pipeline from 0.60.0 to 0.60.1
+  * Bump github.com/sigstore/sigstore from 1.8.3 to 1.8.4
+  * Bump github.com/golangci/golangci-lint from 1.58.2 to 1.59.0 in /tools
+  * Bump github.com/tektoncd/chains from 0.20.1 to 0.21.0
+  * Bump github.com/tektoncd/pipeline from 0.59.0 to 0.60.0
+  * Fix links in doc to fix pre-commit
+  * Bump github.com/golangci/golangci-lint from 1.58.1 to 1.58.2 in /tools
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump the go-k8s-dependencies group with 3 updates
+  * Bump github.com/fatih/color from 1.16.0 to 1.17.0
+  * Update docs for v0.37.0
+
+-------------------------------------------------------------------
+Tue May 14 05:00:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.37.0:
+  * New version v0.37.0
+  * Bump github.com/tektoncd/triggers from 0.26.2 to 0.27.0
+  * Bump the go-docker-dependencies group with 2 updates
+  * Bump github.com/golangci/golangci-lint from 1.58.0 to 1.58.1 in
+    /tools
+  * Bump github.com/tektoncd/hub from 1.16.0 to 1.17.0
+  * Bump goreleaser for latest v1.25.1
+  * Bump go version to 1.22
+  * Group all k8s dep together
+  * Bump k8s.io/apimachinery to v0.28.9
+  * Bump k8s.io/cli-runtime from 0.28.5 to 0.28.9
+  * Group docker dep updates
+  * Bump golangci-lint to v0.58.0
+  * Bump k8s.io deps to match with tektoncd/pipeline
+  * Bump github.com/golangci/golangci-lint from 1.57.2 to 1.58.0 in
+    /tools
+  * Bump golang.org/x/term from 0.19.0 to 0.20.0
+  * Add -E flag to exit with the pr sate on unix shell
+  * Bump github.com/docker/docker
+  * Bump github.com/docker/cli
+  * Bump github.com/tektoncd/triggers from 0.26.1 to 0.26.2
+  * Bump github.com/tektoncd/pipeline from 0.58.0 to 0.59.0
+  * Bump github.com/docker/docker
+  * Bump github.com/docker/cli
+  * Bump golang.org/x/net from 0.22.0 to 0.23.0
+  * Bump github.com/docker/cli
+  * Bump github.com/docker/docker
+  * Bump github.com/sigstore/cosign/v2 from 2.2.2 to 2.2.4
+  * Bump sigstore to v1.8.3
+  * Bump github.com/docker/cli
+  * Bump github.com/docker/docker
+  * Bump golang.org/x/term from 0.18.0 to 0.19.0
+  * Bump github.com/golangci/golangci-lint from 1.57.1 to 1.57.2 in
+    /tools
+  * Fix codeql github action
+  * Bump github/codeql-action from 2 to 3
+  * Bump actions/checkout from 2 to 4
+  * Enable dependabot on github actions
+  * Add 0.35.2 in LTS doc
+  * Bump github.com/golangci/golangci-lint from 1.57.0 to 1.57.1 in
+    /tools
+  * Bump github.com/tektoncd/chains from 0.20.0 to 0.20.1
+  * Bump github.com/docker/docker
+  * Bump github.com/docker/cli
+  * Bump github.com/tektoncd/pipeline from 0.57.0 to 0.58.0
+  * Bump tkn to v0.36.0
+  * Bump github.com/docker/cli
+  * Bump github.com/golangci/golangci-lint from 1.56.2 to 1.57.0 in
+    /tools
+  * Bump github.com/docker/docker
+
+-------------------------------------------------------------------
+Thu Mar 21 19:30:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.36.0:
+  * New version v0.36.0
+  * Bump k8s.io/cli-runtime from 0.26.14 to 0.26.15
+  * Bump github.com/google/go-containerregistry from 0.19.0 to
+    0.19.1
+  * Bump golang to 1.21 as minimum requirement
+  * Bump google.golang.org/protobuf from 1.32.0 to 1.33.0
+  * Bump google.golang.org/protobuf from 1.31.0 to 1.33.0 in /tools
+  * Bump gopkg.in/go-jose/go-jose.v2 from 2.6.1 to 2.6.3
+  * Bump github.com/cloudevents/sdk-go/v2 from 2.14.0 to 2.15.2
+  * Bump github.com/docker/cli
+  * Bump github.com/go-jose/go-jose/v3 from 3.0.2 to 3.0.3
+  * Bump github.com/docker/docker
+  * Bump golang.org/x/term from 0.17.0 to 0.18.0
+  * Bump golangci-lint to v0.56.2
+  * Prepare setup for moving e2e to kind
+  * Bump github.com/sigstore/sigstore from 1.8.1 to 1.8.2
+  * Fix logs command not showing logs
+  * Add labeling support to `tkn bundle push`
+  * Drafted a basic doc for tkn-plugins
+  * Bump github.com/tektoncd/pipeline from 0.56.1 to 0.57.0
+  * Bump go.uber.org/zap from 1.26.0 to 1.27.0
+  * Bump github.com/golangci/golangci-lint from 1.56.1 to 1.56.2 in
+    /tools
+  * Bump k8s.io/cli-runtime from 0.26.13 to 0.26.14
+  * Bump knative.dev/serving from 0.38.6 to 0.39.0
+  * Bump github.com/tektoncd/pipeline from 0.56.0 to 0.56.1
+  * Bump readme for v0.35.1
+  * Fix triggertemplate describe command breaks backward
+    compatibility
+  * Bump github.com/golangci/golangci-lint from 1.56.0 to 1.56.1 in
+    /tools
+  * Bump github.com/golangci/golangci-lint from 1.55.2 to 1.56.0 in
+    /tools
+  * Bump golang.org/x/term from 0.16.0 to 0.17.0
+  * Refactored README.md file.
+  * Bump docs to latest v0.35.0
+
+-------------------------------------------------------------------
+Wed Feb 14 20:04:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.35.1:
+  * New version v0.35.1
+  * Fix triggertemplate describe command breaks backward
+    compatibility
+
+-------------------------------------------------------------------
+Thu Feb 08 12:02:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.35.0:
+  * New version v0.35.0
+  * Bump triggers to v0.26.0
+  * Bump github.com/docker/docker
+  * Bump github.com/docker/cli
+  * Move chains cmd to v1
+  * Bump tektoncd/chains to v0.20.0
+  * Bump github.com/docker/docker
+  * Bump github.com/docker/cli
+  * Bump github.com/tektoncd/hub from 1.15.1 to 1.16.0
+  * Bump hashicorp/vault/api to v1.11.0
+  * Bump github.com/google/go-containerregistry from 0.18.0 to
+    0.19.0
+  * feat: add CustomRun commad with list
+  * Bump github.com/docker/docker
+  * Bump github.com/docker/cli
+  * Bump github.com/tektoncd/pipeline from 0.55.0 to 0.56.0
+  * Bump github.com/docker/docker
+  * Bump github.com/docker/cli
+  * Bump github.com/google/go-containerregistry from 0.17.0 to
+    0.18.0
+  * Bump k8s.io/cli-runtime from 0.26.12 to 0.26.13
+  * Bump github.com/sigstore/sigstore from 1.8.0 to 1.8.1
+  * Bump tkn to latest version v0.34.0
+
+-------------------------------------------------------------------
+Wed Jan 31 18:14:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.34.0:
+  * New version v0.34.0
+  * Bump golang and goreleaser versions
+  * Bump github.com/cloudflare/circl from 1.3.5 to 1.3.7
+  * Bump golang.org/x/term from 0.15.0 to 0.16.0
+  * Adds hub version in output of `tkn version` command
+  * Bump sigstore/cosign to v2.2.2
+  * Bump github.com/tektoncd/pipeline from 0.54.2 to 0.55.0
+  * Bump k8s.io/cli-runtime from 0.26.11 to 0.26.12
+  * Bump github.com/sigstore/sigstore from 1.7.6 to 1.8.0
+  * Bump github.com/tektoncd/pipeline from 0.54.1 to 0.54.2
+  * Bump github.com/tektoncd/pipeline from 0.54.0 to 0.54.1
+  * Bump golang.org/x/crypto from 0.16.0 to 0.17.0
+  * Bump github.com/sigstore/sigstore from 1.7.5 to 1.7.6
+  * Bump github.com/google/go-containerregistry from 0.16.1 to
+    0.17.0
+  * Bump github.com/theupdateframework/go-tuf from 0.6.1 to 0.7.0
+  * Bump github.com/ktr0731/go-fuzzyfinder from 0.7.0 to 0.8.0
+  * Bump github.com/tektoncd/pipeline from 0.53.2 to 0.54.0
+  * Bump golang.org/x/term from 0.14.0 to 0.15.0
+  * Bump knative.dev/serving
+  * Bump github.com/tektoncd/hub from 1.15.0 to 1.15.1
+  * Bump github.com/go-jose/go-jose/v3 from 3.0.0 to 3.0.1
+  * Add a pre-commit setup to the repository.
+  * update make lint to run goimports and download it to the
+    correct place
+  * update the `task start` cmd to also allow an oci bundle with a
+    task name to be created from the cli
+  * Bump github.com/creack/pty from 1.1.20 to 1.1.21
+  * Bump k8s.io/cli-runtime from 0.26.10 to 0.26.11
+  * Bump github.com/tektoncd/pipeline from 0.53.1 to 0.53.2
+  * Bump github.com/tektoncd/triggers from 0.25.2 to 0.25.3
+  * Bump github.com/tektoncd/pipeline from 0.53.0 to 0.53.1
+  * Fix the release script
+  * Bump choco and readme to v0.33.0
+
+-------------------------------------------------------------------
+Fri Nov 17 19:37:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package tekton-cli
