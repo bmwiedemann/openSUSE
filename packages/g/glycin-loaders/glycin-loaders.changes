@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 25 10:23:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.5:
+  + Fixed: apng: Support image/apng mime-type to support animated
+    PNGs again. This mime-type is now detected due to upstream
+    changes at xdg/shared-mime-info.
+
+-------------------------------------------------------------------
 Sat Jan  4 08:16:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.4:

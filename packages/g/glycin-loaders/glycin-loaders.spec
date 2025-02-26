@@ -19,7 +19,7 @@
 %bcond_without jxl
 
 Name:           glycin-loaders
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Sandboxed image rendering
 License:        LGPL-2.1-or-later OR MPL-2.0
