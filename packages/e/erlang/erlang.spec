@@ -1,7 +1,7 @@
 #
 # spec file for package erlang
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -274,7 +274,7 @@ export LANG="en_US.UTF-8"
     --enable-shared-zlib
 # clean stalled files before rebuild them
 %make_build clean
-%make_build
+%make_build V=1
 # to build the docs, just compiled erlang is required
 PATH=$PWD/bin:$PATH ERL_TOP=$TMP_ERL_TOP %make_build docs
 
@@ -282,20 +282,19 @@ PATH=$PWD/bin:$PATH ERL_TOP=$TMP_ERL_TOP %make_build docs
 
 %check
 # Disable tests by default, they are slow and have many false positives.
-#PATH=$PWD/bin:$PATH make test
+#PATH=$PWD/bin:$PATH make test V=1
 
 %install
-%make_install install-docs
+%make_install install-docs V=1
 
 export TOOLS_VERSION=`ls %{buildroot}%{_libdir}/erlang/lib/ |grep ^tools- | sed "s|tools-||"`
 
 # clean up
-find %{buildroot}%{_libdir}/erlang -perm 0775 | xargs chmod -v 0755
-find %{buildroot}%{_libdir}/erlang -name Makefile | xargs chmod -v 0644
-find %{buildroot}%{_libdir}/erlang -name \*.bat | xargs rm -fv
-find %{buildroot}%{_libdir}/erlang -name index.txt.old | xargs rm -fv
-find %{buildroot}%{_libdir}/erlang -type d -path '*/priv/obj' -print | xargs rm -rfv
-find %{buildroot}%{_libdir}/erlang -name '.build' -print | xargs rm -rfv
+find %{buildroot}%{_libdir}/erlang -perm 0775 -exec chmod -v 0755 "{}" +
+find %{buildroot}%{_libdir}/erlang -name Makefile -exec chmod -v 0644 "{}" +
+find %{buildroot}%{_libdir}/erlang "(" -name "*.bat" -o -name index.txt.old ")" -print -delete
+find %{buildroot}%{_libdir}/erlang -type d -path '*/priv/obj' -exec rm -Rfv "{}" "+"
+find %{buildroot}%{_libdir}/erlang -name '.build' -exec rm -Rfv "{}" "+"
 
 # doc
 mkdir -p erlang_doc
@@ -327,7 +326,7 @@ cat > %{buildroot}%{_datadir}/emacs/site-lisp/erlang.el << EOF
 EOF
 
 # hardlink duplicates:
-find . -name "start_erl*" | xargs chmod 755
+find . -name "start_erl*" -exec chmod 755 "{}" +
 %fdupes %{buildroot}/%{_libdir}/erlang
 # %%doc macro copies the files to the package doc dir, hardlinks thus don't work
 %fdupes -s erlang_doc
