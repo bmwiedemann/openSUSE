@@ -1,7 +1,7 @@
 #
 # spec file for package python-sigstore-protobuf-specs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,20 @@
 
 
 Name:           python-sigstore-protobuf-specs
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        A library for serializing and deserializing Sigstore messages
 License:        Apache-2.0
 URL:            https://github.com/sigstore/protobuf-specs
 Source:         https://files.pythonhosted.org/packages/source/s/sigstore-protobuf-specs/sigstore_protobuf_specs-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pydantic >= 2}
+BuildRequires:  python-rpm-macros
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-betterproto
+Requires:       python-pydantic >= 2
 BuildArch:      noarch
 %python_subpackages
 
