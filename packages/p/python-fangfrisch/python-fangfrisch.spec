@@ -1,7 +1,7 @@
 #
 # spec file for package python-fangfrisch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-fangfrisch
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Update and verify unofficial Clam Anti-Virus signatures
 License:        GPL-3.0-or-later

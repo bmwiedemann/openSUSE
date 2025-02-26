@@ -7,4 +7,18 @@
     <comment>We could use it.</comment>
     <requestid>1222071</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ee7c4914cfb5a117c0c8be4fd6dd5cfb</srcmd5>
+    <version>1.9.1</version>
+    <time>1740587063</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.1:
+  * Raise Python requirement from version 3.7 to 3.8. Python 3.7
+    has reached EOL in 2023 and is no longer maintained by the
+    Python Software Foundation.
+  * Add CI tests using Python 3.13, drop tests for 3.7.
+  * Restructure Python build to ease packaging.
+  * Fix issue #41.</comment>
+    <requestid>1248633</requestid>
+  </revision>
 </revisionlist>

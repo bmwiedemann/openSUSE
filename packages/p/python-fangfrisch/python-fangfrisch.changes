@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 26 10:32:53 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * Raise Python requirement from version 3.7 to 3.8. Python 3.7
+    has reached EOL in 2023 and is no longer maintained by the
+    Python Software Foundation.
+  * Add CI tests using Python 3.13, drop tests for 3.7.
+  * Restructure Python build to ease packaging.
+  * Fix issue #41.
+
+-------------------------------------------------------------------
 Thu Nov  7 09:48:47 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC, switch to pyproject_* macros.
