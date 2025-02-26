@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb 25 20:55:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.30.0:
+  * Always setup logs sdk,
+    OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED only
+    controls python `logging` module handler setup
+  * Add `attributes` field in `metrics.get_meter` wrapper
+    function
+  * Add Python 3.13 support
+  * sdk: don't log or print warnings when the SDK has been
+    disabled
+  * Fix span context manager typing by using ParamSpec from
+    typing_extensions
+  * Fix serialization of None values in logs body to match
+    1.31.0+ data model
+  * [BREAKING] semantic-conventions: Remove `opentelemetry.semcon
+    v.attributes.network_attributes.NETWORK_INTERFACE_NAME`
+    introduced by mistake in the wrong module.
+  * Add support for explicit bucket boundaries advisory for
+    Histograms
+  * semantic-conventions: Bump to 1.30.0
+
+-------------------------------------------------------------------
 Wed Jan  8 11:53:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.29.0
