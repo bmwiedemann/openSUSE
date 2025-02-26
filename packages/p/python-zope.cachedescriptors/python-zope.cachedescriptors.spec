@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.cachedescriptors
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-zope.cachedescriptors
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Method and property caching decorators
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/zope.cachedescriptors
-Source:         https://files.pythonhosted.org/packages/source/z/zope.cachedescriptors/zope.cachedescriptors-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zope.cachedescriptors/zope_cachedescriptors-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -44,7 +44,7 @@ also useful for managing the computation of volatile attributes for
 persistent objects.
 
 %prep
-%setup -q -n zope.cachedescriptors-%{version}
+%setup -q -n zope_cachedescriptors-%{version}
 
 %build
 %pyproject_wheel

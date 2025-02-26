@@ -55,4 +55,14 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1137660</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fbf2aa62da347c51dbd5365b084c3835</srcmd5>
+    <version>5.1</version>
+    <time>1740586636</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1:
+  * Add support for Python 3.12, 3.13.
+  * Drop support for Python 3.7, 3.8.</comment>
+    <requestid>1248472</requestid>
+  </revision>
 </revisionlist>
