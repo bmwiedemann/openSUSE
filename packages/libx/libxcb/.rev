@@ -412,4 +412,12 @@
   * Always write C code in UTF-8</comment>
     <requestid>1168557</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>da47b9b9b43b3529152b1390834e09bb</srcmd5>
+    <version>1.17.0</version>
+    <time>1740586418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248447</requestid>
+  </revision>
 </revisionlist>

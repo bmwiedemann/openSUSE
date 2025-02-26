@@ -1,7 +1,11 @@
-Index: src/xcb_auth.c
+---
+ src/xcb_auth.c |   13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+Index: libxcb-1.17.0/src/xcb_auth.c
 ===================================================================
---- src/xcb_auth.c.orig
-+++ src/xcb_auth.c
+--- libxcb-1.17.0.orig/src/xcb_auth.c
++++ libxcb-1.17.0/src/xcb_auth.c
 @@ -118,6 +118,7 @@ static Xauth *get_authptr(struct sockadd
      char hostnamebuf[256];   /* big enough for max hostname */
      char dispbuf[40];   /* big enough to hold more than 2^64 base 10 */

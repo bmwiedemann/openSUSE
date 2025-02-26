@@ -1,7 +1,7 @@
 #
 # spec file for package libxcb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,7 @@ Summary:        X11 core protocol C library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://xcb.freedesktop.org/
-#Git-Clone:	git://anongit.freedesktop.org/xcb/libxcb
-#Git-Web:	https://cgit.freedesktop.org/xcb/libxcb/
+#Git-Clone:	https://gitlab.freedesktop.org/xorg/lib/libxcb
 #DL-URL:	https://xcb.freedesktop.org/dist/
 Source:         https://xcb.freedesktop.org/dist/libxcb-%{version}.tar.xz
 Source1:        https://xcb.freedesktop.org/dist/libxcb-%{version}.tar.xz.sig
@@ -169,7 +168,7 @@ featuring a small footprint, latency hiding, direct access to the
 protocol, improved threading support, and extensibility.
 
 The RECORD extension supports the recording and reporting of all core
-X protocol and arbitrary X extension protocol.
+X protocols and arbitrary X extension protocols.
 
 %package -n libxcb-render0
 Summary:        X11 Render Extension C library
@@ -213,7 +212,8 @@ The X protocol C-language Binding (XCB) is a replacement for Xlib
 featuring a small footprint, latency hiding, direct access to the
 protocol, improved threading support, and extensibility.
 
-- X11 Nonrectangular Window Shape extension (Xshape)
+In the X Window System, the X Nonrectangular Window Shape Extension (Xshape)
+allows windows to be given arbitrary, non-rectangular shapes.
 
 %package -n libxcb-shm0
 Summary:        X11 Shared Memory Extension C library
@@ -341,10 +341,10 @@ The X protocol C-language Binding (XCB) is a replacement for Xlib
 featuring a small footprint, latency hiding, direct access to the
 protocol, improved threading support, and extensibility.
 
-X-Video Motion Compensation (XvMC), is an extension of the X video
+X-Video Motion Compensation (XvMC) is an extension of the X video
 extension (Xv) for the X Window System. The XvMC API allows video
 programs to offload portions of the video decoding process to the GPU
-video-hardware.
+video hardware.
 
 %package devel
 Summary:        Development files for the X11 protocol C library
@@ -399,9 +399,7 @@ This subpackage contains the manual pages and documentation for
 libxcb.
 
 %prep
-%setup -q
-%patch -P 1
-%patch -P 2 -p1
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
@@ -416,56 +414,31 @@ NOCONFIGURE=1 ./autogen.sh
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libxcb1 -p /sbin/ldconfig
-%postun -n libxcb1 -p /sbin/ldconfig
-%post   -n libxcb-composite0 -p /sbin/ldconfig
-%postun -n libxcb-composite0 -p /sbin/ldconfig
-%post   -n libxcb-damage0 -p /sbin/ldconfig
-%postun -n libxcb-damage0 -p /sbin/ldconfig
-%post   -n libxcb-dbe0 -p /sbin/ldconfig
-%postun -n libxcb-dbe0 -p /sbin/ldconfig
-%post   -n libxcb-dpms0 -p /sbin/ldconfig
-%postun -n libxcb-dpms0 -p /sbin/ldconfig
-%post   -n libxcb-dri2-0 -p /sbin/ldconfig
-%postun -n libxcb-dri2-0 -p /sbin/ldconfig
-%post   -n libxcb-dri3-0 -p /sbin/ldconfig
-%postun -n libxcb-dri3-0 -p /sbin/ldconfig
-%post   -n libxcb-glx0 -p /sbin/ldconfig
-%postun -n libxcb-glx0 -p /sbin/ldconfig
-%post   -n libxcb-randr0 -p /sbin/ldconfig
-%postun -n libxcb-randr0 -p /sbin/ldconfig
-%post   -n libxcb-record0 -p /sbin/ldconfig
-%postun -n libxcb-record0 -p /sbin/ldconfig
-%post   -n libxcb-render0 -p /sbin/ldconfig
-%postun -n libxcb-render0 -p /sbin/ldconfig
-%post   -n libxcb-res0 -p /sbin/ldconfig
-%postun -n libxcb-res0 -p /sbin/ldconfig
-%post   -n libxcb-screensaver0 -p /sbin/ldconfig
-%postun -n libxcb-screensaver0 -p /sbin/ldconfig
-%post   -n libxcb-shape0 -p /sbin/ldconfig
-%postun -n libxcb-shape0 -p /sbin/ldconfig
-%post   -n libxcb-shm0 -p /sbin/ldconfig
-%postun -n libxcb-shm0 -p /sbin/ldconfig
-%post   -n libxcb-sync1 -p /sbin/ldconfig
-%postun -n libxcb-sync1 -p /sbin/ldconfig
-%post   -n libxcb-present0 -p /sbin/ldconfig
-%postun -n libxcb-present0 -p /sbin/ldconfig
-%post   -n libxcb-xf86dri0 -p /sbin/ldconfig
-%postun -n libxcb-xf86dri0 -p /sbin/ldconfig
-%post   -n libxcb-xfixes0 -p /sbin/ldconfig
-%postun -n libxcb-xfixes0 -p /sbin/ldconfig
-%post   -n libxcb-xkb1 -p /sbin/ldconfig
-%postun -n libxcb-xkb1 -p /sbin/ldconfig
-%post   -n libxcb-xinerama0 -p /sbin/ldconfig
-%postun -n libxcb-xinerama0 -p /sbin/ldconfig
-%post   -n libxcb-xinput0 -p /sbin/ldconfig
-%postun -n libxcb-xinput0 -p /sbin/ldconfig
-%post   -n libxcb-xtest0 -p /sbin/ldconfig
-%postun -n libxcb-xtest0 -p /sbin/ldconfig
-%post   -n libxcb-xv0 -p /sbin/ldconfig
-%postun -n libxcb-xv0 -p /sbin/ldconfig
-%post   -n libxcb-xvmc0 -p /sbin/ldconfig
-%postun -n libxcb-xvmc0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libxcb1
+%ldconfig_scriptlets -n libxcb-composite0
+%ldconfig_scriptlets -n libxcb-damage0
+%ldconfig_scriptlets -n libxcb-dbe0
+%ldconfig_scriptlets -n libxcb-dpms0
+%ldconfig_scriptlets -n libxcb-dri2-0
+%ldconfig_scriptlets -n libxcb-dri3-0
+%ldconfig_scriptlets -n libxcb-glx0
+%ldconfig_scriptlets -n libxcb-randr0
+%ldconfig_scriptlets -n libxcb-record0
+%ldconfig_scriptlets -n libxcb-render0
+%ldconfig_scriptlets -n libxcb-res0
+%ldconfig_scriptlets -n libxcb-screensaver0
+%ldconfig_scriptlets -n libxcb-shape0
+%ldconfig_scriptlets -n libxcb-shm0
+%ldconfig_scriptlets -n libxcb-sync1
+%ldconfig_scriptlets -n libxcb-present0
+%ldconfig_scriptlets -n libxcb-xf86dri0
+%ldconfig_scriptlets -n libxcb-xfixes0
+%ldconfig_scriptlets -n libxcb-xkb1
+%ldconfig_scriptlets -n libxcb-xinerama0
+%ldconfig_scriptlets -n libxcb-xinput0
+%ldconfig_scriptlets -n libxcb-xtest0
+%ldconfig_scriptlets -n libxcb-xv0
+%ldconfig_scriptlets -n libxcb-xvmc0
 
 %files -n libxcb1
 %{_libdir}/libxcb.so.1*
