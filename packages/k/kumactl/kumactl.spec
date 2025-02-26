@@ -17,7 +17,7 @@
 
 
 Name:           kumactl
-Version:        2.9.3
+Version:        2.9.4
 Release:        0
 Summary:        CLI for the Kuma service mesh
 License:        Apache-2.0
