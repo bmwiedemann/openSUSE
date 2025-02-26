@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Feb 26 05:43:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.46.0:
+  * Breaking Changes
+    - Test Helper Imports Refactored: Direct imports from
+      libtmux.test are no longer possible. You must now import from
+      specific submodules (#580)
+
+      # Before:
+      from libtmux.test import namer
+      # After:
+      from libtmux.test.named import namer
+
+      # Before:
+      from libtmux.test import RETRY_INTERVAL_SECONDS
+      # After:
+      from libtmux.test.constants import RETRY_INTERVAL_SECONDS
+
+  * Internal Improvements
+    - Enhanced Test Utilities: The EnvironmentVarGuard now handles
+      variable cleanup more reliably
+    - Comprehensive Test Coverage: Added test suites for constants
+      and environment utilities
+    - Code Quality: Added proper coverage markers to exclude type
+      checking blocks from coverage reports
+    - Documentation: Improved docstrings and examples in the random
+      module
+    These changes improve maintainability of test helpers both
+    internally and for downstream packages that depend on libtmux.
+  * What's Changed
+    Coverage: Test helpers by @tony in #580
+
+-------------------------------------------------------------------
 Mon Feb 24 06:03:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.45.0:
