@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 25 20:57:52 UTC 2025 - Fred kiefer <fredkiefer@gmx.de>
+
+- Update to version 2.9.3
+   • Added support for ASAN/LSAN builds
+   • Various minor bugfixes.
+
+-------------------------------------------------------------------
 Fri Aug  9 17:33:15 UTC 2024 - Franz Sirl <franz.sirl-obs@lauterbach.com>
 
 - Use the --with-libdir configure option introduced with 2.9.2.

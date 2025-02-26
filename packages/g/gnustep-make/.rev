@@ -138,4 +138,12 @@ Disable LTO for Objective-C.</comment>
     <comment></comment>
     <requestid>1197580</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>618a3df8c8d7dfef018e8051748f108e</srcmd5>
+    <version>2.9.3</version>
+    <time>1740586464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248502</requestid>
+  </revision>
 </revisionlist>
