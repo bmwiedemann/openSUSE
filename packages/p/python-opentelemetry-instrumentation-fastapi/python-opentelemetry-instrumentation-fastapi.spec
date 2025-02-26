@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-instrumentation-fastapi%{?psuffix}
-Version:        0.50b0
+Version:        0.51b0
 Release:        0
 Summary:        OpenTelemetry FastAPI Instrumentation
 License:        Apache-2.0
@@ -40,19 +40,19 @@ BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module fastapi >= 0.58}
 BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module opentelemetry-instrumentation-fastapi == %{version}}
-BuildRequires:  %{python_module opentelemetry-test-utils == %{version}}
+BuildRequires:  %{python_module opentelemetry-instrumentation-fastapi = %{version}}
+BuildRequires:  %{python_module opentelemetry-test-utils = %{version}}
 BuildRequires:  %{python_module pytest}
 %endif
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module opentelemetry-api >= 1.12}
-BuildRequires:  %{python_module opentelemetry-instrumentation == %{version}}
+BuildRequires:  %{python_module opentelemetry-instrumentation = %{version}}
 BuildRequires:  fdupes
 Requires:       python-opentelemetry-api >= 1.12
-Requires:       python-opentelemetry-instrumentation == %{version}
-Requires:       python-opentelemetry-instrumentation-asgi == %{version}
-Requires:       python-opentelemetry-semantic-conventions == %{version}
-Requires:       python-opentelemetry-util-http == %{version}
+Requires:       python-opentelemetry-instrumentation = %{version}
+Requires:       python-opentelemetry-instrumentation-asgi = %{version}
+Requires:       python-opentelemetry-semantic-conventions = %{version}
+Requires:       python-opentelemetry-util-http = %{version}
 BuildArch:      noarch
 %python_subpackages
 
