@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-auctex
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,7 @@ URL:            https://www.gnu.org/software/auctex
 # Allows to select printer instance
 # PATCH-FEATURE-UPSTREAM dvips.patch
 Patch0:         dvips.patch
+Patch1:         auctex-14.0.7-texinfo.patch
 BuildArch:      noarch
 
 %description
@@ -76,6 +77,7 @@ in the info file auctex in emacs info-mode.
 %prep
 %setup -n auctex-%{version}
 %patch -P0
+%patch -P1
 
 %build
     unset ${!LC_*}
@@ -151,6 +153,7 @@ unelc ()
     mkdir -p %{buildroot}%{_sitedir}/auctex-%{version}
     tar cpf - *.el *.elc auto/ style/ images/ | \
     tar xpf - -C %{buildroot}%{_sitedir}/auctex-%{version}/
+    find
 
     pushd doc
 	install -m 644 -D -t %{buildroot}%{_infodir} preview-latex.info
@@ -159,6 +162,7 @@ unelc ()
 
     pushd %{buildroot}%{_sitedir}/auctex-%{version}
 	find -name '*.el' -exec gzip -n -f9 '{}' \+
+	find -name '*.el.gz' -exec chmod 644 '{}' \+
 	unelc auctex-autoloads.elc
 	unelc auctex-pkg.elc
 	unelc auctex.elc
@@ -228,10 +232,10 @@ done
 %doc %{_infodir}/*.info*.gz
 %{_aucdir}/*.el
 %{_aucdir}/*.el%{ext_el}
-%ghost %verify(not mode) %{_aucdir}/font-latex.elc
+%ghost %verify(not mode) %attr(0644,root,root) %{_aucdir}/font-latex.elc
 %{_aucdir}/*.elc
 %{_aucdir}/auctex/font-latex.el
-%ghost %verify(not mode) %{_aucdir}/auctex/font-latex.elc
+%ghost %verify(not mode) %attr(0644,root,root) %{_aucdir}/auctex/font-latex.elc
 %{_aucdir}/auctex/.nosearch
 %{_aucdir}/auto/*.el%{ext_el}
 %{_aucdir}/auto/*.elc

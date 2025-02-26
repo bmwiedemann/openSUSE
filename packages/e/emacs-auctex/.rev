@@ -619,4 +619,13 @@
     <comment></comment>
     <requestid>1226280</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>3fa7fe6af39470dc8226e958973ef17d</srcmd5>
+    <version>14.0.7</version>
+    <time>1740587055</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch auctex-14.0.7-texinfo.patch
+  * Make it build again with latest texinfo package</comment>
+    <requestid>1248620</requestid>
+  </revision>
 </revisionlist>

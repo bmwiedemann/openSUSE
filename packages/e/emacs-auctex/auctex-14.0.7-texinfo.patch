@@ -1,0 +1,38 @@
+--- doc/auctex.texi
++++ doc/auctex.texi	2025-02-26 11:52:18.392253411 +0000
+@@ -38,10 +38,6 @@ Documentation License.''
+ * AUCTeX: (auctex).     A sophisticated TeX environment for Emacs.
+ @end direntry
+ 
+-@iftex
+-@tolerance 10000 @emergencystretch 3em
+-@end iftex
+-
+ @finalout
+ @titlepage
+ @title @AUCTeX{}
+--- doc/macros.texi
++++ doc/macros.texi	2025-02-26 11:52:55.639067300 +0000
+@@ -1,6 +1,5 @@
+ @ifclear macros
+ @set macros
+-@ifnottex
+ @macro AUCTeX {}
+ AUC@TeX{}
+ @end macro
+@@ -37,15 +36,12 @@ font-latex
+ @samp{\text\}
+ @end macro
+ @end ifset
+-@end ifnottex
+ @ifset no-sansserif
+ @macro sansserif {text}@c
+ @iftex
+ {@textsf \text\}@c
+ @end iftex
+-@ifnottex
+ \text\@c
+-@end ifnottex
+ @end macro
+ @end ifset
+ @tex

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 26 09:56:23 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch auctex-14.0.7-texinfo.patch
+  * Make it build again with latest texinfo package 
+
+-------------------------------------------------------------------
 Thu Nov 21 15:26:38 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use gzip -n for deterministic gzip headers
