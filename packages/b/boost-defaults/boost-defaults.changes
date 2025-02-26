@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 26 09:47:48 CET 2025 - aschnell@suse.com
+
+- remove MPI packages on 32 bit systems
+
+-------------------------------------------------------------------
+Wed Dec 11 12:03:20 CET 2024 - aschnell@suse.com
+
+- Update for Boost 1.87.0
+
+-------------------------------------------------------------------
 Wed Sep 18 12:06:51 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add libboost_process-devel for Boost.Process

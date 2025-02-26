@@ -1,7 +1,7 @@
 #
 # spec file for package boost-defaults
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,20 @@
 #
 
 
-%define boost_version 1_86_0
+%define boost_version 1_87_0
 Name:           boost-defaults
-Version:        1.86.0
+Version:        1.87.0
 Release:        0
 Summary:        Default Boost C++ Libraries
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.boost.org
 Source1:        README
-BuildArch:      noarch
+
+%ifnarch %{arm} %ix86
+# OpenMPI 5 has no support for 32bit architectures
+%bcond_without mpi
+%endif
 
 %description
 Boost provides free peer-reviewed portable C++ source libraries. The
@@ -211,6 +215,8 @@ Development headers for Boost.Math* boost libraries.
 
 This package installs the default Boost version of the library.
 
+%if %{with mpi}
+
 %package     -n libboost_mpi-devel
 Summary:        Development headers for Boost.MPI library
 Group:          Development/Libraries/C and C++
@@ -242,6 +248,8 @@ serialization interface
 
 This package installs the default Boost version of the library.
 
+%endif
+
 %package     -n libboost_nowide-devel
 Summary:        Development library for Boost.Nowide
 Group:          Development/Libraries/C and C++
@@ -252,6 +260,8 @@ This package contains the Boost.Nowide development library.
 
 This package installs the default Boost version of the library.
 
+%if %{with mpi}
+
 %package     -n python3-boost_parallel_mpi
 Summary:        Python 3.x bindings for Boost.Parallel.MPI library
 Group:          Development/Languages/Python
@@ -261,6 +271,8 @@ Requires:       python3-boost_parallel_mpi%{boost_version}
 This package contains the Boost.Parallel.MPI bindings for Python 3.x
 
 This package installs the default Boost version of the library.
+
+%endif
 
 %package     -n libboost_test-devel
 Summary:        Development headers for Boost.Test library
@@ -493,6 +505,8 @@ cp %{SOURCE1} .
 %files -n libboost_math-devel
 %doc README
 
+%if %{with mpi}
+
 %files -n libboost_mpi-devel
 %doc README
 
@@ -502,11 +516,17 @@ cp %{SOURCE1} .
 %files -n libboost_mpi_python3-devel
 %doc README
 
+%endif
+
 %files -n libboost_nowide-devel
 %doc README
 
+%if %{with mpi}
+
 %files -n python3-boost_parallel_mpi
 %doc README
+
+%endif
 
 %files -n libboost_test-devel
 %doc README
