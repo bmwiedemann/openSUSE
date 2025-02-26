@@ -2,6 +2,7 @@
 # spec file for package geotiff
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +20,15 @@
 %define sover   5
 %define libname lib%{name}%{sover}
 Name:           geotiff
-Version:        1.7.3
+Version:        1.7.4
 Release:        0
 Summary:        Library to handle georeferenced TIFF
 License:        MIT AND SUSE-Public-Domain
 URL:            https://github.com/OSGeo/libgeotiff
 Source0:        https://github.com/OSGeo/libgeotiff/releases/download/%{version}/libgeotiff-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(proj) >= 6.0
 BuildRequires:  pkgconfig(zlib)
@@ -40,8 +41,6 @@ GeoTIFF keys in new files.
 %package devel
 Summary:        GeoTIFF header files
 Requires:       %{libname} = %{version}
-Requires:       pkgconfig(libtiff-4)
-Requires:       pkgconfig(proj) >= 6.0
 Provides:       lib%{name}-devel = %{version}
 
 %description devel
@@ -75,29 +74,12 @@ export CXXFLAGS="%{optflags} $CXXFLAGS -g -fstack-protector -fno-strict-aliasing
 	--with-zip \
 	--with-pic \
 	--enable-static=no \
-	--enable-debug=yes
+	--enable-debug=yes \
+	%{nil}
 %make_build
 
 %install
 %make_install
-
-# install pkgconfig file
-cat > libgeotiff.pc <<EOF
-prefix=%{_prefix}
-exec_prefix=%{_prefix}
-libdir=%{_libdir}
-includedir=%{_includedir}/lib%{name}
-
-Name:           %{libname}
-Version:        %{version}
-Description: GeoTIFF file format library
-Libs: -L%{_libdir} -l%{name}
-Cflags: -I%{_includedir}/lib%{name}
-EOF
-
-install -Dpm 0644 lib%{name}.pc \
-  %{buildroot}%{_libdir}/pkgconfig/lib%{name}.pc
-# do not ship la files
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %ldconfig_scriptlets -n %{libname}
@@ -118,12 +100,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/lib%{name}.so.%{sover}*
 
 %files devel
-%defattr(0644,root,root,0755)
 %license LICENSE COPYING
 %doc ChangeLog README NEWS
-%dir %{_includedir}/lib%{name}
-%{_includedir}/lib%{name}/*.h
-%{_includedir}/lib%{name}/*.inc
+%{_includedir}/lib%{name}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/lib%{name}.pc
 

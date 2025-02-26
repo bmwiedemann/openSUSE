@@ -129,4 +129,12 @@
  * Remove INSTALL and install-sh autoconf-generated files</comment>
     <requestid>1190191</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2b9a85120cff1e8a3716184b4e629562</srcmd5>
+    <version>1.7.4</version>
+    <time>1740586529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248401</requestid>
+  </revision>
 </revisionlist>
