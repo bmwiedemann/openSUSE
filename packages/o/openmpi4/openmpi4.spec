@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -42,7 +42,7 @@
 # % define build_static_devel 1
 
 %global pname openmpi
-%define _vers 4_1_7
+%define _vers 4_1_8
 %define m_f_ver 4
 %bcond_with ringdisabled
 
@@ -103,7 +103,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 # Detect whether we are the default openMPI implemantation or not
-%if "%{flavor}" == "standard" && (%{suse_version} > 1500 || 0%{?sle_version} > 150300)
+%if "%{flavor}" == "standard" && (%{suse_version} > 1500 || 0%{?sle_version} > 150300) &&  (%{suse_version} < 1600)
 %define default_openmpi 1
 %else
 %define default_openmpi 0
@@ -124,7 +124,7 @@ ExcludeArch:    i586 %arm s390
 %{bcond_with hwloc}
 %endif
 
-%define git_ver .0.6b7e5d9911d1
+%define git_ver .0.ea8f4d030890
 
 #############################################################################
 #
@@ -133,7 +133,7 @@ ExcludeArch:    i586 %arm s390
 #############################################################################
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        4.1.7
+Version:        4.1.8
 Release:        0
 Summary:        An implementation of MPI/SHMEM (Version %{m_f_ver})
 License:        BSD-3-Clause
@@ -149,6 +149,7 @@ Patch2:         btl-openib-Add-VF-support-for-ConnectX-4-5-and-6.patch
 Patch3:         openmpi4-C99.diff
 Patch4:         test-datatype-partial.c-fix-compiler-warnings.patch
 Patch5:         mtl-ofi-fix-missing-definition-of-container_of.patch
+Patch6:         Fix-type-mismatch-error.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf

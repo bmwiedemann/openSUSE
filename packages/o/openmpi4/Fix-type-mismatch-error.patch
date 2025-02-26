@@ -1,0 +1,30 @@
+commit fc4fb3a80615992277717e3e29ce585ebe1f2256
+Author: Tomislav Janjusic <tomislavj@nvidia.com>
+Date:   Tue Feb 18 12:25:27 2025 -0600
+
+    Fix type mismatch error
+    
+    Signed-off-by: Tomislav Janjusic <tomislavj@nvidia.com>
+
+diff --git oshmem/mca/sshmem/base/sshmem_base_open.c oshmem/mca/sshmem/base/sshmem_base_open.c
+index 1f0d1eb761e2..2694120e1cfe 100644
+--- oshmem/mca/sshmem/base/sshmem_base_open.c
++++ oshmem/mca/sshmem/base/sshmem_base_open.c
+@@ -31,7 +31,7 @@
+  * globals
+  */
+ 
+-void *mca_sshmem_base_start_address = UINTPTR_MAX;
++void *mca_sshmem_base_start_address = (void *)UINTPTR_MAX;
+ 
+ char * mca_sshmem_base_backing_file_dir = NULL;
+ 
+@@ -49,7 +49,7 @@ mca_sshmem_base_register (mca_base_register_flag_t flags)
+                                  "base",
+                                  "start_address",
+                                  "Specify base address for shared memory region",
+-                                 MCA_BASE_VAR_TYPE_UNSIGNED_LONG_LONG,
++                                 MCA_BASE_VAR_TYPE_UNSIGNED_LONG,
+                                  NULL,
+                                  0,
+                                  MCA_BASE_VAR_FLAG_SETTABLE,

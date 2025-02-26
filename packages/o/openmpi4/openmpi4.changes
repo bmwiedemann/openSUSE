@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 19 16:04:48 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 4.1.8 (jsc#PED-11356):
+  - Allocate and exchange OpenSHMEM base segment addresses earlier in
+    startup.
+  - Fixed file_seek calculation when using SEEK_END and io/ompio.
+  - Protect against using CUDA without VMM support.
+  - Change several variables in coll/adapt, coll/basic, coll/han,
+    coll/hcoll, and coll/ucc from READONLY to ALL scope so that they can
+    be set via the MPI_T interface.
+  - Add version identifier to rules file in coll/tuned and extend the
+    dynamic rules file to support the alltoall_algorithm_max_requests
+    tuning parameter.
+- Change default openmpi to openmpi5 for suse_version >= 1600
+- Add Fix-type-mismatch-error.patch to fix a compilation error
+
+-------------------------------------------------------------------
 Fri Dec 20 11:46:32 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add mtl-ofi-fix-missing-definition-of-container_of.patch to fix
