@@ -45,4 +45,13 @@
   * `opentelemetry-instrumentation-aiokafka` Add instrumentor and auto instrumentation (forwarded request 1235911 from glaubitz)</comment>
     <requestid>1235925</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>75bdc4bbb4ed847fc98031c76a5591b3</srcmd5>
+    <version>0.51b0</version>
+    <time>1740586732</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.51b0:
+  * bump for opentelemetry 1.30.0 release</comment>
+    <requestid>1248510</requestid>
+  </revision>
 </revisionlist>
