@@ -1,7 +1,7 @@
 #
 # spec file for package cppreference-doc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cppreference-doc
-Version:        20241110
+Version:        20250209
 Release:        0
 Summary:        Cppreference documentation for offline reading
 License:        CC-BY-SA-3.0
@@ -47,6 +47,7 @@ Cppreference is a complete online reference for the C and C++ languages and stan
 Summary:        Cppreference documentation for offline reading - devhelp version
 Group:          Documentation/Other
 Requires:       %{name} = %{version}
+Recommends:     devhelp
 
 %description devhelp
 Cppreference is a complete online reference for the C and C++ languages and standard libraries, i.e. a more convenient version of the C and C++ standards. This package provides an offline mirror of the reference in the devhelp format.

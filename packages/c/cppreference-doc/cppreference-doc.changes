@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 23 06:02:09 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 20250209:
+  * Update content from the website.
+- Add Recommends: devhelp for %{name}-devhelp package.
+
+-------------------------------------------------------------------
 Sat Nov 16 14:11:02 UTC 2024 - Markus Ebner <info@ebner-markus.de>
 
 - Update to version 20241110
