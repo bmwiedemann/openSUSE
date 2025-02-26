@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-proto
-Version:        1.29.0
+Version:        1.30.0
 Release:        0
 Summary:        OpenTelemetry Python Proto
 License:        Apache-2.0
