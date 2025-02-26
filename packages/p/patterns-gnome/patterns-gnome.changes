@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:32:37 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Have pattern gnome_basic recommend pattern() = enhanced_base: most
+  users of a desktop will want those tools. They were pulled in
+  before via the recently removed imaging -> x11 -> enahnced_base.
+  As x11 was removed as a dependency from the desktop-imaging
+  pattern, this was lost.
+
+-------------------------------------------------------------------
 Tue Nov 12 16:57:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace tracker with tinysparql: tracker was renamed with GNOME

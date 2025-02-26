@@ -96,6 +96,7 @@ Provides:       pattern-visible()
 Requires:       gsettings-backend-dconf
 Requires:       pattern() = basesystem
 Requires:       pattern() = gnome_basis
+Recommends:     pattern() = enhanced_base
 Recommends:     evince
 # bsc#1065146
 %if 0%{?sle_version}
