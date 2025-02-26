@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-obs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%global skip_python39 1
-%global skip_python310 1
 %{?sle15_python_module_pythons}
 Name:           python-py-obs
-Version:        0.0.1
+Version:        0.0.2
 Release:        0
 Summary:        Asynchronous API wrapper for the Open Build Service
 License:        GPL-2.0-or-later

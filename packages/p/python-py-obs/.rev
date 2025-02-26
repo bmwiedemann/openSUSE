@@ -15,4 +15,13 @@
     <comment>- build against newer python stack on sle15</comment>
     <requestid>1123993</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fe2e558e7de22027ff22e1a0f9d3f55e</srcmd5>
+    <version>0.0.2</version>
+    <time>1740586720</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.0.2:
+  * add token wrapper support</comment>
+    <requestid>1248498</requestid>
+  </revision>
 </revisionlist>

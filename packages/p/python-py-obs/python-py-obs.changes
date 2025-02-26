@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 25 21:02:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.2:
+  * add token wrapper support
+
+-------------------------------------------------------------------
 Tue Nov  7 14:12:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build against newer python stack on sle15
