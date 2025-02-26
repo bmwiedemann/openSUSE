@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:29:50 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip test_qtinfo failing test with latest python3-pyside6
+
+-------------------------------------------------------------------
 Wed May 29 10:45:04 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Run test_destroyed again, the problem was fixed in the

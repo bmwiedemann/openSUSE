@@ -210,4 +210,12 @@
   python3-pyside6 package.</comment>
     <requestid>1180008</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>f52f30e8909b872547faefbfe03225ad</srcmd5>
+    <version>4.4.0</version>
+    <time>1740587107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248730</requestid>
+  </revision>
 </revisionlist>
