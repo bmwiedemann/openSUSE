@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:35:40 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.30:
+  * update prerequisites command
+  * Bump github.com/go-jose/go-jose/v4 from 4.0.2 to 4.0.5
+
+-------------------------------------------------------------------
+Sat Feb 22 16:11:45 UTC 2025 - andrea.manzini@suse.com
+
+- Update to version 3.0.29:
+  * deprecate control name in exception policies (#1795)
+  * removing enable/disable colors, as not compatible with all
+    loggers
+- Update to version 3.0.28:
+  * Refactor: propagate context from main to avoid redundant
+    context creation by @pixel365 in #1789
+  * fix: add error handling and context propagation by @pixel365 in
+    #1790
+  * update prerequisites by @matthyx in #1791
+- Update to version 3.0.27:
+  * Refactor: maroto version v2 by @Fernando-hub527 in #1786
+  * bump all CI actions by @matthyx in #1787
+  * Feature: Added exceptions flag in scan image cmd by
+    @VaibhavMalik4187 in #1568
+  * added support for exception rules in Scan API ( As a HTTP
+    request) by @Sanskarzz in #1591
+  * do not skip on location resolver error by @matthyx in #1788
+- (version 3.0.26 does not exist)
+- Update to version 3.0.25:
+  * bump actions/download-artifact@v4
+- Update to version 3.0.24:
+  * add prerequisites command by @matthyx in #1782
+- Update to version 3.0.23:
+  * Update maintainers in SECURITY-INSIGHTS.yml by @slashben in
+    #1774
+  * Bump golang.org/x/crypto from 0.27.0 to 0.31.0 in /httphandler
+    by @dependabot in #1775
+  * Bump golang.org/x/crypto from 0.27.0 to 0.31.0 by @dependabot
+    in #1776
+  * Update of README by @Oshratn in #1766
+  * bump vulnerable deps by @matthyx in #1778
+  * Deprecation of the roadmap.md in this repo by @slashben in
+    #1779
+  * Airgap support by @matthyx in #1780
+  * Update b-binary-build-and-e2e-tests.yaml by @amitschendel in
+    #1761
+  * add trigger by indication in posture report by @amirmalka in
+    #1781
+- Update to version 3.0.22:
+  * Implementing capability to print out the "print" statements of
+    the rego by @slashben in #1760
+  * Update governance files by @slashben in #1763
+  * use distroless static for kubescape-cli image by @matthyx in
+    #1767
+  * chore: fix some function name in comment by @needsure in #1769
+  * add debug log on resource fetch with count by @matthyx in #1773
+- Update to version 3.0.21:
+  * fix the repo scan got stuck bug by @jnathangreeg in #1758
+- Update to version 3.0.20:
+  * some easy doc fixes by @craigbox in #1749
+  * bump krew publish action by @matthyx in #1757
+  * bump opa-utils version to fix apiVersion check by @jnathangreeg
+    in #1756
+- Update to version 3.0.19:
+  * Bump github.com/containers/common from 0.59.0 to 0.60.4 in
+    /httphandler by @dependabot in #1742
+  * Bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1 by
+    @dependabot in #1753
+  * Add a second condition in getFilesFromTree to ensure we are
+    scanning the correct path by @jnathangreeg in #1752
+  * Bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1 in
+    /httphandler by @dependabot in #1754
+- Update to version 3.0.18:
+  * EKS Support error: failed to get cloud data by @comrumino in
+    #1736
+  * bump opa by @matthyx in #1741
+- Update to version 3.0.17:
+  * also bump workflows to 1.23 by @matthyx in #1730
+  * force grpc by @matthyx in #1732
+- Update to version 3.0.16:
+  * chore: improve the publishing workflows for krew by @maanugh in
+    #1719
+  * Bump github.com/docker/docker from 26.1.0+incompatible to
+    26.1.4+incompatible by @dependabot in #1723
+  * Bump github.com/docker/docker from 26.1.0+incompatible to
+    26.1.4+incompatible in /httphandler by @dependabot in #1722
+  * Bump github.com/docker/docker from 26.1.4+incompatible to
+    26.1.5+incompatible by @dependabot in #1726
+  * Bump github.com/docker/docker from 26.1.4+incompatible to
+    26.1.5+incompatible in /httphandler by @dependabot in #1728
+  * update to go 1.23 and base image to debian12 by @matthyx in
+    #1729
+- Update to version 3.0.15:
+  * fix include/exclude NS for SA discovered via CRB by @matthyx in
+    #1718
+- Update to version 3.0.14:
+  * Simplify the concurrency in http handler for scan. by @ttimonen
+    in #1710
+  * use proper params in pager call by @matthyx in #1713
+  * update docs by @dwertent in #1450
+  * fix generated ValidatingAdmissionPolicyBinding by @matthyx in
+    #1716
+  * Documentation ugrades by @idohuber in #1717
+- Update to version 3.0.13:
+  * use pager.EachListItem to filter parented resources by @matthyx
+    in #1709
+- Update to version 3.0.12:
+  * Adding two helper functions for VAP and CEL admission library
+    by @slashben in #1682
+  * Bump github.com/aquasecurity/trivy from 0.44.1 to 0.51.2 in
+    /httphandler by @dependabot in #1689
+  * update exceptions docs - ruleName not supported by
+    @YiscahLevySilas1 in #1695
+  * Bump github.com/Azure/azure-sdk-for-go/sdk/azidentity from
+    1.5.1 to 1.6.0 by @dependabot in #1696
+  * Bump github.com/Azure/azure-sdk-for-go/sdk/azidentity from
+    1.5.1 to 1.6.0 in /httphandler by @dependabot in #1697
+  * change reference from anubhav06 to project-copacetic by
+    @anubhav06 in #1440
+  * Bump
+    go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace
+    from 0.40.0 to 0.44.0 by @dependabot in #1699
+  * Bump
+    go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace
+    from 0.40.0 to 0.44.0 in /httphandler by @dependabot in #1700
+  * Bump github.com/hashicorp/go-retryablehttp from 0.7.5 to 0.7.7
+    by @dependabot in #1701
+  * Bump github.com/hashicorp/go-retryablehttp from 0.7.5 to 0.7.7
+    in /httphandler by @dependabot in #1702
+  * Bump github.com/hashicorp/go-getter from 1.7.4 to 1.7.5 by
+    @dependabot in #1703
+  * Bump github.com/hashicorp/go-getter from 1.7.4 to 1.7.5 in
+    /httphandler by @dependabot in #1704
+  * Bump github.com/gorilla/schema from 1.2.0 to 1.4.1 in
+    /httphandler by @dependabot in #1705
+  * Add disk space checks to binary-build job by @yonatanamz in
+    #1706
+  * Use large runners for binary-build job by @yonatanamz in #1707
+  * Changed large-runner type for binary-build job by @yonatanamz
+    in #1708
+- Update to version 3.0.11:
+  * Fixed issues
+    - Mask all container data by @dwertent in #1683
+    - fix yaml handler deleting too many lines during fix by
+      @matthyx in #1685
+    - Fix scanning unsupported clouds by @dwertent in #1688
+- Update to version 3.0.10:
+  * Fixed issues
+    - Fix scanning repo by @dwertent in #1680
+- Update to version 3.0.9:
+  * Enhancements
+    - Bump syft version by @matthyx in #1669
+    - Improve memory usage by @matthyx
+  * Fixed issues
+    - Remove API calls from scan repo by @matthyx in #1657
+    - Add control id to pdf output by @maxgio92 in #1662
+    - re-enable checksum generation for releases by @matthyx in
+      #1665
+    - Fixed kubescape operator scan returned status code by
+      @dwertent in #1673
+- Update to version 3.0.8:
+  * bump deps for vulnerabilities
+- Update to version 3.0.7:
+  * Fixed issues
+    - Fix panic when error is returned from SubmitReport by
+      @amirmalka in #1640
+    - Fix gitlab by @matthyx in #1639
+
+-------------------------------------------------------------------
 Fri Mar 15 21:44:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.6:
