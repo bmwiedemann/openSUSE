@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:18:03 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix openmpi paths in %check section
+
+-------------------------------------------------------------------
 Tue May 28 07:30:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip some tests that produces a Segmentation fault in s390x
