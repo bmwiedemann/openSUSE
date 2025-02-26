@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 25 09:45:05 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Bump golang(API) from =1.13 to >=1.13
+
+-------------------------------------------------------------------
 Thu Feb 20 16:56:18 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Dev: don't use pacemaker-3.0.0 deprecated functions (bsc#1237259) 
