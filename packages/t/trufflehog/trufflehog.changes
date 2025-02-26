@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 25 13:42:29 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 3.88.13:
+  * [Feat] DigitalOcean Analyzer (#3932)
+  * Remove duplicate `github.com/golang-jwt/jwt` dependency (#3930)
+  * Postman workspace enumeration (#3925)
+
+-------------------------------------------------------------------
 Fri Feb 21 18:42:55 UTC 2025 - felix.niederwanger@suse.com
 
 - Update to version 3.88.12:

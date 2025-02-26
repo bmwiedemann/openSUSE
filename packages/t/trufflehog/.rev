@@ -1928,4 +1928,15 @@
   * Remove duplicate `github.com/jedib0t/go-pretty` dependency (#3924) (forwarded request 1247726 from ph03nix)</comment>
     <requestid>1247732</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>71c2d1ce6c9cd4a92f9500de86eccbb0</srcmd5>
+    <version>3.88.13</version>
+    <time>1740586533</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.88.13:
+  * [Feat] DigitalOcean Analyzer (#3932)
+  * Remove duplicate `github.com/golang-jwt/jwt` dependency (#3930)
+  * Postman workspace enumeration (#3925) (forwarded request 1248400 from ph03nix)</comment>
+    <requestid>1248404</requestid>
+  </revision>
 </revisionlist>
