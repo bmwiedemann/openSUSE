@@ -73,13 +73,13 @@ Wed Mar 15 00:09:54 UTC 2023 - me@cimba.li - 1.8.0
 
 
 -------------------------------------------------------------------
-Tue 7 Dec 22:47:14 GMT 2021 - me@cimba.li - 1.7.1
+Tue Dec  7 22:47:14 GMT 2021 - me@cimba.li - 1.7.1
 - Fix building process
 - Fix errors in compiling catalogs with gettext during build
   process
 
 -------------------------------------------------------------------
-Mon 22 Nov 19:26:43 GMT 2021 - me@cimba.li - 1.7.0
+Mon Nov 22 19:26:43 GMT 2021 - me@cimba.li - 1.7.0
 - Make “next slide” a grid of 1-16 next slides
 - Allow dynamic layout editing from pympress (rather than modifying
   the config file manually)
@@ -91,12 +91,12 @@ Mon 22 Nov 19:26:43 GMT 2021 - me@cimba.li - 1.7.0
 - Limit to python 3.4+ to do some code modernization
 
 -------------------------------------------------------------------
-Mon 23 Aug 14:47:53 BST 2021 - me@cimba.li - 1.6.4
+Mon Aug 14 14:47:53 BST 2021 - me@cimba.li - 1.6.4
 Avoid pip version parsing bug when installing
 - setup.py: fix setuptools version parsing (#208) by Jörg Thalheim
 
 -------------------------------------------------------------------
-Sat 31 Jul 10:04:53 BST 2021 - me@cimba.li - 1.6.3
+Sat Jul 31 10:04:53 BST 2021 - me@cimba.li - 1.6.3
 Fix packages and gstreamer video
 - Some packages were missing translation files
 - Added cleanup of directories that pympress 1.5 RPMs left around
@@ -105,7 +105,7 @@ Fix packages and gstreamer video
   (should work on all platforms provided gstreamer is installed)
 
 -------------------------------------------------------------------
-Thu 22 Jul 17:23:30 BST 2021 - me@cimba.li - 1.6.2
+Thu Jul 22 17:23:30 BST 2021 - me@cimba.li - 1.6.2
 Fix path handling
 Caused bugs in file watching (#203) and media playing (#197).
 - Add some keywords to .desktop file (#205) by Christopher Hoskin
@@ -113,7 +113,7 @@ Caused bugs in file watching (#203) and media playing (#197).
   sourcefunc (#201) by wisp3rwind
 
 -------------------------------------------------------------------
-Sat 15 May 16:28:51 BST 2021 - me@cimba.li - 1.6.1
+Sat May 15 16:28:51 BST 2021 - me@cimba.li - 1.6.1
 Fix small bugs in 1.6 release
 - fix some PDF links not working
 - improve screensaver handling
@@ -122,7 +122,7 @@ Fix small bugs in 1.6 release
 - complete and correct various distribution metadata
 
 -------------------------------------------------------------------
-Fri 16 Apr 13:15:27 BST 2021 - me@cimba.li - 1.6.0
+Fri Apr 16 13:15:27 BST 2021 - me@cimba.li - 1.6.0
 Release v1.6.0
 - Support LibreOffice-style notes pages, after slides pages
 - Add support for drawing on slides with various presets and an
@@ -140,7 +140,7 @@ Release v1.6.0
 - Update aur package name (#166) by Nils Ziermann
 
 -------------------------------------------------------------------
-Fri 10 Apr 20:58:16 BST 2020 - me@cimba.li - 1.5.3
+Fri Apr 10 20:58:16 BST 2020 - me@cimba.li - 1.5.3
 Accessibility improvements, bug fixes, new “big” button
 - Reduce noise in log
 - Add big button to toggle pointer off <-> {manual or always}
@@ -153,7 +153,7 @@ Accessibility improvements, bug fixes, new “big” button
 - Build rpms automatically (#141)
 
 -------------------------------------------------------------------
-Thu 6 Feb 18:34:00 GMT 2020 - me@cimba.li - 1.5.2
+Thu Feb  6 18:34:00 GMT 2020 - me@cimba.li - 1.5.2
 This release brings a number of convenience fixes, nothing that
 should affect a lot of people.
 - End of python 2 support
@@ -178,12 +178,12 @@ should affect a lot of people.
   Hoskin
 
 -------------------------------------------------------------------
-Thu 28 Nov 18:13:15 GMT 2019 - me@cimba.li - 1.5.1
+Thu Nov 28 18:13:15 GMT 2019 - me@cimba.li - 1.5.1
 Update release mechanisms, for Homebrew and building for Windows
 via appveyor.
 
 -------------------------------------------------------------------
-Mon 25 Nov 00:34:04 GMT 2019 - me@cimba.li - 1.5.0
+Mon Nov 25 00:34:04 GMT 2019 - me@cimba.li - 1.5.0
 A handful of new features, mainly centered around configuration
 files and video support:
 - Portable configurations, supported by ticking
@@ -213,28 +213,28 @@ files and video support:
 - Describe installation from Chocolatey package (#112)
 
 -------------------------------------------------------------------
-Wed 14 Aug 12:50:54 BST 2019 - me@cimba.li - 1.4.1
+Wed Aug 14 12:50:54 BST 2019 - me@cimba.li - 1.4.1
 Give more visibility to the logo
 Automated upload of windows binaries, more logo visibility.
 
 -------------------------------------------------------------------
-Wed 7 Aug 15:39:22 BST 2019 - me@cimba.li - 1.4.0
+Wed Aug  7 15:39:22 BST 2019 - me@cimba.li - 1.4.0
 Presentation time analysis and automated building for windows
 
 - Fix for #103 (#104) by walli545
 
 -------------------------------------------------------------------
-Thu 7 Feb 03:13:56 GMT 2019 - me@cimba.li - 1.3.1
+Thu Feb  7 03:13:56 GMT 2019 - me@cimba.li - 1.3.1
 - Add pygobject3 to brew requirements (#97) by Paolo G. Giarrusso
 
 -------------------------------------------------------------------
-Sat 26 Jan 16:02:17 GMT 2019 - me@cimba.li - 1.3.0
+Sat Jan 26 16:02:17 GMT 2019 - me@cimba.li - 1.3.0
 - Update German translation (#95) by FriedrichFröbel
 - Update of Czech translation (#94) by multiflexi
 - Spanish translation update (#93) by Suso Comesaña
 
 -------------------------------------------------------------------
-Thu 6 Sep 20:26:21 BST 2018 - me@cimba.li - 1.2.0
+Thu Sep  6 20:26:21 BST 2018 - me@cimba.li - 1.2.0
 Gif support and other novelties
 - Pympress now supports playing gif files that are embedded as
   movies, e.g. with `\movie` in the multimedia package for beamer.
@@ -248,18 +248,18 @@ Gif support and other novelties
 - Update German translations (#55) by FriedrichFröbel
 
 -------------------------------------------------------------------
-Tue 16 Jan 15:01:56 GMT 2018 - me@cimba.li - 1.1.2
+Tue Jan 16 15:01:56 GMT 2018 - me@cimba.li - 1.1.2
 Bugfix Small patch to fix the estimated talk time
 
 -------------------------------------------------------------------
-Sun 7 Jan 14:55:34 GMT 2018 - me@cimba.li - 1.1.1
+Sun Jan  7 14:55:34 GMT 2018 - me@cimba.li - 1.1.1
 Improve video support on two screens
 
 -------------------------------------------------------------------
-Fri 1 Dec 11:11:39 GMT 2017 - me@cimba.li - 1.1.0
+Fri Dec  1 11:11:39 GMT 2017 - me@cimba.li - 1.1.0
 
 -------------------------------------------------------------------
-Thu 10 Aug 02:09:33 BST 2017 - me@cimba.li - 1.0.4
+Thu Aug 10 02:09:33 BST 2017 - me@cimba.li - 1.0.4
 Novelties:
 - Possibility to rearrange layout in config file (see here for how
   the constraints on the json string's content:
@@ -275,16 +275,16 @@ Novelties:
 - Internalize all translations with python gettext (#21)
 
 -------------------------------------------------------------------
-Thu 23 Mar 20:13:41 GMT 2017 - me@cimba.li - 1.0.2
+Thu Mar 23 20:13:41 GMT 2017 - me@cimba.li - 1.0.2
 Should fix prerendering issues on Windows
 
 -------------------------------------------------------------------
-Fri 3 Mar 22:03:20 GMT 2017 - me@cimba.li - 1.0.1
+Fri Mar  3 22:03:20 GMT 2017 - me@cimba.li - 1.0.1
 - Fix osx i18n (#17)
 - Add German translation (#16) by FriedrichFröbel
 
 -------------------------------------------------------------------
-Mon 30 Jan 01:46:57 GMT 2017 - me@cimba.li - 1.0
+Mon Jan 30 01:46:57 GMT 2017 - me@cimba.li - 1.0
 - Refactor to load widgets from glade xml files (#4)
 - Scribble (#3)
 - Suggestions (#2) by Epithumia
