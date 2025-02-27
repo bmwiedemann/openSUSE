@@ -1,7 +1,7 @@
 #
 # spec file for package python-hypothesis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ ExclusiveArch:  do_not_build
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
-Version:        6.119.1
+Version:        6.127.2
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -94,6 +94,7 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module python-dateutil >= 1.4}
 BuildRequires:  %{python_module rich >= 9.0.0}
 BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module watchdog}
 %if %{with complete_tests}
 BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module fakeredis}
@@ -167,6 +168,12 @@ donttest+=" or test_statistics_with_events_and_target"
 donttest+=" or test_self_ref_regression"
 # flaky test
 donttest+=" or test_has_string_of_max_length"
+# Test not working with 3.13.2
+# gh#HypothesisWorks/hypothesis#4276
+# https://github.com/python/cpython/issues/125553
+donttest+=" or test_clean_source[case-5]"
+# Requires latest black
+donttest+=" or test_ghostwriter_example_outputs[union_sequence_parameter]"
 # adapted from pytest.ini in github repo toplevel dir (above hypothesis-python)
 echo '[pytest]
 addopts=

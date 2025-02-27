@@ -1,4 +1,205 @@
 -------------------------------------------------------------------
+Wed Feb 26 07:00:42 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 6.172.2:
+  - Adjust type hints for the pub-sub database implementation in
+    version 6.126.0, and remove a remnant debug print in its
+    implementation.
+- 6.127.1:
+  - Improve the clarity of printing counterexamples in stateful
+    testing, by avoiding confusing Bundle references with equivalent
+    values drawn from a regular strategy.
+- 6.127.0:
+  - This releases adds support for type aliases created with the type
+    statement (new in python 3.12) to from_type() and
+    register_type_strategy().
+- 6.126.0:
+  - The Hypothesis database now supports a pub-sub interface to
+    efficiently listen for changes in the database, via .add_listener
+    and .remove_listener. While all databases that ship with
+    Hypothesis support this interface, implementing it is not required
+    for custom database subclasses. Hypothesis will warn when trying
+    to listen on a database without support.
+  - This feature is currently only used downstream in hypofuzz.
+- 6.125.3:
+  - Improves sharing of some internal cache behavior.
+- 6.125.2:
+  - Optimize performance (improves speed by ~5%) and clarify the
+    wording in an error message.
+- 6.125.1:
+  - Fixes a bug since around version 6.124.4 where we might have
+    generated -0.0 for st.floats(min_value=0.0), which is unsound.
+- 6.125.0:
+  - Add 2024.12 to the list of recognized Array API versions in
+    hypothesis.extra.array_api.
+- 6.124.9:
+  - Registration of experimental Alternative backends for Hypothesis
+    is now done via
+    hypothesis.internal.conjecture.providers.AVAILABLE_PROVIDERS
+    instead of
+    hypothesis.internal.conjecture.data.AVAILABLE_PROVIDERS.
+- 6.124.8:
+  - Refactor some internals for better type hinting.
+- 6.124.7:
+  - Internal renamings.
+- 6.124.6:
+  - More work on internal type hints.
+- 6.124.5:
+  - Internal refactoring to make some stateful internals easier to access.
+- 6.124.4:
+  - Refactoring of our internal input generation. This shouldn’t lead
+    to any changes in the distribution of test inputs. If you notice
+    any, please open an issue!
+- 6.124.3:
+  - Some Hypothesis internals now use the number of choices as a
+    yardstick of input size, rather than the entropy consumed by those
+    choices. We don’t expect this to cause significant behavioral
+    changes.
+- 6.124.2:
+  - Improves our internal caching logic for test cases.
+- 6.124.1:
+  - fuzz_one_input is now implemented using an alternative backend.
+    This brings the interpretation of the fuzzer-provided bytestring
+    closer to the fuzzer mutations, allowing the mutations to work
+    more reliably. We hope to use this backend functionality to
+    improve fuzzing integration (see e.g.
+    https://github.com/google/atheris/issues/20) in the future!
+- 6.124.0:
+  - The Hypothesis example database now uses a new internal format to
+    store examples. This new format is not compatible with the
+    previous format, so stored entries will not carry over.
+
+  - The database is best thought of as a cache that may be invalidated
+    at times. Instead of relying on it for correctness, we recommend
+    using @example to specify explicit examples. When using databases
+    across environments (such as connecting a GitHubArtifactDatabase
+    database in CI to your local environment), we recommend using the
+    same version of Hypothesis for each where possible, for maximum
+    reproducibility.
+- 6.123.17:
+  - This patch improves certain corner cases for reporting of flaky
+    errors (issue #4183 and issue #4228).
+- 6.123.16:
+  - Improves an edge case in one of our integer and float shrinking passes.
+- 6.123.15:
+  - Improves one of our shrinking passes for integers which require a
+    constant relative difference to trigger the bug.
+- 6.123.14:
+  - Avoid realizing symbolic values from Alternative backends for
+    Hypothesis when verbosity is verbose or higher.
+- 6.123.13:
+  - More internal code refactoring.
+- 6.123.12:
+  - DirectoryBasedExampleDatabase now creates files representing
+    database entries atomically, avoiding a very brief intermediary
+    state where a file could be created but not yet written to.
+- 6.123.11:
+  - Internal code refactoring.
+- 6.123.10:
+  - Fixes a bug caused by alternative backends raising
+    hypothesis.errors.BackendCannotProceed in certain cases.
+- 6.123.9:
+  - Add internal type hints to our pretty printer.
+- 6.123.8:
+  - The shrinker contains a pass aimed at integers which are required
+    to sum to a value. This patch extends that pass to floats as well.
+- 6.123.7:
+  - Internal type hint additions and refactorings.
+- 6.123.6:
+  - @reproduce_failure() now uses a newer internal interface to
+    represent failures. As a reminder, this representation is not
+    intended to be stable across versions or with respect to changes
+    in the test.
+- 6.123.5:
+  - Internal code refactoring for the typed choice sequence (issue
+    #3921). May have some neutral effect on shrinking.
+- 6.123.4:
+  - This patch improves shrinking involving long strings or byte
+    sequences whose value is not relevant to the failure.
+- 6.123.3:
+  - This release further improves shrinking of strategies using
+    one_of(), allowing the shrinker to more reliably move between
+    branches of the strategy.
+- 6.123.2:
+  - The shrinker now uses the typed choice sequence (issue #3921) when
+    ordering failing examples. As a result, Hypothesis may now report
+    a different minimal failing example for some tests. We expect most
+    cases to remain unchanged.
+- 6.123.1:
+  - Our pytest plugin now emits a warning if you set Pytest’s
+    norecursedirs config option in such a way that the .hypothesis
+    directory would be searched for tests. This reliably indicates
+    that you’ve made a mistake which slows down test collection,
+    usually assuming that your configuration extends the set of
+    ignored patterns when it actually replaces them. (issue #4200)
+- 6.123.0:
+  - from_type() can now handle constructors with required
+    positional-only arguments if they have type annotations.
+    Previously, we only passed arguments by keyword.
+- 6.122.7:
+  - This patch lays some groundwork for migrating our internal
+    representation to the typed choice sequence (issue #3921)
+- 6.122.6:
+  - This patch cleans up some internal code around clamping floats.
+- 6.122.5:
+  - This release improves shrinking in some cases, especially for
+    strategies using one_of(). This will typically improve shrinking
+    speed and may in some cases improve the end result.
+- 6.122.4:
+  - This patch improves generation performance for the provisional
+    domains() strategy, including its derivative strategies urls() and
+    emails().
+- 6.122.3:
+  - This patch improves our error and warning messages.
+- 6.122.2:
+  - This patch updates some outdated external links in our documentation.
+- 6.122.1:
+  - Fix from_type() on collections.abc.Callable returning None.
+- 6.122.0:
+  - This release adds .span_start() and .span_end() methods to our
+    internal PrimitiveProvider interface, for use by Alternative
+    backends for Hypothesis.
+- 6.121.2:
+  - This patch updates our autoformatting tools, improving our code
+    style without any API changes.
+- 6.121.1:
+  - This release brings back the old representation of
+    hypothesis.stateful.Bundle, reverting most changes of PR #4124.
+- 6.121.0:
+  - This release adds BackgroundWriteDatabase, a new database backend
+    which defers writes on the wrapped database to a background
+    thread. This allows for low-overhead writes in
+    performance-critical environments like fuzz_one_input.
+- 6.120.0:
+  - This release changes our input distribution for low max_examples.
+    Previously, we capped the size of inputs when generating at least
+    the first 10 inputs, with the reasoning that early inputs to a
+    property should be small. However, this meant properties with
+    max_examples=10 would consistent entirely of small inputs. This
+    patch removes the hard lower bound so that inputs to these
+    properties are more representative of the input space.
+  - When a user requests an interactive input via strategy.example, we
+    generate and cache a batch of 100 inputs, returning the first one.
+    This can be expensive for large strategies or when only a few
+    examples are needed. This release improves the speed of
+    strategy.example by lowering the batch size to 10.
+- 6.119.4:
+  - This patch fixes a bug since 6.99.13 - 2024-03-24 where only
+    interactively-generated values (via data.draw) would be reported
+    in the arguments field of our observability output. Now, all
+    values are reported.
+- 6.119.3:
+  - Hypothesis collects coverage information during the shrink and
+    explain phases in order to show a more informative error message.
+    On 3.12+, this uses sys.monitoring. This patch improves the
+    performance of coverage collection on 3.12+ by disabling events we
+    don’t need.
+- 6.119.2:
+  - This patch refactors some internals to prepare for future work
+    using our IR (issue #3921).
+
+
+-------------------------------------------------------------------
 Mon Nov 25 20:20:07 UTC 2024 - Matej Cepl <mcepl@suse.com>
 
 - Skip tests matching `test_adds_note_showing_which_strategy`
