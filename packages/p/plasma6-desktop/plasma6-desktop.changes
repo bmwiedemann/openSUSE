@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 25 19:38:49 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.2
+- Changes since 6.3.1:
+  * update version for new release
+  * applets/kickoff: fix touch scrolling not working (kde#500452)
+  * applets/kickoff: fix `TypeError: Cannot read property 'view' of null`
+  * kcms/touchpad: indent subordinate items in RtL too
+  * kcms/touchpad: respect layoutDirection
+  * applets/kicker: respect layoutDirection in keynav
+  * applets/kickoff: import plasmoid on PlacesPage where it's used
+  * desktop/RenameEditor.qml: fix background
+  * applets/kicker: focus the delegate in all cases
+  * kcms/libkwindevices: put template functions in the header (kde#500345)
+  * folderview: Fix drag selection (kde#499898)
+  * pager: remove onContainsMouseChanged, refresh model after desktopMouseArea.clicked (kde#500236)
+  * update version for new release
+
+-------------------------------------------------------------------
 Wed Feb 19 10:37:43 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.1.1:

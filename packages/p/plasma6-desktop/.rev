@@ -176,4 +176,12 @@
   * update version for new release (forwarded request 1247029 from Vogtinator)</comment>
     <requestid>1247048</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d5bdf259fcce78cc2b1622d5f71c977a</srcmd5>
+    <version>6.3.2</version>
+    <time>1740664175</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.3.2(.1) (forwarded request 1248621 from Vogtinator)</comment>
+    <requestid>1248676</requestid>
+  </revision>
 </revisionlist>
