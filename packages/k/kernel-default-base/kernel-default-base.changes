@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 25 09:39:29 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Add 9p with support for virtio and xen
+
+-------------------------------------------------------------------
 Tue Jan 14 13:56:16 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Add virtiofs
