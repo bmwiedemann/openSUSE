@@ -1,7 +1,7 @@
 #
 # spec file for package python-yarl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,9 @@ sed -i '/addopts/d' setup.cfg
 # Remove pytest_cov build requirement
 sed -i 's/-p pytest_cov/-p no:pytest_cov/' pytest.ini
 sed -i '/--cov/d' pytest.ini
+
+# hypothesis warns about norecursedirs, but warnings are treated as errors. Resolving both problems.
+rm pytest.ini
 
 %build
 export CFLAGS="%{optflags} -Wno-return-type"

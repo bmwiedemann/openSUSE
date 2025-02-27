@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 16:53:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Delete pytest.ini
+  * hypothesis added a warning about pytest not looking into its hidden 
+    working directory
+  * warnings were treated as errors here
+  * resolving both problems by returning to default pytest settings
+
+-------------------------------------------------------------------
 Thu Dec  5 12:10:05 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.18.3:
