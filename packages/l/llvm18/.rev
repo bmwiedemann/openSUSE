@@ -206,4 +206,41 @@
 </comment>
     <requestid>1224681</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>b2e712577fcf475d7cbe5dc21190b3f8</srcmd5>
+    <version>18.1.8</version>
+    <time>1740664141</time>
+    <user>dimstar_suse</user>
+    <comment>- add libcxx-use-shlex-quote.patch to fix build with python 3.13
+
+- Use correct LLVM_HOST_TRIPLE for riscv64
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Add upstream patch to export compiler-rt FuzzedDataProvider header,
+  * compiler-rt-move-fdp.patch
+- Drop llvm5-devel-static. llvm5-devel contains shared library with
+- Package libLLVMFuzzer
+- Use gcc6 on SLE12
+- Package license &amp; credits
+  * See
+- Enable BPF for all arches bsc#1026191
+- libc++ must depend on libc++abi
+- Disable libcxx/lldb/openmp for SLE fate#319582
+- Update rpmlintrc to whitelist libLTO.so
+- Re-enable glibc-2.23 patch for Tumbleweed
+- Add glibc-2.23-libcxx.patch to fix test failures with glibc 2.23
+-  Remove FFI support because its fragile
+- Enable OpenMP for x86, x86_64, ppc64 and ppc64le
+- Enable all targets on x86, x86_64
+- fix build on s390x (one typo in ifarch and one change in filelist)
+- Add llvm-fix-parsearmarch.patch to fix parsing armv{6,7}hl archs.
+- Rename llvm-remove-werror-date-time.patch to
+- Require llvm-clang not just clang
+- Add libcxxabi-exceptions.patch to fix libcxxabi exception handling
+- Remove asan-disable-hugemalloctest.patch and
+- build compiler-rt on ppc64 (don't delete it)
+- complete ifarchs for s390
+- Remove non-existing doc subpackage
+- Update to r196371 from release_34 branch</comment>
+    <requestid>1248580</requestid>
+  </revision>
 </revisionlist>
