@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 18 11:07:12 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+- Build package for multiple Python flavors on the SLE15 family
+
+-------------------------------------------------------------------
 Fri Jan 24 12:35:25 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Use libalternatives instead of update-alternatives, bsc#1235785

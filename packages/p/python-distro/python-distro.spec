@@ -22,7 +22,7 @@
 %bcond_with libalternatives
 %endif
 
-%{?sle15_python_module_pythons}
+%{?sle15allpythons}
 %{!?license: %global license %doc}
 %bcond_without test
 Name:           python-distro
