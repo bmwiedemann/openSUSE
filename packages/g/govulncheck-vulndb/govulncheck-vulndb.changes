@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 02:51:51 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20250226T025151 2025-02-26T02:51:51Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3487 CVE-2025-22869
+  * GO-2025-3488 CVE-2025-22868
+
+-------------------------------------------------------------------
 Tue Feb 18 20:32:01 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.0.20250218T203201 2025-02-18T20:32:01Z.
