@@ -1,7 +1,7 @@
 #
 # spec file for package postfix
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix
-Version:        3.9.1
+Version:        3.10.1
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0

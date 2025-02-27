@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Feb 25 19:00:58 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.10.1
+  * Bugfix (defect introduced: 20250210): a recent 'fix' for the
+    default smtp_tls_dane_insecure_mx_policy setting resulted in
+    unnecessary 'dnssec_probe' warnings, on systems that disable
+    DNSSEC lookups (which is the default).
+
+-------------------------------------------------------------------
+Tue Feb 18 20:23:53 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.10.0
+  * Internal protocol change: Postfix needs "postfix reload" (or "postfix
+    stop" and "postfix start") after upgrade, because of a change in the
+    delivery agent protocol. If this step is skipped, Postfix delivery
+    agents will log a warning:
+
+        unexpected attribute smtputf8 from xxx socket (expecting: sendopts)
+
+    where xxx is the delivery agent service name.
+  * Forward compatibility: Support for OpenSSL 3.5 post-quantum
+    cryptography. To manage algorithm selection, OpenSSL introduces new
+    TLS group syntax that Postfix will not attempt to imitate. Instead,
+    Postfix now allows the tls_eecdh_auto_curves and tls_ffdhe_auto_groups
+    parameter values to have an empty value. When both are set empty, the
+    algorithm selection can be managed through OpenSSL configuration. For
+    more, look for "Post-quantum" in the postconf(5) manpage.
+  * Support for the RFC 8689 "TLS-Required: no" message header to request
+    delivery of messages (such as TLSRPT summaries) even if the preferred
+    TLS security policy cannot be enforced. This limits the Postfix SMTP
+    client to "smtp_tls_security_level = may" which does not authenticate
+    server certificates and which allows falling back to plaintext.
+  * Support for the REQUIRETLS SMTP service extension will evolve in
+    Postfix 3.11.
+  * Support for the TLSRPT protocol (defined in RFC 8460). With this,
+    a domain can publish a policy in DNS that requests daily summary
+    reports for successful and failed SMTP-over-TLS connections to that
+    domain's MX hosts. This supports both DANE (built-in) and MTA-STS
+    (via an smtp_tls_policy_maps plugin). The implementation uses a
+    TLSRPT library and reporting infrastructure that are maintained by
+    sys4. For details, see TLSRPT_README.
+  * Privacy: With "smtpd_hide_client_session = yes", the Postfix
+    SMTP server generates a Received: header without client session
+    info. This setting may be used with the MUA submission services
+    (port 465 and 587).
+  * Support for RFC 2047 encoding of non-ASCII "full name" information
+    in Postfix-generated From: message headers. Encoding non-ASCII full
+    names can avoid the need to use SMTPUTF8, and therefore can avoid
+    incompatibility with sites that do not support SMTPUTF8. See the
+    full_name_encoding_charset parameter description for details.
+  * Database performance: When mysql: or pgsql: configuration specifies
+    a single host, assume that it is a load balancer and reconnect
+    immediately after a single failure, instead of failing all requests
+    for 60s.
+  * The Postfix Milter implementation now logs the reason for a
+    'quarantine' action, instead of "milter triggers HOLD action".
+  * The SMTP server now logs the queue ID (or "NOQUEUE") when a connection
+    ends abnormally (timeout, lost connection, or too many errors),
+    and the cleanup server now logs "queueid: canceled" when a message
+    transaction is started but not completed. These changes simplify
+    logfile analysis.
+  * Dovecot SASL client logging for "Invalid authentication mechanism"
+    now includes the name of that mechanism.
+  * Postfix SMTP server 'reject' logging now shows the sasl_method,
+    sasl_username, and sasl_sender if available.
+
+-------------------------------------------------------------------
 Thu Dec  5 19:05:33 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.9.1

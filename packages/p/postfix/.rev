@@ -2379,4 +2379,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>1232867</requestid>
   </revision>
+  <revision rev="247" vrev="1">
+    <srcmd5>64a93f74b88b89f905761c03b7711ef7</srcmd5>
+    <version>3.10.1</version>
+    <time>1740664203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248568</requestid>
+  </revision>
 </revisionlist>

@@ -14,22 +14,26 @@ Index: conf/master.cf
  #smtp      inet  n       -       n       -       1       postscreen
  #smtpd     pass  -       -       n       -       -       smtpd
  #dnsblog   unix  -       -       n       -       0       dnsblog
-@@ -17,40 +22,42 @@ smtp      inet  n       -       n
+@@ -17,34 +22,36 @@ smtp      inet  n       -       n
  # Choose one: enable submission for loopback clients only, or for any client.
  #127.0.0.1:submission inet n -   n       -       -       smtpd
  #submission inet n       -       n       -       -       smtpd
 -#  -o syslog_name=postfix/submission
+-#  -o smtpd_forbid_unauth_pipelining=no
 -#  -o smtpd_tls_security_level=encrypt
 -#  -o smtpd_sasl_auth_enable=yes
 -#  -o smtpd_tls_auth_only=yes
 -#  -o local_header_rewrite_clients=static:all
+-#  -o smtpd_hide_client_session=yes
 -#  -o smtpd_reject_unlisted_recipient=no
 +#   -o syslog_name=postfix/submission
++#   -o smtpd_forbid_unauth_pipelining=no
 +#   -o smtpd_tls_security_level=encrypt
 +#   -o content_filter=smtp:[127.0.0.1]:10024
 +#   -o smtpd_sasl_auth_enable=yes
 +#   -o smtpd_tls_auth_only=yes
 +#   -o local_header_rewrite_clients=static:all
++#   -o smtpd_hide_client_session=yes
 +#   -o smtpd_reject_unlisted_recipient=no
  #     Instead of specifying complex smtpd_<xxx>_restrictions here,
  #     specify "smtpd_<xxx>_restrictions=$mua_<xxx>_restrictions"
@@ -51,36 +55,24 @@ Index: conf/master.cf
  #127.0.0.1:submissions inet n  -       n       -       -       smtpd
  #submissions     inet  n       -       n       -       -       smtpd
 -#  -o syslog_name=postfix/submissions
+-#  -o smtpd_forbid_unauth_pipelining=no
 -#  -o smtpd_tls_wrappermode=yes
 -#  -o smtpd_sasl_auth_enable=yes
 -#  -o local_header_rewrite_clients=static:all
+-#  -o smtpd_hide_client_session=yes
 -#  -o smtpd_reject_unlisted_recipient=no
 +#    -o syslog_name=postfix/submissions
++#    -o smtpd_forbid_unauth_pipelining=no
 +#    -o smtpd_tls_wrappermode=yes
 +#    -o content_filter=smtp:[127.0.0.1]:10024
 +#    -o smtpd_sasl_auth_enable=yes
 +#    -o local_header_rewrite_clients=static:all
++#    -o smtpd_hide_client_session=yes
 +#    -o smtpd_reject_unlisted_recipient=no
  #     Instead of specifying complex smtpd_<xxx>_restrictions here,
  #     specify "smtpd_<xxx>_restrictions=$mua_<xxx>_restrictions"
  #     here, and specify mua_<xxx>_restrictions in main.cf (where
- #     "<xxx>" is "client", "helo", "sender", "relay", or "recipient").
--#  -o smtpd_client_restrictions=
--#  -o smtpd_helo_restrictions=
--#  -o smtpd_sender_restrictions=
--#  -o smtpd_relay_restrictions=
--#  -o smtpd_recipient_restrictions=permit_sasl_authenticated,reject
--#  -o milter_macro_daemon_name=ORIGINATING
-+#    -o smtpd_client_restrictions=$mua_client_restrictions
-+#    -o smtpd_helo_restrictions=$mua_helo_restrictions
-+#    -o smtpd_sender_restrictions=$mua_sender_restrictions
-+#    -o smtpd_recipient_restrictions=
-+#    -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
-+#    -o milter_macro_daemon_name=ORIGINATING
- #628       inet  n       -       n       -       -       qmqpd
- pickup    unix  n       -       n       60      1       pickup
- cleanup   unix  n       -       n       -       0       cleanup
-@@ -79,6 +86,26 @@ lmtp      unix  -       -       n
+@@ -83,6 +90,26 @@ lmtp      unix  -       -       n
  anvil     unix  -       -       n       -       1       anvil
  scache    unix  -       -       n       -       1       scache
  postlog   unix-dgram n  -       n       -       1       postlogd
@@ -107,7 +99,7 @@ Index: conf/master.cf
  #
  # ====================================================================
  # Interfaces to non-Postfix software. Be sure to examine the manual
-@@ -112,7 +139,7 @@ postlog   unix-dgram n  -       n
+@@ -116,7 +143,7 @@ postlog   unix-dgram n  -       n
  # Also specify in main.cf: cyrus_destination_recipient_limit=1
  #
  #cyrus     unix  -       n       n       -       -       pipe
@@ -116,7 +108,7 @@ Index: conf/master.cf
  #
  # ====================================================================
  #
-@@ -145,3 +172,10 @@ postlog   unix-dgram n  -       n
+@@ -149,3 +176,10 @@ postlog   unix-dgram n  -       n
  #mailman   unix  -       n       n       -       -       pipe
  #  flags=FRX user=list argv=/usr/lib/mailman/bin/postfix-to-mailman.py
  #  ${nexthop} ${user}
