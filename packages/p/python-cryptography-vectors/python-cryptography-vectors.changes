@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 26 09:34:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 44.0.1:
+  * Update test vectors to match python-cryptography 44.0.1
+
+-------------------------------------------------------------------
 Wed Jan 29 08:36:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 44.0.0:
