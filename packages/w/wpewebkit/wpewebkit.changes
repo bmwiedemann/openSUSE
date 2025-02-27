@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:34:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.46.6:
+  + Support building against ICU 76.1
+  + Fix lost initial audio samples played using WebAudio on 32-bit
+    Raspberry Pi devices when using the OpenMAX GStreamer elements.
+  + Fix rendering on GPUs with maximum texture size smaller than
+    2000x2000 pixels by querying the maximum size supported at
+    runtime.
+  + Fix a crash when enabling Skia CPU rendering.
+  + Fix several crashes and rendering issues.
+- Drop fix-icu-build.patch: Fixed upstream.
+- Drop libWPEPlatform sub-package, no longer built.
+
+-------------------------------------------------------------------
 Wed Nov 20 17:13:30 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fix-icu-build.patch: Support ICU 76.1 build

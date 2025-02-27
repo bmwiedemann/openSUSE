@@ -1,7 +1,7 @@
 #
 # spec file for package wpewebkit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,13 @@ Name:           wpewebkit
 %ifarch %{ix86} ppc64le
 %define _lto_cflags %{nil}
 %endif
-Version:        2.46.0
+Version:        2.46.6
 Release:        0
 Summary:        Library for rendering web content, WPE Port
 License:        BSD-3-Clause AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://wpewebkit.org/
 Source:         %{url}/releases/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM fix-icu-build.patch -- Support ICU 76.1 build
-Patch:          fix-icu-build.patch
 
 BuildRequires:  bubblewrap
 BuildRequires:  cmake
@@ -136,19 +134,6 @@ WPE allows embedders to create simple and performant systems based on
 Web platform technologies. It is designed with hardware acceleration
 in mind, leveraging common 3D graphics APIs for best performance.
 
-%package -n libWPEPlatform-%{_wpsover}
-Summary:        Library for rendering web content, new WPE platform API
-Group:          System/Libraries
-Requires:       %{name}-%{_sonameverpkg}-injected-bundles
-Requires:       bubblewrap
-Requires:       xdg-dbus-proxy
-Provides:       libWPEPlatform-{_apiver}
-
-%description -n libWPEPlatform-%{_wpsover}
-WPE allows embedders to create simple and performant systems based on
-Web platform technologies. It is designed with hardware acceleration
-in mind, leveraging common 3D graphics APIs for best performance.
-
 %package -n WPEWebDriver
 Summary:        WebDriver service implementation for WPE  WebKit
 Group:          System/Libraries
@@ -210,10 +195,6 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags wayland-client xkbcommon)"
 %ninja_install -C build
 
 %ldconfig_scriptlets -n libWPEWebKit-%{_wksover}
-%ldconfig_scriptlets -n libWPEPlatform-%{_wpsover}
-
-%files -n libWPEPlatform-%{_wpsover}
-%{_libdir}/libWPEPlatform-%{_apiver}.so.*
 
 %files -n libWPEWebKit-%{_wksover}
 %dir %{_libdir}/wpe-webkit-%{_apiver}
@@ -234,12 +215,7 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags wayland-client xkbcommon)"
 
 %files devel
 %{_includedir}/wpe-webkit-%{_apiver}
-%{_libdir}/libWPEPlatform-%{_apiver}.so
 %{_libdir}/libWPEWebKit-%{_apiver}.so
-%{_libdir}/pkgconfig/wpe-platform-%{_apiver}.pc
-%{_libdir}/pkgconfig/wpe-platform-drm-%{_apiver}.pc
-%{_libdir}/pkgconfig/wpe-platform-headless-%{_apiver}.pc
-%{_libdir}/pkgconfig/wpe-platform-wayland-%{_apiver}.pc
 %{_libdir}/pkgconfig/wpe-webkit-%{_apiver}.pc
 %{_libdir}/pkgconfig/wpe-web-process-extension-%{_apiver}.pc
 
