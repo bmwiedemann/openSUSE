@@ -1575,4 +1575,12 @@ New stable rel</comment>
   via libgdata dependency. (forwarded request 1230298 from iznogood)</comment>
     <requestid>1230572</requestid>
   </revision>
+  <revision rev="199" vrev="3">
+    <srcmd5>74010eca657ea56ecf54a378e5c6021c</srcmd5>
+    <version>1.56.1</version>
+    <time>1740664214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248339</requestid>
+  </revision>
 </revisionlist>

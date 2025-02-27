@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 14:23:44 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add README.SUSE about security concerns in gvfs (bsc#1205607)
+
+-------------------------------------------------------------------
 Wed Dec 11 20:48:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop unused and obsolete pkgconfig(gcr-base-3) BuildRequires and

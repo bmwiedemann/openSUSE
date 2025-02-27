@@ -1,7 +1,7 @@
 #
 # spec file for package gvfs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        GPL-3.0-only AND LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/gvfs
 Source0:        %{name}-%{version}.tar.zst
+Source1:        README.SUSE
 Source99:       baselibs.conf
 
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
@@ -183,6 +184,7 @@ gvfs plugins.
 %patch -P 1000 -p1
 %patch -P 1001 -p1
 %endif
+cp %{SOURCE1} .
 
 %build
 %meson \
@@ -223,7 +225,7 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 
 %files
 %license COPYING daemon/trashlib/COPYING.trashlib
-%doc NEWS README.md
+%doc NEWS README.md README.SUSE
 %doc CONTRIBUTING.md NEWS.pre-1-2
 %doc daemon/org.gtk.vfs.file-operations.rules.in
 %dir %{_datadir}/%{name}
