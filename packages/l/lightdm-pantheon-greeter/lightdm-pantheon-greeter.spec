@@ -24,7 +24,6 @@ Summary:        Pantheon's LightDM Login Screen
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/greeter
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix-mutter45.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -40,11 +39,7 @@ BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(granite)
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(liblightdm-gobject-1)
-%if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(libmutter-15)
-%else
-BuildRequires:  pkgconfig(libmutter-13)
-%endif
 Provides:       lightdm-elementary-greeter = %{version}
 Obsoletes:      lightdm-elementary-greeter < %{version}
 
@@ -54,10 +49,7 @@ Pantheon Greeter is a pantheon-styled Login Screen for LightDM.
 %lang_package
 
 %prep
-%autosetup -N -n greeter-%{version}
-%if 0%{?suse_version} < 1600
-%patch -P0 -p1
-%endif
+%autosetup -n greeter-%{version}
 
 %build
 export CFLAGS="%{optflags} -Wno-error=return-type"

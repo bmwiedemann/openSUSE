@@ -27,4 +27,12 @@
   the support (forwarded request 1245703 from rrahl0)</comment>
     <requestid>1245710</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3e26ae0ad948238ad67182a95acd8f27</srcmd5>
+    <version>8.0.1</version>
+    <time>1740664256</time>
+    <user>dimstar_suse</user>
+    <comment>* remove patch fix-mutter45.patch, as it's not needed anymore (forwarded request 1248809 from rrahl0)</comment>
+    <requestid>1248810</requestid>
+  </revision>
 </revisionlist>
