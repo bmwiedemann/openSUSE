@@ -113,4 +113,12 @@ Needed by rusticl (Mesa)</comment>
     <comment></comment>
     <requestid>1236052</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>37ca43bf41d8a711be78020a5b24906f</srcmd5>
+    <version>19.1.4</version>
+    <time>1740664225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248778</requestid>
+  </revision>
 </revisionlist>

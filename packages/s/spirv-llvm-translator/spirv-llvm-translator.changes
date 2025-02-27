@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 25 21:38:44 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 19.1.4.
+  * Handle OpBitcast between pointers and non-pointers.
+
+-------------------------------------------------------------------
 Mon Jan  6 21:10:20 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 19.1.3.
