@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 25 19:45:40 UTC 2025 - mantarimay@pm.me
+
+- Update to version 20250224:
+  * Higher jpeg quality, we can afford that
+  * Fix merging audio with audio device and app audio where one
+    audio device is a microphone with mono input
+  * Dont show nvidia-smi output
+  * Force nvenc codecs to work on opensuse
+  * Make it possible to stop screenshot with sigint
+  * Make image output lossy (use stb image writer), also
+    significantly improves performance for jpeg
+  * Make fps option (default to 60)
+  * Mention that hdr only works in 'prefer color accuracy' mode
+
+-------------------------------------------------------------------
 Wed Feb 19 16:53:24 UTC 2025 - mantarimay@pm.me
 
 - Update to version 20250217:
