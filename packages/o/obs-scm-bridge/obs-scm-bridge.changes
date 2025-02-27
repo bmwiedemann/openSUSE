@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 20 13:03:09 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- 0.6.2
+  * Make project mode always look for _config in the top dir, also
+    when using subdirs.
+
+-------------------------------------------------------------------
 Mon Feb  3 12:16:48 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - 0.6.1

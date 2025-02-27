@@ -151,4 +151,12 @@
      won't contain them either then).</comment>
     <requestid>1242816</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f772a12df1d9dd5bc2728049c740338a</srcmd5>
+    <version>0.6.2</version>
+    <time>1740664285</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1248998</requestid>
+  </revision>
 </revisionlist>
