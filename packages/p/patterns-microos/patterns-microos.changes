@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 26 14:29:47 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add sndiff to default pattern
+- Remove appamor pattern, replaced by SELinux long ago
+
+-------------------------------------------------------------------
+Mon Feb 24 16:35:49 CET 2025 - ro@suse.de
+
+- Drop crda, obsolete since kernel 4.15 
+
+-------------------------------------------------------------------
 Tue Feb 18 12:55:06 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add read-only-root-fs to base pattern

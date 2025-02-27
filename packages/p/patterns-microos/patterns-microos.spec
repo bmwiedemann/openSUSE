@@ -203,7 +203,7 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9020
 Requires:       audit
-Requires:       systemd-coredump
+Requires:       sndiff
 Requires:       pattern() = microos_base
 
 %description defaults
@@ -231,20 +231,6 @@ Requires:       hwinfo
 
 %description hardware
 Packages required to install openSUSE MicroOS on real hardware.
-
-%package apparmor
-Summary:        Apparmor Support
-Group:          Metapackages
-Provides:       pattern() = microos_apparmor
-Provides:       pattern-category() = MicroOS
-Provides:       pattern-icon() = pattern-apparmor
-Provides:       pattern-order() = 9050
-Provides:       pattern-visible()
-Requires:       apparmor-parser
-Requires:       apparmor-profiles
-
-%description apparmor
-Packages required to enable Apparmor on openSUSE MicroOS.
 
 %package selinux
 Summary:        SELinux Support
@@ -714,9 +700,7 @@ Packages required for the openSUSE MicroOS with KDE Plasma
 Summary:        Packages only for the DVD of openSUSE MicroOS
 Group:          Metapackages
 Provides:       pattern-category() = MicroOS
-Requires:       apparmor-utils
 Requires:       bcache-tools
-Requires:       crda
 Requires:       cryptsetup
 Requires:       exfatprogs
 Requires:       firewalld
@@ -754,7 +738,6 @@ Requires:       mokutil
 Provides:       pattern() = microos_onlyDVD
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9900
-Requires:       pattern() = microos_apparmor
 Requires:       pattern() = microos_cloud
 Requires:       pattern() = microos_hardware
 Requires:       pattern() = microos_ima_evm
@@ -780,7 +763,6 @@ Provides:       pattern() = microos_alt_onlyDVD
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9901
 Requires:       pattern() = bootloader
-Requires:       pattern() = microos_apparmor
 Requires:       pattern() = microos_cloud
 Requires:       pattern() = microos_cockpit
 Requires:       pattern() = microos_ima_evm
@@ -801,7 +783,7 @@ Alternative additional packages on a openSUSE MicroOS DVD.
 mkdir -p %{buildroot}%{_docdir}/patterns-microos/
 PATTERNS='
     basesystem base base_zypper base_microdnf base_packagekit defaults hardware
-    sssd_ldap ima_evm ra_agent ra_verifier apparmor selinux cockpit cloud
+    sssd_ldap ima_evm ra_agent ra_verifier selinux cockpit cloud
     desktop-common desktop-gnome desktop-kde onlyDVD alt_onlyDVD
 '
 for i in $PATTERNS; do
@@ -852,10 +834,6 @@ done
 %files ra_verifier
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/ra_verifier.txt
-
-%files apparmor
-%dir %{_docdir}/patterns-microos
-%{_docdir}/patterns-microos/apparmor.txt
 
 %files selinux
 %dir %{_docdir}/patterns-microos
