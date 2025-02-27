@@ -1,7 +1,7 @@
 #
 # spec file for package libostree
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 %define libversion 1
 %define soversion  1
-%bcond_with        composefs
+%bcond_without     composefs
 %bcond_without     ed25519
 %bcond_with        tests
 Name:           libostree
@@ -61,6 +61,9 @@ BuildRequires:  gjs
 %endif
 %if %{with ed25519}
 BuildRequires:  pkgconfig(openssl)
+%endif
+%if %{with composefs}
+BuildRequires:  pkgconfig(composefs)
 %endif
 
 %description

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 31 20:13:41 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable building with composefs, as bootc needs libostree with composefs
+  compiled, which allows us to enable another way of spinning an immutable
+  distribution.
+
+-------------------------------------------------------------------
 Sun Jan 19 16:40:49 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2025.1:
