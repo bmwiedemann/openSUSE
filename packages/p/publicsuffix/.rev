@@ -1699,4 +1699,16 @@ Now with build cycle removed.</comment>
   * Add Liara (#2365)</comment>
     <requestid>1245570</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>097df759fcc09a03987ca5c44c42fbf2</srcmd5>
+    <version>20250224</version>
+    <time>1740664204</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250224:
+  * Add *.square.site for Block, Inc. (#2385)
+  * Add emprende.ve (#2394)
+  * util: gTLD data autopull updates for 2025-02-21T15:17:09 UTC (#2390)
+  * Add Lovable to public_suffix_list.dat (#2379)</comment>
+    <requestid>1248583</requestid>
+  </revision>
 </revisionlist>

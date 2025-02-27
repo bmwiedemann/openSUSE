@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 08:25:29 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20250224:
+  * Add *.square.site for Block, Inc. (#2385)
+  * Add emprende.ve (#2394)
+  * util: gTLD data autopull updates for 2025-02-21T15:17:09 UTC (#2390)
+  * Add Lovable to public_suffix_list.dat (#2379)
+
+-------------------------------------------------------------------
 Thu Feb 13 08:50:36 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20250212:
