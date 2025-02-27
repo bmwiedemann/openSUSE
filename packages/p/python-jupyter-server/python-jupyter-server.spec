@@ -31,6 +31,7 @@
 %bcond_with libalternatives
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-jupyter-server%{psuffix}
 Version:        2.14.2
 Release:        0
