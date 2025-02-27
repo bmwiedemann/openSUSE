@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 26 21:18:52 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Add prusaslicer-2.8.1-boost-1.87.0-asio.patch for new boost
+  * gh#prusa3d/PrusaSlicer#13799 gentoo#946495
+
+-------------------------------------------------------------------
 Sun Feb  9 09:37:07 UTC 2025 - Dmitry Roshchin <dmitry_r@opensuse.org>
 
 - Fix app notification font

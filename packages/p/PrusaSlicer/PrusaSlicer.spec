@@ -27,6 +27,8 @@ URL:            https://www.prusa3d.com/prusaslicer/
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-version_%{version}.tar.gz
 # PATCH-FIX-UPSTREAM PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch gh#prusa3d/PrusaSlicer#11769
 Patch1:         PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch
+# PATCH-FIX-UPSTREAM prusaslicer-2.8.1-boost-1.87.0-asio.patch gh#prusa3d/PrusaSlicer#13799 gentoo#946495
+Patch2:         prusaslicer-2.8.1-boost-1.87.0-asio.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.8.1-pr13761-fix-occtwrapper.patch gh#prusa3d/PrusaSlicer#13761
 Patch10:        PrusaSlicer-2.8.1-pr13761-fix-occtwrapper.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.6.0-octoprint-name-fix.patch -- cast lambda expression to same type
