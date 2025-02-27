@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 26 09:58:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.2.1:
+  * [BUGFIX] Don't send
+    Acceptheaderescape=allow-utf-8whenmetric_name_validation_scheme:
+    legacy` is configured. #16061
+
+-------------------------------------------------------------------
 Tue Feb 18 06:07:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.2.0:
