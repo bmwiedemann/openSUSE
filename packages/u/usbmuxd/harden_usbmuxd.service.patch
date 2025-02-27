@@ -1,7 +1,7 @@
-Index: usbmuxd-1.1.1/systemd/usbmuxd.service.in
+Index: usbmuxd-1.1.1+git69.523f700/systemd/usbmuxd.service.in
 ===================================================================
---- usbmuxd-1.1.1.orig/systemd/usbmuxd.service.in
-+++ usbmuxd-1.1.1/systemd/usbmuxd.service.in
+--- usbmuxd-1.1.1+git69.523f700.orig/systemd/usbmuxd.service.in
++++ usbmuxd-1.1.1+git69.523f700/systemd/usbmuxd.service.in
 @@ -3,5 +3,16 @@ Description=Socket daemon for the usbmux
  Documentation=man:usbmuxd(8)
  
@@ -17,5 +17,5 @@ Index: usbmuxd-1.1.1/systemd/usbmuxd.service.in
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
- ExecStart=@sbindir@/usbmuxd --user usbmux --systemd -S /run/usbmuxd -P /run/usbmuxd.pid
- PIDFile=/run/usbmuxd.pid
+ ExecStart=@sbindir@/usbmuxd --user usbmux --systemd
+ PIDFile=@runstatedir@/usbmuxd.pid

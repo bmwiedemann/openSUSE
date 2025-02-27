@@ -316,4 +316,27 @@ https://bugzilla.novell.com/show_bug.cgi?id=811801#c5 (forwarded request 162236 
     <comment></comment>
     <requestid>1242819</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>b6c2260e03e5be0623abf1d9cedead25</srcmd5>
+    <version>1.1.1+git69.523f700</version>
+    <time>1740664252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1+git69.523f700:
+  * Updated README
+  * Update libplist requirement to 2.6.0 and use PLIST_DICT helper
+    for cleaner code
+  * conf: fix false plist write error in config_set_device_record
+  * usb: add support for modes 4 and 5
+  * usb: correctly display 10 Gbps USB 3.x
+  * usb: Revert default mode back to 1
+  * device: Fix crash caused by wrong variable when logging an
+    error
+  * usb: Set default mode to 3 to include CDC NCM, and fix a log
+    message
+  * systemd: use runstatedir (drop usbmuxd-run-dir.patch).
+  * udev: Make sure iBridge (T1) doesn't end up in an unconfigured
+    state
+- Refresh harden_usbmuxd.service.patch.</comment>
+    <requestid>1248795</requestid>
+  </revision>
 </revisionlist>
