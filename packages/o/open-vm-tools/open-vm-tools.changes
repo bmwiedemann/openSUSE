@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 25 22:39:24 UTC 2025 - Kirk Allan <kallan@suse.com>
+
+- Revert previous change (Thu Feb 20 23:08:43 UTC 2025).  The proposed
+  solutions was non-standard.
+
+-------------------------------------------------------------------
+Thu Feb 20 23:08:43 UTC 2025 - Kirk Allan <kallan@suse.com>
+
+- (bsc#1237180): Ensure vmtoolsd.service, vgauthd.service, and
+  vmblock-fuse.service are set to enabled by default.
+
+-------------------------------------------------------------------
 Fri Oct 11 07:24:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - convert to obs_scm
