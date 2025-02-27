@@ -462,4 +462,12 @@ The COPYING file shows that the package is predominantly BSD-2-Clause licensed (
     <comment></comment>
     <requestid>1219160</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>2f8e620615b3648c4bd2cc1877b3d71c</srcmd5>
+    <version>3.7.7</version>
+    <time>1740664205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248746</requestid>
+  </revision>
 </revisionlist>

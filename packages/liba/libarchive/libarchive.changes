@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 25 15:14:11 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix CVE-2024-57970, heap-based buffer over-read in header_gnu_longlink
+  because it mishandles truncation (CVE-2024-57970, bsc#1237233)
+  * CVE-2024-57970.patch
+
+-------------------------------------------------------------------
 Thu Oct 17 08:41:56 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 3.7.7:

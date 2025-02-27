@@ -1,7 +1,7 @@
 #
 # spec file for package libarchive
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ Source1:        https://github.com/libarchive/libarchive/releases/download/v%{ve
 Source2:        libarchive.keyring
 Source1000:     baselibs.conf
 Patch1:         lib-suffix.patch
+# PATCH-FIX-UPSTREAM CVE-2024-57970.patch bsc#1237233 antonio.teixeira@suse.com
+Patch2:         CVE-2024-57970.patch
 BuildRequires:  cmake
 BuildRequires:  libacl-devel
 BuildRequires:  libbz2-devel
