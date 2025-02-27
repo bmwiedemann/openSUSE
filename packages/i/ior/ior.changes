@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 26 17:54:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire hdf5-openmpi5-devel instead of hdf5-openmpi4-devel:
+  Fix build on Factory.
+
+-------------------------------------------------------------------
 Fri Jun 16 08:15:58 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Use mpi selection macros

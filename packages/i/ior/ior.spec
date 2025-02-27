@@ -1,7 +1,7 @@
 #
 # spec file for package ior
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Parallel filesystem I/O benchmark
 License:        GPL-2.0-only
 URL:            https://github.com/hpc/ior
 Source:         https://github.com/hpc/ior/releases/download/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  hdf5-openmpi4-devel
+BuildRequires:  hdf5-openmpi5-devel
 BuildRequires:  libs3-devel
 BuildRequires:  openmpi-macros-devel
 BuildRequires:  zlib-devel
