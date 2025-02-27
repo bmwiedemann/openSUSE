@@ -1,7 +1,7 @@
 #
 # spec file for package xtensor-python
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Patch0:         0001-Install-as-arch-independent.patch
 Patch1:         cxx-flags.patch
 BuildRequires:  %{python_module breathe}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  %{pythons}
 BuildRequires:  cmake
 BuildRequires:  doctest-devel
@@ -107,6 +108,7 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 cp -r %{_builddir}/%{buildsubdir}/docs/build/html/* %{buildroot}/%{_docdir}/%{name}
 
 %fdupes -s %{buildroot}/%{_docdir}
+%fdupes %{buildroot}/%{_prefix}
 
 %check
 # run unit tests
