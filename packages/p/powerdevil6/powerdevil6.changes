@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 25 19:39:02 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.2
+- Changes since 6.3.1:
+  * update version for new release
+  * applets/brightness: fix Return press on switch (kde#500702)
+  * actions/screenbrightnesscontrol: Only enable for systems with battery (kde#498771)
+  * actions/screenbrightnesscontrol: More robust against display changes (kde#498771)
+  * daemon/controllers: Introduce DisplayFilter helper class
+  * daemon: Move brightness key handling to ScreenBrightnessAgent
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Feb 18 14:46:15 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.1:
