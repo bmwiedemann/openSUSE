@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Feb 26 08:09:59 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.2.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.2.1
+- Changes since 6.3.2:
+  * Revert "workspace: better deal with having more outputs than the GPU can drive"
+  * kcms/rules: Fix showing selected VD on X11 (kde#484165)
+  * autotests: Fix testInputCapture with libei 1.4.0
+
+-------------------------------------------------------------------
+Tue Feb 25 19:38:19 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.2
+- Changes since 6.3.1:
+  * workspace: don't set brightness to the display value on every startup (kde#494408)
+  * workspace: better deal with having more outputs than the GPU can drive
+  * backends/drm: reject output configurations that can't be powered at all (kde#500031)
+  * update version for new release
+  * Workaround hard freeze during interactive move
+  * input: remove check for touch sequence (kde#500557)
+  * Fix build compat with Qt 6.7
+  * workspace: use frameGeometry for findWindowToActivate (kde#500529)
+  * core/renderloop: use PreciseTimer for render loop.
+  * killer: take abort result into consideration
+  * backends/drm: log when link training is necessary
+  * core/renderloop: take vrr into account for output layer repaints (kde#499848)
+  * backends/libinput: confine TabletToolEvent to output (kde#480658)
+  * Prevent virtual input devices from blocking tablet mode (kde#500025)
+  * backends/drm: use a shadow buffer with "prefer color accuracy" if night light is enabled (kde#500404)
+  * autotests/test_colorspaces: add some real-world validity check test cases
+  * core/colorspace: relax validity check (kde#500295)
+  * backends/drm: reimplement software brightness for ICC profiles (kde#500210)
+  * Factor out {previousRestricted,restricted}MoveArea calls out of loops (kde#500310)
+  * Implement KDecoration3::DecoratedWindow::applicationMenu{ServiceName,ObjectPath}
+  * wayland: make the fallback for broken HDR metadata less strict (kde#500144)
+  * core/colorspace: improve formatting of logging functions
+  * wayland: switch to the upstream color management protocol
+  * Round native geometry in InternalWindow
+  * Fix overlooked frameRectToClientRect() in InternalWindow
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Feb 18 14:45:13 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.1:
