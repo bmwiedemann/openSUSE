@@ -1216,4 +1216,17 @@
 - Update no-pytest_benchmark.patch</comment>
     <requestid>1242838</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>fab907d99115a96fc9cf1ccb8821b7e8</srcmd5>
+    <version>44.0.1</version>
+    <time>1740664190</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 44.0.1:
+  * Updated Windows, macOS, and Linux wheels to be compiled with
+    OpenSSL 3.4.1.
+  * We now build armv7l manylinux wheels and publish them to
+    PyPI.
+  * We now build manylinux_2_34 wheels and publish them to PyPI.</comment>
+    <requestid>1248604</requestid>
+  </revision>
 </revisionlist>
