@@ -13,4 +13,5 @@
     <param name="compression">gz</param>
     <param name="file">*.tar</param>
   </service>
+  <service name="download_files" mode="manual" />
 </services>

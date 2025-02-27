@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb 19 18:23:05 UTC 2025 - scott.bradnick@suse.com
+
+- Updating ROCm to v6.3.3
+- Update to version 1.4.0+git20250213.53df78d:
+  * Resetting last selection on page navigation in optionsMenu to avoid unordered_map error
+  * Update Ryzen name trimming
+  * Share the CPU name trimming code between platforms
+  * Drop macos 12 build, add v14 and v15
+  * Fix cmake-macos workflow
+  * Bump version of deprecated upload-artifact step
+  * Update obsolete egrep call
+
+-------------------------------------------------------------------
+Tue Jan 28 16:52:18 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating ROCm to v6.3.2
+
+-------------------------------------------------------------------
+Fri Dec 20 17:19:29 UTC 2024 - scott.bradnick@suse.com
+
+- Updating ROCm to v6.3.1
+- Update to version 1.4.0+git20241214.5535f50:
+  * Menu something...
+  * Fix menu crash when GPU_SUPPORT=false, issue #989
+
+-------------------------------------------------------------------
 Thu Dec  5 14:36:56 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating ROCm to v6.3.0

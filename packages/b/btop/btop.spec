@@ -1,7 +1,7 @@
 #
 # spec file for package btop
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define ROCm_version 6.3.0
+%define ROCm_version 6.3.3
 Name:           btop
-Version:        1.4.0+git20241108.e17bc6b
+Version:        1.4.0+git20250213.53df78d
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://github.com/aristocratos/btop
 Source0:        %{name}-%{version}.tar.gz
-### osc service runall download_files
 Source1:        https://github.com/ROCm/rocm_smi_lib/archive/refs/tags/rocm-%{ROCm_version}.tar.gz#/rocm_smi_lib-rocm-%{ROCm_version}.tar.gz
-#####
 Source99:       btop-rpmlintrc
 Patch0:         Makefile.diff
 BuildRequires:  coreutils
