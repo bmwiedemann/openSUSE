@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:42:47 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Dev: use the newest go-pacemaker and updated ToString (bsc#1237259)
+
+-------------------------------------------------------------------
 Tue Feb 25 09:45:05 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Bump golang(API) from =1.13 to >=1.13
