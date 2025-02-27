@@ -7,5 +7,5 @@ Deals with objects, circular lists, repeated appearence of the same refence.
 Does not deal with overloaded stringify operator yet.
 
   Author:	Ilya Zakharevich</description>
-  <devel project="devel:languages:perl" package="perl-FreezeThaw"/>
+  <devel project="devel:languages:perl" package="perl-FreezeThaw" />
 </package>

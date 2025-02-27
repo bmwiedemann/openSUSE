@@ -8,6 +8,6 @@ process takes only a small amount of time. When it is done, the server can
 continue normal operations, while the actual file backup proceeds.
 
 </description>
-  <devel project="server:database" package="mylvmbackup"/>
+  <devel project="server:database" package="mylvmbackup" />
   <url>http://www.lenzg.net/mylvmbackup/</url>
 </package>

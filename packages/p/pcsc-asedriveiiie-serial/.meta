@@ -5,5 +5,5 @@ reader.
 
 This driver is meant to be used with the PCSC-Lite daemon from the
 pcsc-lite package.</description>
-  <devel project="security:chipcard" package="pcsc-asedriveiiie-serial"/>
+  <devel project="security:chipcard" package="pcsc-asedriveiiie-serial" />
 </package>

@@ -18,6 +18,6 @@ It's also modular: you only need to put on CPAN a
 App::Nopaste::Service::Foo module and anyone can begin using it.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-App-Nopaste"/>
+  <devel project="devel:languages:perl" package="perl-App-Nopaste" />
   <url>http://search.cpan.org/dist/App-Nopaste</url>
 </package>

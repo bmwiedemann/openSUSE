@@ -9,5 +9,5 @@ integer.
 Call it a low calorie version of MD5 if you like.
 
 See http://burtleburtle.net/bob/hash/doobs.html for more information.</description>
-  <devel project="devel:languages:perl" package="perl-Digest-JHash"/>
+  <devel project="devel:languages:perl" package="perl-Digest-JHash" />
 </package>

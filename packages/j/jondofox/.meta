@@ -11,5 +11,5 @@ a look at our online help for JonDoFox to learn how to deal with
 restrictions.
 
 This package contains an secure browser profil for anonymous web browsing.</description>
-  <devel project="network" package="jondofox"/>
+  <devel project="network" package="jondofox" />
 </package>

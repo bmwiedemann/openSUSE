@@ -17,6 +17,6 @@ While it is technically optimised for better performance on screen,
 carefully adjusted outlines promise good quality in print too.
 
 </description>
-  <devel project="M17N:fonts" package="cyreal-marko-horobchyk-fonts"/>
+  <devel project="M17N:fonts" package="cyreal-marko-horobchyk-fonts" />
   <url>http://cyreal.org/archives/696</url>
 </package>

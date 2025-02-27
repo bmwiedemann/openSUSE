@@ -6,5 +6,5 @@ datetime and have a Class::Date::Rel class for relative dates.
 
 You can use &quot;+&quot;, &quot;-&quot;, &quot;&lt;&quot; and &quot;&gt;&quot; operators as with native perl data
 types.</description>
-  <devel project="devel:languages:perl" package="perl-Class-Date"/>
+  <devel project="devel:languages:perl" package="perl-Class-Date" />
 </package>

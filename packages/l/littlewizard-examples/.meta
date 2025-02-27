@@ -7,6 +7,6 @@ represented by an intuitive icon. It allows program Little Wizard without
 using keyboard, only mouse.
 
 This package contains example files for Little Wizard.</description>
-  <devel project="Education" package="littlewizard-examples"/>
+  <devel project="Education" package="littlewizard-examples" />
   <url>http://littlewizard.sourceforge.net/</url>
 </package>

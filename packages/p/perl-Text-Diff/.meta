@@ -12,5 +12,5 @@ be a valid diff and comprehensible by &quot;patch&quot;. We haven't seen any
 differences between Algorithm::Diff's logic and GNU diff's, but we have
 not examined them to make sure they are indeed identical.
 </description>
-  <devel project="devel:languages:perl" package="perl-Text-Diff"/>
+  <devel project="devel:languages:perl" package="perl-Text-Diff" />
 </package>

@@ -9,5 +9,5 @@ Examples of use include the author faces on the http://search.cpan.org
 manpage.
 
 See the http://gravatar.com manpage for more info.</description>
-  <devel project="devel:languages:perl" package="perl-Gravatar-URL"/>
+  <devel project="devel:languages:perl" package="perl-Gravatar-URL" />
 </package>

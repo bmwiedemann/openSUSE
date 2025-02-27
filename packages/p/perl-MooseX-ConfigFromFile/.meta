@@ -16,6 +16,6 @@ load attributes from the file specified by the commandline flag --configfile
 during its normal new_with_options.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-ConfigFromFile"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-ConfigFromFile" />
   <url>http://search.cpan.org/dist/MooseX-ConfigFromFile/</url>
 </package>

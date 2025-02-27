@@ -7,5 +7,5 @@ supporting many languages. Currently the fonts contain glyphs from
 Latin1 (Metafont ec, tc), Cyrillic (la, rx) and Greek (cbgreek when
 available) code sets.
 </description>
-  <devel project="M17N:fonts" package="cm-unicode-fonts"/>
+  <devel project="M17N:fonts" package="cm-unicode-fonts" />
 </package>

@@ -3,5 +3,5 @@
   <description>
 A GNU/Linux utility for viewing/manipulating the MAC address of network interfaces.
   </description>
-  <devel project="network:utilities" package="macchanger"/>
+  <devel project="network:utilities" package="macchanger" />
 </package>

@@ -23,6 +23,6 @@ design.
 
 See the MooseX::Role::Parameterized::Extending manpage for some tips on how
 to extend this module.</description>
-  <devel project="devel:languages:perl" package="perl-MooseX-Role-Parameterized"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-Role-Parameterized" />
   <url>http://search.cpan.org/dist/MooseX-Role-Parameterized/</url>
 </package>

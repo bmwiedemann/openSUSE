@@ -1,5 +1,5 @@
 <package name="python-pydotplus" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:languages:python" package="python-pydotplus"/>
+  <devel project="devel:languages:python" package="python-pydotplus" />
 </package>

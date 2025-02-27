@@ -10,5 +10,5 @@ constants for them, you can now do something like:
 Instead of
 
  $token-&gt;[0] eq 'S' and $token-&gt;[1] eq 'form'</description>
-  <devel project="devel:languages:perl" package="perl-HTML-TokeParser-Simple"/>
+  <devel project="devel:languages:perl" package="perl-HTML-TokeParser-Simple" />
 </package>

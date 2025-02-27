@@ -7,6 +7,6 @@ ultimate convenience (at the expense of some flexibility), see the criticism
 pragma.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Test-Perl-Critic"/>
+  <devel project="devel:languages:perl" package="perl-Test-Perl-Critic" />
   <url>http://search.cpan.org/dist/Test-Perl-Critic/</url>
 </package>

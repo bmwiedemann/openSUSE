@@ -9,5 +9,5 @@ authentication, and replay protection to that protocol. It is specified
 in RFC 3711. More information about the SRTP protocol itself can be
 found on the Secure RTP page.
 </description>
-  <devel project="network:telephony" package="libsrtp"/>
+  <devel project="network:telephony" package="libsrtp" />
 </package>

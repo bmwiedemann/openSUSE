@@ -5,5 +5,5 @@ quality Dirac video codec created by BBC Research and Development.
 Dirac is a free and open source codec producing very high image quality
 video. The project produces two libraries in ANSI C89, one for decoding
 and one for encoding.</description>
-  <devel project="multimedia:libs" package="schroedinger"/>
+  <devel project="multimedia:libs" package="schroedinger" />
 </package>

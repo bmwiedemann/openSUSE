@@ -6,6 +6,6 @@ testing whether the attribute &quot;foo&quot; is defined in the object. It only
 works with objects that are implemented as ordinary hashes.
 Class::XSAccessor::Array implements the same interface for objects that
 use arrays for their internal representation.</description>
-  <devel project="devel:languages:perl" package="perl-Class-XSAccessor"/>
+  <devel project="devel:languages:perl" package="perl-Class-XSAccessor" />
   <url>http://search.cpan.org/dist/Class-XSAccessor</url>
 </package>

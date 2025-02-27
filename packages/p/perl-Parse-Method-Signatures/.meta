@@ -4,6 +4,6 @@
 deemed useful for TryCatch and MooseX::Method::Signatures.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Parse-Method-Signatures"/>
+  <devel project="devel:languages:perl" package="perl-Parse-Method-Signatures" />
   <url>http://search.cpan.org/dist/Parse-Method-Signatures</url>
 </package>

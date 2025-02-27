@@ -25,6 +25,6 @@ as possible.
 libguess is fully reentrant, using only local stack memory for DFA operations.
 
 </description>
-  <devel project="devel:libraries:c_c++" package="libguess"/>
+  <devel project="devel:libraries:c_c++" package="libguess" />
   <url>http://www.atheme.org/project/libguess</url>
 </package>

@@ -7,5 +7,5 @@ replaces the &quot;select() loop&quot; and allows the registration of event
 handlers for file and network I/O, timers, and signals. Because
 processes use these mechanisms for almost all external communication,
 liboop can be used as the basis for almost any application.</description>
-  <devel project="devel:libraries:c_c++" package="liboop"/>
+  <devel project="devel:libraries:c_c++" package="liboop" />
 </package>

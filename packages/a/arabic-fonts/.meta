@@ -3,5 +3,5 @@
   <description>A collection of free Arabic fonts available from
 http://www.arabeyes.org/resources.php.
 </description>
-  <devel project="M17N:fonts" package="arabic-fonts"/>
+  <devel project="M17N:fonts" package="arabic-fonts" />
 </package>

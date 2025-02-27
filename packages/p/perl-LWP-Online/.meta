@@ -32,5 +32,5 @@ But with the answer being so useful, and the only other alternative being
 to ask the user &quot;duh... are you online?&quot; (when you might not have a user at
 all) it's my gut feeling that it is worthwhile at least making an attempt
 to solve the problem, if only in a limited way.</description>
-  <devel project="devel:languages:perl" package="perl-LWP-Online"/>
+  <devel project="devel:languages:perl" package="perl-LWP-Online" />
 </package>

@@ -20,5 +20,5 @@ Character mapping is according to the data of binary mapfiles in
 Unicode::Map hierarchy. Binary mapfiles can also be created with this
 module, enabling you to install own specific character sets. Refer to
 mkmapfile or file REGISTRY in the Unicode::Map hierarchy.</description>
-  <devel project="devel:languages:perl" package="perl-Unicode-Map"/>
+  <devel project="devel:languages:perl" package="perl-Unicode-Map" />
 </package>

@@ -6,5 +6,5 @@ generates just the FIR correction filters, which can be used with a real time or
 offline convolver to provide real time or offline correction. DRC doesn't
 provide convolution features, and provides only some simplified, although really
 accurate, measuring tools.</description>
-  <devel project="multimedia:apps" package="drc"/>
+  <devel project="multimedia:apps" package="drc" />
 </package>

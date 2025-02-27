@@ -2,5 +2,5 @@
   <title>Perl extension for Latitiude Longitude conversions</title>
   <description>This module will translate latitude longitude coordinates to Universal
 Transverse Mercator(UTM) coordinates and vice versa.</description>
-  <devel project="devel:languages:perl" package="perl-Geo-Coordinates-UTM"/>
+  <devel project="devel:languages:perl" package="perl-Geo-Coordinates-UTM" />
 </package>

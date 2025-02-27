@@ -16,6 +16,6 @@ Author:
 
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Text-Wrapper"/>
+  <devel project="devel:languages:perl" package="perl-Text-Wrapper" />
   <url>http://search.cpan.org/perldoc?Text::Wrapper</url>
 </package>

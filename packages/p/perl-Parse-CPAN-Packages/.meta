@@ -8,5 +8,5 @@ interface to the data contained within.
 
 In a future release the Parse::CPAN::Packages::Package manpage and the
 Parse::CPAN::Packages::Distribution manpage might have more information.</description>
-  <devel project="devel:languages:perl" package="perl-Parse-CPAN-Packages"/>
+  <devel project="devel:languages:perl" package="perl-Parse-CPAN-Packages" />
 </package>

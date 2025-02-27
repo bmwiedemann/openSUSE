@@ -11,6 +11,6 @@ files.
 Author:
 -------
     Sherzod B. Ruzmetov</description>
-  <devel project="devel:languages:perl" package="perl-Config-Simple"/>
+  <devel project="devel:languages:perl" package="perl-Config-Simple" />
   <url>http://search.cpan.org/perldoc?Config::Simple</url>
 </package>

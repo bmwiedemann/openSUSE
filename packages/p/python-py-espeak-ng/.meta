@@ -3,6 +3,6 @@
   <description>Python interface for eSpeak NG, a speech synthesis library.
 
 </description>
-  <devel project="devel:languages:python" package="python-py-espeak-ng"/>
+  <devel project="devel:languages:python" package="python-py-espeak-ng" />
   <url>https://github.com/gooofy/py-espeak-ng</url>
 </package>

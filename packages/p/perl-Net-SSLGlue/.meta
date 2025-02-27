@@ -13,5 +13,5 @@ available:
 * Net::LDAP - add proper certificate checking
 
 * LWP - add proper certificate checking</description>
-  <devel project="devel:languages:perl" package="perl-Net-SSLGlue"/>
+  <devel project="devel:languages:perl" package="perl-Net-SSLGlue" />
 </package>

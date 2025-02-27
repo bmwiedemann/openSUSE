@@ -14,5 +14,5 @@ It offers the following features:
  * Block XMPP headline messages.
  * Block AOL system messages.
  * Challenge-response bot-check.</description>
-  <devel project="network:pidgin" package="pidgin-privacy-please"/>
+  <devel project="network:pidgin" package="pidgin-privacy-please" />
 </package>

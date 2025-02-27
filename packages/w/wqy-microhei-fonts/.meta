@@ -14,5 +14,5 @@ As a result, it can be used for hand-held devices or embedded systems, or
 used on PC with a significantly small memory footprint. Because both 
 font faces carry hinting and kerning instructions for Latin glyphs, 
 they are the excellent choices for desktop fonts.</description>
-  <devel project="M17N:fonts" package="wqy-microhei-fonts"/>
+  <devel project="M17N:fonts" package="wqy-microhei-fonts" />
 </package>

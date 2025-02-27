@@ -3,6 +3,6 @@
   <description>
     Ruby CoffeeScript is a bridge to the JS CoffeeScript compiler.
   </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-coffee-script"/>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-coffee-script" />
   <url>https://github.com/josh/ruby-coffee-script</url>
 </package>

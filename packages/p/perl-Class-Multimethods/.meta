@@ -2,5 +2,5 @@
   <title>This Package Supports Multimethods and Subroutine Overloading in Perl.</title>
   <description>Class::Multimethods -- Supports multimethods and subroutine overloading
 in Perl.</description>
-  <devel project="devel:languages:perl" package="perl-Class-Multimethods"/>
+  <devel project="devel:languages:perl" package="perl-Class-Multimethods" />
 </package>

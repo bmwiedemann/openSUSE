@@ -7,6 +7,6 @@ strings. If you've ever had to search for text in a multi-line string like an
 HTML document, or find specific items in binary data, this is the module for
 you.
   </description>
-  <devel project="devel:languages:perl" package="perl-Test-LongString"/>
+  <devel project="devel:languages:perl" package="perl-Test-LongString" />
   <url>http://search.cpan.org/perldoc?Test::LongString</url>
 </package>

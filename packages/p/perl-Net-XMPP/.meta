@@ -6,5 +6,5 @@ client in and of itself, it provides all of the necessary back-end
 functions to make a CGI client or command-line perl client feasible  and
 easy to use.  Net::XMPP is a wrapper around the rest of the  official
 Net::XMPP::xxxxxx packages.</description>
-  <devel project="devel:languages:perl" package="perl-Net-XMPP"/>
+  <devel project="devel:languages:perl" package="perl-Net-XMPP" />
 </package>

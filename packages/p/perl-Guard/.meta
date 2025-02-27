@@ -9,6 +9,6 @@ objects, which execute a given code block when destroyed, and scoped
 guards, which are tied to the scope exit.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Guard"/>
+  <devel project="devel:languages:perl" package="perl-Guard" />
   <url>http://search.cpan.org/dist/Guard</url>
 </package>

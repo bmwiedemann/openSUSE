@@ -2,5 +2,5 @@
   <title>Handle data in a hierarchical structure</title>
   <description>Data::Hierarchy provides a simple interface for manipulating inheritable
 data attached to a hierarchical environment (like a filesystem).</description>
-  <devel project="devel:languages:perl" package="perl-Data-Hierarchy"/>
+  <devel project="devel:languages:perl" package="perl-Data-Hierarchy" />
 </package>

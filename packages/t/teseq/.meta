@@ -7,6 +7,6 @@ terminal emulators, and programs that make heavy use of advanced terminal
 features such as cursor movement, coloring, and other effects.
 
 </description>
-  <devel project="utilities" package="teseq"/>
+  <devel project="utilities" package="teseq" />
   <url>http://www.gnu.org/software/teseq</url>
 </package>

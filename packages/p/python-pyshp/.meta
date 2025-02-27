@@ -12,5 +12,5 @@
       XBase file-formats are very simple in design and memory efficient which
       is part of the reason the shapefile format remains popular despite the
       numerous ways to store and exchange GIS data available today.</description>
-  <devel project="Application:Geo" package="python-pyshp"/>
+  <devel project="Application:Geo" package="python-pyshp" />
 </package>

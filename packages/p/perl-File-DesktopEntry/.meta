@@ -8,5 +8,5 @@ This module was written to support File::MimeInfo::Applications.
 
 Please remember: case is significant for the names of Desktop Entry keys.
 </description>
-  <devel project="devel:languages:perl" package="perl-File-DesktopEntry"/>
+  <devel project="devel:languages:perl" package="perl-File-DesktopEntry" />
 </package>

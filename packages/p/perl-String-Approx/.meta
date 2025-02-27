@@ -11,6 +11,6 @@ not string comparison, and it works for strings, not for text.
  Authors:	Jarkko Hietaniemi &lt;jhi@iki.fi&gt;
 
 </description>
-  <devel project="devel:languages:perl" package="perl-String-Approx"/>
+  <devel project="devel:languages:perl" package="perl-String-Approx" />
   <url>http://search.cpan.org/dist/String-Approx</url>
 </package>

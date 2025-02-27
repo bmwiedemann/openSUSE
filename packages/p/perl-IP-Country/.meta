@@ -10,5 +10,5 @@ addresses have been assigned. Although the country of assignment will probably
 be the country associated with a large ISP rather than the client herself, this
 is probably good enough for most log analysis applications, and under test has
 proved to be as accurate as reverse-DNS and WHOIS lookup.</description>
-  <devel project="devel:languages:perl" package="perl-IP-Country"/>
+  <devel project="devel:languages:perl" package="perl-IP-Country" />
 </package>

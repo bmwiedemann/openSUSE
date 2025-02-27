@@ -4,5 +4,5 @@
 GOES
 HERE
   </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-Object-Pluggable"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-Object-Pluggable" />
 </package>

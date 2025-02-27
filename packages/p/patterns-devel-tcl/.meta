@@ -5,5 +5,5 @@ of the installation source setup.  Installation of this package does
 not make sense. 
 
 This particular package contains the patterns for Tcl Development</description>
-  <devel project="devel:languages:tcl" package="patterns-devel-tcl"/>
+  <devel project="devel:languages:tcl" package="patterns-devel-tcl" />
 </package>

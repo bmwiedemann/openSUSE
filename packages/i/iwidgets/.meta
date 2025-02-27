@@ -11,5 +11,5 @@ words, each [incr Widgets] mega-widget seamlessly blends with the
 standard Tk widgets. They look, act, and feel like Tk widgets. In
 addition, all [incr Widgets] mega-widgets are object oriented and may
 themselves be extended, using either inheritance or composition.</description>
-  <devel project="devel:languages:tcl" package="iwidgets"/>
+  <devel project="devel:languages:tcl" package="iwidgets" />
 </package>

@@ -10,6 +10,6 @@ the ultimate radio control software to concentrate on the user interface and
 the basic function of the program rather than radio control.
 
 </description>
-  <devel project="hardware:sdr" package="hamlib"/>
+  <devel project="hamradio" package="hamlib"/>
   <url>http://hamlib.sourceforge.net</url>
 </package>

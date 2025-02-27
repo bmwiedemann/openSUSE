@@ -2,5 +2,5 @@
   <title>Perl extension to provide a PerlIO layer to gzip/gunzip</title>
   <description>PerlIO::gzip provides a PerlIO layer that manipulates files in the format used
 by the gzip program.</description>
-  <devel project="devel:languages:perl" package="perl-PerlIO-gzip"/>
+  <devel project="devel:languages:perl" package="perl-PerlIO-gzip" />
 </package>

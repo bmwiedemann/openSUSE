@@ -8,5 +8,5 @@ Perl environment, some operating system distributions only include the
 pure-Perl versions, don't include the XS version, and so weaken is then
 &quot;missing&quot; from the platform, despite passing a dependency on
 Scalar::Util successfully.</description>
-  <devel project="devel:languages:perl" package="perl-Task-Weaken"/>
+  <devel project="devel:languages:perl" package="perl-Task-Weaken" />
 </package>

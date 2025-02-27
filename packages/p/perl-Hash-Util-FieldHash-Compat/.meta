@@ -9,6 +9,6 @@ hashes on Perl 5.10 and newer, but still run on older perls that don't ship
 with that module.
 
 See the Hash::Util::FieldHash manpage for all the details of the API.</description>
-  <devel project="devel:languages:perl" package="perl-Hash-Util-FieldHash-Compat"/>
+  <devel project="devel:languages:perl" package="perl-Hash-Util-FieldHash-Compat" />
   <url>http://search.cpan.org/perldoc?Hash::Util::FieldHash::Compat</url>
 </package>

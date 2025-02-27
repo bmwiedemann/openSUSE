@@ -2,5 +2,5 @@
   <title>Simple DirectMedia Layer - Truetype Library</title>
   <description>This is a sample library that allows you to use TrueType fonts in your
 SDL applications.</description>
-  <devel project="games" package="SDL_ttf"/>
+  <devel project="games" package="SDL_ttf" />
 </package>

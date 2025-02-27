@@ -19,5 +19,5 @@ Darwin, the base of Macintosh OSX, enforces normalization form D (NFD),
 where a few characters are encoded in a different way. convmv is able
 to convert files to NFC or NFD, which aids in interoperability with
 such systems.</description>
-  <devel project="M17N" package="convmv"/>
+  <devel project="M17N" package="convmv" />
 </package>

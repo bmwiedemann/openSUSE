@@ -8,6 +8,6 @@ perldoc Sys::SigAction for more information.
   Author:	Lincoln A. Baxter &lt;lab@lincolnbaxter.com&gt;
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Sys-SigAction"/>
+  <devel project="devel:languages:perl" package="perl-Sys-SigAction" />
   <url>http://www.cpan.org</url>
 </package>

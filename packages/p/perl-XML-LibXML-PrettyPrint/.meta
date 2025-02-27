@@ -14,6 +14,6 @@ unless you're pretty sure that a human is going to need to make sense of
 your XML, you should probably not use this module.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-XML-LibXML-PrettyPrint"/>
+  <devel project="devel:languages:perl" package="perl-XML-LibXML-PrettyPrint" />
   <url>http://search.cpan.org/dist/XML-LibXML-PrettyPrint</url>
 </package>

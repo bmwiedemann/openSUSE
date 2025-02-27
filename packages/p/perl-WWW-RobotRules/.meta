@@ -4,6 +4,6 @@
 Robot Exclusion&quot;, at &lt;http://www.robotstxt.org/wc/norobots.html&gt; Webmasters
 can use the _/robots.txt_ file to forbid conforming robots from accessing
 parts of their web site.</description>
-  <devel project="devel:languages:perl" package="perl-WWW-RobotRules"/>
+  <devel project="devel:languages:perl" package="perl-WWW-RobotRules" />
   <url>http://search.cpan.org/dist/WWW-RobotRules/</url>
 </package>

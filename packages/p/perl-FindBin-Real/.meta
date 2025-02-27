@@ -11,5 +11,5 @@ tree is installed.
 If perl is invoked using the *-e* option or the perl script is read from
 'STDIN' then FindBin sets both 'Bin()' and 'RealBin()' return values to the
 current directory.</description>
-  <devel project="devel:languages:perl" package="perl-FindBin-Real"/>
+  <devel project="devel:languages:perl" package="perl-FindBin-Real" />
 </package>

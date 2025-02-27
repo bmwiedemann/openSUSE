@@ -8,6 +8,6 @@ This module subclasses Class::Accessor in order to provide the same
 mk_accessors interface.
 
   </description>
-  <devel project="devel:languages:perl" package="perl-Class-Accessor-Chained"/>
+  <devel project="devel:languages:perl" package="perl-Class-Accessor-Chained" />
   <url>http://search.cpan.org/dist/Class-Accessor-Chained</url>
 </package>

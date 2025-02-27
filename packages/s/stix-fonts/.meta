@@ -7,5 +7,5 @@ creation through final publication, both in electronic and print formats.
 
 This package includes base Unicode fonts containing most glyphs for standard
 use.</description>
-  <devel project="M17N:fonts" package="stix-fonts"/>
+  <devel project="M17N:fonts" package="stix-fonts" />
 </package>

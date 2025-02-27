@@ -14,5 +14,5 @@ Thai, Tibetan, Vietnamese
 
 Several generic input methods for languages based on the Latin alphabet
 are also included.</description>
-  <devel project="M17N" package="scim-m17n"/>
+  <devel project="M17N" package="scim-m17n" />
 </package>

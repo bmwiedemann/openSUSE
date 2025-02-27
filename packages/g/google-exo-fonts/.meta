@@ -8,6 +8,6 @@ each with a true italic version. It works great as a display
 face but it also works good for small to intermediate size texts.
 
 </description>
-  <devel project="M17N:fonts" package="google-exo-fonts"/>
+  <devel project="M17N:fonts" package="google-exo-fonts" />
   <url>http://code.google.com/webfonts/family?family=Exo</url>
 </package>

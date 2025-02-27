@@ -1,5 +1,5 @@
 <package name="libb2" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="security" package="libb2"/>
+  <devel project="security" package="libb2" />
 </package>

@@ -3,5 +3,5 @@
   <description>
 
   </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-LazyLogDispatch"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-LazyLogDispatch" />
 </package>

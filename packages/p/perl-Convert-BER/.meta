@@ -5,5 +5,5 @@ decoding objects as described by ITU-T standard X.209 (ASN.1) using
 Basic Encoding Rules (BER).
 
 WARNING this module is no longer supported, See Convert::ASN1 </description>
-  <devel project="devel:languages:perl" package="perl-Convert-BER"/>
+  <devel project="devel:languages:perl" package="perl-Convert-BER" />
 </package>

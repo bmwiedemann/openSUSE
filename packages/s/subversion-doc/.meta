@@ -3,5 +3,5 @@
   <description>This package contains the subversion book (see
 http://svnbook.red-bean.com/) and a configuration file to make this
 book accessible via apache2.</description>
-  <devel project="devel:tools:scm:svn" package="subversion-doc"/>
+  <devel project="devel:tools:scm:svn" package="subversion-doc" />
 </package>

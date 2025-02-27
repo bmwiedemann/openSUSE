@@ -4,5 +4,5 @@
 create salted (or seeded) hashes of clear text data. The original
 formalization of this concept comes from RFC-3112 and is extended by the
 use of different digital agorithms.</description>
-  <devel project="devel:languages:perl" package="perl-Crypt-SaltedHash"/>
+  <devel project="devel:languages:perl" package="perl-Crypt-SaltedHash" />
 </package>

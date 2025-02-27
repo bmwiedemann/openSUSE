@@ -5,5 +5,5 @@ the Internet. It is designed by the IETF Codec Working Group and incorporates
 technology from Skype's SILK codec and Xiph.Org's CELT codec.
 
 This is a set of tools for the opus codec.</description>
-  <devel project="multimedia:libs" package="opus-tools"/>
+  <devel project="multimedia:libs" package="opus-tools" />
 </package>

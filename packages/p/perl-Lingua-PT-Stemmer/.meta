@@ -15,6 +15,6 @@ The eight steps of stemming algorithm are listed as follows:
     * Vowel Reduction
     * Accents Removal
   </description>
-  <devel project="devel:languages:perl" package="perl-Lingua-PT-Stemmer"/>
+  <devel project="devel:languages:perl" package="perl-Lingua-PT-Stemmer" />
   <url>http://search.cpan.org/perldoc?Lingua::PT::Stemmer</url>
 </package>

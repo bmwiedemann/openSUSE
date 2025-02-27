@@ -6,5 +6,5 @@ Main features:
   * Any matrix of convolutions between up to up 64 inputs and 64 outputs, as long as your CPU(s) can handle it.
   * Allows trading off CPU load to processing delay, and remains efficient even when configured for zero delay.
   * Sparse and diagonal matrices are handled as efficiently as dense ones. No CPU cycles or memory resources are wasted on empty cells in the matrix, nor on empty partitions if IRs are of different length.</description>
-  <devel project="multimedia:libs" package="zita-convolver"/>
+  <devel project="multimedia:libs" package="zita-convolver" />
 </package>

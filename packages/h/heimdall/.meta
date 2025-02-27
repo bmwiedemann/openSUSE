@@ -4,6 +4,6 @@
 ROMs) onto Samsung Galaxy S devices.
 
 </description>
-  <devel project="hardware" package="heimdall"/>
+  <devel project="hardware" package="heimdall" />
   <url>https://github.com/Benjamin-Dobell/Heimdall/tree/master/Linux</url>
 </package>

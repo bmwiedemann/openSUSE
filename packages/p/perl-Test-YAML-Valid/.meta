@@ -3,6 +3,6 @@
   <description>This module lets you easily test the validity of YAML.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Test-YAML-Valid"/>
+  <devel project="devel:languages:perl" package="perl-Test-YAML-Valid" />
   <url>http://search.cpan.org/dist/Test-YAML-Valid</url>
 </package>

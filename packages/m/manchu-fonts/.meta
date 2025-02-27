@@ -3,5 +3,5 @@
   <description>Manchu 2005 is a Unicode font for the Manchu language.
 
 </description>
-  <devel project="M17N:fonts" package="manchu-fonts"/>
+  <devel project="M17N:fonts" package="manchu-fonts" />
 </package>

@@ -6,5 +6,5 @@ malfunctioning brain cells.
 
 SDL Asylum is a C port of the computer game Asylum, which was written by Andy
 Southgate in 1994 for the Acorn Archimedes and is now public domain.</description>
-  <devel project="games" package="sdl-asylum"/>
+  <devel project="games" package="sdl-asylum" />
 </package>

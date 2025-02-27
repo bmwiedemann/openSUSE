@@ -26,5 +26,5 @@ Currently it can:
 - syslog
 
 - print time stamp</description>
-  <devel project="Base:System" package="iwatch"/>
+  <devel project="Base:System" package="iwatch" />
 </package>

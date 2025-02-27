@@ -3,5 +3,5 @@
   <description>These fonts include a complete set of Cyrillic letters and improved
 italic characters.
 </description>
-  <devel project="M17N:fonts" package="thryomanes-fonts"/>
+  <devel project="M17N:fonts" package="thryomanes-fonts" />
 </package>

@@ -6,6 +6,6 @@ redefines many other common key bindings (like ctrl-p) this is
 one is reduced to the bare minimum to make text entries usable.
 
 </description>
-  <devel project="devel:openSUSE:Factory" package="gtk-key-theme-ctrluftw"/>
+  <devel project="devel:openSUSE:Factory" package="gtk-key-theme-ctrluftw" />
   <url></url>
 </package>

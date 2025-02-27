@@ -6,5 +6,5 @@ been written specifically to take advantage of the AltiVec unit
 (Velocity Engine or VMX) and will only work on processors that include
 this unit. This means they will not work on older processors, such as
 603, 604, 750 (G3), or the POWER family of CPUs.</description>
-  <devel project="devel:libraries:c_c++" package="libfreevec"/>
+  <devel project="devel:libraries:c_c++" package="libfreevec" />
 </package>

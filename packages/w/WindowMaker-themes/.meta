@@ -4,5 +4,5 @@
 Documentation:
 
 /usr/share/doc/packages/wmthemes</description>
-  <devel project="X11:windowmanagers" package="WindowMaker-themes"/>
+  <devel project="X11:windowmanagers" package="WindowMaker-themes" />
 </package>

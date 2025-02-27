@@ -3,6 +3,6 @@
   <description>Perseus Software Defined Radio Control Library.
 
 </description>
-  <devel project="hardware:sdr" package="libperseus-sdr"/>
+  <devel project="hardware:sdr" package="libperseus-sdr" />
   <url>https://github.com/Microtelecom/libperseus-sdr</url>
 </package>

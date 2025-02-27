@@ -5,6 +5,6 @@ from within the shell and replaces fragile adhoc parsers made from grep/sed/awk
 as well as heavyweight one-line parsers made from perl/python.
 
 </description>
-  <devel project="utilities" package="jshon"/>
+  <devel project="utilities" package="jshon" />
   <url>http://kmkeen.com/jshon</url>
 </package>

@@ -31,6 +31,6 @@ A primary goal of CGI::Ajax is to keep the module streamlined and maximally
 flexible. We are trying to keep the generated javascript code to a minimum,
 but still provide users with a variety of methods for deploying CGI::Ajax.
 And VERY little user javascript.</description>
-  <devel project="devel:languages:perl" package="perl-CGI-Ajax"/>
+  <devel project="devel:languages:perl" package="perl-CGI-Ajax" />
   <url>http://search.cpan.org/dist/CGI-Ajax/</url>
 </package>

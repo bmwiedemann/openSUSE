@@ -9,6 +9,6 @@ formats:
 - a simple unified diff output
 
 </description>
-  <devel project="devel:tools" package="rfcdiff"/>
+  <devel project="devel:tools" package="rfcdiff" />
   <url>https://tools.ietf.org/tools/rfcdiff/index</url>
 </package>

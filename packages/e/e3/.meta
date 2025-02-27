@@ -2,5 +2,5 @@
   <title>Tiny Editor with Many Different Modes like Vi, Emacs, and Wordstar</title>
   <description>A very tiny editor, which offers many different modes like Vi, Emacs,
 and Wordstar. Wordstar is the default mode.</description>
-  <devel project="editors" package="e3"/>
+  <devel project="editors" package="e3" />
 </package>

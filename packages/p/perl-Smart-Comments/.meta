@@ -8,5 +8,5 @@ Best of all, when you're finished debugging, you don't have to remove them.
 Simply commenting out the 'use Smart::Comments' line turns them back into
 regular comments. Leaving smart comments in your code is smart because if
 you needed them once, you'll almost certainly need them again later.</description>
-  <devel project="devel:languages:perl" package="perl-Smart-Comments"/>
+  <devel project="devel:languages:perl" package="perl-Smart-Comments" />
 </package>

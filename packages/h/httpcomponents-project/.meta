@@ -5,6 +5,6 @@ required only for building dependent packages with Maven. Please don't
 use it as runtime requirement.
 
 </description>
-  <devel project="Java:packages" package="httpcomponents-project"/>
+  <devel project="Java:packages" package="httpcomponents-project" />
   <url>http://hc.apache.org/</url>
 </package>

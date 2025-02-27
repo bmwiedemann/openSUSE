@@ -4,6 +4,6 @@
 used by the rsyslog daemon.
 
 </description>
-  <devel project="devel:libraries:c_c++" package="libestr"/>
+  <devel project="devel:libraries:c_c++" package="libestr" />
   <url>http://libestr.adiscon.com/</url>
 </package>

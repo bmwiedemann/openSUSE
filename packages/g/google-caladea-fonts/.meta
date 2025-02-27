@@ -7,6 +7,6 @@ Contains Regular, Bold, Italic, and Bold Italic version.
 Designed by Huerta Típografica for Google.
 
 </description>
-  <devel project="M17N:fonts" package="google-caladea-fonts"/>
+  <devel project="M17N:fonts" package="google-caladea-fonts" />
   <url>https://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/</url>
 </package>

@@ -1,5 +1,5 @@
 <package name="qqwing" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="games" package="qqwing"/>
+  <devel project="games" package="qqwing" />
 </package>

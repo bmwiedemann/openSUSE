@@ -4,5 +4,5 @@
 software that supports XML styled with CSS2, for example, a recent
 Mozilla or Firefox browser. For more complex modifications of your XML
 document use the DocBook XSL stylesheets.</description>
-  <devel project="Publishing" package="docbook-css-stylesheets"/>
+  <devel project="Publishing" package="docbook-css-stylesheets" />
 </package>

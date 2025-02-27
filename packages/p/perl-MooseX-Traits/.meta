@@ -8,6 +8,6 @@ just create a new class from yours with &quot;with_traits&quot;, and then
 instantiate that.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-Traits"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-Traits" />
   <url>http://search.cpan.org/dist/MooseX-Traits</url>
 </package>

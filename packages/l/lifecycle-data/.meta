@@ -1,5 +1,5 @@
 <package name="lifecycle-data" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="system:install:head" package="lifecycle-data"/>
+  <devel project="system:install:head" package="lifecycle-data" />
 </package>

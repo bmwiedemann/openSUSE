@@ -7,5 +7,5 @@ slightly overlapping image for easier poster assembly. In principle it
 requires the input file to adhere to 'eps' (encapsulated postscript)
 conventions but it will work for many 'normal' postscript files as
 well.</description>
-  <devel project="Publishing" package="poster"/>
+  <devel project="Publishing" package="poster" />
 </package>

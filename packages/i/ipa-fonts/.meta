@@ -3,5 +3,5 @@
   <description>&quot;Proportional Gothic&quot; Japanese TrueType font made by IPA
 (Information-technology Promotion Agency).
 </description>
-  <devel project="M17N:fonts" package="ipa-fonts"/>
+  <devel project="M17N:fonts" package="ipa-fonts" />
 </package>

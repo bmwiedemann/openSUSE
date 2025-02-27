@@ -4,5 +4,5 @@
 up-to-date with respect to their upstream sources.
 
 </description>
-  <devel project="devel:tools:scm" package="bs-update"/>
+  <devel project="devel:tools:scm" package="bs-update" />
 </package>

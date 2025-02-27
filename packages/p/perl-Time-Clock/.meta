@@ -11,5 +11,5 @@ This works in reverse when time is subtracted.
 
 the Time::Clock manpage objects automatically stringify to a user-definable
 format.</description>
-  <devel project="devel:languages:perl" package="perl-Time-Clock"/>
+  <devel project="devel:languages:perl" package="perl-Time-Clock" />
 </package>

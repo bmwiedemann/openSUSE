@@ -5,5 +5,5 @@ of the installation source setup.  Installation of this package does
 not make sense. 
 
 This particular package contains the Enlightenment pattern.</description>
-  <devel project="X11:Enlightenment:Factory" package="patterns-enlightenment"/>
+  <devel project="X11:Enlightenment:Factory" package="patterns-enlightenment" />
 </package>

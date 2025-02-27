@@ -5,6 +5,6 @@ It is in a lot of ways akin to a hexdump tool, except using coloured
 squares to represent each octet.
 
 </description>
-  <devel project="devel:tools" package="pixd"/>
+  <devel project="devel:tools" package="pixd" />
   <url>https://github.com/FireyFly/pixd.git</url>
 </package>

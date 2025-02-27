@@ -7,6 +7,6 @@ but oft-repeated task of putting all characters into a single event.
 
   Author: Robin Berjon  &lt;robin@knowscape.com&gt;
 </description>
-  <devel project="devel:languages:perl" package="perl-XML-Filter-BufferText"/>
+  <devel project="devel:languages:perl" package="perl-XML-Filter-BufferText" />
   <url>http://www.cpan.org</url>
 </package>

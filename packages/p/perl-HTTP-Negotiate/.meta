@@ -5,6 +5,6 @@ negotiation algorithm specified in _draft-ietf-http-v11-spec-00.ps_ chapter
 12. Content negotiation allows for the selection of a preferred content
 representation based upon attributes of the negotiable variants and the
 value of the various Accept* header fields in the request.</description>
-  <devel project="devel:languages:perl" package="perl-HTTP-Negotiate"/>
+  <devel project="devel:languages:perl" package="perl-HTTP-Negotiate" />
   <url>http://search.cpan.org/dist/HTTP-Negotiate/</url>
 </package>

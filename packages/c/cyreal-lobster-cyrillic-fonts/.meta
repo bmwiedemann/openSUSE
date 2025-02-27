@@ -19,6 +19,6 @@ Authors:
     Gayaneh Bagdasaryan
 
 </description>
-  <devel project="M17N:fonts" package="cyreal-lobster-cyrillic-fonts"/>
+  <devel project="M17N:fonts" package="cyreal-lobster-cyrillic-fonts" />
   <url>http://cyreal.org/cyrillics/lobster</url>
 </package>

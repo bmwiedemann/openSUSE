@@ -13,6 +13,6 @@ navigate locally between folders, as it mimics the flow you have
 when using the web and mobile apps.
 
 </description>
-  <devel project="Archiving:Backup" package="trello-full-backup"/>
+  <devel project="Archiving:Backup" package="trello-full-backup" />
   <url>https://github.com/jtpio/trello-full-backup</url>
 </package>

@@ -4,6 +4,6 @@
 http://pastebin.com pastebin site.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-WWW-Pastebin-PastebinCom-Create"/>
+  <devel project="devel:languages:perl" package="perl-WWW-Pastebin-PastebinCom-Create" />
   <url>http://search.cpan.org/dist/WWW-Pastebin-PastebinCom-Create</url>
 </package>

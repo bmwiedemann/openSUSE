@@ -4,5 +4,5 @@
 inspect Perl's symbol table and the class hierarchy within a running
 program.
 </description>
-  <devel project="devel:languages:perl" package="perl-Devel-Symdump"/>
+  <devel project="devel:languages:perl" package="perl-Devel-Symdump" />
 </package>

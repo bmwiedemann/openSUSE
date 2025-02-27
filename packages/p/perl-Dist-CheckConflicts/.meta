@@ -49,5 +49,5 @@ the 'Foo' dist which uses Dist::CheckConflicts):
 
     perl -MFoo::Conflicts -e'print &quot;$_\n&quot;
         for map { $_-&gt;{package} } Foo::Conflicts-&gt;calculate_conflicts' | cpanm</description>
-  <devel project="devel:languages:perl" package="perl-Dist-CheckConflicts"/>
+  <devel project="devel:languages:perl" package="perl-Dist-CheckConflicts" />
 </package>

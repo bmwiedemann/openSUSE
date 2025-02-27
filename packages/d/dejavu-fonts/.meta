@@ -5,5 +5,5 @@ Its purpose is to provide a wider range of characters while maintaining
 the original look and feel through the process of collaborative
 development.
 </description>
-  <devel project="M17N:fonts" package="dejavu-fonts"/>
+  <devel project="M17N:fonts" package="dejavu-fonts" />
 </package>

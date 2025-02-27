@@ -5,6 +5,6 @@ extent of CUE sheet format expressiveness, including mixed-mode discs
 and CD-Text meta-data.
 
 </description>
-  <devel project="multimedia:apps" package="ccd2cue"/>
+  <devel project="multimedia:apps" package="ccd2cue" />
   <url>https://www.gnu.org/software/ccd2cue/</url>
 </package>

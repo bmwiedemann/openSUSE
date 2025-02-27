@@ -13,5 +13,5 @@ For simple logging needs use the MooseX::Log::Log4perl::Easy manpage to
 directly add log_&lt;level&gt; methods to your class instance.
 
     $self-&gt;log_info(&quot;Dummy&quot;);</description>
-  <devel project="devel:languages:perl" package="perl-MooseX-Log-Log4perl"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-Log-Log4perl" />
 </package>

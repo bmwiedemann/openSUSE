@@ -2,5 +2,5 @@
   <title></title>
   <description>Collection of routines to export data produced by Finite Elements or Finite Volume Simulations in formats used by some visualization programs.
 This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-fpl"/>
+  <devel project="science" package="octave-forge-fpl" />
 </package>

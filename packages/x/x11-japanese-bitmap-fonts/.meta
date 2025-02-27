@@ -11,5 +11,5 @@ of the popular Japanese fonts usually found in the
 bold, italic, and bold-italic versions of iso-8859-1 fonts which fit
 nicely in style and width to the Japanese fonts.
 </description>
-  <devel project="M17N:fonts" package="x11-japanese-bitmap-fonts"/>
+  <devel project="M17N:fonts" package="x11-japanese-bitmap-fonts" />
 </package>

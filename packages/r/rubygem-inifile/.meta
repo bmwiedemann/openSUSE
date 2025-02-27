@@ -16,6 +16,6 @@ can then be easily parsed and changed.
 
 
 </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-inifile"/>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-inifile" />
   <url>http://gemcutter.org/gems/inifile</url>
 </package>

@@ -5,6 +5,6 @@ XML documents. By default, it returns a list of hashrefs where each hashref
 describes a single difference between the two docs.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-XML-SemanticDiff"/>
+  <devel project="devel:languages:perl" package="perl-XML-SemanticDiff" />
   <url>http://search.cpan.org/dist/XML-SemanticDiff/</url>
 </package>

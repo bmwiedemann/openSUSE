@@ -22,6 +22,6 @@ installed.
 This module allows authors to mark portions of the POD to be included only
 in, or to be excluded from the F&lt;README&gt; file. It also allows you to
 include portions of another file (such as a separate F&lt;ChangeLog&gt;).</description>
-  <devel project="devel:languages:perl" package="perl-Pod-Readme"/>
+  <devel project="devel:languages:perl" package="perl-Pod-Readme" />
   <url>http://search.cpan.org/dist/Pod-Readme/</url>
 </package>

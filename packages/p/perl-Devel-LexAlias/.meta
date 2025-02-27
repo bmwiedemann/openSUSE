@@ -4,6 +4,6 @@
 subroutines scope to one of your choosing.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Devel-LexAlias"/>
+  <devel project="devel:languages:perl" package="perl-Devel-LexAlias" />
   <url>http://search.cpan.org/dist/Devel-LexAlias/</url>
 </package>

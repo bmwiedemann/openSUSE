@@ -7,6 +7,6 @@ other terminal related features, including retrieval/modification of the screen
 size, and retrieval/modification of the control characters.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Term-ReadKey"/>
+  <devel project="devel:languages:perl" package="perl-Term-ReadKey" />
   <url>http://search.cpan.org/dist/Term-ReadKey</url>
 </package>

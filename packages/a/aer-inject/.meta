@@ -4,5 +4,5 @@
 a running Linux kernel. This is intended for validation of the PCIE
 driver error recovery handler and PCIE AER core handler.
 </description>
-  <devel project="hardware" package="aer-inject"/>
+  <devel project="hardware" package="aer-inject" />
 </package>

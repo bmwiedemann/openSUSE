@@ -13,6 +13,6 @@ Notice in the the /SYNOPSIS manpage above, that if you want to match
 against a regular expression, you must use '==' or '!='. *Not* '=~' or
 '!~'. You must also use a regex object, such as 'qr/\d/', not a plain regex
 such as '/\d/'.</description>
-  <devel project="devel:languages:perl" package="perl-Perl6-Junction"/>
+  <devel project="devel:languages:perl" package="perl-Perl6-Junction" />
   <url>http://search.cpan.org/perldoc?Perl6::Junction</url>
 </package>

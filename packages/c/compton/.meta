@@ -17,5 +17,5 @@ Compton has only been tested with openbox so far, but frame transparency should 
 Fixes from the original xcompmgr:
 fixed a segfault when opening certain window types
 fixed a memory leak caused by not freeing up shadows (from the freedesktop repo)</description>
-  <devel project="X11:lxde" package="compton"/>
+  <devel project="X11:lxde" package="compton" />
 </package>

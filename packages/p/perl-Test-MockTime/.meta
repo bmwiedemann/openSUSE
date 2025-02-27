@@ -7,6 +7,6 @@ set_absolute_time or set_fixed_time to alter future calls to gmtime,time or
 localtime.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Test-MockTime"/>
+  <devel project="devel:languages:perl" package="perl-Test-MockTime" />
   <url>http://search.cpan.org/dist/Test-MockTime/</url>
 </package>

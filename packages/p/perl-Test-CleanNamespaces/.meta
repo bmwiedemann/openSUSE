@@ -1,5 +1,5 @@
 <package name="perl-Test-CleanNamespaces" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:languages:perl" package="perl-Test-CleanNamespaces"/>
+  <devel project="devel:languages:perl" package="perl-Test-CleanNamespaces" />
 </package>

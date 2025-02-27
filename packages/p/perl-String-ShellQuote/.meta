@@ -4,6 +4,6 @@
 which are going to pass through the shell or a shell-like object.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-String-ShellQuote"/>
+  <devel project="devel:languages:perl" package="perl-String-ShellQuote" />
   <url>http://search.cpan.org/dist/String-ShellQuote/</url>
 </package>

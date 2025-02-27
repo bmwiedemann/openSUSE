@@ -17,6 +17,6 @@ Authors:
     Alexey Kryukov &lt;alexios@thessalonica.org.ru&gt;
 
 </description>
-  <devel project="M17N:fonts" package="thessalonica-oldstandard-fonts"/>
+  <devel project="M17N:fonts" package="thessalonica-oldstandard-fonts" />
   <url>http://thessalonica.org.ru/en/oldstandard.html</url>
 </package>

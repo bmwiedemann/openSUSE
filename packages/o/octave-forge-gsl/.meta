@@ -2,5 +2,5 @@
   <title></title>
   <description>Octave bindings to the GNU Scientific Library.
 This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-gsl"/>
+  <devel project="science" package="octave-forge-gsl" />
 </package>

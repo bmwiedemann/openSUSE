@@ -6,5 +6,5 @@ that refer to each other.
 
 Test::Memory::Cycle is built on top of Devel::Cycle to give you an easy 
 way to check for these circular references.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Memory-Cycle"/>
+  <devel project="devel:languages:perl" package="perl-Test-Memory-Cycle" />
 </package>

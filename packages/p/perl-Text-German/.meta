@@ -8,6 +8,6 @@ two students of mine. They remain anonymous because their work was the wost
 piece of code I ever saw. My code behaves mostly as their implementation did
 except it is about 75 times faster.
   </description>
-  <devel project="devel:languages:perl" package="perl-Text-German"/>
+  <devel project="devel:languages:perl" package="perl-Text-German" />
   <url>http://search.cpan.org/perldoc?Text::German</url>
 </package>

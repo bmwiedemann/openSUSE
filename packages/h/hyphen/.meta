@@ -1,5 +1,5 @@
 <package name="hyphen" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="LibreOffice:Factory" package="hyphen"/>
+  <devel project="LibreOffice:Factory" package="hyphen" />
 </package>

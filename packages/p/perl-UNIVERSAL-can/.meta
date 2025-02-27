@@ -15,6 +15,6 @@ warning and calls the overridden method, working around buggy code. Otherwise,
 everything works as you might expect.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-UNIVERSAL-can"/>
+  <devel project="devel:languages:perl" package="perl-UNIVERSAL-can" />
   <url>http://search.cpan.org/dist/UNIVERSAL-can/</url>
 </package>

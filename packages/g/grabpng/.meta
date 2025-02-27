@@ -1,5 +1,5 @@
 <package name="grabpng" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="games:tools" package="grabpng"/>
+  <devel project="games:tools" package="grabpng" />
 </package>

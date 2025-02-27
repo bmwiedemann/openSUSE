@@ -7,6 +7,6 @@ The .bin/.cue format is used by some non-UNIX CD-writing
 software, but is not supported on most other CD-writing programs.
 
 </description>
-  <devel project="multimedia:apps" package="bchunk"/>
+  <devel project="multimedia:apps" package="bchunk" />
   <url>http://he.fi/bchunk</url>
 </package>

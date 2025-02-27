@@ -7,6 +7,6 @@ DKGPG consists of a bunch of simple command-line programs. The current implement
 Using well-established multi-party protocols a shared private key and a common public key (currently only DSA/ElGamal) is generated. Then further interactive protocols perform the private operations like decryption and signing of files, provided that a previously defined threshold of parties/devices take part in the distributed computation. Due to the interactiveness of the protocols a lot of messages between participating parties have to be exchanged in a secure way. We employ GNUnet, and in particular its mesh routed CADET service, to establish private and broadcast channels for this message exchange. However, as alternative to GNUnet a simple TCP/IP based service for message exchange is included. With torsocks and port-forwarding of a local hidden service this allows running the interactive programs over the well-known TOR network.
 
 </description>
-  <devel project="security:privacy" package="dkgpg"/>
+  <devel project="security:privacy" package="dkgpg" />
   <url>http://www.nongnu.org/dkgpg/</url>
 </package>

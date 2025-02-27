@@ -5,6 +5,6 @@
 It handles adding and extracting files to/from a tar archive.
 
 </description>
-  <devel project="Archiving" package="libtar"/>
+  <devel project="Archiving" package="libtar" />
   <url>http://www.feep.net/libtar/</url>
 </package>

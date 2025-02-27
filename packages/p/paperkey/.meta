@@ -11,6 +11,6 @@ Authors:
 		Peter Palfrader &lt;peter@palfrader.org&gt; (man page)
 
 </description>
-  <devel project="security:privacy" package="paperkey"/>
+  <devel project="security:privacy" package="paperkey" />
   <url>http://www.jabberwocky.com/software/paperkey</url>
 </package>

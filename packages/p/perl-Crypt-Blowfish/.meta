@@ -3,5 +3,5 @@
   <description>Blowfish is capable of strong encryption and can use key sizes up to 56
 bytes (a 448 bit key). You're encouraged to take advantage of the full key
 size to ensure the strongest encryption possible from this module.</description>
-  <devel project="devel:languages:perl" package="perl-Crypt-Blowfish"/>
+  <devel project="devel:languages:perl" package="perl-Crypt-Blowfish" />
 </package>

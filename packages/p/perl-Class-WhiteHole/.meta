@@ -8,5 +8,5 @@ when method lookups fail.
 Sometimes you want to avoid this accidental inheritance.  In that case,
 inherit from Class::WhiteHole. All unhandled methods will produce
 normal Perl error messages.</description>
-  <devel project="devel:languages:perl" package="perl-Class-WhiteHole"/>
+  <devel project="devel:languages:perl" package="perl-Class-WhiteHole" />
 </package>

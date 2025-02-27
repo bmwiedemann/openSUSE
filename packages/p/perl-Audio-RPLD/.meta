@@ -7,6 +7,6 @@ This included commands to control playback, the Main Queue, playlists
 and pointer mangement.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Audio-RPLD"/>
+  <devel project="devel:languages:perl" package="perl-Audio-RPLD" />
   <url>http://roaraudio.keep-cool.org</url>
 </package>

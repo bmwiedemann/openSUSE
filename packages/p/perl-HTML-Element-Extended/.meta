@@ -18,6 +18,6 @@ The resulting functionality enables:
         content wrapping
         element cloning
         raw HTML string adoption</description>
-  <devel project="devel:languages:perl" package="perl-HTML-Element-Extended"/>
+  <devel project="devel:languages:perl" package="perl-HTML-Element-Extended" />
   <url>http://search.cpan.org/dist/HTML-Element-Extended/</url>
 </package>

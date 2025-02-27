@@ -6,6 +6,6 @@ the standard ones. Attributes can also be initialized in the constructor via
 their aliased names.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-Aliases"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-Aliases" />
   <url>http://search.cpan.org/dist/MooseX-Aliases/</url>
 </package>

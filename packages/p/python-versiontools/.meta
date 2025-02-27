@@ -3,5 +3,5 @@
   <description>
 
   </description>
-  <devel project="devel:languages:python" package="python-versiontools"/>
+  <devel project="devel:languages:python" package="python-versiontools" />
 </package>

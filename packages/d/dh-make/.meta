@@ -8,6 +8,6 @@ templates that, after some small editing, will allow you to create a
 Debian package.
 
 </description>
-  <devel project="system:packagemanager" package="dh-make"/>
+  <devel project="system:packagemanager" package="dh-make" />
   <url>http://www.debian.org</url>
 </package>

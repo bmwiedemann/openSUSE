@@ -9,5 +9,5 @@ Chinese-English dictionary. For the most part, the project is modelled
 on Jim Breen's highly successful EDICT (Japanese-English dictionary)
 project and is intended to be a collaborative effort with users
 providing entries and corrections to the main file.</description>
-  <devel project="M17N" package="cedict"/>
+  <devel project="M17N" package="cedict" />
 </package>

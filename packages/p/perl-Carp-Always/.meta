@@ -27,5 +27,5 @@ are also made verbose, behaving like 'cloak' and 'confess', respectively.
 
 EXPORT
     Nothing at all is exported.</description>
-  <devel project="devel:languages:perl" package="perl-Carp-Always"/>
+  <devel project="devel:languages:perl" package="perl-Carp-Always" />
 </package>

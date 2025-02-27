@@ -1,5 +1,5 @@
 <package name="python-pyparallel" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:languages:python" package="python-pyparallel"/>
+  <devel project="devel:languages:python" package="python-pyparallel" />
 </package>

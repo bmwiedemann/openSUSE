@@ -11,6 +11,6 @@ byte&quot;, but &quot;3 byte / sec&quot; produces the original along with &quot;
 &quot;10.55 kilobyte / hour&quot;, etc.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Math-Calc-Units"/>
+  <devel project="devel:languages:perl" package="perl-Math-Calc-Units" />
   <url>http://search.cpan.org/dist/Math-Calc-Units/</url>
 </package>

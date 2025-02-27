@@ -11,6 +11,6 @@ but also right down to small text sizes.
 
    
 </description>
-  <devel project="M17N:fonts" package="google-nobile-fonts"/>
+  <devel project="M17N:fonts" package="google-nobile-fonts" />
   <url>http://code.google.com/webfonts/family?family=Nobile</url>
 </package>

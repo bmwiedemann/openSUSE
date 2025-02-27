@@ -36,6 +36,6 @@ Note that in many, many cases, you will not need to explicitly create an
 iterator; there are plenty of iterator generation and manipulation
 functions in the other associated modules. You can just plug them together
 like building blocks.</description>
-  <devel project="devel:languages:perl" package="perl-Iterator"/>
+  <devel project="devel:languages:perl" package="perl-Iterator" />
   <url>http://search.cpan.org/dist/Iterator/</url>
 </package>

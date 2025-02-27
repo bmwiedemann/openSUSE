@@ -11,6 +11,6 @@ The interpolated @ARGV could be subsequently processed by the usual option
 handling, e.g. by a Getopt::xxx module. Getopt::ArgvFile does not perform any
 option handling itself, it only prepares the array @ARGV.
 </description>
-  <devel project="devel:languages:perl" package="perl-Getopt-ArgvFile"/>
+  <devel project="devel:languages:perl" package="perl-Getopt-ArgvFile" />
   <url>http://search.cpan.org/dist/Getopt-ArgvFile/</url>
 </package>

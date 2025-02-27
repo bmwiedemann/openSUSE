@@ -5,5 +5,5 @@ of the installation source setup.  Installation of this package does
 not make sense. 
 
 This particular package contains the Leechcraft patterns.</description>
-  <devel project="network" package="patterns-leechcraft"/>
+  <devel project="network" package="patterns-leechcraft" />
 </package>

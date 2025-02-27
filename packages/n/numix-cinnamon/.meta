@@ -2,5 +2,5 @@
   <title>Numix Cinnamon theme</title>
   <description>Numix is a modern flat theme with a combination of light and dark elements.
 This package adds Cinnamon support for Numix.</description>
-  <devel project="X11:Cinnamon:Factory" package="numix-cinnamon"/>
+  <devel project="X11:Cinnamon:Factory" package="numix-cinnamon" />
 </package>

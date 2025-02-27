@@ -15,6 +15,6 @@ eval, so that doing repeated evals of the same source, even with a
 different environment, will be much faster (but note that the description
 is part of the string to be evaled, so it must also be the same (or
 non-existent) if caching is to work properly).</description>
-  <devel project="devel:languages:perl" package="perl-Eval-Closure"/>
+  <devel project="devel:languages:perl" package="perl-Eval-Closure" />
   <url>http://search.cpan.org/dist/Eval-Closure</url>
 </package>

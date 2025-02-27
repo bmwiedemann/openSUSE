@@ -1,5 +1,5 @@
 <package name="rubygem-bindex" project="openSUSE:Factory">
   <title></title>
   <description>Bindings for your Ruby exceptions</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-bindex"/>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-bindex" />
 </package>

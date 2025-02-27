@@ -7,5 +7,5 @@ This subclass of Tie::RefHash has weak keys, instead of strong ones. The values 
 
 [only used for perl-JE with openSUSE = 10.3]
   </description>
-  <devel project="devel:languages:perl" package="perl-Tie-RefHash-Weak"/>
+  <devel project="devel:languages:perl" package="perl-Tie-RefHash-Weak" />
 </package>

@@ -2,5 +2,5 @@
   <title></title>
   <description>Common Gateway Interface for Octave.
 This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-cgi"/>
+  <devel project="science" package="octave-forge-cgi" />
 </package>

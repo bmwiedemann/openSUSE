@@ -12,5 +12,5 @@ not contain
 but it contains enough for most European languages including the
 euro-sign.
 </description>
-  <devel project="M17N:fonts" package="caslon-fonts"/>
+  <devel project="M17N:fonts" package="caslon-fonts" />
 </package>

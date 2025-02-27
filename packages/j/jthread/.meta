@@ -5,6 +5,6 @@ different platforms. The classes are actually rather simple wrappers around
 existing thread implementations.
 
 </description>
-  <devel project="network:telephony" package="jthread"/>
+  <devel project="network:telephony" package="jthread" />
   <url>http://research.edm.uhasselt.be/jori/page/CS/Jthread.html</url>
 </package>

@@ -7,6 +7,6 @@ File::Slurp manpage documentation for basic usage; only the differences are
 described from here on out.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-File-Slurp-Unicode"/>
+  <devel project="devel:languages:perl" package="perl-File-Slurp-Unicode" />
   <url>http://search.cpan.org/dist/File-Slurp-Unicode/</url>
 </package>

@@ -10,5 +10,5 @@ These adapters include
 - Fiber Channel FC909, FC919, FC929, FC919X and FC929X
 
 - SAS SAS1064, and SAS1068</description>
-  <devel project="Base:System" package="mpt-firmware"/>
+  <devel project="Base:System" package="mpt-firmware" />
 </package>

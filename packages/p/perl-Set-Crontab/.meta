@@ -2,5 +2,5 @@
   <title>Expand crontab(5)-style integer lists</title>
   <description>Set::Crontab parses crontab-style lists of integers and defines some
 utility functions to make it easier to deal with them.</description>
-  <devel project="devel:languages:perl" package="perl-Set-Crontab"/>
+  <devel project="devel:languages:perl" package="perl-Set-Crontab" />
 </package>

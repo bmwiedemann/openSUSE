@@ -10,5 +10,5 @@ libdvbpsi is a simple library designed for decoding and generating
 
 * All MPEG 2 descriptors, decoders and generators.
 </description>
-  <devel project="multimedia:libs" package="libdvbpsi-0"/>
+  <devel project="multimedia:libs" package="libdvbpsi-0" />
 </package>

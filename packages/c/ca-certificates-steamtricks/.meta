@@ -4,5 +4,5 @@
 software.
 
 This package was created as part of a workaround by steamtricks.</description>
-  <devel project="games:tools" package="ca-certificates-steamtricks"/>
+  <devel project="games:tools" package="ca-certificates-steamtricks" />
 </package>

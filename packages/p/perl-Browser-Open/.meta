@@ -11,6 +11,6 @@ or &quot;open_browser_cmd_all&quot; functions and then use whatever method you w
 to execute it.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Browser-Open"/>
+  <devel project="devel:languages:perl" package="perl-Browser-Open" />
   <url>http://search.cpan.org/dist/Browser-Open</url>
 </package>

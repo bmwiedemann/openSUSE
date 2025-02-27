@@ -4,6 +4,6 @@
 is pure Perl.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Locale-Msgfmt"/>
+  <devel project="devel:languages:perl" package="perl-Locale-Msgfmt" />
   <url>http://search.cpan.org/dist/Locale-Msgfmt</url>
 </package>

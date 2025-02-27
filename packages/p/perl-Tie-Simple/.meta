@@ -4,6 +4,6 @@
 
 The 'Tie::Simple' package is actually a front-end to other classes which really do all the work once tied, but this package does the work to automatically figure out what you're trying to do.
 </description>
-  <devel project="devel:languages:perl" package="perl-Tie-Simple"/>
+  <devel project="devel:languages:perl" package="perl-Tie-Simple" />
   <url>http://search.cpan.org/dist/Tie-Simple/</url>
 </package>

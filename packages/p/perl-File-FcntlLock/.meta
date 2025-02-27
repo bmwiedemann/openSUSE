@@ -7,6 +7,6 @@ implemented in terms of flock(2), which has some shortcomings.
 Using this module file locking via fcntl(2) can be done.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-File-FcntlLock"/>
+  <devel project="devel:languages:perl" package="perl-File-FcntlLock" />
   <url>http://search.cpan.org/dist/File-FcntlLock/</url>
 </package>

@@ -4,6 +4,6 @@
 perl opcodes.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-B-Hooks-OP-PPAddr"/>
+  <devel project="devel:languages:perl" package="perl-B-Hooks-OP-PPAddr" />
   <url>http://search.cpan.org/dist/B-Hooks-OP-PPAddr</url>
 </package>

@@ -7,5 +7,5 @@ when you don't need to know the test count in advance.
 Just as with the Test::NoWarnings manpage, this does not catch warnings if
 other things localize '$SIG{__WARN__}', as this is designed to catch
 _unhandled_ warnings.</description>
-  <devel project="devel:languages:perl" package="perl-Test-FailWarnings"/>
+  <devel project="devel:languages:perl" package="perl-Test-FailWarnings" />
 </package>

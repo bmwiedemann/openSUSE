@@ -5,6 +5,6 @@ It allows quick and easy consumption of OWM weather data from Python
 applications via a simple object model and in a human-friendly fashion.
 
 </description>
-  <devel project="Application:Geo" package="python-pyowm"/>
+  <devel project="Application:Geo" package="python-pyowm" />
   <url>http://github.com/csparpa/pyowm</url>
 </package>

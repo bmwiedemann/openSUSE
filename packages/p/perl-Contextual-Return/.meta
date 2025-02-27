@@ -46,6 +46,6 @@ the current subroutine is called in the corresponding context:
         if (VOID)   { print &quot;$server_data{load}\n&quot;                      }
         else        { croak q{Bad context! No biscuit!}                 }
     }</description>
-  <devel project="devel:languages:perl" package="perl-Contextual-Return"/>
+  <devel project="devel:languages:perl" package="perl-Contextual-Return" />
   <url>http://search.cpan.org/dist/Contextual-Return</url>
 </package>

@@ -3,5 +3,5 @@
   <description>libmaia is a XML-RPC library for Qt.
 
 </description>
-  <devel project="devel:libraries:c_c++" package="libmaia"/>
+  <devel project="devel:libraries:c_c++" package="libmaia" />
 </package>

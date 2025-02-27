@@ -4,6 +4,6 @@
 This package contains the old IPA UI Gothic font that was dropped from
 the latest IPA fonts.
   </description>
-  <devel project="M17N:fonts" package="ipa-uigothic-fonts"/>
+  <devel project="M17N:fonts" package="ipa-uigothic-fonts" />
   <url>PUT_UPSTREAM_URL_HERE</url>
 </package>

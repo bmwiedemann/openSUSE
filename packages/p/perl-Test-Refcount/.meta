@@ -16,6 +16,6 @@ assist the developer in finding where the references are. See the examples
 below for more information.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Test-Refcount"/>
+  <devel project="devel:languages:perl" package="perl-Test-Refcount" />
   <url>http://search.cpan.org/dist/Test-Refcount</url>
 </package>

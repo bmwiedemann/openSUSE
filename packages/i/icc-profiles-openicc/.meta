@@ -6,5 +6,5 @@ systems.
 
 
 </description>
-  <devel project="multimedia:color_management" package="icc-profiles-openicc"/>
+  <devel project="multimedia:color_management" package="icc-profiles-openicc" />
 </package>

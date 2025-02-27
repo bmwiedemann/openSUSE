@@ -9,5 +9,5 @@ Autonym font tries to solve this. The font contains glyphs and opentype rules
 for rendering the language autonyms. And it contains only those glyphs for a
 language. For example, for Thai, the font has glyphs required for rendering ไทย 
 alone.</description>
-  <devel project="M17N:fonts" package="autonym-fonts"/>
+  <devel project="M17N:fonts" package="autonym-fonts" />
 </package>

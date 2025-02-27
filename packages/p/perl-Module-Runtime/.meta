@@ -6,5 +6,5 @@
   directory trees, but this module hides that detail, providing instead
   a view of the abstract namespace.
   </description>
-  <devel project="devel:languages:perl" package="perl-Module-Runtime"/>
+  <devel project="devel:languages:perl" package="perl-Module-Runtime" />
 </package>

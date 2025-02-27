@@ -13,6 +13,6 @@ representing unix domain sockets and will then print traces of all
 data sent/received via the socket.
 
 </description>
-  <devel project="devel:tools" package="udtrace"/>
+  <devel project="devel:tools" package="udtrace" />
   <url>https://github.com/laf0rge/udtrace</url>
 </package>

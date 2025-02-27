@@ -13,5 +13,5 @@ Not tested at the moment:
  - file systems written with new Kernel (only testet written with 2.6 Kernel)
  - BigEndian CPUs not testet very extensively
 </description>
-  <devel project="security:forensics" package="ext4magic"/>
+  <devel project="security:forensics" package="ext4magic" />
 </package>

@@ -4,5 +4,5 @@
 (via IO::Socket::SSL) instead of cleartext sockets.  It also handles
 SSL-specific problems, such as dealing with HTTP clients that attempt
 to connect to it without using SSL.</description>
-  <devel project="devel:languages:perl" package="perl-HTTPS-Daemon"/>
+  <devel project="devel:languages:perl" package="perl-HTTPS-Daemon" />
 </package>

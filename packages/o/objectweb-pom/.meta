@@ -4,6 +4,6 @@
 Objectweb packages.
 
 </description>
-  <devel project="Java:packages" package="objectweb-pom"/>
+  <devel project="Java:packages" package="objectweb-pom" />
   <url>http://gitorious.ow2.org/ow2/pom/</url>
 </package>

@@ -3,5 +3,5 @@
   <description>User-friendly telnet client mainly targets BBS users
 	
 </description>
-  <devel project="network" package="pcmanx-gtk2"/>
+  <devel project="network" package="pcmanx-gtk2" />
 </package>

@@ -12,6 +12,6 @@ if a class has been renamed.
 Author:
 -------
     Curtis Poe, ovid [at] cpan [dot] org</description>
-  <devel project="devel:languages:perl" package="perl-aliased"/>
+  <devel project="devel:languages:perl" package="perl-aliased" />
   <url>http://search.cpan.org/perldoc?aliased</url>
 </package>

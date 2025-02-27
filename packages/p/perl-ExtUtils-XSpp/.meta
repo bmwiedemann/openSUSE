@@ -3,6 +3,6 @@
   <description>XS++ preprocessor, for C++.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-ExtUtils-XSpp"/>
+  <devel project="devel:languages:perl" package="perl-ExtUtils-XSpp" />
   <url>http://search.cpan.org/dist/ExtUtils-XSpp</url>
 </package>

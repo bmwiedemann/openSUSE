@@ -7,5 +7,5 @@ Everyone is invited to help develop it together with the authors (see
 URL and e-mail addresses in the author list). It is based in large
 parts on CEDICT which in turn has been modelled on Jim Breen's highly
 successful EDICT (Japanese-English dictionary) project.</description>
-  <devel project="M17N" package="handedict"/>
+  <devel project="M17N" package="handedict" />
 </package>

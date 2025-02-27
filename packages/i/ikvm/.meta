@@ -4,5 +4,5 @@
 for Mono, which includes a Virtual Machine, a bytecode compiler, and
 various class libraries for Java, as well as tools for Java and Mono
 interoperability.</description>
-  <devel project="Mono:Factory" package="ikvm"/>
+  <devel project="Mono:Factory" package="ikvm" />
 </package>

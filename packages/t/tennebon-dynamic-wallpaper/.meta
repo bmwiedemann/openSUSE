@@ -4,6 +4,6 @@
 
 A dynamic wallpaper changes depending on the time of the day: it is
 generally bright during the day, and dark during the night.</description>
-  <devel project="GNOME:Apps" package="tennebon-dynamic-wallpaper"/>
+  <devel project="GNOME:Apps" package="tennebon-dynamic-wallpaper" />
   <url></url>
 </package>

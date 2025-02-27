@@ -3,5 +3,5 @@
   <description>This package contains regular expressions for the following XML tokens:
 BaseChar, Ideographic, Letter, Digit, Extender, CombiningChar,
 NameChar, EntityRef, CharRef, Reference, Name, NmToken, and AttValue.</description>
-  <devel project="devel:languages:perl" package="perl-XML-RegExp"/>
+  <devel project="devel:languages:perl" package="perl-XML-RegExp" />
 </package>

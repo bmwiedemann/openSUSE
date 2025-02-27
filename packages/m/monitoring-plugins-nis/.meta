@@ -9,6 +9,6 @@ Script returns OK if it gets an acceptable answer, CRITICAL if not.
 
 This *nix script has been designed and written for the lowest common denominator of shells (sh), uses yppoll, ypcat and grep as external commands. 
   </description>
-  <devel project="server:monitoring" package="monitoring-plugins-nis"/>
+  <devel project="server:monitoring" package="monitoring-plugins-nis" />
   <url>http://www.nagiosexchange.org/cgi-bin/page.cgi?g=Detailed/2133.html;d=1</url>
 </package>

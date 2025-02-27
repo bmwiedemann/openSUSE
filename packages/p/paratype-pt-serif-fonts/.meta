@@ -11,6 +11,6 @@ The fonts beside standard Western, Central European and Cyrillic code
 pages contain characters of all title languages of Russian Federation
 that make them unique and very important tool of the modern digital
 communications.</description>
-  <devel project="M17N:fonts" package="paratype-pt-serif-fonts"/>
+  <devel project="M17N:fonts" package="paratype-pt-serif-fonts" />
   <url>http://www.paratype.com/public/</url>
 </package>

@@ -9,5 +9,5 @@ Icons follow the naming specification, but have a -symbolic suffix, so
 only applications specifically looking up these symbolic icons will
 render them. If a -symbolic icon is missing, the app will fall back to
 the regular name.</description>
-  <devel project="GNOME:Factory" package="gnome-icon-theme-symbolic"/>
+  <devel project="GNOME:Factory" package="gnome-icon-theme-symbolic" />
 </package>

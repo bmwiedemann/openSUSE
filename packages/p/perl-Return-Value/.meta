@@ -4,5 +4,5 @@
 	  When functions are successful they may return true, or perhaps some useful data. In the quest to provide consistent return values, this gets confusing between complex, informational errors and successful return values.
 	  This module provides these features with a simple API that should get you what you're looking for in each contex a return value is used in.
   </description>
-  <devel project="devel:languages:perl" package="perl-Return-Value"/>
+  <devel project="devel:languages:perl" package="perl-Return-Value" />
 </package>

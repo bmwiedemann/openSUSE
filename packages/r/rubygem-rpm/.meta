@@ -2,5 +2,5 @@
   <title>rubygem-rpm</title>
   <description>rpm bindings for ruby
 https://github.com/dmacvicar/ruby-rpm-ffi</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-rpm"/>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-rpm" />
 </package>

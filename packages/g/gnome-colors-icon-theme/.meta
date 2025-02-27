@@ -10,6 +10,6 @@ Noble (Purple) and Wise (Green).
 
 GNOME-Colors is mostly inspired/based on Tango, GNOME, Elementary,
 Tango-Generator and many other open-source projects.</description>
-  <devel project="GNOME:Apps" package="gnome-colors-icon-theme"/>
+  <devel project="GNOME:Apps" package="gnome-colors-icon-theme" />
   <url>http://code.google.com/p/gnome-colors/</url>
 </package>

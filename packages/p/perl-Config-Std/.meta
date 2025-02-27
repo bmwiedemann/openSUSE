@@ -9,5 +9,5 @@ comments, etc.) as possible when a configuration file is updated.
 
   Author:               Damian Conway &lt;DCONWAY@cpan.org&gt;
   </description>
-  <devel project="devel:languages:perl" package="perl-Config-Std"/>
+  <devel project="devel:languages:perl" package="perl-Config-Std" />
 </package>

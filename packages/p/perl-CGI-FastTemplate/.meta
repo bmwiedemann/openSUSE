@@ -7,5 +7,5 @@ separating the logic of an application from the specific
 implementation details.
 
 Author:	Jason Moore &lt;jmoore@sober.com&gt;</description>
-  <devel project="devel:languages:perl" package="perl-CGI-FastTemplate"/>
+  <devel project="devel:languages:perl" package="perl-CGI-FastTemplate" />
 </package>

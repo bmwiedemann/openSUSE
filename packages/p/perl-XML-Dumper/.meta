@@ -10,5 +10,5 @@ Intuitively, if the perl objects are converted and reconstituted in the
 same environment, all should be well. And it is.
 
   </description>
-  <devel project="devel:languages:perl" package="perl-XML-Dumper"/>
+  <devel project="devel:languages:perl" package="perl-XML-Dumper" />
 </package>

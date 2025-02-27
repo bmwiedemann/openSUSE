@@ -13,6 +13,6 @@ This is used in the Data::Visitor manpage in order to tie a variable to an
 already existing object. This is also useful for cloning, when you want to
 clone the internal state object instead of going through the tie interface
 for that variable.</description>
-  <devel project="devel:languages:perl" package="perl-Tie-ToObject"/>
+  <devel project="devel:languages:perl" package="perl-Tie-ToObject" />
   <url>http://search.cpan.org/dist/Tie-ToObject/</url>
 </package>

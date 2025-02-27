@@ -4,6 +4,6 @@
 development tools and technologies.
 
 </description>
-  <devel project="Java:packages" package="forge-parent"/>
+  <devel project="Java:packages" package="forge-parent" />
   <url>https://docs.sonatype.org/display/FORGE/Index</url>
 </package>

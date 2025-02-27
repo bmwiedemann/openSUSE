@@ -9,5 +9,5 @@ directory of this module.
 
 A command-line utility the xgettext.pl manpage is also installed with this
 module, for extracting translatable strings from source files.</description>
-  <devel project="devel:languages:perl" package="perl-Locale-Maketext-Lexicon"/>
+  <devel project="devel:languages:perl" package="perl-Locale-Maketext-Lexicon" />
 </package>

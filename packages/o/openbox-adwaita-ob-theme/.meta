@@ -2,5 +2,5 @@
   <title>Adwaita theme for Openbox</title>
   <description>This package contains a theme designed to mimic GNOME's Adwaita theme.
 </description>
-  <devel project="X11:lxde" package="openbox-adwaita-ob-theme"/>
+  <devel project="X11:lxde" package="openbox-adwaita-ob-theme" />
 </package>

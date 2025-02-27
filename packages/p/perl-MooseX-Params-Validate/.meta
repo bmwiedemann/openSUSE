@@ -10,6 +10,6 @@ Authors:
      Dave Rolsky &lt;autarch@urth.org&gt;
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-Params-Validate"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-Params-Validate" />
   <url>http://search.cpan.org/dist/MooseX-Params-Validate/</url>
 </package>

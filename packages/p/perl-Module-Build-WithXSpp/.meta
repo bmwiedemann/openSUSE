@@ -1,5 +1,5 @@
 <package name="perl-Module-Build-WithXSpp" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:languages:perl" package="perl-Module-Build-WithXSpp"/>
+  <devel project="devel:languages:perl" package="perl-Module-Build-WithXSpp" />
 </package>

@@ -21,6 +21,6 @@ This module is implemented in XS, with a pure Perl backup version for
 systems that can't handle XS.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Params-Classify"/>
+  <devel project="devel:languages:perl" package="perl-Params-Classify" />
   <url>http://search.cpan.org/dist/Params-Classify/</url>
 </package>

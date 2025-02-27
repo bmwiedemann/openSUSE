@@ -9,6 +9,6 @@ to &quot;use MooseX::Singleton&quot;. This module uses metaclass roles to do its
 magic, so it should cooperate with most other &quot;MooseX&quot; modules.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-Singleton"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-Singleton" />
   <url>http://search.cpan.org/dist/MooseX-Singleton</url>
 </package>

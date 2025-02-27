@@ -3,5 +3,5 @@
   <description>File::Basename::Object is an object-oriented wrapper around
 File::Basename. The goal is to allow pathnames to be presented and
 manipulated easily.</description>
-  <devel project="devel:languages:perl" package="perl-File-Basename-Object"/>
+  <devel project="devel:languages:perl" package="perl-File-Basename-Object" />
 </package>

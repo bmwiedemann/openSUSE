@@ -14,6 +14,6 @@ audio cable (or just via sound waves), or between remote computers using
 radio, telephone, or another audio communications medium.
 
 </description>
-  <devel project="hardware:sdr" package="minimodem"/>
+  <devel project="hardware:sdr" package="minimodem" />
   <url>http://www.whence.com/minimodem/</url>
 </package>

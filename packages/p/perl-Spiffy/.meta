@@ -7,5 +7,5 @@ attempts to fix all the nits and warts of traditional Perl OO, in a
 clean, straightforward and (perhaps someday) standard way. Spiffy
 borrows ideas from other OO languages like Python, Ruby, Java and Perl
 6. It also adds a few tricks of its own.</description>
-  <devel project="devel:languages:perl" package="perl-Spiffy"/>
+  <devel project="devel:languages:perl" package="perl-Spiffy" />
 </package>

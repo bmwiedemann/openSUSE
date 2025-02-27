@@ -13,6 +13,6 @@ of punctuation and space characters.
 Designer: David Perry
 
 </description>
-  <devel project="M17N:fonts" package="google-cardo-fonts"/>
+  <devel project="M17N:fonts" package="google-cardo-fonts" />
   <url>http://code.google.com/webfonts/family?family=Cardo</url>
 </package>

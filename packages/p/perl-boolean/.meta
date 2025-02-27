@@ -16,6 +16,6 @@ Every other scalar value is true.
 
 This module provides basic Boolean support, by defining two special
 objects: 'true' and 'false'.</description>
-  <devel project="devel:languages:perl" package="perl-boolean"/>
+  <devel project="devel:languages:perl" package="perl-boolean" />
   <url>http://search.cpan.org/dist/boolean/</url>
 </package>

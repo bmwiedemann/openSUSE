@@ -11,6 +11,6 @@ value as the current switch value in a (localized) control variable. The
 value is followed by a block which may contain one or more Perl statements
 (including the 'case' statement described below). The block is
 unconditionally executed once the switch value has been cached.</description>
-  <devel project="devel:languages:perl" package="perl-Switch"/>
+  <devel project="devel:languages:perl" package="perl-Switch" />
   <url>http://search.cpan.org/dist/Switch/</url>
 </package>

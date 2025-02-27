@@ -3,5 +3,5 @@
   <description>This module provides a few convenience methods for testing exception
 based code. It is built with Test::Builder and plays happily with
 Test::More and friends.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Exception"/>
+  <devel project="devel:languages:perl" package="perl-Test-Exception" />
 </package>

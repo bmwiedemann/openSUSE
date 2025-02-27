@@ -7,5 +7,5 @@ or illustration.
 The fonts are copyrighted under the GPL or a Freeware license, but
 donations are requested by the artists. Look in
 /usr/share/doc/packages/free-ttf-fonts/ for further information.</description>
-  <devel project="M17N:fonts" package="free-ttf-fonts"/>
+  <devel project="M17N:fonts" package="free-ttf-fonts" />
 </package>

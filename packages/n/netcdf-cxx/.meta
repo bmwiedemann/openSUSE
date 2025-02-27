@@ -7,6 +7,6 @@ This package provides the old C++ API. It's not recommended for new projects,
 but it still works.
 
 </description>
-  <devel project="science" package="netcdf-cxx"/>
+  <devel project="science" package="netcdf-cxx" />
   <url>http://www.unidata.ucar.edu/software/netcdf/</url>
 </package>

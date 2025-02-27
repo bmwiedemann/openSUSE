@@ -49,5 +49,5 @@ that. FormHandler can be used in any Perl application.
 
 More Formhandler documentation and a tutorial can be found in the manual at
 the HTML::FormHandler::Manual manpage.</description>
-  <devel project="devel:languages:perl" package="perl-HTML-FormHandler"/>
+  <devel project="devel:languages:perl" package="perl-HTML-FormHandler" />
 </package>

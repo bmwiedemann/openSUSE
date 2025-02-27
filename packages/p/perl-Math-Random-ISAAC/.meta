@@ -15,6 +15,6 @@ you know the seed. The algorithm was published by Bob Jenkins in the late
 attacks have been found to date.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Math-Random-ISAAC"/>
+  <devel project="devel:languages:perl" package="perl-Math-Random-ISAAC" />
   <url>http://search.cpan.org/dist/Math-Random-ISAAC</url>
 </package>

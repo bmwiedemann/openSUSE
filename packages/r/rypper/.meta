@@ -3,5 +3,5 @@
   <description>
 rypper is an extension for managing multiple repositories via zypper.
   </description>
-  <devel project="system:packagemanager" package="rypper"/>
+  <devel project="system:packagemanager" package="rypper" />
 </package>

@@ -7,5 +7,5 @@ common coding errors, correct them and produce visually equivalent markup
 which is both compliant with W3C standards and works on most browsers.
 Furthermore, it can convert plain HTML to XHTML. For generic XML files, Tidy is
 limited to correcting basic well-formedness errors and pretty printing.</description>
-  <devel project="devel:languages:perl" package="tidyp"/>
+  <devel project="devel:languages:perl" package="tidyp" />
 </package>

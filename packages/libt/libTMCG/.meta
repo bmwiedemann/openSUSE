@@ -28,6 +28,6 @@ required to reveal their cards at the end of the game to show that
 they did not cheat.
 
 </description>
-  <devel project="games" package="libTMCG"/>
+  <devel project="games" package="libTMCG" />
   <url>http://www.nongnu.org/libtmcg/</url>
 </package>

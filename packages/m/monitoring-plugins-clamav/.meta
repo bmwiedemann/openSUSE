@@ -10,6 +10,6 @@ Author:
     Darren Spruell &lt;phatbuckett@gmail.com&gt;
 
 </description>
-  <devel project="server:monitoring" package="monitoring-plugins-clamav"/>
+  <devel project="server:monitoring" package="monitoring-plugins-clamav" />
   <url>http://exchange.nagios.org/directory/Plugins/Anti-2DVirus/ClamAV/ClamAV-check-plugin/details</url>
 </package>

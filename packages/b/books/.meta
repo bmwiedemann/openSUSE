@@ -19,5 +19,5 @@ Terry Dawson
 &quot;Linux Kernel 2.4 Internals&quot; by Tigran Aivazian
 
 &quot;The Linux Kernel Module Programming Guide&quot; by Ori Pomerantz</description>
-  <devel project="Documentation" package="books"/>
+  <devel project="Documentation" package="books" />
 </package>

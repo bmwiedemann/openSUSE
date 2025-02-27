@@ -6,5 +6,5 @@ works with GTK-based applications using the X Window System.
 The library contains:
 - A C library, libkeybinder
 - Gobject-Introspection bindings</description>
-  <devel project="X11:xfce" package="keybinder-3.0"/>
+  <devel project="X11:xfce" package="keybinder-3.0" />
 </package>

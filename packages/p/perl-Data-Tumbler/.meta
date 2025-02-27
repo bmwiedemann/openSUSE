@@ -13,6 +13,6 @@ The path and context are derived from the names and values of the hashes returne
 The providers are passed the current path, context, and payload. The payload is cloned at each level of recursion so that any changes made to it by providers are only visible within the scope of the generated sub-tree.
 
 Note that although the example above shows the path, context and payload as array references, the tumbler code makes no assumptions about them. They can be any kinds of values.</description>
-  <devel project="devel:languages:perl" package="perl-Data-Tumbler"/>
+  <devel project="devel:languages:perl" package="perl-Data-Tumbler" />
   <url>https://metacpan.org/release/Data-Tumbler</url>
 </package>

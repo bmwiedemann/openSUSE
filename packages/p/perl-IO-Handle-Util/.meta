@@ -4,6 +4,6 @@
 IO::Handle like objects.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-IO-Handle-Util"/>
+  <devel project="devel:languages:perl" package="perl-IO-Handle-Util" />
   <url>http://search.cpan.org/dist/IO-Handle-Util</url>
 </package>

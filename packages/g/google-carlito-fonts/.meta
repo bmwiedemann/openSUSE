@@ -7,6 +7,6 @@ Contains Regular, Bold, Italic, and Bold Italic version.
 Designed by Lukasz Dziedzic of tyPoland for Google.
 
 </description>
-  <devel project="M17N:fonts" package="google-carlito-fonts"/>
+  <devel project="M17N:fonts" package="google-carlito-fonts" />
   <url>https://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/</url>
 </package>

@@ -11,6 +11,6 @@ text strings. Protocols must create profiles of stringprep in order to
 fully specify the processing options.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Unicode-Stringprep"/>
+  <devel project="devel:languages:perl" package="perl-Unicode-Stringprep" />
   <url>http://search.cpan.org/dist/Unicode-Stringprep</url>
 </package>

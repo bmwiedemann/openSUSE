@@ -7,5 +7,5 @@
   there is a keepalived up and running
 
 </description>
-  <devel project="server:monitoring" package="monitoring-plugins-keepalived"/>
+  <devel project="server:monitoring" package="monitoring-plugins-keepalived" />
 </package>

@@ -3,5 +3,5 @@
   <description>
 Googlepinyin module for fcitx
   </description>
-  <devel project="M17N" package="fcitx-googlepinyin"/>
+  <devel project="M17N" package="fcitx-googlepinyin" />
 </package>

@@ -18,6 +18,6 @@ Test::More manpage or other the Test::Builder manpage-based tests.
 The assertions can be also used for run-time checking.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Test-Assert"/>
+  <devel project="devel:languages:perl" package="perl-Test-Assert" />
   <url>http://search.cpan.org/dist/Test-Assert/</url>
 </package>

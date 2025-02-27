@@ -5,5 +5,5 @@
 The name fasd comes from the default suggested aliases f(files), a(files/directories), s(show/search/select), d(directories).
 
 Fasd ranks files and directories by &quot;frecency,&quot; that is, by both &quot;frequency&quot; and &quot;recency.&quot; The term &quot;frecency&quot; was first coined by Mozilla and used in Firefox (link).</description>
-  <devel project="utilities" package="fasd"/>
+  <devel project="utilities" package="fasd" />
 </package>

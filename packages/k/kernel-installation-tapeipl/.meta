@@ -6,5 +6,5 @@ available and no z/VM available that can be used do the installation
 for LPAR. Only suitable for booting into RAM disks and only used
 internally to provide the kernel image with tape IPL record for the
 installation CD.</description>
-  <devel project="devel:openSUSE:Factory" package="kernel-installation-tapeipl"/>
+  <devel project="devel:openSUSE:Factory" package="kernel-installation-tapeipl" />
 </package>

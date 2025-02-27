@@ -4,6 +4,6 @@
 until one is successfully configured.
 This script should run at the first boot of a machine
 that has several interfaces.</description>
-  <devel project="network:utilities" package="network-autoconfig"/>
+  <devel project="network:utilities" package="network-autoconfig" />
   <url>http://gitorious.org/opensuse/network-autoconfig</url>
 </package>

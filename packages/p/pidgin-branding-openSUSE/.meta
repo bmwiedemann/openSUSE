@@ -10,5 +10,5 @@ SIMPLE, MXit, MySpaceIM, and Zephyr. It can support many more with
 plugins.
 
 This package provides the openSUSE default configuration for Pidgin.</description>
-  <devel project="network:pidgin" package="pidgin-branding-openSUSE"/>
+  <devel project="network:pidgin" package="pidgin-branding-openSUSE" />
 </package>

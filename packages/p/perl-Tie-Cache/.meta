@@ -2,5 +2,5 @@
   <title>Perl module Tie::Cache</title>
   <description>This module implements a least recently used (LRU) cache in memory
 through a tie interface.</description>
-  <devel project="devel:languages:perl" package="perl-Tie-Cache"/>
+  <devel project="devel:languages:perl" package="perl-Tie-Cache" />
 </package>

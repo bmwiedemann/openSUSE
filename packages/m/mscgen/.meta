@@ -8,5 +8,5 @@ MSCs are popular in Telecoms to specify how protocols operate although MSCs
 need not be complicated to create or use. Mscgen aims to provide a simple text
 language that is clear to create, edit and understand, which can also be
 transformed into images.</description>
-  <devel project="graphics" package="mscgen"/>
+  <devel project="graphics" package="mscgen" />
 </package>

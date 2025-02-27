@@ -3,5 +3,5 @@
   <description>
 This contains packages for IPA ex-Gothic and Mincho TrueType fonts.
   </description>
-  <devel project="M17N:fonts" package="ipa-ex-fonts"/>
+  <devel project="M17N:fonts" package="ipa-ex-fonts" />
 </package>

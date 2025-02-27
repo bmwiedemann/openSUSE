@@ -25,5 +25,5 @@ Some more examples of usage appear in the accompanying README. If that file
 isn't easy to access locally, you can find it on a web repository such as
 the http://search.cpan.org/dist/Regexp-Assemble/README manpage or the
 http://cpan.uwinnipeg.ca/htdocs/Regexp-Assemble/README.html manpage.</description>
-  <devel project="devel:languages:perl" package="perl-Regexp-Assemble"/>
+  <devel project="devel:languages:perl" package="perl-Regexp-Assemble" />
 </package>

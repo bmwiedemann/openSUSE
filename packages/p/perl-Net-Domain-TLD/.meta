@@ -8,6 +8,6 @@ http://www.dnso.org/constituency/gtld/gtld.html
 http://www.iana.org/cctld/cctld-whois.htm
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Net-Domain-TLD"/>
+  <devel project="devel:languages:perl" package="perl-Net-Domain-TLD" />
   <url>http://search.cpan.org/dist/Net-Domain-TLD</url>
 </package>

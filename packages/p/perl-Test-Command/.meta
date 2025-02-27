@@ -45,5 +45,5 @@ All of the following 'exit_is_num' calls are equivalent.
    exit_is_num($cmd, 0, 'exit_is_num: true, 0');
    $cmd-&gt;exit_is_num(0);
    $cmd-&gt;exit_is_num(0, 'exit_is_num: true, 0');</description>
-  <devel project="devel:languages:perl" package="perl-Test-Command"/>
+  <devel project="devel:languages:perl" package="perl-Test-Command" />
 </package>

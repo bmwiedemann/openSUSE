@@ -1,5 +1,5 @@
 <package name="python-hkdf" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:languages:python" package="python-hkdf"/>
+  <devel project="devel:languages:python" package="python-hkdf" />
 </package>

@@ -5,5 +5,5 @@ algorithm from within Perl programs. The algorithm takes a message of
 arbitrary length as input and produces a 160-bit fingerprint or message
 digest of the input as output.
 </description>
-  <devel project="devel:languages:perl" package="perl-Digest-SHA1"/>
+  <devel project="devel:languages:perl" package="perl-Digest-SHA1" />
 </package>

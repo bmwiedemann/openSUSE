@@ -13,6 +13,6 @@ Examples: count_file.pl 1 10
 Examples: count_file.pl 3:10 1:3
 
 </description>
-  <devel project="server:monitoring" package="monitoring-plugins-count_file"/>
+  <devel project="server:monitoring" package="monitoring-plugins-count_file" />
   <url>https://www.monitoringexchange.org/inventory/Check-Plugins/Operating-Systems/Linux/count_file</url>
 </package>

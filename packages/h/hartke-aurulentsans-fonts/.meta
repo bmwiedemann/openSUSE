@@ -3,5 +3,5 @@
   <description>Aurulent Sans is a humanist sans serif intended to be used as an interface font. The width and style is reminiscent of Luxi Sans, Lucida Sans, Tahoma, and Andale Sans UI. Aurulent currently has four styles: regular, italic, bold, and bold italic.
 
 Designer: Stephen G. Hartke</description>
-  <devel project="M17N:fonts" package="hartke-aurulentsans-fonts"/>
+  <devel project="M17N:fonts" package="hartke-aurulentsans-fonts" />
 </package>

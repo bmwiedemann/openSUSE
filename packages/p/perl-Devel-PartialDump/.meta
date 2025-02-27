@@ -4,6 +4,6 @@
 parameters.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Devel-PartialDump"/>
+  <devel project="devel:languages:perl" package="perl-Devel-PartialDump" />
   <url>http://search.cpan.org/dist/Devel-PartialDump</url>
 </package>

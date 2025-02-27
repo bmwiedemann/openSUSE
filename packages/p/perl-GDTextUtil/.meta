@@ -5,5 +5,5 @@ internal GD fonts as well as TrueType fonts, without having to worry
 about different interface functions to call. Apart from an abstract
 interface to all font types and strings for GD, this library also
 provides some utility in aligning and wrapping your string.</description>
-  <devel project="devel:languages:perl" package="perl-GDTextUtil"/>
+  <devel project="devel:languages:perl" package="perl-GDTextUtil" />
 </package>

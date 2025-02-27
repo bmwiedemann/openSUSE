@@ -8,6 +8,6 @@ unicast and collected at some point to generate a summary of statistics for a
 set of nodes.
 
 </description>
-  <devel project="network:utilities" package="bmon"/>
+  <devel project="network:utilities" package="bmon" />
   <url>http://www.infradead.org/~tgr/bmon/</url>
 </package>

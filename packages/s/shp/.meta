@@ -7,5 +7,5 @@ scripts are written in shell scripting language instead of the PHP lan-
 guage. SHP outputs its script file, with nested &lt;?shp ... ?&gt; blocks exe-
 cuted as shell scripts.
 </description>
-  <devel project="utilities" package="shp"/>
+  <devel project="utilities" package="shp" />
 </package>

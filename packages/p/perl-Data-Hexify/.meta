@@ -77,5 +77,5 @@ reference, containing values for any of the following parameters:
     0000: 74 61 3a 3a 48 ... 79 3b 0a 0a 75 73 65  ta::Hexify;..use
     0010: 20 35 2e 30 30 ... 73 65 20 73 74 72 69   5.006;.use stri
     ... and so on ...</description>
-  <devel project="devel:languages:perl" package="perl-Data-Hexify"/>
+  <devel project="devel:languages:perl" package="perl-Data-Hexify" />
 </package>

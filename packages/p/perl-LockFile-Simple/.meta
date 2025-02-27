@@ -9,6 +9,6 @@ over NFS. The algorithm used is described below in the *ALGORITHM* section.
 It is possible to customize the locking operations to attempt locking once
 every 5 seconds for 30 times, or delete stale locks (files that are deemed
 too ancient) before attempting the locking.</description>
-  <devel project="devel:languages:perl" package="perl-LockFile-Simple"/>
+  <devel project="devel:languages:perl" package="perl-LockFile-Simple" />
   <url>http://search.cpan.org/perldoc?LockFile::Simple</url>
 </package>

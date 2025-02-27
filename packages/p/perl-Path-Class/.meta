@@ -46,5 +46,5 @@ volumes they refer to and do the right thing.
 The guts of the 'Path::Class' code live in the 'Path::Class::File' and
 'Path::Class::Dir' modules, so please see those modules' documentation for
 more details about how to use them.</description>
-  <devel project="devel:languages:perl" package="perl-Path-Class"/>
+  <devel project="devel:languages:perl" package="perl-Path-Class" />
 </package>

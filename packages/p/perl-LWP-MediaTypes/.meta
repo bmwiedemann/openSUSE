@@ -5,6 +5,6 @@ types and encodings. The mapping from file extensions to media types is
 defined by the _media.types_ file. If the _~/.media.types_ file exists it
 is used instead. For backwards compatibility we will also look for
 _~/.mime.types_.</description>
-  <devel project="devel:languages:perl" package="perl-LWP-MediaTypes"/>
+  <devel project="devel:languages:perl" package="perl-LWP-MediaTypes" />
   <url>http://search.cpan.org/dist/LWP-MediaTypes/</url>
 </package>

@@ -4,5 +4,5 @@
 theme specification.
 
 This package provides openSUSE icons for hicolor-icon-theme.</description>
-  <devel project="GNOME:Factory" package="hicolor-icon-theme-branding-openSUSE"/>
+  <devel project="GNOME:Factory" package="hicolor-icon-theme-branding-openSUSE" />
 </package>

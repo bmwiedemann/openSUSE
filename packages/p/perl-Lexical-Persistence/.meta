@@ -9,6 +9,6 @@ variables. This example prints &quot;some value&quot; because the value of $x pe
 the $lp object between setter() and getter().
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Lexical-Persistence"/>
+  <devel project="devel:languages:perl" package="perl-Lexical-Persistence" />
   <url>http://search.cpan.org/dist/Lexical-Persistence/</url>
 </package>

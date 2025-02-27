@@ -14,6 +14,6 @@ that make them unique and very important tool of the modern digital
 communications.
 
 </description>
-  <devel project="M17N:fonts" package="paratype-pt-mono-fonts"/>
+  <devel project="M17N:fonts" package="paratype-pt-mono-fonts" />
   <url>http://www.paratype.com/public/</url>
 </package>

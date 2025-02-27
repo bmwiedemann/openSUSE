@@ -10,5 +10,5 @@ network play, single player, hotseat, 5 user interfaces and many more features,
 it works in all OSs that run java.
 
 Data files (cards, maps and images) for Domination.</description>
-  <devel project="games" package="domination-data"/>
+  <devel project="games" package="domination-data" />
 </package>

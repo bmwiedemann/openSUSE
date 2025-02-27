@@ -5,6 +5,6 @@ will force coercion of the value when checking or validating a value
 against it.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-Meta-TypeConstraint-ForceCoercion"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-Meta-TypeConstraint-ForceCoercion" />
   <url>http://search.cpan.org/dist/MooseX-Meta-TypeConstraint-ForceCoercion</url>
 </package>

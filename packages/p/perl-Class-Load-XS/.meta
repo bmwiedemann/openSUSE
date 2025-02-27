@@ -4,6 +4,6 @@
 manpage. See the Class::Load manpage for API details.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Class-Load-XS"/>
+  <devel project="devel:languages:perl" package="perl-Class-Load-XS" />
   <url>http://search.cpan.org/dist/Class-Load-XS/</url>
 </package>

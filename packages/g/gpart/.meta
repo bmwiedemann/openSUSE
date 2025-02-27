@@ -6,5 +6,5 @@ supports, among others, partitions formatted as ext2, FAT 12/16/32,
 ReiserFS, NTFS, and HPFS. Read the file
 /usr/share/doc/packages/gpart/README and the gpart man page before
 using gpart.</description>
-  <devel project="Base:System" package="gpart"/>
+  <devel project="Base:System" package="gpart" />
 </package>

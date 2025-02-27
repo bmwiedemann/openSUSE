@@ -4,6 +4,6 @@
 between 700 and 3200 bit/s.
 
 </description>
-  <devel project="hardware:sdr" package="codec2"/>
+  <devel project="hamradio" package="codec2"/>
   <url>http://rowetel.com/codec2.html</url>
 </package>

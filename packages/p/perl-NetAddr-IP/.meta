@@ -7,5 +7,5 @@ Math::BigInt as in previous versions.
 
 The internal representation of all IP objects is in 128 bit IPv6 notation.
 IPv4 and IPv6 objects may be freely mixed.</description>
-  <devel project="devel:languages:perl" package="perl-NetAddr-IP"/>
+  <devel project="devel:languages:perl" package="perl-NetAddr-IP" />
 </package>

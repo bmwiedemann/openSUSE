@@ -3,6 +3,6 @@
   <description>Blocks from the Unicode Character Database.
 
 </description>
-  <devel project="Publishing" package="unicode-blocks"/>
+  <devel project="Publishing" package="unicode-blocks" />
   <url>http://www.unicode.org/</url>
 </package>

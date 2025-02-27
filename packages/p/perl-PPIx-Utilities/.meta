@@ -5,6 +5,6 @@ which originated in Perl::Critic. They are organized into modules by the
 kind of PPI class they relate to, by replacing the &quot;PPI&quot; at the front of
 the module name with &quot;PPIx::Utilities&quot;, e.g. functionality related to
 PPI::Nodes is in PPIx::Utilities::Node.</description>
-  <devel project="devel:languages:perl" package="perl-PPIx-Utilities"/>
+  <devel project="devel:languages:perl" package="perl-PPIx-Utilities" />
   <url>http://search.cpan.org/dist/PPIx-Utilities/</url>
 </package>

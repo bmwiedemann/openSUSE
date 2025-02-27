@@ -14,5 +14,5 @@ these media types thereby removing the complexities of additional
 kernel modules, /dev nodes, and procfs. It also consolidates features
 for plug control registers and connection management that previously
 existed in experimental form in an unreleased version of libavc1394.</description>
-  <devel project="multimedia:libs" package="libiec61883"/>
+  <devel project="multimedia:libs" package="libiec61883" />
 </package>

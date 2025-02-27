@@ -74,5 +74,5 @@ FUNCTIONS
 
       Implements finding the Perl modules according to the semantics of the
       previous function 'all_pm_version_ok'.</description>
-  <devel project="devel:languages:perl" package="perl-Test-HasVersion"/>
+  <devel project="devel:languages:perl" package="perl-Test-HasVersion" />
 </package>

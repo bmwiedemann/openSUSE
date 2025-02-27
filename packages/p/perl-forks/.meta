@@ -11,5 +11,5 @@ to see what version of threads you should refer to regarding supported API featu
 There were a number of goals that I am trying to reach with this implementation.
 
 Using this module only makes sense if you run on a system that has an implementation of the fork function by the Operating System. Windows is currently the only known system on which Perl runs which does not have an implementation of fork. Therefore, it doesn't make any sense to use this module on a Windows system. And therefore, a check is made during installation barring you from installing on a Windows system.</description>
-  <devel project="devel:languages:perl" package="perl-forks"/>
+  <devel project="devel:languages:perl" package="perl-forks" />
 </package>

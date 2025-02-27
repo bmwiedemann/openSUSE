@@ -10,5 +10,5 @@ users who want to know:
     * Which distribution provides packages on which the user depends.
     * What version of a given package is in use in each distribution, or in each release of a
       distribution (implemented only for Debian).</description>
-  <devel project="network" package="whohas"/>
+  <devel project="network" package="whohas" />
 </package>

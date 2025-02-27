@@ -41,5 +41,5 @@ new_from_file
 
 new_from_content
     Redirects to HTML::TreeBuilder::new_from_content</description>
-  <devel project="devel:languages:perl" package="perl-HTML-Tree"/>
+  <devel project="devel:languages:perl" package="perl-HTML-Tree" />
 </package>

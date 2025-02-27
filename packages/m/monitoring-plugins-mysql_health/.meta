@@ -11,6 +11,6 @@ Author:
     Gerhard Laußer
 
 </description>
-  <devel project="server:monitoring" package="monitoring-plugins-mysql_health"/>
+  <devel project="server:monitoring" package="monitoring-plugins-mysql_health" />
   <url>http://labs.consol.de/lang/en/nagios/check_mysql_health/</url>
 </package>

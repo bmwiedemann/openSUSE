@@ -13,5 +13,5 @@ within blocks (there are three types of lines: comments, environment
 settings, and crontab commands or events), remove blocks or lines
 within blocks, add new blocks or lines within blocks, etc. See the
 Config::Crontab manpage for full details.</description>
-  <devel project="devel:languages:perl" package="perl-Config-Crontab"/>
+  <devel project="devel:languages:perl" package="perl-Config-Crontab" />
 </package>

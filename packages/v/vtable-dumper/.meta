@@ -4,5 +4,5 @@
   distributions who are interested in ensuring backward binary compatibility.
   
   The tool is developed by Andrey Ponomarenko</description>
-  <devel project="devel:tools" package="vtable-dumper"/>
+  <devel project="devel:tools" package="vtable-dumper" />
 </package>

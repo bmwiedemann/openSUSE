@@ -19,6 +19,6 @@ helps keep SAX1 and SAX2 separated.
   Author: Robin Berjon  &lt;robin@knowscape.com&gt;
 
 </description>
-  <devel project="devel:languages:perl" package="perl-XML-SAX-Writer"/>
+  <devel project="devel:languages:perl" package="perl-XML-SAX-Writer" />
   <url>http://search.cpan.org/dist/XML-SAX-Writer/</url>
 </package>

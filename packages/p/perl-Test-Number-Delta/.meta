@@ -6,6 +6,6 @@ absolute value of the difference of the numbers is within a desired tolerance,
 usually called epsilon. This module provides such a function for use with
 Test::Harness. Usage is similar to other test functions described in
 Test::More.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Number-Delta"/>
+  <devel project="devel:languages:perl" package="perl-Test-Number-Delta" />
   <url>http://search.cpan.org/dist/Test-Number-Delta/</url>
 </package>

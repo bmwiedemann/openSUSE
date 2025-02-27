@@ -3,5 +3,5 @@
   <description>This module attempts to generate a stack dump from a core file by
 locating the best available debugger (if any) and running it with the
 appropriate arguments and command script.</description>
-  <devel project="devel:languages:perl" package="perl-Devel-CoreStack"/>
+  <devel project="devel:languages:perl" package="perl-Devel-CoreStack" />
 </package>

@@ -13,6 +13,6 @@ Author:
 
 
 </description>
-  <devel project="devel:languages:perl" package="perl-HTTP-Server-Simple"/>
+  <devel project="devel:languages:perl" package="perl-HTTP-Server-Simple" />
   <url>http://search.cpan.org/perldoc?HTTP::Server::Simple</url>
 </package>

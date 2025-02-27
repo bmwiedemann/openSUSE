@@ -8,6 +8,6 @@ large pseudo-bitmap Unicode or CP437 graphics to
 single characters.
 
 </description>
-  <devel project="games" package="myman"/>
+  <devel project="games" package="myman" />
   <url>http://myman.sourceforge.net/</url>
 </package>

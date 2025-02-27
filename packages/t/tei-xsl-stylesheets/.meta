@@ -5,5 +5,5 @@ or to XSL Formatting Objects (FO). You can also produce LaTeX output.
 
 Use it with xsltproc (part of libxslt), Saxon, or any other XSLT
 processor.</description>
-  <devel project="Publishing" package="tei-xsl-stylesheets"/>
+  <devel project="Publishing" package="tei-xsl-stylesheets" />
 </package>

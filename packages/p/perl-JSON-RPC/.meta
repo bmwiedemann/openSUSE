@@ -8,6 +8,6 @@ application data carried in parameters.
 The old modules - JSONRPC::Transport::HTTP and Apache::JSONRPC are deprecated.
 Please try to use JSON::RPC::Server and JSON::RPC::Client which support both
 JSON-RPC protocol version 1.1 and 1.0.</description>
-  <devel project="devel:languages:perl" package="perl-JSON-RPC"/>
+  <devel project="devel:languages:perl" package="perl-JSON-RPC" />
   <url>http://search.cpan.org/perldoc?JSON::RPC</url>
 </package>

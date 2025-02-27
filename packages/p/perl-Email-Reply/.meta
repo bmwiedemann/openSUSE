@@ -2,5 +2,5 @@
   <title>Reply to a Message</title>
   <description>This software takes the hard out of generating replies to email messages.
   </description>
-  <devel project="devel:languages:perl" package="perl-Email-Reply"/>
+  <devel project="devel:languages:perl" package="perl-Email-Reply" />
 </package>

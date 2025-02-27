@@ -6,5 +6,5 @@ updated for rsync-2.6.0 but should perform properly with most recent versions.
 Author:
 -------
     Lee Eakin &lt;leakin@dfw.nostrum.com&gt;</description>
-  <devel project="devel:languages:perl" package="perl-File-Rsync"/>
+  <devel project="devel:languages:perl" package="perl-File-Rsync" />
 </package>

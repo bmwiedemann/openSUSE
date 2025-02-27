@@ -7,6 +7,6 @@ subtle bugs, primarily that its far too easy to stomp on the error in
 error handlers. And also eval/if isn't the nicest idiom.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-TryCatch"/>
+  <devel project="devel:languages:perl" package="perl-TryCatch" />
   <url>http://search.cpan.org/dist/TryCatch</url>
 </package>

@@ -1,5 +1,5 @@
 <package name="libepubgen" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="LibreOffice:Factory" package="libepubgen"/>
+  <devel project="LibreOffice:Factory" package="libepubgen" />
 </package>

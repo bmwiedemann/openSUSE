@@ -5,5 +5,5 @@ library.
 
 This package contains header files, a library, some command line tools,
 and developer documentation.</description>
-  <devel project="server:database" package="xbase"/>
+  <devel project="server:database" package="xbase" />
 </package>

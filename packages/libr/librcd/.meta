@@ -4,6 +4,6 @@
 for very small words and phrases.
 
 </description>
-  <devel project="devel:libraries:c_c++" package="librcd"/>
+  <devel project="devel:libraries:c_c++" package="librcd" />
   <url>http://rusxmms.sourceforge.net</url>
 </package>

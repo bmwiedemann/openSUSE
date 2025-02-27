@@ -15,6 +15,6 @@ redistribution with larger packages where only HTTP GET and POST functionality
 are necessary.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-HTTP-Lite"/>
+  <devel project="devel:languages:perl" package="perl-HTTP-Lite" />
   <url>http://search.cpan.org/dist/HTTP-Lite</url>
 </package>

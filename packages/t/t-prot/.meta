@@ -12,5 +12,5 @@ to &quot;text oben, full-quote unten&quot; that means &quot;text above - full qu
 below&quot; and describes the style of many users who let their mailer or
 newsreader quote everything of the previous message and just add some
 text at the top.</description>
-  <devel project="server:mail" package="t-prot"/>
+  <devel project="server:mail" package="t-prot" />
 </package>

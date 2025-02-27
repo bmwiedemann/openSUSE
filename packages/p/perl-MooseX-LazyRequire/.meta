@@ -3,5 +3,5 @@
   <description>
 
   </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-LazyRequire"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-LazyRequire" />
 </package>

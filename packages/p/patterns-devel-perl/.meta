@@ -5,5 +5,5 @@ of the installation source setup.  Installation of this package does
 not make sense. 
 
 This particular package contains the pattern for Perl Development</description>
-  <devel project="devel:languages:perl" package="patterns-devel-perl"/>
+  <devel project="devel:languages:perl" package="patterns-devel-perl" />
 </package>

@@ -16,6 +16,6 @@ a minimal configuration template without examples, regexps or comments and
 thus allows an experienced user to fill in the configuration data more
 efficiently.
 </description>
-  <devel project="devel:languages:perl" package="perl-Config-Grammar"/>
+  <devel project="devel:languages:perl" package="perl-Config-Grammar" />
   <url>http://search.cpan.org/dist/Config-Grammar/</url>
 </package>

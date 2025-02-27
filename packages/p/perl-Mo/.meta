@@ -6,6 +6,6 @@ more. Not much.
 When Moo is more than you need, drop an 'o' and get some Mo.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Mo"/>
+  <devel project="devel:languages:perl" package="perl-Mo" />
   <url>http://search.cpan.org/dist/Mo</url>
 </package>

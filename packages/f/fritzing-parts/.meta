@@ -8,5 +8,5 @@ prototypes, and to create a PCB layout for manufacturing.
 
 This packages contains the parts definitions for the electronic
 components used in the Fritzing app.</description>
-  <devel project="Education" package="fritzing-parts"/>
+  <devel project="Education" package="fritzing-parts" />
 </package>

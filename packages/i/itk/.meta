@@ -8,5 +8,5 @@ few thousand lines become extremely difficult to maintain. [incr Tcl]
 attacks this problem in the same way that any object- oriented
 programming language would, by providing mechanisms for data
 encapsulation behind well-defined interfaces.</description>
-  <devel project="devel:languages:tcl" package="itk"/>
+  <devel project="devel:languages:tcl" package="itk" />
 </package>

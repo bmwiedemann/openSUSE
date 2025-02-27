@@ -6,6 +6,6 @@ reporting tools, where the results of a query need to be formatted in a
 particular way. It was inspired by mutt's index_format and related
 directives
 (see &lt;URL:http://www.mutt.org/doc/manual/manual-6.html#index_format&gt;).</description>
-  <devel project="devel:languages:perl" package="perl-String-Format"/>
+  <devel project="devel:languages:perl" package="perl-String-Format" />
   <url>PUT_UPSTREAM_URL_HERE</url>
 </package>

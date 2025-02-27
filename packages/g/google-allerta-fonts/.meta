@@ -29,6 +29,6 @@ all'erta literally means on the lookout.
 
 
 </description>
-  <devel project="M17N:fonts" package="google-allerta-fonts"/>
+  <devel project="M17N:fonts" package="google-allerta-fonts" />
   <url>http://pixelspread.com/allerta/</url>
 </package>

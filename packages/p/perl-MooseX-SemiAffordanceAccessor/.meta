@@ -14,6 +14,6 @@ attribute, then that attribute's naming scheme is left unchanged.
 The name &quot;semi-affordance&quot; comes from David Wheeler's Class::Meta module.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-SemiAffordanceAccessor"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-SemiAffordanceAccessor" />
   <url>http://search.cpan.org/dist/MooseX-SemiAffordanceAccessor/</url>
 </package>

@@ -11,6 +11,6 @@ automatically supported by the MooseX::Getopt role as well, which allows
 specifying -configfile on the commandline.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-SimpleConfig"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-SimpleConfig" />
   <url>http://search.cpan.org/dist/MooseX-SimpleConfig/</url>
 </package>

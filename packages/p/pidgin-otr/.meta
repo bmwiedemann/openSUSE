@@ -22,5 +22,5 @@
 
 - If you lose control of your private keys, no previous conversation is
 compromised.</description>
-  <devel project="network:pidgin" package="pidgin-otr"/>
+  <devel project="network:pidgin" package="pidgin-otr" />
 </package>

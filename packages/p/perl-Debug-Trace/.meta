@@ -2,6 +2,6 @@
   <title>Perl extension to trace subroutine calls</title>
   <description>Debug::Trace instruments subroutines to provide tracing information upon
 every call and return.</description>
-  <devel project="devel:languages:perl" package="perl-Debug-Trace"/>
+  <devel project="devel:languages:perl" package="perl-Debug-Trace" />
   <url>http://search.cpan.org/dist/Debug-Trace/</url>
 </package>

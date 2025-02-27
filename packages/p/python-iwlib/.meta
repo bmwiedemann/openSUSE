@@ -5,5 +5,5 @@ the wireless tools in Linux.
 
 It provides scanning, setting the ESSID of a device, and getting the current configuration
 back from a device.</description>
-  <devel project="devel:languages:python" package="python-iwlib"/>
+  <devel project="devel:languages:python" package="python-iwlib" />
 </package>

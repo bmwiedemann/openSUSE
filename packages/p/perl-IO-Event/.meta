@@ -21,6 +21,6 @@ defaults to using the Event manpage but it can now use the AnyEvent manpage
 or its own event loop.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-IO-Event"/>
+  <devel project="devel:languages:perl" package="perl-IO-Event" />
   <url>http://search.cpan.org/dist/IO-Event/</url>
 </package>

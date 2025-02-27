@@ -28,5 +28,5 @@ you can write tests with a minimum of code. At the heart of all testing you
 have inputs, processes and expected outputs. Test::Base provides some clean
 ways for you to express your input and expected output data, so you can
 spend your time focusing on that rather than your code scaffolding.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Base"/>
+  <devel project="devel:languages:perl" package="perl-Test-Base" />
 </package>

@@ -20,6 +20,6 @@ Ubuntu Font Family project will be extended to cover many more
 written languages.
 
 </description>
-  <devel project="M17N:fonts" package="ubuntu-fonts"/>
+  <devel project="M17N:fonts" package="ubuntu-fonts" />
   <url>http://font.ubuntu.com</url>
 </package>

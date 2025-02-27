@@ -11,6 +11,6 @@ Attributes specified directly as arguments to &quot;new_with_config&quot; superc
 those in the configfile.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MouseX-ConfigFromFile"/>
+  <devel project="devel:languages:perl" package="perl-MouseX-ConfigFromFile" />
   <url>http://search.cpan.org/dist/MouseX-ConfigFromFile</url>
 </package>

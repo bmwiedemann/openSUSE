@@ -8,5 +8,5 @@ into and out of an XML format (hereafter referred to as icc.XML).
 Documentation for the schema for the icc.XML in the library can be
 found as part the ICCXML project distribution.   IccLibXML also uses
 libxml2 for the purposes of parsing XML files.</description>
-  <devel project="multimedia:color_management" package="IccXML"/>
+  <devel project="multimedia:color_management" package="IccXML" />
 </package>

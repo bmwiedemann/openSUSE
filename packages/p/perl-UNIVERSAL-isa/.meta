@@ -12,6 +12,6 @@ appropriate method on those objects
 In all other cases, the real UNIVERSAL::isa gets called directly.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-UNIVERSAL-isa"/>
+  <devel project="devel:languages:perl" package="perl-UNIVERSAL-isa" />
   <url>http://search.cpan.org/dist/UNIVERSAL-isa/</url>
 </package>

@@ -6,5 +6,5 @@ DocBook DTD.  For printed copies, visit http://docbook.org/tdg/en/.
 
 &quot;Fairly crude PDF versions&quot; (Norman Walsh) of Part I, Part II, and Part
 III are included in this package.</description>
-  <devel project="Publishing" package="docbook-tdg"/>
+  <devel project="Publishing" package="docbook-tdg" />
 </package>

@@ -6,6 +6,6 @@ declare, then it calls &quot;Carp::confess()&quot;. This is a great way to catch
 typos.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-StrictConstructor"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-StrictConstructor" />
   <url>http://search.cpan.org/dist/MooseX-StrictConstructor/</url>
 </package>

@@ -1,5 +1,5 @@
 <package name="perl-MooseX-Types-Stringlike" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:languages:perl" package="perl-MooseX-Types-Stringlike"/>
+  <devel project="devel:languages:perl" package="perl-MooseX-Types-Stringlike" />
 </package>

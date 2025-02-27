@@ -6,5 +6,5 @@ trigram language model.
  
 Currently, SunPinyin 2.0 is available on IBus. fcitx-sunpinyin is a wrapper around SunPinyin which enables user to use
 SunPinyin with fcitx. </description>
-  <devel project="M17N" package="fcitx-sunpinyin"/>
+  <devel project="M17N" package="fcitx-sunpinyin" />
 </package>

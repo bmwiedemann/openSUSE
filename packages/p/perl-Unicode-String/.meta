@@ -7,5 +7,5 @@ characters, ideographic characters, and symbols identically, which
 means that they can be used in any mixture and with equal facility. 
 Unicode is modeled on the ASCII character set, but uses a 16-bit
 encoding to support full multilingual text.</description>
-  <devel project="devel:languages:perl" package="perl-Unicode-String"/>
+  <devel project="devel:languages:perl" package="perl-Unicode-String" />
 </package>

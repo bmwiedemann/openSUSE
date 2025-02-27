@@ -16,5 +16,5 @@ JSON::DWIW::Changes manpage.
 
 This module can be downloaded from the
 http://www.cpan.org/authors/id/D/DO/DOWENS/ manpage.</description>
-  <devel project="devel:languages:perl" package="perl-JSON-DWIW"/>
+  <devel project="devel:languages:perl" package="perl-JSON-DWIW" />
 </package>

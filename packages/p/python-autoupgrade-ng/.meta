@@ -7,6 +7,6 @@ The upgrade will be unattended and the python script will be restarted.
 Old methods are still supported; you can accomplish the same task calling:
 
 </description>
-  <devel project="devel:languages:python" package="python-autoupgrade-ng"/>
+  <devel project="devel:languages:python" package="python-autoupgrade-ng" />
   <url>https://github.com/vuolter/autoupgrade</url>
 </package>

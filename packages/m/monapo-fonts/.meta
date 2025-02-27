@@ -6,6 +6,6 @@ and mona.ttf.
 It has almost same width as MS P Gothic,
 so it can show Japanese Ascii Art properly.
   </description>
-  <devel project="M17N:fonts" package="monapo-fonts"/>
+  <devel project="M17N:fonts" package="monapo-fonts" />
   <url>http://www.geocities.jp/ep3797/modified_fonts_01.html</url>
 </package>

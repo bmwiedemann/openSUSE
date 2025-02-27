@@ -4,5 +4,5 @@
 
 For illustration, the distro contains a demo app that works with App::Dochazka::REST.
 </description>
-  <devel project="devel:languages:perl" package="perl-App-MFILE-WWW"/>
+  <devel project="devel:languages:perl" package="perl-App-MFILE-WWW" />
 </package>

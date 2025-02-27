@@ -3,5 +3,5 @@
   <description>Creates specimen for given installed font and script it
 sufficiently coverages. Run font-specimen without
 parameters to see usage.</description>
-  <devel project="M17N" package="font-specimen"/>
+  <devel project="M17N" package="font-specimen" />
 </package>

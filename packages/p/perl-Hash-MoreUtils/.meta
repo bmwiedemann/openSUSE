@@ -2,6 +2,6 @@
   <title>Provide the stuff missing in Hash::Util</title>
   <description>Similar to &quot;List::MoreUtils&quot;, &quot;Hash::MoreUtils&quot; contains trivial but
 commonly-used functionality for hashes.</description>
-  <devel project="devel:languages:perl" package="perl-Hash-MoreUtils"/>
+  <devel project="devel:languages:perl" package="perl-Hash-MoreUtils" />
   <url>http://search.cpan.org/dist/Hash-MoreUtils</url>
 </package>

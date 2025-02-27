@@ -10,5 +10,5 @@ destroyed, the temporary namespace for the IO layer will be removed.
 
 Note that PerlIO::via::dynamic uses the scalar fields to reference to the
 object representing the dynamic namespace.</description>
-  <devel project="devel:languages:perl" package="perl-PerlIO-via-dynamic"/>
+  <devel project="devel:languages:perl" package="perl-PerlIO-via-dynamic" />
 </package>

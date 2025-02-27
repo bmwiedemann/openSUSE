@@ -9,6 +9,6 @@ the method they modify, but can not really affect that original method.
 'around' is run in place of the original method, with a hook to easily call
 that original method. See the 'MODIFIERS' section for more details on how
 the particular modifiers work.</description>
-  <devel project="devel:languages:perl" package="perl-Class-Method-Modifiers-Fast"/>
+  <devel project="devel:languages:perl" package="perl-Class-Method-Modifiers-Fast" />
   <url>http://search.cpan.org/perldoc?Class::Method::Modifiers::Fast</url>
 </package>

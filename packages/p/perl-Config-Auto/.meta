@@ -8,5 +8,5 @@ detecting configuration styles, include paths and even config filenames
 automagically.
 
 See the the HOW IT WORKS manpage section below on implementation details.</description>
-  <devel project="devel:languages:perl" package="perl-Config-Auto"/>
+  <devel project="devel:languages:perl" package="perl-Config-Auto" />
 </package>

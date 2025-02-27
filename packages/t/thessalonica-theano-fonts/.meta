@@ -32,6 +32,6 @@ Authors:
     Alexey Kryukov &lt;alexios@thessalonica.org.ru&gt;
 
 </description>
-  <devel project="M17N:fonts" package="thessalonica-theano-fonts"/>
+  <devel project="M17N:fonts" package="thessalonica-theano-fonts" />
   <url>http://www.thessalonica.org.ru/en/theano.html</url>
 </package>

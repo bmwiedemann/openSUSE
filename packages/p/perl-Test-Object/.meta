@@ -28,6 +28,6 @@ that it is advertising itself as correctly.
 This also means that more than one test might be &quot;counted&quot; for each call to
 'object_ok'. You should account for this correctly in your expected test
 count.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Object"/>
+  <devel project="devel:languages:perl" package="perl-Test-Object" />
   <url>PUT_UPSTREAM_URL_HERE</url>
 </package>
