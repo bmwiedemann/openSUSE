@@ -2013,6 +2013,7 @@ unsorted:
   - cargo1.82 
   - cargo1.83 
   - cargo1.84 
+  - cargo1.85 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -3402,6 +3403,7 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
+  - distribution-logos-openSUSE-Aeon 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -10337,6 +10339,8 @@ unsorted:
   - kind-fish-completion 
   - kind-zsh-completion 
   - kinit-devel 
+  - kio-admin 
+  - kio-admin-lang 
   - kio-devel 
   - kio-extras5 
   - kio-extras5-lang 
@@ -11753,7 +11757,6 @@ unsorted:
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
-  - libWPEPlatform-2_0-0 
   - libWPEWebInspectorResources 
   - libWPEWebKit-2_0-1 
   - libWildMidi2 
@@ -12686,7 +12689,6 @@ unsorted:
   - libcompel1 
   - libcompizconfig 
   - libcompizconfig-devel 
-  - libcomposefs1 
   - libcomps-devel 
   - libcomps-doc 
   - libcomps0 
@@ -14101,7 +14103,7 @@ unsorted:
   - libime-devel 
   - libime-dicts 
   - libime-tools 
-  - libimhex1_37_2 
+  - libimhex1_37_4 
   - libiml0 
   - libimobiledevice-1_0-6-32bit 
   - libimobiledevice-devel 
@@ -36776,6 +36778,8 @@ unsorted:
   - rust1.83-src 
   - rust1.84 
   - rust1.84-src 
+  - rust1.85 
+  - rust1.85-src 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
@@ -37344,7 +37348,6 @@ unsorted:
   - snapshot-lang 
   - snd 
   - snd_sf2 
-  - sndiff 
   - sndio 
   - sndio-devel 
   - sndioctl 
