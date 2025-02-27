@@ -1,7 +1,7 @@
 #
 # spec file for package kube-linter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kube-linter
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Static analysis tool that checks Kubernetes YAML files and Helm charts
 License:        Apache-2.0
