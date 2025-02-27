@@ -22,10 +22,10 @@
 %define rname kdecoration
 
 %global sover 6
-%global private_sover 1
+%global private_sover 2
 %bcond_without released
 Name:           kdecoration6
-Version:        6.3.1
+Version:        6.3.2
 Release:        0
 Summary:        KDE's window decorations library
 License:        GPL-2.0-or-later
