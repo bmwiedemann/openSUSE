@@ -18,6 +18,7 @@
 
 # This is with alts/libalternatives only and has never been something else
 %bcond_without libalternatives
+%{?sle15_python_module_pythons}
 Name:           python-hatch-jupyter-builder
 Version:        0.9.1
 Release:        0
