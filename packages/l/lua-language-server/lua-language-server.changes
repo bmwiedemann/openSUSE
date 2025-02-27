@@ -1,4 +1,191 @@
 -------------------------------------------------------------------
+Wed Feb 19 18:07:29 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing Source for README.suse-maint.md.
+
+-------------------------------------------------------------------
+Wed Feb 19 09:24:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.13.6:
+  * Exit 1 when check error
+  * Send the correct insertTextFormat
+  * Fixed the error that the configuration file pointed to by the --configpath
+    option was not read and loaded
+  * unittest: support test specify unit test
+  * Improve generic pattern to support "T.*-"
+  * Mark function completion items as snippets
+  * Basic partial class support
+  * Fix typo in doc exporter
+  * LuaDoc. Fixed the start position of the comment first symbol in docs
+  * Improve generic pattern to support optional, union, array. Fixed regression.
+  * fix: bind variables with @class using tail comments
+  * Mark postfix completions as snippets
+  * Avoid truncating output in ---doc mode
+  * feat: add --check_format=json|pretty
+  * feat: add variable substitution support for vscode's ${workspaceFolder:x}
+  * fix: missing field completion for generic class object
+- update to 3.13.5:
+  * fix: incorrect infer of function array annotation on tables
+  * add settingLua.hint.awaitPropagate
+  * Add serverInfo.version to initialize response
+- update to 3.13.4:
+  * hover supports detail level
+  * pass tests
+  * Can adjust the level of detail of Hover
+- update to 3.13.3:
+  * Update Love2d version
+  * Fix missing-fields diagnostic not warning about missing inherited fields
+  * Added support for arrays in meta build tool
+- update to 3.13.2:
+  * doc: fulfill translations of zh-cn
+  * fix: add missing errs ~= nil checks to script/vm/type checkTableShape
+- update to 3.13.0:
+  * Fix table array infer
+  * fix: improve type narrow with literal alias param during completion and
+    signature help
+  * config: add custom repository support for addonManager
+  * add translate bot
+  * feat: infer function param when the function is passed as call arg
+- update to 3.12.0:
+  * fix: regression related to type narrow and generic since v3.10.1
+  * Fix vararg indices being unknown when iterated
+  * [reference] Check also in tablefield
+  * fix: parse storage path
+  * Imports in Quick Fix are now allowed
+- update to 3.11.1:
+  * update format 1.5.6
+  * Fix syntax errors in the Japanese locale
+  * Add storagePath handling and memoization to resolvePathPlaceholders
+  * Return markdown from getFunctionComment to temporarily preserve trailing
+    newlines
+- update to 3.11.0:
+  * Add Japanese translations
+  * Remove luamake install from make.sh and make.bat
+  * Use string.format to fix floating point error in test output
+  * Infer function parameter types when overriding the same-named class
+    function in an instance of that class
+  * feat: type narrow types with literal fields
+  * add: placeholder for ${addons} for paths
+  * lint: cleanup unused code and redefined locals
+  * Support using ---@class on rawset(_G, ...) to annotate the created global variable
+  * fix: type narrow on fields with multiple literals
+- update to 3.10.6:
+  * custom luadoc generation
+  * Fix setfenv definition
+  * Fix VM plugins
+  * fix: improve function type narrow by checking params' literal identical
+  * Fix incorrect function params' type infer when there is only @overload
+  * Fix correctly display enums for function overload arguments
+  * Only call workspace/configuration when available
+  * fix(completion): remove logic causing wrong text edits
+  * Fixed injects into child classes
+- update to 3.10.4:
+  * FIX: Changed hello param to valid JSONRPC
+  * fix(hint): attempt to index a nil value
+  * fix: improve textDocument/definition ordering
+  * Fix lua-language-server --check
+  * Revert "fix: improve textDocument/definition ordering"
+  * check that the shape of the table corresponds to the class
+- update to 3.10.3:
+  * fix memory leak with ---@enum
+- update to 3.10.2:
+  * feat: flip binary operator check if failed
+- update to 3.10.1:
+  * Disable indentation fixing for Non-VSCode
+- update to 3.10.0:
+  * Fix plugin arg arrays when paths contain numbers passing along only one argument
+  * Add postfix snippet for unpack
+  * Add support for lambda-style functions
+  * fix: default severity in CLI with partial 'diagnostics.severity' config
+  * Perf: Improve performance of multithreaded --check and undefined-field diagnostic
+  * fix: respect showParams config for local function completion
+  * update format
+  * Remove nodiscard from string.gsub
+  * Align inlay hint spacing with other LSPs
+  * fix: add a missing check for 'inject-field' diagnostics
+  * added lua regular expression support for Lua.doc.Name
+  * fix a specific case for getVisibleType
+  * Fixed wholeMatch function
+  * fix: inconsistent type narrow due to outdated node caches of call.args
+  * Fix typos in annotation descriptions
+  * fix: incorrect CompletionItemKind for postfix snippets
+  * improve the missing-fields logic to be able to correctly handle classes
+    defined several times
+- update to 3.9.3:
+  * FIX Sometimes providing incorrect autocompletion when chaining calls
+- update to 3.9.2:
+  * Disable await.delay() when running --check
+  * Update love2d-api to 11.5
+  * add: workflow to assert changelog updates
+  * Add schema link to .luarc.json
+  * Bump EmmyLuaCodeStyle
+  * add: resolve links to symbols in markdown descriptions
+  * Throttle calls to await.delay() in some diagnostics
+  * don't do diagnostics when workspace is not ready
+- update to 3.9.1:
+  * Add globalsRegex to diagnostics
+  * Add multi-process support to --check
+  * Fix linux-arm64 build
+  * add: load ENV variables as args
+  * fix: convert ENV value to bool
+- update to 3.9.0:
+  * Fix linux-arm64 build
+  * Add multi-process support to --check
+  * Add setting to find globals using regex
+  * add: load ENV variables as args
+- update to 3.8.3:
+  * update bee
+- update to 3.8.0:
+  * bit meta: tohex returns a string
+  * Pad return type annotations when required
+  * plugin: add OnTransformAst interface
+  * update format 1.4.3
+  * astHelper: addParamTypeDoc
+  * support multi plugins
+  * Automatic derivation function param type
+  * Never sematic virtual ast and comment
+  * fix guide.getParams
+  * Plugin on node compile function param
+  * Add table.move() to LuaJIT compatibility
+  * Add --visualize command that outputs the AST of a given file as graphviz
+  * Add group param for luadoc generated by plugins
+  * Added 'desc' and 'rawdesc' keys for variables in JSON output
+  * Added 'visible' key (public, protected, ...) in JSON output
+  * CLI option --doc_out_path
+  * support tuple type
+  * Enable plugins during --check
+  * update format 1.5.0
+  * Desc/rawdesc for vararg expressions in JSON output
+  * Add "deprecated" key in JSON output
+  * add infer function param type
+  * update test
+  * Add "async" key in JSON output
+  * Revert "Add "async" key in JSON output."
+  * Revert "Add "deprecated" key in JSON output."
+  * Add "async" and "deprecated" key to JSON output
+  * Only load files in workspace for --check (skip libraries)
+  * Add CLI option to trust all plugins
+  * Flush stdout in check progress indicator
+  * Update doc.json
+  * Fix potential crash issues on Windows
+  * doc param support generic pattern
+  * update format 1.5.2
+  * Fix typo in config.json
+  * Allow plugins to resolve require paths
+  * Update compiler.lua
+  * Detect discard-returns in all block types
+  * meta: improve typing for unpack
+  * Run diagnostics on unopened files when explicitly requested by the user
+  * Output more details while running --check
+- rewrite the _service file, so we can include the submodules, and move to
+  manual service runs, as disabled is going to be deprecated
+- write the wrapper so we can have multiple instances
+- remove limitations on the buildarches, as they build fine (outside of the tests)
+- test only on x86_64, as the other arches too flaky (while x86_64 also quite often flakes)
+- update README.suse-maint.md file to reflect how to update the package
+- use newer upstream url
+
+-------------------------------------------------------------------
 Fri Jan  5 07:30:11 UTC 2024 - Kyle Scheuing <kyle@kylescheuing.com>
 
 - Upgrade to 3.7.4:

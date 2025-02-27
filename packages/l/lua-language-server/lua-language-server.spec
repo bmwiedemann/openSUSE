@@ -1,7 +1,7 @@
 #
 # spec file for package lua-language-server
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021 Andreas Schneider <asn@cryptomilk.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,42 +18,34 @@
 
 
 Name:           lua-language-server
-Version:        3.7.4
+Version:        3.13.6
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT
 URL:            https://github.com/LuaLS/lua-language-server
-Source0:        %{url}/releases/download/%{version}/%{name}-%{version}-submodules.zip
-Source1:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-Source2:        lua-lsp-launcher.sh
-Source3:        README.suse-maint.md
-# PATCH-FIX-UPSTREAM time_includes.patch gh#sumneko/lua-language-server#1377 mcepl@suse.com
-# Add missing #include
-# Patch0:         time_includes.patch
-BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+Source0:        %{name}-%{version}.tar.gz
+Source1:        lua-lsp-launcher.sh
+Source99:       README.suse-maint.md
+BuildRequires:  c++_compiler
 BuildRequires:  ninja
-BuildRequires:  unzip
-ExcludeArch:    s390x ppc64le ppc64
 
 %description
 This package provides a Language Server Protocol (LSP) implementation for Lua.
 
 %prep
-%autosetup -c
+%autosetup -p1
+install -m 644 %{SOURCE99} .
 
 %build
-export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 
 ninja -C 3rd/luamake -f compile/ninja/linux.ninja
 ./3rd/luamake/luamake all
 
 %install
-install -d -m 0755 %{buildroot}%{_libexecdir}/%{name}
-cp -av bin/* %{buildroot}%{_libexecdir}/%{name}
+install -Dm0755 bin/%{name} %{buildroot}%{_libexecdir}/%{name}/%{name}
 
-install -d -m 0755 %{buildroot}%{_datadir}/%{name}
+install -d %{buildroot}%{_datadir}/%{name}
 cp -av \
     debugger.lua \
     main.lua \
@@ -62,20 +54,21 @@ cp -av \
     meta \
     %{buildroot}%{_datadir}/%{name}/
 
-install -d -m 0755 %{buildroot}%{_bindir}
-sed -e 's#@LIBEXECDIR@#%{_libexecdir}#' %{SOURCE2} > %{buildroot}%{_bindir}/%{name}
+install -d %{buildroot}%{_bindir}
+sed -e 's#@LIBEXECDIR@#%{_libexecdir}#' %{SOURCE1} > %{buildroot}%{_bindir}/%{name}
 chmod 0755 %{buildroot}%{_bindir}/%{name}
 
-%fdupes %{buildroot}%{_libexecdir}/%{name} %{buildroot}%{_datadir}/%{name}
-
+%ifarch x86_64
+#tests are very flaky on non x86_64
 %check
-./3rd/luamake/luamake bee-test unit-test
+./3rd/luamake/luamake unit-test
+%endif
 
 %files
 %license LICENSE
-%doc README.md changelog.md
+%doc README.md changelog.md README.suse-maint.md
 %{_bindir}/%{name}
-%{_libexecdir}/%{name}/
-%{_datadir}/%{name}/
+%{_libexecdir}/%{name}
+%{_datadir}/%{name}
 
 %changelog
