@@ -1,7 +1,7 @@
 #
 # spec file for package xmlrpc-c
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -229,40 +229,23 @@ rm -f %{buildroot}%{_libdir}/*.a
 make -C examples clean
 make -C examples/cpp clean
 
-%post -n libxmlrpc%{soname} -p /sbin/ldconfig
-%post -n libxmlrpc++%{soname_cpp} -p /sbin/ldconfig
-%post -n libxmlrpc_abyss%{soname} -p /sbin/ldconfig
-%post -n libxmlrpc_abyss++%{soname_cpp} -p /sbin/ldconfig
-%post -n libxmlrpc_client%{soname} -p /sbin/ldconfig
-%post -n libxmlrpc_client++%{soname_cpp} -p /sbin/ldconfig
-%post -n libxmlrpc_cpp%{soname_cpp} -p /sbin/ldconfig
-%post -n libxmlrpc_packetsocket%{soname_cpp} -p /sbin/ldconfig
-%post -n libxmlrpc_server%{soname} -p /sbin/ldconfig
-%post -n libxmlrpc_server++%{soname_cpp} -p /sbin/ldconfig
-%post -n libxmlrpc_server_abyss%{soname} -p /sbin/ldconfig
-%post -n libxmlrpc_server_abyss++%{soname_cpp} -p /sbin/ldconfig
-%post -n libxmlrpc_server_cgi%{soname} -p /sbin/ldconfig
-%post -n libxmlrpc_server_cgi++%{soname_cpp} -p /sbin/ldconfig
-%post -n libxmlrpc_server_pstream++%{soname_cpp} -p /sbin/ldconfig
-%post -n libxmlrpc_util4 -p /sbin/ldconfig
-%post -n libxmlrpc_util++%{soname_cpp} -p /sbin/ldconfig
-%postun -n libxmlrpc%{soname} -p /sbin/ldconfig
-%postun -n libxmlrpc++%{soname_cpp} -p /sbin/ldconfig
-%postun -n libxmlrpc_abyss%{soname} -p /sbin/ldconfig
-%postun -n libxmlrpc_abyss++%{soname_cpp} -p /sbin/ldconfig
-%postun -n libxmlrpc_client%{soname} -p /sbin/ldconfig
-%postun -n libxmlrpc_client++%{soname_cpp} -p /sbin/ldconfig
-%postun -n libxmlrpc_cpp%{soname_cpp} -p /sbin/ldconfig
-%postun -n libxmlrpc_packetsocket%{soname_cpp} -p /sbin/ldconfig
-%postun -n libxmlrpc_server%{soname} -p /sbin/ldconfig
-%postun -n libxmlrpc_server++%{soname_cpp} -p /sbin/ldconfig
-%postun -n libxmlrpc_server_abyss%{soname} -p /sbin/ldconfig
-%postun -n libxmlrpc_server_abyss++%{soname_cpp} -p /sbin/ldconfig
-%postun -n libxmlrpc_server_cgi%{soname} -p /sbin/ldconfig
-%postun -n libxmlrpc_server_cgi++%{soname_cpp} -p /sbin/ldconfig
-%postun -n libxmlrpc_server_pstream++%{soname_cpp} -p /sbin/ldconfig
-%postun -n libxmlrpc_util4 -p /sbin/ldconfig
-%postun -n libxmlrpc_util++%{soname_cpp} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libxmlrpc%{soname}
+%ldconfig_scriptlets -n libxmlrpc++%{soname_cpp}
+%ldconfig_scriptlets -n libxmlrpc_abyss%{soname}
+%ldconfig_scriptlets -n libxmlrpc_abyss++%{soname_cpp}
+%ldconfig_scriptlets -n libxmlrpc_client%{soname}
+%ldconfig_scriptlets -n libxmlrpc_client++%{soname_cpp}
+%ldconfig_scriptlets -n libxmlrpc_cpp%{soname_cpp}
+%ldconfig_scriptlets -n libxmlrpc_packetsocket%{soname_cpp}
+%ldconfig_scriptlets -n libxmlrpc_server%{soname}
+%ldconfig_scriptlets -n libxmlrpc_server++%{soname_cpp}
+%ldconfig_scriptlets -n libxmlrpc_server_abyss%{soname}
+%ldconfig_scriptlets -n libxmlrpc_server_abyss++%{soname_cpp}
+%ldconfig_scriptlets -n libxmlrpc_server_cgi%{soname}
+%ldconfig_scriptlets -n libxmlrpc_server_cgi++%{soname_cpp}
+%ldconfig_scriptlets -n libxmlrpc_server_pstream++%{soname_cpp}
+%ldconfig_scriptlets -n libxmlrpc_util4
+%ldconfig_scriptlets -n libxmlrpc_util++%{soname_cpp}
 
 %files devel
 %doc examples/
