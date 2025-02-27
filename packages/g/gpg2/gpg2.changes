@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 26 14:13:02 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- Fixing gpg-agent integration by changing --supervised to
+  --deprecated-supervised in service files.
+
+-------------------------------------------------------------------
 Wed Feb 19 10:41:27 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.5.4:
