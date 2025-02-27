@@ -1118,4 +1118,14 @@
     <comment></comment>
     <requestid>1226920</requestid>
   </revision>
+  <revision rev="109" vrev="5">
+    <srcmd5>08f9880cfe05e23ec32af95eac97cb92</srcmd5>
+    <version>1.1.16</version>
+    <time>1740664223</time>
+    <user>dimstar_suse</user>
+    <comment>- display-manager: Do not abort when there is no /usr/bin/X found.
+  Rely on the DM to know how to handle it. E.g gdm could be
+  spawning a wayland-only session. (boo#1237777)</comment>
+    <requestid>1248765</requestid>
+  </revision>
 </revisionlist>

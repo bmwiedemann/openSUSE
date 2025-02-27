@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:14:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- display-manager: Do not abort when there is no /usr/bin/X found.
+  Rely on the DM to know how to handle it. E.g gdm could be
+  spawning a wayland-only session. (boo#1237777)
+
+-------------------------------------------------------------------
 Wed Nov 27 13:07:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Split out displaymanager-sycconfig package: The central
