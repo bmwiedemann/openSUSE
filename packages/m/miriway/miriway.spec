@@ -21,7 +21,7 @@
 %define _name Miriway
 
 Name:           miriway
-Version:        24.11.1
+Version:        25.02
 Release:        0
 Summary:        Simple Wayland compositor built on Mir
 License:        GPL-3.0-only
@@ -29,8 +29,6 @@ URL:            https://github.com/Miriway/Miriway
 Source:         https://github.com/%{_name}/%{_name}/archive/v%{version}/%{_name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE 0001-Fix-xkbcommon-includes.patch
 Patch0:         0001-Fix-xkbcommon-includes.patch
-# PATCH-FIX-UPSTREAM 0002-add-decoration-variable.patch sfalken@opensuse.org (gh#canonica/mir#3761)
-Patch1:         0002-add-decoration-variable.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  git-core

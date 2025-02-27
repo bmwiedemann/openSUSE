@@ -28,4 +28,24 @@ Provides the miriway wayland compositor</comment>
     (gh#Miriway/Miriway#142) (forwarded request 1247834 from sfalken)</comment>
     <requestid>1247836</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fc4c4f775d57e4be56c12a8d5f777dec</srcmd5>
+    <version>25.02</version>
+    <time>1740664257</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version 25.02:
+  * Add an option to toggle always-on-top for the active window
+    (gh#Miriway/Miriway#144)
+  * Add MIRIWAY_DECORATIONS environment variable to customize the
+    decoration strategy (gh#Miriway/Miriway#150)
+  * Pick up the cursor theme from the usual places
+    (gh#Miriway/Miriway#154)
+  * It shouldn't be possible to dock/undock shell chrome or &quot;always
+    on top&quot; windows (gh#Miriway/Miriway#155)
+- Drop:
+  * 0002-add-decoration-variable.patch
+
+    (gh#Miriway/Miriway#142) (forwarded request 1248815 from sfalken)</comment>
+    <requestid>1248816</requestid>
+  </revision>
 </revisionlist>

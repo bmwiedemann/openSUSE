@@ -1,10 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 27 00:33:31 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update version 25.02:
+  * Add an option to toggle always-on-top for the active window
+    (gh#Miriway/Miriway#144)
+  * Add MIRIWAY_DECORATIONS environment variable to customize the
+    decoration strategy (gh#Miriway/Miriway#150)
+  * Pick up the cursor theme from the usual places
+    (gh#Miriway/Miriway#154)
+  * It shouldn't be possible to dock/undock shell chrome or "always
+    on top" windows (gh#Miriway/Miriway#155)
+- Drop:
+  * 0002-add-decoration-variable.patch
+
+-------------------------------------------------------------------
 Sat Feb 22 15:38:31 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update version 24.11.1:
   - Fix class invariants for
     WorkspaceManager::activate_workspace_containing()
-    (gh#Miriway/Miriway#142) 
+    (gh#Miriway/Miriway#142)
 
 -------------------------------------------------------------------
 Thu Feb 20 17:52:54 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
