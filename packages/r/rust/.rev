@@ -873,4 +873,12 @@ See SR#946556</comment>
     <comment></comment>
     <requestid>1242945</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>3fe8fb85a3a21a1287220182e26d5362</srcmd5>
+    <version>1.85.0</version>
+    <time>1740664202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.85.0 - for details see the rust1.85 package</comment>
+    <requestid>1248530</requestid>
+  </revision>
 </revisionlist>
