@@ -300,4 +300,41 @@ Added one by one changes for patches in the changes
     <comment></comment>
     <requestid>1131387</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c228f8d0a9105de07a09c1c87d78be5e</srcmd5>
+    <version>0.18</version>
+    <time>1740664219</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.18:
+  * Clean up pre-3.9 CMake support in CMakeLists.txt
+  * Build pkg-config for msvc as well
+  * Critical fix for binary compatibility with 0.16: Move the
+    json_tokener_error_memory entry to the end of enum
+    json_tokener_error.
+  * Issue #829: attempt to detect clang-cl.exe and pass MSVC-
+    compatile command line arguments.
+  * PR #831 - rename WIN32 to _WIN32
+  * PR #839 - Fix gcc 5 &quot;may be used uninitialized&quot; failure in
+    json_pointer.c
+  * PR #849 - random_seed.c: add a Coverity Scan suppression
+  * Issue #854: Set error=json_tokener_error_memory in
+    json_tokener_parser_verbose() when allocating the tokener
+    fails.
+  * Issue #857: fix a few places where json_tokener should have
+    been returning json_tokener_error_memory but wasn't.
+  * Handle yet another out-of-memory condition in json_tokener,
+    duplocate can return NULL.
+  * Various fixes in the fuzzers
+  * A few minor doc fixes
+
+    * Direct access to lh_table and lh_entry structure members is deprecated.
+    * Speed up parsing by replacing ctype functions with simplified, faster
+- update to 0.15:
+  * Add `json_object_array_shrink()` (and `array_list_shrink()`) and use it in
+  * Add a json_parse binary, for use in testing changes (not installed, but
+  * change the floating point output format to %.17g so values with
+      only created as libjson-c.so now and headers are only installed
+    autoconf call to json-c-0.12-unused_variable_size.patch from</comment>
+    <requestid>1248387</requestid>
+  </revision>
 </revisionlist>

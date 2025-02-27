@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 25 13:55:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18:
+  * Clean up pre-3.9 CMake support in CMakeLists.txt
+  * Build pkg-config for msvc as well
+  * Critical fix for binary compatibility with 0.16: Move the
+    json_tokener_error_memory entry to the end of enum
+    json_tokener_error.
+  * Issue #829: attempt to detect clang-cl.exe and pass MSVC-
+    compatile command line arguments.
+  * PR #831 - rename WIN32 to _WIN32
+  * PR #839 - Fix gcc 5 "may be used uninitialized" failure in
+    json_pointer.c
+  * PR #849 - random_seed.c: add a Coverity Scan suppression
+  * Issue #854: Set error=json_tokener_error_memory in
+    json_tokener_parser_verbose() when allocating the tokener
+    fails.
+  * Issue #857: fix a few places where json_tokener should have
+    been returning json_tokener_error_memory but wasn't.
+  * Handle yet another out-of-memory condition in json_tokener,
+    duplocate can return NULL.
+  * Various fixes in the fuzzers
+  * A few minor doc fixes
+
+-------------------------------------------------------------------
 Wed Dec  6 15:26:31 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop unneeded -DCMAKE_C_FLAGS=-std=gnu99 to use distro CFLAGS
@@ -38,7 +63,7 @@ Wed Apr 20 06:29:21 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
   + Deprecated and removed features:
     * JSON_C_OBJECT_KEY_IS_CONSTANT is deprecated in favor of
       JSON_C_OBJECT_ADD_CONSTANT_KEY
-    * Direct access to lh_table and lh_entry structure members is deprecated.  
+    * Direct access to lh_table and lh_entry structure members is deprecated.
       Use access functions instead, lh_table_head(), lh_entry_next(), etc...
     * Drop REFCOUNT_DEBUG code.
   + Changes and bug fixes
@@ -59,7 +84,7 @@ Wed Apr 20 06:29:21 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
     * Use arc4random() if it's available.
     * random_seed: on error, continue to next method instead of exiting the process
     * Close file when unable to read from /dev/urandom in get_dev_random_seed()
-    * Speed up parsing by replacing ctype functions with simplified, faster 
+    * Speed up parsing by replacing ctype functions with simplified, faster
       non-locale-sensitive ones in json_tokener and json_object_to_json_string.
     * Neither vertical tab nor formfeed are considered whitespace per the JSON spec
     * json_object: speed up creation of objects, calloc() -> malloc() + set fields
@@ -74,7 +99,7 @@ Wed May 19 15:04:03 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Mon Aug 17 10:02:27 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- update to 0.15: 
+- update to 0.15:
   * Deprecate `array_list_new()` in favor of `array_list_new2()`
   * Remove the THIS_FUNCTION_IS_DEPRECATED define.
   * Remove config.h.win32
@@ -82,9 +107,9 @@ Mon Aug 17 10:02:27 UTC 2020 - Dirk Mueller <dmueller@suse.com>
     to be parsed even when `JSON_TOKENER_STRICT` is set.
   * Add `json_object_new_array_ext(int)` and `array_list_new_2(int)` to allow
      arrays to be allocated with the exact size needed, when known.
-  * Add `json_object_array_shrink()` (and `array_list_shrink()`) and use it in 
+  * Add `json_object_array_shrink()` (and `array_list_shrink()`) and use it in
      json_tokener to minimize the amount of memory used.
-  * Add a json_parse binary, for use in testing changes (not installed, but 
+  * Add a json_parse binary, for use in testing changes (not installed, but
      available in the apps directory).
   * Split the internal json_object structure into several sub-types, one for
      each json_type (json_object_object, json_object_string, etc...).
@@ -277,10 +302,10 @@ Sat Sep 20 12:07:25 UTC 2014 - andreas.stieger@gmx.de
   * Eliminate the mc_abort() function and MC_ABORT macro.
   * Make the json_tokener_errors array local.  It has been deprecated for
      a while, and json_tokener_error_desc() should be used instead.
-  * change the floating point output format to %.17g so values with 
+  * change the floating point output format to %.17g so values with
      more than 6 digits show up in the output.
   * Remove the old libjson.so name compatibility support.  The library is
-      only created as libjson-c.so now and headers are only installed 
+      only created as libjson-c.so now and headers are only installed
       into the ${prefix}/json-c directory.
   * When supported by the linker, add the -Bsymbolic-functions flag.
   * Make strict mode more strict:
@@ -297,7 +322,7 @@ Sat Sep 20 12:07:25 UTC 2014 - andreas.stieger@gmx.de
 - packaging changes:
   * json-c-hash-dos-and-overflow-random-seed-4e.patch is upstream
   * Move from json-c-lfs.patch which removed warning errors and
-    autoconf call to json-c-0.12-unused_variable_size.patch from 
+    autoconf call to json-c-0.12-unused_variable_size.patch from
     upstream which fixes the warning
   * except for SLE 11 where autoreconf call is required
   * add licence file to main package
@@ -332,11 +357,11 @@ Sun Mar 10 08:38:30 UTC 2013 - coolo@suse.com
 -------------------------------------------------------------------
 Thu Mar  7 09:43:30 UTC 2013 - bruno@ioda-net.ch
 
-- Update to 0.10 version : 
-  * Add a json_object_to_json_string_ext() function to allow output 
+- Update to 0.10 version :
+  * Add a json_object_to_json_string_ext() function to allow output
 	to be formatted in a more human readable form.
-  * Add json_object_object_get_ex(), a NULL-safe get object method, 
-	to be able to distinguish between a key not present and the value 
+  * Add json_object_object_get_ex(), a NULL-safe get object method,
+	to be able to distinguish between a key not present and the value
 	being NULL.
   * Add an alternative iterator implementation, see json_object_iterator.h
   * Make json_object_iter public to enable external use of the
@@ -380,7 +405,7 @@ Thu Mar  7 09:43:30 UTC 2013 - bruno@ioda-net.ch
   * Correction to comment describing printbuf_memappend in printbuf.h
     Brent Miller, bdmiller at yahoo dash inc dot com
 
-- Packaging : 
+- Packaging :
 	* upgrade upstream location https://gitub.com/json-c/json-c/wiki
 	* cleanup old patches included now upstream
 		. json-c-0.9-linkhash.patch
@@ -388,7 +413,7 @@ Thu Mar  7 09:43:30 UTC 2013 - bruno@ioda-net.ch
 		. json-c-0.9-json_object_from_file.patch
 		. json-c-0.9-base.patch
 	* Redone lfs patch against new 0.10 release
-	* Removed empty NEWS file 
+	* Removed empty NEWS file
 
 -------------------------------------------------------------------
 Sun Apr 22 00:34:03 UTC 2012 - crrodriguez@opensuse.org

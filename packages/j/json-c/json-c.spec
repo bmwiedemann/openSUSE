@@ -1,7 +1,7 @@
 #
 # spec file for package json-c
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %define libname libjson-c
 %define libsoname %{libname}5
 %define oldlibname libjson
-%define version_date 20230812
+%define version_date 20240915
 Name:           json-c
-Version:        0.17
+Version:        0.18
 Release:        0
 Summary:        JSON implementation in C
 License:        MIT
@@ -93,6 +93,7 @@ This package includes the json-c documentation.
     -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
     -DENABLE_THREADING=ON \
     -DENABLE_RDRAND=ON
+%cmake_build
 
 %check
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
