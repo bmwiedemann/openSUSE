@@ -1,0 +1,8 @@
+<package name="kio-admin" project="openSUSE:Factory">
+  <title>Manage files as administrator using the admin:// KIO protocol</title>
+  <description>kio-admin implements a new protocol &quot;admin:///&quot; which gives administrative access
+to the entire system. This is achieved by talking, over dbus, with a root-level
+helper binary that in turn uses existing KIO infrastructure to run file://
+operations in root-scope.</description>
+  <url>https://invent.kde.org/system/kio-admin</url>
+</package>

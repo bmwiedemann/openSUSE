@@ -1,0 +1,14 @@
+Security of kio-admin
+=====================
+
+kio-admin allows to operate on files with root privileges from within
+unprivileged graphical applications. This is for example used in the Dolphin
+file manager "admin mode" feature.
+
+There exist some inherent dangers to the design of kio-admin that can weaken
+your system's security. Please refer to this blog post [1] from the SUSE
+security team for technical details. The post also contains recommendations
+for users of kio-admin [2].
+
+[1]: https://security.opensuse.org/2025/02/21/kio-admin-admittance.html
+[2]: https://security.opensuse.org/2025/02/21/kio-admin-admittance.html#7-recommendations-for-users-of-kio-admin-or-gvfs

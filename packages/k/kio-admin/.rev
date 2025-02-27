@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ac6243fa9b21c89ba38f25c0ae356cc7</srcmd5>
+    <version>24.12.2</version>
+    <time>1740664228</time>
+    <user>dimstar_suse</user>
+    <comment>Add kio-admin to factory. Depends on sr#1248374 and sr#1248373</comment>
+    <requestid>1248398</requestid>
+  </revision>
+</revisionlist>
