@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 25 13:15:13 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly call cmake_build in %build section. Do not rely on
+  cmake_install building later on.
+
+-------------------------------------------------------------------
 Wed Sep 29 22:06:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.10.0

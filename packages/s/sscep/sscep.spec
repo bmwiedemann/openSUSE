@@ -1,7 +1,7 @@
 #
 # spec file for package sscep
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,6 +38,7 @@ modifications for engine support & more.
 
 %build
 %cmake -DENABLE_ENGINES=ON
+%cmake_build
 
 %install
 %cmake_install
