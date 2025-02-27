@@ -5182,4 +5182,13 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * dbus-services: whitelist systemd-sysupdated (bsc#1237106)</comment>
     <requestid>1246468</requestid>
   </revision>
+  <revision rev="501" vrev="1">
+    <srcmd5>a341f596a96c8724a84d500d8fbe44e2</srcmd5>
+    <version>2.6.1+git20250225.61788d7b</version>
+    <time>1740664216</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.1+git20250225.61788d7b:
+  * dbus-services: whitelist kio-admin (bsc#1229913) (forwarded request 1248365 from mgerstner)</comment>
+    <requestid>1248374</requestid>
+  </revision>
 </revisionlist>

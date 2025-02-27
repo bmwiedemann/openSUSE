@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 25 12:59:17 UTC 2025 - matthias.gerstner@suse.com
+
+- Update to version 2.6.1+git20250225.61788d7b:
+  * dbus-services: whitelist kio-admin (bsc#1229913)
+
+-------------------------------------------------------------------
 Mon Feb 17 14:39:32 UTC 2025 - matthias.gerstner@suse.com
 
 - Update to version 2.6.1+git20250217.bfa2b434:
