@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 25 19:38:58 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.2
+- Changes since 6.3.1:
+  * update version for new release
+  * klipper: fix clipboard actions not setting clipboard for the first time (kde#500287)
+  * appiumtests: remove unused import in clipboardtest
+  * applets/notifications: don't read out body as HTML
+  * shell: use QMetaObject::invokeMethod to call QML function
+  * Fixes for respecting immutability
+  * klipper: don't hide popup when action popup shows (kde#500438)
+  * libnotificationmanager: clearing the timer array, when deleting old notifications
+  * klipper: don't cover content with highlight
+  * plasma-windowed: set `QT_WAYLAND_DISABLE_FIXED_POSITIONS` to fix resizing loop
+  * libtaskmanager: make XWindowTasksModelTest::test_modelData less flaky
+  * applets/notifications: fix JobItemIcon context menu (kde#499942)
+  * applets/systemtray: Don't unnecessarily append -symbolic to icon names (kde#500102)
+  * kcms/krdb: Wait until root window cursor is set (kde#499965)
+  * applets/systray: guard pointer to innerContainment
+  * klipper: scroll ListView on keyboard navigation
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Feb 18 14:46:01 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.1:
