@@ -1324,4 +1324,22 @@
 - Split out the primary Python build.</comment>
     <requestid>1238138</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>6ee7fef9368f95fabffabd8cb82526f7</srcmd5>
+    <version>75.8.0</version>
+    <time>1740664199</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 75.8.0:
+  * Implemented Dynamic field for core metadata (as introduced in
+    PEP 643). The existing implementation is currently
+    experimental and the exact approach may change in future
+    releases.
+  * Synced with pypa/distutils@c97a3db2f including better support
+    for free threaded Python on Windows (pypa/distutils#310),
+    improved typing support, and linter accommodations.
+  * Synced with pypa/distutils@ff11eed0c including bugfix for
+    duplicate CFLAGS and adaption to support Python 3.13 is_abs
+    in the C compiler (#4669).</comment>
+    <requestid>1248507</requestid>
+  </revision>
 </revisionlist>

@@ -53,7 +53,7 @@ ExclusiveArch:  do-not-build
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           %{pprefix}-setuptools%{psuffix}
-Version:        75.6.0
+Version:        75.8.0
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
