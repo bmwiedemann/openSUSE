@@ -4073,4 +4073,38 @@
 </comment>
     <requestid>1247796</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>a3df2e8b6ee66e75011363095678b2f4</srcmd5>
+    <version>2.2.2</version>
+    <time>1740664258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.2:
+  * fix(http): generate `OtelInfo` only when otel metrics are enabled
+  * fix(lint): plugins ignored when no rust rule active
+  * fix(config): allow specifying absolute path for patch and fix panic with exports in package.json
+  * fix(lint): update deno_lint
+  * fix(lint): give access to SourceCode in 'deno test'
+  * fix: add info suggestion for `unsafely-ignore-certificate-errors` and add `--help=full`
+  * refactor(cli): update JSON schemas versions
+  * fix(ext/node): descriptive sqlite error messages
+  * fix(fmt): support &quot;--ext vto&quot; and &quot;--ext njk&quot;
+  * fix(lint): don't recurse infinitely for large ASTs
+  * fix(cli): add `compilerOptions.lib` examples to config-file.v1.json
+  * chore: mark worker_large_output as flaky
+  * perf(install): only read initialized file if we care about the tags
+  * chore: mark inspector break tests as flaky
+  * fix(lsp): create cacheable `ExportInfoMap` per language service
+  * refactor(coverage): simplify CoverageReporter trait
+  * refactor(resolver/node): use `deno_path_util::is_relative_specifier`
+  * refactor: separate publish from pm subcommands
+  * refactor(cli): extract TypeChecker to separate module
+  * fix(install): don't error on unknown media types in install
+  * fix(lsp): close server on exit notification
+  * fix(check): regression - implicit jsxImportSource was not resolving
+  * fix(unstable): lint plugin `:exit` called at wrong time
+  * chore: remove unused dependencies
+  * fix(ext/node): decipherIv() range error on invalid final block length
+</comment>
+    <requestid>1248818</requestid>
+  </revision>
 </revisionlist>
