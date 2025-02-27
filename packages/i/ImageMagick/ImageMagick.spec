@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.1
-%define mfr_revision   43
+%define mfr_revision   44
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -54,12 +54,6 @@ Patch4:         ImageMagick-filter.t-disable-Contrast.patch
 #%%endif
 #%%ifarch s390x
 Patch5:         ImageMagick-s390x-disable-tests.patch
-# https://github.com/ImageMagick/ImageMagick/commit/1afa38ae2fa87cf4eb48040e47d410aa729ce21e
-Patch6:         ImageMagick-check-for-pow-zero.patch
-# https://github.com/ImageMagick/ImageMagick/commit/056ccdbeac41c9b24b625e0139cd25a4cdffb22a
-Patch7:         ImageMagick-gamma-should-call-GammaImage.patch
-# https://github.com/ImageMagick/ImageMagick/commit/be3b73da674520ad3eab52ade2a3cda62af66d15
-Patch8:         ImageMagick-0-1-are-special-cases-for-pow.patch
 #%%endif
 BuildRequires:  chrpath
 BuildRequires:  dejavu-fonts
@@ -362,9 +356,6 @@ policy plus disable few other coders for reading and/or writing.
 %ifarch s390x
 %patch -P 5 -p1
 %endif
-%patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
 
 %build
 # bsc#1088463

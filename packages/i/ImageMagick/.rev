@@ -4023,4 +4023,21 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   + ImageMagick-gamma-should-call-GammaImage.patch</comment>
     <requestid>1239046</requestid>
   </revision>
+  <revision rev="307" vrev="1">
+    <srcmd5>fc457603a85c8791aae48c1f579c1ddf</srcmd5>
+    <version>7.1.1.44</version>
+    <time>1740664188</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.1.44
+  * Bump azure/trusted-signing-action from 0.5.0 to 0.5.1 in #7895
+  * Enable any dither method such as Floyd-Steinberg for Magick::Image::map()
+    in #7937
+  * Magick++ Documentation Verification in #7906
+  * fix type casting in statistic.c in #7982
+- removed patched (upstreamed)
+  - ImageMagick-0-1-are-special-cases-for-pow.patch
+  - ImageMagick-check-for-pow-zero.patch
+  - ImageMagick-gamma-should-call-GammaImage.patch</comment>
+    <requestid>1248596</requestid>
+  </revision>
 </revisionlist>
