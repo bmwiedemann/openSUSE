@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:18:18 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.5
+
+- Update to 2.95.5
+  * #683: Add runinhead.title.end.punct to fix colon in formalpara/title
+  * #682: Add missing intra-appendix translations
+  * #670: Adjust syntax highlighting
+  * #673: Change emphasis for Asian languages
+  * #681/#680: double rel, use rel="preload"
+
+
+-------------------------------------------------------------------
 Wed Feb 19 09:36:22 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.4
 
 - Update to 2.95.4
