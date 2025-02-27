@@ -671,4 +671,12 @@
   * Use-after-free in SyncInitTrigger() (CVE-2025-26601, bsc#1237435)</comment>
     <requestid>1248449</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>88e740397afa9d8163cc1c6a21ca8b61</srcmd5>
+    <version>24.1.6</version>
+    <time>1740664224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248777</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 25 22:20:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 24.1.6:
+  * This release contains the fixes for the issues reported in
+    today's security advisory: https://lists.x.org/archives/xorg-announce/2025-February/003584.html
+    CVE-2025-26594, CVE-2025-26595, CVE-2025-26596, CVE-2025-26597,
+    CVE-2025-26598, CVE-2025-26599, CVE-2025-26600, CVE-2025-26601.
+  * Additionally, it reverts a recent Xkb change to fix an issue
+    with gamescope.
+- Drop patches fixed upstream:
+  * U_CVE-2025-26594-0001-Cursor-Refuse-to-free-the-root-cursor.patch
+  * U_CVE-2025-26594-0002-dix-keep-a-ref-to-the-rootCursor.patch
+  * U_CVE-2025-26595-0001-xkb-Fix-buffer-overflow-in-XkbVModMaskText.patch
+  * U_CVE-2025-26596-0001-xkb-Fix-computation-of-XkbSizeKeySyms.patch
+  * U_CVE-2025-26597-0001-xkb-Fix-buffer-overflow-in-XkbChangeTypesOfKey.patch
+  * U_CVE-2025-26598-0001-Xi-Fix-barrier-device-search.patch
+  * U_CVE-2025-26599-0001-composite-Handle-failure-to-redirect-in-compRedirect.patch
+  * U_CVE-2025-26599-0002-composite-initialize-border-clip-even-when-pixmap-al.patch
+  * U_CVE-2025-26600-0001-dix-Dequeue-pending-events-on-frozen-device-on-remov.patch
+  * U_CVE-2025-26601-0001-sync-Do-not-let-sync-objects-uninitialized.patch
+  * U_CVE-2025-26601-0002-sync-Check-values-before-applying-changes.patch
+  * U_CVE-2025-26601-0003-sync-Do-not-fail-SyncAddTriggerToSyncObject.patch
+  * U_CVE-2025-26601-0004-sync-Apply-changes-last-in-SyncChangeAlarmAttributes.patch
+
+-------------------------------------------------------------------
 Tue Feb 25 18:08:33 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_CVE-2025-26594-0001-Cursor-Refuse-to-free-the-root-cursor.patch
