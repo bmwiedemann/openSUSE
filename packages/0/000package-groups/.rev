@@ -2120,4 +2120,12 @@ Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</commen
     <user>dimstar_suse</user>
     <comment>mozjs78 is gone</comment>
   </revision>
+  <revision rev="297" vrev="295">
+    <srcmd5>32e8fd306fd162efa65da7d3f402d5a5</srcmd5>
+    <version>unknown</version>
+    <time>1740664196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248858</requestid>
+  </revision>
 </revisionlist>

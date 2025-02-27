@@ -55,6 +55,8 @@ dvd:
   # We add the kernel-firmware-* packages
   - kernel-firmware: [locked]
   - kernel-firmware-nvidia-gsp-G06: [locked]
+  - Aeon-release: [locked]
+  - Kalpa-release: [locked]
   - MicroOS-release: [locked]
   - patterns-microos-basesystem: [locked]
   - openSUSE-Tumbleweed-Kubic-release: [locked]
@@ -376,7 +378,6 @@ opensuse_microos:
   - patterns-microos-base-zypper: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-defaults: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-hardware: [aarch64,ppc64le,s390x,x86_64]
-  - patterns-microos-apparmor: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-selinux: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-sssd_ldap: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-ima_evm: [aarch64,ppc64le,s390x,x86_64]
