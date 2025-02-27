@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 26 14:21:46 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Change some core packages to Requires [bsc#1237513]
+
+-------------------------------------------------------------------
 Fri Feb 21 13:36:23 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
 
 - Only requires busybox on openSUSE MicroOS, not SL Micro.

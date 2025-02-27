@@ -145,7 +145,7 @@ Requires:       user(nobody)
 %endif
 %{recommends_on_traditional busybox-static}
 %{recommends_on_traditional elfutils}
-%{requires_on_transactional_recommends_otherwise glibc-locale-base}
+Requires:       glibc-locale-base
 %{recommends_on_traditional hostname}
 %{requires_on_transactional /usr/bin/hostname}
 %{requires_on_transactional_recommends_otherwise iproute2}
@@ -156,7 +156,7 @@ Requires:       user(nobody)
 %else
 %{recommends_on_traditional pam_pwquality}
 %endif
-%{requires_on_transactional_recommends_otherwise shadow}
+Requires:       shadow
 %{recommends_on_traditional system-group-trusted}
 %if 0%{?sle_version}
 %{requires_on_transactional system-group-wheel}
@@ -165,12 +165,12 @@ Requires:       user(nobody)
 %endif
 %{recommends_on_traditional system-user-bin}
 %{recommends_on_traditional system-user-daemon}
-%{requires_on_transactional terminfo-base}
+Requires:       terminfo-base
 %{recommends_on_traditional terminfo}
 %{recommends_on_traditional terminfo-iterm}
 %{recommends_on_traditional terminfo-screen}
-%{requires_on_transactional_recommends_otherwise timezone}
-%{requires_on_transactional_recommends_otherwise wtmpdb}
+Requires:       timezone
+Requires:       wtmpdb
 %{recommends_on_traditional service(network)}
 %{requires_on_transactional NetworkManager}
 %{requires_on_transactional NetworkManager-wifi}
@@ -180,9 +180,7 @@ Requires:       user(nobody)
 # We don't necessarily want zypper in specific minimal environments
 # e.g. buildroots and locked down appliance environments
 %{recommends_on_traditional zypper}
-# We don't necessarily want procps but it's highly useful in default
-# installations
-%{requires_on_transactional_recommends_otherwise procps}
+Requires:       procps
 # If anything requests "kernel", pick the full kernel package by default
 Suggests:       kernel-default
 # we have two providers for 'pkgconfig(jack)' - prefer the real one to the one from pipewire
