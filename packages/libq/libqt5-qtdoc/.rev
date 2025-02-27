@@ -453,4 +453,13 @@
     <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
     <requestid>1199191</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>5299a2c93f1062013a74ddb14b413c6c</srcmd5>
+    <version>5.15.15</version>
+    <time>1740664241</time>
+    <user>dimstar_suse</user>
+    <comment>- Redefine %_libdir on 64 bit archs to work around
+  gh#rpm-software-management/rpm#3126</comment>
+    <requestid>1248702</requestid>
+  </revision>
 </revisionlist>

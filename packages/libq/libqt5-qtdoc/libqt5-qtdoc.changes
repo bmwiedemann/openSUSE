@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 26 10:14:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Redefine %_libdir on 64 bit archs to work around
+  gh#rpm-software-management/rpm#3126
+
+-------------------------------------------------------------------
 Wed Sep  4 21:44:21 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 5.15.15:

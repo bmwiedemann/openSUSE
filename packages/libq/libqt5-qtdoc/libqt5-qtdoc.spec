@@ -137,6 +137,16 @@ required.
 %autosetup -p1 -n qt-everywhere-src-%{version}
 
 %build
+# Due to a behaviour change in rpm, %%libdir is always '/usr/lib' with 'BuildArch: noarch'. We need to redefine it to find tools in '/usr/lib64/qt5/bin' when needed
+# (https://github.com/rpm-software-management/rpm/issues/3126)
+if [ -e "/usr/lib64/qt5/bin/qdoc" ]; then
+echo "Redefining _libdir to work around rpm behaviour change"
+_libdir=/usr/lib64
+else
+_libdir=/usr/lib
+fi
+%define _libdir $_libdir
+
 # We need to link to some of the programs used as that the source assumes they were just built.
 ln -s %{_bindir}/rcc-qt5 qtbase/bin/rcc
 ln -s %{_bindir}/uic-qt5 qtbase/bin/uic
@@ -144,9 +154,6 @@ ln -s %{_bindir}/moc-qt5 qtbase/bin/moc
 ln -s %{_libqt5_bindir} qttools/bin
 
 # Create the Makefiles which are required.
-# To-Do: Clean up of the options and with this also the BuildRequires.
-
-# FIXME: you should use the %%configure macro
 ./configure \
     -verbose \
     -prefix %{_prefix} \
