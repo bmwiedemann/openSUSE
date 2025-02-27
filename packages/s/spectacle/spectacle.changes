@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 25 19:43:42 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.2
+- Changes since 6.3.1.2:
+  * update version for new release
+  * Remove 24.12 versions from appstream file (kde#500396)
+  * Revert "reroll"
+
+-------------------------------------------------------------------
 Wed Feb 19 09:45:47 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.1.2:

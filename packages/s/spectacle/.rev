@@ -916,4 +916,12 @@
   * Tarball built from the correct branch now (forwarded request 1246996 from Vogtinator)</comment>
     <requestid>1246997</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>16818415b39a11aeeb7e4e6750e4b3c8</srcmd5>
+    <version>6.3.2</version>
+    <time>1740664186</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.3.2(.1) (forwarded request 1248621 from Vogtinator)</comment>
+    <requestid>1248698</requestid>
+  </revision>
 </revisionlist>
