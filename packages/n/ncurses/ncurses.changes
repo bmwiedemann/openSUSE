@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 25 09:05:38 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250222
+  + modify treatment of "n" parameter for waddnstr, waddnwstr, and
+    wins_nwstr to return OK when "n" is zero, for consistency with other
+    implementations (report by Benjamin Barenblat, cf: 20231118).
+  + formatting improvements for terminfo.5 (Debian #1096164).
+
+-------------------------------------------------------------------
 Mon Feb 17 08:40:50 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250216

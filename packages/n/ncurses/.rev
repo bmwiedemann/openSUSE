@@ -4976,4 +4976,16 @@
   * ncurses-6.5-ghostty.dif</comment>
     <requestid>1247398</requestid>
   </revision>
+  <revision rev="286" vrev="59">
+    <srcmd5>9014d016a8f4e0e3e9b022e69b3ea520</srcmd5>
+    <version>unknown</version>
+    <time>1740664140</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20250222
+  + modify treatment of &quot;n&quot; parameter for waddnstr, waddnwstr, and
+    wins_nwstr to return OK when &quot;n&quot; is zero, for consistency with other
+    implementations (report by Benjamin Barenblat, cf: 20231118).
+  + formatting improvements for terminfo.5 (Debian #1096164).</comment>
+    <requestid>1248318</requestid>
+  </revision>
 </revisionlist>
