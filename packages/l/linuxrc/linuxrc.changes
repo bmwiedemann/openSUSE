@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Feb 24 18:02:02 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#335
+- fix segfault when reading autoinst.xml from installer medium
+  (bsc#1237524)
+- 9.4
+
+--------------------------------------------------------------------
 Fri Mar 15 13:54:25 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#330

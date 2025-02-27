@@ -17,7 +17,7 @@
 
 
 Name:           linuxrc
-Version:        9.3
+Version:        9.4
 Release:        0
 Summary:        SUSE Installation Program
 License:        GPL-3.0+
