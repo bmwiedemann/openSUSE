@@ -1171,4 +1171,41 @@
   Update shadow-login_defs-suse.patch</comment>
     <requestid>1238984</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>cfdf3feb33f4450b536b45ec7d3c8e06</srcmd5>
+    <version>4.17.3</version>
+    <time>1740664137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.17.3:
+  * chsh: do not warn about blank shell
+  * lib/: Use strisdigit() instead of its pattern
+  * lib/string/ctype/strisascii/: strisdigit(): Add function
+  * lib/string/: Add comments expanding the letter-soup API names
+  * lib/basename.c: Basename(): Use stprcspn() instead of its pattern
+  * lib/string/strspn/, lib/, src/: stprspn(), strrspn_(): Split API into function and macro
+  * lib/string/strspn/, lib/, src/: Move *spn() APIs to separate subdir
+  * lib/string/strchr/: strrcspn(), stprcspn(): Add function and macro
+  * src/useradd.c: Use !strcaseeq() instead of its pattern
+  * lib/, src/: Use strcaseeq() instead of its pattern
+  * lib/string/strcmp/: strcaseeq(): Add function
+  * man/useradd.8.xml: Document new exit code 19 (E_BAD_NAME)
+  * src/useradd.c: E_BAD_NAME: Use a different error code for bad login names
+  * src/useradd.c: create_home(): Use !streq() instead of its pattern
+  * lib/chkname.c: is_valid_name(): Use streq() instead of its pattern
+  * configure.ac, lib/: Use __has_include(&lt;gshadow.h&gt;) instead of HAVE_GSHADOW_H
+  * configure.ac: Remove unused AC_CHECK_HEADERS() checks
+  * configure.ac, lib/: Use __has_include(&lt;sys/capability.h&gt;) instead of HAVE_SYS_CAPABILITY_H
+  * lib/idmapping.c: Unconditionally include &lt;sys/prctl.h&gt;
+  * lib/: Use __has_include(&lt;security/openpam.h&gt;) instead of HAVE_SECURITY_OPENPAM_H
+  * lib/: Use __has_include(&lt;security/pam_misc.h&gt;) instead of HAVE_SECURITY_PAM_MISC_H
+  * configure.ac, lib/: Use __has_include(&lt;sys/random.h&gt;) instead of HAVE_SYS_RANDOM_H
+  * configure.ac, lib/: Use __has_include(&lt;crypt.h&gt;) instead of HAVE_CRYPT_H
+  * lib/, src/: motd(): Report errors instead of exiting from library code
+  * lib/motd.c: motd(): Invert logic to reduce indentation
+  * lib/, src/, doc/: Remove pw_auth()'s $3 as dead code
+  * lib/pwauth.*: PW_{ADD,CHANGE,DELETE,FTP,REXEC}: Remove dead code
+  * lib/, src/, doc/: Remove dead code
+  * src/vipw.c: Restore the original terminal pgrp after editing</comment>
+    <requestid>1248228</requestid>
+  </revision>
 </revisionlist>

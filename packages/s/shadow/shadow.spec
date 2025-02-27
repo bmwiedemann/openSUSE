@@ -22,7 +22,7 @@
   %define no_config 1
 %endif
 Name:           shadow
-Version:        4.17.2
+Version:        4.17.3
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -178,8 +178,6 @@ rm %{buildroot}%{_sysconfdir}/pam.d/login
 rm %{buildroot}/%{_bindir}/su
 rm %{buildroot}/%{_mandir}/man1/su.*
 rm %{buildroot}/%{_mandir}/*/man1/su.*
-rm %{buildroot}/%{_mandir}/man5/suauth.*
-rm %{buildroot}/%{_mandir}/*/man5/suauth.*
 rm %{buildroot}%{_sysconfdir}/pam.d/su
 
 rm %{buildroot}/%{_bindir}/faillog
@@ -224,7 +222,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/login.defs.d
 
 %pre
 %service_add_pre shadow.service shadow.timer
-for i in pam.d/chage pam.d/chfn pam.d/chpasswd pam.d/chsh pam.d/groupadd pam.d/groupdel pam.d/groupmod pam.d/newusers pam.d/passwd pam.d/useradd pam.d/userdel pam.d/usermod; do
+for i in pam.d/chfn pam.d/chpasswd pam.d/chsh pam.d/groupadd pam.d/groupdel pam.d/groupmod pam.d/newusers pam.d/passwd pam.d/useradd pam.d/userdel pam.d/usermod; do
   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 
@@ -264,7 +262,7 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %posttrans
 %if %{defined no_config}
 # Migration to /usr/etc
-for i in pam.d/chage pam.d/chfn pam.d/chpasswd pam.d/chsh pam.d/groupadd pam.d/groupdel pam.d/groupmod pam.d/newusers pam.d/passwd pam.d/useradd pam.d/userdel pam.d/usermod; do
+for i in pam.d/chfn pam.d/chpasswd pam.d/chsh pam.d/groupadd pam.d/groupdel pam.d/groupmod pam.d/newusers pam.d/passwd pam.d/useradd pam.d/userdel pam.d/usermod; do
   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
@@ -284,7 +282,6 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subuid
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subgid
 %if %{defined no_config}
-%{_pam_vendordir}/chage
 %{_pam_vendordir}/chfn
 %{_pam_vendordir}/chsh
 %{_pam_vendordir}/passwd
@@ -297,7 +294,6 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %{_pam_vendordir}/userdel
 %{_pam_vendordir}/usermod
 %else
-%config %{_sysconfdir}/pam.d/chage
 %config %{_sysconfdir}/pam.d/chfn
 %config %{_sysconfdir}/pam.d/chsh
 %config %{_sysconfdir}/pam.d/passwd

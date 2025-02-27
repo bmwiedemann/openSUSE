@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Mon Feb 24 15:52:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.17.3:
+  * chsh: do not warn about blank shell
+  * lib/: Use strisdigit() instead of its pattern
+  * lib/string/ctype/strisascii/: strisdigit(): Add function
+  * lib/string/: Add comments expanding the letter-soup API names
+  * lib/basename.c: Basename(): Use stprcspn() instead of its pattern
+  * lib/string/strspn/, lib/, src/: stprspn(), strrspn_(): Split API into function and macro
+  * lib/string/strspn/, lib/, src/: Move *spn() APIs to separate subdir
+  * lib/string/strchr/: strrcspn(), stprcspn(): Add function and macro
+  * src/useradd.c: Use !strcaseeq() instead of its pattern
+  * lib/, src/: Use strcaseeq() instead of its pattern
+  * lib/string/strcmp/: strcaseeq(): Add function
+  * man/useradd.8.xml: Document new exit code 19 (E_BAD_NAME)
+  * src/useradd.c: E_BAD_NAME: Use a different error code for bad login names
+  * src/useradd.c: create_home(): Use !streq() instead of its pattern
+  * lib/chkname.c: is_valid_name(): Use streq() instead of its pattern
+  * configure.ac, lib/: Use __has_include(<gshadow.h>) instead of HAVE_GSHADOW_H
+  * configure.ac: Remove unused AC_CHECK_HEADERS() checks
+  * configure.ac, lib/: Use __has_include(<sys/capability.h>) instead of HAVE_SYS_CAPABILITY_H
+  * lib/idmapping.c: Unconditionally include <sys/prctl.h>
+  * lib/: Use __has_include(<security/openpam.h>) instead of HAVE_SECURITY_OPENPAM_H
+  * lib/: Use __has_include(<security/pam_misc.h>) instead of HAVE_SECURITY_PAM_MISC_H
+  * configure.ac, lib/: Use __has_include(<sys/random.h>) instead of HAVE_SYS_RANDOM_H
+  * configure.ac, lib/: Use __has_include(<crypt.h>) instead of HAVE_CRYPT_H
+  * lib/, src/: motd(): Report errors instead of exiting from library code
+  * lib/motd.c: motd(): Invert logic to reduce indentation
+  * lib/, src/, doc/: Remove pw_auth()'s $3 as dead code
+  * lib/pwauth.*: PW_{ADD,CHANGE,DELETE,FTP,REXEC}: Remove dead code
+  * lib/, src/, doc/: Remove dead code
+  * src/vipw.c: Restore the original terminal pgrp after editing
+  * lib/, src/: Use agetgroups() instead of its pattern
+  * lib/shadow/grp/: agetgroups(): Add function
+  * configure.ac, lib/, src/: Use gid_t instead of GETGROUPS_T
+  * lib/adds.h: addslN(): Use QSORT() instead of its pattern
+  * lib/search/sort/: QSORT(): Add macro
+  * lib/addgrps.c: add_groups(): Remove arbitrary limit
+  * lib/, src/: Rename variables
+  * lib/addgrps.c: add_groups(): Reallocate at once
+  * lib/string/strchr/: strchrscnt(): Add function
+  * lib/addgrps.c: add_groups(): Split variable to avoid sign-mismatch diagnostics
+  * lib/, src/: Use LSEARCH() instead of its pattern
+  * lib/search/l/: LSEARCH(): Add macro
+  * lib/, src/: Replace redundant checks by actual error handling
+  * lib/, src/: Unconditionally call setgroups(2)
+  * lib/addgrps.c: add_groups(): Simplify redundant code with a goto
+  * lib/addgrps.c: add_groups(): Allocate earlier
+  * lib/addgrps.c: add_groups(): Remove useless cast
+  * lib/, src/: Use LFIND() instead of open-coded search loops
+  * lib/search/l/: LFIND(): Add macro
+  * lib/search/cmp/, lib/, tests/: CMP(), cmp_*(): Add macro and functions
+  * lib/, src/: Simplify allocation of buffer
+  * lib/, src/: Un-spageticize code
+  * lib/, src/: Reduce scope of variables
+  * lib/gshadow_.h: Fix compatibility with libc's struct sgrp
+  * configure.ac, lib/gshadow.c: Presume working shadow group support in libc
+  * lib/: Include <gshadow.h> if it's available
+  * configure.ac, lib/: Assume initgroups(3) exists
+  * configure.ac, lib/, src/: Assume setgroups(2) exists
+  * lib/, src/: Turn error counters into flags
+  * src/gpasswd: Use correct preprocessor definition
+  * src/gpasswd: Clear password in more cases
+  * lib/encrypt.c: Do not exit in error case
+  * man/useradd.8.xml: wfix
+  * src/login_nopam.c: list_match(): Use iteration instead of recursion
+  * src/login_nopam.c: list_match(): Remove local variable
+  * src/login_nopam.c: list_match(): Move code around
+  * src/login_nopam.c: list_match(): '(match)' is always true here
+  * src/login_nopam.c: list_match(): Add superfluous else
+  * src/login_nopam.c: list_match(): Refactor conditional
+  * man/passwd.1.xml: -P disables PAM support
+  * chage: Drop PAM support
+  * src/newusers.c: Turn nusers into size_t
+  * src/: Make line number overflows less likely
+  * man/: Install suauth.5 only if feature exists
+  * add and use a login.defs.test with CREATE_HOME set
+  * Revert "etc/login.defs: enable CREATE_HOME"
+  * etc/login.defs: enable CREATE_HOME
+  * Tests: implement system test framework
+
+-------------------------------------------------------------------
 Mon Jan 20 10:20:31 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1235453: Set SYS_{UID,GID}_MIN to 201:
