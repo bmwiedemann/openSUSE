@@ -8,8 +8,8 @@
          fi
          ;;
      msdoc)
--        if which wvHtml >/dev/null 2>&1; then
-+        if which wvHtml >/dev/null 2>&1 && which elinks >/dev/null 2>&1; then
+-        if command -v wvHtml >/dev/null 2>&1; then
++        if command -v wvHtml >/dev/null 2>&1 && command -v elinks >/dev/null 2>&1; then
              tmp=`mktemp -d ${TMPDIR:-/tmp}/%p.XXXXXX`
              wvHtml "${MC_EXT_FILENAME}" --targetdir="$tmp" page.html
              elinks -dump "$tmp/page.html"
@@ -17,8 +17,8 @@
          fi
          ;;
      msxls)
--        if which xlhtml >/dev/null 2>&1; then
-+        if which xlhtml >/dev/null 2>&1 && which elinks >/dev/null 2>&1; then
+-        if command -v xlhtml >/dev/null 2>&1; then
++        if command -v xlhtml >/dev/null 2>&1 && command -v elinks >/dev/null 2>&1; then
              tmp=`mktemp -d ${TMPDIR:-/tmp}/%p.XXXXXX`
              xlhtml -a "${MC_EXT_FILENAME}" > "$tmp/page.html"
              elinks -dump "$tmp/page.html"

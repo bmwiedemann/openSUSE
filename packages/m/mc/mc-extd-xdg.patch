@@ -7,11 +7,13 @@
  misc/ext.d/sound.sh   |    2 +-
  misc/ext.d/text.sh.in |    2 +-
  misc/ext.d/video.sh   |    2 +-
- misc/ext.d/web.sh.in  |    2 +-
+ misc/ext.d/web.sh     |    2 +-
  9 files changed, 9 insertions(+), 9 deletions(-)
 
---- a/misc/ext.d/archive.sh
-+++ b/misc/ext.d/archive.sh
+Index: mc-4.8.33/misc/ext.d/archive.sh
+===================================================================
+--- mc-4.8.33.orig/misc/ext.d/archive.sh
++++ mc-4.8.33/misc/ext.d/archive.sh
 @@ -210,7 +210,7 @@ view)
      do_view_action "${filetype}"
      ;;
@@ -21,8 +23,10 @@
          do_open_action "${filetype}" "${pager}"
      ;;
  *)
---- a/misc/ext.d/doc.sh.in
-+++ b/misc/ext.d/doc.sh.in
+Index: mc-4.8.33/misc/ext.d/doc.sh.in
+===================================================================
+--- mc-4.8.33.orig/misc/ext.d/doc.sh.in
++++ mc-4.8.33/misc/ext.d/doc.sh.in
 @@ -210,7 +210,7 @@ view)
      do_view_action "${filetype}"
      ;;
@@ -32,9 +36,11 @@
          do_open_action "${filetype}"
      ;;
  *)
---- a/misc/ext.d/image.sh
-+++ b/misc/ext.d/image.sh
-@@ -64,7 +64,7 @@ view)
+Index: mc-4.8.33/misc/ext.d/image.sh
+===================================================================
+--- mc-4.8.33.orig/misc/ext.d/image.sh
++++ mc-4.8.33/misc/ext.d/image.sh
+@@ -72,7 +72,7 @@ view)
      do_view_action "${filetype}"
      ;;
  open)
@@ -43,9 +49,11 @@
          do_open_action "${filetype}"
      ;;
  *)
---- a/misc/ext.d/misc.sh.in
-+++ b/misc/ext.d/misc.sh.in
-@@ -102,7 +102,7 @@ view)
+Index: mc-4.8.33/misc/ext.d/misc.sh.in
+===================================================================
+--- mc-4.8.33.orig/misc/ext.d/misc.sh.in
++++ mc-4.8.33/misc/ext.d/misc.sh.in
+@@ -96,7 +96,7 @@ view)
      do_view_action "${filetype}"
      ;;
  open)
@@ -54,8 +62,10 @@
          do_open_action "${filetype}"
      ;;
  *)
---- a/misc/ext.d/package.sh
-+++ b/misc/ext.d/package.sh
+Index: mc-4.8.33/misc/ext.d/package.sh
+===================================================================
+--- mc-4.8.33.orig/misc/ext.d/package.sh
++++ mc-4.8.33/misc/ext.d/package.sh
 @@ -51,7 +51,7 @@ view)
      do_view_action "${filetype}"
      ;;
@@ -65,9 +75,11 @@
          do_open_action "${filetype}"
      ;;
  *)
---- a/misc/ext.d/sound.sh
-+++ b/misc/ext.d/sound.sh
-@@ -116,7 +116,7 @@ view)
+Index: mc-4.8.33/misc/ext.d/sound.sh
+===================================================================
+--- mc-4.8.33.orig/misc/ext.d/sound.sh
++++ mc-4.8.33/misc/ext.d/sound.sh
+@@ -105,7 +105,7 @@ view)
      do_view_action "${filetype}"
      ;;
  open)
@@ -76,8 +88,10 @@
          do_open_action "${filetype}"
      ;;
  *)
---- a/misc/ext.d/text.sh.in
-+++ b/misc/ext.d/text.sh.in
+Index: mc-4.8.33/misc/ext.d/text.sh.in
+===================================================================
+--- mc-4.8.33.orig/misc/ext.d/text.sh.in
++++ mc-4.8.33/misc/ext.d/text.sh.in
 @@ -147,7 +147,7 @@ view)
      do_view_action "${filetype}"
      ;;
@@ -87,9 +101,11 @@
          do_open_action "${filetype}" "${pager}"
      ;;
  *)
---- a/misc/ext.d/video.sh
-+++ b/misc/ext.d/video.sh
-@@ -66,7 +66,7 @@ view)
+Index: mc-4.8.33/misc/ext.d/video.sh
+===================================================================
+--- mc-4.8.33.orig/misc/ext.d/video.sh
++++ mc-4.8.33/misc/ext.d/video.sh
+@@ -50,7 +50,7 @@ view)
      do_view_action "${filetype}"
      ;;
  open)
@@ -98,9 +114,11 @@
          do_open_action "${filetype}"
      ;;
  *)
---- a/misc/ext.d/web.sh.in
-+++ b/misc/ext.d/web.sh.in
-@@ -47,7 +47,7 @@ view)
+Index: mc-4.8.33/misc/ext.d/web.sh
+===================================================================
+--- mc-4.8.33.orig/misc/ext.d/web.sh
++++ mc-4.8.33/misc/ext.d/web.sh
+@@ -52,7 +52,7 @@ view)
      do_view_action "${filetype}"
      ;;
  open)

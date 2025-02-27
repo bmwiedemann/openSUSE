@@ -6,12 +6,14 @@ Bugzilla: 1087708
  misc/ext.d/doc.sh.in |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- a/misc/ext.d/doc.sh.in
-+++ b/misc/ext.d/doc.sh.in
+Index: mc-4.8.33/misc/ext.d/doc.sh.in
+===================================================================
+--- mc-4.8.33.orig/misc/ext.d/doc.sh.in
++++ mc-4.8.33/misc/ext.d/doc.sh.in
 @@ -74,7 +74,7 @@ do_view_action() {
              elinks -dump "$tmp/page.html"
              rm -rf "$tmp"
-         elif which xls2csv >/dev/null 2>&1; then
+         elif command -v xls2csv >/dev/null 2>&1; then
 -            xls2csv "${MC_EXT_FILENAME}"
 +            xls2csv -c - -x "${MC_EXT_FILENAME}"
          else

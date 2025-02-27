@@ -1,50 +1,16 @@
----
- src/filemanager/file.c |   12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
-
---- a/src/filemanager/file.c
-+++ b/src/filemanager/file.c
-@@ -2802,6 +2802,8 @@ copy_file_file (file_op_total_context_t
-             continue;
-         if (temp_status == FILE_ABORT)
-             return_status = temp_status;
-+        if (temp_status == FILE_SKIP)
-+            return_status = temp_status;
-         if (temp_status == FILE_SKIPALL)
-             ctx->skip_all = TRUE;
-         break;
-@@ -2812,6 +2814,8 @@ copy_file_file (file_op_total_context_t
-         temp_status = file_error (TRUE, _("Cannot close target file \"%s\"\n%s"), dst_path);
-         if (temp_status == FILE_RETRY)
-             continue;
-+        if (temp_status == FILE_SKIP)
-+            return_status = temp_status;
-         if (temp_status == FILE_SKIPALL)
-             ctx->skip_all = TRUE;
-         return_status = temp_status;
-@@ -2843,10 +2847,10 @@ copy_file_file (file_op_total_context_t
-             if (temp_status == FILE_SKIPALL)
-             {
-                 ctx->skip_all = TRUE;
--                return_status = FILE_CONT;
-+                return_status = FILE_SKIPALL;
-             }
-             if (temp_status == FILE_SKIP)
--                return_status = FILE_CONT;
-+                return_status = FILE_SKIP;
-             break;
-         }
- 
-@@ -2859,10 +2863,10 @@ copy_file_file (file_op_total_context_t
-             if (temp_status == FILE_SKIPALL)
-             {
-                 ctx->skip_all = TRUE;
--                return_status = FILE_CONT;
-+                return_status = FILE_SKIPALL;
-             }
-             if (temp_status == FILE_SKIP)
--                return_status = FILE_CONT;
-+                return_status = FILE_SKIP;
-             break;
-         }
- 
+Index: mc-4.8.33/src/vfs/shell/helpers/send
+===================================================================
+--- mc-4.8.33.orig/src/vfs/shell/helpers/send
++++ mc-4.8.33/src/vfs/shell/helpers/send
+@@ -1,7 +1,10 @@
+ FILENAME="/${SHELL_FILENAME}"
+ echo "### 001"
+ {
+-    > "${FILENAME}"
++    if ! > "${FILENAME}"; then
++        echo "### 500"
++        exit
++    fi
+     bss=4096
+     bsl=4095
+     if [ $SHELL_FILESIZE -lt $bss ]; then

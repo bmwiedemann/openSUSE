@@ -1,7 +1,7 @@
 #
 # spec file for package mc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mc
-Version:        4.8.32
+Version:        4.8.33
 Release:        0
 Summary:        Midnight Commander
 License:        GPL-3.0-or-later
@@ -32,9 +32,6 @@ Source6:        http://ftp.midnight-commander.org/%{name}-%{version}.sha256
 Source7:        mc.fish
 Patch0:         mc-fix_lib_search_path.patch
 Patch12:        mc-wrapper.patch
-# PATCH-FIX-UPSTREAM 4575-fix-wrapper.patch https://midnight-commander.org/ticket/4575 -- fix mc-wrapper (already merged for next release)
-# + https://github.com/MidnightCommander/mc/commit/d081bc68aa6ad3ded515ea490118b0a38a1ec204
-Patch13:        4575-fix-wrapper.patch
 Patch16:        mc-esc-seq.patch
 Patch20:        mc-f-keys.patch
 Patch21:        mc-extfs-helpers-deb.patch
@@ -51,7 +48,6 @@ Patch42:        4258-fish-subshell-prompt.patch
 # Patches from Fedora
 #Patch adding -fpie and -pie to compilation and linking of setuid binaries
 Patch52:        mc-pie.patch
-Patch61:        mc-extd-misc.patch
 Patch62:        mc-extd-video.patch
 Patch63:        mc-extd-doc.patch
 Patch64:        mc-extd-sound.patch
@@ -77,7 +73,6 @@ BuildRequires:  pkgconfig(x11)
 Requires(pre):  permissions
 Recommends:     %{name}-lang = %{version}
 Enhances:       fish
-Recommends:     mkisofs
 Recommends:     xorriso
 
 %description
@@ -129,8 +124,9 @@ mkdir -p %{buildroot}%{_sysconfdir}/profile.d
 ln -fs -t %{buildroot}%{_sysconfdir}/profile.d %{_datadir}/mc/mc.{,c}sh
 #support script for calling available GUI webbrosers
 install -m 755 %{SOURCE1} %{buildroot}%{_datadir}/mc/
-install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/pixmaps/%{name}.png
 install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
+mkdir -p %{buildroot}%{_datadir}/pixmaps/
+ln -s ../icons/hicolor/32x32/apps/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 # Fish wrapper script
 install -D -m 644 %{SOURCE7} \
@@ -152,11 +148,7 @@ rm -rf  %{buildroot}%{_datadir}/locale/be@tarask
 %endif
 
 %post
-%if 0%{?suse_version} >= 1140
 %set_permissions %{_libexecdir}/mc/cons.saver
-%else
-%run_permissions
-%endif
 
 %verifyscript
 %verify_permissions -e %{_libexecdir}/mc/cons.saver
@@ -175,6 +167,7 @@ rm -rf  %{buildroot}%{_datadir}/locale/be@tarask
 %config %{_sysconfdir}/mc/mc.keymap
 %config %{_sysconfdir}/mc/mc.default.keymap
 %config %{_sysconfdir}/mc/mc.emacs.keymap
+%config %{_sysconfdir}/mc/mc.vim.keymap
 %config %{_sysconfdir}/mc/edit.indent.rc
 %dir %{_libexecdir}/mc
 %{_libexecdir}/mc/ext.d
@@ -184,13 +177,8 @@ rm -rf  %{buildroot}%{_datadir}/locale/be@tarask
 %exclude %{_mandir}/*/man1/*
 %{_mandir}/man1/*
 %{_datadir}/mc
-%{_datadir}/mc/syntax/Syntax
-%{_datadir}/mc/mc.charsets
-%{_datadir}/mc/mc.lib
 %exclude %{_datadir}/mc/hints/mc.hint.*
-%{_datadir}/mc/hints/mc.hint
 %exclude %{_datadir}/mc/help/mc.hlp.*
-%{_datadir}/mc/help/mc.hlp
 %exclude %{_datadir}/locale/*/LC_MESSAGES/mc.mo
 
 %dir %{_datadir}/fish
@@ -205,33 +193,53 @@ rm -rf  %{buildroot}%{_datadir}/locale/be@tarask
 %{_datadir}/icons/hicolor/32x32/apps/%{name}.png
 
 %files lang -f %{name}.lang
-%if 0%{?suse_version} < 1140 || 0%{?sles_version} && 0%{?sles_version} <= 11
-%lang(sv) %dir %{_datadir}/locale/sv_SE
-%lang(sv) %dir %{_datadir}/locale/sv_SE/LC_MESSAGES
-%lang(szl) %dir %{_datadir}/locale/szl
-%lang(szl) %dir %{_datadir}/locale/szl/LC_MESSAGES
-%endif
-
-%lang(hu) %dir %{_mandir}/hu/
-%lang(hu) %dir %{_mandir}/hu/man1/
+%lang(es) %{_mandir}/es/man1/mc.1.gz
 %lang(hu) %{_mandir}/hu/man1/mc.1.gz
-
-%lang(pl) %dir %{_mandir}/pl/
-%lang(pl) %dir %{_mandir}/pl/man1/
+%lang(it) %{_mandir}/it/man1/mc.1.gz
 %lang(pl) %{_mandir}/pl/man1/mc.1.gz
-
-%lang(sr) %dir %{_mandir}/sr/
-%lang(sr) %dir %{_mandir}/sr/man1/
+%lang(ru) %{_mandir}/ru/man1/mc.1.gz
+%if 0%{?suse_version} < 1600 && 0%{?is_opensuse}
+%lang(sr) %dir %{_mandir}/sr
+%lang(sr) %dir %{_mandir}/sr/man1
+%endif
 %lang(sr) %{_mandir}/sr/man1/mc.1.gz
 
+%lang(be) %doc %{_datadir}/mc/*/mc.*.be
+%lang(bg) %doc %{_datadir}/mc/*/mc.*.bg
+%lang(ca) %doc %{_datadir}/mc/*/mc.*.ca
 %lang(cs) %doc %{_datadir}/mc/*/mc.*.cs
+%lang(da) %doc %{_datadir}/mc/*/mc.*.da
+%lang(de) %doc %{_datadir}/mc/*/mc.*.de
+%lang(el) %doc %{_datadir}/mc/*/mc.*.el
+%lang(en_GB) %doc %{_datadir}/mc/*/mc.*.en_GB
+%lang(eo) %doc %{_datadir}/mc/*/mc.*.eo
 %lang(es) %doc %{_datadir}/mc/*/mc.*.es
+%lang(et) %doc %{_datadir}/mc/*/mc.*.et
+%lang(eu) %doc %{_datadir}/mc/*/mc.*.eu
+%lang(fa) %doc %{_datadir}/mc/*/mc.*.fa
+%lang(fr) %doc %{_datadir}/mc/*/mc.*.fr
+%lang(ga) %doc %{_datadir}/mc/*/mc.*.ga
+%lang(gl) %doc %{_datadir}/mc/*/mc.*.gl
 %lang(hu) %doc %{_datadir}/mc/*/mc.*.hu
+%lang(id) %doc %{_datadir}/mc/*/mc.*.id
 %lang(it) %doc %{_datadir}/mc/*/mc.*.it
+%lang(ja) %doc %{_datadir}/mc/*/mc.*.ja
+%lang(ka) %doc %{_datadir}/mc/*/mc.*.ka
+%lang(ko) %doc %{_datadir}/mc/*/mc.*.ko
+%lang(lt) %doc %{_datadir}/mc/*/mc.*.lt
+%lang(nb) %doc %{_datadir}/mc/*/mc.*.nb
 %lang(nl) %doc %{_datadir}/mc/*/mc.*.nl
 %lang(pl) %doc %{_datadir}/mc/*/mc.*.pl
+%lang(pt) %doc %{_datadir}/mc/*/mc.*.pt
+%lang(pt_BR) %doc %{_datadir}/mc/*/mc.*.pt_BR
+%lang(ro) %doc %{_datadir}/mc/*/mc.*.ro
 %lang(ru) %doc %{_datadir}/mc/*/mc.*.ru
+%lang(sk) %doc %{_datadir}/mc/*/mc.*.sk
 %lang(sr) %doc %{_datadir}/mc/*/mc.*.sr
+%lang(sv) %doc %{_datadir}/mc/*/mc.*.sv
+%lang(tr) %doc %{_datadir}/mc/*/mc.*.tr
 %lang(uk) %doc %{_datadir}/mc/*/mc.*.uk
+%lang(zh_CN) %doc %{_datadir}/mc/*/mc.*.zh_CN
+%lang(zh_TW) %doc %{_datadir}/mc/*/mc.*.zh_TW
 
 %changelog

@@ -1,27 +1,8 @@
----
- misc/ext.d/sound.sh |   34 ++++++++++++++++++++++++++--------
- 1 file changed, 26 insertions(+), 8 deletions(-)
-
---- a/misc/ext.d/sound.sh
-+++ b/misc/ext.d/sound.sh
-@@ -6,22 +6,40 @@
- action=$1
- filetype=$2
- 
--[ -n "${MC_XDG_OPEN}" ] || MC_XDG_OPEN="xdg-open"
-+[ -n "${MC_XDG_OPEN}" ] || MC_XDG_OPEN="_xdg_open"
-+
-+_xdg_open()
-+{
-+    if [ -n "$DISPLAY" ] && type -p gmplayer ; then
-+        gmplayer "${MC_EXT_FILENAME}"
-+    elif type -p mplayer ; then
-+        mplayer "${MC_EXT_FILENAME}"
-+    else
-+        xdg-open "${MC_EXT_FILENAME}"
-+    fi
-+}
- 
+Index: mc-4.8.33/misc/ext.d/sound.sh
+===================================================================
+--- mc-4.8.33.orig/misc/ext.d/sound.sh
++++ mc-4.8.33/misc/ext.d/sound.sh
+@@ -13,6 +13,11 @@ fi
  do_view_action() {
      filetype=$1
  
@@ -33,35 +14,12 @@
      case "${filetype}" in
      common)
          mediainfo "${MC_EXT_FILENAME}"
-         ;;
--
-     mp3)
--        mpg123 -vtn1 "${MC_EXT_FILENAME}" 2>&1 | \
--            sed -n '/^Title/,/^Comment/p;/^MPEG/,/^Audio/p'
-+        if type -p mpg123 ; then
-+            mpg123 -vtn1 "${MC_EXT_FILENAME}" 2>&1 | \
-+                sed -n '/^Title/,/^Comment/p;/^MPEG/,/^Audio/p'
-+            return 0
-+        fi
-         ;;
-     ogg)
--        ogginfo "${MC_EXT_FILENAME}"
-+        type -p ogginfo && ogginfo "${MC_EXT_FILENAME}" && return 0
-         ;;
-     opus)
-         opusinfo "${MC_EXT_FILENAME}"
-@@ -29,11 +47,11 @@ do_view_action() {
-     wma)
-         mplayer -quiet -slave -frames 0 -vo null -ao null -identify "${MC_EXT_FILENAME}" 2>/dev/null | \
+@@ -33,7 +38,7 @@ do_view_action() {
              tail +13 || file "${MC_EXT_FILENAME}"
--        ;;
--    *)
+         ;;
+     *)
 -        cat "${MC_EXT_FILENAME}"
-+        return $?
++        file "${MC_EXT_FILENAME}"
          ;;
      esac
-+
-+    mplayer -identify -vo null -ao null -frames 0 "${MC_EXT_FILENAME}" 2>&1 | sed -n '/^ID_/p'
  }
- 
- do_open_action() {

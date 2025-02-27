@@ -2,11 +2,13 @@
  lib/util.c |    2 ++
  1 file changed, 2 insertions(+)
 
---- a/lib/util.c
-+++ b/lib/util.c
-@@ -762,6 +762,8 @@ strip_ctrl_codes (char *s)
-                 while (*(++r) != '\0' && strchr ("0123456789;:?", *r) != NULL)
-                     ;
+Index: mc-4.8.33/lib/util.c
+===================================================================
+--- mc-4.8.33.orig/lib/util.c
++++ mc-4.8.33/lib/util.c
+@@ -783,6 +783,8 @@ strip_ctrl_codes (char *s)
+                 while (*r != '\0' && (*r < 0x40 || *r > 0x7E))
+                     ++r;
              }
 +            else if (*r == '(')
 +                r++;
