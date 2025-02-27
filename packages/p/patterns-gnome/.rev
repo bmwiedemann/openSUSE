@@ -424,4 +424,27 @@
     <comment></comment>
     <requestid>1248733</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>16588f9ce1a76233e989d84163beaccc</srcmd5>
+    <version>20241112</version>
+    <time>1740664226</time>
+    <user>dimstar_suse</user>
+    <comment>- Move MozillaFirefox from gnome_basis to gnome_internet. For the
+  end-user this is a NO-OP, as gnome_internet is recommended by
+  gnome_basis anyway, but it's more accurate.
+- Drop recommends of no longer exitsing branding packages:
+  gnome-control-center-branding-openSUSE,
+  gnome-panel-branding-openSUSE, libsocialweb-branding-openSUSE.
+- Lower gdm-branding-openSUSE, gtk2-branding-openSUSE and
+  gtk3-branding-openSUSE from Recommends to Suggests: only use them
+  as hints for the solver, but do not actually trigger
+  installation. This is especially relevant for
+  gtk2-branding-openSUSE. Being recommended means it's
+  auto-installed by default, even if gtk2 would not be needed.
+- Lower totem from Required to Recommended.
+- No longer Recommend totem-browser-plugin, which has been removed
+  from the distro in 2014.
+</comment>
+    <requestid>1248785</requestid>
+  </revision>
 </revisionlist>

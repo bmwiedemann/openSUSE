@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-gnome
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,8 @@ This particular package contains all the Gnome patterns.
 
 
 
-################################################################################
 
+################################################################################
 %package gnome
 %pattern_graphicalenvironments
 Summary:        GNOME Desktop Environment (Wayland)
@@ -96,8 +96,8 @@ Provides:       pattern-visible()
 Requires:       gsettings-backend-dconf
 Requires:       pattern() = basesystem
 Requires:       pattern() = gnome_basis
-Recommends:     pattern() = enhanced_base
 Recommends:     evince
+Recommends:     pattern() = enhanced_base
 # bsc#1065146
 %if 0%{?sle_version}
 Recommends:     gedit
@@ -128,7 +128,7 @@ Recommends:     pattern() = multimedia
 %endif
 # #545263
 Requires:       seahorse
-Requires:       totem
+Recommends:     totem
 Recommends:     pattern() = gnome_imaging
 Recommends:     pattern() = office
 Recommends:     pattern() = x11_yast
@@ -220,7 +220,6 @@ Recommends:     sushi
 #
 # Tool for advanced configuration of printers
 Recommends:     system-config-printer
-Recommends:     totem-browser-plugin
 Suggests:       gnome-color-manager %dnl bnc#698250
 %else
 Recommends:     NetworkManager-openconnect-gnome
@@ -310,20 +309,15 @@ Recommends:     NetworkManager
 Recommends:     canberra-gtk-play
 %endif
 %if 0%{?is_opensuse}
-Recommends:     MozillaFirefox
 Recommends:     avahi
 #
 # Branding
 #
 # #591535
-Recommends:     gdm-branding-openSUSE
-Recommends:     gio-branding-openSUSE
-Recommends:     gnome-control-center-branding-openSUSE
-Recommends:     gnome-panel-branding-openSUSE
-Recommends:     gtk2-branding-openSUSE
-Recommends:     gtk3-branding-openSUSE
-Recommends:     hicolor-icon-theme-branding-openSUSE
-Recommends:     libsocialweb-branding-openSUSE
+Suggests:       gdm-branding-openSUSE
+Suggests:       gio-branding-openSUSE
+Suggests:       gtk3-branding-openSUSE
+Suggests:       hicolor-icon-theme-branding-openSUSE
 %endif
 
 %description gnome_basis
@@ -515,6 +509,7 @@ Recommends:     NetworkManager-openconnect-gnome
 #
 # Packages that really make sense
 #
+Recommends:     MozillaFirefox
 # bnc#533580
 Recommends:     NetworkManager-openvpn-gnome
 Recommends:     NetworkManager-pptp-gnome
