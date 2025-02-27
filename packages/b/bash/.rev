@@ -2057,4 +2057,12 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
 - Move (/etc/skel/.bashrc) and (/etc/skel/.profile) to (/usr/etc/skel/).</comment>
     <requestid>1240150</requestid>
   </revision>
+  <revision rev="196" vrev="17">
+    <srcmd5>558240b233bc3f2c8d2f4da418f3036f</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1740664137</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly specify that the build recipe needs bash (forwarded request 1248227 from jengelh)</comment>
+    <requestid>1248296</requestid>
+  </revision>
 </revisionlist>

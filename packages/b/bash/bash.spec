@@ -16,6 +16,7 @@
 #
 
 
+%define _buildshell /bin/bash
 %if 0%{?suse_version} > 1500
 %bcond_with alternatives
 %else

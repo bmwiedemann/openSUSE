@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 18:21:33 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Explicitly specify that the build recipe needs bash
+
+-------------------------------------------------------------------
 Fri Jan 24 12:09:40 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - As in bash-sh there is only a symbolic link avoid to require a version
