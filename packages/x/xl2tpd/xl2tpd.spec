@@ -1,7 +1,7 @@
 #
 # spec file for package xl2tpd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Source1:        %{name}.service
 Source2:        %{name}.conf
 Patch0:         Makefile.patch
 Patch1:         xl2tpd.init.patch
+Patch2:         xl2tpd-gcc15.patch
 BuildRequires:  libpcap
 BuildRequires:  libpcap-devel
 BuildRequires:  linux-kernel-headers >= 2.6.19
