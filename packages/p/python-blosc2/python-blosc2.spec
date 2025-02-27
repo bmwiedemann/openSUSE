@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-blosc2
 Version:        2.7.1
 Release:        0

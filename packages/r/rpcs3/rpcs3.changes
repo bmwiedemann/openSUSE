@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Feb 27 10:12:43 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250226:
+  * Deploy aarch64 builds via via GitHub Actions instead of Cirrus
+  * move texture_cache_types implementation to cpp
+  * Update zstd to 1.5.7
+  * Update curl to 8.12.1
+  * Update libpng to 1.6.47
+  * Update SDL to 2.32.0
+  * Fix signed vs unsigned comparison warning
+  * concepts: fix review notes
+  * use concepts instead of std::enable_if
+  * cellMic: fix division by zero
+  * Qt: log microphone list
+  * github actions: rename jobs
+  * Move permissions to own file
+  * Move debugger functions to emu_utils.cpp
+  * Move sys_time fmt to date_time.cpp
+  * Move is_input_allowed to GSFrameBase
+  * Move display sleep functions to emu callbacks
+  * Move check_microphone_permissions to emu callbacks
+  * Move cheat_type fmt to cheat_info.cpp
+  * Fix Azure and Github Actions CI caching
+  * Update QT to 6.8.2
+  * Add opencv to linux CI and specify which modules we want to use
+  * Use Microsoft::WRL::ComPtr (#16744)
+  * PKG: Refactor and proper support for IDU
+  * SPU LLVM: Small FCGT optimization
+  * unpkg: Add support for IDU packages
+  * Add DXT1-5 decompression on ARM
+
+-------------------------------------------------------------------
 Thu Feb 20 11:17:19 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.34~git20250220:

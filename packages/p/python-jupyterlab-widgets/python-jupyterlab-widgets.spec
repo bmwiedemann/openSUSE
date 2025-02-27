@@ -18,6 +18,7 @@
 
 %define pyver 3.0.13
 %define jupver 5.0.13
+%{?sle15_python_module_pythons}
 Name:           python-jupyterlab-widgets
 Version:        %{pyver}
 Release:        0

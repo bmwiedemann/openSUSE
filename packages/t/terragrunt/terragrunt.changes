@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:49:27 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.15:
+  * fix: Caching the same provider with different versions from
+    various sources (#3935)
+
+-------------------------------------------------------------------
 Wed Feb 26 05:49:57 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.73.14:

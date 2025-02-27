@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-numpydoc
 Version:        1.8.0
 Release:        0

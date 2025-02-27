@@ -65,4 +65,19 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164856 from glaubitz)</comment>
     <requestid>1165251</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8ca5e9f8d9d71010d03eef1f6cfbc22a</srcmd5>
+    <version>2.0.0</version>
+    <time>1740670840</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 1248879 from glaubitz)</comment>
+    <requestid>1248997</requestid>
+  </revision>
 </revisionlist>

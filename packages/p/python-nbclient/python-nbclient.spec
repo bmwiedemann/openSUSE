@@ -31,6 +31,8 @@
 %bcond_with libalternatives
 %endif
 
+%{?sle15_python_module_pythons}
+
 Name:           python-nbclient%{psuffix}
 Version:        0.10.0
 Release:        0

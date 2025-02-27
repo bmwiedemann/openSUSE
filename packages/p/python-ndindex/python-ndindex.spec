@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-ndindex
 Version:        1.9.2
 Release:        0

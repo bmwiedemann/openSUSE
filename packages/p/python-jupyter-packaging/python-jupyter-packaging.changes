@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:43:25 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Sep 16 19:17:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add jupyter-packaging-pr186-bdist_wheel.patch

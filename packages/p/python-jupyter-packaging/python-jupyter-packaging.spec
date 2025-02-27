@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-jupyter-packaging
 Version:        0.12.3
 Release:        0

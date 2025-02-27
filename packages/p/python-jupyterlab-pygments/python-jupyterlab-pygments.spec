@@ -27,6 +27,8 @@
 %endif
 
 %define distversion 0.3
+
+%{?sle15_python_module_pythons}
 Name:           python-jupyterlab-pygments%{psuffix}
 Version:        0.3.0
 Release:        0

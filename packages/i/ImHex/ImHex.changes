@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:09:57 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.37.4
+  * Fixed a regression with the frame rate limiting logic which
+    caused ImHex to use a lot of CPU on Idle.
+  * Fixed a few issues with OpenGL texture deallocations.
+- Update to version 1.37.3
+  * Fixed a crash when closing ImHex, mainly noticeable on macOS.
+  * Fixed an ID collision when multiple fonts with the same name
+    are installed on the system.
+
+-------------------------------------------------------------------
 Mon Feb 24 21:41:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.37.2

@@ -17,7 +17,7 @@
 
 
 Name:           alloy
-Version:        1.6.1
+Version:        1.7.1
 Release:        0
 Summary:        OpenTelemetry Collector distribution with programmable pipelines
 License:        Apache-2.0
@@ -37,7 +37,7 @@ Requires(pre):  group(alloy)
 Requires(post): %fillup_prereq
 
 # /usr/lib/go/1.23/pkg/tool/linux_386/link: mapping output file failed: cannot allocate memory
-ExcludeArch:    %{ix86}
+ExcludeArch:    %{ix86} armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
 
 %description
 Grafana Alloy is an open source OpenTelemetry Collector distribution with

@@ -17,6 +17,7 @@
 
 
 %define skip_python39 1
+%{?sle15_python_module_pythons}
 Name:           python-jupyter_console
 Version:        6.6.3
 Release:        0

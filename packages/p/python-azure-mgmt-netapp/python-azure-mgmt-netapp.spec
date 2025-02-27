@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-netapp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-netapp
-Version:        13.3.0
+Version:        13.4.0
 Release:        0
 Summary:        Microsoft Azure NetApp Files Management Client Library
 License:        MIT

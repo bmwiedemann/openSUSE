@@ -461,4 +461,12 @@
   * rst exporter: Re-enable coalescing streams #2142 (@mgeier)</comment>
     <requestid>1195127</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>8e14daad39b7d415b4bac059889663aa</srcmd5>
+    <version>7.16.4</version>
+    <time>1740670835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248989</requestid>
+  </revision>
 </revisionlist>

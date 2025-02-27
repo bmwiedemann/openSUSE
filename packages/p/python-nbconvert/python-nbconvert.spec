@@ -31,6 +31,7 @@
 %endif
 # X.X.0 gets abbreviated by pythondistdeps
 %define shortversion 7.16.4
+%{?sle15_python_module_pythons}
 Name:           python-nbconvert%{psuffix}
 Version:        7.16.4
 Release:        0

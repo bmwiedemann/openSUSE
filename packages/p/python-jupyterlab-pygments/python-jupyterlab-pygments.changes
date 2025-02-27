@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:52:36 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu May  9 06:59:50 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build from source not whl from pypi.
