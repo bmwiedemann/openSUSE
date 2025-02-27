@@ -1,7 +1,7 @@
 #
 # spec file for package fdupes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ residing within specified directories.
 %build
 %configure --without-ncurses --without-sqlite
 %make_build
-g++ $RPM_OPT_FLAGS %{S:2} -o fdupes_wrapper
+g++ %optflags %{S:2} -o fdupes_wrapper
 
 %install
 %make_install
@@ -54,7 +54,7 @@ install -D -m755 fdupes_wrapper  %{buildroot}/usr/lib/rpm/fdupes_wrapper
 ./%{name} --size testdir
 
 # Check wrapper
-PATH=`pwd`:$PATH
+PATH="$(pwd):$PATH"
 (cd testdir; md5sum ./* ./*/* > ../testdir.md5 || true)
 for operation in '-n' '-s' ' '; do
   cp -R testdir "testdir${operation}"
@@ -64,13 +64,13 @@ done
 # Check order does not depend on creation order - x should be target
 mkdir testdir_order
 for t in "a b x" "x a b" "a x b"; do
-  pushd testdir_order
-  for f in $t ; do cp ../testdir.md5 $f; done
+  cd testdir_order
+  for f in $t ; do cp ../testdir.md5 "$f"; done
   ../fdupes_wrapper -s ./
   test -h ./a
   test -h ./b
   rm *
-  popd
+  cd -
 done
 
 %files
