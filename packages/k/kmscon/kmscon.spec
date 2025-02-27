@@ -1,7 +1,7 @@
 #
 # spec file for package kmscon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Adam Mizerski <adam@mizerski.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,24 +18,21 @@
 
 
 Name:           kmscon
-Version:        9.0.0
+Version:        9.0.0+git42
 Release:        0
 Summary:        Linux KMS/DRM based virtual Console Emulator
 License:        MIT
 Group:          System/Console
 URL:            https://github.com/Aetf/kmscon/
-Source:         https://github.com/Aetf/kmscon/releases/download/v%version/kmscon-%version.tar.xz
+Source:         %{name}-%{version}.tar.xz
 Patch1:         kmscon-no-date-time.patch
-Patch2:         0001-Use-correct-systemd-system-unit-directory.patch
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  libtsm-devel >= 4.0.2
+BuildRequires:  libtsm-devel >= 4.0.2+git24
 BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  xsltproc
 BuildRequires:  xz
-BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev) >= 172
@@ -59,7 +56,9 @@ console.
 %build
 # Work around https://github.com/Aetf/kmscon/issues/63
 export CFLAGS="%{optflags} $(pkg-config xkbcommon --cflags) $(pkg-config libtsm --cflags) -Wno-error"
-%meson
+# Disable unifont, too fat ATM (https://github.com/Aetf/kmscon/issues/102)
+# Disable 3D renderer, pulls in a dependency on Mesa into the main binary
+%meson -Dtests=false -Dfont_unifont=disabled -Drenderer_gltex=disabled -Dvideo_drm3d=disabled
 %meson_build
 
 %install
@@ -80,7 +79,11 @@ export CFLAGS="%{optflags} $(pkg-config xkbcommon --cflags) $(pkg-config libtsm 
 %files
 %license COPYING
 %{_bindir}/%{name}
-%{_libdir}/kmscon/
+%dir %{_libdir}/kmscon/
+%{_libdir}/kmscon/mod-bbulk.so
+%{_libdir}/kmscon/mod-pango.so
+%{_libdir}/kmscon/mod-pixman.so
+#%{_libdir}/kmscon/mod-unifont.so
 %dir %{_libexecdir}/kmscon
 %{_libexecdir}/kmscon/kmscon
 %{_mandir}/man1/kmscon.1%{?ext_man}

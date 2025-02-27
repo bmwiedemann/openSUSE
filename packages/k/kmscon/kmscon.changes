@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Feb 27 09:58:02 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 9.0.0+git42:
+  * tests: remove unused X11 include
+  * Clean up monitors
+  * Fix kmscon not restarting the login shell
+  * Fix segfault in bind_display()
+  * Fix running with simpledrm (boo#
+  * chore: refresh documentation and command-line instructions
+  * chore: update Unifont hex data to 16.0.01
+  * Output help menu to stdout instead stderr
+  * Fix dummy session bug and memory leak
+  * Set terminal's awake status based on session type
+  * Initial support for systemd login session monitoring
+  * Fix build warnings and update build readme
+  * Add missing libtsm_deps to pixman renderer
+  * units: Order ourselves after plymouth
+  * units: Order ourselves after logins are possible
+  * units: Call /sbin/agetty instead of /bin/login
+  * Add elogind support
+  * Use current KMS videomode by default and add an option to control this.
+  * Allow quoting to preserve spaces in the login option in config file
+  * Add Check unit test files for libshl
+  * Revert the bumped libtsm version in 0310e62e0473d94d649a59e7a9d7622dfa6302e8
+  * Make code sent by backspace key configurable
+  * tests: fix warnings
+  * build: fix duplicated libdrm dependency detection
+  * Use correct systemd system unit directory
+- Drop patches, now upstream:
+  * 0001-Use-correct-systemd-system-unit-directory.patch
+- Disable builtin unifont due to excessive size (gh#Aetf/kmscon#102)
+- Disable 3D acceleration to avoid hard dependency on Mesa
+  (disabled by default anyway)
+
+-------------------------------------------------------------------
 Mon Aug 29 07:48:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.0.0
