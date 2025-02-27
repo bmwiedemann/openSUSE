@@ -40,6 +40,8 @@ Patch4:         support-ecc-srk.patch
 Patch5:         fix-testcase-empty-efi-variables.patch
 # PATCH-FIX-UPSTREAM fix-event-reshash-for-cryptouuid.patch gh#okirch/pcr-oracle!60
 Patch6:         fix-event-reshash-for-cryptouuid.patch
+# PATCH-FIX-UPSTREAM fix-bsc1230316-predict-sbatlevelrt.patch gh#okirch/pcr-oracle!61
+Patch7:         fix-bsc1230316-predict-sbatlevelrt.patch
 BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel >= 2.4.0
 Requires:       libtss2-tcti-device0
