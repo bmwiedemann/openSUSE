@@ -1,13 +1,13 @@
 # needsrootforbuild
 
 Url:            http://www.suse.com/
-Name:           baseiso-__NAME__
+Name:           baseiso-__NAME____FLAVOR__
 Summary:        Product Composer Base Images
 Version:        __VERSION__
 Release:        __RELEASE__
 Group:          System/Management
 License:        SUSE-EULA
-Provides:       baseiso(__NAME__)
+Provides:       baseiso(__NAME____FLAVOR__)
 
 %define install_dir %_libexecdir/base-isos
 
@@ -19,6 +19,21 @@ for Agama Installer in first place.
 mkdir -p %buildroot%{install_dir}
 cp -a /usr/src/packages/KIWI/* %buildroot%install_dir
 
+if [ -n "__FLAVOR__" ]; then
+  # Rename the files so that they match what product-composer
+  # expect
+  for path in %{buildroot}%{install_dir}/__NAME__*; do
+    filename="$(basename $path)"
+    target_filename="${filename//__NAME__//__NAME____FLAVOR__}"
+    mv -v ${path} %{buildroot}%{install_dir}/${target_filename}
+    
+    if [[ ${filename} == *.sha256 ]]; then
+      sed -i "s|__NAME__|__NAME____FLAVOR__|g" %{buildroot}%{install_dir}/${target_filename}
+    fi
+  done
+fi
+
 %files
 %install_dir
 
+%changelog

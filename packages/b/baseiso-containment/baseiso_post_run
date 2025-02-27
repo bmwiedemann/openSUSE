@@ -51,6 +51,7 @@ iso_version=${iso_version%-*}
 
 
 IMAGE=$iso_name
+[ -n "$iso_flavor" ] && FLAVOR=-$iso_flavor
 
 shopt -s nullglob
 shopt -s extglob
@@ -58,6 +59,7 @@ shopt -s extglob
 echo "Attempting to wrap $IMAGE in a containment rpm ..."
 
 sed -e "s@__NAME__@$iso_name@g" \
+    -e "s@__FLAVOR__@$FLAVOR@g" \
     -e "s@__VERSION__@$iso_version@g" \
     -e "s@__RELEASE__@$iso_build@g" \
     < $SPEC_IN \
@@ -72,5 +74,5 @@ fi
 # required for the BS to find the rpm, because it is
 # a "non-standard result file for KIWI"
 mkdir -p $TOPDIR/OTHER
-mv $TOPDIR/RPMS/$ARCH/baseiso-$iso_name-$iso_version-$iso_build.$ARCH.rpm $TOPDIR/OTHER/
-mv $TOPDIR/SRPMS/baseiso-$iso_name-$iso_version-$iso_build.src.rpm $TOPDIR/OTHER/
+mv $TOPDIR/RPMS/$ARCH/baseiso-$iso_name$FLAVOR-$iso_version-$iso_build.$ARCH.rpm $TOPDIR/OTHER/
+mv $TOPDIR/SRPMS/baseiso-$iso_name$FLAVOR-$iso_version-$iso_build.src.rpm $TOPDIR/OTHER/

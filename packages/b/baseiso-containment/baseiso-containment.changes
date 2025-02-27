@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 26 21:54:34 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- 0.2.3
+  * add the flavour name, if any, to the output package name 
+
+-------------------------------------------------------------------
+Thu Feb 20 09:16:37 UTC 2025 - Max Lin <mlin@suse.com>
+
+- add %changelog to baseiso.spec.in
+  * avoid source_date_epoch_from_changelog set but %changelog
+    is missing
+
+-------------------------------------------------------------------
 Fri Jan 31 11:13:04 UTC 2025 - Giacomo Leidi <giacomo.leidi@suse.com>
 
 - 0.2.2
