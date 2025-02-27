@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Feb 27 08:34:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.9:
+  * new command mu4e-analyze-last-query which shows information about
+    how the server interpreted the last query; this can be useful if you
+    don't get the result you expected.
+  * When you ask for bookmarks or maildirs through mu4e-search-bookmark or
+    mu4e-search-maildir, unread counts are displayed in the (default)
+    completions UI next to the maildir or bookmark. If you don't want to
+    see these counts, set mu4e-hide-short-counts to non-nil.
+  * experimental: a "transient" menu, which provides easy access to some
+    common (and some not so common) functions in mu4e. For now, you can
+    enable this with:
+      (require 'mu4e-transient)
+      (global-set-key (kbd "C-c m") #'mu4e-transient-menu)
+    This requires you to have the "transient" package, which means Emacs
+    28 or later or alternatively you can install it manually. As stated,
+    it's experimental and will be change / expanded over time, but already
+    I find it quite useful.
+  * gnus mailing-list management commands such as
+    gnus-mailing-list-subscribe, gnus-mailing-list-unsubscribe now also
+    work in mu4e. Also available through the transient menu.
+  * The mu server uses PCRE-compatible regexps (for addresses), which are
+    not necessarily compatible with Emacs regular expressions. However,
+    mu4e can now automatically translate; this depends on the pcre2el
+    package which the user should install when using regular
+    expression-addresses.
+  * the cleanup phase after indexing has been sped up significantly
+  * updated documentation; man-pages and mu4e reference manual
+
+-------------------------------------------------------------------
 Fri Dec 27 16:46:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.8:
