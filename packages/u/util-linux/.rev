@@ -2684,4 +2684,13 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment></comment>
     <requestid>1242132</requestid>
   </revision>
+  <revision rev="295" vrev="4">
+    <srcmd5>70f050b9d499615693f35b0898d656aa</srcmd5>
+    <version>2.40.4</version>
+    <time>1740664139</time>
+    <user>dimstar_suse</user>
+    <comment>- Delete /usr/sbin/rc* symlinks
+- Drop bashisms from build recipe</comment>
+    <requestid>1248301</requestid>
+  </revision>
 </revisionlist>

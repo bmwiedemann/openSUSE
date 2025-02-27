@@ -485,38 +485,38 @@ export CXXFLAGS="%{optflags} -D_GNU_SOURCE"
 
 # Here we define a build function. For the base build, we use it as it
 # is. For python build, we use it repeatedly for all flavors.
-function configure_and_build() {
+configure_and_build() {
 
 # configure options depending on ulbuild and ulsubset values
 configure_options=""
 # libmagic is only used for determining in more(1) whether or not a file
 # is binary. but it has builtin code that is doing the same with a simpler
 # check and the libmagic database dependency is rather large (9MB+)
-configure_options+="--without-libmagic "
+configure_options="$configure_options --without-libmagic "
 
 %if "%ulbuild" == "python"
 %define _configure ../configure
-configure_options+="--disable-all-programs "
-configure_options+="--with-python "
-configure_options+="--enable-pylibmount "
-configure_options+="--enable-libmount "
-configure_options+="--enable-libblkid "
+configure_options="$configure_options --disable-all-programs "
+configure_options="$configure_options --with-python "
+configure_options="$configure_options --enable-pylibmount "
+configure_options="$configure_options --enable-libmount "
+configure_options="$configure_options --enable-libblkid "
 %endif
 # ulbuild == python
 
 %if "%ulbuild" == "base"
-configure_options+="--enable-all-programs "
-configure_options+="--without-python "
+configure_options="$configure_options --enable-all-programs "
+configure_options="$configure_options --without-python "
 %endif
 # ulbuild == base
 
 %if "%ulsubset" == "core"
-configure_options+="--without-systemd --disable-liblastlog2"
+configure_options="$configure_options --without-systemd --disable-liblastlog2"
 %endif
 # ulsubset == core
 
 %if "%ulsubset" == "systemd"
-configure_options+="--with-systemd "
+configure_options="$configure_options --with-systemd "
 %endif
 # ulsubset == systemd
 
@@ -562,7 +562,7 @@ configure_options+="--with-systemd "
 	--with-vendordir=%{_distconfdir}\
 	--disable-libmount-mountfd-support\
 	$configure_options
-make %{?_smp_mflags}
+%make_build
 }
 
 ################
@@ -613,7 +613,7 @@ fi
 ################
 %if "%ulbuild" == "base"
 %make_install
-mkdir -p %{buildroot}{%{_distconfdir}/default,%{_pam_vendordir},%{_sysconfdir}/issue.d}
+mkdir -p "%{buildroot}/%{_distconfdir}/default" "%{buildroot}/%{_pam_vendordir}" "%{buildroot}/%{_sysconfdir}/issue.d"
 install -m 644 %{SOURCE51} %{buildroot}%{_distconfdir}/blkid.conf
 touch %{buildroot}%{_sysconfdir}/blkid.conf
 mkdir %{buildroot}%{_sysconfdir}/blkid.conf.d %{buildroot}%{_distconfdir}/blkid.conf.d
@@ -714,8 +714,6 @@ mv %{buildroot}%{_bindir}/login %{buildroot}/bin/
 %else
 # ulsubset != core, ulbuild == base
 echo -n "" >%{name}.lang
-ln -sf /sbin/service %{buildroot}%{_sbindir}/rcuuidd
-ln -sf /sbin/service %{buildroot}%{_sbindir}/rcfstrim
 %endif
 # ulsubset == core, ulbuild == base
 
@@ -1587,7 +1585,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_mandir}/man8/parisc64.8.gz
 %exclude %{_mandir}/man8/uname26.8.gz
 
-%{_sbindir}/rcfstrim
 %{_unitdir}/fstrim.service
 %{_unitdir}/fstrim.timer
 %endif
@@ -1734,7 +1731,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %attr(-,uuidd,uuidd) %ghost %dir /run/uuidd
 %{_datadir}/bash-completion/completions/uuidd
 %{_mandir}/man8/uuidd.8.gz
-%{_sbindir}/rcuuidd
 %{_unitdir}/uuidd.service
 %{_unitdir}/uuidd.socket
 
