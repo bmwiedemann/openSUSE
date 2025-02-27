@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        Instrumentation System
 License:        GPL-2.0-or-later
@@ -33,6 +33,8 @@ Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
 Source5:        stap-server.conf
 Patch1:         systemtap-build-source-dir.patch
+Patch2:         linux-6.13-fedora-compatibility.patch
+Patch3:         rawhide-6.13-kbuild-compatibility.patch
 
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
@@ -137,6 +139,7 @@ install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}
 
 %files
 %{_bindir}/stap
+%{_bindir}/stap-prep
 %{_bindir}/stap-profile-annotate
 %{_bindir}/stap-jupyter-container
 %{_bindir}/stap-jupyter-install

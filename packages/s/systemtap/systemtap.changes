@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Feb 25 21:07:47 UTC 2025 - Tony Jones <tonyj@suse.com>
+
+- Resolve errors with linux-6.13 based kernels.
+
+  Building trivial 'hello world' failed with:
+    <command-line>: fatal error: {path_to}stapconf.h: No such file or directory
+
+  Attemptng to preserve build directory (-k) caused an infinite loop of:
+    /usr/src/linux-6.13.4-1/scripts/Makefile.build:370: warning: overriding 
+      recipe for target 'modules.order'
+
+  New patch: linux-6.13-fedora-compatibility.patch
+  New patch: rawhide-6.13-kbuild-compatibility.patch
+
+-------------------------------------------------------------------
+Mon Feb 24 18:11:09 UTC 2025 - Tony Jones <tonyj@suse.com>
+
+- Update to version 5.2
+
+  Summary of changes:
+  * SystemTap frontend (stap) changes
+    - New /* pragma:suffix */ for file-level embedded C code blocks to be
+      placed near the end of the emitted kernel module C file.
+       Corresponding macros allow additional C hooks for module init/exit.
+    - With elfutils 0.192's release on 2024-10-18, the "metadata" based
+      probes announced in systemtap 5.0 should now be increasingly available.
+
+  * SystemTap backend changes
+    - Numerous kernel portability changes
+    - "probe never" probes don't emit C code at all any more.
+    - The standard Fedora spec packaging breaks up the sdt.h header file
+       and the /usr/bin/dtrace stub-builder script, for those cases where
+       the macros in sdt.h are sufficient.
+    - More robust message transport draining during shutdown to prevent
+      message losses.
+
+  * SystemTap tapset changes
+    - Numerous kernel portability changes
+    - Added a few functions to inet_sock.stp.
+
+  * SystemTap sample scripts
+    - traceio3.stp: Trace VFS operations by filename regex.
+    - swapmonitor.stp: Trace swap operations.
+
+  * Bugfixes
+    - PR31597  Systemtap not extracting all the data sent to the print data 
+               in the buffers before shutdown
+    - PR31707  Need a way to postpone emitting the file-level embedded C blocks
+    - PR31708  Probe never handlers still emit C code for the handler handlers 
+               and probe local structs
+    - PR31699  UBSAN errors for systemtap map functions with Fedora Rawhide and
+               Fedora 39 6.8.8 kernels
+    - PR31740  @hist_log affects the result of @variance
+    - PR31893  access_ok() was called without turning off page faults
+    - PR32064  SEC_ERROR_BAD_DATABASE during very first stap-server start
+    - PR31703  Git detection false positive when 'which' not available
+    - PR32107  Drop obsolete -Werror hack in buildrun.cxx
+    - PR32194  Reflect the uprobe_unregister() split
+    - PR32209  No tracepoints seen using kernel-6.12
+    - PR32302  Unrecognized tracepoints
+    - RHEL-55262  Handle S390_lowcore macro removal
+    - RHEL-66275  Add some inet_sock.stp tapset functions.
+    - RHEL-66150  Fix cachestat.stp for newer kernels.
+    - RHEL-66577  Add swapmonitor.stp example script.
+
+-------------------------------------------------------------------
 Mon Jun 17 22:40:06 UTC 2024 - Tony Jones <tonyj@suse.com>
 
 - Update to version 5.1

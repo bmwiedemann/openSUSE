@@ -17,7 +17,7 @@
 
 
 Name:           systemtap-docs
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        Documents and examples for systemtap
 License:        GPL-2.0-or-later

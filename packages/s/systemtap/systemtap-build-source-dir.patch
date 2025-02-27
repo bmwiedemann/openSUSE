@@ -24,9 +24,11 @@ necessary headers.
  session.cxx |   28 ++++++++++++++++++++++++----
  1 file changed, 24 insertions(+), 4 deletions(-)
 
---- a/session.cxx
-+++ b/session.cxx
-@@ -108,6 +108,7 @@ systemtap_session::systemtap_session ():
+Index: systemtap-5.2/session.cxx
+===================================================================
+--- systemtap-5.2.orig/session.cxx	2024-11-08 11:25:26.000000000 -0800
++++ systemtap-5.2/session.cxx	2025-02-25 12:58:15.330925215 -0800
+@@ -112,6 +112,7 @@
    kernel_release = string (buf.release);
    release = kernel_release;
    kernel_build_tree = "/lib/modules/" + kernel_release + "/build";
@@ -34,7 +36,7 @@ necessary headers.
    architecture = machine = normalize_machine(buf.machine);
  
    for (unsigned i=0; i<5; i++) perpass_verbose[i]=0;
-@@ -298,6 +299,7 @@ systemtap_session::systemtap_session (co
+@@ -317,6 +318,7 @@
  {
    release = kernel_release = kern;
    kernel_build_tree = "/lib/modules/" + kernel_release + "/build";
@@ -42,7 +44,7 @@ necessary headers.
    kernel_extra_cflags = other.kernel_extra_cflags;
    architecture = machine = normalize_machine(arch);
    setup_kernel_release(kern.c_str());
-@@ -2218,21 +2220,39 @@ systemtap_session::setup_kernel_release
+@@ -2346,21 +2348,39 @@
        // normal search in tapsets.cxx.  Without CONFIG_DEBUG_INFO, we'd
        // need heuristics such as this one:
  
