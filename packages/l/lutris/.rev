@@ -531,4 +531,13 @@
   * Support for importing Commodore 64 ROMs</comment>
     <requestid>1248034</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>889b9a7b85d8fff403a6b35ace8a5021</srcmd5>
+    <version>0.5.19</version>
+    <time>1740761076</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix wrong placement of lang_package macro in spec file
+</comment>
+    <requestid>1249225</requestid>
+  </revision>
 </revisionlist>

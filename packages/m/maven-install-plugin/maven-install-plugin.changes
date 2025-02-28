@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Feb 28 16:24:03 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade tu upstrem version 3.1.4
+  * New features and improvements
+    + Enable GitHub Issues
+    + Add release-drafter, PR automation
+  * Dependency updates
+    + Bump resolverVersion from 1.9.18 to 1.9.22
+    + Bump org.mockito:mockito-core from 4.8.1 to 4.11.0
+    + Bump mavenVersion from 3.9.6 to 3.9.9
+  * Maintenance
+    * MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    * Remove unused method
+- Changes of release 3.1.3
+  * Bug
+    + MINSTALL-196: Maven 3.9.x install:install-file doesn't
+      recognize -Dpackaging
+  * Dependency upgrade
+    + MINSTALL-203:- Update to parent POM 43
+  * Maintenance
+    + Build with Maven 4
+- Changes of release 3.1.2
+  * Bug
+    + MINSTALL-190: Fix Temporary File Information Disclosure
+      Vulnerability
+  * Improvement
+    + MINSTALL-195: Include artifactId in messages of
+      InstallMojo#processProject
+  * Task
+    + MINSTALL-192: Code cleanups
+    + MNG-6829: Replace StringUtils#isEmpty(String) &
+      #isNotEmpty(String)
+  * Dependency upgrade
+    + MINSTALL-193: Upgrade Parent Version 42, require min Maven
+      3.6.3
+    + MINSTALL-197: Upgrade parent to 41, remove deprecations
+
+-------------------------------------------------------------------
 Tue Apr  2 17:25:45 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant

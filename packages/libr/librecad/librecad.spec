@@ -1,7 +1,7 @@
 #
 # spec file for package librecad
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           librecad
-Version:        2.2.0.2
+Version:        2.2.1.1
 Release:        0
 Summary:        Computer-aided design (CAD) software package for 2D design and drafting
 License:        (Apache-2.0 OR SUSE-GPL-3.0+-with-font-exception) AND GPL-2.0-only
@@ -25,7 +25,7 @@ Group:          Productivity/Graphics/CAD
 URL:            http://librecad.org/
 
 #Git-Web:       https://github.com/LibreCAD/LibreCAD
-Source:         https://github.com/LibreCAD/LibreCAD/archive/%version.tar.gz
+Source:         https://github.com/LibreCAD/LibreCAD/archive/v%version.tar.gz
 # Version is actually 8, not 3 (it is 3 in the filename due to how MediaWiki
 # works -- see http://wiki.librecad.org/index.php/File:Architect3-LCAD.zip)
 Source2:        https://wiki.librecad.org/images/d/d9/Architect3-LCAD.zip
@@ -34,7 +34,6 @@ Source4:        https://wiki.librecad.org/images/9/9d/Electrical1-LCAD.zip
 Source10:       ttf2lff.1
 Source20:       %name-rpmlintrc
 Patch4:         librecad-no-date.diff
-Patch5:         librecad-use-system-libdxfrw.patch
 Patch6:         librecad-install.diff
 Patch7:         librecad-plugindir.diff
 BuildRequires:  fdupes
@@ -51,11 +50,10 @@ BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(libdxfrw) >= 1
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
-Requires(postun):desktop-file-utils
-Requires(postun):shared-mime-info
+Requires(postun): desktop-file-utils
+Requires(postun): shared-mime-info
 Recommends:     %name-parts
 
 %description
@@ -75,20 +73,6 @@ CAD drawings.
 %prep
 %setup -qn LibreCAD-%version -a2 -a3 -a4
 %autopatch -p1
-
-pc="libdxfrw"
-if ! pkg-config --exists "$pc"; then
-	pc=libdxfrw0
-fi
-dxfrw_includedir=$(pkg-config --cflags-only-I "$pc" | sed 's|-I||g')
-
-# Fix paths
-sed -i 's|##LIBDIR##|%_libdir|g' librecad/src/lib/engine/rs_system.cpp
-sed -i 's|$${DXFRW_INCLUDEDIR}|'"$dxfrw_includedir"'|g' librecad/src/src.pro
-sed -i 's@LRELEASE="lrelease"@LRELEASE="lrelease-qt5"@' scripts/postprocess-unix.sh
-
-# Make sure bundled libraries are not used
-rm -rf libraries/libdxfrw
 
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' licenses/{MIT,KST32B_v2,lc_opengost-fonts}.txt

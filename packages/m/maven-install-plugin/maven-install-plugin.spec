@@ -1,7 +1,7 @@
 #
 # spec file for package maven-install-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           maven-install-plugin
-Version:        3.1.1
+Version:        3.1.4
 Release:        0
 Summary:        Maven Install Plugin
 License:        Apache-2.0

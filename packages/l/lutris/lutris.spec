@@ -33,7 +33,6 @@ Requires:       xrandr
 Recommends:     ca-certificates-steamtricks
 Recommends:     winetricks
 BuildArch:      noarch
-%lang_package
 %if 0%{?suse_version} >= 1600
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
@@ -104,6 +103,8 @@ Requires:       python%{_py}-pypresence
 Requires:       python%{_py}-moddb
 %endif
 %endif
+
+%lang_package
 
 %description
 Lutris allows to gather and manage (install, configure and launch)

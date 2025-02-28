@@ -26,6 +26,8 @@ Group:          System/Console
 URL:            https://github.com/Aetf/kmscon/
 Source:         %{name}-%{version}.tar.xz
 Patch1:         kmscon-no-date-time.patch
+# https://github.com/Aetf/kmscon/pull/103
+Patch2:         0001-Fix-systemd-monitor-initialization.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libtsm-devel >= 4.0.2+git24
 BuildRequires:  meson

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 28 10:54:48 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Fix wrong placement of lang_package macro in spec file
+
+-------------------------------------------------------------------
 Mon Feb 24 08:50:06 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.19:

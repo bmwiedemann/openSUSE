@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>1164213</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>75ca75ee0d7ac88011040753c929d874</srcmd5>
+    <version>3.1.4</version>
+    <time>1740761863</time>
+    <user>dimstar_suse</user>
+    <comment>A security fix without CVE number</comment>
+    <requestid>1249283</requestid>
+  </revision>
 </revisionlist>

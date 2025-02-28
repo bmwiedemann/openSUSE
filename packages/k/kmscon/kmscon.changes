@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 28 14:08:45 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix systemd event handling:
+  * 0001-Fix-systemd-monitor-initialization.patch
+
+-------------------------------------------------------------------
 Thu Feb 27 09:58:02 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 9.0.0+git42:

@@ -336,4 +336,16 @@
   Added missing bits for splitted source medium</comment>
     <requestid>1248399</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e003f2318a7be1b359ef11d33cc25ba5</srcmd5>
+    <version>0.5.10</version>
+    <time>1740761839</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5.10
+  * allow to specify build_options per flavor
+  * build_option for skiping copy of rpm-md trees to base iso
+  * build_option for updateinfo_packages_only
+  * bugfixes and cleanup</comment>
+    <requestid>1249282</requestid>
+  </revision>
 </revisionlist>

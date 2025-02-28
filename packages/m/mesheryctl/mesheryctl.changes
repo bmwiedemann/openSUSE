@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Feb 28 09:00:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.41:
+  * no CLI-related changes in this release
+  * Maintenance
+    - [CI] Update from ubuntu-20.04 to ubuntu-24.04 as runner
+      @shinigami-777 (#13790)
+  * Documentation
+    - Fix table display issue #13766 @sangramrath (#13772)
+    - docs: broken-links @leecalcote (#13793)
+    - Delete
+      docs/pages/project/contributing/contributing-cypress.md
+      @leecalcote (#13791)
+    - Leecalcote/docs/broken-links @leecalcote (#13792)
+- update to 0.8.40:
+  * no CLI-related changes in this release
+- update to 0.8.39:
+  * no CLI-related changes in this release
+- update to 0.8.38:
+  * no CLI-related changes in this release
+  * General
+    - Update README.md @miacycle (#13758)
+  * Maintenance
+    - Don't lint UI and Provider UI on PRs with only Docs updates.
+      @leecalcote (#13745)
+  * Documentation
+    - Add tutorial - Embedding Designs in Wordpress @sangramrath
+      (#13528)
+    - Fix/clean lightbox issue @zihanKuang (#13729)
+    - Fix broken links in the Overview & Installation section of
+      the Meshery documentation @zihanKuang (#13770)
+- update to 0.8.37:
+  * no CLI-related changes in this release
+  * - Maintenance
+    - fix: build step failure experiements @ianrwhitney (#13732)
+  * - Documentation
+    - Bump nokogiri from 1.17.2 to 1.18.3 in /docs/v0.7 @dependabot
+      (#13723)
+    - Enhance footer styling and layout adjustments for improved
+      responsive… @falgunmpatel (#13720)
+    - fix: fix shape generic node and polygon @weilirs (#13684)
+- update to 0.8.36:
+  * no CLI-related changes in this release
+  * Maintenance
+    - [CI] Tag-name property for Homebrew packages @jamieplu
+      (#13712)
+    - leecalcote/golang/chore @leecalcote (#13710)
+    - [CI] Chore: Upgrade to Ubuntu 24.04 as the runner @leecalcote
+      (#13709)
+  * Documentation
+    - Chore: Avoid deprecated golangci-lint config; Enhance Meshery
+      Error Code details @leecalcote (#13708)
+- update to 0.8.35:
+  * no CLI-related changes in this release
+  * Maintenance
+    - [CI] Adding workflow_dispatch to Release Drafter workflow
+      @jamieplu (#13700)
+    - [CI] Use correct secret in release drafter workflow
+      @leecalcote (#13699)
+    - fix: the secrent in the build-ui-server-reusable-workflow
+      @amitamrutiya (#13693)
+    - Update build-ui-server-reusable-workflow.yml @leecalcote
+      (#13673)
+  * Documentation
+    - chore(deps-dev): bump nokogiri from 1.17.2 to 1.18.3 in /docs
+      @dependabot (#13667)
+    - doc: added contributing guide to meshery schema @souvikinator
+      (#13421)
+- update to 0.8.34:
+  * no CLI-related changes in this release
+  * Bump Sistent
+  * Revert Workflow changes
+- update to 0.8.33:
+  * No changes
+- update to 0.8.32:
+  * no CLI-related changes in this release
+  * General
+    - Fix nil crash @aabidsofi19 (#13627)
+  * Documentation
+    - [docs/ux] Helm Kanvas Snapshot @theBeginner86 (#13650)
+    - fix(docs): remove incorrect diagram from Credentials page
+      @zihanKuang (#13633)
+
+-------------------------------------------------------------------
 Sun Feb 16 09:14:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.31:
