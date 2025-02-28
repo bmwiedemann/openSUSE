@@ -47,4 +47,12 @@
     <comment>- Update to release 1.10.0</comment>
     <requestid>1246000</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0bcfcda6e6fc8904bb7990ba7326b082</srcmd5>
+    <version>1.10.0</version>
+    <time>1740760755</time>
+    <user>dimstar_suse</user>
+    <comment>- Make specfile conform to POSIX sh</comment>
+    <requestid>1249110</requestid>
+  </revision>
 </revisionlist>

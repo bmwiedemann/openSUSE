@@ -1,7 +1,7 @@
 #
 # spec file for package gap-simpcomp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,9 +65,8 @@ operations.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$moddir"
+cd "%buildroot/$moddir"
 rm -Rf install-sh configure depcomp missing config.log
-popd
 
 %files -f %name.files
 

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:38:14 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix Cython version requirement: Version 3.0 is required.
+
+-------------------------------------------------------------------
+Tue Feb 25 09:52:30 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix python singlespec usage: python_moudle should only ever be
+  used in BuildRequires statements.
+
+-------------------------------------------------------------------
+Mon Feb 24 08:21:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Build a proper python subpackage using python-rpm-macros
+  * uses python3 on Factory and python311 on SLE-15 derivatives
+
+-------------------------------------------------------------------
 Sat Feb 22 02:11:35 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 2.6.0:

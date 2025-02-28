@@ -45,8 +45,6 @@ associative algebras and a method to determine Kurosh algebras.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$moddir/"
-popd
 
 %files -f %name.files
 

@@ -18,6 +18,10 @@
 
 %define cname libplist-2_0-4
 %define cppname libplist++-2_0-4
+# only use primary python on Factory...
+%define pythons python3
+# ... and python311 on SLE 15 derivates
+%{?sle15_python_module_pythons}
 Name:           libplist
 Version:        2.6.0
 Release:        0
@@ -32,9 +36,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python311-Cython >= 0.17
-BuildRequires:  python311-setuptools
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  %{python_module Cython >= 3.0}
+BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module setuptools}
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 libplist is a library for handling Apple Binary and XML Property Lists.
@@ -85,14 +91,11 @@ libplist is a library for handling Apple Binary and XML Property Lists.
 
 This package contains the development files for C++.
 
-%package -n python3-plist
+%package -n python-plist
 Summary:        Library for handling Apple Binary and XML Property Lists -- Python Bindings
 Requires:       %{cname} = %{version}
-Requires:       python3-Cython >= 0.17
-Obsoletes:      python-plist < %{version}
-Conflicts:      python-plist
 
-%description -n python3-plist
+%description -n python-plist
 libplist is a library for handling Apple Binary and XML Property Lists.
 
 This package contains the python bindings.
@@ -102,7 +105,7 @@ This package contains the python bindings.
 
 %build
 autoreconf -fvi
-%configure --disable-static PACKAGE_VERSION=%{version} PYTHON=/usr/bin/python3
+%{python_expand %configure --disable-static PACKAGE_VERSION=%{version} PYTHON=/usr/bin/python%{$python_bin_suffix}}
 %make_build
 
 %check
@@ -158,9 +161,9 @@ install -D -m 0644 cython/plist.pxd %{buildroot}%{_includedir}/plist/cython/plis
 %{_libdir}/libplist++-2.0.so
 %{_libdir}/pkgconfig/libplist++-2.0.pc
 
-%files -n python3-plist
+%files %{python_files plist}
 %dir %{_includedir}/plist/cython
 %{_includedir}/plist/cython/plist.pxd
-%{python3_sitearch}/plist.so
+%{python_sitearch}/plist.so
 
 %changelog

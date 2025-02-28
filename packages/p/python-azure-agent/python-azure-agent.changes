@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 20 21:16:37 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
+
+- Add a new version of paa_force_py3_sle15.patch to compensate for
+  missing Python RPM macros in older distros
+
+-------------------------------------------------------------------
 Mon Dec 23 10:54:55 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 2.12.04 (bsc#1235140)

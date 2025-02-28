@@ -53,9 +53,8 @@ autoreconf -fi
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$moddir"
+cd "%buildroot/$moddir"
 rm -Rf autom4te.cache config.log config.status configure~ gen/src/*.{o,d}
-popd
 %fdupes %buildroot/%_prefix
 
 %files -f %name.files

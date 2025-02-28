@@ -1,7 +1,7 @@
 #
 # spec file for package gap-classicpres
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,7 @@ code from Magma.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$moddir/"
-popd
+rm -Rf "%buildroot/$moddir/src"
 
 %files -f %name.files
 

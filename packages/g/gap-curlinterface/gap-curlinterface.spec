@@ -44,10 +44,9 @@ files over http, ftp and https from within the GAP processor.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$fmoddir/"
+cd "%buildroot/$fmoddir/"
 rm -Rfv config.* configure* Makefile* gen/ src/
 find . -type f -size 0 -name _Chunks.xml -print -delete
-popd
 
 %files -f %name.files
 

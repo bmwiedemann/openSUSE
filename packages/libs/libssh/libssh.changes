@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 18 19:08:10 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Move global config dir to /usr/etc/libssh (bsc#1222716)
+  * Add patch libssh-cmake-Add-option-WITH_HERMETIC_USR.patch
+
+-------------------------------------------------------------------
 Tue Feb  4 16:26:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not Require cmake from the devel package: there is no

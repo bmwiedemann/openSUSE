@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 27 09:40:42 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(ftgl) BuildRequires: this is not actually used
+  based on code inspection.
+
+-------------------------------------------------------------------
 Thu Feb 29 14:55:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -9,7 +15,7 @@ Thu Mar  4 03:15:38 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 3.1.12:
   * Fixes #468 missing Intrinsics.h
-  
+
 -------------------------------------------------------------------
 Sun Dec 27 18:24:08 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
@@ -21,7 +27,7 @@ Sun Dec 27 18:24:08 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Removed patch to reduce build dependencies, as it's no longer required:
   * 0001-Reduce-dependencies.patch
-  
+
 -------------------------------------------------------------------
 Tue May 19 15:23:08 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 

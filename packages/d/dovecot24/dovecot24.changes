@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 27 18:18:24 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Adapt dependency for SLES.
+
+-------------------------------------------------------------------
+Wed Feb 26 06:48:16 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Remove not used macro
+
+-------------------------------------------------------------------
 Thu Feb  6 16:38:09 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - make apparmor conditional more readable 

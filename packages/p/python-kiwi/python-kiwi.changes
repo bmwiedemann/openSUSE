@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Feb 26 17:39:37 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.11 → 10.2.12
+
+-------------------------------------------------------------------
+Wed Feb 26 16:17:40 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix profile env variable name regression
+
+  In the effort of adapting to the latest snapper in Issue #2697
+  we overlooked the after effect of a different variable name
+  in the profile environment with regards to $kiwi_btrfs_root_is_snapshot
+  and $kiwi_btrfs_root_is_snapper_snapshot. Image builds that
+  references the former variable name would be broken by the change.
+  This commit makes sure no regression is introduced by providing
+  both variants. This Fixes bsc#1237772
+
+-------------------------------------------------------------------
+Tue Feb 25 11:51:49 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix grub mkimage call for the ppc platform
+
+  The list of modules used to create a grub platform image for
+  ppc was the same list as used for the x86 bios platform.
+  This commit fixes this and also cleans up the inconsistency
+  and misleading names used for creating platform specific
+  output. This Fixes #2738
+
+-------------------------------------------------------------------
+Sun Feb 16 17:41:04 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.10 → 10.2.11
+
+-------------------------------------------------------------------
+Sun Feb 16 15:47:46 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update box plugin documentation
+
+  Add chapter about new container build feature. The
+  box plugin can now also run the build in containers
+
+-------------------------------------------------------------------
+Tue Feb 11 18:29:44 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- The ubuntu 20.04 github runner is closing down
+
+  Make sure to move to another runner for workloads which
+  still uses ubuntu 20.04
+
+-------------------------------------------------------------------
 Sun Feb 09 20:16:13 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.9 → 10.2.10

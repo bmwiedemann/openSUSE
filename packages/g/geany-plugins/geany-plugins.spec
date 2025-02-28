@@ -1,7 +1,7 @@
 #
 # spec file for package geany-plugins
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ BuildRequires:  intltool
 BuildRequires:  libgeany0 >= 2.0
 BuildRequires:  libgpgme-devel
 BuildRequires:  libtool
-BuildRequires:  libwnck2-devel
 BuildRequires:  lua51-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros

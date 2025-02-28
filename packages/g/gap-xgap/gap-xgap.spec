@@ -47,9 +47,8 @@ The XGAP package allows to use graphics in GAP.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$moddir"
+cd "%buildroot/$moddir"
 rm -Rfv configure config.* bin/*/config.* bin/*/configure cnf src.x11
-popd
 %fdupes %buildroot/%_prefix
 
 %files -f %name.files

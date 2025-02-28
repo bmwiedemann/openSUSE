@@ -1,27 +1,27 @@
-Index: wxPython-4.2.2/unittests/test_cmdproc.py
-===================================================================
---- wxPython-4.2.2.orig/unittests/test_cmdproc.py
-+++ wxPython-4.2.2/unittests/test_cmdproc.py
-@@ -41,19 +41,19 @@ class cmdproc_Tests(wtc.WidgetTestCase):
+From 2adbeaa7854342a27aab828c128f2111a99c4cf0 Mon Sep 17 00:00:00 2001
+From: Scott Talbert <swt@techie.net>
+Date: Thu, 23 Jan 2025 21:46:20 -0500
+Subject: [PATCH] Implement __iter__ for wxList iterator classes
+
+This fixes being able to use these classes in for loops, for example.
+Specifically it fixes the cmdproc tests with Python 3.13.1.
+---
+ etgtools/tweaker_tools.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/etgtools/tweaker_tools.py b/etgtools/tweaker_tools.py
+index b1ae6e7fc..9238a130c 100644
+--- a/etgtools/tweaker_tools.py
++++ b/etgtools/tweaker_tools.py
+@@ -1055,6 +1055,11 @@ class {ListClass}_iterator {{
+         if (PyErr_Occurred())
+             return NULL;
+     %End
++
++    PyObject* __iter__();
++    %MethodCode
++        return PyObject_SelfIter(sipSelf);
++    %End
+ }};
  
-         cmds = cmdproc.GetCommands()
-         self.assertEqual(len(cmds), 5)
--        self.assertEqual([x.value for x in cmds], [True]*5)
-+        self.assertEqual([x.value for x in list(cmds)], [True]*5)
- 
-         self.assertTrue(cmdproc.CanUndo())
-         self.assertFalse(cmdproc.CanRedo())
- 
-         cmdproc.Undo()
-         cmdproc.Undo()
--        self.assertEqual([x.value for x in cmds], [True]*3 + [False]*2)
-+        self.assertEqual([x.value for x in list(cmds)], [True]*3 + [False]*2)
- 
-         self.assertTrue(cmdproc.CanRedo())
-         cmdproc.Redo()
-         cmdproc.Redo()
--        self.assertEqual([x.value for x in cmds], [True]*5)
-+        self.assertEqual([x.value for x in list(cmds)], [True]*5)
- 
-         cmdproc.Undo()
-         cmdproc.Undo()
+ class {ListClass}

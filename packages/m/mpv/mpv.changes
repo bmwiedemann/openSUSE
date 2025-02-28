@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 28 08:49:14 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Add 0001-dont-load-client-rt-conf.patch:
+  fix warning "pw.conf setting config.name to client-rt.conf is
+  deprecated" introduced with Pipewire 1.3.81
+  (https://github.com/mpv-player/mpv/issues/15914)
+
+-------------------------------------------------------------------
 Wed Dec 18 11:08:35 UTC 2024 - llyyr@yukari.in
 
 - 14904.patch: remove obsolete patch

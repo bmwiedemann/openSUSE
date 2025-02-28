@@ -1,7 +1,7 @@
 #
 # spec file for package gap-fplsa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,9 +45,8 @@ IsomorphismSCTableAlgebra.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$fmoddir/"
+cd "%buildroot/$fmoddir/"
 rm -Rf Makefile* configure src/
-popd
 
 %files -f %name.files
 

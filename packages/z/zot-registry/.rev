@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40544db1dbfa9dde36064eaaa6cb62c0</srcmd5>
+    <version>2.1.2</version>
+    <time>1740760721</time>
+    <user>dimstar_suse</user>
+    <comment>new package zot-registry: scale-out production-ready vendor-neutral OCI-native container image/artifact registry (purely based on OCI Distribution Specification)</comment>
+    <requestid>1249058</requestid>
+  </revision>
+</revisionlist>

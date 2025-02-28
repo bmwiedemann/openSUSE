@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 27 18:36:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libwnck2-devel BuildRequires: nothing needs this. Stops us
+  from pulling in GTK2 into the build.
+
+-------------------------------------------------------------------
 Mon Aug 19 11:30:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire gettext-devel instead of gettext: allow OBS to

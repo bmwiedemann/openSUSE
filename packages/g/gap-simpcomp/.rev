@@ -15,4 +15,12 @@
     <comment>forwarded 1136431</comment>
     <requestid>1136520</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>23fdc9232485129cc84cc7cd00b37091</srcmd5>
+    <version>2.1.14</version>
+    <time>1740760764</time>
+    <user>dimstar_suse</user>
+    <comment>- Make specfile conform to POSIX sh</comment>
+    <requestid>1249124</requestid>
+  </revision>
 </revisionlist>

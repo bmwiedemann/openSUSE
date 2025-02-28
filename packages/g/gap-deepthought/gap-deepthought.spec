@@ -47,9 +47,7 @@ find . -type f -size 0 -name _Chunks.xml -print -delete
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$fmoddir/"
-rm -Rf src
-popd
+rm -Rf "%buildroot/$fmoddir/src"
 
 %files -f %name.files
 

@@ -31,6 +31,8 @@ Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.changes
 # PATCH-FIX-OPENSUSE do not require equal libav versions, obs rebuilds as needed
 Patch0:         mpv-make-ffmpeg-version-check-non-fatal.patch
+# PATCH-FIX-UPSTREAM pw.conf setting config.name to client-rt.conf is deprecated (https://github.com/mpv-player/mpv/issues/15914)
+Patch1:         0001-dont-load-client-rt-conf.patch
 BuildRequires:  bash
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  linux-kernel-headers

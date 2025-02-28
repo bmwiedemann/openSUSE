@@ -57,14 +57,13 @@ find . -type f -name "*~" -print -delete
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$fmoddir/"
+cd "%buildroot/$fmoddir/"
 find . -type f -name .dirstamp -print -delete
 # delete tests and assets
 rm -Rf tst data/symmetric-closure.ds6.gz data/test-1.d6
 # delete sources and build artifacts, user is not expected to rebuild in distribution tree
 rm -Rf autom4te.cache src cnf config* m4 autogen.sh aclocal.m4 *.la Makefile*
 rm -Rf extern/edge* extern/bliss*/[a-z]* extern/bliss*/.deps extern/bliss*/.libs extern/bliss*/.clang*
-popd
 %fdupes %buildroot/%_prefix
 
 %files -f %name.files

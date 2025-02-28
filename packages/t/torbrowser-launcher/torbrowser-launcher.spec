@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 Name:           torbrowser-launcher
 Version:        0.3.7
 Release:        0
@@ -24,24 +25,30 @@ License:        MIT
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://gitlab.torproject.org/tpo/applications/torbrowser-launcher/
 Source0:        https://github.com/torproject/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM torbrowser-launcher-qt6-port.patch badshah400@gmail.com -- Port to Qt6, taken from upstream MR
+Patch0:         https://patch-diff.githubusercontent.com/raw/torproject/torbrowser-launcher/pull/720.patch#/torbrowser-launcher-qt6-port.patch
+BuildRequires:  %{python_module PySocks}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module distro}
+BuildRequires:  %{python_module gpg}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyside6}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
+BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-PySocks
-BuildRequires:  python3-devel
-BuildRequires:  python3-distro
-BuildRequires:  python3-gpg
-BuildRequires:  python3-packaging
-BuildRequires:  python3-qt5
-BuildRequires:  update-desktop-files
 Requires:       gpg2
 Requires:       hicolor-icon-theme
 Requires:       python3-PySocks
 Requires:       python3-gpg
 Requires:       python3-packaging
-Requires:       python3-qt5
+Requires:       python3-pyside6
 Requires:       python3-requests
 Requires:       xmessage
 BuildArch:      noarch
@@ -82,14 +89,15 @@ a Tor network compromise.
 %autosetup -p1
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --skip-build --root %{buildroot}
+%pyproject_install
 
-%suse_update_desktop_file %{buildroot}%{_datadir}/applications/torbrowser.desktop
-%suse_update_desktop_file %{buildroot}%{_datadir}/applications/torbrowser-settings.desktop
-
+mkdir -p %{buildroot}%{_sysconfdir}
+%{python_expand mv %{buildroot}%{$python_sitelib}/etc/apparmor.d %{buildroot}%{_sysconfdir}/
+%fdupes %{buildroot}%{$python_sitelib}
+}
 %find_lang %{name} %{?no_lang_C}
 
 %post -n torbrowser-apparmor-profile
@@ -103,8 +111,8 @@ python3 setup.py install --skip-build --root %{buildroot}
 %{_datadir}/metainfo/*.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/torbrowser*.png
 %{_datadir}/%{name}/
-%{python3_sitelib}/torbrowser_launcher-%{version}-py%{py3_ver}.egg-info
-%{python3_sitelib}/torbrowser_launcher/
+%{python_sitelib}/torbrowser_launcher-%{version}*.*-info
+%{python_sitelib}/torbrowser_launcher/
 
 %files -n torbrowser-apparmor-profile
 %license apparmor/license.txt

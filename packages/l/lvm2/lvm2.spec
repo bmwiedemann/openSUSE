@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package lvm2
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -27,7 +27,11 @@
 %define upstream_device_mapper_version  1.02.203
 %define device_mapper_version           %{lvm2_version}_1.02.203
 %define thin_provisioning_version 0.7.0
-%define _supportsanlock 1
+%if 0%{?suse_version} >= 1600 && ! 0%{?is_opensuse}
+  %define _supportsanlock 0
+%else
+  %define _supportsanlock 1
+%endif
 %define dlm_version     4.0.9
 # from lvm2 version 2.03, suse obsoleted clvm, cmirrord, liblvm2app & liblvm2cmd.
 # so the obseletes version is 2.03
@@ -103,11 +107,11 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 Requires:       device-mapper >= %{device_mapper_version}
 Requires:       modutils
-# see bsc#1225783 for following 2 lines
+# see bsc#1225783 bsc#1229518 for following 2 lines
 Requires:       (udev >= 255.7 if udev)
 Requires:       (multipath-tools >= 0.9.9 if multipath-tools)
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 Provides:       lvm = %{version}
 Obsoletes:      lvm2-cmirrord <= %{lvm2_cmirrord_version}
 %{?systemd_requires}

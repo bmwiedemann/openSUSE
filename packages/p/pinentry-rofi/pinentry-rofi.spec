@@ -17,11 +17,11 @@
 
 
 Name:           pinentry-rofi
-Version:        2.0.5+git.1721595070.65e623a
+Version:        2.0.5+git.1735213104.1b5afa0
 Release:        0
 Summary:        Rofi frontend to pinentry
 License:        GPL-3.0-or-later+
-URL:            https://git.cepl.eu/cgit/rofi/pinentry-rofi
+URL:            https://git.sr.ht/~mcepl/pinentry-rofi
 Source0:        pinentry-rofi-%{version}.tar.gz
 BuildRequires:  bash
 BuildRequires:  coreutils

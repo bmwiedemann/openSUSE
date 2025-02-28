@@ -2822,4 +2822,38 @@
   for any better solution though. This Fixes #2730</comment>
     <requestid>1245598</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>05e98d85a6eefba96c8ed208e4e1a6b8</srcmd5>
+    <version>10.2.12</version>
+    <time>1740760697</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 10.2.11 → 10.2.12
+
+- Fix profile env variable name regression
+  In the effort of adapting to the latest snapper in Issue #2697
+  we overlooked the after effect of a different variable name
+  in the profile environment with regards to $kiwi_btrfs_root_is_snapshot
+  and $kiwi_btrfs_root_is_snapper_snapshot. Image builds that
+  references the former variable name would be broken by the change.
+  This commit makes sure no regression is introduced by providing
+  both variants. This Fixes bsc#1237772
+
+- Fix grub mkimage call for the ppc platform
+  The list of modules used to create a grub platform image for
+  ppc was the same list as used for the x86 bios platform.
+  This commit fixes this and also cleans up the inconsistency
+  and misleading names used for creating platform specific
+  output. This Fixes #2738
+
+- Bump version: 10.2.10 → 10.2.11
+
+- Update box plugin documentation
+  Add chapter about new container build feature. The
+  box plugin can now also run the build in containers
+
+- The ubuntu 20.04 github runner is closing down
+  Make sure to move to another runner for workloads which
+  still uses ubuntu 20.04</comment>
+    <requestid>1248862</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 26 11:27:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.21.1
+  * [BUGFIX] Revert incorrect use of reentrant locks. #1076
+- Update sed regular expression for removing shebang
+
+-------------------------------------------------------------------
 Fri Oct 18 10:45:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.21.0:

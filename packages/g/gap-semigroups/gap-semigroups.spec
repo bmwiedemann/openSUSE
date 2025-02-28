@@ -70,9 +70,8 @@ autoreconf -fi
 %install
 rm -Rf libsemigroups
 %gappkg_simple_install
-pushd "%buildroot/$fmoddir/"
+cd "%buildroot/$fmoddir/"
 rm -Rfv Makefile* configure* config.* cnf/ src/ gapbind14/src/ gapbind14/include/ autom4te.cache
-popd
 find "%buildroot" "(" -name "*.orig" -o -name .gitignore -o \
 	-name .dirstamp -o -name .clang-format -o -name .ccls ")" -print -delete
 %fdupes %buildroot/%_prefix

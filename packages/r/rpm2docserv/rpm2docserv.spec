@@ -21,7 +21,7 @@
 %endif
 
 Name:           rpm2docserv
-Version:        20250107.10e1695
+Version:        20250227.6e4073c
 Release:        0
 Summary:        Make manpages from RPMs accessible in a web browser
 License:        Apache-2.0
@@ -97,6 +97,8 @@ cp -r assets %{buildroot}%{_datadir}/%{name}
 
 install -D -m 0644 systemd/docserv-auxserver.service %{buildroot}%{_unitdir}/docserv-auxserver.service
 install -D -m 0644 systemd/docserv-auxserver.default %{buildroot}%{_distconfdir}/default/docserv-auxserver
+install -D -m 0644 systemd/docserv-auxserver-reload.path %{buildroot}%{_unitdir}/docserv-auxserver-reload.path
+install -D -m 0644 systemd/docserv-auxserver-reload.service %{buildroot}%{_unitdir}/docserv-auxserver-reload.service
 install -D -m 0644 systemd/docserv-minisrv.service %{buildroot}%{_unitdir}/docserv-minisrv.service
 install -D -m 0644 systemd/docserv-minisrv.default %{buildroot}%{_distconfdir}/default/docserv-minisrv
 mkdir -p %{buildroot}%{_sysusersdir}/
@@ -112,16 +114,16 @@ mkdir -p %{buildroot}%{_datadir}/docserv/apache2
 install -m 644 apache2/* %{buildroot}%{_datadir}/docserv/apache2/
 
 %pre -n docserv-auxserver -f docserv-aux.pre
-%service_add_pre docserv-auxserver.service
+%service_add_pre docserv-auxserver.service docserv-auxserver-reload.path
 
 %post -n docserv-auxserver
-%service_add_post docserv-auxserver.service
+%service_add_post docserv-auxserver.service docserv-auxserver-reload.path
 
 %preun -n docserv-auxserver
-%service_del_preun docserv-auxserver.service
+%service_del_preun docserv-auxserver.service docserv-auxserver-reload.path
 
 %postun -n docserv-auxserver
-%service_del_postun docserv-auxserver.service
+%service_del_postun docserv-auxserver.service docserv-auxserver-reload.path
 
 %pre -n docserv-minisrv -f docserv-srv.pre
 %service_add_pre docserv-minisrv.service
@@ -145,6 +147,8 @@ install -m 644 apache2/* %{buildroot}%{_datadir}/docserv/apache2/
 %license LICENSE
 %{_sbindir}/docserv-auxserver
 %{_unitdir}/docserv-auxserver.service
+%{_unitdir}/docserv-auxserver-reload.path
+%{_unitdir}/docserv-auxserver-reload.service
 %{_sysusersdir}/system-user-docserv-aux.conf
 %if 0%{?suse_version} >= 1599
 %{_distconfdir}/default/docserv-auxserver

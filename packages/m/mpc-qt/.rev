@@ -167,4 +167,13 @@
     <comment></comment>
     <requestid>1248363</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>1fc352f12bd6b9ffb02e0d6685c868d0</srcmd5>
+    <version>24.12.1</version>
+    <time>1740760738</time>
+    <user>dimstar_suse</user>
+    <comment>- Keep original name for the desktop file
+</comment>
+    <requestid>1249061</requestid>
+  </revision>
 </revisionlist>

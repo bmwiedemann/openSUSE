@@ -1,7 +1,7 @@
 #
 # spec file for package easytag
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,15 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://projects.gnome.org/easytag/
 Source0:        %{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM easytag-revert-open-handle-ogg.patch bgo#776110 boo#1069789 bjorn.lie@gmail.com -- Revert commit causing corruption in oggfiles
-Patch0:         easytag-revert-open-handle-ogg.patch
-# PATCH-FIX-UPSTREAM easytag-taglib-2.0.patch glgo#GNOME/easytag#92 dimstar@opensuse.org -- Fix build against taglib 2.0
-Patch1:         easytag-taglib-2.0.patch
+# PATCH-FIX-UPSTREAM 01_remove-pixdata.patch -- Don't use gdk-pixbuf-pixdata for image resources
+Patch0:         01_remove-pixdata.patch
+# PATCH-FIX-UPSTREAM 02_fix-ogg-corruption.patch -- Revert upstream commit which causes OGG file corruption
+Patch1:         02_fix-ogg-corruption.patch
+# PATCH-FIX-UPSTREAM 03_port-to-taglib-2.patch -- Port to taglib 2
+Patch2:         03_port-to-taglib-2.patch
+# PATCH-FIX-UPSTREAM 04_taglib-2-further-fix.patch -- Further fix compatibility with taglib 2.x on 32-bit architecture.
+Patch3:         04_taglib-2-further-fix.patch
+
 BuildRequires:  appstream-glib-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc

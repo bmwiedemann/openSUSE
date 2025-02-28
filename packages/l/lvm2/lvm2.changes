@@ -1,3 +1,9 @@
+Thu Feb 27 02:44:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
+
+- fixing HA16.0 Product building issues for packages: lvm2-lockd, cluster-md, dlm, drbd (bsc#1237701)
+  * update lvm2.spec
+
+-------------------------------------------------------------------
 Thu Feb 20 05:33:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
 
 - system with LVM on iSCSI hangs on shutdown because blk-availability.service is not enabled (bsc#1236788)
@@ -118,6 +124,12 @@ Mon Dec 16 05:58:47 UTC 2024 - Glass Su <glass.su@suse.com>
   - add build dependency 'pkgconfig(systemd)' and configure option '--enable-sd-notify' for lvmlockd
   - remove unrecognized (since 2.03.01) configure parameter '--with-cluster' from lvmlockd
 
+-------------------------------------------------------------------
+Fri Aug 30 02:26:00 UTC 2024 - Glass Su <glass.su@suse.com>
+
+- [SLFO] systemd 254 is missing reworked SYSTEMD_READY logic in device mapper udev rules (bsc#1229518)
+  * update udev dependency version in lvm2.spec
+  
 -------------------------------------------------------------------
 Tue Aug 13 13:08:00 UTC 2024 - Glass Su <glass.su@suse.com>
 

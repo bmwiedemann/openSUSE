@@ -72,6 +72,12 @@
 %bcond_without polly
 %bcond_without lld
 
+# Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
+# See https://bugzilla.suse.com/show_bug.cgi?id=1235697
+%if 0%{?suse_version} < 1600
+%define gcc_version 13
+%endif
+
 %if %{suse_version} > 1600
 %global python_pkg python3
 %global python_bin python3
@@ -444,8 +450,8 @@ BuildRequires:  %{python_pkg}-base >= 3.8
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_version} >= 9
+BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  libstdc++-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -1009,6 +1015,8 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
 %define build_ldflags -Wl,--no-keep-memory
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_C_COMPILER=gcc%{?gcc_version:-%{gcc_version}} \
+    -DCMAKE_CXX_COMPILER=g++%{?gcc_version:-%{gcc_version}} \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
     -DLLVM_HOST_TRIPLE=%{host_triple} \
     -DLLVM_BUILD_LLVM_DYLIB:BOOL=OFF \

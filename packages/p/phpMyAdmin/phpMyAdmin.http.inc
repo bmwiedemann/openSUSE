@@ -4,6 +4,7 @@ php_admin_flag allow_url_include off
 php_admin_flag allow_url_fopen off
 php_admin_flag zend.ze1_compatibility_mode off
 php_admin_flag safe_mode Off
+php_admin_value upload_max_filesize 64M
 # customize suhosin
 php_admin_value suhosin.post.max_array_index_length 256
 php_admin_value suhosin.post.max_totalname_length 8192

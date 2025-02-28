@@ -47,4 +47,14 @@ bugowner: varkoly</comment>
 - Remove apparmor support from SLES</comment>
     <requestid>1244659</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3740d55a13a76d88c8d3d0815b07b4f3</srcmd5>
+    <version>2.4.0</version>
+    <time>1740760742</time>
+    <user>dimstar_suse</user>
+    <comment>- Adapt dependency for SLES.
+
+- Remove not used macro</comment>
+    <requestid>1249068</requestid>
+  </revision>
 </revisionlist>

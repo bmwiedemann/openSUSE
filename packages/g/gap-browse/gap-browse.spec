@@ -55,9 +55,8 @@ make %{?_smp_mflags} \
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$moddir/"
+cd "%buildroot/$moddir/"
 rm -Rf Makefile configure src
-popd
 
 %files -f %name.files
 

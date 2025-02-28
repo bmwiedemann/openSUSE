@@ -18,16 +18,13 @@
 
 
 Name:           libgit2-glib
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        GLib wrapper library around libgit2
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/Libgit2-glib
-Source0:        %{name}-%{version}.tar.xz
-Patch0:         0001-fix-don-t-confuse-GGIT_MICRO_VERSION-and-GGIT_MINOR_.patch
-Patch1:         0002-build-Fix-build-against-and-require-libgit2-1.8.0.patch
-Patch2:         0003-chore-support-libgit2-1.9.patch
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig

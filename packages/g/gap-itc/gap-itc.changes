@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 23:00:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Make specfile conform to POSIX sh
+
+-------------------------------------------------------------------
 Sat Nov 19 21:42:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 1.5.1) for build.opensuse.org

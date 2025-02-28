@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 23:00:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Make specfile conform to POSIX sh
+
+-------------------------------------------------------------------
 Wed Jan  3 09:47:54 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop config.log for reproducible builds

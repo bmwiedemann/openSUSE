@@ -46,9 +46,7 @@ The orb package is about enumerating orbits in various ways.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$moddir"
-rm -Rf src
-popd
+rm -Rf "%buildroot/$moddir/src"
 
 %files -f %name.files
 

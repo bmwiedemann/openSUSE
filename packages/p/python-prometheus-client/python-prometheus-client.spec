@@ -1,7 +1,7 @@
 #
 # spec file for package python-prometheus-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-prometheus-client
-Version:        0.21.0
+Version:        0.21.1
 Release:        0
 Summary:        Python client for the Prometheus monitoring system
 License:        Apache-2.0
@@ -49,7 +49,7 @@ The official Python 2 and 3 client for Prometheus.
 %prep
 %autosetup -p1 -n client_python-%{version}
 
-sed -i -e '1{/\/usr\/bin\/python/d}' \
+sed -i -e '1{/\/usr\/bin\/env\ python/d}' \
     prometheus_client/__init__.py \
     prometheus_client/bridge/graphite.py \
     prometheus_client/openmetrics/exposition.py \

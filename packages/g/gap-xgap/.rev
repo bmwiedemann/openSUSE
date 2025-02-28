@@ -23,4 +23,12 @@
     <comment>- Add gcc14.patch</comment>
     <requestid>1195191</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c473fd5d67d191c5ec3e97e107336c19</srcmd5>
+    <version>4.32</version>
+    <time>1740760765</time>
+    <user>dimstar_suse</user>
+    <comment>- Make specfile conform to POSIX sh</comment>
+    <requestid>1249125</requestid>
+  </revision>
 </revisionlist>

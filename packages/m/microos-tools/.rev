@@ -396,4 +396,12 @@
   * Label /sys before selinux-autorelabel units run (bsc#1232709)</comment>
     <requestid>1224227</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a20576b60203bb12ba9a58707aeac2e7</srcmd5>
+    <version>4.0+git7</version>
+    <time>1740760706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1249024</requestid>
+  </revision>
 </revisionlist>

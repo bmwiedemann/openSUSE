@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-spotipy
-Version:        2.25.0
+Version:        2.25.1
 Release:        0
 Summary:        Client for the Spotify Web API
 License:        MIT
@@ -67,6 +67,6 @@ https://spotipy.readthedocs.io/
 %license LICENSE.md
 %doc CHANGELOG.md
 %{python_sitelib}/spotipy
-%{python_sitelib}/spotipy-*-info
+%{python_sitelib}/spotipy-%{version}.dist-info
 
 %changelog

@@ -1019,4 +1019,20 @@
   * Bump once_cell from 1.20.2 to 1.20.3</comment>
     <requestid>1247683</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>a67baf32d59be10e185f34824a2142be</srcmd5>
+    <version>0.20.23</version>
+    <time>1740760744</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Update to 0.20.23:
+  Bug Fixes:
+  * Add Pixi installation instructions
+  Build:
+  * Bump libc from 0.2.169 to 0.2.170
+  * Bump serde from 1.0.217 to 1.0.218
+  * Bump log from 0.4.25 to 0.4.26
+  * Bump trycmd from 0.15.8 to 0.15.9</comment>
+    <requestid>1249081</requestid>
+  </revision>
 </revisionlist>

@@ -44,10 +44,9 @@ Input/Output functionality in the C library.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$fmoddir/"
+cd "%buildroot/$fmoddir/"
 rm -Rf aclocal* autom4* cnf config* m4 gen src
 find . -type f -name "*.la" -print -delete
-popd
 %fdupes %buildroot/%_prefix
 
 %files -f %name.files

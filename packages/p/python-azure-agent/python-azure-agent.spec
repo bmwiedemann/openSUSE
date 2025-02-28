@@ -33,6 +33,8 @@ License:        Apache-2.0
 Group:          System/Daemons
 URL:            https://github.com/Azure/WALinuxAgent
 Source0:        WALinuxAgent-%{version}.tar.gz
+# Drop in 2034 when SLE 15 reaches EOL
+Patch6:         paa_force_py3_sle15.patch
 Patch7:         reset-dhcp-deprovision.patch
 Patch8:         paa_12_sp5_rdma_no_ext_driver.patch
 # PATCH-FIX-UPSTREAM gh#Azure/WALinuxAgent#2741
@@ -147,6 +149,9 @@ setup
 
 %prep
 %setup -q -n WALinuxAgent-%{version}
+%if 0%{?suse_version} > 1315 && 0%{?suse_version} <= 1600
+%patch -P 6
+%endif
 %patch -P 7
 %patch -P 8 -p1
 %patch -P 9 -p1
@@ -154,7 +159,7 @@ setup
 %patch -P 12
 
 %build
-# We have an insane veriation in the way we identify our distros from suse,
+# We have an insane veriation in the way we identify our distros from SUSE,
 # sles, opensuse, openSUSE Tumbleweed and who knows what else. This makes it
 # for all intend and purposes impractical to follow the bouncing ball and keep
 # updating the upstream detection code. We use setup.py to be able to
@@ -165,6 +170,8 @@ setup
 %python_exec setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildroot}
 %if 0%{?suse_version} > 1315
 rm %{buildroot}%{_sbindir}/waagent2.0
+%endif
+%if 0%{?suse_version} >= 1600
 %python3_fix_shebang
 %endif
 

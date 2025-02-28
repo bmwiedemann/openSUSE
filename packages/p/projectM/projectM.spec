@@ -1,7 +1,7 @@
 #
 # spec file for package projectM
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,6 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(ftgl)
 BuildRequires:  pkgconfig(libpulse)
 %endif
 %if %{with sdl}

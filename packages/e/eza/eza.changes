@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 27 19:37:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.23:
+  Bug Fixes:
+  * Add Pixi installation instructions
+  Build:
+  * Bump libc from 0.2.169 to 0.2.170
+  * Bump serde from 1.0.217 to 1.0.218
+  * Bump log from 0.4.25 to 0.4.26
+  * Bump trycmd from 0.15.8 to 0.15.9
+
+-------------------------------------------------------------------
 Fri Feb 21 15:31:15 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.22:

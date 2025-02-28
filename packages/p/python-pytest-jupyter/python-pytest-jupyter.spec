@@ -30,6 +30,7 @@
 # defined at Ring1-MinimalX lettered staging prjconf
 # We do not want jupyter-server in ring1
 %bcond_with ringdisabled
+%{?sle15_python_module_pythons}
 Name:           python-pytest-jupyter%{psuffix}
 Version:        0.10.1
 Release:        0

@@ -104,7 +104,7 @@ Requires:       apache2
 Requires(post): %{_sbindir}/a2enmod
 Requires(post): %{_sbindir}/a2enflag
 Requires(post): php
-Requires(postun):%{_sbindir}/a2enflag
+Requires(postun): %{_sbindir}/a2enflag
 Requires:       mod_php_any >= 7.4
 Supplements:    packageand(apache2:%name)
 

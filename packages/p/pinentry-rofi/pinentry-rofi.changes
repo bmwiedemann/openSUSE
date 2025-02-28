@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 25 08:11:11 UTC 2025 - mcepl@cepl.eu
+
+- Switch to the new upstream repository on Sourcehut. Despite
+  something which should look just like an change of URL, I
+  have unfortunately forced-push to that repo (change of commit
+  messages), and so there is a new tarball.
+
+-------------------------------------------------------------------
 Sun Jul 21 20:55:50 UTC 2024 - mcepl@cepl.eu
 
 - Switch to _service and generate proper tarballs for submission

@@ -24,6 +24,13 @@
 %define pkg_suffix %{nil}
 %bcond_with test
 %endif
+
+%if %{defined _distconfdir}
+%define _configdir %{_distconfdir}
+%else
+%define _configdir %{_sysconfdir}
+%endif
+
 Name:           libssh%{pkg_suffix}
 Version:        0.11.1
 Release:        0
@@ -37,6 +44,8 @@ Source2:        https://www.libssh.org/files/0x03D5DF8CFDD3E8E7_libssh_libssh_or
 Source3:        libssh_client.config
 Source4:        libssh_server.config
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM: libssh tries to read config from wrong crypto-policies location (bsc#1222716)
+Patch0:         libssh-cmake-Add-option-WITH_HERMETIC_USR.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel
@@ -109,6 +118,9 @@ Development headers for the SSH library.
 %endif
     -DWITH_GSSAPI=ON \
     -DWITH_EXAMPLES="OFF" \
+%if %{defined _distconfdir}
+    -DWITH_HERMETIC_USR=ON \
+%endif
     -DGLOBAL_CLIENT_CONFIG="%{_sysconfdir}/libssh/libssh_client.config" \
     -DGLOBAL_BIND_CONFIG="%{_sysconfdir}/libssh/libssh_server.config"
 
@@ -118,17 +130,17 @@ make %{?_smp_mflags}
 %if !%{with test}
 %cmake_install
 
-install -d -m755 %{buildroot}%{_sysconfdir}/libssh
-install -m644 %{SOURCE3} %{buildroot}%{_sysconfdir}/libssh/libssh_client.config
-install -m644 %{SOURCE4} %{buildroot}%{_sysconfdir}/libssh/libssh_server.config
+install -d -m755 %{buildroot}%{_configdir}/libssh
+install -m644 %{SOURCE3} %{buildroot}%{_configdir}/libssh/libssh_client.config
+install -m644 %{SOURCE4} %{buildroot}%{_configdir}/libssh/libssh_server.config
 
 # Fix incorrect include path, (boo#1211718).
 %if 0%{?suse_version} > 1600
-sed -i '/^Include/ s|/etc|/usr/etc|' %{buildroot}%{_sysconfdir}/libssh/libssh_client.config
-sed -i '/^Include/ s|/etc|/usr/etc|' %{buildroot}%{_sysconfdir}/libssh/libssh_server.config
+sed -i '/^Include/ s|/etc|/usr/etc|' %{buildroot}%{_configdir}/libssh/libssh_client.config
+sed -i '/^Include/ s|/etc|/usr/etc|' %{buildroot}%{_configdir}/libssh/libssh_server.config
 # Don't change the path for crypto-policies libssh.config (bsc#1222716)
-sed -i '/^Include/ s|/usr/etc/crypto-policies|/etc/crypto-policies|' %{buildroot}%{_sysconfdir}/libssh/libssh_client.config
-sed -i '/^Include/ s|/usr/etc/crypto-policies|/etc/crypto-policies|' %{buildroot}%{_sysconfdir}/libssh/libssh_server.config
+sed -i '/^Include/ s|/usr/etc/crypto-policies|/etc/crypto-policies|' %{buildroot}%{_configdir}/libssh/libssh_client.config
+sed -i '/^Include/ s|/usr/etc/crypto-policies|/etc/crypto-policies|' %{buildroot}%{_configdir}/libssh/libssh_server.config
 %endif
 
 %endif
@@ -149,9 +161,24 @@ sed -i '/^Include/ s|/usr/etc/crypto-policies|/etc/crypto-policies|' %{buildroot
 %{_libdir}/libssh.so.*
 
 %files config
-%dir %{_sysconfdir}/libssh
-%config(noreplace) %{_sysconfdir}/libssh/libssh_client.config
-%config(noreplace) %{_sysconfdir}/libssh/libssh_server.config
+%dir %{_configdir}/libssh
+%if %{defined _distconfdir}
+%{_configdir}/libssh/libssh_client.config
+%{_configdir}/libssh/libssh_server.config
+%else
+%config(noreplace) %{_configdir}/libssh/libssh_client.config
+%config(noreplace) %{_configdir}/libssh/libssh_server.config
+%endif
+
+%if %{defined _distconfdir}
+%pre config
+test -f /etc/libssh/libssh_server.config.rpmsave && mv -v /etc/libssh/libssh_server.config.rpmsave /etc/libssh/libssh_server.config.rpmsave.old ||:
+test -f /etc/libssh/libssh_client.config.rpmsave && mv -v /etc/libssh/libssh_client.config.rpmsave /etc/libssh/libssh_client.config.rpmsave.old ||:
+
+%posttrans config
+test -f /etc/libssh/libssh_server.config.rpmsave && mv -v /etc/libssh/libssh_server.config.rpmsave /etc/libssh/libssh_server.config ||:
+test -f /etc/libssh/libssh_client.config.rpmsave && mv -v /etc/libssh/libssh_client.config.rpmsave /etc/libssh/libssh_client.config ||:
+%endif
 
 %files devel
 %{_includedir}/libssh

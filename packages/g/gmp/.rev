@@ -589,4 +589,15 @@ discover that breaks ...
     <comment>Prepare for RPM 4.20 (forwarded request 1152157 from dimstar)</comment>
     <requestid>1152858</requestid>
   </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>21379a3edfd008e5cd900e7111a67611</srcmd5>
+    <version>6.3.0</version>
+    <time>1740760684</time>
+    <user>dimstar_suse</user>
+    <comment>- Manually select the z13/z14 architecture level specific assembly routines
+  for s390x and SLFO since GMP lacks fat binary support there and also lacks
+  a way to auto-detect the architecture level used at compile-time.
+  [jsc#PED-3270]</comment>
+    <requestid>1248867</requestid>
+  </revision>
 </revisionlist>

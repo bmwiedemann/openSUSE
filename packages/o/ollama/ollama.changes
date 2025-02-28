@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb 27 13:47:48 UTC 2025 - eyadlorenzo@gmail.com
+
+- Update to version 0.5.12:
+  * New model: Perplexity R1 1776
+  * The OpenAI-compatible API will now return tool_calls if the
+    model called a tool
+  * Performance on certain Intel Xeon processors should now be
+    restored
+  * Fixed permission denied issues after installing Ollama on Linux
+  * Fixed issue where additional CPU libraries were included in the
+    arm64 Linux install
+  * The progress bar will no longer flicker when running ollama
+    pull
+  * Fixed issue where running a model would fail on Linux if Ollama
+    was installed in a path with UTF-8 characters
+  * X-Stainless-Timeout will now be accepted as a header in the
+    OpenAI API endpoints
+
+-------------------------------------------------------------------
 Sat Feb 15 02:48:59 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Use Ninja instead of Make and update the build script to

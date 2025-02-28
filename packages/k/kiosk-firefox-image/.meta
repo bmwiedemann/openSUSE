@@ -1,0 +1,4 @@
+<package name="kiosk-firefox-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed Mozilla Firefox</title>
+  <description>Mozilla Firefox container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>

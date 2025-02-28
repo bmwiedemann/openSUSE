@@ -679,4 +679,12 @@ I already created a maintenance request for 12.2 - #142949 (forwarded request 14
     <comment></comment>
     <requestid>1048506</requestid>
   </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>914d75f9e8364d34444ec385293dc23a</srcmd5>
+    <version>3.2.5</version>
+    <time>1740760700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248915</requestid>
+  </revision>
 </revisionlist>

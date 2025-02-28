@@ -1,7 +1,7 @@
 #
 # spec file for package pesign
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@ BuildRequires:  popt-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(systemd)
 %sysusers_requires
-ExclusiveArch:  ia64 %ix86 x86_64 aarch64 %arm riscv64
+ExclusiveArch:  ia64 %ix86 x86_64 aarch64 %arm riscv64 loongarch64
 Recommends:     %{name}-systemd
 Requires:       mozilla-nss-tools
 

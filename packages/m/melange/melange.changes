@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Feb 28 05:40:30 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.0:
+  * feat(build/pipelines): add llvm/covreport (#1822)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace (#1797)
+  * build(deps): bump github.com/moby/moby (#1820)
+  * build(deps): bump github.com/go-jose/go-jose/v3 in the
+    go_modules group (#1815)
+  * chore(docs): automatic generate pipeline docs (#1699)
+  * feat(build/pipelines): add go/covdata pipeline (#1821)
+
+-------------------------------------------------------------------
+Thu Feb 27 16:51:36 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.21.2:
+  * bump apko, check repro with --repo-append (#1812)
+  * feat: build config can specify package CPE (#1768)
+  * rebuild: populate Config directly without file (#1813)
+  * Improve cmake build verbosity (#1806)
+  * build(deps): bump the gomod group across 1 directory with 3
+    updates (#1809)
+  * build(deps): bump the actions group across 1 directory with 5
+    updates (#1808)
+  * build(deps): bump github.com/go-jose/go-jose/v4 in the
+    go_modules group (#1811)
+  * Add ${{context.name}} string substitution (#1810)
+  * Add support in e2e-tests for melange build and then test.
+    (#1801)
+
+-------------------------------------------------------------------
 Mon Feb 24 06:03:12 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.21.1:

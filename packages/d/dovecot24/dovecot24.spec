@@ -24,8 +24,6 @@
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
 %define restart_flag %{_localstatedir}/run/%{pkg_name}/%{pkg_name}-restart-after-rpm-install
 
-%bcond_without systemd
-%bcond_without textcat
 %bcond_without solr
 %bcond_without dcrypt_openssl
 %bcond_without icu
@@ -39,8 +37,10 @@
 %bcond_without run_tests
 %if %{is_opensuse}
 %bcond_without apparmor
+%bcond_without textcat
 %else
 %bcond_with apparmor
+%bcond_with textcat
 %endif
 
 Name:           dovecot24

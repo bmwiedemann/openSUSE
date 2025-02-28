@@ -44,9 +44,8 @@ ZeroMQ bindings for the GAP CAS.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$moddir"
+cd "%buildroot/$moddir"
 rm -Rfv config.* configure cnf src
-popd
 
 %files -f %name.files
 

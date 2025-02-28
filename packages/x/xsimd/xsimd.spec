@@ -59,9 +59,7 @@ common mathematical functions operating on batches.
 %cmake_build
 
 # Build documentation
-pushd %{_builddir}/%{name}-%{version}/docs
-%make_build html
-popd
+%make_build -C %{_builddir}/%{name}-%{version}/docs html
 
 %install
 %cmake_install

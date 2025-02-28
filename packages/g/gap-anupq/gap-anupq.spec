@@ -54,10 +54,9 @@ provides access to implementations of the following algorithms:
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$moddir/"
+cd "%buildroot/$moddir/"
 rm -Rf aclocal* autom4* cnf config* m4 include src testPq.in standalone/TEST
 perl -i -lpe 's{#!/usr/bin/env perl}{#!/usr/bin/perl}' testPq
-popd
 %fdupes %buildroot/%_prefix
 
 %files -f %name.files

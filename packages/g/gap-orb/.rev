@@ -31,4 +31,12 @@
     <comment>- Update to release 5.0.0</comment>
     <requestid>1239481</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>26e5f0b5f67c94fa0c4d32f472df0366</srcmd5>
+    <version>5.0.0</version>
+    <time>1740760762</time>
+    <user>dimstar_suse</user>
+    <comment>- Make specfile conform to POSIX sh</comment>
+    <requestid>1249121</requestid>
+  </revision>
 </revisionlist>

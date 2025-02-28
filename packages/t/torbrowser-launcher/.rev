@@ -207,4 +207,18 @@
     <comment></comment>
     <requestid>1239885</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>1b1f73f8e043d0a218e0e404830ebe2b</srcmd5>
+    <version>0.3.7</version>
+    <time>1740760714</time>
+    <user>dimstar_suse</user>
+    <comment>- Add torbrowser-launcher-qt6-port.patch: Port to pyside6 (Qt6);
+  upstream merge request.
+- Switch BuildRequires to Qt6.
+- Switch to using pyproject_* macros for build.
+- Fix location of apparmor profiles when building using
+  pyproject_* macros.
+</comment>
+    <requestid>1249046</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 28 08:57:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.30.0:
+  * chore: release 2.30.0 (#6669)
+  * chore(release, werf-in-image): rebuild all images
+  * refactor(cleanup): add parallel execution for git history-based
+    cleanup (#6657)
+  * feat(build): add `build.cacheVersion` and
+    `<image>.cacheVersion` directives (#6643)
+  * docs(cleanup): fix typo
+  * feat(cleanup): make cleanup defaults more aggressive
+  * chore(channels): bump alpha
+
+-------------------------------------------------------------------
 Wed Feb 26 13:34:25 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.29.0:

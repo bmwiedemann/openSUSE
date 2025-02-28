@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 26 14:12:16 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
+
+- split off apparmor support into its own subpackage, using a conditional
+  dependency for it in the main package (boo#1237689). 
+
+-------------------------------------------------------------------
 Wed Dec  4 23:40:23 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - tweak file plocate-updatedb.service:

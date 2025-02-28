@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 27 13:49:28 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 4.0+git7:
+  * Only autorelabel local filesystems with SELinux support (boo#1237202)
+
+-------------------------------------------------------------------
 Thu Nov 14 14:50:30 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 4.0+git6:

@@ -1,7 +1,7 @@
 #
 # spec file for package makedumpfile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 
 Name:           makedumpfile
-Version:        1.7.5
+Version:        1.7.6
 Release:        0
 Summary:        Partial kernel dump
 License:        GPL-2.0-only
@@ -40,9 +40,7 @@ Source99:       %{name}-rpmlintrc
 Patch0:         %{name}-override-libtinfo.patch
 Patch1:         %{name}-ppc64-VA-range-SUSE.patch
 Patch2:         %{name}-PN_XNUM.patch
-Patch3:         0001-PATCH-Fix-failure-of-hugetlb-pages-exclusion-on-Linu.patch
-Patch4:         0002-PATCH-Fix-wrong-exclusion-of-Slab-pages-on-Linux-6.1.patch
-Patch5:         make-reserve_diskspace-do-nothing-for-flattened-form.patch
+Patch3:         %{name}-fix-detection-of-typed-compound-pages-Linux-6.12.patch
 BuildRequires:  libbz2-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel

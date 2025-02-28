@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 31 08:42:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0+11:
+  + Fix a crash caused by missing gvariant parameter.
+
+-------------------------------------------------------------------
 Fri Apr  5 06:37:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

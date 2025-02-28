@@ -15,4 +15,12 @@
     <comment>- Update to release 0.3.1</comment>
     <requestid>1244544</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4bcf155a0e9543678b84fab6a9f3ac56</srcmd5>
+    <version>0.3.1</version>
+    <time>1740760754</time>
+    <user>dimstar_suse</user>
+    <comment>- Make specfile conform to POSIX sh</comment>
+    <requestid>1249108</requestid>
+  </revision>
 </revisionlist>

@@ -46,9 +46,8 @@ problem of maximizing and minimizing a linear function over P.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$fmoddir/"
+cd "%buildroot/$fmoddir/"
 rm -Rfv config.* configure* Makefile* src/
-popd
 
 %files -f %name.files
 

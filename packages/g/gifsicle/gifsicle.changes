@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 27 10:45:48 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 1.96:
+  * changed behaviour of "--lossy": now "--lossy" defaults to "--lossy --gamma sRGB",
+      closest analogue to previous versions will be obtained with "--lossy --gamma=1"
+  * Improve handling of GIFs with images positioned far outside the logical screen
+  * Add preliminary support for the Oklab color space ("--gamma=oklab")
+  * Add support for "--dither=atkinson"
+  * Add support for "--use-exact-colormap"
+  * Fix some bugs
+
+-------------------------------------------------------------------
 Sun Feb 25 13:33:31 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 1.95:

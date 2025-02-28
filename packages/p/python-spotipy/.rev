@@ -161,4 +161,32 @@
     <comment></comment>
     <requestid>1235646</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>75d7dd0ade92f906b9374befc9c40da7</srcmd5>
+    <version>2.25.1</version>
+    <time>1740760770</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.25.1:
+  * Security
+    + CVE-2025-27154 – Cache file permissions tightened: now 600 (user
+      read/write only) instead of 644, preventing unauthorized local access
+      to auth tokens (bsc#1238059)
+  * Added
+    + Added examples for audiobooks, shows and episodes methods to examples
+      directory
+  * Fixed
+    + Fixed scripts in examples directory that didn't run correctly
+    + Updated documentation for Client.current_user_top_artists to indicate
+      maximum number of artists limit
+  * Changed
+    + Updated get_cached_token and save_token_to_cache methods to utilize
+      Python's Context Management Protocol
+    + Added except clause to get_cached_token method to handle json decode
+      errors
+    + Added warnings and updated docs due to Spotify's deprecation of HTTP
+      and &quot;localhost&quot; redirect URIs
+    + Use newer string formatters (https://pyformat.info)
+    + Marked recommendation_genre_seeds as deprecated</comment>
+    <requestid>1249141</requestid>
+  </revision>
 </revisionlist>

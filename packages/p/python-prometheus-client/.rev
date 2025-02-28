@@ -138,4 +138,12 @@
   * [BUGFIX] Fix timestamp comparison. #1038</comment>
     <requestid>1208842</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>748a04b16a50ba3cd3f42a201a915f96</srcmd5>
+    <version>0.21.1</version>
+    <time>1740760713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248804</requestid>
+  </revision>
 </revisionlist>

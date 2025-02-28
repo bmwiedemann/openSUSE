@@ -84,4 +84,19 @@
     <comment></comment>
     <requestid>851385</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>28c603cc90c96657629e73d48b5c0f20</srcmd5>
+    <version>2.1.0</version>
+    <time>1740760707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  - Socket code has been moved to libimobiledevice-glue library
+  - Code cleanup (clang-tidy) and improvements
+  - autoconf: Fix clang-16 breakage
+  - Add libusbmuxd_version() function to interface
+  - iproxy: Use updated socket_create API to listen on IPv4 and IPv6 with a single socket
+
+- Update to 2.0.1:</comment>
+    <requestid>1249032</requestid>
+  </revision>
 </revisionlist>

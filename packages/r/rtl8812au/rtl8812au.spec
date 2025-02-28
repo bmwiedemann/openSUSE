@@ -19,7 +19,7 @@
 %{?!kernel_module_directory:%define kernel_module_directory /lib/modules}
 
 Name:           rtl8812au
-Version:        5.13.6+git20241117.ad90dfb
+Version:        5.13.6+git20250220.dabcb74
 Release:        0
 Summary:        Kernel driver for Realtek 802.11ac 8812au wifi cards
 License:        GPL-2.0-only
@@ -35,8 +35,6 @@ Patch0:         fix-backported-ndo_select_queue.patch
 Patch1:         fix-backported-update_mgmt_frame_registrations.patch
 # PATCH-FIX-OPENSUSE fix-15.6.patch
 Patch2:         fix-15.6.patch
-# PATCH-FIX-OPENSUSE fix-linux-6.13-build.patch
-Patch3:         fix-linux-6.13-build.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  bc
 BuildRequires:  binutils
@@ -81,8 +79,6 @@ https://github.com/maurossi/rtl8812au/ .
 %if 0%{?sle_version} == 150600
 %patch -P 2 -p1
 %endif
-
-%patch -P 3 -p1
 
 set -- *
 mkdir source

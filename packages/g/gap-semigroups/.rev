@@ -72,4 +72,12 @@
     <comment>- Update to release 5.5.0</comment>
     <requestid>1247770</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6d99edf021a3f24bb5686fdd7c0e9ce8</srcmd5>
+    <version>5.5.0</version>
+    <time>1740760763</time>
+    <user>dimstar_suse</user>
+    <comment>- Make specfile conform to POSIX sh</comment>
+    <requestid>1249123</requestid>
+  </revision>
 </revisionlist>

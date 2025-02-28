@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysaml2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,21 @@
 %global modname pysaml2
 %{?sle15_python_module_pythons}
 Name:           python-pysaml2
-Version:        7.5.0
+Version:        7.5.2
 Release:        0
 Summary:        Python implementation of SAML Version 2 to be used in a WSGI environment
 License:        Apache-2.0
 URL:            https://github.com/IdentityPython/pysaml2
 Source:         https://github.com/IdentityPython/pysaml2/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM use-cryptography.patch https://github.com/IdentityPython/pysaml2/issues/879
+Patch0:         use-cryptography.patch
 BuildRequires:  %{python_module Paste}
-BuildRequires:  %{python_module cryptography >= 3.1}
+BuildRequires:  %{python_module cryptography >= 40.0}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pymongo >= 3.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
@@ -40,7 +41,7 @@ BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 1.0.0}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module xmlschema >= 1.2.1}
+BuildRequires:  %{python_module xmlschema >= 2}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 # This is needed as xmlsec itself does not pull any backend by default
@@ -95,10 +96,11 @@ done
 sed -i 's:import mock:from unittest import mock:' tests/test_41_response.py
 sed -i 's:mock.mock:unittest.mock:' tests/test_52_default_sign_alg.py
 # Excluded tests for i586 gh#IdentityPython/pysaml2#682 and gh#IdentityPython/pysaml2#759
+# Exclude broken namespace test (https://github.com/IdentityPython/pysaml2/issues/921)
 %ifarch %{ix86}
-%pytest -k "not (test_assertion_consumer_service or test_swamid_sp or test_swamid_idp or test_other_response or test_mta or test_unknown_subject or test_filter_ava_registration_authority_1)" tests
+%pytest -k "not (test_namespace_processing or test_assertion_consumer_service or test_swamid_sp or test_swamid_idp or test_other_response or test_mta or test_unknown_subject or test_filter_ava_registration_authority_1)" tests
 %else
-%pytest tests
+%pytest -k "not test_namespace_processing" tests
 %endif
 
 %post
@@ -115,6 +117,6 @@ sed -i 's:mock.mock:unittest.mock:' tests/test_52_default_sign_alg.py
 %python_alternative %{_bindir}/mdexport
 %python_alternative %{_bindir}/merge_metadata
 %{python_sitelib}/saml2
-%{python_sitelib}/pysaml2-%{version}*-info
+%{python_sitelib}/pysaml2-%{version}.dist-info
 
 %changelog

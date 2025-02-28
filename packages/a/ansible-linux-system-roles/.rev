@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f20b194ae1acf0456c33ceb646128ad</srcmd5>
+    <version>1.0.0</version>
+    <time>1740760716</time>
+    <user>dimstar_suse</user>
+    <comment>bugowner: hsharma (harshvardhan.sharma@suse.com)
+This package contains ansible roles from linux-system-roles project: https://github.com/linux-system-roles</comment>
+    <requestid>1248884</requestid>
+  </revision>
+</revisionlist>

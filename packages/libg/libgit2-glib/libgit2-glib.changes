@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 26 11:54:07 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.1:
+  + Compatibility changes for libgit2 >=1.8.0
+  + Fix definition of GGIT_MICRO_VERSION.
+  + examples: free allocated objects
+- Drop patches fixed upstream:
+  + 0001-fix-don-t-confuse-GGIT_MICRO_VERSION-and-GGIT_MINOR_.patch
+  + 0002-build-Fix-build-against-and-require-libgit2-1.8.0.patch
+  + 0003-chore-support-libgit2-1.9.patch
+
+-------------------------------------------------------------------
 Wed Jan 29 14:42:57 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Remove libgit2-glib-include.patch and replace it with series of

@@ -98,8 +98,8 @@ Patch15:        CVE-2024-50602-no-crash-XML_ResumeParser.patch
 # PATCH-FIX-OPENSUSE - Test fixes/additions:
 Patch112:       0001-Check-HSV-values-in-image-test.patch
 Patch114:       wxwidgets-3.2.5.patch
-# PATCH-FIX-UPSTREAM https://github.com/wxWidgets/Phoenix/pull/2678 Fix test with Python 3.13.1
-Patch115:       python-3.13.1.patch
+# PATCH-FIX-UPSTREAM https://github.com/wxWidgets/Phoenix/pull/2680 Implement __iter__ for wxList iterator classes
+Patch115:       https://github.com/wxWidgets/Phoenix/commit/2adbeaa7854342a27aab828c128f2111a99c4cf0.patch#/python-3.13.1.patch
 # TODO: Replace deprecated setup.py calls in build.py with PEP517 without building wxWidgets into the wheel
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel}

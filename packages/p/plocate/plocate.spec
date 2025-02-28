@@ -1,7 +1,7 @@
 #
 # spec file for package plocate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(liburing)
 BuildRequires:  pkgconfig(libzstd)
 %if %{with apparmor}
-Requires:       apparmor-abstractions
+Requires:       (%{name}-apparmor if apparmor-abstractions)
 %endif
 Requires:       group(nobody)
 Requires:       user(nobody)
@@ -58,6 +58,18 @@ Obsoletes:      findutils-locate < 6.%{version}-%{release}
 plocate is a locate based on posting lists, completely replacing mlocate
 with a much faster (and smaller) index. It is suitable as a default locate
 on your system.
+
+%if %{with apparmor}
+%package apparmor
+Summary:        Apparmor profiles for %{name}
+Group:          Productivity/Security
+Requires:       apparmor-abstractions
+Requires:       %{name} = %{version}-%{release}
+BuildArch:      noarch
+
+%description apparmor
+This package contains the files needed for apparmor support
+%endif
 
 %prep
 %autosetup
@@ -116,7 +128,9 @@ install -Dm644 %{SOURCE6} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.updated
 %{_sharedstatedir}/%{name}/CACHEDIR.TAG
 %ghost %{_sharedstatedir}/%{name}/%{name}.db
 %config(noreplace) %{_sysconfdir}/updatedb.conf
+
 %if %{with apparmor}
+%files apparmor
 %dir %{_sysconfdir}/apparmor.d/
 %config %{_sysconfdir}/apparmor.d/usr.bin.plocate
 %config %{_sysconfdir}/apparmor.d/usr.sbin.updatedb

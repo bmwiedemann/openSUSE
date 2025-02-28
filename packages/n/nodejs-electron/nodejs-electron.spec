@@ -111,12 +111,14 @@ ExcludeArch: %arm
 %bcond_without ffmpeg_6
 %bcond_without wayland_34
 %bcond_without system_vk_headers
+%bcond_without cares_21
 %else
 %bcond_with system_vpx
 %bcond_with bro_11
 %bcond_with ffmpeg_6
 %bcond_with wayland_34
 %bcond_with system_vk_headers
+%bcond_with cares_21
 %endif
 
 
@@ -205,7 +207,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        33.4.1
+Version:        33.4.2
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -234,6 +236,8 @@ Source421:       wayland-protocol-toplevel-icon-2.patch
 Source422:       wayland-protocol-toplevel-drag.patch
 # and abseil 2401
 Source460:      quiche-absl-HexStringToBytes.patch
+# and c-ares 1.19
+Source470:      node-cares-1.21.patch
 
 
 
@@ -402,8 +406,9 @@ Patch5000:      more-locales.patch
 Patch5006:      chromium-vaapi.patch
 
 BuildRequires:  brotli
-%if %{with system_cares}
 BuildRequires:  c-ares-devel
+%if %{with cares_21}
+BuildRequires:  c-ares-devel >= 1.21
 %endif
 BuildRequires:  cmake(Crc32c)
 BuildRequires:  double-conversion-devel
@@ -757,6 +762,10 @@ patch -R -p1 < %PATCH3177
 patch -R -p1 < %SOURCE422
 patch -R -p1 < %SOURCE421
 patch -R -p1 < %SOURCE420
+%endif
+
+%if %{without cares_21}
+patch -R -p1 < %SOURCE470
 %endif
 
 

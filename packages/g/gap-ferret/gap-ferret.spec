@@ -46,10 +46,9 @@ find . -type f -size 0 -name _Chunks.xml -print -delete
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$fmoddir/"
+cd "%buildroot/$fmoddir/"
 rm -Rf gap_cpp* src config.log
 find YAPB++ -type f ! -name LICENSE -delete
-popd
 %fdupes %buildroot/%_prefix
 
 %files -f %name.files

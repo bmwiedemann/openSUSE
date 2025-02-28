@@ -1,0 +1,93 @@
+From: David Hildenbrand <david@redhat.com>
+Date: Fri, 22 Nov 2024 11:12:19 +0100
+Subject: fix detection of typed (compound) pages (Linux 6.12)
+Git-commit: 72c3414949bd2e9284c8ba7ceaf109a5a34ac2e1
+References: bsc#1237269
+Link: https://lore.kernel.org/kexec/20241122101219.936746-1-david@redhat.com/
+Upstream: merged
+
+* Required for kernel 6.12
+
+Ever since kernel commit 4ffca5a96678c ("mm: support only one page_type
+per page"), page types are no longer flags (PG_slab, PG_offline, ...)
+stored in page->_mapcount, but values stored in the top byte.
+
+Because we currently try deriving flags from the mapcount values to
+check for slab and hugetlb pages, we get:
+(1) "false positives" from isSlab(), making us not detect free (buddy)
+    pages and offline pages anymore.
+(2) "false positives" when detecting hugetlb pages.
+
+In the common case we now simply dump all memory, and fail to exclude
+offline and free (buddy) pages, assuming they are all slab pages,
+which is bad.
+
+We should just consistently compare the page->_mapcount with the unmodified
+PAGE_*_MAPCOUNT_VALUE, like we already did for free (buddy) and offline
+pages already. This also works for older kernels, because the kernel never
+supported having multiple page types set on a single page, so there was
+never the need to derive flags from the PAGE_*_MAPCOUNT_VALUE.
+
+It is worth noting that the lower 24bit of the page->_mapcount field
+can be used while a page type is set. This is, however, currently not
+the case for any of the involved page types (slab, buddy, offline,
+hugetlb). In the future, the kernel could either just tell us the types,
+or provide a mask to be applied to the page->_mapcount ("bits to ignore")
+when comparing the values. But, there might be bigger changes coming up
+with the "memdesc" work in the kernel, where the type would not longer
+be stored in page->_mapcount ... so for now we can keep it simple.
+
+Link: https://github.com/makedumpfile/makedumpfile/issues/16
+Cc: Masamitsu Yamazaki <yamazaki-msmt@nec.com>
+Cc: Kazuhito Hagio <k-hagio-ab@nec.com>
+Cc: Matthew Wilcox <willy@infradead.org>
+Signed-off-by: David Hildenbrand <david@redhat.com>
+Acked-by: Petr Tesarik <ptesarik@suse.com>
+---
+ makedumpfile.c | 6 ++----
+ makedumpfile.h | 2 --
+ 2 files changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/makedumpfile.c b/makedumpfile.c
+index b356eb3..bad3c48 100644
+--- a/makedumpfile.c
++++ b/makedumpfile.c
+@@ -280,8 +280,7 @@ isSlab(unsigned long flags, unsigned int _mapcount)
+ {
+ 	/* Linux 6.10 and later */
+ 	if (NUMBER(PAGE_SLAB_MAPCOUNT_VALUE) != NOT_FOUND_NUMBER) {
+-		unsigned int PG_slab = ~NUMBER(PAGE_SLAB_MAPCOUNT_VALUE);
+-		if ((_mapcount & (PAGE_TYPE_BASE | PG_slab)) == PAGE_TYPE_BASE)
++		if (_mapcount == (int)NUMBER(PAGE_SLAB_MAPCOUNT_VALUE))
+ 			return TRUE;
+ 	}
+ 
+@@ -6549,11 +6548,10 @@ __exclude_unnecessary_pages(unsigned long mem_map,
+ 			 */
+ 			if (NUMBER(PAGE_HUGETLB_MAPCOUNT_VALUE) != NOT_FOUND_NUMBER) {
+ 				unsigned long _flags_1 = ULONG(addr + OFFSET(page.flags));
+-				unsigned int PG_hugetlb = ~NUMBER(PAGE_HUGETLB_MAPCOUNT_VALUE);
+ 
+ 				compound_order = _flags_1 & 0xff;
+ 
+-				if ((_mapcount & (PAGE_TYPE_BASE | PG_hugetlb)) == PAGE_TYPE_BASE)
++				if (_mapcount == (int)NUMBER(PAGE_HUGETLB_MAPCOUNT_VALUE))
+ 					compound_dtor = IS_HUGETLB;
+ 
+ 				goto check_order;
+diff --git a/makedumpfile.h b/makedumpfile.h
+index 7ed566d..2b3495e 100644
+--- a/makedumpfile.h
++++ b/makedumpfile.h
+@@ -164,8 +164,6 @@ test_bit(int nr, unsigned long addr)
+ #define isAnon(mapping, flags, _mapcount) \
+ 	(((unsigned long)mapping & PAGE_MAPPING_ANON) != 0 && !isSlab(flags, _mapcount))
+ 
+-#define PAGE_TYPE_BASE		(0xf0000000)
+-
+ #define PTOB(X)			(((unsigned long long)(X)) << PAGESHIFT())
+ #define BTOP(X)			(((unsigned long long)(X)) >> PAGESHIFT())
+ 
+-- 
+2.48.1
+

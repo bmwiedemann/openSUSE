@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 27 17:57:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream patches, lifted from debian, fix build for 32bit:
+  + 01_remove-pixdata.patch
+  + 02_fix-ogg-corruption.patch
+  + 03_port-to-taglib-2.patch
+  + 04_taglib-2-further-fix.patch
+- Drop easytag-revert-open-handle-ogg.patch,
+  easytag-taglib-2.0.patch and ExcludeArch: i586, no longer needed.
+
+-------------------------------------------------------------------
+Sun Feb 16 11:03:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Exclude i586 as buildtarget, broken for ages with no fix in
+  sight.
+
+-------------------------------------------------------------------
 Tue Sep 17 08:06:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.4.3+161:

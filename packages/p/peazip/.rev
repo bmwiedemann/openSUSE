@@ -1259,4 +1259,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1237049</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>fadb2f301ca71a23987b890deddaf0c7</srcmd5>
+    <version>10.3.0</version>
+    <time>1740761081</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.3.0:
+  * https://peazip.github.io/changelog.html
+</comment>
+    <requestid>1249238</requestid>
+  </revision>
 </revisionlist>

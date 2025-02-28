@@ -29,14 +29,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  libtool
 BuildRequires:  m4
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(lib3270) >= 5.4
-
-%if 0%{?suse_version} == 01500
-BuildRequires:  meson >= 0.61.4
-%else
 BuildRequires:  meson
-%endif
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(lib3270) >= 5.5.0
 
 Suggests:       %{name}-config
 

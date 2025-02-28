@@ -1,0 +1,27 @@
+{
+    "distSpecVersion": "1.1.0",
+    "storage": {
+        "rootDirectory": "/var/lib/zot-registry"
+    },
+    "http": {
+        "address": "127.0.0.1",
+        "port": "8080"
+    },
+    "log": {
+        "level": "debug"
+    },
+    "extensions": {
+        "search": {
+            "enable": true,
+            "cve": {
+                "updateInterval": "2h"
+            }
+        },
+        "metrics": {
+            "enable": true
+        },
+        "ui": {
+            "enable": true
+        }
+    }
+}

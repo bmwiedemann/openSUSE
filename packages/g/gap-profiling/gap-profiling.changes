@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 23:00:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Make specfile conform to POSIX sh
+
+-------------------------------------------------------------------
 Wed Jan 22 14:06:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire python-rpm-macros: required for the

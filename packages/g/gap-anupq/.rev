@@ -23,4 +23,12 @@
     <comment>- Update to release 3.3.1</comment>
     <requestid>1216724</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b74d14a5dcb9fc1e049fe316cce558c0</srcmd5>
+    <version>3.3.1</version>
+    <time>1740760750</time>
+    <user>dimstar_suse</user>
+    <comment>- Make specfile conform to POSIX sh</comment>
+    <requestid>1249101</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,39 @@
+#!/usr/bin/pulseaudio -nF
+.fail
+
+### Automatically restore the volume of streams and devices
+load-module module-device-restore
+load-module module-stream-restore
+load-module module-card-restore
+
+load-module module-udev-detect
+
+### Load several protocols
+.ifexists module-esound-protocol-unix.so
+load-module module-esound-protocol-unix
+.endif
+load-module module-native-protocol-unix auth-anonymous=1
+
+load-module module-native-protocol-tcp auth-anonymous=1 auth-ip-acl=127.0.0.1
+
+load-module module-default-device-restore
+
+### Make sure we always have a sink around, even if it is a null sink.
+load-module module-always-sink
+
+### Automatically suspend sinks/sources that become idle for too long
+load-module module-suspend-on-idle
+
+### Enable positioned event sounds
+load-module module-position-event-sounds
+
+.nofail
+
+### Set the default sink
+#set-default-sink alsa_output.pci-0000_00_1b.0.analog-stereo
+
+### Set default sink volume to 100%
+set-sink-volume @DEFAULT_SINK@ 0x10000
+
+### Unmute default sink
+set-sink-mute @DEFAULT_SINK@ 0

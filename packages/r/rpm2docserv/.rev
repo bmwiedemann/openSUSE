@@ -170,4 +170,20 @@
   * Add metrics namespace</comment>
     <requestid>1235802</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dcceaf11b0e21ace120b548f5b4e6ca0</srcmd5>
+    <version>20250227.6e4073c</version>
+    <time>1740760737</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250227.6e4073c:
+  * auxserver: rework debug messages
+  * Change &quot;Tumbleweed&quot; to &quot;Tumbleweed + MicroOS&quot; on index page
+  * Remove wrong install section
+  * Add service which reloads auxserver if idx changed
+  * Replace deprecated ioutil
+  * Adjust path for assets
+  * Update dependencies
+  * Makefile: adjust for deprecated go get options</comment>
+    <requestid>1249060</requestid>
+  </revision>
 </revisionlist>

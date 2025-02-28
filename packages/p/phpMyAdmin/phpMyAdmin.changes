@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 27 10:35:47 UTC 2025 - chris@computersalat.de
+
+- fix changes file, because update to 5.2.2 also fixes
+  * boo#1236312 (CVE-2025-24530, PMASA-2025-1)
+  * boo#1236311 (CVE-2025-24529, PMASA-2025-2)
+- update phpMyAdmin.http.inc
+  * add php_admin_value upload_max_filesize 64M
+
+-------------------------------------------------------------------
 Thu Jan 23 12:34:40 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.2.2
@@ -163,7 +172,7 @@ Mon Feb 26 09:45:34 UTC 2024 - ecsos <ecsos@opensuse.org>
 - Adjustments patch macro for rpm 4.20.
 
 -------------------------------------------------------------------
-Fri May  5 07:46:47 UTC 2023 - <chris@computersalat.de>
+Fri May  5 07:46:47 UTC 2023 - chris@computersalat.de
 
 - fix deps for subpkg apache
   * definitly Requires mod_php_any

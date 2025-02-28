@@ -19,7 +19,7 @@
 %define         _peazipinstalldir %{_libdir}/peazip
 
 Name:           peazip
-Version:        10.2.0
+Version:        10.3.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -164,7 +164,7 @@ mkdir -p %{buildroot}%{_datadir}/pixmaps/
 cp %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.png %{buildroot}%{_datadir}/pixmaps/
 rm %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.png
 
-chmod +x %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/*
+chmod +x %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/Nautilus-scripts/PeaZip/*
 %if 0%{?suse_version} < 1690
 pushd %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/
 mkdir -p %{buildroot}%{_kf5_servicesdir}/ServiceMenus

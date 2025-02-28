@@ -16,7 +16,7 @@
 #
 
 
-%define gfx_version 570.86.16
+%define gfx_version 570.124.04
 %define cuda_version 570.86.15
 
 %global flavor @BUILD_FLAVOR@%{?nil}
@@ -113,6 +113,9 @@ ExclusiveArch:  x86_64 aarch64
 %(cat %kmp_template_name > %_builddir/nvidia-kmp-template)
 %(echo "%triggerin -p /bin/bash -n %%{-n*}-kmp-%1 -- nvidia-common-G06 = %{version}"      >> %_builddir/nvidia-kmp-template)
 %(cat %_sourcedir/kmp-trigger.sh                                                          >> %_builddir/nvidia-kmp-template)
+#  NOTE: kernel_module_package macro affects preference among nvidia, nvidia-open
+#  and nvidia-open-signed driver by adding:
+# Enhance: kernel-%FLAVOR
 %kernel_module_package -n %{name} -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble
 %{expand:%(
       for f in %{flavors_to_build}; do \

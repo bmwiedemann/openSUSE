@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 25 22:00:25 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.1.0:
+  - Socket code has been moved to libimobiledevice-glue library
+  - Code cleanup (clang-tidy) and improvements
+  - autoconf: Fix clang-16 breakage
+  - Add libusbmuxd_version() function to interface
+  - iproxy: Use updated socket_create API to listen on IPv4 and IPv6 with a single socket
+
+-------------------------------------------------------------------
 Sun Nov  8 11:07:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update baselibs.conf
@@ -17,7 +27,7 @@ Mon Sep 21 07:27:02 UTC 2020 - Stefan Elser <suse@foomaster.de>
 -------------------------------------------------------------------
 Thu Mar 12 10:38:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Update to 2.1.0:
+- Update to 2.0.1:
   - Add proper support for USB and network (WiFi sync) devices reported by usbmuxd
   - Add new usbmuxd_events_subscribe/unsubscribe functions with a context so it can be used in different threads
   - Add new tool 'icat'

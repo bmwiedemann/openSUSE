@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Tue Feb 25 08:27:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package zot-registry: scale-out production-ready
+  vendor-neutral OCI-native container image/artifact registry
+  (purely based on OCI Distribution Specification)

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 25 21:50:10 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 570.124.04 (boo#1237585) 
+
+-------------------------------------------------------------------
+Mon Feb 24 23:48:48 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 570.124.02 (boo#1237585)
+
+-------------------------------------------------------------------
 Sun Feb 23 10:20:14 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - explicitly enable KMP for kernel-longterm: this will be needed

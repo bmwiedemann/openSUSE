@@ -1,7 +1,7 @@
 #
 # spec file for package gmp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,6 +82,14 @@ huge numbers (integer and floating point).
 %patch -P 2 -p1
 
 %build
+# s390x lacks fat binary support and the gmp configury does not figure
+# the architecture level enabled by the compiler.  For SLFO make it
+# use the z13/z14 architecture specific routines.
+%ifarch s390x
+%if 0%{?suse_version} >= 1600 && !0%{?is_opensuse}
+export MPN_PATH="s390_64/z14 s390_64/z13 s390_64 generic"
+%endif
+%endif
 export CFLAGS="%{optflags} -fexceptions"
 %configure \
   --disable-static \

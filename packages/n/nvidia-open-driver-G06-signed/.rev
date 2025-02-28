@@ -699,4 +699,12 @@
     <comment></comment>
     <requestid>1248030</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>45e2337526efc5d899be460af02ed53f</srcmd5>
+    <version>570.124.04</version>
+    <time>1740760748</time>
+    <user>dimstar_suse</user>
+    <comment>- update non-CUDA variant to 570.124.04 (boo#1237585)</comment>
+    <requestid>1249087</requestid>
+  </revision>
 </revisionlist>

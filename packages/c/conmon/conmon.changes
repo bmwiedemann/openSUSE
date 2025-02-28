@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:08:23 UTC 2025 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.1.13
+
+  ### Bug fixes
+  * Make timestamp generation never fail.
+  * Change permissions of logs from 0600 to 0640
+  * Avoid bogus journal filling errors
+  * Fix typos and clarify man page.
+  * conmon: do not create oom file under cwd
+  * logging: remove unuseful fsync
+
+-------------------------------------------------------------------
 Fri May 17 11:11:36 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 2.1.12

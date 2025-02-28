@@ -53,10 +53,9 @@ rm -v doc/clean
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$fmoddir/"
+cd "%buildroot/$fmoddir/"
 rm -Rf autom4* aclocal* config* cnf m4 gen src
 find . -type f -name "*.la" -print -delete
-popd
 
 %files -f %name.files
 

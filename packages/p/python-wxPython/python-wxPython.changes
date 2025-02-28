@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 24 13:23:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Replace python-3.13.1.patch by a patch proposed by upstream maintainers
+
+-------------------------------------------------------------------
 Mon Jan 20 17:58:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add patch python-3.13.1.patch to fix tests with Python 3.13.1

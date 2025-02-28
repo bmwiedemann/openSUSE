@@ -433,4 +433,15 @@ SPDX format (choose from http://www.spdx.org/licenses or the list linked at lice
 - Added file libcaca-0.99.beta20-gcc14.patch (boo#1225795).</comment>
     <requestid>1181507</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>f9930cd25b4c8d3a6330a1fa99fa31e3</srcmd5>
+    <version>0.99.beta20</version>
+    <time>1740760702</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop pkgconfig(ftgl) BuildRequires: ftgl is unmaintained and
+  libcaca does not actually link to it, despite configure checking
+  for it and finding it. This was originally added to configure in
+  2008 (commit 9752e82) to be used 'later'.</comment>
+    <requestid>1248938</requestid>
+  </revision>
 </revisionlist>

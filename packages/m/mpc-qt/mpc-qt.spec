@@ -65,7 +65,7 @@ mkdir -p %{buildroot}/%{_bindir} \
 install -m 0755 bin/%{name} %{buildroot}/%{_bindir}
 install -m 0644 images/icon/mpc-qt.svg %{buildroot}/%{_datadir}/pixmaps/%{name}.svg
 install -m 0644 %{name}_*.qm -t %{buildroot}/%{_datadir}/%{name}/translations
-install -m 0644 io.github.mpc-qt.mpc-qt.desktop %{buildroot}/%{_datadir}/applications/Media\ Player\ Classic\ Qute\ Theater.desktop
+install -m 0644 io.github.mpc-qt.mpc-qt.desktop %{buildroot}/%{_datadir}/applications
 
 %files
 %doc README.md

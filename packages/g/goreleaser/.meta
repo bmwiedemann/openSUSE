@@ -1,0 +1,5 @@
+<package name="goreleaser" project="openSUSE:Factory">
+  <title>goreleaser</title>
+  <description>CLI tool that provides a single command to build, archive, package, sign and publish artifacts. Configuration is via single YAML file. Currently supports Go, Rust, Zig, and TypeScript (with Bun and Deno).</description>
+  <url>https://github.com/goreleaser/goreleaser</url>
+</package>

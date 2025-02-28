@@ -46,10 +46,10 @@ are integrated in the GAP kernel.
 
 %build
 ./configure "%gapdir"
-pushd src/leon/
+cd src/leon/
 export CFLAGS="%optflags -Wno-error=return-type"
 %configure
-popd
+cd -
 %make_build -j1
 
 %install

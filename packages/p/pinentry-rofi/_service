@@ -1,7 +1,7 @@
 <services>
     <service name="tar_scm" mode="manual">
         <param name="versionprefix">2.0.5+git</param>
-        <param name="url">https://git.cepl.eu/cgit/rofi/pinentry-rofi</param>
+        <param name="url">https://git.sr.ht/~mcepl/pinentry-rofi</param>
         <param name="scm">git</param>
         <param name="exclude">.git*</param>
         <param name="changesgenerate">enable</param>

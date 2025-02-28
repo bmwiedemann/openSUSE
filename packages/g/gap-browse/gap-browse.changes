@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 23:00:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Make specfile conform to POSIX sh
+
+-------------------------------------------------------------------
 Thu Feb  6 10:26:20 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update BuildRequires to ncurses-devel  

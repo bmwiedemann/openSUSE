@@ -43,10 +43,8 @@ Line by line profiling and code coverage for GAP.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$moddir"
-rm -Rf src
-popd
-%python3_fix_shebang_path %{buildroot}%{_libdir}/gap/pkg/profiling-%{version}/FlameGraph/*
+rm -Rf "%buildroot/$moddir/src"
+%python3_fix_shebang_path %buildroot/%_libdir/gap/pkg/profiling-%version/FlameGraph/*
 
 %files -f %name.files
 

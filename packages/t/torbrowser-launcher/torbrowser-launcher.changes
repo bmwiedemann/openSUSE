@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 26 10:38:49 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add torbrowser-launcher-qt6-port.patch: Port to pyside6 (Qt6);
+  upstream merge request.
+- Switch BuildRequires to Qt6.
+- Switch to using pyproject_* macros for build.
+- Fix location of apparmor profiles when building using
+  pyproject_* macros.
+
+-------------------------------------------------------------------
 Wed Jan 22 10:17:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Drop unneeded runtime dependencies

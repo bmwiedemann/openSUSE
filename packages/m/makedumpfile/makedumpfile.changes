@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 27 10:09:29 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to 1.7.5:
+  * Support for kernels up to v6.11 (x86_64)
+- Drop upstreamed patches:
+  * 0001-PATCH-Fix-failure-of-hugetlb-pages-exclusion-on-Linu.patch
+  * 0002-PATCH-Fix-wrong-exclusion-of-Slab-pages-on-Linux-6.1.patch
+  * make-reserve_diskspace-do-nothing-for-flattened-form.patch
+- makedumpfile-fix-detection-of-typed-compound-pages-Linux-6.12.patch:
+  Reflect mm changes in kernel v6.12 (bsc#1237269).
+
+-------------------------------------------------------------------
 Fri Sep 13 09:37:15 UTC 2024 - Jiri Bohac <jbohac@suse.com>
 
 - move makedumpfile-R.pl from /usr/bin to 

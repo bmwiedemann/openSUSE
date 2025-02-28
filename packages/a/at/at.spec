@@ -1,7 +1,7 @@
 #
 # spec file for package at
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,10 +84,13 @@ autoreconf -fvi
 
 %install
 %if 0%{?suse_version} > 1500
-install -d %{buildroot}{%{_pam_vendordir},%{_bindir},%{_sbindir},%{_mandir}/man{1,5,8},%{_fillupdir}}
+install -d "%{buildroot}/%{_pam_vendordir}"
 %else
-install -d %{buildroot}{%{_sysconfdir}/pam.d,%{_bindir},%{_sbindir},%{_mandir}/man{1,5,8},%{_fillupdir}}
+install -d "%{buildroot}/%{_sysconfdir}/pam.d"
 %endif
+for i in %{_bindir} %{_sbindir} %{_mandir}/man1 %{_mandir}/man5 %{_mandir}/man8 %{_fillupdir}; do
+	install -d "%{buildroot}/$i"
+done
 
 export CFLAGS="%{?optflags}"
 export SENDMAIL=%{_sbindir}/sendmail
@@ -99,7 +102,6 @@ mkdir docs
 mv %{buildroot}/%{_prefix}/doc/at/* docs/
 
 install -D -m 0644 %{SOURCE5} %{buildroot}%{_unitdir}/atd.service
-ln -s service %{buildroot}%{_sbindir}/rcatd
 
 %if 0%{?suse_version} > 1500
 install -m644 %{SOURCE2} %{buildroot}%{_pam_vendordir}/atd
@@ -146,7 +148,6 @@ done
 %doc Problems README ChangeLog timespec
 %license COPYING Copyright
 %config(noreplace) %{_sysconfdir}/at.deny
-%{_sbindir}/rcatd
 %if 0%{?suse_version} > 1500
 %attr(644,root,root) %{_pam_vendordir}/atd
 %else

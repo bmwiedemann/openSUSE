@@ -43,9 +43,8 @@ Enhances GAP by the ability to read and write JSON files.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$fmoddir/"
+cd "%buildroot/$fmoddir/"
 find src -type f ! -name LICENSE -delete
-popd
 
 %files -f %name.files
 

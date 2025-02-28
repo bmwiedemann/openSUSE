@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1243617</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d43632644391c6cc66fbe258088f0a3f</srcmd5>
+    <version>1.8.21</version>
+    <time>1740760751</time>
+    <user>dimstar_suse</user>
+    <comment>- Make specfile conform to POSIX sh</comment>
+    <requestid>1249102</requestid>
+  </revision>
 </revisionlist>

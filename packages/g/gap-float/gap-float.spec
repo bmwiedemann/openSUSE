@@ -53,9 +53,8 @@ autoreconf -fi
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$fmoddir/"
+cd "%buildroot/$fmoddir/"
 rm -Rf aclocal.m4 autom4* build-aux config.* configu* libtool* m4 src/
-popd
 
 %files -f %name.files
 

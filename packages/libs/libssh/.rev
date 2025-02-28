@@ -800,4 +800,12 @@ ProxyCommand parsing in ssh configuration files:
     <comment></comment>
     <requestid>1243294</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>a72706b4ca8375478098a3179140a91b</srcmd5>
+    <version>0.11.1</version>
+    <time>1740760701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1248929</requestid>
+  </revision>
 </revisionlist>

@@ -47,4 +47,12 @@
     <comment>Updating to version 5.5.0 and latest lib3270.</comment>
     <requestid>1246813</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c381d24da54c6e57a8efd4ba51aa8270</srcmd5>
+    <version>5.5.0+git20241211</version>
+    <time>1740760734</time>
+    <user>dimstar_suse</user>
+    <comment>- Removing fixed meson version.</comment>
+    <requestid>1249049</requestid>
+  </revision>
 </revisionlist>

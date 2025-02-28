@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 27 19:50:15 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 33.4.2
+  * Updated Node.js to v20.18.3
+  * Backported fix for a upstream bug that cause Offscreen Rendering to stutter.
+  * Fixed WebFrameMain crash related to accessing speculative frames that have been destroyed.
+  * Fixed v8.setHeapSnapshotNearHeapLimit api in main and utility process,
+    along with support for --diagnostic-dir Node.js cli flag to specify the directory to save the heap snapshots.
+  * Security fixes for V8: CVE-2025-0611 CVE-2025-0612 CVE-2025-0999. (bsc#1236306 bsc#1237343)
+- 15.6: revert upstream changes to build with c-ares 1.19
+  * node-cares-1.21.patch
+
+-------------------------------------------------------------------
 Sun Feb 16 10:53:13 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 33.4.1

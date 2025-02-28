@@ -1,7 +1,7 @@
 #
 # spec file for package gap-edim
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,9 +44,7 @@ Smith normal form of integer matrices and some related utilities.
 
 %install
 %gappkg_simple_install
-pushd "%buildroot/$fmoddir/"
-rm -Rf src/
-popd
+rm -Rf "%buildroot/$fmoddir/src"
 
 %files -f %name.files
 

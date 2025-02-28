@@ -7,4 +7,16 @@
     <comment>The lightest possible pinentry I know about, for sending to Factory.</comment>
     <requestid>1189133</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f30270c4fda47d3c4d10a91b00d901cc</srcmd5>
+    <version>2.0.5+git.1735213104.1b5afa0</version>
+    <time>1740760732</time>
+    <user>dimstar_suse</user>
+    <comment>Switch to the new upstream repository on Sourcehut.
+
+
+
+(🤖: Submission of pinentry-rofi via https://src.opensuse.org/pool/pinentry-rofi/pulls/6 by mcepl)</comment>
+    <requestid>1249093</requestid>
+  </revision>
 </revisionlist>

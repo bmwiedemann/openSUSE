@@ -1,0 +1,251 @@
+From ae314e4a23178a355fb3e85e8a501efcbc1b9a74 Mon Sep 17 00:00:00 2001
+From: Lucas Mulling <lucas.mulling@suse.com>
+Date: Mon, 17 Feb 2025 14:13:53 -0300
+Subject: [PATCH] cmake: Add option WITH_HERMETIC_USR
+
+Introduce a ssh_config_parse primitive. This avoids convoluted checks for file
+presence (without modifing the behaviour of ssh_config_parse_file) and allows
+marking whether the config is global at the call site.
+
+Signed-off-by: Lucas Mulling <lucas.mulling@suse.com>
+---
+ CMakeLists.txt           |  8 +++++-
+ DefineOptions.cmake      |  6 +++++
+ config.h.cmake           |  2 ++
+ include/libssh/options.h |  1 +
+ src/config.c             | 57 ++++++++++++++++++++++++++++------------
+ src/options.c            | 28 +++++++++++++++++++-
+ 6 files changed, 83 insertions(+), 19 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d484bdfa..fee994cd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -249,9 +249,15 @@ message(STATUS "Benchmarks: ${WITH_BENCHMARKS}")
+ message(STATUS "Symbol versioning: ${WITH_SYMBOL_VERSIONING}")
+ message(STATUS "Allow ABI break: ${WITH_ABI_BREAK}")
+ message(STATUS "Release is final: ${WITH_FINAL}")
++if (WITH_HERMETIC_USR)
++    message(STATUS "User global client config: ${USR_GLOBAL_CLIENT_CONFIG}")
++endif ()
+ message(STATUS "Global client config: ${GLOBAL_CLIENT_CONFIG}")
+ if (WITH_SERVER)
+-message(STATUS "Global bind config: ${GLOBAL_BIND_CONFIG}")
++    if (WITH_HERMETIC_USR)
++        message(STATUS "User global bind config: ${USR_GLOBAL_BIND_CONFIG}")
++    endif ()
++    message(STATUS "Global bind config: ${GLOBAL_BIND_CONFIG}")
+ endif()
+ message(STATUS "********************************************")
+ 
+diff --git a/DefineOptions.cmake b/DefineOptions.cmake
+index f1a6a244..91bb96db 100644
+--- a/DefineOptions.cmake
++++ b/DefineOptions.cmake
+@@ -27,6 +27,7 @@ option(WITH_INSECURE_NONE "Enable insecure none cipher and MAC algorithms (not s
+ option(WITH_EXEC "Enable libssh to execute arbitrary commands from configuration files or options (match exec, proxy commands and OpenSSH-based proxy-jumps)." ON)
+ option(FUZZ_TESTING "Build with fuzzer for the server and client (automatically enables none cipher!)" OFF)
+ option(PICKY_DEVELOPER "Build with picky developer flags" OFF)
++option(WITH_HERMETIC_USR "Build with support for hermetic /usr/" OFF)
+ 
+ if (WITH_ZLIB)
+     set(WITH_LIBZ ON)
+@@ -59,6 +60,11 @@ if (NOT GLOBAL_CLIENT_CONFIG)
+   set(GLOBAL_CLIENT_CONFIG "/etc/ssh/ssh_config")
+ endif (NOT GLOBAL_CLIENT_CONFIG)
+ 
++if (WITH_HERMETIC_USR)
++  set(USR_GLOBAL_BIND_CONFIG "/usr${GLOBAL_BIND_CONFIG}")
++  set(USR_GLOBAL_CLIENT_CONFIG "/usr${GLOBAL_CLIENT_CONFIG}")
++endif (WITH_HERMETIC_USR)
++
+ if (FUZZ_TESTING)
+   set(WITH_INSECURE_NONE ON)
+ endif (FUZZ_TESTING)
+diff --git a/config.h.cmake b/config.h.cmake
+index 8dce5273..b61ce1db 100644
+--- a/config.h.cmake
++++ b/config.h.cmake
+@@ -9,9 +9,11 @@
+ #cmakedefine SOURCEDIR "${SOURCEDIR}"
+ 
+ /* Global bind configuration file path */
++#cmakedefine USR_GLOBAL_BIND_CONFIG "${USR_GLOBAL_BIND_CONFIG}"
+ #cmakedefine GLOBAL_BIND_CONFIG "${GLOBAL_BIND_CONFIG}"
+ 
+ /* Global client configuration file path */
++#cmakedefine USR_GLOBAL_CLIENT_CONFIG "${USR_GLOBAL_CLIENT_CONFIG}"
+ #cmakedefine GLOBAL_CLIENT_CONFIG "${GLOBAL_CLIENT_CONFIG}"
+ 
+ /************************** HEADER FILES *************************/
+diff --git a/include/libssh/options.h b/include/libssh/options.h
+index d32e1589..63b207fa 100644
+--- a/include/libssh/options.h
++++ b/include/libssh/options.h
+@@ -25,6 +25,7 @@
+ extern "C" {
+ #endif
+ 
++int ssh_config_parse(ssh_session session, FILE *fp, bool global);
+ int ssh_config_parse_file(ssh_session session, const char *filename);
+ int ssh_config_parse_string(ssh_session session, const char *input);
+ int ssh_options_set_algo(ssh_session session,
+diff --git a/src/config.c b/src/config.c
+index 7bb0f50f..7ad3b620 100644
+--- a/src/config.c
++++ b/src/config.c
+@@ -1449,6 +1449,31 @@ ssh_config_parse_line(ssh_session session,
+   return 0;
+ }
+ 
++/* @brief Parse configuration from a file pointer
++ *
++ * @params[in] session   The ssh session
++ * @params[in] fp        A valid file pointer
++ * @params[in] global    Whether the config is global or not
++ *
++ * @returns    0 on successful parsing the configuration file, -1 on error
++ */
++int ssh_config_parse(ssh_session session, FILE *fp, bool global) {
++    char line[MAX_LINE_SIZE] = {0};
++    unsigned int count = 0;
++    int parsing, rv;
++
++    parsing = 1;
++    while (fgets(line, sizeof(line), fp)) {
++        count++;
++        rv = ssh_config_parse_line(session, line, count, &parsing, 0, global);
++        if (rv < 0) {
++            return -1;
++        }
++    }
++
++    return 0;
++}
++
+ /* @brief Parse configuration file and set the options to the given session
+  *
+  * @params[in] session   The ssh session
+@@ -1458,36 +1483,34 @@ ssh_config_parse_line(ssh_session session,
+  */
+ int ssh_config_parse_file(ssh_session session, const char *filename)
+ {
+-    char line[MAX_LINE_SIZE] = {0};
+-    unsigned int count = 0;
+-    FILE *f;
+-    int parsing, rv;
++    FILE *fp;
++    int rv;
+     bool global = 0;
+ 
+-    f = fopen(filename, "r");
+-    if (f == NULL) {
++    fp = fopen(filename, "r");
++    if (fp == NULL) {
+         return 0;
+     }
+ 
++#ifdef USR_GLOBAL_CLIENT_CONFIG
++    rv = strcmp(filename, USR_GLOBAL_CLIENT_CONFIG);
++    if (rv != 0) {
++        rv = strcmp(filename, GLOBAL_CLIENT_CONFIG);
++    }
++#else
+     rv = strcmp(filename, GLOBAL_CLIENT_CONFIG);
++#endif
++
+     if (rv == 0) {
+         global = true;
+     }
+ 
+     SSH_LOG(SSH_LOG_PACKET, "Reading configuration data from %s", filename);
+ 
+-    parsing = 1;
+-    while (fgets(line, sizeof(line), f)) {
+-        count++;
+-        rv = ssh_config_parse_line(session, line, count, &parsing, 0, global);
+-        if (rv < 0) {
+-            fclose(f);
+-            return -1;
+-        }
+-    }
++    rv = ssh_config_parse(session, fp, global);
+ 
+-    fclose(f);
+-    return 0;
++    fclose(fp);
++    return rv;
+ }
+ 
+ /* @brief Parse configuration string and set the options to the given session
+diff --git a/src/options.c b/src/options.c
+index 55c7be39..45346fd1 100644
+--- a/src/options.c
++++ b/src/options.c
+@@ -26,6 +26,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #ifndef _WIN32
+ #include <pwd.h>
+ #else
+@@ -1814,6 +1815,8 @@ int ssh_options_getopt(ssh_session session, int *argcptr, char **argv)
+  *
+  * @param  filename     The options file to use, if NULL the default
+  *                      ~/.ssh/config and /etc/ssh/ssh_config will be used.
++ *                      If complied with support for hermetic-usr,
++ *                      /usr/etc/ssh/ssh_config will be used last.
+  *
+  * @return 0 on success, < 0 on error.
+  *
+@@ -1823,6 +1826,9 @@ int ssh_options_parse_config(ssh_session session, const char *filename)
+ {
+   char *expanded_filename;
+   int r;
++#ifdef USR_GLOBAL_CLIENT_CONFIG
++  FILE *fp;
++#endif
+ 
+   if (session == NULL) {
+     return -1;
+@@ -1855,7 +1861,19 @@ int ssh_options_parse_config(ssh_session session, const char *filename)
+       goto out;
+   }
+   if (filename == NULL) {
+-      r = ssh_config_parse_file(session, GLOBAL_CLIENT_CONFIG);
++#ifdef USR_GLOBAL_CLIENT_CONFIG
++    if ((fp = fopen(GLOBAL_CLIENT_CONFIG, "r")) != NULL) {
++      SSH_LOG(SSH_LOG_PACKET, "Reading configuration data from %s", GLOBAL_CLIENT_CONFIG);
++      r = ssh_config_parse(session, fp, true);
++      fclose(fp);
++    } else if ((fp = fopen(USR_GLOBAL_CLIENT_CONFIG, "r")) != NULL) {
++      SSH_LOG(SSH_LOG_PACKET, "Reading configuration data from %s", USR_GLOBAL_CLIENT_CONFIG);
++      r = ssh_config_parse(session, fp, true);
++      fclose(fp);
++    }
++#else
++    r = ssh_config_parse_file(session, GLOBAL_CLIENT_CONFIG);
++#endif
+   }
+ 
+   /* Do not process the default configuration as part of connection again */
+@@ -2706,7 +2724,15 @@ int ssh_bind_options_parse_config(ssh_bind sshbind, const char *filename)
+     /* If the global default configuration hasn't been processed yet, process it
+      * before the provided configuration. */
+     if (!(sshbind->config_processed)) {
++#ifdef USR_GLOBAL_BIND_CONFIG
++        if (access(GLOBAL_BIND_CONFIG, F_OK) == 0) {
++            rc = ssh_bind_config_parse_file(sshbind, GLOBAL_BIND_CONFIG);
++        } else {
++            rc = ssh_bind_config_parse_file(sshbind, USR_GLOBAL_BIND_CONFIG);
++        }
++#else
+         rc = ssh_bind_config_parse_file(sshbind, GLOBAL_BIND_CONFIG);
++#endif
+         if (rc != 0) {
+             return rc;
+         }
+-- 
+2.48.1
+

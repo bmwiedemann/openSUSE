@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Feb 28 05:41:25 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.41.3:
+  * fix(rpm): signing for rpm <= 4.16 (#910)
+  * chore(deps): bump sigstore/cosign-installer from 3.8.0 to 3.8.1
+    (#909)
+  * chore(deps): bump github.com/klauspost/compress from 1.17.11 to
+    1.18.0 (#908)
+  * chore(deps): bump actions/cache from 4.2.0 to 4.2.1 (#907)
+  * chore(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+    (#906)
+  * fix(deb): content file modes to support gdebi (#904)
+  * chore(deps): bump sigstore/cosign-installer from 3.7.0 to 3.8.0
+    (#905)
+  * chore(deps): bump dependabot/fetch-metadata from 2.2.0 to 2.3.0
+    (#902)
+  * chore(deps): bump anchore/sbom-action from 0.17.9 to 0.18.0
+    (#901)
+  * chore(deps): bump github.com/ProtonMail/go-crypto from 1.1.4 to
+    1.1.5 (#900)
+  * docs: update cmd docs
+
+-------------------------------------------------------------------
 Sun Jan 12 07:34:12 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.41.2:

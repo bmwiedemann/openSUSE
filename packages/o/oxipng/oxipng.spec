@@ -17,7 +17,7 @@
 
 
 Name:           oxipng
-Version:        9.1.0
+Version:        9.1.4
 Release:        0
 Summary:        Multithreaded lossless PNG optimizer
 License:        MIT
@@ -31,14 +31,15 @@ Oxipng is a multithreaded lossless PNG compression optimizer. It can be used
 via a command-line interface or as a library in other Rust programs.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -a1
 
 %build
 %{cargo_build}
+%{__cargo} run --manifest-path ./xtask/Cargo.toml -- mangen
 
 %install
 %{cargo_install}
-install -Dm0644 MANUAL.txt %{buildroot}%{_mandir}/man1/%{name}.1
+install -t %{buildroot}%{_mandir}/man1/ -D -p -m 0644 target/xtask/mangen/manpages/oxipng.1
 
 %check
 %{cargo_test}
