@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 27 11:48:40 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Applied patch from jbohac for bsc#1237754, let KDUMP_CPUS=0
+- 5.0.3
+
+-------------------------------------------------------------------
 Tue Sep 17 14:24:44 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Don't write empty  fadump=""  kernel parameter (bsc#1230359)
