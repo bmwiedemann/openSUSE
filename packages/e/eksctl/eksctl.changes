@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Sat Mar 01 11:47:19 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.205.0:
+  * Add release notes for v0.205.0 (#8216)
+  * Revert "Fix failure when VPC CNI is configured to use both
+    iam.withOIDC and useDefaultPodIdentityAssociations (#8264)
+  * Allow adding remote network config to private clusters (#8261)
+  * Replace 'github.com/pkg/errors' with 'errors' (#8259)
+  * Upgrade library: github.com/cenkalti/backoff/v5 (#8260)
+  * Update aws-node to v1.19.3 (#8258)
+  * Revert: Remove un-used build dependencies #8242 (#8257)
+  * Replace 'github.com/pkg/errors' with 'errors' in tests (#8256)
+  * generate/verify schema .. had forgotten to update schema.json
+    for neuron devices (#8255)
+  * Fix go.sum; check go.mod and go.sum on CI (#8254)
+  * Switch default for ExecConfig api version from
+    v1alpha1->v1beta1 (#8252)
+  * Update GH CLI and aws-iam-authenticator versions in docker
+    image (#8253)
+  * Update Karpenter usage documentation to reflect latest
+    supported version(s) (#8250)
+  * Bump github.com/blang/semver to v4.0.0 (#8244)
+  * Fix failure when VPC CNI is configured to use both iam.withOIDC
+    and useDefaultPodIdentityAssociations (#8249)
+  * GPUs != Accelerators (#8243)
+  * Add support for allow/deny regexp(s) in instanceSelector
+    (#8247)
+  * Do not run ci jobs in forks (#8246)
+  * Remove archived github.com/bxcodec/faker dependency (#8245)
+  * Remove un-used build dependencies (#8242)
+  * Remove build container image use from CI workflows (#8241)
+  * Remove unused stringer dependency (#8211)
+  * Remove intermediate build image from add-on auto-update CI
+    workflow (#8234)
+  * Enable auto-update of ec2 info (#8239)
+  * Re-allow use of the `cnn1-az4` availability zone (#8240)
+  * copy over older coredns json if missing (#8237)
+  * Add missing coredns-1.32 json file (#8233)
+  * Print the computed upgrade version correctly (#8232)
+  * Update dependencies (#8229)
+  * Re-add support for env var keys from AWS SDK (#8231)
+  * Add support for creating access entries of type `EC2` for EKS
+    Auto Mode (#8228)
+  * Remove support for p2 instances which require NVIDIA driver <=
+    470 (#8226)
+  * Fix issue installing the nvidia device plugin unconditionally
+    on al2023 (#8225)
+  * Placement group should not be created when using a reservation
+    (#8220)
+  * Migrate `goformation` under `pkg/` as a local package and
+    remove location re-write (#8219)
+  * Support for setting MarketType/InstanceMarketOptions for use
+    with "capacity-block" (#8207)
+  * Update GPU ec2 instance types in integration tests (#8217)
+  * Update attributions document (#8214)
+  * Prepare for next development iteration (#8215)
+
+-------------------------------------------------------------------
+Sat Mar 01 10:45:00 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.204.0:
+  * Add release notes for v0.204.0 (#8171)
+  * Fix broken link to "Creating and Managing Clusters" (#8212)
+  * Fix broken karpenter doc links (#8213)
+  * Update building with golang 1.24 (#8210)
+  * Prepare for next development iteration (#8194)
+  * pre-Generate EC2 instance type details out of band (#8206)
+  * Replace `golang.org/x/exp/slices` with `slices` (#8195)
+  * Bump github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs from
+    1.45.8 to 1.45.12 (#8202)
+  * Update aws-node to v1.19.2 (#8160)
+  * Bump github.com/aws/aws-sdk-go-v2/service/cloudformation from
+    1.56.8 to 1.57.0 (#8205)
+  * Bump
+    github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider
+    from 1.48.4 to 1.49.4 (#8204)
+  * Bump
+    github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2
+    from 1.43.8 to 1.43.12 (#8203)
+  * Bump github.com/spf13/afero from 1.11.0 to 1.12.0 (#8187)
+  * Bump github.com/fatih/color from 1.16.0 to 1.18.0 (#8190)
+  * Bump github.com/aws/aws-sdk-go-v2/service/cloudtrail from
+    1.47.0 to 1.47.2 (#8189)
+  * New EFA plugin images need a new volume for EFA plugin to mount
+    - `/dev/infiniband` (#8201)
+  * Add addon name to some logging lines (#8200)
+  * Enable NVIDIA Plugin automatically for AL2023 GPU AMIs (#8199)
+  * Added EBS IO2 volumeType support to Managed  NodeGroup (#7989)
+  * Enable Bottlerocket on Neuron Instance types (Inferentia and
+    Trainium) (#8173)
+  * Bump docker/build-push-action from 6.11.0 to 6.13.0 (#8182)
+  * Bump actions/setup-go from 5.2.0 to 5.3.0 (#8181)
+  * Bump release-drafter/release-drafter from 6.0.0 to 6.1.0
+    (#8180)
+  * Bump actions/stale from 9.0.0 to 9.1.0 (#8179)
+  * Bump aws-actions/configure-aws-credentials from 4.0.2 to 4.0.3
+    (#8178)
+  * Bump actions/setup-python from 5.3.0 to 5.4.0 (#8177)
+  * Allow disabling default addons with Auto Mode (#8165)
+
+-------------------------------------------------------------------
 Fri Feb 07 08:22:43 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.203.0:
