@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Mar  1 13:54:36 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Downgrade dmidecode (not available on all archs) and
+  /usr/bin/eglinfo (boo#1238199) to recommends again
+
+-------------------------------------------------------------------
+Fri Feb 28 13:17:18 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update spec to the current state of things:
+  * Requires aha if fwupd
+  * Requires clinfo if OpenCL is installed
+  * Requires dmidecode to show device Product Name, Serial Number
+    and information on system memory 
+  * Recommends libdisplay-info-tools (/usr/bin/di-edid-decode)
+    for EDID kcm.
+  * Requires /usr/bin/eglinfo, instead of Recommends.
+  * Deprecate update-desktop-files
+    (https://en.opensuse.org/openSUSE:Update-desktop-files_deprecation)
+
+-------------------------------------------------------------------
 Tue Feb 25 19:38:36 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.2:

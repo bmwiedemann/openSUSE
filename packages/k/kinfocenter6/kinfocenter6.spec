@@ -44,7 +44,6 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 # For creating the post-install symlink
 BuildRequires:  systemsettings6
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -62,6 +61,7 @@ Provides:       kinfocenter5 = %{version}
 Obsoletes:      kinfocenter5 < %{version}
 Obsoletes:      kinfocenter5-lang < %{version}
 Requires:       kf6-kcmutils-imports >= %{kf6_version}
+
 # needed for the fileindexermonitor
 Requires:       kf6-baloo-imports >= %{kf6_version}
 # The executable is now a link to systemsettings6
@@ -72,16 +72,20 @@ Requires:       pciutils
 Requires:       /usr/bin/glxinfo
 # Vulkan might not be needed
 Requires:       (/usr/bin/vulkaninfo if libvulkan1)
-# Plasma Wayland and X11 sessions are always installed
+# Plasma Wayland is always installed
 Requires:       /usr/bin/wayland-info
+# Provides information on X
 Requires:       /usr/bin/xdpyinfo
 # Note: Not available as /usr/bin/eglinfo yet (boo#1195695)
 Recommends:     /usr/bin/eglinfo
+# clinfo if OpenCL is installed
+Requires:       (clinfo if libOpenCL1)
+# dmidecode is used to show information on memory
+Recommends:     dmidecode
 # The "Firmware Security" page does fwupdmgr ... | aha | ...
-Recommends:     (aha if fwupd)
-# Mesa-demos includes it, but as a whole it's too fat,
-# so don't pull it in by default.
-Suggests:       Mesa-demo
+Requires:       (aha if fwupd)
+# EDID kcm requires di-edid-decode
+Recommends:     libdisplay-info-tools >= 0.2.0
 
 %description
 KDE Utility that provides information about a computer system.
