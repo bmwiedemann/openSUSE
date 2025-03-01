@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 22 08:07:11 UTC 2024 - ming li <mli@suse.com>
+
+- update to 1.4.22:  
+  * Expand canceltransaction1 to test value changes are rolled back.
+  * Minor optimisations to DPHWeight and TfIdfWeight weighting formulae
+    calculations.
+  * Optimise LatLongDistancePostingSource to avoid pow() call on each document
+    with default k2 setting.
+  * Fix bug in recovery from WritableDatabase::commit() failing.
+  * configure: Enable -fno-math-errno if supported.  We don't make use of maths
+    function setting errno and if we tell the compiler that it can optimise them
+    better in some cases.
+  * INSTALL: Document assumptions about platform features
+  * INSTALL: Add section on clang version requirements.
+
+-------------------------------------------------------------------
 Thu Sep 29 19:24:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.21:
