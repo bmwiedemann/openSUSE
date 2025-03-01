@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 28 23:05:20 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1740506581.723f45e:
+  * script: Mark uncoverable package import as such
+  * codecov: Mark consoles/ as completely covered
+  * scripts: Rely on Pod::Usage being installed
+  * t: Cover invalid JSON in vars.json
+  * dist: Bump version to semver-compliant 5
+
+-------------------------------------------------------------------
 Sat Feb 22 12:22:14 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1740221157.8e0ee0c:
