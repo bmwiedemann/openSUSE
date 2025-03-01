@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 28 19:41:15 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250228:
+  * Updated Spanish, Romanian translation
+  * Update MURS stock config with power levels
+  * Add TX-frequency workflow option for memory editor
+  * tk8180: Use tk280's subdev generator metaclass
+  * tk280: Refactor subdev metaclass generator
+  * Add TH-888S model alias
+  * tk8180: Fix Zone Dn, LCD Bright button functions
+
+-------------------------------------------------------------------
 Fri Feb 21 17:24:23 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250221:
