@@ -1,7 +1,7 @@
 #
 # spec file for package python-wrapt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-wrapt
-Version:        1.16.0
+Version:        1.17.2
 Release:        0
 Summary:        A Python module for decorators, wrappers and monkey patching
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/GrahamDumpleton/wrapt
 Source:         https://github.com/GrahamDumpleton/wrapt/archive/%{version}.tar.gz
-Patch1:         https://github.com/GrahamDumpleton/wrapt/commit/9a38c9f45a2e9d2a306deedce2e243b5e7a83ab2.patch#/py313-classmethods.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

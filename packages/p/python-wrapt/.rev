@@ -273,4 +273,12 @@
     <comment>- add py313-classmethods.patch to fix test failures with py313</comment>
     <requestid>1218799</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3469317988cc77ebe3cf2a783b47dbad</srcmd5>
+    <version>1.17.2</version>
+    <time>1740852972</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1249256</requestid>
+  </revision>
 </revisionlist>
