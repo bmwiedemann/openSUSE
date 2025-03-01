@@ -40,11 +40,6 @@ Fri Feb 19 01:48:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
   (CVE-2024-12361, bsc#1237358)
 
 -------------------------------------------------------------------
-Tue Oct 15 08:18:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
-
-- Adjust bconds to build the package in SLFO without xvidcore.
-
--------------------------------------------------------------------
 Mon Jan  6 11:53:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.4.5
@@ -61,6 +56,11 @@ Mon Jan  6 11:53:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
   ffmpeg-CVE-2023-50010.patch
   ffmpeg-4-CVE-2024-32230.patch
   ffmpeg-4-CVE-2024-7055.patch (all merged)
+
+-------------------------------------------------------------------
+Tue Oct 15 08:18:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Adjust bconds to build the package in SLFO without xvidcore.
 
 -------------------------------------------------------------------
 Fri Sep  6 15:06:21 UTC 2024 - Cliff Zhao <qzhao@suse.com>

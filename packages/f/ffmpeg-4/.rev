@@ -693,4 +693,12 @@
     <comment></comment>
     <requestid>1248239</requestid>
   </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>139af434561548795a69428303479a34</srcmd5>
+    <version>4.4.5</version>
+    <time>1740852973</time>
+    <user>dimstar_suse</user>
+    <comment>fix order of changelog messages (forward from manfred-h)</comment>
+    <requestid>1249264</requestid>
+  </revision>
 </revisionlist>
