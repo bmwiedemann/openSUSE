@@ -72,6 +72,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-qt
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-qt/pytest-qt-%{version}.tar.gz
+Patch0:         fix-pyside6-test.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -103,7 +104,7 @@ creation as needed and provides methods to simulate user interaction,
 like key presses and mouse clicks.
 
 %prep
-%setup -q -n pytest-qt-%{version}
+%autosetup -p1 -n pytest-qt-%{version}
 dos2unix LICENSE
 # https://github.com/pytest-dev/pytest-qt/pull/419#discussion_r1240198866
 sed -i /xfail_strict/d setup.cfg
@@ -124,8 +125,7 @@ sed -i /xfail_strict/d setup.cfg
 export QT_QPA_PLATFORM=offscreen
 export PYTEST_QT_API=%{test_qtapi}
 
-# test_qinfo fails with latest python3-pyside6
-%pytest %{?testflavorargs} -rsxXfE -k "not test_qinfo"
+%pytest %{?testflavorargs} -rsxXfE
 %endif
 
 %if ! %{with test}

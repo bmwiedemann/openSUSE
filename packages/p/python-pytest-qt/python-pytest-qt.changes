@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 27 09:22:15 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix a test that fails when building with the latest
+  pyside6 instead of skipping it:
+  * fix-pyside6-test.patch
+
+-------------------------------------------------------------------
 Wed Feb 26 13:29:50 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip test_qtinfo failing test with latest python3-pyside6
