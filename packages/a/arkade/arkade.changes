@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 28 17:59:22 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.34:
+  * Update go.mod
+  * Use random pattern for extracting in OCI command
+  * Bump github.com/cheggaaa/pb/v3 from 3.1.5 to 3.1.6
+  * Bump golang.org/x/mod from 0.22.0 to 0.23.0
+  * feat: add alloy to tools
+  * Break early when ignore matches
+
+-------------------------------------------------------------------
 Thu Jan 30 12:38:31 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.33:
