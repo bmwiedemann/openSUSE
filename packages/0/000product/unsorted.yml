@@ -624,6 +624,7 @@ unsorted:
   - ansible-core-2.17 
   - ansible-documentation 
   - ansible-lint 
+  - ansible-linux-system-roles 
   - ansible-navigator 
   - ansible-runner 
   - ansible-sap-launchpad 
@@ -1598,6 +1599,7 @@ unsorted:
   - boringssl-source 
   - bosh 
   - bottom 
+  - boulette 
   - bouncycastle 
   - bouncycastle-javadoc 
   - bouncycastle-jmail 
@@ -7211,6 +7213,7 @@ unsorted:
   - git-lfs 
   - git-merge-changelog 
   - git-mr 
+  - git-next 
   - git-p4 
   - git-remote-gcrypt 
   - git-repo 
@@ -7677,8 +7680,6 @@ unsorted:
   - go1.9-race 
   - goaccess 
   - gob2 
-  - gobby 
-  - gobby-lang 
   - gobject-introspection 
   - gobject-introspection-devel 
   - gocr 
@@ -7991,6 +7992,7 @@ unsorted:
   - gopass-zsh-completion 
   - gopls 
   - gops 
+  - goreleaser 
   - gos-wallpapers 
   - gosec 
   - goss 
@@ -8661,6 +8663,7 @@ unsorted:
   - helmfile-fish-completion 
   - helmfile-zsh-completion 
   - helmify 
+  - helmsman 
   - helmtui 
   - help2man 
   - help2man-lang 
@@ -16854,7 +16857,7 @@ unsorted:
   - libusbgx-devel 
   - libusbgx-tools 
   - libusbgx2 
-  - libusbmuxd-2_0-6-32bit 
+  - libusbmuxd-2_0-7-32bit 
   - libusbmuxd-devel 
   - libusbmuxd-tools 
   - libuser 
@@ -26531,7 +26534,6 @@ unsorted:
   - python311-praatio 
   - python311-pre-commit 
   - python311-precis-i18n 
-  - python311-precise-runner 
   - python311-preggy 
   - python311-premailer 
   - python311-prestring 
@@ -27425,6 +27427,7 @@ unsorted:
   - python311-system_hotkey 
   - python311-systemd 
   - python311-tableauserverclient 
+  - python311-tabledata 
   - python311-tableprint 
   - python311-tables 
   - python311-tablib 
@@ -30219,7 +30222,6 @@ unsorted:
   - python312-praatio 
   - python312-pre-commit 
   - python312-precis-i18n 
-  - python312-precise-runner 
   - python312-preggy 
   - python312-premailer 
   - python312-prestring 
@@ -31146,6 +31148,7 @@ unsorted:
   - python312-system_hotkey 
   - python312-systemd 
   - python312-tableauserverclient 
+  - python312-tabledata 
   - python312-tableprint 
   - python312-tables 
   - python312-tablib 
@@ -33950,7 +33953,6 @@ unsorted:
   - python313-praatio 
   - python313-pre-commit 
   - python313-precis-i18n 
-  - python313-precise-runner 
   - python313-preggy 
   - python313-premailer 
   - python313-prestring 
@@ -34877,6 +34879,7 @@ unsorted:
   - python313-system_hotkey 
   - python313-systemd 
   - python313-tableauserverclient 
+  - python313-tabledata 
   - python313-tableprint 
   - python313-tables 
   - python313-tablib 
@@ -49616,6 +49619,10 @@ unsorted:
   - zizmor 
   - zk 
   - zk-spaced 
+  - zli 
+  - zli-bash-completion 
+  - zli-fish-completion 
+  - zli-zsh-completion 
   - zlib-devel 
   - zlib-devel-32bit 
   - zlib-devel-static 
@@ -49642,6 +49649,10 @@ unsorted:
   - zola-zsh-completion 
   - zonefs-tools 
   - zopfli 
+  - zot-registry 
+  - zot-registry-bash-completion 
+  - zot-registry-fish-completion 
+  - zot-registry-zsh-completion 
   - zoxide 
   - zp 
   - zpaq 
