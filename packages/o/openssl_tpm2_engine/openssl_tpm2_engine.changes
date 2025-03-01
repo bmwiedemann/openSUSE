@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 28 15:10:33 UTC 2025 - James Bottomley <James.Bottomley@HansenPartnership.com>
+
+- Update to version 4.4.2
+  * Fix TLS certificate signing challenges
+  * Fix openvpn using the tpm2 provider
+
+-------------------------------------------------------------------
 Tue Nov  5 14:19:12 UTC 2024 - James Bottomley <James.Bottomley@HansenPartnership.com>
 
 - Update to version 4.4.1
