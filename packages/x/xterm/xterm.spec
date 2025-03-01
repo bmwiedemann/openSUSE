@@ -123,7 +123,7 @@ bunzip2 %{basename:%{SOURCE8}} %{basename:%{SOURCE9}}
 grep "#define XRENDERFONT 1" xtermcfg.h
 %make_build
 
-if ! which bdftopcf &> /dev/null; then exit 1; fi
+if ! which bdftopcf >/dev/null 2>/dev/null; then exit 1; fi
 for i in *.bdf
 do
     bdftopcf "$i" | gzip -n -9 >"${i%.bdf}.pcf.gz"
