@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:50:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20181010:
+  * Fixes for SSE detection and propagation
+  * cmake build system fixes
+
+-------------------------------------------------------------------
 Thu Feb 29 15:52:02 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -19,7 +19,7 @@
 
 %define sover   0_0_0
 Name:           libcorrect
-Version:        0.0.0+git.20180109
+Version:        20181010
 Release:        0
 Summary:        C library for Convolutional codes and Reed-Solomon
 License:        BSD-3-Clause
@@ -28,8 +28,8 @@ URL:            https://github.com/quiet/libcorrect
 Source:         %{name}-%{version}.tar.xz
 Patch0:         libcorrect-cmake-libsuffix.diff
 Patch1:         libcorrect-cmake-set-soversion.diff
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 
 %description
 libcorrect is a library for Forward Error Correction. By using libcorrect,
@@ -73,7 +73,7 @@ applications that want to make use of libcorrect.
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -93,8 +93,10 @@ Libs: -lcorrect
 Cflags: -I${_includedir}/
 EOF
 
-%post   -n libcorrect%{sover} -p /sbin/ldconfig
-%postun -n libcorrect%{sover} -p /sbin/ldconfig
+%check
+%ctest
+
+%ldconfig_scriptlets -n libcorrect%{sover}
 
 %files -n libcorrect%{sover}
 %license LICENSE
@@ -102,6 +104,7 @@ EOF
 %{_libdir}/libcorrect.so.0*
 
 %files devel
+%license LICENSE
 %{_includedir}/correct*.h
 %{_libdir}/libcorrect.so
 %{_libdir}/pkgconfig/libcorrect.pc

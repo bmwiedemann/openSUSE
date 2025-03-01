@@ -6,7 +6,7 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">libcorrect</param>
-    <param name="versionformat">0.0.0+git.%cd</param>
+    <param name="versionformat">%cd</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
@@ -14,4 +14,3 @@
   </service>
   <service mode="disabled" name="set_version"/>
 </services>
-
