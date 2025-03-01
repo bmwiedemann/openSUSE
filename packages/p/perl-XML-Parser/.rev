@@ -296,4 +296,14 @@
 - Newer revision with my .spec comments cleaned up. (forwarded request 1208232 from joelgb)</comment>
     <requestid>1216645</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>a7d27c5c3bf31e47b0fc87ed7bbb3904</srcmd5>
+    <version>2.470.0</version>
+    <time>1740852971</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix license manually (module metadata is contradicting).
+
+See also https://github.com/cpan-authors/XML-Parser/pull/99 (forwarded request 1249249 from tinita)</comment>
+    <requestid>1249251</requestid>
+  </revision>
 </revisionlist>

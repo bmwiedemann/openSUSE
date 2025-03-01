@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Parser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,10 @@
 Name:           perl-XML-Parser
 Version:        2.470.0
 Release:        0
+# 2.47 -> normalize -> 2.470.0
 %define cpan_version 2.47
-License:        Artistic-1.0 OR GPL-1.0-or-later
+#Upstream: Artistic-1.0 or GPL-1.0-or-later
+License:        Artistic-2.0
 Summary:        Perl module for parsing XML documents
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{cpan_version}.tar.gz
@@ -32,7 +34,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(LWP::UserAgent)
 Requires:       perl(LWP::UserAgent)
 Provides:       perl(XML::Parser) = %{version}
-Provides:       perl(XML::Parser::Expat)
+Provides:       perl(XML::Parser::Expat) = %{version}
 Provides:       perl(XML::Parser::Style::Debug)
 Provides:       perl(XML::Parser::Style::Objects)
 Provides:       perl(XML::Parser::Style::Stream)

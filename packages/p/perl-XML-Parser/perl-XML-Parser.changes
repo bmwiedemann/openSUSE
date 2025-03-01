@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 28 13:47:22 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Fix license manually (module metadata is contradicting).
+
+-------------------------------------------------------------------
 Tue Oct 15 20:21:33 UTC 2024 - Joel Baltazor <obs@mtlfab.com>
 
 - Get package to show provides perl(XML::Parser::Expat) and other submodules

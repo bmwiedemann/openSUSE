@@ -19,7 +19,7 @@ post_prep: |-
 # rm unused.files
 #post_install: |-
 # sed on %{name}.files
-#license: SUSE-NonFree
+license: Artistic-2.0
 #skip_noarch: 1
 #custom_build: |-
 #./Build build flags=%{?_smp_mflags} --myflag
