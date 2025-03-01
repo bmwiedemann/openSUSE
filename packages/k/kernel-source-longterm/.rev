@@ -473,4 +473,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>6.12.16</comment>
     <requestid>1247801</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>04c8e6f47c6d1e90c8e32d4120c9cfeb</srcmd5>
+    <version>6.12.17</version>
+    <time>1740852964</time>
+    <user>dimstar_suse</user>
+    <comment>6.12.17</comment>
+    <requestid>1249196</requestid>
+  </revision>
 </revisionlist>
