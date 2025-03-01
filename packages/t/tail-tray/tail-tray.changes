@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 01 10:42:05 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.17:
+  * What's new in this release
+    - More UI fixes in the ongoing effort to clean up and make the
+      UI better.
+    - Build pipeline fixes, release and dev builds should output
+      the target names in deb files correctly now
+  * Commits
+    - Fixes for main settings UI (#52) (Marcus Grenängen) #52
+    - Ubuntu and Debian build changes (Marcus Grenängen)
+    - Skip 24.10 builds (Marcus Grenängen)
+    - Update version to 0.2.17 (Marcus Grenängen)
+    - Release build pipeline - Try improving the deb names
+      outputted (Marcus Grenängen)
+
+-------------------------------------------------------------------
 Tue Feb 25 05:53:39 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.16:
