@@ -8415,7 +8415,6 @@ unsorted:
   - gtksourceview4-devel 
   - gtksourceview5-devel 
   - gtksourceviewmm-devel 
-  - gtksourceviewmm3_0-devel 
   - gtkspell-devel 
   - gtkspell-doc 
   - gtkspell-lang 
@@ -13001,9 +13000,6 @@ unsorted:
   - libdwarf0 
   - libdwarves1 
   - libdxflib-3_26_4-1 
-  - libdxfrw-devel 
-  - libdxfrw-tools 
-  - libdxfrw1 
   - libe-book-devel 
   - libe-book-devel-doc 
   - libe-book-tools 
@@ -13822,7 +13818,6 @@ unsorted:
   - libgtkimageview0 
   - libgtkmm-2_4-1 
   - libgtksourceview-2_0-0 
-  - libgtksourceviewmm-3_0-0 
   - libgtksourceviewmm-4_0-0 
   - libgtkspell0 
   - libgtkspell3-3-0 
@@ -16553,7 +16548,7 @@ unsorted:
   - libswscale8-32bit 
   - libsybdb5 
   - libsybdb5-32bit 
-  - libsymmetrica2 
+  - libsymmetrica3 
   - libsympol0_1 
   - libsymspg2 
   - libsyn123-0 
@@ -25823,6 +25818,7 @@ unsorted:
   - python311-invocations 
   - python311-invoke 
   - python311-ioctl-opt 
+  - python311-ipaddr 
   - python311-ipdb 
   - python311-iptables 
   - python311-ipy 
