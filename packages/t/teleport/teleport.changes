@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Mar  1 11:13:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.3.0:
+  Note for openSUSE users:
+  The automatic updates via the teleport-update are not included in
+  this package. if you require this functionality, please use the
+  official packages from upstream.
+  * Delegated joining for Oracle Cloud Infrastructure
+    Teleport agents running on Oracle Cloud Infrastructure (OCI)
+    are now able to join the Teleport cluster without a static join
+    token.
+  * Stable UIDs for host-user creation
+    Teleport now provides the ability to create host users with
+    stable UIDs across the entire Teleport cluster.
+  * Improved GitHub Proxy enrollment flow
+    Teleport web UI now provides wizard-like guided enrollment flow
+    for the new GitHub Proxy integration.
+  * AWS Identity Center integration improvements
+    AWS Identity Center integration now supports using IAM
+    authentication instead of OIDC (useful for private clusters)
+    and a hybrid setup that allows to use another IdP as external
+    identity source.
+  * Okta integration improvements
+    Teleport Okta integration now provides updated guided
+    enrollment flow and will allow updating integration settings
+    (such as sync configuration or group filters) without having to
+    recreate the integration.
+    Note that the new enrollment flow uses OAuth authentication
+    method instead of API tokens. If the Okta integration is
+    installed on v17.3 and the cluster is downgraded the Okta
+    plugin must be reinstalled to ensure proper functionality.
+  * Readiness endpoint changes
+    The Auth Service readiness now reflects the connectivity from
+    the instance to the backend storage, and the Proxy Service
+    readiness reflects the connectivity to the Auth Service API. In
+    case of Auth or backend storage failure, the instances will now
+    turn unready. This change ensures that control plane components
+    can be excluded from their relevant load-balancing pools. If
+    you want to preserve the old behaviour (the Auth Service or
+    Proxy Service instance stays ready and runs in degraded mode)
+    in the teleport-cluster Helm chart, you can now tune the
+    readiness setting to have the pods become unready after a high
+    number of failed probes.
+  * Other fixes and improvements
+    - Added tctl edit support for Identity Center plugin resources.
+      #52605
+    - Added Oracle join method to web UI provision token editor.
+      #52599
+    - Added auto-importing of Oracle Cloud tags. #52543
+    - Added support for X509 revocations to Workload Identity.
+      #52503
+    - Git proxy commands executed in terminals now support
+      interactive login prompts when the tsh session expires.
+      #52475
+
+-------------------------------------------------------------------
 Wed Feb 26 05:56:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.2.9:
