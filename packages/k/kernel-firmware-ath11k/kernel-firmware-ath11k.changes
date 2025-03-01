@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 28 09:51:05 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250227 (git commit 30f36b8b9053):
+  * ath11k: QCN9074 hw1.0: update to WLAN.HK.2.9.0.1-02175-QCAHKSWPL_SILICONZ-2
+  * ath11k: QCA6698AQ hw2.1: update to WLAN.HSP.1.1-04604-QCAHSPSWPL_V1_V2_SILICONZ_IOE-1
+  * ath11k: QCA6698AQ hw2.1: update board-2.bin
+- Don't install superfluous info files to firmware directory
+
+-------------------------------------------------------------------
 Tue Feb 11 09:26:37 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix license description for kernel-firmware-tools package
