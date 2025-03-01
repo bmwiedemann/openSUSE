@@ -59,7 +59,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.36.2
+Version:        17.36.4
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -291,6 +291,7 @@ Developer documentation for libzypp.
 %build
 mkdir build
 cd build
+
 %if 0%{?suse_version} == 1600
 # bsc#1216091: rpm-4.18' does not execute 'rpm --runposttrans'
 # scripts chroot if --root is used.
@@ -300,7 +301,14 @@ export CXXFLAGS="%{optflags} -DWORKAROUNDDUMPPOSTTRANS_BUG_1216091"
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 %endif
-unset EXTRA_CMAKE_OPTIONS
+
+EXTRA_CMAKE_OPTIONS=
+%if 0%{?suse_version}
+EXTRA_CMAKE_OPTIONS="${EXTRA_CMAKE_OPTIONS} -DLIBZYPP_CODESTREAM=0%{?suse_version}:0%{?sle_version}:0%{?is_opensuse}"
+%endif
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150600
+EXTRA_CMAKE_OPTIONS="${EXTRA_CMAKE_OPTIONS} -DLIBZYPP_CONFIG_USE_DELTARPM_BY_DEFAULT=1"
+%endif
 
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DENABLE_BUILD_DOCS=TRUE \
