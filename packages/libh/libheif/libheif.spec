@@ -1,7 +1,7 @@
 #
 # spec file for package libheif
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,15 +43,16 @@
 %global force_gcc_version 13
 %endif
 
-Name:           libheif
+Name:           libheif%{?psuffix}
 Version:        1.19.5
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/strukturag/libheif
-Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/releases/download/v%{version}/libheif-%{version}.tar.gz
 Source99:       baselibs.conf
+Patch1:         0001-support-SVT-AV1-3.0.0.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.25
 BuildRequires:  fdupes
@@ -149,7 +150,6 @@ Requires:       libheif1 = %{version}-%{release}
 This plugin provides the encoder and decoder for JPEG in HEIF to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
 
-%if %{with kvazaar}
 %package kvazaar
 Summary:        Plugin kvazaar encoder for HEIC
 Group:          System/Libraries
@@ -159,9 +159,7 @@ Requires:       libheif1 = %{version}-%{release}
 %description kvazaar
 This plugin provides the kvazaar encoder for HEIC to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
-%endif
 
-%if %{with openjpeg}
 %package openjpeg
 Summary:        Plugin OpenJPEG J2K encoder and decoder for JPEG-2000 in HEIF
 Group:          System/Libraries
@@ -171,9 +169,7 @@ Requires:       libheif1 = %{version}-%{release}
 %description openjpeg
 This plugin provides the OpenJPEG J2K encoder and decoder for JPEG to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
-%endif
 
-%if %{with openh264}
 %package openh264
 Summary:        Plugin OpenH264 decoder in HEIF
 Group:          System/Libraries
@@ -183,9 +179,7 @@ Requires:       libheif1 = %{version}-%{release}
 %description openh264
 This plugin provides the OpenH264 decoder to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
-%endif
 
-%if %{with openjph}
 %package openjph
 Summary:        Plugin OpenJPH HT-J2K encoder in HEIF
 Group:          System/Libraries
@@ -195,7 +189,6 @@ Requires:       libheif1 = %{version}-%{release}
 %description openjph
 This plugin provides the OpenJPH HT-J2K encoder to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
-%endif
 
 %package rav1e
 Summary:        Plugin rav1e encoder for AVIF
@@ -207,7 +200,6 @@ Requires:       libheif1 = %{version}-%{release}
 This plugin provides the rav1e encoder for AVIF to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
 
-%if %{with svtenc}
 %package svtenc
 Summary:        Plugin SVT-AV1 encoder for AVIF
 Group:          System/Libraries
@@ -217,9 +209,7 @@ Requires:       libheif1 = %{version}-%{release}
 %description svtenc
 This plugin provides the SVT-AV1 encoder for AVIF to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
-%endif
 
-%if %{with x265}
 %package HEIF
 Summary:        Plugin for HEIF decoder and encoder
 Group:          System/Libraries
@@ -229,7 +219,6 @@ Requires:       libheif1 = %{version}-%{release}
 %description HEIF
 This plugin provides an decoder and encoder for HEIF to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
-%endif
 
 %package devel
 Summary:        Devel Package for %{name}
@@ -251,7 +240,6 @@ A ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
 
 This package contains the GDK PixBuf Loader for %{name}.
 
-%if %{with x265}
 %package -n heif-examples
 Summary:        Example binary programs for %{name}
 Group:          Productivity/Graphics/Other
@@ -270,10 +258,9 @@ Requires:       libheif1 = %{version}-%{release}
 
 %description -n heif-thumbnailer
 Allows to show thumbnail previews of HEIF and AVIF images using %{name}.
-%endif
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n libheif-%{version}
 
 %build
 # https://github.com/strukturag/libheif/issues/1281
@@ -384,8 +371,7 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %endif
 %fdupes -s %{buildroot}%{_includedir}
 
-%post -n libheif1 -p /sbin/ldconfig
-%postun -n libheif1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libheif1
 
 %post -n gdk-pixbuf-loader-libheif
 %{gdk_pixbuf_loader_post}
