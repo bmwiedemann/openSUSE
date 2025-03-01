@@ -1,7 +1,7 @@
 #
 # spec file for package symmetrica
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define lname	libsymmetrica2
+%define lname	libsymmetrica3
 Name:           symmetrica
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        C library for group theory
 License:        MIT
 Group:          Productivity/Scientific/Math
 URL:            https://gitlab.com/sagemath/symmetrica
 Source:         https://gitlab.com/sagemath/symmetrica/-/archive/%version/symmetrica-%version.tar.gz
-Patch1:         return-value.patch
 BuildRequires:  libtool
 
 %description
@@ -36,18 +35,18 @@ Summary:        C library for group theory
 Group:          System/Libraries
 
 %description -n %lname
-Symmetrica is a C library with routines for the following applications, among
-many others:
+Symmetrica is a C library with routines for the following applications,
+among others:
 
-  * ordinary representation theory of the symmetric group and related groups
-  * ordinary representation theory of the classical groups
-  * modular representation theory of the symmetric group
-  * projective representation theory of the symmetric group
-  * combinatorics of tableaux
-  * symmetric functions and polynomials
-  * commutative and non commutative Schubert polynomials
-  * operations of finite groups
-  * ordinary representation theory of Hecke algebras of type An
+* ordinary representation theory of the symmetric group and related groups
+* ordinary representation theory of the classical groups
+* modular representation theory of the symmetric group
+* projective representation theory of the symmetric group
+* combinatorics of tableaux
+* symmetric functions and polynomials
+* commutative and non commutative Schubert polynomials
+* operations of finite groups
+* ordinary representation theory of Hecke algebras of type A_n
 
 %package devel
 Summary:        Header files for Symmetrica, a library for group theory
@@ -70,16 +69,16 @@ autoreconf -fi
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
-%_libdir/libsymmetrica.so.2*
+%_libdir/libsymmetrica.so.3*
 
 %files devel
 %license LICENSE
 %_includedir/symmetrica*
 %_libdir/libsymmetrica.so
+%_libdir/pkgconfig/symmetrica.pc
 %_defaultdocdir/%name/
 
 %changelog

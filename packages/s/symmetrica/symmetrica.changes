@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 28 10:51:03 UTC 2025 - pgajdos@suse.com
+
+- version update to 3.1.0
+  * New pkg-config file
+  * Several bug fixes
+  * GCC and clang both compile without warnings
+  * Support for C23 (coming in GCC 15)
+  * Argument type information added to the public interface
+  * New automated (make check) test suite
+  * Some obsolete stuff removed
+  * Graph functions now enabled by default via -DALLTRUE
+  * Whitespace & comment cleanup throughout
+  * d_mat no longer caches to a file in $CWD
+- Delete patch return-value.patch (merged)
+
+-------------------------------------------------------------------
 Mon Oct 26 15:37:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 3.0.1) for build.opensuse.org
