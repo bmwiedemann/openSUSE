@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Feb 27 20:40:17 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 5.0.0+199:
+  * Add roman vowels with a macron (e.g. ō) to the Japanese Kanna
+    with Romaji alphabet, and minor reordering of the alphabet
+    groups.
+  * Alphabet improvements
+  * configure.ac: Replace defunct Bugzilla with GNOME GitLab
+  * docs: Replace defunct Bugzilla with GNOME GitLab
+  * Adjust text label size and line thickness to account for 2
+    pixels per 'point' in with high DPI displays.
+  * Fixes to get rendering working correctly on recent mac hardware
+    and OS.
+  * Minor 'delete' fix and whitespace correction.
+  * Use gtk3 draw event rather than gtk2 expose_event.
+    gtk__cairo_should_draw_window() presence wasn't being tested.
+  * g/c Gdk2 based drawing code (aka the without-cairo option)
+  * g/c Qt Extended (Qtopia) which was discontinued over a decade
+    ago.
+  * g/c The GPE Palmtop Environment which had its last release over
+    a decade ago.
+  * Point to GitLab instead of Bugzilla (deprecated) in README
+  * Avoid deprecated function
+  * Remove extern "C" warpper around atspi/glib headers inclusion
+  * Tidy away QTE support, the crux of which was already commented
+    out.
+  * gtk_show_uri deprecated in favour of gtk_show_uri_on_window in
+    gtk 3.22
+  * Drop support for Gtk2 - Gtk4 is here!
+  * Fix comment after 73b1e4a
+  * Remove cspi/bonobo support.
+  * configure: Ada removed support for GSettings etc. in 2015
+  * Remove Maemo support.
+  * Remove IOstreamDasherEdit.*
+  * Drop html markup
+  * Drop trailing spaces
+  * Fix socket vs <functional> conflict.
+  * Fix clearly untested "Migrate from gnome-doc-utils"
+  * Correctly fall back system font when no Dasher Font has been
+    selected in preferences
+  * Fix appveyor build status URL
+  * Fix appveyor error about project cannot be found
+  * Updated translations.
+- Switch back to gnome gitlab as source url. Original upstream have
+  come back to life. Use current head.
+- Following upstream changes, drop no longer needed
+  update-desktop-files, pkgconfig(gtk+-2.0) and pkgconfig(xtst)
+  BuildRequires. Clean up spec.
+- Drop patches fixed upstream:
+  * dasher-5.0.0-sys-stat.patch
+  * gnome-doc-utils-depr.patch
+  * 0001-Remove-extern-C-warpper-around-atspi-glib-headers-in.patch
+
+-------------------------------------------------------------------
 Mon Aug 19 11:27:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire gettext-devel instead of gettext: allow OBS to
