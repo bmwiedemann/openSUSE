@@ -37,6 +37,7 @@ This particular package contains all the Gnome patterns.
 
 
 
+
 ################################################################################
 %package gnome
 %pattern_graphicalenvironments
@@ -229,6 +230,10 @@ Recommends:     NetworkManager-pptp-gnome
 Recommends:     desktop-data-SLE-extra
 %endif
 Recommends:     malcontent-control
+# openSUSE welcome is our 'welcome app'
+%if 0%{?is_opensuse}
+Recommends:     opensuse-welcome
+%endif
 
 %description gnome_basic
 The GNOME desktop environment is an intuitive and attractive desktop for users.
