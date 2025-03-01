@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package virt-manager
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -158,7 +158,6 @@ Group:          System/Monitoring
 Requires:       libosinfo >= 0.2.10
 Requires:       mkisofs
 Requires:       python3-gobject
-Requires:       python3-ipaddr
 Requires:       python3-libvirt-python >= 0.7.0
 Requires:       python3-libxml2-python
 Requires:       python3-pycurl
