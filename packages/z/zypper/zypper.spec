@@ -1,7 +1,7 @@
 #
 # spec file for package zypper.spec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zypper
-Version:        1.14.84
+Version:        1.14.87
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
@@ -31,7 +31,7 @@ BuildRequires:  boost-devel >= 1.33.1
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++ >= 7
 BuildRequires:  gettext-devel >= 0.15
-BuildRequires:  libzypp-devel >= 17.36.0
+BuildRequires:  libzypp-devel >= 17.36.4
 BuildRequires:  readline-devel >= 5.1
 BuildRequires:  libxml2-devel
 
@@ -41,7 +41,6 @@ BuildRequires:  rubygem(asciidoctor)
 # TUI library which is built and shipped with libzypp-devel
 BuildRequires:  libzypp-tui-devel >= 1
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Command line software manager using libzypp
 License:        GPL-2.0-or-later
 Group:          System/Packages
@@ -52,6 +51,7 @@ Provides:       zypper(auto-agree-with-product-licenses)
 Provides:       zypper(oldpackage)
 Provides:       zypper(updatestack-only)
 Provides:       zypper(purge-kernels)
+Provides:       zypper(include-all-archs)
 %if 0%{?suse_version}
 Requires:       libaugeas0 >= 1.10.0
 %requires_ge    libzypp
@@ -78,7 +78,7 @@ Requires:       %{_bindir}/grep
 Requires:       /bin/bash
 BuildArch:      noarch
 
-%description -n zypper-log
+%description log
 CLI for accessing the zypper logfile
 
 %package aptitude
@@ -136,9 +136,8 @@ cmake $CMAKE_FLAGS \
 %make_build
 
 %check
-pushd build/tests
+cd build/tests
 ctest --output-on-failure .
-popd
 
 %install
 cd build
@@ -180,7 +179,6 @@ done
 %endif
 
 %files -f zypper.lang
-%defattr(-,root,root)
 %if 0%{?suse_version} >= 1500
 %license COPYING
 %endif
@@ -211,7 +209,6 @@ done
 %ghost %config(noreplace) %attr (640,root,root) %{_var}/log/zypper.log
 
 %files log
-%defattr(-,root,root)
 %{_sbindir}/zypper-log
 %{_mandir}/man8/zypper-log.8%{?ext_man}
 
@@ -223,7 +220,6 @@ done
 %config(noreplace) %{_sysconfdir}/zypp/apt-packagemap.d/*
 
 %files needs-restarting
-%defattr(-,root,root)
 %{_bindir}/needs-restarting
 %{_mandir}/man1/needs-restarting.1%{?ext_man}
 
