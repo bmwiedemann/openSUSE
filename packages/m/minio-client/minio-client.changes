@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 28 19:03:03 UTC 2025 - mrueckert@suse.de
+
+- Update to version 20250221T160046Z:
+  * Mirror should delete on delete marker creation +  ILM (#5148)
+  * fix: use tags package instead of s3utils (#5146)
+  * fix empty ilm tier list output (#5145)
+
+-------------------------------------------------------------------
 Tue Feb 18 22:39:21 UTC 2025 - mrueckert@suse.de
 
 - Update to version 20250215T103616Z:
