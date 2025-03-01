@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 01 13:18:02 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 1.13.3+git.1731775346.2b21553:
+  * Update version to 1.13.3
+  * dictd: fix buffer overflow in first/last search strategies    Thanks a lot to Matěj Cepl <mcepl@cepl.eu> for the report!
+  * Remove config.{sub,guess}
+  * Update version to 1.13.2
+  * Rename configure.in to configure.ac
+  * dictP.h: remove #include <sys/time.h>
+  * configure.in: fix obsolete code
+  * Fix compilation issues with gcc-14
+  * Update configure script and the like (autoconf-2.72)
+
+-------------------------------------------------------------------
 Wed Jan 29 17:14:30 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add default /etc/dict.conf so that dict client works by default

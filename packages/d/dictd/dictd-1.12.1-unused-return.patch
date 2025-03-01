@@ -1,6 +1,12 @@
---- a/dictd.c
-+++ b/dictd.c
-@@ -332,6 +332,7 @@ static void xsigprocmask (int how, const
+---
+ dictd.c |   40 ++++++++++++++++++++++++++--------------
+ 1 file changed, 26 insertions(+), 14 deletions(-)
+
+Index: dictd-1.13.3+git.1731775346.2b21553/dictd.c
+===================================================================
+--- dictd-1.13.3+git.1731775346.2b21553.orig/dictd.c	2024-11-16 17:42:26.000000000 +0100
++++ dictd-1.13.3+git.1731775346.2b21553/dictd.c	2025-03-01 14:27:19.487380130 +0100
+@@ -332,6 +332,7 @@
     }
  }
  
@@ -8,7 +14,7 @@
  static void block_signals (void)
  {
     sigset_t set;
-@@ -353,6 +354,7 @@ static void unblock_signals (void)
+@@ -353,6 +354,7 @@
  
     xsigprocmask (SIG_UNBLOCK, &set, NULL);
  }
@@ -16,70 +22,65 @@
  
  static void handler( int sig )
  {
-@@ -1266,21 +1268,22 @@ static void release_root_privileges( voi
-  * -- Bob Hilliard
-  */
- {
-+   int                unused __attribute__((unused));
-    if (geteuid() == 0) {
+@@ -1270,19 +1272,25 @@
        struct passwd *pwd;
  
        if ((pwd = getpwnam("dictd"))) {
 -         setgid(pwd->pw_gid);
-+         unused = setgid(pwd->pw_gid);
-          initgroups("dictd",pwd->pw_gid);
+-         initgroups("dictd",pwd->pw_gid);
 -         setuid(pwd->pw_uid);
-+         unused = setuid(pwd->pw_uid);
++          if (setgid(pwd->pw_gid))
++              err_fatal_errno(NULL, ":E: setgid(%u) failed\n", (unsigned)pwd->pw_gid);
++          initgroups("dictd",pwd->pw_gid);
++          if (setuid(pwd->pw_uid))
++              err_fatal_errno(NULL, ":E: setuid(%u) failed\n", (unsigned)pwd->pw_uid);
        } else if ((pwd = getpwnam("nobody"))) {
 -         setgid(pwd->pw_gid);
-+         unused = setgid(pwd->pw_gid);
-          initgroups("nobody",pwd->pw_gid);
+-         initgroups("nobody",pwd->pw_gid);
 -         setuid(pwd->pw_uid);
-+         unused = setuid(pwd->pw_uid);
++          if (setgid(pwd->pw_gid))
++              err_fatal_errno(NULL, ":E: setgid(%u) failed\n", (unsigned)pwd->pw_gid);
++          initgroups("nobody",pwd->pw_gid);
++          if (setuid(pwd->pw_uid))
++              err_fatal_errno(NULL, ":E: setuid(%u) failed\n", (unsigned)pwd->pw_uid);
        } else {
 -         setgid(GID_NOGROUP);
-+         unused = setgid(GID_NOGROUP);
-          initgroups("nobody", GID_NOGROUP);
+-         initgroups("nobody", GID_NOGROUP);
 -         setuid(UID_NOBODY);
-+         unused = setuid(UID_NOBODY);
++          if (setgid(GID_NOGROUP))
++              err_fatal_errno(NULL, ":E: setgid(%u) failed\n", (unsigned)pwd->pw_gid);
++          initgroups("nobody", GID_NOGROUP);
++          if (setuid(UID_NOBODY))
++              err_fatal_errno(NULL, ":E: setuid(%u) failed\n", (unsigned)pwd->pw_uid);
        }
-    }
+-   }
++  }
  }
-@@ -1464,6 +1467,7 @@ static void pid_file_write ()
- static void reopen_012 (void)
- {
-    int fd = open ("/dev/null", O_RDWR);
-+   int unused __attribute__((unused));
-    if (fd == -1)
-       err_fatal_errno (__func__, ":E: can't open /dev/null");
  
-@@ -1471,9 +1475,9 @@ static void reopen_012 (void)
+ /* Perform sanity checks that are often problems for people trying to
+@@ -1471,9 +1479,12 @@
     close (1);
     close (2);
  
 -   dup (fd);
 -   dup (fd);
 -   dup (fd);
-+   unused = dup (fd);
-+   unused = dup (fd);
-+   unused = dup (fd);
++   if (dup(fd) == -1)
++       err_fatal_errno(NULL, ":E: dup(2) failed\n");
++   if (dup(fd) == -1)
++       err_fatal_errno(NULL, ":E: dup(2) failed\n");
++   if (dup(fd) == -1)
++       err_fatal_errno(NULL, ":E: dup(2) failed\n");
  }
  
  int main (int argc, char **argv, char **envp)
-@@ -1489,6 +1493,7 @@ int main (int argc, char **argv, char **
-    int                i;
- 
-    int                errno_accept = 0;
-+   int                unused __attribute__((unused));
- 
-    const char *       default_strategy_arg = "???";
- 
-@@ -1707,7 +1712,7 @@ int main (int argc, char **argv, char **
+@@ -1707,7 +1718,8 @@
  
     if (detach){
        /* become a daemon */
 -      daemon (0, 1);
-+      unused = daemon (0, 1);
++      if (daemon(0, 1))
++          err_fatal_errno(NULL, ":E: daemon(3) failed\n");
        reopen_012 ();
  
        /* after fork from daemon(3) */

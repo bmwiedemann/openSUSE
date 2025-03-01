@@ -17,19 +17,20 @@
 
 
 Name:           dictd
-Version:        1.13.3
+Version:        1.13.3+git.1731775346.2b21553
 Release:        0
 Summary:        DICT protocol (RFC 2229) server and command-line client
 License:        BSD-3-Clause AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT AND SUSE-Public-Domain
 Group:          Productivity/Office/Dictionary
 URL:            https://github.com/cheusov/dictd
-# Source0:        https://github.com/cheusov/dictd/archive/%%{version}.tar.gz#/dictd-%%{version}.tar.gz
-Source0:        https://sourceforge.net/projects/dict/files/dictd/dictd-%{version}/dictd-%{version}.tar.gz
+# Source0:        https://sourceforge.net/projects/dict/files/dictd/dictd-%{version}/dictd-%{version}.tar.gz
+Source0:        dictd-%{version}.tar.gz
 Source1:        colorit.conf
 Source2:        dictd.service
 Source99:       dictd-rpmlintrc
 Patch0:         dictd-1.12.1-unused-return.patch
 # BuildRequires:  mk-configure
+BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gawk
@@ -72,6 +73,9 @@ This package contains development files for the dictd package.
 %prep
 %autosetup -p1
 
+autoreconf -fi
+ls -l config*
+
 %build
 export LDFLAGS="%{?__global_ldflags}" CPPFLAGS="%{optflags} -fPIC"
 # export USE_PLUGIN=1
@@ -84,7 +88,14 @@ export LDFLAGS="%{?__global_ldflags}" CPPFLAGS="%{optflags} -fPIC"
 # mkc_compiler_settings
 # mkcmake all
 export LEXLIB="-fl"
-%configure --enable-dictorg --with-plugin-dbi
+./configure --host=%{_host} --build=%{_build} --program-prefix=%{?_program_prefix} \
+    --prefix=%{_prefix} --exec-prefix=%{_exec_prefix} \
+    --bindir=%{_bindir} --sbindir=%{_sbindir} --sysconfdir=%{_sysconfdir} \
+    --datadir=%{_datadir} --includedir=%{_includedir} --libdir=%{_libdir} --libexecdir=%{_libexecdir} \
+    --localstatedir=%{_localstatedir} --sharedstatedir=%{_sharedstatedir} \
+    --mandir=%{_mandir} --infodir=%{_infodir} \
+    --with-plugin-dbi
+# %%configure --with-plugin-dbi
 # --disable-plugin
 %make_build
 
