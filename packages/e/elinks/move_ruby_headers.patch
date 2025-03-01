@@ -1,0 +1,42 @@
+From f7ba1b40117dfb269db28ad4486838c20bb05ea2 Mon Sep 17 00:00:00 2001
+From: Marius Grossu <marius.grossu@suse.com>
+Date: Fri, 28 Feb 2025 16:35:26 +0100
+Subject: [PATCH] Inlcude the ruby/version.h in ruby.c since it was moved
+
+---
+ src/scripting/ruby/core.c | 1 -
+ src/scripting/ruby/ruby.c | 6 ++++++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/scripting/ruby/core.c b/src/scripting/ruby/core.c
+index 7f10f6a6..30feba0e 100644
+--- a/src/scripting/ruby/core.c
++++ b/src/scripting/ruby/core.c
+@@ -6,7 +6,6 @@
+ 
+ #undef _GNU_SOURCE
+ #include <ruby.h>
+-#include <ruby/version.h>
+ 
+ #undef _
+ 
+diff --git a/src/scripting/ruby/ruby.c b/src/scripting/ruby/ruby.c
+index 9bc15feb..2eb656d9 100644
+--- a/src/scripting/ruby/ruby.c
++++ b/src/scripting/ruby/ruby.c
+@@ -4,6 +4,12 @@
+ #include "config.h"
+ #endif
+ 
++#undef _GNU_SOURCE
++#include <ruby.h>
++#include <ruby/version.h>
++
++#undef _
++
+ #include "elinks.h"
+ 
+ #include "intl/libintl.h"
+-- 
+2.48.1
+

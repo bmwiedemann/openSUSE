@@ -1,7 +1,7 @@
 #
 # spec file for package elinks
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,14 @@
 %bcond_with js
 %endif
 Name:           elinks
-Version:        0.17.1.1
+Version:        0.18.0
 Release:        0
 Summary:        An advanced and well-established feature-rich text mode web browser
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            http://elinks.or.cz/
 Source0:        https://github.com/rkd77/elinks/releases/download/v%{version}/elinks-%{version}.tar.xz
+Patch1:         move_ruby_headers.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gpm-devel
 %if %{with js}
