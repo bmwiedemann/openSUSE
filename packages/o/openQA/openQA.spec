@@ -18,7 +18,7 @@
 
 # can't use linebreaks here!
 %define openqa_main_service openqa-webui.service
-%define openqa_extra_services openqa-gru.service openqa-websockets.service openqa-scheduler.service openqa-enqueue-audit-event-cleanup.service openqa-enqueue-audit-event-cleanup.timer openqa-enqueue-asset-cleanup.service openqa-enqueue-git-auto-update.service openqa-enqueue-asset-cleanup.timer openqa-enqueue-result-cleanup.service openqa-enqueue-result-cleanup.timer openqa-enqueue-bug-cleanup.service openqa-enqueue-bug-cleanup.timer openqa-enqueue-git-auto-update.timer
+%define openqa_extra_services openqa-gru.service openqa-websockets.service openqa-scheduler.service openqa-enqueue-audit-event-cleanup.service openqa-enqueue-audit-event-cleanup.timer openqa-enqueue-asset-cleanup.service openqa-enqueue-git-auto-update.service openqa-enqueue-asset-cleanup.timer openqa-enqueue-result-cleanup.service openqa-enqueue-result-cleanup.timer openqa-enqueue-bug-cleanup.service openqa-enqueue-bug-cleanup.timer openqa-enqueue-git-auto-update.timer openqa-enqueue-needle-ref-cleanup.service openqa-enqueue-needle-ref-cleanup.timer
 %define openqa_services %{openqa_main_service} %{openqa_extra_services}
 %define openqa_worker_services openqa-worker.target openqa-slirpvde.service openqa-vde_switch.service openqa-worker-cacheservice.service openqa-worker-cacheservice-minion.service
 %if %{undefined tmpfiles_create}
@@ -66,7 +66,7 @@
 # The following line is generated from dependencies.yaml
 %define client_requires curl git-core jq perl(Getopt::Long::Descriptive) perl(IO::Socket::SSL) >= 2.009 perl(IPC::Run) perl(JSON::Validator) perl(LWP::Protocol::https) perl(LWP::UserAgent) perl(Test::More) perl(YAML::PP) >= 0.020 perl(YAML::XS)
 # The following line is generated from dependencies.yaml
-%define worker_requires bsdtar openQA-client optipng os-autoinst < 5 perl(Capture::Tiny) perl(File::Map) perl(Minion::Backend::SQLite) >= 5.0.7 perl(Mojo::IOLoop::ReadWriteProcess) >= 0.26 perl(Mojo::SQLite) psmisc sqlite3 >= 3.24.0
+%define worker_requires bsdtar openQA-client optipng os-autoinst perl(Capture::Tiny) perl(File::Map) perl(Minion::Backend::SQLite) >= 5.0.7 perl(Mojo::IOLoop::ReadWriteProcess) >= 0.26 perl(Mojo::SQLite) psmisc sqlite3 >= 3.24.0
 # The following line is generated from dependencies.yaml
 %define build_requires %assetpack_requires npm rubygem(sass) >= 3.7.4
 
@@ -90,7 +90,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1740219045.577a81d2
+Version:        5.1740761651.192e0b4f
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -316,8 +316,7 @@ statistics.
 %prep
 %setup -q
 sed -e 's,/bin/env python,/bin/python,' -i script/openqa-label-all
-rm package-lock.json
-local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps
+local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps --no-package-lock
 
 %build
 %make_build
@@ -612,6 +611,8 @@ fi
 %{_unitdir}/openqa-enqueue-result-cleanup.timer
 %{_unitdir}/openqa-enqueue-bug-cleanup.service
 %{_unitdir}/openqa-enqueue-bug-cleanup.timer
+%{_unitdir}/openqa-enqueue-needle-ref-cleanup.service
+%{_unitdir}/openqa-enqueue-needle-ref-cleanup.timer
 %{_tmpfilesdir}/openqa-webui.conf
 # web libs
 %dir %{_datadir}/openqa
@@ -648,6 +649,7 @@ fi
 %{_datadir}/openqa/script/openqa-webui-daemon
 %{_datadir}/openqa/script/upgradedb
 %{_datadir}/openqa/script/modify_needle
+%{_datadir}/openqa/script/openqa-enqueue-needle-ref-cleanup
 # TODO: define final user
 %defattr(-,geekotest,root)
 # attention: never package subdirectories owned by a user other

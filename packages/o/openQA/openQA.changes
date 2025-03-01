@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Feb 28 22:49:22 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1740761651.192e0b4f:
+  * Simplify needle_url in Step controller
+  * Remove uncoverable comment from one statement
+  * Handle unhandled git output by not outputting it
+  * Document `WORKER_CLASS`-specific settings
+  * Ensure instance-specific worker settings have precedence
+  * Avoid duplicated code for reading web UI specific worker config
+  * Allow `WORKER_CLASS`-specific settings in worker config
+  * Only log git checkout if target file is not already there
+  * Enable prove to run tests relying on default test database
+  * t: Use signatures in Test::Database
+  * t: Use Feature::Compat::Try in Test::Database
+  * Extract methods in JobTemplate::update
+  * Show needles from correct git ref on test result page
+  * Bump eslint-config-prettier from 10.0.1 to 10.0.2
+  * Avoid repetition of allowed characters in test names
+  * Streamline test name parsing in clone job with new validation code
+  * Adapt use of `local-npm-registry` to version 1.1.0
+  * Document traceability and reproducibility of tests
+  * Replace Try::Tiny with Feature::Compat::Try
+  * coverage: Avoid B::Deparse warning with Syntax::Keyword::Try::Deparse
+  * Use function pointer in JobTemplate method
+  * Extract method from WebAPI::Controller::API::V1::JobTemplate::update
+  * Extract method in WebAPI::Controller::API::V1::JobTemplate
+  * Use proper big-comma style WebAPI::Controller::API::V1::JobTemplate
+  * Use signatures in WebAPI::Controller::API::V1::JobTemplate
+  * Allow os-autoinst >= 5
+  * Remove unused imports on modules which do not have try/catch block
+  * dist: Bump version to semver-compliant 5
+  * Update documentation about post_run_hook behavior
+  * Allow all kinds of word characters in test names and other settings
+  * Disallow `%`, `"` and `'` in test names
+  * Disallow trailing newlines in test names
+  * Allow more special characters for test names seen in production
+  * Allow only simple space characters in test names
+  * Validate the test name when creating new jobs
+  * Enable auto updates of tests/needles by default again
+  * Bump eslint from 9.20.1 to 9.21.0
+  * Improve error message when sub process in tests is terminated
+  * Reduce resource usage of fullstack scheduler test in CI
+  * Bump prettier from 3.5.1 to 3.5.2
+  * Bump ace-builds from 1.38.0 to 1.39.0
+  * openqa-dump-templates: Reproducible output
+
+-------------------------------------------------------------------
 Sat Feb 22 12:10:50 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1740219045.577a81d2:
