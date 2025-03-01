@@ -478,4 +478,12 @@
     <comment>- Update to release 2025.02.19</comment>
     <requestid>1246967</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>8c41e7cb567fe1ceeff8131f5577f700</srcmd5>
+    <version>2025.02.19</version>
+    <time>1740852998</time>
+    <user>dimstar_suse</user>
+    <comment>- Require same version between yt-dlp -&gt; python-yt-dlp</comment>
+    <requestid>1249319</requestid>
+  </revision>
 </revisionlist>

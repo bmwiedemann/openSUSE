@@ -45,8 +45,7 @@ Obsoletes:      yt-dlp-fish-completion < %version-%release
 Provides:       yt-dlp-fish-completion = %version-%release
 Obsoletes:      yt-dlp-zsh-completion < %version-%release
 Provides:       yt-dlp-zsh-completion = %version-%release
-# %%primary_python not available in Leap yet
-Requires:       %(echo %{python_module yt-dlp} | perl -pe 's{.* }{}g')
+Requires:       python3-yt-dlp = %version
 %define python_subpackage_only 1
 %python_subpackages
 
