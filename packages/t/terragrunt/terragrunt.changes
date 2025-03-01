@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 01 10:40:40 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.16:
+  * Stacks: nested stacks (#3900)
+  * build(deps): bump github.com/go-jose/go-jose/v4 from 4.0.4 to
+    4.0.5 (#3930)
+  * feat: Support new pre-release process (#3941)
+
+-------------------------------------------------------------------
 Thu Feb 27 12:49:27 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.73.15:
