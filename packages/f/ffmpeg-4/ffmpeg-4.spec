@@ -137,11 +137,12 @@ Patch15:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
 Patch17:        ffmpeg-CVE-2023-49502.patch
 Patch22:        ffmpeg-c99.patch
 Patch23:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
-Patch24:        ffmpeg-4-CVE-2024-12361.patch
-Patch25:        ffmpeg-4-CVE-2025-22919.patch
-Patch26:        ffmpeg-4-CVE-2025-0518.patch
-Patch27:        ffmpeg-4-CVE-2025-25473.patch
-Patch28:        ffmpeg-4-CVE-2025-22921.patch
+Patch24:        ffmpeg-4-CVE-2024-35368.patch
+Patch25:        ffmpeg-4-CVE-2024-12361.patch
+Patch26:        ffmpeg-4-CVE-2025-22919.patch
+Patch27:        ffmpeg-4-CVE-2025-0518.patch
+Patch28:        ffmpeg-4-CVE-2025-25473.patch
+Patch29:        ffmpeg-4-CVE-2025-22921.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

@@ -701,4 +701,16 @@
     <comment>fix order of changelog messages (forward from manfred-h)</comment>
     <requestid>1249264</requestid>
   </revision>
+  <revision rev="76" vrev="5">
+    <srcmd5>da7697f1580e9bcb9f21d074941ef9eb</srcmd5>
+    <version>4.4.5</version>
+    <time>1740914241</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-4-CVE-2024-35368.patch:
+  Backporting 45133009 from upstream, After having created the
+  AVBuffer that is put into frame-&gt;buf[0], ownership of several
+  objects Fix double-free on the AVFrame is unreferenced.
+  (CVE-2024-35368, bsc#1234028)</comment>
+    <requestid>1249416</requestid>
+  </revision>
 </revisionlist>
