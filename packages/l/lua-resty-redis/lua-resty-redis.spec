@@ -1,7 +1,7 @@
 #
 # spec file for package lua-resty-redis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lua_version 5.1
 Name:           lua-resty-redis
-Version:        0.31
+Version:        0.32
 Release:        0
 Summary:        Lua redis client driver for the ngx_lua based on the cosocket API
 License:        BSD-2-Clause

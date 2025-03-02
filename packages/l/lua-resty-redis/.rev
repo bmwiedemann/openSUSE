@@ -16,4 +16,13 @@
   * Upstream doesn't provide a ChangeLog.</comment>
     <requestid>1196400</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8e080c913ba6749ba92a148de0c5b2c</srcmd5>
+    <version>0.32</version>
+    <time>1740914438</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.32.
+  * https://github.com/openresty/lua-resty-redis/compare/v0.31...v0.32</comment>
+    <requestid>1249431</requestid>
+  </revision>
 </revisionlist>
