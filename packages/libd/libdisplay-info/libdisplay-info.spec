@@ -1,7 +1,7 @@
 #
 # spec file for package libdisplay-info
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,8 @@ URL:            https://gitlab.freedesktop.org/emersion/libdisplay-info
 Source:         https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/%version/downloads/libdisplay-info-%version.tar.xz
 Source2:        https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/%version/downloads/libdisplay-info-%version.tar.xz.sig
 Source3:        %name.keyring
-BuildRequires:  cmake
-BuildRequires:  meson
+BuildRequires:  c_compiler
+BuildRequires:  meson >= 0.57.0
 BuildRequires:  pkgconfig(hwdata)
 
 %description
@@ -47,6 +47,19 @@ low-level API exposing all of the details of these formats, plus a
 high-level API (of opinionated functions) which abstracts these
 details for common operations.
 
+%package tools
+Summary:        Command-line tools for %name
+Requires:       %lname = %version
+Provides:       %name-devel:%_bindir/di-edid-decode
+
+%description tools
+libdisplay-info is an EDID and DisplayID library. It provides a
+low-level API exposing all of the details of these formats, plus a
+high-level API (of opinionated functions) which abstracts these
+details for common operations.
+
+This package contains a tool to parse EDID.
+
 %package devel
 Summary:        Header files for libdisplay-info, an EDID library
 Group:          Development/Libraries/C and C++
@@ -62,6 +75,7 @@ This package contains headers for the library.
 %autosetup -p1
 
 %build
+# includedir intentional, cf. bugzilla.opensuse.org/795968
 %meson --includedir="%_includedir/%name"
 %meson_build
 
@@ -70,11 +84,16 @@ This package contains headers for the library.
 
 %ldconfig_scriptlets -n %lname
 
+%check
+%meson_test
+
 %files -n %lname
 %_libdir/lib*.so.[0-9]*
 
-%files devel
+%files tools
 %_bindir/di-edid-decode
+
+%files devel
 %_includedir/%name/
 %_libdir/pkgconfig/*.pc
 %_libdir/*.so
