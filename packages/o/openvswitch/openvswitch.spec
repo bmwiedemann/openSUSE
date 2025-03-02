@@ -18,14 +18,14 @@
 
 
 %define skip_python2 1
-%define ovs_lname libopenvswitch-3_3-0
-%define ovn_lname libovn-24_03-0
-%define ovs_version 3.3.2
-%define ovn_version 24.03.5
+%define ovs_lname libopenvswitch-3_5-0
+%define ovn_lname libovn-24_09-0
+%define ovs_version 3.5.0
+%define ovn_version 24.09.2
 %define ovs_dir ovs-%{ovs_version}
 %define ovn_dir ovn-%{ovn_version}
 %define rpmstate %{_rundir}/openvswitch-rpm-state-
-%define _dpdkv 23.11.1
+%define _dpdkv 24.11
 %define name_tag ${nil}
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -172,7 +172,7 @@ License:        Apache-2.0
 Group:          System/Libraries
 %if %{with dpdk}
 Requires:       dpdk >= %{_dpdkv}
-Requires:       libdpdk-24 >= %{_dpdkv}
+Requires:       libdpdk-25 >= %{_dpdkv}
 %endif
 
 %description -n %{ovs_lname}
@@ -670,7 +670,7 @@ mkdir python3-ovs && pushd $_
 cp -an ../%{ovs_dir}/python/* $(pwd)/
 rm -rf %{buildroot}%{_datadir}/openvswitch/python
 export LDFLAGS="${LDFLAGS} -L %{buildroot}%{_libdir}"
-export CPPFLAGS="-I ../../include"
+export CPPFLAGS="-I ../%{ovs_dir}/include"
 
 %if 0%{?suse_version}
 # SLES
@@ -1117,6 +1117,7 @@ fi
 %{_bindir}/ovs-docker
 %{_bindir}/ovs-dpctl
 %{_bindir}/ovs-dpctl-top
+%{_bindir}/ovs-flowviz
 %{_bindir}/ovs-ofctl
 %{_bindir}/ovs-parse-backtrace
 %{_bindir}/ovs-vsctl
@@ -1153,6 +1154,7 @@ fi
 %{_mandir}/man8/ovs-ctl.8%{?ext_man}
 %{_mandir}/man8/ovs-dpctl-top.8%{?ext_man}
 %{_mandir}/man8/ovs-dpctl.8%{?ext_man}
+%{_mandir}/man8/ovs-flowviz.8%{?ext_man}
 %{_mandir}/man8/ovs-kmod-ctl.8%{?ext_man}
 %{_mandir}/man8/ovs-ofctl.8%{?ext_man}
 %{_mandir}/man8/ovs-parse-backtrace.8%{?ext_man}

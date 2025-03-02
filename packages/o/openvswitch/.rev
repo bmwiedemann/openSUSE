@@ -929,4 +929,17 @@ Changes:
     <comment></comment>
     <requestid>1244140</requestid>
   </revision>
+  <revision rev="80" vrev="26">
+    <srcmd5>476cdfd6bf93a1b3e8238b6492dd389e</srcmd5>
+    <version>unknown</version>
+    <time>1740914252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update openvswitch to 3.5.0 for a list of changes, check
+  https://www.openvswitch.org/releases/NEWS-3.5.0.txt
+- Update patch file 0001-Use-strongswan-for-openvswitch-ipsec-service.patch
+- Update OVN to 24.09.02. For a list of changes, check
+  https://github.com/ovn-org/ovn/blob/v24.09.2/NEWS
+</comment>
+    <requestid>1249235</requestid>
+  </revision>
 </revisionlist>

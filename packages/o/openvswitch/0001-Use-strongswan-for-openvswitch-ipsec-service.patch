@@ -8,16 +8,18 @@ time being.
 
 Updated 2023-02-26 for version 3.1.0
 
-diff --git a/rhel/usr_lib_systemd_system_openvswitch-ipsec.service b/rhel/usr_lib_systemd_system_openvswitch-ipsec.service
-index 92dad44f9..ec86874cb 100644
+---
+ rhel/usr_lib_systemd_system_openvswitch-ipsec.service |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 --- a/rhel/usr_lib_systemd_system_openvswitch-ipsec.service
 +++ b/rhel/usr_lib_systemd_system_openvswitch-ipsec.service
-@@ -7,7 +7,7 @@ After=openvswitch.service
- Type=forking
- PIDFile=/run/openvswitch/ovs-monitor-ipsec.pid
- ExecStart=/usr/share/openvswitch/scripts/ovs-ctl \
--                    --ike-daemon=libreswan start-ovs-ipsec
-+                    --ike-daemon=strongswan start-ovs-ipsec
+@@ -10,7 +10,7 @@
+ EnvironmentFile=/etc/openvswitch/default.conf
+ EnvironmentFile=-/etc/sysconfig/openvswitch
+ ExecStart=/usr/share/openvswitch/scripts/ovs-ctl --no-monitor \
+-                    --ike-daemon=libreswan start-ovs-ipsec $OPTIONS
++                    --ike-daemon=strongswan start-ovs-ipsec $OPTIONS
  ExecStop=/usr/share/openvswitch/scripts/ovs-ctl stop-ovs-ipsec
-
+ 
  [Install]
