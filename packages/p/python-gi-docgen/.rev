@@ -130,4 +130,12 @@
     - Revert &quot;generate: Add fallback for missing &quot;since&quot;&quot; (forwarded request 1175575 from dimstar)</comment>
     <requestid>1175580</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b38d774be00b7feaa99f235bef1839c1</srcmd5>
+    <version>2025.3</version>
+    <time>1740914238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1249384</requestid>
+  </revision>
 </revisionlist>

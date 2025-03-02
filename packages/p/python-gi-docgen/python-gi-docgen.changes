@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 28 14:23:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2025.3:
+  + Added:
+    - Add layout for tablet portrait mode
+    - Support static virtual methods
+  + Changed:
+    - Don't generate classes hierarchy if not needed
+    - Improve copy buttons on narrow layouts
+  + Fixed:
+    - Only consider dot data processing fail if dot returns non-zero
+    - Show non-standard instance parameters
+    - Fix C declaration of structure fields
+
+-------------------------------------------------------------------
 Tue May 21 11:06:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2024.1:
