@@ -1,7 +1,7 @@
 #
-# spec file for package gcc
+# spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -180,6 +180,7 @@ The system GNU Compiler documentation.
 
 
 # install / update the entries
+
 %post -n gcc%{gccsuffix}-info
 %install_info --info-dir=%{_infodir} --name=cpp --description='The GNU C preprocessor.' %{_infodir}/cpp.info.gz
 %install_info --info-dir=%{_infodir} --name=gcc --description='The GNU Compiler Collection.' %{_infodir}/gcc.info.gz
@@ -451,7 +452,7 @@ Conflicts:      gcc-go
 Requires:       gcc%{gcc_version}-go
 Requires:       gcc%{gccsuffix} = %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description -n gcc%{gccsuffix}-go
 The system GNU Go Compiler.
@@ -495,7 +496,7 @@ Conflicts:      gcc-d
 Requires:       gcc%{gcc_version}-d
 Requires:       gcc%{gccsuffix} = %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description -n gcc%{gccsuffix}-d
 The system GNU D Compiler.
@@ -666,7 +667,7 @@ fi
 %doc %{_mandir}/man1/cpp.1.gz
 
 # Plugins are only enabled for Tumbleweed
-%if 0%{!?sle_version:1}
+%if 0%{?is_opensuse}
 %files -n gcc%{gccsuffix}-devel
 %defattr(-,root,root)
 # empty - only for the dependency

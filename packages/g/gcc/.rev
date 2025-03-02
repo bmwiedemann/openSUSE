@@ -671,4 +671,12 @@ this would switch building packages to gcc14.  Thus Staging:Gcc7.
   counterpart (related to boo#1230628) (forwarded request 1202713 from epaolantonio)</comment>
     <requestid>1202818</requestid>
   </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>5f043c8f3afcbf6c9913d5130cf8e14d</srcmd5>
+    <version>14</version>
+    <time>1740914248</time>
+    <user>dimstar_suse</user>
+    <comment>- Check is_opensuse for whether plugins are enabled.</comment>
+    <requestid>1248079</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:32:48 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Check is_opensuse for whether plugins are enabled.
+
+-------------------------------------------------------------------
 Mon Sep 23 16:34:29 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Ensure every -build package conflicts and provides the non-build
