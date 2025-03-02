@@ -281,4 +281,12 @@
     <comment>- Drop ibus-chewing-drop-cmake-fedora.patch (forwarded request 1171152 from hillwood)</comment>
     <requestid>1171153</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>4997c202d506bae5b9562592a818a6ec</srcmd5>
+    <version>2.0.0</version>
+    <time>1740925371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1249517</requestid>
+  </revision>
 </revisionlist>

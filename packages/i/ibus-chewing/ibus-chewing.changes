@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar  1 13:06:59 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gob2 BuildRequires: dependency was removed in version 2.0.0
+
+-------------------------------------------------------------------
 Sun Apr 28 08:55:26 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 2.0.0

@@ -28,7 +28,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake >= 2.6.2
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
-BuildRequires:  gob2
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(chewing)
 BuildRequires:  pkgconfig(glib-2.0)
