@@ -4276,4 +4276,33 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1245591</requestid>
   </revision>
+  <revision rev="287" vrev="1">
+    <srcmd5>e690f18a30ea380eb4aa70ad0deb98d6</srcmd5>
+    <version>9.2.2</version>
+    <time>1740914253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to latest upstream release, 9.2.2:
+  The full list of changes are available at:
+   https://lore.kernel.org/qemu-devel/3e847ae0-8dfc-440e-92f7-6eaa89818837@tls.msk.ru/
+  Highlights include:
+  * net/slirp: libslirp 4.9.0 compatibility
+  * target/sparc: Fix gdbstub incorrectly handling registers f32-f62
+  * target/sparc: Fix register selection for all F*TOx and FxTO* instructions
+  * elfload: Fix alignment when unmapping excess reservation
+  * hw/net/smc91c111: Ignore attempt to pop from empty RX fifo
+  * make-release: don't rely on $CWD when excluding subproject directories
+  * ui/sdl2: reenable the SDL2 Windows keyboard hook procedure
+  * vfio/iommufd: Fix SIGSEV in iommufd_cdev_attach()
+  * gitlab-ci.d/cirrus: Update the FreeBSD job to v14.2
+  * qmp: update vhost-user protocol feature maps
+  * linux-user: Do not define struct sched_attr if libc headers do
+  * block-backend: Fix argument order when calling 'qapi_event_send_block_io_error()'
+  * block: Fix leak in send_qmp_error_event
+  * rust: add --rust-target option for bindgen
+  * ...
+- Fix bsc#1237603:
+  * linux-user: Do not define struct sched_attr if libc headers do
+</comment>
+    <requestid>1249331</requestid>
+  </revision>
 </revisionlist>
