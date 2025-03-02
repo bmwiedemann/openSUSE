@@ -1,7 +1,7 @@
 #
 # spec file for package git-credential-oauth
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           git-credential-oauth
-Version:        0.13.4
+Version:        0.15.0
 Release:        0
 Summary:        Git credential helper that authenticates to GitHub and other forges using OAuth
 License:        Apache-2.0
