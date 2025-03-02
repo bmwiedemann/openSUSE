@@ -2835,9 +2835,9 @@ unsorted:
   - cross-hppa-gcc13-icecream-backend 
   - cross-hppa-gcc14 
   - cross-hppa-gcc14-bootstrap 
-  - cross-hppa-gcc14-icecream-backend 
   - cross-hppa-gcc7 
   - cross-hppa-gcc7-icecream-backend 
+  - cross-hppa-glibc-devel 
   - cross-hppa-linux-glibc-devel 
   - cross-hppa64-binutils 
   - cross-i386-binutils 
@@ -2846,6 +2846,9 @@ unsorted:
   - cross-i386-linux-glibc-devel 
   - cross-ia64-binutils 
   - cross-loongarch64-binutils 
+  - cross-loongarch64-gcc14 
+  - cross-loongarch64-gcc14-bootstrap 
+  - cross-loongarch64-glibc-devel 
   - cross-loongarch64-linux-glibc-devel 
   - cross-m68k-binutils 
   - cross-m68k-gcc12 
@@ -12945,7 +12948,7 @@ unsorted:
   - libdouble-conversion3-32bit 
   - libdovi-devel 
   - libdovi3-32bit 
-  - libdpdk-24 
+  - libdpdk-25 
   - libdqlite0 
   - libdraco9 
   - libdrm-devel 
@@ -15195,7 +15198,7 @@ unsorted:
   - libopenvino_pytorch_frontend2460 
   - libopenvino_tensorflow_frontend2460 
   - libopenvino_tensorflow_lite_frontend2460 
-  - libopenvswitch-3_3-0 
+  - libopenvswitch-3_5-0 
   - liboping-devel 
   - liboping0 
   - libopts25 
@@ -15300,7 +15303,7 @@ unsorted:
   - libout123-0 
   - libout123-0-32bit 
   - libovf-glib-devel 
-  - libovn-24_03-0 
+  - libovn-24_09-0 
   - libowfat-devel 
   - libowncloudsync-devel 
   - libowncloudsync0 
@@ -37079,7 +37082,6 @@ unsorted:
   - seatd-devel 
   - seccheck 
   - secret-tool 
-  - secret-tool-bash-completion 
   - secrets 
   - secrets-lang 
   - sedutil 

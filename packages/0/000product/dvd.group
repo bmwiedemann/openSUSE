@@ -1890,6 +1890,7 @@
     <package name="libdevmapper1_03" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libdhash1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libdialog15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libdisplay-info-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdisplay-info2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdjvulibre21" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdmapsharing-4_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
