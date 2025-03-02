@@ -72,4 +72,12 @@
     <comment>- spotify now requires libayatana-appindicator3-1 installed to run</comment>
     <requestid>1129259</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b3e89f7b7c2bfccbf00dbd6c9797eb03</srcmd5>
+    <version>3.0.6</version>
+    <time>1740914454</time>
+    <user>dimstar_suse</user>
+    <comment>remove openssl reqs, improve version compare logic</comment>
+    <requestid>1249436</requestid>
+  </revision>
 </revisionlist>
