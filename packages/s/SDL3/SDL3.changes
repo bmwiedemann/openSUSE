@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Mar  2 09:48:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.6
+  * Added support for Motion JPEG camera capture
+  * Allow 2D render targets to use logical presentation
+  * Fixed audio glitch when resampling between large frequency
+    differences
+  * Fixed pen generated mouse events not having SDL_PEN_MOUSEID
+  * Added support for the 8BitDo Micro gamepad
+  * Added SDL_HINT_JOYSTICK_HAPTIC_AXES to specify how many haptic
+    axes a device has
+  * Fixed SDL_GetRelativeMouseState() returning no motion when not
+    in relative mouse mode
+  * Added SDL_PROP_SURFACE_HOTSPOT_X_NUMBER and
+    SDL_PROP_SURFACE_HOTSPOT_Y_NUMBER to allow storing cursor
+    hotspot positions directly in an SDL_Surface
+  * Added support for high DPI icons on Wayland
+  * Added color management protocol support on Wayland
+  * Fixed flushing audio forever in some cases when recording
+    PulseAudio on Linux
+  * Fixed a rare deadlock when opening an audio device using
+    PipeWire on Linux
+- Delete 0001-pipewire-Ensure-that-the-correct-struct-is-used-for-.patch
+  (merged) 
+-------------------------------------------------------------------
 Tue Feb 25 16:16:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-pipewire-Ensure-that-the-correct-struct-is-used-for-.patch

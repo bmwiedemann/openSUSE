@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL3
 %define lname   libSDL3-0
-Version:        3.2.4
+Version:        3.2.6
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -30,7 +30,6 @@ Source:         https://github.com/libsdl-org/SDL/releases/download/release-%ver
 Source2:        https://github.com/libsdl-org/SDL/releases/download/release-%version/SDL3-%version.tar.gz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
-Patch1:         0001-pipewire-Ensure-that-the-correct-struct-is-used-for-.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libdecor-devel
