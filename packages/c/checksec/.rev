@@ -66,4 +66,12 @@
   - rewritten in go (forwarded request 1247666 from msmeissn)</comment>
     <requestid>1247667</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f7adc5fde7279e4d9999bed09a77f428</srcmd5>
+    <version>3.0.0</version>
+    <time>1740928676</time>
+    <user>dimstar_suse</user>
+    <comment>- build with pie</comment>
+    <requestid>1249535</requestid>
+  </revision>
 </revisionlist>
