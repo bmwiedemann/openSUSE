@@ -57,6 +57,7 @@ Wed Oct  2 08:20:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
   * LCEVC filter
   * avcodec/mpegvideo_enc: Add check for av_packet_new_side_data (CVE-2024-12361, bsc#1237358)
   * avformat/dump: print only the actual streams in a tile grid group (CVE-2025-22920, bsc#1237380)
+  * avcodec/rkmppdec: Fix double-free on error (CVE-2024-35368, bsc#1234028)
 - Delete patches/ffmpeg-7-fix-crashes.patch,
   0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch (merged)
 
