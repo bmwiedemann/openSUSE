@@ -1,7 +1,7 @@
 #
 # spec file for package lsp-plugins
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,13 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           lsp-plugins
-Version:        1.2.20
+Version:        1.2.21
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://lsp-plug.in/
 Source0:        https://github.com/sadko4u/lsp-plugins/releases/download/%{version}/%{name}-src-%{version}.tar.gz
-Patch0:         lsp-dsp-lib-Fixed-invalid-label.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
@@ -165,7 +164,6 @@ Development files for Linux Studio Plugins
 
 %prep
 %setup -q -n %{name}
-%patch -P 0 -p1 -d modules/lsp-dsp-lib
 
 %build
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
