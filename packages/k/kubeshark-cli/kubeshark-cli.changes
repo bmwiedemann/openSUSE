@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 02 07:40:53 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.5.0:
+  * :bookmark: Bump the Helm chart version to 52.5.0
+  * Update structs and docs (#1710)
+  * :wrench: Add `aiAssistantEnabled` helm value (#1717)
+  * :wrench: Enable BPF-override on `tap.packetCapture: af_packet`
+    (#1712)
+  * Update name of merged file (#1716)
+  * Add `demoModeEnabled` helm value (#1714)
+  * finished templating `tap.mountBpf` option. (#1711)
+
+-------------------------------------------------------------------
 Tue Feb 11 07:21:51 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.4.2:
