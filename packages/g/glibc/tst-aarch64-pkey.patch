@@ -1,0 +1,37 @@
+From 1e0e33e1b19a7634b364ac7b97c3c9612d5b776f Mon Sep 17 00:00:00 2001
+From: Aurelien Jarno <aurelien@aurel32.net>
+Date: Sat, 15 Feb 2025 11:08:33 +0100
+Subject: [PATCH] Fix tst-aarch64-pkey to handle ENOSPC as not supported
+
+The syscall pkey_alloc can return ENOSPC to indicate either that all
+keys are in use or that the system runs in a mode in which memory
+protection keys are disabled. In such case the test should not fail and
+just return unsupported.
+
+This matches the behaviour of the generic tst-pkey.
+
+Reviewed-by: Adhemerval Zanella  <adhemerval.zanella@linaro.org>
+Reviewed-by: Florian Weimer <fweimer@redhat.com>
+(cherry picked from commit 60f2d6be657aa8c663ee14bd266d343ae0f35afb)
+---
+ sysdeps/unix/sysv/linux/aarch64/tst-aarch64-pkey.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/sysdeps/unix/sysv/linux/aarch64/tst-aarch64-pkey.c b/sysdeps/unix/sysv/linux/aarch64/tst-aarch64-pkey.c
+index 3ff33ef72a..c884efc3b4 100644
+--- a/sysdeps/unix/sysv/linux/aarch64/tst-aarch64-pkey.c
++++ b/sysdeps/unix/sysv/linux/aarch64/tst-aarch64-pkey.c
+@@ -55,6 +55,10 @@ do_test (void)
+       if (errno == ENOSYS || errno == EINVAL)
+         FAIL_UNSUPPORTED
+           ("kernel or CPU does not support memory protection keys");
++      if (errno == ENOSPC)
++        FAIL_UNSUPPORTED
++          ("no keys available or kernel does not support memory"
++           " protection keys");
+       FAIL_EXIT1 ("pkey_alloc: %m");
+     }
+ 
+-- 
+2.48.1
+

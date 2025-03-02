@@ -1,0 +1,76 @@
+From d85a7719536f4892f2b53d4594e18f6d096c2882 Mon Sep 17 00:00:00 2001
+From: Adhemerval Zanella <adhemerval.zanella@linaro.org>
+Date: Fri, 31 Jan 2025 10:34:32 -0300
+Subject: [PATCH] math: Fix sinhf for some inputs (BZ 32627)
+
+The logic was copied wrong from CORE-MATH.
+---
+ math/auto-libm-test-in           |  1 +
+ math/auto-libm-test-out-sinh     | 25 +++++++++++++++++++++++++
+ sysdeps/ieee754/flt-32/e_sinhf.c |  2 +-
+ 3 files changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/math/auto-libm-test-in b/math/auto-libm-test-in
+index c0627dc7eb..5f465b31f1 100644
+--- a/math/auto-libm-test-in
++++ b/math/auto-libm-test-in
+@@ -8300,6 +8300,7 @@ sinh -0x1.3dda8ap+0
+ sinh -0x5.ee9218p-4
+ sinh -0x1.bcfc98p+0
+ sinh -0x6.9bbb6df7c5d08p-4
++sinh 0x1.250bfep-11
+ # the next value generates larger error bounds on x86_64 (ldbl-96)
+ sinh 0x2.c5d376167f4052f4p+12
+ sinh max
+diff --git a/math/auto-libm-test-out-sinh b/math/auto-libm-test-out-sinh
+index 0b77a77eeb..3924e19d86 100644
+--- a/math/auto-libm-test-out-sinh
++++ b/math/auto-libm-test-out-sinh
+@@ -2115,6 +2115,31 @@ sinh -0x6.9bbb6df7c5d08p-4
+ = sinh tonearest ibm128 -0x6.9bbb6df7c5d08p-4 : -0x6.cc3ddf003dcda77f8f9e892e36p-4 : inexact-ok
+ = sinh towardzero ibm128 -0x6.9bbb6df7c5d08p-4 : -0x6.cc3ddf003dcda77f8f9e892e36p-4 : inexact-ok
+ = sinh upward ibm128 -0x6.9bbb6df7c5d08p-4 : -0x6.cc3ddf003dcda77f8f9e892e36p-4 : inexact-ok
++sinh 0x1.250bfep-11
++= sinh downward binary32 0x2.4a17fcp-12 : 0x2.4a17fcp-12 : inexact-ok
++= sinh tonearest binary32 0x2.4a17fcp-12 : 0x2.4a17fcp-12 : inexact-ok
++= sinh towardzero binary32 0x2.4a17fcp-12 : 0x2.4a17fcp-12 : inexact-ok
++= sinh upward binary32 0x2.4a17fcp-12 : 0x2.4a18p-12 : inexact-ok
++= sinh downward binary64 0x2.4a17fcp-12 : 0x2.4a17fdffffffep-12 : inexact-ok
++= sinh tonearest binary64 0x2.4a17fcp-12 : 0x2.4a17fep-12 : inexact-ok
++= sinh towardzero binary64 0x2.4a17fcp-12 : 0x2.4a17fdffffffep-12 : inexact-ok
++= sinh upward binary64 0x2.4a17fcp-12 : 0x2.4a17fep-12 : inexact-ok
++= sinh downward intel96 0x2.4a17fcp-12 : 0x2.4a17fdfffffff87cp-12 : inexact-ok
++= sinh tonearest intel96 0x2.4a17fcp-12 : 0x2.4a17fdfffffff88p-12 : inexact-ok
++= sinh towardzero intel96 0x2.4a17fcp-12 : 0x2.4a17fdfffffff87cp-12 : inexact-ok
++= sinh upward intel96 0x2.4a17fcp-12 : 0x2.4a17fdfffffff88p-12 : inexact-ok
++= sinh downward m68k96 0x2.4a17fcp-12 : 0x2.4a17fdfffffff87cp-12 : inexact-ok
++= sinh tonearest m68k96 0x2.4a17fcp-12 : 0x2.4a17fdfffffff88p-12 : inexact-ok
++= sinh towardzero m68k96 0x2.4a17fcp-12 : 0x2.4a17fdfffffff87cp-12 : inexact-ok
++= sinh upward m68k96 0x2.4a17fcp-12 : 0x2.4a17fdfffffff88p-12 : inexact-ok
++= sinh downward binary128 0x2.4a17fcp-12 : 0x2.4a17fdfffffff87e8d322786ec88p-12 : inexact-ok
++= sinh tonearest binary128 0x2.4a17fcp-12 : 0x2.4a17fdfffffff87e8d322786ec8ap-12 : inexact-ok
++= sinh towardzero binary128 0x2.4a17fcp-12 : 0x2.4a17fdfffffff87e8d322786ec88p-12 : inexact-ok
++= sinh upward binary128 0x2.4a17fcp-12 : 0x2.4a17fdfffffff87e8d322786ec8ap-12 : inexact-ok
++= sinh downward ibm128 0x2.4a17fcp-12 : 0x2.4a17fdfffffff87e8d322786ecp-12 : inexact-ok
++= sinh tonearest ibm128 0x2.4a17fcp-12 : 0x2.4a17fdfffffff87e8d322786edp-12 : inexact-ok
++= sinh towardzero ibm128 0x2.4a17fcp-12 : 0x2.4a17fdfffffff87e8d322786ecp-12 : inexact-ok
++= sinh upward ibm128 0x2.4a17fcp-12 : 0x2.4a17fdfffffff87e8d322786edp-12 : inexact-ok
+ sinh 0x2.c5d376167f4052f4p+12
+ = sinh downward binary32 0x2.c5d378p+12 : 0xf.fffffp+124 : inexact-ok overflow errno-erange-ok
+ = sinh tonearest binary32 0x2.c5d378p+12 : plus_infty : inexact-ok overflow errno-erange
+diff --git a/sysdeps/ieee754/flt-32/e_sinhf.c b/sysdeps/ieee754/flt-32/e_sinhf.c
+index c007c7d174..dee96fc7cb 100644
+--- a/sysdeps/ieee754/flt-32/e_sinhf.c
++++ b/sysdeps/ieee754/flt-32/e_sinhf.c
+@@ -83,7 +83,7 @@ __ieee754_sinhf (float x)
+ 	{					   /* |x| <= 0x1.250bfep-11 */
+ 	  if (__glibc_unlikely (ux < 0x66000000u)) /* |x| < 0x1p-24 */
+ 	    return fmaf (x, fabsf (x), x);
+-	  if (__glibc_unlikely (st.uarg == asuint (ux)))
++	  if (__glibc_unlikely (st.uarg == ux))
+ 	    {
+ 	      float sgn = copysignf (1.0f, x);
+ 	      return sgn * st.rh + sgn * st.rl;
+-- 
+2.48.1
+

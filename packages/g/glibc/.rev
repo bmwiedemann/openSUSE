@@ -3127,4 +3127,13 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     <comment>- Disable nscd support (bsc#1235247) (forwarded request 1239261 from Andreas_Schwab)</comment>
     <requestid>1239262</requestid>
   </revision>
+  <revision rev="297" vrev="1">
+    <srcmd5>6eaad848fe727bd14b42b18ab4e60561</srcmd5>
+    <version>2.41</version>
+    <time>1740914248</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump minimal kernel version to 4.3 to enable use of direct socketcalls
+  on x86-32 and s390x (bsc#1234713) (forwarded request 1248877 from Andreas_Schwab)</comment>
+    <requestid>1248878</requestid>
+  </revision>
 </revisionlist>

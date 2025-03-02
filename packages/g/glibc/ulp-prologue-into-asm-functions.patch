@@ -1,4 +1,4 @@
-From ec4f0a28ed48c51165e3e72c7427efb0ae14a124 Mon Sep 17 00:00:00 2001
+From 322a7b6a9bad6ab6a985ea67f7bc65a434806061 Mon Sep 17 00:00:00 2001
 From: Giuliano Belinassi <gbelinassi@suse.de>
 Date: Mon, 6 May 2024 20:09:55 -0300
 Subject: [PATCH] Add Userspace Livepatch prologue into ASM functions
@@ -24,12 +24,12 @@ Signed-off-by: Giuliano Belinassi <gbelinassi@suse.de>
  9 files changed, 96 insertions(+), 16 deletions(-)
 
 diff --git a/Makeconfig b/Makeconfig
-index e583765712..b136e10224 100644
+index a0abc2239b..1eb730a2f7 100644
 --- a/Makeconfig
 +++ b/Makeconfig
-@@ -981,6 +981,11 @@ else
- +cflags += $(no-fortify-source)
- endif
+@@ -1017,6 +1017,11 @@ endif
+ # Filter out 64 bit time_t flags if compiler defines it by default.
+ +cflags += $(no-time-bits-source)
  
 +# Add flags for Userspace Livepatching support.
 +ifeq (yes,$(enable-userspace-livepatch))
@@ -40,10 +40,10 @@ index e583765712..b136e10224 100644
  # used to compile and will be installed.  Each can also contain an
  # include/ subdirectory, whose header files will be used to compile
 diff --git a/config.h.in b/config.h.in
-index c4cc7d3b9a..dc70ed03d0 100644
+index 6c25c923fa..98e267d71c 100644
 --- a/config.h.in
 +++ b/config.h.in
-@@ -205,6 +205,9 @@
+@@ -211,6 +211,9 @@
  /* Define to 1 if libpthread actually resides in libc.  */
  #define PTHREAD_IN_LIBC 0
  
@@ -54,7 +54,7 @@ index c4cc7d3b9a..dc70ed03d0 100644
  #define TIMEOUTFACTOR 1
  
 diff --git a/config.make.in b/config.make.in
-index 55e8b7563b..0f14c05d62 100644
+index 36096881b7..04cf873fad 100644
 --- a/config.make.in
 +++ b/config.make.in
 @@ -81,6 +81,7 @@ mach-interface-list = @mach_interface_list@
@@ -66,10 +66,10 @@ index 55e8b7563b..0f14c05d62 100644
  build-profile = @profile@
  build-static-nss = @static_nss@
 diff --git a/configure b/configure
-index 432e40a592..eb6b203925 100755
+index 9c0c0dce03..4b18c93595 100755
 --- a/configure
 +++ b/configure
-@@ -622,6 +622,7 @@ LIBOBJS
+@@ -615,6 +615,7 @@ LIBOBJS
  pthread_in_libc
  RELEASE
  VERSION
@@ -77,7 +77,7 @@ index 432e40a592..eb6b203925 100755
  mach_interface_list
  DEFINES
  static_nss
-@@ -812,6 +813,7 @@ enable_cet
+@@ -811,6 +812,7 @@ enable_cet
  enable_scv
  enable_fortify_source
  with_cpu
@@ -85,7 +85,7 @@ index 432e40a592..eb6b203925 100755
  '
        ac_precious_vars='build_alias
  host_alias
-@@ -1490,6 +1492,8 @@ Optional Features:
+@@ -1493,6 +1495,8 @@ Optional Features:
                            Use -D_FORTIFY_SOURCE=[1|2|3] to control code
                            hardening, defaults to highest possible value
                            supported by the build compiler.
@@ -94,7 +94,7 @@ index 432e40a592..eb6b203925 100755
  
  Optional Packages:
    --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
-@@ -7867,6 +7871,23 @@ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
+@@ -8184,6 +8188,23 @@ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
  
  
  
@@ -119,10 +119,10 @@ index 432e40a592..eb6b203925 100755
  RELEASE=`sed -n -e 's/^#define RELEASE "\([^"]*\)"/\1/p' < $srcdir/version.h`
  
 diff --git a/configure.ac b/configure.ac
-index bdc385d03c..cb4d28b3d8 100644
+index d5a00461ff..80f183a7b5 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1756,6 +1756,19 @@ AC_SUBST(DEFINES)
+@@ -1813,6 +1813,19 @@ AC_SUBST(DEFINES)
  dnl See sysdeps/mach/configure.ac for this variable.
  AC_SUBST(mach_interface_list)
  
@@ -159,10 +159,10 @@ index 5bc1d90078..3ea96c0aa3 100644
  # if defined USE_AS_STRCASECMP_L
  	/* We have to fall back on the C implementation for locales with
 diff --git a/sysdeps/x86_64/multiarch/strcmp-evex.S b/sysdeps/x86_64/multiarch/strcmp-evex.S
-index 06730ab2a1..d96b1c4824 100644
+index cea034f394..3ed55b7d66 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-evex.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-evex.S
-@@ -224,10 +224,7 @@ END (STRCASECMP)
+@@ -226,10 +226,7 @@ END (STRCASECMP)
  # endif
  
  	.p2align 4
@@ -268,5 +268,5 @@ index db6e36b2dd..86a5d1b2be 100644
  /* This macro is for setting proper CFI with DW_CFA_expression describing
     the register as saved relative to %rsp instead of relative to the CFA.
 -- 
-2.44.0
+2.46.2
 

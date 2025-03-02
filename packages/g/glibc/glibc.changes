@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Wed Feb 26 15:29:17 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Bump minimal kernel version to 4.3 to enable use of direct socketcalls
+  on x86-32 and s390x (bsc#1234713)
+
+-------------------------------------------------------------------
+Thu Feb 20 09:53:20 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Build cross-hppa and cross-loongarch64 only with gcc >= 14
+- round-log10p1f.patch: math: Fix log10p1f internal table value (BZ
+  #32626)
+- round-sinhf.patch: math: Fix sinhf for some inputs (BZ #32627)
+- nptl-stack-size-up.patch: nptl: Correct stack size attribute when stack
+  grows up (BZ #32574)
+- round-tanf.patch: math: Fix tanf for some inputs (BZ 32630)
+- tst-aarch64-pkey.patch: Fix tst-aarch64-pkey to handle ENOSPC as not
+  supported
+- float128-sycl.patch: x86 (__HAVE_FLOAT128): Defined to 0 for Intel SYCL
+  compiler (BZ #32723)
+
+-------------------------------------------------------------------
+Mon Feb 17 10:37:02 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Remove nis from nsswitch.conf (bsc#1237210)
+
+-------------------------------------------------------------------
+Mon Feb 10 12:19:00 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Use rpm.execute when available (bsc#1236869)
+
+-------------------------------------------------------------------
+Wed Jan 29 09:19:29 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to glibc 2.41
+  * In /etc/resolv.conf and the RES_OPTIONS environment variable, option
+    flags can now be prefixed with “-” to clear previously set flags
+  * The DNS stub resolver now supports the strict-error option
+  * On Linux, the sched_setattr and sched_getattr functions have been
+    added
+  * The iconv program now supports converting files in place
+  * Character encoding, character type info, and transliteration tables
+    have been updated to Unicode 16.0.0
+  * The following ISO C23 function families (introduced in TS
+    18661-4:2015) are now supported in <math.h>:
+    - Trigonometric functions: acospi, asinpi, atan2pi, atanpi, cospi,
+      sinpi, tanpi.
+  * The GNU C Library now supports a feature test macro _ISOC2Y_SOURCE to
+    enable features from the draft ISO C2Y standard
+  * Optimized and correctly rounded exp10m1f, exp2m1f, expm1f, log10f,
+    log2p1f, log1pf, log10p1f, cbrtf, erff, erfcf, lgammaf, tgammaf,
+    tanf, acosf, acoshf, asinf, asinhf, atanf, atan2f, atanhf, coshf,
+    sinhf, and tanhf functions have been added from the CORE-MATH
+    project <https://core-math.gitlabpages.inria.fr/>
+  * A new tunable, glibc.rtld.execstack, can be used to control whether an
+    executable stack is allowed from the main program, either implicitly
+    due to a mising GNU_STACK ELF header or explicit explicitly because
+    of the executable bit in GNU_STACK
+  * Support for the extensible rseq ABI introduced in the Linux kernel
+    version 6.3 has been added
+  * The GNU C Library now supports the Guarded Control Stack extension
+    that allows to use shadow stacks on AArch64 systems that support this
+    extension
+  * Significant effort has been put into improving the code generation
+    and speed of mathematical functions in the vector mathematics library
+    on AArch64, with regard to the Scalable Vector Extension (SVE) and
+    Advanced SIMD (Neon) intrinsics
+  * Support for memory protection keys on AArch64 systems with enabled
+    Stage 1 permission overlays feature as introduced in Armv8.9 / 9.4
+    has been added
+  * On PowerPC64, support for the return-oriented programming protection
+    instructions added in ISA 3.1 (Power10) has been added, as well as
+    function optimizations for Power10
+  * A new architecture type has been introduced internally to better
+    support Hygon x86-64 processors
+  * abort is now async-signal-safe and its implementation makes longjmp
+    from the SIGABRT handler always abort if set up with setjmp
+  * dlopen and dlmopen no longer make the stack executable if a shared
+    library requires it, either implicitly because of a missing GNU_STACK
+    ELF header (and default ABI permission having the executable bit set)
+    or explicitly because of the executable bit in GNU_STACK, and the
+    stack is not already executable
+  * On recent Linux kernels with vDSO getrandom support, getrandom does
+    not act as a "shall occur" cancellation point, in which case it might
+    not issue a syscall or trigger a deferred cancellation event
+  * GLIBC-SA-2025-0001: assert: Buffer overflow when printing assertion
+    failure message (CVE-2025-0395)
+- Add cross-hppa and cross-loongarch64 packages
+- gen-tempname-randomness.patch: Removed
+- ulp-prologue-into-asm-functions.patch: Rebase
+
+-------------------------------------------------------------------
 Mon Jan 20 13:33:58 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Disable nscd support (bsc#1235247)
@@ -17,6 +108,11 @@ Sun Jan  5 11:43:47 UTC 2025 - Andreas Schwab <schwab@suse.de>
 Mon Dec  2 14:02:08 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Add support for loongarch64
+
+-------------------------------------------------------------------
+Wed Oct  9 07:42:01 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Apply libc_nonshared.a workaround also on s390x and ppc64le (bsc#1231051)
 
 -------------------------------------------------------------------
 Mon Sep 30 20:56:18 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
@@ -82,6 +178,12 @@ Mon Jun  3 08:24:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 Tue May 28 07:27:01 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Obsolete glibc-locale-base-<targettype> from glibc-<targettype>
+
+-------------------------------------------------------------------
+Thu May 23 11:31:34 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Add workaround for invalid use of libc_nonshared.a with non-SUSE libc
+  (bsc#1221482)
 
 -------------------------------------------------------------------
 Tue May 21 09:44:46 UTC 2024 - Andreas Schwab <schwab@suse.de>

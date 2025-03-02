@@ -34,6 +34,12 @@
 %if "%flavor" == "cross-aarch64"
 %define cross_cpu aarch64
 %endif
+%if "%flavor" == "cross-hppa"
+%define cross_cpu hppa
+%endif
+%if "%flavor" == "cross-loongarch64"
+%define cross_cpu loongarch64
+%endif
 %if "%flavor" == "cross-riscv64"
 %define cross_cpu riscv64
 %endif
@@ -51,13 +57,13 @@
 %define sysroot %{_prefix}/%{binutils_os}/sys-root
 %endif
 
-%if 0%{?suse_version} >= 1550
+%if %{suse_version} >= 1550
 %bcond_without usrmerged
 %else
 %bcond_with usrmerged
 %endif
 
-%if 0%{?suse_version} >= 1600
+%if %{suse_version} >= 1600
 %bcond_with nscd
 %else
 %bcond_without nscd
@@ -96,7 +102,7 @@ ExclusiveArch:  do_not_build
 %undefine _build_create_debug
 %define _enable_debug_packages 0
 ExcludeArch:    %{cross_arch}
-%if 0%{?suse_version} < 1600
+%if %{suse_version} < 1600
 ExclusiveArch:  do_not_build
 %endif
 %endif
@@ -151,17 +157,9 @@ ExclusiveArch:  do_not_build
 %define disable_assert 0
 %define enable_stackguard_randomization 1
 # glibc requires at least kernel 3.2
-%define enablekernel 3.2
+# Bump to 4.3 to enable use of direct socketcalls on x86-32 and s390x
+%define enablekernel 4.3
 # some architectures need a newer kernel
-%ifarch ppc64le
-%define enablekernel 3.10
-%endif
-%ifarch aarch64
-%define enablekernel 3.7
-%endif
-%ifarch ia64
-%define enablekernel 3.2.18
-%endif
 %ifarch riscv64
 %define enablekernel 4.15
 %endif
@@ -180,10 +178,10 @@ Name:           glibc%{name_suffix}
 Summary:        Standard Shared Libraries (from the GNU C Library)
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0
 Group:          System/Libraries
-Version:        2.40
+Version:        2.41
 Release:        0
 %if %{without snapshot}
-%define git_id ef321e23c2
+%define git_id 74f59e9271
 %define libversion %version
 %else
 %define git_id %(echo %version | sed 's/.*\.g//')
@@ -195,7 +193,7 @@ Source:         https://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz
 %if %{without snapshot}
 Source1:        https://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz.sig
 %endif
-Source2:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libc&download=1#/glibc.keyring
+Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=libc&download=1&file=./glibc.keyring
 Source4:        manpages.tar.bz2
 Source5:        nsswitch.conf
 Source7:        bindresvport.blacklist
@@ -278,6 +276,11 @@ BuildArch:      i686
 # Sync only this build counter with the main build
 #!BcntSyncTag:  glibc
 %endif
+%if 0%{?gcc_version} < 14
+%if "%flavor" == "cross-loongarch64" || "%flavor" == "cross-hppa"
+ExclusiveArch:  do_not_build
+%endif
+%endif
 
 ###
 # Patches are ordered in the following groups:
@@ -330,8 +333,18 @@ Patch306:       glibc-fix-double-loopback.diff
 %if %{without snapshot}
 ###
 # Patches from upstream
-# PATCH-FIX-UPSTREAM Fix missing randomness in __gen_tempname (BZ #32214)
-Patch1000:      gen-tempname-randomness.patch
+# PATCH-FIX-UPSTREAM math: Fix log10p1f internal table value (BZ #32626)
+Patch1000:      round-log10p1f.patch
+# PATCH-FIX-UPSTREAM math: Fix sinhf for some inputs (BZ #32627)
+Patch1001:      round-sinhf.patch
+# PATCH-FIX-UPSTREAM nptl: Correct stack size attribute when stack grows up (BZ #32574)
+Patch1002:      nptl-stack-size-up.patch
+# PATCH-FIX-UPSTREAM math: Fix tanf for some inputs (BZ 32630)
+Patch1003:      round-tanf.patch
+# PATCH-FIX-UPSTREAM Fix tst-aarch64-pkey to handle ENOSPC as not supported
+Patch1004:      tst-aarch64-pkey.patch
+# PATCH-FIX-UPSTREAM x86 (__HAVE_FLOAT128): Defined to 0 for Intel SYCL compiler (BZ #32723)
+Patch1005:      float128-sycl.patch
 ###
 %endif
 
@@ -550,7 +563,7 @@ Group:          System/Libraries
 Network Support Library for legacy architectures.  This library does not
 have support for IPv6.
 
-%if 0%{suse_version} >= 1500
+%if %{suse_version} >= 1500
 %define make_output_sync -Oline
 %endif
 
@@ -608,6 +621,11 @@ for opt in $tmp; do
 %endif
 %if %{build_cross}
     -m*) ;;  # remove all machine specific options for crosses
+%endif
+%if "%{cross_arch}" == "hppa"
+     # -fstack-clash-protection is not supported on targets where the
+     # stack grows from lower to higher addresses
+    -fstack-clash-protection) ;;
 %endif
     *) BuildFlags+=" $opt" ;;
   esac
@@ -697,7 +715,7 @@ profile="--disable-profile"
 %if %{build_cross}
 	--with-headers=%{sysroot}/usr/include \
 %else
-%ifarch armv7hl ppc ppc64 ppc64le i686 x86_64 sparc sparc64 s390 s390x
+%ifarch armv7hl ppc ppc64 ppc64le i686 x86_64 sparc sparc64 s390 s390x riscv64
 	--enable-multi-arch \
 %endif
 %ifarch aarch64
@@ -713,7 +731,7 @@ profile="--disable-profile"
 	--with-cpu=power7 \
 %endif
 %ifarch x86_64
-%if %suse_version > 1500
+%if %{suse_version} > 1500
 	--enable-cet \
 %endif
 %endif
@@ -755,6 +773,45 @@ echo 'CFLAGS-.os += -fdump-ipa-clones' \
 %endif
 
 make %{?_smp_mflags} %{?make_output_sync}
+
+%if %{build_main} && !0%{?is_opensuse}
+%ifarch x86_64 i686 s390x ppc64le
+# Horrible workaround for bsc#1221482
+%ifarch x86_64 i686
+archsub=x86
+%endif
+%ifarch s390x
+archsub=s390
+%endif
+%ifarch ppc64le
+archsub=powerpc
+%endif
+xstatbuild ()
+{
+  gcc -O2 -I ../sysdeps/unix/sysv/linux/$archsub -xc - -c -o $1stat$2.oS <<EOF
+#include <bits/wordsize.h>
+#include <xstatver.h>
+int __$1xstat$2 (int, $3, void *);
+
+int
+$1stat$2 ($3 file, void *buf)
+{
+  return __$1xstat$2 (_STAT_VER, file, buf);
+}
+EOF
+  ar r libc_nonshared.a $1stat$2.oS
+}
+xstatbuild "" "" "const char *"
+xstatbuild f "" int
+xstatbuild l "" "const char *"
+%ifarch i686
+xstatbuild "" 64 "const char *"
+xstatbuild f 64 int
+xstatbuild l 64 "const char *"
+%endif
+%endif
+%endif
+
 cd ..
 
 #
@@ -956,7 +1013,7 @@ rm -rf %{buildroot}%{_datadir}/locale/*/
 # Miscelanna:
 
 install -m 644 %{SOURCE7} %{buildroot}/etc
-%if %suse_version > 1500
+%if %{suse_version} > 1500
 install -D -m 644 %{SOURCE5} %{buildroot}%{_prefix}/etc/nsswitch.conf
 %else
 install -m 644 %{SOURCE5} %{buildroot}/etc/nsswitch.conf
@@ -1144,6 +1201,9 @@ rm %{buildroot}/sbin
 %if %{build_main}
 
 %post -p <lua>
+%if %{suse_version} >= 1600
+exec = rpm.execute
+%else
 function exec(path, ...)
   local pid = posix.fork()
   if pid == 0 then
@@ -1156,6 +1216,7 @@ function exec(path, ...)
   end
   posix.wait(pid)
 end
+%endif
 
 -- First, get rid of platform-optimized libraries. We remove any we have
 -- ever built, since otherwise we might end up using some old leftover
@@ -1235,7 +1296,7 @@ exit 0
 %config /etc/ld.so.conf
 %attr(0644,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /etc/ld.so.cache
 %config(noreplace) /etc/rpc
-%if %suse_version > 1500
+%if %{suse_version} > 1500
 %attr(0644,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /etc/nsswitch.conf
 %{_prefix}/etc/nsswitch.conf
 %else

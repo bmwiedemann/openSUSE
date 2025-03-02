@@ -1,0 +1,48 @@
+From a900dbaf70f0a957f56b52caa69173592ad7596e Mon Sep 17 00:00:00 2001
+From: "H.J. Lu" <hjl.tools@gmail.com>
+Date: Thu, 20 Feb 2025 07:08:26 +0800
+Subject: [PATCH] x86 (__HAVE_FLOAT128): Defined to 0 for Intel SYCL compiler
+ [BZ #32723]
+
+Intel compiler always defines __INTEL_LLVM_COMPILER.  When SYCL is
+enabled by -fsycl, it also defines SYCL_LANGUAGE_VERSION.  Since Intel
+SYCL compiler doesn't support _Float128:
+
+https://github.com/intel/llvm/issues/16903
+
+define __HAVE_FLOAT128 to 0 for Intel SYCL compiler.
+
+This fixes BZ #32723.
+
+Signed-off-by: H.J. Lu <hjl.tools@gmail.com>
+Reviewed-by: Sam James <sam@gentoo.org>
+(cherry picked from commit 5a4573be6f96ff49111bb6cae767676b5aafa7a8)
+---
+ sysdeps/x86/bits/floatn.h | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/sysdeps/x86/bits/floatn.h b/sysdeps/x86/bits/floatn.h
+index d197cb10dd..adc7ed2e9e 100644
+--- a/sysdeps/x86/bits/floatn.h
++++ b/sysdeps/x86/bits/floatn.h
+@@ -25,11 +25,15 @@
+    floating-point type with the IEEE 754 binary128 format, and this
+    glibc includes corresponding *f128 interfaces for it.  The required
+    libgcc support was added some time after the basic compiler
+-   support, for x86_64 and x86.  */
++   support, for x86_64 and x86.  Intel SYCL compiler doesn't support
++   _Float128: https://github.com/intel/llvm/issues/16903
++  */
+ #if (defined __x86_64__							\
+      ? __GNUC_PREREQ (4, 3)						\
+      : (defined __GNU__ ? __GNUC_PREREQ (4, 5) : __GNUC_PREREQ (4, 4))) \
+-    || __glibc_clang_prereq (3, 4)
++    || (__glibc_clang_prereq (3, 4)					\
++	&& (!defined __INTEL_LLVM_COMPILER				\
++	    || !defined SYCL_LANGUAGE_VERSION))
+ # define __HAVE_FLOAT128 1
+ #else
+ # define __HAVE_FLOAT128 0
+-- 
+2.48.1
+
