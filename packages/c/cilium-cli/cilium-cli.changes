@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Mar 02 07:50:47 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.0:
+  A Breaking Change
+  Cilium CLI GitHub Action now defaults to using the top-level
+  go.mod file to determine Go version to build Cilium CLI when
+  skip-build parameter is set to false (#2956).
+  * What's Changed
+    - chore(deps): update actions/upload-artifact action to v4.6.1
+      by @renovate in #2949
+    - Always update github.com/cilium/cilium from main by @tklauser
+      in #2951
+    - chore(deps): update actions/download-artifact action to
+      v4.1.9 by @renovate in #2952
+    - renovate: clean up configuration by @tklauser in #2954
+    - chore(deps): update all github action dependencies (minor) by
+      @renovate in #2955
+    - chore(deps): update dependency go to v1.24.0 by @renovate in
+      #2957
+    - action: Clean up the logic to handle go-mod-directory by
+      @michi-covalent in #2956
+    - Prepare for v0.18.0 release by @michi-covalent in #2958
+
+-------------------------------------------------------------------
 Thu Feb 20 08:42:05 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.0:
