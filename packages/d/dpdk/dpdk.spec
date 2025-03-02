@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package dpdk
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -35,7 +35,7 @@
 %endif
 # This is in sync with <src>/ABI_VERSION
 # TODO: automate this sync
-%define maj 24
+%define maj 25
 %define min 0
 #%%define lname libdpdk-%%{maj}_%%{min}
 %define lname libdpdk-%{maj}
@@ -52,7 +52,7 @@
 # Add option to build without tools
 %bcond_without tools
 Name:           dpdk%{name_tag}
-Version:        23.11.1
+Version:        24.11
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -65,6 +65,12 @@ Patch0:         0001-fix-cpu-compatibility.patch
 Patch1:         0001-examples-vm_power_manager-add-missing-header.patch
 # PATCH-FIX-UPSTREAM - CVE-2024-11614 [bsc#1234718], net/virtio: Fix Denial Of Service from malicious guest on hypervisors using DPDK Vhost library
 Patch2:         dpdk-CVE-2024-11614.patch
+%ifarch x86_64
+%if 0%{suse_version} < 1699
+# Workaround for build failure related to inline error
+BuildRequires:  gcc14
+%endif
+%endif
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pyelftools >= 0.22}
 BuildRequires:  %{pythons}
@@ -174,7 +180,7 @@ as L2 and L3 forwarding.
 
 %prep
 # can't use %%{name} because of dpdk-thunderx
-%setup -q -n dpdk-stable-%{version}
+%setup -q -n dpdk-%{version}
 %if 0%{?suse_version} > 1600
 %autopatch -p1
 %else
@@ -193,6 +199,9 @@ sed -i "/performance-thread/d" examples/meson.build
 
 %ifarch x86_64
 export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -msse4"
+%if 0%{suse_version} < 1699
+export CC=gcc-14
+%endif
 %endif
 examples="all"
 for flavor in %{flavors_to_build}; do

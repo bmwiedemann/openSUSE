@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 17 07:38:12 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to LTS version 24.11
+  * Changelog: https://doc.dpdk.org/guides/rel_notes/release_24_11.html
+  * This update fix build with glibc 2.41
+- Use gcc14 on x86_64 SLE15/16 to avoid the inline error
+
+-------------------------------------------------------------------
 Wed Jan  1 13:12:20 UTC 2025 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 -  Fix CVE-2024-11614 [bsc#1234718] - Denial Of Service from malicious guest on hypervisors using DPDK Vhost library
