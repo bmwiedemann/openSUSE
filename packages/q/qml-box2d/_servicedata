@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
             <param name="url">git://github.com/qml-box2d/qml-box2d.git</param>
-          <param name="changesrevision">5769c15153b477372a82344b40c2b908a7d11e93</param></service></servicedata>
+          <param name="changesrevision">3a85439726d1ac4d082308feba45f23859ba71e0</param></service><service name="tar_scm">
+                <param name="url">https://github.com/qml-box2d/qml-box2d.git</param>
+              <param name="changesrevision">3a85439726d1ac4d082308feba45f23859ba71e0</param></service></servicedata>

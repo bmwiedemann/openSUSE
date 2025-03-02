@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Feb 22 08:34:38 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- lower needed qt6 version to 6.6.2 (available in 15.6)
+  gcompris-qt 25 can also be build with 6.6.0
+- add if block for leap to use gcc-13 at minimal (avoid include
+  filesystem.h not found trouble)
+
+-------------------------------------------------------------------
+Mon Feb 17 15:06:46 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 0+git.1713207787.3a85439:
+  * cmake, add Qt policy for Qt6 > 6.5 (#147)
+  * Fix crash on revoluteplotangle example (#141)
+  * Add Windows/MacOS CI builds (#137)
+  * README, update to use cmake for building too instead of make (#139)
+  * add cmake support (#136)
+  * silence some warnings (#135)
+  * README.md formatting improvements
+  * Support Qt 6 (#131)
+  * Removed message when using system Box2D
+  * Changed option to use system box2d to use CONFIG instead of DEFINES,
+    as this is the more common way to configure qmake projects.
+  * Updated debian packaging to use system box2d and depend on it.
+  * Updated README to match the changes.
+- Packaging
+  * refresh copyright
+  * migrate to qt6
+
+-------------------------------------------------------------------
 Mon Feb 22 17:33:03 UTC 2021 - bruno@ioda-net.ch
 
 - Update to version 0+git.1523004651.b7212d5:
