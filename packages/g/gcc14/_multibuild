@@ -2,12 +2,16 @@
 <flavor>gcc14-testresults</flavor>
 <flavor>cross-aarch64-gcc14-bootstrap</flavor>
 <flavor>cross-aarch64-gcc14</flavor>
+<flavor>cross-loongarch64-gcc14-bootstrap</flavor>
+<flavor>cross-loongarch64-gcc14</flavor>
 <flavor>cross-riscv64-gcc14-bootstrap</flavor>
 <flavor>cross-riscv64-gcc14</flavor>
 <flavor>cross-s390x-gcc14-bootstrap</flavor>
 <flavor>cross-s390x-gcc14</flavor>
 <flavor>cross-ppc64le-gcc14-bootstrap</flavor>
 <flavor>cross-ppc64le-gcc14</flavor>
+<flavor>cross-hppa-gcc14-bootstrap</flavor>
+<flavor>cross-hppa-gcc14</flavor>
 <flavor>cross-arm-gcc14</flavor>
 <flavor>cross-avr-gcc14-bootstrap</flavor>
 <flavor>cross-avr-gcc14</flavor>
@@ -19,8 +23,6 @@
 <flavor>cross-ppc64-gcc14</flavor>
 <flavor>cross-m68k-gcc14</flavor>
 <flavor>cross-mips-gcc14</flavor>
-<flavor>cross-hppa-gcc14-bootstrap</flavor>
-<flavor>cross-hppa-gcc14</flavor>
 <flavor>cross-arm-none-gcc14-bootstrap</flavor>
 <flavor>cross-arm-none-gcc14</flavor>
 <flavor>cross-riscv64-elf-gcc14-bootstrap</flavor>

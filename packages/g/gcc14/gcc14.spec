@@ -1,7 +1,7 @@
 #
 # spec file for package gcc14
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,13 +44,13 @@
 %endif
 
 %define quadmath_arch %ix86 x86_64 ia64 ppc64le
-%define tsan_arch x86_64 aarch64 ppc ppc64 ppc64le s390 s390x riscv64
-%define asan_arch x86_64 %ix86 ppc ppc64 ppc64le s390 s390x %sparc %arm aarch64 riscv64
+%define tsan_arch x86_64 aarch64 ppc ppc64 ppc64le s390 s390x riscv64 loongarch64
+%define asan_arch x86_64 %ix86 ppc ppc64 ppc64le s390 s390x %sparc %arm aarch64 riscv64 loongarch64
 %define hwasan_arch aarch64 x86_64
-%define itm_arch x86_64 %ix86 %arm aarch64 ppc ppc64 ppc64le riscv64 s390 s390x %sparc
-%define atomic_arch x86_64 %ix86 %arm aarch64 ppc ppc64 ppc64le s390 s390x %sparc m68k ia64 riscv64
-%define lsan_arch x86_64 aarch64 ppc ppc64 ppc64le s390 s390x riscv64
-%define ubsan_arch x86_64 %ix86 ppc ppc64 ppc64le s390 s390x %arm aarch64 riscv64
+%define itm_arch x86_64 %ix86 %arm aarch64 ppc ppc64 ppc64le riscv64 s390 s390x %sparc loongarch64
+%define atomic_arch x86_64 %ix86 %arm aarch64 ppc ppc64 ppc64le s390 s390x %sparc m68k ia64 riscv64 loongarch64
+%define lsan_arch x86_64 aarch64 ppc ppc64 ppc64le s390 s390x riscv64 loongarch64
+%define ubsan_arch x86_64 %ix86 ppc ppc64 ppc64le s390 s390x %arm aarch64 riscv64 loongarch64
 %if 0%{?build_libvtv:1}
 %define vtv_arch x86_64 %ix86
 %endif
@@ -59,7 +59,11 @@
 %define build_fortran 1
 %define build_objc 1
 %define build_objcp 1
+%ifarch loongarch64 hppa hppa64
+%define build_go 0
+%else
 %define build_go 1
+%endif
 %ifarch x86_64 %ix86 %arm aarch64 riscv64 s390x
 %define build_d 1
 %else
@@ -116,11 +120,16 @@
 %endif
 
 # Enable plugins just for Tumbleweed, not for SLES
-%if 0%{!?sle_version:1}
+%if 0%{?is_opensuse}
 %define enable_plugins 1
-%define build_jit 1
 %else
 %define enable_plugins 0
+%endif
+
+# Do not enable JIT support on SLE15
+%if %{suse_version} >= 1600
+%define build_jit 1
+%else
 %define build_jit 0
 %endif
 
@@ -196,7 +205,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        14.2.1+git10750
+Version:        14.2.1+git11321
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -300,7 +309,7 @@ BuildRequires:  cross-amdgcn-newlib14-devel
 %define separate_biarch_suffix -64bit
 %endif
 
-%ifarch aarch64 x86_64 ia64 s390x alpha ppc64 ppc64le sparc64 riscv64
+%ifarch aarch64 x86_64 ia64 s390x alpha ppc64 ppc64le sparc64 riscv64 loongarch64
 # 64-bit is primary build target
 %define build_primary_64bit 1
 %else
@@ -361,7 +370,7 @@ Patch16:        gcc9-reproducible-builds.patch
 Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc13-pr101523.patch
-Patch21:        gcc14-pr116629.patch
+Patch22:        gcc14-pr118780.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -2363,7 +2372,7 @@ ln -s newlib-4.4.0.20231231/newlib .
 %if %{suse_version} < 1550
 %patch -p1 -P 19
 %endif
-%patch -p1 -P 20 -P 21
+%patch -p1 -P 20 -P 22
 %patch -P 51
 %patch -p1 -P 60 -P 61
 
@@ -2796,6 +2805,8 @@ STAGE1_FLAGS="-g -O2"
 make info
 %if 0%{?run_tests:1}
 echo "Run testsuite"
+# Use the bootstrap compiler for compat tests
+export ALT_CC_UNDER_TEST=/usr/bin/gcc ALT_CXX_UNDER_TEST=/usr/bin/g++
 (make -C %{GCCDIST}/libstdc++-v3 check-abi || true)
 mv %{GCCDIST}/libstdc++-v3/testsuite/libstdc++.log %{GCCDIST}/libstdc++-v3/testsuite/libstdc++-abi.log
 mv %{GCCDIST}/libstdc++-v3/testsuite/libstdc++.sum %{GCCDIST}/libstdc++-v3/testsuite/libstdc++-abi.sum
@@ -3325,6 +3336,11 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc14-locale.lang
 %{libsubdir}/include/riscv_bitmanip.h
 %{libsubdir}/include/riscv_crypto.h
 %{libsubdir}/include/riscv_th_vector.h
+%endif
+%ifarch loongarch64
+%{libsubdir}/include/larchintrin.h
+%{libsubdir}/include/lasxintrin.h
+%{libsubdir}/include/lsxintrin.h
 %endif
 %ifarch %ix86 x86_64
 %{libsubdir}/include/cross-stdarg.h

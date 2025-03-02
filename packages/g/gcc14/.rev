@@ -127,4 +127,37 @@ next week.  Gcc7 can pick it up from there.
   on aarch64 [boo#1230262]</comment>
     <requestid>1206541</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0730ede3535601b4251044db92ca96f5</srcmd5>
+    <version>14.2.1+git11321</version>
+    <time>1740914243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-14 branch head, 9ffecde121af883b60bbe60d0, git11321
+  * fixes reported ICE in [bsc#1237442]
+- Drop gcc14-pr116629.patch now backported to the branch.
+
+- Adjust cross compiler requirements to use %requires_ge
+- Fix condition on whether to enable plugins or JIT support to
+  not check sle_version which is not defined in SLFO but to check
+  is_opensuse and suse_version instead.
+- Add gcc14-pr118780.patch to make the SLFO config work.
+
+- For cross compilers require the same or newer binutils, newlib
+  or cross-glibc that was used at build time.  [bsc#1232526]
+
+- Define ALT_CC_UNDER_TEST and ALT_CXX_UNDER_TEST for compat tests
+
+- Switch to glibc based cross-compiler for target hppa
+
+- disable go on loongarch64 for now
+
+- Add loongarch64 to asan_arch, atomic_arch,
+  itm_arch, lsan_arch, tsan_arch and ubsan_arch
+- Add larchintrin.h, lasxintrin.h and lsxintrin.h
+  headers to gccXY main package in %files section
+- Set build_primary_64bit to 1 for loongarch64
+
+- Add loongarch64 as new target</comment>
+    <requestid>1247615</requestid>
+  </revision>
 </revisionlist>

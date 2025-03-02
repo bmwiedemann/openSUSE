@@ -1,5 +1,5 @@
 #
-# spec file for package cross-ppc64le-gcc14-bootstrap
+# spec file for package cross-loongarch64-gcc14
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -16,10 +16,10 @@
 #
 
 
-%define pkgname cross-ppc64le-gcc14-bootstrap
-%define cross_arch ppc64le
-%define gcc_target_arch powerpc64le-suse-linux
-%define gcc_libc_bootstrap 1
+%define pkgname cross-loongarch64-gcc14
+%define cross_arch loongarch64
+%define gcc_target_arch loongarch64-suse-linux
+%define gcc_target_glibc 1
 # nospeccleaner
 
 %define build_cp 0%{!?gcc_accel:1}
@@ -252,7 +252,7 @@ ExcludeArch:    %{cross_arch}
 %endif
 %endif
 %if 0%{?gcc_icecream:1}%{?gcc_libc_bootstrap:1}
-ExclusiveArch:  i586  x86_64 s390x aarch64 riscv64
+ExclusiveArch:  i586 ppc64le x86_64 s390x aarch64 riscv64
 %endif
 %define _binary_payload w.ufdio
 # Obsolete cross-ppc-gcc49 from cross-ppc64-gcc49 which has
