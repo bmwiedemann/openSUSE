@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Feb 28 20:22:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- temporarily revert "make %cmake_{build, install} call cmake
+  directly" as the fall out is too large. will be restored once
+  fallout can be mitigated
+
+-------------------------------------------------------------------
+Tue Feb 25 06:17:14 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 3.31.6
+  * cmGeneratorExpressionDAGChecker: Construct with initializer
+    list syntax, De-duplicate constructor signature, Construct
+    with initializer list syntax
+  * GenEx: Restore evaluation context for conditional transitive
+    properties, Fix evaluation of LINK_LIBRARIES as custom
+    transitive property
+  * GoogleTest: Restore support for spaces in explicit
+    WORKING_DIRECTORY
+
+--------------------------------------------------------------------
+Wed Feb 19 00:34:48 UTC 2025 - Yoong Jin <solomoncyj@gmail.com>
+
+- make %cmake_{build, install} call cmake directly
+  to auto set generator so that %global
+  are no longer needed to set generators
+
+-------------------------------------------------------------------
 Tue Jan 14 14:33:12 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 3.31.4

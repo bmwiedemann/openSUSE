@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.13.4
+%define patchversion 6.13.5
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -38,16 +38,16 @@
 %endif
 %endif
 %endif
-%global kernel_package kernel%kernel_flavor-srchash-9f6800f48735a0091adb7cfdc77664341034c799
+%global kernel_package kernel%kernel_flavor-srchash-ff9b7ffc8490960832920ffee73e1493972ca3a8
 %endif
 %if 0%{?rhel_version}
 %global kernel_package kernel
 %endif
 
 Name:           kernel-obs-build
-Version:        6.13.4
+Version:        6.13.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g9f6800f
+Release:        <RELEASE>.gff9b7ff
 %else
 Release:        0
 %endif
@@ -127,7 +127,7 @@ export KERNEL_MODULES="
 	loop dm-crypt essiv dm-mod dm-snapshot binfmt-misc fuse kqemu squashfs ext2 ext3 ext4 btrfs
 	xfs nf_conntrack_ipv6 binfmt_misc virtio_pci virtio_mmio virtio_blk virtio_rng fat vfat
 	nls_cp437 nls_iso8859-1 ibmvscsi sd_mod e1000 ibmveth overlay 9p 9pnet_virtio qemu_fw_cfg
-	algif_hash aegis128 xts bridge br_netfilter nf_nat xt_conntrack iptable_nat iptable_filter
+	algif_hash aegis128 xts bridge br_netfilter nf_nat nf_tables xt_conntrack iptable_nat iptable_filter
 	iso9660"
 
 # manually load all modules to make sure they're available

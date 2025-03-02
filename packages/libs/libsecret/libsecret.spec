@@ -72,22 +72,12 @@ This package provides the GObject Introspection bindings for libsecret.
 Summary:        Store and retrieve passwords
 Obsoletes:      libsecret-tools < %{version}
 Provides:       libsecret-tools = %{version}
+Obsoletes:      secret-tool-bash-completion < %{version}
+Provides:       secret-tool-bash-completion = %{version}
 
 %description -n secret-tool
 Secret-tool is a command line tool that can be used to store and
 retrieve passwords.
-
-%package -n secret-tool-bash-completion
-Summary:        Secret-tool bash completion support
-Requires:       bash-completion
-Requires:       secret-tool
-Supplements:    (secret-tool and bash-completion)
-BuildArch:      noarch
-
-%description -n secret-tool-bash-completion
-Secret-tool is a command line tool that can be used to store and
-retrieve passwords.
-This package provides the bash-completion-support
 
 %package devel
 Summary:        Development files for the Secret Service API library
@@ -122,8 +112,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n libsecret-1-0 -p /sbin/ldconfig
-%postun -n libsecret-1-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsecret-1-0
 
 %files -n libsecret-1-0
 %license COPYING
@@ -136,9 +125,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n secret-tool
 %{_bindir}/secret-tool
 %{_mandir}/man1/secret-tool.1%{?ext_man}
-
-%files -n secret-tool-bash-completion
-%{_datadir}/bash-completion/completions/secret-tool
+%{_datadir}/bash-completion/
 
 %files devel
 %{_libdir}/libsecret-1.so

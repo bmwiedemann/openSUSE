@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Feb 28 21:18:28 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.3:
+  + Wait configuring MPTCP endpoints until DAD has completed.
+  + Properly autoconnect OVS ports at boot.
+  + Allow configuring "shared" IPv6 method in nmtui.
+- Changes from version 1.50.2:
+  + Fix potential crash when the property "ipv4.dhcp-send-release"
+    is enabled.
+  + Support routing rules for VPN connections.
+  + Place the route to the VPN gateway into the table defined by
+    the "ipv{4,6}.route-table" properties-
+  + Fix error handling rp_filter when kernel don't support MPTCP.
+  + Fix configuration of VLAN QoS mappings.
+- Changes from version 1.50.1:
+  + nmcli: fix handling of connection.down-on-poweroff property
+  + sriov: only validate sriov capacity when enabled
+  + wwan: fix crash with IPv4 and method=auto
+  + dns: fix deleting internal global DNS configuration
+  + wifi: fix list corruption when scanning with explicit SSID
+  + bonding: steer IGMP queries to the active bond balance-slb
+    primary port
+  + Remove routes added by NM on reapply
+  + Never retry ACD on NOARP interfaces
+  + Support IPv6 EUI64 link-local address for ipv6 tunnels
+
+-------------------------------------------------------------------
 Thu Jan 23 06:14:32 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add config-server subpackage (bsc#1224868).

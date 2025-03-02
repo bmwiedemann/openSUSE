@@ -2369,4 +2369,28 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
   * FindBoost: Add support for Boost 1.87</comment>
     <requestid>1243476</requestid>
   </revision>
+  <revision rev="264" vrev="1">
+    <srcmd5>c11840d0a48c14a9733dfe2db7e6fb6f</srcmd5>
+    <version>3.31.6</version>
+    <time>1740914231</time>
+    <user>dimstar_suse</user>
+    <comment>- temporarily revert &quot;make %cmake_{build, install} call cmake
+  directly&quot; as the fall out is too large. will be restored once
+  fallout can be mitigated
+
+- update to 3.31.6
+  * cmGeneratorExpressionDAGChecker: Construct with initializer
+    list syntax, De-duplicate constructor signature, Construct
+    with initializer list syntax
+  * GenEx: Restore evaluation context for conditional transitive
+    properties, Fix evaluation of LINK_LIBRARIES as custom
+    transitive property
+  * GoogleTest: Restore support for spaces in explicit
+    WORKING_DIRECTORY
+--------------------------------------------------------------------
+- make %cmake_{build, install} call cmake directly
+  to auto set generator so that %global
+  are no longer needed to set generators</comment>
+    <requestid>1249317</requestid>
+  </revision>
 </revisionlist>

@@ -306,4 +306,12 @@
     <comment>Re-submit, as bash-completion is now submitted</comment>
     <requestid>1241181</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>895dd22d76e552028d941593b32bef1e</srcmd5>
+    <version>0.21.6+5</version>
+    <time>1740914233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1249382</requestid>
+  </revision>
 </revisionlist>
