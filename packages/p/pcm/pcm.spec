@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202409
+Version:        202502
 Release:        0
 Summary:        Intel Performance Counter Monitor
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ energy metrics of Intel Core, Xeon, Atom and Xeon Phi processors.
 %setup -q
 
 %build
-%cmake -DPCM_NO_STATIC_LIBASAN=ON -DCMAKE_BUILD_TYPE=CUSTOM -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_INSTALL_DOCDIR=%{_docdir}/pcm
+%cmake -DCMAKE_BUILD_TYPE=CUSTOM -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_INSTALL_DOCDIR=%{_docdir}/pcm
 %{!?cmake_build:%define cmake_build %{__cmake}}
 %cmake_build
 
@@ -62,6 +62,7 @@ rm -rf %{buildroot}%{_docdir}/pcm/generate_summary_readme.md
 %{_docdir}/pcm/PCM-SENSOR-SERVER-README.md
 %{_docdir}/pcm/PCM_RAW_README.md
 %{_docdir}/pcm/CXL_README.md
+%{_docdir}/pcm/LATENCY-OPTIMIZED-MODE.md
 %{_docdir}/pcm/PCM_ACCEL_README.md
 %{_docdir}/pcm/README.md
 %{_docdir}/pcm/license.txt
@@ -87,14 +88,16 @@ rm -rf %{buildroot}%{_docdir}/pcm/generate_summary_readme.md
 %{_sbindir}/pcm-sensor-server
 %{_sbindir}/pcm-raw
 %dir %{_datadir}/pcm
-%{_datadir}/pcm/opCode-106.txt
-%{_datadir}/pcm/opCode-85.txt
-%{_datadir}/pcm/opCode-134.txt
-%{_datadir}/pcm/opCode-143.txt
-%{_datadir}/pcm/opCode-143-accel.txt
-%{_datadir}/pcm/opCode-173.txt
-%{_datadir}/pcm/opCode-175.txt
-%{_datadir}/pcm/opCode-207.txt
+%{_datadir}/pcm/opCode-6-106.txt
+%{_datadir}/pcm/opCode-6-85.txt
+%{_datadir}/pcm/opCode-6-134.txt
+%{_datadir}/pcm/opCode-6-143.txt
+%{_datadir}/pcm/opCode-6-143-accel.txt
+%{_datadir}/pcm/opCode-6-173.txt
+%{_datadir}/pcm/opCode-6-175.txt
+%{_datadir}/pcm/opCode-6-207.txt
+%{_datadir}/pcm/opCode-6-182.txt
+%{_datadir}/pcm/opCode-6-174.txt
 %{_datadir}/pcm/PMURegisterDeclarations
 
 %changelog

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Mar 01 11:00:00 UTC 2025 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to version 202502
+ * Xeon 6 SoC (GNR-D) support
+ * add Grand Ridge (GRR) support
+ * pcm-power: support tpmi perf limit reason telemetry for GNR and SRF
+ * add ARL (Arrow Lake) support
+ * add basic support for Elkhart Lake and Jasper Lake CPUs
+ * pcm-raw: implement support for tpmi registers
+ * pcm-raw: add PMT XML lookup
+ * support SYS energy API
+ * pcm-sensor-server: change protocol to IPv6, this should work fine on Linux dual stack systems
+ * introduce socketUniqueCoreID to again create a unique Core ID for the JSON and Prometheus output
+ * pcm-numa: enable support for GNR
+ * pcm-tsx: support GNR
+ * introduce and use PCM_DEBUG_LEVEL env variable to print debug messages
+ * support pcm-iio inside docker container
+ * pcm: make --color default on UNIX-like OSes
+ * pcm: introduce --no-color option
+ * pcm: add csv output for system power
+ * make c-state output more compact
+ * use a relative path in LINUX_SYSTEMD_UNITDIR (@hexchain)
+ * perf optimization for accumulating socket CStateResidency
+ * create unique core ids and fix threads_per_core
+ * pcm-tpmi: fix multiple bugs
+ * disable libasan by default due to bugs in libasan
+
+-------------------------------------------------------------------
 Fri Sep 27 11:00:00 UTC 2024 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to version 202409:
