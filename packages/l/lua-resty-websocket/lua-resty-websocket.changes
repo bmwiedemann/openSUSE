@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar  1 20:53:03 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.13.
+  * https://github.com/openresty/lua-resty-websocket/compare/v0.12...v0.13
+
+-------------------------------------------------------------------
 Wed Aug 28 06:11:35 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
-- Updated yo 0.12.
+- Updated to 0.12.
   * Upstream doesn't provide a ChangeLog.
 
 -------------------------------------------------------------------

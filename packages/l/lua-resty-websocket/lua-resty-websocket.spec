@@ -1,7 +1,7 @@
 #
 # spec file for package lua-resty-websocket
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lua_version 5.1
 Name:           lua-resty-websocket
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        Lua WebSocket implementation for the ngx_lua module
 License:        BSD-2-Clause
