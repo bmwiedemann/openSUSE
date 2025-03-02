@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 01 15:15:14 UTC 2025 - kukuk@suse.com
+
+- Update to version 20250301.91b4735:
+  * docserv-miniserv: support multiple index files
+  * Update go dependencies
+  * dump-auxserver: debugging tool for auxserver.idx
+  * docserv-auxserver: print number of sections, too
+  * Allow several auxserver index files
+
+-------------------------------------------------------------------
 Thu Feb 27 17:17:28 UTC 2025 - kukuk@suse.com
 
 - Update to version 20250227.6e4073c:

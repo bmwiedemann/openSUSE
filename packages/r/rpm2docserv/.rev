@@ -186,4 +186,17 @@
   * Makefile: adjust for deprecated go get options</comment>
     <requestid>1249060</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fc6701f869480a3d9f3ca55cbd396185</srcmd5>
+    <version>20250301.91b4735</version>
+    <time>1740914410</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250301.91b4735:
+  * docserv-miniserv: support multiple index files
+  * Update go dependencies
+  * dump-auxserver: debugging tool for auxserver.idx
+  * docserv-auxserver: print number of sections, too
+  * Allow several auxserver index files</comment>
+    <requestid>1249406</requestid>
+  </revision>
 </revisionlist>
