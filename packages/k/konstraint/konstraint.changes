@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Mar 02 07:40:14 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.41.0:
+  * build(deps): bump github.com/open-policy-agent/opa from 1.1.0
+    to 1.2.0 (#594)
+  * ci: Remove E2E prep dependency on acceptance tests (#596)
+  * build: Bump Go to 1.24 (#595)
+  * build(deps): bump alpine from 3.21.2 to 3.21.3 (#589)
+  * build(deps): bump github.com/google/go-cmp from 0.6.0 to 0.7.0
+    (#592)
+  * build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+    (#590)
+  * build(deps): bump golang from 1.23.6-alpine to 1.24.0-alpine
+    (#588)
+  * Fix constraint template when the matchers key is not present
+    (#591)
+  * Add goreleaser to publish binaries (#579)
+  * feat: Make policy available in doc command (#593)
+  * Lint/improve YAML in policies docs (#581)
+  * Generate v1 constrainttemplates by default (#585)
+  * Remove all punctuation from anchors in policies.md (#565)
+  * go.mod: Update
+    github.com/open-policy-agent/frameworks/constraint (#577)
+  * Add log-level support (#587)
+
+-------------------------------------------------------------------
 Sun Feb 16 08:52:01 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.40.0:
