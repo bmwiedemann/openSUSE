@@ -370,4 +370,12 @@
   makes build fail with rpm 4.20. Use %dnl instead.</comment>
     <requestid>1235079</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>b81d53f706ee7fcbea527497ae6400c8</srcmd5>
+    <version>1.4.3</version>
+    <time>1740914240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1249409</requestid>
+  </revision>
 </revisionlist>

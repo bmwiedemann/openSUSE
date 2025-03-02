@@ -89,8 +89,8 @@ gcc %{optflags} -o keygen %{SOURCE2}
 %make_install
 install -m 0644 %{SOURCE3} %{buildroot}%{_mandir}/man1
 install -m 0711 keygen %{buildroot}%{_bindir}/keygen
-pushd %{buildroot}
-tar xf %{SOURCE1}
+cd %{buildroot}
+tar -xf %{SOURCE1}
 %if 0%{?UsrEtcMove}
 patch -p0 < %{PATCH5}
 mkdir -p %{buildroot}%{_libexecdir}/xinit
@@ -102,7 +102,6 @@ mv etc/X11/xinit/xinitrc.common usr%{_sysconfdir}/X11/xinit
 ln -s %{_prefix}%{_sysconfdir}/X11/xinit/xinitrc.common etc/X11/xinit/xinitrc.common
 rmdir etc/X11/xinit/xinitrc.d
 %endif
-popd
 
 %files
 %license COPYING

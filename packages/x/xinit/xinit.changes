@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar  1 09:57:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Make build recipe compatible with POSIX sh
+
+-------------------------------------------------------------------
 Sun Jan  5 21:33:42 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.4.3
