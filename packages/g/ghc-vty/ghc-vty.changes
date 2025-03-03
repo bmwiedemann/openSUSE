@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 25 08:18:26 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Jailbreak over-specified constraint on microlens to fix the build.
+
+-------------------------------------------------------------------
 Sun Jan 21 16:45:59 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update vty to version 6.2.

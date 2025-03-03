@@ -119,4 +119,13 @@
     <comment>Update Haskell ecosystem to GHC version 9.8.2.</comment>
     <requestid>1157271</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f6521e13ab6385a49097f3e5d813f234</srcmd5>
+    <version>6.2</version>
+    <time>1741014295</time>
+    <user>anag+factory</user>
+    <comment>- Jailbreak over-specified constraint on microlens to fix the build.
+</comment>
+    <requestid>1249799</requestid>
+  </revision>
 </revisionlist>
