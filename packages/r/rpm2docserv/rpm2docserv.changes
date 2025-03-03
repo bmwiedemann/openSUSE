@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 03 10:22:15 UTC 2025 - kukuk@suse.com
+
+- Update to version 20250303.dcd3fee:
+  * notfound.tmpl: fix syntax error
+  * Make doxserv-auxserver.service more robust
+  * Add help text for search and Leap-*
+  * auxserver: fix lang selection, show all possible choices if no match
+  * Update go module dependencies
+  * Remove autognerated bundle file
+  * css style: don't limit manpage to 80 character
+
+-------------------------------------------------------------------
 Sat Mar 01 15:15:14 UTC 2025 - kukuk@suse.com
 
 - Update to version 20250301.91b4735:

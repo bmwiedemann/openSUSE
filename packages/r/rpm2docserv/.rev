@@ -199,4 +199,20 @@
   * Allow several auxserver index files</comment>
     <requestid>1249406</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5741201fda86793bfc2993d12e880b53</srcmd5>
+    <version>20250303.dcd3fee</version>
+    <time>1741014338</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250303.dcd3fee:
+  * notfound.tmpl: fix syntax error
+  * Make doxserv-auxserver.service more robust
+  * Add help text for search and Leap-*
+  * auxserver: fix lang selection, show all possible choices if no match
+  * Update go module dependencies
+  * Remove autognerated bundle file
+  * css style: don't limit manpage to 80 character
+</comment>
+    <requestid>1249681</requestid>
+  </revision>
 </revisionlist>
