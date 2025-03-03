@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if %{undefined _distconfdir}
 %define _distconfdir %{_sysconfdir}
 %endif
 
 Name:           nvidia-settings
-Version:        570.86.16
+Version:        570.124.04
 Release:        0
 Summary:        Configure the NVIDIA graphics driver
 License:        GPL-2.0-only
@@ -103,7 +104,6 @@ export LDFLAGS="%{?__global_ldflags}"
     PREFIX=%{_prefix} \
     XNVCTRL_LDFLAGS="-L%{_libdir}" \
     MANPAGE_GZIP=0
-    
 
 %install
 # Install libXNVCtrl headers
