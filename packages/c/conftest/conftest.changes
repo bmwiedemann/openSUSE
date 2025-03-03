@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Mar 02 07:41:35 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.0:
+  * ci: Revert "replace Makefile-based Docker builds with GitHub
+    Action… (#1075)" (#1081)
+  * fix: Conftest can now successfully load files using a file URL
+     (e.g., `file:///C:/path/to/data.yaml`) on windows (#999)
+  * docs: clarify --trace flag behavior with --output flag (#1060)
+  * feat: add --absolute-paths flag to pull command (#1078)
+  * build(deps): bump golang from 1.23.6-alpine to 1.24.0-alpine
+    (#1071)
+  * refactor(ci): replace Makefile-based Docker builds with GitHub
+    Action… (#1075)
+  * build(deps): bump github.com/moby/buildkit from 0.19.0 to
+    0.20.0 (#1076)
+  * build(deps): bump alpine from 3.21.2 to 3.21.3 (#1072)
+  * build(deps): bump github.com/open-policy-agent/opa from 1.1.0
+    to 1.2.0 (#1080)
+  * feat(test): Enable inter-query cache (#1073)
+  * refactor(output): Add CheckResults type and helpers (#1063)
+  * chore: Update all examples to OPA V1 syntax (#1058)
+  * chore: Change empty interface{} to any throughout the codebase
+    (#1057)
+
+-------------------------------------------------------------------
 Sun Feb 16 08:51:23 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.57.0:
