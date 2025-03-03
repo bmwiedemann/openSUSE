@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar  2 08:35:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.59:
+  + Work around axis bug.
+  + Fix axis problem with really big numbers.
+  + Fix combo box problem when wm closes window.
+  + Fix graph tooltip problem.
+  + Adapt to new gnome release requirements.
+
+-------------------------------------------------------------------
 Mon Feb 12 16:43:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.10.57:
