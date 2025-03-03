@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Mar  3 02:24:50 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.6.10:
+  * New features and improvements:
+    - Add first support for PDF 2.0 /Info metadata
+    - Include ConTeXt style scripts
+    - Add a macOS arm build
+  * Changes:
+    - Prevent file corruption when saving is interrupted
+    - Enhance configuration for ConTeXt
+    - Use --synctex=repeat for ConTeXt (Luatex) synctex
+    - Don't set the line height if it's not necessary to work
+      around a Qt 6 bug
+    - Refactor and modernize parts of the code
+    - Update the libraries for the pre-built binaries
+  * Fixes:
+    - Display all spellchecking languages in the preferences
+      dialog
+    - Fix selection of a language alias in the spellcheck menu
+    - Fix focus when switching to a PDF from the "Windows" menu
+    - Ensure the input field in the find/replace dialog is
+      initially focused
+    - Fix overescaping of \n in "Copy to Find"
+    - Fix Wayland appId
+- Drop upstreamed patches:
+  * texworks-cmake-find-python.patch
+  * texworks-python-plugin-buildfix.patch
+- Drop use of deprecated %suse_update_desktop_file macro.
+
+-------------------------------------------------------------------
 Tue Jan 28 07:51:12 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop python2 requirement

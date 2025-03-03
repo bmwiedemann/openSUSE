@@ -1,7 +1,7 @@
 #
 # spec file for package texworks
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2007-09 by Jonathan Kew.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,17 +27,13 @@
 %bcond_without python
 %endif
 Name:           texworks
-Version:        0.6.9
+Version:        0.6.10
 Release:        0
 Summary:        TeXshop-like TeX Editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texworks/
 Source0:        https://github.com/TeXworks/texworks/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM texworks-cmake-find-python.patch gh#TeXworks/texworks#1039 badshah400@gmail.com -- cmake has dropped support for PythonInterp and PythonLibs, use FindPython instead
-Patch0:         https://github.com/TeXworks/texworks/commit/dae1586af7a218e9bbe9ce3031a97e8efcac980a.patch#/texworks-cmake-find-python.patch
-# PATCH-FIX-UPSTREAM texworks-python-plugin-buildfix.patch gh#/TeXworks/texworks#1038 badshah400@gmail.com -- Fix building the python scripting plugin
-Patch1:         https://github.com/TeXworks/texworks/commit/f8962bca2db2cae3183cad201a4726e7726caccb.patch#/texworks-python-plugin-buildfix.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  desktop-file-utils
@@ -54,7 +50,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 %endif
 BuildRequires:  texlive-tex-bin
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt6Concurrent)
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Core5Compat)
@@ -118,7 +113,6 @@ This package adds lua scripting abitilies to TeXworks.
 
 %install
 %cmake_install
-%suse_update_desktop_file texworks Publishing WordProcessor
 
 # Package doc files using %%doc, remove them here
 for i in COPYING README.md NEWS
@@ -130,9 +124,9 @@ done
 %doc README.md NEWS
 %license COPYING
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/texworks.appdata.xml
+%{_datadir}/metainfo/*.xml
 %{_bindir}/texworks
-%{_datadir}/applications/texworks.desktop
+%{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_mandir}/man1/texworks.1%{?ext_man}
 
