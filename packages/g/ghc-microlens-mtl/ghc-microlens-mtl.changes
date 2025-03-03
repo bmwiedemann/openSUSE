@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 20 07:20:13 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update microlens-mtl to version 0.2.1.0.
+  # 0.2.1.0
+
+  * Export `Zoomed` type family.
+
+  # 0.2.0.3
+
+  * [#161](https://github.com/stevenfontanella/microlens/pull/161) Fix GHC 9.4 warning for using `~` without TypeOperators
+  * [#162](https://github.com/stevenfontanella/microlens/pull/162) Fix GHC warning for depending on StarIsType
+
+-------------------------------------------------------------------
 Wed Oct 11 19:28:17 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update microlens-mtl to version 0.2.0.3 revision 1.
