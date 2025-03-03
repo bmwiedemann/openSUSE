@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  3 03:20:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.3.0:
+  * add support for Python versions up through 3.12
+  * remove support for old Python versions older than 3.7 since test
+    dependencies no longer support them
+  * remove Python 2.7 support
+    + remove tests & test commands only relevant to Python 2.7
+    + remove backwards-compatibility from code
+  * enable running as a module (python -m genson)
+  * modernize package configuration
+  * Use a valid schema_uri in tests
+- Add patch use-sys-executable.patch:
+  * Use sys.executable, rather than python in testsuite.
+- Switch to autosetup, pyproject and pytest macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sun Jan 24 10:41:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler wording from description.

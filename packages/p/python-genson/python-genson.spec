@@ -1,7 +1,7 @@
 #
 # spec file for package python-genson
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-genson
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        Python JSON Schema generator
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/wolverdude/genson/
 Source:         https://files.pythonhosted.org/packages/source/g/genson/genson-%{version}.tar.gz
-# https://github.com/wolverdude/GenSON/pull/53
-Source1:        https://raw.githubusercontent.com/wolverdude/GenSON/master/test/fixtures/cp1252.json
-Source2:        https://raw.githubusercontent.com/wolverdude/GenSON/master/test/fixtures/utf-8.json
+# PATCH-FIX-UPSTREAM gh#wolverdude/GenSON#84
+Patch0:         use-sys-executable.patch
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module pytest}
 # /SECTION
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -44,29 +46,18 @@ Besides taking JSON objects and generating schemas that describe
 them, this generator is able to merge schemas as well.
 
 %prep
-%setup -q -n genson-%{version}
-mkdir test/fixtures
-cp %{SOURCE1} %{SOURCE2} test/fixtures/
-touch test/__init__.py
+%autosetup -p1 -n genson-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/genson
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export LANG=en_US.UTF-8
-mkdir ~/bin
-export PATH=~/bin:$PATH
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-cp %{buildroot}/%{_bindir}/genson-%{$python_bin_suffix} ~/bin/genson
-rm -f ~/bin/python
-ln -s $(which $python) ~/bin/python
-$python -m unittest -v
-}
+%pytest -k 'not test_no_input'
 
 %post
 %python_install_alternative genson
@@ -78,6 +69,7 @@ $python -m unittest -v
 %doc AUTHORS.rst README.rst HISTORY.rst
 %license LICENSE
 %python_alternative %{_bindir}/genson
-%{python_sitelib}/*
+%{python_sitelib}/genson
+%{python_sitelib}/genson-%{version}.dist-info
 
 %changelog

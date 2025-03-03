@@ -1,0 +1,33 @@
+From bfa7b22533082c954dcaed46bd7ff0bb3f2e291e Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 3 Mar 2025 14:14:04 +1100
+Subject: [PATCH] test: Use sys.executable for integration testing
+
+Systems may not have a python executable in $PATH when running the
+testsuite. Since we're already running inside a Python process, we can
+leverage sys.executable to give us the full path instead.
+---
+ test/test_bin.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/test/test_bin.py b/test/test_bin.py
+index 5a8aeaf..08baff4 100644
+--- a/test/test_bin.py
++++ b/test/test_bin.py
+@@ -1,6 +1,7 @@
+ import unittest
+ import json
+ import os
++import sys
+ from subprocess import Popen, PIPE
+ from genson import SchemaBuilder
+ 
+@@ -25,7 +26,7 @@ def run(args=tuple(), stdin_data=None):
+     Run the ``genson`` executable as a subprocess and return
+     (stdout, stderr).
+     """
+-    full_args = ['python', '-m', 'genson']
++    full_args = [sys.executable, '-m', 'genson']
+     full_args.extend(args)
+     env = os.environ.copy()
+     env['COLUMNS'] = '80'  # set width for deterministic text wrapping
