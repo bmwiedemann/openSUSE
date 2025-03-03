@@ -1,7 +1,7 @@
 #
 # spec file for package sc-controller
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           sc-controller
-Version:        0.4.8.13
+Version:        0.5.0
 Release:        0
 Summary:        User-mode driver and GTK3-based GUI for the Steam Controller
 License:        GPL-2.0-only
 Group:          Hardware/Joystick
-URL:            https://github.com/Ryochan7/sc-controller
+URL:            https://github.com/C0rn3j/sc-controller
 Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -36,6 +36,8 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(udev)
 Requires:       python3-evdev
 Requires:       python3-gobject-Gdk
+Requires:       python3-ioctl-opt
+Requires:       python3-libusb1
 Requires:       python3-pycairo
 Requires:       python3-pylibacl
 Requires:       python3-setuptools

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 18 22:07:17 UTC 2025 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 0.5.0
+  * Removed support for Python 3.9
+  * chore: add dependency ioctl-opt by @git-developer in #28
+  * Fix loading of libudev by @git-developer in #31
+  * Fix return code when subprocess fails by @git-developer in #33
+  * Fix the build of v0.4.9.3 by @git-developer in #37
+  * Set DAEMON_VERSION from git metadata by @git-developer in #30
+
+-------------------------------------------------------------------
 Tue Jan 30 15:38:57 UTC 2024 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 0.4.8.13
@@ -13,7 +24,6 @@ Tue Jan 30 15:38:57 UTC 2024 - Jannik Seiler <seil0@mosad.xyz>
   * Support custom UDP port. Contribution by Christian
   * Removed cpp namespace prefixes from cemuhook_server c code. Contribution by Christian
   * Changes to AppImage workflow
-
 
 -------------------------------------------------------------------
 Fri May 26 16:26:23 UTC 2023 - Jannik Seiler <seil0@mosad.xyz>
