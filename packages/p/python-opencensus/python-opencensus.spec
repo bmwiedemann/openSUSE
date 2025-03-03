@@ -1,7 +1,7 @@
 #
 # spec file for package python-opencensus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,7 +84,8 @@ sed -i -e 's:==:>=:g' setup.py
 %check
 %if %{with test}
 # recursion error in mock != 3; gh#census-instrumentation/opencensus-python#868
-donttest="TestGetExporterThreadPeriodic and (test_multiple_producers or test_threaded_export)"
+# test_create_from_traceback fails because paths are limited to 256 bytes and the path in the build env is too long.
+donttest="TestGetExporterThreadPeriodic and (test_multiple_producers or test_threaded_export) or test_create_from_traceback"
 %pytest tests/unit -k "not ($donttest)"
 %endif
 

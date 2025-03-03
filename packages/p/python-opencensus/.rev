@@ -72,4 +72,12 @@
   * Drop %{?!python_module:%define python_module() python-%{**} python3-%{**}}</comment>
     <requestid>1166270</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ea9d0a5888b9d67a5702d7cfdc8bdddc</srcmd5>
+    <version>0.11.4</version>
+    <time>1741014334</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1249676</requestid>
+  </revision>
 </revisionlist>
