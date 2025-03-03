@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar  2 12:55:58 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Make build recipe comaptible with POSIX sh
+
+-------------------------------------------------------------------
 Thu Nov  9 11:29:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 1.1+git37.a5e3753

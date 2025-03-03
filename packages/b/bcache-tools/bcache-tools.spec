@@ -1,7 +1,7 @@
 #
 # spec file for package bcache-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,9 +46,7 @@ perl -i -lpe 's{^#!/usr/bin/env python\b}{#!/usr/bin/python3}' bcache-status
 %install
 b="%buildroot"
 # Without these existing, make install would fail
-mkdir -p "$b"/{sbin,%_sbindir,%_mandir/man8,/lib/udev/rules.d}
-mkdir -p "$b/%_sysconfdir/initramfs-tools/scripts/init-premount"
-mkdir -p "$b/%_sysconfdir/initramfs-tools/hooks"
+mkdir -p "$b/%_sbindir" "$b/%_mandir/man8" "$b/lib/udev/rules.d"
 %make_install DRACUTLIBDIR="%_prefix/lib/dracut"
 # Not used in openSUSE
 rm -Rf "$b/%_sysconfdir/initramfs-tools" "$b/%_prefix/lib/initcpio" \

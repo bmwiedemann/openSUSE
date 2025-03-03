@@ -145,4 +145,12 @@
     <comment>- Update to snapshot 1.1+git37.a5e3753</comment>
     <requestid>1124427</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>80f22a0636db03b0c67f280d098cafea</srcmd5>
+    <version>1.1+git37.a5e3753</version>
+    <time>1741014274</time>
+    <user>anag+factory</user>
+    <comment>- Make build recipe comaptible with POSIX sh</comment>
+    <requestid>1249540</requestid>
+  </revision>
 </revisionlist>
