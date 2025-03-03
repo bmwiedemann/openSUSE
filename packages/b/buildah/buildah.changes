@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 27 14:37:20 UTC 2025 - dcermak@suse.com
+
+- Update to version 1.39.1:
+  * Tag v1.39.1
+  * CI config: post-branch update
+  * chore(deps): update module github.com/go-jose/go-jose/v4 to v4.0.5 [security]
+  * chroot createPlatformContainer: use MS_REMOUNT
+
+-------------------------------------------------------------------
 Tue Feb 04 06:04:06 UTC 2025 - madhankumar.chellamuthu@suse.com
 
 - Update to version 1.39.0:
