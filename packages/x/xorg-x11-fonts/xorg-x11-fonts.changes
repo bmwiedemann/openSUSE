@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 27 21:45:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim old specfile constructs
+- Ensure build recipe is POSIX sh compatible
+
+-------------------------------------------------------------------
 Sun Mar  3 03:25:43 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - encodings-1.1.0

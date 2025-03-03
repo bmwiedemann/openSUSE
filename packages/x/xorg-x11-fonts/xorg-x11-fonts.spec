@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package xorg-x11-fonts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ URL:            http://xorg.freedesktop.org/
 Version:        7.6
 Release:        0
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        X.Org fonts
 License:        MIT
 Group:          System/X11/Fonts
@@ -78,8 +77,8 @@ BuildRequires:  ftdump
 BuildRequires:  ttf-converter >= 1.0.6
 BuildRequires:  xorg-x11-fonts-legacy
 Requires(post): fonts-config
-Requires(posttrans):fonts-config
-Requires(postun):fonts-config
+Requires(posttrans): fonts-config
+Requires(postun): fonts-config
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 # In TW and SLE 15 SP2/Leap 15.2 we have pango >= 1.44.0 which
 # doesn't support Type1 fonts (boo#1169444)
@@ -140,18 +139,18 @@ to truetype format in the xorg-x11-fonts-converted package
 %prep
 %setup -T -D -c
 %if "%{flavor}" != "converted"
-for i in $RPM_SOURCE_DIR/*.tar.xz; do tar xf $i; done
+for i in %{_sourcedir}/*.tar.xz; do tar -xf "$i"; done
 %else
 cp %{SOURCE100} .
-tar xf %{SOURCE0}
-tar xf %{SOURCE1}
+tar -xf %{SOURCE0}
+tar -xf %{SOURCE1}
 %endif
 
 %build
 %if "%{flavor}" != "converted"
 echo -e '#!/bin/sh\nexec /usr/bin/gzip -n -9 "$@"' > ../gzip ; chmod a+x ../gzip ; PATH=`pwd`/..:$PATH
 for dir in encodings-* $(ls | grep -v -e encodings -e alias) font-alias-* ; do
-  pushd $dir
+  cd "$dir"
     case $dir in
      *alias-*)     option="--with-fontrootdir=/usr/share/fonts"            ;;
      *encodings-*) option="--with-encodingsdir=/usr/share/fonts/encodings" ;;
@@ -166,10 +165,10 @@ for dir in encodings-* $(ls | grep -v -e encodings -e alias) font-alias-* ; do
      *)            option=""                                               ;;
     esac
     #autoreconf -fi
-    ./configure CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing" \
+    ./configure CFLAGS="%{optflags} -fno-strict-aliasing" \
                 --prefix=/usr --libdir=%{_libdir} \
                 --mandir=%{_mandir} ${option}
-  popd
+  cd -
 done
 
 %else
@@ -250,14 +249,14 @@ for dir in encodings-* $(ls | grep -v -e encodings -e alias) font-alias-* ; do
 	*misc-cyrillic-*) option='FONT_FILES=koi12x24b koi12x24 koi6x13b koi7x14b koi8x16b koi8x16 koi9x15b koi9x18b';;
 	*)                option='NOOPT=' ;;
     esac
-    make -C $dir install DESTDIR=$RPM_BUILD_ROOT "${option}"
+    make -C $dir install DESTDIR="%{buildroot}" "${option}"
 done
-rm -f $RPM_BUILD_ROOT/usr/share/fonts/*/fonts.cache*
-find $RPM_BUILD_ROOT/usr/share/fonts/75dpi -type f -iname \*.pcf.gz | sed -e "s+$RPM_BUILD_ROOT++g" -e 's+^usr+/usr+g' | \
+rm -f %{buildroot}/usr/share/fonts/*/fonts.cache*
+find %{buildroot}/usr/share/fonts/75dpi -type f -iname \*.pcf.gz | sed -e "s+%{buildroot}++g" -e 's+^usr+/usr+g' | \
   grep -v -e ISO8859 >> files.%{name}-core
-rm -rf $RPM_BUILD_ROOT/usr/etc
-rm -f $RPM_BUILD_ROOT/fonts.{dir,scale}
-rm -f $RPM_BUILD_ROOT/usr/share/fonts/encodings/{,large}/encodings.dir
+rm -rf %{buildroot}/usr/etc
+rm -f %{buildroot}/fonts.{dir,scale}
+rm -f %{buildroot}/usr/share/fonts/encodings/{,large}/encodings.dir
 
 %else
 # "%%{flavor}" == "converted"
@@ -298,8 +297,6 @@ cp font-adobe*/*.otb %{buildroot}/%{_datadir}/fonts/truetype/
 %endif
 
 %clean
-rm -rf "$RPM_BUILD_ROOT"
-
 # %%post scriptlets
 %reconfigure_fonts_scriptlets
 
@@ -308,7 +305,6 @@ rm -rf "$RPM_BUILD_ROOT"
 %reconfigure_fonts_scriptlets -n xorg-x11-fonts-legacy
 
 %files
-%defattr(-,root,root)
 %dir /usr/share/fonts/Type1
 %dir /usr/share/fonts/cyrillic
 %dir /usr/share/fonts/truetype
@@ -330,7 +326,6 @@ rm -rf "$RPM_BUILD_ROOT"
 /usr/share/fonts/truetype/*.ttf
 
 %files core
-%defattr(-,root,root)
 %dir /usr/share/fonts/misc
 %dir /usr/share/fonts/encodings
 %dir /usr/share/fonts/encodings/large
@@ -373,7 +368,6 @@ rm -rf "$RPM_BUILD_ROOT"
 
 # "%%{flavor}" == "converted"
 %files
-%defattr(-,root,root)
 %doc README.converted
 %dir %{_datadir}/fonts/truetype
 %{_datadir}/fonts/truetype/CharterBT-*.ttf

@@ -530,4 +530,12 @@
   * Add the ISO8859-14 encoding</comment>
     <requestid>1154346</requestid>
   </revision>
+  <revision rev="60" vrev="47">
+    <srcmd5>5deb33b05f307bfa6e1d761240e910bb</srcmd5>
+    <version>7.6</version>
+    <time>1741014269</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1249318</requestid>
+  </revision>
 </revisionlist>
