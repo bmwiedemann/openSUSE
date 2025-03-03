@@ -236,4 +236,15 @@
     were being dealt with that he fixed.</comment>
     <requestid>1247934</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e17de9acbc95ebf6ea70f84222134738</srcmd5>
+    <version>0.9.4</version>
+    <time>1741016610</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.4:
+  * The last release leaked client resources and would keep capturing
+    after all clients closed their connection. This release fixes
+    that and a double-free on exit.</comment>
+    <requestid>1249618</requestid>
+  </revision>
 </revisionlist>

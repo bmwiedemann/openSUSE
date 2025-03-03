@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  3 08:09:46 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.4:
+  * The last release leaked client resources and would keep capturing
+    after all clients closed their connection. This release fixes
+    that and a double-free on exit.
+
+-------------------------------------------------------------------
 Sun Feb 23 18:23:21 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.3:

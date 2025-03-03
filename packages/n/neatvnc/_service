@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/any1/neatvnc.git</param>
     <param name="revision">af5811b75e63f53d1d1f1f3f337387553a96786a</param>
-    <param name="versionformat">0.9.3</param>
+    <param name="versionformat">0.9.4</param>
   </service>
   <service name="tar" mode="manual"/>
   <service name="recompress" mode="manual">
