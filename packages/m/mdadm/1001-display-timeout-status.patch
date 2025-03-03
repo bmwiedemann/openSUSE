@@ -1,13 +1,18 @@
----
- Detail.c |    1 +
- md_p.h   |    1 +
- 2 files changed, 2 insertions(+)
+From 37339bd211623574efd2f6f5e5133a3247e3bbde Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 27 Feb 2025 23:24:16 +0100
+Subject: [PATCH 1001/1005] mdadm -D: display timeout status
 
-Index: mdadm-4.0/Detail.c
-===================================================================
---- mdadm-4.0.orig/Detail.c
-+++ mdadm-4.0/Detail.c
-@@ -693,6 +693,8 @@ This is pretty boring
+---
+ Detail.c | 2 ++
+ md_p.h   | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/Detail.c b/Detail.c
+index 5819ced..1e2e4c0 100644
+--- a/Detail.c
++++ b/Detail.c
+@@ -745,6 +745,8 @@ int Detail(char *dev, struct context *c)
  				    disk.raid_disk >= 0)
  					failed++;
  			}
@@ -16,10 +21,10 @@ Index: mdadm-4.0/Detail.c
  			if (disk.state & (1 << MD_DISK_ACTIVE))
  				printf(" active");
  			if (disk.state & (1 << MD_DISK_SYNC)) {
-Index: mdadm-4.0/md_p.h
-===================================================================
---- mdadm-4.0.orig/md_p.h
-+++ mdadm-4.0/md_p.h
+diff --git a/md_p.h b/md_p.h
+index 358a28c..9c66dc6 100644
+--- a/md_p.h
++++ b/md_p.h
 @@ -90,6 +90,7 @@
  				   * dire need
  				   */
@@ -28,3 +33,6 @@ Index: mdadm-4.0/md_p.h
  
  #define MD_DISK_REPLACEMENT	17
  #define MD_DISK_JOURNAL		18 /* disk is used as the write journal in RAID-5/6 */
+-- 
+2.48.1
+

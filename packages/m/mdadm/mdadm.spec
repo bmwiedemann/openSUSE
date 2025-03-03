@@ -22,7 +22,7 @@
 %endif
 
 Name:           mdadm
-Version:        4.3
+Version:        4.4
 Release:        0
 BuildRequires:  binutils-devel
 BuildRequires:  groff
@@ -38,18 +38,11 @@ Summary:        Utility for configuring "MD" software RAID devices
 License:        GPL-2.0-only
 Group:          System/Base
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source:         https://www.kernel.org/pub/linux/utils/raid/mdadm/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar
 Source1:        Software-RAID.HOWTO.tar.bz2
 Source2:        sysconfig.mdadm
-Patch1:         0001-Remove-hardcoded-checkpoint-interval-checking.patch
-Patch2:         0002-monitor-refactor-checkpoint-update.patch
-Patch3:         0003-Super-intel-Fix-first-checkpoint-restart.patch
-Patch4:         0004-Grow-Move-update_tail-assign-to-Grow_reshape.patch
-Patch5:         0005-Add-understanding-output-section-in-man.patch
-Patch6:         0006-util.c-change-devnm-to-const-in-mdmon-functions.patch
-Patch7:         0007-Wait-for-mdmon-when-it-is-stared-via-systemd.patch
-Patch8:         0008-Detail-remove-duplicated-code.patch
-Patch9:         0009-mdadm-Fix-native-detail-export.patch
+Patch0010:      0010-mdopen-add-sbin-path-to-env-PATH-when-call-system-mo.patch
+Patch1000:      1000-Revert-mdmonitor-Abandon-custom-configuration-files.patch
 Patch1001:      1001-display-timeout-status.patch
 Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
 Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
@@ -111,7 +104,8 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
 %files
 %defattr(-,root,root)
 %license COPYING
-%doc ChangeLog README.initramfs TODO mdadm.conf-example mkinitramfs
+%doc CHANGELOG.md documentation/mdadm.conf-example
+%doc documentation/external-reshape-design.txt documentation/mdmon-design.txt
 %doc Software-RAID.HOWTO/Software-RAID.HOWTO*{.txt,.html}
 %doc %{_mandir}/man?/*
 %{_sbindir}/*

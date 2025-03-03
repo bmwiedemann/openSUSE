@@ -1559,4 +1559,14 @@ which haven't landed upstream yet
     <comment></comment>
     <requestid>1243271</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>557cdbc175b9dafaec83e0f4dbf199a7</srcmd5>
+    <version>4.4</version>
+    <time>1741014271</time>
+    <user>anag+factory</user>
+    <comment>- mdopen: add sbin path to env PATH when call system(&quot;modprobe md_mod&quot;)
+  (bsc#1233265)
+  add 0010-mdopen-add-sbin-path-to-env-PATH-when-call-system-mo.patch (forwarded request 1249329 from mwilck)</comment>
+    <requestid>1249330</requestid>
+  </revision>
 </revisionlist>

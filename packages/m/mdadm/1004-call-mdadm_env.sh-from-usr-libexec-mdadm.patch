@@ -1,9 +1,7 @@
-From 6e79d4bd229e5db4e435917daf4c57cd79db9265 Mon Sep 17 00:00:00 2001
+From 8a5cf693f728f55456b18d79b2313adc4ea4bc43 Mon Sep 17 00:00:00 2001
 From: colyli <colyli@suse.coly>
 Date: Wed, 17 Oct 2018 11:08:39 +0800
-Subject: [PATCH] Call mdadm_env.sh from /usr/libexec/mdadm
-Patch-mainline: N/A, SUSE only patch
-References: bsc#1111960, bsc#1202090
+Subject: [PATCH 1004/1005] Call mdadm_env.sh from /usr/libexec/mdadm
 
 Current Makefile installs mdadm_env.sh to /usr/libexec/mdadm but the
 systemd service files call it from /usr/lib/mdadm. This patch changes
@@ -12,13 +10,16 @@ make things working.
 
 Signed-off-by: Coly Li <colyli@suse.de>
 ---
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ systemd/mdcheck_continue.service  | 2 ++
+ systemd/mdcheck_start.service     | 2 ++
+ systemd/mdmonitor-oneshot.service | 2 +-
+ systemd/mdmonitor.service         | 2 +-
+ 4 files changed, 6 insertions(+), 2 deletions(-)
 
-Index: mdadm-4.3/systemd/mdcheck_continue.service
-===================================================================
---- mdadm-4.3.orig/systemd/mdcheck_continue.service
-+++ mdadm-4.3/systemd/mdcheck_continue.service
+diff --git a/systemd/mdcheck_continue.service b/systemd/mdcheck_continue.service
+index 70892a1..454b92f 100644
+--- a/systemd/mdcheck_continue.service
++++ b/systemd/mdcheck_continue.service
 @@ -13,4 +13,6 @@ Documentation=man:mdadm(8)
  [Service]
  Type=oneshot
@@ -26,10 +27,10 @@ Index: mdadm-4.3/systemd/mdcheck_continue.service
 +EnvironmentFile=-/run/sysconfig/mdadm
 +ExecStartPre=-/usr/libexec/mdadm/mdadm_env.sh
  ExecStart=/usr/share/mdadm/mdcheck --continue --duration ${MDADM_CHECK_DURATION}
-Index: mdadm-4.3/systemd/mdcheck_start.service
-===================================================================
---- mdadm-4.3.orig/systemd/mdcheck_start.service
-+++ mdadm-4.3/systemd/mdcheck_start.service
+diff --git a/systemd/mdcheck_start.service b/systemd/mdcheck_start.service
+index fc4fc43..a1077f0 100644
+--- a/systemd/mdcheck_start.service
++++ b/systemd/mdcheck_start.service
 @@ -13,4 +13,6 @@ Documentation=man:mdadm(8)
  [Service]
  Type=oneshot
@@ -37,10 +38,10 @@ Index: mdadm-4.3/systemd/mdcheck_start.service
 +EnvironmentFile=-/run/sysconfig/mdadm
 +ExecStartPre=-/usr/libexec/mdadm/mdadm_env.sh
  ExecStart=/usr/share/mdadm/mdcheck --duration ${MDADM_CHECK_DURATION}
-Index: mdadm-4.3/systemd/mdmonitor-oneshot.service
-===================================================================
---- mdadm-4.3.orig/systemd/mdmonitor-oneshot.service
-+++ mdadm-4.3/systemd/mdmonitor-oneshot.service
+diff --git a/systemd/mdmonitor-oneshot.service b/systemd/mdmonitor-oneshot.service
+index ba86b44..3b9d073 100644
+--- a/systemd/mdmonitor-oneshot.service
++++ b/systemd/mdmonitor-oneshot.service
 @@ -12,5 +12,5 @@ Documentation=man:mdadm(8)
  [Service]
  Environment=MDADM_MONITOR_ARGS=--scan
@@ -48,10 +49,10 @@ Index: mdadm-4.3/systemd/mdmonitor-oneshot.service
 -ExecStartPre=-/usr/lib/mdadm/mdadm_env.sh
 +ExecStartPre=-/usr/libexec/mdadm/mdadm_env.sh
  ExecStart=BINDIR/mdadm --monitor --oneshot $MDADM_MONITOR_ARGS
-Index: mdadm-4.3/systemd/mdmonitor.service
-===================================================================
---- mdadm-4.3.orig/systemd/mdmonitor.service
-+++ mdadm-4.3/systemd/mdmonitor.service
+diff --git a/systemd/mdmonitor.service b/systemd/mdmonitor.service
+index 9c36478..71cf4fe 100644
+--- a/systemd/mdmonitor.service
++++ b/systemd/mdmonitor.service
 @@ -13,5 +13,5 @@ Documentation=man:mdadm(8)
  [Service]
  Environment=  MDADM_MONITOR_ARGS=--scan
@@ -59,3 +60,6 @@ Index: mdadm-4.3/systemd/mdmonitor.service
 -ExecStartPre=-/usr/lib/mdadm/mdadm_env.sh
 +ExecStartPre=-/usr/libexec/mdadm/mdadm_env.sh
  ExecStart=BINDIR/mdadm --monitor $MDADM_MONITOR_ARGS
+-- 
+2.48.1
+

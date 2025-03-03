@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Feb 28 22:10:00 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- mdopen: add sbin path to env PATH when call system("modprobe md_mod")
+  (bsc#1233265)
+  add 0010-mdopen-add-sbin-path-to-env-PATH-when-call-system-mo.patch
+
+-------------------------------------------------------------------
+Thu Feb 27 21:51:04 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 4.4 (jsc#PED-10220)
+  Features:
+  * Remove custom bitmap file support from Yu Kuai.
+  * Custom device policies implementation from Mariusz Tkaczyk.
+  * Self encrypted drives (**SED**) support for IMSM metadata from Blazej Kucman.
+  * Support more than 4 disks for **IMSM** RAID10 from Mateusz Kusiak.
+  * Read **IMSM** license information from ACPI tables from Blazej Kucman.
+  * Support devnode in **--Incremental --remove** from Mariusz Tkaczyk.
+  * Printing **IMSM** license type in **--detail-platform** from Blazej Kucman.
+  * README.md from Mariusz Tkaczyk and Anna Sztukowska.
+  Fixes:
+  * Tests improvements from Xiao Ni and Kinga Stefaniuk.
+  * Mdmon's Checkpointing improvements from Mateusz Kusiak.
+  * Pass mdadm environment flags to systemd-env to enable tests from Mateusz Kusiak.
+  * Superblock 1.0 uuid printing fixes from Mariusz Tkaczyk.
+  * Find VMD bus manually if link is not available from Mariusz Tkaczyk.
+  * Unconditional devices count printing in --detail from Anna Sztukowska.
+  * Improve SIGTERM handling during reshape, from Mateusz Kusiak.
+  * **Monitor.c** renamed to **Mdmonitor.c** from Kinga Stefaniuk.
+  * Mdmonitor service documentation update from Mariusz Tkaczyk.
+  * Rework around writing to sysfs files from Mariusz Tkaczyk.
+  * Drop of HOT_REMOVE_DISK ioctl in Manage in favour of sysfs from Mariusz Tkaczyk.
+  * Delegate disk removal to managemon from Mariusz Tkaczyk.
+  * Some clean-ups of legacy code and functionalities like **--auto=md** from Mariusz Tkaczyk.
+  * Manual clean-up, references to old kernels removed from Mariusz Tkaczyk.
+  * Various static code analysis fixes.
+
+- Add 1000-Revert-mdmonitor-Abandon-custom-configuration-files.patch
+  (reverts upstream change to ignore /etc/sysconfig/mdadm)
+
+- Drop obsolete patches (included upstream):
+  * Del 0001-Remove-hardcoded-checkpoint-interval-checking.patch
+  * Del 0002-monitor-refactor-checkpoint-update.patch
+  * Del 0003-Super-intel-Fix-first-checkpoint-restart.patch
+  * Del 0004-Grow-Move-update_tail-assign-to-Grow_reshape.patch
+  * Del 0005-Add-understanding-output-section-in-man.patch
+  * Del 0006-util.c-change-devnm-to-const-in-mdmon-functions.patch
+  * Del 0007-Wait-for-mdmon-when-it-is-stared-via-systemd.patch
+  * Del 0008-Detail-remove-duplicated-code.patch
+  * Del 0009-mdadm-Fix-native-detail-export.patch
+
+- Use obs_scm for code maintenance
+
+-------------------------------------------------------------------
 Wed Jan 22 16:00:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).
