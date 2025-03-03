@@ -1,8 +1,8 @@
 #
 # spec file for package python-onionshare
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2018-2024 Dr. Axel Braun
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2018-2025 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %define plainpython python
 
 Name:           python-onionshare
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Self-hosting Tor Onion Service based file sharing
 License:        GPL-3.0-or-later
@@ -38,8 +38,7 @@ Source0:        https://github.com/onionshare/onionshare/archive/v%{version}.tar
 Source99:       python-onionshare.rpmlintrc
 # PATCH-FIX-OPENSUSE skip test_large_download in gui tests
 Patch0:         0001-adjust_tests.diff
-# PATCH-FIX-OPENSUSE relax-async-mode.patch -- Do not rely on gevent
-Patch1:         relax-async-mode.patch
+
 BuildRequires:  %{mypython}-devel >= 3.8
 BuildRequires:  %{mypython}-pip
 BuildRequires:  %{mypython}-setuptools
