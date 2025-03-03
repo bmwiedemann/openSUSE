@@ -225,4 +225,17 @@
 </comment>
     <requestid>1228371</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>89b434e4ab715322bdae0e25a60554ac</srcmd5>
+    <version>0.15.2</version>
+    <time>1741014262</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.2
+  * Allow custom styles for commands in help output.
+  * Avoid the unnecessary import of typing_extensions in newer
+    Python versions.
+  * Fix shell completions for the fish shell.
+</comment>
+    <requestid>1249294</requestid>
+  </revision>
 </revisionlist>

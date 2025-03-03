@@ -1,7 +1,7 @@
 #
 # spec file for package python-typer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-typer
-Version:        0.15.1
+Version:        0.15.2
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
