@@ -57,4 +57,12 @@
   contain a dot are not considered valid anymore with dune 3.13</comment>
     <requestid>1139285</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c25fca640cabbd27bc0ff3113154c054</srcmd5>
+    <version>1.1.2</version>
+    <time>1741024308</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.2</comment>
+    <requestid>1249888</requestid>
+  </revision>
 </revisionlist>
