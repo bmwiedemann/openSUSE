@@ -102,7 +102,9 @@ mkdir -p $HOME/rpmbuild/BUILD/go/src/
 cp vendor/* $HOME/rpmbuild/BUILD/go/src/ -r
 %endif
 rm -rf vendor
+%if %{pkg_vcmp libiniparser-devel < 4.2.6}
 sed -i 's|<iniparser/|<|g' tool/pwd_conf_update.c lib/deepin_pw_check.c
+%endif
 sed -i '/<allow_any>/s|no|auth_admin|g' misc/polkit-action/*
 
 %build

@@ -86,4 +86,12 @@
     <comment>- Update gopath for Tumbleweed (forwarded request 1244075 from hillwood)</comment>
     <requestid>1244076</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>063e963a23eea736c4c6e8052ad9b7ef</srcmd5>
+    <version>5.1.16</version>
+    <time>1741014326</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1249232 from hillwood)</comment>
+    <requestid>1249233</requestid>
+  </revision>
 </revisionlist>
