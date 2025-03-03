@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri Feb 28 22:03:49 UTC 2025 - Fred kiefer <fredkiefer@gmx.de>
+
+- Update to version 1.31.1
+   • This is a bugfix release correcting a missing KVO method when using
+     the ng runtime and an error in weak reference support when using
+     the gnu runtimeR, along with a few other minor fixes and
+     documentation improvements.
+
+-------------------------------------------------------------------
+Fri Feb 28 22:00:37 UTC 2025 - Fred kiefer <fredkiefer@gmx.de>
+
+- Fix lname in spec file
+
+-------------------------------------------------------------------
+Sat Feb 22 00:14:12 UTC 2025 - Steven Baker <steven.baker@suse.com>
+
+- Update to version 1.31
+   • Implementation of weak references for the GNU runtime, so that weak
+     references are now supported/available in portable code, and in
+     conjunction with NSPointerFunction fixes we now support weak
+     references in NSMapTable, NSHashTable, and NSPointerArray as well
+     as supporting automatic deregestration of deallocated observers in
+     NSNotificationCenter.
+   • Autogsdoc updated to support modern CSS based HTML and provide
+     simple diagrams of inheritence in the reference documentation.
+   • New experimental implementation of NSURLSession ...  we still need
+     work to replace non-portable (blocks dependent) code before it can
+     be a supported class.
+   • New KeyValueObserving code for Clang and GNUstep runtime.
+   • Other new methods/features
+
+        − BSByteOrder fixes for NSSwappedFloat and NSSwappedDouble
+        − [NSDate] small object optimisation when using Clang
+        − -[NSFileManager URLsForDirectory:inDomains:]
+        − NSGeometry missing functions implemented
+        − [NSInvocation] missing typedefs implemented
+        − [NSOperation] threads are now named for easy identification
+        − [NSPredicate] BETWEEN operator for more types
+        − -[NSString enumerateLinesUsingBlock:]
+        − [NSThread] priority support now working on Android
+        − [NSString] NSRegularExpressionSearch option
+        − [NSString] ICU collator cached for improved performance
+        − -[NSURLRequest assumesHTTP3Capable]
+        − -[NSURLRequest setAssumesHTTP3Capable:]
+        − [NSUserDefaults] use bundle identifier rather than program
+          name
+        − [NSValue] edge insets added
+        − -[NSZombie logZombie:]
+
+   • Support for being built with the '-asan yes' command line option or
+     the GNUSTEP_WITH_ASAN=1 environment variable setting.  The library
+     is also aware when it was not built with that option but is linked
+     to an executable which was (and a few features which confuse the
+     leak checker are turned off).  In addition NSObject+GNUstepBase.h
+     declares new methods for tracking the ownership of objects of a
+     particular class (or individual instances) to help in identifying
+     the cause of any leak found by the leak sanitizer.
+   • Many minor bugfixes and very, very many minor memory leaks fixed in
+     both the library and the automated testcases.
+   • Removed deprecated locking code and changed many classes to use
+     lightweight and more fine-grained locking for simple cases
+     protecting short regions.  We retain a global lock for more complex
+     situations where there is a significant chance of deadlock.
+   • Several symbols (variables and functions) which were accidentally
+     public have been made static or internal to the library.
+   • Updated to work with recent versions of autoconf.
+ 
+-------------------------------------------------------------------
 Sun Jul  7 20:13:01 UTC 2024 - Fred kiefer <fredkiefer@gmx.de>
 
 - Update to version 1.30.0

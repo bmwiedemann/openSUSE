@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-base
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define lname   libgnustep-base1_30
+%define lname   libgnustep-base1_31
 %define         gnustep_sh       GNUstep.sh
 %define         gs_config        %{_sysconfdir}/GNUstep/GNUstep.conf
 %define         profile_dir      %{_sysconfdir}/profile.d
@@ -24,7 +24,7 @@
 %define         gs_makefiles     %{_datadir}/GNUstep/Makefiles
 %define         gs_library       %{_libdir}/GNUstep
 Name:           gnustep-base
-Version:        1.30.0
+Version:        1.31.1
 Release:        0
 Summary:        GNUstep Base library package
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -131,6 +131,9 @@ make -e DESTDIR=%{buildroot} \
 # Rename pl to pllist to fix naming conflict
 mv %{buildroot}%{_bindir}/pl %{buildroot}%{_bindir}/pllist
 
+# NSTimeZones includes a swap file for some reason
+rm %{buildroot}%{gs_library}/Libraries/gnustep-base/Versions/1.31/Resources/NSTimeZones/.preferred_abbreviations.plist.swp
+
 %if 0%{?fedora}
 rm -f Examples/.cvsignore
 rm -f Examples/.gdbinit
@@ -184,6 +187,7 @@ chmod 755 %{buildroot}%{profile_dir}/%{gs_userstart}
 %doc ANNOUNCE ChangeLog NEWS README.md
 %{_bindir}/HTMLLinker
 %{_bindir}/autogsdoc
+%{_bindir}/classes
 %{_bindir}/cvtenc
 %{_bindir}/defaults
 %{_bindir}/gdnc
