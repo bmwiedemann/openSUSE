@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  3 04:55:49 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Merge opensuse-kernel/SLE15-SP6 bc241b4269c5
+- lklfuse: add lseek hook
+- lklfuse: add copy_file_range hook
+- Force including Makefile.conf in tools/lkl/Makefile
+- Fix enum install_headers.py script.
+- lkl: fix python warnings on escape sequence
+
+-------------------------------------------------------------------
 Tue Feb 25 05:35:51 UTC 2025 - David Disseldorp <ddiss@suse.de>
 
 - Merge opensuse-kernel/SLE15-SP6 fde8b0a13a2
