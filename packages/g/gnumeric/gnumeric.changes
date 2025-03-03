@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar  2 08:38:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.59:
+  + Fix long-double version of FLT.NEXTAFTER.
+  + cover denormals and excessive digits for TRUNC, ROUNDDOWN,
+    ROUNDUP and ROUND.
+  + Fix xlsx import problem with broken file.
+  + Fix ods round trip of iteration tolerance.
+  + Fix issues with long doubles in dialogs.
+  + Leak fixes.
+  + Fix ssconvert --export-range for pdf.
+  + Fix invisible cursor problem.
+  + Fix zoom problem.
+  + Fix further zoom problem.
+- Drop 771528ae54d8335957533291b89f87da812aca95.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Wed Jul 10 12:17:12 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 771528ae54d8335957533291b89f87da812aca95.patch: Fix build

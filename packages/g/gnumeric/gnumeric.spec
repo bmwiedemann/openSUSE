@@ -1,7 +1,7 @@
 #
 # spec file for package gnumeric
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnumeric
-Version:        1.12.57
+Version:        1.12.59
 Release:        0
 Summary:        Spreadsheet Application
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -25,8 +25,6 @@ Group:          Productivity/Office/Spreadsheets
 URL:            http://www.gnumeric.org/
 Source0:        %{name}-%{version}.tar.zst
 Source1:        gnumeric-rpmlintrc
-# PATCH-FIX-UPSTREAM 771528ae54d8335957533291b89f87da812aca95.patch: Fix build with GCC 14
-Patch1:         https://gitlab.gnome.org/GNOME/gnumeric/-/commit/771528ae54d8335957533291b89f87da812aca95.patch
 
 BuildRequires:  bison
 BuildRequires:  docbook-dtds
