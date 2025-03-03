@@ -1,7 +1,7 @@
 #
 # spec file for package caddy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           caddy
-Version:        2.8.4
+Version:        2.9.1
 Release:        0
 Summary:        Fast, multi-platform web server with automatic HTTPS
 License:        Apache-2.0
@@ -31,7 +31,7 @@ Source4:        https://github.com/caddyserver/dist/raw/v%{version}/welcome/inde
 Source5:        caddy.sysusers
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22.3
 %{?systemd_requires}
 %{sysusers_requires}
 
