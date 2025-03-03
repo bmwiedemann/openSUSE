@@ -938,6 +938,7 @@ unsorted:
   - asclock 
   - asco 
   - asco-doc 
+  - asdf 
   - aseqview 
   - asio-devel 
   - asl 
@@ -1091,6 +1092,7 @@ unsorted:
   - audaspace-plugin-ffmpeg 
   - audaspace-plugin-jack 
   - audaspace-plugin-openal 
+  - audaspace-plugin-pipewire 
   - audaspace-plugin-pulse 
   - audaspace-plugin-sdl2 
   - audaspace-plugin-sndfile 
@@ -7682,7 +7684,6 @@ unsorted:
   - go1.9-doc 
   - go1.9-race 
   - goaccess 
-  - gob2 
   - gobject-introspection 
   - gobject-introspection-devel 
   - gocr 
@@ -12100,9 +12101,9 @@ unsorted:
   - libattr1-32bit 
   - libaubio-devel 
   - libaubio5 
-  - libaudaspace-c1_5 
-  - libaudaspace-py1_5 
-  - libaudaspace1_5 
+  - libaudaspace-c1_6 
+  - libaudaspace-py1_6 
+  - libaudaspace1_6 
   - libaudcore5 
   - libaudgui6 
   - libaudiofile1 
@@ -19638,6 +19639,7 @@ unsorted:
   - namdhinggo-fonts 
   - nano-icinga2 
   - nano-plugin-conky 
+  - nanobind-common-devel 
   - nanomsg-devel 
   - nanopb-devel 
   - nanopb-source 
@@ -20978,7 +20980,6 @@ unsorted:
   - pam_cgfs 
   - pam_chroot 
   - pam_cifscreds 
-  - pam_csync 
   - pam_krb5 
   - pam_mktemp 
   - pam_p11 
@@ -26006,7 +26007,6 @@ unsorted:
   - python311-lexicon 
   - python311-lfdfiles 
   - python311-lhafile 
-  - python311-lib3to6 
   - python311-libarchive 
   - python311-libarchive-c 
   - python311-libbde 
@@ -26202,6 +26202,7 @@ unsorted:
   - python311-mrcz 
   - python311-msal 
   - python311-msal-extensions 
+  - python311-msgfy 
   - python311-msgpack-numpy 
   - python311-msgspec 
   - python311-msoffcrypto-tool 
@@ -26235,6 +26236,8 @@ unsorted:
   - python311-myst-parser 
   - python311-nagiosplugin 
   - python311-named 
+  - python311-nanobind 
+  - python311-nanobind-devel 
   - python311-napalm 
   - python311-napalm-asa 
   - python311-napalm-procurve 
@@ -27544,7 +27547,6 @@ unsorted:
   - python311-tvm 
   - python311-tweepy 
   - python311-twine 
-  - python311-twitter 
   - python311-twython 
   - python311-txWS 
   - python311-txZMQ 
@@ -29671,7 +29673,6 @@ unsorted:
   - python312-lexicon 
   - python312-lfdfiles 
   - python312-lhafile 
-  - python312-lib3to6 
   - python312-libarchive 
   - python312-libarchive-c 
   - python312-libbde 
@@ -29876,6 +29877,7 @@ unsorted:
   - python312-mrcz 
   - python312-msal 
   - python312-msal-extensions 
+  - python312-msgfy 
   - python312-msgpack 
   - python312-msgpack-numpy 
   - python312-msgspec 
@@ -29911,6 +29913,8 @@ unsorted:
   - python312-myst-parser 
   - python312-nagiosplugin 
   - python312-named 
+  - python312-nanobind 
+  - python312-nanobind-devel 
   - python312-napalm 
   - python312-napalm-asa 
   - python312-napalm-procurve 
@@ -31267,7 +31271,6 @@ unsorted:
   - python312-tvm 
   - python312-tweepy 
   - python312-twine 
-  - python312-twitter 
   - python312-twython 
   - python312-txWS 
   - python312-txZMQ 
@@ -33395,7 +33398,6 @@ unsorted:
   - python313-lexicon 
   - python313-lfdfiles 
   - python313-lhafile 
-  - python313-lib3to6 
   - python313-libarchive 
   - python313-libarchive-c 
   - python313-libbde 
@@ -33599,6 +33601,7 @@ unsorted:
   - python313-mrcz 
   - python313-msal 
   - python313-msal-extensions 
+  - python313-msgfy 
   - python313-msgpack 
   - python313-msgpack-numpy 
   - python313-msgspec 
@@ -33634,6 +33637,8 @@ unsorted:
   - python313-myst-parser 
   - python313-nagiosplugin 
   - python313-named 
+  - python313-nanobind 
+  - python313-nanobind-devel 
   - python313-napalm 
   - python313-napalm-asa 
   - python313-napalm-procurve 
@@ -34998,7 +35003,6 @@ unsorted:
   - python313-tvm 
   - python313-tweepy 
   - python313-twine 
-  - python313-twitter 
   - python313-twython 
   - python313-txWS 
   - python313-txZMQ 
@@ -36809,6 +36813,7 @@ unsorted:
   - rz-cutter-devel 
   - rz-ghidra 
   - rz-ghidra-devel 
+  - rz-pm 
   - rzip 
   - rzsz 
   - s-tui 
@@ -49169,7 +49174,6 @@ unsorted:
   - xkill 
   - xl2tpd 
   - xlatencytop 
-  - xless 
   - xload 
   - xlockmore 
   - xlog 

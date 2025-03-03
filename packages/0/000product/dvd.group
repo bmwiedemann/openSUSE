@@ -2082,7 +2082,7 @@
     <package name="libgnomesu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgnustep-base1_30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libgnustep-base1_31" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgnutls-dane0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libgnutls30" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgnutls30-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
