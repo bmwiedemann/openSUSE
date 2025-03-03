@@ -53,4 +53,16 @@ fix #bsc1231577</comment>
 - switch to _datadir/icons, so Leap16 builds (forwarded request 1225962 from rrahl0)</comment>
     <requestid>1225963</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>83e8d97fb739e46e36f484c830c1c40c</srcmd5>
+    <version>0.8.0</version>
+    <time>1741015435</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.0:
+  * Update color variable pattern to ignore !important
+  * Add 'None' Window Control Layout
+  * Allow partial themes to be valid
+  * Update translations (forwarded request 1249825 from rrahl0)</comment>
+    <requestid>1249826</requestid>
+  </revision>
 </revisionlist>

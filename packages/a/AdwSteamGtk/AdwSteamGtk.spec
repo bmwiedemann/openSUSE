@@ -1,7 +1,7 @@
 #
 # spec file for package AdwSteamGtk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appname io.github.Foldex.AdwSteamGtk
 Name:           AdwSteamGtk
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        A Gtk wrapper for Adwaita-for-Steam
 License:        GPL-3.0-only

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  3 13:44:16 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.8.0:
+  * Update color variable pattern to ignore !important
+  * Add 'None' Window Control Layout
+  * Allow partial themes to be valid
+  * Update translations
+
+-------------------------------------------------------------------
 Sat Nov 23 10:29:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.7.2:
