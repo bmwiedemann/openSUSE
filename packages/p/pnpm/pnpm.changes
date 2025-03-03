@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb 27 05:44:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.5.2:
+  * The pnpm config set command should change the global .npmrc
+    file by default.
+    This was a regression introduced by #9151 and shipped in pnpm
+    v10.5.0.
+
+-------------------------------------------------------------------
+Wed Feb 26 13:36:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.5.1:
+  * Throw an error message if a pnpm-workspaces.yaml or
+    pnpm-workspaces.yml file is found instead of a
+    pnpm-workspace.yaml #9170.
+  * Fix the update of pnpm-workspace.yaml by the pnpm
+    approve-builds command #9168.
+  * Normalize generated link paths in package.json #9163
+  * Specifying overrides in pnpm-workspace.yaml should work.
+  * pnpm dlx should ignore settings from the package.json file in
+    the current working directory #9178.
+
+-------------------------------------------------------------------
 Tue Feb 25 22:39:13 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 10.5.0:
