@@ -1,7 +1,7 @@
 #
 # spec file for package audaspace
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 # See also http://en.opensuse.org/openSUSE:Shared_library_packaging_policy
 # NOTE: sover follows version.
-%define sover 1_5
-%define soversion 1.5
+%define sover 1_6
+%define soversion 1.6
 
 Name:           audaspace
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        A High-Level Audio Library
 License:        Apache-2.0
@@ -43,6 +43,7 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libavcodec) >= 61.3.100
 BuildRequires:  pkgconfig(libavformat) >= 61.1.100
 BuildRequires:  pkgconfig(libavutil) >= 59.8.100
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2)
@@ -91,6 +92,16 @@ Supplements:    (libaudaspace%{sover} and (pulseaudio or pulseaudio-pipewire))
 %description    plugin-pulse
 Audaspace (pronounced "outer space") is a high-level audio library.
 This package contains the Pulseaudio plugin
+
+%package        plugin-pipewire
+Summary:        Pipewire plugin for %{name}
+Group:          System/Libraries
+Provides:       audaspace-deviceplugin
+Supplements:    (libaudaspace%{sover} and pipewire)
+
+%description    plugin-pipewire
+Audaspace (pronounced "outer space") is a high-level audio library.
+This package contains the Pipewire plugin
 
 %package        plugin-sdl2
 Summary:        SDL2 plugin for %{name}
@@ -209,6 +220,9 @@ developing applications that use %{name}.
 
 %files plugin-pulse
 %{_libdir}/%{name}-%{soversion}/libaudpulseaudio.so
+
+%files plugin-pipewire
+%{_libdir}/%{name}-%{soversion}/libaudpipewire.so
 
 %files plugin-sdl2
 %{_libdir}/%{name}-%{soversion}/libaudsdl.so

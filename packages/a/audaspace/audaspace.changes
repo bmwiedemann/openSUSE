@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar  3 01:15:37 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix soversion
+
+-------------------------------------------------------------------
+Sun Mar  2 20:46:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 1.6.0
+  - Pipewire support (thanks Sebastian Parborg!)
+  - AAC container (ADTS stream).
+  - Update to C++17.
+  - Improvements for PulseAudio backend.
+  - Many (bug) fixes.
+- drop git.patch
+
+-------------------------------------------------------------------
+Sat Mar  1 13:11:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add git.patch to get the needed symbols (like AUD_CONTAINER_AAC)
+  needed in blender 4.4.
+  https://github.com/audaspace/audaspace/issues/30
+- enable pipewire plugin
+  new audaspace-plugin-pipewire plugin
+
+-------------------------------------------------------------------
 Wed Jul 17 22:57:38 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to release 1.5.0
