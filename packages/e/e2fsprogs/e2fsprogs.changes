@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Feb 28 18:52:18 UTC 2025 - Jan Kara <jack@suse.cz>
+
+- Remove patches merged upstream:
+  configure-add-SIZEOF_TIME_T-to-public_config.h.patch
+  libext2fs-fix-unused-parameter-warnings-errors.patch
+
+-------------------------------------------------------------------
+Fri Feb 28 18:36:11 UTC 2025 - Jan Kara <jack@suse.cz>
+
+- Update to 1.47.2:
+  * Fix orphan_file support on big endian systems
+  * Various orphan_file handling fixes
+  * Allow resize2fs to perform offline resize past 256 TiB boundary
+  * Update translations
+
+-------------------------------------------------------------------
+Thu Nov 28 10:08:35 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- Add configure-add-SIZEOF_TIME_T-to-public_config.h.patch
+
+  The introduction of [1] broke compilation on 32-bit archs, this fix
+  restores it.
+
+  [1] commit ca8bc9240a00 ("Add post-2038 timestamp support to e2fsprogs")
+
+-------------------------------------------------------------------
+Wed Nov 27 11:23:04 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- Add libext2fs-fix-unused-parameter-warnings-errors.patch
+
+  This is required as other packages that leverage ext2fs.h will
+  otherwise fail to compile when setting -Werror due to unused
+  parameters in certain functions introduced in [1] leading to
+  compiler warnings.
+
+  [1] commit ca8bc9240a00 ("Add post-2038 timestamp support to e2fsprogs")
+
+-------------------------------------------------------------------
+Mon Nov 25 15:06:42 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- Update specfile to replace fuse-devel with fuse3-devel
+
+  The v1.47.1 update added support for fuse3-based fuse2fs [1], and at
+  the same time this commit broke fuse2-based support (which has now
+  been fixed upstream [2]).
+
+  There is no reason to stick with the older 2.x libfuse implementation
+  at this point, so switch to fuse3 which also solves the compilation
+  problem without backporting [2] from upstream.
+
+  [1] commit 448a3f8b487b ("add libfuse3 support to fuse2fs")
+  [2] commit fb702218ab47 ("fuse2fs: explicitly set _FILE_OFFSET_BITS again")
+
+-------------------------------------------------------------------
+Mon Nov 25 12:02:58 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- Update to v1.47.1:
+  * Add post-2038 handling when e2fsprogs is compiled on a system with a
+    64-bit time_t.
+  * Mke2fs -d can now support an input tar file if the libarchive library is
+    available.
+  * Teach mke2fs a new extended options, root_perms, which overrides the
+    permissions for the root directory for the new file system.
+  * Add support for SOURCE_DATE_EPOCH environment variable per the
+    specification https://reproducible-builds.org/specs/source-date-epoch.
+  * Improve resize2fs's performance by eliminating extra cache flushes.
+  * Improve mke2fs's performance when zeroing a large number of inode table
+    blocks (when lazy inode table initialization is not enabled) by batching
+    calls to ext2fs_zero_blocks.
+
+- Drop e2fsck-Suppress-orphan-file-is-clean-message-in-preen.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
 Thu Feb 22 11:26:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,7 +1,7 @@
 #
 # spec file for package e2fsprogs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,9 @@ Supplements:    filesystem(ext2) filesystem(ext3) filesystem(ext4)
 Name:           fuse2fs
 Summary:        FUSE file system client for ext2/ext3/ext4 file systems
 License:        MIT
-BuildRequires:  fuse-devel
+BuildRequires:  fuse3-devel
 %endif
-Version:        1.47.0
+Version:        1.47.2
 Release:        0
 Group:          System/Filesystems
 URL:            http://e2fsprogs.sourceforge.net
@@ -52,7 +52,7 @@ Patch6:         harden_e2scrub@.service.patch
 Patch7:         harden_e2scrub_all.service.patch
 Patch8:         harden_e2scrub_fail@.service.patch
 Patch9:         harden_e2scrub_reap.service.patch
-Patch10:        e2fsck-Suppress-orphan-file-is-clean-message-in-preen.patch
+BuildRequires:  libarchive-devel
 BuildRequires:  libblkid-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkg-config
@@ -224,7 +224,6 @@ cp %{SOURCE2} .
 %patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
-%patch -P 10 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -396,8 +395,8 @@ done
 %{_sbindir}/e2scrub
 %{_sbindir}/e2scrub_all
 %if %{with systemd}
-%{_libdir}/e2fsprogs/
-%{_libdir}/e2fsprogs/e2scrub_fail
+%{_libexecdir}/e2fsprogs/
+%{_libexecdir}/e2fsprogs/e2scrub_fail
 %{_unitdir}/e2scrub@.service
 %{_unitdir}/e2scrub_all.service
 %{_unitdir}/e2scrub_all.timer
