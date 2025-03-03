@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 28 20:00:22 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed u_pkgconfig-file-move-sm-from-private-to-public-Requir.patch
+  again since it's against freedesktop's policy for pkgocnfig files
+  https://gitlab.freedesktop.org/xorg/lib/libxt/-/merge_requests/73
+
+-------------------------------------------------------------------
 Wed Feb 19 11:41:45 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_pkgconfig-file-move-sm-from-private-to-public-Requir.patch 
