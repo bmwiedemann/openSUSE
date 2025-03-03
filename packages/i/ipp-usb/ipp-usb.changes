@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Feb 28 23:00:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.9.29:
+  * USB: zero-length read logged at Debug level
+  * Fixed formatting of debug message
+  * Performance tuning after 0-length USB packets reception
+  * fixed typo in names of two local variables
+  * Fixed crash on ipp-usb status
+  * Added tcp port info to status output
+  * Applied changes for pull request
+  * Fixed ipp-usb status formatting for small port numbers (<10000)
+  * Fixed crash with blacklisted devices
+  * USB serial number and vendor/device ID exposed via TXT record
+  * ipp-usb status: if HTTP port is not available, print "-" instead of "0"
+  * Newly added usb_SER and usb_HWID TXT records documented on the man page
+  * Quirks handling refactored. Quirks tests updated.
+  * Low-level USB I/O refactored to be cancelable via context.Context
+  * Added comprehensive test of quirks value parsers
+  * Fixed go 1.11 build
+  * avoided code duplication in decoding libusb_transfer results
+  * Refactiring: UsbIO renamed to UsbEIO, for consistency with other error
+    codes
+  * Refactoring: use context.Context to specify low-level USB I/O timeout
+  * Don't start USB low-level I/O operation, if context.Context already
+    expired
+  * Removed unused function
+  * Device initialization timeout handling revisited
+  * Fixed premature context.Context cancellation for HTTP requests with
+    timeout
+  * Added alternative syntax for delays in the quirks
+  * ipp-usb-quirks/README updated
+  * Device init timeout was mistakenly left enabled after the initialization
+  * Added 'init-timeout' quirk
+  * Removed unneeded debug print, occasionally leaked to the repo
+  * Minor tweak of log message
+  * Fixed possibility to cancel response body fetching before completion
+  * Fixed handling of errors returned by libusb_submit_transfer()
+  * Quirks logistics down to the UsbInterface structure
+  * Added 'zlp-send'
+  * Added 'zlp-recv-hack' quirk
+  * More testing of quirks
+  * Fixed few typos in the man page
+  * Added 'init-retry-partial' quirk
+  * Logging tweaked a bit
+  * Fix init-retry-partial when zlp-recv-hack triggers during HTTP header
+    reception
+  * HP quirks updated
+  * Removed println line, leaked by mistake
+  * Fixed wildcard, used in quirks to match HP Color LaserJet Flow
+- update to 0.9.28:
+  * remove debian directory
+- switch to obs_scm, so we can save on disk space in the long run
+- remove go vendor workaround, as upstream fixed the issue
+- remove download_files service, as it was never needed
+
+-------------------------------------------------------------------
 Thu Jul 25 21:41:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 0.9.27:

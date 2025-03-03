@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <services>
-  <service name="download_files" mode="manual" />
-  <service name="tar_scm" mode="manual">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/OpenPrinting/ipp-usb.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/0.9.27</param>
+    <param name="revision">refs/tags/0.9.29</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
-  <service name="recompress" mode="manual">
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">zst</param>
   </service>
