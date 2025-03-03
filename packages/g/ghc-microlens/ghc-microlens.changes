@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 20 07:20:13 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update microlens to version 0.4.14.0.
+  # 0.4.14.0
+
+  * Add optics `mapMOf`, `rewriteMOf`, `transformMOf`, `anyOf`, `allOf`, `noneOf`, `foldMapOf`, and `cosmosOf`.
+
+  # 0.4.13.1
+
+  * [#161](https://github.com/stevenfontanella/microlens/pull/161) Fix GHC 9.4 warning for using `~` without TypeOperators
+  * [#162](https://github.com/stevenfontanella/microlens/pull/162) Fix GHC warning for depending on StarIsType
+
+-------------------------------------------------------------------
 Wed Oct 11 19:28:17 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update microlens to version 0.4.13.1 revision 1.
