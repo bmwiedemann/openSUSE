@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 03 14:30:27 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 3.88.14:
+  * chore(deps): update dependency go to v1.24.0 (#3944)
+  * Updated custom detector setup docs (#3913)
+  * Updated returned error to include original error (#3949)
+  * check for invalid_grant to avoid setting verification error (#3935)
+  * [bug] - Ensure detector HTTP clients share the same timeout set at runtime (#3946)
+  * fix(deps): update module google.golang.org/protobuf to v1.36.5 (#3943)
+  * fix(deps): update module go.mongodb.org/mongo-driver to v1.17.3 (#3942)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to v6.6.6 (#3940)
+  * Feature: Airtable Personal Access Token Detector (#3933)
+  * fix(deps): update module github.com/elastic/go-elasticsearch/v8 to v8.17.1 (#3937)
+  * Enable GitHub Realtime authentication (#3929)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.9.4 (#3936)
+  * elevenlabs analyzer (#3850)
+
+-------------------------------------------------------------------
 Tue Feb 25 13:42:29 UTC 2025 - felix.niederwanger@suse.de
 
 - Update to version 3.88.13:
