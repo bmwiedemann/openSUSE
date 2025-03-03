@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Mar 03 15:32:58 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250303.63ae770:
+  * Fix typo in comment
+  * Fix openssl -noout call
+  * Store the password in cryptenroll keyring
+
+-------------------------------------------------------------------
+Mon Mar 03 11:41:45 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250303.11b90a2:
+  * Validate the ESP mount point
+  * Do not recurse when called from snapper
+
+-------------------------------------------------------------------
+Thu Feb 27 14:54:00 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250227.9d0f768:
+  * Make set-default-snapshot consistend
+
+-------------------------------------------------------------------
+Thu Feb 27 14:21:58 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250227.0f0a096:
+  * Fix typo in variable name
+  * Update help entries
+  * Fix wrong comparison
+
+-------------------------------------------------------------------
+Thu Feb 27 09:33:49 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250227.da22e9b:
+  * Measure all boot entries in grub2-bls
+  * Drop wrong comment
+  * Validate set-default parameter
+  * Quiet openssl when gnerating RSA key
+
+-------------------------------------------------------------------
 Tue Feb 25 10:08:34 UTC 2025 - aplanas@suse.com
 
 - Update to version 1+git20250225.b78f812:
