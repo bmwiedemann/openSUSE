@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 21 07:31:34 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update microlens-platform to version 0.4.4.1.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Thu Feb 20 07:20:13 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update microlens-platform to version 0.4.4.0.
+  # 0.4.4.0
+
+  * New minor release (microlens-0.4.14.0, microlens-mtl-0.2.1.0).
+
+-------------------------------------------------------------------
 Tue Dec 17 04:33:25 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update microlens-platform to version 0.4.3.6.
