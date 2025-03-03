@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Mar  2 22:28:58 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.43.0:
+  - base_xenforoforum: Add details_spoiler option for
+    [#1165](https://github.com/JimmXinu/FanFicFare/issues/1165)
+  - Add [base_otw] with use_basic_cache:true to defaults.ini
+  - BrowserCache: Better handle cache file changing/failing while
+    reading.
+  - Fix for BrowserCache for images--cache partitioned by
+    parent(story) page.
+  - base_otw_adapter: Detect & report 'This site is in beta' page
+  - AO3: Double default slow_down_sleep_time
+  - For adapter_mcstoriescom: Remove /../ from Get Story URLs
+    from web page
+  - adapter_mcstoriescom: Suppress site URLs that look like
+    stories but aren't. #1160
+  - adapter_fanfictionnet: Attempt chapter from m. (vs www) when
+    chapter not found
+  - adapter_literotica: Get more story urls. #1159 Thanks, dbhmw
+  - Add include_tocpage:always option.
+  - adapter_fimfictionnet: Further cover fix
+  - adapter_fimfictionnet: Fix cover images and use data-source
+    attr for img src.
+  - adapter_storiesonlinenet: Remove some code that broke parsing
+    when 'author' was in the title.
+  - adapter_literotica: http->https
+  - adapter_literotica: Site changes for non-www domains.
+  - Make plugin use own copy of six only--including in Smarten
+    Punc
+  - adapter_fictionlive: fix bounds check in vote accumulaton.
+    resolves JimmXinu#1154, Thanks HazelSh
+  - Make plugin use own copy of six only.
+
+-------------------------------------------------------------------
 Fri Feb  7 22:19:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.42.0:

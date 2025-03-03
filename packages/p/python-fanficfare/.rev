@@ -1528,4 +1528,16 @@ Another attempt to upgrade Python-fanficfare, but I have my doubts.
 (🤖: Submission of python-fanficfare via https://src.opensuse.org/pool/python-fanficfare/pulls/6 by mcepl)</comment>
     <requestid>1244288</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>34b8217bf9ca77e222cd22332ab1446a</srcmd5>
+    <version>4.43.0</version>
+    <time>1741014344</time>
+    <user>anag+factory</user>
+    <comment>Update to 4.43.0:
+
+Update to 4.43.0:
+
+(🤖: Submission of python-fanficfare via https://src.opensuse.org/pool/python-fanficfare/pulls/7 by mcepl)</comment>
+    <requestid>1249814</requestid>
+  </revision>
 </revisionlist>
