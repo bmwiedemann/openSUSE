@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 28 16:41:21 UTC 2025 - Matthias Bach <marix@marix.org> - 0.15.2
+
+- Update to 0.15.2
+  * Allow custom styles for commands in help output.
+  * Avoid the unnecessary import of typing_extensions in newer
+    Python versions.
+  * Fix shell completions for the fish shell.
+
+-------------------------------------------------------------------
 Wed Dec  4 20:30:49 UTC 2024 - Matthias Bach <marix@marix.org> - 0.15.1
 
 - Update to 0.15.1
