@@ -157,4 +157,13 @@
   gh#nima/python-dmidecode#59</comment>
     <requestid>1216962</requestid>
   </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>27ef82db010e62c0a126c0548ea2694e</srcmd5>
+    <version>3.12.3</version>
+    <time>1741014336</time>
+    <user>anag+factory</user>
+    <comment>- Add patch fix-loglevel.patch to fix invalid log level error.
+  gh#nima/python-dmidecode#60 bsc#1237685</comment>
+    <requestid>1249683</requestid>
+  </revision>
 </revisionlist>

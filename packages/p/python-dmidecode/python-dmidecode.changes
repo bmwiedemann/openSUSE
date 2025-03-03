@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  3 10:46:32 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch fix-loglevel.patch to fix invalid log level error.
+  gh#nima/python-dmidecode#60 bsc#1237685
+
+-------------------------------------------------------------------
 Tue Oct 22 06:56:53 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add gcc14.patch to make it compatible with gcc14

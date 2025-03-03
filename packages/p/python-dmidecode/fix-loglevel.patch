@@ -1,0 +1,12 @@
+diff --color -Naur python-dmidecode-3.12.3-orig/src/efi.c python-dmidecode-3.12.3/src/efi.c
+--- python-dmidecode-3.12.3-orig/src/efi.c	2022-11-17 06:51:28
++++ python-dmidecode-3.12.3/src/efi.c	2025-02-25 14:25:32
+@@ -84,7 +84,7 @@
+         }
+ 
+         if(ret == 0){
+-                log_append(logp, LOGFL_NODUPS, LOG_DEBUG, "%s: entry point at 0x%08llx", eptype, (unsigned long long)*address);
++                log_append(logp, LOGFL_NODUPS, LOG_WARNING, "%s: entry point at 0x%08llx", eptype, (unsigned long long)*address);
+         }
+ 
+         return ret;

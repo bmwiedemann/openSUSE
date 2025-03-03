@@ -1,7 +1,7 @@
 #
 # spec file for package python-dmidecode
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Patch2:         31-version_info-v-version.patch
 Patch3:         detect-lib-with-py3.patch
 # PATCH-FIX-UPSTREAM gcc14.patch gh#nima/python-dmidecode#59 -- daniel.garcia@suse.com
 Patch4:         gcc14.patch
+# PATCH-FIX-OPENSUSE fix-loglevel.patch gh#nima/python-dmidecode#60
+Patch5:         fix-loglevel.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
