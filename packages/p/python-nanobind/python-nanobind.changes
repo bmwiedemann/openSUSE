@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Sun Feb  9 08:31:26 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- update to release 2.5.0
+- adapt nanobind-installationpath.patch to fit 2.5.0
+
+-------------------------------------------------------------------
+Wed Dec 11 17:36:05 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- update to release 2.4.0
+- adapt nanobind-installationpath.patch to fit 2.4.0
+
+-------------------------------------------------------------------
+Sat Dec  7 16:26:33 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- add python-devel to Recommends:
+
+-------------------------------------------------------------------
+Fri Oct  4 19:14:21 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- update to release 2.2.0
+- adapt nanobind-installationpath.patch to fit 2.2.0
+
+-------------------------------------------------------------------
+Mon Aug 12 16:13:51 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- update to release 2.1.0
+- adapt nanobind-installationpath.patch to fit 2.1.0
+
+-------------------------------------------------------------------
+Thu Jun 20 13:35:09 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- initial submit at release 2.0.0
+- nanobind-installationpath.patch:  hardcode path to nanobind
+  installation (from debian)

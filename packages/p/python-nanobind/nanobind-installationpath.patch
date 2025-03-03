@@ -1,0 +1,35 @@
+
+originally 0001-Hardcode-path-to-nanobind-installation.patch:
+  From: =?utf-8?q?Timo_R=C3=B6hling?= <roehling@debian.org>
+  Date: Sat, 6 Apr 2024 01:20:15 +0200
+  Subject: Hardcode path to nanobind installation
+added patching source_dir(), for reasons of orthogonality, though
+source_dir() is currently unused in nanobind module's python code
+
+---
+ src/__init__.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/__init__.py b/src/__init__.py
+index 76539c3..fe16ec9 100644
+--- a/src/__init__.py
++++ b/src/__init__.py
+@@ -6,15 +6,15 @@
+ 
+ def source_dir() -> str:
+     "Return the path to the nanobind source directory."
+-    return os.path.join(os.path.abspath(os.path.dirname(__file__)), "src")
++    return "/usr/share/nanobind/src"
+ 
+ def include_dir() -> str:
+     "Return the path to the nanobind include directory"
+-    return os.path.join(os.path.abspath(os.path.dirname(__file__)), "include")
++    return "/usr/share/nanobind/include"
+ 
+ def cmake_dir() -> str:
+     "Return the path to the nanobind CMake module directory."
+-    return os.path.join(os.path.abspath(os.path.dirname(__file__)), "cmake")
++    return "/usr/share/nanobind/cmake"
+ 
+ __version__ = "2.5.0"
+ 
