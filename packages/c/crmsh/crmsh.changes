@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 03 03:19:35 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250303.149f5b77:
+  * Dev: utils: Add parentheses to if else statements
+  * Dev: behave: Sync dlm ra name in ocfs2 and gfs2 test cases
+  * Dev: cluster_fs: Use 'dlm-controld-ra' as the default dlm ra name
+
+-------------------------------------------------------------------
+Fri Feb 28 09:35:02 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250228.f1101e77:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: Add error log when cluster services fail to start
+
+-------------------------------------------------------------------
 Tue Feb 18 08:24:48 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250218.87655e09:
