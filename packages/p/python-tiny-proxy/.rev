@@ -7,4 +7,12 @@
     <comment>Required as dependency of python-python-socks and sr#1169638.</comment>
     <requestid>1169640</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a3ad12512bc2a228e5812d6ef79663f5</srcmd5>
+    <version>0.2.1</version>
+    <time>1741014320</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1249637</requestid>
+  </revision>
 </revisionlist>
