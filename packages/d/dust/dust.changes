@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Feb 28 08:12:27 UTC 2025 - mvetter@suse.com
+
+- Update to version 1.1.2:
+  * release: Increment version
+  * feat: Handle duplicate dir names better
+  * deps: cargo update
+  * feat: New --collapse flag
+  * fix: Bars in --skip-total flag
+  * fix: Handle Interrupted Error
+  * feat: Support -o flag for JSON output
+  * style: clippy
+  * clippy
+  * push config option
+  * add wget install
+  * clippy
+  * fix typo Operator
+  * Format src/display.rs
+  * Enable pretty format for petabyte data
+  * docs(readme): warn about snap-dust limitations
+  * refactor: simplify `get_height_of_terminal()` and `get_width...`
+  * docs: Update README.md
+  * deps: cargo update
+  * fix: man-page and completions missing in debian package
+  * docs: Update README.md
+  * docs: update sample config.toml
+  * feat: use pre-commit hooks to standardize commit messages
+  * fix: 64-bit atomics for platforms with no 64-bit atomics
+  * feat: support Dust tree by age
+  * fix: retrieve metadata for symbolic links without following them
+
+-------------------------------------------------------------------
 Thu Jul 18 00:42:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.1.1:
