@@ -1,0 +1,8 @@
+<package name="python-msgfy" project="openSUSE:Factory">
+  <title>Converts python exception instance to human-readable error messages</title>
+  <description>A Python library for convert Exception instance to a human-readable
+error message.
+
+</description>
+  <url>https://github.com/thombashi/msgfy</url>
+</package>
