@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Mar  2 19:45:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.35~git20250302:
+  * RSX: Use AVX-512-ICL code in get_vertecx_program_ucode_hash and in vertex_program_compare
+  * Qt: Fix boot failed dialog
+
+-------------------------------------------------------------------
+Sun Mar  2 00:19:38 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.35~git20250301:
+  * vk: Fix MacOS build
+  * vk/swapchain: Fix WSI swapchain configuration overrides
+  * vk/swapchain: Consolidate native swapchain implementation for platforms where it is not implemented
+  * vk/swapchain: Move platform-specific code to appropriate headers
+  * vk: Refactor swapchain into separate platform headers
+  * vk: Refactor instance management header
+  * PPU: Report encrypted modules with KLIC in main file, opportunistic compilation at exit-spawn (#16743)
+
+- Update to version 0.0.35~git20250228:
+  * rpcs3_version: Bump to 0.0.35
+  * Remove ProgramDatabase from libpng and zlib
+  * Use ccache on Windows CI build
+  * PPU Analyzer: Firmware/import caller analysis and KLIC finding pass
+
+-------------------------------------------------------------------
 Thu Feb 27 10:12:43 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.34~git20250226:
