@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Feb 19 05:17:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
-- Add ffmpeg-7-CVE-2025-22921.patch:
+- Add ffmpeg-4-CVE-2025-22921.patch:
   Backporting 7f9c7f98 from upstream, clear array length when
   freeing it.
   (CVE-2025-22921, bsc#1237382)
@@ -9,7 +9,7 @@ Fri Feb 19 05:17:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 -------------------------------------------------------------------
 Fri Feb 19 04:27:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
-- Add ffmpeg-7-CVE-2025-25473.patch:
+- Add ffmpeg-4-CVE-2025-25473.patch:
   Backporting c08d3004 from upstream, clear FFFormatContext packet.
   When packet_buffer is used in mux.c, and if a muxing process fails
   at a point where packets remained in said queue.
@@ -18,7 +18,7 @@ Fri Feb 19 04:27:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 -------------------------------------------------------------------
 Fri Feb 19 03:18:02 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
-- Add ffmpeg-7-CVE-2025-0518.patch:
+- Add ffmpeg-4-CVE-2025-0518.patch:
   Backporting b5b6391d from upstream, fixes memory data leak when
   use sscanf().
   (CVE-2025-0518, bsc#1236007)
@@ -26,7 +26,7 @@ Fri Feb 19 03:18:02 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 -------------------------------------------------------------------
 Fri Feb 19 02:58:01 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
-- Add ffmpeg-7-CVE-2025-22919.patch:
+- Add ffmpeg-4-CVE-2025-22919.patch:
   Backporting 1446e37d from upstream, check for valid sample rate
   As the sample rate <= 0 is invalid.
   (CVE-2025-22919, bsc#1237371)

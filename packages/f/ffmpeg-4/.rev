@@ -713,4 +713,12 @@
   (CVE-2024-35368, bsc#1234028)</comment>
     <requestid>1249416</requestid>
   </revision>
+  <revision rev="77" vrev="6">
+    <srcmd5>1aa8fe716cfcaa5827b6f0fa7c9b290e</srcmd5>
+    <version>4.4.5</version>
+    <time>1741014275</time>
+    <user>anag+factory</user>
+    <comment>forward #13 from qzhao</comment>
+    <requestid>1249550</requestid>
+  </revision>
 </revisionlist>
