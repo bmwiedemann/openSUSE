@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 03 13:11:56 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1741001706.950ead88:
+  * Simplify WebSockets::Worker::Controller
+  * t: Avoid output in non-verbose mode
+  * Fix non-custom OAuth2 providers
+  * Use signatures in WebSockets/Controller/Worker.pm
+
+-------------------------------------------------------------------
 Fri Feb 28 22:49:22 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1740761651.192e0b4f:
