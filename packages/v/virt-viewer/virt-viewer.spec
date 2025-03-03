@@ -48,7 +48,6 @@ BuildRequires:  bash-completion-devel
 BuildRequires:  cmake
 BuildRequires:  gtk-vnc-devel >= 0.3.8
 BuildRequires:  intltool
-BuildRequires:  libglade2-devel
 %if %{with_govirt}
 BuildRequires:  libgovirt-devel
 %endif

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar  1 11:35:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop libglade2-devel BuildRequires: Converted from Glade to
+  GtkBuilder back in 2011.
+
+-------------------------------------------------------------------
 Fri Dec  1 16:04:37 MST 2023 - carnold@suse.com
 
 - Upstream bug fixes (bsc#1166289) (jsc#PED-6305)
