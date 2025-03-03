@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Mar  2 22:33:07 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.0:
+  New language
+  * SystemVerilog (*.sv, *.svh).
+  * Nix (*.nix).
+  New features
+  * feat(LangProfile::detect_from_filename): handle extension
+    comparison more correctly.
+  * feat(MergedTree::line_based_local_fallback_for_revnode): handle
+    the case of isomorphic left and right sides.
+  * feat(line_based_merge_with_duplicate_signature_detection): if
+    the line-merge has conflicts, reconstruct and check each
+    revision.
+  * feat: Add command to compare files by tree isomorphism.
+  Fixes
+  * fix(cli): add . to extensions in languages output.
+  * fix(cli): add actual docs to --conflict-marker-size option.
+  * fix(MergedTree/count_conflicts): respect conflict marker size.
+  * fix(highlight_duplicate_signatures): don't remove separators
+    if no conflict was built.
+  * fix(TreeBuilder): resolve not-really-conflicts (left and right
+    agree).
+  Performance improvements
+  * perf: use rustc-hash in more places.
+
+-------------------------------------------------------------------
 Sat Feb  8 10:43:50 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.1:
