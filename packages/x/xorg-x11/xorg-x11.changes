@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 22:43:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile
+
+-------------------------------------------------------------------
 Tue Oct 22 13:02:58 UTC 2013 - sndirsch@suse.com
 
 - let -essentials package also require xkbcomp, xmessage and xprop

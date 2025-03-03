@@ -1746,4 +1746,12 @@ Mostly important for GNOME 3.6, since having extra sessions installed on a singl
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="222" vrev="17">
+    <srcmd5>6add70e56ce3db07f4ec21ad4ed73b3b</srcmd5>
+    <version>7.6_1</version>
+    <time>1741014268</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1249315</requestid>
+  </revision>
 </revisionlist>
