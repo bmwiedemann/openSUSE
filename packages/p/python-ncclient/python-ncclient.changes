@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Mar  2 22:26:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.19
+  * fixed broken manifest.
+
+-------------------------------------------------------------------
+Sat Mar  1 16:26:35 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.18
+  * Fix connect using ssh using keyfile without password.
+- Update to version 0.6.17
+  * Remove hardcoded values in example.
+  * Use Paramiko's PKey class for loading public keys instead of
+    instantiating key subclasses directly.
+  * Remove Python2 support.
+  * Only import UnixSocketSession if the platform is not Windows.
+  * Remove setuptools from runtime requirements; list in build
+    requirements.
+  * Adding error handling parameters for RPC replies.
+  * Drop the pytest-runner dependency.
+  * Fix for broken iterator.
+- Drop patch
+  * python-ncclient-no-python2.patch (included upstream)
+
+-------------------------------------------------------------------
 Tue Jan 14 14:54:22 UTC 2025 - pgajdos@suse.com
 
 - do not require six for build
