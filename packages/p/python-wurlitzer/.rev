@@ -82,4 +82,14 @@
   * sys_pipes: check that sys.stdout isn't being forwarded to itself</comment>
     <requestid>1183915</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3f8c72b53be761378880cc4a8688e8ee</srcmd5>
+    <version>3.1.1</version>
+    <time>1741014266</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file.
+- Add %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1249313</requestid>
+  </revision>
 </revisionlist>

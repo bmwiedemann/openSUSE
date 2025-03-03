@@ -1,7 +1,7 @@
 #
 # spec file for package python-wurlitzer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-wurlitzer
 Version:        3.1.1
 Release:        0
@@ -38,7 +38,7 @@ Wurlitzer is a python package to capture C-level
 output in context managers.
 
 %prep
-%setup -q -n wurlitzer-%{version}
+%autosetup -p1 -n wurlitzer-%{version}
 
 %build
 %pyproject_wheel
