@@ -1,0 +1,161 @@
+-------------------------------------------------------------------
+Thu Aug 22 16:49:24 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.1.1:
+  * updated translations
+- update to 7.1.0:
+  * Support notifications with buttons
+  * Collapsible app sections
+  * Updated translations
+- update to 7.0.0:
+  * Add full markup support
+  * Constant indicator width
+  * Remove notification from list if bubble dismissed; give accurate tooltip count
+  * Resources: Update icons
+- update to 6.0.7:
+  * Updated translations
+- update to 6.0.6:
+  * Clear All button no longer leaves undeletable notifications
+  * Updated translations
+- update to 6.0.5:
+  * Reduce delay in initially showing wingpanel when there is a large number of notifications
+  * Reduce delay in clearing all notifications when there is a large number of notifications
+  * Updated translations
+- update to 6.0.4:
+  * Fix delayed startup
+  * Updated translations
+- update to 6.0.3:
+  * Handle null message body
+  * Updated translations
+- update to 6.0.2:
+  * Fix DBus listening on Fedora
+  * Updated translations
+- update to 6.0.1:
+  * Use app name as fallback title
+  * Updated translations
+- update to 6.0.0:
+  * Multitouch gestures to dismiss notifications
+  * Close button on each notification
+  * Show images and badged icons
+  * Show tooltip on hover 
+  * Performance improvements
+  * Updated translations
+- update to 2.1.4:
+  * Fix issues with disappearing notifications
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:46:17 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.3:
+  * Granite.Services.Settings → GLib.Settings (#89)
+  * AppEntry: misc cleanup (#91)
+  * Indicator: misc cleanup (#90)
+  * Add AppData (#87)
+  * Add Release to Actions
+  * Delete CODE_OF_CONDUCT.md
+  * Add Gettext Updates to Actions
+  * run installation in CI (#82)
+  * Add Lint to CI (#80)
+  * lint src files with vala-lint (#81)
+  * README: Fix weblate badge
+  * Test with GitHub CI (#79)
+  * build: fix install path for wingpanel indicator (#76)
+  * NotificationList: Use set_placeholder (#74)
+  * Fix top margin popover (#70)
+  * Travis: add gettext dependency
+  * Travis: use juno-unstable container
+  * README.md: Remove dbus-glib dependency (#53)
+
+-------------------------------------------------------------------
+Thu May  2 16:28:07 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Fix libdir install path
+
+-------------------------------------------------------------------
+Thu Nov  8 02:30:08 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Fri Nov  2 18:43:27 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.2:
+  * Create stack change handler before widget creating (#56)
+  * Meson: Use GLib preset for l10n
+
+-------------------------------------------------------------------
+Mon Oct  8 13:01:39 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.1:
+  * Fix status not updating before opening the indicator (#49)
+
+-------------------------------------------------------------------
+Mon Jun 11 14:10:54 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.1.0:
+  * Set icon state in get_display_widget (#45)
+  * Require desktop ID from the sender (#44)
+  * NotificationEntry: GObject-style and other cleanup (#43)
+  * Remove CMake (#40)
+  * Fix a regression with clear button alignment (#41)
+  * AppEntry.vala: cleanups and fix icon size (#39)
+  * Use Gtk.ModelButton (#35)
+  * Add Meson build support (#31)
+  * CSS icon change (#30)
+  * NotificationEntry.vala: Use Granite.DateTime (#32)
+  * Merge remote-tracking branch 'origin/master'
+  * Indicator.vala: Fix deprecated add_with_viewport (#33)
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Switch to github
+- Switch to meson
+- Add README files
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Oct  5 21:10:11 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.0.3:
+  * Merge remote-tracking branch 'origin/master'
+  * Use settings URL instead of hardcoding switchboard (#27)
+
+-------------------------------------------------------------------
+Wed Aug  2 13:12:19 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.0.2:
+  * Fix application not opening when clicking on the notification 
+  * Create COPYING (#22)
+  * Create CODE_OF_CONDUCT.md (#21)
+  * Wraps notification summary when it is too long (#20)
+- Change the sourceurl to git
+
+-------------------------------------------------------------------
+Tue May 23 06:12:55 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.0.1:
+  * Add a namespace (#18)
+  * Add screenshot (#17)
+  * Add Travis CI (#16)
+  * Create README.md (#14)
+  * [merge] Don't save "transient" notifications
+  * fixed code accordig to @donadigo suggestion
+  * changed check position to get_is_valid #1487291
+  * trying to fix #1487291
+  * [merge] Check array-length before accessing it to prevent 
+    crashing if .desktop file has an empty exec line
+  * Prevent crash on invalid notifications
+
+-------------------------------------------------------------------
+Mon Sep 19 01:07:21 UTC 2016 - avvissu@yandex.by
+
+- Update to 2.0
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Sep 21 14:41:09 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.1) for openSUSE
