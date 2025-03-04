@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  4 12:42:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.4
+  * Fixes documentation build issue for modules section on readthedocs
+  * Some fixes for system test
+- from version 1.0.3
+  * Provides a critical bug fix introduced by PR#220
+  * Fixed all system tests and provides some enhancements for unit tests
+- Drop no-more-imp.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Feb 19 06:06:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup macro.

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyeapi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyeapi
-Version:        1.0.2
+Version:        1.0.4
 Release:        0
 Summary:        Python Client for eAPI
 License:        BSD-3-Clause
 URL:            https://github.com/arista-eosplus/pyeapi
 Source:         https://files.pythonhosted.org/packages/source/p/pyeapi/pyeapi-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#arista-eosplus/pyeapi#292
-Patch0:         no-more-imp.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module pip}
