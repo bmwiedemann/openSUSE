@@ -1,8 +1,8 @@
 #
 # spec file for package redsea
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2017-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2017-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           redsea
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        An RDS decoder
 License:        MIT
@@ -46,7 +46,7 @@ RDS groups are printed to the terminal as line-delimited JSON objects
 or, optionally, undecoded hex blocks (-x).
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson

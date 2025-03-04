@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  3 21:55:58 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.1
+  * Fix a regression in 1.1 that caused the groups to sometimes
+    not appear immediately after reception.
+  * Catch2 is an optional build dependency (building tests is
+    optional).
+
+-------------------------------------------------------------------
 Sat Dec 28 19:04:53 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.0
