@@ -1,0 +1,207 @@
+-------------------------------------------------------------------
+Thu Aug 22 16:34:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.4.2:
+  * Updated translations
+- update to 2.4.1:
+  * Updated translations
+- update to 2.4.0:
+  * Open Calendar on middle-click
+  * Show due Tasks for the selected day
+  * Update current day when opening
+  * Fix potential memory leak
+  * Performance improvements
+  * Updated translations
+- update to 2.3.1:
+  * Update current day when opening
+  * Fix disappearing dates when changing between dark and light styles
+  * Fix potential memory leak
+  * Updated translations
+- update to 2.3.0:
+  * Add multitouch gestures
+  * Improve time zone handling
+  * Updated translations
+- update to 2.2.5:
+  * Fix issues with time zones not being recognized
+  * Updated translations
+- update to 2.2.4:
+  * Improved performance when switching months
+  * Updated translations
+- update to 2.2.3:
+  * Fix missing event dots in the calendar view
+  * Fix event appearance with dark style
+  * Updated translations
+- update to 2.2.2:
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Wed Dec 18 15:42:22 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.1:
+  * Add Gettext Updates to Actions
+
+-------------------------------------------------------------------
+Mon Nov  4 14:44:36 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.0:
+  * Add release ci action (#195)
+  * Delete CODE_OF_CONDUCT.md
+  * run installation in CI (#194)
+  * Add Lint to CI (#192)
+  * fix whitespace error
+  * Use EDS to compute recursive events (#190)
+  * Fix vala-lint errors (#193)
+  * Add GitHub CI (#191)
+  * EventRow: Simplify assigning color (#189)
+  * Combine WeekLabels and Grid (#184)
+  * Coloring events in the events pane by calendar colors (#143)
+  * Fix libical.vapi
+  * Update the .vapi from the latest Calendar ones
+  * CalendarView: listen specifically for datarange and simplify
+    (#183)
+  * README: Update weblate badge
+  * build: fix install path for wingpanel indicator (#185)
+  * Merge remote-tracking branch 'weblate/master'
+  * EventRow: no longer depend on Event (#167)
+  * Move get_events to Indicator (#166)
+  * Remove Header class (#159)
+  * Combine Calendar and CalendarView (#174)
+  * CalendarModel: Remove unused on_source_changed (#178)
+  * CalendarModel: Remove unused cancellable (#179)
+  * CalendarModel: Use GLib.DateWeekday (#180)
+  * TimeManager: Update AccountsService rdnn (#177)
+  * Remove unused ID (#175)
+  * CalenderModel: remove unused signals and methods (#162)
+  * CalendarView: misc cleanup (#155)
+  * Rewrite WeekLabels (#153)
+  * DateRange: remove unused properties and functions (#169)
+  * Update screenshot (#168)
+  * Get 12h from TimeManager (#147)
+  * Add dots for events in the calendar (#163)
+  * Move event sorting from CalendarModel to the ListBox (#158)
+  * ...
+
+-------------------------------------------------------------------
+Mon Mar  4 03:33:49 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.3:
+  * Fix critical warning when propagating a null selected_time
+  * Implement the properties required by Gee.Iterator
+  * Move DateRange class to its own file (#107)
+  * Util: Remove unused methods (#108)
+  *  Move DateIterator to its own file (#106)
+  * Reset events on month change (#104)
+  * Focus today on opened (#103)
+  * Fix mystery space (#99)
+
+-------------------------------------------------------------------
+Thu Nov  8 02:30:02 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 19:05:08 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.2:
+  * Update today when calendar is opened (#97)
+
+-------------------------------------------------------------------
+Mon Oct  8 13:00:19 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.1:
+  * Add option for ISO 8601 format (#88)
+  * Use our own gsettings instead of GNOME's (#84)
+  * Indicator.vala: misc cleanup, gobject style (#86)
+  * Remove CMake build system (#85)
+  * Update Travis and README for Meson
+  * Add Meson Build system
+  * Move schemas to data dir
+  * Rename libecalendar vapi to libecal
+  * PanelLabel: Show weekday setting (#83)
+  * Listen to option for showing seconds (#82)
+  * Show date setting (#81)
+  * Use GLib.Settings for clock format (#80)
+  * Remove the explicit refocus (#77)
+  * Fix datetime format string (#75)
+  * Update CMake modules
+
+-------------------------------------------------------------------
+Sat Jun 23 16:50:37 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.1.0:
+  * Remove unused gettext domain from gschema
+  * RDNN GSettings (#71)
+  * Update copyrights to elementary LLC (#72)
+  * Update calendar exec to io.elementary.calendar
+  * Avoid unnecessary nullable uint (#70)
+  * Add editorconfig file
+  * Fixed links of GLib.DateTime.format in Valadoc (#67)
+  * Remove unused config.vala (#66)
+  * Always set display widget visibility to true (#62)
+  * Require newer vala version and drop Posix vapi (#63)
+  * Use Gtk.ModelButton (#56)
+  * Merge remote-tracking branch 'origin/master'
+  * Fix #51: Missing Gtk Alignment in main Indicator container 
+    (#52)
+  * Fix the build system not finding the custom vapi (#49)
+  * Don't use "first" and "last" as property name (#48)
+  * Update FSF address (#46)
+  * Use settings URL instead of hardcoding switchboard (#44)
+  *  Prevent crashes on the indicator  (#42)
+  * Synchronize the Model with Maya: use libraries instead of 
+    another process (#41)
+  * wrap event labels (#39)
+  * Create .gitignore (#37)
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Switch to github
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Jul  1 10:18:00 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.0.2:
+  * Remove redundant labels (#29)
+  * Add Repology badge to README.md (#33)
+  * Remove extra libedataserver vapi (#31)
+  * Create CODE_OF_CONDUCT.md (#32)
+  * Add screenshot (#28)
+  * Revert #25 (#26)
+  * Fix get_keys warning (#25)
+  * Replace cairo with Gtk.CSS (#22)
+  * Add Travis CI (#21)
+  * Update README.md (#19)
+  * Update time on settings change and awake from sleep (#17)
+  * Create README.md
+  * Only jump to same day in next month if there are enough days
+  * Simplified code
+  * Use 8601 date string to launch maya instead of formatting it 
+    ourselves
+  * unmark COPYING file as executable
+  * Switch to using AppInfo to launch maya
+  * Change to execute_command instead of SimpleCommand to fix hang
+
+-------------------------------------------------------------------
+Tue Nov  1 04:35:33 UTC 2016 - avvissu@yandex.by
+
+- Update to 2.0.1:
+  * Revert r164 because it was not a good solution
+  * ensure that the first letter of the weekday on the top is 
+    always upper case
+  * Launchpad automatic translations update.
+  
+-------------------------------------------------------------------
+Mon Sep 19 00:54:28 UTC 2016 - avvissu@yandex.by
+
+- Update to 2.0
+- Add glib2_gsettings_schema_requires macro
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Sep 21 14:13:50 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.1) for openSUSE
