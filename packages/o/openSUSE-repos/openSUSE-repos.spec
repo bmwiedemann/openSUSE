@@ -80,7 +80,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20250220.13a9986
+Version:        20250303.f74564e
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
@@ -150,6 +150,7 @@ Definitions for NVIDIA repository management via zypp-services
 %ghost %{_datadir}/zypp/local/service/openSUSE/repo/repoindex.xml
 %ghost %{_sysconfdir}/zypp/services.d/openSUSE.service
 %{_sysconfdir}/zypp/vars.d/DIST_ARCH
+%{_sysconfdir}/profile.d/opensuse_repos.sh
 
 %if "%{theme}" == "Tumbleweed"
 %ifarch %{ix86} x86_64
@@ -206,6 +207,9 @@ Definitions for NVIDIA repository management via zypp-services
 mkdir -p %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
 mkdir -p %{buildroot}%{_datadir}/zypp/local/service/NVIDIA/repo
 mkdir -p %{buildroot}%{_sysconfdir}/zypp/vars.d/
+
+mkdir -p %{buildroot}%{_sysconfdir}/profile.d
+install opensuse_repos.sh %{buildroot}%{_sysconfdir}/profile.d
 
 # Setup for primary arches
 %if "%{theme}" == "Tumbleweed"

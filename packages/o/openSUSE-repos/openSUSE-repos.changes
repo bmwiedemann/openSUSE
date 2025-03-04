@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 03 15:41:37 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250303.f74564e:
+  * Enable experimental parallel downloads for Leap and TW (#79)
+  * Fix $arch -> $basearch for Leap 16.0
+  * Add /etc/profile.d/opensuse_repos.sh
+
+-------------------------------------------------------------------
 Thu Feb 20 18:11:50 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20250220.13a9986:
