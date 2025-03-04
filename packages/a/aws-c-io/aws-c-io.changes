@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:32:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.16.0
+  * TLS 1.3 win update by @bretambrose in (#676)
+  * Fix Windows server-side for TLS 1.3 by @sfod in (#710)
+
+-------------------------------------------------------------------
 Wed Feb 19 11:49:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.15.5
