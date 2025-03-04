@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:42:34 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.80.3:
+  * appc: fix a deadlock in route advertisements
+  * client/web: fix CSRF handler order in web UI
+
+-------------------------------------------------------------------
 Thu Feb 13 14:30:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.80.2:
