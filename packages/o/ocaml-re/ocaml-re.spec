@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-re
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,23 @@
 #
 
 
+%bcond_with ocaml_re_testsuite
 %define build_flavor @BUILD_FLAVOR@%nil
 %if "%build_flavor" == "testsuite"
+%if %{without ocaml_re_testsuite}
+ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+%endif
 %define nsuffix -testsuite
 %else
 %define nsuffix %nil
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 
 %define     pkg ocaml-re
 Name:           %pkg%nsuffix
-Version:        1.11.0
+Version:        1.13.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Pure OCaml regular expressions
@@ -33,16 +40,18 @@ License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/re
 Source0:        %pkg-%version.tar.xz
-BuildRequires:  ocaml
-BuildRequires:  ocaml-dune >= 2.0
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml(ocaml_base_version) >= 4.12
+BuildRequires:  ocaml-dune >= 3.12
+BuildRequires:  ocaml-rpm-macros >= 20240909
 %if 1
 BuildRequires:  ocamlfind(seq)
 BuildRequires:  ocamlfind(str)
 %endif
 
 %if "%build_flavor" == "testsuite"
-BuildRequires:  ocamlfind(oUnit)
+BuildRequires:  ocamlfind(base)
+BuildRequires:  ocamlfind(ounit2)
+BuildRequires:  ocamlfind(ppx_expect)
 BuildRequires:  ocamlfind(re)
 %endif
 

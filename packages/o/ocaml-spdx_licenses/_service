@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="filename">ocaml-spdx_licenses</param>
+    <param name="revision">31e7c8e5e99b9b018ca61e32a3e46f964f3d9dab</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/kit-ty-kate/spdx_licenses.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>

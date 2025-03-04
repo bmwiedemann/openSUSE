@@ -131,4 +131,25 @@ Add default `/etc/dict.conf` so that dict client works by default as it used to 
 (🤖: Submission of dictd via https://src.opensuse.org/pool/dictd/pulls/4 by mcepl)</comment>
     <requestid>1249399</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d62f5875293f146a76abb2fa45356038</srcmd5>
+    <version>1.13.3+git.1731775346.2b21553</version>
+    <time>1741109581</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.13.3+git.1731775346.2b21553
+
+* Update version to 1.13.3
+* dictd: fix buffer overflow in first/last search strategies    Thanks a lot to Matěj Cepl &lt;mcepl@cepl.eu&gt; for the report!
+* Remove config.{sub,guess}
+* Update version to 1.13.2
+* Rename configure.in to configure.ac
+* dictP.h: remove #include &lt;sys/time.h&gt;
+* configure.in: fix obsolete code
+* Fix compilation issues with gcc-14
+* Update configure script and the like (autoconf-2.72)
+
+
+(🤖: Submission of dictd via https://src.opensuse.org/pool/dictd/pulls/4 by mcepl)</comment>
+    <requestid>1249990</requestid>
+  </revision>
 </revisionlist>

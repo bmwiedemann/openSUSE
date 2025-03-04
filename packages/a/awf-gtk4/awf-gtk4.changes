@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  3 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (2.8.1)
+  * packages scripts update
+  * fix building error with GLIB 2.83 and/or with GCC 15
+  * replace some deprecated functions
+  * auto resize window to minimal size 1s after application start
+
+-------------------------------------------------------------------
 Fri Feb  2 20:00:00 UTC 2024 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.8.0)

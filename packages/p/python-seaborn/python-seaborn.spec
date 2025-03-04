@@ -39,11 +39,9 @@ BuildConflicts: python-buildservice-tweak
 Requires:       python-matplotlib >= 3.6.2
 Requires:       python-numpy >= 1.20
 Requires:       python-pandas >= 1.2
-Recommends:     python-fastcluster
 Recommends:     python-scipy >= 1.7
 Recommends:     python-statsmodels >= 0.12
 # SECTION tests with extras
-BuildRequires:  %{python_module fastcluster}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 1.7}

@@ -39,4 +39,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1112986</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>687e2c73a1df3e95515b3a2d9737f180</srcmd5>
+    <version>2.0.0</version>
+    <time>1741109521</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.0.0
+  see included CHANGES.md file for details</comment>
+    <requestid>1249881</requestid>
+  </revision>
 </revisionlist>

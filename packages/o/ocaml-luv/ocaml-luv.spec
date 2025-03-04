@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-luv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ Source0:        %pkg-%version.tar.xz
 Patch0:         %pkg.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20240909
 BuildRequires:  ocamlfind(ctypes)
 BuildRequires:  pkgconfig(libuv)
 

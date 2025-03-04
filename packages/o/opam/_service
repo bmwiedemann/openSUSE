@@ -1,7 +1,7 @@
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service mode="manual" name="tar_scm">
     <param name="filename">opam</param>
-    <param name="revision">93f47ec3140f6299182254fbe7eeae68f9ca7abd</param>
+    <param name="revision">e13109411952d4f723a165c2a24b8c03c4945041</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml/opam.git</param>
@@ -9,9 +9,9 @@
     <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service mode="disabled" name="recompress">
+  <service mode="manual" name="recompress">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
 </services>

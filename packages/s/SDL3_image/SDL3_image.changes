@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  3 23:28:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.4
+  * Fixed alpha in less-than-32-bit ICO and CUR images
+
+-------------------------------------------------------------------
+Sun Mar  2 10:02:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.2
+  * Fixed partial alpha in ICO and CUR images
+  * Set the cursor hotspot properties when loading CUR images so
+    they can be directly passed to SDL_CreateColorCursor()
+  * Fixed reading beyond the end of the PNG image when using
+    stb_image
+
+-------------------------------------------------------------------
 Sat Feb  1 18:52:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 3.2.0) for build.opensuse.org

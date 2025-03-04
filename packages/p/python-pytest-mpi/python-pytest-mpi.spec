@@ -23,9 +23,6 @@
 %endif
 
 %define modname pytest_mpi
-%define skip_python2 1
-# mpi4py depends on numpy, which is not available for python36
-%define skip_python36 1
 Name:           python-pytest-mpi
 Version:        0.6
 Release:        0
@@ -33,15 +30,18 @@ Summary:        MPI plugin for pytest
 License:        BSD-3-Clause
 URL:            https://pytest-mpi.readthedocs.io
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-mpi/pytest-mpi-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
 Recommends:     python-mpi4py
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mpi4py}
+BuildRequires:  openmpi-macros-devel
 BuildRequires:  %{mpiver}
+BuildRequires:  %{python_module mpi4py}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sybil >= 3}
 # /SECTION
@@ -54,30 +54,31 @@ mpi plugin for pytest to collect information from openmpi-based tests.
 %autosetup -p1 -n pytest-mpi-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-MPIPATH=$(rpm -ql %{mpiver} | grep bin$)
-MPIVARS=$(rpm -ql %{mpiver} | grep mpivars.sh$)
-export PATH=${PATH}:$MPIPATH
-source $MPIVARS
 # Exclude test_fixtures, it fails for i586 arch with Segmentation fault
 donttest="test_fixtures"
 %if "%{_arch}" == "s390x"
 # Exclude some test_mpi_ that fails for s390x arch with Segmentation fault
 donttest+=" or test_mpi_with_mpi or test_mpi_only_mpi or test_mpi_skip_under_mpi or test_mpi_xfail or test_mpi_xfail_under_mpi"
 %endif
-
-%pytest -v -p pytester --runpytest=subprocess -k "not ($donttest)"
+%setup_openmpi
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+export PYTHONDONTWRITEBYTECODE=1
+export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./ py%{$python_version_nodots}.XXX)
+$python -m pytest -v -p pytester --runpytest=subprocess -k "not ($donttest)"
+rm -fr ${PYTEST_DEBUG_TEMPROOT}
+}
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}-%{version}*.*-info/
 
 %changelog

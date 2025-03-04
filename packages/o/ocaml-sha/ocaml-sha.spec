@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-sha
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 %define     pkg ocaml-sha
 Name:           %pkg%nsuffix
-Version:        1.15.2
+Version:        1.15.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Binding to the SHA cryptographic functions
@@ -36,7 +36,7 @@ Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.9
 BuildRequires:  ocamlfind(stdlib-shims)
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20240909
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(ounit2)

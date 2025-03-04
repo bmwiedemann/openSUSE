@@ -18,7 +18,7 @@
 
 Name:           SDL3_image
 %define lname	libSDL3_image0
-Version:        3.2.0
+Version:        3.2.4
 Release:        0
 Summary:        Simple DirectMedia Layer image loading library
 License:        Zlib
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(sdl3)
+Provides:       bundled(stb_image) = 2.30
 
 %description
 This is a library to load images of various formats as SDL

@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-cppo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ocaml-cppo
-Version:        1.6.9
+Version:        1.8.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        The C preprocessor written in OCaml
@@ -28,7 +28,7 @@ URL:            https://opam.ocaml.org/packages/cppo
 Source:         %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220409
+BuildRequires:  ocaml-rpm-macros >= 20240909
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(unix)
 

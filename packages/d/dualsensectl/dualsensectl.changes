@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Mon Mar  3 20:44:23 UTC 2025 - Martin von Reichenberg <martin.von.reichenberg@proton.me>
+
+- REBUILD due to RPMLINT errors: 
+`dualsensectl.x86_64: E: standard-dir-owned-by-package /usr/bin`
+`dualsensectl.x86_64: E: standard-dir-owned-by-package /usr/share` 
+
+-------------------------------------------------------------------
+Wed Feb 19 18:32:52 UTC 2025 - Martin von Reichenberg <martin.von.reichenberg@proton.me>
+
+- Update to the latest upstream stable version - 0.7
+ * Switch to Meson build system
+ * Add pulse option to microphone-led
+ * Add instant flag to player-leds
+ * Add led-brightness command
+ * Add microphone-mode command
+
+-------------------------------------------------------------------
+Mon Aug 19 14:05:34 UTC 2024 - Martin von Reichenberg <martin.von.reichenberg@proton.me>
+
+- Added support for DualSense Edge
+
+-------------------------------------------------------------------
+Sat May  4 21:37:26 UTC 2024 - Martin von Reichenberg <martin.von.reichenberg@proton.me>
+
+- Defattr not needed after explicitly mentioned directories (%dir) within %files section which OBS gladly complains about
+- Now using: osc service mr download_files instead of manually downloaded files using GUI
+- %{?_smp_mflags} is redundant, therefore unneeded - I overlooked 
+:-) 
+
+-------------------------------------------------------------------
+Sun March 31 14:50:14 UTC 2024 - Martin von Reichenberg <martin.von.reichenberg@proton.me>
+
+- Update to new upstream release version 0.5
+  * Fix crash when setting device without command
+  * Show more values in info command
+  * Don't check Connected property in power-off command
+
+-------------------------------------------------------------------
+Sat Nov 4 18:35:21 UTC 2023 - Martin von Reichenberg <martin.von.reichenberg@proton.me>
+
+- Update to new upstream release version 0.4
+  * Added `speaker` `volume` `attenuation` and `trigger` commands
+
+-------------------------------------------------------------------
+Thu Oct 12 12:53:18 UTC 2023 - Martin von Reichenberg <martin.von.reichenberg@proton.me>
+
+- Update to new upstream release version 0.3
+  * Added speaker volume attenuation and trigger commands
+  * Added a new monitoring command for scheduling/adjusting certain (even multiple) events
+  * Added a new `dualsense -d DEVICE` option for listing of multiple connected devices
+  and their identification
+  * Fixed battery level status not showing correct percents (%) when plugged in
+
+-------------------------------------------------------------------
+Thu Jun 23 16:46:05 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Update to new upstream release version 0.2
+  * Initial upload of `dualsensectl` package into Open Build Service

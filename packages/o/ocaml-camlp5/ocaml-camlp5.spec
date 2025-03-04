@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-camlp5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global __suseocaml_requires_opts \
+	-c \
+	-i Dynlink_cmo_format \
+	%nil
+%global __ocaml_requires_opts \
+	-c \
+	-i Dynlink_cmo_format \
+	%nil
 
 Name:           ocaml-camlp5
-Version:        8.02.01
+Version:        8.03.01
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Preprocessor-Pretty-Printer for Objective Caml
@@ -28,7 +36,7 @@ URL:            https://opam.ocaml.org/packages/camlp5
 Source0:        %name-%version.tar.xz
 Patch0:         ocaml-camlp5.patch
 BuildRequires:  ocaml(ocaml_base_version) >= 4.10
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20240909
 BuildRequires:  ocamlfind(bos)
 BuildRequires:  ocamlfind(camlp-streams)
 BuildRequires:  ocamlfind(compiler-libs)

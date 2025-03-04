@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  3 23:28:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.8
+  * Fixed alpha in less-than-32-bit ICO and CUR images
+
+-------------------------------------------------------------------
 Sun Mar  2 10:00:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.6

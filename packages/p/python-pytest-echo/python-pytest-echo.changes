@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  4 03:25:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.1:
+  * drop support for setuptools
+  * drop support for python < 3.11
+  * drop support for pytest < 6.0
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Aug 10 11:26:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not suggest django

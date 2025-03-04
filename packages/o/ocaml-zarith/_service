@@ -1,15 +1,15 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-zarith</param>
     <param name="url">https://github.com/ocaml/Zarith.git</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
-    <param name="versionformat">1.13</param>
-    <param name="revision">b9759081cffbcd692502b06af6cfbce97ccabc18</param>
+    <param name="versionformat">1.14</param>
+    <param name="revision">667d742948914aa1f80d5ad5abb98bc412335e51</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

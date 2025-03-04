@@ -136,4 +136,13 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1151369 from dimstar)</comment>
     <requestid>1152161</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fed31a5915e62e7d65489f7ecb0dede7</srcmd5>
+    <version>8.03.01</version>
+    <time>1741109507</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 8.03.01
+  cover ocaml-5.2</comment>
+    <requestid>1249870</requestid>
+  </revision>
 </revisionlist>

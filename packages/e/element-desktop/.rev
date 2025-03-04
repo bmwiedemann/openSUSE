@@ -1172,4 +1172,41 @@ Version 1.11.89
   * React to MatrixEvent sender/target being updated for rendering state events (https://github.com/element-hq/element-web/pull/28947). Contributed by @t3chguy.</comment>
     <requestid>1242244</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>101df25758403f8d0f272957c816de80</srcmd5>
+    <version>1.11.94</version>
+    <time>1741116805</time>
+    <user>anag+factory</user>
+    <comment>- Fix 7za-path.patch
+- Fix remove-fuses.patch
+- Fix no-walrus-operator.patch
+
+- Version 1.11.94
+  * No changes
+  ## 🐛 Bug Fixes
+  * https://github.com/element-hq/element-web/pull/29377). Contributed by @RiotRobot.
+Version 1.11.93
+  ## ✨ Features
+  * https://github.com/element-hq/element-web/pull/29358). Contributed by @t3chguy.
+  * ChangeRecoveryKey: error handling (https://github.com/element-hq/element-web/pull/29262). Contributed by @richvdh.
+  * Dehydration: enable dehydrated device on &quot;Set up recovery&quot; (https://github.com/element-hq/element-web/pull/29265). Contributed by @richvdh.
+  * Render reason for invite rejection. (https://github.com/element-hq/element-web/pull/29257). Contributed by @Half-Shot.
+  * New room list: add search section (https://github.com/element-hq/element-web/pull/29251). Contributed by @florianduros.
+  * New room list: hide favourites and people meta spaces (https://github.com/element-hq/element-web/pull/29241). Contributed by @florianduros.
+  * New Room List: Create new labs flag (https://github.com/element-hq/element-web/pull/29239). Contributed by @MidhunSureshR.
+  * Stop URl preview from covering message box (https://github.com/element-hq/element-web/pull/29215). Contributed by @edent.
+  * Rename &quot;security key&quot; into &quot;recovery key&quot; (https://github.com/element-hq/element-web/pull/29217). Contributed by @florianduros.
+  * Add new verification section to user profile (https://github.com/element-hq/element-web/pull/29200). Contributed by @MidhunSureshR.
+  * Initial support for runtime modules (https://github.com/element-hq/element-web/pull/29104). Contributed by @t3chguy.
+  * Add `Forgot recovery key?` button to encryption tab (https://github.com/element-hq/element-web/pull/29202). Contributed by @florianduros.
+  * Add KeyIcon to key storage out of sync toast (https://github.com/element-hq/element-web/pull/29201). Contributed by @florianduros.
+  * Improve rendering of empty topics in the timeline  (https://github.com/element-hq/element-web/pull/29152). Contributed by @Half-Shot.
+  ## 🐛 Bug Fixes
+  * Fix font scaling in member list (https://github.com/element-hq/element-web/pull/29285). Contributed by @florianduros.
+  * Grow member list search field when resizing the right panel (https://github.com/element-hq/element-web/pull/29267). Contributed by @langleyd.
+  * Don't reload roomview on offline connectivity check (https://github.com/element-hq/element-web/pull/29243). Contributed by @dbkr.
+  * Respect user's 12/24 hour preference consistently (https://github.com/element-hq/element-web/pull/29237). Contributed by @t3chguy.
+  * Restore the accessibility role on call views (https://github.com/element-hq/element-web/pull/29225). Contributed by @robintown.</comment>
+    <requestid>1250121</requestid>
+  </revision>
 </revisionlist>

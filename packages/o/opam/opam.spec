@@ -1,7 +1,7 @@
 #
 # spec file for package opam
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           opam
-Version:        2.1.5
+Version:        2.3.0
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
@@ -27,20 +27,26 @@ Source:         %name-%version.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  ocaml
-BuildRequires:  ocaml-cppo
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
+BuildRequires:  ocaml-dune >= 2.8
+BuildRequires:  ocaml-rpm-macros >= 20240909
 BuildRequires:  ocamlfind(base64)
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(cudf)
 BuildRequires:  ocamlfind(dose3)
+BuildRequires:  ocamlfind(findlib)
+BuildRequires:  ocamlfind(jsonm)
 BuildRequires:  ocamlfind(mccs)
 BuildRequires:  ocamlfind(ocamlgraph)
+BuildRequires:  ocamlfind(opam-0install-cudf)
 BuildRequires:  ocamlfind(opam-file-format)
 BuildRequires:  ocamlfind(re)
+BuildRequires:  ocamlfind(sha)
+BuildRequires:  ocamlfind(spdx_licenses)
+BuildRequires:  ocamlfind(swhid_core)
 BuildRequires:  ocamlfind(unix)
+BuildRequires:  ocamlfind(uutf)
 
 Requires:       %name-installer%{?_isa} = %version-%release
 
@@ -89,16 +95,15 @@ developing applications that use %name.
 %autosetup -p1
 
 %build
-# wipe bogus FETCH
-grep -n FETCH configure.ac
-sed -i~ '/FETCH/d;287,+7d' configure.ac
-diff -u "$_"~ "$_" && exit 1
 export DUNE=$(type -P dune)
-export CPPO=$(type -P cppo)
+export FETCH=$(type -P false)
+export MAKE=$(type -P gmake)
 export PATCH=$(type -P false)
-export BUNZIP2=$(type -P false)
 autoreconf -fi
-%configure
+%configure --help
+%configure \
+	--disable-checks \
+	%nil
 dune_release_pkgs='opam-admin,opam-client,opam-core,opam-format,opam-installer,opam-repository,opam-solver,opam-state,opam'
 %ocaml_dune_setup
 %ocaml_dune_build

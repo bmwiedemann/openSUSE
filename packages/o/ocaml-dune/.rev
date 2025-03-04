@@ -459,4 +459,13 @@ I will submit the packages one by one once this is accepted.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1166991</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c1fdf5b7879f53cba71093eacc682b46</srcmd5>
+    <version>3.17.2</version>
+    <time>1741109509</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.17.2
+  see included CHANGES.md file for details</comment>
+    <requestid>1249873</requestid>
+  </revision>
 </revisionlist>

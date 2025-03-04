@@ -1,0 +1,98 @@
+From 88d67f8eacdd301d836a6902374dc10e8cc05d57 Mon Sep 17 00:00:00 2001
+From: Stanislav Brabec <sbrabec@suse.com>
+Date: Wed, 26 Feb 2025 03:00:18 +0100
+Subject: [PATCH 3/3] Fix malformed header processing
+
+---
+ gettext-tools/src/msgl-header.c | 68 ++++++++++++++++++++++++---------
+ 1 file changed, 51 insertions(+), 17 deletions(-)
+
+diff --git a/gettext-tools/src/msgl-header.c b/gettext-tools/src/msgl-header.c
+index 6fe659e73..fb5186a89 100644
+--- a/gettext-tools/src/msgl-header.c
++++ b/gettext-tools/src/msgl-header.c
+@@ -397,30 +397,64 @@ message_list_header_list (message_list_ty *mlp)
+       {
+         /* We found the correct message. */
+         message_ty *mp = mlp->item[j];
++
++        /* Test whether the field occurs in the header entry.  */
+         const char *h = mp->msgstr;
++
+         message_list_ty * header = message_list_alloc (false);
+         int ctr = 0;
+ 
+         while (*h != '\0')
+-          {
+-            char *enh = strchr (h, ':');
+-            enh++;
+-            char * msgid = (char *)XNMALLOC (((enh - h) + 1), char);
+-            memcpy (msgid, h, enh - h);
+-            /* Make the string null-terminated. */
+-            (msgid)[enh-h] = '\0';
+-            h = enh + 1;
+-
+-            enh = strchr (h, '\n');
+-            if (enh != NULL)
++	  {
++	    const char *enh;
++	    const char *enhz;
++	    const char *sep;
++	    const char *value;
++
++	    enh = strchr (h, '\n');
++	    if (enh)
++	      {
++		enhz = enh;
++		enh++;
++	      }
++	    else
++	      {
++		/* Missing trailing EOL. */
++		enh = h + strlen(h);
++		enhz = enh;
++	      }
++
++	    sep = strchr (h, ':');
++	    if (sep == NULL || sep >= enhz)
++	      {
++		/* Line does not contain ':'. */
++		sep = enhz;
++		value = enhz;
++	      }
++	    else
++	      {
++		sep++;
++		if (*sep != ' ')
++		    /* ' ' missing after ':'. */
++		    value = sep;
++		else
++		    value = sep + 1;
++	      }
++
++	    char * msgid = (char *)XNMALLOC (((sep - h) + 1), char);
++	    memcpy (msgid, h, sep - h);
++	    /* Make the string null-terminated. */
++	    msgid[sep-h] = '\0';
++	    char * msgstr = (char *)XNMALLOC (((enhz - value) + 1), char);
++	    memcpy (msgstr, value, enhz - value);
++	    /* Make the string null-terminated. */
++	    msgstr[enhz-value] = '\0';
++
++            if (h != NULL)
+               {
+-                char * msgstr = (char *)XNMALLOC (((enh - h) + 1), char);
+-                memcpy (msgstr, h, enh - h);
+-                /* Make the string null-terminated. */
+-                msgstr[enh-h] = '\0';
+                 lex_pos_ty pos = {NULL, ctr++};
+-                message_list_append (header, message_alloc (NULL, msgid, NULL, msgstr, enh - h, &pos));
+-                h = enh + 1;
++                message_list_append (header, message_alloc (NULL, msgid, NULL, msgstr, enhz - value, &pos));
++                h = enh;
+               }
+             else return NULL;
+           }
+-- 
+2.48.1
+

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar  3 15:58:00 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- update to 2.38.0
+  Bugfixes:
+   * Fix empty battery slots handling 
+     (gh#fastfetch-cli/fastfetch#1575)
+   * Fix `{day-pretty}` output in custom format (DateTime, Windows)
+   * Fix VanillaOS detection (OS, Linux)
+   * Fix secure boot testing (gh#fastfetch-cli/fastfetch#1584)
+   * Fix the SI unit "kB" in help message 
+     (gh#fastfetch-cli/fastfetch#1589)
+   * Fix segfault on macOS 10.15 when using the binary downloaded 
+     from Github Releases (gh#fastfetch-cli/fastfetch#1594)
+  Features:
+   * Support Chassis module in macOS (Chassis, macOS)
+   * Allow customize key format with kernel name and distro name (OS)
+   * Add missing `{icon}` in custom key format (Battery)
+   * Add missing `{mountpoint}` and `{mount-from}` in custom output 
+     format (gh#fastfetch-cli/fastfetch#1577)
+   * Support percentage num & bar in custom format 
+     (gh#fastfetch-cli/fastfetch#1583)
+   * Support `pisi` package manager detection (Packages, Linux)
+   * Support termite terminal font detection (TerminalFont, Linux)
+   * Report monitor type in Brightness module (Brightness)
+  Logo:
+   * Add `opensuse-tumbleweed_small`
+   * Add `Bedrock_small`
+   * Add `fastfetch`
+   * Remove some unnecessary distro names
+
+-------------------------------------------------------------------
 Wed Feb 19 15:57:34 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - update to 2.37.0

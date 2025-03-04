@@ -1,7 +1,7 @@
 #
 # spec file for package kvantum
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ ExclusiveArch:  do_not_build
 %define dsc_suffix Qt5
 %endif
 Name:           kvantum%{?pkg_suffix}
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        SVG-based theme engine for Qt5 and Qt6
 License:        GPL-3.0-or-later

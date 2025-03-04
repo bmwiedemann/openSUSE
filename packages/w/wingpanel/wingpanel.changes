@@ -1,0 +1,292 @@
+-------------------------------------------------------------------
+Fri Feb  7 18:46:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.2:
+  * support mutter15
+- remove support-libmutter15.patch, as mutter15 is now supported
+  upstream
+
+-------------------------------------------------------------------
+Wed Jan 15 21:17:57 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add support-libmutter15.patch for supporting libmutter15
+
+-------------------------------------------------------------------
+Wed Nov 20 08:29:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- move TW and Leap16 to libmutter-15
+
+-------------------------------------------------------------------
+Tue Oct  8 09:14:58 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- leap16 needs libmutter-13 not libmutter-14
+
+-------------------------------------------------------------------
+Wed Sep 18 19:36:32 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Fix incorrect scale factor in some sessions
+  * Updated translations
+
+-------------------------------------------------------------------
+Thu Aug 22 13:16:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Updated translations
+- update to 3.0.5:
+  * Updated translations
+- update to 3.0.4:
+  * Always use elementary visual resources
+  * Esc to close popovers
+  * Updated translations
+- update to 3.0.3:
+  * Fallback to maximized style if window manager is unavailable
+  * Listen to smooth scroll events
+  * Updated translations
+- update to 3.0.2:
+  * Fix startup delay on the greeter
+  * Updated translations
+- update to 3.0.1:
+  * Updated translations
+- update to 3.0.0:
+  * Fix some issues with indicator sort order
+  * Adjust special icon colors for dark and light panels to improve contrast
+  * Fix getting monitor dimensions under Wayland
+  * Hide tooltips when indicators are open
+  * Updated translations
+  * Wingpanel.Widgets.Container: Use Gtk.ModelButton instead
+  * Wingpanel.Widgets.Separator: Use Gtk.Separator instead
+  * Wingpanel.Widgets.Switch: Use Granite.SwitchModelButton instead
+  * Wingpanel.Widgets.AutomaticScrollBox: use Gtk.ScrolledWindow.max_content_height instead
+  * Wingpanel.Widgets.Button: Use Gtk.ModelButton instead
+- update to 2.3.2:
+  * Fix a potential issue when ending the session
+  * Use "allowed" and "forbidden" list names
+  * Updated translations
+- update to 2.3.1:
+  * Fix an issue with some 3 monitor layouts
+  * Reduce spacing between icons
+  * Add support for mutter 3.36
+  * Updated translations
+- update to 2.3.0:
+  * Fix an issue where moving windows to a secondary display above the panel wouldn't work
+  * Register with session manager
+  * Add support for mutter 3.3x
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+- remove patch 0001-port-to-mutter330.patch, as it's not needed anymore
+
+-------------------------------------------------------------------
+Mon Nov  4 14:43:56 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.6
+
+-------------------------------------------------------------------
+Thu Aug 15 17:18:15 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Switch to suggested dependencies: indicator-bluetooth 
+  indicator-datetime indicator-network indicator-nightlight
+  indicator-notifications indicator-power indicator-sound
+
+-------------------------------------------------------------------
+Thu Jul  4 18:08:00 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.5:
+  * Create FUNDING.yml
+  * Indicator: deprecate unused properties (#186)
+  * Fix panel transparency calculations (#208)
+  * Keep better record of focused apps (#206)
+
+-------------------------------------------------------------------
+Thu May  2 16:28:55 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.4:
+  * Fix moving window to another workspace not updating wingpanel
+    state (#204)
+  * Release 2.2.3
+  * Fix wingpanel potentially overlapping windows (#198)
+
+-------------------------------------------------------------------
+Mon Mar  4 03:32:33 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.2:
+  * Fix revealer using unmap event (#187)
+  * Release 2.2.1
+  * Remove CMAKE build system (#154)
+  * Update README.md: Add necessary dependencies. (#168)
+  * Use unmap signal to shrink window (#155)
+  * Show the right library version with pkgconfig (#159)
+  * Add missing languages (#162)
+  * Meson: provide `indicatorsdir` and not `indicators_dir`
+  * Rewrite Sample Indicator (#151)
+  * Add Meson Build (#149)
+  * Update wingpanel icon (#150)
+
+-------------------------------------------------------------------
+Fri Nov 30 08:25:42 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Build with libmutter <= 3.28.3
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:56 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Tue Oct 30 00:41:13 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add 0001-port-to-mutter330.patch
+
+-------------------------------------------------------------------
+Mon Oct  8 12:59:15 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.0:
+  * Switch: valign center (#145)
+  * Fix: Wingpanel on multiple monitors not grabbing the window 
+    on primary monitor (#142)
+  * Add EditorConfig
+  * Fix dragging a minimized window (#123)
+  * Fix dragging from panel on HiDPI displays (#135)
+  * Fix the width of struts on HiDPI displays (#131)
+  * Add the option to run wingpanel as a greeter type (#125)
+  * Use Gtk.Application instead of Granite.Application (#124)
+- Add COPYING and README.md files
+
+-------------------------------------------------------------------
+Sat Jun 23 16:49:37 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.1.1:
+  * RDNN GSettings (#116)
+
+-------------------------------------------------------------------
+Mon Jun 11 14:22:20 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.1.0:
+  * Drag from panel (#73)
+  * Do not load modules with wrong suffix (#114)
+  * Don't call get_widget in IndicatorEntry constructor (#103)
+  * Adapt to GLib.Signal.add_emission_hook() binding change in 
+    vala 0.41 (#109)
+  * Fix gala hanging when moving a window when changing a 
+    wallpaper (#107)
+  * Restore animating popovers (#104)
+  * Deprecate AutomaticScrollBox in favor of 
+    Gtk.ScrolledWindow.max_content_height (#101)
+  * Add support for mutter 3.27.92 (#94)
+  * Use both color and translucent classes at once (#68)
+  * Fix 3rd party indicator ordering (#88)
+  * Merge remote-tracking branch 'origin/master'
+  * CMakeLists.txt: add missing -lm linker flag (#83)
+  * Deprecate Widgets.Button in favor of Gtk.ModelButton (#78)
+  * Stop clicking blank space from closing indicator popover (#76)
+  * Calculate actual popover position for mouse event detection 
+    (#63)
+  * Remove deprecated granite properties (#64)
+  * Add pkg-config directory for indicators (#58)
+  * Reconnect to DBus interface when it re-appears (#57)
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Remove obsolete macros
+- Add wingpanel-indicator-nightlight as recommended
+- Switch wingpanel-indicator-ayatana to suggests
+- Drop wingpanel-2.0.4-mutter-3.27.92.patch (fixed)
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Mar 24 05:13:12 UTC 2018 - avvissu@yandex.by
+
+- Add support for mutter 3.27.92 (wingpanel-2.0.4-mutter-3.27.92.patch) 
+
+-------------------------------------------------------------------
+Tue Sep 12 17:03:29 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.0.4:
+  * Set rpath for libmutter-1 (#51)
+  * Fix build with mutter >= 3.25.90 (#50)
+  * simplify, use construct (#47)
+  * Separator.vala: use GObject style (#46)
+  * Container.vala: use GObject style (#45)
+  * Use the right mutter version (#44)
+  * Include link to wingpanel tag in README.md (#37)
+  * Create CODE_OF_CONDUCT.md (#39)
+  * Cycle indicators (#30)
+- Change the sourceurl to git
+- Drop wingpanel-2.0.2_cogl.patch (fixed in upstream)
+
+-------------------------------------------------------------------
+Tue Jun 13 14:54:39 UTC 2017 - jengelh@inai.de
+
+- Restore neutrality of descriptions.
+
+-------------------------------------------------------------------
+Wed May 31 13:36:45 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.0.3:
+  * Update URLs in About dialog (#32)
+  * Fix segfaults and deregister warnings (#28)
+  * Fix resize warnings (#26)
+  * Remove unnecessary init () call (#27)
+  * Add .travis.yml (#25)
+  * data: install wingpanel.svg
+  * Create README.md
+  * Allow dialogs spawned from middle click on indicators to grab 
+    focus
+  * Reverted ordering of signal connections to fix regression. 
+    Changed checks to ensure we didn't add the same indicator twice
+  * Connect indicator_added signal after initial indicators have 
+    been added
+- Add wingpanel-indicator-bluetooth as recommended dependency
+
+-------------------------------------------------------------------
+Fri Mar 17 18:11:41 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.0.2:
+  * Launchpad automatic translations update.
+  * Add support for gala built with libmutter-0 >= 3.23.90
+  * unmark COPYING file as executable
+  * Prevent switching indicators with touchscreen from closing
+  * Single popover in wingpanel
+  * Don't kill kittens
+  * Add required -rpath ldflag when building against gala with 
+    libmutter >= 3.21
+  * Remove libnotify dependency
+- Update patch:
+  * wingpanel-2.0.1_cogl.patch > wingpanel-2.0.2_cogl.patch
+
+-------------------------------------------------------------------
+Thu Dec 15 04:55:02 UTC 2016 - avvissu@yandex.by
+
+- Build with cogl on openSUSE > 13.2 (wingpanel-2.0.1_cogl.patch)
+
+-------------------------------------------------------------------
+Mon Sep 19 22:41:46 UTC 2016 - avvissu@yandex.by
+
+- Add Recommends: wingpanel-lang
+- Change license to GPL-3.0+
+
+-------------------------------------------------------------------
+Mon Sep 19 00:40:24 UTC 2016 - avvissu@yandex.by
+
+- Update to 2.0.1
+- Add recommended packages with indicators
+- Add glib2_gsettings_schema_requires macro
+- Fix wingpanel crashed (add notify-osd)
+- Fix libdir in upstream
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Feb 27 14:09:30 UTC 2016 - mailaender@opensuse.org
+
+- update to 0.3.0.2
+
+-------------------------------------------------------------------
+Sun May 10 08:00:33 UTC 2015 - mailaender@opensuse.org
+
+- update to 0.3.0
+
+-------------------------------------------------------------------
+Sat Sep 13 08:02:17 UTC 2014 - mailaender@opensuse.org
+
+- initial packaging (version 0.3~bzr158)

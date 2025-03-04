@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 20 13:25:08 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Remove install dependency on specific version of libguile-ssh
+
+-------------------------------------------------------------------
 Thu Feb 15 11:46:20 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Modify guix-user.conf so that /etc/group is modify, otherwise guix doesn't find the users of the guixbuild group.

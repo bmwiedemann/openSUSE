@@ -3,8 +3,8 @@
 --- vendor/node_modules/builder-util/out/7za.js.orig	2024-11-12 14:03:34.173010978 +0100
 +++ vendor/node_modules/builder-util/out/7za.js	2024-11-12 14:05:06.720292070 +0100
 @@ -6,13 +6,15 @@
- const fs_extra_1 = require("fs-extra");
  const fs = require("fs");
+ const fs_extra_1 = require("fs-extra");
  async function getPath7za() {
 +    return '/bin/false';
      if (fs.existsSync(_7zip_bin_1.path7za)) {

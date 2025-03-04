@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Network;HamRadio;
+Encoding=UTF-8
+Name=Grig
+GenericName=Graphical frontend for the hamlib TRX control libs
+Type=Application
+Exec=grig
+Icon=/usr/share/pixmaps/grig/ic910.png
+

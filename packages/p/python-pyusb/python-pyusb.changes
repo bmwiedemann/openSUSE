@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  4 16:19:46 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 1.3.1
+  * core: fix a regression in ctrl_transfer where supplied read buffers were discarded (#528, #530)
+
+
+-------------------------------------------------------------------
 Tue Dec  7 19:54:08 UTC 2021 - pgajdos@suse.com
 
 - version update to 1.2.1

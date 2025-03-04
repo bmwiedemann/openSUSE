@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-fileutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 %define     pkg ocaml-fileutils
 Name:           %pkg%nsuffix
-Version:        0.6.4
+Version:        0.6.6
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml library for common file and filename operations
@@ -33,18 +33,13 @@ License:        SUSE-LGPL-2.0-with-linking-exception
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/fileutils
 Source0:        %pkg-%version.tar.xz
-BuildRequires:  ocaml
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20230101
-BuildRequires:  ocamlfind(seq)
-BuildRequires:  ocamlfind(stdlib-shims)
-BuildRequires:  ocamlfind(str)
-BuildRequires:  ocamlfind(unix)
+BuildRequires:  ocaml(ocaml_base_version) >= 4.14
+BuildRequires:  ocaml-dune >= 2.9
+BuildRequires:  ocaml-rpm-macros >= 20240909
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(fileutils)
 BuildRequires:  ocamlfind(ounit2)
-BuildRequires:  ocamlfind(stdlib-shims)
 %endif
 
 %description

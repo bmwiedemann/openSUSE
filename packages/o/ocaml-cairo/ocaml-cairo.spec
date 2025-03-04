@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-cairo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-cairo
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Binding to Cairo, a 2D Vector Graphics Library.  
 License:        LGPL-3.0-or-later
@@ -26,10 +26,9 @@ URL:            https://opam.ocaml.org/packages/cairo2
 Source:         %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20240909
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(dune-configurator)
-BuildRequires:  ocamlfind(str)
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(cairo) >= 1.12
 BuildRequires:  pkgconfig(fontconfig)

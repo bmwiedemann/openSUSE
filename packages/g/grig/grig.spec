@@ -25,6 +25,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Hamradio/Other
 URL:            https://groundstation.sourceforge.net/grig/
 Source:         https://github.com/fillods/grig/releases/download/%{srctag}/%{name}-%{version}.tar.gz
+Source2:        %{name}.desktop
 Patch0:         rename-connect.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.14.0
@@ -52,6 +53,9 @@ Thanks to Hamlib, grig works with most CAT-capable amateur radios.
 rm -rf %{buildroot}%{_datadir}/grig
 %find_lang %{name}
 
+# install desktop file
+install -m 644 -D %{SOURCE2} -t %{buildroot}%{_datadir}/applications
+
 %check
 %make_build check
 
@@ -59,6 +63,7 @@ rm -rf %{buildroot}%{_datadir}/grig
 %license COPYING
 %doc AUTHORS ChangeLog NEWS
 %{_bindir}/grig
+%{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/grig
 %{_mandir}/man1/grig.1%{?ext_man}
 

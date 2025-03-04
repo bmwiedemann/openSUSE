@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-pcre
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ocaml-pcre
-Version:        7.5.0
+Version:        8.0.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Perl compatibility regular expressions (PCRE) for OCaml
@@ -27,10 +27,11 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/pcre
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20240909
 BuildRequires:  pkg-config
-BuildRequires:  ocaml(ocaml_base_version) >= 4.12
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocamlfind(dune-configurator)
+BuildRequires:  ocamlfind(ounit2)
 BuildRequires:  pkgconfig(libpcre)
 
 %description

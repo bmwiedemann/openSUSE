@@ -8,3 +8,83 @@
      -I '%{lib:ctypes:.}' \
      -I %{ocaml_where} \
      |}^ i_option ^{| -o %{targets}; \
+--- a/src/c/helpers.c
++++ b/src/c/helpers.c
+@@ -181,7 +181,8 @@ static void luv_getaddrinfo_trampoline(
+ }
+ 
+ static void luv_getnameinfo_trampoline(
+-    uv_getnameinfo_t *c_request, int status, char *hostname, char *service)
++    uv_getnameinfo_t *c_request, int status, const char *hostname,
++    const char *service)
+ {
+     caml_acquire_runtime_system();
+     value callback;
+@@ -413,7 +414,7 @@ uv_getaddrinfo_cb luv_get_getaddrinfo_trampoline(void)
+     return luv_getaddrinfo_trampoline;
+ }
+ 
+-luv_getnameinfo_cb luv_get_getnameinfo_trampoline()
++uv_getnameinfo_cb luv_get_getnameinfo_trampoline(void)
+ {
+     return luv_getnameinfo_trampoline;
+ }
+@@ -619,15 +620,6 @@ int luv_fs_poll_start(
+     return uv_fs_poll_start(handle, (uv_fs_poll_cb)poll_cb, path, interval);
+ }
+ 
+-int luv_getnameinfo(
+-    uv_loop_t *loop, uv_getnameinfo_t *req, luv_getnameinfo_cb getnameinfo_cb,
+-    const struct sockaddr *addr, int flags)
+-{
+-    return
+-        uv_getnameinfo(
+-            loop, req, (uv_getnameinfo_cb)getnameinfo_cb, addr, flags);
+-}
+-
+ int luv_read_start(
+     uv_stream_t *stream, uv_alloc_cb alloc_cb, luv_read_cb read_cb)
+ {
+--- a/src/c/helpers.h
++++ b/src/c/helpers.h
+@@ -55,9 +55,6 @@ typedef void (*luv_fs_event_cb)(
+ typedef void (*luv_fs_poll_cb)(
+     uv_fs_poll_t *handle, int status, uv_stat_t *prev, uv_stat_t *curr);
+ 
+-typedef void (*luv_getnameinfo_cb)(
+-    uv_getnameinfo_t *req, int status, char *hostname, char *service);
+-
+ typedef void (*luv_read_cb)(uv_stream_t *stream, ssize_t nread, uv_buf_t *buf);
+ 
+ typedef void (*luv_udp_recv_cb)(
+@@ -78,7 +75,7 @@ uv_fs_cb luv_null_fs_callback_pointer(void);
+ luv_fs_event_cb luv_get_fs_event_trampoline();
+ luv_fs_poll_cb luv_get_fs_poll_trampoline();
+ uv_getaddrinfo_cb luv_get_getaddrinfo_trampoline();
+-luv_getnameinfo_cb luv_get_getnameinfo_trampoline();
++uv_getnameinfo_cb luv_get_getnameinfo_trampoline(void);
+ uv_idle_cb luv_get_idle_trampoline();
+ luv_once_cb luv_get_once_trampoline();
+ uv_poll_cb luv_get_poll_trampoline();
+@@ -173,10 +170,6 @@ int luv_fs_poll_start(
+     uv_fs_poll_t *handle, luv_fs_poll_cb poll_cb, const char *path,
+     unsigned int interval);
+ 
+-int luv_getnameinfo(
+-    uv_loop_t *loop, uv_getnameinfo_t *req, luv_getnameinfo_cb getnameinfo_cb,
+-    const struct sockaddr *addr, int flags);
+-
+ int luv_read_start(
+     uv_stream_t *stream, uv_alloc_cb alloc_cb, luv_read_cb read_cb);
+ 
+--- a/src/c/luv_c_function_descriptions.ml
++++ b/src/c/luv_c_function_descriptions.ml
+@@ -1353,7 +1353,7 @@ struct
+           (void @-> returning trampoline)
+ 
+       let getnameinfo =
+-        foreign "luv_getnameinfo"
++        foreign "uv_getnameinfo"
+           (ptr Loop.t @->
+            ptr t @->
+            trampoline @->

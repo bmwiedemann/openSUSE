@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar  1 00:43:02 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 2.6.0
+  * no change notes provided
+- rebase mupen64plus-binutils-2_29.patch
+- rebase mupen64plus-ppc64le-aarch64.patch
+- rebase mupen64plus-fix-cflags.patch
+- rebase mupen64plus-ppc64le-aarch64.patch
+- drop don-t-put-globals-in-include-files.patch
+- drop mupen64plus-libboost-1.85.patch
+
+-------------------------------------------------------------------
 Thu Jun  6 16:57:26 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Added file mupen64plus-libboost-1.85.patch.

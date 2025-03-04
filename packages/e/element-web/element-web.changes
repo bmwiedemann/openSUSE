@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:45:34 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.94
+  ## 🐛 Bug Fixes
+
+  * https://github.com/element-hq/element-web/pull/29377). Contributed by @RiotRobot.
+
+
+Version 1.11.93
+  ## ✨ Features
+
+  * https://github.com/element-hq/element-web/pull/29358). Contributed by @t3chguy.
+  * ChangeRecoveryKey: error handling (https://github.com/element-hq/element-web/pull/29262). Contributed by @richvdh.
+  * Dehydration: enable dehydrated device on "Set up recovery" (https://github.com/element-hq/element-web/pull/29265). Contributed by @richvdh.
+  * Render reason for invite rejection. (https://github.com/element-hq/element-web/pull/29257). Contributed by @Half-Shot.
+  * New room list: add search section (https://github.com/element-hq/element-web/pull/29251). Contributed by @florianduros.
+  * New room list: hide favourites and people meta spaces (https://github.com/element-hq/element-web/pull/29241). Contributed by @florianduros.
+  * New Room List: Create new labs flag (https://github.com/element-hq/element-web/pull/29239). Contributed by @MidhunSureshR.
+  * Stop URl preview from covering message box (https://github.com/element-hq/element-web/pull/29215). Contributed by @edent.
+  * Rename "security key" into "recovery key" (https://github.com/element-hq/element-web/pull/29217). Contributed by @florianduros.
+  * Add new verification section to user profile (https://github.com/element-hq/element-web/pull/29200). Contributed by @MidhunSureshR.
+  * Initial support for runtime modules (https://github.com/element-hq/element-web/pull/29104). Contributed by @t3chguy.
+  * Add `Forgot recovery key?` button to encryption tab (https://github.com/element-hq/element-web/pull/29202). Contributed by @florianduros.
+  * Add KeyIcon to key storage out of sync toast (https://github.com/element-hq/element-web/pull/29201). Contributed by @florianduros.
+  * Improve rendering of empty topics in the timeline  (https://github.com/element-hq/element-web/pull/29152). Contributed by @Half-Shot.
+
+  ## 🐛 Bug Fixes
+
+  * Fix font scaling in member list (https://github.com/element-hq/element-web/pull/29285). Contributed by @florianduros.
+  * Grow member list search field when resizing the right panel (https://github.com/element-hq/element-web/pull/29267). Contributed by @langleyd.
+  * Don't reload roomview on offline connectivity check (https://github.com/element-hq/element-web/pull/29243). Contributed by @dbkr.
+  * Respect user's 12/24 hour preference consistently (https://github.com/element-hq/element-web/pull/29237). Contributed by @t3chguy.
+  * Restore the accessibility role on call views (https://github.com/element-hq/element-web/pull/29225). Contributed by @robintown.
+  * Revert `GoToHome` keyboard shortcut to `Ctrl`–`Shift`–`H` on macOS (https://github.com/element-hq/element-web/pull/28577). Contributed by @gy-mate.
+  * Encryption tab: display correct encryption panel when user cancels the reset identity flow (https://github.com/element-hq/element-web/pull/29216). Contributed by @florianduros.
+
+
+Version 1.11.92
+  ## ✨ Features
+
+  * https://github.com/element-hq/element-web/pull/29238). Contributed by @richvdh.
+  * Make profile header section match the designs (https://github.com/element-hq/element-web/pull/29163). Contributed by @MidhunSureshR.
+  * Always show back button in the right panel (https://github.com/element-hq/element-web/pull/29128). Contributed by @MidhunSureshR.
+  * Schedule dehydration on reload if the dehydration key is already cached locally (https://github.com/element-hq/element-web/pull/29021). Contributed by @uhoreg.
+  * update to twemoji 15.1.0 (https://github.com/element-hq/element-web/pull/29115). Contributed by @ara4n.
+  * Update matrix-widget-api (https://github.com/element-hq/element-web/pull/29112). Contributed by @toger5.
+  * Allow navigating through the memberlist using up/down keys (https://github.com/element-hq/element-web/pull/28949). Contributed by @MidhunSureshR.
+  * Style room header icons and facepile for toggled state (https://github.com/element-hq/element-web/pull/28968). Contributed by @MidhunSureshR.
+  * Move threads header below base card header (https://github.com/element-hq/element-web/pull/28969). Contributed by @MidhunSureshR.
+  * Add `Advanced` section to the user settings encryption tab (https://github.com/element-hq/element-web/pull/28804). Contributed by @florianduros.
+  * Fix outstanding UX issues with replies/mentions/keyword notifs (https://github.com/element-hq/element-web/pull/28270). Contributed by @taffyko.
+  * Distinguish room state and timeline events when dealing with widgets (https://github.com/element-hq/element-web/pull/28681). Contributed by @robintown.
+  * Switch OIDC primarily to new `/auth_metadata` API (https://github.com/element-hq/element-web/pull/29019). Contributed by @t3chguy.
+  * More memberlist changes (https://github.com/element-hq/element-web/pull/29069). Contributed by @MidhunSureshR.
+
+  ## 🐛 Bug Fixes
+
+  * https://github.com/element-hq/element-web/pull/29190). Contributed by @RiotRobot.
+  * Encryption tab: hide `Advanced` section when the key storage is out of sync (https://github.com/element-hq/element-web/pull/29129). Contributed by @florianduros.
+  * Fix share button in discovery settings being disabled incorrectly (https://github.com/element-hq/element-web/pull/29151). Contributed by @t3chguy.
+  * Ensure switching rooms does not wrongly focus timeline search (https://github.com/element-hq/element-web/pull/29153). Contributed by @t3chguy.
+  * Stop showing a dialog prompting the user to enter an old recovery key (https://github.com/element-hq/element-web/pull/29143). Contributed by @richvdh.
+  * Make themed widgets reflect the effective theme (https://github.com/element-hq/element-web/pull/28342). Contributed by @robintown.
+  * support non-VS16 emoji ligatures in TwemojiMozilla (https://github.com/element-hq/element-web/pull/29100). Contributed by @ara4n.
+  * e2e test: Verify session with the encryption tab instead of the security \& privacy tab (https://github.com/element-hq/element-web/pull/29090). Contributed by @florianduros.
+  * Work around cloudflare R2 / aws client incompatability (https://github.com/element-hq/element-web/pull/29086). Contributed by @dbkr.
+  * Fix identity server settings visibility (https://github.com/element-hq/element-web/pull/29083). Contributed by @dbkr.
+
+-------------------------------------------------------------------
 Sat Feb  1 10:50:42 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.91

@@ -1,7 +1,7 @@
 #
 # spec file for package gettext-java
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,8 @@ Patch14:        0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
 Patch15:        0002-msgcat-Merge-headers-when-use-first.patch
 # PATCH-FIX-UPSTREAM https://lists.gnu.org/archive/html/bug-gettext/2024-07/msg00021.html
 Patch16:        reproducible-jar.patch
+# PATCH-FEATURE-FIX-SUSE boo#1227316 -- sbrabec@suse.com
+Patch17:        0003-Fix-malformed-header-processing.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

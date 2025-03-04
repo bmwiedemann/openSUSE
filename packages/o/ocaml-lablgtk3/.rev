@@ -59,4 +59,12 @@
   contain a dot are not considered valid anymore with dune 3.13</comment>
     <requestid>1139277</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>966786819784187d6e3fc5e20fdbd402</srcmd5>
+    <version>3.1.3</version>
+    <time>1741109511</time>
+    <user>anag+factory</user>
+    <comment>- Handle newer camlp5 versions</comment>
+    <requestid>1249875</requestid>
+  </revision>
 </revisionlist>

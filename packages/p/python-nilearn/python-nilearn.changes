@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  4 12:48:20 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable again test_clean_confounds as fixed upstream
+  https://github.com/nilearn/nilearn/issues/2608
+
+-------------------------------------------------------------------
 Thu Feb  6 12:28:52 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.11.1

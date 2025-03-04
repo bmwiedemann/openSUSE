@@ -17,7 +17,7 @@
 
 
 Name:           asdf
-Version:        0.16.4
+Version:        0.16.5
 Release:        0
 Summary:        Extendable version manager
 License:        MIT

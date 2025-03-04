@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyusb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 Name:           python-pyusb
-Version:        1.2.1
+Version:        1.3.1
 Release:        0
 Summary:        USB access on the Python language
 # URL is incorrect on PyPI, gh#pyusb/pyusb#211
@@ -27,9 +25,11 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyusb/pyusb
 Source:         https://files.pythonhosted.org/packages/source/p/pyusb/pyusb-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,10 +48,10 @@ Provides USB access to the Python language.
 find .  -name "*.rst" -exec dos2unix {} +
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +62,7 @@ find .  -name "*.rst" -exec dos2unix {} +
 %files %{python_files}
 %license LICENSE
 %doc ACKNOWLEDGEMENTS README.rst docs/*
-%{python_sitelib}/*
+%{python_sitelib}/usb
+%{python_sitelib}/pyusb-%{version}*info
 
 %changelog

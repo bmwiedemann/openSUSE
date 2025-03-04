@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 27 18:10:57 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 7.2
+  * Optimized the SQL query that is maintaing the childCount
+    when new instances are ingested.
+  * New configuration "AllowInconsistentChildCounts" to speed
+    up childCount computation.  If set to true, childCount values
+    of recently ingested resources will be incorrect until the next
+    execution of the DB Housekeeping thread (defined by "HousekeepingInterval"
+    - default value is 1s)
+  * Fixed high memory usage due to caching of too many
+    prepared SQL statement when using since & limit.
+  * Removed duplicate comparison in find SQL queries.
+  * Now returning results when e.g, ordering instances against a metadata they don't have.
+
+-------------------------------------------------------------------
 Fri Jan 24 11:27:11 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 7.1

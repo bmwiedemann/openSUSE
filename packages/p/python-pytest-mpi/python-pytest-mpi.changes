@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  4 05:23:17 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix test runs in %check.
+- Switch to %pyproject_* macros for build.
+- Drop no longer necessary skip_python* macro definitions.
+
+-------------------------------------------------------------------
 Tue Feb 25 14:18:03 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix openmpi paths in %check section

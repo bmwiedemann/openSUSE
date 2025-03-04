@@ -1,8 +1,8 @@
-diff --git a/README.rst b/README.rst
-index 1367cf3c..f1a71349 100644
---- a/README.rst
-+++ b/README.rst
-@@ -18,3 +18,12 @@ codecs for use in data storage and communication applications.
+Index: numcodecs-0.15.1/README.rst
+===================================================================
+--- numcodecs-0.15.1.orig/README.rst
++++ numcodecs-0.15.1/README.rst
+@@ -18,3 +18,12 @@ codecs for use in data storage and commu
  
  .. image:: https://codecov.io/gh/zarr-developers/numcodecs/branch/main/graph/badge.svg
      :target: https://codecov.io/gh/zarr-developers/numcodecs
@@ -16,10 +16,10 @@ index 1367cf3c..f1a71349 100644
 +Blosc, Zstd, and LZ4 are found via the `pkg-config` utility. Moreover, you must build all 3 `blosc`, `libzstd`, and `liblz4`
 +components. C-Blosc comes with full sources for LZ4, LZ4HC, Snappy, Zlib and Zstd and in general, you should not worry about not having (or CMake not finding) the libraries in your system because by default the included sources will be automatically compiled and included in the C-Blosc library. This effectively means that you can be confident in having a complete support for all the codecs in all the Blosc deployments (unless you are explicitly excluding support for some of them). To compile blosc, see these [instructions](https://github.com/Blosc/c-blosc?tab=readme-ov-file#compiling-the-blosc-library).
 \ No newline at end of file
-diff --git a/pyproject.toml b/pyproject.toml
-index 5a1701f1..19ea80e0 100644
---- a/pyproject.toml
-+++ b/pyproject.toml
+Index: numcodecs-0.15.1/pyproject.toml
+===================================================================
+--- numcodecs-0.15.1.orig/pyproject.toml
++++ numcodecs-0.15.1/pyproject.toml
 @@ -5,6 +5,7 @@ requires = [
      "Cython",
      "py-cpuinfo",
@@ -28,10 +28,10 @@ index 5a1701f1..19ea80e0 100644
  ]
  build-backend = "setuptools.build_meta"
  
-diff --git a/setup.py b/setup.py
-index b6db0797..58abd563 100644
---- a/setup.py
-+++ b/setup.py
+Index: numcodecs-0.15.1/setup.py
+===================================================================
+--- numcodecs-0.15.1.orig/setup.py
++++ numcodecs-0.15.1/setup.py
 @@ -1,14 +1,15 @@
  import os
  import sys
@@ -51,7 +51,7 @@ index b6db0797..58abd563 100644
  
  # determine CPU support for SSE2 and AVX2
  cpu_info = cpuinfo.get_cpu_info()
-@@ -17,6 +18,7 @@
+@@ -17,6 +18,7 @@ have_sse2 = 'sse2' in flags
  have_avx2 = 'avx2' in flags
  disable_sse2 = 'DISABLE_NUMCODECS_SSE2' in os.environ
  disable_avx2 = 'DISABLE_NUMCODECS_AVX2' in os.environ
@@ -70,8 +70,8 @@ index b6db0797..58abd563 100644
  
      extra_compile_args = base_compile_args.copy()
      define_macros = []
-@@ -125,8 +127,68 @@ def blosc_extension():
-     return extensions
+@@ -123,8 +125,68 @@ def blosc_extension():
+     ]
  
  
 -def zstd_extension():
@@ -141,8 +141,8 @@ index b6db0797..58abd563 100644
  
      zstd_sources = []
      extra_compile_args = base_compile_args.copy()
-@@ -167,8 +229,46 @@ def zstd_extension():
-     return extensions
+@@ -163,8 +225,46 @@ def zstd_extension():
+     ]
  
  
 -def lz4_extension():
@@ -190,8 +190,8 @@ index b6db0797..58abd563 100644
  
      extra_compile_args = base_compile_args.copy()
      define_macros = []
-@@ -195,6 +295,45 @@ def lz4_extension():
-     return extensions
+@@ -189,6 +289,45 @@ def lz4_extension():
+     ]
  
  
 +def _lz4_extension_with_system_libs():
@@ -236,7 +236,7 @@ index b6db0797..58abd563 100644
  def vlen_extension():
      info('setting up vlen extension')
      import numpy
-@@ -333,14 +472,14 @@ def run(self):
+@@ -317,14 +456,14 @@ class ve_build_ext(build_ext):
              build_ext.run(self)
          except PlatformError as e:
              error(e)
@@ -253,15 +253,15 @@ index b6db0797..58abd563 100644
  
  
  class Sclean(clean):
-@@ -368,7 +507,10 @@ def run_setup(with_extensions):
+@@ -352,7 +491,10 @@ def run_setup(with_extensions):
              + jenkins_extension()
          )
  
--        cmdclass = dict(build_ext=ve_build_ext, clean=Sclean)
+-        cmdclass = {'build_ext': ve_build_ext, 'clean': Sclean}
 +        if use_system_libraries:
-+            cmdclass = dict(build_ext=build_ext, clean=clean)
++            cmdclass = {'build_ext': build_ext, 'clean': clean}
 +        else:
-+            cmdclass = dict(build_ext=ve_build_ext, clean=Sclean)
++            cmdclass = {'build_ext': ve_build_ext, 'clean': Sclean}
      else:
          ext_modules = []
          cmdclass = {}

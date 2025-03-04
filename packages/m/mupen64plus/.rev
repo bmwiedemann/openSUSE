@@ -28,4 +28,19 @@
     <comment>- Added file mupen64plus-libboost-1.85.patch.</comment>
     <requestid>1179052</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9f601c631cf8a5cf1ca60d77aa1bc49e</srcmd5>
+    <version>2.6.0</version>
+    <time>1741109557</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.6.0
+  * no change notes provided
+- rebase mupen64plus-binutils-2_29.patch
+- rebase mupen64plus-ppc64le-aarch64.patch
+- rebase mupen64plus-fix-cflags.patch
+- rebase mupen64plus-ppc64le-aarch64.patch
+- drop don-t-put-globals-in-include-files.patch
+- drop mupen64plus-libboost-1.85.patch</comment>
+    <requestid>1249941</requestid>
+  </revision>
 </revisionlist>

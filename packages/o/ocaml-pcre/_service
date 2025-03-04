@@ -1,7 +1,7 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-pcre</param>
-    <param name="revision">efdf4840f1a4d8e26f125fa9c18f2a02944e6897</param>
+    <param name="revision">863ae9c4348144cf2b81bbe3e2b6ec125992e19a</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/mmottl/pcre-ocaml.git</param>
@@ -9,9 +9,9 @@
     <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

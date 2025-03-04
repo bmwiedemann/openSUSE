@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 04 15:57:14 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.16.5:
+  * chore: release 0.16.5 (#1985)
+  * fix: preserve files untracked by Git on plugin update (#1995)
+  * fix: build static binary to improve portability (#1993)
+  * fix: latest version returns latest version (#1996)
+  * chore(docs): bump the docs group in /docs with 2 updates (#2000)
+  * fix: set correct env vars on recursive calls (#1989)
+  * fix: correct exit status when sub-command does not exist (#1991)
+  * fix: simplify env vars parsing (#1988)
+  * fix: always propagate env variables when executing commands (#1982)
+
+-------------------------------------------------------------------
 Mon Mar  3 11:13:38 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Fix copyright

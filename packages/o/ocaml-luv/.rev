@@ -40,4 +40,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1086691</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>26ef5bf939bb7182148bd9c5ca1b7f40</srcmd5>
+    <version>0.5.12</version>
+    <time>1741109513</time>
+    <user>anag+factory</user>
+    <comment>- Handle strict API in newer OCaml versions</comment>
+    <requestid>1249876</requestid>
+  </revision>
 </revisionlist>

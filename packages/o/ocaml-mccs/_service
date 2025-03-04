@@ -1,15 +1,15 @@
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service mode="manual" name="tar_scm">
     <param name="filename">ocaml-mccs</param>
-    <param name="revision">5ba57526cedcdcfa7146f4baedb596bd2d8faedc</param>
+    <param name="revision">a7d839cb67e2c4088d5ac58e6e2130174dca5139</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/AltGr/ocaml-mccs.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
-  <service mode="disabled" name="recompress">
+  <service mode="manual" name="recompress">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
 </services>

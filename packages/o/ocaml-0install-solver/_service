@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="filename">ocaml-0install-solver</param>
+    <param name="revision">b58af5db6afd496cfd4a5f85fb23f30ba8dfbc87</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/0install/0install.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>

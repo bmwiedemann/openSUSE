@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  4 07:04:01 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Accordingly to upstream change URL and Source locator for mksh
+
+-------------------------------------------------------------------
 Tue Dec 27 13:11:50 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

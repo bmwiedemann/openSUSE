@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  3 12:31:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.15.1
+  * Cleanups to the crc32c and pcodec soft dependency.
+  * Add support for pcodec 0.3. This exposes the new delta_spec and 
+    paging_spec arguments, but maintains full backwards compatibility 
+    for data written with older package versions.
+  * Fixes issue with Delta Zarr 3 codec not working with astype.
+  * Many blosc funcitons are deprecated, with no replacement.
+  * BREAKING: All arguments to the PCodec constructor except for level 
+    are now keyword only, to support the updated API.
+- Drop numcodecs-revert-subtract-pr584.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 15:02:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.14.0

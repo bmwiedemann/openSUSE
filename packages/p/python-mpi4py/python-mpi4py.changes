@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  4 04:34:29 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.3:
+  * Fix DLPack v1.0 support.
+- Changes from version 4.0.2:
+  * Support MPI-4 features within Intel MPI 2021.14.
+  * Various fixes and updates to tests.
+  * Minor fixes to typing support.
+  * Minor fix to documentation.
+
+-------------------------------------------------------------------
 Sun Dec 22 17:21:34 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix packaging of header files, breaking VTK openmpi builds.

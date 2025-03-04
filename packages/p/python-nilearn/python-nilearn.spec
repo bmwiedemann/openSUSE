@@ -83,10 +83,8 @@ chmod +x nilearn/externals/install_tempita.sh
 %check
 # Test try to build the doc and run examples...
 rm -rf doc/ examples/
-# https://github.com/nilearn/nilearn/issues/2608
-donttest="test_clean_confounds"
 # ppc64 https://github.com/nilearn/nilearn/issues/3363 https://github.com/nilearn/nilearn/issues/3232
-donttest+=" or (test_load_confounds and test_nilearn_standardize)"
+donttest="(test_load_confounds and test_nilearn_standardize)"
 # x86_64 https://github.com/nilearn/nilearn/issues/3382, last tested 2024-02-21 with nilearn 0.10.3, still failing
 donttest+=" or test_tfce_smoke"
 donttest+=" or test_load_uniform_ball_cloud"

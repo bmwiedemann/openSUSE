@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  3 23:57:23 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.1.4
+  * A workaround for a bad regression in Qt 6.8.2 about app stylesheets.
+  * Another workaround for a weird bug in Qt 6.8 that may create gaps
+    between SVG menu elements under special circumstances.
+
+  Also:
+  * Fixed the workaround for forced background colors of editable combo-boxes.
+  * Disable and re-enable blurring when windowOpacity switches between
+    0 and 1 respectively (especially with an auto-hiding lxqt-panel).
+  * Support regular expressions in Kvantum Manager's Application Themes.
+  * Added position animations to the explanatory notes of Kvantum Manager
+   (for encouraging users to read them).
+
+-------------------------------------------------------------------
 Thu Oct 24 08:31:17 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 1.1.3

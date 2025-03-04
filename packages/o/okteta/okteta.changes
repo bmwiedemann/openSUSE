@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  3 18:16:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.20:
+  * Improved: translations
+  * Changed: minimum supported CMake version now 3.16, for
+    compat with CMake 4.0
+
+-------------------------------------------------------------------
 Sun Feb  2 13:17:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.26.19

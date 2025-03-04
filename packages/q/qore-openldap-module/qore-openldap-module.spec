@@ -21,9 +21,7 @@
 %define module_dir %{_libdir}/qore-modules
 
 %if 0%{?sles_version}
-
 %define dist .sles%{?sles_version}
-
 %else
 %if 0%{?suse_version}
 
@@ -66,9 +64,6 @@ This package contains the openldap module for the Qore Programming Language.
 
 This module exposes functionality from the openldap library as a Qore API.
 
-%if 0%{?suse_version}
-%debug_package
-%endif
 
 %package doc
 Summary:        Documentation and examples for the Qore openldap module

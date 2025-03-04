@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="filename">ocaml-opam-0install-cudf</param>
+    <param name="revision">8f3d0e43d7f3b48055c312e8b2aacc6cb87987ac</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/ocaml-opam/opam-0install-cudf.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>

@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ocamlbuild
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-ocamlbuild
-Version:        0.14.3
+Version:        0.16.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Generic build tool for building OCaml library and programs
@@ -26,7 +26,7 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/ocamlbuild
 Source:         %name-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20240909
 Requires:       %name-devel = %version
 
 %description
@@ -61,12 +61,12 @@ OCAML_NATIVE=true \
 _EOF_
 sh %name.sh -f configure.make
 sh %name.sh configure
-sh %name.sh %{?_smp_mflags}
+sh %name.sh %?_smp_mflags
 
 %install
 sh %name.sh \
 install \
-DESTDIR=%buildroot %{?_smp_mflags}
+DESTDIR=%buildroot %?_smp_mflags
 %ocaml_create_file_list
 
 %files -f %name.files

@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.91
+Version:        1.11.94
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        AGPL-3.0-only or GPL-3.0-only
@@ -222,6 +222,9 @@ done
 
 # Prevent error msg on element start
 ln -vs de_DE.json "%{buildroot}%{_datadir}/element/app/lib/i18n/strings/de.json"
+
+# Remove shebangs
+grep -rlZ '#! \?/usr/bin/env' "%{buildroot}%{_datadir}/element/app/node_modules/" | xargs -0 sed -i -e '/#\! \?\/usr\/bin\/env.*/d'
 
 %fdupes %{buildroot}%{_datadir}
 

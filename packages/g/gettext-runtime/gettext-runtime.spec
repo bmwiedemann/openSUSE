@@ -1,7 +1,7 @@
 #
 # spec file for package gettext-runtime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,6 +79,8 @@ Patch13:        reproducible.patch
 # PATCH-FEATURE bsc#1165138
 Patch14:        0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
 Patch15:        0002-msgcat-Merge-headers-when-use-first.patch
+# PATCH-FEATURE-FIX-SUSE boo#1227316 -- sbrabec@suse.com
+Patch16:        0003-Fix-malformed-header-processing.patch
 
 %description
 This package contains the intl library as well as tools that ease the

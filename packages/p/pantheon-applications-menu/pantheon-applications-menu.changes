@@ -1,0 +1,330 @@
+-------------------------------------------------------------------
+Tue Feb 18 19:29:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove soup and update-desktop-files as a BR
+
+-------------------------------------------------------------------
+Tue Feb 18 17:38:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Consistency improvement with dock menu item
+  * Remove libsoup dep
+  * AppContextMenu: change keep in dock label
+  * Update applications-menu.metainfo.xml.in
+  * Updated translations
+
+-------------------------------------------------------------------
+Sun Sep  8 13:33:28 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to upstream name
+
+-------------------------------------------------------------------
+Thu Aug 22 22:06:25 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Updated translations
+- update to 2.11.1:
+  * Move panel-main-menu to Gala schema
+- update to 2.11.0:
+  * Convert between units of measurement
+  * Updated translations
+- update to 2.10.2:
+  * Searching settings always searches the full title
+- update to 2.10.1:
+  * Fix a regression with settings search
+  * Updated translations
+- update to 2.10.0:
+  * Show search results for bookmarked folders
+  * Prevent a potential crash on startup
+  * Updated translations
+- updated to 2.9.1:
+  * Show secondary click menu for search results
+  * Updated translations
+- update to 2.9.0:
+  * Launch apps selectively on integrated or dedicated graphics for
+    systems with hybrid graphics
+- update to 2.8.2:
+  * Show apps with no category under "Other"
+  * Updated translations
+- update to 2.8.1:
+  * Fix an issue where Flatpak apps wouldn't show until after a restart
+  * Updated translations
+- update to 2.8.0:
+  * Sort app actions above AppCenter search
+  * Always hide Terminal-based programs
+  * Remove document viewer from block list
+  * Support fractions without leading number in calculator
+  * Show overlay key in tooltip when set
+  * Performance improvements
+  * Updated translations
+- update to 2.7.1:
+  * Updated translations
+- update to 2.7.0:
+  * Smoother navigation gesture in grid view and touchscreen gesture support
+  * Focus search when navigating up from the category view
+  * Don't focus search when pressing modifier keys
+  * Ensure categories are sorted alphabetically
+  * Updated translations
+- update to 2.6.0:
+  * Category view is now a list
+  * Improved keyboard navigation
+  * Performance improvements
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:11:23 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.5.0:
+  * Add Release to Actions
+  * Revert "CommandPlugin: Change to Action type (#284)" (#324)
+  * Add AppData (#323)
+  * Remove volume-service.vala from POTFILES (#321)
+  * Update POTFILES (#319)
+  * Add Gettext Updates to Actions
+  * Synapse: Make Match an abstract class instead of an interface
+    (#316)
+  * SlingshotView: use Gdk constants for scroll directions (#314)
+  * Delete AUTHORS
+  * Delete CODE_OF_CONDUCT.md
+  * Remove unused File & Folder actions (#310)
+  * Fix some warnings and optimize the memory management (#309)
+  * Synapse: Remove unused Matches
+  * Synapse: split Matches into subdirectories
+  * Update appcenter-plugin.vala (#308)
+  * Synapse: One interface per file (#307)
+  * Synapse: Make BaseAction and its derivates one class per file
+    (#306)
+  * Utils: Remove unused (#305)
+  * Remove Uninstall Confirmation Dialog (#300)
+  * Move synapse library and plugins under src (#304)
+  * run installation in CI (#302)
+  * Move DragnDrop handling to AppListBox (#279)
+  * Remove unused Synapse/VolumeService (#294)
+  * Add Uninstall Comfirmation Dialog (#298)
+  * DataSink: NUM_COMPONENTS → num_components (#297)
+  * GridView: targetWidget → target_widget (#296)
+  * Add View in Appcenter menuitem (#293)
+  * Add Linter to CI (#268)
+  * Add menu key support (#290)
+  * Lint lib directory with vala-lint. (#288)
+  * Fix Alt page switching (#291)
+  * Delete FUNDING.yml
+  * :shirt: Lint src directory with vala-lint. (#289)
+  * Move search string markup to SearchItem (#286)
+  * Remove unused favicon loading (#287)
+  * ...
+
+-------------------------------------------------------------------
+Thu Aug 29 00:08:47 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.4.4:
+  * Drop support for Plank <0.11 (#229)
+  * Revert "Drop support for Plank <0.11 (#216)"
+  * SlingshotView: DRY setup_size (#226)
+  * SlingshotView: Use GLib.Settings (#224)
+  * Drop support for Plank <0.11 (#216)
+  * PageChecker: Move CSS to a gresource (#220)
+  * Move sort apps by name to AppSystem (#215)
+  * Pixels: Remove unused constants (#214)
+  * Travis: build with Meson instead of CMake (#223)
+  * Remove build_ui method and clean up (#217)
+  * Grid: appropriately scope methods (#219)
+  * CategoryView: Remove single-use method (#218)
+  * SearchItem: GObject-style construction (#221)
+  * App: get keywords from GLib.DesktopAppInfo (#222)
+  * Don't Mention Wnck in README.md etc. (#207)
+  * AppCenter: make the DBus calls asynchronous (#202)
+  * Create FUNDING.yml
+  * Use Idle.add () to launching app in SearchView (#200)
+- Disable LTO optimization
+
+-------------------------------------------------------------------
+Thu May 30 20:58:13 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.4.3:
+  * Improve grid keyboard navigation
+  * Merge branch 'origin/master' into Weblate.
+  * Relax how app menu connects to the AppCenter DBus (#191)
+  * Fix invalid "owned to unowned" assignment
+  * Grid: misc cleanup (#185)
+  * Meson: fix build without unity (#179)
+  * Merge branch 'origin/master' into Weblate
+  * CategoryView: GObject-style, misc cleanup (#181)
+  * System management keywords search (#144)
+  * Meson: install applications.menu using sysconfidr (#175)
+
+-------------------------------------------------------------------
+Mon Mar  4 03:28:50 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.4.2:
+  * Merge branch 'origin/master' into Weblate
+  * Don't highlight query in text search result (#139)
+  * Avoid many DBus warnings with stricter Valac
+  * Synapse: avoid many string copy
+  * Migrate to meson (#166)
+  * Slingshot.vala: Use Granite for tooltip accels (#151)
+  * Release 2.4.1
+  * Fix tooltip update (#162)
+  * Update travis.yml for Juno unstable (#160)
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:28 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Mon Oct  8 12:54:53 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.4.0:
+  * fix the Uninstall option is disappearing (#127)
+  * prevent indicator from appearing in greeters (#109)
+  * Merge branch 'origin/master' into Weblate
+  * Fix scrolling through multiple pages with mouse (#107)
+  * Fix page switcher not appearing first time when opening (#118)
+  * Add missing po files
+
+-------------------------------------------------------------------
+Sat Jun 23 16:44:10 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.3.0:
+  * RDNN (#103)
+  * Recognize Cinnamon as a GNOME environment (#93)
+  * Merge remote-tracking branch 'origin/master'
+  * Fix build with -DUSE_ZEITGEIST=OFF (#68)
+  * Allow to cycle the search results with arrows (#96)
+  * Add editorconfig file (#98)
+  * Silence critical warnings on startup from
+    DesktopFileInfo.vala (#92)
+  * Use the icon from the application object instead of the
+    asyncimage (#91)
+  * Fix warnings with IOError (#86)
+  * Remove custom logger (#85)
+  * App: Remove fallback icon check for apps (#84)
+  * Do not display badges when their count is 0; lambdas to
+    functions (#80)
+  * Unload switchboard and its plugs once finished loading their
+    content (#70)
+
+-------------------------------------------------------------------
+Fri Jun 15 16:20:25 UTC 2018 - avvissu@yandex.by
+
+- Rename branding-elementary > branding-upstream
+
+-------------------------------------------------------------------
+Sat Jun  9 01:33:00 UTC 2018 - avvissu@yandex.by
+
+- Switch to git from bzr
+- Add a package with elementary branding
+- Provide a package with pantheon-applications-menu name
+- Move pantheon-menus-yast.patch to pantheon-branding-openSUSE
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Nov 14 08:01:22 UTC 2017 - avvissu@yandex.by
+
+- Add YaST launcher and remove the desktop files with X-SuSE-YaST
+  category (pantheon-menus-yast.patch)
+- Update homepage
+
+-------------------------------------------------------------------
+Thu Oct  5 21:06:03 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.2.0:
+  * Load icons with absolute URI (#37)
+  * Update FSF address (#43)
+  * Solve terminal warnings that complain about Unity7 not being
+    a recognized environment (#42)
+  * Draw badges with Gtk+ (#14)
+  * Simplify the page switcher (#39)
+  * Add an AUTO_START flag to a DBus watch (#28)
+
+-------------------------------------------------------------------
+Tue Jun 13 14:38:07 UTC 2017 - jengelh@inai.de
+
+- Compact description.
+
+-------------------------------------------------------------------
+Mon May 15 20:38:07 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.1.3:
+  * Fix some categories not appearing (#16)
+  * Add Travis CI (#15)
+  * Release 2.1.2
+  * Remove references to Gala hotcorner settings (#10)
+  * Merge remote-tracking branch 'origin/master'
+  * Translated using Weblate (Serbian)
+  * Translated using Weblate (Korean)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Russian)
+  * Prevent AppCenter results for short/number only queries
+  * Don't block the mainthread while loading the application menu
+  * * Add uninstall item to app right-click menu to uninstall apps
+  * * Fix app ranking being incorrect about keywords
+  * Regenerated translation template
+  * Move link search results into the internet category.
+  * Provide "Search AppCenter for x" results at bottom of list.
+  * unmark .vala files as executable
+
+-------------------------------------------------------------------
+Sun Feb 12 13:29:52 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.1.1:
+  * Launchpad automatic translations update.
+  * Handle Input Methods Key Press Events properly
+  * Add lock and logout actions
+  * Synapse-core and synapse-plugins:
+  * Code style
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed Jan 25 12:34:34 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.1.0:
+  * Launchpad automatic translations update.
+  * Regenerate translation template
+  * Fixed two warnings
+  * Add missing GResource.cmake
+  * Changes pager style from numbers to dots
+  * Add custom icons to a gresource
+  * Fixed printf in string translation
+  * Remove ancient GDK_MODIFIER hack that breaks input methods
+    like fcitx (lp#1602472)
+
+-------------------------------------------------------------------
+Tue Jan  3 19:53:33 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.0.1:
+  * Fix Gtk.show_uri compilation warning
+  * Fix switchboard plugs not launching
+  * Fix plank warnings about non-existing themes
+  * Correct count image margins so they don't get cut off
+  * Enable IM focus; Remove eventbox
+  * Fix non-matching generic types of interface implementations
+  * Fix non-matching generic types
+
+-------------------------------------------------------------------
+Sun Sep 18 19:08:15 UTC 2016 - avvissu@yandex.by
+
+- Update to 2.0
+- Build with --no-undefined (target_link_libraries)
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Feb 27 14:53:33 UTC 2016 - mailaender@opensuse.org
+
+- rename to slingshot-launcher to avoid conflict with game slingshot
+- update to version 0.8.1.1
+
+-------------------------------------------------------------------
+Fri May 15 20:42:48 UTC 2015 - mailaender@opensuse.org
+
+- update to version 0.8
+- bumped required gtk3 lp#1455886
+
+-------------------------------------------------------------------
+Sun Jun 15 15:46:59 UTC 2014 - mailaender@opensuse.org
+
+- initial packaging
+
