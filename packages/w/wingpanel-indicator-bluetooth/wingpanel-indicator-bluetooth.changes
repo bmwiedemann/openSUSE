@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Thu Aug 22 13:56:59 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Updated translations
+- update to 7.0.1:
+  * Manually add resourced icons to path
+- update to 7.0.0:
+  * Bluetooth sharing
+  * Bluetooth: Fix gettext format
+  * Use GLib.Markup.printf_escaped when possible
+  * BtSender: Provide feedback when transfer blocked
+  * Keep list of active transfers and ensure device widgets show any ongoing transfers
+  * Revert "Improved response to power state changes in Switchboard
+- update to 2.1.8:
+  * Improve restoring Bluetooth state on restart and resuming from suspend
+  * Updated translations
+- update to 2.1.7:
+  * Add tooltip on hover
+  * Add a fallback device name for headphones
+  * Updated translations
+- update to 2.1.6:
+  * Prevent showing duplicate devices
+  * Fix animated icon when disabling Bluetooth
+  * Fallback device names to their device type instead of "(null)"
+  * Updated translations
+- update to 2.1.5:
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+- change license as upstream was always LGPL-2.1+
+
+-------------------------------------------------------------------
+Mon Nov 25 20:44:49 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.4
+  * Updated translations
+
+-------------------------------------------------------------------
+Thu May 30 21:01:04 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.3:
+  * Device: add status images (#78)
+  * DisplayWidget: Fix warning caused by a typo (#76)
+  * PopoverWidget: Use a listbox for devices and sort (#75)
+  * Always enable use of fallback icon (#72)
+  * Escape device name (#70)
+  * Merge branch 'origin/master' into Weblate
+  * Spelling: Bluetooth, BT indicator signal (#67)
+
+-------------------------------------------------------------------
+Mon Mar  4 03:32:56 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.2:
+  * Device: Fix bold device names (#66)
+  * Meson: Use GLib preset for l10n
+
+-------------------------------------------------------------------
+Thu Nov  8 02:30:00 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Mon Oct  8 12:59:51 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.1
+
+-------------------------------------------------------------------
+Tue Jun 12 20:29:43 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.1.0:
+  * RDNN (#63)
+  * Remove unused gschema gettext domain
+  * Add editorconfig file
+  * Fix freeze if power off when connected. (#60)
+  * Lose style_context private member; modify style_context 
+    before setting icon (#58)
+  * Manager.vala: Remove unused methods (#55)
+  * Fix deprecation warnings with get_active () (#54)
+  * PopoverWidget: Use Revealer when add/remove devices (#46)
+  * Get rid of unnecessary close request signal (#47)
+  * Update to latest wingpanel API (#52)
+  * Device.vala: GObject-style (#45)
+  * PopoverWidget: use native Gtk.ScrolledWindow (#49)
+  * DisplayWidget: GObject-style (#50)
+  * Consistently namespace everything as BluetoothIndicator (#51)
+  * PopoverWidget: Use granite style constant (#48)
+  * Update copyright headers (#44)
+  * Indicator.vala: Use GObject style (#43)
+  * Remove CMake (#39)
+  * Removed useless content and link to deprecated utility (#38)
+  * Install settings schema (#36)
+  * Use Gtk.ModelButton (#35)
+  * Meson: Add a var for gettext name (#33)
+  * Animate disabled slashie (#30)
+  * Add deps to README (#32)
+  * Add meson build support (#31)
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Switch to github
+- Switch to meson
+- Add README files
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Aug 21 19:52:05 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.0.3:
+  * Add Repology and Weblate badges to README.md (#26)
+  * Create COPYING (#25)
+  * Create CODE_OF_CONDUCT.md (#24)
+  * Fixed: Duplicated bluetooth devices (#17)
+  * Move separator out of the device list (#18)
+- Change the sourceurl to git
+
+-------------------------------------------------------------------
+Tue May 23 05:37:54 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.0.2:
+  * {2.0.2} Release 2.0.2
+  * Fixes screenshot being included in the installation folder 
+    (#20)
+  * [merge] Add screenshot
+  * Pad screenshot
+  * Add screenshot
+  * Fix Services namespace (#15)
+  * [merge] Merge pull request #12 from elementary/travis
+  * Add .travis.yml
+  * Create README.md
+  * Fix DBus binding of org.bluez.Adapter1 and org.bluez.Device1
+  * [merge] Don't disconnect if this is not required
+  * Don't disconnect if this is not required
+
+-------------------------------------------------------------------
+Tue Jan 24 17:59:55 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.0.1:
+  * check global state to fix toggling adapter twice
+  * Launchpad automatic translations update.
+  * Use Preferences URL spec to launch settings pane
+
+-------------------------------------------------------------------
+Mon Sep 19 00:51:45 UTC 2016 - avvissu@yandex.by
+
+- Update to 2.0
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Sep 21 14:01:57 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.1) for openSUSE
