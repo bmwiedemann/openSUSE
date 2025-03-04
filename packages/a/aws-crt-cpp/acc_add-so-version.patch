@@ -1,0 +1,13 @@
+diff -Nru aws-crt-cpp-0.31.0.orig/CMakeLists.txt aws-crt-cpp-0.31.0/CMakeLists.txt
+--- aws-crt-cpp-0.31.0.orig/CMakeLists.txt	2025-02-25 21:44:05.000000000 +0000
++++ aws-crt-cpp-0.31.0/CMakeLists.txt	2025-02-27 12:14:32.348326331 +0000
+@@ -311,6 +311,9 @@
+     endif()
+ endif()
+ 
++set_target_properties(${PROJECT_NAME} PROPERTIES VERSION 1.0.0)
++set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1)
++
+ target_include_directories(${PROJECT_NAME} PUBLIC
+     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+     $<BUILD_INTERFACE:${GENERATED_INCLUDE_DIR}>

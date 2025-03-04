@@ -1,7 +1,7 @@
 #
 # spec file for package aws-crt-cpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,14 @@
 %define library_soversion 1
 
 Name:           aws-crt-cpp
-Version:        0.30.1
+Version:        0.31.0
 Release:        0
 Summary:        AWS C++ wrapper for AWS SDK C libraries
 License:        Apache-2.0
 Group:          Development/Languages/Other
 URL:            https://aws.amazon.com/sdk-for-cpp/
 Source0:        https://github.com/awslabs/aws-crt-cpp/archive/v%{version}.tar.gz
+Patch0:         acc_add-so-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -128,15 +129,19 @@ This package contains development files.
 #%%check
 #%%ctest
 
+%ldconfig_scriptlets -n lib%{name}%{library_soversion}
+
 %files bin
 %{_bindir}/*
 
 %files -n lib%{name}%{library_soversion}
 %doc README.md
-%{_libdir}/libaws*so
+%{_libdir}/*.so.%{library_soversion}
+%{_libdir}/*.so.%{library_version}
 
 %files devel
 %{_includedir}/aws
+%{_libdir}/*.so
 %{_libdir}/cmake
 
 %changelog

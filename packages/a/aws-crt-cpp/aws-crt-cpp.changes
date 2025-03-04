@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:24:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.31.0
+  * Update submodules by @sfod in (#711)
+- from version 0.30.2
+  * Support IPv6 endpoint by @sbera87 in (#707)
+- Add patch to add missing SOVERSION to CMakeFiles.txt
+  * acc_add-so-version.patch
+- Add %{_libdir}/*.so.%{library_soversion} to %files section
+- Add %{_libdir}/*.so.%{library_version} to %files section
+- Run %ldconfig_scriptlets in %install section
+
+-------------------------------------------------------------------
 Thu Feb  6 09:12:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.30.1
