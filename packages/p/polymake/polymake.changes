@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 24 14:28:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.13
+  * Support for Perl 5.40 and -std=c++20 builds
+
+-------------------------------------------------------------------
 Sun Aug 18 22:05:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add perl.patch, unconstrain perl version

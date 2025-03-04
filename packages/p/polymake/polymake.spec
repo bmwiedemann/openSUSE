@@ -16,16 +16,17 @@
 #
 
 
-%define lname   libpolymake4_12
+%define lname   libpolymake4_13
 Name:           polymake
-Version:        4.12
+Version:        4.13
 Release:        0
 Summary:        Application for studying combinatorics and geometry of convex polytopes
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://polymake.org/
 
-Source:         https://github.com/polymake/polymake/archive/V%version.tar.gz
+Source:         https://github.com/polymake/polymake/releases/download/V4.13/polymake-4.13-minimal.tar.bz2
+Source:         polymake-4.13-minimal.tar.bz2
 Source9:        %name-rpmlintrc
 Patch2:         sympol-system.patch
 Patch3:         perl.patch
