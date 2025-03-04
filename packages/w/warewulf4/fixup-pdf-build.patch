@@ -1,0 +1,95 @@
+From a342c1b832666caed26337e371854e99d1388031 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.com>
+Date: Mon, 3 Mar 2025 11:58:43 +0100
+Subject: [PATCH] fixup pdf build
+
+Signed-off-by: Christian Goll <cgoll@suse.com>
+---
+ CHANGELOG.md                                 | 5 +++++
+ Makefile                                     | 2 +-
+ internal/app/wwctl/genconf/reference/main.go | 1 +
+ userdocs/conf.py                             | 5 +++--
+ userdocs/server/bootloaders.rst              | 2 +-
+ 5 files changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index ffc8755d..fb8104b6 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
+ 
+ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+ 
++## Unreleased
++
++### Fixed
++- Removed unreadable >= character and not distro sphinx module for pdf doc build
++
+ ## v4.6.0, 2025-03-02
+ 
+ ### Added
+diff --git a/Makefile b/Makefile
+index 67147051..28ee3fec 100644
+--- a/Makefile
++++ b/Makefile
+@@ -89,7 +89,7 @@ reference: wwctl
+ 	./wwctl --emptyconf genconfig reference userdocs/reference/
+ 
+ latexpdf: reference
+-	make -C userdocs latexpdf
++	SPHINXOPTS='-t pdf -D release=$(VERSION)' make -C userdocs latexpdf 
+ 
+ ##@ Development
+ 
+diff --git a/internal/app/wwctl/genconf/reference/main.go b/internal/app/wwctl/genconf/reference/main.go
+index c3cdacaa..9dd5b1d6 100644
+--- a/internal/app/wwctl/genconf/reference/main.go
++++ b/internal/app/wwctl/genconf/reference/main.go
+@@ -11,6 +11,7 @@ func CobraRunE(cmd *cobra.Command, args []string) (err error) {
+ 	linkHandler := func(name, ref string) string {
+ 		return fmt.Sprintf(":ref:`%s <%s>`", name, ref)
+ 	}
++	cmd.Parent().Parent().DisableAutoGenTag = true
+ 	err = doc.GenReSTTreeCustom(cmd.Parent().Parent(), args[0], func(arg string) string { return "" }, linkHandler)
+ 	//err = doc.GenReSTTree(cmd.Parent().Parent(), args[0])
+ 	return
+diff --git a/userdocs/conf.py b/userdocs/conf.py
+index e838c303..d8584a5f 100644
+--- a/userdocs/conf.py
++++ b/userdocs/conf.py
+@@ -7,7 +7,7 @@
+ # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+ 
+ project = 'Warewulf User Guide'
+-copyright = '2024, Warewulf Project Contributors'
++copyright = '2025, Warewulf Project Contributors'
+ author = 'Warewulf Project Contributors'
+ release = 'main'
+ 
+@@ -16,8 +16,9 @@ release = 'main'
+ 
+ extensions = [
+     'sphinx.ext.graphviz',
+-    'sphinx_reredirects',
+ ]
++if not tags.has('pdf'):
++    extensions.append('sphinx_redirects')
+ 
+ redirects = {
+     'contents/background': '../getting-started/introduction.html',
+diff --git a/userdocs/server/bootloaders.rst b/userdocs/server/bootloaders.rst
+index 0f5bf5a5..9132e1ec 100644
+--- a/userdocs/server/bootloaders.rst
++++ b/userdocs/server/bootloaders.rst
+@@ -158,7 +158,7 @@ For example, the ``imgextract`` command can be `explicitly enabled`_.
+    This is the case in the default state of ``build-ipxe.sh``, which enables
+    support for ZLIB and GZIP archive image formats.
+ 
+-Configuring Warewulf (≥ v4.5.0)
++Configuring Warewulf (>= v4.5.0)
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 
+ In Warewulf v4.5.0, Warewulf can be configured to use these files using the
+-- 
+2.43.0
+

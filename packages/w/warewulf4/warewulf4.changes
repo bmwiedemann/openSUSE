@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 03 09:21:05 UTC 2025 - cgoll@suse.com
+
+- updated to 4.6.0 which is without any functional changes to 4.6.0rc3
+- removed WWWORKER-overwrites-runtime.NumCPU.patch as upstream 
+- added fixup-pdf-build.patch to build pdf which is published now
+  in the warewul4-reference package
+
+-------------------------------------------------------------------
 Wed Feb 26 16:26:11 UTC 2025 - Christian Goll <cgoll@suse.com>
 
 - added WWWORKER-overwrites-runtime.NumCPU.patch for reproducible

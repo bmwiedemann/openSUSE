@@ -382,4 +382,12 @@
   builds (forwarded request 1248764 from mslacken)</comment>
     <requestid>1248768</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a94bf5b4c63bf77ddd67ab9084f3e409</srcmd5>
+    <version>4.6.0</version>
+    <time>1741109592</time>
+    <user>anag+factory</user>
+    <comment>include version in pdf (forwarded request 1250056 from mslacken)</comment>
+    <requestid>1250057</requestid>
+  </revision>
 </revisionlist>

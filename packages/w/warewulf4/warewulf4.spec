@@ -28,7 +28,7 @@
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        4.6.0rc3
+Version:        4.6.0
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
@@ -42,13 +42,15 @@ Source10:       config-ww4.sh
 Source11:       adjust_overlays.sh
 Source20:       README.dnsmasq
 Source21:       README.RKE2.md
-Patch0:         WWWORKER-overwrites-runtime.NumCPU.patch
+Patch0:         fixup-pdf-build.patch
 
+BuildRequires:  %{python_module Sphinx-latex}
 BuildRequires:  distribution-release
 BuildRequires:  dracut
 BuildRequires:  firewalld
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.22
 BuildRequires:  golang-packaging
+BuildRequires:  graphviz
 BuildRequires:  iproute2
 BuildRequires:  libgpg-error-devel
 BuildRequires:  logrotate
@@ -98,6 +100,14 @@ BuildArch:      noarch
 
 %description man
 Man pages for warewulf4.
+
+%package reference
+Supplements:    %{name} = %version
+Summary:        Warewulf4 Reference book
+BuildArch:      noarch
+
+%description reference
+Reference documentation for warewulf4.
 
 %package overlay-slurm
 Summary:        Configuration template for slurm
@@ -155,23 +165,10 @@ make defaults \
     SYSTEMDDIR=%{_unitdir} \
     BASHCOMPDIR=/etc/bash_completion.d/ \
     FIREWALLDDIR=/usr/lib/firewalld/services \
-    WWCLIENTDIR=/warewulf
-make %{?_smp_mflags} build \
-    PREFIX=%{_prefix} \
-    BINDIR=%{_bindir} \
-    SYSCONFDIR=%{_sysconfdir} \
-    DATADIR=%{_datadir} \
-    LOCALSTATEDIR=%{_sharedstatedir} \
-    SHAREDSTATEDIR=%{_sharedstatedir} \
-    MANDIR=%{_mandir} \
-    INFODIR=%{_infodir} \
-    DOCDIR=%{_docdir} \
-    SRVDIR=%{srvdir} \
-    TFTPDIR=%{tftpdir} \
-    SYSTEMDDIR=%{_unitdir} \
-    BASHCOMPDIR=/etc/bash_completion.d/ \
-    FIREWALLDDIR=/usr/lib/firewalld/services \
-    WWCLIENTDIR=/warewulf
+    WWCLIENTDIR=/warewulf \
+    %{nil}
+make %{?_smp_mflags} build
+make %{?_smp_mflags} latexpdf
 
 %install
 # we have a broken symlink for wwclient
@@ -334,5 +331,8 @@ fi
 %defattr(-, root, root)
 %dir %{_prefix}/lib/dracut/modules.d/90wwinit
 %{_prefix}/lib/dracut/modules.d/90wwinit/*.sh
+
+%files reference
+%doc ./userdocs/_build/latex/warewulfuserguide.pdf
 
 %changelog
