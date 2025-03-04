@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-messaging-webpubsubservice
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-messaging-webpubsubservice
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Microsoft Azure WebPubSub Service Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-messaging-webpubsubservice/azure-messaging-webpubsubservice-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_messaging_webpubsubservice/azure_messaging_webpubsubservice-%{version}.tar.gz
 BuildRequires:  %{python_module azure-messaging-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -84,7 +84,7 @@ Use the client library to:
  * Grant/revoke/check permissions for an existing connection
 
 %prep
-%setup -q -n azure-messaging-webpubsubservice-%{version}
+%setup -q -n azure_messaging_webpubsubservice-%{version}
 
 %build
 %pyproject_wheel
