@@ -20,18 +20,26 @@
 %define bin_name uki-tool
 
 Name:           uki-tool
-Version:        1.4.1+0.g2720d37
+Version:        1.4.2+0.g1e31f3f
 Release:        0
 Summary:        Tool for the UKI and static-initrd project
 License:        MIT
 URL:            https://github.com/keentux/unified-kernel-image-tool.git
 Source:         %{archive_name}-%{version}.tar.xz
-#PATCH-FIXED-UPSTREAM
-Patch:          create-pcrkeys-arg.patch
 BuildArch:      noarch
 BuildRequires:  ShellCheck
 BuildRequires:  bash-sh
 BuildRequires:  coreutils
+%ifarch %ix86 x86_64
+# BuildRequires for tests - only on arch x86
+BuildRequires:  systemd, udev
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module pefile}
+BuildRequires:  dracut
+BuildRequires:  kernel-default
+BuildRequires:  systemd-boot
+BuildRequires:  systemd-experimental
+%endif
 Requires:       awk
 Requires:       bash-sh
 Requires:       bind-utils
@@ -71,12 +79,22 @@ sh ./install.sh \
     --bindir="%{_bindir}"\
     --mandir="%{_mandir}"
 
+%ifarch %ix86 x86_64
+%check
+kerver=$(ls /lib/modules/ | head -n 1)
+sh ./tests/test.sh \
+    --path "%{buildroot}%{_bindir}/%{bin_name}" \
+    --kerver "$kerver" \
+    --dir ./tmp-test-dir
+%endif
+
 %files
 %defattr(-,root,root)
 %{_bindir}/%{bin_name}
 
 %files doc
-%doc README.md LICENSE AUTHORS CHANGELOG.md
+%doc README.md AUTHORS CHANGELOG.md
+%license LICENSE
 %{_mandir}/man1/%{bin_name}.1%{?ext_man}
 
 %changelog

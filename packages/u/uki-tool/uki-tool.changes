@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 03 15:41:47 UTC 2025 - valentin.lefebvre@suse.com
+
+- Update to version 1.4.2+0.g1e31f3f:
+  * Release to 1.4.2
+  * readme: Update the git link
+  * testsuite: create the uki-tool testsuite
+  * grub2: Do not insert mod in menuentry
+  * common: Check where ESP is mounted
+  * create: could use the unsigned static initrd
+  * readme: update installation info
+  * create: pcrkeys arg
+- Removing patch fixed upstream
+  [- create-pcrkeys-arg.patch]
+
+-------------------------------------------------------------------
 Thu Jan  2 17:33:49 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Generate and use PCR keys only if it is required
