@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ppxlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-ppxlib
 Name:           %pkg%nsuffix
-Version:        0.32.0
+Version:        0.35.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Base library and tools for ppx rewriters
@@ -41,18 +41,15 @@ Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/ppxlib
 Source0:        %pkg-%version.tar.xz
-BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20231101
-BuildRequires:  ocaml(ocaml_base_version) >= 4.04
-%if 1
-BuildRequires:  ocamlfind(compiler-libs.bytecomp)
-BuildRequires:  ocamlfind(compiler-libs.common)
-BuildRequires:  ocamlfind(ocaml-compiler-libs.common)
-BuildRequires:  ocamlfind(ocaml-compiler-libs.shadow)
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
+BuildRequires:  ocaml-dune >= 3.8
+BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocamlfind(cmdliner)
+BuildRequires:  ocamlfind(compiler-libs)
+BuildRequires:  ocamlfind(ocaml-compiler-libs)
 BuildRequires:  ocamlfind(ppx_derivers)
 BuildRequires:  ocamlfind(sexplib0)
 BuildRequires:  ocamlfind(stdlib-shims)
-%endif
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(cinaps)
@@ -80,7 +77,7 @@ developing applications that use %name.
 %setup -q -n %pkg-%version
 
 %build
-dune_release_pkgs='ppxlib'
+dune_release_pkgs='ppxlib,ppxlib-tools'
 %ocaml_dune_setup
 %if "%build_flavor" == ""
 %ocaml_dune_build
@@ -100,6 +97,7 @@ dune_release_pkgs='ppxlib'
 %if "%build_flavor" == ""
 %files -f %name.files
 %defattr(-,root,root,-)
+%_bindir/*
 
 %files devel -f %name.files.devel
 %defattr(-,root,root,-)
