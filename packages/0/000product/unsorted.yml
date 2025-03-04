@@ -3614,6 +3614,7 @@ unsorted:
   - dtrx 
   - dtv-scan-tables 
   - dtv-scan-tables-v5 
+  - dualsensectl 
   - dub 
   - duc 
   - duf 
@@ -7488,7 +7489,6 @@ unsorted:
   - gnome-nibbles-lang 
   - gnome-online-accounts-devel 
   - gnome-packagekit-extras 
-  - gnome-patch-translation 
   - gnome-podcasts 
   - gnome-podcasts-lang 
   - gnome-pomodoro 
@@ -17114,6 +17114,7 @@ unsorted:
   - libwhich 
   - libwiiuse0 
   - libwim15 
+  - libwingpanel8 
   - libwinpr2-2 
   - libwireshark18 
   - libwiretap15 
@@ -20116,6 +20117,8 @@ unsorted:
   - oc-fish-completion 
   - oc-zsh-completion 
   - ocaml 
+  - ocaml-0install-solver 
+  - ocaml-0install-solver-devel 
   - ocaml-astring 
   - ocaml-astring-devel 
   - ocaml-augeas 
@@ -20179,6 +20182,8 @@ unsorted:
   - ocaml-hivex-devel 
   - ocaml-integers 
   - ocaml-integers-devel 
+  - ocaml-jsonm 
+  - ocaml-jsonm-devel 
   - ocaml-lablgtk3 
   - ocaml-lablgtk3-devel 
   - ocaml-libguestfs 
@@ -20200,6 +20205,8 @@ unsorted:
   - ocaml-ocamldoc 
   - ocaml-ocamlgraph 
   - ocaml-ocamlgraph-devel 
+  - ocaml-opam-0install-cudf 
+  - ocaml-opam-0install-cudf-devel 
   - ocaml-ounit 
   - ocaml-ounit-devel 
   - ocaml-parmap 
@@ -20231,10 +20238,14 @@ unsorted:
   - ocaml-sha 
   - ocaml-sha-devel 
   - ocaml-source 
+  - ocaml-spdx_licenses 
+  - ocaml-spdx_licenses-devel 
   - ocaml-stdcompat 
   - ocaml-stdcompat-devel 
   - ocaml-stdlib-shims 
   - ocaml-stdlib-shims-devel 
+  - ocaml-swhid_core 
+  - ocaml-swhid_core-devel 
   - ocaml-uutf 
   - ocaml-uutf-devel 
   - ocaml-xml-light 
@@ -21009,6 +21020,8 @@ unsorted:
   - panini 
   - pantheon-agent-polkit 
   - pantheon-agent-polkit-lang 
+  - pantheon-applications-menu 
+  - pantheon-applications-menu-lang 
   - pantheon-bluetooth-daemon 
   - pantheon-bluetooth-daemon-lang 
   - pantheon-calculator 
@@ -23089,7 +23102,6 @@ unsorted:
   - playmymusic-lang 
   - playmyvideos 
   - playmyvideos-lang 
-  - playwright 
   - pleaser 
   - plee-the-bear 
   - plee-the-bear-data 
@@ -23465,6 +23477,7 @@ unsorted:
   - praat 
   - pragha-plugins-devel 
   - prboom-plus 
+  - predict 
   - prelude-correlator 
   - prelude-lml 
   - prelude-lml-devel 
@@ -23779,7 +23792,6 @@ unsorted:
   - python-efl-doc 
   - python-efl-examples 
   - python-falcon-doc 
-  - python-fastcluster-doc 
   - python-flake8-doc 
   - python-freezerclient-doc 
   - python-furo-doc 
@@ -24962,6 +24974,7 @@ unsorted:
   - python311-backoff 
   - python311-backports.entry_points_selectable 
   - python311-backports.tarfile 
+  - python311-backrefs 
   - python311-baron 
   - python311-base-32bit 
   - python311-base58 
@@ -25500,7 +25513,6 @@ unsorted:
   - python311-fastapi 
   - python311-fastavro 
   - python311-fastbencode 
-  - python311-fastcluster 
   - python311-fasteners 
   - python311-fastimport 
   - python311-fastjsonschema 
@@ -28584,6 +28596,7 @@ unsorted:
   - python312-backoff 
   - python312-backports.entry_points_selectable 
   - python312-backports.tarfile 
+  - python312-backrefs 
   - python312-baron 
   - python312-base 
   - python312-base-32bit 
@@ -29143,7 +29156,6 @@ unsorted:
   - python312-fastapi 
   - python312-fastavro 
   - python312-fastbencode 
-  - python312-fastcluster 
   - python312-fasteners 
   - python312-fastimport 
   - python312-fastjsonschema 
@@ -32314,6 +32326,7 @@ unsorted:
   - python313-backoff 
   - python313-backports.entry_points_selectable 
   - python313-backports.tarfile 
+  - python313-backrefs 
   - python313-baron 
   - python313-base 
   - python313-base-32bit 
@@ -32871,7 +32884,6 @@ unsorted:
   - python313-fastapi 
   - python313-fastavro 
   - python313-fastbencode 
-  - python313-fastcluster 
   - python313-fasteners 
   - python313-fastimport 
   - python313-fastjsonschema 
@@ -36863,6 +36875,7 @@ unsorted:
   - sambacc 
   - sampler 
   - samplicator 
+  - samply 
   - samtools 
   - samurai 
   - sane-airscan 
@@ -48705,6 +48718,7 @@ unsorted:
   - warewulf4-overlay 
   - warewulf4-overlay-rke2 
   - warewulf4-overlay-slurm 
+  - warewulf4-reference 
   - warp 
   - warp-lang 
   - warpinator 
@@ -48780,6 +48794,7 @@ unsorted:
   - weblate 
   - weblug 
   - webp-pixbuf-loader 
+  - webrepl 
   - websocketpp-devel 
   - weechat 
   - weechat-devel 
@@ -48856,6 +48871,25 @@ unsorted:
   - wine-wow64-devel 
   - winetricks 
   - winetricks-bash-completion 
+  - wingpanel 
+  - wingpanel-devel 
+  - wingpanel-indicator-a11y 
+  - wingpanel-indicator-a11y-lang 
+  - wingpanel-indicator-bluetooth 
+  - wingpanel-indicator-bluetooth-lang 
+  - wingpanel-indicator-datetime 
+  - wingpanel-indicator-datetime-lang 
+  - wingpanel-indicator-keyboard 
+  - wingpanel-indicator-keyboard-lang 
+  - wingpanel-indicator-nightlight 
+  - wingpanel-indicator-nightlight-lang 
+  - wingpanel-indicator-notifications 
+  - wingpanel-indicator-notifications-lang 
+  - wingpanel-indicator-power 
+  - wingpanel-indicator-power-lang 
+  - wingpanel-indicator-sound 
+  - wingpanel-indicator-sound-lang 
+  - wingpanel-lang 
   - winpr-devel 
   - winpr2-devel 
   - winrs 
