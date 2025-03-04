@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Thu Aug 22 16:38:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.4.2:
+  * Updated translations
+- update to 2.4.1:
+  * Updated translations
+- update to 2.4.0:
+  * Show IBus input methods
+  * Show tooltip on hover
+  * Updated translations
+- update to 2.3.0:
+  * Optionally show CapsLock and Numlock indicators
+  * Updated translations
+- update to 2.2.1:
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:45:32 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.0:
+  * Add release action (#59)
+  * Add Lint to CI (#51)
+  * LayoutsManager: Add spaces between math operators
+  * run installation in CI (#52)
+  * Build with GitHub CI (#50)
+  * Delete CODE_OF_CONDUCT.md
+  * build: fix install path for wingpanel indicator (#48)
+  * Add keyboard icon CSS (#47)
+
+-------------------------------------------------------------------
+Tue Mar 12 11:31:36 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.2:
+  * Travis: update docker containers
+
+-------------------------------------------------------------------
+Thu Nov  8 02:30:04 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 19:05:40 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.1:
+  * Meson: Use GLib preset for l10n
+  * Misc AppInfo launch cleanup (#41)
+
+-------------------------------------------------------------------
+Mon Jun 11 14:09:52 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.1.0:
+  * Set visibility in get_display_widget rather than in 
+    get_widget (#40)
+  * Fix deprecated add_with_viewport (#38)
+  * Remove CMake (#33)
+  * Open correct variant with "Show keyboard layout" option (#30)
+  * Use Gtk.ModelButton (#31)
+  * Add Meson build (#27)
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Switch to github
+- Switch to meson
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Jun  3 13:41:08 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.0.2:
+  * Use settings URL scheme (#11)
+  * Create README.md (#7)
+  * Simplify show_keyboard_map method using alyouts.get_current ()
+  * Add Show Keyboard Map Feature
+  * Improved code based on Santiago's comments
+  * Use 'evdev.xml' instead of 'evdev.lst'
+- Add pkgconfig(libxml-2.0)
+
+-------------------------------------------------------------------
+Fri Dec  9 18:17:59 UTC 2016 - avvissu@yandex.by
+
+- Update to 2.0.1
+
+-------------------------------------------------------------------
+Mon Sep 19 00:57:27 UTC 2016 - avvissu@yandex.by
+
+- Update to 2.0
+- Add fdupes
+- spec file cleanup
+
+-------------------------------------------------------------------
+Mon Sep 21 14:22:05 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.1 unstable bzr) for openSUSE
