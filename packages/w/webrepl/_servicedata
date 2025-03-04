@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/micropython/webrepl.git</param>
+              <param name="changesrevision">1e09d9a1d90fe52aba11d1e659afbc95a50cf088</param></service></servicedata>
