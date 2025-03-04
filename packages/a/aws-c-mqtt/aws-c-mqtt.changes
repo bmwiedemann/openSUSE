@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:29:05 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.12.2
+  * Fix coverage CI job by @sfod in (#382)
+  * Fix handling of websocket failed transform
+    for MQTT311 connection by @sfod in (#383)
+
+-------------------------------------------------------------------
 Thu Jan 30 11:48:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.12.1
