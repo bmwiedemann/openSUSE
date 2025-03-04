@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  3 12:31:38 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 2.6.1
+  * 2.6.0 -> 2.6.1.dev1 by @illume in #4273
+  * grammar-fix by @jakefrombay in #4276
+  * Update sprite.rst by @jakefrombay in #4277
+  * build(deps): bump actions/checkout from 4.1.6 to 4.1.7 by @dependabot in #4281
+  * github: Bump cibuildwheel to v2.19.2 by @illume in #4286
+  * Update SpriteIntro.rst by @PavloShutz in #4310
+  * buildconfig/appveyor: Python 3.13 for windows by @illume in #4317
+  * buildconfig: Pin cython version to range by @illume in #4334
+  * build(deps): bump pypa/cibuildwheel from 2.19.2 to 2.20.0 by @dependabot in #4321
+  * github/build-*: Fix Cython version specifier by @illume in #4349
+  * manylinux: Remove old pypy 3.7 by @illume in #4350
+
+-------------------------------------------------------------------
 Wed Sep 11 08:45:21 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.6.0
