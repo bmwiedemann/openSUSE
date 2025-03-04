@@ -1,7 +1,7 @@
 #
 # spec file for package sympol
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source:         https://github.com/tremlin/SymPol/archive/refs/tags/v%version.ta
 Patch1:         unbundle.diff
 Patch2:         cddlib.diff
 Patch3:         bliss-0.77.diff
+Patch4:         lrslib-0.7.3.diff
 BuildRequires:  bliss-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 2.6
@@ -81,8 +82,7 @@ rm -Rf external/cdd* external/lrs* external/permlib
 ln -s . "%buildroot/%_includedir/sympol/yal"
 perl -i -lpe 's{#include ".*/}{#include "}g' "%buildroot/%_includedir/sympol"/*.h
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/sympol

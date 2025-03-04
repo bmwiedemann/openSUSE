@@ -1,0 +1,21 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2025-03-04 13:32:24.899798142 +0100
+References: https://github.com/tremlin/SymPol/issues/6
+
+---
+ sympol/raycomputationlrs.cpp |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: SymPol-0.1.9/sympol/raycomputationlrs.cpp
+===================================================================
+--- SymPol-0.1.9.orig/sympol/raycomputationlrs.cpp
++++ SymPol-0.1.9/sympol/raycomputationlrs.cpp
+@@ -243,7 +243,7 @@ bool RayComputationLRS::determineRedunda
+     for (ulong index = lastdv + 1; index <= m + d; index++) {
+         ineq = Q->inequality[index - lastdv]; /* the input inequality number corr. to this index */
+ 
+-        redineq[ineq] = checkindex (P, Q, index);
++        redineq[ineq] = checkindex (P, Q, index, 0);
+     }  /* end for index ..... */
+     
+     std::list<ulong> redundancies;

@@ -33,4 +33,12 @@
     <comment>- Update to release 0.1.9</comment>
     <requestid>971348</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ad57db8654efdf7d2f145909f27f9775</srcmd5>
+    <version>0.1.9</version>
+    <time>1741109616</time>
+    <user>anag+factory</user>
+    <comment>- Add lrslib-0.7.3.diff</comment>
+    <requestid>1250060</requestid>
+  </revision>
 </revisionlist>
