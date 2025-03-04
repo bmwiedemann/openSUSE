@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:19:32 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- rephrase the rubygem-mail version, to enable building in SLFO
+  otherwise there is a parsing error.
+
+-------------------------------------------------------------------
 Mon Jan 20 16:11:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable the my_apps handling

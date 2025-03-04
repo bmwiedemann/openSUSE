@@ -48,7 +48,7 @@ BuildRequires:  %{rubygem railties = %{version}}
 
 # help scheduler
 BuildRequires:  %{rubygem rack-session >= 2}
-BuildRequires:  %{rubygem mail >= 2.8.1}
+BuildRequires:  %{rubygem mail:2.8} >= 2.8.1
 BuildRequires:  %{rubygem mini_mime >= 1.1.5}
 
 %bcond_with ensure_default_gemfile_works
