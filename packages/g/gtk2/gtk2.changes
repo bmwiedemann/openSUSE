@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 26 03:36:57 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream and
+  gnome-patch-translation support (PM-2938, jsc#SLE-21105). Provide
+  translation for SUSE specific strings and missing upstream
+  translations in a dedicated tarball.
+
+-------------------------------------------------------------------
 Thu Oct 17 14:23:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Eliminate usage of update-alternatives:

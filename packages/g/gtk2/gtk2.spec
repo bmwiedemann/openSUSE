@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,12 @@ Group:          System/Libraries
 URL:            http://www.gtk.org/
 #Source0:       http://download.gnome.org/sources/gtk+/2.24/%%{_name}-%%{version}.tar.xz
 Source:         %{_name}-%{version}.tar.xz
+Source1:        %{_name}-%{version}-po-upstream.tar.xz
 Source2:        README.SUSE
 Source3:        gtkrc
 Source4:        baselibs.conf
 Source5:        macros.gtk2
+Source6:        %{_name}-%{version}-po-suse.tar.xz
 Source99:       gtk2-rpmlintrc
 # PATCH-FIX-OPENSUSE gtk2-GTK_PATH64.patch sbrabec@novell.com - 64-bit dual install. Use GTK_PATH64 environment variable instead of GTK_PATH
 Patch0:         gtk2-GTK_PATH64.patch
@@ -64,7 +66,6 @@ BuildRequires:  cups-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdk-pixbuf-devel
-BuildRequires:  gnome-patch-translation
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  libtiff-devel
@@ -74,7 +75,6 @@ BuildRequires:  pkgconfig(atk)
 BuildRequires:  libtool
 BuildRequires:  pango-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
@@ -300,19 +300,7 @@ This package contains the development files for GTK+ 2.x.
 %lang_package
 
 %prep
-%setup -q -n %{_name}-%{version}
-
-translation-update-upstream
-translation-update-upstream po-properties gtk20-properties
-# remove incomplete translations caused by translation-update-upstream (global LINGUAS file, two domains)
-for LNG in po/*.po ; do
-    LNG=`basename ${LNG%%.po}`
-    if ! test -f po-properties/$LNG.po ; then
-        echo "Removing incomplete $LNG from LINGUAS."
-        sed -i "/^$LNG\$/d" po/LINGUAS
-    fi
-done
-gnome-patch-translation-prepare
+%setup -q -n %{_name}-%{version} -a1 -a6
 %if "%{_lib}" == "lib64"
 cp -a %{SOURCE2} .
 # WARNING: This patch does not patch not installed demos and tests.
@@ -330,7 +318,25 @@ cp -a %{SOURCE2} .
 %patch -P 10 -p1
 %patch -P 11 -p1
 %patch -P 12 -p1
-gnome-patch-translation-update
+for TRANSLATIONS in upstream suse ; do
+	cd $TRANSLATIONS
+	for PO in */*.po ; do
+		if test -f ../$PO ; then
+			# Ignore plural form clash. It is a false error.
+			msgcat --use-first $PO ../$PO -o ../$PO.new || :
+			mv ../$PO.new ../$PO
+		else
+			ln $PO ../$PO
+		fi
+	done
+	cd -
+done
+cd po
+ls -1 *.po | sed 's/\.po//g' >LINGUAS
+# Trick: Handle incomplete translations that have no po-properties.
+# Create a dumb copy, then delete the installed file.
+cd ..
+ln po/{en,lg,zu}.po po-properties/
 
 %build
 NOCONFIGURE=1 ./autogen.sh
@@ -348,9 +354,17 @@ export CFLAGS=`echo $CFLAGS | sed -e 's/-fomit-frame-pointer//g'`
         --enable-introspection \
         --enable-gtk-doc
 make %{?_smp_mflags}
+cd po
+# en.po is special and we want only key names there.
+mv en.po en.po.save
+make %{?_smp_mflags} update-po
+mv en.po.save en.po
+cd ../po-properties
+make %{?_smp_mflags} update-po
 
 %install
 %make_install
+rm %{buildroot}%{_datadir}/locale/{en,lg,zu}/LC_MESSAGES/gtk20-properties.mo
 find %{buildroot} -type f -name "*.la" -delete -print
 %if 0%{?suse_version} <= 1130
 rm %{buildroot}%{_datadir}/locale/kg/LC_MESSAGES/*
