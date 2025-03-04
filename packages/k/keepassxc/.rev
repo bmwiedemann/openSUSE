@@ -528,4 +528,12 @@
     <comment>- build with Botan 3 on Leap 16</comment>
     <requestid>1239237</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ee92d04889dffc2c01baf79d27dc5513</srcmd5>
+    <version>2.7.10</version>
+    <time>1741109626</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.7.10:</comment>
+    <requestid>1250077</requestid>
+  </revision>
 </revisionlist>

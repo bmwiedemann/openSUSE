@@ -30,7 +30,7 @@
 %endif
 
 Name:           keepassxc
-Version:        2.7.9
+Version:        2.7.10
 Release:        0
 Summary:        Qt5-based Password Manager
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -44,7 +44,6 @@ Source3:        vendor.tar.zst
 #Source97:       _constraints
 Source98:       debian.tar.xz
 Source99:       keepassxc.dsc
-Patch1:         43904d87b7ae7339e393ce9de465556e3da52d3c.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
