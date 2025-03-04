@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:25:21 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 128.8.0 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 128.8.0
+  https://www.mozilla.org/security/advisories/mfsa2025-16
+  MFSA 2025-16 (boo#1237683)
+  * CVE-2024-43097 (bmo#1945624)
+    Overflow when growing an SkRegion's RunArray
+  * CVE-2025-1930 (bmo#1902309)
+    AudioIPC StreamData could trigger a use-after-free in the
+    Browser process
+  * CVE-2025-1931 (bmo#1944126)
+    Use-after-free in WebTransportChild
+  * CVE-2025-1932 (bmo#1944313)
+    Inconsistent comparator in XSLT sorting led to out-of-bounds
+    access
+  * CVE-2025-1933 (bmo#1946004)
+    JIT corruption of WASM i32 return values on 64-bit CPUs
+  * CVE-2025-1934 (bmo#1942881)
+    Unexpected GC during RegExp bailout processing
+  * CVE-2025-1935 (bmo#1866661)
+    Clickjacking the registerProtocolHandler info-bar
+  * CVE-2025-1936 (bmo#1940027)
+    Adding %00 and a fake extension to a jar: URL  changed the
+    interpretation of the contents
+  * CVE-2025-1937 (bmo#1938471, bmo#1940716)
+    Memory safety bugs fixed in Firefox 136, Thunderbird 136,
+    Firefox ESR 115.21, Firefox ESR 128.8, and Thunderbird 128.8
+  * CVE-2025-1938 (bmo#1922889, bmo#1935004, bmo#1943586,
+    bmo#1943912, bmo#1948111)
+    Memory safety bugs fixed in Firefox 136, Thunderbird 136,
+    Firefox ESR 128.8, and Thunderbird 128.8
+
+-------------------------------------------------------------------
 Mon Feb  3 15:12:37 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Firefox Extended Support Release 128.7.0 ESR
