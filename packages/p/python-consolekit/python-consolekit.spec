@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-consolekit%{psuffix}
 Version:        1.7.2
 Release:        0
