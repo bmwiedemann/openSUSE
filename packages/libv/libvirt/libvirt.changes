@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  3 23:48:42 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 11.1.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-1-0-2025-03-03
+
+-------------------------------------------------------------------
 Mon Feb 24 19:06:04 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Adjust downstream patch 'Add virt-create-rootfs utility' to only

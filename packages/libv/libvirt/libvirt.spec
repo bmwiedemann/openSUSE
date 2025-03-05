@@ -149,7 +149,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        11.0.0
+Version:        11.1.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -196,7 +196,7 @@ BuildRequires:  libacl-devel
 BuildRequires:  qemu-tools
 %endif
 BuildRequires:  bash-completion-devel >= 2.0
-BuildRequires:  glib2-devel >= 2.58
+BuildRequires:  glib2-devel >= 2.66
 BuildRequires:  libattr-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgnutls-devel
@@ -380,6 +380,7 @@ resources
 %package daemon-plugin-lockd
 Summary:        lockd client plugin for virtlockd
 Requires:       %{name}-libs = %{version}-%{release}
+Requires:       %{name}-daemon-common = %{version}-%{release}
 
 %description daemon-plugin-lockd
 A client-side plugin that implements disk locking using POSIX fcntl advisory
@@ -820,6 +821,7 @@ Summary:        Sanlock lock manager plugin for QEMU driver
 Requires:       sanlock >= 2.4
 # For virt-sanlock-cleanup require augeas
 Requires:       %{name}-libs = %{version}-%{release}
+Requires:       %{name}-daemon-common = %{version}-%{release}
 Requires:       augeas
 Obsoletes:      %{name}-lock-sanlock < 9.0.0
 Provides:       %{name}-lock-sanlock = %{version}-%{release}
@@ -1164,6 +1166,7 @@ rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirt_sanlock.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirt_sanlock.aug
 %endif
 
+rm -f %{buildroot}/%{_sysusersdir}/libvirt.conf
 rm -f %{buildroot}/%{_sysusersdir}/libvirt-qemu.conf
 rm -f %{buildroot}/usr/lib/sysctl.d/60-libvirtd.conf
 
@@ -1476,6 +1479,7 @@ fi
 
 %files daemon-common
 %dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/connection-driver/
 %attr(0755, root, root) %{_libexecdir}/libvirt-guests.sh
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/hooks
 %{_unitdir}/libvirt-guests.service
@@ -1583,7 +1587,6 @@ fi
 %{_unitdir}/virtinterfaced-ro.socket
 %{_unitdir}/virtinterfaced-admin.socket
 %{_sbindir}/virtinterfaced
-%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_interface.so
 %doc %{_mandir}/man8/virtinterfaced.8*
 %endif
@@ -1606,7 +1609,6 @@ fi
 %dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/network/
 %dir %attr(0755, root, root) %{_localstatedir}/lib/%{name}/dnsmasq/
 %attr(0755, root, root) %{_libexecdir}/libvirt_leaseshelper
-%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_network.so
 %if %{with_firewalld_zone}
 %dir %{_prefix}/lib/firewalld/zones/
@@ -1628,7 +1630,6 @@ fi
 %{_unitdir}/virtnodedevd-ro.socket
 %{_unitdir}/virtnodedevd-admin.socket
 %{_sbindir}/virtnodedevd
-%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_nodedev.so
 %doc %{_mandir}/man8/virtnodedevd.8*
 
@@ -1642,7 +1643,6 @@ fi
 %{_unitdir}/virtnwfilterd-admin.socket
 %{_sbindir}/virtnwfilterd
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/nwfilter/
-%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_nwfilter.so
 %doc %{_mandir}/man8/virtnwfilterd.8*
 
@@ -1656,7 +1656,6 @@ fi
 %{_unitdir}/virtsecretd-admin.socket
 %{_sbindir}/virtsecretd
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/secrets/
-%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_secret.so
 %doc %{_mandir}/man8/virtsecretd.8*
 
@@ -1674,12 +1673,9 @@ fi
 %attr(0755, root, root) %{_libexecdir}/libvirt_parthelper
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/storage/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/storage/autostart/
-%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_storage.so
 %dir %{_libdir}/%{name}/storage-backend/
 %{_libdir}/%{name}/storage-backend/libvirt_storage_backend_fs.so
-%dir %{_libdir}/%{name}/storage-file/
-%{_libdir}/%{name}/storage-file/libvirt_storage_file_fs.so
 %doc %{_mandir}/man8/virtstoraged.8*
 
 %files daemon-driver-storage-disk
@@ -1700,6 +1696,7 @@ fi
 %if %{with_storage_gluster}
 %files daemon-driver-storage-gluster
 %{_libdir}/%{name}/storage-backend/libvirt_storage_backend_gluster.so
+%dir %{_libdir}/%{name}/storage-file/
 %{_libdir}/%{name}/storage-file/libvirt_storage_file_gluster.so
 %endif
 
@@ -1739,7 +1736,6 @@ fi
 %dir %attr(0700, root, root) %{_localstatedir}/log/%{name}/qemu/
 %{_datadir}/augeas/lenses/libvirtd_qemu.aug
 %{_datadir}/augeas/lenses/tests/test_libvirtd_qemu.aug
-%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_qemu.so
 %dir %attr(0711, root, root) %{_localstatedir}/lib/%{name}/swtpm/
 %dir %attr(0711, root, root) %{_localstatedir}/log/swtpm/
@@ -1770,7 +1766,6 @@ fi
 %attr(0755, root, root) %{_libexecdir}/libvirt_lxc
 %{_datadir}/augeas/lenses/libvirtd_lxc.aug
 %{_datadir}/augeas/lenses/tests/test_libvirtd_lxc.aug
-%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_lxc.so
 %{_bindir}/virt-create-rootfs
 %doc %{_mandir}/man1/virt-create-rootfs.1*
@@ -1802,7 +1797,6 @@ fi
 %dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/libxl/dump/
 %dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/libxl/save/
 %dir %attr(0700, root, root) %{_localstatedir}/log/%{name}/libxl/
-%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_libxl.so
 %doc %{_mandir}/man8/virtxend.8*
 %endif
@@ -1853,7 +1847,6 @@ fi
 %{_bindir}/virt-pki-query-dn
 %{_bindir}/virt-pki-validate
 %{_datadir}/bash-completion/completions/virsh
-%dir %{_libdir}/%{name}/
 
 %if %{with_qemu}
 %files client-qemu

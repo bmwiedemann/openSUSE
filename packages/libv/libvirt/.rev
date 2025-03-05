@@ -4806,4 +4806,14 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
   install virt-create-rootfs when building the LXC driver</comment>
     <requestid>1248244</requestid>
   </revision>
+  <revision rev="418" vrev="1">
+    <srcmd5>b427fe067bcb55818cd309eeb29bd925</srcmd5>
+    <version>11.1.0</version>
+    <time>1741178359</time>
+    <user>anag+factory</user>
+    <comment>- Update to libvirt 11.1.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-1-0-2025-03-03</comment>
+    <requestid>1249952</requestid>
+  </revision>
 </revisionlist>
