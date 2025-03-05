@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pyproject-examples
 Version:        2023.6.30
 Release:        0
