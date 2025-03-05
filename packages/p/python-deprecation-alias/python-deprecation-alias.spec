@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-deprecation-alias%{psuffix}
 Version:        0.3.3
 Release:        0
