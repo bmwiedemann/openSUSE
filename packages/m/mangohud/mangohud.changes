@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  5 10:10:36 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.1:
+  * Added Elbrus CPU temperature support.
+  * fps_metrics has been reworked and should be more accurate now.
+  * fex_stats displays developer stats for FEX emulator.
+
+-------------------------------------------------------------------
 Tue Feb 11 05:42:04 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.8.0:
