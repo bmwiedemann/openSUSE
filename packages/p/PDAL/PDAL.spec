@@ -18,10 +18,10 @@
 
 
 %define soname 18
-%define sovers 18.0.0
+%define sovers 18.1.0
 %define lname   pdal
 Name:           PDAL
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # The code is licensed BSD except for:
@@ -272,7 +272,7 @@ sed -i 's,/usr//usr/lib64,%{_libdir},g' %{buildroot}/%{_libdir}/cmake/PDAL/PDALC
 
 %files -n lib%{name}%{soname}
 %license LICENSE.txt
-%doc AUTHORS.txt README.md RELEASENOTES.txt
+%doc README.md
 %{_libdir}/libpdalcpp.so.%{soname}
 %{_libdir}/libpdalcpp.so.%{sovers}
 # Plugins
@@ -290,7 +290,7 @@ sed -i 's,/usr//usr/lib64,%{_libdir},g' %{buildroot}/%{_libdir}/cmake/PDAL/PDALC
 
 %files devel
 %license LICENSE.txt
-%doc AUTHORS.txt README.md CONTRIBUTING.md
+%doc README.md CONTRIBUTING.md
 %{_includedir}/pdal
 %{_libdir}/libpdalcpp.so
 %{_libdir}/libpdal_plugin_kernel_fauxplugin.so

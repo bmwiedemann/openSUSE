@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  3 20:22:09 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 2.8.4; Upstream lists the following changes:
+  * Handle null strings as tests for startsWith and endsWith. by @hobu in #4606
+  * add zenodo citation information by @hobu in #4612
+  * Add new section to pipeline docs: "multiple writers and output types" by @hobu in #4613
+  * Use gdal_fwd.hpp when available for forward declarations by @hobu in #4614
+  * Source tree cleanups by @hobu in #4616
+  * fixes md5 link to 2.8.3 by @smellman in #4617
+  * Define destructor in source file for CSFilter. by @hobu in #4621
+  * upload .conda files from conda package build CI by @hobu in #4626
+  * Update include directives for LasReader and LasHeader in transition from libLAS to PDAL guide by @hobu in #4635
+  * Fix bad calculation for max width cases in readers.copc by @hobu in #4640
+  * Read quickinfo or filters.stats to create TileDB array by @hobu in #4642
+  See https://github.com/PDAL/PDAL/releases/tag/2.8.4 and
+  https://github.com/PDAL/PDAL/compare/2.8.3...2.8.4 for more information
+
+
+-------------------------------------------------------------------
 Wed Jan 15 13:17:19 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update tp 2.8.3
