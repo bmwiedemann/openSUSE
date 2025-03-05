@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:31:22 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.8:
+  * dump.exfat: fix an incorrect output of an entry
+    position in 32-bit system.
+  * mkfs.exfat: fill an oem sector with zero instead
+    of one.
+  * exfatprogs: fix compilation on musl based systems
+    due to loff_t type. And update the Github action
+    to validate builds on the system.
+
+-------------------------------------------------------------------
 Wed Feb  5 08:22:57 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.7:

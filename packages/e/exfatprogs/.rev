@@ -251,4 +251,19 @@
     directory.</comment>
     <requestid>1243278</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2250393b5d554f27bbe422d5f7d5f54e</srcmd5>
+    <version>1.2.8</version>
+    <time>1741178289</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.8:
+  * dump.exfat: fix an incorrect output of an entry
+    position in 32-bit system.
+  * mkfs.exfat: fill an oem sector with zero instead
+    of one.
+  * exfatprogs: fix compilation on musl based systems
+    due to loff_t type. And update the Github action
+    to validate builds on the system.</comment>
+    <requestid>1250086</requestid>
+  </revision>
 </revisionlist>
