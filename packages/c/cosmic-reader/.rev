@@ -34,4 +34,12 @@
   * Move text lines using transforms (forwarded request 1228840 from rrahl0)</comment>
     <requestid>1228841</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>edf0a1949b53e88c01fd236f683a1798</srcmd5>
+    <version>0.1.0+git20250114.9ea7c85</version>
+    <time>1741178433</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1250195</requestid>
+  </revision>
 </revisionlist>

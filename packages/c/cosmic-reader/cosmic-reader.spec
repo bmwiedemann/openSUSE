@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-reader
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-reader
-Version:        0.1.0+git20241022.9f62f54
+Version:        0.1.0+git20250114.9ea7c85
 Release:        0
 Summary:        COSMIC PDF reader
 License:        GPL-3.0-only
