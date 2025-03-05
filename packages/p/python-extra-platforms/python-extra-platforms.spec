@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-extra-platforms
-Version:        2.1.0
+Version:        3.1.0
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        GPL-2.0-or-later
 URL:            https://github.com/kdeldycke/extra-platforms
 Source:         https://files.pythonhosted.org/packages/source/e/extra-platforms/extra_platforms-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module boltons >= 25.0.0}
 BuildRequires:  %{python_module distro >= 1.9.0}
 BuildRequires:  %{python_module pip}

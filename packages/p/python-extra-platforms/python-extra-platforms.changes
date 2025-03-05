@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar  5 10:53:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.1.0:
+  * Allow platform ID membership test on groups.
+  * Add items() method to Group.
+  * Allow None values in nested references to platforms and groups.
+  * Keep initial order of data from platforms_from_ids() and
+    groups_from_ids() results.
+  * Allow arbitrary arguments number in Group._extract_platforms().
+
+-------------------------------------------------------------------
+Wed Mar  5 10:51:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.0.0:
+  * Allow set operations to resolve group and Platform IDs.
+  * Make resolution of platform and group IDs case-insensitive.
+  * Only runs website tests on Linux to prevent DOSing them.
+  * Drop supports for Python 3.10.
+  * Remove tomli dependency.
+
+-------------------------------------------------------------------
 Thu Feb 20 18:31:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.1.0:
