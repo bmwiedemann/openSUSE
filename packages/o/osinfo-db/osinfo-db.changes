@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 27 13:54:24 MST 2025 - carnold@suse.com
+
+- Modify SLES and Leap 16 database entries to define new volume id
+  of Agama 12 ISOs (bsc#1236401)
+  add-sles16-support.patch
+  add-opensuse-leap-16.0-support.patch
+
+-------------------------------------------------------------------
+Fri Feb 21 15:55:42 MST 2025 - carnold@suse.com
+
+- Add for SLES 16 / Leap 16, <firmware arch="x86_64" type="efi"/>
+  add-sles16-support.patch
+  add-opensuse-leap-16.0-support.patch
+
+-------------------------------------------------------------------
 Mon Jan 27 08:17:59 MST 2025 - carnold@suse.com
 
 - Update to database version 20250124 (jsc#PED-8910)
