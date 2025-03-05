@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar  5 10:30:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.6.7:
+  * Fixed #8056: Error in backrefs implementation (9.6.6
+    regression)
+  * Fixed #8054: Unescaped quotes in ARIA labels of table of
+    contents
+
+-------------------------------------------------------------------
+Mon Mar  3 14:56:12 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Add missing dependency for plugins
+
+-------------------------------------------------------------------
+Sat Mar  1 10:41:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.6.6:
+  * Fixed #8040: Privacy plugin not replacing exteral assets (9.6.5
+    regression)
+  * Fixed #8031: Replace unmtaintained regex package in search
+    plugin
+
+-------------------------------------------------------------------
 Thu Feb 20 08:56:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.6.5:

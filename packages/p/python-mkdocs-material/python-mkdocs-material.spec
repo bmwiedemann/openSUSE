@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-material
-Version:        9.6.5
+Version:        9.6.7
 Release:        0
 Summary:        Material theme for mkdocs
 License:        MIT
@@ -50,9 +50,9 @@ BuildRequires:  %{python_module pymdown-extensions >= 10.3}
 # Requirements for plugins
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L29
 BuildRequires:  %{python_module Babel >= 2.10}
+BuildRequires:  %{python_module backrefs >= 5.7.post1}
 BuildRequires:  %{python_module colorama >= 0.4}
 BuildRequires:  %{python_module paginate >= 0.5}
-BuildRequires:  %{python_module regex => 2023.8}
 BuildRequires:  %{python_module requests >= 2.31}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -67,9 +67,9 @@ Requires:       (python-mkdocs >= 1.5.3 with python-mkdocs < 2)
 # Requirements for plugins
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L29
 Requires:       python-Babel >= 2.10
+Requires:       python-backrefs >= 5.7.post1
 Requires:       python-colorama >= 0.4
 Requires:       python-paginate >= 0.5
-Requires:       python-regex => 2023.8
 Requires:       python-requests >= 2.31
 
 BuildArch:      noarch
