@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-wallpapers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           cosmic-wallpapers
-Version:        1.0.0~alph4+0
+Version:        1.0.0~alph6+0
 Release:        0
 Summary:        Wallpapers for the COSMIC Desktop Environment
-License:        CC-BY-4.0 OR  CC0-1.0
+License:        CC-BY-4.0 OR CC0-1.0
 URL:            https://github.com/pop-os/cosmic-wallpapers
 Source0:        %{name}-%{version}.tar.zst
 BuildRequires:  make
