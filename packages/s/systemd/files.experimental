@@ -10,8 +10,14 @@
 %dir %{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d
 %dir %{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d
 %dir %{_sysconfdir}/systemd/oomd.conf.d
+%if %{with upstream}
+%dir %{_unitdir}/factory-reset.target.wants
+%endif
 %if %{with sd_boot}
 %dir %{_unitdir}/initrd.target.wants
+%endif
+%if %{with upstream}
+%dir %{_unitdir}/storage-target-mode.target.wants
 %endif
 # Main config files have been replaced in favor of drop-ins.
 %ghost %{_sysconfdir}/systemd/oomd.conf
@@ -142,6 +148,9 @@
 %{_systemdgeneratordir}/systemd-tpm2-generator
 %{_sysusersdir}/systemd-oom.conf
 %{_unitdir}/dbus-org.freedesktop.sysupdate1.service
+%if %{with upstream}
+%{_unitdir}/factory-reset.target.wants/systemd-pcrphase-factory-reset.service
+%endif
 %{_unitdir}/initrd.target.wants/systemd-bsod.service
 %if %{with sd_boot}
 %{_unitdir}/initrd.target.wants/systemd-pcrphase-initrd.service
@@ -149,6 +158,9 @@
 %{_unitdir}/sockets.target.wants/systemd-pcrlock.socket
 %endif
 %{_unitdir}/storage-target-mode.target
+%if %{with upstream}
+%{_unitdir}/storage-target-mode.target.wants/systemd-pcrphase-storage-target-mode.service
+%endif
 %if %{with sd_boot}
 %{_unitdir}/sysinit.target.wants/systemd-pcrmachine.service
 %{_unitdir}/sysinit.target.wants/systemd-pcrphase-sysinit.service
@@ -174,7 +186,13 @@
 %{_unitdir}/systemd-pcrlock.socket
 %{_unitdir}/systemd-pcrlock@.service
 %{_unitdir}/systemd-pcrmachine.service
+%if %{with upstream}
+%{_unitdir}/systemd-pcrphase-factory-reset.service
+%endif
 %{_unitdir}/systemd-pcrphase-initrd.service
+%if %{with upstream}
+%{_unitdir}/systemd-pcrphase-storage-target-mode.service
+%endif
 %{_unitdir}/systemd-pcrphase-sysinit.service
 %{_unitdir}/systemd-pcrphase.service
 %endif
@@ -189,3 +207,6 @@
 %{_unitdir}/systemd-tpm2-setup.service
 %endif
 %{_unitdir}/systemd-vmspawn@.service
+%if %{with upstream}
+/usr/etc/profile.d/80-systemd-osc-context.sh
+%endif

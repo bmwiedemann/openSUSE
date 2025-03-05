@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package systemd
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -25,7 +25,12 @@
 %define systemd_version    %{?version_override}%{!?version_override:%(cat meson.version)}
 %define systemd_release    %{?release_override}%{!?release_override:0}
 %define archive_version    %{nil}
-%else
+%endif
+
+# Enable this feature if the package version is set by obs-service-set_version.
+%bcond_with obs_service_set_version
+
+%if %{without obs_service_set_version}
 %define systemd_version    257.3
 %define systemd_release    0
 %define archive_version    +suse.3.ge03ffd74c4
@@ -80,8 +85,8 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        %systemd_version
-Release:        %systemd_release
+Version:        %{?systemd_version}
+Release:        0%{?systemd_release}
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -180,7 +185,7 @@ Provides:       systemd-analyze = %{version}-%{release}
 Obsoletes:      pm-utils <= 1.4.1
 Obsoletes:      suspend <= 1.0
 Obsoletes:      systemd-analyze < 201
-Source0:        systemd-%{version}%{archive_version}.tar.xz
+Source0:        systemd-%{version}%{?archive_version}.tar.xz
 Source1:        systemd-rpmlintrc
 Source3:        systemd-update-helper
 %if %{with sysvcompat}
@@ -238,11 +243,6 @@ Patch:          0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 Patch:          5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
 Patch:          5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
 %endif
-
-# When building on OBS with version substitution, the version field will be updated, but not the intermediary
-# defines, so define systemd_major here after Version has been set, rather than using systemd_version, which
-# will be empty (and thus break files.systemd which uses it)
-%define systemd_major      %{sub %version 1 3}
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -344,7 +344,7 @@ Requires:       group(lp)
 Requires(pre):  group(kvm)
 Requires(post): sed
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 # 'regenerate_initrd_post' macro is expanded during build, hence this BR.
 BuildRequires:  suse-module-tools
 %if %{without bootstrap}
@@ -731,15 +731,19 @@ for the C APIs.
 %endif
 
 %prep
-%autosetup -p1 -n systemd-%{version}%{archive_version}
+%autosetup -p1 -n systemd-%{version}%{?archive_version}
+
+# When building on OBS with version substitution, systemd_version is not
+# defined, and the "Version:" field contains the base version plus the archive
+# version. Therefore, recompute the base version so it can be used seamlessly to
+# name the private shared libraries.
+%global base_version %(v=%{version}; echo ${v%%+*})
 
 %build
 %meson \
         -Dmode=release \
-        -Dversion-tag=%{version}%{archive_version} \
-%if %{with upstream}
-        -Dshared-lib-tag=%{systemd_major} \
-%endif
+        -Dversion-tag=%{version}%{?archive_version} \
+        -Dshared-lib-tag=%{base_version}-%{release} \
         -Ddocdir=%{_docdir}/systemd \
         -Dconfigfiledir=/usr/lib \
         -Dsplit-bin=true \

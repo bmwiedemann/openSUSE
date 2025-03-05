@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Mar  3 09:56:53 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Name libsystemd-{shared,core} based on the major version of systemd and the
+  package release number (bsc#1228081)
+
+  This way, both the old and new versions of these shared libraries will be
+  present during the update. This should prevent issues during package updates
+  when incompatible changes are introduced in the new versions of these shared
+  libraries.
+
+  Note: these libraries are private so only binaries shipped by systemd and its
+  sub-packages can be linked against them.
+
+-------------------------------------------------------------------
+Wed Feb 26 09:39:53 UTC 2025 - Luca Boccassi <luca.boccassi@gmail.com>
+
+- Move 20-systemd-stub.conf tmpfiles.d from the systemd-boot
+  package to the systemd main package, as it is needed in the
+  initrd to copy stuff from /.extra to /run/systemd/stub.
+  Installing systemd-boot in the initrd is not the right approach,
+  as that pulls in the bootloader and other files that have no use
+  in the initrd and just take up space. The main package is always
+  in the initrd, so it's the right place to ensure that, if
+  systemd-boot is used, the snippet is present, and it will be a
+  no-op otherwise.
+
+-------------------------------------------------------------------
 Fri Feb 14 09:00:29 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Import commit e03ffd74c4a30c1c75e05874ce18d31e503437b7 (merge of v257.3)

@@ -240,8 +240,8 @@
 %{_libdir}/libnss_myhostname.so.2
 %{_libdir}/libnss_systemd.so.2
 %endif
-%{_libdir}/systemd/libsystemd-core-%{systemd_major}.so
-%{_libdir}/systemd/libsystemd-shared-%{systemd_major}.so
+%{_libdir}/systemd/libsystemd-core-%{base_version}-%{release}.so
+%{_libdir}/systemd/libsystemd-shared-%{base_version}-%{release}.so
 %if %{without bootstrap}
 %{_mandir}/man1/busctl.1.gz
 %{_mandir}/man1/coredumpctl.1.gz
@@ -401,6 +401,9 @@
 %{_mandir}/man8/systemd-localed.service.8.gz
 %{_mandir}/man8/systemd-logind.8.gz
 %{_mandir}/man8/systemd-logind.service.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-loop@.service.8.gz
+%endif
 %{_mandir}/man8/systemd-machine-id-commit.service.8.gz
 %{_mandir}/man8/systemd-poweroff.service.8.gz
 %{_mandir}/man8/systemd-reboot.service.8.gz
@@ -534,6 +537,9 @@
 %{_sysusersdir}/systemd-coredump.conf
 %endif
 %{_sysusersdir}/systemd-journal.conf
+%if %{with sd_boot}
+%{_tmpfilesdir}/20-systemd-stub.conf
+%endif
 %{_tmpfilesdir}/credstore.conf
 %{_tmpfilesdir}/journal-nocow.conf
 %{_tmpfilesdir}/provision.conf
@@ -581,6 +587,10 @@
 %{_unitdir}/getty@.service
 %{_unitdir}/graphical.target
 %{_unitdir}/halt.target
+%if %{with upstream}
+%{_unitdir}/imports-pre.target
+%{_unitdir}/imports.target
+%endif
 %{_unitdir}/initrd-cleanup.service
 %{_unitdir}/initrd-fs.target
 %{_unitdir}/initrd-parse-etc.service
@@ -661,6 +671,9 @@
 %{_unitdir}/sysinit.target.wants/systemd-machine-id-commit.service
 %{_unitdir}/sysinit.target.wants/systemd-sysctl.service
 %{_unitdir}/sysinit.target.wants/systemd-sysusers.service
+%if %{with upstream}
+%{_unitdir}/sysinit.target.wants/imports.target
+%endif
 %{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup.service
 %{_unitdir}/sysinit.target.wants/systemd-update-done.service
 %if %{with utmp}
@@ -707,6 +720,9 @@
 %{_unitdir}/systemd-kexec.service
 %{_unitdir}/systemd-localed.service
 %{_unitdir}/systemd-logind.service
+%if %{with upstream}
+%{_unitdir}/systemd-loop@.service
+%endif
 %{_unitdir}/systemd-machine-id-commit.service
 %{_unitdir}/systemd-poweroff.service
 %{_unitdir}/systemd-reboot.service

@@ -326,6 +326,9 @@
 %{_unitdir}/hybrid-sleep.target
 %if %{without bootstrap}
 %{_unitdir}/initrd-root-device.target.wants/remote-cryptsetup.target
+%if %{with upstream}
+%{_unitdir}/initrd-root-device.target.wants/remote-integritysetup.target
+%endif
 %{_unitdir}/initrd-root-device.target.wants/remote-veritysetup.target
 %endif
 %{_unitdir}/initrd-udevadm-cleanup-db.service
@@ -339,6 +342,9 @@
 %{_unitdir}/quotaon@.service
 %if %{without bootstrap}
 %{_unitdir}/remote-cryptsetup.target
+%if %{with upstream}
+%{_unitdir}/remote-integritysetup.target
+%endif
 %{_unitdir}/remote-veritysetup.target
 %endif
 %{_unitdir}/sleep.target
