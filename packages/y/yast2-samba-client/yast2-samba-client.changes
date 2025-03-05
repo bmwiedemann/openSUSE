@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 28 09:51:46 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Fix on AD join error "Failed to join domain: failed to create
+  kerberos keytab"; (bsc#1238063);(bso#15727).
+- 5.0.1
+
+-------------------------------------------------------------------
 Mon Feb  3 09:40:11 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
 
 - Remove nscd-related code (bsc#1236308)
