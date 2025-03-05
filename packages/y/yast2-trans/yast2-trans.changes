@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 03 05:13:20 UTC 2025 - git@opensuse.org
+
+- Update to version 84.87.20250302.f9b2398900:
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Added translation using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Added translation using Weblate (Swedish)
+
+-------------------------------------------------------------------
+Wed Feb 26 11:30:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Make build recipe POSIX sh compatible
+- Trim old specfile constructs
+
+-------------------------------------------------------------------
 Mon Feb 24 05:13:22 UTC 2025 - git@opensuse.org
 
 - Update to version 84.87.20250221.72f607339a:

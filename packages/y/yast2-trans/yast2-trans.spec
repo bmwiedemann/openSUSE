@@ -17,7 +17,7 @@
 
 
 Name:           yast2-trans
-Version:        84.87.20250221.72f607339a
+Version:        84.87.20250302.f9b2398900
 Release:        0
 Summary:        YaST2 - Translation Container Package
 License:        GPL-2.0-or-later
@@ -25,7 +25,6 @@ Group:          System/YaST
 Source0:        %{name}-%{version}.tar.xz
 Source1:        COPYING
 Source2:        po-stats
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 URL:            https://github.com/yast/yast2-translations/
 Obsoletes:      yast2-trans-en
@@ -742,13 +741,12 @@ URL:            http://l10n.opensuse.org/
 YaST2 - Translations for Traditional Chinese.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-:
 
 %install
-pushd po
+cd po
 for l in %build_languages; do
   target_dir=%{buildroot}/usr/share/YaST2/locale/$l/LC_MESSAGES
   mkdir -p $target_dir
@@ -770,403 +768,320 @@ if [ -s "failed" ]; then
         cat failed
 	exit 1
 fi
-popd
-
-%clean
-rm -rf %{buildroot}
 
 %files
-%defattr(-,root,root)
 %dir %{_datadir}/YaST2
 %dir %{_datadir}/YaST2/locale
 
 %files af
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-af
 %lang(af) %{_datadir}/YaST2/locale/af
 
 %files am
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-am
 %lang(am) %{_datadir}/YaST2/locale/am
 
 %files ast
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ast
 %lang(ast) %{_datadir}/YaST2/locale/ast
 
 %files ar
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ar
 %lang(ar) %{_datadir}/YaST2/locale/ar
 
 %files be
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-be
 %lang(be) %{_datadir}/YaST2/locale/be
 
 %files bg
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-bg
 %lang(bg) %{_datadir}/YaST2/locale/bg
 
 %files bn
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-bn
 %lang(bn) %{_datadir}/YaST2/locale/bn
 
 %files bs
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-bs
 %lang(bs) %{_datadir}/YaST2/locale/bs
 
 %files ca
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ca
 %lang(ca) %{_datadir}/YaST2/locale/ca
 
 %files cs
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-cs
 %lang(cs) %{_datadir}/YaST2/locale/cs
 
 %files cy
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-cy
 %lang(cy) %{_datadir}/YaST2/locale/cy
 
 %files da
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-da
 %lang(da) %{_datadir}/YaST2/locale/da
 
 %files de
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-de
 %lang(de) %{_datadir}/YaST2/locale/de
 
 %files el
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-el
 %lang(el) %{_datadir}/YaST2/locale/el
 
 %files eo
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-eo
 %lang(el) %{_datadir}/YaST2/locale/eo
 
 %files es
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-es
 %lang(es) %{_datadir}/YaST2/locale/es
 
 %files es_AR
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-es_AR
 %lang(es_AR) %{_datadir}/YaST2/locale/es_AR
 
 %files et
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-et
 %lang(et) %{_datadir}/YaST2/locale/et
 
 %files eu
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-eu
 %lang(eu) %{_datadir}/YaST2/locale/eu
 
 %files fa
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-fa
 %lang(fa) %{_datadir}/YaST2/locale/fa
 
 %files fi
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-fi
 %lang(fi) %{_datadir}/YaST2/locale/fi
 
 %files fr
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-fr
 %lang(fr) %{_datadir}/YaST2/locale/fr
 
 %files gl
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-gl
 %lang(gl) %{_datadir}/YaST2/locale/gl
 
 %files gu
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-gu
 %lang(gu) %{_datadir}/YaST2/locale/gu
 
 %files he
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-he
 %lang(he) %{_datadir}/YaST2/locale/he
 
 %files hi
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-hi
 %lang(hi) %{_datadir}/YaST2/locale/hi
 
 %files hr
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-hr
 %lang(hr) %{_datadir}/YaST2/locale/hr
 
 %files hu
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-hu
 %lang(hu) %{_datadir}/YaST2/locale/hu
 
 %files id
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-id
 %lang(id) %{_datadir}/YaST2/locale/id
 
 %files it
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-it
 %lang(it) %{_datadir}/YaST2/locale/it
 
 %files ja
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ja
 %lang(ja) %{_datadir}/YaST2/locale/ja
 
 %files jv
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-jv
 %lang(jv) %{_datadir}/YaST2/locale/jv
 
 %files ka
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ka
 %lang(ka) %{_datadir}/YaST2/locale/ka
 
 %files kab
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-kab
 %lang(kab) %{_datadir}/YaST2/locale/kab
 
 %files km
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-km
 %lang(km) %{_datadir}/YaST2/locale/km
 
 %files kn
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-kn
 %lang(kn) %{_datadir}/YaST2/locale/kn
 
 %files ko
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ko
 %lang(ko) %{_datadir}/YaST2/locale/ko
 
 %files ku
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ku
 %lang(ku) %{_datadir}/YaST2/locale/ku
 
 %files lo
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-lo
 %lang(lo) %{_datadir}/YaST2/locale/lo
 
 %files lt
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-lt
 %lang(lt) %{_datadir}/YaST2/locale/lt
 
 %files lv
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-lv
 %lang(lv) %{_datadir}/YaST2/locale/lv
 
 %files mk
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-mk
 %lang(mk) %{_datadir}/YaST2/locale/mk
 
 %files mr
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-mr
 %lang(mr) %{_datadir}/YaST2/locale/mr
 
 %files ms
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ms
 %lang(ms) %{_datadir}/YaST2/locale/ms
 
 %files my
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-my
 %lang(my) %{_datadir}/YaST2/locale/my
 
 %files nb
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-nb
 %lang(nb) %{_datadir}/YaST2/locale/nb
 
 %files nds
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-nds
 %lang(nds) %{_datadir}/YaST2/locale/nds
 
 %files ne
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ne
 %lang(ne) %{_datadir}/YaST2/locale/ne
 
 %files nl
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-nl
 %lang(nl) %{_datadir}/YaST2/locale/nl
 
 %files nn
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-nn
 %lang(nn) %{_datadir}/YaST2/locale/nn
 
 %files pa
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-pa
 %lang(pa) %{_datadir}/YaST2/locale/pa
 
 %files pl
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-pl
 %lang(pl) %{_datadir}/YaST2/locale/pl
 
 %files ps
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ps
 %lang(ps) %{_datadir}/YaST2/locale/ps
 
 %files pt
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-pt
 %lang(pt) %{_datadir}/YaST2/locale/pt
 
 %files ro
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ro
 %lang(ro) %{_datadir}/YaST2/locale/ro
 
 %files ru
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ru
 %lang(ru) %{_datadir}/YaST2/locale/ru
 
 %files si
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-si
 %lang(si) %{_datadir}/YaST2/locale/si
 
 %files sk
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-sk
 %lang(sk) %{_datadir}/YaST2/locale/sk
 
 %files sl
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-sl
 %lang(sl) %{_datadir}/YaST2/locale/sl
 
 %files sq
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-sq
 %lang(sq) %{_datadir}/YaST2/locale/sq
 
 %files sr
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-sr
 %lang(sr) %{_datadir}/YaST2/locale/sr
 
 %files sr-latin
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-sr@latin
 %lang(sr@latin) %{_datadir}/YaST2/locale/sr@latin
 
 %files sv
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-sv
 %lang(sv) %{_datadir}/YaST2/locale/sv
 
 %files sw
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-sw
 %lang(sw) %{_datadir}/YaST2/locale/sw
 
 %files ta
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-ta
 %lang(ta) %{_datadir}/YaST2/locale/ta
 
 %files tg
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-tg
 %lang(tg) %{_datadir}/YaST2/locale/tg
 
 %files th
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-th
 %lang(th) %{_datadir}/YaST2/locale/th
 
 %files tk
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-tk
 %lang(tk) %{_datadir}/YaST2/locale/tk
 
 %files tr
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-tr
 %lang(tr) %{_datadir}/YaST2/locale/tr
 
 %files uk
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-uk
 %lang(uk) %{_datadir}/YaST2/locale/uk
 
 %files vi
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-vi
 %lang(vi) %{_datadir}/YaST2/locale/vi
 
 %files wa
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-wa
 %lang(wa) %{_datadir}/YaST2/locale/wa
 
 %files xh
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-xh
 %lang(xh) %{_datadir}/YaST2/locale/xh
 
 %files zu
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-zu
 %lang(zu) %{_datadir}/YaST2/locale/zu
 
 %files en_GB
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-en_GB
 %lang(en_GB) %{_datadir}/YaST2/locale/en_GB
 
 %files pt_BR
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-pt_BR
 %lang(pt_BR) %{_datadir}/YaST2/locale/pt_BR
 
 %files zh_CN
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-zh_CN
 %lang(zh_CN) %{_datadir}/YaST2/locale/zh_CN
 
 %files zh_TW
-%defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-zh_TW
 %lang(zh_TW) %{_datadir}/YaST2/locale/zh_TW
 
