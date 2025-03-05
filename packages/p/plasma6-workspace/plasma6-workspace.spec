@@ -294,6 +294,7 @@ Requires:       systemsettings6 >= %{_plasma6_bugfix}
 # For KF5 kwayland (!)
 Requires:       (kwayland-integration6 if kwayland)
 Requires:       qt6-wayland
+Requires:       (libqt5-qtwayland if libQt5Gui5)
 # For screen sharing and window thumbnails in plasmashell
 Requires:       pipewire
 Requires:       xdg-user-dirs

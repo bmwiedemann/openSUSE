@@ -217,4 +217,12 @@
     <comment>Plasma 6.3.2(.1) (forwarded request 1248621 from Vogtinator)</comment>
     <requestid>1248691</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>ab36f2d4f9e86b81b8046f64c5a25f93</srcmd5>
+    <version>6.3.2</version>
+    <time>1741178314</time>
+    <user>anag+factory</user>
+    <comment>- Pull in libqt5-qtwayland if Qt 5 is installed (boo#1224995) (forwarded request 1249642 from Vogtinator)</comment>
+    <requestid>1249654</requestid>
+  </revision>
 </revisionlist>

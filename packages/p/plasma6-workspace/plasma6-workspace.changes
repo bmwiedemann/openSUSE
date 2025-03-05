@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  3 08:55:06 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Pull in libqt5-qtwayland if Qt 5 is installed (boo#1224995)
+
+-------------------------------------------------------------------
 Tue Feb 25 19:38:58 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.2:
