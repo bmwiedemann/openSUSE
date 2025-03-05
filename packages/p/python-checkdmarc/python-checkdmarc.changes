@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  4 16:36:52 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.8.1
+  * Fix incomplete fix for issue #159
+- Update to version 5.8.0
+  * Support ra=, rp= and rr= tags from RFC 6652.
+  * Do not use static answer positions when checking DNSSEC and
+    TLSA.
+- Update patch:
+  * skip-network-tests.patch
+
+-------------------------------------------------------------------
 Sun Nov 10 10:27:03 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.7.8

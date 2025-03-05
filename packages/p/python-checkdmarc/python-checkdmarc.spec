@@ -1,8 +1,8 @@
 #
 # spec file for package python-checkdmarc
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2021-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2021-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           python-checkdmarc
-Version:        5.7.8
+Version:        5.8.1
 Release:        0
 Summary:        A Python module and command line parser for SPF and DMARC records
 License:        Apache-2.0

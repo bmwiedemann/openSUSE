@@ -1,48 +1,8 @@
 diff --git a/tests.py b/tests.py
-index 8e58708..65605d4 100755
+index fd22132..b684ecb 100755
 --- a/tests.py
 +++ b/tests.py
-@@ -3,6 +3,7 @@
- 
- """Automated tests"""
- 
-+import os.path
- import unittest
- from collections import OrderedDict
- 
-@@ -99,6 +100,7 @@ class Test(unittest.TestCase):
- 
-         self.assertEqual(len(results["warnings"]), 0)
- 
-+    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")
-     def testSplitSPFRecord(self):
-         """Split SPF records are parsed properly"""
- 
-@@ -140,6 +142,7 @@ class Test(unittest.TestCase):
-             domain,
-         )
- 
-+    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")
-     def testTooManySPFDNSLookups(self):
-         """SPF records with > 10 SPF mechanisms that cause DNS lookups raise
-         SPFTooManyDNSLookups"""
-@@ -161,6 +164,7 @@ class Test(unittest.TestCase):
-             domain,
-         )
- 
-+    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")
-     def testTooManySPFVoidDNSLookups(self):
-         """SPF records with > 2 void DNS lookups"""
- 
-@@ -274,6 +278,7 @@ class Test(unittest.TestCase):
-             domain,
-         )
- 
-+    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")
-     def testSPFMissingMXRecord(self):
-         """A warning is issued if an SPF record contains a mx mechanism
-         pointing to a domain that has no MX records"""
-@@ -285,6 +290,7 @@ class Test(unittest.TestCase):
+@@ -291,6 +291,7 @@ class Test(unittest.TestCase):
              "{0} does not have any MX records".format(domain), results["warnings"]
          )
  
@@ -50,19 +10,3 @@ index 8e58708..65605d4 100755
      def testSPFMissingARecord(self):
          """A warning is issued if an SPF record contains a mx mechanism
          pointing to a domain that has no A records"""
-@@ -296,6 +302,7 @@ class Test(unittest.TestCase):
-             "cardinalhealth.net does not have any A/AAAA records", results["warnings"]
-         )
- 
-+    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")
-     def testDMARCPctLessThan100Warning(self):
-         """A warning is issued if the DMARC pvt value is less than 100"""
- 
-@@ -347,6 +354,7 @@ class Test(unittest.TestCase):
-             domain,
-         )
- 
-+    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")
-     def testBIMI(self):
-         """Test BIMI checks"""
-         domain = "chase.com"
