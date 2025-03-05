@@ -1,7 +1,7 @@
 #
 # spec file for package adolc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,10 +66,8 @@ This package provides the development environment for ADOL-C
 (Automatic Differentiation by OverLoading in C++).
 
 %package doc
-Summary:        Algorithmic Differentiation Library for C/C++ -- documentation
-%if 0%{?suse_version}
+Summary:        Documentation for the C/C++ Algorithmic Differentiation Library
 BuildArch:      noarch
-%endif
 
 %description doc
 This package provides the user's manual for ADOL-C.
@@ -81,7 +79,7 @@ This package provides the user's manual for ADOL-C.
 # autoreconf -v --install --force
 %configure
 %make_build
-# pushd ADOL-C/doc
+# cd ADOL-C/doc
 # for ((i=0; i < 3; i++)); do
 #    pdflatex adolc-manual.tex &>/dev/null
 # done
@@ -90,8 +88,7 @@ This package provides the user's manual for ADOL-C.
 %make_install
 find %{buildroot} -type f "(" -name "*.a" -o -name "*.la" ")" -delete -print
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}
 %license LICENSE
