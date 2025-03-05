@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Feb 22 02:24:58 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * a11y: Add magnifier toggle
+  * chore: Upgrade cctk/cosmic-protocols
+  * chore: update libcosmic
+  * chore: upgrade all dependencies
+  * chore: update libcosmic text styles
+  * i18n(ga): add translations
+  * i18n(uk): fix translation
+  * i18n(pl): translate desktop entries and metainfo
+  * i18n(sv): add translation for power applet
+  * Update for toplevel-info cctk changes
+  * chore: update libcosmic with mmap threshold fix
+  * i18n(hu): update Hungarian translations
+  * i18n(nl) improve Dutch translation
+  * feat: display WPS hint only when WPS is available
+  * refactor: remove dead code and unused imports
+  * improve(bluetooth): ignore devices with unknown type and without alias
+  * Use updated screencopy abstraction
+  * improv(network): use secure_input for Wi-Fi password field
+  * fix: set M_MALLOC_THRESHOLD to prevent memory fragmentation
+  * fix(battery): default to the balanced profile with PPD backend
+  * refactor(power): use cosmic-osd for confirmation dialog
+  * improv(minimize): simplify wayland subscription
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:00:01 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+0:
+  * fix(app-list): toplevel preview styling
+  * i18n(tr): update translation
+  * i18n(de): add German translation
+  * i18n(nl): translation update
+  * i18n(pl): update translation
+  * perf: optimized cosmic-freedesktop-icons
+  * perf: update freedesktop-icons to reduce memory usage
+
+-------------------------------------------------------------------
 Fri Jan 10 20:51:56 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+1:
