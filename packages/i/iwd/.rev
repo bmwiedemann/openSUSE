@@ -507,4 +507,12 @@
     <comment>Fix date format to be parseable (forwarded request 1240710 from bmwiedemann)</comment>
     <requestid>1240732</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>dbb86aa7ee7078cbaa074c3d0bad0446</srcmd5>
+    <version>3.4</version>
+    <time>1741178379</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1248639</requestid>
+  </revision>
 </revisionlist>
