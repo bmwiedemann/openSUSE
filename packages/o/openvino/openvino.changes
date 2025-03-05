@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Mar  4 00:38:30 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Disabled JAX plugin beta. 
+
+-------------------------------------------------------------------
+Sun Feb  9 03:36:41 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 2025.0.0
+- More GenAI coverage and framework integrations to minimize code
+  changes
+  * New models supported: Qwen 2.5, Deepseek-R1-Distill-Llama-8B,
+    DeepSeek-R1-Distill-Qwen-7B, and DeepSeek-R1-Distill-Qwen-1.5B, 
+    FLUX.1 Schnell and FLUX.1 Dev
+  * Whisper Model: Improved performance on CPUs, built-in GPUs,
+    and discrete GPUs with GenAI API.
+  * Preview: Introducing NPU support for torch.compile, giving
+    developers the ability to use the OpenVINO backend to run the
+    PyTorch API on NPUs. 300+ deep learning models enabled from
+    the TorchVision, Timm, and TorchBench repositories..
+- Broader Large Language Model (LLM) support and more model 
+  compression techniques.
+  * Preview: Addition of Prompt Lookup to GenAI API improves 2nd
+    token latency for LLMs by effectively utilizing predefined
+    prompts that match the intended use case.
+  * Preview: The GenAI API now offers image-to-image inpainting
+    functionality. This feature enables models to generate
+    realistic content by inpainting specified modifications and
+    seamlessly integrating them with the original image.
+  * Asymmetric KV Cache compression is now enabled for INT8 on
+    CPUs, resulting in lower memory consumption and improved 2nd
+    token latency, especially when dealing with long prompts that
+    require significant memory. The option should be explicitly
+    specified by the user.
+- More portability and performance to run AI at the edge, in the
+  cloud, or locally.
+  * Support for the latest Intel® Core™ Ultra 200H series 
+    processors (formerly codenamed Arrow Lake-H)
+  * Integration of the OpenVINO ™ backend with the Triton
+    Inference Server allows developers to utilize the Triton
+    server for enhanced model serving performance when deploying
+    on Intel CPUs.
+  * Preview: A new OpenVINO ™ backend integration allows
+    developers to leverage OpenVINO performance optimizations
+    directly within Keras 3 workflows for faster AI inference on
+    CPUs, built-in GPUs, discrete GPUs, and NPUs. This feature is
+    available with the latest Keras 3.8 release.
+  * The OpenVINO Model Server now supports native Windows Server
+    deployments, allowing developers to leverage better
+    performance by eliminating container overhead and simplifying
+    GPU deployment.
+- Support Change and Deprecation Notices
+  * Now deprecated:
+    + Legacy prefixes l_, w_, and m_ have been removed from
+      OpenVINO archive names.
+    + The runtime namespace for Python API has been marked as
+      deprecated and designated to be removed for 2026.0. The 
+      new namespace structure has been delivered, and migration
+      is possible  immediately. Details will be communicated 
+      through warnings andvia documentation.
+    + NNCF create_compressed_model() method is deprecated. 
+      nncf.quantize() method is now recommended for 
+      Quantization-Aware Training of PyTorch and 
+      TensorFlow models.
+
+-------------------------------------------------------------------
 Sun Dec 29 03:41:47 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - openvino-onnx-ml-defines.patch and 

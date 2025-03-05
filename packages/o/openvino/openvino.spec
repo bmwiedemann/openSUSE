@@ -1,7 +1,7 @@
 #
 # spec file for package openvino
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Alessandro de Oliveira Faria (A.K.A. CABELO) <cabelo@opensuse.org> or <alessandro.faria@owasp.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,13 +31,13 @@
 %define pythons python3
 %endif
 %define __builder ninja
-%define so_ver 2460
+%define so_ver 2500
 %define shlib lib%{name}%{so_ver}
 %define shlib_c lib%{name}_c%{so_ver}
 %define prj_name OpenVINO
 
 Name:           openvino
-Version:        2024.6.0
+Version:        2025.0.0
 Release:        0
 Summary:        A toolkit for optimizing and deploying AI inference
 # Let's be safe and put all third party licenses here, no matter that we use specific thirdparty libs or not
@@ -292,6 +292,7 @@ export CC=gcc-13 CXX=g++-13
       -DENABLE_OV_TF_FRONTEND=ON \
       -DENABLE_OV_TF_LITE_FRONTEND=ON \
       -DENABLE_INTEL_GPU=OFF \
+      -DENABLE_OV_JAX_FRONTEND=OFF \
       -DENABLE_JS=OFF \
       -DENABLE_PYTHON=ON \
       -DENABLE_WHEEL=OFF \
