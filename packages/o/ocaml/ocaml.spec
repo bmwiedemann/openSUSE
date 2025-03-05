@@ -66,7 +66,13 @@ Requires:       ocaml(runtime) = %version-%release
 Obsoletes:      ocaml-docs
 Provides:       ocaml(compiler) = %ocaml_base_version
 Provides:       ocaml(ocaml_base_version) = %ocaml_base_version
+%if 0%{?suse_version} > 1315
 Requires:       gcc
+%else
+BuildRequires:  gcc7
+Requires:       gcc7
+Requires:       gcc7-c++
+%endif
 Provides:       ocaml(ocaml.opt) = %ocaml_base_version
 Obsoletes:      ocaml-seq < %version-%release
 Obsoletes:      ocaml-seq-debuginfo < %version-%release
@@ -151,7 +157,11 @@ applications that use Ocaml.
 
 %build
 echo %version > VERSION
+%if 0%{?suse_version} > 1315
 export CC='gcc'
+%else
+export CC='/usr/bin/gcc-7'
+%endif
 export AS='as'
 export ASPP="$CC -c"
 configure_target=

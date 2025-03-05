@@ -838,4 +838,13 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
     <comment>- Require unversioned gcc package (bsc#1232663)</comment>
     <requestid>1245828</requestid>
   </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>8152946193d4a59b779c6ea069825b88</srcmd5>
+    <version>4.14.2</version>
+    <time>1741178357</time>
+    <user>anag+factory</user>
+    <comment>- Use gcc7 in SLE12 because dune 3.17 requires a gcc which recognizes
+  -fdiagnostics-color=always (dune#11509)</comment>
+    <requestid>1249887</requestid>
+  </revision>
 </revisionlist>
