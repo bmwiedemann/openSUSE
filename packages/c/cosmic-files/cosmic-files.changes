@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Sat Feb 22 02:55:01 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+1:
+  * Move dbus-config to optional feature
+  * Fix thumbnails
+  * Removing unused import
+  * Change calculation of virtual drag area to work with subscription by not relying on mouse movements
+  * perf: update libcosmic to improve window resize performance
+  * Fixing issue with scroll speed subscription not working in dev profile, removing speed code as redundant
+  * i18n(pl): update Polish translation
+  * chore: upgrade dependencies
+  * Moving autoscroll to a subscription on fixed timer + calculating speed based off of distance to edge
+  * i18n(nl) update Dutch translation
+  * Fixing issue with x-axis desyncing
+  * Fixing issue where swapping between list & grid view 'desync' the virtual cursor
+  * Fixing some jankiness by decoupling scroll offset vs 'virtual' cursor position & resetting after drag end
+  * Implementing 'virtual cursor offset' to help track & dynamically update drag rect
+  * Adding in resize listener for gridview
+  * Adding in new functionality to scroll the file window when dragging outside the viewport of the scrollable
+  * Update Hungarian translations
+  * i18n(de): add German translation
+  * fix: set the active tab in desktop mode when the window is focused
+  * chore: update libcosmic with mmap threshold fix
+  * Improve permissions descriptions
+  * Add mode samples
+  * fix(applet): set mmap threshold to lower memory usage
+  * Fix unit test - fedora build.
+  * i18n(nl) update and improve Dutch translation
+  * Update cosmic_files.ftl PL translation Password Grid Spacing
+  * Adjust style of completions again
+  * Do not show completion if already on an existing path
+  * Limit completions to 8
+  * Improve style of completions
+  * Path completion
+  * improv(preview_view): set max height for previews
+  * Update Hungarian translations
+  * Add icon size and grid spacing for desktop, fixes #751
+  * Set select_focus when selecting by name or path
+  * Fixing issue where a tab tries to read lines from a .hidden directory
+  * Polish translation for MetaInfo
+  * fix: set M_MMAP_THRESHOLD to lower memory usage significantly
+  * Format
+  * adding in cancel action for password required dialog
+  * VecDeque makes more sense to maintain order of operations
+  * quick cleanup to some untranslated strings, moving zip extract dir creation order
+  * i18n(pt-BR): update translations
+  * adding in support to extract/compress zip files with passwords
+  * i18n(nl) update Dutch translation
+  * chore(clippy): `tab.rs`
+  * Focus text input when in NetworkAuth modal
+  * Do not display already-exists message when name isn't changed
+  * chore(clippy): `app.rs`, `mime_app.rs`
+  * Update the Hungarian translation with the desktop files
+  * Update Hungarian translations
+  * Update cosmic_files.ftl
+  * Clean up mime app handling and make it possible to set default application
+  * Remove use of expect to fix minimum rust version
+  * Handle org.freedesktop.FileManager1 in cosmic-files-applet
+  * Support URL arguments
+  * If file is passed on command line, show parent folder and select it
+  * chore(clippy): config, dialog, menu
+  * chore(clippy): mime_app, operation, mounter
+  * chore(clippy): `mouse_area`, `controller` & more
+  * chore(clippy): `thumbnailer.rs`, two files in operation
+  * Allow drop to Desktop, fixes #597
+  * Add on_submit handler to NetworkAuth dialog
+  * Only display 'Connect anonymously' when available
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:12:24 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+3:
+  * Replace use of blocking function on search results channel, fixes #601
+  * Fix resetting shift select range
+  * Add move to first/last item with home/end keys
+  * always check if a search is active when rescanning (#712)
+  * Update dependencies
+  * Add more plain text mime types when copying files
+  * Fix left clicking in empty folder to clear context menu
+  * Close context menu when window loses focus
+  * Minor Polish translation improvements
+  * fix: Strip more file names in extractor
+  * perf: optimized cosmic-freedesktop-icons
+  * Update dependencies
+
+-------------------------------------------------------------------
 Fri Jan 10 21:28:32 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+1:
