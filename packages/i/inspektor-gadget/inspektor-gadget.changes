@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Wed Mar 05 10:04:55 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.38.0:
+  https://github.com/inspektor-gadget/inspektor-gadget/releases/tag/v0.38.0
+  * Some relevant changes for this version are:
+    - Initial support for user stack traces by @alban in #4004
+    - gadgets: add qdisc_latency tracer by @patrickpichler in #3659
+    - trace_dns: TCP support w/o reassembly by @mqasimsarfraz in
+      #4088
+    - operators: localmanager: Use datasource to attach and detach
+      con… by @eiffel-fl in #3957
+    - The memory consumption for some gadgets were reduced
+  * General Improvements
+    - Find interface name wrt to namespace by @AdvH039 in #3913
+    - trace_exec, trace_dns: remove dynamic allocations from wasm
+      module by @alban in #3995
+    - Display external api masks of fsnotify as strings by @AdvH039
+      in #4012
+    - go/wasm: Update to Tinygo 0.35.0 by @burak-ok in #4002
+    - Add warning if gadget is run with a different IG version by
+      @mauriciovasquezbernal in #4035
+    - Allow printing IG debug logs when running unit tests by
+      @blanquicet in #4036
+    - gadgets/trace_dns: Use same namespace for client and server
+      by @AdvH039 in #3967
+    - Fix typo by @Okabe-Rintarou-0 in #4059
+    - operators/ebpf: Do not create kstack map before by
+      @mauriciovasquezbernal in #4062
+    - trace_exec: reduce maps size by @dorser in #4058
+    - pkg/gadget-service/api-helpers: Set default values for unset
+      params by @blanquicet in #4050
+    - pkg/gadget-context/run: Remove superfluous global params
+      validation by @blanquicet in #4079
+    - ebpf-builder.Dockerfile: workaround to install
+      software-properties-common by @alban in #4084
+    - Improve gadget version skew warning by @mauriciovasquezbernal
+      in #4061
+    - builtin trace exec: reduce map size by @dorser in #4091
+    - oci: Error out when handling wrong image by
+      @mauriciovasquezbernal in #4108
+    - ustack: don't warn about processes on the host by @alban in
+      #4087
+    - fsnotify: reduce map size by @alban in #4076
+    - all gadgets: path_max: reduce from 4096 to 512 characters by
+      @alban in #4083
+    - wasm: Remove malloc requirement for guest by
+      @mauriciovasquezbernal in #4097
+    - operators/wasm: Add function to get syscall ID from syscall
+      name. by @eiffel-fl in #4129
+    - container-collection: initial containers: better logs for
+      inexistent pid by @alban in #4137
+    - trace_capabilities: support for Linux < 6.1 by @alban in
+      #4103
+    - operators: wasm: Have getSyscallID() returns -1 on error. by
+      @eiffel-fl in #4136
+    - ebpf-builder.Dockerfile: remove workaround on
+      software-properties-common by @alban in #4118
+    - operators/env: introduce operator to create new fields from
+      environment variables by @flyth in #4134
+    - otel: allow overriding key/name by @flyth in #4147
+  * Bug Fixes
+    - fixed open event size by @afek854 in #3965
+    - service-oci: Synchronize access to runGadget.Send by
+      @mqasimsarfraz in #4003
+    - fsnotify: fix CORE accesses on different kernel versions by
+      @alban in #4046
+    - limiter: Fix max-entries for multiple targets by @blanquicet
+      in #4009
+  * Documentation Improvements
+    - Website fixes by @mauriciovasquezbernal in #3989
+    - docs: Add part related to security improvements in release
+      notes temp… by @eiffel-fl in #4001
+    - gadgets/top_blockio/README.mdx: fix typo by @mapk0y in #4054
+    - docs: pull-secret: more explanations by @alban in #4092
+    - artifacthub: add missing description for
+      profile_qdisc_latency by @alban in #4102
+    - docs: fix ustack sample code by @flyth in #4139
+  * Testing and Continue Integration
+    - Make images configurable by @AdvH039 in #3954
+    - [Tests]: Created Unit Test Coverage for templates.go in
+      pkg/columns by @Dhiren-Mhatre in #3972
+    - [Tests]: test for /pkg/utils/syscalls by @upsaurav12 in #3966
+    - ci: Update unit test kernel versions by
+      @mauriciovasquezbernal in #4005
+    - fix: fix flaky TestPerf(#4008) by @Okabe-Rintarou-0 in #4014
+    - [Tests]:Created Unit Test Coverage for setk8defaults.go in
+      pkg/factory by @Dhiren-Mhatre in #3974
+    - gadgets: Update url of ci-kernels by @mauriciovasquezbernal
+      in #4051
+    - chore: generate wasm operators test artifact before testing
+      by @Okabe-Rintarou-0 in #4045
+    - pkg/operators: Simplify perf buffer testing. by @eiffel-fl in
+      #4028
+    - tests: added unit test to fsnotify gadget by @4rivappa in
+      #3729
+    - [Tests]: Unit Test for pkg/utils/protocols by @upsaurav12 in
+      #4011
+    - [Tests] : Add unit tests for logger.go in pkg/logger by
+      @Dhiren-Mhatre in #3988
+    - ci: Run image-based gadgets on cloud providers too by
+      @mauriciovasquezbernal in #4063
+    - [test]:improve coverage for kallsysms.go in pkg/kallsyms by
+      @Dhiren-Mhatre in #4042
+    - unit test pkg/datasource/formatters/json by @upsaurav12 in
+      #4022
+    - ci: Mirror dockerhub images to our repo by
+      @mauriciovasquezbernal in #4121
+    - ci: Fix location of ci images by @mauriciovasquezbernal in
+      #4133
+    - ci: check links by @alban in #4124
+    - snapshot_process: Increase timeout to fix test by
+      @mauriciovasquezbernal in #4138
+
+-------------------------------------------------------------------
 Fri Feb 07 16:40:19 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.37.0:
