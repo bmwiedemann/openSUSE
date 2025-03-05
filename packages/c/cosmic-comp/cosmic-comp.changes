@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Sat Feb 22 02:45:10 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * stack: Fix input at bottom of window
+  * grabs/resize: Fix Xwayland geometry
+  * zoom: bugfixes
+  * wayland: Implement cosmic-a11y-v1
+  * chore: Cleanup some warnings
+  * zoom: Add separator to popup
+  * zoom: Be a little more lenient with OnEdge movement and fractional cursor positions
+  * zoom: Seperate animating/current focal_point
+  * zoom: Reload config after writing
+  * config: Update zoom config defaults
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Feb 22 02:40:43 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+0:
+  * stack: Fix input at bottom of window
+  * grabs/resize: Fix Xwayland geometry
+  * zoom: bugfixes
+  * wayland: Implement cosmic-a11y-v1
+  * chore: Cleanup some warnings
+  * zoom: Add separator to popup
+  * zoom: Be a little more lenient with OnEdge movement and fractional cursor positions
+  * zoom: Seperate animating/current focal_point
+  * zoom: Reload config after writing
+  * config: Update zoom config defaults
+  * zoom: Fix config/state changes
+  * zoom: Localize zoom ui
+  * shell: Rescale zoom UI with zoom factor
+  * zoom: Don't render at 100% scale while animating
+  * iced: Allow rendering at a higher native scale than it's output
+  * shell: Add zoom UI
+  * config: Handle zoom updates in `Common::update_config`
+  * iced: Track last seat/serial for grabs
+  * grab: Refactor `MenuGrab` to be useful for zoom ui
+  * input: Refactor common logic into `update_zoom`
+  * input: Zoom on Super+Scroll
+  * config: Read/store zoom state
+  * shell: Cleanup zoom state
+  * shell: Reset focal point if cursor outside OnEdge area
+  * shell: don't accidentally reset zoom when using multiple seats (theoretically)
+  * chore: Update cosmic-settings-config
+  * zoom: Handle multiple outputs
+  * utils: Move `NextDown`
+  * config: Add zoom configuration
+  * shell: Allow triggering zoom
+  * render: Scale contents according to zoom_level
+  * chore: Update libcosmic
+  * floating: Fix resize indicator order
+  * Derive Eq for NumlockState
+  * Update moving.rs
+  * grabs: Snap Window Edges to Close Output Edges
+  * Reactivated num/caps-lock upon keyboard layour change
+  * protocol/workspace: Fix behavior with multiple manager instances
+  * protocol/workspace: Add support for `ext-workspace-v1`
+  * protocol/workspace: Move cosmic dispatch code to seperate file
+  * Make numlock state on boot configurable
+  * Update `libcosmic`
+  * chore: Update smithay
+  * layout/floating: Fix indicator element order
+  * layout/tiling: Fix swap stack overlay offset
+  * layout/tiling: Fix swap indicator element order
+  * render: Scale indicator radius with scale
+  * chore: ron 0.9 update
+  * render/cursor: Follow selected scale instead of wanted scale
+  * chore: Update cosmic-config for forward compatibility
+  * wl_compositor: Send initial size for maximized/fullscreen surfaces
+  * shell: Don't animate programmatic maximize_requests
+  * shell: Handle maximize requests before commit
+  * Improve mirroring size/scale comparison
+  * Fix mirroring with scale on target output
+  * Use `HashMap` entry API in a cleaner way
+  * Use untransformed texture in `MirroringState::new_with_renderer`
+  * shell: Remove last workspace if it follows empty active workspace
+  * fix(config): wrong config context for system actions on startup
+  * Remove `CosmicMapped::stack_ref_mut`
+  * toplevel-management: Move window, not whole stack
+  * toplevel-management: Make `move_to_workspace` work with minimized window
+  * workspace: Fix race between binding `wl_output` and `output_enter`
+  * kms: Don't try to render inactive outputs
+
+-------------------------------------------------------------------
+Sat Jan 18 17:06:38 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+13:
+  * chore: add log-out shortcut
+  * Only cancel the keyboard grabs that we initiate
+  * floating/resize: Fix broken global geometry
+  * toplevel_info: Don't send geometry updates, while resizing
+  * tiling: Refactor blocker code
+  * tiling: Throttle resizes
+  * tiling: Fix flicker during resizing
+  * floating: Throttle resizes
+  * mapped: Allow to query in-flight configure for resize throttling
+  * Add a `COSMIC_DISABLE_SYNCOBJ` env var to disable syncobj protocol
+  * Add `linux-drm-syncobj-v1` protocol
+  * Update `smithay-egui`, `egui`
+  * Use `get_unconstrained_geometry` function for popup position
+  * fix: cosmic-protocols rev
+  * chore: Downgrade Cargo.lock version
+  * chore: update freedesktop-icons
+  * add Dutch translation
+  * Remove unused `glow` and `drm-ffi` dependencies
+  * chore: Update smithay
+  * chore: cargo update
+  * chore: Update libcosmic
+  * chore: Update cosmic-text
+  * fix: add missing libdisplay-info library into flake.nix
+
+-------------------------------------------------------------------
 Fri Jan 10 21:16:52 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+0:
