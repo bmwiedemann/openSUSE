@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 04 18:14:12 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1741096950.1f5cdabd:
+  * Remove Try::Tiny from dependencies
+  * Avoid error when emiting an AMQP job event when the job does not exist
+  * Add check to enforce Feature::Compat::Try
+  * Use Feature::Compat::Try in openqa-load-templates script
+  * Update migration script using Feature::Compat::Try
+  * Remove unused dependency from SeleniumTest.pm
+  * Use Test::Exception in deploy.t
+
+-------------------------------------------------------------------
 Mon Mar 03 16:12:46 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1741014912.a69a2ecf:
