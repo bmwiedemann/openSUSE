@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 05 10:16:41 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.86:
+  * Feat bitbucket support (#1890)
+  * Update fly-pro.toml
+  * Update next_deploy.yml
+  * Update fly-pro.toml
+  * repo details page (#1888)
+  * api support for repos (#1887)
+  * feat/internal apis for users (#1885)
+  * Pro deployment initial (#1883)
+
+-------------------------------------------------------------------
 Wed Feb 12 06:43:30 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.85:
