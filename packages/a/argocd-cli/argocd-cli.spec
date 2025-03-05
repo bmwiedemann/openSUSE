@@ -16,12 +16,10 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define executable_name argocd
 
 Name:           argocd-cli
-Version:        2.14.2
+Version:        2.14.4
 Release:        0
 Summary:        CLI for the ArgoCD declarative continuous deployment tool
 License:        Apache-2.0
