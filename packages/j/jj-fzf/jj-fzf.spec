@@ -17,7 +17,7 @@
 
 
 Name:           jj-fzf
-Version:        0.24.0
+Version:        0.25.0
 Release:        0
 Summary:        Text UI for Jujutsu based on fzf
 License:        MPL-2.0
@@ -64,6 +64,8 @@ install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
 
 %check
+mkdir TEST && cd TEST
+jj git init
 # version output without leading "v"
 %{buildroot}%{_bindir}/%{name} --version | grep %{version}
 

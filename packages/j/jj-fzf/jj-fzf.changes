@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Mar 05 09:31:27 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.25.0:
+  * jj-fzf: bump VERSION to 0.25.0, update NEWS
+  * jj-fzf: deprecate Alt-S: restore-file
+  * jj-fzf: fzflog: use jjlog unless jj-fzf.fzflog-depth adds
+    bookmark ancestry
+  * jj-fzf: first, change to repo root, so $PWD doesn't vanish
+  * jj-fzf: use author.email().local(), supported in jj-0.25
+  * jj-fzf: absorb: unconditionally support absorb
+  * jj-fzf: depend on jj-0.25.0
+  * .github/workflows/testing.yml: install jj-v0.25.0, run on all
+    branches
+  * Adjust Makefile to work with macOS
+  * jj-fzf: merging: prefer (master|main|trunk) as UPSTREAM
+  * jj-fzf: make sure to use gsed
+  * Makefile: check-gsed: show line numbers
+  * jj-fzf: op-log: use Alt-J to inject an old working copy as
+    historic commit
+  * jj-fzf: fix RESTORE-FILE title
+  * jj-fzf: echo_commit_msg: strip leading newline from
+    ui.default-description
+  * jj-fzf: fix comment
+  * jj-fzf: evolog: add Alt-J to inject a historic commit
+  * jj-fzf: evolog: add Enter to browse detailed evolution with
+    patches
+  * jj-fzf: add Ctrl-T evolog dialog with detailed preview
+  * jj-fzf: add rev_parents() and jj_new_before_no_edit()
+  * jj-fzf: Flags: display hidden, divergent, conflict
+  * jj-fzf: cut off the preview after a few thausand lines
+  * jj-fzf: split-files: try using `jj diff` instead of `git
+    diff-tree`
+  * jj-fzf: commit: --message fixup
+  * jj-fzf: echo_commit_msg: skip signoff if no files changed
+  * jj-fzf: add ui.default-description to commit messages
+  * jj-fzf: use JJ_EDITOR to really override th JJ editor settings
+  * jj-fzf: honor the JJ_EDITOR precedence
+  * jj-fzf: show content diff when editing commit message
+  * jj-fzf: adjust bookmark, Commit, Change ID descriptions
+  * jj-fzf: deprecate Ctrl-V for gitk
+  * jj-fzf: push-remote: fix outdated docs
+  * jj-fzf: squash-into-parent: fix comment
+  * jj-fzf: display 'private' as a flag in preview
+  * jj-fzf: display 'immutable' as a flag in preview
+  * jj-fzf: fzflog: silence deprecation warnings on stderr
+  * jj-fzf: include fzflog error messages in fzf input if any
+  * jj-fzf: unset FZF_DEFAULT_COMMAND in subshells
+  * README.md: briefly describe jj-undirty.el
+  * contrib/jj-undirty.el: update JJ repo after saving an emacs
+    buffer
+  * README.md: briefly describe jj-am.sh
+  * contrib/jj-am.sh: add --help
+  * jj-fzf: properly parse options --help, --key-bindings,
+    --color=always
+  * contrib/jj-am.sh: use `jj status` at the end to also snapshot
+    the last patch
+  * contrib/jj-am.sh: fix order of commit creation and patching
+  * contrib/jj-am.sh: apply several patches in email format
+
+-------------------------------------------------------------------
 Wed Jan  8 06:36:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - change dependency from gawk to awk
