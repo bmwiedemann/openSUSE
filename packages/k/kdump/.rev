@@ -1411,4 +1411,17 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
     <comment></comment>
     <requestid>1244211</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>49023505c30173ed877ea800484992ce</srcmd5>
+    <version>2.0.17</version>
+    <time>1741178371</time>
+    <user>anag+factory</user>
+    <comment>- upgrade to version 2.0.17
+  * fix bonding options (bsc#1235933)
+  * don't use wicked to read bond and bridge config
+  * prevent KDUMP_NET_TIMEOUT busy loop when DNS fails
+  * limit dump file permissions (bsc#1237497, bsc#1237529)
+</comment>
+    <requestid>1250183</requestid>
+  </revision>
 </revisionlist>
