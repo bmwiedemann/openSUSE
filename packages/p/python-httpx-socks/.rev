@@ -28,4 +28,12 @@
 - Tighten up test BuildRequires.</comment>
     <requestid>1231776</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4b43f01075fe15642178649464816c78</srcmd5>
+    <version>0.10.0</version>
+    <time>1741178349</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1249635</requestid>
+  </revision>
 </revisionlist>
