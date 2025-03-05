@@ -264,4 +264,12 @@
     <comment>- Use webkit2gtk-4.1 pkgconfig file instead of 4.0</comment>
     <requestid>1206125</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>d692f6430950b1ce49a1bccd30d84280</srcmd5>
+    <version>3.2.6</version>
+    <time>1741178312</time>
+    <user>anag+factory</user>
+    <comment>Group with package `glew` when that enters staging</comment>
+    <requestid>1249653</requestid>
+  </revision>
 </revisionlist>

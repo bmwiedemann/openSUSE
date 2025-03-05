@@ -27,10 +27,10 @@
 %bcond_with webview
 %endif
 
-%if "%{flavor}" == "doc"
+%if "%flavor" == "doc"
 %define this_spec wxWidgets-3_2-doc
-%define variant %{nil}
-%define toolkit %{nil}
+%define variant %nil
+%define toolkit %nil
 %endif
 
 %if "%flavor" == "GTK3"
@@ -84,7 +84,7 @@ Patch0:         soversion.diff
 Patch1:         autoconf-2_72.diff
 Patch2:         textfiletest-fix-file-exists.diff
 Patch3:         doxygen111.patch
-%if "%{flavor}" == "doc"
+%if "%flavor" == "doc"
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz
@@ -390,7 +390,7 @@ This package contains the API documentation in HTML format.
 cp %{S:2} .
 
 %build
-%if "%{flavor}" == "doc"
+%if "%flavor" == "doc"
 pushd  docs/doxygen
 echo "DOT_IMAGE_FORMAT = svg" >> Doxyfile
 WX_SKIP_DOXYGEN_VERSION_CHECK=1 ./regen.sh xml
@@ -418,10 +418,10 @@ autoconf -f -i
 	--enable-ipv6 \
 	--enable-mediactrl \
 	--enable-optimise \
-	%{wx_debug:--enable-debug=%{wx_debug}} \
-        --enable-repro-build \
-        --disable-glcanvasegl \
-        --enable-webrequest \
+	%{wx_debug:--enable-debug=%wx_debug} \
+	--enable-repro-build \
+	--enable-glcanvasegl \
+	--enable-webrequest \
 %if "%flavor" == "GTK3-nostl"
 	--disable-stl \
 	--disable-plugins
@@ -434,7 +434,7 @@ autoconf -f -i
 %endif
 
 %install
-%if "%{flavor}" == "doc"
+%if "%flavor" == "doc"
 find docs/doxygen/out/xml/ -iname \*.png -print -delete
 find docs/doxygen/out/html/ -iname \*.dot -print -delete
 %fdupes -s docs/doxygen/out/html/
@@ -455,7 +455,7 @@ ln -sf $(echo %buildroot/%_libdir/wx/config/* | sed "s%%%buildroot%%%%") %buildr
 %endif
 
 %check
-%if "%{flavor}" != "doc"
+%if "%flavor" != "doc"
 %make_build -C tests all
 pushd tests
 # Disable webrequest tests requiring network access
@@ -485,7 +485,7 @@ export WX_TEST_WEBREQUEST_URL=0
 %ldconfig_scriptlets -n libwx_%{toolkit}u_webview-%variant%psonum
 %ldconfig_scriptlets -n libwx_%{toolkit}u_xrc-%variant%psonum
 
-%if "%{flavor}" == "doc"
+%if "%flavor" == "doc"
 %files xml
 %doc docs/doxygen/out/xml/*.{xml,xslt}
 

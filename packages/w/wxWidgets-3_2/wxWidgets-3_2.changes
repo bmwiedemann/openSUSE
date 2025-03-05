@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  1 09:12:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Build with --enable-glcanvasegl [boo#1235150]. This turns off GLX
+  and enables EGL instead. Sibling toolkits need to do this at the
+  same time for this to work, e.g. hugin needs both wx and GLEW to
+  be built for EGL.
+
+-------------------------------------------------------------------
 Mon Oct  7 14:14:45 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Use webkit2gtk-4.1 pkgconfig file instead of 4.0
