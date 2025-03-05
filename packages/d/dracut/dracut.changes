@@ -1,9 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 04 13:54:15 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.688.g840b9751:
+  * fix(iscsi): make sure services are shut down when switching root (bsc#1237695)
+  * fix(iscsi): don't require network setup for qedi
+  * fix(90kernel-modules): explicitly include xhci-pci-renesas (bsc#1238258)
+  * fix(network-legacy): do not require pgrep when using wicked (bsc#1236982)
+
+-------------------------------------------------------------------
 Mon Jan 20 09:18:20 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.679.g7559201e:
 
-  Fixes for booting from iSCSI offload with bnx2i (bsc#1228086, bsc#1234134):
+  Fixes for booting from iSCSI offload with bnx2i (bsc#1228086):
   * fix(iscsi): attempt iSCSI login before all interfaces are up
   * fix(iscsi): don't require network setup for bnx2i
 

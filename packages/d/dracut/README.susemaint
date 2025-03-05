@@ -393,3 +393,6 @@ c79fc8fd fix(dracut): rework timeout for devices added via --mount and --add-dev
 93df9ad2 feat(livenet): get live image size from TFTP servers
 cc2c48a0 fix(iscsi): don't require network setup for bnx2i
 f30cf46e fix(iscsi): attempt iSCSI login before all interfaces are up
+20cc20d2 fix(90kernel-modules): explicitly include xhci-pci-renesas
+3d5bab81 fix(iscsi): don't require network setup for qedi
+fcde3355 fix(iscsi): make sure services are shut down when switching root
