@@ -438,6 +438,9 @@ Patch256:       0018-fs-bfs-Disable-under-lockdown.patch
 Patch257:       0019-fs-Disable-many-filesystems-under-lockdown.patch
 Patch258:       0020-fs-Prevent-overflows-when-allocating-memory-for-arra.patch
 Patch259:       0001-bls-Accept-.conf-suffix-in-setting-default-entry.patch
+Patch260:       0001-fs-xfs-Add-new-superblock-features-added-in-Linux-6..patch
+Patch261:       0002-fs-xfs-Fix-grub_xfs_iterate_dir-return-value-in-case.patch
+Patch262:       0003-fs-xfs-fix-large-extent-counters-incompat-feature-su.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

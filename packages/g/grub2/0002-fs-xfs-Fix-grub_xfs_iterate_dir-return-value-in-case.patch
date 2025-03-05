@@ -1,0 +1,52 @@
+From 3a69e9126d532214d940c1386f2933a124611a6c Mon Sep 17 00:00:00 2001
+From: Egor Ignatov <egori@altlinux.org>
+Date: Thu, 23 Jan 2025 20:44:14 +0300
+Subject: [PATCH 2/3] fs/xfs: Fix grub_xfs_iterate_dir() return value in case
+ of failure
+
+Commit ef7850c757 (fs/xfs: Fix issues found while fuzzing the XFS
+filesystem) introduced multiple boundary checks in grub_xfs_iterate_dir()
+but handled the error incorrectly returning error code instead of 0.
+Fix it. Also change the error message so that it doesn't match the
+message in grub_xfs_read_inode().
+
+Fixes: ef7850c757 (fs/xfs: Fix issues found while fuzzing the XFS filesystem)
+
+Signed-off-by: Egor Ignatov <egori@altlinux.org>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/fs/xfs.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/grub-core/fs/xfs.c b/grub-core/fs/xfs.c
+index e3a69fe498..30e3e7f6d9 100644
+--- a/grub-core/fs/xfs.c
++++ b/grub-core/fs/xfs.c
+@@ -859,7 +859,11 @@ grub_xfs_iterate_dir (grub_fshelp_node_t dir,
+ 	    grub_uint8_t c;
+ 
+ 	    if ((inopos + (smallino ? 4 : 8)) > (grub_uint8_t *) dir + grub_xfs_fshelp_size (dir->data))
+-	      return grub_error (GRUB_ERR_BAD_FS, "not a correct XFS inode");
++	      {
++		grub_error (GRUB_ERR_BAD_FS, "invalid XFS inode");
++		return 0;
++	      }
++
+ 
+ 	    /* inopos might be unaligned.  */
+ 	    if (smallino)
+@@ -968,7 +972,10 @@ grub_xfs_iterate_dir (grub_fshelp_node_t dir,
+ 
+ 		filename = (char *)(direntry + 1);
+ 		if (filename + direntry->len + 1 > (char *) end)
+-		  return grub_error (GRUB_ERR_BAD_FS, "invalid XFS directory entry");
++		  {
++		    grub_error (GRUB_ERR_BAD_FS, "invalid XFS directory entry");
++		    return 0;
++		  }
+ 
+ 		/* The byte after the filename is for the filetype, padding, or
+ 		   tag, which is not used by GRUB.  So it can be overwritten. */
+-- 
+2.48.1
+

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  3 04:30:51 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Cherry-pick upstream XFS fixes
+  * 0001-fs-xfs-Add-new-superblock-features-added-in-Linux-6..patch
+  * 0002-fs-xfs-Fix-grub_xfs_iterate_dir-return-value-in-case.patch
+- Fix "attempt to read of write outside of partition" error message (bsc#1237844)
+  * 0003-fs-xfs-fix-large-extent-counters-incompat-feature-su.patch
+
+-------------------------------------------------------------------
 Tue Feb 25 02:46:36 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Make SLFO/SLE-16 and openSUSE have identical package structures
