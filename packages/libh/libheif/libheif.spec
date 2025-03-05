@@ -44,15 +44,14 @@
 %endif
 
 Name:           libheif%{?psuffix}
-Version:        1.19.5
+Version:        1.19.7
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
-License:        GPL-2.0-or-later
+License:        LGPL-3.0-only AND MIT
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/strukturag/libheif
 Source0:        %{url}/releases/download/v%{version}/libheif-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch1:         0001-support-SVT-AV1-3.0.0.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.25
 BuildRequires:  fdupes
@@ -327,6 +326,9 @@ sed -i '/add_libheif_test(encode)/d' tests/CMakeLists.txt
 %endif
 	-DWITH_FFMPEG_DECODER=ON \
 	-DWITH_FFMPEG_DECODER_PLUGIN=ON \
+	-DWITH_UVG266="OFF" \
+	-DWITH_VVDEC="OFF" \
+	-DWITH_VVENC="OFF" \
 	-DCMAKE_SKIP_RPATH=ON \
 	-DBUILD_TESTING=OFF \
 	-DWITH_REDUCED_VISIBILITY=ON \

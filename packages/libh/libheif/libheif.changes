@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar  3 18:28:54 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.19.7:
+  * Fixes a build error with SVT-AV1 encoder plugin when using reduced
+    symbol visibility
+
+-------------------------------------------------------------------
+Sun Mar  2 21:15:49 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.19.6:
+  * C++ and Go wrapper licenses have been changed to MIT
+  * supports SVT-AV1 v3.0.0 encoder
+  * support emscripten builds for ES6 modules
+- Use correct license (these were changed in 2018)
+- Remove 0001-support-SVT-AV1-3.0.0.patch (no longer needed)
+
+-------------------------------------------------------------------
 Fri Feb 28 15:42:34 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-support-SVT-AV1-3.0.0.patch to make build succeed
