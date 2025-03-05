@@ -39,7 +39,7 @@ supported.
 rm -rf src/iniparser
 
 %build
-export CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} `pkg-config --cflags iniparser`"
 export CXXFLAGS="$CFLAGS"
 %make_build SYSTEM_INIPARSER=1
 
