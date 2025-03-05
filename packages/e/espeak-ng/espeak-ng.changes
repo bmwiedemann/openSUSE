@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  4 06:59:38 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add TextToPhonemesWithTerminator to support piper tts
+  * Added espeak-ng-add-piper-support.patch
+
+-------------------------------------------------------------------
 Tue Jan  7 09:29:11 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - delete obsolete patch fix-configure-1171.patch

@@ -24,6 +24,9 @@ Summary:        Software speech synthesizer (text-to-speech)
 License:        Apache-2.0 AND BSD-2-Clause AND GPL-3.0-or-later AND Unicode-DFS-2015
 URL:            https://github.com/espeak-ng/espeak-ng
 Source0:        https://github.com/espeak-ng/espeak-ng/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM espeak-ng-add-piper-support.patch gh#espeak-ng/espeak-ng#2127
+Patch0:         espeak-ng-add-piper-support.patch
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool >= 2.4.2
