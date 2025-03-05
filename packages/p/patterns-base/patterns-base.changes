@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Mar  4 16:15:37 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure btrfsmaintenance is required by transactional_base
+  (bsc#1238405).
+
+-------------------------------------------------------------------
+Tue Mar  4 08:41:22 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure less, sudo (bsc#1238409) and iputils (bsc#1238371) are 
+  required in transactional_base pattern for SLFO.
+
+-------------------------------------------------------------------
+Mon Mar  3 10:02:25 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure branding is also requires on SLFO / SLE16.
+
+-------------------------------------------------------------------
+Mon Mar  3 09:26:49 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- patterns-base-transactional_base: requires toolbox-branding-SLE
+  on SL-Micro (bsc#1232346) 
+
+-------------------------------------------------------------------
+Thu Feb 27 14:48:09 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Disable x11 / x11_enhanced / basic_desktop on SLFO, we don't ship
+  X11 server.
+- Disable 32bit patterns on SLFO.
+
+-------------------------------------------------------------------
 Wed Feb 26 14:21:46 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Change some core packages to Requires [bsc#1237513]

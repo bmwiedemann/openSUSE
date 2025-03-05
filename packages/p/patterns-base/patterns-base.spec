@@ -38,7 +38,9 @@ This particular package contains all the base / core patterns (and those that do
 
 ################################################################################
 
+
 # bsc#1088669 - only provide 32bit pattern for 64bit intel
+%if 0%{?is_opensuse}
 %ifarch x86_64
 %package 32bit
 %pattern_basetechnologies
@@ -56,6 +58,7 @@ This will install the 32-bit variant of all selected patterns. This allows to ex
 %files 32bit
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/32bit.txt
+%endif
 %endif
 
 ################################################################################
@@ -238,6 +241,7 @@ This is the base runtime system.  It contains only a basic multiuser booting sys
 
 # This pattern contains everything the SLES x11 package used to have that
 # doesn't need to be in the openSUSE x11 package
+%if 0%{?is_opensuse}
 %package basic_desktop
 %pattern_graphicalenvironments
 Summary:        A basic desktop (based on IceWM)
@@ -262,6 +266,7 @@ This pattern installs a rather basic desktop (icewm)
 %files basic_desktop
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/basic_desktop.txt
+%endif
 
 ################################################################################
 
@@ -610,10 +615,7 @@ Provides:       pattern() = minimal_base
 Provides:       pattern-icon() = pattern-basis
 Provides:       pattern-order() = 5190
 Provides:       pattern-visible()
-# FIXME, to be enabled for SLFO too
-%if 0%{?is_opensuse}
 Requires:       branding
-%endif
 # those packages are actually useless as they don't use
 # %_keyringpath but we need them eg for kiwi
 Requires:       build-key
@@ -750,9 +752,12 @@ Provides:       pattern() = transactional_base
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 1050
 Requires:       /usr/bin/gzip
+Requires:       btrfsmaintenance
+Requires:       less
 Requires:       openssh
 Requires:       read-only-root-fs
 Requires:       rebootmgr
+Requires:       sudo
 Requires:       yast2-logs
 Requires:       zypp-boot-plugin
 Requires:       (health-checker if grub2)
@@ -762,8 +767,6 @@ Requires:       (health-checker-plugins-MicroOS if health-checker)
 Requires:       MicroOS-release
 Requires:       systemd-presets-branding-MicroOS
 Suggests:       busybox-gzip
-Requires:       less
-Requires:       sudo
 # tpm2 tools are required for FDE+TPM
 Requires:       tpm2-0-tss
 Requires:       libtss2-tcti-device0
@@ -771,9 +774,11 @@ Requires:       tpm2.0-tools
 # probably needed for fsck.fat on efi partitions
 Requires:       dosfstools
 %else
+Requires:       iputils
 Requires:       supportutils
 Requires:       systemd-presets-branding-ALP-transactional
 Requires:       toolbox
+Requires:       toolbox-branding-SLE
 Requires:       group(wheel)
 # zypper ps is useless in transactional mode. It also checks for
 # /run/reboot-needed though which is created by transactional-update
@@ -855,6 +860,7 @@ Packages used for testing that the update stack works.  These tiny packages do n
 
 ################################################################################
 
+%if 0%{?is_opensuse}
 %package x11
 %pattern_graphicalenvironments
 Summary:        X Window System
@@ -1103,6 +1109,7 @@ The X Window System provides the only standard platform-independent networked gr
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/x11_raspberrypi.txt
 %endif
+%endif
 
 ################################################################################
 
@@ -1114,40 +1121,45 @@ The X Window System provides the only standard platform-independent networked gr
 mkdir -p %{buildroot}%{_docdir}/patterns
 for i in \
 %if 0%{?is_opensuse}
-apparmor \
+apparmor x11 x11_enhanced \
 %endif
-base enhanced_base minimal_base sw_management x11 x11_enhanced; do
+base enhanced_base minimal_base sw_management; do
     echo "This file marks the pattern $i to be installed." \
     >"%{buildroot}%{_docdir}/patterns/$i.txt"
+%if 0%{?is_opensuse}
     echo "This file marks the pattern $i to be installed." \
     >"%{buildroot}%{_docdir}/patterns/$i-32bit.txt"
+%endif
 done
 
 # These packages don't generate a 32bit pattern
-for i in basesystem bootloader basic_desktop documentation fips transactional_base selinux \
+for i in basesystem bootloader documentation fips transactional_base selinux \
 %if 0%{?is_opensuse}
-console update_test \
-%else
-%ifnarch s390 s390x aarch64 ppc64le
-32bit \
-%endif
-%endif
+console update_test basic_desktop \
 %ifarch armv6hl armv7hl aarch64
 x11_raspberrypi \
+%endif
+%ifarch x86_64
+32bit \
+%endif
 %endif
 ; do
     echo "This file marks the pattern $i to be installed." \
     >"%{buildroot}%{_docdir}/patterns/$i.txt"
 done
 
+%if 0%{?is_opensuse}
 %ifarch x86_64
 echo "This file marks the pattern 32bit to be installed." \
 >"%{buildroot}%{_docdir}/patterns/32bit.txt"
+%endif
 %endif
 
 #
 # This file is created at check-in time. Sorry for the inconsistent workflow :(
 #
+%if 0%{?is_opensuse}
 %include %{SOURCE1}
+%endif
 
 %changelog
