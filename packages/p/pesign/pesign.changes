@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  3 02:52:58 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add pesign-bsc1238023-initialize-pwdata.patch to fall back to
+  password prompt correctly (bsc#1238023)
+
+-------------------------------------------------------------------
 Tue Feb 25 08:02:08 UTC 2025 - JS <obs.coke518@passinbox.com>
 
 - Enable build on loongarch64

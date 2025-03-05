@@ -1,0 +1,78 @@
+From f3cf5031560ec07b0da71a090deaa67afdffd95f Mon Sep 17 00:00:00 2001
+From: Egor Ignatov <egori@altlinux.org>
+Date: Fri, 26 Jan 2024 15:44:02 +0300
+Subject: [PATCH] Initialize pwdata in efikeygen and pesign
+
+Fixes: github issue #105
+Fixes: 12f1671 (Rework the wildly undocumented NSS password file goo.)
+Complements: 1a4481e (Add more ways to use a password with the token)
+
+Signed-off-by: Egor Ignatov <egori@altlinux.org>
+---
+ src/cms_common.c | 12 ++++++++----
+ src/efikeygen.c  |  5 +++++
+ src/pesign.c     |  2 ++
+ 3 files changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/src/cms_common.c b/src/cms_common.c
+index 4f4707b..1ca0b7b 100644
+--- a/src/cms_common.c
++++ b/src/cms_common.c
+@@ -172,8 +172,10 @@ cms_context_fini(cms_context *cms)
+ 		xfree(cms->pwdata.data);
+ 		break;
+ 	case PW_PLAINTEXT:
+-		memset(cms->pwdata.data, 0, strlen(cms->pwdata.data));
+-		xfree(cms->pwdata.data);
++		if (cms->pwdata.data) {
++			memset(cms->pwdata.data, 0, strlen(cms->pwdata.data));
++			xfree(cms->pwdata.data);
++		}
+ 		break;
+ 	}
+ 	cms->pwdata.source = PW_SOURCE_INVALID;
+@@ -319,8 +321,10 @@ void cms_set_pw_data(cms_context *cms, secuPWData *pwdata)
+ 	case PW_FROMENV:
+ 	case PW_FROMFILE:
+ 	case PW_PLAINTEXT:
+-		memset(cms->pwdata.data, 0, strlen(cms->pwdata.data));
+-		xfree(cms->pwdata.data);
++		if (cms->pwdata.data) {
++			memset(cms->pwdata.data, 0, strlen(cms->pwdata.data));
++			xfree(cms->pwdata.data);
++		}
+ 		break;
+ 
+ 	case PW_DATABASE:
+diff --git a/src/efikeygen.c b/src/efikeygen.c
+index dd40502..010d7cc 100644
+--- a/src/efikeygen.c
++++ b/src/efikeygen.c
+@@ -985,6 +985,11 @@ int main(int argc, char *argv[])
+ 	if (!strcmp(dbdir, "-") && list_empty(&cms->pk12_ins) && !is_self_signed)
+ 		errx(1, "'--dbdir -' requires either --pk12-in or --self-sign.");
+ 
++	secuPWData pwdata;
++	memset(&pwdata, 0, sizeof(pwdata));
++	pwdata.source = pwdata.orig_source = PW_PROMPT;
++	cms_set_pw_data(cms, &pwdata);
++
+ 	PK11_SetPasswordFunc(cms->func ? cms->func : readpw);
+ 	if (strcmp(dbdir, "-")) {
+ 		if (cms->pk12_out.fd >= 0)
+diff --git a/src/pesign.c b/src/pesign.c
+index f548d81..5ac305a 100644
+--- a/src/pesign.c
++++ b/src/pesign.c
+@@ -395,6 +395,8 @@ main(int argc, char *argv[])
+ 		pwdata.data = strdup(secure_getenv("PESIGN_TOKEN_PIN"));
+ 		if (!pwdata.data)
+ 			err(1, "could not allocate memory");
++	} else if (pwdata.source == PW_SOURCE_INVALID) {
++		pwdata.source = PW_PROMPT;
+ 	}
+ 	pwdata.orig_source = pwdata.source;
+ 
+-- 
+2.43.0
+
