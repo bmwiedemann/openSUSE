@@ -1,7 +1,7 @@
 #
 # spec file for package python-first
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-first
 Version:        2.0.2
 Release:        0
@@ -43,6 +43,11 @@ A Python library that returns the first true value of an iterable.
 
 %install
 %python_install
+# Fix python-bytecode-inconsistent-mtime
+pushd %{buildroot}%{python_sitelib}
+find . -name '*.pyc' -exec rm -f '{}' ';'
+popd
+#
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
