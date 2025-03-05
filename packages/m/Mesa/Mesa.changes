@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  5 13:16:20 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- don't obsolete Mesa-libglapi0 on s390x since this is still on 
+  Mesa 24.1.7 
+
+-------------------------------------------------------------------
 Fri Feb 21 14:04:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add explanation for the "CM" in "GLESv1_CM".

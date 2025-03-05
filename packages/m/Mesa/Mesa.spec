@@ -595,7 +595,9 @@ Supplements:    Mesa
 Provides:       libvdpau_gallium = %{version}-%{release}
 Obsoletes:      libvdpau_gallium < %{version}-%{release}
 # merged into libgallium in 25.0.0
+%ifnarch s390x
 Obsoletes:      Mesa-libglapi0 < 25.0.0
+%endif
 
 %description -n Mesa-dri
 This package contains Mesa DRI drivers for 3D acceleration.

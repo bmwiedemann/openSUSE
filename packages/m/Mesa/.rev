@@ -6144,4 +6144,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   --&gt; credits go to &quot;Mikhail Paulyshka&quot; &lt;me@mixaill.net&gt;</comment>
     <requestid>1247809</requestid>
   </revision>
+  <revision rev="532" vrev="404">
+    <srcmd5>e96d2c1e8104db558106af353f026b40</srcmd5>
+    <version>unknown</version>
+    <time>1741180965</time>
+    <user>dimstar_suse</user>
+    <comment>- don't obsolete Mesa-libglapi0 on s390x since this is still on 
+  Mesa 24.1.7</comment>
+    <requestid>1250422</requestid>
+  </revision>
 </revisionlist>
