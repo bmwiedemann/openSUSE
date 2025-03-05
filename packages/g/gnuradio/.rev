@@ -659,4 +659,18 @@
 </comment>
     <requestid>1190185</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>5faca8ffb165224c0424da1045b04487</srcmd5>
+    <version>3.10.12.0</version>
+    <time>1741178492</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.10.12.0
+- A majority of the changes for this release related to
+  * GRC-Qt fixes and parity with the Gtk version
+  * UHD/RFNoC updates
+  * CI, modtool, and other devel/infrastructure updates
+- New subpackages gnuradio-[bash|fish|zsh]-completion
+</comment>
+    <requestid>1250364</requestid>
+  </revision>
 </revisionlist>

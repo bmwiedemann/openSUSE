@@ -1,7 +1,7 @@
 #
 # spec file for package gnuradio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,13 @@
 #
 
 
-%define sover  3_10_11
+%define sover  3_10_12
 %bcond_without docs
 Name:           gnuradio
-Version:        3.10.11.0
+Version:        3.10.12.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
-Group:          Productivity/Hamradio/Other
 URL:            https://gnuradio.org
 Source0:        https://github.com/gnuradio/gnuradio/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # http://www.nathanwest.us/grc_to_37.sh
@@ -38,6 +37,7 @@ BuildRequires:  cppunit-devel
 BuildRequires:  cppzmq-devel
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
+BuildRequires:  fish
 BuildRequires:  gcc-c++ >= 9.3.0
 BuildRequires:  gmp-devel
 BuildRequires:  gobject-introspection
@@ -119,7 +119,6 @@ performance wireless devices into software problems.
 
 %package     -n libgnuradio-%{sover}
 Summary:        Libraries for GNU Radio
-Group:          System/Libraries
 
 %description -n libgnuradio-%{sover}
 GNU Radio is a collection of software that when combined with minimal
@@ -132,7 +131,6 @@ This package contains the libraries for GNU Radio.
 
 %package        devel
 Summary:        Deveopment files for GNU Radio
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       gmp-devel
 Requires:       spdlog-devel
@@ -149,7 +147,6 @@ applications that use GNU Radio.
 
 %package        doc
 Summary:        GNU Radio documentation
-Group:          Documentation/HTML
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -164,7 +161,6 @@ This package contains documentation for GNU Radio.
 
 %package        examples
 Summary:        GNU Radio examples
-Group:          Productivity/Hamradio/Other
 Requires:       %{name} = %{version}
 
 %description    examples
@@ -175,6 +171,34 @@ that it turns the digital modulation schemes used in today's high
 performance wireless devices into software problems.
 
 This package contains some examples of using GNU Radio.
+
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
 
 %prep
 %setup -q
@@ -272,5 +296,14 @@ rm -rf %{buildroot}%{_datadir}/icons/gnome
 %files examples
 %dir %{_libdir}/gnuradio
 %{_libdir}/gnuradio/examples/
+
+%files -n %{name}-bash-completion
+%{_datadir}/bash-completion/completions/gr_modtool
+
+%files -n %{name}-fish-completion
+%{_datadir}/fish/vendor_completions.d/gr_modtool.fish
+
+%files -n %{name}-zsh-completion
+%{_datadir}/zsh/site-functions/_gr_modtool
 
 %changelog
