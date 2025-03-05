@@ -1898,4 +1898,19 @@ Changes:
 - Introduce --repos-directory and --containers-directory options</comment>
     <requestid>1243918</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>2976c8a16c1ed2c9b4a0d33208cd2e33</srcmd5>
+    <version>20250304</version>
+    <time>1741178326</time>
+    <user>anag+factory</user>
+    <comment>- fixes for POSIX compatibility for obs-docker-support adn
+  mkbaselibs
+- Add support for apk in docker/podman builds
+- Add support for 'wget' in Docker images
+- Fix debian support for Dockerfile builds
+- Fix preinstallimages in containers
+- mkosi: add back system-packages used by build-recipe directly
+- pbuild: parse the Release files for debian repos</comment>
+    <requestid>1250015</requestid>
+  </revision>
 </revisionlist>
