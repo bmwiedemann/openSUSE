@@ -54,4 +54,12 @@
   * fix(shell): lingering cosmic-randr process</comment>
     <requestid>1228861</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3f1976d5dd634145bb37a9a38426b6e7</srcmd5>
+    <version>1.0.0~alpha6+0</version>
+    <time>1741178388</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1250166</requestid>
+  </revision>
 </revisionlist>

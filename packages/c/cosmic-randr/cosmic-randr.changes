@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 22 03:31:18 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * fix: KDL 2.0 syntax change
+  * chore: upgrade all dependencies
+  * fix: block in dispatch_until_manager_done
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:49:49 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+0:
+  * chore: update dependencies
+
+-------------------------------------------------------------------
 Fri Dec 06 00:39:21 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha4+0:
