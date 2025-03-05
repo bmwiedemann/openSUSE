@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 25 19:52:40 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.2:
+  * show -T in help
+  * dropped iconv dependency
+  * new LICENSE file
+
+- dropped patches as already included in upstream
+  * remove-iconv-dependency.patch 
+  * makefile-tweaks.patch
+  * fix-exit-codes.patch
+
+-------------------------------------------------------------------
 Sat Aug 17 08:29:53 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - add remove-iconv-dependency.patch to remove the build dependency on libiconv which is not available anymore in openSUSE
