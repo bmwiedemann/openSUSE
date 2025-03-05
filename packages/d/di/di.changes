@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  4 20:29:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.0.14:
+  * Fix -I, -x: incorrect parse issue left over from re-write
+  * Fix crash with initialization and free of quota data
+  * Environment variables: Also handle XiB scale sizes
+  * Fix Robi and Quebi prefix names
+
+-------------------------------------------------------------------
 Wed Feb 26 16:30:39 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 5.0.13:
