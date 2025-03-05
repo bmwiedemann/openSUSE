@@ -192,4 +192,12 @@
   * 0002-Check-for-a-duplicate-wl_surface-in-wlEglCreatePlatf.patch</comment>
     <requestid>1230209</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6b47efba655184f66cfe4b1c3d072ffe</srcmd5>
+    <version>1.1.18</version>
+    <time>1741178373</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1250235</requestid>
+  </revision>
 </revisionlist>
