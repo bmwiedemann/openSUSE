@@ -17,13 +17,13 @@
 
 
 Name:           grml-zsh-config
-Version:        0.19.14
+Version:        0.19.15
 Release:        0
 Summary:        Zsh config ujed by grml
 License:        GPL-2.0-only
 URL:            https://grml.org/zsh/
 Source:         https://github.com/grml/grml-etc-core/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  python3-txt2tags
+BuildRequires:  rubygem(asciidoctor)
 Requires:       grep
 Requires:       procps
 Requires:       sed

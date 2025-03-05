@@ -112,4 +112,25 @@
   * zshrc: remove &quot;hbp&quot; alias</comment>
     <requestid>1240838</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5a1388b96e3182ed52ad8dc9dbb724ca</srcmd5>
+    <version>0.19.15</version>
+    <time>1741184365</time>
+    <user>anag+factory</user>
+    <comment>Thanks for explanation :)
+- Update to 0.19.5:
+  * doc/Makefile: drop unused target for copying to grml.org
+  * Switch manpage source to asciidoc
+  * README: add link to grmlzshrc manpage
+  * README: resync install instructions with grml.org/console
+  * d/control: Set Rules-Requires-Root: no
+  * zshrc: alias afl for apt-file list
+  * etc/skel/.zshrc: global alias TZ for timestamp/ts(1)
+  * etc/zsh/zshrc: only alias if command is present
+  * tmux: status-right: Show IP addresses (similar to our GNU/screen
+    configuration)
+  * tmux: status-right: Show IP addresses (similar to our GNU/screen
+    configuration)</comment>
+    <requestid>1250396</requestid>
+  </revision>
 </revisionlist>

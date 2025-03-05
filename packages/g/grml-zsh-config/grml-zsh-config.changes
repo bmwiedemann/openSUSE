@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar  5 07:37:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.5:
+  * doc/Makefile: drop unused target for copying to grml.org
+  * Switch manpage source to asciidoc
+  * README: add link to grmlzshrc manpage
+  * README: resync install instructions with grml.org/console
+  * d/control: Set Rules-Requires-Root: no
+  * zshrc: alias afl for apt-file list
+  * etc/skel/.zshrc: global alias TZ for timestamp/ts(1)
+  * etc/zsh/zshrc: only alias if command is present
+  * tmux: status-right: Show IP addresses (similar to our GNU/screen
+    configuration)
+  * tmux: status-right: Show IP addresses (similar to our GNU/screen
+    configuration)
+
+-------------------------------------------------------------------
 Tue Jan 28 13:31:34 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.4:
