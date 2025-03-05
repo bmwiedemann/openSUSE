@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Feb 22 03:51:01 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * Update default font
+  * fix: downgrade home@0.5.11 to 0.5.9 for Rust 1.80
+  * perf: update libcosmic to improve window resize performance
+  * chore: upgrade dependencies
+  * Polish translation for MetaInfo
+  * i18n(nl) add Dutch translation
+  * Update Hungarian translations
+  * Update cosmic-text
+  * Use hollow block cursor for non-focused terminals
+  * Update cosmic_term.ftl
+  * i18n(nl): improve Dutch translation
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 18:00:42 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+0:
+  * Downgrade home to keep 1.80 MSRV
+  * Added Irish translation
+  * Fix broken numlock behavior
+  * Update dependencies
+  * Fix Ctrl+Shift+# keybinds to jump to nth tab
+  * Update dependencies
+  * fix: downgrade `home` to 0.5.9 to fix build
+  * Update dependencies
+  * fix: downgrade `home` to 0.5.9 to fix build
+
+-------------------------------------------------------------------
 Fri Jan 10 22:54:33 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+2:
