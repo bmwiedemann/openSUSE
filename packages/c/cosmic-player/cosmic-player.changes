@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Feb 22 03:27:12 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * Update cosmic_player.ftl PL translation missing metadata
+  * i18n(nl) update Dutch translation
+  * Update Hungarian translations
+  * Update cosmic_player.ftl
+  * Open folder passed as command line arg
+  * i18n(pt-BR): update translations
+  * Update Swedish translation
+  * i18n(nl) improve Dutch translation
+  * i18n(zh-CN):Update translation of zh-CN
+  * Support missing metadata
+  * Adjust text color
+  * Use bg_component_color as background for audio
+  * Show metadata for audio files
+  * Update cosmic_player.ftl PL translation
+  * Update Hungarian translations
+  * Add Hungarian translations
+  * Add tree view
+  * Add recent media
+  * Fix deadlocks when opening files while another file is playing
+  * Update cosmic_player.ftl
+  * Scale down album art image
+  * Show open with button when no media loaded
+  * Move seek to second line when condensed
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:46:53 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+2:
+  * Improve argument handling
+  * Implement MPRIS and album art, fixes #57, fixes #59, part of #56
+  * Update cosmic_player.ftl ITA (#50)
+
+-------------------------------------------------------------------
 Fri Jan 10 22:17:00 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+2:

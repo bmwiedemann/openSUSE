@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicPlayer
 Name:           cosmic-player
-Version:        1.0.0~alpha5+2
+Version:        1.0.0~alpha6+0
 Release:        0
 Summary:        COSMIC media player
 License:        GPL-3.0-only
