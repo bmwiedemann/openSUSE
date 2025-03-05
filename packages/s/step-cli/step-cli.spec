@@ -22,7 +22,7 @@
 %define pkg_name cli
 %define pkg_version %{version}
 Name:           step-cli
-Version:        0.28.3
+Version:        0.28.5
 Release:        0
 Summary:        Zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  fish
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.23.6
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(systemd)
 Conflicts:      step

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Mar  5 12:34:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.28.5:
+  https://github.com/smallstep/cli/releases/tag/v0.28.5
+  * Merge pull request #1382 from smallstep/herman/crypto-v0.59.1
+  * Merge pull request #1383 from
+    smallstep/herman/fix-token-user-braces
+  * Change .Token.user.field to not use curly braces
+  * Upgrade go.step.sm/crypto to v0.59.1
+
+-------------------------------------------------------------------
+Wed Mar  5 10:28:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.28.4:
+  https://github.com/smallstep/cli/releases/tag/v0.28.4
+  * Added
+    - Add the --set and --set-file flags to the step ca token
+      command, allowing the user to set keys in the "user" claim in
+      the resulting JWT. (#1375)
+    - Support for downloading additional default settings when
+      running 'step ssh config' (#1377) 'min-password-length' and
+      'provisioner'
+
+-------------------------------------------------------------------
 Thu Feb 20 18:19:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.28.3:
