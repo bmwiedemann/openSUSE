@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb 22 02:37:10 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * fix: set M_MMAP_THRESHOLD to reduce memory usage
+  * feat: support compositors without fractional_scale
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 18:09:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha5.1+0:
+  * same as 1.0.0~alpha5+0
+- update to 1.0.0~alpha5+0:
+  * same as 1.0.0~alpha4+0
+
+-------------------------------------------------------------------
 Thu Dec 05 23:29:42 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha4+0:
