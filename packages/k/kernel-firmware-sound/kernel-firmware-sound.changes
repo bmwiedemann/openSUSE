@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  3 08:52:21 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250302 (git commit 76e258534a5d):
+  * cirrus: cs35l41: Add firmware and tunings for CS35L41 driver for Steam Deck
+
+-------------------------------------------------------------------
 Thu Feb 20 11:28:04 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250219 (git commit 5faab136de1a):
