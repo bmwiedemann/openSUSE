@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 01 21:07:33 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 0.78.4:
+  * widget: gtk4: Fix critical warning on a11y init
+  * build: Post release version bump
+  * ci: Add CI
+  * widget: Guard signal disconnect on non-null object
+  * widget: Scroll the alternate screen into the viewport
+  * build: Post release version bump
+  * build: Fix typo in pread check
+  * lib: Remove an unnecessary move
+  * emulation: Use U+2426 for SUB
+  * widget: Use correct type for out param
+
+-------------------------------------------------------------------
 Sat Jan 25 16:25:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.78.3:
