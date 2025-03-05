@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 05 09:37:02 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.1:
+  * sign: drop support for creating SHA-1 signatures (#1748)
+
+-------------------------------------------------------------------
 Fri Feb 28 05:40:30 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.22.0:
