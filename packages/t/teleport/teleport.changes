@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar  5 10:41:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.3.2:
+  * Updated Go to 1.23.7. #52772
+  * Updated tctl create to automatically fill the metadata and name
+    on the autoupdate_config and autoupdate_version resources.
+    #52751
+  * Added version compatibility warnings to Teleport Connect when
+    logging in to a cluster. #52709
+  * Support setting the public address for discovered apps based on
+    Kubernetes annotations. #52700
+  * Fixed cannot execute: required file not found error with the
+    teleport-spacelift-runner image. #52560
+  * Machine ID: Added new Prometheus metrics to track success and
+    failure of renewal loops. #52496
+
+-------------------------------------------------------------------
+Wed Mar  5 10:17:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.3.1:
+  * Escape user provided labels when creating the shell script that
+    enrolls servers, applications and databases into Teleport.
+    #52698
+  * Disable legacy alpn upgrade fallback during TLS routing
+    connection upgrades. Now only WebSocket upgrade headers are
+    sent by default. TELEPORT_TLS_ROUTING_CONN_UPGRADE_MODE=legacy
+    can still be used to force legacy upgrades but it will be
+    deprecated in v18. #52620
+  *  Workload ID: Support for Teleport Predicate Language in
+     Workload Identity templates and rules. #52564
+
+-------------------------------------------------------------------
 Sat Mar  1 11:13:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.3.0:
