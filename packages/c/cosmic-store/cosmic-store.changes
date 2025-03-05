@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Feb 22 03:47:33 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * chore: upgrade dependencies
+  * i18n(nl) improve Dutch translation
+  * Add Polish translation to metainfo
+  * Update cosmic_store.ftl
+  * improve Dutch translation
+  * Fixed Japanese translation for Cosmic Store
+  * i18n(dk): Add Danish translation
+  * Update Hungarian translations
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:59:53 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+0:
+  * perf: optimized cosmic-freedesktop-icons
+  * Update dependencies
+  * packagekit(load_caches): Add cache-age hint and set it to 5 mins
+
+-------------------------------------------------------------------
 Fri Jan 10 22:48:27 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+1:
