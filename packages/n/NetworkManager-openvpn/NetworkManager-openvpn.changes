@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  4 06:10:20 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add nm-openvpn-fix-crash.patch: service: fix a crash when empty
+  password is provided (glgo#GNOME/NetworkManager-openvpn!92,
+  bsc#1237570).
+
+-------------------------------------------------------------------
 Mon Jun 24 09:01:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.12.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-openvpn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source0:        https://download.gnome.org/sources/NetworkManager-openvpn/1.12/%
 Source1:        system-user-nm-openvpn.conf
 # PATCH-FIX-OPENSUSE fix-for-missing-whirlpool-hmac-authentication.patch boo#1132946
 Patch0:         fix-for-missing-whirlpool-hmac-authentication.patch
+# PATCH-FIX-UPSTREAM nm-openvpn-fix-crash.patch glgo#GNOME/NetworkManager-openvpn!92, bsc#1237570 sckang@suse.com -- service: fix a crash when empty password is provided
+Patch1:         nm-openvpn-fix-crash.patch
 
 BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig

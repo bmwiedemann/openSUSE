@@ -1,0 +1,60 @@
+From a65f66d2de6f259f08be30a3a9e03827674acdcf Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Mon, 3 Mar 2025 13:52:27 +0800
+Subject: [PATCH] service: fix a crash when empty password is provided
+
+When activating a VPN connection with the following command, if no
+password is provided, nm-openvpn-service crashes.
+
+> nmcli --ask connection up $vpn-connection
+
+Fix that by additionally checking for empty password to avoid passing
+NULL to strlen().
+
+https://bugzilla.suse.com/show_bug.cgi?id=1237570
+---
+ src/nm-openvpn-service.c | 25 ++++++++++++++++---------
+ 1 file changed, 16 insertions(+), 9 deletions(-)
+
+diff --git a/src/nm-openvpn-service.c b/src/nm-openvpn-service.c
+index a58124d..b01671d 100644
+--- a/src/nm-openvpn-service.c
++++ b/src/nm-openvpn-service.c
+@@ -781,18 +781,25 @@ nm_openvpn_disconnect_management_socket (NMOpenvpnPlugin *plugin)
+ static char *
+ ovpn_quote_string (const char *unquoted)
+ {
+-	char *quoted = NULL, *q;
+-	char *u = (char *) unquoted;
++	char *quoted = NULL;
+ 
+ 	g_return_val_if_fail (unquoted != NULL, NULL);
+ 
+-	/* FIXME: use unpaged memory */
+-	quoted = q = g_malloc0 (strlen (unquoted) * 2);
+-	while (*u) {
+-		/* Escape certain characters */
+-		if (*u == ' ' || *u == '\\' || *u == '"')
+-			*q++ = '\\';
+-		*q++ = *u++;
++	/* Check empty password to avoid segmentation fault. */
++	if (g_strcmp0 (unquoted, "") == 0)
++		quoted = g_strdup (unquoted);
++	else {
++		char *q;
++		char *u = (char *) unquoted;
++
++		/* FIXME: use unpaged memory */
++		quoted = q = g_malloc0 (strlen (unquoted) * 2);
++		while (*u) {
++			/* Escape certain characters */
++			if (*u == ' ' || *u == '\\' || *u == '"')
++				*q++ = '\\';
++			*q++ = *u++;
++		}
+ 	}
+ 
+ 	return quoted;
+-- 
+2.48.1
+
