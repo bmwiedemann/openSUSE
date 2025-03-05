@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  4 17:45:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.95
+  * Added a new sample editor screen with some new sample editing
+    features. It features waveform generators, resonant
+    low-pass/high-pass filters and experimental bass & treble
+    decrease/increase. This screen can be accessed by clicking
+    the new "Effects" button in Smp. Ed.
+
+-------------------------------------------------------------------
 Mon Feb 17 18:46:08 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.94
