@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  3 16:12:24 UTC 2025 - Paolo Perego <paolo.perego@suse.com>
+
+- Fix bsc#1226450. Placing skip_global_compinit=1 in your $ZDOTDIR/.zshenv
+  disables compinit from being called
+
+-------------------------------------------------------------------
+Mon Mar  3 15:52:59 UTC 2025 - Paolo Perego <paolo.perego@suse.com>
+
+- Applied solution for boo#1227119. In case you configured hostnames in 
+  ~/.ssh/config file, now TAB completion is working as expected.
+
+-------------------------------------------------------------------
+Mon Mar  3 13:41:20 UTC 2025 - Paolo Perego <paolo.perego@suse.com>
+
+- Adding zsh-ac1fd06d7ce073c86f00d50fd74464bcb5194e97.patch to fix a 
+  segmentation fault.
+  53146: flags cannot be copied from an undefined function
+
+-------------------------------------------------------------------
 Mon Feb 17 13:37:01 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Make it build with texinfo 7.1 (boo#1237196) 

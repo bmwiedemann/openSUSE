@@ -45,6 +45,7 @@ Patch3:         egrep-deprecation.patch
 Patch4:         pipe-less-and-signals-handling.patch
 Patch5:         zsh-ab4d62eb975a4c4c51dd35822665050e2ddc6918.patch
 Patch6:         zsh-4c89849c98172c951a9def3690e8647dae76308f.patch
+Patch7:         zsh-ac1fd06d7ce073c86f00d50fd74464bcb5194e97.patch
 BuildRequires:  autoconf
 BuildRequires:  groff
 BuildRequires:  libcap-devel
@@ -121,6 +122,7 @@ Use zsh as /bin/sh implementation.
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
+%patch -P 7 -p1
 
 # Remove executable bit
 chmod 0644 Etc/changelog2html.pl

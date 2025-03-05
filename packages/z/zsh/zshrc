@@ -63,8 +63,13 @@ unsetopt hup
 # Comment the two below lines out, if you are on a slow machine, and
 # comment the above compctl lines in.
 
-autoload -U compinit
-compinit
+# If you don't want compinit called here, place the line
+# skip_global_compinit=1
+# in your $ZDOTDIR/.zshenv
+if [[ -z "$skip_global_compinit" ]]; then
+	autoload -U compinit
+	compinit
+fi
 
 # Completion so "cd ..<TAB>" -> "cd ../"
 # zstyle ':completion:*' special-dirs ..
@@ -309,6 +314,21 @@ export LS_OPTIONS
 if test -t && type -p tty > /dev/null 2>&1 ; then
     GPG_TTY="`tty`"
     export GPG_TTY
+fi
+
+# Correct hostname tab completion when relevant names are configured in $HOME/.ssh/config file. 
+# https://bugzilla.suse.com/show_bug.cgi?id=1227119
+# Taken from: https://serverfault.com/questions/170346/how-to-edit-command-completion-for-ssh-on-zsh/170481#170481
+h=()
+if [[ -r ~/.ssh/config ]]; then
+  h=($h ${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
+fi
+if [[ -r ~/.ssh/known_hosts ]]; then
+  h=($h ${${${(f)"$(cat ~/.ssh/known_hosts{,2} || true)"}%%\ *}%%,*}) 2>/dev/null
+fi
+if [[ $#h -gt 0 ]]; then
+  zstyle ':completion:*:ssh:*' hosts $h
+  zstyle ':completion:*:slogin:*' hosts $h
 fi
 
 # Read custom system-wide config if exists
