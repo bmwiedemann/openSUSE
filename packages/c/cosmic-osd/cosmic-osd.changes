@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Feb 22 03:19:15 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * i18n(nl): update Dutch translation
+  * i18n(sv): fix swedish translation
+  * chore: update libcosmic
+  * feat: enter-bios confirmation dialog
+  * update es i18n
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:41:40 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+1:
+  * feat: popups for log out, restart, and shutdown
+  * improv: reduce binary size from 20M to 12M
+  * feat: avoid overlap with panel
+  * i18n(es-419): add translation
+  * i18n(hu): Add Hungarian translation
+  * i18n(sk): Add Slovak translations
+  * i18n(de): add German translation
+  * i18n(pt-BR): add translations
+  * i18n: add Hindi & Kannada translation
+  * i18n(ro): add Romanian translation
+  * i18n(es): update translation
+  * i18n(nl): add Dutch translation
+  * perf: optimized cosmic-freedesktop-icons
+  * perf: update freedesktop-icons to reduce memory usage
+  * perf: update libcosmic for reduced memory usage
+
+-------------------------------------------------------------------
 Fri Jan 10 22:02:37 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+0:
