@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiohappyeyeballs
-Version:        2.4.6
+Version:        2.4.8
 Release:        0
 Summary:        Happy Eyeballs for asyncio
 License:        Python-2.0

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  4 10:07:59 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.8
+  Bug Fixes
+  * Close runner up sockets in the event there are multiple winners
+- Update to version 2.4.7
+  Bug Fixes
+  * Resolve warnings when running tests.
+  * Instead of raising SystemExit which causes a RuntimeError,
+    mock out SystemExit to a new exception.
+  * Make sure the event loop is closed in tests.
+
+-------------------------------------------------------------------
 Sat Feb  8 16:21:08 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.6
