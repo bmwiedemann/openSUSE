@@ -1,7 +1,7 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-sedlex</param>
-    <param name="revision">a1362bd69aec6877cb9f3b950c7f4e591e2d69ee</param>
+    <param name="revision">5cb9ec099695fff5909d867da3d65711e8902e57</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml-community/sedlex.git</param>
@@ -9,9 +9,9 @@
     <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

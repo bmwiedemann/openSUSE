@@ -120,4 +120,13 @@ It is a dependency of the next version of Haxe(4.0.0).</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1098786</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d3ab84defd846b1279cdd4892c4b4212</srcmd5>
+    <version>3.3</version>
+    <time>1741178479</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.3
+  see included CHANGES.md file for details</comment>
+    <requestid>1250321</requestid>
+  </revision>
 </revisionlist>

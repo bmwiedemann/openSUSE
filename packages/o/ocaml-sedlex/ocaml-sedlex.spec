@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-sedlex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-sedlex
 Name:           %pkg%nsuffix
-Version:        3.2
+Version:        3.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Unicode-friendly lexer generator
@@ -42,7 +42,7 @@ URL:            https://opam.ocaml.org/packages/sedlex
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 3.0
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20240909
 BuildRequires:  ocamlfind(gen)
 BuildRequires:  ocamlfind(ppxlib)
 
