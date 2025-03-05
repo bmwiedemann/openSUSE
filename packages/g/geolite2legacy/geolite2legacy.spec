@@ -1,7 +1,7 @@
 #
 # spec file for package geolite2legacy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Summary:        GeoLite2 (CSV) to Legacy format converter
 License:        MIT
 URL:            https://github.com/sherpya/geolite2legacy
 Source:         %{name}-%{version}.tar.xz
-Requires:       python3-ipaddr
 BuildArch:      noarch
 
 %description

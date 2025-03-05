@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  5 00:32:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop Requires on python3-ipaddr, only required for Python < 3.3.
+
+-------------------------------------------------------------------
 Mon Aug 22 14:29:24 UTC 2022 - valentin.lefebvre@suse.com
 
 - Update to version 0+git20210326.05733c4:

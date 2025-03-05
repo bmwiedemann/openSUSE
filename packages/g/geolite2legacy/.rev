@@ -39,4 +39,12 @@
   * 0001-Use-realpath-to-determine-fips-file-location.patch (forwarded request 999369 from vlefebvre)</comment>
     <requestid>999372</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>bd950536b81c6836ca6ad08f33361f6e</srcmd5>
+    <version>0+git20210326.05733c4</version>
+    <time>1741178487</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1250330</requestid>
+  </revision>
 </revisionlist>
