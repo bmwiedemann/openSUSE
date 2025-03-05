@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Mar 05 10:02:15 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.5.0:
+  * fix: cves (#4677)
+  * fix: count the number of restarts from the deployment instead
+    of total (#4676)
+  * fix: autodeploy flag on okteto up (#4671)
+  * feat: allow proxy protobuff integration (#4668)
+  * Add back smart builds ignore (#4673)
+  * fix(ci): specify version for kubernetes-helm installation in
+    CircleCI config (#4674)
+  * bump buildkit dependency to 0.19 (#4672)
+  * build(deps): bump rack from 3.1.8 to 3.1.10 in /samples/ruby
+    (#4670)
+  * fix smart build tests (#4669)
+  * update readme to remove operational modes reference (#4666)
+  * DEV-859: Updated kubernetes dependencies to 0.31.x (#4664)
+  * Fine tune codecov configuration. Integration and internal
+    wasn't being ignored (#4667)
+  * feat: add test event insights (#4657)
+  * Revert "Fran/smart builds ignore (#4634)" (#4665)
+  * fix: cli was not waiting if buildkit not available (#4663)
+  * remove: field alingment linter (#4662)
+  * Fran/smart builds ignore (#4634)
+  * Optimize remote executions of deploy and destroy operations
+    when buildkit execution is not needed (#4661)
+  * Revert helm upgrade - back to 3.16.4 (#4659)
+
+-------------------------------------------------------------------
 Fri Feb 07 08:22:16 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.4.0:
