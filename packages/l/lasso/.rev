@@ -55,4 +55,14 @@
     <comment></comment>
     <requestid>1224342</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>1d3af9cf1d418a6d34ea5f3258479d3a</srcmd5>
+    <version>2.8.2</version>
+    <time>1741178483</time>
+    <user>anag+factory</user>
+    <comment>- Add lasso-2.8.2-python_313.patch upstream patch to make it
+  compatible with python 3.13
+  https://dev.entrouvert.org/issues/92106</comment>
+    <requestid>1250329</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  5 07:39:46 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add lasso-2.8.2-python_313.patch upstream patch to make it
+  compatible with python 3.13
+  https://dev.entrouvert.org/issues/92106
+
+-------------------------------------------------------------------
 Fri Nov 15 03:09:23 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Fix build issues

@@ -1,7 +1,7 @@
 #
 # spec file for package lasso
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019 Red Hat, Inc., Raleigh, North Carolina, United States of America.
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
@@ -41,6 +41,8 @@ Patch1:         lasso-automake-1.17-support.patch
 Patch2:         lasso-fix-implicit-declarations.patch
 # PATCH-FIX-UPSTREAM lasso-libxml2-2.12-support.patch -- Fix builds with libxml2 2.12
 Patch3:         lasso-libxml2-2.12-support.patch
+# PATCH-FIX-UPSTREAM lasso-2.8.2-python_313.patch -- https://dev.entrouvert.org/issues/92106
+Patch4:         lasso-2.8.2-python_313.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  check-devel
@@ -54,6 +56,7 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
 BuildRequires:  swig
 BuildRequires:  pkgconfig(xmlsec1) >= 1.2.25
