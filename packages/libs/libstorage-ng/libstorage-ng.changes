@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Tue Mar 4 14:45:17 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1019
+- fixed post create verify for named MD RAIDs
+- 4.5.242
+
+--------------------------------------------------------------------
 Fri Feb 28 09:36:32 UTC 2025 - freek@opensuse.org
 
 - Translated using Weblate (Dutch) (bsc#1149754)
