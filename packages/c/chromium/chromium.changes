@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Feb 27 15:33:11 CET 2025 - ro@suse.de
+
+- Chromium 134.0.6998.35
+  (stable release 2025-03-04) (boo#1238575)
+  * CVE-2025-1914: Out of bounds read in V8
+  * CVE-2025-1915: Improper Limitation of a Pathname to a Restricted Directory in DevTools
+  * CVE-2025-1916: Use after free in Profiles
+  * CVE-2025-1917: Inappropriate Implementation in Browser UI
+  * CVE-2025-1918: Out of bounds read in PDFium
+  * CVE-2025-1919: Out of bounds read in Media
+  * CVE-2025-1921: Inappropriate Implementation in Media Stream
+  * CVE-2025-1922: Inappropriate Implementation in Selection
+  * CVE-2025-1923: Inappropriate Implementation in Permission Prompts
+
+- modified patches:
+  fix_building_widevinecdm_with_chromium.patch
+  (do not define WIDEVINE_CDM_VERSION_STRING, gone upstream)
+  system-libdrm.patch (context update)
+- added patches:
+  chromium-134-revert-allowlist.patch
+  (avoid having to update gn on all targets)
+  chromium-134-revert-rust-adler2.patch
+  (revert rust change from adler to adler2 while we have 1.83)
+  chromium-134-specialize-some-to_value_list.patch
+- dropped patches (llvm17 is gone):
+  chromium-127-clang17-traitors.patch
+  chromium-add-atomicops.patch
+  chromium-133-string_view.patch
+- add to keeplibs:
+  third_party/search_engines_data
+  v8/third_party/rapidhash-v8
+- drop from keeplibs:
+  third_party/libavif (gone) (FIXME cleanup)
+- reenable qt6 for TW
+
+-------------------------------------------------------------------
 Wed Feb 26 02:05:16 CET 2025 - ro@suse.de
 
 - Chromium 133.0.6943.141 (boo#1237699)
@@ -138,6 +174,7 @@ Mon Jan 13 13:21:48 CET 2025 - ro@suse.de
   * CVE-2025-0446: Inappropriate implementation in Extensions
   * CVE-2025-0447: Inappropriate implementation in Navigation
   * CVE-2025-0448: Inappropriate implementation in Compositing
+
 - dropped patches:
   * chromium-131-unbundle-enable-freetype.patch (upstream)
 - added patches:

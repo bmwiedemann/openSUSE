@@ -115,7 +115,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        133.0.6943.141
+Version:        134.0.6998.35
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -164,6 +164,8 @@ Patch368:       chromium-131-clang-stack-protector.patch
 Patch369:       chromium-132-pdfium-explicit-template.patch
 Patch370:       fix-build-with-pipewire-1.3.82.patch
 Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
+Patch372:       chromium-134-revert-allowlist.patch
+Patch373:       chromium-134-specialize-some-to_value_list.patch
 Patch375:       chromium-131-fix-qt-ui.pach
 # conditionally applied patches
 # patch where ffmpeg < 5
@@ -175,10 +177,8 @@ Patch1005:      chromium-106-ffmpeg-duration.patch
 Patch1006:      chromium-93-ffmpeg-4.4-rest.patch
 # patch where libxml < 2.12
 Patch1010:      chromium-124-system-libxml.patch
-# patch where llvm < 19
-Patch1020:      chromium-127-clang17-traitors.patch
-Patch1021:      chromium-add-atomicops.patch
-Patch1022:      chromium-133-string_view.patch
+# patch where rust < 1.84
+Patch1030:      chromium-134-revert-rust-adler2.patch
 # end conditionally applied patches
 BuildRequires:  SDL-devel
 BuildRequires:  bison
@@ -451,11 +451,8 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %patch -p1 -P 1010
 %endif
 
-%if 0%{?llvm_version} == 17
-# chromium-127-clang17-traitors.patch only needed for older clang
-%patch -p1 -P 1020
-%patch -p1 -R -P 1021
-%patch -p1 -R -P 1022
+%if "%{?rust_version}" == "1.83"
+%patch -p1 -R -P 1030
 %endif
 
 %build
@@ -687,6 +684,7 @@ keeplibs=(
     third_party/rust
     third_party/ruy
     third_party/s2cellid
+    third_party/search_engines_data
     third_party/securemessage
     third_party/selenium-atoms
     third_party/sentencepiece
@@ -743,6 +741,7 @@ keeplibs=(
     url/third_party/mozilla
     v8/third_party/glibc
     v8/third_party/inspector_protocol
+    v8/third_party/rapidhash-v8
     v8/third_party/siphash
     v8/third_party/utf8-decoder
     v8/third_party/valgrind
@@ -776,7 +775,6 @@ keeplibs+=(
 %endif
 %if !%{with system_avif}
 keeplibs+=( third_party/libyuv )
-keeplibs+=( third_party/libavif )
 %endif
 %if !%{with system_webp} || !%{with system_avif}
 keeplibs+=( third_party/libwebp )

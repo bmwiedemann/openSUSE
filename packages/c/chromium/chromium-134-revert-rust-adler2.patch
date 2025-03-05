@@ -1,0 +1,57 @@
+diff --git a/build/rust/std/BUILD.gn b/build/rust/std/BUILD.gn
+index 68b085be200fa..6b996aa1fe386 100644
+--- a/build/rust/std/BUILD.gn
++++ b/build/rust/std/BUILD.gn
+@@ -89,7 +89,7 @@ if (toolchain_has_rust) {
+     # These are no longer present in the Windows toolchain.
+     stdlib_files += [
+       "addr2line",
+-      "adler",
++      "adler2",
+       "gimli",
+       "libc",
+       "memchr",
+diff --git a/build/rust/std/rules/BUILD.gn b/build/rust/std/rules/BUILD.gn
+index 6b59b0894d365..e44d638832b6f 100644
+--- a/build/rust/std/rules/BUILD.gn
++++ b/build/rust/std/rules/BUILD.gn
+@@ -65,22 +70,22 @@ cargo_crate("addr2line") {
+   output_dir =
+       "$root_out_dir/local_rustc_sysroot/lib/rustlib/$rust_abi_target/lib/"
+ }
+-cargo_crate("adler") {
++cargo_crate("adler2") {
+   crate_type = "rlib"
+-  crate_root = "//third_party/rust-toolchain/lib/rustlib/src/rust/library/vendor/adler-1.0.2/src/lib.rs"
++  crate_root = "//third_party/rust-toolchain/lib/rustlib/src/rust/library/vendor/adler2-2.0.0/src/lib.rs"
+   sources = [
+-    "//third_party/rust-toolchain/lib/rustlib/src/rust/library/vendor/adler-1.0.2/src/algo.rs",
+-    "//third_party/rust-toolchain/lib/rustlib/src/rust/library/vendor/adler-1.0.2/src/lib.rs",
++    "//third_party/rust-toolchain/lib/rustlib/src/rust/library/vendor/adler2-2.0.0/src/algo.rs",
++    "//third_party/rust-toolchain/lib/rustlib/src/rust/library/vendor/adler2-2.0.0/src/lib.rs",
+   ]
+   inputs = []
+   no_std = true
+ 
+   # Unit tests skipped. Generate with --with-tests to include them.
+   build_native_rust_unit_tests = false
+-  edition = "2015"
+-  cargo_pkg_version = "1.0.2"
+-  cargo_pkg_authors = "Jonas Schievink <jonasschievink@gmail.com>"
+-  cargo_pkg_name = "adler"
++  edition = "2021"
++  cargo_pkg_version = "2.0.0"
++  cargo_pkg_authors = "Jonas Schievink <jonasschievink@gmail.com>, oyvindln <oyvindln@users.noreply.github.com>"
++  cargo_pkg_name = "adler2"
+   cargo_pkg_description =
+       "A simple clean-room implementation of the Adler-32 checksum"
+   library_configs -= [
+@@ -1618,7 +1624,7 @@ cargo_crate("miniz_oxide") {
+   ]
+   executable_configs += [ "//build/config/compiler:no_chromium_code" ]
+   deps = [
+-    ":adler",
++    ":adler2",
+     ":compiler_builtins",
+     ":rustc_std_workspace_alloc",
+     ":rustc_std_workspace_core",

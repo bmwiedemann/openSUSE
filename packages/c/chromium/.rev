@@ -5417,4 +5417,41 @@ boo#1224178</comment>
   chromium-131-fix-qt-ui.pach (from fedora)</comment>
     <requestid>1248531</requestid>
   </revision>
+  <revision rev="452" vrev="1">
+    <srcmd5>3dcfde11bf2494a960a6d2161a2f04ff</srcmd5>
+    <version>134.0.6998.35</version>
+    <time>1741190386</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 134.0.6998.35
+  (stable release 2025-03-04) (boo#1238575)
+  * CVE-2025-1914: Out of bounds read in V8
+  * CVE-2025-1915: Improper Limitation of a Pathname to a Restricted Directory in DevTools
+  * CVE-2025-1916: Use after free in Profiles
+  * CVE-2025-1917: Inappropriate Implementation in Browser UI
+  * CVE-2025-1918: Out of bounds read in PDFium
+  * CVE-2025-1919: Out of bounds read in Media
+  * CVE-2025-1921: Inappropriate Implementation in Media Stream
+  * CVE-2025-1922: Inappropriate Implementation in Selection
+  * CVE-2025-1923: Inappropriate Implementation in Permission Prompts
+- modified patches:
+  fix_building_widevinecdm_with_chromium.patch
+  (do not define WIDEVINE_CDM_VERSION_STRING, gone upstream)
+  system-libdrm.patch (context update)
+- added patches:
+  chromium-134-revert-allowlist.patch
+  (avoid having to update gn on all targets)
+  chromium-134-revert-rust-adler2.patch
+  (revert rust change from adler to adler2 while we have 1.83)
+  chromium-134-specialize-some-to_value_list.patch
+- dropped patches (llvm17 is gone):
+  chromium-127-clang17-traitors.patch
+  chromium-add-atomicops.patch
+  chromium-133-string_view.patch
+- add to keeplibs:
+  third_party/search_engines_data
+  v8/third_party/rapidhash-v8
+- drop from keeplibs:
+  third_party/libavif (gone) (FIXME cleanup)</comment>
+    <requestid>1250276</requestid>
+  </revision>
 </revisionlist>
