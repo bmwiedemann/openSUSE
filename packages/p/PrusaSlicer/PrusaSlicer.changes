@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  4 08:28:09 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Enable support for EGL
+  * Added PrusaSlicer-2.9.1-pr14214-egl-support.patch
+    gh#prusa3d/PrusaSlicer#14214
+  * related to (boo#1235150)
+
+-------------------------------------------------------------------
 Wed Feb 26 21:18:52 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Add prusaslicer-2.8.1-boost-1.87.0-asio.patch for new boost

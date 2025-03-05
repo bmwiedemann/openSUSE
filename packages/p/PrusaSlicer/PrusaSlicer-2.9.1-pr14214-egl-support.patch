@@ -1,0 +1,110 @@
+From f988b341402947b6caccbc798a1e86a0cd5aed1c Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@cryptomilk.org>
+Date: Sat, 1 Mar 2025 10:14:57 +0100
+Subject: [PATCH] Allow to build PrusaSlicer with EGL support
+
+A lot of Linux distribution don't build wxWidgets with EGL support yet.
+This is why by default this option is set to OFF. If a Linux
+distribution has built wxWidgets and GLEW with EGL support, you should
+turn that on!
+---
+ CMakeLists.txt                  |  4 ++++
+ deps/+GLEW/GLEW.cmake           |  3 ++-
+ deps/+wxWidgets/wxWidgets.cmake |  2 +-
+ src/CMakeLists.txt              |  4 ++++
+ src/PrusaSlicer.cpp             | 15 ++++++++++-----
+ 5 files changed, 21 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 25bf56b3f..968cec893 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -35,6 +35,10 @@ endif()
+ 
+ option(SLIC3R_STATIC 			"Compile PrusaSlicer with static libraries (Boost, TBB, glew)" ${SLIC3R_STATIC_INITIAL})
+ option(SLIC3R_GUI    			"Compile PrusaSlicer with GUI components (OpenGL, wxWidgets)" 1)
++# A lot of Linux distribution don't build wxWidgets with EGL support yet. This
++# is why by default this option is set to OFF. If a Linux distribution has
++# built wxWidgets and GLEW with EGL support, you should turn that on!
++option(SLIC3R_EGL               "Compile PrusaSlicer with Wayland (EGL) support" OFF)
+ option(SLIC3R_FHS               "Assume PrusaSlicer is to be installed in a FHS directory structure" 0)
+ option(SLIC3R_PCH               "Use precompiled headers" 1)
+ option(SLIC3R_MSVC_COMPILE_PARALLEL "Compile on Visual Studio in parallel" 1)
+diff --git a/deps/+GLEW/GLEW.cmake b/deps/+GLEW/GLEW.cmake
+index c2db9117b..b2382af38 100644
+--- a/deps/+GLEW/GLEW.cmake
++++ b/deps/+GLEW/GLEW.cmake
+@@ -5,4 +5,5 @@ add_cmake_project(
+   SOURCE_SUBDIR build/cmake
+   CMAKE_ARGS
+     -DBUILD_UTILS=OFF
+-)
+\ No newline at end of file
++    -DGLEW_EGL=${SLIC3R_EGL}
++)
+diff --git a/deps/+wxWidgets/wxWidgets.cmake b/deps/+wxWidgets/wxWidgets.cmake
+index e09f3d987..a3cded566 100644
+--- a/deps/+wxWidgets/wxWidgets.cmake
++++ b/deps/+wxWidgets/wxWidgets.cmake
+@@ -51,7 +51,7 @@ add_cmake_project(wxWidgets
+         -DwxUSE_EXPAT=sys
+         -DwxUSE_LIBSDL=OFF
+         -DwxUSE_XTEST=OFF
+-        -DwxUSE_GLCANVAS_EGL=OFF
++        -DwxUSE_GLCANVAS_EGL=${SLIC3R_EGL}
+         -DwxUSE_WEBREQUEST=OFF
+         ${_wx_webview}
+         ${_wx_secretstore}
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b2d78e5b2..6fdf88ee3 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -111,6 +111,10 @@ if (NOT WIN32 AND NOT APPLE)
+     set_target_properties(PrusaSlicer PROPERTIES OUTPUT_NAME "prusa-slicer")
+ endif ()
+ 
++if (SLIC3R_EGL)
++    target_compile_options(PrusaSlicer PRIVATE -DSLIC3R_EGL=1)
++endif()
++
+ target_link_libraries(PrusaSlicer libslic3r libcereal slic3r-arrange-wrapper)
+ 
+ if (APPLE)
+diff --git a/src/PrusaSlicer.cpp b/src/PrusaSlicer.cpp
+index 5eb389344..d5d62da84 100644
+--- a/src/PrusaSlicer.cpp
++++ b/src/PrusaSlicer.cpp
+@@ -90,10 +90,12 @@ int CLI::run(int argc, char **argv)
+     save_main_thread_id();
+ 
+ #ifdef __WXGTK__
+-    // On Linux, wxGTK has no support for Wayland, and the app crashes on
+-    // startup if gtk3 is used. This env var has to be set explicitly to
+-    // instruct the window manager to fall back to X server mode.
++#ifndef SLIC3R_EGL
++    // On a lot of Linux distributions, wxWidgets isn't compiled with EGL
++    // support. In order to avoid crashes force the X11 backend. If Wayland is
++    // running this will fallback to XWayland.
+     ::setenv("GDK_BACKEND", "x11", /* replace */ true);
++#endif // SLIC3R_EGL
+ 
+     // https://github.com/prusa3d/PrusaSlicer/issues/12969
+     ::setenv("WEBKIT_DISABLE_COMPOSITING_MODE", "1", /* replace */ false);
+@@ -802,9 +804,12 @@ int CLI::run(int argc, char **argv)
+     #if !defined(_WIN32) && !defined(__APPLE__)
+         // likely some linux / unix system
+         const char *display = boost::nowide::getenv("DISPLAY");
+-        // const char *wayland_display = boost::nowide::getenv("WAYLAND_DISPLAY");
+-        //if (! ((display && *display) || (wayland_display && *wayland_display))) {
++#ifdef SLIC3R_EGL
++        const char *wayland_display = boost::nowide::getenv("WAYLAND_DISPLAY");
++        if (! ((display && *display) || (wayland_display && *wayland_display))) {
++#else // SLIC3R_EGL
+         if (! (display && *display)) {
++#endif // SLIC3R_EGL
+             // DISPLAY not set.
+             boost::nowide::cerr << "DISPLAY not set, GUI mode not available." << std::endl << std::endl;
+             this->print_help(false);
+-- 
+2.48.1
+

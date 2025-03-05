@@ -41,6 +41,8 @@ Patch13:        PrusaSlicer-2.9.0-pr13885-printconfig-segfault.patch
 Patch14:        PrusaSlicer-2.9.0-pr14010-fix-curl.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr13081-cgal6.0.patch gh#prusa3d/PrusaSlicer#13081
 Patch15:        PrusaSlicer-2.9.0-pr13081-cgal6.0.patch
+# PATCH-FIX-OPENSUSE PrusaSlicer-2.9.1-pr14214-egl-support.patch gh#prusa3d/PrusaSlicer#14214
+Patch16:        PrusaSlicer-2.9.1-pr14214-egl-support.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 5.6
@@ -127,6 +129,7 @@ sed -i 's|slic3r_jobs_tests.cpp||' tests/slic3rutils/CMakeLists.txt
 export CC=gcc-%gcc_ver CXX=g++-%gcc_ver
 %cmake \
   -DCMAKE_CXX_STANDARD=17 \
+  -DSLIC3R_EGL=1 \
   -DSLIC3R_FHS=1 \
   -DSLIC3R_GTK=3 \
   -DOPENVDB_FIND_MODULE_PATH=%{_libdir}/cmake/OpenVDB
