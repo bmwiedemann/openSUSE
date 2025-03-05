@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  5 07:35:32 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.1:
+  * Special highlighting for standard C++ methods.
+  * More intuitive column selection with wrapped lines (although it
+    isn't useful with them).
+  * Allow typing more characters before a selected column.
+  * Replaced QtGlobal methods and types (like qMax, qMin, qreal, …)
+    with those of C++.
+
+-------------------------------------------------------------------
 Tue Jan 28 13:08:09 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.0:
