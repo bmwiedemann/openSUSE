@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Feb 22 02:31:20 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * Polish translation for .desktop entry
+  * chore: upgrade all dependencies
+  * fix: high CPU usage when desktop files are accessed
+  * i18n: capitalize COSMIC
+  * i18n(ar): add Arabic translation
+  * i18n: update Japanese and Spanish
+  * i18n(fr): Update translation
+  * perf: optimized cosmic-freedesktop-icons
+  * chore: replace freedesktop-icons with cosmic-freedesktop-icons
+  * perf: update freedesktop-icons to reduce memory usage
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:02:54 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+1:
+  * fix: high CPU usage when desktop files are accessed
+  * i18n: capitalize COSMIC
+  * i18n(ar): add Arabic translation
+  * i18n: update Japanese and Spanish
+  * i18n(fr): Update translation
+  * perf: optimized cosmic-freedesktop-icons
+  * chore: replace freedesktop-icons with cosmic-freedesktop-icons
+  * perf: update freedesktop-icons to reduce memory usage
+  * fix: pin sctk to fix compile
+  * update deps
+
+-------------------------------------------------------------------
 Fri Jan 10 21:04:49 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+0:
