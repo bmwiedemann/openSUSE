@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Feb 22 03:10:23 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * chore: upgrade dependencies
+  * i18n(zh): Update translation of zh-CN and zh-TW
+  * Update Hungarian translations
+  * feat: set max responses for the launcher service
+  * fix: ids
+  * refactor: add scrollable list after 8 items
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:36:32 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+0:
+  * i18n(hu): add Hungarian translation
+  * i18n: ensure COSMIC is capitalized
+  * i18n(pt-BR): translation update
+  * i18n(pt): add type-to-search translation
+  * i18n: add Javanese translation
+  * i18n: add Hindi & Kannada translation
+  * i18n: add nl, jp, es, fr, it translations
+  * i18n(zh-cn): add translation
+  * i18n(tr): add translation
+  * i18n(pl): add translation
+  * i18n(ar): add translation
+  * perf: optimized cosmic-freedesktop-icons
+  * chore: replace freedesktop-icons with cosmic-freedesktop-icons
+  * perf: update freedesktop-icons to reduce memory usage
+
+-------------------------------------------------------------------
 Fri Jan 10 21:51:32 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+1:
