@@ -1,0 +1,39 @@
+From 3a8127ad7fe6615a8c6e8a3f0965addfdf888b38 Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Fri, 14 Feb 2025 21:43:33 -0800
+Subject: [PATCH] drmgr/pci: Return 0 for success from do_replace()
+
+Patch-mainline: expected 1.3.14
+Git-commit: 3a8127ad7fe6615a8c6e8a3f0965addfdf888b38
+
+Added replace_add_work() in commit f40a63b15c563 to support
+replacement node and the partner node. But this function returns
+0 for user input and 1 for success which caused do_replace()
+returns 1. This patch fixes the problem with return 0.
+
+Fixes: f40a63b15c563 ("drmgr/pci: Add multipath partner device support for hotplug replace")
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/drmgr/drslot_chrp_pci.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/drmgr/drslot_chrp_pci.c b/src/drmgr/drslot_chrp_pci.c
+index 4c41fcd..91c08e9 100644
+--- a/src/drmgr/drslot_chrp_pci.c
++++ b/src/drmgr/drslot_chrp_pci.c
+@@ -1051,9 +1051,10 @@ static int do_replace(struct dr_node *all_nodes)
+ 		}
+ 
+ 		usr_prompt = prompt_save;
++		return rc;
+ 	}
+ 
+-	return rc;
++	return 0;
+ }
+ 
+ int valid_pci_options(void)
+-- 
+2.47.1
+

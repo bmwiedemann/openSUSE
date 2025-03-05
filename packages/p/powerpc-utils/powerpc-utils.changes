@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar  5 10:00:34 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- drmgr/pci: Return 0 for success from do_replace() (jsc#PED-9914).
+  * drmgr-pci-Return-0-for-success-from-do_replace.patch
+
+-------------------------------------------------------------------
+Tue Mar  4 10:24:35 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix memory mode display on POWER10 (bsc#1237409 ltc#211627)
+  * lparstat-print-memory-mode-correctly.patch
+
+-------------------------------------------------------------------
 Mon Jan 27 17:34:47 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Drop sysvinit service use (bsc#1236480 jsc#-264).
