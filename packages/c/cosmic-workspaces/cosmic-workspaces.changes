@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Feb 22 03:52:25 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * fix: invert scroll direction
+  * Polish translation for .desktop entry
+  * Update for toplevel-info cctk changes
+  * Fix build with `mock-backend` feature
+  * Fix warnings and remove `dbg!`
+  * UI code for supporting workspace drags
+  * Rename `DndWorkspaceDrag` to `DndToplevelDrag`
+  * toplevel_layout: Add `AxisToplevelLayout` helper
+  * toplevel_layout: Make size depend on axis
+  * toplevel_layout: Move logic into a `requested_main_total` method
+  * Fix disabled scroll accumulation
+  * Accumulate scroll events
+  * Change workspace based on scroll events
+  * Use updated screencopy abstraction
+  * Add `workspaces_for_output` helper function
+  * Allow dropping window onto toplevel list area
+  * Remove unneeded field of `DragSurface`
+  * Fix building mock backend
+  * Move drag-and-drop related types to a `dnd` module
+  * `DropTarget` enum instead of tuple; combine with `DragId`
+  * view: Add `DragId` helper to manage multiple types of destinations
+  * feat: Workspace view closing by pressing current workspace or empty space
+  * Center toplevels if they don't fill space
+  * Have `icon_for_app_id` run in a background thread
+  * performance: Add app_id check to throttle icon fetch
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 18:01:40 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+7:
+  * Remove `LayerShell` only once iced confirms surface destroyed
+  * Use std `LazyLock` instead of `once_cell` crate
+  * Address some warnings
+  * Allow a couple clippy lints
+  * Run `cargo clippy --fix`
+  * fix(interface): align closer to designs
+  * Apply screencopy `transform` to subsurfaces
+  * Run `cargo update`
+  * Toplevel layout abstraction
+  * Update dependencies
+  * Update iced/libcosmic
+
+-------------------------------------------------------------------
 Fri Jan 10 23:02:05 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+0:
