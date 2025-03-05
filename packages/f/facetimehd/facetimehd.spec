@@ -17,7 +17,7 @@
 
 
 Name:           facetimehd
-Version:        0.6.8.2
+Version:        0.6.13
 Release:        0
 Summary:        Kernel driver for the Apple FacetimeHD webcams
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ URL:            https://github.com/patjak/facetimehd
 Source0:        https://github.com/patjak/facetimehd/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        preamble
 Patch0:         Remove-use-of-linux-pci-aspm.h-since-it-s-not-in-the.patch
-Patch1:         0001-Fix-include-of-prandom.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 ExclusiveArch:  x86_64
 %kernel_module_package -p %{_sourcedir}/preamble
@@ -38,9 +37,6 @@ Reverse engineered Linux driver for the FacetimeHD PCIe webcam
 %setup -q
 %if 0%{?sle_version} == 150300
 %patch -P 0 -p1
-%endif
-%if 0%{?sle_version} >= 150300 || 0%{?suse_version} >= 1600
-%patch -P 1 -p1
 %endif
 
 set -- *

@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar  4 11:21:45 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 0.6.13
+  * Makes reloading the module work properly
+  * Adjust include files to work with 6.13+ kernels
+- 0001-Fix-include-of-prandom.patch
+  * No longer needed since fix is in driver
+
+-------------------------------------------------------------------
 Mon Feb  3 12:33:53 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Only build for x86_64
+  * The driver only supports the camera over PCI and as far as
+    I know, only the x86_64 machines connect the camera via PCI.
+    The M1/M2 Macs use a different driver.
 - 0001-Fix-include-of-prandom.patch
   * Fixes a build failure due to changes in kernel 
 
