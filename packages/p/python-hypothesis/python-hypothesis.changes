@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  3 11:32:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.127.5
+  * Improve shrinking of non-standard NaN float values
+  * Update our vendored list of top-level domains, which is used by 
+    the provisional domains() strategy.
+  * Fix a bug where from_type() would error on certain types 
+    involving Protocol
+
+-------------------------------------------------------------------
 Wed Feb 26 07:00:42 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
-- Update to 6.172.2:
+- Update to 6.127.2:
   - Adjust type hints for the pub-sub database implementation in
     version 6.126.0, and remove a remnant debug print in its
     implementation.
