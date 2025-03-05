@@ -1,7 +1,7 @@
 #
 # spec file for package k8up-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,10 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define executable_name k8up
 
 Name:           k8up-cli
-Version:        2.11.3
+Version:        2.12.0
 Release:        0
 Summary:        CLI for the K8up Kubernetes and OpenShift Backup Operator
 License:        Apache-2.0
