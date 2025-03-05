@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar  1 09:36:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 10.4.0:
+  + Drawing glyphs using hb-draw API now avoids any “malloc” calls,
+    which improves drawing performance by 10+%.
+  + Add support new “GVAR” table fonts with more than 65535 glyphs.
+    Support is currently behind a compilation flag and is disabled
+    by default.
+  + Some hb-directwrite and hb-ft APIs got renamed with more clear
+    names and the old names are deprecated.
+  + Various build and fuzzing fixes.
+  + New API:
+    - +hb_directwrite_face_get_dw_font_face()
+    - +hb_ft_font_get_ft_face()
+  + Deprecated API:
+    - +hb_directwrite_face_get_font_face()
+    - +hb_ft_font_get_face()
+
+-------------------------------------------------------------------
 Fri Feb 21 10:38:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 10.3.0:
