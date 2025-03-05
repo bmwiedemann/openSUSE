@@ -1074,4 +1074,29 @@
     <comment></comment>
     <requestid>1150936</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>acfb70f263fa83fa57af458ea16a71d5</srcmd5>
+    <version>2.13.3</version>
+    <time>1741178356</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.13.2:
+  * Some  fields in the `FT_Outline` structure have been changed
+    from signed to unsigned type, which better reflects the actual
+    usage. It is also an additional means to protect against
+    malformed input.
+  * Rare double-free crashes in the cache subsystem have been fixed.
+  * Excessive stack allocation in the autohinter has been fixed.
+  * The B/W  rasterizer has received a major upkeep that results in
+    large performance improvements.  The rendering speed has
+    increased and even doubled for very complex glyphs.
+
+    library.
+- Re-enable freetype-config, there is just too many fallouts.
+  truetype/ttinterp.c (bsc#1079600)
+- Add psaux-flex.patch to fix a regression in Type1 rendering
+    instance. Previously, FreeType returned to the base font
+- removed freetype2-subpixel.patch in favor of above
+- get 2.5.3 from Factory as it fixes</comment>
+    <requestid>1248405</requestid>
+  </revision>
 </revisionlist>

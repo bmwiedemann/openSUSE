@@ -1,7 +1,7 @@
 #
 # spec file for package freetype2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define doc_version 2.13.2
+%define doc_version 2.13.3
 Name:           freetype2
-Version:        2.13.2
+Version:        2.13.3
 Release:        0
 Summary:        A TrueType Font Library
 License:        FTL AND GPL-2.0-only

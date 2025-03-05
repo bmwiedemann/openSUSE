@@ -1,7 +1,7 @@
 #
 # spec file for package ft2demos
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global freetype_version 2.13.2
+%global freetype_version 2.13.3
 Name:           ft2demos
-Version:        2.13.2
+Version:        2.13.3
 Release:        0
 Summary:        Freetype2 Utilities and Demo Programs
 License:        GPL-2.0-or-later

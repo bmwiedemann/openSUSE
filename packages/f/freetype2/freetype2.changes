@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:00:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.2:
+  * Some  fields in the `FT_Outline` structure have been changed
+    from signed to unsigned type, which better reflects the actual
+    usage. It is also an additional means to protect against
+    malformed input.
+  * Rare double-free crashes in the cache subsystem have been fixed.
+  * Excessive stack allocation in the autohinter has been fixed.
+  * The B/W  rasterizer has received a major upkeep that results in
+    large performance improvements.  The rendering speed has
+    increased and even doubled for very complex glyphs.
+
+-------------------------------------------------------------------
 Wed Oct 11 12:15:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.13.2:
@@ -155,7 +169,7 @@ Fri Apr  8 17:06:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
     the `svg-hooks` property of the new 'ot-svg' module it is possible
     to register an  external SVG rendering engine.   The FreeType demo
     programs  have been  set  up  to use  'librsvg'  as the  rendering
-    library. 
+    library.
   - The handling of fonts with an 'sbix' table has been improved.
   - The internal 'zlib'  code has been updated to be  in sync with the
     current 'zlib' version (1.2.11).
@@ -319,7 +333,7 @@ Sat Oct 27 11:54:18 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
 -------------------------------------------------------------------
 Mon May 14 10:06:56 UTC 2018 - idonmez@suse.com
 
-- Re-enable freetype-config, there is just too many fallouts. 
+- Re-enable freetype-config, there is just too many fallouts.
 
 -------------------------------------------------------------------
 Wed May  2 10:54:32 UTC 2018 - idonmez@suse.com
@@ -347,7 +361,7 @@ Wed May  2 10:54:32 UTC 2018 - idonmez@suse.com
 Thu Mar  8 16:47:21 UTC 2018 - kbabioch@suse.com
 
 - Add bnc1079600.patch: Fix several integer overflow issues in
-  truetype/ttinterp.c (bsc#1079600) 
+  truetype/ttinterp.c (bsc#1079600)
 
 -------------------------------------------------------------------
 Tue Mar  6 10:47:29 UTC 2018 - ilya@ilya.pp.ua
@@ -379,7 +393,7 @@ Wed Feb  7 09:17:10 UTC 2018 - fstrba@suse.com
 -------------------------------------------------------------------
 Wed Jan 10 10:32:25 UTC 2018 - idonmez@suse.com
 
-- Add psaux-flex.patch to fix a regression in Type1 rendering 
+- Add psaux-flex.patch to fix a regression in Type1 rendering
 
 -------------------------------------------------------------------
 Tue Jan  9 11:34:51 UTC 2018 - idonmez@suse.com
@@ -395,7 +409,7 @@ Tue Jan  9 11:34:51 UTC 2018 - idonmez@suse.com
     or change the current named instance.
   * Starting with this FreeType version, resetting variation
     coordinates will return to the currently selected named
-    instance. Previously, FreeType returned to the base font 
+    instance. Previously, FreeType returned to the base font
     (i.e., no instance set).
   * Some fuzzer fixes to better reject malformed fonts.
 
@@ -437,7 +451,7 @@ Mon May 15 10:36:18 UTC 2017 - idoenmez@suse.de
     module  and   library  properties  per  font.    Currently,  the
     following properties can be  handled: stem darkening, LCD filter
     weights, and the random seed for the `random' CFF operator.
-  
+
   * The PCF change to show more `colourful' family names (introduced
     in version 2.7.1) was too radical; it can now be configured with
     PCF_CONFIG_OPTION_LONG_FAMILY_NAMES   at   compile   time.    If
@@ -453,7 +467,7 @@ Mon May 15 10:36:18 UTC 2017 - idoenmez@suse.de
     Deseret, Glagolitic, Gothic, Kayah, Lisu, N'Ko, Ol Chiki, Old
     Turkic, Osage, Osmanya, Saurashtra, Shavian, Sundanese, Tai
     Viet, Tifinagh, Unified Canadian Syllabics, Vai
-    
+
   *  `Light' auto-hinting  mode no  longer uses TrueType  metrics for
      TrueType  fonts.   This bug  was  introduced  in version  2.4.6,
      causing   horizontal  scaling   also.    Almost  all   GNU/Linux
@@ -464,7 +478,7 @@ Mon May 15 10:36:18 UTC 2017 - idoenmez@suse.de
   * If a TrueType font gets loaded with FT_LOAD_NO_HINTING, FreeType
     now scales  the font linearly  again (bug introduced  in version
     2.4.6).
-    
+
   * Fixed CVE-2017-8105,  CVE-2017-8287:  Older   FreeType  versions
     have out-of-bounds  writes  caused  by  heap-based  buffer  overflows
     related to Type 1 fonts. (boo#1035807, boo#1036457)
@@ -562,7 +576,7 @@ Fri Sep  9 16:10:39 UTC 2016 - develop7@develop7.info
       `-d' to give start-up design coordinates.
     + The `ftdump' demo program has  a new command line option `-p' to
       dump TrueType bytecode instructions.
-- removed freetype2-subpixel.patch in favor of above 
+- removed freetype2-subpixel.patch in favor of above
   FREETYPE_PROPERTIES environment variable
 -------------------------------------------------------------------
 Wed Jul 13 06:48:31 UTC 2016 - dimstar@opensuse.org
@@ -614,7 +628,7 @@ Mon Mar 28 11:54:15 UTC 2016 - idonmez@suse.com
   * IMPORTANT CHANGES
     - Khmer,  Myanmar, Bengali,  and Kannada  script support  has been
       added to the auto-hinter.
-  
+
   * MISCELLANEOUS
     - Better  support of  Indic  scripts like  Devanagari  by using  a
       top-to-bottom hinting flow.
@@ -923,7 +937,7 @@ Mon Dec  8 15:43:58 UTC 2014 - hrvoje.senjan@gmail.com
 -------------------------------------------------------------------
 Thu Mar 27 09:57:06 UTC 2014 - nadvornik@suse.com
 
-- get 2.5.3 from Factory as it fixes 
+- get 2.5.3 from Factory as it fixes
   CVE-2014-2240 CVE-2014-2241 (bnc#867620)
 
 -------------------------------------------------------------------
