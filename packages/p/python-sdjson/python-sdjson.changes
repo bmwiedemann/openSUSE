@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 11:59:28 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Oct 25 05:20:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Skip failing test test_unexpected_data
