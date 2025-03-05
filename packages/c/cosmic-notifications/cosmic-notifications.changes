@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 22 03:15:26 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * chore: update libcosmic
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:39:01 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+0:
+  * perf: optimized cosmic-freedesktop-icons
+  * update freedesktop-icons
+
+-------------------------------------------------------------------
 Fri Jan 10 21:57:18 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+1:
