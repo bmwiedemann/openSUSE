@@ -16,7 +16,7 @@
 #
 
 
-%bcond egl 0
+%bcond egl 1
 
 # If you change so_ver, then you have to update baselibs.conf as well.
 %define so_ver 2_2
