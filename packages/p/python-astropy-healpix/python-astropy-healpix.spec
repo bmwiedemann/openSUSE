@@ -1,7 +1,7 @@
 #
 # spec file for package python-astropy-healpix
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,26 @@
 
 
 Name:           python-astropy-healpix
-Version:        1.0.3
+Version:        1.1.2
 Release:        0
 Summary:        HEALPix for Astropy
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/astropy-healpix
 Source:         https://files.pythonhosted.org/packages/source/a/astropy_healpix/astropy_healpix-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module extension-helpers}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astropy >= 3
-Requires:       python-numpy
+Requires:       python-astropy >= 5
+Requires:       python-numpy >= 1.25
 Provides:       python-astropy_healpix = %{version}-%{release}
 # SECTION test requirements
-BuildRequires:  %{python_module astropy >= 3}
+BuildRequires:  %{python_module astropy >= 5}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest-astropy}
 # /SECTION

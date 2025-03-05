@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar  5 08:26:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.1.2
+  * Fix unit tests so that they pass under Numpy 1.x and 2.x.
+  * Require python >= 3.10, numpy >= 1.25, and astropy >= 5.
+  * Fix broken unit tests that were reported by Debian.
+  * Remove dependency on obsolete Astropy test runner function.
+  * Correctly handle non-finite longitude and latitude values in
+    bilinear_interpolation_weights. In previous versions, this
+    function would have tripped a C assertion and fatally aborted
+    the Python interpreter. Now, it will return NaN.
+
+-------------------------------------------------------------------
 Sat Apr  6 18:54:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.3:
