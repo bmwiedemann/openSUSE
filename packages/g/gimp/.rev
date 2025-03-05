@@ -2193,4 +2193,13 @@ General:
   gdb.patch (forwarded request 1244816 from darix)</comment>
     <requestid>1244820</requestid>
   </revision>
+  <revision rev="148" vrev="2">
+    <srcmd5>5aa4efde1e187606573272908828b3ea</srcmd5>
+    <version>3.0.0~RC3</version>
+    <time>1741178330</time>
+    <user>anag+factory</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 1249930 from sbrabec)</comment>
+    <requestid>1250087</requestid>
+  </revision>
 </revisionlist>

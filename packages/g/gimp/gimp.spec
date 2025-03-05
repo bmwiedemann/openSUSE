@@ -138,7 +138,6 @@ BuildRequires:  pkgconfig
 %if 0%{?suse_version}
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  libxslt-tools
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 %endif
 %if 0%{?suse_version} >= 1600
@@ -344,15 +343,6 @@ that extend gimp.
 %build
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
-%if 0%{?suse_version} && %{with translation_update}
-translation-update-upstream
-translation-update-upstream po-libgimp gimp30-libgimp
-translation-update-upstream po-python gimp30-python
-translation-update-upstream po-script-fu gimp30-script-fu
-translation-update-upstream po-plug-ins gimp30-std-plug-ins
-translation-update-upstream po-tips gimp30-tips
-%endif
 
 %meson \
   -Drelocatable-bundle=platform-default \

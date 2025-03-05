@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  3 20:59:49 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Mon Feb 10 16:35:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.0.0~RC3
