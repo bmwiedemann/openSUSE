@@ -380,4 +380,12 @@
     <comment>- Update to release 0.71</comment>
     <requestid>1227874</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>3deb8e8cb3581e59ef5b437d1b489776</srcmd5>
+    <version>0.73</version>
+    <time>1741178317</time>
+    <user>anag+factory</user>
+    <comment>Required by iwd</comment>
+    <requestid>1249659</requestid>
+  </revision>
 </revisionlist>

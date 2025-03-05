@@ -1,7 +1,7 @@
 #
 # spec file for package ell
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libell0
 Name:           ell
-Version:        0.71
+Version:        0.73
 Release:        0
 Summary:        Wireless setup and cryptography library
 License:        LGPL-2.1-or-later
@@ -75,8 +75,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %check
 %make_build check || :
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING
