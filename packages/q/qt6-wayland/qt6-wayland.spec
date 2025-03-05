@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-wayland
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,8 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-wayland-rpmlintrc
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-update-wayland_xml-to-version-1_23_0.patch
+# PATCH-FIX-UPSTREAM fix-taskbar.patch - Based on change number 623667 via KDE bug 491100
+Patch1:         fix-taskbar.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 28 17:12:04 UTC 2025 - pallas wept <pallaswept@proton.me>
+
+- Add patch to fix failures when drag'n'drop in the task manager
+  * fix-taskbar.patch
+
+
+-------------------------------------------------------------------
 Fri Jan 31 10:23:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.2

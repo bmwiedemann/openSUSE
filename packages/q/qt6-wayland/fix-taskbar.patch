@@ -1,0 +1,38 @@
+From 79d38417c09f9ea74cc3eea9afafccaefe7dbf96 Mon Sep 17 00:00:00 2001
+From: David Redondo <qt@david-redondo.de>
+Date: Tue, 11 Feb 2025 10:36:39 +0100
+Subject: [PATCH] Use the same pointing device for releasing as all other events
+
+When we specify no pointing device QWindowSystemInterface will use
+QPointingDevice::primaryPointingDevice() which is slightly different
+than what QWaylandWindow will do where the seat name is passed.
+Task: QTBUG-127821
+
+Change-Id: I77bf7ce0c5b57c205d670923ba348bf6eeec2490
+Reviewed-by: David Edmundson <davidedmundson@kde.org>
+(cherry picked from commit 5a65f2a46fd98316927845dfa6d4cb329dd8defd)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+(cherry picked from commit 73d687ac76f1e13d2e40d77f106f3ec7ac795a87)
+---
+
+diff --git a/src/client/qwaylandinputdevice.cpp b/src/client/qwaylandinputdevice.cpp
+index f435b95..bd5d5ae 100644
+--- a/src/client/qwaylandinputdevice.cpp
++++ b/src/client/qwaylandinputdevice.cpp
+@@ -1139,10 +1139,12 @@
+         } else if (mFrameData.event->type == QEvent::MouseButtonRelease) {
+             // If the window has been destroyed, we still need to report an up event, but it can't
+             // be handled by the destroyed window (obviously), so send the event here instead.
+-            QWindowSystemInterface::handleMouseEvent(nullptr, event->timestamp, event->local,
+-                                 event->global, event->buttons,
+-                                 event->button, event->type,
+-                                 event->modifiers);// , Qt::MouseEventSource source = Qt::MouseEventNotSynthesized);
++            QWindowSystemInterface::handleMouseEvent(
++                    nullptr, event->timestamp,
++                    QPointingDevice::primaryPointingDevice(mParent->seatname()), event->local,
++                    event->global, event->buttons, event->button, event->type,
++                    event->modifiers); // , Qt::MouseEventSource source =
++                                       // Qt::MouseEventNotSynthesized);
+         }
+         delete mFrameData.event;
+         mFrameData.event = nullptr;
