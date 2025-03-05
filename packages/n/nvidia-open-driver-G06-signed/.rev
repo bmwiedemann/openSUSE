@@ -707,4 +707,12 @@
     <comment>- update non-CUDA variant to 570.124.04 (boo#1237585)</comment>
     <requestid>1249087</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>9cc7c798c3ec150e58906c059161249b</srcmd5>
+    <version>570.124.04</version>
+    <time>1741178449</time>
+    <user>anag+factory</user>
+    <comment>- update CUDA variant to 570.124.06</comment>
+    <requestid>1250236</requestid>
+  </revision>
 </revisionlist>
