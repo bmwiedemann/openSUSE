@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  3 14:50:50 MST 2025 - carnold@suse.com
+
+- Update to virt-v2v 2.7.7 (jsc#PED-8910)
+  * convert: Drop kmod-xenpv-* handling
+  * Remove more RHEL 3 support
+  * convert: Handle large output from 'rpm -ql' command
+  * mlcustomize: Drop old virtio-win dir name scraping
+
+-------------------------------------------------------------------
 Tue Feb 18 09:40:50 MST 2025 - carnold@suse.com
 
 - Update to virt-v2v 2.7.6 (jsc#PED-8910)
