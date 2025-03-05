@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Feb 22 02:49:33 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * Update default font
+  * i18n(pl): update Polish translation
+  * i18n(nl) update Dutch translation
+  * chore: upgrade dependencies
+  * perf: reduce disk io when updating config values.
+  * Update Hungarian translations
+  * chore: remove forgotten eprintln.
+  * (feat): Text zoom for cosmic-edit.
+  * Polish translation for MetaInfo
+  * Implement drag scroll
+  * Update cosmic_edit.ftl
+  * Update Hungarian translations
+  * Enable saving read-only/root files via pkexec
+  * i18n(nl): update and improve Dutch translation
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:09:20 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+4:
+  * Fix closing projects when open project button is shown, fixes #41
+  * Don't capture ctrl+tab in text box, fixes #123
+  * Implement revert all changes, fixes #128
+  * Remove unimplemented spell-check menu item, fixes #300
+  * Update dependencies
+  * perf: optimized cosmic-freedesktop-icons
+  * Update dependencies
+
+-------------------------------------------------------------------
 Fri Jan 10 21:22:22 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+1:
