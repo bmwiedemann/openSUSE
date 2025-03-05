@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <services>
-  <service name="tar_scm" mode="manual">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/pop-os/cosmic-session.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
     <param name="versionrewrite-pattern">epoch-(.*)\+0</param>
-    <param name="versionformat">1.0.0~alpha5+@TAG_OFFSET@</param>
+    <param name="versionformat">1.0.0~alpha6+@TAG_OFFSET@</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="package-meta">yes</param>
     <param name="filename">cosmic-session</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="recompress" mode="manual">
+  <service name="tar" mode="buildtime">
+    <param name="package-meta">yes</param>
+  </service>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">zstd</param>
   </service>

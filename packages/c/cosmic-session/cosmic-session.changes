@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb 22 03:36:03 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * Adjust default fonts
+  * remove ELECTRON_OZONE env due to flatpaks not having wayland sockets enabled
+  * fix: set OZONE default to auto
+  * set ELECTRON_OZONE_PLATFORM_HINT to wayland
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:54:43 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+0:
+  * feat: Import environment variables from systemd user manager
+
+-------------------------------------------------------------------
 Fri Jan 10 22:32:05 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha5+1:
