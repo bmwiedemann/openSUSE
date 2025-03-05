@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 01 21:14:18 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 3.54.4:
+  * util: xte: Check more directories for desktop files
+  * desktop: Add entries for newest xte
+  * util: Lowercase desktop names
+  * tests: Add test binary to check default terminal implementation
+  * Update German translation
+  * build: Use vte-0-78 branch
+  * Revert "metainfo: Add developer info"
+  * metainfo: Add developer info
+
+-------------------------------------------------------------------
 Sun Jan 26 06:22:12 UTC 2025 - bjorn.lie@gmail.com
 
 - Update to version 3.54.3:

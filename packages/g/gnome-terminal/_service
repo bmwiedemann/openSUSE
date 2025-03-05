@@ -4,8 +4,8 @@
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-terminal.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="changesgenerate">disable</param>
-    <param name="revision">3.54.3</param>
+    <param name="changesgenerate">enable</param>
+    <param name="revision">3.54.4</param>
   </service>
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">
