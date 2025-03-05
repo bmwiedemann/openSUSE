@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-hypercorn
 Version:        0.17.3
 Release:        0
