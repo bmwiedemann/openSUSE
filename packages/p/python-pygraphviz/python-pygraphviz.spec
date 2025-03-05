@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygraphviz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,12 +45,12 @@ BuildRequires:  graphviz-gd
 BuildRequires:  libpng-devel
 BuildRequires:  python-rpm-macros
 %if %{with doc}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module numpydoc}
+BuildRequires:  %{python_module pydata-sphinx-theme}
 BuildRequires:  %{python_module pygraphviz = %{version}}
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-matplotlib
-BuildRequires:  python3-numpydoc
-BuildRequires:  python3-pydata-sphinx-theme
-BuildRequires:  python3-sphinx-gallery
+BuildRequires:  %{python_module sphinx-gallery}
 BuildArch:      noarch
 %endif
 BuildRequires:  swig
