@@ -1,10 +1,60 @@
 -------------------------------------------------------------------
+Wed Mar  5 10:39:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.25.0:
+  https://istio.io/latest/news/releases/1.25.x/announcing-1.25/
+  https://istio.io/latest/news/releases/1.25.x/announcing-1.25/change-notes/
+  istioctl-related changes:
+  * Improved the output of istioctl proxy-config secret to display
+    trust bundles provided by Spire.
+  * Added alias -r for --revision flags in istioctl analyze.
+  * Added support for AuthorizationPolicies with CUSTOM action in
+    the istioct x authz check command.
+  * Added support for the --network parameter to the istioctl
+    experimental workload group create command. (Issue #54022)
+  * Added the ability to safely restart/upgrade the
+    system-node-critical istio-cni node agent DaemonSet in-place.
+    This works by preventing new pods from starting on the node
+    while istio-cni is being restarted or upgraded. This feature is
+    enabled by default and can be disabled by setting the
+    environment variable AMBIENT_DISABLE_SAFE_UPGRADE=true in
+    istio-cni. (Issue #49009)
+  * Added changes for rootca-compare command to handle the case
+    when pod has multiple root CA. (Issue #54545)
+  * Added support for istioctl waypoint delete to delete specified
+    revision waypoints.
+  * Added support for the analyzer to report negative status
+    conditions on select Istio and Kubernetes Gateway API
+    resources. (Issue #55055)
+  * Improved the performance of istioctl proxy-config secret and
+    istioctl proxy-config. (Issue #53931)
+  * Fixed an issue in the rootca-compare command to handle the case
+    when a pod has multiple root CAs. (Issue #54545)
+  * Fixed an issue where istioctl install deadlocks if multiple
+    ingress gateways are specified in the IstioOperator file.
+    (Issue #53875)
+  * Fixed an issue where istioctl waypoint delete --all would
+    delete all gateway resources, even non-waypoints. (Issue
+    #54056)
+  * Fixed the istioctl experimental injector list command to not
+    print redundant namespaces for injector webhooks.
+  * Fixed istioctl analyze reporting IST0145 errors when using the
+    same host with different ports and multiple gateways. (Issue
+    #54643)
+  * Fixed an issue where istioctl --as implicitly set --as-group=""
+    when --as is used without --as-group.
+  * Removed --recursive flags and set recursion to true for
+    istioctl analyze.
+  * Removed the experimental flag --xds-via-agents from the
+    istioctl proxy-status command.
+
+-------------------------------------------------------------------
 Tue Feb 11 07:27:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.24.3:
   https://istio.io/latest/news/releases/1.24.x/announcing-1.24.3/
   no istioctl-related changes mentioned in the changelog
-  
+
 -------------------------------------------------------------------
 Thu Dec 19 07:24:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
