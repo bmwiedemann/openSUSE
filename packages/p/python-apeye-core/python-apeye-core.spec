@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-apeye-core%{psuffix}
 Version:        1.1.5
 Release:        0
