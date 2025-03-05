@@ -972,4 +972,15 @@ fix a jira reference in the changelog.
     jsc#PED-9855</comment>
     <requestid>1238338</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>c3eae9384945802ae6db31d761025954</srcmd5>
+    <version>11.1.0</version>
+    <time>1741178359</time>
+    <user>anag+factory</user>
+    <comment>Updated python bindings for libvirt 11.1.0.
+
+- Update to 11.1.0
+  - Add all new APIs and constants in libvirt 11.1.0</comment>
+    <requestid>1249953</requestid>
+  </revision>
 </revisionlist>
