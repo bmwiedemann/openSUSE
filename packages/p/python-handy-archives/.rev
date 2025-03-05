@@ -25,4 +25,12 @@
     <comment>- add py313-tests-update.patch, py313-mode-repr.patch</comment>
     <requestid>1219347</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8e3f58a3ab54f73c2bac5a6ead090864</srcmd5>
+    <version>0.2.0</version>
+    <time>1741178346</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1249631</requestid>
+  </revision>
 </revisionlist>

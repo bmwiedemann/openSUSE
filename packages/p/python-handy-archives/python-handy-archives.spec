@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-handy-archives%{psuffix}
 Version:        0.2.0
 Release:        0
