@@ -1,7 +1,7 @@
 #
 # spec file for package xom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -57,17 +57,16 @@ Requires:       %{name} = %{version}-%{release}
 This package provides %{summary}.
 
 %prep
-%setup -q
-%patch -P 0 -p1
+%autosetup -p1
 
 %build
 mkdir -p lib
-pushd lib
+cd lib
 ln -sf $(build-classpath junit) junit.jar
 ln -sf $(build-classpath xerces-j2) xercesImpl-2.12.2.jar
 ln -sf $(build-classpath xml-apis) xml-apis-1.4.01.jar
 ln -sf $(build-classpath jaxen) jaxen-1.1.6.jar
-popd
+cd -
 
 %{ant} jar samples javadoc maven
 
