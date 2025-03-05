@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar  2 13:03:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.9.7:
+  + Fix memory leaks and compiler warnings.
+
+-------------------------------------------------------------------
 Wed Jun  1 12:02:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.6:
