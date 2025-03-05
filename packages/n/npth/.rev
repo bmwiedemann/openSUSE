@@ -149,4 +149,12 @@
     <comment>npth 1.8 (forwarded request 1241908 from AndreasStieger)</comment>
     <requestid>1242150</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>22bae638f3c4d10f2f40570216dfb184</srcmd5>
+    <version>1.8</version>
+    <time>1741178286</time>
+    <user>anag+factory</user>
+    <comment>- specfile: update license to LGPL-2.1-or-later</comment>
+    <requestid>1250027</requestid>
+  </revision>
 </revisionlist>

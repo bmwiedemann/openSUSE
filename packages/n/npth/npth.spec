@@ -1,7 +1,7 @@
 #
 # spec file for package npth
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@ Name:           npth
 Version:        1.8
 Release:        0
 Summary:        GNU Portable Threads library
-License:        LGPL-2.0-or-later
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://gnupg.org/software/npth/
 #Git-Clone:	git://git.gnupg.org/npth
