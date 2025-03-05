@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  4 08:30:59 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Add patch (backport from upstream trunk):
+  * dwz-add-support-for-version-9-gdb-index.patch
+  * dwz-make-dejagnu-logs-more-elaborate.patch
+  * dwz-make-dejagnu-test-names-environment-insensitive.patch
+  * dwz-testsuite-fix-finding-gdb-without-which.patch
+- Drop patch:
+  * dwz-remove-odr-struct-multifile.sh.patch
+
+-------------------------------------------------------------------
 Fri Dec 20 07:47:14 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Use %{SOURCE2} macro instead of hardcoding the source file name/path.

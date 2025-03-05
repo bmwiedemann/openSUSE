@@ -1,0 +1,110 @@
+From 9621200e66f0339da5a80e1abf46f4789a4a3690 Mon Sep 17 00:00:00 2001
+From: "Frank Ch. Eigler" <fche@redhat.com>
+Date: Wed, 1 Mar 2023 16:51:58 +0100
+Subject: [PATCH 2/4] make dejagnu test names environment-insensitive
+
+Previous versions of dwz-tests.exp emit the full path names to the
+per-test .sh scripts into the .sum/.log files.  This version replaces
+those patn names with just the $basename, which is enough to identify
+the tests uniquely, and allows proper regression/comparison analysis.
+
+https://sourceware.org/bugzilla/show_bug.cgi?id=30182
+---
+ testsuite/dwz.tests/dwz-tests.exp | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/testsuite/dwz.tests/dwz-tests.exp b/testsuite/dwz.tests/dwz-tests.exp
+index 85e6fcd..20affea 100644
+--- a/testsuite/dwz.tests/dwz-tests.exp
++++ b/testsuite/dwz.tests/dwz-tests.exp
+@@ -27,20 +27,20 @@ foreach test $tests {
+ 	if { [catch {exec readelf -wi min | grep DW_AT_name | grep -c / } matches] } {
+ 	    # Some error occurred in the supported test, f.i. DWARF in min
+ 	    # unsupported by readelf.
+-	    unsupported "$test"
++	    unsupported $basename
+ 	    continue
+ 	}
+ 	if { $matches != 2 } {
+ 	    # The exec min is used for the regression test for pr24341, but it
+ 	    # only functions as such if the DWARF only contains the CUs of the
+ 	    # test-case itself.
+-	    unsupported "$test"
++	    unsupported $basename
+ 	    continue
+ 	}
+     }
+     if { $basename == "pr24172.sh" } {
+ 	if { ![istarget x86_64-*-*] } {
+-	    unsupported "$test"
++	    unsupported $basename
+ 	    continue
+ 	}
+ 	lappend required_execs "dw2-skip-prologue"
+@@ -62,17 +62,17 @@ foreach test $tests {
+     }
+     if { ![istarget x86_64-*-*] } {
+ 	if { $basename == "pr24468.sh" } {
+-	    unsupported "$test"
++	    unsupported $basename
+ 	    continue
+ 	}
+ 	if { $basename == "ld-2.26.1-multifile.sh" } {
+-	    unsupported "$test"
++	    unsupported $basename
+ 	    continue
+ 	}
+     }
+     if { $basename == "gdb-add-index.sh" } {
+         if { [catch { exec which gdb-add-index } ] } {
+-            unsupported "$test"
++            unsupported $basename
+             continue
+         }
+     }
+@@ -82,7 +82,7 @@ foreach test $tests {
+ 	if { $basename == "eu-strip-unstrip.sh" || \
+ 		 $basename == "eu-strip-unstrip-multifile.sh" || \
+ 		 $basename == "pr24173.sh" } {
+-	    unsupported "$test"
++	    unsupported $basename
+ 	    continue
+ 	}
+     }
+@@ -107,7 +107,7 @@ foreach test $tests {
+ 	}
+     }
+     if { $unsupported == 1 } {
+-	unsupported "$test"
++	unsupported $basename
+ 	continue
+     }
+ 
+@@ -120,10 +120,10 @@ foreach test $tests {
+         verbose -log "$msg"
+ 	if { [lindex $::errorCode 0] == "CHILDSTATUS" && \
+ 		 [lindex $::errorCode 2] == 77 } {
+-	    unsupported "$test"
++	    unsupported $basename
+ 	    exec rm -Rf $dir
+ 	} else {
+-	    fail "$test"
++	    fail $basename
+ 	}
+     } else {
+         verbose -log "$msg"
+@@ -136,9 +136,9 @@ foreach test $tests {
+ 	set file_list [glob -nocomplain "$dir/*"]
+ 	if {[llength $file_list] != 0} {
+ 	    puts "$dir is not empty"
+-	    fail "$test"
++	    fail $basename
+ 	} else {
+-	    pass "$test"
++	    pass $basename
+ 	    exec rm -Rf $dir
+ 	}
+     }
+-- 
+2.43.0
+

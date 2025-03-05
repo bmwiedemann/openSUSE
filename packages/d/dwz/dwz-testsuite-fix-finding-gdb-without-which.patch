@@ -1,0 +1,31 @@
+From 0171f3e7ac09fa44cb1eb299f2703faa113a207e Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 27 Jul 2024 15:07:56 +0100
+Subject: [PATCH 3/4] testsuite: fix finding gdb without `which`
+
+which isn't considered portable. Some Linux distributions like Debian and
+Gentoo are seeking to remove it from their base set of packages [0].
+
+Use POSIX's `command -v` instead.
+
+[0] https://lwn.net/Articles/874049/
+---
+ testsuite/dwz.tests/dwz-tests.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/testsuite/dwz.tests/dwz-tests.exp b/testsuite/dwz.tests/dwz-tests.exp
+index 20affea..8e407d4 100644
+--- a/testsuite/dwz.tests/dwz-tests.exp
++++ b/testsuite/dwz.tests/dwz-tests.exp
+@@ -71,7 +71,7 @@ foreach test $tests {
+ 	}
+     }
+     if { $basename == "gdb-add-index.sh" } {
+-        if { [catch { exec which gdb-add-index } ] } {
++        if { [catch { exec sh -c "command -v gdb-add-index" } ] } {
+             unsupported $basename
+             continue
+         }
+-- 
+2.43.0
+

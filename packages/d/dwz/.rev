@@ -216,4 +216,19 @@
     <comment></comment>
     <requestid>1232788</requestid>
   </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>fdf4d76115c120a77046761632630eee</srcmd5>
+    <version>0.15</version>
+    <time>1741178284</time>
+    <user>anag+factory</user>
+    <comment>- Add patch (backport from upstream trunk):
+  * dwz-add-support-for-version-9-gdb-index.patch
+  * dwz-make-dejagnu-logs-more-elaborate.patch
+  * dwz-make-dejagnu-test-names-environment-insensitive.patch
+  * dwz-testsuite-fix-finding-gdb-without-which.patch
+- Drop patch:
+  * dwz-remove-odr-struct-multifile.sh.patch
+</comment>
+    <requestid>1250002</requestid>
+  </revision>
 </revisionlist>

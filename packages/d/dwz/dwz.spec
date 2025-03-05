@@ -1,7 +1,7 @@
 #
 # spec file for package dwz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,7 +80,10 @@ Source1:        dwz-rpmlintrc
 Source2:        tramp3d-v4.cpp.xz
 
 Patch1:         dwz-enable-odr-by-default.patch
-Patch2:         dwz-remove-odr-struct-multifile.sh.patch
+Patch3:         dwz-make-dejagnu-logs-more-elaborate.patch
+Patch4:         dwz-make-dejagnu-test-names-environment-insensitive.patch
+Patch5:         dwz-testsuite-fix-finding-gdb-without-which.patch
+Patch6:         dwz-add-support-for-version-9-gdb-index.patch
 
 %if %{build_main}
 %description
