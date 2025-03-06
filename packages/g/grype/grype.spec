@@ -17,7 +17,7 @@
 
 
 Name:           grype
-Version:        0.87.0
+Version:        0.88.0
 Release:        0
 Summary:        A vulnerability scanner for container images and filesystems
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         grype-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
+BuildRequires:  go >= 1.24
 BuildRequires:  zsh
 
 %description
