@@ -1,7 +1,7 @@
 #
 # spec file for package python-Levenshtein
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Levenshtein
-Version:        0.26.1
+Version:        0.27.1
 Release:        0
 Summary:        Python extension computing string distances and similarities
 License:        GPL-2.0-or-later
@@ -27,9 +27,9 @@ Source:         https://files.pythonhosted.org/packages/source/l/levenshtein/lev
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module scikit-build-core >= 0.10.6}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module rapidfuzz >= 3.9.0}
+BuildRequires:  %{python_module scikit-build-core >= 0.11}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -57,6 +57,9 @@ It supports both normal and Unicode strings.
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%check
+%pytest_arch
 
 %files %{python_files}
 %license COPYING

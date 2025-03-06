@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  5 10:37:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.27.1
+  * fix build with scikit-build-core v0.11
+  * upgrade to Cython==3.0.12
+- Run tests
+
+-------------------------------------------------------------------
 Tue Oct 29 21:21:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.26.1:

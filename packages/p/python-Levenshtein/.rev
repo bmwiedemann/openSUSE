@@ -123,4 +123,12 @@
 - initial build. this package is needed to build and use the python wurfl package</comment>
     <requestid>1219191</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0fd314ecfd50f7ec3d59a60dab4c8b8e</srcmd5>
+    <version>0.27.1</version>
+    <time>1741268905</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1250403</requestid>
+  </revision>
 </revisionlist>
