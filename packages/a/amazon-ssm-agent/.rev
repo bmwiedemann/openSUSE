@@ -419,4 +419,41 @@
     to 0.24.0 (forwarded request 1238418 from glaubitz)</comment>
     <requestid>1238456</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4715031c0dec77d2266627b337f9105b</srcmd5>
+    <version>3.3.1957.0</version>
+    <time>1741268996</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.3.1957.0
+  * Fix TestDocumentWorkerCrash integration tests
+  * Implement caching for platform data and refactor the code
+    to use cached data if available
+  * Replace Get-CimInstance commands with WMI alternatives for
+    retrieving system info
+  * Add configuration file and script to run the Argot static
+    analyzer to check for dataflow and other security invariants
+  * Updater to allow downgrade if current version is inactive
+  * Allow Agent Updater to emit intermediate metrics during
+    updates and add new Updater metrics
+  * Agent setup cli verification to rely only on exit codes
+  * Update SSM Agent public key to verify SSM-Setup-CLI binary signature
+  * Update GPG keyring to verify SSM-Agent binary signature using SSM-Setup-CLI
+  * Fix code branching within setupcli_data_integrity_linux.sh
+  * Use powershell for simplified, updated and no prompt unzip in install.bat
+  * Update build Golang version to 1.22.11
+- from version 3.3.1802.0
+  * Fix TestDocumentWorkerCrash integration tests
+  * Implement caching for platform data and refactor the code
+    to use cached data if available
+  * Replace Get-CimInstance commands with WMI alternatives for
+    retrieving system info
+  * Add configuration file and script to run the Argot static analyzer
+    to check for dataflow and other security invariants
+  * Updater to allow downgrade if current version is inactive
+  * Allow Agent Updater to emit intermediate metrics during updates
+    and add new Updater metrics
+  * Agent setup cli verification to rely only on exit codes
+  * Update SSM Agent public key to verify SSM-Setup-CLI binary signature (forwarded request 1250561 from glaubitz)</comment>
+    <requestid>1250616</requestid>
+  </revision>
 </revisionlist>

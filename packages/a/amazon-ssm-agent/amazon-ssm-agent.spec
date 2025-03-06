@@ -17,7 +17,7 @@
 
 
 Name:           amazon-ssm-agent
-Version:        3.3.1611.0
+Version:        3.3.1957.0
 Release:        0
 Summary:        Amazon Remote System Config Management
 License:        Apache-2.0
