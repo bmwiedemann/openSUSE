@@ -76,7 +76,6 @@ BuildRequires:  rubygem(asciidoctor)
 BuildRequires:  asciidoc
 BuildRequires:  xmlto
 %endif
-Requires:       python3-ipaddr
 Requires:       python3-protobuf
 ExclusiveArch:  x86_64 aarch64 ppc64le armv7l armv7hl s390x
 %if 0%{?suse_version} > 1320
