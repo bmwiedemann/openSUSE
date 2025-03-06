@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar  4 19:14:49 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.23.7 (released 2025-03-04) includes security fixes to the
+  net/http, x/net/proxy, and x/net/http/httpproxy packages, as well
+  as bug fixes to the compiler, the runtime and the os and reflect
+  packages.
+  Refs boo#1229122 go1.23 release tracking
+  CVE-2025-22870
+  * go#71985 go#71984 boo#1238572 security: fix CVE-2025-22870 net/http, x/net/proxy, x/net/http/httpproxy: proxy bypass using IPv6 zone IDs
+  * go#71727 runtime: usleep computes wrong tv_nsec on s390x
+  * go#71839 runtime: recover added in range-over-func loop body doesn't stop panic propagation / segfaults printing error
+  * go#71848 os: spurious SIGCHILD on running child process
+  * go#71875 reflect: Value.Seq panicking on functional iterator methods
+  * go#71915 reflect: Value.Seq iteration value types not matching the type of given int types
+  * go#71962 runtime/cgo: does not build with -Wdeclaration-after-statement
+
+-------------------------------------------------------------------
 Tue Feb  4 16:39:47 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.23.6 (released 2025-02-04) includes security fixes to the
