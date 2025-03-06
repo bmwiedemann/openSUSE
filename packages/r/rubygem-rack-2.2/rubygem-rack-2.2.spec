@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-2.2
-Version:        2.2.11
+Version:        2.2.12
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
@@ -62,6 +62,7 @@ middleware) into a single method call.
 # MANUAL
 %fdupes %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/
 # /MANUAL
+
 
 %gem_packages
 
