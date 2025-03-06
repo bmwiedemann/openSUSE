@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan 27 20:33:51 UTC 2025 - Christian Tallner <chrtall@gmx.de>
+
+- Added package dependency on owncloud-extensions-resources 
+
+-------------------------------------------------------------------
+Mon Jan 27 19:53:56 UTC 2025 - Christian Tallner <chrtall@gmx.de>
+
+- Updated to 6.0.0
+- Changes since 5.0.0:
+  * Set a project version
+  * Cleanup
+  * Depend on the icons to be present
+  * Use a tumbleweed container in Ubuntu for CI to build with KF6
+  * Different split code to satisfy review
+  * Use pragma once consistently and add license header
+  * Fix workflow description: Use Ubu 24.04 and use KF6
+  * Update README
+  * Cleanups, fixed the json.in
+  * Port to KF6, splitting a header for the action plugin
+
+-------------------------------------------------------------------
 Wed Jan  3 13:53:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Don't self-obsolete

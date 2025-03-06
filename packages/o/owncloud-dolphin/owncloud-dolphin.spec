@@ -1,7 +1,7 @@
 #
 # spec file for package owncloud-dolphin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,29 @@
 #
 
 
+%define kf6_ver 6.1.0
+%define qt6_ver 6.5.0
 Name:           owncloud-dolphin
-Version:        5.0.0
+Version:        6.0.0
 Release:        0
 Summary:        Dolphin Integrations for the ownCloud desktop syncing client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-URL:            https://owncloud.org/download
-Source0:        client-desktop-shell-integration-dolphin-%{version}.tar.gz
+URL:            https://github.com/owncloud/client-desktop-shell-integration-dolphin
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.11
-BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  kf6-extra-cmake-modules >= 6.0.0
+BuildRequires:  owncloud-extensions-resources
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_ver}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_ver}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_ver}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_ver}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_ver}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_ver}
+Requires:       owncloud-extensions-resources
 Provides:       owncloud-client-dolphin = %{version}
 Obsoletes:      owncloud-client-dolphin < %{version}
 
@@ -39,24 +47,28 @@ Obsoletes:      owncloud-client-dolphin < %{version}
 This package provides shell integration for the ownCloud desktop sync client for KDE dolphin.
 
 %prep
-%autosetup -p1 -n client-desktop-shell-integration-dolphin-%{version}
+%autosetup -n client-desktop-shell-integration-dolphin-%{version}
 
 %build
-%cmake
-%cmake_build
+%cmake_kf6
+%{kf6_build}
 
 %install
-%cmake_install
+%{kf6_install} -C build
 
 %ldconfig_scriptlets
 
+%check
+%ctest
+
 %files
 %{_libdir}/libownclouddolphinpluginhelper.so
-%{_libdir}/qt5/plugins/kf5/overlayicon/ownclouddolphinoverlayplugin.so
-%{_libdir}/qt5/plugins/ownclouddolphinactionplugin.so
-%{_datadir}/kservices5/ownclouddolphinactionplugin.desktop
-%dir %{_libdir}/qt5/plugins/kf5/overlayicon
-%doc README
+%dir %{_libdir}/qt6/plugins/kf6/kfileitemaction
+%{_libdir}/qt6/plugins/kf6/kfileitemaction/ownclouddolphinactionplugin.so
+%dir %{_libdir}/qt6/plugins/kf6/overlayicon
+%{_libdir}/qt6/plugins/kf6/overlayicon/ownclouddolphinoverlayplugin.so
+%{_libdir}/qt6/plugins/ownclouddolphinactionplugin.so
+%doc README.md
 %license COPYING
 
 %changelog
