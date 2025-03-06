@@ -215,4 +215,25 @@
 </comment>
     <requestid>1249681</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>907bbbf0f9ac61715180498e2bb7e88d</srcmd5>
+    <version>20250305.e46df41</version>
+    <time>1741268913</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250305.e46df41:
+  * index page: list valid product names for search
+  * Rename bySuiteStr with byProductStr
+  * Update go dependencies
+  * rpm2docserv: don't start a webserver
+  * sitemap: rename suite to product
+  * Start rename &quot;suite&quot; to ProductName and ProductMapping
+  * Remove docserv-idx2rwmap, use nginx
+  * Allow aliases for product names
+  * Remove unused &quot;Replaces&quot;
+  * Use &quot;suites&quot; as Product Name and sort correct
+  * Fix comment about &quot;suites&quot;
+  * Print Product Names and Mapping
+  * Add sorted products to index, fix search logic</comment>
+    <requestid>1250444</requestid>
+  </revision>
 </revisionlist>

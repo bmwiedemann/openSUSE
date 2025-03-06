@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 05 14:00:53 UTC 2025 - kukuk@suse.com
+
+- Update to version 20250305.e46df41:
+  * index page: list valid product names for search
+  * Rename bySuiteStr with byProductStr
+  * Update go dependencies
+  * rpm2docserv: don't start a webserver
+  * sitemap: rename suite to product
+  * Start rename "suite" to ProductName and ProductMapping
+  * Remove docserv-idx2rwmap, use nginx
+  * Allow aliases for product names
+  * Remove unused "Replaces"
+  * Use "suites" as Product Name and sort correct
+  * Fix comment about "suites"
+  * Print Product Names and Mapping
+  * Add sorted products to index, fix search logic
+
+-------------------------------------------------------------------
 Mon Mar 03 10:22:15 UTC 2025 - kukuk@suse.com
 
 - Update to version 20250303.dcd3fee:
