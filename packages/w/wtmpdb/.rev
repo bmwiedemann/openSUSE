@@ -209,4 +209,18 @@
 </comment>
     <requestid>1244111</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>550f318523e4b6a337b933d8ca8f7587</srcmd5>
+    <version>0.72.0+git20250305.10803fd</version>
+    <time>1741268877</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.72.0+git20250305.10803fd:
+  * Release version 0.72.0
+  * i386: fix integer format length errors
+  * Add utmp format importer
+  * Fix wtmp database path in documentation
+  * test: schedule test logins on correct day
+  * rotate: don't throw away microseconds calculating threshold</comment>
+    <requestid>1250416</requestid>
+  </revision>
 </revisionlist>

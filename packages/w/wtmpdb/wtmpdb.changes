@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 05 12:59:57 UTC 2025 - kukuk@suse.com
+
+- Update to version 0.72.0+git20250305.10803fd:
+  * Release version 0.72.0
+  * i386: fix integer format length errors
+  * Add utmp format importer
+  * Fix wtmp database path in documentation
+  * test: schedule test logins on correct day
+  * rotate: don't throw away microseconds calculating threshold
+
+-------------------------------------------------------------------
 Thu Feb 06 10:44:44 UTC 2025 - kukuk@suse.com
 
 - Update to version 0.71.0+git20250206.608632a:
