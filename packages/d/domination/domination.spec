@@ -1,7 +1,7 @@
 #
 # spec file for package domination
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           domination
-Version:        1.2.9
+Version:        1.3.3
 Release:        0
 Summary:        Board game that is a bit like the well known game Risk
 License:        GPL-3.0-only
 Group:          Amusements/Games/Strategy/Turn Based
-URL:            http://domination.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/Domination/%{version}/Domination_%{version}.zip
+URL:            https://domination.sourceforge.net/
+Source0:        https://downloads.sourceforge.net/%{name}/Domination/%{version}/Domination_%{version}.zip
 Source1:        %{name}-FlashGUI.sh
 Source2:        %{name}-Increment1GUI.sh
 Source3:        %{name}-SimpleGUI.sh
@@ -66,12 +66,15 @@ install -Dm 0755 %{SOURCE3} %{buildroot}%{_bindir}/%{name}-SimpleGUI
 install -Dm 0755 %{SOURCE4} %{buildroot}%{_bindir}/%{name}-SwingGUI
 
 # install directories
-mkdir -p %{buildroot}%{_datadir}/%{name}/{help,lib,maps,maps/preview,resources}
+mkdir -p %{buildroot}%{_datadir}/%{name}/{help,lib,maps,maps/preview,resources,sound,sound/medival}
 for d in help lib resources ; do
    install -Dm 0644 $d/* %{buildroot}%{_datadir}/%{name}/$d
 done
 
+# maps
 cp -a maps %{buildroot}%{_datadir}/%{name}/
+# sound
+cp -a sound %{buildroot}%{_datadir}/%{name}/
 
 # install files
 for f in *.jar *.txt *.ini ; do

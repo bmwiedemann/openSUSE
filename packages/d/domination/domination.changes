@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Feb 23 06:53:15 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.3.3
+  * Linux audio fix
+- Changes in 1.3.2
+  * music update for menu and winning
+  * better loading screens when loading online games and
+    downloading maps
+  * GameGUI: in-game can use standard keyboard shortcut to
+    save game
+  * GameGUI: main manu - can right click to get to options screen
+    on windows
+  * fix out of memory error, Better memory management in audio
+    system, close audio after playing. 
+  * fix for handling unexpected errors in audio system to not
+    overload and bring down the maps server
+  * RiskGame.getMissions() now returns ALL game missions, to make
+    AI development easier
+  * SwingGUI: can replay debug game log without having to save it
+    to file first
+  * SwingGUI: little memory graph on debug screen
+- Changes in 1.3.1
+  * Sounds effects and music! (memory leak fixed this time)
+  * Can change game speed in Option dialog
+  * Can view continents values for maps that do not display this
+    information
+  * MapChooser: can right click and select Map info
+  * MapChooser: no repaint macos JDK-19 bug workaround: MapChooser
+    loading animation added
+  * SwingGUI: can change who owns a country
+  * SwingGUI: fixed: unable to start game when all options
+    are present
+  * MapEditor: smart fill Mnemonic 'F'
+  * MapEditor: force user to save map if changed before publish
+
+-------------------------------------------------------------------
 Sun Sep 10 16:19:10 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.2.9:
