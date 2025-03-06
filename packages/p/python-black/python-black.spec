@@ -1,7 +1,7 @@
 #
 # spec file for package python-black
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,48 +18,36 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-black
-Version:        24.8.0
+Version:        25.1.0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
 URL:            https://github.com/psf/black
 Source:         https://files.pythonhosted.org/packages/source/b/black/black-%{version}.tar.gz
 BuildRequires:  %{python_module aiohttp >= 3.3.2}
-BuildRequires:  %{python_module aiohttp_cors}
-BuildRequires:  %{python_module attrs >= 18.1.0}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module click >= 8.0.0}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling >= 1.8.0}
 BuildRequires:  %{python_module mypy_extensions >= 0.4.3}
-BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module packaging >= 22.0}
 BuildRequires:  %{python_module pathspec >= 0.9.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tomli >= 1.1.0}
-%if 0%{?suse_version} > 1500
-BuildRequires:  %{python_module typing_extensions >= 3.10.0.0 if %python-base < 3.11}
-%endif
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-aiohttp >= 3.3.2
-Requires:       python-aiohttp_cors
-Requires:       python-attrs >= 18.1.0
+Suggests:       python-aiohttp >= 3.10.0
 Requires:       python-click >= 8.0.0
 Requires:       python-mypy_extensions >= 0.4.3
 Requires:       python-packaging
 Requires:       python-pathspec >= 0.9.0
 Requires:       python-platformdirs >= 2
-Requires:       python-tomli >= 1.1.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 311
-Requires:       python-typing_extensions >= 3.10.0.0
-%endif
 %python_subpackages
 
 %description
