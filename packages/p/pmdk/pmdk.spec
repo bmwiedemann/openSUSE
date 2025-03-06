@@ -1,7 +1,7 @@
 #
 # spec file for package pmdk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright 2016, Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define min_ndctl_ver 63.0
 
 Name:           pmdk
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Persistent Memory Development Kit
 License:        BSD-3-Clause
@@ -31,8 +31,6 @@ Source:         https://github.com/pmem/pmdk/releases/download/%version/%name-%v
 Source2:        https://github.com/pmem/pmdk/releases/download/%version/%name-%version.tar.gz.asc
 Source10:       pregen-doc.tar.xz
 Source99:       gen-doc.sh
-# PATCH-FIX-UPSTREAM - https://github.com/pmem/pmdk/pull/6096
-Patch1:         6096.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  man

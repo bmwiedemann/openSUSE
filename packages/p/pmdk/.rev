@@ -136,4 +136,12 @@
   * 6096.patch (forwarded request 1178980 from Guillaume_G)</comment>
     <requestid>1179000</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>256f0fe41cafd5b49b4a358585b262d7</srcmd5>
+    <version>2.1.1</version>
+    <time>1741268896</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1250268</requestid>
+  </revision>
 </revisionlist>

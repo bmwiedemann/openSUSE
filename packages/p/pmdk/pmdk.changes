@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 25 20:39:02 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.1
+  * Mute error messages when transactions are intentionally
+    aborted.
+  * Mute error message "Cannot find any matching device, no bad
+    blocks found" when PMDK is used without PMem.
+- Delete 6096.patch (merged)
+
+-------------------------------------------------------------------
 Thu Jun  6 09:22:13 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on aarch64:
