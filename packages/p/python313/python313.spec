@@ -60,19 +60,6 @@
 %bcond_with profileopt
 %endif
 
-# No experimental_jit in SLES, there's no clang >=18
-%if 0%{?suse_version} <= 1600
-%bcond_with experimental_jit
-%else
-# Currently supported architectures
-# https://peps.python.org/pep-0744/#support
-%ifarch x86_64 %{x86_64} aarch64
-%bcond_without experimental_jit
-%else
-%bcond_with experimental_jit
-%endif
-%endif
-
 # Only for Tumbleweed
 # https://en.opensuse.org/openSUSE:Python:Externally_managed
 %if 0%{?suse_version} > 1600
@@ -91,6 +78,24 @@
 %define primary_interpreter 1
 %else
 %define primary_interpreter 0
+%endif
+
+# No experimental_jit in SLES, there's no clang >=18
+%if 0%{?suse_version} <= 1600
+%bcond_with experimental_jit
+# Disable experimental_jit for primary python.
+# llvm is not part of ring0 and experimental_jit requires clang >= 18
+%elif !%{primary_interpreter}
+# Currently supported architectures
+# https://peps.python.org/pep-0744/#support
+%ifarch x86_64 %{x86_64} aarch64
+%bcond_without experimental_jit
+%else
+%bcond_with experimental_jit
+%endif
+
+%else
+%bcond_with experimental_jit
 %endif
 
 # %%if 0%%{?sle_version} && 0%%{?suse_version} < 1550

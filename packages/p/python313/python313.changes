@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  4 11:30:07 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Do not build with experimental_jit when primary_python
+
+-------------------------------------------------------------------
 Wed Feb  5 09:13:26 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.13.2:
