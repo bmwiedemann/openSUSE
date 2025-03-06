@@ -349,4 +349,12 @@ Using the old *changes file which is not in utf-8 as it's difficult get it accpt
     <comment></comment>
     <requestid>1245256</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4c210b830076b2b9c94159415e7e3190</srcmd5>
+    <version>4.4.0.4</version>
+    <time>1741268920</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1250436</requestid>
+  </revision>
 </revisionlist>
