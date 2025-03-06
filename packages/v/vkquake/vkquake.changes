@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar  5 19:26:15 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 1.32.1
+  * Fixes:
+    - #772: Performance regression when host_maxfps > 72 visible on
+      especially large levels (you know what they are)
+    - #764: Align modern hud closer to the remaster and render keys for
+      hipnotic as well
+    - #779: Erroneous assertion triggered
+  * Improvements:
+    - Boost fps on especially large levels by enabling sv_fastpushmove 1
+      by default. Can be disabled (0) at any time if something goes wrong
+    - #765: Standalone MD5 support. Mods can now use MD5 in QuakeC explicitly
+      as *.md5mesh the same way *.mdl was used before. The 2 types of models
+      can be mixed in the same progs.dat of course
+    - Code cleanups
+    - Library updates
+
+-------------------------------------------------------------------
 Sun Jan 12 10:08:24 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 1.32.0
