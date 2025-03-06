@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  6 07:48:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20250305
+  * Fix buffer overflow in character set handling of
+    Modplug/OpenMPT IT files
+  * Fix inverted logic for portamento key-off handling
+  * Multi-write export now puts OPL instruments in their proper
+    channels, rather than dumping everything into channel 1
+
+-------------------------------------------------------------------
 Sun Feb  9 09:56:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20250208
