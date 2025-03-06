@@ -7614,9 +7614,12 @@ unsorted:
   - gnuplot 
   - gnuplot-doc 
   - gnuradio 
+  - gnuradio-bash-completion 
   - gnuradio-devel 
   - gnuradio-doc 
   - gnuradio-examples 
+  - gnuradio-fish-completion 
+  - gnuradio-zsh-completion 
   - gnusocialshell 
   - gnustep-base 
   - gnustep-base-devel 
@@ -11616,7 +11619,6 @@ unsorted:
   - libQt5TextToSpeech5-32bit 
   - libQt5VirtualKeyboard5 
   - libQt5WaylandClient5-32bit 
-  - libQt5WaylandCompositor5 
   - libQt5WaylandCompositor5-32bit 
   - libQt5WebChannel5-32bit 
   - libQt5WebSockets5 
@@ -13666,7 +13668,7 @@ unsorted:
   - libgnunettransportmonitor0 
   - libgnunetutil18 
   - libgnunetvpn0 
-  - libgnuradio-3_10_11 
+  - libgnuradio-3_10_12 
   - libgnuradio-funcube-devel 
   - libgnuradio-funcube3_10_0 
   - libgnuradio-iqbalance-devel 
@@ -15191,14 +15193,14 @@ unsorted:
   - libopenssl-fips-provider 
   - libopentracing-cpp1 
   - libopenvdb11_0 
-  - libopenvino2460 
-  - libopenvino_c2460 
-  - libopenvino_ir_frontend2460 
-  - libopenvino_onnx_frontend2460 
-  - libopenvino_paddle_frontend2460 
-  - libopenvino_pytorch_frontend2460 
-  - libopenvino_tensorflow_frontend2460 
-  - libopenvino_tensorflow_lite_frontend2460 
+  - libopenvino2500 
+  - libopenvino_c2500 
+  - libopenvino_ir_frontend2500 
+  - libopenvino_onnx_frontend2500 
+  - libopenvino_paddle_frontend2500 
+  - libopenvino_pytorch_frontend2500 
+  - libopenvino_tensorflow_frontend2500 
+  - libopenvino_tensorflow_lite_frontend2500 
   - libopenvswitch-3_5-0 
   - liboping-devel 
   - liboping0 
@@ -15807,7 +15809,6 @@ unsorted:
   - libqt5-qtvirtualkeyboard-examples 
   - libqt5-qtvirtualkeyboard-hunspell 
   - libqt5-qtvirtualkeyboard-private-headers-devel 
-  - libqt5-qtwayland 
   - libqt5-qtwayland-32bit 
   - libqt5-qtwayland-devel 
   - libqt5-qtwayland-devel-32bit 
@@ -20028,10 +20029,10 @@ unsorted:
   - nvidia-libXNVCtrl-devel 
   - nvidia-modprobe 
   - nvidia-open-driver-G06-signed-cuda-default-devel 
-  - nvidia-open-driver-G06-signed-cuda-kmp-default 
   - nvidia-open-driver-G06-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G06-signed-cuda-longterm-devel 
   - nvidia-open-driver-G06-signed-default-devel 
+  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-open-driver-G06-signed-kmp-longterm 
   - nvidia-open-driver-G06-signed-longterm-devel 
   - nvidia-settings 
@@ -25105,7 +25106,6 @@ unsorted:
   - python311-chroma-hnswlib 
   - python311-cinemagoer 
   - python311-circuitbreaker 
-  - python311-ciscoconfparse 
   - python311-ciso8601 
   - python311-cleo 
   - python311-cli-helpers 
@@ -27031,7 +27031,6 @@ unsorted:
   - python311-pytoolconfig-global 
   - python311-pytoolconfig-validation 
   - python311-pytools 
-  - python311-pytricia 
   - python311-pytz 
   - python311-pytz-deprecation-shim 
   - python311-pytzdata 
@@ -28734,7 +28733,6 @@ unsorted:
   - python312-chroma-hnswlib 
   - python312-cinemagoer 
   - python312-circuitbreaker 
-  - python312-ciscoconfparse 
   - python312-ciso8601 
   - python312-cleo 
   - python312-cli-helpers 
@@ -30737,7 +30735,6 @@ unsorted:
   - python312-pytoolconfig-global 
   - python312-pytoolconfig-validation 
   - python312-pytools 
-  - python312-pytricia 
   - python312-pytz 
   - python312-pytz-deprecation-shim 
   - python312-pytzdata 
@@ -32464,7 +32461,6 @@ unsorted:
   - python313-chroma-hnswlib 
   - python313-cinemagoer 
   - python313-circuitbreaker 
-  - python313-ciscoconfparse 
   - python313-ciso8601 
   - python313-cleo 
   - python313-cli-helpers 
@@ -34467,7 +34463,6 @@ unsorted:
   - python313-pytoolconfig-global 
   - python313-pytoolconfig-validation 
   - python313-pytools 
-  - python313-pytricia 
   - python313-pytz 
   - python313-pytz-deprecation-shim 
   - python313-pytzdata 
@@ -47564,7 +47559,6 @@ unsorted:
   - translate-suse-desktop 
   - translate-toolkit-devel-doc 
   - translate-toolkit-doc 
-  - translation-update-upstream 
   - translator 
   - translator-lang 
   - transmageddon 

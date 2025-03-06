@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20250304" schemaversion="4.1">
+<image name="OBS__openSUSE___20250305" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250304</productvar>
+      <productvar name="VERSION">20250305</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250304,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250305,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250304/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250305/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -2475,6 +2475,7 @@
       <repopackage name="libqt5-qtspeech-plugin-speechd"/>
       <repopackage name="libqt5-qtstyleplugins-platformtheme-gtk2"/>
       <repopackage name="libqt5-qttranslations"/>
+      <repopackage name="libqt5-qtwayland"/>
       <repopackage name="libqt5-qtwebengine"/>
       <repopackage name="libqt5-qtxmlpatterns-imports"/>
       <repopackage name="libQt5Core5"/>
@@ -2491,6 +2492,7 @@
       <repopackage name="libQt5Test5"/>
       <repopackage name="libQt5TextToSpeech5"/>
       <repopackage name="libQt5WaylandClient5"/>
+      <repopackage name="libQt5WaylandCompositor5"/>
       <repopackage name="libQt5WebChannel5"/>
       <repopackage name="libQt5WebChannel5-imports"/>
       <repopackage name="libQt5Widgets5"/>
@@ -3244,7 +3246,7 @@
       <repopackage name="ntfsprogs"/>
       <repopackage name="numactl"/>
       <repopackage name="numlockx"/>
-      <repopackage name="nvidia-open-driver-G06-signed-kmp-default"/>
+      <repopackage name="nvidia-open-driver-G06-signed-cuda-kmp-default"/>
       <repopackage name="nvme-cli"/>
       <repopackage name="nvme-cli-bash-completion"/>
       <repopackage name="nvme-cli-zsh-completion"/>
