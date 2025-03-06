@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 21 15:21:11 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.18
+  1.18: 2024-10-03::
+        Port changes for GCC 10.
+  1.17: 2024-02-11::
+        Remove unnecessary delays.
+        Fix a defective sort in the fame AI.
+
+-------------------------------------------------------------------
 Fri May  7 16:41:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.16

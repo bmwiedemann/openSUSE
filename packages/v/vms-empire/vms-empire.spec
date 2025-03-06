@@ -1,7 +1,7 @@
 #
 # spec file for package vms-empire
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vms-empire
-Version:        1.16
+Version:        1.18
 Release:        0
 Summary:        Simulation of a full-scale war between two emperors
 License:        GPL-2.0-only
