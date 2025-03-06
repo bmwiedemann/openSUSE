@@ -32,7 +32,6 @@ and Tools" installs all the packages below:
   virt-install     (Optional, to install VMs)
   virt-manager     (Optional, to manage VMs graphically)
   virt-viewer      (Optional, to view VMs outside virt-manager)
-  vm-install       (Optional, to install VMs with xl only)
 
 You then need to reboot your machine.  Instead of booting a normal Linux
 kernel, you will boot the Xen hypervisor and a slightly changed Linux kernel.
@@ -174,35 +173,6 @@ details.  The installation of an OS within the VM can be automated if the OS
 supports it.
 
 
-Creating a VM with vm-install
------------------------------
-The vm-install program is also provided to create VMs.  Like virt-install,
-this optional program handles creating both the VM's libvirt XML definition
-and disk(s).  It also creates a legacy configuration file for use with 'xl'.
-It can help install any operating system, not just SUSE.
-
-From the command line, run "vm-install".  If the DISPLAY environment variable
-is set and the supporting packages (python-gtk) are installed, a graphical
-wizard will start.  Otherwise, a text wizard will start.  If vm-install is
-started with the '--use-xl' flag, it will not require libvirt nor attempt
-to communicate with libvirt when creating a VM and instead will only use the
-'xl' toolstack to start VM installations.
-
-Once you have the VM configured, click "OK".  The wizard will now create a
-configuration file for the VM, and create a disk image.  The disk image will
-exist in /var/lib/xen/images, and a corresponding configuration file will exist
-in /etc/xen/vm.  The operating system's installation program will then run
-within the VM.
-
-When the VM shuts down (because the installation -- or at least the first
-stage of it -- is done), the wizard finalizes the VM's configuration and
-restarts the VM.
-
-The creation of VMs can be automated; read the vm-install man page for more
-details.  The installation of an OS within the VM can be automated if the OS
-supports it.
-
-
 Creating a VM Manually
 ----------------------
 If you create a VM manually (as opposed to using virt-install, which is the
@@ -231,11 +201,11 @@ Managing Virtual Machines
 -------------------------
 VMs can be managed from the command line using 'virsh' or from virt-manager.
 
-VMs created by virt-install or vm-install (without vm-install's --use-xl flag)
-will automatically be defined in libvirt.  VMs defined in libvirt may be managed
-by virt-manager or from the command line using the 'virsh' command.  However,
-if you copy a VM from another machine and manually create a VM XML configuration
-file, you will need to import it into libvirt with a command like:
+VMs created by virt-install will automatically be defined in libvirt.  VMs
+defined in libvirt may be managed by virt-manager or from the command line
+using the 'virsh' command.  However, if you copy a VM from another machine
+and manually create a VM XML configuration file, you will need to import it
+into libvirt with a command like:
   virsh define <path to>/my-vm.xml
 This imports the configuration into libvirt (and therefore virt-manager becomes
 aware of it, also).

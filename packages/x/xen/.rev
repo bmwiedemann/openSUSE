@@ -3062,4 +3062,12 @@
     <comment>Update to Xen version 4.20.0 release candidate 5</comment>
     <requestid>1247484</requestid>
   </revision>
+  <revision rev="361" vrev="4">
+    <srcmd5>7c33a5f613c25ec69ed9ab797203f635</srcmd5>
+    <version>4.20.0_08</version>
+    <time>1741268878</time>
+    <user>anag+factory</user>
+    <comment>Update to Xen version 4.20.0 FCS release with security fix for bsc#1238043, CVE-2025-1713, XSA-467</comment>
+    <requestid>1250427</requestid>
+  </revision>
 </revisionlist>

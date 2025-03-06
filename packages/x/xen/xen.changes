@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  5 06:18:13 MST 2025 - carnold@suse.com
+
+- Update to Xen 4.20.0 FCS release (jsc#PED-8907)
+  * See release candidate changelog entries below for 4.20.0
+  * Reduce xenstore library dependencies.
+  * Enable CONFIG_UBSAN (Arm64, x86, PPC, RISC-V) for GitLab CI.
+  * Support for Intel EPT Paging-Write Feature.
+  * AMD Zen 5 CPU support, including for new hardware mitigations
+    for the SRSO speculative vulnerability.
+- bsc#1238043 - VUL-0: CVE-2025-1713: xen: deadlock potential with
+  VT-d and legacy PCI device pass-through (XSA-467)
+  This fix is part of the final tarball
+- Remove references to vm-install from README.SUSE
+
+-------------------------------------------------------------------
 Thu Feb 20 10:09:41 MST 2025 - carnold@suse.com
 
 - Update to Xen 4.20.0 RC5 release
