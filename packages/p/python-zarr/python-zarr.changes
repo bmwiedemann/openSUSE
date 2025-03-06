@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  6 08:37:22 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.18.4
+  * Add Python 3.13, drop Python 3.10 by @dstansby in #2344
+  * Exclude bad version of numcodecs & fix bsddb3 doctests by
+    @dstansby in #2544
+- We do not dare to upgrade to Zarr 3 yet
+  * https://zarr.dev/blog/zarr-python-3-release/
+
+-------------------------------------------------------------------
 Wed Sep 25 06:07:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.18.3
