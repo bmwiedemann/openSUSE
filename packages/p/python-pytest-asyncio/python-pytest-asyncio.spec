@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-asyncio%{psuffix}
-Version:        0.25.1
+Version:        0.25.3
 Release:        0
 Summary:        Pytest support for asyncio
 License:        Apache-2.0

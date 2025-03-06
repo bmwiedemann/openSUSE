@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  5 12:37:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.25.3:
+  * Avoid errors in cleanup of async generators when event loop is
+    already closed #1040
+- update to 0.25.2:
+  * Call loop.shutdown_asyncgens() before closing the event loop to
+    ensure async generators are closed in the same manner as
+    asyncio.run does #1034
+
+-------------------------------------------------------------------
 Fri Jan  3 09:12:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.25.1:
