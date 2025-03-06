@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  5 12:59:10 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.6
+
+- Update to 2.95.6
+  * #690: Raise contrast for platform markers
+  * #689: Use onload="this.rel='stylesheet'"
+  * #688: Check for empty textobject/phrase
+  * #687: Raise color contrast in screen
+  * #686: Disable syntax highlighting (DOCTEAM-1662)
+  * #685: Raise color contrast for copy button (screen)
+
+-------------------------------------------------------------------
 Wed Feb 26 13:18:18 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.5
 
 - Update to 2.95.5
