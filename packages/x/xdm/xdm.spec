@@ -111,9 +111,9 @@ This package is required by the various display managers that integrate into the
 %prep
 %setup -q
 cp %{SOURCE2} .
-pushd xdm
+cd xdm
 %patch -P 1 -p1
-popd
+cd -
 # reverse apply (boo#1130321)
 %patch -P 3 -p1 -R
 
@@ -131,11 +131,13 @@ autoreconf -fi
 %install
 %make_install
 # Not used anymore by SuSE
-rm %{buildroot}%{_sysconfdir}/X11/xdm/{GiveConsole,TakeConsole,Xsetup_0}
+cd "%{buildroot}/%{_sysconfdir}/X11/xdm/"
+rm -fv GiveConsole TakeConsole Xsetup_0
+cd -
 
-pushd %{buildroot}
+cd %{buildroot}
 # SuSE default XDM configuration
-tar xf %{SOURCE1}
+tar -xf %{SOURCE1}
 %if 0%{?UsrEtcMove}
 patch -p1 < %{PATCH2}
 mkdir -p usr%{_sysconfdir}/X11/xdm
@@ -145,13 +147,13 @@ for i in xdm-config Xservers; do
 	cp usr%{_sysconfdir}/X11/xdm/$i etc/X11/xdm/$i
 done
 mkdir -p ./%{_pam_vendordir}
-rm etc/pam.d/{xdm,xdm-np}.sle15
+rm etc/pam.d/xdm.sle15 etc/pam.d/xdm-np.sle15
 mv etc/pam.d/* ./%{_pam_vendordir}/
 %else
 patch -p0 < %{PATCH4}
-rm etc/pam.d/{xdm,xdm-np}
-mv etc/pam.d/{xdm.sle15,xdm}
-mv etc/pam.d/{xdm-np.sle15,xdm-np}
+rm etc/pam.d/xdm etc/pam.d/xdm-np
+mv etc/pam.d/xdm.sle15 etc/pam.d/xdm
+mv etc/pam.d/xdm-np.sle15 etc/pam.d/xdm-np
 %endif
 %if "%{_fillupdir}" != "%{_localstatedir}/adm/fillup-templates"
   mkdir -p %{buildroot}$(dirname %{_fillupdir})
@@ -164,7 +166,7 @@ sed -i -e "s+DISPLAYMANAGER_REMOTE_ACCESS=.*+DISPLAYMANAGER_REMOTE_ACCESS=\"yes\
        -e "s+DISPLAYMANAGER_STARTS_XSERVER=.*+DISPLAYMANAGER_STARTS_XSERVER=\"no\"+g" \
     %{buildroot}%{_fillupdir}/sysconfig.displaymanager
 %endif
-popd
+cd -
 
 # Correct location (FHS-2.1)
 %if 0%{?UsrEtcMove}
