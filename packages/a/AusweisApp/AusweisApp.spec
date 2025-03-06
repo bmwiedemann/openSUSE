@@ -17,7 +17,7 @@
 
 
 Name:           AusweisApp
-Version:        2.2.2
+Version:        2.3.0
 Release:        0
 Summary:        Official authentication app for German ID cards and residence permits
 License:        EUPL-1.2

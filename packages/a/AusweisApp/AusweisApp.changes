@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar  6 13:30:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.3.0
+    - Introduction of onboarding.
+    - Visual adjustments and optimization of the graphical user interface.
+    - macOS Monterey 12 is no longer supported.
+    - iOS 14 and 15 are no longer supported.
+    - The integrated simulator now performs the terminal authentication
+      completely instead of accepting every input.
+    - Update from Android NDK to r27c (27.2.12479018).
+    - Update of Qt to version 6.8.1.
+    - Update of OpenSSL to version 3.4.1.
+- Refresh 0001-use-legacy-openssl-api.patch
+
+-------------------------------------------------------------------
 Fri Nov  1 08:19:20 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add patch from Fedora to enforce use of legacy OpenSSL API
