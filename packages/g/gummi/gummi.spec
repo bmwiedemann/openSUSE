@@ -24,6 +24,8 @@ License:        MIT
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://github.com/alexandervdm/gummi
 Source0:        https://github.com/alexandervdm/gummi/releases/download/%{version}/%{name}-%{version}.tar.gz
+# https://github.com/alexandervdm/gummi/issues/197
+Patch0:         gummi-gcc15.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -44,7 +46,7 @@ simplicity in mind, but is useful for both novice and advanced LaTeX writers.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure

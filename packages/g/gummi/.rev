@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>1246954</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6dc717531c47bbcbfede109272af2da9</srcmd5>
+    <version>0.8.3</version>
+    <time>1741268926</time>
+    <user>anag+factory</user>
+    <comment>fix build with gcc15</comment>
+    <requestid>1250457</requestid>
+  </revision>
 </revisionlist>

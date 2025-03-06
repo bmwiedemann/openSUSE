@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  5 14:26:42 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + gummi-gcc15.patch (gh#alexandervdm/gummi#197)
+
+-------------------------------------------------------------------
 Wed Feb 19 05:24:20 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop incorrect Requires on gtkspell (aka libgtkspell0).

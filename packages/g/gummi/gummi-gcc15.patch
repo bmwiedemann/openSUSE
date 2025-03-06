@@ -1,0 +1,22 @@
+--- gummi-0.8.3/src/configfile.c	2025-03-05 15:21:06.991600345 +0100
++++ gummi-0.8.3/src/configfile.c	2025-03-05 15:11:57.772209585 +0100
+@@ -117,7 +117,7 @@ void config_init () {
+         else {
+             slog (L_ERROR, "%s\n", error->message);
+         }
+-        config_load_defaults (key_file);
++        config_load_defaults ();
+     }
+ 
+     // replace old welcome texts if still active:
+--- gummi-0.8.3/src/template.h	2025-03-05 15:21:06.992644434 +0100
++++ gummi-0.8.3/src/template.h	2025-03-05 15:14:24.827598607 +0100
+@@ -52,7 +52,7 @@ typedef struct _Template {
+ 
+ 
+ GuTemplate* template_init (GtkBuilder* builder);
+-void template_setup ();
++void template_setup (GuTemplate* t);
+ void template_add_new_entry (GuTemplate* t);
+ void template_remove_entry (GuTemplate* t);
+ void template_create_file (GuTemplate* t, gchar* filename, gchar* text);
