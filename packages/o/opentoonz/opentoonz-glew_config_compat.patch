@@ -1,0 +1,33 @@
+From 4ebf30531234bcba635698566f728d34e8a97edd Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Mon, 3 Mar 2025 09:41:56 +0100
+Subject: [PATCH] Work around incompatibility between GLEW config file and
+ CMake module
+
+CMake FindGLEW.cmake and glew CMake config files are incompatible and cause
+build errors.
+---
+ toonz/sources/CMakeLists.txt | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/toonz/sources/CMakeLists.txt b/toonz/sources/CMakeLists.txt
+index 9eb1149..5ecec8b 100644
+--- a/toonz/sources/CMakeLists.txt
++++ b/toonz/sources/CMakeLists.txt
+@@ -438,7 +438,12 @@ elseif(BUILD_ENV_UNIXLIKE)
+     find_package(PNG REQUIRED)
+     set(PNG_LIB ${PNG_LIBRARY})
+     message("******* libpng:" ${PNG_LIB})
+-    find_package(GLEW)
++    find_package(glew CONFIG)
++    if(glew_FOUND)
++        set(GLEW_LIBRARIES GLEW::glew)
++    else()
++        find_package(GLEW)
++    endif()
+ 
+     find_package(SuperLU REQUIRED)
+     set(SUPERLU_LIB ${SUPERLU_LIBRARY})
+-- 
+2.48.1
+

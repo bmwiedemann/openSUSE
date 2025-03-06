@@ -1,0 +1,126 @@
+From 9d68d36c05cd89cf791d128cf46033865778b527 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 11 Sep 2024 17:00:59 +0200
+Subject: [PATCH] Use system stdfx
+
+---
+ toonz/sources/CMakeLists.txt         | 2 ++
+ toonz/sources/stdfx/CMakeLists.txt   | 8 +-------
+ toonz/sources/stdfx/iwa_bokeh_util.h | 4 ++--
+ toonz/sources/stdfx/iwa_bokehfx.cpp  | 4 ++--
+ toonz/sources/stdfx/iwa_glarefx.cpp  | 4 ++--
+ toonz/sources/stdfx/iwa_glarefx.h    | 2 +-
+ 6 files changed, 10 insertions(+), 14 deletions(-)
+
+diff --git a/toonz/sources/CMakeLists.txt b/toonz/sources/CMakeLists.txt
+index 9eb1149..54268ea 100644
+--- a/toonz/sources/CMakeLists.txt
++++ b/toonz/sources/CMakeLists.txt
+@@ -445,6 +445,8 @@ elseif(BUILD_ENV_UNIXLIKE)
+ 
+     find_package(JPEG REQUIRED)
+ 
++    find_package(kissfft REQUIRED)
++
+     # the libraries have .pc
+     find_package(PkgConfig)
+ 
+diff --git a/toonz/sources/stdfx/CMakeLists.txt b/toonz/sources/stdfx/CMakeLists.txt
+index 4de06ec..2100f72 100644
+--- a/toonz/sources/stdfx/CMakeLists.txt
++++ b/toonz/sources/stdfx/CMakeLists.txt
+@@ -270,8 +270,6 @@ set(SOURCES
+     iwa_noise1234.cpp
+     iwa_pnperspectivefx.cpp
+     iwa_soapbubblefx.cpp
+-    ${SDKROOT}/kiss_fft130/kiss_fft.c
+-    ${SDKROOT}/kiss_fft130/tools/kiss_fftnd.c
+     iwa_bokehfx.cpp
+     iwa_timecodefx.cpp
+     iwa_bokehreffx.cpp
+@@ -325,13 +323,9 @@ else()
+     )
+ endif()
+ 
+-include_directories(
+-    ${SDKROOT}/kiss_fft130
+-)
+-
+ _find_toonz_library(TNZLIBS "tnzcore;tnzbase;toonzlib")
+ 
+-target_link_libraries(tnzstdfx Qt5::Core Qt5::Gui Qt5::OpenGL ${GL_LIB} ${GLEW_LIB} ${TNZLIBS} ${PTHREAD_LIBRARY})
++target_link_libraries(tnzstdfx Qt5::Core Qt5::Gui Qt5::OpenGL ${GL_LIB} ${GLEW_LIB} ${TNZLIBS} ${PTHREAD_LIBRARY} kissfft::kissfft-float)
+ 
+ if(OpenCV_FOUND)
+     target_link_libraries(tnzstdfx ${OpenCV_LIBS})
+diff --git a/toonz/sources/stdfx/iwa_bokeh_util.h b/toonz/sources/stdfx/iwa_bokeh_util.h
+index 5bb593c..118e8cb 100644
+--- a/toonz/sources/stdfx/iwa_bokeh_util.h
++++ b/toonz/sources/stdfx/iwa_bokeh_util.h
+@@ -5,8 +5,8 @@
+ 
+ #include "tgeometry.h"
+ #include "traster.h"
+-#include "kiss_fft.h"
+-#include "tools/kiss_fftnd.h"
++#include <kiss_fft.h>
++#include <kiss_fftnd.h>
+ #include "ttile.h"
+ #include "stdfx.h"
+ #include "tfxparam.h"
+diff --git a/toonz/sources/stdfx/iwa_bokehfx.cpp b/toonz/sources/stdfx/iwa_bokehfx.cpp
+index dda2eda..07ea6f5 100644
+--- a/toonz/sources/stdfx/iwa_bokehfx.cpp
++++ b/toonz/sources/stdfx/iwa_bokehfx.cpp
+@@ -5,7 +5,7 @@
+ #include "trasterfx.h"
+ #include "trasterimage.h"
+ 
+-#include "kiss_fft.h"
++#include <kiss_fft.h>
+ 
+ #include <QPair>
+ #include <QVector>
+@@ -272,4 +272,4 @@ QMap<int, double> Iwa_BokehFx::getIrisSizes(const double frame,
+   return irisSizes;
+ }
+ 
+-FX_PLUGIN_IDENTIFIER(Iwa_BokehFx, "iwa_BokehFx")
+\ No newline at end of file
++FX_PLUGIN_IDENTIFIER(Iwa_BokehFx, "iwa_BokehFx")
+diff --git a/toonz/sources/stdfx/iwa_glarefx.cpp b/toonz/sources/stdfx/iwa_glarefx.cpp
+index 9a834a6..b5a980b 100644
+--- a/toonz/sources/stdfx/iwa_glarefx.cpp
++++ b/toonz/sources/stdfx/iwa_glarefx.cpp
+@@ -7,7 +7,7 @@
+ 
+ #include "tparamuiconcept.h"
+ 
+-#include "kiss_fft.h"
++#include <kiss_fft.h>
+ #include "iwa_cie_d65.h"
+ #include "iwa_xyz.h"
+ #include "iwa_simplexnoise.h"
+@@ -1035,4 +1035,4 @@ bool Iwa_GlareFx::toBeComputedInLinearColorSpace(bool settingsIsLinear,
+   return settingsIsLinear;
+ }
+ 
+-FX_PLUGIN_IDENTIFIER(Iwa_GlareFx, "iwa_GlareFx")
+\ No newline at end of file
++FX_PLUGIN_IDENTIFIER(Iwa_GlareFx, "iwa_GlareFx")
+diff --git a/toonz/sources/stdfx/iwa_glarefx.h b/toonz/sources/stdfx/iwa_glarefx.h
+index 49873a4..763958e 100644
+--- a/toonz/sources/stdfx/iwa_glarefx.h
++++ b/toonz/sources/stdfx/iwa_glarefx.h
+@@ -15,7 +15,7 @@ Iwa_GlareFx
+ #include <QList>
+ #include <QThread>
+ 
+-#include "tools/kiss_fftnd.h"
++#include <kiss_fftnd.h>
+ 
+ const int LAYER_NUM = 5;
+ 
+-- 
+2.46.0
+

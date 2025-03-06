@@ -220,4 +220,18 @@
     <comment>Update to 1.7.1</comment>
     <requestid>1086189</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>71afe469adeb41d3f195ff94a1db0cb9</srcmd5>
+    <version>1.7.1</version>
+    <time>1741268986</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * opentoonz-glew_config_compat.patch
+- Stop using %suse_update_desktop_file
+- Use system's kissfft dependency
+
+- Add patch:
+  * 0001-Use-system-stdfx.patch</comment>
+    <requestid>1250610</requestid>
+  </revision>
 </revisionlist>

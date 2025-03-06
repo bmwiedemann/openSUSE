@@ -1,7 +1,7 @@
 #
 # spec file for package opentoonz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,10 @@ Source99:       %{name}-rpmlintrc
 Patch0:         0001-Fix-linker-errors-on-Linux.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Fix-build-with-Werror-return-type.patch
+# Use system libraries when possible
+Patch2:         0001-Use-system-stdfx.patch
+# PATCH-FIX-OPENSUSE
+Patch3:         opentoonz-glew_config_compat.patch
 BuildRequires:  boost-devel >= 1.55
 BuildRequires:  cmake
 BuildRequires:  freeglut-devel
@@ -41,7 +45,6 @@ BuildRequires:  pkgconfig
 # needed to setup startup script paths
 BuildRequires:  sed
 BuildRequires:  superlu-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(OpenCV)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
@@ -56,6 +59,7 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(kissfft)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(liblz4)
@@ -79,7 +83,7 @@ ExclusiveArch:  %{ix86} x86_64 ppc64 ppc64le %{riscv}
 
 %build
 # NOTE: Third party dependencies are dropped from the tarball thanks to the
-# _service file. Only kissfft130, lzo/driver and tiff-4.0.3 shall be kept.
+# _service file. Only lzo/driver and tiff-4.0.3 shall be kept.
 
 # TODO upstream planning to replace custom thirdparty libs with system versions
 cd thirdparty/tiff-*
@@ -111,8 +115,6 @@ rm -r %{buildroot}%{_prefix}/lib/%{name}
 # fix launch script that hardcodes 'lib'
 sed -i 's|/lib/|/%{_lib}/|' %{buildroot}%{_bindir}/%{name}
 %endif
-
-%suse_update_desktop_file io.github.OpenToonz 2DGraphics
 
 %files
 %license LICENSE.txt

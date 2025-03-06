@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  3 08:42:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * opentoonz-glew_config_compat.patch
+- Stop using %suse_update_desktop_file
+- Use system's kissfft dependency
+
+-------------------------------------------------------------------
+Wed Sep 11 13:47:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * 0001-Use-system-stdfx.patch
+
+-------------------------------------------------------------------
 Wed May 10 21:50:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.7.1

@@ -10,11 +10,13 @@
         <param name="exclude">thirdparty/Lz4</param>
         <param name="exclude">thirdparty/glew</param>
         <param name="exclude">thirdparty/glut</param>
+        <param name="exclude">thirdparty/kiss_fft130</param>
         <param name="exclude">thirdparty/libjpeg-turbo</param>
         <param name="exclude">thirdparty/libmypaint</param>
         <param name="exclude">thirdparty/libpng-1.6.21</param>
         <param name="exclude">thirdparty/libusb</param>
         <param name="exclude">thirdparty/superlu</param>
+        <param name="exclude">thirdparty/tiff-4.0.3/lib</param>
         <param name="exclude">thirdparty/zlib-1.2.8</param>
         <!-- thirdparty/lzo/driver is needed, but the 2.x subfolder can be dropped -->
         <param name="exclude">thirdparty/lzo/2.03</param>
