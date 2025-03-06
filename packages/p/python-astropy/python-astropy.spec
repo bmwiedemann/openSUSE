@@ -176,7 +176,10 @@ import hypothesis
 hypothesis.settings.register_profile(
     'obs',
     deadline=5000,
-    suppress_health_check=[hypothesis.HealthCheck.too_slow]
+    suppress_health_check=[
+      hypothesis.HealthCheck.too_slow,
+      hypothesis.HealthCheck.filter_too_much,
+    ]
 )
 " >> astropy/conftest.py
 sed -i '/"--color=yes",/d' pyproject.toml

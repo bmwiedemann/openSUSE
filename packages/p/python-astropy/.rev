@@ -2328,4 +2328,13 @@
   * Change default type for meta attribute to dict and update ECSV writer</comment>
     <requestid>1244494</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>d8f81ac82c1043831a287538860d9270</srcmd5>
+    <version>7.0.1</version>
+    <time>1741268978</time>
+    <user>anag+factory</user>
+    <comment>- Suppress another hypothesis health check for the test suite
+</comment>
+    <requestid>1250575</requestid>
+  </revision>
 </revisionlist>
