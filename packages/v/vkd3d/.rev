@@ -383,4 +383,93 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 If you have any suggestions for improvement, please let me know! (forwarded request 1226009 from DarkWav)</comment>
     <requestid>1226084</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>82570c5cb43c5da531c046a7a58ad0ba</srcmd5>
+    <version>1.15</version>
+    <time>1741268924</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.15:
+  - libvkd3d
+    vkd3d_queue_signal_on_cpu() allows a Direct3D 12 fence to be
+    signalled when all preceding work on a Direct3D 12 command queue
+    has been submitted to the corresponding Vulkan queue.
+  - libvkd3d-shader
+    New features for the HLSL source type:
+      ‘InputPatch’ and ‘OutputPatch’ tessellation shader objects.
+      This was the main feature required by most tessellation shaders
+      that was still missing, and tessellation shaders should be
+      considered generally usable now.
+      Unrolling of loops containing conditional jumps.
+      Improved function overload resolution. Previously the compiler
+      was unable to decide between multiple function overloads with
+      the same number of parameters.
+      The parser is able to continue parsing in a larger number of
+      error cases. This allows more issues in the input to be
+      reported during a single compilaton attempt.
+      The following intrinsic functions are supported:
+        GatherCmp()
+        GatherCmpAlpha(), GatherCmpBlue(), GatherCmpGreen(), and
+        GatherCmpRed()
+        InterlockedAdd(), InterlockedAnd(),
+        InterlockedCompareExchange(),
+        InterlockedCompareStore(), InterlockedExchange(),
+        InterlockedMax(),
+        InterlockedMin(), InterlockedOr(), and InterlockedXor()
+        isinf()
+      Separate resource and sampler support for shader model 1-3
+      target profiles.
+      Casts on the left hand side of assignments.
+      Reassociation and redistribution of constants in binary
+      expressions, to facilitate constant folding.
+      Packing of interstage I/O variables with the ‘SV_IsFrontFace’,
+      ‘SV_PrimitiveID’, ‘SV_RenderTargetArrayIndex’,
+      ‘SV_SampleIndex’, and ‘SV_ViewPortArrayIndex’ semantics
+      matches d3dcompiler/fxc more closely.
+      Parser support for the ‘LineStream’, ‘PointStream’,
+      and ‘TriangleStream’ Stream-Output objects.
+    A number of instructions have been implemented for the
+    experimental MSL target. Although more and more shaders are
+    starting to work, support is still fairly limited. For example,
+    shader resource views and unordered access views are still
+    entirely unsupported.
+    Shader code generation for fixed-function fog. Like the existing
+    shader code generation for other fixed-function features, this
+    is mainly relevant for executing shader model 1-3 sources in
+    modern target environments like Vulkan.
+    The ‘fx’ parser can parse binary effects containing inline
+    shader blobs.
+    Internal validator support for validating I/O signatures, as
+    well as I/O source and destination parameters. The validator is
+    enabled by the ‘force_validation’ option, specified through the
+    VKD3D_SHADER_CONFIG environment variable.
+    Internal validator support for validating the number of indices
+    used with a register, as well as basic bounds checking for
+    static indices.
+    New interfaces:
+      The vkd3d_shader_scan_hull_shader_tessellation_info structure
+      extends the vkd3d_shader_compile_info structure, and can be
+      used to retrieve the output primitive type and partitioning
+      mode used by a hull shader. This information is particularly
+      useful for specifying
+      vkd3d_shader_spirv_domain_shader_target_info structures when
+      targetting SPIR-V in OpenGL environments.
+      The VKD3D_SHADER_PARAMETER_NAME_FOG_FRAGMENT_MODE shader
+      parameter specifies the kind of fog to generate in a fragment
+      shader.
+      The VKD3D_SHADER_PARAMETER_NAME_FOG_COLOUR shader parameter
+      specifies the fog colour.
+      The VKD3D_SHADER_PARAMETER_NAME_FOG_END shader parameter
+      specifies the ‘end’ parameter used for linear fog generation.
+      The VKD3D_SHADER_PARAMETER_NAME_FOG_SCALE shader parameter
+      specifies the ‘scale’ parameter used for fog generation.
+      The VKD3D_SHADER_PARAMETER_NAME_FOG_SOURCE shader parameter
+      specifies the kind of fog coordinate to output from a
+      pre-rasterisation shader.
+  - vkd3d-compiler
+    The new ‘dxbc-fx’ source type specifies an effect binary
+    embedded in a DXBC container. This is a convenience feature;
+    ‘vkd3d-compiler -x dxbc-fx blob.dxbc’ is equivalent to
+    ‘vkd3d-dxbc -x t:FX10 blob.dxbc | vkd3d-compiler -x fx’. (forwarded request 1250433 from llyyr)</comment>
+    <requestid>1250439</requestid>
+  </revision>
 </revisionlist>
