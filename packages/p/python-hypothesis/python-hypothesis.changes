@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  5 14:22:04 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 6.127.6
+  * This patch tweaks the performance of the target phase, avoiding
+    aborting some test cases when it would be better to finish
+    generating them.
+
+-------------------------------------------------------------------
 Mon Mar  3 11:32:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.127.5
