@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  5 07:49:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.1:
+  + Bugs fixed:
+    - a use after free bug when a process exits during update
+    - finding the preferred desktop entry when an app install
+      mutliple
+    - having bogus check boxes on system rows in the storage view
+
+-------------------------------------------------------------------
 Wed Mar 20 07:21:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
