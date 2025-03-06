@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.7
+Version:        2.1.8
 Release:        0
 Summary:        TLS protocol native implementation
 License:        BSD-3-Clause
