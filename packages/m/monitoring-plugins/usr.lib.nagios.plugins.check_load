@@ -8,5 +8,5 @@
    /proc/uptime r,
    /proc/meminfo r,
    /proc/loadavg r,
-   /run/systemd/sessions/1 r,
+   /run/systemd/sessions/* r,
 }

@@ -396,4 +396,14 @@ New patches:
 - change mode to &quot;manual&quot; in service file (forwarded request 1227826 from oertel)</comment>
     <requestid>1227828</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>7880c418a54a5104cf6b856e2f005be6</srcmd5>
+    <version>2.4.0</version>
+    <time>1741268943</time>
+    <user>anag+factory</user>
+    <comment>- update apparmor profiles:
+  - check_load: allow to read /run/systemd/sessions/*
+  - check_procs: allow to read /sys/devices/system/node/ (forwarded request 1244145 from oertel)</comment>
+    <requestid>1250476</requestid>
+  </revision>
 </revisionlist>

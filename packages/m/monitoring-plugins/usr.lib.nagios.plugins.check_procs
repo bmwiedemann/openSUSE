@@ -9,5 +9,6 @@
   /{usr/,}bin/ps rix,
   /proc/ r,
   /proc/** r,
+  /sys/devices/system/node/ r,
   /usr/lib/nagios/plugins/check_procs mr,
 }

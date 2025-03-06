@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  7 13:52:07 CET 2025 - ro@suse.de
+
+- update apparmor profiles:
+  - check_load: allow to read /run/systemd/sessions/*
+  - check_procs: allow to read /sys/devices/system/node/
+
+-------------------------------------------------------------------
 Mon Dec  2 17:52:44 CET 2024 - ro@suse.de
 
 - add patch monitoring-plugins-2.4.0-check_dbi-type_mismatch.patch
