@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  3 22:20:30 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 19.1.5.
+  * Fix DebugLinePriority.spt SPIR-V validation errors.
+  * Emit alloca for all OpVariables with Function storage.
+  * Align translation of OpCooperativeMatrixLengthKHR to match the
+    spec.
+  * Check if OpCooperativeMatrixLengthKHR operand is a type.
+  * Fix incorrect translation of calls to a builtin that returns a
+    structure.
+
+-------------------------------------------------------------------
 Tue Feb 25 21:38:44 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 19.1.4.
