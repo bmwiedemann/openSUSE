@@ -406,4 +406,15 @@ However, it would be good to have these out before we do switch. (forwarded requ
 - install SLFO / SLM 6.0 key and SLES 15 SP6+ key by default</comment>
     <requestid>1182852</requestid>
   </revision>
+  <revision rev="46" vrev="55">
+    <srcmd5>dcfe5e487e46b68434d1ab6da9b56b1f</srcmd5>
+    <version>1.0</version>
+    <time>1741268882</time>
+    <user>anag+factory</user>
+    <comment>- changed keys to use SHA256 UIDs instead of SHA1. (bsc#1237294
+  bsc#1236779 jsc#PED-12321)
+  - gpg-pubkey-3fa1d6ce-67c856ee.asc to gpg-pubkey-09d9ea69-67c857f3.asc
+  - gpg-pubkey-09d9ea69-645b99ce.asc to gpg-pubkey-3fa1d6ce-63c9481c.asc (forwarded request 1250460 from msmeissn)</comment>
+    <requestid>1250461</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-build-key
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,9 +70,9 @@ Source14:       build-container-8fd6c337-63c94b45.pem
 Source15:       build-container-8fd6c337-63c94b45.asc
 
 # SLM 6.0 key (ALP / SLF1) RSA 4096 bit key
-Source16:       gpg-pubkey-09d9ea69-645b99ce.asc
+Source16:       gpg-pubkey-09d9ea69-67c857f3.asc
 # 2024 SUSE Linux Enterprise 15 SP6 RSA 4096 bit key
-Source17:       gpg-pubkey-3fa1d6ce-63c9481c.asc
+Source17:       gpg-pubkey-3fa1d6ce-67c856ee.asc
 # SLM 6.0 key (ALP / SLF1) RSA 4096 bit reserve key
 Source18:       gpg-pubkey-73f03759-626bd414.asc
 # 2024 SUSE Linux Enterprise 15 SP6 RSA 4096 bit reserve key
