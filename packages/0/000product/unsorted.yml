@@ -7773,6 +7773,7 @@ unsorted:
   - google-guest-agent 
   - google-guest-configs 
   - google-guest-oslogin 
+  - google-guest-oslogin-selinux 
   - google-guice 
   - google-guice-javadoc 
   - google-inconsolata-fonts 
@@ -9842,7 +9843,6 @@ unsorted:
   - jupyter-jupyterlab-filesystem 
   - jupyter-jupyterlab-ipyvue 
   - jupyter-jupyterlab-ipyvuetify 
-  - jupyter-jupyterlab-latex 
   - jupyter-jupyterlab-pygments 
   - jupyter-jupyterlab-pyviz 
   - jupyter-jupyterlab-templates 
@@ -20080,6 +20080,7 @@ unsorted:
   - objenesis 
   - objenesis-javadoc 
   - oboete 
+  - obs-git-init 
   - obs-scm-bridge 
   - obs-service-appimage 
   - obs-service-cargo 
@@ -21056,6 +21057,8 @@ unsorted:
   - pantheon-photos 
   - pantheon-photos-lang 
   - pantheon-photos-plugins 
+  - pantheon-quick-settings 
+  - pantheon-quick-settings-lang 
   - pantheon-screenshot 
   - pantheon-screenshot-lang 
   - pantheon-session 
@@ -25834,7 +25837,6 @@ unsorted:
   - python311-invocations 
   - python311-invoke 
   - python311-ioctl-opt 
-  - python311-ipaddr 
   - python311-ipdb 
   - python311-iptables 
   - python311-ipy 
@@ -29490,7 +29492,6 @@ unsorted:
   - python312-invocations 
   - python312-invoke 
   - python312-ioctl-opt 
-  - python312-ipaddr 
   - python312-ipdb 
   - python312-iptables 
   - python312-ipy 
@@ -33216,7 +33217,6 @@ unsorted:
   - python313-invocations 
   - python313-invoke 
   - python313-ioctl-opt 
-  - python313-ipaddr 
   - python313-iptables 
   - python313-ipy 
   - python313-ipyevents 
