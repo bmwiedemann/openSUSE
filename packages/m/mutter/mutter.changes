@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  4 20:23:07 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.6:
+  + Support presentation-time version 2
+  + Honor wl_surface.offset on cursor surfaces
+  + Fix sharable surfaces with nvidia as primary
+  + Fixed crash
+
+-------------------------------------------------------------------
 Wed Feb  5 12:24:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.5:
