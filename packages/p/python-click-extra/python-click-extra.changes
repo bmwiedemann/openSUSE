@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  5 13:05:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.15.0:
+  * Regroup all envronment variables-related code.
+  * Rename extend_envvars() to merge_envvar_ids() and allow it to
+    merge arbitrary-nested structures. Normalize names to uppercase
+    on Windows.
+  * Rename normalize_envvar() to clean_envvar_id().
+  * Rename all_envvars() to param_envvar_ids().
+  * Rename auto_envvar() to param_auto_envvar_id().
+  * Remove unused normalize parameter on all_envvars().
+  * Add missing line returns in render_cli_run().
+  * Prefix all types with capital-T.
+
+-------------------------------------------------------------------
 Sun Feb 23 16:35:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.14.2:
