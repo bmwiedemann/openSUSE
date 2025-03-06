@@ -253,4 +253,27 @@
     instead of wcwdith.</comment>
     <requestid>1234597</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>70b8e25022b77972c60cb0947e4011d4</srcmd5>
+    <version>3.2.0</version>
+    <time>1741268931</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 3.2.0:
+  * Added fcft_from_name2, allowing you to instantiate fonts and override
+    certain rendering defaults.
+  * Added fcft_font_options_create and fcft_font_options_destroy, to be used
+    with the new fcft_from_name2.
+  * fcft can now decode color glyphs from sRGB to linear, and optionally render
+    to higher precision pixman surfaces. See the new fcft_from_name2
+    and fcft_font_options_create().
+  * Unicode codepoints with the emoji components tag are no longer treated
+    as emojis, when selecting font. This fixes an issue where
+    e.g. 0..9 were loaded from a fallback font instead of the primary font,
+    if the primary font had the emoji language bit set.
+  * Deprecated fcft_set_emoji_presentation - use fcft_from_name2 instead.
+  * Fixed undefined behavior when using copies of mtx_t and pthread_rwlock_t objects.
+  * Enable building tests and install additional build dependencies so that
+    tests are actually built and run.</comment>
+    <requestid>1250467</requestid>
+  </revision>
 </revisionlist>

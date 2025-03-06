@@ -18,7 +18,7 @@
 
 %define libname libfcft4
 Name:           fcft
-Version:        3.1.10
+Version:        3.2.0
 Release:        0
 Summary:        A library for font loading and glyph rasterization using FreeType/pixman
 License:        MIT
@@ -43,6 +43,10 @@ BuildRequires:  pkgconfig(harfbuzz) >= 5.2
 BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(tllist) >= 1.0.1
+# Test dependencies, including serif and emoji font
+BuildRequires:  pkgconfig(check)
+BuildRequires:  dejavu-fonts
+BuildRequires:  google-noto-coloremoji-fonts
 
 %description
 fcft is a font loading and glyph rasterization library built on-top
@@ -79,7 +83,7 @@ export CC=gcc-11
 	-Drun-shaping=enabled \
 	-Dsvg-backend=nanosvg \
 	-Dsystem-nanosvg=enabled \
-	-Dtest-text-shaping=false
+	-Dtest-text-shaping=true
 %meson_build
 
 %install
