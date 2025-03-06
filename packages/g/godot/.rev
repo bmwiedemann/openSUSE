@@ -413,4 +413,12 @@
     <comment>Fix ppc64le build</comment>
     <requestid>1244874</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>61b8ca80bb4d5535e941b0db46488a4a</srcmd5>
+    <version>4.4</version>
+    <time>1741268981</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1250588</requestid>
+  </revision>
 </revisionlist>

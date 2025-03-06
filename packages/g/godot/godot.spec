@@ -29,14 +29,14 @@
 %define compiler_version_leap 10
 
 Name:           godot
-Version:        4.3
+Version:        4.4
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://godotengine.org/
-Source0:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%{version}-stable.tar.xz
-Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%{version}-stable.tar.xz.sha256
+Source0:        https://github.com/godotengine/%{name}/releases/download/%{version}-stable/%{name}-%{version}-stable.tar.xz
+Source1:        https://github.com/godotengine/%{name}/releases/download/%{version}-stable/%{name}-%{version}-stable.tar.xz.sha256
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -49,14 +49,15 @@ BuildRequires:  gcc%{compiler_version_leap}-c++
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  scons
-BuildRequires:  update-desktop-files
+BuildRequires:  scons > 4.5
+BuildRequires:  wayland-devel
 BuildRequires:  yasm-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
+BuildRequires:  pkgconfig(libdecor-0)
 BuildRequires:  pkgconfig(libpcre2-32)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
@@ -95,7 +96,6 @@ BuildRequires:  pkgconfig(freetype2) >= 2.10.2
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig(graphite2)
-BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libwslay)
@@ -115,8 +115,6 @@ BuildRequires:  mbedtls-devel
 
 Requires:       ca-certificates
 Recommends:     ca-certificates-mozilla
-Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
 Suggests:       %{name}-runner = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -131,8 +129,8 @@ Provides:       bundled(enet) = 1.3.18
 # Has custom changes to support seeking in zip archives
 # Should not be unbundled.
 Provides:       bundled(minizip) = 1.3.1
-
 Provides:       bundled(FastLZ)
+Provides:       bundled(FastNoiseLite)
 Provides:       bundled(JetBrainsMono_Regular)
 Provides:       bundled(RVO2-3D)
 Provides:       bundled(Tangent_Space_Normal_Maps)
@@ -140,41 +138,46 @@ Provides:       bundled(amd-fsr) = 1.0.2
 Provides:       bundled(amd-fsr2) = 2.2.1
 Provides:       bundled(angle)
 Provides:       bundled(astcenc) = 4.8.0
-Provides:       bundled(basis_universal) = 1.16.4
-Provides:       bundled(clipper2) = 1.3.0
+Provides:       bundled(basis_universal) = 1.50.0
+Provides:       bundled(clipper2) = 1.4.0
 Provides:       bundled(cvtt)
 Provides:       bundled(d3d12ma) = 2.1.0
 Provides:       bundled(directx_headers) = 1.611.1
 Provides:       bundled(doctest) = 2.4.11
-Provides:       bundled(etcpak) = 1.0
+Provides:       bundled(etcpak) = 2.0
 Provides:       bundled(glad) = 2.0.4
 # same version for glslang, spirv-reflect, volk and vulkan needed
 Provides:       bundled(glslang) = sdk-1.3.283.0
 Provides:       bundled(google-droid-fonts)
-Provides:       bundled(icu4c) = 75.1
+# gdextension crash with unbundled harfbuzz or icu4c
+# https://github.com/godotengine/godot/issues/91401
+Provides:       bundled(harfbuzz) = 10.1.0
+Provides:       bundled(icu4c) = 76.1
 Provides:       bundled(ifaddrs-android)
+Provides:       bundled(jolt_physics) = 5.2.1
 Provides:       bundled(jpeg-compressor) = 2.00
 Provides:       bundled(libbacktrace)
 Provides:       bundled(libktx) = 4.3.2
-Provides:       bundled(meshoptimizer) = 0.20
+Provides:       bundled(manifold) = 3.0.1
+Provides:       bundled(meshoptimizer) = 0.22
 Provides:       bundled(mingw-std-threads)
 Provides:       bundled(minimp3)
-Provides:       bundled(msdfgen) = 1.11
-Provides:       bundled(noise) = 1.1.0
+Provides:       bundled(msdfgen) = 1.12
 Provides:       bundled(noto-sans-fonts)
 Provides:       bundled(nvapi) = R525
-Provides:       bundled(openxr) = 1.0.34
+Provides:       bundled(openxr) = 1.1.41
 Provides:       bundled(pcg)
 Provides:       bundled(polyclipping)
 Provides:       bundled(polypartition)
 Provides:       bundled(pvrtccompressor)
 Provides:       bundled(qoa)
 Provides:       bundled(smaz)
+Provides:       bundled(spirv-cross)
 Provides:       bundled(spirv-reflect) = sdk-1.3.283.0
 Provides:       bundled(stb)
-Provides:       bundled(thorvg) = 0.14.2
-Provides:       bundled(tinyexr) = 1.0.8
-Provides:       bundled(ufbx) = 0.14.0
+Provides:       bundled(thorvg) = 0.15.10
+Provides:       bundled(tinyexr) = 1.0.9
+Provides:       bundled(ufbx) = 0.15.0
 Provides:       bundled(vhacd)
 Provides:       bundled(volk) = sdk-1.3.283.0
 Provides:       bundled(vulkan) = sdk-1.3.283.0
@@ -184,7 +187,6 @@ Provides:       bundled(yuv2rgb)
 
 # Can be unbundled if packaged
 Provides:       bundled(recastnavigation) = 1.6.0
-Provides:       bundled(squish) = 1.15
 Provides:       bundled(xatlas)
 
 # Embree 3.13.0+ supports both x86_64 and aarch64.
@@ -201,17 +203,16 @@ Provides:       bundled(brotli) = 1.1.0
 # see comments for freetype2, libpng and zlib Factory BuildRequires
 Provides:       bundled(freetype2) = 2.13.2
 Provides:       bundled(graphite) = 1.3.14
-Provides:       bundled(harfbuzz) = 8.5.0
-Provides:       bundled(libpng) = 1.6.43
+Provides:       bundled(libpng) = 1.6.45
 Provides:       bundled(libzstd) = 1.5.6
 Provides:       bundled(zlib) = 1.3.1
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 3.6.0
+Provides:       bundled(mbedtls) = 3.6.2
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
 Provides:       bundled(libwslay) = 1.1.1
-Provides:       bundled(miniupnpc) = 2.2.7
+Provides:       bundled(miniupnpc) = 2.2.8
 %endif
 %endif
 
@@ -300,7 +301,7 @@ unbundle_libs=('certs' 'libogg' 'libtheora' 'libvorbis' \
 
 # Unbundle more libs for Tumbleweed
 %if %{suse_version} > 1500
-unbundle_libs+=('brotli' 'freetype' 'graphite' 'harfbuzz' 'libpng' 'mbedtls' 'zlib' 'zstd')
+unbundle_libs+=('brotli' 'freetype' 'graphite' 'libpng' 'mbedtls' 'zlib' 'zstd')
 %else
 # Unbundle more libs for coming Leap
 %if 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
@@ -319,21 +320,35 @@ done
 mkdir -pv thirdparty/certs
 touch thirdparty/certs/ca-certificates.crt
 
-use_sowrap="use_sowrap=no "
+use_lto="full"
+use_sowrap="use_sowrap=no"
 rm -rf thirdparty/linuxbsd_headers
 
+%ifarch %ix86
+# error since 4.4
+# lto1: out of memory
+# lto-wrapper: fatal error: g++ returned 1 exit status
+# what to do ?
+# increasing constraints or disable lto did not help
+# => delete -flto from optflags
+use_lto="none"
+%define cc_flags -fomit-frame-pointer -O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type -g
+%else
+%define cc_flags %{optflags}
+%endif
+
 %if %{suse_version} > 1500
-%define ccflags %{optflags}
+%define ccflags %{cc_flags}
 compiler=""
 linkflags=""
 %else
-%define ccflags %{optflags} -fPIE
+%define ccflags %{cc_flags} -fPIE
 compiler="CC=gcc-%{compiler_version_leap}  CXX=g++-%{compiler_version_leap}"
 linkflags="linkflags=-pie"
 %endif
 
 %define build_args_common %{?_smp_mflags} \\\
-        progress=no verbose=yes udev=yes use_lto=1 \\\
+        progress=no verbose=yes udev=yes lto=$use_lto debug_symbols=yes \\\
         use_static_cpp=no ccflags='%{ccflags}' $linkflags $compiler \\\
         engine_update_check=no steamapi=no \\\
         system_certs_path=%{ca_bundle} $use_sowrap $system_libs
@@ -376,7 +391,7 @@ install -D -p -m 644 misc/dist/linux/godot.6 %{buildroot}/%{_mandir}/man6/%{name
 install -D -p -m 644 icon.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 install -D -p -m 644 icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 install -D -p -m 644 misc/dist/linux/org.godotengine.Godot.appdata.xml  %{buildroot}%{_datadir}/metainfo/org.godotengine.Godot.appdata.xml
-%suse_update_desktop_file -i org.godotengine.Godot
+install -D -m 0644 misc/dist/linux/org.godotengine.Godot.desktop %{buildroot}%{_datadir}/applications/org.godotengine.Godot.desktop
 
 %if !0%{?faster_build}
 # Installing the runner
@@ -388,6 +403,9 @@ install -D -p -m 644 misc/dist/shell/godot.bash-completion %{buildroot}%{_datadi
 install -D -p -m 644 misc/dist/shell/godot-runner %{buildroot}%{_datadir}/bash-completion/completions/%{name}-runner
 
 %fdupes -s %{buildroot}/%{_prefix}
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.godotengine.Godot.desktop
 
 %files
 %license LICENSE.txt LOGO_LICENSE.txt COPYRIGHT.txt thirdparty_README.md

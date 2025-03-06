@@ -1,3 +1,29 @@
+Mon Mar 3 12:00:00 UTC 2025 - cunix@mail.de
+
+- Update to 4.4
+  * Breaking changes: https://github.com/godotengine/godot/pulls?q=is%3Apr+is%3Amerged+label%3A%22breaks+compat%22+milestone%3A4.4
+  * Jolt Physics
+  * Interactive in-game editing
+  * Embedded game window
+  * Ubershaders
+  * 3D physics interpolation
+  * AgX tone mapping
+  * Typed dictionaries
+  * Universal UID support
+  * 3D object snapping
+  * Camera3D preview
+  * Persistent window state
+  * Camera support
+  * Async navigation
+  * Vertex shading
+  * Rendering driver fallback
+  * Emission shapes for 3D particle systems
+  and much more:
+  https://godotengine.github.io/godot-interactive-changelog/#4.4
+
+- pointed source uri to github.com
+- removed update-desktop-files
+
 -------------------------------------------------------------------
 Mon Feb 10 13:10:05 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 

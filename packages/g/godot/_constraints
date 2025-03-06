@@ -2,10 +2,10 @@
   <hardware>
     <processors>8</processors>
     <physicalmemory>
-      <size unit="M">8192</size>
+      <size unit="G">10</size>
     </physicalmemory>
     <disk>
-      <size unit="G">12</size>
+      <size unit="G">14</size>
     </disk>
   </hardware>
   <overwrite>
