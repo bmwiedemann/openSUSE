@@ -1,0 +1,60 @@
+--- defs.h	2025-03-05 08:50:26.092538271 +0100
++++ defs.h	2025-03-05 08:45:23.249511194 +0100
+@@ -39,7 +39,7 @@ DCLARE u_char		recvpack[MAXPACKET];	/* t
+ 
+ DCLARE int			sockfd;	/* socket file descriptor */
+ 
+-char		*inet_ntoa();	/* BSD library routine */
++char		*inet_ntoa(struct in_addr in);	/* BSD library routine */
+ 
+ DCLARE int     nonamequery;  /*  flag for query/noquery of ip -> name */
+ DCLARE int     showsrcip;    /*  flag for showing or not src ip */
+--- print.c	2025-03-05 08:50:26.092716802 +0100
++++ print.c	2025-03-05 08:50:20.588311445 +0100
+@@ -18,23 +18,19 @@
+ #include <time.h>
+ #include <stddef.h>
+ 
+-char to_hex(a)
+-  int a;
++char to_hex(int a)
+ {
+   return ((char)(a <= 9 ? a + '0' : (a -10) + 'A'));
+ }
+ 
+-int pr_pack(buf, cc, from)
+-char			*buf;	/* ptr to start of IP header */
+-int			cc;	/* total size of received packet */
+-struct sockaddr_in	*from;	/* address of sender */
++int pr_pack(char *buf, int cc, struct sockaddr_in *from)
+ {
+   int			iphdrlen,doipdecoding=1;
+   struct ip		*ip;	/* ptr to IP header */
+   register struct icmp	*icp;	/* ptr to ICMP header */
+   struct tcphdr 	*tp;    /* ptr to TCP header */
+   time_t			t;
+-  char			*pr_type(),*pr_subtype(),*strtime;
++  char			*pr_type(register int t),*pr_subtype(register int t),*strtime;
+   struct hostent	*hostent=NULL;
+   struct servent	*servent=NULL;
+   static char prbuf[1024];	/* provide enough room for even the longest hosts*/
+@@ -185,8 +181,7 @@ struct sockaddr_in	*from;	/* address of
+  */
+ 
+ char *
+-pr_type(t)
+-register int t;
++pr_type(register int t)
+ {
+ 	static char	*ttab[] = {
+ 		"Echo_Reply",
+@@ -223,8 +218,7 @@ register int t;
+  */
+ 
+ char *
+-pr_subtype(t)
+-register int t;
++pr_subtype(register int t)
+ {
+ 	static char	*ttab[] = {
+ 	  "Net",

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  5 08:03:51 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + icmpinfo-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 13:41:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

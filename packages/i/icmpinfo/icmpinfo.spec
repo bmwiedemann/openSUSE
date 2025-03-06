@@ -1,7 +1,7 @@
 #
 # spec file for package icmpinfo
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,10 +22,12 @@ Release:        0
 Summary:        A Tool for Looking at ICMP Messages
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Diagnostic
-Url:            http://www.demailly.com/~dl/softs.html
+URL:            http://www.demailly.com/~dl/softs.html
 Source:         icmpinfo-%{version}.tar.gz
 Source1:        COPYRIGHT
 Patch0:         icmpinfo-%{version}.dif
+# build with gcc15
+Patch1:         icmpinfo-gcc15.patch
 Requires:       netcfg
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
