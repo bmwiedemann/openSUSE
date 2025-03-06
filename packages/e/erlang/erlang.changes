@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Mar 01 18:46:53 UTC 2025 - matwey.kornilov@gmail.com
+
+- Changes for 27.2.4:
+  * ssh: SFTP packets exceeding max packet size are not processed
+    and dropped.
+  * snmp: SNMP Agent transports type (intAgentTransports) was
+    incorrectly not documented as a list of transports. Also add a
+    couple of config file generation examples.
+- Changes for 27.2.3:
+  * inets: Improved robustness of httpd startup procedure.
+  * ssl: Setting protocol version to a lower value then supported
+    by default in server API function called after ssl:listen/2
+    could result in wrong default values being used and connections
+    failing with insufficient security.
+  * ssl: Improve error handling of server name indication fun. This
+    implies that if the sni_fun returns undefined we will attempt
+    connection with original option values, if it returns
+    unrecognized we end the connection with UNRECOGNIZED_NAME alert
+    and if provided options fail option verification we will end
+    the connection with a HANDSHAKE_FAILURE and an error log.
+- Changes for 27.2.2:
+  * compiler: Eliminated a bug in the alias analysis pass that
+    could potentially cause unsafe optimizations of binary
+    construction or record updates.
+  * erts: Disabled an unsafe runtime optimization in binary
+    construction that caused silent memory corruption.
+  * public_key: Consider keyCertSign to compatible with extended
+    key usage for TLS client/server auth in CAs, adhere to wide
+    spread implementations
+  * kernel: Fixed a couple of bugs that could make global's
+    internal state inconsistent when a connection was reconnected.
+  * ssl: An initiated handshake should always be closed with an
+    alert, some corner cases have been fixed so that this should
+    always be the case.
+  * ssl: Correct option handling to work properly for paused
+    handshaking. Could result in unwanted alerts or or error
+    messages.
+
+-------------------------------------------------------------------
 Tue Feb 18 20:23:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable verbose mode of the Makefiles so as to show commands
