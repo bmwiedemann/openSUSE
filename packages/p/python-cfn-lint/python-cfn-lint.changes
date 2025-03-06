@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar  3 11:19:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.27.0
+  * Update rule W8003 to include always false
+  * Pass parameters to ForEachCollection processing
+  * Add Assign to appropriate state machine options
+  * Replace parameters when both transforms are used
+  * Allow for debug in .cfnlintrc file
+  * Add rule E1041 to validate Ref format
+  * Update rule E2015 to have the Default value be a str
+  * Cleanup boto patching and include min/max
+  * Add rule E3501 to validate AWS::SQS::Queue properties based on the queue type
+  * Add rule E3502 to validate AWS::SQS::Queue DLQ types match
+  * Add TRUE to list of strings that can be boolean true
+  * Allow asterisks for rule I3042
+  * Update I1022 to allow functions
+  * Add rule W1051 to validate if dynamic reference when ARN
+  * Provide configuration for exceptions to E3019
+  * Deprecate py3.8
+  * Update lambda eol dates
+
+-------------------------------------------------------------------
 Tue Nov 26 02:31:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.20.0, summary of the changes:
