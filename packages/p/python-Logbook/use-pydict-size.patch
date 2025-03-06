@@ -1,0 +1,36 @@
+From db82f93b90b15794fdc720c98eda07bdd273c260 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 6 Mar 2025 14:56:42 +1100
+Subject: [PATCH] Use PyDict methods in ContextStackManager
+
+With Python 3.12+, calling PyList_GET_SIZE on a dict object results in an
+assertion error followed by an abort. Correct this by using PyDict_Size
+on the cache object.
+---
+ src/cython/speedups.pyx | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/cython/speedups.pyx b/src/cython/speedups.pyx
+index a4bb55a..3741403 100644
+--- a/src/cython/speedups.pyx
++++ b/src/cython/speedups.pyx
+@@ -21,8 +21,8 @@ from logbook.concurrency import (
+     thread_local,
+ )
+ 
+-from cpython.dict cimport PyDict_Clear, PyDict_SetItem
+-from cpython.list cimport PyList_Append, PyList_GET_SIZE, PyList_Sort
++from cpython.dict cimport PyDict_Clear, PyDict_SetItem, PyDict_Size
++from cpython.list cimport PyList_Append, PyList_Sort
+ from cpython.pythread cimport (
+     WAIT_LOCK,
+     PyThread_acquire_lock,
+@@ -218,7 +218,7 @@ cdef class ContextStackManager:
+ 
+         objects = self._cache.get(tid)
+         if objects is None:
+-            if PyList_GET_SIZE(self._cache) > _MAX_CONTEXT_OBJECT_CACHE:
++            if PyDict_Size(self._cache) > _MAX_CONTEXT_OBJECT_CACHE:
+                 PyDict_Clear(self._cache)
+             objects = self._global[:]
+             objects.extend(getattr(self._thread_context, 'stack', ()))

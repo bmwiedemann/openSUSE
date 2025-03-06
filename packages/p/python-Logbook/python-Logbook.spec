@@ -23,6 +23,8 @@ Summary:        A logging replacement for Python
 License:        BSD-3-Clause
 URL:            https://github.com/getlogbook/logbook
 Source:         https://files.pythonhosted.org/packages/source/l/logbook/logbook-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#getlogbook/logbook#413
+Patch0:         use-pydict-size.patch
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Jinja2}
@@ -62,8 +64,8 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %pyproject_wheel
 
 %install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
 %pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 export CFLAGS="%{optflags}"
@@ -74,8 +76,8 @@ kill %%1
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES
+%doc README.md CHANGES
 %{python_sitearch}/logbook
-%{python_sitearch}/Logbook-%{version}*-info
+%{python_sitearch}/Logbook-%{version}.dist-info
 
 %changelog

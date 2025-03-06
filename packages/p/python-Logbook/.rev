@@ -132,4 +132,13 @@
     <comment></comment>
     <requestid>1236167</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>952828f50aaa76c2eb4c38df16685149</srcmd5>
+    <version>1.8.0</version>
+    <time>1741268937</time>
+    <user>anag+factory</user>
+    <comment>- Add patch use-pydict-size.patch:
+  * Use PyDict_Size rather then PyList_GET_SIZE on a dict object.</comment>
+    <requestid>1250522</requestid>
+  </revision>
 </revisionlist>
