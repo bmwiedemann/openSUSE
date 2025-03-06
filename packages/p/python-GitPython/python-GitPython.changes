@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Mar  5 12:41:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.1.44:
+  * What's Changed
+    - Fix typo in _get_exe_extensions PATHEXT fallback by
+      @EliahKagan in #1890
+    - Don't suppress pytest warning summaries by @EliahKagan in
+      #1892
+    - Update the comment about --mixed and paths by @EliahKagan in
+      #1894
+    - Fixed an error updating shallow submodules by @EduardTalanov
+      in #1899
+    - Initial Migration of Fuzz Tests & Integration Scripts From
+      the OSS-Fuzz Project Repo by @DaveLak in #1901
+    - Fuzzer Migration Follow-ups by @DaveLak in #1903
+    - Dockerize "Direct Execution of Fuzz Targets" by @DaveLak in
+      #1904
+    - Fix Fuzzer Crash in ClusterFuzz Due to Missing Git Executable
+      by @DaveLak in #1906
+    - Add GitPython's Standard License Header Comments to Shell
+      Scripts by @DaveLak in #1907
+    - Fix IndexError in GitConfigParser When a Quoted Config Value
+      Contains a Trailing New Line by @DaveLak in #1908
+    - Attempt 2 - Fix Missing Git Executable Causing ClusterFuzz
+      Crash by @DaveLak in #1909
+    - Replace the Suboptimal fuzz_tree.py Harness With a Better
+      Alternative by @DaveLak in #1910
+    - Add git.Blob Fuzz Target by @DaveLak in #1911
+    - lint: switch order Ruff's hooks fix -> format by @Borda in
+      #1912
+    - Update OSS-Fuzz Scripts to Use New QA-Assets Repo Structure
+      by @DaveLak in #1913
+    - Add Diff Fuzz Target by @DaveLak in #1914
+    - Instrument test utility functions to increase fuzzer
+      efficiency by @DaveLak in #1915
+    - Add the .git subdir as another safe.directory on Cygwin CI by
+      @EliahKagan in #1916
+    - Bump Vampire/setup-wsl from 3.0.0 to 3.1.0 by @dependabot in
+      #1917
+    - Add Submodules Fuzz Target by @DaveLak in #1919
+    - Add graceful handling of expected exceptions in
+      fuzz_submodule.py by @DaveLak in #1922
+    - precommit: enable validate-pyproject by @Borda in #1921
+    - typing fixes - DiffIndex generic type and IndexFile items by
+      @Andrej730 in #1925
+    - Fix Improper Import Order Breaking fuzz_submodule Fuzzer by
+      @DaveLak in #1926
+    - Fix iter_change_type diff renamed property to prevent warning
+      by @kamilkrzyskow in #1918
+    - fixed doc to not faulty do #1924 by @zerothi in #1932
+    - fix: fix incoherent beginning whitespace by @cardoeng in
+      #1933
+    - Change aliases to work around mypy issue. by @PatrickMassot
+      in #1935
+    - precommit: enable end-of-file-fixer by @Borda in #1920
+    - lint: add typos check by @Borda in #1888
+    - Add type of change to files_dict of a commit by @JonasScharpf
+      in #1943
+    - Enable Python 3.8 and 3.9 on M1 runners by @EliahKagan in
+      #1944
+    - Use Alpine Linux in WSL on CI by @EliahKagan in #1945
+    - Remove the non-ARM macOS CI jobs by @EliahKagan in #1946
+    - Fix Several Bugs in the fuzz_submodule Causing a lot of False
+      Alarms in the OSS-Fuzz Bug Tracker by @DaveLak in #1950
+    - Gracefully handle PermissionError exceptions that crash
+      fuzzer by @DaveLak in #1951
+    - Fuzzing: Gracefully Handle Uninteresting Error to Fix
+      OSS-Fuzz Issue by @DaveLak in #1952
+    - Update and adjust pre-commit hooks by @EliahKagan in #1953
+    - Upgrade sphinx to ~7.1.2 by @EliahKagan in #1954
+    - Don't support building documentation on Python 3.7 by
+      @EliahKagan in #1956
+    - _to_relative_path to support mixing slashes and backslashes
+      by @Andrej730 in #1961
+    - Update base.py by @alex20230721 in #1965
+    - Fix Fetch progress bar by @fvalette-ledger in #1971
+    
+-------------------------------------------------------------------
 Mon Nov 18 21:31:25 UTC 2024 - Anton Smorodskyi <anton.smorodskyi@suse.com>
 
 - drop of CVE-2023-41040.patch because it included in upstream version

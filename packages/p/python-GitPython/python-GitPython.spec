@@ -1,7 +1,7 @@
 #
 # spec file for package python-GitPython
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-GitPython
-Version:        3.1.43
+Version:        3.1.44
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause
