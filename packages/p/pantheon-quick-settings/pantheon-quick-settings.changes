@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Wed Mar  5 15:57:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.1.0:
+  * User List View
+  * UserList: remove vertical scroll hack
+  * Avatars use LoadableIcon
+  * UserRow/CurrentUser: use built-in styles
+  * CurrentUser: make avatar flat on main page
+  * Add user tooltip
+  * UserManager: use Act.User.system_account
+  * PopoverWidget: Use Granite tooltip markup for user tooltip
+  * UserManager: add get tooltip markup
+  * UserList: hide list and separator when empty
+  * UserList: Fix updating properties
+  * UserList: misc cleanup
+- add patch fix-uint.patch, as Ubuntus accountservice is different
+
+-------------------------------------------------------------------
+Mon Nov 25 20:18:47 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.1:
+  * don't add dark mode toggle in greeter
+  * Updated translations
+
+-------------------------------------------------------------------
+Thu Aug 22 13:28:53 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging
