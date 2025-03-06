@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Mar  5 11:40:02 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.2
+  * Add support for updating existing git repositories
+  * Setup LFS gitattributes
+  * Setup .gitignore file
+  * Support initialization of a new git repository
+
+-------------------------------------------------------------------
+Tue Dec 13 17:33:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix Requires.
+
+-------------------------------------------------------------------
+Tue Dec 13 15:02:04 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- Initial package of version 0.1
+
