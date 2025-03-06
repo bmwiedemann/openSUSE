@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-trio%{psuffix}
-Version:        0.28.0
+Version:        0.29.0
 Release:        0
 Summary:        Python async/await-native I/O library
 License:        Apache-2.0 OR MIT
@@ -71,6 +71,7 @@ has an obsessive focus on usability and correctness.
 
 %prep
 %autosetup -p1 -n trio-%{version}
+sed -i '/\/usr\/bin\/env\ python3/d' src/trio/_tests/check_type_completeness.py src/trio/_tools/gen_exports.py
 
 %build
 %pyproject_wheel
