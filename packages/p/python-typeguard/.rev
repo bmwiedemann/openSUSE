@@ -166,4 +166,21 @@
     returning None instead of False (PR by @mgorny)</comment>
     <requestid>1225374</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>833e0bba35da3f6b3b30e005ca8216b9</srcmd5>
+    <version>4.4.2</version>
+    <time>1741268889</time>
+    <user>anag+factory</user>
+    <comment>- drop unneeded dependency
+- Update to 4.4.2
+  * Fixed ``TypeCheckError`` in unpacking assignment involving
+    properties of a parameter of the function
+  * Fixed display of module name for forward references
+  * Fixed ``TypeError`` when using an assignment expression
+  * Fixed ``ValueError: no signature found for builtin`` when
+    checking against a protocol and a matching attribute in the
+    subject is a built-in function
+</comment>
+    <requestid>1250003</requestid>
+  </revision>
 </revisionlist>
