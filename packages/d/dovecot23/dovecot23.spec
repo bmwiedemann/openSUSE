@@ -26,12 +26,17 @@ Release:        0
 %define dovecot_pigeonhole_source_dir %{pkg_name}-%{dovecot_branch}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
 %define restart_flag /var/run/%{pkg_name}/%{pkg_name}-restart-after-rpm-install
+%if 0%{?suse_version} > 1500
+%bcond_without textcat
+%bcond_without stemmer
+%else
+%bcond_with    textcat
+%bcond_with    stemmer
+%endif
 %if 0%{?suse_version} > 1230
 %bcond_without systemd
-%bcond_with    textcat
 %else
 %bcond_with    systemd
-%bcond_with    textcat
 %endif
 %bcond_without solr
 %if 0%{?suse_version} > 1110
@@ -92,6 +97,7 @@ BuildRequires:  openssl-devel >= 1.0.1
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
+BuildRequires:  rpcgen
 BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel
 %if %{with sqlite}
@@ -122,6 +128,9 @@ BuildRequires:  libexpat-devel
 %endif
 %if %{with textcat}
 BuildRequires:  libexttextcat-devel
+%endif
+%if %{with stemmer}
+BuildRequires:  libstemmer-devel
 %endif
 %if %{with systemd}
 BuildRequires:  pkgconfig(libsystemd)
@@ -380,6 +389,9 @@ export LIBS="-pie"
 %endif
 %if %{with textcat}
     --with-textcat                                  \
+%endif
+%if %{with stemmer}
+    --with-stemmer                                  \
 %endif
 %if %{with icu}
     --with-icu                                      \
@@ -715,7 +727,7 @@ fi
 %dir %attr(0755,root,root)        %ghost %{_var}/run/%{pkg_name}/
 %dir %attr(0750,root,%{pkg_name}) %ghost %{_var}/run/%{pkg_name}/login/
 %endif
-%dir %attr(0750,root,root)        %{_var}/lib/%{pkg_name}/
+#dir #attr(0750,root,root)        #{_var}/lib/#{pkg_name}/
 
 %files fts
 %defattr(-,root,root,-)

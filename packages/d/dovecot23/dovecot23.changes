@@ -828,6 +828,11 @@ Mon Jun 21 11:27:29 UTC 2021 - Michael Ströder <michael@stroeder.com>
     authenticate command cause these commands to be executed twice.
 
 -------------------------------------------------------------------
+Sat May 29 00:43:04 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- empty dirs also do conflict now
+
+-------------------------------------------------------------------
 Fri May 14 10:07:07 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix insecure default openssl.cnf (boo#1184552):
@@ -1140,6 +1145,16 @@ Tue Nov 24 07:59:06 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 - Fix test on 32-bit:
   * dovecot-2.3.11.3-ftbfs1.patch
   * dovecot-2.3.11.3-ftbfs2.patch
+
+-------------------------------------------------------------------
+Mon Nov 23 19:09:22 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add libstemmer and libextextcat support for dovecot-fts-flatcurve
+
+-------------------------------------------------------------------
+Mon Nov 23 19:09:09 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add BR for rpcgen for the configure check for quota support 
 
 -------------------------------------------------------------------
 Wed Nov  4 15:29:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
