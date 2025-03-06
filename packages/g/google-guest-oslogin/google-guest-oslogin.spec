@@ -16,8 +16,12 @@
 #
 
 
-%define with_selinux 1
+%if 0%{?suse_version} > 01500
+%bcond_without use_selinux
 %define selinuxtype targeted
+%else
+%bcond_with use_selinux
+%endif
 
 %{!?_pam_moduledir: %define _pam_moduledir %{_pamdir}}
 
@@ -35,26 +39,42 @@ Requires(post): glibc
 %if 0%{?suse_version} && 0%{?suse_version} <= 1315
 BuildRequires:  boost-devel
 %endif
+BuildRequires:  checkpolicy
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  make
 BuildRequires:  pam-devel
+BuildRequires:  policycoreutils
 BuildRequires:  systemd-rpm-macros
-%if 0%{?with_selinux}
-BuildRequires:  checkpolicy
+%if %{with use_selinux}
 BuildRequires:  selinux-policy
 BuildRequires:  selinux-policy-%{selinuxtype}
 BuildRequires:  selinux-policy-devel
+BuildRequires:  pkgconfig(systemd)
 %endif
 Requires:       google-guest-agent >= 20231003
 Requires:       google-guest-configs
+%if %{with use_selinux}
+Requires:       (%{name}-selinux if selinux-policy-base)
+%endif
 Provides:       google-compute-engine-oslogin = %{version}
 Obsoletes:      google-compute-engine-oslogin < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Google Cloud Guest OS Login
+
+%if %{with use_selinux}
+%package        selinux
+Summary:        SELinux module for Google Cloud Guest OS Login
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+%{selinux_requires}
+
+%description    selinux
+This package provides the SELinux module for Google Cloud Guest OS Login.
+%endif
 
 %prep
 %setup -q -n guest-oslogin-%{version}
@@ -73,10 +93,13 @@ make install \
      PAMDIR=%{_pam_moduledir} \
      SYSTEMDDIR=%{_unitdir} \
      PRESETDIR=%{_presetdir} \
-%if 0%{?with_selinux}
      INSTALL_SELINUX=y \
-%endif
      VERSION=%{version}
+
+%if %{with use_selinux}
+mkdir %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}
+mv %{buildroot}%{_datadir}/selinux/packages/oslogin.pp %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}
+%endif
 
 mkdir -p %{buildroot}%{_sbindir}
 for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.service' $srv_name); ln -s service %{buildroot}%{_sbindir}/rc$rc_name; done
@@ -95,6 +118,22 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 /sbin/ldconfig
 %service_del_postun google-oslogin-cache.service
 
+%if %{with use_selinux}
+%pre selinux
+%selinux_relabel_pre -s %{selinuxtype}
+
+%post selinux
+%selinux_modules_install -s %{selinuxtype} -p 200 %{_datadir}/selinux/packages/%{selinuxtype}/oslogin.pp
+
+%postun selinux
+if [ $1 -eq 0 ]; then
+    %selinux_modules_uninstall -s %{selinuxtype} -p 200 oslogin
+fi
+
+%posttrans selinux
+%selinux_relabel_post -s %{selinuxtype}
+%endif
+
 %files
 %defattr(0644,root,root,0755)
 %doc README.md
@@ -109,8 +148,16 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %{_presetdir}/*
 %{_sbindir}/*
 %{_unitdir}/*
-%if 0%{?with_selinux}
+%if %{without use_selinux}
+%{_datadir}/selinux
+%{_datadir}/selinux/packages
 %{_datadir}/selinux/packages/oslogin.pp
+%endif
+
+%if %{with use_selinux}
+%files selinux
+%{_datadir}/selinux/packages/%{selinuxtype}/oslogin.pp
+%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/oslogin
 %endif
 
 %changelog

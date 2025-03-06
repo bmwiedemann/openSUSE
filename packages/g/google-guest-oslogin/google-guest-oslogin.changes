@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 27 10:46:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Rework SELinux support (bsc#1232553)
+  * Add pkgconfig(systemd) to BuildRequires for SELinux builds
+  * Add policycoreutils to BuildRequires
+  * Build and install SELinux module on older distributions as well
+    to allow users to use the module with their own SELinux policies
+  * Make checkpolicy build dependency unconditional
+  * Move oslogin.pp SELinux module into %{selinuxtype} subdirectory
+  * Own %{_datadir}/selinux{,/packages} on older distributions
+  * Split SELinux support into separate -selinux package
+  * Use SELinux RPM macros to install and uninstall SELinux module
+  * Use RPM conditional builds to enable SELinux on newer distributions
+
+-------------------------------------------------------------------
 Wed Feb 12 09:43:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Build and install SELinux module (bsc#1232553)
