@@ -1,7 +1,7 @@
 #
 # spec file for package dyff
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dyff
-Version:        1.9.4
+Version:        1.10.0
 Release:        0
 Summary:        Diff tool for YAML files, and sometimes JSON
 License:        MIT
