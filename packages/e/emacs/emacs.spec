@@ -30,6 +30,8 @@
 %bcond_with     tex4pdf
 %bcond_with     memmmap
 %bcond_with     checks
+# webkit2gtk-4.1 >= 2.41.92 triggers crash as described in PROBLEMS
+%bcond_with     webkit
 #
 # Compare with AUDIT bug boo#1228058
 # With this setup only members of the group "games" can use
@@ -42,6 +44,7 @@
 Name:           emacs
 %if %{with checks}
 BuildRequires:  bubblewrap
+BuildRequires:  screen
 %endif
 %if %{with autoconf}
 BuildRequires:  autoconf
@@ -148,8 +151,11 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tree-sitter)
+%if %{with webkit}
 BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.12
+%endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xaw3d)
@@ -167,7 +173,7 @@ BuildRequires:  pkgconfig(xwayland)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  treesitter_grammar(tree-sitter-ruby)
 URL:            http://www.gnu.org/software/emacs/
-Version:        29.4
+Version:        30.1
 Release:        0
 Summary:        GNU Emacs Base Package
 License:        GPL-3.0-or-later
@@ -205,7 +211,6 @@ Source9:        macros.emacs
 Patch0:         emacs-29.1.dif
 # Currently disabled
 Patch2:         emacs-24.4-glibc.patch
-Patch3:         emacs-gcc14.patch
 Patch4:         emacs-24.3-asian-print.patch
 Patch5:         emacs-24.4-ps-bdf.patch
 Patch7:         emacs-24.1-ps-mule.patch
@@ -214,17 +219,13 @@ Patch12:        emacs-24.3-x11r7.patch
 Patch15:        emacs-24.3-iconic.patch
 Patch16:        emacs-24.4-flyspell.patch
 Patch22:        pdump.patch
-Patch23:        emacs-25.1-custom-fonts.patch
+Source23:       emacs-25.1-custom-fonts.patch
 # this patch works with both ImageMagick-6 and ImageMagick-7 for us,
 # but that is because we ship /usr/include/ImageMagick-7/wand compat
 # symlink
-Patch24:        emacs-25.2-ImageMagick7.patch
 Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
-Patch29:        emacs-27.1-Xauthority4server.patch
-Patch30:        emacs-CVE-2024-53920.patch
-Patch31:        emacs-29.4-boo1234673.patch
-Patch32:        CVE-2025-1244.patch
+Patch27:        emacs-30.1-seccomp.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
 %{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
@@ -379,7 +380,6 @@ and most assembler-like syntaxes.
 %if %{with memmmap}
 %patch -P2  -p0 -b .glibc
 %endif
-%patch -P3  -p0 -b .gcc14
 %patch -P4  -p0 -b .print
 %patch -P5  -p0 -b .psbdf
 %patch -P7  -p0 -b .psmu
@@ -388,14 +388,9 @@ and most assembler-like syntaxes.
 %patch -P15 -p0 -b .iconic
 %patch -P16 -p0 -b .flyspell
 %patch -P22 -p0 -b .pd
-%patch -P23 -p0 -b .custfnt
-%patch -P24 -p1 -b .imag
 %patch -P25 -p0 -b .xft
 %patch -P26 -p0 -b .fmt
-%patch -P29 -p0 -b .xauth
-%patch -P30 -p0 -b .cve202453920
-%patch -P31 -p0 -b .boo1234673
-%patch -P32 -p1 -b .boo1237091
+%patch -P27 -p0 -b .console
 %patch -P0  -p0 -b .0
 %if %{without tex4pdf}
 pushd etc/refcards/
@@ -524,7 +519,9 @@ DESKTOP="--with-x \
 %if %{with cairo}
 	 --with-cairo \
 %endif
+%if %{with webkit}
 	 --with-xwidgets \
+%endif
 "
     X11="${DESKTOP} \
 	 --with-x-toolkit=lucid \
@@ -889,8 +886,29 @@ export RANLIB=gcc-ranlib-13
 %endif
 sed -ri '/sleep 2/{ s/sleep 2/sleep 6/ }' test/lisp/eshell/eshell-tests.el
 sed -ri '/\(sleep-for/{ s/1/5/ }' test/lisp/net/network-stream-tests.el
+SCREENDIR=$(mktemp -d ${PWD}/screen.XXXXXX) || exit 1
+SCREENRC=${SCREENDIR}/ncurses
+export SCREENRC SCREENDIR
+exec 0< /dev/null
+SCREENLOG=${SCREENDIR}/log
+cat > $SCREENRC<<-EOF
+	deflogin off
+	deflog on
+	logfile $SCREENLOG
+	logfile flush 1
+	logtstamp off
+	log on
+	setsid on
+	scrollback 0
+	silence on
+	utf8 on
+	EOF
 export MAKEFLAGS="--jobs=1"
-make -k check
+> $SCREENLOG
+tail -q -s 0.5 -f $SCREENLOG & pid=$!
+screen -D -m make -k check
+sleep 1
+kill $pid
 %endif
 
 %if %{with games} && "%{gattr}" == "02755"
@@ -967,6 +985,7 @@ fi
 %doc %{_datadir}/emacs/%{version}/etc/AUTHORS
 %doc %{_datadir}/emacs/%{version}/etc/CALC-NEWS
 %doc %{_datadir}/emacs/%{version}/etc/COPYING
+%doc %{_datadir}/emacs/%{version}/etc/copyright-assign.txt
 %doc %{_datadir}/emacs/%{version}/etc/DEBUG
 %doc %{_datadir}/emacs/%{version}/etc/DEVEL.HUMOR
 %doc %{_datadir}/emacs/%{version}/etc/DISTRIB
@@ -1715,6 +1734,79 @@ fi
 %{_datadir}/emacs/%{version}/etc/images/zoom-in.xpm
 %{_datadir}/emacs/%{version}/etc/images/zoom-out.pbm
 %{_datadir}/emacs/%{version}/etc/images/zoom-out.xpm
+%{_datadir}/emacs/%{version}/etc/images/alt.pbm
+%{_datadir}/emacs/%{version}/etc/images/commit.pbm
+%{_datadir}/emacs/%{version}/etc/images/commit.xpm
+%{_datadir}/emacs/%{version}/etc/images/conceal.pbm
+%{_datadir}/emacs/%{version}/etc/images/conceal.svg
+%{_datadir}/emacs/%{version}/etc/images/ctrl.pbm
+%{_datadir}/emacs/%{version}/etc/images/gen-changelog.pbm
+%{_datadir}/emacs/%{version}/etc/images/gen-changelog.xpm
+%{_datadir}/emacs/%{version}/etc/images/gnus/gnus-pointer.svg
+%{_datadir}/emacs/%{version}/etc/images/hyper.pbm
+%{_datadir}/emacs/%{version}/etc/images/ins-changelog.pbm
+%{_datadir}/emacs/%{version}/etc/images/ins-changelog.xpm
+%{_datadir}/emacs/%{version}/etc/images/last-page.pbm
+%{_datadir}/emacs/%{version}/etc/images/last-page.xpm
+%{_datadir}/emacs/%{version}/etc/images/load-changelog.pbm
+%{_datadir}/emacs/%{version}/etc/images/load-changelog.xpm
+%{_datadir}/emacs/%{version}/etc/images/meta.pbm
+%{_datadir}/emacs/%{version}/etc/images/reveal.pbm
+%{_datadir}/emacs/%{version}/etc/images/reveal.svg
+%{_datadir}/emacs/%{version}/etc/images/shift.pbm
+%{_datadir}/emacs/%{version}/etc/images/super.pbm
+%dir %{_datadir}/emacs/%{version}/etc/images/symbols/
+%doc %{_datadir}/emacs/%{version}/etc/images/symbols/README
+%{_datadir}/emacs/%{version}/etc/images/symbols/check-mark_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/check-mark_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/chevron_down_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/chevron_down_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/chevron_left_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/chevron_left_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/chevron_right_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/chevron_right_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/chevron_up_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/chevron_up_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/cross_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/cross_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/cross_circle_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/cross_circle_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/cross_circle_fill_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/cross_circle_fill_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/dot_large_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/dot_large_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/dot_medium_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/dot_medium_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/dot_small_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/dot_small_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/heart_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/heart_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/heart_fill_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/heart_fill_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/heart_half_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/heart_half_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/menu_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/menu_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/minus_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/minus_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/minus_circle_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/minus_circle_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/minus_circle_fill_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/minus_circle_fill_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/plus_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/plus_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/plus_circle_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/plus_circle_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/plus_circle_fill_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/plus_circle_fill_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/star_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/star_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/star_fill_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/star_fill_16.svg
+%{_datadir}/emacs/%{version}/etc/images/symbols/star_half_16.pbm
+%{_datadir}/emacs/%{version}/etc/images/symbols/star_half_16.svg
+%{_datadir}/emacs/%{version}/etc/images/view-diff.pbm
+%{_datadir}/emacs/%{version}/etc/images/view-diff.xpm
 %dir %{_datadir}/emacs/%{version}/etc/nxml/
 %doc %{_datadir}/emacs/%{version}/etc/nxml/README
 %{_datadir}/emacs/%{version}/etc/nxml/test-invalid.xml
@@ -1788,6 +1880,13 @@ fi
 %{_datadir}/emacs/%{version}/etc/schema/dbpool.rnc
 %{_datadir}/emacs/%{version}/etc/schema/dbstart.rnc
 %{_datadir}/emacs/%{version}/etc/schema/docbook.rnc
+%{_datadir}/emacs/%{version}/etc/schema/dotnet-appconfig.rnc
+%{_datadir}/emacs/%{version}/etc/schema/dotnet-packages-config.rnc
+%{_datadir}/emacs/%{version}/etc/schema/dotnet-packages-props.rnc
+%{_datadir}/emacs/%{version}/etc/schema/dotnet-resx.rnc
+%{_datadir}/emacs/%{version}/etc/schema/msbuild.rnc
+%{_datadir}/emacs/%{version}/etc/schema/nuget.rnc
+%{_datadir}/emacs/%{version}/etc/schema/nuspec.rnc
 %{_datadir}/emacs/%{version}/etc/schema/locate.rnc
 %{_datadir}/emacs/%{version}/etc/schema/od-manifest-schema-v1.2-os.rnc
 %{_datadir}/emacs/%{version}/etc/schema/rdfxml.rnc
@@ -1857,8 +1956,14 @@ fi
 %{_datadir}/emacs/%{version}/etc/themes/manoj-dark-theme.el
 %{_datadir}/emacs/%{version}/etc/themes/misterioso-theme.el
 %{_datadir}/emacs/%{version}/etc/themes/modus-operandi-theme.el
+%{_datadir}/emacs/%{version}/etc/themes/modus-operandi-deuteranopia-theme.el
+%{_datadir}/emacs/%{version}/etc/themes/modus-operandi-tinted-theme.el
+%{_datadir}/emacs/%{version}/etc/themes/modus-operandi-tritanopia-theme.el
 %{_datadir}/emacs/%{version}/etc/themes/modus-themes.el
 %{_datadir}/emacs/%{version}/etc/themes/modus-vivendi-theme.el
+%{_datadir}/emacs/%{version}/etc/themes/modus-vivendi-deuteranopia-theme.el
+%{_datadir}/emacs/%{version}/etc/themes/modus-vivendi-tinted-theme.el
+%{_datadir}/emacs/%{version}/etc/themes/modus-vivendi-tritanopia-theme.el
 %{_datadir}/emacs/%{version}/etc/themes/tango-dark-theme.el
 %{_datadir}/emacs/%{version}/etc/themes/tango-theme.el
 %{_datadir}/emacs/%{version}/etc/themes/tsdh-dark-theme.el
@@ -1913,6 +2018,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/autorevert.elc
 %{_datadir}/emacs/%{version}/lisp/avoid.elc
 %{_datadir}/emacs/%{version}/lisp/battery.elc
+%{_datadir}/emacs/%{version}/lisp/bind-key.elc
 %{_datadir}/emacs/%{version}/lisp/bindings.el
 %{_datadir}/emacs/%{version}/lisp/bookmark.elc
 %{_datadir}/emacs/%{version}/lisp/bs.elc
@@ -2168,6 +2274,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/color.elc
 %{_datadir}/emacs/%{version}/lisp/comint.elc
 %{_datadir}/emacs/%{version}/lisp/completion.elc
+%{_datadir}/emacs/%{version}/lisp/completion-preview.elc
 %{_datadir}/emacs/%{version}/lisp/composite.elc
 %{_datadir}/emacs/%{version}/lisp/cus-dep.elc
 %{_datadir}/emacs/%{version}/lisp/cus-edit.elc
@@ -2201,6 +2308,12 @@ fi
 %{_datadir}/emacs/%{version}/lisp/ebuff-menu.elc
 %{_datadir}/emacs/%{version}/lisp/echistory.elc
 %{_datadir}/emacs/%{version}/lisp/ecomplete.elc
+%{_datadir}/emacs/%{version}/lisp/editorconfig-conf-mode.elc
+%{_datadir}/emacs/%{version}/lisp/editorconfig-core-handle.elc
+%{_datadir}/emacs/%{version}/lisp/editorconfig-core.elc
+%{_datadir}/emacs/%{version}/lisp/editorconfig-fnmatch.elc
+%{_datadir}/emacs/%{version}/lisp/editorconfig-tools.elc
+%{_datadir}/emacs/%{version}/lisp/editorconfig.elc
 %{_datadir}/emacs/%{version}/lisp/edmacro.elc
 %{_datadir}/emacs/%{version}/lisp/ehelp.elc
 %{_datadir}/emacs/%{version}/lisp/elec-pair.elc
@@ -2238,6 +2351,11 @@ fi
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-preloaded.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-print.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-seq.elc
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp-common.elc
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp-run.elc
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/compat.elc
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/ert-font-lock.elc
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/track-changes.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp-cstr.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/copyright.elc
@@ -2362,6 +2480,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/erc/erc-menu.elc
 %{_datadir}/emacs/%{version}/lisp/erc/erc-netsplit.elc
 %{_datadir}/emacs/%{version}/lisp/erc/erc-networks.elc
+%{_datadir}/emacs/%{version}/lisp/erc/erc-nicks.elc
 %{_datadir}/emacs/%{version}/lisp/erc/erc-notify.elc
 %{_datadir}/emacs/%{version}/lisp/erc/erc-page.elc
 %{_datadir}/emacs/%{version}/lisp/erc/erc-pcomplete.elc
@@ -2378,6 +2497,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/erc/erc-xdcc.elc
 %{_datadir}/emacs/%{version}/lisp/erc/erc.elc
 %dir %{_datadir}/emacs/%{version}/lisp/eshell/
+%{_datadir}/emacs/%{version}/lisp/eshell/esh-module-loaddefs.el
 %{_datadir}/emacs/%{version}/lisp/eshell/em-elecslash.elc
 %{_datadir}/emacs/%{version}/lisp/eshell/em-extpipe.elc
 %{_datadir}/emacs/%{version}/lisp/eshell/em-alias.elc
@@ -2400,7 +2520,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/eshell/esh-arg.elc
 %{_datadir}/emacs/%{version}/lisp/eshell/esh-cmd.elc
 %{_datadir}/emacs/%{version}/lisp/eshell/esh-ext.elc
-%{_datadir}/emacs/%{version}/lisp/eshell/esh-groups.elc
 %{_datadir}/emacs/%{version}/lisp/eshell/esh-io.elc
 %{_datadir}/emacs/%{version}/lisp/eshell/esh-mode.elc
 %{_datadir}/emacs/%{version}/lisp/eshell/esh-module.elc
@@ -2441,6 +2560,8 @@ fi
 %{_datadir}/emacs/%{version}/lisp/fringe.elc
 %{_datadir}/emacs/%{version}/lisp/generic-x.el
 %dir %{_datadir}/emacs/%{version}/lisp/gnus/
+%{_datadir}/emacs/%{version}/lisp/gnus/nnatom.elc
+%{_datadir}/emacs/%{version}/lisp/gnus/nnfeed.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-rmail.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/canlock.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/deuglify.elc
@@ -2495,7 +2616,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-win.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gssapi.elc
-%{_datadir}/emacs/%{version}/lisp/gnus/legacy-gnus-agent.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/mail-source.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/message.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/mm-archive.elc
@@ -2584,6 +2704,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/image/gravatar.elc
 %{_datadir}/emacs/%{version}/lisp/image/image-converter.elc
 %{_datadir}/emacs/%{version}/lisp/indent.elc
+%{_datadir}/emacs/%{version}/lisp/indent-aux.elc
 %{_datadir}/emacs/%{version}/lisp/info-look.elc
 %{_datadir}/emacs/%{version}/lisp/info-xref.elc
 %{_datadir}/emacs/%{version}/lisp/info.elc
@@ -2706,6 +2827,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/leim/quail/emoji.elc
 %{_datadir}/emacs/%{version}/lisp/leim/quail/indonesian.elc
 %{_datadir}/emacs/%{version}/lisp/leim/quail/misc-lang.elc
+%{_datadir}/emacs/%{version}/lisp/leim/quail/pakistan.elc
 %{_datadir}/emacs/%{version}/lisp/leim/quail/philippine.elc
 %{_datadir}/emacs/%{version}/lisp/leim/quail/4Corner.elc
 %{_datadir}/emacs/%{version}/lisp/leim/quail/ARRAY30.elc
@@ -2868,6 +2990,8 @@ fi
 %{_datadir}/emacs/%{version}/lisp/net/eudcb-ecomplete.elc
 %{_datadir}/emacs/%{version}/lisp/net/eudcb-mailabbrev.elc
 %{_datadir}/emacs/%{version}/lisp/net/tramp-container.elc
+%{_datadir}/emacs/%{version}/lisp/net/tramp-androidsu.elc
+%{_datadir}/emacs/%{version}/lisp/net/tramp-message.elc
 %{_datadir}/emacs/%{version}/lisp/net/ange-ftp.elc
 %{_datadir}/emacs/%{version}/lisp/net/browse-url.elc
 %{_datadir}/emacs/%{version}/lisp/net/dbus.elc
@@ -3035,6 +3159,7 @@ fi
 %dir %{_datadir}/emacs/%{version}/lisp/org/
 %{_datadir}/emacs/%{version}/lisp/org/oc-bibtex.elc
 %{_datadir}/emacs/%{version}/lisp/org/org-cycle.elc
+%{_datadir}/emacs/%{version}/lisp/org/org-element-ast.elc
 %{_datadir}/emacs/%{version}/lisp/org/org-fold-core.elc
 %{_datadir}/emacs/%{version}/lisp/org/org-fold.elc
 %{_datadir}/emacs/%{version}/lisp/org/org-persist.elc
@@ -3204,6 +3329,12 @@ fi
 %{_datadir}/emacs/%{version}/lisp/proced.elc
 %{_datadir}/emacs/%{version}/lisp/profiler.elc
 %dir %{_datadir}/emacs/%{version}/lisp/progmodes/
+%{_datadir}/emacs/%{version}/lisp/progmodes/elixir-ts-mode.elc
+%{_datadir}/emacs/%{version}/lisp/progmodes/etags-regen.elc
+%{_datadir}/emacs/%{version}/lisp/progmodes/heex-ts-mode.elc
+%{_datadir}/emacs/%{version}/lisp/progmodes/lua-ts-mode.elc
+%{_datadir}/emacs/%{version}/lisp/progmodes/peg.elc
+%{_datadir}/emacs/%{version}/lisp/progmodes/php-ts-mode.elc
 %{_datadir}/emacs/%{version}/lisp/progmodes/c-ts-mode.elc
 %{_datadir}/emacs/%{version}/lisp/progmodes/cmake-ts-mode.elc
 %{_datadir}/emacs/%{version}/lisp/progmodes/csharp-mode.elc
@@ -3354,6 +3485,7 @@ fi
 %dir %{_datadir}/emacs/%{version}/lisp/term/
 %{_datadir}/emacs/%{version}/lisp/term/AT386.elc
 %doc %{_datadir}/emacs/%{version}/lisp/term/README
+%{_datadir}/emacs/%{version}/lisp/term/android-win.elc
 %{_datadir}/emacs/%{version}/lisp/term/haiku-win.elc
 %{_datadir}/emacs/%{version}/lisp/term/pgtk-win.elc
 %{_datadir}/emacs/%{version}/lisp/term/bobcat.elc
@@ -3401,6 +3533,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/textmodes/enriched.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/fill.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/flyspell.elc
+%{_datadir}/emacs/%{version}/lisp/textmodes/html-ts-mode.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/ispell.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/less-css-mode.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/makeinfo.elc
@@ -3448,6 +3581,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/tmm.elc
 %{_datadir}/emacs/%{version}/lisp/tool-bar.elc
 %{_datadir}/emacs/%{version}/lisp/tooltip.elc
+%{_datadir}/emacs/%{version}/lisp/touch-screen.elc
 %{_datadir}/emacs/%{version}/lisp/transient.elc
 %{_datadir}/emacs/%{version}/lisp/tree-widget.elc
 %{_datadir}/emacs/%{version}/lisp/treesit.elc
@@ -3486,7 +3620,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/url/url-vars.elc
 %{_datadir}/emacs/%{version}/lisp/url/url.elc
 %dir %{_datadir}/emacs/%{version}/lisp/use-package/
-%{_datadir}/emacs/%{version}/lisp/use-package/bind-key.elc
 %{_datadir}/emacs/%{version}/lisp/use-package/use-package-bind-key.elc
 %{_datadir}/emacs/%{version}/lisp/use-package/use-package-core.elc
 %{_datadir}/emacs/%{version}/lisp/use-package/use-package-delight.elc
@@ -3541,15 +3674,18 @@ fi
 %{_datadir}/emacs/%{version}/lisp/vcursor.elc
 %{_datadir}/emacs/%{version}/lisp/version.elc
 %{_datadir}/emacs/%{version}/lisp/view.elc
+%{_datadir}/emacs/%{version}/lisp/visual-wrap.elc
 %{_datadir}/emacs/%{version}/lisp/w32-fns.elc
 %{_datadir}/emacs/%{version}/lisp/w32-vars.elc
 %{_datadir}/emacs/%{version}/lisp/wdired.elc
+%{_datadir}/emacs/%{version}/lisp/which-key.elc
 %{_datadir}/emacs/%{version}/lisp/whitespace.elc
 %{_datadir}/emacs/%{version}/lisp/wid-browse.elc
 %{_datadir}/emacs/%{version}/lisp/wid-edit.elc
 %{_datadir}/emacs/%{version}/lisp/widget.elc
 %{_datadir}/emacs/%{version}/lisp/windmove.elc
 %{_datadir}/emacs/%{version}/lisp/window.elc
+%{_datadir}/emacs/%{version}/lisp/window-tool-bar.elc
 %{_datadir}/emacs/%{version}/lisp/winner.elc
 %{_datadir}/emacs/%{version}/lisp/woman.elc
 %{_datadir}/emacs/%{version}/lisp/xdg.elc
@@ -3641,6 +3777,7 @@ fi
 %if 0%{?include_info} == 0
 %exclude %{_infodir}/info.info%{ext_info}
 %endif
+%{_infodir}/elisp_type_hierarchy.jpg
 
 %files       -n emacs-el
 %defattr(-, root, root)
@@ -3660,6 +3797,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/autorevert.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/avoid.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/battery.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/bind-key.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/bookmark.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/bs.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/buff-menu.el%{ext_el}
@@ -3896,6 +4034,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/color.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/comint.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/completion.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/completion-preview.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/composite.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/cus-dep.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/cus-edit.el%{ext_el}
@@ -3926,6 +4065,12 @@ fi
 %{_datadir}/emacs/%{version}/lisp/ebuff-menu.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/echistory.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/ecomplete.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/editorconfig-conf-mode.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/editorconfig-core-handle.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/editorconfig-core.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/editorconfig-fnmatch.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/editorconfig-tools.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/editorconfig.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/edmacro.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/ehelp.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/elec-pair.el%{ext_el}
@@ -3955,6 +4100,11 @@ fi
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/checkdoc.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp-cstr.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp-common.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp-run.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/compat.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/ert-font-lock.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/track-changes.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-extra.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-generic.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-indent.el%{ext_el}
@@ -4080,6 +4230,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/erc/erc-log.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/erc/erc-match.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/erc/erc-menu.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/erc/erc-nicks.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/erc/erc-netsplit.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/erc/erc-networks.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/erc/erc-notify.el%{ext_el}
@@ -4119,7 +4270,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/eshell/esh-arg.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/eshell/esh-cmd.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/eshell/esh-ext.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/eshell/esh-groups.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/eshell/esh-io.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/eshell/esh-mode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/eshell/esh-module.el%{ext_el}
@@ -4211,7 +4361,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-win.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/gssapi.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/gnus/legacy-gnus-agent.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/mail-source.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/message.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/mm-archive.el%{ext_el}
@@ -4229,6 +4378,8 @@ fi
 %{_datadir}/emacs/%{version}/lisp/gnus/mml.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/mml1991.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/mml2015.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/gnus/nnatom.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/gnus/nnfeed.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nnagent.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nnbabyl.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nndiary.el%{ext_el}
@@ -4298,6 +4449,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/image/image-converter.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/imenu.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/indent.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/indent-aux.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/info-look.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/info-xref.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/info.el%{ext_el}
@@ -4433,6 +4585,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/leim/quail/latin-post.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/leim/quail/latin-pre.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/leim/quail/lrt.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/leim/quail/pakistan.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/leim/quail/persian.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/leim/quail/programmer-dvorak.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/leim/quail/py-punct.el%{ext_el}
@@ -4601,6 +4754,8 @@ fi
 %{_datadir}/emacs/%{version}/lisp/net/soap-inspect.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/socks.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/telnet.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/net/tramp-androidsu.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/net/tramp-message.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-archive.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-adb.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-cache.el%{ext_el}
@@ -4709,6 +4864,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/org/org-cycle.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/org-fold-core.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/org-fold.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/org-element-ast.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/org-persist.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-C.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-R.el%{ext_el}
@@ -4872,6 +5028,12 @@ fi
 %{_datadir}/emacs/%{version}/lisp/printing.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/proced.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/profiler.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/progmodes/elixir-ts-mode.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/progmodes/etags-regen.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/progmodes/heex-ts-mode.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/progmodes/lua-ts-mode.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/progmodes/peg.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/progmodes/php-ts-mode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/progmodes/c-ts-mode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/progmodes/cmake-ts-mode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/progmodes/csharp-mode.el%{ext_el}
@@ -5015,6 +5177,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/tar-mode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/tempo.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/term/android-win.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/haiku-win.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/pgtk-win.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/AT386.el%{ext_el}
@@ -5061,6 +5224,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/textmodes/enriched.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/textmodes/fill.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/textmodes/flyspell.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/textmodes/html-ts-mode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/textmodes/ispell.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/textmodes/less-css-mode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/textmodes/makeinfo.el%{ext_el}
@@ -5105,6 +5269,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/tmm.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/tool-bar.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/tooltip.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/touch-screen.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/transient.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/tree-widget.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/treesit.el%{ext_el}
@@ -5141,7 +5306,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/url/url-util.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/url/url-vars.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/url/url.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/use-package/bind-key.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/use-package/use-package-bind-key.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/use-package/use-package-core.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/use-package/use-package-delight.el%{ext_el}
@@ -5195,15 +5359,18 @@ fi
 %{_datadir}/emacs/%{version}/lisp/vcursor.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/version.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/view.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/visual-wrap.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/w32-fns.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/w32-vars.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/wdired.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/which-key.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/whitespace.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/wid-browse.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/wid-edit.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/widget.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/windmove.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/window.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/window-tool-bar.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/winner.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/woman.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/x-dnd.el%{ext_el}

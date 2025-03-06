@@ -1,3 +1,5 @@
+Change hanglm24.bdf to gulim24.bdf as this is the one we have.
+
 ---
  lisp/ps-mule.el |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

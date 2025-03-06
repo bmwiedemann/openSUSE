@@ -2098,4 +2098,41 @@ Now one could consider building emacs with gsettings support (both debian and fe
   * Avoid shell injection via custom &quot;man&quot; URI scheme (boo#1237091, CVE-2025-1244)</comment>
     <requestid>1245402</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>b4c6be423c32d12af173c20d339212a7</srcmd5>
+    <version>30.1</version>
+    <time>1741268884</time>
+    <user>anag+factory</user>
+    <comment>- Add patch emacs-30.1-seccomp.patch
+  * Allow also to get attributes of the terminal line as well as
+    support mmap(2) flag MAP_DROPPABLE to allow zero memory under
+    memory pressure.
+- Disable xwidgets of GTK port for now as webkit2gtk has a regression
+  https://bugs.webkit.org/show_bug.cgi?id=289081
+
+- Update to GNU Emacs version 30.1 (boo#1237518)
+  * On GNU/Linux, Emacs is now the default application for 'org-protocol'.
+    Org mode provides a way to quickly capture bookmarks, notes, and links
+    using 'emacsclient':
+     emacsclient &quot;org-protocol://store-link?url=URL&amp;title=TITLE&quot;
+  * New variable lets Lisp code read emacsclient arguments.
+    When '--eval' is passed to emacsclient and Emacs is evaluating each
+    argument, the new variable 'server-eval-args-left' is set to those
+    arguments not yet evaluated
+  * Tree-Sitter modes are now declared as submodes of the non-TS modes.
+  * Mouse wheel events should now always be 'wheel-up/down/left/right'.
+  * 'completion-auto-help' now affects 'icomplete-in-buffer'.
+  * The &quot;*Completions*&quot; buffer now always accompanies 'icomplete-in-buffer'.
+  * The default process filter was rewritten in native code.
+  * Network Security Manager now warns about 3DES by default.
+  * Network Security Manager now warns about &lt;2048 bits in DH key exchange.
+  * URL now never sends user email addresses in HTTP requests.
+  * Fix shell injection vulnerability in man.el (CVE-2025-1244).
+  * New user option 'trusted-content' to allow potentially dangerous features.
+    This option is used to fix CVE-2024-53920.
+- Remove obsolete patches
+  * CVE-2025-1244.patch
+  * emacs-25.2-ImageMagick7.patch</comment>
+    <requestid>1250594</requestid>
+  </revision>
 </revisionlist>

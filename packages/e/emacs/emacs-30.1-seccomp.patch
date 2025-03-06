@@ -1,0 +1,50 @@
+Allow also to get attributes of the terminal line as
+well as support mmap(2) flag MAP_DROPPABLE to allow
+zero memory under memory pressure.
+
+---
+ lib-src/seccomp-filter.c |   12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+--- lib-src/seccomp-filter.c
++++ lib-src/seccomp-filter.c	2025-03-06 08:46:41.901322068 +0000
+@@ -42,6 +42,7 @@ variants of those files that can be used
+ #include <stdlib.h>
+ #include <stdint.h>
+ #include <stdio.h>
++#include <termios.h>
+ #include <time.h>
+ 
+ #include <asm/prctl.h>
+@@ -64,6 +65,10 @@ variants of those files that can be used
+ #define ARCH_CET_STATUS 0x3001
+ #endif
+ 
++#ifndef MAP_DROPPABLE
++#define MAP_DROPPABLE 0x0
++#endif
++
+ static ATTRIBUTE_FORMAT_PRINTF (2, 3) _Noreturn void
+ fail (int error, const char *format, ...)
+ {
+@@ -187,7 +192,7 @@ main (int argc, char **argv)
+            some versions of the dynamic loader still use it.  Also
+            allow allocating thread stacks.  */
+         SCMP_A3_32 (SCMP_CMP_MASKED_EQ,
+-                    ~(MAP_SHARED | MAP_PRIVATE | MAP_FILE
++                    ~(MAP_SHARED | MAP_PRIVATE | MAP_FILE | MAP_DROPPABLE
+                       | MAP_ANONYMOUS | MAP_FIXED | MAP_DENYWRITE
+                       | MAP_STACK | MAP_NORESERVE),
+                     0));
+@@ -274,6 +279,11 @@ main (int argc, char **argv)
+         SCMP_A0_32 (SCMP_CMP_EQ, STDIN_FILENO),
+         SCMP_A1_32 (SCMP_CMP_EQ, TIOCGPGRP));
+ 
++  /* Allow `tcgetattr'.  */
++  RULE (SCMP_ACT_ALLOW, SCMP_SYS (ioctl),
++        SCMP_A0_32 (SCMP_CMP_EQ, STDERR_FILENO),
++        SCMP_A1_32 (SCMP_CMP_EQ, TCGETS));
++
+   /* Allow reading (but not setting) file flags.  */
+   RULE (SCMP_ACT_ALLOW, SCMP_SYS (fcntl),
+         SCMP_A1_32 (SCMP_CMP_EQ, F_GETFL));
