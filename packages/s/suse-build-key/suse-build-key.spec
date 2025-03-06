@@ -1,7 +1,7 @@
 #
 # spec file for package suse-build-key
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # needspubkeyforbuild
-
 
 
 %bcond_with     build_key_include_prjkey
@@ -36,7 +35,7 @@ Source0:        gpg-pubkey-39db7c82-66c5d91a.asc
 #pub   rsa4096/0xF74F09BC3FA1D6CE 2023-01-19 [SC] [expires: 2027-01-18]
 #      Key fingerprint = 7F00 9157 B127 B994 D5CF  BE76 F74F 09BC 3FA1 D6CE
 #uid                             SUSE Package Signing Key <build@suse.de>
-Source4:        gpg-pubkey-3fa1d6ce-63c9481c.asc
+Source4:        gpg-pubkey-3fa1d6ce-67c856ee.asc
 
 # pub  2048R/50A3DD1C 2013-01-14 SuSE Package Signing Key (reserve key) <build@suse.de>
 # Fallback key if main key gets lost.
@@ -60,11 +59,11 @@ Source3:        build-container-d4ade9c3-5a2e9669.asc
 # same, in PEM format
 Source10:       build-container-d4ade9c3-5a2e9669.pem
 
-# New ALP Keys
-#pub   rsa4096/0xFEC28EAF09D9EA69 2023-05-10 [SC] [expires: 2027-05-09]
+# New SL16 / SLM6 Keys
+#pub   rsa4096/0xFEC28EAF09D9EA69 2023-05-10 [SC] [expires: 2029-03-05]
 #      Key fingerprint = 1C59 D66F CD52 563A 1693  3DBC FEC2 8EAF 09D9 EA69
 #uid                             ALP Package Signing Key <build-alp@suse.de>
-Source5:        gpg-pubkey-09d9ea69-645b99ce.asc
+Source5:        gpg-pubkey-09d9ea69-67c857f3.asc
 # reserve key
 #pub   rsa4096/0xC7B81E4373F03759 2022-04-29 [SC] [expires: 2032-04-26]
 #      Key fingerprint = 5056 7568 F292 0FF1 65B2  5FB2 C7B8 1E43 73F0 3759

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar  5 14:53:48 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- changed keys to use SHA256 UIDs instead of SHA1. (bsc#1237294
+  bsc#1236779 jsc#PED-12321)
+  - gpg-pubkey-3fa1d6ce-67c856ee.asc to gpg-pubkey-09d9ea69-67c857f3.asc
+  - gpg-pubkey-09d9ea69-645b99ce.asc to gpg-pubkey-3fa1d6ce-63c9481c.asc
+  - suse_ptf_key_2023.asc, suse_ptf_key.asc: adjusted
+
+-------------------------------------------------------------------
 Wed Aug 21 15:36:57 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - extended 2048 bit SUSE SLE 12, 15 GA-SP5 key until 2028. (bsc#1229339)

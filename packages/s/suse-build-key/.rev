@@ -395,4 +395,16 @@ This fixes build on SLE15SP7. (forwarded request 1190501 from epaolantonio)</com
     <comment></comment>
     <requestid>1198027</requestid>
   </revision>
+  <revision rev="48" vrev="19">
+    <srcmd5>6b51ad81fa249d1e9e3bbbb5e2997925</srcmd5>
+    <version>12.0</version>
+    <time>1741268925</time>
+    <user>anag+factory</user>
+    <comment>- changed keys to use SHA256 UIDs instead of SHA1. (bsc#1237294
+  bsc#1236779 jsc#PED-12321)
+  - gpg-pubkey-3fa1d6ce-67c856ee.asc to gpg-pubkey-09d9ea69-67c857f3.asc
+  - gpg-pubkey-09d9ea69-645b99ce.asc to gpg-pubkey-3fa1d6ce-63c9481c.asc
+  - suse_ptf_key_2023.asc, suse_ptf_key.asc: adjusted (forwarded request 1250454 from msmeissn)</comment>
+    <requestid>1250462</requestid>
+  </revision>
 </revisionlist>
