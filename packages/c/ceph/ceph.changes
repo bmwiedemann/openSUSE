@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  3 03:55:55 UTC 2025 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.15-82-gc12b9a96bd8:
+  + ceph.spec.in: remove "Obsoletes: libcephfs1" (boo#1237420)
+  + Suport Python 3.13
+
+-------------------------------------------------------------------
 Wed Apr 10 00:30:25 UTC 2024 - Tim Serong <tserong@suse.com>
 
 - Update to 16.2.15-74-gc5dd01a91d8:
