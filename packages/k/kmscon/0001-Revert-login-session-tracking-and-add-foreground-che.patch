@@ -1,0 +1,623 @@
+From db524e9e0fc38d06faba1430dfeb9637649fec1b Mon Sep 17 00:00:00 2001
+From: michael-oberpriller <michael.oberpriller@proton.me>
+Date: Sun, 2 Mar 2025 10:20:24 -0600
+Subject: [PATCH] Revert login session tracking and add foreground check
+
+---
+ src/kmscon_main.c            |   7 --
+ src/kmscon_seat.c            |  52 ++------------
+ src/kmscon_seat.h            |   2 +-
+ src/kmscon_terminal.c        |  23 +------
+ src/kmscon_terminal.h        |  12 ----
+ src/pty.c                    |   8 ---
+ src/pty.h                    |   1 -
+ src/uterm_monitor.c          | 127 ++++++++++-------------------------
+ src/uterm_monitor.h          |   1 -
+ src/uterm_systemd.c          |  27 +-------
+ src/uterm_systemd_internal.h |  10 +--
+ 11 files changed, 47 insertions(+), 223 deletions(-)
+
+diff --git a/src/kmscon_main.c b/src/kmscon_main.c
+index ccddc00..cc7f3ed 100644
+--- a/src/kmscon_main.c
++++ b/src/kmscon_main.c
+@@ -501,13 +501,6 @@ static void app_monitor_event(struct uterm_monitor *mon,
+ 			break;
+ 		}
+ 		break;
+-	case UTERM_MONITOR_UPDATE_SESSIONS:
+-		seat = ev->seat_data;
+-		if (!seat)
+-			return;
+-
+-		kmscon_seat_update_sessions(seat->seat);
+-		break;
+ 	}
+ }
+ 
+diff --git a/src/kmscon_seat.c b/src/kmscon_seat.c
+index 44a6a0d..684b649 100644
+--- a/src/kmscon_seat.c
++++ b/src/kmscon_seat.c
+@@ -41,7 +41,6 @@
+ #include "shl_dlist.h"
+ #include "shl_log.h"
+ #include "uterm_input.h"
+-#include "uterm_systemd_internal.h"
+ #include "uterm_video.h"
+ #include "uterm_vt.h"
+ 
+@@ -55,7 +54,6 @@ struct kmscon_session {
+ 	bool enabled;
+ 	bool foreground;
+ 	bool deactivating;
+-	bool tty_type;
+ 
+ 	struct ev_timer *timer;
+ 
+@@ -1027,7 +1025,6 @@ int kmscon_seat_register_session(struct kmscon_seat *seat,
+ 	sess->cb = cb;
+ 	sess->data = data;
+ 	sess->foreground = true;
+-	sess->tty_type = true;
+ 
+ 	/* register new sessions next to the current one */
+ 	if (seat->current_sess)
+@@ -1046,50 +1043,6 @@ int kmscon_seat_register_session(struct kmscon_seat *seat,
+ 	return 0;
+ }
+ 
+-void kmscon_session_update_type(struct kmscon_session *sess)
+-{
+-	int ret, child;
+-	char *type;
+-
+-	child = kmscon_terminal_get_child_pid(sess->data);
+-	if (child < 0) {
+-		return;
+-	}
+-
+-	ret = uterm_sd_get_session_type(child, &type);
+-	if (ret)
+-		return;
+-
+-	if (!strcmp(type, "tty") && !sess->tty_type) {
+-		log_debug("Active session's terminal set to foreground");
+-
+-		sess->tty_type = true;
+-		kmscon_terminal_set_awake(sess->data, true);
+-	} else if (strcmp(type, "tty") && sess->tty_type) {
+-		log_debug("Active session's terminal set to background");
+-
+-		sess->tty_type = false;
+-		kmscon_terminal_set_awake(sess->data, false);
+-	}
+-
+-	free(type);
+-}
+-
+-void kmscon_seat_update_sessions(struct kmscon_seat *seat)
+-{
+-	struct shl_dlist *iter, *tmp;
+-	struct kmscon_session *session;
+-
+-	shl_dlist_for_each_safe(iter, tmp, &seat->sessions) {
+-		session = shl_dlist_entry(iter, struct kmscon_session,
+-						list);
+-		if (session == seat->dummy_sess)
+-			continue;
+-
+-		kmscon_session_update_type(session);
+-	}
+-}
+-
+ void kmscon_session_ref(struct kmscon_session *sess)
+ {
+ 	if (!sess || !sess->ref)
+@@ -1203,6 +1156,11 @@ int kmscon_session_set_background(struct kmscon_session *sess)
+ 	return 0;
+ }
+ 
++bool kmscon_session_get_foreground(struct kmscon_session *sess)
++{
++	return sess->foreground;
++}
++
+ void kmscon_session_schedule(struct kmscon_session *sess)
+ {
+ 	struct kmscon_seat *seat;
+diff --git a/src/kmscon_seat.h b/src/kmscon_seat.h
+index 34fc00b..439e358 100644
+--- a/src/kmscon_seat.h
++++ b/src/kmscon_seat.h
+@@ -104,7 +104,6 @@ int kmscon_seat_register_session(struct kmscon_seat *seat,
+ 				 struct kmscon_session **out,
+ 				 kmscon_session_cb_t cb,
+ 				 void *data);
+-void kmscon_seat_update_sessions(struct kmscon_seat *seat);
+ 
+ void kmscon_session_ref(struct kmscon_session *sess);
+ void kmscon_session_unref(struct kmscon_session *sess);
+@@ -114,6 +113,7 @@ bool kmscon_session_is_registered(struct kmscon_session *sess);
+ bool kmscon_session_is_active(struct kmscon_session *sess);
+ int kmscon_session_set_foreground(struct kmscon_session *sess);
+ int kmscon_session_set_background(struct kmscon_session *sess);
++bool kmscon_session_get_foreground(struct kmscon_session *sess);
+ void kmscon_session_schedule(struct kmscon_session *sess);
+ 
+ void kmscon_session_enable(struct kmscon_session *sess);
+diff --git a/src/kmscon_terminal.c b/src/kmscon_terminal.c
+index 63f06c4..ddba062 100644
+--- a/src/kmscon_terminal.c
++++ b/src/kmscon_terminal.c
+@@ -400,7 +400,7 @@ static void input_event(struct uterm_input *input,
+ {
+ 	struct kmscon_terminal *term = data;
+ 
+-	if (!term->opened || !term->awake || ev->handled)
++	if (!term->opened || !term->awake || ev->handled || !kmscon_session_get_foreground(term->session))
+ 		return;
+ 
+ 	if (conf_grab_matches(term->conf->grab_scroll_up,
+@@ -587,27 +587,6 @@ static void write_event(struct tsm_vte *vte, const char *u8, size_t len,
+ 	kmscon_pty_write(term->pty, u8, len);
+ }
+ 
+-int kmscon_terminal_get_child_pid(void *term)
+-{
+-	struct kmscon_terminal *t = term;
+-
+-	if (!t)
+-		return -EINVAL;
+-
+-	return kmscon_pty_get_child(t->pty);
+-}
+-
+-int kmscon_terminal_set_awake(void *data, bool awake)
+-{
+-	struct kmscon_terminal *term = data;
+-
+-	if (!term)
+-		return -EINVAL;
+-
+-	term->awake = awake;
+-	return 0;
+-}
+-
+ int kmscon_terminal_register(struct kmscon_session **out,
+ 			     struct kmscon_seat *seat, unsigned int vtnr)
+ {
+diff --git a/src/kmscon_terminal.h b/src/kmscon_terminal.h
+index 5033b4d..9c6a373 100644
+--- a/src/kmscon_terminal.h
++++ b/src/kmscon_terminal.h
+@@ -42,8 +42,6 @@
+ int kmscon_terminal_register(struct kmscon_session **out,
+ 			     struct kmscon_seat *seat,
+ 			     unsigned int vtnr);
+-int kmscon_terminal_get_child_pid(void *term);
+-int kmscon_terminal_set_awake(void *term, bool awake);
+ 
+ #else /* !BUILD_ENABLE_SESSION_TERMINAL */
+ 
+@@ -54,16 +52,6 @@ static inline int kmscon_terminal_register(struct kmscon_session **out,
+ 	return -EOPNOTSUPP;
+ }
+ 
+-int kmscon_terminal_get_child_pid(void *term)
+-{
+-	return -EOPNOTSUPP;
+-}
+-
+-int kmscon_terminal_set_awake(void *term, bool awake)
+-{
+-	return -EOPNOTSUPP;
+-}
+-
+ #endif /* BUILD_ENABLE_SESSION_TERMINAL */
+ 
+ #endif /* KMSCON_TERMINAL_H */
+diff --git a/src/pty.c b/src/pty.c
+index 7cab820..208b2f3 100644
+--- a/src/pty.c
++++ b/src/pty.c
+@@ -229,14 +229,6 @@ int kmscon_pty_get_fd(struct kmscon_pty *pty)
+ 	return ev_eloop_get_fd(pty->eloop);
+ }
+ 
+-int kmscon_pty_get_child(struct kmscon_pty *pty)
+-{
+-	if (!pty)
+-		return -EINVAL;
+-
+-	return pty->child;
+-}
+-
+ void kmscon_pty_dispatch(struct kmscon_pty *pty)
+ {
+ 	if (!pty)
+diff --git a/src/pty.h b/src/pty.h
+index 5e83f25..e5e051a 100644
+--- a/src/pty.h
++++ b/src/pty.h
+@@ -62,7 +62,6 @@ int kmscon_pty_set_vtnr(struct kmscon_pty *pty, unsigned int vtnr);
+ void kmscon_pty_set_env_reset(struct kmscon_pty *pty, bool do_reset);
+ 
+ int kmscon_pty_get_fd(struct kmscon_pty *pty);
+-int kmscon_pty_get_child(struct kmscon_pty *pty);
+ void kmscon_pty_dispatch(struct kmscon_pty *pty);
+ 
+ int kmscon_pty_open(struct kmscon_pty *pty, unsigned short width,
+diff --git a/src/uterm_monitor.c b/src/uterm_monitor.c
+index c0ab88d..c6e0a6d 100644
+--- a/src/uterm_monitor.c
++++ b/src/uterm_monitor.c
+@@ -65,19 +65,14 @@ struct uterm_monitor_seat {
+ 	struct shl_dlist devices;
+ };
+ 
+-struct uterm_sd_mon {
+-	struct uterm_sd *sd;
+-	struct ev_fd *fd;
+-};
+-
+ struct uterm_monitor {
+ 	unsigned long ref;
+ 	struct ev_eloop *eloop;
+ 	uterm_monitor_cb cb;
+ 	void *data;
+ 
+-	struct uterm_sd_mon seat;
+-	struct uterm_sd_mon session;
++	struct uterm_sd *sd;
++	struct ev_fd *sd_mon_fd;
+ 
+ 	struct udev *udev;
+ 	struct udev_monitor *umon;
+@@ -88,7 +83,6 @@ struct uterm_monitor {
+ 
+ static void monitor_new_seat(struct uterm_monitor *mon, const char *name);
+ static void monitor_free_seat(struct uterm_monitor_seat *seat);
+-static void monitor_update_sessions(struct uterm_monitor *mon);
+ 
+ static void monitor_refresh_seats(struct uterm_monitor *mon)
+ {
+@@ -98,13 +92,13 @@ static void monitor_refresh_seats(struct uterm_monitor *mon)
+ 	struct uterm_monitor_seat *seat;
+ 
+ 	/* Use only seat0 if multi-seat support is not available */
+-	if (!mon->seat.sd) {
++	if (!mon->sd) {
+ 		if (shl_dlist_empty(&mon->seats))
+ 			monitor_new_seat(mon, "seat0");
+ 		return;
+ 	}
+ 
+-	num = uterm_sd_get_seats(mon->seat.sd, &seats);
++	num = uterm_sd_get_seats(mon->sd, &seats);
+ 	if (num < 0) {
+ 		log_warn("cannot read seat information from systemd: %d", num);
+ 		return;
+@@ -138,88 +132,65 @@ static void monitor_refresh_seats(struct uterm_monitor *mon)
+ 	free(seats);
+ }
+ 
+-static int handle_sd_event(struct uterm_monitor *mon, struct uterm_sd_mon sd_mon, int mask)
+-{
+-	if (mask & (EV_HUP | EV_ERR)) {
+-		log_warn("systemd login monitor closed unexpectedly");
+-		return EV_ERR;
+-	}
+-
+-	if (sd_mon.sd) {
+-		uterm_sd_flush(sd_mon.sd);
+-		ev_eloop_flush_fd(mon->eloop, sd_mon.fd);
+-	}
+-	
+-	return 0;
+-}
+-
+-static void monitor_sd_seat_event(struct ev_fd *fd,
+-			     int mask,
+-			     void *data)
+-{
+-	struct uterm_monitor *mon = data;
+-
+-	int ret = handle_sd_event(mon, mon->seat, mask);
+-	if (ret)
+-		return;
+-	
+-	monitor_refresh_seats(mon);
+-}
+-
+-static void monitor_sd_session_event(struct ev_fd *fd,
++static void monitor_sd_event(struct ev_fd *fd,
+ 			     int mask,
+ 			     void *data)
+ {
+ 	struct uterm_monitor *mon = data;
+ 
+-	int ret = handle_sd_event(mon, mon->session, mask);
+-	if (ret)
++	if (mask & (EV_HUP | EV_ERR)) {
++		log_warn("systemd login monitor closed unexpectedly");
+ 		return;
++	}
+ 
+-	monitor_update_sessions(mon);
++	if (mon->sd) {
++		uterm_sd_flush(mon->sd);
++		ev_eloop_flush_fd(mon->eloop, mon->sd_mon_fd);
++	}
++	monitor_refresh_seats(mon);
+ }
+ 
+-static void monitor_sd_seat_poll(struct uterm_monitor *mon)
++static void monitor_sd_poll(struct uterm_monitor *mon)
+ {
+-	monitor_sd_seat_event(mon->seat.fd, EV_READABLE, mon);
++	monitor_sd_event(mon->sd_mon_fd, EV_READABLE, mon);
+ }
+ 
+-static int monitor_sd_init(struct uterm_monitor *mon, struct uterm_sd_mon sd_mon, char *event_type, ev_fd_cb cb)
++static int monitor_sd_init(struct uterm_monitor *mon)
+ {
+ 	int ret, sfd;
+-	
+-	ret = uterm_sd_new(&sd_mon.sd, event_type);
++
++	ret = uterm_sd_new(&mon->sd);
+ 	if (ret == -EOPNOTSUPP)
+ 		return 0;
+ 	else if (ret)
+ 		return ret;
+ 
+-	sfd = uterm_sd_get_fd(sd_mon.sd);
++	sfd = uterm_sd_get_fd(mon->sd);
+ 	if (sfd < 0) {
+ 		log_err("cannot get systemd login monitor fd");
+ 		ret = -EFAULT;
+ 		goto err_sd;
+ 	}
+ 
+-	ret = ev_eloop_new_fd(mon->eloop, &sd_mon.fd, sfd, EV_READABLE,
+-			      cb, mon);
++	ret = ev_eloop_new_fd(mon->eloop, &mon->sd_mon_fd, sfd, EV_READABLE,
++			      monitor_sd_event, mon);
+ 	if (ret)
+ 		goto err_sd;
+ 
+ 	return 0;
+ 
+ err_sd:
+-	uterm_sd_free(sd_mon.sd);
++	uterm_sd_free(mon->sd);
+ 	return ret;
+ }
+ 
+-static void monitor_sd_deinit(struct uterm_sd_mon sd_mon)
++static void monitor_sd_deinit(struct uterm_monitor *mon)
+ {
+-	if (!sd_mon.sd)
++	if (!mon->sd)
+ 		return;
+ 
+-	ev_eloop_rm_fd(sd_mon.fd);
+-	uterm_sd_free(sd_mon.sd);
++	ev_eloop_rm_fd(mon->sd_mon_fd);
++	uterm_sd_free(mon->sd);
+ }
+ 
+ static void seat_new_dev(struct uterm_monitor_seat *seat,
+@@ -287,26 +258,6 @@ static void seat_free_dev(struct uterm_monitor_dev *dev)
+ 	free(dev);
+ }
+ 
+-static void monitor_update_sessions(struct uterm_monitor *mon)
+-{
+-	struct shl_dlist *iter, *tmp;
+-	struct uterm_monitor_seat * seat;
+-
+-	shl_dlist_for_each_safe(iter, tmp, &mon->seats) {
+-		seat = shl_dlist_entry(iter, struct uterm_monitor_seat,
+-						list);
+-
+-		struct uterm_monitor_event ev;
+-
+-		memset(&ev, 0, sizeof(ev));
+-
+-		ev.type = UTERM_MONITOR_UPDATE_SESSIONS;
+-		ev.seat_data = seat->data;
+-
+-		seat->mon->cb(seat->mon, &ev, seat->mon->data);
+-	}
+-}
+-
+ static struct uterm_monitor_dev *monitor_find_dev(struct uterm_monitor *mon,
+ 						struct udev_device *dev)
+ {
+@@ -640,7 +591,7 @@ static void monitor_udev_add(struct uterm_monitor *mon,
+ 	}
+ 
+ 	if (!strcmp(subs, "drm")) {
+-		if (mon->seat.sd && udev_device_has_tag(dev, "seat") != 1) {
++		if (mon->sd && udev_device_has_tag(dev, "seat") != 1) {
+ 			log_debug("adding non-seat'ed device %s", name);
+ 			return;
+ 		}
+@@ -653,7 +604,7 @@ static void monitor_udev_add(struct uterm_monitor *mon,
+ 		type = UTERM_MONITOR_DRM;
+ 		flags = get_drm_flags(mon, dev, node);
+ 	} else if (!strcmp(subs, "graphics")) {
+-		if (mon->seat.sd && udev_device_has_tag(dev, "seat") != 1) {
++		if (mon->sd && udev_device_has_tag(dev, "seat") != 1) {
+ 			log_debug("adding non-seat'ed device %s", name);
+ 			return;
+ 		}
+@@ -677,7 +628,7 @@ static void monitor_udev_add(struct uterm_monitor *mon,
+ 			log_debug("adding device without parent %s", name);
+ 			return;
+ 		}
+-		if (mon->seat.sd && udev_device_has_tag(p, "seat") != 1) {
++		if (mon->sd && udev_device_has_tag(p, "seat") != 1) {
+ 			log_debug("adding non-seat'ed device %s", name);
+ 			return;
+ 		}
+@@ -781,12 +732,12 @@ static void monitor_udev_event(struct ev_fd *fd,
+ 	/*
+ 	 * If there is a pending sd_event in the current epoll-queue and our
+ 	 * udev event is called first, we must make sure to first execute the
+-	 * sd_seat_event. Otherwise, our udev event might introduce new seats that
++	 * sd_event. Otherwise, our udev event might introduce new seats that
+ 	 * will be initialized later and we loose devices.
+ 	 * monitor_sd_event() flushes the sd-fd so we will never refresh seat
+ 	 * values twice in a single epoll-loop.
+ 	 */
+-	monitor_sd_seat_poll(mon);
++	monitor_sd_poll(mon);
+ 
+ 	while (true) {
+ 		/* we use non-blocking udev monitor so ignore errors */
+@@ -830,18 +781,15 @@ int uterm_monitor_new(struct uterm_monitor **out,
+ 	mon->data = data;
+ 	shl_dlist_init(&mon->seats);
+ 
+-	ret = monitor_sd_init(mon, mon->seat, "seat", monitor_sd_seat_event);
++	ret = monitor_sd_init(mon);
+ 	if (ret)
+ 		goto err_free;
+-	ret = monitor_sd_init(mon, mon->session, "session", monitor_sd_session_event);
+-	if (ret)
+-		goto err_sd_seat;
+ 
+ 	mon->udev = udev_new();
+ 	if (!mon->udev) {
+ 		log_err("cannot create udev object");
+ 		ret = -EFAULT;
+-		goto err_sd_session;
++		goto err_sd;
+ 	}
+ 
+ 	mon->umon = udev_monitor_new_from_netlink(mon->udev, "udev");
+@@ -921,10 +869,8 @@ err_umon:
+ 	udev_monitor_unref(mon->umon);
+ err_udev:
+ 	udev_unref(mon->udev);
+-err_sd_session:
+-	monitor_sd_deinit(mon->session);
+-err_sd_seat:
+-	monitor_sd_deinit(mon->seat);
++err_sd:
++	monitor_sd_deinit(mon);
+ err_free:
+ 	free(mon);
+ 	return ret;
+@@ -957,8 +903,7 @@ void uterm_monitor_unref(struct uterm_monitor *mon)
+ 	ev_eloop_rm_fd(mon->umon_fd);
+ 	udev_monitor_unref(mon->umon);
+ 	udev_unref(mon->udev);
+-	monitor_sd_deinit(mon->seat);
+-	monitor_sd_deinit(mon->session);
++	monitor_sd_deinit(mon);
+ 	ev_eloop_unref(mon->eloop);
+ 	free(mon);
+ }
+diff --git a/src/uterm_monitor.h b/src/uterm_monitor.h
+index a489722..caf70c3 100644
+--- a/src/uterm_monitor.h
++++ b/src/uterm_monitor.h
+@@ -47,7 +47,6 @@ enum uterm_monitor_event_type {
+ 	UTERM_MONITOR_NEW_DEV,
+ 	UTERM_MONITOR_FREE_DEV,
+ 	UTERM_MONITOR_HOTPLUG_DEV,
+-	UTERM_MONITOR_UPDATE_SESSIONS,
+ };
+ 
+ enum uterm_monitor_dev_type {
+diff --git a/src/uterm_systemd.c b/src/uterm_systemd.c
+index 40687fd..c316bed 100644
+--- a/src/uterm_systemd.c
++++ b/src/uterm_systemd.c
+@@ -46,7 +46,7 @@ struct uterm_sd {
+ 	sd_login_monitor *mon;
+ };
+ 
+-int uterm_sd_new(struct uterm_sd **out, const char* event_type)
++int uterm_sd_new(struct uterm_sd **out)
+ {
+ 	int ret;
+ 	struct uterm_sd *sd;
+@@ -71,7 +71,7 @@ int uterm_sd_new(struct uterm_sd **out, const char* event_type)
+ 		return -ENOMEM;
+ 	memset(sd, 0, sizeof(*sd));
+ 
+-	ret = sd_login_monitor_new(event_type, &sd->mon);
++	ret = sd_login_monitor_new("seat", &sd->mon);
+ 	if (ret) {
+ 		log_err("cannot create systemd login monitor (%d): %s",
+ 			ret, strerror(-ret));
+@@ -130,26 +130,3 @@ int uterm_sd_get_seats(struct uterm_sd *sd, char ***seats)
+ 	*seats = s;
+ 	return ret;
+ }
+-
+-int uterm_sd_get_session_type(int pid, char **type)
+-{
+-	int ret;
+-	char *sess_id;
+-
+-	if (!pid)
+-		return -EINVAL;
+-	ret = sd_pid_get_session(pid, &sess_id);
+-	if (ret < 0)
+-		return -EFAULT;
+-
+-	ret = sd_session_get_type(sess_id, type);
+-	if (ret < 0) {
+-		log_warning("cannot read session type information from systemd: %d",
+-			    ret);
+-		free(sess_id);
+-		return -EFAULT;
+-	}
+-	free(sess_id);
+-
+-	return ret;
+-}
+diff --git a/src/uterm_systemd_internal.h b/src/uterm_systemd_internal.h
+index 7e2adc2..c3a1fd4 100644
+--- a/src/uterm_systemd_internal.h
++++ b/src/uterm_systemd_internal.h
+@@ -39,16 +39,15 @@ struct uterm_sd;
+ 
+ #ifdef BUILD_ENABLE_MULTI_SEAT
+ 
+-int uterm_sd_new(struct uterm_sd **out, const char *event_type);
++int uterm_sd_new(struct uterm_sd **out);
+ void uterm_sd_free(struct uterm_sd *sd);
+ int uterm_sd_get_fd(struct uterm_sd *sd);
+ void uterm_sd_flush(struct uterm_sd *sd);
+ int uterm_sd_get_seats(struct uterm_sd *sd, char ***seats);
+-int uterm_sd_get_session_type(pid_t pid, char **type);
+ 
+ #else
+ 
+-static inline int uterm_sd_new(struct uterm_sd **out, const char *event_type)
++static inline int uterm_sd_new(struct uterm_sd **out)
+ {
+ 	return -EOPNOTSUPP;
+ }
+@@ -71,11 +70,6 @@ static inline int uterm_sd_get_seats(struct uterm_sd *sd, char ***seats)
+ 	return -EINVAL;
+ }
+ 
+-static inline int uterm_sd_get_session_type(pid_t pid, char **type)
+-{
+-	return -EINVAL;
+-}
+-
+ #endif
+ 
+ #endif /* UTERM_SYSTEMD_H */
+-- 
+2.48.1
+

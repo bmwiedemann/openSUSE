@@ -36,4 +36,14 @@
     <comment></comment>
     <requestid>1249253</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>270bc7937554d1b205fa51d5f89189bd</srcmd5>
+    <version>9.0.0+git42</version>
+    <time>1741268932</time>
+    <user>anag+factory</user>
+    <comment>- Replace code fix with code removal:
+  * Add 0001-Revert-login-session-tracking-and-add-foreground-che.patch
+  * Delete 0001-Fix-systemd-monitor-initialization.patch</comment>
+    <requestid>1250477</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  5 14:50:11 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Replace code fix with code removal:
+  * Add 0001-Revert-login-session-tracking-and-add-foreground-che.patch
+  * Delete 0001-Fix-systemd-monitor-initialization.patch
+
+-------------------------------------------------------------------
 Fri Feb 28 14:08:45 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix systemd event handling:
