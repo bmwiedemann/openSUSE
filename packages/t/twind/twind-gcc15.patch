@@ -1,0 +1,13 @@
+Index: twind.c
+===================================================================
+--- twind.c.orig
++++ twind.c
+@@ -391,7 +391,7 @@ void display_menu(char *menu_items[][MAX
+                     break;
+                 /* Exit */
+                 case 4:
+-                    cleanup_and_exit(game);
++                    cleanup_and_exit();
+                     break;
+             }
+             game.menu = menu;

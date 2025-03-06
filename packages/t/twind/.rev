@@ -131,4 +131,12 @@ This is mine first openSUSE RPM and FreeBSD Port</comment>
     <comment></comment>
     <requestid>1156102</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d89545e9bd369f9b5e989d0b7550a451</srcmd5>
+    <version>1.1.0</version>
+    <time>1741268983</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1250589</requestid>
+  </revision>
 </revisionlist>

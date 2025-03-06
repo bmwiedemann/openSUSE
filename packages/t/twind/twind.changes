@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 28 09:33:14 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + twind-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 16:23:20 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
