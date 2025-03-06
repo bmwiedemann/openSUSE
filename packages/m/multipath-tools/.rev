@@ -2077,4 +2077,26 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
     (bsc#1236390) (forwarded request 1240182 from mwilck)</comment>
     <requestid>1240184</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>9aedc8b32fd4bcf3fefd89a10a0a0925</srcmd5>
+    <version>0.11.0+183+suse.3973293</version>
+    <time>1741268881</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.11.0+183+suse.3973293:
+  * multipathd: fix hang during shutdown with queuing maps
+    (bsc#1238484).
+    This adds multipathd-queueing.service.
+  * multipath-tools: make multipathd listen on a pathname socket
+    (/run/multipathd.socket) besides listening on an abstract socket.
+    This allows connecting to multipathd from a containerized application
+    (gh#opensvc/multipath-tools#111). In client mode, applications
+    linked against libmpathcmd will attempt to connect to the pathname
+    socket first, and to the abstract socket if this fails.
+    The MULTIPATH_SOCKET_NAME environment variable can be used to
+    override the socket name.
+  * multipathd: trigger uevents for blacklisted paths in reconfigure
+    (bsc#1236321)
+  * libmultipath: remove buggy reinstate_paths function (forwarded request 1250441 from mwilck)</comment>
+    <requestid>1250442</requestid>
+  </revision>
 </revisionlist>

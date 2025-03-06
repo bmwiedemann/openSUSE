@@ -35,7 +35,7 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.11.0+164+suse.24eeee7
+Version:        0.11.0+183+suse.3973293
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only AND GPL-3.0-or-later
@@ -198,12 +198,12 @@ sed -i 's,@TMPFILESDIR@,%{_tmpfilesdir},;s,@UDEVRULESDIR@,%{_udevrulesdir},' %{b
 
 %pre
 [ -f /.buildenv ] && exit 0
-%service_add_pre multipathd.socket multipathd.service
+%service_add_pre multipathd.socket multipathd.service multipathd-queueing.service
 
 %post
 [ -f /.buildenv ] && exit 0
 %tmpfiles_create %{_tmpfilesdir}/multipath.conf
-%service_add_post multipathd.socket multipathd.service
+%service_add_post multipathd.socket multipathd.service multipathd-queueing.service
 if [ $1 -eq 1 ]; then
     [ ! -x /sbin/modprobe ] || /sbin/modprobe dm_multipath || true
 fi
@@ -211,12 +211,12 @@ fi
 exit 0
 
 %preun
-%service_del_preun multipathd.service multipathd.socket
+%service_del_preun multipathd.service multipathd.socket multipathd-queueing.service
 
 %postun
 %{?regenerate_initrd_post}
 %service_del_postun multipathd.service
-%service_del_postun_without_restart multipathd.socket
+%service_del_postun_without_restart multipathd.socket multipathd-queueing.service
 
 %posttrans
 %{?regenerate_initrd_posttrans}
@@ -237,6 +237,7 @@ exit 0
 /usr/sbin/rcmultipathd
 %endif
 %{_unitdir}/multipathd.service
+%{_unitdir}/multipathd-queueing.service
 %{_unitdir}/multipathd.socket
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
 %dir /usr/lib/modules-load.d
