@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 25 20:26:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.29.2:
+  * Upgrade setuptools to 75.3
+  * Upgrade setuptools to 75.5 and wheel to 0.45
+  * No longer forcibly echo off during windows batch activation
+  * Update run_with_catch log flushing by @neilramsay in #2806
+  * feat: Write CACHEDIR.TAG file b
+  * Skip tcsh tests on broken tcsh versions
+  * Makes --python command-line flag take precedence over env var
+  * Add free-threaded Python support
+  * Upgrade embeded setuptools
+  * Simplify Solution to --python command-line flag precedence
+  * Change PyInfo cache versioning mechanism
+
+-------------------------------------------------------------------
 Wed Oct 30 08:09:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.27.1:
