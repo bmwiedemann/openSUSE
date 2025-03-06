@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 12 10:41:47 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Added a warn about a possible problem with the configured bond
+  ports configuration using a MAC based renaming schema allowing
+  the user to change all of them to use the BusID. (bsc#1233653)
+- 5.0.5
+
+-------------------------------------------------------------------
 Thu Nov  7 10:10:01 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
 
 - Try to assign default global routes to an specific connection 
