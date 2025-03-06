@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-build-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-scikit-build-core%{psuffix}
-Version:        0.10.7
+Version:        0.11.0
 Release:        0
 Summary:        Build backend for CMake based projects
 License:        Apache-2.0
@@ -34,7 +34,7 @@ URL:            https://github.com/scikit-build/scikit-build-core
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit_build_core/scikit_build_core-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE scikit-build-core-offline-wheelhouse.patch provide the testing wheels without runtime download code@bnavigator.de
 Patch1:         scikit-build-core-offline-wheelhouse.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging >= 21.3}
@@ -44,11 +44,6 @@ BuildRequires:  python-rpm-macros
 Requires:       cmake >= 3.15
 Requires:       python-packaging >= 21.3
 Requires:       python-pathspec >= 0.10.1
-Requires:       (python-exceptiongroup >= 1 if python-base < 3.11)
-Requires:       (python-importlib-metadata >= 4.13 if python-base < 3.8)
-Requires:       (python-importlib-resources >= 1.3 if python-base < 3.9)
-Requires:       (python-tomli >= 1.2.2 if python-base < 3.11)
-Requires:       (python-typing-extensions >= 3.10.0 if python-base < 3.9)
 Recommends:     ninja
 Recommends:     python-rich
 Provides:       python-scikit_build_core = %{version}-%{release}
