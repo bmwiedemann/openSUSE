@@ -1,7 +1,7 @@
 #
 # spec file for package rocksndiamonds-data
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define oname   rocksndiamonds
 Name:           %{oname}-data
-Version:        20220526
+Version:        20250223
 Release:        0
 Summary:        Data files for Rocks'n'Diamonds
 License:        GPL-2.0-or-later
@@ -37,6 +37,7 @@ Source7:        https://www.artsoft.org/RELEASES/%{oname}/levels/Boulder_Dash_Dr
 Source8:        https://www.artsoft.org/RELEASES/%{oname}/levels/Supaplex-2.0.0.7z
 Source9:        https://www.artsoft.org/RELEASES/unix/%{oname}/levels/rockslevels-dx-1.0.tar.gz
 Source68:       https://www.artsoft.org/RELEASES/%{oname}/levels/Better_Together-1.0.0.7z
+Source69:       https://www.artsoft.org/RELEASES/%{oname}/levels/Boulder_Dash-1.0.4.zip
 # Downloaded from http://www.jb-line.de/rnd/rnd_jue-3.3.0.0.tar.gz
 # Deleted directory rnd_jue/jue_sobigo and other which are not level
 # and packed than rockslevels, repacked as tar.gz
@@ -141,7 +142,7 @@ for l in %{SOURCE0} %{SOURCE1} %{SOURCE3} %{SOURCE5} %{SOURCE6} %{SOURCE7} \
          %{SOURCE30} %{SOURCE31} %{SOURCE32} %{SOURCE33} %{SOURCE34} %{SOURCE35} %{SOURCE36} %{SOURCE37} %{SOURCE38} %{SOURCE39} \
          %{SOURCE40} %{SOURCE41} %{SOURCE42} %{SOURCE43} %{SOURCE44} %{SOURCE45} %{SOURCE46} %{SOURCE47} %{SOURCE48} %{SOURCE49} \
          %{SOURCE50} %{SOURCE51} %{SOURCE52} %{SOURCE53} %{SOURCE54} %{SOURCE55} %{SOURCE56} %{SOURCE57} %{SOURCE58} %{SOURCE59} \
-         %{SOURCE60} %{SOURCE61} %{SOURCE62} %{SOURCE63} %{SOURCE64} %{SOURCE65} %{SOURCE66} ; do
+         %{SOURCE60} %{SOURCE61} %{SOURCE62} %{SOURCE63} %{SOURCE64} %{SOURCE65} %{SOURCE66} %{SOURCE69}; do
      unzip $l -d %{buildroot}%{_datadir}/%{oname}/levels -x Readme.txt
 done
 unzip %{SOURCE67} -d %{buildroot}%{_datadir}/%{oname}/levels/Tutorials
