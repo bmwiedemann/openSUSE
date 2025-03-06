@@ -16,24 +16,28 @@
 #
 
 
-# Consistent with openvino
-%define pythons python3
 %define modname openvino_telemetry
+# Consistent with openvino
+%if 0%{?suse_version} < 1600
+%define pythons python311
+%else
+%define pythons python3
+%endif
 Name:           python-openvino-telemetry
 Version:        2025.0.0
 Release:        0
 Summary:        Module for use with openVINO toolkit to send usage statistics with user consent
 License:        Apache-2.0
 URL:            https://github.com/openvinotoolkit/telemetry
-Source:         https://files.pythonhosted.org/packages/source/o/openvino-telemetry/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/o/openvino_telemetry/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+BuildArch:      noarch
 %python_subpackages
 
 %description

@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1244446</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>476237e7381d2b2707aaad931123988b</srcmd5>
+    <version>2025.0.0</version>
+    <time>1741268942</time>
+    <user>anag+factory</user>
+    <comment>- openSUSE Leap 15.6 compatibility
+</comment>
+    <requestid>1250506</requestid>
+  </revision>
 </revisionlist>
