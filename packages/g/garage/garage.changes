@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Mar  5 13:17:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.1.0:
+  * Bug fixes
+    - Fix free space calculation on FreeBSD (#907, #917)
+    - Use a subdirectory for sqlite snapshots (#932)
+    - Better handling of errors for more precise error codes (#942)
+    - Fix internal function table::insert_many failing with zero
+      items (#915, #946)
+    - Fix error reporting in garage meta snapshot command (#920,
+      #930)
+    - Return stats from all nodes in garage stats -a including
+      those not in the layout (#814, #953)
+    - Block manager: avoid writing blocks to draining nodes (#815,
+      #956)
+    - Avoid deadlock in block rebalance worker (#845, #957)
+    - Fix crash in layout computation (#937)
+  * S3 compatibility
+    - Add support for STREAMING-*-PAYLOAD-TRAILER (#824, #960)
+    - Implement x-amz-website-redirect-location header (#966)
+    - Implement if-match and if-unmodified-since in
+      GetObject/HeadObject (#804, #967)
+    - Parse x-id query parameter and report any inconsistency
+      (#822, #954)
+    - Return a location value in CompleteMultipartUpload (#852,
+      #958)
+    - Make x-amz-meta-* headers lowercase (#844, #938)
+  * New features
+    - Add bucket domain to metrics (#608)
+    - Add metadata_snapshots_dir configuration flag (#926, #933)
+    - Add use_local_tz configuration flag for lifecycle worker
+      (#908)
+  * Other
+    - Documentation updates (#887, #888, #901, #921, #927, #941)
+    - Split build of garage_api in 4 smaller crates (#947)
+    - Remove some uses of async_trait (#952)
+    - Fix compilation warnings (#959)
+    - Replace cargo2nix by crane (#950)
+    - Update toolchain and dependencies (#918, #924, #931, #951)
+    - Build and CI improvements (#912, #935, #936, #949)
+    - Improvements to Helm chart (#896, #923)
+    - Fix typos (#898, #928)
+  * Changes included after 1.1.0~rc1:
+    - admin api definition: fix globalAlias query parameter name
+      (#971, #973)
+    - kubernetes helm chart: add headless service for statefulSet
+      serviceName (#969, #970)
+
+-------------------------------------------------------------------
 Thu Nov 21 10:27:16 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints to avoid OOM failures
