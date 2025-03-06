@@ -357,4 +357,12 @@ It does NOT conflict with python38 standard library (see upstream description)</
     <comment></comment>
     <requestid>1243315</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>16f3662cbd5ab856d9e858464cf86ca2</srcmd5>
+    <version>8.6.1</version>
+    <time>1741268897</time>
+    <user>anag+factory</user>
+    <comment>- Fix multibuild by BuildRequires ourselves.</comment>
+    <requestid>1250282</requestid>
+  </revision>
 </revisionlist>

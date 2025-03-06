@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  5 01:18:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Fix multibuild by BuildRequires ourselves.
+
+-------------------------------------------------------------------
 Wed Feb  5 06:34:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 8.6.1

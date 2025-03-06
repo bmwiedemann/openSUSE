@@ -24,7 +24,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-importlib-metadata%{psuffix}
 Version:        8.6.1
@@ -47,13 +46,13 @@ Provides:       python-importlib_metadata = %{version}
 BuildArch:      noarch
 Requires:       (python-typing_extensions >= 3.6.4 if python-base < 3.8)
 %if %{with test}
+BuildRequires:  %{python_module importlib-metadata = %{version}}
 BuildRequires:  %{python_module importlib_resources >= 1.3 if %python-base < 3.9}
 BuildRequires:  %{python_module jaraco.test}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
-BuildRequires:  %{python_module typing_extensions >= 3.6.4 if %python-base < 3.8}
 %endif
 %python_subpackages
 
@@ -91,7 +90,7 @@ skip_tests+=" or test_zip_version"
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/importlib_metadata
-%{python_sitelib}/importlib_metadata-%{version}*-info
+%{python_sitelib}/importlib_metadata-%{version}.dist-info
 %endif
 
 %changelog
