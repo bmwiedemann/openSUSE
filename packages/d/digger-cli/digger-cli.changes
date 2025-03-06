@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 06 06:19:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.87:
+  * ensure link to workflow url always present (#1892)
+  * Update fly-pro.toml
+
+-------------------------------------------------------------------
 Wed Mar 05 10:16:41 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.86:
