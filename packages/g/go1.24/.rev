@@ -55,4 +55,35 @@
   Refs boo#1236217 go1.24 release tracking (forwarded request 1245175 from jfkw)</comment>
     <requestid>1245176</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>50ff83498d1bb8d151515b9a3445b9c6</srcmd5>
+    <version>1.24.1</version>
+    <time>1741268899</time>
+    <user>anag+factory</user>
+    <comment>- go1.24.1 (released 2025-03-04) includes security fixes to the
+  net/http, x/net/proxy, and x/net/http/httpproxy packages, as well
+  as bug fixes to the compiler, the runtime, the go command and the
+  crypto, debug, os and reflect packages.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2025-22870
+  * go#71986 go#71984 boo#1238572 security: fix CVE-2025-22870 net/http, x/net/proxy, x/net/http/httpproxy: proxy bypass using IPv6 zone IDs
+  * go#71687 cmd/go: panics with GOAUTH='git dir' go get -x
+  * go#71705 runtime: add linkname of runtime.lastmoduledatap for cloudwego/sonic
+  * go#71728 runtime: usleep computes wrong tv_nsec on s390x
+  * go#71745 crypto: add fips140 as an opaque GODEBUG setting and add documentation for it
+  * go#71829 cmd/compile: fail to compile package in 1.24
+  * go#71836 os: possible regression from Go 1.23 to Go 1.24 when opening DevNull with O_TRUNC
+  * go#71840 runtime: recover added in range-over-func loop body doesn't stop panic propagation / segfaults printing error
+  * go#71849 os: spurious SIGCHILD on running child process
+  * go#71855 cmd/compile: Pow10 freeze the compiler on certain condition on Go 1.24
+  * go#71858 debug/buildinfo: false positives with external scanners flag for go117 binary in testdata
+  * go#71876 reflect: Value.Seq panicking on functional iterator methods
+  * go#71904 cmd/compile: nil dereference when storing field of non-nil struct value
+  * go#71916 reflect: Value.Seq iteration value types not matching the type of given int types
+  * go#71938 cmd/compile: &quot;fatal error: found pointer to free object&quot; on arm64
+  * go#71955 proposal: runtime: allow cleanups to run concurrently
+  * go#71963 runtime/cgo: does not build with -Wdeclaration-after-statement
+  * go#71977 syscall: js/wasm file operations fail on windows / node.js (forwarded request 1250289 from jfkw)</comment>
+    <requestid>1250292</requestid>
+  </revision>
 </revisionlist>
