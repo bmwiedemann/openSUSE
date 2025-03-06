@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar  5 20:06:38 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.8
+  * Fixed a bug restoring the desktop mode on X11
+  * Fixed being unable to get message box fonts on some Linux systems
+  * Fixed a potential crash unplugging a HIDAPI controller
+  * Fixed the 2D clip rect when logical presentation is enabled
+
+-------------------------------------------------------------------
 Sun Mar  2 09:48:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.6
