@@ -1,7 +1,7 @@
 #
 # spec file for package python-moto
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-moto
-Version:        5.0.20
+Version:        5.1.0
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
@@ -35,14 +35,14 @@ Requires:       python-Jinja2 >= 2.10.1
 Requires:       python-Werkzeug >= 0.5
 Requires:       python-boto3 >= 1.9.201
 Requires:       python-botocore >= 1.14.0
-Requires:       python-cryptography >= 3.3.1
+Requires:       python-cryptography >= 35.0.0
 Requires:       python-requests >= 2.5
 Requires:       python-responses >= 0.15.0
 Requires:       python-xmltodict
 Requires:       (python-python-dateutil >= 2.1 with python-python-dateutil < 3)
 Conflicts:      (python-Werkzeug >= 2.2.0 with python-Werkzeug < 2.2.2)
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 Recommends:     python-moto-all
 Suggests:       python-moto-server
 BuildArch:      noarch
@@ -57,7 +57,7 @@ BuildRequires:  %{python_module boto3 >= 1.9.201}
 BuildRequires:  %{python_module botocore >= 1.14.0}
 BuildRequires:  %{python_module cfn-lint >= 0.40.0}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module cryptography >= 3.3.1}
+BuildRequires:  %{python_module cryptography >= 35.0.0}
 BuildRequires:  %{python_module docker >= 3.0.0}
 BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module freezegun}
@@ -67,7 +67,7 @@ BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpath-ng}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module openapi-spec-validator >= 0.5.0}
-BuildRequires:  %{python_module py-partiql-parser >= 0.5}
+BuildRequires:  %{python_module py-partiql-parser >= 0.6.1}
 BuildRequires:  %{python_module pycognito}
 BuildRequires:  %{python_module pylint}
 BuildRequires:  %{python_module pyotp}
@@ -102,7 +102,7 @@ Requires:       python-joserfc
 Requires:       python-jsondiff >= 1.1.2
 Requires:       python-moto = %{version}
 Requires:       python-openapi-spec-validator >= 0.5.0
-Requires:       python-py-partiql-parser >= 0.5.0
+Requires:       python-py-partiql-parser >= 0.6.1
 Requires:       python-pyparsing >= 3.0.7
 Requires:       python-python-multipart
 Requires:       python-setuptools

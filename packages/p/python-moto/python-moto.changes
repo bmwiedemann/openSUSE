@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 25 12:14:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1.0
+  * Dropped support for Python 3.8
+  * New Services in: Lex V2 Models, CloudHSM V2
+  * New Methods in: ElasticSearch, RDS, SecurityHub, TimeStream InfluxDB
+
+-------------------------------------------------------------------
 Wed Nov  6 12:33:40 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 5.0.20:
