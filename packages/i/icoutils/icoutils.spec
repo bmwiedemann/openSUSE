@@ -1,7 +1,7 @@
 #
 # spec file for package icoutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://www.nongnu.org/icoutils/
 Source0:        https://savannah.nongnu.org/download/icoutils/%{name}-%{version}.tar.bz2
 Source1:        https://savannah.nongnu.org/download/icoutils/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
+# build with gcc15
+Patch0:         icoutils-gcc15.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpng)
 
@@ -36,7 +38,7 @@ extension .ico or .cur, but they can also be embedded in executables or
 libraries (.dll-files).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # Don't compile strange locales en@boldquot and en@quot.

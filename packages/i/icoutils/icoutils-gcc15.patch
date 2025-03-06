@@ -1,0 +1,111 @@
+diff -upr icoutils-0.32.3/common/hmap.c icoutils-0.32.3/common/hmap.c
+--- icoutils-0.32.3/common/hmap.c	2025-03-05 09:25:44.981560847 +0100
++++ icoutils-0.32.3/common/hmap.c	2025-03-05 09:22:15.152526712 +0100
+@@ -363,7 +363,7 @@ hmap_iterator(HMap *map, HMapIterator *i
+  * function. But no other entry.
+  */
+ void
+-hmap_foreach_value(HMap *map, void (*iterator)())
++hmap_foreach_value(HMap *map, void (*iterator)(void *))
+ {
+     uint32_t c;
+ 
+@@ -378,7 +378,7 @@ hmap_foreach_value(HMap *map, void (*ite
+ }
+ 
+ void
+-hmap_foreach_key(HMap *map, void (*iterator)())
++hmap_foreach_key(HMap *map, void (*iterator)(void *))
+ {
+     uint32_t c;
+ 
+diff -upr icoutils-0.32.3/common/hmap.h icoutils-0.32.3/common/hmap.h
+--- icoutils-0.32.3/common/hmap.h	2025-03-05 09:25:44.981323844 +0100
++++ icoutils-0.32.3/common/hmap.h	2025-03-05 09:22:47.114587081 +0100
+@@ -50,8 +50,8 @@ void *hmap_put(HMap *map, void *key, voi
+ bool hmap_contains_key(HMap *map, const void *key);
+ void *hmap_remove(HMap *map, const void *key);
+ void hmap_iterator(HMap *map, HMapIterator *it);
+-void hmap_foreach_key(HMap *map, void (*iterator)());
+-void hmap_foreach_value(HMap *map, void (*iterator)());
++void hmap_foreach_key(HMap *map, void (*iterator)(void *));
++void hmap_foreach_value(HMap *map, void (*iterator)(void *));
+ void hmap_clear(HMap *map);
+ size_t hmap_size(HMap *map);
+ void hmap_set_hash_fn(HMap *map, hash_fn_t hash);
+diff -upr icoutils-0.32.3/common/llist.c icoutils-0.32.3/common/llist.c
+--- icoutils-0.32.3/common/llist.c	2025-03-05 09:25:44.981603973 +0100
++++ icoutils-0.32.3/common/llist.c	2025-03-05 09:23:17.090281970 +0100
+@@ -445,7 +445,7 @@ llist_is_empty(LList *list)
+ }
+ 
+ void
+-llist_iterate(LList *list, void (*iterator_func)())
++llist_iterate(LList *list, void (*iterator_func)(void *))
+ {
+ 	LNode *entry;
+ 	for (entry = list->first; entry != NULL; entry = entry->next)
+diff -upr icoutils-0.32.3/common/llist.h icoutils-0.32.3/common/llist.h
+--- icoutils-0.32.3/common/llist.h	2025-03-05 09:25:44.981138121 +0100
++++ icoutils-0.32.3/common/llist.h	2025-03-05 09:23:28.780490675 +0100
+@@ -68,7 +68,7 @@ LList *llist_clone(LList *list);
+ void **llist_to_array(LList *list);
+ void **llist_to_null_terminated_array(LList *list);
+ 
+-void llist_iterate(LList *list, void (*iterator_func)());
++void llist_iterate(LList *list, void (*iterator_func)(void *));
+ void llist_iterator(LList *list, LListIterator *it);
+ 
+ void llist_reverse(LList *list);
+diff -upr icoutils-0.32.3/common/tmap.c icoutils-0.32.3/common/tmap.c
+--- icoutils-0.32.3/common/tmap.c	2025-03-05 09:25:44.980985513 +0100
++++ icoutils-0.32.3/common/tmap.c	2025-03-05 09:24:45.691895844 +0100
+@@ -512,7 +512,7 @@ predecessor(TMapNode *node)
+ #endif
+ 
+ static void
+-tmap_foreach_nodes_key(TMapNode *node, void (*iterator)())
++tmap_foreach_nodes_key(TMapNode *node, void (*iterator)(void *))
+ {
+     if (node->left != &nil)
+     	tmap_foreach_nodes_key(node->left, iterator);
+@@ -522,7 +522,7 @@ tmap_foreach_nodes_key(TMapNode *node, v
+ }
+ 
+ static void
+-tmap_foreach_nodes_value(TMapNode *node, void (*iterator)())
++tmap_foreach_nodes_value(TMapNode *node, void (*iterator)(void *))
+ {
+     if (node->left != &nil)
+     	tmap_foreach_nodes_value(node->left, iterator);
+@@ -532,14 +532,14 @@ tmap_foreach_nodes_value(TMapNode *node,
+ }
+ 
+ void
+-tmap_foreach_key(TMap *map, void (*iterator)())
++tmap_foreach_key(TMap *map, void (*iterator)(void *))
+ {
+     if (map->root != &nil)
+ 	tmap_foreach_nodes_key(map->root, iterator);
+ }
+ 
+ void
+-tmap_foreach_value(TMap *map, void (*iterator)())
++tmap_foreach_value(TMap *map, void (*iterator)(void *))
+ {
+     if (map->root != &nil)
+ 	tmap_foreach_nodes_value(map->root, iterator);
+diff -upr icoutils-0.32.3/common/tmap.h icoutils-0.32.3/common/tmap.h
+--- icoutils-0.32.3/common/tmap.h	2025-03-05 09:25:44.981522359 +0100
++++ icoutils-0.32.3/common/tmap.h	2025-03-05 09:25:17.592095983 +0100
+@@ -51,8 +51,8 @@ void *tmap_remove(TMap *map, const void
+ void tmap_iterator(TMap *map, TMapIterator *it); /* value iterator */
+ bool tmap_iterator_partial(TMap *map, TMapIterator *it, const void *match, comparison_fn_t comparator);
+ void tmap_clear(TMap *map);
+-void tmap_foreach_key(TMap *map, void (*iterator)());
+-void tmap_foreach_value(TMap *map, void (*iterator)());
++void tmap_foreach_key(TMap *map, void (*iterator)(void *));
++void tmap_foreach_value(TMap *map, void (*iterator)(void *));
+ 
+ #ifdef ENABLE_TMAP_TESTING
+ #include <stdio.h>

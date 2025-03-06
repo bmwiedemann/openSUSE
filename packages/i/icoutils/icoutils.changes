@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  5 08:29:46 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + icoutils-gcc15.patch
+
+-------------------------------------------------------------------
 Fri May  6 13:36:10 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - source urls switched to https
