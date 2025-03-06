@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Mar  6 08:06:35 UTC 2025 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.37.0
+  * If an undefined weak symbol is not resolved to a defined symbol at link time,
+    the linker can choose whether to promote the symbol to a dynamic symbol or not.
+    If promoted, the weak symbol has another chance to be resolved to a defined
+    symbol at load time. Otherwise, it is resolved to address 0 at link time.
+    Previously, mold always resolved remaining undefined weak symbols in an
+    executable to address 0 at link time. Now, you can instruct the linker to
+    promote them to dynamic symbols using -z dynamic-undefined-weak. (1822e47)
+  * [x86-64] The relocation types
+    R_X86_64_CODE_4_{GOTPCRELX,GOTTPOFF,GOTPC32_TLSDESC} and
+    R_X86_64_CODE_6_GOTTPOFF are now supported. These relocations are for Intel APX
+    (Advanced Performance Extensions), which extends the number of general-purpose
+    registers from 16 to 32. (83152ac, a17202d)
+  * [ARM32] The R_ARM_THM_JUMP8 relocation type is now supported. (1fbbcec)
+  * [ARM32] Previously, the .ARM.exidx section (which contains exception-handling
+    records) was not subject to garbage collection, even when --gc-sections was
+    specified. This prevented all functions from being garbage-collected, as they
+    were referenced by exception-handling records. Now, mold correctly
+    garbage-collects unused .ARM.exidx records and functions. (16f7599)
+  * Previously, --compress-debug-sections was ignored if --separate-debug-file was
+    specified. Now, mold compresses debug information sections even when they are in
+    a separate debug file. (bab7dd1)
+
+-------------------------------------------------------------------
 Thu Jan  9 08:02:26 UTC 2025 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.36.0
