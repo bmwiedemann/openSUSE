@@ -5776,4 +5776,41 @@ I cannot test locally unfortunately.
     of expected design</comment>
     <requestid>1247240</requestid>
   </revision>
+  <revision rev="356" vrev="1">
+    <srcmd5>92864ee628c5e408ef236a6f4c8b078a</srcmd5>
+    <version>128.8.0</version>
+    <time>1741268959</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 128.8.0
+  * Opening an .EML file in profiles with many folders could take a long time
+  * Users with many folders experienced poor performance when resizing
+    message panes
+  * &quot;Replace&quot; button in compose window was overwritten when the window
+    was narrow
+  * Export to mobile did not work when &quot;Use default server&quot; was selected
+  * &quot;Save Link As&quot; was not working in feed web content
+  MFSA 2025-18 (bsc#1237683)
+  * CVE-2024-43097 (bmo#1945624)
+    Overflow when growing an SkRegion's RunArray
+  * CVE-2025-1930 (bmo#1902309)
+    AudioIPC StreamData could trigger a use-after-free in the
+    Browser process
+  * CVE-2025-1931 (bmo#1944126)
+    Use-after-free in WebTransportChild
+  * CVE-2025-1932 (bmo#1944313)
+    Inconsistent comparator in XSLT sorting led to out-of-bounds access
+  * CVE-2025-1933 (bmo#1946004)
+    JIT corruption of WASM i32 return values on 64-bit CPUs
+  * CVE-2025-1934 (bmo#1942881)
+    Unexpected GC during RegExp bailout processing
+  * CVE-2025-1935 (bmo#1866661)
+    Clickjacking the registerProtocolHandler info-bar
+  * CVE-2025-1936 (bmo#1940027)
+    Adding %00 and a fake extension to a jar: URL  changed the
+    interpretation of the contents
+  * CVE-2025-1937 (bmo#1938471, bmo#1940716)
+    Memory safety bugs fixed in Firefox 136, Thunderbird 136,
+    Firefox ESR 115.21, Firefox ESR 128.8, and Thunderbird 128.8</comment>
+    <requestid>1250560</requestid>
+  </revision>
 </revisionlist>
