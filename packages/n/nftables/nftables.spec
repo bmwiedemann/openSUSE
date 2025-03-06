@@ -1,7 +1,7 @@
 #
 # spec file for package nftables
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Source:         http://ftp.netfilter.org/pub/%name/%name-%version.tar.xz
 Source2:        http://ftp.netfilter.org/pub/%name/%name-%version.tar.xz.sig
 Source3:        %name.keyring
 Source4:        nftables.rpmlintrc
+Patch1:         0001-tools-add-a-systemd-unit-for-static-rulesets.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -102,37 +103,51 @@ mkdir bin
 ln -s "%_bindir/docbook-to-man" bin/docbook2x-man
 export PATH="$PATH:$PWD/bin"
 mkdir obj
-pushd obj/
+cd obj/
 %define _configure ../configure
 %configure --disable-silent-rules --disable-static --docdir="%_docdir/%name" \
 	--includedir="%_includedir/%name" --with-json \
 	--enable-python --with-python-bin="$(which python3)"
 %make_build
-popd
-pushd py
+cd -
+cd py
 %pyproject_wheel
-popd
+cd -
 
 %install
 b="%buildroot"
 %make_install -C obj
-pushd py
+perl -i -lpe 's{^(Conflicts=.*)}{$1 firewalld.service}' "$b/%_unitdir/nftables.service"
+cd py
 %pyproject_install
 %python_expand %fdupes %buildroot/%{$python_sitelib}
-popd
 rm -f "%buildroot/%_libdir"/*.la
 mkdir -p "$b/%_docdir/%name/examples"
 mv -v "$b/%_datadir/nftables"/*.nft "$b/%_docdir/%name/examples/"
 
 %ldconfig_scriptlets -n libnftables1
 
+%pre
+%service_add_pre nftables.service
+
+%post
+%service_add_post nftables.service
+
+%preun
+%service_del_preun nftables.service
+
+%postun
+%service_del_postun nftables.service
+
 %files
 %license COPYING
-%_sysconfdir/nftables/
+%dir %_sysconfdir/nftables/
+%_sysconfdir/nftables/osf/
 %_sbindir/nft
 %_mandir/man5/*.5*
 %_mandir/man8/nft*
 %_docdir/%name/
+%_unitdir/nftables.service
 
 %files -n libnftables1
 %_libdir/libnftables.so.1*
