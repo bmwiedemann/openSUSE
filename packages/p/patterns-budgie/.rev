@@ -61,4 +61,12 @@
 </comment>
     <requestid>1037899</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cdfaed6b5249752602c8ebccf56f3bf0</srcmd5>
+    <version>20250305</version>
+    <time>1741362010</time>
+    <user>anag+factory</user>
+    <comment>Budgie on Wayland</comment>
+    <requestid>1250737</requestid>
+  </revision>
 </revisionlist>

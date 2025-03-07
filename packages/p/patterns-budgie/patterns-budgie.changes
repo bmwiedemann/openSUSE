@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  6 15:45:38 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 20250305:
+  * No longer pull lightdm; budgie-wayland-session pulls sddm
+  * Remove unsupported Budgie v1 applets
+
+-------------------------------------------------------------------
 Thu Nov 24 13:04:16 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add budgie-backgrounds

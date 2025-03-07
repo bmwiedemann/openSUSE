@@ -19,7 +19,7 @@
 
 %bcond_with betatest
 Name:           patterns-budgie
-Version:        20220527
+Version:        20250305
 Release:        0
 Summary:        Patterns for Installation (Budgie)
 License:        MIT
@@ -47,7 +47,6 @@ Provides:       pattern-visible()
 Requires:       pattern() = x11
 Requires:       pattern() = x11_yast
 Requires:       budgie-desktop
-Requires:       lightdm
 Recommends:     gnome-terminal
 Recommends:     budgie-backgrounds
 Recommends:     gnome-software
@@ -89,9 +88,9 @@ Provides:       pattern-order() = 2370
 Provides:       pattern-visible()
 Requires:       pattern() = budgie
 ## Other applets ##
-Recommends:     budgie-calendar-applet
-Recommends:     budgie-screenshot-applet
-Recommends:     budgie-haste-applet
+#Recommends:     budgie-calendar-applet
+#Recommends:     budgie-screenshot-applet
+#Recommends:     budgie-haste-applet
 ## BUDGIE EXTRAS ##
 Recommends:     budgie-app-launcher-applet
 Recommends:     budgie-applications-menu-applet
