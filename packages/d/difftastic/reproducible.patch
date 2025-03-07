@@ -1,0 +1,19 @@
+https://github.com/Wilfred/difftastic/pull/813 
+
+Avoid a race in rust
+that caused random variations in the binary every time
+breaking reproducible builds.
+
+diff --git a/build.rs b/build.rs
+index 5c5b4f6..232f6fd 100644
+--- a/build.rs
++++ b/build.rs
+@@ -264,7 +264,7 @@ fn main() {
+         println!("cargo:rerun-if-changed={}", parser.src_dir);
+     }
+ 
+-    parsers.par_iter().for_each(|p| p.build());
++    parsers.iter().for_each(|p| p.build());
+     commit_info();
+ 
+     if let Some((version, _, _)) = rustc::triple() {

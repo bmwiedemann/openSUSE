@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  7 10:18:26 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to avoid a race (boo#1102408)
+
+-------------------------------------------------------------------
 Fri Feb 14 05:22:22 UTC 2025 - munix9@googlemail.com
 
 - update to 0.63.0:

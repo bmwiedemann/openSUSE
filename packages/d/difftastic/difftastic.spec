@@ -25,6 +25,7 @@ License:        Apache-2.0 AND MIT
 URL:            https://difftastic.wilfred.me.uk/
 Source0:        https://github.com/Wilfred/difftastic/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Patch1:         reproducible.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
