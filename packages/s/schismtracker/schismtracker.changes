@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  7 09:10:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20250307
+  * Fix a crash under Linux, if the JACK libraries were loaded but
+    the server is not started, or the server dies while Schism is
+    running.
+  * Optimize sample drawing routines to be less CPU intensive with
+    particularly large samples.
+
+-------------------------------------------------------------------
 Thu Mar  6 07:48:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20250305
