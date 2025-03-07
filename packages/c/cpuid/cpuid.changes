@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  7 09:03:43 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to release 20241023
+  * cpuid.c: Fixed cut&paste error in print_80000025_ebx, possibly
+    resulting in SIGSEGV: cached segments hard limit is only bit 11
+
+-------------------------------------------------------------------
 Wed Oct 23 09:10:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20241021
