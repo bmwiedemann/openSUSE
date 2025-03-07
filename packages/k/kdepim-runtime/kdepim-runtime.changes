@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:00:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * urlconfigurationdialog.ui - move the protocol buttons into a QButtonGroup (kde#455787)
+  * Don't access payload when it's not available (kde#490307)
+  * agents/newmailnotifier: use <br/> for notifications
+
+-------------------------------------------------------------------
 Tue Feb  4 12:29:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
