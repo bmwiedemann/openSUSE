@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  6 11:28:09 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 2.5.12
+  * Added descriptive FileNotFoundError handler for serial device connection
+  * catch unhandled OSError when serial port in use
+  * Add optional CLI parameter to specify node info fields to show with --nodes parameter.
+  * 464: allow for 0x node prefix values
+  * Add text message port cli option
+  * Add new channels from an add URL with the new --ch-add-url option
+
+-------------------------------------------------------------------
 Wed Feb 19 19:12:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file.
