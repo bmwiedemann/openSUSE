@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  7 07:00:35 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.2:
+  * CMake: polish export config #182
+  * This fixes a bug that results in coding all-zero codeblocks #183
+
+-------------------------------------------------------------------
 Tue Feb 25 14:45:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim redundancies from descriptions and fix spellos
