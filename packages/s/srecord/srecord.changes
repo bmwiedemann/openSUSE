@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 28 14:12:49 UTC 2025 - pgajdos@suse.com
+
+- build with gcc15
+- added patches
+  fix https://github.com/sierrafoxtrot/srecord/issues/79
+  + srecord-gcc15.patch
+
+-------------------------------------------------------------------
 Sat Sep 30 13:17:30 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.65

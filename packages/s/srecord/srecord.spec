@@ -1,7 +1,7 @@
 #
 # spec file for package srecord
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://srecord.sourceforge.net/
 Source:         https://sourceforge.net/projects/srecord/files/srecord/%{short_version}/srecord-%{version}-Source.tar.gz
+# https://github.com/sierrafoxtrot/srecord/issues/79
+Patch0:         srecord-gcc15.patch
 BuildRequires:  cmake >= 3.21
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -69,7 +71,7 @@ many different manipulations.
 This package contains documentation in PDF format.
 
 %prep
-%setup -q -n %{name}-%{version}-Source
+%autosetup -p1 -n %{name}-%{version}-Source
 # Workaround git not working properly with tarball, fixed upstream
 sed -ie '/GIT Hash Not Found/ d' etc/configure.cmake
 # Fix library build

@@ -1,0 +1,12 @@
+Index: srecord-1.65.0-Source/srecord/input/file/hp64k.h
+===================================================================
+--- srecord-1.65.0-Source.orig/srecord/input/file/hp64k.h
++++ srecord-1.65.0-Source/srecord/input/file/hp64k.h
+@@ -20,6 +20,7 @@
+ #ifndef LIB_INPUT_FILE_HP64K
+ #define LIB_INPUT_FILE_HP64K
+ 
++#include <cstdint>
+ #include <srecord/input/file.h>
+ 
+ namespace srecord {
