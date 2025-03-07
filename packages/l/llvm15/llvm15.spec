@@ -1,7 +1,7 @@
 #
 # spec file for package llvm15
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -396,6 +396,14 @@ Patch36:        clang-test-xfail-gnuless-triple.patch
 Patch37:        llvm-armv7-fix-vector-compare-with-zero-lowering.patch
 # PATCH-FIX-UPSTREAM: Use symbol versioning also for libclang-cpp.so.
 Patch38:        clang-shlib-symbol-versioning.patch
+# PATCH-FIX-UPSTREAM: use shlib.quote to fix Python 3.13 compatibility
+Patch39:        libcxx-use-shlex-quote.patch
+# PATCH-FIX-UPSTREAM: Adapt lldb to support Python 3.13
+Patch40:        lldb-support-python-3.13.patch
+# PATCH-FIX-UPSTREAM: Remove unused imports fix Python 3.13 compatibility
+Patch41:        libcxx-remove-unused-imports.patch
+# PATCH-FIX-OPENSUSE: Remove shlex.quote to fix Python 3.13 compatibility
+Patch42:        use-shlex-quote.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -406,6 +414,7 @@ BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
+BuildRequires:  python3-setuptools
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): update-alternatives
@@ -833,6 +842,7 @@ This package contains the development files for Polly.
 %patch -P 33 -p2
 %patch -P 34 -p2
 %patch -P 37 -p1
+%patch -P 42 -p1
 
 pushd clang-%{_version}.src
 %patch -P 2 -p1
@@ -866,6 +876,7 @@ popd
 %if %{with lldb}
 pushd lldb-%{_version}.src
 %patch -P 11 -p1
+%patch -P 40 -p1
 popd
 %endif
 
@@ -876,6 +887,8 @@ popd
 
 pushd libcxx-%{_version}.src
 %patch -P 15 -p2
+%patch -P 39 -p1
+%patch -P 41 -p1
 rm test/libcxx/thread/thread.threads/thread.thread.this/sleep_for.pass.cpp
 rm test/std/localization/locale.categories/category.time/locale.time.get.byname/get_monthname.pass.cpp
 rm test/std/localization/locale.categories/category.time/locale.time.get.byname/get_monthname_wide.pass.cpp

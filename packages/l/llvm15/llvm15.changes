@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  6 08:08:26 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patches, to actually fix the build with Python 3.13:
+  * libcxx-use-shlex-quote.patch
+  * libcxx-remove-unused-imports.patch
+  * lldb-support-python-3.13.patch
+  * use-shlex-quote.patch
+
+-------------------------------------------------------------------
 Sat Nov 16 22:38:02 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Apply clang-shlib-symbol-versioning.patch to add symbol versions
