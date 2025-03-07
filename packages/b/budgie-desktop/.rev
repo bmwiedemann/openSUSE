@@ -507,4 +507,12 @@
 </comment>
     <requestid>1241187</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>adbcd956f7d0522fe062c60bbdc0a58d</srcmd5>
+    <version>10.9.2+24</version>
+    <time>1741362011</time>
+    <user>anag+factory</user>
+    <comment>Budgie on Wayland</comment>
+    <requestid>1251131</requestid>
+  </revision>
 </revisionlist>

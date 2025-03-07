@@ -1,0 +1,31 @@
+0From bf26ad006f8d41a04eaa98c1076d33b0c99678ba Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Thu, 30 Jan 2025 10:38:35 +0000
+Subject: [PATCH] [labwc bridge] Path not updated after user config created
+
+Causes permission denied error as it'll try to write to /usr
+(Issue occurs on firstboot only)
+---
+ src/bridges/labwc/labwc_bridge.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/bridges/labwc/labwc_bridge.py b/src/bridges/labwc/labwc_bridge.py
+index 17281f52d..b7f5ade65 100644
+--- a/src/bridges/labwc/labwc_bridge.py
++++ b/src/bridges/labwc/labwc_bridge.py
+@@ -110,6 +110,7 @@ def __init__(self):
+                 folder = self.user_config("")
+                 os.makedirs(folder, exist_ok=True)
+                 shutil.copy(path, search_path[0])
++                path = search_path[0]
+         except Exception as e:
+             self.log.critical("Failed to copy " + path + " to " + search_path[0])
+             self.log.critical(e)
+@@ -122,6 +123,7 @@ def __init__(self):
+         try:
+             if path != search_path[0]:
+                 shutil.copy(path, search_path[0])
++                path = search_path[0]
+         except Exception as e:
+             self.log.critical("Failed to copy " + path + " to " + search_path[0])
+             self.log.critical(e)

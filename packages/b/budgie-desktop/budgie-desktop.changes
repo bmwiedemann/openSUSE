@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jan 29 14:52:00 UTC 2025 - gmbr3@opensuse.org
+
+- Update to version 10.9.2+24:
+  * icon-tasklist: Remove last references to xid
+  * Switch session files, leave magpie session in the code
+    for a future release
+  * Center the polkit dialog
+  * Rejig notifications to work with layer-shell positioning
+  * Screen Dimming
+  * Add a root menu for the desktop
+  * Add our wayland compatible screenlocker
+  * Add a bridge between gsettings and labwc
+  * Change our Desktop Current Session ID to Budgie
+    from Budgie:GNOME
+  * Session management
+  * fix: gicon resulting in extremely bright or dim icons when
+    no icon was found (used fallback)
+  * windowing: Remove window mapper class since we don't need
+    it on Wayland
+  * Add support for background handling via swaybg
+- Move everything to wayland
+- Add patches to fix minor issues:
+  * user-config-path.patch
+  * wrong-typelib-version.patch
+
+-------------------------------------------------------------------
 Mon Jan 27 09:25:24 UTC 2025 - gmbr3@opensuse.org
 
 - Update to version 10.9.2+5:
