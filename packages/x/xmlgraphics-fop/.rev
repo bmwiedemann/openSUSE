@@ -609,4 +609,12 @@
     <comment>2.10 fixing bsc#1231428, CVE-2024-28168</comment>
     <requestid>1207477</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>d8c121f2cce6dcdb788fe1370740f456</srcmd5>
+    <version>2.10</version>
+    <time>1741361927</time>
+    <user>anag+factory</user>
+    <comment>more reproducible changes</comment>
+    <requestid>1250478</requestid>
+  </revision>
 </revisionlist>

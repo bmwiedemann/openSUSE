@@ -1,34 +1,153 @@
-https://github.com/apache/xmlgraphics-fop/pull/65
-partial fix for
-https://issues.apache.org/jira/browse/FOP-2854
-https://github.com/openSUSE/daps/issues/482
-
-commit 0d3f0f9a473aad6f315fd60cc6ed1447afb791ef
-Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
-Date:   Wed Dec 23 13:53:56 2020 +0100
-
-    FOP-2854: Allow to override CreationDate
-    
-    Allow to override build date with SOURCE_DATE_EPOCH
-    in order to make builds reproducible.
-    See https://reproducible-builds.org/ for why this is good
-    and https://reproducible-builds.org/specs/source-date-epoch/
-    for the definition of this variable.
-    
-    This patch was done while working on reproducible builds for openSUSE.
-
-diff --git a/fop-core/src/main/java/org/apache/fop/pdf/PDFMetadata.java b/fop-core/src/main/java/org/apache/fop/pdf/PDFMetadata.java
-index 3af9af606..ff708e371 100644
+--- a/fop-core/src/main/java/org/apache/fop/pdf/FileIDGenerator.java
++++ b/fop-core/src/main/java/org/apache/fop/pdf/FileIDGenerator.java
+@@ -86,7 +86,9 @@ abstract class FileIDGenerator {
+ 
+         private void generateFileID() {
+             DateFormat df = new SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS");
+-            digest.update(PDFDocument.encode(df.format(new Date())));
++            String sde = System.getenv("SOURCE_DATE_EPOCH");
++            Date d = (sde == null) ? new Date() : new Date(1000 * Long.parseLong(sde));
++            digest.update(PDFDocument.encode(df.format(d)));
+             // Ignoring the filename here for simplicity even though it's recommended
+             // by the PDF spec
+             digest.update(PDFDocument.encode(String.valueOf(document.getCurrentFileSize())));
+--- a/fop-core/src/main/java/org/apache/fop/pdf/PDFEmbeddedFile.java
++++ b/fop-core/src/main/java/org/apache/fop/pdf/PDFEmbeddedFile.java
+@@ -35,8 +35,10 @@ public class PDFEmbeddedFile extends PDFStream {
+         put("Type", new PDFName("EmbeddedFile"));
+         put("Subtype", new PDFName("application/octet-stream"));
+         PDFDictionary params = new PDFDictionary();
+-        params.put("CreationDate", PDFInfo.formatDateTime(new Date()));
+-        params.put("ModDate", PDFInfo.formatDateTime(new Date()));
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        Date d = (sde == null) ? new Date() : new Date(1000 * Long.parseLong(sde));
++        params.put("CreationDate", PDFInfo.formatDateTime(d));
++        params.put("ModDate", PDFInfo.formatDateTime(d));
+         put("Params", params);
+     }
+ 
+--- a/fop-core/src/main/java/org/apache/fop/pdf/PDFInfo.java
++++ b/fop-core/src/main/java/org/apache/fop/pdf/PDFInfo.java
+@@ -251,7 +251,8 @@ public class PDFInfo extends PDFObject {
+ 
+             // creation date in form (D:YYYYMMDDHHmmSSOHH'mm')
+             if (creationDate == null) {
+-                creationDate = new Date();
++                String sde = System.getenv("SOURCE_DATE_EPOCH");
++                creationDate = (sde == null) ? new Date() : new Date(1000 * Long.parseLong(sde));
+             }
+             bout.write(encode("/CreationDate "));
+             bout.write(encodeString(formatDateTime(creationDate)));
 --- a/fop-core/src/main/java/org/apache/fop/pdf/PDFMetadata.java
 +++ b/fop-core/src/main/java/org/apache/fop/pdf/PDFMetadata.java
-@@ -134,7 +134,9 @@ public class PDFMetadata extends PDFStream {
+@@ -135,7 +135,8 @@ public class PDFMetadata extends PDFStream {
  
          //Set creation date if not available, yet
          if (info.getCreationDate() == null) {
 -            Date d = new Date();
-+            Date d = System.getenv("SOURCE_DATE_EPOCH") == null ?
-+                new Date() :
-+                new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
++            String sde = System.getenv("SOURCE_DATE_EPOCH");
++            Date d = (sde == null) ? new Date() : new Date(1000 * Long.parseLong(sde));
              info.setCreationDate(d);
          }
  
+--- a/fop-core/src/main/java/org/apache/fop/pdf/PDFSignature.java
++++ b/fop-core/src/main/java/org/apache/fop/pdf/PDFSignature.java
+@@ -106,7 +106,9 @@ public class PDFSignature {
+             if (signParams.getReason() != null) {
+                 put("Reason", signParams.getReason());
+             }
+-            put("M", PDFInfo.formatDateTime(new Date()));
++            String sde = System.getenv("SOURCE_DATE_EPOCH");
++            Date d = (sde == null) ? new Date() : new Date(1000 * Long.parseLong(sde));
++            put("M", PDFInfo.formatDateTime(d));
+             PDFArray array = new PDFArray();
+             array.add(new SigRef());
+             put("Reference", array);
+--- a/fop-core/src/main/java/org/apache/fop/render/intermediate/IFRenderer.java
++++ b/fop-core/src/main/java/org/apache/fop/render/intermediate/IFRenderer.java
+@@ -544,7 +544,9 @@ public class IFRenderer extends AbstractPathOrientedRenderer {
+         } else {
+             xmpBasic.setCreatorTool(Version.getVersion());
+         }
+-        xmpBasic.setMetadataDate(new java.util.Date());
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        java.util.Date d = (sde == null) ? new java.util.Date() : new java.util.Date(1000 * Long.parseLong(sde));
++        xmpBasic.setMetadataDate(d);
+         if (getUserAgent().getCreationDate() != null) {
+             xmpBasic.setCreateDate(getUserAgent().getCreationDate());
+         } else {
+--- a/fop-core/src/main/java/org/apache/fop/render/pdf/PDFRenderingUtil.java
++++ b/fop-core/src/main/java/org/apache/fop/render/pdf/PDFRenderingUtil.java
+@@ -262,7 +262,9 @@ class PDFRenderingUtil {
+         fopXMP.mergeInto(docXMP, exclude);
+         XMPBasicAdapter xmpBasic = XMPBasicSchema.getAdapter(docXMP);
+         //Metadata was changed so update metadata date
+-        xmpBasic.setMetadataDate(new java.util.Date());
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        java.util.Date d = (sde == null) ? new java.util.Date() : new java.util.Date(1000 * Long.parseLong(sde));
++        xmpBasic.setMetadataDate(d);
+         PDFMetadata.updateInfoFromMetadata(docXMP, pdfDoc.getInfo());
+ 
+         PDFMetadata pdfMetadata = pdfDoc.getFactory().makeMetadata(
+@@ -481,7 +483,9 @@ class PDFRenderingUtil {
+                 augmentDictionary((PDFDictionary)currentPage.get("DPart"), extension);
+             }
+         } else if (type == PDFDictionaryType.PagePiece) {
+-            String date = DateFormatUtil.formatPDFDate(new Date(), TimeZone.getDefault());
++            String sde = System.getenv("SOURCE_DATE_EPOCH");
++            Date dd = (sde == null) ? new Date() : new Date(1000 * Long.parseLong(sde));
++            String date = DateFormatUtil.formatPDFDate(dd, TimeZone.getDefault());
+             if (currentPage.get("PieceInfo") == null) {
+                 currentPage.put("PieceInfo", new PDFDictionary());
+                 currentPage.put("LastModified", date);
+--- a/fop-core/src/main/java/org/apache/fop/render/ps/PSDocumentHandler.java
++++ b/fop-core/src/main/java/org/apache/fop/render/ps/PSDocumentHandler.java
+@@ -211,7 +211,9 @@ public class PSDocumentHandler extends AbstractBinaryWritingIFDocumentHandler {
+         //PostScript Header
+         gen.writeln(DSCConstants.PS_ADOBE_30);
+         gen.writeDSCComment(DSCConstants.CREATOR, new String[] {getUserAgent().getProducer()});
+-        gen.writeDSCComment(DSCConstants.CREATION_DATE, new Object[] {new java.util.Date()});
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        java.util.Date d = (sde == null) ? new java.util.Date() : new java.util.Date(1000 * Long.parseLong(sde));
++        gen.writeDSCComment(DSCConstants.CREATION_DATE, new Object[] {d});
+         gen.writeDSCComment(DSCConstants.LANGUAGE_LEVEL, gen.getPSLevel());
+         gen.writeDSCComment(DSCConstants.PAGES, new Object[] {DSCConstants.ATEND});
+         gen.writeDSCComment(DSCConstants.BBOX, DSCConstants.ATEND);
+--- a/fop-core/src/main/java/org/apache/fop/tools/anttasks/FileCompare.java
++++ b/fop-core/src/main/java/org/apache/fop/tools/anttasks/FileCompare.java
+@@ -149,8 +149,10 @@ public class FileCompare {
+     }
+ 
+     private void writeHeader(PrintWriter results) {
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        Date d = (sde == null) ? new Date() : new Date(1000 * Long.parseLong(sde));
+         String dateTime = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,
+-                DateFormat.MEDIUM).format(new Date());
++                DateFormat.MEDIUM).format(d);
+         results.println("<html><head><title>Test Results</title></head><body>\n");
+         results.println("<h2>Compare Results<br>");
+         results.println("<font size='1'>created " + dateTime
+--- a/fop-core/src/test/java/org/apache/fop/render/rtf/rtflib/testdocs/TestDocument.java
++++ b/fop-core/src/test/java/org/apache/fop/render/rtf/rtflib/testdocs/TestDocument.java
+@@ -82,7 +82,8 @@ abstract class TestDocument {
+         para.newLineBreak();
+         para.newText("generated by class " + getClass().getName());
+         para.newLineBreak();
+-        para.newText("generated on " + new Date());
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        para.newText("generated on " + (sde == null) ? new Date() : new Date(1000 * Long.parseLong(sde)));
+         para.close();
+    }
+ }
+--- a/fop/examples/plan/src/org/apache/fop/plan/SimplePlanDrawer.java
++++ b/fop/examples/plan/src/org/apache/fop/plan/SimplePlanDrawer.java
+@@ -129,7 +129,8 @@ public class SimplePlanDrawer implements PlanDrawer {
+     }
+ 
+     protected void addPlan(Document doc, Element svgRoot, EventList data) {
+-        Date currentDate = new Date();
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        Date currentDate = (sde == null) ? new Date() : new Date(1000 * Long.parseLong(sde));
+ 
+         Date lastWeek = startDate;
+         Date future = endDate;

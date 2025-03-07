@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  5 17:50:56 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * reproducible.patch
+    + more use of SOURCE_DATE_EPOCH instead of current time to make
+      xmlgraphics-fop generate reproducible documents
+
+-------------------------------------------------------------------
 Sat Oct 12 16:27:41 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - version 2.10
