@@ -1,7 +1,7 @@
 #
 # spec file for package elilo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,8 @@ Patch10:        elilo-de-debianify.diff
 Patch11:        eliloalt-no-date.diff
 Patch12:        elilo-binutils-2.36-fix.patch
 Patch13:        elilo-c99.patch
+# build with gcc15
+Patch14:        elilo-gcc15.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 

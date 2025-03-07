@@ -1,0 +1,36 @@
+--- elilo-3.16-source/elilo.c	2025-03-06 10:40:50.280032447 +0100
++++ elilo-3.16-source/elilo.c	2025-03-06 10:40:09.746026289 +0100
+@@ -404,15 +404,15 @@ check_edd30(VOID)
+ {
+ 	EFI_STATUS	status;
+ 	UINTN		l = sizeof(BOOLEAN);
+-	UINT8		bool = FALSE;
++	UINT8		boolean = FALSE;
+ 	INTN		ret = -1;
+ 
+-	status = uefi_call_wrapper(RT->GetVariable, 5, L"EDD30", &edd30_guid, NULL, &l, &bool);
+-	if (status == EFI_BUFFER_TOO_SMALL || (bool != TRUE && bool != FALSE)) {
++	status = uefi_call_wrapper(RT->GetVariable, 5, L"EDD30", &edd30_guid, NULL, &l, &boolean);
++	if (status == EFI_BUFFER_TOO_SMALL || (boolean != TRUE && boolean != FALSE)) {
+ 		ERR_PRT((L"Warning: EDD30 EFI variable is not boolean value: forcing it to TRUE"));
+ 		return -1;
+ 	}
+-	if (status == EFI_SUCCESS && bool == TRUE) {
++	if (status == EFI_SUCCESS && boolean == TRUE) {
+ 		VERB_PRT(3, Print(L"EDD30 is TRUE\n"));
+ 		elilo_opt.edd30_on = TRUE;
+ 		ret = 0;
+@@ -434,10 +434,10 @@ force_edd30(VOID)
+ {
+ 	EFI_STATUS	status;
+ 	UINTN		l = sizeof(BOOLEAN);
+-	UINT8		bool;
++	UINT8		boolean;
+ 
+-	bool = TRUE;
+-	status = uefi_call_wrapper(RT->SetVariable, 5, L"EDD30", &edd30_guid, EDD30_ATTR, l, &bool);
++	boolean = TRUE;
++	status = uefi_call_wrapper(RT->SetVariable, 5, L"EDD30", &edd30_guid, EDD30_ATTR, l, &boolean);
+ 	if (EFI_ERROR(status)) {
+ 		ERR_PRT((L"can't set EDD30 variable: ignoring it"));
+ 		return -1;

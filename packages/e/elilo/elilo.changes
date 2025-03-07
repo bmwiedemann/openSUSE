@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  6 09:44:38 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + elilo-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Jul 25 15:55:33 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
 
 - Add elilo-c99.patch so that the package conforms to the C99
