@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:01:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * importcertificatescommand: Fix i18n call
+
+-------------------------------------------------------------------
 Tue Feb  4 12:29:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
