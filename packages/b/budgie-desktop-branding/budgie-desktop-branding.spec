@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-desktop-branding
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Callum Farmer <gmbr3@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@
 %define bversion %{nsuffix}
 %endif
 Name:           budgie-desktop-branding
-Version:        20240412.1
+Version:        20250305.1
 Release:        0
 Summary:        Branding of the Budgie Desktop Environment
 License:        CC-BY-SA-3.0 AND GPL-2.0-only
@@ -103,6 +103,7 @@ desktop environment.
 # openSUSE
 %if !0%{?is_backports}
 %if 0%{?suse_version} < 1600
+sed -e 's-default.png-5120x3200.png-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/21_budgie_gnome_settings_%{nsuffix}.gschema.override
 sed -e 's-png-jpg-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/21_budgie_gnome_settings_%{nsuffix}.gschema.override
 %endif
 %else
