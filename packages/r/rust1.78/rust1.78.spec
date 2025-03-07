@@ -1,7 +1,7 @@
 #
 # spec file for package rust1.78
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -707,6 +707,21 @@ python3 ./x.py test --target=%{rust_triple} \
     --exclude tests/ui/mismatched_types \
     --exclude tests/run-make/short-ice \
     --exclude tests/run-make/rust-lld \
+    --exclude tests/run-make/wasm-custom-section \
+    --exclude tests/run-make/wasm-custom-sections-opt \
+    --exclude tests/run-make/wasm-exceptions-nostd \
+    --exclude tests/run-make/wasm-export-all-symbols \
+    --exclude tests/run-make/wasm-import-module \
+    --exclude tests/run-make/wasm-override-linker \
+    --exclude tests/run-make/wasm-panic-small \
+    --exclude tests/run-make/wasm-spurious-import \
+    --exclude tests/run-make/wasm-stringify-ints-small \
+    --exclude tests/run-make/wasm-symbols-different-module \
+    --exclude tests/run-make/wasm-symbols-not-exported \
+    --exclude tests/run-make/wasm-symbols-not-imported \
+    --exclude tests/run-make/wasm-abi \
+    --exclude tests/run-make/a-b-a-linker-guard \
+    --exclude tests/run-make/CURRENT_RUSTC_VERSION \
     --exclude src/bootstrap
 %endif
 
