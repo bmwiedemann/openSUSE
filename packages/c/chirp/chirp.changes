@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  7 02:22:00 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250307:
+  * th_uv88: Add Dual Wait settings for RA89,P2,etc
+  * Fix Cut/Paste active in right-click for query source
+  * Un-flatten int settings in browser view
+  * Updated Italian Translation
+
+-------------------------------------------------------------------
 Sat Mar  1 19:25:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250301:
