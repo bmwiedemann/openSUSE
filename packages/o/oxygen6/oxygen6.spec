@@ -116,7 +116,6 @@ Provides:       oxygen5-style = %{version}
 Obsoletes:      oxygen5-style < %{version}
 Obsoletes:      oxygen5-style-lang < %{version}
 # The oxygen desktop theme was moved here in 6.2.0
-Conflicts:      plasma-framework < 6.2.0
 Conflicts:      libplasma6-desktoptheme < 6.2.0
 Conflicts:      plasma-framework-desktoptheme < 6.2.0
 

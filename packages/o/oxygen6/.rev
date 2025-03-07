@@ -159,4 +159,13 @@
     <comment>Plasma 6.3.2(.1) (forwarded request 1248621 from Vogtinator)</comment>
     <requestid>1248670</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>e733079aad6717983600e4f52e37e439</srcmd5>
+    <version>6.3.2</version>
+    <time>1741362293</time>
+    <user>anag+factory</user>
+    <comment>- Remove conflict on plasma-framework again, got re-added by accident
+  (boo#1231615) (forwarded request 1251156 from Vogtinator)</comment>
+    <requestid>1251157</requestid>
+  </revision>
 </revisionlist>
