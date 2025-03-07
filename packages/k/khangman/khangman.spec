@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           khangman
-Version:        24.12.2
+Version:        24.12.3
 Release:        0
 Summary:        Hangman Game
 License:        GPL-2.0-or-later
