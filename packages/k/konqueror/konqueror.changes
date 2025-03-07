@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:01:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * webenginepart: fix the translations of the kxmlgui file (kde#500537)
+  * Fix the translation domain for the new internal kio_bookmark
+  * i18n: extract strings from sidebar/ (kde#500537)
+  * kcmkonqhtml: extract all messages from settings/konqhtml
+
+-------------------------------------------------------------------
 Tue Feb  4 12:29:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
