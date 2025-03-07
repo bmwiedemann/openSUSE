@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 06 16:20:12 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 2.22.2:
+  * Update to go version 1.24.1 and 1.23.7 (#1313)
+  * chore(deps): update all dependencies (#1310)
+  * chore(deps): update all dependencies (#1308)
+  * Update gosec version in the GitHub action to v2.22.1 (#1307)
+  * chore(deps): update module google.golang.org/api to v0.221.0 (#1305)
+
+-------------------------------------------------------------------
 Thu Feb 13 14:18:59 UTC 2025 - felix.niederwanger@suse.de
 
 - Update to version 2.22.1:

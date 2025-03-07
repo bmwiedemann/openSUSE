@@ -505,4 +505,17 @@
   * Update gosec in github action to 2.22.0 (#1286) (forwarded request 1245688 from ph03nix)</comment>
     <requestid>1245719</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>342c67940aa8f7717734dbcb6a1ed188</srcmd5>
+    <version>2.22.2</version>
+    <time>1741362018</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.22.2:
+  * Update to go version 1.24.1 and 1.23.7 (#1313)
+  * chore(deps): update all dependencies (#1310)
+  * chore(deps): update all dependencies (#1308)
+  * Update gosec version in the GitHub action to v2.22.1 (#1307)
+  * chore(deps): update module google.golang.org/api to v0.221.0 (#1305) (forwarded request 1250748 from ph03nix)</comment>
+    <requestid>1250766</requestid>
+  </revision>
 </revisionlist>
