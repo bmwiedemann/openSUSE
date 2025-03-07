@@ -18,7 +18,7 @@
 
 %define _sover 1
 Name:           libsixel
-Version:        1.10.3
+Version:        1.10.5
 Release:        0
 Summary:        SIXEL encoder/decoder
 License:        MIT
@@ -26,7 +26,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/libsixel/libsixel
 Source:         https://github.com/libsixel/libsixel/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         meson.patch
-Patch1:         static-libs.patch
 BuildRequires:  bash
 BuildRequires:  meson
 BuildRequires:  pkgconfig

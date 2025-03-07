@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 27 20:25:06 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 1.10.5:
+  * Some bugfixes and protective mechanisms
+- Drop static-libs.patch
+
+-------------------------------------------------------------------
 Fri Feb 18 23:14:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update RPM groups.
