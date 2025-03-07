@@ -1,7 +1,7 @@
 #
 # spec file for package cadabra2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,29 +25,31 @@
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} > 1650
 %global pythons python3
+%bcond_without jupyter
+%else
+%bcond_with jupyter
 %endif
 Name:           cadabra2
-Version:        2.5.8
+Version:        2.5.10
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://cadabra.science/
 Source0:        %{name}-%{version}.tar.xz
+Source1:        MicroTeX.tar.xz
 # PATCH-FIX-UPSTREAM cadabra2-disable-components-test.patch gh#kpeeters/cadabra2#212 badshah400@gmail.com -- Disable a test that crashes for unknown reasons
 Patch0:         cadabra2-disable-components-test.patch
-# PATCH-FEATURE-OPENSUSE cadabra2-default-python-path.patch badshah400@gmail.com -- Fix default python path when starting up cadabra2
-Patch1:         cadabra2-default-python-path.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module gobject-devel}
-BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module sympy}
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
+BuildRequires:  desktop-file-utils
 BuildRequires:  doxygen
-BuildRequires:  gcc-c++ >= 4.9
+BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_date_time-devel
@@ -61,14 +63,15 @@ BuildRequires:  libuuid-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(jsoncpp)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       python3 >= 3.8
 Recommends:     %{name}-doc
-%if 0%{?suse_version} >= 1550
+%if %{with jupyter}
+BuildRequires:  %{python_module ipykernel}
 BuildRequires:  jupyter-jupyter_core-filesystem
 %endif
 # SECTION For test
@@ -152,7 +155,12 @@ the solution of problems encountered in field theory.
 This package provides a jupyter kernel for %{name}.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -b1
+
+# Populate microtex submodule using SOURCE1
+mkdir -p submodules/microtex
+cp -pr ../MicroTeX/* submodules/microtex/
+
 rm examples/.gitignore
 # Remove timestamps from Doxygen HTML files
 echo "HTML_TIMESTAMP = NO" >> config/Doxyfile
@@ -169,6 +177,7 @@ sed -i "1{/#!\/usr\/bin\/env python/d}" libs/appdirs/cdb_appdirs.py
   -DENABLE_MATHEMATICA:BOOL=OFF \
   -DBUILD_TESTS:BOOL=%{?with_tests:ON}%{!?with_tests:OFF} \
   -DPython_EXECUTABLE=%{_bindir}/$python \
+  -DENABLE_PY_JUPYTER=%{?with_jupyter:ON}%{!?with_jupyter:OFF} \
   %{nil}
 }
 
@@ -220,11 +229,13 @@ export HOME=`pwd`
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/*.appdata.xml
 
+%if %{with jupyter}
 %files -n jupyter-cadabra2-kernel
 %license doc/license.txt
 %{python3_sitearch}/cadabra2_jupyter/
 %{python3_sitearch}/notebook/
 %{_jupyter_kernel_dir}/cadabra2/
+%endif
 
 %files examples
 %doc examples/

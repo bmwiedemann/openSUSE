@@ -1,14 +1,22 @@
 <?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="manual">
+		<param name="url">https://github.com/kpeeters/MicroTeX.git</param>
+    <param name="scm">git</param>
+    <param name="revision">kpeeters/cadabra</param>
+		<param name="version">_none_</param>
+    <param name="filename">MicroTeX</param>
+    <param name="submodules">disable</param>
+  </service>
+<!--  Keep main source last since this determines %version  -->
+  <service name="obs_scm" mode="manual">
 		<param name="url">https://github.com/kpeeters/cadabra2.git</param>
     <param name="scm">git</param>
-		<param name="revision">2.5.8</param>
+		<param name="revision">2.5.10</param>
 		<param name="versionformat">@PARENT_TAG@</param>
     <param name="filename">cadabra2</param>
     <param name="submodules">enable</param>
-  </service>
-  <service name="tar" mode="buildtime"/>
+  </service>  <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>

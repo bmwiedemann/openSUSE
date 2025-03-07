@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Mar  3 09:03:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.10:
+  * Bugfix for eliminate_kronecker.
+  * Fix for building Cadabra as a C++ library.
+  * Various UI and typesetting bug fixes.
+  * Get rid of websocketpp in favour of boost::beast so we can
+    build with boost >= 1.87.0.
+  * Fix for the homebrew package, and option to install the
+    development branch using homebrew.
+  * Add caching to the processing of substitution rules (Daniel).
+  * Fixes for inline execution of Python functions in maths
+    expressions.
+  * Do not gobble normal output when an error occurs notebook
+    execution.
+  * Fix inconsistent behaviour and crashes with split-view mode.
+  * Fix display of LaTeXForm properties.
+  * Documentation updates.
+  * Close LaTeX input cells on running them (configurable).
+  * Cleanup and document kernel options.
+  * Various additions to the plotting package cdb.graphics.plot
+    including docs.
+  * Add preliminary support for Plotly as plotting backend.
+  * Word wrap LaTeX input cells to keep notebooks readable for any
+    window width.
+  * Internal changes for python path handling.
+- New BuildRequires: pkgconfig(openssl)
+- Add MicroTeX as separate tarball: this is missed by upstream git
+  as a submodule, so obs_scm _service's `enable_submodules` is
+  unable to include it either.
+- Drop cadabra2-default-python-path.patch: no longer needed after
+  changes to upstream logic for finding python.
+- Drop use of deprecated %suse_update_desktop_file.
+- Restrict building jupyter kernel to openSUSE >= 1650 to avoid
+  unresolvables on Leap 15/16.
+
+-------------------------------------------------------------------
 Fri Oct 25 09:46:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.8:
