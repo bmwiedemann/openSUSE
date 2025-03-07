@@ -99,12 +99,7 @@ BuildRequires:	pkgconfig
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 BuildRequires:	python-rpm-macros
 BuildRequires:	%{python_module scour}
-
-%if 0%{?suse_version} == 01500
-BuildRequires:	meson >= 0.61.4
-%else
 BuildRequires:	meson
-%endif
 
 %description
 GTK-based IBM 3270 terminal emulator with many advanced features. It can be used to communicate with any IBM host that supports 3270-style connections over TELNET.
