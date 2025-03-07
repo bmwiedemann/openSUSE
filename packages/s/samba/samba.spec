@@ -97,7 +97,6 @@ BuildRequires:  gdbm-devel
 BuildRequires:  keyutils-devel
 BuildRequires:  flex
 BuildRequires:  bison
-BuildRequires:  libnscd-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  zlib-devel
 BuildRequires:  libtirpc-devel
@@ -169,7 +168,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.21.3+git.385.dab50f14578
+Version:        4.21.4+git.390.43d401e5b77
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -458,7 +457,6 @@ Obsoletes:      samba-gplv3-winbind < %{version}
 Provides:       samba-client:/usr/sbin/winbindd
 Provides:       group(winbind)
 Requires:       pam-config
-Recommends:     /usr/sbin/nscd
 Recommends:     cron
 Recommends:     logrotate
 Requires:       coreutils
@@ -1112,10 +1110,6 @@ done
 /sbin/ldconfig
 if [ $1 -eq 0 ]; then
 %{_sbindir}/pam-config --delete --winbind
-if [ -x %{_sbindir}/nscd ]; then
-	%{_sbindir}/nscd -i passwd
-	%{_sbindir}/nscd -i group
-fi
 fi
 %service_del_postun winbind.service
 
@@ -1469,6 +1463,7 @@ exit 0
 %{_libdir}/samba/libads-private-samba.so
 %{_libdir}/samba/libasn1util-private-samba.so
 %{_libdir}/samba/libauth-private-samba.so
+%{_libdir}/samba/libutil-crypt-private-samba.so
 %if %{with_dc}
 %{_libdir}/samba/libauthn-policy-util-private-samba.so
 %endif

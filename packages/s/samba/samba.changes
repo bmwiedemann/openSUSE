@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Feb 19 10:42:17 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Remove nscd build dependency and usage in RPM scriptlets;
+  (bsc#1237296);
+
+-------------------------------------------------------------------
+Wed Feb 19 10:08:34 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Update to 4.21.4
+  * Increasing slowness of sharesec performance with high number
+    of registry shares; (bso#15780).
+  * winbindd shows memleak in kerberos_decode_pac; (bso#15782).
+  * Creation of GPOs applicable to more than one group is
+    impossible with Samba 4.20.0 and later; (bso#15738).
+  * Replace `crypt` module in
+    python/samba/netcmd/user/readpasswords/common.py;
+    (bso#15756).
+  * vfs_gpfs silently garbles timestamps > year 2106;
+    (bso#15151).
+  * Spotlight search results don't show file size and creation
+    date; (bso#15796).
+  * General improvements for vfs_ceph_new module; (bso#15703).
+  * net offlinejoin not working correctly; (bso#15777).
+  * net ads create/join/winbind producing unix dysfunctional
+    keytabs; (bso#15759).
+  * Windows Explorer crashes on S-1-22-* Unix-SIDs when accessing
+    security tab; (bso#14213).
+  * The values from hresult_errstr_const and hresult_errstr are
+    reversed in 4.20 and 4.21; (bso#15769).
+  * Kerberos referral tickets are generated for principals in our
+    domain if we have a trust to a top level domain; (bso#15778).
+  * NETLOGON_NTLMV2_ENABLED is missing in the SamLogon*
+    user_flags field; (bso#15783).
+  * Regression: stack-use-after-return in crypt_as_best_we_can();
+    (bso#15784).
+  * libreplace:readline: gcc 15 complains about incompatible
+    pointer types; (bso#15788).
+
+-------------------------------------------------------------------
 Tue Jan  7 10:22:16 UTC 2025 - Noel Power <nopower@suse.com>
 
 - Update to 4.21.3
