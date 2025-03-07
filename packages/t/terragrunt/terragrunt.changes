@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 06 17:29:17 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.75.2:
+  * Stacks: stack values (#3961)
+
+-------------------------------------------------------------------
+Thu Mar 06 17:22:08 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.75.1:
+  * fix: Adding missing cautionary asides (#3970)
+  * Update mark_as_read example and docs (#3971)
+  * feat: Adding `.coderabbit.yaml` file (#3969)
+  * feat: Strict control for old deprecated env vars (#3964)
+  * build(deps-dev): bump uri from 0.13.0 to 0.13.2 in /docs
+    (#3963)
+  * fix: Replacing usage of `run-all` with `run --all` in starlight
+    docs (#3950)
+  * fix: updated failing engine tests (#3960)
+  * Tofu engine update to v0.0.16 (#3951)
+
+-------------------------------------------------------------------
 Wed Mar 05 10:24:55 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.75.0:
