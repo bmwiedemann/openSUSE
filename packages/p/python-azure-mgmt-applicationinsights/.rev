@@ -149,4 +149,21 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164725 from glaubitz)</comment>
     <requestid>1165124</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>192328254e8306ce6237f4a8604d40f9</srcmd5>
+    <version>4.1.0</version>
+    <time>1741362299</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1251101 from glaubitz)</comment>
+    <requestid>1251186</requestid>
+  </revision>
 </revisionlist>
