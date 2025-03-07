@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  7 12:55:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update 0.13.1
+  https://github.com/typst/typst/releases/tag/v0.13.1
+
+-------------------------------------------------------------------
 Wed Feb 19 16:56:34 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update 0.13.0 
+- Update 0.13.0
   https://typst.app/blog/2025/typst-0.13/
   https://typst.app/docs/changelog/0.13.0/
   https://github.com/typst/typst/releases/tag/v0.13.0
@@ -15,7 +21,7 @@ Mon Nov 11 02:50:42 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 -------------------------------------------------------------------
 Fri Oct 18 23:05:17 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 0.12.0 
+- Update to 0.12.0
   https://typst.app/blog/2024/typst-0.12/
   https://typst.app/docs/changelog/0.12.0/
 - hayagriva directory is now versioned:

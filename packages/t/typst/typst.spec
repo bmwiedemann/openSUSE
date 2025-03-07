@@ -27,7 +27,7 @@
 %global hayagriva_vendor_dir vendor/hayagriva-%{hayagriva_version}
 
 Name:           typst
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
