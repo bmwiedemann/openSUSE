@@ -22,17 +22,17 @@
 %define ssdir tools/power/x86/intel-speed-select
 # Use this as version when things are in mainline kernel
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
+%define release %(rpm -q --qf '%%{RELEASE}' kernel-source)
 %global turbover %(grep -o "turbostat version [0-9.]*" %{_prefix}/src/linux/tools/power/x86/turbostat/turbostat.c)
 %global issver %(grep -o "version_str =.*" %{_prefix}/src/linux/tools/power/x86/intel-speed-select/isst-config.c | grep -o "[0-9]\.[0-9][0-9]")
 Name:           cpupower
 Version:        %{version}
-Release:        0
+Release:        %{release}
 Summary:        Tools to determine and set CPU Power related Settings
 License:        GPL-2.0-only
 Group:          System/Base
 URL:            https://git.kernel.org/cgit/linux/kernel/git/rafael/linux-pm.git
 Patch1:         cpupower_fix_library_so_name.patch
-Patch6:         amd_do_not_show_amount_of_boost_states_if_zero.patch
 BuildRequires:  gettext-tools
 BuildRequires:  kernel-source
 BuildRequires:  libcap-devel
@@ -105,7 +105,6 @@ There is no reason to install this package.
 chmod +x tools/power/cpupower/utils/version-gen.sh
 %patch -P 1 -p1
 cd %{maindir}
-%patch -P 6 -p1
 
 %build
 CONF="PACKAGE_BUGREPORT=https://bugs.opensuse.org mandir=%{_mandir} libdir=%{_libdir} CPUFRQ_BENCH=true"

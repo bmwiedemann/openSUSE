@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  6 14:16:27 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Not also adopt the kernel version, but also the exact build release
+  By that it is finally possible to find out on which exact (kernel)
+  sources the cpupower tools are based on.
+D amd_do_not_show_amount_of_boost_states_if_zero.patch
+-> This was only needed for an old Dell test env, will not go mainline
+   and can vanish now.
+
+-------------------------------------------------------------------
 Fri Oct  4 07:26:19 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Upstream fixed lib default installation path in 3a5bb5066f4c
