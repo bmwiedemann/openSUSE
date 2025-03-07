@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:00:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * Fix audio playback breaks when switching between bin clips
+  * Fix crash on single item deletion in group
+  * Fix crash pasting clips with a same track transition (like dissolve)
+
+-------------------------------------------------------------------
 Tue Feb  4 12:29:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
