@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Mar  6 16:09:14 UTC 2025 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Update to version 1.3
+  * Portable AppImage Support
+    - GOverlay now comes as a portable AppImage, making it compatible
+      with virtually any Linux distribution, including those using
+      musl libc.
+    - Nightly builds are now automated, ensuring you always have
+      access to the latest features and fixes.
+  * Enhanced UI and Themes
+    - New color themes: "Afterburner," "Mangohud," "Goverlay" and
+      "Simple White."
+    - Improved positioning of color theme icons and better visual
+      feedback for FPS limit settings.
+    -Automatic detection of CPU and GPU brands to apply matching
+      color themes.
+  * Blacklist Management
+    - Added a dedicated form for managing blacklisted applications.
+    - Apps added to the blacklist: pamac-manager, lact, handbrake,
+      bitwig-studio, yumex, and ptyxis.
+  * Wayland Support Improvements
+    - Automatic detection of Wayland environments and use of
+      vkcube --wsi wayland for compatibility.
+  * Bug Fixes and Stability
+    - Fixed issues with the FPS limit checkgroup not loading
+      correctly.
+    - Resolved errors in the Mangohud wrapper and HUD version
+      selection.
+    - Disabled the spinedit increment function as it’s now handled
+      automatically.
+  * Distro-Specific Adjustments
+    - Disabled the global-enable button for the Bazzite distribution.
+  * Quality-of-Life Improvements
+    - Added notifications for missing configuration files, with
+      automatic creation if they don’t exist.
+    - Streamlined UI changes for a smoother user experience.
+
+-------------------------------------------------------------------
 Tue Jul 30 03:36:20 UTC 2024 - pallas wept <pallaswept@proton.me>
 
 - Update to version 1.2:
