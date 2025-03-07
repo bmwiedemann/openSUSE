@@ -7309,4 +7309,41 @@
     Memory safety bugs fixed in Firefox 135 and Thunderbird 135</comment>
     <requestid>1243203</requestid>
   </revision>
+  <revision rev="449" vrev="1">
+    <srcmd5>d0901625cdffeb27d405a82b90737e51</srcmd5>
+    <version>136.0</version>
+    <time>1741361966</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 136.0
+  https://www.mozilla.org/en-US/firefox/136.0/releasenotes/
+  MFSA 2025-14 (bsc#1237683)
+  * CVE-2025-1930 (bmo#1902309)
+    AudioIPC StreamData could trigger a use-after-free in the
+    Browser process
+  * CVE-2025-1939 (bmo#1928334)
+    Tapjacking in Android Custom Tabs using transition animations
+  * CVE-2025-1931 (bmo#1944126)
+    Use-after-free in WebTransportChild
+  * CVE-2025-1932 (bmo#1944313)
+    Inconsistent comparator in XSLT sorting led to out-of-bounds access
+  * CVE-2025-1933 (bmo#1946004)
+    JIT corruption of WASM i32 return values on 64-bit CPUs
+  * CVE-2025-1940 (bmo#1908488)
+    Android Intent confirmation prompt tapjacking using Select options
+  * CVE-2024-9956 (bmo#1922357)
+    Passkey phishing within Bluetooth range
+  * CVE-2025-1934 (bmo#1942881)
+    Unexpected GC during RegExp bailout processing
+  * CVE-2025-1941 (bmo#1944665)
+    Lock screen setting bypass in Firefox Focus for Android
+  * CVE-2025-1942 (bmo#1947139)
+    Disclosure of uninitialized memory when .toUpperCase() causes
+    string to get longer
+  * CVE-2025-1935 (bmo#1866661)
+    Clickjacking the registerProtocolHandler info-bar
+  * CVE-2025-1936 (bmo#1940027)
+    Adding %00 and a fake extension to a jar: URL  changed the
+    interpretation of the contents</comment>
+    <requestid>1251116</requestid>
+  </revision>
 </revisionlist>

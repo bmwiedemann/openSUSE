@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Mar  6 07:18:59 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 136.0
+  https://www.mozilla.org/en-US/firefox/136.0/releasenotes/
+  MFSA 2025-14 (bsc#1237683)
+  * CVE-2025-1930 (bmo#1902309)
+    AudioIPC StreamData could trigger a use-after-free in the
+    Browser process
+  * CVE-2025-1939 (bmo#1928334)
+    Tapjacking in Android Custom Tabs using transition animations
+  * CVE-2025-1931 (bmo#1944126)
+    Use-after-free in WebTransportChild
+  * CVE-2025-1932 (bmo#1944313)
+    Inconsistent comparator in XSLT sorting led to out-of-bounds access
+  * CVE-2025-1933 (bmo#1946004)
+    JIT corruption of WASM i32 return values on 64-bit CPUs
+  * CVE-2025-1940 (bmo#1908488)
+    Android Intent confirmation prompt tapjacking using Select options
+  * CVE-2024-9956 (bmo#1922357)
+    Passkey phishing within Bluetooth range
+  * CVE-2025-1934 (bmo#1942881)
+    Unexpected GC during RegExp bailout processing
+  * CVE-2025-1941 (bmo#1944665)
+    Lock screen setting bypass in Firefox Focus for Android
+  * CVE-2025-1942 (bmo#1947139)
+    Disclosure of uninitialized memory when .toUpperCase() causes
+    string to get longer
+  * CVE-2025-1935 (bmo#1866661)
+    Clickjacking the registerProtocolHandler info-bar
+  * CVE-2025-1936 (bmo#1940027)
+    Adding %00 and a fake extension to a jar: URL  changed the
+    interpretation of the contents
+  * CVE-2025-1937 (bmo#1938471, bmo#1940716)
+    Memory safety bugs fixed in Firefox 136, Thunderbird 136,
+    Firefox ESR 115.21, Firefox ESR 128.8, and Thunderbird 128.8
+  * CVE-2025-1938 (bmo#1922889, bmo#1935004, bmo#1943586,
+    bmo#1943912, bmo#1948111)
+    Memory safety bugs fixed in Firefox 136, Thunderbird 136,
+    Firefox ESR 128.8, and Thunderbird 128.8
+  * CVE-2025-1943 (bmo#1869650, bmo#1938451, bmo#1940326,
+    bmo#1944052, bmo#1944063, bmo#1947281)
+    Memory safety bugs fixed in Firefox 136 and Thunderbird 136
+- requires
+  * NSS 3.108
+  * rust 1.84
+
+-------------------------------------------------------------------
 Mon Feb  3 10:55:18 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 135.0

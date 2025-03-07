@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          135
+%define major          136
 %define mainver        %major.0
-%define orig_version   135.0
+%define orig_version   136.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -103,8 +103,8 @@ BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo1.83
-BuildRequires:  rust1.83
+BuildRequires:  cargo1.84
+BuildRequires:  rust1.84
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.36
-BuildRequires:  mozilla-nss-devel >= 3.107
+BuildRequires:  mozilla-nss-devel >= 3.108
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -722,10 +722,10 @@ exit 0
 %{progdir}/platform.ini
 %if %crashreporter
 %{progdir}/crashreporter
-#%{progdir}/crashreporter.ini
-#%{progdir}/Throbber-small.gif
-#%{progdir}/minidump-analyzer
-#%{progdir}/browser/crashreporter-override.ini
+#%%{progdir}/crashreporter.ini
+#%%{progdir}/Throbber-small.gif
+#%%{progdir}/minidump-analyzer
+#%%{progdir}/browser/crashreporter-override.ini
 %endif
 %{_datadir}/applications/%{desktop_file_name}.desktop
 %{_datadir}/mime/packages/%{progname}.xml
