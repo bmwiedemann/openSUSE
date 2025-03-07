@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Mar 06 17:57:33 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.24.1:
+  * *: v1.24.1 (#3931)
+  * proc: expose breakpoint hitcounts in expressions (#3874)
+  * proc: do not pin function call returns for toplevel call (#3925)
+  * telemetry: add stack counter for internal errors (#3930)
+  * service/test: handle wider registers in test (#3929)
+  * dwarf,proc: various fixes to support DWARFv5 (#3893)
+  * pkg/proc: support watchpoint on nil interface (#3924)
+  * pkg/proc: add support for interface watchpoints (#3922)
+  * proc/gdbserial: use rr version to determine style of qRRCmd (#3921)
+  * logflags: replace logrus with log/slog (#3918)
+  * *: remove uses of reflect.MethodByName from all of Delve (#3916)
+  * CirrusCI: update FreeBSD version (#3917)
+  * proc: some refactorings for supporting struct literals (#3909)
+  * proc: better error message for breakpoints on stripped binaries (#3914)
+  * TeamCity: remove riscv64 from configuration (#3912)
+  * proc: allow access to thread registers after a function call (#3908)
+  * *: add support for linux/loong64 to native backend (#3892)
+  * service/dap: provide process events after launch (#3902)
+  * pkg/terminal: support zed editor and allow args in DELVE_EDITOR (#3899)
+  * proc: switch to goroutine stack if we make no progress on thread stack (#3898)
+  * proc: remove irrelevant TODO comment (#3891)
+  * pkg: refactor sort.Sort to slices.SortFunc (#3880)
+  * delete redundancy code. (#3897)
+  * pkg/proc/internal/ebpf: Fix uprobe address (#3894)
+  * service/test: disable TestGuessSubstitutePath on TeamCity/linux/tip (#3890)
+  * proc: remove leftover fmt.Printf (#3885)
+  * fix check it.Err() != nil but return a nil value error err (#3886)
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.21 matching go.mod
+
+-------------------------------------------------------------------
 Wed Dec 18 21:15:55 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.24.0:
