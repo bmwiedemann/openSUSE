@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           blinken
-Version:        24.12.2
+Version:        24.12.3
 Release:        0
 Summary:        Simon Says Game
 License:        GPL-2.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Phonon4Qt6)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      blinken5 < %{version}
