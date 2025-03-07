@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  7 11:35:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- The injection is happening using javax.inject.Named index and 
+  not by plexus metadata
+
+-------------------------------------------------------------------
 Thu May 16 05:04:40 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Unnecessary dependency on plexus-containers-container-default

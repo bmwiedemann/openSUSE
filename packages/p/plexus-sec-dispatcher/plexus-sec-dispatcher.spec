@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-sec-dispatcher
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%bcond_with tests
 Name:           plexus-sec-dispatcher
 Version:        2.0
 Release:        0
@@ -34,13 +33,10 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  modello >= 2.0.0
 BuildRequires:  plexus-cipher
-BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
+BuildRequires:  sisu-inject
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-%endif
 
 %description
 Plexus Security Dispatcher Component
@@ -66,11 +62,9 @@ build-jar-repository -s lib \
     plexus/utils \
     plexus/xml \
     plexus/plexus-cipher \
+    org.eclipse.sisu.inject \
     javax.inject
 %{ant} \
-%if %{without tests}
-  -Dtest.skip=true \
-%endif
   jar javadoc
 
 %install
