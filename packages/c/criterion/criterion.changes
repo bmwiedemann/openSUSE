@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  6 13:28:57 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + criterion-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Nov 28 14:20:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rename devel package from libcriterion3-devel to

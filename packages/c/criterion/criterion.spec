@@ -1,7 +1,7 @@
 #
 # spec file for package criterion
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ License:        MIT
 URL:            https://github.com/Snaipe/Criterion
 Source:         https://github.com/Snaipe/Criterion/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
 Patch0:         fix-meson.patch
+# https://github.com/Snaipe/Criterion/issues/559
+Patch1:         criterion-gcc15.patch
 BuildRequires:  boxfort-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake
@@ -80,7 +82,7 @@ Obsoletes:      lib%{name}3-devel <= 2.4.2
 Contains all needed devel files for Criterion.
 
 %prep
-%autosetup -n Criterion-%{version}
+%autosetup -p1 -n Criterion-%{version}
 
 %build
 # we disable tests because they require Cram, a no longer upstream maintained tool that's also not in openSUSE.
