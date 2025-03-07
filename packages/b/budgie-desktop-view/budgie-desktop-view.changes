@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 29 14:53:55 UTC 2025 - gmbr3@opensuse.org
+
+- Update to version 1.3+4:
+  * Support mate-terminal to open files
+  * chore: update pot file
+  * feat: port to Wayland
+  * fix: compilation under newer meson and gcc
+
+-------------------------------------------------------------------
 Fri Apr 12 09:27:00 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for vala building code incompatible with Werror
