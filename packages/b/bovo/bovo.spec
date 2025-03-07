@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           bovo
-Version:        24.12.2
+Version:        24.12.3
 Release:        0
 Summary:        Five-in-a-row Board Game
 License:        GPL-2.0-or-later
