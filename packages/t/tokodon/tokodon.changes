@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:01:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * Set a dedicated user agent (kde#499276)
+  * Fix the play button on videos/gifs not working
+  * Remove weird spacing at the end of some posts
+  * Add missing checks for some Akkoma/Pleroma post URLs
+  * snapcraft: Release to stable
+  * Hide polls on posts with content notices
+  * ServersPage: Allow tabbing to the "Custom Server" item
+  * ServersPage: Fix tabbing between the search field and the list view
+  * RulesPage: Allow tabbing through the rules
+  * Hide Purpose's own "Copy to Clipboard" function
+  * Don't show an invalid read marker
+
+-------------------------------------------------------------------
 Tue Feb  4 12:30:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
