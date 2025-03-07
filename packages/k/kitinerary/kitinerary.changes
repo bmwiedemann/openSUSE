@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:01:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * Add more sanity checks to the Flixbus extractor
+  * Add extractor script for Ghotel reservation emails
+  * Add SBB PDF itinerary extractor script
+  * Retain ticket information when doing triangular merging
+  * Ignore punctuation characters when comparing location names
+  * Make the VR mobile PDF import a bit more robust
+  * Extend trigger pattern for SNCF uPER barcodes
+  * Add extractor script for Eventyay
+
+-------------------------------------------------------------------
 Tue Feb  4 12:29:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
