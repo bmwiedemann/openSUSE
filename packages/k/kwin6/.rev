@@ -199,4 +199,14 @@
     <comment>Plasma 6.3.2(.1) (forwarded request 1248621 from Vogtinator)</comment>
     <requestid>1248663</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>2b3528a85087798a6f67d28cb7b6622d</srcmd5>
+    <version>6.3.2.1</version>
+    <time>1741361932</time>
+    <user>anag+factory</user>
+    <comment>- Add patches to fix crashes with multiple monitors (kde#500819, kde#500797)
+  * 0001-backends-drm-Log-connector-CRTC-matching-steps.patch
+  * 0002-backends-drm-fix-testing-for-more-connectors-than-CR.patch (forwarded request 1250568 from Vogtinator)</comment>
+    <requestid>1250576</requestid>
+  </revision>
 </revisionlist>

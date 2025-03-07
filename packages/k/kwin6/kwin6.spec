@@ -40,6 +40,9 @@ Source:         https://download.kde.org/stable/plasma/6.3.2/%{rname}-%{version}
 Source1:        https://download.kde.org/stable/plasma/6.3.2/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-backends-drm-Log-connector-CRTC-matching-steps.patch
+Patch2:         0002-backends-drm-fix-testing-for-more-connectors-than-CR.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libcap-progs
