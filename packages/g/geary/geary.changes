@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 03 15:07:07 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 46.0+16:
+  * flatpak: Add appstream-glib module
+  * flatpak: Update gmime module
+  * Set prgname to application ID
+  * flatpak: gspell switched to meson on master
+  * ci: Use dbus-run-session for tests
+  * flatpak: Bump libsecret version
+  * Fix crash with drag-and-drop in conversations view
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue May 21 11:03:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

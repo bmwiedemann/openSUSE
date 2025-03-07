@@ -17,14 +17,13 @@
 
 
 Name:           geary
-Version:        46.0
+Version:        46.0+16
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        BSD-2-Clause AND CC-BY-3.0 AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Geary
-# Source service, tracking git stable tags.
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 # PATCH-FEATURE-OPENSUSE Support-GNOME-42-dark-theme-preference.patch -- Support GNOME 42 dark theme preference
 Patch0:         Support-GNOME-42-dark-theme-preference.patch

@@ -609,4 +609,12 @@
   + Fix one more unread count issue. (forwarded request 1175528 from dimstar)</comment>
     <requestid>1175530</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>e7f5b7067998e7336e5e4bbd3d660925</srcmd5>
+    <version>46.0+16</version>
+    <time>1741361996</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1250646</requestid>
+  </revision>
 </revisionlist>
