@@ -1,7 +1,7 @@
 #
 # spec file for package dmd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define sover	0_109
+%define sover	0_110
 %define bootstrap_with_gdmd 1
 %if %{bootstrap_with_gdmd}
 %if 0%{?suse_version} < 1550
@@ -29,7 +29,7 @@ BuildRequires:  dmd
 BuildRequires:  phobos-devel-static
 %endif
 Name:           dmd
-Version:        2.109.1
+Version:        2.110.0
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0

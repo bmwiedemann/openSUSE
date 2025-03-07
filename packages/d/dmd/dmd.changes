@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  6 16:47:30 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.110.0
+  * Copying from const(void)[] to void[] is disallowed with -preview=fixImmutableConv
+  * Import expressions are now treated as hex strings
+  * New trait isCOMClass to detect if a type is a COM class
+  * bool values other than 0 or 1 are not @safe
+  * dub.selections.json files are now looked up in parent directories too
+
+for details see https://dlang.org/changelog/2.110.0.html#bugfix-list 
+
+-------------------------------------------------------------------
 Wed Jul  3 06:44:10 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.109.1
