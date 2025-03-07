@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:00:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * src/eventview.cpp - use the Item's storage collaction icon, if found (kde#500243)
+
+-------------------------------------------------------------------
 Tue Feb  4 12:29:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
