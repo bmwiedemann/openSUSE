@@ -107,7 +107,7 @@
             <oemconfig>
                 <oem-resize>false</oem-resize>
             </oemconfig>
-            <bootloader name="grub2" bls="true" />
+            <bootloader name="custom"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -410,7 +410,6 @@
     </packages>
 
     <packages type="image" profiles="kvm-and-xen-grub-bls">
-        <package name="patterns-base-bootloader"/>
         <package name="grub2-x86_64-efi-bls" arch="x86_64"/>
         <package name="grub2-arm64-efi-bls" arch="aarch64"/>
     </packages>
