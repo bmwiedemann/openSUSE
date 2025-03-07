@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-podcasts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,14 +20,13 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           gnome-podcasts
-Version:        0.6.1
+Version:        0.7.1
 Release:        0
 Summary:        Podcast app for GNOME
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/podcasts
 Source:         %{name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
-Source3:        cargo_config
 
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
@@ -38,16 +37,15 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.76
 BuildRequires:  pkgconfig(glib-2.0) >= 2.76
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.16
-BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.16
-BuildRequires:  pkgconfig(gstreamer-bad-audio-1.0) >= 1.16
-BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 1.16
-BuildRequires:  pkgconfig(gstreamer-player-1.0) >= 1.16
-BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= 1.16
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.16
-BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.16
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.22
+BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.22
+BuildRequires:  pkgconfig(gstreamer-bad-audio-1.0) >= 1.22
+BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 1.22
+BuildRequires:  pkgconfig(gstreamer-play-1.0) >= 1.22
+BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= 1.22
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.22
+BuildRequires:  pkgconfig(gtk4) >= 4.15.3
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
 BuildRequires:  pkgconfig(openssl) >= 1.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.20
 
@@ -59,8 +57,6 @@ Listen to your favorite podcasts, right from your desktop.
 
 %prep
 %autosetup -p1 -a2
-mkdir .cargo
-cp %{SOURCE3} .cargo/config
 
 %build
 export RUSTFLAGS=%{rustflags}

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Oct 28 14:54:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.7.1:
+  + Fixed screenshot link.
+- Changes from version 0.7.0:
+  + Added:
+    - Replace add button popover with dedicated page.
+    - discovery: add a spinner on the search result subscribe
+      button.
+    - feed_manager: add a locked feed refresh manager
+    - app: add additional keyboard shortcuts.
+    - episode_description: add stream/download/play/delete buttons.
+  + Changed:
+    - podcasts-gtk: player: replace "mpris_player" with
+      "mpris_server"
+    - gtk: Create the widgets in the background before inserting
+      them.
+    - lazy_load: Improve the loading of widgets.
+    - Use newer libadwaita 1.4 widgets.
+  + Fixed:
+    - data: Don't identify episodes by their title when they have a
+      guid.
+    - player_toolbar: request a minimum width.
+- Replace pkgconfig(gstreamer-player-1.0) Buildrequires with
+  pkgconfig(gstreamer-play-1.0): follow upstream changes.
+
+-------------------------------------------------------------------
 Fri Oct 13 12:33:15 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 0.6.1:
