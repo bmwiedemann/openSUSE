@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  5 13:59:28 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.8.2
+  * Granular Checks for Branches in Return Expressions
+  * Support for require() of ECMAScript Modules in --module nodenext
+  * new flag --module node18
+  * The --erasableSyntaxOnly Option
+  * The --libReplacement Flag
+  * Preserved Computed Property Names in Declaration Files
+  * Optimizations on Program Loads and Updates
+  * Restrictions on Import Assertions Under --module nodenext
+
+see full changelog at https://devblogs.microsoft.com/typescript/announcing-typescript-5-8/
+
+-------------------------------------------------------------------
 Sat Jan 11 14:49:27 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.7.3
