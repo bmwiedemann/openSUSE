@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 07 06:41:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.89.0:
+  * chore(deps): bump github.com/muesli/termenv from 0.15.2 to
+    0.16.0 (#2509)
+  * chore(deps): bump golang.org/x/tools from 0.30.0 to 0.31.0
+    (#2510)
+  * fix regression to allow for reading listing from local FS
+    (#2508)
+  * chore(deps): bump golang.org/x/time from 0.10.0 to 0.11.0
+    (#2503)
+  * chore(deps): update tools to latest versions (#2506)
+  * Add suggested fixed version when there are multiple fixes
+    available (#2271)
+  * remove v6 development configuration (#2504)
+
+-------------------------------------------------------------------
 Thu Mar 06 06:18:47 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.88.0:
