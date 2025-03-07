@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:00:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * Update tested ytmusicapi version to 1.10.1
+  * Update ytmusicapi to 1.9.0
+  * Fix loading albums without id
+  * Appdata: add display size
+
+-------------------------------------------------------------------
 Tue Feb  4 12:29:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
