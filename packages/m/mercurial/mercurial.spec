@@ -31,7 +31,7 @@
 %endif
 
 Name:           mercurial
-Version:        6.9.2
+Version:        6.9.3
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later
@@ -44,7 +44,9 @@ Patch0:         mercurial-hgk-path-fix.diff
 # PATCH-FIX-OPENSUSE mercurial-locale-path-fix.patch saschpe@suse.de -- locales are found in /usr/share/locale
 Patch2:         mercurial-locale-path-fix.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
@@ -100,11 +102,12 @@ sed -i -e '1s@env @@' contrib/hgk
 chmod 644 hgweb.cgi
 
 %build
-%make_build all PYTHON=%{expand:%%__%{pythons}}
+%pyproject_wheel
 %make_build -C contrib/chg all
 
 %install
-make install PREFIX="%{_prefix}" DESTDIR=%{buildroot} PYTHON=%{expand:%%__%{pythons}}
+%pyproject_install
+make -C doc install PREFIX="%{_prefix}" DESTDIR=%{buildroot} PYTHON=%{expand:%%__%{pythons}}
 make -C contrib/chg install PREFIX="%{_prefix}" DESTDIR=%{buildroot}
 %{expand:%%%{pythons}_fix_shebang}
 

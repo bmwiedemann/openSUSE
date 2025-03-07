@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar  5 22:29:56 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 6.9.3
+  out of schedule release to fix a regression introduced in 6.9.2
+
+  * fix processing of superfluous requirements specified for streamclone
+    in clone bundle manifest 
+
+-------------------------------------------------------------------
+Fri Feb 28 22:31:43 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Updated to use new build system via pyproject macros. This change
+  is required for the upcoming 7.0 release, which will remove support
+  for the old build method.
+
+-------------------------------------------------------------------
 Wed Feb 19 22:21:20 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 6.9.2
