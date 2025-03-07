@@ -327,4 +327,12 @@ and that one is GPL3.</comment>
     <comment>- Retain modtime of files for reproducibility</comment>
     <requestid>1244476</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>659eb965bbfbdbe50481aaf19723314d</srcmd5>
+    <version>4.14.1</version>
+    <time>1741362294</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 4.14.1</comment>
+    <requestid>1251166</requestid>
+  </revision>
 </revisionlist>
