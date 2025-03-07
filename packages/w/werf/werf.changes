@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 06 13:03:10 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.31.1:
+  * chore: release 2.31.1
+  * fix(deploy): `bundle copy` panics
+  * chore: update Nelm module
+  * refactor(cli): revert quoting for non-string flag value
+  * chore(release): 2 alpha,beta
+
+-------------------------------------------------------------------
 Wed Mar 05 10:20:23 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.31.0:
