@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  6 10:34:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.14:
+  * Fix windows crash
+- Update to version 1.1.13:
+  * Version check and refactor hbb_common to share with rustdesk
+    client
+
+-------------------------------------------------------------------
 Mon Oct 07 09:02:03 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.1.12:
