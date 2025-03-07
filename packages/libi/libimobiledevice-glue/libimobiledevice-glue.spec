@@ -21,13 +21,15 @@
 %define clamp_mtime_to_source_date_epoch 1
 %define use_source_date_epoch_as_buildtime 1
 Name:           libimobiledevice-glue
-Version:        1.3.1+git11.20241227
+Version:        1.3.1+git18.20250213
 Release:        0
 Summary:        Native protocols library for iOS devices
 License:        LGPL-2.1-or-later
-URL:            https://www.libimobiledevice.org
+URL:            https://github.com/libimobiledevice/libimobiledevice-glue
 Source:         %{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+# PATCH-FIX-BUILD libimobiledevice-glue-gcc14.patch sbrabec@suse.com -- Fix build with gcc14 that does not understand __VA_OPT__(,).
+Patch0:         libimobiledevice-glue-gcc14.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -56,8 +58,9 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
-sed -i -e '/Requires:/d' src/%{name}-1.0.pc.in
-sed -i -e 's/-L${libdir}//' src/%{name}-1.0.pc.in
+%if 0%{?suse_version} < 1600
+%patch -P 0 -p1
+%endif
 
 %build
 autoreconf -fvi

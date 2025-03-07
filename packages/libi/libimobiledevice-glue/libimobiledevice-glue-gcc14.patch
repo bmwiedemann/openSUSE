@@ -1,0 +1,15 @@
+diff -ur libimobiledevice-glue.orig/src/socket.c libimobiledevice-glue/src/socket.c
+--- libimobiledevice-glue.orig/src/socket.c	2025-02-25 21:35:37.200042020 +0100
++++ libimobiledevice-glue/src/socket.c	2025-02-25 22:07:25.649820135 +0100
+@@ -90,9 +90,9 @@
+ 
+ static int verbose = 0;
+ 
+-#define SOCKET_ERR(level, msg, ...) \
++#define SOCKET_ERR(level, ...) \
+ 	if (verbose >= level) { \
+-		fprintf(stderr, "[socket] " msg __VA_OPT__(,) __VA_ARGS__); \
++		fprintf(stderr, "[socket] " __VA_ARGS__); \
+ 	}
+ 
+ void socket_init(void)
