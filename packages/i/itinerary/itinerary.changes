@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:00:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * Fix trip group map bounding box computations for individual locations
+  * Don't hide essential trip group map elements on low zoom levels
+  * Don't try to update a reservation to a different type
+  * Disable DB online import for now
+  * Update APK version logic to the latest ECM
+  * Reapply "Determine APK version code from CI_PIPELINE_CREATED_AT when set"
+  * Unify usage of the document-import icon
+
+-------------------------------------------------------------------
 Tue Feb  4 12:29:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
