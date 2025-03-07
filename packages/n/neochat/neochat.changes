@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:01:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * Don't show the "Settings" button when adding a new account
+  * snapcraft: Move to core24
+  * StateKeys: Fix opening a specific state key member
+
+-------------------------------------------------------------------
 Tue Feb  4 12:30:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
