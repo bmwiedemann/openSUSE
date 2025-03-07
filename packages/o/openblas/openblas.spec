@@ -18,8 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _vers 0_3_28
-%define vers 0.3.28
+%define _vers 0_3_29
+%define vers 0.3.29
 %define so_v 0
 %define pname openblas
 
@@ -166,6 +166,12 @@ ExclusiveArch:  do_not_build
 %ifarch ppc64le
 %if 0%{?c_f_ver} > 9
 %else
+%if 0%{?sle_version} == 150700
+%define cc_v 14
+%endif
+%if 0%{?sle_version} == 150600
+%define cc_v 13
+%endif
 %if 0%{?sle_version} == 150500
 %define cc_v 12
 %endif
@@ -191,6 +197,7 @@ ExclusiveArch:  do_not_build
 %define p_prefix %_prefix
 %define p_includedir %_includedir/%pname
 %define p_libdir %_libdir/openblas%{?flavor:-%{flavor}}
+%define p_bindir %_libexecdir/openblas%{?flavor:-%{flavor}}/tests
 %define p_cmakedir %{p_libdir}/cmake/%{pname}
 %define num_threads 64
 
@@ -207,6 +214,7 @@ ExclusiveArch:  do_not_build
 %define p_prefix %hpc_prefix
 %define p_includedir %hpc_includedir
 %define p_libdir %hpc_libdir
+%define p_bindir %hpc_bindir
 %define p_cmakedir %{hpc_libdir}/cmake
 %define num_threads 256
 
@@ -326,6 +334,15 @@ OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 
 This package contains headers for OpenBLAS.
 
+%package   tests
+Summary:        Unit Tests for openblas library
+Group:          Development/Libraries/C and C++
+
+%description tests
+OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
+
+This package contains test binaries.
+
 %prep
 
 %setup -q -n OpenBLAS-%{version}
@@ -335,6 +352,7 @@ sed -i -e "s@m32@m31@" Makefile.system
 %endif
 sed -i -e '/FLDFLAGS = \|$(CC)\|$(CXX)/s@$@ $(LDFLAGS_TESTS)@' \
     test/Makefile ctest/Makefile utest/Makefile cpp_thread_test/Makefile
+grep -q .note.GNU-stack cpuid.S || echo '.section        .note.GNU-stack,"",@progbits' >> cpuid.S
 
 %if %{without hpc}
 cp %{SOURCE1} .
@@ -413,7 +431,7 @@ EOF
 %ifarch ppc64
 %global addopt -mvsx
 %endif
-%global addopt %{?addopt} -fno-strict-aliasing
+%global addopt %{?addopt} -fno-strict-aliasing -Wa,--noexecstack -Wl,-z,noexecstack
 
 # Make serial, threaded and OpenMP versions
 
@@ -434,6 +452,7 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
      NUM_THREADS=%{num_threads} V=1 \
      OPENBLAS_LIBRARY_DIR=%{p_libdir} \
      OPENBLAS_INCLUDE_DIR=%{p_includedir} \
+     OPENBLAS_BINARY_DIR=%{p_bindir} \
      OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
      PREFIX=%{p_prefix} \
      %{?dynamic_list} \
@@ -449,16 +468,24 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
 # Install library and headers
 # Pass NUM_THREADS again, as it is not propagated from the build step
 # https://github.com/OpenMathLib/OpenBLAS/issues/4275
-%make_install  %{?openblas_target} %{?build_flags} \
+mkdir -p %{buildroot}/%{p_bindir}
+%make_install install_tests %{?openblas_target} %{?build_flags} \
     %{?openblas_opt} \
     NUM_THREADS=%{num_threads} \
     OPENBLAS_LIBRARY_DIR=%{p_libdir} \
     OPENBLAS_INCLUDE_DIR=%{p_includedir} \
+    OPENBLAS_BINARY_DIR=%{p_bindir} \
     OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
     %{!?with_hpc:%{?libnamesuffix} FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}} \
     %{?ldflags_tests:LDFLAGS_TESTS=%{ldflags_tests}} \
     %{?with_hpc:%{?cc_v:CC=gcc-%{cc_v} FC=gfortran-%{cc_v} CEXTRALIB=""}} \
     PREFIX=%{p_prefix}
+for i in %{buildroot}/%{p_bindir}/*; do
+    case $i in
+	*.dat|*in*) chmod 0644 $i;;
+	*)     chmod 0755 $i;;
+    esac
+done
 
 # Delete info about OBS host cpu
 %ifarch %ix86 x86_64
@@ -649,6 +676,11 @@ fi
 %dir %{p_libdir}/pkgconfig
 %{p_libdir}/pkgconfig
 %endif
+
+%files tests
+%dir %{p_bindir}
+%{!?with_hpc:%dir %{dirname:%{p_bindir}}}
+%{p_bindir}/*
 
 %files devel-static
 %{p_libdir}/libopenblas*.a
