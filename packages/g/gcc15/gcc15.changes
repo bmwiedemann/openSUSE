@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Wed Mar  5 09:42:44 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC trunk head, 15.0.1+git7827
+- Includes fix for emacs JIT use
+- Bumps libgo SONAME to libgo24 which should fix go1.9 build
+
+-------------------------------------------------------------------
+Tue Feb 18 14:02:49 UTC 2025 - JS <obs.coke518@passinbox.com>
+
+- Enable cross compilers on loongarch64
+
+-------------------------------------------------------------------
+Mon Feb 10 07:40:03 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC trunk head, 15.0.1+git7452
+
+-------------------------------------------------------------------
+Fri Feb  7 08:26:35 UTC 2025 - JS <obs.coke518@passinbox.com>
+
+- Remove SPU-specific sections
+  * SPU target was dropped upstream in GCC 10
+
+-------------------------------------------------------------------
+Thu Feb  6 10:29:59 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Adjust cross compiler requirements to use %requires_ge
+- Fix condition on whether to enable plugins or JIT support to
+  not check sle_version which is not defined in SLFO but to check
+  is_opensuse and suse_version instead.
+
+-------------------------------------------------------------------
+Mon Feb  3 10:08:21 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC trunk head, 15.0.1+git7330
+- For cross compilers require the same or newer binutils, newlib
+  or cross-glibc that was used at build time.  [bsc#1232526]
+
+-------------------------------------------------------------------
+Wed Jan 29 10:15:53 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC trunk head, 15.0.1+git7269
+- Disable building the experimental rust frontend everywhere since
+  the cargo build dependency is unwanted.
+- Adjust the list of RISC-V intrinsic includes.
+
+-------------------------------------------------------------------
+Mon Jan 20 14:59:13 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- New package, inherits from gcc14
+- Take patches inherited from GCC 14.
+  * gcc-add-defaultsspec.diff, add the ability to provide a specs
+    file that is read by default
+  * tls-no-direct.diff, avoid direct %fs references on x86 to not
+    slow down Xen
+  * gcc43-no-unwind-tables.diff, do not produce unwind tables for
+    CRT files
+  * gcc41-ppc32-retaddr.patch, fix expansion of __builtin_return_addr
+    for ppc, just a testcase
+  * gcc44-textdomain.patch, make translation files version specific
+    and adjust textdomain to find them
+  * gcc44-rename-info-files.patch, fix cross-references in info files
+    when renaming them to be version specific
+  * gcc48-libstdc++-api-reference.patch, fix link in the installed
+    libstdc++ html documentation
+  * gcc7-remove-Wexpansion-to-defined-from-Wextra.patch, removes
+    new warning from -Wextra
+  * gcc7-avoid-fixinc-error.diff
+  * gcc9-reproducible-builds-buildid-for-checksum.patch
+  * gcc9-reproducible-builds.patch
+  * gcc11-gdwarf-4-default.patch, default to -gdwarf-4 on old products

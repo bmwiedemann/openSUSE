@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9ca2bd28036dec2e249529b31342c8b</srcmd5>
+    <version>15.0.1+git7827</version>
+    <time>1741361982</time>
+    <user>anag+factory</user>
+    <comment>Now needs additional
+
+%product_libs_gcc_ver_libgo23 14
+
+since we bumped libgo SONAME as well for 15</comment>
+    <requestid>1250398</requestid>
+  </revision>
+</revisionlist>

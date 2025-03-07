@@ -1,0 +1,116 @@
+Use the binaries build-id as checksum for PCH purposes.
+
+diff --git a/gcc/c-family/c-pch.cc b/gcc/c-family/c-pch.cc
+index 2cafa1387bb..7f51f977378 100644
+--- a/gcc/c-family/c-pch.cc
++++ b/gcc/c-family/c-pch.cc
+@@ -64,6 +64,66 @@ static FILE *pch_outfile;
+ 
+ static const char *get_ident (void);
+ 
++#if _GNU_SOURCE
++#include <link.h>
++
++#define ALIGN(val, align)      (((val) + (align) - 1) & ~((align) - 1))
++
++static int
++get_build_id_1 (struct dl_phdr_info *info, size_t, void *data)
++{
++  for (unsigned i = 0; i < info->dlpi_phnum; ++i)
++    {
++      if (info->dlpi_phdr[i].p_type != PT_NOTE)
++	continue;
++      ElfW(Nhdr) *nhdr
++	= (ElfW(Nhdr) *)(info->dlpi_addr + info->dlpi_phdr[i].p_vaddr);
++      ptrdiff_t size = info->dlpi_phdr[i].p_filesz;
++      ptrdiff_t align = info->dlpi_phdr[i].p_align;
++      if (align != 8)
++	align = 4;
++      while (size >= (ptrdiff_t)sizeof (ElfW(Nhdr)))
++	{
++	  if (nhdr->n_type == NT_GNU_BUILD_ID
++	      && nhdr->n_namesz == 4
++	      && strncmp ((char *)nhdr
++			  + sizeof (ElfW(Nhdr)),
++			  "GNU", 4) == 0
++	      && nhdr->n_descsz >= 16)
++	    {
++	      memcpy (data, 
++		      (char *)nhdr
++		      + ALIGN (sizeof (ElfW(Nhdr))
++			       + nhdr->n_namesz, align), 16);
++	      return 1;
++	    }
++	  size_t offset = (ALIGN (sizeof (ElfW(Nhdr))
++				  + nhdr->n_namesz, align)
++			   + ALIGN(nhdr->n_descsz, align));
++	  nhdr = (ElfW(Nhdr) *)((char *)nhdr + offset);
++	  size -= offset;
++	}
++    }
++
++  return 0;
++}
++
++static const unsigned char *
++get_build_id ()
++{
++  static unsigned char build_id[16];
++  if (!dl_iterate_phdr (get_build_id_1, build_id))
++    return NULL;
++  return build_id;
++}
++#else
++static const unsigned char *
++get_build_id ()
++{
++  return NULL;
++}
++#endif
++
+ /* Compute an appropriate 8-byte magic number for the PCH file, so that
+    utilities like file(1) can identify it, and so that GCC can quickly
+    ignore non-PCH files and PCH files that are of a completely different
+@@ -118,8 +178,11 @@ pch_init (void)
+   }
+   target_validity = targetm.get_pch_validity (&v.target_data_length);
+ 
++  const unsigned char *chksum = get_build_id ();
++  if (!chksum)
++    chksum = executable_checksum;
+   if (fwrite (partial_pch, IDENT_LENGTH, 1, f) != 1
+-      || fwrite (executable_checksum, 16, 1, f) != 1
++      || fwrite (chksum, 16, 1, f) != 1
+       || fwrite (&v, sizeof (v), 1, f) != 1
+       || fwrite (target_validity, v.target_data_length, 1, f) != 1)
+     fatal_error (input_location, "cannot write to %s: %m", pch_file);
+@@ -234,7 +297,10 @@ c_common_valid_pch (cpp_reader *pfile, const char *name, int fd)
+ 	  cpp_warning (pfile, CPP_W_INVALID_PCH, "%s: not a PCH file", name);
+       return 2;
+     }
+-  if (memcmp (ident + IDENT_LENGTH, executable_checksum, 16) != 0)
++  const unsigned char *chksum = get_build_id ();
++  if (!chksum)
++    chksum = executable_checksum;
++  if (memcmp (ident + IDENT_LENGTH, chksum, 16) != 0)
+     {
+       cpp_warning (pfile, CPP_W_INVALID_PCH,
+ 		   "%s: created by a different GCC executable", name);
+diff --git a/gcc/genchecksum.cc b/gcc/genchecksum.cc
+index 47280f5147b..bcfdcacf954 100644
+--- a/gcc/genchecksum.cc
++++ b/gcc/genchecksum.cc
+@@ -113,8 +113,13 @@ main (int argc, char ** argv)
+   puts ("#include \"config.h\"");
+   puts ("#include \"system.h\"");
+   fputs ("EXPORTED_CONST unsigned char executable_checksum[16] = { ", stdout);
++#if _GNU_SOURCE
++  for (i = 0; i < 16; i++)
++    printf ("0x%02x%s", 0, i == 15 ? " };\n" : ", ");
++#else
+   for (i = 0; i < 16; i++)
+     printf ("0x%02x%s", result[i], i == 15 ? " };\n" : ", ");
++#endif
+ 
+   return 0;
+ }

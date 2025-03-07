@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="versionformat">@PARENT_TAG@.0.1+git@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">basepoints/gcc-(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="match-tag">basepoints/gcc-*</param>
+    <param name="url">git://gcc.gnu.org/git/gcc.git</param>
+    <param name="scm">git</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>
