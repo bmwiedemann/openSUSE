@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Mar  6 13:03:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.6.0:
+  * Minor Changes
+    - pnpm-workspace.yaml can now hold all the settings that .npmrc
+      accepts. The settings should use camelCase #9211.
+      pnpm-workspace.yaml example:
+
+        verifyDepsBeforeRun: install
+        optimisticRepeatInstall: true
+        publicHoistPattern:
+          - "*types*"
+          - "!@types/react"
+
+    - Projects using a file: dependency on a local tarball file
+      (i.e. .tgz, .tar.gz, .tar) will see a performance improvement
+      during installation. Previously, using a file: dependency on
+      a tarball caused the lockfile resolution step to always run.
+      The lockfile will now be considered up-to-date if the tarball
+      is unchanged.
+  * Patch Changes
+    - pnpm self-update should not leave a directory with a broken
+      pnpm installation if the installation fails.
+    - fast-glob replace with tinyglobby to reduce the size of the
+      pnpm CLI dependencies #9169.
+    - pnpm deploy should not remove fields from the deployed
+      package's package.json file #9215.
+    - pnpm self-update should not read the pnpm settings from the
+      package.json file in the current working directory.
+    - Fix pnpm deploy creating a package.json without the imports
+      and license field #9193.
+    - pnpm update -i should list only packages that have newer
+      versions #9206.
+    - Fix a bug causing entries in the catalogs section of the
+      pnpm-lock.yaml file to be removed when
+      dedupe-peer-dependents=false on a filtered install. #9112
+
+-------------------------------------------------------------------
 Thu Feb 27 05:44:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 10.5.2:
@@ -27,9 +65,9 @@ Tue Feb 25 22:39:13 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 - update to 10.5.0:
   * The pnpm.* settings from package.json can now be specified in
     the pnpm-workspace.yaml file instead #9121.
-  * Added support for automatically syncing files of injected 
+  * Added support for automatically syncing files of injected
     workspace packages after pnpm run #9081. Use the sync-injected
-    -deps-after-scripts setting to specify which scripts build 
+    -deps-after-scripts setting to specify which scripts build
     the workspace package. This tells pnpm when syncing is needed.
     The setting should be defined in a .npmrc file at the root of
     the workspace.
@@ -49,7 +87,7 @@ Tue Feb 25 22:39:13 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 Mon Feb 17 21:32:43 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 10.4.1:
-  * Throws an error when the value provided by the --allow-build 
+  * Throws an error when the value provided by the --allow-build
     option overlaps with the pnpm.ignoredBuildDependencies list #9105.
   * Print pnpm's version after the execution time at the end of the console output.
   * Print warning about ignored builds of dependencies on repeat install #9106.
@@ -537,7 +575,7 @@ Fri Jun 14 21:08:00 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
   * Improved the performance of the resolution stage by changing
     how missing peer dependencies are detected #8144.
 - changes from 9.1.3:
-  * Fix a bug in which a dependency that is both optional for one 
+  * Fix a bug in which a dependency that is both optional for one
     package but non-optional for another is omitted when optional=false #8066.
   * Clear resolution cache before starting peer dependencies resolution #8109.
   * Reduce memory usage by peer dependencies resolution #8072.
