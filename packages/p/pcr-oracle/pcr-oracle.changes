@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  7 06:19:42 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fix-bsc1230316-predict-sbatlevelrt-sb-off.patch to fix the
+  prediction of SbatLevelRT when Secure Boot is disabled
+  (bsc#1230316)
+- Add fix-bsc1230316-make-pcr4-hard-requirement.patch to make PCR4
+  a hard requirement for SbatLevelRT prediction (bsc#1230316)
+
+-------------------------------------------------------------------
 Wed Feb 26 07:31:47 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fix-bsc1230316-predict-sbatlevelrt.patch to predict
