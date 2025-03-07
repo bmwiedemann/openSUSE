@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  5 15:20:43 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix conflicting declaration error, add fix-conflicting-declaration.patch
+
+-------------------------------------------------------------------
 Sun Jan  7 07:46:00 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add extra-cmake-modules as BuildRequires, fix build on Tumbleweed 

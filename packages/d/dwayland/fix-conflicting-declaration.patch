@@ -1,0 +1,11 @@
+diff -Nur dwayland-5.25.0/src/server/drm_fourcc.h dwayland-5.25.0-new/src/server/drm_fourcc.h
+--- dwayland-5.25.0/src/server/drm_fourcc.h	2023-04-04 14:45:20.000000000 +0800
++++ dwayland-5.25.0-new/src/server/drm_fourcc.h	2025-03-05 23:17:35.045554220 +0800
+@@ -11,7 +11,6 @@
+ 
+ // These typedefs are copied from drm.h
+ typedef uint32_t __u32;
+-typedef uint64_t __u64;
+ 
+ #if defined(__cplusplus)
+ extern "C" {

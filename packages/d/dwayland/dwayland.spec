@@ -1,7 +1,7 @@
 #
 # spec file for package dwayland
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dwayland
 Source0:        https://github.com/linuxdeepin/dwayland/archive/refs/tags/%{version}-deepin.1.4.tar.gz
+Patch0:         fix-conflicting-declaration.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-qtwayland
