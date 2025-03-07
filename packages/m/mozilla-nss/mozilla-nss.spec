@@ -17,15 +17,15 @@
 #
 
 
-%global nss_softokn_fips_version 3.107
+%global nss_softokn_fips_version 3.108
 %define NSPR_min_version 4.36
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 %global crypto_policies_version 20210218
 Name:           mozilla-nss
-Version:        3.107
+Version:        3.108
 Release:        0
-%define underscore_version 3_107
+%define underscore_version 3_108
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -51,7 +51,6 @@ Patch3:         nss-no-rpath.patch
 Patch4:         add-relro-linker-option.patch
 Patch5:         malloc.patch
 Patch7:         nss-sqlitename.patch
-Patch8:         nss-bmo1930797.patch
 Patch9:         nss-fips-use-getrandom.patch
 Patch10:        nss-fips-dsa-kat.patch
 Patch11:        nss-fips-pairwise-consistency-check.patch
@@ -82,7 +81,6 @@ Patch48:        nss-fips-test.patch
 Patch49:        nss-allow-slow-tests-s390x.patch
 Patch50:        nss-fips-bsc1223724.patch
 Patch51:        nss-fips-aes-gcm-restrict.patch
-Patch52:        nss-fips-safe-memset.patch
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 # aarch64 + gcc4.8 fails to build on SLE-12 due to undefined references
 BuildRequires:  gcc9-c++
@@ -211,7 +209,6 @@ cd nss
 %patch -P 5 -p1
 %endif
 %patch -P 7 -p1
-%patch -P 8 -p1
 # FIPS patches
 %patch -P 9 -p1
 %patch -P 10 -p1
@@ -249,10 +246,6 @@ cd nss
 %endif
 %patch -P 50 -p1
 %patch -P 51 -p1
-%if 0%{?sle_version} >= 150000
-# glibc on SLE-12 is too old and doesn't have explicit_bzero yet.
-%patch -P 52 -p1
-%endif
 
 # additional CA certificates
 #cd security/nss/lib/ckfw/builtins

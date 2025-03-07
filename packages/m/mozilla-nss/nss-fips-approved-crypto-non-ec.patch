@@ -426,8 +426,8 @@ Index: nss/lib/softoken/pkcs11c.c
          return crv;
      }
  
-+    publicKey->isFIPS = sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_PAIR_GEN_MECHANISM, publicKey, bitSize);
-+    privateKey->isFIPS = sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_PAIR_GEN_MECHANISM, privateKey, bitSize);
++    publicKey->isFIPS = sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_PAIR_GEN_MECHANISM, publicKey, 0);
++    privateKey->isFIPS = sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_PAIR_GEN_MECHANISM, privateKey, 0);
 +    session->lastOpWasFIPS = privateKey->isFIPS;
 +
      *phPrivateKey = privateKey->handle;
@@ -472,7 +472,7 @@ Index: nss/lib/softoken/pkcs11c.c
      } else {
          /* T(1) = HMAC-Hash(prk, "" | info | 0x01)
           * T(n) = HMAC-Hash(prk, T(n-1) | info | n
-@@ -7597,7 +7617,8 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -7598,7 +7618,8 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
              return CKR_KEY_HANDLE_INVALID;
          }
      }
@@ -482,7 +482,7 @@ Index: nss/lib/softoken/pkcs11c.c
  
      switch (mechanism) {
          /* get a public key from a private key. nsslowkey_ConvertToPublickey()
-@@ -7798,7 +7819,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -7799,7 +7820,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
              } else {
                  /* now allocate the hash contexts */
                  md5 = MD5_NewContext();
@@ -491,7 +491,7 @@ Index: nss/lib/softoken/pkcs11c.c
                      PORT_Memset(crsrdata, 0, sizeof crsrdata);
                      crv = CKR_HOST_MEMORY;
                      break;
-@@ -8187,6 +8208,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -8188,6 +8209,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
                  PORT_Assert(i <= sizeof key_block);
              }
  
@@ -636,7 +636,20 @@ Index: nss/lib/softoken/fips_algorithms.h
      /* -------------- RSA Multipart Signing Operations -------------------- */
      { CKM_SHA224_RSA_PKCS, { RSA_FB_KEY, CKF_SGN }, RSA_FB_STEP, SFTKFIPSNone },
      { CKM_SHA256_RSA_PKCS, { RSA_FB_KEY, CKF_SGN }, RSA_FB_STEP, SFTKFIPSNone },
-@@ -88,21 +116,33 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[]
+@@ -79,30 +107,42 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[]
+     { CKM_SHA256_RSA_PKCS_PSS, { RSA_FB_KEY, CKF_SGN }, RSA_FB_STEP, SFTKFIPSRSAPSS },
+     { CKM_SHA384_RSA_PKCS_PSS, { RSA_FB_KEY, CKF_SGN }, RSA_FB_STEP, SFTKFIPSRSAPSS },
+     { CKM_SHA512_RSA_PKCS_PSS, { RSA_FB_KEY, CKF_SGN }, RSA_FB_STEP, SFTKFIPSRSAPSS },
+-    { CKM_SHA224_RSA_PKCS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSRSAPSS },
+-    { CKM_SHA256_RSA_PKCS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSRSAPSS },
+-    { CKM_SHA384_RSA_PKCS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSRSAPSS },
+-    { CKM_SHA512_RSA_PKCS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSRSAPSS },
++    { CKM_SHA224_RSA_PKCS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSNone },
++    { CKM_SHA256_RSA_PKCS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSNone },
++    { CKM_SHA384_RSA_PKCS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSNone },
++    { CKM_SHA512_RSA_PKCS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSNone },
+     { CKM_SHA224_RSA_PKCS_PSS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSRSAPSS },
+     { CKM_SHA256_RSA_PKCS_PSS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSRSAPSS },
      { CKM_SHA384_RSA_PKCS_PSS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSRSAPSS },
      { CKM_SHA512_RSA_PKCS_PSS, { RSA_LEGACY_FB_KEY, CKF_VERIFY }, RSA_LEGACY_FB_STEP, SFTKFIPSRSAPSS },
      /* ------------------------- DSA Operations --------------------------- */

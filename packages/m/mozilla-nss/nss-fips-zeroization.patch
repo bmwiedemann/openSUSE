@@ -107,7 +107,7 @@ Index: nss/lib/freebl/gcm.c
 ===================================================================
 --- nss.orig/lib/freebl/gcm.c
 +++ nss/lib/freebl/gcm.c
-@@ -162,6 +162,9 @@ bmul(uint64_t x, uint64_t y, uint64_t *r
+@@ -166,6 +166,9 @@ bmul(uint64_t x, uint64_t y, uint64_t *r
  
      *r_high = (uint64_t)(r >> 64);
      *r_low = (uint64_t)r;
@@ -117,7 +117,7 @@ Index: nss/lib/freebl/gcm.c
  }
  
  SECStatus
-@@ -200,6 +203,12 @@ gcm_HashMult_sftw(gcmHashContext *ghash,
+@@ -204,6 +207,12 @@ gcm_HashMult_sftw(gcmHashContext *ghash,
      }
      ghash->x_low = ci_low;
      ghash->x_high = ci_high;
@@ -130,7 +130,7 @@ Index: nss/lib/freebl/gcm.c
      return SECSuccess;
  }
  #else
-@@ -239,6 +248,10 @@ bmul32(uint32_t x, uint32_t y, uint32_t
+@@ -243,6 +252,10 @@ bmul32(uint32_t x, uint32_t y, uint32_t
      z = z0 | z1 | z2 | z3;
      *r_high = (uint32_t)(z >> 32);
      *r_low = (uint32_t)z;
@@ -141,7 +141,7 @@ Index: nss/lib/freebl/gcm.c
  }
  
  SECStatus
-@@ -324,6 +337,20 @@ gcm_HashMult_sftw32(gcmHashContext *ghas
+@@ -328,6 +341,20 @@ gcm_HashMult_sftw32(gcmHashContext *ghas
          ghash->x_high = z_high_h;
          ghash->x_low = z_high_l;
      }
@@ -162,40 +162,3 @@ Index: nss/lib/freebl/gcm.c
      return SECSuccess;
  }
  #endif /* HAVE_INT128_SUPPORT */
-@@ -870,11 +897,13 @@ GCM_DecryptUpdate(GCMContext *gcm, unsig
-     /* verify the block */
-     rv = gcmHash_Update(gcm->ghash_context, inbuf, inlen);
-     if (rv != SECSuccess) {
--        return SECFailure;
-+        rv = SECFailure;
-+        goto cleanup;
-     }
-     rv = gcm_GetTag(gcm, tag, &len, AES_BLOCK_SIZE);
-     if (rv != SECSuccess) {
--        return SECFailure;
-+        rv = SECFailure;
-+        goto cleanup;
-     }
-     /* Don't decrypt if we can't authenticate the encrypted data!
-      * This assumes that if tagBits is not a multiple of 8, intag will
-@@ -882,10 +911,18 @@ GCM_DecryptUpdate(GCMContext *gcm, unsig
-     if (NSS_SecureMemcmp(tag, intag, tagBytes) != 0) {
-         /* force a CKR_ENCRYPTED_DATA_INVALID error at in softoken */
-         PORT_SetError(SEC_ERROR_BAD_DATA);
--        PORT_Memset(tag, 0, sizeof(tag));
--        return SECFailure;
-+        rv = SECFailure;
-+        goto cleanup;
-     }
-+cleanup:
-+    tagBytes = 0;
-     PORT_Memset(tag, 0, sizeof(tag));
-+    intag = NULL;
-+    len = 0;
-+    if (rv != SECSuccess) {
-+        return rv;
-+    }
-+
-     /* finish the decryption */
-     return CTR_Update(&gcm->ctr_context, outbuf, outlen, maxout,
-                       inbuf, inlen, AES_BLOCK_SIZE);

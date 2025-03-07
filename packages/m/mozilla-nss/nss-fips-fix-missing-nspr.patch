@@ -1,7 +1,7 @@
-diff --git a/lib/freebl/drbg.c b/lib/freebl/drbg.c
-index 3ed1751..56a1a58 100644
---- a/lib/freebl/drbg.c
-+++ b/lib/freebl/drbg.c
+Index: nss/lib/freebl/drbg.c
+===================================================================
+--- nss.orig/lib/freebl/drbg.c
++++ nss/lib/freebl/drbg.c
 @@ -6,6 +6,8 @@
  #include "stubs.h"
  #endif
@@ -11,7 +11,7 @@ index 3ed1751..56a1a58 100644
  #include "prerror.h"
  #include "secerr.h"
  
-@@ -182,11 +184,30 @@ prng_initEntropy(void)
+@@ -183,11 +185,30 @@ prng_initEntropy(void)
      PRUint8 block[PRNG_ENTROPY_BLOCK_SIZE];
      SHA256Context ctx;
  
@@ -42,9 +42,9 @@ index 3ed1751..56a1a58 100644
          return PR_FAILURE; /* error is already set */
      }
      PORT_Assert(length == sizeof(block));
-@@ -199,6 +220,9 @@ prng_initEntropy(void)
+@@ -200,6 +221,9 @@ prng_initEntropy(void)
                 sizeof(globalrng->previousEntropyHash));
-     PORT_Memset(block, 0, sizeof(block));
+     PORT_SafeZero(block, sizeof(block));
      SHA256_DestroyContext(&ctx, PR_FALSE);
 +    coRNGInitEntropy.status = PR_SUCCESS;
 +    __sync_synchronize ();
@@ -52,7 +52,7 @@ index 3ed1751..56a1a58 100644
      return PR_SUCCESS;
  }
  
-@@ -211,7 +235,7 @@ prng_getEntropy(PRUint8 *buffer, size_t requestLength)
+@@ -212,7 +236,7 @@ prng_getEntropy(PRUint8 *buffer, size_t
      SHA256Context ctx;
      SECStatus rv = SECSuccess;
  
@@ -61,7 +61,7 @@ index 3ed1751..56a1a58 100644
          PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
          return SECFailure;
      }
-@@ -564,10 +588,34 @@ prng_freeRNGContext(RNGContext *rng)
+@@ -566,10 +590,34 @@ prng_freeRNGContext(RNGContext *rng)
  SECStatus
  RNG_RNGInit(void)
  {
@@ -98,7 +98,7 @@ index 3ed1751..56a1a58 100644
  }
  
  /*
-@@ -842,7 +890,21 @@ PRNGTEST_Generate(PRUint8 *bytes, unsigned int bytes_len,
+@@ -844,7 +892,21 @@ PRNGTEST_Generate(PRUint8 *bytes, unsign
      }
      /* replicate reseed test from prng_GenerateGlobalRandomBytes */
      if (testContext.reseed_counter[0] >= RESEED_VALUE) {
