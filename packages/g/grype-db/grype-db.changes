@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Mar 07 06:41:59 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.29.0:
+  * Fix internal link in usage (#483)
+  * chore(deps): Bump golang.org/x/text from 0.22.0 to 0.23.0
+    (#523)
+  * Update grype-db bootstrap tools to latest versions. (#520)
+  * chore(deps): Bump actions/cache from 4.2.1 to 4.2.2 (#517)
+  * chore(deps): Bump actions/cache in /.github/actions/bootstrap
+    (#518)
+  * chore(deps): Bump peter-evans/create-pull-request from 7.0.7 to
+    7.0.8 (#522)
+  * chore(deps): Bump golang.org/x/sync from 0.11.0 to 0.12.0
+    (#524)
+  * Enable v6 CI validations (#521)
+  * fix: pin grype to v0.87.0 for v5 (#519)
+  * explicitly translate nvd cvss type when sorting (#516)
+  * enable EPSS and KEV (#515)
+  * Update grype-db bootstrap tools to latest versions. (#494)
+  * chore(deps): Bump peter-evans/create-pull-request from 7.0.6 to
+    7.0.7 (#514)
+  * Add EPSS v6 transforms (#511)
+  * chore(deps): Bump github.com/google/go-cmp from 0.6.0 to 0.7.0
+    (#513)
+  * fix v prefix (#512)
+  * Add KEV transformer + processor (#507)
+  * chore(deps): Bump actions/cache in /.github/actions/bootstrap
+    (#510)
+  * chore(deps): Bump github.com/klauspost/compress from 1.17.11 to
+    1.18.0 (#508)
+  * chore(deps): Bump actions/cache from 4.2.0 to 4.2.1 (#509)
+  * fix RPM modularity (#506)
+  * fix jenkins plugins (#505)
+  * Missing constraint in v6 DB should match everything (#503)
+  * explicitly use syft pkg types (#499)
+  * stop publishing to s3 (#498)
+  * Switch from poetry to UV (#497)
+  * Normalize v6 record severities (#496)
+  * feat: update to go 1.24.x (#495)
+  * chore(deps-dev): Bump cryptography from 44.0.0 to 44.0.1 (#492)
+  * chore: update runners to ubuntu-24.04 (#493)
+  * pull in v6 severity updates (#490)
+  * Tag advisory URLs for v6 references (#491)
+  * point v6 tip to main
+  * chore(deps): Bump github.com/spf13/pflag from 1.0.5 to 1.0.6
+    (#484)
+  * chore(deps): Bump abatilo/actions-poetry in
+    /.github/actions/bootstrap (#487)
+  * chore(deps): Bump golang.org/x/text from 0.21.0 to 0.22.0
+    (#488)
+  * chore(deps): Bump golang.org/x/sync from 0.10.0 to 0.11.0
+    (#489)
+  * chore: fix python workflow failures (#485)
+  * remove v3 and v4 schema usage (#482)
+
+-------------------------------------------------------------------
 Sat Jan 25 08:05:52 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.28.0:
