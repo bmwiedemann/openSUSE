@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 07 06:45:47 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.1:
+  * Prepare for v0.18.1 release
+  * gh: add option to specify kubeconfig
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.64.6
+  * Update stable release to v0.18.0
+
+-------------------------------------------------------------------
 Sun Mar 02 07:50:47 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.18.0:
