@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 07 06:43:15 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.3.1:
+  * chore(backport release-1.3): fix(ui): graph edge glitch (#3615)
+  * chore(backport release-1.3): fix(controller): replace missing
+    credential lookup in git-clone step (#3611)
+  * chore(backport release-1.3): fix(ui): invalid verification
+    duration (#3605)
+  * chore(backport release-1.3): fix(controller): remove mustClone
+    method from gitCloner (#3601)
+  * chore(backport release-1.3): docs: note kustomize-set-image
+    tag/digest requirement (#3583)
+  * chore(backport release-1.3): fix: require tag or digest for
+    kustomize-set-image (#3580)
+  * chore(backport release-1.3): fix: improve construction of HTTP
+    transports (#3574)
+  * chore(backport release-1.3): docs: add v1.3.0 release notes
+    (#3571)
+  * chore(backport release-1.3): docs: update docs to use official
+    kargo-helm example repo (#3567)
+
+-------------------------------------------------------------------
 Wed Feb 26 05:43:43 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.3.0:
