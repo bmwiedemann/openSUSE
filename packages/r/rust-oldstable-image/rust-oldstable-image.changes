@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  7 07:04:12 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- Switch to Rust 1.84
+
+-------------------------------------------------------------------
 Wed Feb 12 17:29:25 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - rust 1.84 for stable, rust 1.83 to oldstable
