@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  7 07:03:45 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- Unset NOTIFY_SOCKET in entrypoint
+
+-------------------------------------------------------------------
 Wed Feb  5 10:30:31 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove handling for outdated postgresql versions
