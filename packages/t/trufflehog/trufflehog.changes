@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 06 09:26:37 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 3.88.15:
+  * Add terminal output for analyze, if detector support it (#3959)
+  * chore(deps): update golang docker tag to v1.24 (#3950)
+  * uncommte plaidkey detector (#3953)
+  * Enumeration jobs should not consume concurrency slots (#3952)
+  * Feature: Airtable Analyzer for Personal Access Tokens (#3941)
+  * [Feat] Planetscale Analyzer (#3928)
+
+-------------------------------------------------------------------
 Mon Mar 03 14:30:27 UTC 2025 - felix.niederwanger@suse.de
 
 - Update to version 3.88.14:

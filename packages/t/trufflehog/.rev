@@ -1960,4 +1960,18 @@
   * elevenlabs analyzer (#3850) (forwarded request 1249836 from ph03nix)</comment>
     <requestid>1249840</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>47895c9f794f2e85d18d6438b6e206b8</srcmd5>
+    <version>3.88.15</version>
+    <time>1741361990</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.88.15:
+  * Add terminal output for analyze, if detector support it (#3959)
+  * chore(deps): update golang docker tag to v1.24 (#3950)
+  * uncommte plaidkey detector (#3953)
+  * Enumeration jobs should not consume concurrency slots (#3952)
+  * Feature: Airtable Analyzer for Personal Access Tokens (#3941)
+  * [Feat] Planetscale Analyzer (#3928) (forwarded request 1250593 from ph03nix)</comment>
+    <requestid>1250636</requestid>
+  </revision>
 </revisionlist>
