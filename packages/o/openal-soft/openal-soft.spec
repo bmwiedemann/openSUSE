@@ -1,7 +1,7 @@
 #
 # spec file for package openal-soft
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           openal-soft
-Version:        1.22.2
+Version:        1.24.2
 Release:        0
 Summary:        Audio library with an OpenGL-resembling API
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -26,10 +26,13 @@ URL:            https://www.openal-soft.org/
 Source0:        https://www.openal-soft.org/openal-releases/openal-soft-%{version}.tar.bz2
 Source1:        libopenalcompat.c
 Source3:        baselibs.conf
-# PATCH-FIX-UPSTREAM openal-no-autospawn.diff
-Patch0:         openal-no-autospawn.diff
 BuildRequires:  cmake >= 3.0
+%if 0%{?sle_version} >= 150600 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(alsa)
@@ -141,6 +144,10 @@ rm -v alc/backends/opensl.cpp
 # ALSOFT_CPUEXT_SSE2 controls -msse2, the other configure flags do not seem
 # lead to -m. And everything else (i.e. in source) seems CPUID-guarded.
 #
+%if 0%{?sle_version} >= 150600 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-13"
+export CXX="g++-13"
+%endif
 %cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DALSOFT_CONFIG=ON \
@@ -154,13 +161,11 @@ gcc -Wall %{optflags} -fPIC -DPIC -Wl,-soname,libopenal.so.0 -shared -Wl,--no-as
 
 %install
 %cmake_install
-install -D -m 0644 build/libopenal.so.0 %{buildroot}%{_libdir}/libopenal.so.0
+install -D -m 0755 build/libopenal.so.0 %{buildroot}%{_libdir}/libopenal.so.0
 install -D -m 0644 /dev/null %{buildroot}/%{_sysconfdir}/openal/alsoft.conf
 
-%post -n libopenal0 -p /sbin/ldconfig
-%postun -n libopenal0 -p /sbin/ldconfig
-%post -n libopenal1 -p /sbin/ldconfig
-%postun -n libopenal1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libopenal0
+%ldconfig_scriptlets -n libopenal1
 
 %files tools
 %license COPYING
@@ -168,7 +173,8 @@ install -D -m 0644 /dev/null %{buildroot}/%{_sysconfdir}/openal/alsoft.conf
 %{_bindir}/alsoft-config
 %{_bindir}/altonegen
 %{_bindir}/alrecord
-%{_bindir}/alloopback
+%{_bindir}/aldebug
+%{_bindir}/allafplay
 
 %files makemhr
 %{_bindir}/makemhr
@@ -184,6 +190,7 @@ install -D -m 0644 /dev/null %{buildroot}/%{_sysconfdir}/openal/alsoft.conf
 %dir %{_datadir}/openal/presets
 %{_datadir}/openal/presets/3D7.1.ambdec
 %{_datadir}/openal/presets/hexagon.ambdec
+%{_datadir}/openal/presets/hex-quad.ambdec
 %{_datadir}/openal/presets/itu5.1.ambdec
 %{_datadir}/openal/presets/itu5.1-nocenter.ambdec
 %{_datadir}/openal/presets/presets.txt
