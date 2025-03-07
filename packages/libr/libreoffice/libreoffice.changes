@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar  6 08:52:15 UTC 2025 - Hsiu-Ming Chang <cges30901@gmail.com>
+
+- Add fix_poppler_25.02.patch to fix pdf import with poppler >= 25.02
+
+-------------------------------------------------------------------
+Mon Mar  3 15:20:30 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 25.2.1.2:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/25.2.0/RC1
+    https://wiki.documentfoundation.org/Releases/25.2.0/RC2
+    https://wiki.documentfoundation.org/Releases/25.2.0/RC3
+    https://wiki.documentfoundation.org/Releases/25.2.1/RC1
+    https://wiki.documentfoundation.org/Releases/25.2.1/RC2
+- Update bundled dependencies:
+  * pdfium 6425 -> 6764
+  * skia m116 -> m130
+  * Java-WebSocket 1.5.6 -> 1.6.0
+- Remove patch, merged upstream:
+  * poppler_24.10-2.patch
+- Use bunled Java-WebSocket so LibreOffice compiles.
+
+-------------------------------------------------------------------
 Thu Jan 23 16:35:55 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update bundled dependencies:

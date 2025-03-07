@@ -85,7 +85,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        24.8.4.2
+Version:        25.2.1.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -114,11 +114,11 @@ Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zi
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-6425.tar.bz2
+Source2008:     %{external_url}/pdfium-6764.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
-Source2010:     %{external_url}/skia-m116-2ddcf183eb260f63698aa74d1bb380f247ad7ccd.tar.xz
+Source2010:     %{external_url}/skia-m130-3c64459d5df2fa9794b277f0959ed8a92552bf4c.tar.xz
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -141,8 +141,8 @@ Patch991:       libreoffice-no-destdircheck.patch
 Patch992:       python34-no-f-strings.patch
 # PATCH-FIX-OPENSUSE override date in clucene files (boo#1047218)
 Patch995:       reproducible-clucene.patch
-# PATCH-FIX-UPSTREAM Fix build with poppler 24.12
-Patch1000:      poppler_24.10-2.patch
+# PATCH-FIX-UPSTREAM boo#1237484 Fix PDF imports with poppler 25.02
+Patch1001:      fix_poppler_25.02.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -239,7 +239,7 @@ Provides:       bundled(graphite2) = 1.3.14
 Provides:       bundled(harfbuzz) = 8.5.0
 %endif
 # Java-WebSocket
-Source3000:     %{external_url}/Java-WebSocket-1.5.6.tar.gz
+Source3000:     %{external_url}/Java-WebSocket-1.6.0.tar.gz
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(lcms2)
@@ -963,6 +963,8 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 \
 %{expand:%%_link_noarch_files %{pkgname}} \
 %{nil}
+%langpack -l ab -n Abkhazian -X
+%langpack -l sat_Olck -n Santali -L sat-Olck -g sat_Olck -j sat_Olck -X
 %langpack -l af -n Afrikaans -m af_ZA -X
 %langpack -l am -n Amharic -T -X
 %langpack -l ar -n Arabic -s ctl -m ar -T -X
@@ -1134,11 +1136,7 @@ if grep -q setSegmentInfoStartVersion /usr/include/CLucene/index/IndexWriter.h ;
 %patch -P 995 -p1
 fi
 
-%if 0%{?suse_version} >= 1550
-%if %{pkg_vcmp libpoppler-devel >= 24.12}
-%patch -P 1000 -p1
-%endif
-%endif
+%patch -P 1001 -p1
 
 # Do not generate doxygen timestamp
 echo "HTML_TIMESTAMP = NO" >> odk/docs/cpp/Doxyfile
@@ -1244,6 +1242,7 @@ export NOCONFIGURE=yes
         --without-fonts \
         --without-myspell-dicts \
         --with-jdk-home=$JAVA_HOME \
+        --without-system-java-websocket \
         --with-webdav=curl \
         --with-beanshell-jar=%{_datadir}/java/bsh2/bsh.jar \
         --with-ant-home=%{_datadir}/ant \
