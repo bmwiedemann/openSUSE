@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  7 00:08:51 UTC 2025 - Rein Fernhout <me@levitati.ng>
+
+- Update to version 3.6.1
+
+  This release only migrates Markdown objects to the TypedData API, preventing deprecation warnings on newer versions of Ruby.
+
+-------------------------------------------------------------------
 Thu Nov 28 17:36:23 UTC 2024 - Rein Fernhout <me@levitati.ng>
 
 - add rpmlintrc to :sources: in gem2rpm.yml
