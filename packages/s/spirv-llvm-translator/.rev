@@ -129,4 +129,13 @@ Needed by rusticl (Mesa)</comment>
     <comment></comment>
     <requestid>1250254</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>923df8d9443ecd10addb7cbc2acea6e4</srcmd5>
+    <version>19.1.5</version>
+    <time>1741361963</time>
+    <user>anag+factory</user>
+    <comment>- Build with GCC 13 on Leap/SLES 15 in the hope to fix Mesa build
+  (bsc#1238713)</comment>
+    <requestid>1251034</requestid>
+  </revision>
 </revisionlist>

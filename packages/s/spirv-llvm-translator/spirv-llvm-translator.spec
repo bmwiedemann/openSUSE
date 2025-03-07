@@ -17,6 +17,10 @@
 #
 
 
+%if 0%{?suse_version} < 1600
+%define gcc_version 13
+%endif
+
 %define sover   19
 Name:           spirv-llvm-translator
 Version:        19.1.5
@@ -28,7 +32,8 @@ URL:            https://github.com/KhronosGroup/SPIRV-LLVM-Translator
 Source:         https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v%{version}.tar.gz#/SPIRV-LLVM-Translator-%{version}.tar.gz
 Source101:      %{name}.rpmlintrc
 BuildRequires:  cmake >= 3.3
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_version} >= 9
+BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  llvm%{sover}-devel
 BuildRequires:  pkgconfig
 BuildRequires:  spirv-headers
@@ -64,6 +69,8 @@ the LLVM/SPIR-V Bi-Directional Translator library.
 
 %build
 %cmake \
+ -DCMAKE_C_COMPILER=gcc%{?gcc_version:-%{gcc_version}} \
+ -DCMAKE_CXX_COMPILER=g++%{?gcc_version:-%{gcc_version}} \
  -DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=%{_prefix} \
  -DLLVM_SPIRV_BUILD_EXTERNAL=YES
 %cmake_build
