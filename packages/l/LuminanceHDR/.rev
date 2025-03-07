@@ -7,4 +7,14 @@
     <comment>FOSS for HDR workflow</comment>
     <requestid>1180690</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fb7ae15f11fbead002b301f721d91a0e</srcmd5>
+    <version>2.6.0+git304.6107989</version>
+    <time>1741361983</time>
+    <user>anag+factory</user>
+    <comment>- Add clamp.patch
+- Add fix-boost-1.87.0.patch
+</comment>
+    <requestid>1250557</requestid>
+  </revision>
 </revisionlist>

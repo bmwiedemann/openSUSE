@@ -1,7 +1,7 @@
 #
 # spec file for package LuminanceHDR
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define _lto_cflags %{nil}
 %define liblcms2_name liblcms2-2
@@ -32,39 +33,45 @@ Patch0:         use-system-rtprocess.patch
 Patch1:         fix-boost1_85.patch
 # PATCH-FIX-OPENSUSE fix-version.patch
 Patch2:         fix-version.patch
+%if 0%{?suse_version} > 1600
+# PATCH-FIX-UPSTREAM
+Patch3:         fix-boost-1.87.0.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         clamp.patch
+%endif
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  librtprocess-devel
-BuildRequires:  libqt5-qtbase-common-devel
-BuildRequires:  libqt5-linguist-devel
 BuildRequires:  fftw3-devel
 BuildRequires:  fftw3-openmp-devel
 BuildRequires:  fftw3-threads-devel
+BuildRequires:  gcc-c++
+BuildRequires:  libboost_atomic-devel
+BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_thread-devel
+BuildRequires:  libexiv2-devel >= 0.27.0
+BuildRequires:  libjpeg-devel
+BuildRequires:  libpng-devel
+BuildRequires:  libqt5-linguist-devel
+BuildRequires:  libqt5-qtbase-common-devel
+BuildRequires:  librtprocess-devel
+BuildRequires:  openexr-devel
+BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_atomic-devel
-BuildRequires:  openexr-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libexiv2-devel >= 0.27.0
+BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(libraw)
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(lensfun)
+BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(zlib)
@@ -93,10 +100,9 @@ Supported features:
   * Copy EXIF data between sets of images
   * Supports internationalization
 
-
 %package doc
-Summary: This package provides documentation for %{name}
-BuildArch: noarch
+Summary:        This package provides documentation for %{name}
+BuildArch:      noarch
 
 %description doc
 This package contains the documentation for Luminance HDR.

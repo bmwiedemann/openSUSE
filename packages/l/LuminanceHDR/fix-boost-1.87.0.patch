@@ -1,0 +1,11 @@
+diff --color --unified --recursive --text luminance-hdr-2.6.1.1-upstream/build_files/Modules/CompilerSettings.cmake luminance-hdr-2.6.1.1/build_files/Modules/CompilerSettings.cmake
+--- a/build_files/Modules/CompilerSettings.cmake	2021-01-11 10:41:28.000000000 +0100
++++ b/build_files/Modules/CompilerSettings.cmake	2025-01-20 21:03:25.709389950 +0100
+@@ -15,7 +15,6 @@
+     execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
+     if (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7)
+         message(STATUS "C++11 activated for GCC ${GCC_VERSION}")
+-        set(CMAKE_CXX_STANDARD 11)
+         add_definitions(-DLHDR_CXX11_ENABLED)
+     elseif(GCC_VERSION VERSION_GREATER 4.3 OR GCC_VERSION VERSION_EQUAL 4.3)
+         message(WARNING "C++0x activated for GCC ${GCC_VERSION}. If you get any errors update to a compiler that fully supports C++11")
