@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Fri Mar  7 09:14:46 UTC 2025 - Antoine Ginies <aginies@suse.com>
+
+- use %make_install
+- use _service and fix url in spec file
+
+-------------------------------------------------------------------
+Thu Mar  6 14:07:37 UTC 2025 - Antoine Ginies <aginies@suse.com>
+
+- Do not clean buildroot in install section 
+- make is a buildRequires
+- remove 'env' in the shebang
+
+-------------------------------------------------------------------
+Wed Mar  5 11:38:04 UTC 2025 - Antoine Ginies <aginies@suse.com>
+
+- 0.2 version: cosmetics fix in doc
+
+-------------------------------------------------------------------
+Tue Mar  4 14:28:48 UTC 2025 - Antoine Ginies <aginies@suse.com>
+
+- use bz2 tarball
+- add README.md and Makefile
+
+-------------------------------------------------------------------
+Tue Mar  4 10:09:13 UTC 2025 - Antoine Ginies <aginies@suse.com>
+
+- initial release
