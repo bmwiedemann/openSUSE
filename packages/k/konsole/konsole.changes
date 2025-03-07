@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:01:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * Return early when SSH config file cannot be opened
+  * Fix compilation with Qt 6.9
+  * Call setHandleWidth() to set initial size for splitDragHandleSize (kde#498078)
+  * 'Allow escape sequences for links' setting fix in new sessions (kde#469511)
+  * Check lastColonPos is valid before using it
+  * Avoid unnecessary getpid() calls
+  * Avoid possible infinite loop
+
+-------------------------------------------------------------------
 Tue Feb  4 12:29:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
