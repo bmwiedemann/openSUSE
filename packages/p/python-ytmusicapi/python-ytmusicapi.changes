@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  7 07:44:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.10.2
+  * Fix docs build
+  * cache visitor ID on first use
+  * fix #743: get_album() now returns None for 'audioPlaylistId'
+
+-------------------------------------------------------------------
 Sun Feb  2 21:12:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.10.1
