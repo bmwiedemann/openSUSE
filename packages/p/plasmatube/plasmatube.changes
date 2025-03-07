@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:01:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * Fix condition
+  * Add missing licenses
+  * Fix spacing between video player items
+  * Show the video queue in PeerTube again
+  * Fix avatars not loading for channel pages in PeerTube
+  * Cache QtQuick image network requests
+  * Fix the subscribe button not prompting the user to login
+  * Hide recommended videos on PeerTube
+  * Fix channel avatars for videos in PeerTube
+  * Fix comment avatars in PeerTube
+  * Fix the channel subscriptions export action using the wrong icon
+  * Fix thumbnails and other images in PeerTube
+  * Fix welcome page pushing a new column onto the page
+  * Enable subscriptions import button even if you have none
+  * Allow changing the protocol used to connect to instances
+
+-------------------------------------------------------------------
 Tue Feb  4 12:30:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
