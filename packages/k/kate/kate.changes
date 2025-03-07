@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:00:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.3/
+- Changes since 24.12.2:
+  * Fix not able to create branch
+  * Share init code between quick open and hud
+  * Use std::move, fix the clang-tidy warning
+  * Use a normal widget for our HUD dialog (kde#500521)
+  * Fix documents being stashed during session (kde#497478)
+  * Fix Statusbar can't be hidden on git projects (kde#499334)
+  * Use editor font in lsp,dap config page (kde#499317)
+  * Ensure caption is set when a widget is active (kde#499223)
+
+-------------------------------------------------------------------
 Tue Feb  4 12:29:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.2
