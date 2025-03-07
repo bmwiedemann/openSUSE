@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  6 15:25:19 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250306 (git commit 44740031a34e):
+  * cirrus: cs35l41: Add firmware and tuning for ASUS Consumer laptops
+  * cirrus: cs35l41: Add Firmware for various ASUS Commercial laptops
+  * ASoC: tas2781: Update dsp firmware for Gemtree project
+
+-------------------------------------------------------------------
 Mon Mar  3 08:52:21 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250302 (git commit 76e258534a5d):
