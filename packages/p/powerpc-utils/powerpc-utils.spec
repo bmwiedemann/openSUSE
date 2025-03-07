@@ -31,6 +31,7 @@ Patch3:         fix_kexec_service_name_for_suse.patch
 Patch4:         libvirt-service-dep.patch
 Patch5:         lparstat-print-memory-mode-correctly.patch
 Patch6:         drmgr-pci-Return-0-for-success-from-do_replace.patch
+Patch7:         lparstat-Fix-negative-values-for-idle-PURR.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel

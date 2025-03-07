@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  5 15:20:45 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix negative values of idle PURR (bsc#1238322 ltc#210808)
+  * lparstat-Fix-negative-values-for-idle-PURR.patch
+
+-------------------------------------------------------------------
 Wed Mar  5 10:00:34 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - drmgr/pci: Return 0 for success from do_replace() (jsc#PED-9914).
