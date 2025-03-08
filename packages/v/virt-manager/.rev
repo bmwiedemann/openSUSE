@@ -2134,4 +2134,12 @@
     <comment></comment>
     <requestid>1249241</requestid>
   </revision>
+  <revision rev="270" vrev="6">
+    <srcmd5>0aad7ef8497c672d0b5a250ee8f9c13c</srcmd5>
+    <version>5.0.0</version>
+    <time>1741452693</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1239013 - Unable to install an SEV-SNP guest with virt-install</comment>
+    <requestid>1251058</requestid>
+  </revision>
 </revisionlist>

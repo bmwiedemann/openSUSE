@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  6 15:34:37 MST 2025 - carnold@suse.com
+
+- bsc#1239013 - Unable to install an SEV-SNP guest with virt-install
+  virtinst-dont-require-uefi-for-sev-snp.patch
+
+-------------------------------------------------------------------
 Fri Feb 28 04:14:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded Requires on python3-ipaddr. 

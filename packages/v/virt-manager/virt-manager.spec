@@ -1,5 +1,5 @@
 #
-# spec file for package virt-manager
+# spec file
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -105,6 +105,7 @@ Patch284:       virtinst-add-slem60-detection-support.patch
 Patch285:       virtinst-windows-server-detection.patch
 Patch286:       virtinst-drop-removeprefix-usage.patch
 Patch287:       virtinst-add-sle16-detection-support.patch
+Patch288:       virtinst-dont-require-uefi-for-sev-snp.patch
 
 BuildArch:      noarch
 
