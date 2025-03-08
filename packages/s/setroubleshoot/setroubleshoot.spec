@@ -1,7 +1,8 @@
 #
 # spec file for package setroubleshoot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2006-2024 Red Hat, Inc.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +24,7 @@ Summary:        Helps troubleshoot SELinux problems
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 Name:           setroubleshoot
-Version:        3.3.32
+Version:        3.3.35
 Release:        0
 URL:            https://gitlab.com/setroubleshoot/setroubleshoot
 Source0:        https://gitlab.com/setroubleshoot/setroubleshoot/-/archive/%{version}/setroubleshoot-%{version}.tar.bz2
@@ -65,15 +66,18 @@ Requires:       gtk3
 Requires:       libnotify
 Requires:       python3-dasbus
 Requires:       python3-gobject
-# libreport is available only in factory for now 
-%if 0%{?suse_version} >= 1600
+# libreport is available only in factory for now
+# setroubleshoot version 3.35-4 added remove submit bug button from browser
+# when libreport is not available. For TW we keep the button there just
+# remove actual send button so people can copypaste bug report
+%if 0%{?suse_version} >= 1600 && 0%{sles_version}
 Requires:       libreport-gtk_1 >= 2.2.1-2
 Requires:       python3-libreport
 %endif
 Requires(post): desktop-file-utils
 Requires(post): dbus-1
-Requires(postun):dbus-1
-Requires(postun):desktop-file-utils
+Requires(postun): dbus-1
+Requires(postun): desktop-file-utils
 
 BuildRequires:  xdg-utils
 Requires:       xdg-utils
@@ -99,7 +103,7 @@ to user preference. The same tools can be run on existing log files.
 %config(noreplace) %{_sysconfdir}/xdg/autostart/*
 %{_datadir}/applications/*.desktop
 %if 0%{?suse_version}
-%{_datadir}/metainfo/setroubleshoot.appdata.xml
+%{_datadir}/metainfo/org.fedoraproject.setroubleshoot.appdata.xml
 %else
 %{_metainfodir}/*.appdata.xml
 %endif
@@ -203,13 +207,18 @@ to user preference. The same tools can be run on existing log files.
 %post server
 %if 0%{?suse_version}
 %tmpfiles_create %{_tmpfilesdir}/setroubleshoot.conf
+/usr/bin/systemctl try-reload-or-restart auditd.service >/dev/null 2>&1 || : #bsc1237388
 %else
 /sbin/service auditd reload >/dev/null 2>&1 || :
 %endif
 %service_add_post setroubleshootd.service
 
 %postun server
+%if 0%{?suse_version}
+/usr/bin/systemctl try-reload-or-restart auditd.service >/dev/null 2>&1 || : #bsc1237388
+%else
 /sbin/service auditd reload >/dev/null 2>&1 || :
+%endif
 %service_del_postun setroubleshootd.service
 
 %preun server

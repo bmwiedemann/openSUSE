@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Mar  6 14:02:43 UTC 2025 - Zdenek Kubala <zkubala@suse.cz>
+
+- Fix in spec file (correct sysemctl command to reload auditd on
+  install/uninstall) (bsc#1237388)
+- Update to version 3.35
+  * Mon Mar 03 2025 Petr Lautrbach <lautrbach@redhat.com> - 3.3.35-4
+  - Update tmpfiles.d config (bz#2346971)
+  
+  * Tue Feb 11 2025 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 3.3.35-3
+  - Drop call to %sysusers_create_compat
+  
+  * Tue Nov 26 2024 Petr Lautrbach <lautrbach@redhat.com> - 3.3.35-1
+  - Do not hardcode /var/lib/selinux as store_root
+  
+  * Fri Nov 15 2024 Petr Lautrbach <lautrbach@redhat.com> - 3.3.34-2
+  - Do not hardcode /var/lib/selinux as store_root
+  - Fix icon file name (bz#2300369)
+  
+  * Mon Nov 04 2024 Petr Lautrbach <lautrbach@redhat.com> - 3.3.34-1
+  - data: update app icon
+  - Disable bug reporting, if libreport is not available
+  - Enable Georgian and Arabic (ar) languages in configure.ac
+  - Update translations
+  
+  * Wed Aug 21 2024 Michal Srb <michal@redhat.com> - 3.3.33-6
+  - Disable bug reporting, if libreport is not available
+  - Resolves: RHEL-52902
+  
+  * Mon Jun 03 2024 Petr Lautrbach <lautrbach@redhat.com> - 3.3.33-2
+  - Ship with contemporary app icon
+  
+  * Wed Jan 31 2024 Vit Mojzis <vmojzis@redhat.com> - 3.3.33-1
+  - Check that SELinux is enabled before running (rhbz#2178950)
+  - Improve limiting RAM utilization
+  
+  * Tue Jul 25 2023 Petr Lautrbach <lautrbach@redhat.com> - 3.3.32-7
+  - Always reset pending alarms when alarm(0) (rhbz#2112573)
+  
+  * Tue Jul 25 2023 Petr Lautrbach <lautrbach@redhat.com> - 3.3.32-6
+  - 'imp' module is deprecated in favor of 'importlib' (rhbz#2224393)
+  
+  * Fri May 26 2023 Miro Hrončok <mhroncok@redhat.com> - 3.3.32-3
+  - Fix build with pip 23.1.2+
+  - Fixes: rhbz#2209022
+
+-------------------------------------------------------------------
 Mon Jul 29 07:45:39 UTC 2024 - Zdenek Kubala <zkubala@suse.cz>
 
 - Add libreport-gtk and python3-libreport into requirements for TW
