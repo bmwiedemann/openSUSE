@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  6 19:47:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gtk+-3.0) BuildRequires and pass
+  enable-test-ui=false to meson setup, do not build
+  grilo-test-ui-0.3 binary, avoid depending on gtk3 just for a
+  rarely used test tool.
+
+-------------------------------------------------------------------
 Tue Dec 17 14:43:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Increase test timeout on s390x. lib-net test can be slow and

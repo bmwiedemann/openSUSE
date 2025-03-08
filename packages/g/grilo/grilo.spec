@@ -1,7 +1,7 @@
 #
 # spec file for package grilo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(oauth)
@@ -140,12 +139,14 @@ various sources using a single API.
 %build
 %meson \
 	-D soup3=true \
+	-D enable-test-ui=false \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
-
+# No need for manpages since the binary is not built
+rm -vrf %{buildroot}%{_mandir}/man1/grilo-test-ui-*
 %find_lang %{name} %{?no_lang_C}
 # Create directories needed for plugins
 install -d %{buildroot}%{_libdir}/grilo-0.3
@@ -194,8 +195,6 @@ install -d %{buildroot}%{_datadir}/grilo-0.3/plugins
 %doc AUTHORS NEWS README.md
 %{_bindir}/grl-inspect-0.3
 %{_bindir}/grl-launch-0.3
-%{_bindir}/grilo-test-ui-0.3
-%{_mandir}/man1/grilo-test-ui-0.3.1%{?ext_man}
 %{_mandir}/man1/grl-inspect-0.3.1%{?ext_man}
 %{_mandir}/man1/grl-launch-0.3.1%{?ext_man}
 
