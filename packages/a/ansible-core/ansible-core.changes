@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  7 08:09:45 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Add patch unarchive-test-fix.patch for unarchive: Clamp zip
+  timestamps on 32-bit time_t. (#84409)
+
+-------------------------------------------------------------------
 Tue Feb 25 06:42:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.3:

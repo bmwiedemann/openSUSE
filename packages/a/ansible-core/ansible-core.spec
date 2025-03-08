@@ -52,6 +52,10 @@ Source0:        https://files.pythonhosted.org/packages/source/a/ansible-core/an
 Source1:        ansible_core-%{version}.tar.gz.sha256
 # PATCH-FIX-UPSTREAM fix resolvelib dependency
 Patch1:         https://github.com/ansible/ansible/commit/771f7ad29ca4d259761eaa88673c2e32f6412bbe.patch
+# PATCH-FIX-UPSTREAM unarchive-test-fix.patch -- Clamp zip timestamps on 32-bit time_t
+# Upstream commit: d500354798beb9bf8341eb8e84e1e2046bbfd21b
+# Reference: https://github.com/ansible/ansible/commit/d500354798beb9bf8341eb8e84e1e2046bbfd21b
+Patch2:         unarchive-test-fix.patch
 BuildArch:      noarch
 
 # cannot be installed with ansible < 3 or ansible-base
