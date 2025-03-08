@@ -1,7 +1,7 @@
 #
 # spec file for package xapian-bindings
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %define php_extension_dir %(php-config --extension-dir)
 %if 0%{?suse_version} >= 1320 && 0%{?is_opensuse}
-%define phpver php7
-%define phppkg php7
+%define phpver php8
+%define phppkg php8
 %bcond_with sphinx
 %else
 %define phpver php5
@@ -30,7 +30,7 @@
 %bcond_with mono
 %define skip_python2 1
 Name:           xapian-bindings
-Version:        1.4.21
+Version:        1.4.27
 Release:        0
 Summary:        Bindings for xapian
 License:        GPL-2.0-only
@@ -40,7 +40,6 @@ Source0:        https://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}
 Source1:        https://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Patch0:         do-not-use-sphinx.diff
-Patch1:         fix-php7-directory.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
@@ -163,15 +162,11 @@ which use Xapian.
 %if %{without sphinx}
 %patch -P 0 -p1
 %endif
-%if %{with php} && "%{phpver}" == "php7"
-%patch -P 1 -p1
-%endif
 
 #remove shebang in python examples
 sed -i '1{/env python/ d}' python3/docs/examples/*.py
 
 %build
-
 autoreconf -vfi
 mv python3 python3_plain
 %{python_expand # configure different python flavors first
@@ -185,7 +180,7 @@ mv python3_plain python3
     --without-python \
     --without-python3 \
 %if %{with php}
-    --with-%{phppkg} \
+    --with-php \
 %endif
     --with-ruby   \
     --with-tcl    \
@@ -219,8 +214,6 @@ popd
 # packaged twice
 rm -r %{?buildroot}/%{_docdir}/%{name}/python3/examples
 mv %{?buildroot}/%{_docdir}/%{name}/python{3,%{$python_bin_suffix}}
-chmod a-x %{?buildroot}/%{_docdir}/%{name}/python%{$python_bin_suffix}/docs/examples/*.py
-chmod a-x %{?buildroot}/%{_docdir}/%{name}/python%{$python_bin_suffix}/docs/introduction.rst
 d=%{?buildroot}/%{$python_sitearch}
 find $d -name '*.pyc' -delete
 $python -m compileall $d
@@ -242,7 +235,6 @@ $python -O -m compileall $d
 %dir %{_defaultdocdir}/%{name}
 %doc %{_defaultdocdir}/%{name}/php/
 %{php_extension_dir}/xapian.so
-%{_datadir}/%{phpver}/xapian.php
 %endif
 
 %files -n ruby-xapian
