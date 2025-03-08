@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Mar 07 14:57:07 UTC 2025 - suse.snooper541@passmail.net
+
+- Add SUSE boilerplate
+
+-------------------------------------------------------------------
+Fri Mar 07 14:50:30 UTC 2025 - suse.snooper541@passmail.net
+
+- Make build recipe POSIX sh compatible
+
+-------------------------------------------------------------------
+Fri Mar 07 09:37:15 UTC 2025 - suse.snooper541@passmail.net
+
+- Initial release version 1+git20240915.6164bc3:
+  * Add privacy switches to sysfs (#14)
+  * Add fan speed and setpoint reporting via hwmon (#10)
+
