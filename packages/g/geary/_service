@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/geary.git</param>
-    <param name="revision">1ad0a5960f134d77de2d9537601d8f9211ff1296</param>
+    <param name="revision">4c16f7be190bf7e751eac33e41a9504508aceb98</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
 <!--    <param name="versionrewrite-pattern">gnome-(.*)</param> -->
     <param name="versionrewrite-pattern">(.*)\+0</param>

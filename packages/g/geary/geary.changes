@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 07 07:39:11 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 46.0+24:
+  * Move screenshots from wiki.gnome.org
+  * build: Use appstream for appdata validation test
+  * flatpak: folks now uses main instead of master
+  * appdata: Fix bugtracker URL
+  * Updated translations.
+- Drop update-desktop-files and pkgconfig(appstream-glib)
+  BuildRequires following upstream changes and deprecation of
+  update-desktop-files.
+- Add desktop-file-utils BuildRequires.
+
+-------------------------------------------------------------------
 Thu Oct 03 15:07:07 UTC 2024 - bjorn.lie@gmail.com
 
 - Update to version 46.0+16:

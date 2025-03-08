@@ -1,7 +1,7 @@
 #
 # spec file for package geary
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           geary
-Version:        46.0+16
+Version:        46.0+24
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        BSD-2-Clause AND CC-BY-3.0 AND LGPL-2.1-or-later
@@ -30,14 +30,13 @@ Patch0:         Support-GNOME-42-dark-theme-preference.patch
 # PATCH-FEATURE-OPENSUSE Support-dark-theme-webview.patch -- Support dark mode for email bodies
 Patch1:         Support-dark-theme-webview.patch
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  snowball-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  xml2po
-BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(enchant-2) >= 2.1
 BuildRequires:  pkgconfig(folks)
@@ -91,7 +90,6 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
 
 %install
 %meson_install
-%suse_update_desktop_file org.gnome.Geary
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
