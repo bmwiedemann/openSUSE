@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Mar  7 13:40:43 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- enabled Raytracing (vulkan) support for intel ARC GPUs
+  (boo#1238732)
+
+-------------------------------------------------------------------
+Fri Mar  7 09:56:50 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer hardcode CXX, but instead make use of %gcc_version, 
+  which is implicitely set in prjconf, which I wasn't aware of ...
+
+-------------------------------------------------------------------
+Thu Mar  6 22:21:45 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- CXX needs to be set to an existing g++ compiler; otherwise you get
+    meson.build:4:0: ERROR: Unknown compiler(s): [['c++'], ['g++'], ['clang++'], ['nvc++'], ['pgc++'], ['icpc'], ['icpx']]
+    The following exception(s) were encountered:
+    Running `c++ --version` gave "[Errno 2] No such file or directory: 'c++'"
+    Running `g++ --version` gave "[Errno 2] No such file or directory: 'g++'"
+    Running `clang++ --version` gave "[Errno 2] No such file or directory: 'clang++'"
+    Running `nvc++ --version` gave "[Errno 2] No such file or directory: 'nvc++'"
+    Running `pgc++ --version` gave "[Errno 2] No such file or directory: 'pgc++'"
+    Running `icpc --version` gave "[Errno 2] No such file or directory: 'icpc'"
+    Running `icpx --version` gave "[Errno 2] No such file or directory: 'icpx'"
+  Since there is no 'g++' available I take 'g++-14', i.e. 
+   export CXX=g++-14
+  I don't care if gcc gets updated and Mesa fails then. I much more
+  often need to update Mesa than we see a gcc update ...
+
+-------------------------------------------------------------------
+Thu Mar  6 14:58:51 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build for TW
+
+-------------------------------------------------------------------
+Thu Mar  6 13:51:52 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Build with GCC 13 on Leap/SLES 15 (bsc#1238713)
+
+-------------------------------------------------------------------
+Wed Mar  5 22:13:36 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 25.0.1
+   --> https://docs.mesa3d.org/relnotes/25.0.1
+
+-------------------------------------------------------------------
 Wed Mar  5 13:16:20 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - don't obsolete Mesa-libglapi0 on s390x since this is still on 

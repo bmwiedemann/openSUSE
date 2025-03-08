@@ -43,7 +43,7 @@
 %define glamor 1
 %define _name_archive mesa
 %ifnarch s390x
-%define _version 25.0.0
+%define _version 25.0.1
 %else
 %define _version 24.1.7
 %endif
@@ -148,9 +148,15 @@
 %global _proc_macro2_ver 1.0.86
 %global _paste_crate_ver 1.0.14
 
+# Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
+# See https://bugzilla.suse.com/show_bug.cgi?id=1235697
+%if 0%{?gcc_version} < 13
+%define gcc_version 13
+%endif
+
 Name:           Mesa%{psuffix}
 %ifnarch s390x
-Version:        25.0.0
+Version:        25.0.1
 %else
 Version:        24.1.7
 %endif
@@ -181,8 +187,8 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
-Source20:       https://archive.mesa3d.org/%{_name_archive}-25.0.0.tar.xz
-Source21:       https://archive.mesa3d.org/%{_name_archive}-25.0.0.tar.xz.sig
+Source20:       https://archive.mesa3d.org/%{_name_archive}-25.0.1.tar.xz
+Source21:       https://archive.mesa3d.org/%{_name_archive}-25.0.1.tar.xz.sig
 Patch2:         n_add-Mesa-headers-again.patch
 Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
@@ -221,11 +227,8 @@ BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  flex
-%if 0%{?sle_version} >= 150400
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc-c++
-%endif
+BuildRequires:  gcc%{?gcc_version} >= 9
+BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  glslang-devel
 BuildRequires:  imake
 BuildRequires:  libtool
@@ -911,10 +914,8 @@ grep -v -i vulkan "%{_sourcedir}/baselibs.conf" >"%{_sourcedir}/temp" && \
 %ifarch ppc64 ppc64le
 %limit_build -m 1024
 %endif
-%if 0%{?sle_version} >= 150400
-export CC=gcc-13
-export CXX=g++-13
-%endif
+export CC=gcc-%{gcc_version}
+export CXX=g++-%{gcc_version}
 
 egl_platforms=x11,wayland
 
@@ -987,6 +988,7 @@ egl_platforms=x11,wayland
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,svga,virgl,iris,crocus,i915,d3d12,zink \
             -Dgallium-d3d12-video=enabled \
             -Dgallium-d3d12-graphics=enabled \
+            -Dintel-rt=enabled \
   %else
   %ifarch %{arm} aarch64
 %if 0%{?suse_version} >= 1550
