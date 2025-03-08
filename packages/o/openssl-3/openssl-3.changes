@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  5 18:18:52 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Introduce --without lto. When %{optflags} contains -flto=*, tests cases are
+  also built using -flto=* which significantly increases build times, this
+  option disables lto which improve iteration times when developing.
+
+-------------------------------------------------------------------
 Tue Feb 11 18:21:12 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 3.2.4:

@@ -21,6 +21,11 @@
 %define _rname openssl
 %define man_suffix 3ssl
 
+%bcond_without lto
+%if %{without lto}
+%define _lto_cflags %{nil}
+%endif
+
 # Enable userspace livepatching.
 %define livepatchable 1
 
