@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sat Mar  1 11:50:34 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20250227:
+ - scamper:
+  * remove use of v?snprintf from more places to render strings faster
+    (especially ping and trace JSON)
+  * remove "outfile" commands from control socket
+  * remove most "source" commands from control socket, leaving only
+    "source list" for now.
+  * remove scamper's -O outcopy option
+  * add sentences documenting privilege separation to man page
+  * http: accept valid wildcard certs
+  * host: add edns-client-subnet and SVCB queries
+  * trace: include monitor-name in JSON output if known
+  * ping: separate scamper_ping_probe_t from scamper_ping_reply_t,
+    saving memory.
+  * ping: add stop reason and information about probes with no replies
+    to JSON output
+  * icmpexts: introduce a scamper_icmpexts_t structure that contains
+    scamper_icmpext_t structures, rather than use a linked list.
+    update trace and tracelb to use new storage form.
+ - sc_remoted:
+  * add mux support, enabling drivers to work with multiple remote
+    scamper instances over a single unix domain socket
+  * add metadata support, enabling sc_remoted to supply remote scamper
+    metadata to drivers
+  * add ability to increase zombie timeout to 3 hours.
+  * update man page
+ - libscamperctrl:
+  * add support for sc_remoted mux sockets, metadata
+  * bump library version due to API changes
+ - libscamperfile:
+  * bump library version due to significant API changes, especially
+    around ping and icmpext data.
+  * methods for processing ECS, SVCB.
+  * ping, trace, icmpexts: add functions to duplicate these structures.
+  * http: be more permissive parsing chunked replies, and parsing headers.
+  * fix scamper_addr_is_reserved for IPv6, reported by Ken Keys
+ - python module:
+  * add support for sc_remoted mux
+  * add DNS SVCB queries, ECS support
+  * add ScamperIcmpExts container
+  * add ScamperHttp.bufs() iterator, as well as buf() and buf_count.
+  * add ScamperHttpBuf.type_str and .dir_str attributes signalling the
+    type and direction of the chunk
+  * let timeout parameter to ScamperCtrl.poll and ScamperCtrl.responses
+    be either a number or timedelta
+  * add setters for ScamperCtrl.param, eofcb, morecb, to enable these
+    to be changed after a ScamperCtrl is constructed.
+  * cythonize with 3.0.12 so that the module builds with python 3.13
+  * update documentation
+    https://www.caida.org/catalog/software/scamper/python/
+ - sc_pinger:
+  * support selecting a VP through a sc_remoted mux socket, update
+    man page
+ - sc_speedtrap:
+  * support selecting a VP through a sc_remoted mux socket, update
+    man page
+  * do not form transitive closure among any IPs in a set where any
+    two IPs have IP-ID values that suggest they are not aliases.
+    patch from Ken Keys.
+ - sc_bdrmap:
+  * fix null pointer dereference when processing traceroutes
+ - tests:
+  * add tests to check ping and trace object duplication
+  * add more scamper_addr_isreserved tests
+  * add tests for parsing SVCB
+  * add tests for parsing HTTP headers
+  * add more string_concat_* and timeval tests
+ - various:
+  * add assertions to silence clang static analysis warnings
+
+-------------------------------------------------------------------
 Sun Jan 12 13:46:25 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - update to scamper 20250106:
