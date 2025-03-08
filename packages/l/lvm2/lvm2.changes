@@ -1,3 +1,10 @@
+Mon Mar  7 06:30:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
+
+- Fixes the lvm2-testsuite case fsadm-btrfs.sh (bsc#1238857)
+  * Update SUSE special patch
+    + fate-31841-03_tests-new-test-suite-of-fsadm-for-btrfs.patch
+
+-------------------------------------------------------------------
 Thu Feb 27 02:44:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
 
 - fixing HA16.0 Product building issues for packages: lvm2-lockd, cluster-md, dlm, drbd (bsc#1237701)

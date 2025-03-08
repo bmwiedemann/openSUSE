@@ -9,21 +9,37 @@ refer legacy patche:
 
 Signed-off-by: Heming Zhao <heming.zhao@suse.com>
 
+----------
 2023-09-08:
 LVs should be resized to 64M after each test.
 
 Signed-off-by: Su Yue <glass.su@suse.com>
----
- test/shell/fsadm-btrfs.sh | 176 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 176 insertions(+)
- create mode 100644 test/shell/fsadm-btrfs.sh
 
-diff --git a/test/shell/fsadm-btrfs.sh b/test/shell/fsadm-btrfs.sh
-new file mode 100644
-index 000000000000..c1b65036efb2
---- /dev/null
-+++ b/test/shell/fsadm-btrfs.sh
-@@ -0,0 +1,176 @@
+----------
+2025-03-07:
+
+bsc#1238857, change 
+
+1. current fsadm-btrfs.sh command doesn't work anymore
+
+change from command style:
+  lvreduce -y -L256M -r $vg_lv
+to new style:
+  lvreduce -y -L256M --fs resize_fsadm $vg_lv
+
+2. lvreduce denies to work when the device contains fs info 
+
+add cleaning job ('wipefs -a') in reset_lvs().
+
+3. add comments for easy understanding
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+
+---
+diff -Nupr a/test/shell/fsadm-btrfs.sh b/test/shell/fsadm-btrfs.sh
+--- a/test/shell/fsadm-btrfs.sh	1970-01-01 08:00:00.000000000 +0800
++++ b/test/shell/fsadm-btrfs.sh	2025-03-07 14:22:06.451458471 +0800
+@@ -0,0 +1,189 @@
 +#!/usr/bin/env bash
 +
 +# Copyright (C) 2012 Red Hat, Inc. All rights reserved.
@@ -71,6 +87,8 @@ index 000000000000..c1b65036efb2
 +
 +reset_lvs()
 +{
++	# lvreduce denies to work when the device contains fs info
++	wipefs -af $dev_vg_lv $dev_vg_lv2 $dev_vg_lv3
 +	# Since we call mkfs.btrfs with '-f', lvreduce to 64M is enough
 +	lvreduce -L64M -nf $vg_lv || true
 +	lvreduce -L64M -nf $vg_lv2 || true
@@ -100,40 +118,51 @@ index 000000000000..c1b65036efb2
 +lvcreate -n ${lv1}bar2 -L64M $vg
 +trap 'cleanup_mounted_and_teardown' EXIT
 +
++# lvm2 doesn't support btrfs resize:
++# - check lvm2 _fs_extend_allow/_fs_reduce_allow, commit 264827cb98458
++# - use manual mode (lvresize without '-r' option) to do the resize job
++#
++# 'fsadm --lvresize resize $dev $size' will exec:
++# - 'lvresize -v --fs resize_fsadm -L$size $dev'
 +single_device_test() {
 +	mkfs.btrfs -m single "$dev_vg_lv"
 +	mkfs.btrfs -m single "$dev_vg_lv2"
 +
 +	# kernel limits 256 MB as minimal btrfs resizable size
-+	# you can grow fs from 30MB->256MB
-+	# but you can't grow from 30MB->180MB
++	# you can grow fs from 64MB->256MB
++	# but you can't grow from 64MB->180MB
 +	fsadm --lvresize resize $vg_lv 256M
 +	fsadm --lvresize resize $vg_lv2 256M
 +
 +	not fsadm -y --lvresize resize $vg_lv 200M
-+	lvresize -L+10M -r $vg_lv
-+	lvreduce -L256M -r $vg_lv
++	lvresize -L+12M --fs resize_fsadm $vg_lv
++	lvreduce -L256M --fs resize_fsadm $vg_lv
 +	fscheck_btrfs $dev_vg_lv
 +
++	# do test on mounted state
 +	mount "$dev_vg_lv" "$mount_dir"
 +	mount "$dev_vg_lv2" "$mount_space_dir"
 +
++	# 'not': we expect a failure here.
 +	not fsadm -y --lvresize resize $vg_lv 200M
-+	lvresize -L+10M -r $vg_lv
-+	lvreduce -L256M -r $vg_lv
++	lvresize -L+12M --fs resize_fsadm $vg_lv
++	lvreduce -L256M --fs resize_fsadm $vg_lv
 +	scrub_btrfs $dev_vg_lv
 +	umount "$mount_dir"
 +
 +	not fsadm -y --lvresize resize $vg_lv2 200M
-+	lvresize -L+10M -r $vg_lv2
-+	lvreduce -L256M -r $vg_lv2
++	lvresize -L+12M --fs resize_fsadm $vg_lv2
++	lvreduce -L256M --fs resize_fsadm $vg_lv2
 +	scrub_btrfs $dev_vg_lv2
 +	umount "$mount_space_dir"
 +}
 +
 +multiple_devices_test() {
++	# fs size is the sum of the three LVs size
 +	mkfs.btrfs -m single -d single -f "$dev_vg_lv" "$dev_vg_lv2" "$dev_vg_lv3"
 +
++	# The VG is 1GB size, we expect success here.
++	# lv,lv2,lv3 size are changed from 64M to 256M
 +	fsadm -y --lvresize resize $vg_lv 256M
 +	fsadm -y --lvresize resize $vg_lv2 256M
 +	fsadm -y --lvresize resize $vg_lv3 256M
@@ -145,19 +174,19 @@ index 000000000000..c1b65036efb2
 +	# no space to extend, so failed
 +	not fsadm -y resize $vg_lv2 300M
 +	not fsadm -y resize $vg_lv3 300M
-+	lvreduce -y -L256M -r $vg_lv
++	lvreduce -y -L256M --fs resize_fsadm $vg_lv
 +
 +	lvresize -L+150M $vg_lv2
 +	fsadm -y resize $vg_lv2 300M
 +	not fsadm -y resize $vg_lv3 300M
 +	not fsadm -y resize $vg_lv 300M
-+	lvreduce -y -L256M -r $vg_lv2
++	lvreduce -y -L256M --fs resize_fsadm $vg_lv2
 +
 +	lvresize -L+150M $vg_lv3
 +	fsadm -y resize $vg_lv3 300M
 +	not fsadm -y resize $vg_lv2 300M
 +	not fsadm -y resize $vg_lv 300M
-+	lvreduce -y -L256M -r $vg_lv3
++	lvreduce -y -L256M --fs resize_fsadm $vg_lv3
 +	fscheck_btrfs $dev_vg_lv
 +
 +	# repeat with mounted fs
@@ -168,19 +197,19 @@ index 000000000000..c1b65036efb2
 +	fsadm -y resize $vg_lv 300M
 +	not fsadm -y resize $vg_lv2 300M
 +	not fsadm -y resize $vg_lv3 300M
-+	lvreduce -y -L256M -r $vg_lv
++	lvreduce -y -L256M --fs resize_fsadm $vg_lv
 +
 +	lvresize -L300M $vg_lv2
 +	fsadm -y resize $vg_lv2 300M
 +	not fsadm -y resize $vg_lv3 300M
 +	not fsadm -y resize $vg_lv 300M
-+	lvreduce -y -L256M -r $vg_lv2
++	lvreduce -y -L256M --fs resize_fsadm $vg_lv2
 +
 +	lvresize -L300M $vg_lv3
 +	fsadm -y resize $vg_lv3 300M
 +	not fsadm -y resize $vg_lv2 300M
 +	not fsadm -y resize $vg_lv 300M
-+	lvreduce -y -L256M -r $vg_lv3
++	lvreduce -y -L256M --fs resize_fsadm $vg_lv3
 +
 +	scrub_btrfs $dev_vg_lv
 +	umount "$mount_dir"
@@ -200,6 +229,3 @@ index 000000000000..c1b65036efb2
 +fi
 +
 +vgremove -ff $vg
--- 
-2.35.3
-
