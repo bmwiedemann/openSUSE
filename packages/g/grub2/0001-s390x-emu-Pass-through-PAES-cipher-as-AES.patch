@@ -1,0 +1,71 @@
+From c6f690a50ab75edf06cd2a8d2100e9312a86decc Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 26 Feb 2025 16:35:14 +0800
+Subject: [PATCH] s390x-emu: Pass through PAES cipher as AES
+
+Protected AES (PAES) enhances AES encryption with hardware key
+protection exclusively on IBM Z's s390x architecture.
+
+This patch addresses issues in GRUB utilities that cannot handle
+PAES-encrypted volumes due to a lack of native cipher support. The
+solution works because, on s390x, grub-emu is used to boot the target
+via kexec. As a Linux userspace program, grub-emu leverages kernel
+support and bypasses the limitations of GRUB's built-in functionality.
+
+We can pass through PAES as AES on Linux platforms since the underlying
+cipher appears as plain AES from a userland application's perspective.
+Additionally, GRUB's linux applications perform "cheat mount" that
+doesn't attempt to open the LUKS container. Instead, they initialize the
+cryptodisk structure using attributes from the LUKS header to obtain
+necessary information like crypto-uuid.
+
+Furthermore, root probing for Btrfs can be skipped to avoid issues with
+unsupported devices, as grub-emu doesn't rely on GRUB's own
+configurations for booting Btrfs. Instead, it operates entirely from a
+Dracut initramfs.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/osdep/devmapper/getroot.c | 5 +++++
+ util/grub-install.c                 | 6 ++++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/grub-core/osdep/devmapper/getroot.c b/grub-core/osdep/devmapper/getroot.c
+index 3b37336bc9..344df9a589 100644
+--- a/grub-core/osdep/devmapper/getroot.c
++++ b/grub-core/osdep/devmapper/getroot.c
+@@ -266,6 +266,11 @@ grub_util_pull_devmapper (const char *os_dev)
+               remaining -= seek_head - c + 1;
+               c = seek_head + 1;
+ 
++#if defined (__s390x__)
++	      if (grub_strcasecmp (cipher, "paes") == 0)
++		grub_strcpy(cipher, "aes");
++#endif
++
+               /* Now, the cipher mode. */
+               seek_head = grub_memchr (c, ' ', remaining);
+               if (seek_head == NULL)
+diff --git a/util/grub-install.c b/util/grub-install.c
+index a187a9c63c..0ab0cf8fe7 100644
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -1108,11 +1108,13 @@ main (int argc, char *argv[])
+     char *t = grub_util_path_concat (2, "/", rootdir);
+ 
+ #ifdef __linux__
+-    if (!grub_can_guess_from_mountinfo (t))
++    if (!grub_can_guess_from_mountinfo (t) || platform == GRUB_INSTALL_PLATFORM_S390X_EMU)
+       {
+ 	free(t);
+ 	/* We can safely ignore the root probe here; whichever cannot be
+-	 * reliably detected is irrelevant and of no interest */
++	 * reliably detected is irrelevant and of no interest.
++	 * Also the s390x-emu, this btrfs root detection can be omitted given
++	 * it is not relevant to the capability of linux host system */
+ 	goto skip_root_probe;
+       }
+ #endif
+-- 
+2.48.1
+

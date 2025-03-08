@@ -1,0 +1,34 @@
+From f85cc4bac3cfb787c5a47a8864a4565519dd01e9 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 6 Mar 2025 16:29:48 +0800
+Subject: [PATCH] autofs: Ignore zfs not found
+
+We put zfs modules in a separate package so they can be missing during
+the file-system probe that kicks in automatic file-system module
+loading. We ignore the error message for the missing zfs module, as that
+is not an abnormal condition like others.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/normal/autofs.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/grub-core/normal/autofs.c b/grub-core/normal/autofs.c
+index 7a7cf2b0f7..591b5fc8c3 100644
+--- a/grub-core/normal/autofs.c
++++ b/grub-core/normal/autofs.c
+@@ -42,6 +42,11 @@ autoload_fs_module (void)
+ 	  break;
+ 	}
+ 
++      /* We put zfs in a separate package, so ignoring if it's not found */
++      if (grub_strcmp (p->name, "zfs") == 0 &&
++	  grub_errno == GRUB_ERR_FILE_NOT_FOUND)
++	grub_errno = GRUB_ERR_NONE;
++
+       if (grub_errno)
+ 	grub_print_error ();
+ 
+-- 
+2.48.1
+

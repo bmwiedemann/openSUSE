@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar  7 09:04:38 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Pass through PAES cipher as AES on s390x-emu (jsc#PED-10950)
+  * 0001-s390x-emu-Pass-through-PAES-cipher-as-AES.patch
+
+-------------------------------------------------------------------
+Fri Mar  7 06:59:04 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix zfs.mo not found message when booting on legacy BIOS (bsc#1237865)
+  * 0001-autofs-Ignore-zfs-not-found.patch
+
+-------------------------------------------------------------------
 Mon Mar  3 04:30:51 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Cherry-pick upstream XFS fixes

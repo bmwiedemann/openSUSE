@@ -441,6 +441,8 @@ Patch259:       0001-bls-Accept-.conf-suffix-in-setting-default-entry.patch
 Patch260:       0001-fs-xfs-Add-new-superblock-features-added-in-Linux-6..patch
 Patch261:       0002-fs-xfs-Fix-grub_xfs_iterate_dir-return-value-in-case.patch
 Patch262:       0003-fs-xfs-fix-large-extent-counters-incompat-feature-su.patch
+Patch263:       0001-autofs-Ignore-zfs-not-found.patch
+Patch264:       0001-s390x-emu-Pass-through-PAES-cipher-as-AES.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
