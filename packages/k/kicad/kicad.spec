@@ -16,12 +16,18 @@
 #
 
 
-# According to upstream, kicad 8.x.y can be used with the footprint and
-# symbol libraries from version 8.0.0
-%define compatversion 8.0.0
+%if 0%{?suse_version} > 1600
+%bcond_without use_egl
+%else
+%bcond_with    use_egl
+%endif
+
+# According to upstream, kicad 9.x.y can be used with the footprint and
+# symbol libraries from version 9.0.0
+%define compatversion 9.0.0
 Name:           kicad
-Version:        8.0.9
-%define file_version 8.0.9
+Version:        9.0.0
+%define file_version 9.0.0
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
@@ -53,6 +59,8 @@ BuildRequires:  python3-wxPython
 BuildRequires:  swig >= 3
 BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-devel >= 3.2.4
+BuildRequires:  cmake(nng)
+BuildRequires:  cmake(protobuf)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(glew)
@@ -153,6 +161,7 @@ export CXX=g++-11 CC=gcc-11
     -DKICAD_I18N_UNIX_STRICT_PATH:BOOL=ON \
     -DKICAD_SCRIPTING_WXPYTHON=ON \
     -DKICAD_USE_OCC:BOOL=ON \
+    -DKICAD_USE_EGL:BOOL=%{?with_use_egl:ON}%{!?with_use_egl:OFF} \
     -DKICAD_PCM=ON \
     -DKICAD_SPICE=ON
 
@@ -211,6 +220,7 @@ chmod -x %{buildroot}%{_datadir}/kicad/scripting/*/*.py
 %{_bindir}/*
 %{_libdir}/kicad/
 %{_libdir}/libki*.so.*
+%{_libdir}/libkiapi*.so
 %{_datadir}/kicad/
 %{python3_sitearch}/*
 %{_datadir}/metainfo/org.kicad.kicad.metainfo.xml
