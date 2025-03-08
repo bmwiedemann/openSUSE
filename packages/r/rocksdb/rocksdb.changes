@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar  7 21:24:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.11.1:
+  * Add the ability to plug-in a custom table reader implementation
+  * Allow users to implement cancellation of running remote
+    compactions from the primary instance
+  * Experimental feature: secondary indices
+  * New option track_and_verify_wals to track and verify various
+    information about WAL during WAL recovery
+  * API changes, the DB::DeleteFile API is deprecated
+
+-------------------------------------------------------------------
 Sun Jan 12 10:12:58 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.10.0:
