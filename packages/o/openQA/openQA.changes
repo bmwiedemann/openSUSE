@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 07 14:12:06 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1741336382.92b047c6:
+  * Replace eval with try/catch wherever applicable
+  * Consider `t/ui/01-list.t` stable again after 0b4f441
+  * Bump acorn from 8.14.0 to 8.14.1
+  * Use more signatures in OpenQA::WebAPI::Plugin::AMQP
+  * Simplify OpenQA::WebAPI::Controller::Test
+  * Improve path handling for needles and OPENQA_BASEDIR
+  * Fix unstable UI test of result filter
+  * Use more signatures in WebAPI::Controller::Test
+  * Remove unused method in OpenQA::WebAPI::Controller::Test
+  * ci: Reduce timeout for wait_for_result_panel
+  * Apply mitigation for failing circleci with more retry attempts
+
+-------------------------------------------------------------------
 Tue Mar 04 18:14:12 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1741096950.1f5cdabd:
