@@ -44,6 +44,7 @@ ninja -C 3rd/luamake -f compile/ninja/linux.ninja
 
 %install
 install -Dm0755 bin/%{name} %{buildroot}%{_libexecdir}/%{name}/%{name}
+install -Dm0644 bin/main.lua %{buildroot}%{_libexecdir}/%{name}/main.lua
 
 install -d %{buildroot}%{_datadir}/%{name}
 cp -av \

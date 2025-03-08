@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:23:11 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix wrapper script to launch the server
+- install a missing file, otherwise the server doesn't start
+
+-------------------------------------------------------------------
 Wed Feb 19 18:07:29 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing Source for README.suse-maint.md.
