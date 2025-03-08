@@ -971,4 +971,14 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
       Broken in Netpbm 11.05 (December 2023).</comment>
     <requestid>1187057</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>5bd3f102fbc0d80f61bdc15305fb66bd</srcmd5>
+    <version>11.7.0</version>
+    <time>1741452685</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  fix build with gcc15
+  + netpbm-gcc15.patch (forwarded request 1251182 from pgajdos)</comment>
+    <requestid>1251183</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package netpbm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,8 @@ Patch5:         makeman-py3.patch
 Patch8:         netpbm-disable-jasper.patch
 # CVE-2017-5849 [bsc#1022790], CVE-2017-5849 [bsc#1022791]
 Patch9:         netpbm-use-byrow-when-needed.patch
+# build with gcc15
+Patch10:        netpbm-gcc15.patch
 BuildRequires:  flex
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
