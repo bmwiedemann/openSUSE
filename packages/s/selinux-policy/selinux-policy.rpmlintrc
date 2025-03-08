@@ -1,0 +1,14 @@
+# SELinux policy packaging places a lot of files under /etc. This is by
+# necessity at the moment, might get improved in the future.
+addFilter("selinux-policy-(targeted|minimum|mls|sandbox).* W: non-conffile-in-etc.*")
+
+# Zero length files
+addFilter("selinux-policy-(targeted|minimum|mls|sandbox).* zero-length /etc/selinux/.*")
+addFilter("selinux-policy-(targeted|minimum|mls|sandbox).* zero-length /var/lib/selinux/.*")
+
+# Hidden sha512 file
+addFilter("selinux-policy-(targeted|minimum|mls|sandbox).* hidden-file-or-dir /etc/selinux/(targeted|minimum|mls|sandbox)/.policy.sha512")
+
+# No check section needed
+addFilter("W: no-%check-section")
+

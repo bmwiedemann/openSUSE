@@ -36,13 +36,13 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20250224
+Version:        20250305
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
 Source2:        container.te
 Source3:        container.if
-Source4:        selinux-policy-rpmlintrc
+Source4:        selinux-policy.rpmlintrc
 Source5:        README.Update
 Source6:        update.sh
 Source7:        debug-build.sh
@@ -66,6 +66,7 @@ BuildRequires:  %primary_python
 BuildRequires:  %{python_module policycoreutils}
 %endif
 BuildRequires:  checkpolicy
+BuildRequires:  fdupes
 BuildRequires:  gawk
 BuildRequires:  libxml2-tools
 BuildRequires:  m4
@@ -194,31 +195,29 @@ rm -f %{buildroot}%{_sharedstatedir}/selinux/%1/active/*.linked \
 . %{_sysconfdir}/selinux/config; \
 FILE_CONTEXT=%{_sysconfdir}/selinux/%1/contexts/files/file_contexts; \
 if selinuxenabled; then \
-  if [ $? = 0  -a "${SELINUXTYPE}" = %1 -a -f ${FILE_CONTEXT}.pre ]; then \
+  if [ $? = 0 ] && [ "${SELINUXTYPE}" = %1 ] && [ -f ${FILE_CONTEXT}.pre ]; then \
     %{_sbindir}/fixfiles -C ${FILE_CONTEXT}.pre restore 2> /dev/null; \
     rm -f ${FILE_CONTEXT}.pre; \
   fi; \
-  if /sbin/restorecon -e /run/media -R /root /var/log /var/run %{_sysconfdir}/passwd* %{_sysconfdir}/group* %{_sysconfdir}/*shadow* 2> /dev/null;then \
-    continue; \
-  fi; \
+  /sbin/restorecon -e /run/media -R /root /var/log /var/run %{_sysconfdir}/passwd* %{_sysconfdir}/group* %{_sysconfdir}/*shadow* 2> /dev/null; \
 fi;
 
 %define preInstall() \
-if [ $1 -ne 1 ] && [ -s %{_sysconfdir}/selinux/config ]; then \
-     . %{_sysconfdir}/selinux/config; \
-     FILE_CONTEXT=%{_sysconfdir}/selinux/%1/contexts/files/file_contexts; \
-     if [ "${SELINUXTYPE}" = %1 -a -f ${FILE_CONTEXT} ]; then \
-        [ -f ${FILE_CONTEXT}.pre ] || cp -f ${FILE_CONTEXT} ${FILE_CONTEXT}.pre; \
-     fi; \
-     touch %{_sysconfdir}/selinux/%1/.rebuild; \
-     if [ -e %{_sysconfdir}/selinux/%1/.policy.sha512 ]; then \
-        POLICY_FILE=`ls %{_sysconfdir}/selinux/%1/policy/policy.* | sort | head -1` \
-        sha512=`sha512sum $POLICY_FILE | cut -d ' ' -f 1`; \
-        checksha512=`cat %{_sysconfdir}/selinux/%1/.policy.sha512`; \
-        if [ "$sha512" == "$checksha512" ] ; then \
-                rm %{_sysconfdir}/selinux/%1/.rebuild; \
-        fi; \
-   fi; \
+if [ "$1" -ne 1 ] && [ -s %{_sysconfdir}/selinux/config ]; then \
+  . %{_sysconfdir}/selinux/config; \
+  FILE_CONTEXT=%{_sysconfdir}/selinux/%1/contexts/files/file_contexts; \
+  if [ "${SELINUXTYPE}" = %1 ] && [ -f ${FILE_CONTEXT} ]; then \
+    [ -f ${FILE_CONTEXT}.pre ] || cp -f ${FILE_CONTEXT} ${FILE_CONTEXT}.pre; \
+  fi; \
+  touch %{_sysconfdir}/selinux/%1/.rebuild; \
+  if [ -e %{_sysconfdir}/selinux/%1/.policy.sha512 ]; then \
+    POLICY_FILE=$(ls %{_sysconfdir}/selinux/%1/policy/policy.* | sort | head -1); \
+    sha512=$(sha512sum "$POLICY_FILE" | cut -d ' ' -f 1); \
+    checksha512=$(cat %{_sysconfdir}/selinux/%1/.policy.sha512); \
+    if [ "$sha512" = "$checksha512" ] ; then \
+      rm %{_sysconfdir}/selinux/%1/.rebuild; \
+    fi; \
+  fi; \
 fi;
 
 %define postInstall() \
@@ -228,8 +227,8 @@ if [ -e %{_sysconfdir}/selinux/%2/.rebuild ]; then \
   /usr/sbin/semodule -B -n -s %2 2> /dev/null; \
 fi; \
 if [ -n "${TRANSACTIONAL_UPDATE}" ]; then \
-  touch /etc/selinux/.autorelabel \
-else    \
+  touch /etc/selinux/.autorelabel ; \
+else \
   if [ "${SELINUXTYPE}" = "%2" ]; then \
     if selinuxenabled; then \
       load_policy; \
@@ -242,11 +241,11 @@ else    \
     if [ %1 -eq 1 ]; then \
       /sbin/restorecon -R /root /var/log /run /etc/passwd* /etc/group* /etc/*shadow* 2> /dev/null; \
     else \
-      %relabel %2 \
+      %relabel %2 ; \
     fi; \
   else \
     # run fixfiles on next boot \
-    touch /.autorelabel \
+    touch /.autorelabel ; \
   fi; \
 fi;
 
@@ -255,11 +254,11 @@ awk '$1 !~ "/^#/" && $2 == "=" && $3 == "module" { printf "%%s ", $1 }' ./policy
 awk '$1 !~ "/^#/" && $2 == "=" && $3 == "base" { printf "%%s ", $1 }' ./policy/modules.conf > %{buildroot}%{_datadir}/selinux/%1/base.lst \
 
 %define nonBaseModulesList() \
-modules=`cat %{buildroot}%{_datadir}/selinux/%1/modules.lst` \
+modules=$(cat %{buildroot}%{_datadir}/selinux/%1/modules.lst); \
 for i in $modules; do \
-    if [ $i != "sandbox" ];then \
-        echo "%verify(not md5 size mtime) %{_sharedstatedir}/selinux/%1/active/modules/100/$i" >> %{buildroot}%{_datadir}/selinux/%1/nonbasemodules.lst \
-    fi; \
+  if [ "$i" != "sandbox" ]; then \
+    echo "%verify(not md5 size mtime) %{_sharedstatedir}/selinux/%1/active/modules/100/$i" >> %{buildroot}%{_datadir}/selinux/%1/nonbasemodules.lst ; \
+  fi; \
 done;
 
 %description
@@ -292,16 +291,16 @@ rm -f %{_sysconfdir}/selinux/*/modules/active/modules/sandbox.pp.disabled 2>/dev
 rm -f %{_sharedstatedir}/selinux/*/active/modules/disabled/sandbox 2>/dev/null
 %{_sbindir}/semodule -n -X 100 -i %{_datadir}/selinux/packages/sandbox.pp 2> /dev/null
 if %{_sbindir}/selinuxenabled ; then
-    %{_sbindir}/load_policy
+  %{_sbindir}/load_policy
 fi;
 exit 0
 
 %preun sandbox
-if [ $1 -eq 0 ] ; then
-    %{_sbindir}/semodule -n -d sandbox 2>/dev/null
-    if %{_sbindir}/selinuxenabled ; then
-        %{_sbindir}/load_policy
-    fi;
+if [ "$1" -eq 0 ] ; then
+  %{_sbindir}/semodule -n -d sandbox 2>/dev/null
+  if %{_sbindir}/selinuxenabled ; then
+    %{_sbindir}/load_policy
+  fi;
 fi;
 exit 0
 
@@ -386,15 +385,16 @@ mv %{buildroot}%{_datadir}/man/man8/*.html %{buildroot}%{_datadir}/selinux/devel
 mv %{buildroot}%{_datadir}/man/man8/style.css %{buildroot}%{_datadir}/selinux/devel/html
 rm %{buildroot}%{_mandir}/man8/container_selinux.8*
 rm %{buildroot}%{_datadir}/selinux/devel/include/services/container.if
+%fdupes -s %{buildroot}%{_mandir}
 
 %post
 if [ ! -s %{_sysconfdir}/selinux/config ]; then
-    # new install, use old sysconfig file if that exists,
-    # else create new one.
-    if [ -f  %{_sysconfdir}/sysconfig/selinux-policy ]; then
-	mv %{_sysconfdir}/sysconfig/selinux-policy %{_sysconfdir}/selinux/config
-    else
-	echo "
+  # new install, use old sysconfig file if that exists,
+  # else create new one.
+  if [ -f  %{_sysconfdir}/sysconfig/selinux-policy ]; then
+    mv %{_sysconfdir}/sysconfig/selinux-policy %{_sysconfdir}/selinux/config
+  else
+    echo "
 # This file controls the state of SELinux on the system.
 # SELinux can be completly disabled with the \"selinux=0\" kernel
 # commandline option.
@@ -411,38 +411,38 @@ SELINUX=permissive
 SELINUXTYPE=targeted
 
 " > %{_sysconfdir}/selinux/config
-    fi
-    ln -sf ../selinux/config %{_sysconfdir}/sysconfig/selinux-policy
-    %{_sbindir}/restorecon %{_sysconfdir}/selinux/config 2> /dev/null || :
+  fi
+  ln -sf ../selinux/config %{_sysconfdir}/sysconfig/selinux-policy
+  %{_sbindir}/restorecon %{_sysconfdir}/selinux/config 2> /dev/null || :
 fi
 %tmpfiles_create %_tmpfilesdir/selinux-policy.conf
-if [ $1 -eq 1 ]; then
+if [ "$1" -eq 1 ]; then
   pam-config -a --selinux
 fi
 exit 0
 
 %define post_un() \
 # disable selinux if we uninstall a policy and it's the used one \
-if [ $1 -eq 0 ]; then \
+if [ "$1" -eq 0 ]; then \
   if [ -s %{_sysconfdir}/selinux/config ]; then \
-      source %{_sysconfdir}/selinux/config &> /dev/null || true \
-  fi \
+    . %{_sysconfdir}/selinux/config > /dev/null 2>&1 || true ; \
+  fi; \
   if [ "$SELINUXTYPE" = "$2" ]; then \
-    %{_sbindir}/setenforce 0 2> /dev/null \
+    %{_sbindir}/setenforce 0 2> /dev/null ; \
     if [ -s %{_sysconfdir}/selinux/config ]; then \
-      sed -i 's/^SELINUX=.*/SELINUX=permissive/g' %{_sysconfdir}/selinux/config \
-    fi \
-  fi \
-  pam-config -d --selinux \
-fi \
+      sed -i 's/^SELINUX=.*/SELINUX=permissive/g' %{_sysconfdir}/selinux/config ; \
+    fi; \
+  fi; \
+  pam-config -d --selinux ; \
+fi; \
 exit 0
 
 %postun
-if [ $1 = 0 ]; then
-     %{_sbindir}/setenforce 0 2> /dev/null
-     if [ -s %{_sysconfdir}/selinux/config ]; then
-          sed -i 's/^SELINUX=.*/SELINUX=permissive/g' %{_sysconfdir}/selinux/config
-     fi
+if [ "$1" = 0 ]; then
+  %{_sbindir}/setenforce 0 2> /dev/null
+  if [ -s %{_sysconfdir}/selinux/config ]; then
+    sed -i 's/^SELINUX=.*/SELINUX=permissive/g' %{_sysconfdir}/selinux/config
+  fi
 fi
 exit 0
 
@@ -532,40 +532,38 @@ SELinux policy minimum base module.
 
 %pre minimum
 %preInstall minimum
-if [ $1 -ne 1 ]; then
-    %{_sbindir}/semodule -s minimum --list-modules=full | awk '{ if ($4 != "disabled") print $2; }' > %{_datadir}/selinux/minimum/instmodules.lst
+if [ "$1" -ne 1 ]; then
+  %{_sbindir}/semodule -s minimum --list-modules=full | awk '{ if ($4 != "disabled") print $2; }' > %{_datadir}/selinux/minimum/instmodules.lst
 fi
 
 %post minimum
-modules=`cat %{_datadir}/selinux/minimum/modules.lst`
-basemodules=`cat %{_datadir}/selinux/minimum/base.lst`
-enabledmodules=`cat %{_datadir}/selinux/minimum/modules-enabled.lst`
-if [ ! -d %{_sharedstatedir}/selinux/minimum/active/modules/disabled ]; then
-    mkdir %{_sharedstatedir}/selinux/minimum/active/modules/disabled
-fi
-if [ $1 -eq 1 ]; then
-for p in $modules; do
-    touch %{_sharedstatedir}/selinux/minimum/active/modules/disabled/$p
-done
-for p in $basemodules $enabledmodules; do
-    rm -f %{_sharedstatedir}/selinux/minimum/active/modules/disabled/$p
-done
-    %{_sbindir}/semanage import -S minimum -f - << __eof
+modules=$(cat %{_datadir}/selinux/minimum/modules.lst)
+basemodules=$(cat %{_datadir}/selinux/minimum/base.lst)
+enabledmodules=$(cat %{_datadir}/selinux/minimum/modules-enabled.lst)
+mkdir -p %{_sharedstatedir}/selinux/minimum/active/modules/disabled
+if [ "$1" -eq 1 ]; then
+  for p in $modules; do
+    touch %{_sharedstatedir}/selinux/minimum/active/modules/disabled/"$p"
+  done
+  for p in $basemodules $enabledmodules; do
+    rm -f %{_sharedstatedir}/selinux/minimum/active/modules/disabled/"$p"
+  done
+  %{_sbindir}/semanage import -S minimum -f - << __eof
 login -m  -s unconfined_u -r s0-s0:c0.c1023 __default__
 login -m  -s unconfined_u -r s0-s0:c0.c1023 root
 __eof
-    /sbin/restorecon -R /root /var/log /var/run 2> /dev/null
-    %{_sbindir}/semodule -B -s minimum 2> /dev/null
+  /sbin/restorecon -R /root /var/log /var/run 2> /dev/null
+  %{_sbindir}/semodule -B -s minimum 2> /dev/null
 else
-    instpackages=`cat %{_datadir}/selinux/minimum/instmodules.lst`
-    for p in $packages; do
-	touch %{_sharedstatedir}/selinux/minimum/active/modules/disabled/$p
-    done
-    for p in $instpackages snapper dbus kerberos nscd rtkit; do
-	rm -f %{_sharedstatedir}/selinux/minimum/active/modules/disabled/$p
-    done
-    %{_sbindir}/semodule -B -s minimum 2> /dev/null
-    %relabel minimum
+  instpackages=$(cat %{_datadir}/selinux/minimum/instmodules.lst)
+  for p in $modules; do
+    touch %{_sharedstatedir}/selinux/minimum/active/modules/disabled/"$p"
+  done
+  for p in $instpackages snapper dbus kerberos nscd rtkit; do
+    rm -f %{_sharedstatedir}/selinux/minimum/active/modules/disabled/"$p"
+  done
+  %{_sbindir}/semodule -B -s minimum 2> /dev/null
+  %relabel minimum
 fi
 exit 0
 

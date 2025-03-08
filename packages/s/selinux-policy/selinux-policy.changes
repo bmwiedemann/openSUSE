@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Mar 05 15:27:44 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250305:
+  * Label /var/log/php-fpm.log httpd_log_t (bsc#1238403)
+  * Allow systemd-networkd to rw memfd objects in tmpfs (bsc#1237515)
+  * Add a gitlab-ci build test
+  * allow ssh-keygen to connect to the ssh daemon via vsockets (bsc#1238191)
+  * Add context for plymouth debug log files (bsc#1237440)
+
+-------------------------------------------------------------------
+Mon Mar 03 16:18:46 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250303:
+  * dist/targeted/modules.conf: Enable kmscon module (bsc#1238137)
+  * label apache2 binaries correctly (bsc#1237596)
+
+-------------------------------------------------------------------
+Thu Feb 27 18:24:20 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Improve selinux-policy packaging
+  * Remove bashisms to support UNIX SH syntax in scriptlets (bsc#1237517)
+  * Fix non-existing $package variable in "%post minimum" scriptlet
+  * Improve selinux-policy.rpmlintrc file
+  * Remove duplicates with fdupes
+
+-------------------------------------------------------------------
 Mon Feb 24 10:27:58 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250224:
