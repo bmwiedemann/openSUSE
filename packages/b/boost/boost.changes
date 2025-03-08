@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 06 13:20:02 CET 2025 - aschnell@suse.com
+
+- package mpi python cmake file once (gh#espressomd/espresso#5050)
+
+-------------------------------------------------------------------
 Tue Feb 25 08:23:54 CET 2025 - aschnell@suse.com
 
 - fixed required of process devel
@@ -138,7 +143,7 @@ Wed Mar  8 19:11:00 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 Sat Jan 28 22:01:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add boost-phoenix-revert-std-tuple-support.patch to fix
-  libetonyek and others build that use boost::phoenix 
+  libetonyek and others build that use boost::phoenix
 
 -------------------------------------------------------------------
 Wed Dec 14 18:00:01 CET 2022 - Arvin Schnell <aschnell@suse.com>

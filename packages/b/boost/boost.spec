@@ -1509,6 +1509,9 @@ mkdir -p %{buildroot}%{package_python3_sitearch}/boost/parallel/mpi/
 install -m 0644 libs/mpi/build/__init__.py %{buildroot}%{package_python3_sitearch}/boost/parallel/mpi/
 install -m 0644 %{SOURCE11} %{buildroot}%{package_python3_sitearch}/boost/parallel
 install -m 0644 %{SOURCE11} %{buildroot}%{package_python3_sitearch}/boost
+# Boost 1.87 packages a python cmake file in both the mpi-python dir and the mpi directory.
+# It should not be in that second one
+rm -f %{buildroot}%{package_libdir}/cmake/boost_mpi-%{version}/libboost_mpi-variant-shared-py3*.cmake
 %if ! %{with hpc}
 mv %{buildroot}%{_libdir}/boost-python3.*/mpi.%{py3_soflags}.so %{buildroot}%{package_python3_sitearch}/mpi.%{py3_soflags}.so
 rmdir %{buildroot}%{_libdir}/boost-python3.*
