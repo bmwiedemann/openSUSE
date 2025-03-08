@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-headers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,12 @@
 # They add "SDK" tags that reflect the Vulkan version (1.3),
 # and the independently increasing toolchain release number (296).
 
+# Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
+# See https://bugzilla.suse.com/show_bug.cgi?id=1235697
+%if 0%{?suse_version} < 1600
+%define gcc_version 13
+%endif
+
 Name:           spirv-headers
 Version:        1.6.4+sdk303
 %define innerver 1.3.303
@@ -36,7 +42,8 @@ Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/cb6b2c32db
 BuildArch:      noarch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_version} >= 9
+BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  pkg-config
 
 %description
@@ -52,7 +59,9 @@ registry. This includes:
 %autosetup -n SPIRV-Headers-%rev -p1
 
 %build
-%cmake
+%cmake \
+ -DCMAKE_C_COMPILER=gcc%{?gcc_version:-%{gcc_version}} \
+ -DCMAKE_CXX_COMPILER=g++%{?gcc_version:-%{gcc_version}}
 %cmake_build
 
 %install
