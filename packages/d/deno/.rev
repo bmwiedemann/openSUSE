@@ -4107,4 +4107,13 @@
 </comment>
     <requestid>1248818</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>6abc86624755be50d6f063767d373408</srcmd5>
+    <version>2.2.2</version>
+    <time>1741452764</time>
+    <user>dimstar_suse</user>
+    <comment>- Reupload registry.tar.zst
+</comment>
+    <requestid>1251286</requestid>
+  </revision>
 </revisionlist>
