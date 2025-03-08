@@ -1,7 +1,7 @@
 #
 # spec file for package libclc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ BuildRequires:  cmake
 %if 0%{?suse_version} >= 1550
 BuildRequires:  clang-devel
 BuildRequires:  llvm-devel
-BuildRequires:  pkgconfig(LLVMSPIRVLib)
 %else
  %if 0%{?sle_version} >= 150600
 BuildRequires:  clang19-devel
@@ -44,6 +43,7 @@ BuildRequires:  llvm19-devel
  %endif
 %endif
 BuildRequires:  python3-base
+BuildRequires:  pkgconfig(LLVMSPIRVLib)
 Provides:       libclc(llvm%{_llvm_sonum})
 BuildArch:      noarch
 
