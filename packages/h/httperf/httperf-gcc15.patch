@@ -1,0 +1,13 @@
+Index: httperf-0.9.0+git.20201206/src/httperf.c
+===================================================================
+--- httperf-0.9.0+git.20201206.orig/src/httperf.c
++++ httperf-0.9.0+git.20201206/src/httperf.c
+@@ -1381,7 +1381,7 @@ main(int argc, char **argv)
+ 	}
+ 	core_init();
+ 
+-	signal(SIGINT, (void (*)()) core_exit);
++	signal(SIGINT, (void (*)(int)) core_exit);
+ 
+ 	for (i = 0; i < num_stats; ++i)
+ 		(*stat[i]->init) ();

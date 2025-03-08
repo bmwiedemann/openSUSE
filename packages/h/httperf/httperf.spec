@@ -1,7 +1,7 @@
 #
 # spec file for package httperf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        A tool for measuring web server performance
 License:        SUSE-GPL-2.0+-with-openssl-exception
 URL:            https://github.com/httperf/httperf
 Source0:        %{name}-%{version}.tar.gz
+# build with gcc15
+Patch0:         httperf-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -35,7 +37,7 @@ flexible facility for generating various HTTP workloads and for measuring
 server performance.
 
 %prep
-%autosetup
+%autosetup -p1
 chmod -x AUTHORS ChangeLog NEWS README.md TODO
 
 %build

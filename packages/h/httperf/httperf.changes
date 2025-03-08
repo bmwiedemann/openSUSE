@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  5 11:47:53 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + httperf-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Dec 11 13:45:33 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.0+git.20201206:
