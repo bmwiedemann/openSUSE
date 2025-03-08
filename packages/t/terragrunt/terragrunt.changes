@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 07 17:34:01 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.75.3:
+  * chore: Bumping Dependencies as requested by Dependabot (#3984)
+  * Add support for all assume_role block arguments for s3 backend
+    (#3975)
+  * fix: Adjusting contribution docs (#3979)
+  * feat: update contributing.md with dev containers entry (#3977)
+
+-------------------------------------------------------------------
 Thu Mar 06 17:29:17 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.75.2:
