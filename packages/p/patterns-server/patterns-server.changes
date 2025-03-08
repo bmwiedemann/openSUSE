@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  6 12:45:40 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Drop uninstallable xen-server/xen-tools patterns from Leap
+  code-o-o#leap/features#189
+
+-------------------------------------------------------------------
 Tue Feb 25 11:09:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not require 389-ds on %ix86: it's not built for 32bit intel

@@ -39,6 +39,7 @@ This particular package contains all the server related patterns
 
 
 
+
 ################################################################################
 %package dhcp_dns_server
 %pattern_serverfunctions
@@ -387,7 +388,8 @@ remote print server and for setting up a print server.
 %{_docdir}/patterns/printing.txt
 
 ################################################################################
-%if 0%{?is_opensuse}
+# code-o-o#leap/features#189
+%if 0%{?is_opensuse} && 0%{?suse_version} > 1600
 # BSC#1088175
 %ifarch x86_64
 %package xen_server
@@ -491,7 +493,8 @@ for i in kvm_tools kvm_server
     echo "This file marks the pattern $i to be installed." \
         > "%{buildroot}%{_docdir}/patterns/$i.txt"
 done
-%if 0%{?is_opensuse}
+# code-o-o#leap/features#189
+%if 0%{?is_opensuse} && 0%{?suse_version} > 1600
 # XEN is only available on x86_64
 %ifarch x86_64
     for i in xen_server xen_tools; do
