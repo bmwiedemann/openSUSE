@@ -262,6 +262,7 @@ BuildRequires:  netcfg
 # /SECTION
 %if "%{mpm}" != ""
 Provides:       apache2-MPM
+Requires:       apache2
 %endif
 %if "%{flavor}" == ""
 Requires:       %{_sysconfdir}/mime.types

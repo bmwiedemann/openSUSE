@@ -2209,4 +2209,12 @@ Fixes build with Perl-IO-socket-SSL 2.073, as currently staged in :E (forwarded 
     correct information instead. (forwarded request 1237660 from dimstar)</comment>
     <requestid>1237712</requestid>
   </revision>
+  <revision rev="215" vrev="5">
+    <srcmd5>5e6a8b40407f7efb8e2a1a9da48e3219</srcmd5>
+    <version>2.4.62</version>
+    <time>1741452691</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1251234</requestid>
+  </revision>
 </revisionlist>
