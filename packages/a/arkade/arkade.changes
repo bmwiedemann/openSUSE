@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 07 17:34:23 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.36:
+  * Bump golang.org/x/mod from 0.23.0 to 0.24.0
+  * Add dotenv-linter tool
+  * Bump golang.org/x/crypto from 0.35.0 to 0.36.0
+
+-------------------------------------------------------------------
+Fri Mar 07 17:31:25 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.35:
+  * Fix systemd unit for node_exporter
+  * Add Prometheus Node Exporter as a system install
+  * chore: move tctl to temporal
+
+-------------------------------------------------------------------
 Fri Feb 28 17:59:22 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.34:
