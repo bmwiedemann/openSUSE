@@ -299,4 +299,14 @@
     <comment></comment>
     <requestid>1239890</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>96e6194ef4956f201b9120ea6e264f47</srcmd5>
+    <version>1.18.3</version>
+    <time>1741452762</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to Elixir 1.18.3:
+  * Changelog available at https://hexdocs.pm/elixir/1.18.3/changelog.html
+</comment>
+    <requestid>1251261</requestid>
+  </revision>
 </revisionlist>
