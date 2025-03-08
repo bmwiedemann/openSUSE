@@ -24,6 +24,7 @@ License:        Apache-2.0
 URL:            https://github.com/facebookincubator/below
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch0:         001-harden-systemd-unit.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  libelf-devel

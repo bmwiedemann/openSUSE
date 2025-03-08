@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar  8 10:26:39 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Apply hardening to the systemd service
+  * Add 001-harden-systemd-unit.patch
+
+-------------------------------------------------------------------
 Wed Feb 26 08:30:20 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.9.0~0:

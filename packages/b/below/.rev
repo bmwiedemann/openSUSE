@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1248591</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e98160de3b768a46dfe09f5ad1a2fb7d</srcmd5>
+    <version>0.9.0~0</version>
+    <time>1741452783</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply hardening to the systemd service
+  * Add 001-harden-systemd-unit.patch (forwarded request 1251405 from alessio.biancalana)</comment>
+    <requestid>1251406</requestid>
+  </revision>
 </revisionlist>
