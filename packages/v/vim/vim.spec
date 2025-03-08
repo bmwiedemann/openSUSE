@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.1
-%define patchlevel 1134
+%define patchlevel 1176
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim91
 %define site_runtimepath %{_datadir}/vim/site
@@ -74,6 +74,7 @@ Patch11:        %{name}-7.4-filetype_mine.patch
 Patch12:        %{name}73-no-static-libpython.patch
 Patch13:        %{name}-8.0.1568-defaults.patch
 Patch14:        %{name}-8.2.2411-globalvimrc.patch
+Patch15:        %{name}-9.1.1134-revert-putty-terminal-colors.patch
 BuildRequires:  autoconf
 BuildRequires:  db-devel
 BuildRequires:  fdupes
@@ -223,6 +224,7 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch -P 12 -p1
 %patch -P 13 -p1
 %patch -P 14 -p1
+%patch -P 15 -p1
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} .
 
 %build

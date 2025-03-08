@@ -1,0 +1,71 @@
+From b16c218964d2024a5c52f251a49c9d71da63f9a0 Mon Sep 17 00:00:00 2001
+From: Martin Jungblut Schreiner <martinjungblut@gmail.com>
+Date: Wed, 5 Mar 2025 17:07:19 -0300
+Subject: [PATCH] Revert "runtime(defaults): Detect putty terminal and switch
+ to dark background"
+
+This reverts commit 2abec431e1ab5f4f6e21c2bb490241732622a8c5.
+---
+ runtime/defaults.vim         |  5 -----
+ runtime/doc/autocmd.txt      | 17 ++++-------------
+ runtime/doc/version9.txt     |  3 +++
+ src/testdir/test_cmdline.vim |  2 --
+ 4 files changed, 7 insertions(+), 20 deletions(-)
+
+Index: vim-9.1.1176/runtime/defaults.vim
+===================================================================
+--- vim-9.1.1176.orig/runtime/defaults.vim
++++ vim-9.1.1176/runtime/defaults.vim
+@@ -112,11 +112,6 @@ if 1
+       \ |   execute "normal! g`\""
+       \ | endif
+ 
+-    " Set the default background for putty to dark. Putty usually sets the
+-    " $TERM to xterm and by default it starts with a dark background which
+-    " makes syntax highlighting often hard to read with bg=light
+-    " undo this using:  ":au! vimStartup TermResponse"
+-    autocmd TermResponse * if v:termresponse == "\e[>0;136;0c" | set bg=dark | endif
+   augroup END
+ 
+   " Quite a few people accidentally type "q:" instead of ":q" and get confused
+Index: vim-9.1.1176/runtime/doc/autocmd.txt
+===================================================================
+--- vim-9.1.1176.orig/runtime/doc/autocmd.txt
++++ vim-9.1.1176/runtime/doc/autocmd.txt
+@@ -1260,19 +1260,10 @@ TerminalWinOpen			Just after a terminal
+ TermResponse			After the response to |t_RV| is received from
+ 				the terminal.  The value of |v:termresponse|
+ 				can be used to do things depending on the
+-				terminal version.
+-				This is used in |defaults.vim| to detect
+-				putty terminal and set a dark background: >
+-
+-				au TermResponse *
+-				\ if v:termresponse == "\e[>0;136;0c"
+-				\    set bg=dark
+-				\ endif
+-<
+-				Note: that this event may be triggered halfway
+-				executing another event, especially if file
+-				I/O, a shell command or anything else that
+-				takes time is involved.
++				terminal version.  Note that this event may be
++				triggered halfway executing another event,
++				especially if file I/O, a shell command or
++				anything else that takes time is involved.
+ 							*TermResponseAll*
+ TermResponseAll			After the response to |t_RV|, |t_RC|, |t_RS|,
+ 				|t_RB|, |t_RF|, or |t_u7| are received from
+Index: vim-9.1.1176/src/testdir/test_cmdline.vim
+===================================================================
+--- vim-9.1.1176.orig/src/testdir/test_cmdline.vim
++++ vim-9.1.1176/src/testdir/test_cmdline.vim
+@@ -1843,8 +1843,6 @@ func Test_verbose_option()
+   CheckScreendump
+ 
+   let lines =<< trim [SCRIPT]
+-    " clear the TermResponse autocommand from defaults.vim
+-    au! vimStartup TermResponse
+     command DoSomething echo 'hello' |set ts=4 |let v = '123' |echo v
+     call feedkeys("\r", 't') " for the hit-enter prompt
+     set verbose=20

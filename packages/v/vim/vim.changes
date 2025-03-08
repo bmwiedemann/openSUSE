@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Mar  6 20:26:27 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Introduce patch to fix bsc#1235751 (regression).
+  * vim-9.1.1134-revert-putty-terminal-colors.patch
+- Update to 9.1.1176.
+  * 9.1.1176: wrong indent when expanding multiple lines
+              test(runtime/syntax): improve syntax tests
+              editorconfig: set indent config for *.vim files
+              runtime(doc): mention alternative check for vim9script
+  * 9.1.1175: inconsistent behaviour with exclusive selection and motion commands
+              runtime(man): don't add jumps when loading a manpage
+              runtime(vim): recognize <...> strings (and keys) for 'keywordprg'
+  * 9.1.1174: tests: Test_complete_cmdline() may fail
+              runtime(doc): mention bzip3 in gzip plugin documentation
+  * 9.1.1173: filetype: ABNF files are not detected
+  * 9.1.1172: [security]: overflow with 'nostartofline' and Ex command in tag file
+  * 9.1.1171: tests: wrong arguments passed to assert_equal()
+  * 9.1.1170: wildmenu highlighting in popup can be improved
+              runtime(netrw): upstream snapshot of v179
+              runtime(doc): fix typo "bet" in :h 'completeopt'
+  * 9.1.1169: using global variable for get_insert()/get_lambda_name()
+  * 9.1.1168: wrong flags passed down to nextwild()
+  * 9.1.1167: mark '] wrong after copying text object
+              runtime(doc): update how to get Vim
+  * 9.1.1166: command-line auto-completion hard with wildmenu
+              runtime(tar): use readblob() instead of shelling out to file(1)
+  * 9.1.1165: diff: regression with multi-file diff blocks
+  * 9.1.1164: [security]: code execution with tar.vim and special crafted tar files
+              translation(it): Update Italian translation
+              runtime(tar): fix syntax error in tar.vim
+  * 9.1.1163: $MYVIMDIR is set too late
+              runtime(syntax-tests): Apply stronger synchronisation between buffers
+  * 9.1.1162: completion popup not cleared in cmdline
+  * 9.1.1161: preinsert requires bot "menu" and "menuone" to be set
+              runtime(misc): add support for bzip3 to tar, vimball and gzip plugins
+  * 9.1.1160: Ctrl-Y does not work well with "preinsert" when completing items
+  * 9.1.1159: $MYVIMDIR may not always be set
+  * 9.1.1158: :verbose set has wrong file name with :compiler!
+              runtime(netrw): correctly handle shellslash variable
+  * 9.1.1157: command completion wrong for input()
+              runtime(doc): fix confusing docs for 'completeitemalign'
+  * 9.1.1156: tests: No test for what patch 9.1.1152 fixes
+  * 9.1.1155: Mode message not cleared after :silent message
+              runtime(lua): Improve 'include' and make '*expr' functions script-local
+              runtime(vim): Update base-syntax, match Vim9 function calls after "|"
+  * 9.1.1154: Vim9: not able to use autoload class accross scripts
+              runtime(compiler): improve svelte-check
+  * 9.1.1153: build error on Haiku
+  * 9.1.1152: Patch v9.1.1151 causes problems
+              runtime(new-tutor): update examples from Neovim to Vim
+              nsis: add Portuguese Brazilian translation to nsis installer
+  * 9.1.1151: too many strlen() calls in getchar.c
+              runtime(vim): make VimKeywordPrg even smarter for regexes
+  * 9.1.1150: :hi completion may complete to wrong value
+  * 9.1.1149: Unix Makefile does not support Brazilian lang for the installer
+  * 9.1.1148: Vim9: finding imported scripts can be further improved
+              runtime(lua): Update lua ftplugin and documentation
+  * 9.1.1147: preview-window does not scroll correctly
+              nsis: added support for pt-BR to installer and update README.txt
+              translation(tr): Update Turkish translations
+  * 9.1.1146: Vim9: wrong context being used when evaluating class member
+  * 9.1.1145: multi-line completion has wrong indentation for last line
+              runtime(netrw): runtime(netrw): upstream snapshot of v178
+  * 9.1.1144: no way to create raw strings from a blob
+  * 9.1.1143: illegal memory access when putting a register
+  * 9.1.1142: tests: test_startup fails if $HOME/$XDG_CONFIG_HOME is defined
+              runtime(vim): improve &keywordprg in ftplugin
+              runtime(vim): Update base-syntax, match :CompilerSet and :SynMenu commands
+  * 9.1.1141: Misplaced comment in readfile()
+  * 9.1.1140: filetype: m17ndb files are not detected
+  * 9.1.1139: [fifo] is not displayed when editing a fifo
+  * 9.1.1138: cmdline completion for :hi is too simplistic
+  * 9.1.1137: ins_str() is inefficient by calling STRLEN()
+              CI: Install netbeans on windows to make sure to run test_netbeans.vim
+              runtime(dockerfile): set comments in filetype plugin
+              runtime(compiler): include svelte-check compiler
+              runtime(doc): get rid of the titlestring hack for terminal-api
+  * 9.1.1136: Match highlighting marks a buffer region as changed
+  * 9.1.1135: 'suffixesadd' doesn't work with multiple items
+              runtime(filetype): move filetype detection into filetypedetect augroup
+              CI: add Makefile target to verify default highlighting groups are present
+
+-------------------------------------------------------------------
 Fri Feb 21 21:34:10 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Version bump to fix bsc#1237359 (fixed as of 9.1.1115).
