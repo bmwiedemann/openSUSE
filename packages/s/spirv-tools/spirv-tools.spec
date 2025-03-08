@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,12 @@
 %define _lto_cflags %nil
 %define lname libSPIRV-Tools-2024_4_rc2
 
+# Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
+# See https://bugzilla.suse.com/show_bug.cgi?id=1235697
+%if 0%{?suse_version} < 1600
+%define gcc_version 13
+%endif
+
 Name:           spirv-tools
 Version:        2024.4~rc2
 Release:        0
@@ -31,11 +37,8 @@ Source9:        baselibs.conf
 Patch1:         ver.diff
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.17.2
-%if 0%{?suse_version} >= 1599
-BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc12-c++
-%endif
+BuildRequires:  gcc%{?gcc_version} >= 9
+BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
@@ -76,6 +79,8 @@ find . -type f -name CMakeLists.txt -exec \
 export CXX=g++-12
 %endif
 %cmake -DSPIRV-Headers_SOURCE_DIR="%_prefix" \
+       -DCMAKE_C_COMPILER=gcc%{?gcc_version:-%{gcc_version}} \
+       -DCMAKE_CXX_COMPILER=g++%{?gcc_version:-%{gcc_version}} \
 	-DSPIRV_TOOLS_BUILD_STATIC:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=ON
 %cmake_build
 

@@ -380,4 +380,13 @@ join Staging:E</comment>
     <comment>- Update to release 2024.4~rc2</comment>
     <requestid>1231577</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>2df233440e7779a7cec5bf548d9c7504</srcmd5>
+    <version>2024.4~rc2</version>
+    <time>1741452698</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with GCC 13 on Leap/SLES 15 in the hope to fix Mesa build
+  (bsc#1238713)</comment>
+    <requestid>1251061</requestid>
+  </revision>
 </revisionlist>
