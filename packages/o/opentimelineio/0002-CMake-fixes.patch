@@ -1,0 +1,115 @@
+From 6b4edf8f770982c0fb147fd79322d8967f0795b0 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Fri, 7 Mar 2025 10:58:24 +0100
+Subject: [PATCH 2/2] CMake fixes
+
+---
+ CMakeLists.txt                    | 4 +++-
+ src/opentime/CMakeLists.txt       | 8 +++++---
+ src/opentimelineio/CMakeLists.txt | 8 +++++---
+ 3 files changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0a4d0ce..36f6e27 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,6 +20,8 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "10.14" CACHE STRING "Minimum OS X deployment ve
+ 
+ project(OpenTimelineIO VERSION ${OTIO_VERSION} LANGUAGES C CXX)
+ 
++include(GNUInstallDirs)
++
+ #------------------------------------------------------------------------------
+ # Options
+ # Add all options and settings here for all subprojects to aid in project
+@@ -100,7 +102,7 @@ if(OTIO_PYTHON_INSTALL)
+     endif()
+ 
+ else()
+-    set(OTIO_RESOLVED_CXX_DYLIB_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib")
++    set(OTIO_RESOLVED_CXX_DYLIB_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}")
+     message(STATUS "OTIO C++ installing to ${CMAKE_INSTALL_PREFIX}")
+ endif()
+ 
+diff --git a/src/opentime/CMakeLists.txt b/src/opentime/CMakeLists.txt
+index b7cc47c..6ad040f 100644
+--- a/src/opentime/CMakeLists.txt
++++ b/src/opentime/CMakeLists.txt
+@@ -19,6 +19,8 @@ add_library(OTIO::opentime ALIAS opentime)
+ target_include_directories(opentime PRIVATE "${PROJECT_SOURCE_DIR}/src")
+ 
+ set_target_properties(opentime PROPERTIES 
++    VERSION ${OTIO_VERSION}
++    SOVERSION 0
+     DEBUG_POSTFIX "${OTIO_DEBUG_POSTFIX}"
+     LIBRARY_OUTPUT_NAME "opentime"
+     POSITION_INDEPENDENT_CODE TRUE
+@@ -49,7 +51,7 @@ if(OTIO_CXX_INSTALL)
+             RUNTIME DESTINATION "${OTIO_RESOLVED_CXX_DYLIB_INSTALL_DIR}")
+ 
+     install(EXPORT OpenTimeTargets
+-            DESTINATION "${OTIO_RESOLVED_CXX_INSTALL_DIR}/share/opentime"
++            DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/opentime"
+             NAMESPACE OTIO:: )
+ 
+     include(CMakePackageConfigHelpers)
+@@ -57,7 +59,7 @@ if(OTIO_CXX_INSTALL)
+         ${CMAKE_CURRENT_SOURCE_DIR}/OpenTimeConfig.cmake.in
+         ${CMAKE_CURRENT_BINARY_DIR}/OpenTimeConfig.cmake
+         INSTALL_DESTINATION
+-            ${OTIO_RESOLVED_CXX_INSTALL_DIR}/share/opentime
++            ${CMAKE_INSTALL_LIBDIR}/cmake/opentime
+         NO_SET_AND_CHECK_MACRO
+         NO_CHECK_REQUIRED_COMPONENTS_MACRO
+     )
+@@ -66,7 +68,7 @@ if(OTIO_CXX_INSTALL)
+         FILES
+             ${CMAKE_CURRENT_BINARY_DIR}/OpenTimeConfig.cmake
+         DESTINATION
+-            ${OTIO_RESOLVED_CXX_INSTALL_DIR}/share/opentime
++            ${CMAKE_INSTALL_LIBDIR}/cmake/opentime
+     )
+ endif()
+ 
+diff --git a/src/opentimelineio/CMakeLists.txt b/src/opentimelineio/CMakeLists.txt
+index e98828b..22828a6 100644
+--- a/src/opentimelineio/CMakeLists.txt
++++ b/src/opentimelineio/CMakeLists.txt
+@@ -87,6 +87,8 @@ target_link_libraries(opentimelineio
+     PUBLIC opentime ${OTIO_IMATH_TARGETS})
+ 
+ set_target_properties(opentimelineio PROPERTIES
++    VERSION ${OTIO_VERSION}
++    SOVERSION 0
+     DEBUG_POSTFIX "${OTIO_DEBUG_POSTFIX}"
+     LIBRARY_OUTPUT_NAME "opentimelineio"
+     POSITION_INDEPENDENT_CODE TRUE
+@@ -123,7 +125,7 @@ if(OTIO_CXX_INSTALL)
+            RUNTIME DESTINATION "${OTIO_RESOLVED_CXX_DYLIB_INSTALL_DIR}")
+ 
+     install(EXPORT OpenTimelineIOTargets
+-           DESTINATION "${OTIO_RESOLVED_CXX_INSTALL_DIR}/share/opentimelineio"
++           DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/opentimelineio"
+            NAMESPACE OTIO:: )
+ 
+     include(CMakePackageConfigHelpers)
+@@ -131,7 +133,7 @@ if(OTIO_CXX_INSTALL)
+         ${CMAKE_CURRENT_SOURCE_DIR}/OpenTimelineIOConfig.cmake.in
+         ${CMAKE_CURRENT_BINARY_DIR}/OpenTimelineIOConfig.cmake
+         INSTALL_DESTINATION
+-            ${OTIO_RESOLVED_CXX_INSTALL_DIR}/share/opentimelineio
++            ${CMAKE_INSTALL_LIBDIR}/cmake/opentimelineio
+         NO_SET_AND_CHECK_MACRO
+         NO_CHECK_REQUIRED_COMPONENTS_MACRO
+     )
+@@ -140,6 +142,6 @@ if(OTIO_CXX_INSTALL)
+         FILES
+             ${CMAKE_CURRENT_BINARY_DIR}/OpenTimelineIOConfig.cmake
+         DESTINATION
+-            ${OTIO_RESOLVED_CXX_INSTALL_DIR}/share/opentimelineio
++            ${CMAKE_INSTALL_LIBDIR}/cmake/opentimelineio
+     )
+ endif()
+-- 
+2.48.1
+

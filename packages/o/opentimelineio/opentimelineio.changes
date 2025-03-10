@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Fri Mar  7 07:57:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Init opentimelineio
+- Add patches:
+  * 0001-Use-system-rapidjson.patch
+  * 0002-CMake-fixes.patch
