@@ -1,7 +1,7 @@
 #
 # spec file for package wxWidgets-3_2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,8 +65,8 @@ wxString and instead rely on the wxChar pointer API.
 # At most one Name: line to not confuse quilt(1)
 %define base_name wxWidgets-3_2
 %define wx_minor 3.2
-%define psonum 12_0_0
-%define sonum 12.0.0
+%define psonum 14_0_0
+%define sonum 14.0.0
 Name:           %this_spec
 Version:        3.2.6
 Release:        0
@@ -102,6 +102,7 @@ BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmspack)
 BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(sm)
 %if "%toolkit" == "gtk2"
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -422,6 +423,7 @@ autoconf -f -i
 	--enable-repro-build \
 	--enable-glcanvasegl \
 	--enable-webrequest \
+	--enable-secretstore \
 %if "%flavor" == "GTK3-nostl"
 	--disable-stl \
 	--disable-plugins
