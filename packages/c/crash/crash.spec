@@ -1,7 +1,7 @@
 #
 # spec file for package crash
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -106,6 +106,7 @@ Patch107:       0008-Fix-kmem-i-and-swap-commands-on-Linux-6.10-rc1-and-l.patch
 Patch108:       0009-List-enable-LIST_HEAD_FORMAT-for-r-option.patch
 Patch109:       0010-arm64-fix-a-potential-segfault-when-unwind-frame.patch
 Patch110:       0011-arm64-Fix-bt-command-show-wrong-stacktrace-on-ramdum.patch
+Patch111:       fix_extensions_makefile_race_condition.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -280,6 +281,7 @@ done
 %patch -P 108 -p1
 %patch -P 109 -p1
 %patch -P 110 -p1
+%patch -P 111 -p1
 
 ## SIAL patches
 cd sial-scripts-%{scripts_version}

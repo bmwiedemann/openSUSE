@@ -1,0 +1,36 @@
+commit 620fd9cb7ec257534330cfca7d28f6a737d87d16
+Author: Wolfgang Frisch <wolfgang.frisch@suse.com>
+Date:   Tue Feb 18 10:07:28 2025 +0100
+
+    extensions/Makefile: eliminate race condition
+    
+    Building extensions with parallel jobs could lead to a race condition
+    when creating and using the temporary `.constructor` file. This resulted
+    in unpredictable build outcomes and unreproducible builds. This commit
+    removes the temporary file entirely, resolving the race condition and
+    ensuring consistent builds.
+
+diff --git a/extensions/Makefile b/extensions/Makefile
+index a608073..e4c68c3 100644
+--- a/extensions/Makefile
++++ b/extensions/Makefile
+@@ -36,16 +36,13 @@ $(CONTRIB_SO): %.so: %.c defs.h
+ 	@if [ -f $*.mk ]; then \
+ 		$(MAKE) -f $*.mk; \
+ 	else \
+-		grep '((constructor))' $*.c > .constructor; \
+-		if [ -s .constructor ]; then \
++		grep -q '((constructor))' $*.c && { \
+ 			echo "gcc -Wall -g -shared -rdynamic -o $@ $*.c -fPIC -D$(TARGET) $(TARGET_CFLAGS) $(GDB_FLAGS)"; \
+ 			gcc -Wall -g -shared -rdynamic -o $@ $*.c -fPIC -D$(TARGET) $(TARGET_CFLAGS) $(GDB_FLAGS); \
+-		fi; \
+-		if [ ! -s .constructor ]; then \
++		} || { \
+ 			echo "gcc -Wall -g -nostartfiles -shared -rdynamic -o $@ $*.c -fPIC -D$(TARGET) $(TARGET_CFLAGS) $(GDB_FLAGS)"; \
+ 			gcc -Wall -g -nostartfiles -shared -rdynamic -o $@ $*.c -fPIC -D$(TARGET) $(TARGET_CFLAGS) $(GDB_FLAGS); \
+-		fi; \
+-		rm -f .constructor; \
++		}; \
+ 	fi
+ 
+ clean:

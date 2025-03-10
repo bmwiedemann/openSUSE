@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:22:55 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Add fix_extensions_makefile_race_condition.patch
+  makes the build of `dminfo.so` reproducible (bsc#1230281).
+
+-------------------------------------------------------------------
 Thu Aug  1 07:03:18 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - add (bsc#1228388):
