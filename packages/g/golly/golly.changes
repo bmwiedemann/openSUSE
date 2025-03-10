@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 10 08:53:35 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Add missing BuildRequires python3-setuptools
+
+-------------------------------------------------------------------
 Sat May 25 15:08:01 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 4.3:

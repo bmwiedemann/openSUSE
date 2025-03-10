@@ -1,7 +1,7 @@
 #
 # spec file for package golly
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ BuildRequires:  chrpath
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  wxGTK3-devel >= 3.1.5
 BuildRequires:  zlib-devel
 Requires:       %{name}-assets = %{version}
