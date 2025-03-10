@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 10 00:41:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove timebomb now that Python 3.12 is no longer the first flavor built.
+- Add a rudimentary check by importing the module built.
+
+-------------------------------------------------------------------
 Mon Jan 13 00:31:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Python 3.12 is now the first flavor built, fix nspkg.pth 

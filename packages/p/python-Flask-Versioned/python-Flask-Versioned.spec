@@ -16,6 +16,7 @@
 #
 
 
+%define full_version 0.9.4.post20101221
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Versioned
 Version:        0.9.4
@@ -50,18 +51,16 @@ Add version info to file paths.
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# no checks available upstream
+%check
+# Can we import the module
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -c "from flaskext.versioned import Versioned"
 
 %files %{python_files}
-%if 0%{suse_version} >= 1600
-%{python_sitelib}/Flask_Versioned-0.9.4.post20101221-py3.12-nspkg.pth
-%else
-%{python_sitelib}/Flask_Versioned-0.9.4.post20101221-py3.11-nspkg.pth
-%endif
+%{python_sitelib}/Flask_Versioned-%{full_version}-py3.11-nspkg.pth
 %dir %{python_sitelib}/flaskext/
 %dir %{python_sitelib}/flaskext/versioned/
 %{python_sitelib}/flaskext/versioned/__init__.py
 %pycache_only %{python_sitelib}/flaskext/versioned/__pycache__/
-%{python_sitelib}/Flask_Versioned-%{version}.*.dist-info
+%{python_sitelib}/Flask_Versioned-%{full_version}.dist-info
 
 %changelog
