@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  5 21:38:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.6.4:
+  * reduce memory usage for multiple operations
+  * optimize performance for speed detection / normal sync
+  * improve detection for libgcrypt, use pkg-config if available
+
+-------------------------------------------------------------------
 Fri Dec 27 18:11:15 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.6.3
