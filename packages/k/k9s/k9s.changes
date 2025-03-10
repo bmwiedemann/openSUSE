@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Mar 10 06:51:52 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.40.6:
+  * Breaking change
+    Moved portForwardAddress out of
+    clusterXXX/contextYYY/config.yaml and into the main K9s config
+    file.
+    This is a global preference based on your setup vs a
+    cluster/context specific attribute.
+    K9s will nag you in the logs if a specific context config still
+    contains this attribute but should not prevent the
+    configuration load.
+  * Column Blow Reloaded!
+    We've added another property to the custom view. You can now
+    also specify namespace specific column definition for a given
+    resource.  For instance, view pods in any namespace using one
+    configuration and view pods in fred namespace using an
+    alternate configuration.
+    (See the example in the release
+    https://github.com/derailed/k9s/releases/tag/v0.40.6)
+    Additionally, we've added a new column attribute aka Show -> S.
+    This allows you to now override the default resource column
+    wide attribute when set.
+  * Resolved Issues
+    - #3179 Resource name with full api or group displayed
+      (somewhere and sometimes)
+    - #3178 Cronjobs with the same name in different namespaces
+      appear together
+    - #3176 Trigger all marked cronjobs
+    - #3162 Context configs: context directory created under wrong
+      cluster after context switch
+    - #3161 Force wide-only columns to appear outside of wide view
+    - #3147 Prompt style is overriden by body
+    - #3139 CPU/R:L and MEM/R:L columns invalid in views.yaml
+    - #3138 Subresources are not shown correctly in the RBAC view
+  * Contributed PRs
+    - Please be sure to give Big Thanks! and ATTA Girls/Boys! to
+      all the fine contributors for making K9s better for all of
+      us!!
+    - #3182 fix: Use the latest version when downloading the Ubuntu
+      deb file
+    - #3168 fix(history): handle cases where special commands add
+      their command their command to the history
+    - #3159 Added hard contrast gruvbox skins
+    - #3149 fix: Pass grv on gotoResource as a String to fix
+      non-default apiGroup list
+    - #3149 Add externalsecrets plugin
+    - #3140 fix: Avoid false positive matches in enableRegion
+      (#3093)
+
+-------------------------------------------------------------------
 Wed Feb 19 05:47:09 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.40.5:
