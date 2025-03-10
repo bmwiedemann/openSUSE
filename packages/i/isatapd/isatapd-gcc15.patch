@@ -1,0 +1,13 @@
+Index: isatapd-0.9.7+git.20141015/src/isatap.c
+===================================================================
+--- isatapd-0.9.7+git.20141015.orig/src/isatap.c
++++ isatapd-0.9.7+git.20141015/src/isatap.c
+@@ -339,7 +339,7 @@ int drop_to_user(char* username)
+ /**
+  * SIGHUP
+  **/
+-static void sighup_handler_child() {
++static void sighup_handler_child(int unused) {
+ 	exit(EXIT_CHECK_PRL);
+ }
+ 

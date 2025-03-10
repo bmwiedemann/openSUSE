@@ -1,6 +1,7 @@
 #
 # spec file for package isatapd
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,6 +29,8 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}.service
 Source2:        %{name}.sysconfig
 Patch0:         isatapd-fix-ftbfs-linux-4.8.patch
+# build with gcc15
+Patch1:         isatapd-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros
