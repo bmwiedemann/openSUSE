@@ -139,4 +139,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1155104</requestid>
   </revision>
+  <revision rev="21" vrev="1012">
+    <srcmd5>4cb38c58d27940636f193e59712de982</srcmd5>
+    <version>0.3</version>
+    <time>1741626305</time>
+    <user>anag+factory</user>
+    <comment>- build with gcc15
+- added patches
+  + gup-gcc15.patch</comment>
+    <requestid>1251564</requestid>
+  </revision>
 </revisionlist>

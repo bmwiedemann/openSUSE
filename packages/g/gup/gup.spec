@@ -1,7 +1,7 @@
 #
 # spec file for package gup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Productivity/Networking/News/Utilities
 Source:         gup.tar.gz
 Patch0:         gup.dif
 Patch1:         gup-fdleak.dif
+Patch2:         gup-gcc15.patch
 Requires:       inn
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(news)
@@ -42,6 +43,7 @@ INN and C-News.
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{PATCH0}
 %patch -P 0
 %patch -P 1
+%patch -P 2
 
 %build
 export RPM_OPT_FLAGS
