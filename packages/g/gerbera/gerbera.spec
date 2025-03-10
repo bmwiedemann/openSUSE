@@ -21,7 +21,7 @@
 %endif
 
 Name:           gerbera
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
@@ -176,6 +176,8 @@ install -D -m0644 %{SOURCE11} %{buildroot}%{_sysconfdir}/nginx/vhosts.d/%{name}.
 
 %post
 %service_add_post %{name}.service
+
+chown -R root:root %{_sysconfdir}/%{name}
 # only do on install
 if [ "$1" -eq 1 ]; then
   echo "o Create config.xml..." || :
@@ -193,6 +195,7 @@ if [ "$1" -gt 1 ]; then
 fi
 echo "o Create new config-example.xml with almost all options..." || :
 gerbera --create-example-config | sudo tee /etc/gerbera/config-example.xml || :
+chown -R gerbera:gerbera %{_sysconfdir}/%{name}
 
 %preun
 %service_del_preun %{name}.service

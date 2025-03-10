@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Mar  6 18:21:10 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.5.0
+  The following changes are noteworthy:
+  - Changed default for layout to js if built with JavaScript support.
+  - The new autoscan mode manual in conjunction with the action Scan
+    Now replaces the action to add individual folders.
+
+  * NEW Features
+    - All configuration options for autoscan directories are available in the web UI now,
+      including scripts and storage in the database.
+    - New configuration option for autoscan directories to rescan files
+      that ended up as plain object in the first run.
+    - Several script options to control audio layout
+    - Harmonisation of metadata handling for wavpack and matroska media handlers
+    - Fabricated comment on import in media handlers (incl. configuration)
+    - Resource attribute pixelFormat for videos.
+    - Additional Resources (thumbnail, subtitle) for External Urls
+    - New UI command Scan Now and minor improvement
+    - Manual autoscan to replace Add Items in filesystem view
+  * FIXES
+    - Album art and structure in builtin layout
+    - Autoscan objects in scripts
+    - Metadata in builtin layout, album artist in default js layout
+    - Commands in UI show descriptive tooltips
+    - Child items of autoscan folder in UI
+  * Code Improvements
+    - Removed static from ConfigDefinition
+    - Update versions of pugixml (1.15), libexif (v0.6.25), wavpack (5.8.1), fmt (11.1.4),
+      spdlog (1.15.1), wavpack (1.8.1), googletest (1.16.0), libexiv2 (0.28.5)
+  * Detailled Changes
+    - Gerbera 2.5.0 (#3415)
+    - Fix shutdown issue (#3414)
+    - Build with fmt 11.1.4 (#3413)
+    - Autoscan fixes (#3410)
+    - Update libexiv2 to 0.28.5 (#3409)
+    - Add manual autoscan option (#3408)
+    - Web UI: properly encode arguments (#3407)
+    - Add Run Scan action in Web UI (#3406)
+    - Fix config load (#3405)
+    - Refactor WebRequests (#3403)
+    - Debian Build for arm64 (#3400)
+    - Update libexiv2 to 0.28.4 (#3399)
+    - Support Resources for External Items (#3398)
+    - Populate playlist item titles (#3397)
+    - Fix update of playlists (#3395)
+    - Update to googletest 1.16.0 (#3393)
+    - Extract Pixelformat for videos (#3392)
+    - UI: Make details collapsable in items editor detail view (#3390)
+    - Rework autoscan list handling (#3389)
+    - Sqlite: Exit after multiple exceptions (#3384)
+    - Fix management auf autoscans in list (#3385)
+    - Generate Comment from Metadata During Scan (#3368)
+    - Update wavpack (#3380)
+    - Build with fmt 11.1.3 (#3323)
+    - Downgrade docker builder as well (#3379)
+    - work around build issue (#3378)
+    - Cleanup tree and autoscan commands (#3374)
+    - Build correct Autoscan Type (#3371)
+    - Add Options to Scripts (#3365)
+    - Fix UpnpMap logic (#3364)
+    - Set more metadata in builtin layout (#3359)
+    - Improve logging of string conversion (#3355)
+    - Update Library Versions (#3354)
+    - Focal: Freeze more aws-sdk versions (#3353)
+    - Focal: freeze ruby aws-sdk versions used for package upload (#3352)
+    - Fix cors host without ipv6 address (#3349)
+    - Remap metadata fields when parsing virtual-directories keys (#3351)
+    - Autoscan: Add missing properties to web UI and database (#3346)
+    - Force Reread of unknown files (#3345)
+    - JS: Fix config autoscan object in scripts (#3344)
+    - Fix album art in builtin layout (#3341)
+    - Refactor static code from ConfigDefinition (#3338)
+    - Bump master (#3337)
+
+-------------------------------------------------------------------
+Wed Jan 22 12:01:34 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Fix boo#1235893 (CVE-2025-23386)
+  - Privilege escalation from user gerbera to root because of
+    insecure %post script.
+
+-------------------------------------------------------------------
 Tue Jan  7 18:46:28 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.4.1
