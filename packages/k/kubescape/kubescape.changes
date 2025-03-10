@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 10 10:21:42 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.31:
+  * What's Changed
+    - fix score calculation for framework with all controls in
+      status irrelevant by @amirmalka in #1802
+    - Bump github.com/go-jose/go-jose/v3 from 3.0.3 to 3.0.4 by
+      @dependabot in #1803
+    - Update README.md by @amitschendel in #1807
+    - generate checksums for all artifacts by @matthyx in #1806
+
+-------------------------------------------------------------------
 Wed Feb 26 13:35:40 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.30:
