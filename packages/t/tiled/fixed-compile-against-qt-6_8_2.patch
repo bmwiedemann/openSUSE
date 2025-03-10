@@ -1,0 +1,587 @@
+From 776d3b67b011f970a65e8a743795401851684cc9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thorbj=C3=B8rn=20Lindeijer?= <bjorn@lindeijer.nl>
+Date: Mon, 3 Feb 2025 12:05:21 +0100
+Subject: [PATCH 1/2] Fixed compile against Qt 6.8.2
+
+In Qt 6.8.2, a forward declaration was added for the QStringRef class
+from Qt 5, which breaks compilation because it is incompatible with the
+"using QStringRef = QStringView" line I was using for compatibility
+between Qt 5 and 6.
+
+Fortunately, as of Qt 5.15.2, the QStringView API is complete enough, so
+by raising the minimum required Qt version we no longer need QStringRef
+at all.
+---
+ NEWS.md                               |  2 +-
+ src/libtiled/libtiled.qbs             |  2 +-
+ src/libtiled/mapreader.cpp            | 23 +++++++----------------
+ src/libtiled/propertytype.cpp         |  7 +------
+ src/libtiled/qtcompat_p.h             | 26 --------------------------
+ src/libtiled/wangset.cpp              |  2 +-
+ src/libtiled/wangset.h                |  4 +---
+ src/libtiled/world.cpp                | 11 -----------
+ src/plugins/flare/flareplugin.cpp     |  7 -------
+ src/plugins/rpmap/rpmapplugin.cpp     |  2 --
+ src/plugins/tbin/tbinplugin.cpp       |  6 ------
+ src/plugins/tengine/tengineplugin.cpp |  8 --------
+ src/tiled/actionsearch.cpp            | 16 +---------------
+ src/tiled/automappingmanager.cpp      |  3 +--
+ src/tiled/libtilededitor.qbs          |  2 +-
+ src/tiled/locatorwidget.cpp           |  4 ----
+ src/tiled/projectmodel.cpp            |  4 ----
+ src/tiled/scriptmanager.cpp           |  4 ----
+ src/tiled/tiledproxystyle.cpp         |  5 +----
+ src/tiled/utils.cpp                   | 10 +++++-----
+ src/tiled/utils.h                     |  6 ++----
+ src/tiledapp/main.cpp                 |  2 --
+ src/tmxviewer/tmxviewer.qbs           |  2 +-
+ 23 files changed, 24 insertions(+), 134 deletions(-)
+ delete mode 100644 src/libtiled/qtcompat_p.h
+
+Index: tiled-1.11.2/src/libtiled/libtiled.qbs
+===================================================================
+--- tiled-1.11.2.orig/src/libtiled/libtiled.qbs
++++ tiled-1.11.2/src/libtiled/libtiled.qbs
+@@ -5,7 +5,7 @@ DynamicLibrary {
+     cpp.dynamicLibraryPrefix: "lib"
+ 
+     Depends { name: "cpp" }
+-    Depends { name: "Qt"; submodules: "gui"; versionAtLeast: "5.12" }
++    Depends { name: "Qt"; submodules: "gui"; versionAtLeast: "5.15.2" }
+ 
+     Probes.PkgConfigProbe {
+         id: pkgConfigZstd
+Index: tiled-1.11.2/src/libtiled/mapreader.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/libtiled/mapreader.cpp
++++ tiled-1.11.2/src/libtiled/mapreader.cpp
+@@ -103,14 +103,14 @@ private:
+     void readTileLayerData(TileLayer &tileLayer);
+     void readTileLayerRect(TileLayer &tileLayer,
+                            Map::LayerDataFormat layerDataFormat,
+-                           QStringRef encoding,
++                           QStringView encoding,
+                            QRect bounds);
+     void decodeBinaryLayerData(TileLayer &tileLayer,
+                                const QByteArray &data,
+                                Map::LayerDataFormat format,
+                                QRect bounds);
+     void decodeCSVLayerData(TileLayer &tileLayer,
+-                            QStringRef text,
++                            QStringView text,
+                             QRect bounds);
+ 
+     /**
+@@ -511,9 +511,9 @@ void MapReaderPrivate::readTilesetTile(T
+ 
+     // Read tile quadrant terrain ids as Wang IDs. This is possible because the
+     // terrain types (loaded as WangSet) are always stored before the tiles.
+-    const QStringRef terrain = atts.value(QLatin1String("terrain"));
++    const auto terrain = atts.value(QLatin1String("terrain"));
+     if (!terrain.isEmpty() && tileset.wangSetCount() > 0) {
+-        QVector<QStringRef> quadrants = terrain.split(QLatin1Char(','));
++        const auto quadrants = terrain.split(QLatin1Char(','));
+         WangId wangId;
+         if (quadrants.size() == 4) {
+             for (int i = 0; i < 4; ++i) {
+@@ -777,7 +777,7 @@ void MapReaderPrivate::readTilesetWangSe
+                 } else if (xml.name() == QLatin1String("wangtile")) {
+                     const QXmlStreamAttributes tileAtts = xml.attributes();
+                     const int tileId = tileAtts.value(QLatin1String("tileid")).toInt();
+-                    const QStringRef wangIdString = tileAtts.value(QLatin1String("wangid"));
++                    const auto wangIdString = tileAtts.value(QLatin1String("wangid"));
+ 
+                     bool ok = true;
+                     WangId wangId;
+@@ -962,7 +962,7 @@ void MapReaderPrivate::readTileLayerData
+ 
+ void MapReaderPrivate::readTileLayerRect(TileLayer &tileLayer,
+                                          Map::LayerDataFormat layerDataFormat,
+-                                         QStringRef encoding,
++                                         QStringView encoding,
+                                          QRect bounds)
+ {
+     Q_ASSERT(xml.isStartElement() && (xml.name() == QLatin1String("data") ||
+@@ -1043,7 +1043,7 @@ void MapReaderPrivate::decodeBinaryLayer
+ }
+ 
+ void MapReaderPrivate::decodeCSVLayerData(TileLayer &tileLayer,
+-                                          QStringRef text,
++                                          QStringView text,
+                                           QRect bounds)
+ {
+     int currentIndex = 0;
+@@ -1291,21 +1291,12 @@ QPolygonF MapReaderPrivate::readPolygon(
+             break;
+         }
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+         const qreal x = QStringView(point).left(commaPos).toDouble(&ok);
+         if (!ok)
+             break;
+         const qreal y = QStringView(point).mid(commaPos + 1).toDouble(&ok);
+         if (!ok)
+             break;
+-#else
+-        const qreal x = point.leftRef(commaPos).toDouble(&ok);
+-        if (!ok)
+-            break;
+-        const qreal y = point.midRef(commaPos + 1).toDouble(&ok);
+-        if (!ok)
+-            break;
+-#endif
+ 
+         polygon.append(QPointF(x, y));
+     }
+Index: tiled-1.11.2/src/libtiled/propertytype.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/libtiled/propertytype.cpp
++++ tiled-1.11.2/src/libtiled/propertytype.cpp
+@@ -171,13 +171,7 @@ QVariant EnumPropertyType::toPropertyVal
+         if (valuesAsFlags) {
+             int flags = 0;
+ 
+-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+-            const QVector<QStringRef> stringValues = stringValue.splitRef(QLatin1Char(','), QString::SkipEmptyParts);
+-#elif QT_VERSION < QT_VERSION_CHECK(6,0,0)
+-            const QVector<QStringRef> stringValues = stringValue.splitRef(QLatin1Char(','), Qt::SkipEmptyParts);
+-#else
+-            const QList<QStringView> stringValues = QStringView(stringValue).split(QLatin1Char(','), Qt::SkipEmptyParts);
+-#endif
++            const auto stringValues = QStringView(stringValue).split(QLatin1Char(','), Qt::SkipEmptyParts);
+ 
+             for (const auto &stringValue : stringValues) {
+                 const int index = indexOf(values, stringValue);
+Index: tiled-1.11.2/src/libtiled/wangset.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/libtiled/wangset.cpp
++++ tiled-1.11.2/src/libtiled/wangset.cpp
+@@ -321,7 +321,7 @@ unsigned WangId::toUint() const
+     return id;
+ }
+ 
+-WangId WangId::fromString(QStringRef string, bool *ok)
++WangId WangId::fromString(QStringView string, bool *ok)
+ {
+     WangId id;
+ 
+Index: tiled-1.11.2/src/libtiled/wangset.h
+===================================================================
+--- tiled-1.11.2.orig/src/libtiled/wangset.h
++++ tiled-1.11.2/src/libtiled/wangset.h
+@@ -37,8 +37,6 @@
+ #include <QString>
+ #include <QList>
+ 
+-#include "qtcompat_p.h"
+-
+ namespace Tiled {
+ 
+ class TILEDSHARED_EXPORT WangId
+@@ -134,7 +132,7 @@ public:
+     static WangId fromUint(unsigned id);
+     unsigned toUint() const;
+ 
+-    static WangId fromString(QStringRef string, bool *ok = nullptr);
++    static WangId fromString(QStringView string, bool *ok = nullptr);
+     QString toString() const;
+ 
+ private:
+Index: tiled-1.11.2/src/libtiled/world.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/libtiled/world.cpp
++++ tiled-1.11.2/src/libtiled/world.cpp
+@@ -103,14 +103,8 @@ QRect World::mapRect(const QString &file
+     for (const WorldPattern &pattern : patterns) {
+         QRegularExpressionMatch match = pattern.regexp.match(fileName);
+         if (match.hasMatch()) {
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+             const int x = match.capturedView(1).toInt();
+             const int y = match.capturedView(2).toInt();
+-#else
+-            const int x = match.capturedRef(1).toInt();
+-            const int y = match.capturedRef(2).toInt();
+-#endif
+-
+             return QRect(QPoint(x * pattern.multiplierX,
+                                 y * pattern.multiplierY) + pattern.offset,
+                          pattern.mapSize);
+@@ -132,13 +126,8 @@ QVector<WorldMapEntry> World::allMaps()
+             for (const QString &fileName : entries) {
+                 QRegularExpressionMatch match = pattern.regexp.match(fileName);
+                 if (match.hasMatch()) {
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+                     const int x = match.capturedView(1).toInt();
+                     const int y = match.capturedView(2).toInt();
+-#else
+-                    const int x = match.capturedRef(1).toInt();
+-                    const int y = match.capturedRef(2).toInt();
+-#endif
+ 
+                     WorldMapEntry entry;
+                     entry.fileName = dir.filePath(fileName);
+Index: tiled-1.11.2/src/plugins/flare/flareplugin.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/plugins/flare/flareplugin.cpp
++++ tiled-1.11.2/src/plugins/flare/flareplugin.cpp
+@@ -36,9 +36,7 @@
+ #include <QDir>
+ #include <QFileInfo>
+ #include <QStringList>
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+ #include <QStringView>
+-#endif
+ #include <QTextStream>
+ 
+ #include <memory>
+@@ -88,12 +86,7 @@ std::unique_ptr<Tiled::Map> FlarePlugin:
+ 
+     while (!stream.atEnd()) {
+         line = stream.readLine();
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+         const QStringView lineView(line);
+-#else
+-        const QStringRef lineView(&line);
+-#endif
+-
+         if (!line.length())
+             continue;
+ 
+Index: tiled-1.11.2/src/plugins/rpmap/rpmapplugin.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/plugins/rpmap/rpmapplugin.cpp
++++ tiled-1.11.2/src/plugins/rpmap/rpmapplugin.cpp
+@@ -34,9 +34,7 @@
+ #include <QDir>
+ #include <QFileInfo>
+ #include <QStringList>
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+ #include <QStringView>
+-#endif
+ #include <QTextStream>
+ #include <QXmlStreamWriter>
+ #include <QUuid>
+Index: tiled-1.11.2/src/plugins/tbin/tbinplugin.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/plugins/tbin/tbinplugin.cpp
++++ tiled-1.11.2/src/plugins/tbin/tbinplugin.cpp
+@@ -33,9 +33,7 @@
+ 
+ #include <QCoreApplication>
+ #include <QDir>
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+ #include <QStringView>
+-#endif
+ 
+ #include <cmath>
+ #include <fstream>
+@@ -183,11 +181,7 @@ std::unique_ptr<Tiled::Map> TbinMapForma
+                     continue;
+ 
+                 const QString name = QString::fromStdString(prop.first);
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+                 const auto strs = QStringView(name).split(QLatin1Char('@'));
+-#else
+-                const auto strs = name.splitRef('@');
+-#endif
+                 if (strs[1] == QLatin1String("TileIndex")) {
+                     int index = strs[2].toInt();
+                     tbin::Properties dummyProps;
+Index: tiled-1.11.2/src/plugins/tengine/tengineplugin.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/plugins/tengine/tengineplugin.cpp
++++ tiled-1.11.2/src/plugins/tengine/tengineplugin.cpp
+@@ -31,15 +31,11 @@
+ #include <QCoreApplication>
+ #include <QHash>
+ #include <QList>
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+ #include <QStringView>
+-#endif
+ #include <QTextStream>
+ 
+ #include <QtMath>
+ 
+-#include "qtcompat_p.h"
+-
+ using namespace Tengine;
+ 
+ TenginePlugin::TenginePlugin()
+@@ -61,11 +57,7 @@ bool TenginePlugin::write(const Tiled::M
+ 
+     // Write the header
+     const QString header = map->property("header").toString();
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+     const auto lines = QStringView(header).split(QStringLiteral("\\n"));
+-#else
+-    const auto lines = header.splitRef("\\n");
+-#endif
+     for (const auto &line : lines)
+         out << line << Qt::endl;
+ 
+Index: tiled-1.11.2/src/tiled/actionsearch.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/tiled/actionsearch.cpp
++++ tiled-1.11.2/src/tiled/actionsearch.cpp
+@@ -91,22 +91,13 @@ void ActionMatchDelegate::paint(QPainter
+     painter->save();
+ 
+     const QString name = index.data().toString();
+-
+-#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
+-    const auto ranges = Utils::matchingRanges(mWords, &name);
+-#else
+     const auto ranges = Utils::matchingRanges(mWords, name);
+-#endif
+ 
+     QString nameHtml;
+     int nameIndex = 0;
+ 
+-    auto nameRange = [&] (int first, int last) -> QStringRef {
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
++    auto nameRange = [&] (int first, int last) -> QStringView {
+         return QStringView(name).mid(first, last - first + 1);
+-#else
+-        return name.midRef(first, last - first + 1);
+-#endif
+     };
+ 
+     for (const auto &range : ranges) {
+@@ -261,12 +252,7 @@ QVector<ActionLocatorSource::Match> Acti
+         QString sanitizedText = action->text();
+         sanitizedText.replace(re, QString());
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+         const int totalScore = Utils::matchingScore(words, sanitizedText);
+-#else
+-        const int totalScore = Utils::matchingScore(words, &sanitizedText);
+-#endif
+-
+         if (totalScore > 0) {
+             result.append(Match {
+                               totalScore,
+Index: tiled-1.11.2/src/tiled/automappingmanager.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/tiled/automappingmanager.cpp
++++ tiled-1.11.2/src/tiled/automappingmanager.cpp
+@@ -224,11 +224,10 @@ bool AutomappingManager::loadRulesFile(c
+         if (trimmedLine.startsWith(QLatin1Char('[')) && trimmedLine.endsWith(QLatin1Char(']'))) {
+ #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+             auto filter = trimmedLine.mid(1, trimmedLine.length() - 2);
+-            mMapNameFilter.setPattern(QRegularExpression::wildcardToRegularExpression(filter.toString()));
+ #else
+             auto filter = trimmedLine.sliced(1, trimmedLine.length() - 2);
+-            mMapNameFilter.setPattern(QRegularExpression::wildcardToRegularExpression(filter));
+ #endif
++            mMapNameFilter.setPattern(QRegularExpression::wildcardToRegularExpression(filter));
+             continue;
+         }
+ 
+Index: tiled-1.11.2/src/tiled/libtilededitor.qbs
+===================================================================
+--- tiled-1.11.2.orig/src/tiled/libtilededitor.qbs
++++ tiled-1.11.2/src/tiled/libtilededitor.qbs
+@@ -9,7 +9,7 @@ DynamicLibrary {
+     Depends { name: "translations" }
+     Depends { name: "qtpropertybrowser" }
+     Depends { name: "qtsingleapplication" }
+-    Depends { name: "Qt"; submodules: ["core", "widgets", "concurrent", "qml", "svg"]; versionAtLeast: "5.12" }
++    Depends { name: "Qt"; submodules: ["core", "widgets", "concurrent", "qml", "svg"]; versionAtLeast: "5.15.2" }
+     Depends { name: "Qt.openglwidgets"; condition: Qt.core.versionMajor >= 6; required: false }
+     Depends { name: "Qt.dbus"; condition: qbs.targetOS.contains("linux") && project.dbus; required: false }
+     Depends { name: "Qt.gui-private"; condition: qbs.targetOS.contains("windows") && Qt.core.versionMajor >= 6 }
+Index: tiled-1.11.2/src/tiled/locatorwidget.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/tiled/locatorwidget.cpp
++++ tiled-1.11.2/src/tiled/locatorwidget.cpp
+@@ -100,11 +100,7 @@ void FileMatchDelegate::paint(QPainter *
+ 
+     QString filePath = index.data().toString();
+     const int lastSlash = filePath.lastIndexOf(QLatin1Char('/'));
+-#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
+-    const auto ranges = Utils::matchingRanges(mWords, &filePath);
+-#else
+     const auto ranges = Utils::matchingRanges(mWords, filePath);
+-#endif
+ 
+     filePath = QDir::toNativeSeparators(filePath);
+ 
+Index: tiled-1.11.2/src/tiled/projectmodel.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/tiled/projectmodel.cpp
++++ tiled-1.11.2/src/tiled/projectmodel.cpp
+@@ -82,11 +82,7 @@ static void findFiles(const FolderEntry
+ {
+     for (const auto &childEntry : entry.entries) {
+         if (childEntry->entries.empty()) {
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+             const auto relativePath = QStringView(childEntry->filePath).mid(offset);
+-#else
+-            const auto relativePath = childEntry->filePath.midRef(offset);
+-#endif
+             const int totalScore = Utils::matchingScore(words, relativePath);
+ 
+             if (totalScore > 0) {
+Index: tiled-1.11.2/src/tiled/scriptmanager.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/tiled/scriptmanager.cpp
++++ tiled-1.11.2/src/tiled/scriptmanager.cpp
+@@ -303,11 +303,7 @@ bool ScriptManager::checkError(QJSValue
+     QString errorString = value.toString();
+     QString stack = value.property(QStringLiteral("stack")).toString();
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+     const auto stackEntries = QStringView(stack).split(QLatin1Char('\n'));
+-#else
+-    const auto stackEntries = stack.splitRef(QLatin1Char('\n'));
+-#endif
+     if (stackEntries.size() > 0 && !stackEntries.first().startsWith(QLatin1String("%entry@"))) {
+         // Add stack if there were more than one entries
+         errorString.append(QLatin1Char('\n'));
+Index: tiled-1.11.2/src/tiled/tiledproxystyle.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/tiled/tiledproxystyle.cpp
++++ tiled-1.11.2/src/tiled/tiledproxystyle.cpp
+@@ -820,11 +820,8 @@ void TiledProxyStyle::drawControl(Contro
+ 
+             QRect textRect(xpos, y + windowsItemVMargin, w - xm - windowsRightBorder - tab + 1, h - 2 * windowsItemVMargin);
+             QRect vTextRect = visualRect(opt->direction, menuitem->rect, textRect);
+-#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+             QStringView s(menuitem->text);
+-#else
+-            QStringRef s(&menuitem->text);
+-#endif
++
+             if (!s.isEmpty()) {                     // draw text
+                 p->save();
+                 int t = s.indexOf(QLatin1Char('\t'));
+Index: tiled-1.11.2/src/tiled/utils.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/tiled/utils.cpp
++++ tiled-1.11.2/src/tiled/utils.cpp
+@@ -174,7 +174,7 @@ struct Match {
+  *
+  * Attempts to make matching indexes sequential.
+  */
+-static bool matchingIndexes(const QString &word, QStringRef string, QVarLengthArray<Match, 16> &matchingIndexes)
++static bool matchingIndexes(const QString &word, QStringView string, QVarLengthArray<Match, 16> &matchingIndexes)
+ {
+     int index = 0;
+ 
+@@ -214,7 +214,7 @@ static bool matchingIndexes(const QStrin
+  *
+  * A score of 0 indicates there is no match.
+  */
+-static int matchingScore(const QString &word, QStringRef string)
++static int matchingScore(const QString &word, QStringView string)
+ {
+     QVarLengthArray<Match, 16> indexes;
+     if (!matchingIndexes(word, string, indexes))
+@@ -237,7 +237,7 @@ static int matchingScore(const QString &
+     return score;
+ }
+ 
+-static bool matchingRanges(const QString &word, QStringRef string, int offset, RangeSet<int> &result)
++static bool matchingRanges(const QString &word, QStringView string, int offset, RangeSet<int> &result)
+ {
+     QVarLengthArray<Match, 16> indexes;
+     if (!matchingIndexes(word, string, indexes))
+@@ -249,7 +249,7 @@ static bool matchingRanges(const QString
+     return true;
+ }
+ 
+-int matchingScore(const QStringList &words, QStringRef string)
++int matchingScore(const QStringList &words, QStringView string)
+ {
+     const auto fileName = string.mid(string.lastIndexOf(QLatin1Char('/')) + 1);
+ 
+@@ -270,7 +270,7 @@ int matchingScore(const QStringList &wor
+     return totalScore;
+ }
+ 
+-RangeSet<int> matchingRanges(const QStringList &words, QStringRef string)
++RangeSet<int> matchingRanges(const QStringList &words, QStringView string)
+ {
+     const int startOfFileName = string.lastIndexOf(QLatin1Char('/')) + 1;
+     const auto fileName = string.mid(startOfFileName);
+Index: tiled-1.11.2/src/tiled/utils.h
+===================================================================
+--- tiled-1.11.2.orig/src/tiled/utils.h
++++ tiled-1.11.2/src/tiled/utils.h
+@@ -29,8 +29,6 @@
+ 
+ #include <memory>
+ 
+-#include "qtcompat_p.h"
+-
+ class QAction;
+ class QKeyEvent;
+ class QMenu;
+@@ -46,8 +44,8 @@ bool fileNameMatchesNameFilter(const QSt
+                                const QString &nameFilter);
+ QString firstExtension(const QString &nameFilter);
+ 
+-int matchingScore(const QStringList &words, QStringRef string);
+-RangeSet<int> matchingRanges(const QStringList &words, QStringRef string);
++int matchingScore(const QStringList &words, QStringView string);
++RangeSet<int> matchingRanges(const QStringList &words, QStringView string);
+ 
+ QIcon themeIcon(const QString &name);
+ 
+Index: tiled-1.11.2/src/tiledapp/main.cpp
+===================================================================
+--- tiled-1.11.2.orig/src/tiledapp/main.cpp
++++ tiled-1.11.2/src/tiledapp/main.cpp
+@@ -41,8 +41,6 @@
+ #include <QJsonDocument>
+ #include <QtPlugin>
+ 
+-#include "qtcompat_p.h"
+-
+ #include <memory>
+ 
+ #ifdef Q_OS_WIN
+Index: tiled-1.11.2/src/tmxviewer/tmxviewer.qbs
+===================================================================
+--- tiled-1.11.2.orig/src/tmxviewer/tmxviewer.qbs
++++ tiled-1.11.2/src/tmxviewer/tmxviewer.qbs
+@@ -2,7 +2,7 @@ TiledQtGuiApplication {
+     name: "tmxviewer"
+ 
+     Depends { name: "libtiled" }
+-    Depends { name: "Qt"; submodules: ["widgets"]; versionAtLeast: "5.12" }
++    Depends { name: "Qt"; submodules: ["widgets"]; versionAtLeast: "5.15.2" }
+ 
+     cpp.includePaths: ["."]
+ 
+Index: tiled-1.11.2/.github/workflows/packages.yml
+===================================================================
+--- tiled-1.11.2.orig/.github/workflows/packages.yml
++++ tiled-1.11.2/.github/workflows/packages.yml
+@@ -53,7 +53,7 @@ jobs:
+           qt_modules: ""
+           qbs_default_profile: x86_64-linux-gnu-gcc-10
+         - ubuntu_version: 22.04
+-          qt_version: 6.8.1
++          qt_version: 6.8.2
+           qt_version_major: 6
+           qt_arch: linux_gcc_64
+           qt_modules: "qtimageformats"
+@@ -225,7 +225,7 @@ jobs:
+           version_suffix: "10.12-10.15"
+           architectures: x86_64
+           cmake_architectures: x86_64
+-        - qt_version: 6.8.1
++        - qt_version: 6.8.2
+           qt_modules: "qtimageformats"
+           version_suffix: "11+"
+           architectures: x86_64,arm64
+@@ -345,7 +345,7 @@ jobs:
+           mingw_component: tools_mingw
+           mingw_variant: qt.tools.win32_mingw810
+           mingw_dir: mingw810_32
+-        - qt_version: 6.8.1
++        - qt_version: 6.8.2
+           qt_version_major: 6
+           qt_arch: win64_mingw
+           qt_modules: "qtimageformats"

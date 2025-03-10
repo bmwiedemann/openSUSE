@@ -944,4 +944,12 @@
   * Fixed crash when closing the last file with multiple custom properties selected</comment>
     <requestid>1240822</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>f06b25a9056e482c39b86524a688c9bf</srcmd5>
+    <version>1.11.2</version>
+    <time>1741631293</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1251654</requestid>
+  </revision>
 </revisionlist>

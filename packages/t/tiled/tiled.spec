@@ -23,6 +23,8 @@ Summary:        A tilemap editor
 License:        GPL-2.0-or-later
 URL:            https://www.mapeditor.org
 Source:         https://github.com/mapeditor/tiled/archive/refs/tags/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/mapeditor/tiled/pull/4167
+Patch0:         fixed-compile-against-qt-6_8_2.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
