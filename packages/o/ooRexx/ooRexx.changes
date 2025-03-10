@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 27 03:27:41 UTC 2025 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Renaming package to ooRexx to keep in sync with previous package.
+- ooRexx-chdir-setgroups.patch: not needed for version 5.0 codebase
+- set_default_rexx_path.patch: not needed for version 5.0 codebase
+- systemd-fixes.patches: not needed for version 5.0 codebase
+- ooRexx-4.2.0-gcc6.patch: not needed for version 5.0 codebase
+- ooRexx-rpmlintrc: exceptions need to be made due to the way REXX libraries 
+and classes work (they are not devel files).
+-------------------------------------------------------------------
+Mon Dec 30 19:08:40 UTC 2024 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Update to new upstream release 5.0.0:
+  * New Keyword instructions
+  * New Built-in functions
+  * Added notation for namespace and arrays
+  * New Directives (ANNOTATE, ABSTRACT, DELEGATE, CONSTANT, OPTIONS, RESOURCE)
+  * Changes to classes and methods
+  * New functions in Rexxutil library
+  * New environment variables
+-------------------------------------------------------------------
 Mon Feb 26 12:39:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

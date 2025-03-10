@@ -203,4 +203,27 @@ Thus, the -fpermissive flag needs to be added.
     <comment></comment>
     <requestid>1151413</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5771a9c8d2b54dfcad987fe256fcaa1b</srcmd5>
+    <version>5.0.0</version>
+    <time>1741626237</time>
+    <user>anag+factory</user>
+    <comment>- Renaming package to ooRexx to keep in sync with previous package.
+- ooRexx-chdir-setgroups.patch: not needed for version 5.0 codebase
+- set_default_rexx_path.patch: not needed for version 5.0 codebase
+- systemd-fixes.patches: not needed for version 5.0 codebase
+- ooRexx-4.2.0-gcc6.patch: not needed for version 5.0 codebase
+- ooRexx-rpmlintrc: exceptions need to be made due to the way REXX libraries 
+and classes work (they are not devel files).
+- Update to new upstream release 5.0.0:
+  * New Keyword instructions
+  * New Built-in functions
+  * Added notation for namespace and arrays
+  * New Directives (ANNOTATE, ABSTRACT, DELEGATE, CONSTANT, OPTIONS, RESOURCE)
+  * Changes to classes and methods
+  * New functions in Rexxutil library
+  * New environment variables
+</comment>
+    <requestid>1251441</requestid>
+  </revision>
 </revisionlist>
