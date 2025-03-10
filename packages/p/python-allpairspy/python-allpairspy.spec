@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-allpairspy
 Version:        2.5.1
 Release:        0
