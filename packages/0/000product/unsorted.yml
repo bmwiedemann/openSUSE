@@ -3446,7 +3446,6 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
-  - distribution-logos-openSUSE-Aeon 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -4623,6 +4622,7 @@ unsorted:
   - framel-devel 
   - framework-inputmodule-control 
   - framework-inputmodule-udev-rules 
+  - framework-laptop-kmp-default 
   - frameworkintegration-devel 
   - frameworkintegration-plugin 
   - francis 
@@ -15736,9 +15736,7 @@ unsorted:
   - libpython3_12-1_0 
   - libpython3_12-1_0-32bit 
   - libpython3_12-1_0-x86-64-v3 
-  - libpython3_13-1_0 
   - libpython3_13-1_0-32bit 
-  - libpython3_13-1_0-x86-64-v3 
   - libpython3_13t-1_0 
   - libpython3_14-1_0 
   - libpython3_14-1_0-x86-64-v3 
@@ -16222,7 +16220,7 @@ unsorted:
   - librmt-devel-doc 
   - librnnoise0 
   - librnp0 
-  - librocksdb9 
+  - librocksdb10 
   - librocsgraphtheory0 
   - librpma0 
   - librrd8 
@@ -16304,9 +16302,9 @@ unsorted:
   - libscalapack2_2_2_0-gnu-openmpi5-hpc-devel 
   - libscalapack2_2_2_0-gnu-openmpi5-hpc-devel-static 
   - libscamperctrl-devel 
-  - libscamperctrl2 
+  - libscamperctrl4 
   - libscamperfile-devel 
-  - libscamperfile9 
+  - libscamperfile12 
   - libscca-devel 
   - libscca-tools 
   - libscca1 
@@ -24418,6 +24416,7 @@ unsorted:
   - python311-LTTL 
   - python311-Levenshtein 
   - python311-Logbook 
+  - python311-Mako 
   - python311-Markdown 
   - python311-MarkupPy 
   - python311-Markups 
@@ -24440,6 +24439,7 @@ unsorted:
   - python311-PeachPy 
   - python311-PeakUtils 
   - python311-Pebble 
+  - python311-Pillow 
   - python311-Pillow-tk 
   - python311-Pint 
   - python311-Protego 
@@ -24460,6 +24460,7 @@ unsorted:
   - python311-PyHamcrest 
   - python311-PyICU 
   - python311-PyInstaller 
+  - python311-PyJWT 
   - python311-PyKCS11 
   - python311-PyKMIP 
   - python311-PyLaTeX 
@@ -24519,6 +24520,7 @@ unsorted:
   - python311-Routes 
   - python311-Rtree 
   - python311-SPARQLWrapper 
+  - python311-SQLAlchemy 
   - python311-SQLAlchemy-Utils 
   - python311-SQLAlchemy1 
   - python311-Scrapy 
@@ -24620,6 +24622,7 @@ unsorted:
   - python311-ajsonrpc 
   - python311-akismet 
   - python311-alabaster 
+  - python311-alembic 
   - python311-aliyun-python-sdk-alimt 
   - python311-aliyun-python-sdk-buss 
   - python311-aliyun-python-sdk-core 
@@ -24663,7 +24666,11 @@ unsorted:
   - python311-arabic-reshaper 
   - python311-archmage 
   - python311-arf 
+  - python311-argcomplete 
   - python311-argh 
+  - python311-argon2-cffi 
+  - python311-argon2-cffi-bindings 
+  - python311-argparse-manpage 
   - python311-argparse_addons 
   - python311-arrow 
   - python311-arviz 
@@ -25132,6 +25139,7 @@ unsorted:
   - python311-bleak 
   - python311-blessed 
   - python311-blessings 
+  - python311-blinker 
   - python311-blockdiag 
   - python311-blosc 
   - python311-blosc2 
@@ -25167,6 +25175,7 @@ unsorted:
   - python311-buttplug 
   - python311-bytecode 
   - python311-cPyparsing 
+  - python311-cached-property 
   - python311-cachelib 
   - python311-cachetools 
   - python311-cachey 
@@ -25258,6 +25267,7 @@ unsorted:
   - python311-cmapfile 
   - python311-cmarkgfm 
   - python311-cmd2 
+  - python311-cmdln 
   - python311-cmyt 
   - python311-cogapp 
   - python311-coincidence 
@@ -25279,6 +25289,7 @@ unsorted:
   - python311-compizconfig 
   - python311-compressed_rtf 
   - python311-concurrentloghandler 
+  - python311-configobj 
   - python311-configshell-fb 
   - python311-confluent-kafka 
   - python311-confpy 
@@ -25321,6 +25332,7 @@ unsorted:
   - python311-css-parser 
   - python311-csscompressor 
   - python311-cssmin 
+  - python311-cssselect 
   - python311-cssselect2 
   - python311-cssutils 
   - python311-cstruct 
@@ -25363,6 +25375,7 @@ unsorted:
   - python311-dbf 
   - python311-dbfread 
   - python311-dbus-deviation 
+  - python311-dbus-python 
   - python311-dbus-python-devel 
   - python311-dbus_fast 
   - python311-dbus_next 
@@ -25372,6 +25385,7 @@ unsorted:
   - python311-deap 
   - python311-debugpy 
   - python311-decopatch 
+  - python311-decorator 
   - python311-deepdiff 
   - python311-deepmerge 
   - python311-defcon 
@@ -25621,6 +25635,7 @@ unsorted:
   - python311-extension-helpers 
   - python311-extra-platforms 
   - python311-extract-msg 
+  - python311-extras 
   - python311-extratools 
   - python311-eyed3 
   - python311-ezdxf 
@@ -25760,7 +25775,6 @@ unsorted:
   - python311-git-url-parse 
   - python311-gitdb 
   - python311-github3.py 
-  - python311-gitlint 
   - python311-glad2 
   - python311-glean 
   - python311-glean-parser 
@@ -25769,6 +25783,7 @@ unsorted:
   - python311-glucat 
   - python311-gmpy2 
   - python311-gns3fy 
+  - python311-gobject-Gdk 
   - python311-gobject-devel 
   - python311-google-ai-generativelanguage 
   - python311-google-api-core 
@@ -25803,6 +25818,7 @@ unsorted:
   - python311-googleapis-common-protos 
   - python311-googlemaps 
   - python311-gp-libs 
+  - python311-gpg 
   - python311-gphoto2 
   - python311-gprof2dot 
   - python311-gps3 
@@ -25825,6 +25841,7 @@ unsorted:
   - python311-gscholar 
   - python311-gsm0338 
   - python311-gspread 
+  - python311-gssapi 
   - python311-gst 
   - python311-gsw 
   - python311-guessit 
@@ -26032,16 +26049,20 @@ unsorted:
   - python311-jsondiff 
   - python311-jsonformatter 
   - python311-jsonlines 
+  - python311-jsonpatch 
   - python311-jsonpath-ng 
   - python311-jsonpath-python 
   - python311-jsonpath-rw 
   - python311-jsonpickle 
+  - python311-jsonpointer 
   - python311-jsonref 
   - python311-jsonrpclib-pelix 
   - python311-jsons 
+  - python311-jsonschema 
   - python311-jsonschema-format 
   - python311-jsonschema-format-nongpl 
   - python311-jsonschema-path 
+  - python311-jsonschema-specifications 
   - python311-jsonslicer 
   - python311-jsonxs 
   - python311-junit-xml 
@@ -26082,6 +26103,7 @@ unsorted:
   - python311-kasa 
   - python311-kazoo 
   - python311-kerberos 
+  - python311-keylime 
   - python311-keyring 
   - python311-keyring-keyutils 
   - python311-keyring-pass 
@@ -26117,6 +26139,7 @@ unsorted:
   - python311-langfuse 
   - python311-langsmith 
   - python311-langtable 
+  - python311-lark 
   - python311-latexcodec 
   - python311-launchpadlib 
   - python311-lazr.config 
@@ -26127,6 +26150,7 @@ unsorted:
   - python311-lazy-loader 
   - python311-lazy-object-proxy 
   - python311-lazyarray 
+  - python311-ldap 
   - python311-ldap3 
   - python311-ldapdomaindump 
   - python311-ldappool 
@@ -26193,6 +26217,7 @@ unsorted:
   - python311-libusbsio 
   - python311-libversion 
   - python311-libvhdi 
+  - python311-libvirt-python 
   - python311-libvmdk 
   - python311-libvsapm 
   - python311-libvsgpt 
@@ -26200,6 +26225,7 @@ unsorted:
   - python311-libvslvm 
   - python311-libvsmbr 
   - python311-libwrc 
+  - python311-libxml2 
   - python311-license-expression 
   - python311-ligo-lw 
   - python311-ligo-segments 
@@ -26213,6 +26239,7 @@ unsorted:
   - python311-linode-cli 
   - python311-linstor 
   - python311-linstor-client 
+  - python311-linux-procfs 
   - python311-lit 
   - python311-littleutils 
   - python311-livereload 
@@ -26231,6 +26258,7 @@ unsorted:
   - python311-lscsoft-glue 
   - python311-lsprotocol 
   - python311-lupa 
+  - python311-lxml 
   - python311-lxml-devel 
   - python311-lxml_html_clean 
   - python311-ly 
@@ -26271,6 +26299,7 @@ unsorted:
   - python311-matplotlib-wx 
   - python311-matrix-nio 
   - python311-matrix_common 
+  - python311-maturin 
   - python311-mautrix 
   - python311-maxminddb 
   - python311-mbstrdecoder 
@@ -26366,6 +26395,7 @@ unsorted:
   - python311-mypy_extensions 
   - python311-mysql-connector-python 
   - python311-mysql-to-sqlite3 
+  - python311-mysqlclient 
   - python311-myst-parser 
   - python311-nagiosplugin 
   - python311-named 
@@ -26398,10 +26428,12 @@ unsorted:
   - python311-net-snmp 
   - python311-netCDF4 
   - python311-nethsm 
+  - python311-netifaces 
   - python311-netmiko 
   - python311-netpbmfile 
   - python311-netutils 
   - python311-networkx 
+  - python311-nftables 
   - python311-nh3 
   - python311-nibabel 
   - python311-nilearn 
@@ -26420,6 +26452,7 @@ unsorted:
   - python311-nose2 
   - python311-notebook 
   - python311-notebook-shim 
+  - python311-notify2 
   - python311-nox 
   - python311-npTDMS 
   - python311-nptyping 
@@ -26446,6 +26479,7 @@ unsorted:
   - python311-nvim-remote 
   - python311-nwdiag 
   - python311-o2sclpy 
+  - python311-oauthlib 
   - python311-objgraph 
   - python311-obs-service-update_changelog 
   - python311-oci-sdk 
@@ -26457,6 +26491,7 @@ unsorted:
   - python311-oiffile 
   - python311-okta 
   - python311-oktaloginwrapper 
+  - python311-olefile 
   - python311-oletools 
   - python311-ollama 
   - python311-olm 
@@ -26562,6 +26597,7 @@ unsorted:
   - python311-parver 
   - python311-pass-git-helper 
   - python311-passivetotal 
+  - python311-passlib 
   - python311-pastel 
   - python311-pastream 
   - python311-patatt 
@@ -26652,6 +26688,7 @@ unsorted:
   - python311-poetry-dynamic-versioning 
   - python311-poetry-plugin-export 
   - python311-polib 
+  - python311-policycoreutils 
   - python311-pony 
   - python311-pooch 
   - python311-pook 
@@ -26783,6 +26820,7 @@ unsorted:
   - python311-pycryptodome 
   - python311-pycryptodomex 
   - python311-pyct 
+  - python311-pycups 
   - python311-pycxx 
   - python311-pycxx-devel 
   - python311-pydantic 
@@ -26819,7 +26857,9 @@ unsorted:
   - python311-pygaljs 
   - python311-pygame 
   - python311-pygame-devel 
+  - python311-pygdbmi 
   - python311-pygerrit2 
+  - python311-pygit2 
   - python311-pyglet 
   - python311-pygls 
   - python311-pygments-ansi-color 
@@ -26924,16 +26964,17 @@ unsorted:
   - python311-pyroma 
   - python311-pyroomacoustics 
   - python311-pyroute2 
+  - python311-pyrsistent 
   - python311-pysaml2 
   - python311-pyscard 
   - python311-pyscreenshot 
   - python311-pysendfile 
+  - python311-pyserial 
   - python311-pyshark 
   - python311-pyshould 
   - python311-pyshp 
-  - python311-pyside6 
-  - python311-pyside6-devel 
   - python311-pysmb 
+  - python311-pysmbc 
   - python311-pysmi 
   - python311-pysndfile 
   - python311-pysnmp 
@@ -27073,6 +27114,7 @@ unsorted:
   - python311-python-crontab 
   - python311-python-daemon 
   - python311-python-datamatrix 
+  - python311-python-dateutil 
   - python311-python-dbusmock 
   - python311-python-debian 
   - python311-python-docs-theme 
@@ -27124,6 +27166,7 @@ unsorted:
   - python311-python-redmine 
   - python311-python-rpm-spec 
   - python311-python-rtmidi 
+  - python311-python-slugify 
   - python311-python-snappy 
   - python311-python-socketio 
   - python311-python-socks 
@@ -27157,6 +27200,7 @@ unsorted:
   - python311-pytzdata 
   - python311-pyu2f 
   - python311-pyuca 
+  - python311-pyudev 
   - python311-pyupgrade 
   - python311-pyusb 
   - python311-pyux 
@@ -27237,6 +27281,7 @@ unsorted:
   - python311-redfish 
   - python311-redis 
   - python311-reedsolo 
+  - python311-referencing 
   - python311-regex 
   - python311-relatorio 
   - python311-releases 
@@ -27254,6 +27299,7 @@ unsorted:
   - python311-requests-file 
   - python311-requests-ftp 
   - python311-requests-futures 
+  - python311-requests-gssapi 
   - python311-requests-hawk 
   - python311-requests-kerberos 
   - python311-requests-mock 
@@ -27296,6 +27342,7 @@ unsorted:
   - python311-roman 
   - python311-rope 
   - python311-rpcq 
+  - python311-rpds-py 
   - python311-rply 
   - python311-rpm-spec-language-server 
   - python311-rpmfile 
@@ -27345,10 +27392,12 @@ unsorted:
   - python311-scipy-gnu-hpc 
   - python311-scipy_1_15_1-gnu-hpc 
   - python311-scitokens 
+  - python311-scour 
   - python311-scp 
   - python311-screeninfo 
   - python311-screenplain 
   - python311-scripttest 
+  - python311-scrypt 
   - python311-sdjson 
   - python311-sdnotify 
   - python311-seaborn 
@@ -27357,12 +27406,15 @@ unsorted:
   - python311-segno 
   - python311-selection 
   - python311-selenium 
+  - python311-selinux 
+  - python311-semanage 
   - python311-semantic_version 
   - python311-semver 
   - python311-sentry-sdk 
   - python311-seqdiag 
   - python311-serpent 
   - python311-serverfiles 
+  - python311-setools 
   - python311-setproctitle 
   - python311-setuptools-declarative-requirements 
   - python311-setuptools-gettext 
@@ -27381,8 +27433,6 @@ unsorted:
   - python311-shaptools 
   - python311-shellingham 
   - python311-sherpa 
-  - python311-shiboken6 
-  - python311-shiboken6-devel 
   - python311-shijian 
   - python311-shinyutils 
   - python311-shippinglabel 
@@ -27410,6 +27460,7 @@ unsorted:
   - python311-sip4-devel 
   - python311-sip6-devel 
   - python311-siphashc 
+  - python311-six 
   - python311-sklearn-pandas 
   - python311-skyfield 
   - python311-slack-sdk 
@@ -27549,7 +27600,6 @@ unsorted:
   - python311-svglib 
   - python311-svgpathtools 
   - python311-svgwrite 
-  - python311-svm 
   - python311-svneverever 
   - python311-swagger-spec-validator 
   - python311-swapper 
@@ -27594,6 +27644,7 @@ unsorted:
   - python311-testscenarios 
   - python311-testsuite 
   - python311-testtools 
+  - python311-text-unidecode 
   - python311-textX 
   - python311-textdistance 
   - python311-textfsm 
@@ -31656,7 +31707,6 @@ unsorted:
   - python312-zxcvbn 
   - python312-zxcvbn-rs-py 
   - python312-zypp-plugin 
-  - python313 
   - python313-32bit 
   - python313-APScheduler 
   - python313-AnyQt 
@@ -31669,7 +31719,6 @@ unsorted:
   - python313-Beaker 
   - python313-BitVector 
   - python313-Bottleneck 
-  - python313-Brotli 
   - python313-CCColUtils 
   - python313-CacheControl 
   - python313-CairoSVG 
@@ -31736,7 +31785,6 @@ unsorted:
   - python313-HepMC 
   - python313-IMAPClient 
   - python313-JPype1 
-  - python313-Jinja2 
   - python313-Js2Py 
   - python313-JsonWeb 
   - python313-Kajiki 
@@ -31747,10 +31795,8 @@ unsorted:
   - python313-Levenshtein 
   - python313-Logbook 
   - python313-M2Crypto 
-  - python313-Mako 
   - python313-Markdown 
   - python313-MarkupPy 
-  - python313-MarkupSafe 
   - python313-Markups 
   - python313-Mathics-Scanner 
   - python313-MechanicalSoup 
@@ -31769,7 +31815,6 @@ unsorted:
   - python313-PeachPy 
   - python313-PeakUtils 
   - python313-Pebble 
-  - python313-Pillow 
   - python313-Pillow-tk 
   - python313-Pint 
   - python313-Protego 
@@ -31790,7 +31835,6 @@ unsorted:
   - python313-PyHamcrest 
   - python313-PyICU 
   - python313-PyInstaller 
-  - python313-PyJWT 
   - python313-PyKCS11 
   - python313-PyKMIP 
   - python313-PyLaTeX 
@@ -31829,15 +31873,12 @@ unsorted:
   - python313-PyRect 
   - python313-PySDL2 
   - python313-PyScreeze 
-  - python313-PySocks 
   - python313-PyTrie 
   - python313-PyTweening 
   - python313-PyVirtualDisplay 
   - python313-PyWavelets 
   - python313-PyWebDAV3-GNUHealth 
   - python313-PyX 
-  - python313-PyYAML 
-  - python313-Pygments 
   - python313-Pympler 
   - python313-Pyphen 
   - python313-Pyro5 
@@ -31853,7 +31894,6 @@ unsorted:
   - python313-Routes 
   - python313-Rtree 
   - python313-SPARQLWrapper 
-  - python313-SQLAlchemy 
   - python313-SQLAlchemy-Utils 
   - python313-SQLAlchemy1 
   - python313-Scrapy 
@@ -31958,7 +31998,6 @@ unsorted:
   - python313-ajsonrpc 
   - python313-akismet 
   - python313-alabaster 
-  - python313-alembic 
   - python313-aliyun-python-sdk-alimt 
   - python313-aliyun-python-sdk-buss 
   - python313-aliyun-python-sdk-core 
@@ -32003,11 +32042,7 @@ unsorted:
   - python313-arabic-reshaper 
   - python313-archmage 
   - python313-arf 
-  - python313-argcomplete 
   - python313-argh 
-  - python313-argon2-cffi 
-  - python313-argon2-cffi-bindings 
-  - python313-argparse-manpage 
   - python313-argparse_addons 
   - python313-arrow 
   - python313-arviz 
@@ -32049,7 +32084,6 @@ unsorted:
   - python313-atpublic 
   - python313-atspi 
   - python313-attr 
-  - python313-attrs 
   - python313-aubio 
   - python313-audible 
   - python313-audio-degrader 
@@ -32445,12 +32479,9 @@ unsorted:
   - python313-backports.tarfile 
   - python313-backrefs 
   - python313-baron 
-  - python313-base 
   - python313-base-32bit 
-  - python313-base-x86-64-v3 
   - python313-base58 
   - python313-bashate 
-  - python313-bcrypt 
   - python313-beartype 
   - python313-beautifulsoup4 
   - python313-before-after 
@@ -32481,7 +32512,6 @@ unsorted:
   - python313-bleak 
   - python313-blessed 
   - python313-blessings 
-  - python313-blinker 
   - python313-blockdiag 
   - python313-blosc 
   - python313-blosc2 
@@ -32516,7 +32546,6 @@ unsorted:
   - python313-buttplug 
   - python313-bytecode 
   - python313-cPyparsing 
-  - python313-cached-property 
   - python313-cachelib 
   - python313-cachetools 
   - python313-cachey 
@@ -32559,12 +32588,10 @@ unsorted:
   - python313-certbot-dns-rfc2136 
   - python313-certbot-dns-route53 
   - python313-certbot-nginx 
-  - python313-certifi 
   - python313-certipy 
   - python313-certomancer 
   - python313-certstream 
   - python313-certvalidator 
-  - python313-cffi 
   - python313-cfgdiff 
   - python313-cfgv 
   - python313-cfn-lint 
@@ -32572,7 +32599,6 @@ unsorted:
   - python313-cftime 
   - python313-changelog-chug 
   - python313-chardet 
-  - python313-charset-normalizer 
   - python313-chartify 
   - python313-check-manifest 
   - python313-checkdmarc 
@@ -32612,7 +32638,6 @@ unsorted:
   - python313-cmapfile 
   - python313-cmarkgfm 
   - python313-cmd2 
-  - python313-cmdln 
   - python313-cmyt 
   - python313-cogapp 
   - python313-coincidence 
@@ -32634,7 +32659,6 @@ unsorted:
   - python313-compizconfig 
   - python313-compressed_rtf 
   - python313-concurrentloghandler 
-  - python313-configobj 
   - python313-configshell-fb 
   - python313-confluent-kafka 
   - python313-confpy 
@@ -32674,13 +32698,11 @@ unsorted:
   - python313-cron-descriptor 
   - python313-croniter 
   - python313-crontab 
-  - python313-cryptography 
   - python313-cryptography-vectors 
   - python313-css-html-js-minify 
   - python313-css-parser 
   - python313-csscompressor 
   - python313-cssmin 
-  - python313-cssselect 
   - python313-cssselect2 
   - python313-cssutils 
   - python313-cstruct 
@@ -32688,7 +32710,6 @@ unsorted:
   - python313-ctranslate2 
   - python313-ctypesgen 
   - python313-curlylint 
-  - python313-curses 
   - python313-curtsies 
   - python313-cwcwidth 
   - python313-cymem 
@@ -32722,9 +32743,7 @@ unsorted:
   - python313-datrie 
   - python313-dbf 
   - python313-dbfread 
-  - python313-dbm 
   - python313-dbus-deviation 
-  - python313-dbus-python 
   - python313-dbus-python-devel 
   - python313-dbus_fast 
   - python313-dbus_next 
@@ -32734,7 +32753,6 @@ unsorted:
   - python313-deap 
   - python313-debugpy 
   - python313-decopatch 
-  - python313-decorator 
   - python313-deepdiff 
   - python313-deepmerge 
   - python313-defcon 
@@ -32772,7 +32790,6 @@ unsorted:
   - python313-distlib 
   - python313-distorm3 
   - python313-distributed 
-  - python313-distro 
   - python313-distroinfo 
   - python313-distutils-extra 
   - python313-dj-database-url 
@@ -32985,7 +33002,6 @@ unsorted:
   - python313-extension-helpers 
   - python313-extra-platforms 
   - python313-extract-msg 
-  - python313-extras 
   - python313-extratools 
   - python313-eyed3 
   - python313-ezdxf 
@@ -33126,6 +33142,7 @@ unsorted:
   - python313-git-url-parse 
   - python313-gitdb 
   - python313-github3.py 
+  - python313-gitlint 
   - python313-glad2 
   - python313-glean 
   - python313-glean-parser 
@@ -33134,9 +33151,6 @@ unsorted:
   - python313-glucat 
   - python313-gmpy2 
   - python313-gns3fy 
-  - python313-gobject 
-  - python313-gobject-Gdk 
-  - python313-gobject-cairo 
   - python313-gobject-devel 
   - python313-google-ai-generativelanguage 
   - python313-google-api-core 
@@ -33171,7 +33185,6 @@ unsorted:
   - python313-googleapis-common-protos 
   - python313-googlemaps 
   - python313-gp-libs 
-  - python313-gpg 
   - python313-gphoto2 
   - python313-gprof2dot 
   - python313-gps3 
@@ -33183,7 +33196,6 @@ unsorted:
   - python313-graphql-core 
   - python313-graphql-relay 
   - python313-graphviz 
-  - python313-greenlet 
   - python313-greenlet-devel 
   - python313-grimoirelab-toolkit 
   - python313-grpc-google-iam-v1 
@@ -33195,7 +33207,6 @@ unsorted:
   - python313-gscholar 
   - python313-gsm0338 
   - python313-gspread 
-  - python313-gssapi 
   - python313-gst 
   - python313-gsw 
   - python313-guessit 
@@ -33209,7 +33220,6 @@ unsorted:
   - python313-gwyfile 
   - python313-gyp 
   - python313-h11 
-  - python313-h2 
   - python313-h5netcdf 
   - python313-h5py 
   - python313-h5py-openmpi4 
@@ -33248,7 +33258,6 @@ unsorted:
   - python313-holidays 
   - python313-holoviews 
   - python313-hotdoc 
-  - python313-hpack 
   - python313-hsluv 
   - python313-hstspreload 
   - python313-html2text 
@@ -33280,7 +33289,6 @@ unsorted:
   - python313-hvplot 
   - python313-hyfetch 
   - python313-hypercorn 
-  - python313-hyperframe 
   - python313-hyperlink 
   - python313-hypothesis 
   - python313-hypothesis-fspaths 
@@ -33291,7 +33299,6 @@ unsorted:
   - python313-id 
   - python313-identify 
   - python313-idle 
-  - python313-idna 
   - python313-ifaddr 
   - python313-ifconfig-parser 
   - python313-igwn-auth-utils 
@@ -33410,20 +33417,16 @@ unsorted:
   - python313-jsondiff 
   - python313-jsonformatter 
   - python313-jsonlines 
-  - python313-jsonpatch 
   - python313-jsonpath-ng 
   - python313-jsonpath-python 
   - python313-jsonpath-rw 
   - python313-jsonpickle 
-  - python313-jsonpointer 
   - python313-jsonref 
   - python313-jsonrpclib-pelix 
   - python313-jsons 
-  - python313-jsonschema 
   - python313-jsonschema-format 
   - python313-jsonschema-format-nongpl 
   - python313-jsonschema-path 
-  - python313-jsonschema-specifications 
   - python313-jsonslicer 
   - python313-jsonxs 
   - python313-junit-xml 
@@ -33464,7 +33467,6 @@ unsorted:
   - python313-kasa 
   - python313-kazoo 
   - python313-kerberos 
-  - python313-keylime 
   - python313-keyring 
   - python313-keyring-keyutils 
   - python313-keyring-pass 
@@ -33500,7 +33502,6 @@ unsorted:
   - python313-langfuse 
   - python313-langsmith 
   - python313-langtable 
-  - python313-lark 
   - python313-latexcodec 
   - python313-launchpadlib 
   - python313-lazr.config 
@@ -33511,7 +33512,6 @@ unsorted:
   - python313-lazy-loader 
   - python313-lazy-object-proxy 
   - python313-lazyarray 
-  - python313-ldap 
   - python313-ldap3 
   - python313-ldapdomaindump 
   - python313-ldappool 
@@ -33578,7 +33578,6 @@ unsorted:
   - python313-libusbsio 
   - python313-libversion 
   - python313-libvhdi 
-  - python313-libvirt-python 
   - python313-libvmdk 
   - python313-libvsapm 
   - python313-libvsgpt 
@@ -33586,7 +33585,6 @@ unsorted:
   - python313-libvslvm 
   - python313-libvsmbr 
   - python313-libwrc 
-  - python313-libxml2 
   - python313-license-expression 
   - python313-ligo-lw 
   - python313-ligo-segments 
@@ -33600,7 +33598,6 @@ unsorted:
   - python313-linode-cli 
   - python313-linstor 
   - python313-linstor-client 
-  - python313-linux-procfs 
   - python313-lit 
   - python313-littleutils 
   - python313-livereload 
@@ -33620,7 +33617,6 @@ unsorted:
   - python313-lscsoft-glue 
   - python313-lsprotocol 
   - python313-lupa 
-  - python313-lxml 
   - python313-lxml-devel 
   - python313-lxml_html_clean 
   - python313-ly 
@@ -33661,7 +33657,6 @@ unsorted:
   - python313-matplotlib-wx 
   - python313-matrix-nio 
   - python313-matrix_common 
-  - python313-maturin 
   - python313-mautrix 
   - python313-maxminddb 
   - python313-mbstrdecoder 
@@ -33760,7 +33755,6 @@ unsorted:
   - python313-mypy_extensions 
   - python313-mysql-connector-python 
   - python313-mysql-to-sqlite3 
-  - python313-mysqlclient 
   - python313-myst-parser 
   - python313-nagiosplugin 
   - python313-named 
@@ -33794,12 +33788,10 @@ unsorted:
   - python313-netCDF4 
   - python313-netaddr 
   - python313-nethsm 
-  - python313-netifaces 
   - python313-netmiko 
   - python313-netpbmfile 
   - python313-netutils 
   - python313-networkx 
-  - python313-nftables 
   - python313-nh3 
   - python313-nibabel 
   - python313-nilearn 
@@ -33827,7 +33819,6 @@ unsorted:
   - python313-nose2 
   - python313-notebook 
   - python313-notebook-shim 
-  - python313-notify2 
   - python313-nox 
   - python313-npTDMS 
   - python313-nptyping 
@@ -33841,7 +33832,6 @@ unsorted:
   - python313-numcodecs 
   - python313-numericalunits 
   - python313-numexpr 
-  - python313-numpy 
   - python313-numpy-devel 
   - python313-numpy-gnu-hpc 
   - python313-numpy-gnu-hpc-devel 
@@ -33855,7 +33845,6 @@ unsorted:
   - python313-nvim-remote 
   - python313-nwdiag 
   - python313-o2sclpy 
-  - python313-oauthlib 
   - python313-objgraph 
   - python313-obs-service-update_changelog 
   - python313-oci-sdk 
@@ -33867,7 +33856,6 @@ unsorted:
   - python313-oiffile 
   - python313-okta 
   - python313-oktaloginwrapper 
-  - python313-olefile 
   - python313-oletools 
   - python313-ollama 
   - python313-olm 
@@ -33921,7 +33909,6 @@ unsorted:
   - python313-overrides 
   - python313-ovirt-engine-sdk 
   - python313-pa-ringbuffer 
-  - python313-packaging 
   - python313-paginate 
   - python313-paho-mqtt 
   - python313-pako 
@@ -33974,7 +33961,6 @@ unsorted:
   - python313-parver 
   - python313-pass-git-helper 
   - python313-passivetotal 
-  - python313-passlib 
   - python313-pastel 
   - python313-pastream 
   - python313-patatt 
@@ -34014,7 +34000,6 @@ unsorted:
   - python313-persistent 
   - python313-persistent-devel 
   - python313-petact 
-  - python313-pexpect 
   - python313-pgmagick 
   - python313-phabricator 
   - python313-phonenumbers 
@@ -34032,7 +34017,6 @@ unsorted:
   - python313-pilkit 
   - python313-pillow-heif 
   - python313-pingparsing 
-  - python313-pip 
   - python313-pip-api 
   - python313-pip-licenses 
   - python313-pip-requirements-parser 
@@ -34067,7 +34051,6 @@ unsorted:
   - python313-poetry-dynamic-versioning 
   - python313-poetry-plugin-export 
   - python313-polib 
-  - python313-policycoreutils 
   - python313-pooch 
   - python313-pook 
   - python313-poppler-qt5 
@@ -34116,7 +34099,6 @@ unsorted:
   - python313-protonvpn-nm-lib 
   - python313-proxmoxer 
   - python313-pscript 
-  - python313-psutil 
   - python313-psychtoolbox 
   - python313-psycopg 
   - python313-psycopg-c 
@@ -34126,7 +34108,6 @@ unsorted:
   - python313-psygnal 
   - python313-ptpython 
   - python313-ptpython-ptipython 
-  - python313-ptyprocess 
   - python313-publicsuffix2 
   - python313-publicsuffixlist 
   - python313-pudb 
@@ -34159,7 +34140,6 @@ unsorted:
   - python313-pyLibravatar 
   - python313-pyModis 
   - python313-pyOCD 
-  - python313-pyOpenSSL 
   - python313-pyPEG2 
   - python313-pyRFC3339 
   - python313-pyRXP 
@@ -34172,8 +34152,6 @@ unsorted:
   - python313-pyaml 
   - python313-pyarrow 
   - python313-pyarrow-devel 
-  - python313-pyasn1 
-  - python313-pyasn1-modules 
   - python313-pyasyncore 
   - python313-pybars3 
   - python313-pybcj 
@@ -34186,7 +34164,6 @@ unsorted:
   - python313-pybluez 
   - python313-pybtex 
   - python313-pybugz 
-  - python313-pycairo 
   - python313-pycairo-devel 
   - python313-pycapnp 
   - python313-pycares 
@@ -34200,14 +34177,11 @@ unsorted:
   - python313-pycognito 
   - python313-pycomposefile 
   - python313-pycountry 
-  - python313-pycparser 
   - python313-pycrdt 
   - python313-pycrdt-websocket 
   - python313-pycryptodome 
   - python313-pycryptodomex 
   - python313-pyct 
-  - python313-pycups 
-  - python313-pycurl 
   - python313-pycxx 
   - python313-pycxx-devel 
   - python313-pydantic 
@@ -34244,9 +34218,7 @@ unsorted:
   - python313-pygaljs 
   - python313-pygame 
   - python313-pygame-devel 
-  - python313-pygdbmi 
   - python313-pygerrit2 
-  - python313-pygit2 
   - python313-pyglet 
   - python313-pygls 
   - python313-pygments-ansi-color 
@@ -34257,7 +34229,6 @@ unsorted:
   - python313-pyhcl 
   - python313-pyhibp 
   - python313-pyicumessageformat 
-  - python313-pyinotify 
   - python313-pyinstaller-hooks-contrib 
   - python313-pyipp 
   - python313-pyjavaproperties 
@@ -34352,17 +34323,16 @@ unsorted:
   - python313-pyroma 
   - python313-pyroomacoustics 
   - python313-pyroute2 
-  - python313-pyrsistent 
   - python313-pysaml2 
   - python313-pyscard 
   - python313-pyscreenshot 
   - python313-pysendfile 
-  - python313-pyserial 
   - python313-pyshark 
   - python313-pyshould 
   - python313-pyshp 
+  - python313-pyside6 
+  - python313-pyside6-devel 
   - python313-pysmb 
-  - python313-pysmbc 
   - python313-pysmi 
   - python313-pysndfile 
   - python313-pysnmp 
@@ -34501,7 +34471,6 @@ unsorted:
   - python313-python-crontab 
   - python313-python-daemon 
   - python313-python-datamatrix 
-  - python313-python-dateutil 
   - python313-python-dbusmock 
   - python313-python-debian 
   - python313-python-docs-theme 
@@ -34553,7 +34522,6 @@ unsorted:
   - python313-python-redmine 
   - python313-python-rpm-spec 
   - python313-python-rtmidi 
-  - python313-python-slugify 
   - python313-python-snappy 
   - python313-python-socketio 
   - python313-python-socks 
@@ -34587,7 +34555,6 @@ unsorted:
   - python313-pytzdata 
   - python313-pyu2f 
   - python313-pyuca 
-  - python313-pyudev 
   - python313-pyupgrade 
   - python313-pyusb 
   - python313-pyux 
@@ -34606,7 +34573,6 @@ unsorted:
   - python313-pyxdg 
   - python313-pyxlsb 
   - python313-pyyaml_env_tag 
-  - python313-pyzmq 
   - python313-pyzmq-devel 
   - python313-pyzo 
   - python313-pyzstd 
@@ -34669,7 +34635,6 @@ unsorted:
   - python313-redfish 
   - python313-redis 
   - python313-reedsolo 
-  - python313-referencing 
   - python313-regex 
   - python313-relatorio 
   - python313-releases 
@@ -34680,14 +34645,12 @@ unsorted:
   - python313-repoze.sphinx.autointerface 
   - python313-reproject 
   - python313-requestbuilder 
-  - python313-requests 
   - python313-requests-aws 
   - python313-requests-cache 
   - python313-requests-download 
   - python313-requests-file 
   - python313-requests-ftp 
   - python313-requests-futures 
-  - python313-requests-gssapi 
   - python313-requests-hawk 
   - python313-requests-kerberos 
   - python313-requests-mock 
@@ -34731,9 +34694,7 @@ unsorted:
   - python313-roman 
   - python313-rope 
   - python313-rpcq 
-  - python313-rpds-py 
   - python313-rply 
-  - python313-rpm 
   - python313-rpm-spec-language-server 
   - python313-rpmfile 
   - python313-rpy2 
@@ -34783,12 +34744,10 @@ unsorted:
   - python313-scipy-gnu-hpc 
   - python313-scipy_1_15_1-gnu-hpc 
   - python313-scitokens 
-  - python313-scour 
   - python313-scp 
   - python313-screeninfo 
   - python313-screenplain 
   - python313-scripttest 
-  - python313-scrypt 
   - python313-sdjson 
   - python313-sdnotify 
   - python313-seaborn 
@@ -34797,8 +34756,6 @@ unsorted:
   - python313-segno 
   - python313-selection 
   - python313-selenium 
-  - python313-selinux 
-  - python313-semanage 
   - python313-semantic_version 
   - python313-semver 
   - python313-sentry-sdk 
@@ -34806,9 +34763,7 @@ unsorted:
   - python313-serpent 
   - python313-serverfiles 
   - python313-service_identity 
-  - python313-setools 
   - python313-setproctitle 
-  - python313-setuptools 
   - python313-setuptools-declarative-requirements 
   - python313-setuptools-gettext 
   - python313-setuptools-git 
@@ -34826,6 +34781,8 @@ unsorted:
   - python313-shaptools 
   - python313-shellingham 
   - python313-sherpa 
+  - python313-shiboken6 
+  - python313-shiboken6-devel 
   - python313-shijian 
   - python313-shinyutils 
   - python313-shippinglabel 
@@ -34854,7 +34811,6 @@ unsorted:
   - python313-sip4-devel 
   - python313-sip6-devel 
   - python313-siphashc 
-  - python313-six 
   - python313-sklearn-pandas 
   - python313-skyfield 
   - python313-slack-sdk 
@@ -34998,6 +34954,7 @@ unsorted:
   - python313-svglib 
   - python313-svgpathtools 
   - python313-svgwrite 
+  - python313-svm 
   - python313-svneverever 
   - python313-swagger-spec-validator 
   - python313-swapper 
@@ -35042,7 +34999,6 @@ unsorted:
   - python313-testscenarios 
   - python313-testsuite 
   - python313-testtools 
-  - python313-text-unidecode 
   - python313-textX 
   - python313-textdistance 
   - python313-textfsm 
@@ -35092,7 +35048,6 @@ unsorted:
   - python313-torch-openmpi4-converters 
   - python313-torch-openmpi4-devel 
   - python313-tornado 
-  - python313-tornado6 
   - python313-tortilla 
   - python313-towncrier 
   - python313-tox 
@@ -35148,7 +35103,6 @@ unsorted:
   - python313-types-setuptools 
   - python313-types-toml 
   - python313-typing-inspect 
-  - python313-typing_extensions 
   - python313-typish 
   - python313-typogrify 
   - python313-tzdata 
@@ -35183,7 +35137,6 @@ unsorted:
   - python313-url-normalize 
   - python313-urlextract 
   - python313-urlgrabber 
-  - python313-urllib3 
   - python313-urllib3_1 
   - python313-urwid 
   - python313-urwid-readline 
@@ -35287,7 +35240,6 @@ unsorted:
   - python313-wurlitzer 
   - python313-wxPython 
   - python313-wyoming 
-  - python313-x86-64-v3 
   - python313-xapian 
   - python313-xapian-haystack 
   - python313-xapp 
@@ -35380,7 +35332,6 @@ unsorted:
   - python313-zope.testing 
   - python313-zope.testrunner 
   - python313-zopfli 
-  - python313-zstandard 
   - python313-zstd 
   - python313-zxcvbn 
   - python313-zxcvbn-rs-py 
