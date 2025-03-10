@@ -1,7 +1,7 @@
 #
 # spec file for package bibletime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012-2014 Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %global __requires_exclude qmlimport\\(BibleTime.*
 
 Name:           bibletime
-Version:        3.0.3
+Version:        3.1.0
 Release:        0
 Summary:        A Bible study tool
 License:        GPL-2.0-or-later
@@ -29,22 +29,28 @@ Group:          Productivity/Scientific/Other
 URL:            http://www.bibletime.info/
 Source0:        https://github.com/bibletime/bibletime/releases/download/v%{version}/bibletime-%{version}.tar.xz
 Source1:        bibletime-rpmlintrc
-BuildRequires:  cmake
+# PATCH-FIX-UPSTREAM https://github.com/bibletime/bibletime/issues/498
+Patch0:         fix_compilation_against_sword_1_8_1.patch
+# PATCH-FIX-UPSTREAM https://github.com/bibletime/bibletime/issues/497
+Patch1:         fixed_grouping_serialization_qt5_compatibility.patch
+BuildRequires:  cmake >= 3.12
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  pkgconfig(libclucene-core)
-BuildRequires:  pkgconfig(sword) >= 1.7
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Qml)
+BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6QuickWidgets)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  pkgconfig(libclucene-core) >= 2.0
+BuildRequires:  pkgconfig(sword) >= 1.8.1
 # Dependencies for building documentation
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fop
@@ -70,27 +76,24 @@ lexicons) and powerful features to work with these texts (search in texts,
 write own notes, save, print etc.).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake \
-%if 0%{?suse_version} < 1600
+%cmake_qt6 \
   -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
-%endif
-  -DCMAKE_BUILD_TYPE=Release \
   -DBT_DOCBOOK_XSL_HTML_CHUNK_XSL=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/html/chunk.xsl \
   -DBT_DOCBOOK_XSL_PDF_DOCBOOK_XSL=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/fo/docbook.xsl
-%cmake_build
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
 
 %fdupes -s %{buildroot}
 
 %suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/info.%{name}.BibleTime.desktop Education Humanities
 
 %files
-%doc ChangeLog README.md
+%doc README.md
 %license LICENSE
 %{_bindir}/bibletime
 %{_datadir}/icons/*

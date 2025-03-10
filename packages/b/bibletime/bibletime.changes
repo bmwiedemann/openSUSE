@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  8 19:21:08 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 3.1.0
+  * Use Qt 6
+- Add fix_compilation_against_sword_1_8_1.patch and
+  fixed_grouping_serialization_qt5_compatibility.patch
+
+-------------------------------------------------------------------
 Fri Feb 23 11:05:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Align path for document installation between openSUSE versions.
