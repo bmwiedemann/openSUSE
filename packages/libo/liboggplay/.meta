@@ -1,0 +1,6 @@
+<package name="liboggplay" project="openSUSE:Factory">
+  <title>Library for playing Ogg multimedia</title>
+  <description>OggPlay is a library designed to allow drop-in playback of Xiph.Org media
+in an application.</description>
+  <url>https://wiki.xiph.org/index.php/OggPlay</url>
+</package>

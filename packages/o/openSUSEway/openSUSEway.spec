@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSEway
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,14 @@
 %define waybar_version %(rpm -q --queryformat "%%{version}" waybar)
 
 Name:           openSUSEway
-Version:        0.16.5
+Version:        0.17.0
 Release:        0
 Summary:        The openSUSEway desktop environment meta package
 License:        MIT
 Group:          Metapackages
 URL:            https://github.com/openSUSE/openSUSEway
 Source0:        https://github.com/openSUSE/openSUSEway/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        openSUSEway.rpmlintrc
 
 BuildArch:      noarch
 BuildRequires:  aaa_base
@@ -36,7 +37,6 @@ BuildRequires:  pkgconfig(systemd)
 Requires:       wget
 Requires:       NetworkManager
 Requires:       aaa_base
-Requires:       bash-completion
 Requires:       bzip2
 Requires:       command-not-found
 Requires:       curl
@@ -50,10 +50,9 @@ Requires:       sudo
 Requires:       tar
 
 # basic DE
-Requires:       greetd
+Requires:       (gtkgreet or wlgreet)
 Requires:       pipewire
 Requires:       sway-marker
-Requires:       (gtkgreet or wlgreet)
 Recommends:     bluez
 Recommends:     firefox
 Recommends:     grim
@@ -71,6 +70,7 @@ Requires:       wl-clipboard
 
 # branding
 Requires:       waybar-branding-openSUSE
+Requires:       greetd-branding-openSUSE
 Requires:       sway-branding-openSUSE
 %ifarch x86_64 %{ix86}
 Requires:       gfxboot-branding-openSUSE
@@ -159,12 +159,28 @@ BuildRequires:  waybar
 Provides:       waybar-branding = %{version}
 Conflicts:      waybar-branding
 Supplements:    (waybar and branding-openSUSE)
+Requires:       adobe-sourcesanspro-fonts
+Requires:       fontawesome-fonts
 
-#BRAND: /etc/xdg/waybar/config and /etc/xdg/waybar/style.css
+#BRAND: /etc/xdg/waybar/config.jsonc and /etc/xdg/waybar/style.css
 #BRAND: contain openSUSE config and branding
 
 %description -n waybar-branding-openSUSE
 This package provides the openSUSE look and feel for waybar.
+
+%package -n     greetd-branding-openSUSE
+Summary:        openSUSE branding of greetd
+Group:          System/Management
+BuildRequires:  greetd
+Provides:       greetd-branding = %{version}
+Conflicts:      greetd-branding
+Supplements:    (greetd and branding-openSUSE)
+
+#BRAND: /etc/greetd/config, /etc/greetd/environments, /etc/greetd/sway-config,
+#BRAND: and /etc/greetd/style.css contain openSUSE config and branding
+
+%description -n greetd-branding-openSUSE
+This package provides the openSUSE look and feel for greetd.
 
 %prep
 %autosetup -p1 -n openSUSEway-%{version}
@@ -176,11 +192,12 @@ This package provides the openSUSE look and feel for waybar.
 ## openSUSEway package
 ### qt5ct config to configure dark theme
 install -D -p -m 644 qt5ct.conf %{buildroot}%{_sysconfdir}/xdg/qt5ct/qt5ct.conf
-### greetd as a login manager
-install -D -p -m 644 greetd/sway-config %{buildroot}%{_sysconfdir}/greetd/sway-config
-install -D -p -m 644 greetd/config.toml %{buildroot}%{_sysconfdir}/greetd/config.toml.way
-install -D -p -m 644 greetd/environments %{buildroot}%{_sysconfdir}/greetd/environments
-install -D -p -m 644 greetd/style.css %{buildroot}%{_sysconfdir}/greetd/style.css
+
+## greetd
+install -D -p -m 644 greetd/config.toml     %{buildroot}%{_sysconfdir}/greetd/config.toml
+install -D -p -m 644 greetd/environments    %{buildroot}%{_sysconfdir}/greetd/environments
+install -D -p -m 644 greetd/style.css       %{buildroot}%{_sysconfdir}/greetd/style.css
+install -D -p -m 644 greetd/sway-config     %{buildroot}%{_sysconfdir}/greetd/sway-config
 
 ## openSUSEway pattern package
 mkdir -p %{buildroot}/%{_defaultdocdir}/patterns/
@@ -208,7 +225,7 @@ install -D -p -m 644 .config/wofi/style.css %{buildroot}%{_sysconfdir}/wofi/styl
 sed -i -e "s|wofi --show.*|wofi --conf=%{_sysconfdir}/wofi/config --style=%{_sysconfdir}/wofi/style.css|g" %{buildroot}%{_sysconfdir}/sway/config.d/50-openSUSE.conf
 
 ## waybar
-install -D -p -m 644 .config/waybar/config %{buildroot}%{_sysconfdir}/xdg/waybar/config
+install -D -p -m 644 .config/waybar/config.jsonc %{buildroot}%{_sysconfdir}/xdg/waybar/config.jsonc
 install -D -p -m 644 .config/waybar/style.css %{buildroot}%{_sysconfdir}/xdg/waybar/style.css
 install -D -p -m 755 .config/waybar/scratchpad-indicator.sh %{buildroot}%{_datadir}/openSUSEway/helpers/scratchpad-indicator.sh
 
@@ -226,15 +243,6 @@ install -D -p -m 644 .config/swaylock/openSUSEway.conf %{buildroot}%{_sysconfdir
 # bug #1176195, don't force enviroment, cleaning up old installations
 test -e %{_sysconfdir}/profile.d/openSUSEway.sh && rm %{_sysconfdir}/profile.d/openSUSEway.sh || true
 test -e %{_prefix}/lib/environment.d/50-openSUSEway.conf && rm %{_prefix}/lib/environment.d/50-openSUSEway.conf || true
-
-%post -n openSUSEway
-test -e %{_sysconfdir}/greetd/config.toml && \
-    mv -n %{_sysconfdir}/greetd/config.toml %{_sysconfdir}/greetd/config.toml.orig || true
-cp %{_sysconfdir}/greetd/config.toml.way %{_sysconfdir}/greetd/config.toml
-
-%postun -n openSUSEway
-test -e %{_sysconfdir}/greetd/config.toml.orig && \
-    mv %{_sysconfdir}/greetd/config.toml.orig %{_sysconfdir}/greetd/config.toml || true
 
 %pre -n sway-branding-openSUSE
 %service_add_pre sway-session.target sway.service
@@ -256,13 +264,15 @@ test -e %{_datadir}/wayland-sessions/sway.desktop.orig && \
 %files
 %dir %{_sysconfdir}/xdg/qt5ct/
 %config(noreplace) %{_sysconfdir}/xdg/qt5ct/qt5ct.conf
-%dir %{_sysconfdir}/greetd/
-%attr(644,greeter,greeter) %config %{_sysconfdir}/greetd/config.toml.way
-%attr(644,greeter,greeter) %config %{_sysconfdir}/greetd/sway-config
-%attr(644,greeter,greeter) %config %{_sysconfdir}/greetd/environments
-%attr(644,greeter,greeter) %config %{_sysconfdir}/greetd/style.css
 %dir %{_datadir}/openSUSEway/
 %dir %{_datadir}/openSUSEway/helpers/
+
+%files -n greetd-branding-openSUSE
+%dir %{_sysconfdir}/greetd/
+%attr(644,greeter,greeter) %config(noreplace) %{_sysconfdir}/greetd/config.toml
+%attr(644,greeter,greeter) %config(noreplace) %{_sysconfdir}/greetd/sway-config
+%attr(644,greeter,greeter) %config(noreplace) %{_sysconfdir}/greetd/environments
+%attr(644,greeter,greeter) %config(noreplace) %{_sysconfdir}/greetd/style.css
 
 %files -n patterns-openSUSEway
 %dir %{_defaultdocdir}/patterns
@@ -299,7 +309,7 @@ test -e %{_datadir}/wayland-sessions/sway.desktop.orig && \
 
 %files -n waybar-branding-openSUSE
 %dir %{_sysconfdir}/xdg/waybar
-%config(noreplace) %{_sysconfdir}/xdg/waybar/config
+%config(noreplace) %{_sysconfdir}/xdg/waybar/config.jsonc
 %config(noreplace) %{_sysconfdir}/xdg/waybar/style.css
 %{_datadir}/openSUSEway/helpers/scratchpad-indicator.sh
 

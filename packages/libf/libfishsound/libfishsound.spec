@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +20,13 @@
 
 %define soname      1
 Name:           libfishsound
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Wrapper library for audio decoding and encoding
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.xiph.org/fishsound/
-Source:         https://downloads.xiph.org/releases/libfishsound/libfishsound-%{version}.tar.gz
-Patch1:         libfishsound-gcc14-fix.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+Source:         https://downloads.xiph.org/releases/libfishsound/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(ogg)
@@ -81,29 +78,33 @@ applications that want to make use of libfishsound.
 
 %build
 %configure \
-    --enable-experimental
-make %{?_smp_mflags}
+	--disable-static \
+	--enable-experimental \
+	%{nil}
+%make_build
 
 %install
 %make_install
+find %{buildroot} -type f -name "*.la" -delete -print
+mkdir -p %{buildroot}%{_docdir}
+mv %{buildroot}/usr/share/doc/%{name} %{buildroot}%{_docdir}
 
-rm "%{buildroot}%{_libdir}"/*.{la,a}
-rm -rf "%{buildroot}%{_datadir}/doc"
+%check
+%make_build check
 
-%post   -n %{name}%{soname} -p /sbin/ldconfig
-%postun -n %{name}%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{soname}
 
 %files -n %{name}%{soname}
-%defattr(-,root,root,-)
-%doc AUTHORS ChangeLog README
 %license COPYING
+%doc AUTHORS ChangeLog README
 %{_libdir}/libfishsound.so.%{soname}
 %{_libdir}/libfishsound.so.%{soname}.*
 
 %files devel
-%defattr(-,root,root,-)
+%license COPYING
 %{_includedir}/fishsound
 %{_libdir}/libfishsound.so
 %{_libdir}/pkgconfig/fishsound.pc
+%{_docdir}/%{name}
 
 %changelog

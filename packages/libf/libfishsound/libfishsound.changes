@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  7 20:02:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.1:
+  * build fixes and improved handling of optional features
+- drop libfishsound-gcc14-fix.patch, included
+- package documentation and other spec cleanups
+
+-------------------------------------------------------------------
 Tue Aug 27 12:01:31 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Fix the build errors with gcc14:

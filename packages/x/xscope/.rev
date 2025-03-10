@@ -90,4 +90,18 @@
     the DAMAGE extension.</comment>
     <requestid>1091976</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c7c1e0e2ed6ae836dcadec7736a4ca1b</srcmd5>
+    <version>1.4.5</version>
+    <time>1741628943</time>
+    <user>anag+factory</user>
+    <comment>- Updat to version 1.4.5
+  Support for using inet_ntop() was originally added to support IPv6, and
+  only used for IPv6 addresses.  Two decades later, this interface is
+  ubiquitous and OS'es have starting marking the old interfaces as deprecated,
+  so this release changes to use the modern interface whenever we can now.
+  (Note that code included from xtrans will only use the modern interfaces
+  when IPv6 is disabled if building against xtrans 1.6.0 or later.)</comment>
+    <requestid>1251493</requestid>
+  </revision>
 </revisionlist>

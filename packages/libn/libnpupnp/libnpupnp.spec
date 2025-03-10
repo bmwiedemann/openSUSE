@@ -2,6 +2,7 @@
 # spec file for package libnpupnp
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +19,16 @@
 
 %define so_ver  13
 Name:           libnpupnp
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
-License:        GPL-2.0-or-later
+License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.lesbonscomptes.com/upmpdcli/
 Source0:        https://www.lesbonscomptes.com/upmpdcli/downloads/libnpupnp-%{version}.tar.gz
 Source1:        https://www.lesbonscomptes.com/upmpdcli/downloads/libnpupnp-%{version}.tar.gz.asc
-Source2:        https://www.lesbonscomptes.com/pages/jf-at-dockes.org.pub#/%{name}.keyring
-BuildRequires:  gcc-c++
+Source2:        %{name}.keyring
+BuildRequires:  c++_compiler
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(expat)
@@ -63,8 +64,10 @@ developing applications that use %{name}.
 %install
 %meson_install
 
-%post -p /sbin/ldconfig -n %{name}%{so_ver}
-%postun -p /sbin/ldconfig -n %{name}%{so_ver}
+%check
+%meson_test
+
+%ldconfig_scriptlets -n %{name}%{so_ver}
 
 %files -n %{name}%{so_ver}
 %license COPYING

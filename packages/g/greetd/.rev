@@ -145,4 +145,18 @@
     <comment></comment>
     <requestid>1179244</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>367306f5868e4be1b2fac02afdd2e6a2</srcmd5>
+    <version>0.10.3</version>
+    <time>1741628939</time>
+    <user>anag+factory</user>
+    <comment>- Split off upstream branding into greetd-branding-upstream package
+- Split off agreety into greetd-agreety package
+- Split off fakegreet into greetd-fakegreet package
+- Package manpages
+- Adjust package Group to System/X11/Displaymanagers
+- Add greetd.rpmlintrc
+</comment>
+    <requestid>1251240</requestid>
+  </revision>
 </revisionlist>

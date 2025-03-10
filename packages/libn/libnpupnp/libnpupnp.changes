@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar  9 12:42:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.2.1
+  * Fix minor compilation issue
+- run tests
+- license is BSD-3-Clause
+
+-------------------------------------------------------------------
 Thu Aug 22 09:09:48 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - removed fix-version.patch

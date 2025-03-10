@@ -1,0 +1,2 @@
+# Ignore error that causes other errors such as bsc#1205950
+addFilter("branding-requires-unversioned greetd-branding")

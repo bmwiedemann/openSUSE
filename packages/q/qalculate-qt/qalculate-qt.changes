@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar  6 18:17:12 UTC 2025 - pallas wept <pallaswept@proton.me>
+
+- Update to 5.5.1 
+  * Option to automatically calculate the current selection, in tooltip
+  * Option to calculate the current selection, once in history
+  * Toggle fraction format action for custom keyboard shortcuts and keypad buttons
+  * Fix copy unformatted ASCII without units when unit is placed before quantity
+  * Fix solve() function with replace() function as first argument (fixes solve2() function) (libqalculate)
+  * Fix "where" operator using (in)equality in variable (libqalculate)
+  * Return x=ae^(ir) (with r instead of n) for abs(x)=x (libqalculate)
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Tue Jan 14 14:55:58 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.5.0:

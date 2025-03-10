@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar  9 04:10:36 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Updat to version 1.4.5
+  Support for using inet_ntop() was originally added to support IPv6, and
+  only used for IPv6 addresses.  Two decades later, this interface is
+  ubiquitous and OS'es have starting marking the old interfaces as deprecated,
+  so this release changes to use the modern interface whenever we can now.
+  (Note that code included from xtrans will only use the modern interfaces
+  when IPv6 is disabled if building against xtrans 1.6.0 or later.)
+
+-------------------------------------------------------------------
 Sat Jun 10 10:57:13 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.4.4

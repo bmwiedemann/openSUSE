@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar  7 16:42:23 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.17.0:
+  * waybar-branding-openSUSE: add fonts as dependencies
+  * Remove unused bash-completion dependency
+  * waybar style.css: make workspace and scratchpad have no left margins
+  * Rename waybar config to detect filetype
+  * Improve waybar pulseaudio module configuration
+  * Add client indicator and child_border colors for focused window
+  * Add openSUSEway.rpmlintrc
+  * Split off greetd branding into greetd-branding-openSUSE package
+  * Bump version to 0.17.0
+
+-------------------------------------------------------------------
 Wed Oct 30 16:27:14 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 0.16.5:

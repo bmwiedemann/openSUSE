@@ -2,6 +2,7 @@
 # spec file for package liboggz
 #
 # Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +13,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _SO_nr 2
-%define noarch_sub_pkg 0
-%if %suse_version > 1110
-%define noarch_sub_pkg 1
-%endif
-
 Name:           liboggz
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        Shared libraries for oggz
 License:        BSD-3-Clause
 Group:          System/Libraries
-Url:            http://xiph.org/oggz/
-Source0:        http://downloads.xiph.org/releases/liboggz/%name-%{version}.tar.gz
+URL:            https://xiph.org/oggz/
+Source0:        https://downloads.xiph.org/releases/liboggz/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM liboggz-1.1.1-docdir.patch https://trac.xiph.org/ticket/1758 reddwarf@opensuse.org -- This patch makes configure honor --docdir
-Patch0:         liboggz-1.1.1-docdir.patch
 BuildRequires:  doxygen
-BuildRequires:  libogg-devel
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(ogg)
 
 %description
 liboggz is a library that provides simple parsing and seeking of
@@ -47,7 +40,6 @@ based Annodex formats, thus allows parsing (though not decoding) of
 these files.
 
 %package -n liboggz%{_SO_nr}
-
 Summary:        Shared Libraries For Oggz
 Group:          System/Libraries
 
@@ -60,7 +52,6 @@ based Annodex formats, thus allows parsing (though not decoding) of
 these files.
 
 %package -n oggz-tools
-
 Summary:        A library that provides parsing and seeking of Ogg-files
 Group:          Productivity/Multimedia/Sound/Utilities
 
@@ -72,68 +63,62 @@ will require in addition libspeex, libvorbis, libtheora, and
 libannodex respectively.
 
 %package devel
-
 Summary:        Include Files and Libraries mandatory for Development
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{_SO_nr} = %{version}
-Requires:       libogg-devel
 
 %description devel
 This package contains all necessary include files and libraries
 needed to develop applications that require these.
 
 %package doc
-
 Summary:        Documentation for Oggz
 Group:          Documentation/HTML
 Requires:       %{name}%{_SO_nr} = %{version}
-%if %{noarch_sub_pkg}
 BuildArch:      noarch
-%endif
 
 %description doc
 This package contains HTML documentation needed for development using
 liboggz
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
-%configure --disable-static --docdir=%{_docdir}/%{name}
-%__make %{?_smp_mflags}
+%configure \
+	--disable-static \
+	--docdir=%{_docdir}/%{name} \
+	%{nil}
+%make_build
 
 %install
-%makeinstall
-
-%__rm %{buildroot}%{_libdir}/lib*.la
-
-rm -rf %{buildroot}%{_docdir}/%{name}/latex
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-%__make check
+%make_build check
 
-%post -n liboggz%{_SO_nr}  -p /sbin/ldconfig
-
-%postun -n liboggz%{_SO_nr} -p /sbin/ldconfig
+%ldconfig_scriptlets -n liboggz%{_SO_nr}
 
 %files -n liboggz%{_SO_nr}
-%defattr(0644,root,root,0755)
-%{_libdir}/%{name}.so.*
+%license COPYING
+%{_libdir}/%{name}.so.%{_SO_nr}
+%{_libdir}/%{name}.so.%{_SO_nr}.*
 
 %files -n oggz-tools
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog README
-%doc %{_mandir}/man1/oggz*
+%license COPYING
+%doc AUTHORS ChangeLog README
+%{_mandir}/man1/oggz*
 %{_bindir}/oggz*
 
 %files devel
-%defattr(-,root,root)
+%license COPYING
 %{_libdir}/%{name}.so
 %{_includedir}/oggz/
 %{_libdir}/pkgconfig/oggz.pc
 
 %files doc
-%defattr(-,root,root)
+%license COPYING
 %doc %{_docdir}/%{name}
 
 %changelog
