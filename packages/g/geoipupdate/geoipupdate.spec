@@ -1,7 +1,7 @@
 #
 # spec file for package geoipupdate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           geoipupdate
-Version:        7.0.1
+Version:        7.1.0
 Release:        0
 Summary:        GeoIP update client code
 License:        Apache-2.0 OR MIT

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Mar 10 09:53:16 UTC 2025 - valentin.lefebvre@suse.com
+
+- Update to version 7.1.0:
+  * Update for v7.1.0
+  * Set release date
+  * Bump bobg/modver from 2.10.1 to 2.10.2
+  * Don't mix receiver type
+  * Remove deactivated linters
+  * Bump golang.org/x/net from 0.30.0 to 0.31.0
+  * Export HTTPError
+  * Bump golang.org/x/net from 0.29.0 to 0.30.0
+  * Bump bobg/modver from 2.10.0 to 2.10.1
+  * Bump golang.org/x/net from 0.28.0 to 0.29.0
+  * Bump bobg/modver from 2.9.0 to 2.10.0
+  * Bump golang.org/x/net from 0.27.0 to 0.28.0
+  * Bump golang.org/x/sync from 0.7.0 to 0.8.0
+  * Bump github.com/gofrs/flock from 0.12.0 to 0.12.1
+  * Bump golang.org/x/net from 0.26.0 to 0.27.0
+  * Bump github.com/gofrs/flock from 0.11.0 to 0.12.0
+  * Bump bobg/modver from 2.8.1 to 2.9.0
+  * Bump github.com/gofrs/flock from 0.9.0 to 0.11.0
+  * Run go mod tidy
+  * Bump github.com/gofrs/flock from 0.8.1 to 0.9.0
+  * Updates for GoReleaser v2
+  * Add permission for scheduled CodeQL run
+  * Add modver action
+  * Do not run CodeQL on push
+  * Remove example crontab file
+  * Update frequency references database release schedule
+  * Bump golang.org/x/net from 0.25.0 to 0.26.0
+  * Update golangci-lint config
+  * Do not require from HTTP handlers
+  * Bump golangci/golangci-lint-action from 5 to 6
+  * Bump golang.org/x/net from 0.24.0 to 0.25.0
+  * Update golangci-lint config
+  * Bump golangci/golangci-lint-action from 4 to 5
+  * Add change-log item for #310
+  * Respect host scheme if set
+  * Add check to verify that tag matches go.mod
+  * Ignore dist dir
+
+-------------------------------------------------------------------
 Mon May 06 14:36:34 UTC 2024 - valentin.lefebvre@suse.com
 
 - geoipupdate-legacy: update the curl command
