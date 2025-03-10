@@ -1,7 +1,7 @@
 #
 # spec file for package consoleet-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           consoleet-utils
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Utilities for manipulating terminal fonts and colors
 License:        GPL-3.0-or-later AND MIT
 Group:          Productivity/Other
 URL:            https://inai.de/projects/consoleet/
 #Git-Clone:     https://codeberg.org/consoleet/consoleet-utils
-Source:         https://inai.de/files/consoleet/%name-%version.tar.zst
-Source2:        https://inai.de/files/consoleet/%name-%version.tar.asc
+Source:         https://codeberg.org/consoleet/consoleet-utils/releases/download/v%version/consoleet-utils-%version.tar.zst
+Source2:        https://codeberg.org/consoleet/consoleet-utils/releases/download/v%version/consoleet-utils-%version.tar.asc
 Source3:        %name.keyring
 BuildRequires:  c++_compiler
 BuildRequires:  pkg-config >= 0.21
@@ -48,12 +48,7 @@ high-quality mode that upscales based on outline rather than pixel
 blocks, setting it apart from scalers like xBRZ or potrace.
 
 %prep
-%if 0%{?suse_version} < 1550
-%setup -Tcq
-pushd .. && tar --use=zstd -xf %{S:0} && popd
-%else
 %autosetup -p1
-%endif
 
 %build
 %configure
