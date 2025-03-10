@@ -1,3 +1,10 @@
+gpxsee (13.37) stable; urgency=low
+
+  * Added support for 70mai cameras GPS logs.
+  * Improved multi-level ENC atlases rendering.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 08 Mar 2025 12:20:43 +0100
+
 gpxsee (13.36) stable; urgency=low
 
   * Improved IMG nautical charts rendering.
