@@ -2,6 +2,7 @@
 # spec file for package ctris
 #
 # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +18,24 @@
 
 
 Name:           ctris
-Version:        0.42.1
+Version:        0.43
 Release:        0
 Summary:        Console based Tetris clone
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-URL:            https://github.com/dominikhackl/ctris
-#Git-Clone:     https://github.com/dominikhackl/ctris.git
-Source:         https://github.com/dominikhackl/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/0xminik/ctris
+#Git-Clone:     https://github.com/0xminik/ctris.git
+Source:         https://github.com/0xminik/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ncurses-devel
 
 %description
 A colorized, small and flexible Tetris clone for the console.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-make CFLAGS="%{optflags} -fcommon" %{?_smp_mflags}
+%make_build
 
 %install
 %make_install BINDIR="%{buildroot}%{_bindir}"

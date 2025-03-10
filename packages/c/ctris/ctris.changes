@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar  8 21:58:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.43:
+  * fixing the busy waits nearby the get_key() calls
+
+-------------------------------------------------------------------
 Sun Jun  7 20:14:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Set CFLAGS+=-fcommon to workaround gcc10 errors (boo#1160244)
