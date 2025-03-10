@@ -55,7 +55,7 @@ sed -i s,/usr/games,/usr/bin, xtoys
 %build
 autoreconf --force --install
 %configure
-%{__make} %{?jobs:-j%jobs}
+%make_build
 
 %install
 make DESTDIR=$RPM_BUILD_ROOT install
