@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Mar  9 00:29:14 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.40.0:
+  * Allow terminal programs to use text in different font sizes (#8226)
+    - https://sw.kovidgoyal.net/kitty/text-sizing-protocol/
+  * When rendering underlines add gaps around text descenders (parts of the
+    text that overlap with the underline). Controlled by the new option
+    underline_exclusion (#8226)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.underline_exclusion
+  * Finally fix the issue of text-width mismatches that has been plaguing the
+    terminal ecosystem for decades by allowing terminal programs to specify
+    how many cells to render a piece of text in (#8226)
+  * Behavior change: The notify_on_cmd_finish option now uses OS Window
+    visibility instead of focus state when set to invisible on platforms that
+    support querying OS window visibility (#8320)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.notify_on_cmd_finish
+  * launch: Add options launch --source-window and launch --next-to to allow
+    specifying which window is used as the data source and destination location
+    independently of the currently active window (#8295)
+    - https://sw.kovidgoyal.net/kitty/launch/#cmdoption-launch-source-window
+  * Linux: Add support for COLRv1 fonts. These are typically emoji fonts that
+    use vector images for emoji
+    - https://nabla.typearture.com/whatisCOLRV1.html
+  * Add support for the octant box-drawing characters
+  * Speed up rendering of box drawing characters by moving the implementation
+    to native code
+  * When confirming if a window should be closed consider it active if it has
+    running background processes (#8358)
+  * Remote control: kitten @ scroll-window: Allow scrolling to previous/next
+    prompt
+  * macOS: Fix fallback font rendering for bold/italic text not working for
+    some symbols that are present in the Menlo regular face but not the
+    bold/italic faces (#8282)
+  * XTGETTCAP: Fix response invalid for empty string capabilities (#8304)
+  * ssh kitten: Fix incorrect copying of data files when using the python
+    interpreter and also fix incorrect hard link detection (#8308)
+  * Fix a regression in the previous release that broke setting of nullable
+    colors
+  * Fix a regression in 0.39.0 that caused a crash on invalid Unicode with a
+    large number of combining characters in a single cell (#8318)
+  * Fix --hold always restoring cursor to block shape instead of respecting
+    the value of cursor_shape (#8344)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.cursor_shape
+  * When dragging in rectangle select mode use a crosshair mouse cursor
+    configurable via pointer_shape_when_dragging
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.pointer_shape_when_dragging
+  * macOS: notify kitten: Fix waiting for result from desktop notification not
+    working (#8379)
+  * Wayland: Fix mouse pointer position update not being sent when focus
+    regained (:iss`8397`, #8398)
+  * Fix cursor blink animation when background_opacity is less than one (#8401)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.background_opacity
+  * Wayland: panel kitten: Add a center mode for creating panels to ease
+    creation of centered popups in Wayland (#8411)
+
+-------------------------------------------------------------------
 Sun Feb  2 19:51:43 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.39.1:
