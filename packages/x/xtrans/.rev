@@ -215,4 +215,22 @@ Novell, and NCR are no longer supported.</comment>
     builds when IPv6 support is disabled.</comment>
     <requestid>1223003</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5c6e99f4a922634c900f4b6660cc0508</srcmd5>
+    <version>1.6.0</version>
+    <time>1741625857</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.6.0
+  Support for using getaddrinfo(), inet_ntop(), and struct sockaddr_storage
+  was originally added to support IPv6, and only used if IPv6 support was
+  enabled. Two decades later, these interfaces are ubiquitous and OS'es have
+  starting marking the old interfaces as deprecated, so this release changes
+  to use the modern interface whenever we can now.  (Note that this depends
+  on the configure script or meson.build setting the appropriate HAVE_*
+  defines in the calling code, so this may not be fully effective in code
+  whose configure script was generated with a pre-1.6 version of xtrans.m4
+  or whose meson.build has not had equivalent updates.)
+- refreshed p_xauth.diff</comment>
+    <requestid>1251486</requestid>
+  </revision>
 </revisionlist>

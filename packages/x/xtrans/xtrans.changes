@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar  9 03:29:47 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 1.6.0
+  Support for using getaddrinfo(), inet_ntop(), and struct sockaddr_storage
+  was originally added to support IPv6, and only used if IPv6 support was
+  enabled. Two decades later, these interfaces are ubiquitous and OS'es have
+  starting marking the old interfaces as deprecated, so this release changes
+  to use the modern interface whenever we can now.  (Note that this depends
+  on the configure script or meson.build setting the appropriate HAVE_*
+  defines in the calling code, so this may not be fully effective in code
+  whose configure script was generated with a pre-1.6 version of xtrans.m4
+  or whose meson.build has not had equivalent updates.)
+- refreshed p_xauth.diff
+
+-------------------------------------------------------------------
 Sat Nov  9 18:12:52 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 1.5.2
