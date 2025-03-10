@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  7 17:13:14 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 2.5.5: [bsc#1236931, bsc#1239119]
+  * gpg: Fix a verification DoS due to a malicious subkey in the
+    keyring.  [T7527]
+  * dirmngr: Fix possible hangs due to blocking connection requests.
+    [T6606, T7434]
+  Release-info: https://dev.gnupg.org/T7530
+
+-------------------------------------------------------------------
 Wed Feb 26 14:13:02 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - Fixing gpg-agent integration by changing --supervised to
