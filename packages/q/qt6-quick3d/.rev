@@ -232,4 +232,12 @@
     <comment>Qt 6.8.2 + pyside (forwarded request 1241751 from krop)</comment>
     <requestid>1242059</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>b2e937429e99b2de7e9ef339d572ddfa</srcmd5>
+    <version>6.8.2</version>
+    <time>1741625886</time>
+    <user>anag+factory</user>
+    <comment>- Ignore private QML imports</comment>
+    <requestid>1251594</requestid>
+  </revision>
 </revisionlist>
