@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-language-c
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Summary:        Analysis and generation of C code
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  alex
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
@@ -85,6 +86,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
