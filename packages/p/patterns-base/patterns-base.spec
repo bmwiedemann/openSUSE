@@ -454,6 +454,9 @@ Recommends:     sed
 Recommends:     sg3_utils
 Recommends:     smartmontools
 Recommends:     sudo
+%if !0%{?is_opensuse}
+Recommends:     supportutils
+%endif
 Recommends:     systemd-coredump
 Recommends:     time
 Recommends:     timezone

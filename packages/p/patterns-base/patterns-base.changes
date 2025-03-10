@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  6 16:23:54 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure supportutils is installed on SLES 16 (bsc#1238894).
+
+-------------------------------------------------------------------
 Tue Mar  4 16:15:37 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
 
 - Ensure btrfsmaintenance is required by transactional_base
