@@ -26,6 +26,9 @@
 %define pkg_suffix -docs
 %endif
 #
+# Private QML imports
+%global __requires_exclude qt6qmlimport\\((AxisHandlingExample|SurfaceGalleryExample)\\)
+#
 Name:           qt6-graphs%{?pkg_suffix}
 Version:        6.8.2
 Release:        0
