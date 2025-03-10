@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 06 09:01:43 UTC 2025 - dcermak@suse.com
+
+- Update to version 1.39.2:
+  * [release-1.39] Bump to Buildah v1.39.2
+  * [release-1.39] tests/conformance/testdata/Dockerfile.add:...
+  * [release-1.39] Bump c/image to v5.34.1, c/common v0.62.1
+
+-------------------------------------------------------------------
 Thu Feb 27 14:37:20 UTC 2025 - dcermak@suse.com
 
 - Update to version 1.39.1:
