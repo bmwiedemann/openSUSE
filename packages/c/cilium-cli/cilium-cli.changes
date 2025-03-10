@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Mar 08 13:53:29 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.2:
+  * Minor Changes:
+    - cilium-cli/sysdump: relax extra-label-selectors to target all
+      namespaces (cilium/cilium#37715, @giorio94)
+    - Extend cilium-cli connectivity perf to allow testing egress
+      gateway performance (cilium/cilium#37748, @giorio94)
+  * CI Changes:
+    - Add explicit IPv6 testing to PodToService cilium-cli
+      connectivity test (cilium/cilium#37544, @saiaunghlyanhtet)
+    - cilium-cli/connectivity: Fix output for LRP tests
+      (cilium/cilium#37893, @pchaigno)
+    - cilium-cli/connectivity: only check container restarts on
+      v1.17+ (cilium/cilium#37823, @giorio94)
+    - cli: Attribute test failures outside of action failures
+      (cilium/cilium#37757, @joestringer)
+    - cli: Clean up Makefile (cilium/cilium#37911, @michi-covalent)
+    - cli: connectivity: Log tcpdump cmd on error
+      (cilium/cilium#37822, @jschwinger233)
+    - connectivity tests: keep tcpdump alive by printing to stdout
+      (cilium/cilium#37984, @asauber)
+    - Egress Gateway performance testing (cilium/cilium#37753,
+      @giorio94)
+    - Fix egress device computation in cli connectivity
+      pod-to-pod-encryption-v2 tests for AWS chaining mode.
+      (cilium/cilium#37680, @smagnani96)
+    - Miscellaneous improvements to the Egress Gateway scale test
+      (cilium/cilium#37611, @giorio94)
+  * Misc Changes:
+    - Add sloglint and fix issues (cilium/cilium#37851, @aanm)
+    - bpf: tolerate dropped ICMPv6 messages with ICMPv6 payload
+      (cilium/cilium#38068, @julianwiedmann)
+    - chore(deps): update docker.io/library/golang:1.24.0 docker
+      digest to 3f74443 (main) (cilium/cilium#37938,
+      @cilium-renovate[bot])
+    - cilium-cli: Ignore k8s client network error warning
+      (cilium/cilium#37773, @jrajahalme)
+    - cilium-cli: Only use --curl-parallel when expecting success
+      (cilium/cilium#37803, @jrajahalme)
+    - cli: Added parameter to print used images
+      (cilium/cilium#37390, @PhilipSchmid)
+    - cli: Support filtering --log-code-owners
+      (cilium/cilium#37905, @joestringer)
+    - k8s: move portforward functionality to separate sub-package
+      (cilium/cilium#38060, @tklauser)
+    - Update connectivity tests to correctly detect TLS
+      Interception (cilium/cilium#37796, @youngnick)
+    - chore(deps): update dependency go to v1.24.1 by @renovate in
+      #2969
+    - Update stable release to v0.18.1 by @michi-covalent in #2968
+    - Prepare for v0.18.2 release by @michi-covalent in #2964
+
+-------------------------------------------------------------------
 Fri Mar 07 06:45:47 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.18.1:
