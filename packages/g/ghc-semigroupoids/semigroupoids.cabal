@@ -2,7 +2,7 @@ cabal-version: 1.24
 name:          semigroupoids
 category:      Control, Comonads
 version:       6.0.1
-x-revision: 1
+x-revision: 2
 license:       BSD2
 license-file:  LICENSE
 author:        Edward A. Kmett
@@ -144,7 +144,7 @@ library
       build-depends: containers >= 0.6.7
 
   if flag(containers)
-    build-depends: containers >= 0.5.7.1 && < 0.8
+    build-depends: containers >= 0.5.7.1 && < 0.9
 
   if flag(contravariant)
     build-depends: contravariant >= 1.5.3 && < 2

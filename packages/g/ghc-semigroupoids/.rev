@@ -251,4 +251,14 @@ A 'Category' is any 'Semigroupoid' for which the Yoneda lemma holds.</comment>
     <comment>version update</comment>
     <requestid>1188656</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>ee65c495ac213bab1dfc730a52e18767</srcmd5>
+    <version>6.0.1</version>
+    <time>1741626276</time>
+    <user>anag+factory</user>
+    <comment>- Update semigroupoids to version 6.0.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+</comment>
+    <requestid>1251665</requestid>
+  </revision>
 </revisionlist>
