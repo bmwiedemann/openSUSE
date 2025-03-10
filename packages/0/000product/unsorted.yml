@@ -26815,7 +26815,6 @@ unsorted:
   - python311-pycognito 
   - python311-pycomposefile 
   - python311-pycountry 
-  - python311-pycrdt 
   - python311-pycrdt-websocket 
   - python311-pycryptodome 
   - python311-pycryptodomex 
@@ -27444,7 +27443,6 @@ unsorted:
   - python311-sidpy 
   - python311-sievelib 
   - python311-signedjson 
-  - python311-sigstore 
   - python311-sigstore-protobuf-specs 
   - python311-sigstore-rekor-types 
   - python311-simple-websocket 
@@ -30523,7 +30521,6 @@ unsorted:
   - python312-pycomposefile 
   - python312-pycountry 
   - python312-pycparser 
-  - python312-pycrdt 
   - python312-pycrdt-websocket 
   - python312-pycryptodome 
   - python312-pycryptodomex 
@@ -31162,7 +31159,6 @@ unsorted:
   - python312-sidpy 
   - python312-sievelib 
   - python312-signedjson 
-  - python312-sigstore 
   - python312-sigstore-protobuf-specs 
   - python312-sigstore-rekor-types 
   - python312-simple-websocket 
@@ -34177,7 +34173,6 @@ unsorted:
   - python313-pycognito 
   - python313-pycomposefile 
   - python313-pycountry 
-  - python313-pycrdt 
   - python313-pycrdt-websocket 
   - python313-pycryptodome 
   - python313-pycryptodomex 
@@ -34794,7 +34789,6 @@ unsorted:
   - python313-sidpy 
   - python313-sievelib 
   - python313-signedjson 
-  - python313-sigstore 
   - python313-sigstore-protobuf-specs 
   - python313-sigstore-rekor-types 
   - python313-simple-websocket 
@@ -48856,7 +48850,6 @@ unsorted:
   - webkit2gtk3-soup2-minibrowser 
   - webkit2gtk4-devel 
   - webkit2gtk4-minibrowser 
-  - weblate 
   - weblug 
   - webp-pixbuf-loader 
   - webrepl 
