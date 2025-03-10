@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Mar 10 12:43:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.25.2:
+  * apko: make apk cache safer for multi-writers (#1564)
+  * build(deps): bump docker/setup-qemu-action from 3.5.0 to 3.6.0
+    (#1552)
+  * build(deps): bump github.com/chainguard-dev/clog from 1.6.1 to
+    1.7.0 (#1555)
+  * spdx: add attributionText field (#1554)
+  * dot: Do a slightly better job (#1553)
+  * apk/signature: remove support for creating new SHA1 signatures
+    (#1496)
+  * build(deps): bump google.golang.org/api from 0.222.0 to 0.223.0
+    (#1545)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.13.2 to
+    5.14.0 (#1548)
+  * build(deps): bump github.com/go-jose/go-jose/v3 from 3.0.3 to
+    3.0.4 in the go_modules group (#1547)
+  * build(deps): bump docker/setup-qemu-action from 3.4.0 to 3.5.0
+    (#1549)
+  * Make LockImageConfiguration incorporate options (#1540)
+  * build(deps): bump sigstore/cosign-installer from 3.8.0 to 3.8.1
+    (#1537)
+  * build(deps): bump github.com/google/go-cmp from 0.6.0 to 0.7.0
+    (#1542)
+  * build(deps): bump github.com/go-jose/go-jose/v4 from 4.0.4 to
+    4.0.5 in the go_modules group (#1539)
+  * build(deps): bump golangci/golangci-lint-action from 6.3.2 to
+    6.5.0 (#1532)
+  * build(deps): bump k8s.io/apimachinery from 0.32.1 to 0.32.2
+    (#1527)
+  * build(deps): bump github.com/klauspost/compress from 1.17.11 to
+    1.18.0 (#1536)
+  * build(deps): bump github.com/sigstore/cosign/v2 from 2.4.2 to
+    2.4.3 (#1535)
+  * build(deps): bump google.golang.org/api from 0.220.0 to 0.222.0
+    (#1534)
+  * build(deps): bump step-security/harden-runner from 2.10.4 to
+    2.11.0 (#1533)
+  * build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+    (#1531)
+
+-------------------------------------------------------------------
 Sun Feb 16 08:52:28 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.25.1:
