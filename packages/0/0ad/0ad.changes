@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 22:28:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Enable-building-on-arbitrary-architectures.patch
+  to make package succeed for openSUSE:Factory:RISCV/zSystems/PowerPC
+- Build premake & fcollada with smp_mflags as well
+
+-------------------------------------------------------------------
 Tue Feb 18 21:16:40 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Cleanup spec file.

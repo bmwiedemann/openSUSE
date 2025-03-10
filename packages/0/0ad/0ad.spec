@@ -43,6 +43,7 @@ URL:            https://play0ad.com/
 Source:         https://releases.wildfiregames.com/%{name}-%{version}-unix-build.tar.xz
 Source1:        premake-disable-rpath.patch
 Source100:      0ad-rpmlintrc
+Patch1:         0001-Enable-building-on-arbitrary-architectures.patch
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libXcursor-devel
@@ -82,7 +83,6 @@ BuildRequires:  pkgconfig(mozjs-115)
 BuildRequires:  cargo
 BuildRequires:  rust
 %endif
-ExcludeArch:    s390x
 
 %description
 0 A.D. (pronounced "zero ey-dee") is a real-time strategy (RTS) game
@@ -93,7 +93,7 @@ The project contains 3D graphics, detailed artwork, sound, and a
 flexible game engine.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
 cp %SOURCE1 libraries/source/premake-core/patches/
 sed -i -e 's_# patch_# patch\npatch -d "premake-core-${PV}" -p1 <patches/premake-disable-rpath.patch_' libraries/source/premake-core/build.sh
 
@@ -107,9 +107,10 @@ export CCFLAGS="%{optflags}"
 export CPPFLAGS="%{optflags} -fpermissive"
 # Copied from macros.cmake.
 export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now"
+
 libraries/source/cxxtest-4.4/build.sh
-libraries/source/fcollada/build.sh
-libraries/source/premake-core/build.sh
+JOBS="%{?_smp_mflags}" libraries/source/fcollada/build.sh
+JOBS="%{?_smp_mflags}" libraries/source/premake-core/build.sh
 build/workspaces/update-workspaces.sh \
     %{?_smp_mflags} \
     --bindir=%{_bindir} \
