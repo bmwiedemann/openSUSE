@@ -17,7 +17,7 @@
 
 
 Name:           libX11
-Version:        1.8.11
+Version:        1.8.12
 Release:        0
 Summary:        Core X11 protocol client library
 License:        MIT
@@ -32,7 +32,6 @@ Patch1:         p_xlib_skip_ext_env.diff
 # PATCH-FIX-UPSTREAM en-locales.diff fdo#48596 bnc#388711 -- Add missing data for more en locales
 Patch2:         en-locales.diff
 Patch3:         u_no-longer-crash-in-XVisualIDFromVisual.patch
-Patch1237431:   U_CVE-2025-26597-0001-xkb-Fix-buffer-overflow-in-XkbChangeTypesOfKey.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -122,7 +121,6 @@ test -f nls/ja.S90/XLC_LOCALE.pre && exit 1
 %patch -P 1
 %patch -P 2
 %patch -P 3 -p1
-%patch -P 1237431 -p1
 
 %build
 %configure \

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar  9 03:23:20 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 1.8.12; this release includes:
+  * x11.pc: Add URL field (!280)
+  * xkb: Bring over fixes from Xserver to shared XKB source files (!279)
+- supersedes U_CVE-2025-26597-0001-xkb-Fix-buffer-overflow-in-XkbChangeTypesOfKey.patch
+
+-------------------------------------------------------------------
 Tue Feb 25 17:49:10 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_CVE-2025-26597-0001-xkb-Fix-buffer-overflow-in-XkbChangeTypesOfKey.patch 
