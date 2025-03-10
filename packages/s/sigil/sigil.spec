@@ -1,7 +1,7 @@
 #
 # spec file for package sigil
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,11 @@
 
 
 %define sigil_doc_version 2024.08.15
+%if 0%{?suse_version} < 1600
+%define pythons python311
+%endif
 Name:           sigil
-Version:        2.3.1
+Version:        2.4.2
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
@@ -30,8 +33,6 @@ Source1:        https://github.com/Sigil-Ebook/sigil-user-guide/releases/downloa
 Source2:        %{name}.desktop
 # PATCH-FIX-OPENSUSE Disabled __DATE__ and __TIME__ which is replaced later in pre section
 Patch0:         %{name}-gt-0.9.0-Dialogs-About.cpp.patch
-# PATCH-FIX-UPSTREAM  Remove implicit QChar conversions #778
-Patch1:         sigil-gt6.8-qchar-778.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 3.0
 BuildRequires:  dos2unix
@@ -49,38 +50,39 @@ BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-base-devel >= 6.4.0
+# upstream use for qt6-base-devel 6.8.2
+BuildRequires:  qt6-base-devel >= 6.6.3
+BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module devel >= 3.9}
 # not need for build, only check for exists
-# upstream use for python3-Pillow 7.1.2
-BuildRequires:  python3-Pillow >= 5.0.0
-# upstream use python3-certifi 2020.6.20
-BuildRequires:  python3-certifi
-# upstream use python3-chardet 3.0.4
-BuildRequires:  python3-chardet >= 3.0.4
-# upstream use python3-css-parser 1.0.4
-BuildRequires:  python3-css-parser >= 1.0.4
-# upstream use python3-cssselect 1.1.0
-BuildRequires:  python3-cssselect >= 1.0.3
+# upstream use for python3-Pillow 10.3.0
+BuildRequires:  %{python_module Pillow >= 9.5.0}
+# upstream use python3-certifi 2024.6.2
+BuildRequires:  %{python_module certifi >= 2023.7.22}
+# upstream use python3-chardet 5.2.0
+BuildRequires:  %{python_module chardet >= 5.2.0}
+# upstream use python3-css-parser 1.0.10
+BuildRequires:  %{python_module css-parser >= 1.0.10}
+# upstream use python3-cssselect 1.2.0
+BuildRequires:  %{python_module cssselect >= 1.2.0}
 # upstream use python3-cssutils ?
-BuildRequires:  python3-cssutils >= 1.0.2
-# upstream use 3.6.0
-BuildRequires:  python3-devel >= 3.6
-# upstream use python3-dulwich 0.20.5
-BuildRequires:  python3-dulwich >= 0.20.2
+BuildRequires:  %{python_module cssutils >= 2.10.2}
+# upstream use python3-dulwich 0.22.1
+BuildRequires:  %{python_module dulwich >= 0.21.7}
 # upstream use python3-html5lib >= 1.1
-BuildRequires:  python3-html5lib
-# upstream use for python3-lxml 4.5.1
-BuildRequires:  python3-lxml >= 4.4.2
-# upstream use for python3-qt5 5.12.3
-BuildRequires:  python3-qt5
-# upstream use for python3-regex 2020.6.8
-BuildRequires:  python3-regex
-# upstream use for python3-six 1.15.0
-BuildRequires:  python3-six >= 1.14.0
-# upstream use for python3-urllib3 1.25.9
-BuildRequires:  python3-urllib3 >= 1.24
+BuildRequires:  %{python_module html5lib >= 1.1}
+# upstream use for python3-lxml 5.2.2
+BuildRequires:  %{python_module lxml >= 4.9.3}
+# upstream use for python3-regex 2024.5.15
+BuildRequires:  %{python_module regex >= 2023.5.5}
+# upstream use for python3-six 1.16.0
+BuildRequires:  %{python_module six >= 1.16.0}
+# upstream use for python3-urllib3 2.2.2
+BuildRequires:  %{python_module urllib3 >= 2.0.7}
 # upstream use python3-tk ?
-BuildRequires:  python3-tk
+BuildRequires:  %{python_module tk >= 2.7.18}
+### Seems no more need? upstream use for python3-qt5 5.12.3
+##BuildRequires:  %%{python_module qt5}
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
@@ -99,19 +101,19 @@ BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(minizip)
-Requires:       python3-Pillow
-Requires:       python3-certifi
-Requires:       python3-chardet
-Requires:       python3-css-parser
-Requires:       python3-cssselect
-Requires:       python3-cssutils
-Requires:       python3-dulwich
-Requires:       python3-html5lib
-Requires:       python3-lxml
-Requires:       python3-regex
-Requires:       python3-six
-Requires:       python3-tk
-Requires:       python3-urllib3
+Requires:       %{python_flavor}-Pillow
+Requires:       %{python_flavor}-certifi
+Requires:       %{python_flavor}-chardet
+Requires:       %{python_flavor}-css-parser
+Requires:       %{python_flavor}-cssselect
+Requires:       %{python_flavor}-cssutils
+Requires:       %{python_flavor}-dulwich
+Requires:       %{python_flavor}-html5lib
+Requires:       %{python_flavor}-lxml
+Requires:       %{python_flavor}-regex
+Requires:       %{python_flavor}-six
+Requires:       %{python_flavor}-tk
+Requires:       %{python_flavor}-urllib3
 
 %description
 Sigil is an editor for the EPUB format. It is designed for WYSIWYG

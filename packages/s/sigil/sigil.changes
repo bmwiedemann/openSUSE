@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Mar  8 12:07:11 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.4.2
+  * New Features
+    - Added new tool: 'Update OPF Manifest Media Types' to set unrecognized media types based on actual file contents
+  * Bug Fixes
+    - ensure CodeView code highlighting colors coincide with dark/light themes on certain Linux DEs
+    - fix sigil-gumbo gumboc to work with Python 3.13+ - ie. work around backwards incompatible changes in ctypes
+    - fix Replacement Chooser table to allow for multiple line row heights in Before and After fields (regression)
+    - prevent too many warnings when no media types provided in OPF by generating the warning collectively
+    - prevent build warnings by using hunspell's std:string interface (not C char * ones)
+    - fix files in third party code that used latin-1 encoding to now use utf-8
+    - fix old use of 'python' in python code header lines to always use 'python3'
+    - removed user scope installs from winget util they work properly with dependencies
+    - restore Find&Replace if it was open when the user tries to exit Sigil and then aborts the exit
+
+-------------------------------------------------------------------
+Sat Mar  8 12:02:24 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.4.0
+  * New Features
+    - added a GetInfo dialog and right click menu option for XHTML files that provides a collection
+      of information specific to that file without having to run Reports (including a word count)
+    - added support for multiple semantics per xhtml file, while uncommon is technically allowed by the spec
+    - made debugging with VS IDE easier
+    - streamlined Sigil logos and installer for Windows
+    - improve Sigil Well-Formed (sanity check) to better identify errors with missing attribute quotes
+    - update to Qt 6.7.3 and its PySide6 version for MacOS and Windows release builds
+    - updates to building on linux documentation
+    - add support for building with and using virtual python environments on Windows and Linux
+    - change Replacement Chooser to use Checkboxes to determine if replacements should be made, no deletes
+    - allow Windows Sigil installer to run on Windows arm64
+  * Bug Fixes
+    - readability improvments for Load Warnings (thank you BeckyEbook)
+    - remove xhtml meta charset information after converting to utf-8 on initial load to prevent encoding errors
+    - forced the Preferences KeyboardShortcuts assign and remove buttons into the tab focus chain
+    - PR #778 building Sigil with recent Qt versions that no longer accept the QT_IMPLICIT_QCHAR_CONSTRUCTION macro
+    - fixes for using QTimeZone to prevent build warnings where possible (modified version of PR #779)
+    - fixes for better whitespace handling in TagLister codebase
+  - Drop sigil-gt6.8-qchar-778.patch because now in upstream.
+  - Use pythons and set it to python311 for Leap < 16.
+
+-------------------------------------------------------------------
 Thu Dec 26 11:54:38 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Use the same condition of gcc version for CC and CXX flags as same
