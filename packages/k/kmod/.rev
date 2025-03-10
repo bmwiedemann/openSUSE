@@ -764,4 +764,12 @@ Kernel:stable/kernel-source#kernel-default succeeds with this</comment>
     <comment>- Update to release 34</comment>
     <requestid>1247761</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>e00e5dd6257ba6cc25f512003b68a2f4</srcmd5>
+    <version>34.1</version>
+    <time>1741625856</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 34.1</comment>
+    <requestid>1251456</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,7 @@
 
 Name:           kmod
 %define lname	libkmod2
-Version:        34
+Version:        34.1
 Release:        0
 Summary:        Utilities to load modules into the kernel
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -101,7 +101,7 @@ in %lname.
 
 %prep
 %autosetup -p1
-cp %{SOURCE4} .
+cp "%_sourcedir/README.usrmerge" .
 
 %build
 rm -f m4/gtk-doc.m4 libkmod/docs/gtk-doc.make # dangling symlinks
