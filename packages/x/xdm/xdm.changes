@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar  9 04:05:25 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 1.1.17
+  Support for using getaddrinfo(), inet_ntop(), and struct sockaddr_storage
+  was originally added to support IPv6, and only used if IPv6 support was
+  enabled. Two decades later, these interfaces are ubiquitous and OS'es have
+  starting marking the old interfaces as deprecated, so this release changes
+  to use the modern interface whenever we can now.  (Note that code included
+  from xtrans will only use these interfaces when IPv6 is disabled if building
+  against xtrans 1.6.0 or later.)
+
+-------------------------------------------------------------------
 Sat Mar  1 17:38:27 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Make build recipe compatible with POSIX sh.

@@ -25,7 +25,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           xdm
-Version:        1.1.16
+Version:        1.1.17
 Release:        0
 Summary:        X Display Manager
 License:        MIT

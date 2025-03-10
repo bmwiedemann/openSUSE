@@ -1136,4 +1136,19 @@
     <comment></comment>
     <requestid>1250253</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>56ebf714cf74d8645243a8460b28c979</srcmd5>
+    <version>1.1.17</version>
+    <time>1741625865</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.1.17
+  Support for using getaddrinfo(), inet_ntop(), and struct sockaddr_storage
+  was originally added to support IPv6, and only used if IPv6 support was
+  enabled. Two decades later, these interfaces are ubiquitous and OS'es have
+  starting marking the old interfaces as deprecated, so this release changes
+  to use the modern interface whenever we can now.  (Note that code included
+  from xtrans will only use these interfaces when IPv6 is disabled if building
+  against xtrans 1.6.0 or later.)</comment>
+    <requestid>1251490</requestid>
+  </revision>
 </revisionlist>
