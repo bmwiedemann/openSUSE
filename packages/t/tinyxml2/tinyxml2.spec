@@ -1,7 +1,7 @@
 #
 # spec file for package tinyxml2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %define so_version 10
 %define lib_package lib%{name}-%{so_version}
 Name:           tinyxml2
-Version:        10.0.0
+Version:        10.1.0
 Release:        0
 Summary:        Basic XML parser in C++
 License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/leethomason/tinyxml2
 Source:         https://github.com/leethomason/tinyxml2/archive/%{version}.tar.gz
-Patch1:         0001-Make-DynArray-support-objects-larger-than-1-gigabyte.patch
-Patch2:         0001-Make-DocPrinter-support-DynArrays-larger-than-2G.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
