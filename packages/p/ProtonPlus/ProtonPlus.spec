@@ -18,7 +18,7 @@
 
 %define         appid com.vysp3r.ProtonPlus
 Name:           ProtonPlus
-Version:        0.4.25
+Version:        0.4.26
 Release:        0
 Summary:        A Wine and Proton-based compatibility tools manager for GNOME
 License:        GPL-3.0-only
