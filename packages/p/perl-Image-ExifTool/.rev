@@ -1003,4 +1003,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1248570</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>caf17dfe40693c7acf75300a69fe5769</srcmd5>
+    <version>13.24</version>
+    <time>1741626349</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1251651</requestid>
+  </revision>
 </revisionlist>

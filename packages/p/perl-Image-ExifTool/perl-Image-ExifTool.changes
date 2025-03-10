@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Mar  8 11:49:11 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.24:
+  * Changed -listf, -listr and -listwf options to print descriptions
+    when either -v or -l is added (previously only -l did this)
+  * Patched to avoid failed PCAP test due to differing time zones (#319)
+
+-------------------------------------------------------------------
+Sat Mar  8 11:48:53 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.23:
+  * Added read support for CAP, PCAP and PACPNG files
+  * Added a number of new Sony LensType2 values
+  * Added the 2 new GPSAltitudeRef values defined by EXIF 3.0
+  * Decode APP4 "Qualcomm Dual Camera Attributes" metadata
+  * EXIF X/YResolution, ResolutionUnit and FlashpixVersion are no
+    longer treated as mandatory tags (they were changed to optional
+    in the EXIF 3.0 specification)
+  * Patched decoding of Nikon Z8 MenuSettings to accommodate changes in
+    the data structure as of firmware version 2.1
+  * Patched to avoid bug in Perl v5.26.3 which could cause hang when
+    reading very large and corrupted XMP
+  * Patched -plot option to avoid bug in Google Chrome SVG marker rendering
+  * API Changes:
+    + Fixed documentation for LargeFileSupport option to reflect current default
+
+-------------------------------------------------------------------
+Sat Mar  8 11:48:26 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.22:
+  * Improvements and additions to the new plot feature
+  * Decode a few more DJI timed metadata tags
+  * Extract GainMapImage from PNG images
+  * Reverted WebP FileType change of version 13.20
+  * Set $^W in the exiftool application to re-enable global warnings (they
+    have been disabled since version 12.92 due to the shebang change)
+  * Fixed possible incorrect IFD number in "No size tag" warning
+  * Fixed "File is empty" error when using -plot with -w to write the
+    output file into the same directory as the input files
+
+-------------------------------------------------------------------
 Tue Feb 25 13:08:51 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.21:
