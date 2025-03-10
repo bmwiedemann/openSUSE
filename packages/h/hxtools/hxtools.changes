@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar  9 13:07:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20250309
+  * Increase bgfg contrast in light2.theme
+  * extract_dxhog: repair wrong seeking to archive entries
+  * Delete unmaintained ``xfs_irecover`` (alternative: xfs_undelete)
+  * Delete ``extract_f3pod`` (alternative: SLADE)
+  * Add ``make_qupak`` command
+  * Add ``git-logsortbychgsize`` command
+  * Add ``selective-preprocess`` command
+
+-------------------------------------------------------------------
 Sun Dec 24 19:44:58 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20231224

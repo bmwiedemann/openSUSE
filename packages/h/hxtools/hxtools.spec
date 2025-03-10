@@ -1,7 +1,7 @@
 #
 # spec file for package hxtools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hxtools
-Version:        20231224
+Version:        20250309
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0-or-later AND WTFPL
@@ -153,12 +153,7 @@ lsof/fuser in that it can scan recursively and won't bluntly look at
 an entire mount.
 
 %prep
-%if 0%{?suse_version} < 1550
-%setup -Tcq
-pushd .. && tar --use=zstd -xf "%{S:0}" && popd
-%else
 %autosetup -p1
-%endif
 
 %build
 %configure
@@ -213,6 +208,7 @@ rm -f "$b/%_bindir/xmlformat"
 %_bindir/git-*
 %_bindir/gh-trim-*
 %_bindir/gpsh
+%_bindir/make_qupak
 %_bindir/man2html
 %_bindir/mkvappend
 %_bindir/mod2opus
@@ -220,6 +216,7 @@ rm -f "$b/%_bindir/xmlformat"
 %_bindir/pesubst
 %_bindir/qpdecode
 %_bindir/qtar
+%_bindir/selective-preprocess
 %_bindir/spec-beautifier
 %_bindir/ssa2srt
 %_bindir/su1
