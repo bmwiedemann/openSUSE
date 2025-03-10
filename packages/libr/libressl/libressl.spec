@@ -1,7 +1,7 @@
 #
 # spec file for package libressl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/%name-%version.tar.
 Source2:        https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/%name-%version.tar.gz.asc
 Source3:        %name.keyring
 Source4:        baselibs.conf
+Source5:        unavailable-libcrypto-symbols.txt.zst
 Patch1:         des-fcrypt.diff
 Patch2:         extra-symver.diff
 BuildRequires:  automake
@@ -40,10 +41,9 @@ Conflicts:      openssl-1_1
 Conflicts:      openssl-3
 
 %description
-LibreSSL is an open-source implementation of the Secure Sockets Layer
-(SSL) and Transport Layer Security (TLS) protocols. It derives from
-OpenSSL, with the aim of refactoring the OpenSSL code so as to
-provide a more secure implementation.
+LibreSSL is an implementation of the Secure Sockets Layer (SSL) and
+Transport Layer Security (TLS) protocols. It derives from OpenSSL,
+with refactorings.
 
 %package -n libcrypto55
 Summary:        An SSL/TLS protocol implementation
@@ -61,18 +61,18 @@ Summary:        An SSL/TLS protocol implementation
 Group:          System/Libraries
 
 %description -n libssl58
-LibreSSL is an open-source implementation of the Secure Sockets Layer
-(SSL) and Transport Layer Security (TLS) protocols. It derives from
-OpenSSL and intends to provide a more secure implementation.
+LibreSSL is an implementation of the Secure Sockets Layer (SSL) and
+Transport Layer Security (TLS) protocols. It derives from OpenSSL,
+with refactorings.
 
 %package -n libtls31
 Summary:        A simplified interface for the OpenSSL/LibreSSL TLS protocol implementation
 Group:          System/Libraries
 
 %description -n libtls31
-LibreSSL is an open-source implementation of the Secure Sockets Layer
-(SSL) and Transport Layer Security (TLS) protocols. It derives from
-OpenSSL and intends to provide a more secure implementation.
+LibreSSL is an implementation of the Secure Sockets Layer (SSL) and
+Transport Layer Security (TLS) protocols. It derives from OpenSSL,
+with refactorings.
 
 The libtls library provides a modern and simplified interface (of
 libssl) for secure client and server communications.
@@ -87,10 +87,15 @@ Conflicts:      ssl-devel
 Provides:       ssl-devel
 
 %description devel
-LibreSSL is an open-source implementation of the Secure Sockets Layer
-(SSL) and Transport Layer Security (TLS) protocols. It derives from
-OpenSSL, with the aim of refactoring the OpenSSL code so as to
-provide a more secure implementation.
+LibreSSL is an implementation of the Secure Sockets Layer (SSL) and
+Transport Layer Security (TLS) protocols. It derives from OpenSSL,
+with refactorings.
+
+LibreSSL provides much of the OpenSSL 1.1 API. The OpenSSL 3 API is not
+currently supported, but many programs only need v1.1. See
+%_docdir/libressl-devel-doc/unavailable-libcrypto-symbols.txt.zst for
+a list of symbols/functions that cannot be exercised when building
+with libressl.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libressl.
@@ -110,6 +115,7 @@ This subpackage contains the manpages to the LibreSSL API.
 
 %prep
 %autosetup -p1
+cp %_sourcedir/unavail* .
 
 %build
 autoreconf -fi
@@ -176,5 +182,6 @@ fi
 
 %files devel-doc
 %_mandir/man3/*.*
+%doc unavailable-libcrypto-symbols.txt.zst
 
 %changelog

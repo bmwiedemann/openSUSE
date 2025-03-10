@@ -567,4 +567,13 @@
     <comment>- Update to release 4.0.0</comment>
     <requestid>1208280</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>5949f657af1a1631d7b0a6c573f0886a</srcmd5>
+    <version>4.0.0</version>
+    <time>1741626289</time>
+    <user>anag+factory</user>
+    <comment>- Document absence of openssl3 APIs in descriptions and a
+  symbol list text file in %_docdir.</comment>
+    <requestid>1251525</requestid>
+  </revision>
 </revisionlist>
