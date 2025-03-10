@@ -18,7 +18,7 @@
 
 
 Name:           python-redfish
-Version:        3.2.8
+Version:        3.2.9
 Release:        0
 Summary:        Redfish Python Library
 License:        BSD-3-Clause

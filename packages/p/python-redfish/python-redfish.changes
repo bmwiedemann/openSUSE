@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  8 10:03:55 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.9
+  * Added optional 'headers' argument to the 'login' method.
+  * Clarified exception message when raising
+    'ServerDownOrUnreachableError'.
+
+-------------------------------------------------------------------
 Sun Feb  2 10:54:54 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.8
