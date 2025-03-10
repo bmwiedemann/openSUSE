@@ -1,0 +1,20 @@
+diff --git i/src/3d/qgs3dutils.cpp w/src/3d/qgs3dutils.cpp
+index 053c9458611..78ab57b9915 100644
+--- i/src/3d/qgs3dutils.cpp
++++ w/src/3d/qgs3dutils.cpp
+@@ -972,6 +972,7 @@ int Qgs3DUtils::openGlMaxClipPlanes( QSurface *surface )
+ {
+   int numPlanes = 6;
+ 
++#ifdef GL_MAX_CLIP_PLANES
+   QOpenGLContext context;
+   context.setFormat( QSurfaceFormat::defaultFormat() );
+   if ( context.create() )
+@@ -982,6 +983,7 @@ int Qgs3DUtils::openGlMaxClipPlanes( QSurface *surface )
+       funcs->glGetIntegerv( GL_MAX_CLIP_PLANES, &numPlanes );
+     }
+   }
++#endif
+ 
+   return numPlanes;
+ }

@@ -1,7 +1,7 @@
 #
 # spec file for package qgis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ Name:           qgis
 %define mypython %pythons
 %define __mypython %{expand:%%__%{mypython}}
 
-Version:        3.40.3
+Version:        3.42.0
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -48,6 +48,8 @@ Source3:        https://download.qgis.org/downloads/data/qgis_sample_data.zip
 Patch1:         fix-fastcgi-include.patch
 # PATCH-FIX-UPSTREAM - scan for pdal-config instead of pdal in cmake
 Patch2:         qgis-fix-cmake-findpdal.patch
+# PATCH-FIX-UPSTREAM - only determine GL_MAX_CLIP_PLANES if it is defined
+Patch3:         qgis-check-if-maxcliplanes-is-defined.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  PDAL-devel
 BuildRequires:  bison >= 2.4

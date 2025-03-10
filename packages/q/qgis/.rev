@@ -513,4 +513,18 @@
     <comment></comment>
     <requestid>1238962</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>c179e0a3ab8d2a652556cd5a2b609bb5</srcmd5>
+    <version>3.42.0</version>
+    <time>1741625923</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.42.0
+  * See https://changelog.qgis.org/en/qgis/version/3.42/ and
+    https://github.com/qgis/QGIS/compare/final-3_40_3...final-3_42_0
+    for changes
+  * Add new qgis-check-if-maxcliplanes-is-defined.patch to fix
+    building with aarch64
+</comment>
+    <requestid>1250599</requestid>
+  </revision>
 </revisionlist>

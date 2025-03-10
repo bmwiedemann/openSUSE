@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  5 12:05:50 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 3.42.0
+  * See https://changelog.qgis.org/en/qgis/version/3.42/ and
+    https://github.com/qgis/QGIS/compare/final-3_40_3...final-3_42_0
+    for changes
+  * Add new qgis-check-if-maxcliplanes-is-defined.patch to fix
+    building with aarch64
+
+-------------------------------------------------------------------
 Fri Jan 17 20:17:41 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 3.40.3
