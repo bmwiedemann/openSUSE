@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 10 11:35:11 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.6.1
+  Support for new devices:
+  * K100 RGB Optical-Mechanical
+  * K70 Core TKL RGB
+  * K65 Mini
+  Features:
+  * Port to Qt6
+  Bug fixes:
+  * The GUI no longer crashes on device disconnect
+  * The slash key on the Brazilian (ABNT) layout now works with
+    modern keyboards
+  * Prevent possible USB connection issues on legacy devices
+  * Resolve a crash on pure XWayland systems
+  * Prevent memory leak on active window detection code
+- Switch build to Qt6 on Tumbleweed
+
+-------------------------------------------------------------------
 Sun Jun 25 09:49:23 UTC 2023 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to version 0.6.0

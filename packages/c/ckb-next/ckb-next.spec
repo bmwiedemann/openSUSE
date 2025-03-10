@@ -1,7 +1,7 @@
 #
 # spec file for package ckb-next
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ckb-next
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        RGB driver for Corsair keyboard and mice
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -38,16 +38,28 @@ Patch6:         harden_ckb-next-daemon.service.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
-%if 0%{?suse_version} >= 1500
-BuildRequires:  quazip-qt5-devel
+%if 0%{?suse_version} >= 1600
+BuildRequires:  cmake(QuaZip-Qt6)
+%else
+BuildRequires:  cmake(QuaZip-Qt5)
 %endif
 BuildRequires:  update-desktop-files
+%if 0%{?suse_version} >= 1600
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
+BuildRequires:  cmake(Qt6Widgets)
+%else
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets) >= 5.2
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(dbusmenu-qt5)
+%endif
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
@@ -71,6 +83,9 @@ including full RGB animations.
 
 %build
 %cmake \
+%if 0%{?suse_version} >= 1600
+       -DPREFER_QT6=1 \
+%endif
        -DDISABLE_UPDATER=1 \
        -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \
        -DUDEV_RULE_DIRECTORY=%{_udevrulesdir}
