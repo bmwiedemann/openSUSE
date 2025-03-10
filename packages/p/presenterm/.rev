@@ -288,4 +288,41 @@
   * Bump sixel-rs to 0.4.1 to fix build in aarch64 and riscv64 (#452)</comment>
     <requestid>1247712</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bf160b9866cc8e0dc8d239947efaa256</srcmd5>
+    <version>0.11.0</version>
+    <time>1741630038</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.11.0:
+  Breaking changes:
+  * Footer templates are now sanitized, and any variables surrounded
+    in braces that aren't supported (e.g. {potato}) will now cause
+    presenterm to display an error. If you'd like to use braces in
+    contexts where you're not trying to reference a variable you can
+    use double braces, e.g. live at {{PotatoConf}} (#442) (#467) (#469) (#471).
+  New features:
+  * Add support for kitty's font size protocol. This is now used by
+    default in built in themes in a few components such as the intro slide's
+    title and slide titles. See the example presentation gif to check
+    out how this looks like. Terminal suport for this feature is detected
+    on startup and will be ignored if unsupported. This requires kitty &gt;= 0.40.0 (#438) (#460) (#470).
+  * Allow specifying font size in a comment command, which causes any
+    subsequent text in a slide to use the specified font size. Just like
+    the above, only supported in kitty &gt;= 0.40.0 for now (#458).
+  * Footers can now contain images in the left and center components.
+    This allows including some form of branding/company logo to your presentations (#450) (#476).
+  * Footers can now contain inline markdown, which allows using bold,
+    italics, &lt;span&gt; tags for colors, etc (#466).
+  * Presentation titles can now contain inline markdown (#464).
+  * Introduce palette.classes in themes to allow specifying combinations
+    of foreground/background colors that can be referenced via the class attribute in &lt;span&gt; tags (#468).
+  * It's now possible to configure the alignment to use when max_columns
+    is configured and the terminal width is larger than it (#475).
+  * Add support for wikilinks (#448).
+  Fixes:
+  * Don't get stuck if tmux doesn't passthrough (#456).
+  * Don't squash image if terminal's font aspect ratio is not 2:1 (#446).
+  * Fail if --config-file points to non existent file (#474).</comment>
+    <requestid>1251657</requestid>
+  </revision>
 </revisionlist>
