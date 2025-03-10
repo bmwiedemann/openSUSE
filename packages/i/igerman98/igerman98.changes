@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  4 20:05:38 UTC 2025 - pgajdos@suse.com
+
+- build with gcc15
+- modified sources
+  % fix8bit.c
+
+-------------------------------------------------------------------
 Tue May  7 13:30:52 UTC 2024 - pgajdos@suse.com
 
 - fix build with gcc14

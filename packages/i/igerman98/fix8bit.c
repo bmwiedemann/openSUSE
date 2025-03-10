@@ -77,17 +77,14 @@ static char Rcs_Id[] =
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-int		main ();	/* Convert to/from 8-bit sequences */
+int		main (int argc, char *argv[]);	/* Convert to/from 8-bit sequences */
 static void	usage ();	/* Issue a usage message */
 static void	to7bit ();	/* Convert from 8-bit sequences */
 static void	to8bit ();	/* Convert to 8-bit sequences */
 
-extern void	exit ();	/* Terminate program */
-
-int main (argc, argv)		/* Convert to/from 8-bit sequences */
-    int			argc;	/* Argument count */
-    char *		argv[];	/* Argument vector */
+int main (int argc, char *argv[])		/* Convert to/from 8-bit sequences */
     {
     
     if (argc != 2)

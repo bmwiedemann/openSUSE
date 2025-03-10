@@ -249,4 +249,14 @@
   % fix8bit.c</comment>
     <requestid>1172455</requestid>
   </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>5d7f6d623ad2c1018254ffd099865db9</srcmd5>
+    <version>20161207</version>
+    <time>1741626395</time>
+    <user>anag+factory</user>
+    <comment>- build with gcc15
+- modified sources
+  % fix8bit.c (forwarded request 1250256 from pgajdos)</comment>
+    <requestid>1251714</requestid>
+  </revision>
 </revisionlist>
