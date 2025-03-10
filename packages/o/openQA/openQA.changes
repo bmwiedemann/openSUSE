@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 09 19:12:30 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1741427870.33ddb978:
+  * Use of Feature::Compat::Try in the test libraries
+  * Fix sporadic test failure in `t/ui/10-tests_overview.t`
+  * Simplify test for filtering on test results overview
+  * t: Use implicit Test::Exception functions for the test
+
+-------------------------------------------------------------------
 Fri Mar 07 14:12:06 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1741336382.92b047c6:
