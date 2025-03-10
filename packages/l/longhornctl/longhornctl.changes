@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 10 06:50:16 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.1:
+  * release: update version file for v1.8.1
+  * release: update version file for v1.8.1-rc3
+  * fix(deps): update module github.com/longhorn/longhorn-manager
+    to v1.8.1-rc2
+  * release: update version file for v1.8.1-rc2
+  * fix(deps): update module github.com/longhorn/longhorn-manager
+    to v1.8.1-rc1
+  * release: update version file for v1.8.1-rc1
+  * fix(ci): fix multi-platform build env issue for gha
+  * fix(ci): fixed project name
+  * feat: self-contained container image build
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    151615b
+  * fix(deps): update patch digest dependencies
+  * chore(vendor): update dependencies
+  * fix(deps): update module github.com/longhorn/longhorn-manager
+    to v1.8.0
+  * fix(deps): update patch digest dependencies
+
+-------------------------------------------------------------------
 Wed Jan 22 08:57:07 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.0:
