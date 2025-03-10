@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Sat Mar  8 19:52:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.11.1
+  - [Minor] Fix transposed results in rspamadm fuzzy_ping by
+    @fatalbanana in #5260
+  - [Feature] GPT: Add ollama support by @vstakhov in #5262
+  - [Feature] Allow to hash any Lua types by @vstakhov in #5266
+  - [Fix] connIp is not correctly added to request by @corbosman in
+    #5268
+  - Allow to use LLM for anonymize by @vstakhov in #5267
+  - [minor] log queue id with cloudmark analysis string by
+    @corbosman in #5269
+  - Add ability to not send response_format in gpt plugin in order
+    to support gpt4all by @JQuags in #5276
+  - Fix Thunderbird for Android marked with
+    FORGED_MUA_THUNDERBIRD_MSGID_UNKNOWN by @towo in #5275
+  - [Feature] Allow to store shingles as opaque Lua data by
+    @vstakhov in #5279
+  - Fix issue with synchronous Redis calls by @vstakhov in #5281
+  - [Minor] Fix some broken links by @fatalbanana in #5283
+  - [Feature] Add 'noop' redis backend for scripts running by
+    @vstakhov in #5290
+  - [Enhancement] Expand Detection of Fake Reply Subjects Across
+    Multiple Languages by @D0LLYNH0 in #5288
+  - [Feature] Allow multiple lua scripts for fuzzy storage by
+    @vstakhov in #5293
+  - [Minor] Add another acceptable mime type for icon by
+    @fatalbanana in #5294
+  - [Minor] Respect ipv4 and ipv6 configurations for rbl resolve_ip
+    by @japc in #5292
+  - remove nixspam by @crpb in #5300
+  - [Minor] rbl check_types was missing images by @japc in #5305
+  - RBL: fix use of content_urls and images inside checks by
+    @fatalbanana in #5310
+  - fix: use sub_utf8 to strip headers value to not break utf8
+    strings by @dragoangel in #5313
+  - [Minor] Set RBL checks to bool true by @japc in #5314
+  - [Minor] Rules regexp url separated and fix no subdomain cases
+    for Google urls by @japc in #5315
+  - [WebUI] Reset dropdown when clearing filters by @moisseev in
+    #5317
+  - [Feature] Support LLM models consensus by @vstakhov in #5320
+  - [Feature] GPT: Support reason adding by @vstakhov in #5326
+  - [Minor] Pass both the multimap and the rules descriptions for
+    combined multimap on create by @japc in #5319
+  - [Fix] properly close multipart/related boundary when adding
+    text footer by @FreddleSpl0it in #5334
+  - [Minor] Some small fixes to statistics_dump by @japc in #5335
+  - [Fix] Verify key type to match DKIM signature type by @vstakhov
+    in #5352
+  - More features to GPT plugin by @vstakhov in #5356
+  - [Fix] Avoid collision hacks in mempool variables hash by
+    @vstakhov in #5357
+  - Allow to disable RBLs via map by @vstakhov in #5359
+  - Add ability to create timers from Lua by @vstakhov in #5363
+  - Prevent option duplicates in rspamd_stats.pl by @jeromelebleu
+    in #5365
+  - Regenerate manpages with recent Pandoc version by @jeromelebleu
+    in #5366
+  - Fix spelling errors in libserver by @jeromelebleu in #5367
+  - [Feature] Add Redis caching framework by @vstakhov in #5369
+  - [Fix] Add expiration for neural ham and spam sets by
+    @dragoangel in #5373
+  - Better support for maps and IP-related fixes/improvements in
+    settings by @amulet1 in #5372
+  - Use caching framework in gpt module by @vstakhov in #5374
+  - [Test] Update JavaScript linters by @moisseev in #5375
+  - [Fix] Properly expire neural ham and spam sets by @dragoangel
+    in #5376
+  - [Feature] Try to check maps earlier if their expires is too
+    long by @vstakhov in #5377
+- drop patches no longer needed:
+  ccb45df90df60fae36b9438cfb2b0088e590306b.patch
+  fix_missing_return.patch
+
+-------------------------------------------------------------------
 Wed Dec 25 20:29:19 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - we can enable hyperscan also on newer SLE 15 service packs

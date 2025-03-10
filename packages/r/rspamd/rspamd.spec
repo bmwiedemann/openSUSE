@@ -1,7 +1,7 @@
 #
 # spec file for package rspamd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.11.0
+Version:        3.11.1
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -70,9 +70,6 @@ Source0:        https://github.com/rspamd/rspamd/archive/%{version}/%{name}-%{ve
 Source1:        usr.bin.rspamd
 Patch0:         rspamd-conf.patch
 Patch1:         rspamd-after-redis-target.patch
-Patch2:         fix_missing_return.patch
-# remove with next version update
-Patch3:         ccb45df90df60fae36b9438cfb2b0088e590306b.patch
 %if !0%{?is_opensuse}
 # because 80-check-malware-scan-clamav triggered in SLE-15-SP2
 BuildRequires:  -post-build-checks-malwarescan
@@ -559,6 +556,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/plugins_stats.lua
 %{_datadir}/rspamd/lualib/tableshape.lua
 %{_datadir}/rspamd/lualib/lua_bayes_redis.lua
+%{_datadir}/rspamd/lualib/lua_cache.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_content
 %{_datadir}/rspamd/lualib/lua_content/ical.lua
@@ -666,6 +664,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/rules/parts.lua
 %{_datadir}/rspamd/rules/rspamd.lua
 %{_datadir}/rspamd/rules/subject_checks.lua
+%{_datadir}/rspamd/rules/regexp/urls.lua
 
 %dir %{_datadir}/rspamd/rules/regexp
 %{_datadir}/rspamd/rules/regexp/compromised_hosts.lua

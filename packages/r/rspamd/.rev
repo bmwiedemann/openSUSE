@@ -418,4 +418,12 @@ added https://github.com/rspamd/rspamd/commit/ccb45df90df60fae36b9438cfb2b0088e5
   To fix building without hyperscan</comment>
     <requestid>1234471</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2704d3fdb86bb28ff55ee4550a51875e</srcmd5>
+    <version>3.11.1</version>
+    <time>1741626240</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.11.1</comment>
+    <requestid>1251444</requestid>
+  </revision>
 </revisionlist>
