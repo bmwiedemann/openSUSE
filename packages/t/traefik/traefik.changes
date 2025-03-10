@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Mar 10 00:27:19 UTC 2025 - Eric Torres <eric.torres@its-et.me>
+
+- Version 3.3.4 changes
+  - fastproxy
+    * Bump github.com/valyala/fasthttp to v1.58.0 (#11526 by kevinpollet)
+    * Add WebSocket headers if they are present in the request (#11522 by kevinpollet)
+    * Chunked responses does not have a Content-Length header (#11514 by kevinpollet)
+  - metrics, otel
+    * Change request duration metric unit from millisecond to second (#11523 by rtribotte)
+  - sticky-session
+    * Fix double hash in sticky cookie (#11518 by juliens)
+  - tracing
+    * Use ResourceAttributes instead of GlobalAttributes (#11515 by bruno-de-queiroz)
+    * Fix panic when calling Tracer (#11479 by basgys)
+
+-------------------------------------------------------------------
+Mon Mar 10 00:25:30 UTC 2025 - Eric Torres <eric.torres@its-et.me>
+
+- Version 3.3.3 changes
+  - api
+    * Do not create observability model by default (#11476 by rtribotte)
+  - fastproxy
+    * Fix content-length header assertion (#11498 by kevinpollet)
+    * Handle responses without content length header (#11458 by rtribotte)
+  - k8s/crd, k8s
+    * Add missing headerField in Middleware CRD (#11499 by jspdown)
+  - tracing, accesslogs
+    * Bring back TraceID and SpanID fields in access logs (#11450 by rtribotte)
+
+-------------------------------------------------------------------
 Tue Jan 21 13:30:26 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Fix possible privilege escalation when mofing the acme.json file to the new
