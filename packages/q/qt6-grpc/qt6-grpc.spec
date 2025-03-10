@@ -27,6 +27,9 @@
 %define pkg_suffix -docs
 %endif
 #
+# Private QML imports
+%global __requires_exclude qt6qmlimport\\(qtgrpc\\.examples.*
+#
 Name:           qt6-grpc%{?pkg_suffix}
 Version:        6.8.2
 Release:        0
