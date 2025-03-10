@@ -1,7 +1,7 @@
 #
 # spec file for package python-mrcfile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,17 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-mrcfile
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        MRC file I/O library
 License:        BSD-3-Clause
 URL:            https://github.com/ccpem/mrcfile
 Source:         https://github.com/ccpem/mrcfile/archive/refs/tags/v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module numpy >= 1.16.0}
@@ -44,10 +47,10 @@ is used in structural biology to store image and volume data.
 %autosetup -p1 -n mrcfile-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mrcfile-header
 %python_clone -a %{buildroot}%{_bindir}/mrcfile-validate
 %python_expand %fdupes %{buildroot}%{$python_sitelib}

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 10 10:05:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.4
+  * Fix rare bug in mmap alignment with certain extended header sizes
+  * Add test and documentation code to source distribution
+  * Add support for Python 3.13 and numpy 2.1 & 2.2
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Mon Sep  9 13:31:02 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.5.3
