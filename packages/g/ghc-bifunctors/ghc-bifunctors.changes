@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar  2 14:07:33 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.6.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec  5 12:12:45 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update bifunctors to version 5.6.2 revision 1.
