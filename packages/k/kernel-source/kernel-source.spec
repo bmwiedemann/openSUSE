@@ -17,18 +17,20 @@
 
 
 %define srcversion 6.13
-%define patchversion 6.13.5
-%define git_commit ff9b7ffc8490960832920ffee73e1493972ca3a8
+%define patchversion 6.13.6
+%define git_commit 495d82a1a03f1d56659b255899b9655e52efb4b0
 %define variant %{nil}
+%define gcc_package gcc
+%define gcc_compiler gcc
 
 %include %_sourcedir/kernel-spec-macros
 
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source
-Version:        6.13.5
+Version:        6.13.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gff9b7ff
+Release:        <RELEASE>.g495d82a
 %else
 Release:        0
 %endif
@@ -150,9 +152,7 @@ Recommends:     dwarves >= 1.22
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 Recommends:     kernel-install-tools
 %endif
-%if 0%{?suse_version} == 1600
-Recommends:     gcc13
-%endif
+Recommends:     %gcc_package
 %obsolete_rebuilds %name
 
 # Force bzip2 instead of lzma compression to
@@ -272,6 +272,8 @@ fi
 	linux-%kernelrelease%variant linux-%kernelrelease-vanilla
 cd linux-%kernelrelease-vanilla
 %_sourcedir/apply-patches --vanilla %_sourcedir/series.conf %my_builddir %symbols
+sed -i -e 's/\$(CROSS_COMPILE)gcc/\$(CROSS_COMPILE)%gcc_compiler/g' Makefile
+grep '\$(CROSS_COMPILE)%gcc_compiler' Makefile
 rm -f $(find . -name ".gitignore")
 # Hardlink duplicate files automatically (from package fdupes).
 %fdupes $PWD
@@ -280,6 +282,8 @@ cd ..
 
 cd linux-%kernelrelease%variant
 %_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir %symbols
+sed -i -e 's/\$(CROSS_COMPILE)gcc/\$(CROSS_COMPILE)%gcc_compiler/g' Makefile
+grep '\$(CROSS_COMPILE)%gcc_compiler' Makefile
 rm -f $(find . -name ".gitignore")
 
 if [ -f %_sourcedir/localversion ] ; then

@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.13
-%define patchversion 6.13.5
-%define git_commit ff9b7ffc8490960832920ffee73e1493972ca3a8
+%define patchversion 6.13.6
+%define git_commit 495d82a1a03f1d56659b255899b9655e52efb4b0
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
@@ -28,9 +28,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-docs
-Version:        6.13.5
+Version:        6.13.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gff9b7ff
+Release:        <RELEASE>.g495d82a
 %else
 Release:        0
 %endif
@@ -283,6 +283,8 @@ cd linux-%srcversion
 %_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir %symbols
 
 %build
+# for reproducible builds (bsc#1238303)
+export PARALLELISM=1
 cd linux-%srcversion
 export LANG=en_US.utf8
 %if %build_html

@@ -6920,4 +6920,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.13.5 &amp; other fixes; bugs: bsc#1012628 bsc#1236340 bsc#1236415 bsc#1237161</comment>
     <requestid>1249219</requestid>
   </revision>
+  <revision rev="771" vrev="1">
+    <srcmd5>0ca5c137042dc4a97691ffcccc747bd7</srcmd5>
+    <version>6.13.6</version>
+    <time>1741635176</time>
+    <user>anag+factory</user>
+    <comment>6.13.6 &amp; microcode loading fixed &amp; other fixes; bugs: bsc#1012628 bsc#1236660 bsc#1237521 bsc#1238209 bsc#1238303 bsc#1238570</comment>
+    <requestid>1251716</requestid>
+  </revision>
 </revisionlist>

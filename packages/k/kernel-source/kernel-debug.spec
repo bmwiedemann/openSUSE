@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.13
-%define patchversion 6.13.5
-%define git_commit ff9b7ffc8490960832920ffee73e1493972ca3a8
+%define patchversion 6.13.6
+%define git_commit 495d82a1a03f1d56659b255899b9655e52efb4b0
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -31,15 +31,17 @@
 %define supported_modules_check 0
 %define build_flavor debug
 %define generate_compile_commands 1
+%define gcc_package gcc
+%define gcc_compiler gcc
 
 %include %_sourcedir/kernel-spec-macros
 
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-debug
-Version:        6.13.5
+Version:        6.13.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gff9b7ff
+Release:        <RELEASE>.g495d82a
 %else
 Release:        0
 %endif
@@ -59,8 +61,8 @@ BuildRequires:  flex
 # does not expand %%(...)
 %if "%build_flavor" == "syzkaller"
 # Needed by scripts/gcc-plugin.sh
-BuildRequires:  gcc-c++
-BuildRequires:  gcc-devel
+BuildRequires:  %gcc_package-c++
+BuildRequires:  %gcc_package-devel
 %endif
 BuildRequires:  hmaccalc
 BuildRequires:  libopenssl-devel
@@ -73,9 +75,7 @@ BuildRequires:  pesign-obs-integration
 # pahole for CONFIG_DEBUG_INFO_BTF
 BuildRequires:  dwarves >= 1.22
 %endif
-%if 0%{?suse_version} == 1600
-BuildRequires:  gcc13
-%endif
+BuildRequires:  %gcc_package
 # for objtool
 BuildRequires:  libelf-devel
 # required for 50-check-kernel-build-id rpm check
@@ -773,9 +773,7 @@ Requires:       dwarves >= 1.22
 Provides:       kernel-preempt-devel = %version-%release
 %endif
 %endif
-%if 0%{?suse_version} == 1600
-Requires:       gcc13
-%endif
+Requires:       %gcc_package
 %obsolete_rebuilds %name-devel
 PreReq:         coreutils
 
@@ -1268,6 +1266,9 @@ cd linux-%srcversion
 %endif
 	%_sourcedir/series.conf .. $SYMBOLS
 
+sed -i -e 's/\$(CROSS_COMPILE)gcc/\$(CROSS_COMPILE)%gcc_compiler/g' Makefile
+grep '\$(CROSS_COMPILE)%gcc_compiler' Makefile
+
 cd %kernel_build_dir
 
 # Override the timestamp 'uname -v' reports with the source timestamp and
@@ -1364,10 +1365,6 @@ EOF
 	fi
 	../scripts/config --set-str CONFIG_MODULE_SIG_KEY ".kernel_signing_key.pem"
 fi
-
-%if 0%{?suse_version} == 1600
-        MAKE_ARGS="$MAKE_ARGS CC=gcc-13"
-%endif
 
 case %cpu_arch in
     x86_64 | i386)
@@ -1466,7 +1463,7 @@ done
 
 %if 0%{?klp_ipa_clones} && %generate_compile_commands
     # Generate compile_commands.json
-    make compile_commands.json
+    make compile_commands.json $MAKE_ARGS
 %endif
 
 %install
@@ -1784,8 +1781,8 @@ if [ %CONFIG_MODULES = y ]; then
             %rpm_install_dir/%cpu_arch_flavor \
             $(echo %srcversion | sed -r 's/^([0-9]+)\.([0-9]+).*/\1 \2/')
     else
-       echo "export KBUILD_OUTPUT = %obj_install_dir/%cpu_arch_flavor" > %rpm_install_dir/%cpu_arch_flavor/Makefile
-       echo "include ../../../%{basename:%src_install_dir}/Makefile" >> %rpm_install_dir/%cpu_arch_flavor/Makefile
+       echo 'export KBUILD_OUTPUT = %obj_install_dir/%cpu_arch_flavor' > %rpm_install_dir/%cpu_arch_flavor/Makefile
+       echo 'include ../../../%{basename:%src_install_dir}/Makefile' >> %rpm_install_dir/%cpu_arch_flavor/Makefile
     fi
 fi
 
