@@ -1,0 +1,19 @@
+--- fix8bit.c.orig	2025-03-07 12:17:09.466931076 +0000
++++ fix8bit.c	2025-03-07 12:17:58.066416164 +0000
+@@ -77,14 +77,12 @@ static char Rcs_Id[] =
+ 
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+-int		main ();	/* Convert to/from 8-bit sequences */
+ static void	usage ();	/* Issue a usage message */
+ static void	to7bit ();	/* Convert from 8-bit sequences */
+ static void	to8bit ();	/* Convert to 8-bit sequences */
+ 
+-extern void	exit ();	/* Terminate program */
+-
+ int main (argc, argv)		/* Convert to/from 8-bit sequences */
+     int			argc;	/* Argument count */
+     char *		argv[];	/* Argument vector */
+

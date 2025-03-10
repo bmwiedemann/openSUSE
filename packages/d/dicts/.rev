@@ -239,4 +239,12 @@ Use a license from the spreadsheet linked at http://license.opensuse.org (forwar
     <comment>Prepare for RPM 4.20 (forwarded request 1150632 from dimstar)</comment>
     <requestid>1150734</requestid>
   </revision>
+  <revision rev="33" vrev="425">
+    <srcmd5>771aeeecc1ec4adfe048d51596e5e79c</srcmd5>
+    <version>1.5</version>
+    <time>1741626441</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1251815</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package dicts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@ Source19:       finnish.tar.bz2
 Source20:       estonian.tar.bz2
 Source21:       dicts-rpmlintrc
 Patch0:         prepare-dicts.dif
+Patch1:         dicts-gcc15.patch
 %global debug_package %{nil}
 
 %description
@@ -410,6 +411,7 @@ the package dicts.
   make -f Makefile.Linux extract
   rm Makefile.Linux
 %patch -P 0 -p0 -b .pdicts
+%patch -P 1 -p0
 
 # unify the permissions of all files, to make fdupes working again (bnc#784670)
 find . -type f -exec chmod 0644 {} +
