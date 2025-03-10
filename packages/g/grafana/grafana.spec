@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        11.5.1
+Version:        11.5.2
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        AGPL-3.0-only
@@ -37,10 +37,12 @@ Source3:        README
 Source4:        Makefile
 Source5:        0001-Add-source-code-reference.patch
 Patch2:         0002-Use-bash-instead-of-env.patch
+# CVE-2025-27144
+Patch3:         0003-Bump-go-jose.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  wire
-BuildRequires:  golang(API) >= 1.23.5
+BuildRequires:  golang(API) >= 1.23.7
 Requires(post): %fillup_prereq
 Requires:       group(grafana)
 Requires:       user(grafana)

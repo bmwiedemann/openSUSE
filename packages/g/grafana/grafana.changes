@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 10 11:27:53 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2025-27144: Fix Go JOSE's Parsing Vulnerability (bsc#1237671)
+  * Add 0003-Bump-go-jose.patch
+
+-------------------------------------------------------------------
+Sun Mar  9 23:18:51 UTC 2025 - Eric Torres <eric.torres@its-et.me>
+
+- Update to version 11.5.2:
+  Features and Enhancements
+  * TransformationFilter: Include transformation outputs in transformation filtering options
+  * grafana-ui: Update InlineField error prop type to React.ReactNode
+  Bug fixes:
+  * Alerting: Allow specifying uid for new rules added to groups
+  * Alerting: Allow specifying uid for new rules added to groups
+  * Alerting: Call RLock() before reading sendAlertsTo map
+  * Auth: Fix redirect with JWT auth URL login
+  * AuthN: Refetch user on "ErrUserAlreadyExists"
+  * Azure: Correctly set application insights resource values
+  * CodeEditor: Fix cursor alignment
+  * DashboardList: Throttle the re-renders
+  * Dashboards: Bring back scripted dashboards
+  * Plugin Metrics: Eliminate data race in plugin metrics middleware
+  * RBAC: Don't check folder access if annotationPermissionUpdate FT is enabled
+
+-------------------------------------------------------------------
 Thu Feb 20 10:45:49 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Use /bin/bash in wrapper scripts
