@@ -721,4 +721,12 @@ services protected by Fail2ban. CVE-2013-7177 (cyrus-imap) and CVE-2013-7176
   * supports python 3.12 and 3.13 (gh-3487)</comment>
     <requestid>1217267</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>702a31c7404cd3f28c906fba79ad00c8</srcmd5>
+    <version>1.1.0</version>
+    <time>1741626388</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1251684</requestid>
+  </revision>
 </revisionlist>
