@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  5 12:55:03 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/hardinfo2/hardinfo2/commit/6a0e91649e61cc920b0d90f8ce1e0a25cc63bcb3
+  + hardinfo-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Nov  9 15:04:49 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add hardinfo-dyamic-libsoup.patch: Do not link libsoup

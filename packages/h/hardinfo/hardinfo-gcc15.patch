@@ -1,0 +1,39 @@
+Index: hardinfo-0.5.1/report.h
+===================================================================
+--- hardinfo-0.5.1.orig/report.h
++++ hardinfo-0.5.1/report.h
+@@ -71,7 +71,7 @@ struct _ReportDialog {
+   GtkTreeModel *model;
+ };
+ 
+-void		 report_dialog_show();
++void		 report_dialog_show(GtkTreeModel *model, GtkWidget *parent);
+ 
+ ReportContext	*report_context_html_new();
+ ReportContext	*report_context_text_new();
+Index: hardinfo-0.5.1/shell.h
+===================================================================
+--- hardinfo-0.5.1.orig/shell.h
++++ hardinfo-0.5.1/shell.h
+@@ -138,7 +138,7 @@ struct _ShellModuleEntry {
+     gint		 number;
+     
+     gchar		*(*func) ();
+-    void		(*scan_func) ();
++    void		(*scan_func) (gboolean flag);
+ 
+     gchar		*(*fieldfunc) (gchar * entry);
+     gchar 		*(*morefunc) (gchar * entry);
+Index: hardinfo-0.5.1/callbacks.c
+===================================================================
+--- hardinfo-0.5.1.orig/callbacks.c
++++ hardinfo-0.5.1/callbacks.c
+@@ -103,7 +103,7 @@ void cb_copy_to_clipboard()
+ 	gchar *data = module_entry_function(entry);
+ 	GtkClipboard *clip =
+ 	    gtk_clipboard_get(gdk_atom_intern("CLIPBOARD", FALSE));
+-	ReportContext *ctx = report_context_text_new(NULL);
++	ReportContext *ctx = report_context_text_new();
+ 
+ 	ctx->entry = entry;
+ 

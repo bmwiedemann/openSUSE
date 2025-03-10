@@ -1,7 +1,7 @@
 #
 # spec file for package hardinfo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source:         http://downloads.sf.net/%{name}.berlios/%{name}-%{version}.tar.g
 # PATCH-FIX-UPSTREAM hardinfo-0.5.1-reproducible.patch bwiedemann@suse.com -- make build reproducible
 Patch0:         hardinfo-0.5.1-reproducible.patch
 Patch1:         hardinfo-dyamic-libsoup.patch
+# https://github.com/hardinfo2/hardinfo2/commit/6a0e91649e61cc920b0d90f8ce1e0a25cc63bcb3
+Patch2:         hardinfo-gcc15.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
