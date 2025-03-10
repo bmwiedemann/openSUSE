@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  7 10:01:02 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with current freetype, add fix_freetype_tag_type.patch
+
+-------------------------------------------------------------------
 Thu Dec 19 11:35:07 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Disable documentation build on Leap 16 for now until mathjax is

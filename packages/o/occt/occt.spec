@@ -1,7 +1,7 @@
 #
 # spec file for package occt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ License:        LGPL-2.1-only WITH OCCT-exception-1.0
 Group:          Productivity/Graphics/CAD
 URL:            https://www.opencascade.com/open-cascade-technology/
 Source0:        https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V%{OCCT_TAG}.tar.gz#/occt-%{version}.tar.gz
+Patch0:         https://github.com/Open-Cascade-SAS/OCCT/commit/7236e83dcc1e7284e66dc61e612154617ef715d6.patch#/fix_freetype_tag_type.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  fdupes
