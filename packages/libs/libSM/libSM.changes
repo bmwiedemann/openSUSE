@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar  9 04:14:11 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.2.6
+  Support for using getaddrinfo() was originally added to support IPv6,
+  and only used if IPv6 support was enabled.  Two decades later, support
+  for getaddrinfo() is ubiquitous and OS'es have marked gethostbyname()
+  as deprecated, so use the modern interface whenever we can now.
+  (Note that code included from xtrans will only use the modern interfaces
+  when IPv6 is disabled if building against xtrans 1.6.0 or later.)
+
+  Of course, in libSM, this only matters if one of the UUID generation
+  interfaces isn't being used instead, and the configure script has also
+  been modified in this release to stop checking for network interfaces
+  if we're not going to use them because we found a UUID generation
+  mechanism to use instead for creating ids.
+
+-------------------------------------------------------------------
 Sat Dec 14 03:43:58 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 1.2.5:

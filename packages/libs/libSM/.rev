@@ -110,4 +110,23 @@ Sun Feb 12 03:35:24 UTC 2012 - jengelh@medozas.de
   * IceReadCompleteMessage callers need to check if malloc() failed</comment>
     <requestid>1230953</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>99968c2f933d8a5c70e6ad5145c4cbc0</srcmd5>
+    <version>1.2.6</version>
+    <time>1741625868</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.6
+  Support for using getaddrinfo() was originally added to support IPv6,
+  and only used if IPv6 support was enabled.  Two decades later, support
+  for getaddrinfo() is ubiquitous and OS'es have marked gethostbyname()
+  as deprecated, so use the modern interface whenever we can now.
+  (Note that code included from xtrans will only use the modern interfaces
+  when IPv6 is disabled if building against xtrans 1.6.0 or later.)
+  Of course, in libSM, this only matters if one of the UUID generation
+  interfaces isn't being used instead, and the configure script has also
+  been modified in this release to stop checking for network interfaces
+  if we're not going to use them because we found a UUID generation
+  mechanism to use instead for creating ids.</comment>
+    <requestid>1251494</requestid>
+  </revision>
 </revisionlist>
