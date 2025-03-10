@@ -1,7 +1,7 @@
 #
 # spec file for package lsof
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,13 @@
 
 %define sover 0
 Name:           lsof
-Version:        4.99.3
+Version:        4.99.4
 Release:        0
 Summary:        A Program That Lists Information about Files Opened by Processes
 License:        Zlib
 Group:          System/Monitoring
 URL:            https://github.com/lsof-org/lsof
 Source:         https://github.com/lsof-org/lsof/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         lsof-4.99.3-fix-version-in-configure-ac.patch
-Patch1:         0001-tests-eliminate-use-of-fgrep.patch
-Patch2:         0002-linux-Maintain-original-output-for-pidfd-in-linux-6..patch
 Patch3:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
