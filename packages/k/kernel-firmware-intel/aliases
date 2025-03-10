@@ -30,6 +30,12 @@ intel_ish_ipc: pci:v00008086d0000A0FCsv*sd*bc*sc*i*
 intel_ish_ipc: pci:v00008086d0000A135sv*sd*bc*sc*i*
 intel_ish_ipc: pci:v00008086d0000A37Csv*sd*bc*sc*i*
 intel_ish_ipc: pci:v00008086d0000A845sv*sd*bc*sc*i*
+intel_ish_ipc: pci:v00008086d0000E345sv*sd*bc*sc*i*
+intel_ish_ipc: pci:v00008086d0000E445sv*sd*bc*sc*i*
+intel_vpu: pci:v00008086d0000643Esv*sd*bc*sc*i*
+intel_vpu: pci:v00008086d00007D1Dsv*sd*bc*sc*i*
+intel_vpu: pci:v00008086d0000AD1Dsv*sd*bc*sc*i*
+intel_vpu: pci:v00008086d0000B03Esv*sd*bc*sc*i*
 ipu3_imgu: pci:v00008086d00001919sv*sd*bc*sc*i*
 isci: pci:v00008086d00001D60sv*sd*bc*sc*i*
 isci: pci:v00008086d00001D61sv*sd*bc*sc*i*
