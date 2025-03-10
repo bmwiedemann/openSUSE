@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 10 14:35:51 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.75.4:
+  * feat: Adding `find` command (#3981)
+  * fix: Remove usage of template provider (#3986)
+  * Fixed failing circleci jobs (#3988)
+  * build(deps): bump github.com/gruntwork-io/terratest from 0.47.2
+    to 0.48.2 (#3858)
+  * fix: Adding docs from role assumption updates in Jekyll docs
+    (#3985)
+
+-------------------------------------------------------------------
 Fri Mar 07 17:34:01 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.75.3:
