@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Mar  6 20:46:07 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.21
+  Broker
+  * Fix clients sending a RESERVED packet not being quickly
+    disconnected.
+  * Fix bind_interface producing an error when used with an
+    interface that has an IPv6 link-local address and no other
+    IPv6 addresses.
+  * Fix mismatched wrapped/unwrapped memory alloc/free in
+    properties.
+  * Fix allow_anonymous false not being applied in local only mode.
+  * Add retain_expiry_interval option to fix expired retained
+    message not being removed from memory if they are not
+    subscribed to.
+  * Produce an error if invalid combinations of
+    cafile/capath/certfile/keyfile are used.
+  * Backport keepalive checking from develop to fix problems in
+    current implementation.
+  Client library
+  * Fix potential deadlock in mosquitto_sub if -W is used.
+  Apps
+  * mosquitto_ctrl dynsec now also allows -i to specify a clientid
+    as well as -c. This matches the documentation which states -i.
+  Tests
+  * Fix 08-ssl-connect-cert-auth-expired and
+    08-ssl-connect-cert-auth-revoked tests when under load.
+
+-------------------------------------------------------------------
 Fri Nov  8 16:32:01 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - systemd service: Wait till the network got setup to avoid
