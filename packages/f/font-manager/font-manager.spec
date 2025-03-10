@@ -19,30 +19,35 @@
 %global DBusName com.github.FontManager.FontManager
 %global DBusName2 com.github.FontManager.FontViewer
 Name:           font-manager
-Version:        0.9.2
+Version:        0.9.4
 Release:        0
 Summary:        A simple font management application for Gtk+ Desktop Environments
 License:        GPL-3.0-or-later
 URL:            https://fontmanager.github.io
 Source0:        https://github.com/FontManager/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Patch1:         0001-reproducible-build.patch
 BuildRequires:  appstream-glib
 BuildRequires:  gettext-runtime
+BuildRequires:  libgio-2_0-0 >= 2.7
+BuildRequires:  libgmodule-2_0-0 >= 2.50
 BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.56
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(fontconfig) >= 2.12
 BuildRequires:  pkgconfig(freetype2) >= 2.10
-BuildRequires:  pkgconfig(glib-2.0) >= 2.62
+BuildRequires:  pkgconfig(glib-2.0) >= 2.64
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.12
+BuildRequires:  pkgconfig(harfbuzz) >= 2.5
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.5
+BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libarchive) >= 3.7
 BuildRequires:  pkgconfig(libnautilus-extension-4)
 BuildRequires:  pkgconfig(libnemo-extension)
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.2
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.10
-BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(pango) >= 1.45
 BuildRequires:  pkgconfig(sqlite3) >= 3.35
 BuildRequires:  pkgconfig(thunarx-3)
 BuildRequires:  pkgconfig(webkitgtk-6.0) >= 2.4
@@ -101,7 +106,7 @@ Requires:       font-viewer >= %{version}
 This package provides integration with the Thunar file manager.
 
 %prep
-%autosetup -p1
+%autosetup -p0
 
 %build
 %meson \
@@ -115,10 +120,7 @@ This package provides integration with the Thunar file manager.
 %install
 %meson_install
 rm %{buildroot}/%{_libdir}/%{name}/libfontmanager.so
-
 %find_lang %{name}
-%suse_update_desktop_file -r com.github.FontManager.FontManager Graphics Viewer
-%suse_update_desktop_file -r com.github.FontManager.FontViewer Graphics Viewer
 
 %check
 appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.metainfo.xml

@@ -1,0 +1,16 @@
+diff --git meson.build meson.build
+index cf5829ed..53948969 100644
+--- meson.build
++++ meson.build
+@@ -73,8 +73,10 @@ pkglib_dir = join_paths(prefix, get_option('libdir'), meson.project_name())
+ pkglibexec_dir = join_paths(prefix, get_option('libexecdir'), meson.project_name())
+
+ datetime = '''
++import os
++from time import time
+ from datetime import date
+-print(date.today())
++print(date.fromtimestamp(int(os.environ.get('SOURCE_DATE_EPOCH', time()))))
+ '''
+
+ today = run_command(python, '-c', datetime, check: true).stdout().strip()
