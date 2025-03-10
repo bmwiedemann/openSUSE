@@ -26,6 +26,9 @@
 %define pkg_suffix -docs
 %endif
 #
+# Private QML imports
+%global __requires_exclude qt6qmlimport\\(io\\.qt\\.examples.*
+#
 %ifnarch %{arm} aarch64
 %global with_opengl 1
 %endif

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar  9 22:50:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Ignore private QML imports
+
+-------------------------------------------------------------------
 Fri Feb 28 17:12:04 UTC 2025 - pallas wept <pallaswept@proton.me>
 
 - Add patch to fix failures when drag'n'drop in the task manager
