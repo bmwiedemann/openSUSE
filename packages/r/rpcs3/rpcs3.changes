@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Mar 10 04:06:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Rename glew+egl build patch to fix-build-glew-egl.patch
+- Update to rpcs3-0.0.35~git20250309:
+  * rsx: Reupload surface if the surface cache denies knowledge of it
+  * Set CI msbuild verbosity to minimal to reduce spam
+  * SPU LLVM: Subtract Timebase from decrementer
+  * move script to .ci/generate-qt-ts.sh
+  * Make suggested changes and remove unnecessary package
+  * Apply suggestions from code review
+  * fix the branch name in qt-ts.yml
+  * Move ts generator job to seperate workflow file
+  * Create qt-ts.yml
+  * fix branch name in .ts job
+  * add a job for generating translation template file (.ts)
+  * rsx: Fix boundary seek logic for FIFO addresses
+  * Target macOS 14 instead of 13 (fixes camera)
+  * rsx: Clean up and simplify texture register manipulation tests
+  * rsx/FIFO: Reimplement grabbing command args as a contiguous pointer
+  * rsx: Add stubs for FP rehash checks on barrier acquire
+  * rsx: Unify fragment texture config changes dirty bit tracking
+  * rsx/prog: Fix compiler warning
+  * rsx: Add program cache lookup ellision rate to overlay
+  * rsx/prog: Use a proper cache hint key instead of disjointed counters
+  * SPU: Fixup
+  * RSX: Do not invalidate FP analysis on same register writes
+  * RSX: Return FP shader as is if no changes were made
+  * RSX: Return VP shader as is if no changes were made
+  * RSX: Optimize vertex program ucode invalidation
+  * Update SDL to 3.2.8
+  * SPU Analyzer: Fix for value propagation
+  * RSX: ProgramStateCache loops optimizations
+  * RSX: Fix UB in FIFO_control::get_current_arg_ptr()
+
+-------------------------------------------------------------------
+Sat Mar  8 18:24:37 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Add patch addressing glew+egl build macro for wayland
+
+-------------------------------------------------------------------
+Thu Mar  6 22:00:31 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Transition from GLX to EGL
+
+-------------------------------------------------------------------
+Thu Mar  6 21:03:59 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.35~git20250305:
+  * Update FW 4.92 Latest Version (#16811)
+  * vk: Do not force strict query scopes by default
+  * static analysis: fix memory leak in decompress
+  * static analysis: ensure is always false
+  * static analysis: duplicate assignment
+  * static analysis: suspicious code
+  * static analysis: remove unused overrides
+  * static analysis: std::move
+  * static analysis: uninitialized variables
+  * static analysis: less references
+  * static analysis: more const ref
+  * static analysis: more const
+  * ci: Use more variables for LLVM and QT
+  * VS: move LLVM AdditionalDependencies to rpcs3_default.props
+  * VS: add some missing filters
+  * Add memory breakpoints
+
+-------------------------------------------------------------------
 Tue Mar  4 02:44:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.35~git20250303:
