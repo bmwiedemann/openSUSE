@@ -1,7 +1,7 @@
 #
 # spec file for package python-mygpoclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,18 +19,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mygpoclient
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Python gpodder.net API Client Library
 License:        GPL-3.0-or-later
 URL:            https://gpodder.org/mygpoclient
 Source:         https://files.pythonhosted.org/packages/source/m/mygpoclient/mygpoclient-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-simplejson
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,10 +44,10 @@ the my.gpodder.org web services.
 %setup -q -n "mygpoclient-%{version}"
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_mandir}/man1/mygpo-bpsync.1
 %python_clone -a %{buildroot}%{_bindir}/mygpo-simple-client
 %python_clone -a %{buildroot}%{_bindir}/mygpo-list-devices
@@ -69,6 +71,7 @@ the my.gpodder.org web services.
 %python_alternative %{_bindir}/mygpo-list-devices
 %python_alternative %{_bindir}/mygpo-simple-client
 %python_alternative %{_mandir}/man1/mygpo-bpsync.1%{ext_man}
-%{python_sitelib}/*
+%{python_sitelib}/mygpoclient
+%{python_sitelib}/mygpoclient-%{version}.dist-info
 
 %changelog

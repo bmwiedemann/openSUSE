@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 10 10:49:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.10
+  * Add Python 3.11 and 3.12 to tests.
+  * Switch from distutils to setuptools.
+  * Remove unsupported Python 2.7 and 3.6 from tests.
+  * Replace assertEquals with assertEqual.
+  * Replace assert_ with assertIn or assertTrue.
+  * Update to python 3.13
+- Limit Python files matched in %files section
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Sat Mar  9 11:13:17 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
