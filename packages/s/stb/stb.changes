@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  5 10:52:48 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move pkgconfig creation to source file with sed command to
+  hopefully avoid obs set_version breaking the pc version tag
+
+-------------------------------------------------------------------
 Fri Jan 31 07:19:08 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to current state (10th sept 2024)

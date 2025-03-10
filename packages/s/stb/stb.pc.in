@@ -1,0 +1,7 @@
+prefix=@_prefix@
+includedir=@_includedir@
+
+Name:           stb
+Description:    Single-File Public Domain Libraries for C/C++
+Version:        @version@
+Cflags:         -I${includedir}/stb

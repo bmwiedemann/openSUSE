@@ -24,6 +24,7 @@ License:        MIT OR Unlicense
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/nothings/stb
 Source0:        stb-%{version}.tar.xz
+Source1:        stb.pc.in
 # perlin.h got removed in git, breaking build
 Patch1:         fix-compile.patch
 BuildRequires:  c++_compiler
@@ -87,17 +88,11 @@ stb_leakcheck.h             | misc             | quick-and-dirty malloc/free lea
 %autosetup -p1
 
 %build
-# pkgconf
-cat > stb.pc << EOF
-prefix=%{_prefix}
-exec_prefix=\${prefix}
-includedir=%{_includedir}
-
-Name:           %{name}
-Description:    %{summary}
-Version:        20240910%{version}
-Cflags:         -I\${includedir}/stb
-EOF
+sed \
+    -e "s-@_prefix@-%{_prefix}-g" \
+    -e "s-@_includedir@-%{_includedir}-g" \
+    -e "s-@version@-%{version}-g" \
+%{SOURCE1} > stb.pc
 
 %install
 mkdir -p %buildroot%_includedir/stb
