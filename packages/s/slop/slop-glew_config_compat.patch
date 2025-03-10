@@ -1,0 +1,34 @@
+From b8263adf2af85c53ceda77d28756baf7b1a9c5e4 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Mon, 10 Mar 2025 15:50:43 +0100
+Subject: [PATCH] Work around incompatibility between CMake and glew
+
+CMake FindGLEW.cmake module and glew CMake config files are incompatible and cause
+build errors.
+To work around the issue, we first look for the glew config files and fall back to
+CMake's module.
+---
+ CMakeLists.txt | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e5dac0a..4326b74 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -69,7 +69,12 @@ find_package(X11 REQUIRED)
+ find_package(XExt REQUIRED)
+ 
+ if ( SLOP_OPENGL )
+-  find_package(GLEW REQUIRED)
++  find_package(glew CONFIG)
++  if(glew_FOUND)
++    set(GLEW_LIBRARIES GLEW::glew)
++  else()
++    find_package(GLEW REQUIRED)
++  endif()
+   find_package(OpenGL REQUIRED)
+   find_package(GLX REQUIRED)
+   find_package(XRender REQUIRED)
+-- 
+2.48.1
+

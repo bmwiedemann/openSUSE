@@ -1,7 +1,7 @@
 #
 # spec file for package slop
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,17 +26,19 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/naelstrof/slop
 Source0:        https://github.com/naelstrof/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE
+Patch0:         slop-glew_config_compat.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gengetopt
 BuildRequires:  glm-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(imlib2)
 BuildRequires:  pkgconfig(xrandr)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 slop (Select Operation) queries for a selection from the user and prints
@@ -64,25 +66,22 @@ Requires:       %{lname} = %{version}
 Header files for the slop library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
-pushd build/
-%make_install
-popd
+%cmake_install
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
-%{_mandir}/man1/*.1*
+%{_mandir}/man1/*.1%{?ext_man}
 
 %files -n %{lname}
 %{_libdir}/libslopy.so.7*
