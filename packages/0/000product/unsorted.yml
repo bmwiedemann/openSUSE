@@ -8189,6 +8189,10 @@ unsorted:
   - grass-doc 
   - grc 
   - greetd 
+  - greetd-agreety 
+  - greetd-branding-openSUSE 
+  - greetd-branding-upstream 
+  - greetd-fakegreet 
   - grepcidr 
   - grepmail 
   - gretl 
@@ -15094,9 +15098,6 @@ unsorted:
   - libnozzle1 
   - libnpupnp-devel 
   - libnpupnp13 
-  - libnscd-devel 
-  - libnscd1 
-  - libnscd1-32bit 
   - libnsfdb-devel 
   - libnsfdb-tools 
   - libnsfdb1 
@@ -15172,6 +15173,8 @@ unsorted:
   - libofx7 
   - libogg-devel 
   - libogg0-32bit 
+  - liboggplay-devel 
+  - liboggplay2 
   - liboggz-devel 
   - liboggz-doc 
   - liboggz2 
@@ -15200,6 +15203,7 @@ unsorted:
   - libonnx_proto 
   - liboop-devel 
   - liboop4 
+  - liboorexx4 
   - libopae-c2 
   - libopagent1 
   - libopamgt-devel 
@@ -15288,6 +15292,7 @@ unsorted:
   - libopenssl-3-fips-provider-x86-64-v3 
   - libopenssl-devel 
   - libopenssl-fips-provider 
+  - libopentimelineio0 
   - libopentracing-cpp1 
   - libopenvdb11_0 
   - libopenvino2500 
@@ -17279,61 +17284,61 @@ unsorted:
   - libwv-1_2-4 
   - libwx_base-suse-devel 
   - libwx_base-suse-nostl-devel 
-  - libwx_baseu-suse-nostl12_0_0 
-  - libwx_baseu-suse12_0_0 
-  - libwx_baseu_net-suse-nostl12_0_0 
-  - libwx_baseu_net-suse12_0_0 
-  - libwx_baseu_xml-suse-nostl12_0_0 
-  - libwx_baseu_xml-suse12_0_0 
-  - libwx_gtk2u_adv-suse12_0_0 
-  - libwx_gtk2u_aui-suse12_0_0 
-  - libwx_gtk2u_core-suse12_0_0 
-  - libwx_gtk2u_gl-suse12_0_0 
-  - libwx_gtk2u_html-suse12_0_0 
-  - libwx_gtk2u_media-suse12_0_0 
-  - libwx_gtk2u_propgrid-suse12_0_0 
-  - libwx_gtk2u_qa-suse12_0_0 
-  - libwx_gtk2u_ribbon-suse12_0_0 
-  - libwx_gtk2u_richtext-suse12_0_0 
-  - libwx_gtk2u_stc-suse12_0_0 
-  - libwx_gtk2u_xrc-suse12_0_0 
-  - libwx_gtk3u_adv-suse-nostl12_0_0 
-  - libwx_gtk3u_adv-suse12_0_0 
-  - libwx_gtk3u_aui-suse-nostl12_0_0 
-  - libwx_gtk3u_aui-suse12_0_0 
-  - libwx_gtk3u_core-suse-nostl12_0_0 
-  - libwx_gtk3u_core-suse12_0_0 
-  - libwx_gtk3u_gl-suse-nostl12_0_0 
-  - libwx_gtk3u_gl-suse12_0_0 
-  - libwx_gtk3u_html-suse-nostl12_0_0 
-  - libwx_gtk3u_html-suse12_0_0 
-  - libwx_gtk3u_media-suse-nostl12_0_0 
-  - libwx_gtk3u_media-suse12_0_0 
-  - libwx_gtk3u_propgrid-suse-nostl12_0_0 
-  - libwx_gtk3u_propgrid-suse12_0_0 
-  - libwx_gtk3u_qa-suse-nostl12_0_0 
-  - libwx_gtk3u_qa-suse12_0_0 
-  - libwx_gtk3u_ribbon-suse-nostl12_0_0 
-  - libwx_gtk3u_ribbon-suse12_0_0 
-  - libwx_gtk3u_richtext-suse-nostl12_0_0 
-  - libwx_gtk3u_richtext-suse12_0_0 
-  - libwx_gtk3u_stc-suse-nostl12_0_0 
-  - libwx_gtk3u_stc-suse12_0_0 
-  - libwx_gtk3u_webview-suse12_0_0 
-  - libwx_gtk3u_xrc-suse-nostl12_0_0 
-  - libwx_gtk3u_xrc-suse12_0_0 
-  - libwx_qtu_adv-suse12_0_0 
-  - libwx_qtu_aui-suse12_0_0 
-  - libwx_qtu_core-suse12_0_0 
-  - libwx_qtu_gl-suse12_0_0 
-  - libwx_qtu_html-suse12_0_0 
-  - libwx_qtu_media-suse12_0_0 
-  - libwx_qtu_propgrid-suse12_0_0 
-  - libwx_qtu_qa-suse12_0_0 
-  - libwx_qtu_ribbon-suse12_0_0 
-  - libwx_qtu_richtext-suse12_0_0 
-  - libwx_qtu_stc-suse12_0_0 
-  - libwx_qtu_xrc-suse12_0_0 
+  - libwx_baseu-suse-nostl14_0_0 
+  - libwx_baseu-suse14_0_0 
+  - libwx_baseu_net-suse-nostl14_0_0 
+  - libwx_baseu_net-suse14_0_0 
+  - libwx_baseu_xml-suse-nostl14_0_0 
+  - libwx_baseu_xml-suse14_0_0 
+  - libwx_gtk2u_adv-suse14_0_0 
+  - libwx_gtk2u_aui-suse14_0_0 
+  - libwx_gtk2u_core-suse14_0_0 
+  - libwx_gtk2u_gl-suse14_0_0 
+  - libwx_gtk2u_html-suse14_0_0 
+  - libwx_gtk2u_media-suse14_0_0 
+  - libwx_gtk2u_propgrid-suse14_0_0 
+  - libwx_gtk2u_qa-suse14_0_0 
+  - libwx_gtk2u_ribbon-suse14_0_0 
+  - libwx_gtk2u_richtext-suse14_0_0 
+  - libwx_gtk2u_stc-suse14_0_0 
+  - libwx_gtk2u_xrc-suse14_0_0 
+  - libwx_gtk3u_adv-suse-nostl14_0_0 
+  - libwx_gtk3u_adv-suse14_0_0 
+  - libwx_gtk3u_aui-suse-nostl14_0_0 
+  - libwx_gtk3u_aui-suse14_0_0 
+  - libwx_gtk3u_core-suse-nostl14_0_0 
+  - libwx_gtk3u_core-suse14_0_0 
+  - libwx_gtk3u_gl-suse-nostl14_0_0 
+  - libwx_gtk3u_gl-suse14_0_0 
+  - libwx_gtk3u_html-suse-nostl14_0_0 
+  - libwx_gtk3u_html-suse14_0_0 
+  - libwx_gtk3u_media-suse-nostl14_0_0 
+  - libwx_gtk3u_media-suse14_0_0 
+  - libwx_gtk3u_propgrid-suse-nostl14_0_0 
+  - libwx_gtk3u_propgrid-suse14_0_0 
+  - libwx_gtk3u_qa-suse-nostl14_0_0 
+  - libwx_gtk3u_qa-suse14_0_0 
+  - libwx_gtk3u_ribbon-suse-nostl14_0_0 
+  - libwx_gtk3u_ribbon-suse14_0_0 
+  - libwx_gtk3u_richtext-suse-nostl14_0_0 
+  - libwx_gtk3u_richtext-suse14_0_0 
+  - libwx_gtk3u_stc-suse-nostl14_0_0 
+  - libwx_gtk3u_stc-suse14_0_0 
+  - libwx_gtk3u_webview-suse14_0_0 
+  - libwx_gtk3u_xrc-suse-nostl14_0_0 
+  - libwx_gtk3u_xrc-suse14_0_0 
+  - libwx_qtu_adv-suse14_0_0 
+  - libwx_qtu_aui-suse14_0_0 
+  - libwx_qtu_core-suse14_0_0 
+  - libwx_qtu_gl-suse14_0_0 
+  - libwx_qtu_html-suse14_0_0 
+  - libwx_qtu_media-suse14_0_0 
+  - libwx_qtu_propgrid-suse14_0_0 
+  - libwx_qtu_qa-suse14_0_0 
+  - libwx_qtu_ribbon-suse14_0_0 
+  - libwx_qtu_richtext-suse14_0_0 
+  - libwx_qtu_stc-suse14_0_0 
+  - libwx_qtu_xrc-suse14_0_0 
   - libwxcode_gtk2u_wxsqlite3-3_2-0 
   - libwxlua 
   - libwxlua-wx32-3_1_0_0 
@@ -18334,10 +18339,7 @@ unsorted:
   - magic-wormhole.rs-bash-completion 
   - magic-wormhole.rs-fish-completion 
   - magic-wormhole.rs-zsh-completion 
-  - magpie 
   - magpie-1 
-  - magpie-devel 
-  - magpie-lang 
   - mailcommon-devel 
   - maildir-utils 
   - mailgraph 
@@ -20848,6 +20850,7 @@ unsorted:
   - opensuse-welcome-lang 
   - opentest4j 
   - opentest4j-javadoc 
+  - opentimelineio-devel 
   - opentofu 
   - opentoonz 
   - opentracing-cpp-devel 
