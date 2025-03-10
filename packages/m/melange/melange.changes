@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 10 06:52:32 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.2:
+  * Ldd check linter (#1834)
+  * fix(pkg/build/pipelines/go/covdata.yaml): add jq dep (#1833)
+  * build(deps): bump github.com/docker/docker from
+    27.5.1+incompatible to 28.0.1+incompatible (#1830)
+  * build(deps): bump dagger.io/dagger from 0.15.3 to 0.16.2
+    (#1832)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.13.2 to
+    5.14.0 (#1831)
+  * build(deps): bump actions/download-artifact in the actions
+    group (#1828)
+  * build(deps): bump the gomod group with 2 updates (#1829)
+
+-------------------------------------------------------------------
 Wed Mar 05 09:37:02 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.22.1:
