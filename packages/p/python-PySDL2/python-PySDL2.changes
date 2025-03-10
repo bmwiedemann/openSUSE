@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  4 15:07:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.9.17
+  * Updated to wrap new functions and constants in SDL 2.30.10.
+  * Updated to wrap new functions and constants in SDL_mixer 2.8.0
+  * Updated to wrap new function in SDL_image 2.8.0.
+  * Added a new function sdl2.ext.get_key_state for checking if a given 
+    key is currently down or up independently of the SDL event queue.
+- Drop merged patches:
+  * fix-tests-SDL_GetError.patch
+  * fix-partially-resolve-video_test.patch
+  * fix-test-SDL_hid_enumerate.patch
+
+-------------------------------------------------------------------
 Fri Feb  2 09:28:39 UTC 2024 - munix9@googlemail.com
 
 - Add libmpg123-0 as a build requirement for the tests
