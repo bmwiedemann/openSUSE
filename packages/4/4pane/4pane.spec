@@ -1,7 +1,7 @@
 #
 # spec file for package 4pane
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -55,9 +55,8 @@ sed -i -e "s|/usr/doc/4Pane/|%{_docdir}/4Pane/|g" Configure.cpp
 mkdir -vp %{buildroot}/%{_datadir}/applications
 cd %{buildroot}/%{_datadir}/applications
 ln -s ../4Pane/rc/4Pane.desktop 4Pane.desktop
-pushd %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
+cd %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
 convert -strip -resize 48x48! 4Pane.png 4Pane.png
-popd
 %fdupes -s %{buildroot}/%{_datadir}
 
 %files
