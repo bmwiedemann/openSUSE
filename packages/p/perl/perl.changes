@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  7 14:54:59 CET 2025 - mls@suse.de
+
+- update to 5.40.1
+ * fix strftime sometimes crashing if a non-string was used as argument
+ * some functions in the builtin:: package would crash when used after
+   a tail call
+ * fix utf8n_to_uvchr sometimes failing to correctly identify certain
+   invalid UTF-8 sequences as invalid.
+
+-------------------------------------------------------------------
 Wed Jul  3 07:31:25 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Insert manual provide for perl(Getopt::Long) until new version

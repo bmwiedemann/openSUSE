@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,11 @@
 %define name_suffix %{nil}
 %endif
 
-%define pversion 5.40.0
+%define pversion 5.40.1
 # set to nil when equal to pversion
-%global versionlist %{nil}
+%global versionlist 5.40.0
 Name:           perl%{?name_suffix}
-Version:        5.40.0
+Version:        5.40.1
 Release:        0
 Summary:        The Perl interpreter
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -196,7 +196,7 @@ install -m 444 saveConfig.pm $cpa/Config.pm
 install -m 444 saveConfig_heavy.pl $cpa/Config_heavy.pl
 # install macros.perl file
 install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmconfigdir}/macros.d/macros.perl
-pushd %{_includedir}
+cd %{_includedir}
 ( rpm -ql glibc-devel | grep -F '.h'
   find %{_includedir}/asm/ -name \*.h
   find %{_includedir}/asm-generic -name \*.h
@@ -204,7 +204,7 @@ pushd %{_includedir}
 ) | while read f; do
   %{buildroot}%{_bindir}/perl -I$cp -I$cpa %{buildroot}%{_bindir}/h2ph -d $vpa ${f/\/usr\/include\//} || :
 done
-popd
+cd -
 d="`gcc -print-file-name=include`"
 test -f "$d/stdarg.h" && (cd $d ; %{buildroot}%{_bindir}/perl -I$cp -I$cpa %{buildroot}%{_bindir}/h2ph -d $vpa stdarg.h stddef.h float.h)
 # remove broken pm - we don't have the module
