@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 10 07:32:50 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.36.0:
+  * perf: remove preScan struct #1837
+  * refactor: change Worker trait signature #1849
+  * fix: fix inconsistent matching in relaxed mode #1848
+  * feat: allow richer metadata format #1854
+  * fix: do not display color for error when not in tty #1850
+  * fix: make scan respect --globs flag #1842
+  * feat: move processing to worker thread #143
+  * feat: move matching to worker #143
+  * refactor: remove Matches/Diffs macro in cli #1819
+  * Breaking change: fix: bump min msrv 846be66
+  * refactor: split colored printer 083a5f9
+  * refactor: moved interactive printer b9bedf4
+
+-------------------------------------------------------------------
 Fri Feb 21 15:54:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.35.0:
