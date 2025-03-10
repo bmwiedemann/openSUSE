@@ -1,7 +1,7 @@
 #
 # spec file for package cdogs-sdl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cdogs-sdl
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Classic overhead run-and-gun game
 License:        BSD-2-Clause AND GPL-2.0-only AND CC-BY-3.0 AND CC-BY-SA-3.0
@@ -27,8 +27,6 @@ Source:         https://github.com/cxong/cdogs-sdl/archive/%{version}/%{name}-%{
 Source1:        cdogs-sdl.rpmlintrc
 Patch0:         fix-build.patch
 Patch1:         fix-env-script-interpreter.patch
-# PATCH-FIX-UPSTREAM - cdogs-sdl-gcc-14.patch - https://sources.debian.org/patches/cdogs-sdl/2.1.0%2Bdfsg-2/gcc-14.patch/
-Patch2:         cdogs-sdl-gcc-14.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  enet-devel
 BuildRequires:  fdupes

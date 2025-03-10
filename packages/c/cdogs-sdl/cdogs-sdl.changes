@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar  8 09:58:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  * Add new per-campaign enhanced high score system, not backwards
+    compatible.
+  * Fix invalid character in credits.
+- Drop patch:
+  * cdogs-sdl-gcc-14.patch
+
+-------------------------------------------------------------------
 Sat Dec  7 09:01:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.0
