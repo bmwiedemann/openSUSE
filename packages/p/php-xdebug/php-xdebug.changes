@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  9 18:29:37 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to Xdebug 3.4.2
+  * Fixed bug #2313: var_dump does not output some Russian characters
+  * Fixed bug #2314: Class properties with hooks are always shown as null
+  * Fixed bug #2315: xdebug_dump_superglobals() leaks memory
+  * Fixed bug #2317: Code coverage leaks memory
+  * Fixed bug #2319: emoji character become diamond question marks
+  * Fixed bug #2321: Segfault when null is assigned to a superglobal
+  * Fixed bug #2323: xdebug_notify() does not respect xdebug.var_display_max_* Settings
+  * Fixed bug #2327: Segmentation Fault 139 if exception thrown in callback since PHP 8.4
+
+-------------------------------------------------------------------
 Mon Jan  6 19:35:15 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to Xdebug 3.4.1
