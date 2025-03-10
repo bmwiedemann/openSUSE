@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 10 13:18:16 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.40.0:
+  * Allow the target of aliases to be recipes in submodules
+  * Make --list-submodules require --list
+  * Star parameters may follow default parameters
+  * Remove test! macro from readme
+  * Sort enum variant, struct member, and trait members alphabetically
+  * Add Zed extension to readme
+  * Refactor error checking in choose function
+  * Use Test struct instead of test! macro
+  * Include unicode codepoint in unknown start of token error
+  * Ignore broken pipe error from chooser
+  * Guarantee that Namepaths are non-empty
+  * Remove unnecessary binding modifiers
+  * Document Vim and Neovim built-in syntax highlighting
+  * Remove rust:just Repology badge
+  * Clarify --list argument
+  * Expand Windows path documentation
+  * Fix readme typos
+
+-------------------------------------------------------------------
 Thu Jan 23 15:39:03 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.39.0:
