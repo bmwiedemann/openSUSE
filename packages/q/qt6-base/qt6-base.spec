@@ -53,6 +53,8 @@ Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
 Patch101:       0001-Use-newer-GCC-on-Leap.patch
 %endif
 Patch102:       0001-Don-t-strip-binaries-when-building-with-qmake.patch
+# Change a couple default build system settings
+Patch103:       0001-Change-default-settings-for-Qt-packages.patch
 ##
 BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
@@ -785,6 +787,7 @@ sed -i '/zstd CONFIG/d' cmake/FindWrapZSTD.cmake
     -DBUILD_WITH_PCH:BOOL=FALSE \
     -DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
     -DQT_BUILD_EXAMPLES:BOOL=TRUE \
+    -DQT_INSTALL_EXAMPLES_SOURCES:BOOL=TRUE \
     -DQT_BUILD_TESTS:BOOL=FALSE \
     -DQT_CREATE_VERSIONED_HARD_LINK:BOOL=FALSE \
     -DQT_DISABLE_RPATH:BOOL=FALSE \
@@ -849,6 +852,10 @@ rm -r %{buildroot}%{_qt6_includedir}/QtExamplesAssetDownloader
 rm %{buildroot}%{_qt6_descriptionsdir}/ExamplesAssetDownloaderPrivate.json
 rm %{buildroot}%{_qt6_libdir}/libQt6ExamplesAssetDownloader.*
 rm %{buildroot}%{_qt6_metatypesdir}/qt6examplesassetdownloaderprivate_*_metatypes.json
+
+# E: env-script-interpreter
+sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/corelib/serialization/cbordump/cbortag.py
+
 
 %ldconfig_scriptlets -n libQt6Concurrent6
 %ldconfig_scriptlets -n libQt6Core6

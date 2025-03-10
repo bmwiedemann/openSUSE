@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar  9 09:28:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch (fixes boo#1218403):
+  * 0001-Change-default-settings-for-Qt-packages.patch
+
+-------------------------------------------------------------------
 Thu Feb  6 13:44:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Drop patches:
