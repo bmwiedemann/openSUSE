@@ -2570,4 +2570,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>- make the rpm package not depend on libarchive</comment>
     <requestid>1245646</requestid>
   </revision>
+  <revision rev="320" vrev="1">
+    <srcmd5>f05b9f8e904aeac1c122ae5fe2fd8216</srcmd5>
+    <version>4.20.1</version>
+    <time>1741625909</time>
+    <user>anag+factory</user>
+    <comment>- update to rpm-4.20.1</comment>
+    <requestid>1251214</requestid>
+  </revision>
 </revisionlist>

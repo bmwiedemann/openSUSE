@@ -20,7 +20,7 @@
 # Enable Python build sourced from rpm spec
 %global with_python 1
 Name:           python-rpm
-Version:        4.20.0
+Version:        4.20.1
 Release:        0
 Summary:        Python Bindings for Manipulating RPM Packages
 License:        GPL-2.0-or-later

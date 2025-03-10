@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar  7 14:14:55 CET 2025 - mls@suse.de
+
+- update to rpm-4.20.1
+  * add support for fully locked user accounts in sysusers.d
+  * fix unmodified %config files being removed in case of an
+    unpack failure
+  * fix lua deprecation warnings being shown packages built with
+    old rpm versions
+  * ignore all files in macro directories that do not end with an
+    alphanumeric character
+- refreshed patches:
+  * rpmqpack.diff 
+  * unshare.diff
+  * rpm2archive.diff
+- dropped patches:
+  * debugpackage.diff
+  * nextfiles.diff
+  * buildsys.diff
+
+-------------------------------------------------------------------
 Wed Feb 12 13:36:45 CET 2025 - mls@suse.de
 
 - make the rpm package not depend on libarchive

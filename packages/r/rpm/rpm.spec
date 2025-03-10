@@ -58,11 +58,11 @@ Requires:       rpm-config-SUSE
 Summary:        The RPM Package Manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        4.20.0
+Version:        4.20.1
 Release:        0
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
-Source:         https://ftp.osuosl.org/pub/rpm/releases/rpm-4.19.x/rpm-%{version}.tar.bz2
+Source:         https://ftp.osuosl.org/pub/rpm/releases/rpm-4.20.x/rpm-%{version}.tar.bz2
 #Git-Clone:     https://github.com/rpm-software-management/rpmpgp_legacy
 Source1:        rpmpgp_legacy-1.1.tar.gz
 Source5:        rpmsort
@@ -120,12 +120,9 @@ Patch141:       0002-log-build-time-if-it-is-set-from-SOURCE_DATE_EPOCH.patch
 Patch142:       0003-Error-out-on-a-missing-changelog-date.patch
 Patch150:       unshare.diff
 Patch151:       buildroot-symlink.diff
-Patch152:       debugpackage.diff
-Patch153:       nextfiles.diff
 Patch154:       undefbuildroot.diff
 Patch155:       rpm2archive.diff
 Patch156:       mtime_policy_set.diff
-Patch157:       buildsys.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -244,7 +241,7 @@ rm -rf sqlite
 %patch -P 131          -P 133 -P 134 -P 135 -P 136        -P 138
 %patch -P 139
 %patch -P 141 -P 142
-%patch -P 150 -P 151 -P 152 -P 153 -P 154 -P 155 -P 156 -P 157
+%patch -P 150 -P 151               -P 154 -P 155 -P 156
 
 %ifarch aarch64 ppc64le riscv64 loongarch64
 %patch -P 6464
