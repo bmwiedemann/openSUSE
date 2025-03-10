@@ -4,16 +4,16 @@ author: Mitchell Dalvi Rosen, Travis Staton
 bug-reports: https://github.com/awkward-squad/text-ansi/issues
 build-type: Simple
 category: Data
-copyright: (c) 2018-2024 Mitchell Dalvi Rosen, Travis Staton
+copyright: (c) 2018-2025 Mitchell Dalvi Rosen, Travis Staton
 homepage: https://github.com/awkward-squad/text-ansi
 license-file: LICENSE
 license: BSD-3-Clause
 maintainer: Mitchell Dalvi Rosen <mitchellwrosen@gmail.com>, Travis Staton <hello@travisstaton.com>
 name: text-ansi
 synopsis: Text styling for ANSI terminals.
-tested-with: GHC == 9.6.5, GHC == 9.8.2, GHC == 9.10.1
+tested-with: GHC == 9.8.4, GHC == 9.10.1, GHC == 9.12.1
 version: 0.3.0.1
-x-revision: 1
+x-revision: 2
 
 description:
   Text styling for ANSI terminals using SGR codes, as defined by the
@@ -37,7 +37,7 @@ source-repository head
 
 library
   build-depends:
-    base ^>= 4.16 || ^>= 4.17 || ^>= 4.18 || ^>= 4.19 || ^>= 4.20,
+    base ^>= 4.16 || ^>= 4.17 || ^>= 4.18 || ^>= 4.19 || ^>= 4.20 || ^>= 4.21,
     text >= 1.0 && < 2.2,
     text-builder-linear ^>= 0.1.1,
   default-language:
