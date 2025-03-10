@@ -27,6 +27,9 @@
 %define pkg_suffix -docs
 %endif
 #
+# Private QML imports
+%global __requires_exclude qt6qmlimport\\((AxisHandling|SurfaceGallery)\\)
+#
 Name:           qt6-datavis3d%{?pkg_suffix}
 Version:        6.8.2
 Release:        0
