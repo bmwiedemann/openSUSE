@@ -28,6 +28,9 @@
 %define pkg_suffix -docs
 %endif
 #
+# Private QML imports
+%global __requires_exclude qt6qmlimport\\((BrowserUtils|frequencymonitor|FrequencyMonitor|performancemonitor).*
+#
 %if 0%{?suse_version} > 1500
 # The antique version in Leap 15 is too old for building chromium
 %bcond_without system_harfbuzz
@@ -65,6 +68,7 @@ BuildRequires:  bison
 # Not pulled automatically on Leap
 BuildRequires:  cups-config
 BuildRequires:  cups-devel
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gperf
 BuildRequires:  krb5-devel
@@ -418,6 +422,9 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 # This shouldn't be needed
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
+
+# E: files-duplicated-waste
+%fdupes %{buildroot}%{_qt6_examplesdir}
 
 %ldconfig_scriptlets -n libQt6Pdf6
 %ldconfig_scriptlets -n libQt6PdfQuick6
