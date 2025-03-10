@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar  9 00:58:46 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.1,4
+  * Provide a setting for enabling dbus-events - ddcutil-service DPMS and hotplug detection. 
+  * Default the dbus-event setting to off, which is less troublesome for some VDUs/GPUs/drivers.
+
+-------------------------------------------------------------------
 Tue Feb 18 20:56:03 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.1.3
