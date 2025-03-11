@@ -15,4 +15,22 @@
     <comment></comment>
     <requestid>1244040</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>150abbc46531cf4e42d044cf377ed891</srcmd5>
+    <version>1.84.1</version>
+    <time>1741722166</time>
+    <user>anag+factory</user>
+    <comment>Version 1.84.1 (2025-01-30)
+==========================
+- [Fix ICE 132920 in duplicate-crate diagnostics.](https://github.com/rust-lang/rust/pull/133304/)
+- [Fix errors for overlapping impls in incremental rebuilds.](https://github.com/rust-lang/rust/pull/133828/)
+- [Fix slow compilation related to the next-generation trait solver.](https://github.com/rust-lang/rust/pull/135618/)
+- [Fix debuginfo when LLVM's location discriminator value limit is exceeded.](https://github.com/rust-lang/rust/pull/135643/)
+- Fixes for building Rust from source:
+  - [Only try to distribute `llvm-objcopy` if llvm tools are enabled.](https://github.com/rust-lang/rust/pull/134240/)
+  - [Add Profile Override for Non-Git Sources.](https://github.com/rust-lang/rust/pull/135433/)
+  - [Resolve symlinks of LLVM tool binaries before copying them.](https://github.com/rust-lang/rust/pull/135585/)
+  - [Make it possible to use ci-rustc on tarball sources.](https://github.com/rust-lang/rust/pull/135722/)</comment>
+    <requestid>1251612</requestid>
+  </revision>
 </revisionlist>
