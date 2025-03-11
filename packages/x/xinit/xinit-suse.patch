@@ -1,16 +1,12 @@
-Index: xinit-1.4.3/startx.cpp
-===================================================================
---- xinit-1.4.3.orig/startx.cpp
-+++ xinit-1.4.3/startx.cpp
-@@ -59,11 +59,103 @@ userclientrc=$HOME/.xinitrc
+--- xinit-1.4.4/startx.before_patch2	2025-03-09 23:08:33.597781034 +0100
++++ xinit-1.4.4/startx	2025-03-09 23:27:30.128779830 +0100
+@@ -61,6 +61,93 @@
  [ -f "${XINITRC}" ] && userclientrc="${XINITRC}"
- sysclientrc=XINITDIR/xinitrc
+ sysclientrc="/usr/libexec/xinit/xinitrc"
  
-+XCOMM
-+XCOMM check for installed servers
-+XCOMM
-+
-+#ifdef linux
++#
++# check for installed servers
++#
 +
 +INSTALLED_SERVERS=`ls -1 /usr/bin/Xorg /usr/X11R6/bin/XFree86  /usr/X11R6/bin/Xorg* 2>/dev/null`
 +
@@ -25,28 +21,28 @@ Index: xinit-1.4.3/startx.cpp
 +fi
 +
 +
-+XCOMM
-+XCOMM perhaps a windowmanager is specified?
-+XCOMM
-+XCOMM
-+XCOMM find wmlist utility, else take twm as default (always there :-))
-+XCOMM
++#
++# perhaps a windowmanager is specified?
++#
++#
++# find wmlist utility, else take twm as default (always there :-))
++#
 +type wmlist >/dev/null 2>&1 && WMLIST="`for i in $(wmlist); do echo $i; done | sort`"
 +test -z "$WMLIST" && WMLIST="twm"
 +
 +test "$1" = "--" || { test -n "$1" && WANTEDWM=`basename "$1"` ; }
 +
-+XCOMM
-+XCOMM User could have set a list of window manager in WINDOWMANAGERLIST.
-+XCOMM go through wms and check if user specified a reachable one.
-+XCOMM
++#
++# User could have set a list of window manager in WINDOWMANAGERLIST.
++# go through wms and check if user specified a reachable one.
++#
 +
 +for WM in $WMLIST $WINDOWMANAGERLIST
 +do
 +    test "$WM" = "$WANTEDWM" && {
-+XCOMM
-+XCOMM       is it reachable via $PATH?
-+XCOMM
++#
++#       is it reachable via $PATH?
++#
 +       type $WM >/dev/null 2>&1 || {
 +
 +           echo "`basename $0`: error: the requested window manager '$1' could not be found!"
@@ -54,9 +50,9 @@ Index: xinit-1.4.3/startx.cpp
 +           for i in $WMLIST; do echo $i; done
 +           exit 1
 +       }
-+XCOMM
-+XCOMM    OK, we got it, this will be the override for WINDOWMANAGER
-+XCOMM
++#
++#    OK, we got it, this will be the override for WINDOWMANAGER
++#
 +       export WINDOWMANAGER=$WM
 +       shift 1
 +       break
@@ -65,9 +61,9 @@ Index: xinit-1.4.3/startx.cpp
 +
 +unset WINDOWMANAGERLIST WMLIST WANTEDWM WM
 +
-+XCOMM
-+XCOMM check symlink
-+XCOMM
++#
++# check symlink
++#
 +
 +if [ ! -L /usr/bin/X ]; then
 +
@@ -78,9 +74,9 @@ Index: xinit-1.4.3/startx.cpp
 +       exit 1
 +fi
 +
-+XCOMM
-+XCOMM check if the Xorg file is an executable or an accidentally copied script or similar things
-+XCOMM
++#
++# check if the Xorg file is an executable or an accidentally copied script or similar things
++#
 +
 +if [ ! -x /usr/bin/X ]; then
 +
@@ -91,33 +87,25 @@ Index: xinit-1.4.3/startx.cpp
 +       exit 1
 +fi
 +
-+#endif /* linux */
-+
-+XCOMM set $DISPLAYMANAGER_XSERVER $DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN
++# set $DISPLAYMANAGER_XSERVER $DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN
 +. /etc/sysconfig/displaymanager
 +
- userserverrc=$HOME/.xserverrc
++
+ userserverrc="$HOME/.xserverrc"
  [ -f "${XSERVERRC}" ] && userserverrc="${XSERVERRC}"
- sysserverrc=$xinitdir/xserverrc
- defaultclient=$xterm
-+XCOMM set X Server accordingly (Xorg/Xgl)
- defaultserver=$xserver
-+test -n "$DISPLAYMANAGER_XSERVER" && defaultserver=/usr/bin/$DISPLAYMANAGER_XSERVER
- defaultclientargs=""
- defaultserverargs=""
- defaultdisplay=""
-@@ -317,6 +409,10 @@ EOF
+ sysserverrc="$xinitdir/xserverrc"
+@@ -319,6 +406,10 @@
      done
  fi
  
-+XCOMM handle TCP port 6000
++# handle TCP port 6000
 +test "$DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN" != "yes" && \
 +  serverargs="$serverargs -nolisten tcp"
 +
  case "$(uname -s)" in
  CYGWIN_NT*|Darwin)
-     eval $xinit \"$client\" $clientargs -- \"$server\" $display $serverargs
-@@ -327,6 +423,12 @@ CYGWIN_NT*|Darwin)
+     eval "$xinit" \"$client\" $clientargs -- \"$server\" $display $serverargs
+@@ -329,6 +420,12 @@
  esac
  retval=$?
  
@@ -129,21 +117,18 @@ Index: xinit-1.4.3/startx.cpp
 +
  if [ "$enable_xauth" = 1 ] ; then
      if [ "$removelist" != "" ]; then
-         $xauth remove $removelist
-Index: xinit-1.4.3/xinitrc.cpp
-===================================================================
---- xinit-1.4.3.orig/xinitrc.cpp
-+++ xinit-1.4.3/xinitrc.cpp
-@@ -47,8 +47,10 @@ if [ -d $xinitdir/xinitrc.d ] ; then
- 	unset f
+         "$xauth" remove $removelist
+--- xinit-1.4.4/xinitrc.before_patch2	2025-03-09 23:08:33.601781115 +0100
++++ xinit-1.4.4/xinitrc	2025-03-09 23:31:04.025108190 +0100
+@@ -50,7 +50,10 @@
  fi
  
--$twm &
+ "$twm" &
 +if [ -x /usr/X11R6/bin/fvwm -o -x /usr/bin/fvwm]; then
 +    exec fvwm
 +fi
- $xclock -geometry 50x50-1+1 &
- $xterm -geometry 80x50+494+51 &
- $xterm -geometry 80x20+494-0 &
--exec $xterm -geometry 80x66+0+0 -name login
+ "$xclock" -geometry 50x50-1+1 &
+ "$xterm" -geometry 80x50+494+51 &
+ "$xterm" -geometry 80x20+494-0 &
+-exec "$xterm" -geometry 80x66+0+0 -name login
 +exec $twm

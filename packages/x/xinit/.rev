@@ -378,4 +378,18 @@
     <comment></comment>
     <requestid>1249409</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6523966e22efb0039196aea194abcd44</srcmd5>
+    <version>1.4.4</version>
+    <time>1741722159</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.4
+  This release fixes regresssions introduced by the shell script modernization
+  in the 1.4.3 release, primarily seen on systems without the &quot;mcookie&quot; helper
+  program to make xauth cookies, and thus using openssl or /dev/urandom to
+  make cookies instead.  Thanks to Peter Tribble of the Tribblix illumos distro
+  for reporting the issue and testing the fixes.
+- adjusted xinit-suse.patch, xinit-tolerant-hostname-changes.patch</comment>
+    <requestid>1251581</requestid>
+  </revision>
 </revisionlist>

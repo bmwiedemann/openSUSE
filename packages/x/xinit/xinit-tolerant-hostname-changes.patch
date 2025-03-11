@@ -1,7 +1,7 @@
-Index: xinit-1.4.3/startx.cpp
+Index: xinit-1.4.3/startx
 ===================================================================
---- xinit-1.4.3.orig/startx.cpp
-+++ xinit-1.4.3/startx.cpp
+--- xinit-1.4.3.orig/startx
++++ xinit-1.4.3/startx
 @@ -412,6 +412,7 @@ fi
  XCOMM handle TCP port 6000
  test "$DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN" != "yes" && \

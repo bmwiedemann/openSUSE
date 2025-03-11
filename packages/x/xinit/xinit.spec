@@ -20,7 +20,7 @@
 %define UsrEtcMove 1
 %endif
 Name:           xinit
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        X Window System initializer
 License:        MIT
@@ -69,10 +69,10 @@ sed -i 's+%{_sysconfdir}/X11+%{_libexecdir}+' %{PATCH0}
 %endif
 %patch -P 0
 %patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-### patch is applied later in %install section
-%dnl %patch -P 5 -p0
+### patches are applied later in %install section
+#patch -P 2 -p1
+#patch -P 3 -p1
+#patch -P 5 -p0
 # needed for patch0
 autoreconf -fi
 
@@ -86,6 +86,8 @@ autoreconf -fi
 gcc %{optflags} -o keygen %{SOURCE2}
 
 %install
+patch -p1 < %{PATCH2}
+patch -p1 < %{PATCH3}
 %make_install
 install -m 0644 %{SOURCE3} %{buildroot}%{_mandir}/man1
 install -m 0711 keygen %{buildroot}%{_bindir}/keygen

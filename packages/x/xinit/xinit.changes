@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar  9 21:35:21 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.4.4
+  This release fixes regresssions introduced by the shell script modernization
+  in the 1.4.3 release, primarily seen on systems without the "mcookie" helper
+  program to make xauth cookies, and thus using openssl or /dev/urandom to
+  make cookies instead.  Thanks to Peter Tribble of the Tribblix illumos distro
+  for reporting the issue and testing the fixes.
+- adjusted xinit-suse.patch, xinit-tolerant-hostname-changes.patch
+
+-------------------------------------------------------------------
 Sat Mar  1 09:57:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Make build recipe compatible with POSIX sh
