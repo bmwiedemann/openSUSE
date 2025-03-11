@@ -35,6 +35,7 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  minisat-devel
 BuildRequires:  ninja
 BuildRequires:  python3-base
+BuildRequires:  python3-setuptools
 BuildRequires:  xz
 
 %description

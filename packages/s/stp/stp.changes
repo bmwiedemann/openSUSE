@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 10 10:26:08 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Add missing BuildRequires python3-setuptools 
+
+-------------------------------------------------------------------
 Fri Jun 28 06:06:35 UTC 2024 - jslaby@suse.cz
 
 - Update to version 2.3.4+20240611:
