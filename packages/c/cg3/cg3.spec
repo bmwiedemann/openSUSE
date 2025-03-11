@@ -1,7 +1,7 @@
 #
 # spec file for package cg3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           cg3
 %define lname	libcg3-1
-Version:        1.4.6
+Version:        1.5.0
 Release:        0
 Summary:        VISL Constraint Grammar implementation
 License:        BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT
 # src/icu_uoptions.cpp see license.icu.txt (MIT)
 Group:          Productivity/Scientific/Other
-URL:            https://visl.sdu.dk/cg3.html
+URL:            https://edu.visl.dk/cg3.html
 #Git-Clone:     https://github.com/GrammarSoft/cg3
 
 Source:         https://github.com/GrammarSoft/cg3/releases/download/v%version/%name-%version.tar.bz2
@@ -81,8 +81,7 @@ that want to use VISL CG-3.
 %cmake_install
 rm -f "%buildroot/%_libdir"/*.a "%buildroot/%_libdir/libcg3-private.so"
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/cg*

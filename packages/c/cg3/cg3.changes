@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar 11 16:20:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.0
+  * New features:
+  * `CMDARGS` and `CMDARGS-OVERRIDE` for setting command line
+    arguments in the grammar. See
+    https://edu.visl.dk/cg3/chunked/grammar.html#grammar-cmdargs
+  * Cmdline arg `--debug-rules` takes a range of rule line
+    numbers, and will print the windows when a targeted rule
+    tries to do anything.
+  * Cmdline arg `--print-ids` to always print globally unique
+    cohort ID.
+  * New rule type `CopyCohort` to copy a cohort.
+  * New rule type `RemParent` to orphan a cohort.
+  * New rule type `SwitchParent` sets the grandparent of the
+    target as its parent and sets the target as the parent of the
+    previous parent.
+  * Changes:
+  * `MergeCohorts` now inherits dependencies and relations by
+    default.
+  * `Substitute (*) ...` can now be used to insert tags without
+    removing any.
+
+-------------------------------------------------------------------
 Fri Aug  4 12:05:17 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.6
