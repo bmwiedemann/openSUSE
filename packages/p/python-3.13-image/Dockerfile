@@ -19,6 +19,7 @@
 #!BuildTag: opensuse/bci/python:%%py313_ver%%
 #!BuildTag: opensuse/bci/python:3.13
 #!BuildTag: opensuse/bci/python:3
+#!BuildTag: opensuse/bci/python:latest
 
 FROM opensuse/tumbleweed:latest
 
@@ -47,5 +48,4 @@ ENV PYTHON_VERSION="%%py313_ver%%"
 ENV PATH="$PATH:/root/.local/bin"
 ENV PIP_VERSION="%%pip_ver%%"
 
-RUN set -euo pipefail; install -d -m 0755 /root/.local/bin; ln -s /usr/bin/python3.13 /usr/local/bin/python3; \
-    ln -s /usr/bin/pydoc3.13 /usr/local/bin/pydoc
+RUN set -euo pipefail; install -d -m 0755 /root/.local/bin
