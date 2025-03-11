@@ -497,4 +497,14 @@
     <comment></comment>
     <requestid>1246507</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>94aa8bf2b150a8442a98342f8c197042</srcmd5>
+    <version>20250115.01</version>
+    <time>1741722441</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix unexpected memory consumption during token
+  parsing in golang.org/x/oauth2 (bsc#1239197, CVE-2025-22868)
+  * CVE-2025-22868.patch (forwarded request 1252042 from glaubitz)</comment>
+    <requestid>1252129</requestid>
+  </revision>
 </revisionlist>
