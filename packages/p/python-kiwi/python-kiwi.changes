@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 03 09:40:13 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.12 → 10.2.13
+
+-------------------------------------------------------------------
+Fri Feb 28 09:56:15 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Lookup CHRP loader instead of using a static name
+
+  On ppc the CHRP loader name can vary between distributions.
+  This commit adds a search method to lookup different ELF
+  loader names. In addition an integration test image for
+  Fedora was added. This Fixes #2741
+
+-------------------------------------------------------------------
 Wed Feb 26 17:39:37 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.11 → 10.2.12
