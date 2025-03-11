@@ -2,6 +2,7 @@
 # spec file for package sratom
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define sover 0
 Name:           sratom
-Version:        0.6.14
+Version:        0.6.18
 Release:        0
 Summary:        A library for serialising LV2 atoms to/from RDF
 License:        ISC
@@ -31,8 +32,8 @@ BuildRequires:  graphviz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(lv2) >= 1.18.4
-BuildRequires:  pkgconfig(serd-0) >= 0.30.0
-BuildRequires:  pkgconfig(sord-0) >= 0.16.10
+BuildRequires:  pkgconfig(serd-0) >= 0.30.10
+BuildRequires:  pkgconfig(sord-0) >= 0.16.16
 
 %description
 A library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax.
@@ -64,8 +65,7 @@ Development files for libsratom.
 %install
 %meson_install
 
-%post -n libsratom-0-%{sover} -p /sbin/ldconfig
-%postun -n libsratom-0-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsratom-0-%{sover}
 
 %files -n libsratom-0-%{sover}
 %license COPYING
@@ -73,6 +73,7 @@ Development files for libsratom.
 %{_libdir}/libsratom-0.so.%{sover}*
 
 %files devel
+%license COPYING
 %{_libdir}/libsratom-0.so
 %{_includedir}/sratom-0/
 %{_libdir}/pkgconfig/sratom-0.pc
