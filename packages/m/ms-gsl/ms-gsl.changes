@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Mar  2 19:31:11 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to upstream version 4.2.0
+  * New Features:
+    - Added gsl::swap for safely swapping gsl::not_null pointers (#1160)
+    - Introduced element_type member type to gsl::not_null for better type
+      trait consistency (#1196)
+    - Added support for strict_not_null with unique_ptr (#1179)
+    - Added comprehensive test suite for gsl::span including empty span,
+      conversion, and comparison tests (#1189)
+  * Performance Improvements:
+    - Significantly improved span_iterator performance with Clang compiler,
+      reducing overhead by up to 20x (#1166)
+  * Bug Fixes:
+    - Fixed GCC-specific bug with list initialization of const
+      references (#1175)
+    - Fixed SFINAE implementation in gsl::owner (#1174)
+    - Fixed issues with std::enable_if usage throughout the codebase (#1177)
+    - Modified include directives to use explicit "gsl/" prefix to prevent
+      header conflicts (#1184)
+    - Changed include directives to use relative paths to comply with
+      CppCoreGuideline SF.12 (#1194)
+  * Deprecated Features:
+    - Removed deprecated string_span feature (#1185)
+    - Marked the following features as deprecated as they are now in the
+      C++ standard:
+      * gsl::unique_ptr
+      * gsl::shared_ptr
+      * gsl::byte (since C++17)
+      * gsl::joining_thread
+
+-------------------------------------------------------------------
+Thu Dec 26 22:26:43 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding '_service' file for tarball download
+
+-------------------------------------------------------------------
 Mon Oct 21 16:21:35 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Looks like v4.1.0 was [re]released? List of changes under
