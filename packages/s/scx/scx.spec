@@ -19,14 +19,13 @@
 %define libbpf_min_ver 1.5.0
 
 Name:           scx
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
 URL:            https://github.com/sched-ext/scx
 Source0:        scx-%version.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         fix-aarch64.patch
 BuildRequires:  bpftool >= 7.5.0
 BuildRequires:  cargo
 BuildRequires:  clang
@@ -51,7 +50,6 @@ Header files needed to develop a sched-ext scheduler in C.
 
 %prep
 %setup -qa1
-%patch -P 0 -p1
 
 %build
 # meson macros use set_build_flags which makes the linker fail during build,

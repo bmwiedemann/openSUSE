@@ -35,4 +35,93 @@ Looking forward to any feedback!</comment>
 </comment>
     <requestid>1246384</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fbe38214a619150ddb94e7dd3c25f5c5</srcmd5>
+    <version>1.0.10</version>
+    <time>1741722422</time>
+    <user>anag+factory</user>
+    <comment>- remove fix-aarch64.patch: fixed upstream
+- Update to version 1.0.10:
+  * scxtop: adding one perf event type L1-dcache-load-misses.
+  * scx_p2dq: Add scx_p2dq scheduler
+  * scxtop: track sched_waking events
+  * scx_p2dq: Fix vtime handling and cleanup
+  * scx_layered: making unexpected gpu error smoother.
+  * scx_layered: Remove CPU shuffling when idle CPU is not found in layered_select_cpu()
+  * scx_layered: enable creating scx appimage
+  * scx_wd40: Introduce wd40 scheduler
+  * scxtop: make q exit help if in help instead of quitting
+  * scxtop: track number of dropped events and render it
+  * scx_p2dq: Add perf boost to interactive tasks
+  * scx_layered: Update enqueue path to use direct dispatch into foreign local DSQs
+  * scxtop: Add softirq events
+  * scx_layered: Fix pick_idle_cpu() sometimes returning a disallowed CPU
+  * scx_lavd: Avoid scx_bpf_kick_cpu(SCX_KICK_PREEMPT) for self-preemption
+  * scx_p2dq: Update load balancing
+  * scx_wd40: add cpumask library
+  * scx_layered: Enable queued wakeup optimization
+  * scx_loader: Add p2dq scheduler
+  * scx_lavd: Fix the performance regression in recent changes.
+  * scxtop: propose to give the ability to focus on one process.
+  * scx: Don't panic on missing enums in C schedulers
+  * scx_p2dq: Fix verifier issue on big/little topology
+  * scx_p2dq: Add autoslice tuning
+  * scxtop: add experimental_long_tail_tracing
+  * scx_p2dq: Update pick2 migration logic
+  * scx_bpfland: disable auto local dispatch for migration-disabled tasks
+  * scxtop: Add IPI events
+  * scxtop: __bpf_ringbuf_reserve() failure set to ENOMEM instead.
+  * scx_layered: add debug logging for gpu support and fix UsingGpu matcher
+  * scx_p2dq: Add initial wake sync support
+  * scxtop: Make tokio runtime options configurable
+  * scx_layered: change sysinfo version to 0.30
+  * scx_utils: use clsuter_id to detect if big.LITTLE CPUs
+  * scx_bpfland: avoid creating redundant cache domains
+  * scx_layered: fix gpu matcher bugs
+  * scxtop: Add localization on number formatting
+  * scx_bpfland: reduce task migrations
+  * sched_ext: Add NUMA-aware idle CPU helpers
+  * scx_bpfland: Always re-enqueue tasks that are running on a busy SMT core
+  * scxtop: Add config file
+  * scx_utils: gpu topology adding nearest available devices.
+  * scx_bpfland: Skip idle CPU selection when system is fully busy
+  * scx_bpfland; use scx_bpf_now() consistently
+  * scx_bpfland: fix non-SMT CPU busy state detection
+  * scx_lavd: Use tracepoints for futex for reliable tracing
+  * scx_lavd: Fix BPF verifier errors in old kernels.
+  * scx_p2dq: Handle invalid load sum calculations
+  * scxtop: Add keymap configuration
+  * scxtop: add logging to file with panics
+  * scxtop: clamp gauge ratio
+  * scxtop: use smartstr with SSO for comms
+  * scxtop: Add separate subcommand for TUI and shell completion
+  * scx_layered: fix gpu matcher
+  * scxtop: Set correct max on LLC sparkline view
+  * scxtop: Add EventDispatchManager for handling events
+  * scx_bpfland: NUMA-aware scheduling
+  * scxtop: Fix max sparkline value across NUMA nodes
+  * scx_layered: add stats tracking when antistall is ran
+  * layered: update documentation for recently added options
+  * scx_utils: using TopologyLevel::Internal nearest gpu discovery mode.
+  * scxtop: adding gpu_mem_total tracepoint.
+  * scxtop: adding cpu hotplug (enter) event tracepoint.
+  * scxtop: Conditionally attach GPU probes
+  * scx_flash: drop user lock priority boosting
+  * scx_bpfland: fix cache domain detection
+  * scxtop: Filter sched_switch events less aggressively
+  * scxtop: Allow attaching hardware specific perf events
+  * scxtop: stop traces with bpf timer
+  * scxtop: always send bpf event to terminate trace
+  * scx_layered: expand kprobes used for gpu support
+  * scxtop: Add trace command
+  * scx_utils, scx_lavd: Enable futex holder boosting conditionally.
+  * scx_bpfland: Fix is_wake_sync()
+  * scx_utils: Fix kernels without CONFIG_DEBUG_FS
+  * scxtop: making few kernel probes conditional.
+  * scheds: Introduce scx_tickless
+  * scx_layered: Improve kthread handling
+  * scx_layered: Implement IsKthread match
+</comment>
+    <requestid>1252099</requestid>
+  </revision>
 </revisionlist>
