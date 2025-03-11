@@ -2,6 +2,7 @@
 # spec file for package serd
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +17,12 @@
 #
 
 
+%define sover 0
 %if 0%{?suse_version} > 1600
 %define with_docs 1
 %endif
-
-%define sover 0
 Name:           serd
-Version:        0.32.2
+Version:        0.32.4
 Release:        0
 Summary:        A lightweight C library for RDF syntax
 License:        ISC
@@ -69,8 +69,7 @@ Obsoletes:      libserd-0-devel < %{version}
 Development files for libserd.
 
 %prep
-%setup -q
-%autopatch -p0
+%autosetup -p0
 #Convert all file headers to python3
 for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 
@@ -86,10 +85,10 @@ for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/py
 
 %fdupes -s %{buildroot}%{_docdir}
 
-%post -n libserd-0-%{sover} -p /sbin/ldconfig
-%postun -n libserd-0-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libserd-0-%{sover}
 
 %files -n serdi
+%license COPYING
 %attr(0755,root,root) %{_bindir}/serdi
 %if %{with docs}
 %{_mandir}/man1/serdi.1%{?ext_man}
@@ -101,6 +100,7 @@ for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/py
 %{_libdir}/libserd-0.so.%{sover}*
 
 %files devel
+%license COPYING
 %if %{with docs}
 %doc %{_docdir}/serd-0
 %endif

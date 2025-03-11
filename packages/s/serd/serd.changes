@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 10 20:34:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.32.4:
+  * Fix overly permissive parsing of syntax names on the command
+    line
+  * Fix parsing NQuads lines with no space before the final dot
+  * Fix reading chunks from files without trailing newlines
+  * Fix rewriting special literals when datatype URIs are prefixed
+    names
+  * Gracefully handle errors while writing the end of anonymous
+    nodes
+  * Support reading lone lists in lax mode
+  * Treat out of range unicode characters as errors
+  * Write blank lines between graphs and statements in TriG
+  * developer visible fixes
+
+-------------------------------------------------------------------
 Sun Jan 19 00:25:07 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 0.32.2
