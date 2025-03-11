@@ -2,6 +2,7 @@
 # spec file for package sord
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define sover 0
 Name:           sord
-Version:        0.16.16
+Version:        0.16.18
 Release:        0
 Summary:        Utilities to work with RDF data
 License:        ISC
@@ -74,10 +75,10 @@ rm -rf %{buildroot}%{_datadir}/doc/sord-0/html
 %check
 %meson_test
 
-%post -n libsord-0-%{sover} -p /sbin/ldconfig
-%postun -n libsord-0-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsord-0-%{sover}
 
 %files
+%license COPYING
 %attr(0755,root,root) %{_bindir}/sordi
 %attr(0755,root,root) %{_bindir}/sord_validate
 %{_mandir}/man1/sordi.1%{?ext_man}
@@ -89,6 +90,7 @@ rm -rf %{buildroot}%{_datadir}/doc/sord-0/html
 %{_libdir}/libsord-0.so.%{sover}*
 
 %files devel
+%license COPYING
 %{_libdir}/libsord-0.so
 %{_includedir}/sord-0/
 %{_libdir}/pkgconfig/sord-0.pc
