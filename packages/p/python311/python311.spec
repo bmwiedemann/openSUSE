@@ -36,7 +36,7 @@
 %bcond_without general
 %endif
 
-%if 0%{?do_profiling}
+%if 0%{?do_profiling} && !0%{?want_reproducible_builds}
 %bcond_without profileopt
 %else
 %bcond_with profileopt

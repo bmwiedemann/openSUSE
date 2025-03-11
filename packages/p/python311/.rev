@@ -1518,4 +1518,16 @@ C API
 </comment>
     <requestid>1243983</requestid>
   </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>670123ed2b6923968c0ae60ee062f124</srcmd5>
+    <version>3.11.11</version>
+    <time>1741722142</time>
+    <user>anag+factory</user>
+    <comment>- Skip PGO with %want_reproducible_builds (bsc#1239210)
+
+    - gh-100884: email: fix misfolding of comma in address-lists
+      over multiple lines in combination with unicode encoding
+      (bsc#1238450 CVE-2025-1795)</comment>
+    <requestid>1251955</requestid>
+  </revision>
 </revisionlist>
