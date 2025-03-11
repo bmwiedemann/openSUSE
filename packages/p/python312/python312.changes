@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 10 15:44:31 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Skip PGO with %want_reproducible_builds (bsc#1239210).
+
+-------------------------------------------------------------------
 Wed Feb  5 10:35:26 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.12.9:
@@ -1526,7 +1531,8 @@ Wed Apr 10 14:41:07 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
     - gh-100985: Update HTTPSConnection to consistently wrap IPv6
       Addresses when using a proxy.
     - gh-100884: email: fix misfolding of comma in address-lists
-      over multiple lines in combination with unicode encoding.
+      over multiple lines in combination with unicode encoding
+      (bsc#1238450, CVE-2025-1795)
     - gh-95782: Fix io.BufferedReader.tell(),
       io.BufferedReader.seek(), _pyio.BufferedReader.tell(),
       io.BufferedRandom.tell(), io.BufferedRandom.seek() and

@@ -1671,4 +1671,15 @@
       carefully constructed quoted string if the resulting</comment>
     <requestid>1244005</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>b70eeffeba5804903a838253439fd8c1</srcmd5>
+    <version>3.12.9</version>
+    <time>1741722140</time>
+    <user>anag+factory</user>
+    <comment>- Skip PGO with %want_reproducible_builds (bsc#1239210).
+
+      over multiple lines in combination with unicode encoding
+      (bsc#1238450, CVE-2025-1795)</comment>
+    <requestid>1251951</requestid>
+  </revision>
 </revisionlist>
