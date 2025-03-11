@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 10 09:25:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.2.0
+  * fix: backward compatibility fix for changed source positions in 3.12.6 (#85)
+  * fix: handle changed positions for __exit__ of ast.With
+  * update and fix table of contents link, 'libraries' → 'projects' (#93)
+  * fix: check for pytest compatibility (#94)
+- Drop new-python-312.patch, merged upstream
+- Drop pytest.patch, merged upstream
+
+-------------------------------------------------------------------
 Fri Jan 17 16:19:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add pytest.patch to fix compatibility with new pytest

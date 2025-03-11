@@ -26,16 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-executing%{psuffix}
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Get the currently executing AST node of a frame, and other information
 License:        MIT
 URL:            https://github.com/alexmojaki/executing
 Source:         https://files.pythonhosted.org/packages/source/e/executing/executing-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/alexmojaki/executing/pull/86 fix: backward compatibility fix for changed source positions in 3.12.6
-Patch0:         new-python-312.patch
-# PATCH-FIX-UPSTREAM https://github.com/alexmojaki/executing/pull/94 fix: check for pytest compatibility
-Patch1:         pytest.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 4.0.0}
