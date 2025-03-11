@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Mar 10 13:47:55 UTC 2025 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Detect openEuler as RedHat family OS
+- Ensure the correct crypt module is loaded
+- Implement multiple inventory for ansible.targets
+- Make x509 module compatible with M2Crypto 0.44.0
+- Remove deprecated code from x509.certificate_managed test mode
+- Move logrotate config to /usr/etc/logrotate.d where possible
+
+- Added:
+  * detect-openeuler-as-redhat-family-os.patch
+  * ensure-the-correct-crypt-module-is-loaded.patch
+  * implement-multiple-inventory-for-ansible.targets.patch
+  * make-x509-module-compatible-with-m2crypto-0.44.0.patch
+  * remove-deprecated-code-from-x509.certificate_managed.patch
+
+-------------------------------------------------------------------
+Mon Mar 10 09:34:28 UTC 2025 - Marek Czernek <marek.czernek@suse.com>
+
+- Add DEB822 apt repository format support
+- Make Salt-SSH work with all SSH passwords (bsc#1215484)
+
+- Added:
+  * add-deb822-apt-source-format-support-692.patch
+  * remove-password-from-shell-after-functional-text-mat.patch
+
+-------------------------------------------------------------------
 Mon Feb 24 16:17:55 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
 
 - Fix issue of using update-alternatives with alts

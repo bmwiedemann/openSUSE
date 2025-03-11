@@ -1,0 +1,66 @@
+From 0e28d38534ae5437f546ea4373918d22fdfc1510 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 10 Mar 2025 13:59:25 +0100
+Subject: [PATCH] Detect openEuler as RedHat family OS
+
+* Make openEuler resolving as RedHat OS family
+
+* Add grains test for openEuler
+---
+ salt/grains/core.py                    |  1 +
+ tests/pytests/unit/grains/test_core.py | 27 ++++++++++++++++++++++++++
+ 2 files changed, 28 insertions(+)
+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index ceb142a7b8..94f58e8c4e 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -1845,6 +1845,7 @@ _OS_FAMILY_MAP = {
+     "Alinux": "RedHat",
+     "Mendel": "Debian",
+     "OSMC": "Debian",
++    "openEuler": "RedHat",
+ }
+ 
+ 
+diff --git a/tests/pytests/unit/grains/test_core.py b/tests/pytests/unit/grains/test_core.py
+index 072287248f..c3cf12c10f 100644
+--- a/tests/pytests/unit/grains/test_core.py
++++ b/tests/pytests/unit/grains/test_core.py
+@@ -1425,6 +1425,33 @@ def test_astralinuxse_os_grains():
+     _run_os_grains_tests(_os_release_data, {}, expectation)
+ 
+ 
++@pytest.mark.skip_unless_on_linux
++def test_openeuler_os_grains():
++    """
++    Test that OS grains are parsed correctly for openEuler
++    """
++    # /etc/os-release data taken from openEuler 24.03 (LTS-SP1)
++    _os_release_data = {
++        "PRETTY_NAME": "openEuler 24.03 (LTS-SP1)",
++        "NAME": "openEuler",
++        "ID": "openEuler",
++        "ANSI_COLOR": "0;31",
++        "VERSION": "24.03 (LTS-SP1)",
++        "VERSION_ID": "24.03",
++    }
++    expectation = {
++        "os": "openEuler",
++        "os_family": "RedHat",
++        "oscodename": "openEuler 24.03 (LTS-SP1)",
++        "osfullname": "openEuler",
++        "osrelease": "24.03",
++        "osrelease_info": (24, 3),
++        "osmajorrelease": 24,
++        "osfinger": "openEuler-24",
++    }
++    _run_os_grains_tests(_os_release_data, {}, expectation)
++
++
+ @pytest.mark.skip_unless_on_windows
+ def test_windows_platform_data():
+     """
+-- 
+2.48.1
+

@@ -1,0 +1,41 @@
+From 24868ea86fa1dd59ee41ce28707917e61d55be2f Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 10 Mar 2025 13:25:06 +0100
+Subject: [PATCH] Make x509 module compatible with M2Crypto 0.44.0
+
+---
+ salt/modules/x509.py | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/salt/modules/x509.py b/salt/modules/x509.py
+index 6699a5d363..9687f63d1b 100644
+--- a/salt/modules/x509.py
++++ b/salt/modules/x509.py
+@@ -42,8 +42,14 @@ from salt.utils.odict import OrderedDict
+ 
+ try:
+     import M2Crypto
++
++    # These imports intended to be used from M2Crypto,
++    # but not loaded by-default with recent M2Crypto version.
++    from M2Crypto import ASN1, BIO, EVP, RSA, X509, m2  # pylint: disable=unused-import
++
++    HAS_M2 = True
+ except ImportError:
+-    M2Crypto = None
++    HAS_M2 = False
+ 
+ try:
+     import OpenSSL
+@@ -92,7 +98,7 @@ def __virtual__():
+     if __opts__.get("features", {}).get("x509_v2"):
+         return (False, "Superseded, using x509_v2")
+     return (
+-        __virtualname__ if M2Crypto is not None else False,
++        __virtualname__ if HAS_M2 else False,
+         "Could not load x509 module, m2crypto unavailable",
+     )
+ 
+-- 
+2.48.1
+

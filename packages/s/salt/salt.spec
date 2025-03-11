@@ -524,6 +524,20 @@ Patch158:       repair-fstab_present-test-mode-702.patch
 Patch159:       make-_auth-calls-visible-with-master-stats-696.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/65843
 Patch160:       repair-virt_query-outputter-655.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/67754
+Patch161:       remove-password-from-shell-after-functional-text-mat.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/692
+Patch162:       add-deb822-apt-source-format-support-692.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/678
+Patch163:       remove-deprecated-code-from-x509.certificate_managed.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/67782
+Patch164:       make-x509-module-compatible-with-m2crypto-0.44.0.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/67776
+Patch165:       implement-multiple-inventory-for-ansible.targets.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/67797
+Patch166:       ensure-the-correct-crypt-module-is-loaded.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/67796
+Patch167:       detect-openeuler-as-redhat-family-os.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
@@ -1157,7 +1171,11 @@ install -Dd -m 0750 %{buildroot}/srv/spm
 install -Dd -m 0750 %{buildroot}/var/lib/salt
 install -Dd -m 0755 %{buildroot}%{_docdir}/salt
 install -Dd -m 0755 %{buildroot}%{_sbindir}
-install -Dd -m 0755 %{buildroot}%{_sysconfdir}/logrotate.d/
+%if 0%{?suse_version} > 1500
+install -Dd -m 0755 %{buildroot}%{_distconfdir}/logrotate.d
+%else
+install -Dd -m 0755 %{buildroot}%{_sysconfdir}/logrotate.d
+%endif
 
 # Install salt-support profiles
 %{python_expand #
@@ -1226,11 +1244,10 @@ install -Dpm 0640 conf/cloud.profiles %{buildroot}%{_sysconfdir}/salt/cloud.prof
 install -Dpm 0640 conf/cloud.providers %{buildroot}%{_sysconfdir}/salt/cloud.providers
 install -Dpm 0640 transactional_update.conf %{buildroot}%{_sysconfdir}/salt/minion.d/transactional_update.conf
 #
-## install logrotate file (for RHEL6 we use without sudo)
-%if 0%{?rhel} > 6 || 0%{?suse_version}
-install -Dpm 0644  pkg/old/suse/salt-common.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/salt
+%if 0%{?suse_version} > 1500
+install -Dpm 0644  pkg/old/suse/salt-common.logrotate %{buildroot}%{_distconfdir}/logrotate.d/salt
 %else
-install -Dpm 0644  pkg/common/salt-common.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/salt
+install -Dpm 0644  pkg/old/suse/salt-common.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/salt
 %endif
 #
 %if 0%{?suse_version} <= 1500
@@ -1298,12 +1315,23 @@ getent passwd salt >/dev/null || %{_sbindir}/useradd -r -g salt -d $S_HOME -s /b
 if [[ -d "$S_PHOME/.ssh" ]]; then
     mv $S_PHOME/.ssh $S_HOME
 fi
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+test -f %{_sysconfdir}/logrotate.d/salt.rpmsave && mv -v %{_sysconfdir}/logrotate.d/salt.rpmsave %{_sysconfdir}/logrotate.d/salt.rpmsave.old ||:
+%endif
 
 %post
 %if %{with systemd}
 systemd-tmpfiles --create /usr/lib/tmpfiles.d/salt.conf || true
 %else
 dbus-uuidgen --ensure
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+test -f %{_sysconfdir}/logrotate.d/salt.rpmsave && mv -v %{_sysconfdir}/logrotate.d/salt.rpmsave %{_sysconfdir}/logrotate.d/salt ||:
+test -f %{_sysconfdir}/logrotate.d/salt.rpmsave.old && mv -v %{_sysconfdir}/logrotate.d/salt.rpmsave.old %{_sysconfdir}/logrotate.d/salt.rpmsave ||:
 %endif
 
 %preun proxy
@@ -1679,7 +1707,11 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %{_bindir}/salt-support
 %{_mandir}/man1/salt-call.1.gz
 %{_mandir}/man1/spm.1.gz
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/salt
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/salt
+%endif
 %{!?_licensedir:%global license %doc}
 %license LICENSE
 %doc AUTHORS README.rst README.SUSE

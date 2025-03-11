@@ -1,0 +1,261 @@
+From f60cc567c1c3d849d14fa547e87ca369bbbe1d2b Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 10 Mar 2025 13:25:56 +0100
+Subject: [PATCH] Implement multiple inventory for `ansible.targets`
+
+* Implement multiple inventory for ansible.targets
+
+* Add tests for multiple inventories with ansible.targets
+---
+ salt/modules/ansiblegate.py                   |  10 +-
+ salt/utils/ansible.py                         |  61 ++++++---
+ .../pytests/unit/modules/test_ansiblegate.py  | 119 ++++++++++++++++++
+ 3 files changed, 169 insertions(+), 21 deletions(-)
+
+diff --git a/salt/modules/ansiblegate.py b/salt/modules/ansiblegate.py
+index 920c374e5a..9dd878665f 100644
+--- a/salt/modules/ansiblegate.py
++++ b/salt/modules/ansiblegate.py
+@@ -423,7 +423,7 @@ def playbooks(
+     return retdata
+ 
+ 
+-def targets(inventory="/etc/ansible/hosts", yaml=False, export=False):
++def targets(inventory=None, inventories=None, yaml=False, export=False):
+     """
+     .. versionadded:: 3005
+ 
+@@ -432,6 +432,10 @@ def targets(inventory="/etc/ansible/hosts", yaml=False, export=False):
+     :param inventory:
+         The inventory file to read the inventory from. Default: "/etc/ansible/hosts"
+ 
++    :param inventories:
++        The list of inventory files to read the inventory from.
++        Uses `inventory` in case if `inventories` is not specified.
++
+     :param yaml:
+         Return the inventory as yaml output. Default: False
+ 
+@@ -446,7 +450,9 @@ def targets(inventory="/etc/ansible/hosts", yaml=False, export=False):
+         salt 'ansiblehost' ansible.targets inventory=my_custom_inventory
+ 
+     """
+-    return salt.utils.ansible.targets(inventory=inventory, yaml=yaml, export=export)
++    return salt.utils.ansible.targets(
++        inventory=inventory, inventories=inventories, yaml=yaml, export=export
++    )
+ 
+ 
+ def discover_playbooks(
+diff --git a/salt/utils/ansible.py b/salt/utils/ansible.py
+index b91c931dff..2c85da4753 100644
+--- a/salt/utils/ansible.py
++++ b/salt/utils/ansible.py
+@@ -18,32 +18,55 @@ def __virtual__():  # pylint: disable=expected-2-blank-lines-found-0
+     return (False, "Install `ansible` to use inventory")
+ 
+ 
+-def targets(inventory="/etc/ansible/hosts", yaml=False, export=False):
++def targets(inventory=None, inventories=None, yaml=False, export=False):
+     """
+     Return the targets from the ansible inventory_file
+     Default: /etc/salt/roster
+     """
+-    if not os.path.isfile(inventory):
+-        raise CommandExecutionError("Inventory file not found: {}".format(inventory))
+-    if not os.path.isabs(inventory):
+-        raise CommandExecutionError("Path to inventory file must be an absolute path")
++
++    if inventory is None and inventories is None:
++        inventory = "/etc/ansible/hosts"
++    multi_inventory = True
++    if not isinstance(inventories, list):
++        multi_inventory = False
++        inventories = []
++    if inventory is not None and inventory not in inventories:
++        inventories.append(inventory)
+ 
+     extra_cmd = []
+     if export:
+         extra_cmd.append("--export")
+     if yaml:
+         extra_cmd.append("--yaml")
+-    inv = salt.modules.cmdmod.run(
+-        "ansible-inventory -i {} --list {}".format(inventory, " ".join(extra_cmd)),
+-        env={"ANSIBLE_DEPRECATION_WARNINGS": "0"},
+-        reset_system_locale=False,
+-    )
+-    if yaml:
+-        return salt.utils.stringutils.to_str(inv)
+-    else:
+-        try:
+-            return salt.utils.json.loads(salt.utils.stringutils.to_str(inv))
+-        except ValueError:
+-            raise CommandExecutionError(
+-                "Error processing the inventory: {}".format(inv)
+-            )
++
++    ret = {}
++
++    for inventory in inventories:
++        if not os.path.isfile(inventory):
++            raise CommandExecutionError("Inventory file not found: {}".format(inventory))
++        if not os.path.isabs(inventory):
++            raise CommandExecutionError("Path to inventory file must be an absolute path")
++
++        inv = salt.modules.cmdmod.run(
++            "ansible-inventory -i {} --list {}".format(inventory, " ".join(extra_cmd)),
++            env={"ANSIBLE_DEPRECATION_WARNINGS": "0"},
++            reset_system_locale=False,
++        )
++
++        if yaml:
++            inv = salt.utils.stringutils.to_str(inv)
++        else:
++            try:
++                inv = salt.utils.json.loads(salt.utils.stringutils.to_str(inv))
++            except ValueError:
++                raise CommandExecutionError(
++                    "Error processing the inventory {}: {}".format(inventory, inv)
++                )
++
++        if not multi_inventory:
++            ret = inv
++            break
++
++        ret[inventory] = inv
++
++    return ret
+diff --git a/tests/pytests/unit/modules/test_ansiblegate.py b/tests/pytests/unit/modules/test_ansiblegate.py
+index 272da721bf..d8bdd1140e 100644
+--- a/tests/pytests/unit/modules/test_ansiblegate.py
++++ b/tests/pytests/unit/modules/test_ansiblegate.py
+@@ -189,6 +189,125 @@ def test_ansible_targets(minion_opts):
+             assert len(ret["ungrouped"]["hosts"]) == 2
+ 
+ 
++def test_ansible_targets_multiple_inventories(minion_opts):
++    """
++    Test ansible.targets execution module function with multiple inventories.
++    :return:
++    """
++    ansible_inventory1_ret = """
++{
++    "_meta": {
++        "hostvars": {
++            "uyuni-stable-ansible-centos7-1.tf.local": {
++                "ansible_ssh_private_key_file": "/etc/ansible/my_ansible_private_key"
++            },
++            "uyuni-stable-ansible-centos7-2.tf.local": {
++                "ansible_ssh_private_key_file": "/etc/ansible/my_ansible_private_key"
++            }
++        }
++    },
++    "all": {
++        "children": [
++            "ungrouped"
++        ]
++    },
++    "ungrouped": {
++        "hosts": [
++            "uyuni-stable-ansible-centos7-1.tf.local",
++            "uyuni-stable-ansible-centos7-2.tf.local"
++        ]
++    }
++}
++    """
++    ansible_inventory2_ret = """
++{
++    "_meta": {
++        "hostvars": {
++            "uyuni-stable-ansible-alma9-1.tf.local": {
++                "ansible_ssh_private_key_file": "/etc/ansible/my_ansible_private_key"
++            },
++            "uyuni-stable-ansible-alma9-2.tf.local": {
++                "ansible_ssh_private_key_file": "/etc/ansible/my_ansible_private_key"
++            }
++        }
++    },
++    "all": {
++        "children": [
++            "ungrouped"
++        ]
++    },
++    "ungrouped": {
++        "hosts": [
++            "uyuni-stable-ansible-alma9-1.tf.local",
++            "uyuni-stable-ansible-alma9-2.tf.local"
++        ]
++    }
++}
++    """
++    ansible_inventory_mock = MagicMock(
++        side_effect=[ansible_inventory1_ret, ansible_inventory2_ret]
++    )
++    with patch("salt.utils.path.which", MagicMock(return_value=True)):
++        utils = salt.loader.utils(minion_opts, whitelist=["ansible"])
++        with patch("salt.modules.cmdmod.run", ansible_inventory_mock), patch.dict(
++            ansiblegate.__utils__, utils
++        ), patch("os.path.isfile", MagicMock(return_value=True)):
++            ret = ansiblegate.targets(
++                inventories=["/etc/ansible/hosts1", "/etc/ansible/hosts2"]
++            )
++            assert ansible_inventory_mock.call_args
++            assert ansible_inventory_mock.call_args
++            assert len(ret.keys()) == 2
++            assert "/etc/ansible/hosts1" in ret.keys()
++            assert "/etc/ansible/hosts2" in ret.keys()
++            assert "_meta" in ret["/etc/ansible/hosts1"]
++            assert "_meta" in ret["/etc/ansible/hosts2"]
++            assert (
++                "uyuni-stable-ansible-centos7-1.tf.local"
++                in ret["/etc/ansible/hosts1"]["_meta"]["hostvars"]
++            )
++            assert (
++                "uyuni-stable-ansible-centos7-2.tf.local"
++                in ret["/etc/ansible/hosts1"]["_meta"]["hostvars"]
++            )
++            assert (
++                "uyuni-stable-ansible-alma9-1.tf.local"
++                in ret["/etc/ansible/hosts2"]["_meta"]["hostvars"]
++            )
++            assert (
++                "uyuni-stable-ansible-alma9-2.tf.local"
++                in ret["/etc/ansible/hosts2"]["_meta"]["hostvars"]
++            )
++            assert (
++                "ansible_ssh_private_key_file"
++                in ret["/etc/ansible/hosts1"]["_meta"]["hostvars"][
++                    "uyuni-stable-ansible-centos7-1.tf.local"
++                ]
++            )
++            assert (
++                "ansible_ssh_private_key_file"
++                in ret["/etc/ansible/hosts1"]["_meta"]["hostvars"][
++                    "uyuni-stable-ansible-centos7-2.tf.local"
++                ]
++            )
++            assert (
++                "ansible_ssh_private_key_file"
++                in ret["/etc/ansible/hosts2"]["_meta"]["hostvars"][
++                    "uyuni-stable-ansible-alma9-1.tf.local"
++                ]
++            )
++            assert (
++                "ansible_ssh_private_key_file"
++                in ret["/etc/ansible/hosts2"]["_meta"]["hostvars"][
++                    "uyuni-stable-ansible-alma9-2.tf.local"
++                ]
++            )
++            assert "all" in ret["/etc/ansible/hosts1"]
++            assert "all" in ret["/etc/ansible/hosts2"]
++            assert len(ret["/etc/ansible/hosts1"]["ungrouped"]["hosts"]) == 2
++            assert len(ret["/etc/ansible/hosts2"]["ungrouped"]["hosts"]) == 2
++
++
+ def test_ansible_discover_playbooks_single_path():
+     playbooks_dir = os.path.join(
+         RUNTIME_VARS.TESTS_DIR, "unit/files/playbooks/example_playbooks/"
+-- 
+2.48.1
+

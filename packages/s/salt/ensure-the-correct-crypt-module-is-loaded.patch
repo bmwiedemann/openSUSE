@@ -1,0 +1,28 @@
+From d91650eae576893f9a2f0e5ad7d09726a36f4760 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 10 Mar 2025 13:28:15 +0100
+Subject: [PATCH] Ensure the correct `crypt` module is loaded
+
+---
+ salt/utils/pycrypto.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/salt/utils/pycrypto.py b/salt/utils/pycrypto.py
+index a0f3874035..2ec4c8f1eb 100644
+--- a/salt/utils/pycrypto.py
++++ b/salt/utils/pycrypto.py
+@@ -25,7 +25,10 @@ except ImportError:
+ try:
+     import crypt
+ 
+-    HAS_CRYPT = True
++    # We need to ensure if the right `crypt` is loaded,
++    # as LazyLoader can load `salt.utils.crypt` instead of `crypt`
++    # if there is Python has no `crypt` (was removed in 3.11).
++    HAS_CRYPT = hasattr(crypt, "methods")
+ except (ImportError, PermissionError):
+     HAS_CRYPT = False
+ 
+-- 
+2.48.1
+
