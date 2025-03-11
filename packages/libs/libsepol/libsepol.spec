@@ -19,7 +19,7 @@
 %define libname libsepol2
 
 Name:           libsepol
-Version:        3.8
+Version:        3.8.1
 Release:        0
 Summary:        SELinux binary policy manipulation library
 License:        LGPL-2.1-or-later
