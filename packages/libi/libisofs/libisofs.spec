@@ -2,6 +2,7 @@
 # spec file for package libisofs
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +18,10 @@
 
 
 %define so_ver 6
+%define tarversion 1.5.6
+%define patchlevel pl01
 Name:           libisofs
-Version:        1.5.6
+Version:        %{tarversion}.%{patchlevel}
 Release:        0
 Summary:        Library for Creating ISO-9660 Filesystems
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -79,7 +82,7 @@ by some Linux kernels. It is possible to have data file content compressed to
 gzip format or to have it filtered by an external process.
 
 %prep
-%setup -q
+%autosetup -p1 -n %{name}-%{tarversion}
 
 # Remove build time references so build-compare can do its work
 echo "HTML_TIMESTAMP = NO" >> doc/doxygen.conf.in
@@ -107,8 +110,7 @@ cp -a doc/html/ %{buildroot}%{_docdir}/%{name}-devel/
 
 %fdupes -s %{buildroot}%{_docdir}/%{name}-devel/
 
-%post -n libisofs%{so_ver} -p /sbin/ldconfig
-%postun -n libisofs%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libisofs%{so_ver}
 
 %files devel
 %license COPYING COPYRIGHT
@@ -120,6 +122,7 @@ cp -a doc/html/ %{buildroot}%{_docdir}/%{name}-devel/
 %{_libdir}/libisofs.so
 
 %files -n libisofs%{so_ver}
+%license COPYING COPYRIGHT
 %{_libdir}/libisofs.so.%{so_ver}*
 
 %changelog
