@@ -275,9 +275,7 @@ export disabled_tests="heif|ptex|cmake-consumer|docs-examples-cpp"
 %doc src/doc/CHANGES-0.x.md src/doc/CHANGES-1.x.md
 %license LICENSE.md
 %{_bindir}/*
-%if %{with imageviewer}
 %{_mandir}/man1/*.1%{ext_man}
-%endif
 
 %if %{with apidocs}
 %files devel-doc

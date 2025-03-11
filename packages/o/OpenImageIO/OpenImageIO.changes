@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  3 12:40:34 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 (where imageviewer is disbaled)
+
+-------------------------------------------------------------------
 Thu Feb 13 03:13:34 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable python and imageviewer on leap
