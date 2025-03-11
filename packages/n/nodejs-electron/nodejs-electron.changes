@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 10 05:45:21 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 33.4.4
+  * no user-visible changes
+
+-------------------------------------------------------------------
+Sun Mar  9 21:47:42 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 33.4.3
+  * Fix use after free in V8 CVE-2025-0445 (bsc#1236806)
+  * Other security fixes for V8: CVE-2025-0995 CVE-2025-0998 (bsc#1237121)
+
+-------------------------------------------------------------------
 Thu Feb 27 19:50:15 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 33.4.2

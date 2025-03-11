@@ -1,9 +1,9 @@
 Index: electron-17.1.0/third_party/electron_node/common.gypi
 ===================================================================
---- electron-17.1.0.orig/third_party/electron_node/common.gypi	2022-03-07 17:39:13.557371769 +0100
-+++ electron-17.1.0/third_party/electron_node/common.gypi	2022-03-09 08:29:08.214665848 +0100
-@@ -405,6 +405,10 @@
-           'BUILDING_UV_SHARED=1',
+--- src/third_party/electron_node/common.gypi.orig	2025-03-06 22:25:15.650295769 +0100
++++ src/third_party/electron_node/common.gypi	2025-03-07 07:06:10.532421547 +0100
+@@ -486,6 +486,10 @@
+           'NOMINMAX',
          ],
        }],
 +      [ 'OS in "linux"', {
