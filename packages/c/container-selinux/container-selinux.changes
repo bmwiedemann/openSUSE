@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 05 17:15:45 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 2.235.0:
+  * Bump to v2.235.0
+  * OWNERS: add wrabcak and zpytela
+  * OWNERS: initial commit
+  * container_log{reader,writer}_t: allow watch file
+  * RPM: Update gating config
+  * Enable aarch64 testing
+  * TMT: simplify podman tests
+  * feat: support /var/lib/crio
+
+-------------------------------------------------------------------
+Tue Feb  4 13:56:57 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- OBS service file: use the tagged commit for archive versioning and don't
+  just archive the latest changes from the main branch using the latest tag
+
+-------------------------------------------------------------------
 Fri Jan 10 10:08:37 UTC 2025 - rfrohl@suse.com
 
 - Update to version 2.234.2:
