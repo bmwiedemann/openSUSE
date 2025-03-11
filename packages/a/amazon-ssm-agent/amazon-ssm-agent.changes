@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  7 15:21:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to fix proxy bypass using IPv6 zone IDs in golang.org/x/net
+  * CVE-2025-22870.patch (bsc#1238702, CVE-2025-22870)
+
+-------------------------------------------------------------------
 Thu Mar  6 07:44:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.1957.0
