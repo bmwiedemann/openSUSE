@@ -1,7 +1,7 @@
 #
 # spec file for package sdl12_compat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,6 @@ against SDL 1.2, but it uses SDL 2.0 behind the scenes.
 %package -n %lname
 Summary:        SDL Graphics Routines for Primitives and Other Support Functions
 Group:          System/Libraries
-Conflicts:      libSDL-1_2-0
 %requires_eq    %(rpm --qf "%%{name}" -qf $(readlink -f %{_libdir}/libSDL2.so))
 
 %description -n %lname
