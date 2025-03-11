@@ -1,7 +1,7 @@
 #
 # spec file for package python-tesserocr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-tesserocr
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 Summary:        A Python wrapper around tesseract-ocr
 License:        MIT
@@ -27,8 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/t/tesserocr/tesse
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -55,10 +58,10 @@ GIL while processing an image in tesseract.
 %setup -q -n tesserocr-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %fdupes %{buildroot}
 
 %check

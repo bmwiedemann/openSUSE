@@ -211,4 +211,12 @@
   * revert: disable tesseract's logging by default</comment>
     <requestid>1202582</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3f62827dbb4d6500b6485e5c8cd83bc6</srcmd5>
+    <version>2.8.0</version>
+    <time>1741722279</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1251863</requestid>
+  </revision>
 </revisionlist>
