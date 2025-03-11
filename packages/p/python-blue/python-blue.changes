@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 10 12:59:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add black-25.1.patch to support changes in black 25.1
+
+-------------------------------------------------------------------
 Tue Feb  6 19:04:16 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove black-23.3.patch and add black-24.1.patch to support latest

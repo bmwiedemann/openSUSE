@@ -1,7 +1,7 @@
 #
 # spec file for package python-blue
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Patch1:         unpin-tomli.patch
 Patch2:         flake8-v6-compatibility.patch
 # PATCH-FIX-OPENSUSE black-24.1.patch -- gh#grantjenks/blue#97
 Patch3:         black-24.1.patch
+# PATCH-FIX-OPENSUSE black-25.1.patch -- gh#grantjenks/blue#106
+Patch4:         black-25.1.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module black >= 21.7}
