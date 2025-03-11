@@ -1,7 +1,7 @@
 #
 # spec file for package restic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,11 +30,14 @@ Source0:        https://github.com/restic/restic/releases/download/v%{version}/%
 Source1:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        vendor.tar.gz
+# This is applied when manually (not via _service) creating the vendor.tar.gz
+# the patched go.{mod,sum} files are then part of vendor.tar.gz
+Source4:        bump-google-apis-for-oauth2-fix.patch
 Patch0:         disable-selfupdate.patch
 BuildRequires:  bash-completion
 BuildRequires:  golang-packaging
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.24
 
 %description
 restic is a backup program. It supports verification, encryption,

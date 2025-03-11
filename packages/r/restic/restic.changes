@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 11 14:26:17 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add bump-google-apis-for-oauth2-fix.patch:
+  This patch is only applied for manually creating the vendor
+  tarball with
+  go mod vendor 
+  tar cfvz ../vendor.tar.gz go.mod go.sum vendor
+  
+  the patched go.* files are in the vendor tarball afterwards.
+
+  boo#1239264 CVE-2025-22868
+
+-------------------------------------------------------------------
 Fri Nov  8 20:30:04 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.17.3

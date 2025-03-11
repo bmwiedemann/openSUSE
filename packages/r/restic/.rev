@@ -259,4 +259,21 @@
     <comment></comment>
     <requestid>1225474</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>cf4967f233c83379f4d538401ba102d2</srcmd5>
+    <version>0.17.3</version>
+    <time>1741722409</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1252081 from darix
+
+- add bump-google-apis-for-oauth2-fix.patch:
+  This patch is only applied for manually creating the vendor
+  tarball with
+  go mod vendor 
+  tar cfvz ../vendor.tar.gz go.mod go.sum vendor
+  
+  the patched go.* files are in the vendor tarball afterwards.
+  boo#1239264 CVE-2025-22868</comment>
+    <requestid>1252082</requestid>
+  </revision>
 </revisionlist>
