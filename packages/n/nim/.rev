@@ -277,4 +277,20 @@
 </comment>
     <requestid>1240680</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e0cbb77b8fb3ba9d76035b562ce67fe3</srcmd5>
+    <version>2.2.2</version>
+    <time>1741722431</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.2.
+  See https://nim-lang.org/blog/2025/02/05/nim-222.html
+
+  Also remove patches that disable tests, by disabling them in the specfile instead
+  * 0001-disable-toop1-test.patch
+  * 0002-disable-tvmmisc-test.patch
+  * 0003-disable-cpp-tmanual_exception-test.patch
+  * 0004-disable-tobjcov-test.patch
+</comment>
+    <requestid>1252108</requestid>
+  </revision>
 </revisionlist>

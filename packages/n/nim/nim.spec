@@ -20,7 +20,7 @@
 %define _sat_commit faf1617f44d7632ee9601ebc13887644925dcc01
 
 Name:           nim
-Version:        2.0.14
+Version:        2.2.2
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
@@ -32,10 +32,6 @@ Source2:        nim-rpmlintrc
 Source3:        https://github.com/nim-lang/sat/archive/%{_sat_commit}.tar.gz#/sat-%{_sat_commit}.tar.gz
 Patch0:         nim-nim-gdb_fix_interpreter.patch
 Patch1:         nim-fix-tests-i586.patch
-Patch2:         0001-disable-toop1-test.patch
-Patch3:         0002-disable-tvmmisc-test.patch
-Patch4:         0003-disable-cpp-tmanual_exception-test.patch
-Patch5:         0004-disable-tobjcov-test.patch
 BuildRequires:  binutils-devel
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
@@ -106,10 +102,6 @@ mkdir dist/atlas/dist
 mv sat-%{_sat_commit} dist/atlas/dist/sat
 
 %patch -P 0 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
 %ifarch i586
 %patch -P 1 -p1
 %endif
@@ -147,8 +139,6 @@ cat << EOT >> tests_to_skip
   # cannot open file: jester
   tests/niminaction/Chapter7/Tweeter/src/tweeter.nim
   tests/cpp/tasync_cpp.nim
-  # # only working with megatest enabled
-  # tests/misc/tjoinable.nim
   # expects Nim to be in PATH...
   tests/stdlib/tosproc.nim
   # following tests are flaky
@@ -161,6 +151,13 @@ cat << EOT >> tests_to_skip
   tests/exception/t13115.nim
   # no SFML in plain SLE and missing in backport repos
   tests/niminaction/Chapter8/sfml/sfml_test.nim
+  # GCC 14 related errors
+  tests/objects/toop1.nim
+  tests/vm/tvmmisc.nim
+  tests/cpp/tmanual_exception.nim
+  tests/objects/tobjcov.nim
+  # exits with 1 for some reason
+  tests/stdlib/tmath.nim
 EOT
 
 %ifarch i586

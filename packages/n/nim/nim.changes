@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 11 14:57:41 UTC 2025 - Rein Fernhout <me@levitati.ng>
+
+- Update to version 2.2.
+
+  See https://nim-lang.org/blog/2025/02/05/nim-222.html
+
+  Also remove patches that disable tests, by disabling them in the specfile instead
+  * 0001-disable-toop1-test.patch
+  * 0002-disable-tvmmisc-test.patch
+  * 0003-disable-cpp-tmanual_exception-test.patch
+  * 0004-disable-tobjcov-test.patch
+
+-------------------------------------------------------------------
 Tue Jan 21 00:54:35 UTC 2025 - Rein Fernhout <me@levitati.ng>
 
 - Update to version 2.0.14
