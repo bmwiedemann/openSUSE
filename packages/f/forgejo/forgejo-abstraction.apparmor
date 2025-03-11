@@ -1,0 +1,27 @@
+  include <abstractions/base>
+  include <abstractions/mysql>
+  include <abstractions/nameservice>
+  include <abstractions/openssl>
+  include <abstractions/user-tmp>
+
+  /usr/bin/forgejo rm,
+
+  /etc/machine-id r,
+  /sys/kernel/mm/transparent_hugepage/hpage_pmd_size r,
+  @{PROC}/sys/net/core/somaxconn r,
+
+  /etc/forgejo/ r,
+  /etc/forgejo/conf/app.ini r,
+  /etc/forgejo/public/ r,
+  /etc/forgejo/public/** r,
+  /etc/forgejo/{conf,https,mailer}/ r,
+
+  /usr/lib{,exec}/git/git Px -> forgejo//git,
+  /usr/lib{,exec}/git/git-write-tree Px -> forgejo//git,
+
+  /usr/share/mime/globs2 r,
+  /etc/mime.types r,
+
+  include if exists <forgejo.d/forgejo.d>
+  include if exists <locatl/usr.bin.forgejo>
+  include if exists <local/forgejo>

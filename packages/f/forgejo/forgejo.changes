@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Mar 11 13:38:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- use --legacy-peer-deps to make the node modules handling work
+  again
+
+-------------------------------------------------------------------
+Mon Mar 10 23:10:15 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- move permissions of the log dir and the data dir
+  from forgejo:forgejo u=rwX,g=rwX,o=
+  to   forgejo:forgejo u=rwX,g=rX,o=
+
+-------------------------------------------------------------------
+Mon Mar 10 22:51:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update apparmor profile to a profile that is less broad.
+
+-------------------------------------------------------------------
+Mon Mar 10 21:58:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- create all directories before actually installing files
+
+-------------------------------------------------------------------
+Mon Mar 10 21:56:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- make the HOME dir in the service file the same as the user
+- migrate existing authorized keys files
+  from %{_datadir}/%{name}/.ssh/authorized_keys
+  to   %{_sharedstatedir}/%{name}/data/home/.ssh/authorized_keys
+
+-------------------------------------------------------------------
+Mon Mar 10 14:52:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix file list to lock down permissions more
+
+-------------------------------------------------------------------
+Mon Mar 10 03:16:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- don't require the apparmor subpackage when apparmor is installed
+  the current profile is rather bad and it should be possible to
+  keep it out.
+
+-------------------------------------------------------------------
+Mon Mar 10 03:15:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- user should actually use /var/lib/forgejo/data/home
+
+-------------------------------------------------------------------
 Sat Feb  8 19:51:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 10.0.1:

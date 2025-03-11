@@ -50,6 +50,8 @@ Source8:        %{name}.if
 Source9:        %{name}.te
 Source10:       %{name}.apparmor
 Source11:       %{name}.firewalld
+Source13:       forgejo-hooks-abstraction.apparmor
+Source12:       forgejo-abstraction.apparmor
 Source99:       get-sources.sh
 Patch0:         custom-app.ini.patch
 Patch1:         dont-strip.patch
@@ -70,7 +72,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 Requires:       git-core
 Requires:       git-lfs
-Requires:       (%{name}-apparmor if apparmor-abstractions)
+Recommends:     (%{name}-apparmor if apparmor-abstractions)
 Requires:       (%{name}-firewalld if firewalld)
 Requires:       (%{name}-selinux if selinux-policy-targeted)
 %if %{with apparmor}
@@ -134,7 +136,7 @@ builtin functionality.
 
 %prep
 %autosetup -p1 -n %{name}-src-%{version}
-local-npm-registry %{_sourcedir} install --also=dev
+local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps
 
 %build
 %sysusers_generate_pre %{SOURCE6} %{name} %{name}.conf
@@ -144,22 +146,40 @@ export EXTRA_GOFLAGS="-buildmode=pie -mod=vendor"
 go build ${EXTRA_GOFLAGS} -o contrib/environment-to-ini/environment-to-ini contrib/environment-to-ini/environment-to-ini.go
 
 %install
-install -d %{buildroot}%{_bindir}
-install -d %{buildroot}%{_datadir}/%{name}
-install -d %{buildroot}%{_datadir}/%{name}/{conf,https,mailer}
-install -Dm0755 contrib/environment-to-ini/environment-to-ini %{buildroot}%{_bindir}
+install -d -D \
+  %{buildroot}%{_bindir} %{buildroot}%{_datadir}/%{name}/{conf,https,mailer}
+
+install -d -m 0750 \
+  %{buildroot}%{_sharedstatedir}/%{name}/{data,https,indexers,queues,repositories} \
+  %{buildroot}%{_sharedstatedir}/%{name}/data/home/.ssh \
+  %{buildroot}%{_sysconfdir}/%{name} \
+  %{buildroot}%{_localstatedir}/log/%{name}
+
+install -D -m 0755 contrib/environment-to-ini/environment-to-ini %{buildroot}%{_bindir}
+install -D -m 0755 %{_builddir}/%{name}-src-%{version}/gitea     %{buildroot}%{_bindir}/%{name}
 ln -s %{name} %{buildroot}%{_bindir}/gitea
-install -d %{buildroot}%{_sharedstatedir}/%{name}/{data,https,indexers,queues,repositories}
-install -d %{buildroot}%{_sysconfdir}/%{name}
-install -d %{buildroot}%{_localstatedir}/log/%{name}
-install -D -m 0644 %{_builddir}/%{name}-src-%{version}/custom/conf/app.example.ini %{buildroot}%{_sysconfdir}/%{name}/conf/app.ini
-install -D -m 0755 %{_builddir}/%{name}-src-%{version}/gitea %{buildroot}%{_bindir}/%{name}
+
+install -D -m 0640 %{_builddir}/%{name}-src-%{version}/custom/conf/app.example.ini %{buildroot}%{_sysconfdir}/%{name}/conf/app.ini
+
 install -D -m 0644 %{SOURCE5} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 %if %{with apparmor}
-install -d %{buildroot}%{_sysconfdir}/apparmor.d
-install -Dm0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{name}
+install -D -d \
+  %{buildroot}%{_sysconfdir}/apparmor.d/abstractions \
+  %{buildroot}%{_sysconfdir}/apparmor.d/forgejo.d \
+  %{buildroot}%{_sysconfdir}/apparmor.d/forgejo.d/forgejo-session-exec.d \
+  %{buildroot}%{_sysconfdir}/apparmor.d/forgejo.d/forgejo-hooks.d \
+  %{buildroot}%{_sysconfdir}/apparmor.d/forgejo.d/git.d \
+  %{buildroot}%{_sysconfdir}/apparmor.d/forgejo.d/hooks-pre-receive.d \
+  %{buildroot}%{_sysconfdir}/apparmor.d/forgejo.d/hooks-post-receive.d \
+  %{buildroot}%{_sysconfdir}/apparmor.d/forgejo.d/hooks-proc-receive.d \
+  %{buildroot}%{_sysconfdir}/apparmor.d/forgejo.d/hooks-update.d \
+  %{buildroot}%{_sysconfdir}/apparmor.d/forgejo.d/forgejo.d
+
+install -Dm0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/apparmor.d/%{name}
+install -Dm0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/%{name}
+install -Dm0644 %{SOURCE13} %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/%{name}-hooks
 %endif
 
 %if %{with selinux}
@@ -176,6 +196,9 @@ install -D -m 0644 %{SOURCE11} %{buildroot}%{_prefix}/lib/firewalld/services/%{n
 %service_add_pre %{name}.service
 
 %post
+if [ -e %{_datadir}/%{name}/.ssh/authorized_keys ] ; then
+  mv %{_datadir}/%{name}/.ssh/authorized_keys %{_sharedstatedir}/%{name}/data/home/.ssh/authorized_keys
+fi
 %service_add_post %{name}.service
 
 %post firewalld
@@ -206,19 +229,29 @@ semodule -r %{name} 2>/dev/null || :
 %{_unitdir}/%{name}.service
 %{_bindir}/%{name}
 %{_bindir}/gitea
-%defattr(0660,root,forgejo,770)
-%{_localstatedir}/log/%{name}
-%defattr(0660,forgejo,forgejo,750)
-%config(noreplace) %{_sysconfdir}/%{name}/conf/app.ini
-%{_sysconfdir}/%{name}
-%{_datadir}/%{name}
-%{_sharedstatedir}/%{name}
 %{_sysusersdir}/%{name}.conf
+%{_datadir}/%{name}
+%defattr(0640,root,forgejo,750)
+%{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}/conf/app.ini
+%defattr(0640,forgejo,forgejo,750)
+%{_localstatedir}/log/%{name}
+%{_sharedstatedir}/%{name}
 
 %if %{with apparmor}
 %files apparmor
 %dir %{_sysconfdir}/apparmor.d
-%config %{_sysconfdir}/apparmor.d/usr.bin.%{name}
+%config %{_sysconfdir}/apparmor.d/%{name}
+%config %{_sysconfdir}/apparmor.d/abstractions/%{name}*
+%dir %{_sysconfdir}/apparmor.d/forgejo.d
+%dir %{_sysconfdir}/apparmor.d/forgejo.d/forgejo.d
+%dir %{_sysconfdir}/apparmor.d/forgejo.d/forgejo-session-exec.d
+%dir %{_sysconfdir}/apparmor.d/forgejo.d/forgejo-hooks.d
+%dir %{_sysconfdir}/apparmor.d/forgejo.d/git.d
+%dir %{_sysconfdir}/apparmor.d/forgejo.d/hooks-pre-receive.d
+%dir %{_sysconfdir}/apparmor.d/forgejo.d/hooks-post-receive.d
+%dir %{_sysconfdir}/apparmor.d/forgejo.d/hooks-proc-receive.d
+%dir %{_sysconfdir}/apparmor.d/forgejo.d/hooks-update.d
 %endif
 
 %if %{with selinux}

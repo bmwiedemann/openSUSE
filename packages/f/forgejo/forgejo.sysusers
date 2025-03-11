@@ -1,3 +1,3 @@
 # Type 	Name ID GECOS [HOME] Shell
 g forgejo - - -
-u forgejo - "Forgejo" /var/lib/forgejo /usr/bin/bash
+u forgejo - "Forgejo" /var/lib/forgejo/data/home /usr/bin/bash

@@ -411,4 +411,15 @@
     <comment></comment>
     <requestid>1244416</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>de02e32606ba080b4862bbe0f98e673c</srcmd5>
+    <version>10.0.1</version>
+    <time>1741722382</time>
+    <user>anag+factory</user>
+    <comment>Here is the fix for making the whole nodejs handling work again
+
+- use --legacy-peer-deps to make the node modules handling work
+  again (forwarded request 1252069 from darix)</comment>
+    <requestid>1252070</requestid>
+  </revision>
 </revisionlist>

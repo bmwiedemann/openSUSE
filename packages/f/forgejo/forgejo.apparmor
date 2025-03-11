@@ -2,63 +2,139 @@ abi <abi/3.0>,
 
 include <tunables/global>
 
-profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
-  include <abstractions/base>
-  include <abstractions/mysql>
-  include <abstractions/nameservice>
-  include <abstractions/opencl-pocl>
-  include <abstractions/openssl>
-  include <abstractions/user-tmp>
-  include if exists <local/usr.bin.forgejo>
+@{APP_DATADIR} = /var/lib/forgejo
+@{APP_REPOSITORY_DIRS} = @{APP_DATADIR}/data/forgejo-repositories @{APP_DATADIR}/repositories
 
-  network inet stream,
+profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
+  include <abstractions/forgejo>
+
+  network inet  stream,
   network inet6 stream,
 
-  /etc/forgejo/ r,
-  /etc/forgejo/conf/app.ini r,
-  /etc/forgejo/public/ r,
-  /etc/forgejo/public/** r,
-  /etc/forgejo/{conf,https,mailer}/ r,
-  /etc/gitconfig r,
-  /etc/mime.types r,
-  /sys/kernel/mm/transparent_hugepage/hpage_pmd_size r,
-  /usr/bin/forgejo mr,
-  /usr/bin/git mr,
-  /usr/bin/gzip mr,
-  /usr/bin/{basename,env,git,git-lfs,forgejo,ssh-keygen,gzip} ix,
-  /usr/libexec/git/git-write-tree mrix,
-  /usr/share/forgejo/** r,
-  /usr/share/forgejo/.gitconfig rw,
-  /usr/share/forgejo/.gitconfig.lock rw,
-  /usr/share/git-core/templates/ r,
-  /usr/share/git-core/templates/** r,
-  /usr/share/mime/globs2 r,
-  /usr/{lib,libexec}/git/git ix,
-  /usr/{lib,libexec}/git/git-remote-http ix,
-  /var/ r,
-  /var/lib/ r,
-  /var/lib/forgejo/ r,
-  /var/lib/forgejo/.local/** rw,
-  /var/lib/forgejo/.ssh/ rw,
-  /var/lib/forgejo/.ssh/* rw,
-  /var/log/forgejo/ rw,
-  /var/log/forgejo/access.log rw,
-  /var/log/forgejo/access.log.* w,
-  /var/log/forgejo/doctors-* rw,
-  @{PROC}/sys/net/core/somaxconn r,
-  owner /etc/forgejo/conf/app.ini w,
-  owner /tmp/forgejo** rwl,
-  owner /tmp/index* rw,
-  owner /tmp/patch* rw,
-  owner /usr/share/forgejo/** rw,
-  owner /var/lib/forgejo/backups/forgejo-dump-*.{zip,tar.gz,tar.xz} rw,
-  owner /var/lib/forgejo/data/forgejo-repositories/** rwlk,
-  owner /var/lib/forgejo/data/forgejo-repositories/**.git/hooks/** ix,
-  owner /var/lib/forgejo/https/** rwlk,
-  owner /var/lib/forgejo/{data,indexers,queues,repositories,backups}/ r,
-  owner /var/lib/forgejo/{data,indexers,queues,repositories}/** rwk,
-  owner /var/log/forgejo/gitea.log w,
-  owner @{PROC}/@{pid}/fd/ r,
-  owner @{PROC}/@{pid}/{cgroup,cpuset,status,stat,limits} r,
+  /usr/bin/forgejo Cx -> forgejo-session-exec,
 
+  signal (send) peer=forgejo//*,
+
+  profile forgejo-session-exec {
+    include <abstractions/forgejo>
+
+    include if exists <forgejo.d/forgejo-session-exec.d>
+    include if exists <local/forgejo-session-exec>
+  }
+
+  profile forgejo-hooks {
+    include <abstractions/forgejo>
+
+    include if exists <forgejo.d/forgejo-hooks.d>
+    include if exists <local/forgejo-hooks>
+  }
+
+  profile git {
+    include <abstractions/base>
+    include <abstractions/nameservice>
+    include <abstractions/openssl>
+    include <abstractions/ssl_certs>
+
+    signal (receive) peer=forgejo,
+
+    /etc/gitconfig r,
+    /usr/lib{,exec}/git/* rmix,
+    /usr/share/git-core/** r,
+
+    owner @{APP_DATADIR}/data/home/.gitconfig r,
+    owner @{APP_DATADIR}/data/home/.gitconfig.lock rwlk,
+
+    owner @{APP_REPOSITORY_DIRS}/ r,
+    owner @{APP_REPOSITORY_DIRS}/** rwlk,
+
+    owner @{APP_REPOSITORY_DIRS}/*/*.git/hooks/pre-receive  Px -> forgejo//hooks-pre-receive,
+    owner @{APP_REPOSITORY_DIRS}/*/*.git/hooks/post-receive Px -> forgejo//hooks-post-receive,
+    owner @{APP_REPOSITORY_DIRS}/*/*.git/hooks/proc-receive Px -> forgejo//hooks-proc-receive,
+
+    owner @{APP_REPOSITORY_DIRS}/*/*.git/hooks/update Px -> forgejo//hooks-update,
+
+    owner @{APP_DATADIR}/data/tmp/local-repo/pull.*/** rwlk,
+
+    include if exists <forgejo.d/git.d>
+    include if exists <local/forgejo-git>
+  }
+
+  profile hooks-pre-receive {
+    include <abstractions/forgejo-hooks>
+
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/pre-receive r,
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/pre-receive.d/ r,
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/pre-receive.d/gitea Px -> forgejo//hooks-gitea,
+
+    include if exists <forgejo.d/hooks-pre-receive.d>
+    include if exists <local/forgejo-hooks-pre-receive>
+  }
+
+  profile hooks-post-receive {
+    include <abstractions/forgejo-hooks>
+
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/post-receive r,
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/post-receive.d/ r,
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/post-receive.d/gitea Px -> forgejo//hooks-gitea,
+
+    include if exists <forgejo.d/hooks-post-receive.d>
+    include if exists <local/forgejo-hooks-post-receive>
+  }
+
+  profile hooks-proc-receive {
+    include <abstractions/forgejo-hooks>
+
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/proc-receive r,
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/proc-receive.d/ r,
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/proc-receive.d/gitea Px -> forgejo//hooks-gitea,
+
+    include if exists <forgejo.d/hooks-proc-receive.d>
+    include if exists <local/forgejo-hooks-proc-receive>
+  }
+
+  profile hooks-update {
+    include <abstractions/forgejo-hooks>
+
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/update r,
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/update.d/ r,
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/update.d/gitea Px -> forgejo//hooks-gitea,
+
+    include if exists <forgejo.d/hooks-update.d>
+    include if exists <local/forgejo-hooks-update>
+  }
+
+  profile hooks-gitea {
+    include <abstractions/forgejo-hooks>
+
+    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/*.d/gitea r,
+    /usr/bin/forgejo Px -> forgejo//forgejo-hooks,
+  }
+
+  profile simple_tool {
+    include <abstractions/base>
+
+    /usr/bin/env      rm,
+    /usr/bin/cat      rm,
+    /usr/bin/basename rm,
+  }
+
+  owner @{APP_DATADIR}/ r,
+
+  owner @{APP_DATADIR}/data/ r,
+  owner @{APP_DATADIR}/data/** rwlk,
+
+  owner @{APP_DATADIR}/https/ r,
+  owner @{APP_DATADIR}/https/** rwlk,
+
+  owner @{APP_DATADIR}/indexers/ r,
+  owner @{APP_DATADIR}/indexers/** rwlk,
+
+  owner @{APP_DATADIR}/queues/ r,
+  owner @{APP_DATADIR}/queues/** rwlk,
+
+  owner @{APP_REPOSITORY_DIRS}/ r,
+  owner @{APP_REPOSITORY_DIRS}/** rwlk,
+
+  owner /var/log/forgejo/ r,
+  owner /var/log/forgejo/gitea.log rwlk,
 }
