@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Mar 10 08:58:49 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.3.45
+  Security Fixes:
+  * TIFF: Fixed multiple heap and stack buffer overflows (directed by
+    the source EXIF profile) while writing EXIF into the native TIFF
+    IFD.
+  * FITS: Fix problem that the FITS reader could return invalid image
+    frames with rows or columns set to zero. Other code in the library
+    crashes, or even asserts, if invalid image frames with rows or
+    columns set to zero are returned.
+  * Coverity fixes: Various fixes for Coverity issues raised after the
+    update to version 2023.12.2.
+  * Clang Analyzer (scan-build) fixes: Various fixes for new issues
+    discovered by Clang Analyzer.
+  
+  Bug fixes:
+  * configure.ac: Fix a shell syntax error.
+  * GCC 14: Eliminate some new warnings which appeared while in -Wall
+    mode.
+  * JPEG: FormatJPEGSamplingFactors() now properly handles the number of
+    samples for each colorspace.
+  * JXL: Additional validations of color channel and alpha channel
+    depth.
+  * TGA: Fix issues discovered by Coverity.
+  * TGA: Fix writing TGA with opacity values in palette.
+  * TGA: Default orientation is (again) TopLeftOrientation.
+  * TIFF: Verify that TIFFTAG_BITSPERSAMPLE is within a rational range.
+  * TXT: Eliminate use of an uninitialized-value in GetColorTuple().
+  * XML: Improve detection of if the deprecated HTTP and FTP protocols
+    are supported by libxml2.
+  
+  New Features:
+  * Add support for reading the pre-rendered image from the Open Raster
+    ("ORA") format. Actual rendering of Open Raster is not supported.
+  * Add support for Dune HD AAI Image (aka Auburn Animation Image) image
+    format ("AAI").
+  * Add support for a --version option, which produces GNU style summary
+    version output.
+  * Identify output now indicates if the image is opaque.
+  * WebP: Add support for '-define webp:exact=true' to preserve exact
+    RGB values under transparent areas while writing WebP format.
+    Enable this automatically when lossless is enabled.  If lossless is
+    enabled, this option may be used to disable exact mode.
+  * PerlMagick: Add AccessDefinition(), AddDefinition(),
+    AddDefinitions(), and RemoveDefinitions() methods to supporting
+    adding, updating, removing definitions.
+  
+  API Updates:
+  * Magick++/STL.h: The deprecated std::unary_function is no longer used
+    given C++'11 or later. Continued use of it caused too many issues
+    due to an abundance of warnings.
+  * Wand API PixelSetQuantumColor(): The color argument is now a const
+    pointer.
+  
+  Behavior Changes:
+  * The graphical progress indication in the X11 sub-apps 'animate' and
+    'display' is disabled due to discovering a tremendous performance
+    impact while rendering text under Ubuntu 22.04 LTS.  The underlying
+    cause of the performance impact is not yet known.  A text-based
+    progress output to the program's console is available via
+    `-monitor`.
+  * MagickMaxFileSystemBlockSize: Place an arbitrary limit (4,194,304
+    bytes) on maximum filesystem block size.
+- modified patches
+  % GraphicsMagick-disable-insecure-coders.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Mar 25 12:40:12 UTC 2024 - pgajdos@suse.com
 
 - version update to 1.3.43
