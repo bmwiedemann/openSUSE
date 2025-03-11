@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 10 15:44:31 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Skip PGO with %want_reproducible_builds (bsc#1239210).
+
+-------------------------------------------------------------------
 Wed Feb 12 21:20:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the fifth development version of 3.14.0:
