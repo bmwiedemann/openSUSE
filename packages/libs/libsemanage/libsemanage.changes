@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  7 14:10:50 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.8.1
+  https://github.com/SELinuxProject/selinux/releases/tag/3.8.1
+  * libsemanage: improved performance of semanage store rebuild 
+
+-------------------------------------------------------------------
 Tue Feb  4 07:22:41 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 3.8

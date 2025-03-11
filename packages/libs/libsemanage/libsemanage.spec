@@ -20,7 +20,7 @@
 %define libname libsemanage%{soversion}
 
 Name:           libsemanage
-Version:        3.8
+Version:        3.8.1
 Release:        0
 Summary:        SELinux policy management library
 License:        LGPL-2.1-or-later

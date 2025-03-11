@@ -607,4 +607,18 @@ Could not find any LGPL-2.1 &quot;only&quot; licensed files in the pacakge (forw
     <comment>update selinux userspace to 3.8</comment>
     <requestid>1245832</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>11467b8ef16d30920b0b5de0442a4596</srcmd5>
+    <version>3.8.1</version>
+    <time>1741722253</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.8.1
+  https://github.com/SELinuxProject/selinux/releases/tag/3.8.1
+  * libsemanage: improved performance of semanage store rebuild 
+- Update to version 3.8.1
+  https://github.com/SELinuxProject/selinux/releases/tag/3.8.1
+  * libsemanage: improved performance of semanage store rebuild 
+</comment>
+    <requestid>1251759</requestid>
+  </revision>
 </revisionlist>
