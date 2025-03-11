@@ -40,4 +40,60 @@
     <comment></comment>
     <requestid>895932</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>84d5ce221e8ddf030963fbeb7ab0b2e1</srcmd5>
+    <version>0.6.6</version>
+    <time>1741722285</time>
+    <user>anag+factory</user>
+    <comment>- python-maturin is not required for running of the package.
+- python-six it not required at all.
+- Update to 0.6.6
+  * Upgraded to macos-13 runner (as 12 is not available anymore).
+- from version 0.6.5
+  * Revert &quot;Added pypy3.11 to build&quot;
+- from version 0.6.4
+  * Added pypy3.11 to build
+  * Removed pypy3.8 from build, not suppurted
+  * Bumped pyo3 to 0.23.3, drops pypy3.7 and pypy3.8
+  * Bumped unicode-bidi to 0.3.18  closes #28
+- from version 0.6.3
+  * Updated pyo3 to 0.22.4
+  * Python 3.13 wheels are finally working
+- from version 0.6.2
+  * Added check-latest to the build
+- from version 0.6.1
+  * Bumped to build Python 3.13 wheels
+- from version 0.6.0
+  * Added implemention selection (Python or Rust) to pybidi cli,
+    respecting backward comapt
+  * Restored older algorithm, supports both implementations closes #25
+  * Modernize and simplify Python code (Thanks Christian Clauss)
+- from version 0.5.2
+  * Added get_base_level backward compat
+  * docstring cleanup
+- from version 0.5.1
+  * Added compat for older import, closes #23
+  * Updated copyrights
+- from version 0.5.0
+  * Switched to using Rust based unicode-bidi using PyO3
+  * Dropped Python &lt; 3.9 support
+  * Removed &quot;upper_is_rtl&quot;
+  * Import of ``get_display`` changed to ``from bidi import get_display``
+- Add cargo to BuildRequires
+- Add rust to BuildRequires
+- Disable testsuite for the time being which fails to import bidi.bidi
+- Enable vendoring for Rust building dependencies
+- Switch build architecture to binary
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+  * Update name for dist directory in %files section
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Update BuildRequires and Requires from pyproject.toml
+</comment>
+    <requestid>1251868</requestid>
+  </revision>
 </revisionlist>
