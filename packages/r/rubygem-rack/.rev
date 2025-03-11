@@ -241,4 +241,18 @@ For more detailed information see the installed CHANGELOG.md</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1221897</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>18f77b8829b4543f6d89d8800f078151</srcmd5>
+    <version>3.1.12</version>
+    <time>1741722359</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1252023 from aburlakov
+
+- removed patches
+  fix CVE-2025-25184 [bsc#1237141], Rack::CommonLogger can be exploited by crafting input
+  - rubygem-rack-CVE-2025-25184.patch
+  fix CVE-2025-27111 [bsc#1238607], Escape Sequence Injection vulnerability in Rack lead to Possible Log Injection
+  - rubygem-rack-CVE-2025-27111.patch</comment>
+    <requestid>1252026</requestid>
+  </revision>
 </revisionlist>

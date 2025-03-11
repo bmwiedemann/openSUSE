@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 11 10:32:49 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- New upstream release 3.1.12, see bundled CHANGELOG.md
+- removed patches
+  fix CVE-2025-25184 [bsc#1237141], Rack::CommonLogger can be exploited by crafting input
+  - rubygem-rack-CVE-2025-25184.patch
+  fix CVE-2025-27111 [bsc#1238607], Escape Sequence Injection vulnerability in Rack lead to Possible Log Injection
+  - rubygem-rack-CVE-2025-27111.patch
+
+
+-------------------------------------------------------------------
+Sun Mar  9 11:30:48 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- security update
+- added patches
+  fix CVE-2025-25184 [bsc#1237141], Rack::CommonLogger can be exploited by crafting input
+  + rubygem-rack-CVE-2025-25184.patch
+  fix CVE-2025-27111 [bsc#1238607], Escape Sequence Injection vulnerability in Rack lead to Possible Log Injection
+  + rubygem-rack-CVE-2025-27111.patch
+
+-------------------------------------------------------------------
 Mon Nov  4 17:17:57 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 3.1.8, see bundled CHANGELOG.md
