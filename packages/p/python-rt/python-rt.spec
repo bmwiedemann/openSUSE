@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-rt
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        Python interface to Request Tracker API
 License:        GPL-3.0-only

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 10 14:25:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.3.4
+  * Remove requirements section. this can be easily reviewed
+    in pyproject.toml
+  * Fix bad date comparison; fixes (#107)
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue Jan  7 10:32:07 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - switch to github tarball, as there's no longer an sdist on pypi
