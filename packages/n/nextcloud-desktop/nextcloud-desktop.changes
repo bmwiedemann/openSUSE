@@ -1,4 +1,260 @@
 -------------------------------------------------------------------
+Mon Mar 10 17:06:26 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Added build requirement `libp11`
+
+-------------------------------------------------------------------
+Mon Mar 10 15:42:31 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 3.16.0:
+  * fix spelling os UserStatus qml type when setting user status
+    (gh#nextcloud/desktop#7558)
+  * gui/tray: Dark mode switch (gh#nextcloud/desktop#7561)
+  * no transparent background for main ApplicationWindow
+    (gh#nextcloud/desktop#7564)
+  * fix regressions in automated tests for bulk upload
+    (gh#nextcloud/desktop#7580)
+  * when updating a virtual file after lock/unlock: avoid setting
+    modtime (gh#nextcloud/desktop#7572)
+  * enable reversed locale layout (RTL) in QML
+    (gh#nextcloud/desktop#4240)
+  * Fix text strings (gh#nextcloud/desktop#3792)
+  * l10n: Change to a capital letter (gh#nextcloud/desktop#4953)
+  * mac-crafter: Fix codesigning of app bundle when auto-updater
+    is excluded (gh#nextcloud/desktop#7605)
+  * when locking a file set If-Match header to ensure etag is
+    correct (gh#nextcloud/desktop#7595)
+  * gui/tray: Fix tray window corners (gh#nextcloud/desktop#7566)
+  * gui/tray: Fix activity icon colours (gh#nextcloud/desktop#7567)
+  * Bugfix/handle windows directory junction
+    (gh#nextcloud/desktop#7609)
+  * gui: Remove content margins account settings subsections
+    (gh#nextcloud/desktop#7568)
+  * Disable legacy import dialog (gh#nextcloud/desktop#7623)
+  * chore(i18n): Aligned error messages (gh#nextcloud/desktop#7612)
+  * gui/tray: Ensure colour of featured app icon is consistent with
+    other header buttons (gh#nextcloud/desktop#7604)
+  * doc: Rename first header on macos vfs doc entry, fixing title
+    in index (gh#nextcloud/desktop#7576)
+  * mac-crafter: Close isExecutable command outpipe file handle
+    after use (gh#nextcloud/desktop#7585)
+  * Bug fix import of unbranded account (gh#nextcloud/desktop#7635)
+  * improve definition of MIRALL_VERSION_SUFFIX and
+    MIRALL_VERSION_BUILD (gh#nextcloud/desktop#7625)
+  * dehydrate placeholder files using CfDehydratePlaceholder
+    (gh#nextcloud/desktop#7602)
+  * use modern non deprecated hash algorithm and parameters
+    (gh#nextcloud/desktop#7642)
+  * optionally install PDB files when building them
+    (gh#nextcloud/desktop#7626)
+  * Include folders when displaying the local metadata about a
+    conflict. (gh#nextcloud/desktop#7639)
+  * Fix: correctly detects network drive.
+    (gh#nextcloud/desktop#7636)
+  * chore(i18n): Corrected spelling and improved grammar
+    (gh#nextcloud/desktop#7655)
+  * remove NC17 support (gh#nextcloud/desktop#7656)
+  * improvement of error message (gh#nextcloud/desktop#7667)
+  * Fix a bug preventing sync root in folder on drive roots
+    (gh#nextcloud/desktop#7662)
+  * Bugfix/lnk folder virtual files (gh#nextcloud/desktop#7670)
+  * Add authors file (gh#nextcloud/desktop#7680)
+  * Bump cpp-linter/cpp-linter-action from 2.13.3 to 2.13.4
+    (gh#nextcloud/desktop#7675)
+  * all: Fix deprecation warnings when building with Qt 6.8.0
+    (gh#nextcloud/desktop#7584)
+  * Bugfix/catch exceptions to prevent crash
+    (gh#nextcloud/desktop#7684)
+  * Bugfix/elidedtext (gh#nextcloud/desktop#7679)
+  * Remove assert for when the timestamp is not empty.
+    (gh#nextcloud/desktop#7641)
+  * url update in readme (gh#nextcloud/desktop#7704)
+  * Call setDesktopFileName without .desktop suffix
+    (gh#nextcloud/desktop#7699)
+  * add a simple github action workflow to build test the
+    documentation (gh#nextcloud/desktop#7708)
+  * Fix filename of fix-macosvfs-file-sharing.png
+    (gh#nextcloud/desktop#7691)
+  * Fix .netrc parsing (gh#nextcloud/desktop#7698)
+  * Bugfix/do not always free up storage windows shortcuts
+    (gh#nextcloud/desktop#7713)
+  * fix dev application name to keep a consitant migration
+    behaviour for the dev and prod build
+    (gh#nextcloud/desktop#7683)
+  * ensure proper read write access to root folder and db files
+    (gh#nextcloud/desktop#7724)
+  * Make extraction of ETag header independent of capitalisation
+    (gh#nextcloud/desktop#7720)
+  * gui/tray: Fix colour for secondary text items being too pale
+    (gh#nextcloud/desktop#7725)
+  * Fix "open local or group folders" menu not showing
+    (gh#nextcloud/desktop#7730)
+  * improve feedback from documentation generation workflow
+    (gh#nextcloud/desktop#7743)
+  * gui/tray: Remove BasicComboBox QML component, prefer native
+    component (gh#nextcloud/desktop#7583)
+  * Update macosvfs.rst (gh#nextcloud/desktop#7742)
+  * chore(i18n): Improved grammar (gh#nextcloud/desktop#7749)
+  * update runwizard introduction screen
+    (gh#nextcloud/desktop#7737)
+  * updater: Upgrade to Sparkle 2 (gh#nextcloud/desktop#7750)
+  * gui/tray: Fix sync state icon showing paused state when using
+    macOS VFS with no standard sync folders
+    (gh#nextcloud/desktop#7741)
+  * fix window resize on DPI changes (gh#nextcloud/desktop#7735)
+  * github: Implement issue types in issue templates
+    (gh#nextcloud/desktop#7766)
+  * Use normal MenuSeparator instead of custom code
+    (gh#nextcloud/desktop#7770)
+  * update legal notice copyright years for Nextcloud
+    (gh#nextcloud/desktop#7773)
+  * add some missing doc images in a valid path
+    (gh#nextcloud/desktop#7774)
+  * Avoid converting string to color (gh#nextcloud/desktop#7769)
+  * Bugfix/read only classical sync lnk shortcuts windows
+    (gh#nextcloud/desktop#7779)
+  * fix the if check for invalid virtual LNK files
+    (gh#nextcloud/desktop#7781)
+  * Make Brander QT selection dynamic (gh#nextcloud/desktop#7754)
+  * sync: Respect maximum chunk size provided in server capabilities
+    (gh#nextcloud/desktop#7772)
+  * switch client side encryption to use sha256 hash algorithm
+    (gh#nextcloud/desktop#7780)
+  * Log path strings directly instead of accumulating
+    (gh#nextcloud/desktop#7718)
+  * modify AppImage build script to work with an EL8 base
+    (gh#nextcloud/desktop#7782)
+  * notifications: Do not assume root activity link is the correct
+    "join call" link (gh#nextcloud/desktop#7786)
+  * fix "Resolve conflicts" dialog not showing up
+    (gh#nextcloud/desktop#7789)
+  * persist credentials retrieved through the wizard
+    (gh#nextcloud/desktop#7768)
+  * use new in Qt6.8 windows fluent style
+    (gh#nextcloud/desktop#7416)
+  * fix wrong if condition (gh#nextcloud/desktop#7799)
+  * Add Ubuntu Plucky (gh#nextcloud/desktop#7801)
+  * Link to new documentation (gh#nextcloud/desktop#7810)
+  * Update doc link in issue template (gh#nextcloud/desktop#7811)
+  * fix colours in dark mode (gh#nextcloud/desktop#7755)
+  * refactor: replace QString() with QStringLiteral() for better
+    performance in (gh#nextcloud/desktop#7422)
+  * use correct qml style on Windows (gh#nextcloud/desktop#7812)
+  * craft: Upgrade to binary cache 25.01 (gh#nextcloud/desktop#7825)
+  * only use debug log level for discovery traces to decrease cost
+    (gh#nextcloud/desktop#7819)
+  * shell_integration/macOS: Upgrade to NextcloudFileProviderKit 2.0
+    (gh#nextcloud/desktop#7824)
+  * Adds some extra info when throwing exception with setting folder
+    permissions. (gh#nextcloud/desktop#7809)
+  * Feature/e2ee use hardware token secure storage
+    (gh#nextcloud/desktop#5877)
+  * Fetch "shared with me" information separately
+    (gh#nextcloud/desktop#7744)
+  * gui/tray: Fix defaulting to "problem" state in sync tray icon
+    when using macOS VFS (gh#nextcloud/desktop#7827)
+  * set the parent folder read/write always when downloading a new
+    file (gh#nextcloud/desktop#7808)
+  * fix deletion of .lnk files on Windows with paths containing
+    special characters (gh#nextcloud/desktop#7828)
+  * shell_integration/macOS: Add ability to share macOS VFS files
+    via internal link shares (gh#nextcloud/desktop#7787)
+  * gui/macOS: Improve/fix illegal File Provider domain handling
+    for macOS VFS (gh#nextcloud/desktop#7835)
+  * shell_integration/macOS: Do not try to lock macOS VFS file if
+    locking is unavailable on the server (gh#nextcloud/desktop#7833)
+  * fix: Nautilus integration conflicts with ownCloud
+    (gh#nextcloud/desktop#6418)
+  * Add button to scroll to top when activity list is long.
+    (gh#nextcloud/desktop#7823)
+  * UI: Improves texts displayed to the user when picking the wrong
+    location for syncing (gh#nextcloud/desktop#7596)
+  * skip attempt to install updates at launch when update checks are
+    disabled (gh#nextcloud/desktop#7838)
+  * gui/tray: Prevent talk reply text field being too wide and
+    breaking layout (gh#nextcloud/desktop#7839)
+  * Bugfix. E2EE. Always migrate from 1.2 to 2.0, even with nested
+    folders. (gh#nextcloud/desktop#6695)
+  * Bugfix migration from legacy clients. (gh#nextcloud/desktop#7807)
+  * Fix Height for Resolve Conflicts Dialog (gh#nextcloud/desktop#7815)
+  * add test skeleton for OCC::FolderStatusModel
+    (gh#nextcloud/desktop#7842)
+  * Attempt to detect if client is running in a Vmware to disable
+    graphic acceleration (gh#nextcloud/desktop#7687)
+  * [stable-3.16] fix rounded corners in the call notification
+    (gh#nextcloud/desktop#7851)
+  * [stable-3.16] Fix looks of share note text field
+    (gh#nextcloud/desktop#7858)
+  * [stable-3.16] chore(i18n): Remove blank (gh#nextcloud/desktop#7866)
+  * [stable-3.16] vfs: fix root folder detection regression
+    (gh#nextcloud/desktop#7878)
+  * [stable-3.16] Hide update channels options when needed.
+    (gh#nextcloud/desktop#7879)
+  * [stable-3.16] Small improvements in Folder.
+    (gh#nextcloud/desktop#7882)
+  * [stable-3.16] Feature/automate windows file name compatibility
+    (gh#nextcloud/desktop#7884)
+  * [stable-3.16] provide consistent version info including human
+    readable version (gh#nextcloud/desktop#7885)
+  * [stable-3.16] Change three dots to an ellipsis
+    (gh#nextcloud/desktop#7888)
+  * [stable-3.16] Check if folder exists before deleting sync db and
+    VFS sync root conection. (gh#nextcloud/desktop#7892)
+  * [stable-3.16] prevent infinite sync loop: delay retry after many
+    errors (gh#nextcloud/desktop#7893)
+  * [stable-3.16] improve ToS handling (gh#nextcloud/desktop#7895)
+  * [stable-3.16] fixed html formatting on encrypted warning message
+    (gh#nextcloud/desktop#7896)
+  * [stable-3.16] FolderStatusModel: only create a single
+    QFileIconProvider object (gh#nextcloud/desktop#7900)
+  * [stable-3.16] UserStatusSelector: set focusPolicy on accept
+    button (gh#nextcloud/desktop#7907)
+  * [stable-3.16] Bugfix/delete read only remnants
+    (gh#nextcloud/desktop#7909)
+  * [stable-3.16] Added plural forms handling correction to
+    notification message (gh#nextcloud/desktop#7912)
+  * [stable-3.16] Added space between sentences
+    (gh#nextcloud/desktop#7913)
+  * [stable-3.16] Removed deprecated Qt macros/functions
+    (gh#nextcloud/desktop#7915)
+  * [stable-3.16] chore(i18n): Use correct plural syntax
+    (gh#nextcloud/desktop#7917)
+  * [stable-3.16] Improve UI of settings (gh#nextcloud/desktop#7921)
+  * [stable-3.16] do not display encrypt action for external folders
+    (gh#nextcloud/desktop#7922)
+  * [stable-3.16] craft: Use Qt 6.8.2 (gh#nextcloud/desktop#7923)
+  * [stable-3.16] Added customize option for sync interval
+    (gh#nextcloud/desktop#7929)
+  * [stable-3.16] Increased default limit of free space and critical
+    free space (gh#nextcloud/desktop#7936)
+  * [stable-3.16] Added hiding remotePollInterval selector in
+    settings if notify push available (gh#nextcloud/desktop#7944)
+  * [stable-3.16] gui/tray: Do not generate JPEG images in async
+    image response for macOS (gh#nextcloud/desktop#7947)
+  * [stable-3.16] gui/tray: Remove unused thumbnailjob class
+    (gh#nextcloud/desktop#7948)
+  * [stable-3.16] when deleting a remote locked file, provide needed
+    lock headers (gh#nextcloud/desktop#7952)
+  * [stable-3.16] gui/macOS: Remove "advanced settings" section for
+    macOS VFS settings (gh#nextcloud/desktop#7953)
+  * [stable-3.16] update AppImage builds to Qt 6.8.2
+    (gh#nextcloud/desktop#7954)
+  * [stable-3.16] gui/tray: Fix some tray view papercuts
+    (gh#nextcloud/desktop#7955)
+  * [stable-3.16] gui: do not allow MainWindow to be resized
+    (gh#nextcloud/desktop#7957)
+  * [stable-3.16] Revert "gui: do not allow MainWindow to be resized"
+    (gh#nextcloud/desktop#7963)
+  * [stable-3.16] Remove aditional text when error occurs.
+    (gh#nextcloud/desktop#7968)
+  * [stable-3.16] gui/macOS: Fix emitted signal in file provider sync
+    status GUI component (gh#nextcloud/desktop#7972)
+  * [stable-3.16] make use of the new x-nc-skip-trashbin header
+    (gh#nextcloud/desktop#7975)
+  * [stable-3.16] always set a user if we got asked for one
+    (gh#nextcloud/desktop#7976)
+
+-------------------------------------------------------------------
 Tue Jan  7 15:20:47 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to version 3.15.3:

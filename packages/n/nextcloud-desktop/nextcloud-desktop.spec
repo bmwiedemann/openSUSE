@@ -25,7 +25,7 @@
 %define gcc_ver 9
 %endif
 Name:           nextcloud-desktop
-Version:        3.15.3
+Version:        3.16.0
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -70,6 +70,7 @@ BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(cloudproviders)
 BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(libp11)
 BuildRequires:  pkgconfig(openssl) >= 1.1
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
