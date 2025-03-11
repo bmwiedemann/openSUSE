@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 10 10:13:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.6.2
+  * Add support for Python 3.13.
+- Drop python313.patch, fixed upstream
+
+-------------------------------------------------------------------
 Sun Sep  1 19:14:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add python313.patch:

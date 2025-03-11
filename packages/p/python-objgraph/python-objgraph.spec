@@ -1,7 +1,7 @@
 #
 # spec file for package python-objgraph
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-objgraph
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        Python module to draw object reference graphs with graphviz
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://mg.pov.lt/objgraph/
 Source:         https://files.pythonhosted.org/packages/source/o/objgraph/objgraph-%{version}.tar.gz
-# see https://github.com/mgedmin/objgraph/issues/80
-Patch1:         python313.patch
 BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
