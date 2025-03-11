@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 11 07:33:59 UTC 2025 - okurz@suse.com
+
+- Update to version 1.30.0:
+  * Add commandline usage from git clone
+  * Mention NO_REMINDER_REGEX as additional option to prevent reminders
+  * tox: Update tested python versions
+  * tox: Add python3.13 which is already in Tumbleweed
+  * Apply black suggestions as of 2024-08-01
+  * Encode values in URLs
+
+-------------------------------------------------------------------
 Tue Sep 12 05:48:06 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Clean up no longer needed Requires. 

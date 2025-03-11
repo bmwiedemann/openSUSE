@@ -377,4 +377,18 @@
     <comment>- Clean up no longer needed Requires.</comment>
     <requestid>1110437</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>11cb81b1b6d92d0f7f76a56eebd1f492</srcmd5>
+    <version>1.30.0</version>
+    <time>1741722324</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.30.0:
+  * Add commandline usage from git clone
+  * Mention NO_REMINDER_REGEX as additional option to prevent reminders
+  * tox: Update tested python versions
+  * tox: Add python3.13 which is already in Tumbleweed
+  * Apply black suggestions as of 2024-08-01
+  * Encode values in URLs</comment>
+    <requestid>1251961</requestid>
+  </revision>
 </revisionlist>
