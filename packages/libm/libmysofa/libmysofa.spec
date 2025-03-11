@@ -2,6 +2,7 @@
 # spec file for package libmysofa
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define sover 1
 %define __builder ninja
 Name:           libmysofa
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Reader for AES SOFA HRTF files
 License:        BSD-3-Clause
@@ -27,14 +28,12 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/hoene/libmysofa
 Source0:        https://github.com/hoene/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# https://github.com/hoene/libmysofa/issues/210
-Patch0:         Install-header-when-only-building-shared-lib.patch
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  ninja
-BuildRequires:  pkgconfig
 # for tests
 BuildRequires:  nodejs-common
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(zlib)
 
@@ -72,10 +71,9 @@ This package contains the development libraries and headers for libmysofa.
 %cmake_install
 
 %check
-%cmake_build -C build test
+%ctest
 
-%post -n %{name}%{sover} -p /sbin/ldconfig
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files -n %{name}%{sover}
 %doc README.md
@@ -86,7 +84,7 @@ This package contains the development libraries and headers for libmysofa.
 
 %files devel
 %license LICENSE
-%{_includedir}/mysofa.h
+%{_includedir}/*
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/cmake/mysofa
