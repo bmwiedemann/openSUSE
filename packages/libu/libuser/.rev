@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1235343</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e9add1977d7c805e569afabb80dd208f</srcmd5>
+    <version>0.64</version>
+    <time>1741722376</time>
+    <user>anag+factory</user>
+    <comment>- add patch remove-tests.patch, as we switched to python3.13 and
+  python3.13 doesn't support crypt</comment>
+    <requestid>1252039</requestid>
+  </revision>
 </revisionlist>

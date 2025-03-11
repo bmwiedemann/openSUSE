@@ -24,6 +24,7 @@ Summary:        A user and group account administration library
 License:        LGPL-2.0-or-later
 URL:            https://pagure.io/libuser
 Source0:        %{url}/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         remove-tests.patch
 BuildRequires:  bison
 BuildRequires:  gettext-tools
 BuildRequires:  gtkdoc
@@ -89,7 +90,7 @@ BuildArch:      noarch
 %lang_package
 
 %prep
-%autosetup -n %{name}-%{name}-%{version}
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 ./autogen.sh

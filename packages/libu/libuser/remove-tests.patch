@@ -1,0 +1,16 @@
+diff -rub libuser-libuser-0.64/Makefile.am libuser-libuser-0.64-patched/Makefile.am
+--- libuser-libuser-0.64/Makefile.am	2023-01-23 21:30:11.000000000 +0100
++++ libuser-libuser-0.64-patched/Makefile.am	2025-03-10 14:51:41.714460031 +0100
+@@ -25,11 +25,8 @@
+ 
+ ## Targets
+ SUBDIRS = po docs
+-TESTS = tests/config_test.sh tests/fs_test tests/files_test tests/pwhash_test \
++TESTS = tests/config_test.sh tests/fs_test tests/pwhash_test \
+ 	tests/utils_test
+-if LDAP
+-TESTS += tests/default_pw_test tests/ldap_test
+-endif
+ 
+ EXTRA_DIST = \
+ 	$(EXTRA_MANS) \

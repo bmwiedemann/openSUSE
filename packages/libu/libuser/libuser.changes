@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 10 14:10:00 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch remove-tests.patch, as we switched to python3.13 and
+  python3.13 doesn't support crypt
+
+-------------------------------------------------------------------
 Mon Jan  6 16:57:03 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add support for Leap 15.6
