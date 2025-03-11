@@ -1,44 +1,100 @@
 -------------------------------------------------------------------
+Mon Mar 10 10:18:59 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.10
+ * Preview features
+   * [ruff] Add new rule RUF059: Unused unpacked assignment 
+   * [syntax-errors] Detect assignment expressions before Python 3.8 
+   * [syntax-errors] Named expressions in decorators before Python 3.9 
+   * [syntax-errors] Parenthesized keyword argument names after Python 3.8 
+   * [syntax-errors] Positional-only parameters before Python 3.8 
+   * [syntax-errors] Tuple unpacking in return and yield before Python 3.8 
+   * [syntax-errors] Type parameter defaults before Python 3.13 
+   * [syntax-errors] Type parameter lists before Python 3.12 
+   * [syntax-errors] except* before Python 3.11 
+   * [syntax-errors] type statements before Python 3.12 
+ * Bug fixes
+   * Escape template filenames in glob patterns in configuration 
+   * [flake8-simplify] Exempt unittest context methods for SIM115 rule 
+   * Formatter: Fix syntax error location in notebooks 
+   * [pyupgrade] Do not offer fix when at least one target is global/nonlocal (UP028) 
+   * [flake8-builtins] Ignore variables matching module attribute names (A001) 
+   * [pylint] Convert code keyword argument to a positional argument in fix for (PLR1722) 
+ * CLI
+   * Move rule code from description to check_name in GitLab output serializer 
+ * Documentation
+   * [pydocstyle] Clarify that D417 only checks docstrings with an arguments section 
+
+-------------------------------------------------------------------
+Tue Mar  4 13:44:16 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.9
+ * Preview features
+   * Fix caching of unsupported-syntax errors 
+   * Start detecting version-related syntax errors in the parser 
+ * Rule changes
+   * [pylint] Mark fix unsafe (PLW1507) 
+   * [pylint] Catch case np.nan/case math.nan in match statements (PLW0177) 
+   * [ruff] Add more Pydantic models variants to the list of default copy semantics (RUF012) 
+ * Server
+   * Avoid indexing the project if configurationPreference is editorOnly 
+   * Avoid unnecessary info at non-trace server log level 
+   * Expand ruff.configuration to allow inline config 
+   * Notify users for invalid client settings 
+ * Configuration
+   * Add per-file-target-version option 
+ * Bug fixes
+   * Only show unsupported-syntax errors in editors when preview mode is enabled 
+   * [refurb] Do not consider docstring(s) (FURB156) 
+   * [flake8-self] Ignore attribute accesses on instance-like variables (SLF001) 
+   * [pylint] Fix false positives, add missing methods, and support positional-only parameters (PLE0302) 
+   * [flake8-pyi] Mark PYI030 fix unsafe when comments are deleted 
+ * Documentation
+   * Fix example for S611 
+   * Normalize inconsistent markdown headings in docstrings 
+   * Document MSRV policy 
+
+-------------------------------------------------------------------
 Wed Feb 26 12:35:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.9.7
   * Consider __new__ methods as special function type for enforcing
-    class method or static method rules (#13305)
+    class method or static method rules 
   * [airflow] Improve the internal logic to differentiate deprecated
-    symbols (AIR303) (#16013)
-  * [refurb] Manual timezone monkeypatching (FURB162) (#16113)
-  * [ruff] Implicit class variable in dataclass (RUF045) (#14349)
+    symbols (AIR303) 
+  * [refurb] Manual timezone monkeypatching (FURB162) 
+  * [ruff] Implicit class variable in dataclass (RUF045) 
   * [ruff] Skip singleton starred expressions for incorrectly-\
-    parenthesized-tuple-in-subscript (RUF031) (#16083)
-  * [refurb] Check for subclasses includes subscript expressions (FURB189) (#16155)
+    parenthesized-tuple-in-subscript (RUF031) 
+  * [refurb] Check for subclasses includes subscript expressions (FURB189) 
   * [flake8-debugger] Also flag sys.breakpointhook and
-    sys.__breakpointhook__ (T100) (#16191)
-  * [pycodestyle] Exempt site.addsitedir(...) calls (E402) (#16251)
+    sys.__breakpointhook__ (T100) 
+  * [pycodestyle] Exempt site.addsitedir(...) calls (E402) 
   * Fix unstable formatting of trailing end-of-line comments of
-    parenthesized attribute values (#16187)
-  * Fix handling of requests received after shutdown message (#16262)
+    parenthesized attribute values 
+  * Fix handling of requests received after shutdown message 
   * Ignore source.organizeImports.ruff and source.fixAll.ruff code
-    actions for a notebook cell (#16154)
-  * Include document specific debug info for ruff.printDebugInformation (#16215)
+    actions for a notebook cell 
+  * Include document specific debug info for ruff.printDebugInformation 
   * Update server to return the debug info as string with
-    ruff.printDebugInformation (#16214)
-  * Warn on invalid noqa even when there are no diagnostics (#16178)
-  * Better error messages while loading configuration extends (#15658)
-  * [flake8-comprehensions] Handle trailing comma in C403 fix (#16110)
+    ruff.printDebugInformation 
+  * Warn on invalid noqa even when there are no diagnostics 
+  * Better error messages while loading configuration extends 
+  * [flake8-comprehensions] Handle trailing comma in C403 fix 
   * [flake8-pyi] Avoid flagging custom-typevar-for-self on metaclass
-    methods (PYI019) (#16141)
-  * [pydocstyle] Handle arguments with the same names as sections (D417) (#16011)
-  * [pylint] Correct ordering of arguments in fix for if-stmt-min-max (PLR1730) (#16080)
-  * [pylint] Do not offer fix for raw strings (PLE251) (#16132)
+    methods (PYI019) 
+  * [pydocstyle] Handle arguments with the same names as sections (D417) 
+  * [pylint] Correct ordering of arguments in fix for if-stmt-min-max (PLR1730) 
+  * [pylint] Do not offer fix for raw strings (PLE251) 
   * [pyupgrade] Do not upgrade functional TypedDicts with private field
-    names to the class-based syntax (UP013) (#16219)
-  * [pyupgrade] Handle micro version numbers correctly (UP036) (#16091)
-  * [pyupgrade] Unwrap unary expressions correctly (UP018) (#15919)
+    names to the class-based syntax (UP013) 
+  * [pyupgrade] Handle micro version numbers correctly (UP036) 
+  * [pyupgrade] Unwrap unary expressions correctly (UP018) 
   * [refurb] Correctly handle lengths of literal strings in
-    slice-to-remove-prefix-or-suffix (FURB188) (#16237)
-  * [ruff] Skip RUF001 diagnostics when visiting string type definitions (#16122)
-  * Add FAQ entry for source.* code actions in Notebook (#16212)
-  * Add SECURITY.md (#16224)
+    slice-to-remove-prefix-or-suffix (FURB188) 
+  * [ruff] Skip RUF001 diagnostics when visiting string type definitions 
+  * Add FAQ entry for source.* code actions in Notebook 
+  * Add SECURITY.md 
 
 -------------------------------------------------------------------
 Mon Feb 10 16:29:23 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>

@@ -1794,4 +1794,41 @@
     <comment></comment>
     <requestid>1248763</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>93b27b63160a21349e229d95d89a0af2</srcmd5>
+    <version>0.9.10</version>
+    <time>1741722234</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.10
+ * Preview features
+   * [ruff] Add new rule RUF059: Unused unpacked assignment 
+   * [syntax-errors] Detect assignment expressions before Python 3.8 
+   * [syntax-errors] Named expressions in decorators before Python 3.9 
+   * [syntax-errors] Parenthesized keyword argument names after Python 3.8 
+   * [syntax-errors] Positional-only parameters before Python 3.8 
+   * [syntax-errors] Tuple unpacking in return and yield before Python 3.8 
+   * [syntax-errors] Type parameter defaults before Python 3.13 
+   * [syntax-errors] Type parameter lists before Python 3.12 
+   * [syntax-errors] except* before Python 3.11 
+   * [syntax-errors] type statements before Python 3.12 
+ * Bug fixes
+   * Escape template filenames in glob patterns in configuration 
+   * [flake8-simplify] Exempt unittest context methods for SIM115 rule 
+   * Formatter: Fix syntax error location in notebooks 
+   * [pyupgrade] Do not offer fix when at least one target is global/nonlocal (UP028) 
+   * [flake8-builtins] Ignore variables matching module attribute names (A001) 
+   * [pylint] Convert code keyword argument to a positional argument in fix for (PLR1722) 
+ * CLI
+   * Move rule code from description to check_name in GitLab output serializer 
+ * Documentation
+   * [pydocstyle] Clarify that D417 only checks docstrings with an arguments section 
+
+- update to 0.9.9
+ * Preview features
+   * Fix caching of unsupported-syntax errors 
+   * Start detecting version-related syntax errors in the parser 
+ * Rule changes
+   * [pylint] Mark fix unsafe (PLW1507)</comment>
+    <requestid>1251746</requestid>
+  </revision>
 </revisionlist>
