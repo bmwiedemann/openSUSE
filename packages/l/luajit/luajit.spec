@@ -90,6 +90,7 @@ export CFLAGS="%{optflags}"
 	Q= \
 	DYNAMIC_CC="cc -fPIC" \
 	LDCONFIG="true" \
+    XCFLAGS="-DLUAJIT_ENABLE_LUA52COMPAT" \
 	TARGET_AR="ar rcus" \
 	TARGET_STRIP=: \
 	MULTILIB=%{_lib}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  7 05:12:33 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Enable lua 5.2 compatibility (Needed for build aegisubs)
+
+-------------------------------------------------------------------
 Fri Dec  6 07:23:43 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - No loongarch64 support yet
