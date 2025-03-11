@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 11 05:17:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.2.1:
+  * Add Python 3.13 support (gh#jrnl-org/jrnl#1893)
+  * Add calendar heatmap display format (gh#jrnl-org/jrnl#1759)
+  * -contains doesn't accept multiple search terms, doesn't work with -and
+    (gh#jrnl-org/jrnl#1877)
+  * Tests failing on develop branch starting with pytest-bdd 7.1.2
+    (gh#jrnl-org/jrnl#1875)
+  * Ignore color when used in a pipeline (gh#jrnl-org/jrnl#1839)
+  * Fix -contains to allow multiple terms with "OR" logic unless -and is
+    added (gh#jrnl-org/jrnl#1890)
+
+-------------------------------------------------------------------
 Wed May 22 15:43:14 UTC 2024 - malcolmlewis@opensuse.org
 
 - Updated to version 4.1:
