@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  7 17:13:20 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Add LICENSE to pass the SLFO license checks
+  * LICENSE.patch
+
+-------------------------------------------------------------------
 Mon Nov  4 17:35:25 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 0.5.11554.20240903115529.post682025827:

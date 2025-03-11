@@ -19,8 +19,8 @@
 #   BuildRequires: foobar
 #   Requires: foobar
 # ## used by gem2rpm
-# :patches:
-#   foo.patch: -p1
+:patches:
+   LICENSE.patch: -p1
 #   bar.patch:
 # :post_patch:
 #   if you need to fiddle with the source dir before rebuilding the gem

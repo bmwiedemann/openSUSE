@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-sorbet-runtime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ BuildRequires:  %{rubygem gem2rpm}
 URL:            https://sorbet.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
+Patch1:         LICENSE.patch
 Summary:        Sorbet runtime
 License:        Apache-2.0
 
@@ -41,6 +42,10 @@ License:        Apache-2.0
 Sorbet's runtime type checking component.
 
 %prep
+%gem_unpack
+%patch -P 1 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 
