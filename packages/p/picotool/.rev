@@ -104,4 +104,20 @@
     <comment></comment>
     <requestid>1219038</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b075ea62d142cd9abb6dd2100044f0b3</srcmd5>
+    <version>2.1.1</version>
+    <time>1741722326</time>
+    <user>anag+factory</user>
+    <comment>- Fix cmake installation path on 64-bit architectures
+- Update to 2.1.1
+  * Sped up the coprodis command which was very slow for large files on some platforms
+  * Sped up the info command by caching data read from the device
+- Update to 2.1.0
+  * Added partition table; and otp permissions, whitelabel, contents and settings JSON schemas
+  * Moved example json files into json folder, with schemas in json/schemas
+  * All commands now require 0x before hexadecimal family IDs
+</comment>
+    <requestid>1251986</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 11 09:04:24 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix cmake installation path on 64-bit architectures
+
+-------------------------------------------------------------------
+Tue Mar 11 00:45:43 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Update to 2.1.1
+  * Sped up the coprodis command which was very slow for large files on some platforms
+  * Sped up the info command by caching data read from the device
+
+- Update to 2.1.0
+  * Added partition table; and otp permissions, whitelabel, contents and settings JSON schemas
+  * Moved example json files into json folder, with schemas in json/schemas
+  * All commands now require 0x before hexadecimal family IDs
+
+-------------------------------------------------------------------
 Tue Oct 29 08:40:16 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to 2.0.0
