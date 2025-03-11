@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 08 16:02:29 UTC 2025 - andrea.manzini@suse.com
+
+- Update to version 1.5.3:
+  * support --tag in build.yml for packages
+  * additional volume support in building
+  * internal restructure to use explicit platform instead of implicit arch in cache
+  * restructure logging
+  * vendor: switch to moby/sys/capability
+  * bump docker deps to v27.2.0
+  * remove linuxefi grub EFI handover to normal linux loading
+  * use only stdout/stderr or file for runc output
+  * moby: check architecture for docker image
+  * more verbose runc messages
+
+-------------------------------------------------------------------
 Fri Sep 27 05:38:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package linuxkit: toolkit for building secure, portable and
