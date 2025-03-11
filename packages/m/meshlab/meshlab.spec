@@ -1,7 +1,7 @@
 #
 # spec file for package meshlab
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Name:           meshlab
 Version:        2022.02
 Release:        0
 Summary:        System for the processing and editing of unstructured 3D triangular meshes
-License:        GPL-2.0-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Graphics/3D Editors
 URL:            https://www.meshlab.net/
 Source0:        https://github.com/cnr-isti-vclab/meshlab/archive/refs/tags/MeshLab-%{version}.tar.gz#/meshlab-%{version}.tar.gz
@@ -42,14 +42,14 @@ Patch3:         0001-Set-correct-RPATH-for-libraries-and-executable.patch
 Patch4:         0001-Allow-usage-of-system-provided-levmar.patch
 Patch5:         gcc13-fix.patch
 
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_thread-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  levmar-devel
+BuildRequires:  libboost_headers-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  muparser-devel
 BuildRequires:  qhull-devel
@@ -101,10 +101,9 @@ sed -i 's|SHADER_DIR|QString("%{_datadir}/meshlab/shaders")|g' src/common/global
 
 %build
 pushd src
-%cmake
+%cmake -DALLOW_SYSTEM_GLEW:BOOL=ON -DGLEW_VERSION=2.2.0
 %cmake_build
 popd
-
 
 %install
 pushd src

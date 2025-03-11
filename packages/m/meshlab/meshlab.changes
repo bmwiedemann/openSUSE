@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 11 12:57:18 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix build: GLEW build options must be explicitly supplied now
+
+-------------------------------------------------------------------
 Wed Jul 19 06:51:16 UTC 2023 - Martin Liška <martin.liska@hey.com>
 
 - Add gcc13-fix.patch in order to fix compilation with GCC 13.

@@ -7,4 +7,13 @@
     <comment>Re-add the package to Factory, please. If you want, I'm willing to maintain the package.</comment>
     <requestid>1099563</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>766a88ad292c3fef64a6708b7bdd9c9c</srcmd5>
+    <version>2022.02</version>
+    <time>1741722445</time>
+    <user>anag+factory</user>
+    <comment>- Fix build: GLEW build options must be explicitly supplied now
+</comment>
+    <requestid>1252127</requestid>
+  </revision>
 </revisionlist>
