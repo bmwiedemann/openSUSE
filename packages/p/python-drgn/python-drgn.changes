@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  6 13:35:39 UTC 2025 - Michal Koutný <mkoutny@suse.com>
+
+- RPM: move source to obscpio maintained with _service
+- RPM: use modern (>=15.4) python macros
+
+-------------------------------------------------------------------
 Mon Dec 30 13:01:09 UTC 2024 - Petr Tesařík <ptesarik@suse.com>
 
 - Update to drgn-0.0.30:

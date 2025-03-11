@@ -1,7 +1,7 @@
 #
 # spec file for package python-drgn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,6 @@
 #
 
 
-%define skip_python2 1
-
-%{?!python_module:%define python_module() python3-%{**}}
-
 Name:           python-drgn
 Version:        0.0.30
 Release:        0
@@ -27,7 +23,7 @@ Summary:        Scriptable debugger library
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/osandov/drgn
-Source:         https://github.com/osandov/drgn/archive/refs/tags/v%{version}.tar.gz#/drgn-%{version}.tar.gz
+Source:         drgn-%{version}.tar.gz
 Patch1:         libdrgn-kdump-simplify-getting-the-PRSTATUS-attribut.patch
 Patch2:         libdrgn-kdump-prepare-for-incompatible-changes-in-li.patch
 BuildRequires:  %{python_module devel}
@@ -64,7 +60,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pyunittest_arch discover -v
 
 %post
 %python_install_alternative drgn
