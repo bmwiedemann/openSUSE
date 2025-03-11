@@ -1,7 +1,7 @@
 #
 # spec file for package wingpanel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,13 @@
 %define         sover 8
 %define         appid io.elementary.wingpanel
 Name:           wingpanel
-Version:        8.0.2
+Version:        8.0.3
 Release:        0
 Summary:        Stylish top panel that holds indicators
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/wingpanel
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -36,7 +37,6 @@ BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(granite)
 BuildRequires:  pkgconfig(libmutter-15)
-BuildRequires:  cmake
 Requires:       notify-osd
 
 %description
