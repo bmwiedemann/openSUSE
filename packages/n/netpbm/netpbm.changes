@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Mar 10 09:20:53 UTC 2025 - pgajdos@suse.com
+
+- version update to 11.9.3
+  * Release 11.09.03
+    + giftopnm: Fix wild pointer reference with -verbose and
+      invalid extension type.  Broken in Netpbm 10.59 (December 2012).
+      pdbimgtopam, pamtopdbimg: Fix crash when out of memory.  Always
+      broken (programs were new in Netpbm 10.52 (September 2010)).
+    + pamrestack: fix failure when height too large for computations.
+      Broken in Netpbm 10.99 (June 2022).
+
+  * Release 11.09.02
+    + pammixmulti: Fix crash similar to that fixed in 11.09.01.
+      Introduced in Netpbm 11.09.00 (December 2024).
+
+  * Release 11.09.01
+    + pammixmulti: Fix crash from uninitialized memory.  Introduced in
+      Netpbm 11.09.00 (December 2024).
+      
+  * Release 11.09.00
+    + pammixmulti: Add -blend=alpha-weighted.  Thanks Scott Pakin.
+    + ppmhist: Don't accept -nomap and -map together, or -colorname
+      with -map.  (Before, -nomap and -colorname were ignored with
+      -map).
+    + libnetpbm: Fix crash in ppm_colorDict_destroy; affects all
+      programs that use color names.  Introduced in Netpbm 11.07 (June
+      2024).
+    + pcxtoppm: Fix wildly incorrect output for all multiplane images.
+      Broken in Netpbm 11.04 (September 2023). 
+    + pbmtoascii: Fix bug: allows both -1x2 and -2x4.  Always present
+      (pbmtoascii existed in primordial Netpbm).
+    + build: fix type mismatch warning linking ppmtompeg.  Always
+      broken (ppmtompeg was new to Netpbm in April 2004).
+    + build: Make it work with -std=gnu23, which is the default in
+      recent GCC.  To wit, remove local declaration of "bool".
+    + makeman: fix for HTML lists that have blank lines between items.
+  * Release 11.08.00
+    + libnetpbm color name parsing: Fix handling of rgb: color names
+      with more than 4 hex digits per plane, so it throws an error
+      instead of generating an invalid or wrong color.  Broken in
+      primordial Netpbm.
+    + libnetpbm color name parsing: Fix error message for invalid
+      rgb-<MAXVAL> color name.
+    + build: fix typo in check of DARWIN_C_SOURCE so strdup, etc.
+      are properly defined on OS X.
+
+- modified patches
+  % netpbm-security-code.patch (refreshed)
+- deleted patches
+  - netpbm-gcc15.patch (upstreamed)
+
+-------------------------------------------------------------------
 Fri Mar  7 11:54:36 UTC 2025 - pgajdos@suse.com
 
 - added patches

@@ -20,10 +20,10 @@
 %define asan_build     0
 %define ubsan_build    0
 %define libmaj  11
-%define libmin  107
+%define libmin  109
 %define libver  %{libmaj}.%{libmin}
 Name:           netpbm
-Version:        11.7.0
+Version:        11.9.3
 Release:        0
 Summary:        A Graphics Conversion Package
 License:        BSD-3-Clause AND GPL-2.0-or-later AND IJG AND MIT AND SUSE-Public-Domain
@@ -44,8 +44,6 @@ Patch5:         makeman-py3.patch
 Patch8:         netpbm-disable-jasper.patch
 # CVE-2017-5849 [bsc#1022790], CVE-2017-5849 [bsc#1022791]
 Patch9:         netpbm-use-byrow-when-needed.patch
-# build with gcc15
-Patch10:        netpbm-gcc15.patch
 BuildRequires:  flex
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel

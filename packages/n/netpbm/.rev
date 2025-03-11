@@ -981,4 +981,41 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
   + netpbm-gcc15.patch (forwarded request 1251182 from pgajdos)</comment>
     <requestid>1251183</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>2bc545a2fb316abc2331fe67d28a0c72</srcmd5>
+    <version>11.9.3</version>
+    <time>1741722232</time>
+    <user>anag+factory</user>
+    <comment>- version update to 11.9.3
+  * Release 11.09.03
+    + giftopnm: Fix wild pointer reference with -verbose and
+      invalid extension type.  Broken in Netpbm 10.59 (December 2012).
+      pdbimgtopam, pamtopdbimg: Fix crash when out of memory.  Always
+      broken (programs were new in Netpbm 10.52 (September 2010)).
+    + pamrestack: fix failure when height too large for computations.
+      Broken in Netpbm 10.99 (June 2022).
+  * Release 11.09.02
+    + pammixmulti: Fix crash similar to that fixed in 11.09.01.
+      Introduced in Netpbm 11.09.00 (December 2024).
+  * Release 11.09.01
+    + pammixmulti: Fix crash from uninitialized memory.  Introduced in
+      Netpbm 11.09.00 (December 2024).
+      
+  * Release 11.09.00
+    + pammixmulti: Add -blend=alpha-weighted.  Thanks Scott Pakin.
+    + ppmhist: Don't accept -nomap and -map together, or -colorname
+      with -map.  (Before, -nomap and -colorname were ignored with
+      -map).
+    + libnetpbm: Fix crash in ppm_colorDict_destroy; affects all
+      programs that use color names.  Introduced in Netpbm 11.07 (June
+      2024).
+    + pcxtoppm: Fix wildly incorrect output for all multiplane images.
+      Broken in Netpbm 11.04 (September 2023). 
+    + pbmtoascii: Fix bug: allows both -1x2 and -2x4.  Always present
+      (pbmtoascii existed in primordial Netpbm).
+    + build: fix type mismatch warning linking ppmtompeg.  Always
+      broken (ppmtompeg was new to Netpbm in April 2004).
+    + build: Make it work with -std=gnu23, which is the default in</comment>
+    <requestid>1251739</requestid>
+  </revision>
 </revisionlist>
