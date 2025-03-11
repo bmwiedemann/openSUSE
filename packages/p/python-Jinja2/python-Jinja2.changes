@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 10 08:46:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.1.6
+  * The ``|attr`` filter does not bypass the environment's attribute lookup,
+    allowing the sandbox to apply its checks.
+
+-------------------------------------------------------------------
 Fri Dec 27 09:16:40 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.1.5:
