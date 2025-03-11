@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar  9 11:06:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Make build recipe POSIX sh compatible
+
+-------------------------------------------------------------------
 Fri Mar  7 13:40:43 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - enabled Raytracing (vulkan) support for intel ARC GPUs

@@ -1097,16 +1097,18 @@ rm -Rfv %{buildroot}/%{_libdir}/dri/*_dri.so \
 ln -sv %{_libdir}/libGLX_mesa.so.0 %{buildroot}%{_libdir}/libGLX_indirect.so.0
 
 # pickup pkgconfig files from libglvnd build
-rm -fv %{buildroot}/%{_libdir}/pkgconfig/{gl,egl,glesv1_cm,glesv2}.pc
-install -vm 0644 /usr/share/doc/packages/libglvnd/pkgconfig/{gl,egl,glesv1_cm,glesv2}.pc \
-   %{buildroot}/%{_libdir}/pkgconfig/
+for i in gl egl glesv1_cm glesv2; do
+	rm -fv "%{buildroot}/%{_libdir}/pkgconfig/$i.pc"
+	install -vm 0644 "%{_docdir}/libglvnd/pkgconfig/$i.pc" \
+		%{buildroot}/%{_libdir}/pkgconfig/
+done
 
-for dir in ../xc/doc/man/{GL/gl,GL/glx}; do
- pushd $dir
+for dir in GL/gl GL/glx; do
+ cd "../xc/doc/man/$dir"
    xmkmf -a
    %make_build V=1
    make install.man DESTDIR=%{buildroot} MANPATH=%{_mandir} LIBMANSUFFIX=3gl
- popd
+ cd -
 done
 %endif
 
