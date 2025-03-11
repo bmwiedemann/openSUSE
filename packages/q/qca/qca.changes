@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 09 21:33:08 UTC 2025 - fabian@ritter-vogt.de
+
+- Update to version 2.3.10:
+  * Increase version number
+  * Avoid some clang-format incompatibility issues
+  * Port away from CMP0042
+  * CI: Remove build_clazy_clang_tidy build
+  * CI: Use clang-format 19
+  * CI: Fix FreeBSD build
+  * Retire KF5 Android CI
+  * Avoid using QtTest module include which slows down compilation
+- Switch _service to use mode="manual"
+
+-------------------------------------------------------------------
 Mon Jun 24 17:51:06 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 2.3.9:
