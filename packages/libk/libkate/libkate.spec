@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 SUSE Dominique Leuenberger, Amsterdam, Netherlands
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +18,20 @@
 #
 
 
-%bcond_without python2
+%define sover 1
 Name:           libkate
-Version:        0.4.1
+Version:        0.4.3
 Release:        0
 Summary:        A karaoke and text codec for embedding in Ogg
 License:        BSD-3-Clause
-URL:            http://libkate.googlecode.com
-Source:         http://libkate.googlecode.com/files/%{name}-%{version}.tar.gz
+URL:            https://gitlab.xiph.org/xiph/kate
+Source:         https://downloads.xiph.org/releases/kate/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch0:         disable-namespace-test.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(ogg)
-%if %{with python2}
-BuildRequires:  python2-base
-%endif
 
 %description
 Kate is a codec for karaoke and text encapsulation for Ogg. Most of the
@@ -48,10 +45,10 @@ This was originally meant for karaoke use, but can be used for any
 purpose. Motions can be attached to various semantics, like position,
 color, etc, so scrolling or fading text can be defined.
 
-%package -n %{name}1
+%package -n %{name}%{sover}
 Summary:        A karaoke and text codec for embedding in Ogg
 
-%description -n %{name}1
+%description -n %{name}%{sover}
 Kate is a codec for karaoke and text encapsulation for Ogg. Most of the
 time, this would be multiplexed with audio/video to carry subtitles,
 song lyrics (with or without karaoke data), etc, but doesn't have to be.
@@ -63,11 +60,11 @@ This was originally meant for karaoke use, but can be used for any
 purpose. Motions can be attached to various semantics, like position,
 color, etc, so scrolling or fading text can be defined.
 
-%package -n liboggkate1
+%package -n liboggkate%{sover}
 Summary:        A karaoke and text codec for embedding in Ogg
 Conflicts:      libkate1 < 0.4.1
 
-%description -n liboggkate1
+%description -n liboggkate%{sover}
 Kate is a codec for karaoke and text encapsulation for Ogg. Most of the
 time, this would be multiplexed with audio/video to carry subtitles,
 song lyrics (with or without karaoke data), etc, but doesn't have to be.
@@ -81,10 +78,8 @@ color, etc, so scrolling or fading text can be defined.
 
 %package devel
 Summary:        A karaoke and text codec for embedding in Ogg - Development Files
-Requires:       %{name}1 = %{version}
-Requires:       glibc-devel
-Requires:       liboggkate1 = %{version}
-Requires:       pkgconfig(ogg)
+Requires:       %{name}%{sover} = %{version}
+Requires:       liboggkate%{sover} = %{version}
 
 %description devel
 Kate is a codec for karaoke and text encapsulation for Ogg. Most of the
@@ -133,9 +128,6 @@ them, and rebuilding the Ogg stream after the Kate tracks are modified.
 
 %build
 echo 'HTML_TIMESTAMP=NO' >> doc/kate.doxygen.in
-%if !%{with python2}
-sed -i -e 's:PYTHON=python:PYTHON=python3:g' misc/autotools/py-compile
-%endif
 %configure \
         --disable-static
 %make_build
@@ -157,23 +149,23 @@ rm -rf %{buildroot}%{_mandir}/man1/KateDJ.1*
 %check
 %make_build check
 
-%post -n %{name}1 -p /sbin/ldconfig
-%postun -n %{name}1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
+%ldconfig_scriptlets -n liboggkate%{sover}
 
-%files -n %{name}1
+%files -n %{name}%{sover}
 %doc AUTHORS ChangeLog README THANKS
 %license COPYING
-%{_libdir}/%{name}.so.1*
+%{_libdir}/%{name}.so.%{sover}
+%{_libdir}/%{name}.so.%{sover}.*
 
-%post -n liboggkate1 -p /sbin/ldconfig
-%postun -n liboggkate1 -p /sbin/ldconfig
-
-%files -n liboggkate1
+%files -n liboggkate%{sover}
 %license COPYING
 %doc AUTHORS ChangeLog README THANKS
-%{_libdir}/liboggkate.so.1*
+%{_libdir}/liboggkate.so.%{sover}
+%{_libdir}/liboggkate.so.%{sover}.*
 
 %files devel
+%license COPYING
 %doc doc/html/
 %{_includedir}/kate/
 %{_libdir}/%{name}.so
@@ -182,18 +174,12 @@ rm -rf %{buildroot}%{_mandir}/man1/KateDJ.1*
 %{_libdir}/pkgconfig/oggkate.pc
 
 %files tools
+%license COPYING
 %{_bindir}/katedec
 %{_bindir}/kateenc
 %{_bindir}/katalyzer
 %{_mandir}/man1/katalyzer.1%{?ext_man}
 %{_mandir}/man1/katedec.1%{?ext_man}
 %{_mandir}/man1/kateenc.1%{?ext_man}
-
-%if %{with python2}
-%files -n python-katedj
-%{_bindir}/KateDJ
-%{_mandir}/man1/KateDJ.1%{?ext_man}
-%{python_sitelib}/kdj/
-%endif
 
 %changelog

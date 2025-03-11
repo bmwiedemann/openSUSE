@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar  9 16:33:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.4.3:
+  * full Python 3 compatibility
+- includes changes from 0.4.2:
+  * Adjust decoder to allow zero sized metadata content
+  * Adjust text parsing to better recognize invalid UNICODE
+  * Eliminate timing precision issues in writing to kate format,
+    and ensure seconds are written with a leading 0 if less than 10
+  * Fixes to build systems, compiler warnings
+  * Correct option handling in KateDJ.
+  * Adust kate_high_decode_init() to avoid use after free
+- drop disable-namespace-test.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 16:51:20 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
