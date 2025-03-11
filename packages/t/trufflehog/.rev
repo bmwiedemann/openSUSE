@@ -1974,4 +1974,20 @@
   * [Feat] Planetscale Analyzer (#3928) (forwarded request 1250593 from ph03nix)</comment>
     <requestid>1250636</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>6a8395c11b1eaf9e47b39f6c573540d7</srcmd5>
+    <version>3.88.16</version>
+    <time>1741722302</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.88.16:
+  * Updated anthropic detector to detect admin keys (#3969)
+  * LaunchDarkly Token Analyzer (#3948)
+  * no panic (#3966)
+  * handle relative paths (#3967)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to v6.6.7 (#3960)
+  * Implement rate limiters for every Postman client function that uses a GET request (#3964)
+  * Groq Analyzer (#3962)
+  * Postman enumeration rate limiting (#3957)</comment>
+    <requestid>1251911</requestid>
+  </revision>
 </revisionlist>

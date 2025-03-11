@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 10 19:19:11 UTC 2025 - felix.niederwanger@suse.com
+
+- Update to version 3.88.16:
+  * Updated anthropic detector to detect admin keys (#3969)
+  * LaunchDarkly Token Analyzer (#3948)
+  * no panic (#3966)
+  * handle relative paths (#3967)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to v6.6.7 (#3960)
+  * Implement rate limiters for every Postman client function that uses a GET request (#3964)
+  * Groq Analyzer (#3962)
+  * Postman enumeration rate limiting (#3957)
+
+-------------------------------------------------------------------
 Thu Mar 06 09:26:37 UTC 2025 - felix.niederwanger@suse.de
 
 - Update to version 3.88.15:
