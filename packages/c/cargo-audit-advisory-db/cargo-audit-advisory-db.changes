@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 04 01:06:21 UTC 2025 - william.brown@suse.com
+
+- Update to version 20250304:
+  * openh264-sys is not a notice, it's a vuln (#2234)
+  * Assigned RUSTSEC-2025-0008 to openh264-sys2 (#2232)
+  * `openh264-sys2` upstream heap overflow. (#2231)
+  * *ring* is maintained again, withdraw 2025-0007. (#2230)
+  * Assigned RUSTSEC-2025-0007 to ring (#2229)
+  * Add unmaintained advisory for *ring* (#2228)
+  * Assigned RUSTSEC-2024-0435 to fyrox-core (#2224)
+  * Report unsoundness and patch in fyrox-core (#2172)
+  * vec-const is gone from crates.io, update linter to fix CI (#2223)
+  * Assigned RUSTSEC-2025-0006 to hickory-proto (#2222)
+
+-------------------------------------------------------------------
 Tue Feb 04 04:38:07 UTC 2025 - william.brown@suse.com
 
 - Update to version 20250204:
