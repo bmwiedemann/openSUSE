@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 11 09:27:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.5
+  * Added ability to provide fixed file timestamps when compressing
+  * New unit tests which verify output archives against well
+    known hashes to catch any accidental future code breakage
+  * Expand JlCompress interface to support compression strategy
+    (levels)
+  * Fix usage of BundledZLIB/qtzlib as dependency
+  * Fix compilation when ZLIB_CONST is defined
+  * Fix deprecated QDateTime warnings with Qt 6.8
+  * Fix minizip CVE-2023-45853
+
+-------------------------------------------------------------------
 Tue Jan 24 08:55:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Make sure the bzip2 and zlib devel packages are pulled when

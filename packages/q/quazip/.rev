@@ -247,4 +247,12 @@
   installing quazip's devel package</comment>
     <requestid>1060599</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fa0445b456c98b75eeeb9c80020659cc</srcmd5>
+    <version>1.5</version>
+    <time>1741722334</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.5</comment>
+    <requestid>1251993</requestid>
+  </revision>
 </revisionlist>

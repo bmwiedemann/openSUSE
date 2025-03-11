@@ -34,9 +34,9 @@ ExclusiveArch:  do_not_build
 %define pkg_suffix -qt5
 %endif
 %define so_ver 1
-%define lib_ver 1_4_0
+%define lib_ver 1_5_0
 Name:           quazip%{?pkg_suffix}
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        C++ wrapper for ZIP/UNZIP
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later
@@ -122,11 +122,11 @@ This package contains documentation for quazip.
 
 %build
 %if 0%{?qt6}
-%cmake_qt6
+%cmake_qt6 -DQUAZIP_ENABLE_TESTS:BOOL=TRUE
 %qt6_build
 %endif
 %if 0%{?qt5}
-%cmake
+%cmake -DQUAZIP_ENABLE_TESTS:BOOL=TRUE
 %cmake_build
 cd ..
 sed -i 's/HTML_TIMESTAMP\s*= YES/HTML_TIMESTAMP=NO/' Doxyfile
@@ -151,8 +151,10 @@ cp -r doc/html %{buildroot}%{_defaultdocdir}/quazip-doc/
 rm %{buildroot}%{_libdir}/pkgconfig/quazip%{so_ver}-qt6.pc
 %endif
 
-%post -n libquazip%{so_ver}-%{quazip_flavor}-%{lib_ver} -p /sbin/ldconfig
-%postun -n libquazip%{so_ver}-%{quazip_flavor}-%{lib_ver} -p /sbin/ldconfig
+%check
+%ctest
+
+%ldconfig_scriptlets -n libquazip%{so_ver}-%{quazip_flavor}-%{lib_ver}
 
 %files -n libquazip%{so_ver}-%{quazip_flavor}-%{lib_ver}
 %license COPYING*
