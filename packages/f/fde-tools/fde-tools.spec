@@ -1,7 +1,7 @@
 #
 # spec file for package fde-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch6:         fde-tools-bsc1218390-Switch-to-target-platform-when-available.pa
 Patch7:         fde-tools-bsc1218390-fix-tpm-present-with-the-newer-pcr-oracle.patch
 Patch8:         fde-tools-bsc1223771-firstboot-make-Pass-phrase-mandatory.patch
 Patch9:         fde-tools-bsc1218181-replace-crypttab-key-path.patch
+Patch10:        fde-tools-bsc1238593-firstboot-more-bootloader-functions.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcryptsetup)

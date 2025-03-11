@@ -1,0 +1,45 @@
+From dc6e782bc9ee11b91f495f22dce0df25e44000f0 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 11 Mar 2025 15:35:53 +0800
+Subject: [PATCH] firstboot: add more alias bootloader functions
+
+There are 3 missing bootloader functions needed by the 'tpm' script:
+
+- bootloader_platform_parameters
+- bootloader_rsa_sizes
+- bootloader_stop_event
+
+Add those functions in the firstboot script to avoid the potential
+"command not found" error.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ firstboot/fde | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/firstboot/fde b/firstboot/fde
+index b917a35..40d2fd4 100755
+--- a/firstboot/fde
++++ b/firstboot/fde
+@@ -51,6 +51,18 @@ function bootloader_get_fde_password {
+     grub_get_fde_password "$@"
+ }
+ 
++function bootloader_platform_parameters {
++   grub_platform_parameters
++}
++
++function bootloader_rsa_sizes {
++    grub_rsa_sizes
++}
++
++function bootloader_stop_event {
++    grub_stop_event
++}
++
+ ##################################################################
+ # FDE Firstboot functions
+ ##################################################################
+-- 
+2.43.0
+
