@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 11 06:15:34 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.5:
+  * Bump version to 2.14.5 on release-2.14 branch (#22292)
+  * chore(deps): bump github.com/redis/go-redis/v9 from 9.7.0 to
+    9.7.1 (#21957) (#22255)
+
+-------------------------------------------------------------------
 Wed Mar 05 09:37:53 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.14.4:
