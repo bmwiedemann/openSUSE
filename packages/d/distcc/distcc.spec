@@ -1,7 +1,7 @@
 #
 # spec file for package distcc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source0:        https://github.com/distcc/distcc/archive/v%{version}.tar.gz#/%{n
 Source1:        distccd.sysconfig
 Source2:        distccd.service
 Patch3:         distcc-3.2_rc1-python.patch
+# PATCH-FIX-UPSTREAM gh#distcc/distcc#493
+Patch4:         use-setuptools-instead.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
@@ -39,6 +41,7 @@ BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
+BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(gtk+-3.0)

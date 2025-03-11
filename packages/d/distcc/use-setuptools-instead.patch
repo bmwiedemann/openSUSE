@@ -1,0 +1,43 @@
+From 76873f8858bf5f32bda170fcdc1dfebb69de0e4b Mon Sep 17 00:00:00 2001
+From: Alexey Sheplyakov <asheplyakov@basealt.ru>
+Date: Thu, 23 Nov 2023 17:36:04 +0400
+Subject: [PATCH] include_server: use setuptools instead of distutils
+
+distutils has been deprecated for a long time (see PEP 632 [1])
+and has been removed from Python 3.12. Thus distcc fails to build
+with Python 3.12. Use setuptools to avoid the problem.
+
+[1] https://peps.python.org/pep-0632
+---
+ include_server/setup.py | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/include_server/setup.py b/include_server/setup.py
+index 4ae503e6..94630dfd 100755
+--- a/include_server/setup.py
++++ b/include_server/setup.py
+@@ -31,8 +31,7 @@
+ 
+ __author__ = 'Manos Renieris and Nils Klarlund'
+ 
+-import distutils.core
+-import distutils.extension
++import setuptools
+ import doctest
+ import os
+ import shlex
+@@ -126,7 +125,7 @@ def GetIncludes(flags):
+   srcdir_include_server = os.path.join(srcdir, 'include_server')
+ 
+ # Specify extension.
+-ext = distutils.extension.Extension(
++ext = setuptools.Extension(
+     name='include_server.distcc_pump_c_extensions',
+     sources=[os.path.join(srcdir, source)
+              for source in
+@@ -180,4 +179,4 @@ def GetIncludes(flags):
+ # First, do a little self-testing.
+ doctest.testmod()
+ # Second, do the setup.
+-distutils.core.setup(**args)
++setuptools.setup(**args)

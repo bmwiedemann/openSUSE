@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 10 04:25:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-setuptools-instead.patch:
+  * Use setuptools rather than distutils inside include_server.
+
+-------------------------------------------------------------------
 Mon Aug  8 11:18:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove python2 dependency
