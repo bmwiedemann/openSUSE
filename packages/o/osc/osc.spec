@@ -1,7 +1,7 @@
 #
 # spec file for package osc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,13 @@
 #
 
 
+%if %{defined primary_python}
+%define use_python     %(echo %{primary_python} | sed -e 's|python3|python3.|g')
+%define use_python_pkg %{primary_python}
+%else
 %define use_python python3
 %define use_python_pkg python3
+%endif
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 # use python36 on SLE 12 and older
@@ -90,12 +95,12 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{argparse_manpage_pkg}
 BuildRequires:  %{sphinx_pkg}
 %endif
+BuildRequires:  %{ruamel_yaml_pkg}
 BuildRequires:  %{use_python_pkg}-cryptography
 BuildRequires:  %{use_python_pkg}-devel >= 3.6
 BuildRequires:  %{use_python_pkg}-rpm
 BuildRequires:  %{use_python_pkg}-setuptools
 BuildRequires:  %{use_python_pkg}-urllib3
-BuildRequires:  %{ruamel_yaml_pkg}
 BuildRequires:  diffstat
 %if %{with fdupes}
 BuildRequires:  fdupes
@@ -103,10 +108,10 @@ BuildRequires:  fdupes
 # needed for git scm tests and directory ownership of /usr/libexec/git for git-obs symlink
 BuildRequires:  git-core
 
+Requires:       %{ruamel_yaml_pkg}
 Requires:       %{use_python_pkg}-cryptography
 Requires:       %{use_python_pkg}-rpm
 Requires:       %{use_python_pkg}-urllib3
-Requires:       %{ruamel_yaml_pkg}
 
 # needed for showing download progressbars
 Recommends:     %{use_python_pkg}-progressbar

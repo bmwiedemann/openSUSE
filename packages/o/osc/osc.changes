@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 10 23:36:01 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- if we have primary_python defined lets use this to get runtime
+  requires matching the shebang lines
+
+-------------------------------------------------------------------
 Mon Mar  3 08:20:19 UTC 2025 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.13.0
