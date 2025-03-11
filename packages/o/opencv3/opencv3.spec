@@ -47,6 +47,8 @@ Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{sr
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE opencv-build-compare.patch -- avoid republish if some random external version number changes
 Patch1:         opencv-build-compare.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         https://github.com/opencv/opencv/commit/00ca8f455e6a5588d905e3a0b268f18ee3fda5dd.patch#/opencv3-drop-numpy-distutils.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel

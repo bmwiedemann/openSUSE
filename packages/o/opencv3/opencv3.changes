@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 11 12:29:00 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add opencv3-drop-numpy-distutils.patch: drop use of
+  numpy-distutils to determine numpy include dirs in cmake;
+  upstream commit to 4.x branch.
+
+-------------------------------------------------------------------
 Mon Jan 27 10:14:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to 3.4.20:
