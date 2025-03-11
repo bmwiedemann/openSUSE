@@ -2,6 +2,7 @@
 # spec file for package suil
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +30,7 @@ If Suil supports a particular toolkit, then all hosts that use Suil will\
 support that toolkit.
 
 Name:           suil
-Version:        0.10.20
+Version:        0.10.22
 Release:        0
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 License:        ISC
@@ -44,6 +45,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(Qt6Widgets)
 
 %description
 %{_description}
@@ -108,8 +110,18 @@ Supplements:    (libQt5Widgets5 and lv2)
 Module plugin for:
 * Qt5 hosts displaying x11 LV2 GUIs using suil
 
+%package     -n suil-plugin-x11-in-qt6
+Summary:        Shared object for Qt5 hosts displaying X11 LV2 GUIs
+Group:          System/Libraries
+Requires:       libsuil-0-0 = %{version}
+Supplements:    (libQt5Widgets5 and lv2)
+
+%description -n suil-plugin-x11-in-qt6
+Module plugin for:
+* Qt6 hosts displaying x11 LV2 GUIs using suil
+
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson -Dcocoa=disabled -Ddocs=disabled
@@ -118,8 +130,7 @@ Module plugin for:
 %install
 %meson_install
 
-%post -n libsuil-0-0 -p /sbin/ldconfig
-%postun -n libsuil-0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsuil-0-0
 
 %files devel
 %license COPYING
@@ -155,5 +166,10 @@ Module plugin for:
 %license COPYING
 %doc README.md
 %{_libdir}/suil-0/libsuil_x11_in_qt5.so
+
+%files -n suil-plugin-x11-in-qt6
+%license COPYING
+%doc README.md
+%{_libdir}/suil-0/libsuil_x11_in_qt6.so
 
 %changelog
