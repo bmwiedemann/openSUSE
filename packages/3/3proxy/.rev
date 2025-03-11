@@ -37,4 +37,17 @@
   * Fixed build with gcc14.</comment>
     <requestid>1197480</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6e6b3ab88e0b5513b7ddc74d13b84577</srcmd5>
+    <version>0.9.5</version>
+    <time>1741722301</time>
+    <user>anag+factory</user>
+    <comment>- Added plugins.
+- Changed 3proxy.service file.
+- Updated to 0.9.5
+  * Fixed potentially crash due to overlapping regions in strcpy().
+  * Added proxy service type: tlspr - SNI proxy, may also be used as parent tls type.
+  * Added new proxy service type: auto - autodetect proxy type between proxy and socks.</comment>
+    <requestid>1251903</requestid>
+  </revision>
 </revisionlist>

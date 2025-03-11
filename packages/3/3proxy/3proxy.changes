@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 10 22:36:31 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Added plugins.
+- Changed 3proxy.service file.
+- Updated to 0.9.5
+  * Fixed potentially crash due to overlapping regions in strcpy().
+  * Added proxy service type: tlspr - SNI proxy, may also be used as parent tls type.
+  * Added new proxy service type: auto - autodetect proxy type between proxy and socks.
+
+-------------------------------------------------------------------
 Thu Aug 29 14:56:04 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Added files: 3proxy.service, 3proxy-socks.firewalld and 3proxy.cfg.
