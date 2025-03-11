@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Mar 11 12:24:07 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.75.5:
+  * New Features
+    This release introduces experimental support for the Terragrunt
+    Content Addressable Store (CAS).
+    To enable this feature, you must use the cas experiment.
+    When using the CAS, the catalog command will store its contents
+    in a CAS to deduplicate repository contents, then construct the
+    resultant repo from the CAS.
+    You can use Git URLs for the catalog command normally, and when
+    the cas experiment is enabled, Terragrunt will leverage the CAS
+    to save you clone time and disk space:
+
+    catalog {
+      urls = [
+        "git@github.com:acme/modules.git"
+      ]
+    }
+
+    There are more planned integration points for the CAS, but for
+    now only the catalog command is supported.
+    You can learn more about the CAS in the feature documentation.
+    https://terragrunt.gruntwork.io/docs/features/cas/
+  * feat: Adding cas support to catalog (#3929)
+  * feat: Adding integration testing to the `find` command. (#3997)
+  * Engine tests improvements (#3995)
+
+-------------------------------------------------------------------
 Mon Mar 10 14:35:51 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.75.4:
