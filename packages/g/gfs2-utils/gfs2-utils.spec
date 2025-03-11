@@ -1,7 +1,7 @@
 #
 # spec file for package gfs2-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ BuildRequires:  libuuid1
 BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  zlib-devel
+Recommends:     gfs2-kmp
 
 # Upstream patches
 Patch1:         0001-fsck.gfs2-Tighten-offset-check-in-check_eattr_entrie.patch
