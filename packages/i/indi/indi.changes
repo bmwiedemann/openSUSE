@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 11 07:49:15 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Disable websocketpp: with next release websocketpp will be completely
+  dropped by INDI because the project is no longer maintained.
+  https://github.com/indilib/indi/commit/4ebb20caa3618efcdb014405e396dd52065073af
+
+-------------------------------------------------------------------
 Thu Feb 20 07:58:46 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.1.2.1:

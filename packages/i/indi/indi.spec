@@ -47,7 +47,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pugixml-devel
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(websocketpp)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libcurl)
@@ -165,7 +164,7 @@ export CXXFLAGS="$CFLAGS"
     -DINDI_BUILD_STATIC=OFF \
     -DUDEVRULES_INSTALL_DIR=%{_udevrulesdir} \
     -DINDI_BUILD_QT5_CLIENT=ON \
-    -DINDI_BUILD_WEBSOCKET=ON \
+    -DINDI_BUILD_WEBSOCKET=OFF \
     -DINDI_BUILD_XISF=ON \
 %if 0%{?force_gcc_version}
     -DCMAKE_CXX_COMPILER=%{_bindir}/g++-%{?force_gcc_version} \
