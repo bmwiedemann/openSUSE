@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 04 00:49:12 UTC 2025 - william.brown@suse.com
+
+- Update to version 0.21.2~git0.18e58c2:
+  * Bump date in changelog
+  * Reference the incompat issue in changelogs
+  * Populate cargo-audit changelog
+  * Bump cargo-audit version
+  * bump rustsec version requirement in Cargo.toml
+  * Populate changelog for rustsec
+  * bump rustsec crate to 0.30.2
+  * build(deps): bump tame-index from 0.18.0 to 0.18.1
+  * Bump tame-index to 0.18 to gain support for Rust 1.85
+  * Suppress Clippy complaint
+  * Update MSRV in Cargo.toml files
+  * Try 1.73 MSRV to see if that fixes cvss crate
+  * Don't bump MSRV on crates that don't depend on gix
+  * bluntly bump the MSRV to 1.81 as it seems to be required by `tame-index`s dependencies.
+  * update `gix` to v0.70 and `tame-index` index to 0.17.
+  * Cargo.lock: bump Abscissa to v0.8.2 (#1326)
+  * Temporarily ignore RUSTSEC-2025-0001 (#1325)
+
+-------------------------------------------------------------------
 Tue Feb 04 00:59:28 UTC 2025 - william.brown@suse.com
 
 - Remove 0001-Skip-warnings.patch
