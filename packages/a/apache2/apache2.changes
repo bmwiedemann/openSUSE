@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Mar 10 05:00:51 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 2.4.63:
+  * mod_dav: Update redirect-carefully example BrowserMatch config
+    to match more recent client versions.
+  * mod_cache_socache: Fix possible crash on error path.
+  * mod_ssl: Fail cleanly at startup if OpenSSL initialization fails.
+  * mod_md: update to version 2.4.31
+    - Improved error reporting when waiting for ACME server to verify
+      domains or finalizing the order fails, e.g. times out.
+    - Increasing the timeouts to wait for ACME server to verify domain
+      names and issue the certificate from 30 seconds to 5 minutes.
+    - Change a log level from error to debug when Stapling is enabled
+      but a certificate carries no OCSP responder URL.
+  * mod_proxy_balancer: Fix the handling of the stickysession
+    configuration parameter by the balancer manager.
+  * Add the ldap-search option to mod_authnz_ldap, allowing
+    authorization to be based on arbitrary expressions that do not
+    include the username.  Make sure that when ldap searches are too
+    long, we explicitly log the error.
+  * mod_proxy: Honor parameters of ProxyPassMatch workers with substitution
+    in the host name or port.
+  * mod_log_config: Fix merging for the "LogFormat" directive.
+  * mod_lua: Make r.ap_auth_type writable.
+  * mod_md: update to version 2.4.29
+    - Fixed HTTP-01 challenges to not carry a final newline, as some
+      ACME server fail to ignore it.
+    - Fixed missing label+newline in server-status plain text output
+      when MDStapling is enabled.
+  * mod_ssl: Restore support for loading PKCS#11 keys via ENGINE
+    without "SSLCryptoDevice" configured.
+  * mod_authnz_ldap: Fix possible memory corruption if the
+    AuthLDAPSubGroupAttribute directive is configured.
+  * mod_proxy_fcgi: Don't re-encode SCRIPT_FILENAME when set via SetHandler.
+  * mod_rewrite, mod_proxy: mod_proxy to canonicalize rewritten URLs,
+    including "unix:" ones.
+  * mod_rewrite: Error out in case a RewriteRule in directory context
+    uses the proxy, but mod_proxy is not loaded.
+  * http: Remove support for Request-Range header sent by Navigator
+    2-3 and MSIE 3.
+  * mod_rewrite: Don't require flag to preserve a leading // added by
+    applying the perdir prefix to the substitution.
+  * Windows: Restore the ability to "Include" configuration files on
+    UNC paths.
+  * mod_proxy: Avoid AH01059 parsing error for SetHandler "unix:" URLs
+     in Location (incomplete fix in 2.4.62).
+  * mod_md: update to version 2.4.28
+    - When the server starts, it looks for new, staged certificates to
+      activate. If the staged set of files in 'md/staging/' is messed
+      up, this could prevent further renewals to happen. Now, when the
+      staging set is present, but could not be activated due to an
+      error, purge the whole directory.
+    - Fix certificate retrieval on ACME renewal to not require a
+      'Location:' header returned by the ACME CA. This was the way it
+      was done in ACME before it became an IETF standard. Let's
+      Encrypt still supports this, but other CAs do not.
+    - Restore compatibility with OpenSSL < 1.1.
+  * mod_tls: removed the experimental module. It now is availble
+    standalone from https://github.com/icing/mod_tls. The rustls
+    provided API is not stable and does not align with the httpd
+    release cycle.
+  * mod_rewrite: Better question mark tracking to avoid UnsafeAllow3F.
+  * mod_http2: Return connection monitoring to the event MPM when
+    blocking on client updates.
+
+-------------------------------------------------------------------
 Tue Jan 14 08:34:19 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix builds of test package with RPM 4.20:
