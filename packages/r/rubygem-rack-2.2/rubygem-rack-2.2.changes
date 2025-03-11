@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 11 14:21:32 UTC 2025 - Eduardo Navarro <enavarro@suse.com>
+
+- update to version 2.2.13
+  * Local file inclusion in Rack::Static [CVE-2025-27610]
+
+-------------------------------------------------------------------
 Wed Mar  5 14:57:38 UTC 2025 - Eduardo Navarro <enavarro@suse.com>
 
 - update to version 2.2.12
