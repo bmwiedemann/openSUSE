@@ -34,6 +34,8 @@ Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
 Patch0:         disable_google_dhclient_script.patch
+# PATCH-FIX-UPSTREAM - Fix unexpected memory consumption during token parsing in golang.org/x/oauth2
+Patch1:         CVE-2025-22868.patch
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.23
 Requires:       google-guest-configs
@@ -51,6 +53,9 @@ Google Cloud Guest Agent
 %prep
 %setup -n %{repo}-%{version} -a1
 %patch -P 0 -p1
+pushd vendor/golang.org/x/oauth2
+%patch -P 1 -p1
+popd
 
 %build
 %goprep %{import_path}

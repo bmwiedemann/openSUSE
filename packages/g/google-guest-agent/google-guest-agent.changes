@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 11 11:25:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to fix unexpected memory consumption during token
+  parsing in golang.org/x/oauth2 (bsc#1239197, CVE-2025-22868)
+  * CVE-2025-22868.patch
+
+-------------------------------------------------------------------
 Wed Feb 05 12:58:23 UTC 2025 - rjschwei@suse.com
 
 - Update to version 20250116.00: (bsc#1236403)
