@@ -1,0 +1,79 @@
+From ad2c91b25108791bd3acae34beff5510f031fcbf Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Mon, 9 Oct 2017 12:07:54 +0000
+Subject: [PATCH] S/390: PR82463: Fix vec_madd header file definition
+To: gcc-patches@gcc.gnu.org
+
+From: Andreas Krebbel <krebbel@linux.vnet.ibm.com>
+
+The builtin was not correctly defined in the vecintrin.h header file.
+
+gcc/testsuite/ChangeLog:
+
+2017-10-09  Andreas Krebbel  <krebbel@linux.vnet.ibm.com>
+
+	PR target/82463
+	* gcc.target/s390/zvector/pr82463.c: New test.
+
+gcc/ChangeLog:
+
+2017-10-09  Andreas Krebbel  <krebbel@linux.vnet.ibm.com>
+
+	PR target/82463
+	* config/s390/vecintrin.h (vec_madd, vec_msub): Fix macro
+	definitions.
+
+From-SVN: r253543
+---
+ gcc/ChangeLog                                   |  6 ++++++
+ gcc/config/s390/vecintrin.h                     |  4 ++--
+ gcc/testsuite/ChangeLog                         |  5 +++++
+ gcc/testsuite/gcc.target/s390/zvector/pr82463.c | 14 ++++++++++++++
+ 4 files changed, 27 insertions(+), 2 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.target/s390/zvector/pr82463.c
+
+diff --git a/gcc/config/s390/vecintrin.h b/gcc/config/s390/vecintrin.h
+index 38cc0692df8..80eb2b30867 100644
+--- a/gcc/config/s390/vecintrin.h
++++ b/gcc/config/s390/vecintrin.h
+@@ -113,8 +113,6 @@ __lcbb(const void *ptr, int bndry)
+ #define vec_unsigned(X) __builtin_s390_vclgdb((X), 0, 0)
+ #define vec_doublee(X) __builtin_s390_vfll((X))
+ #define vec_floate(X) __builtin_s390_vflr((X), 0, 0)
+-#define vec_madd __builtin_s390_vfmadb
+-#define vec_msub __builtin_s390_vfmsdb
+ #define vec_load_len_r(X,Y) __builtin_s390_vlrl((Y),(X))
+ #define vec_store_len_r(X,Y) __builtin_s390_vstrl((Y),(X))
+ 
+@@ -306,6 +304,8 @@ __lcbb(const void *ptr, int bndry)
+ #define vec_ld2f __builtin_s390_vec_ld2f
+ #define vec_st2f __builtin_s390_vec_st2f
+ #define vec_double __builtin_s390_vec_double
++#define vec_madd __builtin_s390_vec_madd
++#define vec_msub __builtin_s390_vec_msub
+ #define vec_nmadd __builtin_s390_vec_nmadd
+ #define vec_nmsub __builtin_s390_vec_nmsub
+ #define vec_nabs __builtin_s390_vec_nabs
+diff --git a/gcc/testsuite/gcc.target/s390/zvector/pr82463.c b/gcc/testsuite/gcc.target/s390/zvector/pr82463.c
+new file mode 100644
+index 00000000000..5014ed61ad9
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/s390/zvector/pr82463.c
+@@ -0,0 +1,14 @@
++/* { dg-do compile { target { s390*-*-* } } } */
++/* { dg-options "-march=z14 -mzarch -mzvector" } */
++
++/* The builtin was not correctly defined in the vecintrin.h header
++   file.  */
++
++#include <vecintrin.h>
++
++typedef __vector float v4sf;
++
++v4sf
++foo (v4sf a, v4sf b, v4sf c) {
++  return vec_madd(a, b, c);
++}
+-- 
+2.43.0
+

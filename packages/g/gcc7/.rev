@@ -664,4 +664,15 @@ This is in preparation of Pointer Authentication enablement in Tumbleweed. (forw
     <comment>- Remove epiphany build, newlib no longer builds for it.</comment>
     <requestid>1216949</requestid>
   </revision>
+  <revision rev="44" vrev="19">
+    <srcmd5>c9e24f9409382b8ab27de1d52a05ac94</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1741722339</time>
+    <user>anag+factory</user>
+    <comment>- Remove fixed bits/sched.h.
+
+- Add gcc7-pr82463.patch to fix vec_madd and vec_msub vector
+  intrinsics on s390x.  [bsc#1236267]</comment>
+    <requestid>1252007</requestid>
+  </revision>
 </revisionlist>

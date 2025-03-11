@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 11 08:49:09 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Remove fixed bits/sched.h.
+
+-------------------------------------------------------------------
+Thu Jan 23 09:15:43 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr82463.patch to fix vec_madd and vec_msub vector
+  intrinsics on s390x.  [bsc#1236267]
+
+-------------------------------------------------------------------
 Tue Oct 22 08:04:13 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Remove epiphany build, newlib no longer builds for it.

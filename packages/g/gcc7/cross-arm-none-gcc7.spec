@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package cross-arm-none-gcc7
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -155,6 +155,7 @@ Patch44:        gcc7-aarch64-untyped_call.patch
 Patch45:        gcc7-lra-elim.patch
 Patch46:        gcc7-bsc1216488.patch
 Patch47:        gcc7-pr87723.patch
+Patch48:        gcc7-pr82463.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -290,7 +291,7 @@ Conflicts:      cross-%{cross_arch}-gcc7
 #!BuildIgnore: gcc-PIE
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 Summary:        The GNU Compiler Collection targeting %{cross_arch}
 License:        GPL-3.0-or-later
 
@@ -356,6 +357,7 @@ ln -s nvptx-newlib/newlib .
 %patch -P 45 -p1
 %patch -P 46 -p1
 %patch -P 47 -p1
+%patch -P 48 -p1
 %patch -P 51
 %patch -P 60
 %patch -P 61

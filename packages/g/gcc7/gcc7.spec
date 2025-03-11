@@ -1,7 +1,7 @@
 #
 # spec file for package gcc7
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -335,6 +335,7 @@ Patch44:        gcc7-aarch64-untyped_call.patch
 Patch45:        gcc7-lra-elim.patch
 Patch46:        gcc7-bsc1216488.patch
 Patch47:        gcc7-pr87723.patch
+Patch48:        gcc7-pr82463.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -1879,6 +1880,7 @@ ln -s nvptx-newlib/newlib .
 %patch -P 45 -p1
 %patch -P 46 -p1
 %patch -P 47 -p1
+%patch -P 48 -p1
 %patch -P 51
 %patch -P 60
 %patch -P 61
@@ -2491,6 +2493,7 @@ rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/pthread.h
 rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/bits/unistd_ext.h
 rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/sys/rseq.h
 rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/sys/mount.h
+rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/bits/sched.h
 %if !%{enable_plugins}
 # no plugins
 rm -rf $RPM_BUILD_ROOT%{libsubdir}/plugin
