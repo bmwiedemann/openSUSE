@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 11 06:09:25 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.40.7:
+  * Rel v0.40.7 (#3188)
+  * fix: allow absolute paths for the 'dir' command (#3186)
+  * feat: add plugin to run `vector top` in vector.dev container,
+    hotkey `h` (#3170)
+
+-------------------------------------------------------------------
 Mon Mar 10 06:51:52 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.40.6:
