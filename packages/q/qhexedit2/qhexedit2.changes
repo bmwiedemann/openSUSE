@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:08:12 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- properly handle the Q_UNREACHABLE_RETURN in a Qt5 build
+  https://github.com/Simsys/qhexedit2/issues/154
+
+-------------------------------------------------------------------
+Thu Jan 23 09:49:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Switch build back to Qt5 (boo#1236026)
+- Add revive-qt5.patch to quite up a compiler warning.
+
+-------------------------------------------------------------------
 Mon Jan 13 19:21:10 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.8.10

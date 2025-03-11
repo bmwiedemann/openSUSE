@@ -16,6 +16,13 @@
 #
 
 
+%global qt_version 5
+%if 0%{qt_version} == 6
+%global qmake qmake6
+%else
+%global qmake qmake-qt5
+%endif
+
 %define _libver 4
 Name:           qhexedit2
 Version:        0.8.10
@@ -26,13 +33,18 @@ Group:          Development/Tools/Other
 URL:            https://github.com/Simsys/qhexedit2
 Source0:        https://github.com/Simsys/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        qhexedit.desktop
+Patch1:         revive-qt5.patch
 BuildRequires:  ImageMagick
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+%if 0%{qt_version} == 6
 BuildRequires:  pkgconfig(Qt6Widgets)
+%else
+BuildRequires:  pkgconfig(Qt5Widgets)
+%endif
 
 %description
 QHexEdit is a hex editor widget written in C++ for the Qt framework.
@@ -69,14 +81,14 @@ Qt5 library for %{name}.
 %build
 mkdir build-lib
 pushd build-lib
-qmake6 QMAKE_CXXFLAGS="%{optflags}" ../src/qhexedit.pro
+%{qmake} QMAKE_CXXFLAGS="%{optflags}" ../src/qhexedit.pro
 make %{?_smp_mflags}
 popd
 
 # Build application
 mkdir build-example
 pushd build-example
-qmake6 QMAKE_CXXFLAGS="%{optflags}" ../example/qhexedit.pro
+%{qmake} QMAKE_CXXFLAGS="%{optflags}" ../example/qhexedit.pro
 make %{?_smp_mflags}
 popd
 
