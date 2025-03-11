@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 10 20:52:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * PlayerRow: fix icon size
+  * Fix deprecated provider for context
+  * DeviceItem: use device object
+  * Fix loading albumArt from Chromium MPRIS
+
+-------------------------------------------------------------------
 Wed Nov  6 08:29:09 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix CFLAGS
