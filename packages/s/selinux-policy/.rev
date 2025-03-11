@@ -1588,4 +1588,47 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1250459</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>9ff665a9261191290e38fd355400800d</srcmd5>
+    <version>20250307</version>
+    <time>1741722237</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250307:
+  * allow systemd_pcrlock_t to manage dos directories (bsc#1233358)
+  * Allow snapper to manage dos files and dontaudit execmem (bsc#1233358)
+  * enabled filed name transitions for systemd_pcrlock (bsc#1233358)
+  * Update kmscon policy module to kmscon version 9 (bsc#1238137)
+  * Revert &quot;Allow systemd-networkd to rw memfd objects in tmpfs (bsc#1237515)&quot;
+  * Remove duplicate dev_rw_dma_dev(xdm_t)
+  * Allow thumbnailer read and write the dma device
+  * Allow named_filetrans_domain filetrans raid/mdadm named content
+  * Allow afterburn to mount and read config drives
+  * Allow mptcpd the net_admin capability
+  * Allow systemd-networkd the sys_admin capability
+  * Update systemd-networkd policy in systemd v257
+  * Separate insights-core from insights-client
+  * Removed unused insights_client interfaces calls from other modules
+  * Update policy for insights_client wrt new rules for insights_core_t
+  * Add policy for insights-core
+  * Allow systemd-networkd use its private tmpfs files
+  * Allow boothd connect to systemd-machined over a unix socket
+  * Update init_explicit_domain() interface
+  * Allow tlp to read/write nmi_watchdog state information
+  * Allow power-profiles-daemon the bpf capability
+  * Allow svirt_t to connect to nbdkit over a unix stream socket
+  * Update ktlshd policy to read /proc/keys and domain keyrings
+  * Allow virt_domain read hardware state information unconditionally
+  * Allow init mounton crypto sysctl files
+  * Rename winbind_rpcd_* types to samba_dcerpcd_*
+  * Support peer-to-peer migration of vms using ssh
+  * Allow virtqemud use hostdev usb devices conditionally
+  * Allow virtqemud map svirt_image_t plain files
+  * Allow virtqemud work with nvdimm devices
+  * Support saving and restoring a VM to/from a block device
+  * Allow virtnwfilterd dbus chat with firewalld
+- Update embedded container-selinux version to commit:
+  * c9b3eca0e1a878a1fe79408cb6c2e89b38b10829
+</comment>
+    <requestid>1251749</requestid>
+  </revision>
 </revisionlist>
