@@ -711,4 +711,18 @@
     <comment></comment>
     <requestid>1246422</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>e04d0ca697835d169c6d502b042c7ab4</srcmd5>
+    <version>3.8.1</version>
+    <time>1741722255</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.8.1
+  https://github.com/SELinuxProject/selinux/releases/tag/3.8.1
+  * no source change
+- Update to version 3.8.1
+  https://github.com/SELinuxProject/selinux/releases/tag/3.8.1
+  * no source change
+</comment>
+    <requestid>1251760</requestid>
+  </revision>
 </revisionlist>

@@ -18,10 +18,10 @@
 
 %{?sle15allpythons}
 %define python_subpackage_only 1
-%define libsepol_ver 3.8
+%define libsepol_ver 3.8.1
 %define upname libselinux
 Name:           libselinux-bindings
-Version:        3.8
+Version:        3.8.1
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
