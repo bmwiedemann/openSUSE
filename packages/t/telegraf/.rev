@@ -460,4 +460,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment>- golang is now requried to be at 1.24 (forwarded request 1248525 from darix)</comment>
     <requestid>1248538</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>578b9315f5139489480518e53eaa7cd6</srcmd5>
+    <version>1.34.0</version>
+    <time>1741722298</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.34.0: (forwarded request 1251895 from darix)</comment>
+    <requestid>1251896</requestid>
+  </revision>
 </revisionlist>
