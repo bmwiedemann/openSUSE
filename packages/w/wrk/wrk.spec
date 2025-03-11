@@ -25,6 +25,8 @@ Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/wg/wrk
 Source:         https://github.com/wg/wrk/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         wrk-4.2.0_distrofixes.patch
+Patch1:         reproducible.patch
+BuildRequires:  luajit-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(openssl)

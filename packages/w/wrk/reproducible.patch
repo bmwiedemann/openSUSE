@@ -1,0 +1,13 @@
+Index: wrk-4.2.0/Makefile
+===================================================================
+--- wrk-4.2.0.orig/Makefile
++++ wrk-4.2.0/Makefile
+@@ -61,7 +61,7 @@ $(ODIR):
+ 
+ $(ODIR)/bytecode.c: src/wrk.lua $(DEPS)
+ 	@echo LUAJIT $<
+-	@$(SHELL) -c 'PATH="obj/bin:$(PATH)" luajit -b "$(CURDIR)/$<" "$(CURDIR)/$@"'
++	@$(SHELL) -c 'luajit -bd "$(CURDIR)/$<" "$(CURDIR)/$@"'
+ 
+ $(ODIR)/version.o:
+ 	@echo 'const char *VERSION="$(VER)";' | $(CC) -xc -c -o $@ -
