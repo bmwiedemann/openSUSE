@@ -17,7 +17,7 @@
 
 
 Name:           cil
-Version:        3.8
+Version:        3.8.1
 Release:        0
 Summary:        SELinux Common Intermediate Language compiler
 License:        BSD-2-Clause
