@@ -1,7 +1,7 @@
 #
 # spec file for package pmacct
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ Source10:       nfacctd.conf
 Source11:       pmacctd.conf
 Source12:       sfacctd.conf
 Source20:       pmacct.1
+# build with gcc15 (reported to paolo@pmacct.net)
+Patch0:         pmacct-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -74,7 +76,7 @@ supported, both unicast and multicast. A client program can export
 export data to tools like RRDtool, GNUPlot, Net-SNMP, MRTG, and Cacti.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 # fix permissions
 chmod -x sql/pmacct-*

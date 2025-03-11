@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 11 11:52:16 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15 (reported to paolo@pmacct.net)
+  + pmacct-gcc15.patch
+
+-------------------------------------------------------------------
 Sun Nov 10 19:54:15 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.9
