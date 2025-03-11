@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Mar 11 15:21:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix file section to use the more portable macro
+- Update to 1.126.0
+  - Features
+    - Define ratelimit configuration for delayed event management.
+      (#18019)
+    - Add form_secret_path config option. (#18090)
+    - Add the --no-secrets-in-config command line option. (#18092)
+    - Add background job to clear unreferenced state groups.
+      (#18154)
+    - Add support for specifying/overriding
+      id_token_signing_alg_values_supported for an OpenID identity
+      provider. (#18177)
+    - Add worker_replication_secret_path config option. (#18191)
+    - Add support for specifying/overriding redirect_uri in the
+      authorization and token requests against an OpenID identity
+      provider. (#18197)
+  - Bugfixes
+    - Revert the background job to clear unreferenced state groups
+      (that was introduced in v1.126.0rc1), due to a suspected
+      issue that causes increased disk usage. (#18222)
+    - Make sure we advertise registration as disabled when MSC3861
+      is enabled. (#17661)
+    - Prevent suspended users from sending encrypted messages.
+      (#18157)
+    - Cleanup deleted state group references. (#18165)
+    - Fix MSC4108 QR-code login not working with some reverse-proxy
+      setups. (#18178)
+    - Support device IDs that can't be represented in a scope when
+      delegating auth to Matrix Authentication Service 0.15.0+.
+      (#18174)
+  - Internal Changes
+    - Fix wheel building configuration in CI by installing
+      libatomic1. (#18212, #18213)
+  - Updates to the Docker image
+    - Speed up the building of the Docker image. (#18038)
+  - Improved Documentation
+    - Move incorrectly placed version indicator in User Event
+      Redaction Admin API docs. (#18152)
+    - Document suspension Admin API. (#18162)
+  - Deprecations and Removals
+    - Disable room list publication by default. (#18175)
+  - Updates to locked dependencies
+    - Bump anyhow from 1.0.95 to 1.0.96. (#18187)
+    - Bump authlib from 1.4.0 to 1.4.1. (#18190)
+    - Bump click from 8.1.7 to 8.1.8. (#18189)
+    - Bump log from 0.4.25 to 0.4.26. (#18184)
+    - Bump pyo3-log from 0.12.0 to 0.12.1. (#18046)
+    - Bump serde from 1.0.217 to 1.0.218. (#18183)
+    - Bump serde_json from 1.0.138 to 1.0.139. (#18186)
+    - Bump sigstore/cosign-installer from 3.8.0 to 3.8.1. (#18185)
+    - Bump types-psycopg2 from 2.9.21.20241019 to 2.9.21.20250121.
+      (#18188)
+
+-------------------------------------------------------------------
 Tue Feb 25 16:43:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - include both license files

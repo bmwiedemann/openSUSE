@@ -41,7 +41,7 @@
 %global prometheus_client_version     0.20.0
 %global psutil_version                2.0.0
 # TODO: 24.3.0
-%global pyOpenSSL_version             24.2.1
+%global pyOpenSSL_version             25.0.0
 %global pyasn1_version                0.6.0
 %global pyasn1_modules_version        0.3.0
 %global pymacaroons_version           0.13.0
@@ -57,8 +57,7 @@
 %global packaging_version             24.0
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.5.0
-# TODO: 1.4.0
-%global Authlib_version               1.3.2
+%global Authlib_version               1.4.1
 %global lxml_version                  5.3.0
 # TODO: 2.19.2
 %global sentry_sdk_version            2.19.0
@@ -159,7 +158,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.125.0
+Version:        1.126.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -399,8 +398,8 @@ install -d -m 0750 %{buildroot}%{_localstatedir}/log/%{pkgname}
 %config(noreplace) %attr(-,root,synapse) %{_sysconfdir}/%{pkgname}/
 %dir %attr(0750,%{modname},%{modname}) %{_localstatedir}/lib/%{pkgname}
 %dir %attr(0750,%{modname},%{modname}) %{_localstatedir}/log/%{pkgname}
-%{python3_sitearch}/%{modname}
-%{python3_sitearch}/%{eggname}-*-info
+%{python_sitearch}/%{modname}
+%{python_sitearch}/%{eggname}-*-info
 # Python helper scripts.
 %{_bindir}/synctl
 %{_libexecdir}/%{pkgname}

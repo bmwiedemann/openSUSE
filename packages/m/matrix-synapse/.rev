@@ -1187,4 +1187,15 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.125.0</comment>
     <requestid>1248434</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>68fb83dc4af53727e470b82e5fd3cbed</srcmd5>
+    <version>1.126.0</version>
+    <time>1741722427</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1252102 from darix
+
+- fix file section to use the more portable macro
+- Update to 1.126.0</comment>
+    <requestid>1252103</requestid>
+  </revision>
 </revisionlist>
