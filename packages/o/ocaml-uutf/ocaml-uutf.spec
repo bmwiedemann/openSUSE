@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-uutf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-uutf
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Non-blocking streaming Unicode codec for OCaml
@@ -28,7 +28,7 @@ Source0:        %name-%version.tar.xz
 Patch0:         ocaml-uutf.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20240909
 
 %description
 Uutf is a non-blocking streaming codec to decode and encode the UTF-8,

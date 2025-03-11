@@ -34,4 +34,13 @@ It is part of the dependency tree of opam.</comment>
   See included CHANGES.md for details</comment>
     <requestid>967084</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e197a4d251d44cab87a1b79aed20079b</srcmd5>
+    <version>1.0.4</version>
+    <time>1741722375</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.4
+  see included CHANGES.md file for details</comment>
+    <requestid>1252036</requestid>
+  </revision>
 </revisionlist>
