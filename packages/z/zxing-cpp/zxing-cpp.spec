@@ -18,7 +18,7 @@
 
 %define sover 3
 Name:           zxing-cpp
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Library for processing 1D and 2D barcodes
 License:        Apache-2.0 AND Zlib AND LGPL-2.1-with-Qt-Company-Qt-exception-1.1
@@ -26,20 +26,14 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/nu-book/zxing-cpp/
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch1:         cmake.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} > 1500
 # build the C wrapper only in TW. This package is too old on Leap <= 15.5
 BuildRequires:  stb-devel
 %endif
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc >= 7
-BuildRequires:  gcc-c++ >= 7
-%endif
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 # only TW has fmt
 %if 0%{?suse_version} > 1500
 # For blackbox tests
@@ -75,10 +69,6 @@ other applications.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} < 1500
-export CC="gcc-7"
-export CXX="g++-7"
-%endif
 export CXXFLAGS="%{optflags} -std=c++17"
 # Examples require QT5-base/multimedia, but doing so creates a cycle
 # Blackbox tests require fmt
@@ -93,8 +83,7 @@ export CXXFLAGS="%{optflags} -std=c++17"
 %install
 %cmake_install
 
-%post -n libZXing%{sover} -p /sbin/ldconfig
-%postun -n libZXing%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libZXing%{sover}
 
 %files -n libZXing%{sover}
 %doc README.md

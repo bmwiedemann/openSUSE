@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Feb 24 08:43:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.3.0
+  New features:
+  * Add support for DX Film Edge read
+  * Add support for detecting and reading Aztec Runes
+  * Add reader support for DataBarLimited symbols
+  * Add C-API in official build (EDIT: unfortunately the default
+    is still off, to enable do cmake -DZXING_C_API=ON)
+  * Add Kotlin/Native Wrapper
+  * Add Rust wrapper based on C-API
+  * Add .NET wrapper based on C-API
+  * Introduce new name Barcode for Result which will be removed
+    in 3.0
+  * LocalAverage binarizer: re-implement with symmetric
+    threshold interpolation for improved detection of inverted
+    symbols
+  * cmake: replace BUILD_... prefix of cmake options with ZXING_...
+  * cmake: switch to c++-20 by default for the core library
+  * ImageView: introduce bounds checks in constructor
+  * ImageView: Add ImageFormat::LumX for 2-byte grey + alpha input
+  * ImageFormat: replace 'X' with 'A', e.g. RGBX -> RGBA
+  * ZXingReader: add -binarizer <local|global|fixed> command
+    line option
+  * ZXingReader: add -single option to setMaxNumberOfSymbols(1)
+  * ZXingReader: parse -formats (including 's') command line
+    argument
+  * ZXingReader: support reading image file from stdin by passing '-'
+  * android: switch 'namespace' from zxingcpp to zxingcpp.lib to fix
+    issue with maven central publication
+  * Python: add support to write bytes as binary data
+  * ZXing::Version() function to query the library version at
+    runtime (useful when dynamically linked)
+  Minor changes and bug fixes:
+  * Complete ZXIReaderOptions in iOS Wrapper
+  * ios: remove initWithFormats initializer
+  * cmake: Make build reproducible across different build directories
+  * Release color space after use in iOS wrapper
+  * cmake: allow overriding python install directories
+  * Refine MultiFormatReader results filtering and apply C++20 erase_if
+  * HRI: update AIs to latest gs1-syntax-dictionary.txt
+  * android: add linker flag to support flexible page sizes in Android 15
+  * Deprecate validateITFCheckSum, validateCode39CheckSum,
+    returnCodabarStartEnd
+  * BitHacks: fix random QRCode content on pre-Haswell Windows machines
+  * DataMatrix: improve detection of near 45° rotated symbols
+  * cmake: add /utf-8 to MSVC compile flags
+  * Barcode: tune operator==() to not split up overly tall linear symbols
+  * Several ITFReader improvements
+  * QRDecoder: return some content even in the presence of a checksum error
+  * DataBar: improve detection rate by incorporating edge-2-edge pattern
+  * PDF417: prevent wrong position info with right side collapsing to (0,0)
+  * Python: make sure macOS and 64bit Linux packes on pypi.org support
+    multi-symbol DataMatrix detection (c++20 support)
+- Drop obsolete version checks
+- Drop cmake.patch, no longer needed
+
+-------------------------------------------------------------------
 Mon Sep  2 21:46:34 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 2.2.1. Changes:

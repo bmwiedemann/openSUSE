@@ -214,4 +214,12 @@ zxing-cpp toprocess and parse barcodes from PDFs.</comment>
   * cmake.patch (forwarded request 1198389 from mschreiner)</comment>
     <requestid>1198546</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bdcc3c5ea1c151adb1df6d0888b39b08</srcmd5>
+    <version>2.3.0</version>
+    <time>1741722132</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1251857</requestid>
+  </revision>
 </revisionlist>
