@@ -2209,4 +2209,19 @@
         set_mempolicy.2</comment>
     <requestid>1248290</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>a859b3c307dd31f047c478456b41d429</srcmd5>
+    <version>6.13</version>
+    <time>1741722225</time>
+    <user>anag+factory</user>
+    <comment>- version update to 6.13
+  * Newly documented interfaces in existing pages
+    man7/
+        landlock.7
+                Landlock ABI v6
+                LANDLOCK_SCOPE_ABSTRACT_UNIX_SOCKET
+                LANDLOCK_SCOPE_SIGNAL
+  * Changes to individual files</comment>
+    <requestid>1251674</requestid>
+  </revision>
 </revisionlist>

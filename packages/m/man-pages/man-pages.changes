@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 10 08:34:55 UTC 2025 - pgajdos@suse.com
+
+- version update to 6.13
+  * Newly documented interfaces in existing pages
+    man7/
+        landlock.7
+                Landlock ABI v6
+                LANDLOCK_SCOPE_ABSTRACT_UNIX_SOCKET
+                LANDLOCK_SCOPE_SIGNAL
+  * Changes to individual files
+
+-------------------------------------------------------------------
 Tue Feb 25 07:35:36 UTC 2025 - pgajdos@suse.com
 
 - version update to 6.12
