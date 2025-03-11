@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 11 01:05:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch exaile-support-python-313.patch:
+  * Use shlex.quote rather than pipes in generate-completion.py
+
+-------------------------------------------------------------------
 Fri Jan 17 11:40:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 4.1.3
