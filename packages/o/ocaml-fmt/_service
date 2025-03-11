@@ -1,7 +1,7 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-fmt</param>
-    <param name="revision">f9887faacb29a73a6a41b296a7614bc336f96821</param>
+    <param name="revision">f6348c4e64029940d22593491f0d2eaea6c0a351</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/dbuenzli/fmt.git</param>
@@ -9,9 +9,9 @@
     <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-fmt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-fmt
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Format pretty-printer combinators
@@ -27,7 +27,7 @@ URL:            https://opam.ocaml.org/packages/fmt
 Source0:        %name-%version.tar.xz
 Patch0:         ocaml-fmt.patch
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20240909
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(compiler-libs.toplevel)
