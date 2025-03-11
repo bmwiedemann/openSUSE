@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 10 17:25:50 UTC 2025 - Guang Yee <gyee@suse.com>
+
+- Remove files from testsamples that licensedigger flagged as high risks.
+  Also created an issue upstream for potential licensing issues. See
+  https://github.com/pygments/pygments/issues/2872
+- Disable tests which depended on those files
+
+-------------------------------------------------------------------
 Thu Jan 23 11:20:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Drop dependency on ca-certificates-mozilla-prebuilt to really
