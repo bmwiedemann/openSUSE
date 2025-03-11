@@ -42,9 +42,10 @@ cp %{SOURCE3} .
 %{cargo_build}
 
 %install
-install -d %{buildroot}%{_sysconfdir}/%{name}
+install -D -d -m 0750 %{buildroot}%{_sysconfdir}/%{name}
 install -Dm0755 ./target/release/%{name} %{buildroot}%{_bindir}/%{name}
 install -Dm0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
+install -Dm0640 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}/config.toml
 
 %pre
 %service_add_pre %{name}.service
@@ -63,6 +64,6 @@ install -Dm0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 %doc README.md DCO %{name}.config.example.toml
 %{_bindir}/%{name}
 %{_unitdir}/%{name}.service
-%dir %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}
 
 %changelog

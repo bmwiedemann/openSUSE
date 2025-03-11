@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 10 21:34:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- import config handling from the gitea-action-runner package
+  the config can contain secrets and we should probably protect
+  them with proper default permissions
+
+-------------------------------------------------------------------
 Tue Feb 25 13:08:00 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.7.0:

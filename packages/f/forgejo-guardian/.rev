@@ -65,4 +65,12 @@
   * Prevent mutiple alerts for the same user update (forwarded request 1248427 from rrahl0)</comment>
     <requestid>1248428</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7c213629aab20209c9b35502c50fef87</srcmd5>
+    <version>0.7.0</version>
+    <time>1741722378</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1252050</requestid>
+  </revision>
 </revisionlist>
