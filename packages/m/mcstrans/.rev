@@ -285,4 +285,15 @@
     <comment>update selinux userspace to 3.8</comment>
     <requestid>1245834</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>73bc9559a45e18cee3e4f1c56f6ba0f3</srcmd5>
+    <version>3.8.1</version>
+    <time>1741722267</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.8.1
+  https://github.com/SELinuxProject/selinux/releases/tag/3.8.1
+  * no source change
+</comment>
+    <requestid>1251757</requestid>
+  </revision>
 </revisionlist>
