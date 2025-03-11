@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 11 10:00:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.10
+  * reworked color settings
+  * fixed issue with app-specific palette
+  * fixed .desktop file name
+  * fixed CMake warning
+  * enabled QPlatformTheme::HoverEffect hint
+  * increased minimum Qt version to 6.2
+  * code refactoring and optimization
+  * moved home page to opencode.net
+  * updated Dutch translation
+  * updated Polish translation
+  * updated Russian translation
+
+-------------------------------------------------------------------
 Sun Oct 29 16:10:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9:

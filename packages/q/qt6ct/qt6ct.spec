@@ -1,7 +1,7 @@
 #
 # spec file for package qt6ct
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           qt6ct
-Version:        0.9
+Version:        0.10
 Release:        0
 Summary:        Qt 6 Configuration Tool
 License:        BSD-2-Clause
-URL:            https://github.com/trialuser02/qt6ct
-Source:         https://github.com/trialuser02/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+URL:            https://www.opencode.net/trialuser/qt6ct
+Source:         https://www.opencode.net/trialuser/qt6ct/-/archive/%{version}/qt6ct-%{version}.tar.bz2
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  cmake(Qt6Gui)
@@ -52,7 +52,7 @@ rm %{buildroot}%{_qt6_libdir}/libqt6ct-common.so
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README.md
 %dir %{_qt6_pluginsdir}/styles
 %{_bindir}/qt6ct
 %{_qt6_libdir}/libqt6ct-common.so.%{version}
