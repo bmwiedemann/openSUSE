@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 10 15:21:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.2.17
+  * Pylint fixes
+  * pre-commit autoupdate 2024-07-24
+  * GitHub Actions: Add Python 3.13 beta 4 to the testing
+  * Tidy up documentation
+  * Keep GitHub Actions up to date with GitHub's Dependabot
+  * Fix reDOS CVE in getColor function
+  * Reuse background PDF file over multiple pages (#778)
+  * Update import for breaking changes in python-bidi 0.5.0
+  * Add support of base64 fonts
+  * tests: Skip cases that download artifacts when http_proxy is set
+  * Typos workflow
+- Drop CVE-2024-25885.patch, merged upstream
+- Update BuildRequires and Requires from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Dec 18 10:01:41 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add CVE-2024-25885.patch (bsc#1231408, CVE-2024-25885)

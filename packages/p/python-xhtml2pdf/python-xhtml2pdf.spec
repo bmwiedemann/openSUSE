@@ -1,7 +1,7 @@
 #
 # spec file for package python-xhtml2pdf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-xhtml2pdf
-Version:        0.2.16
+Version:        0.2.17
 Release:        0
 Summary:        PDF Generator Using HTML and CSS
 License:        Apache-2.0
 URL:            https://github.com/xhtml2pdf/xhtml2pdf
 Source:         https://github.com/xhtml2pdf/xhtml2pdf/archive/refs/tags/v%{version}.tar.gz#/xhtml2pdf-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/xhtml2pdf/xhtml2pdf/pull/784 fix reDOS CVE in getColor function
-Patch0:         CVE-2024-25885.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -36,7 +35,7 @@ Requires:       python-html5lib >= 1.1
 Requires:       python-pyHanko >= 0.12.1
 Requires:       python-pyhanko-certvalidator >= 0.19.5
 Requires:       python-pypdf >= 3.1.0
-Requires:       python-python-bidi >= 0.4.2
+Requires:       python-python-bidi >= 0.5.0
 Requires:       python-reportlab >= 4.0.4
 Requires:       python-svglib >= 1.2.1
 Requires(post): update-alternatives
@@ -51,7 +50,7 @@ BuildRequires:  %{python_module pyHanko >= 0.12.1}
 BuildRequires:  %{python_module pyhanko-certvalidator >= 0.19.5}
 BuildRequires:  %{python_module pypdf >= 3.1.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-bidi >= 0.4.2}
+BuildRequires:  %{python_module python-bidi >= 0.5.0}
 BuildRequires:  %{python_module reportlab >= 4.0.4}
 BuildRequires:  %{python_module svglib >= 1.2.1}
 # /SECTION
