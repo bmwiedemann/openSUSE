@@ -1,6 +1,7 @@
 #
 # spec file for package nomacs
 #
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %define pver a869962f051504dd2c1dedeb3bc3d266c17070c1
 Name:           nomacs
-Version:        3.19.1
+Version:        3.21.0
 Release:        0
 Summary:        Lightweight image viewer
 License:        GPL-3.0-or-later
