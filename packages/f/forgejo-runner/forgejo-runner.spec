@@ -16,6 +16,8 @@
 #
 
 
+%define services %{name}.service
+
 Name:           forgejo-runner
 Version:        6.2.2
 Release:        0
@@ -29,7 +31,9 @@ BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
 BuildRequires:  golang(API) >= 1.23
+BuildRequires:  pkgconfig(systemd)
 Requires:       (podman or docker)
+%{?systemd_ordering}
 
 %description
 A daemon that connects to a Forgejo instance and runs jobs for continous
@@ -79,12 +83,16 @@ go build \
    -ldflags="-X gitea.com/gitea/act_runner/internal/pkg/ver.version=v%{version}" \
    -o bin/%{name}
 
+bin/%{name} generate-config > config.yaml
+
+perl -p -i -e 's|file: \.runner|file: /etc/forgejo-runner/runners|g' config.yaml
+
 %install
 # Install the binary.
 install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 # Install the service file.
-install -D -m 0644 %{SOURCE2} %{buildroot}/%{_userunitdir}/%{name}.service
+install -D -m 0644 %{SOURCE2} %{buildroot}/%{_unitdir}/%{name}.service
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
@@ -98,14 +106,33 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 mkdir -p %{buildroot}%{_datadir}/zsh/site-functions/
 %{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datadir}/zsh/site-functions/%{name}
 
+install -D -m 0750 -d          %{buildroot}%{_sysconfdir}/%{name}
+install    -m 0640 config.yaml %{buildroot}%{_sysconfdir}/%{name}/config.yaml
+install    -m 0640 /dev/null   %{buildroot}%{_sysconfdir}/%{name}/runners
+install -D -m 0750 -d          %{buildroot}%{_localstatedir}/lib/%{name}
+
 %check
 bin/%{name} --version | grep %{version}
+
+%pre
+%service_add_pre %{services}
+
+%preun
+%service_del_preun %{services}
+
+%post
+%service_add_post %{services}
+
+%postun
+%service_del_postun %{services}
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
-%{_userunitdir}/forgejo-runner.service
+%{_unitdir}/forgejo-runner.service
+%config(noreplace) %{_sysconfdir}/%{name}
+%dir %{_localstatedir}/lib/%{name}
 
 %files -n %{name}-bash-completion
 %{_datadir}/bash-completion/completions/%{name}

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 10 23:14:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- also own the runners file
+
+-------------------------------------------------------------------
+Mon Mar 10 21:30:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- import config handling from the gitea-action-runner package
+  the config can contain secrets and we should probably protect
+  them with proper default permissions
+
+-------------------------------------------------------------------
+Mon Mar 10 16:55:11 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- not sure why this was installed as an user service
+
+-------------------------------------------------------------------
 Sat Feb 01 00:22:52 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 6.2.2:

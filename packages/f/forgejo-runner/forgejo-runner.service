@@ -3,8 +3,13 @@ Description=Forgejo Runner
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/forgejo-runner daemon
-Restart=on-failure
+StartLimitInterval=5
+StartLimitBurst=10
+Environment="LANG=en_US.UTF-8" "LC_ALL=en_US.UTF-8"
+WorkingDirectory=/var/lib/forgejo-runner
+ExecStart=/usr/bin/forgejo-runner daemon --config /etc/forgejo-runner/config.yaml
+Restart=always
+RestartSec=120
 
 [Install]
 WantedBy=default.target

@@ -136,4 +136,12 @@
   * LXC templates are updated if needed. (forwarded request 1242010 from rrahl0)</comment>
     <requestid>1242011</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b7d8be30beaa7d0d801fc89bfd2fe598</srcmd5>
+    <version>6.2.2</version>
+    <time>1741722380</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1252051</requestid>
+  </revision>
 </revisionlist>
