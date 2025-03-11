@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 11 13:19:11 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch for reproducible builds
+
+-------------------------------------------------------------------
 Thu Nov  7 11:33:38 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Minor tweaks in spec to fix build

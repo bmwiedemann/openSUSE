@@ -1,0 +1,27 @@
+https://gitlab.com/mailman/hyperkitty/-/merge_requests/656
+
+From 3961ea048f00da1004bbfe22f43ea2a494279d49 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 16 Dec 2024 16:08:45 +0100
+Subject: [PATCH] Use content based hashing
+
+for deterministic .css files
+Without this patch, the mode defaulted to `mtime`
+and caused variations between builds.
+
+Fixes #527
+
+This patch was done while working on reproducible builds for openSUSE, sponsored by the NLnet NGI0 fund.
+
+diff --git a/example_project/settings.py b/example_project/settings.py
+index ec7f742..1c53df6 100644
+--- a/build_static_files/settings.py
++++ b/build_static_files/settings.py
+@@ -304,6 +304,7 @@ SOCIALACCOUNT_PROVIDERS = {
+ # django-compressor
+ # https://pypi.python.org/pypi/django_compressor
+ #
++COMPRESS_CSS_HASHING_METHOD = 'content'
+ COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'sassc -t compressed {infile} {outfile}'),
+    ('text/x-sass', 'sassc -t compressed {infile} {outfile}'),
