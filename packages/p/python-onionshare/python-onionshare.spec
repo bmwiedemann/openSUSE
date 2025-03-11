@@ -134,6 +134,8 @@ Tor Browser to download the file.
 
 %prep
 %autosetup -p1 -n onionshare-%{version}
+# enable python 3.13
+sed -i 's/python = ">=3.10,<3.13"/python = ">=3.10,<3.14"/g' */pyproject.toml
 
 %build
 pushd cli
