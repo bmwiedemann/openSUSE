@@ -1,7 +1,7 @@
 #
 # spec file for package pnm2ppa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Bernhard M. Wiedemann
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://sourceforge.net/projects/pnm2ppa/
 Source0:        https://sourceforge.net/projects/pnm2ppa/files/pnm2ppa/%{version}/%{name}-%{version}.tar.gz
+# fix build with gcc15
+Patch0:         pnm2ppa-gcc15.patch
 
 %description
 pnm2ppa is a Ghostscript print filter which allows owners of HP DeskJet
@@ -32,7 +34,7 @@ pnm2ppa is a Ghostscript print filter which allows owners of HP DeskJet
 print PostScript Level 2.
 
 %prep
-%autosetup
+%autosetup -p1
 chmod a-x docs/en/LICENSE
 sed -i -e 's/\r//' docs/en/LICENSE
 

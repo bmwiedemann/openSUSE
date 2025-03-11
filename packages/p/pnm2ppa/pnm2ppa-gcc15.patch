@@ -1,0 +1,16 @@
+Index: pnm2ppa-1.13/global.h
+===================================================================
+--- pnm2ppa-1.13.orig/global.h
++++ pnm2ppa-1.13/global.h
+@@ -26,9 +26,8 @@
+  * Global types
+  */
+ 
+-typedef enum
+-{ false = 0, true = 1 }
+-BOOLEAN;
++#include <stdbool.h>
++typedef bool BOOLEAN;
+ 
+ /* Paper sizes in 600ths of an inch. */
+ 

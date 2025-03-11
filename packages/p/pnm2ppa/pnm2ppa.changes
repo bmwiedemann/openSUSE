@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 11 11:17:32 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + pnm2ppa-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Jun 17 06:47:03 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10
