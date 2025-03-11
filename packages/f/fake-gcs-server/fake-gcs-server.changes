@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 11 08:23:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.52.2:
+  - fix: typos
+  - Use default temporary directory in tests
+  - Go 1.24 is out, drop Go 1.22
+- bsc#1239200 (CVE-2025-22868): revendor
+  to use golang.org/x/oauth2 v0.28.0
+  (https://pkg.go.dev/vuln/GO-2025-3488).
+
+-------------------------------------------------------------------
 Tue Jan 28 22:48:18 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to v1.52.1
