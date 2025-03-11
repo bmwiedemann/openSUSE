@@ -1,7 +1,7 @@
 #
 # spec file for package scap-security-guide
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if ! (0%{?fedora} || 0%{?rhel} > 5)
+%if ! (0%{?fedora} || 0%{?rhel} > 5) || 0%{?alma} >= 9
 %if "%{_vendor}" == "debbuild"
 %global __python /usr/bin/python3
 %endif
@@ -24,25 +24,25 @@
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %endif
 
-%if 0%{?fedora} || 0%{?rhel} >= 8
+%if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?alma} >=9
 %{!?pylint_check: %global pylint_check 0}
 %endif
 
-%if 0%{?fedora} || 0%{?suse_version} > 1320 || 0%{?rhel} >= 8 || "%{_vendor}" == "debbuild"
+%if 0%{?fedora} || 0%{?suse_version} > 1320 || 0%{?rhel} >= 8 || 0%{?alma} >=9 || "%{_vendor}" == "debbuild"
 %global build_py3   1
 %if "%{_vendor}" != "debbuild"
 %global python_sitelib %{python3_sitelib}
 %endif
 %endif
 
-%if 0%{?fedora} || 0%{?rhel} >= 8
+%if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?alma} >= 9
 %global python2prefix python2
 %else
 %global python2prefix python
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.75
+Version:        0.1.76
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -52,7 +52,6 @@ URL:            https://github.com/ComplianceAsCode/content
 Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
-Patch0:         ssg-reproducable.patch
 
 # explicit require what is needed by the detection logic in the scripts
 Requires:       coreutils
@@ -86,6 +85,10 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3
 %endif
 
+%if 0%{?alma} == 9
+BuildRequires:  python3
+%endif
+
 %if 0%{?suse_version}
 BuildRequires:  python3-xml
 %endif
@@ -96,10 +99,14 @@ BuildRequires:  PyYAML
 %if 0%{?rhel} == 8
 BuildRequires:  python3-pyyaml
 %else
+%if 0%{?alma} == 9
+BuildRequires:  python3-pyyaml
+%else
 %if "%{_vendor}" == "debbuild"
 BuildRequires:  python3-yaml
 %else
 BuildRequires:  python3-PyYAML
+%endif
 %endif
 %endif
 %endif
@@ -110,10 +117,14 @@ BuildRequires:  python-jinja2
 %if 0%{?rhel} >= 8
 BuildRequires:  python3-jinja2
 %else
+%if 0%{?alma} >= 9
+BuildRequires:  python3-jinja2
+%else
 %if "%{_vendor}" == "debbuild"
 BuildRequires:  python3-jinja2
 %else
 BuildRequires:  python3-Jinja2
+%endif
 %endif
 %endif
 %endif
@@ -150,14 +161,14 @@ Other profiles, like the Standard System Security Profile for SUSE Linux Enterpr
 are community supplied and not officially supported by SUSE.
 
 %package redhat
-Summary:        XCCDF files for RHEL, CentOS, Fedora and ScientificLinux
+Summary:        XCCDF files for RHEL, CentOS, Fedora, ScientificLinux and AlmaLinux
 Group:          Productivity/Security
-%if 0%{?fedora} || 0%{?rhel}
+%if 0%{?fedora} || 0%{?rhel} || 0%{?alma}
 Conflicts:      scap-security-guide
 %endif
 
 %description redhat
-Security Content Automation Protocol (SCAP) Security Guide for Redhat/Fedora/CentOS/OracleLinux/ScientificLinux.
+Security Content Automation Protocol (SCAP) Security Guide for Redhat/Fedora/CentOS/OracleLinux/ScientificLinux/AlmaLinux
 
 This package contains XCCDF (Extensible Configuration Checklist
 Description Format), OVAL (Open Vulnerability and Assessment
@@ -196,7 +207,6 @@ Note that the included profiles are community supplied and not officially suppor
 
 %prep
 %setup -q -n content-%version
-%patch -P 0 -p1
 
 %build
 cd build
@@ -205,6 +215,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DSSG_PRODUCT_CHROMIUM=OFF \
 	 -DSSG_PRODUCT_ALINUX2=OFF \
 	 -DSSG_PRODUCT_ALINUX3=OFF \
+         -DSSG_PRODUCT_ALMALINUX9=ON \
 	 -DSSG_PRODUCT_AL2023=OFF \
 	 -DSSG_PRODUCT_DEBIAN9=ON \
 	 -DSSG_PRODUCT_DEBIAN10=ON \
@@ -286,6 +297,7 @@ make install DESTDIR=%buildroot
 %license LICENSE
 %endif
 %dir %{_datadir}/doc/scap-security-guide/guides/
+%doc %{_datadir}/doc/scap-security-guide/guides/ssg-alma*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-centos*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-cs9*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-cs10*
@@ -302,6 +314,7 @@ make install DESTDIR=%buildroot
 %dir %{_datadir}/scap-security-guide/tailoring/
 %dir %{_datadir}/scap-security-guide/bash/
 %dir %{_datadir}/scap-security-guide/kickstart/
+%{_datadir}/scap-security-guide/*/*alma*
 %{_datadir}/scap-security-guide/*/*centos*
 %{_datadir}/scap-security-guide/*/*cs9*
 %{_datadir}/scap-security-guide/*/*cs10*
@@ -312,6 +325,7 @@ make install DESTDIR=%buildroot
 %dir %{_datadir}/xml/scap/
 %dir %{_datadir}/xml/scap/ssg/
 %dir %{_datadir}/xml/scap/ssg/content/
+%{_datadir}/xml/scap/ssg/content/*-alma*
 %{_datadir}/xml/scap/ssg/content/*-centos*
 %{_datadir}/xml/scap/ssg/content/*-cs9*
 %{_datadir}/xml/scap/ssg/content/*-cs10*

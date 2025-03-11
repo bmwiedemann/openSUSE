@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Mar 11 14:46:12 UTC 2025 - Rumen Chikov <rumen.chikov@suse.com>
+
+- creation of a new request  
+
+-------------------------------------------------------------------
+Wed Mar  5 10:28:48 UTC 2025 - Rumen Chikov <rumen.chikov@suse.com>
+
+- removed tables reference related to almalinux9 builds 
+
+-------------------------------------------------------------------
+Wed Mar  5 09:23:34 UTC 2025 - Rumen Chikov <rumen.chikov@suse.com>
+
+- fix a bug in redhad package description for almalinux9 builds 
+
+-------------------------------------------------------------------
+Wed Mar  5 08:24:25 UTC 2025 - Rumen Chikov <rumen.chikov@suse.com>
+
+- updates redhat package to include almalinux9 builds  
+
+-------------------------------------------------------------------
+Tue Mar  4 14:08:03 UTC 2025 - Rumen Chikov <rumen.chikov@suse.com>
+
+- added build support for almalinux9  
+
+-------------------------------------------------------------------
+Tue Mar  4 08:10:53 UTC 2025 - Rumen Chikov <rumen.chikov@suse.com>
+
+- removed ssg-reproducable.patch: upstream 
+
+-------------------------------------------------------------------
+Mon Mar  3 08:33:59 UTC 2025 - Rumen Chikov <rumen.chikov@suse.com>
+
+- updated to 0.1.76 (jsc#ECO-3319)
+  -  Add new product for Ubuntu 24.04 and draft CIS profiles 
+  -  Add pyproject.toml for the ssg package 
+  -  AlmaLinux OS 9 as a new product 
+  -  Documentation for ssg library 
+  -  Extend SSG library to more easily collect profile selections 
+  -  Extend SSG with functions to manage variables 
+
+-------------------------------------------------------------------
 Thu Dec  5 20:18:21 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - ssg-reproducable.patch: replace two date injections by SOURCE_DATE_EPOCH

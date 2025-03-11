@@ -446,4 +446,30 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
   to make reproducible. bsc#1230361 (forwarded request 1229843 from msmeissn)</comment>
     <requestid>1229844</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>748beb6c0f78c75b7b15f4c85296f79e</srcmd5>
+    <version>0.1.76</version>
+    <time>1741722419</time>
+    <user>anag+factory</user>
+    <comment>- creation of a new request  
+
+- removed tables reference related to almalinux9 builds 
+
+- fix a bug in redhad package description for almalinux9 builds 
+
+- updates redhat package to include almalinux9 builds  
+
+- added build support for almalinux9  
+
+- removed ssg-reproducable.patch: upstream 
+
+- updated to 0.1.76 (jsc#ECO-3319)
+  -  Add new product for Ubuntu 24.04 and draft CIS profiles 
+  -  Add pyproject.toml for the ssg package 
+  -  AlmaLinux OS 9 as a new product 
+  -  Documentation for ssg library 
+  -  Extend SSG library to more easily collect profile selections 
+  -  Extend SSG with functions to manage variables</comment>
+    <requestid>1252096</requestid>
+  </revision>
 </revisionlist>
