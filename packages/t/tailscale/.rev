@@ -230,4 +230,12 @@
   * client/web: fix CSRF handler order in web UI (forwarded request 1250084 from rrahl0)</comment>
     <requestid>1250085</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>1a54d0582fa94310441a9ecf8e3c4321</srcmd5>
+    <version>1.80.3</version>
+    <time>1741806832</time>
+    <user>anag+factory</user>
+    <comment>- add patch fix-CVE-2025-22869.patch, fixes bsc#1239353 (forwarded request 1252353 from rrahl0)</comment>
+    <requestid>1252354</requestid>
+  </revision>
 </revisionlist>

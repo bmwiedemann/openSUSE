@@ -28,6 +28,7 @@ Source2:        %{name}d.service
 Source3:        %{name}d.defaults
 Patch0:         build-verbose.patch
 Patch1:         disable-auto-update.patch
+Patch2:         fix-CVE-2025-22869.patch
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  git-core

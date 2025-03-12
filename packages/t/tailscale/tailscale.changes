@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 12 09:07:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch fix-CVE-2025-22869.patch, fixes bsc#1239353
+
+-------------------------------------------------------------------
 Tue Mar  4 13:42:34 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.80.3:
