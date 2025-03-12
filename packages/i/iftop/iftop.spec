@@ -33,6 +33,8 @@ Patch4:         004-iftop-unlimited_text_output.patch
 Patch5:         0001-Prefer-ncurses6w.patch
 Patch6:         006-iftop-choose_first_running_interface.patch
 Patch7:         007-iftop-declare-extern-vars.patch
+# fix build with gcc15
+Patch8:         iftop-gcc15.patch
 BuildRequires:  automake
 BuildRequires:  libpcap-devel
 %if 0%{?suse_version} >= 1500
@@ -61,6 +63,7 @@ network links slow.
 %if 0%{?suse_version} >= 1500
 %patch -P 7 -p1
 %endif
+%patch -P 8 -p1
 
 %build
 autoreconf -fiv
