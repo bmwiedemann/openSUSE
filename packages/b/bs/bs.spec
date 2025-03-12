@@ -2,6 +2,7 @@
 # spec file for package bs
 #
 # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +18,16 @@
 
 
 Name:           bs
-Version:        2.11
+Version:        2.13
 Release:        0
 Summary:        Battleships solitaire game with a color interface
-License:        BSD-3-Clause
+License:        BSD-2-Clause
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            http://www.catb.org/~esr/bs/
 Source0:        http://www.catb.org/~esr/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:  ncurses-devel
-%if 0%{?suse_version}
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
-%endif
 
 %description
 The classic game of Battleships against the computer. Uses character-cell
@@ -36,21 +35,18 @@ graphics with a visual point-and-shoot interface. If you're using an xterm
 under Linux the mouse will work.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%make_build CFLAGS="%{optflags}"
+%make_build
 
 %install
 %make_install
-
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-%endif
+%suse_update_desktop_file %{name}
 
 %files
 %license COPYING
-%doc NEWS README
+%doc NEWS.adoc README
 %{_bindir}/%{name}
 %{_mandir}/man6/%{name}.6%{?ext_man}
 %{_datadir}/appdata/

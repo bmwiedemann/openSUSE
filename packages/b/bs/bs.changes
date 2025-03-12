@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  8 20:51:13 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.13:
+  * Add -v option
+  * Code cleanup - remove pre-SuSv2 cruft
+- license is BSD-2-Clause
+
+-------------------------------------------------------------------
 Thu Nov  5 10:28:21 UTC 2020 - jun wang <jgwang@suse.com>
 
 - Change "%license COPYING NEWS README" to "%license COPYING" 
