@@ -303,4 +303,15 @@
 - Update Requires from setup.py (forwarded request 1217976 from glaubitz)</comment>
     <requestid>1218018</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>508e262d82ca25797adbbc1f188f0687</srcmd5>
+    <version>23.3.0</version>
+    <time>1741789663</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 23.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1251764 from glaubitz)</comment>
+    <requestid>1252402</requestid>
+  </revision>
 </revisionlist>

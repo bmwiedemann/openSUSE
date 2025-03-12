@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-resource
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-resource
-Version:        23.2.0
+Version:        23.3.0
 Release:        0
 Summary:        Microsoft Azure Resource Management Client Library
 License:        MIT
