@@ -2126,4 +2126,13 @@
     <comment></comment>
     <requestid>1244172</requestid>
   </revision>
+  <revision rev="268" vrev="268">
+    <srcmd5>4e4005bfbc8eb20accece5456fc35bc0</srcmd5>
+    <version>unknown</version>
+    <time>1741763942</time>
+    <user>anag+factory</user>
+    <comment>- list-common: crda has been removed from Tumbleweed
+</comment>
+    <requestid>1252213</requestid>
+  </revision>
 </revisionlist>

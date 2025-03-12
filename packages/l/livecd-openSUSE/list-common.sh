@@ -253,7 +253,6 @@ install pciutils
 install adaptec-firmware
 install atmel-firmware
 install bluez-firmware
-install crda
 install dmidecode
 install efibootmgr
 install ipw-firmware
