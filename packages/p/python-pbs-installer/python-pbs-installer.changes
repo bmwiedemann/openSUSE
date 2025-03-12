@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 12 11:18:16 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2025.2.12
+  * No upstream Changelog. Use git diff:
+  https://github.com/frostming/pbs-installer/compare/2024.10.10...2025.02.12
+
+-------------------------------------------------------------------
 Wed Nov 20 15:56:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.10.10:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pbs-installer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pbs-installer
-Version:        2024.10.16
+Version:        2025.2.12
 Release:        0
 Summary:        Installer for Python Build Standalone
 License:        MIT
 URL:            https://github.com/frostming/pbs-installer
 Source:         https://files.pythonhosted.org/packages/source/p/pbs-installer/pbs_installer-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
