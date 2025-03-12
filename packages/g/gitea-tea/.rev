@@ -24,4 +24,12 @@
   fixing bsc#1234598 (forwarded request 1248392 from rrahl0)</comment>
     <requestid>1248393</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>dfa32bf1c128176c924feb2c90d5aedc</srcmd5>
+    <version>0.9.2</version>
+    <time>1741806877</time>
+    <user>anag+factory</user>
+    <comment>- update newer-dependencies.patch, fixes bsc#1235367 bsc#1239493 bsc#1234598 (forwarded request 1252447 from rrahl0)</comment>
+    <requestid>1252448</requestid>
+  </revision>
 </revisionlist>

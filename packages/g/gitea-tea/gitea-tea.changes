@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 12 13:03:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update newer-dependencies.patch, fixes bsc#1235367 bsc#1239493 bsc#1234598
+
+-------------------------------------------------------------------
 Tue Feb 25 13:51:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - adding newer-dependencies.patch, for updating dependencies,
