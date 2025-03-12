@@ -1,7 +1,7 @@
 #
 # spec file for package stalld
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           stalld
-Version:        1.19.3
+Version:        1.19.8
 Release:        0
 Summary:        Daemon that finds starving tasks and gives them a temporary boost
 License:        GPL-2.0-only AND GPL-2.0-or-later
 URL:            https://gitlab.com/rt-linux-tools/%{name}/%{name}.git
 Source0:        https://gitlab.com/rt-linux-tools/stalld/-/archive/v%{version}/stalld-v%{version}.tar.bz2
-Patch0:         pid-dir.patch
-Patch1:         fixed-tmpfile-fix.patch
 BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
 Requires(post): %fillup_prereq
@@ -41,10 +39,10 @@ allow 10 microseconds of runtime for 1 second of clock time.
 %autosetup -v -p1 -n %{name}-v%{version}
 
 %build
-%make_build USE_BPF=0 SOPTS="" CFLAGS="%{optflags} %{build_cflags} -DVERSION="\\\"%{version}\\\""" stalld
+%make_build USE_BPF=0 SOPTS="" CFLAGS="%{optflags} %{build_cflags} -DVERSION=\\\"%{version}\\\"" stalld
 
 %install
-%make_install DOCDIR=%{_docdir} MANDIR=%{_mandir} BINDIR=%{_bindir} DATADIR=%{_datadir} VERSION=%{version}
+%make_install USE_BPF=0 DOCDIR=%{_docdir} MANDIR=%{_mandir} BINDIR=%{_bindir} DATADIR=%{_datadir} VERSION=%{version}
 %make_install -C systemd UNITDIR=%{_unitdir}
 mkdir -p %{buildroot}%{_fillupdir}
 mv %{buildroot}%{_sysconfdir}/sysconfig/%{name} %{buildroot}%{_fillupdir}/sysconfig.%{name}

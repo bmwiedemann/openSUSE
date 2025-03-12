@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 10 11:04:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.19.8. Check https://gitlab.com/rt-linux-tools/stalld/-/releases
+  for the full list of changes.
+  Changes since 1.19.6:
+  * Address CVE-2024-54159, which is a DoS issue with the way
+    throttlectl.sh uses temp files (boo#1230327)
+  * Fix a compilation issue with a prototype mis-match in
+    stalld.h and utils.c for cleanup_regex()
+  * Workaround missing sched_getattr() export from glibc
+  * Fix a problem with parsing /sys/kernel/debug/sched/debug on
+    aarch64
+- Drop patches:
+  * pid-dir.patch
+  * fixed-tmpfile-fix.patch
+
+-------------------------------------------------------------------
 Thu Nov 28 08:53:21 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add fixed-tmpfile-fix.patch: place the original scheduling values in a
