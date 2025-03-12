@@ -3132,4 +3132,13 @@ Think &quot;osc service runall download_files&quot; are buggy!
     <comment></comment>
     <requestid>1245796</requestid>
   </revision>
+  <revision rev="331" vrev="2">
+    <srcmd5>f95eba60845fc62c79341c3fe7e8f2a4</srcmd5>
+    <version>7.26.0</version>
+    <time>1741806822</time>
+    <user>anag+factory</user>
+    <comment>- Use pythons instead static python311.
+</comment>
+    <requestid>1252161</requestid>
+  </revision>
 </revisionlist>

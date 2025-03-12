@@ -18,6 +18,12 @@
 
 %define my_qtversion 6.5.3
 
+%if 0%{suse_version} < 1600
+%global pythons python311
+%else
+%global pythons python3
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           calibre
 Version:        7.26.0
@@ -139,70 +145,67 @@ BuildRequires:  pkgconfig(uchardet) >= 0.0.7
 BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
 #
 BuildRequires:  jxrlib-devel >= 0.2.4
+BuildRequires:  %{python_module Brotli >= 1.1.0}
+BuildRequires:  %{python_module FontTools >= 4.39.3}
+BuildRequires:  %{python_module Markdown >= 3.3.6}
+BuildRequires:  %{python_module Pillow >= 8.4.0}
+BuildRequires:  %{python_module Pygments >= 2.10.0}
+BuildRequires:  %{python_module apsw >= 3.43.0.0}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.10.0}
+BuildRequires:  %{python_module cchardet >= 2.1.7}
+BuildRequires:  %{python_module chardet >= 4.0.0}
+BuildRequires:  %{python_module css-parser >= 1.0.8}
+BuildRequires:  %{python_module dateutil >= 2.8.2}
+BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module dnspython >= 2.1.0}
+BuildRequires:  %{python_module feedparser >= 6.0.8}
+BuildRequires:  %{python_module html2text >= 2020.1.16}
+BuildRequires:  %{python_module html5-parser >= 0.4.10}
+BuildRequires:  %{python_module html5lib >= 1.1}
+BuildRequires:  %{python_module ifaddr >= 0.1.7}
+BuildRequires:  %{python_module jeepney >= 0.7.1}
+BuildRequires:  %{python_module lxml >= 5.2.1}
+BuildRequires:  %{python_module lxml_html_clean}
+BuildRequires:  %{python_module mechanize >= 0.4.8}
+BuildRequires:  %{python_module msgpack >= 1.0.7}
+BuildRequires:  %{python_module multivolumefile >= 0.2.3}
+BuildRequires:  %{python_module netifaces >= 0.11.0}
+BuildRequires:  %{python_module odfpy}
+BuildRequires:  %{python_module packaging >= 21.3}
+BuildRequires:  %{python_module ply >= 3.11}
+BuildRequires:  %{python_module psutil >= 5.8.0}
+BuildRequires:  %{python_module pychm >= 0.8.6}
+BuildRequires:  %{python_module pycryptodome >= 3.11.0}
 BuildRequires:  libjpeg-turbo >= 3.0.0
 BuildRequires:  python-rpm-macros
-BuildRequires:  python311-Brotli >= 1.1.0
-BuildRequires:  python311-FontTools >= 4.39.3
-BuildRequires:  python311-Markdown >= 3.3.6
-BuildRequires:  python311-Pillow >= 8.4.0
-BuildRequires:  python311-Pygments >= 2.10.0
-BuildRequires:  python311-apsw >= 3.43.0.0
-BuildRequires:  python311-beautifulsoup4 >= 4.10.0
-BuildRequires:  python311-cchardet >= 2.1.7
-BuildRequires:  python311-chardet >= 4.0.0
-BuildRequires:  python311-css-parser >= 1.0.8
-BuildRequires:  python311-dateutil >= 2.8.2
-BuildRequires:  python311-devel >= 3.10
-BuildRequires:  python311-dnspython >= 2.1.0
-BuildRequires:  python311-feedparser >= 6.0.8
-BuildRequires:  python311-html2text >= 2020.1.16
-BuildRequires:  python311-html5-parser >= 0.4.10
-BuildRequires:  python311-html5lib >= 1.1
-BuildRequires:  python311-ifaddr >= 0.1.7
-BuildRequires:  python311-jeepney >= 0.7.1
-BuildRequires:  python311-lxml >= 4.9.1
-BuildRequires:  python311-mechanize >= 0.4.8
-BuildRequires:  python311-msgpack >= 1.0.7
-BuildRequires:  python311-multivolumefile >= 0.2.3
-BuildRequires:  python311-netifaces >= 0.11.0
-BuildRequires:  python311-odfpy
-BuildRequires:  python311-packaging >= 21.3
-BuildRequires:  python311-ply >= 3.11
-BuildRequires:  python311-psutil >= 5.8.0
-BuildRequires:  python311-pychm >= 0.8.6
-BuildRequires:  python311-pycryptodome >= 3.11.0
-##BuildRequires:  python311-pykakasi >= 2.3.0
-BuildRequires:  python311-pyparsing >= 3.0.6
-BuildRequires:  python311-pyppmd >= 1.1.0
-BuildRequires:  python311-pyqt-builder >= 1.14.0
-BuildRequires:  python311-pyzstd >= 0.15.6
-BuildRequires:  python311-qt6-devel >= %{my_qtversion}
-BuildRequires:  python311-regex >= 2021.11.10
-BuildRequires:  (python311-lxml_html_clean if python311-lxml >= 5.2.0)
-# Upstream use: BuildRequires:  python311-setuptools >= 68.2.2
-BuildRequires:  python311-setuptools >= 67.8.0
-BuildRequires:  python311-qtwebengine-qt6 >= %{my_qtversion}
-BuildRequires:  python311-sgmllib3k >= 1.0.0
-BuildRequires:  python311-sip-devel >= 6.7.5
-BuildRequires:  python311-six >= 1.16.0
-BuildRequires:  python311-soupsieve >= 2.5
-BuildRequires:  python311-texttable >= 1.6.4
-BuildRequires:  python311-toml >= 0.10.2
-BuildRequires:  python311-xxhash >= 3.3.0
+##BuildRequires:  %%{python_module pykakasi >= 2.3.0}
+BuildRequires:  %{python_module pyparsing >= 3.0.6}
+BuildRequires:  %{python_module pyppmd >= 1.1.0}
+BuildRequires:  %{python_module pyqt-builder >= 1.14.0}
+BuildRequires:  %{python_module pyzstd >= 0.15.60}
+BuildRequires:  %{python_module qt6-devel >= %{my_qtversion}}
+BuildRequires:  %{python_module regex >= 2021.11.10}
+# Upstream use: BuildRequires:  %%{python_module setuptools >= 68.2.2}
+BuildRequires:  %{python_module setuptools >= 67.8.0}
+BuildRequires:  %{python_module qtwebengine-qt6 >= %{my_qtversion}}
+BuildRequires:  %{python_module sgmllib3k >= 1.0.0}
+BuildRequires:  %{python_module sip-devel >= 6.7.5}
+BuildRequires:  %{python_module six >= 1.16.0}
+BuildRequires:  %{python_module soupsieve >= 2.5}
+BuildRequires:  %{python_module texttable >= 1.6.4}
+BuildRequires:  %{python_module toml >= 0.10.2}
+BuildRequires:  %{python_module xxhash >= 3.3.0}
 BuildRequires:  pkgconfig(libjpeg) >= 3.0.0
 BuildRequires:  pkgconfig(libwebp) >= 1.3.2
 # Upstream use pkgconfig(libxml-2.0) >= 2.12.6
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.10.3
 BuildRequires:  pkgconfig(libxslt) >= 1.1.39
 #BuildRequires:  python-unrardll >= 0.1.5
-BuildRequires:  python311-py7zr >= 0.20.6
-%if 0%{?suse_version} > 1500
-BuildRequires:  python3-speechd >= 0.11.1
-%else
-BuildRequires:  python311-speechd >= 0.11.1
-%endif
-BuildRequires:  python311-webencodings >= 0.5.1
-BuildRequires:  python311-zeroconf >= 0.37.0
+BuildRequires:  %{python_module py7zr >= 0.20.6}
+BuildRequires:  %{python_module speechd >= 0.11.5}
+BuildRequires:  %{python_module webencodings >= 0.5.1}
+BuildRequires:  %{python_module zeroconf >= 0.37.0}
 #
 Requires:       chmlib >= 0.40
 #Requires:       dbus-1-python3 >= 1.2.0
@@ -213,59 +216,55 @@ Requires:       libwmf >= 0.2.8
 Requires:       optipng >= 0.7.7
 # Dont known if upstream need it. It say only podofo. But suse has removed it:  Requires: podofo >= 0.10.1
 Requires:       poppler-tools >= 21.11.0
-Requires:       python311 >= 3.10
-Requires:       python311-Brotli >= 1.1.0
-Requires:       python311-Markdown >= 3.3.6
-Requires:       python311-Pillow >= 8.4.0
-Requires:       python311-Pygments >= 2.10.0
-Requires:       python311-apsw >= 3.43.0.0
-Requires:       python311-beautifulsoup4 >= 4.10.0
-Requires:       python311-cchardet >= 2.1.7
-Requires:       python311-chardet >= 4.0.0
-Requires:       python311-css-parser >= 1.0.8
-Requires:       python311-dateutil >= 2.8.2
-#Requires:       python311-dbus-python
-Requires:       python311-dnspython >= 2.1.0
-Requires:       python311-FontTools >= 4.39.3
-Requires:       python311-PyQt6-sip >= 13.5.2
-Requires:       python311-feedparser >= 6.0.8
-Requires:       python311-html2text >= 2020.1.16
-Requires:       python311-html5-parser >= 0.4.10
-Requires:       python311-html5lib >= 1.1
-Requires:       python311-ifaddr >= 0.1.7
-Requires:       python311-jeepney >= 0.7.1
-Requires:       python311-lxml >= 4.9.1
-Requires:       python311-mechanize >= 0.4.8
-Requires:       python311-msgpack >= 1.0.7
-Requires:       python311-multivolumefile >= 0.2.3
-Requires:       python311-netifaces >= 0.11.0
-Requires:       python311-odfpy
-Requires:       python311-ply >= 3.11
-Requires:       python311-psutil >= 5.8.0
-Requires:       python311-pychm >= 0.8.6
-Requires:       python311-pycryptodome >= 3.11.0
-##Requires:       python311-pykakasi >= 2.3.0
-Requires:       python311-pyparsing >= 3.0.6
-Requires:       python311-pyppmd >= 1.1.0
-Requires:       python311-pyzstd >= 0.15.6
-Requires:       python311-qt6 >= %{my_qtversion}
-Requires:       python311-qtwebengine-qt6 >= %{my_qtversion}
-Requires:       python311-regex >= 2021.11.10
-Requires:       python311-sgmllib3k >= 1.0.0
-Requires:       python311-six >= 1.16.0
-Requires:       python311-soupsieve >= 2.5
-Requires:       python311-texttable >= 1.6.4
-Requires:       python311-xxhash >= 3.3.0
-Requires:       (python311-lxml_html_clean if python311-lxml >= 5.2.0)
-#Requires:       python311-unrardll >= 0.1.5
-Requires:       python311-py7zr >= 0.20.6
-%if 0%{?suse_version} > 1500
-Requires:       python3-speechd >= 0.11.1
-%else
-Requires:       python311-speechd >= 0.11.1
-%endif
-Requires:       python311-webencodings >= 0.5.1
-Requires:       python311-zeroconf >= 0.37.0
+Requires:       %{python_flavor}-Brotli >= 1.1.0
+Requires:       %{python_flavor}-Markdown >= 3.3.6
+Requires:       %{python_flavor}-Pillow >= 8.4.0
+Requires:       %{python_flavor}-Pygments >= 2.10.0
+Requires:       %{python_flavor}-apsw >= 3.43.0.0
+Requires:       %{python_flavor}-base >= 3.10
+Requires:       %{python_flavor}-beautifulsoup4 >= 4.10.0
+Requires:       %{python_flavor}-cchardet >= 2.1.7
+Requires:       %{python_flavor}-chardet >= 4.0.0
+Requires:       %{python_flavor}-css-parser >= 1.0.8
+Requires:       %{python_flavor}-dateutil >= 2.8.2
+#Requires:       %%{python_flavor}-dbus-python
+Requires:       %{python_flavor}-dnspython >= 2.1.0
+Requires:       %{python_flavor}-FontTools >= 4.39.3
+Requires:       %{python_flavor}-PyQt6-sip >= 13.5.2
+Requires:       %{python_flavor}-feedparser >= 6.0.8
+Requires:       %{python_flavor}-html2text >= 2020.1.16
+Requires:       %{python_flavor}-html5-parser >= 0.4.10
+Requires:       %{python_flavor}-html5lib >= 1.1
+Requires:       %{python_flavor}-ifaddr >= 0.1.7
+Requires:       %{python_flavor}-jeepney >= 0.7.1
+Requires:       %{python_flavor}-lxml >= 5.2.1
+Requires:       %{python_flavor}-lxml_html_clean
+Requires:       %{python_flavor}-mechanize >= 0.4.8
+Requires:       %{python_flavor}-msgpack >= 1.0.7
+Requires:       %{python_flavor}-multivolumefile >= 0.2.3
+Requires:       %{python_flavor}-netifaces >= 0.11.0
+Requires:       %{python_flavor}-odfpy
+Requires:       %{python_flavor}-ply >= 3.11
+Requires:       %{python_flavor}-psutil >= 5.8.0
+Requires:       %{python_flavor}-pychm >= 0.8.6
+Requires:       %{python_flavor}-pycryptodome >= 3.11.0
+##Requires:       %%{python_flavor}-pykakasi >= 2.3.0
+Requires:       %{python_flavor}-pyparsing >= 3.0.6
+Requires:       %{python_flavor}-pyppmd >= 1.1.0
+Requires:       %{python_flavor}-pyzstd >= 0.15.6
+Requires:       %{python_flavor}-qt6 >= %{my_qtversion}
+Requires:       %{python_flavor}-qtwebengine-qt6 >= %{my_qtversion}
+Requires:       %{python_flavor}-regex >= 2021.11.10
+Requires:       %{python_flavor}-sgmllib3k >= 1.0.0
+Requires:       %{python_flavor}-six >= 1.16.0
+Requires:       %{python_flavor}-soupsieve >= 2.5
+Requires:       %{python_flavor}-texttable >= 1.6.4
+Requires:       %{python_flavor}-xxhash >= 3.3.0
+#Requires:       %%{python_flavor}-unrardll >= 0.1.5
+Requires:       %{python_flavor}-py7zr >= 0.20.6
+Requires:       %{python_flavor}-zeroconf >= 0.37.0
+Requires:       %{python_flavor}-speechd >= 0.11.5
+Requires:       %{python_flavor}-webencodings >= 0.5.1
 #
 Requires:       sqlite3 >= 3.43.0
 Requires:       bzip2 >= 1.0.8
@@ -277,7 +276,7 @@ Requires:       xdg-utils >= 1.0.2
 Requires:       xz >= 5.4.1
 Requires:       zlib >= 1.2.13
 
-Requires(pretrans):findutils
+Requires(pretrans): findutils
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -329,23 +328,23 @@ CFLAGS="%{optflags}" \
 CXXFLAGS="%{optflags}"
 
 ###python setup.py build
-CALIBRE_PY3_PORT=1 python3.11 setup.py build
+CALIBRE_PY3_PORT=1 python%python_bin_suffix setup.py build
 
-#python3.11 setup.py iso639
-#python3.11 setup.py iso3166
-#python3.11 setup.py translations
-python3.11 setup.py gui
+#python%%python_bin_suffix setup.py iso639
+#python%%python_bin_suffix setup.py iso3166
+#python%%python_bin_suffix setup.py translations
+python%python_bin_suffix setup.py gui
 
 #%%{__python3} setup.py resources \
 #	--path-to-liberation_fonts %%{_datadir}/fonts/truetype \
 #	--system-liberation_fonts \
 #	--path-to-hyphenation `pwd`/dictionaries-master \
 #	--path-to-mathjax `pwd`/MathJax-3.1.4
-#%%{__python311} setup.py man_pages
+#%%{__python%%python_bin_suffix} setup.py man_pages
 
 %install
 ###python setup.py install \
-CALIBRE_PY3_PORT=1 python3.11 setup.py install \
+CALIBRE_PY3_PORT=1 python%python_bin_suffix setup.py install \
    --prefix=%{_prefix} \
    --root=%{buildroot}%{_prefix} \
    --staging-bindir=%{buildroot}%{_bindir} \
@@ -368,8 +367,8 @@ done
 %suse_update_desktop_file -i -n -N "Calibre LRF Viewer" -G "Calibre Viewer for LRF files" calibre-lrfviewer
 
 # rpmlint: wrong-script-interpreter /usr/bin/env python3
-find %{buildroot}%{_bindir} -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3.11:g'
-find %{buildroot}%{_libdir}/calibre -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3.11:g'
+find %{buildroot}%{_bindir} -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python%python_bin_suffix:g'
+find %{buildroot}%{_libdir}/calibre -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python%python_bin_suffix:g'
 
 # these are provided as separate packages
 rm -r %{buildroot}%{_libdir}/%{name}/odf
@@ -420,7 +419,7 @@ TEST_EXCLUDE=(
 %endif
 )
 
-CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3.11 setup.py test "${TEST_EXCLUDE[@]}"
+CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python%python_bin_suffix setup.py test "${TEST_EXCLUDE[@]}"
 %endif
 
 %if 0%{?suse_version} <= 1320
