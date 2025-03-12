@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +19,16 @@
 
 
 Name:           cppzmq-devel
-Version:        4.8.1
+Version:        4.10.0
 Release:        0
 Summary:        Header-only C++ binding for libzmq
 License:        MIT
 URL:            https://github.com/zeromq/cppzmq
 Source:         https://github.com/zeromq/cppzmq/archive/v%{version}.tar.gz#/cppzmq-%{version}.tar.gz
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libzmq)
-Requires:       pkgconfig(libzmq)
 
 %description
 cppzmq is a header-only C++ binding for libzmq.
@@ -51,5 +51,6 @@ cppzmq is a header-only C++ binding for libzmq.
 %{_includedir}/zmq.hpp
 %{_includedir}/zmq_addon.hpp
 %{_libdir}/cmake/cppzmq/
+%{_libdir}/pkgconfig/cppzmq.pc
 
 %changelog

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar  9 16:06:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.10.0:
+  * message_t::rebuild with string argument, like the constructor
+  * Add DRAFT socket options for libzmq 4.3.2-4
+  * Add function for adding file descriptor topoller_t
+  * Fix noexcept warnings
+  * Disambiguation from other max functions
+- includes changes from 4.9.0:
+  * Type-safe socket.get(sockopt::type)
+  * GCC C++14 fix
+  * Support ZMQ_ONLY_FIRST_SUBSCRIBE
+  * Add pkg-config file and instructions
+  * Fix missing include
+  * Fix monitor test failures
+  * Improved documentation
+
+-------------------------------------------------------------------
 Mon May  9 15:16:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.8.1
