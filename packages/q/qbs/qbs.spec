@@ -1,7 +1,7 @@
 #
 # spec file for package qbs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018 The Qt Company.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,12 @@
 #
 
 
+%if %{?suse_version} > 1500
+# No python-beautifulsou4 is 15.6
+%bcond_without qch_doc
+%endif
 Name:           qbs
-Version:        2.2.2
+Version:        2.5.1
 Release:        0
 Summary:        Build tool for software projects
 # Legal:
@@ -38,10 +42,14 @@ BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
+%if %{with qch_doc}
+BuildRequires:  python3
+BuildRequires:  python3-bs4
+BuildRequires:  python3-lxml
+BuildRequires:  cmake(Qt6Tools)
+%endif
 # Qt Creator used to package qbs too
 Conflicts:      libqt5-creator <= 4.5.0
-# Fails to build on 32bit archs
-ExcludeArch:    %ix86 armv7hl
 
 %description
 Qbs is a tool that helps simplify the build process for developing projects
@@ -76,25 +84,25 @@ This package contains examples to show different qbs usages.
 
 %build
 %cmake_qt6 \
-  -DQBS_ENABLE_RPATH:BOOL=OFF \
-  -DQBS_INSTALL_MAN_PAGE:BOOL=ON \
+  -DQBS_ENABLE_RPATH:BOOL=FALSE \
+  -DQBS_INSTALL_MAN_PAGE:BOOL=TRUE \
+%if %{with qch_doc}
+  -DQBS_INSTALL_QCH_DOCS:BOOL=TRUE \
+%endif
 %if 0%{?suse_version} == 1500
   -DQBS_LIBEXEC_INSTALL_DIR:STRING=lib/qbs \
 %endif
   -DQBS_LIB_INSTALL_DIR:STRING=%{_lib} \
   -DQBS_PLUGINS_INSTALL_BASE:STRING=%{_lib} \
-  -DWITH_TESTS:BOOL=OFF
+  -DWITH_TESTS:BOOL=FALSE
 
-%{qt6_build}
+%qt6_build
 
 %install
-%{qt6_install}
+%qt6_install
 
 # Cleanup
 rm -r %{buildroot}%{_qt6_sharedir}/qbs/python
-
-# E: version-control-internal-file
-rm %{buildroot}%{_qt6_sharedir}/qbs/modules/typescript/qbs-tsc-scan/.gitignore
 
 %fdupes %{buildroot}%{_qt6_sharedir}/qbs
 
@@ -103,10 +111,10 @@ rm %{buildroot}%{_qt6_sharedir}/qbs/modules/typescript/qbs-tsc-scan/.gitignore
 %files
 %license LGPL_EXCEPTION.txt LICENSE.LGPLv21 LICENSE.LGPLv3 LICENSE.GPL3-EXCEPT
 %doc README.md changelogs/changes-%{version}.md
-%dir %{_libexecdir}/qbs/
-%dir %{_libdir}/qbs
-%dir %{_libdir}/qbs/plugins
-%dir %{_qt6_sharedir}/qbs
+%if %{with qch_doc}
+%dir %{_qt6_sharedir}/doc/qbs
+%doc %{_qt6_sharedir}/doc/qbs/qbs.qch
+%endif
 %{_bindir}/qbs
 %{_bindir}/qbs-config
 %{_bindir}/qbs-config-ui
@@ -114,16 +122,20 @@ rm %{buildroot}%{_qt6_sharedir}/qbs/modules/typescript/qbs-tsc-scan/.gitignore
 %{_bindir}/qbs-setup-android
 %{_bindir}/qbs-setup-qt
 %{_bindir}/qbs-setup-toolchains
-%{_libdir}/qbs/plugins/libclangcompilationdbgenerator.so
-%{_libdir}/qbs/plugins/libiarewgenerator.so
-%{_libdir}/qbs/plugins/libkeiluvgenerator.so
-%{_libdir}/qbs/plugins/libmakefilegenerator.so
-%{_libdir}/qbs/plugins/libqbs_cpp_scanner.so
-%{_libdir}/qbs/plugins/libqbs_qt_scanner.so
-%{_libdir}/qbs/plugins/libvisualstudiogenerator.so
+%dir %{_libexecdir}/qbs/
 %{_libexecdir}/qbs/qbs_processlauncher
 %{_mandir}/man1/qbs.1%{ext_man}
+%dir %{_qt6_libdir}/qbs
+%dir %{_qt6_libdir}/qbs/plugins
 %{_qt6_libdir}/libqbscore.so.*
+%{_qt6_libdir}/qbs/plugins/libclangcompilationdbgenerator.so
+%{_qt6_libdir}/qbs/plugins/libiarewgenerator.so
+%{_qt6_libdir}/qbs/plugins/libkeiluvgenerator.so
+%{_qt6_libdir}/qbs/plugins/libmakefilegenerator.so
+%{_qt6_libdir}/qbs/plugins/libqbs_cpp_scanner.so
+%{_qt6_libdir}/qbs/plugins/libqbs_qt_scanner.so
+%{_qt6_libdir}/qbs/plugins/libvisualstudiogenerator.so
+%dir %{_qt6_sharedir}/qbs
 %{_qt6_sharedir}/qbs/imports/
 %{_qt6_sharedir}/qbs/module-providers/
 %{_qt6_sharedir}/qbs/modules/
