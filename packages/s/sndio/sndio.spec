@@ -2,6 +2,7 @@
 # spec file for package sndio
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +19,13 @@
 
 %define libname libsndio7
 Name:           sndio
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Small audio and MIDI framework
 License:        ISC
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://www.sndio.org/
-Source:         http://www.sndio.org/sndio-%{version}.tar.gz
+Source:         https://sndio.org/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libbsd)
@@ -61,13 +62,12 @@ library.
 %package -n sndioctl
 Summary:        Small audio and MIDI framework
 Group:          Productivity/Multimedia/Sound/Midi
-Requires:       %{libname} = %{version}
 
 %description -n sndioctl
 This package contains the controller binary for sndio.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -78,15 +78,10 @@ export CFLAGS="%{optflags}"
 %install
 %make_install
 
-%ifnarch %ix86
-mkdir -p %{buildroot}%{_libdir}/pkgconfig
-mv %{buildroot}%{_prefix}/lib/pkgconfig/sndio.pc %{buildroot}%{_libdir}/pkgconfig/sndio.pc
-%endif
-
-%post   -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files
+%license LICENSE
 %{_bindir}/aucat
 %{_bindir}/midicat
 %{_bindir}/sndiod
@@ -96,15 +91,18 @@ mv %{buildroot}%{_prefix}/lib/pkgconfig/sndio.pc %{buildroot}%{_libdir}/pkgconfi
 %{_mandir}/man7/sndio.7%{?ext_man}
 
 %files -n %{libname}
+%license LICENSE
 %{_libdir}/libsndio.so.*
 
 %files -n sndio-devel
+%license LICENSE
 %{_includedir}/sndio.h
 %{_libdir}/pkgconfig/sndio.pc
 %{_libdir}/libsndio.so
 %{_mandir}/man3/*.3%{?ext_man}
 
 %files -n sndioctl
+%license LICENSE
 %{_bindir}/sndioctl
 %{_mandir}/man1/sndioctl.1%{?ext_man}
 

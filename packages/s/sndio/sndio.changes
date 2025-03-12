@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 11 16:05:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.10.0:
+  * aucat: Use extended header format for .wav files
+  * sndiod: Fix insufficent check of input from clients
+  * bug fixes and developer visible fixes
+- add license file to package 
+
+-------------------------------------------------------------------
 Mon Jan 22 15:53:16 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.9.0
