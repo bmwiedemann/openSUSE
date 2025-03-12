@@ -1,7 +1,7 @@
 #
 # spec file for package python-superqt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-superqt
-Version:        0.6.7
+Version:        0.7.1
 Release:        0
 Summary:        Missing widgets and components for PyQt/PySide
 License:        BSD-3-Clause
@@ -43,8 +43,8 @@ BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4.3}
-BuildRequires: python3-pyside2
-BuildRequires: python3-pyside6
+BuildRequires:  python3-pyside2
+BuildRequires:  python3-pyside6
 #BuildRequires:  %%{python_module cmap}
 #BuildRequires:  %%{python_module pyconify}
 # /SECTION
@@ -65,6 +65,8 @@ QtWidgets module, including multihandle (range) sliders, comboboxes, and more.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# test_iconify needs an optional module pyconify, which is not in the distribution
+rm tests/test_iconify.py
 # skip flaky tests marked @skip_on_ci by upstream
 export CI=1
 for PYTEST_QT_API in pyqt5 pyqt6; do
@@ -72,7 +74,9 @@ for PYTEST_QT_API in pyqt5 pyqt6; do
   %pytest
 done
 # The pysides are only for the primary python
-for PYTEST_QT_API in pyside2 pyside6; do
+# pyside2 is currently broken on python313
+# for PYTEST_QT_API in pyside2 pyside6; do
+for PYTEST_QT_API in pyside6; do
   export PYTEST_QT_API
   %python3_pytest
 done

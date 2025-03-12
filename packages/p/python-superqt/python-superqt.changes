@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 11 12:35:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.7.1
+  * fix: minimum size hint for QElidingLabel
+  * fix: End painter when drawing colormap
+  * build: drop py38
+  * fix: KeyError in CodeSyntaxHighlight
+  * build: support py313
+  * feat: allow chaining of QIconifyIcon.addKey
+  * feat: Improve CodeSyntaxHighlight object
+  * feat: add QFlowLayout, for variable width widgets
+  * Lazy-import pyconify
+- Skip testing on pyside2, broken with python313
+
+-------------------------------------------------------------------
 Sun Dec  1 20:05:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip flaky tests marked by @skip_on_ci
