@@ -280,7 +280,6 @@
     <package name="cpupower-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cracklib" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cracklib-dict-full" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="crda" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="createrepo_c" supportstatus="unsupported"/> <!-- reason: dvd:createrepo_c -->
     <package name="cron" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cronie" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4260,7 +4259,7 @@
     <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:wicked -->
     <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:wicked -->
-    <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="wireplumber-audio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

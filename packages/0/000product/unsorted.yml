@@ -15408,7 +15408,7 @@ unsorted:
   - libout123-0 
   - libout123-0-32bit 
   - libovf-glib-devel 
-  - libovn-24_09-0 
+  - libovn-25_03-0 
   - libowfat-devel 
   - libowncloudsync-devel 
   - libowncloudsync0 
@@ -15958,8 +15958,8 @@ unsorted:
   - libquadmath0-gcc14-32bit 
   - libquadmath0-gcc7 
   - libquadmath0-gcc7-32bit 
-  - libquazip1-qt5-1_4_0 
-  - libquazip1-qt6-1_4_0 
+  - libquazip1-qt5-1_5_0 
+  - libquazip1-qt6-1_5_0 
   - libquicktime 
   - libquicktime-32bit 
   - libquicktime-devel 
@@ -23227,8 +23227,6 @@ unsorted:
   - playmyvideos 
   - playmyvideos-lang 
   - pleaser 
-  - plee-the-bear 
-  - plee-the-bear-data 
   - plexus-ant-factory 
   - plexus-ant-factory-javadoc 
   - plexus-archiver 
@@ -37769,6 +37767,7 @@ unsorted:
   - suil-plugin-x11-in-gtk2 
   - suil-plugin-x11-in-gtk3 
   - suil-plugin-x11-in-qt5 
+  - suil-plugin-x11-in-qt6 
   - suitesparse-devel 
   - suitesparse_mongoose 
   - sundanese-unicode-fonts 
