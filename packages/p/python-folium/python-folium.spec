@@ -25,6 +25,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-folium%{psuffix}
 Version:        0.19.4
 Release:        0
