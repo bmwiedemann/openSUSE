@@ -94,4 +94,15 @@
     <comment></comment>
     <requestid>1251810</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e9115630dcbf95ad15d7ab59caf5128a</srcmd5>
+    <version>0.4.27</version>
+    <time>1741806878</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.27:
+  * Remove old runners
+  * Reorder runners
+  * update german translation (forwarded request 1252449 from rrahl0)</comment>
+    <requestid>1252450</requestid>
+  </revision>
 </revisionlist>
