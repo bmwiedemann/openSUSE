@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Mar 11 14:32:09 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.2:
+  * feat: bump version to 1.6.2
+  * fix(app): propagate shutdown reason (#736)
+
+-------------------------------------------------------------------
+Tue Mar 11 14:28:17 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.1:
+  * feat: bump version to 1.6.1
+  * fix(deps): update rust crate clap to v4.5.32 (#735)
+  * chore: update Kind version to latest in Makefile
+  * fix(deps): update rust crate once_cell to v1.21.0 (#734)
+  * fix: Improve thread management to prevent unwanted terminal
+    output on exit (#732)
+  * fix(deps): update rust crate serde to v1.0.219 (#733)
+  * fix(deps): update rust crate tokio to v1.44.0 (#731)
+  * fix(deps): update rust crate bytes to v1.10.1 (#730)
+  * fix(deps): update rust crate indoc to v2.0.6 (#729)
+  * fix(deps): update rust crate thiserror to v2.0.12 (#728)
+  * fix(deps): update rust crate serde_json to v1.0.140 (#727)
+  * fix(deps): update rust crate async-trait to v0.1.87 (#726)
+  * fix(deps): update rust crate anyhow to v1.0.97 (#725)
+  * chore(deps): update rust crate rstest to 0.25.0 (#724)
+  * fix(deps): update rust crate bitflags to v2.9.0 (#723)
+  * chore(deps): lock file maintenance (#722)
+  * fix(deps): update rust crate chrono to v0.4.40 (#721)
+  * feat: improve error handling and add new tests
+  * fix(deps): update rust crate clap to v4.5.31 (#720)
+  * fix(deps): update rust crate flate2 to v1.1.0 (#719)
+  * fix(deps): update rust crate log to v0.4.26 (#718)
+  * fix(deps): update rust crate serde_json to v1.0.139 (#717)
+  * fix(deps): update rust crate serde to v1.0.218 (#716)
+  * fix(deps): update rust crate anyhow to v1.0.96 (#715)
+  * fix(deps): update rust crate clap to v4.5.30 (#714)
+  * fix(deps): update rust crate strum to v0.27.1 (#713)
+  * fix(deps): update rust crate clap to v4.5.29 (#711)
+  * fix(deps): update rust crate strum to 0.27.0 (#710)
+  * fix(deps): update rust crate once_cell to v1.20.3 (#709)
+  * fix(deps): update rust crate clap to v4.5.28 (#708)
+  * fix(deps): update rust crate bytes to v1.10.0 (#707)
+  * fix(deps): update rust crate async-trait to v0.1.86 (#706)
+  * fix(deps): update rust crate serde_json to v1.0.138 (#705)
+  * chore(deps): lock file maintenance (#703)
+  * fix(deps): update rust crate clap to v4.5.27 (#702)
+  * fix(deps): update rust crate serde_json to v1.0.137 (#701)
+  * fix(deps): update rust crate serde_json to v1.0.136 (#700)
+  * chore(deps): lock file maintenance (#699)
+  * fix(deps): update rust crate bitflags to v2.8.0 (#698)
+  * fix(deps): update rust crate log to v0.4.25 (#697)
+  * chore(deps): remove unused regex-syntax dependency
+  * fix(deps): update rust crate log to v0.4.24 (#695)
+  * fix(deps): update rust crate thiserror to v2.0.11 (#694)
+  * fix(deps): update rust crate bitflags to v2.7.0 (#693)
+  * fix(deps): update rust crate clap to v4.5.26 (#692)
+  * fix(deps): update rust crate clap to v4.5.25 (#691)
+  * fix(deps): update rust crate tokio to v1.43.0 (#689)
+  * fix(deps): update rust crate thiserror to v2.0.10 (#690)
+  * fix(deps): update rust crate clap to v4.5.24 (#688)
+  * fix(deps): update rust crate async-trait to v0.1.85 (#686)
+  * docs: mark UI appearance customization as beta
+  * fix(deps): update rust crate serde_json to v1.0.135 (#687)
+  * chore: add cspell.json to exclude list in Cargo.toml
+
+-------------------------------------------------------------------
 Tue Jan 07 08:04:23 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - refactor "_service" file to not have both tarball and
