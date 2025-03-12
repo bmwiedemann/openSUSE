@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 12 07:34:58 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Change glew+egl patch to work under x11
+
+-------------------------------------------------------------------
+Mon Mar 10 22:09:38 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to rpcs3-0.0.35~git20250310:
+  * rsx: Handle out-of-bounds read/writes from FIFO register IO
+  * Settings: Move 'Max Shader Compile Threads' next to the equivalent LLVM setting
+  * Settings: Move 'Vulkan Queue Scheduler' to Debug
+  * Settings: Move 'Disable On-Disk Shader Cache' to Debug
+  * Settings: Move 'Disable Asynchronous Memory Manager' to Debug
+  * Settings: Move 'SPU Profiler' to Debug
+  * Settings: Move 'PPU Vector NaN Fixup' to Debug
+  * Settings: Specify FSR 1
+  * Settings: Default 'Shader Mode' to Async with Interpreter
+  * Settings: Move 'SPU Block Size' to the middle column
+
+-------------------------------------------------------------------
 Mon Mar 10 04:06:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Rename glew+egl build patch to fix-build-glew-egl.patch
