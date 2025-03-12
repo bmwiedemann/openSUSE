@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 12 12:40:54 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1~20250305:
+  * OVR_multiview: Add GLSL 1.30 test
+  * OVR_multiview[2]: Use GLSL 3.3 (NVIDIA)
+  * OVR_multiview: Add fb_blit_first_view test
+  * OVR_multiview: Add fb_shader_mismatch_draw_errors test
+  * OVR_multiview: Add fb_read_errors test
+  * OVR_multiview[2]: Add triangle comparison test
+  * OVR_multiview2: Add some basic shader tests
+  * OVR_multiview: Add fb_attachment_params test
+  * OVR_multiview: Add fb_incomplete_view_targets test
+  * OVR_multiview: Add fb_incomplete_view_range test
+  * OVR_multiview: Add fb_texture_errors test
+  * OVR_multiview: Add an additional linker test
+  * Add a GL <-> Vulkan ping-pong test
+  * ext_external_objects: Enable VK_KHR_timeline_semaphore if available
+  * ext_external_objects: Add compute shader infrastructure
+  * util: Add a piglit_build_compute_program() helper
+  * add test for EXT_multi_draw_arrays
+
+-------------------------------------------------------------------
 Wed Feb 19 08:20:11 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1~20250217:

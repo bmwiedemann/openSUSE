@@ -487,4 +487,29 @@
   * glx: don't expect a glx error</comment>
     <requestid>1246958</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8ed07cf5021c05ef94d77c2b13e30c79</srcmd5>
+    <version>1~20250305</version>
+    <time>1741806871</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1~20250305:
+  * OVR_multiview: Add GLSL 1.30 test
+  * OVR_multiview[2]: Use GLSL 3.3 (NVIDIA)
+  * OVR_multiview: Add fb_blit_first_view test
+  * OVR_multiview: Add fb_shader_mismatch_draw_errors test
+  * OVR_multiview: Add fb_read_errors test
+  * OVR_multiview[2]: Add triangle comparison test
+  * OVR_multiview2: Add some basic shader tests
+  * OVR_multiview: Add fb_attachment_params test
+  * OVR_multiview: Add fb_incomplete_view_targets test
+  * OVR_multiview: Add fb_incomplete_view_range test
+  * OVR_multiview: Add fb_texture_errors test
+  * OVR_multiview: Add an additional linker test
+  * Add a GL &lt;-&gt; Vulkan ping-pong test
+  * ext_external_objects: Enable VK_KHR_timeline_semaphore if available
+  * ext_external_objects: Add compute shader infrastructure
+  * util: Add a piglit_build_compute_program() helper
+  * add test for EXT_multi_draw_arrays</comment>
+    <requestid>1252439</requestid>
+  </revision>
 </revisionlist>
