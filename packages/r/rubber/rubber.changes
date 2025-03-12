@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Mar 12 08:05:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.6.7:
+  * graphics: add suffixes for engine=lualatex
+  * support glossaries nomain package option
+  * support glossaries acronym package option
+  * Replace much of dynamic CustomBuildHook code by static
+    `tool.hatch.build.targets.wheel.shared*data` and
+    `tool.hatch.build.targets.sdist`
+  * Add missing runner-pipe man pages to both sdist and wheel
+  * Make `NEWS` and `*.in` files be included with sdist archive again
+  * Make `tests/` folder be included with sdist archive
+  * Use locations `/usr/share/doc/rubber` and `/usr/share/man/{,fr/}man1` for
+    documentation in wheel archive
+  * Bring back missing ZSH completion file
+  * Fix support for gpep517
+  * Add command "clean" to hatch_build.py
+  * Other misc improvements to hatch_build.py
+  * Migrate README to Markdown
+  * Migrate from Setuptools to PEP 517 pyproject.toml and Hatchling
+  * Require Python >=3.8
+  * Fix crash with source path that uses special characters
+  * Announce "--into DIR" at runtime more consistently
+  * setup.py: Fix version going into call setup(..) and file rubber/version.py
+  * setup.py: Migrate off of distutils
+  * setup.py: Hide virtualenvs from command "clean"
+- Use python-rpm-macros and pyproject macros to build.
+- Actually run the testsuite.
+
+-------------------------------------------------------------------
 Tue Mar 12 11:04:32 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

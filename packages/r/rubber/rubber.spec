@@ -1,7 +1,7 @@
 #
 # spec file for package rubber
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,33 @@
 #
 
 
+%define pythons python3
 Name:           rubber
-Version:        1.6.0
+Version:        1.6.7
 Release:        0
 Summary:        An automated system for building LaTeX documents
 License:        GPL-2.0-only
-Group:          Productivity/Publishing/TeX/Utilities
-URL:            https://launchpad.net/rubber
+URL:            https://gitlab.com/latex-rubber/rubber
 Source:         https://gitlab.com/latex-rubber/rubber/-/archive/%{version}/%{name}-%{version}.tar.bz2
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  makeinfo
-BuildRequires:  python3-devel
+BuildRequires:  perl-Parse-RecDescent
 BuildRequires:  texinfo
-Requires:       python3
+BuildRequires:  texlive-biber
+BuildRequires:  texlive-bibtex8
+BuildRequires:  texlive-cweb
+BuildRequires:  texlive-dvipdfmx
+BuildRequires:  texlive-dvips
+BuildRequires:  tex(asymptote.sty)
+BuildRequires:  tex(beamer.cls)
+BuildRequires:  tex(bibtopic.sty)
+BuildRequires:  tex(glossaries.sty)
+BuildRequires:  tex(moreverb.sty)
+BuildRequires:  tex(multibib.sty)
+BuildRequires:  tex(nomencl.sty)
 Requires:       texlive-latex
 Requires(post): info
 BuildArch:      noarch
@@ -47,13 +61,28 @@ Metapost compilation).
 %autosetup -p1
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --root=%{buildroot} --mandir=%{_mandir} --infodir=%{_infodir} --docdir=%{_docdir}/%{name}
-
+%pyproject_install
+mkdir -p %{buildroot}%{_docdir}/%{name}
+mkdir -p %{buildroot}%{_infodir}
+mv %{buildroot}/usr/share/doc/%{name}/%{name}.* %{buildroot}%{_docdir}/%{name}
+rm -rf %{buildroot}/usr/share/doc/%{name}
+cp doc/%{name}/%{name}.info %{buildroot}%{_infodir}
+gzip %{buildroot}%{_infodir}/%{name}.info
 %fdupes %{buildroot}%{python3_sitelib}/rubber/
-%python3_fix_shebang
+
+%check
+pushd tests
+# Disable tests that fail due to missing files or unwieldy deps
+for dir in combine cweb-latex fig2dev-dvi fig2dev-path-inplace fig2dev-path \
+    fig2dev-path-into hooks-input-file graphicx-dotted-files knitr metapost \
+    metapost-input metapost-error pstricks-pd pythontex; do
+    touch $dir/disable
+done
+./run.sh *
+popd
 
 %post
 install-info %{_infodir}/rubber.info.gz %{_infodir}/dir
@@ -62,19 +91,20 @@ install-info %{_infodir}/rubber.info.gz %{_infodir}/dir
 install-info --delete %{_infodir}/rubber.info.gz %{_infodir}/dir
 
 %files
-%doc NEWS README
+%doc NEWS README.md
 %license COPYING
 %{_bindir}/rubber
 %{_bindir}/rubber-pipe
 %{_bindir}/rubber-info
 %{_bindir}/rubber-lsmod
 %{python3_sitelib}/rubber/
-%{python3_sitelib}/rubber-%{version}-py%{py3_ver}.egg-info
+%{python3_sitelib}/latex_rubber-%{version}.dist-info
 %{_mandir}/man1/rubber-info.1%{?ext_man}
 %{_mandir}/man1/rubber-pipe.1%{?ext_man}
 %{_mandir}/man1/rubber.1%{?ext_man}
 %{_infodir}/rubber.info%{?ext_info}
 %{_mandir}/fr/man1/*.gz
 %{_docdir}/%{name}/
+%{_datadir}/zsh
 
 %changelog
