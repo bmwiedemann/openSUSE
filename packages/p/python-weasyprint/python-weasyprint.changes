@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar  5 10:07:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 64.1
+  * #2368: Fix ascent and descent font values
+  * #2370: Avoid endless recursion for variables in nested functions
+  * #2275: Use correct containing block to render waiting children
+  * #2375: Ensure that we handle text-anchor only on text content elements
+  * #2090: Only create font temporary folder when adding fonts
+  * #2383: Fix grid-template-areas validation and allow uppercase
+    identifiers for grid lines
+
+-------------------------------------------------------------------
 Mon Feb 10 21:55:11 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 64.0:
