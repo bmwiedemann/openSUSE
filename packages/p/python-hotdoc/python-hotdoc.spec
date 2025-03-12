@@ -48,6 +48,7 @@ Requires:       clang-devel
 Requires:       llvm-devel
 Requires:       python-PyYAML >= 5.4.1
 Requires:       python-appdirs
+Requires:       python-backports.entry_points_selectable
 Requires:       python-cchardet
 Requires:       python-dbus-deviation >= 0.6.1
 Requires:       python-feedgen
