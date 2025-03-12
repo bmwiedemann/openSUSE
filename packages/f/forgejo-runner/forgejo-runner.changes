@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 12 13:14:02 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch fix-CVE-2025-22869.patch, fixes bsc#1239488 bsc#1234574
+
+-------------------------------------------------------------------
 Mon Mar 10 23:14:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - also own the runners file

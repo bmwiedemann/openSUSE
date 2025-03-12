@@ -27,6 +27,7 @@ URL:            https://code.forgejo.org/forgejo/runner
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{name}.service
+Patch0:         fix-CVE-2025-22869.patch
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
