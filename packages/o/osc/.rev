@@ -1967,4 +1967,16 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     <comment></comment>
     <requestid>1252010</requestid>
   </revision>
+  <revision rev="209" vrev="3">
+    <srcmd5>f0384cd69044a984735b526322a46ab5</srcmd5>
+    <version>1.13.0</version>
+    <time>1741789486</time>
+    <user>anag+factory</user>
+    <comment>- fix the generic provides for %{use_python_pkg}-osc to be
+  versioned so that one can actually have versioned requires
+  against that symbol
+- restore python3-osc provides if we are building against the
+  primary_python version</comment>
+    <requestid>1252399</requestid>
+  </revision>
 </revisionlist>

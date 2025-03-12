@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 12 10:53:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix the generic provides for %{use_python_pkg}-osc to be
+  versioned so that one can actually have versioned requires
+  against that symbol
+- restore python3-osc provides if we are building against the
+  primary_python version
+
+-------------------------------------------------------------------
 Mon Mar 10 23:36:01 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - if we have primary_python defined lets use this to get runtime

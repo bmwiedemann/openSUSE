@@ -160,7 +160,12 @@ Recommends:     %{ssh_keygen_pkg}
 # needed for `osc browse` that calls xdg-open
 Recommends:     xdg-utils
 
-Provides:       %{use_python_pkg}-osc
+Provides:       %{use_python_pkg}-osc = %{version}-%{release}
+%if %{defined primary_python}
+%if "%{use_python_pkg}" == "%{primary_python}"
+Provides:       python3-osc = %{version}-%{release}
+%endif
+%endif
 
 %description
 openSUSE Commander is a command-line client for the Open Build Service.
