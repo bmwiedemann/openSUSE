@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar  8 03:04:16 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to 1.22:
+  - Add support for @-prefixed lines to ignore errors in config 
+    file (from 2.8)
+  - List all supported options in --help (from 2.8)
+  - Use kB instead of KB in --si mode (from 2.8)
+  - Add --graph-style option (from 2.1)
+  - Fix supported range of uid/gid numbers
+
+-------------------------------------------------------------------
 Wed Nov 20 14:14:05 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.21:
