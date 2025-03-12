@@ -713,4 +713,13 @@
   * Add mullvad-brower</comment>
     <requestid>1248114</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>a7038cbb7a1f5849f298eb702983d8e9</srcmd5>
+    <version>5.8.1</version>
+    <time>1741806840</time>
+    <user>anag+factory</user>
+    <comment>- Version 5.8.1
+  * Fix SyntaxWarning: invalid escape sequence '\s'</comment>
+    <requestid>1252398</requestid>
+  </revision>
 </revisionlist>
