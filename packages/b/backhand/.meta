@@ -1,0 +1,12 @@
+<package name="backhand" project="openSUSE:Factory">
+  <title>Tools for the reading, creating, and modification of SquashFS file systems</title>
+  <description>Tools for the reading, creating, and modification of SquashFS file systems.
+
+* unsquashfs-backhand
+  - tool to uncompress, extract and list squashfs filesystems
+* add-backhand
+  - tool to add a file or directory to squashfs filesystems
+* replace-backhand
+  - tool to replace files in squashfs filesystems</description>
+  <url>https://github.com/wcampbell0x2a/backhand</url>
+</package>
