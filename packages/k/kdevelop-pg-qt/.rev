@@ -7,4 +7,26 @@
     <comment>Add kdevelop-pg-qt. Replaces kdevelop5-pg-qt</comment>
     <requestid>1189606</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1a275c3bd0c8511cd0ac71ba5ad5d8b6</srcmd5>
+    <version>2.4.0</version>
+    <time>1741789660</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4.0
+  * New CMake package name: &quot;KDevelopPgQt&quot;,
+    with backward-compat support for old name &quot;KDevelop-PG-Qt&quot;
+  * installed CMake config file now provides imported targets:
+    KDevelopPGQt::Utils - the headers-only library used by
+    generated code
+    KDevelopPGQt::kdev-pg-qt - the generator executable
+  * Support for Qt5-compatible code generation dropped
+  * Generated files now note the generator and its version
+  * Fixed reproducible builds for another generated list of
+    token checks
+  * Removed &quot;using namespace std&quot; from installed headers-only
+    library
+  * Fixed generated debug code to require one less implicit
+    from-ASCII cast</comment>
+    <requestid>1252400</requestid>
+  </revision>
 </revisionlist>

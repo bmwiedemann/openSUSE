@@ -21,9 +21,9 @@
 
 %bcond_without released
 Name:           kdevelop-pg-qt
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
-Summary:        Supporting package for the additional plugins for Kdevelop
+Summary:        Parser generator for Qt/KDE based applications
 License:        LGPL-2.0-or-later
 URL:            https://www.kdevelop.org
 Source0:        https://download.kde.org/stable/kdevelop-pg-qt/%{version}/src/%{name}-%{version}.tar.xz
@@ -42,7 +42,10 @@ Obsoletes:      kdevelop5-pg-qt < %{version}
 Conflicts:      kdevelop4-pg-qt
 
 %description
-Supporting package for the additional plugins for Kdevelop Integrated Development Environment
+KDevelop-PG-Qt is a parser generator written in readable source-code and
+generating readable source-code. Its syntax was inspirated by AntLR. It
+implements the visitor-pattern and uses the Qt library. That is why it is
+ideal to be used in Qt/KDE-based applications like KDevelop.
 
 %prep
 %autosetup -p1
@@ -56,9 +59,10 @@ Supporting package for the additional plugins for Kdevelop Integrated Developmen
 %kf6_install
 
 %files
-%license COPYING*
+%license LICENSES/*
+%{_includedir}/KDevelopPGQt/
 %{_kf6_bindir}/kdev-pg-qt
-%{_includedir}/kdevelop-pg-qt/
 %{_kf6_cmakedir}/KDevelop-PG-Qt/
+%{_kf6_cmakedir}/KDevelopPGQt/
 
 %changelog

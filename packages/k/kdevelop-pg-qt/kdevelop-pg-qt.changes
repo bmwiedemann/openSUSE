@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 12 11:10:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.4.0
+  * New CMake package name: "KDevelopPgQt",
+    with backward-compat support for old name "KDevelop-PG-Qt"
+  * installed CMake config file now provides imported targets:
+    KDevelopPGQt::Utils - the headers-only library used by
+    generated code
+    KDevelopPGQt::kdev-pg-qt - the generator executable
+  * Support for Qt5-compatible code generation dropped
+  * Generated files now note the generator and its version
+  * Fixed reproducible builds for another generated list of
+    token checks
+  * Removed "using namespace std" from installed headers-only
+    library
+  * Fixed generated debug code to require one less implicit
+    from-ASCII cast
+
+-------------------------------------------------------------------
 Thu Jul 25 11:37:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.3.0
