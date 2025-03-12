@@ -249,4 +249,23 @@
     <comment></comment>
     <requestid>1228316</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>88bd008d041b211ecc28ab736c2bfa10</srcmd5>
+    <version>1.2.0</version>
+    <time>1741806901</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.0
+  ## Bugs fixed
+  * Add view handler to serve files when Notebook 7 is installed
+    #287 (@RRosio)
+  * fix: pasting outside of cells doing nothing #285
+    (@iisakkirotko)
+  ## Maintenance and upkeep improvements
+  * Fix SyntaxWarning from update message #297 (@living180)
+  * Replace pipes with shlex #286 (@frenzymadness)
+- Refresh node modules, contains non-fixable vulnerabilities.
+  * gh#jupyter/nbclassic#324
+  * Nothing of this lands in the built packages (forwarded request 1252525 from bnavigator)</comment>
+    <requestid>1252526</requestid>
+  </revision>
 </revisionlist>

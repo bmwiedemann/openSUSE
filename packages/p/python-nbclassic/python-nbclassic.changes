@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 12 13:13:13 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.0
+  ## Bugs fixed
+  * Add view handler to serve files when Notebook 7 is installed
+    #287 (@RRosio)
+  * fix: pasting outside of cells doing nothing #285
+    (@iisakkirotko)
+  ## Maintenance and upkeep improvements
+  * Fix SyntaxWarning from update message #297 (@living180)
+  * Replace pipes with shlex #286 (@frenzymadness)
+- Refresh node modules, contains non-fixable vulnerabilities.
+  * gh#jupyter/nbclassic#324
+  * Nothing of this lands in the built packages
+
+-------------------------------------------------------------------
 Wed Dec  4 12:42:34 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - refresh node modules

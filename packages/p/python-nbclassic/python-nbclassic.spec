@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbclassic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,25 +24,25 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python39 1
 # this conditional is used in the python-rpm-macros, but `osc build --without libalternatives` won't work
 %bcond_without libalternatives
 # 1.1.0 gets abbreviated by pythondistdeps
-%define shortversion 1.1
+%define shortversion 1.2
 Name:           python-nbclassic%{psuffix}
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/nbclassic
 # The github archive has the nbclassic tests
 Source0:        https://github.com/jupyterlab/nbclassic/archive/v%{version}.tar.gz#/nbclassic-%{version}-gh.tar.gz
+# Contains high vulnerability issues according to npm audit. Nothing of it lands in the built packages.
 Source1:        node_modules.tar.xz
 Source2:        create_node_modules.sh
 BuildRequires:  %{python_module Babel}
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module jupyter-packaging}
-BuildRequires:  %{python_module jupyter-server}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module jupyter-packaging >= 0.9}
+BuildRequires:  %{python_module jupyter-server >= 1.17}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -53,22 +53,10 @@ BuildRequires:  npm-default
 BuildRequires:  python-rpm-macros >= 20210929
 BuildRequires:  update-desktop-files
 Requires:       jupyter-nbclassic = %{version}
-Requires:       python-Jinja2
-Requires:       python-Send2Trash >= 1.8.0
-Requires:       python-argon2-cffi
 Requires:       python-ipykernel
 Requires:       python-ipython_genutils
-Requires:       python-jupyter-client >= 6.1.1
-Requires:       python-jupyter-core >= 4.6.1
-Requires:       python-nbconvert >= 5
-Requires:       python-nbformat
 Requires:       python-nest-asyncio >= 1.5
-Requires:       python-notebook-shim >= 0.2.3
-Requires:       python-prometheus-client
-Requires:       python-pyzmq >= 17
-Requires:       python-terminado >= 0.8.3
-Requires:       python-tornado >= 6.1
-Requires:       python-traitlets >= 4.2.1
+Requires:       python-notebook-shim
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -78,10 +66,11 @@ BuildRequires:  this-specfile-is-not-functional-without-libalternatives
 %endif
 %if %{with test}
 BuildRequires:  %{python_module nbclassic = %{version}}
-BuildRequires:  %{python_module pytest-console-scripts}
+BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module pytest-jupyter}
 BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests-unixsocket}
 %endif
 %python_subpackages
 
@@ -111,6 +100,8 @@ This package contains the jupyterlab server configuration and desktop files
 
 %prep
 %autosetup -p1 -n nbclassic-%{version} -a1
+# wrong version info
+sed s/1.3.0.dev0/1.2.0/ -i nbclassic/_version.py
 python3 setup.py js css
 
 %build
