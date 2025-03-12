@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed Mar 12 16:38:07 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#84
+- support dracut-style initrd (uncompressed cpio archive followed
+  by compressed cpio archive) (bsc#1239528)
+- 3.6
+
+--------------------------------------------------------------------
 Thu Feb 20 15:06:26 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#83
