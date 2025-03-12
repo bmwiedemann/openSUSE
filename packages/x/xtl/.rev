@@ -74,4 +74,12 @@
   * Use GetModuleFileNameW for wchar_t array</comment>
     <requestid>1141993</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>80a0730f40b5599375642c66233925ca</srcmd5>
+    <version>0.7.7</version>
+    <time>1741806883</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1252494</requestid>
+  </revision>
 </revisionlist>

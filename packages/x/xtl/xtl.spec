@@ -1,7 +1,7 @@
 #
 # spec file for package xtl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           xtl
 Version:        0.7.7
 Release:        0
@@ -24,13 +25,15 @@ License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://github.com/xtensor-stack/xtl
 Source0:        https://github.com/xtensor-stack/xtl/archive/refs/tags/%{version}/xtl-%{version}.tar.gz
+BuildRequires:  %{python_module breathe}
+BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  cmake
 BuildRequires:  doctest-devel
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  make
 BuildRequires:  pkg-config
-BuildRequires:  python3-breathe
 BuildRequires:  cmake(nlohmann_json)
 
 %description
@@ -70,6 +73,9 @@ make html
 #install documentation
 mkdir -p %{buildroot}/%{_docdir}/%{name}
 cp -r %{_builddir}/%{name}-%{version}/docs/build/html/* %{buildroot}/%{_docdir}/%{name}
+
+%fdupes -s %{buildroot}/%{_docdir}
+%fdupes %{buildroot}/%{_prefix}
 
 %check
 %ctest
