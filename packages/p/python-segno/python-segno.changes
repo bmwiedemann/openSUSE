@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 12 06:03:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.6.5 (no releases between 1.6.1 and 1.6.5):
+  - Fixed packaging: include man page, source distribution did not
+    contain all relevant files such as docs and test suite.
+  - Moved man page to the correct directory
+  - Fixed PDF creation: 144 and 145 provided by Mathias Winkel
+  - Merged 143 (typo in docs) provided by Marek Madejski
+
+-------------------------------------------------------------------
 Thu Dec  5 06:20:37 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - remove `_buildinfo/_buildconfig`, fix inconsistent-mtime warning

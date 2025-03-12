@@ -1,7 +1,7 @@
 #
 # spec file for package python-segno
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-segno
-Version:        1.6.1
+Version:        1.6.5
 Release:        0
 Summary:        QR Code and Micro QR Code generator for Python
 License:        BSD-3-Clause
 URL:            https://github.com/heuer/segno/
 Source0:        https://github.com/heuer/segno/archive/refs/tags/%{version}.tar.gz#/segno-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pypng}
@@ -46,6 +46,12 @@ The project provides more than 1500 test cases (coverage >= 98%) to verify a
 standard conform QR Code and Micro QR Code generation acc. to ISO/IEC
 18004:2015(E).
 
+%package -n %{name}-doc
+Summary:        Documentation files for %{name}
+
+%description -n %{name}-doc
+Man page for %{name}.
+
 %prep
 %autosetup -p1 -n segno-%{version}
 
@@ -56,6 +62,8 @@ chmod 755 ./segno/cli.py
 
 %install
 %pyproject_install
+install -d %{buildroot}%{_mandir}/man1/
+mv -v %{buildroot}/usr/usr/share/man/man1/segno.1 %{buildroot}%{_mandir}/man1/
 %python_clone -a %{buildroot}%{_bindir}/segno
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -75,5 +83,8 @@ IGNORED_CHECKS="test_plugin"
 %python_alternative %{_bindir}/segno
 %{python_sitelib}/segno
 %{python_sitelib}/segno-%{version}.dist-info
+
+%files -n %{name}-doc
+%{_mandir}/man1/segno.1.gz
 
 %changelog
