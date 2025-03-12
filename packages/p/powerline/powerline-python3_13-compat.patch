@@ -1,0 +1,204 @@
+From c97afc9d9dbc872217434cd7ce406968e0759e56 Mon Sep 17 00:00:00 2001
+From: Christoph Erhardt <github@sicherha.de>
+Date: Fri, 10 Jan 2025 23:56:26 +0100
+Subject: [PATCH 1/4] Fix `TypeError: bad argument type for built-in operation`
+ in Vim status line
+
+This occurs when opening a file inside a Git repository; the `path`
+parameter is of type `bytes` instead of the expected `str`. The above
+error message gets printed at the position where the file name and size
+would normally be displayed.
+
+The error was observed on Fedora 41 with Python 3.13. The exact root
+cause is unclear - but explicitly converting `path` to `str` prevents
+the `TypeError`.
+---
+ powerline/lib/vcs/git.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: powerline-2.8.4/powerline/lib/vcs/git.py
+===================================================================
+--- powerline-2.8.4.orig/powerline/lib/vcs/git.py
++++ powerline-2.8.4/powerline/lib/vcs/git.py
+@@ -112,7 +112,7 @@ try:
+ 		def do_status(self, directory, path):
+ 			if path:
+ 				try:
+-					status = git.Repository(directory).status_file(path)
++					status = git.Repository(directory).status_file(str(path))
+ 				except (KeyError, ValueError):
+ 					return None
+ 
+Index: powerline-2.8.4/powerline/commands/daemon.py
+===================================================================
+--- powerline-2.8.4.orig/powerline/commands/daemon.py
++++ powerline-2.8.4/powerline/commands/daemon.py
+@@ -16,9 +16,7 @@ def get_argparser(ArgumentParser=argpars
+ 		     'Does not silence exceptions in any case.'
+ 	)
+ 	parser.add_argument('--socket', '-s', help='Specify socket which will be used for connecting to daemon.')
+-	exclusive_group = parser.add_mutually_exclusive_group()
+-	exclusive_group.add_argument('--kill', '-k', action='store_true', help='Kill an already running instance.')
+-	replace_group = exclusive_group.add_argument_group()
+-	replace_group.add_argument('--foreground', '-f', action='store_true', help='Run in the foreground (don’t daemonize).')
+-	replace_group.add_argument('--replace', '-r', action='store_true', help='Replace an already running instance.')
++	parser.add_argument('--kill', '-k', action='store_true', help='Kill an already running instance.')
++	parser.add_argument('--foreground', '-f', action='store_true', help='Run in the foreground (don’t daemonize).')
++	parser.add_argument('--replace', '-r', action='store_true', help='Replace an already running instance.')
+ 	return parser
+Index: powerline-2.8.4/docs/source/develop/local-themes.rst
+===================================================================
+--- powerline-2.8.4.orig/docs/source/develop/local-themes.rst
++++ powerline-2.8.4/docs/source/develop/local-themes.rst
+@@ -10,7 +10,7 @@ prompt). Used themes are defined in :ref
+ Vim local themes
+ ================
+ 
+-Vim is the only available extension that has a wide variaty of options for local 
++Vim is the only available extension that has a wide variety of options for local 
+ themes. It is the only extension where local theme key refers to a function as 
+ described in :ref:`local_themes value documentation <config-ext-local_themes>`. 
+ 
+Index: powerline-2.8.4/docs/source/troubleshooting.rst
+===================================================================
+--- powerline-2.8.4.orig/docs/source/troubleshooting.rst
++++ powerline-2.8.4/docs/source/troubleshooting.rst
+@@ -19,7 +19,7 @@ After an update something stopped workin
+ Assuming powerline was working before update and stopped only after there are 
+ two possible explanations:
+ 
+-* You have more then one powerline installation (e.g. ``pip`` and ``Vundle`` 
++* You have more than one powerline installation (e.g. ``pip`` and ``Vundle`` 
+   installations) and you have updated only one.
+ * Update brought some bug to powerline.
+ 
+Index: powerline-2.8.4/powerline/__init__.py
+===================================================================
+--- powerline-2.8.4.orig/powerline/__init__.py
++++ powerline-2.8.4/powerline/__init__.py
+@@ -958,7 +958,7 @@ class Powerline(object):
+ 			shut down all threads. Set it to False unless you are exiting an
+ 			application.
+ 
+-			If set to False this does nothing more then resolving reference
++			If set to False this does nothing more than resolving reference
+ 			cycle ``powerline → config_loader → bound methods → powerline`` by
+ 			unsubscribing from config_loader events.
+ 		'''
+Index: powerline-2.8.4/powerline/lib/unicode.py
+===================================================================
+--- powerline-2.8.4.orig/powerline/lib/unicode.py
++++ powerline-2.8.4/powerline/lib/unicode.py
+@@ -85,7 +85,7 @@ def register_strwidth_error(strwidth):
+ 	needed settings) and emits new error handling method name.
+ 
+ 	:param function strwidth:
+-		Function that computs string width measured in display cells the string 
++		Function that computes string width measured in display cells the string 
+ 		occupies when displayed.
+ 
+ 	:return: New error handling method name.
+Index: powerline-2.8.4/powerline/lint/markedjson/scanner.py
+===================================================================
+--- powerline-2.8.4.orig/powerline/lint/markedjson/scanner.py
++++ powerline-2.8.4/powerline/lint/markedjson/scanner.py
+@@ -423,7 +423,7 @@ class Scanner:
+ 						if self.peek(k) not in hexdigits:
+ 							raise ScannerError(
+ 								'while scanning a double-quoted scalar', start_mark,
+-								'expected escape sequence of %d hexdecimal numbers, but found %r' % (
++								'expected escape sequence of %d hexadecimal numbers, but found %r' % (
+ 									length, self.peek(k)),
+ 								self.get_mark()
+ 							)
+Index: powerline-2.8.4/powerline/lint/spec.py
+===================================================================
+--- powerline-2.8.4.orig/powerline/lint/spec.py
++++ powerline-2.8.4/powerline/lint/spec.py
+@@ -46,7 +46,7 @@ class Spec(object):
+ 
+ 	.. note::
+ 		In ``check_`` and ``match`` methods specifications are identified by 
+-		their indexes for the purpose of simplyfying :py:meth:`Spec.copy` 
++		their indexes for the purpose of simplifying :py:meth:`Spec.copy` 
+ 		method.
+ 
+ 	Some common parameters:
+Index: powerline-2.8.4/powerline/segments/i3wm.py
+===================================================================
+--- powerline-2.8.4.orig/powerline/segments/i3wm.py
++++ powerline-2.8.4/powerline/segments/i3wm.py
+@@ -247,7 +247,7 @@ def mode(pl, segment_info, names={'defau
+ 		Specifies the string to show for various modes.
+ 		Use ``null`` to hide a mode (``default`` is hidden by default).
+ 
+-	Highligh groups used: ``mode``
++	Highlight groups used: ``mode``
+ 	'''
+ 	mode = segment_info['mode']
+ 	if mode in names:
+Index: powerline-2.8.4/powerline/segments/vim/__init__.py
+===================================================================
+--- powerline-2.8.4.orig/powerline/segments/vim/__init__.py
++++ powerline-2.8.4/powerline/segments/vim/__init__.py
+@@ -127,7 +127,7 @@ def visual_range(pl, segment_info, CTRL_
+ 		selection occupies only one line.
+ 	:param str v_text_multiline:
+ 		Text to display when in charaterwise visual or select mode, assuming
+-		selection occupies more then one line.
++		selection occupies more than one line.
+ 	:param str V_text:
+ 		Text to display when in linewise visual or select mode.
+ 
+Index: powerline-2.8.4/scripts/powerline-daemon
+===================================================================
+--- powerline-2.8.4.orig/scripts/powerline-daemon
++++ powerline-2.8.4/scripts/powerline-daemon
+@@ -268,7 +268,7 @@ def shutdown(sock, read_sockets, write_s
+ 	#. Notifies segments based on 
+ 	  :py:class:`powerline.lib.threaded.ThreadedSegment` and WM-specific 
+ 	  threads that daemon is shutting down.
+-	#. Waits for threads to finish, but no more then 2 seconds total.
++	#. Waits for threads to finish, but no more than 2 seconds total.
+ 	#. Waits so that total execution time of this function is 2 seconds in order 
+ 	   to allow ThreadedSegments to finish.
+ 	'''
+Index: powerline-2.8.4/tests/test_shells/test.sh
+===================================================================
+--- powerline-2.8.4.orig/tests/test_shells/test.sh
++++ powerline-2.8.4/tests/test_shells/test.sh
+@@ -217,7 +217,7 @@ IPYTHON_PYTHON=ipython
+ 
+ if test -z "$POWERLINE_RC_EXE" ; then
+ 	if which rc-status >/dev/null ; then
+-		# On Gentoo `rc` executable is from OpenRC. Thus app-shells/rc instals 
++		# On Gentoo `rc` executable is from OpenRC. Thus app-shells/rc installs 
+ 		# `rcsh` executable.
+ 		POWERLINE_RC_EXE=rcsh
+ 	else
+Index: powerline-2.8.4/.github/workflows/main.yaml
+===================================================================
+--- powerline-2.8.4.orig/.github/workflows/main.yaml
++++ powerline-2.8.4/.github/workflows/main.yaml
+@@ -16,7 +16,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        python-version: [3.7, 3.8, 3.9, 3.11, 3.12]
++        python-version: [3.8, 3.9, 3.11, 3.12, 3.13]
+ 
+     steps:
+     - name: Checkout code
+Index: powerline-2.8.4/tests/test_python/test_cmdline.py
+===================================================================
+--- powerline-2.8.4.orig/tests/test_python/test_cmdline.py
++++ powerline-2.8.4/tests/test_python/test_cmdline.py
+@@ -52,7 +52,7 @@ class TestParser(TestCase):
+ 			]:
+ 				self.assertRaises(SystemExit, parser.parse_args, raising_args)
+ 				self.assertFalse(out.getvalue())
+-				self.assertRegexpMatches(err.getvalue(), raising_reg)
++				self.assertRegex(err.getvalue(), raising_reg)
+ 				flush()
+ 
+ 	def test_main_normal(self):

@@ -1,7 +1,7 @@
 #
 # spec file for package powerline
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          System/Console
 URL:            https://github.com/powerline/powerline
 Source0:        https://github.com/powerline/powerline/archive/%{version}/powerline-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM powerline-python3_13-compat.patch gh#powerline/powerline#2271 badshah400@gmail.com -- Fix TypeError with python 3.13 in vim status line; upstream PR
+Patch0:         powerline-python3_13-compat.patch
 BuildRequires:  fdupes
 BuildRequires:  fontconfig
 BuildRequires:  git-core
