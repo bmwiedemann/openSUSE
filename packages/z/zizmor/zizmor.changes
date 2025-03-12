@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Mar 12 15:29:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.5.1:
+  * chore: prep for v1.5.1 release (#601)
+  * bugfix: don't require `.git/` to respect `.gitignore` files
+    (#598)
+  * docs: fix typo in release notes (#595)
+
+-------------------------------------------------------------------
+Tue Mar 11 06:10:49 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.5.0:
+  * chore: prep for release v1.5.0 (#594)
+  * chore(deps): bump the cargo group with 3 updates (#592)
+  * chore(deps): bump the github-actions group with 2 updates
+    (#593)
+  * docs: fix typo (#591)
+  * docs: fixup release notes (#590)
+  * feat(cli): fine-grained color control (#586)
+  * cli: re-add `--no-progress` flag (#589)
+  * chore(deps): bump ring from 0.17.8 to 0.17.13 (#588)
+  * docs: bump trophies (#587)
+  * cargo: bump edition (#585)
+  * docs: bump trophies (#584)
+  * ci: pypi: bump maturin-action to v1.47.2 (#583)
+  * chore(deps): bump the cargo group with 5 updates (#580)
+  * chore(deps): bump the github-actions group with 7 updates
+    (#581)
+  * feat: respect .gitignore files when collecting inputs (#575)
+  * test: refactor integration tests (#576)
+  * feat: detect overprovisioned `secrets[...]` (#573)
+  * bugfix: don't remove prefixes from local paths (#572)
+
+-------------------------------------------------------------------
 Tue Feb 25 18:37:57 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.4.1:
