@@ -401,4 +401,12 @@ This release includes a backward-incompatible change and deprecates many functio
 - missing_libs.patch: add missing libX11 linking</comment>
     <requestid>1178503</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>36880bf856427065b2cef0eb16d64d9e</srcmd5>
+    <version>4.11.3</version>
+    <time>1741789232</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.11.3:</comment>
+    <requestid>1252147</requestid>
+  </revision>
 </revisionlist>

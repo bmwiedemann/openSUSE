@@ -1,7 +1,7 @@
-From 4134725e0b08ec47d9c45f5bec6991591b0a06b7 Mon Sep 17 00:00:00 2001
+From b30b6e1c3ae6c3258ec7f6862d361842e4ec489f Mon Sep 17 00:00:00 2001
 From: Hannes Reinecke <hare@suse.de>
 Date: Tue, 19 Jul 2022 13:18:23 +0800
-Subject: [PATCH 1005/1005] mdadm: enable Intel Alderlake RSTe configuration
+Subject: [PATCH 1005/1006] mdadm: enable Intel Alderlake RSTe configuration
 
 Alderlake has a slightly different RST configuration; the UEFI
 variable is name 'RstVmdV', and the AHCI controller shows up as
@@ -11,19 +11,14 @@ PCI class (and not the RAID class as RSTe would normally do).
 Signed-off-by: Hannes Reinecke <hare@suse.de>
 Acked-by: Coly Li <colyli@suse.de>
 ---
- platform-intel.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ platform-intel.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/platform-intel.c b/platform-intel.c
-index 95bc492..6623ac5 100644
+index 95bc492..9a6f586 100644
 --- a/platform-intel.c
 +++ b/platform-intel.c
-@@ -652,10 +652,12 @@ static const struct imsm_orom *find_imsm_hba_orom(struct sys_dev *hba)
- #define AHCI_PROP "RstSataV"
- #define AHCI_SSATA_PROP "RstsSatV"
- #define AHCI_TSATA_PROP "RsttSatV"
-+#define AHCI_RST_PROP "RstVmdV"
- #define VROC_VMD_PROP "RstUefiV"
+@@ -656,6 +656,7 @@ static const struct imsm_orom *find_imsm_hba_orom(struct sys_dev *hba)
  #define RST_VMD_PROP "RstVmdV"
  
  #define PCI_CLASS_RAID_CNTRL 0x010400
@@ -31,7 +26,7 @@ index 95bc492..6623ac5 100644
  
  /* GUID length in Bytes */
  #define GUID_LENGTH 16
-@@ -1049,7 +1051,8 @@ const struct imsm_orom *find_imsm_efi(struct sys_dev *hba)
+@@ -1049,7 +1050,8 @@ const struct imsm_orom *find_imsm_efi(struct sys_dev *hba)
  			break;
  		return NULL;
  	case SYS_DEV_SATA:

@@ -250,9 +250,12 @@ Requires:       tigervnc
 Requires:       pattern() = basesystem
 Requires:       pattern() = kvm_server
 # bnc#868542
+%if 0%{?is_opensuse}
 Requires:       virt-manager
+%endif
 Requires:       virt-install
 Recommends:     openssh
+%if 0%{?is_opensuse}
 # BSC#1078908
 Recommends:     vim
 Recommends:     virt-v2v
@@ -262,6 +265,7 @@ Recommends:     yast2-control-center
 Recommends:     yast2-ncurses
 Recommends:     yast2-ncurses-pkg
 Recommends:     yast2-vm
+%endif
 %if !0%{?is_opensuse}
 Provides:       patterns-sles-kvm_tools = %{version}
 Obsoletes:      patterns-sles-kvm_tools < %{version}

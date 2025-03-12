@@ -1,7 +1,7 @@
 #
 # spec file for package iotop
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,9 @@ URL:            http://guichaz.free.fr/iotop/
 Source0:        https://repo.or.cz/iotop.git/snapshot/%{gitversion}.tar.gz#/%{name}-%{gitversion}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-curses
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 Requires:       python3-curses
 
 %description
@@ -46,11 +48,13 @@ which process is the I/O going on.
 %python3_build
 
 %install
-%python3_install
+%python3_install --install-scripts /usr/sbin
 
 %fdupes -s %{buildroot}
 
 %check
+export PYTHONPATH=%{buildroot}/%{python3_sitearch}
+%{buildroot}/%{_sbindir}/iotop --version | grep -F 'iotop 0.6'
 
 %files
 %license COPYING

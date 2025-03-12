@@ -944,4 +944,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
 - Update to release 6.0.0</comment>
     <requestid>1230634</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>4472c71096abfdd14169a46789d0e718</srcmd5>
+    <version>6.0.1</version>
+    <time>1741789219</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 6.0.1</comment>
+    <requestid>1252155</requestid>
+  </revision>
 </revisionlist>

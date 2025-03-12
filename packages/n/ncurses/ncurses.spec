@@ -734,7 +734,7 @@ export CFLAGS_SHARED
 	    mkdir -p %{root}%{_mandir}/man6
 	    for man in *.6
 	    do
-		install -m 0644 $man %{root}%{_mandir}/man6/
+		install -m 0644 $man %{root}%{_mandir}/man6/${man}n
 	    done
 	    install -m 0755 %{S:8} %{root}%{_libexecdir}/ncurses-examples/
 	popd

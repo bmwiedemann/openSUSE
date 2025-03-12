@@ -58,6 +58,7 @@ BuildRequires:  %{pname}-devel = %{version}
 %if %{with python3}
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  readline-devel
 %endif
 Recommends:     %{pname}-doc = %{version}

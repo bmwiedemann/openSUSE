@@ -220,4 +220,14 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1153275 from dimstar)</comment>
     <requestid>1153315</requestid>
   </revision>
+  <revision rev="30" vrev="31">
+    <srcmd5>b8646633efeca74e18ea2186db14b8e3</srcmd5>
+    <version>2.6</version>
+    <time>1741789215</time>
+    <user>anag+factory</user>
+    <comment>- added patches
+  fix build with gcc15
+  + plotutils-gcc15.patch (forwarded request 1252075 from pgajdos)</comment>
+    <requestid>1252091</requestid>
+  </revision>
 </revisionlist>

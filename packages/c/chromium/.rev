@@ -5454,4 +5454,23 @@ boo#1224178</comment>
   third_party/libavif (gone) (FIXME cleanup)</comment>
     <requestid>1250276</requestid>
   </revision>
+  <revision rev="453" vrev="1">
+    <srcmd5>9be92fdc66e5d9b4cd8da46e04029985</srcmd5>
+    <version>134.0.6998.88</version>
+    <time>1741789235</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 134.0.6998.88
+  (stable released 2025-03-11) (boo#1239216)
+  * CVE-2025-1920: Type Confusion in V8
+  * CVE-2025-2135: Type Confusion in V8
+  * CVE-TBD: Out of bounds write in GPU
+  * CVE-2025-2136: Use after free in Inspector
+  * CVE-2025-2137: Out of bounds read in V8
+
+- replace patch
+  chromium-134-specialize-some-to_value_list.patch
+  by patch
+  chromium-134-type-mismatch-error.patch (from fedora)</comment>
+    <requestid>1251996</requestid>
+  </revision>
 </revisionlist>

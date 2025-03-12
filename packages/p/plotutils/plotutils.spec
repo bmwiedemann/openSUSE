@@ -1,7 +1,7 @@
 #
 # spec file for package plotutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ Patch5:         plotutils-hershey_glyphs.patch
 Patch6:         plotutils-man-spline.patch
 # PATCH-FIX-UPSTREAM repairs postscript output
 Patch7:         plotutils-postscript.patch
+# build with gcc15
+Patch8:         plotutils-gcc15.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  fontpackages-devel
@@ -156,6 +158,7 @@ graphics animations under the X Window System.
 %patch -P 5 -p0
 %patch -P 6 -p0
 %patch -P 7 -p0
+%patch -P 8 -p1
 # Avoid update lex and bison code as otherwise we may see broken code (bnc#829479)
 # that is do *not* remove any lex\yacc code
 grep -rslE '(made by GNU Bison|A Bison parser, made from|"lex.yy.c")' . | xargs -r touch

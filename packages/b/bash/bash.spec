@@ -487,7 +487,7 @@ echo exit 0 > tests/read7.sub
 	$READLINE
   sed -rn '/Configuration feature settings controllable by autoconf/,/End of configuration settings controllable by autoconf/p' <  config.h
   profilecflags=CFLAGS="$CFLAGS"
-%if 0%{?do_profiling}
+%if 0%{?do_profiling} && !0%{?want_reproducible_builds}
   profilecflags=CFLAGS="$CFLAGS %{cflags_profile_generate}"
 %endif
   ulimit -Hv unlimited
@@ -502,9 +502,8 @@ echo exit 0 > tests/read7.sub
 	SCREENRC=$SCREENRC SCREENDIR=$SCREENDIR \
 	screen -D -m %make_build -j1 TESTSCRIPT=%{SOURCE4} check
   kill -TERM $pid
-%if 0%{?do_profiling}
-  rm -f jobs.gcda
-  profilecflags=CFLAGS="$CFLAGS %{cflags_profile_feedback} -fprofile-correction"
+%if 0%{?do_profiling} && !0%{?want_reproducible_builds}
+  profilecflags=CFLAGS="$CFLAGS %{cflags_profile_feedback}"
   %make_build $makeopts "$profilecflags" clean
 %endif
   %make_build $makeopts "$profilecflags" all

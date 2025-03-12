@@ -721,4 +721,15 @@
     <comment>forward #13 from qzhao</comment>
     <requestid>1249550</requestid>
   </revision>
+  <revision rev="78" vrev="7">
+    <srcmd5>837a6fb48d273b8449710d8bf15551ce</srcmd5>
+    <version>4.4.5</version>
+    <time>1741789224</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
+  to build with SVT-AV1 3.0.0.
+
+- sync with SLE changelog (forward from qzhao)</comment>
+    <requestid>1252220</requestid>
+  </revision>
 </revisionlist>

@@ -143,10 +143,10 @@ Index: conf/main.cf
 +relay_clientcerts = 
 +#tls_random_source = dev:/dev/urandom
 +
-+smtp_use_tls = no
++#smtp_use_tls = no
 +#smtp_tls_loglevel = 0
-+smtp_enforce_tls = no
-+smtp_tls_security_level = 
++#smtp_enforce_tls = no
++smtp_tls_security_level = none
 +smtp_tls_CAfile = 
 +smtp_tls_CApath = 
 +smtp_tls_cert_file = 
@@ -155,10 +155,10 @@ Index: conf/main.cf
 +#smtp_tls_session_cache_timeout = 3600s
 +smtp_tls_session_cache_database = 
 +
-+smtpd_use_tls = no
++#smtpd_use_tls = no
 +#smtpd_tls_loglevel = 0
-+smtpd_enforce_tls = no
-+smtpd_tls_security_level = 
++#smtpd_enforce_tls = no
++smtpd_tls_security_level = none
 +smtpd_tls_CAfile = 
 +smtpd_tls_CApath = 
 +smtpd_tls_cert_file = 

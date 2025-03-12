@@ -1,4 +1,181 @@
 -------------------------------------------------------------------
+Tue Mar 11 22:21:38 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.5.3:
+  - Bug Fixes
+    - Correct a typo causing builds to fail on a fresh checkout.
+- Update to 1.5.2:
+  - New Features
+    - Added pack cross-Lua helper/polyfill to the compiler env
+      alongside unpack
+    - Precompile built-in macros, improving startup time
+      significantly.
+    - Accept :global-mangle false in compiler opts to disable
+      global mangling.
+    - Stop printing sparse tables as sequences by default.
+  - Bug Fixes
+    - Defaults on fennel.repl.view-opts are no longer clobbered
+      by (fennel.repl {:view-opts {}})
+    - Fix a bug where fennel.view allowed non-integer
+      :max-sparse-gap settings.
+    - Prevent incorrect fennel.view output like {1 :x 1.2 :y 2
+      :z} -> ["x" "y" "z"] when max-sparse-gap is still satisfied
+      by gaps between decimal keys.
+    - Ensure fennel --plugin plug.lua loads the compiler env like
+      it does for plug.fnl
+    - Work around string formatting bug in Fengari.
+    - Use options.warn when provided in the parser.
+    - Fix an issue where unquoting a regular table would fail
+      outside compile scope.
+- Update to 1.5.1:
+    - Bug Fixes, doc/fennel.doc: Don't mutate :fnl/arglist
+      directly when showing callable form (set (. tgt k1 ...) v)
+      now works on known globals and $, $1 ... $9 in hashfns
+    - Macro quote expansion no longer breaks when sym, list or
+      sequence is shadowed
+    - Bring fennel.traceback behavior closer to Lua's traceback
+      by not modifying non-string and non-nil values.
+    - Avoid losing precision when compiling large numbers on
+      LuaJIT.
+    - Add syntax for representing infinity and NaN values.
+- Update to 1.5.0:
+  - New Features
+    - Macro pick-values is now a special, allowing it to emit
+      better Lua output.
+    - Add fennel.getinfo as source-map-aware equivalent of
+      debug.getinfo.
+    - Optimize allocation away when destructuring tables to
+      tables.
+    - Allow & and &as in the same destructure clause.
+    - More consistent module-not-found warnings for
+      --require-as-include.
+    - Improve compiler output for and/or forms with potential
+      side-effects.
+    - Allow locals in places where they make sense rather than
+      mid-expression.
+    - Accept --keywords option to add to the list of built-in Lua
+      keywords.
+    - REPL completion now works on partial REPL commands: e.g.
+      ,complete ,d -> ,doc.
+    - Tables in the REPL default to printing with limited depth.
+    - View settings in REPL can be changed: (set
+      ___repl___.view-opts.depth 100).
+    - Support dynamic field names in (set (. tbl field) val).
+    - The fennel.compile function now accepts an AST, iterator,
+      or file.
+    - Catch typos when a space is missing after a string.
+  - Bug Fixes
+    - Don't non-nil assert on _foo arguments in lambda.
+    - Propagate compile options into ,compile repl command.
+    - IIFEs emitted by and/or inside (fn [...]) now propagate
+      varargs. macrodebug on cyclic macro expansions now
+      serialize to valid code (no @1, ..)
+- Update to 1.4.2:
+  - Bug Fixes
+    - Fix a bug where (tail! (f x)) could sometimes compile to
+      return return f(x)
+    - Make tail! ensure its target is not a special form call
+      like (tail! (or x (f)))
+    - Fix broken man page installation on make install
+- Update to 1.4.1:
+  - This was the last release that provided Linux arm32 binaries.
+  - New Features
+    - Iterators accept locals wrapped in parens like all other
+      multi-value bindings. fennel.repl is now a callable
+      table, allowing the default (fennel.repl) options to
+      be customized by setting option fields on the table
+      itself. This accidentally caused incompatibility with
+      coroutine.create.
+  - Bug Fixes
+    - Fix a bug with metadata tables in lambda being ignored.
+    - Fix identity value for band operator.
+    - Fix a bug in icollect with &into and multiple values.
+      assert-repl, as a drop-in replacement for assert, no longer
+      takes an opts param
+    - Fix a bug where (. (a-macro) k) bypassed protections
+      against invalid Lua output
+  - Changes and Removals
+    - Deprecate the __fennelrest destructuring metamethod.
+- Update to 1.4.0:
+  - Bug Fixes
+    - Prevent metadata from being accessible in compiler sandbox.
+  - New Forms
+    - Add tail! which asserts that the argument is called in tail
+      position.
+    - Add assert-repl to make an assertion which opens a repl
+      when it fails.
+  - New Features
+    - Add --assert-as-repl flag to replace assert calls with
+      assert-repl.
+    - Allow you to return a value from the repl with ,return FORM
+      command.
+    - Save previous REPL values in *1, *2, and *3 locals.
+    - Make repl prompt change when repl sessions get nested.
+- Update to 1.3.1:
+  - New Features
+    - Expose REPL's methods in the ___repl___ table, allowing
+      method redefinition at runtime.
+    - Allow following docstring with a metadata table syntax.
+    - Return whole metadata table when metadata.get is called
+      without a key.
+    - Add :byte-escape option to fennel.view for overriding
+      default char escapes
+    - Generate man pages for fennel-api(3), fennel-reference(5),
+      and fennel-tutorial(7) from their respective documentation.
+  - Note for packagers: The man page fennel.1 has been moved to
+    man/man1/fennel.1 along with the new generated man pages. For
+    build scripts that copy files manually in lieu of make
+    install, this may require an update.
+  - Bug Fixes
+    - Fix a bug where operator compiler output had incorrect
+      precedence with 3+ args
+    - Fix a bug where the comment special would fail on forms
+      containing "]]"
+    - Fix a bug where tables like {:true 1 true 2} emit with
+      unstable key order
+    - Fix a bug where table literals mutated by a macro emit with
+      unstable key order when AOT-compiled in Lua > 5.2
+    - Fix a bug where very long individual lines in the repl
+      would be truncated
+    - Fix an edge case where {:__metatable true} (as in
+      pandoc-lua) breaks fennel.view
+    - Fix a 1.3.0 bug where macros only accepts table literals,
+      not table-returning exprs
+    - Fix a bug where metadata tables with different arglists
+      break lambdas
+    - Fix a bug with detecting cycles for tables that have custom
+      __pairs metamethod in fennel.view
+    - Fix a bug where vararg couldn't be the only thing in a
+      hashfn
+- Update to 1.3.0:
+  - New Forms
+    - Add case which does pattern matching without pinning
+      existing locals
+    - Add case-try which works like match-try without pinning
+      locals
+    - Add faccumulate macro as range analog to accumulate
+  - New Features
+    - Reduced compiler memory footprint
+    - Omit escape codes highlighting errors when NO_COLOR env var
+      is set
+    - Support & for rest args in function arglists for
+      consistency with let
+    - Add error-pinpoint option to support custom error
+      highlighting
+    - The fn special now allows arbitrary compiler metadata keys
+      via the metadata table syntax
+    - Options in fennel.view can be altered for the next
+      invocation of the pretty-printer by setting them to {:once
+      val} or {:once val :after other-val}. See fennel.view
+      docstring for more info
+  - Bug Fixes
+    - Fix a bug where readline repl history would be saved to the
+      wrong file
+    - Fix a bug where set did not catch unknown locals when
+      setting table fields
+    - Add a workaround for a bug around ctrl-d in readline
+
+-------------------------------------------------------------------
 Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Opencode %make_build to prevent build failure when not defined.

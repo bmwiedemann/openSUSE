@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 26 15:40:37 UTC 2025 - Darragh O'Reilly <doreilly@suse.com>
+
+- fix await import error on older node.js versions
+
+-------------------------------------------------------------------
 Fri Feb 21 14:05:43 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - update to 1.1.0

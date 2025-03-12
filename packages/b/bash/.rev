@@ -2065,4 +2065,12 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     <comment>- Explicitly specify that the build recipe needs bash (forwarded request 1248227 from jengelh)</comment>
     <requestid>1248296</requestid>
   </revision>
+  <revision rev="197" vrev="18">
+    <srcmd5>7244ef98cc3a093d64093f0c302fbc95</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1741789197</time>
+    <user>anag+factory</user>
+    <comment>Skip PGO with %want_reproducible_builds (boo#1040589) (forwarded request 1251745 from bmwiedemann)</comment>
+    <requestid>1251754</requestid>
+  </revision>
 </revisionlist>

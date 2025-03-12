@@ -15,4 +15,12 @@
     <comment>- Update to version 0.18.1</comment>
     <requestid>1248188</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8d07ac14bfefd7521f60e12aa40a6cb7</srcmd5>
+    <version>0.18.2</version>
+    <time>1741789444</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.18.2 (forwarded request 1251994 from fl4nn)</comment>
+    <requestid>1252179</requestid>
+  </revision>
 </revisionlist>

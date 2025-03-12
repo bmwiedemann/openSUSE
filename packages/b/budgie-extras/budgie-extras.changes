@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 11 17:16:46 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add patches to fix typelib requires parsing errors:
+  * typelib-requires-v1-only.patch
+  * typelib-requires-v2-only.patch
+
+-------------------------------------------------------------------
+Thu Mar  6 16:24:20 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Budgie Extras 1.9.0 "Stepping Stone"
+  * Start porting applets to Wayland
+- In an attempt to keep packages during migration - store a
+  README in currently unsupported applets
+
+-------------------------------------------------------------------
 Fri Apr 12 09:27:46 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for vala building code incompatible with Werror

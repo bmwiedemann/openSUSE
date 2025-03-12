@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Mar 11 08:49:37 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Link sources to the working directory instead of copying them.
+
+-------------------------------------------------------------------
+Sat Jan  4 10:05:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from dac1c69 to a62ac18:
+  - add missing options to man page and usage
+  - explicitly document that the define is necessary for getopt
+  - check that offer isn't null before receiving
+  - common: shrink a bit
+  - style
+  - fix logic to determine which offer to receive
+  - manpages: add -p
+  - waypaste: support primary clipboard
+
+-------------------------------------------------------------------
+Fri Dec 23 14:21:24 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- My modifications applied upstream:
+  - Take into account $CFLAGS if set.
+  - add primary clipboard support with -p
+  - When you have defined .c.o rule, you shouldn't override it.
+
+-------------------------------------------------------------------
+Fri Oct  7 07:28:32 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switched to git-driven workflow and upstream master.
+
+-------------------------------------------------------------------
+Tue Oct  4 12:41:06 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for wayclip 0.3.

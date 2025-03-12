@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-devel-base
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ not make sense.
 
 This particular package contains the base development patterns (and the other
 development patterns that don't fit well anywhere else).
+
+
 
 
 ################################################################################
@@ -89,14 +91,15 @@ Recommends:     libstdc++-devel
 Recommends:     openldap2-devel
 Recommends:     pam-devel
 Recommends:     pkg-config
+%if 0%{?is_opensuse}
 Recommends:     subversion
+%endif
 # most of our packages use this tool
 Recommends:     fdupes
 # applying patches
 Recommends:     patch
 Recommends:     binutils-devel
 Recommends:     e2fsprogs-devel
-Recommends:     libapparmor-devel
 Recommends:     libosip2-devel
 # required for make checks
 Recommends:     sparse
@@ -298,13 +301,17 @@ done
 for i in devel_basis devel_kernel; do
 	echo "This file marks the pattern $i to be installed." \
 		>"%{buildroot}/usr/share/doc/packages/patterns/$i.txt"
+%if 0%{?is_opensuse}
 	echo "This file marks the pattern $i-32bit to be installed." \
 		>"%{buildroot}/usr/share/doc/packages/patterns/$i-32bit.txt"
+%endif
 done
 
 #
 # This file is created at check-in time. Sorry for the inconsistent workflow :(
 #
+%if 0%{?is_opensuse}
 %include %{SOURCE1}
+%endif
 
 %changelog

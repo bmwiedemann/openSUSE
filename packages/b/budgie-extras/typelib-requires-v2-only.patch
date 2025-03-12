@@ -1,0 +1,101 @@
+From 7d4ce16296d44c79f85c72d01394c5a96b969672 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Tue, 11 Mar 2025 17:03:21 +0000
+Subject: [PATCH] Budgie 2.0 only
+
+Auto requires issue
+---
+ budgie-kangaroo/budgie_kangaroo.py | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/budgie-kangaroo/budgie_kangaroo.py b/budgie-kangaroo/budgie_kangaroo.py
+index dcdb389d..88d009b2 100644
+--- a/budgie-kangaroo/budgie_kangaroo.py
++++ b/budgie-kangaroo/budgie_kangaroo.py
+@@ -4,10 +4,7 @@
+ import gi.repository
+ gi.require_version('Libxfce4windowing', '0.0')
+ from gi.repository import Libxfce4windowing
+-if Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
+-    gi.require_version('Budgie', '2.0')
+-else:
+-    gi.require_version('Budgie', '1.0')
++gi.require_version('Budgie', '2.0')
+ from gi.repository import Budgie, GObject, Gtk
+ 
+ 
+From f4ab97336b56bd607c20fa552281ad6c61e27b75 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Tue, 11 Mar 2025 17:03:52 +0000
+Subject: [PATCH] Budgie 2.0 only
+
+---
+ budgie-app-launcher/src/budgie-app-launcher/AppLauncher.py | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/budgie-app-launcher/src/budgie-app-launcher/AppLauncher.py b/budgie-app-launcher/src/budgie-app-launcher/AppLauncher.py
+index fbb31e05..f956710e 100644
+--- a/budgie-app-launcher/src/budgie-app-launcher/AppLauncher.py
++++ b/budgie-app-launcher/src/budgie-app-launcher/AppLauncher.py
+@@ -14,10 +14,7 @@
+ 
+ gi.require_version('Libxfce4windowing', '0.0')
+ from gi.repository import Libxfce4windowing
+-if Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
+-    gi.require_version('Budgie', '2.0')
+-else:
+-    gi.require_version('Budgie', '1.0')
++gi.require_version('Budgie', '2.0')
+ from gi.repository import Budgie
+ from gi.repository import GObject
+ from AppLauncherApplet import AppLauncherApplet
+From 654dc8da8c768c5278c86ef76bcc8f1f87ce51ef Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Tue, 11 Mar 2025 17:04:17 +0000
+Subject: [PATCH] Budgie 2.0 only
+
+---
+ budgie-clockworks/budgie_clockworks.py | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/budgie-clockworks/budgie_clockworks.py b/budgie-clockworks/budgie_clockworks.py
+index 3d0d063a..00a9a19c 100644
+--- a/budgie-clockworks/budgie_clockworks.py
++++ b/budgie-clockworks/budgie_clockworks.py
+@@ -3,10 +3,7 @@
+ gi.require_version("Gtk", "3.0")
+ gi.require_version('Libxfce4windowing', '0.0')
+ from gi.repository import Libxfce4windowing
+-if Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
+-    gi.require_version('Budgie', '2.0')
+-else:
+-    gi.require_version('Budgie', '1.0')
++gi.require_version('Budgie', '2.0')
+ from gi.repository import Gdk, Gtk, GObject, GdkPixbuf, Budgie, Gio, GLib
+ import os
+ import time
+From 31c4ded0cb7094fd94084b88ecb498f6b04c3e40 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Tue, 11 Mar 2025 17:12:28 +0000
+Subject: [PATCH] Budgie 2.0 only
+
+---
+ .../src/budgie-app-launcher/AppLauncherApplet.py             | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/budgie-app-launcher/src/budgie-app-launcher/AppLauncherApplet.py b/budgie-app-launcher/src/budgie-app-launcher/AppLauncherApplet.py
+index 675096ae..2c1fd4c9 100644
+--- a/budgie-app-launcher/src/budgie-app-launcher/AppLauncherApplet.py
++++ b/budgie-app-launcher/src/budgie-app-launcher/AppLauncherApplet.py
+@@ -16,10 +16,7 @@
+ gi.require_version('GMenu', '3.0')
+ gi.require_version('Libxfce4windowing', '0.0')
+ from gi.repository import Libxfce4windowing
+-if Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
+-    gi.require_version('Budgie', '2.0')
+-else:
+-    gi.require_version('Budgie', '1.0')
++gi.require_version('Budgie', '2.0')
+ from gi.repository import Budgie
+ from gi.repository import GMenu
+ from gi.repository import Gtk

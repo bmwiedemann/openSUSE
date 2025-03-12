@@ -43,6 +43,10 @@ Source1000:     baselibs.conf
 Patch1:         lib-suffix.patch
 # PATCH-FIX-UPSTREAM CVE-2024-57970.patch bsc#1237233 antonio.teixeira@suse.com
 Patch2:         CVE-2024-57970.patch
+# PATCH-FIX-UPSTREAM bsc#1238610 marius.grossu@suse.com CVE-2025-25724
+Patch3:         CVE-2025-25724.patch
+# PATCH-FIX-UPSTREAM bsc#1237606 marius.grossu@suse.com CVE-2025-1632
+Patch4:         CVE-2025-1632.patch
 BuildRequires:  cmake
 BuildRequires:  libacl-devel
 BuildRequires:  libbz2-devel

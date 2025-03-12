@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Mar 12 05:58:26 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.49.0:
+  * chore: Update version.go for v0.49.0
+  * build(deps): bump golang.org/x/text from 0.22.0 to 0.23.0
+  * chore: Use cns Task helpers in govc volume commands
+  * govc: add volume.rm -keep flag to retain backing disk
+  * govc: add volume.extend command
+  * vcsim: add vsan Datastore support
+  * vcsim: remove simulator.Map package variable
+  * fix: vcsim: extend PropertyCollector lock to avoid potential
+    races
+  * govc: add GPU commands
+  * govc: add session.login -jwt option
+  * vcsim: add query and metadata support for CNS Volume API
+  * build(deps): bump github.com/google/go-cmp from 0.6.0 to 0.7.0
+  * build(deps): bump golang.org/x/text from 0.21.0 to 0.22.0
+  * fix: Drop operationID soap header for unsupported endpoints
+  * govc: Rewrite kms.export URL to use the host we connected to
+    vCenter with
+  * govc: Add storage.policy.create '-e' option to enable
+    encryption
+
+-------------------------------------------------------------------
 Wed Feb 12 05:55:49 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.48.1:

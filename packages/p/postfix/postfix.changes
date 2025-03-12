@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 11 00:55:16 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- update postfix-main.cf.patch
+  * comment deprecated parameters: smtp_use_tls and smtp_enforce_tls
+    use parameter smtp_tls_security_level instead
+  * comment deprecated parameters: smtpd_use_tls and smtpd_enforce_tls
+    use parameter smtpd_tls_security_level instead
+
+-------------------------------------------------------------------
 Tue Feb 25 19:00:58 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.10.1

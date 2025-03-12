@@ -1,7 +1,7 @@
 #
 # spec file for package gotosocial
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,28 +14,30 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 Name:           gotosocial
-Version:        0.18.1
+Version:        0.18.2
 Release:        0
 Summary:        An ActivityPub social network server, written in Golang
 License:        AGPL-3.0-only
-Url:            https://docs.gotosocial.org/en/latest/
+URL:            https://docs.gotosocial.org/en/latest/
 Source0:        https://github.com/superseriousbusiness/%{name}/releases/download/v%{version}/%{name}-%{version}-source-code.tar.gz#/%{name}-%{version}.tar.gz
 # Generated with ./vendor_yarn.sh %{version}
 Source1:        %{name}-%{version}-vendor.tar.xz
 Source2:        vendor_yarn.sh
 Source3:        gotosocial.sysusers
 Patch0:         default-settings.patch
-BuildRequires:  golang(API) = 1.23
-BuildRequires:  golang-packaging
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  apparmor-profiles
 BuildRequires:  apparmor-rpm-macros
+BuildRequires:  golang-packaging
 BuildRequires:  nodejs >= 16
+BuildRequires:  rsync
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
-BuildRequires:  rsync
 BuildRequires:  yarn
+BuildRequires:  golang(API) = 1.23
+BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 %sysusers_requires
 ExclusiveArch:  x86_64 aarch64

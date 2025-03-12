@@ -52,7 +52,7 @@
 # Add option to build without tools
 %bcond_without tools
 Name:           dpdk%{name_tag}
-Version:        24.11
+Version:        24.11.1
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -63,8 +63,6 @@ Source:         https://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 Patch0:         0001-fix-cpu-compatibility.patch
 # PATCH-FIX-UPSTREAM - https://bugs.dpdk.org/show_bug.cgi?id=1530
 Patch1:         0001-examples-vm_power_manager-add-missing-header.patch
-# PATCH-FIX-UPSTREAM - CVE-2024-11614 [bsc#1234718], net/virtio: Fix Denial Of Service from malicious guest on hypervisors using DPDK Vhost library
-Patch2:         dpdk-CVE-2024-11614.patch
 %ifarch x86_64
 %if 0%{suse_version} < 1699
 # Workaround for build failure related to inline error
@@ -180,7 +178,7 @@ as L2 and L3 forwarding.
 
 %prep
 # can't use %%{name} because of dpdk-thunderx
-%setup -q -n dpdk-%{version}
+%setup -q -n dpdk-stable-%{version}
 %if 0%{?suse_version} > 1600
 %autopatch -p1
 %else
@@ -241,9 +239,14 @@ for flavor in %{flavors_to_build}; do
 done
 
 # Fix documentation
-mkdir -p %{buildroot}%docdir
-mv %{buildroot}%{_datadir}/doc/dpdk %{buildroot}%docdir
-rm -r %{buildroot}/%docdir/dpdk/html/.doctrees
+mkdir -p %{buildroot}%{docdir}
+mv %{buildroot}%{_datadir}/doc/dpdk %{buildroot}%{_docdir}
+rm -rf %{buildroot}%{docdir}/html/.doctrees
+rm -rf %{buildroot}%{docdir}/html/dts/.doctrees
+rm %{buildroot}%{docdir}/html/.buildinfo
+rm %{buildroot}%{docdir}/html/dts/.buildinfo
+rm %{buildroot}%{docdir}/html/dts/.html.d
+
 # Fix man directory
 rm -r %{buildroot}%{_mandir}/man3/*
 

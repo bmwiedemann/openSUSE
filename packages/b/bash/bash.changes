@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 10 09:38:26 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Skip PGO with %want_reproducible_builds (boo#1040589)
+
+-------------------------------------------------------------------
 Mon Feb 24 18:21:33 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Explicitly specify that the build recipe needs bash

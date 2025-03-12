@@ -193,4 +193,19 @@
 </comment>
     <requestid>1167023</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3ace58bca517621c87daf665ca089e41</srcmd5>
+    <version>1.9.0</version>
+    <time>1741789410</time>
+    <user>anag+factory</user>
+    <comment>- Add patches to fix typelib requires parsing errors:
+  * typelib-requires-v1-only.patch
+  * typelib-requires-v2-only.patch
+- Budgie Extras 1.9.0 &quot;Stepping Stone&quot;
+  * Start porting applets to Wayland
+- In an attempt to keep packages during migration - store a
+  README in currently unsupported applets
+</comment>
+    <requestid>1252170</requestid>
+  </revision>
 </revisionlist>

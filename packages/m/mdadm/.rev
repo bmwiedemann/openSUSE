@@ -1569,4 +1569,12 @@ which haven't landed upstream yet
   add 0010-mdopen-add-sbin-path-to-env-PATH-when-call-system-mo.patch (forwarded request 1249329 from mwilck)</comment>
     <requestid>1249330</requestid>
   </revision>
+  <revision rev="153" vrev="2">
+    <srcmd5>055f4845c6d8275cc731b76fde595a23</srcmd5>
+    <version>4.4</version>
+    <time>1741789212</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1252074</requestid>
+  </revision>
 </revisionlist>

@@ -266,4 +266,22 @@
     and locals_max_string. #675</comment>
     <requestid>1243280</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b0c9cc4e57f2104197d34e8a8debf83c</srcmd5>
+    <version>25.2.0</version>
+    <time>1741789464</time>
+    <user>anag+factory</user>
+    <comment>- Update to 25.2.0:
+  Added:
+  * structlog.tracebacks.Stack now includes an exc_notes field reflecting
+    the notes attached to the exception. #684
+  Changed:
+  * structlog.stdlib.BoundLogger's binding-related methods now also return Self. #694
+  * structlog.processors.TimeStamper now produces internally timezone-aware
+    datetime objects. Default output hasn't changed, but you can now use %z in your fmt string. #709
+  Fixed:
+  * Expose structlog.dev.RichTracebackFormatter for imports. #699
+  * Expose structlog.processors.LogfmtRenderer for imports. #701</comment>
+    <requestid>1252316</requestid>
+  </revision>
 </revisionlist>

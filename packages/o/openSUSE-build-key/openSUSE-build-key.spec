@@ -40,7 +40,7 @@ Obsoletes:      gpg-pubkey-eae4fd92
 Source10:       gpg-pubkey-29b700a4-62b07e22.asc
 
 # build@suse.de for SLE12 / SLE15
-Source2:        gpg-pubkey-39db7c82-5f68629b.asc
+Source2:        gpg-pubkey-39db7c82-66c5d91a.asc
 
 # RISCV
 Source3:        gpg-pubkey-697ba1e5-5c755904.asc

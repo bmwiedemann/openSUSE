@@ -1,17 +1,17 @@
 diff --git a/src/AboutDialog.cpp b/src/AboutDialog.cpp
-index c0a7bde08..947794db9 100644
+index 6a25470..9e8b4c0 100644
 --- a/src/AboutDialog.cpp
 +++ b/src/AboutDialog.cpp
 @@ -62,7 +62,7 @@ hold information about one contributor to Audacity.
  #endif
  
  #ifdef REV_LONG
--#define REV_IDENT wxString( "[[https://github.com/audacity/audacity/commit/" )+ REV_LONG + "|" + wxString( REV_LONG ).Left(6) + "]] of " +  REV_TIME 
+-#define REV_IDENT wxString( "[[https://github.com/audacity/audacity/commit/" )+ REV_LONG + "|" + wxString( REV_LONG ).Left(6) + "]] of " +  REV_TIME
 +#define REV_IDENT wxString( "Official openSUSE Build" ) + " " + REV_LONG + " of " +  REV_TIME
  #else
  #define REV_IDENT (XO("No revision identifier was provided").Translation())
  #endif
-@@ -526,8 +526,8 @@ void AboutDialog::PopulateInformationPage( ShuttleGui & S )
+@@ -529,8 +529,8 @@ void AboutDialog::PopulateInformationPage( ShuttleGui & S )
        << XO("The Build")
        << wxT("</h3>\n<table>"); // start build info table
  

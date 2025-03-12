@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 11 10:15:19 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- gpg-pubkey-39db7c82-66c5d91a.asc: extended lifetime of SLE12 / 15 
+  2048 bit key.
+
+-------------------------------------------------------------------
 Wed Mar  5 14:53:48 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - changed keys to use SHA256 UIDs instead of SHA1. (bsc#1237294

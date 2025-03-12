@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 11 16:46:49 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.60.1:
+  - Fixes
+    * fix: Fallback to statically-linked binary on old Linuxes
+  - Documentation updates
+    * docs: Add example of multiple age recipients
+
+-------------------------------------------------------------------
 Mon Feb 24 18:48:34 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.60.0:

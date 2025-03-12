@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 10 09:01:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.11.3:
+  * It is now possible to configure (dis)allowance of nested transaction
+  * Allow for recreating views without recreating models.
+  * Added a "Back" button in the TOTP setup and input view.
+  * Disabled throttling during TOTP setup.
+  * Added the possibility to customize the mapping between file
+    extensions and MIME types.
+  * The font metrics constructed by WPaintDevices are now only
+    constructed once, and not once per WPaintDevice.
+  * Added the function Dbo::FixedSqlConnectionPool::
+    freeConnections() to retrieve how many connections in the
+    pool are currently free.
+  * Added more addX convenience methods that return the raw
+    pointer of the added object.
+  * Added a way to set an alternative count query with
+    Query::setCountQuery(). This allows to replace the default
+    count query with a less expensive one.
+- Drop patch:
+  * boost_fixes.patch
+- Remove obsolete CMake build options
+
+-------------------------------------------------------------------
 Tue Jun  4 09:10:52 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to 4.10.4

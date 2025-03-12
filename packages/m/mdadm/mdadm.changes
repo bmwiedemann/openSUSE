@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  4 13:42:52 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- cleanup 1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch
+  (remove a redundant macro definition)
+
+-------------------------------------------------------------------
 Fri Feb 28 22:10:00 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - mdopen: add sbin path to env PATH when call system("modprobe md_mod")

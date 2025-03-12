@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 10 13:21:19 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update to version 24.11.1
+  * Contains DPDK 24.11 plus the fix for CVE-2024-11614,
+    remove patch dpdk-CVE-2024-11614.patch
+- Move docs from %{_docdir}/dpdk/dpdk to %{docdir}/dpdk
+
+-------------------------------------------------------------------
 Mon Feb 17 07:38:12 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to LTS version 24.11

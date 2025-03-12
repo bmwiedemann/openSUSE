@@ -1,14 +1,14 @@
---- resource-agents/heartbeat/Makefile.am-orig	2024-07-31 09:49:35.561174274 +0200
-+++ resource-agents/heartbeat/Makefile.am	2024-07-31 10:04:17.124253572 +0200
-@@ -50,94 +50,59 @@
+--- resource-agents-4.16.0+git45.646a41d1/heartbeat/Makefile.am	2025-02-25 12:34:45.000000000 +0100
++++ resource-agents/heartbeat/Makefile.am	2025-03-11 16:23:01.351179440 +0100
+@@ -50,94 +50,61 @@
  send_ua_SOURCES         = send_ua.c IPv6addr_utils.c
  send_ua_LDADD           = $(LIBNETLIBS)
  
 -ocf_SCRIPTS	      = AoEtarget		\
 -			AudibleAlarm		\
 -			ClusterMon		\
-+ocf_SCRIPTS	      = ClusterMon		\
- 			CTDB			\
+-			CTDB			\
++ocf_SCRIPTS	      = CTDB			\
  			Delay			\
  			Dummy			\
 -			EvmsSCC			\
@@ -18,7 +18,7 @@
 -			IPaddr			\
  			IPaddr2			\
  			IPsrcaddr		\
--			LVM			\
+ 			LVM			\
 -			LinuxSCSI		\
  			lvmlockd		\
  			LVM-activate		\
@@ -61,6 +61,7 @@
  			db2			\
  			dhcpd			\
 -			dnsupdate		\
++			dnsupdate               \
  			dummypy			\
  			docker			\
  			docker-compose		\
@@ -90,13 +91,14 @@
  			mariadb			\
  			mdraid			\
 -			minio			\
++			mpathpersist		\
  			mysql			\
  			mysql-proxy		\
 -			nagios			\
  			named			\
  			nfsnotify		\
  			nfsserver		\
-@@ -145,11 +110,6 @@
+@@ -145,11 +112,6 @@
  			nvmet-subsystem		\
  			nvmet-namespace		\
  			nvmet-port		\
@@ -108,7 +110,7 @@
  			oraasm			\
  			oracle			\
  			oralsnr			\
-@@ -157,34 +117,20 @@
+@@ -157,38 +119,21 @@
  			ovsmonitor		\
  			pgagent			\
  			pgsql			\
@@ -127,12 +129,12 @@
 -			scsi2reservation	\
  			sfex			\
  			sg_persist              \
- 			mpathpersist		\
- 			slapd			\
+-			mpathpersist		\
+-			slapd			\
 -			smb-share		\
  			storage-mon		\
 -			sybaseASE		\
- 			symlink			\
+-			symlink			\
 -			syslog-ng		\
 -			tomcat			\
 -			varnish			\
@@ -140,7 +142,14 @@
 -			vmware			\
 -			vsftpd			\
 -			zabbixserver
-+			tomcat
++			symlink
  
- if BUILD_AZURE_EVENTS
- ocf_SCRIPTS	     += azure-events
+-if BUILD_AZURE_EVENTS
+-ocf_SCRIPTS	     += azure-events
+-endif
++#if BUILD_AZURE_EVENTS
++#ocf_SCRIPTS	     += azure-events
++#endif
+ 
+ if BUILD_AZURE_EVENTS_AZ
+ ocf_SCRIPTS	     += azure-events-az

@@ -77,4 +77,14 @@
       node22 /usr/bin/local-npm-registry</comment>
     <requestid>1247661</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b113d8f87ce0edf337d062206ddecc74</srcmd5>
+    <version>1.1.0</version>
+    <time>1741789217</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1248759 from doreilly
+
+- fix await import error on older node.js versions</comment>
+    <requestid>1252146</requestid>
+  </revision>
 </revisionlist>

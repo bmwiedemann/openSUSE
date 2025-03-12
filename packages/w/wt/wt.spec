@@ -1,7 +1,7 @@
 #
 # spec file for package wt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 %define WTSRVDIR /srv/wt
 %define WTRUNDIR %{WTSRVDIR}/run
-%define so_version 4_10_4
+%define so_version 4_11_3
 Name:           wt
-Version:        4.10.4
+Version:        4.11.3
 Release:        0
-Summary:        Web Toolkit
+Summary:        C++ library for developing web applications (Web Toolkit)
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.webtoolkit.eu/wt/
 Source0:        https://github.com/emweb/wt/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         boost_fixes.patch
-Patch2:         missing_libs.patch
+Patch0:         missing_libs.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  GraphicsMagick-devel
 BuildRequires:  Mesa-devel
@@ -72,7 +71,7 @@ code.
 
 %package        -n libwtdbo%{so_version}
 Summary:        Wt::Dbo ORM library and Sqlite3 back-end
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 Provides:       %{name}-dbo = %{version}
 
 %description    -n libwtdbo%{so_version}
@@ -81,7 +80,7 @@ and Sqlite3 back-end of it.
 
 %package -n libwtdbomysql%{so_version}
 Summary:        MySQL back-end for the Wt::Dbo ORM library
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 Provides:       %{name}-dbo-mysql = %{version}
 
 %description -n libwtdbomysql%{so_version}
@@ -89,7 +88,7 @@ This package contains the MySQL back-end for the Wt::Dbo ORM library.
 
 %package -n libwtdbopostgres%{so_version}
 Summary:        PostgreSQL back-end for the Wt::Dbo ORM library
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 Provides:       %{name}-dbo-postgres = %{version}
 
 %description -n libwtdbopostgres%{so_version}
@@ -132,10 +131,8 @@ code.
     -DSHARED_LIBS=ON \
     -DMULTI_THREADED=ON \
     -DUSE_SYSTEM_SQLITE3=ON \
-    -DUSE_SYSTEM_GLEW=ON \
     -DCONNECTOR_HTTP=ON \
     -DCONNECTOR_FCGI=ON \
-    -DENABLE_EXT=ON \
     -DWEBGROUP="%{apache_group}" -DWEBUSER="%{apache_user}" \
     -DRUNDIR="%{WTRUNDIR}" \
     -DBUILD_EXAMPLES=ON \
@@ -158,17 +155,13 @@ mv -v %{buildroot}%{_datadir}/Wt %{buildroot}%{_datadir}/wt
 # Remove shell scripts used for generating some images.
 rm %{buildroot}%{_datadir}/wt/resources/themes/*/*/generate.sh
 
-%fdupes %{buildroot}/%{_docdir}
-%fdupes %{buildroot}/%{_datadir}
+%fdupes %{buildroot}%{_docdir}
+%fdupes %{buildroot}%{_datadir}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-%post -n libwtdbo%{so_version} -p /sbin/ldconfig
-%postun -n libwtdbo%{so_version} -p /sbin/ldconfig
-%post -n libwtdbomysql%{so_version} -p /sbin/ldconfig
-%postun -n libwtdbomysql%{so_version} -p /sbin/ldconfig
-%post -n libwtdbopostgres%{so_version} -p /sbin/ldconfig
-%postun -n libwtdbopostgres%{so_version} -p /sbin/ldconfig
+%ldconfig_scriptlets
+%ldconfig_scriptlets -n libwtdbo%{so_version}
+%ldconfig_scriptlets -n libwtdbomysql%{so_version}
+%ldconfig_scriptlets -n libwtdbopostgres%{so_version}
 
 %files
 %license LICENSE

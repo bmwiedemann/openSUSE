@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 11 18:54:30 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.0.1
+  * The `dhcp` plugin has gained a new `interface_receive` option
+  * The `eap-radius` plugin hsa gained a new `source` option
+  * The NetworkManager plugin (charon-nm) received an option to
+    configure the local traffic selectors.
+  * The `ha` plugin now supports synchronizing IKE and Child SAs
+    with multiple key exchanges
+  * Self-signed root CAs that do not contain policies are now
+    excluded from policy validation.
+  * When deciding whether to send a DPD, inbound traffic on Child
+    SAs is now ignored unless UDP-encapsulation is used.
+  * When connecting to port 4500 or a custom server port, the
+    initial IKE_SA_INIT request is now sent from the NAT-T
+    socket.
+  * The NetworkManager backend (charon-nm) now enables
+    charon-nm.check_current_path to force a DPD after
+    connectivity changes without IP change.
+- Ensure build recipe is POSIX sh compatible
+
+-------------------------------------------------------------------
 Tue Dec  3 15:59:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - /usr/sbin/ipsec is deprecated since 5.2.0 and will be removed

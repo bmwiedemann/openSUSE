@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luautf8
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define flavor @BUILD_FLAVOR@
-%define mod_name luautf8
+%define modname luautf8
 %define rock_version 0.1.5-2
 %ifarch %{ix86}
  %define luarock_arch x86
@@ -28,13 +28,14 @@
   %define luarock_arch %{_arch}
  %endif
 %endif
-Version:        0.1.5+git6
+Version:        0.1.6
 Release:        0
 Summary:        A utf-8 support module for Lua and LuaJIT
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/starwing/luautf8
-Source:         %{mod_name}-%{version}.tar.zst
+# Source:         %%{modname}-%%{version}.tar.zst
+Source:         https://github.com/starwing/%{modname}/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luarocks
 BuildRequires:  lua-macros
@@ -42,10 +43,10 @@ BuildRequires:  zstd
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == ""
-Name:           lua-%{mod_name}
+Name:           lua-%{modname}
 ExclusiveArch:  do_not_build
 %else
-Name:           %{flavor}-%{mod_name}
+Name:           %{flavor}-%{modname}
 %endif
 
 %description
@@ -57,20 +58,20 @@ with Lua's own string module, it passed all string and pattern matching
 test in lua test suite2.
 
 %prep
-%autosetup -n %{mod_name}-%{version}
+%autosetup -n %{modname}-%{version}
 
 %build
-%luarocks_build "rockspecs/%{mod_name}-%{rock_version}.rockspec"
+%luarocks_build "rockspecs/%{modname}-%{rock_version}.rockspec"
 
 %install
-%luarocks_install "%{mod_name}-%{rock_version}.linux-%{luarock_arch}.rock"
+%luarocks_install "%{modname}-%{rock_version}.linux-%{luarock_arch}.rock"
 
 %check
 
 %files
 %{lua_archdir}
-%{luarocks_treedir}/%{mod_name}
-%docdir %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc
-%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/LICENSE
+%{luarocks_treedir}/%{modname}
+%docdir %{luarocks_treedir}/%{modname}/%{rock_version}/doc
+%license %{luarocks_treedir}/%{modname}/%{rock_version}/doc/LICENSE
 
 %changelog

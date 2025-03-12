@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 10 14:24:33 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Drop libapparmor-devel recommends also for Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Mar  7 13:46:02 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Adapt patterns for SLES 16.
+
+-------------------------------------------------------------------
 Fri Aug 18 08:07:40 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require awk by devel_basis: the usage of awk inside

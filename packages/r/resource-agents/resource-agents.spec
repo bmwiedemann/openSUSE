@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.16.0+git38.da9ef4e2
+Version:        4.16.0+git45.646a41d1
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -124,6 +124,7 @@ See 'ldirectord -h' and linux-ha/doc/ldirectord for more information.
 autoreconf -fvi
 # because quilt push changed the permissions of  sg_persist.
 # chmod 775 heartbeat/sg_persist
+export BUILD_AZURE_EVENTS=0
 %configure \
     --docdir=%{_defaultdocdir}/%{name} \
     --with-ras-set=linux-ha \

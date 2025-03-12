@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 11 18:40:20 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.1.9:
+  * What's Changed
+    - Add disable-instance-discovery option in interactive pop mode
+      by @Aijing2333 in #593
+  * Maintenance
+    - Bump codecov/codecov-action from 3.1.5 to 5.1.2 by
+      @dependabot in #583
+    - Bump mukunku/tag-exists-action from 1.1.0 to 1.6.0 by
+      @dependabot in #405
+    - Bump go.uber.org/mock from 0.4.0 to 0.5.0 by @dependabot in
+      #545
+    - chore: bump go to 1.23.7 by @bcho in #611
+
+-------------------------------------------------------------------
 Tue Feb 11 16:00:37 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable CGO on riscv64

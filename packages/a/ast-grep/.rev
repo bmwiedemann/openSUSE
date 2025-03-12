@@ -810,4 +810,17 @@
   * refactor: moved interactive printer b9bedf4</comment>
     <requestid>1251661</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>402fbe6ed4df60663287eebaaba431c7</srcmd5>
+    <version>0.36.1</version>
+    <time>1741789467</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.36.1:
+  * fix: fix globs not working with lang #1861
+  * perf: use smallvec for filter_file_{pattern, rule} #1858
+  * fix(deps): update dependency @swc/core to v1.11.8 a0d9e10
+  * perf: save pattern clone and doc clone in multi-lang-doc 1113384
+  * perf: remove duplicate pattern match 6eba6d9</comment>
+    <requestid>1252318</requestid>
+  </revision>
 </revisionlist>

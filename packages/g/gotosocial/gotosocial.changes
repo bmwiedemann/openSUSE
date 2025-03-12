@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Mar 11 09:31:24 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+
+- Update to version 0.18.2:
+  * [bugfix] fix refreshed additional media info being ignored
+    (gh#superseriousbusiness/gotosocial#3867)
+  * [bugfix] Return useful err on server start failure
+    (gh#superseriousbusiness/gotosocial#3879)
+  * [bugfix] Fix length for type varchar must be at least 1
+    on Postgres (gh#superseriousbusiness/gotosocial#3885)
+  * [bugfix] Fix panic when opening instance actor in web view
+    (gh#superseriousbusiness/gotosocial#3898)
+  * [chore] fixed email template to align with the new "Log in"
+    button + separate page (gh#superseriousbusiness/gotosocial#3871)
+  * [chore] add warning message when wazero compiler not supported
+    (gh#superseriousbusiness/gotosocial#3894)
+  * [docs] correct docker version format
+    (gh#superseriousbusiness/gotosocial#3832)
+  * [docs] Fix swagger operation descriptions
+    (gh#superseriousbusiness/gotosocial#3830)
+  * [docs] Update swagger docs command
+    (gh#superseriousbusiness/gotosocial#3897)
+  * Document importing posts
+    (gh#superseriousbusiness/gotosocial#3844)
+
+-------------------------------------------------------------------
 Mon Feb 24 11:35:47 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
 
 - Update to version 0.18.1:

@@ -20,26 +20,36 @@
 %else
 %bcond_with budgie_10_8
 %endif
+%if %{pkg_vcmp budgie-desktop-devel >= 10.9.2}
+%bcond_without wayland
+%else
+%bcond_with wayland
+%endif
 %if %{undefined _distconfdir}
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           budgie-extras
-Version:        1.7.1
+Version:        1.9.0
 Release:        0
 Summary:        Additional Budgie Desktop enhancements for user experience
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/UbuntuBudgie/%{name}
-Source:         %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Source3:        README.x11
+Source4:        typelib-requires-v2-only.patch
+Source5:        typelib-requires-v1-only.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(appstream)
-BuildRequires:  pkgconfig(budgie-1.0)
+BuildRequires:  AppStream
+BuildRequires:  (pkgconfig(budgie-2.0) or pkgconfig(budgie-1.0))
+BuildRequires:  (pkgconfig(gtk-layer-shell-0) if pkgconfig(budgie-2.0))
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(granite)
@@ -171,7 +181,9 @@ This applet shows the time in a Fuzzy Way.
 Summary:        Hotcorners applet
 Group:          System/GUI/Other
 Requires:       budgie-extras-lang
+%if %{without wayland}
 Requires:       budgie-screensaver
+%endif
 Requires:       dconf
 Requires:       libnotify-tools
 Requires:       xdotool
@@ -389,6 +401,12 @@ Budgie Wallpaper Workspace Switcher is an application (applet) to show a differe
 
 %prep
 %autosetup -p1
+%if %{with wayland}
+patch -p1 < %{SOURCE4}
+%else
+patch -p1 < %{SOURCE5}
+%endif
+cp %{SOURCE3} .
 
 %build
 # Handle poor vala code
@@ -400,6 +418,9 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
   -Dwith-default-schema=false \
 %if %{without budgie_10_8}
   -Dbuild-trash=true \
+%endif
+%if %{with wayland}
+  -Dfor-wayland=true \
 %endif
   %{nil}
 
@@ -417,13 +438,18 @@ chmod 0644 LICENSE
 %license LICENSE
 %doc README.md
 
-%files daemon
+%files -n %{name}-daemon
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_datadir}/budgie-desktop
 %{_libdir}/budgie-extras-daemon
 %{_datadir}/budgie-extras-daemon
 %{_bindir}/budgie-extras-daemon
 %{_mandir}/man1/budgie-extras-daemon.1%{?ext_man}
 %{_distconfdir}/xdg/autostart/budgie-extras-daemon.desktop
+%endif
 
 %files -n budgie-app-launcher-applet
 %{_libdir}/budgie-desktop/plugins/budgie-app-launcher
@@ -444,20 +470,34 @@ chmod 0644 LICENSE
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-clockworks.gschema.xml
 
 %files -n budgie-countdown-applet
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_datadir}/pixmaps/cr*.png
 %{_datadir}/pixmaps/budgie-countdown-symbolic.svg
 %{_libdir}/budgie-desktop/plugins/budgie-countdown
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-countdown.gschema.xml
+%endif
 
 %files -n budgie-dropby-applet
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_datadir}/pixmaps/budgie-dropby*.svg
 %{_libdir}/budgie-desktop/plugins/budgie-dropby
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-dropby.gschema.xml
+%endif
 
 %files -n budgie-fuzzyclock-applet
 %{_libdir}/budgie-desktop/plugins/budgie-fuzzyclock
 
 %files -n budgie-hotcorners-applet
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_libexecdir}/budgie-hotcorners
 %{_datadir}/budgie-hotcorners
 %{_distconfdir}/xdg/autostart/org.ubuntubudgie.budgie-extras.HotCorners-autostart.desktop
@@ -467,19 +507,29 @@ chmod 0644 LICENSE
 %{_datadir}/pixmaps/budgie-hotcgui*.svg
 %{_libdir}/budgie-desktop/plugins/budgie-hotcorners
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.budgie-extras.HotCorners.gschema.xml
+%endif
 
 %files -n budgie-kangaroo-applet
 %{_datadir}/pixmaps/budgie-foldertrack-symbolic.svg
 %{_libdir}/budgie-desktop/plugins/budgie-kangaroo
 
 %files -n budgie-keyboard-autoswitch-applet
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_datadir}/pixmaps/budgie-keyboard-autoswitch-symbolic.svg
 %{_libdir}/budgie-desktop/plugins/budgie-keyboard-autoswitch
+%endif
 
 %files -n budgie-network-manager-applet
 %{_libdir}/budgie-desktop/plugins/budgie-network-manager
 
 %files -n budgie-previews
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_libdir}/budgie-previews
 %{_datadir}/pixmaps/budgie_wpreviews_*.png
 %{_datadir}/applications/org.ubuntubudgie.previewscontrols.desktop
@@ -488,8 +538,13 @@ chmod 0644 LICENSE
 %{_distconfdir}/xdg/autostart/previews-creator-autostart.desktop
 %{_distconfdir}/xdg/autostart/previews-daemon-autostart.desktop
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.budgie-wpreviews.gschema.xml
+%endif
 
 %files -n budgie-quickchar
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_bindir}/quickchar
 %{_libdir}/quickchar
 %{_datadir}/quickchar
@@ -499,6 +554,7 @@ chmod 0644 LICENSE
 %{_distconfdir}/xdg/autostart/quickchar-autostart.desktop
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.quickchar.gschema.xml
 %{_mandir}/man1/quickchar.1%{?ext_man}
+%endif
 
 %files -n budgie-quicknote-applet
 %{_datadir}/pixmaps/budgie-quicknote-symbolic.svg
@@ -510,18 +566,33 @@ chmod 0644 LICENSE
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-recentlyused.gschema.xml
 
 %files -n budgie-rotation-lock-applet
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_datadir}/pixmaps/budgie-rotation-*.svg
 %{_libdir}/budgie-desktop/plugins/budgie-rotation-lock
+%endif
 
 %files -n budgie-showtime-applet
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_datadir}/pixmaps/showtimenew-symbolic.svg
 %{_libdir}/budgie-desktop/plugins/budgie-showtime
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-showtime.gschema.xml
+%endif
 
 %files -n budgie-takeabreak-applet
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_datadir}/pixmaps/takeabreak*.svg
 %{_libdir}/budgie-desktop/plugins/budgie-takeabreak
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.takeabreak.gschema.xml
+%endif
 
 %if %{without budgie_10_8}
 %files -n budgie-trash-applet
@@ -529,10 +600,15 @@ chmod 0644 LICENSE
 %endif
 
 %files -n budgie-visualspace-applet
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_datadir}/pixmaps/visualspace-symbolic.svg
 %{_libdir}/budgie-desktop/plugins/budgie-visualspace
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-visualspace.gschema.xml
 %{_distconfdir}/xdg/autostart/visualspace-autostart.desktop
+%endif
 
 %files -n budgie-wallstreet
 %{_libdir}/budgie-wallstreet
@@ -543,11 +619,20 @@ chmod 0644 LICENSE
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.budgie-wallstreet.gschema.xml
 
 %files -n budgie-weathershow-applet
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_libdir}/budgie-desktop/plugins/budgie-weathershow
 %{_datadir}/pixmaps/budgie-wticon-symbolic.svg
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.weathershow.gschema.xml
+%endif
 
 %files -n budgie-window-shuffler
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_libdir}/budgie-window-shuffler
 %{_libdir}/budgie-desktop/plugins/budgie-window-shuffler
 %{_datadir}/applications/org.ubuntubudgie.shufflercontrol.desktop
@@ -561,15 +646,26 @@ chmod 0644 LICENSE
 %{_distconfdir}/xdg/autostart/shufflergui-autostart.desktop
 %{_distconfdir}/xdg/autostart/layoutspopup-autostart.desktop
 %{_distconfdir}/xdg/autostart/dragsnap-autostart.desktop
+%endif
 
 %files -n budgie-workspace-stopwatch-applet
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_datadir}/pixmaps/budgie-wstopwatch-symbolic.svg
 %{_libdir}/budgie-desktop/plugins/budgie-workspace-stopwatch
+%endif
 
 %files -n budgie-workspace-wallpaper-applet
+%if %{with wayland}
+%doc README.x11
+%endif
+%if %{without wayland}
 %{_datadir}/pixmaps/budgie-wsw-symbolic.svg
 %{_libdir}/budgie-desktop/plugins/budgie-wswitcher
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-wswitcher.gschema.xml
+%endif
 
 %files lang -f %{name}.lang
 

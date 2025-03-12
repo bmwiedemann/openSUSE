@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 11 15:24:39 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Adapt drop-deprecated-agents.patch according (jsc#PED-8737)
+
+-------------------------------------------------------------------
+Mon Mar 03 16:05:42 UTC 2025 - varkoly@suse.com
+
+- Update to version 4.16.0+git45.646a41d1:
+  * portblock: use ocf_log() for logging
+  * simplify iptables version string regex
+  * Update portblock: improve version detection of iptables
+  * ocf-shellfuncs: add missing variable in crm_mon_no_validation()
+
+-------------------------------------------------------------------
 Tue Jan 28 15:57:41 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - drop HA package cluster-glue and Linux-HA style fence agents in FrameworkOne

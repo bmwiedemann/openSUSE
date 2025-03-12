@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 11 15:54:34 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Fix CVE-2025-1632, null pointer dereference in bsdunzip.c
+  (CVE-2025-1632, bsc#1237606)
+  * CVE-2025-1632.patch
+- Fix CVE-2025-25724, Buffer Overflow vulnerability in libarchive
+  (CVE-2025-25724, bsc#1238610)
+  * CVE-2025-25724.patch 
+
+-------------------------------------------------------------------
 Tue Feb 25 15:14:11 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Fix CVE-2024-57970, heap-based buffer over-read in header_gnu_longlink

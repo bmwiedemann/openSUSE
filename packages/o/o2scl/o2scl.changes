@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 11 13:47:27 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add BuildRequires: python3-setuptools to fix build failures
+  against python 3.13 by allowing importing disutils.
+
+-------------------------------------------------------------------
 Fri Jan 17 09:25:11 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 -  Update to version 0.930:

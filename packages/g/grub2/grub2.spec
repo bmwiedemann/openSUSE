@@ -402,12 +402,6 @@ Patch220:       0001-Streamline-BLS-and-improve-PCR-stability.patch
 Patch221:       0001-fix-grub-screen-filled-with-post-screen-artifects.patch
 Patch222:       0001-efinet-Skip-virtual-VLAN-devices-during-card-enumera.patch
 Patch223:       0001-tpm-Skip-loopback-image-measurement.patch
-Patch224:       0001-ieee1275-Platform-Keystore-PKS-Support.patch
-Patch225:       0002-ieee1275-Read-the-DB-and-DBX-secure-boot-variables.patch
-Patch226:       0003-appendedsig-The-creation-of-trusted-and-distrusted-l.patch
-Patch227:       0004-appendedsig-While-verifying-the-kernel-use-trusted-a.patch
-Patch228:       0005-appendedsig-The-grub-command-s-trusted-and-distruste.patch
-Patch229:       0006-appendedsig-documentation.patch
 Patch230:       0007-grub-mkimage-Create-new-ELF-note-for-SBAT.patch
 Patch231:       0008-grub-mkimage-Add-SBAT-metadata-into-ELF-note-for-Pow.patch
 Patch232:       0001-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
@@ -443,6 +437,15 @@ Patch261:       0002-fs-xfs-Fix-grub_xfs_iterate_dir-return-value-in-case.patch
 Patch262:       0003-fs-xfs-fix-large-extent-counters-incompat-feature-su.patch
 Patch263:       0001-autofs-Ignore-zfs-not-found.patch
 Patch264:       0001-s390x-emu-Pass-through-PAES-cipher-as-AES.patch
+Patch265:       0001-ieee1275-adding-failure-check-condition-on-ibm-secur.patch
+Patch266:       0002-ieee1275-Platform-Keystore-PKS-Support.patch
+Patch267:       0003-ieee1275-Read-the-DB-and-DBX-secure-boot-variables.patch
+Patch268:       0004-appendedsig-The-creation-of-trusted-and-distrusted-l.patch
+Patch269:       0005-appendedsig-While-verifying-the-kernel-use-trusted-a.patch
+Patch270:       0006-powerpc_ieee1275-set-use_static_keys-flag.patch
+Patch271:       0007-appendedsig-Reads-the-default-DB-keys-from-ELF-Note.patch
+Patch272:       0008-appendedsig-The-grub-command-s-trusted-and-distruste.patch
+Patch273:       0009-appendedsig-documentation.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

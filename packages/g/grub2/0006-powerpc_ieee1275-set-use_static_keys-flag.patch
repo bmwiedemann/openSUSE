@@ -1,0 +1,109 @@
+From eeb78a4bd82a1c83e3bbe5a4faf9b2c2e8023445 Mon Sep 17 00:00:00 2001
+From: Sudhakar Kuppusamy <sudhakar@linux.ibm.com>
+Date: Tue, 25 Feb 2025 01:45:35 +0530
+Subject: [PATCH 6/9] powerpc_ieee1275: set use_static_keys flag
+
+Introduce the use_static_keys flag to indicate that static keys are to be used
+rather than keys from the PKS storage's DB variable. This variable is set when
+Secure Boot is enabled with PKS but the DB variable is not present in the PKS storage.
+The appendedsig module would use this variable to extract the default DB keys from
+the ELF note and store the keys found there in the trustedlist.
+
+Signed-off-by: Sudhakar Kuppusamy <sudhakar@linux.ibm.com>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+---
+ .../kern/powerpc/ieee1275/platform_keystore.c     | 15 ++++++++++++++-
+ grub-core/term/tparm.c                            |  1 -
+ include/grub/powerpc/ieee1275/platform_keystore.h | 11 ++++++-----
+ include/grub/types.h                              |  2 ++
+ 4 files changed, 22 insertions(+), 7 deletions(-)
+
+diff --git a/grub-core/kern/powerpc/ieee1275/platform_keystore.c b/grub-core/kern/powerpc/ieee1275/platform_keystore.c
+index ea9f27eb22..81e40632b2 100644
+--- a/grub-core/kern/powerpc/ieee1275/platform_keystore.c
++++ b/grub-core/kern/powerpc/ieee1275/platform_keystore.c
+@@ -34,7 +34,11 @@
+ /* Platform Keystore */
+ static grub_size_t pks_max_object_size;
+ grub_uint8_t grub_pks_use_keystore = 0;
+-grub_pks_t grub_pks_keystore = { .db = NULL, .dbx = NULL, .db_entries = 0, .dbx_entries = 0 };
++grub_pks_t grub_pks_keystore = { .db = NULL,
++                                 .dbx = NULL,
++                                 .db_entries = 0,
++                                 .dbx_entries = 0,
++                                 .use_static_keys = false };
+ 
+ /* Convert the esl data into the ESL */
+ static grub_esl_t *
+@@ -315,6 +319,15 @@ grub_pks_keystore_init (void)
+       grub_memset (&grub_pks_keystore, 0, sizeof (grub_pks_t));
+       /* DB */
+       rc = read_secure_boot_variables (0, DB, &grub_pks_keystore.db, &grub_pks_keystore.db_entries);
++      if (rc == PKS_OBJECT_NOT_FOUND)
++        {
++          rc = GRUB_ERR_NONE;
++          /*
++           * DB variable won't be available by default in PKS.
++           * So, it will load the Default Keys from ELF Note */
++          grub_pks_keystore.use_static_keys = true;
++        }
++
+       if (rc == GRUB_ERR_NONE)
+         {
+           /* DBX */
+diff --git a/grub-core/term/tparm.c b/grub-core/term/tparm.c
+index fb5b15a88d..f2db325f6e 100644
+--- a/grub-core/term/tparm.c
++++ b/grub-core/term/tparm.c
+@@ -46,7 +46,6 @@
+ /*
+  * Common/troublesome character definitions
+  */
+-typedef char grub_bool_t;
+ #ifndef FALSE
+ # define FALSE (0)
+ #endif
+diff --git a/include/grub/powerpc/ieee1275/platform_keystore.h b/include/grub/powerpc/ieee1275/platform_keystore.h
+index 0641adb0f1..870fb8cc51 100644
+--- a/include/grub/powerpc/ieee1275/platform_keystore.h
++++ b/include/grub/powerpc/ieee1275/platform_keystore.h
+@@ -199,10 +199,11 @@ struct grub_pks_sd
+ /* The structure of a PKS.*/
+ struct grub_pks
+ {
+-  grub_pks_sd_t *db;        /* signature database */
+-  grub_pks_sd_t *dbx;       /* forbidden signature database */
+-  grub_size_t db_entries;   /* size of signature database */
+-  grub_size_t dbx_entries;  /* size of forbidden signature database */
++  grub_pks_sd_t *db;          /* signature database */
++  grub_pks_sd_t *dbx;         /* forbidden signature database */
++  grub_size_t db_entries;     /* size of signature database */
++  grub_size_t dbx_entries;    /* size of forbidden signature database */
++  grub_bool_t use_static_keys;/* flag to indicate use of static keys */
+ } GRUB_PACKED;
+ 
+ #ifdef __powerpc__
+@@ -217,7 +218,7 @@ extern grub_pks_t EXPORT_VAR(grub_pks_keystore);
+ #else
+ 
+ #define grub_pks_use_keystore	0
+-grub_pks_t grub_pks_keystore = {NULL, NULL, 0, 0};
++grub_pks_t grub_pks_keystore = {NULL, NULL, 0, 0, false};
+ void grub_pks_free_keystore (void);
+ 
+ #endif
+diff --git a/include/grub/types.h b/include/grub/types.h
+index 5542b9aa09..573a614fa6 100644
+--- a/include/grub/types.h
++++ b/include/grub/types.h
+@@ -397,4 +397,6 @@ struct grub_uuid
+   grub_uint8_t b[GRUB_UUID_SIZE];
+ };
+ 
++typedef char grub_bool_t;
++
+ #endif /* ! GRUB_TYPES_HEADER */
+-- 
+2.48.1
+

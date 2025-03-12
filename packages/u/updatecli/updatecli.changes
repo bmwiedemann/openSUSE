@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Mar 11 18:13:33 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.95.0:
+  * fix: only update github action version in .github/workflows
+    (#4358)
+  * deps(go): bump module golang.org/x/oauth2 to v0.28.0 (#4345)
+  * feat: gitlab/mergerequest support updating existing MR to merge
+    action reports (#4339)
+  * fix: generated autodiscovery pipeline uses original action id
+    (#4340)
+  * fix: helm changelogs from github releases (#4330)
+  * deps(go): bump module github.com/fluxcd/source-controller/api
+    to v1.5.0 (#4316)
+  * chore: deps: bump golangci-lint in GitHub Action to v1.64.6
+    (#4298)
+  * deps(go): bump module golang.org/x/net to v0.37.0 (#4303)
+  * chore: deps(github-action): Bump Golang version to 1.24.1
+    (#4294)
+  * deps(go): bump module github.com/opencontainers/image-spec to
+    v1.1.1 (#4291)
+  * chore: clean: go mod tidy (#4273)
+  * deps(go): bump module golang.org/x/mod to v0.24.0 (#4180)
+  * feat: get helm changelog from annotations and github release
+    (#4164)
+  * fix: ensure the directory exists before writing to file (#4170)
+  * deps(go): bump module github.com/google/go-github/v69 to
+    v69.2.0 (#4146)
+  * deps(go): bump module github.com/go-git/go-git/v5 to v5.14.0
+    (#4070)
+  * feat: changelog should display the delta between a source and a
+    target version (#3888)
+  * fix: correctly set http headers in http plugin (#4025)
+  * chore(deps): Bump github.com/go-jose/go-jose/v4 from 4.0.4 to
+    4.0.5 (#4014)
+  * deps(go): bump module golang.org/x/text to v0.22.0 (#3997)
+  * deps(go): bump module github.com/beevik/etree to v1.5.0 (#3975)
+  * deps(go): bump module github.com/spf13/cobra to v1.9.1 (#3986)
+  * deps(go): bump module github.com/goccy/go-yaml to v1.15.23
+    (#3976)
+  * deps: bump updatecli version to v0.94.1 (#3968)
+
+-------------------------------------------------------------------
 Thu Feb 20 08:42:22 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.94.1:

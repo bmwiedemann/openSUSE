@@ -1,7 +1,7 @@
 #
 # spec file for package lua-fennel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020 Fabio Pesari
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,10 +18,11 @@
 
 
 Name:           lua-fennel
-Version:        1.2.1
+Version:        1.5.3
 Release:        0
 Summary:        Lisp dialect that compiles to Lua
 License:        MIT
+# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 Group:          Development/Languages/Lua
 URL:            https://fennel-lang.org/
 Source0:        https://git.sr.ht/~technomancy/fennel/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -46,10 +47,10 @@ Fennel is a lisp that compiles to Lua. Features include:
 %autosetup -p1 -n fennel-%{version}
 
 %build
-make %{?_make_output_sync} %{?_smp_mflags} fennel
+%make_build %{?_make_output_sync} fennel
 
 %check
-make %{?_make_output_sync} %{?_smp_mflags} test
+%make_build %{?_make_output_sync} test
 
 %install
 mkdir -p %{buildroot}%{_bindir}

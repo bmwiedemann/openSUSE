@@ -1,7 +1,7 @@
 #
 # spec file for package strongswan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 %bcond_without  systemd
 
 Name:           strongswan
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 Summary:        IPsec-based VPN solution
 License:        GPL-2.0-or-later
@@ -333,7 +333,7 @@ LD_LIBRARY_PATH="%{buildroot}-$$/%{strongswan_libdir}" \
 		%{_rpmconfigdir}/find-debuginfo.sh  \
 			%{?_find_debuginfo_opts} "%{buildroot}-$$"
 		make -C src/checksum clean
-		rm -f   src/checksum/checksum_builder
+		rm -f src/checksum/checksum_builder
 		LD_LIBRARY_PATH="%{buildroot}-$$/%{strongswan_libdir}" \
 		make -C src/checksum install DESTDIR="%{buildroot}-$$"
 		mv "%{buildroot}-$$/%{strongswan_libdir}/libchecksum.so" \
@@ -360,8 +360,9 @@ rm -f %{buildroot}/%{strongswan_templates}/database/sql/mysql.sql
 %if ! %{with sqlite}
 rm -f %{buildroot}/%{strongswan_templates}/database/sql/sqlite.sql
 %endif
-rm -f %{buildroot}/%{strongswan_libdir}/lib{charon,hydra,strongswan,pttls}.so
-rm -f %{buildroot}/%{strongswan_libdir}/lib{radius,simaka,tls,tnccs,imcv}.so
+for i in charon hydra strongswan pttls radius simaka tls tnccs imcv; do
+	rm -fv %{buildroot}/%{strongswan_libdir}/lib$i.so
+done
 find %{buildroot}/%{strongswan_libdir} -type f -name "*.la" -delete
 install -d -m755 %{buildroot}/%{strongswan_docdir}/
 install -c -m644 TODO NEWS README COPYING LICENSE \
@@ -468,9 +469,11 @@ fi
 %dir %{strongswan_configs}
 %dir %{strongswan_configs}/charon
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-systemd.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-logging.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/imcv.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/imv_policy_manager.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/pki.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/pool.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/tnc.conf
@@ -771,7 +774,9 @@ fi
 %{strongswan_templates}/config/strongswan.d/charon-systemd.conf
 %{strongswan_templates}/config/strongswan.d/charon-logging.conf
 %{strongswan_templates}/config/strongswan.d/charon.conf
+%{strongswan_templates}/config/strongswan.d/charon-nm.conf
 %{strongswan_templates}/config/strongswan.d/imcv.conf
+%{strongswan_templates}/config/strongswan.d/imv_policy_manager.conf
 %{strongswan_templates}/config/strongswan.d/pki.conf
 %{strongswan_templates}/config/strongswan.d/pool.conf
 %{strongswan_templates}/config/strongswan.d/tnc.conf

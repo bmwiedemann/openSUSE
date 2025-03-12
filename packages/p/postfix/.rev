@@ -2387,4 +2387,22 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>1248568</requestid>
   </revision>
+  <revision rev="248" vrev="2">
+    <srcmd5>6ac48e01105cbe0b4cd94328315bf403</srcmd5>
+    <version>3.10.1</version>
+    <time>1741789226</time>
+    <user>anag+factory</user>
+    <comment>- update postfix-main.cf.patch
+  * comment deprecated parameters: smtp_use_tls and smtp_enforce_tls
+    use parameter smtp_tls_secutiry_level instead
+  * comment deprecated parameters: smtpd_use_tls and smtpd_enforce_tls
+    use parameter smtpd_tls_secutiry_level instead
+
+- update postfix-main.cf.patch
+  * comment deprecated parameters: smtp_use_tls and smtp_enforce_tls
+    use parameter smtp_tls_security_level instead
+  * comment deprecated parameters: smtpd_use_tls and smtpd_enforce_tls
+    use parameter smtpd_tls_security_level instead</comment>
+    <requestid>1252359</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 11 22:44:22 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.1.6:
+  - Add 'normalize_nfc' and 'isnfc' functions
+  - Update to Unicode 15.1
+  - Add new 'grapheme_indices' function
+  - Improve grammar, spelling, and formatting of README.md
+  - Fix bugs in NFC normalization code
+  - Explicitly include limits.h instead of transitively assuming it
+
+-------------------------------------------------------------------
 Mon Apr  1 02:00:36 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 0.1.5+git6

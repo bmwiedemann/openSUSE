@@ -44,4 +44,19 @@
 </comment>
     <requestid>1164035</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>310eef062192645eab8c4d365b4f3482</srcmd5>
+    <version>0.1.6</version>
+    <time>1741789432</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.1.6:
+  - Add 'normalize_nfc' and 'isnfc' functions
+  - Update to Unicode 15.1
+  - Add new 'grapheme_indices' function
+  - Improve grammar, spelling, and formatting of README.md
+  - Fix bugs in NFC normalization code
+  - Explicitly include limits.h instead of transitively assuming it
+</comment>
+    <requestid>1252171</requestid>
+  </revision>
 </revisionlist>

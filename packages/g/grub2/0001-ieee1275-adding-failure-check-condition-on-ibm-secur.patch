@@ -1,0 +1,56 @@
+From 5025c64afc876d91d3947ce07bb59ffe9af7209d Mon Sep 17 00:00:00 2001
+From: Sudhakar Kuppusamy <sudhakar@linux.ibm.com>
+Date: Tue, 25 Feb 2025 19:14:24 +0530
+Subject: [PATCH 1/9] ieee1275: adding failure check condition on
+ /ibm,secure-boot
+
+failure check condition is missing while finding device "/" and
+get property "ibm,secure-boot". So, adding the failure check condition.
+
+Signed-off-by: Sudhakar Kuppusamy <sudhakar@linux.ibm.com>
+---
+ grub-core/kern/ieee1275/init.c | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/grub-core/kern/ieee1275/init.c b/grub-core/kern/ieee1275/init.c
+index f86543da0d..0e1cbf24c3 100644
+--- a/grub-core/kern/ieee1275/init.c
++++ b/grub-core/kern/ieee1275/init.c
+@@ -987,12 +987,20 @@ grub_get_ieee1275_secure_boot (void)
+   int rc;
+   grub_uint32_t is_sb;
+ 
+-  grub_ieee1275_finddevice ("/", &root);
+-
+-  rc = grub_ieee1275_get_integer_property (root, "ibm,secure-boot", &is_sb,
+-                                           sizeof (is_sb), 0);
++  if (grub_ieee1275_finddevice ("/", &root))
++    {
++      grub_error (GRUB_ERR_UNKNOWN_DEVICE, "couldn't find / node");
++      return;
++    }
+ 
+-  /* ibm,secure-boot:
++  rc = grub_ieee1275_get_integer_property (root, "ibm,secure-boot", &is_sb, sizeof (is_sb), 0);
++  if (rc < 0)
++    {
++      grub_error (GRUB_ERR_UNKNOWN_DEVICE, "couldn't examine /ibm,secure-boot property");
++      return;
++    }
++  /*
++   * ibm,secure-boot:
+    * 0 - disabled
+    * 1 - audit
+    * 2 - enforce
+@@ -1000,7 +1008,7 @@ grub_get_ieee1275_secure_boot (void)
+    *
+    * We only support enforce.
+    */
+-  if (rc >= 0 && is_sb >= 2)
++  if (is_sb >= 2)
+     grub_lockdown ();
+ }
+ 
+-- 
+2.48.1
+

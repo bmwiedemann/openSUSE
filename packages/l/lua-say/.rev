@@ -42,4 +42,15 @@
 </comment>
     <requestid>1072463</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0a4852e1866f9a29f2b104ddedda9f2f</srcmd5>
+    <version>1.4.1</version>
+    <time>1741789435</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.1:
+  - Fix argcount n if too low.
+  - Make say nil-safe
+</comment>
+    <requestid>1252172</requestid>
+  </revision>
 </revisionlist>

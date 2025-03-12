@@ -1,6 +1,7 @@
 #
 # spec file for package aegisub
 #
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,32 +16,34 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define appid org.aegisub.Aegisub
 Name:           aegisub
-Version:        3.3.3
+Version:        3.4.2
 Release:        0
 Summary:        Subtitle editor
 License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.aegisub.org/
-Source0:        https://github.com/wangqr/Aegisub/archive/refs/tags/v%{version}.tar.gz#/Aegisub-%{version}.tar.gz
-Patch1:         aegisub-3.3.3-fix-boost-181-build.patch
-BuildRequires:  cmake >= 3.16
+Source0:        https://github.com/TypesettingTools/Aegisub/archive/v%{version}/Aegisub-%{version}.tar.gz
+BuildRequires:  meson
 BuildRequires:  gcc-c++
-BuildRequires:  intltool
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_container-devel
-BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_filesystem-devel >= 1.70.0
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libicu-devel
-BuildRequires:  lua51
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  wxGTK3-3_2-devel
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(uchardet)
+BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(ffms2)
 BuildRequires:  pkgconfig(fftw3) >= 3.3
 BuildRequires:  pkgconfig(fontconfig) >= 2.4
@@ -50,38 +53,42 @@ BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.9
 BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(zlib)
-ExcludeArch:    ppc ppc64 ppc64le i586 s390x
 
 %description
 Aegisub is a subtitle editor. It works with the Advanced SubStation
 Alpha format (aptly abbreviated ASS) which allows for many advanced
 effects in the subtitles, apart from just basic timed text.
 
-As upstream is orphaned, this version is the wangqr fork.
-
 %prep
 %autosetup -p1 -n Aegisub-%{version}
 
-export FORCE_GIT_VERSION=%{version}
-./build/version.sh .
+sed "/subdir('tests')/d" -i meson.build
+
+cat > git_version.h <<EOF
+#define BUILD_GIT_VERSION_NUMBER 0
+#define BUILD_GIT_VERSION_STRING "3.4.2"
+#define TAGGED_RELEASE 0
+#define INSTALLER_VERSION "3.4.2"
+#define RESOURCE_BASE_VERSION 3, 4, 2
+EOF
 
 %build
-%define __builddir build-dir
-%cmake \
-    -DWITH_UPDATE_CHECKER=false \
-    -DWITH_OSS=OFF \
-    -DDEFAULT_PLAYER_AUDIO=PulseAudio
-%cmake_build
+%meson \
+    -Davisynth=disabled \
+    -Denable_update_checker=false
+%meson_build
 
 %install
-%cmake_install
+%meson_install --skip-subprojects
 %find_lang %{name}
 
 %files -f %{name}.lang
 %license LICENCE
-%doc README.md
-%{_bindir}/aegisub
-%{_datadir}/applications/aegisub.desktop
-%{_datadir}/icons/hicolor/*/apps/aegisub.*
+%doc automation/autoload automation/demos/ automation/v4-docs/ README.md
+%{_bindir}/%{name}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{appid}.*
+%{_datadir}/metainfo/%{appid}.metainfo.xml
+%exclude %{_datadir}/aegisub/automation
 
 %changelog

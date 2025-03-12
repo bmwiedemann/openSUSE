@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 11 10:32:17 CET 2025 - ro@suse.de
+
+- Chromium 134.0.6998.88
+  (stable released 2025-03-11) (boo#1239216)
+  * CVE-2025-1920: Type Confusion in V8
+  * CVE-2025-2135: Type Confusion in V8
+  * CVE-TBD: Out of bounds write in GPU
+  * CVE-2025-2136: Use after free in Inspector
+  * CVE-2025-2137: Out of bounds read in V8
+
+-------------------------------------------------------------------
+Wed Mar  5 16:56:22 CET 2025 - ro@suse.de
+
+- replace patch
+  chromium-134-specialize-some-to_value_list.patch
+  by patch
+  chromium-134-type-mismatch-error.patch (from fedora)
+
+-------------------------------------------------------------------
 Thu Feb 27 15:33:11 CET 2025 - ro@suse.de
 
 - Chromium 134.0.6998.35

@@ -1865,4 +1865,18 @@
   * aws.sh: chmod 600 $TOKEN_FILE, add get_instance_id() with DMI support, and use get_instance_id() in AWS agents</comment>
     <requestid>1241131</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>62c009f14edea75d0900aca2b84e3067</srcmd5>
+    <version>4.16.0+git45.646a41d1</version>
+    <time>1741789221</time>
+    <user>anag+factory</user>
+    <comment>- Adapt drop-deprecated-agents.patch according (jsc#PED-8737)
+
+- Update to version 4.16.0+git45.646a41d1:
+  * portblock: use ocf_log() for logging
+  * simplify iptables version string regex
+  * Update portblock: improve version detection of iptables
+  * ocf-shellfuncs: add missing variable in crm_mon_no_validation()</comment>
+    <requestid>1252160</requestid>
+  </revision>
 </revisionlist>

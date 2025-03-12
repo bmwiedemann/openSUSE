@@ -115,7 +115,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        134.0.6998.35
+Version:        134.0.6998.88
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -165,7 +165,7 @@ Patch369:       chromium-132-pdfium-explicit-template.patch
 Patch370:       fix-build-with-pipewire-1.3.82.patch
 Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
 Patch372:       chromium-134-revert-allowlist.patch
-Patch373:       chromium-134-specialize-some-to_value_list.patch
+Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
 # conditionally applied patches
 # patch where ffmpeg < 5

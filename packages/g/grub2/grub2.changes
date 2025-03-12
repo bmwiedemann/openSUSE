@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 11 07:11:42 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Update patches for Power guest secure boot with key management (jsc#PED-3520)
+  (jsc#PED-9892)
+  * 0001-ieee1275-adding-failure-check-condition-on-ibm-secur.patch
+  * 0002-ieee1275-Platform-Keystore-PKS-Support.patch
+  * 0003-ieee1275-Read-the-DB-and-DBX-secure-boot-variables.patch
+  * 0004-appendedsig-The-creation-of-trusted-and-distrusted-l.patch
+  * 0005-appendedsig-While-verifying-the-kernel-use-trusted-a.patch
+  * 0006-powerpc_ieee1275-set-use_static_keys-flag.patch
+  * 0007-appendedsig-Reads-the-default-DB-keys-from-ELF-Note.patch
+  * 0008-appendedsig-The-grub-command-s-trusted-and-distruste.patch
+  * 0009-appendedsig-documentation.patch
+- Remove patches
+  * 0001-ieee1275-Platform-Keystore-PKS-Support.patch
+  * 0002-ieee1275-Read-the-DB-and-DBX-secure-boot-variables.patch
+  * 0003-appendedsig-The-creation-of-trusted-and-distrusted-l.patch
+  * 0004-appendedsig-While-verifying-the-kernel-use-trusted-a.patch
+  * 0005-appendedsig-The-grub-command-s-trusted-and-distruste.patch
+  * 0006-appendedsig-documentation.patch
+
+-------------------------------------------------------------------
 Fri Mar  7 09:04:38 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Pass through PAES cipher as AES on s390x-emu (jsc#PED-10950)

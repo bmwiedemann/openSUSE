@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  5 09:46:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
+  to build with SVT-AV1 3.0.0.
+
+-------------------------------------------------------------------
 Fri Feb 19 05:17:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2025-22921.patch:
@@ -62,6 +68,7 @@ Mon Jan  6 11:53:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
   0001-avfilter-vf_minterpolate-Check-pts-before-division.patch
   ffmpeg-CVE-2023-51793.patch
   0001-avfilter-af_stereowiden-Check-length.patch
+  ffmpeg-fix-new-binutils.patch
   ffmpeg-CVE-2023-50010.patch
   ffmpeg-4-CVE-2024-32230.patch
   ffmpeg-4-CVE-2024-7055.patch (all merged)
@@ -157,6 +164,13 @@ Wed Dec  6 08:50:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 - Copy codec list from ffmpeg-6
 
 -------------------------------------------------------------------
+Fri Nov  3 08:17:13 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Add ffmpeg-fix-new-binutils.patch:
+  Backporting 01fc3034 from upstream, Fix build with new binutils
+  (bsc#1215309)
+ 
+-------------------------------------------------------------------
 Mon Oct 30 11:16:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add ffmpeg-glslang-cxx17.patch
@@ -179,7 +193,7 @@ Wed Apr 19 21:00:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   * avcodec/012v: Order operations for odd size handling
   * avcodec/alsdec: The minimal block is at least 7 bits
   * avcodec/bink:
-    - Avoid undefined out of array end pointers in 
+    - Avoid undefined out of array end pointers in
       binkb_decode_plane()
     - Fix off by 1 error in ref end
   * avcodec/eac3dec: avoid float noise in fixed mode addition to
@@ -243,12 +257,22 @@ Wed Apr 19 21:00:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   * ffmpeg-CVE-2022-3964.patch
   * ffmpeg-CVE-2022-3109.patch
   * ffmpeg-CVE-2022-3341.patch
+  * ffmpeg-4-CVE-2022-48434.patch
 - Use ldconfig_scriptlets macro.
+  (CVE-2022-48434, bsc#1209934)
 
 -------------------------------------------------------------------
 Thu Mar 16 17:54:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Conflict with otherproviders(ffmpeg-tools).
+
+-------------------------------------------------------------------
+Thu Apr 27 09:27:53 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add ffmpeg-4-CVE-2022-48434.patch:
+  Backport d4b7b3c0 from upstream, Fix use after free in
+  libavcodec/pthread_frame.c.
+  (CVE-2022-48434, bsc#1209934)
 
 -------------------------------------------------------------------
 Fri Jan 20 07:22:58 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
@@ -338,6 +362,8 @@ Thu Oct 28 15:58:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
   * ffmpeg-CVE-2021-38114.patch
   * ffmpeg-CVE-2021-38171.patch
   * ffmpeg-CVE-2020-22037.patch
+- fix avfilter/vf_yadif: Fix handing of tiny images.
+  (CVE-2020-22021, bsc#1186586)
 
 -------------------------------------------------------------------
 Sun Sep 26 02:44:57 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
@@ -363,7 +389,7 @@ Tue Aug 10 09:38:39 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
 -------------------------------------------------------------------
 Sat Jul 10 10:11:32 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
-- Remove second hunk of ffmpeg-CVE-2020-22046.patch, that contains 
+- Remove second hunk of ffmpeg-CVE-2020-22046.patch, that contains
   a goto to a none existing label. In order to distinguish this
   patch from the original, I renamed it to
   ffmpeg-4.4-CVE-2020-22046.patch
@@ -389,7 +415,7 @@ Fri Jun  4 12:29:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Thu May 20 23:16:09 UTC 2021 - Daniel Molkentin <daniel.molkentin@suse.com>
 
-- Enable vulkan on on Leap 15 
+- Enable vulkan on on Leap 15
 
 -------------------------------------------------------------------
 Fri Apr 16 10:20:15 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
@@ -408,8 +434,8 @@ Fri Apr  9 18:52:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 Sun Mar 14 21:08:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.2:
-  * lots of oss-fuzz reported overflow fixes, see included ChangeLog 
-- drop 
+  * lots of oss-fuzz reported overflow fixes, see included ChangeLog
+- drop
       ffmpeg.git-ba3e771a42c29ee02c34e7769cfc1b2dbc5c760a.patch
       0001-lavf-srt-fix-build-fail-when-used-the-libsrt-1.4.1.patch
       0001-avformat-vividas-improve-extradata-packing-checks-in.patch: upstream
@@ -425,7 +451,7 @@ Sun Jan 24 11:22:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - remove dependency on OpenJPEG, this is obsolete since ffmpeg 4.0,
   we already build against OpenJPEG 2.1.
-  see changes: 
+  see changes:
     - Dropped support for OpenJPEG versions 2.0 and below. Using OpenJPEG now
       requires 2.1 (or later) and pkg-config.
 
@@ -457,7 +483,7 @@ Mon Jul 27 13:39:27 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 -------------------------------------------------------------------
 Thu Jul 16 10:49:02 UTC 2020 - Alexander Reimelt <alexander.reimelt@protonmail.ch>
 
-- Add librav1e support 
+- Add librav1e support
 
 -------------------------------------------------------------------
 Sun Jul 12 16:08:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -524,7 +550,7 @@ Fri Mar 31 00:41:22 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 - Add Samba support for Factory (as this needs a fix in Samba itself)
   Add --enable-libsmbclient to configure, add BR on pkgconfig(smbclient)
 - License is now GPLv3+ by default (--enable-version3)
-  
+ 
 -------------------------------------------------------------------
 Mon Mar 30 07:14:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 

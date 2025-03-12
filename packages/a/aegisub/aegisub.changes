@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Mar  4 17:00:58 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- fix link Aegisub source
+- limit libboost version
+- remove excludearch to give chance other architecture 
+
+-------------------------------------------------------------------
+Tue Mar  4 00:15:58 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.4.2
+  * Fix more locale-dependent path issues
+  * Discard MRU entries with invalid encodings instead of crashing
+  * Work around wxGTK crash when clicking “Show Original”
+- Remove unneeded patch and BuildRequires:
+  * aegisub-3.3.3-fix-boost-181-build.patch: fix upstream
+  * lua51: replace with LuaJIT
+  * cmake: replace with meson
+  * intltool
+- Add BuildRequires to build version 3.4.2:
+  * meson
+  * pkgconfig(alsa)
+  * pkgconfig(openal)
+  * pkgconfig(uchardet)
+  * pkgconfig(portaudio-2.0)
+- fix script version and description
+
+-------------------------------------------------------------------
 Sat Dec  7 12:37:00 UTC 2024 - zero mind <zeromind@gmx.com>
 
 - Switch from autotools to cmake for building

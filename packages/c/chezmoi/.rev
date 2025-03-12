@@ -752,4 +752,17 @@
 </comment>
     <requestid>1248232</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>6afa3e8bc8ab9836c92f6830534a2bef</srcmd5>
+    <version>2.60.1</version>
+    <time>1741789413</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.60.1:
+  - Fixes
+    * fix: Fallback to statically-linked binary on old Linuxes
+  - Documentation updates
+    * docs: Add example of multiple age recipients
+</comment>
+    <requestid>1252140</requestid>
+  </revision>
 </revisionlist>

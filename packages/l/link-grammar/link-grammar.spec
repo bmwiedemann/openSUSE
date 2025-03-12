@@ -1,7 +1,7 @@
 #
 # spec file for package link-grammar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ Group:          Productivity/Text/Spell
 URL:            https://www.abisource.com/projects/link-grammar/
 Source:         http://www.abisource.com/downloads/link-grammar/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
-Patch0:         py310.patch
 
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -38,7 +37,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libpcre2-8)
-BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 Obsoletes:      perl-clinkgrammar < 5.4.3
@@ -52,18 +50,6 @@ links connecting pairs of words.
 
 This package contains Link Grammar's utility, its shared library and
 some data files.
-
-%package -n  python3-clinkgrammar
-Summary:        Python 3 bindings for link-grammar, a grammar checker
-Group:          Development/Libraries/Python
-
-%description -n  python3-clinkgrammar
-The Link Grammar Parser is a syntactic parser of a number of
-languages, based on Link Grammar, an original theory of syntax and
-morphology.
-
-This package contains bindings for development with Link Grammar using
-Python 3.
 
 %package -n %{lname}
 Summary:        An English grammar checker
@@ -91,9 +77,9 @@ Link Grammar.
 %autosetup
 
 %build
-PYTHON_NOVERSIONCHECK=1 PYTHON=%{__python3} PYTHON_VERSION=%{python3_version}
 %configure \
     --disable-static \
+    --disable-python-bindings \
     --disable-java-bindings
 %make_build
 
@@ -113,11 +99,6 @@ find %{buildroot} ! -type d -size 0 -delete
 %{_datadir}/link-grammar
 %{_mandir}/man1/link-parser.1%{?ext_man}
 %{_mandir}/man1/link-generator.1%{?ext_man}
-
-%files -n python3-clinkgrammar
-%{python3_sitelib}/linkgrammar.pth
-%{python3_sitelib}/linkgrammar
-%{python3_sitearch}/linkgrammar*
 
 %files -n %{lname}
 %{_libdir}/*.so.*

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 12 08:14:09 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 25.2.0:
+  Added:
+  * structlog.tracebacks.Stack now includes an exc_notes field reflecting
+    the notes attached to the exception. #684
+  Changed:
+  * structlog.stdlib.BoundLogger's binding-related methods now also return Self. #694
+  * structlog.processors.TimeStamper now produces internally timezone-aware
+    datetime objects. Default output hasn't changed, but you can now use %z in your fmt string. #709
+  Fixed:
+  * Expose structlog.dev.RichTracebackFormatter for imports. #699
+  * Expose structlog.processors.LogfmtRenderer for imports. #701
+
+-------------------------------------------------------------------
 Wed Feb  5 08:17:32 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 25.1.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package lua-say
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name say
-%define upversion 1.3-1
-Version:        1.31
+Version:        1.4.1
 Release:        0
 Summary:        Lua string hashing library, useful for internationalization
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/lunarmodules/say
-Source:         https://github.com/lunarmodules/say/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
+Source:         https://github.com/lunarmodules/say/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 Requires:       %{flavor}
@@ -42,13 +41,13 @@ Name:           %{flavor}-say
 Useful for internationalization.
 
 %prep
-%setup -q -n %{mod_name}-%{upversion}
+%setup -q -n %{mod_name}-%{version}
 
 %build
 /bin/true
 
 %install
-install -v -D -m 0644 -p -t %{buildroot}%{lua_noarchdir}/say src/init.lua
+install -v -D -m 0644 -p -t %{buildroot}%{lua_noarchdir}/say src/say/init.lua
 
 %files
 %dir %{lua_noarchdir}/say

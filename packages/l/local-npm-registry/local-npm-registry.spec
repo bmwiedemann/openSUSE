@@ -43,8 +43,10 @@ mkdir -p %{buildroot}%{_bindir}
 cp -r dist node_modules %{buildroot}%{_datadir}/%{name}
 cat > %{buildroot}%{_bindir}/local-npm-registry << EOF
 #!/usr/bin/node
-const foo = await import("%{_datadir}/%{name}/dist/index.js")
-foo.mainEntryFunction()
+(async () => {
+  const foo = await import("%{_datadir}/%{name}/dist/index.js");
+  foo.mainEntryFunction();
+})();
 EOF
 
 %files

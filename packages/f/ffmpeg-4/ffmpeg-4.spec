@@ -134,6 +134,7 @@ Patch10:        ffmpeg-chromium.patch
 Patch11:        ffmpeg-libglslang-detection.patch
 Patch14:        ffmpeg-glslang-cxx17.patch
 Patch15:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
+Patch16:        0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
 Patch17:        ffmpeg-CVE-2023-49502.patch
 Patch22:        ffmpeg-c99.patch
 Patch23:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
