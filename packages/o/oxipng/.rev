@@ -32,4 +32,16 @@ It provides better performance than other established similar programs.</comment
 </comment>
     <requestid>1249179</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c1bf1000ddd75bffe25d27350df81a0a</srcmd5>
+    <version>9.1.4</version>
+    <time>1741806827</time>
+    <user>anag+factory</user>
+    <comment>- Enable features:
+  * sanity-checks
+  * system-libdeflate:
+    use system deflate libraries
+</comment>
+    <requestid>1252329</requestid>
+  </revision>
 </revisionlist>

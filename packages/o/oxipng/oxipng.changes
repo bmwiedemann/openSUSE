@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 12 08:27:51 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Enable features:
+  * sanity-checks
+  * system-libdeflate:
+    use system deflate libraries
+
+-------------------------------------------------------------------
 Thu Feb 27 19:30:41 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 9.1.4:

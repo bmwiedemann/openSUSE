@@ -25,6 +25,8 @@ URL:            https://github.com/shssoichiro/oxipng
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libdeflate)
 
 %description
 Oxipng is a multithreaded lossless PNG compression optimizer. It can be used
@@ -34,6 +36,7 @@ via a command-line interface or as a library in other Rust programs.
 %autosetup -a1
 
 %build
+%define __cargo_common_opts %{?_smp_mflags} --features "sanity-checks system-libdeflate"
 %{cargo_build}
 %{__cargo} run --manifest-path ./xtask/Cargo.toml -- mangen
 
