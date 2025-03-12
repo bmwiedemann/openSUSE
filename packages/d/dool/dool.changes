@@ -1,0 +1,332 @@
+-------------------------------------------------------------------
+Wed Mar 12 08:42:50 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.4:
+  * Fix plugin loading for Python 3.13 #83
+  * Added rudimentary Debian packaging information. #81
+  * fix undefined variable 'mod' in plugin loading error reporting #84
+  * Tweaked the header lines to be + after an entire page has scrolled by
+  * Added documentation on how to package Dool
+  * Lots of work in packaging up RPM and Deb files
+  * Fix the top-io (all IO) and top-bio (Block IO) plugins and clarify the source of data for each
+
+-------------------------------------------------------------------
+Wed Mar 12 08:42:30 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.3:
+  * Package plugins in PIP #74
+  * Add some emojis to README
+  * Allow the --io plugin to read from symlinks like /dev/disk-by-uuid (#79)
+  * Removed old examples directory that was not relevant anymore
+  * Fix the --noupdate option and make dool work better for non-tty connections (#77)
+  * General code clean-up and best practices
+  * Comments added to code to make parsing simpler for future Scott
+  * Add team members to README
+  * More internal dstat -> dool name changes
+
+-------------------------------------------------------------------
+Wed Mar 12 08:42:07 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.2:
+  * Publish on PyPI #68
+  * Add a new --dstat option to emulate old functionality
+  * Remove code paths for Python 2.x as we're 100% Python 3.x now (and have been for a long time)
+  * Add documentation about bits vs bytes to refer tickets to when we get questions
+  * Fixes for long names on --top-io-adv plugin
+  * The --freespace plugin can now optionally take a comma separate list of mount points now
+
+-------------------------------------------------------------------
+Wed Mar 12 08:41:40 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.1:
+  * Fix help of vmstat (as it includes sys instead of swap) - Fixes #54 #55
+  * Fixes #60 - Multiple SWAP's breaks output #61
+  * Better support for NVME drives
+  * Support for Python v3.12
+  * Shorter and more concise device names (info in #59)
+
+-------------------------------------------------------------------
+Wed Mar 12 08:41:16 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.0:
+  * add support for terminals with only 16 colors #43
+  * Correctly report disk stats for NVME drives #49
+  * Capture VM name for top-cpu #48
+  * Properly capitalize unit letters for real this time #34
+  * Add a \n to output when using a count
+  * Fix the NTP plugin for Python 3.x
+  * Massive internal naming change dstat -> dool
+  * Fix bits/bytes in CSV file output
+  * Add a --devel logging option to assist in future developementg
+  * Update Github templates to simplify them and reflect the Dool name
+  * Lots of comments in the code as I slowly learn more about how it works
+
+-------------------------------------------------------------------
+Wed Mar 12 08:40:19 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.0:
+  What's Changed:
+  * --output now correctly writes to files cleanly
+    Introduced --display to allow outputting to both screen and file
+  * Fix building docs with make docs
+  * Update the .spec file to allow building RPMs for Dool on modern systems
+  * Fix potential crashes from "OverflowError: cannot convert float infinity to integer"
+  * Updated Lustre plugin for modern versions
+  * Cleaned up output of sub frames in table output
+  * Add a plug-in for Linux bonding devices
+  * Add signal handling to better close down things when dool quits
+  * Added an option for --diskset to group drives together
+  Auto generated:
+  * Fix top_mem plugin #22
+  * /proc/diskstats: better detection of unused block devices #17
+  * Fix rename in docs #30
+  * Add support for Lustre 2.12+ in the lustre plugin #24
+  * Catch OverflowError #16
+  * Remove underline from sequence separators #31
+  * Migrate to GPL v3 #39
+  * Document the --display feature #40
+  * Add debug k() and kd() options #41
+  * Add a plugin for Linux bonding devices #10
+  * Fix for the Infiniband plugin #9
+  * Add an option for --diskset for #35 #42
+  * Fix syntax errors #2
+
+-------------------------------------------------------------------
+Wed Mar 12 08:39:56 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * Use unicode box drawing characters to make things look more modern
+  * Add installation script
+  * Make the output cleaner by using better ANSI line clearing options
+  * Better compatibility on older versions of Python. Tested on Python 3.6
+  * Memory calculation is now closer to free
+  * Include "available" memory instead of "buffers"
+  * Major README updates to help new users get started
+
+-------------------------------------------------------------------
+Wed Mar 12 08:39:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1239172: Switch from dstat to dool
+  See https://github.com/dstat-real/dstat/issues/170 for details
+- Drop:
+  * 0001-Use-python3-compatible-way-of-checking-instance-type.patch
+  * fix_boo_1136279.patch
+  * loop-should-be-integer.patch
+- Update to dool 0.9:
+  * This is the last version of the code that runs on Python 2.x
+
+-------------------------------------------------------------------
+Wed Feb 21 07:32:15 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
+Sun Oct 11 03:00:46 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add python3-six as dependency
+  * The program does not start without it: "No module named 'six'" 
+
+-------------------------------------------------------------------
+Mon Sep 28 16:35:10 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add loop-should-be-integer.patch
+  * Fixes bug boo#1173004
+  * Is a port of 62ea609fa3026 from https://github.com/scottchiefbaker/dool
+    where the upstream development of dstat is currently happening
+
+-------------------------------------------------------------------
+Tue Jul  2 14:28:44 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix CSV output, boo#1138417
+  Add 0001-Use-python3-compatible-way-of-checking-instance-type.patch
+
+-------------------------------------------------------------------
+Wed Jun 12 15:38:34 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix python deprecation warning (boo#1136279):
+  * fix_boo_1136279.patch 
+
+-------------------------------------------------------------------
+Thu May 23 06:22:26 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.4:
+  * Add plugin to show interface statistics for infiniband and RoCE adapters
+  * Make lustre plugin actually work 
+  * Add generic thermal zone support 
+  * Add MongoDB plugin 
+  * Fix header updates when using --noupdate
+  * Change order of scripted commands to group version-specific output
+  * Replace dict keys() method with in-operator 
+  * Add jvm heap monitor
+  * Avoid escape characters when --nocolor 
+  * Add Python 3 support
+- Move sources from python3 fork (https://github.com/eshizhan/dstat)
+  back to official sources which now also have python3 support
+
+-------------------------------------------------------------------
+Wed Dec 13 12:41:56 UTC 2017 - mvetter@suse.com
+
+- bsc#1071428: Port to python3
+- Use docs-install instead of copying manpage manually
+- Only run desktop_database_post if needed
+- Drop Recommends on python-utmp (not in Factory anymore)
+
+-------------------------------------------------------------------
+Mon Jun 12 13:57:30 UTC 2017 - adam.majer@suse.de
+
+- Sync SLE .changes file with OBS (bnc#1041627)
+- Don't run %fdupes on entire %buildroot, but only on specific
+  directory
+- Replace dangling symlink in examples directory
+- Don't ship documentation directory with executable examples
+
+-------------------------------------------------------------------
+Tue Mar 29 11:10:58 UTC 2016 - mpluskal@suse.com
+
+- Update url
+
+-------------------------------------------------------------------
+Mon Mar 21 00:00:00 CET 2016 - dsterba@suse.cz
+
+- update to 0.7.3
+  - Provide kernel configuration options to error mesages where possible
+  - Added external dstat_md_dstat plugin to show the resync progress of SWRAID
+  - Changed color of 100% to white to make it stand out
+  - Added new --bits option to force bit-values on screen
+  - Fix to allow internal plugins to use underscores/dashes too
+  - Improve internal dstat_vm plugin to use globs for matching/adding counters
+  - Added internal dstat_vm_adv plugin to show advanced VM counters
+  - Added internal dstat_zones plugin to show zoneinfo counters
+  - Fix warning message when colors are disabled because TERM is not found
+  - Fix typo in dstat_nfs3_ops and dstat_nfsd3_ops (Chris Larsson)
+  - Added external dstat_mem_adv plugin so show advanced memory counters (Damon
+    Snyder)
+  - Allow more variables (self.vars) than nicknames (self.nick) to simplify
+    plugins
+  - Using -f/--full does not impact -c/--cpu anymore, most systems ship with 2
+    or more CPUs
+  - Added counter 'parent' when printing CSV subtitles of list-counters
+  - Print decimal values as decimals where possible (so 0 instead of 0.0)
+  - Added external dstat_ddwrt_* plugins using DD-WRT counters using SNMP
+    infrastructure
+  - Fixed improper process names using spaces instead of \0
+  - Added --cpu-use plugin with onlu CPU usage per CPU
+
+-------------------------------------------------------------------
+Thu Feb 11 08:29:39 UTC 2016 - mvetter@suse.com
+
+- Adding as required by fate#319795
+
+-------------------------------------------------------------------
+Thu Jul 16 15:45:11 UTC 2015 - seife+obs@b1-systems.com
+
+- fix build on non-SUSE distros whose rpm does not know Recommends:
+
+-------------------------------------------------------------------
+Fri May  1 15:36:31 UTC 2015 - mpluskal@suse.com
+
+- Use post/postun scriplets for desktop file
+- Cleanup spec file with spec-cleaner 
+
+-------------------------------------------------------------------
+Wed Sep  3 14:33:13 CEST 2014 - dsterba@suse.cz
+
+- fix license string
+- change python-utmp from Requires to Recommends, not necessary
+  and documented
+
+-------------------------------------------------------------------
+Sat Aug 23 01:23:49 CEST 2014 - dsterba@suse.cz
+
+- clean spec
+
+-------------------------------------------------------------------
+Tue Jun 15 06:51:25 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.7.2:
+  * adds new plugins for:
+    + I/O transactions per device
+    + Squid counters
+    + Dstat performance counters
+    + most expensive interrupt
+    + additional advanced process plugins
+  * better protection against counter rollovers was provided
+  * support for CCISS and virtio block devices was added
+  * memory usage was reduced for top process plugins
+  * various improvements and documentation updates
+
+-------------------------------------------------------------------
+Mon Feb 22 00:00:00 UTC 2010 - pascal.bleser@opensuse.org
+
+  * new plugins were added:
+    * qmail stats (--qmail)
+    * dstat baselining (--dstat)
+    * disk transactions per second (--disk-tps)
+  * per plugin line caching was added for improved performance
+  * usability and documentation improvements were made
+  * a --profile option was added to assist in profiling Dstat
+
+
+-------------------------------------------------------------------
+Wed Nov 25 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.7.0:
+  * fixes CVE-2009-3894
+  * new plugins were added for showing
+    + NTP time
+    + power usage
+    + fan speed
+    + remaining battery time
+    + memcache hits and misses
+    + process count
+    + top process total and average latency
+    + top process total and average CPU timeslice
+    + per disk utilization rates
+  * lots of changes were made to the plugin interface to simplify writing external plugins
+  * all external plugins can now be addressed with a long option
+  * improvements were made to performance and theming
+  * the --bw/--blackonwhite option was added for users with a light terminal background
+  * the --float option was added to force showing floating point numbers on screen
+
+
+-------------------------------------------------------------------
+Wed Dec  3 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 0.6.9:
+  * adds new plugins for counters with respect to open files, inodes, sockets,
+    asynchronous I/O, pagefaults, and completed I/O requests
+  * adds a --list option to list all available plugins
+  * adds a VMware guest memctl plugin
+
+
+-------------------------------------------------------------------
+Fri Sep 12 00:00:00 UTC 2008 - guru@unixtech.be
+
+- update to 0.6.8:
+  * a more accurate scheduler
+  * new snooze and net_packets plugins
+  * a --pidfile option
+  * improved --debug output for certain plugins
+  * warnings when time is non-linear (like on VMware)
+  * various small bugfixes and improvements
+
+
+-------------------------------------------------------------------
+Tue Feb 26 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version
+
+
+-------------------------------------------------------------------
+Tue Dec 18 00:00:00 UTC 2007 - guru@unixtech.be
+
+- fixed .desktop file and build on openSUSE 10.3
+
+
+-------------------------------------------------------------------
+Sat Apr 28 00:00:00 UTC 2007 - guru@unixtech.be
+
+- initial build service package
+
+
