@@ -1,7 +1,7 @@
 #
 # spec file for package dool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,19 @@
 Name:           dool
 Version:        1.3.4
 Release:        0
-Summary:        Versatile vmstat, iostat and ifstat Replacement
+Summary:        Versatile vmstat, iostat and ifstat replacement
 License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            https://github.com/scottchiefbaker/dool
 Source:         https://github.com/scottchiefbaker/dool/archive/refs/tags/v%{version}.tar.gz
 Source1:        %{name}.desktop
-BuildRequires:  make
-Requires:       python3
-BuildArch:      noarch
 BuildRequires:  fdupes
+BuildRequires:  make
 Requires:       python3-curses
 Requires:       python3-six
 Provides:       dstat = %{version}
 Obsoletes:      dstat <= 0.7.4
+BuildArch:      noarch
 
 %description
 Dool is a command line tool to monitor many aspects of your Linux system: CPU, Memory, Network, Load Average, etc. It also includes a robust plug-in architecture to allow monitoring other system metrics.
@@ -59,7 +58,7 @@ rm docs/Makefile
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
