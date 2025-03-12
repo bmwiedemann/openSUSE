@@ -1,7 +1,7 @@
 #
 # spec file for package sshguard
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,10 @@ Source4:        sshguard.whitelist
 # PATCH-FIX-UPSTREAM sshguard-gcc5.patch
 Patch0:         sshguard-gcc5.patch
 Patch1:         harden_sshguard.service.patch
+# build with gcc15 (https://bitbucket.org/sshguard/sshguard/issues/189/fail-with-gcc15)
+Patch2:         sshguard-gcc15.patch
 Requires:       openssh
+BuildRequires:  bison
 Requires(pre):  %fillup_prereq
 
 %description

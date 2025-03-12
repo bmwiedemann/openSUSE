@@ -1,0 +1,44 @@
+--- sshguard-2.4.3/src/blocker/blocker.c	2025-02-28 16:18:03.254281287 +0100
++++ sshguard-2.4.3/src/blocker/blocker.c	2025-02-28 16:12:18.456651762 +0100
+@@ -61,7 +61,7 @@ list_t limbo;
+ list_t offenders;
+ 
+ /* handler for termination-related signals */
+-static void sigfin_handler();
++static void sigfin_handler(int sig);
+ /* called at exit(): flush blocked addresses and finalize subsystems */
+ static void finishup(void);
+ 
+--- sshguard-2.4.3/src/blocker/blocklist.c	2025-02-28 16:18:03.254020175 +0100
++++ sshguard-2.4.3/src/blocker/blocklist.c	2025-02-28 16:13:53.568248681 +0100
+@@ -74,7 +74,7 @@ static void unblock_expired() {
+     pthread_testcancel();
+ }
+ 
+-static void *unblock_loop() {
++static void *unblock_loop(void *unused) {
+     while (1) {
+         /* wait some time, at most opts.pardon_threshold/3 + 1 sec */
+         sleep(1 + ((unsigned int)rand() % (1 + opts.pardon_threshold / 2)));
+--- sshguard-2.4.3/src/blocker/sshguard_whitelist.c	2025-02-28 16:18:03.254395547 +0100
++++ sshguard-2.4.3/src/blocker/sshguard_whitelist.c	2025-02-28 16:16:32.670247184 +0100
+@@ -76,7 +76,7 @@ static int match_ip6(const struct in6_ad
+     return 1;
+ }
+ 
+-static size_t whitelist_meter() { return sizeof(addrblock_t); }
++static size_t whitelist_meter(const void *unused) { return sizeof(addrblock_t); }
+ 
+ static int whitelist_compare(const void *a, const void *b) {
+     int ret;
+--- sshguard-2.4.3/src/parser/attack_parser.y	2025-02-28 16:18:03.252700675 +0100
++++ sshguard-2.4.3/src/parser/attack_parser.y	2025-02-28 16:17:47.406716234 +0100
+@@ -27,7 +27,7 @@
+ #define DEFAULT_ATTACKS_DANGEROUSNESS           10
+ 
+  /* stuff exported by the scanner */
+-extern void scanner_init();
++extern void scanner_init(char *str);
+ extern void scanner_fin();
+ extern int yylex();
+ 
