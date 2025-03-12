@@ -1,7 +1,7 @@
 #
 # spec file for package distrobuilder
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ URL:            https://github.com/lxc/distrobuilder
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Patch0:         pie.patch
+Patch1:         fix-CVE-2025-22869.patch
 BuildRequires:  debootstrap
 BuildRequires:  git-core
 BuildRequires:  gpg2
@@ -32,7 +33,7 @@ BuildRequires:  make
 BuildRequires:  rsync
 BuildRequires:  squashfs
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.23
 Requires:       btrfsprogs
 Requires:       bzip2
 Requires:       debootstrap
