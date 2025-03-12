@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Mar 12 14:15:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- use pytest macro rather than calling pytest directly
+
+-------------------------------------------------------------------
+Wed Mar 12 07:20:25 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Initial version
