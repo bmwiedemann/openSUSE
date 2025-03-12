@@ -7,4 +7,12 @@
     <comment>needed by python-influxdb-client (I think?)</comment>
     <requestid>1155045</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>907ffe0bf8f589d392ee59da670bc596</srcmd5>
+    <version>4.0.4</version>
+    <time>1741806874</time>
+    <user>anag+factory</user>
+    <comment>- build against modern python on sle15</comment>
+    <requestid>1252452</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 12 13:19:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- build against modern python on sle15
+
+-------------------------------------------------------------------
 Sun Mar  3 11:48:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v4.0.4 required for python-influxdb-client
