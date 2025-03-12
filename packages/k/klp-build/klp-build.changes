@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 11 05:33:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not hardcode the Python version for the egg-info directory.
+
+-------------------------------------------------------------------
 Wed Jan 15 14:19:42 UTC 2025 - mvetter@suse.com
 
 - Update to version 0~20250108.8e6c7f6:

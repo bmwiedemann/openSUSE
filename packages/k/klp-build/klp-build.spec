@@ -60,7 +60,7 @@ cp klp-build.1 %{buildroot}%{_mandir}/man1/
 %doc README.md
 %{_bindir}/klp-build
 %{python_sitelib}/klpbuild
-%{python_sitelib}/klp_build-0.0.1-py3.11.egg-info/
+%{python_sitelib}/klp_build-0.0.1-py3.*.egg-info/
 %{_bindir}/run-kgr-test.sh
 %{_mandir}/man1/klp-build.1%{?ext_man}
 
