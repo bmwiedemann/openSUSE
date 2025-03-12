@@ -16,4 +16,13 @@
 </comment>
     <requestid>1252127</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f18c8c583616a349709f542c9aaa43e4</srcmd5>
+    <version>2022.02</version>
+    <time>1741806888</time>
+    <user>anag+factory</user>
+    <comment>- Query GLEW version from rpm database instead of using a static version
+</comment>
+    <requestid>1252501</requestid>
+  </revision>
 </revisionlist>

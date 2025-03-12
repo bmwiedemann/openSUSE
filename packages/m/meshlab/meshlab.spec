@@ -22,6 +22,8 @@
 %bcond_with    gmp
 %endif
 
+%define glew_version %(rpm -q --queryformat='%%{version}' glew-devel | sed -nr 's/([0-9.]+).*/\\1/p')
+
 Name:           meshlab
 Version:        2022.02
 Release:        0
@@ -101,7 +103,7 @@ sed -i 's|SHADER_DIR|QString("%{_datadir}/meshlab/shaders")|g' src/common/global
 
 %build
 pushd src
-%cmake -DALLOW_SYSTEM_GLEW:BOOL=ON -DGLEW_VERSION=2.2.0
+%cmake -DALLOW_SYSTEM_GLEW:BOOL=ON -DGLEW_VERSION=%{glew_version}
 %cmake_build
 popd
 

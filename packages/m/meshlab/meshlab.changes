@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 12 13:10:40 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Query GLEW version from rpm database instead of using a static version
+
+-------------------------------------------------------------------
 Tue Mar 11 12:57:18 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fix build: GLEW build options must be explicitly supplied now
