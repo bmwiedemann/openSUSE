@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 12 15:01:47 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.75.6:
+  * Stacks: parallel stacks generation (#3999)
+  * Addressing #3974 feedback (#4002)
+  * feat: add engine support to dependencies (#3974)
+
+-------------------------------------------------------------------
 Tue Mar 11 12:24:07 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.75.5:
