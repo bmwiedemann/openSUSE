@@ -28,13 +28,13 @@
 %endif
 
 Name:           mercurial-extension-hg-evolve
-Version:        11.1.7.post1
+Version:        11.1.8
 Release:        0
 Summary:        Flexible evolution of Mercurial history
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://www.mercurial-scm.org/doc/evolution/
-Source0:        https://files.pythonhosted.org/packages/source/h/hg-evolve/hg-evolve-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/h/hg-evolve/hg_evolve-%{version}.tar.gz
 Source90:       tests.blacklist
 BuildRequires:  %{pythons}
 # python311-flake8 is not available on Leap 15.6.
@@ -55,7 +55,7 @@ BuildArch:      noarch
 Flexible evolution of Mercurial history.
 
 %prep
-%setup -q -n hg-evolve-%{version}
+%setup -q -n hg_evolve-%{version}
 
 %build
 %python_build
