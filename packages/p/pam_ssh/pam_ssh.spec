@@ -1,7 +1,7 @@
 #
 # spec file for package pam_ssh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source1:        http://sourceforge.net/projects/pam-ssh/files/pam_ssh/%{version}
 Source2:        baselibs.conf
 Source3:        %{name}.keyring
 Source4:        pam_ssh.tmpfiles
+# build with gcc15
+Patch0:         pam_ssh-gcc15.patch
 BuildRequires:  libtool
 BuildRequires:  openssh
 BuildRequires:  openssl-devel
@@ -42,7 +44,7 @@ SSH private key. An ssh-agent is started and keys are added. For the
 entire session, the user types no more passwords.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fiv

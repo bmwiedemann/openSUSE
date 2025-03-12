@@ -1,0 +1,49 @@
+Index: pam_ssh-2.3/pam_option.h
+===================================================================
+--- pam_ssh-2.3.orig/pam_option.h
++++ pam_ssh-2.3/pam_option.h
+@@ -47,7 +47,7 @@ enum opt {
+ struct options {
+ 	struct {
+ 		const char *name;
+-		int bool;
++		int boolean;
+ 		char *arg;
+ 	} opt[PAM_MAX_OPTIONS];
+ };
+Index: pam_ssh-2.3/pam_std_option.c
+===================================================================
+--- pam_ssh-2.3.orig/pam_std_option.c
++++ pam_ssh-2.3/pam_std_option.c
+@@ -81,7 +81,7 @@ pam_std_option(struct options *options,
+ 		else
+ 			options->opt[i].name = NULL;
+ 
+-		options->opt[i].bool = 0;
++		options->opt[i].boolean = 0;
+ 		options->opt[i].arg = NULL;
+ 	}
+ 
+@@ -95,13 +95,13 @@ pam_std_option(struct options *options,
+ 				break;
+ 			arglen = strlen(options->opt[i].name);
+ 			if (strcmp(argv[j], options->opt[i].name) == 0) {
+-				options->opt[i].bool = 1;
++				options->opt[i].boolean = 1;
+ 				found = 1;
+ 				break;
+ 			}
+ 			else if (strncmp(argv[j], options->opt[i].name, arglen)
+ 			    == 0 && argv[j][arglen] == '=')  {
+-				options->opt[i].bool = 1;
++				options->opt[i].boolean = 1;
+ 				options->opt[i].arg
+ 				    = strdup(&argv[j][arglen + 1]);
+ 				found = 1;
+@@ -119,5 +119,5 @@ pam_test_option(struct options *options,
+ {
+ 	if (arg != NULL)
+ 		*arg = options->opt[option].arg;
+-	return options->opt[option].bool;
++	return options->opt[option].boolean;
+ }

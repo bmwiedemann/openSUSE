@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 12 12:00:31 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + pam_ssh-gcc15.patch
+
+-------------------------------------------------------------------
 Wed May 18 08:13:45 UTC 2022 - pgajdos@suse.com
 
 - use pam macros [bsc#1190960]
