@@ -441,4 +441,14 @@
     <comment></comment>
     <requestid>1080203</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>09f8c4acd7c5144950df1eb3d97f52ec</srcmd5>
+    <version>3.6.2</version>
+    <time>1741806911</time>
+    <user>anag+factory</user>
+    <comment>- use modern python for sle15
+
+  * Fix missing documentation</comment>
+    <requestid>1252542</requestid>
+  </revision>
 </revisionlist>

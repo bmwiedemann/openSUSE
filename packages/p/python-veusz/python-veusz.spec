@@ -1,7 +1,7 @@
 #
 # spec file for package python-veusz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define X_display ":98"
-
+%{?sle15_python_module_pythons}
 Name:           python-veusz
 Version:        3.6.2
 Release:        0
@@ -68,8 +68,8 @@ Requires:       python3-veusz = %{version}
 Requires:       veusz-common
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
-Requires(postun):desktop-file-utils
-Requires(postun):shared-mime-info
+Requires(postun): desktop-file-utils
+Requires(postun): shared-mime-info
 Obsoletes:      veusz3 < %{version}
 Provides:       veusz3 = %{version}
 BuildArch:      noarch
