@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Mar 12 07:19:25 UTC 2025 - pdostal@suse.com
+
+- Update to version 2.68.1:
+  * Fix secret command panic when base repo from cwd
+  * Fix(ci): base64 decode GPG passphrase
+  * Update pkg/cmd/attestation/verification/attestation.go
+  * Update pkg/cmd/attestation/verification/attestation.go
+  * Fix acceptance test descriptions
+  * Fix gh secret disambiguity test
+  * Expand gh secret acceptance tests
+  * Expand gh secret base repo tests
+  * [gh secret] Check `GH_REPO` too in addition to `--repo` for disambiguation
+  * Deep Dive Document Release Process (#10503)
+  * Fix unhandled panic in FindWorkflow and add tests
+  * Bump actions/attest-build-provenance from 2.2.0 to 2.2.2
+  * Fix checkout when URL arg is from fork and cwd is upstream
+  * Update `project` help text; fix `unlink` usage
+  * Inconsistent format of examples in help text
+  * Inconsistent format of description of flags (starting with lowercase letter) (#10507)
+  * Update Go version to 1.23 in CONTRIBUTING.md
+  * Fix minor auth login help typo
+  * Add docs; rename function name
+  * Bump github.com/go-jose/go-jose/v4 from 4.0.2 to 4.0.5
+  * docs: OAuth doc link moves to newline
+  * fix expected test output
+  * undo regex changes
+  * remove signer-ref option
+  * chore: update go version in devcontainer
+  * docs: warn about process revoking all tokens
+  * docs: document how to revoke `gh` OAuth tokens
+  * refactor: use a more straightforward return value
+  * Test pr checkout force on different branch
+  * [gh pr checkout] Add --no-tags option to git fetch commands in checkout logic
+  * Allow injection of TUFMetadataDir in tests
+  * Refactor remote resolver caching tests
+  * Fix `remoteResolver` caching issue
+  * Address pr comments
+  * Add test for item-edit --number 0
+  * Support setting project item number to 0
+  * Wrap error
+  * Rename flag to `--fail-on-no-commits`
+  * Update tests
+  * Fix non-TTY case
+  * Suggestions to enhance upstream default handling
+  * Use API REST Client
+  * Use subtests in attestation verification integration tests
+  * update default upstream when forking repo
+  * Update usage to lower-kebab-case
+  * Fix typo in README
+  * Add missing <> in gh auth login docs
+  * Add mutex to fix race in attestation test client
+  * Update tests
+  * Remove trailing whitespace
+  * Standardize URLs
+  * [gh issue/pr comment] Create a comment if no comment already
+  * Update tests
+  * Address review comments
+  * Align no default repo message with other uses
+  * [gh release create] Fail when there are no new commits since the most recent release
+  * Use API without shorthand flag
+  * Update tests
+  * [gh api] Escape package name (URL encoding) for packages endpoint
+  * remove custom transport
+  * var naming
+  * dedup local bundle err handling
+  * Update tests
+  * Add test cases for succeed on no cache and api errors for --all (#1)
+  * Remove short (abbreviated) flag support
+  * Address PR review comments
+  * add checks to cert extensions func
+  * fix option ordering
+  * fix issues causing tests to fail
+  * add signer and source ref, commit options
+  * Bump github.com/spf13/pflag from 1.0.5 to 1.0.6
+  * [gh repo view] Improve error message for forked repo
+  * [gh cache delete --all] Add `--succeed-on-no-caches` flag to return exit code 0
+  * set new options in enforcement criteria
+  * reorder fields
+  * add new signing options
+
+-------------------------------------------------------------------
 Wed Feb 12 08:18:58 UTC 2025 - pdostal@suse.com
 
 - Update to version 2.67.0:
