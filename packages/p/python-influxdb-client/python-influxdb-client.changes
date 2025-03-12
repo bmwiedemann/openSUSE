@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 12 12:50:27 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- build for python311 on sle15 (code requires >= 3.7)
+
+-------------------------------------------------------------------
 Sun Mar  3 11:45:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v1.41.0

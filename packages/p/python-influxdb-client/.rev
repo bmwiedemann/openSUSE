@@ -7,4 +7,12 @@
     <comment>inflxudb1 is old and does not support Python 3.12, New client lib required for a migration of openSUSE-release-tools metrics to influxdb2 https://github.com/openSUSE/openSUSE-release-tools/issues/3034</comment>
     <requestid>1155204</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>72bd28893aad878091d44699f952d05d</srcmd5>
+    <version>1.41.0</version>
+    <time>1741806881</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1252480</requestid>
+  </revision>
 </revisionlist>

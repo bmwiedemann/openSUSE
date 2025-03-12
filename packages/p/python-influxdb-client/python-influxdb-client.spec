@@ -1,7 +1,7 @@
 #
 # spec file for package python-influxdb-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-influxdb-client
 Version:        1.41.0
 Release:        0
@@ -23,6 +24,7 @@ Summary:        InfluxDB 2.0 Python client library
 License:        MIT
 URL:            https://github.com/influxdata/influxdb-client-python
 Source:         https://github.com/influxdata/influxdb-client-python/archive/refs/tags/v%{version}.tar.gz#/influxdb_client-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
