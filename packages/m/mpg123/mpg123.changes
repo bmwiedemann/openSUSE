@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 12 07:38:13 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace pkgconfig(sdl) BuildRequires with pkgconfig(sdl2): build
+  against SDL 2. This has been supported by mpg123 since v 1.26.
+
+-------------------------------------------------------------------
 Sat Dec 14 19:05:04 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.32.10

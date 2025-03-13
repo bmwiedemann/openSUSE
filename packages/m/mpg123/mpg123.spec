@@ -1,7 +1,7 @@
 #
 # spec file for package mpg123
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(openal)
 %endif
 BuildRequires:  pkgconfig(portaudio-2.0)
-BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(sdl2)
 
 %description
 The mpg123 distribution contains an MPEG 1.0/2.0/2.5 audio player/decoder for
