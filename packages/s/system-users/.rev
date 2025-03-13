@@ -271,4 +271,13 @@ The vscan user is currently used by the amavisd-new and clamav packages, but the
     <comment></comment>
     <requestid>1219547</requestid>
   </revision>
+  <revision rev="32" vrev="27">
+    <srcmd5>625916add7782651c7c72d69f376255a</srcmd5>
+    <version>20170617</version>
+    <time>1741874749</time>
+    <user>anag+factory</user>
+    <comment>- system-group-hardware: add group clock for systemd 258
+  (udev: set clock group for PTP and RTC devices)</comment>
+    <requestid>1252358</requestid>
+  </revision>
 </revisionlist>

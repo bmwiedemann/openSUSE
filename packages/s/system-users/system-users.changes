@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 12 09:31:26 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- system-group-hardware: add group clock for systemd 258
+  (udev: set clock group for PTP and RTC devices)
+
+-------------------------------------------------------------------
 Wed Oct 30 10:29:05 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - system-user-nobody: remove shell for user nobody, all packages
