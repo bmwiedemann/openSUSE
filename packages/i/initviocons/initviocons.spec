@@ -1,7 +1,7 @@
 #
 # spec file for package initviocons
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          System/Console
 URL:            http://svn.poeml.de/viewcvs/initviocons/
 Source:         initviocons-%{version}.tar.bz2
+# build with gcc15
+Patch0:         initviocons-gcc15.patch
 BuildRequires:  automake
 
 %description
@@ -37,7 +39,7 @@ additionally checks for the presence of more than one terminal
 connected on the same line. See %{_sysconfdir}/profile for a usage example.
 
 %prep
-%setup -q -n initviocons-%{version}
+%autosetup -p1 -n initviocons-%{version}
 
 %build
 autoreconf -fi

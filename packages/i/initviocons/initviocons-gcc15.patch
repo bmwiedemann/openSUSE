@@ -1,0 +1,12 @@
+--- initviocons-0.5/main.c	2025-03-05 09:53:18.279710271 +0100
++++ initviocons-0.5/main.c	2025-03-05 09:52:56.278462753 +0100
+@@ -132,7 +132,7 @@ static struct {
+ };
+ 
+ void usage(void);
+-void strascii();
++void strascii(register unsigned char *p);
+ void settermmode(int);
+ int readreply(int, char *, int, int);
+ int termsend(int, char *, char *);
+

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  5 09:06:39 UTC 2025 - pgajdos@suse.com
+
+- fix build with gcc15
+  + initviocons-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Nov  7 21:45:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - spec-cleaner run
