@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 12 06:55:24 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.26.0:
+  + Add support for H.266/VVC decoder
+  + Add mappings for the Hap video codec, the Quite OK Image codec
+    (QOI) and the M101 Matrox uncompressed SD video codec.
+  + Don't register elements for which we have no caps and which
+    were non-functional as a result (showing unknown/unknown caps).
+  + The S302M audio encoder now supports up to 8 channels.
+  + Various tag handling improvements in the avdemux wrappers,
+    especially when there are both upstream tags and additional
+    local tags.
+  + Support for 10-bit grayscale formats
+  + For more detailed information on this update, please see
+    https://gstreamer.freedesktop.org/releases/1.26/
+
+-------------------------------------------------------------------
 Sun Feb  2 18:35:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.12:
