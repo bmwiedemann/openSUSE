@@ -17,10 +17,9 @@
 
 
 Name:           goreleaser
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
-Summary:        Go release engineering tool
-# FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
+Summary:        CLI tool for release engineering in Go, Rust, Zig and TypeScript
 License:        MIT
 URL:            https://goreleaser.com/
 Source:         goreleaser-%{version}.tar.gz
@@ -28,7 +27,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  golang(API) >= 1.24
 
 %description
-goreleaser is a modern buildsystem for golang.
+CLI tool that provides a single command to build, archive, package, sign and publish artifacts.
 
 %prep
 %autosetup -D -a 1

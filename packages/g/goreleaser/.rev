@@ -7,4 +7,12 @@
     <comment>Consider adding goreleaser to Tumbleweed. Thank you!</comment>
     <requestid>1247436</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>754d90588e35c6718bcd785d8f5fae8b</srcmd5>
+    <version>2.8.0</version>
+    <time>1741899892</time>
+    <user>anag+factory</user>
+    <comment>New package gorleaser version 2.8.0 is a CLI tool written in Go for release engineering build artifacts for projects written in Go, Rust, Zig and TypeScript</comment>
+    <requestid>1252831</requestid>
+  </revision>
 </revisionlist>

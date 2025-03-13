@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Thu Mar 13 14:36:42 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Remove FIXME from License: clause, upstream does use MIT license
+  * Summary and Description clarify the purpose of this CLI tool
+
+-------------------------------------------------------------------
+Thu Mar 13 14:05:18 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 2.8.0:
+  * docs: fix typo
+  * chore(deps): bump golangci/golangci-lint-action from 6.5.0 to 6.5.1 (#5640)
+  * fix: deprecate ExtraOr
+  * docs: announce v2.8 (#5639)
+  * chore: auto-update generated files
+  * ci: fix nightly changelog
+  * docs: prepare for v2.8
+  * docs: update
+  * build: task release check branch and git status
+  * docs: fixed typo
+  * docs: update
+  * ci: cleanup changelog a bit
+  * docs: update
+  * chore(deps): bump cachix/install-nix-action from 30 to 31 (#5637)
+  * fix(log): custom git log format and parsing (#5635)
+  * chore(deps): bump github/codeql-action from 3.28.10 to 3.28.11 (#5634)
+  * fix(archive): make sure binaries are executable (#5631)
+  * docs: update
+  * docs: update
+  * fix: improve git no tags error
+  * chore: update
+  * fix: abbrev test
+  * feat(changelog): allow to use format when using the git changeloger (#5627)
+  * fix: package comment for packagejson (#5629)
+  * docs: update
+  * chore(deps): bump github.com/charmbracelet/keygen from 0.5.1 to 0.5.3 (#5628)
+  * feat(aur,aursources): support install scripts (#5621)
+  * chore(deps): bump golang.org/x/oauth2 from 0.27.0 to 0.28.0 (#5623)
+  * chore(deps): bump golang.org/x/tools from 0.30.0 to 0.31.0 (#5626)
+  * chore(deps): bump golang.org/x/crypto from 0.35.0 to 0.36.0 (#5622)
+  * docs: commit_author fields are templateable
+  * chore: update schema
+  * fix: notarize timeout being typed as string in jsonschema
+  * chore(deps): bump golang from 1.24.0-alpine to 1.24.1-alpine (#5614)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.123.0 to 0.124.0 (#5609)
+  * chore(deps): bump docker/setup-qemu-action from 3.5.0 to 3.6.0 (#5608)
+  * chore(deps): bump codecov/codecov-action from 5.3.1 to 5.4.0 (#5601)
+  * chore(deps): bump actions/cache from 4.2.1 to 4.2.2 (#5605)
+  * chore(deps): bump github.com/goreleaser/nfpm/v2 from 2.41.2 to 2.41.3 (#5606)
+  * chore(deps): bump docker/setup-qemu-action from 3.4.0 to 3.5.0 (#5603)
+  * chore(deps): bump docker/setup-buildx-action from 3.9.0 to 3.10.0 (#5602)
+  * fix(gitlab): use direct asset path (#5598)
+  * fix(docker): add config to artifact extra
+  * fix(docker): retry manifest push
+  * fix(docker): log img digest after push
+  * docs: update
+  * chore: schema update
+  * docs: correct redirect link for the `Name Templates` article (#5599)
+  * reafactor(github): use github.Ptr instead of github.String/Bool/etc
+  * feat: aurs.disable and aur_sources.disable
+  * docs: update changes from builds to ids
+  * feat: snaps.builds -> snaps.ids
+  * feat: nfpms.builds -> nfpms.ids
+  * feat: archive.builds -> archive.ids
+  * fix: snapcraft build filters
+  * fix: artifact extras.format for archive when binary
+  * docs: mention url_template change
+  * chore(deps): bump golang.org/x/crypto from 0.33.0 to 0.35.0 (#5587)
+  * chore(deps): bump golang.org/x/oauth2 from 0.26.0 to 0.27.0 (#5586)
+  * chore(deps): bump github.com/muesli/termenv from 0.15.2 to 0.16.0 (#5588)
+  * chore(deps): bump dagger/dagger-for-github from 7.0.6 to 8.0.0 (#5585)
+  * chore(deps): bump github.com/go-jose/go-jose/v4 from 4.0.4 to 4.0.5 in the go_modules group (#5584)
+  * chore(deps): bump github/codeql-action from 3.28.9 to 3.28.10 (#5582)
+  * fix: improve log
+  * refactor: improve semerrogroup usage
+  * docs: fix htmtest
+  * docs: update
+  * docs: update
+  * docs: fix title
+  * docs: update
+  * docs: update
+  * docs: update
+  * docs: update
+  * docs: update
+  * docs: update
+  * docs: update
+  * docs: update
+  * docs: update
+  * feat: kos.disable (#5580)
+  * refactor: moving builtarget into builders/golang (#5569)
+  * refactor: ko.doBuild
+  * chore(deps): bump sigstore/cosign-installer from 3.8.0 to 3.8.1 (#5577)
+  * chore(deps): bump github.com/klauspost/compress from 1.17.11 to 1.18.0 (#5573)
+  * chore(deps): bump actions/cache from 4.2.0 to 4.2.1 (#5572)
+  * fix: typo in manifest.go (#5571)
+
+-------------------------------------------------------------------
 Tue Feb 18 19:24:57 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Kickoff with version 2.7.0
