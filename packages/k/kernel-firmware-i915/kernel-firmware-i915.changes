@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 11 06:34:46 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250310 (git commit 11c4e60f9573):
+  * i915: Update Xe3LPD DMC to v2.20
+
+-------------------------------------------------------------------
 Thu Mar  6 15:21:18 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250306 (git commit 44740031a34e):
