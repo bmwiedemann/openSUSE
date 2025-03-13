@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 12 08:01:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.12.2:
+  + Common: Remove deprecated libxml calls
+  + AV CP: Remove some stray debug output
+  + EventDumper: Code cleanup
+  + Uploader: Fix parsing the Browse result
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 17 18:51:07 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 0.12.1+3:
