@@ -489,7 +489,6 @@ BuildRequires:  rsync
 BuildRequires:  rsyslog
 BuildRequires:  screen
 BuildRequires:  sdparm
-BuildRequires:  setserial
 BuildRequires:  setxkbmap
 BuildRequires:  sg3_utils
 BuildRequires:  sharutils
@@ -686,7 +685,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.152
+Version:        17.153
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

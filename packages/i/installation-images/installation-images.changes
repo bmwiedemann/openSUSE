@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Mar 12 16:12:03 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#756
+- remove obsolete setserial package (bsc#1239516)
+- 17.153
+
+--------------------------------------------------------------------
 Thu Jan 30 16:23:22 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#755
