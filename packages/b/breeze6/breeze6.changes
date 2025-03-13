@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 11 14:43:41 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.3
+- Changes since 6.3.2:
+  * Do not cascade header colors when using non-global color scheme
+  * kstyle/breezetoolsareamanger.cpp: menu bar colors from header
+  * Fix Qt6 build regression with MinGW (kde#500106)
+  * breezedecoration: Take frameradius to account in no-side-borders border size
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Feb 25 19:38:28 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.2:
