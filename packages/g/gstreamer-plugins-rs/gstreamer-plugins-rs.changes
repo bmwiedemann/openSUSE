@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Mar 12 14:06:37 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.13.5:
+  + Fixed:
+    - cdg: Fix typefind errors on specific file sizes.
+    - cea608overlay:
+      . Ensure lines are rendered in order.
+      . Clear output on each switch.
+    - cea608overlay / cea708overlay: Fix field lookup for S334-1A
+      captions.
+    - cea608tocea708: Fix S334-1A field flag usage.
+    - closedcaption:
+      . Fix rollup mode not always using the correct base row
+      . Only increase dtvcc packet sequence if there are services.
+    - fmp4mux:
+      . Fix state cleanup on flush.
+      . Handle language/orientation tags as per-stream tags.
+    - hlssink3: Write playlist atomically.
+    - inter: Don't leak hashmap objects.
+    - mpegtslivesrc:
+      . Handle zero-byte adaptation fields correctly.
+      . Consider initial calibration of the clock.
+      . Ignore NIT programs from the PAT.
+    - onvifmetadatacombiner: Unset PTS/DTS of metadata.
+    - rtpbasepay / rtpbasedepay: Only forward buffers after a
+      segment event.
+    - rtpac3depay2: Fix handling of non-fragmented payloads.
+    - togglerecord: Drop locks before sending queries to avoid
+      deadlocks.
+    - tttocea708: Don't reset service writer for every incoming
+      caption.
+    - whipserversrc: Handle concurrent POSTs.
+  + Added:
+    - mpegtslivesrc: Take adaptation field discontinuity flag into
+      account.
+    - uriplaylistbin: Add caching support
+  + Changed: - Updated various dependencies.
+
+-------------------------------------------------------------------
 Thu Jan  2 21:55:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.13.4:
