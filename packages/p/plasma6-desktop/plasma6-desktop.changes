@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 11 14:44:31 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.3
+- Changes since 6.3.2:
+  * update version for new release
+  * applets/taskmanager: handle null playerData when switching tooltip
+  * applets/keyboardlayout: fix warning on startup
+  * applets/kicker: make dash/grid keynav not broken in RtL
+  * applets/kicker: fix DashboardRepresentation warning
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Feb 25 19:38:49 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.2:
