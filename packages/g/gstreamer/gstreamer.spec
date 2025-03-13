@@ -19,13 +19,13 @@
 %define gst_branch 1.0
 
 Name:           gstreamer
-Version:        1.24.12
+Version:        1.26.0
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{url}/src/%{name}/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        gstreamer.macros
 Source2:        gstreamer.prov
 Source99:       baselibs.conf
@@ -220,7 +220,7 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %{_mandir}/man?/*-%{gst_branch}*%{ext_man}
 
 %files devel
-%doc AUTHORS ChangeLog NEWS README.md RELEASE
+%doc AUTHORS README.md
 %{_datadir}/aclocal/*.m4
 # Own these directories to avoid build requirement on gdb
 # only for directories ownership
@@ -235,6 +235,7 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+%{_datadir}/cmake/FindGStreamer.cmake
 %{_libexecdir}/gstreamer-%{gst_branch}/gst-plugins-doc-cache-generator
 %{_rpmconfigdir}/gstreamer-provides
 %{_fileattrsdir}/gstreamer.attr
