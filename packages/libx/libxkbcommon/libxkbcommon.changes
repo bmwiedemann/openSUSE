@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 12 16:30:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.1
+  * Fixed segfault due to invalid arithmetic to bring negative
+    layout indexes into range.
+  * The tools do not load the default RMLVO (rules, model,
+    layout, variant, options) values from the environment anymore.
+
+-------------------------------------------------------------------
 Tue Feb  4 22:05:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8
