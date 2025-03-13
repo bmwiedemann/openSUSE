@@ -1,7 +1,7 @@
-From 5a84a1fdcbe2dd833cc04a6398b92eca4187ed71 Mon Sep 17 00:00:00 2001
+From 78039be49490f3b98e9869604626454a5a12d163 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Wed, 8 Jan 2025 10:47:45 -0800
-Subject: [PATCH 2/4] configuration changes for default wayfire session
+Subject: [PATCH 2/7] configuration changes for default wayfire session
 
 Set openSUSE background in default wayfire session
 ---

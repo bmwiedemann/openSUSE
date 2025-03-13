@@ -1,0 +1,35 @@
+From b9fd498a5facc8fc1c34b9567aebf74d2196655e Mon Sep 17 00:00:00 2001
+From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
+Date: Tue, 21 Jan 2025 17:23:47 -0800
+Subject: [PATCH 7/7] configuration changes for default sway session
+
+- Set openSUSE desktop background in session
+- Disable "include /etc/sway/config.d/*"  It causes too many configs
+  from openSUSEway to be pulled in, and creates a broken session
+---
+ configurations/lxqt-sway.config | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/configurations/lxqt-sway.config b/configurations/lxqt-sway.config
+index f30047c..97f910e 100644
+--- a/configurations/lxqt-sway.config
++++ b/configurations/lxqt-sway.config
+@@ -38,6 +38,9 @@ set $term qterminal
+ # your displays after another 300 seconds, and turn your screens back on when
+ # resumed. It will also lock your screen before your computer goes to sleep.
+ 
++### Set background
++exec swaybg -i /usr/share/wallpapers/openSUSEdefault/contents/images/default.png
++
+ ### Input configuration
+ #
+ # Example configuration:
+@@ -228,4 +231,4 @@ bindsym $mod+r mode "resize"
+     bindsym XF86AudioPrev exec playerctl previous
+ 
+ 
+-include /etc/sway/config.d/*
++# include /etc/sway/config.d/*
+-- 
+2.48.1
+

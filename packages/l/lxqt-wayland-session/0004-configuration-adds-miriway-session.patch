@@ -1,16 +1,16 @@
-From b9fd6f144daae4f1b23fda0e4e515677eafd1610 Mon Sep 17 00:00:00 2001
+From 229825cedb4a5f514fe2c67a15992306981e52e3 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Thu, 16 Jan 2025 16:12:51 -0800
-Subject: [PATCH 4/4] configuration adds miriway session
+Subject: [PATCH 4/7] configuration adds miriway session
 
 Adds miriway session to package, currently being considered for
 inclusion upstream @ https://github.com/lxqt/lxqt-wayland-session/pull/40
 ---
  configurations/CMakeLists.txt               |  2 +
- configurations/miriway/lxqt-miriway-wrapper | 42 +++++++++++++++++++++
- configurations/miriway/miriway-shell.config | 22 +++++++++++
- startlxqtwayland.in                         | 10 +++++
- 4 files changed, 76 insertions(+)
+ configurations/miriway/lxqt-miriway-wrapper | 72 +++++++++++++++++++++
+ configurations/miriway/miriway-shell.config | 22 +++++++
+ startlxqtwayland.in                         | 10 +++
+ 4 files changed, 106 insertions(+)
  create mode 100644 configurations/miriway/lxqt-miriway-wrapper
  create mode 100644 configurations/miriway/miriway-shell.config
 
@@ -29,10 +29,10 @@ index 02ab38d..153a7f1 100644
  )
 diff --git a/configurations/miriway/lxqt-miriway-wrapper b/configurations/miriway/lxqt-miriway-wrapper
 new file mode 100644
-index 0000000..85079c0
+index 0000000..d8d2e93
 --- /dev/null
 +++ b/configurations/miriway/lxqt-miriway-wrapper
-@@ -0,0 +1,42 @@
+@@ -0,0 +1,72 @@
 +#!/bin/sh
 +
 +unset WAYLAND_DISPLAY
@@ -46,6 +46,7 @@ index 0000000..85079c0
 +
 +export WAYLAND_DISPLAY=${wayland_display}
 +
++# Support Xwayland when available
 +if command -v Xwayland > /dev/null
 +then
 +  export MIR_SERVER_ENABLE_X11=1
@@ -53,9 +54,22 @@ index 0000000..85079c0
 +  export MIR_SERVER_XWAYLAND_PATH
 +fi
 +
++# Imperfect workaround for layer-shell-qt bug
++# Cf. https://bugs.kde.org/show_bug.cgi?id=500520
++export MIR_ANCHOR_RECTANGLE_UNCONSTRAINED=1
++
++# Use server side decorations whenever possible
++export MIRIWAY_DECORATIONS="prefer-ssd"
++
++# Look in the LXQt namespace for LXQt Miriway configuration
 +export MIRIWAY_CONFIG_DIR="lxqt"
 +
-+miriway-shell --display-config=static="${XDG_CONFIG_HOME}/miriway-shell.display-config" --add-wayland-extensions=all --lockscreen-app="lxqt-leave --lockscreen" &
++# If enabling Xwayland, set up tmpfile to identify X11 DISPLAY
++if [ $MIR_SERVER_ENABLE_X11 -eq 1 ]; then
++    x11_display_file=$(mktemp --tmpdir="${XDG_RUNTIME_DIR}")
++fi
++
++miriway-shell --display-config=static="${XDG_CONFIG_HOME}/miriway-shell.display-config" --add-wayland-extensions=all --lockscreen-app="lxqt-leave --lockscreen" --x11-displayfd 5 5>${x11_display_file} &
 +miriway_pid=$!
 +
 +# Wait until the server starts
@@ -68,6 +82,22 @@ index 0000000..85079c0
 +  fi
 +  inotifywait -qq --timeout 5 --event create "$(dirname "${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}")"
 +done
++
++# Grab the X11 DISPLAY and export it if needed
++if [ $MIR_SERVER_ENABLE_X11 -eq 1 ]; then
++    if inotifywait -qq --timeout 5 --event close_write "${x11_display_file}" && [ -s "${x11_display_file}" ]
++    then
++      # ${x11_display_file} contains the X11 display
++      DISPLAY=:$(cat "${x11_display_file}")
++      export DISPLAY
++      rm "${x11_display_file}"
++    else
++      echo "ERROR: Failed to get X11 display from miriway-shell [pid=${miriway-pid}]"
++      rm "${x11_display_file}"
++      kill ${miriway_pid}
++      exit 1
++    fi
++fi
 +
 +lxqt-session "$@"
 +lxqt_session_exit_code=$?

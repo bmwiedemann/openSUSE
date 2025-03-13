@@ -2,6 +2,7 @@
 # spec file for package lxqt-wayland-session
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Shawn W Dunn <sfalken@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +34,12 @@ Patch1:         0002-configuration-changes-for-default-wayfire-session.patch
 Patch2:         0003-configuration-changes-for-default-niri-session.patch
 ## PATCH-FEATURE-Upstream 0004-configuration-adds-miriway-session.patch
 Patch3:         0004-configuration-adds-miriway-session.patch
+## PATCH-CONFIGURATION-openSUSE 0005-configuration-changes-for-default-hyprland-session.patch
+Patch4:         0005-configuration-changes-for-default-hyprland-session.patch
+## PATCH-CONFIGURATION-openSUSE 0006-configuration-changes-for-default-river-session.patch
+Patch5:         0006-configuration-changes-for-default-river-session.patch
+## PATCH-CONFIGURATION-openSUSE 0007-configuration-changes-for-default-sway-session.patch
+Patch6:         0007-configuration-changes-for-default-sway-session.patch
 
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -63,6 +70,7 @@ License:        BSD-3-Clause
 Requires:       %{name} = %{version}
 Requires:       hyprland
 Requires:       hyprland-qtutils
+Recommends:     swaybg
 Supplements:    (%{name} and hyprland)
 
 %description -n lxqt-hyprland-session
@@ -113,6 +121,7 @@ Summary:        Session files for LXQt-river
 License:        GPL-3.0-or-later
 Requires:       %{name} = %{version}
 Requires:       river
+Recommends:     swaybg
 Supplements:    (%{name} and river)
 
 %description -n lxqt-river-session
@@ -124,6 +133,7 @@ Summary:        Session files for LXQt-Sway
 License:        MIT
 Requires:       %{name} = %{version}
 Requires:       sway
+Recommends:     swaybg
 Supplements:    (%{name} and sway)
 
 %description -n lxqt-sway-session
@@ -136,6 +146,7 @@ License:        MIT
 Requires:       %{name} = %{version}
 Requires:       wayfire
 Recommends:     sddm-conf
+Recommends:     swaybg
 Recommends:     wcm
 Supplements:    (%{name} and wayfire)
 
