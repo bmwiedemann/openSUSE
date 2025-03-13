@@ -1,7 +1,7 @@
 #
 # spec file for package busybox
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,8 @@ Patch4:         udhcp6-install-path.patch
 Patch5:         tc-no-TCA_CBQ.patch
 # PATCH-FIX-UPSTREAM - Borrowed from Fedora - https://src.fedoraproject.org/rpms/busybox/blob/rawhide/f/busybox-1.37.0-fix-conditional-for-sha1_process_block64_shaNI.patch
 Patch6:         busybox-1.37.0-fix-conditional-for-sha1_process_block64_shaNI.patch
+# https://gitlab.alpinelinux.org/alpine/aports/-/raw/3.21-stable/main/busybox/0015-ping-make-ping-work-without-root-privileges.patch?ref_type=heads
+Patch7:         busybox-1.37.0-make-ping-work-without-root-privileges.patch
 # other patches
 Patch100:       busybox.install.patch
 BuildRequires:  glibc-devel-static
