@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar 13 05:53:28 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.21:
+  * chore(deps): update dependency siderolabs/talos to v1.9.5
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.9.5
+  * chore(schema): update talos-extensions.yaml JSON schema (#894)
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.32.3
+  * chore(container): update golangci/golangci-lint docker tag to
+    v1.64.7
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(schema): update talos-extensions.yaml JSON schema (#886)
+  * chore(github-action)!: Update cachix/install-nix-action action
+    to v31
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.20
+  * feat: update Scoop for talhelper version v3.0.20
+  * feat: update flake (#882)
+
+-------------------------------------------------------------------
 Thu Mar 06 06:18:00 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.20:
