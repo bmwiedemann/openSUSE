@@ -28,15 +28,15 @@
 %global commonlibsover 11
 %global mircoresover 2
 %global mirplatformsover 30
-%global lomirisover 5
+%global lomirisover 7
 %global miralsover 7
-%global mirserversover 62
+%global mirserversover 63
 %global mirwaylandsover 5
-%global mirserverplatformsover 22
+%global mirserverplatformsover 23
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.19.3
+Version:        2.20.0
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
@@ -46,10 +46,7 @@ Source:         https://github.com/canonical/%{name}/releases/download/v%{versio
 Patch0:         0001-Fix-include-paths.patch
 # PATCH-FIX-OPENSUSE 0002-remove-use-of-env-to-call-bash.patch
 Patch1:         0002-remove-use-of-env-to-call-bash.patch
-# PATCH-FIX-UPSTREAM 0003-workaround-for-LXQt-panel.patch sfalken@opensuse.org (gh#canonical/mir#3761)
-Patch2:         0003-workaround-for-LXQt-panel.patch
-# PATCH-FIX-UPSTREAM 0004-check-buffer-size.patch sfalken@opensuse.org (gh#canonical/mir#3761)
-Patch3:         0004-check-buffer-size.patch
+
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -273,6 +270,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %{_libdir}/pkgconfig/mir*internal.pc
 %{_includedir}/mir*internal/
 
+
 %files -n libmircommon%{commonlibsover}
 %license COPYING.LGPL*
 %doc README.md
@@ -330,6 +328,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %files test-libs-static
 %license COPYING.GPL*
 %{_libdir}/libmir-test-assist.a
+%{_libdir}/libmir-test-assist-internal.a
 
 %files demos
 %license COPYING.GPL*

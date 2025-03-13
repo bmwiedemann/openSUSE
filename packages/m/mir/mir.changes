@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Mar 12 14:55:48 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.20.0:
+  * For detailed changelog see:
+    https://github.com/canonical/mir/releases/tag/v2.20.0
+- Enhancements:
+  * Extract rendering strategy for decorations
+  * MirOIL updates for post-new-Platform-API QtMir
+  * feature: adding an is_above method to the SurfaceStack
+  * Implement focus stealing prevention, Turn it on with
+    --focus-stealing-prevention true on supported compositors
+  * Pass XDG_ACTIVATION_TOKEN to apps launched via launch_app_env
+  * Publish mir*-internal libraries
+  * Make key repeat and delay configurable
+  * Improve Firefox surface.frame event quirk
+  * Workaround for LXQt Panel
+  * Fix SSD Text
+- Bugs Fixed:
+  * TilingWindowManagerPolicy assumes that the windows size is
+    always specified (gh#canonical/mir#3989)
+  * OSK hides a half second after popping up on some input fields
+    with zqp_text_input_v1 (Electron) (gh#canonical/mir#3580)
+  * Closing a window brings one of the remaining windows of the
+    same client to the front (gh#canonical/mir#3309)
+  * Closing a window causes minimized windows to be focused
+    (gh#canonical/mir#3408)
+  * atomic-kms: hardware cursor disappears crossing screen
+    boundaries (gh#canonical/mir#3677)
+  * Crash on display unplug (gh#canonical/mir#3729)
+  * Crash when pcmanfm-qt does DnD (gh#canonical/mir#3765)
+  * The check for "implicit grab" for drag-and-drop is too strict
+    (gh#canonical/mir#3769)
+  * The cursor icons for top-left and bottom-left resize are wrong
+    for server-side decorations (gh#canonical/mir#3776)
+  * Incorrectly sizes some windows with server-side decorations
+    (gh#canonical/mir#3778)
+- Drop:
+  * 0003-workaround-for-LXQt-panel.patch
+  * 0004-check-buffer-size.patch
+
+-------------------------------------------------------------------
 Thu Feb 20 17:04:43 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add:
