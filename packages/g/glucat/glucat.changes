@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 13 08:37:26 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.13.0:
+  * Unused local typedefs have been removed from the C++ code.
+  * The deprecated configuration option ./configure
+    --with-eig=bindings has been removed.
+  * The ability to build PyClical without Cython has been
+    deprecated and will be removed in future versions.
+  * The configuration option  ./configure --with-qd has improved
+    configuration tests.
+  * The ./configure script adds g++ compiler options to ensure
+    that FMA is used consistently on hardware that implements
+    AVX512 instructions.
+  * The pyclical/setup_ext.py and pyclical/setup_nocython.py
+    scripts have been refactored.
+  * The Python demo code has been brought up to date.
+- Drop glucat-include_dirs.patch: upstreamed.
+
+-------------------------------------------------------------------
 Fri Dec 27 22:59:26 UTC 2024 - Paul Leopardi <paul.leopardi@gmail.com>
 
 - In setup_ext.py, in the call to Extension, Set include_dirs to 
