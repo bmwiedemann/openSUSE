@@ -29,20 +29,20 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.3.2.1
-%global _plasma6_bugfix 6.3.2
+Version:        6.3.3
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/6.3.2/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/6.3.2/%{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-backends-drm-Log-connector-CRTC-matching-steps.patch
-Patch2:         0002-backends-drm-fix-testing-for-more-connectors-than-CR.patch
+Patch1:         0001-Version-6.3.3.patch
+# https://invent.kde.org/plasma/kwin/-/merge_requests/7317
+Patch2:         0002-kcms-rules-Remove-pragma-on-OptionsComboBox.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libcap-progs

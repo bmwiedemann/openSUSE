@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Mar 11 14:36:17 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.3
+- Changes since 6.3.2:
+  * backends/drm: properly reset buffer age when switching swapchains
+  * update version for new release
+  * plugins/keynotification: Fix notification for unlatching Meta
+  * xkb: Fix reporting state for multiple modifiers (kde#501159)
+  * autotests: add test for Workspace::lowerWindow
+  * layers: fix stacking issues in Workspace::lowerWindow (kde#478382,kde#478383)
+  * plugins/touchpadshortcuts: Add touchpad toggle shortcut with meta keys
+  * scene/workspacescene: don't check opaque region with QRegtion::contains
+  * window: reimplement restriction in moveResize (kde#401271,kde#481610,kde#493797)
+  * backends/drm: include header for std::this_thread::sleep_until
+  * utils/edid: Report monitor name without serial number (kde#500471)
+  * x11: Update XStacking order when adding override-redirect windows (kde#483163)
+  * plugins/blur: clear all textures after allocating them (kde#499935)
+  * kcms/rules: Fix keyboard usability for comboboxes with multiple selection (kde#488703)
+  * backends/drm: also don't use DEGAMMA_LUT on Intel (kde#500837)
+  * workspace: watch kdeglobals and update Xwayland scale accordingly (kde#499923)
+  * backends/drm: fix testing for more connectors than CRTCs (kde#500819)
+  * backends/drm: allow overriding the safety margin
+  * backends/drm: Print connector name in QDebug output
+  * backends/drm: Log connector<->CRTC matching steps
+  * window: Compare currentTile to requestedTile (kde#500666)
+  * backends/drm: add an environment variable to override the dpms timeout
+  * plugins/buttonrebinds: Create input device on demand
+  * Revert "workspace: better deal with having more outputs than the GPU can drive"
+  * kcms/rules: Fix showing selected VD on X11 (kde#484165)
+  * autotests: Fix testInputCapture with libei 1.4.0
+- Drop patches, now upstream:
+  * 0001-backends-drm-Log-connector-CRTC-matching-steps.patch
+  * 0002-backends-drm-fix-testing-for-more-connectors-than-CR.patch
+- Add patch to fix the project version:
+  * 0001-Version-6.3.3.patch
+- Add patch to fix KCM comboboxes:
+  * 0002-kcms-rules-Remove-pragma-on-OptionsComboBox.patch
+
+-------------------------------------------------------------------
 Thu Mar  6 08:05:23 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix crashes with multiple monitors (kde#500819, kde#500797)
