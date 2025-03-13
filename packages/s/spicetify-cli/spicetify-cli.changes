@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 13 11:23:58 UTC 2025 - jan.kuzilek@suse.com
+
+- Update to version 2.39.5:
+  * fix: remove bypass flag after checking for admin
+  * fix(popupLyrics): update view in system tray mode (#3330)
+  * feat(types): add `dark_vibrant` to `colorExtractor` (#3321)
+  * feat(popupLyrics): implement lyrics caching & Musixmatch token refresh (#3328)
+  * style: run `fmt` on `isAdmin` pkg
+  * fix: split `isAdmin` to platform files
+  * fix(preprocess): add css for height on apps pages (1.2.57+)
+  * feat: disallow running spicetify as admin/root
+  * fix(lyrics-plus): properly set height on main view (#3322)
+
+-------------------------------------------------------------------
 Sat Feb 15 20:02:38 UTC 2025 - jan.kuzilek@suse.com
 
 - Update to version 2.39.3:
