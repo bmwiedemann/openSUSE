@@ -93,7 +93,6 @@ export LDFLAGS="-Wl,-z,noexecstack -Wl,-z,now -Wl,-z,relro %{?_lto_cflags}"
 %license COPYING
 %doc README.md
 %{_libdir}/libnvidia-egl-wayland.so.%{so_ver}*
-%{_datadir}/wayland-eglstream/
 %dir %{_datadir}/egl
 %dir %{_datadir}/egl/egl_external_platform.d
 %{_datadir}/egl/egl_external_platform.d/10_nvidia_wayland.json
@@ -104,5 +103,6 @@ export LDFLAGS="-Wl,-z,noexecstack -Wl,-z,now -Wl,-z,relro %{?_lto_cflags}"
 %{_libdir}/libnvidia-egl-wayland.so
 %{_libdir}/pkgconfig/wayland-eglstream.pc
 %{_datadir}/pkgconfig/wayland-eglstream-protocols.pc
+%{_datadir}/wayland-eglstream/
 
 %changelog
