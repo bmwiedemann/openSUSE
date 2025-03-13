@@ -1,7 +1,7 @@
 #
 # spec file for package kasts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +31,8 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
@@ -61,6 +61,8 @@ BuildRequires:  pkgconfig(libvlc)
 BuildRequires:  pkgconfig(taglib)
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kirigami-addons6
+# It just crashes if libvlc can't find plugins (boo#1236935)
+Requires:       vlc-noX
 Requires:       qt6-sql-sqlite >= %{qt6_version}
 
 %description

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 13 12:32:56 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add hard dep on vlc-noX (boo#1236935)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3
