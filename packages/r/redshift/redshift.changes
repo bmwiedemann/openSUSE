@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 12 03:15:13 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch update-py-compile.patch:
+  * Use autoreconf to regenerate py-compile script.
+
+-------------------------------------------------------------------
 Fri Feb 23 11:54:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
