@@ -24,7 +24,7 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           azure-cli-core
-Version:        2.69.0
+Version:        2.70.0
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -61,6 +61,7 @@ Requires:       %{pythons}-packaging >= 20.9
 Requires:       %{pythons}-pip
 Requires:       %{pythons}-pkginfo >= 1.5.0.1
 Requires:       %{pythons}-psutil >= 5.9
+Requires:       %{pythons}-py-deviceid
 Requires:       %{pythons}-pyOpenSSL >= 17.1.0
 Requires:       %{pythons}-requests < 3.0.0
 Requires:       %{pythons}-requests >= 2.25.1
