@@ -1,7 +1,7 @@
 #
 # spec file for package shaderc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # Remember to bump in baselibs.conf
 %define lname libshaderc_shared1
 Name:           shaderc
-Version:        2024.4
+Version:        2025.1
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
@@ -34,8 +34,8 @@ BuildRequires:  cmake >= 2.8.12
 BuildRequires:  glslang-devel >= 15.1
 BuildRequires:  glslang-nonstd-devel
 BuildRequires:  python3-base
-BuildRequires:  spirv-headers >= 1.6.4+sdk303
-BuildRequires:  spirv-tools-devel >= 2024.4~rc2
+BuildRequires:  spirv-headers >= 1.6.4+sdk304
+BuildRequires:  spirv-tools-devel >= 2025.1~rc1
 
 %description
 A collection of tools, libraries and tests for shader compilation.
