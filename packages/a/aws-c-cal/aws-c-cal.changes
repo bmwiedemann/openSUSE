@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 12 07:18:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.5
+  * Do not include crypto when doing byo_crypto by @DmitriyMusatkin in (#207)
+- from version 0.8.4
+  * Ed25519 support. by @DmitriyMusatkin in (#206)
+
+-------------------------------------------------------------------
 Thu Feb  6 09:45:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.3
