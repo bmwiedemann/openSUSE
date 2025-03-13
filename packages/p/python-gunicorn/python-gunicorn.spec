@@ -1,7 +1,7 @@
 #
 # spec file for package python-gunicorn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Requires:       python-packaging
+Requires:       (python-importlib_metadata if python-base < 3.8)
 Suggests:       python-evenlet
 Suggests:       python-gevent
 Suggests:       python-gthread
@@ -56,6 +58,8 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module gevent >= 1.4}
 BuildRequires:  %{python_module gunicorn}
+BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 %endif
@@ -81,13 +85,12 @@ This package contains the documentation.
 %endif
 
 %prep
-%setup -q -n gunicorn-%{version}
+%autosetup -p1 -n gunicorn-%{version}
 # remove version pinning for test requirements
 sed -i 's/==.*//' requirements_test.txt
 sed -i -e '/cover/d' requirements_test.txt
 # do not check coverage
 sed -i -e 's/--cov[^ ]*//' -e 's/--cov-report[^ ]*//' setup.cfg
-%autopatch -p1
 
 %if %{with test}
 %check

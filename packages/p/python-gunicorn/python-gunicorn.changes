@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 12 07:43:22 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add missing dependency python-packaging, bsc#1239443
+
+-------------------------------------------------------------------
 Thu Oct 24 08:29:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.0.0:
