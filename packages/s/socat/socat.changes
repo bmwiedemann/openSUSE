@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Mar 11 22:41:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Make build recipe POSIX sh compatible
+- Add -v to file installation commands for the log
+
+-------------------------------------------------------------------
+Wed Mar  5 22:38:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.8.0.3:
+  * security: readline.sh has new option -lf <logfile> for stderr.
+    If this option is not given it logs to a file in . (cwd) only
+    when . is not writable by other users.
+  * Fix ignoreeof fail
+  * Fix regression ignoreing socks5 socksports
+  * Fix error "xiopoll(...): Bad file descriptor"
+  * Fixes for multiple other crashes and incorrect implementation
+  * Socks and proxy clients now also support option max-children.
+  * other bug fixes and documentation updates
+  * POSIXMQ-RECV now takes option o-nonblock; this, in combination
+    with -T, makes it possible to terminate Socat in case the queue
+    is empty.
+  * New option posixmq-flush (mq-flush) for POSIXMQ addresses
+    empties the queue before starting to transfer data.
+  * New options posixmq-maxmsg, posixmq-msgsize.
+  * POSIXMQ is now an alias for POSIXMQ-BIDIRECTIONAL.
+  * New address POSIXMQ-WRITE does the same as POSIXMQ-SEND,
+    as counterpart of POSIXMQ-READ.
+
+-------------------------------------------------------------------
 Wed Dec 11 12:13:49 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to 1.8.0.2:

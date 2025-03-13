@@ -1,8 +1,9 @@
 #
 # spec file for package socat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Pascal Bleser <pascal.bleser@opensuse.org>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 
 Name:           socat
-Version:        1.8.0.2
+Version:        1.8.0.3
 Release:        0
 Summary:        Multipurpose relay for bidirectional data transfer
 License:        MIT AND SUSE-GPL-2.0-with-openssl-exception
@@ -74,12 +75,12 @@ sed 's|#! %{_bindir}/env bash|#!%{_bindir}/bash|' -i proxyecho.sh readline.sh
 # export deterministic BUILD_DATE, format like "__DATE__ __TIME__"
 CL_DATE="$(awk -F " - " 'NR==2{print $1;}' %{SOURCE1})"
 test -n "$CL_DATE"
-export BUILD_DATE="$(LANG=C date --utc -d "${CL_DATE}" +"%{b} %{e} %{Y} %{T}")"
+export BUILD_DATE="$(LANG=C date --utc -d "${CL_DATE}" +"%%b %%e %%Y %%T")"
 export CFLAGS="%{optflags} -fno-strict-aliasing -DHAVE_SSLv23_client_method -DHAVE_SSLv23_server_method -fno-common"
 %configure
 %make_build all
 mkdir examples
-cp -a daemon.sh ftp.sh mail.sh proxyecho.sh readline.sh examples
+cp -av daemon.sh ftp.sh mail.sh proxyecho.sh readline.sh examples
 
 %install
 mkdir -p \
@@ -96,7 +97,7 @@ export TERM=ansi
 sotests="filan consistency stdio fd pipe pipes exec gopen noatime system"
 %ifnarch armv6l armv6hl aarch64
 # add some more tests for fast machines only
-sotests+=" unix"
+sotests="$sotests unix"
 %endif
 # increase socket shutdown timeout, default 0.1 or 0.5 caused sometimes
 # random failures on slow machines (armv6l, aarch64)
@@ -114,6 +115,7 @@ export OPTS="-t 2"
 %{_mandir}/man1/socat1.1%{?ext_man}
 
 %files extra
+%license COPYING COPYING.OpenSSL
 %{_bindir}/socat-broker.sh
 %{_bindir}/socat-chain.sh
 %{_bindir}/socat-mux.sh

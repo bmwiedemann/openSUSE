@@ -1,20 +1,28 @@
---- a/test.sh	2023-11-13 20:31:08.000000000 +0100
-+++ b/test.sh	2024-05-01 21:25:27.709337509 +0200
-@@ -16054,9 +16054,15 @@
- pid0=$!
- relsleep 2
+Index: socat-1.8.0.3/test.sh
+===================================================================
+--- socat-1.8.0.3.orig/test.sh
++++ socat-1.8.0.3/test.sh
+@@ -15845,7 +15845,13 @@ tdiff="$td/test$N.diff"
+ da="test$N $(date) $RANDOM"
+ CMD0="$TRACE $SOCAT $opts STDIO SYSTEM:'tee /dev/stdout 2>/dev/null',pty,cfmakeraw"
  TTY=$(tty |sed 's|/dev/||')
--pkill -USR1 -t $TTY socat || { echo "pkill -t $TTY -USR1 socat"; }
+-CMD1="pkill -USR1 -t $TTY socat"
 +if [ "$TTY" = 'not a tty' ]
 +then
 +   TTY=''
 +else
 +   TTY="-t $TTY"
 +fi
-+pkill -USR1 $TTY socat || { echo "pkill $TTY -USR1 socat"; }
++CMD1="pkill -USR1 $TTY socat"
+ printf "test $F_n $TEST... " $N
+ # On Fedora-41 pkill can be slow (eg.20ms)
+ { echo "$da"; relsleep 20; } |eval "$CMD0" >"${tf}0" 2>"${te}0" &
+@@ -15857,7 +15863,7 @@ $CMD1 2>"${te}1"
  relsleep 2
--pkill -t $TTY socat
-+pkill $TTY socat
+ #date +'%Y-%m-%dT%H:%M:%S.%N' >>"${te}1"
  wait
+-pkill -t $TTY socat >>"${te}1"
++pkill $TTY socat >>"${te}1"
  if [ "$(grep STATISTICS "${te}0" |wc -l)" -eq 2 ]; then
      $PRINTF "$OK\n"
+     if [ "$VERBOSE" ]; then echo "$CMD0 &"; fi
