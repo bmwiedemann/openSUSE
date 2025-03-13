@@ -19,13 +19,13 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-vaapi
-Version:        1.24.12
+Version:        1.26.0
 Release:        0
 Summary:        Gstreamer VA-API plugins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{url}/src/gstreamer-vaapi/gstreamer-vaapi-%{version}.tar.xz
+Source0:        gstreamer-vaapi-%{version}.tar.zst
 
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel
