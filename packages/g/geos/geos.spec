@@ -16,9 +16,9 @@
 #
 
 
-%define uver	3_13_0
+%define uver	3_13_1
 Name:           geos
-Version:        3.13.0
+Version:        3.13.1
 Release:        0
 Summary:        Geometry Engine - Open Source
 License:        LGPL-2.1-only
