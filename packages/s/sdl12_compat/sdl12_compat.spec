@@ -31,6 +31,8 @@ Source9:        %name-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xproto)
 
 # A list of known apps/issues is at
 # docs.google.com/spreadsheets/d/1u8Rq3LVQYYgu28sBuxrZ371QolbiZu5z_LjENc4ddZs/edit
