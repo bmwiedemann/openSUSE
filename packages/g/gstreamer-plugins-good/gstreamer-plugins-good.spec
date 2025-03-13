@@ -33,13 +33,13 @@
 %endif
 
 Name:           gstreamer-plugins-good
-Version:        1.24.12
+Version:        1.26.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.zst
 Source1:        gstreamer-plugins-good.appdata.xml
 Source99:       baselibs.conf
 
