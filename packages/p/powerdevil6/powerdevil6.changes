@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 11 14:45:13 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.3
+- Changes since 6.3.2:
+  * update version for new release
+  * applets/batterymonitor: Warn about higher energy consumption when blocking sleep
+  * kcm: Show warning when disabling autosuspend or setting it too long (kde#501057)
+  * daemon: Fix charge threshold support for Dell laptops, maybe more (kde#497200)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Feb 25 19:39:02 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.2:
