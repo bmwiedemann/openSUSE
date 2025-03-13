@@ -1,7 +1,7 @@
 #
 # spec file for package python-spyder-notebook
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 URL:            https://github.com/spyder-ide/spyder-notebook
 Source:         https://files.pythonhosted.org/packages/source/s/spyder-notebook/spyder_notebook-%{version}.tar.gz
 Source1:        https://github.com/spyder-ide/spyder-notebook/raw/v%{version}/spyder_notebook/widgets/tests/test.ipynb
+# PATCH-FIX-UPSTREAM gh#spyder-ide/spyder-notebook#481
+Patch0:         support-python-312.patch
 # TODO: use local-npm-registry
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}

@@ -1,0 +1,51 @@
+From e5291191ae351deca9c499d5ac4632a05e57c0b7 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 10 Mar 2025 14:35:22 +1100
+Subject: [PATCH] Support Python 3.12+ in setup.py
+
+Python 3.12 removed the distutils module, and Python 3.13 removed the
+pipes module. Replace usage of both with either their documented
+replacements, or in the case of distutils, just use logging directly.
+---
+ setup.py | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 33a90de..5a049e5 100644
+--- a/setup.py
++++ b/setup.py
+@@ -7,10 +7,10 @@
+ 
+ # Standard library imports
+ import ast
+-import distutils
++import logging
+ import os
+ import os.path as osp
+-import pipes
++import shlex
+ import subprocess
+ import sys
+ 
+@@ -23,17 +23,19 @@
+ else:
+     def list2cmdline(cmd_list):
+         """Convert list of arguments to a command line string."""
+-        return ' '.join(map(pipes.quote, cmd_list))
++        return ' '.join(map(shlex.quote, cmd_list))
+ 
+ 
+ HERE = os.path.abspath(os.path.dirname(__file__))
+ SERVER_DIR = osp.join(HERE, 'spyder_notebook', 'server')
+ BUILD_DIR = osp.join(SERVER_DIR, 'static')
+ 
++logging.basicConfig(format='%(message)s')
+ 
+ def run(cmd, *args, **kwargs):
+     """Echo a command before running it."""
+-    distutils.log.info('> ' + list2cmdline(cmd))
++    logger = logging.getLogger()
++    logger.info('> ' + list2cmdline(cmd))
+     kwargs['shell'] = (sys.platform == 'win32')
+     return subprocess.check_call(cmd, *args, **kwargs)
+ 

@@ -22,4 +22,15 @@
 - Test with PyQt6: Avoid Qt5 segfaults (?) (forwarded request 1201289 from bnavigator)</comment>
     <requestid>1201290</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0d039a905dac4096c77797731d0e5f05</srcmd5>
+    <version>0.6.1</version>
+    <time>1741902439</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python-312.patch
+  * Support building with Python 3.12+.
+
+With fixed python-superqt, this now builds</comment>
+    <requestid>1252871</requestid>
+  </revision>
 </revisionlist>
