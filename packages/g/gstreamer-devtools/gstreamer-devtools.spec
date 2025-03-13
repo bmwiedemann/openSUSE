@@ -20,16 +20,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           gstreamer-devtools
-Version:        1.24.12
+Version:        1.26.0
 Release:        0
 Summary:        Development and debugging tools for GStreamer
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source:         %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
+Source:         %{_name}-%{version}.tar.zst
+Source2:        vendor.tar.zst
 # PATCH-FIX-UPSTREAM gst-devtools-fix-hicolor-dir.patch -- Install icon file in correct folder
 Patch0:         gst-devtools-fix-hicolor-dir.patch
 
+BuildRequires:  cargo
 BuildRequires:  fdupes
 BuildRequires:  meson >= 1.1
 BuildRequires:  pkgconfig
@@ -39,6 +41,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{version}
+BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0) >= %{version}
@@ -100,7 +103,9 @@ inside a GstPipeline. In the end, fixing issues found by the tool will
 ensure that all elements behave all together in the expected way.
 
 %prep
-%autosetup -n %{_name}-%{version} -p1
+%autosetup -n %{_name}-%{version} -a2 -p1
+# unglock cargo
+rm ./dots-viewer/Cargo.lock
 sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' validate/tools/gst-validate-launcher.in
 sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' debug-viewer/gst-debug-viewer
 
@@ -113,12 +118,15 @@ sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' debug-viewer/gst-
 
 %install
 %meson_install
+%python3_fix_shebang
 %fdupes -s %{buildroot}/%{_prefix}
+
 %ldconfig_scriptlets -n libgstvalidate-1_0-0
 
 %files
 %license validate/COPYING
-%doc ChangeLog validate/README
+%doc validate/README
+%{_bindir}/gst-dots-viewer
 %{_bindir}/gst-validate-1.0
 %{_bindir}/gst-validate-images-check-1.0
 %{_bindir}/gst-validate-launcher
