@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Mar 12 15:01:43 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 6.1.0:
+  * Breaking Changes:
+    - Remove deprecated predicates (notEquals, greaterThan etc...)
+      in favor of operators #3532
+    - Remove deprecated keyword HTTP/* for HTTP #3697
+  * Enhancements:
+    - Removed limitation for --cookie-jar to use only one hurl file
+      #2537
+    - Add HTTP version query #1706
+    - Add curl -H/--header option to globally add headers to all
+      requests #1905 #2144
+    - Add toString Filter #2035 #3798
+    - Add base64 decode filter #2145
+    - Add base64 encode filter #2145
+    - Redacts secrets from JUnit reports #2947 #2972
+    - Redacts secrets from JSON report #2947 #2972
+    - Redact secret in HTML report #2947 #2972
+    - Redact secrets from curl export #2947 #2972
+    - Redact secrets from cookies export #2947 #2972
+    - Add IP address query #3106
+    - Add isIpv4 / isIpv6 asserts on IP versions #3106
+    - Allow sending empty HTTP header #3536
+    - Redact dynamic values from logs #3543
+    - Add header option per request #3575
+    - Fix invalid escape in hurlfmt parse func #3615
+    - hurlfmt: Use Hurl predicates identifiers for Hurl to JSON
+      file export #3662
+    - Add aarch64 deb package #3829
+  * Bugs Fixed:
+    - Fix missing request line errors in HTML report #3534
+    - Eval template in JSON object key #3593
+    - Show error message if format is invalid in format filter
+      #3613
+    - Create parent folders if missing when using --cookie-jar FILE
+      #3637
+    - Remove lint errors and Fix non-zero exit code in case of
+      error #3648
+    - Support BigInteger in variable #3656
+    - fix hurlfmt html export loosing some whitespaces #3675
+    - Fix template to source #3675
+    - Fix changing HTTP version per request sometimes not effective
+      #3719
+    - Add bash file completion for hurl/hurlfmt #3750
+    - Fix multilines HTML export #3768
+    - Change parsing file content type in multipart form data #3796
+  * Deprecations:
+    - Deprecate includes in favor of contains predicate #1896
+    - Warn for deprecated multilines string attributes #3622
+    - Warn for --interactive deprecation #3763
+
+-------------------------------------------------------------------
 Wed Dec 04 05:54:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 6.0.0:
