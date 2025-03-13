@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 13 10:37:06 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Drop special C++ build requires and setting of CC or CXX, libzdnn
+  is 99% C and builds fine with most GCC versions.
+
+-------------------------------------------------------------------
 Wed Jan 22 08:38:44 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Changed BuildRequires from gcc13-c++ to gcc14-c++ (jsc#PED-10257)

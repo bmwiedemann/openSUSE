@@ -26,11 +26,6 @@ URL:            https://github.com/IBM/zDNN
 Source:         zDNN-1.1.1.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
-%if %{gcc_version} < 14
-BuildRequires:  gcc14-c++
-%else
-BuildRequires:  gcc%{gcc_version}-c++
-%endif
 
 ExclusiveArch:  s390x
 
@@ -69,15 +64,6 @@ shared library for the libzdnn (zDNN) RPM.
 %autosetup -p1 -n zDNN-%{version}
 
 %build
-
-export CC=gcc-%{gcc_version}
-export CXX=g++-%{gcc_version}
-
-%if %{gcc_version} < 14
-export CC=gcc-14
-export CXX=g++-14
-%endif
-
 autoconf
 %configure
 %make_build build
