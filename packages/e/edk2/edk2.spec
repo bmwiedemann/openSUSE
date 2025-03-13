@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package edk2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,6 +108,8 @@ ExclusiveArch:  aarch64
 %define ARCH AARCH64
 %elifarch riscv64
 %define ARCH RISCV64
+%elifarch loongarch64
+%define ARCH LOONGARCH64
 %endif
 
 %description
