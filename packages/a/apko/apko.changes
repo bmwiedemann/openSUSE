@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 13 05:53:15 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.25.3:
+  * Use sync.Pools for allocations (#1568)
+  * Add SubFS implementation for Melange (#1560)
+
+-------------------------------------------------------------------
 Mon Mar 10 12:43:48 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.25.2:
