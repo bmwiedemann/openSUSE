@@ -1035,4 +1035,30 @@
   * Bump trycmd from 0.15.8 to 0.15.9</comment>
     <requestid>1249081</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>978c1eb3bc3842d51591db40dc0779f8</srcmd5>
+    <version>0.20.24</version>
+    <time>1741874876</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.24:
+  Bug Fixes:
+  * Make temp files visible on white background
+  Documentation:
+  * More precise temp files color description
+  Features:
+  * Add .exercism folder icon
+  * Add .ocamlinit icon
+  * Add .opam folder icon
+  Miscellaneous Tasks:
+  * Add gcloud icon for .gcloudignore
+  * Add vim icon for .gvimrc, _vimrc and _gvimrc
+  * Add fennel icon for ~/.fennelrc and ~/.config/fennel/fennelrc
+  * Eza v0.20.24 changelogs, version bump
+  Build:
+  * Bump once_cell from 1.20.3 to 1.21.0
+  * Bump terminal_size from 0.4.1 to 0.4.2
+  * Bump serde from 1.0.218 to 1.0.219
+  * Bump chrono from 0.4.39 to 0.4.40</comment>
+    <requestid>1252731</requestid>
+  </revision>
 </revisionlist>
