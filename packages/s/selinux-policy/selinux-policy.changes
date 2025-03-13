@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 12 08:31:17 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250312:
+  * Label wine's windows libraries as textrel_shlib_t (bsc#1239317)
+  * Allow auth_use_pam to create /var/lib/wtmpdb (bsc#1237513)
+  * initial labeling for Hana systems
+  * allow ping to bind generic UDP nodes
+
+-------------------------------------------------------------------
 Fri Mar 07 14:28:37 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250307:
