@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 12 09:02:29 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Botan 3.7.1, latest stable release
+
+* Revert a change that prevented build.h from being usable from C applications. 
+* Add post-quantum scheme Classic McEliece 
+* In TLS enable the hybrid x25519/ML-KEM-768 post quantum secure key exchange by default for clients and servers. 
+* Support for the pre-standard Kyber-r3 key exchange has been removed from TLS 
+* In TLS add support for “pure” ML-KEM key exchange, in addition to the existing hybrid ML-KEM + EC suites. 
+* Add new EC key constructors 
+* Internal EC optimizations and improvements
+* Fix a regression introduced in 3.6.0 which would cause many P-521 secret keys to be rejected as invalid due to not having the expected length.
+* Fix a bug preventing parsing of OCSP responses containing more than one pinned certificate
+* TPM 2.0 improvements 
+* Fix a build issue when compiling with MSVC on ARM
+* Find full changelog at: https://botan.randombit.net/news.html 
+
+-------------------------------------------------------------------
 Tue Nov  5 08:16:35 UTC 2024 - Stephan Hemeier <Sauerlandlinux@gmx.de>
 
 - Botan 3.6.1, the latest stable release of the Botan 3 series 

@@ -702,4 +702,16 @@ https://botan.randombit.net/news.html#version-3-6-1-2024-10-26
 (🤖: Submission of Botan via https://src.opensuse.org/pool/Botan/pulls/9 by ayankov)</comment>
     <requestid>1227773</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>7316343ea5f1f3af216f0b1ac84340a3</srcmd5>
+    <version>3.7.1</version>
+    <time>1741874791</time>
+    <user>anag+factory</user>
+    <comment>Update to 3.7.1
+
+
+
+(🤖: Submission of Botan via https://src.opensuse.org/pool/Botan/pulls/10 by ayankov)</comment>
+    <requestid>1252584</requestid>
+  </revision>
 </revisionlist>
