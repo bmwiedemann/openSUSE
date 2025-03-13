@@ -1,7 +1,0 @@
-<package name="gnome-dvb-daemon" project="openSUSE:Factory">
-  <title>Daemon to use DVB devices</title>
-  <description>DVB Daemon is a daemon written in Vala to setup your DVB devices,
-record and watch TV shows and browse EPG. It can be controlled directly
-via its D-Bus interface or with UI applications that come with it.</description>
-  <devel project="GNOME:Apps" package="gnome-dvb-daemon"/>
-</package>
