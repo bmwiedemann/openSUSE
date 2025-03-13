@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Mar 06 17:14:56 UTC 2025 - ro@suse.com
+
+- Update to version 0.20250306:
+  * Remove deps from rust executable to module's pcm files
+  * Update test for rust executable deps
+  * Add toolchain for cxx modules in TestWithScope
+  * Apply the latest clang-format
+  * Update reference for {rustdeps}
+  * Always generate a .toolchain file even if it is empty.
+  * Pass --with-lg-page=16 when building jemalloc for arm64.
+  * Remove obsolete debug checks.
+  * Make default vs ide version on Windows as 2022
+  * Reland "Adds a path_exists() function"
+  * Revert "Adds a path_exists() function"
+  * Adds a path_exists() function
+  * Revert "Speed-up GN with custom OutputStream interface."
+  * Speed-up GN with custom OutputStream interface.
+  * Add `exec_script_allowlist` to replace `exec_script_whitelist`.
+  * Retry ReplaceFile in case of failure
+  * Fix crash when NinjaBuildWriter::RunAndWriteFile fails
+  * fix include for escape.h
+  * fix exit code for gn gen failure
+  * misc: Use html.escape instead of cgi.escape
+  * Do not copy parent build_dependency_files_ in Scope constructors.
+  * Improve error message for duplicated items
+  * [rust-project] Always use forward slashes in sysroot paths
+  * Update all_dependent_configs docs.
+  * set 'no_stamp_files' by default
+  * fix a typo
+  * Stop using transitional LFS64 APIs
+  * do not use tool prefix for phony rule
+  * [rust] Add sysroot_src to rust-project.json
+  * Implement and enable 'no_stamp_files'
+  * Add Target::dependency_output_alias()
+  * Add "outputs" to generated_file documentation.
+  * Update bug database link.
+  * remove a trailing space after variable bindings
+  * fix tool name in error
+  * remove unused includes
+  * Markdown optimization (follow-up)
+  * Support link_output, depend_output in Rust linked tools.
+  * Properly verify runtime_outputs in rust tool definitions.
+  * BugFix: Syntax error in gen.py file
+  * generated_file: add output to input deps of stamp
+  * Markdown optimization:
+  * Revert "Rust: link_output, depend_output and runtime_outputs for dylibs"
+  * hint using nogncheck on disallowed includes
+
+-------------------------------------------------------------------
 Tue Sep 24 01:27:32 CEST 2024 - ro@suse.de
 
 - add "-Wno-unused-value" to fix build on armv6/armv7 

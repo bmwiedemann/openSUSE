@@ -1,7 +1,7 @@
 #
 # spec file for package gn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gn
-Version:        0.20240730
+Version:        0.20250306
 Release:        0
 Summary:        A meta-build system that generates build files for Ninja
 License:        BSD-3-Clause

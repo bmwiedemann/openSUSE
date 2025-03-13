@@ -174,4 +174,12 @@
     <comment>- add &quot;-Wno-unused-value&quot; to fix build on armv6/armv7 (forwarded request 1202776 from oertel)</comment>
     <requestid>1216678</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7e66b5f665158d41d9a3b7f72cc0ced8</srcmd5>
+    <version>0.20250306</version>
+    <time>1741899899</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1252836</requestid>
+  </revision>
 </revisionlist>
