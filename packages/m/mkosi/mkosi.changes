@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 13 08:22:55 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Only install the real man pages, not the mandoc source files
+
+-------------------------------------------------------------------
 Sat Feb  1 18:25:18 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Update to 25.3:

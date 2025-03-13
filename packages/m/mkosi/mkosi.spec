@@ -101,13 +101,13 @@ bin/mkosi completion bash > mkosi.bash
 %ifarch x86_64 aarch64
 # Install man pages
 mkdir -p %{buildroot}%{_mandir}/man1
-cp %{buildroot}%{python3_sitelib}/mkosi/resources/man/mkosi.1* \
+cp %{buildroot}%{python3_sitelib}/mkosi/resources/man/mkosi.1 \
     %{buildroot}%{_mandir}/man1/
-cp %{buildroot}%{python3_sitelib}/mkosi/resources/man/mkosi-addon.1* \
+cp %{buildroot}%{python3_sitelib}/mkosi/resources/man/mkosi-addon.1 \
     %{buildroot}%{_mandir}/man1/
-cp %{buildroot}%{python3_sitelib}/mkosi/resources/man/mkosi-initrd.1* \
+cp %{buildroot}%{python3_sitelib}/mkosi/resources/man/mkosi-initrd.1 \
     %{buildroot}%{_mandir}/man1/
-cp %{buildroot}%{python3_sitelib}/mkosi/resources/man/mkosi-sandbox.1* \
+cp %{buildroot}%{python3_sitelib}/mkosi/resources/man/mkosi-sandbox.1 \
     %{buildroot}%{_mandir}/man1/
 %endif
 
@@ -141,8 +141,8 @@ fi
 %{_bindir}/mkosi
 %{_bindir}/mkosi-sandbox
 %ifarch x86_64 aarch64
-%{_mandir}/man1/mkosi.1*
-%{_mandir}/man1/mkosi-sandbox.1*
+%{_mandir}/man1/mkosi.1%{?ext_man}
+%{_mandir}/man1/mkosi-sandbox.1%{?ext_man}
 %endif
 %{python3_sitelib}/mkosi
 %{python3_sitelib}/mkosi-%{version}.dist-info
@@ -153,13 +153,13 @@ fi
 %files addon
 %{_bindir}/mkosi-addon
 %ifarch x86_64 aarch64
-%{_mandir}/man1/mkosi-addon.1*
+%{_mandir}/man1/mkosi-addon.1%{?ext_man}
 %endif
 
 %files initrd
 %{_bindir}/mkosi-initrd
 %ifarch x86_64 aarch64
-%{_mandir}/man1/mkosi-initrd.1*
+%{_mandir}/man1/mkosi-initrd.1%{?ext_man}
 %endif
 %dir %{_prefix}/lib/mkosi-initrd
 %{_prefix}/lib/mkosi-initrd/mkosi.conf
