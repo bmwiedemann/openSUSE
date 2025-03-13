@@ -1294,6 +1294,7 @@ unsorted:
   - babeltrace2 
   - babeltrace2-devel 
   - babl-devel 
+  - backhand 
   - backintime 
   - backintime-lang 
   - backintime-qt 
@@ -1723,8 +1724,6 @@ unsorted:
   - budgie-quicknote-applet 
   - budgie-recentlyused-applet 
   - budgie-rotation-lock-applet 
-  - budgie-screensaver 
-  - budgie-screensaver-lang 
   - budgie-session 
   - budgie-session-lang 
   - budgie-showtime-applet 
@@ -3554,6 +3553,7 @@ unsorted:
   - dom4j-javadoc 
   - domination 
   - domination-data 
+  - dool 
   - doom64ex-plus 
   - doomsday 
   - dosbox 
@@ -4690,7 +4690,6 @@ unsorted:
   - frei0r-plugins-opencv 
   - frescobaldi 
   - fribidi-devel 
-  - fritzing-parts 
   - frizbee 
   - frizbee-bash-completion 
   - frizbee-fish-completion 
@@ -9895,7 +9894,6 @@ unsorted:
   - jupyter-ipyevents 
   - jupyter-ipyevents-jupyterlab 
   - jupyter-ipyparallel 
-  - jupyter-ipysheet 
   - jupyter-ipytablewidgets 
   - jupyter-ipytablewidgets-jupyterlab 
   - jupyter-ipyvue-nbextension 
@@ -17278,9 +17276,9 @@ unsorted:
   - libwtcdb-devel 
   - libwtcdb-tools 
   - libwtcdb1 
-  - libwtdbo4_10_4 
-  - libwtdbomysql4_10_4 
-  - libwtdbopostgres4_10_4 
+  - libwtdbo4_11_3 
+  - libwtdbomysql4_11_3 
+  - libwtdbopostgres4_11_3 
   - libwv-1_2-4 
   - libwx_base-suse-devel 
   - libwx_base-suse-nostl-devel 
@@ -24012,6 +24010,7 @@ unsorted:
   - python-rpm-macros 
   - python-rpm-packaging 
   - python-rtslib-fb-common 
+  - python-segno-doc 
   - python-senlinclient-doc 
   - python-shodan-doc 
   - python-sip4-common 
@@ -24083,7 +24082,6 @@ unsorted:
   - python3-clang18 
   - python3-clang19 
   - python3-clingo 
-  - python3-clinkgrammar 
   - python3-clustershell 
   - python3-coconut 
   - python3-csound 
@@ -25983,7 +25981,6 @@ unsorted:
   - python311-ipyleaflet 
   - python311-ipympl 
   - python311-ipyparallel 
-  - python311-ipysheet 
   - python311-ipytablewidgets 
   - python311-ipython 
   - python311-ipython_genutils 
@@ -27340,6 +27337,7 @@ unsorted:
   - python311-roifile 
   - python311-rollbar 
   - python311-roman 
+  - python311-roman-numerals 
   - python311-rope 
   - python311-rpcq 
   - python311-rpds-py 
@@ -29670,7 +29668,6 @@ unsorted:
   - python312-ipyleaflet 
   - python312-ipympl 
   - python312-ipyparallel 
-  - python312-ipysheet 
   - python312-ipytablewidgets 
   - python312-ipython 
   - python312-ipython_genutils 
@@ -31052,6 +31049,7 @@ unsorted:
   - python312-roifile 
   - python312-rollbar 
   - python312-roman 
+  - python312-roman-numerals 
   - python312-rope 
   - python312-rpcq 
   - python312-rpds-py 
@@ -34688,6 +34686,7 @@ unsorted:
   - python313-roifile 
   - python313-rollbar 
   - python313-roman 
+  - python313-roman-numerals 
   - python313-rope 
   - python313-rpcq 
   - python313-rply 
@@ -34917,6 +34916,7 @@ unsorted:
   - python313-stack-data 
   - python313-standard-aifc 
   - python313-standard-chunk 
+  - python313-standard-imghdr 
   - python313-standard-sunau 
   - python313-starlette 
   - python313-statsd 
@@ -48807,6 +48807,7 @@ unsorted:
   - waybar-branding-openSUSE 
   - waybar-branding-upstream 
   - waycheck 
+  - wayclip 
   - wayfire 
   - wayfire-devel 
   - wayland-devel 
