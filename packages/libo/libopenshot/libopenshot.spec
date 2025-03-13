@@ -34,6 +34,7 @@ BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-setuptools
 BuildRequires:  ruby-devel
 BuildRequires:  swig
 BuildRequires:  cmake(OpenShotAudio) >= 0.4.0
