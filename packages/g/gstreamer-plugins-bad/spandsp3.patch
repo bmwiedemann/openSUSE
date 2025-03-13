@@ -11,11 +11,14 @@ Index: gst-plugins-bad-1.20.1/ext/spandsp/gstspanplc.c
 ===================================================================
 --- gst-plugins-bad-1.20.1.orig/ext/spandsp/gstspanplc.c
 +++ gst-plugins-bad-1.20.1/ext/spandsp/gstspanplc.c
-@@ -36,6 +36,7 @@
+@@ -36,6 +36,10 @@
  #include "gstspanplc.h"
  
  #include <gst/audio/audio.h>
++#include <spandsp/version.h>
++#if defined(SPANDSP_RELEASE_DATE) && SPANDSP_RELEASE_DATE >= 20120902
 +#include <spandsp/private/plc.h>
++#endif
  
  G_DEFINE_TYPE (GstSpanPlc, gst_span_plc, GST_TYPE_ELEMENT);
  GST_ELEMENT_REGISTER_DEFINE (spanplc, "spanplc", GST_RANK_PRIMARY,

@@ -83,17 +83,15 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.24.12
+Version:        1.26.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.zst
 Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
-# PATCH-FIX-SUSE Fix build with the old srt version inherited from SLE15 SP2
-Patch0:         fix-build-with-srt-1.3.4.patch
 # PATCH-FIX-OPENSUSE spandsp3.patch jengelh@inai.de -- Fix build against spandsp 3.x. Patch is not upstreamable in this form
 Patch2:         spandsp3.patch
 
@@ -187,7 +185,7 @@ BuildRequires:  pkgconfig(schroedinger-1.0) >= 1.0.10
 BuildRequires:  pkgconfig(sndfile) >= 1.0.16
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(spandsp) >= 0.0.6
-BuildRequires:  pkgconfig(srt)
+BuildRequires:  pkgconfig(srt) >= 1.4
 %if %{with voamrwbenc}
 BuildRequires:  pkgconfig(vo-amrwbenc) >= 0.1.0
 %endif
@@ -278,14 +276,12 @@ BuildRequires:  pkgconfig(libchromaprint)
 %description chromaprint
 Add chromaprint (Audio Fingerprinting) support to any GStreamer based tool.
 
-%if %{with fluidsynth}
 %package fluidsynth
 Summary:        Fluidsynth plugin for GStreamer
 Group:          Productivity/Multimedia/Other
 
 %description fluidsynth
 Add fluidsynth midi support to any GStreamer based tool.
-%endif
 
 %package -n libgstadaptivedemux-1_0-0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
@@ -594,7 +590,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstAnalytics-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstAnalytics-1_0
@@ -605,7 +601,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstBadAudio-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstBadAudio-1_0
@@ -616,7 +612,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstDxva-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstDxva-1_0
@@ -627,7 +623,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstMse-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstMse-1_0
@@ -638,7 +634,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstPlay-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstPlay-1_0
@@ -649,7 +645,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstCodecs-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstCodecs-1_0
@@ -660,7 +656,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstInsertBin-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstInsertBin-1_0
@@ -671,7 +667,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstMpegts-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstMpegts-1_0
@@ -682,7 +678,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstPlayer-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstPlayer-1_0
@@ -693,7 +689,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstVulkan-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstVulkan-1_0
@@ -704,7 +700,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstVulkanWayland-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstVulkanWayland-1_0
@@ -715,7 +711,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstVulkanXCB-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstVulkanXCB-1_0
@@ -726,7 +722,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstWebRTC-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstWebRTC-1_0
@@ -737,7 +733,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstCuda-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstCuda-1_0
@@ -748,7 +744,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-CudaGst-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-CudaGst-1_0
@@ -759,7 +755,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package -n typelib-1_0-GstVa-1_0
-Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstVa-1_0
@@ -807,17 +803,10 @@ making use of the GStreamer Transcoding API.
 %lang_package
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 %if ! 0%{?BUILD_ORIG}
 rm -Rf sys/decklink
 sed -ie "/subdir('decklink')/d" sys/meson.build
-%endif
-
-%if %{pkg_vcmp srt < 1.4.0}
-%patch -P 0 -p1
-%endif
-%if %{pkg_vcmp spandsp-devel >= 3}
-%patch -P 2 -p1
 %endif
 
 %build
@@ -917,6 +906,13 @@ export PYTHON=%{_bindir}/python3
 %if %{without webrtc_audio_processing_1}
 	-D webrtcdsp=disabled \
 %endif
+	-D cuda-nvmm=disabled \
+	-D nvcomp=disabled \
+	-D nvdswrapper=disabled \
+	-D androidmedia=disabled \
+	-D lcevcdecoder=disabled \
+	-D lcevcencoder=disabled \
+	-D svtjpegxs=disabled \
 	%{nil}
 %meson_build
 
@@ -1090,6 +1086,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstsvtav1.so
 %endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstswitchbin.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsttensordecoders.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsttimecode.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstttmlsubs.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstunixfd.so
