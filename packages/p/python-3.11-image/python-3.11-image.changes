@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 13 08:52:18 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- Add failsafe to not create invalid compat symlinks
+
+-------------------------------------------------------------------
 Tue Mar 11 08:26:25 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - Remove latest tag, add compat symlinks for python3
