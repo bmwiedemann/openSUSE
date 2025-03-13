@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-segno
-Version:        1.6.5
+Version:        1.6.6
 Release:        0
 Summary:        QR Code and Micro QR Code generator for Python
 License:        BSD-3-Clause
@@ -62,8 +62,6 @@ chmod 755 ./segno/cli.py
 
 %install
 %pyproject_install
-install -d %{buildroot}%{_mandir}/man1/
-mv -v %{buildroot}/usr/usr/share/man/man1/segno.1 %{buildroot}%{_mandir}/man1/
 %python_clone -a %{buildroot}%{_bindir}/segno
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

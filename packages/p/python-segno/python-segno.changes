@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 13 05:55:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.6.6:
+  * Fixed man page directory. This issue was introduced by mistake
+    in the 1.6.4/1.6.5 release and was reported by Johannes Kastl
+    and Michał Górny
+
+-------------------------------------------------------------------
 Wed Mar 12 06:03:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.6.5 (no releases between 1.6.1 and 1.6.5):
