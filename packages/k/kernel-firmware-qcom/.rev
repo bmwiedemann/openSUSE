@@ -25,4 +25,13 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment></comment>
     <requestid>1247385</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b8013df95eb847cd7d7cb92254276f66</srcmd5>
+    <version>20250311</version>
+    <time>1741874670</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250311 (git commit b69d4b74c986):
+  * qcom: Update gpu firmwares for qcs8300 chipset</comment>
+    <requestid>1252344</requestid>
+  </revision>
 </revisionlist>
