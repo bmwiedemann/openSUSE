@@ -20,13 +20,13 @@
 %define _name gst-rtsp-server
 
 Name:           gstreamer-rtsp-server
-Version:        1.24.12
+Version:        1.26.0
 Release:        0
 Summary:        GStreamer-based RTSP server library
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{url}/src/gst-rtsp-server/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.zst
 Source99:       gstreamer-rtsp-server-rpmlintrc
 
 BuildRequires:  meson >= 1.1
@@ -96,7 +96,7 @@ Development files for the GStreamer library for building an RTSP server.
 %{_libdir}/girepository-1.0/GstRtspServer-1.0.typelib
 
 %files devel
-%doc ChangeLog README
+%doc README
 %{_datadir}/gir-1.0/GstRtspServer-1.0.gir
 %{_includedir}/gstreamer-1.0/gst/rtsp-server/
 %{_libdir}/libgstrtspserver-1.0.so
