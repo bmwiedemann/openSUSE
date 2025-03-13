@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 12 22:14:37 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- update to 3.1.0
+  * File Support
+    - BCIF import support
+    - gzipped-compressed SDF (SDFGZ) import support
+  * Python API
+    - "delete_states" command (removal of one or more states)
+    - "declare_command" extension for improved ergonomics of introducing
+      and customizing PyMOL functionality
+    - "cell_color" setting for altering unit cell colors
+  * Developer & Infrastructure
+    - Migration from distutils to setuptools
+
+-------------------------------------------------------------------
 Tue Nov 12 14:18:22 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to normalize build date (boo#1047218)

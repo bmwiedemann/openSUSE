@@ -21,14 +21,13 @@
 %define modname pymol-open-source
 %bcond_with test
 Name:           python-pymol
-Version:        3.0.0+git.1725549602.9d3061c
+Version:        3.1.0
 Release:        0
 Summary:        A Molecular Viewer
 License:        Python-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            https://pymol.org/
-# Source0:        https://github.com/schrodinger/%%{modname}/archive/v%%{version}/%%{modname}-%%{version}.tar.gz
-Source0:        %{modname}-%{version}.tar.gz
+Source0:        https://github.com/schrodinger/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
 Patch0:         https://github.com/schrodinger/pymol-open-source/pull/404.patch#/reproducible.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
