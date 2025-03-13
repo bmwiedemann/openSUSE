@@ -261,4 +261,12 @@ Use SPDX format and include the LGPL as well (forwarded request 131772 from babe
   zvbi-gcc14.patch</comment>
     <requestid>1245342</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f6133913da89f43f6705dfd1cc59a67d</srcmd5>
+    <version>0.2.44</version>
+    <time>1741874667</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1252330</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 12 07:03:24 UTC 2025 - pgajdos@suse.com
+
+- version update to 0.2.44
+  * configure.ac: Add comments to help eith debugging gettext.
+  * doc/Doxyfile.in: Bump version from 1.9.4 to 1.9.8.
+  * src/conv.c: Check src_length to avoid an unitinialized heap read.
+  * src/conv.c, src/io-sim.c, src/search.c: Avoid integer overflow leading to heap overflow.
+  * src/export.c, src/misc.*: Use standard va_copy(), not GNU __va_copy().
+  * src/teletext.c: Fix accidental G3 character modification.
+  * src/vbi.c: Add support for a larger range of framerates, from 12.5fps to 60fps.
+- fixes:
+  CVE-2025-2173 [bsc#1239222]
+  CVE-2025-2174 [bsc#1239299]
+  CVE-2025-2175 [bsc#1239312]
+  CVE-2025-2176 [bsc#1239319]
+  CVE-2025-2177 [bsc#1239320]
+
+-------------------------------------------------------------------
 Tue Feb 11 10:45:18 UTC 2025 - pgajdos@suse.com
 
 - version update to 0.2.43
