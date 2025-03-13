@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-c-common
-Version:        0.11.1
+Version:        0.11.3
 Release:        0
 Summary:        Core C99 package for AWS SDK for C
 License:        Apache-2.0
@@ -58,7 +58,7 @@ configuration, data structures, and error handling.
 This package contains the development files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %define __builder ninja
@@ -66,12 +66,11 @@ This package contains the development files.
     -DCMAKE_BUILD_TYPE=Release
 %make_jobs
 
-%check
-export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
-%ctest
-
 %install
 %cmake_install
+
+%check
+%ctest
 
 %ldconfig_scriptlets -n lib%{name}%{library_soversion}
 
