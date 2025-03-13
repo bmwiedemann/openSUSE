@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 13 17:23:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Enable setting things from more than one configuration
+    section with `--set`, using a configuration transaction.
+  * update README
+  * update protobufs to v2.6.0
+
+-------------------------------------------------------------------
 Thu Mar  6 11:28:09 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 2.5.12

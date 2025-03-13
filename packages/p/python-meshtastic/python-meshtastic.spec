@@ -17,7 +17,7 @@
 
 
 Name:           python-meshtastic
-Version:        2.5.12
+Version:        2.6.0
 Release:        0
 Summary:        A Python client for use with Meshtastic devices
 License:        GPL-3.0-only

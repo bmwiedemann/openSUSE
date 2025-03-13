@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1251149</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3cf147ed7cc6daf570b5877afddb6d20</srcmd5>
+    <version>2.6.0</version>
+    <time>1741899893</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.0:
+  * Enable setting things from more than one configuration
+    section with `--set`, using a configuration transaction.
+  * update README
+  * update protobufs to v2.6.0</comment>
+    <requestid>1252828</requestid>
+  </revision>
 </revisionlist>
