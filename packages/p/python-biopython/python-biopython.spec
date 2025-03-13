@@ -20,14 +20,13 @@
 %bcond_with test
 %{?sle15_python_module_pythons}
 Name:           python-biopython
-Version:        1.84
+Version:        1.85
 Release:        0
 Summary:        Python Tools for Computational Molecular Biology
 License:        BSD-3-Clause AND MIT
 URL:            https://biopython.org/
 Source0:        https://files.pythonhosted.org/packages/source/b/biopython/biopython-%{version}.tar.gz
 Source100:      python-biopython-rpmlintrc
-Patch1:         https://github.com/biopython/biopython/commit/22ebf951e736bd44f04e3552a4a39723ccb3c219.patch#/py313-support.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}

@@ -194,4 +194,12 @@
     <comment>- add py313-support.patch to fix build with python 3.13</comment>
     <requestid>1225807</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5d1e886072b525fce9fb1a26b7d8606f</srcmd5>
+    <version>1.85</version>
+    <time>1741879093</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1252765</requestid>
+  </revision>
 </revisionlist>
