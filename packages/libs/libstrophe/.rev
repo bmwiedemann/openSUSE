@@ -286,4 +286,20 @@
   * Replace usage of EBADFD, it's not in POSIX (#235)</comment>
     <requestid>1148735</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a94d5f74b441afe3a3d5d99140952a04</srcmd5>
+    <version>0.14.0</version>
+    <time>1741899883</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.0:
+  * Add SM-state serialization mechanism (#239)
+  * Add support for SCRAM-SHA-512-PLUS (da12298)
+  * Add support for SSLKEYLOGFILE with OpenSSL (d82df12)
+  * Fix some issues related to Stream Management (03d4313, 4359536)
+  * Fix a potential segfault (9fef4b7)
+  * New API:
+    + xmpp_conn_set_sm_callback()
+    + xmpp_conn_restore_sm_state()</comment>
+    <requestid>1252785</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 13 14:15:02 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Add SM-state serialization mechanism (#239)
+  * Add support for SCRAM-SHA-512-PLUS (da12298)
+  * Add support for SSLKEYLOGFILE with OpenSSL (d82df12)
+  * Fix some issues related to Stream Management (03d4313, 4359536)
+  * Fix a potential segfault (9fef4b7)
+  * New API:
+    + xmpp_conn_set_sm_callback()
+    + xmpp_conn_restore_sm_state()
+
+-------------------------------------------------------------------
 Wed Feb 21 14:13:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13.1:
