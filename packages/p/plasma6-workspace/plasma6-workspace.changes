@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 11 14:45:00 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.3
+- Changes since 6.3.2:
+  * update version for new release
+  * applets/systemtray: remove KSortFilterProxyModel binding loop (kde#500374)
+  * RunCommand: hide faded completion text before field content overflows (kde#500290)
+  * klipper: ignore `application/x-openoffice-link` (kde#500903)
+  * applets/digital-clock: use better-looking Qt.Labs version of FontDialog
+  * components/batterycontrol: Fix remaining time check condition
+  * libnotificationmanager: Fix infinite recursion when adding a second applet (kde#500749)
+  * components/calendar: Fix previous/next buttons not always working (kde#499871)
+  * applets/devicenotifier: Portable Media Player is removable
+  * applets/digitalclock: Increase limit of event dots in calendar (kde#500785)
+  * applets/systemtray: fix tab focus after pin button (kde#500705)
+  * klipper: ignore non-UTF-8 encoded plain text (kde#500203)
+  * Kalendar was renamed to Merkuro Calendar
+  * weather/envcan: Fix parsing of station coordinates (kde#425770)
+  * update version for new release
+
+-------------------------------------------------------------------
 Mon Mar  3 08:55:06 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Pull in libqt5-qtwayland if Qt 5 is installed (boo#1224995)
