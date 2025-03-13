@@ -68,6 +68,7 @@ Source20:       README.SUSE.md
 #
 Patch0:         postorius-settings.patch
 #
+BuildRequires:  %{python_module legacy-cgi}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module setuptools}
@@ -109,6 +110,7 @@ Summary:        A web user interface for GNU Mailman
 Requires:       %{mypython}-django-debug-toolbar >= 2.2.0
 Requires:       %{mypython}-django-mailman3 >= %{django_mailman3_min_version}
 Requires:       %{mypython}-django-requests-debug-toolbar >= 0.0.3
+Requires:       %{mypython}-legacy-cgi
 Requires:       %{mypython}-mailmanclient >= %{mailmanclient_min_version}
 Requires:       %{mypython}-readme_renderer
 Requires:       (%{mypython}-Django >= %{django_min_version} with %{mypython}-Django < %{django_max_version})

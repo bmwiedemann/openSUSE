@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 12 16:36:19 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- django still needs the cgi module, add legacy-cgi as BR and Requires
+
+-------------------------------------------------------------------
 Mon Jan  6 16:09:18 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add missing python-six BR for running tests
