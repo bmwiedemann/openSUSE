@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Mar 13 12:47:22 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.61:
+  * chore(deps): upgrade to version 0.24.9
+
+-------------------------------------------------------------------
+Thu Mar 13 12:42:27 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.60:
+  * chore(deps): upgrade to version 0.24.8
+
+-------------------------------------------------------------------
+Thu Mar 13 12:23:55 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.59:
+  * chore(deps): upgrade to version 0.24.7
+
+-------------------------------------------------------------------
+Thu Mar 13 08:41:11 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.58:
+  * chore(deps): bump sigstore/cosign-installer from 3.7.0 to 3.8.1
+
+-------------------------------------------------------------------
+Thu Mar 13 05:52:49 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.57:
+  * chore(deps): upgrade to version 0.0.78
+
+-------------------------------------------------------------------
 Thu Mar 06 13:01:52 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.11.56:
