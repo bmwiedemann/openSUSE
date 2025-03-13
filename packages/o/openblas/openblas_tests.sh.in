@@ -1,0 +1,92 @@
+#! /bin/bash
+
+FLAVOR=@FLAVOR@
+COMPILER=@COMPILER@
+# Series 'test'
+series_test() {
+    ${dir}/sblat1 || echo "sblat1 failed"
+    ${dir}/dblat1 || echo "dblat1 failed"
+    ${dir}/cblat1 || echo "cblat1 failed"
+    ${dir}/zblat1 || echo "zblat1 failed"
+    ${dir}/sblat2 < ${dir}/sblat2.dat || echo " failed"
+    grep -q FATAL SBLAT2.SUMM && cat SBLAT2.SUMM || true
+    ${dir}/dblat2 < ${dir}/dblat2.dat || echo " failed"
+    grep -q FATAL DBLAT2.SUMM && cat DBLAT2.SUMM || true
+    ${dir}/cblat2 < ${dir}/cblat2.dat || echo " failed"
+    grep -q FATAL CBLAT2.SUMM && cat CBLAT2.SUMM || true
+    ${dir}/zblat2 < ${dir}/zblat2.dat || echo " failed"
+    grep -q FATAL ZBLAT2.SUMM && cat ZBLAT2.SUMM || true
+    ${dir}/test_sbgemm > SBBLAT3.SUMM || echo "test_sbgemm failed"
+    grep -q FATAL SBBLAT3.SUMM && cat SBBLAT3.SUMM || true
+    ${dir}/dblat3 < ${dir}/dblat3.dat || echo "dblat3 failed"
+    grep -q FATAL DBLAT3.SUMM && cat DBLAT3.SUMM || true
+    ${dir}/cblat3 < ${dir}/cblat3.dat || echo "cblat3 failed"
+    grep -q FATAL CBLAT3.SUMM && cat CBLAT3.SUMM || true
+    [ -x ${dir}/cblat3_3m ] && \
+	{  ${dir}/cblat3_3m < ${dir}/cblat3_3m.dat;
+	   grep -q FATAL CBLAT3_3M.SUMM && cat CBLAT3_3M.SUMM || true; }
+    ${dir}/zblat3 < ${dir}/zblat3.dat || echo "zblat3 failed";
+    grep -q FATAL ZBLAT3.SUMM && cat ZBLAT3.SUMM || true
+    [ -x ${dir}/zblat3_3m ] && \
+	{ ${dir}/zblat3_3m < ${dir}/zblat3_3m.dat || echo "zblat3 failed";
+	  grep -q FATAL ZBLAT3_3M.SUMM && cat ZBLAT3_3M.SUMM || true; }
+}
+
+# Series 'ctest'
+series_ctest() {
+    ${dir}/xscblat1 || echo "xscblat1 failed"
+    ${dir}/xdcblat1 || echo "sdcblat1 failed"
+    ${dir}/xccblat1 || echo "xccblat1 failed"
+    ${dir}/xzcblat1 || echo "xzcblat1 failed"
+    ${dir}/xscblat2 < ${dir}/sin2 || echo "xscblat2 failed"
+    ${dir}/xdcblat2 < ${dir}/din2 || echo "xdcblat2 failed"
+    ${dir}/xccblat2 < ${dir}/cin2 || echo "xccblat2 failed"
+    ${dir}/xzcblat2 < ${dir}/zin2 || echo "xzcblat2 failed"
+    ${dir}/xscblat3 < ${dir}/sin3 || echo "xscblat3 failed"
+    ${dir}/xdcblat3 < ${dir}/din3 || echo "xdcblat3 failed"
+    ${dir}/xccblat3 < ${dir}/cin3 || echo "xccblat3 failed"
+    ${dir}/xzcblat3 < ${dir}/zin3 || echo "xzcblat3 failed"
+    [ -x ${dir}/xccblat3_3m ] && { ${dir}/xccblat3_3m < ${dir}/cin3_3m || echo "cin3_3m failed"; };
+    [ -x ${dir}/xzcblat3_3m ] && { ${dir}/xzcblat3_3m < ${dir}/zin3_3m || echo "zin3_3m failed"; };
+}
+
+# Series 'utest'
+series_utest() {
+    ${dir}/openblas_utest || echo "openblas_utest failed"
+    ${dir}/openblas_utest_ext || echo "openblas_utest_ext failed"
+}
+
+
+dir=/usr/lib/openblas-${FLAVOR}/tests
+
+case $FLAVOR in
+    serial) export THREADS=false; export OMP=false ;;
+    pthreads) export THREADS=true; export OMP=false ;;
+    openmp) export THREADS=false; export OMP=true ;;
+    gnu-hpc) module pure;
+	     module load gnu/$COMPILER openblas;
+	     dir=$OPENBLAS_DIR/bin
+	     export THREADS=false; export OMP=true
+	     ;;
+    gnu-hpc-ptreads) module pure;
+	     module load gnu/$COMPILER_VERSION openblas;
+	     export THREADS=true; export OMP=false ;;
+esac
+
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 series_test
+if  $OMP || $TREADS; then
+    rm -f ?BLAT2.SUMM ?BLAT3.SUMM ?BLAT3_3M.SUMM
+    if $OMP; then
+	OMP_NUM_THREADS=2 series_test
+    else
+	OPENBLAS_NUM_THREADS=2 series_test
+    fi
+fi
+
+if  $OMP; then
+    OMP_NUM_THREADS=2 series_ctest
+else
+    OPENBLAS_NUM_THREADS=2 series_ctest
+fi
+
+series_utest

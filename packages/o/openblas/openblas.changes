@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar  8 13:23:53 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Revert  commit ba47c7f4f301aad100ed166de338b86e01da8465 to
+  prevent failures on Power8 (bsc#1239134)
+  * Add: Revert-ba47c7f4f301aad100ed166de338b86e01da8465.patch
+- Add a script to run tests.
+- Add bisect support.
+
+-------------------------------------------------------------------
 Wed Mar  5 15:47:13 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Update to version 0.2.29 (jsc#PED-9676):

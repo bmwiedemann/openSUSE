@@ -846,4 +846,16 @@ Currently, openSUSE:Factory:Staging:E.
     <comment>- Fix path to work with i586 (forwarded request 1251077 from eeich)</comment>
     <requestid>1251078</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>3b8f14f0337da6e0e90269bb3ec31ea3</srcmd5>
+    <version>0.3.29</version>
+    <time>1741874664</time>
+    <user>anag+factory</user>
+    <comment>- Revert  commit ba47c7f4f301aad100ed166de338b86e01da8465 to
+  prevent failures on Power8 (bsc#1239134)
+  * Add: Revert-ba47c7f4f301aad100ed166de338b86e01da8465.patch
+- Add a script to run tests.
+- Add bisect support. (forwarded request 1252221 from eeich)</comment>
+    <requestid>1252226</requestid>
+  </revision>
 </revisionlist>

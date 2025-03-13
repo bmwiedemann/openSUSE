@@ -18,6 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
+%undefine sha1
 %define _vers 0_3_29
 %define vers 0.3.29
 %define so_v 0
@@ -197,7 +198,7 @@ ExclusiveArch:  do_not_build
 %define p_prefix %_prefix
 %define p_includedir %_includedir/%pname
 %define p_libdir %_libdir/openblas%{?flavor:-%{flavor}}
-%define p_bindir %_libexecdir/openblas%{?flavor:-%{flavor}}/tests
+%define p_testdir %_libexecdir/openblas%{?flavor:-%{flavor}}/tests
 %define p_cmakedir %{p_libdir}/cmake/%{pname}
 %define num_threads 64
 
@@ -214,11 +215,17 @@ ExclusiveArch:  do_not_build
 %define p_prefix %hpc_prefix
 %define p_includedir %hpc_includedir
 %define p_libdir %hpc_libdir
-%define p_bindir %hpc_bindir
+%define p_testdir %hpc_prefix/tests
 %define p_cmakedir %{hpc_libdir}/cmake
 %define num_threads 256
 
 %{hpc_init -c %{compiler_family} %{?c_f_ver:-v %{c_f_ver}} %{?ext:-e %{ext}}}
+%endif
+
+%if 0%{?sha1:1}
+%define v_string %{sha1}
+%else
+%define v_string v%{version}
 %endif
 
 Name:           %{package_name}
@@ -228,14 +235,16 @@ Summary:        An optimized BLAS library based on GotoBLAS2
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Math
 URL:            http://www.openblas.net
-Source0:        https://github.com/xianyi/OpenBLAS/archive/v%{version}.tar.gz#/OpenBLAS-%{version}.tar.gz
+Source0:        https://github.com/xianyi/OpenBLAS/archive/%{v_string}.tar.gz#/OpenBLAS-%{version}%{?sha1:_%{sha1}}.tar.gz
 Source1:        README.SUSE
 Source2:        README.HPC.SUSE
-Source3:        openblas.rpmlintrc
+Source3:        openblas_tests.sh.in
+Source4:        openblas.rpmlintrc
 Patch101:       Link-library-with-z-noexecstack.patch
 # PATCH port
 Patch102:       Handle-s390-correctly.patch
 Patch103:       openblas-ppc64be_up2_p8.patch
+Patch104:       Revert-ba47c7f4f301aad100ed166de338b86e01da8465.patch
 
 #BuildRequires:  cmake
 BuildRequires:  memory-constraints
@@ -345,7 +354,7 @@ This package contains test binaries.
 
 %prep
 
-%setup -q -n OpenBLAS-%{version}
+%setup -q -n OpenBLAS-%{?sha1:%{sha1}}%{!?sha1:%{version}}
 %autopatch -p1
 %ifarch s390
 sed -i -e "s@m32@m31@" Makefile.system
@@ -452,7 +461,7 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
      NUM_THREADS=%{num_threads} V=1 \
      OPENBLAS_LIBRARY_DIR=%{p_libdir} \
      OPENBLAS_INCLUDE_DIR=%{p_includedir} \
-     OPENBLAS_BINARY_DIR=%{p_bindir} \
+     OPENBLAS_BINARY_DIR=%{p_testdir} \
      OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
      PREFIX=%{p_prefix} \
      %{?dynamic_list} \
@@ -468,19 +477,23 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
 # Install library and headers
 # Pass NUM_THREADS again, as it is not propagated from the build step
 # https://github.com/OpenMathLib/OpenBLAS/issues/4275
-mkdir -p %{buildroot}/%{p_bindir}
+mkdir -p %{buildroot}/%{p_testdir}
 %make_install install_tests %{?openblas_target} %{?build_flags} \
     %{?openblas_opt} \
     NUM_THREADS=%{num_threads} \
     OPENBLAS_LIBRARY_DIR=%{p_libdir} \
     OPENBLAS_INCLUDE_DIR=%{p_includedir} \
-    OPENBLAS_BINARY_DIR=%{p_bindir} \
+    OPENBLAS_BINARY_DIR=%{p_testdir} \
     OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
     %{!?with_hpc:%{?libnamesuffix} FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}} \
     %{?ldflags_tests:LDFLAGS_TESTS=%{ldflags_tests}} \
     %{?with_hpc:%{?cc_v:CC=gcc-%{cc_v} FC=gfortran-%{cc_v} CEXTRALIB=""}} \
     PREFIX=%{p_prefix}
-for i in %{buildroot}/%{p_bindir}/*; do
+sed -e 's#@FLAVOR@#%{flavor}#' \
+    -e 's#@COMPILER@#%{?compiler_family:%compiler_family%{?hpc_gnu_dep_version:/%hpc_gnu_dep_version}}#' \
+    < %{S:3} > %{buildroot}/%{p_testdir}/openblas_tests.sh
+chmod 0755 %{buildroot}/%{p_testdir}/openblas_tests.sh
+for i in %{buildroot}/%{p_testdir}/*; do
     case $i in
 	*.dat|*in*) chmod 0644 $i;;
 	*)     chmod 0755 $i;;
@@ -678,9 +691,9 @@ fi
 %endif
 
 %files tests
-%dir %{p_bindir}
-%{!?with_hpc:%dir %{dirname:%{p_bindir}}}
-%{p_bindir}/*
+%dir %{p_testdir}
+%dir %{dirname:%{p_testdir}}
+%{p_testdir}/*
 
 %files devel-static
 %{p_libdir}/libopenblas*.a
