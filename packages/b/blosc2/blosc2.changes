@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 13 10:44:45 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.17.0:
+  * New b2nd_copy_buffer2() function for copying buffers with typesizes larger than 255. The previous b2nd_copy_buffer() function is now deprecated and will be removed in a future release.
+  * Support repeated values larger than 8-bit, also for n-dim arrays. This is useful for compressing arrays with large runs of repeated values, like in the case of images with large areas of the same color.
+  * Add BLOSC2_MAXTYPESIZE constant.
+  * Add 12-byte unshuffle for avx2. Thanks to Tom Birch (@froody).
+  * Add 12-byte sse2 unshuffle implementation. Thanks to Tom Birch (@froody).
+  * Better description of the Blosc2 format as a whole.
+
+-------------------------------------------------------------------
 Wed Dec  4 10:39:46 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to version 1.25.2:
+- Update to version 1.15.2:
   * Support wasm32 by disabling ZLIB WITH_OPTIM option.
   * Avoid rip-relative addressing for OSX x86_64.
   * Added support for nvcc (NVidia Cuda Compiler) in CMake.
