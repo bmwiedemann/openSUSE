@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Wed Mar 12 06:55:24 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.26.0:
+  + Highlights
+    - H.266 Versatile Video Coding (VVC) codec support
+    - Low Complexity Enhancement Video Coding (LCEVC) support
+    - Closed captions: H.264/H.265 extractor/inserter,
+      cea708overlay, cea708mux, tttocea708 and more
+    - New hlscmafsink, hlssink3, and hlsmultivariantsink; HLS/DASH
+      client and dashsink improvements
+    - New AWS and Speechmatics transcription, translation and TTS
+      services elements, plus translationbin
+    - Splitmux lazy loading and dynamic fragment addition support
+    - Matroska: H.266 video and rotation tag support, defined
+      latency muxing
+    - MPEG-TS: support for H.266, JPEG XS, AV1, VP9 codecs and
+      SMPTE ST-2038 and ID3 meta; mpegtslivesrc
+    - ISO MP4: support for H.266, Hap, Lagarith lossless codecs;
+      raw video support; rotation tags
+    - SMPTE 2038 ancillary data streams support
+    - JPEG XS image codec support
+    - Analytics: New TensorMeta; N-to-N relationships; Mtd to carry
+      segmentation masks
+    - ONVIF metadata extractor and conversion to/from relation
+      metas
+    - New originalbuffer element that can restore buffers again
+      after transformation steps for analytics
+    - Improved Python bindings for analytics API
+    - Lots of Vulkan integration and Vulkan Video decoder/encoder
+      improvements
+    - OpenGL integration improvements, esp. in glcolorconvert,
+      gldownload, glupload
+    - Qt5/Qt6 QML GL sinks now support direct DMABuf import from
+      hardware decoders
+    - CUDA: New compositor, Jetson NVMM memory support,
+      stream-ordered allocator
+    - NVCODEC AV1 video encoder element, and nvdsdewarp
+    - New Direct3D12 integration support library
+    - New d3d12swapchainsink and d3d12deinterlace elements and
+      D3D12 sink/source for zero-copy IPC
+    - Decklink HDR support (PQ + HLG) and frame scheduling
+      enhancements
+    - AJA capture source clock handling and signal loss recovery
+      improvements
+    - RTP and RTSP: New rtpbin sync modes, client-side MIKEY
+      support in rtspsrc
+    - New Rust rtpbin2, rtprecv, rtpsend, and many new Rust RTP
+      payloaders and depayloaders
+    - webrtcbin support for basic rollbacks and other improvements
+    - webrtcsink: support for more encoders, SDP munging, and a
+      built-in web/signalling server
+    - webrtcsrc/sink: support for uncompressed audio/video and NTP
+      & PTP clock signalling and synchronization
+    - rtmp2: server authentication improvements incl. Limelight
+      CDN (llnw) authentication
+    - New Microsoft WebView2 based web browser source element
+    - The GTK3 plugin has gained support for OpenGL/WGL on Windows
+    - Many GTK4 paintable sink improvements
+    - GstPlay: id-based stream selection and message API
+      improvements
+    - Real-time pipeline visualization in a browser using a new
+      dots tracer and viewer
+    - New tracers for tracking memory usage, pad push timings, and
+      buffer flow as pcap files
+    - VA hardware-acclerated H.266/VVC decoder, VP8 and JPEG
+      encoders, VP9/VP8 alpha decodebins
+    - Video4Linux2 elements support DMA_DRM caps negotiation now
+    - V4L2 stateless decoders implement inter-frame resolution
+      changes for AV1 and VP9
+    - Editing services: support for reverse playback and audio
+      channel reordering
+    - New QUIC-based elements for working with raw QUIC streams,
+      RTP-over-QUIC (RoQ) and WebTransport
+    - Apple AAC audio encoder and multi-channel support for the
+      Apple audio decoders
+    - cerbero: Python bindings and introspection support; improved
+      Windows installer based on WiX5
+    - Lots of new plugins, features, performance improvements and
+      bug fixes
+  + For more detailed information on this update, please see
+    https://gstreamer.freedesktop.org/releases/1.26/
+
+-------------------------------------------------------------------
 Sun Feb  2 18:33:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.12:
