@@ -48,4 +48,12 @@ Provides the miriway wayland compositor</comment>
     (gh#Miriway/Miriway#142) (forwarded request 1248815 from sfalken)</comment>
     <requestid>1248816</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b5df4954382d03da1e364b041431d973</srcmd5>
+    <version>25.02.1</version>
+    <time>1741874793</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1252560</requestid>
+  </revision>
 </revisionlist>

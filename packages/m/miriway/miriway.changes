@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 12 17:14:37 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update version 25.02.1:
+  * Fixes crash on exit (gh#Miriway/Miriway#158)
+
+-------------------------------------------------------------------
 Thu Feb 27 00:33:31 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update version 25.02:
