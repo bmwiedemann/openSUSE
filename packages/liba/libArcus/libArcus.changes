@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 13 01:21:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add BuildRequires on python3-setuptools, required for Python 3.12+. 
+
+-------------------------------------------------------------------
 Sun Nov 17 02:34:12 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add support for protobuf v3.26.x/v26.x, add

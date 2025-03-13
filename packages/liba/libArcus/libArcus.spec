@@ -1,7 +1,7 @@
 #
 # spec file for package libArcus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ BuildRequires:  protobuf-devel >= 3.0.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-packaging
 BuildRequires:  python3-qt5-sip
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-sip4-devel
 
 %description
@@ -116,6 +117,6 @@ HERE_EOF
 %files -n python3-Arcus
 %license LICENSE
 %{python3_sitearch}/Arcus.so
-%{python3_sitearch}/Arcus-*.egg-info
+%{python3_sitearch}/Arcus-%{version}.egg-info
 
 %changelog
