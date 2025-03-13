@@ -1,7 +1,7 @@
 #
 # spec file for package vm-install
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           vm-install
 %define with_vminstall_as_default_installer 1
 %endif
 URL:            http://developer.novell.com/wiki/index.php/Vm-install
-BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 %if %{?with_vminstall_as_default_installer}0
 BuildRequires:  update-desktop-files
 %endif
@@ -41,14 +41,9 @@ Requires:       python3-libvirt-python
 Requires:       python3-libxml2-python
 Requires:       python3-netifaces
 Requires:       python3-pycurl
-%if %suse_version > 1230
 Requires:       qemu-tools
-%else
-Requires:       virt-utils
-%endif
 Requires:       usbutils
 Requires:       tftp(client)
-%define pysite %(python3 -c "import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())")
 Recommends:     python3-gobject
 
 %description
@@ -68,12 +63,6 @@ vm-install can be used in a variety of ways:
 * The  supporting  Python  modules  can  be 'import'-ed into other
 Python programs, to create VMs programmatically.
 
-
-
-Authors:
---------
-    Charles Coffing <ccoffing@novell.com>
-
 %prep
 %setup -q
 
@@ -81,7 +70,6 @@ Authors:
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
-rm -f  $RPM_BUILD_ROOT/%pysite/*.egg-info
 %find_lang xen-vm-install
 %if %{?with_vminstall_as_default_installer}0
 %suse_update_desktop_file %{name} X-SuSE-YaST-Virtualization
@@ -97,13 +85,14 @@ test ! -z "$RPM_BUILD_ROOT" -a "$RPM_BUILD_ROOT" != "/" && rm -rf $RPM_BUILD_ROO
 %files -f xen-vm-install.lang
 %defattr(-,root,root,-)
 %doc COPYING
-%{_mandir}/man8/*.8.gz
-%{_prefix}/bin/vm-disks
-%{_prefix}/bin/vm-install
-%{_prefix}/bin/vm-install-jobs
+%{_mandir}/man8/*.8%{?ext_man}
+%{_bindir}/vm-disks
+%{_bindir}/vm-install
+%{_bindir}/vm-install-jobs
 %{_datadir}/vm-install
-%pysite/vminstall
-%pysite/vmdisks
+%{python3_sitelib}/vmdisks/
+%{python3_sitelib}/vminstall-*.egg-info/
+%{python3_sitelib}/vminstall/
 %{_datadir}/YaST2/clients/vm-install.rb
 %if %{?with_vminstall_as_default_installer}0
 %{_datadir}/applications/YaST2/vm-install.desktop

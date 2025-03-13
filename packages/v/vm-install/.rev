@@ -1345,4 +1345,12 @@
     <comment>A couple fixes related to jsc#SLE-11885 PV PXE booting</comment>
     <requestid>870525</requestid>
   </revision>
+  <revision rev="174" vrev="2">
+    <srcmd5>0ac210036ba7b3a7b88b49e3ac74912e</srcmd5>
+    <version>0.10.11</version>
+    <time>1741874795</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1252566</requestid>
+  </revision>
 </revisionlist>

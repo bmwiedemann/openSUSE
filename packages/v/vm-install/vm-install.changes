@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 12 12:20:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build against python 3.13 and standardize spec file:
+  + Drop python3-devel BuildRequires: this does not build any
+    python modules that need linking.
+  + Add python3-setuptools BuildRequires: required since python
+    3.13, as the internal distutils has been removed.
+  + Use the default-provided %python_sitelib to reference installed
+    files. Eliminate the self-maintained pysite variable.
+  + Clean up old version constraints (suse_version 1230
+    conditions).
+
+-------------------------------------------------------------------
 Mon Feb  8 15:06:54 MST 2021 - carnold@suse.com
 
 - Fixes for PV PXE booting (jsc#SLE-11885)
