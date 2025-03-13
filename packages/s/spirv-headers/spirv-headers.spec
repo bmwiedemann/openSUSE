@@ -30,15 +30,15 @@
 %endif
 
 Name:           spirv-headers
-Version:        1.6.4+sdk303
-%define innerver 1.3.303
-%define rev cb6b2c32dbfc3257c1e9142a116fe9ee3d9b80a2
+Version:        1.6.4+sdk304
+%define innerver 1.4.304
+%define rev 09913f088a1197aba4aefd300a876b2ebbaa3391
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Headers
-Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/cb6b2c32dbfc3257c1e9142a116fe9ee3d9b80a2.tar.gz
+Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/%rev.tar.gz
 BuildArch:      noarch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes

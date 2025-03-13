@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 12 16:46:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.6.4+sdk309 (Git 09913f088)
+  * Add provisional key to grammar
+  * Grammar and header changes for SPV_INTEL_2d_block_io &
+    SPV_INTEL_subgroup_matrix_multiply_accumulate
+  * Add SPV_NV_cooperative_vector
+  * Updates IntegerFunctions2INTEL to remove Shader capability
+    dependency
+  * Add headers for SPV_NV_cluster_acceleration_structure &
+    SPV_NV_linear_swept_spheres
+
+-------------------------------------------------------------------
 Thu Mar  6 14:02:10 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Build with GCC 13 on Leap/SLES 15 in the hope to fix Mesa build
