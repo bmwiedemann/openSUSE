@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 13 17:18:06 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1741812300.276dce1:
+  * Retry asset sync in svirt backend after timeouts
+  * testapi: allow keeping mouse in place after clicking
+  * script: Mark uncoverable package import as such
+  * t: Cover invalid JSON in vars.json
+  * perltidy: Use new --pack-operator-types option
+  * perltidy: Update to 20250214.0.0
+  * dist: Bump version to semver-compliant 5
+
+-------------------------------------------------------------------
 Fri Feb 28 23:05:20 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1740506581.723f45e:
