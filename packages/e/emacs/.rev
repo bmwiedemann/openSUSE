@@ -2135,4 +2135,14 @@ Now one could consider building emacs with gsettings support (both debian and fe
   * emacs-25.2-ImageMagick7.patch</comment>
     <requestid>1250594</requestid>
   </revision>
+  <revision rev="201" vrev="2">
+    <srcmd5>6d3d547118d89ca1bd5edec0f06a5c55</srcmd5>
+    <version>30.1</version>
+    <time>1741874678</time>
+    <user>anag+factory</user>
+    <comment>- Add patch emacs-parallel-compilation-53a5dada.patch
+  * Based on upstream commit 53a5dada
+  * Fix compilation errors due to insufficient compiler safety</comment>
+    <requestid>1252418</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 12 09:43:04 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch emacs-parallel-compilation-53a5dada.patch
+  * Based on upstream commit 53a5dada
+  * Fix compilation errors due to insufficient compiler safety
+
+-------------------------------------------------------------------
 Thu Mar  6 08:32:49 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch emacs-30.1-seccomp.patch

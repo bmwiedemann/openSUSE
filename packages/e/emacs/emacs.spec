@@ -220,9 +220,7 @@ Patch15:        emacs-24.3-iconic.patch
 Patch16:        emacs-24.4-flyspell.patch
 Patch22:        pdump.patch
 Source23:       emacs-25.1-custom-fonts.patch
-# this patch works with both ImageMagick-6 and ImageMagick-7 for us,
-# but that is because we ship /usr/include/ImageMagick-7/wand compat
-# symlink
+Patch24:        emacs-parallel-compilation-53a5dada.patch
 Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
 Patch27:        emacs-30.1-seccomp.patch
@@ -388,6 +386,7 @@ and most assembler-like syntaxes.
 %patch -P15 -p0 -b .iconic
 %patch -P16 -p0 -b .flyspell
 %patch -P22 -p0 -b .pd
+%patch -P24 -p0 -b .pc
 %patch -P25 -p0 -b .xft
 %patch -P26 -p0 -b .fmt
 %patch -P27 -p0 -b .console
@@ -768,6 +767,7 @@ rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/server.el.xauth
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/htmlfontify.el.cve202248339
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/progmodes/elisp-mode.el.el.cve202453920
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/progmodes/ruby-mode.el.cve202248338
+rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-macs.el.pc
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp.el.boo1234673
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/man.el.boo1237091
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/emacsclient-mail.desktop.cve202327985

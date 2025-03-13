@@ -1,0 +1,29 @@
+From 53a5dada413662389a17c551a00d215e51f5049f Mon Sep 17 00:00:00 2001
+From: Pip Cet <pipcet@protonmail.com>
+Date: Mon, 17 Feb 2025 15:21:16 +0000
+Subject: Fix compilation errors due to insufficient compiler safety
+ (bug#63288)
+
+The default safety level is 1.  Restoring the default safety level to
+1 after it was temporarily 0 should reset byte-compile-delete-errors
+to nil, its default level.  Failing to do that resulted in
+miscompilation of code in highly-parallel builds.
+
+* lisp/emacs-lisp/cl-macs.el (cl--do-proclaim): Change
+'byte-compile-delete-errors' to become t only at 'safety' level 0, not
+levels 1 or 2.
+---
+ lisp/emacs-lisp/cl-macs.el |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- lisp/emacs-lisp/cl-macs.el
++++ lisp/emacs-lisp/cl-macs.el	2025-03-12 08:11:02.848630106 +0000
+@@ -2667,7 +2667,7 @@ Example:
+ 	 (let ((speed (assq (nth 1 (assq 'speed (cdr spec)))
+ 			    '((0 nil) (1 t) (2 t) (3 t))))
+ 	       (safety (assq (nth 1 (assq 'safety (cdr spec)))
+-			     '((0 t) (1 t) (2 t) (3 nil)))))
++			     '((0 t) (1 nil) (2 nil) (3 nil)))))
+ 	   (if speed (setq cl--optimize-speed (car speed)
+ 			   byte-optimize (nth 1 speed)))
+ 	   (if safety (setq cl--optimize-safety (car safety)
