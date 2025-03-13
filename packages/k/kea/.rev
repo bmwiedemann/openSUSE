@@ -138,4 +138,14 @@ AFAICT these packages aren't needed for generating the docs and the official doc
     <comment>- Update to release 2.6.1</comment>
     <requestid>1206346</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b72a40a3cad707b6e06a8bd68a7a7b8f</srcmd5>
+    <version>2.6.1</version>
+    <time>1741899890</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix build with boost 1.87
+  (kea-2.6.1-boost_1.87-compat.patch)
+- Add BuildRequires for python3-sphinx_rtd_theme to fix docs build</comment>
+    <requestid>1252806</requestid>
+  </revision>
 </revisionlist>

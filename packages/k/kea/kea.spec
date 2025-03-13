@@ -57,6 +57,7 @@ Source:         https://ftp.isc.org/isc/kea/%version/kea-%version.tar.gz
 Source2:        https://ftp.isc.org/isc/kea/%version/kea-%version.tar.gz.asc
 # https://www.isc.org/pgpkey/
 Source3:        kea.keyring
+Patch0:         kea-2.6.1-boost_1.87-compat.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 %if %{with regen_files}
@@ -72,6 +73,7 @@ BuildRequires:  postgresql-server-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  sysuser-tools
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libcrypto)
