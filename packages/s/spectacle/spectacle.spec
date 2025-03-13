@@ -25,15 +25,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           spectacle
-Version:        6.3.2
+Version:        6.3.3
 Release:        0
 Summary:        Screen Capture Program
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://apps.kde.org/spectacle
-# Tarball had to be redone, but is still version 6.3.2 inside
-Source0:        https://download.kde.org/stable/plasma/6.3.2/spectacle-6.3.2.1.tar.xz
+Source0:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/6.3.2/spectacle-6.3.2.1.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -100,7 +99,7 @@ screenshot capture program by KDE.
 %lang_package -n spectacle-doc
 
 %prep
-%autosetup -p1 -n spectacle-6.3.2
+%autosetup -p1
 
 %build
 %cmake_kf6
