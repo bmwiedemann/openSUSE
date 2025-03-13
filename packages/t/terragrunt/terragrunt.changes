@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Mar 13 18:48:42 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.75.9:
+  * Bug fixes
+    - Using absolute paths for mark_as_read
+      The internal store for the values mark_as_read was tracking
+      now use absolute paths instead of "canonical paths". The
+      result of this is that even if you are using tooling like
+      run_cmd to dynamically discover files to mark as read, you
+      should still expect --queue-include-units-reading to work
+      correctly.
+  * What's Changed
+    - fix: Use abs path for mark_as_read by @yhakbar in #4015
+
+-------------------------------------------------------------------
+Thu Mar 13 18:44:10 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.75.8:
+  * Stacks: usage of source-map for sources (#4011)
+
+-------------------------------------------------------------------
+Thu Mar 13 18:36:31 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.75.7:
+  * New Features
+    - find supports dag sorting
+      The find command now supports the ability to sort results by
+      their relative positions in the Directed Acyclic Graph (DAG).
+      To use the find command, you must enable the cli-redesign
+      experiment.
+    - The stack run command now supports all run flags
+      The stack run command now supports all the same flags run
+      supports, including --queue-include-dir.
+      To use stack commands, you must enable the stacks experiment.
+      As an example of what's supported now:
+
+        terragrunt --experiment stacks stack run apply --queue-strict-include --queue-include-dir=./.terragrunt-stack/app1 --non-interactive
+
+      More information can be found in the stack run docs.
+      https://terragrunt.gruntwork.io/docs/reference/cli-options/#stack-run
+  * What's Changed
+    - feat: Adding DAG support to find (#4001)
+    - Stacks: run cli arguments (#4005)
+    - fix: Reducing noise for skipped dependency inputs (#4007)
+    - fix: Upgrading `golangci-lint` (#3987)
+
+-------------------------------------------------------------------
 Wed Mar 12 15:01:47 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.75.6:
