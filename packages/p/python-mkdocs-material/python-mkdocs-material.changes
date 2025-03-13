@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 13 12:24:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.6.8:
+  * Added Welsh translations
+  * Fixed #8076: Privacy plugin crashes if HTTP download fails
+
+-------------------------------------------------------------------
 Wed Mar  5 10:30:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.6.7:
