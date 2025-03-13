@@ -732,4 +732,12 @@
 - sync with SLE changelog (forward from qzhao)</comment>
     <requestid>1252220</requestid>
   </revision>
+  <revision rev="79" vrev="8">
+    <srcmd5>fb3c1a8f1589ce8a779081eed43948db</srcmd5>
+    <version>4.4.5</version>
+    <time>1741874655</time>
+    <user>anag+factory</user>
+    <comment>fix changelog order</comment>
+    <requestid>1252555</requestid>
+  </revision>
 </revisionlist>

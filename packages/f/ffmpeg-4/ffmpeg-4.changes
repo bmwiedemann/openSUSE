@@ -187,6 +187,14 @@ Tue Jun 27 07:42:23 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 - Add 0001-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
 
 -------------------------------------------------------------------
+Thu Apr 27 09:27:53 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add ffmpeg-4-CVE-2022-48434.patch:
+  Backport d4b7b3c0 from upstream, Fix use after free in
+  libavcodec/pthread_frame.c.
+  (CVE-2022-48434, bsc#1209934)
+
+-------------------------------------------------------------------
 Wed Apr 19 21:00:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.4.4:
@@ -265,14 +273,6 @@ Wed Apr 19 21:00:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 Thu Mar 16 17:54:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Conflict with otherproviders(ffmpeg-tools).
-
--------------------------------------------------------------------
-Thu Apr 27 09:27:53 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
-
-- Add ffmpeg-4-CVE-2022-48434.patch:
-  Backport d4b7b3c0 from upstream, Fix use after free in
-  libavcodec/pthread_frame.c.
-  (CVE-2022-48434, bsc#1209934)
 
 -------------------------------------------------------------------
 Fri Jan 20 07:22:58 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
