@@ -23,7 +23,7 @@
 #%global source_directory 2.6-stable
 %global source_directory 2.7-development
 Name:           virt-v2v
-Version:        2.7.7
+Version:        2.7.8
 Release:        0
 Summary:        Tools to convert a virtual machine to run on KVM
 License:        GPL-2.0-or-later
@@ -38,7 +38,7 @@ BuildRequires:  file-devel
 BuildRequires:  gcc
 BuildRequires:  gettext-devel
 BuildRequires:  glib2-devel
-BuildRequires:  libguestfs-devel >= 1.49
+BuildRequires:  libguestfs-devel >= 1.55.6
 BuildRequires:  libjson-c-devel
 BuildRequires:  libnbd
 BuildRequires:  libosinfo-devel
@@ -65,10 +65,10 @@ Requires:       %{_bindir}/gawk
 Requires:       %{_bindir}/gzip
 Requires:       %{_bindir}/qemu-nbd
 Requires:       %{_bindir}/virsh
-Requires:       guestfs-tools >= 1.49
-Requires:       libguestfs >= 1.49
+Requires:       guestfs-tools >= 1.53.8
+Requires:       libguestfs >= 1.55.6
 Requires:       libguestfs-winsupport
-Requires:       libguestfs0 >= 1.49
+Requires:       libguestfs0 >= 1.55.6
 Requires:       libnbd
 Requires:       nbdkit
 Requires:       nbdkit-curl-plugin

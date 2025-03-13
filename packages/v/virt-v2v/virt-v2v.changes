@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 12 15:00:24 MDT 2025 - carnold@suse.com
+
+- Update to virt-v2v 2.7.8 (jsc#PED-8910)
+  * convert: Drop kmod-xenpv-* handling
+  * Remove more RHEL 3 support
+  * convert: Handle large output from 'rpm -ql' command
+    This requires the new guestfs_sh_out API from libguestfs 1.55.6.
+  * mlstdutils: Reimplement String.find, add String.find_from
+  * mlstdutils: Reimplement String.nsplit tail recursively
+  * mldrivers: Handle large output from 'rpm -ql' command
+  * mlcustomize: Drop old virtio-win dir name scraping
+
+-------------------------------------------------------------------
 Mon Mar  3 14:50:50 MST 2025 - carnold@suse.com
 
 - Update to virt-v2v 2.7.7 (jsc#PED-8910)
