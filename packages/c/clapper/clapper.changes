@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 13 13:23:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gstreamer-plugins-vaapi Suggests: it is deprecated upstream
+  and slated for removal, most hardware now uses gst-va plugin
+  (from gstreamer-plugins-bad) for hardware codec support.
+
+-------------------------------------------------------------------
 Mon Jan 20 21:34:47 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.8.0:

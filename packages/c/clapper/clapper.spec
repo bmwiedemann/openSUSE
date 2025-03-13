@@ -89,8 +89,6 @@ Requires:       gstreamer-plugins-good >= %{gst_version}
 Recommends:     gstreamer-plugins-libav >= %{gst_version}
 # CD Playback
 Suggests:       gstreamer-plugins-ugly
-# Intel/AMD video acceleration
-Suggests:       gstreamer-plugins-vaapi
 
 %global _description %{expand:
 A modern media player powered by GStreamer and built for the GNOME desktop environment.}
