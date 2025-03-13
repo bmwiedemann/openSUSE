@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 12 07:13:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.12
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#493)
+  * Add life cycle to s3 express by @TingDaoK in (#494)
+  * Make public bucket optional by @TingDaoK in (#495)
+  * Adapt to aws_base64_compute_encoded_len() no longer adding
+    1 extra for null terminator by @graebm in (#497)
+
+-------------------------------------------------------------------
 Thu Jan 30 11:41:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.11
