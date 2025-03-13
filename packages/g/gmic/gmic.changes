@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 13 09:55:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.5.3
+  * New filter Rendering / 2.5D Extrusion renders a fake 3D
+    effect from an input binary shape.
+  * New filter Rendering / Fluffy Cloud renders fluffy clouds
+  * [stdlib-353]  Add command at_curve, that extracts image
+    pixels belonging to a spline curve passing through specified
+    points
+  * [stdlib-353] Add command resize_displacement, that uses
+    a specific algorithm to upscale displacement maps, for
+    patch-based image synthesis
+
+-------------------------------------------------------------------
 Fri Jan 31 23:56:24 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.5.2 
