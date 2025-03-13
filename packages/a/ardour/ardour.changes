@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 12 15:48:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.12. Check https://ardour.org/whatsnew.html for the
+  full list of changes
+  * new approach to fixing the problem with region lengths
+    after certain operations could cause sessions to be
+    unloadable
+  * Fix translations on macOS
+
+-------------------------------------------------------------------
 Mon Feb  3 20:30:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.11.0. Check https://ardour.org/whatsnew.html for the
