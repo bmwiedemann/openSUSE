@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 12 07:25:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.6
+  * aws_hex_encode() no longer adds null-terminator by @graebm in (#264)
+  * Support Endpoint Override for CredentialsProviders by @waahm7 in (#263)
+
+-------------------------------------------------------------------
 Wed Feb 19 11:39:14 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.5
