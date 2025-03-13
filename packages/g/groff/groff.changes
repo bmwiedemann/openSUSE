@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 11 15:50:30 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Add devps-fix.patch
+  * fix build of package ghostscript-fonts-grops
+  * upstream bugreport: https://savannah.gnu.org/bugs/?66876
+
+-------------------------------------------------------------------
 Fri Sep 13 15:15:09 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Add groff-restore-hyphen-minus.patch (bsc#1226153)

@@ -1,7 +1,7 @@
 #
 # spec file for package groff
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,9 @@ Patch6:         groff-force-locale-usage.patch
 Patch7:         0004-don-t-use-usr-bin-env-in-shebang.patch
 # PATCH-FIX-OPENSUSE groff-restore-hyphen-minus.patch bsc#1226153
 Patch8:         groff-restore-hyphen-minus.patch
+# PATCH-FIX-OPENSUSE devps-fix.patch
+# see upstream: https://savannah.gnu.org/bugs/?66876
+Patch9:         devps-fix.patch
 # Patches from debian
 Patch100:       https://salsa.debian.org/debian/groff/raw/master/debian/patches/bash-scripts.patch
 Patch101:       https://salsa.debian.org/debian/groff/raw/master/debian/patches/nroff-map-CW-to-R.patch

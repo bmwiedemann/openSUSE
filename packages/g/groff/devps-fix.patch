@@ -1,0 +1,12 @@
+diff -Nraub groff-1.23.0.ori/font/devps/generate/Makefile groff-1.23.0/font/devps/generate/Makefile
+--- a/font/devps/generate/Makefile	2023-07-02 12:09:34.000000000 -0400
++++ b/font/devps/generate/Makefile	2025-03-11 11:12:59.338021630 -0400
+@@ -290,7 +290,7 @@
+ $(srcdir)/symbol.map: $(TEXTMAP) $(srcdir)/symbolchars
+ 	printf \
+ 	  '#\n# This is a list of all predefined groff symbols.\n#\n' \
+-	  > $(OUTDIR)/$@ \
++	  > $@ \
+ 	  && cat $(TEXTMAP) $(srcdir)/symbolchars >>$@
+ 
+ clean:
