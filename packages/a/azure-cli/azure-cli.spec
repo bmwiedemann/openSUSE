@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.69.0
+Version:        2.70.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -58,7 +58,7 @@ Requires:       %{pythons}-azure-appconfiguration >= 1.7.0
 Requires:       %{pythons}-azure-batch >= 15.0.0~b1
 Requires:       %{pythons}-azure-cosmos >= 3.0.2
 Requires:       %{pythons}-azure-data-tables >= 12.4.0
-Requires:       %{pythons}-azure-datalake-store >= 0.0.53
+Requires:       %{pythons}-azure-datalake-store >= 1.0.0~a0
 Requires:       %{pythons}-azure-keyvault-administration >= 4.4.0~b2
 Requires:       %{pythons}-azure-keyvault-certificates >= 4.7.0
 Requires:       %{pythons}-azure-keyvault-keys >= 4.9.0~b3
