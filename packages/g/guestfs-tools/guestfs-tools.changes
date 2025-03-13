@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 12 14:50:23 MDT 2025 - carnold@suse.com
+
+- Update to version 1.53.8 (jsc#PED-8910)
+  * mlstdutils: Reimplement String.find, add String.find_from
+  * mlstdutils: Reimplement String.nsplit tail recursively
+  * mldrivers: Handle large output from 'rpm -ql' command
+  * drivers: Handle large output from 'rpm -ql' command
+    This requires the new guestfs_sh_out API from libguestfs 1.55.6
+  * Add a 'git-publish' profile
+  * builder: Link to the actually existing virt-builder templates dir
+  * mlcustomize: Drop old virtio-win dir name scraping
+  * mlcustomize: Remove dnf --verbose option
+
+-------------------------------------------------------------------
 Tue Feb 18 09:33:55 MST 2025 - carnold@suse.com
 
 - Update to version 1.53.7 (jsc#PED-8910)

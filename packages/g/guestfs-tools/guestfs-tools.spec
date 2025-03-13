@@ -31,7 +31,7 @@
 
 Summary:        Tools to access and modify virtual machine disk images
 Name:           guestfs-tools
-Version:        1.53.7
+Version:        1.53.8
 Release:        0
 License:        GPL-2.0-or-later
 
@@ -55,7 +55,7 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  libguestfs-devel >= 1.45.3-1
+BuildRequires:  libguestfs-devel >= 1.55.6
 BuildRequires:  libguestfs-xfs
 BuildRequires:  libjson-c-devel
 BuildRequires:  libosinfo-devel
@@ -91,7 +91,7 @@ BuildRequires:  pkgconfig(bash-completion)
 # For virt-builder:
 Requires:       curl
 Requires:       gpg2
-Requires:       libguestfs >= 1.49
+Requires:       libguestfs >= 1.55.6
 ###Requires:      /usr/bin/qemu-img
 Requires:       xz
 
