@@ -1,7 +1,7 @@
 #
 # spec file for package sonic-visualiser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016 Tom Mbrt <tom.mbrt@googlemail.com>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2011 Evstifeev Roman <someuniquename@gmail.com>
@@ -22,7 +22,7 @@
 
 #%%define urlcode 2786
 Name:           sonic-visualiser
-Version:        5.0.1
+Version:        5.2
 Release:        0
 Summary:        A program for viewing and analysing contents of audio files
 License:        GPL-2.0-or-later
@@ -36,7 +36,7 @@ Patch0:         sonic-visualiser-system-dataquay.patch
 BuildRequires:  capnproto
 BuildRequires:  dssi
 BuildRequires:  flac
-%if 0%{?is_opensuse} && 0%{?suse_version} <= 1600
+%if 0%{?is_opensuse} && 0%{?suse_version} <= 1560
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
 %else
@@ -144,7 +144,7 @@ sed -e 's|/usr/lib/|/usr/%{_lib}/|g;s|/usr/local/lib/|/usr/local/%{_lib}/|g' \
 
 %build
 export LC_ALL=en_US.UTF-8
-%if 0%{?is_opensuse} && 0%{?suse_version} <= 1600
+%if 0%{?is_opensuse} && 0%{?suse_version} <= 1560
 export CC=gcc-12 CXX=g++-12
 %endif
 %meson

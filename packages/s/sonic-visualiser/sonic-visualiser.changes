@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Mar 12 22:49:06 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 5.2
+- Fix gcc dependency for Leap 16 in spec
+
+  * On the Mac, substantially improve responsiveness during scrolling
+    and zooming, with threaded paint and various perceptual changes.
+    If threaded paint causes instability, it can be disabled by setting
+    the SV_NO_THREADED_PAINT environment variable (to anything).
+    (Sonic Visualiser was previously perceptually more sluggish on the
+    Mac than on other platforms, where this change was not necessary)
+
+  * Fix habit of holding open the device microphone after recording
+
+  * Improve compatibility with Vamp plugins that return unexpectedly
+    many values in features
+
+  * Improve compatibility with Vamp plugins that express units in
+    variant forms such as "Hertz"
+
+  * Fix incorrect choice of UI language on systems with more than one
+    of the supported languages configured, and on which English (that is
+    not explicitly regionalised to en_US or en_GB) has a higher priority
+    than any other supported language. Previously the first other
+    matching language would have been used; now it will be English
+
+  * Fix tendency to pop up a progress dialog over the top of any user
+    input needed when opening a file
+
+-------------------------------------------------------------------
 Sun Oct  6 02:22:39 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 5.0.1
