@@ -20,13 +20,13 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.24.12
+Version:        1.26.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.zst
 Source1:        gstreamer-plugins-base.appdata.xml
 Source2:        baselibs.conf
 Patch1:         add_wayland_dep_to_tests.patch
@@ -660,7 +660,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/girepository-1.0/GstVideo-*.typelib
 
 %files devel
-%doc AUTHORS NEWS README.md RELEASE REQUIREMENTS
+%doc AUTHORS README.md RELEASE REQUIREMENTS
 %{_includedir}/gstreamer-%{gst_branch}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
