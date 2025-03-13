@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 10 13:50:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.7.2:
+  * Notable changes:
+    - Fixed an issue where the otelcol.exporter.awss3 could not be
+      started with the sumo_ic marshaler. (@wildum)
+    - Update jfr-parser dependency to v0.9.3 to fix jfr parsing
+      issues in pyroscope.java. (@korniltsev)
+    - Fixed an issue where passing targets from some standard
+      library functions was failing with target::ConvertFrom error.
+      (@thampiotr)
+    - Fixed an issue where indexing targets as maps (e.g.
+      target["foo"]) or objects (e.g. target.foo) or using them
+      with certain standard library functions was resulting in
+      expected object or array, got capsule error under some
+      circumstances. This could also lead to foreach evaluation
+      failed errors when using the foreach configuration block.
+      (@thampiotr)
+    - Update prometheus.write.queue to reduce memory fragmentation
+      and increase sent throughput. (@mattdurham)
+    - Fixed an issue where the otelcol.exporter.kafka component
+      would not start if the encoding was specific to a signal
+      type. (@wildum)
+
+-------------------------------------------------------------------
 Thu Feb 27 05:46:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.7.1:
