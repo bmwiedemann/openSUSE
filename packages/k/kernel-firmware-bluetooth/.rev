@@ -25,4 +25,18 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment></comment>
     <requestid>1247383</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8bd255b22cc994da436d7932371939a5</srcmd5>
+    <version>20250310</version>
+    <time>1741874673</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250310 (git commit 11c4e60f9573):
+  * QCA: Add Bluetooth firmwares for QCA2066 with USB transport
+  * QCA: Add two bluetooth firmware nvm files for QCA2066
+  * QCA: Update Bluetooth QCA2066 firmware to 2.1.0-00653
+  * QCA: Update Bluetooth WCN685x 2.1 firmware to 2.1.0-00653
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel BlazarI core</comment>
+    <requestid>1252347</requestid>
+  </revision>
 </revisionlist>
