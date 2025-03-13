@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Mar 13 07:09:44 UTC 2025 - ecsos@opensuse.org
+
+- Update to version 0.14.0:
+  * Release v0.14.0
+  * [ci] Exclude bionic and xenial from test-builds
+  * Get signing key from dkms/framework.conf.d/* as well
+  * Use atomic operations to count vm_open/close
+  * Simplify loop preparation cases in  mmap()
+  * Remove unreachable result in mmap()
+  * Do not discard return value of vm_alloc_page
+  * Consolidate style of debug print messages
+  * Remove excessive MARK()s
+  * Reorder v4l2_loopback_device and initialisation
+  * Use clamp_val to enforce dimension limits
+  * Set unique timestamp flags
+  * Refactor control of logical streams
+  * Use u32 type for buffer counts
+  * DQBUF/STREAMON fail if opener has not alloc'd
+  * QUERYBUF set timestamp if buffer dequeued
+  * QUERYBUF guess capture buffer flags
+  * QBUF/DQBUF set flags when using timeout I/O
+  * QBUF/DQBUF ensure buffer type is MMAP
+  * Add mutex for format and buffer changes
+  * Remove timeout allocate from allocate_buffers
+  * Set "I/O method" on first read/write or REQBUF
+  * Consolidate S_FMT across reader and writer
+  * Add function to check buffer-set capability
+  * Use REQBUFS to free buffers in close()
+  * Use STREAMOFF in REQBUFS when count is zero
+  * Add file-io initialisation function
+  * Add resize outbufs_list helper function
+  * Replace flag setters with macros
+  * Enumerate all formats except when fixed
+  * Enforce limits on time-per-frame
+  * Set valid pix format in add()
+  * Fix default configuration of exclusive_caps
+  * Fix v4l2-compliance result for button ctrl
+  * Simplify close and free
+  * Add guard to list ops in REQBUFS
+  * Add macro for debug buffer description
+  * Add macro for device_nr from private data
+  * Tidy fourcc format calls
+  * Remove unused member of v4l2_loopback_opener
+  * Safer list access in DQBUF
+  * Revert 97dc86b and fix #607
+  * Add hint for v4l2loopback-ctl build in README
+  * Update README instructions for set-timeout-image
+  * v4l2loopback-ctl fix block in set-timeout-image
+  * Adjust 'set-caps' call to new syntax
+  * make "--help" output work with help2man
+  * remove unused argc/argv from help-functions
+  * drop commented out code
+  * drop duplicate word
+  * build for a different kernel
+  * whitespace fixes
+  * Update README.md
+  * [github] kindly ask for MRE in bug-reports
+  * tidy up some whitespace
+  * Refactor poll and fix #601
+  * [github] use 'textarea' for kernelversion
+  * [ci] try rendering the kernel-version as *text*
+  * Note that (markdown) text is preferred to images
+
+-------------------------------------------------------------------
 Wed Oct 02 10:50:26 UTC 2024 - ecsos@opensuse.org
 
 - Update to version 0.13.2:
