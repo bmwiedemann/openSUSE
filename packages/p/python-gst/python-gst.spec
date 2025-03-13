@@ -20,13 +20,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gst
-Version:        1.24.12
+Version:        1.26.0
 Release:        0
 Summary:        Python Bindings for GStreamer
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{url}/src/gst-python/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.zst
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  c++_compiler
@@ -35,7 +35,9 @@ BuildRequires:  meson >= 1.1
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
+BuildRequires:  pkgconfig(gstreamer-analytics-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
+BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0) >= %{version}
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0
 Requires:       gstreamer >= %{version}
 %{python_subpackages}

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar 12 06:55:24 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.26.0:
+  + gst-python is an extension of the regular GStreamer Python
+    bindings based on gobject-introspection information and
+    PyGObject, and provides "syntactic sugar" in form of overrides
+    for various GStreamer APIs that makes them easier to use in
+    Python and more pythonic; as well as support for APIs that
+    aren't available through the regular gobject-introspection
+    based bindings, such as e.g. GStreamer's fundamental GLib types
+    such as Gst.Fraction, Gst.IntRange etc.
+      - The python Meson build option has been renamed to
+        python-exe (and will yield to the monorepo build option of
+        the same name if set, in a monorepo build context).
+      - Added an iterator for AnalyticsRelationMeta
+      - Implement __eq__ for Mtd classes
+      - Various build fixes and Windows-related fixes.
+  + For more detailed information on this update, please see
+    https://gstreamer.freedesktop.org/releases/1.26/
+
+-------------------------------------------------------------------
 Mon Feb  3 11:22:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.12:
