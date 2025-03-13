@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 12 13:37:32 MDT 2025 - carnold@suse.com
+
+- Update to version 1.55.7 (jsc#PED-8910)
+  * libguestfs: Rust binding build error and warning fixes
+  * support TencentOS
+  * lib: Print kernel utsname in debug output
+  * daemon: Fix loongarch64 detection on RHEL 9
+
+-------------------------------------------------------------------
 Wed Feb 19 10:08:10 MST 2025 - carnold@suse.com
 
 - Update to version 1.55.6 (jsc#PED-8910)
