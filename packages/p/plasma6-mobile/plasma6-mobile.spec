@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-mobile
-Version:        6.3.2
+Version:        6.3.3
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -146,6 +146,7 @@ Plasma shell for mobile devices.
 %{_kf6_appstreamdir}/org.kde.plasma.mobileinitialstart.cellular.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.mobileinitialstart.finished.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.mobileinitialstart.prepare.appdata.xml
+%{_kf6_appstreamdir}/org.kde.plasma.mobileinitialstart.systemnavigation.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.mobileinitialstart.time.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.mobileinitialstart.wifi.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.mobileshell.appdata.xml
@@ -182,6 +183,7 @@ Plasma shell for mobile devices.
 %{_kf6_plasmadir}/mobileinitialstart/org.kde.plasma.mobileinitialstart.cellular/
 %{_kf6_plasmadir}/mobileinitialstart/org.kde.plasma.mobileinitialstart.finished/
 %{_kf6_plasmadir}/mobileinitialstart/org.kde.plasma.mobileinitialstart.prepare/
+%{_kf6_plasmadir}/mobileinitialstart/org.kde.plasma.mobileinitialstart.systemnavigation/
 %{_kf6_plasmadir}/mobileinitialstart/org.kde.plasma.mobileinitialstart.time/
 %{_kf6_plasmadir}/mobileinitialstart/org.kde.plasma.mobileinitialstart.wifi/
 %dir %{_kf6_plasmadir}/plasmoids/
@@ -212,10 +214,6 @@ Plasma shell for mobile devices.
 %{_kf6_plasmadir}/shells/org.kde.plasma.mobileshell/
 %{_kf6_plugindir}/kf6/kded/kded_plasma_mobile_autodetect_apn.so
 %{_kf6_plugindir}/kf6/kded/kded_plasma_mobile_start.so
-%dir %{_kf6_plugindir}/kwin
-%dir %{_kf6_plugindir}/kwin/effects
-%dir %{_kf6_plugindir}/kwin/effects/plugins
-%{_kf6_plugindir}/kwin/effects/plugins/mobiletaskswitcher.so
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.mobile.homescreen.folio.so
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.mobile.homescreen.halcyon.so
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.mobile.panel.so
