@@ -69,6 +69,8 @@ Source99:       README.SUSE
 Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
+# PATCH-FIX-UPSTREAM cmake-findhdf5-prefer-hl-compilers.patch badshah400@gmail.com -- FindHDF5: Prefer h5hl* compilers for HDF5_FIND_HL; patch submitted upstream [https://gitlab.kitware.com/cmake/cmake/-/merge_requests/10450.patch]
+Patch2:         cmake-findhdf5-prefer-hl-compilers.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

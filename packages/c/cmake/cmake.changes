@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 11 06:54:19 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add cmake-findhdf5-prefer-hl-compilers.patch -- FindHDF5: Prefer
+  h5hl* compilers for HDF5_FIND_HL; patch submitted upstream
+  [https://gitlab.kitware.com/cmake/cmake/-/merge_requests/10450.patch].
+  This fixes hdf5_hl detection issues when building hdf5 >= 1.14
+  using cmake instead of autotools.
+
+-------------------------------------------------------------------
 Fri Feb 28 20:22:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - temporarily revert "make %cmake_{build, install} call cmake
