@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 12 18:44:51 UTC 2025 - mrueckert@suse.de
+
+- Update to version 20250312T172924Z:
+  * Update all deps (#5165)
+  * Update madmin-go to latest version (#5161)
+  * Update ssh and jws libs for fixed CVEs (#5164)
+  * rename rcp -> rpc
+  * Remove logs feature from 'mc support callhome' (#5157)
+  * Reject add ILM rule with both day and date parameters (#5155)
+  * Fix transition days calculation (#5154)
+
+-------------------------------------------------------------------
 Fri Feb 28 19:03:03 UTC 2025 - mrueckert@suse.de
 
 - Update to version 20250221T160046Z:
