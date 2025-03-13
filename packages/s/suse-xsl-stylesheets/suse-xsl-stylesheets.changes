@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 12 12:57:54 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.7
+
+- Update to 2.95.7
+  * #692: Make white stroke for SVG image (copy button)
+  * #693: Improve contrast on side toc
+  * #694: Explicity check para.use.arch != 0 in if clause
+
+-------------------------------------------------------------------
 Wed Mar  5 12:59:10 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.6
 
 - Update to 2.95.6
