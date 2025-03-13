@@ -585,4 +585,83 @@
     <comment></comment>
     <requestid>1236823</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>fc97bc5f3b260fe92045e0ee6ef46e92</srcmd5>
+    <version>2.1.1</version>
+    <time>1741874785</time>
+    <user>anag+factory</user>
+    <comment>- Fix requirements
+- Update to 2.1.1
+  * Fixed
+    - Fix an issue where poetry env use python does not choose the Python from the PATH (#10187).
+- Changes from 2.1.0
+  * Added
+    - Make build command build-system agnostic (#10059, #10092).
+    - Add a --config-settings option to poetry build (#10059).
+    - Add support for defining config-settings when building dependencies (#10129).
+    - Add (experimental) commands to manage Python installations (#10112).
+    - Use findpython to find the Python interpreters (#10097).
+    - Add a --no-truncate option to poetry show (#9580).
+    - Re-add support for passwords with empty usernames (#10088).
+    - Add better error messages (#10053, #10065, #10126, #10127, #10132).
+  * Changed
+    - poetry new defaults to &quot;src&quot; layout by default (#10135).
+    - Improve performance of locking dependencies (#10111, #10114, #10138, #10146).
+    - Deprecate adding sources without specifying --priority (#10134).
+  * Fixed
+    - Fix an issue where global options were not handled correctly when positioned after command options (#10021, #10067, #10128).
+    - Fix an issue where building a dependency from source failed because of a conflict
+      between build-system dependencies that were not required for the target environment (#10048).
+    - Fix an issue where poetry init was not able to find a package on PyPI while adding dependencies interactively (#10055).
+    - Fix an issue where the @latest descriptor was incorrectly passed to the core requirement parser (#10069).
+    - Fix an issue where Boolean environment variables set to True (in contrast to true) were interpreted as false (#10080).
+    - Fix an issue where poetry env activate reported a misleading error message (#10087).
+    - Fix an issue where adding an optional dependency with poetry add --optional would not correctly update the lock file (#10076).
+    - Fix an issue where pip was not installed/updated before other dependencies resulting in a race condition (#10102).
+    - Fix an issue where Poetry freezes when multiple threads attempt to unlock the keyring simultaneously (#10062).
+    - Fix an issue where markers with extras were not locked correctly (#10119).
+    - Fix an issue where self-referential extras were not resolved correctly (#10106).
+    - Fix an issue where Poetry could not be run from a zipapp (#10074).
+    - Fix an issue where installation failed with a permission error when using
+      the system environment as a user without write access to system site packages (#9014).
+    - Fix an issue where a version of a dependency that is not compatible with the project's python constraint was locked. (#10141).
+    - Fix an issue where Poetry wrongly reported that the current project's supported Python range
+      is not compatible with some of the required packages Python requirement (#10157).
+    - Fix an issue where the requested extras of a dependency were ignored if the same
+      dependency (with same extras) was specified in multiple groups (#10158).
+  * Docs
+    - Sort commands by name in the CLI reference (#10035).
+    - Add missing documentation for env commands (#10027).
+    - Clarify that the name and version fields are always required if the project section is specified (#10033).
+    - Add a note about restarting the shell for tab completion changes to take effect (#10070).
+    - Fix the example for project.gui-scripts #10121.
+    - Explain how to include files as scripts in the project configuration (#9572, #10133).
+    - Add additional information on specifying required python versions (#10104).
+- Changes from 2.0.1
+  * Added
+    - Add support for poetry search in legacy sources (#9949).
+    - Add a message in the poetry source show output when PyPI is implicitly enabled (#9974).
+  * Changed
+    - Improve performance for merging markers from overrides at the end of dependency resolution (#10018).
+  * Fixed
+    - Fix an issue where poetry sync did not remove packages that were not requested (#9946).
+    - Fix an issue where poetry check failed even though there were just warnings and add a --strict option to fail on warnings (#9983).
+    - Fix an issue where poetry update, poetry add and poetry remove with --only uninstalled packages from other groups (#10014).
+    - Fix an issue where poetry update, poetry add and poetry remove uninstalled all extra packages (#10016).
+    - Fix an issue where poetry self update did not recognize Poetry's own environment (#9995).
+    - Fix an issue where read-only system site-packages were not considered when loading an environment with system site-packages (#9942).
+    - Fix an issue where an error message in poetry install started with Warning: instead of Error: (#9945).
+    - Fix an issue where Command.set_poetry, which is used by plugins, was removed (#9981).
+    - Fix an issue where the help text of poetry build --clean showed a malformed short option instead of the description (#9994).
+  * Docs
+    - Add a FAQ entry for the migration from Poetry-specific fields to the project section (#9996).
+    - Fix examples for project.readme and project.urls (#9948).
+    - Add a warning that package sources are a Poetry-specific feature that is not included in core metadata (#9935).
+    - Replace poetry install --sync with poetry sync in the section about synchronizing dependencies (#9944).
+    - Replace poetry shell with poetry env activate in the basic usage section (#9963).
+    - Mention that project.name is always required when the project section is used (#9989).
+    - Fix the constraint of poetry-plugin-export in the section about poetry export (#9954).
+</comment>
+    <requestid>1252482</requestid>
+  </revision>
 </revisionlist>

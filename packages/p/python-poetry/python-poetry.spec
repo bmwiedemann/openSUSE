@@ -27,47 +27,51 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
 URL:            https://python-poetry.org/
 # PyPI sdist doesn't contain tests
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 2.0.0 with %python-poetry-core < 2.1.0}
+BuildRequires:  %{python_module poetry-core >= 2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-build >= 1.2.1
-Requires:       python-poetry-core = 2.0.0
-Requires:       python-poetry-plugin-export >= 1.6.0
-# SECTION cachecontrol[filecache]
-Requires:       python-CacheControl >= 0.14
+Requires:       python-poetry-core = 2.1.1
+Requires:       (python-build >= 1.2.1 with python-build < 2.0.0)
+Requires:       (python-cachecontrol >= 0.14.0 with python-cachecontrol < 0.15.0)
+# from cachecontrol[filecache]
 Requires:       python-filelock >= 3.8.0
-# /SECTION
-Requires:       python-cleo >= 2.1.0
-Requires:       python-dulwich >= 0.22.6
-Requires:       python-fastjsonschema >= 2.18.0
-%if 0%{?python_version_nodots} < 310
+# /cachecontrol[filecache]
+Requires:       (python-cleo >= 2.1.0 with python-cleo < 3.0.0)
+Requires:       (python-dulwich >= 0.22.6 with python-dulwich < 0.23.0)
+Requires:       (python-fastjsonschema >= 2.18.0 with python-fastjsonschema < 3.0.0)
+%if %python_version_nodots < 310
 Requires:       python-importlib-metadata >= 4.4
 %endif
-Requires:       python-installer >= 0.7.0
-Requires:       python-keyring >= 25.1
 Requires:       python-packaging >= 24.0
-Requires:       python-pexpect >= 4.7.0
-Requires:       python-pkginfo >= 1.12.0
-Requires:       python-pyproject-hooks >= 1.0.0
-Requires:       python-requests >= 2.26
-Requires:       python-shellingham >= 1.5
+Requires:       (python-installer >= 0.7.0 with python-installer < 0.8.0)
+Requires:       (python-keyring >= 25.1.0 with python-keyring < 26.0.0)
+Requires:       (python-pkginfo >= 1.12 with python-pkginfo < 2.0)
 Requires:       (python-platformdirs >= 3.0.0 with python-platformdirs < 5)
-Requires:       (python-requests-toolbelt >= 1.0.0 with python-requests-toolbelt < 2)
-%if 0%{?python_version_nodots} < 311
-Requires:       python-tomli >= 2.0.1
+Requires:       (python-pyproject-hooks >= 1.0.0 with python-pyproject-hooks < 2.0.0)
+Requires:       (python-requests >= 2.26 with python-requests < 3.0)
+Requires:       (python-requests-toolbelt >= 1.0.0 with python-requests-toolbelt < 2.0.0)
+Requires:       (python-shellingham >= 1.5 with python-shellingham < 2.0)
+%if %python_version_nodots < 311
+Requires:       (python-tomli >= 2.0.1 with python-tomli < 3.0.0)
 %endif
 Requires:       python-trove-classifiers >= 2022.5.19
-Requires:       python-virtualenv >= 20.26.6
-Requires:       (python-tomlkit >= 0.11.4 with python-tomlkit < 1.0)
+Requires:       (python-findpython >= 0.6.2 with python-findpython < 0.7.0)
+Requires:       (python-pbs-installer >= 2025.1.6 with python-pbs-installer < 2026.0.0)
+Requires:       (python-tomlkit >= 0.11.4 with python-tomlkit < 1.0.0)
+Requires:       (python-virtualenv >= 20.26.6 with python-virtualenv < 21.0.0)
+# python-pbs-installer[download,install]
+Requires:       (python-httpx >= 0.27.0 with python-httpx < 1)
+Requires:       python-zstandard >= 0.21.0
+# /python-pbs-installer[download,install]
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     git-core
