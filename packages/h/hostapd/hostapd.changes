@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 13 10:22:26 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- CVE-2025-24912: hostapd fails to process crafted RADIUS packets 
+  properly (bsc#1239461)
+  [+ CVE-2025-24912.patch] 
+
+-------------------------------------------------------------------
 Thu Aug  8 07:30:47 UTC 2024 - chris@computersalat.de
 
 - 2024-07-20 - v2.11

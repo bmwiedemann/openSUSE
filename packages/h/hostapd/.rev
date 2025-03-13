@@ -485,4 +485,12 @@ ChangeLog for hostapd since 2.4:
   * support unsynchronized service discovery (USD)</comment>
     <requestid>1198031</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>cd3fefb62dd11a687e1f14ed29d52695</srcmd5>
+    <version>2.11</version>
+    <time>1741874866</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1252730</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package hostapd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source2:        %{name}.keyring
 Source3:        config
 Source4:        hostapd.service
 Source5:        apparmor-usr.sbin.hostapd
+# PATCH-FIX-UPSTREAM CVE-2025-24912.patch, bsc#1239461, CVE-2025-24912
+Patch1:         CVE-2025-24912.patch
 BuildRequires:  libnl3-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
@@ -59,7 +61,7 @@ cp %{SOURCE3} hostapd/.config
 
 %build
 cd hostapd
-CFLAGS="%{optflags} -D_GNU_SOURCE $(getconf LFS_CFLAGS)" CC="gcc" make  %{?_smp_mflags} V=1
+CFLAGS="%{optflags}" make  %{?_smp_mflags} V=1
 
 %install
 cd hostapd
