@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 12 13:38:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0a0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Override upstream version with 1.0.0~a0
+- Remove samples directory from source tree
+- Remove %{python_sitelib}/samples/ in %files section
+- Rename LICENSE.txt to License.txt in %files section
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Apr  4 12:51:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15
