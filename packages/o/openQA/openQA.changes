@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Mar 13 17:13:18 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1741882150.baca1fd8:
+  * Fix bugzilla product entry for SL Micro
+  * Include IDs in error message when sending AMQP message fails
+  * Bump @eslint-community/eslint-utils from 4.5.0 to 4.5.1
+  * Fix XUnit parser softfail scenario
+  * Use signatures in lib/OpenQA/Schema/ResultSet/Jobs.pm
+  * Improve reading of text_data in module results
+  * Ensure fullstack tests run under high system load
+  * Add signatures to OpenQA::Schema::Result::JobModules
+  * Bump @eslint-community/eslint-utils from 4.4.1 to 4.5.0
+  * Fix unstable UI tests by waiting for popovers
+  * Revert "Mitigate error for textData undef"
+  * Mitigate textData undef failure
+  * Fix two more sporadic test failures in `t/ui/10-tests_overview.t`
+  * Avoid race condition in `t/ui/21-admin-needles.t`
+  * Mitigate error for textData undef
+  * Make the tests consistent with the behaviour before 0b78fa6
+  * Fix more sporadic test failures in `t/ui/10-tests_overview.t`
+  * Bump eslint-config-prettier from 10.0.2 to 10.1.1
+  * Bump eslint from 9.21.0 to 9.22.0
+  * Dependency cron 2025-03-10
+
+-------------------------------------------------------------------
 Sun Mar 09 19:12:30 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1741427870.33ddb978:
