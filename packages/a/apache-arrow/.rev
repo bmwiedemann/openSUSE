@@ -568,4 +568,13 @@ apache-arrow is being used more and more by python numeric packages like pandas 
     <comment>- disable flight because of gh#grpc/grpc#37968 boo#1237422 (forwarded request 1247453 from bnavigator)</comment>
     <requestid>1247454</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>49e05f78b369e4c3e29b07ce43912d8d</srcmd5>
+    <version>19.0.1</version>
+    <time>1741902440</time>
+    <user>anag+factory</user>
+    <comment>- Add missing dependencies for libboost_process explicitly
+  boo#1239599 (forwarded request 1252868 from bnavigator)</comment>
+    <requestid>1252869</requestid>
+  </revision>
 </revisionlist>

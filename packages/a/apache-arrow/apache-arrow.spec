@@ -54,6 +54,8 @@ BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc%{?gccver}-c++
+BuildRequires:  libboost_context-devel
+BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_process-devel
 BuildRequires:  libboost_system-devel >= 1.64.0

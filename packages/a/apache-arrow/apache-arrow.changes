@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 13 18:57:51 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Add missing dependencies for libboost_process explicitly
+  boo#1239599
+
+-------------------------------------------------------------------
 Wed Feb 19 15:58:28 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - disable flight because of gh#grpc/grpc#37968 boo#1237422
