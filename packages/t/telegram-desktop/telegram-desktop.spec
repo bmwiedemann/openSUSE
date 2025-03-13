@@ -55,6 +55,7 @@ Source4:        rnnoise-git20210122.tar.gz
 %endif
 Patch1:         0001-dynamic-link-x.patch
 Patch2:         0002-tg_owt-h264-dlopen.patch
+Patch3:         0003-tg_owt-pipewire-1.4.patch
 # There is an (incomplete) patch available for part of the source:
 # https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
 # but tdesktop itself still falls short, and it looks to be something
@@ -233,7 +234,7 @@ mv ../rnnoise-git20210122 ../Libraries/rnnoise
 %endif
 
 pushd %{_builddir}/Libraries/tg_owt
-%autopatch -p1 2
+%autopatch -p1 2 3
 popd
 
 %build

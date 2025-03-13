@@ -1373,4 +1373,12 @@
   and drop superfluous webkit2gtk3-devel BuildRequires.</comment>
     <requestid>1243539</requestid>
   </revision>
+  <revision rev="131" vrev="4">
+    <srcmd5>e89a72cc0570aa7512551851eef4e3e9</srcmd5>
+    <version>5.10.3</version>
+    <time>1741874879</time>
+    <user>anag+factory</user>
+    <comment>- Added 0003-tg_owt-pipewire-1.4.patch to fix build with pipewire 1.4.</comment>
+    <requestid>1252738</requestid>
+  </revision>
 </revisionlist>

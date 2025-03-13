@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 13 11:17:09 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Added 0003-tg_owt-pipewire-1.4.patch to fix build with pipewire 1.4.
+
+-------------------------------------------------------------------
 Wed Feb  5 07:15:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(webkit2gtk-4.0) with pkgconfig(webkit2gtk-4.1)

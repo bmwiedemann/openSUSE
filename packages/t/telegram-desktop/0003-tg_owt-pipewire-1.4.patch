@@ -1,0 +1,21 @@
+diff -Pdpru tg_owt-git20241202.orig/src/modules/video_capture/linux/pipewire_session.cc tg_owt-git20241202/src/modules/video_capture/linux/pipewire_session.cc
+--- tg_owt-git20241202.orig/src/modules/video_capture/linux/pipewire_session.cc	2025-03-13 07:44:46.200690196 +0300
++++ tg_owt-git20241202/src/modules/video_capture/linux/pipewire_session.cc	2025-03-13 13:56:23.702171984 +0300
+@@ -60,7 +60,7 @@ PipeWireNode::PipeWireNode(PipeWireSessi
+       .param = OnNodeParam,
+   };
+ 
+-  pw_node_add_listener(proxy_, &node_listener_, &node_events, this);
++  pw_node_add_listener(reinterpret_cast<pw_node*>(proxy_), &node_listener_, &node_events, this);
+ }
+ 
+ PipeWireNode::~PipeWireNode() {
+@@ -94,7 +94,7 @@ void PipeWireNode::OnNodeInfo(void* data
+       uint32_t id = info->params[i].id;
+       if (id == SPA_PARAM_EnumFormat &&
+           info->params[i].flags & SPA_PARAM_INFO_READ) {
+-        pw_node_enum_params(that->proxy_, 0, id, 0, UINT32_MAX, nullptr);
++        pw_node_enum_params(reinterpret_cast<pw_node*>(that->proxy_), 0, id, 0, UINT32_MAX, nullptr);
+         break;
+       }
+     }
