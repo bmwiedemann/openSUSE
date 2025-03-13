@@ -392,4 +392,27 @@
     be parsed (#734).</comment>
     <requestid>1236826</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2596460441708e20e72ea1220e1d6347</srcmd5>
+    <version>2.1.1</version>
+    <time>1741874699</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.1
+  - Fix an issue where simplifying a python_version marker resulted in an invalid marker (#838).
+- Changes from 2.1.0
+  - Fix an issue where inclusive ordering with post releases was inconsistent with PEP 440 (#379).
+  - Fix an issue where invalid URI tokens in PEP 508 requirement strings were silently discarded (#817).
+  - Fix an issue where wrong markers were calculated when removing parts covered by the project's python constraint (#824).
+  - Fix an issue where optional dependencies that are not part of an extra were included in the wheel metadata (#830).
+  - Fix an issue where the __pycache__ directory and *.pyc files were included in sdists and wheels (#835).
+- Changes from 2.0.1
+  - Replace the deprecated core metadata field Home-page with Project-URL: Homepage (#807).
+  - Fix an issue where includes from tool.poetry.packages without a specified format were not
+    initialized with the default value resulting in a KeyError (#805).
+  - Fix an issue where some project.urls entries were not processed correctly resulting in a KeyError (#807).
+  - Fix an issue where dynamic project.dependencies via tool.poetry.dependencies were ignored if
+    project.optional-dependencies were defined (#811).
+</comment>
+    <requestid>1252483</requestid>
+  </revision>
 </revisionlist>
