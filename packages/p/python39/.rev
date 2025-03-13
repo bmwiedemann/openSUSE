@@ -1346,4 +1346,13 @@
 </comment>
     <requestid>1244103</requestid>
   </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>f51ee63adf4b5eaa091da1fcc46fa2bc</srcmd5>
+    <version>3.9.21</version>
+    <time>1741874859</time>
+    <user>anag+factory</user>
+    <comment>- Skip PGO with %want_reproducible_builds (bsc#1239210)
+</comment>
+    <requestid>1252712</requestid>
+  </revision>
 </revisionlist>
