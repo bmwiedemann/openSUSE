@@ -1,11 +1,21 @@
-Index: libcec-libcec-6.0.2/src/libcec/cmake/CheckPlatformSupport.cmake
+Index: libcec-libcec-7.0.0/src/libcec/cmake/CheckPlatformSupport.cmake
 ===================================================================
---- libcec-libcec-6.0.2.orig/src/libcec/cmake/CheckPlatformSupport.cmake
-+++ libcec-libcec-6.0.2/src/libcec/cmake/CheckPlatformSupport.cmake
-@@ -287,9 +287,9 @@ else()
-                 DESTINATION lib/python${PYTHON_VERSION}/${PYTHON_PKG_DIR}/cec)
+--- libcec-libcec-7.0.0.orig/src/libcec/cmake/CheckPlatformSupport.cmake
++++ libcec-libcec-7.0.0/src/libcec/cmake/CheckPlatformSupport.cmake
+@@ -363,16 +363,16 @@ else()
+ 
+       if (${PYTHON_MAJOR_VERSION} EQUAL 2)
+         install(TARGETS     ${SWIG_MODULE_pycec_REAL_NAME}
+-                DESTINATION lib/python${PYTHON_VERSION}/${PYTHON_PKG_DIR}/${PYTHON_LIB_INSTALL_PATH}/cec)
++                DESTINATION ${CMAKE_INSTALL_LIBDIR}/python${PYTHON_VERSION}/${PYTHON_PKG_DIR}/${PYTHON_LIB_INSTALL_PATH}/cec)
+         install(FILES       ${CMAKE_BINARY_DIR}/src/libcec/cec.py
+-                DESTINATION lib/python${PYTHON_VERSION}/${PYTHON_PKG_DIR})
++                DESTINATION ${CMAKE_INSTALL_LIBDIR}/python${PYTHON_VERSION}/${PYTHON_PKG_DIR})
+         install(FILES ${CMAKE_SOURCE_DIR}/src/libcec/cmake/__init__.py
+-                DESTINATION lib/python${PYTHON_VERSION}/${PYTHON_PKG_DIR}/cec)
++                DESTINATION ${CMAKE_INSTALL_LIBDIR}/python${PYTHON_VERSION}/${PYTHON_PKG_DIR}/cec)
        else()
-         install(TARGETS     ${SWIG_MODULE_cec_REAL_NAME}
+         install(TARGETS     ${SWIG_MODULE_pycec_REAL_NAME}
 -                DESTINATION lib/python${PYTHON_VERSION}/${PYTHON_PKG_DIR}/${PYTHON_LIB_INSTALL_PATH})
 +                DESTINATION ${CMAKE_INSTALL_LIBDIR}/python${PYTHON_VERSION}/${PYTHON_PKG_DIR}/${PYTHON_LIB_INSTALL_PATH})
          install(FILES       ${CMAKE_BINARY_DIR}/src/libcec/cec.py

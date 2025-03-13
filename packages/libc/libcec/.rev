@@ -150,4 +150,12 @@ Now with proper naming, thanks to Jan Engelhardt.</comment>
 - Don't buildrequire lockdev, it's not actually used</comment>
     <requestid>1095753</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f5367371c1e52b5fa1a484431baea395</srcmd5>
+    <version>7.0.0</version>
+    <time>1741899877</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1252658</requestid>
+  </revision>
 </revisionlist>
