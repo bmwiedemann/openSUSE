@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 13 08:35:08 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on aarch64:
+  * fix-aarch64.patch
+
+-------------------------------------------------------------------
 Mon Feb 24 14:08:15 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add vk301.patch to fix build with latest vulkan

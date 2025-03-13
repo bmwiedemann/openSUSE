@@ -1,0 +1,10 @@
+--- gpt4all-3.4.2/gpt4all-backend/llama.cpp.cmake.orig	2025-03-13 09:17:45.100111000 +0100
++++ gpt4all-3.4.2/gpt4all-backend/llama.cpp.cmake	2025-03-13 09:18:12.918919300 +0100
+@@ -845,6 +845,7 @@ function(include_ggml SUFFIX)
+         if (MSVC)
+             # TODO: arm msvc?
+         else()
++            include(CheckCXXCompilerFlag)
+             check_cxx_compiler_flag(-mfp16-format=ieee COMPILER_SUPPORTS_FP16_FORMAT_I3E)
+             if (NOT "${COMPILER_SUPPORTS_FP16_FORMAT_I3E}" STREQUAL "")
+                 list(APPEND ARCH_FLAGS -mfp16-format=ieee)

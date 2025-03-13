@@ -35,6 +35,8 @@ Source2:        https://github.com/nomic-ai/kompute/archive/%{komputevers}.tar.g
 Source3:        %{name}.rpmlintrc
 # PATCH-FIX-OPENSUSE vk301.patch gh#KhronosGroup/Vulkan-Samples#1269
 Patch1:         vk301.patch
+# PATCH-FIX-UPSTREAM - https://github.com/nomic-ai/gpt4all/issues/3536
+Patch2:         fix-aarch64.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -100,6 +102,7 @@ mv kompute-%{komputevers}* kompute
 popd
 popd
 %patch -P1 -p1
+%patch -P2 -p1
 
 %build
 %if 0%{?sle_version} == 150600
