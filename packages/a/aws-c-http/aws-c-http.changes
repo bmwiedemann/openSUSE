@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 12 06:54:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.4
+  * Some trivial fixup on tests by @graebm in (#503)
+  * Move h1_stream variables, to make thread usage more explicit
+    by @graebm in (#504)
+  * Supprt response_first_byte_timeout_ms in ConnectionManagerOptions
+    by @waahm7 in (#505)
+
+-------------------------------------------------------------------
 Thu Jan 30 11:43:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.3
