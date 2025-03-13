@@ -1,0 +1,90 @@
+#
+# spec file for package sdl2-compat
+#
+# Copyright (c) 2025 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%define lname libSDL2-2_0-0
+%global _lto_cflags %_lto_cflags -ffat-lto-objects
+Name:           sdl2-compat
+Version:        2.32.52
+Release:        0
+Summary:        SDL-2.0 Compatibility Layer for Simple DirectMedia Layer 3.0
+License:        MIT
+Group:          Development/Libraries/X11
+URL:            https://github.com/libsdl-org/sdl2-compat
+Source:         https://github.com/libsdl-org/sdl2-compat/releases/download/release-%version/sdl2-compat-%version.tar.gz
+Source2:        https://github.com/libsdl-org/sdl2-compat/releases/download/release-%version/sdl2-compat-%version.tar.gz.sig
+Source8:        baselibs.conf
+Patch1:         sdl2-symvers.patch
+Patch2:         0001-cmake-install-sdl2-config-.cmake-files.patch
+BuildRequires:  cmake
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(sdl3) >= 3.2.4
+
+%description
+This is the "Simple DirectMedia Layer" library built from sdl2-compat.
+it provides a binary and source compatible API for programs written
+against SDL 2.0, but it uses SDL 3.0 behind the scenes.
+
+%package -n %lname
+Summary:        SDL-2.0 Compatibility Layer for Simple DirectMedia Layer 3.0
+Group:          System/Libraries
+%requires_eq %(rpm --qf "%%{name}" -qf $(readlink -f %_libdir/libSDL3.so))
+
+%description -n %lname
+This is the "Simple DirectMedia Layer" library built from sdl2-compat.
+it provides a binary and source compatible API for programs written
+against SDL 2.0, but it uses SDL 3.0 behind the scenes.
+
+%package devel
+Summary:        Header and build system files for sdl2-compat
+Group:          Development/Libraries/X11
+Requires:       %lname = %version
+Conflicts:      SDL2-devel
+Provides:       SDL2-devel = %version-%release
+
+%description devel
+This package contains files needed for development with the SDL2
+library.
+
+%prep
+%autosetup -p1
+
+%build
+%cmake
+%cmake_build
+
+%install
+%cmake_install
+rm -Rf "%buildroot/%_datadir/licenses" # using %%license instead
+cd "%buildroot/%_libdir/cmake/SDL2/"
+
+%ldconfig_scriptlets -n %lname
+
+%files -n %lname
+%license LICENSE.txt
+%_libdir/libSDL2-2.0.so.*
+
+%files devel
+%_bindir/sdl2-config
+%_includedir/SDL2/
+%_libdir/*SDL2*.a
+%_libdir/*.so
+%_libdir/cmake/
+%_libdir/pkgconfig/*.pc
+%_datadir/aclocal/
+
+%changelog

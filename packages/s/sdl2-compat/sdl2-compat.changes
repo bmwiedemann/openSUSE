@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Wed Mar 12 16:14:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete pc.patch (rejected upstream)
+- Add 0001-cmake-install-sdl2-config-.cmake-files.patch
+
+-------------------------------------------------------------------
+Mon Mar 10 19:20:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete self-conflicts
+
+-------------------------------------------------------------------
+Sun Mar  9 21:15:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add sdl2-symvers.patch to match our (non-compat) SDL2 package
+- Add pc.patch
+
+-------------------------------------------------------------------
+Sun Mar  2 09:58:02 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.32.52
+  * Fixed tiny scaled window in recent versions of Wesnoth
+  * Fixed a rare deadlock when opening an audio device using
+    PipeWire on Linux
+  * Fixed sound cutting out while using Kdenlive
+  * Fixed controller input in D2X-Rebirth
+
+-------------------------------------------------------------------
+Sat Feb  8 20:17:19 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.32.50
+  * Audio devices can be enumerated at startup and have names
+    matching SDL2 conventions
+
+-------------------------------------------------------------------
+Fri Feb  7 09:09:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relesae 2.30.54
+  * Fixed the mouse wheel in Torchlight
+  * Fixed double-free if SDL RLE encodes a surface during blit
+  * Fixed SDL_ConvertSurface() returning NULL in Dwarf Fortress
+  * Fixed a crash if you call SDL_FreeSurface() on a surface
+    returned from SDL_GetWindowSurface()
+  * Fixed SDL_WINDOW_ALWAYS_ON_TOP
+  * Fixed garbled audio if format conversion was needed
+  * Fixed D-Pad not working on some controllers
+  * Fixed return value of SDL_WasInit(SDL_INIT_TIMER)
+  * Fixed build errors when building some SDL2 applications using
+    sdl2-compat headers
+  * Fixed several memory leaks
+
+-------------------------------------------------------------------
+Sun Feb  2 12:24:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.30.52
+  * Fixed a black screen in some applications, including Source 1
+    games
+  * Fixed loud garbled audio in some applications, including
+    Source 1 games and DOSBox
+  * Fixed audio crackling and potential related crashing in some
+    applications, including vkQuake
+  * Fixed opening the main window in ffplay
+  * Fixed fullscreen window size when running some games like
+    Meat Boy on Wayland with fractional scaling enabled
+  * Fixed keyboard input in Super Meat Boy
+  * Fixed mouse motion while the mouse is grabbed
+  * Fixed a crash in AntimicroX
+  * Fixed building applications that expect SDL to provide
+    standard C headers
+  * Added support for the original Torchlight on Linux, which
+    shipped using a pre-release SDL 2.0 library
+
+-------------------------------------------------------------------
+Thu Jan 30 11:38:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.30.51
+  * Enable text input by default on desktop platform
+  * Enable render batching if a specific renderer has not been
+    requested
+  * Fixed a memory leak
+
+-------------------------------------------------------------------
+Wed Jan 22 13:51:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.30.50
+  * Added PS4/PS5 rumble hints that were renamed in SDL3
+  * hints: Add SDL_VIDEO_GL_DRIVER and SDL_VIDEO_EGL_DRIVER to
+    renamed_hints
+
+-------------------------------------------------------------------
+Tue Nov 19 11:13:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 2.30.50~40/commit ad5dab0f748)
+  for build.opensuse.org
