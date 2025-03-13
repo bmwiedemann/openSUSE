@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 11 14:43:44 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.3
+- Changes since 6.3.2:
+  * update version for new release
+  * Disable effect when software renderer is used
+  * kns: Ensure we deactivate the updater when the backend gets invalidated (kde#500513)
+  * Sort offline update items case-insensitively (kde#500661)
+  * flatpak: do not mark eol runtimes for uninstall
+  * UpdatesPage: Fix update chagelog when opening details (kde#500776)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Feb 25 19:38:31 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.2:
