@@ -299,8 +299,6 @@ unsorted:
   - Rivet-data 
   - Rivet-devel 
   - Rivet-plugins 
-  - SDL2-devel 
-  - SDL2-devel-32bit 
   - SDL2_Pango-devel 
   - SDL2_image-devel 
   - SDL2_mixer-devel 
@@ -3014,12 +3012,6 @@ unsorted:
   - cryptsetup-ssh 
   - cscope 
   - cscreen 
-  - csi-external-attacher 
-  - csi-external-provisioner 
-  - csi-external-resizer 
-  - csi-external-snapshotter 
-  - csi-livenessprobe 
-  - csi-node-driver-registrar 
   - csindex 
   - csmash 
   - csmith 
@@ -3631,7 +3623,6 @@ unsorted:
   - dssi 
   - dssi-devel 
   - dssim 
-  - dstat 
   - dsvpn 
   - dt 
   - dtach 
@@ -7513,8 +7504,6 @@ unsorted:
   - gnome-doc-utils 
   - gnome-doc-utils-devel 
   - gnome-doc-utils-lang 
-  - gnome-dvb-daemon 
-  - gnome-dvb-daemon-lang 
   - gnome-epub-thumbnailer 
   - gnome-firmware 
   - gnome-firmware-lang 
@@ -11771,7 +11760,6 @@ unsorted:
   - libSDL2_net-2_0-0 
   - libSDL2_sound2 
   - libSDL2_ttf-2_0-0 
-  - libSDL3-0 
   - libSDL3-0-32bit 
   - libSDL3_image0 
   - libSDL3_ttf0 
@@ -11796,7 +11784,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2024_4_rc2-32bit 
+  - libSPIRV-Tools-2025_1_rc1-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -12491,7 +12479,7 @@ unsorted:
   - libboost_wave1_87_0-devel 
   - libboost_wave1_87_0-x86-64-v3 
   - libboringssl1 
-  - libbotan-3-6 
+  - libbotan-3-7 
   - libbotan-devel 
   - libbox2d-devel 
   - libbpf-devel 
@@ -12628,7 +12616,7 @@ unsorted:
   - libcdr-devel-doc 
   - libcdr-tools 
   - libcec-devel 
-  - libcec6 
+  - libcec7 
   - libcelt-devel 
   - libcelt-devel-32bit 
   - libcelt0-2 
@@ -13588,7 +13576,7 @@ unsorted:
   - libgensiomdns10 
   - libgensioosh10 
   - libgeocode-glib0 
-  - libgeos3_13_0 
+  - libgeos3_13_1 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-devel 
@@ -14829,10 +14817,10 @@ unsorted:
   - libmirevdev10 
   - libmirisdr-devel 
   - libmirisdr0 
-  - libmiroil5 
+  - libmiroil7 
   - libmirplatform30 
-  - libmirserver62 
-  - libmirserverplatform22 
+  - libmirserver63 
+  - libmirserverplatform23 
   - libmirwayland5 
   - libmjpegutils-2_2-0-32bit 
   - libmjpegutils-devel 
@@ -23917,7 +23905,6 @@ unsorted:
   - python-furo-doc 
   - python-gevent-doc 
   - python-glanceclient-doc 
-  - python-gnome-dvb-daemon 
   - python-gobject-common-devel 
   - python-gunicorn-doc 
   - python-happybase-doc 
@@ -26758,6 +26745,7 @@ unsorted:
   - python311-py 
   - python311-py-build-cmake 
   - python311-py-cpuinfo 
+  - python311-py-deviceid 
   - python311-py-espeak-ng 
   - python311-py-gitea-opensuse-org 
   - python311-py-moneyed 
@@ -30458,6 +30446,7 @@ unsorted:
   - python312-py 
   - python312-py-build-cmake 
   - python312-py-cpuinfo 
+  - python312-py-deviceid 
   - python312-py-espeak-ng 
   - python312-py-gitea-opensuse-org 
   - python312-py-moneyed 
@@ -34116,6 +34105,7 @@ unsorted:
   - python313-py 
   - python313-py-build-cmake 
   - python313-py-cpuinfo 
+  - python313-py-deviceid 
   - python313-py-espeak-ng 
   - python313-py-gitea-opensuse-org 
   - python313-py-moneyed 
@@ -35475,6 +35465,8 @@ unsorted:
   - qnapi 
   - qoauth-qt5-devel 
   - qodem 
+  - qoi-devel 
+  - qoi-tools 
   - qolibri 
   - qore 
   - qore-devel 
@@ -37145,6 +37137,7 @@ unsorted:
   - sdl-asylum 
   - sdl-ball 
   - sdl12_compat-devel 
+  - sdl2-compat-devel 
   - sdl_bomber 
   - sdlpop 
   - sdparm 
@@ -47595,7 +47588,6 @@ unsorted:
   - torrentinfo 
   - totem-devel 
   - totem-pl-parser-devel 
-  - totem-plugin-gnome-dvb-daemon 
   - touchegg 
   - tp_smapi-kmp-default 
   - tpm-fido 
