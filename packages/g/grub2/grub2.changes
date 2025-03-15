@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 13 06:50:37 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update the patch to fix "SRK not matched" errors when unsealing
+  the key (bsc#1232411)
+  * 0001-tpm2-Add-extra-RSA-SRK-types.patch
+
+-------------------------------------------------------------------
 Tue Mar 11 07:11:42 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Update patches for Power guest secure boot with key management (jsc#PED-3520)

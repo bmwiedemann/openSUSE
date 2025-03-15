@@ -1,4 +1,4 @@
-From 5b4ecd408417249dec8bfc71a3c0b7ef1070d3fa Mon Sep 17 00:00:00 2001
+From 53c3dc557890466757090ee390a2c5d241e50483 Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Thu, 25 Apr 2024 16:21:45 +0800
 Subject: [PATCH] tpm2: Add extra RSA SRK types
@@ -6,29 +6,30 @@ Subject: [PATCH] tpm2: Add extra RSA SRK types
 Since fde-tools may set RSA3072 and RSA4096 as the SRK type, grub2 has
 to support those parameters.
 
+Also prevent RSA SRK type from being overwritten when 'rsaparent' is set
+in the key file.
+
 Signed-off-by: Gary Lin <glin@suse.com>
 ---
- grub-core/commands/tpm2_key_protector/args.c   | 12 ++++++++++++
- grub-core/commands/tpm2_key_protector/module.c | 16 ++++++++++++++--
+ grub-core/commands/tpm2_key_protector/args.c   | 10 ++++++++++
+ grub-core/commands/tpm2_key_protector/module.c | 18 +++++++++++++++---
  util/grub-protect.c                            |  4 ++--
- 3 files changed, 28 insertions(+), 4 deletions(-)
+ 3 files changed, 27 insertions(+), 5 deletions(-)
 
 diff --git a/grub-core/commands/tpm2_key_protector/args.c b/grub-core/commands/tpm2_key_protector/args.c
-index 48c39de01..b291793a7 100644
+index 48c39de01..5781a31f1 100644
 --- a/grub-core/commands/tpm2_key_protector/args.c
 +++ b/grub-core/commands/tpm2_key_protector/args.c
-@@ -85,6 +85,18 @@ grub_tpm2_protector_parse_asymmetric (const char *value,
+@@ -85,6 +85,16 @@ grub_tpm2_protector_parse_asymmetric (const char *value,
        srk_type->type = TPM_ALG_RSA;
        srk_type->detail.rsa_bits = 2048;
      }
-+  else if (grub_strcasecmp (value, "RSA") == 0 ||
-+	   grub_strcasecmp (value, "RSA3072") == 0)
++  else if (grub_strcasecmp (value, "RSA3072") == 0)
 +    {
 +      srk_type->type = TPM_ALG_RSA;
 +      srk_type->detail.rsa_bits = 3072;
 +    }
-+  else if (grub_strcasecmp (value, "RSA") == 0 ||
-+	   grub_strcasecmp (value, "RSA4096") == 0)
++  else if (grub_strcasecmp (value, "RSA4096") == 0)
 +    {
 +      srk_type->type = TPM_ALG_RSA;
 +      srk_type->detail.rsa_bits = 4096;
@@ -37,7 +38,7 @@ index 48c39de01..b291793a7 100644
      return grub_error (GRUB_ERR_OUT_OF_RANGE, N_("value '%s' is not a valid asymmetric key type"), value);
  
 diff --git a/grub-core/commands/tpm2_key_protector/module.c b/grub-core/commands/tpm2_key_protector/module.c
-index 74e79a545..ee16d7f15 100644
+index 74e79a545..1b2eb6b20 100644
 --- a/grub-core/commands/tpm2_key_protector/module.c
 +++ b/grub-core/commands/tpm2_key_protector/module.c
 @@ -138,8 +138,8 @@ static const struct grub_arg_option tpm2_protector_init_cmd_options[] =
@@ -77,6 +78,15 @@ index 74e79a545..ee16d7f15 100644
      {
        .type = TPM_ALG_RSA,
        .detail.rsa_bits = 2048,
+@@ -882,7 +894,7 @@ tpm2_protector_srk_recover (const tpm2_protector_context_t *ctx,
+       if (err != GRUB_ERR_NONE)
+ 	goto exit1;
+ 
+-      if (rsaparent == 1)
++      if (rsaparent == 1 && ctx->srk_type.type != TPM_ALG_RSA)
+ 	{
+ 	  tpm2_protector_context_t *ctx_w;
+ 
 diff --git a/util/grub-protect.c b/util/grub-protect.c
 index 5b7e952f4..f1108f2c5 100644
 --- a/util/grub-protect.c
