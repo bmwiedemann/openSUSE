@@ -9727,15 +9727,20 @@ unsorted:
   - jline3 
   - jline3-builtins 
   - jline3-console 
+  - jline3-console-ui 
+  - jline3-curses 
+  - jline3-jansi 
+  - jline3-jansi-core 
   - jline3-javadoc 
+  - jline3-native 
   - jline3-parent 
   - jline3-reader 
-  - jline3-remote-ssh 
   - jline3-remote-telnet 
   - jline3-style 
   - jline3-terminal 
   - jline3-terminal-jansi 
   - jline3-terminal-jna 
+  - jline3-terminal-jni 
   - jmdns 
   - jmdns-javadoc 
   - jmock 
@@ -11793,7 +11798,7 @@ unsorted:
   - libShowMySky-Qt6-15 
   - libShowMySky-Qt6-devel 
   - libSimGearCore-2020_3_19 
-  - libSingular-4_3_2 
+  - libSingular-4_4_1 
   - libSingular-devel 
   - libSoQt20 
   - libSoapyOsmoSDR0 
@@ -11810,7 +11815,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVulkanLayerSettings-1_4_304 
+  - libVulkanLayerSettings-1_4_309 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
@@ -13204,7 +13209,7 @@ unsorted:
   - libfabric-devel-32bit 
   - libfabric1 
   - libfabric1-32bit 
-  - libfactory-4_3_2 
+  - libfactory-4_4_1 
   - libfactory-devel 
   - libfactory-gftables 
   - libfakekey-devel 
@@ -13307,7 +13312,7 @@ unsorted:
   - libflatbuffers23_5_26 
   - libflickcurl-devel 
   - libflickcurl0 
-  - libflint19 
+  - libflint20 
   - libflite_cmu_grapheme_lang1 
   - libflite_cmu_grapheme_lex1 
   - libflite_cmu_indic_lang1 
@@ -14136,8 +14141,8 @@ unsorted:
   - libicu-devel 
   - libicu-devel-32bit 
   - libicu-doc 
-  - libicu76-32bit 
-  - libicu76-bedata 
+  - libicu77-32bit 
+  - libicu77-bedata 
   - libid3-3_8-3 
   - libid3tag-devel 
   - libidl-devel 
@@ -15088,8 +15093,6 @@ unsorted:
   - libnsfdb-tools 
   - libnsfdb1 
   - libnsl-devel 
-  - libnsl1 
-  - libnsl1-32bit 
   - libnsl3 
   - libnss_gns2 
   - libnss_gns4-2 
@@ -15174,7 +15177,7 @@ unsorted:
   - libolecf-tools 
   - libolecf1 
   - libolm3 
-  - libomalloc-4_3_2 
+  - libomalloc-4_4_1 
   - libomalloc-devel 
   - libomemo-c-devel 
   - libomemo-c0 
@@ -15583,7 +15586,7 @@ unsorted:
   - libpolyclipping-devel 
   - libpolyclipping22 
   - libpolylibgmp8 
-  - libpolys-4_3_2 
+  - libpolys-4_4_1 
   - libpolys-devel 
   - libpoppler-cpp2-32bit 
   - libpoppler-devel 
@@ -16389,7 +16392,7 @@ unsorted:
   - libsigsegv-devel 
   - libsigsegv-doc 
   - libsigsegv2 
-  - libsingular_resources-4_3_2 
+  - libsingular_resources-4_4_1 
   - libsingular_resources-devel 
   - libsioclient1 
   - libsirocco0 
@@ -17110,7 +17113,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
-  - libvolk-1_4_304 
+  - libvolk-1_4_309 
   - libvolk3_2 
   - libvomsapi1 
   - libvorbis-devel 
@@ -37050,26 +37053,10 @@ unsorted:
   - scidavis-lang 
   - scikit-hep-testdata-files 
   - scim 
-  - scim-anthy 
-  - scim-chewing 
   - scim-devel 
   - scim-gtk 
   - scim-gtk3 
-  - scim-hangul 
-  - scim-input-pad 
   - scim-lang 
-  - scim-m17n 
-  - scim-pinyin 
-  - scim-sunpinyin 
-  - scim-tables 
-  - scim-tables-additional 
-  - scim-tables-ja 
-  - scim-tables-ko 
-  - scim-tables-lang 
-  - scim-tables-zh 
-  - scim-tomoe 
-  - scim-uim 
-  - scim-unikey 
   - scirenderer 
   - scirenderer-javadoc 
   - scite 
@@ -38049,8 +38036,6 @@ unsorted:
   - talosctl-bash-completion 
   - talosctl-fish-completion 
   - talosctl-zsh-completion 
-  - tamago 
-  - tamil-gtk2im 
   - tango-icon-theme 
   - taplo 
   - tar-backup-scripts 
@@ -48212,7 +48197,6 @@ unsorted:
   - ucblogo-doc 
   - uchardet 
   - ucl-devel 
-  - ucm 
   - ucommon 
   - ucommon-devel 
   - ucpp 

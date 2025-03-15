@@ -2219,8 +2219,8 @@
     <package name="libibverbs1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libical-glib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libical3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libicu76" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libicu76-ledata" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libicu77" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libicu77-ledata" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libid3tag0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libidn12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
