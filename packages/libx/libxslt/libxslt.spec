@@ -20,7 +20,7 @@
 %define libexver    0
 
 Name:           libxslt
-Version:        1.1.42
+Version:        1.1.43
 Release:        0
 Summary:        XSL Transformation Library
 License:        GPL-2.0-or-later AND MIT
@@ -40,10 +40,6 @@ Patch0:         libxslt-1.1.24-no-net-autobuild.patch
 #   Initialize the random seed to ensure libxslt's math.random() function
 #   produces unpredictable outputs.
 Patch1:         libxslt-random-seed.patch
-Patch2:         libxslt-reproducible.patch
-# PATCH-FIX-UPSTREAM -- libxslt-test-compile-with-older-libxml2-versions.patch
-#   https://gitlab.gnome.org/GNOME/libxslt/-/issues/125
-Patch3:         libxslt-test-compile-with-older-libxml2-versions.patch
 #
 ### SUSE patches starts on 1000
 # PATCH-FIX-SUSE
@@ -152,21 +148,21 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ldconfig_scriptlets -n libexslt%{libexver}
 
 %files -n libxslt%{libver}
-%license COPYING* Copyright
+%license Copyright
 %{_libdir}/libxslt.so.%{libver}*
 
 %files -n libexslt%{libexver}
-%license COPYING* Copyright
+%license Copyright
 %{_libdir}/libexslt.so.%{libexver}*
 
 %files tools
-%license COPYING* Copyright
+%license Copyright
 %doc AUTHORS NEWS TODO FEATURES
 %{_bindir}/xsltproc
 %{_mandir}/man1/xsltproc.1%{?ext_man}
 
 %files devel
-%license COPYING* Copyright
+%license Copyright
 %{_libdir}/libxslt.so
 %{_libdir}/libexslt.so
 %{_libdir}/*.sh
