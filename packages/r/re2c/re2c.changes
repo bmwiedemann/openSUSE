@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 13 12:09:16 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.1:
+  * This release adds actions, a few backend-specific improvements
+    in code generation and a bunch of bug fixes.
+  * Benchmark code has been reworked in preparation to add
+    multi-language benchmarks in the future. 
+
+-------------------------------------------------------------------
 Sat Dec 14 16:15:14 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0.2
