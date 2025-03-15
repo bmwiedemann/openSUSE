@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Mar 13 12:38:44 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250310.476dc59612:
+- cts-scheduler: update tests for considering parents of an unmanaged resource active on the node (gh#ClusterLabs/pacemaker#3836, bsc#1238519)
+- libpe_status: consider parents of an unmanaged resource active on the node (gh#ClusterLabs/pacemaker#3836, bsc#1238519)
+
+-------------------------------------------------------------------
+Thu Mar 13 12:27:46 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250310.3573e5a552:
+- tools: Fix memory leak in cli_resource_delete() (gh#ClusterLabs/pacemaker#3835)
+- various: Correctly detect completion of systemd start/stop actions
+- libcrmservice: Fix overrides for systemd resources
+- libcrmservice: Fail systemd rsc start if create override fails
+- Build: Run cts-cli verbosely.
+- controller: improve resource action execution logs
+- controller: improve start-up/exit messages
+- controller: drop dot file logs
+- controller: simplify join finalization messages
+- pacemaker-based: improve a few messages
+- pacemaker-based: improve exit messages
+- pacemaker-based: improve messages when reading CIB from disk
+
+-------------------------------------------------------------------
+Tue Mar 11 18:29:46 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- spec: specify 189 as uid/gid of hacluster/haclient (bsc#1239084)
+
+-------------------------------------------------------------------
+Tue Mar 11 17:24:00 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- spec: specify /var/lib/pacemaker as home directory of hacluster user (bsc#1239084)
+
+-------------------------------------------------------------------
 Fri Feb 21 09:34:47 UTC 2025 - Yan Gao <ygao@suse.com>
 
 - Update to version 3.0.0+20250218.3d0ffefd9e:

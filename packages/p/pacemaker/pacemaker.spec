@@ -78,7 +78,7 @@
 %define gnutls_priorities %{?pcmk_gnutls_priorities}%{!?pcmk_gnutls_priorities:@SYSTEM}
 %endif
 
-%global hacluster_id 90
+%global hacluster_id 189
 
 ## Distro-specific configuration choices
 
@@ -121,7 +121,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        3.0.0+20250218.3d0ffefd9e
+Version:        3.0.0+20250310.476dc59612
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -539,7 +539,7 @@ fi
 
 %pre libs
 getent group %{gname} >/dev/null || groupadd -r %{gname} -g %{hacluster_id}
-getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u %{hacluster_id} -s /sbin/nologin -c "cluster user" %{uname}
+getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u %{hacluster_id} -d %{_var}/lib/pacemaker -s /sbin/nologin -c "cluster user" %{uname}
 exit 0
 
 %if %{defined ldconfig_scriptlets}
@@ -562,7 +562,7 @@ if [ ! -e /tmp/.pcmk_regression_tests_ran ]; then
 	# Needed so that the shell doesn't get stuck on escape
 	# sequences
 	export TERM=dumb
-	%{_datadir}/pacemaker/tests/cts-cli || true
+	%{_datadir}/pacemaker/tests/cts-cli -V || true
 	%{_datadir}/pacemaker/tests/cts-scheduler -V || true
 fi
 %endif
