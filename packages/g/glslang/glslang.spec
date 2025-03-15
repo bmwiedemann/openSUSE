@@ -1,7 +1,7 @@
 #
 # spec file for package glslang
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,29 @@
 
 
 %define lname libglslang15
+%if 0%{?suse_version} < 1600
+%define gcc_version 13
+%endif
+
 Name:           glslang
-Version:        15.1.0
+Version:        15.2.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
-Source:         https://github.com/KhronosGroup/glslang/archive/refs/tags/%version.tar.gz
+# tag 15.2.0 missing in git as of 2025-03-13
+%define rev 0018771b46c492e28ca916b00eda96093381a3b2
+Source:         https://github.com/KhronosGroup/glslang/archive/%rev.tar.gz
 Source3:        baselibs.conf
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fdupes
+BuildRequires:  gcc%{?gcc_version} >= 9
+BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  python3-base
-BuildRequires:  spirv-tools-devel >= 2024.4~rc2
-%if 0%{?suse_version} && 0%{?suse_version} < 1599
-BuildRequires:  gcc12-c++
-%else
-BuildRequires:  c++_compiler
-%endif
+BuildRequires:  spirv-tools-devel >= 2025.1~rc1
 
 %description
 glslang is a compiler front end for the OpenGL ES and OpenGL shading
@@ -86,18 +89,17 @@ This package contains additional headers that are not officially installed,
 but which some downstream packages rely on.
 
 %prep
-%autosetup -p1
+%autosetup -n glslang-%rev -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 # (gh#3052 #3311 #3312 #3593) -- supposedly handled better in
 # glslang-15 and onwards, do watch for ABI breaks
 #echo "V_%version { global: *; };" >/tmp/z.sym
-%if 0%{?suse_version} && 0%{?suse_version} < 1599
-export CC=gcc-12 CXX=g++-12
-%endif
 # Trim -Wl,--no-undefined for now (https://github.com/KhronosGroup/glslang/issues/1484)
 %cmake -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \
+	-DCMAKE_C_COMPILER="gcc%{?gcc_version:-%{gcc_version}}" \
+	-DCMAKE_CXX_COMPILER="g++%{?gcc_version:-%{gcc_version}}" \
 	-DALLOW_EXTERNAL_SPIRV_TOOLS:BOOL=ON -DENABLE_OPT:BOOL=ON
 %make_build
 
@@ -107,12 +109,12 @@ od="$PWD"
 %cmake_install
 
 b="%buildroot"
-pushd "$b"
+cd "$b"
 (
 	find usr/include -mindepth 1 -type d -printf "%%%%dir /%p\n"
 	find usr/include "(" -type f -o -type l ")" -printf "/%p\n"
 ) | sort >"$od/devel.files"
-popd
+cd -
 
 mkdir -p "$b/%_includedir/External/"
 cp -a glslang "$b/%_includedir/"
@@ -120,12 +122,12 @@ cp -a SPIRV StandAlone "$b/%_includedir/External/"
 find "$b/%_includedir/" -type f ! -iname "*.h" -a ! -iname "*.hpp" -print -delete
 find "$b/%_includedir/" -type f -exec chmod a-x "{}" "+"
 
-pushd "$b"
+cd "$b"
 (
 	find usr/include -mindepth 1 -type d -printf "%%%%dir /%p\n"
 	find usr/include "(" -type f -o -type l ")" -printf "/%p\n"
 ) | sort >"$od/devel_full.files"
-popd
+cd -
 comm -13 "$od/devel.files" "$od/devel_full.files" >"$od/devel2.files"
 
 # 3rd party programs use -lOSDependent (because pristine glslang shipped .a
