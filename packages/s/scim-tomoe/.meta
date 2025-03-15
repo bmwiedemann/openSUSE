@@ -1,5 +1,0 @@
-<package name="scim-tomoe" project="openSUSE:Factory">
-  <title>Tomoe Input Method Engine for SCIM</title>
-  <description>Tomoe Input Method Engine for SCIM</description>
-  <devel project="M17N" package="scim-tomoe"/>
-</package>
