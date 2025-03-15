@@ -772,4 +772,18 @@ Kernel:stable/kernel-source#kernel-default succeeds with this</comment>
     <comment>- Update to release 34.1</comment>
     <requestid>1251456</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>aa653750ba21aed31e614b8ae2e30e58</srcmd5>
+    <version>34.1</version>
+    <time>1742051754</time>
+    <user>dimstar_suse</user>
+    <comment>The patch 0001-build-resolve-build-failure-due-to-missing-include.patch is intentionally dropped.
+
+It was added with version 34 update, not mentioned in changelog, and not used.
+
+This addition of patch not mentioned in changelog should have been rejected by the very bot that is rejecting this update but it did not happen.
+
+- tests: drop ppc64 workaround, print failed test results if any</comment>
+    <requestid>1253001</requestid>
+  </revision>
 </revisionlist>

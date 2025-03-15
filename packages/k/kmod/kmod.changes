@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 12 16:03:22 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- tests: drop ppc64 workaround, print failed test results if any
+
+-------------------------------------------------------------------
 Thu Mar  6 09:22:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 34.1

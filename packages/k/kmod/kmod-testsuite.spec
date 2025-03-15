@@ -96,10 +96,9 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 # empty
 
 %check
-%ifarch ppc64
-make check V=1 KDIR="%kdir" || echo "Warning: bypass boo#897845"
-%else
-make check V=1 KDIR="%kdir"
-%endif
+result=0
+make check V=1 KDIR="%kdir" || result=$?
+find . -name test-suite.log | xargs cat
+exit $result
 
 %changelog
