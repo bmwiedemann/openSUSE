@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 15 01:38:56 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- remove BuildRequires: pkgconfig(enchant)  
+
+-------------------------------------------------------------------
 Sun Dec  1 19:02:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.6.8:
