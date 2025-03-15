@@ -18,6 +18,10 @@
 
 # Remember to bump in baselibs.conf
 %define lname libshaderc_shared1
+%if 0%{?suse_version} < 1600
+%define gcc_version 13
+%endif
+
 Name:           shaderc
 Version:        2025.1
 Release:        0
@@ -29,8 +33,9 @@ URL:            https://github.com/google/shaderc
 Source:         https://github.com/google/shaderc/archive/v%version.tar.gz
 Source99:       baselibs.conf
 Patch1:         0001-Use-system-third-party-libs.patch
-BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 2.8.12
+BuildRequires:  gcc%{?gcc_version} >= 9
+BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  glslang-devel >= 15.1
 BuildRequires:  glslang-nonstd-devel
 BuildRequires:  python3-base
@@ -73,7 +78,9 @@ find . -type f -exec grep -l '#!/usr/bin/env python' {} + | xargs perl -i -lpe '
 
 %build
 export CXXFLAGS="%{optflags} -I%_includedir/External"
-%cmake -DSHADERC_SKIP_TESTS=ON
+%cmake -DSHADERC_SKIP_TESTS=ON \
+	-DCMAKE_C_COMPILER="gcc%{?gcc_version:-%{gcc_version}}" \
+	-DCMAKE_CXX_COMPILER="g++%{?gcc_version:-%{gcc_version}}"
 %cmake_build
 
 %install

@@ -257,4 +257,12 @@
     <comment>- Update to release 2025.1</comment>
     <requestid>1252558</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>1fdefe33402080a58a04c64f2f420c75</srcmd5>
+    <version>2025.1</version>
+    <time>1742051723</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch Leap build to newer gcc 13</comment>
+    <requestid>1252821</requestid>
+  </revision>
 </revisionlist>
