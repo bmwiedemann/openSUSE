@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 13 17:15:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.4.309.1
+  * MSL: Terminate function with return value using return if
+    ending in unreachable.
+  * MSL: Add option to disable rasterization depending on usage.
+  * MSL: Add auto-disable-rasterization option to C API.
+  * Allow non-literal specialization constant to be array size of
+    OpConstantNull.
+  * GLSL/MSL: Support VK_KHR_zero_initialize_workgroup_memory.
+
+-------------------------------------------------------------------
+Sun Feb  9 10:13:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.4.304.1
+  * Support for SPV_QCOM_image_processing2
+  * Added mesh shader and task shader support
+
+-------------------------------------------------------------------
 Tue Oct  8 17:46:58 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.296.0

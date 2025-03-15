@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-cross
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,21 @@
 
 %define lname libspirv-cross-c-shared0
 %define __builder ninja
+%if 0%{?suse_version} < 1600
+%define gcc_version 13
+%endif
+
 Name:           spirv-cross
-Version:        1.3.296.0
+Version:        1.4.309.0
 Release:        0
 Summary:        Tool and library for SPIR-V reflection and disassembly
 License:        Apache-2.0 OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Cross
 Source0:        https://github.com/KhronosGroup/SPIRV-Cross/archive/vulkan-sdk-%version.tar.gz
-BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3
+BuildRequires:  gcc%{?gcc_version} >= 9
+BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  ninja
 BuildRequires:  pkg-config
 
@@ -69,8 +74,9 @@ sed -i 's,$CMAKE_INSTALL_PREFIX/lib,%_libdir,;s,/share/pkgconfig,/%_lib/pkgconfi
 
 %build
 %cmake \
-    -DSPIRV_CROSS_SHARED=ON \
-    -DSPIRV_CROSS_CLI=ON
+	-DCMAKE_C_COMPILER="gcc%{?gcc_version:-%{gcc_version}}" \
+	-DCMAKE_CXX_COMPILER="g++%{?gcc_version:-%{gcc_version}}" \
+	-DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_CLI=ON
 %cmake_build
 
 %install

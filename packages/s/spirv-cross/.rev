@@ -127,4 +127,12 @@
     <comment>- Update to release SDK-1.3.296.0</comment>
     <requestid>1206375</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c7cdd30a41702855b2935452268c5652</srcmd5>
+    <version>1.4.309.0</version>
+    <time>1742051774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release SDK-1.4.309.1</comment>
+    <requestid>1252817</requestid>
+  </revision>
 </revisionlist>
