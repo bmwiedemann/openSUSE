@@ -1831,4 +1831,16 @@
    * [pylint] Mark fix unsafe (PLW1507)</comment>
     <requestid>1251746</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9eb3bdc179cda642b4d25b7b1e5e6a19</srcmd5>
+    <version>0.10.0</version>
+    <time>1742051759</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0
+- check out https://astral.sh/blog/ruff-v0.10.0 for migration info
+- pretty long changelog please see
+ * https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md
+ * https://github.com/astral-sh/ruff/blob/main/BREAKING_CHANGES.md</comment>
+    <requestid>1253038</requestid>
+  </revision>
 </revisionlist>

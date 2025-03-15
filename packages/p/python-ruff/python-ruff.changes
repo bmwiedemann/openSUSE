@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 14 10:43:10 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.10.0
+- check out https://astral.sh/blog/ruff-v0.10.0 for migration info
+- pretty long changelog please see
+ * https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md
+ * https://github.com/astral-sh/ruff/blob/main/BREAKING_CHANGES.md
+
+-------------------------------------------------------------------
 Mon Mar 10 10:18:59 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.10
