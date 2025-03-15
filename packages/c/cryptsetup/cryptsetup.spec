@@ -1,7 +1,7 @@
 #
 # spec file for package cryptsetup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(devmapper)
 BuildRequires:  pkgconfig(json-c)
-BuildRequires:  pkgconfig(libargon2)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(openssl)
@@ -131,6 +130,7 @@ rm -f man/*.8
   --enable-pwquality \
   --enable-gcrypt-pbkdf2 \
   --enable-libargon2 \
+  --with-luks2-pbkdf=pbkdf2 \
 %if %{?suse_version} < 1550
   --with-default-luks-format=LUKS1 \
 %endif

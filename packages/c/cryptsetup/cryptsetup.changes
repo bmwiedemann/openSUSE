@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 14 10:06:24 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Set pbkdf2 as the default PBKDF algorithm in LUKS2 format.
+  [bsc#1236375, bsc#1236164]
+  * The default PBKDF algorithm in the LUKS2 format is now Argon2id
+    but its not FIPS compliant. A system would be unbootable if using
+    Argon2id or Argon2i for disk encryption and then switching to
+    kernel FIPS mode. This can be avoided by setting pbkdf2 as default.
+  * Build using the configure option --with-luks2-pbkdf=pbkdf2.
+  * Remove the dependency on libargon2 as is now provided by openssl.
+
+-------------------------------------------------------------------
 Fri Sep 13 07:36:26 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.7.5:
