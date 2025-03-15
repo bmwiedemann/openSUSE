@@ -244,7 +244,7 @@ Patch101:       Link-library-with-z-noexecstack.patch
 # PATCH port
 Patch102:       Handle-s390-correctly.patch
 Patch103:       openblas-ppc64be_up2_p8.patch
-Patch104:       Revert-ba47c7f4f301aad100ed166de338b86e01da8465.patch
+Patch104:       Restore-the-non-vectorized-code-from-before-PR4880-for-POWER8.patch
 
 #BuildRequires:  cmake
 BuildRequires:  memory-constraints

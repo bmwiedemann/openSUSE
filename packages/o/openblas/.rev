@@ -858,4 +858,17 @@ Currently, openSUSE:Factory:Staging:E.
 - Add bisect support. (forwarded request 1252221 from eeich)</comment>
     <requestid>1252226</requestid>
   </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>ae9e1431196ec5ffd8b96fc7cc40e276</srcmd5>
+    <version>0.3.29</version>
+    <time>1742051699</time>
+    <user>dimstar_suse</user>
+    <comment>- Use upstream patch for bsc#1239134 which is more friendly to the
+  non-affected power9 and power10 sub-architectures:
+  Replace:
+  Revert-ba47c7f4f301aad100ed166de338b86e01da8465.patch
+  by:
+  Restore-the-non-vectorized-code-from-before-PR4880-for-POWER8.patch (forwarded request 1253105 from eeich)</comment>
+    <requestid>1253107</requestid>
+  </revision>
 </revisionlist>

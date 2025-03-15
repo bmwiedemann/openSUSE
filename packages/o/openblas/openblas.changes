@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 14 09:24:18 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Use upstream patch for bsc#1239134 which is more friendly to the
+  non-affected power9 and power10 sub-architectures:
+  Replace:
+  Revert-ba47c7f4f301aad100ed166de338b86e01da8465.patch
+  by:
+  Restore-the-non-vectorized-code-from-before-PR4880-for-POWER8.patch
+
+-------------------------------------------------------------------
 Sat Mar  8 13:23:53 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Revert  commit ba47c7f4f301aad100ed166de338b86e01da8465 to
