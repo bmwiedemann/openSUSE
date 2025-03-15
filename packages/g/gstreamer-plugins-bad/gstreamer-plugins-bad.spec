@@ -82,6 +82,12 @@
 %bcond_with svtav1
 %endif
 
+%ifarch aarch64 %arm
+%bcond_with cuda_nvdec
+%else
+%bcond_without cuda_nvdec
+%endif
+
 Name:           gstreamer-plugins-bad
 Version:        1.26.0
 Release:        0
@@ -470,6 +476,7 @@ anything media-related,from real-time sound processing to playing
 videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
+%if %{with cuda_nvdec}
 %package -n libgstcuda-1_0-0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
@@ -480,6 +487,7 @@ that operate on media data. Applications using this library can do
 anything media-related,from real-time sound processing to playing
 videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
+%endif
 
 %package -n libgstwebrtcnice-1_0-0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
@@ -535,7 +543,9 @@ Requires:       libgstbadaudio-1_0-0 = %{version}
 Requires:       libgstbasecamerabinsrc-1_0-0 = %{version}
 Requires:       libgstcodecparsers-1_0-0 = %{version}
 Requires:       libgstcodecs-1_0-0 = %{version}
+%if %{with cuda_nvdec}
 Requires:       libgstcuda-1_0-0 = %{version}
+%endif
 Requires:       libgstdxva-1_0-0 = %{version}
 Requires:       libgstinsertbin-1_0-0 = %{version}
 Requires:       libgstisoff-1_0-0 = %{version}
@@ -552,11 +562,15 @@ Requires:       libgstvulkan-1_0-0 = %{version}
 Requires:       libgstwayland-1_0-0 = %{version}
 Requires:       libgstwebrtc-1_0-0 = %{version}
 Requires:       libgstwebrtcnice-1_0-0 = %{version}
+%if %{with cuda_nvdec}
 Requires:       typelib-1_0-CudaGst-1_0 = %{version}
+%endif
 Requires:       typelib-1_0-GstAnalytics-1_0 = %{version}
 Requires:       typelib-1_0-GstBadAudio-1_0 = %{version}
 Requires:       typelib-1_0-GstCodecs-1_0 = %{version}
+%if %{with cuda_nvdec}
 Requires:       typelib-1_0-GstCuda-1_0 = %{version}
+%endif
 Requires:       typelib-1_0-GstDxva-1_0 = %{version}
 Requires:       typelib-1_0-GstInsertBin-1_0 = %{version}
 Requires:       typelib-1_0-GstMpegts-1_0 = %{version}
@@ -732,6 +746,7 @@ anything media-related, from real-time sound processing to playing
 videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
+%if %{with cuda_nvdec}
 %package -n typelib-1_0-GstCuda-1_0
 Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
@@ -753,6 +768,7 @@ that operate on media data. Applications using this library can do
 anything media-related, from real-time sound processing to playing
 videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
+%endif
 
 %package -n typelib-1_0-GstVa-1_0
 Summary:        Introspection bindings for GStreamer Streaming-Media Framework Plug-Ins
@@ -898,6 +914,9 @@ export PYTHON=%{_bindir}/python3
 	-D msdk=disabled \
 	-D qsv=disabled \
 %endif
+%if %{without cuda_nvdec}
+	-D nvcodec=disabled \
+%endif
 	-D amfcodec=disabled \
 	-D directshow=disabled \
 	-D ladspa-rdf=disabled \
@@ -947,7 +966,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ldconfig_scriptlets -n libgstbasecamerabinsrc-1_0-0
 %ldconfig_scriptlets -n libgstcodecs-1_0-0
 %ldconfig_scriptlets -n libgstcodecparsers-1_0-0
+%if %{with cuda_nvdec}
 %ldconfig_scriptlets -n libgstcuda-1_0-0
+%endif
 %ldconfig_scriptlets -n libgstdxva-1_0-0
 %ldconfig_scriptlets -n libgstinsertbin-1_0-0
 %ldconfig_scriptlets -n libgstisoff-1_0-0
@@ -1055,7 +1076,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstlegacyrawparse.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstneonhttpsrc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstnetsim.so
+%if %{with cuda_nvdec}
 %{_libdir}/gstreamer-%{gst_branch}/libgstnvcodec.so
+%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenexr.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopusparse.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstpcapparse.so
@@ -1198,8 +1221,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n libgstwayland-1_0-0
 %{_libdir}/libgstwayland-%{gst_branch}.so.*
 
+%if %{with cuda_nvdec}
 %files -n libgstcuda-1_0-0
 %{_libdir}/libgstcuda-%{gst_branch}.so.0*
+%endif
 
 %files -n libgstwebrtcnice-1_0-0
 %{_libdir}/libgstwebrtcnice-%{gst_branch}.so.0*
@@ -1252,11 +1277,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n typelib-1_0-GstWebRTC-1_0
 %{_libdir}/girepository-1.0/GstWebRTC-1.0.typelib
 
+%if %{with cuda_nvdec}
 %files -n typelib-1_0-CudaGst-1_0
 %{_libdir}/girepository-1.0/CudaGst-1.0.typelib
 
 %files -n typelib-1_0-GstCuda-1_0
 %{_libdir}/girepository-1.0/GstCuda-1.0.typelib
+%endif
 
 %files -n typelib-1_0-GstVa-1_0
 %{_libdir}/girepository-1.0/GstVa-1.0.typelib
@@ -1281,7 +1308,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/gstreamer-webrtc-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-play-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-wayland-%{gst_branch}.pc
+%if %{with cuda_nvdec}
 %{_libdir}/pkgconfig/gstreamer-cuda-%{gst_branch}.pc
+%endif
 %{_libdir}/pkgconfig/gstreamer-va-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-webrtc-nice-%{gst_branch}.pc
 %{_datadir}/gir-1.0/*.gir

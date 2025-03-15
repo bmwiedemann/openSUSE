@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 14 09:58:41 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable nvcodec/cuda on aarch64 and %arm as it fails to build
+
+-------------------------------------------------------------------
 Wed Mar 12 06:55:24 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.26.0:
