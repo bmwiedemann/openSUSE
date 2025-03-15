@@ -42,7 +42,7 @@ BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.6.4+sdk304
+BuildRequires:  spirv-headers >= 1.6.4+sdk309
 
 %description
 The package includes an assembler, binary module parser,
@@ -75,12 +75,9 @@ find . -type f -name CMakeLists.txt -exec \
 	perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt {} +
 
 %build
-%if 0%{?suse_version} && 0%{?suse_version} < 1599
-export CXX=g++-12
-%endif
 %cmake -DSPIRV-Headers_SOURCE_DIR="%_prefix" \
-       -DCMAKE_C_COMPILER=gcc%{?gcc_version:-%{gcc_version}} \
-       -DCMAKE_CXX_COMPILER=g++%{?gcc_version:-%{gcc_version}} \
+	-DCMAKE_C_COMPILER="gcc%{?gcc_version:-%{gcc_version}}" \
+	-DCMAKE_CXX_COMPILER="g++%{?gcc_version:-%{gcc_version}}" \
 	-DSPIRV_TOOLS_BUILD_STATIC:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=ON
 %cmake_build
 

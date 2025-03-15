@@ -397,4 +397,12 @@ join Staging:E</comment>
     <comment>- Update to release 2025.1~rc1</comment>
     <requestid>1252557</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>dd35c84cfcf3077c86814c90928f1588</srcmd5>
+    <version>2025.1~rc1</version>
+    <time>1742051717</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump BuildRequires to match spirv-headers</comment>
+    <requestid>1252819</requestid>
+  </revision>
 </revisionlist>
