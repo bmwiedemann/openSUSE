@@ -433,4 +433,12 @@
     <comment>- Update to tag 1.4.304</comment>
     <requestid>1233206</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e24bc69a2fffa65283dafd57c6c321d0</srcmd5>
+    <version>1.4.309</version>
+    <time>1742051727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tag SDK-1.4.309.0</comment>
+    <requestid>1252822</requestid>
+  </revision>
 </revisionlist>

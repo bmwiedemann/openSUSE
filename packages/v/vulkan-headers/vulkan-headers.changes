@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 13 16:26:58 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.309.0
+  * New extensions: VK_ARM_pipeline_opacity_micromap,
+    VK_KHR_depth_clamp_zero_one, VK_KHR_maintenance8
+    VK_EXT_external_memory_metal, VK_KHR_video_maintenance2,
+    VK_NV_present_metering.
+
+-------------------------------------------------------------------
 Sun Dec 22 01:11:34 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag 1.4.304
