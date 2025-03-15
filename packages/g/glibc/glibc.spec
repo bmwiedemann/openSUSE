@@ -126,6 +126,12 @@ ExclusiveArch:  do_not_build
 %bcond_with livepatching
 %endif
 
+%if %{suse_version} >= 1600
+%define build_libnsl1 0
+%else
+%define build_libnsl1 1
+%endif
+
 %if %{build_main}
 %define name_suffix %{nil}
 %else
@@ -1065,6 +1071,10 @@ chmod 644 %{buildroot}%{_bindir}/ldd
 
 rm -f %{buildroot}%{rootsbindir}/sln
 
+%if !%build_libnsl1
+rm -f %{buildroot}%{slibdir}/libnsl.so.1
+%endif
+
 %if %{with nscd}
 %ifnarch i686
 mkdir -p %{buildroot}/usr/lib/tmpfiles.d/
@@ -1539,9 +1549,11 @@ exit 0
 %files lang -f libc.lang
 %endif
 
+%if %build_libnsl1
 %ifarch %libnsl_archs
 %files -n libnsl1
 %{slibdir}/libnsl.so.1
+%endif
 %endif
 
 %endif

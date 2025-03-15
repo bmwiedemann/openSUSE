@@ -3136,4 +3136,12 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   on x86-32 and s390x (bsc#1234713) (forwarded request 1248877 from Andreas_Schwab)</comment>
     <requestid>1248878</requestid>
   </revision>
+  <revision rev="298" vrev="2">
+    <srcmd5>ab7cf5c8bad9f43131526443a39ff2ca</srcmd5>
+    <version>2.41</version>
+    <time>1742051693</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build libnsl1 (bsc#1239459) (forwarded request 1252687 from Andreas_Schwab)</comment>
+    <requestid>1252688</requestid>
+  </revision>
 </revisionlist>

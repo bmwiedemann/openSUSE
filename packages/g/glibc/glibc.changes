@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 12 10:28:15 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Do not build libnsl1 (bsc#1239459)
+
+-------------------------------------------------------------------
 Wed Feb 26 15:29:17 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Bump minimal kernel version to 4.3 to enable use of direct socketcalls
