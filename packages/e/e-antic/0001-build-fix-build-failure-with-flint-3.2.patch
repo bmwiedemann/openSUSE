@@ -1,0 +1,35 @@
+From 66ecdffd7e83611e1c3df5049634d88f089b0104 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Fri, 14 Mar 2025 09:47:10 +0100
+Subject: [PATCH] build: fix build failure with flint 3.2
+References: https://github.com/flatsurf/e-antic/pull/282
+
+```
+  CXX      renf_elem_class.lo
+renf_elem_class.cpp: In function 'eantic::renf_elem_class& eantic::{anonymous}::binop_mpz(eantic::renf_elem_class&, const mpz_class&)':
+renf_elem_class.cpp:157:5: error: there are no arguments to 'fmpz_init_set_readonly' that depend on a template parameter, so a declaration of 'fmpz_init_set_readonly' must be available [-Wtemplate-body]
+  157 |     fmpz_init_set_readonly(r, rhs.get_mpz_t());
+```
+
+fmpq.h and fmpz.h evaluate the gmp-internal macro ``__GMP_H__`` to
+determine if functions with GMP types should be offered, making
+inclusion of <gmp.h> before any flint headers mandatory.
+---
+ libeantic/srcxx/renf_elem_class.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libeantic/srcxx/renf_elem_class.cpp b/libeantic/srcxx/renf_elem_class.cpp
+index 0aae188..6294c28 100644
+--- a/libeantic/srcxx/renf_elem_class.cpp
++++ b/libeantic/srcxx/renf_elem_class.cpp
+@@ -12,6 +12,7 @@
+ 
+ #include <iostream>
+ #include <cassert>
++#include <gmp.h>
+ #include <flint/fmpq.h>
+ #include <cstdlib>
+ #include <functional>
+-- 
+2.48.1
+

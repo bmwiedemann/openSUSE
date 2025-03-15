@@ -1,7 +1,7 @@
 #
 # spec file for package e-antic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,13 @@ Summary:        Real Embedded Algebraic Number Theory in C
 License:        LGPL-2.1-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/flatsurf/e-antic
-
 Source:         https://github.com/flatsurf/e-antic/releases/download/%version/e-antic-%version.tar.gz
+Patch1:         0001-build-fix-build-failure-with-flint-3.2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  automake
 BuildRequires:  cereal-devel
 BuildRequires:  fdupes
-BuildRequires:  flint-devel >= 3
+BuildRequires:  pkgconfig(flint) >= 3
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libboost_headers-devel

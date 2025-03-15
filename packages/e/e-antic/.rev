@@ -103,4 +103,12 @@
     <comment>- Update to release 2.0.2</comment>
     <requestid>1138053</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>790606682c3f00cee46beb6217a7a1c0</srcmd5>
+    <version>2.0.2</version>
+    <time>1742051823</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-build-fix-build-failure-with-flint-3.2.patch</comment>
+    <requestid>1253273</requestid>
+  </revision>
 </revisionlist>
