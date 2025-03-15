@@ -211,4 +211,47 @@ Changes from last request:
 </comment>
     <requestid>1245346</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>abce457d45b4806eabe42d6ff65cb538</srcmd5>
+    <version>25.3.2</version>
+    <time>1742051780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 25.3.2:
+  * chore: bump version to 25.3.2 (#2428)
+  * feat: expose almost the entirety of the user's configuration in Lua (#2413)
+  * fix: `STDIN_FILENO` poll always returns 0 under SSH (#2427)
+  * fix: ignore stdin redirection to ensure always accessing the real tty (#2425)
+  * ci: support 8-character short hash in `validate-form` workflow
+  * fix: incorrect deprecation warning when the plugin doesn't exist (#2418)
+  * fix: `windows-sys` features for `Win32_Storage_FileSystem` and `Win32_System_Threading` (#2417)
+  * refactor: use `MaybeUninit` in `RoCell` (#2412)
+  * feat: expose all theme fields in Lua (#2405)
+  * chore: bump version to 25.2.26 (#2404)
+  * fix: respect the user's `image_alloc` setting for the built-in ImageMagick previewer (#2403)
+  * feat: allow to specify layer for keymap commands (#2399)
+  * refactor: rename `rt.manager` to `rt.mgr`, and `th.manager` to `th.mgr` (#2397)
+  * feat: expose `mode` field in `Cha` (#2394)
+  * refactor: rename `cf` to `rt` (#2393)
+  * feat: new `cf.args` to access startup arguments (#2392)
+  * feat: add ripgrep-all support for search (#2383)
+  * feat: new `tbl_col` and `tbl_cell` in theme system for spotter table styling (#2391)
+  * feat: new `cf` and `th` allow to access user configuration and theme scheme in sync/async plugins consistently (#2389)
+  * feat: bump `trash` and `libc` versions to support NetBSD (#2388)
+  * feat: make incompatible version message more clear (#2377)
+  * ci: validate form
+  * fix: didn't reset previous `Cha` when loading directories in chunks (#2366)
+  * feat: add a link to the debugging instructions in `yazi --debug` (#2365)
+  * fix: add maximum preview limit under `/proc` virtual file system (#2355)
+  * fix: incorrect kebab-case for the notify level enum (#2349)
+  * feat: terminal response detection under async stdin (#2347)
+  * feat: new `external` and `removable` fields in the `fs.partitions()` API (#2343)
+  * refactor: consistent naming for enum variants (#2339)
+  * feat: respect the user's `wrap` setting for the built-in JSON previewer (#2337)
+  * feat: respect the user's `max_width` setting for the built-in PDF preloader (#2331)
+  * feat: CSI-based Vim and Neovim built-in terminal detection for better accuracy (#2327)
+  * fix: load mount points with the best effort even if the `/dev/disk/by-label` directory does not exist (#2326)
+  * feat!: allow different separators to be applied individually to the left and right sides of the status bar (#2313)
+</comment>
+    <requestid>1253161</requestid>
+  </revision>
 </revisionlist>
