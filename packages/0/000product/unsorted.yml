@@ -12768,7 +12768,7 @@ unsorted:
   - libcontainers-sles-mounts 
   - libcorrect-devel 
   - libcorrect0_0_0 
-  - libcosmos-3 
+  - libcosmos-4 
   - libcosmos-devel 
   - libcotp-devel 
   - libcotp3 
@@ -23835,6 +23835,7 @@ unsorted:
   - pw3270-branding-upstream 
   - pw3270-lang 
   - pwgen 
+  - pwtool 
   - py3c-devel 
   - pybind11-abseil-devel 
   - pybind11_protobuf 
