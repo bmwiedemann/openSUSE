@@ -112,4 +112,12 @@
     <comment>- Update to release 3.2.8</comment>
     <requestid>1250501</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c86b070fa6d7f7db0ba36905426696f6</srcmd5>
+    <version>3.2.8</version>
+    <time>1742051709</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim extraneous X11 dependencies from SDL3-devel [boo#1239635]</comment>
+    <requestid>1253146</requestid>
+  </revision>
 </revisionlist>

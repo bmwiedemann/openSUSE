@@ -89,14 +89,10 @@ again that libXrandr2 and libXi6 are in fact installed.
 Summary:        SDL3 Library Developer Files
 Group:          Development/Libraries/X11
 Requires:       %lname = %version-%release
-Requires:       c_compiler
-Requires:       pkgconfig
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(glesv1_cm)
 Requires:       pkgconfig(glesv2)
 Requires:       pkgconfig(glu)
-Requires:       pkgconfig(x11)
-Requires:       pkgconfig(xproto)
 
 %description devel
 This package contains files needed for development with the SDL
