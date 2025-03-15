@@ -1,7 +1,7 @@
 #
 # spec file for package pplite
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define lname   libpplite5
-%define _lto_cflags %nil
 Name:           pplite
 Version:        0.12
 Release:        0
@@ -26,7 +25,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/ezaffanella/PPLite/
 Source:         https://github.com/ezaffanella/PPLite/raw/main/releases/%name-%version.tar.gz
-BuildRequires:  flint-devel
+Patch1:         0001-build-fix-build-error-with-flint-3.2.0.patch
+BuildRequires:  pkgconfig(flint)
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 
