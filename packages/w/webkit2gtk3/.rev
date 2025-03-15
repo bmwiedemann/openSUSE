@@ -1876,4 +1876,13 @@ don't affect Linux. (forwarded request 1226975 from mgorse)</comment>
     <comment></comment>
     <requestid>1246716</requestid>
   </revision>
+  <revision rev="215" vrev="3">
+    <srcmd5>014fbfe9b611d29194e676cdbf992f71</srcmd5>
+    <version>2.46.6</version>
+    <time>1742051737</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 7d784721.patch: WebGL context primitive restart can be
+  toggled from WebContent process (boo#1239547 CVE-2025-24201). (forwarded request 1252780 from mgorse)</comment>
+    <requestid>1252843</requestid>
+  </revision>
 </revisionlist>

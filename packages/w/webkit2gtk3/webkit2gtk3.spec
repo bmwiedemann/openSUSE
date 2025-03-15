@@ -92,6 +92,8 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FEATURE-OPENSUSE reproducibility.patch -- Make build reproducible
 Patch0:         reproducibility.patch
+# PATCH-FIX-UPSTREAM 7d784721.patch boo#1239547 mgorse@suse.com -- WebGL context primitive restart can be toggled from WebContent process.
+Patch1:         https://github.com/WebKit/WebKit/commit/7d784721.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
