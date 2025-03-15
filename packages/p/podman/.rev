@@ -1298,4 +1298,12 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <comment></comment>
     <requestid>1251752</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>68288f31b546d9c729a3dfc37b933abc</srcmd5>
+    <version>5.4.1</version>
+    <time>1742051758</time>
+    <user>dimstar_suse</user>
+    <comment>update to 5.4.1 and drop patch 0001-CVE-2025-27144-vendor-don-t-allow-unbounded-amounts-.patch (forwarded request 1252224 from ojkastl_buildservice)</comment>
+    <requestid>1253034</requestid>
+  </revision>
 </revisionlist>
