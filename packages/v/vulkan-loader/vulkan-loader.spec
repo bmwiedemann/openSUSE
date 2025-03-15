@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-loader
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 # Prefer to go with just /^sdk-.*/ tags
 %define lname	libvulkan1
 Name:           vulkan-loader
-Version:        1.4.304
+Version:        1.4.309
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Loader
-#Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/refs/tags/vulkan-sdk-%version.0.tar.gz
-Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/refs/tags/v%version.tar.gz
+Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/refs/tags/vulkan-sdk-%version.0.tar.gz
+#Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/refs/tags/v%version.tar.gz
 Source9:        baselibs.conf
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
@@ -69,7 +69,7 @@ This subpackage contains the development headers for packages wanting
 to make use of Vulkan.
 
 %prep
-%autosetup -p1 -n Vulkan-Loader-%version
+%autosetup -n Vulkan-Loader-vulkan-sdk-%version.0 -p1
 
 %build
 %cmake \
