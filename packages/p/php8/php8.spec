@@ -57,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.3.17
+Version:        8.3.19
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01
@@ -1234,13 +1234,13 @@ Build cli \
     --disable-cgi
 %endif
 
+%if "%{flavor}" == "test"
 %check
 %if %{with asan}
 # no need for ASAN build
 exit 0
 %endif
 
-%if "%{flavor}" == "test"
 # Run tests, using the CLI SAPI
 export NO_INTERACTION=1 REPORT_EXIT_STATUS=1 LANG=POSIX LC_ALL=POSIX
 unset TZ

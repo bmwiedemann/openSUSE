@@ -1135,4 +1135,41 @@
         Fixed UAFs when changing default fetch class ctor args.</comment>
     <requestid>1245821</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>54d28119ca7eb45418c62fe293367b48</srcmd5>
+    <version>8.3.19</version>
+    <time>1742051755</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.3.19
+    BCMath:
+        Fixed bug GH-17398 (bcmul memory leak).
+    Core:
+        Fixed bug GH-17623 (Broken stack overflow detection for variable compilation).
+        Fixed bug GH-17618 (UnhandledMatchError does not take zend.exception_ignore_args=1 into account).
+        Fix fallback paths in fast_long_{add,sub}_function.
+        Fixed bug GH-17718 (Calling static methods on an interface that has `__callStatic` is allowed).
+        Fixed bug GH-17797 (zend_test_compile_string crash on invalid script path).
+        Fixed GHSA-rwp7-7vc6-8477 (Reference counting in php_request_shutdown causes Use-After-Free). (CVE-2024-11235)
+    DOM:
+        Fixed bug GH-17847 (xinclude destroys live node).
+    FFI:
+        Fix FFI Parsing of Pointer Declaration Lists.
+    FPM:
+        Fixed bug GH-17643 (FPM with httpd ProxyPass encoded PATH_INFO env).
+    GD:
+        Fixed bug GH-17772 (imagepalettetotruecolor crash with memory_limit=2M).
+    LDAP:
+        Fixed bug GH-17704 (ldap_search fails when $attributes contains a non-packed array with numerical keys).
+    LibXML:
+        Fixed GHSA-wg4p-4hqh-c3g9 (Reocurrence of #72714).
+        Fixed GHSA-p3x9-6h7p-cgfc (libxml streams use wrong `content-type` header when requesting a redirected resource). (CVE-2025-1219)
+    MBString:
+        Fixed bug GH-17503 (Undefined float conversion in mb_convert_variables).
+    Opcache:
+        Fixed bug GH-17654 (Multiple classes using same trait causes function JIT crash).
+        Fixed bug GH-17577 (JIT packed type guard crash).
+        Fixed bug GH-17899 (zend_test_compile_string with invalid path when opcache is enabled).
+        Fixed bug GH-17868 (Cannot allocate memory with tracing JIT).</comment>
+    <requestid>1253013</requestid>
+  </revision>
 </revisionlist>
