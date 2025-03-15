@@ -1,7 +1,7 @@
 #
 # spec file for package singular
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,35 @@
 #
 
 
-%define verud 4_3_2
-%define mainversion 4.3.2
-%define patchlevel p16
+%define _buildshell /bin/bash
+%define verud 4_4_1
 Name:           singular
-Version:        %mainversion%{?patchlevel:.%patchlevel}
+Version:        4.4.1
 Release:        0
 Summary:        Computer algebra system for polynomials
 License:        BSD-3-Clause AND GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-only
 Group:          Productivity/Scientific/Math
 URL:            https://www.singular.uni-kl.de/
 #Git-Clone:     https://github.com/Singular/Singular
-Source:         https://www.singular.uni-kl.de/ftp/pub/Math/Singular/SOURCES/4-3-2/%name-%mainversion%patchlevel.tar.gz
-Source9:        %name-rpmlintrc
+Source:         https://github.com/Singular/Singular/archive/refs/tags/Release-4-4-1.tar.gz
+Patch1:         versioned-pkglibdir.patch
 BuildRequires:  autoconf >= 2.62
 BuildRequires:  automake
 BuildRequires:  bison >= 1.2.2
 BuildRequires:  fdupes
 BuildRequires:  flex >= 2.4
-BuildRequires:  flint-devel >= 2.4
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel >= 4.2
 BuildRequires:  libtool
-BuildRequires:  mpfr-devel >= 3
-BuildRequires:  ncurses-devel
 BuildRequires:  ntl-devel >= 5
 BuildRequires:  perl >= 5
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  sharutils
 BuildRequires:  xz
+BuildRequires:  pkgconfig(flint) >= 2.4
+BuildRequires:  pkgconfig(mpfr) >= 3
+BuildRequires:  pkgconfig(ncurses)
 Recommends:     gfan
 # see doc/NEWS.texi for changelog
 
@@ -78,7 +77,7 @@ Recommends:     libfactory-gftables = %version
 
 %description -n libfactory-%verud
 Factory is a C++ class library that implements a recursive
-representation of multivariate polynomial data. Factory handles
+representation of multivariate polynomial data. It handles
 sparse multivariate polynomials over different coefficient domains,
 such as Z, Q and GF(q), as well as algebraic extensions over Q and
 GF(q) in an efficient way. Factory includes algorithms for computing
@@ -104,13 +103,7 @@ Requires:       libfactory-%verud = %version-%release
 
 %description -n libfactory-devel
 Factory is a C++ class library that implements a recursive
-representation of multivariate polynomial data. Factory handles
-sparse multivariate polynomials over different coefficient domains,
-such as Z, Q and GF(q), as well as algebraic extensions over Q and
-GF(q) in an efficient way. Factory includes algorithms for computing
-univariate and multivariate gcds, resultants, chinese remainders, and
-several algorithms to factorize univariate polynomials over the
-integers and over finite fields.
+representation of multivariate polynomial data.
 
 This package contains the include and library files.
 
@@ -179,23 +172,24 @@ Requires:       libsingular_resources-%verud = %version-%release
 (Upstream has not provided any description.)
 
 %prep
-%autosetup -n singular-%mainversion -p1
+%autosetup -n Singular-Release-4-4-1 -p0
 
 %build
 ./autogen.sh
-%configure --disable-static --bindir=%_libexecdir/%name
-%make_build PACKAGE_VERSION="%version"
+# %%configure adds optimization flags already, skip the script's wonky attempt to do the same
+%configure --disable-static --bindir="%_libexecdir/%name" \
+	--disable-optimizationflags
+%make_build PACKAGE_VERSION="%version" moduledir="%_libdir/singular-%version/MOD"
 
 %install
 b="%buildroot"
-%make_install PACKAGE_VERSION="%version"
-rm -f "$b/%_libdir"/*.la
+%make_install PACKAGE_VERSION="%version" moduledir="%_libdir/singular-%version/MOD"
+find "%buildroot" -type f -name "*.la" -print -delete
 mkdir -p "$b/%_bindir"
 blen="${#b}"
 for i in "$b/%_libexecdir/%name"/*Singular; do
 	ln -s "${i:$blen}" "$b/%_bindir/"
 done
-find "%buildroot/usr/share/doc" -type f -exec chmod a-x {} +
 %if 0%{?fdupes:1}
 %fdupes %buildroot/%_prefix
 %endif
@@ -209,13 +203,12 @@ find "%buildroot/usr/share/doc" -type f -exec chmod a-x {} +
 %files
 %_bindir/*Singular
 %_libexecdir/singular/
+%_libdir/singular-%version/
 %_datadir/applications/*
 %_datadir/icons/*
 %_datadir/man/man1/*
 %_datadir/ml_*/
 %_datadir/singular/
-/usr/share/doc/singular/
-%_infodir/*
 %license COPYING GPL2 GPL3
 
 %files -n libfactory-%verud

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 14 18:24:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.4.1
+  * Added new libraries:
+  * modfinduni.lib: parallel computation of finduni
+  * sagbiNormaliz.lib: computation of Sagbi bases via normaliz
+  * stdmodule.lib: Compute Standard Bases of submodule of free
+    module over polynomial subalgebra
+  * tropicalEllipticCovers.lib: Gromov–Witten numbers of tropical
+    elliptic curves and their covers
+  * arnold.lib: Classification of isolated singularities with a
+    nondegenerate Newton Boundary
+  * modprimdec.lib: primary decompisition by modular methods
+  * modquotient.lib: ideal quotient and saturation by modular
+    methods
+  * transformation.lib: The image of a transformation given up to a
+    specified degree
+- Add versioned-pkglibdir.patch
+
+-------------------------------------------------------------------
 Sun Mar 10 11:55:24 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.3.2p16

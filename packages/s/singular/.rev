@@ -39,4 +39,12 @@
     <comment>- Update to release 4.3.2p16</comment>
     <requestid>1156773</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>28e45173655a208883de1802d2effa4d</srcmd5>
+    <version>4.4.1</version>
+    <time>1742051822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.4.1</comment>
+    <requestid>1253272</requestid>
+  </revision>
 </revisionlist>
