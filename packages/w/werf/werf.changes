@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Mar 14 18:58:19 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.32.0:
+  * chore: release 2.32.0 (#6693)
+  * refactor(cleanup): perform git history based cleanup
+    concurrently (#6702)
+  * feat(cleanup): keep dependencies (#6704)
+  * feat(host-cleanup): clean up dangling and regular images,
+    unused volumes, stopped containers, build cache (#6687)
+  * feat: support `WERF_PRINT_STACK_TRACES=1` env var for period
+    stack traces
+  * fix(cleanup): speed-up image metadata inition
+  * refactor(buildah): remove code duplication
+  * fix(build, imageSpec): resolve env issues, labels warning, and
+    add --skip-image-spec-stage flag (#6651)
+  * refactor(deploy): move some secrets code to Nelm
+  * refactor(deploy): migrate `werf helm secret` commands to Nelm
+    actions
+  * refactor(giterminism, buildah): replace third party error
+    packages with std lib errors pkg
+  * chore(dev): run lint task in container and update
+    CONTRIBUTING.md (#6686)
+  * refactor(deploy): unfreeze `werf helm secret` commands code
+  * refactor(deploy): freeze more of `werf helm` code
+  * fix(host-cleanup): test werf/exec process detach
+  * fix(host-cleanup): auto host cleanup doesn't work on linux
+  * feat(deploy): add syntax highlight to `render` and `bundle
+    render`
+  * chore(channels): bump early-access, stable
+  * chore(channels): hotfix
+
+-------------------------------------------------------------------
 Thu Mar 06 13:03:10 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.31.1:
