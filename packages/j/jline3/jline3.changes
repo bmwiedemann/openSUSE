@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Fri Mar 14 14:06:15 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.29.0
+  * Breaking changes
+    + Undeprecate ConsolePrompt methods et al
+  * New features and improvements
+    + Add text-only prompt element for console-ui
+    + Dynamic console-ui prompt improvements, see #1051
+  * Bug Fixes
+    + AnsiConsole should always obey the terminal
+    + Add overloaded no-arg compile method
+    + Move catch to proper place
+- Update to upstream version 3.28.0
+  * New features and improvements
+    + Dynamic console-ui prompts
+    + Add a AbstractTerminal#toString() method
+    + Let CommandRegistry create Candidate for completion
+    + Be more specific about which command is missing when throwing
+      an exception
+    + Add style for command description in completer
+    + Enhance DefaultHighlighter to support command styling
+    + Provide a simple RegistryImpl that can provide options from
+      LineReader
+  * Bug Fixes
+    + InputValue prompt with mask doesn't work correctly
+    + JLine exec provider should reject terminal creation on a
+      redirected output stream
+    + Fix ConsolePrompt.prompt() throwing IOError instead of
+      UserInterruptedException
+    + Fix possible NPE in TailTipWidgets
+- Update to upstream version 3.27.1
+  * Bug fixes (relative)
+    + Hexadecimal triple support in Jansi
+    + Fix ExecPty parsing on some Alpine linux
+    + Clean ShellFactoryImpl logging, add a test
+    + Fix GraalVM warning
+  * Tasks
+    + Configure central-publishing-maven-plugin manually
+- Update to upstream version 3.27.0
+  * Changes
+    + Fix tag name format for release
+    + Console UI ListChoice's (relative)pageSize is never used
+    + Added possibility of cancelling prompts
+    + [consoleui] Make it easier to extend ConsolePrompt
+    + fix typo: inMode -> outMode in ffm
+- Update to upstream version 3.26.3
+  * Bug fixes
+    + The Diag tool should display the full stack trace
+    + Correcting invocation of ScrollConsoleScreenBufferW - using
+      pointers instead of values.
+    + Fix windows-arm64 DLL name
+    + IndexOutOfBoundsException in console-ui when header exceeds
+      size of the terminal
+- Update to upstream version 3.26.2
+  * Bug fixes
+    + Add some doc for boolean provider methods in TerminalBuider
+    + INVALID_HANDLE_VALUE is a long
+    + Restore the use of Integer.MAX_VALUE for display colums when
+      size is zero
+    + Cursor badly positioned after creating Status bar
+    + Build with Cmd on Windows
+- Update to upstream version 3.26.1
+  * Changes
+    + Fix interrupt signal killing application
+    + Fix OutOfMemoryError when using TailTipWidget
+- Update to upstream version 3.26.0
+  * Changes
+    + Update GitHub Actions
+    + In maven-wrapper.properties, sync maven version with pom.xml
+    + Update maven to 3.9.6
+    + Fixing the FfmTerminal to run on JDK 22 and on Linux.
+    + Provide jdk8 jar by excluding the FFM support
+    + Exclude directories when locating tty, test etc
+    + Return early from LineReaderImpl.doList if no possibilities
+      or rows
+    + Fix native image compilation
+    + Use default sort order when custom sort order is identical
+    + Disable Quick Edit Mode with mouse support
+    + Don't change keybindings to emacs for dumb terminals
+    + Merge ConsoleUI project into JLine
+    + Don't attempt line break at last line
+    + Fix remote terminal on linux/bsd
+    + Warn when using a deprecated provider
+    + Improve status bar drawing mechanism
+    + Upgrade maven wrapper
+    + Switch the nativeSignals boolean to true by default
+    + Simplify graal demo
+- Update to upstream version 3.25.1
+  * Changes
+    + Fix source jars required for bundles
+    + Native libraries are not embedded in JLine bundle
+    + Fix NPE on windows with missing jna/jansi
+    + Fix native image metadata
+- Update to upstream version 3.25.0
+  * Changes
+    + Merge Jansi library into JLine
+    + Fix missing native libraries in JLine bundle
+    + Avoid JDK warning when checking the exec provider
+    + Improve the message when a provider cannot be used by doing
+      an early check and restore compatibility with Jansi 1.17
+    + Provide a new Terminal InputFlag INORMEOL to normalize end of
+      lines
+    + Add the ability to clear internal buffers
+    + Use logger instead of writing to stderr
+    + Fix FFM provider loading of openpty on linux
+    + Add some doc about Signal.QUIT which cannot be caught by the
+      JVM
+- Update to upstream version 3.24.1
+  * Changes
+    + Fix broken javadoc generation
+    + Restore JDK 8 runtime compatibility
+    + Restore partial failure handling with stty
+    + Fix git line endings
+- Update to upstream version 3.24.0
+  * New features and enhancements
+    + Add forced-out and forcer-err to force the system console to
+      use the output / error stream
+    + Add a field / setter for the forced provider
+    + Support providing default values for line reader variables
+      using system properties
+    + Support automatic parsing of an inputrc file in jline reader
+    + Add a property to customize the tab width
+    + Force creation of a dumb terminal if TERM starts with dumb
+    + New JNI provider
+    + Switch to junit 5
+    + Require JDK 11 and support JDK 21 at build time
+    + Enable spotless on JDK 21
+    + Support building on JDK 21
+  * Bug fixes
+    + Make sure the thread is not in an interrupted state when
+      cleanup up
+    + Fix cr/lf support in dumb terminals
+    + AIX issue with non english locales
+    + Add a property to force a given provider
+    + org.jline.util.PumpReader signed byte problem
+    + Fix possible OOM caused by huge repetitions of inserts
+    + Improve toString() terminal rendering
+    + Use simplified keymap for dumb terminal
+    + Improve robustness of initial cleanup
+    + Add missing space in SunOS-sparcv9_CCFLAGS
+    + Fix history trim for non-timestamped files
+    + Fix build on linux arm64 and add riscv64
+    + Fix eol
+    + Clean a bit TerminalBuilder
+    + Add TerminalExt interface
+    + FFM support
+    + Break dependency between org.jline.terminal.impl and
+      org.jline.terminal.impl.exec package
+    + Close Files streams using try-with-resources
+    + Fix illegal reflective access in exec provider
+    + Make sure libraries are binaries
+    + Simplify CI
+    + Builtin Less has an IndexOutOfBoundsException when seeking to
+      the end of the file
+    + LineReader Bug
+    + Add a warning when using the ExecTerminalProvider on recent
+      JDKs
+    + Fix detection of utilities
+    + Fix shell output going to stderr rather than stdout
+    + Fix TerminalProvider sorting
+    + Use Objects.hashCode instead of Objects.hash to avoid vararg
+      array creation
+    + spotless: set the line endings to
+- Update to upstream version 3.23.0
+  * Changes
+    + Optimize Styles.isStylePattern() to avoid StackOverflowError
+    + Use a native library to create FileDescriptors if reflection
+      does not allow access
+    + Allow custom sort of providers, and prefer jansi by default
+    + Fix restoration of Terminal at close
+    + Decode alternate charset in/out sequences when building
+      AttributedString
+    + Fix AltGr+Shift characters
+    + Add missing ConEmu capabilities
+    + Ioctl improvements
+    + Refine color support in various environments
+    + Fix signal processing on windows
+    + Add autoformat using spotless
+- Do not build by default the jline3-remote-ssh to avoid hard
+  dependency on apache-sshd. The build is still possible by
+  specifying --with ssh
+- Do not build by default the jline3-terminal-ffm, since it
+  requires java >= 22. The build is still possible by specifying
+  --with ffm
+- Added patch:
+  * 0001-Remove-optional-dependency-on-universalchardet.patch
+    + Do not depend on the optional juniversalchardet
+- Added template patch:
+  * Load-native-library-system-wide-place.patch.in
+    + Load the native library from system-wide place
+
+-------------------------------------------------------------------
 Fri Oct 11 07:41:55 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Enable building of the module jline too
