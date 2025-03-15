@@ -66,7 +66,7 @@ BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(OpenIPMI)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libevent)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libssh2)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -329,7 +329,7 @@ cd -
 %sysusers_generate_pre %{SOURCE16} zabbix system-user-zabbix.conf
 ZABBIX_BASIC_CONFIG="--enable-proxy --enable-server --enable-agent  --sysconfdir=%{_sysconfdir}/zabbix \
                      --with-openipmi --enable-java --enable-ipv6 --with-ssh2 --with-ldap --with-unixodbc \
-                     --with-libcurl --with-net-snmp --with-libxml2 --with-openssl --with-libpcre --with-libevent"
+                     --with-libcurl --with-net-snmp --with-libxml2 --with-openssl --with-libpcre2 --with-libevent"
 
 # configure MySQL repo (here)
 autoreconf -fvi
