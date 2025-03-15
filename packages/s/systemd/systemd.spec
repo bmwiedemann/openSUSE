@@ -31,9 +31,9 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    257.3
+%define systemd_version    257.4
 %define systemd_release    0
-%define archive_version    +suse.3.ge03ffd74c4
+%define archive_version    +suse.4.gf133e5974e
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests

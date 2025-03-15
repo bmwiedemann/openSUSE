@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 12 20:21:42 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- triggers.systemd: more posix.fork() conversion (bsc#1238566)
+
+-------------------------------------------------------------------
+Wed Mar 12 14:41:02 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit f133e5974e69708d7491d4823780690c913f7bda (merge v257.4)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/e03ffd74c4a30c1c75e05874ce18d31e503437b7...f133e5974e69708d7491d4823780690c913f7bda
+
+-------------------------------------------------------------------
 Mon Mar  3 09:56:53 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Name libsystemd-{shared,core} based on the major version of systemd and the
@@ -31,7 +44,7 @@ Fri Feb 14 09:00:29 UTC 2025 - Franck Bui <fbui@suse.com>
 - Import commit e03ffd74c4a30c1c75e05874ce18d31e503437b7 (merge of v257.3)
 
   For a complete list of changes, visit:
-  https://github.com/openSUSE/systemd/compare/7fa3b5018bfffa176c77a2a5794dce792eebadcb...e03ffd74c4a30c1c75e05874ce18d31e503437b7
+  https://github.com/openSUSE/systemd/compare/47794646786ae4ddb6d3deb2030e2761447999ec...e03ffd74c4a30c1c75e05874ce18d31e503437b7
 
 -------------------------------------------------------------------
 Wed Feb 12 14:12:10 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
@@ -295,6 +308,7 @@ Thu Jul  4 09:07:28 UTC 2024 - Franck Bui <fbui@suse.com>
     - commit 3b2e7dc5a285edbbb1bf6aed2d88b889d801613f (bsc#1234015)
     - commit c072860593329293e19580b337504adb52248462 (bsc#1229518)
     - commit cfbf7538d87023840c5574fa5b0452e5b0f42149 (bsc#1229228)
+    - commit 3c85d3fda50f71755aa276cfa60807c315bfc04b (bsc#1236886)
 
   - Added pam.systemd-run0
 

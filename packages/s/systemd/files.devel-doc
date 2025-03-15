@@ -720,6 +720,10 @@
 %{_mandir}/man3/sd_uid_get_sessions.3.gz
 %{_mandir}/man3/sd_uid_get_state.3.gz
 %{_mandir}/man3/sd_uid_is_on_seat.3.gz
+%if %{with upstream}
+%{_mandir}/man3/sd_varlink_get_description.3.gz
+%{_mandir}/man3/sd_varlink_set_description.3.gz
+%endif
 %{_mandir}/man3/sd_watchdog_enabled.3.gz
 %{_mandir}/man3/udev_device_get_action.3.gz
 %{_mandir}/man3/udev_device_get_current_tags_list_entry.3.gz

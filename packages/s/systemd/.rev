@@ -7552,4 +7552,19 @@ handle manual pages that consist only of a .so directive such as
   no-op otherwise.</comment>
     <requestid>1249841</requestid>
   </revision>
+  <revision rev="444" vrev="1">
+    <srcmd5>083982357df0a6e464f017042aa1aff6</srcmd5>
+    <version>257.4</version>
+    <time>1742051712</time>
+    <user>dimstar_suse</user>
+    <comment>- triggers.systemd: more posix.fork() conversion (bsc#1238566)
+
+- Import commit f133e5974e69708d7491d4823780690c913f7bda (merge v257.4)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/e03ffd74c4a30c1c75e05874ce18d31e503437b7...f133e5974e69708d7491d4823780690c913f7bda
+
+  https://github.com/openSUSE/systemd/compare/47794646786ae4ddb6d3deb2030e2761447999ec...e03ffd74c4a30c1c75e05874ce18d31e503437b7
+    - commit 3c85d3fda50f71755aa276cfa60807c315bfc04b (bsc#1236886)</comment>
+    <requestid>1252776</requestid>
+  </revision>
 </revisionlist>

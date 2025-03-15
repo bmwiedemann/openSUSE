@@ -88,10 +88,5 @@ end
 -- This script will automatically apply sysctl rules if files have been
 -- installed or updated in /usr/lib/sysctl.d.
 if posix.access("/run/systemd/system") then
-    pid = posix.fork()
-    if pid == 0 then
-        assert(posix.exec("/usr/lib/systemd/systemd-sysctl"))
-    elseif pid > 0 then
-        posix.wait(pid)
-    end
+    assert(rpm.execute("/usr/lib/systemd/systemd-sysctl"))
 end
