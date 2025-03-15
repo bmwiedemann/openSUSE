@@ -7,4 +7,12 @@
     <comment>new package vault-sync: synchronize secrets between HashiCorp Vault instances</comment>
     <requestid>1187968</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8d60a797d8ab4ad38e86786f2f6f9549</srcmd5>
+    <version>0.10.0</version>
+    <time>1742051788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1253174</requestid>
+  </revision>
 </revisionlist>

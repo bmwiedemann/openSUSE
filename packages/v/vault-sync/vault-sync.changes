@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 14 18:58:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.10.0:
+  * Breaking changes
+    - The default value for dst.backend has changed. Previously the
+      default value was "secret", now the corresponding
+      configuration for src will be used also for dst, if
+      dst.backend not specified.
+  * What's Changed
+    - Add kubernetes job by @pbchekin in #15
+    - Helm chart 0.1.3 by @pbchekin in #16
+    - Rust 1.85.0, update Cargo.lock by @pbchekin in #19
+    - Document CA certificates by @pbchekin in #18
+    - Fix compilation warnings by @pbchekin in #20
+    - Multiple backends by @pbchekin in #21
+
+-------------------------------------------------------------------
 Fri Jun  7 13:31:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package vault-sync: synchronize secrets between HashiCorp

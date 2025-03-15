@@ -1,7 +1,7 @@
 #
 # spec file for package vault-sync
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           vault-sync
-Version:        0.9.2
+Version:        0.10.0
 Release:        0
-Summary:	Synchronize secrets between HashiCorp Vault instances
+Summary:        Synchronize secrets between HashiCorp Vault instances
 License:        Apache-2.0
 URL:            https://github.com/pbchekin/vault-sync
 Source0:        %{name}-%{version}.tar.gz
@@ -28,8 +28,8 @@ Source2:        vault-sync.service
 Source3:        vault-sync.yaml.dummy
 BuildRequires:  cargo >= 1.69.0
 BuildRequires:  cargo-packaging
-BuildRequires:  zstd
 BuildRequires:  openssl-devel
+BuildRequires:  zstd
 BuildRequires:  user(vault-sync)
 Requires:       user(vault-sync)
 
