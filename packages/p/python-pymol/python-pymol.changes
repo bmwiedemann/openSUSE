@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 14 17:31:28 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- changes to .spec file:
+  * to make build work on leap 15.6, add sle15_python_module_pythons
+    and conditional BuildRequires: gcc12-c++
+  * drop skip_python2 and oldpython
+
+-------------------------------------------------------------------
 Wed Mar 12 22:14:37 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - update to 3.1.0

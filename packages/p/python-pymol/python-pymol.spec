@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
-%define oldpython python
 %define modname pymol-open-source
 %bcond_with test
+%{?sle15_python_module_pythons}
 Name:           python-pymol
 Version:        3.1.0
 Release:        0
@@ -37,7 +36,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
+%if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  glew-devel
 BuildRequires:  glm-devel
 BuildRequires:  libpng-devel
@@ -85,6 +88,10 @@ ChemDraw, CCP4 maps, XPLOR maps and Gaussian cube maps.
 %autosetup -p1 -n %{modname}-%{version}
 
 %build
+%if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
+export CC=gcc-12
+export CXX=g++-12
+%endif
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %pyproject_wheel
 
@@ -100,13 +107,11 @@ sed -e '/def testglTF(self):/,+7d' -i testing/tests/api/exporting.py
 %if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
 ## TestSeqalign needs recent biopython not available in Leap
 rm testing/tests/api/seqalign.py
-## default pytest / python on leap are too old...
-sed -e '/--import-mode=importlib/d' -i testing/pytest.ini
 %endif
 ## succeeds when run separately, but fails when run after ..../api/viewing.py
 rm testing/tests/api/test_editing.py
 ## pymol -ckqy testing/testing.py --run all
-PYTHONPATH=%{buildroot}%{python_sitearch} python%{python_version} -m pymol -ckqy testing/testing.py --offline --run all
+PYTHONPATH=%{buildroot}%{python_sitearch} python%{python_bin_suffix} -m pymol -ckqy testing/testing.py --offline --run all
 %endif
 
 %post
