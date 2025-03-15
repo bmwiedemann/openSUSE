@@ -1,7 +1,7 @@
 #
 # spec file for package scrypt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           scrypt
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Password-based encryption utility using the scrypt key derivation function
 License:        BSD-3-Clause
