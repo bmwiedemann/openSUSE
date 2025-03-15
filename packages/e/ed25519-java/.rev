@@ -39,4 +39,12 @@
     <comment>fix javadoc encoding</comment>
     <requestid>1219529</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>93e6c9c4ade63997cafb95738b3c0d6f</srcmd5>
+    <version>0.3.0</version>
+    <time>1742051697</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1239551, CVE-2020-36843</comment>
+    <requestid>1253095</requestid>
+  </revision>
 </revisionlist>

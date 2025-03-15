@@ -1,7 +1,7 @@
 #
 # spec file for package ed25519-java
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        https://github.com/str4d/ed25519-java/archive/v%{version}/%{name
 Source1:        %{name}-build.xml
 Patch0:         0001-EdDSAEngine.initVerify-Handle-any-non-EdDSAPublicKey.patch
 Patch1:         0002-Disable-test-that-relies-on-internal-sun-JDK-classes.patch
+Patch2:         %{name}-CVE-2020-36843.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -57,6 +58,7 @@ This package contains javadoc for %{name}.
 cp %{SOURCE1} build.xml
 %patch -P 0 -p1
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
 ant jar javadoc

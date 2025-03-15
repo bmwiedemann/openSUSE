@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 14 13:57:24 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * ed25519-java-CVE-2020-36843.patch
+    + backport commit https://github.com/i2p/i2p.i2p/commit/
+      /d7d1dcb5399c61cf2916ccc45aa25b0209c88712
+    + Fixes bsc#1239551, CVE-2020-36843: no check performed on
+      scalar to avoid signature malleability
+
+-------------------------------------------------------------------
 Wed Oct 30 09:18:41 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Rewrite the build using ant
