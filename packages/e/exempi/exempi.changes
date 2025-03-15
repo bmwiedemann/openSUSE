@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 13 18:48:02 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Ignore testcore test failure on s390x. It is known to fail on
+  big endian architectures.
+
+-------------------------------------------------------------------
 Sun Mar 17 12:29:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.5:

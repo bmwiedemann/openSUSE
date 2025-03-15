@@ -1,7 +1,7 @@
 #
 # spec file for package exempi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,7 +85,13 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 %check
 %if ! 0%{?qemu_user_space_build}
+%ifarch s390x
+# testcore test fails on big endian arches since exempi 2.5.2:
+# https://gitlab.freedesktop.org/libopenraw/exempi/-/issues/23
+%make_build check || [ "$(grep '^FAIL:' exempi/test-suite.log)" = "FAIL: tests/testcore" ]
+%else
 %make_build check
+%endif
 %endif
 
 %post -n libexempi%{sonum} -p /sbin/ldconfig
