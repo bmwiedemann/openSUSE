@@ -1,0 +1,74 @@
+From: Allan Sandfeld Jensen
+Subject: Allow recvfrom and recvmsg on 32-bit x86
+
+From https://bugreports.qt.io/browse/QTBUG-57709
+
+Edited by fvogt@suse.com to include even more stuff.
+
+Index: qtwebengine-everywhere-src-5.15.18/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
+===================================================================
+--- qtwebengine-everywhere-src-5.15.18.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
++++ qtwebengine-everywhere-src-5.15.18/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
+@@ -363,7 +363,7 @@ bool SyscallSets::IsAllowedOperationOnFd
+ #endif
+     case __NR_dup3:
+ #if defined(__x86_64__) || defined(__arm__) || defined(__mips__) || \
+-    defined(__aarch64__)
++    defined(__aarch64__) || defined(__i386__)
+     case __NR_shutdown:
+ #endif
+       return true;
+@@ -465,7 +465,7 @@ bool SyscallSets::IsAllowedGetOrModifySo
+       return true;
+     default:
+ #if defined(__x86_64__) || defined(__arm__) || defined(__mips__) || \
+-    defined(__aarch64__)
++    defined(__aarch64__) || defined(__i386__)
+     case __NR_socketpair:  // We will want to inspect its argument.
+ #endif
+       return false;
+@@ -483,6 +483,13 @@ bool SyscallSets::IsDeniedGetOrModifySoc
+     case __NR_socket:
+     case __NR_listen:
+       return true;
++#elif defined(__i386__)
++    case __NR_accept4:
++    case __NR_bind:
++    case __NR_connect:
++    case __NR_socket:
++    case __NR_listen:
++      return true;
+ #endif
+     default:
+       return false;
+@@ -575,7 +582,7 @@ bool SyscallSets::IsAllowedGeneralIo(int
+     case __NR_recv:
+ #endif
+ #if defined(__x86_64__) || defined(__arm__) || defined(__mips__) || \
+-    defined(__aarch64__)
++    defined(__aarch64__) || defined(__i386__)
+     case __NR_recvfrom:  // Could specify source.
+     case __NR_recvmsg:   // Could specify source.
+ #endif
+@@ -590,7 +597,7 @@ bool SyscallSets::IsAllowedGeneralIo(int
+     case __NR_send:
+ #endif
+ #if defined(__x86_64__) || defined(__arm__) || defined(__mips__) || \
+-    defined(__aarch64__)
++    defined(__aarch64__) || defined(__i386__)
+     case __NR_sendmsg:  // Could specify destination.
+     case __NR_sendto:   // Could specify destination.
+ #endif
+Index: qtwebengine-everywhere-src-5.15.18/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+===================================================================
+--- qtwebengine-everywhere-src-5.15.18.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
++++ qtwebengine-everywhere-src-5.15.18/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+@@ -249,7 +249,7 @@ ResultExpr EvaluateSyscallImpl(int fs_de
+     return RestrictPrctl();
+ 
+ #if defined(__x86_64__) || defined(__arm__) || defined(__mips__) || \
+-    defined(__aarch64__)
++    defined(__aarch64__) || defined(__i386__)
+   if (sysno == __NR_socketpair) {
+     // Only allow AF_UNIX, PF_UNIX. Crash if anything else is seen.
+     static_assert(AF_UNIX == PF_UNIX,

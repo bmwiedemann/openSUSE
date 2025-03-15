@@ -1010,4 +1010,12 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
     <comment>python 3.12 / 3.13 compat</comment>
     <requestid>1246028</requestid>
   </revision>
+  <revision rev="105" vrev="3">
+    <srcmd5>c3d65388182fab4cc122e2f5fd165d4c</srcmd5>
+    <version>5.15.18</version>
+    <time>1742051714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1252804</requestid>
+  </revision>
 </revisionlist>

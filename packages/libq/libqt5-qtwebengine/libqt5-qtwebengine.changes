@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 12 08:39:57 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix the sandbox on 32-bit x86:
+  * sandbox_recvmsg.patch
+
+-------------------------------------------------------------------
 Fri Feb 14 16:17:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patches:

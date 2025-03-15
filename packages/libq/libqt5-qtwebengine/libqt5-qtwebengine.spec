@@ -68,6 +68,8 @@ Patch8:         0001-Use-default-constructor-in-place-of-self-delegation-.patch
 Patch9:         python3.12-imp.patch
 Patch10:        python3.12-six.patch
 Patch11:        python3.13-pipes.patch
+# PATCH-FIX-UPSTREAM https://bugreports.qt.io/browse/QTBUG-57709?focusedId=427082#comment-427082
+Patch12:        sandbox_recvmsg.patch
 ### Patch 50-99 are applied conditionally
 # PATCH-FIX-OPENSUSE -- allow building qtwebengine with ffmpeg5
 Patch50:        qtwebengine-ffmpeg5.patch
@@ -311,6 +313,7 @@ Examples for the libqt5-qtpdf module.
 %patch -P9 -p1
 %patch -P10 -p1
 %patch -P11 -p1
+%patch -P12 -p1
 
 # FFmpeg 5
 %if %{with system_ffmpeg}
