@@ -164,4 +164,13 @@
     <comment>- Limited build to fmt 10.2.1 (fmt 11.1.1 broken).</comment>
     <requestid>1238669</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>343a52c6da098da09d72fcd1fc0b7f36</srcmd5>
+    <version>2503</version>
+    <time>1742051810</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 2503
+  * Fixed build with fmt 11.1.</comment>
+    <requestid>1253313</requestid>
+  </revision>
 </revisionlist>
