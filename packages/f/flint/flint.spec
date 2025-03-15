@@ -17,16 +17,16 @@
 
 
 Name:           flint
-%define lname	libflint19
-Version:        3.1.3
+%define lname	libflint20
+%define _lto_cflags %nil %dnl ASM in source
+Version:        3.2.0
 Release:        0
 Summary:        C library for doing number theory
 License:        LGPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://flintlib.org/
-
-# doc/source/history.rst for changelog
 #Git-Clone:     https://github.com/flintlib/flint
+#NEWS:          doc/source/history.rst
 Source:         https://github.com/flintlib/flint/releases/download/v%version/flint-%version.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -107,8 +107,7 @@ done
 ln -s ../flint/fmpz_mpoly.h "$b/%_includedir/calcium/utils_flint.h"
 %fdupes %buildroot/%_prefix
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libflint.so.*
