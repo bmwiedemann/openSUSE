@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 14 18:25:52 CET 2025 - kurt@garloff.de
+
+- Update to dd_rescue-1.99.21:
+  * New option -H to inject interrupted and short IO calls for
+    testing.
+  * Fix handling of receiving short reads after EINTR/EAGAIN.
+  * Fix handling of short writes and EINTR/EAGAIN.
+  * When several retries happened in real_writeblock(), we would
+    corrupt the stack by increasing pointer rather than the
+    variable pointed to. (This was reported by Sam James and
+    analyzed with -fsanitizer.)
+
+-------------------------------------------------------------------
 Mon Jan 20 16:29:09 CET 2025 - kurt@garloff.de
 
 - Update to dd_rescue-1.99.20:
