@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 15.0.1
-%define short_version 15.0
+%define real_version 16.0.0
+%define short_version 16.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -29,7 +29,7 @@ ExclusiveArch:  do_not_build
 %if "%{flavor}" == "qt6"
   %define qt6 1
   %define pkgname_prefix qt6
-  %define qt_min_version 6.4.3
+  %define qt_min_version 6.5.3
   %define qtc_docdir %{_qt6_docdir}
 %endif
 #
@@ -39,7 +39,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 # Private QML imports
-%global __requires_exclude qt6qmlimport\\((AssetsLibraryBackend|BackendApi|CameraGeometry|CollectionDetails|CollectionEditor|CollectionEditorBackend|ConnectionsEditorEditorBackend|content|ContentLibraryBackend|DataModels|EffectComposerBackend|EffectMakerBackend|ExampleCheckout|GridGeometry|HelperWidgets|ItemLibraryBackend|LandingPage|LightUtils|LineGeometry|MaterialBrowserBackend|MaterialToolBarAction|MouseArea3D|NewProjectDialog|OutputPane|projectmodel|ProjectType|QtQuickDesignerColorPalette|QtQuickDesignerTheme|SelectionBoxGeometry|StatesEditor|StudioControls|StudioFonts|StudioHelpers|StudioQuickUtils|StudioTheme|StudioWindowManager|TextureToolBarAction|ToolBar|UiTour|WebFetcher|WelcomeScreen).*
+%global __requires_exclude qt6qmlimport\\((AssetsLibraryBackend|BackendApi|CameraGeometry|CollectionDetails|CollectionEditor|CollectionEditorBackend|ConnectionsEditorEditorBackend|content|ContentLibraryBackend|DataModels|DesignSystemBackend|DesignSystemControls|DeviceManagerControls|EffectComposerBackend|EffectMakerBackend|ExampleCheckout|GridGeometry|HelperWidgets|ItemLibraryBackend|LandingPage.*|LightUtils|LineGeometry|MaterialBrowserBackend|MaterialToolBarAction|ModelModules|MouseArea3D|NewProjectDialog|OutputPane|projectmodel|ProjectType|QmlDesigner.*|QtQuickDesignerColorPalette|QtQuickDesignerTheme|SelectionBoxGeometry|StatesEditor.*|StudioControls|StudioFonts|StudioHelpers|StudioQuickUtils|StudioTheme|StudioWindowManager|TableModules|TextureToolBarAction|ToolBar|UiTour|usagestatistics|WebFetcher|WelcomeScreen).*
 
 # Has mocks for quite a few components, which are only pulled in when actually used
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %bcond_without docs
 
 Name:           %{pkgname_prefix}-creator
-Version:        15.0.1
+Version:        16.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -104,7 +104,6 @@ BuildRequires:  cmake(Qt6Gui) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Help) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt_min_version}
-BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt_min_version}
@@ -118,6 +117,8 @@ BuildRequires:  cmake(Qt6ShaderTools) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6SvgWidgets) >= %{qt_min_version}
+# Needed by the extensionsystem lib
+BuildRequires:  cmake(Qt6Test) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Tools) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt_min_version}
@@ -127,6 +128,9 @@ Requires:       qt6-sql-sqlite
 Recommends:     cmake-doc-qhelp
 Recommends:     qt6-base-devel
 Recommends:     qt6-base-docs-qch
+# Shows examples when starting qt-creator (related: boo#1218403)
+Recommends:     qt6-base-examples
+Recommends:     qt6-declarative-examples
 Recommends:     qt6-declarative-devel
 Recommends:     qt6-declarative-docs-qch
 Recommends:     qt6-translations
@@ -264,10 +268,9 @@ rm -r %{buildroot}%{_datadir}/qtcreator/debugger-with-python2
 %{_libexecdir}/qtcreator/cpaster
 %{_libexecdir}/qtcreator/perf2text
 %{_libexecdir}/qtcreator/perfparser
-%{_libexecdir}/qtcreator/qml2puppet-*
+%{_libexecdir}/qtcreator/qmlpuppet*
 %{_libexecdir}/qtcreator/qtc-askpass
 %{_libexecdir}/qtcreator/qtcreator_process_stub
-%{_libexecdir}/qtcreator/qtcreator_processlauncher
 %{_libexecdir}/qtcreator/qtpromaker
 %{_libexecdir}/qtcreator/sdktool
 %if %{with docs}

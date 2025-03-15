@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 13 11:45:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 16.0.0
+  * https://www.qt.io/blog/qt-creator-16-released
+- Rebase patches
+
+-------------------------------------------------------------------
 Mon Feb 24 09:53:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Use LLVM 19 on Leap 15 to avoid potential runtime issues

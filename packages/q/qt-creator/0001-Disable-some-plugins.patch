@@ -1,4 +1,4 @@
-From d1ad6275b86760fe465a3f664c77db4acf1c44af Mon Sep 17 00:00:00 2001
+From 617d1f34be050a7b8a324bb8854a44c85f965909 Mon Sep 17 00:00:00 2001
 From: Christophe Marin <christophe@krop.fr>
 Date: Thu, 26 Oct 2023 21:03:47 +0200
 Subject: [PATCH] Disable some plugins
@@ -13,19 +13,19 @@ Subject: [PATCH] Disable some plugins
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/plugins/CMakeLists.txt b/src/plugins/CMakeLists.txt
-index 423b17d..0d4432b 100644
+index 2ec7c5a..f11b8e2 100644
 --- a/src/plugins/CMakeLists.txt
 +++ b/src/plugins/CMakeLists.txt
-@@ -10,7 +10,7 @@ add_subdirectory(helloworld)
+@@ -9,7 +9,7 @@ add_subdirectory(extensionmanager)
+ add_subdirectory(helloworld)
  add_subdirectory(imageviewer)
- add_subdirectory(marketplace)
  add_subdirectory(screenrecorder)
 -add_subdirectory(updateinfo)
 +# add_subdirectory(updateinfo)
  add_subdirectory(welcome)
  
  # Level 2: (only depends on Level 1 and below)
-@@ -78,7 +78,7 @@ if (WITH_QMLDESIGNER)
+@@ -76,7 +76,7 @@ if (WITH_QMLDESIGNER)
    add_subdirectory(qmlprojectmanager)
  endif()
  add_subdirectory(python)
@@ -35,5 +35,5 @@ index 423b17d..0d4432b 100644
  
  # Level 7:
 -- 
-2.45.2
+2.48.1
 
