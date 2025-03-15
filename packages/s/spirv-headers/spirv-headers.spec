@@ -20,8 +20,8 @@
 # Most recent tag is 1.5.4, but that is outdated.
 # CMakeLists.txt's project() line contains 1.5.5, but this is outdated too.
 # The SPIR-V version is 1.6.4 (include/spirv/unified1/spirv.core.grammar.json)
-# They add "SDK" tags that reflect the Vulkan version (1.3),
-# and the independently increasing toolchain release number (296).
+# They add "SDK" tags that reflect the Vulkan version (1.4),
+# and the independently increasing toolchain release number (309).
 
 # Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
 # See https://bugzilla.suse.com/show_bug.cgi?id=1235697
@@ -30,15 +30,15 @@
 %endif
 
 Name:           spirv-headers
-Version:        1.6.4+sdk304
-%define innerver 1.4.304
+Version:        1.6.4+sdk309
+%define innerver 1.4.309
 %define rev 09913f088a1197aba4aefd300a876b2ebbaa3391
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Headers
-Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/%rev.tar.gz
+Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/vulkan-sdk-%innerver.0.tar.gz
 BuildArch:      noarch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
@@ -56,12 +56,12 @@ registry. This includes:
 * The XML registry file.
 
 %prep
-%autosetup -n SPIRV-Headers-%rev -p1
+%autosetup -n SPIRV-Headers-vulkan-sdk-%innerver.0 -p1
 
 %build
 %cmake \
- -DCMAKE_C_COMPILER=gcc%{?gcc_version:-%{gcc_version}} \
- -DCMAKE_CXX_COMPILER=g++%{?gcc_version:-%{gcc_version}}
+	-DCMAKE_C_COMPILER="gcc%{?gcc_version:-%{gcc_version}}" \
+	-DCMAKE_CXX_COMPILER="g++%{?gcc_version:-%{gcc_version}}"
 %cmake_build
 
 %install

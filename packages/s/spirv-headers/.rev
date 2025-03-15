@@ -379,4 +379,12 @@
     <comment>- Update to snapshot 1.6.4+sdk309 (Git 09913f088)</comment>
     <requestid>1252556</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>2be1be96504ac53d8ab5dc1463fa1ae5</srcmd5>
+    <version>1.6.4+sdk309</version>
+    <time>1742051715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tag SDK-1.4.309.0 (Git 00913f088)</comment>
+    <requestid>1252818</requestid>
+  </revision>
 </revisionlist>
