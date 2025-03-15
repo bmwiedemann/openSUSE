@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 13 17:21:42 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.309.0
+  * Silence deprecation warning when testing element's truth value
+
+-------------------------------------------------------------------
 Tue Dec 24 01:36:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 1.4.304

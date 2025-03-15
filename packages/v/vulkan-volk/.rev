@@ -55,4 +55,12 @@
     <comment>- Update to 1.4.304</comment>
     <requestid>1233211</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>13454e881eb0980860ab2dc645e64efb</srcmd5>
+    <version>1.4.309</version>
+    <time>1742051734</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tag SDK-1.4.309.0</comment>
+    <requestid>1252827</requestid>
+  </revision>
 </revisionlist>
