@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 15 11:13:43 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1742031910.117e1ea:
+  * Fix regression from 055d2e67 in _set_ip arguments
+  * Ensure full coverage in the project
+  * Create test for script os-autoinst-openvswitch
+  * Enable is_shutdown to be used after "power('off')" on qemu
+  * Retry asset sync in svirt backend after timeouts
+
+-------------------------------------------------------------------
 Thu Mar 13 21:16:25 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1741888574.cd102e5:
