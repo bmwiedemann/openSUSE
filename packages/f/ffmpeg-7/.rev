@@ -97,4 +97,13 @@
     <comment>add changelog entry</comment>
     <requestid>1249405</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>176dbeaf73e5599f9ccd25a658d640b3</srcmd5>
+    <version>7.1</version>
+    <time>1742051750</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
+  to build with SVT-AV1 3.0.0.</comment>
+    <requestid>1252893</requestid>
+  </revision>
 </revisionlist>

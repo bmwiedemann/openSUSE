@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  5 09:46:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
+  to build with SVT-AV1 3.0.0.
+
+-------------------------------------------------------------------
 Fri Feb 19 05:17:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2025-22921.patch:

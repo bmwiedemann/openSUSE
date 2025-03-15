@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpeg-7
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -124,6 +124,7 @@ Patch16:        ffmpeg-7-CVE-2025-22919.patch
 Patch17:        ffmpeg-7-CVE-2025-0518.patch
 Patch18:        ffmpeg-7-CVE-2025-25473.patch
 Patch19:        ffmpeg-7-CVE-2025-22921.patch
+Patch20:        0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel >= 3.98.3
