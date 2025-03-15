@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar 13 18:48:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 77.1
+  * Integrate CLDR 47 release beta2
+  * Fix for POSIX_MADV_RANDOM undefined
+  * Add test option to ignore runtime time zone data sensitive test
+
+-------------------------------------------------------------------
+Thu Mar 13 01:53:24 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update icu.spec:
+  Correct License name to "Unicode-3.0", which is the same with
+  the upstream, and fit with SPDX License List. Otherwise submission
+  will fail in the legal script review.
+
+-------------------------------------------------------------------
+Sat Feb 22 10:45:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 77~rc
+  * CLDR 47 locale data
+
+-------------------------------------------------------------------
 Sat Oct 26 22:43:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 76.1
