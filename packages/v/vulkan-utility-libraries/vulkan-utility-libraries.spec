@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-utility-libraries
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,23 @@
 #
 
 
-%define lname libVulkanLayerSettings-1_4_304
+%define lname libVulkanLayerSettings-1_4_309
+%if 0%{?suse_version} < 1600
+%define gcc_version 13
+%endif
+
 Name:           vulkan-utility-libraries
-Version:        1.4.304
+Version:        1.4.309
 Release:        0
 Summary:        Utility libraries for Vulkan
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Utility-Libraries
-Source:         https://github.com/KhronosGroup/Vulkan-Utility-Libraries/archive/v%version.tar.gz
+Source:         https://github.com/KhronosGroup/Vulkan-Utility-Libraries/archive/refs/tags/vulkan-sdk-%version.0.tar.gz
 Patch1:         shared.diff
-%if 0%{?suse_version} && 0%{?suse_version} < 1600
-BuildRequires:  gcc12-c++
-%else
-BuildRequires:  c++_compiler
-%endif
 BuildRequires:  cmake >= 3.17.2
+BuildRequires:  gcc%{?gcc_version} >= 9
+BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  pkg-config
 BuildRequires:  vulkan-headers >= %version
 Obsoletes:      vulkan < %version-%release
@@ -65,15 +66,13 @@ configuration code for various SDK layer deliverables.
 This package contains the headers and build system integration.
 
 %prep
-%autosetup -p1 -n Vulkan-Utility-Libraries-%version
+%autosetup -n Vulkan-Utility-Libraries-vulkan-sdk-%version.0 -p1
 find . -type f -name CMakeLists.txt -exec perl -i -lpe 's{\@PACKAGE_VERSION\@}{%version}g' {} +
 
 %build
-%if 0%{?suse_version} && 0%{?suse_version} < 1599
-# Need something that knows <filesystem>
-export CC=gcc-12 CXX=g++-12
-%endif
-%cmake
+%cmake \
+	-DCMAKE_C_COMPILER="gcc%{?gcc_version:-%{gcc_version}}" \
+	-DCMAKE_CXX_COMPILER="g++%{?gcc_version:-%{gcc_version}}"
 %cmake_build
 
 %install
