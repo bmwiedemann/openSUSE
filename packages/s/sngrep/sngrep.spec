@@ -32,7 +32,7 @@ BuildRequires:  automake
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(ncursesw)
 
@@ -53,7 +53,7 @@ export CFLAGS="%{optflags} $(pkg-config --cflags ncursesw)"
 %configure \
     --enable-unicode \
     --with-openssl \
-    --with-pcre \
+    --with-pcre2 \
     --enable-ipv6 \
     --enable-eep
 
