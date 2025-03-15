@@ -1,7 +1,7 @@
 #
 # spec file for package acct
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source2:        logrotate.acct
 Source3:        https://ftp.gnu.org/gnu/acct/%{name}-%{version}.tar.gz.sig
 Source4:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=acct&download=1#/acct.keyring
 Patch0:         acct-6.6.2-hz.patch
+# [bug#1233891]
+Patch1:         acct-sprintf-buffer-overflow.patch
 BuildRequires:  makeinfo
 BuildRequires:  systemd-rpm-macros
 Requires:       logrotate
@@ -41,7 +43,7 @@ This package contains the programs necessary for user-specific process
 accounting: sa, accton, and lastcomm.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure

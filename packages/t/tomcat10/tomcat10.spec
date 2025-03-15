@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat10
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,7 @@
 %define elspec %{elspec_major}.%{elspec_minor}
 %define major_version 10
 %define minor_version 1
-%define micro_version 34
+%define micro_version 35
 %define java_major 1
 %define java_minor 11
 %define java_version %{java_major}.%{java_minor}
@@ -138,11 +138,11 @@ Requires(post): libxslt-tools
 # for runuser
 Requires(post): util-linux
 Requires(pre):  shadow
-%systemd_ordering
 Conflicts:      %{app_name}
 Provides:       group(tomcat)
 Provides:       user(tomcat)
 BuildArch:      noarch
+%systemd_ordering
 
 %description
 Tomcat is the servlet container that is used in the official Reference

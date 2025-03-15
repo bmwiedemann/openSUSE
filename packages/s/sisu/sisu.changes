@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 13 20:38:57 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Add alias to org.eclipse.sisu:org.eclipse.sisu.inject::no_asm:
+  artifact, needed by maven 4.x
+
+-------------------------------------------------------------------
 Mon Jun 10 14:02:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on jakarta-inject, needed by google-guice 6.0.0

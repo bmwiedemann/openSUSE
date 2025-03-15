@@ -119,4 +119,25 @@
   * Always print pushed digest in crane push</comment>
     <requestid>1188356</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>68d8a85f46ff266bcf6f3c906150c038</srcmd5>
+    <version>0.20.3</version>
+    <time>1741992758</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.20.3:
+  * remote/transport: Make bearer transport go-routine-safe
+  * Expose compare package
+  * fix: redact.URL uses (*URL).Redacted to omit basic-auth
+    password
+  * bump actions to latest
+  * don't pin chainguard-dev/actions
+  * Check for 406 status code when handling referrers API
+    endpoint response
+  * mutate: Create a defensive annotations copy
+  * Detect zstd in crane append
+  * bump deps using hack/bump-deps.sh
+- update to 0.20.2:
+  * deps: bump docker dep</comment>
+    <requestid>1253057</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package sisu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -120,7 +120,7 @@ ln -sf %{_javadir}/org.eclipse.sisu.plexus.jar %{buildroot}%{_javadir}/plexus-co
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
 %{mvn_install_pom} org.eclipse.sisu.inject/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.inject.pom
-%add_maven_depmap org.eclipse.sisu.inject.pom org.eclipse.sisu.inject.jar -f inject
+%add_maven_depmap org.eclipse.sisu.inject.pom org.eclipse.sisu.inject.jar -f inject -a org.eclipse.sisu:org.eclipse.sisu.inject::no_asm:
 %{mvn_install_pom} org.eclipse.sisu.plexus/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.plexus.pom
 %add_maven_depmap org.eclipse.sisu.plexus.pom org.eclipse.sisu.plexus.jar -f plexus -a org.sonatype.sisu:sisu-inject-plexus,org.codehaus.plexus:plexus-container-default
 

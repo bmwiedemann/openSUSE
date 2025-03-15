@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 14 06:28:53 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.25.4:
+  * build(deps): bump golangci/golangci-lint-action from 6.5.0 to
+    6.5.1 (#1571)
+  * Preserve symlinks in DirFS (#1570)
+  * build(deps): bump go.step.sm/crypto from 0.57.1 to 0.59.1
+    (#1559)
+  * build(deps): bump k8s.io/apimachinery from 0.32.2 to 0.32.3
+    (#1566)
+  * build(deps): bump github.com/charmbracelet/log from 0.4.0 to
+    0.4.1 (#1569)
+  * build(deps): bump go.opentelemetry.io/otel/trace from 1.34.0 to
+    1.35.0 (#1562)
+  * build(deps): bump google.golang.org/api from 0.223.0 to 0.225.0
+    (#1567)
+
+-------------------------------------------------------------------
 Thu Mar 13 05:53:15 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.25.3:

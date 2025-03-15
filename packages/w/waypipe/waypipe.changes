@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 13 13:14:28 UTC 2025 - Joan Torres <joan.torres@suse.com>
+
+- Update to version 0.10.3:
+  * Waypipe was rewritten in Rust, replacing libgbm with Vulkan.
+  * The license changed to GPLv3, and big-endian support was adjusted.
+  * --video needs an argument, reconnection was removed, and wl_drm is gone.
+  * Fixes include DMABUF crashes, scaling issues, and 32-bit build failures.
+
+-------------------------------------------------------------------
 Thu Jun 13 04:25:05 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.9.1:

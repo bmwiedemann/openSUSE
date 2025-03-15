@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  4 10:23:13 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.17.2
+  * Changes of v1.17.2
+    + Update Class File API integration to include support for
+      several omitted byte codes.
+    + Adjust attach API emulation for OpenJ9 to not create
+      subfolder if temporary folder is set explicitly.
+
+-------------------------------------------------------------------
 Fri Feb 14 12:53:09 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.17.1

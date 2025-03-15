@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 14 07:34:02 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20250313
+  * Fix a regression causing a possible crash or distorted output
+    when saving 16-bit samples
+  * Fix a regression in version 20241225 causing sample headers
+    in XI files to be saved incorrectly
+  * Fix XI saving using 1-based indices instead of 0-based indices
+  * Fix ITS/ITI loaders ignoring all characters after a NUL byte
+  * Alt-F12 (waterfall): Fix stereo logic being off by one pixel
+
+-------------------------------------------------------------------
 Fri Mar  7 09:10:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20250307

@@ -1,7 +1,7 @@
 #
 # spec file for package vigra
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,11 @@
 %if 0%{?suse_version} < 1600
 %bcond_with numpy
 %else
+%ifarch %{ix86}
+%bcond_with numpy
+%else
 %bcond_without numpy
+%endif
 %endif
 
 #LEMON build doesn't work right now (shared library problem)
@@ -53,6 +57,7 @@ BuildRequires:  boost-devel
 BuildRequires:  libboost_python3-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-numpy-devel
+BuildRequires:  python3-setuptools
 %endif
 
 %if %{with lemon}
@@ -140,7 +145,7 @@ sed -i -e "1s|#!.*|#!/usr/bin/python3|" config/vigra-config.in
     -DWITH_LEMON=0
 %endif
 
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install

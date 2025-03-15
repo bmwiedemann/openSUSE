@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Mar 14 03:16:11 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to 2.6:
+  * Worked around a common game bug that would cause garbled
+    output on Nvidia when using MSAA
+  * This affects games such as Assassin's Creed 3 / Black Flag,
+    Watch Dogs, Stalker: Clear Sky, and others
+  * Note: This may have a small impact on performance and memory
+    usage in affected games, including on AMD GPUs, where this
+    issue did not manifest in rendering issues due to hardware
+    details
+  * Potentially improved GPU-bound performance in games that use
+    NVAPI UAVOverlap feature, such as Baldurs Gate 3
+  * While this feature was supported before, our previous
+    implementation was too conservative
+  * Note: Like other vendor extensions, this does not work on
+    Windows
+  * Removed d3d11.dcSingleUseMode option. Submitting deferred
+    command lists multiple times will now behave as expected by
+    default
+  * Note: This may increase memory usage in some games. Fixes
+    rendering issues in Cardfight!! Vanguard Dear Days 2
+  * Slightly improved GPU-bound performance in modern games that
+    extensively use pixel shader UAVs, such as Trine 5
+  * Slightly reduced CPU overhead in some games that use resource
+    binding methods inefficiently, such as God of War
+  * Fixed layered D3D11 video processor view creation
+  * Added support for the ID3D11On12Device1 interop interface
+  * Clanfolk: Worked around a game bug that would cause missing
+    geometry on Intel
+  * Kingdom Come: Deliverance: Fixed a case of invalid Vulkan
+    usage
+  * Watch Dogs 2: Worked around a game bug that would cause the
+    sky to flicker on RDNA3 GPUs
+  * Fixed a race condition that could lead to crashes in games
+    doing multi-threaded asset loading
+  * Fixed various issues that would occur when disabling shader
+    support via the d3d9.shaderModel option
+  * Fixed an issue where games using both software and hardware
+    cursors would not transition between the two smoothly
+  * Fixed a regression that would cause textures to not be bound
+    correctly in some games
+  * Fixed an issue where games that request half-rate Vsync would
+    run at quarter-rate instead
+  * Fixed minor issues that would cause wine test failures
+  * CivCity: Rome: Added vendor ID override to make the game
+    render shadows on Intel GPUs
+  * Global Operations: Fixed rendering issues
+  * Need For Speed: Hot Pursuit 2: Fixed missing fog
+  * Silent Hill 2: Fixed an issue where the menu would render
+    incorrectly with the Silent HIll 2 Enhancements mod
+  * Tom Clancy's Splinter Cell: Worked around alt+tab and shadow
+    rendering issues
+  * Trainz v1.3: Worked around alt+tab issue
+  * Reworked Vulkan swapchain implementation to be more robust
+  * Improved efficiency of multisample resolves on tiling GPUs
+  * Fixed a regression introduced in DXVK 2.5 that would cause
+    memory allocation errors on certain unified memory setups,
+    including the Qualcomm proprietary driver
+  * Note: This does not mean that DXVK will officially support
+    Android, or proprietary mobile drivers
+  * Fixed a crash if an application unloads the SetupAPI DLL. This
+    issue affected various AdvHD-based visual novels
+  * Fixed an issue where software rasterizers such as Lavapipe
+    would not be considered when setting DXVK_FILTER_DEVICE_NAME
+  * Resource initialization is now always performed on the
+    asynchronous transfer queue if possible, and no longer uses
+    additional memory on drivers that support Vulkan sparse
+    residency features. This may save up to 64 MiB of VRAM in some
+    games
+  * Worked around an std::regex bug that would cause games to
+    instantly crash when using Japanese locale
+  * Worked around potential 32-bit crashes caused by stack
+    alignment issues in GCC-compiled binaries
+
+-------------------------------------------------------------------
 Tue Jan 14 00:32:17 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to 2.5.3:

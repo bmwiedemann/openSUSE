@@ -1,7 +1,7 @@
 #
 # spec file for package gpuvis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,16 +27,16 @@ Group:          Development/Tools/Debuggers
 URL:            https://github.com/mikesart/gpuvis
 Source0:        https://github.com/mikesart/gpuvis/archive/%{commit}/gpuvis.tar.gz
 Patch0:         0001-gpuvis_macro.h-needs-to-include-stdint.h.patch
-BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gtk3-devel
-BuildRequires:  libSDL2-devel
 BuildRequires:  meson
 BuildRequires:  ninja
-BuildRequires:  rapidjson-devel
+BuildRequires:  pkgconfig(RapidJSON)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(sdl2)
 %ifarch %{ix86} x86_64
 %if 0%{?suse_version} > 1530
-BuildRequires:  intel-gpu-tools-devel
+BuildRequires:  pkgconfig(i915-perf)
 %endif
 %endif
 

@@ -18,15 +18,15 @@
 
 %bcond_with lsp
 Name:           asymptote
-Version:        2.99
+Version:        3.01
 Release:        0
 Summary:        2D & 3D TeX-Aware vector graphics language
 License:        LGPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://asymptote.sourceforge.io/
-
 #Git-Clone:     https://github.com/vectorgraphics/asymptote
 Source:         https://github.com/vectorgraphics/asymptote/archive/refs/tags/%version.tar.gz
+#NEWS:          https://asymptote.sourceforge.io/ReleaseNotes
 Patch1:         use-system-libs.patch
 BuildRequires:  automake
 BuildRequires:  bison

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 13 20:36:29 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Add alias to com.google.inject:guice::classes artifact, needed
+  by maven 4.x
+
+-------------------------------------------------------------------
 Mon Jun 10 13:45:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 6.0.0

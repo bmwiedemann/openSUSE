@@ -176,6 +176,7 @@ Additional tuned profile(s) optimized for IBM Spectrum Scale.
 %package ppd
 Summary:        PPD compatibility daemon
 Requires:       %{name} = %{version}
+Requires:       python3-pyasyncore
 Conflicts:      ppd-service
 # The compatibility daemon is swappable for power-profiles-daemon
 Provides:       ppd-service

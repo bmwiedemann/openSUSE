@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 14 01:53:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add BuildRequires on python3-setuptools, needed for Python 3.12+.
+
+-------------------------------------------------------------------
 Tue Jul 18 08:29:25 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Skip problematic tests and increase timeout on riscv64

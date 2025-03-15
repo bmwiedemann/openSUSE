@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 13 22:25:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gtksourceview-2.0), pkgconfig(gtksourceview-3.0)
+  and pkgconfig(gtksourceview-4) BuildRequires, not needed for
+  building, instead just own %{_datadir}/gtksourceview-{2.0,3.0,4}
+
+-------------------------------------------------------------------
 Sun Jan 12 04:53:24 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 6.4.3

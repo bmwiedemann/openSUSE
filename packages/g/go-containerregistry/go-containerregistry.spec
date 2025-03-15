@@ -1,7 +1,7 @@
 #
 # spec file for package go-containerregistry
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           go-containerregistry
-Version:        0.20.1
+Version:        0.20.3
 Release:        0
 Summary:        Container Library and tools for working with container registries
 License:        Apache-2.0
@@ -27,7 +27,7 @@ URL:            https://github.com/google/go-containerregistry
 Source:         https://github.com/google/go-containerregistry/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.21
+BuildRequires:  golang(API) = 1.23
 Conflicts:      distribution-registry
 
 %description
@@ -128,8 +128,7 @@ BuildArch:      noarch
 zsh command line completion support for gcrane.
 
 %prep
-%setup -qa1
-%autopatch -p1
+%autosetup -p1 -a1
 
 %build
 for i in crane gcrane registry; do

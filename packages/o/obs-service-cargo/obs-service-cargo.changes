@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  7 13:40:23 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 5.0.0:
+  * Update MSRV to 1.85 and Rust edition to 2024
+  * Update Cargo.lock
+  * revert: trying to patch gix-worktree-state
+  * refactor code for Rust edition 2024
+
+-------------------------------------------------------------------
 Mon Feb 10 09:39:43 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update vendored dependencies.

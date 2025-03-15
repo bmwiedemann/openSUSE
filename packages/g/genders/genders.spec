@@ -19,10 +19,10 @@
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define c_api 0
 %define cpp_api 2
-%define slash_ver 1-29-1
+%define slash_ver 1-32-1
 
 Name:           genders
-Version:        1.29.1
+Version:        1.32
 Release:        0
 Summary:        Static cluster configuration database
 License:        GPL-2.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  patchelf
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  perl(ExtUtils::MakeMaker)
 Requires:       %{name}-base
 

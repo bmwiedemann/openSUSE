@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 13 09:51:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 11.0.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Wed Jul 17 08:28:53 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

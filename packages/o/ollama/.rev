@@ -330,4 +330,19 @@
     <comment></comment>
     <requestid>1249021</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f49782fc5474c65d7221d0c356ebd43e</srcmd5>
+    <version>0.6.0</version>
+    <time>1741992728</time>
+    <user>anag+factory</user>
+    <comment>- Update BuildRequires to go1.24 
+- Update to version 0.6.0:
+  * New model: Gemma 3
+  * Fixed error that would occur when running
+    snowflake-arctic-embed and snowflake-arctic-embed2 models
+  * Various performance improvements and bug fixes
+
+- Update to version 0.5.13:</comment>
+    <requestid>1252927</requestid>
+  </revision>
 </revisionlist>

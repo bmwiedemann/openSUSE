@@ -41,6 +41,8 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
     /usr/lib{,exec}/git/* rmix,
     /usr/share/git-core/** r,
 
+    /usr/bin/bash Px -> forgejo//git-bash,
+
     owner @{APP_DATADIR}/data/home/.gitconfig r,
     owner @{APP_DATADIR}/data/home/.gitconfig.lock rwlk,
 
@@ -53,10 +55,25 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
 
     owner @{APP_REPOSITORY_DIRS}/*/*.git/hooks/update Px -> forgejo//hooks-update,
 
+    owner @{APP_DATADIR}/data/tmp/local-repo/pull.*/ r,
     owner @{APP_DATADIR}/data/tmp/local-repo/pull.*/** rwlk,
+
+    owner @{APP_DATADIR}/data/tmp/local-repo/update-wiki*/ r,
+    owner @{APP_DATADIR}/data/tmp/local-repo/update-wiki*/** rwlk,
 
     include if exists <forgejo.d/git.d>
     include if exists <local/forgejo-git>
+  }
+
+  profile git-bash {
+    include <abstractions/base>
+    include <abstractions/bash>
+    include <abstractions/consoles>
+
+    /usr/bin/bash rm,
+
+    /usr/lib{,exec}/git/git Px -> forgejo//git,
+    /usr/lib{,exec}/git/git-write-tree Px -> forgejo//git,
   }
 
   profile hooks-pre-receive {
@@ -136,5 +153,5 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
   owner @{APP_REPOSITORY_DIRS}/** rwlk,
 
   owner /var/log/forgejo/ r,
-  owner /var/log/forgejo/gitea.log rwlk,
+  owner /var/log/forgejo/gitea.log* rwlk,
 }

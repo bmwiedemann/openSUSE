@@ -100,4 +100,41 @@
   * FileBase: add runcate() member function</comment>
     <requestid>1191875</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>60296a29ab37810e04eded952ce8a051</srcmd5>
+    <version>0.4.0</version>
+    <time>1741992748</time>
+    <user>anag+factory</user>
+    <comment>- drop no longer needed provides/obsoletes
+
+- update to version 0.4.0:
+  This release contains major API additions and harmonization of the API
+  modeling. The latter causes breaking changes.
+  Bugfixes
+  - fix bad value for SignalNr::TERM_STOP.
+  - fix inconsistent state in SubProc when child is killed by a signal.
+  - fix bugs in the error handling of the pthread API.
+  Filesystem
+  - added support for access() and faccessat().
+  - added support for flock() API.
+  - added file locking operations in FileDescriptor.
+  - added for asynchronous signal-driven I/O in FileDescriptor.
+  - added support for file lease support in FileDescriptor.
+  - renamed TYPE_MASK and MODE_MASK enum values to avoid preprocessor macro name clashes on some GCC toolchains (e.g. Ubuntu arm cross toolchain).
+  Signals
+  - support for sending thread-directed signals.
+  - add pause() wrapper.
+  - add sigqueue() variant for sending signals.
+  - support sigsuspend().
+  - full support for asynchronous signal handling via sigaction()
+    harmonize process state information by fully wrapping siginfo_t. This type
+    is now used in cosmos::proc::wait() as well in asynchronous signal handling
+    and cosmos::proc::wait_info() and some other locations. This replaces
+    WaitRes, which was only a partial special-purpose wrapper over siginfo_t.
+  - added wrapper for sigaltstack().
+  Threads
+  - use dedicated ThreadID that is distinct from ProcessID.
+  ptrace() API</comment>
+    <requestid>1253007</requestid>
+  </revision>
 </revisionlist>

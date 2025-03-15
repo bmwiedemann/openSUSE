@@ -1,7 +1,7 @@
 #
 # spec file for package hashlink
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ BuildRequires:  cmake
 BuildRequires:  haxe >= 4.0
 BuildRequires:  mbedtls-devel < 3
 BuildRequires:  cmake(sdl2)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libturbojpeg)
 BuildRequires:  pkgconfig(libuv)

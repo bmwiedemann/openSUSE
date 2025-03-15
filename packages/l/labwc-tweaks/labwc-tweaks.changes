@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 14 02:56:10 UTC 2025 - sfalken@opensuse.org
+
+- Update to version 0~git.20250219.818c98b:
+  * ui: s/Openbox Theme/Labwc Theme/
+  * environment: fix segfault
+  * Weblate commits
+  * theme: minor simplification
+
+-------------------------------------------------------------------
 Sat Jan  4 16:14:21 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Added missing BSD-3-Clause license to %doc

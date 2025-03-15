@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Mar 14 09:55:08 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.65:
+  * chore(deps): upgrade to version 0.4.13
+
+-------------------------------------------------------------------
+Fri Mar 14 06:34:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.64:
+  * chore(deps): upgrade to version 0.4.8
+
+-------------------------------------------------------------------
+Thu Mar 13 18:39:11 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.63:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.17
+
+-------------------------------------------------------------------
+Thu Mar 13 18:37:43 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.62:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.15
+
+-------------------------------------------------------------------
 Thu Mar 13 12:47:22 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.11.61:

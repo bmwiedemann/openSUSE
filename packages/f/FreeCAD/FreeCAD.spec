@@ -61,6 +61,8 @@ Patch15:        https://github.com/FreeCAD/FreeCAD/commit/3b502359353e2a74dee8a8
 Patch16:        https://github.com/FreeCAD/FreeCAD/commit/6f23f01e509348a6755ad3c465a3d7ffd758ee03.patch#/Add-property-read-write-test.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/FreeCAD/FreeCAD/commit/a0e1a31623e334d7186e687c33fad3887e91ee2e -- rebased
 Patch17:        Fix-test-failure-temporary-file-race.patch
+# PATCH-FIX-UPSTREAM FreeCad-drop-imghdr-import.patch badshah400@gmail.com -- Drop imghdr import to allow building with python 3.13; upstream commit
+Patch18:        https://github.com/FreeCAD/FreeCAD/commit/a3a0d316b13deb31c7a4b47a069702980de8f1bc.patch#/FreeCad-drop-imghdr-import.patch
 # PATCH-FIX-UPSTREAM
 Patch50:        https://github.com/Ondsel-Development/OndselSolver/commit/2e3659c4bce3e6885269e0cb3d640261b2a91108.patch#/ondselsolver_fix_gcc_75_filesystem.patch
 

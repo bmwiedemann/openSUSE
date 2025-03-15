@@ -247,4 +247,16 @@
 - Update Requires from setup.py (forwarded request 1188149 from glaubitz)</comment>
     <requestid>1188170</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7c05ff88d48c3e4404978e158d67fb93</srcmd5>
+    <version>11.0.0</version>
+    <time>1741992737</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 11.0.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Adjust upstream source name in spec file (forwarded request 1252703 from glaubitz)</comment>
+    <requestid>1252981</requestid>
+  </revision>
 </revisionlist>

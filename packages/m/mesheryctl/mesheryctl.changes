@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 13 12:58:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.49:
+  * no CLI-related changes in this release
+- update to 0.8.48:
+  * Meshery CLI
+    - Specified Kubernetes Context in Logs @Tanishq1604 (#12835)
+  * Maintenance
+    - chore(deps-dev): bump axios from 1.7.9 to 1.8.2 in
+      /provider-ui @dependabot (#13920)
+- update to 0.8.47:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Sat Mar  8 13:55:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.46:

@@ -1,7 +1,7 @@
 #
 # spec file for package libSavitar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  cmake >= 2.8.12
 BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  pugixml-devel >= 1.8
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-sip-devel < 5
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 BuildRequires:  python3-qt5-sip

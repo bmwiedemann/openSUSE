@@ -1,0 +1,17 @@
+<services>
+    <service name="obs_scm" mode="manual">
+        <param name="url">https://gitlab.freedesktop.org/mstoeckl/waypipe.git</param>
+        <param name="scm">git</param>
+        <param name="revision">v0.10.3</param>
+        <param name="versionformat">@PARENT_TAG@</param>
+        <param name="versionrewrite-pattern">v(.*)</param>
+    </service>
+    <service name="tar" mode="buildtime"/>
+    <service name="set_version" mode="manual"/>
+    <service name="cargo_vendor" mode="manual">
+        <param name="srcdir">waypipe</param>
+        <param name="compression">zst</param>
+        <param name="update">true</param>
+    </service>
+</services>
+

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 13 18:26:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Use pkgconfig() to make BuildRequires impervious to name changes.
+
+-------------------------------------------------------------------
 Tue Feb 27 11:16:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

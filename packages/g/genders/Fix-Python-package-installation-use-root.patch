@@ -17,32 +17,31 @@ diff --git a/src/extensions/python/Makefile.am b/src/extensions/python/Makefile.
 index 5d62ae6..86ba50d 100644
 --- a/src/extensions/python/Makefile.am
 +++ b/src/extensions/python/Makefile.am
-@@ -7,23 +7,21 @@
+@@ -7,8 +7,8 @@
  # Use Python's distutils to make/install everything into the right place.
  
  # DESTDIR is usually set during make install time, not configure or
 -# make time, so we work around it with the --with-extension-destdir
 -# autoconf option.
--
--PYTHON_DESTDIR = @EXTENSION_DESTDIR@
 +# make time, so we work around it with a shell command.
 +PYDEST=$$(test -z "${DESTDIR}" || echo "--root=${DESTDIR}")
  
- if WITH_PYTHON_EXTENSIONS
- all: genderssetup.py libgendersmodule.c genders.py
+ PYTHON_DESTDIR = @EXTENSION_DESTDIR@
+ 
+@@ -17,13 +17,13 @@
  	$(PYTHON) genderssetup.py build
  
  install:
--	$(PYTHON) genderssetup.py install --prefix=$(PYTHON_DESTDIR)$(prefix) --exec-prefix=$(PYTHON_DESTDIR)$(exec_prefix)
-+	$(PYTHON) genderssetup.py install --prefix=$(prefix) --exec-prefix=$(exec_prefix) $(PYDEST)
+-	$(PYTHON) genderssetup.py install --single-version-externally-managed --root=/ --prefix=$(PYTHON_DESTDIR)$(prefix) --exec-prefix=$(PYTHON_DESTDIR)$(exec_prefix)
++	$(PYTHON) genderssetup.py install --single-version-externally-managed --prefix=$(prefix) --exec-prefix=$(exec_prefix) $(PYDEST)
  
  pure_install:
--	$(PYTHON) genderssetup.py install --prefix=$(PYTHON_DESTDIR)$(prefix) --exec-prefix=$(PYTHON_DESTDIR)$(exec_prefix)
-+	$(PYTHON) genderssetup.py install --prefix=$(prefix) --exec-prefix=$(exec_prefix) $(PYDEST)
+-	$(PYTHON) genderssetup.py install --single-version-externally-managed --root=/ --prefix=$(PYTHON_DESTDIR)$(prefix) --exec-prefix=$(PYTHON_DESTDIR)$(exec_prefix)
++	$(PYTHON) genderssetup.py install --single-version-externally-managed --prefix=$(prefix) --exec-prefix=$(exec_prefix) $(PYDEST)
  
  install-data-local:
--	$(PYTHON) genderssetup.py install --prefix=$(PYTHON_DESTDIR)$(prefix) --exec-prefix=$(PYTHON_DESTDIR)$(exec_prefix)
-+	$(PYTHON) genderssetup.py install --prefix=$(prefix) --exec-prefix=$(exec_prefix) $(PYDEST)
+-	$(PYTHON) genderssetup.py install --single-version-externally-managed --root=/ --prefix=$(PYTHON_DESTDIR)$(prefix) --exec-prefix=$(PYTHON_DESTDIR)$(exec_prefix)
++	$(PYTHON) genderssetup.py install --single-version-externally-managed --prefix=$(prefix) --exec-prefix=$(exec_prefix) $(PYDEST)
  
  clean: 
  	rm -rf build

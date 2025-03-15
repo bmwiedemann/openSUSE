@@ -22,7 +22,7 @@
 %define elspec 3.0
 %define major_version 9
 %define minor_version 0
-%define micro_version 98
+%define micro_version 99
 %define packdname apache-tomcat-%{version}-src
 # FHS 2.3 compliant tree structure - http://www.pathname.com/fhs/2.3/
 %global basedir /srv/%{name}
@@ -120,12 +120,12 @@ Requires(post): libxslt-tools
 # for runuser
 Requires(post): util-linux
 Requires(pre):  shadow
-%systemd_ordering
 Recommends:     libtcnative-1-0 >= 1.1.24
 Recommends:     logrotate
 Provides:       group(tomcat)
 Provides:       user(tomcat)
 BuildArch:      noarch
+%systemd_ordering
 
 %description
 Tomcat is the servlet container that is used in the official Reference

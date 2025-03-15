@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Mar 14 14:34:26 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to version 3.16.1:
+   * remove unused capture of this in one lambda 
+     (gh#nextcloud/desktop#7985)
+   * fix setups that use basic auth (gh#nextcloud/desktop#7993)
+   * use our own Craft cache for macOS builds 
+     (gh#nextcloud/desktop#8003)
+   * Bugfix/do not warn about invalid files in not synced folders 
+     (gh#nextcloud/desktop#8001)
+   * Fix version detection by the Ubuntu/Debian build script 
+     (gh#nextcloud/desktop#8008)
+   * gui/wizard: Integrate macOS VFS (File Provider) configuration 
+     into account wizard (gh#nextcloud/desktop#8006)
+   * gui/tray: Hide resume all menu item when no local sync folders 
+     are configured (gh#nextcloud/desktop#8011)
+   * display reshares in sharing dialog (gh#nextcloud/desktop#8013)
+   * Add option to disable virtual files syncing on Windows. 
+     (gh#nextcloud/desktop#8002)
+   * Fix build when BUILD_WEBENGINE=OFF (gh#nextcloud/desktop#8015)
+   * ensure user receiving an encrypted share maintain 
+     proper state (gh#nextcloud/desktop#8017) 
+
+-------------------------------------------------------------------
 Mon Mar 10 17:06:26 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Added build requirement `libp11`

@@ -17,14 +17,14 @@
 
 
 Name:           docker-compose
-Version:        2.33.1
+Version:        2.34.0
 Release:        0
 Summary:        Define and run multi-container applications with Docker
 License:        Apache-2.0
 URL:            https://github.com/docker/compose
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) = 1.22
+BuildRequires:  golang(API) >= 1.23.6
 Requires:       docker
 
 %description

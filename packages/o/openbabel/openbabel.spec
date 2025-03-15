@@ -52,6 +52,7 @@ BuildRequires:  inchi-devel >= 1.04
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  swig >= 2.0
+BuildRequires:  python3-setuptools
 BuildRequires:  pkgconfig(RapidJSON) >= 1.1.0
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(eigen3) >= 2.91.0
@@ -208,6 +209,6 @@ biochemistry, or related areas.
 %{_libdir}/pkgconfig/openbabel-3.pc
 
 %files -n python3-openbabel
-%{python3_sitearch}*
+%{python3_sitearch}/openbabel
 
 %changelog

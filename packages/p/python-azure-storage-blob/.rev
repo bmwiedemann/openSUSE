@@ -417,4 +417,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1239769 from glaubitz)</comment>
     <requestid>1239775</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>04e4a4b4e0261d7a289eeac705e07b3b</srcmd5>
+    <version>12.25.0</version>
+    <time>1741992733</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.25.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1252691 from glaubitz)</comment>
+    <requestid>1252977</requestid>
+  </revision>
 </revisionlist>

@@ -118,4 +118,12 @@ there is no online file with xz compression, so the url is in the _service file.
     <comment></comment>
     <requestid>960385</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>ed6193c065571467ac2343d6cd1a8241</srcmd5>
+    <version>4.13.1</version>
+    <time>1741992750</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1253016</requestid>
+  </revision>
 </revisionlist>

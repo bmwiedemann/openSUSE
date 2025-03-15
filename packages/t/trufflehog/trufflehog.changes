@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 13 21:12:47 UTC 2025 - felix.niederwanger@suse.com
+
+- Update to version 3.88.17:
+  * fix(deps): update module golang.org/x/net to v0.36.0 [security] (#3975)
+  * updated anthropic analyzer to analyze admin keys (#3973)
+  * [Fix] Upgraded AWS go-sdk to V2 (only for AWS Canary Token Verification) (#3907)
+
+-------------------------------------------------------------------
 Mon Mar 10 19:19:11 UTC 2025 - felix.niederwanger@suse.com
 
 - Update to version 3.88.16:

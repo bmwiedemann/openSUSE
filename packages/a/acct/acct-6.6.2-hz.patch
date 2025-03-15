@@ -7,8 +7,8 @@ Subject: acct-hz.patch
 
 Index: lastcomm.c
 ===================================================================
---- lastcomm.c.orig
-+++ lastcomm.c
+--- a/lastcomm.c
++++ b/lastcomm.c
 @@ -71,7 +71,7 @@ int debugging_enabled = 0;	/* Nonzero me
  int strict_match_flag = 0;	/* Nonzero if each record has to match
  				   all items on the command line */
@@ -35,8 +35,8 @@ Index: lastcomm.c
            double ut = ACUTIME_2_DOUBLE (rec->ac_utime);
 Index: sa.c
 ===================================================================
---- sa.c.orig
-+++ sa.c
+--- a/sa.c
++++ b/sa.c
 @@ -191,7 +191,7 @@ int print_users = 0;
  int percentages = 0;		/* include percentages in printout */
  int user_summary_flag = 0;	/* are we printing a user summary? */

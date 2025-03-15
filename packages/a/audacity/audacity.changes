@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 13 22:11:01 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 3.7.3
+  
+  This is a hotfix release. It fixes the following bugs:
+
+  * #8426 Incorrect results when applying effects to multiple clips
+  * #8425 Truncate Silence fails to work properly when there is more
+    than one silent part
+
+-------------------------------------------------------------------
 Wed Mar 12 07:03:15 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 3.7.2

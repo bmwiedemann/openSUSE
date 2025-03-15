@@ -1,6 +1,7 @@
 #
 # spec file for package labwc-tweaks
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Shawn W. Dunn <sfalken@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +18,10 @@
 
 
 Name:           labwc-tweaks
-Version:        0~git.20241209.b4fcde7
+Version:        0~git.20250219.818c98b
 Release:        0
 Summary:        GUI Configuration app for labwc
-License:        GPL-2.0-only and BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-only
 URL:            https://github.com/labwc/labwc-tweaks
 Source:         %{name}-%{version}.tar.zst
 BuildRequires:  cmake

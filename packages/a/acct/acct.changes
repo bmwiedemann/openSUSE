@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 12 12:49:48 UTC 2025 - pgajdos@suse.com
+
+- modified patches
+  % acct-6.6.2-hz.patch (-p1)
+- added patches
+  fix [bug#1233891]
+  + acct-sprintf-buffer-overflow.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 09:57:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

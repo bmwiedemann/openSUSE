@@ -133,4 +133,12 @@
 - remove the hard coded rpath explicitly (forwarded request 1234721 from eeich)</comment>
     <requestid>1234722</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cf9755574e4749677b2b11fa73366395</srcmd5>
+    <version>1.32</version>
+    <time>1741992763</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1253099</requestid>
+  </revision>
 </revisionlist>

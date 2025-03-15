@@ -1,7 +1,7 @@
 #
 # spec file for package waypipe
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,29 @@
 
 
 Name:           waypipe
-Version:        0.9.1
+Version:        0.10.3
 Release:        0
 Summary:        Proxy for Wayland clients
-License:        MIT
+License:        GPL-3.0-or-later AND MIT
 Group:          System/X11/Servers
 URL:            https://mstoeckl.com/notes/gsoc/blog.html
-Source:         https://gitlab.freedesktop.org/mstoeckl/waypipe/-/archive/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.xz
-BuildRequires:  meson >= 0.47
-BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavutil)
+Source0:        %{name}-%{version}.tar
+Source1:        vendor.tar.zst
+BuildRequires:  cargo-packaging
+BuildRequires:  clang
+BuildRequires:  meson >= 0.56.0
+BuildRequires:  rust-bindgen >= 0.66.0
+BuildRequires:  shaderc
+BuildRequires:  pkgconfig(gbm) >= 11.0.0
+BuildRequires:  pkgconfig(libavcodec) >= 61.19.100
+BuildRequires:  pkgconfig(libavutil) >= 59.39.100
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(liblz4) >= 1.7.0
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libzstd) >= 0.4.6
 BuildRequires:  pkgconfig(scdoc) >= 1.9.4
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server)
@@ -54,7 +60,7 @@ applications, but games are often unplayable due to FPS drop from the
 delay needed to send a screenful of data over the network.
 
 %prep
-%autosetup -p1 -n waypipe-v%version
+%autosetup -p1 -a1
 
 %build
 %meson
@@ -66,7 +72,7 @@ delay needed to send a screenful of data over the network.
 %files
 %_bindir/waypipe
 %_mandir/man*/waypipe*
-%license COPYING
+%license LICENSE.*
 %doc README*
 
 %changelog

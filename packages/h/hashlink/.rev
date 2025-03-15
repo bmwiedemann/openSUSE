@@ -80,4 +80,13 @@ final releases.
     <comment></comment>
     <requestid>1198575</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6448e4d4ecaf37f80bc8be9bc87c9f96</srcmd5>
+    <version>1.14</version>
+    <time>1741992767</time>
+    <user>anag+factory</user>
+    <comment>- Add depenedncy on pkgconfig(glu)
+</comment>
+    <requestid>1253132</requestid>
+  </revision>
 </revisionlist>

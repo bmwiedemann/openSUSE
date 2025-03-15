@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Mar 14 10:35:56 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.3.0
+  * All Websites Dashboard
+   - #22312: Improve layout of the All Websites page.
+  * Reporting
+   - #22849: Increase width of the Segments drop-down list.
+   - #22827: Report tables now include action icons (e.g., change visualisation, export, search)
+     below the report title and not only at the end of the report.
+   - #23041: Super Users can now share user-specific segments without restricting the original
+     owner’s ability to edit them. This update also improves the SegmentEditor API with enhanced
+     type hinting and automatic sanitisation.
+  * Privacy and Security
+   - #23017: When using the GDPR Tools to extract data, if a site with visitor logs or visitor
+     profiles disabled is selected, the data is not available.
+   - #23068: The 2FA input field now uses autocomplete="one-time-code" and a new ID to prevent
+     password managers from misidentifying it as a login field.
+  * Performance and Archiving
+   - #22989: Allow invalidation of All Visits only and improvements to parts of the
+     core:invalidate-report-data command.
+   - #22981: Store Hostname of archiving server in Invalidation Records.
+   - #23021: Adds a new command to allow administrators to reset stuck invalidations that are
+     incorrectly marked as “in progress”.
+   - #23035: Automatically remove duplicate invalidations upon reset.
+   - #22979: Limit the processing time of archiving jobs.
+   - #22394: Prevent redundant double archiving of overlapping periods in multi-server setups.
+  * Matomo Tag Manager (MTM)
+   - #943: Tag Manager now supports additional tracking capabilities previously
+     only available via direct JavaScript (_paq).
+   - #953: Added a new {{FormElement}} to capture and interact with specific form elements.
+   - #967: The Google Analytics 4 (GA4) tag has been replaced with the Google tag (gtag.js),
+     ensuring compatibility with the latest tracking implementation.
+   - #972: Updated reference check to include variables referencing variables.
+   - #958: Fixed issue with missing array key at upgrade.
+ * Tickets closed in Matomo 5.2.2
+   - #22916 Update the code to ensure the API.getBulkRequest check is implemented correctly and functions as intended.
+   - #22943 Validate the Matomo URL when managing user opt-outs (OptOutManager).
+   - #22944 Modify log message to encode special control characters to display as plain text.
+   - #22966 Update user permissions to be handled sequentially and not simultaneously to avoid conflicts and ensure data integrity.
+
+-------------------------------------------------------------------
 Fri Jan 24 12:07:53 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.2.2

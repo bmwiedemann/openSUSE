@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 14 13:22:08 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- tuned-ppd: add missing requirement on `asyncore` python library
+
+-------------------------------------------------------------------
 Tue Feb 04 10:43:48 UTC 2025 - trenn@suse.de
 
 - Add LIBEXECDIR=%{_prefix}/lib to adopt libexecdir and remove

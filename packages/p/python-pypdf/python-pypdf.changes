@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 14 10:03:23 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 5.3.1:
+i * Use the correct name StandardEncoding for the predefined cmap (#3156) by @stefan6419846
+  * Handle inline images containing EI sequences (#3152) by @stefan6419846
+  * Fix check box value which should be name object (#3124) by @stefan6419846
+  * Fix stream position on inline image fallback extraction (#3120) by @stefan6419846
+  * Fix object count for incremental writer (#3117) by @m32
+ 
+
+-------------------------------------------------------------------
 Wed Sep 25 18:28:54 UTC 2024 - Caroline Sena <caroline.sena@suse.com>
 
 - Update to 4.3.1:

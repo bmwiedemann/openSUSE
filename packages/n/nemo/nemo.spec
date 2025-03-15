@@ -41,9 +41,6 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(gtk+-wayland-3.0) >= 3.10.0
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:  pkgconfig(gtksourceview-2.0)
-BuildRequires:  pkgconfig(gtksourceview-3.0)
-BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libgsf-1)
 BuildRequires:  pkgconfig(libnotify)
@@ -142,6 +139,7 @@ mkdir -p %{buildroot}%{_libdir}/nemo/extensions-3.0/
 %{_datadir}/dbus-1/services/nemo.service
 %{_datadir}/dbus-1/services/nemo.FileManager1.service
 %{_datadir}/glib-2.0/schemas/org.nemo.gschema.xml
+%dir %{_datadir}/gtksourceview-{2.0,3.0,4}
 %{_datadir}/gtksourceview-{2.0,3.0,4}/*
 %{_datadir}/polkit-1/actions/org.nemo.root.policy
 

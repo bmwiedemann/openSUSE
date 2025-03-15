@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-identity
-Version:        1.20.0
+Version:        1.21.0
 Release:        0
 Summary:        Azure Identity client library for Python
 License:        MIT

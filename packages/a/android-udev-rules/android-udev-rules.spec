@@ -1,7 +1,7 @@
 #
 # spec file for package android-udev-rules
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           android-udev-rules
-Version:        20241109
+Version:        20250314
 Release:        0
 Summary:        Udev rules for Android Debug Bridge
 License:        GPL-3.0-or-later

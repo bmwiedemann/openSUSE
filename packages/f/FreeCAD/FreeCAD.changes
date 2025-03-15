@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 11 15:13:18 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add FreeCad-drop-imghdr-import.patch: Drop imghdr import to
+  allow building with python 3.13; upstream commit
+  (gh#FreeCAD/FreeCAD#18081).
+
+-------------------------------------------------------------------
 Sat Jan 18 07:29:36 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update smesh-Fix-build-failure-with-vtk-9_4.patch to final

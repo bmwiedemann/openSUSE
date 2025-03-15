@@ -1,0 +1,11 @@
+<package name="pwtool" project="openSUSE:Factory">
+  <title>Password generation tool</title>
+  <description>Generate passwords from random characters or words and optionally show their
+cryptographic hash.
+
+The default generated password set is copy/paste friendly without extended
+characters that would break the default copy selection you get when
+double-clicking a word. They also are don't break quotation strings (quote
+marks, double quotes or backticks).</description>
+  <url>https://www.usenix.org.uk/content/pwtool.html</url>
+</package>

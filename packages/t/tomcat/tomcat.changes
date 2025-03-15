@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Wed Mar 12 16:21:08 UTC 2025 - Ricardo Mestre <ricardo.mestre@suse.com>
+
+- Update to Tomcat 9.0.99
+  * Fixed CVE:
+    + CVE-2025-24813: potential RCE and/or information disclosure/corruption with
+      partial PUT (bsc#1239302)    
+  * Catalina
+    + Update: Add tableName configuration on the DataSourcePropertyStore that
+      may be used by the WebDAV Servlet. (remm)
+    + Update: Improve HTTP If headers processing according to RFC 9110. Based on
+      pull request #796 by Chenjp. (remm/markt)
+    + Update: Allow readOnly attribute configuration on the Resources element
+      and allow configure the readOnly attribute value of the main resources.
+      The attribute value will also be used by the default and WebDAV Servlets.
+      (remm)
+    + Fix: 69285: Optimise the creation of the parameter map for included
+      requests. Based on sample code and test cases provided by John
+      Engebretson. (markt)
+    + Fix: 69527: Avoid rare cases where a cached resource could be set with 0
+      content length, or could be evicted immediately. (remm)
+    + Fix: Fix possible edge cases (such as HTTP/1.0) with trying to detect
+      requests without body for WebDAV LOCK and PROPFIND. (remm)
+    + Fix: 69528: Add multi-release JAR support for the bloom
+      archiveIndexStrategy of the Resources. (remm)
+    + Fix: Improve checks for WEB-INF and META-INF in the WebDAV servlet. Based
+      on a patch submitted by Chenjp. (remm)
+    + Add: Add a check to ensure that, if one or more web applications are
+      potentially vulnerable to CVE-2024-56337, the JVM has been configured to
+      protect against the vulnerability and to configure the JVM correctly if
+      not. Where one or more web applications are potentially vulnerable to
+      CVE-2004-56337 and the JVM cannot be correctly configured or it cannot be
+      confirmed that the JVM has been correctly configured, prevent the impacted
+      web applications from starting. (markt)
+    + Fix: Remove unused session to client map from CrawlerSessionManagerValve.
+      Submitted by Brian Matzon. (remm)
+    + Fix: When using the WebDAV servlet with serveSubpathOnly set to true,
+      ensure that the destination for any requested WebDAV operation is also
+      restricted to the sub-path. (markt)
+    + Fix: Generate an appropriate Allow HTTP header when the Default servlet
+      returns a 405 (method not allowed) response in response to a DELETE
+      request because the target resource cannot be deleted. Pull request #802
+      provided by Chenjp. (markt)
+    + Code: Refactor creation of RequestDispatcher instances so that the
+      processing of the provided path is consistent with normal request
+      processing. (markt)
+    + Add: Add encodedReverseSolidusHandling and encodedSolidusHandling
+      attributes to Context to provide control over the handling of the path
+      used to created a RequestDispatcher. (markt)
+    + Fix: Handle a potential NullPointerException after an IOException occurs
+      on a non-container thread during asynchronous processing. (markt)
+    + Fix: Enhance lifecycle of temporary files used by partial PUT. (remm)
+  * Coyote
+    + Fix: Don't log warnings for registered HTTP/2 settings that Tomcat does
+      not support. These settings are now silently ignored. (markt)
+    + Fix: Avoid a rare NullPointerException when recycling the
+      Http11InputBuffer. (markt)
+    + Fix: Lower the log level to debug for logging an invalid socket channel
+      when processing poller events for the NIO Connector as this may occur in
+      normal usage. (markt)
+    + Code: Clean-up references to the HTTP/2 stream once request processing has
+      completed to aid GC and reduce the size of the HTTP/2 recycled request and
+      response cache. (markt)
+    + Add: Add a new Connector configuration attribute,
+      encodedReverseSolidusHandling, to control how %5c sequences in URLs are
+      handled. The default behaviour is unchanged (decode) keeping in mind that
+      the allowBackslash attribute determines how the decoded URI is processed.
+      (markt)
+    + Fix: 69545: Improve CRLF skipping for the available method of the
+      ChunkedInputFilter. (remm)
+    + Fix: Improve the performance of repeated calls to getHeader(). Pull
+      request #813 provided by Adwait Kumar Singh. (markt)
+    + Fix: 69559: Ensure that the Java 24 warning regarding the use of
+      sun.misc.Unsafe::invokeCleaner is only reported by the JRE when the code
+      will be used. (markt)
+  * Jasper
+    + Fix: 69508: Correct a regression in the fix for 69382 that broke JSP
+      include actions if both the page attribute and the body contained
+      parameters. Pull request #803 provided by Chenjp. (markt)
+    + Fix: 69521: Update the EL Parser to allow the full range of valid
+      characters in an EL identifier as defined by the Java Language
+      Specification. (markt)
+    + Fix: 69532: Optimise the creation of ExpressionFactory instances. Patch
+      provided by John Engebretson. (markt)
+  * Web applications
+    + Add: Documentation. Expand the description of the security implications of
+      setting mapperContextRootRedirectEnabled and/or
+      mapperDirectoryRedirectEnabled to true. (markt)
+    + Fix: Documentation. Better document the default for the truststoreProvider
+      attribute of a SSLHostConfig element. (markt)
+  * Other
+    + Update: Update to Commons Daemon 1.4.1. (markt)
+    + Update: Update the internal fork of Commons Pool to 2.12.1. (markt)
+    + Update: Update Byte Buddy to 1.16.1. (markt)
+    + Update: Update UnboundID to 7.0.2. (markt)
+    + Update: Update Checkstyle to 10.21.2. (markt)
+    + Update: Update SpotBugs to 4.9.0. (markt)
+    + Add: Improvements to French translations. (remm)
+    + Add: Improvements to Chinese translations by leeyazhou. (markt)
+    + Add: Improvements to Japanese translations by tak7iji. (markt)
+  
+-------------------------------------------------------------------
 Fri Jan  3 16:03:11 UTC 2025 - Ricardo Mestre <ricardo.mestre@suse.com>
 
 - Update to Tomcat 9.0.98

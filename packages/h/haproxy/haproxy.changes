@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Mar 13 23:12:51 UTC 2025 - mrueckert@suse.de
+
+- Update to version 3.1.5+git0.076df0292:
+  * [RELEASE] Released version 3.1.5
+  * BUG/MEDIUM: spoe/mux-spop: Introduce an NOOP action to deal with empty ACK
+  * BUG/MEDIUM: applet: Don't handle EOI/EOS/ERROR is applet is waiting for room
+  * [RELEASE] Released version 3.1.4
+  * DOC: option redispatch should mention persist options
+  * BUG/MINOR: stats-json: Define JSON_INT_MAX as a signed integer
+  * BUG/MINOR: flt-trace: Support only one name option
+  * BUG/MINOR: auth: Fix a leak on error path when parsing user's groups
+  * BUG/MINOR: config/userlist: Support one 'users' option for 'group' directive
+  * BUG/MINOR: cli: Fix a possible infinite loop in _getsocks()
+  * BUG/MINOR: cli: Fix memory leak on error for _getsocks command
+  * BUG/MINOR: cli: Don't set SE flags from the cli applet
+  * MINOR: mux-spop: Set SPOP_CF_ERROR flag on connection error only
+  * MINOR: mux-spop: Report EOI on the SE when a ACK is received for a stream
+  * MINOR: flt-spoe: Report end of input immediately after applet init
+  * BUG/MEDIUM: flt-spoe: Properly handle end of stream from the SPOE applet
+  * BUG/MEDIUM: applet: Don't pretend to have more data to handle EOI/EOS/ERROR
+  * BUG/MEDIUM: flt-spoe: Set/test applet flags instead of SE flags from I/O handler
+  * BUG/MINOR: http-check: Don't pretend a C-L heeader is set before adding it
+  * BUG/MINOR: tcp-rules: Don't forward close during tcp-response content rules eval
+  * BUG/MEDIUM: mux-fcgi: Properly handle read0 on partial records
+  * DOC: htx: clarify <mark> parameter for htx_xfer_blks()
+  * BUG/MEDIUM: htx: wrong count computation in htx_xfer_blks()
+  * MEDIUM: epoll: skip reports of stale file descriptors
+  * DEBUG: epoll: store and compare the FD's generation count with reported event
+  * MINOR: fd: add a generation number to file descriptors
+  * DEBUG: fd: add a counter of takeovers of an FD since it was last opened
+  * BUG/MEDIUM: chunk: make sure to flush the trash pool before resizing
+  * MINOR: epoll: permit to mask certain specific events
+  * MINOR: quic: adapt credit based pacing to BBR
+  * MINOR: quic: remove unused pacing burst in bind_conf/quic_cc_path
+  * MEDIUM: quic: use dynamic credit for pacing
+  * MEDIUM: mux-quic: reduce pacing CPU usage with passive wait
+  * MEDIUM: quic: implement credit based pacing
+  * MINOR: mux-quic: increment pacing retry counter on expired
+  * MINOR: quic: rename pacing_rate cb to pacing_inter
+  * BUG/MINOR: stktable: invalid use of stkctr_set_entry() with mixed table types
+  * BUG/MINOR: mux-h2: Properly handle full or truncated HTX messages on shut
+  * REGTESTS: Fix truncated.vtc to send 0-CRLF
+  * BUG/MINOR: mux-quic: prevent crash after MUX init failure
+  * BUG/MINOR: quic: prevent crash on conn access after MUX init failure
+  * BUG/MINOR: fcgi: Don't set the status to 302 if it is already set
+  * BUG/MEDIUM: filters: Handle filters registered on data with no payload callback
+  * BUG/MINOR: cli: Wait for the last ACK when FDs are xferred from the old worker
+  * BUG/MEDIUM: cli: Be sure to drop all input data in END state
+  * BUG/MINOR: ssl/cli: "show ssl crt-list" lacks sigals
+  * BUG/MINOR: ssl/cli: "show ssl crt-list" lacks client-sigals
+  * BUG/MEDIUM: fd: mark FD transferred to another process as FD_CLONED
+  * BUG/MINOR: mworker: post_section_parser for the last section in discovery
+  * BUG/MINOR: mworker: section ignored in discovery after a post_section_parser
+  * BUG/MINOR: quic: fix CRYPTO payload size calcul for encoding
+  * BUG/MINOR: quic: reserve length field for long header encoding
+  * BUG/MEDIUM: debug: close a possible race between thread dump and panic()
+  * BUG/MEDIUM: ssl: chosing correct certificate using RSA-PSS with TLSv1.3
+
+-------------------------------------------------------------------
+Thu Mar 13 23:11:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparmor: fix debug output when running in a vm (/sys paths
+  differ from hardware)
+
+-------------------------------------------------------------------
 Wed Jan 29 15:41:08 UTC 2025 - mrueckert@suse.de
 
 - Update to version 3.1.3+git0.929bedf83:

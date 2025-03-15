@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Mar 14 12:37:45 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.37
+  * UI: Python extension registration has more error checking
+    and is more robust to syntax errors during
+    register/unregister functions.
+  * UI: Try to preserve selected pipeline stage when switching
+    between mesh and normal draws.
+  * D3D12: Bitfield declarations are reflected from DXIL
+    metadata for structure types.
+  * D3D12: Add handling of undocumented chunk in DXBC containers
+    that can include source code files.
+  * D3D12: Improve detection of code scopes during DXIL shader
+    debugging.
+  * D3D12: Improve handling of debug info mapping source
+    variables to information in DXIL.
+  * D3D12: Do limited parse of DXBC container to determine state
+    object entry points.
+  * D3D12: Improve display of root buffer structured buffers.
+  * Vulkan: Improved capture memory overhead for cases of many
+    images aliased in one location with only a small number
+    used.
+  * Vulkan: Optimise repeated name-setting of objects to not
+    record every name.
+  * Vulkan: Improve speed of processing printf messages for
+    large shaders.
+  * Vulkan: Ignore certain WSI-only extensions for replay
+    compatibility as they are unused.
+  * Vulkan: Preserve selected stage where possible when
+    switching between mesh-shader and normal draws.
+  * Vulkan: Implement capture and replay support for a number of
+    extensions (not including shader debugging):
+  * VK_KHR_shader_quad_control
+  * VK_KHR_shader_maximal_reconvergence
+  * VK_KHR_shader_expect_assume
+  * VK_KHR_shader_float_controls2
+  * VK_KHR_shader_subgroup_rotate
+  * VK_KHR_ray_tracing_position_fetch
+  * VK_KHR_ray_tracing_maintenance1
+ 
+
+-------------------------------------------------------------------
 Mon Feb  3 13:46:11 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Set BuildArch to noarch for the devel package

@@ -1,7 +1,7 @@
 #
 # spec file for package google-guice
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -215,7 +215,7 @@ install -dm 0755 %{buildroot}%{_mavenpomdir}/%{short_name}
 %add_maven_depmap %{short_name}/extensions-parent.pom -a org.sonatype.sisu.inject:extensions-parent -f extensions
 
 %{mvn_install_pom} core/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/%{name}.pom
-%add_maven_depmap %{short_name}/%{name}.pom %{short_name}/%{name}.jar -a "org.sonatype.sisu:sisu-guice,com.google.inject:guice::no_aop:,org.sonatype.sisu:sisu-guice::no_aop:"
+%add_maven_depmap %{short_name}/%{name}.pom %{short_name}/%{name}.jar -a "org.sonatype.sisu:sisu-guice,com.google.inject:guice::no_aop:,com.google.inject:guice::classes:,org.sonatype.sisu:sisu-guice::no_aop:"
 
 %{mvn_install_pom} extensions/jmx/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}/guice-jmx.pom
 %add_maven_depmap %{short_name}/guice-jmx.pom %{short_name}/guice-jmx.jar -a org.sonatype.sisu.inject:guice-jmx -f jmx

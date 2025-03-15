@@ -1,7 +1,7 @@
 #
 # spec file for package marisa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           marisa
 Version:        0.2.6
 Release:        0
 Summary:        Matching Algorithm with Recursively Implemented StorAge
-License:        LGPL-2.1-or-later OR BSD-2-Clause
+License:        BSD-2-Clause OR LGPL-2.1-or-later
 Group:          System/I18n/Japanese
 URL:            https://github.com/s-yata/marisa-trie/
 Source:         https://github.com/s-yata/marisa-trie/archive/v%{version}/%{name}-trie-%{version}.tar.gz
@@ -30,6 +30,7 @@ BuildRequires:  libtool
 BuildRequires:  perl
 BuildRequires:  pkg-config
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  ruby-devel
 BuildRequires:  swig
 Provides:       marisa-trie = %{version}

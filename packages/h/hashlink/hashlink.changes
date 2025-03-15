@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 14 15:26:21 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add depenedncy on pkgconfig(glu)
+
+-------------------------------------------------------------------
 Tue Sep  3 18:08:48 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add fix_incompatible-pointer-types.patch to fix build with more recent version of gcc

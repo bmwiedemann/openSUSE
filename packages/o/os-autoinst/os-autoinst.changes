@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 13 21:16:25 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1741888574.cd102e5:
+  * Enable is_shutdown to be used after "power('off')" on qemu
+  * Retry asset sync in svirt backend after timeouts
+  * testapi: allow keeping mouse in place after clicking
+  * script: Mark uncoverable package import as such
+  * perltidy: Use new --pack-operator-types option
+  * perltidy: Update to 20250214.0.0
+  * dist: Bump version to semver-compliant 5
+
+-------------------------------------------------------------------
 Thu Mar 13 17:18:06 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1741812300.276dce1:

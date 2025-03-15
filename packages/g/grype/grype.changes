@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 14 06:27:30 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.89.1:
+  * fix: populate vulnerability.Metadata.DataSource with first
+    reference URL (#2523)
+  * fix(java): ensure fatal error from maven search bubbles up
+    (#2518)
+  * fix: exclude self from related vulnerability list (#2515)
+
+-------------------------------------------------------------------
 Fri Mar 07 06:41:48 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.89.0:

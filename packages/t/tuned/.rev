@@ -419,4 +419,12 @@ openSUSE:Factory
     <comment></comment>
     <requestid>1244535</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>8336477cada414b7f5686681fc208125</srcmd5>
+    <version>2.25.1.0+git.889387b</version>
+    <time>1741992766</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1253111</requestid>
+  </revision>
 </revisionlist>

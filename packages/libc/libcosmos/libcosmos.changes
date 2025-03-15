@@ -1,7 +1,72 @@
 -------------------------------------------------------------------
+Fri Mar 14 09:17:46 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- drop no longer needed provides/obsoletes
+
+-------------------------------------------------------------------
+Wed Mar 12 10:27:14 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to version 0.4.0:
+
+  This release contains major API additions and harmonization of the API
+  modeling. The latter causes breaking changes.
+
+  Bugfixes
+
+  - fix bad value for SignalNr::TERM_STOP.
+  - fix inconsistent state in SubProc when child is killed by a signal.
+  - fix bugs in the error handling of the pthread API.
+
+  Filesystem
+
+  - added support for access() and faccessat().
+  - added support for flock() API.
+  - added file locking operations in FileDescriptor.
+  - added for asynchronous signal-driven I/O in FileDescriptor.
+  - added support for file lease support in FileDescriptor.
+  - renamed TYPE_MASK and MODE_MASK enum values to avoid preprocessor macro name clashes on some GCC toolchains (e.g. Ubuntu arm cross toolchain).
+
+  Signals
+
+  - support for sending thread-directed signals.
+  - add pause() wrapper.
+  - add sigqueue() variant for sending signals.
+  - support sigsuspend().
+  - full support for asynchronous signal handling via sigaction()
+    harmonize process state information by fully wrapping siginfo_t. This type
+    is now used in cosmos::proc::wait() as well in asynchronous signal handling
+    and cosmos::proc::wait_info() and some other locations. This replaces
+    WaitRes, which was only a partial special-purpose wrapper over siginfo_t.
+  - added wrapper for sigaltstack().
+
+  Threads
+
+  - use dedicated ThreadID that is distinct from ProcessID.
+
+  ptrace() API
+
+  - basic wrapper around the ptrace() ioctl like call
+    more advanced type safe class Tracee which covers the individual ptrace requests in a type safe way
+
+  Time
+
+  - introduce IntervalTime for relative time specifications. Previously
+    std::chrono::milliseconds have been used in some APIs where actually
+    struct timespec is used on system level. To allow full use of the TimeSpec
+    precision and also clearly mark the type for relative time interval, use
+    another dedicated TimeSpec based type called IntervalTime.
+
+  Other
+
+  - provide an explicit cosmos::no_init tag for opt-in to non-initialized
+    objects like TimeSpec. This avoids surprises but still allows to have
+    performance benefits if necesary by using the no_init ctor variants.
+    some harmonization in method names, cleanup and documentation fixes.
+
+-------------------------------------------------------------------
 Tue Aug  6 12:53:38 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 
-- Setup obsoletes/provides to cover the renaming of the library SONAME. 
+- Setup obsoletes/provides to cover the renaming of the library SONAME.
 
 -------------------------------------------------------------------
 Tue Aug  6 11:45:15 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
@@ -12,7 +77,7 @@ Tue Aug  6 11:45:15 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 Wed Jul 24 08:31:12 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - change library package name from libcosmos-0_2_0 to libcosmos-0, because it
-  needs to follow the library's SONAME which is libcosmos.so.0. 
+  needs to follow the library's SONAME which is libcosmos.so.0.
 
 -------------------------------------------------------------------
 Wed Jul 24 08:03:14 UTC 2024 - matthias.gerstner@suse.com

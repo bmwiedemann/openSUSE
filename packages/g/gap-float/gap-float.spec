@@ -1,7 +1,7 @@
 #
 # spec file for package gap-float
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-float
-Version:        1.0.5
+Version:        1.0.7
 Release:        0
 Summary:        GAP: Integration of mpfr, mpfi, mpc, fplll and cxsc in GAP
 License:        GPL-3.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  mpc-devel
 BuildRequires:  mpfi-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  pkgconfig(fplll) >= 5
-Requires:       gap-core >= 4.11
+Requires:       gap-core >= 4.12
 Requires:       gap-gapdoc >= 1.0
 
 %description

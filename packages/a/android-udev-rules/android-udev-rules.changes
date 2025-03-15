@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 14 09:41:15 UTC 2025 - munix9@googlemail.com
+
+- Update to version 20250314
+  Features
+  * Add Fibocom vendor and FG180 modem product (#336)
+  * Add Zebra TC78
+  * Add OnePlus 7T rndis+adb idProduct (#340)
+  * Add Sony Xperia Play (#341)
+
+  Bug Fixes
+  * Typo for HTC "Tatoo" -> Tattoo (#338)
+
+-------------------------------------------------------------------
 Sun Nov 10 12:44:31 UTC 2024 - munix9@googlemail.com
 
 - Update to version 20241109

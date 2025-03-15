@@ -17,7 +17,7 @@
 
 
 Name:           dxvk
-Version:        2.5.3
+Version:        2.6
 Release:        0
 Summary:        Vulkan-based Direct3D 8/9/10/11 implementation for Linux / Wine
 License:        zlib-acknowledgement

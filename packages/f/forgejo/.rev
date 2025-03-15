@@ -422,4 +422,12 @@
   again (forwarded request 1252069 from darix)</comment>
     <requestid>1252070</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>f7bce89d265c109c9609881065e3a7c3</srcmd5>
+    <version>10.0.1</version>
+    <time>1741992713</time>
+    <user>anag+factory</user>
+    <comment>- apparmor: fix wiki editing (forwarded request 1252920 from darix)</comment>
+    <requestid>1252969</requestid>
+  </revision>
 </revisionlist>

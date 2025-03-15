@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 13 23:03:14 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparmor: fix wiki editing
+
+-------------------------------------------------------------------
 Tue Mar 11 13:38:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - use --legacy-peer-deps to make the node modules handling work

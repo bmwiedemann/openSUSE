@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 21 10:30:48 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.49.1.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.49.1 (02d5463)
+  * Build
+    ~ deps
+      + bump org.graalvm.buildtools:native-maven-plugin (9cda17f)
+    ~ deps-dev
+      + bump com.tngtech.archunit:archunit-junit5 (bdcf7ee)
+
+-------------------------------------------------------------------
 Fri Feb  7 02:31:31 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.49.0.0

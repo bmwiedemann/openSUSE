@@ -16,7 +16,7 @@
 #
 
 Name:           icinga2
-Version:        2.14.4
+Version:        2.14.5
 Release:        0
 Summary:        Network monitoring application
 License:        GPL-2.0-or-later
@@ -28,6 +28,8 @@ Source1:        icinga2-rpmlintrc
 Patch0:         icinga2-graphite.patch
 # PATCH-FIX-OPENSUSE lrupp -- fixing the syntax file for vim >= 8.x
 Patch1:         icinga2-vim_syntax.patch
+# PATCH-FIX-UPSTREAM https://github.com/Icinga/icinga2/pull/10278
+Patch2:         icinga-pr10278.patch
 PreReq:         permissions
 BuildRequires:  nagios-rpm-macros
 Requires:       icinga2-bin = %{version}
@@ -156,7 +158,8 @@ CMAKE_OPTS="-DCMAKE_INSTALL_PREFIX=%{_prefix} \
             -DICINGA2_SYSCONFIGFILE=%{_sysconfdir}/sysconfig/icinga2 \
             -DICINGA2_USER=%{icinga_user} \
             -DICINGA2_GROUP=%{icinga_group} \
-            -DICINGA2_COMMAND_GROUP=%{icinga_command_group}"
+            -DICINGA2_COMMAND_GROUP=%{icinga_command_group} \
+            -DBASHCOMPLETION_DIR=%{_datadir}/bash-completion/completions"
 
 CMAKE_OPTS="$CMAKE_OPTS -DICINGA2_UNITY_BUILD=ON"
 
@@ -180,19 +183,19 @@ cmake $CMAKE_OPTS -DCMAKE_C_FLAGS:STRING="%{optflags} " -DCMAKE_CXX_FLAGS:STRING
 
 %install
 make install \
-DESTDIR="%{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}"
+DESTDIR="$RPM_BUILD_ROOT"
 install -D -m 0644 etc/initsystem/icinga2.service.limits.conf %{buildroot}/%{_unitdir}/%{name}.service.d/limits.conf
 
-rm -f %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/%{_sysconfdir}/icinga2/features-enabled/*.conf
+rm -f $RPM_BUILD_ROOT%{_sysconfdir}/icinga2/features-enabled/*.conf
 
-ln -sf %{_sbindir}/service %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/usr/sbin/rcicinga2
-mkdir -p "%{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/%{_fillupdir}"
-mv "%{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}%{_sysconfdir}/sysconfig/icinga2" "%{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/%{_fillupdir}/sysconfig.icinga2"
+ln -sf %{_sbindir}/service $RPM_BUILD_ROOT/usr/sbin/rcicinga2
+mkdir -p "$RPM_BUILD_ROOT%{_fillupdir}"
+mv "$RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/icinga2" "$RPM_BUILD_ROOT%{_fillupdir}/sysconfig.icinga2"
 
-install -D -m 0644 tools/syntax/vim/syntax/icinga2.vim %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/usr/share/vim/site/syntax/icinga2.vim
-install -D -m 0644 tools/syntax/vim/ftdetect/icinga2.vim %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/usr/share/vim/site/ftdetect/icinga2.vim
+install -D -m 0644 tools/syntax/vim/syntax/icinga2.vim $RPM_BUILD_ROOT/usr/share/vim/site/syntax/icinga2.vim
+install -D -m 0644 tools/syntax/vim/ftdetect/icinga2.vim $RPM_BUILD_ROOT/usr/share/vim/site/ftdetect/icinga2.vim
 
-install -D -m 0644 tools/syntax/nano/icinga2.nanorc %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/usr/share/nano/icinga2.nanorc
+install -D -m 0644 tools/syntax/nano/icinga2.nanorc $RPM_BUILD_ROOT/usr/share/nano/icinga2.nanorc
 
 %check
 export CTEST_OUTPUT_ON_FAILURE=1
@@ -309,7 +312,7 @@ exit 0
 %config(noreplace) %attr(0640,%{icinga_user},%{icinga_group}) %{_sysconfdir}/icinga2/conf.d/*.conf
 %config(noreplace) %attr(0640,%{icinga_user},%{icinga_group}) %{_sysconfdir}/icinga2/features-available/*.conf
 %config(noreplace) %attr(0640,%{icinga_user},%{icinga_group}) %{_sysconfdir}/icinga2/zones.d/*
-%config(noreplace) %{_sysconfdir}/icinga2/scripts/*
+%config(noreplace) %attr(-,%{icinga_user},%{icinga_group}) %{_sysconfdir}/icinga2/scripts/*
 
 %attr(0750,%{icinga_user},%{icinga_command_group}) %{_localstatedir}/cache/icinga2
 %attr(0750,%{icinga_user},%{icinga_command_group}) %dir %{_localstatedir}/log/icinga2
@@ -337,9 +340,9 @@ exit 0
 %files common
 %license COPYING
 %doc README.md NEWS AUTHORS CHANGELOG.md tools/syntax
-%{_sysconfdir}/bash_completion.d/icinga2
+%{_datadir}/bash-completion/completions/icinga2
 %attr(0750,%{icinga_user},%{icinga_group}) %dir %{_datadir}/icinga2/include
-%{_datadir}/icinga2/include/*
+%attr(-,%{icinga_user},%{icinga_group}) %{_datadir}/icinga2/include/*
 
 %files doc
 %{_datadir}/doc/icinga2
