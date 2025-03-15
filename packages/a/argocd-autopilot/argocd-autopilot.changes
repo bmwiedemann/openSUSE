@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 14 18:59:12 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.19:
+  * chore: update version to v0.4.19 and release notes
+  * feat: add cluster-only uninstall option and resource deletion
+    handling (#634)
+  * Fix-vulns (#635)
+  * release-v0.4.18 (#556)
+
+-------------------------------------------------------------------
 Wed Nov 27 09:44:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.4.18:

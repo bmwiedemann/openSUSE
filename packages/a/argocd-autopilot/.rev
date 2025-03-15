@@ -7,4 +7,12 @@
     <comment>new package argocd-autopilot: opinionated tool to install ArgoCD</comment>
     <requestid>1226846</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b66b281303cf968354c69f5e47d31ada</srcmd5>
+    <version>0.4.19</version>
+    <time>1742051786</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1253173</requestid>
+  </revision>
 </revisionlist>
