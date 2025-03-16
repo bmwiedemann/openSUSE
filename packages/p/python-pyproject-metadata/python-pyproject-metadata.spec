@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproject-metadata
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyproject-metadata
-Version:        0.7.1
+Version:        0.9.1
 Release:        0
 Summary:        PEP 621 metadata parsing
 License:        MIT
 URL:            https://github.com/FFY00/python-pyproject-metadata
-Source:         https://github.com/FFY00/python-pyproject-metadata/archive/refs/tags/%{version}.tar.gz#/python-pyproject-metadata-%{version}.tar.gz
+Source:         https://github.com/FFY00/python-pyproject-metadata/archive/refs/tags/%{version}.tar.gz#/pyproject-metadata-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module packaging >= 19}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 42}
@@ -52,7 +53,7 @@ parsed), it will validate this input and generate a PEP 643-compliant metadata
 file (e.g. `PKG-INFO`).
 
 %prep
-%setup -q -n python-pyproject-metadata-%{version}
+%autosetup -p1 -n pyproject-metadata-%{version}
 
 %build
 %pyproject_wheel

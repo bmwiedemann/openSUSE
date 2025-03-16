@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 14 21:26:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(gtksourceview-3.0) with
+  pkgconfig(gtksourceview-4) BuildRequires: Update to a more
+  current gtksourceview.
+
+-------------------------------------------------------------------
 Sat Jun 15 18:40:59 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2024b:

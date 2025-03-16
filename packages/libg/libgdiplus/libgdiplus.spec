@@ -1,7 +1,7 @@
 #
 # spec file for package libgdiplus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define soname 0
 Name:           libgdiplus
-Version:        6.0.5
+Version:        6.2
 Release:        0
 Summary:        Open Source Implementation of the GDI+ API
 License:        (LGPL-2.1-or-later OR MPL-1.1) AND MIT
 Group:          Development/Libraries/Mono
-URL:            https://github.com/mono/libgdiplus
-Source:         http://download.mono-project.com/sources/%{name}/%{name}-%{version}.tar.gz
+URL:            https://www.winehq.org
+Source:         https://dl.winehq.org/mono/sources/%{name}/%{name}-%{version}.tar.gz
+BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
@@ -73,16 +74,13 @@ autoreconf -fiv
 %make_install
 rm %{buildroot}%{_libdir}/%{name}.la
 
-#%check
-#%make_build check
-
 %post -n libgdiplus%{soname} -p /sbin/ldconfig
 %postun -n libgdiplus%{soname} -p /sbin/ldconfig
 
 %files -n libgdiplus%{soname}
 %{_libdir}/libgdiplus.so.*
 %license COPYING
-%doc AUTHORS ChangeLog* NEWS README.md
+%doc AUTHORS README.md
 
 %files devel
 %{_libdir}/libgdiplus.so

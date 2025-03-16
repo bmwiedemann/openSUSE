@@ -18,26 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-breathe
-Version:        4.35.0
+Version:        4.36.0
 Release:        0
 Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause
 URL:            https://github.com/michaeljones/breathe
 Source:         https://github.com/michaeljones/breathe/archive/v%{version}.tar.gz#/breathe-%{version}.tar.gz
-Patch0:         support-sphinx-7.2.patch
-# PATCH-FIX-UPSTREAM support-sphinx-7.4.patch gh#breathe-doc/breathe!1007 mcepl@suse.com
-# fix the test suite
-Patch1:         support-sphinx-7.4.patch
-BuildRequires:  %{python_module Sphinx >= 4.0}
-BuildRequires:  %{python_module docutils >= 0.12}
+BuildRequires:  %{python_module Sphinx >= 7.2}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 4.0
-Requires:       python-docutils >= 0.12
+Requires:       python-Sphinx >= 7.2
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       python-sphinxcontrib-breathe = %{version}

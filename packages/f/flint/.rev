@@ -168,4 +168,12 @@
     <comment>- Update to release 3.2.0</comment>
     <requestid>1253270</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>17152d7a8df1d235d65ca58f23ea4ef8</srcmd5>
+    <version>3.2.1</version>
+    <time>1742147951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.2.1</comment>
+    <requestid>1253472</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,93 @@
+From 29bcee2db6233ff0ea4fc9231910bb2da530308e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 6 Mar 2025 21:19:39 +0100
+Subject: [PATCH 10/10] [gdb/testsuite] Add gdb.arch/s390-disassemble.exp
+
+In commit a98a6fa2d8e ("s390: Add arch15 instructions"), support for
+new instructions was added to libopcodes, but the added tests only exercise
+this for gas.
+
+Add a test-case gdb.arch/s390-disassemble.exp that checks gdb's ability to
+disassemble one of these instructions.
+
+Tested on s390x-linux.
+---
+ gdb/testsuite/gdb.arch/s390-disassemble.c   | 23 ++++++++++++++
+ gdb/testsuite/gdb.arch/s390-disassemble.exp | 35 +++++++++++++++++++++
+ 2 files changed, 58 insertions(+)
+ create mode 100644 gdb/testsuite/gdb.arch/s390-disassemble.c
+ create mode 100644 gdb/testsuite/gdb.arch/s390-disassemble.exp
+
+diff --git a/gdb/testsuite/gdb.arch/s390-disassemble.c b/gdb/testsuite/gdb.arch/s390-disassemble.c
+new file mode 100644
+index 00000000000..ee6469ddf98
+--- /dev/null
++++ b/gdb/testsuite/gdb.arch/s390-disassemble.c
+@@ -0,0 +1,23 @@
++/* This file is part of GDB, the GNU debugger.
++
++   Copyright 2025 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++void
++clzg (void)
++{
++  /* clzg %r0,%r3.  */
++  asm volatile (" .long 0xb9680003");
++}
+diff --git a/gdb/testsuite/gdb.arch/s390-disassemble.exp b/gdb/testsuite/gdb.arch/s390-disassemble.exp
+new file mode 100644
+index 00000000000..0c187df3c11
+--- /dev/null
++++ b/gdb/testsuite/gdb.arch/s390-disassemble.exp
+@@ -0,0 +1,35 @@
++# Copyright 2025 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Check that GDB is able to disassemble certain s390x instructions.
++
++require {istarget "s390x*-*-*"}
++
++standard_testfile
++set objfile [standard_output_file ${testfile}.o]
++
++if { [gdb_compile "${srcdir}/${subdir}/${srcfile}" $objfile object {}] != "" } {
++    return -1
++}
++
++clean_restart $objfile
++
++gdb_test "disassemble clzg" \
++    [join \
++	 [list \
++	      ".*\t" \
++	      "clzg\t%r0,%r3" \
++	      "\r\n.*"] \
++	 ""]
+-- 
+2.43.0
+

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 15 08:36:04 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.5.5:
+  * Remember selection with undo and redo. Controlled with 
+    SCI_SETUNDOSELECTIONHISTORY. Feature #1273, Bug #1479, Bug #1224.
+  * Serialize selection type and ranges with SCI_GETSELECTIONSERIALIZED
+    and SCI_SETSELECTIONSERIALIZED.
+  * Fix segmentation of long lexemes to avoid breaking before modifiers like 
+    accents that must be drawn with their base letters. For wrapping, try to
+    break lines without separating letters from modifiers.
+  * Fix bug on Qt where double-click stopped working when Scintilla instance
+    had been running for weeks.
+
+-------------------------------------------------------------------
 Sat Dec 21 11:26:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.5.4:

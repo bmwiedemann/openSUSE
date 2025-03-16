@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 16 09:04:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.1
+  * Better host triplet identification for Zen
+- Add 0001-build-reduce-build-requirements-on-gmp-and-mpfr.patch
+
+-------------------------------------------------------------------
 Fri Mar 14 08:06:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.0

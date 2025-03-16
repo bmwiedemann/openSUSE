@@ -1951,4 +1951,12 @@ General : Update internal Libraw to snapshot 202110
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226964</requestid>
   </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>99b614bc5243688f85043b503de0e31c</srcmd5>
+    <version>8.6.0</version>
+    <time>1742147931</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 8.6.0</comment>
+    <requestid>1253393</requestid>
+  </revision>
 </revisionlist>

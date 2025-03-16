@@ -1,7 +1,7 @@
 #
 # spec file for package linuxconsoletools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,10 @@ URL:            http://sourceforge.net/projects/linuxconsole/
 Source0:        http://sourceforge.net/projects/linuxconsole/files/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE 0001-fix-bashisms.patch
 Patch0:         0001-fix-bashisms.patch
-BuildRequires:  libSDL2-devel
 BuildRequires:  linux-kernel-headers
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(udev)
 # moved in 13.2
 Provides:       input-utils = 2007.06.22

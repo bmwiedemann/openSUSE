@@ -21,7 +21,7 @@ Name:           liblouis
 Version:        3.32.0
 Release:        0
 Summary:        Two-way braille translator
-License:        LGPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Other
 URL:            http://liblouis.io/
 Source0:        https://github.com/liblouis/liblouis/releases/download/v%{version}/liblouis-%{version}.tar.gz

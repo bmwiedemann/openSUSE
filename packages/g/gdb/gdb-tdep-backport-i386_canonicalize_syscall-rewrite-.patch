@@ -1,0 +1,192 @@
+From 32c2e500525b91b2771022252f79e1c5c29ddf48 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 13 Mar 2025 09:39:51 +0100
+Subject: [PATCH 2/2] [gdb/tdep] Backport i386_canonicalize_syscall rewrite to
+ gdb-16-branch
+
+Commit fbfb29b304e ("[gdb/tdep] Rewrite i386_canonicalize_syscall") fixes
+PR32770, which reproduces on the gdb-16-branch, but the commit is not ideal
+for backporting because it completely rewrites i386_canonicalize_syscall.
+
+Instead, this is a version of the patch that adds a single line entry for each
+syscall value for which i386_canonicalize_syscall gives a different result
+with and without the patch.
+
+Consequently, the two versions give identical results.  I've checked this for
+syscalls 0 to 466.
+
+Tested on x86_64-linux with target board unix/-m32, on top of gdb-16-branch.
+
+PR tdep/32770
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32770
+---
+ gdb/i386-linux-tdep.c | 153 +++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 152 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/i386-linux-tdep.c b/gdb/i386-linux-tdep.c
+index a78f03fac8d..b0ca8694ba5 100644
+--- a/gdb/i386-linux-tdep.c
++++ b/gdb/i386-linux-tdep.c
+@@ -376,7 +376,158 @@ i386_all_but_ip_registers_record (struct regcache *regcache)
+ static enum gdb_syscall
+ i386_canonicalize_syscall (int syscall)
+ {
+-  enum { i386_syscall_max = 499 };
++  enum { i386_syscall_max = 466 };
++
++  switch (syscall)
++    {
++    case 359 /* socket */: return gdb_sys_socket;
++    case 360 /* socketpair */: return gdb_sys_socketpair;
++    case 361 /* bind */: return gdb_sys_bind;
++    case 362 /* connect */: return gdb_sys_connect;
++    case 363 /* listen */: return gdb_sys_listen;
++    case 365 /* getsockopt */: return gdb_sys_getsockopt;
++    case 366 /* setsockopt */: return gdb_sys_setsockopt;
++    case 367 /* getsockname */: return gdb_sys_getsockname;
++    case 368 /* getpeername */: return gdb_sys_getpeername;
++    case 369 /* sendto */: return gdb_sys_sendto;
++    case 370 /* sendmsg */: return gdb_sys_sendmsg;
++    case 371 /* recvfrom */: return gdb_sys_recvfrom;
++    case 372 /* recvmsg */: return gdb_sys_recvmsg;
++    case 373 /* shutdown */: return gdb_sys_shutdown;
++    case 393 /* semget */: return gdb_sys_semget;
++    case 394 /* semctl */: return gdb_sys_semctl;
++    case 395 /* shmget */: return gdb_sys_shmget;
++    case 396 /* shmctl */: return gdb_sys_shmctl;
++    case 397 /* shmat */: return gdb_sys_shmat;
++    case 398 /* shmdt */: return gdb_sys_shmdt;
++    case 399 /* msgget */: return gdb_sys_msgget;
++    case 400 /* msgsnd */: return gdb_sys_msgsnd;
++    case 401 /* msgrcv */: return gdb_sys_msgrcv;
++    case 402 /* msgctl */: return gdb_sys_msgctl;
++    case 420 /* semtimedop_time64 */: return gdb_sys_semtimedop;
++
++    case 320 /* utimensat */: return gdb_sys_no_syscall;
++    case 321 /* signalfd */: return gdb_sys_no_syscall;
++    case 322 /* timerfd_create */: return gdb_sys_no_syscall;
++    case 323 /* eventfd */: return gdb_sys_no_syscall;
++    case 325 /* timerfd_settime */: return gdb_sys_no_syscall;
++    case 326 /* timerfd_gettime */: return gdb_sys_no_syscall;
++    case 327 /* signalfd4 */: return gdb_sys_no_syscall;
++    case 333 /* preadv */: return gdb_sys_no_syscall;
++    case 334 /* pwritev */: return gdb_sys_no_syscall;
++    case 335 /* rt_tgsigqueueinfo */: return gdb_sys_no_syscall;
++    case 336 /* perf_event_open */: return gdb_sys_no_syscall;
++    case 337 /* recvmmsg */: return gdb_sys_no_syscall;
++    case 338 /* fanotify_init */: return gdb_sys_no_syscall;
++    case 339 /* fanotify_mark */: return gdb_sys_no_syscall;
++    case 340 /* prlimit64 */: return gdb_sys_no_syscall;
++    case 341 /* name_to_handle_at */: return gdb_sys_no_syscall;
++    case 342 /* open_by_handle_at */: return gdb_sys_no_syscall;
++    case 343 /* clock_adjtime */: return gdb_sys_no_syscall;
++    case 344 /* syncfs */: return gdb_sys_no_syscall;
++    case 345 /* sendmmsg */: return gdb_sys_no_syscall;
++    case 346 /* setns */: return gdb_sys_no_syscall;
++    case 347 /* process_vm_readv */: return gdb_sys_no_syscall;
++    case 348 /* process_vm_writev */: return gdb_sys_no_syscall;
++    case 349 /* kcmp */: return gdb_sys_no_syscall;
++    case 350 /* finit_module */: return gdb_sys_no_syscall;
++    case 351 /* sched_setattr */: return gdb_sys_no_syscall;
++    case 352 /* sched_getattr */: return gdb_sys_no_syscall;
++    case 353 /* renameat2 */: return gdb_sys_no_syscall;
++    case 354 /* seccomp */: return gdb_sys_no_syscall;
++    case 356 /* memfd_create */: return gdb_sys_no_syscall;
++    case 357 /* bpf */: return gdb_sys_no_syscall;
++    case 358 /* execveat */: return gdb_sys_no_syscall;
++    case 364 /* accept4 */: return gdb_sys_no_syscall;
++    case 374 /* userfaultfd */: return gdb_sys_no_syscall;
++    case 375 /* membarrier */: return gdb_sys_no_syscall;
++    case 376 /* mlock2 */: return gdb_sys_no_syscall;
++    case 377 /* copy_file_range */: return gdb_sys_no_syscall;
++    case 378 /* preadv2 */: return gdb_sys_no_syscall;
++    case 379 /* pwritev2 */: return gdb_sys_no_syscall;
++    case 380 /* pkey_mprotect */: return gdb_sys_no_syscall;
++    case 381 /* pkey_alloc */: return gdb_sys_no_syscall;
++    case 382 /* pkey_free */: return gdb_sys_no_syscall;
++    case 384 /* arch_prctl */: return gdb_sys_no_syscall;
++    case 385 /* io_pgetevents */: return gdb_sys_no_syscall;
++    case 386 /* rseq */: return gdb_sys_no_syscall;
++    case 404 /* clock_settime64 */: return gdb_sys_no_syscall;
++    case 405 /* clock_adjtime64 */: return gdb_sys_no_syscall;
++    case 406 /* clock_getres_time64 */: return gdb_sys_no_syscall;
++    case 407 /* clock_nanosleep_time64 */: return gdb_sys_no_syscall;
++    case 408 /* timer_gettime64 */: return gdb_sys_no_syscall;
++    case 409 /* timer_settime64 */: return gdb_sys_no_syscall;
++    case 410 /* timerfd_gettime64 */: return gdb_sys_no_syscall;
++    case 411 /* timerfd_settime64 */: return gdb_sys_no_syscall;
++    case 412 /* utimensat_time64 */: return gdb_sys_no_syscall;
++    case 413 /* pselect6_time64 */: return gdb_sys_no_syscall;
++    case 414 /* ppoll_time64 */: return gdb_sys_no_syscall;
++    case 416 /* io_pgetevents_time64 */: return gdb_sys_no_syscall;
++    case 417 /* recvmmsg_time64 */: return gdb_sys_no_syscall;
++    case 418 /* mq_timedsend_time64 */: return gdb_sys_no_syscall;
++    case 419 /* mq_timedreceive_time64 */: return gdb_sys_no_syscall;
++    case 421 /* rt_sigtimedwait_time64 */: return gdb_sys_no_syscall;
++    case 422 /* futex_time64 */: return gdb_sys_no_syscall;
++    case 423 /* sched_rr_get_interval_time64 */: return gdb_sys_no_syscall;
++    case 424 /* pidfd_send_signal */: return gdb_sys_no_syscall;
++    case 425 /* io_uring_setup */: return gdb_sys_no_syscall;
++    case 426 /* io_uring_enter */: return gdb_sys_no_syscall;
++    case 427 /* io_uring_register */: return gdb_sys_no_syscall;
++    case 428 /* open_tree */: return gdb_sys_no_syscall;
++    case 429 /* move_mount */: return gdb_sys_no_syscall;
++    case 430 /* fsopen */: return gdb_sys_no_syscall;
++    case 431 /* fsconfig */: return gdb_sys_no_syscall;
++    case 432 /* fsmount */: return gdb_sys_no_syscall;
++    case 433 /* fspick */: return gdb_sys_no_syscall;
++    case 434 /* pidfd_open */: return gdb_sys_no_syscall;
++    case 435 /* clone3 */: return gdb_sys_no_syscall;
++    case 436 /* close_range */: return gdb_sys_no_syscall;
++    case 437 /* openat2 */: return gdb_sys_no_syscall;
++    case 438 /* pidfd_getfd */: return gdb_sys_no_syscall;
++    case 439 /* faccessat2 */: return gdb_sys_no_syscall;
++    case 440 /* process_madvise */: return gdb_sys_no_syscall;
++    case 441 /* epoll_pwait2 */: return gdb_sys_no_syscall;
++    case 442 /* mount_setattr */: return gdb_sys_no_syscall;
++    case 443 /* quotactl_fd */: return gdb_sys_no_syscall;
++    case 444 /* landlock_create_ruleset */: return gdb_sys_no_syscall;
++    case 445 /* landlock_add_rule */: return gdb_sys_no_syscall;
++    case 446 /* landlock_restrict_self */: return gdb_sys_no_syscall;
++    case 447 /* memfd_secret */: return gdb_sys_no_syscall;
++    case 448 /* process_mrelease */: return gdb_sys_no_syscall;
++    case 449 /* futex_waitv */: return gdb_sys_no_syscall;
++    case 450 /* set_mempolicy_home_node */: return gdb_sys_no_syscall;
++    case 451 /* cachestat */: return gdb_sys_no_syscall;
++    case 452 /* fchmodat2 */: return gdb_sys_no_syscall;
++    case 453 /* map_shadow_stack */: return gdb_sys_no_syscall;
++    case 454 /* futex_wake */: return gdb_sys_no_syscall;
++    case 455 /* futex_wait */: return gdb_sys_no_syscall;
++    case 456 /* futex_requeue */: return gdb_sys_no_syscall;
++    case 457 /* statmount */: return gdb_sys_no_syscall;
++    case 458 /* listmount */: return gdb_sys_no_syscall;
++    case 459 /* lsm_get_self_attr */: return gdb_sys_no_syscall;
++    case 460 /* lsm_set_self_attr */: return gdb_sys_no_syscall;
++    case 461 /* lsm_list_modules */: return gdb_sys_no_syscall;
++    case 462 /* mseal */: return gdb_sys_no_syscall;
++    case 463 /* setxattrat */: return gdb_sys_no_syscall;
++    case 464 /* getxattrat */: return gdb_sys_no_syscall;
++    case 465 /* listxattrat */: return gdb_sys_no_syscall;
++    case 466 /* removexattrat */: return gdb_sys_no_syscall;
++
++    case 222 /* unused */: return gdb_sys_no_syscall;
++    case 223 /* unused */: return gdb_sys_no_syscall;
++    case 251 /* unused */: return gdb_sys_no_syscall;
++    case 285 /* unused */: return gdb_sys_no_syscall;
++    case 387 /* unused */: return gdb_sys_no_syscall;
++    case 388 /* unused */: return gdb_sys_no_syscall;
++    case 389 /* unused */: return gdb_sys_no_syscall;
++    case 390 /* unused */: return gdb_sys_no_syscall;
++    case 391 /* unused */: return gdb_sys_no_syscall;
++    case 392 /* unused */: return gdb_sys_no_syscall;
++    case 415 /* unused */: return gdb_sys_no_syscall;
++
++    default:
++      break;
++    }
+ 
+   if (syscall <= i386_syscall_max)
+     return (enum gdb_syscall) syscall;
+-- 
+2.43.0
+

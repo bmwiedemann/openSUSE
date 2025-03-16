@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar 15 08:53:16 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- SCons 4.9.0:
+  * Removed Python 3.6 support. Since SCons 4.9.0, Python 3.7.0 or 
+    above is required.
+  * Update ninja tool
+  * Fix Issue #2281, AddPreAction() & AddPostAction() were being ignored
+  * Fix support for short options (`-x`)
+  * Added support for tracking beamer themes in the LaTeX scanner
+  * Many grammatical and spelling fixes in the documentation
+  * updates to test framework
+  * Temporary files created by TempFileMunge() are now cleaned up on scons exit
+  * Fix a problem with compilation_db component initialization
+  * Add clang and clang++ to the default tool search orders for POSIX and
+    Windows platforms.
+  * Add a tag to each CacheDir to let systems ignore backing it up (per
+    https://bford.info/cachedir/)
+  * Update Clean and NoClean documentation.
+  * The (optional) C Conditional Scanner now does limited macro
+    replacement on the contents of CPPDEFINES, to improve finding deps
+    that are conditionally included. 
+  * many SCons C preprocessor changes
+  * more details at https://github.com/SCons/scons/blob/rel_4.9.0/CHANGES.txt
+
+-------------------------------------------------------------------
 Wed Dec 11 09:10:56 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add site_init.py to pass through SOURCE_DATE_EPOCH

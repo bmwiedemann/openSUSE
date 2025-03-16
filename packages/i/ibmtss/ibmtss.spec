@@ -1,7 +1,7 @@
 #
 # spec file for package ibmtss
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,8 @@
 %define libversion 2
 %define libname libibmtss
 %define libpkgname %{libname}%{libversion}
-
 Name:           ibmtss
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        IBM's TPM 2.0 TSS
 License:        BSD-3-Clause
@@ -30,9 +29,6 @@ URL:            https://github.com/kgoldman/ibmtss
 Source:         https://github.com/kgoldman/ibmtss/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        90-tpm-ibmtss.rules
 Patch1:         ibmtss-configure.ac-Do-not-disable-optimization-for-debug-b.patch
-Patch2:         tss-Commit-changelog-and-autotools-version-update.patch
-Patch3:         utils-Update-.so-version-to-2.4.patch
-Patch4:         ibmtss-2.4.0-fix-FTBFS-2026.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  ibmswtpm2
@@ -58,8 +54,8 @@ Shared library for IBM's TPM 2.0 TSS tools
 %package base
 Summary:        IBM's TPM 2.0 TSS shared files
 Group:          Productivity/Security
-BuildArch:      noarch
 Requires(post): user(tss)
+BuildArch:      noarch
 
 %description base
 Includes IBM's TPM 2.0 TSS certificates and policy files.
@@ -104,6 +100,7 @@ find %{buildroot} -name .cvsignore | xargs rm -v
 
 %post base
 %_bindir/udevadm trigger -s tpm -s tpmrm || :
+
 %post   -n %{libpkgname} -p /sbin/ldconfig
 %postun -n %{libpkgname} -p /sbin/ldconfig
 

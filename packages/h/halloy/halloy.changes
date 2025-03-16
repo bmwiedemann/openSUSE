@@ -1,7 +1,32 @@
 -------------------------------------------------------------------
+Sat Mar 15 19:57:07 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2025.3:
+  + Added:
+    - Highlights by regex and words
+    - Time remaining is now displayed during file transfers
+    - Sidebar now automatically adjusts its width based on content
+    - Ability to customize default pane splitting direction
+    - Clicking a nickname is now configurable.
+    - Ability to quit Halloy through commandbar and keyboard
+      shortcut
+ + Changed:
+    - [file_transfer.save_directory] is now default download path
+      for transfers. If set, files will be downloaded there by
+      default. Otherwise, you'll be prompted to choose a location
+    - Ability to dynamically select dark or light theme based on OS
+      appearance.
+    - /msg <target> (without any message text) will now open a pane
+      for the target without sending a message
+    - Text input of the active pane will remain focused after all
+      actions
+    - Focus last known active pane on launch
+- change cargo update from _service to false due that failed build
+
+-------------------------------------------------------------------
 Thu Feb 20 21:15:23 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
-- Update to version 2025.2          :
+- Update to version 2025.2:
   + Added:
     - Emoji picker accessible via : in text input
     - Automatically replace :shortcode: with corresponding emoji

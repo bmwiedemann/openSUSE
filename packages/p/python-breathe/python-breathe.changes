@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 14 12:59:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.36:
+  * Update test_renderer so that tests pass with Sphinx 7.2.
+  * Fix PosixPath issue with Sphinx 7.2.
+  * Avoid RemovedInSphinx80Warning in path-manipulation code.
+  * Require Sphinx 7.2 or later, Python 3.9 or later 
+    and Doxygen 1.9.2 or later.
+  * Begin to use pathlib.
+  * Insert signature name for use with Sphinx Table of Contents.
+  * Fix error in template specialization with qualified arguments.
+- Drop merged support-sphinx-7.2.patch and support-sphinx-7.4.patch.
+
+-------------------------------------------------------------------
 Sat Jan 18 10:37:41 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add support-sphinx-7.4.patch (gh#breathe-doc/breathe!1007)

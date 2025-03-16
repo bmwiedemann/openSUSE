@@ -1,7 +1,7 @@
 #
 # spec file for package gr-funcube
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  python-rpm-macros
 
 %description
 gr-funcube is an linux oot-module for gnuradio to implement a FUNcube
@@ -130,6 +131,8 @@ mkdir -p %{buildroot}%{_docdir}
 mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 
 install -Dm 0644 50-funcube.rules %{buildroot}%{_udevrulesdir}/50-funcube.rules
+
+%check
 
 %post   -n %{libname}%{sover} -p /sbin/ldconfig
 %postun -n %{libname}%{sover} -p /sbin/ldconfig

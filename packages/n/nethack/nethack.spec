@@ -25,18 +25,20 @@ Group:          Amusements/Games/RPG
 URL:            https://www.nethack.org
 Source0:        nethack-343-src.tar.bz2
 Source1:        nethack-rpmlintrc
+# PATCH-FIX-UPSTREAM nethack-escapes-revamp.patch boo#1239138
+Patch0:         nethack-escapes-revamp.patch
 # PATCH-FIX-OPENSUSE nethack-config.patch Adapt build to openSUSE systems
-Patch0:         nethack-config.patch
+Patch1:         nethack-config.patch
 # PATCH-FIX-OPENSUSE nethack-decl.patch Do not redeclare system interfaces
-Patch1:         nethack-decl.patch
+Patch2:         nethack-decl.patch
 # PATCH-FIX-OPENSUSE nethack-escape-char.patch
-Patch2:         nethack-escape-char.patch
+Patch3:         nethack-escape-char.patch
 # PATCH-FIX-OPENSUSE nethack-secure.patch Handle SECURE in recover utility
-Patch3:         nethack-secure.patch
+Patch4:         nethack-secure.patch
 # PATCH-FIX-OPENSUSE nethack-gzip.patch Use gzip compression
-Patch4:         nethack-gzip.patch
+Patch5:         nethack-gzip.patch
 # PATCH-FIX-OPENSUSE nethack-reproducible.patch boo#1047218
-Patch5:         nethack-reproducible.patch
+Patch6:         nethack-reproducible.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -62,7 +64,8 @@ This package contains the text interface.
 %patch -P2
 %patch -P3
 %patch -P4
-%patch -P5 -p1
+%patch -P5
+%patch -P6 -p1
 
 %build
 # copy Makefiles and add optimization flags

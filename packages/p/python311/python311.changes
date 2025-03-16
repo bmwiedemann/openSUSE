@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 12 15:05:46 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Allow to disable PGO
+
+-------------------------------------------------------------------
 Mon Mar 10 15:44:31 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Skip PGO with %want_reproducible_builds (bsc#1239210)

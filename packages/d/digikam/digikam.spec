@@ -1,7 +1,7 @@
 #
 # spec file for package digikam
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %define kf6_version 6.0.0
 %define qt6_version 6.4.0
 
-%define soversion 8_5_0
+%define soversion 8_6_0
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        8.5.0
+Version:        8.6.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later

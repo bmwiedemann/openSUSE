@@ -83,4 +83,16 @@ firehol (3.1.6) - 2018-08-13
     <comment></comment>
     <requestid>1153119</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c9eaebfc4cbcca62e8b313433aa10de4</srcmd5>
+    <version>3.1.8</version>
+    <time>1742147954</time>
+    <user>dimstar_suse</user>
+    <comment>- firehol (3.1.8) - 2025-03-15
+  * Update-Ipsets
+    - Remove some dead lists
+    - Handle ipsets temporarily locked by another process with
+      retries</comment>
+    <requestid>1253412</requestid>
+  </revision>
 </revisionlist>

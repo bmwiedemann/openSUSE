@@ -46,6 +46,8 @@ Patch2:         %{name}-22.21-pstree.patch
 # PATCH-ADD-SUSE boo#908068, boo#1046237, boo#1046237
 # https://gitlab.com/bitstreamout/psmisc/tree/mountinfo
 Patch3:         0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+# https://gitlab.com/psmisc/psmisc/-/issues/59
+Patch4:         psmisc-gcc15.patch
 
 %define have_peekfd %ix86 x86_64 ppc ppc64 ppc64le %arm mipsel m68k aarch64 loongarch64
 
@@ -65,6 +67,7 @@ processes that are using specified files or filesystems.
 %patch -P 2 -p0 -b .pstree
 %patch -P 3 -p0 -b .mntinf
 %patch -P 0 -p0 -b .p0
+%patch -P 4 -p1
 
 %build
 grep -h src/ po/*.po|\

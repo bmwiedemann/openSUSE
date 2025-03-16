@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 13 13:26:48 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Synchronize SLE-12 and openSUSE:Factory [jsc#PED-4587].
+  The following patches are now obsolete in version 3.13.0:
+  * add-decoding-of-vendor-specific-vpd-fields.patch
+  * pciutils-3.1.7-fix-memory-leak-in-get_cache_name.patch
+  * pciutils-3.2.0_update-dist.patch
+  * pciutils-3.5.1-add-support-for-32-bit-pci-domains.patch
+  * pciutils-lspci-Correct-Root-Capabilities-CRS-Software-Visibil.patch
+  * show-gen4-speed-properly.patch
+
+-------------------------------------------------------------------
 Fri Jul 19 13:56:16 UTC 2024 - Peter Simons <psimons@suse.com>
 
-- Synchronize SLE-15 and openSUSE:Factory [PED-8393, bsc#1224138].
+- Synchronize SLE-15 and openSUSE:Factory [jsc#PED-8393, bsc#1224138].
   The following patches are now obsolete in version 3.13.0:
   * lspci-Fixed-buffer-overflows-in-ls-tree.c.patch
   * pciutils-Add-PCIe-5.0-data-rate-32-GT-s-support.patch
@@ -258,6 +270,18 @@ Sun Sep 16 17:35:15 UTC 2018 - Avindra Goolcharan <avindra@opensuse.org>
 - rebase pciutils-endianh.patch
 
 -------------------------------------------------------------------
+Wed Jun 27 11:35:55 UTC 2018 - psimons@suse.com
+
+- Apply "show-gen4-speed-properly.patch" from upstream to fix the
+  display of the gen4 speed for GEN 4 cards like Mellanox CX5.
+  [bsc#1098094]
+
+- Apply "add-decoding-of-vendor-specific-vpd-fields.patch" to add
+  support for commonly used vendor specific VPD keywords described
+  in "Table 160. LoPAPR VPD Fields" of the Linux on Power
+  Architecture Platform Reference (LoPAPR). [bsc#1098228]
+
+-------------------------------------------------------------------
 Sun Nov 19 01:26:23 UTC 2017 - aavindraa@gmail.com
 
 - Update to version 3.5.6
@@ -301,6 +325,20 @@ Mon Feb 27 12:07:44 UTC 2017 - mpluskal@suse.com
 	  thoroughly. Thanks to Rajat Jain for the patch.
 	* The table of configuration registers used by setpci
 	  had a bug in the definition of SUBSYSTEM_VENDOR_ID.
+
+-------------------------------------------------------------------
+Tue Dec  6 20:07:00 UTC 2016 - psimons@suse.com
+
+- Back-ported several changes from newer pciutils-3.5.1 to enable
+  proper support for 32-bit PCI domain numbers (bsc#1006827) in
+  pciutils-3.5.1-add-support-for-32-bit-pci-domains.patch.
+
+-------------------------------------------------------------------
+Tue Nov  1 05:15:00 UTC 2016 - jlee@suse.com
+
+- pciutils-lspci-Correct-Root-Capabilities-CRS-Software-Visibil.patch:
+  lspci: Correct Root Capabilities "CRS Software Visibility" bit
+  Found this issue when tracing bsc#1001888. (bsc#1001888)
 
 -------------------------------------------------------------------
 Wed May 25 07:59:27 UTC 2016 - mpluskal@suse.com
@@ -358,6 +396,11 @@ Sun Sep  6 07:41:51 UTC 2015 - mpluskal@suse.com
   * Fixed memory leak in name cache (bnc#837347).
   * Updated pci.ids to the current snapshot of the database.
 
+-------------------------------------------------------------------
+Thu Mar 12 08:15:53 UTC 2015 - tchvatal@suse.com
+
+- pciutils-3.1.7-fix-memory-leak-in-get_cache_name.patch: Fix
+  a memory leak in get_cache_name (bnc#837347)
 
 -------------------------------------------------------------------
 Tue Nov 18 13:22:45 UTC 2014 - tchvatal@suse.com

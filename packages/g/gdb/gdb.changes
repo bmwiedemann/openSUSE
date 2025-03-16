@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Mar 13 10:51:28 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * gdb-record-fix-out-of-bounds-write-in-aarch64_record.patch
+  * gdb-tdep-backport-i386_canonicalize_syscall-rewrite-.patch
+- Maintenance script qa.sh:
+  * Remove PR32770 kfail.
+  * Move PR32678 from kfail_i586 to kfail_factory.
+
+-------------------------------------------------------------------
+Tue Mar 11 06:17:54 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add PR32688 and PR32770 kfails.
+- Patches added:
+  * gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-m32-for-amd.patch
+  * gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-glibc-2-41.patch
+- Patches dropped:
+  * gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-m32-amd-case.patch
+
+-------------------------------------------------------------------
+Fri Mar  7 21:55:47 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Drop "BuildRequires: libgo23".
+
+-------------------------------------------------------------------
+Fri Mar  7 14:01:38 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (jsc#PED-10305):
+  * s390-align-opcodes-to-lower-case.patch
+  * s390-simplify-dis-assembly-of-insn-operands-with-con.patch
+  * s390-relax-risbg-n-z-risb-h-l-gz-rns-ros-rxs-bgt-ope.patch
+  * s390-add-arch15-instructions.patch
+  * opcodes-fix-std-gnu23-compatibility-wrt-static_asser.patch
+  * s390-add-arch15-instruction-names.patch
+  * s390-add-arch15-concurrent-functions-facility-insns.patch
+  * s390-fix-disassembly-of-optional-addressing-operands.patch
+  * s390-treat-addressing-operand-sequence-as-one-in-dis.patch
+  * gdb-testsuite-add-gdb.arch-s390-disassemble.exp.patch
+
+-------------------------------------------------------------------
 Tue Feb 18 06:58:58 UTC 2025 - Tom de Vries <tdevries@suse.com>
 
 - Maintenance script qa.sh:

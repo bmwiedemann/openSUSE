@@ -2881,4 +2881,16 @@ git 2.48.0</comment>
     refuse to accept URLs that contain control sequences</comment>
     <requestid>1238002</requestid>
   </revision>
+  <revision rev="321" vrev="1">
+    <srcmd5>db8bbc45f40768e768518a86ae87ca39</srcmd5>
+    <version>2.49.0</version>
+    <time>1742147899</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.49.0
+  https://about.gitlab.com/blog/2025/03/14/whats-new-in-git-2-49-0/
+  https://raw.githubusercontent.com/git/git/refs/tags/v2.49.0/Documentation/RelNotes/2.49.0.adoc
+- switch to zlib-ng for code 16
+- docs switched to asciidoc</comment>
+    <requestid>1253269</requestid>
+  </revision>
 </revisionlist>

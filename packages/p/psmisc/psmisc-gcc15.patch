@@ -1,0 +1,16 @@
+Index: psmisc-v23.7/src/lists.h
+===================================================================
+--- psmisc-v23.7.orig/src/lists.h
++++ psmisc-v23.7/src/lists.h
+@@ -18,9 +18,10 @@
+ #define _LISTS_H
+ 
+ #include <stddef.h>
++#include <stdbool.h>
+ #include <sys/types.h>
+ 
+-typedef enum _boolean {false, true} boolean;
++typedef bool boolean;
+ typedef unsigned char uchar;
+ #ifndef __USE_MISC
+ typedef unsigned short ushort;

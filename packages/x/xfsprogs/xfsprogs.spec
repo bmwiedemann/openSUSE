@@ -1,7 +1,7 @@
 #
 # spec file for package xfsprogs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,12 +99,12 @@ You should install xfsprogs-devel if you want to develop XFS file
 system-specific programs.  If you install xfsprogs-devel, you will also
 want to install xfsprogs.
 
-%package -n	xfsprogs-scrub
+%package scrub
 Summary:        XFS scrubbing scripts and service files
 Group:          System/Filesystems
 Requires:       xfsprogs
 
-%description -n	xfsprogs-scrub
+%description scrub
 Scripts and systemd service files for background scrubbing of metadata
 on xfs filesystems.
 
@@ -147,16 +147,16 @@ install -m 0755 module-setup.sh %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 
 %if %{with systemd}
-%pre -n xfsprogs-scrub
+%pre scrub
 %service_add_pre xfs_scrub_all.service xfs_scrub_all.timer
 
-%post -n xfsprogs-scrub
+%post scrub
 %service_add_post xfs_scrub_all.service xfs_scrub_all.timer
 
-%preun -n xfsprogs-scrub
+%preun scrub
 %service_del_preun xfs_scrub_all.service xfs_scrub_all.timer
 
-%postun -n xfsprogs-scrub
+%postun scrub
 %service_del_postun xfs_scrub_all.service xfs_scrub_all.timer
 %endif
 
@@ -172,7 +172,6 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 %{?regenerate_initrd_posttrans}
 
 %files -f %{name}.lang
-%defattr(-,root,root,755)
 %{_sbindir}/*
 %exclude %{_sbindir}/xfs_scrub_all
 %{_mandir}/man[258]/*
@@ -193,17 +192,14 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 %{_prefix}/share/xfsprogs/mkfs/*
 
 %files -n %{libname}
-%defattr(-,root,root,755)
 %{_libdir}/libhandle.so.*
 
-%files -n xfsprogs-devel
-%defattr(-,root,root,755)
+%files devel
 %{_includedir}/xfs
 %{_libdir}/libhandle.so
 %{_mandir}/man3/*
 
-%files -n xfsprogs-scrub
-%defattr(-,root,root,755)
+%files scrub
 %dir %{_libexecdir}/xfsprogs
 %{_prefix}/share/xfsprogs/xfs_scrub_all.cron
 %{_sbindir}/xfs_scrub_all

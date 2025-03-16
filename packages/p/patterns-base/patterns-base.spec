@@ -513,7 +513,6 @@ Recommends:     procmail
 Recommends:     providers
 # fuser (psmisc) by default (#304694)
 Recommends:     psmisc
-Recommends:     setserial
 Recommends:     sharutils
 Recommends:     smp_utils
 Recommends:     spax

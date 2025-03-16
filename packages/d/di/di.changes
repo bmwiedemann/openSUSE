@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 16 11:19:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.0.0:
+  * Fix crash in incorrect processing when di_get_all_disk_info
+    fails
+  * ABI Change: di_get_all_disk_info now returns an exit flag
+
+-------------------------------------------------------------------
 Tue Mar  4 20:29:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 5.0.14:

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package gdb
 #
 # Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 RedHat
@@ -218,10 +218,6 @@ Patch1503:      gdb-add-index.sh-fix-bashism.patch
 # Fixes:
 # FAIL: gdb.mi/new-ui-mi-sync.exp: sync-command=run: add-inferior (timeout)
 Patch1504:      fix-gdb.mi-new-ui-mi-sync.exp.patch
-# Fixes:
-# FAIL: gdb.base/step-over-syscall.exp: fork: displaced=off: \
-# pc after stepi matches insn addr after syscall
-Patch1505:      gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-m32-amd-case.patch
 # https://sourceware.org/bugzilla/show_bug.cgi?id=32590
 Patch1506:      gdb-cli-print-at_hwcap3-and-at_hwcap4.patch
 # Work around SCM_UNPACK Werror=sequence-point in libguile v2.0.9 (SLE-12).
@@ -265,6 +261,7 @@ Patch2030:      gdb-testsuite-fix-gdb.base-empty-host-env-vars.exp.patch
 Patch2031:      gdb-prune-inferior-after-switching-inferior.patch
 Patch2032:      gdb-testsuite-fix-timeout-in-gdb.mi-mi-multi-command.patch
 Patch2033:      gdb-testsuite-fix-regexp-in-gdb.threads-stepi-over-c.patch
+Patch2034:      gdb-record-fix-out-of-bounds-write-in-aarch64_record.patch
 
 # Backports from master, available in GDB 17.
 
@@ -291,6 +288,9 @@ Patch2119:      gdb-testsuite-use-nostdlib-in-gdb.base-list-dot-node.patch
 Patch2120:      gdb-testsuite-require-can_spawn_for_attach-in-gdb.ba.patch
 Patch2121:      gdb-testsuite-fix-gdb.ada-big_packed_array.exp-on-s3.patch
 Patch2122:      gdb-testsuite-fix-gdb.ada-convvar_comp.exp-on-s390x-.patch
+Patch2123:      gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-m32-for-amd.patch
+Patch2124:      gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-glibc-2-41.patch
+Patch2125:      gdb-tdep-backport-i386_canonicalize_syscall-rewrite-.patch
 
 # Backport from gdb-patches
 
@@ -310,6 +310,20 @@ Patch3005:      gdb-doc-fix-standard-replies-xref.patch
 Patch3006:      gdb-symtab-recurse-into-c-dw_tag_subprogram-dies-for.patch
 # https://sourceware.org/bugzilla/show_bug.cgi?id=30380#c1
 Patch3007:      gdb-testsuite-use-c-flag-in-c-test-cases.patch
+# https://sourceware.org/pipermail/gdb-patches/2025-March/216050.html
+Patch3008:      gdb-testsuite-add-gdb.arch-s390-disassemble.exp.patch
+
+# s390x libopcodes backports, available in GDB 16.
+
+Patch4000:      s390-align-opcodes-to-lower-case.patch
+Patch4001:      s390-simplify-dis-assembly-of-insn-operands-with-con.patch
+Patch4002:      s390-relax-risbg-n-z-risb-h-l-gz-rns-ros-rxs-bgt-ope.patch
+Patch4003:      s390-add-arch15-instructions.patch
+Patch4004:      opcodes-fix-std-gnu23-compatibility-wrt-static_asser.patch
+Patch4005:      s390-add-arch15-instruction-names.patch
+Patch4006:      s390-add-arch15-concurrent-functions-facility-insns.patch
+Patch4007:      s390-fix-disassembly-of-optional-addressing-operands.patch
+Patch4008:      s390-treat-addressing-operand-sequence-as-one-in-dis.patch
 
 # Debug patches.
 
@@ -497,13 +511,6 @@ BuildRequires:  glibc-devel-static
 # gcc-go package (bsc#1096677), so we only require it for known fixed
 # versions.
 BuildRequires:  gcc-go
-
-%if 0%{?suse_version} > 1600
-# Fix: unresolvable:
-# have choice for libgo.so.23()(64bit) needed by gcc14-go: libgo23 libgo23-gcc14
-# have choice for libgo23 >= 14.2.1+git10750-37.2 needed by gcc14-go: libgo23 libgo23-gcc14
-BuildRequires:  libgo23
-%endif
 %endif
 
 %if %{with fpc} && 0%{?is_opensuse}
@@ -657,7 +664,6 @@ find -name "*.info*"|xargs rm -f
 %patch -P 1501 -p1
 %patch -P 1503 -p1
 %patch -P 1504 -p1
-%patch -P 1505 -p1
 %patch -P 1506 -p1
 %patch -P 1507 -p1
 %patch -P 1508 -p1
@@ -696,6 +702,7 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2031 -p1
 %patch -P 2032 -p1
 %patch -P 2033 -p1
+%patch -P 2034 -p1
 
 %patch -P 2100 -p1
 %patch -P 2101 -p1
@@ -720,6 +727,9 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2120 -p1
 %patch -P 2121 -p1
 %patch -P 2122 -p1
+%patch -P 2123 -p1
+%patch -P 2124 -p1
+%patch -P 2125 -p1
 
 %patch -P 3000 -p1
 %patch -P 3001 -p1
@@ -729,6 +739,17 @@ find -name "*.info*"|xargs rm -f
 %patch -P 3005 -p1
 %patch -P 3006 -p1
 %patch -P 3007 -p1
+%patch -P 3008 -p1
+
+%patch -P 4000 -p1
+%patch -P 4001 -p1
+%patch -P 4002 -p1
+%patch -P 4003 -p1
+%patch -P 4004 -p1
+%patch -P 4005 -p1
+%patch -P 4006 -p1
+%patch -P 4007 -p1
+%patch -P 4008 -p1
 
 #unpack libipt
 %if 0%{have_libipt}

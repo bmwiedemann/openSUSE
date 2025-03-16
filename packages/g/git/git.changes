@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 14 23:43:43 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.49.0
+  https://about.gitlab.com/blog/2025/03/14/whats-new-in-git-2-49-0/
+  https://raw.githubusercontent.com/git/git/refs/tags/v2.49.0/Documentation/RelNotes/2.49.0.adoc
+- switch to zlib-ng for code 16
+- docs switched to asciidoc
+
+-------------------------------------------------------------------
 Tue Jan 14 21:45:04 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.48.1: (boo#1235600 boo#1235601)

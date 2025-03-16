@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 15 23:30:11 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 48.0
+  * The waveform was rewritten, redesigned and unified with the
+    scale
+  * Added support for multiple windows
+  * Added playback rate shortcuts
+  * Changed the app's icon
+  * Added support for opening the containing folder of an audio
+    file
+  * Update gi submodule
+- add meson_test to check files
+
+-------------------------------------------------------------------
 Thu Apr 11 08:49:42 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 46.0

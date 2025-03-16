@@ -1,0 +1,61 @@
+From 7be3afccde80f7c580226f08715c181fd3f48e43 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 8 Mar 2025 09:52:08 +0100
+Subject: [PATCH 1/2] [gdb/testsuite] Fix gdb.base/step-over-syscall.exp with
+ -m32 for AMD
+
+When running test-case gdb.base/step-over-syscall.exp with target board
+unix/-m32 on an AMD processor, I run into:
+...
+(gdb) x/2i $pc^M
+=> 0xf7fc9575 <__kernel_vsyscall+5>:    syscall^M
+   0xf7fc9577 <__kernel_vsyscall+7>:    int    $0x80^M
+(gdb) PASS: $exp: fork: displaced=off: pc before/after syscall instruction
+stepi^M
+[Detaching after fork from child process 65650]^M
+0xf7fc9579 in __kernel_vsyscall ()^M
+1: x/i $pc^M
+=> 0xf7fc9579 <__kernel_vsyscall+9>:    pop    %ebp^M
+(gdb) $exp: fork: displaced=off: stepi fork insn
+print /x $pc^M
+$2 = 0xf7fc9579^M
+(gdb) PASS: gdb.base/step-over-syscall.exp: fork: displaced=off: pc after stepi
+FAIL: $exp: fork: displaced=off: pc after stepi matches insn addr after syscall
+...
+
+The problem is that the syscall returns at the "pop %ebp" insn, while the
+test-case expects it to return at the "int $0x80" insn.
+
+This is similar to the problem I fixed in commit 14852123287 ("[gdb/testsuite]
+Fix gdb.base/step-over-syscall.exp with -m32"), just that the syscall sequence
+used there used the "sysenter" insn instead of the "syscall" insn.
+
+Fix this by extending the fix for commit 14852123287 to also handle the
+"syscall" insn.
+
+Tested on x86_64-linux, both using an AMD and Intel processor.
+
+PR testsuite/32439
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32439
+---
+ gdb/testsuite/gdb.base/step-over-syscall.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/step-over-syscall.exp b/gdb/testsuite/gdb.base/step-over-syscall.exp
+index 8cacc0962c3..b3b02acc553 100644
+--- a/gdb/testsuite/gdb.base/step-over-syscall.exp
++++ b/gdb/testsuite/gdb.base/step-over-syscall.exp
+@@ -176,7 +176,7 @@ proc setup { syscall } {
+     #   0xf7fd5159 <__kernel_vsyscall+9>:    pop    %ebp
+     # then a stepi at sysenter will step over the int insn, so make sure
+     # next_insn_addr points after the int insn.
+-    if { $actual_syscall_insn == "sysenter" } {
++    if { $actual_syscall_insn == "sysenter" || $actual_syscall_insn == "syscall" } {
+ 	set test "pc after sysenter instruction"
+ 	set re_int_insn "\[ \t\]*int\[ \t\]\[^\r\n\]*"
+ 	set re [multi_line \
+
+base-commit: 5754dc6554eb0ffef484ce898537846a6247f4a9
+-- 
+2.43.0
+

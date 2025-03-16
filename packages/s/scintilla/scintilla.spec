@@ -17,16 +17,16 @@
 
 
 %define so_ver 5.5
-%define _ver %{so_ver}.4
-%define tar_ver 554
+%define _ver %{so_ver}.5
+%define tar_ver 555
 %define libname libscintilla5
 Name:           scintilla
 Version:        %{_ver}
 Release:        0
 Summary:        A source code editing component
 License:        MIT
-URL:            http://www.scintilla.org
-Source:         http://sourceforge.net/projects/scintilla/files/scintilla/%{version}/%{name}%{tar_ver}.tgz
+URL:            https://www.scintilla.org
+Source:         https://sourceforge.net/projects/scintilla/files/scintilla/%{version}/%{name}%{tar_ver}.tgz
 # PATCH-FEATURE-OPENSUSE scintilla-shared.patch badshah400@gmail.com -- Build shared library
 Patch0:         %{name}-shared.patch
 BuildRequires:  gcc-c++
@@ -103,3 +103,4 @@ rmdir %{buildroot}%{_includedir}/%{name}/src || :
 %{_includedir}/%{name}/
 
 %changelog
+

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 15 23:09:15 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.25.1:
+  * Fix incorrect paths in inline source maps (#4070, #4075, #4105)
+  * Fix invalid generated source maps (#4080, #4082, #4104, #4107)
+  * Fix a regression with non-file source map paths (#4078)
+  * Fix a crash with switch optimization (#4088)
+  * Update Go from 1.23.5 to 1.23.7 (#4076, #4077)
+
+-------------------------------------------------------------------
 Sat Feb  8 22:10:12 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 0.25.0:

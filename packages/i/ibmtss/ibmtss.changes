@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 25 10:42:23 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.4.1:
+  * Issue new test EK CA root certificates with a longer validity period.
+  * Remove patches upstream:
+    - tss-Commit-changelog-and-autotools-version-update.patch
+    - utils-Update-.so-version-to-2.4.patch
+    - ibmtss-2.4.0-fix-FTBFS-2026.patch
+
+-------------------------------------------------------------------
 Tue Dec  3 07:26:17 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add ibmtss-2.4.0-fix-FTBFS-2026.patch to fix tests after 2026 (boo#1102840)

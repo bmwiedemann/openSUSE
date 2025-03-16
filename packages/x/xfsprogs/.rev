@@ -858,4 +858,16 @@ Signed-off-by: Anthony Iliopoulos &lt;ailiop@suse.com&gt;
 (🤖: Submission of xfsprogs via https://src.opensuse.org/pool/xfsprogs/pulls/16 by ailiopoulos)</comment>
     <requestid>1246715</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>0a6bae5a5354e3804309e47fe1deed8a</srcmd5>
+    <version>6.13.0</version>
+    <time>1742147878</time>
+    <user>dimstar_suse</user>
+    <comment>Modernize specfile
+
+
+
+(🤖: Submission of xfsprogs via https://src.opensuse.org/pool/xfsprogs/pulls/17 by dirkmueller)</comment>
+    <requestid>1252700</requestid>
+  </revision>
 </revisionlist>

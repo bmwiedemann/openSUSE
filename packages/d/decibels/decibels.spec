@@ -1,6 +1,7 @@
 #
 # spec file for package decibels
 #
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,13 +18,13 @@
 
 %define lname   org.gnome.Decibels
 %define sname   gi-typescript-definitions
-%define scommit 94acb6307e8d467cd9b3e340a18431496636b8f6
+%define scommit dbbaa0527556cd3ce5434c4a5072cd99348eff7a
 Name:           decibels
-Version:        46.0
+Version:        48.0
 Release:        0
 Summary:        Play audio files with a waveform
 License:        GPL-3.0-or-later
-URL:            https://gitlab.gnome.org/GNOME/Incubator/decibels
+URL:            https://gitlab.gnome.org/GNOME/decibels
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        https://gitlab.gnome.org/BrainBlasted/%{sname}/-/archive/%{scommit}/%{sname}-%{scommit}.tar.bz2
 BuildRequires:  appstream-glib
@@ -61,9 +62,10 @@ tar -xf %{SOURCE1} --strip-components 1 -C gi-types
 %find_lang %{lname}
 
 %check
+%meson_test
 
 %files
-%license LICENCE
+%license LICEN*
 %doc README*
 %{_bindir}/%{lname}
 %dir %{_datadir}/%{lname}
@@ -71,10 +73,8 @@ tar -xf %{SOURCE1} --strip-components 1 -C gi-types
 %{_datadir}/applications/%{lname}.desktop
 %{_datadir}/icons/hicolor/*/*/%{lname}*
 %{_datadir}/metainfo/%{lname}.metainfo.xml
-%{_datadir}/glib-2.0/schemas/%{lname}.gschema.xml
 %{_datadir}/dbus-1/services/%{lname}.service
 
 %files lang -f %{lname}.lang
 
 %changelog
-

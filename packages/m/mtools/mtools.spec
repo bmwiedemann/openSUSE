@@ -30,8 +30,8 @@ Source2:        %{name}.keyring
 Patch0:         %{name}-conf.diff
 BuildRequires:  makeinfo
 BuildRequires:  texinfo
-Requires:       glibc-gconv-modules-extra
 Requires:       glibc-locale-base
+Requires:       (glibc-gconv-modules-extra if glibc >= 2.39)
 
 %description
 Mtools allows access to an MS-DOS file system on disk without

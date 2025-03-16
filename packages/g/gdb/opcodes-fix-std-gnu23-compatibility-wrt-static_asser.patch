@@ -1,0 +1,44 @@
+From 899cec1550fa94e4644a3d5be4a229eb89b856d3 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 7 Mar 2025 13:06:52 +0100
+Subject: [PATCH 05/10] opcodes: fix -std=gnu23 compatibility wrt static_assert
+
+static_assert is declared in C23 so we can't reuse that identifier:
+* Define our own static_assert conditionally;
+
+* Rename "static assert" hacks to _N as we do already in some places
+  to avoid a conflict.
+
+ChangeLog:
+	PR ld/32372
+
+        * i386-gen.c (static_assert): Define conditionally.
+        * mips-formats.h (MAPPED_INT): Rename identifier.
+        (MAPPED_REG): Rename identifier.
+        (OPTIONAL_MAPPED_REG): Rename identifier.
+        * s390-opc.c (static_assert): Define conditionally.
+
+(cherry picked from commit 8ebe62f3f0d)
+(cherry pick dropped: opcodes/i386-gen.c)
+(cherry pick dropped: opcodes/mips-formats.h)
+---
+ opcodes/s390-opc.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/opcodes/s390-opc.c b/opcodes/s390-opc.c
+index 9d9f0973e55..49efd714157 100644
+--- a/opcodes/s390-opc.c
++++ b/opcodes/s390-opc.c
+@@ -36,7 +36,9 @@
+ 
+ /* Build-time checks are preferrable over runtime ones.  Use this construct
+    in preference where possible.  */
++#ifndef static_assert
+ #define static_assert(e) ((void)sizeof (struct { int _:1 - 2 * !(e); }))
++#endif
+ 
+ #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
+ 
+-- 
+2.43.0
+

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 15 10:26:07 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gtksourceview-3.0) BuildRequires: Not needed, nor
+  used.
+
+-------------------------------------------------------------------
 Sat Mar 23 07:40:09 UTC 2024 - opensuse.lietuviu.kalba@gmail.com
 
 - Update to 2.0.1:

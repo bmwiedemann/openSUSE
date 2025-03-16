@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 15 22:23:03 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.18.1:
+  * Allow to configure the colors of the UI
+  * ui enums accept both snake_case and PascalCase
+  * added new key mappings
+  * New ignore path options allowing to reduce amount of displayed
+    processes
+
+-------------------------------------------------------------------
 Wed Feb  5 18:02:20 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.15.0:

@@ -18,7 +18,7 @@
 
 %define appid   org.squidowl.halloy
 Name:           halloy
-Version:        2025.2
+Version:        2025.3
 Release:        0
 Summary:        IRC application written in Rust
 License:        GPL-3.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  openssl-devel
-BuildRequires:  rust >= 1.75.0
+BuildRequires:  rust >= 1.85.0
 
 %description
 Halloy is an open-source IRC client written in Rust, with the Iced GUI

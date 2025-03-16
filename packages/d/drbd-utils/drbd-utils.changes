@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 13 07:52:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
+
+- drbd_passive resource times out after 10 minutes and drbd device doesn't exist (bsc#1239437)
+  * add patch
+    + bsc-1239437_drbd.rules-fix-missing-udev-device.patch
+  * update drbd.spec
+    + remove '--without-83support' from configure, which is not needed anymore
+
+-------------------------------------------------------------------
 Wed Jan  8 07:42:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
 
 - Update drbd-utils from 9.25.0 to 9.29.0

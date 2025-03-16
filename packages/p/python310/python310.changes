@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 10 15:44:31 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Skip PGO with %want_reproducible_builds (bsc#1239210)
+
+-------------------------------------------------------------------
 Tue Feb  4 14:43:13 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2025-0938-sq-brackets-domain-names.patch which

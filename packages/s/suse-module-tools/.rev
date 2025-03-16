@@ -907,4 +907,13 @@ source service setup which messed up my spec file.
     (gh#openSUSE/suse-module-tools#113, gh#openSUSE/sdbootutil#122) (forwarded request 1239333 from mwilck)</comment>
     <requestid>1239335</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>06981d51a5fc30d501185b6ab5997e37</srcmd5>
+    <version>16.0.59</version>
+    <time>1742147893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.59:
+  * inkmp-script: fix &quot;bad array subscript&quot; error (bsc#1239550) (forwarded request 1252873 from mwilck)</comment>
+    <requestid>1252874</requestid>
+  </revision>
 </revisionlist>

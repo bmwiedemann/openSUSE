@@ -1,7 +1,7 @@
 #
 # spec file for package flint
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           flint
 %define lname	libflint20
 %define _lto_cflags %nil %dnl ASM in source
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        C library for doing number theory
 License:        LGPL-3.0-or-later
@@ -28,13 +28,14 @@ URL:            https://flintlib.org/
 #Git-Clone:     https://github.com/flintlib/flint
 #NEWS:          doc/source/history.rst
 Source:         https://github.com/flintlib/flint/releases/download/v%version/flint-%version.tar.xz
+Patch1:         0001-build-reduce-build-requirements-on-gmp-and-mpfr.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gmp-devel >= 6.2.1
+BuildRequires:  gmp-devel >= 6.1.2
 BuildRequires:  libtool
-BuildRequires:  mpfr-devel >= 4.1.0
+BuildRequires:  pkgconfig(mpfr) >= 4
 BuildRequires:  ntl-devel
 BuildRequires:  xz
 
@@ -78,11 +79,9 @@ developing against the FLINT library.
 %autosetup -p1
 
 %build
-if test ! -e configure; then
-	./bootstrap.sh
-fi
+autoreconf -fi
 %configure \
-%if 0%{?suse_version} < 1590
+%if 0%{?suse_version} < 1600
 	--enable-gmp-internals=no \
 %endif
 	--disable-static --enable-reentrant --with-ntl

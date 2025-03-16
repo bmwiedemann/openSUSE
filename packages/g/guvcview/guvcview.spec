@@ -1,7 +1,7 @@
 #
 # spec file for package guvcview
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 # Copyright (c) 2013 Marguerite Su <marguerite@opensuse.org>
 #
@@ -46,25 +46,25 @@ Patch0:         guvcview-SUSE.patch
 Patch1:         guvcview-qt5-nolibs_qt5names.patch
 # PATCH-FIX-OPENSUSE 0001-Fix-build-with-GCC-14.patch -- Upstream already has the fix (although part of bigger changeset)
 Patch2:         0001-Fix-build-with-GCC-14.patch
-BuildRequires:  alsa-devel
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
-BuildRequires:  gsl-devel
-BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  libpng-devel
-BuildRequires:  libpulse-devel
 BuildRequires:  libtool
-BuildRequires:  libusb-1_0-devel
-BuildRequires:  libv4l-devel
 BuildRequires:  pkgconfig
-BuildRequires:  portaudio-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(libv4l2)
+BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(sdl2)
 %if %{with qt5}
 BuildRequires:  pkgconfig(Qt5Widgets)
@@ -120,22 +120,22 @@ any v4l2 compatible device.
 %package        devel
 Summary:        Development files for guvcview
 Group:          Development/Libraries/C and C++
-Requires:       alsa-devel
 Requires:       glibc-devel
-Requires:       gsl-devel
-Requires:       libSDL2-devel
 Requires:       libgviewaudio-%{sover0} = %{version}-%{release}
 Requires:       libgviewencoder-%{sover1} = %{version}-%{release}
 Requires:       libgviewrender-%{sover1} = %{version}-%{release}
 Requires:       libgviewv4l2core-%{sover1} = %{version}-%{release}
 Requires:       libpng-devel
-Requires:       libpulse-devel
-Requires:       libudev-devel
-Requires:       libusb-1_0-devel
-Requires:       libv4l-devel
-Requires:       portaudio-devel
+Requires:       pkgconfig(alsa)
+Requires:       pkgconfig(gsl)
 Requires:       pkgconfig(libavcodec)
 Requires:       pkgconfig(libavutil)
+Requires:       pkgconfig(libpulse)
+Requires:       pkgconfig(libudev)
+Requires:       pkgconfig(libusb-1.0)
+Requires:       pkgconfig(libv4l2)
+Requires:       pkgconfig(portaudio-2.0)
+Requires:       pkgconfig(sdl2)
 
 %description devel
 A GTK interface for capturing and viewing video from devices

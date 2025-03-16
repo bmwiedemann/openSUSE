@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 13 19:43:57 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.59:
+  * inkmp-script: fix "bad array subscript" error (bsc#1239550)
+
+-------------------------------------------------------------------
+Thu Mar 13 10:05:12 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.58:
+  * mkosi-initrd: build initrds directly to /boot
+  (gh#openSUSE/suse-module-tools#115)
+
+-------------------------------------------------------------------
 Tue Jan 21 17:07:24 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
   * Fix "initrd: file not found" error in sd-boot setup

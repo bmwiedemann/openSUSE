@@ -18,7 +18,7 @@
 
 %bcond_with betatest
 Name:           patterns-server
-Version:        20250225
+Version:        20250313
 Release:        0
 Summary:        Patterns for Installation (server patterns)
 License:        MIT
@@ -41,6 +41,7 @@ This particular package contains all the server related patterns
 
 
 ################################################################################
+
 %package dhcp_dns_server
 %pattern_serverfunctions
 Summary:        DHCP and DNS Server
@@ -246,14 +247,14 @@ Provides:       pattern-visible()
 Requires:       libvirt-client
 Requires:       libvirt-daemon-config-network
 Requires:       libvirt-daemon-qemu
-Requires:       tigervnc
+%{requires_on_traditional tigervnc}
 Requires:       pattern() = basesystem
 Requires:       pattern() = kvm_server
 # bnc#868542
 %if 0%{?is_opensuse}
 Requires:       virt-manager
 %endif
-Requires:       virt-install
+%{requires_on_traditional virt-install}
 Recommends:     openssh
 %if 0%{?is_opensuse}
 # BSC#1078908

@@ -1,7 +1,7 @@
 #
 # spec file for package pciutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -97,7 +97,14 @@ rm %{buildroot}%{_mandir}/man8/update-pciids.8
 %check
 %make_build tests
 
+%if 0%{?suse_version} >= 1600
 %ldconfig_scriptlets -n %{lname}
+%else
+%post -p /sbin/ldconfig -n %{lname}
+%end
+%postun -p /sbin/ldconfig -n %{lname}
+%end
+%endif
 
 %files
 %license COPYING

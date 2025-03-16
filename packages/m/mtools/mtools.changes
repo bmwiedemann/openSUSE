@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 24 11:54:12 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Require glibc-gconv-modules-extra only if glibc >= 2.39
+
+-------------------------------------------------------------------
 Mon Sep 30 09:13:35 UTC 2024 - pgajdos@suse.com
 
 - version update to 4.0.45

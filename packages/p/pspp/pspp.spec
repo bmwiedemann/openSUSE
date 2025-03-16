@@ -64,7 +64,6 @@ BuildRequires:  pango-devel
 BuildRequires:  perl(Text::Diff)
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(appstream)
-BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  postgresql-devel
 BuildRequires:  python3-devel >= 3.4
 BuildRequires:  readline-devel

@@ -364,6 +364,9 @@ kfail=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=32167
     "FAIL: gdb.base/bp-cmds-continue-ctrl-c.exp: (attach|run): stop with control-c"
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=32688
+    "FAIL: gdb.threads/thread-specific-bp.exp: non_stop=on: continue to end"
+
 ) # kfail
 
 kfail_sle12=(
@@ -543,6 +546,9 @@ kfail_factory=(
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=31564
     "FAIL: gdb.base/rtld-step.exp: runto: run to main"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=32678
+    "FAIL: gdb.reverse/time-reverse.exp: mode=c:"
 
 ) # kfail_factory
 
@@ -768,8 +774,6 @@ kfail_i586=(
     "FAIL: gdb.base/valgrind-infcall-2.exp:"
     "FAIL: gdb.base/valgrind-infcall.exp:"
 
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=32678
-    "FAIL: gdb.reverse/time-reverse.exp: mode=c:"
 )
 
 kfail_arm=(

@@ -1,0 +1,89 @@
+From 9b1fc55c1887675923d4ddeda4b38ab05e6bb44c Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 13 Mar 2025 11:15:05 +0100
+Subject: [PATCH 1/2] [gdb/record] Fix out-of-bounds write in
+ aarch64_record_asimd_load_store
+
+After compiling gdb with -fstack-protector-all, and running test-case
+gdb.reverse/getrandom.exp on aarch64-linux, we run into
+"Stack smashing detected" in function aarch64_record_asimd_load_store.
+
+This is reported in PR record/32784.
+
+This happens due to an out-of-bounds write to local array record_buf_mem:
+...
+  uint64_t record_buf_mem[24];
+...
+when recording insn:
+...
+B+>0xfffff7ff4d10  st1     {v0.16b-v3.16b}, [x0]
+...
+
+We can fix this by increasing the array size to 128, but rather than again
+hardcoding a size, reimplement record_buf_mem as std::vector.
+
+Tested on aarch64-linux.
+
+Approved-By: Guinevere Larsen <guinevere@redhat.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32784
+(cherry picked from commit 51729ea0905d1f688b7fd2ea769e69b29daa1b7c)
+---
+ gdb/aarch64-tdep.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/gdb/aarch64-tdep.c b/gdb/aarch64-tdep.c
+index e4bca6c6632..92daaa75b1c 100644
+--- a/gdb/aarch64-tdep.c
++++ b/gdb/aarch64-tdep.c
+@@ -5030,9 +5030,9 @@ aarch64_record_asimd_load_store (aarch64_insn_decode_record *aarch64_insn_r)
+   CORE_ADDR address;
+   uint64_t addr_offset = 0;
+   uint32_t record_buf[24];
+-  uint64_t record_buf_mem[24];
++  std::vector<uint64_t> record_buf_mem;
+   uint32_t reg_rn, reg_rt;
+-  uint32_t reg_index = 0, mem_index = 0;
++  uint32_t reg_index = 0;
+   uint8_t opcode_bits, size_bits;
+ 
+   reg_rt = bits (aarch64_insn_r->aarch64_insn, 0, 4);
+@@ -5095,8 +5095,8 @@ aarch64_record_asimd_load_store (aarch64_insn_decode_record *aarch64_insn_r)
+ 		record_buf[reg_index++] = reg_rt + AARCH64_V0_REGNUM;
+ 	      else
+ 		{
+-		  record_buf_mem[mem_index++] = esize / 8;
+-		  record_buf_mem[mem_index++] = address + addr_offset;
++		  record_buf_mem.push_back (esize / 8);
++		  record_buf_mem.push_back (address + addr_offset);
+ 		}
+ 	      addr_offset = addr_offset + (esize / 8);
+ 	      reg_rt = (reg_rt + 1) % 32;
+@@ -5167,8 +5167,8 @@ aarch64_record_asimd_load_store (aarch64_insn_decode_record *aarch64_insn_r)
+ 		  record_buf[reg_index++] = reg_tt + AARCH64_V0_REGNUM;
+ 		else
+ 		  {
+-		    record_buf_mem[mem_index++] = esize / 8;
+-		    record_buf_mem[mem_index++] = address + addr_offset;
++		    record_buf_mem.push_back (esize / 8);
++		    record_buf_mem.push_back (address + addr_offset);
+ 		  }
+ 		addr_offset = addr_offset + (esize / 8);
+ 		reg_tt = (reg_tt + 1) % 32;
+@@ -5180,9 +5180,9 @@ aarch64_record_asimd_load_store (aarch64_insn_decode_record *aarch64_insn_r)
+     record_buf[reg_index++] = reg_rn;
+ 
+   aarch64_insn_r->reg_rec_count = reg_index;
+-  aarch64_insn_r->mem_rec_count = mem_index / 2;
++  aarch64_insn_r->mem_rec_count = record_buf_mem.size () / 2;
+   MEM_ALLOC (aarch64_insn_r->aarch64_mems, aarch64_insn_r->mem_rec_count,
+-	     record_buf_mem);
++	     record_buf_mem.data ());
+   REG_ALLOC (aarch64_insn_r->aarch64_regs, aarch64_insn_r->reg_rec_count,
+ 	     record_buf);
+   return AARCH64_RECORD_SUCCESS;
+
+base-commit: 96a340e789f714156bbac7f78f340e06659b5e70
+-- 
+2.43.0
+

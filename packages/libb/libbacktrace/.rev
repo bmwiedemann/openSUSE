@@ -91,4 +91,18 @@
   * libbacktrace: don't get confused by overlapping address ranges</comment>
     <requestid>1223596</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4955e06b0ae3b49e3c8f417e450c6b68</srcmd5>
+    <version>1.0+git20250210</version>
+    <time>1742147886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20250210:
+  * libbacktrace: add cast to avoid undefined shift
+  * libbacktrace: add casts to avoid undefined shifts
+  * arm: libbacktrace: Check if the compiler supports __sync atomics
+
+- Update to version 1.0+git20241129:
+  * libbacktrace: use WIN32_LEAN_AND_MEAN, not WIN32_MEAN_AND_LEAN</comment>
+    <requestid>1252740</requestid>
+  </revision>
 </revisionlist>

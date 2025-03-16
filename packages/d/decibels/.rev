@@ -34,4 +34,22 @@
     <comment></comment>
     <requestid>1166811</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>64e28a2c01b77ab607d3de4088a4375f</srcmd5>
+    <version>48.0</version>
+    <time>1742147942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 48.0
+  * The waveform was rewritten, redesigned and unified with the
+    scale
+  * Added support for multiple windows
+  * Added playback rate shortcuts
+  * Changed the app's icon
+  * Added support for opening the containing folder of an audio
+    file
+  * Update gi submodule
+- add meson_test to check files
+</comment>
+    <requestid>1253426</requestid>
+  </revision>
 </revisionlist>

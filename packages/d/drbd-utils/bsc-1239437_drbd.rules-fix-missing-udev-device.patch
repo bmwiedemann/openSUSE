@@ -1,0 +1,37 @@
+From 9cd344fadd8b142c9995055619695d7b96014d83 Mon Sep 17 00:00:00 2001
+From: Heming Zhao <heming.zhao@suse.com>
+Date: Thu, 13 Mar 2025 15:43:50 +0800
+Subject: [PATCH] drbd.rules: fix missing udev device
+
+This commit partialy reverts commit aa6409657553 ("drbd.rules: use
+drbdsetup udev command"). The changes in aa6409657553 switch udev
+generator from drbdadm to drbdsetup, which introduces incompatibility
+with existing udev rules.
+
+See bsc#1239437 for more details.
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ scripts/drbd.rules.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/drbd.rules.in b/scripts/drbd.rules.in
+index c918facb8768..469996e23efd 100644
+--- a/scripts/drbd.rules.in
++++ b/scripts/drbd.rules.in
+@@ -3,10 +3,11 @@
+ SUBSYSTEM!="block", GOTO="drbd_end"
+ KERNEL!="drbd*", GOTO="drbd_end"
+ 
+-IMPORT{program}="@sbindir@/drbdsetup udev %m"
++IMPORT{program}="@sbindir@/drbdadm sh-udev minor-%m"
+ 
+ ENV{SYMLINK_BY_DISK}!="", SYMLINK+="$env{SYMLINK_BY_DISK}"
+ ENV{SYMLINK_BY_RES}!="", SYMLINK+="$env{SYMLINK_BY_RES}"
++ENV{DEVICE}=="drbd_?*", SYMLINK+="$env{DEVICE}"
+ ENV{SYSTEMD_WANTS}="drbd-graceful-shutdown.service"
+ 
+ LABEL="drbd_end"
+-- 
+2.43.0
+

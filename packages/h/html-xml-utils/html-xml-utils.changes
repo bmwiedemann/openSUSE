@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  8 15:52:58 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 8.7:
+  * textwrap.c: Corrected counting of visible characters on a line
+    (bufchars).
+  * hxcopy.c: Fixed error in an error message.
+
+-------------------------------------------------------------------
 Thu May  4 14:27:28 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 8.6:

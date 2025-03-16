@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>1238919</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fa1ff6a8e164e5d347f5cbb822b23a12</srcmd5>
+    <version>2.3.4</version>
+    <time>1742147869</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.3.4 (forwarded request 1252607 from mchellamuthu)</comment>
+    <requestid>1252656</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 13 11:48:43 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0+git20250210:
+  * libbacktrace: add cast to avoid undefined shift
+  * libbacktrace: add casts to avoid undefined shifts
+  * arm: libbacktrace: Check if the compiler supports __sync atomics
+
+-------------------------------------------------------------------
+Fri Jan 10 11:02:07 UTC 2025 - mpluskal@suse.com
+
+- Update to version 1.0+git20241129:
+  * libbacktrace: use WIN32_LEAN_AND_MEAN, not WIN32_MEAN_AND_LEAN
+
+-------------------------------------------------------------------
 Tue Nov 12 09:35:26 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0+git20241025:

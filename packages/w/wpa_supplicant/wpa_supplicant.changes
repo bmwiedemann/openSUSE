@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 13 10:22:26 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- CVE-2025-24912: hostapd fails to process crafted RADIUS packets 
+  properly (bsc#1239461)
+  [+ CVE-2025-24912.patch] 
+
+-------------------------------------------------------------------
 Wed Jan 22 15:34:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).

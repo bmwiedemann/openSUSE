@@ -565,4 +565,12 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     <comment></comment>
     <requestid>1247929</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>ff27e51b3cc32dc57b19d8722cd550f6</srcmd5>
+    <version>3.32.0</version>
+    <time>1742147887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1252743</requestid>
+  </revision>
 </revisionlist>

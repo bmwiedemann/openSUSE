@@ -995,4 +995,13 @@
   URLs (bsc#1236705, CVE-2025-0938, gh#python/cpython#105704)</comment>
     <requestid>1244096</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>b137ccf3bb5edae5d738e3c6fac825f0</srcmd5>
+    <version>3.10.16</version>
+    <time>1742147881</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip PGO with %want_reproducible_builds (bsc#1239210)
+</comment>
+    <requestid>1252710</requestid>
+  </revision>
 </revisionlist>

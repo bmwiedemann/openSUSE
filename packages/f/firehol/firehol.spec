@@ -1,7 +1,7 @@
 #
 # spec file for package firehol
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           firehol
-Version:        3.1.7
+Version:        3.1.8
 Release:        0
 Summary:        Tools to build stateful firewalls and traffic shaping
 License:        GPL-2.0-only
@@ -25,8 +25,8 @@ Group:          Productivity/Networking/Security
 URL:            https://firehol.org/
 Source:         https://github.com/firehol/firehol/releases/download/v%{version}/firehol-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
-Patch0:	harden_firehol.service.patch
-Patch1:	harden_fireqos.service.patch
+Patch0:         harden_firehol.service.patch
+Patch1:         harden_fireqos.service.patch
 BuildRequires:  curl
 BuildRequires:  fdupes
 BuildRequires:  git-core

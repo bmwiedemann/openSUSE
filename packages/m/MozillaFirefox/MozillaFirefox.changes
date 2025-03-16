@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 15 07:34:21 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 136.0.1
+  * Fixed an issue where a cookie size limit caused problems with
+    website cookie management when using the CookieStore API.
+    This could cause login and other state-related issues. (bmo#1950565)
+  * Fixed an issue where Control/Command+L did not focus the
+    address bar in new windows. (bmo#1947723)
+
+-------------------------------------------------------------------
 Thu Mar  6 07:18:59 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 136.0

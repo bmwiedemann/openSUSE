@@ -17,7 +17,7 @@
 
 
 Name:           rootlesskit
-Version:        2.3.2
+Version:        2.3.4
 Release:        0
 Summary:        Linux-native fakeroot using user namespaces
 License:        Apache-2.0

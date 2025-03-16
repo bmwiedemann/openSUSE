@@ -43,7 +43,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.48.1
+Version:        2.49.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -86,7 +86,11 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcsh
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(zlib-ng)
+%else
 BuildRequires:  pkgconfig(zlib)
+%endif
 Requires:       git-core = %{version}
 Requires:       perl-Git = %{version}
 Recommends:     git-email
@@ -434,9 +438,9 @@ if ! test -f %{buildroot}%{gitexecdir}/git-add; then
 fi
 
 mkdir -p "%{buildroot}/%{_docdir}/git" "%{buildroot}/%{_docdir}/git/howto" "%{buildroot}/%{_docdir}/git/technical"
-cp -a README.md Documentation/*.txt "%{buildroot}/%{_docdir}/git/"
-cp -a Documentation/howto/*.txt "%{buildroot}/%{_docdir}/git/howto/"
-cp -a Documentation/technical/*.txt "%{buildroot}/%{_docdir}/git/technical/"
+cp -a README.md Documentation/*.adoc "%{buildroot}/%{_docdir}/git/"
+cp -a Documentation/howto/*.adoc "%{buildroot}/%{_docdir}/git/howto/"
+cp -a Documentation/technical/*.adoc "%{buildroot}/%{_docdir}/git/technical/"
 %{!?_without_docs: cp -a Documentation/*.html "%{buildroot}/%{_docdir}/git/"}
 %{!?_without_docs: cp -a Documentation/howto/*.html "%{buildroot}/%{_docdir}/git/howto/"}
 %{!?_without_docs: cp -a Documentation/technical/*.html "%{buildroot}/%{_docdir}/git/technical/"}

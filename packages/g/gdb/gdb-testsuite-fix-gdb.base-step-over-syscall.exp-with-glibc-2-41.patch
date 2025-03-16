@@ -1,0 +1,119 @@
+From c663bffcf74ccf94f7ff3c78b98d20fa60a09d31 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 11 Mar 2025 09:38:50 +0100
+Subject: [PATCH 2/2] [gdb/testsuite] Fix gdb.base/step-over-syscall.exp with
+ glibc 2.41
+
+On openSUSE Tumbleweed, with glibc 2.41, when running test-case
+gdb.base/step-over-syscall.exp I run into:
+...
+(gdb) stepi^M
+0x00007ffff7cfd09b in __abort_lock_rdlock () from /lib64/libc.so.6^M
+1: x/i $pc^M
+=> 0x7ffff7cfd09b <__abort_lock_rdlock+29>:     syscall^M
+(gdb) p $eax^M
+$1 = 14^M
+(gdb) FAIL: $exp: fork: displaced=off: syscall number matches
+FAIL: $exp: fork: displaced=off: find syscall insn in fork (timeout)
+...
+
+We're stepi-ing through fork trying to find the fork syscall, but encounter
+another syscall.
+
+The test-case attempts to handle this:
+...
+      gdb_test_multiple "stepi" "find syscall insn in $syscall" {
+            -re ".*$syscall_insn.*$gdb_prompt $" {
+                # Is the syscall number the correct one?
+		if {[syscall_number_matches $syscall]} {
+                    pass $gdb_test_name
+                } else {
+		    exp_continue
+                }
+            }
+            -re "x/i .*=>.*\r\n$gdb_prompt $" {
+                incr steps
+                if {$steps == $max_steps} {
+                    fail $gdb_test_name
+                } else {
+                    send_gdb "stepi\n"
+                    exp_continue
+                }
+            }
+        }
+...
+but fails to do so because it issues an exp_continue without issuing a new
+stepi command, and consequently the "find syscall insn in fork" test times
+out.
+
+Also, the call to syscall_number_matches produces a PASS or FAIL, so skipping
+one syscall would produce:
+...
+FAIL: $exp: fork: displaced=off: syscall number matches
+PASS: $exp: fork: displaced=off: syscall number matches
+DUPLICATE: $exp: fork: displaced=off: syscall number matches
+...
+
+Fix this by:
+- not producing PASS or FAIL in syscall_number_matches, and
+- issuing stepi when encountering another syscall.
+
+While we're at it, fix indentation in syscall_number_matches.
+
+Tested on x86_64-linux, specifically:
+- openSUSE Tumbleweed (glibc 2.41), and
+- openSUSE Leap 15.6 (glibc 2.38).
+
+PR testsuite/32780
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32780
+---
+ gdb/testsuite/gdb.base/step-over-syscall.exp | 24 ++++++++++++++------
+ 1 file changed, 17 insertions(+), 7 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/step-over-syscall.exp b/gdb/testsuite/gdb.base/step-over-syscall.exp
+index b3b02acc553..cd1683d3dde 100644
+--- a/gdb/testsuite/gdb.base/step-over-syscall.exp
++++ b/gdb/testsuite/gdb.base/step-over-syscall.exp
+@@ -62,14 +62,18 @@ proc_with_prefix check_pc_after_cross_syscall { displaced syscall syscall_insn_n
+ # Verify the syscall number is the correct one.
+ 
+ proc syscall_number_matches { syscall } {
+-  global syscall_register syscall_number
++    global syscall_register syscall_number
+ 
+-  if {[gdb_test "p \$$syscall_register" ".*= $syscall_number($syscall)" \
+-    "syscall number matches"] != 0} {
+-      return 0
+-  }
++    set res 0
++    gdb_test_multiple "p \$$syscall_register" "syscall number matches" {
++	-re -wrap ".*= $syscall_number($syscall)" {
++	    set res 1
++	}
++	-re -wrap "" {
++	}
++    }
+ 
+-  return 1
++    return $res
+ }
+ 
+ # Restart GDB and set up the test.  Return a list in which the first one
+@@ -139,7 +143,13 @@ proc setup { syscall } {
+ 		if {[syscall_number_matches $syscall]} {
+ 		    pass $gdb_test_name
+ 		} else {
+-		    exp_continue
++		    incr steps
++		    if {$steps == $max_steps} {
++			fail $gdb_test_name
++		    } else {
++			send_gdb "stepi\n"
++			exp_continue
++		    }
+ 		}
+ 	    }
+ 	    -re "x/i .*=>.*\r\n$gdb_prompt $" {
+-- 
+2.43.0
+

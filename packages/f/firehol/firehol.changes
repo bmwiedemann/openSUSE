@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 15 22:08:31 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- firehol (3.1.8) - 2025-03-15
+
+  * Update-Ipsets
+    - Remove some dead lists
+    - Handle ipsets temporarily locked by another process with
+      retries
+
+-------------------------------------------------------------------
 Mon Feb 26 08:21:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

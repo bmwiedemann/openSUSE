@@ -40,7 +40,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmp)
-BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(lapack)
 BuildRequires:  pkgconfig(libcurl)

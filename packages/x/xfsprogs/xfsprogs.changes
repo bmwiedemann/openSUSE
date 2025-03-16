@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar  1 10:03:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile: remove implicit %defattr, trim -n arguments
+
+-------------------------------------------------------------------
 Tue Feb 18 14:56:17 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
 
 - mkfs: fix filesize function compilation error on 32-bit archs

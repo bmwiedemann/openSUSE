@@ -1530,4 +1530,12 @@ C API
       (bsc#1238450 CVE-2025-1795)</comment>
     <requestid>1251955</requestid>
   </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>f31ae414ccef9af37ecc85f23e571418</srcmd5>
+    <version>3.11.11</version>
+    <time>1742147870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1252659</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 14 12:20:13 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 0.9.1
+
+  * Added PEP 639 support for SPDX license and license files, METADATA 2.4
+  * Validate extra keys (warning, opt-in error)
+  * Functions to check top level and build-system (including PEP 735 support)
+  * Add TypedDict's in new module for typing pyproject.toml dicts
+  * all_errors=True causes ExceptionGroup's to be emitted
+  * Support METADATA 2.1+ JSON format with new .as_json() method
+  * Handle multilines the way setuptools does with smart indentation
+  * Warn on multiline Summary (project.description)
+  * Improve locking for just metadata fields
+  * Error on extra keys in author/maintainer
+  * URL name stylization removed matching PEP 753
+  * Handle form feed for Python <3.12.4
+  * Some touchup based on packaging PR
+ 
+
+-------------------------------------------------------------------
 Thu Aug 17 12:49:35 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 0.7.1

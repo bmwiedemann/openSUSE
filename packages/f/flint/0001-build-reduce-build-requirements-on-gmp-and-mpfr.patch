@@ -1,0 +1,59 @@
+From fc593e7d0328435ec2ae6a79936eb3640caebc02 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sun, 16 Mar 2025 09:54:20 +0100
+Subject: [PATCH] build: reduce build requirements on gmp and mpfr
+References: https://github.com/flintlib/flint/pull/2260
+
+For Leap 15.6.
+
+---
+ configure.ac | 13 +++++++++++--
+ flint.pc.in  |  2 +-
+ 2 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 511d0be9a..cc1658dbb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -978,7 +978,15 @@ fi
+ # check GMP
+ ################################################################################
+ 
+-FLINT_CHECK_GMP_H(6,2,1)
++AS_IF([test "$enable_gmp_internals" = "yes"], [
++	FLINT_CHECK_GMP_H(6,2,1)
++	GMP_REQUIREMENT="6.2.1"
++], [
++	dnl Dependency on mpn_zero_p
++	FLINT_CHECK_GMP_H(6,1,0)
++	GMP_REQUIREMENT="6.1.0"
++])
++AC_SUBST([GMP_REQUIREMENT])
+ FLINT_GMP_LONG_LONG_LIMB([SLONG="long long int"
+                           ULONG="unsigned long long int"
+                           gmpcompat_h_in="gmpcompat-longlong.h.in"],
+@@ -1001,7 +1009,8 @@ AC_SUBST(GMPCOMPAT_H_IN, $gmpcompat_h_in)
+ # check MPFR
+ ################################################################################
+ 
+-FLINT_CHECK_MPFR_H(4,1,0)
++dnl Dependency on mpfr_rootn_ui
++FLINT_CHECK_MPFR_H(4,0,0)
+ 
+ ################################################################################
+ # check ABI
+diff --git a/flint.pc.in b/flint.pc.in
+index f17a2a9e6..138fcbb16 100644
+--- a/flint.pc.in
++++ b/flint.pc.in
+@@ -7,6 +7,6 @@ Name: @PACKAGE_NAME@
+ Description: Fast Library for Number Theory
+ Version: @PACKAGE_VERSION@
+ URL: https://flintlib.org/
+-Requires: gmp >= 6.2.1 mpfr >= 4.1.0
++Requires: gmp >= @GMP_REQUIREMENT@ mpfr >= 4.0.0
+ Cflags: -I${includedir}
+ Libs: -L${libdir} -lflint
+-- 
+2.48.1
+

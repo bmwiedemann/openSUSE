@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 13 18:44:01 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Use pkgconfig() to be impervious to package renames.
+
+-------------------------------------------------------------------
 Tue Aug 27 18:06:06 UTC 2024 - Dave Plater <davejplater@gmail.com>
 
 - Revert to ffmpeg-7

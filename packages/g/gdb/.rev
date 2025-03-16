@@ -3785,4 +3785,37 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>1246565</requestid>
   </revision>
+  <revision rev="184" vrev="2">
+    <srcmd5>208e293250854c3ec7e9aea26ed61ab9</srcmd5>
+    <version>15.2</version>
+    <time>1742147889</time>
+    <user>dimstar_suse</user>
+    <comment>- Patches added:
+  * gdb-record-fix-out-of-bounds-write-in-aarch64_record.patch
+  * gdb-tdep-backport-i386_canonicalize_syscall-rewrite-.patch
+- Maintenance script qa.sh:
+  * Remove PR32770 kfail.
+  * Move PR32678 from kfail_i586 to kfail_factory.
+- Maintenance script qa.sh:
+  * Add PR32688 and PR32770 kfails.
+- Patches added:
+  * gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-m32-for-amd.patch
+  * gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-glibc-2-41.patch
+- Patches dropped:
+  * gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-m32-amd-case.patch
+- Drop &quot;BuildRequires: libgo23&quot;.
+- Patches added (jsc#PED-10305):
+  * s390-align-opcodes-to-lower-case.patch
+  * s390-simplify-dis-assembly-of-insn-operands-with-con.patch
+  * s390-relax-risbg-n-z-risb-h-l-gz-rns-ros-rxs-bgt-ope.patch
+  * s390-add-arch15-instructions.patch
+  * opcodes-fix-std-gnu23-compatibility-wrt-static_asser.patch
+  * s390-add-arch15-instruction-names.patch
+  * s390-add-arch15-concurrent-functions-facility-insns.patch
+  * s390-fix-disassembly-of-optional-addressing-operands.patch
+  * s390-treat-addressing-operand-sequence-as-one-in-dis.patch
+  * gdb-testsuite-add-gdb.arch-s390-disassemble.exp.patch
+</comment>
+    <requestid>1252754</requestid>
+  </revision>
 </revisionlist>

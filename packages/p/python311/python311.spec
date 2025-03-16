@@ -106,7 +106,6 @@
 # pyexpat.cpython-35m-armv7-linux-gnueabihf
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
-%bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
 Version:        3.11.11
 Release:        0

@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Fri Mar 14 13:10:05 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 6.2:
+  * Transfer development to Winehq
+  * Update the googletest framework to 1.12.1
+  * Fix a test failure with updated libtiff
+  * Fix line breaking when the first word doesn't fit
+  * Fix center and right alignment of text after the first line
+- Remove ChangeLog, NEWS from docs:
+  not updated
+
+-------------------------------------------------------------------
+Tue Aug  1 09:01:41 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add build requires to gcc-c++
+- Update to version 6.1
+  * Fix missing header file due to too-long path on `make dist`
+  * Cleanup vcpkg steps in readme
+  * Fix Windows build on CI (#710)
+  * Include cairo-ps.h from cairo include dir
+  * Stop using git protocol for submodules
+  * Include cairo-features.h from cairo include dir
+  * Use ubuntu 18.04 in CI
+  * Fix warning in bitmap.c
+  * Move to glib uint16/32 types in tiffcodec.c
+  * Big-endian fix: Reading PNG files (#700)
+  * Big-endian fix: Reading BMP files (#699)
+  * Big-endian fix: Accessing bitmaps in region-bitmap.c (#698)
+  * Big-endian fix: Header conversion (#697)
+  * [ci] Bump timeout in Windows job
+  * [ci] Update Windows image to windows-2019
+  * [ci] Remove mono-netcore build
+  * Rename master branch to main
+  * Clean up memory management of gdip_process_bitmap_attributes (#651)
+  * Merge pull request #650 from filipnavara/leak-fixes
+  * Fix remaining memory leaks in tests
+  * Add LSAN supression for FcConfigAppFontAddFile
+  * Fix incorrect comment and memory leak
+  * Avoid triggering Cairo memory leak.
+  * Fix leaks in tests
+  * Fix bug in font.c
+  * Keep clipping inside containers. (#639)
+  * Fix memory leak in gdip_combine_exclude_from_infinite (#649)
+  * Fix memory leak when setting pen dash style from custom to predefined (#648)
+  * Fix double free SIGABRT with custom dash array handling (#647)
+  * Fix System.OutOfMemoryException when 512 calls to BeginContainer were made since application start (#646)
+  * Fix ASAN_OPTIONS in README.md
+  * Fix memory leaks in GIF codec error paths (#644)
+  * Fix memory leaks in metafile error paths (#645)
+  * Fix comparison for color keying when applying image attributes (#641)
+  * Fix some pen width problems (#638)
+  * Fix resource leak in testgdi (#642)
+  * Link Code of Conduct (#643)
+  * Fix: an issue where Japanese characters are recognized as spaces (#628)
+  * Fix multiple memory leaks for GpBitmap image data (#635)
+  * Use surface instead of scan0 while image rotation if it is not empty (#614)
+  * Update googletest to v1.10 (#621)
+  * Add unit test for reading X and Y pixel density from EXIF data (#612)
+  * Fix "double free or corruption" failure in testbmpcodec test
+  * Search for all libs by means of $PKG_CONFIG (#609)
+  * Fixing Resource Leaks identified by Coverity Scan (#613)
+  * Make sure googletests build is parallel-safe
+  * pngcodec.c: Fix potential overflow
+  * [ci] Don't run libgdiplus tests twice on macOS
+  * Add GoogleTest-based tests (#607)
+  * Reinstate support for Pango 1.44+ (#605)
+  * PNG codec: support most pixel formats (#593)
+  * [ci] Run System.Drawing tests on macOS too (#606)
+  * Fix memory leak interoduced in 398ad6de93a9b4140a209d9eae8ded9292ffc740 (#603)
+  * Add bitmap flushing to gdip_bitmap_clone to fix possible inconsistencies for drawing flipped images (#604)
+  * JPEG codec: initialize cinfo.mem (#594)
+  * Fix multiple bugs and conversions for PARGB32 bitmap object and premultiplied Cairo surfaces (#599)
+  * Update build status badge in readme
+  * Remove Travis and Jenkins build scripts
+  * Add test result publishing to Azure Pipelines
+  * Fix Azure Pipelines CI
+  * Fix macOS build
+  * Fix test build without libjpeg/tiff (#597)
+  * Add Azure Pipelines CI (#600)
+  * Fix cut & paste error in gdip_process_bitmap_attributes (#598)
+  * Read the X and Y pixel density from EXIF data (#596)
+  * Fix leak in GdiplusStartup and add ASAN instructions (#588)
+  * graphics.c: Fix incorrect argument validation in GdipGetPageScale
+  * customlinecap.c: Fix another static analyzer warning
+  * Fix warnings running autogen.sh (#581)
+  * Fix ImageAttributes clone crash with color profile names (#583)
+  * Add image tests and fix some compat bugs (#587)
+  * Assign LinearGradientBrush to null if failed to create (#585)
+  * Improve argument validation in GraphicsPath AddPie (#584)
+  * Fix return value from GdipRestoreGraphics for invalid state (#586)
+  * Fix leak in GdipSetPenColor (#589)
+  * Fix memory leaks cloning Path/Line gradient brushes (#591)
+  * Fix memcpy null undefined behavior (#590)
+  * Update gitignore and settings.json (#582)
+  * Disable testgdi test from compiling
+  * configure.ac: Use AC_CONFIG_MACRO_DIR instead of AC_CONFIG_MACRO_DIRS
+  * Bump master to 6.1 for development (#579)
+ 
+-------------------------------------------------------------------
 Tue Jan 12 18:42:24 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 6.0.5

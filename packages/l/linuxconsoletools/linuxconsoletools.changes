@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 13 18:30:34 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Use more pkgconfig()-style BuildRequires to guard against package
+  renames.
+
+-------------------------------------------------------------------
 Mon Dec 26 15:19:58 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.8.1

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Mar 15 22:54:46 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.9:
+  * Fixed bug with freezing on highly loaded system;
+  * Fixed segfault in keyboard events;
+  * Fixed opacity error in scaling mode;
+  * Fixed window size when enabled decoration in Sway;
+  * Fixed loading SVG with comments;
+  * Fixed bug when "exit" action is applied before any other;
+  * Added support for showing "exec" action output;
+  * Added raw camera format support (CRW/CR2, NEF, RAF, etc);
+  * Added "export to png" action;
+  * Added flexible antialiasing mode switch;
+  * Fixed segfault with floating image position;
+  * Fixed image position in keeping zoom mode;
+  * Fixed bug with image resize on window focus lost;
+  * Fixed bug with setting first image in list;
+  * Added new action: "toggle keeping zoom".
+- Add pkgconfig(libraw) BuildRequires: enable raw camera support
+
+-------------------------------------------------------------------
 Sun Jan 19 18:24:02 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.7:

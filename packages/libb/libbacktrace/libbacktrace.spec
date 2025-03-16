@@ -1,7 +1,7 @@
 #
 # spec file for package libbacktrace
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname 0
 Name:           libbacktrace
-Version:        1.0+git20241025
+Version:        1.0+git20250210
 Release:        0
 Summary:        Backtrace C library
 License:        BSD-3-Clause
