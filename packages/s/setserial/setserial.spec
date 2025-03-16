@@ -1,7 +1,7 @@
 #
 # spec file for package setserial
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ Patch3:         %{name}-%{version}-nohayes.diff
 Patch4:         %{name}-%{version}-binaryInUsr.patch
 Patch5:         %{name}-%{version}-C99.diff
 BuildRequires:  groff
-Requires:       /sbin/isserial
 Provides:       util:/sbin/setserial
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
