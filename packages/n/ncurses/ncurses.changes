@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 13 11:37:03 UTC 2025 - Dan Čermák <dcermak@suse.com>
+
+- Add _c++ library subpackages to libncurses5, libncurses6 & libncurses6-compat
+
+  This removes libstdc++ from the ncurses dependency chain unless a binary or
+  librarly explicitly depends on libncurses++ or libncurses++w
+
+-------------------------------------------------------------------
 Tue Mar 11 12:33:48 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Move manual pages of examples from section 6 to subsection 6n 

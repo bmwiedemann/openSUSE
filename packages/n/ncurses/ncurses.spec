@@ -213,6 +213,26 @@ controlling output to the screen and input from the user.
 
 This package contains the library built with the version 5 ABI.
 
+%package -n libncurses_c++5
+Summary:        Terminal control library
+License:        MIT
+Group:          System/Libraries
+Requires:       terminfo-base
+Provides:       ncurses = 5.9
+Obsoletes:      ncurses < 5.9
+# bug437293
+%ifarch ppc64
+Obsoletes:      ncurses-64bit
+%endif
+#
+
+%description -n libncurses_c++5
+The ncurses library is used by many terminal applications for
+controlling output to the screen and input from the user.
+
+This package contains the C++ library built with the version 5 ABI.
+
+
 %package -n libncurses6
 Summary:        Terminal control library
 License:        MIT
@@ -227,6 +247,21 @@ The ncurses library is used by many terminal applications for
 controlling output to the screen and input from the user.
 
 This package contains the library built with the version 6 ABI.
+
+%package -n libncurses_c++6
+Summary:        Terminal control library
+License:        MIT
+Group:          System/Libraries
+Requires:       terminfo-base
+Provides:       ncurses = %{version}
+Recommends:     ncurses-utils = %{version}
+Suggests:       libncurses6-compat
+
+%description -n libncurses_c++6
+The ncurses library is used by many terminal applications for
+controlling output to the screen and input from the user.
+
+This package contains the C++ library built with the version 6 ABI.
 
 %package -n libncurses6-compat
 Summary:        Terminal control library without weak threading support
@@ -245,6 +280,25 @@ but build without weak threading support.
 
 Use with environment variable LD_LIBRARY_PATH=/usr/lib64/ncurses6nt
 or the wrapper script ncursesnt .
+
+%package -n libncurses_c++6-compat
+Summary:        Terminal control library without weak threading support
+License:        MIT
+Group:          System/Libraries
+Requires:       libncurses6 >= %{version}
+Requires:       terminfo-base
+Recommends:     ncurses-utils = %{version}
+
+%description -n libncurses_c++6-compat
+The ncurses library is used by many terminal applications for
+controlling output to the screen and input from the user.
+
+This package contains the C++ library built with the version 6 ABI
+but build without weak threading support.
+
+Use with environment variable LD_LIBRARY_PATH=/usr/lib64/ncurses6nt
+or the wrapper script ncursesnt .
+
 
 %package -n terminfo
 Summary:        A terminal descriptions database
@@ -1090,16 +1144,38 @@ popd
 %files -n libncurses5
 %defattr(-,root,root)
 %{_libdir}/lib*.so.5*
+%exclude %{_libdir}/libncurses++.so.5*
+%exclude %{_libdir}/libncurses++w.so.5*
+
+%files -n libncurses_c++5
+%defattr(-,root,root)
+%{_libdir}/libncurses++.so.5*
+%{_libdir}/libncurses++w.so.5*
 
 %files -n libncurses6
 %defattr(-,root,root)
 %{_libdir}/lib*.so.6*
+%exclude %{_libdir}/libncurses++.so.6*
+%exclude %{_libdir}/libncurses++w.so.6*
+
+%files -n libncurses_c++6
+%defattr(-,root,root)
+%{_libdir}/libncurses++.so.6*
+%{_libdir}/libncurses++w.so.6*
 
 %files -n libncurses6-compat
 %defattr(-,root,root)
 %{_bindir}/ncursesnt
 %dir %{_libdir}/ncurses6nt/
 %{_libdir}/ncurses6nt/lib*.so.6*
+%exclude %{_libdir}/ncurses6nt/libncurses++.so.6*
+%exclude %{_libdir}/ncurses6nt/libncurses++w.so.6*
+
+%files -n libncurses_c++6-compat
+%defattr(-,root,root)
+%dir %{_libdir}/ncurses6nt/
+%{_libdir}/ncurses6nt/libncurses++.so.6*
+%{_libdir}/ncurses6nt/libncurses++w.so.6*
 
 %files -n ncurses-devel
 %defattr(-,root,root)
