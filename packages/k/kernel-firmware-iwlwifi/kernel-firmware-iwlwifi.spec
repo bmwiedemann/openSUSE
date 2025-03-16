@@ -20,18 +20,18 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version aaae2fb60f75b07d9c249ebe668524f7ddf51243
+%define git_version 89ba9b7ce05c8dac3b659b6a0ebc87a601fc35b1
 
 Name:           kernel-firmware-iwlwifi
-Version:        20250206
+Version:        20250312
 Release:        0
 Summary:        Kernel firmware files for Intel wireless drivers
-License:        SUSE-Firmware AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
 # URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250211.tar.xz
+Source1:        kernel-firmware-tools-20250311.tar.xz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -53,8 +53,8 @@ Source25:       topicprovs
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
-Requires(postun):%{_bindir}/mkdir
-Requires(postun):%{_bindir}/touch
+Requires(postun): %{_bindir}/mkdir
+Requires(postun): %{_bindir}/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Conflicts:      kernel-firmware-uncompressed
@@ -81,15 +81,7 @@ Provides:       iwl6050-ucode = %{version}
 Obsoletes:      iwl6050-ucode < %{version}
 Provides:       iwl6000g2-ucode = %{version}
 Obsoletes:      iwl6000g2-ucode < %{version}
-Supplements:    modalias(pci:v00008086d00004222sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00004222sv*sd00001005bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00004222sv*sd00001034bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00004222sv*sd00001044bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00004227sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00004227sv*sd00001014bc*sc*i*)
 Supplements:    modalias(iwl4965)
-Supplements:    modalias(pci:v00008086d00004229sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00004230sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00000082sv*sd00001301bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00000082sv*sd00001304bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00000082sv*sd00001305bc*sc*i*)
@@ -422,6 +414,13 @@ Supplements:    modalias(pci:v00008086d00003166sv*sd00004310bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000031DCsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000034F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003DF0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004222sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004222sv*sd00001005bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004222sv*sd00001034bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004222sv*sd00001044bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004227sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004227sv*sd00001014bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004229sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000422Bsv*sd00001101bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000422Bsv*sd00001108bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000422Bsv*sd00001121bc*sc*i*)
@@ -431,6 +430,7 @@ Supplements:    modalias(pci:v00008086d0000422Csv*sd00001306bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000422Csv*sd00001307bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000422Csv*sd00001321bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000422Csv*sd00001326bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004230sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00004232sv*sd00001201bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00004232sv*sd00001204bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00004232sv*sd00001205bc*sc*i*)
@@ -537,7 +537,6 @@ Supplements:    modalias(pci:v00008086d0000E440sv*sd*bc*sc*i*)
 
 %description
 This package contains kernel firmware files for Intel wireless drivers.
-
 
 %prep
 %autosetup -a1 -p1

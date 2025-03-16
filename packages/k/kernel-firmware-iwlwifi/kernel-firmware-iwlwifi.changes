@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 13 06:40:12 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250312 (git commit 89ba9b7ce05c):
+  * iwlwifi: add Bz/gl FW for core94-91 release
+  * iwlwifi: update ty/So/Ma firmwares for core94-91 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core94-91 release
+
+-------------------------------------------------------------------
 Tue Feb 11 09:26:37 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix license description for kernel-firmware-tools package
