@@ -12962,11 +12962,11 @@ unsorted:
   - libdframeworkdbus-devel 
   - libdframeworkdbus2 
   - libdhash-devel 
-  - libdi5 
+  - libdi6 
   - libdico2 
   - libdict-devel 
   - libdict1_0 
-  - libdigikamcore8_5_0 
+  - libdigikamcore8_6_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit 
   - libdirac_encoder0 
@@ -14973,6 +14973,9 @@ unsorted:
   - libncurses5-32bit 
   - libncurses6-32bit 
   - libncurses6-compat 
+  - libncurses_c++5 
+  - libncurses_c++6 
+  - libncurses_c++6-compat 
   - libndctl-devel 
   - libndp 
   - libndp-devel 
@@ -17556,6 +17559,7 @@ unsorted:
   - libyuv0-32bit 
   - libz-ng-compat1-32bit 
   - libz-ng2 
+  - libz-ng2-32bit 
   - libz3-4_13 
   - libzapojit-0_0-0 
   - libzapojit-devel 
@@ -37185,6 +37189,7 @@ unsorted:
   - setroubleshoot-plugins 
   - setroubleshoot-plugins-lang 
   - setroubleshoot-server 
+  - setserial 
   - sevctl 
   - sexpp 
   - sexpp-devel 

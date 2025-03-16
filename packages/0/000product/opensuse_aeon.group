@@ -53,7 +53,7 @@
     <package name="libelf1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libexpat1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libfdisk1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="libgcc_s1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libgcc_s1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libgcrypt20" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="libgmp10" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgpg-error0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
@@ -79,7 +79,7 @@
     <package name="libselinux1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libsepol2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="libsmartcols1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="libstdc++6" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libstdc++6" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libudev1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libuuid1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
