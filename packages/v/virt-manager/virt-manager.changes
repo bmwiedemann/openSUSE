@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar 12 15:27:01 MDT 2025 - carnold@suse.com
+
+- Upstream bug fix (bsc#1027942)
+  010-virtManager-domain-fix-indentation.patch
+- Upstream features from Lin Ma and others (jsc#PED-8910)
+  021-cli-Add-memdev-target.dynamicMemslots-support-for-virtio-mem.patch
+  022-cli-add-target.memReserve-for-pci-bridge-and-pcie-root-port-controllers.patch
+  023-cli-Add-disk-driver.queue_size-support.patch
+  024-cli-Add-poll-settings-for-iothread.patch
+  025-test_cli-Fix-a-pycodestyle-E261-issue.patch
+  026-gitignore-Ignore-coverage.xml.patch
+  027-cli-Add-tpm-backend.profile.source-removeDisabled-support.patch
+  028-cli-Add-nvram.templateFormat-to-indicate-template-format.patch
+  029-cli-Add-features-hyperv.xmm_input.state-on-off.patch
+  030-cli-Add-features-hyperv.emsr_bitmap.state-on-off.patch
+  031-cli-Add-features-hyperv.tlbflush.direct.state-on-off.patch
+  032-cli-Add-features-hyperv.tlbflush.extended.state-on-off.patch
+  033-createvm-prioritize-riscv64.patch
+  034-tests-uitests-handle-linux2020-going-EOL.patch
+
+-------------------------------------------------------------------
 Thu Mar  6 15:34:37 MST 2025 - carnold@suse.com
 
 - bsc#1239013 - Unable to install an SEV-SNP guest with virt-install

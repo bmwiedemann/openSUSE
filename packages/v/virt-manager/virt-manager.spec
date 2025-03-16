@@ -55,6 +55,21 @@ Patch6:         006-addhardware-panic-Fill-in-model-combo-with-advertised-values
 Patch7:         007-cli-man-Always-list-osinfo-before-os-variant.patch
 Patch8:         008-snapshots-default-to-same-snapshot-mode-as-currently-used-snapshot.patch
 Patch9:         009-snapshots-warn-users-to-not-mix-snapshot-modes.patch
+Patch10:        010-virtManager-domain-fix-indentation.patch
+Patch21:        021-cli-Add-memdev-target.dynamicMemslots-support-for-virtio-mem.patch
+Patch22:        022-cli-add-target.memReserve-for-pci-bridge-and-pcie-root-port-controllers.patch
+Patch23:        023-cli-Add-disk-driver.queue_size-support.patch
+Patch24:        024-cli-Add-poll-settings-for-iothread.patch
+Patch25:        025-test_cli-Fix-a-pycodestyle-E261-issue.patch
+Patch26:        026-gitignore-Ignore-coverage.xml.patch
+Patch27:        027-cli-Add-tpm-backend.profile.source-removeDisabled-support.patch
+Patch28:        028-cli-Add-nvram.templateFormat-to-indicate-template-format.patch
+Patch29:        029-cli-Add-features-hyperv.xmm_input.state-on-off.patch
+Patch30:        030-cli-Add-features-hyperv.emsr_bitmap.state-on-off.patch
+Patch31:        031-cli-Add-features-hyperv.tlbflush.direct.state-on-off.patch
+Patch32:        032-cli-Add-features-hyperv.tlbflush.extended.state-on-off.patch
+Patch33:        033-createvm-prioritize-riscv64.patch
+Patch34:        034-tests-uitests-handle-linux2020-going-EOL.patch
 Patch100:       revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch
