@@ -36,7 +36,7 @@ Group:          Development/Languages/Go
 Url:            http://golang.org
 Source:         README
 Recommends:     go-doc = %{version}
-ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64
+ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64 loongarch64
 # We provide golang(API) so that projects can Prefer: go. Any project using Go
 # code with golang(API) BuildRequires should add Prefer: go.
 Provides:       golang(API) = %{api_version}
