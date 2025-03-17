@@ -95,4 +95,12 @@
     <comment>KDE Frameworks 6.11 (forwarded request 1244923 from krop)</comment>
     <requestid>1245968</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e91f4efa735cfcac1ffd5cdf0cf8f121</srcmd5>
+    <version>6.12.0</version>
+    <time>1742246168</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.12.0 (forwarded request 1252307 from krop)</comment>
+    <requestid>1253228</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 11 09:29:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.12.0
+- Changes since 6.11.0:
+  * Update dependency version to 6.12.0
+  * remove static_assert to avoid compiler warnings
+  * Add "gc" motion for vim to Toggle Comment (kde#490195)
+  * Fix boundary condition in argument hint navigation
+  * Fix line no info tooltip persists on right click
+  * Improve wording of Copy as HTML whatsthis
+  * Add "Copy as HTML" to context menu
+  * don't reset revision on reload but increment it (kde#499311)
+  * katedocument: Optimize mimeType
+  * compute at least inside cursorToX with floats (kde#499669)
+  * Fix scrolling to search results in wrapped long lines (kde#448765)
+  * renderer: simplify text ranges comparison function
+  * Add direct camel/subword movement actions
+  * Update version to 6.12.0
+
+-------------------------------------------------------------------
 Sat Feb  8 12:16:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0
