@@ -1,7 +1,7 @@
 #
 # spec file for package yubikey-manager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yubikey-manager
-Version:        5.5.1
+Version:        5.6.0
 Release:        0
 Summary:        Python 3 library and command line tool for configuring a YubiKey
 License:        BSD-2-Clause

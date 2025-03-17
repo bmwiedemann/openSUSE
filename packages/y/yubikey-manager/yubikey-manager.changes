@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 17 08:41:27 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to 5.6.0
+  * SCP: Add support for specifying Le (needed in OpenPGP get_challenge).
+  * PIV: When writing a new CHUID, prefer to keep data from the old one if
+    possible.
+  * CLI: Specifying public-key is now optional when generating a PIV
+    certificate, if a public key can be read from the YubiKey itself.
+  * CLI: (YK FIPS) Disallow --protect for PIV when not in FIPS approved state.
+  * CLI: Support specifying Le in "apdu" command.
+  * CLI: Show OpenPGP key information in "openpgp info" and "openpgp keys info"
+    commands.
+  * CLI: Detect OpenPGP memory corruption, and correctly factory reset OpenPGP
+    if needed.
+  * CLI: Don’t fail on corrupted configuration files, instead show a warning.
+  * Require Poetry >= 2.0 for building and packaging of the library.
+  * Bugfix: CLI - Don’t use extended APDUs in the "apdu" command on old
+    YubiKeys which do not support it.
+
+-------------------------------------------------------------------
 Wed Jul  3 08:11:17 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - Update to 5.5.1
