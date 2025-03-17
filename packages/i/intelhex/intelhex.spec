@@ -1,7 +1,7 @@
 #
 # spec file for package intelhex
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 Name:           intelhex
 Version:        2.3.0
 Release:        0
@@ -25,7 +26,10 @@ Group:          Development/Tools/Other
 URL:            https://github.com/bialix/intelhex
 Source:         https://github.com/bialix/intelhex/archive/%{version}.zip
 BuildRequires:  dos2unix
-BuildRequires:  python3
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -53,21 +57,24 @@ inspecting data, and “hexmerge.py” merges multiple HEX files into one.
 %setup -q
 
 %build
-python3 setup.py\
-	build
+%pyproject_wheel
 
 %install
-python3 setup.py\
-	install\
-	--prefix=%{_prefix}\
-	--root=%{buildroot}
+%pyproject_install
 dos2unix AUTHORS.rst NEWS.rst README.rst LICENSE.txt
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONPATH=%{buildroot}%{python_sitelib}
+%python_exec intelhex/test.py
 
 %files
 %doc AUTHORS.rst NEWS.rst README.rst
 %license LICENSE.txt
 %{_bindir}/bin2hex.py
 %{_bindir}/hex*.py
-%{python_sitelib}/*
+%{python_sitelib}/intelhex
+%{python_sitelib}/intelhex-%{version}.dist-info
 
 %changelog
