@@ -19,7 +19,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           microos-tools
-Version:        4.0+git7
+Version:        4.0+git10
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -67,16 +67,16 @@ This package contains tools to make developing of MicroOS easier.
 %make_install
 
 %pre
-%service_add_pre setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
+%service_add_pre printenv.service
 
 %preun
-%service_del_preun setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
+%service_del_preun printenv.service
 
 %post
-%service_add_post setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
+%service_add_post printenv.service
 
 %postun
-%service_del_postun setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
+%service_del_postun printenv.service
 
 %pre -n microos-devel-tools
 %service_add_pre microos-ro.service
@@ -111,14 +111,11 @@ This package contains tools to make developing of MicroOS easier.
 %dir %{_sysconfdir}/selinux
 %config %{_sysconfdir}/selinux/fixfiles_exclude_dirs
 %{_unitdir}/printenv.service
-%{_unitdir}/setup-systemd-proxy-env.path
-%{_unitdir}/setup-systemd-proxy-env.service
 %dir %{_unitdir}/salt-minion.service.d
 %{_unitdir}/salt-minion.service.d/TMPDIR.conf
 %{_tmpfilesdir}/salt-minion-tmpdir.conf
 %dir %{_distconfdir}/tukit.conf.d
 %{_distconfdir}/tukit.conf.d/salt-tukit.conf
-%{_sbindir}/setup-systemd-proxy-env
 %{_bindir}/man-online
 %{_distconfdir}/profile.d/man-online.sh
 

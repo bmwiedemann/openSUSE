@@ -404,4 +404,15 @@
     <comment></comment>
     <requestid>1249024</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6895fe7a17077fd16cc83898452b2f04</srcmd5>
+    <version>4.0+git10</version>
+    <time>1742246185</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.0+git10:
+  * Remove setup-systemd-proxy, now part of aaa_base
+  * Drop wtmpdb SELinux AVC workaround in test suite
+  * test: Wait for sshd.service before checking labels in /etc</comment>
+    <requestid>1253008</requestid>
+  </revision>
 </revisionlist>
