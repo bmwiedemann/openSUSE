@@ -4230,4 +4230,31 @@
   * Load distrobox_profile.sh</comment>
     <requestid>1234578</requestid>
   </revision>
+  <revision rev="507" vrev="1">
+    <srcmd5>cb55d139727f78c85b30bc4b66ff28ae</srcmd5>
+    <version>84.87+git20250313.4dd1cfd</version>
+    <time>1742246184</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20250313.4dd1cfd:
+  * DIR_COLORS: add backup and temporary file extensions
+  * DIR_COLORS: sort audio formats
+  * DIR_COLORS: use cyan for audio formats instead of green
+  * DIR_COLORS: add 'avif' to image formats
+  * DIR_COLORS: add updated and sorted list of archive formats
+  * DIR_COLORS: don't colour DOS/Windows executables
+  * DIR_COLORS: update existing colours and add missing ones
+  * DIR_COLORS: add COLORTERM and 'st' terminal
+  * DIR_COLORS: update file description
+  * DIR_COLORS: sort TERM entries
+  * DIR_COLORS: remove COLOR, OPTIONS and EIGHTBIT
+
+- Update to version 84.87+git20250313.e71c2f4:
+  * Respect PROFILEREAD/CSHRCREAD at shell switch
+  * Modernize specfile
+  * Add safety quotes and proper escaping
+  * Avoid bashisms in build recipe
+  * Add setup-systemd-proxy-env
+  * profile.{sh,csh}: Drop useless proxy variables cleanup</comment>
+    <requestid>1252805</requestid>
+  </revision>
 </revisionlist>

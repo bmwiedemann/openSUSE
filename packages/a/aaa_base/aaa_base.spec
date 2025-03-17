@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20250102.c08e614%{git_version}
+Version:        84.87+git20250313.4dd1cfd%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -116,7 +116,7 @@ this package contains a setting that allows ptrace again.
 See https://docs.kernel.org/admin-guide/LSM/Yama.html
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build CFLAGS="%{optflags}" CC="%{__cc}"
@@ -136,20 +136,20 @@ done
 touch %buildroot/etc/inittab
 
 # Backup directories
-install -d -m 755 %{buildroot}/var/adm/backup/{rpmdb,sysconfig}
+install -d -m 755 %{buildroot}/var/adm/backup/rpmdb %{buildroot}/var/adm/backup/sysconfig
 
 mkdir -p %{buildroot}%{_fillupdir}
 %if "%{_fillupdir}" != "/var/adm/fillup-templates"
   for f in %{buildroot}/var/adm/fillup-templates/* ; do
     test -e "$f" || continue
-    mv $f %{buildroot}%{_fillupdir}/
+    mv "$f" "%{buildroot}/%{_fillupdir}/"
   done
   rm -vrf %{buildroot}/var/adm/fillup-templates
 %endif
 %if "%{_fillupdir}" != "/usr/share/fillup-templates"
   for f in %{buildroot}/usr/share/fillup-templates/* ; do
     test -e "$f" || continue
-    mv $f %{buildroot}%{_fillupdir}/
+    mv "$f" "%{buildroot}/%{_fillupdir}/"
   done
   rm -vrf %{buildroot}/usr/share/fillup-templates
 %endif
@@ -166,9 +166,9 @@ export LC_ALL=C
 #XXX Fix /etc/nsswitch.conf to include usrfiles [bsc#1162916]
 if [ -e /etc/nsswitch.conf ]; then
     for key in services protocols rpc ; do
-	if ! grep -q ^${key}.*usrfiles /etc/nsswitch.conf ; then
-	    cp /etc/nsswitch.conf /etc/nsswitch.conf.pre-usrfiles.${key}
-	    sed -i -e "s|^\(${key}:.*[[:space:]]\)files\([[:space:]].*\)*$|\1files usrfiles\2|" /etc/nsswitch.conf
+	if ! grep -q "^${key}.*usrfiles" /etc/nsswitch.conf ; then
+	    cp /etc/nsswitch.conf "/etc/nsswitch.conf.pre-usrfiles.${key}"
+	    sed -i -e "s|^\(${key}:.*[[:space:]]\)files\([[:space:]].*\)*\$|\1files usrfiles\2|" /etc/nsswitch.conf
 	fi
     done
 fi
@@ -181,17 +181,17 @@ fi
 %service_del_postun_without_restart soft-reboot-cleanup.service
 
 %pre extras
-%service_add_pre backup-rpmdb.service backup-rpmdb.timer backup-sysconfig.service backup-sysconfig.timer check-battery.service check-battery.timer
+%service_add_pre backup-rpmdb.service backup-rpmdb.timer backup-sysconfig.service backup-sysconfig.timer check-battery.service check-battery.timer setup-systemd-proxy-env.path setup-systemd-proxy-env.service
 
 %post extras
 %fillup_only -n backup
-%service_add_post backup-rpmdb.service backup-rpmdb.timer backup-sysconfig.service backup-sysconfig.timer check-battery.service check-battery.timer
+%service_add_post backup-rpmdb.service backup-rpmdb.timer backup-sysconfig.service backup-sysconfig.timer check-battery.service check-battery.timer setup-systemd-proxy-env.path setup-systemd-proxy-env.service
 
 %preun extras
-%service_del_preun backup-rpmdb.service backup-rpmdb.timer backup-sysconfig.service backup-sysconfig.timer check-battery.service check-battery.timer
+%service_del_preun backup-rpmdb.service backup-rpmdb.timer backup-sysconfig.service backup-sysconfig.timer check-battery.service check-battery.timer setup-systemd-proxy-env.path setup-systemd-proxy-env.service
 
 %postun extras
-%service_del_postun backup-rpmdb.service backup-rpmdb.timer backup-sysconfig.service backup-sysconfig.timer check-battery.service check-battery.timer
+%service_del_postun backup-rpmdb.service backup-rpmdb.timer backup-sysconfig.service backup-sysconfig.timer check-battery.service check-battery.timer setup-systemd-proxy-env.path setup-systemd-proxy-env.service
 
 %post yama-enable-ptrace
 # check if yama is active
@@ -269,6 +269,7 @@ fi
 %{_fillupdir}/sysconfig.proxy
 
 %files extras
+/usr/bin/setup-systemd-proxy-env
 /usr/etc/skel/.emacs
 /usr/etc/skel/.inputrc
 %dir /usr/lib/base-scripts
@@ -276,6 +277,7 @@ fi
 /usr/lib/base-scripts/backup-sysconfig
 /usr/lib/base-scripts/check-battery
 /usr/lib/systemd/system/[bc]*
+/usr/lib/systemd/system/setup-systemd-proxy-env.*
 /var/adm/backup/rpmdb
 /var/adm/backup/sysconfig
 %{_fillupdir}/sysconfig.backup
