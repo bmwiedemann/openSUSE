@@ -1,0 +1,368 @@
+-------------------------------------------------------------------
+Thu Jul 25 09:50:20 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Adding fix-build-with-fmt11.patch to fix broken build 
+
+-------------------------------------------------------------------
+Mon Jun 10 23:44:56 UTC 2024 - Loren Burkholder <computersemiexpert@outlook.com>
+
+- Update to version 0.10.0
+  * Authentication for media (MSC3916, experimental)
+  * Intentional mentions and associated push rules (event_property_is and event_property_contains)
+  * Woraround for Element setting "order" in tags as strings
+  * Basic support for url previews (NepNep)
+  * Support the "fixed" mac method of interactive verification
+  * Various speedups for compilation
+  * Support reporting content (LorenDB)
+  * Remove the creator field from the create event
+  * Support the `default_payload` field in pusher data (ramajd)
+  * Ignoring users (NepNep)
+  * Add Nheko specific account data event to store event expiration settings
+  * Inherit variant to shorten symbol names. This requires GCC11.3 or higher.
+  * Redo our "effects" event types (LorenDB)
+  * Server ACLs
+  * Better support for unknown message types
+  * Support libolms native error codes 
+
+-------------------------------------------------------------------
+Sat Jun  1 11:31:02 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap.
+
+-------------------------------------------------------------------
+Mon Feb 27 05:55:14 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.9.2:
+  * Handle incorrect pushrules sent by construct better.
+  * Don't highlight everything, when an empty display name is set.
+  * Document security of the default parameters to PBKDF2.
+  * Fix double invokation of callback if callback throws.
+  * Clean up some duplicate symbols in the library. 
+
+-------------------------------------------------------------------
+Sun Jan 22 16:38:29 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.9.1
+  * Fix building with user specified toolchain files.
+  * Support error formatting using {fmt}/spdlog.
+  * Don't require the events key in state and other keys in sync.
+  * Fix parsing members with null reason.
+  * Implement searching user directory. (Malte E)
+  * Add support for confetti events. (LorenDB)
+  * Support MSC3664, pushrules for relations.
+  * Support altsvc for http/3 switching.
+  * Allow evaluating pushrules locally.
+  * Use stable endpoints for cross-signing.
+  * Improve documentation in several places.
+  * Support voip v1. (r0hit05)
+  * Support threading.
+  * Switch to C++20.
+  * Fix /sync with invites without state.
+
+-------------------------------------------------------------------
+Sat Nov 19 14:42:18 UTC 2022 - Bob Haley <fawz@use.startmail.com>
+
+- Update to version 0.8.2
+  * fix crash when fetching room summaries
+- Changelog version 0.8.1
+  * Allow creating rooms with custom create event but default version
+  * Update dependencies
+  * Support stable hidden read receipts
+  * Validate fields servers are required to validate again
+  * Fix voip v1 event parsing (contributed by r0hit)
+  * Use hidden friends to reduce overload sets
+  * Add support for the unstable polics room type
+  * Support querying server capabilities
+
+-------------------------------------------------------------------
+Fri Jul 22 16:14:07 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.0:
+  * Update hidden read receipts to current MSC
+  * Add support for policy rules
+  * Support for v1 call events and use voip namespace (contributed by r0hit)
+  * Simplify unknown and redacted event handling
+  * Support listing, resolving and setting aliases
+  * Require Matrix v1.1
+  * Support the knock_restricted rule
+  * Get rid of redundant namespaces and using namespaces
+  * Remove support for groups
+  * Optionally disable implicit JSON conversions
+  * Support fallback keys
+  * Make sender_key optional
+  * Allow more base64 encodings for cross-signing events
+  * Use spdlog for logging
+  * Support reasons for knocking, joining leaving and inviting.
+  * Support initial state in createRoom 
+
+-------------------------------------------------------------------
+Sat Mar 12 08:17:41 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.0:
+  * Allow querying a reusable server url for the current server.
+  * Explicit SSO identity providers.
+  * Reasons for redactions.
+  * Treat all exceptions as errors.
+  * Support hidden read receipts.
+  * Support fetching the current room state.
+  * Stabilize registration tokens.
+  * Widget events.
+  * Support the space hierarchy API.
+  * Allow checking a usernames availability.
+  * Allow querying registration flows ahead of time.
+  * Properly validate matrix ids.
+  * Fix ambiguous conversion of pushrule actions.
+  * Reduce copies for pushrules.
+  * Remove mentions of Boost.ASIO.
+  * Fix documentation. 
+
+-------------------------------------------------------------------
+Wed Feb 23 13:18:37 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.2:
+  * This release fixes a crash in Nheko if the Matrix server
+    is updated to support the APIs v1.1 and up.
+
+-------------------------------------------------------------------
+Mon Jan 17 06:04:52 UTC 2022 - Samu Voutilainen <smar@smar.fi>
+
+- Adjust library name automatically.
+
+-------------------------------------------------------------------
+Tue Dec 21 11:22:07 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.6.1:
+  * Set counter for encrypted files always to 0
+  * Add bigobj flag to meson build
+  * Add script to plot history from memberstats
+  * Add example that collects member event history from a room
+  * Add endpoint to list room members
+  * Fix pinned message events not being parsed
+  * Fix version tag in meson.build
+  * Actually read out rule_id in PushRule's from_json
+  * Support error code to string conversions
+  * Add support for m.direct
+
+-------------------------------------------------------------------
+Thu Nov 18 07:57:29 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 0.6.0:
+  * Use new login parameters instead of deprecated user.
+  * Workaround servers returning null for .well-known in /login.
+  * Various edit relation fixes.
+  * Support space state events.
+  * Use coeurl as the http backend.
+  * Remove boost dependency.
+  * Support retrieval of specific state events.
+  * Use a generic UIAHandler for all UIA endpoints.
+  * Support registration tokens in UIA (callum).
+  * Support email and telephone numbers in UIA.
+  * Support sticker and emote packs (MSC2545).
+  * Timeout connections properly.
+  * Properly clear bit 63 of the IV when doing AES.
+  * Allow converting a private key to a public key.
+  * Add knocks and restricted rooms support.
+  * Implement online key backup session encryption.
+  * Fix parsing query_keys responses with optional keys.
+  * Fix compilation with Olm 3.2.5.
+  * Support meson for compilation. This does not generate the cmake
+    files needed by cmake projects to find mtxclient.
+  * Add bootstrapping for SSSS, online key backup and cross-signing keys.
+  * Implement the device query and update endpoints.
+  * Remove patch Fix-compilaton-with-Olm-3.2.5.patch
+
+-------------------------------------------------------------------
+Tue Oct  5 08:51:19 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Fix compilaton with Olm 3.2.5.
+  * Added patch Fix-compilaton-with-Olm-3.2.5.patch
+
+-------------------------------------------------------------------
+Wed Apr 28 08:45:43 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.5.1:
+  * Allow exporting a session with a specific minimum index 
+    instead of all known indices.
+
+-------------------------------------------------------------------
+Wed Apr 21 08:21:42 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.5.0:
+  * Support edits
+  * New relation format and API
+  * Fixes for voip versioning by trilene
+  * Proper TLS support
+  * Support for pushers by vurpo
+  * Fix crashes when using the epoll reactor on ARM
+  * Support for MSC2545, sticker and emote packs 
+
+-------------------------------------------------------------------
+Wed Feb 24 12:19:22 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Added minimum version requirement for cmake and boost so obs
+  leaves the package as unresolvable instead of trying to build it.
+
+-------------------------------------------------------------------
+Wed Feb 24 10:43:26 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.4.1:
+  * Properly clears encryption keys from memory.
+  * Fixes some build issues with LTO.
+  * Store olm error code in olm_exceptions.
+- Remove patch which is already included:
+  * mtxclient-lto-fixes.patch
+
+-------------------------------------------------------------------
+Fri Jan 22 04:35:54 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Formatting the spec file. 
+
+-------------------------------------------------------------------
+Thu Jan 21 15:20:15 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Add mtxclient-lto-fixes.patch # LTO breaks library export
+
+-------------------------------------------------------------------
+Thu Jan 21 14:39:45 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Disabled bundled libs.
+
+-------------------------------------------------------------------
+Wed Jan 20 13:08:07 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.4.0:
+  * Cross signing and various E2EE bits. 
+    Also some larger refactorings around event representation. 
+
+-------------------------------------------------------------------
+Sat Jun 13 13:04:19 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.3.1+0:
+  * Update _service file
+  * This release contains various cleanups around to device 
+    messaging, support for presence and room tags as well as a few 
+    other improvements.
+
+-------------------------------------------------------------------
+Mon Apr 20 15:22:38 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.3.0+61ddbb2.20200417:
+  * blurhashes
+  * user interactive authentication for /register
+  * don't send empty thumbnails
+  * media encryption
+  * url encode more arguments
+  * .well-known support
+  * notification pagination
+  * basic room upgrade support (fetch only)
+  * improve compatibility with riots key export format
+  * use std::variant and friends instead of boost 
+
+-------------------------------------------------------------------
+Wed Apr  8 08:23:18 UTC 2020 - wnereiz@member.fsf.org
+
+- Use latest master commit 8841d5f.20200404
+
+-------------------------------------------------------------------
+Thu Jun 13 11:27:51 UTC 2019 - ecsos@opensuss.org
+
+- Update to 0.2.1
+  - No changelog from upstream.
+- Remove _service files to only use released versions.
+- Fix wrong URL and Source address.
+- Update wrong build requires package versions.
+- Remove unneeded _constrains.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Oct 08 02:53:17 UTC 2018 - windowskaput@gmail.com
+
+- Update to version 0.2.0+20180929.7793666:
+  * Add missing clang-format
+
+-------------------------------------------------------------------
+Tue Sep 25 04:22:10 UTC 2018 - windowskaput@gmail.com
+
+- Update to version 0.2.0+20180921.e0a3d5f:
+  * ci: Ignore brew error during upgrade
+  * v0.2.0
+
+-------------------------------------------------------------------
+Thu Sep 20 08:41:35 UTC 2018 - windowskaput@gmail.com
+
+- Update to version 0.1.0+20180918.99ca748:
+  * Don't upgrade cmake on osx
+  * Replace generic runtime_error with sodium_exception
+  * Update docker image & coverage target
+  * Remove docker cache
+  * Use docker image for managing deps
+  * Add docker image for the the build env
+  * Use the correct directory for test coverage
+  * Fix fallthrough warning
+  * Update CI matrix with gcc 5 & 8
+  * Install libsodium from source
+
+-------------------------------------------------------------------
+Mon Sep 17 05:34:03 UTC 2018 - windowskaput@gmail.com
+
+- Update to version 0.1.0+20180915.49a3ffd:
+  * Remove unnecessary update-alternatives command
+  * Fail build on errors
+  * Add methods for importing/exporting inbound megolm sessions
+  * Add methods to encrypt/decrypt exported session keys
+  * Remove -Werror
+  * Add missing headers
+  * Try /media/download if /media/thumbnail returns 404
+
+-------------------------------------------------------------------
+Fri Sep 07 16:40:35 UTC 2018 - windowskaput@gmail.com
+
+- Update to version 0.1.0+20180906.cd8f571:
+  * Add support the formatted_message field
+  * Remove shutdown from error handlers
+  * Use C++14
+
+-------------------------------------------------------------------
+Mon Sep 03 04:37:05 UTC 2018 - windowskaput@gmail.com
+
+- Update to version 0.1.0+20180901.343cf4b:
+  * Use the correct script path
+  * Update travis script
+  * Move test fixtures to the correct location
+  * Increase the range of accepted status codes
+  * Define toolchains before dep installation
+  * Use C++14 when building boost 1.68
+  * Remove clang only flag
+  * Merge with the matrix-structs project
+
+-------------------------------------------------------------------
+Fri Aug 17 08:59:02 UTC 2018 - windowskaput@gmail.com
+
+- Update to version 0.1.0+20180808.1089467:
+  * Remove spdlog as a lib dependency
+  * Don't use the generic json type as the joined_groups response
+
+-------------------------------------------------------------------
+Tue Jul 17 05:03:42 UTC 2018 - windowskaput@gmail.com
+
+- Update to version 0.1.0:
+  * Add some group related endpoints
+  * Add method to retrieve a single event
+  * Update matrix-structs
+  * Add test case to claim keys from multiple devices
+  * Add script to find libolm if installed without cmake support
+  * Stop the IO service when we're shutting down with force=true
+  * Revert the find_package calls from Config.cmake.in
+  * Use cmake v3.11
+  * Added SONAME version to shared library. (#26)
+  * Add option to shutdown connection before joining threads
+
+-------------------------------------------------------------------
+Mon Jul  2 09:22:40 UTC 2018 - windowskaput@gmail.com
+
+- Update matrix-structs 
+
+-------------------------------------------------------------------
+Wed Jun 27 08:26:33 UTC 2018 - windowskaput@gmail.com
+
+- New pakage 

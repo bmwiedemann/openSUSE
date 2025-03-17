@@ -1,0 +1,4 @@
+<package name="mtxclient" project="openSUSE:Factory">
+  <title>Client API library for Matrix, built on top of Boost.Asio</title>
+  <description>2023-03-06: okurz: Disabled build on Leap due to CMake Error `Target &quot;cmTC_f6909&quot; requires the language dialect &quot;CXX20&quot;`</description>
+</package>
