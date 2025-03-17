@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 14 08:58:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.0
+  * Use sleep-aware monotonic clock if available by @bretambrose in (#1189)
+
+-------------------------------------------------------------------
 Thu Mar 13 07:27:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.11.3:
