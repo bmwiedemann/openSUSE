@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-cmdb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -59,6 +59,10 @@ sed -i 's|#!%{_bindir}/env python|#!%{_bindir}/python3|g' \
 sed -i 's|#!%{_bindir}/python|#!%{_bindir}/python3|g' \
   test/f_inventory/dyninv.py \
   test/f_inventory/mixeddir/dyninv.py
+
+# drop unused import for deprecated imp,
+# that is no longer existing in python >= 3.12
+sed -i '/import imp$/d' test/test.py
 
 %build
 %python3_build

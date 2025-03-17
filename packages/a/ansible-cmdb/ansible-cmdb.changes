@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 17 16:46:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- drop unused import for deprecated imp, that is no longer existing
+  in Python 3.12 or higher
+
+-------------------------------------------------------------------
 Tue Feb 20 10:59:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
