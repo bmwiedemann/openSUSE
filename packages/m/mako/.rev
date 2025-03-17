@@ -110,4 +110,20 @@
   * The cursor-shape-v1 protocol is now supported</comment>
     <requestid>1173568</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bd0ebdd4aa672354370a9eaa8908b11a</srcmd5>
+    <version>1.10.0</version>
+    <time>1742246254</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.0:
+  * A new include directive has been added to import other configuration files.
+  * Each notification edge's border size can now be customized individually.
+  * A new icon-border-radius option has been added to set a border radius for icons.
+  * The makoctl utility has been rewritten. The output for makoctl list and makoctl
+    history is now human-readable. (busctl can be used directly to get the previous
+    D-Bus/JSON output.) busctl and jq are no longer dependencies.
+  * A --no-history flag has been added to makoctl dismiss.
+  * A new Modes D-Bus property can be used to be notified when the current modes change.</comment>
+    <requestid>1253599</requestid>
+  </revision>
 </revisionlist>
