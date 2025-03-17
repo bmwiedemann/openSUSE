@@ -17,7 +17,7 @@
 
 
 Name:           fswatch
-Version:        1.18.2
+Version:        1.18.3
 Release:        0
 Summary:        Multi platform file change monitor
 License:        GPL-3.0-or-later

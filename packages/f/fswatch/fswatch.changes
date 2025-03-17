@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 17 13:12:18 UTC 2025 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to 1.18.3
+  * Fix: spurious output inotify_rm_watch: Invalid argument
+  * Issue #335: v. 1.18.0: build error: kFSEventStreamCreateFlagFileEvents was
+    not declared in this scope.
+  * Grammar fix in documentation.
+  * Fix: typo in man page.
+
+-------------------------------------------------------------------
 Mon Jan 27 21:47:32 UTC 2025 - Michal Vyskocil <mvyskocil@opensuse.org>
 
 - Update to 1.18.2
