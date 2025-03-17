@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 13 08:02:41 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/ppp-project/ppp/commit/05361692ee7d6260ce5c04c9fa0e5a1aa7565323
+  + ppp-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Feb 19 13:29:35 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Update to version 2.5.2:

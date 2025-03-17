@@ -54,6 +54,8 @@ Patch3:         ppp-var_run_resolv_conf.patch
 Patch5:         ppp-fork-fix.patch
 # misc tiny stuff
 Patch6:         ppp-misc.patch
+# https://github.com/ppp-project/ppp/commit/05361692ee7d6260ce5c04c9fa0e5a1aa7565323
+Patch7:         ppp-gcc15.patch
 
 # Of cause any other compatible libc would work, like musl, but 2.24 required for SOL_NETLINK
 BuildRequires:  glibc-devel >= 2.24

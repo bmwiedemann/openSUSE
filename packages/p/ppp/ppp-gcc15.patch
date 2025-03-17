@@ -1,0 +1,188 @@
+--- pppdump/pppdump.c
++++ pppdump/pppdump.c
+@@ -25,48 +25,46 @@
+  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  */
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <time.h>
+ #include <sys/types.h>
+ 
+ int hexmode;
+ int pppmode;
+ int reverse;
+ int mru = 1500;
+ int abs_times;
+ time_t start_time;
+ int start_time_tenths;
+ int tot_sent, tot_rcvd;
+ 
+ extern int optind;
+ extern char *optarg;
+ 
+-void dumplog();
+-void dumpppp();
+-void show_time();
++void dumplog(FILE *);
++void dumpppp(FILE *);
++void show_time(FILE *, int);
+ 
+ int
+-main(ac, av)
+-    int ac;
+-    char **av;
++main(int ac, char **av)
+ {
+     int i;
+     char *p;
+     FILE *f;
+ 
+     while ((i = getopt(ac, av, "hprdm:a")) != -1) {
+ 	switch (i) {
+ 	case 'h':
+ 	    hexmode = 1;
+ 	    break;
+ 	case 'p':
+ 	    pppmode = 1;
+ 	    break;
+ 	case 'r':
+ 	    reverse = 1;
+ 	    break;
+ 	case 'm':
+ 	    mru = atoi(optarg);
+ 	    break;
+ 	case 'a':
+@@ -80,42 +78,41 @@ main(ac, av)
+     if (optind >= ac)
+ 	dumplog(stdin);
+     else {
+ 	for (i = optind; i < ac; ++i) {
+ 	    p = av[i];
+ 	    if ((f = fopen(p, "r")) == NULL) {
+ 		perror(p);
+ 		exit(1);
+ 	    }
+ 	    if (pppmode)
+ 		dumpppp(f);
+ 	    else
+ 		dumplog(f);
+ 	    fclose(f);
+ 	}
+     }
+     exit(0);
+ }
+ 
+ void
+-dumplog(f)
+-    FILE *f;
++dumplog(FILE *f)
+ {
+     int c, n, k, col;
+     int nb, c2;
+     unsigned char buf[16];
+ 
+     while ((c = getc(f)) != EOF) {
+ 	switch (c) {
+ 	case 1:
+ 	case 2:
+ 	    if (reverse)
+ 		c = 3 - c;
+ 	    printf("%s %c", c==1? "sent": "rcvd", hexmode? ' ': '"');
+ 	    col = 6;
+ 	    n = getc(f);
+ 	    n = (n << 8) + getc(f);
+ 	    *(c==1? &tot_sent: &tot_rcvd) += n;
+ 	    nb = 0;
+ 	    for (; n > 0; --n) {
+ 		c = getc(f);
+ 		if (c == EOF) {
+@@ -224,42 +221,41 @@ static u_short fcstab[256] = {
+ 
+ struct pkt {
+     int	cnt;
+     int	esc;
+     int	flags;
+     struct compressor *comp;
+     void *state;
+     unsigned char buf[8192];
+ } spkt, rpkt;
+ 
+ /* Values for flags */
+ #define CCP_ISUP	1
+ #define CCP_ERROR	2
+ #define CCP_FATALERROR	4
+ #define CCP_ERR		(CCP_ERROR | CCP_FATALERROR)
+ #define CCP_DECOMP_RUN	8
+ 
+ unsigned char dbuf[8192];
+ 
+ void
+-dumpppp(f)
+-    FILE *f;
++dumpppp(FILE *f)
+ {
+     int c, n, k;
+     int nb, nl, dn, proto, rv;
+     char *dir, *q;
+     unsigned char *p, *r, *endp;
+     unsigned char *d;
+     unsigned short fcs;
+     struct pkt *pkt;
+ 
+     spkt.cnt = rpkt.cnt = 0;
+     spkt.esc = rpkt.esc = 0;
+     while ((c = getc(f)) != EOF) {
+ 	switch (c) {
+ 	case 1:
+ 	case 2:
+ 	    if (reverse)
+ 		c = 3 - c;
+ 	    dir = c==1? "sent": "rcvd";
+ 	    pkt = c==1? &spkt: &rpkt;
+ 	    n = getc(f);
+@@ -358,43 +354,41 @@ dumpppp(f)
+ 		c = 7 - c;
+ 	    dir = c==3? "send": "recv";
+ 	    pkt = c==3? &spkt: &rpkt;
+ 	    printf("end %s", dir);
+ 	    if (pkt->cnt > 0)
+ 		printf("  [%d bytes in incomplete packet]", pkt->cnt);
+ 	    printf("\n");
+ 	    break;
+ 	case 5:
+ 	case 6:
+ 	case 7:
+ 	    show_time(f, c);
+ 	    break;
+ 	default:
+ 	    printf("?%.2x\n", c);
+ 	}
+     }
+ }
+ 
+ void
+-show_time(f, c)
+-    FILE *f;
+-    int c;
++show_time(FILE *f, int c)
+ {
+     time_t t;
+     int n;
+     struct tm *tm;
+ 
+     if (c == 7) {
+ 	t = getc(f);
+ 	t = (t << 8) + getc(f);
+ 	t = (t << 8) + getc(f);
+ 	t = (t << 8) + getc(f);
+ 	printf("start %s", ctime(&t));
+ 	start_time = t;
+ 	start_time_tenths = 0;
+ 	tot_sent = tot_rcvd = 0;
+     } else {
+ 	n = getc(f);
+ 	if (c == 5) {
+ 	    for (c = 3; c > 0; --c)
+ 		n = (n << 8) + getc(f);
+ 	}

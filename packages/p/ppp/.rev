@@ -504,4 +504,12 @@ GPL-2.0 matches found in ppp-2.4.5/include/linux/if_pppol2tp.h             (forw
   * ppp-pidfiles.patch</comment>
     <requestid>1247103</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>155d0959d4de0674985266badeb93431</srcmd5>
+    <version>2.5.2</version>
+    <time>1742246124</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1253631</requestid>
+  </revision>
 </revisionlist>
