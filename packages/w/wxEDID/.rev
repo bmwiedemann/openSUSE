@@ -382,4 +382,41 @@ Fixed:
     wxEDID_Frame::edigrp_sel, what could lead to a segfault.</comment>
     <requestid>1158798</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5b1d732d5238baae7244b3c21c61ae1d</srcmd5>
+    <version>0.0.32</version>
+    <time>1742246276</time>
+    <user>anag+factory</user>
+    <comment>- Update to v0.0.32
+Added:
+  * SLDB::SPKLD: value selector for Speaker_ID.
+  * EDID_cl::RMCD_NormV(): new handler to support normalized
+    distance values in SLDB::DSPC and SLDB::SPKLD
+  * SLDB::SPKLD support for dynamic group name, based on spk ID,
+    chn number and X/Y/Z coordinates
+  * EDID_cl::AssembleEDID(): automatically inject missing
+    descriptors of type 0x01 (VOID) in base EDID block, if ignoring
+    of EDID errors is enabled.
+  * StatusBar: display total group size in bytes.
+  * ADB::SAD: ACE_TC value selector.
+  * ADB::SAD: support for dynamic group names, based on SAD.ACE_TC
+    code (if AFC==15)
+  * H-spec: Support for HADB: HDMI Audio Data Block.
+  * blktree_cl::evt_mouse_leftup(): sending wxEVT_TREE_SEL_CHANGED
+    evt -&gt; allows to re-select currently selected item -&gt; display
+    group decription again.
+  * blktree_cl::evt_Lmouse_dclick(): sending WXK_RETURN key events
+    for selected tree items.
+  * wxEDID_Frame::evt_blktr_key() handling of WXK_RETURN key
+    events: switch to DTD constructor if selected item is of type
+    DTD or T7VTDB.
+  * MRL: support for CVT support information data layout
+    (mode 0x04).
+  * EDID descriptor: DCM: Display Color Management (type 0xF9).
+  * EDID descriptor: CT3: CVT 3-Byte Timing Codes (type 0xF8).
+  * EDID descriptor: ET3: Estabilished Timings 3 (type 0xF7)
+  * VESA STD2, CVT3 non-std codes: &quot;(!std)&quot; appended to dynamic
+    group name.</comment>
+    <requestid>1253547</requestid>
+  </revision>
 </revisionlist>

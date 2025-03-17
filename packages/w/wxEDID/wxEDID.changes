@@ -1,4 +1,282 @@
 -------------------------------------------------------------------
+Sun Mar 16 18:25:40 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.0.32
+Added:
+  * SLDB::SPKLD: value selector for Speaker_ID.
+  * EDID_cl::RMCD_NormV(): new handler to support normalized
+    distance values in SLDB::DSPC and SLDB::SPKLD
+  * SLDB::SPKLD support for dynamic group name, based on spk ID,
+    chn number and X/Y/Z coordinates
+  * EDID_cl::AssembleEDID(): automatically inject missing
+    descriptors of type 0x01 (VOID) in base EDID block, if ignoring
+    of EDID errors is enabled.
+  * StatusBar: display total group size in bytes.
+  * ADB::SAD: ACE_TC value selector.
+  * ADB::SAD: support for dynamic group names, based on SAD.ACE_TC
+    code (if AFC==15)
+  * H-spec: Support for HADB: HDMI Audio Data Block.
+  * blktree_cl::evt_mouse_leftup(): sending wxEVT_TREE_SEL_CHANGED
+    evt -> allows to re-select currently selected item -> display
+    group decription again.
+  * blktree_cl::evt_Lmouse_dclick(): sending WXK_RETURN key events
+    for selected tree items.
+  * wxEDID_Frame::evt_blktr_key() handling of WXK_RETURN key
+    events: switch to DTD constructor if selected item is of type
+    DTD or T7VTDB.
+  * MRL: support for CVT support information data layout
+    (mode 0x04).
+  * EDID descriptor: DCM: Display Color Management (type 0xF9).
+  * EDID descriptor: CT3: CVT 3-Byte Timing Codes (type 0xF8).
+  * EDID descriptor: ET3: Estabilished Timings 3 (type 0xF7)
+  * VESA STD2, CVT3 non-std codes: "(!std)" appended to dynamic
+    group name.
+  * txtd_cl: "hex_text" field: hexadecimal representation of the
+    text string.
+  * Support for LE<->BE byte swapping, depending on platform
+    endianness: EDID_cl::Word16(), BitF16Val(), MfcId(), ProdSN(),
+    DTD_PixClk(), ParseEDID_Base(hdr_magic).
+  * DTD_constructor: support for T7VTDB
+  * EDID_cl::ParseEDID_Base(), ParseEDID_CEA() logging details of
+    the parsing process.
+  * EDID_cl::AssembleEDID(): logging details of the assembling
+    process.
+  * ADB::SAD: support for dynamic group names, based on SAD.AFC
+    code.
+  * T8VTDB: dynamic type ID, based on TSC bit value: verifying
+    layout type for Insert operation.
+  * T8VTDB: dynamic VTC sub-groups base names: T8VTC_T0/STI,
+    depending on TSC bit value.
+  * T10VTDB: dynamic type ID, based on T10_M bit value: verifying
+    layout type for Insert operation.
+  * T10VTDB: dynamic VTD sub-groups base names:
+    T10VTD_M0/T10VTD_M1, depending on T10_M value.
+  * H-spec: Support for T10VTDB.
+  * EDID_cl::ALT_DType(): dedicated handler for alt. desc. type
+    field: triggers reparsing of descriptor data.
+  * Support for changing descriptor types in base EDID block.
+  * H-spec: Support for T8VTDB.
+  * dbc_root_dsc_t.fields, dbc_root_dsc_t.fcount and
+    dbc_root_dsc_t.ahf_sz: support for additional fields in root
+    group (besides the DBC header), needed for T8VTDB and T10VTDB
+  * vmap_ent_t.flags: additional flags for modifying value selector
+    behaviour. Currently used only with F_HEX for VESA DMT 2 byte
+    codes
+  * STI: 'DMT_2' field which allows to select standardised VESA
+    video code using value selector menu.
+  * H-spec: Support for T7VTDB.
+  * T7VTDB: value selectors for 3D mode and aspect ratio.
+  * T7VTDB: getGrpName(): support for dynamic block name
+  * EDID_cl::T7VTB_PixClk() and T7VTB_W15_LE() dedicated field
+    handlers for T7VTDB.
+  * EDID_cl::Word16(): unaligned u16_t opperations, LE.
+  * New Extended Tag Codes definitions:
+    + DBC_ET_T7VTB : DisplayID Type VII Video Timing Data Block,
+    + DBC_ET_T8VTB : DisplayID Type VIII Video Timing Data Block
+    + DBC_ET_T10VTB: DisplayID Type X Video Timing Data Block
+    + Not in CTA-861-H spec:
+    + DBC_ET_HEOVR : HDMI Forum EDID Extension Override Data Block
+    + DBC_ET_HSCDB : HDMI Forum Sink Capability Data Block
+    + DBC_ET_HADB  : HDMI Audio Data Block
+
+Fixed:
+  * UNK-DAT sub-grp: added type flag T_NO_MOVE: can't be moved.
+  * EDID_cl::STI_DBN(): use std name from VS if found - it can
+    contain RB flag, which is not encoded directly in the
+    structure.
+  * (BUG::regression) SVD: No dynamic name generated for VIC==0
+    (reserved).
+  * (BUG) edi_grp_cl::base_clone(): missing call to
+    AssembleGroup(): changes made in sub-groups were not included
+    in cloned group.
+  * wxEDID_Frame::evt_blktr_paste(): keep expanded state of target
+    group.
+  * (BUG::wxWidgets::GTK) missing icons in wxMessageBox():
+    using custom wxDialog: dlg::MessageBox()
+  * Event logic race: changing BlkTree group selection whith
+    DataGrid selection active: description displayed in Info panel
+    comes from field of newly generated grid insted from newly
+    slected group.
+  * Some errors logged twice for Reparse().
+  * (BUG): UpdateDataGrid(): special case: assertion failure:
+    (row_idx<row_cnt) if last row has F_FR flag set AND
+    ForcedGrpRefresh() causes reducing numer of fields -> the
+    index of selected row becomes out of range -> SelectRow()
+    fails.
+  * (BUG::regression): RMCD: payload data interpreted as UNK-DAT.
+  * (BUG::regression) base_DBC_Init_RootGrp() insert UNK-DAT group
+    if block length is too short to show AHF fields.
+  * (BUG) BlkTreeChangeGrpType()->EDID.ParseAltDtor() needs grp
+    offset, because instance data is in local data buffer -> for
+    UNK type, the error message contains invalid group offset.
+  * (BUG::old) ParseEDID_CEA() incorrect calculation of num_dtd:
+    std says it's a total number of native DTDs, including Block0,
+    but only DTDs in the CEA block were counted.
+  * (BUG::old) value of BED.num_extblk is now properly handled:
+    num_extblk==0: only base EDID is saved, regardless of whether
+    extension was loaded or not. num_extblk==1: wxedid reports
+    error on Save/Export if the extension block is not present.
+    num_extblk>1: error: only 1 extension block is currently
+    supported (CTA-861).
+  * (BUG::wxWidgets::undocumented) ImportEDID_hex(): wxFileDialog:
+    wilcard selector is showing empty string if path contains file
+    extension that doesn't match the wilcard.
+  * ParseEDID_CEA(): added checking of 18-byte desc. type @
+    dtd_offs: must be a DTD. Currently it is possible to change
+    the DTD into alt. desc. type by setting the PixClk to 0.
+  * T10VTDB, ADB, VDB: missing initialization of
+    edi_grp_cl::subg_id: doInsert() did not set type_id for
+    inserted groups.
+  * UNK-DAT sub-grps can only be deleted - or re-interpreted when
+    group type or length is changed.
+  * GroupAr_cl::base_Paste() pasted group must inherit T_P_HOLDER
+    flag (currently only for STI)
+  * (BUG::old) wxEDID_Frame::BlkTreeChangeGrpType(),
+    BlkTreeUpdateGrp(): assertion failure (invalid idx) when
+    changing type of last group in the GroupAr_cl.
+  * (BUG) BlkTreeChangeGrpType(): missing initialization of parent
+    array: grp_new->setParentAr()
+  * (BUG) removed invalid "code page 437" references from field
+    descriptions.
+  * (BUG::old) EDID_cl::FldPadStr()-> wxString::FromAscii():
+    assertion failure if UTX, MND or MSN descriptors contain
+    non-ascii values. Now using wxString::From8BitData() /
+    wxString::To8BitData(), what allows to handle invalid
+    EDID data.
+  * (BUG::old::mislooked): wxEDID_Frame::WriteField():
+    invalid access to freed data field buffer after DBC Tag or ETag
+    values are changed. This could trigger repersing of invalid
+    data from deleted block.
+  * (BUG::LEAK::old): wxEDID_Frame::BlkTreeDelGrp(),
+    wxEDID_Frame::evt_blktr_copy(): deletion of sub-groups not
+    performed -> LEAK.
+  * (BUG::old::mislooked): AST: Additional Standard Timings
+    descriptor: incorrect description for desc_type field.
+  * STI, AST: 'pix_ratio' field should be 'asp_ratio':
+    image aspect ratio.
+  * (BUG::regression): SaveRep():
+    TagCode 7 and T7VTDB ETag descriptions not printed.
+  * SaveEDID(): update BlockTree root node label and
+    config.last_used_fname.
+  * (BUG::typo::old): mrl_cl::Clone(): base_clone() invoked with
+    new dtd_cl, should be mrl_cl.
+  * EDID_cl::DTD_PixClk() now uses rdWord16_LE() and wrWord16_LE(),
+    what allows to correctly handle unaligned 16bit fields in CEA
+    block. Besides that, those functions allow to operate unaligned
+    fields in T7VTDB.
+
+Changed:
+  * H-spec: SLDB::SPKD X/Y/Zmax distances have defined default
+    values.
+  * H-spec: SLDB::DSPC DisplayX/Y/Z fields have defined default
+    values.
+  * ADB: ACE_TC field moved to pos. 3, rigth after AFC row.
+  * Removed edi_grp_cl::subg_id: use type_id.subg_id >> root grps
+    need to have this value set correctly, to support
+    insert_into().
+  * EDID_base.cpp: main funtions and common field handlers moved to
+    EDID_main.cpp
+  * H-spec: ADB: AFC=15, ACE=4,5,6, SAD byte2.bit0 is now
+    "SysH_22_2" (reserved in G)
+  * H-spec: ADB: AFC=15, ACE=11, SAD byte0.bits0-2 field is now
+    "MPEG-H 3D Audio Level" (reserved in G)
+  * H-spec: ADB: AFC=15, ACE=11, SAD byte2.bit0 is now "LCP"
+    (reserved in G)
+  * H-spec: ADB: AFC=15, ACE=11, SAD byte2.bit1 is now "BP"
+    (reserved in G)
+  * RMCD: removed DHDR sub-grp, using AHF now.
+  * SAB3D: ACAT fields moved to top of the field list.
+  * MRL-CVT: CVT version byte split into major:minor bitfields.
+  * H-spec: SAB: byte0.bit6 is now reserved, was RLC/RRC:
+    Rear Left/Right of Center
+  * H-spec: SAB: byte2.bit3 is now reserved, was TpLS/TpRS
+    Top Left/Right Surround. However, in HADB this bit is used for
+    LSd/RSd: Left/Right Surround direct
+  * ExportEDID_hex(), ImportEDID_hex(): default file name extension
+    is '*.hex', so it is different from EDID structures saved as
+    text.
+  * Added -llto flag to release build flags
+    (link-time optimization)
+  * MRL: variable data layout, depending on byte10 value
+    (modes 0x00, 0x01, 0x02, 0x04)
+  * MRL: EDID_cl::MRL_MaxPixClk() takes additional PixClk
+    precision bits into account if CVT support information is
+    available (mode 0x04).
+  * txtd_cl: dynamic blk name: display <invalid_str> for invalid
+    data, which otherwise could trigger changing of tree item
+    spacing.
+  * UTX, MSN, MND: single txtd_cl class: switching ID, text field
+    name and description depending on descriptor type.
+  * EDID: UNK descriptor handles type 0x10 as "VOID: Unused Data"
+  * EDID_class.cpp split into EDID_base.cpp and EDID_dsc.cpp
+  * AST: Additional Standard Timings (type 0xFA) uses STI
+    sub-groups, what allows to show dynamic timing names and use
+    value selector menu.
+  * Base_EDID::Alt Descriptors are now sharing header fields:
+    using edi_grp_cl::init_fields() in append mode.
+  * T8VTDB: TSC=1 layout: using STI sub-groups, exchangeable with
+    AST descriptor.
+  * Files generated by rcd_autogen are removed by "distclean"
+    target, and not by "clean-local". This allows to re-build the
+    package after 'make clean' without invoking the rcd_autogen
+    again.
+  * edi_grp_cl::type_id type changed to gtid_t -> alternative way
+    for referencing type flags.
+  * (Paste/Insert): always create copy of source group -> no need
+    to handle special cases.
+  * CEA-DBC IDs shifted 1 bit left to make space for new
+    Alternative Descriptors IDs.
+  * DTD can be transformed into alternative descriptor type by
+    setting PixClk to ZERO.
+  * Alternative descriptors can be transformed to DTD by changing
+    "zero_hdr" field to a non-zero value.
+  * Added DMT video codes table: vid_fmt.cpp::dmt_table[].
+    The table is used for generating value selectors for DMT-ID,
+    STD2 and CVT3 codes.
+  * edi_grp_cl::base_DBC_Init_RootGrp(), SubGrpAr_cl::CalcDataSZ(),
+    GroupAr_cl::base_CalcDataSZ(): added support for additional
+    header fields in dbc_root_dsc_t.
+  * EDID_cl::getVidDesc() -> EDID_cl::getValDesc():
+    general-purpose fn.
+  * The DMT codes values are exceeding the range allowed for
+    wxMenuItem ID (0x0..0x7FFF), so a new method for encoding menu
+    item values is used: If (new) F_VSVM s set in
+    edi_field_t.flags, the the value is stored from vmap_ent_t.val
+    instead of item ID.
+  * Added vmap.cpp: global array of value maps and selector menus.
+    Now the vmaps are referenced by edi_field_t.vmap_idx and can be
+    shared among many fields. Value selector menus are created only
+    on first use:
+    wxEDID_Frame::evt_dgrid_vsel()->vmap_GetSelector()
+    Removed: edi_dynfld_t.selector and edi_grp_cl.create_selector()
+  * edi_grp_cl::base_DBC_Init_FlatGrp() adopted to work as init()
+    for T7VTDB.
+  * EDID_cl::ParseDBC_TAG(): create unknown type data blocks also
+    for reserved ETags. This allows to freely change ETags and
+    generates correct error messages.
+  * vmap_t structures replaced with const std::map. This was
+    necessary because new ETags have high values like
+    "DBC_ET_HEOVR" == 120, so the old vmap_t would need to contain
+    a lot of NULL entries.
+
+Other:
+  * Cleanup: edi_grp_cl::init_fields(): removed unused arg
+    'orflags'
+  * Cleanup: Removed code for evt nesting prevention - no longer
+    needed.
+  * Cleanup: wxEDID_Frame::evt_dgrid_write():
+    removed Show/HideCellEditControl() - no longer needed.
+  * Cleanup: HDRD: EDID_cl::HDRD_mtd_type() removed, using
+    general-purpose EDID_cl::Word16() handler.
+  * Cleanup: Removed redundant checking for NULL instance ponter
+    in some field handlers.
+  * Update: grpar: changed rules for operating groups/sub-groups:
+      + base EDID & AST: STI can be moved/copied/pasted
+      + added support for new type_id format & flags.
+  * Update: rcode v3.2
+  * Started: updates for CTA-861-H
+
+-------------------------------------------------------------------
 Sun Mar 17 17:49:08 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.0.31
