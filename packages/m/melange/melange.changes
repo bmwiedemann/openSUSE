@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 17 06:01:03 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.23.0:
+  * fix(sca): Don't generate dependency on luajit (#1854)
+  * Persist workspace filesystem throughout package builds (#1836)
+  * build(deps): bump cloud.google.com/go/storage from 1.50.0 to
+    1.51.0 (#1855)
+  * build(deps): bump mvdan.cc/sh/v3 from 3.10.0 to 3.11.0 (#1847)
+  * build(deps): bump google.golang.org/api from 0.223.0 to 0.225.0
+    (#1853)
+  * build(deps): bump the gomod group with 8 updates (#1851)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace (#1846)
+  * linter: update usrmerge and make it required (#1839)
+  * feat: store --namespace as APK maintainer field (#1751)
+  * Expand the sample yaml in README (#1838)
+
+-------------------------------------------------------------------
 Mon Mar 10 06:52:32 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.22.2:
