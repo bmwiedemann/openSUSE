@@ -1,7 +1,7 @@
 #
 # spec file for package polybar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          System/GUI/Other
 URL:            https://github.com/polybar/polybar
 Source:         https://github.com/polybar/polybar/releases/download/%{version}/%{name}-%{version}.tar.gz
 Patch0:         cmake.patch
+Patch1:         polybar-gcc15.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.5
 BuildRequires:  i3
@@ -61,7 +62,7 @@ DocDir:         %{_datadir}/doc
 A fast and easy-to-use status bar for tilling WM
 
 %prep
-%setup -q
+%autosetup -p1
 
 %if 0%{?sle_version} == 150500 && 0%{?is_opensuse} || 0%{?sle_version} == 150600 && 0%{?is_opensuse}
     %autopatch -p1

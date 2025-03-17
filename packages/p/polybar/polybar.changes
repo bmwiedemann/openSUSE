@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 12 13:31:49 UTC 2025 - pgajdos@suse.com
+
+- fix build with gcc15
+- added patches
+  + polybar-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 06:29:14 UTC 2024 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
 
 - Bump to version 3.7.2 (changelog https://github.com/polybar/polybar/releases/tag/3.7.2)
