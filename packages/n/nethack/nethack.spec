@@ -51,7 +51,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 NetHack is a turn-based role-playing game with complex game mechanics.
-Descent into the Maze of Menace and retrieve the Amulet of Yendor. Play
+Descent into the Mazes of Menace and retrieve the Amulet of Yendor. Play
 as different character classes, such as fighter, wizard, rogue and others.
 Persist against various monsters and defeat the Wizard of Yendor.
 

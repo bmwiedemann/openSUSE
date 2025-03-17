@@ -1,10 +1,10 @@
 <package name="nethack" project="openSUSE:Factory">
-  <title>Character Based RPG</title>
-  <description>This RPG is somewhat cryptic with its character based output. But a
-true fan knows and appreciates its complexity and possibilities.
+  <title>Turn-based role-playing game</title>
+  <description>
+NetHack is a turn-based role-playing game with complex game mechanics. Descent into the Mazes of Menace and retrieve the Amulet of Yendor. Play as different character classes, such as fighter, wizard, rogue and others. Persist against various monsters and defeat the Wizard of Yendor.
 
 This package contains the text interface.
-</description>
+  </description>
   <devel project="games" package="nethack"/>
-  <url>http://www.nethack.org/</url>
+  <url>https://www.nethack.org/</url>
 </package>

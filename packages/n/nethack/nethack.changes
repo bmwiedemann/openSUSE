@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 17 16:56:16 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Modify nethack-config.patch: Define AUTOPICKUP_EXCEPTIONS to make
+  autopickup more user friendly. It is usually preferable for players
+  to not pick up items automatically. Exceptions are Zorkmids (i.e.,
+  in-game money). The compile-time option AUTOPICKUP_EXCEPTIONS allows
+  for configuring this at runtime.
+
+-------------------------------------------------------------------
+Mon Mar 17 16:52:16 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Fix package description: it's the 'Mazes of Menace' (plural).
+
+-------------------------------------------------------------------
 Fri Mar 14 16:12:08 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - Add nethack-escapes-revamp.patch: Fix possible privilege escalation
