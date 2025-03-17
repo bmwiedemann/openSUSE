@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 14 09:18:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.6
+  * Fix ed25519 builds against openssl 1.0.2 by @DmitriyMusatkin in (#208)
+
+-------------------------------------------------------------------
 Wed Mar 12 07:18:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.5
