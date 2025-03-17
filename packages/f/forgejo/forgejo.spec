@@ -52,6 +52,7 @@ Source10:       %{name}.apparmor
 Source11:       %{name}.firewalld
 Source13:       forgejo-hooks-abstraction.apparmor
 Source12:       forgejo-abstraction.apparmor
+Source98:       README.SUSE
 Source99:       get-sources.sh
 Patch0:         custom-app.ini.patch
 Patch1:         dont-strip.patch
@@ -137,6 +138,7 @@ builtin functionality.
 %prep
 %autosetup -p1 -n %{name}-src-%{version}
 local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps
+cp %{SOURCE98} .
 
 %build
 %sysusers_generate_pre %{SOURCE6} %{name} %{name}.conf
@@ -206,7 +208,7 @@ fi
 
 %if %{with apparmor}
 %post apparmor
-%apparmor_reload %{_sysconfdir}/apparmor.d/usr.bin.%{name}
+%apparmor_reload %{_sysconfdir}/apparmor.d/%{name}
 %endif
 
 %if %{with selinux}
@@ -225,7 +227,7 @@ semodule -r %{name} 2>/dev/null || :
 
 %files
 %license LICENSE
-%doc README.md RELEASE-NOTES.md CONTRIBUTING.md
+%doc README.md RELEASE-NOTES.md CONTRIBUTING.md README.SUSE
 %{_unitdir}/%{name}.service
 %{_bindir}/%{name}
 %{_bindir}/gitea

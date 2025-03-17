@@ -430,4 +430,17 @@
     <comment>- apparmor: fix wiki editing (forwarded request 1252920 from darix)</comment>
     <requestid>1252969</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>dc649300bedd2a8abae02faaf8b66979</srcmd5>
+    <version>10.0.1</version>
+    <time>1742246262</time>
+    <user>anag+factory</user>
+    <comment>- add README.SUSE to explain SUSE specific things
+
+- apparmor: /var/lib/forgejo/data/home/.gitconfig needs to be
+  writable for initial setup
+
+- apparmor: forgot to rename the profile in the %post scriptlet (forwarded request 1253274 from darix)</comment>
+    <requestid>1253559</requestid>
+  </revision>
 </revisionlist>

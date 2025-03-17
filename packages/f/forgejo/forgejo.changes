@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar 15 00:27:19 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add README.SUSE to explain SUSE specific things
+
+-------------------------------------------------------------------
+Sat Mar 15 00:14:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparmor: /var/lib/forgejo/data/home/.gitconfig needs to be
+  writable for initial setup
+
+-------------------------------------------------------------------
+Fri Mar 14 22:10:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparmor: forgot to rename the profile in the %post scriptlet 
+
+-------------------------------------------------------------------
 Thu Mar 13 23:03:14 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - apparmor: fix wiki editing
