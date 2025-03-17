@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 17 10:16:47 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.7.0
+  * Added ThreatCrowd source by @hyni03 in #1508
+  * Added DigitalYama source by @nukunga in #1517
+  * Fixed issue where input with protocols (e.g., https://example.com ) was skipped. Now, the protocol part is removed, allowing example.com to be used by @dogancanbakir in #1516
+  * Fixed VirusTotal limit error where the limit couldn't be larger than 40 by @dogancanbakir in #1548
+  * Fixed query syntax for Netlas source by @thurrsense in #1529
+  * Removed PassiveTotal as it no longer exists by @dogancanbakir in #1515
+  * Changed DNSRepo API endpoint to the latest version by @dogancanbakir in #1540
+  * Skipped non-200 HTTP responses for Anubis by @dogancanbakir in #1541
+
+-------------------------------------------------------------------
 Sun Feb  2 13:30:55 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Still show current version
