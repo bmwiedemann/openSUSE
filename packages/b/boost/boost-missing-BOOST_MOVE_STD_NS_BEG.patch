@@ -1,0 +1,32 @@
+From 5f073f8f00ee23b4502c0ad30a3aa2a5154cd1e8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ion=20Gazta=C3=B1aga?= <igaztanaga@gmail.com>
+Date: Fri, 28 Feb 2025 17:22:47 +0100
+Subject: [PATCH] FIxes #59 ("std_ns_begin.hpp: missing definition of
+ BOOST_MOVE_STD_NS_BEG")
+
+---
+ include/boost/move/detail/std_ns_begin.hpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/include/boost/move/detail/std_ns_begin.hpp b/include/boost/move/detail/std_ns_begin.hpp
+index de13cde..90169c4 100644
+--- a/include/boost/move/detail/std_ns_begin.hpp
++++ b/include/boost/move/detail/std_ns_begin.hpp
+@@ -9,6 +9,7 @@
+ #//
+ #//////////////////////////////////////////////////////////////////////////////
+ #
++#include <boost/config.hpp>
+ #if defined(_LIBCPP_VERSION)
+    #if defined(__clang__)
+       #define BOOST_MOVE_STD_NS_GCC_DIAGNOSTIC_PUSH
+@@ -26,6 +27,9 @@
+ #elif defined(BOOST_DINKUMWARE_STDLIB)
+    #define BOOST_MOVE_STD_NS_BEG _STD_BEGIN
+    #define BOOST_MOVE_STD_NS_END _STD_END
++#else
++   #define BOOST_MOVE_STD_NS_BEG namespace std{
++   #define BOOST_MOVE_STD_NS_END
+ #endif
+ 
+ #if defined(_MSC_VER) && (_MSC_VER >= 1915)

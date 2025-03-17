@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 16 15:24:18 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build failure of depending packages, add
+  * boost-missing-BOOST_MOVE_STD_NS_BEG.patch
+  * boost-missing-BOOST_MOVE_STD_NS_BEG-again.patch
+
+-------------------------------------------------------------------
+Fri Mar 14 07:55:54 CET 2025 - aschnell@suse.com
+
+- add context and data_time to requirement of process (bsc#1239599)
+- some spec file cleanup
+
+-------------------------------------------------------------------
 Thu Mar 06 13:20:02 CET 2025 - aschnell@suse.com
 
 - package mpi python cmake file once (gh#espressomd/espresso#5050)

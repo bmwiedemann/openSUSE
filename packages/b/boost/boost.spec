@@ -175,12 +175,6 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le %{arm}
 %endif
 %endif
 
-# context hasn't been ported to all architectures yet (looks complete now - aschnell - 2024-12-11)
-%ifarch %{ix86} %{x86_64} %{arm} aarch64 mips ppc ppc64 ppc64le riscv64 s390x
-%bcond_without build_context
-%else
-%bcond_with build_context
-%endif
 %if %{with hpc}
 # needed by the hpc tools
 %{hpc_init -c %compiler_family %{?with_mpi:-m %mpi_flavor} %{?c_f_ver:-v %{c_f_ver}} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}
@@ -200,13 +194,6 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le %{arm}
 %define package_datadir %{_datadir}
 %define base_name boost%{?name_suffix}
 %define package_python3_sitearch %python3_sitearch
-%endif
-
-# needs newer *default* GCC to compile runtime
-%if %{with build_context} && 0%{?suse_version} > 1320
-%bcond_without boost_fiber
-%else
-%bcond_with boost_fiber
 %endif
 
 Name:           %{base_name}
@@ -240,6 +227,8 @@ Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
 Patch22:        boost-smart-ptr.patch
+Patch23:        https://github.com/boostorg/move/commit/5f073f8f00ee23b4502c0ad30a3aa2a5154cd1e8.patch#/boost-missing-BOOST_MOVE_STD_NS_BEG.patch
+Patch24:        https://github.com/boostorg/move/commit/e9ff3ca0952e680871145f454925614d950cef4d.patch#/boost-missing-BOOST_MOVE_STD_NS_BEG-again.patch
 %{?suse_build_hwcaps_libs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -347,13 +336,9 @@ Requires:       libboost_wave%{library_version}-devel
 Requires:       libstdc++-devel
 Conflicts:      boost-devel-impl
 Provides:       boost-devel-impl = %{version}
-%if %{with build_context}
 Requires:       libboost_context%{library_version}-devel
 Requires:       libboost_coroutine%{library_version}-devel
-%endif
-%if %{with boost_fiber}
 Requires:       libboost_fiber%{library_version}-devel
-%endif
 %if %{with mpi}
 Requires:       libboost_graph_parallel%{library_version}-devel
 Requires:       libboost_mpi%{library_version}-devel
@@ -866,6 +851,8 @@ This package contains the Boost.Process runtime library.
 %package     -n libboost_process%{library_version}-devel
 Summary:        Development headers for Boost.Process library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_context%{library_version}-devel = %{version}
+Requires:       libboost_date_time%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_process%{library_version} = %{version}
 Conflicts:      boost-devel < 1.87
@@ -1289,6 +1276,8 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch -P 20 -p1
 %patch -P 21 -p1
 %patch -P 22 -p1
+%patch -P 23 -p2
+%patch -P 24 -p2
 
 %build
 find . -type f -exec chmod u+w {} +
@@ -1304,14 +1293,6 @@ EOF
 %if %{build_base}
 cat << \EOF >.build
 export LIBRARIES_FLAGS="--without-mpi --without-python"
-%if ! %{with build_context}
-# coroutine depends on context
-LIBRARIES_FLAGS+=" --without-context --without-coroutine"
-%endif
-
-%if ! %{with boost_fiber}
-LIBRARIES_FLAGS+=" --without-fiber"
-%endif
 EOF
 
 %else
@@ -1734,7 +1715,6 @@ EOF
 %{package_libdir}/cmake/boost_container-%{version}/*
 %{package_libdir}/libboost_container.so
 
-%if %{with build_context}
 %files -n libboost_context%{library_version}
 %{package_libdir}/libboost_context.so.%{version}
 
@@ -1750,8 +1730,6 @@ EOF
 %dir %{package_libdir}/cmake/boost_coroutine-%{version}
 %{package_libdir}/cmake/boost_coroutine-%{version}/*
 %{package_libdir}/libboost_coroutine.so
-
-%endif
 
 %files -n libboost_contract%{library_version}
 %{package_libdir}/libboost_contract.so.%{version}
@@ -1769,7 +1747,6 @@ EOF
 %{package_libdir}/cmake/boost_date_time-%{version}/*
 %{package_libdir}/libboost_date_time.so
 
-%if %{with boost_fiber}
 %files -n libboost_fiber%{library_version}
 %{package_libdir}/libboost_fiber.so.%{version}
 
@@ -1777,8 +1754,6 @@ EOF
 %dir %{package_libdir}/cmake/boost_fiber-%{version}
 %{package_libdir}/cmake/boost_fiber-%{version}/*
 %{package_libdir}/libboost_fiber.so
-
-%endif
 
 %files -n libboost_filesystem%{library_version}
 %{package_libdir}/libboost_filesystem.so.%{version}

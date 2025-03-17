@@ -1,0 +1,35 @@
+From e9ff3ca0952e680871145f454925614d950cef4d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ion=20Gazta=C3=B1aga?= <igaztanaga@gmail.com>
+Date: Fri, 28 Feb 2025 19:32:21 +0100
+Subject: [PATCH] Fix #59 again (missing BOOST_MOVE_STD_NS_END closing brace)
+
+---
+ include/boost/move/detail/std_ns_begin.hpp | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/include/boost/move/detail/std_ns_begin.hpp b/include/boost/move/detail/std_ns_begin.hpp
+index 90169c4..ef9b4b4 100644
+--- a/include/boost/move/detail/std_ns_begin.hpp
++++ b/include/boost/move/detail/std_ns_begin.hpp
+@@ -9,7 +9,9 @@
+ #//
+ #//////////////////////////////////////////////////////////////////////////////
+ #
+-#include <boost/config.hpp>
++#ifndef BOOST_CONFIG_HPP
++#  include <boost/config.hpp>
++#endif
+ #if defined(_LIBCPP_VERSION)
+    #if defined(__clang__)
+       #define BOOST_MOVE_STD_NS_GCC_DIAGNOSTIC_PUSH
+@@ -28,8 +30,8 @@
+    #define BOOST_MOVE_STD_NS_BEG _STD_BEGIN
+    #define BOOST_MOVE_STD_NS_END _STD_END
+ #else
+-   #define BOOST_MOVE_STD_NS_BEG namespace std{
+-   #define BOOST_MOVE_STD_NS_END
++   #define BOOST_MOVE_STD_NS_BEG namespace std {
++   #define BOOST_MOVE_STD_NS_END }
+ #endif
+ 
+ #if defined(_MSC_VER) && (_MSC_VER >= 1915)
