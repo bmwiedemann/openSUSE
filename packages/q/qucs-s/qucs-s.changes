@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Mar 14 22:16:32 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 25.1.1
+  Bugfixes and general improvemnt
+  + Add UIC option for FFT analysis #1261
+  + Improve wire editing #1253
+  + Fix crash when deleting shorted devices #1254
+  + Fix removing labels #1255
+  + Qucsator RF updated to v1.0.5; fixed VCD files parsing #1268
+  Localization
+  + Russian translation update #1246
+  Packaging
+  + Update Gentoo ebuidl #1252
+  Known issues
+  + The .OPTIONS and .FUNC devices not working properly. Use the
+    INCLUDE SCRIPT instead. See #1260
+  What's Changed
+  + Update Russian translation by @antohami in #1246
+  + Update MetaInfo by @ra3xdh in #1249
+  + Fix crash when deleting two shorted devices by @wawuwo in #1250
+  + Update Gentoo ebuild by @vaxxabait in #1252
+  + Make future wire more thicker when laying a new wire by
+    @wawuwo in #1253
+  + Fix removing of a not selected label instead of selected by
+    @wawuwo in #1255
+  + Add InitialDC option for FFT by @ra3xdh in #1261
+  + Update NEWS, VERSION, and About dialog by @ra3xdh in #1267
+  + QucsatorRF updated to v1.0.5
+
+-------------------------------------------------------------------
 Fri Feb 21 08:29:09 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 25.1.0
