@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 13 13:13:13 UTC 2025 - ohering@suse.de
+
+- Remove unused dependency to ocaml-pcre
+
+-------------------------------------------------------------------
 Mon Mar  3 03:03:03 UTC 2025 - ohering@suse.de
 
 - Update to version 8.03.01

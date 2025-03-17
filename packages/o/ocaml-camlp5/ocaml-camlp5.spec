@@ -52,7 +52,6 @@ Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and prin
 Summary:        Development files for ocaml-camlp5
 Group:          Development/Languages/OCaml
 Requires:       %name = %version
-Requires:       ocamlfind(pcre)
 
 %description devel
 Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and printing some result on standard output.

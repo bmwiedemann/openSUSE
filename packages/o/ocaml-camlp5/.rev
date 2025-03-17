@@ -145,4 +145,12 @@
   cover ocaml-5.2</comment>
     <requestid>1249870</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>03339c462a776cc33d2b57b839a40a3a</srcmd5>
+    <version>8.03.01</version>
+    <time>1742246294</time>
+    <user>anag+factory</user>
+    <comment>- Remove unused dependency to ocaml-pcre</comment>
+    <requestid>1253642</requestid>
+  </revision>
 </revisionlist>
