@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 15 06:53:42 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- let scim and uim be conditional, which are factory drop candidates
+
+-------------------------------------------------------------------
 Mon Aug 19 18:32:52 UTC 2024 - pgajdos@suse.com
 
 - fix build with gcc14 [bsc#1223886]

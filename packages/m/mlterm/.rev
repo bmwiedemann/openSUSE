@@ -851,4 +851,12 @@
 - do not build with -fpermissive anymore</comment>
     <requestid>1194758</requestid>
   </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>89fe646fc4cc8c04ef551b0a65ec0ed8</srcmd5>
+    <version>3.9.3</version>
+    <time>1742246251</time>
+    <user>anag+factory</user>
+    <comment>- let scim and uim be conditional, which are factory drop candidates (forwarded request 1253457 from MargueriteSu)</comment>
+    <requestid>1253582</requestid>
+  </revision>
 </revisionlist>

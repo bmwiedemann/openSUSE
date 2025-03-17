@@ -1,7 +1,7 @@
 #
 # spec file for package mlterm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@
 %else
 %global do_wayland 1
 %global flavors with-gui=wayland with-gui=sdl2 with-gtk=3.0
+%bcond_with scim
+%bcond_with uim
 %endif
 Name:           mlterm
 Version:        3.9.3
@@ -48,8 +50,12 @@ BuildRequires:  ccache
 BuildRequires:  coreutils
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+%if %{with scim}
 BuildRequires:  scim-devel
+%endif
+%if %{with uim}
 BuildRequires:  uim-devel
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)
@@ -159,7 +165,7 @@ A plugin to use the fcitx input methods directly from mlterm.
 %package ibus
 Summary:        Ibus plugin for mlterm
 Group:          System/X11/Terminals
-Provides:       locale(scim:ja;ko;ar;he)
+Provides:       locale(ibus:ja;ko;ar;he)
 
 %description ibus
 A plugin to use the ibus input methods directly from mlterm.
@@ -172,6 +178,7 @@ Provides:       locale(m17n:ja;ko;zh;ar;he)
 %description m17n
 A plugin to use the m17n input methods directly from mlterm.
 
+%if %{with scim}
 %package scim
 Summary:        SCIM plugin for mlterm
 Group:          System/X11/Terminals
@@ -179,7 +186,9 @@ Provides:       locale(scim:ja;ko;ar;he)
 
 %description scim
 A plugin to use the SCIM input methods directly from mlterm.
+%endif
 
+%if %{with uim}
 %package uim
 Summary:        An uim plugin for mlterm
 Group:          System/X11/Terminals
@@ -187,6 +196,7 @@ Provides:       locale(uim:ja;ko;ar;he)
 
 %description uim
 A plugin to use the uim input methods directly from mlterm.
+%endif
 
 %prep
 %autosetup -p1
@@ -327,10 +337,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files m17n
 %{_libdir}/mlterm/libim-m17nlib*.so
 
+%if %{with scim}
 %files scim
 %{_libdir}/mlterm/libim-scim*.so
+%endif
 
+%if %{with uim}
 %files uim
 %{_libdir}/mlterm/libim-uim*.so
+%endif
 
 %changelog
