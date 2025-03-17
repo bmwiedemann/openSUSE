@@ -1,0 +1,11 @@
+--- parcellite-1.2.5/doc/Makefile.orig	2024-07-11 05:33:16.000000000 +0200
++++ parcellite-1.2.5/doc/Makefile	2025-03-17 10:11:15.764596682 +0100
+@@ -33,7 +33,7 @@
+ 
+ install: $(GETTEXT_PACKAGE).1
+ 	mkdir -p $(MANDIR)
+-	gzip -c $^ > $(MANDIR)/$(GETTEXT_PACKAGE).gz
++	gzip -c $^ > $(MANDIR)/$(GETTEXT_PACKAGE).1.gz
+ 
+ 
+ clean:

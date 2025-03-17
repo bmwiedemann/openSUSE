@@ -301,4 +301,12 @@
   * Removed autotools. Just use make - see the README</comment>
     <requestid>1186770</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>b3a453097f0c57db5b9dba50492482d2</srcmd5>
+    <version>1.2.5</version>
+    <time>1742246307</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1253654</requestid>
+  </revision>
 </revisionlist>

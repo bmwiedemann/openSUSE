@@ -1,7 +1,7 @@
 #
 # spec file for package parcellite
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://github.com/rickyrockrat/parcellite/archive/refs/tags/%{v
 Patch0:         parcellite-1.1.7-defaults.patch
 Patch1:         parcellite-1.1.9_no_kde_start.patch
 Patch2:         parcellite-1.2.4.0-simple.patch
+Patch3:         fix-manpage-name.patch
 BuildRequires:  gnome-icon-theme
 BuildRequires:  intltool >= 0.23
 BuildRequires:  pkgconfig
