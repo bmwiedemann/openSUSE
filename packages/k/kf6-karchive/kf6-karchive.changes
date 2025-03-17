@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 11 09:29:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.12.0
+- Changes since 6.11.0:
+  * Update dependency version to 6.12.0
+  * KF6 TODOs are now KF7 TODOs
+  * kgzipfilter.cpp use nullptr instead of zero
+  * Use 'const QString' declarations for test filenames
+  * Move all test data files to data directory
+  * 7zip: Add default naming for files without a name (kde#496175)
+  * Add error checking for writing back temp files in KTar
+  * Handle errors in KTar::writeLonglink
+  * Remove stale TODO
+  * Refactor KXzFilter::init to use QScopeGuard
+  * Update version to 6.12.0
+
+-------------------------------------------------------------------
 Sat Feb  8 12:16:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0
