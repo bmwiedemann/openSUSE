@@ -1,7 +1,7 @@
 #
 # spec file for package vocalis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           vocalis
-Version:        43.beta+116
+Version:        43.beta+125
 Release:        0
 Summary:        Sound Recorder
 License:        BSD-3-Clause AND LGPL-2.0-or-later
