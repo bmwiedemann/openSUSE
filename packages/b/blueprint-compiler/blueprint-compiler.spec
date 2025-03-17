@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} < 1600
+%global pythons python311
+%else
+%global pythons python3
+%endif
+
 Name:           blueprint-compiler
 Version:        0.16.0
 Release:        0
@@ -23,13 +29,15 @@ Summary:        A markup language for GTK user interfaces
 License:        LGPL-3.0-or-later
 URL:            https://gitlab.gnome.org/jwestman/blueprint-compiler
 Source:         %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module gobject}
 BuildRequires:  meson
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-gobject
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
-Requires:       python3-gobject
+Requires:       %{python_flavor}-gobject
 BuildArch:      noarch
 
 %description
@@ -44,6 +52,14 @@ A markup language for GTK user interface files.
 
 %prep
 %autosetup -n %{name}-v%{version}
+%if 0%{?suse_version} < 1600
+sed -i -e 's|python3|python3.11|g' meson.build
+sed -i -e 's|=3.9|=3.11|g' justfile
+sed -i -e 's|python3|python3.11)|g' justfile
+sed -i -e 's|python3|python3.11)|g' tests/fuzz.sh
+sed -i -e 's|/usr/bin/env python3|/usr/bin/python3.11|g' blueprint-compiler.py
+sed -i -e 's|/usr/bin/env python3|/usr/bin/python3.11|g' docs/collect-sections.py
+%endif
 
 %build
 %meson \

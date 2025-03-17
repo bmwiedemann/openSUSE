@@ -77,4 +77,200 @@
     <comment></comment>
     <requestid>1243070</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>61b53102295f662f3732c85c5e1d1e4b</srcmd5>
+    <version>0.16.0</version>
+    <time>1742246194</time>
+    <user>anag+factory</user>
+    <comment>- Fix build error for Leap &lt; 16.
+- Update to version 0.16.0:
+  + Added:
+    - Added more &quot;go to reference&quot; implementations in the language
+      server
+    - Added semantic token support for flag members in the language
+      server
+    - Added property documentation to the hover tooltip for notify
+      signals
+    - The language server now shows relevant sections of the
+      reference documentation when hovering over keywords and
+      symbols
+    - Added not-swapped flag to signal handlers, which may be
+      needed for signal handlers that specify an object
+    - Added expression literals, which allow you to specify a
+      Gtk.Expression property (as opposed to the existing
+      expression support, which is for property bindings)
+  + Changed:
+    - The formatter adds trailing commas to lists
+    - The formatter removes trailing whitespace from comments
+    - Autocompleting a commonly translated property automatically
+      adds the _(&quot;&quot;) syntax
+    - Marking a single-quoted string as translatable now generates
+      a warning, since gettext does not recognize it when using the
+      configuration recommended in the blueprint documentation
+  + Fixed:
+    - Added support for libgirepository-2.0 so that blueprint
+      doesn't crash due to import conflicts on newer versions of
+      PyGObject
+    - Fixed a bug when decompiling/porting files with enum values
+    - Fixed several issues where tests would fail with versions of
+      GTK that added new deprecations
+    - Addressed a problem with the language server protocol in some
+      editors
+    - Fixed an issue where the compiler would crash instead of
+      reporting compiler errors
+    - Fixed a crash in the language server that occurred when a
+      detailed signal (e.g. notify::*) was not complete
+    - The language server now properly implements the shutdown
+      command, fixing support for some editors and improving
+      robustness when restarting
+    - Marking a string in an array as translatable now generates an
+      error, since it doesn't work
+  + Documentation:
+    - Added mention of null in the Literal Values section
+    - Add apps to Built with Blueprint section
+    - Corrected and updated many parts of the documentation
+- Add missing requirements.
+- Put spec in a position to build for Leap too.
+- update to 0.14.0:
+ * Added a warning for unused imports.
+ * Added an option to not print the diff when formatting with the CLI.
+ * Added support for building Gtk.ColumnViewRow, Gtk.ColumnViewCell,
+ * and Gtk.ListHeader widgets with Gtk.BuilderListItemFactory.
+ * Added support for the after keyword for signals. This was previously
+ * documented but not implemented.
+ * Added support for string arrays.
+ * Added hover documentation for properties in lookup expressions.
+ * The decompiler supports action widgets, translation domains, typeof&lt;&gt;
+ * syntax, and expressions. It also supports extension syntax for
+ * Adw.Breakpoint, Gtk.BuilderListItemFactory, Gtk.ComboBoxText,
+ * Gtk.SizeGroup, and Gtk.StringList.
+ * Added a decompile subcommand to the CLI, which decompiles an XML .ui
+ * file to blueprint.
+ * Accessibility relations that allow multiple values are supported
+ * using list syntax.
+ * The decompiler sorts imports alphabetically.
+ * Translatable strings use translatable=&quot;yes&quot; instead of translatable=&quot;true&quot;
+ * for compatibility with xgettext.
+ * The first line of the documentation is shown in the completion list
+ * when using the language server.
+ * Object autocomplete uses a snippet to add the braces and position the
+ * cursor inside them.
+ * The carets in the CLI diagnostic output now span the whole error
+ * message up to the end of the first line, rather than just the first
+ * character.
+ * The decompiler emits double quotes, which are compatible with gettext.
+ * Fixed deprecation warnings in the language server.
+ * The decompiler no longer duplicates translator comments on properties.
+ * Subtemplates no longer output a redundant @generated comment.
+ * When extension syntax from a library that is not available is used,
+ * the compiler emits an error instead of crashing.
+ * The language server reports semantic token positions correctly.
+ * The decompiler no longer emits the deprecated bind-property syntax.
+ * Fixed the tests when used as a Meson subproject.
+ * Signal autocomplete generates correct syntax.
+ * The decompiler supports templates that do not specify a parent class.
+ * Adw.Breakpoint setters that set a property on the template no longer cause a crash.
+ * Fixed type checking with templates that do not have a parent class.
+ * Fixed online documentation links for interfaces.
+ * The wording of edit suggestions is fixed for insertions and deletions.
+ * When an input file uses tabs instead of spaces, the diagnostic output
+ * on the CLI aligns the caret correctly.
+ * The decompiler emits correct syntax when a property binding refers to
+ * the template object.
+ * Fixed typos in &quot;Built with Blueprint&quot; section.
+- build documentation
+- remove tests, as they fail on obs, but work otherwise fine when build locally
+- Update to version 0.12.0:
+  + Add support for Adw.AlertDialog
+  + Emit warnings for deprecated APIs
+  + Document symbols
+  + &quot;Go to definition&quot; (ctrl+click)
+  + Code action for &quot;namespace not imported&quot; diagnostics, that adds the
+    missing import
+  + Add a formatter - cli and lsp
+  + Support for translation domain
+  + Print code actions in error messages
+  + Add a header notice mentionning the file is generated
+  + decompiler: Use single quotes for output
+  + Fixed multine strings support with the escape newline character
+  + Fixed the signal completion, which was missing the &quot;$&quot;
+  + Fixed property value completion
+  + Added a missing semantic highlight (for the enum in Gtk.Scale marks)
+  + Handle big endian bitfields correctly
+  + Fix mixing relative and absolute paths
+- Revert python3-gobject Requires: fix No module named 'gi'
+- Update to version 0.10.0:
+  + The bind-property keyword has been removed. Use bind instead.
+  + Fixed an issue with the language server not conforming the spec.
+  + Fixed the signature section of the hover documentation 
+    for properties and signals.
+  + Fixed a bug where documentation was sometimes shown 
+    for a different symbol with the same name.
+  + Number literals are now correctly parsed as floats
+  + Decompiling an empty file now produces an empty file
+  + Added hover documentation for the Adw.Breakpoint extensions
+- Update to version 0.8.1:
+  + Duplicates in a number of places are now considered errors.
+  + Fixed a number of bugs in the XML output
+- Update to version 0.8.0:
+  + Fixed a bug in the language server's acceptance of text
+    change commands.
+  + Fixed a bug in the display of diagnostics when the diagnostic
+    is at the beginning of a line.
+  + Fixed a crash that occurred when dealing with array types.
+  + Fixed a bug that prevented Gio.File properties from 
+    being settable.
+  + Added support for closure expressions.
+  + Added cast expressions, which are sometimes needed to specify
+    type information in expressions.
+  + Added the --typelib-path command line argument, which allows
+    adding directories to the search path for typelib files.
+  + Added custom compile and decompile commands to 
+    the language server.
+  + Added support for Adw.MessageDialog custom syntax.
+  + Added support for inline sub-templates for 
+    Gtk.BuilderListItemFactory.
+  + Added support for Adw.Breakpoint custom syntax.
+  + Added a warning when an object ID might be confusing.
+  + Added support for Gtk.Scale custom syntax.
+  + The XML output uses the integer value rather than GIR name
+    for enum values.
+  + Compiler errors are now printed to stderr rather than stdout.
+  + Introduced $ to indicate types or callbacks
+  + When a namespace is not found, errors are supressed 
+    when the namespace is used.
+  + The compiler bug message now reports the version of 
+    blueprint-compiler.
+  + The typeof syntax now uses &lt;&gt; instead of () to match 
+    cast expressions.
+  + Menu sections and subsections can now have an ID.
+  + The interactive porting tool now ignores hidden folders.
+  + Templates now use the typename syntax rather than an ID 
+    to specify the template's class.
+- Update to version 0.6.0:
+  + Quoted and numeric literals are no longer interchangeable (e.g.
+    `&quot;800&quot;` is no longer an accepted value for an integer type).
+  + Boxed types are now type checked.
+  + Added: There is now syntax for `GType` literals: the `typeof()`
+    pseudo-function. For example, list stores have an `item-type`
+    property which is now specifiable like this:
+    `item-type: typeof(.MyDataModel)`.
+  + The language server now logs to stderr.
+  + Fix the build on Windows, where backslashes in paths were not
+    escaped. (William Roy)
+  + Remove the syntax for specifying menu objects inline,
+    since it does not work.
+  + Fix a crash in the language server that was triggered in files
+    with incomplete `using Gtk 4.0;` statements.
+  + Fixed compilation on big-endian systems.
+  + Fix an issue in the interactive port tool that would lead to
+    missed files. (Frank Dana)
+  + Fix an issue for documentation contributors where changing the
+    documentation files would not trigger a rebuild.
+  + Document the missing support for Gtk.Label `&lt;attributes&gt;`,
+    which is intentional, and recommend alternatives. (Sonny Piers)
+  + Add a prominent warning that Blueprint is still experimental
+- Create initial package. (forwarded request 1251412 from ecsos)</comment>
+    <requestid>1253357</requestid>
+  </revision>
 </revisionlist>

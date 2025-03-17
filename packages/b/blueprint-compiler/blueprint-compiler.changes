@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar  8 13:00:26 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap < 16.
+
+-------------------------------------------------------------------
 Fri Jan 31 20:43:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.16.0:
@@ -47,6 +52,12 @@ Fri Jan 31 20:43:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
     - Added mention of null in the Literal Values section
     - Add apps to Built with Blueprint section
     - Corrected and updated many parts of the documentation
+
+-------------------------------------------------------------------
+Sun Oct 27 21:01:29 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add missing requirements.
+- Put spec in a position to build for Leap too.
 
 -------------------------------------------------------------------
 Sun Aug 25 00:08:31 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
