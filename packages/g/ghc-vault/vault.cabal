@@ -1,7 +1,7 @@
 cabal-version:      >= 1.10
 name:               vault
 version:            0.3.1.5
-x-revision: 9
+x-revision: 10
 synopsis:           a persistent store for values of arbitrary types
 description:
   A /vault/ is a persistent store for values of arbitrary types.
@@ -58,7 +58,7 @@ library
     hs-source-dirs:     src
     build-depends:
           base >= 4.5 && < 4.22
-        , containers >= 0.4 && < 0.8
+        , containers >= 0.4 && < 0.9
         , unordered-containers >= 0.2.3.0 && < 0.3
         , hashable >= 1.1.2.5 && < 1.6
 
