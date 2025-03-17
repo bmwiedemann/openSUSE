@@ -215,4 +215,13 @@
     <comment>Prepare for RPM 4.20</comment>
     <requestid>1145250</requestid>
   </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>e6f4765b164fac50748db8f524bbc427</srcmd5>
+    <version>1.5</version>
+    <time>1742246302</time>
+    <user>anag+factory</user>
+    <comment>- Add patch transmageddon-update-py-compile.patch:
+  * Use autoreconf to Update py-compile to support Python 3.12+. (forwarded request 1253578 from StevenK)</comment>
+    <requestid>1253665</requestid>
+  </revision>
 </revisionlist>

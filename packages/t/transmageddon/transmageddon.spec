@@ -1,7 +1,7 @@
 #
 # spec file for package transmageddon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,8 @@ Source:         http://www.linuxrising.org/files/%{name}-%{version}.tar.xz
 Patch0:         transmageddon-gtk3.patch
 # PATCH-FIX-OPENSUSE transmageddon-appdata-prjgroup.patch dimstar@opensuse.org -- Change AppStream project group to GNOME
 Patch1:         transmageddon-appdata-prjgroup.patch
+# PATCH-FIX-OPENSUSE transmageddon-update-py-compile.patch -- Update py-compile to support Python 3.12+
+Patch2:         transmageddon-update-py-compile.patch
 BuildRequires:  fdupes
 # Needed to create typelib() Requires.
 BuildRequires:  gobject-introspection

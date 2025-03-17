@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 17 03:38:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch transmageddon-update-py-compile.patch:
+  * Use autoreconf to Update py-compile to support Python 3.12+.
+
+-------------------------------------------------------------------
 Thu Feb  8 15:50:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.
