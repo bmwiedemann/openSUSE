@@ -1,0 +1,7 @@
+<package name="mpark-variant" project="openSUSE:Factory">
+  <title>C++17 `std::variant` for C++11/14/17</title>
+  <description>MPark.Variant is an implementation of C++17 std::variant for C++11/14/17.
+Based on my implementation of std::variant for libc++
+Continuously tested against libc++'s std::variant test suite.
+</description>
+</package>

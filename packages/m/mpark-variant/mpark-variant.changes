@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sat Mar 15 19:37:17 UTC 2025 - dheidler@suse.de
+
+- Update to version 1.4.0+20210816.23cb94f:
+  * GCC<=4.9: Exceptions (#76)
+  * Apply patch for icpc (#78)
+
+-------------------------------------------------------------------
+Tue Apr  7 07:31:48 UTC 2020 - wnereiz@member.fsf.org
+
+- Update to version 1.4.0+20200108.3c7fc8266 
+
+-------------------------------------------------------------------
+Mon Aug 13 05:42:39 UTC 2018 - windowskaput@gmail.com
+
+- New package 
