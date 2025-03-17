@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Mar 17 10:22:43 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to 1.25.5:
+  * Allow pdf_lookup_page_number_slow on deleted pages.
+  * Fix issue in Fax decoder.
+  * Tweak antidropout code in the non-AA rasterizer.
+  * Fix bug ignoring last entry in UAX 14 line-breaking table.
+  * Let Windows handle unhandled ALT-key combinations.
+  * Cope with "undersized" cross-reference streams.
+  * Use ULL rather than Ui64 in windows specific time funcs
+  * Fix redaction problem with form transforms.
+  * Fix Makefiles to test/alter CFLAGS, not XCFLAGS.
+  * Avoid double drop of fz_html_tree upon exception in xml_to_boxes().
+  * Free unopened pages instead of waiting for document to reap them.
+  * Do not create bad write options if encrypt option was set to unknown value.
+  * PDF saving: Perform a pre-pass to load objects before saving.
+  * Change capitalization in mutool usage to be consistent.
+  * Ensure that cfb archive entry names are null-terminated.
+  * Allocate xml root node in pool.
+  * Fix typo in LZW compressed inline image dictionary.
+  * Report error in audit tool, otherwise it counts as unhandled.
+  * Handle PDF objects numbered outside xref range.
+  * Check whether opts is NULL when cleaning a PDF file.
+  * Check whether the argument list is NULL, when argument are said to exist.
+  * Consistently use uint32_t for color in stext device.
+  * Sync open page numbers after undo has swapped the xrefs, not before.
+  * Clear the in-doc flag when removing a page from the opened page list.
+  * Add support archive script to create commercial tarballs.
+
+-------------------------------------------------------------------
 Mon Jan 27 11:35:55 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to 1.25.4:
