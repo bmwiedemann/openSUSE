@@ -1,8 +1,8 @@
 #
 # spec file for package sfcgal
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann (tigerfoot)
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann (tigerfoot)
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 
 %define source_name SFCGAL
-%define _libname    libSFCGAL1
-%define _soversion  1
+%define _libname    libSFCGAL2
+%define _soversion  2
 # while upstream https://gitlab.com/Oslandia/SFCGAL/-/issues/259
 # and https://gitlab.com/Oslandia/SFCGAL/-/issues/258 are pending.
 # this force postgis ix86 to be build without sfcgal.
@@ -34,27 +34,25 @@ BuildRequires:  pkgconfig(openscenegraph)
 %define withosgd 0
 %endif
 Name:           sfcgal
-Version:        1.5.1
+Version:        2.0.0
 Release:        0
 Summary:        C++ wrapper library around CGAL
 License:        LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://sfcgal.gitlab.io/SFCGAL/
 Source0:        https://gitlab.com/sfcgal/SFCGAL/-/archive/v%{version}/SFCGAL-v%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM build with boost 1.85
-Patch1:         boost1_85.diff
 BuildRequires:  cmake
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
-BuildRequires:  libboost_chrono-devel >= 1.70
-BuildRequires:  libboost_filesystem-devel >= 1.70
-BuildRequires:  libboost_headers-devel >= 1.70
-BuildRequires:  libboost_program_options-devel >= 1.70
-BuildRequires:  libboost_serialization-devel >= 1.70
-BuildRequires:  libboost_system-devel >= 1.70
-BuildRequires:  libboost_test-devel >= 1.70
-BuildRequires:  libboost_thread-devel >= 1.70
-BuildRequires:  libboost_timer-devel >= 1.70
+BuildRequires:  libboost_chrono-devel >= 1.72
+BuildRequires:  libboost_filesystem-devel >= 1.72
+BuildRequires:  libboost_headers-devel >= 1.72
+BuildRequires:  libboost_program_options-devel >= 1.72
+BuildRequires:  libboost_serialization-devel >= 1.72
+BuildRequires:  libboost_system-devel >= 1.72
+BuildRequires:  libboost_test-devel >= 1.72
+BuildRequires:  libboost_thread-devel >= 1.72
+BuildRequires:  libboost_timer-devel >= 1.72
 BuildRequires:  libcgal-devel >= 5.6
 BuildRequires:  libstdc++-devel
 BuildRequires:  llvm-clang
@@ -116,7 +114,6 @@ Content headers & files to envelopment files for %{_libname}
 
 %prep
 %setup -q -n %{source_name}-v%{version}
-%patch -P1 -p1
 
 %build
 %limit_build -m 6400
@@ -158,8 +155,8 @@ tmpflags="${tmpflags/-fstack-clash-protection}"
 # Work fine only on x86
 %ifarch i586 x86_64
 %check
-LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_bindir}/unit-test-SFCGAL ||:
-LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_bindir}/standalone-regress-test-SFCGAL ||:
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+%ctest ||:
 %endif
 
 %post -n %{_libname} -p /sbin/ldconfig

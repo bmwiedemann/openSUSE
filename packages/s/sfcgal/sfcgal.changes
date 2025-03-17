@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Mar  6 13:38:55 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update minimum boost to 1.72
+- use %ctest
+
+-------------------------------------------------------------------
+Wed Mar  5 12:29:51 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 2.0.0 (2024-10-10):
+  + New Features (Feat)
+    - !348: Rewrite VTK export like OBJ one (Loïc Bartoletti)
+    - !347: Add translate method to C API (Loïc Bartoletti)
+    - !345: Add scale method to Transform (Loïc Bartoletti)
+    - !344: Add rotate method to Transform (Loïc Bartoletti)
+    - !342: Add Buffer3D functionality (Loïc Bartoletti)
+    - !341: Add partitioning algorithm using Straight Skeleton (Loïc Bartoletti)
+    - !340: Add Minkowski Sum 3D (Loïc Bartoletti)
+    - !339: Add a Cylinder (3D) Class (Loïc Bartoletti)
+    - !338: Add a Sphere (3D) Class (Loïc Bartoletti)
+    - !334: Add OBJ export functionality to SFCGAL (Loïc Bartoletti)
+  + Bug Fixes (Fix)
+    - !354: Ensure null termination in geometry_as_text functions (sfcgal_capi) (Loïc Bartoletti)
+    - !352: Fix test MinkowskiSum3D (Loïc Bartoletti)
+    - !351: Fix vcpkg build (Loïc Bartoletti)
+    - !349: Fix build for clang18, missing includes (Loïc Bartoletti)
+    - !346: Add missing SFCGAL_API for VTK and OBJ headers (exportDll) (Loïc Bartoletti)
+  + Improvements (Improve/Update)
+    - !374: Add the MultiSolid class to the C API
+    - !366: Add missing pre-condition in C API (Raphaël Delhome)
+    - !364: Fix warnings and apply clang-tidy fix (Loïc Bartoletti)
+    - !358: Improve Buffer3D tests resilience for cross-platform compatibility (Loïc Bartoletti)
+    - !337: Improve error message for Straight Skeleton (Loïc Bartoletti)
+    - !331: Generalize PolyhedralSurface constructor with template (Loïc Bartoletti)
+    - !325: Compatibility with CGAL 6.0 and 5.6 (Sebastien Loriot)
+  + Continuous Integration (CI)
+    - !356: Matrix test for CGAL 5.6 and 6.0 (Loïc Bartoletti)
+    - !355: Disable a flaky test for MinkowskiSum3D in MinGW (Loïc Bartoletti)
+    - !353: Always run 'build:debian-docker-image' job (Jean Felder)
+    - !333: Use a global variable to define CGAL version (Jean Felder)
+    - !329: Allow CGAL 6.0 CI and update CI images (Loïc Bartoletti)
+    - !323: Build a debian docker image (Jean Felder)
+  + Documentation (Docs)
+    - !335: Add an option to build documentation in CMakeLists (Jean Felder)
+    - !332: Add pre-commit workflow to the README (Jean Felder)
+  + Tests (Tests)
+    - !343: Add unit test for Translate (Loïc Bartoletti)
+- packaging
+  + renew and refresh spec file
+  + bump libname and soversion to 2
+  + remove upstream merged patch boost1_85.diff
+
+-------------------------------------------------------------------
 Mon Apr 29 10:33:43 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix build with boost 1.85 (boost1_85.diff)
