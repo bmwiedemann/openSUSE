@@ -30,4 +30,12 @@
   * tests/root: normalize 'ACCEPT {all,tcp}' and 'ACCEPT N' for newer systems</comment>
     <requestid>1183330</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0c391ccae77038bb209aa195efc0fd19</srcmd5>
+    <version>0.36.2</version>
+    <time>1742246301</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1253630</requestid>
+  </revision>
 </revisionlist>

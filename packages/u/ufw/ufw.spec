@@ -26,9 +26,11 @@ Group:          Productivity/Networking/Security
 URL:            https://launchpad.net/ufw
 Source0:        https://launchpad.net/ufw/%{major_ver}/%{version}/+download/%{name}-%{version}.tar.gz
 BuildRequires:  bash-completion
+BuildRequires:  fdupes
 BuildRequires:  iptables
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
 Requires:       bash-completion
 Recommends:     %{name}-lang
@@ -58,6 +60,8 @@ install -Dm0644 doc/systemd.example %{buildroot}%{_unitdir}/%{name}.service
 ln -s %{_mandir}/man8/ufw.8.gz %{buildroot}%{_mandir}/man8/rcufw.8.gz
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 ln -s %{_sbindir}/ufw %{buildroot}/%{_bindir}/ufw
+
+%fdupes %{buildroot}%{python3_sitelib}/ufw/
 
 %pre
 %service_add_pre ufw.service

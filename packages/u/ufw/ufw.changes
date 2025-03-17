@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 12 01:44:58 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add BuildRequires: python3-setuptools to fix building with
+  python 3.13.
+- Run fdupes to link duplicate pycache files.
+
+-------------------------------------------------------------------
 Thu Jun  6 10:35:35 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 0.36.2
