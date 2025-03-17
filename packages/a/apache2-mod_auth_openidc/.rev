@@ -442,4 +442,12 @@ Bugfixes
     token endpoint JWT authentication &quot;aud&quot; values, &quot;iss&quot; parameter requirement in authentication reponses</comment>
     <requestid>1244732</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>98348f020e83c5596c6122a6c2c21972</srcmd5>
+    <version>2.4.16.8</version>
+    <time>1742246249</time>
+    <user>anag+factory</user>
+    <comment>apache2-mod_auth_openidc 2.4.16.8... build with pcre2 (forwarded request 1253261 from AndreasStieger)</comment>
+    <requestid>1253581</requestid>
+  </revision>
 </revisionlist>

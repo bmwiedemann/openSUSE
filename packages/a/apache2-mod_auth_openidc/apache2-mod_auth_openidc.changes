@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 14 22:11:35 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.4.16.8:
+  * add support for claim value counters in OIDCMetricsData
+  * do not reset Prometheus counters by default, only when
+    explicitly specified
+  * metrics: reset to 0 in case of an integer overflow
+- build with pcre2
+
+-------------------------------------------------------------------
 Mon Feb 10 11:16:24 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.4.16.7
