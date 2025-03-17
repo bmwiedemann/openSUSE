@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 14 18:21:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.44.2:
+  + Rygel: Fix parsing of commandline for user config file.
+
+-------------------------------------------------------------------
 Sat Oct 12 21:44:35 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.44.1:
