@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 11 09:29:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.12.0
+- Changes since 6.11.0:
+  * Update dependency version to 6.12.0
+  * [dump] Always build utility, even when tests are disabled
+  * [XmlExtractor] Use non-deprecated QDomDocument::setContent overload
+  * [dump] Build/install utility even when tests are disabled
+  * exiv2: Avoid calling enableBMFF for exiv2 >= 0.28.3
+  * odf: port to new QDomDocument::setContent version
+  * [autotests] Remove leftover unused CMake variable
+  * [ExtractorPlugin] Declare private helpers as deprecated
+  * [ExtractorCollection] Warn if metadata is invalid
+  * [ExtractorCollection] Warn if an extractor has no metadata
+  * [ExtractorPlugin] Improve documentation
+  * [ExtractorPlugin] Define the interface ID in a single place
+  * Update version to 6.12.0
+
+-------------------------------------------------------------------
 Sat Feb  8 12:16:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0
