@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 13 17:44:21 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Updated to 3.3.1:
+  * Fixed binary incompatibility with 3.2 and earlier.
+
+-------------------------------------------------------------------
+Wed Mar 12 08:58:28 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Updated to 3.3.0:
+  * Added scaling_filter to fcft_font_options. The default value is
+    FCFT_SCALING_FILTER_CUBIC.
+  * Added new scaling filters: impulse, box, linear, gaussian, lanczos3
+    and lanczos3_stretched.
+  * When scaling bitmap fonts (not emoji fonts), do not apply a scaling filter.
+    In earlier versions, fcft applied a bilinear scaling filter.
+  * Deprecated fcft_set_scaling_filter;
+    use fcft_font_options::scaling_filter instead.
+
+-------------------------------------------------------------------
 Wed Mar  5 15:50:49 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Updated to 3.2.0:

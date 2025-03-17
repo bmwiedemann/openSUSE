@@ -276,4 +276,23 @@
     tests are actually built and run.</comment>
     <requestid>1250467</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d931b711ffe888e58fddef71eca665a1</srcmd5>
+    <version>3.3.1</version>
+    <time>1742246354</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 3.3.1:
+  * Fixed binary incompatibility with 3.2 and earlier.
+
+- Updated to 3.3.0:
+  * Added scaling_filter to fcft_font_options. The default value is
+    FCFT_SCALING_FILTER_CUBIC.
+  * Added new scaling filters: impulse, box, linear, gaussian, lanczos3
+    and lanczos3_stretched.
+  * When scaling bitmap fonts (not emoji fonts), do not apply a scaling filter.
+    In earlier versions, fcft applied a bilinear scaling filter.
+  * Deprecated fcft_set_scaling_filter;
+    use fcft_font_options::scaling_filter instead.</comment>
+    <requestid>1253873</requestid>
+  </revision>
 </revisionlist>
