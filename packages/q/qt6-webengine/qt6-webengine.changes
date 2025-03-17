@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 15 09:39:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patches:
+  * qtwebengine-glibc_2.41.patch (boo#1238826)
+  * qtwebengine-ffmpeg-playback-fix.patch (QTBUG-130273, QTBUG-132762)
+
+-------------------------------------------------------------------
 Sun Mar  9 22:51:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Ignore private QML imports

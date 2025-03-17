@@ -328,4 +328,12 @@
     <comment>- Ignore private QML imports</comment>
     <requestid>1251672</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>65fb015d108be7994c0e3db2804baf26</srcmd5>
+    <version>6.8.2</version>
+    <time>1742246101</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1253480</requestid>
+  </revision>
 </revisionlist>

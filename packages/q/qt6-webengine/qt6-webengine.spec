@@ -56,6 +56,8 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
 Patch0:         0001-Build-system-remove-libxml2-compilation-test.patch
+Patch1:         qtwebengine-glibc_2.41.patch
+Patch2:         qtwebengine-ffmpeg-playback-fix.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       QtWebEngine_6.8_skip_xnnpack.patch

@@ -1,0 +1,47 @@
+From ff80fa1278ecfa00eec37fbeba393e33a69ca9a5 Mon Sep 17 00:00:00 2001
+From: Kaloyan Chehlarski <kaloyan.chehlarski@qt.io>
+Date: Thu, 13 Mar 2025 11:43:29 +0100
+Subject: Allow MAP_DROPPABLE memory mappings in Linux sandbox
+
+Linux 6.11 has getrandom() as virtual dynamic shared object and glibc-2.41 adds support for it. In case of vsdo
+implementation kernel will call mmap with MAP_DROPPABLE flag
+which is restricted by chromium sandbox, causing render
+process to fail. Allow new mmap flag in the sandbox.
+
+Fixes: QTBUG-134631
+Pick-to: 122-based 87-based
+Change-Id: I4f303af85ac873222e768fe7139873774d51b022
+Reviewed-on: https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/631348
+Reviewed-by: Kaloyan Chehlarski <kaloyan.chehlarski@qt.io>
+Reviewed-by: Michal Klocek <michal.klocek@qt.io>
+---
+ .../linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc    | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc b/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
+index bb0e13f4d2d..675a8a5e257 100644
+--- a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
++++ b/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
+@@ -35,6 +35,10 @@
+ #include "sandbox/linux/system_headers/linux_syscalls.h"
+ #include "sandbox/linux/system_headers/linux_time.h"
+ 
++#if !defined(MAP_DROPPABLE)
++#define MAP_DROPPABLE	0x08    // Zero memory under memory pressure.
++#endif
++
+ #if (BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS_LACROS)) && \
+     !defined(__arm__) && !defined(__aarch64__) &&             \
+     !defined(PTRACE_GET_THREAD_AREA)
+@@ -238,7 +242,7 @@ ResultExpr RestrictMmapFlags() {
+   // TODO(davidung), remove MAP_DENYWRITE with updated Tegra libraries.
+   const uint64_t kAllowedMask = MAP_SHARED | MAP_PRIVATE | MAP_ANONYMOUS |
+                                 MAP_STACK | MAP_NORESERVE | MAP_FIXED |
+-                                MAP_DENYWRITE | MAP_LOCKED |
++                                MAP_DENYWRITE | MAP_LOCKED | MAP_DROPPABLE |
+                                 kArchSpecificAllowedMask;
+   const Arg<int> flags(3);
+   return If((flags & ~kAllowedMask) == 0, Allow()).Else(CrashSIGSYS());
+-- 
+cgit v1.2.3
+
