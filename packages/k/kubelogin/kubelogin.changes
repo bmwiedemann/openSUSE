@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Mar 16 12:35:44 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.2:
+  * v0.2.2 release (#626)
+  * fixed broken release assets
+
+-------------------------------------------------------------------
+Fri Mar 14 06:32:12 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.1:
+  * v0.2.1 release (#623)
+  * updated artifact actions (#622)
+
+-------------------------------------------------------------------
+Fri Mar 14 06:30:38 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.0:
+  * v0.2.0 release (#621)
+  * added missing checkout to fix release (#620)
+  * v0.2.0 release (#619)
+  * Bump golang.org/x/net from 0.33.0 to 0.36.0 (#618)
+  * Changes: (#608)
+
+-------------------------------------------------------------------
 Tue Mar 11 18:40:20 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.1.9:
