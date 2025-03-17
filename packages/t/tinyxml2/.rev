@@ -81,4 +81,12 @@
     <comment>- Update to release 10.1.0</comment>
     <requestid>1251452</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>81a2d76338338c58e0da5fc502d3f348</srcmd5>
+    <version>11.0.0</version>
+    <time>1742246100</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 11</comment>
+    <requestid>1253473</requestid>
+  </revision>
 </revisionlist>

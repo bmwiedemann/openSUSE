@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 16 09:10:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11
+  * Bump version to address ABI incompatibility between 10.0
+    and 10.1 both producing the same SONAME.
+
+-------------------------------------------------------------------
 Sat Mar  8 20:25:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.1.0

@@ -16,10 +16,10 @@
 #
 
 
-%define so_version 10
+%define so_version 11
 %define lib_package lib%{name}-%{so_version}
 Name:           tinyxml2
-Version:        10.1.0
+Version:        11.0.0
 Release:        0
 Summary:        Basic XML parser in C++
 License:        Zlib
@@ -28,7 +28,7 @@ URL:            https://github.com/leethomason/tinyxml2
 Source:         https://github.com/leethomason/tinyxml2/archive/%{version}.tar.gz
 BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 
 %description
 TinyXML is a feature-bounded XML parser in C++ that can be integrated
@@ -73,8 +73,8 @@ developing applications that use libtinyxml2.
 find %{buildroot} -type f -name "*.la" -delete -print
 # /usr/lib/cmake is not owned by cmake; avoid any further conflicts
 if [ ! -d "%{buildroot}/%{_libdir}/cmake/%{name}" ]; then
-mkdir -p %{buildroot}/%{_libdir}/cmake/%{name}
-mv %{buildroot}%{_prefix}/lib/cmake/tinyxml2 %{buildroot}/%{_libdir}/cmake/tinyxml2
+	mkdir -pv %{buildroot}/%{_libdir}/cmake/%{name}
+	mv -v %{buildroot}%{_prefix}/lib/cmake/tinyxml2 %{buildroot}/%{_libdir}/cmake/tinyxml2
 fi
 
 %check
