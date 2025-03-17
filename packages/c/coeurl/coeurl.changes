@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed Jun 12 13:54:19 UTC 2024 - Loren Burkholder <computersemiexpert@outlook.com>
+
+- Update to v0.3.1
+  * Allow configuring the verbosity of curl requests.
+  * Don't rely on the deprecated `CURLOPT_PROTOCOLS` on newer curl versions.
+  * Various build system fixes.
+  * Compatibility with {fmt} version 10.
+
+-------------------------------------------------------------------
+Sat Jun  1 11:20:19 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Use required versions as upstream use.
+- Fix build error in Leap.
+
+-------------------------------------------------------------------
+Thu Jan 11 08:46:01 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Add upstream patches to fix build: fix_fmt10_issues.patch,
+  fix_unexpected_provides.patch
+
+-------------------------------------------------------------------
+Sun Jan 22 16:14:26 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to v0.3.0
+  * Support altsvc to properly detect http/3 across runs. You need
+    to specify a path where the cache will be stored to enable this.
+  * Error out when the project is built using CMake, since CMake is
+    only supported for FetchContent purposes.
+
+-------------------------------------------------------------------
+Tue Dec 21 11:28:35 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to v0.1.1
+  * Add wrapper function to convert error codes to strings.
+
+-------------------------------------------------------------------
+Thu Nov 18 07:27:04 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Initial package. 
