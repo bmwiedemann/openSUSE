@@ -1,0 +1,1721 @@
+-------------------------------------------------------------------
+Fri Mar 14 13:42:19 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Add fix_scrolling.patch to fix slow scrolling
+
+-------------------------------------------------------------------
+Thu Jul 25 10:09:35 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Add fix-build-with-fmt11.patch to fix broken build 
+
+-------------------------------------------------------------------
+Fri Jun 21 10:28:38 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Add missing Requires qt6-multimedia-imports, as nheko uses its QML-files
+
+-------------------------------------------------------------------
+Wed Jun 12 11:57:15 UTC 2024 - Loren Burkholder <computersemiexpert@outlook.com>
+
+- Highlights
+  * Qt6
+    + This release migrates to version 6 of the Qt toolkit.
+    + This brings various changes to Nheko. Scrolling might feel slower on some
+      platforms. Theming will look different. You have been warned!
+    + We left out all the fixes we had to do for this from the changelog.
+      Otherwise it might have been twice as long...
+  * Intentional mentions
+    + You can now decide if a message should mention someone or not.
+    + Replies now also include an explicit mention (MSC4142).
+  * Event expiration
+    + You can now make Nheko delete messages regularly.
+    + Configure either a time or a maximum number of messages.
+    + Can be configured per room or globally.
+  * Ignoring users (NepNep)
+    + You can now ignore other users.
+    + This will hide their messages from the timeline.
+    + You can either user the `/ignore` command, the button in their profile or
+      the button in the Nheko settings.
+- Features
+  * Support for video calls (including screenshare) on Windows. This support is
+    currently not available in prebuilt packages. (checkraisefold)
+  * `/glitch` commands to garble your text. (LorenDB)
+  * Deleting sticker packs. (FallenValkyrie)
+  * Settings for your current profile state. (online, offline, unavailable, auto)
+  * "Goto this event" button in the timeline when searching.
+  * Right click menu entry to go to event when searching. (Sateallia)
+  * Remember the last used filter (community, tag, etc) between restarts. (Sateallia)
+  * Render reactions with custom emoji.
+  * Add custom emoji to the emoji popup.
+  * Add edit button to sticker and emoji popups.
+  * Optionally sort the room list alphabetically. (Sateallia)
+  * Allow sending custom message types. (LorenDB)
+  * Rainfall effect. (LorenDB)
+  * Screenshare using XDG desktop portals (like on Wayland). (David Elsing)
+  * Show which rooms you share with another user.
+- Improvements
+  * Support MSC3916 for authenticated media.
+  * Disable workarounds for inline images for Qt6.7 and up.
+  * Various improvements around window activation on Wayland. (q234rty)
+  * Update emoji shortcodes. (TheDrawingCoder-Gamer)
+  * Windows and Apple Silicon builds on our own hardware. (Thanks Thulinma for
+    sponsoring access the Apple Silicon box)
+  * MSIX builds and appinstaller for Windows with valid signatures and automatic updates.
+  * Add environment variable to dump the video call pipeline.
+  * Bump supported maximum Matrix version to 1.10.
+  * Various fixes around blurry graphics on HiDPI systems. (q234rty)
+  * Build instructions for Qt6 version on Debian Trixie. (enigma9o7)
+  * Allow reporting messages to your server admin. (LorenDB)
+  * Matrix URI handling on macOS. (LorenDB)
+  * Disable endless pagination for threads.
+  * Deinit gstreamer appropriately. (NepNep)
+  * Support the "fixed" mac method during verification.
+  * Show/hide password button on login page. (Bubu)
+  * Faster blurhash decode.
+  * Speedup room switching.
+  * Setting to disable swipe navigation. (duarm)
+  * Click handling for Windows notifications.
+  * Update gstreamer in flatpak. (Francesco Gazzetta)
+  * Activation token handling for notifications.
+  * Improve Haiku support. (Begasus)
+  * Switch to KDSingleApplication for single instance handling.
+  * Trust handling for received megolm sessions.
+  * Highlight spaces in bold in the quick switcher.
+  * Throttle sync processing when the window is unfocused.
+  * Allow hiding unsupported events via the hidden events dialog.
+  * Change appid to im.nheko.Nheko. (Miika Tuominen)
+  * .editorconfig and .gitattributes. (Aminda Suomalainen)
+  * Remove fetched messages only on startup.
+  * Focus message input after drag and dropping a file. (Sateallia)
+  * Add extra styling for effect messages.
+  * Reduce CPU usage from animated images not currently visible.
+  * Close and open buttons for the room directory. (LorenDB)
+  * Touch scrolling for text. (LorenDB)
+  * Unify our usage of `@user:example.com`. (LorenDB)
+  * Explicit default font options. (LorenDB)
+  * Show powerlevel of mods and admins in the timeline.
+  * Mark room as read from the room list.
+  * Focus input bar after selecting a file. (Sateallia)
+  * Rework history settings.
+  * Show server ACL changes.
+  * Show inviter on invites.
+  * Sections for the sticker picker.
+  * Automatically strip file extensions of images in sticker picker.
+  * Focus the input bar on key presses.
+  * Search rooms in quick switcher by 'activity'.
+  * Make tombstoned rooms italic in the quick switcher.
+  * Allow uploading multiple files at once via the file picker. (Sateallia)
+  * Combine notifications above a certain count. (LcsTen)
+  * Allow querying the status msg over dbus (if enabled).
+  * Allow `#` character in url fragments (to work around clients not escaping
+    matrix.to links).
+  * Improve state event redaction.
+  * Hide inaccessible rooms in communities. (LcsTen)
+  * Update community metadata automatically.
+  * Include ACLs in via calculation.
+  * Focus message input on "scroll to bottom". (tastytea)
+  * Warn on invalid /command. (LorenDB)
+  * Cleanup table rendering.
+  * Blurhash images on privacy screen. (LorenDB)
+  * Improve OpenBSD support. (Klemens Nanni)
+  * Show full status mesage in profile and on hover. (Bubu)
+  * Animate transition from blurhash. (LorenDB)
+- Update translations
+- Bugfixes
+  * Prevent shortcuts from inserting unprintable characters.
+  * Display emojis in avatars properly.
+  * Prevent opening empty Nheko profiles by accident.
+  * DMs created in Nheko were not marked as DMs properly.
+  * Prevent opening user profiles for empty mxids.
+  * Fix crash during video calls on Linux. (checkraisefold)
+  * Fix validation errors in Linux appdata.xml. (Echo J)
+  * Properly copy images to the clipboard on Windows. (NepNep)
+  * Prevent emoji verification and room settings from being clipped by default.
+    (Brayd)
+  * Properly remove attributes on del tags.
+  * Properly scope presence setting to profiles.
+  * Animated images first rendered outside the visible area shouldn't be
+    invisible anymore.
+  * Correctly handle of multiple devices in parallel.
+  * Avoid lag when media messages are shown from enumerating audio devices.
+  * Hidden topic for spaces.
+  * Url encoding for widget urls.
+  * Profile argument parsing for `-p=`. (LorenDB)
+  * Unset hidden space setting when leaving a space.
+  * Round images are square.
+  * Don't freeze after stopping a call on Wayland. (GStreamer frees the EGL
+    context...)
+  * Database name length limitation on some filesystems with long userids.
+  * Pagination in search.
+  * Save profile also when no setting is modified.
+  * Fix decrypt notification setting not being stored properly.
+  * Calculate the name of rooms with 3 members correctly.
+  * Crash on database migration. (mips64-el)
+  * `<hr>` tag escaping.
+  * Confetti being left over after a celebration.
+  * Powerlevel indicator size in timeline.
+  * Duplicate qml ids. (ShootingStarDragons)
+  * Presence updates in the timeline.
+  * Pagination in rooms only containing redactions.
+  * Set a pack avatar.
+  * Make settings comboboxes dependent on content width.
+  * Don't lose message draft history after an edit.
+  * Workaround some WM specific behaviour regarding the focus during search.
+    (Sateallia)
+  * Handle network errors better when marking a mssage as read.
+  * Name and attributions of image packs should be plain text.
+  * Displaying encrypted thumbnails.
+  * 0 size dialogs. (0xDEADCADE)
+  * Loading image packs in unjoined communities.
+  * Show encryption dialog once, not twice. (LorenDB)
+  * Elide nicks and userids in various dialogs. (LorenDB)
+  * macOS builds (1000x).
+  * Disable qml disk cache by default.
+  * QT_SCALE_FACTOR on OpenBSD. (Klemens Nanni)
+  * Deduplicate reactions.
+
+-------------------------------------------------------------------
+Sat Jun  1 11:50:03 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap.
+
+-------------------------------------------------------------------
+Thu Jan 11 08:52:42 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Add slighltly modified patch from upstream to fix build-issues
+  with fmt10: fix_fmt10_issues.patch 
+
+-------------------------------------------------------------------
+Mon Feb 27 06:12:31 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.11.3:
+  * Fix redundant null byte inserted with the emoji completer.
+  * Highlights:
+    + Improved Markdown input.
+      - You can now enter strike-through and spoilers using 
+        ~~ and || respectively.
+      - Single line-breaks now also create a line-break in the 
+        formatted message.
+      - Code tags now preserve whitespace.
+    + User search in the invite dialog
+      - Can search either locally or consult the user directory 
+        on your server.
+  * Features:
+    + Allow disabling animations before login.
+    + Set the window role to "imageoverlay" on X11.
+  * Improvements:
+    + You can now enable scrollbars for the room and community 
+      lists in the settings.
+    + Add a generic video icon when there is no thumbnail.
+    + Pause video when switching rooms.
+    + Add a fancy delegate when encryption is enabled.
+    + Standardise command format messages.
+    + Automatically fetch keys for undecrypted messages after 
+      verification.
+    + Remove all notifications on exit.
+    + Speedup the user completer.
+    + Allow closing menus on Wayland by clicking the window.
+    + Update zsh completions.
+    + Skip empty requests for cross-signing keys when user only 
+      has one device.
+    + Hide image overlay when saving a file.
+    + Make it more obvious that the add reaction button is not an emoji.
+  * Update translations.
+  * Bugfixes:
+    + You can now forward stickers again.
+    + Edits shouldn't "jump" out of threads anymore.
+    + Focus text input when quick switcher is closed.
+    + Fix rare freeze with an empty list in a completer.
+    + Allow nested ()/[] brackets in URLs.
+    + Make br tags work properly again.
+    + Don't double free call devices.
+    + Html in sidebar.
+
+-------------------------------------------------------------------
+Sun Jan 22 16:49:32 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.11.1
+  * Fixes issue where CPU usage could be excessive even when nheko
+    was idle or minimized.
+- Changes from 0.11.0:
+  * Search in your timeline
+    - Works in encrypted rooms.
+    - Search is entirely local.
+    - It might be a bit slow on some systems, since it needs to
+      paginate the room to search instead of relying on the server.
+  * Pushrule support!
+    - Notifications should now be faster and not rely on the server.
+    - Notifications should work properly in encrypted rooms.
+    - MSC3664 is supported for pushrules for reply
+      (needs server support).
+    - Mentions get highlighted in the timeline.
+    - Decrypting notifications can be disabled for improved privacy.
+  * Threads
+      Threads are a simple way to structure large rooms.
+      Start a new thread from any event.
+      Focus on a specific thread by clicking on the colored thread
+      button next to any event from this thread.
+      Replies automatically land inside the thread.
+  * Remember where you left off using the new unread indicator!
+  * Navigate to space when selected in quick switcher or via link.
+  * (Re-)Add an AppImage build.
+  * Render and send confetti!
+  * Focus text field on most key presses.
+  * Show link to next room for tombstone events.
+  * Completer for /commands.
+  * Allow opening room settings from room list.
+  * Allow setting the status message via the dbus API.
+  * Allow swapping Enter and Shift-Enter.
+  * Preliminary support for VoIP v1.
+  * Allow applying permission changes in spaces recursively.
+  * Allow modifying permissions of users not in the room.
+  * Prompt before deleting the database when the error could be
+    resolved by the user.
+  * Improve logging in particular for sync or registration errors.
+  * Speedup quick switcher.
+  * Prune image cache in the background.
+  * Store all secrets encrypted in the database
+    (apart from the pickle).
+  * Speedup fetching olm sessions from the database.
+  * Increase database resiliency at the cost of a lot of
+    performance.
+  * Rename spaces to communities.
+  * Handle some rate limiting better in some cases.
+  * More fine grained control over logging.
+  * Fix regional indicators.
+  * Potential crash when closing the room directory.
+  * text selection in the raw message dialog.
+  * Pagination after a timeline clear.
+  * Work around crash in QQC2 in alias dialog.
+  * Fix forwarding between encrypted rooms.
+  * Blurry icons on HiDPI screens.
+  * Fix CMark warning when configuring.
+  * Blurry thumbnails.
+  * Upload box thumbnail size.
+  * Previews getting sorted above normal rooms in space view.
+  * Excessive summary calls.
+  * Usage type buttons for Sticker/Emoji packs.
+  * Old server lookups overwriting new ones, possibly preventing
+    any login.
+  * Crash in member list.
+  * Stripping fallbacks of plain text bodies.
+  * Different greens.
+  * Spoilers in replies.
+  * Invites without state.
+  * Translation updates
+
+-------------------------------------------------------------------
+Sat Nov 19 14:03:17 UTC 2022 - Bob Haley <fawz@use.startmail.com>
+
+- Update to to version 0.10.2
+  + Security release
+    - Fixes potential secret poisoning by the homeserver
+    - A crash when validation malicious html
+- Version 0.10.1 changelog
+  + Highlights
+    - Community editing support wrestling
+        + You can now create communities.
+        + You can add and remove rooms to and from communities in various ways.
+    - Prettier joins sparkles
+        + You can now see the avatar, title, topic and member count of the room you
+          are trying to join.
+        + You can see if a room requires knocking or can be joined directly.
+          Requires MSC3266 support from your server.
+  + Features
+    - Add a discrete edit button to room profiles. (Hiers)
+    - Don't escape the summary tags on sending.
+    - Focus message area when pressing Escape. (Forest)
+    - Barebones spoiler support on desktop platforms.
+    - Enable encryption for DMs started from a profile by default.
+    - Enable option to disable notification sounds and badges on macOS.
+    - Speed up the completion trie. (nenomius)
+  * Update translations (Polish (Romanik, luff), Dutch (Thulinma), Finnish (Lurkki), Estonian (Priit), Indonesian (Linerly))
+  * Bugfixes
+    - Fix crash on empty private receipts sent by some servers.
+    - Don't set a transient parent for child chat windows.
+    - Validate roomid, state_key, event_id and userids sent by the server.
+    - Fix empty widgets showing up in the widget list.
+    - Clean up linter config. (Forest)
+    - Use the right palette colors for reactions. (Forest)
+    - Fix groups sidebar's grammar. (Forest)
+    - Fix version position. (Zirnc)
+    - Properly validate urls in image tags.
+    - Case insensitive member search.
+    - Fix crash on global profiles.
+    - Fix crash on incomplete identity keys.
+    - Fix message notification format on Windows.
+    - Fix room members menu opening profiles for the wrong room.
+
+-------------------------------------------------------------------
+Thu Aug 18 10:55:45 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.10.0:
+  + Highlights
+    - Notification counts 100
+      + You can now see notification counts in more spaces,
+        like your task bar or in the community sidebar.
+      + For better work-life balance you can hide the notification
+        counts on a per space basis.
+      + For notification counts in the task bar your desktop 
+        environment needs to support the Unity protocol.
+      + Notifications are also preserved across restarts now.
+    - Moderation
+      + You can now change the permissions and aliases of a room.
+      + Permissions are shown in the Memberlist.
+      + A new /redact command to redact an event or all messages 
+        by a user.
+      + You can now provide a reason when inviting, knocking,
+        kicking and banning users.
+    - Faster startup
+      + On at least some systems startup should now be instant 
+        even with thousandsof rooms.
+    - Encryption improvements
+      + Support for the most recent changes to Matrix E2EE 
+        including fallback keys, no longer relying on the sender_key.
+      + Compatibility and stability improvements when dealing 
+        with different base64 encodings and when verifying users 
+        and devices.
+      + Fetch the whole online key backup at the klick of a button.
+    - Integration with external apps 
+      + Nheko now has a D-Bus API, which you can enable in the
+        settings menu.
+      + This allows applications like KRunner or Rofi to 
+        list and switch between rooms.
+  + Features
+    - Create a room link from a room. 
+    - Support rendering policy rules.
+    - Show notification counts for spaces (with options to
+      disable them per space).
+    - Keep notification counts across restarts.
+    - Support the new call events (but not the signaling yet).
+    - Add a dbus API, which allows external applications to list 
+      and switch rooms in Nheko.
+    - Support editing room aliases.
+    - Support editing room permissions.
+    - Allow redacting all locally cached messages of a user using 
+      /redact @userid:server.tld reason.
+    - Request full online key backup when toggling the online 
+      backup button.
+    - Support the knock_restricted join rule.
+    - Allow cancelling uploads using escape.
+    - Send images on enter.
+    - Close image viewer when clicking on the background.
+    - Speedup startup by not loading messages for the room preview.
+    - Make settings slightly narrower.
+    - Show unread counts in the taskbar
+      (if the Unity protocol is supported). 
+    - Indicate if a room has no topic in the settings.
+    - Support e2ee fallback keys.
+    - Allow opening rooms in separate windows.
+    - Show powerlevels in the memberlist.
+    - Use less exotic emoji shortcodes.
+    - Support sorting and filtering the memberlist.
+    - Make initial spinner half transparent.
+    - Fancier rendering for image pack changes.
+    - Allow accessing member list and room settings for spaces. 
+    - Add zsh completions.
+    - Fancy rendering for Powerlevel changes.
+    - Make sender_key in encrypted messages optional.
+    - Close current room using Ctrl-W. 
+    - Allow knocking on failed room joins.
+    - Allow knocking via matrix.to urls.
+    - Allow specifying reasons for every room membership change.
+    - Make room name and topic editing inline.
+    - Add a jump to bottom button.
+    - Port room creation to qml.
+    - Streamline direct chat creation. 
+  * Update translations (Russian, Chinese, German, Dutch, Finnish,
+    Indonesian, Estonian, French, Serbian)
+  * Bugfixes
+    - Fix verification requests not stopping properly when 
+      initiated from this instance.
+    - Don't send matrix.to markdown links in replies.
+    - Make the database work on 32bit systems again.
+    - Don't crash on empty image packs.
+    - Fix spacing of encryption indicator in the room tite if it 
+      contains widgets.
+    - Emojis during verification should no longer be clipped.
+    - Don't ping the whole room when replying to users with a 
+      localpart of room.
+    - Make icons sharp on all platforms.
+    - Work around synapse not sending the original resolution when 
+      requesting large
+      thumbnails to make large thumbnails less blurry.
+    - Fix weak symbols from private object destructor.
+    - Fix failed uploads not cancelling properly.
+    - Edits now properly update in replies again.
+    - Improve text paste experience.
+    - Pins should now properly update when the events are fetched.
+    - Support latest iteration of the hidden read receipts MSC.
+    - Fix cursor movement with some themes.
+    - Properly handle glare during verification.
+    - Set an Element Android compatible height for custom emotes.
+    - Don't crash because of reusing items in completer on some
+      platforms.
+    - Fix the privacy screen on popped out windows.
+    - Properly scale animated images.
+    - Don't clip pinned messages.
+    - Use correct powerlevels for direct chats.
+    - Properly close cursors before committing txn.
+    - Don't fail if a different client used the wrong base64 
+      encoding when setting up SSSS.
+    -  Spaces usually aren't DMs.
+    - Don't send invalid aliases to the server on room creation.
+    - Fix invite dialog.
+
+-------------------------------------------------------------------
+Mon Mar 28 17:45:20 UTC 2022 - Loren Burkholder <computersemiexpert@outlook.com>
+
+- Update to version 0.9.3 (0.9.2 was not packaged in the OBS package):
+  +  Highlights
+    - New upload UX
+      + Queue multiple uploads by pasting or dragging multiple files.
+      + Videos will now properly have a thumbnail as well as images.
+      + Duration, width and height is now also properly included so that clients can resize appropriately.
+      + Thumbnails are excluded if they are bigger than the original image. (tastytea)
+    - Improvements for mobile devices (Malte E)
+      + You should now be able to scroll by touching anywhere with no random dead zones.
+      + Preedit text can now be used in a completer and is properly sent
+      + If an input method is active, pressing Enter will not send the current message.
+  + Features
+    - Optionally always open videos and images in an external program. (math)
+  + Improvements
+    - Build macOS releases against Qt 5.15.3 to resolve missing spaces after some punctuation.
+    - Send the shortcode as the body for stickers without a body.
+    - Elide long usernames in the timeline. (Malte E)
+    - Cleanup the reply popup. (Malte E)
+    - Use standard buttons where possible. (tastytea)
+    - Various improvements to the bubble layout. (Malte E)
+    - Enable online key backup by default.
+    - Update the bundled gstreamer in our Flatpaks.
+  + Translations
+    - Indonesian (Linerly)
+    - Estonian (Priit)
+    - Finnish (Priit)
+    - Esperanto (Tirifto)
+  + Bugfixes
+    - Fix hovering the action menu.
+    - Try to avoid using unknown UIA flows.
+    - Don't Components actively in use.
+    - Fix screensharing.
+    - Fix device id when doing SSO logins.
+
+-------------------------------------------------------------------
+Tue Jan 18 06:30:03 UTC 2022 - Samu Voutilainen <smar@smar.fi>
+
+- Qt-5.15 or newer is required according to CMakeLists.txt 
+
+-------------------------------------------------------------------
+Tue Dec 21 10:54:25 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.9.1:
+  + Highlights
+    - Support pinned messages.
+  + Features
+    - Add recently used reactions. (LorenDB)
+    - Show spaces as a tree, that allows you to collapse sections.
+    - Add a filter for direct chats
+  + Improvements
+    - Set the app_id on Wayland. Useful for custom WM rules.
+    - Set notification category on Linux.
+    - Make Nheko show up in system notification settings on Linux.
+    - Make notification count bubbles expand some more. (LorenDB)
+    - Strip space chars from recovery passphrase. Should make them easier to enter.
+    - Make it obvious that undecryptable messages are a notification and not the actual message. (LorenDB)
+    - Added window role to image overlay. (Thulinma)
+    - Only show room pack button, when you can actually create one.
+    - Show some avatar for image packs.
+    - Allow clicking links in replies.
+    - Limit max memory usage of images.
+    - Allow swiping between views in single page mode Allows access to spaces on mobile for example.
+    - Get rid of a few clang-tidy warnings. (Marcus Hoffmann)
+    - Navigate to subspaces by clicking on them.
+    - Delete rooms even if we fail to leave.
+    - Change QML UI for redactions.
+    - If the locale is set to C, force english locale This fixes date formatting as well as count based translations.
+    - Use a more random hash to generate user colors.
+    - Mark rooms as direct chats in the proper places.
+    - Update macOS icon package to macOS-y style. (Quinn)
+    - Preliminary gstreamer 1.20 compatibility.
+  + Translations
+    - Indonesian (Linerly)
+    - Estonian (Priit Jõerüüt)
+    - French (Eldred HABERT)
+    - Dutch (Thulinma)
+    - Esperanto (Tirifto)
+    - Finnish (Priit Jõerüüt)
+    - Italian (Elia Tomasi)
+    - French (Mayeul Cantan)
+  + Bugfixes
+    - Fix crash when receiving matrix uri.
+    - Make opening room members from rooms settings dialog work. (LorenDB)
+    - Fix turnserver check not being started when restoring from cache.
+    - Vertically align message input.
+    - Properly set position of resize handler after letting it go.
+    - Fix escaped html showing up in playable media message labels.
+
+-------------------------------------------------------------------
+Fri Nov 19 06:28:08 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 0.9.0:
+  + Highlights
+    - Somewhat stable end to end encryption
+      * Show the room verification status
+      * Configure Nheko to only send to verified users
+      * Store the encryption keys securely in the OS-provided secrets service.
+      * Support online keybackup as well as sharing historical session keys.
+  + Crosssigning bootstrapping
+    - Crosssigning is used to simplify the verification process. In this release
+    - Nheko can setup crosssigning on a new account without having to use a
+      different client.
+    - Nheko now also prompts you, if there are any unverified devices and asks you to verify them.
+  + Room directory (Manu)
+    - Search for rooms on your server and other servers. (Prezu)
+    - If their topic interests you and it has the right amount of members, join
+    - the room and the discussion!
+  + Custom sticker packs
+    - Add a custom sticker picker, that allows you to send stickers from MSC2545.
+    - Support creating new sticker (and emote) packs.
+    - You can share packs in a room and enable them globally or just for that
+      room.
+  + Token authenticated registration (Callum)
+    - Sign up with a token to servers, that have otherwise disabled registration.
+    - This was done as part of GSoC and makes it easier to run private servers for
+      your family and friends!
+  + Features
+    - Support email in registration (required on matrix.org for example)
+    - Warn, if an @room would mention the whole room, because some people don't like that.
+    - Support device removal as well as renaming. (Thulinma)
+    - Show your devices without encryption support, when showing your profile.
+      (Thulinma)
+    - Move to the next room with unread messages by pressing Alt-A. (Symphorien)
+    - Support jdenticons as a placeholder for rooms or users without avatars.
+      (LorenDB)
+      * You will need to install https://github.com/Nheko-Reborn/qt-jdenticon
+    - Support animated images like GIF and WebP.
+      * Optionally just play them on hover.
+    - Support accepting knocks in the timeline.
+    - Close a room when clicking it again. (LorenDB)
+    - Close image overlay with escape.
+    - Support .well-known discovery during registration.
+    - Limited spaces support.
+      * No nice display of nested spaces.
+      * No previews of unjoined rooms.
+      * No way to edit a space.
+    - Render room avatar changes in the timeline. (BShipman)
+    - Support pulling out the sidebar to make it wider.
+    - Allow editing pending messages instead of blocking until they are sent.
+      (balsoft)
+    - Support mnemonics in the context menus. (AppAraat)
+    - Support TOFU for encryption. (Trust on first use)
+    - Right click -> copy address location.
+    - Forward messages. (Jedi18)
+    - Alt-F to forward messages.
+    - A new video and audio player, that should look a bit nicer.
+  + Improvements
+    - Translation updates:
+      * French by MayeulC, ISSOtm, Glandos, Carl Schwan
+      * Dutch by Thulinma, Bas van Rossem, Glael, Thijs
+      * Esperanto by Tirifto, Colin
+      * Estonian by Priit
+      * Indonesian by Linerly
+      * German by 123, Konstantin, fnetX, Mr. X, CryptKid
+      * Portuguese (Portugal) by Tnpod, Xenovox, Gabriel R
+      * Portuguese (Brazil) by Terry, zerowhy
+      * Finnish by sdrrespudro, Priit
+      * Polish by Prezu, AXD, stabor
+      * Malayalam by vachan-maker
+      * Italian by Daniele, Lorenzo
+      * Spanish by lluise
+      * Russian by kirillpt
+      * Various wording improvements throughout.
+    - Verification status and identity keys should now update properly after login.
+    - Clicking the user in a read receipt opens their profile. (LorenDB)
+    - Invites should now work properly on mobile.
+    - Decode blurhashes faster.
+    - Port various dialogs to Qml. (LorenDB)
+    - --help and --version now work, even if Nheko is already running somewhere.
+    - Update emoji support to version 14.
+    - Properly navigate to linked to events. (Thulinma)
+    - Lots of smaller bugfixes and refactorings. (LorenDB)
+    - Scroll entire profile page and properly trim contents. (Thulinma)
+    - Make it easy to switch between global and room specific profiles. (Thulinma)
+    - Deduplicate messages sent by the server. (Thulinma)
+    - Decrease the margin of blockquotes. (tastytea)
+    - Alerts now work, if the homeserver does not implement the notifications
+      endpoint. (Thulinma)
+    - Right click menu now works on replies.
+    - Decrypt encrypted media only in memory.
+    - Don't use CC-BY in the appstream license to not confuse Gnome Software.
+    - Support online key backup.
+    - Improve FAQ. (harmathy)
+    - Support Backtab/Shift-Tab for moving backwards in completer selections.
+    - Clear cache to support the new features.
+    - Improve the emoji completer (less jitter and fix places where it didn't open). (Thomaps Karpiniec)
+    - Cleanup @room escape logic.
+    - Improve performance of timeline rendering.
+    - Load rooms somewhat lazily.
+    - Properly scale avatars to DPI.
+    - Round avatars once in the backend instead of on every render.
+    - Request keys of all members, when opening a room the first time.
+    - Timeout TCP connections, if heartbeat can't be heard.
+    - Change secrets name. You might need to rerequest your secrets after upgrading!
+    - Protect against replay attacks where megolm sessions are reused.
+    - Add "request keys" button to undecryptable messages.
+    - Properly set window parents on Wayland.
+    - Properly show users and allow opening their profiles in the members and read
+      receipt dialogs. (LorenDB)
+    - Use Qt5.15 Connections syntax in Qml.
+    - Remove "respond to keyrequests option". We now reply to the right requests
+      automatically and securely.
+    - Show confirmation prompt when leaving a room.
+    - Add trailing newline to session export for gomuks compatibility.
+    - Use a fancy Nheko logo as the loading indicator.
+    - Improve how the invite dialog handles users. (LorenDB)
+    - Store more data about megolm sessions.
+    - Speed up database queries by caching transactions.
+    - Use curl for network requests.
+      * This removes the boost dependency.
+      * Proxies now work using the usual curl variables.
+      * Fixes a myriad of crashes.
+      * Faster.
+      * Less CPU load.
+      * Less bandwidth usage.
+    - Cleanup user color generation.
+    - Show borders around tables.
+    - Improve wording of a few menu entries. (absorber)
+    - Highlight navigated to message.
+    - Switched to the fluent icon set. (LorenDB)
+  + Bugfixes
+    - Redaction of edited messages should now actually show those messages as removed.
+    - Bootstrap after registration should run properly now.
+    - Getting logged out after registration should not happen anymore.
+    - Removed edgecases where identity keys could get uploaded twice.
+    - Fix the event loop when fetching secrets breaking random things like scrolling.
+    - Don't crash when clearing an empty timeline.
+    - Opening an invite in your browser or a matrix: URI should not crash Nheko anymore or do nothing.
+    - When clicking on an item in the roomlist, you don't have to move your mouse anymore, before being able to click again.
+    - Don't hide space childs when viewing that specific space and its children are hidden.
+    - Only allow specific URI schemes to be followed automatically.
+    - Properly hide day change indicator, when loading older messages.
+    - Rotate session properly when 'verified only' is set.
+    - Handle missing keys in key queries properly.
+    - Properly show the window title for Qml dialogs on windows.
+    - Don't show decryption errors in replies.
+    - Don't crash when storing secrets.
+    - Don't send megolm messages to ourselves, if possible.
+    - Fix SSSS without a password.
+    - Fix a few edge cases with OTK upload.
+    - Cache more media properly (i.e. in the Goose Chooser).
+    - Inline images in messages now load properly.
+    - Don't show verification requests after startup.
+    - Emoji picker now follows the theme.
+    - Send less newlines in the reply fallback.
+    - Fix tags going missing when joining spaces.
+    - Handle inline images with single quotes. (Cadair)
+    - Delay key requests until a room is opened.
+    - Fix rooms not showing, when groups endpoint is missing.
+    - Don't use deprecated parameters in /login.
+    - Fix encoding issues when translating matrix.to to matrix: URIs.
+    - Prevent edits from stripping the whole message, if it had a quote.
+  + Packaging changes
+    - Removed the AppImage
+    - Removed dependency on boost
+    - Now depends on coeurl, which depends on libevent and libcurl.
+    - VOIP support now needs to be explicitly controlled using the VOIP and SCREENSHARE_X11 cmake options.
+
+-------------------------------------------------------------------
+Fri Apr 23 11:00:36 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.2:
+  * Highlights
+    - Edits
+      * If you made a typo, just press the Up key and edit what you wrote.
+      * Messages other users edited will get updated automatically and have a small
+      * pen symbol next to them.
+    - Privacy Screen
+      * Blur your messages, when Nheko looses focus, which prevents others from
+      * peeking at your messages.
+      * You can configure the timeout of when this happens.
+    - Improved notifications (contributed by lorendb)
+      * No more breakage, because the message included a > on KDE based DEs.
+      * Render html and images where possible in the notification.
+      * Render if a message is a reply or someone sent an emote message more nicely
+      * where possible.
+      * Encrypted notifications now show, that the content is encrypted instead of
+        being empty.
+    - Screenshare support in calls on X11
+      * Share your screen in a call!
+      * Select if your mouse cursor should be shown or not and if your webcam should
+        be included.
+  * SEND MESSAGES AS RAINBOWS!
+    - YES MESSAGES, EMOTES AND NOTICES!
+  * Features
+    - Set your displayname and avatar from Nheko either globally or per room.
+    - Show room topic in the room settings.
+    - Double tap a message to reply to it.
+    - Leave a room using /part or /leave.
+    - Show mxid when hovering a username or avatar.
+    - Allow opening matrix: uris on Windows.
+    - Disable room pings caused by replies sent via Nheko (unless you are using
+      Element Web/Desktop)
+  * Improvements
+    - Userprofile can be closed via the Escape key. No more hotel california!
+    - Most dialogs are now centered on the Nheko window.
+    - Update Hungarian translations.
+    - Update Estonian translations.
+    - Update Russian translations.
+    - Update Swedish translations.
+    - Update French translations.
+    - Allow drag and drop of files on the whole timeline.
+    - Enable notifications on Haiku.
+    - Update scheme handler to the latest matrix: scheme proposal.
+    - Close completers when typing a space after the colon.
+    - Port room settings to Qml.
+    - Improved read marker handling. Read marker should now get stuck less often.
+    - Various changes around hover and tap handling in the timeline, which hopefully
+      now works more predicatably.
+    - Buttons in the timeline are now rendered in a box on hover on desktop
+      platforms.
+    - Complete room links in the timeline after typing a # character.
+    - An improved quick switcher with better rendering and search.
+    - Some fixes around inline emoji and images.
+    - Jump into new rooms, after you created them.
+    - Improved search in the emoji picker.
+    - Allow disabling certificate checks via the config file.
+    - Use native menus where possible.
+    - Fix video playback on Windows.
+    - Send image messages by pressing Enter.
+    - Escape closes the upload widget.
+    - Improve session rotation and sharing in E2EE rooms.
+  * Bugfixes
+    - Emojis joined from separate emojis with a 0xfe0f in the middle should now
+      render correctly.
+    - Fix a bug when logging out of a non default profile clearing the wrong
+      profile.
+    - Various fixed around profile handling.
+    - Focus message input after a reaction.
+    - Disable native rendering to prevent kerning bugs on non integer scale factors.
+    - Fix duplex call devices not showing up.
+    - Fix a few crashes when leaving a room.
+    - Fix hidden tags not updating properly.
+    - Fix some issues with login, when a server had SSO as well as password login
+      enabled (for example matrix.org).
+    - Properly set the dialog flag for dialogs on most platforms. (Wayland does not
+      support that.)
+    - Properly add license to source files.
+    - Fix fingerprint increasing the minimum window size.
+    - Don't send markdown links in the plain text body of events when autocompleting
+      user or room names.
+    - Fix markdown override in replies.
+    - Fix unsupported events causing errors when saving them.
+    - Fix exif rotation not being respected anymore in E2EE rooms.
+    - Remove unused qml plugins in the windows package.
+    - Fix broken olm channels automatically when noticed.
+    - Fix pasting not overwriting the selection.
+    - Fix Nheko sometimes overwriting received keys with keys it requested, even if
+      they have a higher minimum index.
+    
+-------------------------------------------------------------------
+Wed Feb 24 10:34:36 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.8.1:
+  * Features
+    - /plain and /md commands to override the current markdown setting. (contributed by lorendb)
+    - Allow persistent hiding of rooms with a specific tag (or from a community) via a context menu.
+    - Allow open media messages in an external program immediately. (contributed by rnhmjoj)
+  * Improvements
+    - Use async dbus connection for notifications. (contributed by lorendb)
+    - Update Hungarian translations. (contributed by maxigaz)
+    - Update Finnish translations. (contributed by Priit)
+    - Update Malayalam translations. (contributed by vachan-maker)
+    - Update Dutch translations. (contributed by Glael)
+    - Store splitter size across restarts.
+    - Add a border around the completer. (contributed by lorendb)
+    - Request keys for messages with unknown message indices (once per restart, when they are shown).
+    - Move the database location to XDG_DATA_DIR. (contributed by rnhmjoj)
+    - Reload the timeline after key backup import.
+    - Autoclose completer on space, when there are no matches.
+    - Make completer only react, when the mouse cursor is moved.
+  * Bugfixes
+    - Fix unhandled exception, when a device has no keys.
+    - Fix some cmake warnings regarding GNUInstallDirs.
+    - Fix tags being broken. If you have no tags showing up, you may want to logout and login again.
+    - Fix versionOk being called on the wrong thread. (contributed by Jedi18)
+    - Fix font tags showing up in media message filenames.
+    - Fix user profile in dark themes showing the wrong colors. (contributed by lorendb)
+    - Fix emoji category switching on old Qt versions. (contributed by lorendb)
+    - Fix old messages being replayed after a limited timeline.
+    - Fix empty secrets being returned from the wallet breaking verification.
+    - Make matrix link chat invites create a direct chat.
+    - Fix focus handling on room change or reply button clicks.
+    - Fix username completion deleting the character before it.
+
+-------------------------------------------------------------------
+Fri Jan 22 04:52:28 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Formatting the spec file 
+
+-------------------------------------------------------------------
+Thu Jan 21 13:10:51 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.0:
+  * Highlights
+    - Voice and Video Calls
+      * Call your friends right from within Nheko.
+      * Use your camera if you want them to see your face!
+      * This requires a somewhat new gstreamer, so our builds don't 
+        support it on all platforms yet.
+    - Cross-Signing and Device/User Verification 
+      * Verify who you are talking to!
+      * Ensure no malicious people eavesdrop on you!
+      * Enable your connected devices to access key backup and your 
+      friends to see, which of your devices you trust!
+      * Show devices in a users profile.
+    - Separate profiles
+      * Run multiple Nheko instances with separate profiles side 
+        by side.
+      * Use multiple accounts at the same time in separate windows.
+  * Features
+    - Before a call select which audio device to use. 
+    - Auto request unknown keys from your own devices.
+    - Add a command to clear the timeline and reload it. 
+      (/clear-timeline).
+    - Add a command to rotate the outbound megolm session. 
+      (/rotate-megolm-session).
+    - React to messages instead of replying with arbitrary strings 
+      using /react.
+    - Inline emoji and user completers.
+    - Show filename on hover over an image. 
+    - Mobile mode, that disables text selection and changes 
+      some dialogs.
+    - Allow sending text after a /shrug command.
+    - Allow selecting a ringtone.
+    - View avatars fullscreen.
+    - Request or download cross signing secrets in the settings.
+    - Support 'matrix:' URIs. This works in app on all platforms and 
+      on Linux Nheko may be opened by clicking a 'matrix:' link.
+    - Support inline replies on notifications on Linux.
+  * Improvements
+    - Add ripple effect to various buttons.
+    - Allow more font sizes to be selected.
+    - Swedish translation.
+    - German translation.
+    - Romanian translation.
+    - Polish translation.
+    - Russian translation.
+    - Italian translation.
+    - French translation.
+    - Hungarian translation.
+    - Show read markers when clicking read indicator.
+  * Bugfixes
+    - Fix text sometimes being rendered blurry.
+    - Fix not being able to change theme
+    - Fix relations sometimes being sent as null in encrypted messages.
+    - Don't send formatted body without format.
+    - Links sometimes not opening properly from Qml.
+    - Fix autolinking breaking on single quotes.
+    - Fix translation loading on some locales.
+    - Don't send url in encrypted file events.
+    - Prevent duplicate messages from showing up in the timeline.
+    - Settings toggles don't get stuck anymore.
+    - Fix some emojis being rendered as two emoji.
+    - Fix SSO login on some servers that allow multiple login methods.
+
+
+-------------------------------------------------------------------
+Mon Jun 29 11:00:08 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.2: 
+- Highlights
+  * Reactions
+    - React to a message with an emoji! tada
+    - Reactions are shown below a message in a small bubble 
+      with a counter.
+    - By clicking on that, others can add to the reaction count.
+    - It may help you celebrating a new Nheko Release or react 
+      with a -1 to a failed build to express your frustration.
+    - This uses a new emoji picker. The picker will be improved 
+      in the near future (better scrolling, sections, favorites, 
+      recently used or similar) and then probably replace the 
+      current picker.
+  * Support for tagging rooms [tag]
+    - Assign custom tags to rooms from the context menu in the 
+      room list.
+    - This allows filtering rooms via the group list. This puts 
+      you in a focus mode showing only the selected tags.
+    - You can assign multiple tags to group rooms however 
+      you like.
+  * SSO Login
+    - With this you can now login on servers, that only 
+      provide SSO.
+    - Just enter any mxid on the server. Nheko will figure out 
+      that you need to use SSO and redirect your browser 
+      to the login page.
+    - Complete the login in your browser and Nheko should 
+      automatically log you in.
+  * Presence
+    - Shows online status of the people you are talking to.
+    - You can define a custom status message to tell others what 
+      you are currently up to.
+    - The status message appears next to the usernames 
+      in the timeline.
+    - Your server needs to have presence enabled for 
+      this to work.
+- Features
+  * Respect exif rotation of images
+  * An italian translation
+  * Optional alerts in your taskbar
+  * Optional bigger emoji only messages in the timeline
+  * Optional hover feedback on messages
+  * /roomnick to change your displayname in a single room.
+  * Preliminary support for showing inline images.
+  * Warn about unencrypted messages in encrypted rooms.
+- Improvements
+  * perf: Use less CPU to sort the room list.
+  * Limit size of replies. This currently looks a bit rough, 
+    but should improve in the future with a gradient or at 
+    some other transition.
+  * perf: Only clean out old messages from the database 
+    every 500 syncs. (There is usually more than one sync every second)
+  * Improve the login and register masks a bit with hints and validation.
+  * Descriptions for settings
+  * A visual indicator, that nheko is fetching messages 
+    and improved scrolling
+- Bugfixes
+  * Fix not being able to join rooms
+  * Fix scale factor setting
+  * Buildfixes against gcc10 and Qt5.15 (missing includes)
+  * Settings now apply immediately again after changing them 
+    (only exception should be the scale factor)
+  * Join messages should never have empty texts now
+  * Timeline should now fail to render less often on platforms 
+    with native sibling windows.
+  * Don't rescale images on every frame on highdpi screens.
+
+-------------------------------------------------------------------
+Sat Jun 13 14:08:11 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update _service file
+  * File format changed
+  * Version format changed 
+
+-------------------------------------------------------------------
+Mon Apr 27 09:51:52 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update version 0.7.1:
+  * Allow user to show / hide messages in encrypted rooms in sidebar
+  * Fix display of images sent by the user
+  * Fix crash when trying to maximize image, that wasn't downloaded yet.
+  * Fix Binding restoreMode flooding logs on Qt 5.14.2+
+  * Fix with some qml styles hidden menu items leave empty space
+  * Fix encrypted messages not showing a user in the sidebar
+  * Fix hangs when generating colors with some system theme color schemes (#172)
+
+-------------------------------------------------------------------
+Tue Apr 21 08:06:01 UTC 2020 - wnereiz@member.fsf.org
+
+- Update to commit 20200421.e8271ac 
+- Add dependency libqt5-qtgraphicaleffects for Qt5 QML support
+- Add dependency libqt5-qtquickcontrols2
+
+-------------------------------------------------------------------
+Mon Apr 20 22:01:26 UTC 2020 - wnereiz@member.fsf.org
+
+- Remove cmakelist.patch since not needed
+- Update to commit 20200420.22ecdfc
+
+-------------------------------------------------------------------
+Mon Apr 20 11:03:25 UTC 2020 - wnereiz@member.fsf.org
+
+- Update to version 0.7.0+20200419.03a8387:
+  - Features
+    * Replies
+    * Support for Riots key export format
+    * Encryption and decryption of media in E2EE rooms
+    * Autoconfigure server on login via .well-known lookup
+    * Square avatars
+    * Support for muting and unmuting rooms
+    * Basic support for playing audio and video messages in the timeline
+    * Support for a lot more event types (hiding them will come in the future)
+    * Support for sending all messages as plain text
+    * Support for inviting, kicking, banning and unbanning users
+    * Sort the room list by importance of messages
+    * Experimental support for blurhashes
+  - Improvements
+    * Render timeline in Qml to drop memory usage
+    * Reduce memory usage of avatars
+    * Close notifications after they have been read on Linux
+    * Escape html properly in most places
+    * A lot of improvements around the image overlay
+    * The settings page now resizes properly for small screens
+    * Miscellaneous styling improvements
+    * Simplify and speedup build
+    * Display more emojis in the selected emoji font
+    * Use 'system' theme as default if QT_QPA_PLATFORMTHEME is set
+  - Bugfixes
+    * Fix messages stuck on unread
+    * Reduce the amount of messages shown as "xxx sent an encrypted message"
+    * Fix various race conditions and crashes
+
+-------------------------------------------------------------------
+Thu Jul 11 15:15:44 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use %limit_build from memory-constraints instead of an excessive
+  _constraints which blocks all Factory builds from completing.
+
+-------------------------------------------------------------------
+Mon May 13 08:51:25 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 0.6.3+20190512.a17a555:
+  * Update to newer mtxclient to allow optional static linking
+  * Attempt to make travis build with more cores
+  * Update Travis Install Script
+  * link boost dynamically
+  * Update mtxclient ver
+  * Update to boost 1.69.0 to attemp travis fix
+  * Remove 'error on unset' for travis builds
+  * Remove unset var causing error due to Qt script
+  * Use bash instead of sh because the qt env script needs to be run under bash.
+  * Fix Travis GPG-related build error
+  * Raw string literals not allowed in MOC headers on OSX
+  * Simplify linkifyMessage
+  * improve shell scripts and update .gitignore
+  * Update olm repo to new location. Remove LICENSE file in favor of COPYING
+  * Change LICENSE to COPYING to match gpl standard
+
+-------------------------------------------------------------------
+Wed Mar 20 11:21:59 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 0.6.3+20190303.6f13b0d:
+  * Don't let multiline text background overlap top border of text widget
+  * Get rid of implicit conversion in text input height calculation
+  * Update README screenshots.  Fixes #36
+  * Make appveyor script Build Nlohmann
+  *  Revert dockerfile to trusty and build sodium locally
+  * Attempt to fix appimage issue
+
+-------------------------------------------------------------------
+Mon Feb 25 09:46:26 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 0.6.3+20190225.8165aa2:
+  * Maybe fix docker issues
+  * Fix linting issue
+  * CI Updates
+  * More CI Fixes
+  * more ci updates
+  * Fix line ending issue
+  * Switch CI builds to use bundled JSON
+  * Update JSON build deps.
+  * Make some Dockerfile improvements
+  * Nlohmann build updates
+  * Updated Dutch translation
+  * Attempt to fix issue #19 by increasing the lmdb max_dbs setting.
+
+-------------------------------------------------------------------
+Mon Feb 18 09:32:54 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 0.6.3+20190217.15ad425:
+  * Update nheko_de.ts
+
+-------------------------------------------------------------------
+Tue Feb 12 08:41:02 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 0.6.3+20190208.440d0b8:
+  * Release Nheko 0.6.3
+  * Adjust cmake minimum for included boost
+  * Tweak build settings
+  * Improve color generation performance
+  * escape id when joining a room
+  * Prevent symlinks from overwriting files
+  * Preserve symlinks in icu4c libs
+  * Fix cp permissions issue
+  * Copy icu4c dylib symlinks in mac deploy
+  * See if bundled boost fixes mac deploy
+  * Additional mac icu4c changes
+  * Try to force link of icu4c in mac build
+  * Update travis mac deploy
+  * Modify linux deploy.sh
+  * Attempt to fix linux CI deploy
+  * Even more CI script fixes
+  * Fix more ci script issues
+  * Fix typo in script.sh
+  * Update deployment configuration
+  * Add TAVIS_TAG for build artifacts
+  * Attempt to fix bintray issues
+  * Change TRAVIS_TAG to TRAVIS_COMMIT
+  * BinTray deploy on all commits
+  * Attempt to fix travis.yml merge issues
+  * Fix bintray deploy repo naming
+  * Attempt to make bintray builds for every commit
+  * Add download button to ImageOverlay
+  * Add /bigobj for nheko MSVC build
+  * Restore Emoji Picker, but remove forcing EmojiOne
+  * Revert "Remove built-in emoji picker"
+  * Fix lint issues in last commit
+  * Add initial support for QtIndenticon
+  * Fix lint issue
+  * Fix inconsistent user color updates.
+  * Update user colors to use Cache vs Utils
+  * Add unread notification color for user mentioned
+  * Fix lambda capture error
+  * Author Color Fixes
+  * Update user id color generation
+  * Fix UserSettings UI not showing saved prefs
+  * Add User Font Setting
+  * Modified the code that generates user's colors so that it will work regardless of the theme choices the user makes.  The code now incorporates the contrast between the background color and the color generated by the user_name when picking colors.  It currently has two 'big' issues: 1. Colors are not cached.  I am planning on adding a QHash for this a little later.  This should improve performance by not calculating the color for the same users over and over and over again. 2. Theme changes do not trigger the colors to get refreshed. Currently, you will have to switch to a different room and back to get the colors to refresh.
+  * Make the author text slightly large.
+
+-------------------------------------------------------------------
+Fri Jan 25 08:46:12 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 0.6.2+20190124.6ab12b2:
+  * Update Russian translation
+
+-------------------------------------------------------------------
+Thu Jan 24 03:13:55 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 0.6.2+20190118.909d11d:
+  * Fix .travis.yml issue
+  * Update bintray-release.json
+  * Update CI Configs
+  * Remove the code that removed paragraph tags from markdown -> html.
+  * Update travis.yml to include webhook for posting build status to nheko-reborn matrix room
+  * Fix clang-format linting issue
+  * Update the README to point to updated endpoints for the various CI projects.
+  * Update deps CMake config to point to nheko-reborn mtxclient
+
+-------------------------------------------------------------------
+Mon Nov 26 04:22:51 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.6.2+20181124.80ef9bd:
+  * Update Russian translation
+  * Increase the height of the roomlist items
+  * v0.6.2
+  * Use a smaller font size for the timestamp
+  * Use alignment instead of stretch
+  * Adjustments for the minimized sidebar
+  * Remove the bundled open sans font
+  * Remove built-in emoji picker
+  * Add the correct parent to scaleCombo
+  * Remove room re-ordering option
+
+-------------------------------------------------------------------
+Thu Oct 11 08:41:58 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.6.2+20181010.6a90ed5:
+  * Increase the height of the roomlist items
+  * v0.6.2
+
+-------------------------------------------------------------------
+Sun Oct 07 15:32:45 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.6.2+20181007.184c8b2:
+  * Use a smaller font size for the timestamp
+  * Use alignment instead of stretch
+  * Adjustments for the minimized sidebar
+  * Remove the bundled open sans font
+  * Remove built-in emoji picker
+  * Add the correct parent to scaleCombo
+
+-------------------------------------------------------------------
+Sun Oct 07 10:57:31 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.6.1+20181006.4865f85:
+  * Remove room re-ordering option
+  * Remove Scrollbar
+  * Adjust the height of the bottom widgets
+  * Remove debug logs from Windows builds
+  * Adjust the font sizes of the welcome page
+  * Adjust the widget size of the room list items
+
+-------------------------------------------------------------------
+Thu Oct 04 09:42:45 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.6.1+20181004.420937a:
+  * Derive widget sizing from the font size
+  * Remove some unnecessary calls
+
+-------------------------------------------------------------------
+Tue Oct 02 05:55:36 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.6.1+20181001.3a57d10:
+  * Add option to configure the font size
+  * Enable debug logs
+  * Change the minimum width for modals
+  * Remove pixel value from fonts
+
+-------------------------------------------------------------------
+Sun Sep 30 05:29:46 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.6.1+20180929.d1e08e0:
+  * Remove obsolete font/size setting
+  * Remove pixel values from the text input widget
+  * Make the height of the bottom bar smaller
+  * Display tags as sorting items in the community panel (#401)
+
+-------------------------------------------------------------------
+Fri Sep 28 03:29:22 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.6.1+20180926.59a1b6b:
+  * Don't enable tray by default
+  * Don't clear selection when a context menu is requested
+  * Move TextLabel into its own file
+
+-------------------------------------------------------------------
+Wed Sep 26 09:47:59 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.6.1+20180926.9bc7b63:
+  * Lint
+  * v0.6.1
+  * Clear text selection when focus is lost
+  * Add infinite scroll in member list
+  * Don't clear the member list when the modal is hidden
+  * ci: Update qt installer framework
+  * Remove bintray from the readme
+  * Use QPushButton on the preview modal
+  * Copy the missing cmark.dll from the deps directory
+
+-------------------------------------------------------------------
+Fri Sep 21 15:47:05 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.6.0+20180921.dec643e:
+  * v0.6.0
+  * Put back github releases
+  * Require login when the cache format changes (regression on #444)
+  * Add close buttons to all dialogs
+  * Center dialogs around the main window
+  * Add method to center widgets & clean up unused headers
+
+-------------------------------------------------------------------
+Thu Sep 20 09:56:28 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.5+20180920.ecc346a:
+  * Close dialogs on confirmation
+  * Use confirm as the default button
+  * macOS: Use the native emoji picker
+  * Improvements on the system theme
+  * ci: Don't count errors during brew upgrade
+  * ci: Use brew upgrade --ignore-dependencies
+  * Replace GCC-7 with GCC-8
+  * Don't upgrade cmake on the macOS job
+  * Fix compile warnings
+  * Install libsodium 1.0.16
+
+-------------------------------------------------------------------
+Tue Sep 18 03:46:20 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.5+20180917.05cee07:
+  * create zh_CN translation (#442)
+
+-------------------------------------------------------------------
+Mon Sep 17 08:10:30 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.5+20180916.440237c:
+  * Clean up unread rooms after initial sync
+  * Bump cache version due to incompatible changes
+  * Ignore sessions that cannot be parsed
+  * Implement import/export of megolm session keys (#358)
+  * Update mtxclient
+
+-------------------------------------------------------------------
+Fri Sep 14 06:50:21 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.5+20180913.8767ea1:
+  * Mark unread rooms as such in the room list
+  * Temporary fix to work with mx-reply tags
+  * Strip paragraph tags
+
+-------------------------------------------------------------------
+Thu Sep 13 03:41:49 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.5+20180912.e88cfa1:
+  * Use <em></em> for m.emote messages
+  * Remove italics from m.notice messages
+  * Open user profile on matrix.to links
+  * Add context menu option to show the raw message
+  * Move some info logs to debug
+  * Trim whitespace from text messages
+  * Enable html attributes
+  * Don't break the layout on empty text messages
+
+-------------------------------------------------------------------
+Wed Sep 12 09:40:41 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.5+20180912.c293b3e:
+  * Use cmark.lib in appveyor
+  * Use absolute paths in appveyor
+  * Update CI with cmark
+  * Switch to libcmark
+
+-------------------------------------------------------------------
+Tue Sep 11 03:32:46 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.5+20180908.c347c0d:
+  * Fix the docker build
+  * Enable Qt auto scaling
+  * Show sidebar after initial sync
+  * Remove custom stylesheet for qmenu
+  * macOs: Add missing border on the TopBar
+  * Add changelog
+  * Update mtxclient
+  * Small refactoring on the EditModal
+  * i18n: Update Polish translation (#430)
+  * Remove debug prints
+  * Initial support for sending markdown formatted messages
+
+-------------------------------------------------------------------
+Fri Sep 07 16:47:32 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.5+20180907.a21db78:
+  * Fix double href links on username pills
+  * Use proxy objects on lambdas instead of raw pointers
+  * Put back removed links
+  * Add initial support for displaying formatted messages
+  * Update mtxclient
+
+-------------------------------------------------------------------
+Thu Sep 06 04:59:06 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.5+20180905.0c6a3b6:
+  * Remove captcha dialog from the member list
+  * Fallback to the login screen when the one-time keys cannot be uploaded
+  * Build boost with C++14
+  * Enable colors in console logger
+
+-------------------------------------------------------------------
+Mon Sep 03 05:24:03 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.5+20180901.d2f1e64:
+  * Forgot to update cmake project version
+  * Bump version to 0.5.5
+  * Merge matrix-structs into the client lib
+  * Remove nix script which was unmaintained
+  * Guard against flickering for items added to the top of the timeline
+  * Retry initial sync on generic network errors (#422)
+  * Don't block on empty from token
+  * Fill out missing fields in Info.plist
+  * Handle some more edge cases in timeline
+  * Stop calling /messages if the prev_batch token is empty
+  * Fix a use-after-free error during logout
+  * Add temp fix to work with servers that don't support e2ee endpoints
+  * Only call /sync when retrying initial sync (#422)
+
+-------------------------------------------------------------------
+Thu Aug 30 03:27:41 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.4+20180829.183975b:
+  * Increase LMDB's map size (#413)
+  * Make lambda that updates avatar a class method
+  * Add the ability to change the room avatar
+
+-------------------------------------------------------------------
+Tue Aug 28 08:18:56 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.4+20180828.db9c37d:
+  * Call adjustSize before showing the timeline widget
+  * Remove unnecessary height setting for timeline messages
+
+-------------------------------------------------------------------
+Sun Aug 26 13:31:17 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.4+20180826.9f43ff8:
+  * Show the room id in the room settings modal
+  * Add method to delete old messages periodically
+
+-------------------------------------------------------------------
+Wed Aug 22 06:00:42 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.4+20180821.199a4ea:
+  * Bump version to v0.5.4
+  * i18n: Update Polish translation (#411)
+
+-------------------------------------------------------------------
+Tue Aug 21 06:37:47 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.3+20180821.c8a59f2:
+  * Add device ID and device fingerprint to settings page like in Riot. (#407)
+  * Remove pixel ratio from image scaling
+
+-------------------------------------------------------------------
+Fri Aug 17 12:29:01 UTC 2018 - dead_mozay@opensuse.org
+
+- Update to version 0.5.3+20180813.04c888c:
+  * Fix crash on logout
+  * Update readme
+  * Bump version to 0.5.3
+  * Install the bundled spdlog
+  * Enable compilation on FreeBSD (#403)
+  * Add option to disable desktop notifications
+  * Increase the minimum modal size
+  * Simplify dialog creation
+  * Add solid background in TypingDisplay
+  * Update polish translation (#402)
+  * Add bottom border line on Linux
+  * Remove the reserved space gap for the typing notifications
+  * Allow user to configure join rules for a room
+  * Add missing update() on typing display
+  * Don't use bundled spdlog
+  * Remove dash from version string when building outside of git
+  * Use archives instead of repos to fetch dependencies
+  * Import appdata file from flatpak
+  * Remove hover event from emoji picker
+  * Add tooltips for the message indicators (#377)
+  * Remove hardcoded colors from the typing display
+  * Add flatpak installation
+
+-------------------------------------------------------------------
+Thu Aug 02 06:54:05 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.2+git.20180801.df42fdc:
+  * Remove unwanted whitespace from the user settings menu
+  * Consider the scale ratio when scaling down images
+  * Add install instructions for macOS (#395)
+
+-------------------------------------------------------------------
+Tue Jul 31 03:54:15 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.2+git.20180730.06b30b3:
+  * Use double instead of int when scaling pixmaps (#393)
+
+-------------------------------------------------------------------
+Mon Jul 30 02:57:47 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.2+git.20180729.6ffb747:
+  * Add tab-completion for usernames
+
+-------------------------------------------------------------------
+Sun Jul 29 03:35:20 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.2+git.20180728.edf9f52:
+  * v0.5.2
+  * i18n: Update Polish translation (#390)
+
+-------------------------------------------------------------------
+Fri Jul 27 02:56:07 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.1+git.20180726.bcdebe9:
+  * Don't use the generic json type for joined_groups
+  * Add foreground color for disabled buttons on the dark theme
+  * Increase the opacity of the hover color on the room list
+  * Fix background color on the room list widget
+  * Add missing tooltips on buttons
+  * Use repaint instead of update on the loading animation
+  * Improve the style of snackbar a bit
+
+-------------------------------------------------------------------
+Thu Jul 26 02:54:11 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.1+git.20180725.8386dd7:
+  * Enable scrollbar on the room list for macOS (#174)
+  * Use native scrollbar in the timeline
+  * Align timeline widgets to the bottom
+  * Fix issue with missing communities due to an unregistered metatype
+
+-------------------------------------------------------------------
+Wed Jul 25 06:38:05 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.1+git.20180724.3506708:
+  * Disable paint updates when removing the room filter
+
+-------------------------------------------------------------------
+Tue Jul 24 04:57:08 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.1+git.20180723.6583686:
+  * Remove spacer & set sizePolicy on the timeline view & widgets
+
+-------------------------------------------------------------------
+Mon Jul 23 02:46:03 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.1+git.20180722.6b42e3b:
+  * Simplify the message shown when another app instance is detected
+  * Minor modal adjustments
+  * Add option to specify the scale factor
+  * Add input field to specify the device name on login
+  * Remove pixel values from modals, use pointSize instead
+  * Add option to ignore key requests altogether
+  * Refactor the room settings menu to look like the user profile
+  * Reject key requests for users that are not members of the room
+  * i18n: Update Polish translation (#382)
+  * Add note about e2ee
+  * Disable paint updates while applying room filtering (#380)
+  * Reuse the profile modal & adjust its spacing relative to the font size
+  * Lower the complexity of the group filtering algorithm (#380)
+  * Clear timeline widgets when they exceed a certain limit (#158)
+  * Use a smaller icon size in the sidebar
+  * Show device list in user profile & add option to create 1-1 chat
+  * Create user profile modal
+
+-------------------------------------------------------------------
+Fri Jul 20 03:24:11 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.1+git.20180719.5540fc0:
+  * Add user avatar after the 'encryption is enabled' message
+
+-------------------------------------------------------------------
+Thu Jul 19 03:22:30 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.1+git.20180718.00f99d9:
+  * Fix variable shadowing on clang
+
+-------------------------------------------------------------------
+Wed Jul 18 12:57:18 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.1+git.20180717.e4dedbc:
+  * Mark own read messages with a double checkmark (#377)
+  * Bump version to v0.5.1
+  * Fix the download path for the Windows notification lib
+  * Move all files under src/
+  * Explicitly set no timeout for notifications
+  * Update image_data hint to current notification spec
+  * Use a brighter color for button text (#355)
+  * Properly reset the autocomplete anchor when the popup closes
+  * Use MainWindow instead of QApplication::activeWindow to reference the main window
+  * De-duplicate the m.room.encryption event
+
+-------------------------------------------------------------------
+Tue Jul 17 17:52:06 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.1+git.20180717.40facd1:
+  * Bump version to v0.5.1
+  * Fix the download path for the Windows notification lib
+  * Move all files under src/
+  * Explicitly set no timeout for notifications
+  * Update image_data hint to current notification spec
+  * Use a brighter color for button text (#355)
+  * Properly reset the autocomplete anchor when the popup closes
+  * Use MainWindow instead of QApplication::activeWindow to reference the main window
+  * De-duplicate the m.room.encryption event
+  * Use the http link for video messages
+  * Remove the v2 namespace from the http client
+  * User reverse iterator instead of while loop
+
+-------------------------------------------------------------------
+Sun Jul 15 17:23:51 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.5.0+git.20180715.4059f17:
+  * Add the -v / --version option, which displays the version string of the application.
+  * Update issue template
+  * Bump version to 0.5.0
+  * Fix Windows build
+  * Remove the FindOlm.cmake script for the Windows build
+  * Re-enable groups
+  * Properly display the bottom border on the TopRoomBar
+  * Added FindOlm.cmake script from mtxclient to find generic libolm packaged without cmake support. (#370)
+  * Allow close events from the session manager (#353)
+  * Working D-Bus desktop notifications (#361)
+
+-------------------------------------------------------------------
+Sun Jul 15 09:39:07 UTC 2018 - dead_mozay@opensuse.org
+
+- Bump version to 0.5.0 
+
+-------------------------------------------------------------------
+Sun Jul 15 07:32:57 UTC 2018 - dead_mozay@opensuse.org
+
+- Features
+    End-to-End encryption for text messages.
+    Context menu option to request missing encryption keys.
+    Desktop notifications on all platforms (Linux, macOS, Windows).
+    Responsive UI (hidden sidebar/timeline).
+    Basic support for replies (#292)
+
+- Improvements
+    Save timeline messages in cache for faster startup times.
+    Debug logs will now be saved in a file.
+    New translations
+        French
+        Polish
+    No dependencies will be downloaded during build.
+
+- Bug fixes
+    Allow close events from the session manager.
+    Send image dimensions in m.image event.
+    Allow arbitrary resizing of the main window & restore sidebar's size.
+
+-------------------------------------------------------------------
+Thu Jul 12 11:54:41 UTC 2018 - dead_mozay@opensuse.org
+
+- Updated to latest snapshot 
+
+-------------------------------------------------------------------
+Thu Jul 12 03:25:04 UTC 2018 - dead_mozay@opensuse.org
+
+- Working D-Bus desktop notifications
+- Use QSharedPointer::data to be compatible with Qt < 5.11
+- Send image dimensions in m.image event
+- Limit -Wshadow to non-gcc 
+
+-------------------------------------------------------------------
+Tue Jul 10 11:14:31 UTC 2018 - dead_mozay@opensuse.org
+
+- Don't pre-load messages from caches
+- Add -Wshadow
+- Fix variable shadowing that caused the key response to be null
+- Add context menu action to request encryption keys
+
+-------------------------------------------------------------------
+Sun Jul  8 07:21:32 UTC 2018 - dead_mozay@opensuse.org
+
+- Add a timeline message when encryption is enabled
+- Mark all decrypted messages with a padlock
+- Mark third-party headers as system 
+- Don't download dependencies during buil
+-------------------------------------------------------------------
+Mon Jul  2 09:11:33 UTC 2018 - dead_mozay@opensuse.org
+
+- Add shortcuts for chat-only & Room List-only views
+  Ctrl-O -> Chat
+  Ctrl-L -> Room list
+- Add basic support for replies
+- Allow arbitrary resizing of the main window & restore sidebar's size
+- Save timeline messages in cache for faster startup times
+- Upgrade matrix-structs & mtxclient
+
+-------------------------------------------------------------------
+Wed Jun 27 05:50:40 UTC 2018 - dead_mozay@opensuse.org
+
+- Add entry for GCC5 on Travis-CI 
+
+-------------------------------------------------------------------
+Mon Jun 18 08:11:09 UTC 2018 - dead_mozay@opensuse.org
+
+-  Merge branch 'e2ee'
+   * Support for e2ee rooms
+   * Implement categories & file logging
+   * Let the user know when the app can't reach the server 
+
+-------------------------------------------------------------------
+Thu Jun 14 01:17:34 UTC 2018 - dead_mozay@opensuse.org
+
+- Add Visual Studio 2017 support 
+
+-------------------------------------------------------------------
+Tue Jun  5 12:31:55 UTC 2018 - dead_mozay@opensuse.org
+
+- Add French translation 
+
+-------------------------------------------------------------------
+Sat Jun  2 08:50:26 UTC 2018 - dead_mozay@opensuse.org
+
+- Bump version to v0.4.3 
+
+-------------------------------------------------------------------
+Tue May 29 13:39:34 UTC 2018 - dead_mozay@opensuse.org
+
+- Update change file
+
+--------------------------------------------------------------------
+Mon May 28 13:08:28 UTC 2018 - dead_mozay@opensuse.org
+
+- Show Matrix ID tooltip when hovering over display name 
+- Properly resize Audio & File widgets
+
+-------------------------------------------------------------------
+Sat May 26 13:03:44 UTC 2018 - dead_mozay@opensuse.org
+
+- Set fixed height for the DateSeparator & TextLabel 
+- Fix resize slowness on the TopBar
+-------------------------------------------------------------------
+Sat May 26 13:03:44 UTC 2018 - dead_mozay@opensuse.org
+
+- Updated to latest snapshot. 
