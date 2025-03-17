@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b8684b5e8b1cb6bdb6a795c58a73104a</srcmd5>
+    <version>4.3.1</version>
+    <time>1742246323</time>
+    <user>anag+factory</user>
+    <comment>New package. Package contains a library to access CSE/CSME/GSC firmware via a MEI interface. Will be used by the igsc package.</comment>
+    <requestid>1253764</requestid>
+  </revision>
+</revisionlist>
