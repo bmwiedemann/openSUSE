@@ -209,7 +209,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:          https://gcc.gnu.org/
-Version: 13.3.1+git8964
+Version: 13.3.1+git9426
 Release:      1
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -395,8 +395,7 @@ Patch23:	gcc13-bsc1216664.patch
 Patch24:	gcc13-sanitizer-remove-crypt-interception.patch
 Patch26:	gcc13-pr101523.patch
 Patch27:	gcc13-amdgcn-remove-fiji.patch
-Patch28:	gcc13-pr116657.patch
-Patch29:	gcc13-pr118780.patch
+Patch28:	gcc13-bsc1239566.patch
 # A set of patches from the RH srpm
 Patch51:	gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -1374,7 +1373,6 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch -P 26 -p1
 %patch -P 27 -p1
 %patch -P 28 -p1
-%patch -P 29 -p1
 %patch -P 51
 %patch -P 60 -p1
 %patch -P 61 -p1
@@ -1806,7 +1804,7 @@ amdgcn-amdhsa,\
 # BUILD-COMMON-END
 
 STAGE1_FLAGS="-g -O2"
-%if 0%{?do_profiling} && !0%{?building_testsuite:1}
+%if 0%{?do_profiling} && !0%{?building_testsuite:1} && !0%{?want_reproducible_builds}
 %ifarch x86_64 %ix86 ppc64le s390x aarch64
 %if %{with bootstrap}
 %define use_pgo_bootstrap 1

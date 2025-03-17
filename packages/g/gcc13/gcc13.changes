@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 13 08:22:15 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-13 branch head, 4ef1d8c84faeebffeb0cc01ee2, git9426
+- Remove gcc13-pr116657.patch now present on the branch.
+- Remove gcc13-pr118780.patch now present on the branch.
+- Add gcc13-bsc1239566.patch to also record -D_FORTIFY_SOURCE=2
+  in the DWARF debug info DW_AT_producer string.  [bsc#1239566]
+
+-------------------------------------------------------------------
+Mon Mar 10 13:25:36 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Disable profiling during build when %want_reproducible_builds is set
+  [bsc#1238491]
+
+-------------------------------------------------------------------
 Thu Feb  6 10:25:01 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Fix condition on whether to enable plugins or JIT support to

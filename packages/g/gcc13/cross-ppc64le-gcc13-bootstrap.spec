@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package cross-ppc64le-gcc13-bootstrap
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -107,7 +107,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.3.1+git8964
+Version:        13.3.1+git9426
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -138,8 +138,7 @@ Patch23:        gcc13-bsc1216664.patch
 Patch24:        gcc13-sanitizer-remove-crypt-interception.patch
 Patch26:        gcc13-pr101523.patch
 Patch27:        gcc13-amdgcn-remove-fiji.patch
-Patch28:        gcc13-pr116657.patch
-Patch29:        gcc13-pr118780.patch
+Patch28:        gcc13-bsc1239566.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -317,7 +316,7 @@ AutoReqProv:    off
 %if 0%{!?gcc_accel:1}
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 %endif
 Summary:        The GNU Compiler Collection targeting %{cross_arch}
 License:        GPL-3.0-or-later
@@ -371,7 +370,6 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch -P 26 -p1
 %patch -P 27 -p1
 %patch -P 28 -p1
-%patch -P 29 -p1
 %patch -P 51
 %patch -P 60 -p1
 %patch -P 61 -p1
