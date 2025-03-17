@@ -316,4 +316,13 @@
     (CVE-2025-25475, boo#1237355)</comment>
     <requestid>1247146</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>8b295f4d8f43467058437930a155cf21</srcmd5>
+    <version>3.6.9</version>
+    <time>1742246305</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream change (CVE-2025-2357, boo#1239679)
+  * CVE-2025-2357.patch</comment>
+    <requestid>1253699</requestid>
+  </revision>
 </revisionlist>

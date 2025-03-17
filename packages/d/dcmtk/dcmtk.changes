@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 17 10:31:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (CVE-2025-2357, boo#1239679)
+  * CVE-2025-2357.patch
+
+-------------------------------------------------------------------
 Wed Feb 19 14:09:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patches:
