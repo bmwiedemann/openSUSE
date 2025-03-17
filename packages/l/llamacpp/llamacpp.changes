@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat Mar 15 03:31:53 UTC 2025 - zzndb001@gmail.com
+
+- Update to version 4889:
+  * common : refactor '-o' option
+  * common : add llama.vim preset for Qwen2.5 Coder
+  * common : add --system-prompt parameter, replace behavior of -p
+    in conversation mode
+  * cmake : install ggml-cpp.h as a public header file
+  * hparams : add SWA rope parameters
+  * ggml : upgrade init_tensor API to return a ggml_status
+  * ggml : aarch64: implement SVE kernels for q2_k_q8_k vector dot
+  * ggml : aarch64: implement SVE kernels for q3_K_q8_K vector dot
+  * ggml-cpu : faster AVX2 variant for IQ1_M (#12216)
+  * ggml-cpu : faster IQ1 mul_mat_vec on AVX2 using BMI2
+    instructions
+  * ggml-cpu : Support s390x SIMD Instruction Set
+  * ggml-cpu : Add CPU backend support for KleidiAI library
+  * ggml-backend : keep paths in native string type when possible
+  * llama : Add Gemma 3 support (+ experimental vision capability)
+  * llama : add Phi-4-mini support
+  * llama : expose llama_model_n_head_kv in the API
+  * llama : skip loading unused tensors
+  * llama : fix indentation in llama-grammar
+  * main : add -sysf / --system-prompt-file
+  * main : allow preloading conversation with -p and add
+    -st / --single-turn
+  * main : use jinja chat template system prompt by default
+  * main : update outdated system prompt message
+  * opencl : use OpenCL C standard supported by the device
+  * opencl : Noncontiguous `norm`, `rms_norm`, disable `fp16` for
+    some ops
+  * run : allow to customize prompt by env var LLAMA_PROMPT_PREFIX
+  * run : add --chat-template-file
+  * server : extract <think> tags from qwq outputs
+  * server : add speculative decoding presets for FIM
+  * server : Log original chat template parsing error
+  * server : handle echo=false on /v1/completions
+  * server : support add_generation_prompt query param
+  * server : disable Nagle's algorithm
+  * server : (webui) Enable communication with parent html
+    (if webui is in iframe)
+  * server : add TEI API format for /rerank endpoint
+  * sync : minja - support QwQ-32B
+  * speculative : update default params
+  * tool-call : ensure there's always a non-empty tool call id
+  * tool-call : refactor common chat / tool-call api
+  * vulkan : add specific MMV kernels for IQ2 and IQ3
+    quants + optimizations
+  * vulkan : matmul dequantization improvements
+  * vulkan : improve im2col
+  * vulkan : implement more backpropagation operators
+  * vulkan : implement several ops relevant for ggml_opt
+  * vulkan : support multi/vision rope, and noncontiguous rope
+  * vulkan : initial support for IQ1_S and IQ1_M quantizations
+
+  * add OP sigmoid
+  * added UTF-8 support
+  * various other fixes and improvements
+  * dependencies updates
+
+-------------------------------------------------------------------
 Sat Feb 15 01:03:56 UTC 2025 - eyadlorenzo@gmail.com
 
 - Update to version 4719:

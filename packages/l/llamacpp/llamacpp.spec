@@ -17,7 +17,7 @@
 
 
 Name:           llamacpp
-Version:        4719
+Version:        4889
 Release:        0
 Summary:        llama-cli tool to run inference using the llama.cpp library
 License:        MIT
