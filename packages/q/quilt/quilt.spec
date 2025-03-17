@@ -1,7 +1,7 @@
 #
 # spec file for package quilt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,11 @@ Release:        0
 Summary:        A Tool for Working with Many Patches
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
+BuildRequires:  bash-completion-devel
 BuildRequires:  diffstat
 BuildRequires:  ed
 BuildRequires:  emacs-nox
+BuildRequires:  pkg-config
 BuildRequires:  xz
 Requires:       coreutils
 Requires:       diffstat
@@ -39,8 +41,13 @@ Requires:       perl
 URL:            http://savannah.nongnu.org/projects/quilt
 Source:         %{name}-%{version}.tar.xz
 Source1:        suse-start-quilt-mode.el
+Patch1:         guards-fix-exit-operator-precedence-error.patch
+Patch2:         fix-two-exit-values.patch
+Patch3:         setup-pass-define-to-rpmbuild-instead-of-eval-define.patch
+Patch4:         setup-new-option-spec-filter.patch
+Patch5:         setup-implement-a-spec-filter-library.patch
+Patch6:         inspect-wrapper-fix-rpm-4.20.patch
 Patch82:        quilt-support-vimdiff.patch
-Patch84:        suse-workaround-pseudo-release.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %if 0%{?suse_version}
@@ -49,11 +56,7 @@ Recommends:     bzip2
 Recommends:     ed
 Recommends:     procmail
 Recommends:     unzip
-%endif
-%if 0%{?suse_version} > 1120
 Recommends:     xz
-%endif
-%if 0%{?suse_version} > 1210
 Recommends:     zstd
 %endif
 
@@ -98,7 +101,9 @@ export NO_BRP_STALE_LINK_ERROR=yes
 make install BUILD_ROOT=%{buildroot}
 install -m 644 lib/quilt.elc \
 	%{buildroot}%{_datadir}/emacs/site-lisp/
-mv %{buildroot}%{_sysconfdir}/bash_completion.d/quilt{,.sh}
+%define completionsdir %(pkg-config --variable completionsdir bash-completion)
+install -m 755 -d %{buildroot}%{completionsdir}
+mv %{buildroot}%{_sysconfdir}/bash_completion.d/quilt %{buildroot}%{completionsdir}/quilt
 # We only needed the /usr/bin/patch compatibility symlink for the
 # test suite.
 [ %{buildroot}%{_datadir}/quilt/compat/patch -ef /usr/bin/patch ] \
@@ -118,8 +123,8 @@ install -m 644 %_sourcedir/suse-start-quilt-mode.el \
 %{_bindir}/quilt
 %{_datadir}/quilt/
 %{_datadir}/emacs/
+%{completionsdir}/quilt
 %config %{_sysconfdir}/quilt.quiltrc
-%config %{_sysconfdir}/bash_completion.d/quilt.sh
 %doc %{_mandir}/man1/guards.1.gz
 %doc %{_mandir}/man1/quilt.1.gz
 %doc doc/README

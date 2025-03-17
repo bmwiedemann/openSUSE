@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 17 15:27:54 UTC 2025 - Jean Delvare <jdelvare@suse.com>
+
+- Drop obsolete suse version checks (reported by rpmlint).
+
+-------------------------------------------------------------------
+Mon Mar 17 14:34:07 UTC 2025 - Jean Delvare <jdelvare@suse.com>
+
+- guards-fix-exit-operator-precedence-error.patch,
+  fix-two-exit-values.patch: Avoid a perl warning due to missing
+  parentheses when using the ?: operator to compute an exit value.
+- setup-pass-define-to-rpmbuild-instead-of-eval-define.patch: Fix
+  building noarch packages with rpm >= 4.20 (boo#1236907).
+- setup-new-option-spec-filter.patch,
+  setup-implement-a-spec-filter-library.patch: Make it possible to
+  preprocess spec files which do not comply with the standard. Most
+  notably multibuild OBS spec files need to be preprocessed. Use
+  option "--spec-filter=obs" for these (boo#1236907).
+- inspect-wrapper-fix-rpm-4.20.patch: Detect the change of build
+  root path hierarchy introduced by rpm 4.20 (boo#1236907).
+- Drop suse-workaround-pseudo-release.patch, superseded by new
+  option --spec-filter.
+- Install the bash completion file to the right directory (reported
+  by rpmlint).
+
+-------------------------------------------------------------------
 Thu Mar 28 13:37:03 UTC 2024 - Jean Delvare <jdelvare@suse.com>
 
 - Update to version 0.68:

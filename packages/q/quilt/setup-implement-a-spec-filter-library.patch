@@ -1,0 +1,82 @@
+From: Jean Delvare <jdelvare@suse.de>
+Date: Fri, 14 Mar 2025 17:33:07 +0100
+Subject: setup: Implement a spec filter library
+Git-commit: 27075e81586fa1b7378caab4162ba6e8e4f45f99
+Patch-mainline: yes
+References: bsc#1236907
+
+Include spec file filters directly in quilt, so that the most
+popular filters can be maintained collectively.
+
+The first spec file filter is for OBS, based on a script by Matěj
+Cepl and an old SUSE-specific quilt patch.
+
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+---
+ Makefile.in              |   10 +++++++++-
+ contrib/spec-filters/obs |    7 +++++++
+ quilt/setup.in           |    8 +++++---
+ 3 files changed, 21 insertions(+), 4 deletions(-)
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -117,6 +117,9 @@ DIRT +=		po/*.mo po/*~
+ 
+ SRC +=		$(wildcard test/*.test) test/run test/test.quiltrc
+ 
++SPEC_FILTERS :=	$(patsubst contrib/spec-filters/%,%,$(wildcard contrib/spec-filters/*))
++SRC +=		$(wildcard contrib/spec-filters/*)
++
+ NON_EXEC_IN :=	doc/quilt.1 doc/README quilt/scripts/patchfns quilt/scripts/utilfns
+ 
+ GIT_DESC :=	$(shell ./git-desc | sed -e 's:^v::')
+@@ -357,7 +360,12 @@ ifneq ($(COMPAT_PROGRAMS),)
+ endif
+ endif
+ 
+-install: install-main install-compat
++install-contrib:
++	$(INSTALL) -d $(BUILD_ROOT)$(datadir)/$(PACKAGE)/spec-filters
++	$(INSTALL) -m 755 $(SPEC_FILTERS:%=contrib/spec-filters/%)	\
++		   $(BUILD_ROOT)$(datadir)/$(PACKAGE)/spec-filters
++
++install: install-main install-compat install-contrib
+ 
+ uninstall ::
+ 	rm -rf $(BIN:%=$(BUILD_ROOT)$(bindir)/%)			\
+--- /dev/null
++++ b/contrib/spec-filters/obs
+@@ -0,0 +1,7 @@
++#!/usr/bin/sh
++# Basic spec file filter for OBS packages
++# https://build.opensuse.org/
++
++sed -e '/^%.*@BUILD_FLAVOR@/s/@BUILD_FLAVOR@//' \
++    -e '/^%lua_provides/d' \
++    -e '/^Release:/s/[<>]//g'
+--- a/quilt/setup.in
++++ b/quilt/setup.in
+@@ -244,10 +244,10 @@ inspect()
+ 	# Apply filtering to the spec file if requested
+ 	if [ -n "$spec_filter" ]
+ 	then
+-		# Make sure PATH isn't used
++		# If only a file name, read from the shared directory
+ 		if [[ ! "$spec_filter" =~ / ]]
+ 		then
+-			spec_filter="./$spec_filter"
++			spec_filter="$QUILT_DIR/spec-filters/$spec_filter"
+ 		fi
+ 		if [ -x "$spec_filter" ]
+ 		then
+@@ -299,7 +299,9 @@ Initializes a source tree from an rpm sp
+ 	Before passing the spec file to rpmbuild for processing, apply a
+ 	filter to it. FILTER must be an executable script which reads the
+ 	original spec file from	stdin and writes the filtered spec file
+-	to stdout.
++	to stdout. FILTER can be specified as a path to a custom script,
++	or as a simple name, in which case it references one of the
++	filter scripts shipped with quilt.
+ 
+ --slow	Use the original, slow method to process the spec file. In this mode,
+ 	rpmbuild generates a working tree in a temporary directory while all

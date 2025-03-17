@@ -605,4 +605,12 @@ patches/vrss.patch (forwarded request 226944 from jdelvare)</comment>
 - Recommend unzip and zstd.</comment>
     <requestid>1166315</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>53412d7e08caf367d7890f494689aef6</srcmd5>
+    <version>0.68</version>
+    <time>1742246357</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1253876</requestid>
+  </revision>
 </revisionlist>

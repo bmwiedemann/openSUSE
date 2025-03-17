@@ -1,0 +1,35 @@
+From: Jean Delvare <jdelvare@suse.de>
+Date: Mon, 10 Feb 2025 11:33:41 +0100
+Subject: Fix two exit values
+Git-commit: 8a9068f90ee08e2b8672c788363c357656cddd3e
+Patch-mainline: yes
+
+In perl, "exit" is considered a named unary operator, and these have
+higher precedence than the ternary ?: opertor. Therefore parentheses
+are required to properly evaluate the exit value before returning it.
+
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+---
+ quilt/scripts/dependency-graph.in |    2 +-
+ test/run                          |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/quilt/scripts/dependency-graph.in
++++ b/quilt/scripts/dependency-graph.in
+@@ -112,7 +112,7 @@ SYNOPSIS: $basename [-h] [--patcher] [--
+ 	Check the ranges of lines that the patches modify for computing
+ 	dependencies. Include up to num lines of context.
+ EOF
+-    exit $help ? 0 : 1;
++    exit ($help ? 0 : 1);
+ }
+ 
+ my @nodes;
+--- a/test/run
++++ b/test/run
+@@ -331,4 +331,4 @@ if (isatty(fileno(STDOUT))) {
+ }
+ print_footer "$status\n";
+ flush_output;
+-exit $failed ? 1 : 0;
++exit ($failed ? 1 : 0);

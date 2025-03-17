@@ -1,0 +1,80 @@
+From: Jean Delvare <jdelvare@suse.de>
+Date: Fri, 14 Mar 2025 17:32:59 +0100
+Subject: setup: New option --spec-filter
+Git-commit: 65cda3275f16944f232fc9930fbb137a07479bc0
+Patch-mainline: yes
+References: bsc#1236907
+
+Some build systems (such as OBS) don't work with compliant rpm spec
+files. Instead, they use templates, which they preprocess before
+passing them to rpmbuild. In order to be able to use "quilt setup"
+on these spec files, we need to perform the same kind of
+preprocessing.
+
+For this purpose, introduce a new option to the setup command,
+--spec-filter. This lets the user provide a customer filtering script
+to preprocess their spec file before rpmbuild gets called on it.
+
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+---
+ quilt/setup.in |   28 +++++++++++++++++++++++++++-
+ 1 file changed, 27 insertions(+), 1 deletion(-)
+
+--- a/quilt/setup.in
++++ b/quilt/setup.in
+@@ -241,6 +241,23 @@ inspect()
+ 	fi
+ 	export -f normalize_path dir_to_dir
+ 
++	# Apply filtering to the spec file if requested
++	if [ -n "$spec_filter" ]
++	then
++		# Make sure PATH isn't used
++		if [[ ! "$spec_filter" =~ / ]]
++		then
++			spec_filter="./$spec_filter"
++		fi
++		if [ -x "$spec_filter" ]
++		then
++			"$spec_filter" < "$specdir/$specfile" > "$tmpdir/$specfile"
++			specdir=$tmpdir
++		else
++			printf $"Warning: can't execute filter %s\n" "$spec_filter" >&2
++		fi
++	fi
++
+ 	# let rpm do all the dirty specfile stuff ...
+ 	echo -n "### rpmbuild: " >&4
+ 
+@@ -278,6 +295,12 @@ Initializes a source tree from an rpm sp
+ --fuzz=N
+ 	Set the maximum fuzz factor (needs rpm 4.6 or later).
+ 
++--spec-filter FILTER
++	Before passing the spec file to rpmbuild for processing, apply a
++	filter to it. FILTER must be an executable script which reads the
++	original spec file from	stdin and writes the filtered spec file
++	to stdout.
++
+ --slow	Use the original, slow method to process the spec file. In this mode,
+ 	rpmbuild generates a working tree in a temporary directory while all
+ 	its actions are recorded, and then everything is replayed from scratch
+@@ -306,7 +329,7 @@ and lastly applying the patches.
+ 	fi
+ }
+ 
+-options=`getopt -o d:vh --long sourcedir:,fuzz:,slow,fast -- "$@"`
++options=`getopt -o d:vh --long sourcedir:,fuzz:,spec-filter:,slow,fast -- "$@"`
+ 
+ if [ $? -ne 0 ]
+ then
+@@ -338,6 +361,9 @@ do
+ 		# Only works with rpm 4.6 and later
+ 		DEFINE_FUZZ=( "--define" "_default_patch_fuzz $2" )
+ 		shift 2 ;;
++	--spec-filter)
++		spec_filter=$2
++		shift 2 ;;
+ 	--slow)
+ 		QUILT_SETUP_FAST=
+ 		shift ;;

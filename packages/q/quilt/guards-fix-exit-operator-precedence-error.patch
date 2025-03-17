@@ -1,0 +1,36 @@
+From 99e4ab70434c7156a82155c68d9f753e22926d8e Mon Sep 17 00:00:00 2001
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Date: Mon, 10 Feb 2025 11:33:37 +0100
+Subject: guards: fix exit operator precedence error
+Git-commit: 99e4ab70434c7156a82155c68d9f753e22926d8e
+Patch-mainline: yes
+
+The perl expression:
+	exit $problems ? 1 : 0;
+will now throw a warning with newer versions of perl:
+	Possible precedence issue with control flow operator (exit) at /usr/bin/guards line 198.
+as it properly catches that the control flow is NOT being evaluated
+here.  For more details on the issue, please see this 10-year-old perl
+blog post:
+	https://blogs.perl.org/users/buddy_burden/2014/06/when-a-failure-is-not-a-failure.html
+
+Fix this up by providing the proper "evaluate this expression and THEN
+return the value" logic that the code was expecting:
+
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+---
+ bin/guards.in |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/bin/guards.in
++++ b/bin/guards.in
+@@ -195,7 +195,7 @@ if ($check) {
+ 	    # This is not an error if the entries are mutually exclusive...
+ 	}
+     }
+-    exit $problems ? 1 : 0;
++    exit ($problems ? 1 : 0);
+ 
+ } elsif ($list) {
+     parse($fh, sub {

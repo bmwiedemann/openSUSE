@@ -1,0 +1,38 @@
+From: Jean Delvare <jdelvare@suse.de>
+Subject: setup: Fix for rpm 4.20's RPM_BUILD_ROOT change
+Patch-mainline: submitted 2025-03-16, https://lists.gnu.org/archive/html/quilt-dev/2025-03/msg00010.html
+References: bsc#1236907
+
+rpm 4.20 creates a working directory (named
+${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}-build) inside _builddir
+and RPM_BUILD_DIR points to that directory instead of _builddir as
+it used to. This confuses the inspect-wrapper script which assumes
+that RPM_BUILD_DIR points to _builddir.
+
+Detect this case and make RPM_BUILD_DIR point to _builddir again so
+that the rest of the code keeps working.
+
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+---
+ quilt/scripts/inspect-wrapper.in |   10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+--- quilt.orig/quilt/scripts/inspect-wrapper.in	2025-02-12 14:12:31.065020150 +0100
++++ quilt/quilt/scripts/inspect-wrapper.in	2025-02-14 13:28:37.751790147 +0100
+@@ -239,6 +239,16 @@ PATH=${PATH#*:}
+ # If we are called too early, pass through without processing
+ [ -n "$RPM_BUILD_DIR" ] || exec $command "$@"
+ 
++# rpm 4.20 creates a working directory (named
++# ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}-build) inside _builddir
++# and RPM_BUILD_DIR points to that directory instead of _builddir as
++# it used to. Detect this case and make RPM_BUILD_DIR point to
++# _builddir again so that the rest of the code keeps working.
++if echo "$RPM_BUILD_DIR" | grep -q '/build/[^/]*-build$'
++then
++	RPM_BUILD_DIR=${RPM_BUILD_DIR%/*}
++fi
++
+ tmpdir=${RPM_BUILD_DIR%/*}
+ case $command in
+ patch)
