@@ -1104,4 +1104,12 @@
     <comment></comment>
     <requestid>1178469</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>d046e893597df6e96ea3fabbc218d3eb</srcmd5>
+    <version>4.0.6</version>
+    <time>1742246195</time>
+    <user>anag+factory</user>
+    <comment>- transmission-qt is built with Qt 6 (forwarded request 1252919 from equeim)</comment>
+    <requestid>1253359</requestid>
+  </revision>
 </revisionlist>

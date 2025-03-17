@@ -1,7 +1,7 @@
 #
 # spec file for package transmission
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define qt5_version    5.6
+%define qt6_version    6.0
 %define glibmm_version 2.60.0
 # Ninja has greater speed than GNU Make. And it provides better error output.
 %bcond_without ninja
@@ -58,15 +58,17 @@ BuildRequires:  libdeflate-devel
 BuildRequires:  libevent-devel >= 2.0.0
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  libpsl-devel
-BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
-BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Network) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Svg) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
+BuildRequires:  cmake(Qt6) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(giomm-2.68) >= %{glibmm_version}
 BuildRequires:  pkgconfig(glibmm-2.68) >= %{glibmm_version}
 BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.10.0
@@ -173,6 +175,7 @@ export CXX=g++-13
     -D ENABLE_CLI=ON \
     -D ENABLE_GTK=ON \
     -D ENABLE_QT=ON \
+    -D USE_QT_VERSION=6 \
     -D ENABLE_WEB=%{webui_opt}
 %cmake_build
 
