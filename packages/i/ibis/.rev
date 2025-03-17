@@ -15,4 +15,25 @@
     <comment></comment>
     <requestid>1243224</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e9cb86573266659f79fa52c45b3b4663</srcmd5>
+    <version>0.12.0</version>
+    <time>1742246277</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.0:
+  * Add Ibis.ModeChange to represent mode changes
+  * Add Ibis.Chanmodes for working with CHANMODES
+  * Stop the cli from eating RPL_ISUPPORT
+  * Set the synthetic prefix features before setting the normal prefix feature
+  * Add a Ibis.Chanmodes instance to Ibis.Client
+  * Implement Ibis.Client.parse_mode_string
+  * Create constants for client errors and make client error an error domain
+  * Implement Ibis.Batch
+  * Add Ibis.Batch.is_end to check if a message is the end of a batch
+  * Implement batching in Ibis.Client
+  * Make sure we look for gi-docgen before our dependencies
+  * Update the getting-started document to use the registered property
+  * Add Ibis.Feature.get_prefix_for_mode (forwarded request 1253562 from rrahl0)</comment>
+    <requestid>1253563</requestid>
+  </revision>
 </revisionlist>

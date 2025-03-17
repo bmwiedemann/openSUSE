@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 14 06:20:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.12.0:
+  * Add Ibis.ModeChange to represent mode changes
+  * Add Ibis.Chanmodes for working with CHANMODES
+  * Stop the cli from eating RPL_ISUPPORT
+  * Set the synthetic prefix features before setting the normal prefix feature
+  * Add a Ibis.Chanmodes instance to Ibis.Client
+  * Implement Ibis.Client.parse_mode_string
+  * Create constants for client errors and make client error an error domain
+  * Implement Ibis.Batch
+  * Add Ibis.Batch.is_end to check if a message is the end of a batch
+  * Implement batching in Ibis.Client
+  * Make sure we look for gi-docgen before our dependencies
+  * Update the getting-started document to use the registered property
+  * Add Ibis.Feature.get_prefix_for_mode
+
+-------------------------------------------------------------------
 Tue Feb  4 22:10:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.11.2:
