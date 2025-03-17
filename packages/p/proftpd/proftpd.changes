@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 14 15:16:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- build with pcre2
+
+-------------------------------------------------------------------
 Thu Feb 20 09:05:57 UTC 2025 - chris@computersalat.de
 
 - fix for boo#1236889 (CVE-2024-57392)

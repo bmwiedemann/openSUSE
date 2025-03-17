@@ -82,7 +82,7 @@ BuildRequires:  libsodium-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkg-config
 BuildRequires:  postgresql-devel
 BuildRequires:  sqlite3-devel
@@ -195,7 +195,7 @@ export CXXFLAGS="$CFLAGS"
     --enable-memcache \
     --enable-nls \
     --enable-openssl \
-    --enable-pcre \
+    --enable-pcre2 \
 %if 0%{?with_redis}
     --enable-redis \
 %endif
