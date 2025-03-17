@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 16 13:46:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.36.14:
+  * Support SQL-format loading via Follower
+  * Minor refactor of HTTP credential handling
+
+-------------------------------------------------------------------
 Wed Mar 12 20:38:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.36.13:
