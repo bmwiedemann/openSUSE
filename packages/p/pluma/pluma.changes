@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 15 10:22:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gtksourceview-3.0) BuildRequires: Not needed, nor
+  used.
+
+-------------------------------------------------------------------
 Tue Jan 21 08:12:57 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Migrate to enchant-2
