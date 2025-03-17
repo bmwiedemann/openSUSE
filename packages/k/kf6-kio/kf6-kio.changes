@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Mar 11 09:29:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.12.0
+- Changes since 6.11.0:
+  * Update dependency version to 6.12.0
+  * KFileItem: fix stat() argument for URLs with local hostname
+  * KUrlNavigatorButton: Use icon name we got after stat
+  * KUrlNavigatorButton: Look up icon only when URL is set
+  * Add background to KUrlNavigator
+  * Add Fedora Packages search
+  * Add kde icons to web shortcuts
+  * urifilters: Change the query url for wordreference.com
+  * Remove the spaces between words in the DuckDuckGo provider
+  * Shorten the Wikipedia search provider
+  * kurlnavigator: restrict middle click pasting from selection clipboard (kde#486229)
+  * filewidgets/kfilefiltercombo: std::copy_if instead of std::remove_if without std::erase
+  * KDirListerTest:testDeleteCurrentDir: there can be duplicated delete events
+  * widgets/kabstractfileitemactionplugin: update header documentation
+  * widgets/kabstractfileitemactionplugin: add a TODO KF7
+  * Fail loading admin.so outside of the KIO PLUGINDIR
+  * PreviewJob: Don't try to get thumbnail for empty files
+  * Update broken links in kde_apps urifilter (kde#498278)
+  * Update version to 6.12.0
+
+-------------------------------------------------------------------
 Sat Feb  8 12:16:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0
