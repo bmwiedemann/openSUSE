@@ -29,7 +29,7 @@ Wed Mar 12 16:21:08 UTC 2025 - Ricardo Mestre <ricardo.mestre@suse.com>
       potentially vulnerable to CVE-2024-56337, the JVM has been configured to
       protect against the vulnerability and to configure the JVM correctly if
       not. Where one or more web applications are potentially vulnerable to
-      CVE-2004-56337 and the JVM cannot be correctly configured or it cannot be
+      CVE-2024-56337 and the JVM cannot be correctly configured or it cannot be
       confirmed that the JVM has been correctly configured, prevent the impacted
       web applications from starting. (markt)
     + Fix: Remove unused session to client map from CrawlerSessionManagerValve.
