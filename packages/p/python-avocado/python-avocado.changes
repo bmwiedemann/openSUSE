@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 17 01:08:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 109.0:
+  Full changelog: https://avocado-framework.readthedocs.io/en/108.0/releases/108_0.html
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
+Tue Oct 25 16:52:14 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 98 
+  Full cahngelog: https://avocado-framework.readthedocs.io/en/98.0/releases/98_0.html
+
+-------------------------------------------------------------------
 Thu Apr 29 13:21:57 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix usage of python_module macro in BuildRequires 

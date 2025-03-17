@@ -65,4 +65,17 @@
     <comment></comment>
     <requestid>889349</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>07be1e2b8ab84d46527f7d5deb8fb8c8</srcmd5>
+    <version>109.0</version>
+    <time>1742246259</time>
+    <user>anag+factory</user>
+    <comment>- Update to 109.0:
+  Full changelog: https://avocado-framework.readthedocs.io/en/108.0/releases/108_0.html
+- Switch to pyproject macros.
+
+- Update to version 98 
+  Full cahngelog: https://avocado-framework.readthedocs.io/en/98.0/releases/98_0.html</comment>
+    <requestid>1253574</requestid>
+  </revision>
 </revisionlist>
