@@ -1,7 +1,7 @@
 #
 # spec file for package copacetic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 %define executable_name copa
 Name:           copacetic
-Version:        0.6.2
+Version:        0.10.0
 Release:        0
 Summary:        CLI tool for directly patching container images using reports from vulnerability scanners
 License:        Apache-2.0
 URL:            https://github.com/project-copacetic/copacetic
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23.5
 
 %description
 copa is a CLI tool written in Go and based on buildkit that can be used to

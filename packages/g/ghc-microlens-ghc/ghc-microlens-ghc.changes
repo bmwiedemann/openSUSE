@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  8 07:05:57 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update microlens-ghc to version 0.4.15.1.
+  # 0.4.15.1
+
+  * Allow building with containers 0.8.
+
+-------------------------------------------------------------------
 Thu Feb 20 07:20:13 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update microlens-ghc to version 0.4.15.0.

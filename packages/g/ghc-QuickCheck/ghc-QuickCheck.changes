@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  6 18:12:25 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update QuickCheck to version 2.15.0.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon May 27 14:54:43 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update QuickCheck to version 2.15.0.1.

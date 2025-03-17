@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 14 11:35:06 UTC 2025 - dcermak@suse.com
+
+- update to version 0.10.0:
+  https://github.com/project-copacetic/copacetic/releases/tag/v0.10.0
+  * Notable changes
+    - Copa now supports patching Alma Linux Images!
+    - chore: update golangci-lint version (#930), fixes
+      CVE-2025-22869 / bsc#1239421
+- update to version 0.9.0:
+  https://github.com/project-copacetic/copacetic/releases/tag/v0.9.0
+  * Notable changes
+    - Copa now supports patching Azure Linux 3 based images!
+- update to version 0.8.0:
+  https://github.com/project-copacetic/copacetic/releases/tag/v0.8.0
+  * Notable changes
+    - Copa now creates a single patch layer on subsequent patches
+      of an already patched image instead of appending a patch
+      layer for each patch! See FAQ for more information.
+    - Oracle Linux is now supported for updating without
+      vulnerability scanner reports. This will update all
+      dependencies, including vulnerable packages. See
+      documentation for more information.
+- update to version 0.7.0:
+  https://github.com/project-copacetic/copacetic/releases/tag/v0.7.0
+  * Notable changes
+    - Support for upgrading all outdated packages without a scanner
+      report. See quick start to get started!
+
+-------------------------------------------------------------------
 Thu May 30 10:26:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package copacetic: CLI tool for directly patching container

@@ -1,7 +1,7 @@
 name:          free
 category:      Control, Monads
 version:       5.2
-x-revision: 6
+x-revision: 7
 license:       BSD3
 cabal-version: 1.18
 license-file:  LICENSE
@@ -61,7 +61,7 @@ extra-doc-files:
 
 source-repository head
   type: git
-  location: git://github.com/ekmett/free.git
+  location: https://github.com/ekmett/free.git
 
 library
   hs-source-dirs: src
@@ -78,7 +78,7 @@ library
   build-depends:
     base                 >= 4.9     && < 5,
     comonad              >= 5.0.8   && < 6,
-    containers           >= 0.5.7.1 && < 0.8,
+    containers           >= 0.5.7.1 && < 0.9,
     distributive         >= 0.5.2   && < 1,
     exceptions           >= 0.10.4  && < 0.11,
     indexed-traversable  >= 0.1.1   && < 0.2,

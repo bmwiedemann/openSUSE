@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  3 11:34:50 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update kan-extensions to version 5.2.6 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat May  4 15:43:57 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update kan-extensions to version 5.2.6.
