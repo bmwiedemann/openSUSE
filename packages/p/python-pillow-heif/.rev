@@ -47,4 +47,15 @@
     <comment></comment>
     <requestid>1227376</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3d5a451d5187fb0018ac9ce839398ab9</srcmd5>
+    <version>0.22.0</version>
+    <time>1742246257</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.22.0:
+  * Boolean pillow_heif.options.DISABLE_SECURITY_LIMITS to bypass security
+    limit of libheif for the image size.
+  * AVIF format marked as deprecated and pending for the removal. (forwarded request 1253564 from rrahl0)</comment>
+    <requestid>1253565</requestid>
+  </revision>
 </revisionlist>
