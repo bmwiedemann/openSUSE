@@ -1,7 +1,7 @@
 #
 # spec file for package epy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,13 @@ URL:            https://github.com/wustho/epy
 # Source:         https://files.pythonhosted.org/packages/source/e/epy-reader/epy-reader-%%{version}.tar.gz#/epy-%%{version}.tar.gz
 Source:         epy-%{version}.tar.xz
 BuildRequires:  fdupes
-BuildRequires:  python311-curses
-BuildRequires:  python311-pip
-BuildRequires:  python311-poetry-core
-BuildRequires:  python311-pytest
-BuildRequires:  python311-setuptools
-BuildRequires:  python311-wheel
-Requires:       python311-curses
+BuildRequires:  python3-curses
+BuildRequires:  python3-pip
+BuildRequires:  python3-poetry-core
+BuildRequires:  python3-pytest
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
+Requires:       python3-curses
 Suggests:       dictd
 Suggests:       mimic
 Suggests:       sdcv
@@ -64,23 +64,23 @@ find . -name \*.py -print0 | while IFS= read -r -d $'\0' script; do
 done
 
 %build
-%python311_pyproject_wheel
+%python3_pyproject_wheel
 
 %install
-%python311_pyproject_install
-%fdupes %{buildroot}/%{python311_sitelib}
-%python311_fix_shebang
+%python3_pyproject_install
+%fdupes %{buildroot}/%{python3_sitelib}
+%python3_fix_shebang
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH=%{buildroot}/%{python311_sitelib}
-pytest-3.11 -v tests
+export PYTHONPATH=%{buildroot}/%{python3_sitelib}
+pytest -v tests
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/epy
-%{python311_sitelib}/epy_reader-2023.6.11.dist-info
-%{python311_sitelib}/epy_reader
+%{python3_sitelib}/epy_reader-2023.6.11.dist-info
+%{python3_sitelib}/epy_reader
 
 %changelog

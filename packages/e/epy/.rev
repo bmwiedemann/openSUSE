@@ -166,4 +166,14 @@
 </comment>
     <requestid>1178380</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d75363fff6bc1eb72c4e6e05abcc3d38</srcmd5>
+    <version>2022.12.11+git.1686460830.6b0e9fe</version>
+    <time>1742246355</time>
+    <user>anag+factory</user>
+    <comment>- Don't make the build specific to some particular version of
+  Python.
+</comment>
+    <requestid>1253877</requestid>
+  </revision>
 </revisionlist>
