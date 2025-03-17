@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Mar 11 09:29:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.12.0
+- Changes since 6.11.0:
+  * HEIF: fixed wrong use of experimental API 
+  * Update dependency version to 6.12.0
+  * sct: qRound with param bigger than max int is undefined
+  * sct: Use height instead of width when calculating dotsPerMeterY
+  * MicroExif: search for the TIFF signature
+  * MicroExif: API improvements and minor bugfixes
+  * Fix compilation error
+  * Added support for resolution and EXIF/XMP metadata to HEIF
+  * JXR: Added rotation (transformation) support
+  * JXR: added support to EXIF metadata
+  * AVIF: added support to XMP and EXIF metadata
+  * Added pixel limit detected by experimental tests
+  * jxl: fix build with Qt before 6.8.0
+  * JP2: Disable ICC profile writing when saving an image with OpenJPEG V2.5.3 or lesser and improve the format detection on reading.
+  * heif: improve handling of grayscale ICC profiles
+  * Improve printing details when writetest fails
+  * Update HEIF writetest templates
+  * Added JXL to CMYK formats
+  * Update version to 6.12.0
+
+-------------------------------------------------------------------
 Sat Feb  8 12:16:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0
