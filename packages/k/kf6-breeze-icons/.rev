@@ -95,4 +95,15 @@
     <comment>KDE Frameworks 6.11 (forwarded request 1244923 from krop)</comment>
     <requestid>1245918</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>298b37ca83ec742f5f7a68b67d0181bf</srcmd5>
+    <version>6.12.0</version>
+    <time>1742246183</time>
+    <user>anag+factory</user>
+    <comment>- Added kf6-breeze-icons-generate-dark.patch for dark theme icon 
+  genertion boo#1226207 
+- Added kf6-breeze-icons-skip-unused.patch for ignore some of unused 
+  ones while dark theme genration boo#1226207 (forwarded request 1252175 from RN)</comment>
+    <requestid>1253247</requestid>
+  </revision>
 </revisionlist>

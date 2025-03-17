@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Mar 11 23:28:45 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Added kf6-breeze-icons-generate-dark.patch for dark theme icon 
+  genertion boo#1226207 
+- Added kf6-breeze-icons-skip-unused.patch for ignore some of unused 
+  ones while dark theme genration boo#1226207
+
+-------------------------------------------------------------------
+Tue Mar 11 09:29:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.12.0
+- Changes since 6.11.0:
+  * Update dependency version to 6.12.0
+  * Remove themed SmartGit icon
+  * Let the GNOME icon loader re-color our window-close icons (kde#500950)
+  * Add -symbolic symlinks for value-decrease/increase (kde#494086)
+  * Add MIME-type icons for kdenlive project files.
+  * Fix fill-rule-even-odd.svg and fill-rule-nonzero.svg
+  * Borrow debug function from Qt documentation
+  * Simplify qrcAlias to not use as much memory
+  * Force folder creation
+  * Remove inkscape icons
+  * safe half of memory for duplicate checking
+  * Add battery-profile-balanced symlink
+  * Update version to 6.12.0
+
+-------------------------------------------------------------------
 Sat Feb  8 12:16:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0

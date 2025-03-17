@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-breeze-icons
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define qt6_version 6.7.0
 
 %define rname breeze-icons
-# Full KF6 version (e.g. 6.11.0)
+# Full KF6 version (e.g. 6.12.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-breeze-icons
-Version:        6.11.0
+Version:        6.12.0
 Release:        0
 Summary:        Breeze icon theme
 License:        LGPL-3.0-only
@@ -35,6 +35,11 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-OPENSUSE boo#1226207
+Patch1:         kf6-breeze-icons-generate-dark.patch
+# PATCH-FIX-OPENSUSE boo#1226207
+Patch2:         kf6-breeze-icons-skip-unused.patch
+#
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
 BuildRequires:  libxml2-tools

@@ -1,0 +1,108 @@
+From: Mykola Krachkovsky <w01dnick@gmail.com>
+Date: 2024-06-14 20:11 UTC
+Subject: skip unneeded icons while generation dark theme icons for decrease size of package
+References: boo#1226207
+
+diff '--color=auto' -uNr breeze-icons-6.3.0-drk/src/tools/generate-symbolic-dark.cpp breeze-icons-6.3.0-sym/src/tools/generate-symbolic-dark.cpp
+--- breeze-icons-6.3.0-drk/src/tools/generate-symbolic-dark.cpp	2024-05-31 16:23:42.000000000 +0300
++++ breeze-icons-6.3.0-sym/src/tools/generate-symbolic-dark.cpp	2024-06-14 23:10:46.557361703 +0300
+@@ -109,6 +109,7 @@
+     QStringList unwrittenFiles;
+     QStringList xmlReadErrorFiles;
+     QStringList xmlWriteErrorFiles;
++    QRE recolorUsage(u"class=\"(?:[^\"]+\\s)?ColorScheme-(?:Text|Background)[\\s\"]"_s);
+     for (auto &inputDir : std::as_const(inputDirs)) {
+         QDirIterator dirIt(inputDir, QDirIterator::Subdirectories);
+         while (dirIt.hasNext()) {
+@@ -120,6 +121,10 @@
+                 || QFileInfo::exists(QString{inputFilePath}.replace("/icons/"_L1, "/icons-dark/"_L1))) {
+                 continue;
+             }
++            // Skip applets (used by Plasma and recolored at run-time)
++            if (inputFilePath.contains("/applets/256/"_L1)) {
++                continue;
++            }
+ 
+             QFile inputFile(inputFilePath);
+             if (!inputFile.open(QIODevice::ReadOnly)) {
+@@ -134,6 +139,11 @@
+                 continue;
+             }
+ 
++            // Skip any icons that don't have class `ColorScheme-Text|Background` usage
++            if (!recolorUsage.match(QString::fromUtf8(inputData)).hasMatch()) {
++                continue;
++            }
++
+             QDir outputDir = outputDirInfo.absoluteFilePath();
+             const auto outputFilePath = outputDir.absoluteFilePath(QString{inputFilePath}.remove(QRE(u".*/icons/"_s)));
+             QFileInfo outputFileInfo(outputFilePath);
+@@ -142,10 +152,12 @@
+                 QDir::root().mkpath(outputDir.absolutePath());
+             }
+             QFile outputFile(outputFilePath);
++            /*
+             if (!outputFile.open(QIODevice::WriteOnly)) {
+                 unwrittenFiles.append("\""_L1 + outputFile.fileName() + "\": "_L1 + outputFile.errorString());
+                 continue;
+             }
++            */
+ 
+             QXmlStreamReader reader(inputData);
+             reader.setNamespaceProcessing(false);
+@@ -153,9 +165,32 @@
+             QXmlStreamWriter writer(&outputData);
+             writer.setAutoFormatting(true);
+ 
++            bool currentColorUsed = false;
+             while (!reader.atEnd() && !reader.hasError() && !writer.hasError()) {
+                 reader.readNext();
+                 writer.writeCurrentToken(reader);
++                if (!currentColorUsed && reader.isStartElement()) {
++                    const auto classAttr = reader.attributes().value("class"_L1);
++                    if (classAttr == "ColorScheme-Text"_L1 || classAttr == "ColorScheme-Background"_L1) {
++                        const auto styleAttr = reader.attributes().value("style"_L1);
++                        if (!styleAttr.isEmpty()) {
++                            bool fillCurrentColor = false;
++                            bool directColor = false;
++                            for (const auto style : styleAttr.split(';'_L1)) {
++                                const auto prop = style.split(':'_L1);
++                                const auto propName = prop[0].trimmed();
++                                const auto propValue = prop[1].trimmed();
++                                if ((propName == "fill"_L1 || propName == "stroke"_L1) && propValue == "currentColor"_L1) {
++                                    fillCurrentColor = true;
++                                }
++                                if (propName == "color"_L1 && propValue != "currentColor"_L1) {
++                                    directColor = true;
++                                }
++                            }
++                            currentColorUsed = fillCurrentColor && !directColor;
++                        }
++                    }
++                }
+                 if (!reader.isStartElement() || reader.qualifiedName() != "style"_L1 || reader.attributes().value("id"_L1) != "current-color-scheme"_L1) {
+                     continue;
+                 }
+@@ -167,6 +202,10 @@
+                 writer.writeCharacters(convertStylesheet(reader.text().toString()));
+             }
+ 
++            if (!currentColorUsed) {
++                continue;
++            }
++
+             if (reader.hasError()) {
+                 xmlReadErrorFiles.append("\""_L1 + inputFile.fileName() + "\": "_L1 + reader.errorString());
+             }
+@@ -174,6 +213,11 @@
+                 xmlWriteErrorFiles.append("\""_L1 + outputFile.fileName() + "\""_L1);
+             }
+ 
++            if (!outputFile.open(QIODevice::WriteOnly)) {
++                unwrittenFiles.append("\""_L1 + outputFile.fileName() + "\": "_L1 + outputFile.errorString());
++                continue;
++            }
++
+             auto bytesWritten = outputFile.write(outputData);
+             outputFile.close();
+             wasAnyFileWritten |= bytesWritten > 0;
