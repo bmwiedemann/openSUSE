@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 16 11:29:41 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Don't build the various langpacks in parallel. This may be fixing
+  boo#1239446, but will have to be monitored.
+
+-------------------------------------------------------------------
 Tue Mar  4 13:25:21 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Firefox Extended Support Release 128.8.0 ESR

@@ -532,6 +532,7 @@ cat << EOF > ${MOZCONFIG}_LANG
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../obj_LANG
+mk_add_options MOZ_MAKE_FLAGS=-j1
 . \$topsrcdir/browser/config/mozconfig
 ac_add_options --prefix=%{_prefix}
 ac_add_options --with-l10n-base=$RPM_BUILD_DIR/l10n
@@ -542,7 +543,12 @@ ac_add_options --enable-official-branding
 %endif
 EOF
 
-%define njobs 0%{?jobs:%jobs}
+# Let's not build the various langpacks in parallel. It may be the
+# reason for random build failures as can be seen in boo#1239446
+# %define njobs 0%{?jobs:%jobs}
+# Unless the build failures will happen again even when building
+# sequentially, we'll define njobs to 1:
+%define njobs 1
 mkdir -p $RPM_BUILD_DIR/langpacks_artifacts/
 sed -r '/^(ja-JP-mac|ga-IE|en-US|)$/d;s/ .*$//' $RPM_BUILD_DIR/%{srcname}-%{orig_version}/browser/locales/shipped-locales \
     | xargs -n 1 %{?njobs:-P %njobs} -I {} /bin/sh -c '
