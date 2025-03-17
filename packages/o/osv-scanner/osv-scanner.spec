@@ -1,7 +1,7 @@
 #
 # spec file for package osv-scanner
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,34 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           osv-scanner
-Version:        1.9.2
+Version:        2.0.0
 Release:        0
 Summary:        Vulnerability scanner written in Go
 License:        Apache-2.0
 URL:            https://github.com/google/osv-scanner
 Source:         osv-scanner-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.22
+BuildRequires:  golang(API) >= 1.23.6
 
 %description
-Use OSV-Scanner to find existing vulnerabilities affecting your project's dependencies.
+Use OSV-Scanner to find existing vulnerabilities affecting your project's
+dependencies.
 
-OSV-Scanner provides an officially supported frontend to the OSV database that connects a project’s list of dependencies with the vulnerabilities that affect them. Since the OSV.dev database is open source and distributed, it has several benefits in comparison with closed source advisory databases and scanners:
+OSV-Scanner provides an officially supported frontend to the OSV database that
+connects a project’s list of dependencies with the vulnerabilities that affect
+them. Since the OSV.dev database is open source and distributed, it has several
+benefits in comparison with closed source advisory databases and scanners:
 
-- Each advisory comes from an open and authoritative source (e.g. the RustSec Advisory Database)
-- Anyone can suggest improvements to advisories, resulting in a very high quality database
-- The OSV format unambiguously stores information about affected versions in a machine-readable format that precisely maps onto a developer’s list of packages
+- Each advisory comes from an open and authoritative source (e.g. the RustSec
+  Advisory Database)
+- Anyone can suggest improvements to advisories, resulting in a very high
+  quality database
+- The OSV format unambiguously stores information about affected versions in a
+  machine-readable format that precisely maps onto a developer’s list of packages
 
-The above all results in fewer, more actionable vulnerability notifications, which reduces the time needed to resolve them.
+The above all results in fewer, more actionable vulnerability notifications,
+which reduces the time needed to resolve them.
 
 %prep
 %autosetup -p 1 -a 1
