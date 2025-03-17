@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Mar 14 06:36:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.7.4:
+  * Notable changes:
+    - Revert the changes to loki.source.file from release v1.7.0.
+      These changes introduced a potential deadlock. (@dehaansa)
+
+-------------------------------------------------------------------
+Thu Mar 13 18:47:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.7.3:
+  * Notable changes:
+    - Fixed the parsing of selections, application and network
+      filter blocks for Beyla
+    - Add the stat_checkpointer collector in
+      prometheus.exporter.postgres (@dehaansa)
+    - Update the prometheus.exporter.postgres component to
+      correctly support Postgres17 when stat_bgwriter collector is
+      enabled (@dehaansa)
+    - Fix remoteCfg logging and metrics reporting of errNotModified
+      as a failure (@zackman0010)
+
+-------------------------------------------------------------------
 Mon Mar 10 13:50:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.7.2:
