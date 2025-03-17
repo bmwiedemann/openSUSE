@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  8 22:58:14 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed obsolete kernel-firmware-nvidia-gspx-G06-cuda; firmware
+  has moved to nvidia-common-G06 and
+  kernel-firmware-nvidia-gspx-G06 is no longer available either
+  (boo#1239139)
+
+-------------------------------------------------------------------
 Tue Mar  4 11:08:41 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update CUDA variant to 570.124.06

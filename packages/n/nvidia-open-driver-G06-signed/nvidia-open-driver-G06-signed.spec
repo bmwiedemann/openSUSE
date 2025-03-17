@@ -140,27 +140,6 @@ By installing this package, the signed NVIDIA open driver built by SUSE will be 
 of CUDA components.
 Simply run: `zypper install --no-recommends cuda-runtime-<version> nv-prefer-signed-open-driver`
 
-%package -n kernel-firmware-nvidia-gspx-G06%{?with_cuda:-cuda}
-Summary:        Kernel firmware file for open NVIDIA kernel module driver G06
-Provides:       multiversion(kernel)
-# Kill version 555 with a 'Conflicts: kernel-firmware-nvidia-gspx-G06'
-Obsoletes:      kernel-firmware-nvidia-gspx-G06 < 560.35.03
-Obsoletes:      kernel-firmware-nvidia-gsp-G06 = 535.86.05
-Obsoletes:      kernel-firmware-nvidia-gspx-G06-cuda < 560.35.03
-Requires:       (kernel-firmware-nvidia-gspx-G06 = %{version} if (nvidia-compute-utils-G06 = %{version} or nvidia-compute-G06 = %{version} or sle-module-NVIDIA-compute-release))
-%if 0%{?sle_version} >= 150700
-BuildArch:      noarch
-%endif
-
-%description -n kernel-firmware-nvidia-gspx-G06%{?with_cuda:-cuda}
-This package fetches the versioned kernel firmware file "gsp.bin" for
-the OpenSource NVIDIA kernel module driver G06 once it's available.
-
-# SLE16 doesn't set %sle_version; SLE Micro 6.x is already SLE16 !!!
-%if (0%{?sle_version:1} || (0%{?suse_version} == 1600 && !0%{?is_opensuse})) && %{with cuda}
-%files -n kernel-firmware-nvidia-gspx-G06%{?with_cuda:-cuda}
-%endif
-
 %if %{with cuda}
 %files -n nv-prefer-signed-open-driver
 %endif

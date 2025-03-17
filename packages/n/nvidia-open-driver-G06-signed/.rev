@@ -715,4 +715,12 @@
     <comment>- update CUDA variant to 570.124.06</comment>
     <requestid>1250236</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>1c8447ca87b358c7986b3b70d1a31ad9</srcmd5>
+    <version>570.124.04</version>
+    <time>1742246199</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1253420</requestid>
+  </revision>
 </revisionlist>
