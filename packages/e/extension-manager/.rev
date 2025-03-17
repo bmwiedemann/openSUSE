@@ -102,4 +102,13 @@
     <comment></comment>
     <requestid>1238715</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c57a4dd42ea492e3b70772e3b24e8a54</srcmd5>
+    <version>0.6.1</version>
+    <time>1742246252</time>
+    <user>anag+factory</user>
+    <comment>- require unzip, so we can make sure that we can decompress the
+  extension tarballs (forwarded request 1253557 from rrahl0)</comment>
+    <requestid>1253558</requestid>
+  </revision>
 </revisionlist>

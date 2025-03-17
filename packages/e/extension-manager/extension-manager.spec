@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+Requires:       unzip
 
 %description
 A native tool for browsing, installing, and managing GNOME Shell Extensions.
