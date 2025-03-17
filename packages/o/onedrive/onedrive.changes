@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Mar 17 06:01:53 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.5:
+  * Feature Requests | Enhancements
+    - Implement Feature Request: Implement 'disable_permission_set'
+      configuration option to not set directory and file
+      permissions (#3112)
+    - Implement Feature Request: Implement 'write_xattr_data'
+      configuration option to add information about file
+      creator/last editor as extended file attributes (#3113)
+    - Implement Feature Request: Implement 'transfer_order'
+      configuration option to allow the user to determine what
+      order files are transferred in (#3114)
+    - Enhancement: Add support for --share-password option when
+      --create-share-link is called (#3119)
+    - Enhancement: Add support 'localizedMessage' error messages in
+      application output if this is provided in the JSON response
+      from Microsoft Graph API (#3153)
+  * Microsoft API Changes for OneDrive Personal Accounts
+    - Comprehensively overhauled how OneDrive Personal Shared
+      Folders are handled due to major OneDrive API backend
+      platform user migration and major differences in API response
+      output (#3116)
+    - Comprehensively changed OneDrive Personal 'driveId' value
+      checking due to major OneDrive API backend platform user
+      migration and major differences in API response output
+      (#3116)
+  * Bug Fixes
+    - Fix Bug: Fix path calculation for Client Side Filtering
+      evaluations for Business Accounts (#3106)
+    - Fix Bug: Fix path calculation for Client Side Filtering
+      evaluations for Personal Accounts (#3111)
+    - Fix Bug: Only perform path calculation if this is actually
+      required
+    - Fix Bug: Fix check for 'globbing' and 'wildcard' rules, that
+      the number of segments before the first wildcard character
+      need to match before the actual rule can be applied (#3123)
+    - Fix Bug: When using 'sync_list', ignore specific exclusion to
+      scan that path for new data, which may be actually included
+      by an include rule, but the parent path is excluded (#3130)
+    - Fix Bug: When removing a OneDrive Personal Shared Folder,
+      remove the actual link, not the remote user folder (#3147)
+    - Fix Bug: Fix 'Unsupported platform' for inotify watches by
+      using the correct predefined version definition for Linux.
+      (#3152)
+  * Other Changes | Fixes
+    - Changed curl debug logging to --debug-https as this is more
+      relevant (#3120)
+    - Updated Fedora Docker OS version to Fedora 41 (#3150)
+    - Updated Alpine Docker OS version to Alpine 3.21 (#3150)
+    - Updated documentation
+
+-------------------------------------------------------------------
 Fri Feb 07 18:09:47 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.5.4:
