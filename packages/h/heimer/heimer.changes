@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 17 06:12:15 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.5.0:
+  New features:
+  * Add a language menu
+    + The active Language can be now set via a menu at the top-right corner
+    + The selected language will saved and automatically loaded again
+    + Setting language in the CLI will override the selected language
+  * Add basque translation (eu)
+  * Add Portuguese translation (pt_Pt, pt_Br)
+  * Make zoom-to-fit take possibly selected nodes into account
+  * Fix GitHub Issue #165: Keep node handles usable
+    + Nodes are now raised and zoomed in on mouse hover
+    + This behavior can be disabled by Settings => Editing => Raise node on mouse hover
+  Bug fixes:
+  * Fix default image size in PNG export dialog
+    + Set the default image size to current view size
+    + Set a more sensible upper limit for the image size
+  * Fix zooming when searching text on labels
+  * Fix position offset issues when creating a new node by dragging
+  * Fix GitHub Issue #259: 2 build errors in Windows
+  * Fix very slow node insertion on large mind maps
+
+-------------------------------------------------------------------
 Wed Mar 27 21:15:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.4.0:

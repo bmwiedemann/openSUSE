@@ -1,7 +1,7 @@
 #
 # spec file for package heimer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021 Fabio Pesari
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           heimer
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        Mind map, diagram, and note-taking tool
 License:        CC-BY-SA-3.0 AND GPL-3.0-only
