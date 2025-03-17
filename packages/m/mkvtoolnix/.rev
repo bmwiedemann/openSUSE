@@ -1508,4 +1508,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>1244474</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>e78e946e8f046821a887ec9c854b53fe</srcmd5>
+    <version>91.0</version>
+    <time>1742246241</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1253538</requestid>
+  </revision>
 </revisionlist>
