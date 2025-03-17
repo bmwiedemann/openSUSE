@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 10 16:41:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- skip 32bit builds on SLFO
+
+-------------------------------------------------------------------
 Fri Feb 14 11:52:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - reduce test flakyness by limiting parallelism to what upstream

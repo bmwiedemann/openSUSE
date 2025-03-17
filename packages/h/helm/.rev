@@ -822,4 +822,12 @@ See changelog in:
   * fix: check group for resource info match</comment>
     <requestid>1245873</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>8515cf3082d0d5a267eee49d5b3bf2e8</srcmd5>
+    <version>3.17.1</version>
+    <time>1742246357</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1253886</requestid>
+  </revision>
 </revisionlist>

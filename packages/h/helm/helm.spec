@@ -28,6 +28,10 @@ URL:            https://github.com/helm/helm
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
+%if 0%{?suse_version} == 1600
+# go is not available on Framework one for x86
+ExcludeArch:    %ix86
+%endif
 BuildRequires:  golang(API) = 1.23
 %{go_provides}
 
