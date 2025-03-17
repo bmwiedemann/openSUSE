@@ -4,7 +4,8 @@ the standard [plum](https://github.com/rime/plum) is developed in bash. openSUSE
 
 brise in openSUSE is just a checkout of :all
 
-    mkdir brise
+    mkdir brise-20250315
     export GO111MODULE=on
     go build rime-plum-go
-    rime_dir=brise rime-plum-go/rime-plum-go :all
+    rime_dir=brise rime_frontend=fcitx rime-plum-go/rime-plum-go :all
+    tar -c brise-20250315 | zstd > brise-20250315.tar.zst

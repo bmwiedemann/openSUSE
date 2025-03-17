@@ -1,7 +1,7 @@
 #
 # spec file for package brise
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,16 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           brise
-Version:        20230603+git.5fdd2d6
+Version:        20250315
 Release:        0
 Summary:        Rime Input Schemas Collection
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/brise
-Source:         brise-%{version}.tar.xz
+Source:         brise-%{version}.tar.zst
 Source99:       README
-BuildRequires:  golang(API) >= 1.17
+BuildRequires:  zstd
 
 %description
 Rime is an Traditional Chinese input method engine.
@@ -68,6 +69,7 @@ Requires:       rime-schema-soutzoe
 Requires:       rime-schema-stenotype
 Requires:       rime-schema-wubi
 Requires:       rime-schema-wugniu
+Requires:       rime-schema-emoji-cantonese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
 
@@ -77,29 +79,30 @@ Extra collection of rime schemas.
 %package -n rime-schema-all
 Summary:        All rime input schemas
 Group:          System/I18n/Chinese
+Requires:       rime-schema-array
 Requires:       rime-schema-bopomofo
 Requires:       rime-schema-cangjie
-Requires:       rime-schema-custom
-Requires:       rime-schema-essay
-Requires:       rime-schema-luna-pinyin
-Requires:       rime-schema-prelude
-Requires:       rime-schema-stroke
-Requires:       rime-schema-terra-pinyin
-Requires:       rime-schema-array
 Requires:       rime-schema-cantonese
 Requires:       rime-schema-combo-pinyin
+Requires:       rime-schema-custom
 Requires:       rime-schema-double-pinyin
 Requires:       rime-schema-emoji
+Requires:       rime-schema-essay
 Requires:       rime-schema-essay-simp
 Requires:       rime-schema-ipa
+Requires:       rime-schema-luna-pinyin
 Requires:       rime-schema-middle-chinese
 Requires:       rime-schema-pinyin-simp
+Requires:       rime-schema-prelude
 Requires:       rime-schema-quick
 Requires:       rime-schema-scj
 Requires:       rime-schema-soutzoe
 Requires:       rime-schema-stenotype
+Requires:       rime-schema-stroke
+Requires:       rime-schema-terra-pinyin
 Requires:       rime-schema-wubi
 Requires:       rime-schema-wugniu
+Requires:       rime-schema-emoji-cantonese
 Provides:       brise = %{version}
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -108,7 +111,7 @@ BuildArch:      noarch
 All rime input schemas.
 
 %package -n rime-schema-bopomofo
-Summary:        bopomofo input schema for rime
+Summary:        Bopomofo input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -117,7 +120,7 @@ BuildArch:      noarch
 bopomofo input schema for rime.
 
 %package -n rime-schema-cangjie
-Summary:        cangjie input schema for rime
+Summary:        Cangjie input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -126,7 +129,7 @@ BuildArch:      noarch
 cangjie input schema for rime.
 
 %package -n rime-schema-custom
-Summary:        basic schema to customize rime
+Summary:        Basic schema to customize rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -135,7 +138,7 @@ BuildArch:      noarch
 basic schema to customize rime.
 
 %package -n rime-schema-essay
-Summary:        essay input schema for rime
+Summary:        Essay input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -144,7 +147,7 @@ BuildArch:      noarch
 essay input schema for rime.
 
 %package -n rime-schema-essay-simp
-Summary:        simplified essay input schema for rime
+Summary:        Simplified essay input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -153,7 +156,7 @@ BuildArch:      noarch
 simplified essay input schema for rime.
 
 %package -n rime-schema-luna-pinyin
-Summary:        luna-pinyin input schema for rime
+Summary:        Luna-pinyin input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -162,7 +165,7 @@ BuildArch:      noarch
 luna-pinyin input schema for rime.
 
 %package -n rime-schema-prelude
-Summary:        prelude input schema for rime
+Summary:        Prelude input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -171,7 +174,7 @@ BuildArch:      noarch
 prelude input schema for rime.
 
 %package -n rime-schema-stroke
-Summary:        stroke input schema for rime
+Summary:        Stroke input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -180,7 +183,7 @@ BuildArch:      noarch
 stroke input schema for rime.
 
 %package -n rime-schema-terra-pinyin
-Summary:        terra-pinyin input schema for rime
+Summary:        Terra-pinyin input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -189,7 +192,7 @@ BuildArch:      noarch
 terra-pinyin input schema for rime.
 
 %package -n rime-schema-array
-Summary:        array input schema for rime
+Summary:        Array input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -198,18 +201,18 @@ BuildArch:      noarch
 array input schema for rime.
 
 %package -n rime-schema-cantonese
-Summary:        cantonese input schema for rime
+Summary:        Cantonese input schema for rime
 Group:          System/I18n/Chinese
-BuildArch:      noarch
 Provides:       rime-schema-jyutping > 20230528+git.cece251
 Obsoletes:      rime-schema-jyutping <= 20230528+git.cece251
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
+BuildArch:      noarch
 
 %description -n rime-schema-cantonese
 cantonese(jyutping) input schema for rime.
 
 %package -n rime-schema-combo-pinyin
-Summary:        combo-pinyin input schema for rime
+Summary:        Combo-pinyin input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -218,7 +221,7 @@ BuildArch:      noarch
 combo-pinyin input schema for rime.
 
 %package -n rime-schema-double-pinyin
-Summary:        double-pinyin input schema for rime
+Summary:        Double-pinyin input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -227,7 +230,7 @@ BuildArch:      noarch
 double-pinyin input schema for rime.
 
 %package -n rime-schema-emoji
-Summary:        emoji input schema for rime
+Summary:        Emoji input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -235,8 +238,17 @@ BuildArch:      noarch
 %description -n rime-schema-emoji
 emoji input schema for rime.
 
+%package -n rime-schema-emoji-cantonese
+Summary:        Rime scheme to input emoji with cantonese wording
+Group:          System/I18n/Chinese
+Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
+BuildArch:      noarch
+
+%description -n rime-schema-emoji-cantonese
+rime scheme to input emoji with cantonese wording.
+
 %package -n rime-schema-ipa
-Summary:        ipa input schema for rime
+Summary:        Rime schema to input IPA
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -245,16 +257,16 @@ BuildArch:      noarch
 ipa input schema for rime.
 
 %package -n rime-schema-middle-chinese
-Summary:        middle-chinese input schema for rime
+Summary:        Medieval chinese input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
 
 %description -n rime-schema-middle-chinese
-middle-chinese input schema for rime.
+medieval chinese input schema for rime.
 
 %package -n rime-schema-pinyin-simp
-Summary:        pinyin-simp input schema for rime
+Summary:        Pinyin-simp input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -263,25 +275,25 @@ BuildArch:      noarch
 pinyin-simp input schema for rime.
 
 %package -n rime-schema-quick
-Summary:        quick input schema for rime
+Summary:        Quick(er than canjie) input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
 
 %description -n rime-schema-quick
-quick input schema for rime.
+quick input schema for rime, based on cangjie, but input quicker.
 
 %package -n rime-schema-scj
-Summary:        scj input schema for rime
+Summary:        Smart cangjie(scj) input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
 
 %description -n rime-schema-scj
-scj input schema for rime.
+Smart cangjie(scj) input schema for rime.
 
 %package -n rime-schema-soutzoe
-Summary:        soutzoe input schema for rime
+Summary:        Soutzoe input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -290,7 +302,7 @@ BuildArch:      noarch
 soutzoe input schema for rime.
 
 %package -n rime-schema-stenotype
-Summary:        stenotype input schema for rime
+Summary:        Stenotype input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -299,7 +311,7 @@ BuildArch:      noarch
 stenotype input schema for rime.
 
 %package -n rime-schema-wubi
-Summary:        wubi input schema for rime
+Summary:        Wubi input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -308,7 +320,7 @@ BuildArch:      noarch
 wubi input schema for rime.
 
 %package -n rime-schema-wugniu
-Summary:        wugniu input schema for rime
+Summary:        Wugniu input schema for rime
 Group:          System/I18n/Chinese
 Obsoletes:      brise <= 0.39+git20190120.8d5bc2e
 BuildArch:      noarch
@@ -405,7 +417,11 @@ cp -r * %{buildroot}%{_datadir}/rime-data
 
 %files -n rime-schema-emoji
 %dir %{_datadir}/rime-data
-%{_datadir}/rime-data/emoji*.yaml
+%{_datadir}/rime-data/emoji_suggestion.yaml
+
+%files -n rime-schema-emoji-cantonese
+%dir %{_datadir}/rime-data
+%{_datadir}/rime-data/emoji_cantonese_suggestion.yaml
 
 %files -n rime-schema-ipa
 %dir %{_datadir}/rime-data
