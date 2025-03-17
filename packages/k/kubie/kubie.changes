@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 13 05:57:26 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.25.1:
+  * Version 0.25.1
+  * Bump ring from 0.17.10 to 0.17.13 (#332)
+  * Bump the all group with 2 updates (#335)
+  * Bump the all group across 1 directory with 5 updates (#334)
+  * Bump the all group with 4 updates (#330)
+  * Bump the all group with 2 updates (#329)
+  * make relative cert paths absolute in generated kubeconfig
+    (#325)
+  * Bump skim from 0.10.4 to 0.16.0 in the all group across 1
+    directory (#328)
+
+-------------------------------------------------------------------
 Sat Feb 22 16:36:41 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.25.0:
