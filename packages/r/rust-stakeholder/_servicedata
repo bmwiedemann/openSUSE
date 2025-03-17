@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/giacomo-b/rust-stakeholder.git</param>
+    <param name="changesrevision">58d76995c25ca72810727160d1eecc720807596d</param>
+  </service>
+</servicedata>

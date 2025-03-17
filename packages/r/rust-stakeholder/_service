@@ -1,0 +1,20 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/giacomo-b/rust-stakeholder.git</param>
+    <param name="revision">master</param>
+    <param name="scm">git</param>
+    <param name="versionformat">%cd</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service mode="buildtime" name="tar"/>
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="src">rust-stakeholder</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+  </service>
+</services>
