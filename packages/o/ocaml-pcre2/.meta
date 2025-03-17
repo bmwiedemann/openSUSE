@@ -1,0 +1,6 @@
+<package name="ocaml-pcre2" project="openSUSE:Factory">
+  <title>Bindings to the Perl Compatibility Regular Expressions library (version 2)</title>
+  <description>pcre2-ocaml offers library functions for string pattern matching and
+substitution, similar to the functionality offered by the Perl language.</description>
+  <url>https://opam.ocaml.org/packages/pcre2</url>
+</package>
