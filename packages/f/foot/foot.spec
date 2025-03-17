@@ -20,7 +20,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           foot
-Version:        1.20.2
+Version:        1.21.0
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(fcft) < 4.0.0
-BuildRequires:  pkgconfig(fcft) >= 3.0.1
+BuildRequires:  pkgconfig(fcft) >= 3.3.1
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(pixman-1)
@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(tic)
 BuildRequires:  pkgconfig(tllist) >= 1.1.0
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.32
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.41
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(xkbcommon) >= 1.0.0
 

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Mar 17 15:50:58 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.21.0:
+  * foot.ini options:
+    * Added bell.system option to use xdg-system-bell-v1 Wayland protocol
+      to report the terminal bell. Defaults to "yes".
+    * Added search-bindings.delete-to-start and .delete-to-end key bindings,
+      defaulting to Ctrl+u and Ctrl+k respectively.
+    * cursor.style can now be set to "hollow".
+    * Added gamma-correct-blending option to use gamma-correct font rendering
+      if the compositor supports wp_color_management_v1,
+      specifically the ext_linear transfer function. Enabled by default when
+      compositor support is available.
+    * Added url.regex option to define a regex used to match URLs.
+      The url.uri-characters and url-protocols options have been removed.
+    * tweak.scaling-filter now supports more values when running with
+      libfcft4 >= 3.3.1 - "impulse", "box", "linear", "gaussian", "lanczos2",
+      "lanczos3-stretched". The scaling filter is no longer applied to
+      scaled bitmap fonts when that is enabled in FontConfig.
+    * Removed main.notify and main.notify-focus-when-inhibit options.
+      These were deprecated in 1.18.0.
+  * Fixed various issues with wrapped lines such as some such lines being
+    copied as multiple lines, glitching when the window was resized, etc.
+  * Fixed various issues with handling of zero-width characters,
+    combining characters, etc.
+  * Fixed various issues with Kitty keyboard protocol implementation.
+  * Fixed wrong key bindings being executed when using
+    alternative keyboard layouts.
+  * Fixed various hangs, crashes and resource leaks.
+  * Renamed theme tokyo-nightday to tokyo-nightlight and modified its colors.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.21.0 for more details.
+- Remove "-Wno-error=deprecated-declarations" because issue has been
+  fixed.
+
+-------------------------------------------------------------------
+Thu Mar 13 18:05:44 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Temporarily disable warning-as-error for using deprecated functions,
+  because foot currently uses a function that was deprecated in fcft 3.3.x
+
+-------------------------------------------------------------------
 Sat Jan 18 10:10:43 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.20.2:

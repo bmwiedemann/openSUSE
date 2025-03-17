@@ -718,4 +718,41 @@
   from utmp to systemd-logind</comment>
     <requestid>1238660</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>36eb146f54d68e7b4e36978052dd329f</srcmd5>
+    <version>1.21.0</version>
+    <time>1742246354</time>
+    <user>anag+factory</user>
+    <comment>- Update to v1.21.0:
+  * foot.ini options:
+    * Added bell.system option to use xdg-system-bell-v1 Wayland protocol
+      to report the terminal bell. Defaults to &quot;yes&quot;.
+    * Added search-bindings.delete-to-start and .delete-to-end key bindings,
+      defaulting to Ctrl+u and Ctrl+k respectively.
+    * cursor.style can now be set to &quot;hollow&quot;.
+    * Added gamma-correct-blending option to use gamma-correct font rendering
+      if the compositor supports wp_color_management_v1,
+      specifically the ext_linear transfer function. Enabled by default when
+      compositor support is available.
+    * Added url.regex option to define a regex used to match URLs.
+      The url.uri-characters and url-protocols options have been removed.
+    * tweak.scaling-filter now supports more values when running with
+      libfcft4 &gt;= 3.3.1 - &quot;impulse&quot;, &quot;box&quot;, &quot;linear&quot;, &quot;gaussian&quot;, &quot;lanczos2&quot;,
+      &quot;lanczos3-stretched&quot;. The scaling filter is no longer applied to
+      scaled bitmap fonts when that is enabled in FontConfig.
+    * Removed main.notify and main.notify-focus-when-inhibit options.
+      These were deprecated in 1.18.0.
+  * Fixed various issues with wrapped lines such as some such lines being
+    copied as multiple lines, glitching when the window was resized, etc.
+  * Fixed various issues with handling of zero-width characters,
+    combining characters, etc.
+  * Fixed various issues with Kitty keyboard protocol implementation.
+  * Fixed wrong key bindings being executed when using
+    alternative keyboard layouts.
+  * Fixed various hangs, crashes and resource leaks.
+  * Renamed theme tokyo-nightday to tokyo-nightlight and modified its colors.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.21.0 for more details.
+- Remove &quot;-Wno-error=deprecated-declarations&quot; because issue has been</comment>
+    <requestid>1253874</requestid>
+  </revision>
 </revisionlist>
