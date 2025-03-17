@@ -176,4 +176,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment>New upstream release 20250121.4f2c8e7 (forwarded request 1247132 from dancermak)</comment>
     <requestid>1248011</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>2ac237a8b1d3e1b168fbdae741a02538</srcmd5>
+    <version>20250217.a1e48a0</version>
+    <time>1742246123</time>
+    <user>anag+factory</user>
+    <comment>Introduce apparmor subpackage, fixes bsc#1238597 (forwarded request 1250603 from dancermak)</comment>
+    <requestid>1253616</requestid>
+  </revision>
 </revisionlist>

@@ -63,6 +63,7 @@ BuildRequires:  selinux-policy-targeted
 %endif
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions, apparmor-rpm-macros, libapparmor-devel
+Requires:       (%{name}-apparmor if apparmor-abstractions)
 %endif
 
 %description
@@ -75,6 +76,18 @@ pasta (same binary as passt, different command) offers equivalent functionality,
 for network namespaces: traffic is forwarded using a tap interface inside the
 namespace, without the need to create further interfaces on the host, hence not
 requiring any capabilities or privileges.
+
+%if %{with apparmor}
+%package        apparmor
+BuildArch:      noarch
+Summary:        Apparmor profiles for passt and pasta
+Requires:       %{name} = %{version}-%{release}
+Requires:       apparmor-abstractions
+Requires(post): apparmor-parser
+
+%description apparmor
+This package contains Apparmor profiles for passt and pasta.
+%endif
 
 %if %{with selinux}
 %package    selinux
@@ -130,7 +143,7 @@ popd
 %endif
 
 %if %{with apparmor}
-%post
+%post apparmor
 %apparmor_reload %{_sysconfdir}/apparmor.d/usr.bin.passt
 %apparmor_reload %{_sysconfdir}/apparmor.d/usr.bin.pasta
 %endif
@@ -145,8 +158,8 @@ popd
 
 %postun selinux
 if [ $1 -eq 0 ]; then
-	%selinux_modules_uninstall -s %{selinuxtype} passt
-	%selinux_modules_uninstall -s %{selinuxtype} pasta
+        %selinux_modules_uninstall -s %{selinuxtype} passt
+        %selinux_modules_uninstall -s %{selinuxtype} pasta
 fi
 
 %posttrans selinux
@@ -162,13 +175,6 @@ fi
 %{_bindir}/pasta
 %{_bindir}/qrap
 %{_bindir}/passt-repair
-%if %{with apparmor}
-%dir %{_sysconfdir}/apparmor.d
-%dir %{_sysconfdir}/apparmor.d/abstractions/
-%config(noreplace) %{_sysconfdir}/apparmor.d/usr.bin.passt
-%config(noreplace) %{_sysconfdir}/apparmor.d/usr.bin.pasta
-%config(noreplace) %{_sysconfdir}/apparmor.d/abstractions/pas*
-%endif
 %{_mandir}/man1/passt.1*
 %{_mandir}/man1/pasta.1*
 %{_mandir}/man1/qrap.1*
@@ -187,6 +193,15 @@ fi
 %{_datadir}/selinux/packages/%{name}/pasta.pp
 %dir %{_datadir}/selinux/devel/include/distributed
 %{_datadir}/selinux/devel/include/distributed/passt.if
+%endif
+
+%if %{with apparmor}
+%files apparmor
+%dir %{_sysconfdir}/apparmor.d
+%dir %{_sysconfdir}/apparmor.d/abstractions/
+%config(noreplace) %{_sysconfdir}/apparmor.d/usr.bin.passt
+%config(noreplace) %{_sysconfdir}/apparmor.d/usr.bin.pasta
+%config(noreplace) %{_sysconfdir}/apparmor.d/abstractions/pas*
 %endif
 
 %changelog

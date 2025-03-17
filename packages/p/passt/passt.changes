@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  6 10:50:13 UTC 2025 - Dan Čermák <dcermak@suse.com>
+
+- Introduce apparmor subpackage, fixes bsc#1238597
+
+-------------------------------------------------------------------
 Mon Feb 17 13:53:53 UTC 2025 - dcermak@suse.com
 
 - Update to version 20250217.a1e48a0:
