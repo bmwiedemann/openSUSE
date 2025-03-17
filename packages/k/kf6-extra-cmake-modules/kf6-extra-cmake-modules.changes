@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 11 09:29:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.12.0
+- Changes since 6.11.0:
+  * Consider BSL-1.0 as GPL-compatible
+  * Improve docs for ECM QML modules
+  * Drop old > 2 cmake version conditional branch
+  * Require cmake >= 3.16 for the tests too.
+  * Add tests for KDE_INSTALL_APP_TEMPLATES.
+  * Unless setting KDE_INSTALL_APP_TEMPLATES, kde_package_app_templates is skipped when cross-compiling.
+  * Try to also satisfy Google Play's version code constraints
+  * Generate Gradle version include file as part of ecm_add_android_apk()
+  * Update version to 6.12.0
+
+-------------------------------------------------------------------
 Sat Feb  8 12:16:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0
