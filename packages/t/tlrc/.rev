@@ -76,4 +76,20 @@
   * Added support for hex color codes (#115)</comment>
     <requestid>1244672</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9e73bb82e33675573b28484e0efd1e89</srcmd5>
+    <version>1.11.0</version>
+    <time>1742246289</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.0:
+  * Fix loading TLS certificates from the OS store (#111)
+  * New config option: output.line_length. The default is 0, which
+    means to use the width of the terminal.
+    Description lines will be wrapped to never exceed this value (#120).
+  * Client specification v2.3:
+    + new command-line options: --short-options and --long-options.
+    + new config option: output.option_style. Can be short, long or both.
+      Specifies which option style should be shown in new option placeholders ({{[-s|--long]}}).</comment>
+    <requestid>1253602</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 17 06:13:29 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.0:
+  * Fix loading TLS certificates from the OS store (#111)
+  * New config option: output.line_length. The default is 0, which
+    means to use the width of the terminal.
+    Description lines will be wrapped to never exceed this value (#120).
+  * Client specification v2.3:
+    + new command-line options: --short-options and --long-options.
+    + new config option: output.option_style. Can be short, long or both.
+      Specifies which option style should be shown in new option placeholders ({{[-s|--long]}}).
+
+-------------------------------------------------------------------
 Mon Feb 10 07:37:58 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.0:
