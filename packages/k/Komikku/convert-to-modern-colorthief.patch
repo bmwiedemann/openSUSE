@@ -1,6 +1,6 @@
 diff -rub komikku/komikku/models/database/mangas.py komikku-patched/komikku/models/database/mangas.py
---- komikku/komikku/models/database/mangas.py	2024-09-18 23:17:50.000000000 +0200
-+++ komikku-patched/komikku/models/database/mangas.py	2024-09-19 03:23:15.844776113 +0200
+--- komikku/komikku/models/database/mangas.py	2025-03-02 22:25:37.000000000 +0100
++++ komikku-patched/komikku/models/database/mangas.py	2025-03-03 14:49:41.439611884 +0100
 @@ -11,7 +11,7 @@
  import shutil
  import time
@@ -10,7 +10,7 @@ diff -rub komikku/komikku/models/database/mangas.py komikku-patched/komikku/mode
  
  from komikku.models.database import create_db_connection
  from komikku.models.database import insert_row
-@@ -132,7 +132,7 @@
+@@ -135,7 +135,7 @@
              return None
  
          colors = [':root {\n']
@@ -19,15 +19,14 @@ diff -rub komikku/komikku/models/database/mangas.py komikku-patched/komikku/mode
              colors.append(f'\t--backdrop-background-color-{index}: rgb({color[0]} {color[1]} {color[2]} / 100%);\n')  # noqa: E702, E231
          colors.append('\t--backdrop-background-color-2: var(--window-bg-color);\n')
          colors.append('}\n')
-Only in komikku-patched/komikku/models/database: mangas.py.orig
 diff -rub komikku/requirements.txt komikku-patched/requirements.txt
---- komikku/requirements.txt	2024-09-18 23:17:50.000000000 +0200
-+++ komikku-patched/requirements.txt	2024-09-19 03:21:44.684673635 +0200
+--- komikku/requirements.txt	2025-03-02 22:25:37.000000000 +0100
++++ komikku-patched/requirements.txt	2025-03-03 14:48:27.889567961 +0100
 @@ -1,6 +1,6 @@
  beautifulsoup4
  brotli >= 1.1.0
 -colorthief
 +modern_colorthief
- dateparser >= 1.1.4
+ dateparser >= 1.1.6
  emoji
  keyring >= 21.6.0

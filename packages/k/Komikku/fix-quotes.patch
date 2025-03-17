@@ -1,7 +1,7 @@
 diff -rub komikku/komikku/card/tracking.py komikku-patched/komikku/card/tracking.py
---- komikku/komikku/card/tracking.py	2025-01-03 01:45:24.000000000 +0100
-+++ komikku-patched/komikku/card/tracking.py	2025-01-14 13:18:09.366246466 +0100
-@@ -276,7 +276,7 @@
+--- komikku/komikku/card/tracking.py	2025-03-08 01:01:30.000000000 +0100
++++ komikku-patched/komikku/card/tracking.py	2025-03-10 17:27:32.572323683 +0100
+@@ -279,7 +279,7 @@
              self.set_expanded(True)
              self.set_arrow_visible(True)
              self.btn.set_visible(False)
@@ -10,10 +10,11 @@ diff -rub komikku/komikku/card/tracking.py komikku-patched/komikku/card/tracking
  
              with self.chapters_progress_row.handler_block(self.num_chapter_changed_handler_id):
                  adj = Gtk.Adjustment(
+Only in komikku-patched/komikku/card: tracking.py.orig
 diff -rub komikku/komikku/servers/mangalib/__init__.py komikku-patched/komikku/servers/mangalib/__init__.py
---- komikku/komikku/servers/mangalib/__init__.py	2025-01-03 01:45:24.000000000 +0100
-+++ komikku-patched/komikku/servers/mangalib/__init__.py	2025-01-14 14:17:14.978184644 +0100
-@@ -124,7 +124,7 @@
+--- komikku/komikku/servers/mangalib/__init__.py	2025-03-08 01:01:30.000000000 +0100
++++ komikku-patched/komikku/servers/mangalib/__init__.py	2025-03-10 17:27:32.573173495 +0100
+@@ -125,7 +125,7 @@
                      scanlators.append(team['name'])
  
              data['chapters'].append(dict(
@@ -22,3 +23,25 @@ diff -rub komikku/komikku/servers/mangalib/__init__.py komikku-patched/komikku/s
                  title=f'Том {chapter["volume"]} Глава {chapter["number"]} - {chapter["name"]}',
                  num=chapter['number'] if is_number(chapter['number']) else None,
                  num_volume=chapter['volume'] if is_number(chapter['volume']) else None,
+Only in komikku-patched/komikku/servers/mangalib: __init__.py.orig
+diff -rub komikku/komikku/servers/perfscan/__init__.py komikku-patched/komikku/servers/perfscan/__init__.py
+--- komikku/komikku/servers/perfscan/__init__.py	2025-03-08 01:01:30.000000000 +0100
++++ komikku-patched/komikku/servers/perfscan/__init__.py	2025-03-10 17:30:29.308876700 +0100
+@@ -69,7 +69,7 @@
+         ))
+ 
+         data['name'] = resp_data['title']
+-        data['cover'] = f'{self.media_url}/{resp_data['cover']}'
++        data['cover'] = "f'{self.media_url}/{resp_data['cover']}'"
+ 
+         if resp_data.get('author'):
+             data['authors'].append(resp_data['author'])
+@@ -95,7 +95,7 @@
+         for chapter in resp_data.get('Chapter'):
+             title = chapter['title'].strip()
+             if title in (None, '', '-'):
+-                title = f'Chapitre {chapter['index']}'
++                title = "f'Chapitre {chapter['index']}'"
+ 
+             data['chapters'].append({
+                 'slug': chapter['id'],

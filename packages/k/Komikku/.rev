@@ -337,4 +337,36 @@
     <comment></comment>
     <requestid>1246482</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>44aa595bf49206a19c0b25d8d4893dcb</srcmd5>
+    <version>1.72.0</version>
+    <time>1742246194</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.72.0:
+  * [Servers] Added Nix of Nothing (EN)
+  * [Servers] Added Three Panel Soul (EN)
+  * [Servers] Added Wild Life (EN)
+  * [Servers] Cartel De Manhwas (ES): Update
+  * [Servers] MangaNato (EN): Update
+  * [Servers] Terco Scans (EN): Update
+  * [Servers] Tres Daos (ES): Update
+  * [Servers] Crunchyroll (EN): Disabled
+  * [Servers] Iris Scanlator (pt_BR): Disabled
+  * [Servers] ReaperScans (FR,ID,TR): Disabled
+
+- update to 1.71.0:
+  * [Explorer] Global search: Added ability to cancel search
+  * [Servers] Comic Fans (EN): Disabled
+  * [Servers] Perf Scan (FR): Re-enabled
+  * [Servers] MangaCrab (ES): Update
+  * [Servers] TCB Scans (EN): Update
+  * [Servers] Terco Scans (EN): Update
+  * [Servers] Usagi (RU): Update
+  * [Servers] Webtoon: Fixed covers
+  * [L10n] Added Persian translation
+  * [L10n] Updated French and Russian translations
+- adjust license, as appdata.xml has a different license
+- update runtime dependencies, according to requirements.txt (forwarded request 1251847 from rrahl0)</comment>
+    <requestid>1253358</requestid>
+  </revision>
 </revisionlist>

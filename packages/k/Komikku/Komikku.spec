@@ -18,48 +18,54 @@
 
 %define         appid info.febvre.Komikku
 Name:           Komikku
-Version:        1.70.0
+Version:        1.72.0
 Release:        0
 Summary:        A manga reader for GNOME
-License:        GPL-3.0-or-later
+# appdata.xml is CC-BY-4.0
+License:        CC-BY-4.0 AND GPL-3.0-or-later
 URL:            https://codeberg.org/valos/Komikku
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         convert-to-modern-colorthief.patch
 Patch1:         fix-quotes.patch
-BuildRequires:  appstream-glib
-BuildRequires:  blueprint-compiler
+BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  gettext
 BuildRequires:  intltool
-BuildRequires:  meson
+BuildRequires:  meson >= 0.59.0
+BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(appstream-glib)
+BuildRequires:  pkgconfig(blueprint-compiler)
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.6
+BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(python3)
-Requires:       python3-Brotli
-Requires:       python3-Pillow
+Requires:       WebKitGTK-6.0
+Requires:       python3-Brotli >= 1.1.0
+Requires:       python3-Pillow >= 10.3.0
 Requires:       python3-Unidecode
 Requires:       python3-beautifulsoup4
 Requires:       python3-cffi
 Requires:       python3-cloudscraper
 Requires:       python3-cryptography
-Requires:       python3-dateparser
+Requires:       python3-dateparser >= 1.1.6
 Requires:       python3-emoji
 Requires:       python3-gobject
-Requires:       python3-keyring
-Requires:       python3-lxml
+Requires:       python3-keyring >= 21.6.0
+Requires:       python3-lxml >= 5.2.1
 Requires:       python3-modern-colorthief >= 0.1.3
-Requires:       python3-natsort
+Requires:       python3-natsort >= 7.1.1
 Requires:       python3-piexif
-Requires:       python3-pillow-heif
+Requires:       python3-pillow-heif >= 0.16.0
 Requires:       python3-pure-protobuf >= 3.0.0
 Requires:       python3-pycairo
 Requires:       python3-python-magic
 Requires:       python3-pytz
 Requires:       python3-rarfile
 Requires:       python3-regex
-Requires:       python3-requests
+Requires:       python3-requests >= 2.32.2
 Requires:       python3-setuptools-gettext
 Requires:       python3-typing_extensions
 Requires:       python3-tzlocal
@@ -108,7 +114,7 @@ Keys features
 %meson_test
 
 %files
-%license LICENSE
+%license LICENSES/*
 %doc README.md CONTRIBUTING.md
 %{_bindir}/komikku
 %{_datadir}/applications/%{appid}.desktop
