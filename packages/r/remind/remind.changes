@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar 10 09:37:46 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.3 Patch 4 - 2025-03-09
+
+- BUG FIX: remind: "make test" could fail if Remind was built in a locale
+  other than "C".  This has been fixed.
+
+- BUG FIX: Fix a typo in the remind man page.
+
+-------------------------------------------------------------------
+Mon Mar  3 17:35:49 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.3 Patch 3 - 2025-03-03
+
+- NEW FEATURE: remind: If a command spans more than one line (because of
+  backslash line continuation) output both the starting and ending line
+  number in error messages.
+
+- NEW FEATURE: remind: In the JSON -pp and -ppp output, include a new key
+  lineno_start to specify the starting line of a multi-line reminder.
+  The existing lineno key specifies the ending line; this is maintained
+  for backward-compatibility.
+
+- MINOR IMPROVEMENT: include/holidays/misc.rem: Add a few new holidays and
+  URL INFO strings.
+
+- CHANGE: remind: Issue a warning if a time-related subsitution sequence
+  is used with a non-timed REM command.
+
+- BUG FIX: remind: Fix a memory leak.
+
+-------------------------------------------------------------------
 Mon Feb 10 09:09:16 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.3 Patch 2 - 2025-02-09
