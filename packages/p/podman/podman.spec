@@ -74,17 +74,7 @@ Suggests:       netavark
 %else
 Requires:       netavark
 %endif
-# use crun on Tumbleweed & ALP for WASM support
-%if 0%{suse_version} >= 1600
-# crun is only available for selected archs (because of criu)
-%ifarch x86_64 aarch64 ppc64le armv7l armv7hl s390x
-Requires:       crun
-%else
 Requires:       runc >= 1.0.1
-%endif
-%else
-Requires:       runc >= 1.0.1
-%endif
 Requires:       passt
 Requires:       timezone
 Suggests:       katacontainers
@@ -140,7 +130,7 @@ Provides:       %{name}-shell = %{version}
 capabilities specified in user quadlets.
 
 It is a symlink to %{_bindir}/%{name} and execs into the `%{name}sh` container
-when `%{_bindir}/%{name}sh is set as a login shell or set as os.Args[0].
+when `%{_bindir}/%{name}sh` is set as a login shell or set as os.Args[0].
 
 %build
 # Build podman
