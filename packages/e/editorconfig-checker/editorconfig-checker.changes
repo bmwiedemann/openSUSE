@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Mar 16 12:35:44 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.2.1:
+  * chore(main): release 3.2.1 (#450)
+  * fix: empty format in the config file should be treated as
+    Default (#448)
+  * ci: extend the CI to MacOS to catch regressions (#440)
+  * chore(deps): bump golang.org/x/net from 0.33.0 to 0.36.0 (#453)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.9 to
+    0.5.11 (#443)
+  * chore(deps): bump
+    github.com/editorconfig/editorconfig-core-go/v2 (#452)
+  * fix(test): support running our test suite under `-trimpath`,
+    closes #397 (#439)
+  * fix(test): make TestGetRelativePath work under Darwin (#445)
+  * chore(deps): bump golang.org/x/text from 0.22.0 to 0.23.0
+    (#449)
+  * fix(test): we no longer need -ldflags at all (#444)
+  * fix: check for exclusion before MIME type (#447)
+  * ci: use new goreleaser formats to get the archives we need
+    (#425)
+  * build: switch to go1.24 (#446)
+  * chore: make sure we always use our latest release in pre-commit
+    (#436)
+  * chore(deps): bump golang.org/x/text from 0.21.0 to 0.22.0
+    (#438)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.8 to
+    0.5.9 (#435)
+
+-------------------------------------------------------------------
 Tue Jan 28 14:26:03 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.2.0:
