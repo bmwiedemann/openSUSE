@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Mar 16 17:32:45 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.8.3
+  * Fix cargo run uniffi-bindgen when cross compiling
+    gh#PyO3/maturin#2476
+  * Add rnet python library to examples
+    gh#PyO3/maturin#2480
+  * bump the attest-build-provenance version in the generated ci file
+    gh#PyO3/maturin#2484
+  * Auto detect PyPy 3.11
+    gh#PyO3/maturin#2487
+  * Update manylinux/musllinux policies to the latest main
+    gh#PyO3/maturin#2491
+  * Update generate-ci options in user guide
+    gh#PyO3/maturin#2501
+  * chore: Update cbindgen to 0.28.0
+    gh#PyO3/maturin#2498
+  * Don't install dependencies when running maturin develop --skip-install
+    gh#PyO3/maturin#2504
+  * Upgrade pyo3 to 0.24.0
+    gh#PyO3/maturin#2511
+  * Update the TP docs to use pypi as the GH Env name
+    gh#PyO3/maturin#2512
+  * fix auditwheel .so relocation for namespace modules
+    gh#PyO3/maturin#2513
+  * Updates Rng legacy methods in tutorial
+    gh#PyO3/maturin#2514
+
+-------------------------------------------------------------------
 Sat Feb  8 21:18:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.2:
