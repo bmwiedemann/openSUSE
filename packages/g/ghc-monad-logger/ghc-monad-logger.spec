@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-monad-logger
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name monad-logger
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.3.41
+Version:        0.3.42
 Release:        0
 Summary:        A class of monads which can log messages
 License:        MIT

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 10 08:59:44 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update monad-logger to version 0.3.42.
+  ## 0.3.42
+
+  * Forward compatibility with `-Wnoncanonical-monad-instances` becoming an error
+
+-------------------------------------------------------------------
 Tue Dec 31 08:10:41 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update monad-logger to version 0.3.41.
