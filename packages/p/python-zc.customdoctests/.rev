@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1248197</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a51d14ae378619f3928a859ea2f28be1</srcmd5>
+    <version>1.0.1</version>
+    <time>1742246304</time>
+    <user>anag+factory</user>
+    <comment>- Python 3.11 is the first flavor built, fix removal of nspkg.pth.</comment>
+    <requestid>1253576</requestid>
+  </revision>
 </revisionlist>

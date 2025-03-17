@@ -21,7 +21,6 @@ Version:        1.0.1
 Release:        0
 Summary:        Use doctest with other languages
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/zc.customdoctests
 Source:         https://files.pythonhosted.org/packages/source/z/zc.customdoctests/zc.customdoctests-%{version}.zip
 Source1:        LICENSE.txt
@@ -60,7 +59,7 @@ cp %{SOURCE1} .
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand rm -r %{buildroot}%{$python_sitelib}/zc.customdoctests-%{version}-py3.12-nspkg.pth
+%python_expand rm -r %{buildroot}%{$python_sitelib}/zc.customdoctests-%{version}-py3.11-nspkg.pth
 
 %check
 %{python_expand export PYTHONPATH='.:%{buildroot}%{$python_sitelib}'
@@ -73,6 +72,6 @@ $python -m doctest -v src/zc/customdoctests/tests.py
 %doc README.txt
 %dir %{python_sitelib}/zc
 %{python_sitelib}/zc/customdoctests
-%{python_sitelib}/zc.customdoctests-%{version}*info
+%{python_sitelib}/zc.customdoctests-%{version}.dist-info
 
 %changelog

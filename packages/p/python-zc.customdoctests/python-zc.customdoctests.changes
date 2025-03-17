@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 17 01:50:54 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Python 3.11 is the first flavor built, fix removal of nspkg.pth.
+
+-------------------------------------------------------------------
 Mon Feb 24 10:47:27 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Fix packaging
