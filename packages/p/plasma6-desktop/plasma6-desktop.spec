@@ -30,6 +30,9 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
+%if 0%{?suse_version} == 1500
+%bcond_without scim
+%endif
 Name:           plasma6-desktop
 Version:        6.3.3
 %global _plasma6_bugfix 6.3.1
@@ -118,7 +121,9 @@ BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwacom)
+%if %{with scim}
 BuildRequires:  pkgconfig(scim)
+%endif
 BuildRequires:  pkgconfig(signon-oauth2plugin)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -194,7 +199,9 @@ Obsoletes:      plasma5-addons-kimpanel < %{version}
 Provides:       plasma5-desktop-kimpanel = %{version}
 Obsoletes:      plasma5-desktop-kimpanel < %{version}
 Requires:       (plasma6-kimpanel-ibus if ibus)
+%if %{with scim}
 Requires:       (plasma6-kimpanel-scim if scim)
+%endif
 
 %if %{pkg_vcmp cmake(sdl2) >= 2.0.16}
 %bcond_without gamecontroller_kcm
@@ -221,12 +228,14 @@ Requires:       %{name} = %{version}
 %description -n plasma6-kimpanel-ibus
 Plasma 6 Input Method Backend for IBus support.
 
+%if %{with scim}
 %package -n plasma6-kimpanel-scim
 Summary:        Plasma 6 SCIM Configuration
 Requires:       %{name} = %{version}
 
 %description -n plasma6-kimpanel-scim
 Plasma 6 Input Method Backend for SCIM (Smart Chinese/Common Input Method) support.
+%endif
 
 %lang_package
 
@@ -386,8 +395,10 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_libexecdir}/kimpanel-ibus-panel
 %{_libexecdir}/kimpanel-ibus-panel-launcher
 
+%if %{with scim}
 %files -n plasma6-kimpanel-scim
 %{_libexecdir}/kimpanel-scim-panel
+%endif
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en

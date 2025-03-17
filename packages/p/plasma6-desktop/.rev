@@ -192,4 +192,12 @@
     <comment>Plasma 6.3.3</comment>
     <requestid>1252277</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>1cdefd81584c0caa079000d0ffe5f0e9</srcmd5>
+    <version>6.3.3</version>
+    <time>1742246125</time>
+    <user>anag+factory</user>
+    <comment>- make scim conditional, it'll drop from Factory (forwarded request 1253484 from MargueriteSu)</comment>
+    <requestid>1253643</requestid>
+  </revision>
 </revisionlist>
