@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 11 09:29:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.12.0
+- Changes since 6.11.0:
+  * Update dependency version to 6.12.0
+  * ScrollablePage: fix width and height binding loops (kde#459284)
+  * columnview: Fill width column when only one column is present
+  * platform: Use the old color set for disabled colors in PlatformTheme (kde#495694)
+  * Add a PageStack attached property
+  * Dialog: fix width and height binding loops (kde#494420)
+  * controls, layouts: set Accessible.name for Mnemonics
+  * mnemonicattached: add plainTextLabel property
+  * primitives/Separator: mark as non-focusable for a11y
+  * Update version to 6.12.0
+
+-------------------------------------------------------------------
 Sat Feb  8 12:16:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0
