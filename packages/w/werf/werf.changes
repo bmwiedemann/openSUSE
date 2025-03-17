@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 17 10:03:28 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.32.1:
+  * chore: release 2.32.1 (#6707)
+  * chore: release 2.32.1
+  * Revert "refactor(cleanup): perform git history based cleanup
+    concurrently (#6…" (#6706)
+  * wip
+  * refactor(deploy): update Nelm dependency
+  * docs(cleanup): update in werf.yaml reference
+  * chore(release): 1.2 stabe, 2 alpha
+
+-------------------------------------------------------------------
 Fri Mar 14 18:58:19 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.32.0:
