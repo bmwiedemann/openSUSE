@@ -1,0 +1,34 @@
+Index: efl-1.26.3/meson_options.txt
+===================================================================
+--- efl-1.26.3.orig/meson_options.txt
++++ efl-1.26.3/meson_options.txt
+@@ -16,6 +16,12 @@ option('x11',
+   description : 'X11 support in efl'
+ )
+ 
++option('scim',
++  type : 'boolean',
++  value : false,
++  description : 'scim imf support in efl'
++)
++
+ option('fb',
+   type : 'boolean',
+   value : false,
+Index: efl-1.26.3/src/modules/ecore_imf/meson.build
+===================================================================
+--- efl-1.26.3.orig/src/modules/ecore_imf/meson.build
++++ efl-1.26.3/src/modules/ecore_imf/meson.build
+@@ -1,7 +1,11 @@
+ mods = []
+ 
+ if get_option('x11')
+-  mods +=['ibus', 'xim', 'scim']
++  mods +=['ibus', 'xim']
++endif
++
++if get_option('scim')
++  mods += ['scim']
+ endif
+ 
+ if get_option('wl')

@@ -1,7 +1,7 @@
 #
 # spec file for package efl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,7 @@
 # If packages are targeted for anything other than openSUSE
 %{?!icon_theme_cache_create_ghost:%define icon_theme_cache_create_ghost() touch %{buildroot}%{_datadir}/icons/%{1}/icon-theme.cache}
 %{?!icon_theme_cache_post:%define icon_theme_cache_post() gtk-update-icon-cache %{_datadir}/icons/$1 &> /dev/null || :}
+%bcond_with scim
 Name:           efl
 Version:        1.26.3
 Release:        0
@@ -60,6 +61,8 @@ Source:         https://download.enlightenment.org/rel/libs/efl/%{name}-%{versio
 Patch1:         efl-no-neon.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         https://git.enlightenment.org/enlightenment/efl/commit/d9ec36e1de4c2a70ac82dc66a72c282dc42037b7.patch
+# PATCH-FIX-OPENSUSE drop scim
+Patch3:         efl_scim.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -99,7 +102,9 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pixman-1)
+%if %{with scim}
 BuildRequires:  pkgconfig(scim)
+%endif
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(systemd)
@@ -348,12 +353,14 @@ Requires:       efl = %{version}
 %description -n elua
 A set of efl bindings for the LuaJIT environment.
 
+%if %{with scim}
 %package -n ecore_imf-module-scim
 Summary:        SCIM module for Ecore
 License:        BSD-2-Clause
 
 %description -n ecore_imf-module-scim
 SCIM input method module for Ecore.
+%endif
 
 %package -n evas-generic-loaders
 Summary:        Set of generic loaders for Evas
@@ -477,6 +484,9 @@ export CFLAGS="%{optflags}%{?mageia: -g} -Wno-address %{?enable_wayland:$INCLUDE
     -Ddrm=true \
     -Dwl=true \
     -Dopengl=es-egl \
+%endif
+%if %{with scim}
+    -Dscim=true \
 %endif
 %if !0%{?luajit_present}
     -Delua=false \
@@ -704,8 +714,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n elua
 %{_datadir}/elua
 
+%if %{with scim}
 %files -n ecore_imf-module-scim
 %{_libdir}/ecore_imf/modules/scim
+%endif
 
 %files -n enlightenment-theme-upstream
 %{_datadir}/elementary/themes/default.edj

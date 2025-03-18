@@ -512,4 +512,13 @@ Needed for poppler 24.06 - where that requested library actually no longer exist
     <comment></comment>
     <requestid>1192545</requestid>
   </revision>
+  <revision rev="56" vrev="34">
+    <srcmd5>b1d2ceb7175c283ee7a032497d4bde0d</srcmd5>
+    <version>unknown</version>
+    <time>1742316018</time>
+    <user>anag+factory</user>
+    <comment>- Make scim conditional, which is Factory drop candidate 
+- Add patch efl_scim.patch</comment>
+    <requestid>1254071</requestid>
+  </revision>
 </revisionlist>

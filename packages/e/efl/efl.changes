@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 16 08:08:57 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- Make scim conditional, which is Factory drop candidate 
+- Add patch efl_scim.patch
+
+-------------------------------------------------------------------
 Thu Aug  8 05:52:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Remove obsolete xine and vlc build dependencies. Support was
