@@ -26,7 +26,7 @@
 %bcond_with gegl_docs
 
 Name:           gegl
-Version:        0.4.54
+Version:        0.4.56
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later

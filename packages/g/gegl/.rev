@@ -715,4 +715,19 @@
     - styles: fix regression of opacirt sliders (forwarded request 1244813 from darix)</comment>
     <requestid>1244819</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>28a90404eff23bef5373e139509f4972</srcmd5>
+    <version>0.4.56</version>
+    <time>1742316012</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.56:
+  - Ops:
+    - drop-shadow: restrict opacity range to 0.0-1.0
+    - ctx-script: crash fix
+  - Core:
+    - ctx has been syncrhonized with upstream.
+  - Buffer:
+    - Remnants of old iterator-api has been removed.</comment>
+    <requestid>1253760</requestid>
+  </revision>
 </revisionlist>
