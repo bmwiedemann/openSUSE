@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 17 08:27:29 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Refresh PPC NVMEoF ofpath related patches to newer revision
+  * 0002-ieee1275-ofpath-enable-NVMeoF-logical-device-transla.patch
+- Patch refreshed
+  * 0001-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
+- Patch obseleted
+  * 0004-ofpath-controller-name-update.patch
+  * 0001-squash-ieee1275-ofpath-enable-NVMeoF-logical-device-.patch
+- Fix segmentation fault error in grub2-probe with target=hints_string
+  (bsc#1235971) (bsc#1235958) (bsc#1239651)
+  * 0001-ofpath-Add-error-check-in-NVMEoF-device-translation.patch
+
+-------------------------------------------------------------------
 Thu Mar 13 06:50:37 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update the patch to fix "SRK not matched" errors when unsealing

@@ -15,11 +15,9 @@ Signed-off-by: Avnish Chouhan <avnish@linux.ibm.com>
  include/grub/util/ofpath.h      |  4 ++
  4 files changed, 74 insertions(+), 4 deletions(-)
 
-diff --git a/grub-core/osdep/linux/ofpath.c b/grub-core/osdep/linux/ofpath.c
-index 51d331f06..55ed7ddf2 100644
 --- a/grub-core/osdep/linux/ofpath.c
 +++ b/grub-core/osdep/linux/ofpath.c
-@@ -209,7 +209,7 @@ find_obppath (const char *sysfs_path_orig)
+@@ -209,7 +209,7 @@
      }
  }
  
@@ -28,7 +26,7 @@ index 51d331f06..55ed7ddf2 100644
  xrealpath (const char *in)
  {
    char *out;
-@@ -224,7 +224,7 @@ xrealpath (const char *in)
+@@ -224,7 +224,7 @@
    return out;
  }
  
@@ -37,17 +35,15 @@ index 51d331f06..55ed7ddf2 100644
  block_device_get_sysfs_path_and_link(const char *devicenode)
  {
    char *rpath;
-@@ -535,7 +535,7 @@ of_path_get_nvme_nsid(const char* devname)
- 
+@@ -613,7 +613,7 @@
+   return nsid;
  }
  
 -static char *
 +char *
- nvme_get_syspath(const char *nvmedev)
+ nvme_get_syspath (const char *nvmedev)
  {
    char *sysfs_path, *controller_node;
-diff --git a/grub-core/osdep/unix/platform.c b/grub-core/osdep/unix/platform.c
-index 1e2961e00..bafcc84d7 100644
 --- a/grub-core/osdep/unix/platform.c
 +++ b/grub-core/osdep/unix/platform.c
 @@ -28,6 +28,8 @@
@@ -59,7 +55,7 @@ index 1e2961e00..bafcc84d7 100644
  
  static char *
  get_ofpathname (const char *dev)
-@@ -203,6 +205,56 @@ grub_install_register_efi (const grub_disk_t *efidir_grub_disk,
+@@ -203,6 +205,56 @@
    return 0;
  }
  
@@ -116,7 +112,7 @@ index 1e2961e00..bafcc84d7 100644
  void
  grub_install_register_ieee1275 (int is_prep, const char *install_device,
  				int partno, const char *relpath)
-@@ -242,8 +294,19 @@ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+@@ -242,8 +294,19 @@
  	}
        *ptr = '\0';
      }
@@ -137,11 +133,9 @@ index 1e2961e00..bafcc84d7 100644
  
    if (grub_util_exec ((const char * []){ "nvsetenv", "boot-device",
  	  boot_device, NULL }))
-diff --git a/include/grub/util/install.h b/include/grub/util/install.h
-index 563cf68e9..2fd102649 100644
 --- a/include/grub/util/install.h
 +++ b/include/grub/util/install.h
-@@ -241,6 +241,9 @@ grub_install_register_efi (const grub_disk_t *efidir_grub_disk,
+@@ -241,6 +241,9 @@
  			   const char *efi_distributor,
  			   const char *force_disk);
  
@@ -151,20 +145,15 @@ index 563cf68e9..2fd102649 100644
  void
  grub_install_register_ieee1275 (int is_prep, const char *install_device,
  				int partno, const char *relpath);
-diff --git a/include/grub/util/ofpath.h b/include/grub/util/ofpath.h
-index a0ec30620..cc3c4bfbd 100644
 --- a/include/grub/util/ofpath.h
 +++ b/include/grub/util/ofpath.h
-@@ -31,5 +31,9 @@ void add_filename_to_pile(char *filename, struct ofpath_files_list_root* root);
- void find_file(char* filename, char* directory, struct ofpath_files_list_root* root, int max_depth, int depth);
- 
- char* of_find_fc_host(char* host_wwpn);
+@@ -30,5 +30,9 @@
+ void find_file (char* filename, char* directory, struct ofpath_files_list_root* root, int max_depth, int depth);
+ char* of_find_fc_host (char* host_wwpn);
+ void free_ofpath_files_list (struct ofpath_files_list_root* root);
 +char* nvme_get_syspath (const char *nvmedev);
 +char* block_device_get_sysfs_path_and_link (const char *devicenode);
 +char* xrealpath (const char *in);
 +unsigned int of_path_get_nvme_nsid (const char* devname);
  
  #endif /* ! GRUB_OFPATH_MACHINE_UTIL_HEADER */
--- 
-2.47.0
-

@@ -353,7 +353,6 @@ Patch161:       safe_tpm_pcr_snapshot.patch
 Patch162:       0001-ieee1275-add-support-for-NVMeoFC.patch
 Patch163:       0002-ieee1275-ofpath-enable-NVMeoF-logical-device-transla.patch
 Patch164:       0003-ieee1275-change-the-logic-of-ieee1275_get_devargs.patch
-Patch165:       0004-ofpath-controller-name-update.patch
 Patch166:       0002-Mark-environmet-blocks-as-used-for-image-embedding.patch
 Patch167:       grub2-increase-crypttab-path-buffer.patch
 Patch170:       0001-tpm2_key_protector-Support-authorized-policy.patch
@@ -382,7 +381,6 @@ Patch195:       0004-Key-revocation-on-out-of-bound-file-access.patch
 Patch196:       fix_no_extra_deps_in_release_tarball.patch
 Patch197:       0001-fs-xfs-always-verify-the-total-number-of-entries-is-.patch
 Patch198:       0001-loader-arm64-efi-linux-Remove-magic-number-header-fi.patch
-Patch199:       0001-squash-ieee1275-ofpath-enable-NVMeoF-logical-device-.patch
 Patch200:       0001-ofdisk-enhance-boot-time-by-focusing-on-boot-disk-re.patch
 Patch201:       0002-ofdisk-add-early_log-support.patch
 Patch202:       0001-disk-Optimize-disk-iteration-by-moving-memdisk-to-th.patch
@@ -446,6 +444,7 @@ Patch270:       0006-powerpc_ieee1275-set-use_static_keys-flag.patch
 Patch271:       0007-appendedsig-Reads-the-default-DB-keys-from-ELF-Note.patch
 Patch272:       0008-appendedsig-The-grub-command-s-trusted-and-distruste.patch
 Patch273:       0009-appendedsig-documentation.patch
+Patch274:       0001-ofpath-Add-error-check-in-NVMEoF-device-translation.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

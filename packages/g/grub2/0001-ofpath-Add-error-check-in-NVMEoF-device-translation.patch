@@ -1,0 +1,171 @@
+From 4b26a490def61786bfd5f66f0f68a33447dccb90 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 10 Feb 2025 18:20:28 +0800
+Subject: [PATCH] ofpath: Add error check in NVMEoF device translation
+
+Signed-Off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/osdep/linux/ofpath.c | 95 ++++++++++++++++++++++++----------
+ 1 file changed, 69 insertions(+), 26 deletions(-)
+
+diff --git a/grub-core/osdep/linux/ofpath.c b/grub-core/osdep/linux/ofpath.c
+index 66a256b18b..4b920ddc20 100644
+--- a/grub-core/osdep/linux/ofpath.c
++++ b/grub-core/osdep/linux/ofpath.c
+@@ -536,52 +536,90 @@ of_path_get_nvmeof_adapter_info (char* sysfs_path,
+     }
+ 
+   snprintf (buf, 512, "%s/subsysnqn", sysfs_path);
+-  fp = fopen (buf, "r");
+-  fscanf (fp, "%s", nvmeof_info->nqn);
++  if (! (fp = fopen (buf, "r")) ||
++      fscanf (fp, "%s", nvmeof_info->nqn) != 1)
++    {
++      if (fp)
++	fclose (fp);
++      free (nvmeof_info->host_wwpn);
++      free (nvmeof_info->target_wwpn);
++      free (nvmeof_info->nqn);
++      free (buf);
++      return -1;
++    }
+   fclose (fp);
+ 
+   snprintf (buf, 512, "%s/cntlid", sysfs_path);
+-  fp = fopen (buf, "r");
+-  fscanf (fp, "%u", &(nvmeof_info->cntlid));
++  if (! (fp = fopen (buf, "r")) ||
++      fscanf (fp, "%u", &(nvmeof_info->cntlid)) != 1)
++    {
++      if (fp)
++	fclose (fp);
++      free (nvmeof_info->host_wwpn);
++      free (nvmeof_info->target_wwpn);
++      free (nvmeof_info->nqn);
++      free (buf);
++      return -1;
++    }
+   fclose (fp);
+ 
+   snprintf (buf, 512, "%s/address", sysfs_path);
+-  fp = fopen (buf, "r");
+-  buf2 = malloc (sizeof (char) * 512);
+-
+-  if (!buf2)
++  buf2 = NULL;
++  fp = NULL;
++  if (! (buf2 = malloc (sizeof (char) * 512)) ||
++      ! (fp = fopen (buf, "r")) ||
++      fscanf (fp, "%s", buf2) != 1)
+     {
++      if (fp)
++	fclose (fp);
+       free (nvmeof_info->host_wwpn);
+       free (nvmeof_info->target_wwpn);
+       free (nvmeof_info->nqn);
+       free (buf);
++      free (buf2);
+       return -1;
+     }
+-
+-  fscanf (fp, "%s", buf2);
+   fclose (fp);
+ 
+-  buf3 = strrchr (buf2, '-') + 1;
+-  grub_memcpy (nvmeof_info->host_wwpn, buf3, 256);
+-  buf3=strchr (buf2, '-') + 1;
+-  buf3=strchr (buf3, '-') + 1;
+-  buf3=strchr (buf3, 'x') + 1;
+-  grub_memcpy (nvmeof_info->target_wwpn, buf3, 256);
++  if (! (buf3 = strrchr (buf2, '-')))
++    {
++      free (nvmeof_info->host_wwpn);
++      free (nvmeof_info->target_wwpn);
++      free (nvmeof_info->nqn);
++      free (buf);
++      free (buf2);
++      return -1;
++    }
++  grub_memcpy (nvmeof_info->host_wwpn, buf3 + 1, 256);
++  if (! (buf3 = strchr (buf2, '-'))	||
++      ! (buf3 = strchr (buf3 + 1, '-')) ||
++      ! (buf3 = strchr (buf3 + 1, 'x')))
++    {
++      free (nvmeof_info->host_wwpn);
++      free (nvmeof_info->target_wwpn);
++      free (nvmeof_info->nqn);
++      free (buf);
++      free (buf2);
++      return -1;
++    }
++  grub_memcpy (nvmeof_info->target_wwpn, buf3 + 1, 256);
+   buf3 = strchr (nvmeof_info->target_wwpn, ',');
+-  *buf3 = '\0';
++  if (buf3)
++    *buf3 = '\0';
+   free (buf);
+   free (buf2);
+   return 0;
+ }
+ 
+-#define MAX_NVME_NSID_DIGITS 6
++#define OFPATH_MAX_UINT_HEX_DIGITS 8
++#define OFPATH_MAX_INT_DIGITS 10
+ 
+ static char *
+ of_path_get_nvme_controller_name_node (const char* devname)
+ {
+   char *controller_node, *end;
+ 
+-  controller_node = strdup (devname);
++  controller_node = xstrdup (devname);
+   end = grub_strchr (controller_node + 1, 'n');
+   if (end != NULL)
+     {
+@@ -616,15 +654,20 @@ of_path_get_nvme_nsid (const char* devname)
+ char *
+ nvme_get_syspath (const char *nvmedev)
+ {
+-  char *sysfs_path, *controller_node;
++  char *sysfs_path;
+ 
+   sysfs_path = block_device_get_sysfs_path_and_link (nvmedev);
+   if (strstr (sysfs_path, "nvme-subsystem"))
+     {
+-      controller_node = of_path_get_nvme_controller_name_node (nvmedev);
+-      strcat (sysfs_path, "/");
+-      strcat (sysfs_path, controller_node);
+-      sysfs_path = xrealpath (sysfs_path);
++      char *controller_node = of_path_get_nvme_controller_name_node (nvmedev);
++      char *buf = xmalloc (strlen (sysfs_path) + strlen ("/") + strlen (controller_node) + 1);
++      strcpy (buf, sysfs_path);
++      strcat (buf, "/");
++      strcat (buf, controller_node);
++      free (sysfs_path);
++      free (controller_node);
++      sysfs_path = xrealpath (buf);
++      free (buf);
+     }
+ 
+   return sysfs_path;
+@@ -693,7 +736,7 @@ of_path_of_nvme(const char *sys_devname __attribute__((unused)),
+           unsigned int nsid = of_path_get_nvme_nsid (nvmedev);
+           if (nsid)
+             {
+-              snprintf (disk+chars_written, sizeof("/namespace@") + MAX_NVME_NSID_DIGITS,
++              snprintf (disk+chars_written, sizeof("/namespace@") + OFPATH_MAX_UINT_HEX_DIGITS + OFPATH_MAX_INT_DIGITS,
+                         "/namespace@%x:%d", nsid, part);
+             }
+           free (nvmeof_info);
+@@ -734,7 +777,7 @@ of_path_of_nvme(const char *sys_devname __attribute__((unused)),
+           unsigned int nsid = of_path_get_nvme_nsid (device);
+           if (nsid)
+             {
+-              snprintf (disk+chars_written,sizeof("/namespace@") + sizeof(char) * MAX_NVME_NSID_DIGITS,
++              snprintf (disk+chars_written,sizeof("/namespace@") + sizeof(char) * OFPATH_MAX_UINT_HEX_DIGITS,
+                         "/namespace@%x", nsid);
+             }
+           free (nvmeof_info);
+-- 
+2.48.1
+
