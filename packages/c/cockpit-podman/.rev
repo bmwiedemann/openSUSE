@@ -220,4 +220,14 @@
     * Render ports are ranges in container integration tab</comment>
     <requestid>1246697</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e7dfd8c0af0ac64b8baf1ded9644a4cb</srcmd5>
+    <version>102</version>
+    <time>1742316003</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 102
+  * Translation updates
+  * Bug fixes</comment>
+    <requestid>1253659</requestid>
+  </revision>
 </revisionlist>
