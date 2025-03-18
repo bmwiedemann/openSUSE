@@ -1,7 +1,7 @@
 #
 # spec file for package steam-devices
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           steam-devices
-Version:        20230412+git.1344348
+Version:        20240522+git.e2971e4
 Release:        0
 Summary:        Device support for Steam-related hardware
 License:        MIT
