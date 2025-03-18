@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Mar 16 08:43:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.0:
+  + Discard dependent futures if fiber was cancelled during await.
+  + Discard dependent futures when finalizing DexBlock.
+
+-------------------------------------------------------------------
+Tue Feb 25 10:13:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.9.1 (Unstable):
+  + Improve build checks for libatommic
+  + Add dex_promise_resolve_boxed()
+  + Improve cancellation of fibers
+  + Use libucontext when necessary
+
+-------------------------------------------------------------------
+Sat Jan 25 07:52:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.9.0 (Unstable):
+  + Support for OpenBSD
+  + Raise default mmap stack size to 128kb for fibers
+  + Add await/resolve API for file-descriptors
+  + New dex_return_error_if_fail() precondition macro similar to
+    g_return_val_if_fail().
+  + Additional GIO wrapper functions including dex_file_delete()
+    and dex_file_replace_contents_bytes()
+  + Build system improvements
+
+-------------------------------------------------------------------
 Sat Oct 19 10:17:15 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.8.1:
