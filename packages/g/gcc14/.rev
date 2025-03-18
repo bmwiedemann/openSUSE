@@ -160,4 +160,16 @@ next week.  Gcc7 can pick it up from there.
 - Add loongarch64 as new target</comment>
     <requestid>1247615</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>575a0b6a7753faf5162fd015d443cdbe</srcmd5>
+    <version>14.2.1+git11321</version>
+    <time>1742315842</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc13-bsc1239566.patch to also record -D_FORTIFY_SOURCE=2
+  in the DWARF debug info DW_AT_producer string.  [bsc#1239566]
+
+- Disable profiling during build when %want_reproducible_builds is set
+  [bsc#1238491]</comment>
+    <requestid>1253651</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 13 14:06:30 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add gcc13-bsc1239566.patch to also record -D_FORTIFY_SOURCE=2
+  in the DWARF debug info DW_AT_producer string.  [bsc#1239566]
+
+-------------------------------------------------------------------
+Mon Mar 10 13:27:50 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Disable profiling during build when %want_reproducible_builds is set
+  [bsc#1238491]
+
+-------------------------------------------------------------------
 Thu Feb 20 15:41:51 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-14 branch head, 9ffecde121af883b60bbe60d0, git11321

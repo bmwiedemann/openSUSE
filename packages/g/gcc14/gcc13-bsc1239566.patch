@@ -1,0 +1,50 @@
+From 68a6bc230dbae16a8a2073f20f5fcb771d30600c Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Thu, 13 Mar 2025 14:29:06 +0100
+Subject: [PATCH] bsc#1239566 - add -[DU]_FORTIFY_SOURCE[=n] to DW_AT_producer
+To: gcc-patches@gcc.gnu.org
+
+The following makes sure to record -D_FORTIFY_SOURCE=n and
+-U_FORTIFY_SOURCE in the DW_AT_producer debuginfo attribute when
+present on the compiler command line.
+
+	* opts.cc (gen_producer_string): Record -D and -U
+	with _FORTIFY_SOURCE prefix.
+---
+ gcc/opts.cc | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/gcc/opts.cc b/gcc/opts.cc
+index 4eda7ea49d0..7ed0563a651 100644
+--- a/gcc/opts.cc
++++ b/gcc/opts.cc
+@@ -3823,9 +3823,7 @@ gen_command_line_string (cl_decoded_option *options,
+       case OPT_v:
+       case OPT_w:
+       case OPT_L:
+-      case OPT_D:
+       case OPT_I:
+-      case OPT_U:
+       case OPT_SPECIAL_unknown:
+       case OPT_SPECIAL_ignore:
+       case OPT_SPECIAL_warn_removed:
+@@ -3861,6 +3859,16 @@ gen_command_line_string (cl_decoded_option *options,
+       case OPT_fchecking_:
+ 	/* Ignore these.  */
+ 	continue;
++      case OPT_D:
++      case OPT_U:
++	if (strncmp (options[i].arg, "_FORTIFY_SOURCE",
++		     strlen ("_FORTIFY_SOURCE")) == 0)
++	  {
++	    switches.safe_push (options[i].orig_option_with_args_text);
++	    len += strlen (options[i].orig_option_with_args_text) + 1;
++	  }
++	/* Otherwise ignore these. */
++	continue;
+       case OPT_flto_:
+ 	{
+ 	  const char *lto_canonical = "-flto";
+-- 
+2.43.0
+
