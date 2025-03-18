@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 17 19:14:43 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1742233134.0a4478bf:
+  * Dependency cron 2025-03-17
+  * ci: Cover OpenQA::Worker::Job::_read_json_file
+  * Remove obsolete support for Mojolicious < 9
+  * Simplify 'dump_yaml'
+
+-------------------------------------------------------------------
 Thu Mar 13 17:13:18 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1741882150.baca1fd8:
