@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 16 21:27:47 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.4
+  * Support for SDL3 has been added, support for SDL2 has been
+    deprecated.
+  * Soundfonts that are not respecting the 46 zero-sample
+    padding-space previously sounded incorrect when
+    synth.dynamic-sample-loading was active.
+  * Allow drum channels to profit from Soundfont Bank Offsets by
+    no longer ignoring MSB Bank changes.
+  * Revise the preset fallback logic for drum channels.
+  * A regression introduced in 2.4.1 may have caused interrupted
+    real-time playback when voices were using the lowpass filter.
+  * Improve multi-user experience when running fluidsynth as
+    systemd service.
+  * Fix ordering and dependencies of fluidsynth's systemd service.
+  * Revise fluidsynth's man page.
+
+-------------------------------------------------------------------
 Sun Jan 26 19:18:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.3

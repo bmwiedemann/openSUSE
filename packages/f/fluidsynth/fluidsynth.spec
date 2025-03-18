@@ -18,7 +18,7 @@
 
 %define sover   3
 Name:           fluidsynth
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        A Real-Time Software Synthesizer That Uses Soundfont(tm)
 License:        LGPL-2.1-or-later
