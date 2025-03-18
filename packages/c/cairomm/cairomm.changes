@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Mar 17 20:05:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.0:
+  + Meson build: The boost-shared option defaults to true
+- Changes from version 1.17.1 (unstable):
+  + Add SaveGuard save/restore object
+  + Add Surface::set/get_device_scale()
+  + ScaledFont: Add get_text_extents() and get_glyph_extents()
+  + Use callback functions with C linkage
+  + Documentation:
+    - Surface: Use cairomm names where possible
+    - Context: Fix some typos
+    - Update Visual Studio build docs
+    - Remove AUTHORS and MAINTAINERS; add info to README.md
+  + Build:
+    - Meson build: Re-organize warnings-related compiler flags for
+      MSVC
+    - Autotools build: Add --disable-deprecated-api
+    - Require cairo >= 1.14.0
+    - Meson build: Detect if we build from a git subtree
+    - Meson build: Don't copy files with configure_file()
+    - Meson build: Fix the evaluation of is_git_build on Windows
+- Drop obsolete update-desktop-files BuildRequires.
+- Replace gcc-c++ with generic c++_compiler BuildRequries.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Mon Sep 23 08:48:24 UTC 2024 - ming li <mli@suse.com>
 
 - update to version 1.16.2:

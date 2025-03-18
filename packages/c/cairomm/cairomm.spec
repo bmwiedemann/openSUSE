@@ -1,7 +1,7 @@
 #
 # spec file for package cairomm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,24 @@
 
 
 Name:           cairomm
-Version:        1.16.2
+Version:        1.18.0
 Release:        0
 Summary:        C++ Interface for Cairo
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.cairographics.org/
-Source:         https://www.cairographics.org/releases/%{name}-%{version}.tar.xz
+### FIXME ### Upstream down due to freedesktop.org migration
+%dnl Source:         %{url}/releases/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 
+BuildRequires:  c++_compiler
 BuildRequires:  doxygen
-BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  meson
 BuildRequires:  mm-common
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(cairo) >= 1.10.0
+BuildRequires:  pkgconfig(cairo) >= 1.14.0
 BuildRequires:  pkgconfig(sigc++-3.0) >= 2.5.1
 
 %description
@@ -65,7 +66,7 @@ This package provides documentation for the Cairo C++ interface.
 %prep
 %autosetup -p1
 # fix permissions
-chmod 0644 AUTHORS ChangeLog NEWS README
+chmod 0644 ChangeLog NEWS README.md
 
 %build
 %meson \
@@ -76,12 +77,11 @@ chmod 0644 AUTHORS ChangeLog NEWS README
 %install
 %meson_install
 
-%post -n libcairomm-1_16-1 -p /sbin/ldconfig
-%postun -n libcairomm-1_16-1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcairomm-1_16-1
 
 %files -n libcairomm-1_16-1
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc ChangeLog NEWS README.md
 %{_libdir}/*.so.*
 
 %files devel

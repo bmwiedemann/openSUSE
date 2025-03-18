@@ -363,4 +363,12 @@
     <comment>Update to version 1.16.2 (forwarded request 1202577 from simonlm)</comment>
     <requestid>1203315</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b11e50f459777ddccb5be6a210beb6c7</srcmd5>
+    <version>1.18.0</version>
+    <time>1742315988</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1254042 from dimstar)</comment>
+    <requestid>1254046</requestid>
+  </revision>
 </revisionlist>
