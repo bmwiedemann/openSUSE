@@ -40,6 +40,7 @@
 %define build_d 0
 %define build_rust 0
 %define build_m2 0
+%define build_cobol 0
 
 %define enable_plugins 0
 %define build_jit 0
@@ -102,7 +103,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.0.1+git7827
+Version:        15.0.1+git8082
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -401,6 +402,9 @@ languages=$languages,rust
 %endif
 %if %{build_m2}
 languages=$languages,m2
+%endif
+%if %{build_cobol}
+languages=$languages,cobol
 %endif
 
 # In general we want to ship release checking enabled compilers

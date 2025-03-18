@@ -11,4 +11,19 @@
 since we bumped libgo SONAME as well for 15</comment>
     <requestid>1250398</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b90992a7083e92658345e3ed0f4bbb5</srcmd5>
+    <version>15.0.1+git8082</version>
+    <time>1742315841</time>
+    <user>anag+factory</user>
+    <comment>- Update to GCC trunk head, 15.0.1+git8082
+- Includes change to also record -D_FORTIFY_SOURCE=2 in the DWARF
+  debug info DW_AT_producer string.  [bsc#1239566]
+- Package GCC COBOL compiler for openSUSE Factory for supported
+  targets which are x86_64, aarch64 and ppc64le.
+
+- Disable profiling during build when %want_reproducible_builds is set
+  [bsc#1238491]</comment>
+    <requestid>1253653</requestid>
+  </revision>
 </revisionlist>

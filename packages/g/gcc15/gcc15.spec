@@ -86,6 +86,14 @@
 %endif
 %endif
 
+%define build_cobol 0
+%if %{suse_version} >= 1699
+# build cobol for factory and x86_64 for now
+%ifarch x86_64 aarch64 ppc64le
+%define build_cobol 1
+%endif
+%endif
+
 # For optional compilers only build C, C++, Fortran, Ada and Go
 %if 0%{?build_optional_compiler_languages:1}
 %define build_objc 0
@@ -93,6 +101,7 @@
 %define build_d 0
 %define build_rust 0
 %define build_m2 0
+%define build_cobol 0
 %endif
 
 %ifarch x86_64
@@ -165,6 +174,7 @@
 %define libgdruntime_sover 6
 %define libgccjit_sover 0
 %define libm2_sover 20
+%define libgcobol_sover 1
 
 # Shared library package suffix
 # This is used for the "non-standard" set of libraries, the standard
@@ -199,6 +209,7 @@
 %define libgdruntime_suffix %{plv libgdruntime %{libgdruntime_sover}}
 %define libgccjit_suffix %{plv libgccjit %{libgccjit_sover}}
 %define libm2_suffix %{plv libm2 %{libm2_sover}}
+%define libgcobol_suffix %{plv libgcobol %{libgcobol_sover}}
 
 # libFOO-devel package suffix
 %define libdevel_suffix -gcc15
@@ -206,7 +217,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.0.1+git7827
+Version:        15.0.1+git8082
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -2249,6 +2260,84 @@ Runtime library for the GNU Modula-2 language.
 
 %postun -n libm2min%{libm2_sover}%{libm2_suffix}-64bit -p /sbin/ldconfig
 
+%package cobol
+Summary:        GNU GCC COBOL Compiler
+License:        GPL-3.0-or-later
+Group:          Development/Languages/Other
+Requires:       gcc15 = %{version}-%{release}
+Requires:       gcc15-cobol = %{version}-%{release}
+
+%description cobol
+This package contains a COBOL compiler.
+
+%package cobol-32bit
+Summary:        GNU GCC COBOL Compiler
+License:        GPL-3.0-or-later
+Group:          Development/Languages/Other
+Requires:       gcc15-32bit = %{version}-%{release}
+Requires:       gcc15-cobol = %{version}-%{release}
+
+%description cobol-32bit
+This package contains a COBOL compiler.
+
+%package cobol-64bit
+Summary:        GNU GCC COBOL Compiler
+License:        GPL-3.0-or-later
+Group:          Development/Languages/Other
+Requires:       gcc15-64bit = %{version}-%{release}
+Requires:       gcc15-cobol = %{version}-%{release}
+
+%description cobol-64bit
+This package contains a COBOL compiler.
+
+%package -n libgcobol%{libgcobol_sover}%{libgcobol_suffix}
+Summary:        GNU GCC COBOL compiler runtime library
+License:        BSD-3-Clause
+Group:          Development/Languages/Other
+Provides:       libgcobol%{libgcobol_sover} = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      libgcobol%{libgcobol_sover}
+
+%description -n libgcobol%{libgcobol_sover}%{libgcobol_suffix}
+Runtime library for the GNU GCC COBOL language.
+
+%post -n libgcobol%{libgcobol_sover}%{libgcobol_suffix} -p /sbin/ldconfig
+
+%postun -n libgcobol%{libgcobol_sover}%{libgcobol_suffix} -p /sbin/ldconfig
+
+%package -n libgcobol%{libgcobol_sover}%{libgcobol_suffix}-32bit
+Summary:        GNU GCC COBOL compiler runtime library
+License:        BSD-3-Clause
+Group:          Development/Languages/Other
+Provides:       libgcobol%{libgcobol_sover}-32bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      libgcobol%{libgcobol_sover}-32bit
+
+%description -n libgcobol%{libgcobol_sover}%{libgcobol_suffix}-32bit
+Runtime library for the GNU GCC COBOL language.
+
+%post -n libgcobol%{libgcobol_sover}%{libgcobol_suffix}-32bit -p /sbin/ldconfig
+
+%postun -n libgcobol%{libgcobol_sover}%{libgcobol_suffix}-32bit -p /sbin/ldconfig
+
+%package -n libgcobol%{libgcobol_sover}%{libgcobol_suffix}-64bit
+Summary:        GNU GCC COBOL compiler runtime library
+License:        BSD-3-Clause
+Group:          Development/Languages/Other
+Provides:       libgcobol%{libgcobol_sover}-64bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      libgcobol%{libgcobol_sover}-64bit
+
+%description -n libgcobol%{libgcobol_sover}%{libgcobol_suffix}-64bit
+Runtime library for the GNU GCC COBOL language.
+
+%post -n libgcobol%{libgcobol_sover}%{libgcobol_suffix}-64bit -p /sbin/ldconfig
+
+%postun -n libgcobol%{libgcobol_sover}%{libgcobol_suffix}-64bit -p /sbin/ldconfig
+
 %package -n gcc15-testresults
 Summary:        Testsuite results
 License:        SUSE-Public-Domain
@@ -2456,6 +2545,9 @@ languages=$languages,rust
 %endif
 %if %{build_m2}
 languages=$languages,m2
+%endif
+%if %{build_cobol}
+languages=$languages,cobol
 %endif
 
 # In general we want to ship release checking enabled compilers
@@ -2784,7 +2876,7 @@ export QEMU_STACK_SIZE=64M
 %endif
 
 STAGE1_FLAGS="-g -O2"
-%if 0%{?do_profiling} && !0%{?building_testsuite:1}
+%if 0%{?do_profiling} && !0%{?building_testsuite:1} && !0%{?want_reproducible_builds}
 %ifarch x86_64 %ix86 ppc64le s390x aarch64
 %if %{with bootstrap}
 %define use_pgo_bootstrap 1
@@ -2834,7 +2926,8 @@ for lib in libobjc libgfortran libquadmath libcaf_single \
     libgo libasan libhwasan libatomic libitm libtsan liblsan libubsan libvtv \
     libstdc++fs libgomp-plugin-nvptx libgomp-plugin-gcn \
     libgdruntime libgphobos libstdc++exp \
-    libm2cor libm2iso libm2log libm2min libm2pim; do
+    libm2cor libm2iso libm2log libm2min libm2pim \
+    libgcobol; do
   rm -f %{buildroot}/%{versmainlibdir}/$lib.la
 %if %{biarch}
   rm -f %{buildroot}/%{versmainlibdirbi}/$lib.la
@@ -2930,6 +3023,9 @@ for libname in \
   libm2iso \
   libm2pim \
   libm2min \
+%endif
+%if %{build_cobol}
+  libgcobol \
 %endif
 %ifarch %atomic_arch
   libatomic \
@@ -3154,6 +3250,11 @@ mv %{buildroot}/%{_infodir}/gnat_ugn.info %{buildroot}/%{_infodir}/gnat_ugn%{bin
 %endif
 %if %{build_m2}
 mv %{buildroot}/%{_infodir}/m2.info %{buildroot}/%{_infodir}/m2%{binsuffix}.info
+%endif
+
+%if %{build_cobol}
+# COBOL is in its infancy, fixup some bugs
+mv %{buildroot}/%{_mandir}/man3/gcobol.3 %{buildroot}/%{_mandir}/man3/gcobol%{binsuffix}.3
 %endif
 
 cd ..
@@ -4185,6 +4286,33 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc15-locale.lang
 %files -n libm2min%{libm2_sover}%{libm2_suffix}%{separate_biarch_suffix}
 %defattr(-,root,root)
 %biarchlib libm2min.so.%{libm2_sover}*
+%endif
+%endif
+
+%if %{build_cobol}
+%files cobol
+%defattr(-,root,root)
+%dir %{_datadir}/gcobol
+%dir %{_datadir}/gcobol/udf
+%{_datadir}/gcobol/udf/stored-char-length.cbl
+%{_prefix}/bin/gcobol%{binsuffix}
+%{_prefix}/bin/gcobc%{binsuffix}
+%{libsubdir}/cobol1
+%versmainlib libgcobol.a
+%versmainlib libgcobol.so
+%doc %{_mandir}/man1/gcobol%{binsuffix}.1.gz
+%doc %{_mandir}/man3/gcobol%{binsuffix}.3.gz
+
+%if %{separate_biarch}
+# 32bit not supported sofar
+%endif
+
+%files -n libgcobol%{libgcobol_sover}%{libgcobol_suffix}
+%defattr(-,root,root)
+%mainlib libgcobol.so.%{libgcobol_sover}*
+
+%if %{separate_biarch}
+# 32bit not supported sofar
 %endif
 %endif
 

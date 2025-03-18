@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 17 07:50:20 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC trunk head, 15.0.1+git8082
+- Includes change to also record -D_FORTIFY_SOURCE=2 in the DWARF
+  debug info DW_AT_producer string.  [bsc#1239566]
+- Package GCC COBOL compiler for openSUSE Factory for supported
+  targets which are x86_64, aarch64 and ppc64le.
+
+-------------------------------------------------------------------
+Mon Mar 10 13:23:43 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Disable profiling during build when %want_reproducible_builds is set
+  [bsc#1238491]
+
+-------------------------------------------------------------------
 Wed Mar  5 09:42:44 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC trunk head, 15.0.1+git7827

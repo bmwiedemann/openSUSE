@@ -107,6 +107,14 @@
 %endif
 %endif
 
+%define build_cobol 0
+%if %{suse_version} >= 1699
+# build cobol for factory and x86_64 for now
+%ifarch x86_64 aarch64 ppc64le
+%define build_cobol 1
+%endif
+%endif
+
 # For optional compilers only build C, C++, Fortran, Ada and Go
 %if 0%{?build_optional_compiler_languages:1}
 %define build_objc 0
@@ -114,6 +122,7 @@
 %define build_d 0
 %define build_rust 0
 %define build_m2 0
+%define build_cobol 0
 %endif
 
 %ifarch x86_64
@@ -186,6 +195,7 @@
 %define libgdruntime_sover 6
 %define libgccjit_sover 0
 %define libm2_sover 20
+%define libgcobol_sover 1
 
 # Shared library package suffix
 # This is used for the "non-standard" set of libraries, the standard
@@ -220,6 +230,7 @@
 %define libgdruntime_suffix %{plv libgdruntime %{libgdruntime_sover}}
 %define libgccjit_suffix %{plv libgccjit %{libgccjit_sover}}
 %define libm2_suffix %{plv libm2 %{libm2_sover}}
+%define libgcobol_suffix %{plv libgcobol %{libgcobol_sover}}
 
 # libFOO-devel package suffix
 %define libdevel_suffix -gcc15
@@ -227,7 +238,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.0.1+git7827
+Version:        15.0.1+git8082
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -608,6 +619,9 @@ languages=$languages,rust
 %if %{build_m2}
 languages=$languages,m2
 %endif
+%if %{build_cobol}
+languages=$languages,cobol
+%endif
 
 # In general we want to ship release checking enabled compilers
 # which is the default for released compilers
@@ -935,7 +949,7 @@ export QEMU_STACK_SIZE=64M
 %endif
 
 STAGE1_FLAGS="-g -O2"
-%if 0%{?do_profiling} && !0%{?building_testsuite:1}
+%if 0%{?do_profiling} && !0%{?building_testsuite:1} && !0%{?want_reproducible_builds}
 %ifarch x86_64 %ix86 ppc64le s390x aarch64
 %if %{with bootstrap}
 %define use_pgo_bootstrap 1
