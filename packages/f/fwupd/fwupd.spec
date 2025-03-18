@@ -48,8 +48,12 @@ Group:          System/Management
 URL:            https://fwupd.org/
 Source:         %{name}-%{version}.tar.xz
 
+# PATCH-FIX-UPSTREAM
+Patch0:         https://patch-diff.githubusercontent.com/raw/fwupd/fwupd/pull/8583.patch
+# PATCH-FIx-UPSTREAM
+Patch1:         https://patch-diff.githubusercontent.com/raw/fwupd/fwupd/pull/8588.patch
 # PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
-Patch1:         fwupd-bsc1130056-change-shim-path.patch
+Patch99:        fwupd-bsc1130056-change-shim-path.patch
 
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -108,6 +112,7 @@ BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(mbim-glib)
 BuildRequires:  pkgconfig(mm-glib)
+BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(qmi-glib)
@@ -115,7 +120,7 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tss2-esys) >= 2.0
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(umockdev-1.0)
-BuildRequires:  pkgconfig(xmlb) >= 0.1.13
+BuildRequires:  pkgconfig(xmlb) >= 0.3.19
 %if %{with efi_fw_update}
 BuildRequires:  pkgconfig(efiboot)
 BuildRequires:  pkgconfig(efivar) >= 33
@@ -232,8 +237,8 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Dplugin_uefi_pk=enabled \
   -Defi_binary=false \
 %else
-  -Dplugin_uefi_capsule=false \
-  -Dplugin_uefi_pk=false \
+  -Dplugin_uefi_capsule=disabled \
+  -Dplugin_uefi_pk=disabled \
 %endif
 %if %{with msr_support}
   -Dplugin_msr=enabled \

@@ -1,0 +1,125 @@
+From a6338350485d78121fee4a69742b7de6275880cd Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Thu, 13 Mar 2025 16:38:52 +0100
+Subject: [PATCH] Fix build against pygobject 3.52
+
+With the introduction of pygobject 3.52, accessing GIRepository 2.0 is
+no longer permitted.
+
+Instead of complicating the test code with conditionalizing between
+GIRepository 2.0 and GIRepository 3.0 in override_gi_search_path,
+we can drop override_gi_search_path entirely and rely on GIRepository's
+own envvar GI_TYPELIB_PATH to help it find our freshly built typelib
+
+Fixes #8569
+---
+ contrib/test-venv.sh            |  3 ++-
+ data/tests/fwupd_test.py        | 15 ---------------
+ data/tests/meson.build          |  7 ++++---
+ plugins/meson.build             |  7 ++++---
+ plugins/pci-psp/pci_psp_test.py |  3 +--
+ 5 files changed, 11 insertions(+), 24 deletions(-)
+
+diff --git a/contrib/test-venv.sh b/contrib/test-venv.sh
+index 1a061d3d7cf0..5e622b95b491 100755
+--- a/contrib/test-venv.sh
++++ b/contrib/test-venv.sh
+@@ -5,7 +5,8 @@ BUILD=${VENV}/build
+ INSTALLED_TESTS=${VENV}/dist/share/installed-tests/fwupd
+ export G_TEST_BUILDDIR=${INSTALLED_TESTS}
+ export G_TEST_SRCDIR=${INSTALLED_TESTS}
+-export LIBFWUPD_BUILD_DIR=${BUILD}/libfwupd
++export GI_TYPELIB_PATH=${BUILD}/libfwupd
++export LD_LIBRARY_PATH=${BUILD}/libfwupd
+ export DAEMON_BUILDDIR=${BUILD}/src
+ export PATH=${VENV}/bin:$PATH
+ 
+diff --git a/data/tests/fwupd_test.py b/data/tests/fwupd_test.py
+index 4840fc52eeb5..e4b684fb428a 100755
+--- a/data/tests/fwupd_test.py
++++ b/data/tests/fwupd_test.py
+@@ -22,19 +22,6 @@
+ from gi.repository import UMockdev
+ 
+ 
+-def override_gi_search_path():
+-    if "LIBFWUPD_BUILD_DIR" in os.environ:
+-        gi.require_version("GIRepository", "2.0")
+-        from gi.repository import GIRepository
+-
+-        GIRepository.Repository.prepend_search_path(
+-            os.path.join(os.environ["LIBFWUPD_BUILD_DIR"])
+-        )
+-        GIRepository.Repository.prepend_library_path(
+-            os.path.join(os.environ["LIBFWUPD_BUILD_DIR"])
+-        )
+-
+-
+ class FwupdTest(dbusmock.DBusTestCase):
+     DBUS_NAME = "org.freedesktop.fwupd"
+     DBUS_PATH = "/"
+@@ -60,8 +47,6 @@ def setUpClass(cls):
+         cls.start_system_bus()
+         cls.dbus = Gio.bus_get_sync(Gio.BusType.SYSTEM, None)
+ 
+-        override_gi_search_path()
+-
+     def setUp(self):
+         self.testbed = UMockdev.Testbed.new()
+         self.polkitd, self.obj_polkit = self.spawn_server_template(
+diff --git a/data/tests/meson.build b/data/tests/meson.build
+index 517ce034b3cc..74073f54194b 100644
+--- a/data/tests/meson.build
++++ b/data/tests/meson.build
+@@ -140,10 +140,11 @@ if umockdev_integration_tests.allowed()
+   foreach ut: unit_tests
+       test(ut, python3, args: [fwupd_mockdev_tests, ut], is_parallel: false,
+           env: {
+-            'DAEMON_BUILDDIR': join_paths(meson.project_build_root(), 'src'),
+-            'LIBFWUPD_BUILD_DIR': join_paths(meson.project_build_root(), 'libfwupd'),
+-            'STATE_DIRECTORY': join_paths(meson.project_build_root(), 'state'),
+             'CACHE_DIRECTORY': join_paths(meson.project_build_root(), 'cache'),
++            'DAEMON_BUILDDIR': join_paths(meson.project_build_root(), 'src'),
++            'GI_TYPELIB_PATH': join_paths(meson.project_build_root(), 'libfwupd'),
++            'LD_LIBRARY_PATH': join_paths(meson.project_build_root(), 'libfwupd'),
++            'STATE_DIRECTORY': join_paths(meson.project_build_root(), 'state')
+           },
+           )
+   endforeach
+diff --git a/plugins/meson.build b/plugins/meson.build
+index 22397c65b4f6..38bb648492e1 100644
+--- a/plugins/meson.build
++++ b/plugins/meson.build
+@@ -153,12 +153,13 @@ endforeach
+ 
+ if umockdev_integration_tests.allowed()
+   envs = environment()
++  envs.set('CACHE_DIRECTORY', join_paths(meson.project_build_root(), 'cache'))
+   envs.set('DAEMON_BUILDDIR', join_paths(meson.project_build_root(), 'src'))
+-  envs.set('LIBFWUPD_BUILD_DIR', join_paths(meson.project_build_root(), 'libfwupd'))
+-  envs.set('PYTHONPATH', join_paths(meson.project_source_root(), 'data', 'tests'))
+   envs.set('FWUPD_DATADIR_QUIRKS', join_paths(meson.project_build_root()))
++  envs.set('GI_TYPELIB_PATH', join_paths(meson.project_build_root(), 'libfwupd'))
++  envs.set('LD_LIBRARY_PATH', join_paths(meson.project_build_root(), 'libfwupd'))
++  envs.set('PYTHONPATH', join_paths(meson.project_source_root(), 'data', 'tests'))
+   envs.set('STATE_DIRECTORY', join_paths(meson.project_build_root(), 'state'))
+-  envs.set('CACHE_DIRECTORY', join_paths(meson.project_build_root(), 'cache'))
+ 
+   foreach suite: umockdev_tests
+     r = run_command(unittest_inspector, suite,
+diff --git a/plugins/pci-psp/pci_psp_test.py b/plugins/pci-psp/pci_psp_test.py
+index b3f4f3d924c8..059bf272c1ce 100755
+--- a/plugins/pci-psp/pci_psp_test.py
++++ b/plugins/pci-psp/pci_psp_test.py
+@@ -8,10 +8,9 @@
+ import os
+ import sys
+ import unittest
+-from fwupd_test import FwupdTest, override_gi_search_path
++from fwupd_test import FwupdTest
+ 
+ try:
+-    override_gi_search_path()
+     gi.require_version("Fwupd", "2.0")
+     from gi.repository import Fwupd  # pylint: disable=wrong-import-position
+ except ValueError:

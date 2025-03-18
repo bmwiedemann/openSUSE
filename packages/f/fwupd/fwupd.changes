@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 17 15:11:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 8588.patch: Fix compile when using Pango >= 1.56.2.
+
+-------------------------------------------------------------------
+Tue Mar 11 14:41:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit pkgconfig(pango) BuildRequires: used to be pulled in
+  by python-gobject, but that's no longer the case with 3.52.
+- Add 8583.patch: Fix build againts pygobject 3.52.
+
+-------------------------------------------------------------------
 Fri Feb 14 13:22:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.6:
