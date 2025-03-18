@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Mar 17 18:13:39 UTC 2025 - matwey.kornilov@gmail.com
+
+- Changes for 27.3:
+  * ssl: The function for selecting the best server  certificate
+    and key pair has been enhanced when several options are
+    available to ensure that the fallback will not always be
+    chosen.
+  * ssl: Avoided duplicating a few algorithms in default values
+    caused by an interoperability workaround not needed in this
+    case.
+  * ssl: Fixed two alert bugs, which could result in a crash
+    instead of an alert.
+  * syntax_tools: Annotation of maybe expressions has been
+    corrected.
+  * crypto: crypto will now work when ED25519 and X25519 are
+    available while ED448 and X448 are not, which is the case in
+    LibreSSL. This is necessary for supporting TLS1.3 using
+    LibreSSL.
+  * compiler: The beam_validator pass in the compiler that
+    validates generated BEAM now does stronger checks for binary
+    syntax matching.
+  * common_test: Reduced the memory usage when testcases prints a
+    lot to the log.
+  * common_test: Fixed the built-in hook cth_surefire to not crash
+    when a group within a skipped group is skipped.
+  * erts: Fixed failed runtime assert in debug VM when built with
+    statically linked NIFs.
+  * erts: Fixed a bug where reading a binary from m:persistent_term
+    could cause a segmentation fault on Windows. This bug was
+    introduced in Erlang/OTP 27.0.
+  * erts: Fixed a crash in erlexec (an executable used by erl
+    during startup) when a PATH longer than 10240 was set.
+  * erts: Fixed bug in erlang:halt. Two processes calling
+    erlang:halt at the same time could lead to one of them crashing
+    with badarg as if it called erlang:halt(undefined,undefined).
+  * erts: Fixed BEAM crash when a custom thread sends a large map
+    (>128 keys) externally encoded with, for example,
+    erl_drv_send_term().
+  * kernel: Clarify inet:setopts documentation
+  * kernel: Fix bug where log printouts would go missing when
+    application_controller is stopping while log messages are being
+    sent.
+  * kernel: Fixes a bug in the socket type spec, which caused
+    Dialyzer to reject some valid programs.
+  * asn1: Multiple bugs in decoding of the REAL type has been
+    eliminated. Also, the documentation for REAL has been updated
+    to mention the special values 0, PLUS-INFINITY, and MINUS-
+    INFINITY.
+  * xmerl: Some old-style catch expressions in the xmerl_sax_parser
+    when the continuation fun was called caused the stack to grow
+    until all free memory was exhausted. These parts have been
+    rewritten so that the parser now runs correctly without growing
+    the stack. At the same time all old-style catch expressions in
+    xmerl were replaced with try/catch.
+  * ssh: Minor documentation improvements.
+  * ssh: Function specification for ssh_sftp:start_channel/2 is
+    fixed.
+  * stdlib: Fixed argparse:help/2 to accept the program name as
+    part of the command path.
+  * stdlib: Fixed argparse:format_help/2 crash on 'hidden' command.
+  * stdlib: Fixed the type specification for timer:sleep/1 by
+    adding the value infinity to its input type.
+  * stdlib: Eliminated a crash in zip:unzip/1 while unzipping an
+    archive where a directory within was read-only. This bug was
+    introduced in Erlang/OTP 27.1.
+  * stdlib: Fixed map comprehension result when a key value is
+    replaced.
+  * stdlib: Fixed string:jaro_similarity/1 for matching strings of
+    length 1.
+  * mnesia: Mnesia could fail to load a table, if one of the copy
+    holders was moved during startup.
+
+-------------------------------------------------------------------
 Sat Mar 01 18:46:53 UTC 2025 - matwey.kornilov@gmail.com
 
 - Changes for 27.2.4:
