@@ -3,17 +3,25 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-control-center.git</param>
-    <param name="revision">47.4</param>
+    <param name="revision">48.0</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">disable</param>
   </service>
+    <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://gitlab.gnome.org/GNOME/libgxdp.git</param>
+    <param name="revision">e68375c7aced97705953b8e3b30af9f17991153b</param>
+    <param name="versionformat">0.gitmodule</param>
+  </service> 
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">zst</param>
   </service>
-  <service name="set_version" mode="manual" />
+  <service name="set_version" mode="manual">
+    <param name="basename">gnome-control-center</param>
+    </service>
 </services>
 

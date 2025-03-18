@@ -26,13 +26,14 @@
 %endif
 
 Name:           gnome-control-center
-Version:        47.4
+Version:        48.0
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://apps.gnome.org/app/org.gnome.Settings
 Source0:        %{name}-%{version}.tar.zst
+Source1:        libgxdp-0.gitmodule.tar.zst
 Source99:       %{name}-rpmlintrc
 
 # PATCH-NEEDS-REBASE Patch1
@@ -200,12 +201,16 @@ GNOME control center.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -N
+pushd subprojects
+tar xf %{SOURCE1}
+mv libgxdp-0.gitmodule libgxdp
+popd
 %patch -P 1 -p1
 %patch -P 2 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
-%if 0%{?sle_version} >= 150000
+%if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
 %patch -P 1001 -p1
 %patch -P 1002 -p1
 %patch -P 1003 -p1
@@ -246,6 +251,9 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %exclude %{_datadir}/applications/gnome-users-panel.desktop
 %{_datadir}/applications/*.desktop
 %{_datadir}/bash-completion/completions/gnome-control-center
+%{_libexecdir}/gnome-control-center-global-shortcuts-provider
+%{_datadir}/dbus-1/interfaces/org.gnome.GlobalShortcutsRebind.xml
+%{_datadir}/dbus-1/services/org.gnome.Settings.GlobalShortcutsProvider.service
 %{_datadir}/dbus-1/services/org.gnome.Settings.service
 %{_datadir}/dbus-1/services/org.gnome.Settings.SearchProvider.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Settings.gschema.xml

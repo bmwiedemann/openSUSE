@@ -2276,4 +2276,22 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1242899</requestid>
   </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>031cdea2b593c1ca8753b56138e96f59</srcmd5>
+    <version>48.0</version>
+    <time>1742315967</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0
+  + Display
+    - Improve accessibility of HDR Brightness row.
+    - Fix setting luminance scale adjustment on rebuild.
+  + Power: Add power consumption notice when disabling suspend (EU
+    regulation).
+  + Various translation updates.
+  + Various CI fixes.
+
+- Drop use of sle_version in favor of is_opensuse and suse_version.
+  Sle_version is no longer used in SLE 16. (forwarded request 1253783 from dimstar)</comment>
+    <requestid>1253791</requestid>
+  </revision>
 </revisionlist>
