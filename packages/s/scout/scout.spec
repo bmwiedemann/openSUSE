@@ -18,7 +18,7 @@
 
 %define cnfrepo zypp
 Name:           scout
-Version:        0.2.7+20230124.b4e3468
+Version:        0.2.8+20250318.ee06cd2
 Release:        0
 Summary:        Indexing Package Properties
 License:        MIT

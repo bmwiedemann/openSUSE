@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 18 11:34:16 UTC 2025 - bwiedemann@suse.com
+
+- Update to version 0.2.8+20250318.ee06cd2:
+  * Use ConfigParser to work with python313
+  * Translated using Weblate (Catalan Bulgarian Slovenian Lithuanian
+      Turkish Galician Dutch Persian Georgian Macedonian)
+
+-------------------------------------------------------------------
 Fri Mar  8 10:17:22 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

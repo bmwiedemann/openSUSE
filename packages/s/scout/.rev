@@ -373,4 +373,16 @@
     <comment></comment>
     <requestid>1156918</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a8f1684463fa1edd98b34b4702bc27f7</srcmd5>
+    <version>0.2.8+20250318.ee06cd2</version>
+    <time>1742316133</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.8+20250318.ee06cd2:
+  * Use ConfigParser to work with python313
+  * Translated using Weblate (Catalan Bulgarian Slovenian Lithuanian
+      Turkish Galician Dutch Persian Georgian Macedonian)
+</comment>
+    <requestid>1254090</requestid>
+  </revision>
 </revisionlist>
