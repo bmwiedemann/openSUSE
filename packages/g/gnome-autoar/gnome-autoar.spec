@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-autoar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.35.6
 BuildRequires:  pkgconfig(glib-2.0) >= 2.35.6
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.35.6
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.2
 BuildRequires:  pkgconfig(libarchive) >= 3.4.0
 BuildRequires:  pkgconfig(vapigen)
 
@@ -79,15 +78,27 @@ to use archives as a method to transfer directories over the Internet.
 Summary:        Automatic archives creating and extracting library
 Group:          Development/Languages/C and C++
 Requires:       libgnome-autoar-0-0 = %{version}
-Requires:       libgnome-autoar-gtk-0-0 = %{version}
 Requires:       typelib-1_0-GnomeAutoar-0_1 = %{version}
-Requires:       typelib-1_0-GnomeAutoarGtk-0_1 = %{version}
 
 %description devel
 gnome-autoar provides functions, widgets, and gschemas for GNOME applications which want
 to use archives as a method to transfer directories over the Internet.
 
 This package brings files required to develop against gnome-autoar
+
+%package gtk-devel
+Summary:        Automatic archives creating and extracting library
+Group:          Development/Languages/C and C++
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.2
+Requires:       %{name}-devel = %{version}
+Requires:       libgnome-autoar-gtk-0-0 = %{version}
+Requires:       typelib-1_0-GnomeAutoarGtk-0_1 = %{version}
+
+%description gtk-devel
+gnome-autoar provides functions, widgets, and gschemas for GNOME applications which want
+to use archives as a method to transfer directories over the Internet.
+
+This package brings gtk files required to develop against gnome-autoar
 
 %prep
 %autosetup -p1
@@ -110,18 +121,24 @@ This package brings files required to develop against gnome-autoar
 %ldconfig_scriptlets -n libgnome-autoar-gtk-0-0
 
 %files devel
+%exclude %{_includedir}/gnome-autoar-0/gnome-autoar/autoar-gtk-chooser.h
+%exclude %{_includedir}/gnome-autoar-0/gnome-autoar/autoar-gtk.h
 %{_includedir}/gnome-autoar-0/
 %{_libdir}/libgnome-autoar-0.so
-%{_libdir}/libgnome-autoar-gtk-0.so
 %{_libdir}/pkgconfig/gnome-autoar-0.pc
-%{_libdir}/pkgconfig/gnome-autoar-gtk-0.pc
 %{_datadir}/gir-1.0/GnomeAutoar-0.1.gir
-%{_datadir}/gir-1.0/GnomeAutoarGtk-0.1.gir
 %{_datadir}/gtk-doc/html/%{name}/
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gnome-autoar-0.vapi
-%{_datadir}/vala/vapi/gnome-autoar-gtk-0.vapi
 %{_datadir}/vala/vapi/gnome-autoar-0.deps
+
+%files gtk-devel
+%{_includedir}/gnome-autoar-0/gnome-autoar/autoar-gtk-chooser.h
+%{_includedir}/gnome-autoar-0/gnome-autoar/autoar-gtk.h
+%{_libdir}/libgnome-autoar-gtk-0.so
+%{_libdir}/pkgconfig/gnome-autoar-gtk-0.pc
+%{_datadir}/gir-1.0/GnomeAutoarGtk-0.1.gir
+%{_datadir}/vala/vapi/gnome-autoar-gtk-0.vapi
 %{_datadir}/vala/vapi/gnome-autoar-gtk-0.deps
 
 %files -n typelib-1_0-GnomeAutoar-0_1
