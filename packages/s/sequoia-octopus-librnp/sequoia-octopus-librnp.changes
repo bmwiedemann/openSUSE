@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 17 21:13:54 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.11.0
+  * Notable changes
+    - Ported to sequoia-openpgp 2. This brings in the machinery to
+      support RFC9580, but without further changes to Thunderbird, it
+      will not be able to make use of newer keys. It might be able to
+      decrypt SEIPDv2 messages, though.
+
+-------------------------------------------------------------------
 Tue Aug 13 08:51:05 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.10.0
