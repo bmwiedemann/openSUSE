@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-session
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,8 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xtrans)
 Requires:       %{name}-core = %{version}
+Requires:       (gnome-session-wayland or gnome-session-xsession)
+Suggests:       gnome-session-wayland
 # gnome-session-default-session merged into gnome-session; the alternative - fallback-session - disappeared
 # with GNOME 3.8
 Provides:       %{name}-default-session = %{version}

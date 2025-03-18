@@ -1605,4 +1605,12 @@ Index: gnome-session.changes
     <comment></comment>
     <requestid>1227063</requestid>
   </revision>
+  <revision rev="213" vrev="5">
+    <srcmd5>734bb134000d6115c0a9474bc15db553</srcmd5>
+    <version>47.0.1</version>
+    <time>1742315863</time>
+    <user>anag+factory</user>
+    <comment>Early Staging of GNOME 48.rc</comment>
+    <requestid>1251330</requestid>
+  </revision>
 </revisionlist>

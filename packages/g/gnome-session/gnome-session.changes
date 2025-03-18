@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  6 15:49:15 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure gnome-session-wayland or -xsession is required by
+  gnome-session.
+
+-------------------------------------------------------------------
 Wed Nov 27 16:55:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Build gnome-session-wayland also on s390x: It was originally
