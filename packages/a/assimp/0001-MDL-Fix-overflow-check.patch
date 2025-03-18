@@ -1,0 +1,25 @@
+From bcf11c252a9635af83c0f48b5ebdfad8e1ab5522 Mon Sep 17 00:00:00 2001
+From: Kim Kulling <kimkulling@users.noreply.github.com>
+Date: Thu, 13 Mar 2025 00:07:41 +0100
+Subject: [PATCH] MDL: Fix overflow check (#6047)
+
+---
+ code/AssetLib/MDL/MDLLoader.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/AssetLib/MDL/MDLLoader.cpp b/code/AssetLib/MDL/MDLLoader.cpp
+index 6f9e0f200..30da65866 100644
+--- a/code/AssetLib/MDL/MDLLoader.cpp
++++ b/code/AssetLib/MDL/MDLLoader.cpp
+@@ -420,7 +420,7 @@ void MDLImporter::InternReadFile_Quake1() {
+                 }
+                 // go to the end of the skin section / the beginning of the next skin
+                 bool overflow = false;
+-                if (pcHeader->skinwidth != 0 || pcHeader->skinheight != 0) {
++                if (pcHeader->skinwidth != 0 && pcHeader->skinheight != 0) {
+                     if ((pcHeader->skinheight > INT_MAX / pcHeader->skinwidth) || (pcHeader->skinwidth > INT_MAX / pcHeader->skinheight)){
+                         overflow = true;
+                     }
+-- 
+2.48.1
+

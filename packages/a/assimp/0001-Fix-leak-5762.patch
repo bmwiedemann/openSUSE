@@ -1,4 +1,4 @@
-From 4024726eca89331503bdab33d0b9186e901bbc45 Mon Sep 17 00:00:00 2001
+From 112524b96dd7019f7a1a8c65d6a5f784f22d34cc Mon Sep 17 00:00:00 2001
 From: Kim Kulling <kimkulling@users.noreply.github.com>
 Date: Sat, 7 Sep 2024 21:02:34 +0200
 Subject: [PATCH] Fix leak (#5762)
@@ -15,7 +15,7 @@ Subject: [PATCH] Fix leak (#5762)
  create mode 100644 test/unit/Common/utLogger.cpp
 
 diff --git a/code/Common/Assimp.cpp b/code/Common/Assimp.cpp
-index ef3ee7b5d..91896e405 100644
+index ef3ee7b..91896e4 100644
 --- a/code/Common/Assimp.cpp
 +++ b/code/Common/Assimp.cpp
 @@ -359,20 +359,25 @@ void CallbackToLogRedirector(const char *msg, char *dt) {
@@ -49,7 +49,7 @@ index ef3ee7b5d..91896e405 100644
      return sout;
  }
 diff --git a/fuzz/assimp_fuzzer.cc b/fuzz/assimp_fuzzer.cc
-index 8178674e8..91ffd9d69 100644
+index 8178674..91ffd9d 100644
 --- a/fuzz/assimp_fuzzer.cc
 +++ b/fuzz/assimp_fuzzer.cc
 @@ -47,7 +47,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -62,7 +62,7 @@ index 8178674e8..91ffd9d69 100644
  
      Importer importer;
 diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
-index 7b7fd850a..1a45adac7 100644
+index 7b7fd85..1a45ada 100644
 --- a/test/CMakeLists.txt
 +++ b/test/CMakeLists.txt
 @@ -100,6 +100,7 @@ SET( COMMON
@@ -75,7 +75,7 @@ index 7b7fd850a..1a45adac7 100644
  SET(Geometry 
 diff --git a/test/unit/Common/utLogger.cpp b/test/unit/Common/utLogger.cpp
 new file mode 100644
-index 000000000..932240a7f
+index 0000000..932240a
 --- /dev/null
 +++ b/test/unit/Common/utLogger.cpp
 @@ -0,0 +1,52 @@
@@ -132,5 +132,5 @@ index 000000000..932240a7f
 +    ASSERT_EQ(stream1.callback, stream2.callback);
 +}
 -- 
-2.47.1
+2.48.1
 

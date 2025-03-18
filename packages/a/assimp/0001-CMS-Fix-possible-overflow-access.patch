@@ -1,0 +1,26 @@
+From fb7ece272dc06a140a7b304db9e92d370f15b788 Mon Sep 17 00:00:00 2001
+From: Kim Kulling <kimkulling@users.noreply.github.com>
+Date: Thu, 13 Mar 2025 21:10:49 +0100
+Subject: [PATCH] CMS: Fix possible overflow access (#6052)
+
+- closes https://github.com/assimp/assimp/issues/6010
+---
+ code/AssetLib/CSM/CSMLoader.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/code/AssetLib/CSM/CSMLoader.cpp b/code/AssetLib/CSM/CSMLoader.cpp
+index 47beee5..c37655c 100644
+--- a/code/AssetLib/CSM/CSMLoader.cpp
++++ b/code/AssetLib/CSM/CSMLoader.cpp
+@@ -154,7 +154,7 @@ void CSMImporter::InternReadFile( const std::string& pFile,
+                     aiNodeAnim* nda = anims_temp.back();
+ 
+                     char* ot = nda->mNodeName.data;
+-                    while (!IsSpaceOrNewLine(*buffer)) {
++                    while (!IsSpaceOrNewLine(*buffer) && buffer != end) {
+                         *ot++ = *buffer++;
+                     }
+ 
+-- 
+2.48.1
+

@@ -1,4 +1,4 @@
-From ecdf8d24b85367b22ba353b4f82299d4af7f1f97 Mon Sep 17 00:00:00 2001
+From ef2705ef32bcdbc54ade8ea418d32bf01a8f9e8a Mon Sep 17 00:00:00 2001
 From: Kim Kulling <kimkulling@users.noreply.github.com>
 Date: Mon, 7 Oct 2024 10:30:45 +0200
 Subject: [PATCH] SplitLargeMeshes: Fix crash (#5799)
@@ -9,7 +9,7 @@ Subject: [PATCH] SplitLargeMeshes: Fix crash (#5799)
  1 file changed, 5 insertions(+)
 
 diff --git a/code/PostProcessing/SplitLargeMeshes.cpp b/code/PostProcessing/SplitLargeMeshes.cpp
-index 3bee28521..cb9727651 100644
+index 3bee285..cb97276 100644
 --- a/code/PostProcessing/SplitLargeMeshes.cpp
 +++ b/code/PostProcessing/SplitLargeMeshes.cpp
 @@ -100,6 +100,11 @@ void SplitLargeMeshesProcess_Triangle::SetupProperties( const Importer* pImp) {
@@ -25,5 +25,5 @@ index 3bee28521..cb9727651 100644
      std::vector<unsigned int> aiEntries;
      aiEntries.reserve(pcNode->mNumMeshes + 1);
 -- 
-2.47.0
+2.48.1
 

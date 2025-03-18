@@ -33,6 +33,15 @@ Patch2:         CVE-2024-48423.patch
 Patch3:         CVE-2024-48424.patch
 # PATCH-FIX-UPSTREAM
 Patch4:         CVE-2024-53425.patch
+# Cumulative upstream changes
+Patch5:         0001-ASE-Fix-possible-out-of-bound-access.patch
+Patch6:         0001-MDL-Limit-max-texture-sizes.patch
+Patch7:         0001-MDL-Fix-overflow-check.patch
+Patch8:         CVE-2025-2151.patch
+Patch9:         0001-Bugfix-Fix-possible-nullptr-dereferencing.patch
+Patch10:        0001-Potential-use-after-free.patch
+Patch11:        0001-ASE-Use-correct-vertex-container.patch
+Patch12:        0001-CMS-Fix-possible-overflow-access.patch
 BuildRequires:  cmake >= 3.22
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++

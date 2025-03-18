@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 17 09:20:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-ASE-Fix-possible-out-of-bound-access.patch
+  * 0001-MDL-Limit-max-texture-sizes.patch
+    (gh#assimp/assimp#6022)
+  * 0001-MDL-Fix-overflow-check.patch
+    (gh#assimp/assimp#6009)
+  * CVE-2025-2151.patch (CVE-2025-2151, boo#1239220)
+  * 0001-Bugfix-Fix-possible-nullptr-dereferencing.patch
+    (gh#assimp/assimp#6025)
+  * 0001-Potential-use-after-free.patch
+  * 0001-ASE-Use-correct-vertex-container.patch
+    (gh#assimp/assimp#6024)
+  * 0001-CMS-Fix-possible-overflow-access.patch
+    (gh#assimp/assimp#6010)
+
+-------------------------------------------------------------------
 Fri Dec 27 08:05:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add patches:

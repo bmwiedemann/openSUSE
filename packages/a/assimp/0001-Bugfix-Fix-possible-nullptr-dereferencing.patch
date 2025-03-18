@@ -1,0 +1,29 @@
+From c47a2bd3b0f8aee327b455daf8c7c339099a9bf6 Mon Sep 17 00:00:00 2001
+From: Kim Kulling <kimkulling@users.noreply.github.com>
+Date: Thu, 13 Mar 2025 11:04:25 +0100
+Subject: [PATCH] Bugfix: Fix possible nullptr dereferencing (#6049)
+
+* Bugfix: Fix possible nullptr dereferencing
+---
+ code/Common/SceneCombiner.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/code/Common/SceneCombiner.cpp b/code/Common/SceneCombiner.cpp
+index 88fa497..7d0c53b 100644
+--- a/code/Common/SceneCombiner.cpp
++++ b/code/Common/SceneCombiner.cpp
+@@ -96,6 +96,11 @@ inline void PrefixString(aiString &string, const char *prefix, unsigned int len)
+ // ------------------------------------------------------------------------------------------------
+ // Add node identifiers to a hashing set
+ void SceneCombiner::AddNodeHashes(aiNode *node, std::set<unsigned int> &hashes) {
++    if (node == nullptr) {
++        ASSIMP_LOG_ERROR("Pointer to aiNode is nullptr.");
++        return;
++    }
++  
+     // Add node name to hashing set if it is non-empty - empty nodes are allowed
+     // and they can't have any anims assigned so its absolutely safe to duplicate them.
+     if (node->mName.length) {
+-- 
+2.48.1
+

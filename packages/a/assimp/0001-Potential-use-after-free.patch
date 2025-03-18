@@ -1,0 +1,28 @@
+From 7db788ef399508b800aa3568a57022545320cc88 Mon Sep 17 00:00:00 2001
+From: Kim Kulling <kimkulling@users.noreply.github.com>
+Date: Thu, 13 Mar 2025 11:26:18 +0100
+Subject: [PATCH] Potential fix for code scanning alert no. 63: Potential use
+ after free (#6050)
+
+- Ensure that code scanner will identify pointer as already released.
+
+Co-authored-by: Copilot Autofix powered by AI <62310815+github-advanced-security[bot]@users.noreply.github.com>
+---
+ code/AssetLib/glTF/glTFImporter.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/code/AssetLib/glTF/glTFImporter.cpp b/code/AssetLib/glTF/glTFImporter.cpp
+index 2443205..a199c7c 100644
+--- a/code/AssetLib/glTF/glTFImporter.cpp
++++ b/code/AssetLib/glTF/glTFImporter.cpp
+@@ -155,6 +155,7 @@ void glTFImporter::ImportMaterials(glTF::Asset &r) {
+         mScene->mNumMaterials = 1;
+         // Delete the array of length zero created above.
+         delete[] mScene->mMaterials;
++        mScene->mMaterials = nullptr;
+         mScene->mMaterials = new aiMaterial *[1];
+         mScene->mMaterials[0] = new aiMaterial();
+     }
+-- 
+2.48.1
+
