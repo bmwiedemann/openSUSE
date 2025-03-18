@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Fri Mar 14 12:51:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.56.0:
+  + Bug Fixes:
+    - Workaround shown menu icons when should not be
+    - Crash on quit of the app
+    - mail: Add .mbox extension to dragged email files
+    - Tasks: Compare DUE date in local time zone, not the
+      property's zone
+    - ECalShellView: Add a translator comment for an ambiguous
+      string
+    - Forwarding from Unified Inbox picks wrong From account
+    - Task bar in Calendar view is not sufficiently updated
+    - Month View: Sometimes not fully populated
+    - Mark Folder as read works not longer on subfolders
+  + Miscellaneous:
+    - EWeekView: Scroll by shown weeks when scrolling by month
+    - templates: Fix a circular dependency between structures
+    - e-mail-shell-view-actions: Fix a memory leak
+    - prefer-plain: Fix a ref/unref imbalance on an EUIActionGroup
+      object
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 28 12:38:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.55.3:
+  + Bug Fixes:
+    - EImportAssistant: Keep the preview widget expanded
+    - Add option to use bigger text for time in the "To Do" pane
+    - itip-formatter: State status of found appointment in email
+    - MessageList: Use GTask instead of RegenData to keep track of
+      current task
+    - EMailLabelTreeView: Label colors not shown with symbolic
+      icons
+    - Switcher appearance resets to "Icons and Text" after restart
+    - Entering number in search bar colours selected message
+    - Composer: Middle-click paste misplaced with changed font
+      scaling
+    - ETree: Expander triangle is reversed
+    - Use GdkDisplay instead of GdkScreen when possible
+    - EUIManager: Do not do direct comparison with GVariantType
+    - e-util: Remove GalA11yETableFactory and GalA11yETreeFactory
+  + Miscellaneous:
+    - EWebKitEditor: Correct GObject property type on read
+    - text-highlight: Update 'highlight' arguments
+    - Composer: Do not add extra empty lines at the end of the plain text
+    - help: Add missing help files into the build script
+  + Updated translations:
+
+-------------------------------------------------------------------
+Fri Jan 31 18:53:12 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.55.2 (Unstable):
+  + Bug Fixes:
+    - Mail: Show inline images with 'name' as attachments
+    - Apply changes in attachment properties popover with Enter
+    - Change default button in delete confirmation dialog
+    - S/MIME: Backup certificate with stronger/better algorithm
+    - Expose the "Bulk Edit..." in the contextual menu
+    - mail-autoconfig: Use real user e-mail in the request
+    - ETableSortInfo: Have a strong reference on the
+      ETableSpecification
+    - Mail: "To Do" bar is always shown after restart
+    - Mail: Allow save of a message attachment to a mail folder
+    - mail-dialogs: Use GtkGrid instead of GtkTable
+    - canvas: Actually subclass GInitiallyUnowned
+    - libgnomecanvas: Remove gnome-canvas-i18n.h
+    - Replace all occurences of gtk_icon_info_free
+    - EMeetingTimeSelector: Subclass GtkGrid
+    - EMeetingTimeSelector: Use a GtkGrid for the time selector
+    - EComposerHeaderTable: Make it a GtkGrid subclass
+    - EContactEditor: Use GtkGrid instead of GtkTable
+    - EContactQuickAdd: Use GtkGrid instead of GtkTable
+    - Remove ESendOptionsDialog
+    - ETableConfig: Use GtkComboboxText directly
+    - Use GtkGrid instead of GtkTable
+    - Require GLib 2.70
+    - Get rid of GtkAlignment in the code
+    - EAlphabetBox: Base the widget on GtkListBox
+    - Replace GtkArrow with images
+    - Remove e_util_check_gtk_bindings_in_key_press_event_cb
+    - Remove the use of gtk_scrolled_window_add_with_viewport
+    - EWeekdayChooser: Switch to native GTK widgets
+    - Replace g_memdup with g_memdup2
+    - Do not use GTimeVal
+    - Avoid the use of g_binding_get_source/target
+    - Replace gtk_combo_box_set_focus_on_click with
+      gtk_widget_set_focus_on_click
+    - Use webkit_settings_font_size_to_pixels to set font size
+    - Remove calendar/gui/misc.c|.h
+    - itip-formatter: Import of forwarded meeting as bare event
+  + Miscellaneous:
+    - ETaskTable: Use "stock_check-filled-symbolic" icon name
+    - EAddressbookView: Context menu could be shown twice in the
+      Minicard view
+    - Switcher button icon does not change when action's icon name
+      changes
+    - EShellView: Do not process accels when search entry is
+      focused
+    - Preview layout setting does not stick after app restart
+    - Remove e-reflow and e-reflow-model
+    - EAttachmentBar: Verify 'possible_attachments" is non-NULL
+      before using it
+    - Replace  margin-left/right with margin-start/end
+    - e-misc-utils: Remove unused e_util_stop_signal_emission_cb()
+    - Use gtk_show_uri_on_window instead of gtk_show_uri
+    - EShellSwitcher: Cannot create a new window by a switcher
+      button press
+    - docs: Remove index references for versions not in the code
+      any more
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan  4 09:22:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.54.3:

@@ -2653,4 +2653,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1235450</requestid>
   </revision>
+  <revision rev="285" vrev="1">
+    <srcmd5>39861e6a1bff6a2cffb0a3ad83996806</srcmd5>
+    <version>3.56.0</version>
+    <time>1742315892</time>
+    <user>anag+factory</user>
+    <comment>New stable branch release (forwarded request 1253067 from iznogood)</comment>
+    <requestid>1253076</requestid>
+  </revision>
 </revisionlist>
