@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-PyMuPDF
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,8 @@ book formats. PyMuPDF can also access files with extensions *.pdf,
 %autosetup -p1 -n %{pypi_name}-%{version}
 
 %build
-export CFLAGS="%{optflags} -I/usr/include/freetype2"
+export CFLAGS="%{optflags} -I/usr/include/freetype2 -DNDEBUG"
+export ARCHFLAGS="%{optflags}"
 %pyproject_wheel
 
 %install

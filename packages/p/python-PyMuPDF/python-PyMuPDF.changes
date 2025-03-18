@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 17 09:06:01 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Compile everything with -DNDEBUG to fix reference to undefined symbols
+- Compile mupdf with %optflags
+
+-------------------------------------------------------------------
 Wed Dec 13 14:54:54 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
