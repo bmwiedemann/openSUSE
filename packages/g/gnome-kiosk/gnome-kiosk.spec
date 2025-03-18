@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-kiosk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%define mutter_api 15
+%define mutter_api 16
 
 Name:           gnome-kiosk
-Version:        47.0
+Version:        48.0
 Release:        0
 Summary:        Mutter based compositor for kiosks
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-kiosk
 Source0:        %{name}-%{version}.tar.zst
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -37,7 +38,6 @@ BuildRequires:  pkgconfig(libmutter-%{mutter_api})
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(mutter-clutter-%{mutter_api})
 BuildRequires:  pkgconfig(mutter-cogl-%{mutter_api})
-BuildRequires:  pkgconfig(mutter-cogl-pango-%{mutter_api})
 BuildRequires:  pkgconfig(systemd)
 Requires:       gnome-session
 
@@ -67,6 +67,10 @@ compositor is used.
 %meson_install
 %fdupes -s %{buildroot}%{_datadir}
 
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Kiosk.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Kiosk.SearchApp.desktop
+
 %files
 %license COPYING
 %{_bindir}/gnome-kiosk
@@ -77,6 +81,9 @@ compositor is used.
 %{_userunitdir}/org.gnome.Kiosk.target
 %{_userunitdir}/org.gnome.Kiosk@wayland.service
 %{_userunitdir}/org.gnome.Kiosk@x11.service
+%dir %{_userunitdir}/gnome-session@org.gnome.Kiosk.SearchApp.target.d
+%{_userunitdir}/gnome-session@org.gnome.Kiosk.SearchApp.target.d/session.conf
+%{_userunitdir}/org.gnome.Kiosk.SearchApp.service
 %{_datadir}/applications/org.gnome.Kiosk.Script.desktop
 %{_datadir}/applications/org.gnome.Kiosk.desktop
 %dir %{_datadir}/gnome-session
