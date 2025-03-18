@@ -576,4 +576,13 @@ Pushing GNOME 45.rc packages</comment>
   + Updated translations. (forwarded request 1229054 from iznogood)</comment>
     <requestid>1229728</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>a91743282e23dd6623db6ff526572960</srcmd5>
+    <version>48.1</version>
+    <time>1742316050</time>
+    <user>anag+factory</user>
+    <comment>- Drop pkgconfig(gtksourceview-4) BuildRequires: Not needed nor
+  used. (forwarded request 1253255 from iznogood)</comment>
+    <requestid>1253375</requestid>
+  </revision>
 </revisionlist>

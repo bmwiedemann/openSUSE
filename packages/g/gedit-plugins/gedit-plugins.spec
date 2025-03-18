@@ -43,7 +43,6 @@ BuildRequires:  pkgconfig(gedit) >= 48.1
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.9.0
-BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.0.6
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.7.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.7.0
