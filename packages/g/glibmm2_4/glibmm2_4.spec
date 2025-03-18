@@ -1,7 +1,7 @@
 #
 # spec file for package glibmm2_4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define so_ver -2_4-1
 %define _name glibmm
 Name:           glibmm2_4
-Version:        2.66.6
+Version:        2.66.8
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
@@ -28,15 +28,13 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.gtkmm.org/
 Source0:        https://download.gnome.org/sources/glibmm/2.66/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM glibmm2_4-docs-without-timestamp.patch -- Do not add timestamps to generated doc files
-Patch0:         glibmm2_4-docs-without-timestamp.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz-devel
 BuildRequires:  m4
-BuildRequires:  meson
+BuildRequires:  meson >= 0.60
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(gio-2.0)
@@ -116,7 +114,7 @@ chmod -x NEWS
 %{_libdir}/libgiomm-2.4.so.*
 
 %files devel
-%doc AUTHORS ChangeLog NEWS README.md
+%doc ChangeLog NEWS README.md
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*

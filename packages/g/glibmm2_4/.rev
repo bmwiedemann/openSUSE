@@ -153,4 +153,27 @@
     <comment>New old stable, ok to fwd (forwarded request 1072613 from iznogood)</comment>
     <requestid>1073159</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1cbdc77b175a8cc2204641c07ae0ede8</srcmd5>
+    <version>2.66.8</version>
+    <time>1742315965</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.66.8:
+  + Gio:
+    - Fix memory leak in DBus::generate_guid().
+    - DBus::ErrorUtils::get_remote_error(): Fix a memory leak.
+    - LoadableIcon: Remove extra commas from _CLASS_INTERFACE().
+  + Documentation: Replace gtkmm.org by gtkmm.gnome.org
+  + gmmproc:
+    - generate_wrap_in.pl.in: Ignore -Winconsistent-dllimport from
+      clang
+    - h2def.py: Avoid syntax warnings from Python 3.12
+    - DocsParser.pm: Don't link to developer-old.gnome.org
+  + Build:
+    - Some fixes to avoid warnings from the clang compiler
+    - Meson build: Require meson &gt;= 0.60
+    - Meson build: Use the Python installation that Meson uses.
+- Drop glibmm2_4-docs-without-timestamp.patch: no longer needed. (forwarded request 1253763 from dimstar)</comment>
+    <requestid>1253767</requestid>
+  </revision>
 </revisionlist>
