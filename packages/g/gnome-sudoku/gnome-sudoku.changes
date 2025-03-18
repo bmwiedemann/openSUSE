@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Mar 14 17:22:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Let the about dialog track appdata releases.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 28 18:25:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Update the selection highlighting to more closely follow the
+    focus
+  + Fix the focus jumping around on window resize
+  + Fix custom game's missing icon
+  + Fix print multiple puzzles dialog's scaling at lower
+    resolutions
+  + Fix reset puzzle incorrectly affecting the timer after a reload
+  + Fix show possibilities setter not working after a reload
+  + Add Accessible label to earmark picker buttons
+  + Add custom accent color palette of 18 colors
+  + Updated translations.
+- Add blueprint-compiler BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Fri Jan 31 18:08:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Add custom accent color palette of 16 colors
+  + Add support for row/column/block highlighting with accent
+    colors
+  + Update selection and highlighter colors to use oklab
+
+-------------------------------------------------------------------
+Fri Jan 10 18:14:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + Port to blueprints
+  + Use GtkStack and its animations for the number_picker,
+    play/pause and fullscreen/unfullscreen buttons
+  + Fix Warnings shortcut not working
+  + Add mouse button binding for Back
+  + Stop saving elapsed time on game completion when Timer is
+    disabled
+  + Includes changes from 47.1
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Oct 19 08:58:56 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.1.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-sudoku
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-sudoku
-Version:        47.1.1
+Version:        48.0
 Release:        0
 Summary:        Sudoku Game for GNOME
 License:        GPL-3.0-or-later
@@ -26,6 +26,7 @@ URL:            https://wiki.gnome.org/Apps/Sudoku
 Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  appstream-glib
+BuildRequires:  blueprint-compiler >= 0.16
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils

@@ -456,4 +456,14 @@
     <comment></comment>
     <requestid>1216804</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>a90f202f0dd618225c4e7a9e50ded2ce</srcmd5>
+    <version>48.0</version>
+    <time>1742316048</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + Let the about dialog track appdata releases.
+  + Updated translations. (forwarded request 1253144 from iznogood)</comment>
+    <requestid>1253367</requestid>
+  </revision>
 </revisionlist>
