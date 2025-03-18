@@ -1,7 +1,7 @@
 #
 # spec file for package modello-maven-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Patch0:         0001-Upgrade-to-SnakeYaml-2.2-439.patch
 Patch1:         0002-Update-build-get-rid-of-legacy-fix-CLI-452.patch
 Patch2:         0003-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+Patch3:         0004-Handle-also-the-velocity-stuff-in-ModelloCli.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -83,9 +84,8 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{parent}-%{version}
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
+%autopatch -p1
+
 cp -p %{SOURCE1} .
 
 %pom_remove_plugin :maven-site-plugin

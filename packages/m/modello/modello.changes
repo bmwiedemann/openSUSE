@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 16 20:11:46 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0004-Handle-also-the-velocity-stuff-in-ModelloCli.patch
+    + maven 4 is using velocity generater. Patch the ModelloCli.java
+      so that one can pass to it the velocity specific configuration
+      options
+- Fix the modello script classpath to be able to run the velocity
+  generator.
+
+-------------------------------------------------------------------
 Wed Oct  2 20:26:43 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Build against velocity-engine-core, since we can do it now without

@@ -161,4 +161,12 @@
     <comment>Build against velocity-engine-core</comment>
     <requestid>1205319</requestid>
   </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>e2316072853e46b1d7df6683cc45471b</srcmd5>
+    <version>2.4.0</version>
+    <time>1742316072</time>
+    <user>anag+factory</user>
+    <comment>enable velocity generator command line attributes</comment>
+    <requestid>1253902</requestid>
+  </revision>
 </revisionlist>

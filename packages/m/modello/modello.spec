@@ -1,7 +1,7 @@
 #
 # spec file for package modello
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source100:      %{name}-build.tar.xz
 Patch0:         0001-Upgrade-to-SnakeYaml-2.2-439.patch
 Patch1:         0002-Update-build-get-rid-of-legacy-fix-CLI-452.patch
 Patch2:         0003-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+Patch3:         0004-Handle-also-the-velocity-stuff-in-ModelloCli.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
@@ -50,6 +51,7 @@ BuildRequires:  snakeyaml
 BuildRequires:  unzip
 BuildRequires:  velocity-engine-core
 Requires:       aopalliance
+Requires:       apache-commons-lang3
 Requires:       atinject
 Requires:       google-guice
 Requires:       guava
@@ -57,6 +59,7 @@ Requires:       jackson-core
 Requires:       jakarta-inject
 Requires:       javadoc-parser
 Requires:       javapackages-tools
+Requires:       jsoup
 Requires:       plexus-build-api
 Requires:       plexus-build-api0
 Requires:       plexus-classworlds
@@ -98,9 +101,8 @@ API documentation for %{name}.
 
 %prep
 %setup -q -a100
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
+%autopatch -p1
+
 cp -p %{SOURCE1} .
 
 %pom_remove_plugin :maven-site-plugin
@@ -163,7 +165,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # script
-%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:aopalliance:atinject:google-guice:guava:jackson-core:jakarta-inject:javadoc-parser:plexus/plexus-build-api:plexus/plexus-build-api0:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity-engine/velocity-engine-core %{name} true
+%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:aopalliance:atinject:commons-lang3:google-guice:guava:jackson-core:jakarta-inject:javadoc-parser:jsoup/jsoup:plexus/plexus-build-api:plexus/plexus-build-api0:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity-engine/velocity-engine-core %{name} true
 
 %files -f .mfiles -f .mfiles-core
 %license LICENSE.txt LICENSE-2.0.txt
