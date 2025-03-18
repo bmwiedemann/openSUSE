@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb  5 14:03:48 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Assign Ctrl-Alt-Delete to shutdown, as we used to have in GNOME
+  since ever. So far, no shortcut assigned to Logout.
+
+-------------------------------------------------------------------
+Fri Jan 31 13:34:54 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add org.gnome.Papers.desktop as a preferred application: it's
+  favored over Evince when present (alphabetically listed behind
+  Evince, which suits us well here).
+
+-------------------------------------------------------------------
 Fri Nov  1 01:52:19 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Remove "picture-uri-dark" in schema "org.gnome.desktop.screensaver",
