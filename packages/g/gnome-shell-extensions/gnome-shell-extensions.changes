@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Mar 16 13:43:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + apps-menu: Fix scrolling items into view on keynav.
+  + Misc. bug fixes and cleanups.
+- Rebase gnome-shell-add-app-to-desktop.patch.
+
+-------------------------------------------------------------------
+Mon Mar  3 17:18:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb  5 12:51:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + window-list: Fix regression in chrome tracking
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb  5 12:29:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + classic: Add missing top-bar indicators
+  + window-list:
+    - Fix window state styling
+    - Fix "ignore-workspace" setting getting reset
+    - Allow rearranging window buttons
+    - Add workspaces page to preference dialog
+    - Add attention indicator
+  + places-menu:
+    - Sync list of places with nautilus
+    - Fix a11y labelling
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Feb  5 12:29:12 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.4:

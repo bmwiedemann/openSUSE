@@ -2440,4 +2440,15 @@
     <comment></comment>
     <requestid>1243998</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>4f49b7c01914f30756c97ae7e0da2ae2</srcmd5>
+    <version>48.0</version>
+    <time>1742315959</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + apps-menu: Fix scrolling items into view on keynav.
+  + Misc. bug fixes and cleanups.
+- Rebase gnome-shell-add-app-to-desktop.patch. (forwarded request 1253669 from dimstar)</comment>
+    <requestid>1253732</requestid>
+  </revision>
 </revisionlist>
