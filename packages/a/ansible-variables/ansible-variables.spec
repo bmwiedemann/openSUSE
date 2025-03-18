@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-variables
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-variables
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Tool to show origin of Ansible host context variables
 License:        GPL-3.0-or-later
@@ -50,13 +50,13 @@ BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.12.0
+BuildRequires:  ansible-core >= 2.18.0
 BuildRequires:  %{ansible_python}-pytest
 BuildRequires:  %{ansible_python}-rich
 # /SECTION
 BuildRequires:  fdupes
 Requires:       %{ansible_python}-rich
-Requires:       ansible-core >= 2.12.0
+Requires:       ansible-core >= 2.18.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
