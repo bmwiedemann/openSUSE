@@ -7,11 +7,11 @@ Subject: [PATCH] Disable ibus when out of CJK
  js/misc/ibusManager.js | 8 ++++++++
  1 file changed, 8 insertions(+)
 
-Index: gnome-shell-45.0/js/misc/ibusManager.js
+Index: gnome-shell-48.rc/js/misc/ibusManager.js
 ===================================================================
---- gnome-shell-45.0.orig/js/misc/ibusManager.js
-+++ gnome-shell-45.0/js/misc/ibusManager.js
-@@ -59,6 +59,10 @@ class IBusManager extends Signals.EventE
+--- gnome-shell-48.rc.orig/js/misc/ibusManager.js
++++ gnome-shell-48.rc/js/misc/ibusManager.js
+@@ -52,6 +52,10 @@ class IBusManager extends Signals.EventE
      constructor() {
          super();
  
@@ -22,7 +22,7 @@ Index: gnome-shell-45.0/js/misc/ibusManager.js
          IBus.init();
  
          // This is the longest we'll keep the keyboard frozen until an input
-@@ -114,6 +118,10 @@ class IBusManager extends Signals.EventE
+@@ -107,6 +111,10 @@ class IBusManager extends Signals.EventE
      }
  
      _spawn(extraArgs = []) {

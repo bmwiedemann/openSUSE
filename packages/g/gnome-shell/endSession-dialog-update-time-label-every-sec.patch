@@ -1,8 +1,8 @@
-Index: gnome-shell-45.0/js/ui/endSessionDialog.js
+Index: gnome-shell-48.rc/js/ui/endSessionDialog.js
 ===================================================================
---- gnome-shell-45.0.orig/js/ui/endSessionDialog.js
-+++ gnome-shell-45.0/js/ui/endSessionDialog.js
-@@ -379,7 +379,10 @@ class EndSessionDialog extends ModalDial
+--- gnome-shell-48.rc.orig/js/ui/endSessionDialog.js
++++ gnome-shell-48.rc/js/ui/endSessionDialog.js
+@@ -373,7 +373,10 @@ class EndSessionDialog extends ModalDial
  
          let description;
          let displayTime = _roundSecondsToInterval(

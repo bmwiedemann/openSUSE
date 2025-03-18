@@ -1,40 +1,11 @@
-Index: gnome-shell-47.beta/data/org.gnome.Shell-disable-extensions.service
+Index: gnome-shell-48.rc/data/org.gnome.Shell-disable-extensions.service
 ===================================================================
---- gnome-shell-47.beta.orig/data/org.gnome.Shell-disable-extensions.service
-+++ /dev/null
-@@ -1,15 +0,0 @@
--[Unit]
--Description=Disable GNOME Shell extensions after failure
--# Note that this unit must not conflict with anything, and must
--# be able to run in parallel with the gnome-session-shutdown.target.
--DefaultDependencies=no
--
--# We want to disable extensions only if gnome-shell has flagged the extensions
--# to be a likely cause of trouble.
--ConditionPathExists=%t/gnome-shell-disable-extensions
--
--[Service]
--Type=simple
--# Disable extensions
+--- gnome-shell-48.rc.orig/data/org.gnome.Shell-disable-extensions.service
++++ gnome-shell-48.rc/data/org.gnome.Shell-disable-extensions.service
+@@ -11,5 +11,5 @@ ConditionPathExists=%t/gnome-shell-disab
+ [Service]
+ Type=simple
+ # Disable extensions
 -ExecStart=gsettings set org.gnome.shell disable-user-extensions true
--Restart=no
-Index: gnome-shell-47.beta/data/org.gnome.Shell-disable-extensions.service.in
-===================================================================
---- /dev/null
-+++ gnome-shell-47.beta/data/org.gnome.Shell-disable-extensions.service.in
-@@ -0,0 +1,15 @@
-+[Unit]
-+Description=Disable GNOME Shell extensions after failure
-+# Note that this unit must not conflict with anything, and must
-+# be able to run in parallel with the gnome-session-shutdown.target.
-+DefaultDependencies=no
-+
-+# We want to disable extensions only if gnome-shell has flagged the extensions
-+# to be a likely cause of trouble.
-+ConditionPathExists=%t/gnome-shell-disable-extensions
-+
-+[Service]
-+Type=simple
-+# Disable extensions
 +ExecStart=@bindir@/gsettings set org.gnome.shell disable-user-extensions true
-+Restart=no
+ Restart=no

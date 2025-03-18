@@ -1,6 +1,8 @@
---- gnome-shell-41.orig/js/ui/endSessionDialog.js	2022-08-11 16:16:07.000000000 +0300
-+++ gnome-shell-41/js/ui/endSessionDialog.js	2022-10-26 12:49:20.435238071 +0300
-@@ -707,19 +703,7 @@
+Index: gnome-shell-48.rc/js/ui/endSessionDialog.js
+===================================================================
+--- gnome-shell-48.rc.orig/js/ui/endSessionDialog.js
++++ gnome-shell-48.rc/js/ui/endSessionDialog.js
+@@ -694,19 +694,7 @@ class EndSessionDialog extends ModalDial
      }
  
      async _getUpdateInfo() {
@@ -21,5 +23,3 @@
      }
  
      async OpenAsync(parameters, invocation) {
-         
-         

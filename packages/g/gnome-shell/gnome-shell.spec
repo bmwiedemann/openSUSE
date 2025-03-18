@@ -17,11 +17,11 @@
 
 
 %global __requires_exclude typelib\\(Meta|MetaTest|Soup|St|Cogl|Clutter|TelepathyGlib\\)
-%define mutter_api 15
-%define mutter_req 46.0
+%define mutter_api 16
+%define mutter_req 48.alpha
 
 Name:           gnome-shell
-Version:        47.5
+Version:        48.0
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -35,20 +35,16 @@ Source1:        libgnome-volume-control-0.gitmodule.tar.zst
 # SOURCE-FEATURE-OPENSUSE noise-texture boo#1176418 qkzhu@suse.com -- Add noise-texture as the default greeter background, used by patch4.
 Source100:      noise-texture.png
 
-# PATCH-NEEDS-REBASE # PATCH-FIX-OPENSUSE gnome-shell-executable-path-not-absolute.patch bsc#1176051 xwang@suse.com --  Fix ExecStart is not absolute path
-Patch7:         gnome-shell-executable-path-not-absolute.patch
-# PATCH-FIX-UPSTREAM gnome-shell-exit-crash-workaround.patch bsc#1190878 glgo#GNOME/gnome-shell#4344 qkzhu@suse.com -- Workaround logout crashing
-Patch8:         gnome-shell-exit-crash-workaround.patch
+# PATCH-FIX-OPENSUSE gnome-shell-executable-path-not-absolute.patch bsc#1176051 xwang@suse.com --  Fix ExecStart is not absolute path
+Patch1:         gnome-shell-executable-path-not-absolute.patch
 # PATCH-FIX-UPSTREAM gnome-shell-fix-cursor-on-hide-preedit.patch glgo#GNOME/gnome-shell!3318 alynx.zhou@suse.com -- Correctly reset cursor when hide preedit
-Patch9:         gnome-shell-fix-cursor-on-hide-preedit.patch
+Patch2:         gnome-shell-fix-cursor-on-hide-preedit.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
 Patch1001:      gnome-shell-gdm-login-applet.patch
 # PATCH-FEATURE-SLE gnome-shell-domain.patch fate#307773 dliang@suse.com -- Active Directory Integration
 Patch1002:      gnome-shell-domain.patch
-# PATCH-FIX-SLE gnome-shell-screen-disappear.patch bnc#870217 dliang@suse.com -- screen disapper.
-Patch1003:      gnome-shell-screen-disappear.patch
 # PATCH-FIX-SLE endSession-dialog-update-time-label-every-sec.patch bnc#886132 cxiong@suse.com -- update time label every second in end session dialog
 Patch1004:      endSession-dialog-update-time-label-every-sec.patch
 # PATCH-FIX-SLE gnome-shell-disable-ibus-when-not-installed.patch bsc#987360 qzhao@suse.com -- disable ibus start when outof Chinese, Japanese, Korean area
@@ -114,7 +110,6 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(mutter-clutter-%{mutter_api}) >= %{mutter_req}
 BuildRequires:  pkgconfig(mutter-cogl-%{mutter_api}) >= %{mutter_req}
-BuildRequires:  pkgconfig(mutter-cogl-pango-%{mutter_api}) >= %{mutter_req}
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3
@@ -187,22 +182,17 @@ pushd subprojects
 tar xf %{SOURCE1}
 mv libgnome-volume-control-0.gitmodule gvc
 popd
-# Patch needs rebase
-#%%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 9 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
-%if 0%{?sle_version}
+%if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
 %patch -P 1001 -p1
 %patch -P 1002 -p1
-%patch -P 1003 -p1
 %patch -P 1004 -p1
 %patch -P 1008 -p1
 %patch -P 1009 -p1
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %patch -P 1010 -p1
 %patch -P 1011 -p1
-%endif
 %patch -P 1012 -p1
 %patch -P 1013 -p1
 %endif
@@ -256,6 +246,7 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_libdir}/gnome-shell/libst-%{mutter_api}.so
 %{_datadir}/applications/org.gnome.Shell.desktop
 %{_datadir}/applications/org.gnome.Shell.PortalHelper.desktop
+%{_datadir}/dbus-1/interfaces/org.gnome.Shell.ScreenTime.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Introspect.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.PadOsd.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Screencast.xml
@@ -313,6 +304,8 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/dbus-1/services/org.gnome.Shell.Extensions.service
 %{_datadir}/gnome-shell/org.gnome.Shell.Extensions
 %{_datadir}/gnome-shell/org.gnome.Shell.Extensions.src.gresource
+%{_datadir}/desktop-directories/X-GNOME-Shell-Utilities.directory
+%{_datadir}/desktop-directories/X-GNOME-Shell-System.directory
 
 %files devel
 %doc %{_datadir}/doc/shell/

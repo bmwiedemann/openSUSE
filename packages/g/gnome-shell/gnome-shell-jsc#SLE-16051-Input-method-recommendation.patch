@@ -1,6 +1,7 @@
-diff -urp gnome-shell-46.4.orig/js/ui/status/keyboard.js gnome-shell-46.4/js/ui/status/keyboard.js
---- gnome-shell-46.4.orig/js/ui/status/keyboard.js	2024-08-08 13:52:20.517980778 -0500
-+++ gnome-shell-46.4/js/ui/status/keyboard.js	2024-08-08 15:51:36.434589734 -0500
+Index: gnome-shell-48.rc/js/ui/status/keyboard.js
+===================================================================
+--- gnome-shell-48.rc.orig/js/ui/status/keyboard.js
++++ gnome-shell-48.rc/js/ui/status/keyboard.js
 @@ -291,6 +291,39 @@ class InputSourceSessionSettings extends
          this._settings.connect(`changed::${this._KEY_KEYBOARD_OPTIONS}`, this._emitKeyboardOptionsChanged.bind(this));
          this._settings.connect(`changed::${this._KEY_KEYBOARD_MODEL}`, this._emitKeyboardModelChanged.bind(this));

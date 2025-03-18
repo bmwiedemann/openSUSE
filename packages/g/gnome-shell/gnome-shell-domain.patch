@@ -1,6 +1,7 @@
-diff -urpN gnome-shell-46.4.orig/js/gdm/domain.js gnome-shell-46.4/js/gdm/domain.js
---- gnome-shell-46.4.orig/js/gdm/domain.js	1969-12-31 18:00:00.000000000 -0600
-+++ gnome-shell-46.4/js/gdm/domain.js	2024-08-08 13:55:04.969310721 -0500
+Index: gnome-shell-48.rc/js/gdm/domain.js
+===================================================================
+--- /dev/null
++++ gnome-shell-48.rc/js/gdm/domain.js
 @@ -0,0 +1,236 @@
 +// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 +/*
@@ -238,10 +239,11 @@ diff -urpN gnome-shell-46.4.orig/js/gdm/domain.js gnome-shell-46.4/js/gdm/domain
 +        return this._activeDomain + this._separator + user;
 +    }
 +}
-diff -urpN gnome-shell-46.4.orig/js/gdm/loginDialog.js gnome-shell-46.4/js/gdm/loginDialog.js
---- gnome-shell-46.4.orig/js/gdm/loginDialog.js	2024-08-08 13:52:20.504647335 -0500
-+++ gnome-shell-46.4/js/gdm/loginDialog.js	2024-08-08 13:55:04.969310721 -0500
-@@ -29,6 +29,7 @@ import Shell from 'gi://Shell';
+Index: gnome-shell-48.rc/js/gdm/loginDialog.js
+===================================================================
+--- gnome-shell-48.rc.orig/js/gdm/loginDialog.js
++++ gnome-shell-48.rc/js/gdm/loginDialog.js
+@@ -28,6 +28,7 @@ import Shell from 'gi://Shell';
  import St from 'gi://St';
  
  import * as AuthPrompt from './authPrompt.js';
@@ -249,7 +251,7 @@ diff -urpN gnome-shell-46.4.orig/js/gdm/loginDialog.js gnome-shell-46.4/js/gdm/l
  import * as Batch from './batch.js';
  import * as BoxPointer from '../ui/boxpointer.js';
  import * as CtrlAltTab from '../ui/ctrlAltTab.js';
-@@ -535,6 +536,10 @@ export const LoginDialog = GObject.regis
+@@ -547,6 +548,10 @@ export const LoginDialog = GObject.regis
          this._authPrompt.hide();
          this.add_child(this._authPrompt);
  
@@ -260,7 +262,7 @@ diff -urpN gnome-shell-46.4.orig/js/gdm/loginDialog.js gnome-shell-46.4/js/gdm/l
          // translators: this message is shown below the user list on the
          // login screen. It can be activated to reveal an entry for
          // manually entering the username.
-@@ -556,7 +561,18 @@ export const LoginDialog = GObject.regis
+@@ -568,7 +573,18 @@ export const LoginDialog = GObject.regis
  
          this._notListedButton.hide();
  
@@ -278,9 +280,9 @@ diff -urpN gnome-shell-46.4.orig/js/gdm/loginDialog.js gnome-shell-46.4/js/gdm/l
 +            this._userLayout.add_child(this._domainMenuButton.actor);
 +        } // domain end
  
-         const bannerBox = new St.BoxLayout({vertical: true});
- 
-@@ -1125,6 +1141,37 @@ export const LoginDialog = GObject.regis
+         const bannerBox = new St.BoxLayout({
+             orientation: Clutter.Orientation.VERTICAL,
+@@ -1185,6 +1201,37 @@ export const LoginDialog = GObject.regis
          conflictingSessionDialog.open();
      }
  
@@ -318,7 +320,7 @@ diff -urpN gnome-shell-46.4.orig/js/gdm/loginDialog.js gnome-shell-46.4/js/gdm/l
      _startSession(serviceName) {
          this._bindOpacity();
          this.ease({
-@@ -1332,6 +1379,11 @@ export const LoginDialog = GObject.regis
+@@ -1397,6 +1444,11 @@ export const LoginDialog = GObject.regis
          this._askForUsernameAndBeginVerification();
      }
  
@@ -330,7 +332,7 @@ diff -urpN gnome-shell-46.4.orig/js/gdm/loginDialog.js gnome-shell-46.4/js/gdm/l
      _hideUserListAndBeginVerification() {
          this._hideUserList();
          this._authPrompt.begin();
-@@ -1345,6 +1397,9 @@ export const LoginDialog = GObject.regis
+@@ -1410,6 +1462,9 @@ export const LoginDialog = GObject.regis
          this._sessionMenuButton.hide();
          this._setUserListExpanded(true);
          this._notListedButton.show();
@@ -340,9 +342,10 @@ diff -urpN gnome-shell-46.4.orig/js/gdm/loginDialog.js gnome-shell-46.4/js/gdm/l
          this._userList.grab_key_focus();
      }
  
-diff -urpN gnome-shell-46.4.orig/js/js-resources.gresource.xml gnome-shell-46.4/js/js-resources.gresource.xml
---- gnome-shell-46.4.orig/js/js-resources.gresource.xml	2024-08-08 13:54:24.078981982 -0500
-+++ gnome-shell-46.4/js/js-resources.gresource.xml	2024-08-08 13:55:04.969310721 -0500
+Index: gnome-shell-48.rc/js/js-resources.gresource.xml
+===================================================================
+--- gnome-shell-48.rc.orig/js/js-resources.gresource.xml
++++ gnome-shell-48.rc/js/js-resources.gresource.xml
 @@ -3,6 +3,7 @@
    <gresource prefix="/org/gnome/shell">
      <file>gdm/authList.js</file>
@@ -351,14 +354,15 @@ diff -urpN gnome-shell-46.4.orig/js/js-resources.gresource.xml gnome-shell-46.4/
      <file>gdm/batch.js</file>
      <file>gdm/credentialManager.js</file>
      <file>gdm/loginDialog.js</file>
-diff -urpN gnome-shell-46.4.orig/po/POTFILES.in gnome-shell-46.4/po/POTFILES.in
---- gnome-shell-46.4.orig/po/POTFILES.in	2024-08-08 13:52:20.521314138 -0500
-+++ gnome-shell-46.4/po/POTFILES.in	2024-08-08 13:55:04.969310721 -0500
-@@ -9,6 +9,7 @@ data/org.gnome.Shell.Extensions.desktop.
- data/org.gnome.Shell.PortalHelper.desktop.in.in
+Index: gnome-shell-48.rc/po/POTFILES.in
+===================================================================
+--- gnome-shell-48.rc.orig/po/POTFILES.in
++++ gnome-shell-48.rc/po/POTFILES.in
+@@ -11,6 +11,7 @@ data/X-GNOME-Shell-System.directory.desk
+ data/X-GNOME-Shell-Utilities.directory.desktop.in
  js/dbusServices/extensions/ui/extension-error-page.ui
  js/gdm/authPrompt.js
 +js/gdm/domain.js
  js/gdm/loginDialog.js
  js/gdm/util.js
- js/misc/systemActions.js
+ js/misc/breakManager.js

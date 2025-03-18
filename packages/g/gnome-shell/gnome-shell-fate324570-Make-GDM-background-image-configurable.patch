@@ -1,18 +1,20 @@
-diff -urp gnome-shell-46.4.orig/data/gnome-shell-theme.gresource.xml gnome-shell-46.4/data/gnome-shell-theme.gresource.xml
---- gnome-shell-46.4.orig/data/gnome-shell-theme.gresource.xml	2024-08-08 13:52:20.487980529 -0500
-+++ gnome-shell-46.4/data/gnome-shell-theme.gresource.xml	2024-08-08 15:23:52.451210823 -0500
-@@ -13,6 +13,7 @@
+Index: gnome-shell-48.rc/data/gnome-shell-theme.gresource.xml
+===================================================================
+--- gnome-shell-48.rc.orig/data/gnome-shell-theme.gresource.xml
++++ gnome-shell-48.rc/data/gnome-shell-theme.gresource.xml
+@@ -7,6 +7,7 @@
      <file>gnome-shell-light.css</file>
      <file>gnome-shell-high-contrast.css</file>
      <file>gnome-shell-start.svg</file>
 +    <file>noise-texture.png</file>
      <file>pad-osd.css</file>
-     <file>process-working-light.svg</file>
-     <file>process-working-dark.svg</file>
-diff -urp gnome-shell-46.4.orig/js/ui/screenShield.js gnome-shell-46.4/js/ui/screenShield.js
---- gnome-shell-46.4.orig/js/ui/screenShield.js	2024-08-08 13:52:20.514647416 -0500
-+++ gnome-shell-46.4/js/ui/screenShield.js	2024-08-08 15:49:50.656867413 -0500
-@@ -11,6 +11,7 @@ import St from 'gi://St';
+     <file>workspace-placeholder.svg</file>
+   </gresource>
+Index: gnome-shell-48.rc/js/ui/screenShield.js
+===================================================================
+--- gnome-shell-48.rc.orig/js/ui/screenShield.js
++++ gnome-shell-48.rc/js/ui/screenShield.js
+@@ -9,6 +9,7 @@ import St from 'gi://St';
  
  import * as Signals from '../misc/signals.js';
  
@@ -20,7 +22,7 @@ diff -urp gnome-shell-46.4.orig/js/ui/screenShield.js gnome-shell-46.4/js/ui/scr
  import * as GnomeSession from '../misc/gnomeSession.js';
  import * as OVirt from '../gdm/oVirt.js';
  import * as LoginManager from '../misc/loginManager.js';
-@@ -23,6 +24,8 @@ import * as SmartcardManager from '../mi
+@@ -21,6 +22,8 @@ import * as SmartcardManager from '../mi
  
  import {adjustAnimationTime} from '../misc/animationUtils.js';
  
@@ -29,17 +31,17 @@ diff -urp gnome-shell-46.4.orig/js/ui/screenShield.js gnome-shell-46.4/js/ui/scr
  const SCREENSAVER_SCHEMA = 'org.gnome.desktop.screensaver';
  const LOCK_ENABLED_KEY = 'lock-enabled';
  const LOCK_DELAY_KEY = 'lock-delay';
-@@ -32,6 +35,9 @@ const DISABLE_LOCK_KEY = 'disable-lock-s
+@@ -30,6 +33,9 @@ const DISABLE_LOCK_KEY = 'disable-lock-s
  
  const LOCKED_STATE_STR = 'screenShield.locked';
  
-+const BLUR_BRIGHTNESS = 0.55;
-+const BLUR_SIGMA = 60;
++const BLUR_BRIGHTNESS = 0.35;
++const BLUR_RADIUS = 90;
 +
  // ScreenShield animation time
  // - STANDARD_FADE_TIME is used when the session goes idle
  // - MANUAL_FADE_TIME is used for lowering the shield when asked by the user,
-@@ -74,6 +80,16 @@ export class ScreenShield extends Signal
+@@ -72,6 +78,16 @@ export class ScreenShield extends Signal
              name: 'lockDialogGroup',
          });
  
@@ -56,8 +58,8 @@ diff -urp gnome-shell-46.4.orig/js/ui/screenShield.js gnome-shell-46.4/js/ui/scr
          this.actor.add_child(this._lockScreenGroup);
          this.actor.add_child(this._lockDialogGroup);
  
-@@ -142,6 +158,15 @@ export class ScreenShield extends Signal
-         this._cursorTracker = Meta.CursorTracker.get_for_display(global.display);
+@@ -140,6 +156,15 @@ export class ScreenShield extends Signal
+         this._cursorTracker = global.backend.get_cursor_tracker();
  
          this._syncInhibitor();
 +
@@ -72,7 +74,7 @@ diff -urp gnome-shell-46.4.orig/js/ui/screenShield.js gnome-shell-46.4/js/ui/scr
      }
  
      async _getLoginSession() {
-@@ -517,6 +542,53 @@ export class ScreenShield extends Signal
+@@ -515,6 +540,59 @@ export class ScreenShield extends Signal
          this.emit('wake-up-screen');
      }
  
@@ -84,6 +86,7 @@ diff -urp gnome-shell-46.4.orig/js/ui/screenShield.js gnome-shell-46.4/js/ui/scr
 +            y: monitor.y,
 +            width: monitor.width,
 +            height: monitor.height,
++            effect: new Shell.BlurEffect({name: 'blur'}),
 +        });
 +
 +        let bgManager = new Background.BackgroundManager({
@@ -98,17 +101,8 @@ diff -urp gnome-shell-46.4.orig/js/ui/screenShield.js gnome-shell-46.4/js/ui/scr
 +        this._bgLockDialogGroup.add_child(widget);
 +
 +        const themeContext = St.ThemeContext.get_for_stage(global.stage);
-+
-+        let effect = new Shell.BlurEffect({
-+            brightness: BLUR_BRIGHTNESS,
-+            sigma: BLUR_SIGMA * themeContext.scale_factor,
-+        });
-+
-+        this._scaleChangedId = themeContext.connect('notify::scale-factor', () => {
-+            effect.sigma = BLUR_SIGMA * themeContext.scale_factor;
-+        });
-+
-+        widget.add_effect(effect);
++        themeContext.connectObject('notify::scale-factor',
++            () => this._updateBackgroundEffects(), this);
 +    }
 +
 +    _updateBgLockDialogGroup() {
@@ -120,8 +114,22 @@ diff -urp gnome-shell-46.4.orig/js/ui/screenShield.js gnome-shell-46.4/js/ui/scr
 +
 +        for (let i = 0; i < Main.layoutManager.monitors.length; i++)
 +            this._createBgLockDialogGroup(i);
++        this._updateBackgroundEffects();
 +    }
 +
++    _updateBackgroundEffects() {
++        const themeContext = St.ThemeContext.get_for_stage(global.stage);
++
++        for (const widget of this._bgLockDialogGroup) {
++            const effect = widget.get_effect('blur');
++            if (effect) {
++               effect.set({
++                  brightness: BLUR_BRIGHTNESS,
++                  radius: BLUR_RADIUS * themeContext.scale_factor,
++               });
++            }
++        }
++    }
 +
      get locked() {
          return this._isLocked;

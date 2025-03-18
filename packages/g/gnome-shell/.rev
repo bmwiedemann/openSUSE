@@ -2454,4 +2454,36 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment></comment>
     <requestid>1249989</requestid>
   </revision>
+  <revision rev="269" vrev="1">
+    <srcmd5>87cdc95679f123c6fb2c109665e0d0e9</srcmd5>
+    <version>48.0</version>
+    <time>1742315960</time>
+    <user>anag+factory</user>
+    <comment>- Update patches:
+  + endSession-dialog-update-time-label-every-sec.patch
+  + gnome-shell-add-linkoption-dl.patch
+  + gnome-shell-disable-ibus-when-not-installed.patch
+  + gnome-shell-disable-offline-update-dialog.patch
+  + gnome-shell-domain.patch
+  + gnome-shell-executable-path-not-absolute.patch
+  + gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
+  + gnome-shell-gdm-login-applet.patch
+  + gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
+  + gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
+  + gnome-shell-screen-disappear.patch
+- Drop upstream patches:
+  + gnome-shell-exit-crash-workaround.patch
+  + gnome-shell-screen-disappear.patch
+
+- Update to version 48.0:
+  + Fix ibus candidate popup position
+  + breakManager: Allow break to be taken or delayed when overdue
+  + Fix audio selection dialog in light style
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+- Drop use of sle_version in favor of is_opensuse and suse_version.
+  Sle_version is no longer used in SLE 16. (forwarded request 1253670 from dimstar)</comment>
+    <requestid>1253733</requestid>
+  </revision>
 </revisionlist>
