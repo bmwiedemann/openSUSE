@@ -1,7 +1,7 @@
 #
 # spec file for package evince
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,13 @@
 #
 
 
-%define _major_version 3.0
+%define evdocument_so 3-4
+%define evview_so 3-3
+%define typelibAPI 3_0
 %define pluginAPI 4
 
 Name:           evince
-Version:        46.3.1
+Version:        48.0
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
@@ -94,35 +96,35 @@ document formats like PDF and PostScript.
 Separate plugin packages, e.g. evince-plugin-pdfdocument, need to be present
 for certain formats to be recognized.
 
-%package -n libevdocument3-4
+%package -n libevdocument%{evdocument_so}
 Summary:        GNOME Document Viewer System Library
 Group:          System/Libraries
 
-%description -n libevdocument3-4
+%description -n libevdocument%{evdocument_so}
 Evince is a document viewer capable of displaying single-page and multi-page
 document formats like PDF and PostScript.
 
-%package -n libevview3-3
+%package -n libevview%{evview_so}
 Summary:        GNOME Document Viewer System Library
 Group:          System/Libraries
 
-%description -n libevview3-3
+%description -n libevview%{evview_so}
 Evince is a document viewer capable of displaying single-page and multi-page
 document formats like PDF and PostScript.
 
-%package -n typelib-1_0-EvinceDocument-3_0
+%package -n typelib-1_0-EvinceDocument-%{typelibAPI}
 Summary:        Introspection bindings for the Evince Document Viewer
 Group:          System/Libraries
 
-%description -n typelib-1_0-EvinceDocument-3_0
+%description -n typelib-1_0-EvinceDocument-%{typelibAPI}
 Evince is a document viewer capable of displaying single-page and multi-page
 document formats like PDF and PostScript.
 
-%package -n typelib-1_0-EvinceView-3_0
+%package -n typelib-1_0-EvinceView-%{typelibAPI}
 Summary:        Introspection bindings for the Evince Document Viewer
 Group:          System/Libraries
 
-%description -n typelib-1_0-EvinceView-3_0
+%description -n typelib-1_0-EvinceView-%{typelibAPI}
 Evince is a document viewer capable of displaying single-page and multi-page
 document formats like PDF and PostScript.
 
@@ -130,10 +132,10 @@ document formats like PDF and PostScript.
 Summary:        Header files for the Evince Document Viewer
 Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
-Requires:       libevdocument3-4 = %{version}
-Requires:       libevview3-3 = %{version}
-Requires:       typelib-1_0-EvinceDocument-3_0 = %{version}
-Requires:       typelib-1_0-EvinceView-3_0 = %{version}
+Requires:       libevdocument%{evdocument_so} = %{version}
+Requires:       libevview%{evview_so} = %{version}
+Requires:       typelib-1_0-EvinceDocument-%{typelibAPI} = %{version}
+Requires:       typelib-1_0-EvinceView-%{typelibAPI} = %{version}
 
 %description devel
 Evince is a document viewer capable of displaying single-page and multi-page
@@ -232,8 +234,8 @@ A plugin for Evince to read XPS documents.
 %find_lang %{name} %{?no_lang_C} --metainfo %{name}
 %fdupes %{buildroot}/%{_prefix}
 
-%ldconfig_scriptlets -n libevdocument3-4
-%ldconfig_scriptlets -n libevview3-3
+%ldconfig_scriptlets -n libevdocument%{evdocument_so}
+%ldconfig_scriptlets -n libevview%{evview_so}
 
 %files
 %license COPYING
@@ -257,17 +259,17 @@ A plugin for Evince to read XPS documents.
 %{_mandir}/man?/*%{ext_man}
 %{_userunitdir}/org.gnome.Evince.service
 
-%files -n libevdocument3-4
-%{_libdir}/libevdocument3.so.4*
+%files -n libevdocument%{evdocument_so}
+%{_libdir}/libevdocument*.so.*
 
-%files -n libevview3-3
-%{_libdir}/libevview3.so.3*
+%files -n libevview%{evview_so}
+%{_libdir}/libevview*.so.*
 
-%files -n typelib-1_0-EvinceDocument-3_0
-%{_libdir}/girepository-1.0/EvinceDocument-3.0.typelib
+%files -n typelib-1_0-EvinceDocument-%{typelibAPI}
+%{_libdir}/girepository-1.0/EvinceDocument-*.typelib
 
-%files -n typelib-1_0-EvinceView-3_0
-%{_libdir}/girepository-1.0/EvinceView-3.0.typelib
+%files -n typelib-1_0-EvinceView-%{typelibAPI}
+%{_libdir}/girepository-1.0/EvinceView-*.typelib
 
 %files devel
 %{_includedir}/evince

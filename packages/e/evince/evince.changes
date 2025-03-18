@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar 15 12:29:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + shell:
+    - Improve support for Adobe PDF open parameters.
+    - When "saving as.." don't copy the original file modification
+      time.
+  + build: Update dependency versions for flatpak.
+  + docs: Fix dead link in CONTRIBUTING.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  1 09:31:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + backends: Improve support for Adobe PDF open parameters
+  + build: Update dependency versions for flatpak
+  + ci: Automate publishing of release tarballs
+  + libdocument: When "saving as.." don't copy the original file
+    modification time
+  + Updated translations.
+- Drop _major_version define.
+- Add new evdocument_so, evview_so and typelibAPI defines.
+
+-------------------------------------------------------------------
 Mon Jul 22 19:15:56 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.3.1:

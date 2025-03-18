@@ -1407,4 +1407,19 @@ New stable release</comment>
    + Updated translations. (forwarded request 1189119 from iznogood)</comment>
     <requestid>1189149</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>7bde9cd0e05dd6d4b6af7eb01b45388a</srcmd5>
+    <version>48.0</version>
+    <time>1742315975</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + shell:
+    - Improve support for Adobe PDF open parameters.
+    - When &quot;saving as..&quot; don't copy the original file modification
+      time.
+  + build: Update dependency versions for flatpak.
+  + docs: Fix dead link in CONTRIBUTING.
+  + Updated translations. (forwarded request 1253808 from iznogood)</comment>
+    <requestid>1253835</requestid>
+  </revision>
 </revisionlist>
