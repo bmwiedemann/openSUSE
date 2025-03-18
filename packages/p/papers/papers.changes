@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Thu Mar 13 08:14:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Papers is now a lot more stable during reloads, due to multiple
+    race and memory-safety bugs fixed.
+  + Fullscreen mode at startup works now more reliably
+  + Bugs fixed:
+    - Replace pending_scroll/pending_resize/pending_point machinery
+      in PpsView
+    - Assumes http instead of https.
+    - Links in Non Continuos Mode Do Not Jump to the Correct
+      Position
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 10 08:44:07 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop papers-plugin-pdfdocument Suggests: It's already a
+  Recommends.
+
+-------------------------------------------------------------------
+Sun Mar  2 08:24:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Update minimum poppler requirement to 25.01.0
+  + Given the lack of downstream users, there were several API and
+    ABI breaking changes in the libraries, but sonames were not
+    updated
+  + rust: Raise MSRV to 1.75
+  + Add sysprof build feature
+  + Multiple improvements to focus handling
+  + Improve Search UX deciding when does the sidebar and its
+    selection should activate
+  + Fix signing that broke in 48.beta
+  + Various bugs fixed.
+  + Updated translations.
+- Pass sysprof=disabled to meson setup. Avoid depending on sysprof
+
+-------------------------------------------------------------------
+Fri Feb  7 09:44:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + The location of the shell and the Rust bindings changed after
+    the shell's Rust port was completed.
+  + Papers minimum required Poppler version did not change, however
+    to support free text annotations Poppler >= 25.02 is required
+    with a detection at build time only.
+  + The PostScript and XPS document formats have been dropped.
+    Papers has a modular plugin system that allows implementing
+    support for those formats out-of-tree. If there are users still
+    interested in those formats, feel free to reach out to us, so
+    we can help you setup maintenance out-of-tree, and make sure we
+    don't break them. However, we recommend transforming any old
+    documents you might still have in those formats, to other more
+    appropriate and moderns formats still read by the Papers'
+    default configuration. For PostScript, there has been a
+    previous discussion to which you can contribute (#151). For
+    XPS, there has been no previous public consideration, but the
+    format seems to never have gained traction and is deprecated
+    elsewhere.
+  + Simplified printing job handling relying more on GTK's
+    implementation
+  + After supporting digitially signing in 47, we now have the
+    counterpart of digital signature verification.
+  + Redesign of annotation windows
+  + Improved context menu for annotation
+  + Replaced caret mode confirmation dialog with toast
+  + Create text annotations in a single action
+  + Removed bookmarks sidebar completely. Did not follow current
+    mock-ups, and the way bookmarks were stored locally had
+    multiple issues. Both UI and backend would need to be written
+    from scratch.
+  + The night mode now preserves hue and only adjust the
+    luminosity. From now on this is no longer a per-document
+    setting is retained across open and future windows.
+  + Finished Rust port of shell
+  + Supporting free text and stamp annotations
+  + Add support for libspelling
+  + Update attachment sidebar UI
+  + Fixes:
+    - text selection does not copy content with middle mouse button
+    - support help action in Flatpak's bubblewrap sandbox
+    - handle switching between fullscreen and presentation mode
+      correctly
+    - nearest search result not scrolled to if it's the first one
+- Stop passing ps=enabled to meson setup, ps support dropped
+  upstream.
+- Add pkgconfig(libspelling-1) BuildRequires: New dependency.
+- Drop sub-packages: libppsshell4-5, plugin-psdocument and
+  plugin-xpsdocument following upstream changes.
+- No longer suggest plugin-psdocument and plugin-xpsdocument:
+  packages removed.
+
+-------------------------------------------------------------------
 Thu Jan 30 17:25:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.3:

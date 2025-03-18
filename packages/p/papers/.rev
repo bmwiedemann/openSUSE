@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1241622</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0bfb3ef53c0acff7dfb56d855db8e1ff</srcmd5>
+    <version>48.0</version>
+    <time>1742316037</time>
+    <user>anag+factory</user>
+    <comment>- No longer suggest plugin-psdocument and plugin-xpsdocument:
+  packages removed. (forwarded request 1252839 from dimstar)</comment>
+    <requestid>1252846</requestid>
+  </revision>
 </revisionlist>

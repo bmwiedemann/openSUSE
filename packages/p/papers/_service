@@ -2,11 +2,11 @@
 <services>
   <service mode="manual" name="obs_scm">
     <param name="url">https://gitlab.gnome.org/GNOME/Incubator/papers.git</param>
+    <param name="revision">48.0</param>    
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="scm">git</param>
-    <param name="revision">47.3</param>
 <!--    <param name="changesgenerate">enable</param> -->
   </service>
   <service mode="buildtime" name="tar" />
@@ -16,8 +16,8 @@
   </service>
   <service mode="manual" name="set_version"/>
   <service name="cargo_vendor" mode="manual">
-     <param name="src">papers/shell-rs</param>
+     <param name="src">papers</param>
      <param name="compression">zst</param>
-     <param name="update">false</param>
+     <param name="update">true</param>
   </service>
 </services>

@@ -23,7 +23,7 @@
 %define plugin_ver 5
 %define appid org.gnome.Papers
 Name:           papers
-Version:        47.3
+Version:        48.0
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
@@ -43,20 +43,18 @@ BuildRequires:  pkgconfig(ddjvuapi)
 BuildRequires:  pkgconfig(exempi-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.13.8
+BuildRequires:  pkgconfig(gtk4) >= 4.17.1
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(libgxps)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libspectre)
+BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(poppler-glib)
 Recommends:     papers-plugin-pdfdocument
 Suggests:       papers-plugin-comicsdocument
 Suggests:       papers-plugin-djvudocument
-Suggests:       papers-plugin-psdocument
 Suggests:       papers-plugin-tiffdocument
-Suggests:       papers-plugin-pdfdocument
 
 %description
 Papers is a document viewer capable of displaying single-page and multi-page
@@ -73,13 +71,6 @@ document formats like PDF and PostScript.
 Summary:        GNOME Document Viewer System Library
 
 %description -n libppsview%{api_ver}-%{major_ver}
-Papers is a document viewer capable of displaying single-page and multi-page
-document formats like PDF and PostScript.
-
-%package -n libppsshell%{api_ver}-%{major_ver}
-Summary:        GNOME Document Viewer System Library
-
-%description -n libppsshell%{api_ver}-%{major_ver}
 Papers is a document viewer capable of displaying single-page and multi-page
 document formats like PDF and PostScript.
 
@@ -130,26 +121,12 @@ Requires:       %{name} = %{version}
 %description plugin-pdfdocument
 A plugin for Papers to read PDF documents.
 
-%package plugin-psdocument
-Summary:        PostScript document support for Papers
-Requires:       %{name} = %{version}
-
-%description plugin-psdocument
-A plugin for Papers to read PostScript documents.
-
 %package plugin-tiffdocument
 Summary:        TIFF document support for Papers
 Requires:       %{name} = %{version}
 
 %description plugin-tiffdocument
 A plugin for Papers to read TIFF images.
-
-%package plugin-xpsdocument
-Summary:        XPS document support for Papers
-Requires:       %{name} = %{version}
-
-%description plugin-xpsdocument
-A plugin for Papers to read XPS documents.
 
 %package -n nautilus-extension-papers
 Summary:        Papers document support for nautilus
@@ -163,16 +140,13 @@ A extension for support document on nautilus.
 %prep
 %autosetup -a1
 
-# unneeded cargo-fmt
-sed -i 's|true|false|' shell-rs/meson.build
-
 %build
 %meson \
 	--libexecdir=%{_libexecdir}/%{name} \
-	-D ps=enabled \
 	-D documentation=false \
 	-D user_doc=false \
 	-D tests=false \
+	-D sysprof=disabled \
     %{nil}
 %meson_build
 
@@ -183,7 +157,6 @@ sed -i 's|true|false|' shell-rs/meson.build
 %find_lang %{name}
 
 %ldconfig_scriptlets -n libppsdocument%{api_ver}-%{plugin_ver}
-%ldconfig_scriptlets -n libppsshell%{api_ver}-%{major_ver}
 %ldconfig_scriptlets -n libppsview%{api_ver}-%{major_ver}
 
 %check
@@ -210,9 +183,6 @@ sed -i 's|true|false|' shell-rs/meson.build
 
 %files -n libppsview%{api_ver}-%{major_ver}
 %{_libdir}/libppsview-%{major_ver}.0.so.%{major_ver}*
-
-%files -n libppsshell%{api_ver}-%{major_ver}
-%{_libdir}/libppsshell-%{major_ver}.0.so.%{major_ver}*
 
 %files -n typelib-1_0-PapersDocument-%{api_ver}
 %{_libdir}/girepository-1.0/PapersDocument-%{major_ver}.0.typelib
@@ -244,20 +214,10 @@ sed -i 's|true|false|' shell-rs/meson.build
 %{_libdir}/papers/%{plugin_ver}/backends/pdfdocument.papers-backend
 %{_libdir}/papers/%{plugin_ver}/backends/libpdfdocument.so
 
-%files plugin-psdocument
-%{_datadir}/metainfo/papers-psdocument.metainfo.xml
-%{_libdir}/papers/%{plugin_ver}/backends/psdocument.papers-backend
-%{_libdir}/papers/%{plugin_ver}/backends/libpsdocument.so
-
 %files plugin-tiffdocument
 %{_datadir}/metainfo/papers-tiffdocument.metainfo.xml
 %{_libdir}/papers/%{plugin_ver}/backends/tiffdocument.papers-backend
 %{_libdir}/papers/%{plugin_ver}/backends/libtiffdocument.so
-
-%files plugin-xpsdocument
-%{_datadir}/metainfo/papers-xpsdocument.metainfo.xml
-%{_libdir}/papers/%{plugin_ver}/backends/xpsdocument.papers-backend
-%{_libdir}/papers/%{plugin_ver}/backends/libxpsdocument.so
 
 %files -n nautilus-extension-papers
 %{_libdir}/nautilus/extensions-4/libpapers-document-properties.so
