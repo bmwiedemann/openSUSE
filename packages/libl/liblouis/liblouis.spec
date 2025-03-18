@@ -18,7 +18,7 @@
 
 %define sover 20
 Name:           liblouis
-Version:        3.32.0
+Version:        3.33.0
 Release:        0
 Summary:        Two-way braille translator
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later

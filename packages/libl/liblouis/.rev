@@ -573,4 +573,12 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     <comment></comment>
     <requestid>1252743</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>1fa207e9edb4dcbb8c5332ab52dbe80e</srcmd5>
+    <version>3.33.0</version>
+    <time>1742315986</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.33.0 (forwarded request 1253959 from mgorse)</comment>
+    <requestid>1253992</requestid>
+  </revision>
 </revisionlist>

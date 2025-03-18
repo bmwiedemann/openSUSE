@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 18 01:24:57 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.33.0:
+  + This release combines braille improvements with security
+    enhancements.  We have new tables for Coptic braille, Cuneiform
+    transliteration and for Portuguese 6-dot computer braille.
+    There are improvements to Dutch, Hungarian, the International
+    Phonetic Alphabet, Norwegian and UEB. On the security side a
+    lot of people have reported and fixed buffer overflows and
+    other memory issues.
+
+-------------------------------------------------------------------
 Thu Mar 13 11:53:19 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update license to GPL-3.0-or-later AND LGPL-2.1-or-later, based on
