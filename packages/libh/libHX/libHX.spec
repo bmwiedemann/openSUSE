@@ -1,7 +1,7 @@
 #
 # spec file for package libHX
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libHX
 %define lname   libHX32
-Version:        4.24
+Version:        4.27
 Release:        0
 Summary:        Collection of routines for C and C++ programming
 License:        LGPL-2.1-or-later
@@ -83,8 +83,7 @@ find "$b/%_libdir" -type f -name "*.la" -delete
 %check
 %make_build -C obj check
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libHX*.so.32*
