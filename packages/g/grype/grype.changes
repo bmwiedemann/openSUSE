@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 18 05:47:30 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.90.0:
+  * chore(deps): update anchore dependencies (#2533)
+  * feat: specify distro without version (#2534)
+  * import DB from URL (#2532)
+  * Improve DB metadata regarding data provenance (#2529)
+  * chore(deps): bump github/codeql-action from 3.28.10 to 3.28.11
+    (#2519)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 1.0.0
+    to 1.1.0 (#2525)
+  * chore(deps): update tools to latest versions (#2512)
+  * chore(deps): bump docker/login-action from 3.3.0 to 3.4.0
+    (#2528)
+
+-------------------------------------------------------------------
 Fri Mar 14 06:27:30 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.89.1:
