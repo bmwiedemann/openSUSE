@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 17 14:48:44 UTC 2025 - ecsos@opensuse.org
+
+- Update to version 0.10.4:
+  * v0.10.4
+  * update dependencies
+  * lib: update libdrm_amdgpu_sys rev
+  * tui: update info_bar
+  * lib: update libdrm_amdgpu_sys rev
+  * lib: use smu_ip_version instead of asic_name
+  * lib: check that fan_rpm is None
+  * lib: implement workaround for RDNA 4 dGPU (SMU v14.0.2/3) dose not have fan1_input
+  * lib: implement workaround for Raphael/Granite Ridge APU reported input power
+  * print DevicePath in hex
+
+-------------------------------------------------------------------
 Fri Feb 14 06:23:08 UTC 2025 - ecsos@opensuse.org
 
 - Update to version 0.10.3:

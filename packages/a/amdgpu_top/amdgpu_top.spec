@@ -17,7 +17,7 @@
 
 
 Name:           amdgpu_top
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        Tool that displays AMD GPU utilization
 License:        MIT
@@ -25,6 +25,7 @@ URL:            https://github.com/Umio-Yasuno/amdgpu_top
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging >= 1.2.0
+BuildRequires:  cargo >= 1.85
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libdrm_amdgpu)
 Requires:       libwayland-egl1
