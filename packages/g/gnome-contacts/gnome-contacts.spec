@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-contacts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define glib_version 2.64
 
 Name:           gnome-contacts
-Version:        47.1.1
+Version:        48.0
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
@@ -108,7 +108,7 @@ search results from contacts.
 %{_mandir}/man1/gnome-contacts.1%{ext_man}
 %{_bindir}/gnome-contacts
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.Contacts.appdata.xml
+%{_datadir}/metainfo/org.gnome.Contacts.metainfo.xml
 %{_datadir}/applications/org.gnome.Contacts.desktop
 %{_datadir}/dbus-1/services/org.gnome.Contacts.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Contacts.gschema.xml
