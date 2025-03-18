@@ -1,4 +1,268 @@
 -------------------------------------------------------------------
+Mon Mar 17 10:49:16 UTC 2025 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 2.12:
+  * Release v2.12
+  * doc: Regenerate all docs for v2.12
+  * build: bump libnvme wrap
+  * wdc: On FreeBSD, get the timezone the same as with real glibc
+  * nvme: add error message for mmap_registers
+  * sed: improved contextual error messages
+  * nvme: use correct parser type for nvmsetid and endgid option
+  * nvme-print: print new fields of Asynchronous Event Configuration
+  * completions: add pull-model-ddc-req-log command
+  * doc: add pull-model-ddr-req-log command
+  * nvme: add pull-model-ddc-req-log command
+  * nvme: fix ave-discovery-log command LID setting
+  * Makefile: Add new targets and update meson command syntax
+  * micron: Add missing newline
+  * completions: add ave-discovery-log command
+  * doc: add ave-discovery-log command
+  * Documentation: Added solidigm plugin commands to main manual page.
+  * nvme-print: add human readable output for IOCS Data Structure
+  * build: bump libnvme wrap
+  * sed: extended discovery feature code printing
+  * netapp-ontapdev: correct the basestr header (bsc#1237275)
+  * nvme: add ave-discovery-log command
+  * nvme-print-json: delete json_host_discovery_log printf error code
+  * netapp-smdev: update err msg for no smdevices (bsc#1237275)
+  * netapp-ontapdev: update err msg for no ontapdevices (bsc#1237275)
+  * netapp-smdev: update basestr header in verbose output (bsc#1237275)
+  * netapp-ontapdev: update basestr headers in verbose output
+  * nvme: enforce ns granularity on ns create
+  * doc: add host-discovery-log command
+  * completions: add host-discovery-log command
+  * completions: fix zsh completions array parameter names
+  * nvme: add host-discovery-log command
+  * build: bump libnvme wrap
+  * nvme-print: print Host Behavior Support feature fields
+  * completions: Added fdp feature auto-completion.
+  * nvme-wrap: fix get_log_reachability_associations parameters order
+  * nvme-print-binary: fix to output phy rx eom log length
+  * nvme-print-binary: fix to output dispersed ns participating nss log length
+  * nvme-print-binary: fix to output reachability groups log length
+  * nvme-print-binary: fix to output reachability associations log length
+  * plugins/ocp: Added OCP 2.6 telemetry support Updated the Telemetry Structure and Enum to support the OCP 2.6 spec
+  * util/logging: fix print format string
+  * plugins/sed: use platform depended cast for pointer type
+  * plugins/virtium: fix print format string
+  * util/types: fix print format string
+  * build: bump libnvme wrap
+  * nvme-print: print new fields of nvm_id_ctrl
+  * nvme: check for valid output format (bsc#1237275)
+  * nvme: make get-feature JSON output print everything (bsc#1237275)
+  * doc: Add nvme-fdp-feature command
+  * plugins/fdp: Added FDP feature subcommand.
+  * tests: check if verify command is supported
+  * tests: fix hex to base-10 conversion in id-ctrl output
+  * tests: read LBA size for validation
+  * tests: fix LBA format calculation
+  * completions: add reachability-associations-log command
+  * doc: add reachability-associations-log command
+  * nvme: add reachability-associations-log command
+  * nvme-wrap: do_admin_op() get_log_reachability_groups parameters order
+  * build: bump libnvme wrap
+  * nvme: make -v output consistent with -H output for nvme get-feature (bsc#1237275)
+  * nvme: make -v output consistent with -H output for nvme get-property (bsc#1237275)
+  * nvme: fix reachability-groups-log command perror message
+  * completions: add reachability-groups-log command
+  * doc: add reachability-groups-log command
+  * CI: add missing bind-mount option for /dev
+  * Revert "argconfig: add argconfig_get_value()"
+  * Revert "nvme: use blkdev for direct if namespace-id specified"
+  * Revert "nvme: add flush command chardev handle error message"
+  * nvme: add reachability-groups-log command
+  * nvme: do not output debug infos on info level
+  * build: checkpatch limit line length to 100 chars
+  * nvme-print-stdout: add details in list-ns verbose output (bsc#1237275)
+  * nvme-print-stdout: add descriptions for nsze, ncap & nuse (bsc#1237275)
+  * completions: add and fix io-mgmt-recv and io-mgmt-send commands
+  * completions: add dispersed-ns-participating-nss-log command
+  * doc: add dispersed-ns-participating-nss-log command
+  * nvme: add dispersed-ns-participating-nss-log command
+  * completions: add changed-alloc-ns-list-log command
+  * completions: fix mgmt-addr-list-log command
+  * doc: add changed-alloc-ns-list-log command
+  * nvme: add NVMe 2.1 changed-alloc-ns-list-log command
+  * nvme-wrap: handle get log rotational media info correctly
+  * build: sync checkpatch config file
+  * build: checkpatch ignore new/del/mov files
+  * nvme-wrap: use rotational media information log libnvme-mi API
+  * build: bump libnvme wrap
+  * ocp: fix to free hwcomp log desc memory allocated
+  * nvme: change attach-ns to error out if wrong device given
+  * nvme-print: print new id-ns fields added in NVM Command Set Spec 1.1
+  * build: bump libnvme wrap
+  * plugins/ocp: fix telemetry parser buffer overflow
+  * sed: add '--read-only' to lock/unlock commands
+  * udev-rules-ontap: switch to queue-depth iopolicy
+  * doc: add rotational-media-info-log command
+  * completions: add rotational-media-info-log command
+  * tests: monitor /dev for new nvme block device
+  * plugins/solidigm: Telemetry null check json object
+  * plugins/solidigm: Replace snprintf with asprintf
+  * Revert "tests: add blkdev checking after NS creation"
+  * fabrics: make 'disconnect' accepting only -n or -d
+  * nvme: add rotational-media-info-log command
+  * tests: add verbose options for NS management commands
+  * tests: add blkdev checking after NS creation
+  * tests: correct to check blkdev for NS attached
+  * ocp-telemetry-decode: fix ascii string lookup
+  * nvmf-keys: udev rule should be using /etc/nvme
+  * nvme: set eds to true if controller supports 128 bit hostid
+  * nvme: add flush command chardev handle error message
+  * nvme: use blkdev for direct if namespace-id specified
+  * argconfig: add argconfig_get_value()
+  * nvme: add NS management commands error message output
+  * build: remove thank you bot
+  * build: fix REST API call and permissions for thanks you note
+  * nvme-print-stdout: use NVME_CTRL_OACS definitions
+  * build: automatically add a thank you note on PR merge
+  * nvme-print-json: add get feature pls mode print
+  * nvme-print-stdout: add get feature pls mode print
+  * doc: add mgmt-addr-list-log command
+  * completions: add mgmt-addr-list-log command
+  * completions: fix ocp hardware-component-log zsh completion
+  * doc: fix ocp-hardware-component-log documentation errors
+  * nvme-print-binary: add binary_mgmt_addr_list_log()
+  * nvme-print-json: add json_mgmt_addr_list_log()
+  * nvme: add mgmt-addr-list-log command
+  * build: bump libnvme wrap
+  * nvme-print-json: add NVMe 2.1 identify power state descriptor fields
+  * nvme-print-stdout: add NVMe 2.1 identify power state descriptor fields
+  * types: move STR_LEN definition from json.h
+  * nvme-print: add NVMe 2.1 admin commands strings
+  * nvme-print-stdout: add human readable output for DSTO field
+  * nvme: add the new Self-test Code of Device Self-test command
+  * nvme-print-stdout: split PEL functions
+  * nvme-print-stdout: split PEL set feature event function
+  * nvme-print-stdout: use libnvme FDP events feature definitions
+  * nvme-print-stdout: fix to print PEL set feature event FDP events
+  * nvme-print: add NVMe 2.1 get and set features FIDs string
+  * build: bump libnvme wrap
+  * ocp-nvme: Add missing data media_dies_offline to smart_extended_log.
+  * ocp-nvme: Update ocp v2.6 Smart Information Extended
+  * plugins/ocp: Align ocp_smart_extended_log struct.
+  * plugins/ocp: Use structure for ocp smart log
+  * ocp: Update ocp plugin version
+  * ocp: Fixes for OCP 2.5 Telemetry Stats Parsing
+  * make: fix make rpm target
+  * nvme-print: add NVMe 2.1 get log page LIDs string
+  * ocp: change hwcomp log size variable name to log_bytes
+  * ocp: fix to check hwcomp log size if valid
+  * ocp: add ocp dssd log id and feature id definitions
+  * util: introduce int56_to_long() type conversion helper
+  * ocp-print: use int48_to_long() to print 48 bits values
+  * ocp: remove unnecessary 64 bits mask
+  * ocp: use struct nvme_timestamp type for FAHE-5 timestamp field
+  * nvme-print: move obj_add_* definitions into util/json.h
+  * nvme: fix to use NVME_VAL() for CQ entry status field filter
+  * nvme-print-json: update id-ctrl print code to use libnvme definition
+  * nvme-print-json: update register print code to use libnvme definition
+  * util: clean up json.h file
+  * dapustor: avoid sprinkling ifdefs
+  * netapp: avoid sprinkling ifdefs
+  * intel: avoid sprinkling ifdefs
+  * micron: avoid sprinkling ifdefs
+  * util: cast to use empty function json_object_array_add parameter k
+  * wdc: enable wdc-nvme.c build without json-c dependencies checking
+  * ssstc: build plugin not depended on json without json
+  * seagate: enable seagate-nvme.c build without json-c dependencies checking
+  * scaleflux: enable sfx-nvme.c build without json-c dependencies checking
+  * scaleflux: use PRIu64 printf format string instead of llu
+  * nvidia: build plugin not depended on json without json
+  * netapp: enable netapp-nvme.c build without json-c dependencies checking
+  * nbft: enable nbft-plugin.c build without json-c dependencies checking
+  * plugins: introduce OPT_FLAG_JSON for command option json
+  * amzn: avoid sprinkling ifdefs and use flags
+  * Fixed latency_monitor_feature_enable to be 01h as per OCP spec v2.0
+  * ocp: add ocp_get_log_simple() to set UUID index
+  * build: bump wrap
+  * plugin/lm: Introduce Live Migration plugin
+  * ocp-nvme: Add a different formatting for JSON output
+  * Plugin: ScaleFlux Adding Status Command
+  * Plugin: ScaleFlux Use NVME_NSID_ALL
+  * Plugin: ScaleFlux Spelling&Typo Fixes
+  * Plugin: ScaleFlux Seperating Types
+  * micron: enable micron-nvme.c build without json-c dependencies checking
+  * intel: enable intel-nvme.c build without json-c dependencies checking
+  * huawei: enable huawei-nvme.c build without json-c dependencies checking
+  * fdp: build plugin not depended on json without json
+  * dell: build plugin not depended on json without json
+  * dapustor: enable dapustor-nvme.c build without json-c dependencies checkin
+  * amzn: use PRIu64 printf format string instead of llu
+  * amzn: enable amzn-nvme.c build without json-c dependencies checking
+  * nvme: disable output-format option json value without json-c
+  * doc: Add write zeroes command namespace-zeroes option
+  * ocp: add set-enable-ieee1667-silo command
+  * ocp: add ocp-types.h file for OCP requirements definitions
+  * nvme-wrap: add nvme_cli_set_features() API function
+  * doc: remove TLS documentation
+  * sed: add '--read-only' to 'sed initialize'
+  * plugins: build plugins not depended on json without json
+  * ocp: update internal-log command telemetry type description
+  * ocp: delete internal-log command telemetry type none value definition
+  * nvme: plugins/fdp, check endurance group identifier
+  * print: OACS Host Managed Live Migration Support (HMLMS)
+  * build: bump libnvme wrap
+  * nbft: Report proper error codes from discover_from_nbft()
+  * tests: Use container image to run nightly tests
+  * tests: Fix `subprosess.call` calls
+  * tests: Refactor prints
+  * tests: Remove unneeded sleep statements
+  * tests: use current LBA format as I/O block size
+  * tests: Use json output for parsing
+  * tests: Introduce configurable nvme binary path
+  * nvme: add Namespace Zeroes support to Write Zeroes command
+  * print: id-ctrl print updated based on NVMe v2.1
+  * print: Add missing fid to string
+  * build: bump libnvme wrap
+  * ocp: TCG Configuration Log field added ocp v2.6
+  * ns_descs: prevent buffer overrun and memory corruption
+  * ocp: set UUID index to get extended smart log
+  * plugins/ocp: fixed crash in telemetry string log output format json
+  * nvme: Host-init telemetry log mcda field added
+  * build: bump libnvme wrap
+  * nvme-print-stdout: print MAXWZD and NSZS bits of ONCS field
+  * build: bump libnvme wrap
+  * netapp-smdev: add verbose output (bsc#1234217)
+  * netapp-smdev-doc: add verbose details (bsc#1234217)
+  * netapp-smdev: remove redundant code (bsc#1234217)
+  * nvme-print: fix Arbitration Mechanism Supported
+  * nvme: telemetry ctrl-init need to clear RAE
+  * nvme-netapp: update err messages (bsc#1234217)
+  * netapp-ontapdev: fix JSON output for nsze & nuse (bsc#1234217)
+  * netapp-ontapdev: fix fw version handling (bsc#1234217)
+  * print: Supported Log lidsp print updated NVMe v2.1
+  * nvme-print-stdout: add nvm-id-ctrl command VER and LBAMQF fields
+  * build: bump libnvme wrap
+  * wdc: rework log retrieval and parsing
+  * build: change muon setup command and parameter
+  * ocp: set UUID index to get hwcomp log
+  * type: Using enums of ANSAN and RGCNS bit for OAES
+  * nvme-print: print the new fields added in Sanitize log - TP4152
+  * build: bump libnvme wrap
+  * nvme-print: Add id-ctrl CTRATT.RHII, using enum
+  * fabrics: update return values for dim
+  * ocp-nvme: Add Error Injection type from ocp2.6
+  * ocp-nvme: Update ocp v2.6 Hardware Component
+  * build(deps): bump codecov/codecov-action from 4 to 5
+  * nvme: update messages for few misc functions
+  * ocp-nvme: fix the error display of Hardware Component Log
+  * opc: fix hardware component descriptions bytes number
+  * ocp-nvme: Recommit removed patch
+  * netapp-ontapdev-doc: add verbose details (bsc#1232616)
+  * netapp-ontapdev: add verbose output (bsc#1232616)
+  * plugins/netapp: add include of libgen.h for basename(3) prototype
+  * nvme-print: add fallback for non-standard locale category
+  * docs: add howto to setup TLS connections
+  * plugins/amzn: add stats support
+  * nvme-print: use NVME_GET in sanitize log
+  * wdc:  Fixes for SNTMP Capabilities
+  * build: Add token for coverage test
+- Update bugzilla references
+
+-------------------------------------------------------------------
 Wed Jan 22 16:42:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).
@@ -7,23 +271,23 @@ Wed Jan 22 16:42:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 Thu Oct 31 13:11:48 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.11:
-  * docs: update check-tls-key arguments
-  * nvme: add support to append TLS PSK to keyfile for check-tls-key
-  * nvme: return correct error code in append_keyfile
+  * docs: update check-tls-key arguments (bsc#1216982 bsc#1226216)
+  * nvme: add support to append TLS PSK to keyfile for check-tls-key (bsc#1216982 bsc#1226216)
+  * nvme: return correct error code in append_keyfile (bsc#1216982 bsc#1226216)
   * docs: nvme-id-doman: dom{ia => ai}n
   * ocp: fix latency monitoring data structure entry endian
   * ocp: fix TCG configuration log endian
   * ocp: fix firmware activation history entry endian
-  * docs: update gen-tls-key arguments
-  * nvme: add support to add derive TLS PSK to keyfile
-  * nvme: rename identity to version
-  * nvme: set file permission for keyfile to owner only
-  * nvme: export tls keys honoring version and hmac
-  * nvmf-keys: add udev rule to import tls keys
-  * docs: update TLS options
-  * fabrics: add support to connect to accept a PSK command line
-  * fabrics: add support to connect to accept a configuration
-  * nvme: use unsigned char for hmac and identity
+  * docs: update gen-tls-key arguments (bsc#1216982 bsc#1226216)
+  * nvme: add support to add derive TLS PSK to keyfile (bsc#1216982 bsc#1226216)
+  * nvme: rename identity to version (bsc#1216982 bsc#1226216)
+  * nvme: set file permission for keyfile to owner only (bsc#1216982 bsc#1226216)
+  * nvme: export tls keys honoring version and hmac (bsc#1216982 bsc#1226216)
+  * nvmf-keys: add udev rule to import tls keys (bsc#1216982 bsc#1226216)
+  * docs: update TLS options (bsc#1216982 bsc#1226216)
+  * fabrics: add support to connect to accept a PSK command line (bsc#1216982 bsc#1226216)
+  * fabrics: add support to connect to accept a configuration (bsc#1216982 bsc#1226216)
+  * nvme: use unsigned char for hmac and identity (bsc#1216982 bsc#1226216)
   * nvme-print: Add Sanitize Media Verification Event in PEL log
   * netapp-ontapdev: add err msg for no ontapdevices
   * netapp-smdev: add err msg for no smdevices
@@ -265,7 +529,7 @@ Fri Aug 02 08:27:05 UTC 2024 - Daniel Wager <daniel.wagner@suse.com>
   * nvme: use libnvme's atomic ANA log page fetch
   * nvme: fix maximum ANA log page length calculation
   * nvme-print-json: add missing va_end()
-  * fabrics: skip namespace scan for fabric commands
+  * fabrics: skip namespace scan for fabric commands (bsc#1232616)
   * nvme-print: print the new fields added in TP4141a
   * plugins/ocp: underflow + index fixes for telemetry
   * plugins/ocp: Add ocp TCG Configuration Log Page
