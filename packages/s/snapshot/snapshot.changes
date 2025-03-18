@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Mar 15 21:00:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0.1:
+  + Fix dist-vendor script.
+
+-------------------------------------------------------------------
+Fri Mar 14 16:14:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Register app id when app is not sandboxed
+  + QR code detection now happens on a thread pool
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb  1 10:17:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Improve bottom sheet labels and size
+  + Properly detects missing camera permissions
+  + Detect codes no more than once a second
+  + Hide gallery button in QR code detection mode
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 14 14:07:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha.2:
+  + Use .cargo/config.toml for the cargo-vendor config
+  + Add QR code detection
+  + Include left-side window controls
+  + Add debug output via flag
+
+-------------------------------------------------------------------
+Sun Dec 15 14:39:30 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to vesion 48.alpha:
+  + Fix opening multiple preference windows
+  + Improve offloading performance
+  + Add a NEWS file
+  + Camera:
+    - Port to AdwToggleGroup
+    - Port to AdwMultiLayoutView
+  + Remove once_cell dependency
+  + window: Use adw::AboutDialog::from_appdata
+
+-------------------------------------------------------------------
 Sat Oct 12 16:53:41 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.1:

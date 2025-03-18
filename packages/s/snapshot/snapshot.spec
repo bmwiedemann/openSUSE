@@ -1,7 +1,7 @@
 #
 # spec file for package snapshot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define gstreamer_version 1.20
 
 Name:           snapshot
-Version:        47.1
+Version:        48.0.1
 Release:        0
 Summary:        Take pictures and videos
 License:        GPL-3.0-or-later
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.75
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gtk4) >= 4.13.6
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.alpha
 ## Needed for camerabin
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= %{gstreamer_version}
 ##

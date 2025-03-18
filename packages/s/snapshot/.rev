@@ -80,4 +80,13 @@ New package for GNOME</comment>
   gst-plugin-gtk4 provided by it during runtime. (forwarded request 1207488 from iznogood)</comment>
     <requestid>1207877</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3b239f75d68a49d8126b6168e986b93</srcmd5>
+    <version>48.0.1</version>
+    <time>1742316056</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0.1:
+  + Fix dist-vendor script. (forwarded request 1253404 from iznogood)</comment>
+    <requestid>1253701</requestid>
+  </revision>
 </revisionlist>
