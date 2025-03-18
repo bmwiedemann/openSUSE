@@ -148,4 +148,12 @@
     <comment></comment>
     <requestid>1241320</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ab396feb241ba4af6e9eaed865c2aab5</srcmd5>
+    <version>1.4.0</version>
+    <time>1742315914</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1253323 from iznogood)</comment>
+    <requestid>1253378</requestid>
+  </revision>
 </revisionlist>
