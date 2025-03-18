@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Mar 12 08:26:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.84.0:
+  + Documentation:
+    - README.win32.md: Add note on %PATH% for Python
+    - Glib::spawn_*(): Suppress erroneous links
+  + Build:
+    - Meson: Use python[.exe] to check for Python for MSVC
+    - Require glib >= 2.83.4
+
+-------------------------------------------------------------------
+Thu Feb 13 09:57:19 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.83.1 (Unstable):
+  + Add Gio::Resource::has_children() and some other API
+  + meson.build: Require glib >= 2.83.0.
+  + gio/src/file.hg: Add query_default_handler_async/finish().
+  + gio/src/resource.hg: Add has_children() and
+    has_children_global().
+  + gio/src/socketlistener.[hg|ccg]: Add enum
+    Gio::SocketListener::Event and signal_event().
+  + tools/m4/convert_gio.m4: Add conversions for
+    Gio::SocketListener::Event.
+  + Glib, Gio: Regenerate docs.xml and .defs files using glib files
+    from glib 2.83.3.
+
+-------------------------------------------------------------------
 Fri Aug 30 19:22:28 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.82.0:
