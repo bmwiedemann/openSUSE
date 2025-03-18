@@ -6,13 +6,14 @@ Date:   Fri Aug 6 15:11:23 2021 +0200
 
 Index: cockpit/selinux/cockpit.te
 ===================================================================
---- cockpit.orig/selinux/cockpit.te
-+++ cockpit/selinux/cockpit.te
-@@ -202,3 +202,11 @@ optional_policy(`
- optional_policy(`
+diff --git a/selinux/cockpit.te b/selinux/cockpit.te
+index 50695ee..55b1226 100644
+--- a/selinux/cockpit.te
++++ b/selinux/cockpit.te
+@@ -224,6 +224,14 @@ optional_policy(`
      gnome_exec_keyringd(cockpit_session_t)
  ')
-+
+ 
 +# login may read motd file through pam
 +optional_policy(`
 +    gen_require(`
@@ -20,3 +21,7 @@ Index: cockpit/selinux/cockpit.te
 +    ')
 +    cockpit_read_pid_files(local_login_t)
 +')
++
+ #########################################################
+ #
+ #  Misc

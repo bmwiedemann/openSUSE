@@ -50,7 +50,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        332
+Version:        334.1
 Release:        0
 Source0:        cockpit-%{version}.tar.gz
 Source1:        cockpit.pam
@@ -546,6 +546,7 @@ Requires(post): (policycoreutils if selinux-policy-%{selinuxtype})
 Conflicts: firewalld < 0.6.0-1
 Recommends: sscg >= 2.3
 Recommends: system-logos
+Requires:  (%{name}-selinux-policies if selinux-policy-base)
 Suggests: sssd-dbus
 %if 0%{?suse_version}
 Requires(pre): permissions
@@ -624,12 +625,6 @@ authentication via sssd/FreeIPA.
 %{_libexecdir}/cockpit-certificate-helper
 %{?suse_version:%verify(not mode) }%attr(4750, root, cockpit-wsinstance-socket) %{_libexecdir}/cockpit-session
 %{_datadir}/cockpit/branding
-%if 0%{?with_selinux}
-%{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
-%{_mandir}/man8/%{name}_session_selinux.8cockpit.*
-%{_mandir}/man8/%{name}_ws_selinux.8cockpit.*
-%ghost %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{name}
-%endif
 
 %pre ws
 # HACK: old RPM and even Fedora's current RPM don't properly support sysusers
@@ -640,9 +635,6 @@ getent passwd cockpit-wsinstance-socket >/dev/null || useradd -r -g cockpit-wsin
 getent passwd cockpit-session-socket >/dev/null || useradd -r -g cockpit-session-socket -d /nonexisting -s /sbin/nologin -c "User for cockpit-session instances" cockpit-session-socket
 getent passwd cockpit-systemd-service >/dev/null || useradd -r -g cockpit-wsinstance-socket -d /nonexisting -s /sbin/nologin -c "User for cockpit.service" cockpit-systemd-service
 
-if %{_sbindir}/selinuxenabled 2>/dev/null; then
-    %selinux_relabel_pre -s %{selinuxtype}
-fi
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/lib; save any old .rpmsave
 for i in pam.d/cockpit ; do
@@ -651,11 +643,6 @@ done
 %endif
 
 %post ws
-if [ -x %{_sbindir}/selinuxenabled ]; then
-    %selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
-    %selinux_relabel_post -s %{selinuxtype}
-fi
-
 # set up dynamic motd/issue symlinks on first-time install; don't bring them back on upgrades if admin removed them
 # disable root login on first-time install; so existing installations aren't changed
 if [ "$1" = 1 ]; then
@@ -706,10 +693,6 @@ fi
 %systemd_preun cockpit.socket cockpit.service
 
 %postun ws
-if [ -x %{_sbindir}/selinuxenabled ]; then
-    %selinux_modules_uninstall -s %{selinuxtype} %{name}
-    %selinux_relabel_post -s %{selinuxtype}
-fi
 %systemd_postun_with_restart cockpit.socket cockpit.service
 
 %if 0%{?suse_version}
@@ -724,6 +707,37 @@ for i in pam.d/cockpit ; do
      test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
+%if 0%{?with_selinux}
+%package selinux-policies
+Summary: selinux policies required by cockpit
+
+%description selinux-policies
+package that contains selinux rules/polcies needed by cockpit when selinux is enabled
+
+%files selinux-policies
+%{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
+%{_mandir}/man8/%{name}_session_selinux.8cockpit.*
+%{_mandir}/man8/%{name}_ws_selinux.8cockpit.*
+%ghost %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{name}
+
+%pre selinux-policies
+if %{_sbindir}/selinuxenabled 2>/dev/null; then
+    %selinux_relabel_pre -s %{selinuxtype}
+fi
+
+%post selinux-policies
+if [ -x %{_sbindir}/selinuxenabled ]; then
+    %selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
+    %selinux_relabel_post -s %{selinuxtype}
+fi
+
+%postun selinux-policies
+if [ -x %{_sbindir}/selinuxenabled ]; then
+    %selinux_modules_uninstall -s %{selinuxtype} %{name}
+    %selinux_relabel_post -s %{selinuxtype}
+fi
+%endif
+
 
 # -------------------------------------------------------------------------------
 # Sub-packages that are part of cockpit-system in RHEL/CentOS, but separate in Fedora

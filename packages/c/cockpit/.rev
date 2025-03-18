@@ -620,4 +620,16 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
     <comment>- fix build with latest local-npm-registry</comment>
     <requestid>1248217</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>479346a6ad80efd5f0e0fda22ed2a354</srcmd5>
+    <version>334.1</version>
+    <time>1742316000</time>
+    <user>anag+factory</user>
+    <comment>- move selinux policies to cockpit-selinux-policies bsc#1236057 
+
+- Update to 334.1
+  - Various bug fixes and improvements
+  - Translation updates</comment>
+    <requestid>1253644</requestid>
+  </revision>
 </revisionlist>
