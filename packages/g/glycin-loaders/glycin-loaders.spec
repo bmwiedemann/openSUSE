@@ -19,7 +19,7 @@
 %bcond_without jxl
 
 Name:           glycin-loaders
-Version:        1.1.6
+Version:        1.2.0
 Release:        0
 Summary:        Sandboxed image rendering
 License:        LGPL-2.1-or-later OR MPL-2.0
@@ -147,9 +147,9 @@ This package provides developments files for %{name}
 %{_libdir}/pkgconfig/glycin-gtk4-1.pc
 %{_datadir}/gir-1.0/Gly-1.gir
 %{_datadir}/gir-1.0/GlyGtk4-1.gir
-%{_datadir}/vala/vapi/libglycin-1.deps
-%{_datadir}/vala/vapi/libglycin-1.vapi
-%{_datadir}/vala/vapi/libglycin-gtk4-1.deps
-%{_datadir}/vala/vapi/libglycin-gtk4-1.vapi
+%{_datadir}/vala/vapi/glycin-1.deps
+%{_datadir}/vala/vapi/glycin-1.vapi
+%{_datadir}/vala/vapi/glycin-gtk4-1.deps
+%{_datadir}/vala/vapi/glycin-gtk4-1.vapi
 
 %changelog

@@ -124,4 +124,12 @@
     <comment></comment>
     <requestid>1249385</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1054b59218b08410fa45b9136c60bf0b</srcmd5>
+    <version>1.2.0</version>
+    <time>1742316039</time>
+    <user>anag+factory</user>
+    <comment>New stable branch release (forwarded request 1253097 from iznogood)</comment>
+    <requestid>1253361</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Fri Mar 14 14:00:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.0:
+  + Changed: tests: Replace `serde_yml` crate with `serde_yaml_ng`
+    due to questionable maintenance of the former. It is also
+    possible to use the (unmaintained) `serde_yaml` crate instead.
+
+-------------------------------------------------------------------
+Fri Feb 28 18:41:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.rc:
+  + Fixed:
+    - glycin-utils: Fix editing for images with more than 4 billion
+      pixels.
+    - glycin: Printing a color state error even if there is no
+      problem.
+    - jpeg: Allow to edit images with a dimension larger than 16384
+      px.
+    - jpeg: Handle pure rotation or mirror operations correct for
+      non-sparse output. Also, properly combine multiple operations
+      of this type into a single Exif change.
+    - libglycin: Generate .vapi with correct names.
+  + Changed:
+    - glycin-utils: Handle clip width/height that would exceed the
+      image boundaries gracefully by reducing them to the image
+      boundaries.
+    - glycin: Increased maximally considered RAM to 20GB for memory
+      limits.
+    - glycin: Use a specific error type for canceled operations.
+
+-------------------------------------------------------------------
+Fri Feb 28 08:13:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.beta.1:
+  + This release contains the following new component versions:
+    - glycin-utils 3.0.0-beta
+    - glycin 2.1.0-beta
+    - libglycin 1.0.1-beta
+    - glycin-heif 1.2.0-beta
+    - glycin-image-rs 1.2.0-beta
+    - glycin-jxl 1.2.0-beta
+    - glycin-raw 1.2.0-beta
+    - glycin-svg 1.2.0-beta
+  + Fixed: libglycin: Fix wrong g-i annotations for callbacks.
+  + Changed: raw: Update to libopenraw 0.4.0-alpha.9 with Panasonic
+    support.
+
+-------------------------------------------------------------------
+Fri Feb 28 08:13:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.alpha.10:
+  + This release contains the following new component versions:
+    - glycin-utils 3.0.0-alpha.1
+    - glycin 2.1.0-alpha.1
+    - libglycin 1.0.1-alpha.1
+    - glycin-heif 1.2.0-alpha.1
+    - glycin-image-rs 1.2.0-alpha.1
+    - glycin-jxl 1.2.0-alpha.1
+    - glycin-raw 1.2.0-alpha.1
+    - glycin-svg 1.2.0-alpha.1
+  + Changed: Depend on zbus 5 instead of zbus 4.
+
+-------------------------------------------------------------------
+Fri Feb 28 08:13:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.alpha.9:
+  + This release contains the following new component versions:
+    - glycin-utils 3.0.0-alpha
+    - glycin 2.1.0-alpha
+    - glycin-heif 1.2.0-alpha
+    - glycin-image-rs 1.2.0-alpha
+    - glycin-jxl 1.2.0-alpha
+    - glycin-raw 1.2.0-alpha
+    - glycin-svg 1.2.0-alpha
+  + Added:
+    - By using gufo, XMP data are now provided for JPEGs.
+    - Support the eXIf chunk for Exif metadata in PNGs.
+    - glycin: API to list available editors with their supported operations.
+    - image-rs/jpeg: Support for crop and flip in image editing.
+    - image-rs/png: CICP support (variant of HDR content)
+    - image-rs/png: Editing support for PNGs with crop, rotate, flip.
+  + Changed:
+    - Repository location is now `GNOME/glycin` on GNOME GitLab.
+    - glycin: Images with an ICC color profile are now passed in
+      Rec. 2020 linear color space to GTK, supporting a far wider
+      color gamut than the sRGB format before.
+
+-------------------------------------------------------------------
 Fri Feb 28 08:13:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.6:
