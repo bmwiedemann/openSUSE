@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Mar 17 12:59:37 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 48.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  1 16:16:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Add global shortcuts portal backend.
+
+-------------------------------------------------------------------
+Mon Feb 17 11:31:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta.2:
+  + Add USB portal backend
+  + Fix screen cast portal done signal emission
+  + Use the new AdwInlineViewSwitcher widget in the screencast
+    dialog
+  + Update apps list properly in the screencast dialog
+  + Generate systemd sysexts in CI
+  + Fix an issue with the Notification portal implementation
+  + Depend on libadwaita >= 1.7.alpha
+  + Updated translations.
+- Drop notification-Add-missing-GUnixFDList-argument.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Mon Feb 17 11:31:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + Outsource external window management to libgxdp
+  + Fix memory leak in screencast widget
+  + Implement a signal handler to help with ASAN
+  + Use Adwaita widgets in the app chooser dialog
+  + Fix a memory management issue with the screencast widget
+  + Depend on xdg-desktop-portal >= 1.19.1
+  + Updated translations.
+- Add new sub-module to service and spec.
+- Drop notification-null-icon-pointer.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Mon Feb 17 11:31:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.3:

@@ -17,12 +17,13 @@
 
 
 Name:           xdg-desktop-portal-gnome
-Version:        47.3
+Version:        48.0
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
 Source:         %{name}-%{version}.tar.zst
+Source1:        libgxdp-0.gitmodule.tar.zst
 
 BuildRequires:  c_compiler
 BuildRequires:  fontconfig
@@ -50,6 +51,10 @@ desktop environment.
 
 %prep
 %autosetup -p1
+pushd subprojects
+tar xf %{SOURCE1}
+mv libgxdp-0.gitmodule libgxdp
+popd
 
 %build
 %meson \

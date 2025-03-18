@@ -210,4 +210,13 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1246601</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>699358060489d2cb3bedce0f1d339666</srcmd5>
+    <version>48.0</version>
+    <time>1742315974</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + Updated translations. (forwarded request 1253784 from dimstar)</comment>
+    <requestid>1253792</requestid>
+  </revision>
 </revisionlist>
