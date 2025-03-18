@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-calendar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-calendar
-Version:        47.0
+Version:        48.0
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(goa-1.0) >= 3.2.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.21.2
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gweather4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.alpha
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.alpha
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.45.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.45.1
 BuildRequires:  pkgconfig(libedataserverui4-1.0) >= 3.45.1
@@ -78,7 +78,7 @@ search results from GNOME Calendar.
 
 %files
 %license COPYING
-%doc NEWS README.md TODO.md
+%doc NEWS README.md
 %{_bindir}/gnome-calendar
 %{_datadir}/applications/org.gnome.Calendar.desktop
 # Own dir for openSUSE Leap 42.1

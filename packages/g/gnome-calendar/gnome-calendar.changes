@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Mar 17 12:53:13 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 48.0:
+  + Improve performance of the Month view.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  1 09:33:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Round temperatures to integer precision in weather forecast, to
+    save space and reflect the approximate nature of the forecasts.
+  + Auto-hide weather temperature labels in Month view when space
+    is insufficient.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  3 13:12:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Allow selecting timezones for the start and end times of events
+  + Fix calendar name overflow in the calendars popover list
+  + Improve display of weather information in the Month view
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 13 13:49:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + Many design improvements to the event editor dialog, such as a
+    rearranged all-day / timed selection, moving the event calendar
+    to a row, and more.
+  + Show a banner in the event editor when the calendar is
+    read-only.
+  + Improve capitalization of title strings in the Week view
+    header.
+  + Fix event order in the sidebar.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 16 13:50:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 47.0:

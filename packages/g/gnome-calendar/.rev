@@ -461,4 +461,14 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205438</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>ff43f0f722a55f027c438e26249f44de</srcmd5>
+    <version>48.0</version>
+    <time>1742316069</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + Improve performance of the Month view.
+  + Updated translations. (forwarded request 1253776 from dimstar)</comment>
+    <requestid>1253787</requestid>
+  </revision>
 </revisionlist>
