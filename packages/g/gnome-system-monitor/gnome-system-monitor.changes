@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Mar 16 09:03:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  1 21:03:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb  2 09:28:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Code improvements
+  + Fixed memory leaks drawing graphs
+  + Updated translations.
+- Add pkgconfig(catch2-with-main) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Sat Feb  1 13:01:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + Ensure search button is only active on processes page
+  + Drop lsof ellipses following Human Interface Guidelines
+  + Fix resuming from suspended state
+  + Fix high disks writes during window resize
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Feb  1 13:00:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.1:

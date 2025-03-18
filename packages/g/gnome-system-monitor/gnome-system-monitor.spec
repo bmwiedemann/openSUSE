@@ -17,7 +17,7 @@
 
 
 Name:           gnome-system-monitor
-Version:        47.1
+Version:        48.0
 Release:        0
 Summary:        A process monitor for the GNOME desktop
 License:        GPL-2.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  polkit-devel
 BuildRequires:  yelp-tools
+BuildRequires:  pkgconfig(catch2-with-main)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(giomm-2.68)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.55.0
@@ -76,7 +77,7 @@ processor time, memory, and disk space are being used.
 %{_datadir}/applications/org.gnome.SystemMonitor.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-system-monitor.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-system-monitor.gschema.xml
-%{_datadir}/metainfo/org.gnome.SystemMonitor.appdata.xml
+%{_datadir}/metainfo/org.gnome.SystemMonitor.metainfo.xml
 %dir %{_datadir}/polkit-1
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/org.gnome.gnome-system-monitor.policy
