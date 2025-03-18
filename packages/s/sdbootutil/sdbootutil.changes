@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 17 08:40:29 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250311.8d3db8b:
+  * Load the config file when updating the predictions
+  * Include swap partitions for PCR15
+  * Soft fails keyctl setperm when called via YaST
+  * Revoke cryptenroll key if is incorrect
+
+-------------------------------------------------------------------
+Fri Mar 07 07:38:19 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250307.d46fcde:
+  * Add fallback logic when generatic predictions
+  * Don't use sdbootutil-pin when reading vk
+  * Drop parameters for generate_tpm2_predictions
+  * Fix style
+  * Fix --signed-policy parameter
+
+-------------------------------------------------------------------
+Thu Mar 06 13:28:59 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250306.0811984:
+  * Fix list of tracked devices
+  * Don't echo '\n' when timeout or default entry are empty
+
+-------------------------------------------------------------------
 Wed Mar 05 15:00:24 UTC 2025 - aplanas@suse.com
 
 - Update to version 1+git20250305.278a563:
