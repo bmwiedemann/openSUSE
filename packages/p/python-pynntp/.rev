@@ -7,4 +7,12 @@
     <comment>Replacement of `python-nntplib` (see sr#1229168).</comment>
     <requestid>1229171</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ad8655a55998da102d92b482c24e1415</srcmd5>
+    <version>2.0.1</version>
+    <time>1742316102</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1253937</requestid>
+  </revision>
 </revisionlist>
