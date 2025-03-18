@@ -1,7 +1,7 @@
 #
 # spec file for package imv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://git.sr.ht/~exec64/imv
 Source:         https://git.sr.ht/~exec64/imv/archive/v%{version}.tar.gz
 Patch0:         imv-link-icu-uc.patch
 BuildRequires:  asciidoc
+BuildRequires:  cmake
 BuildRequires:  freeimage-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libinih-devel
@@ -34,7 +35,10 @@ BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(cmocka)
+BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libjxl)

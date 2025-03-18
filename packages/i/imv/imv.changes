@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 17 16:38:49 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing dependencies: cmake, pkgconfig(egl), pkgconfig(gl),
+  and pkgconfig(glu).
+
+-------------------------------------------------------------------
 Fri Nov 22 08:28:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - imv-link-icu-uc.patch: specify icu-uc as dependency instead of
