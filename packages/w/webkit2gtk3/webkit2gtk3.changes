@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Mar 17 10:50:24 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: no longer build bi-arch flavors of
+  libjavascriptcoregtk-4_0-18 and libwebkit2gtk-4_0-37: in
+  openSUSE:Factory, the gtk3-soup2 flavor is not built at all,
+  which means outside of 3rd-party projects, this change has no
+  impact.
+
+-------------------------------------------------------------------
+Fri Mar 14 17:37:34 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Use spiel for speech synthesis, rather than flite. Spiel supports
+  multiple back ends and might become the upstream default once it
+  is more widely available in Linux distributions.
+- Up some version requirements to match the cmake checks in 2.48.0.
+- Drop dependency on atk. It is no longer used.
+
+-------------------------------------------------------------------
+Fri Mar 14 13:05:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.48.0:
+  + Move tiles rendering to worker threads when rendering with the
+    GPU.
+  + Fix preserve-3D intersection rendering.
+  + Added new function for creating Promise objects to
+    JavaScripotCore GLib API.
+  + The MediaRecorder backend gained WebM support (requires at
+    least GStreamer 1.24.9) and audio bitrate configuration
+    support.
+  + Fix invalid DPI-aware font size conversion.
+  + Bring back support for OpenType-SVG fonts using Skia SVG
+    module.
+  + Add metadata (title and creation/modification date) to the PDF
+    document generated for printing.
+  + Propagate the font’s computed locale to HarfBuzz.
+  + The GPU process build is now enabled for WebGL, but the web
+    process is still used by default. The runtime flag
+    UseGPUProcessForWebGL can be used to use the GPU process for
+    WebGL.
+- Drop 7d784721.patch: Fixed upstream.
+- Add flite-devel BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Thu Mar 13 14:06:27 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add 7d784721.patch: WebGL context primitive restart can be

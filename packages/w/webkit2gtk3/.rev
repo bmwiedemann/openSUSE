@@ -1885,4 +1885,16 @@ don't affect Linux. (forwarded request 1226975 from mgorse)</comment>
   toggled from WebContent process (boo#1239547 CVE-2025-24201). (forwarded request 1252780 from mgorse)</comment>
     <requestid>1252843</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>780cd09cdbd7b419e45a6d4e342f32af</srcmd5>
+    <version>2.48.0</version>
+    <time>1742315963</time>
+    <user>anag+factory</user>
+    <comment>- Drop baselibs.conf: no longer build bi-arch flavors of
+  libjavascriptcoregtk-4_0-18 and libwebkit2gtk-4_0-37: in
+  openSUSE:Factory, the gtk3-soup2 flavor is not built at all,
+  which means outside of 3rd-party projects, this change has no
+  impact. (forwarded request 1253738 from dimstar)</comment>
+    <requestid>1253744</requestid>
+  </revision>
 </revisionlist>

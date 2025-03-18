@@ -79,7 +79,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.46.6
+Version:        2.48.0
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -87,13 +87,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://webkitgtk.org
 Source0:        %{url}/releases/%{_name}-%{version}.tar.xz
 Source1:        %{url}/releases/%{_name}-%{version}.tar.xz.asc
-Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
 
 # PATCH-FEATURE-OPENSUSE reproducibility.patch -- Make build reproducible
 Patch0:         reproducibility.patch
-# PATCH-FIX-UPSTREAM 7d784721.patch boo#1239547 mgorse@suse.com -- WebGL context primitive restart can be toggled from WebContent process.
-Patch1:         https://github.com/WebKit/WebKit/commit/7d784721.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -126,17 +123,12 @@ BuildRequires:  python3
 BuildRequires:  ruby >= 2.5
 BuildRequires:  unifdef
 BuildRequires:  xdg-dbus-proxy
-BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(atspi-2) >= 2.5.3
 BuildRequires:  pkgconfig(cairo) >= 1.16.0
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(fontconfig) >= 2.13.0
 BuildRequires:  pkgconfig(freetype2) >= 2.9.0
-%if "%{flavor}" == "gtk4"
 BuildRequires:  pkgconfig(glib-2.0) >= 2.70.0
-%else
-BuildRequires:  pkgconfig(glib-2.0) >= 2.56.4
-%endif
 BuildRequires:  pkgconfig(icu-i18n)
 %if %usegcc11
 BuildRequires:  pkgconfig(glproto)
@@ -162,7 +154,7 @@ BuildRequires:  pkgconfig(gtk4) >= 4.6.0
 BuildRequires:  pkgconfig(xcomposite)
 %endif
 BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(harfbuzz) >= 1.4.2
+BuildRequires:  pkgconfig(harfbuzz) >= 2.7.4
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavif) >= 0.9.0
 %if %{use_jxl}
@@ -179,10 +171,11 @@ BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwoff2dec)
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.8.0
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.13
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(manette-0.2)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(spiel-1.0)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -519,7 +512,9 @@ export PYTHON=%{_bindir}/python3
 %if !%{use_jxl}
   -DUSE_JPEGXL=OFF \
 %endif
-  -DUSE_SYSTEM_SYSPROF_CAPTURE=NO
+  -DUSE_SYSTEM_SYSPROF_CAPTURE=NO \
+  -DUSE_FLITE=OFF \
+  -DUSE_SPIEL=ON
 
 %ninja_build -j $max_link_jobs
 
