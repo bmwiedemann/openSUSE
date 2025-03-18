@@ -29,4 +29,16 @@
     <comment></comment>
     <requestid>1229846</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5c3e5ee3583ca3abfabe7d18fbfb3114</srcmd5>
+    <version>3.9.0</version>
+    <time>1742315981</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.9.0:
+  + Switched to libavformat for media extraction
+  + Memory usage improvements
+  + Improved recovery process after interruption
+  + Updated translations. (forwarded request 1253890 from iznogood)</comment>
+    <requestid>1253987</requestid>
+  </revision>
 </revisionlist>

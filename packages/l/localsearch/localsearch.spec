@@ -1,7 +1,7 @@
 #
 # spec file for package localsearch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define tinysparql_basever 3.8
 
 Name:           localsearch
-Version:        3.8.2
+Version:        3.9.0
 Release:        0
 Summary:        Search tool and indexer using tinysparql
 License:        GPL-2.0-or-later
@@ -43,10 +43,11 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.10.31
-BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 0.10.31
-BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 0.10.31
-BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= 0.10.31
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-audio-1.0)
+BuildRequires:  pkgconfig(gstreamer-tag-1.0)
+BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(gupnp-dlna-2.0)
 BuildRequires:  pkgconfig(icu-i18n) >= 4.8.1.1
 BuildRequires:  pkgconfig(icu-uc) >= 4.8.1.1
 BuildRequires:  pkgconfig(libavcodec)
@@ -93,7 +94,6 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %meson \
 	-Dsystemd_user_services_dir=%{_userunitdir} \
 	-Dfunctional_tests=false \
-	-Dminer_rss=false \
 	%{nil}
 %meson_build
 
@@ -153,12 +153,12 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_datadir}/localsearch3/extract-rules/11-msoffice-xml.rule
 %{_datadir}/localsearch3/extract-rules/15-executable.rule
 %{_datadir}/localsearch3/extract-rules/15-games.rule
-%{_datadir}/localsearch3/extract-rules/15-gstreamer-guess.rule
+%{_datadir}/localsearch3/extract-rules/15-libav-guess.rule
 %{_datadir}/localsearch3/extract-rules/15-playlist.rule
 %{_datadir}/localsearch3/extract-rules/15-text.rule
 %{_datadir}/localsearch3/extract-rules/90-disc-generic.rule
-%{_datadir}/localsearch3/extract-rules/90-gstreamer-audio-generic.rule
-%{_datadir}/localsearch3/extract-rules/90-gstreamer-video-generic.rule
+%{_datadir}/localsearch3/extract-rules/90-libav-audio-generic.rule
+%{_datadir}/localsearch3/extract-rules/90-libav-video-generic.rule
 %{_datadir}/localsearch3/miners/org.freedesktop.Tracker3.Miner.Files.service
 %dir %{_libdir}/localsearch-%{lsAPI}
 %dir %{_libdir}/localsearch-%{lsAPI}/extract-modules
@@ -171,7 +171,7 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-dummy.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-epub.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-gif.so
-%{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-gstreamer.so
+%{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-libav.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-html.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-icon.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-iso.so
