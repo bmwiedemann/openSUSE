@@ -115,4 +115,16 @@ optional dep of https://build.opensuse.org/package/show/devel:languages:python/p
   * Support Python 3.13 changes.</comment>
     <requestid>1231284</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>261b91672d17a5d502947f1cd594f966</srcmd5>
+    <version>7.1.0</version>
+    <time>1742316146</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 7.1.0
+  * Add support for python 3.13 (PR #847, @ddelange)
+  * Propagate uri to compression_wrapper (PR #842, @ddelange)
+- Drop support-python-313.patch, merged upstream
+</comment>
+    <requestid>1254108</requestid>
+  </revision>
 </revisionlist>

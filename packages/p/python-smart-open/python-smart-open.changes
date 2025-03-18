@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 18 10:31:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 7.1.0
+  * Add support for python 3.13 (PR #847, @ddelange)
+  * Propagate uri to compression_wrapper (PR #842, @ddelange)
+- Drop support-python-313.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Dec 16 03:17:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove upper pin on urllib3.

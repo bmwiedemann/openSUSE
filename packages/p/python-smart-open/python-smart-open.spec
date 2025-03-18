@@ -1,7 +1,7 @@
 #
 # spec file for package python-smart-open
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           python-smart-open
-Version:        7.0.5
+Version:        7.1.0
 Release:        0
 Summary:        Python utils for streaming large files
 License:        MIT
 URL:            https://github.com/piskvorky/smart_open
 Source:         https://github.com/piskvorky/smart_open/archive/refs/tags/v%{version}.tar.gz#/smart_open-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#piskvorky/smart_open#847
-Patch0:         support-python-313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
