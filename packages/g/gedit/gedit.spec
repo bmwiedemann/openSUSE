@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gspell-1) >= 1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
-BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.2
+BuildRequires:  pkgconfig(libgedit-gtksourceview-300)
 BuildRequires:  pkgconfig(libgedit-amtk-5)
 BuildRequires:  pkgconfig(libgedit-tepl-6) >= 6.11
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
@@ -90,7 +90,6 @@ This package provides the python bindings, based on gobject-introspection.
 Summary:        Development files for the gedit text editor
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       gtksourceview-devel
 Provides:       gedit2-devel = %{version}
 Obsoletes:      gedit2-devel < %{version}
 Provides:       %{name}-doc = %{version}
