@@ -131,4 +131,20 @@ This library is &quot;required&quot; by libewf in the security repo for its apps
     <comment></comment>
     <requestid>1198699</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fc2f327c41cdac455996b726c6712169</srcmd5>
+    <version>1.0.9</version>
+    <time>1742316388</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.0.9:
+  - Update AUTHORS
+  - Demonstrate basic possibility to test with pytest
+  - When getting string size, count UTF8 bytes
+  - CI: add python 3.13
+  - pull PyCapsule_New() into the PYLOCK() section in poll_func()
+- Separate documentation to separate subpackage.
+- Add examples subdirectory to that documentation.
+- Make the test suite running.</comment>
+    <requestid>1254139</requestid>
+  </revision>
 </revisionlist>

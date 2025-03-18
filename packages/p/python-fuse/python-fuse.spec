@@ -1,7 +1,7 @@
 #
 # spec file for package python-fuse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,29 @@
 
 
 %{?sle15_python_module_pythons}
-Name:           python-fuse
-Version:        1.0.8
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-fuse%{psuffix}
+Version:        1.0.9
 Release:        0
 Summary:        Python bindings for FUSE
 License:        LGPL-2.1-only
 URL:            https://github.com/libfuse/python-fuse
-Source:         https://github.com/libfuse/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/libfuse/python-fuse/archive/v%{version}.tar.gz#/python-fuse-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+%if %{with test}
+BuildRequires:  %{python_module fuse = %{version}}
+BuildRequires:  %{python_module pytest}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  fuse-devel
 BuildRequires:  pkgconfig
@@ -37,26 +49,44 @@ BuildRequires:  python-rpm-macros
 %description
 Python bindings for FUSE (User space File System)
 
+%package -n %{name}-doc
+Summary:        Documentation files for %name
+Group:          Documentation/Other
+
+%description -n %{name}-doc
+HTML Documentation and examples for %name.
+
 %prep
-%autosetup -p1
+%autosetup -p1 -n python-fuse-%{version}
 
 %build
+%if %{without test}
 export CFLAGS="%{optflags}"
 %pyproject_wheel
+%endif
 
 %install
+%if %{without test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
 %check
-# Can not figured how to do it.
+%if %{with test}
+# gh#libfuse/python-fuse#94
+%pytest tests -k 'not test_fioc'
+%endif
 
+%if %{without test}
 %files %{python_files}
 %license COPYING
-%doc README.* FAQ AUTHORS
 %{python_sitearch}/fuse.py
 %pycache_only %{python_sitearch}/__pycache__/fuse*.py*
 %{python_sitearch}/fuseparts
 %{python_sitearch}/fuse_python-%{version}.dist-info
+
+%files -n %{name}-doc
+%doc README.* FAQ AUTHORS example
+%endif
 
 %changelog

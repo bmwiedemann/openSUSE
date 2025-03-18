@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 17 10:20:11 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.0.9:
+  - Update AUTHORS
+  - Demonstrate basic possibility to test with pytest
+  - When getting string size, count UTF8 bytes
+  - CI: add python 3.13
+  - pull PyCapsule_New() into the PYLOCK() section in poll_func()
+- Separate documentation to separate subpackage.
+- Add examples subdirectory to that documentation.
+- Make the test suite running.
+
+-------------------------------------------------------------------
 Wed Sep  4 08:16:03 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - update to 1.0.8:
