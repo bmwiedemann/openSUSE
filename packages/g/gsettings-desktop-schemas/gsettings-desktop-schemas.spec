@@ -1,7 +1,7 @@
 #
 # spec file for package gsettings-desktop-schemas
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gsettings-desktop-schemas
-Version:        47.1
+Version:        48.0
 Release:        0
 Summary:        Shared GSettings Schemas for the Desktop
 License:        LGPL-2.1-or-later
@@ -36,7 +36,7 @@ BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.0
 # Default fonts in the schemas
-Recommends:     cantarell-fonts
+Recommends:     adwaita-fonts
 Recommends:     adobe-sourcecodepro-fonts
 
 %description
@@ -75,6 +75,10 @@ install -D -m0644 00_org.gnome.desktop.peripherals.gschema.override %{buildroot}
 %endif
 %find_lang %{name} %{?no_lang_C}
 
+%check
+# Test that the schemas compile
+glib-compile-schemas --dry-run --strict %{buildroot}%{_datadir}/glib-2.0/schemas
+
 %files
 %license COPYING
 %doc NEWS README
@@ -99,6 +103,7 @@ install -D -m0644 00_org.gnome.desktop.peripherals.gschema.override %{buildroot}
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.notifications.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.peripherals.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.privacy.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.desktop.screen-time-limits.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.screensaver.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.search-providers.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.session.gschema.xml

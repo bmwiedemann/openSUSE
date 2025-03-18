@@ -610,4 +610,13 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205469</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>406591aa3f267885a79d6a4c9befd5a6</srcmd5>
+    <version>48.0</version>
+    <time>1742315966</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + Updated translations. (forwarded request 1253778 from dimstar)</comment>
+    <requestid>1253788</requestid>
+  </revision>
 </revisionlist>
