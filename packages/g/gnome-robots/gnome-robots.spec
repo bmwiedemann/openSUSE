@@ -17,26 +17,28 @@
 
 
 Name:           gnome-robots
-Version:        40.0
+Version:        41.1
 Release:        0
 Summary:        Robots Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://live.gnome.org/Robots
 Source0:        %{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM
-Patch0:         gnome-robots-libm.patch
+Source1:        vendor.tar.zst
+
+###FIXME###  Must be a bug
+BuildRequires:  gtk3-tools
+#
+BuildRequires:  cargo
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gnome-games-scripts
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
-BuildRequires:  pkgconfig(gsound) >= 1.0.2
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
-BuildRequires:  pkgconfig(libgnome-games-support-1) >= 1.7.1
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.36.2
 
 %description
@@ -47,7 +49,7 @@ the robots chasing him/her by getting them to run into each other.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a1
 
 %build
 %meson \
@@ -68,7 +70,7 @@ the robots chasing him/her by getting them to run into each other.
 %{_datadir}/dbus-1/services/org.gnome.Robots.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Robots.gschema.xml
 %{_datadir}/icons/hicolor/
-%{_datadir}/metainfo/org.gnome.Robots.appdata.xml
+%{_datadir}/metainfo/org.gnome.Robots.metainfo.xml
 %{_mandir}/man6/%{name}.6%{?ext_man}
 %{_bindir}/%{name}
 
