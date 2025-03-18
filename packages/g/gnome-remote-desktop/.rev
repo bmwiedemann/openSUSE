@@ -294,4 +294,12 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment></comment>
     <requestid>1237897</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5d4654ec73db71536b0169343abceb04</srcmd5>
+    <version>48.rc</version>
+    <time>1742316029</time>
+    <user>anag+factory</user>
+    <comment>Early Staging of GNOME 48.rc</comment>
+    <requestid>1251328</requestid>
+  </revision>
 </revisionlist>

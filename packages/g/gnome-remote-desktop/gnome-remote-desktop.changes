@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Mar  1 15:55:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Add support for hardware encoded AVC444
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb  1 17:06:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Add support for zero copy rendering with Vulkan and VAAPI
+    (disabled by default)
+
+-------------------------------------------------------------------
+Mon Jan 13 14:12:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + Prepare for Vulkan and libva based hardware acceleration
+  + Add user documentation
+- Add shaderc, spirv-tools, pkgconfig(libva) and pkgconfig(vulkan)
+  new dependencies.
+
+-------------------------------------------------------------------
 Sun Jan 12 08:41:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.3:

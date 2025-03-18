@@ -23,7 +23,7 @@
 %define polkit_req >= 122
 
 Name:           gnome-remote-desktop
-Version:        47.3
+Version:        48.rc
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
@@ -31,12 +31,20 @@ Group:          System/Management
 URL:            https://gitlab.gnome.org/GNOME/gnome-remote-desktop
 Source0:        %{name}-%{version}.tar.zst
 
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  /usr/bin/dbus-run-session
 BuildRequires:  asciidoc
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
+BuildRequires:  shaderc
+BuildRequires:  spirv-tools
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(epoxy) >= 1.4
 BuildRequires:  pkgconfig(fdk-aac)
 BuildRequires:  pkgconfig(ffnvcodec) >= 11.1.5.0
@@ -44,12 +52,6 @@ BuildRequires:  pkgconfig(freerdp-client3) >= %{freerdp_version}
 BuildRequires:  pkgconfig(freerdp-server3) >= %{freerdp_version}
 BuildRequires:  pkgconfig(freerdp3) >= %{freerdp_version}
 BuildRequires:  pkgconfig(fuse3) >= 3.9.1
-%if 0%{?sle_version} && 0%{?sle_version} < 160000
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
-%endif
-BuildRequires:  sysuser-tools
-BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib_version}
@@ -62,6 +64,7 @@ BuildRequires:  pkgconfig(libei-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.0
 BuildRequires:  pkgconfig(libsecret-1)
+BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libvncclient)
 BuildRequires:  pkgconfig(libvncserver)
 BuildRequires:  pkgconfig(libvncserver) >= 0.9.10
@@ -72,6 +75,7 @@ BuildRequires:  pkgconfig(tss2-esys)
 BuildRequires:  pkgconfig(tss2-mu)
 BuildRequires:  pkgconfig(tss2-rc)
 BuildRequires:  pkgconfig(tss2-tctildr)
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(winpr3) >= %{freerdp_version}
 BuildRequires:  pkgconfig(xkbcommon) >= 1.0.0
 %{?systemd_ordering}
