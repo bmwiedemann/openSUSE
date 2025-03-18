@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 17 17:55:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.88:
+  * fix gitlab automatic deletion bug (#1905)
+  * fix drift syntax error (#1903)
+  * add binaries to published artefacts (#1904)
+  * add setup-terraform to docs (#1902)
+  * added documentation about terraform.lock and backendless
+    functionality (#1901)
+  * add note on mergability check (#1900)
+  * add policies api endpoints (#1897)
+
+-------------------------------------------------------------------
 Thu Mar 06 06:19:45 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.87:
