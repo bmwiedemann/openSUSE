@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 13 18:16:55 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.17.2 (bsc#1238688, CVE-2025-22870):
+  * Updating to 0.37.0 for x/net
+  * build(deps): bump the k8s-io group with 7 updates
+
+-------------------------------------------------------------------
 Mon Mar 10 16:41:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - skip 32bit builds on SLFO

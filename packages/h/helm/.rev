@@ -830,4 +830,14 @@ See changelog in:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1253886</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>22498efd439664b8ff88b3cecb9b4ad4</srcmd5>
+    <version>3.17.2</version>
+    <time>1742316106</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.17.2 (bsc#1238688, CVE-2025-22870):
+  * Updating to 0.37.0 for x/net
+  * build(deps): bump the k8s-io group with 7 updates</comment>
+    <requestid>1254159</requestid>
+  </revision>
 </revisionlist>
