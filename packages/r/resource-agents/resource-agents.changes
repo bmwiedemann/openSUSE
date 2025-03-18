@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 17 11:10:58 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Remove conntrackd RA (jsc#PED-12354)
+
+-------------------------------------------------------------------
 Tue Mar 11 15:24:39 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Adapt drop-deprecated-agents.patch according (jsc#PED-8737)

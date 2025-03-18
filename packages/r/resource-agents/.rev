@@ -1879,4 +1879,12 @@
   * ocf-shellfuncs: add missing variable in crm_mon_no_validation()</comment>
     <requestid>1252160</requestid>
   </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>df990b4d40ba4ffd56202fceb6f0a290</srcmd5>
+    <version>4.16.0+git45.646a41d1</version>
+    <time>1742316010</time>
+    <user>anag+factory</user>
+    <comment>- Remove conntrackd RA (jsc#PED-12354)</comment>
+    <requestid>1253756</requestid>
+  </revision>
 </revisionlist>
