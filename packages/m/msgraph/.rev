@@ -35,4 +35,12 @@
   + Fix logger level warning. (forwarded request 1181708 from dimstar)</comment>
     <requestid>1181713</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0389d03d0786dd97f6774d3b95aa0ebb</srcmd5>
+    <version>0.3.3</version>
+    <time>1742315873</time>
+    <user>anag+factory</user>
+    <comment>Early Staging of GNOME 48.rc</comment>
+    <requestid>1251356</requestid>
+  </revision>
 </revisionlist>

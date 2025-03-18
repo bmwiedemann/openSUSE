@@ -1,7 +1,7 @@
 #
 # spec file for package msgraph
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,11 @@
 #
 
 
+%define apiver 1
+%define sover 1
+
 Name:           msgraph
-Version:        0.2.3
+Version:        0.3.3
 Release:        0
 Summary:        Library for accessing online serive APIs using MS Graph protocol
 License:        LGPL-3.0-or-later
@@ -38,22 +41,22 @@ BuildRequires:  pkgconfig(libxml-2.0)
 %description
 libmsgraph is a GLib-based library for accessing online serive APIs using MS Graph protocol.
 
-%package -n libmsgraph-0-1
+%package -n libmsgraph%{apiver}-%{sover}
 Summary:        Library for accessing online serive APIs using MS Graph protocol
 
-%description -n libmsgraph-0-1
+%description -n libmsgraph%{apiver}-%{sover}
 libmsgraph is a GLib-based library for accessing online serive APIs using MS Graph protocol.
 
-%package -n typelib-1_0-Msg-0
+%package -n typelib-1_0-Msg-%{apiver}
 Summary:        Library for accessing online serive APIs using MS Graph protocol
 
-%description -n typelib-1_0-Msg-0
+%description -n typelib-1_0-Msg-%{apiver}
 libmsgraph is a GLib-based library for accessing online serive APIs using MS Graph protocol.
 
 %package devel
 Summary:        Library for accessing online serive APIs using MS Graph protocol
-Requires:       libmsgraph-0-1 = %{version}
-Requires:       typelib-1_0-Msg-0 = %{version}
+Requires:       libmsgraph%{apiver}-%{sover} = %{version}
+Requires:       typelib-1_0-Msg-%{apiver} = %{version}
 
 %description devel
 libmsgraph is a GLib-based library for accessing online serive APIs using MS Graph protocol.
@@ -73,22 +76,22 @@ sed -i '/drive/d' tests/meson.build
 %check
 %meson_test
 
-%ldconfig_scriptlets -n libmsgraph-0-1
+%ldconfig_scriptlets -n libmsgraph%{apiver}-%{sover}
 
-%files -n libmsgraph-0-1
+%files -n libmsgraph%{apiver}-%{sover}
 %license COPYING
 %doc NEWS
-%{_libdir}/libmsgraph-0.so.%{version}
-%{_libdir}/libmsgraph-0.so.1
+%{_libdir}/libmsgraph-%{apiver}.so.%{version}
+%{_libdir}/libmsgraph-%{apiver}.so.%{sover}
 
-%files -n typelib-1_0-Msg-0
-%{_libdir}/girepository-1.0/Msg-0.typelib
+%files -n typelib-1_0-Msg-%{apiver}
+%{_libdir}/girepository-1.0/Msg-%{apiver}.typelib
 
 %files devel
 %{_includedir}/msg/
-%{_datadir}/doc/msgraph-0/
-%{_libdir}/libmsgraph-0.so
-%{_libdir}/pkgconfig/msgraph-0.1.pc
-%{_datadir}/gir-1.0/Msg-0.gir
+%{_datadir}/doc/msgraph-%{apiver}/
+%{_libdir}/libmsgraph-%{apiver}.so
+%{_libdir}/pkgconfig/msgraph-%{apiver}.pc
+%{_datadir}/gir-1.0/Msg-%{apiver}.gir
 
 %changelog

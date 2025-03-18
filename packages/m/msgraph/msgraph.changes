@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 27 12:31:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.3:
+  + Extended user service (photo, contacts, folders, find)
+  + Improved mail service
+  + Add rate limiting support
+  + Fix pkgconfig file using wrong api version
+  + Set select scopes during requests
+  + Add support for business "Add to OneDrive" sharepoints
+- Add apiver and sover defines and set them to 1, following this,
+  rename all sub-packages accordingly.
+
+-------------------------------------------------------------------
 Wed Jun 19 09:17:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.2.3:
