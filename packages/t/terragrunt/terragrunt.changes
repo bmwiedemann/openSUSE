@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Mar 17 18:37:42 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.76.1:
+  * New Features
+    Introduced no_dot_terragrunt_stack support in stack and unit,
+    allowing users to opt out of generating .terragrunt-stack
+    directories. This enables seamless adoption of
+    terragrunt.stack.hcl without requiring state migration for
+    existing infrastructure.
+  * What's Changed
+    - Stacks: add support for no_dot_terragrunt_stack (#4019)
+
+-------------------------------------------------------------------
+Mon Mar 17 17:56:52 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.76.0:
+  * New Features / Breaking Changes
+    - Catalog/Scaffold no longer requires --root-file-name root.hcl
+      The catalog and scaffold commands will now attempt to
+      discover a parent root.hcl file by default and use it as the
+      default root Terragrunt configuration when present to help
+      users adopt the changes in
+      migrating-from-root-terragrunt-hcl.
+      Users that have switched over to use root.hcl as the root of
+      their Terragrunt configurations instead of terragrunt.hcl
+      will no longer need to explicitly pass --root-file-name
+      root.hcl or use the root-terragrunt-hcl strict control to
+      automatically discover the root of their Terragrunt
+      configurations when using catalog or scaffold.
+      Note that this is technically a breaking change to the way
+      that catalog and scaffold work. With this change, users that
+      have both a root.hcl file and a terragrunt.hcl file at the
+      root of their repositories will have the root.hcl file used
+      instead of the terragrunt.hcl file for the catalog and
+      scaffold commands.
+      If you are not yet ready to rename the terragrunt.hcl file at
+      the root of your repository, use the --root-file-name flag to
+      explicitly provide terragrunt.hcl as the name of the
+      Terragrunt configuration at the root of your Terragrunt
+      project.
+      This change was made as most users are very unlikely to have
+      both root.hcl (the recommended root of Terragrunt
+      configurations) and terragrunt.hcl (the legacy root of
+      Terragrunt configurations in the same Terragrunt project) at
+      the root of their Terragrunt project. This configuration is
+      entirely CLI based, making it relatively easy to address for
+      users (as opposed to HCL configurations, which might take
+      more time for teams to address).
+      Users looking to move from a root terragrunt.hcl file to a
+      root.hcl file will still need to read through the migration
+      guide to adjust all usages of find_in_parent_folders when
+      making the switch.
+  * What's Changed
+    - fix: Lookup root.hcl if present by @yhakbar in #4022
+    - fix: Improving logic for scaffold default root discovery by
+      @yhakbar in #4029
+    - fix: Fixing configuration parsing order link by @yhakbar in
+      #4021
+
+-------------------------------------------------------------------
 Fri Mar 14 18:58:02 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.75.10:
