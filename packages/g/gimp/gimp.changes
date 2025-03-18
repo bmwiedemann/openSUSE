@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 17 10:38:29 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.0.0
+  https://www.gimp.org/news/2025/03/16/gimp-3-0-released/
+
+-------------------------------------------------------------------
+Sat Mar 15 22:32:19 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Add qoi-devel BuildRequires: enable QOI format support
+
+-------------------------------------------------------------------
 Mon Mar  3 20:59:49 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

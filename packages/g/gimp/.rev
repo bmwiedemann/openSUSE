@@ -2202,4 +2202,15 @@ General:
   (jsc#SLE-21105). (forwarded request 1249930 from sbrabec)</comment>
     <requestid>1250087</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>b0a9f5ed375620b0ed0bee46bd04cb6a</srcmd5>
+    <version>3.0.0</version>
+    <time>1742316017</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.0
+  https://www.gimp.org/news/2025/03/16/gimp-3-0-released/
+
+- Add qoi-devel BuildRequires: enable QOI format support</comment>
+    <requestid>1253919</requestid>
+  </revision>
 </revisionlist>

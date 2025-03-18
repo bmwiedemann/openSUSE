@@ -37,7 +37,7 @@
 %define alsa_version            1.0.0
 %define appstream_glib_version  0.7.7
 %define atk_version             2.4.0
-%define babl_version            0.1.110
+%define babl_version            0.1.112
 %define cairo_version           1.14.0
 %define cairo_pdf_version       1.14.0
 %define dbus_glib_version       0.70
@@ -46,7 +46,7 @@
 %define freetype2_version       2.1.7
 %define exiv2_version           0.27.4
 %define gdk_pixbuf_version      2.30.8
-%define gegl_version            0.4.54
+%define gegl_version            0.4.56
 %define gexiv2_version          0.14.0
 %define glib_version            2.70.0
 %define gtk3_version            3.24.48
@@ -64,7 +64,7 @@
 %define libwebp_version         0.6.0
 %define mypaint_brushes_version 1.3.0
 %define OpenEXR_version         1.6.1
-%define pango_version           1.50.0
+%define pango_version           1.55.0
 %define poppler_data_version    0.4.9
 %define poppler_glib_version    0.69.0
 %define vapigen_version         0.40.0
@@ -89,9 +89,9 @@
 %define pkg_name gimp
 
 Name:           gimp
-Version:        3.0.0~RC3
+Version:        3.0.0
 Release:        0
-%global pkg_version 3.0.0-RC3
+%global pkg_version %{version}
 Summary:        The GNU Image Manipulation Program
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Bitmap Editors
@@ -143,6 +143,7 @@ BuildRequires:  update-desktop-files
 %if 0%{?suse_version} >= 1600
 BuildRequires:  /usr/bin/gtk-update-icon-cache
 %endif
+BuildRequires:  qoi-devel
 BuildRequires:  xdg-utils
 BuildRequires:  libbacktrace-devel
 BuildRequires:  pkgconfig(cfitsio)
