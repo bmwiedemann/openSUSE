@@ -615,11 +615,9 @@ unsorted:
   - angelfish-lang 
   - angelscript-devel 
   - ansible 
-  - ansible-10 
   - ansible-builder 
   - ansible-cmdb 
   - ansible-core 
-  - ansible-core-2.17 
   - ansible-documentation 
   - ansible-lint 
   - ansible-linux-system-roles 
@@ -628,7 +626,6 @@ unsorted:
   - ansible-sap-launchpad 
   - ansible-terraform-inventory 
   - ansible-test 
-  - ansible-test-2.17 
   - ansible-variables 
   - ansifilter 
   - ansifilter-bash-completion 
@@ -829,7 +826,6 @@ unsorted:
   - appframework-javadoc 
   - apphub 
   - appimaged 
-  - appmenu-registrar 
   - appres 
   - appstream-glib-devel 
   - appstream-qt5-devel 
@@ -1691,7 +1687,6 @@ unsorted:
   - buckygen 
   - budgie-app-launcher-applet 
   - budgie-applications-menu-applet 
-  - budgie-appmenu-applet 
   - budgie-backgrounds 
   - budgie-brightness-controller-applet 
   - budgie-clockworks-applet 
@@ -2406,6 +2401,7 @@ unsorted:
   - codemodel 
   - codemodel-javadoc 
   - codespell 
+  - coeurl-devel 
   - cog 
   - cog-devel 
   - cogl-devel 
@@ -3007,6 +3003,7 @@ unsorted:
   - crow-translate 
   - crow-translate-lang 
   - crudini 
+  - crun 
   - cryfs 
   - cryptctl 
   - cryptsetup-ssh 
@@ -5850,6 +5847,10 @@ unsorted:
   - ghc-emojis-devel 
   - ghc-emojis-doc 
   - ghc-emojis-prof 
+  - ghc-encoding 
+  - ghc-encoding-devel 
+  - ghc-encoding-doc 
+  - ghc-encoding-prof 
   - ghc-entropy 
   - ghc-entropy-devel 
   - ghc-entropy-doc 
@@ -9162,6 +9163,7 @@ unsorted:
   - intel-ipsec-mb-devel 
   - intel-lpmd 
   - intel-media-driver 
+  - intel-metee-devel 
   - intel-one-mono-fonts 
   - intel-opencl 
   - intel-opencl-devel 
@@ -11781,7 +11783,7 @@ unsorted:
   - libSDL_sound-1_0-1 
   - libSDL_ttf-2_0-0 
   - libSDL_ttf-devel 
-  - libSFCGAL1 
+  - libSFCGAL2 
   - libSHERPA-MC0 
   - libSHERPA-MC0-config 
   - libSILLY-devel 
@@ -12076,9 +12078,6 @@ unsorted:
   - libappindicator-devel 
   - libappindicator1 
   - libappindicator3-devel 
-  - libappmenu-gtk-parser-devel 
-  - libappmenu-gtk2-parser-devel 
-  - libappmenu-gtk3-parser-devel 
   - libappstream-compose0 
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
@@ -12741,6 +12740,7 @@ unsorted:
   - libcob4 
   - libcodec2-1_2-32bit 
   - libcodecore0 
+  - libcoeurl0_3 
   - libcogl-gles2-20 
   - libcollada-dom2_5-dp0 
   - libcollectdclient-devel 
@@ -14436,9 +14436,11 @@ unsorted:
   - libkrun-devel 
   - libkrun-sev-devel 
   - libkrun-sev1 
+  - libkrun1 
   - libkrunfw-devel 
   - libkrunfw-sev-devel 
   - libkrunfw-sev4 
+  - libkrunfw4 
   - libksane-devel 
   - libksba-devel 
   - libkscreen2-devel 
@@ -14713,6 +14715,7 @@ unsorted:
   - libmateweather1 
   - libmatio-devel 
   - libmatio13 
+  - libmatrix_client0_10_0 
   - libmatroska-devel 
   - libmaxminddb-devel 
   - libmbd 
@@ -14775,6 +14778,7 @@ unsorted:
   - libmetal-devel 
   - libmetal0 
   - libmetalink-devel 
+  - libmetee4_3_1 
   - libmetis-gnu-hpc 
   - libmetis5 
   - libmetis_5_1_0-gnu-hpc 
@@ -14860,9 +14864,7 @@ unsorted:
   - libmonoboehm-2_0-devel 
   - libmonosgen-2_0-1 
   - libmonosgen-2_0-devel 
-  - libmopac7-1 
-  - libmopac7-1-devel 
-  - libmopac7-1-x86-64-v3 
+  - libmopac2 
   - libmosquitto1 
   - libmosquittopp1 
   - libmount-devel 
@@ -16771,7 +16773,7 @@ unsorted:
   - libtinygettext0 
   - libtinyobjloader2 
   - libtinyxml0 
-  - libtinyxml2-10 
+  - libtinyxml2-11 
   - libtirpc-devel 
   - libtirpc3-32bit 
   - libtls31 
@@ -17825,6 +17827,7 @@ unsorted:
   - llvm19-vim-plugins 
   - lmdb 
   - lmdb-devel 
+  - lmdbxx-devel 
   - lmms 
   - lmms-devel 
   - lmms-vst 
@@ -18431,7 +18434,6 @@ unsorted:
   - marvin-zsh-completion 
   - massif-visualizer 
   - massif-visualizer-lang 
-  - mate-applet-appmenu 
   - mate-applet-dock 
   - mate-applet-dock-lang 
   - mate-applet-indicator 
@@ -19067,10 +19069,7 @@ unsorted:
   - mkvtoolnix-gui 
   - mkvtoolnix-tools 
   - mlterm 
-  - mlterm-ibus 
   - mlterm-m17n 
-  - mlterm-scim 
-  - mlterm-uim 
   - mm-common 
   - mm-common-docs 
   - mmc-utils 
@@ -19233,7 +19232,7 @@ unsorted:
   - mono-zeroconf-provider-avahi 
   - monodoc-core 
   - moonlight 
-  - mopac7 
+  - mopac-devel 
   - moreutils 
   - moreutils-parallel 
   - moreutils-perl 
@@ -19282,6 +19281,7 @@ unsorted:
   - mp3gain 
   - mpDris2 
   - mpDris2-lang 
+  - mpark-variant-devel 
   - mpc-devel 
   - mpc-devel-32bit 
   - mpc-qt 
@@ -19434,6 +19434,8 @@ unsorted:
   - mtr-gtk 
   - mtree 
   - mtx 
+  - mtxclient-devel 
+  - mtxclient-doc 
   - mu4e 
   - muffin 
   - muffin-devel 
@@ -19986,6 +19988,8 @@ unsorted:
   - ngspice-scripts 
   - ngspice-xspice-cm 
   - nh2ps 
+  - nheko 
+  - nheko-zsh-completion 
   - nilfs-utils 
   - nilfs-utils-devel 
   - nim 
@@ -20163,7 +20167,6 @@ unsorted:
   - nxtvepg 
   - nyancat 
   - nyxt 
-  - o2locktop 
   - o2scl-devel 
   - o2scl-doc 
   - oaml-devel 
@@ -20322,6 +20325,8 @@ unsorted:
   - ocaml-parmap-devel 
   - ocaml-pcre 
   - ocaml-pcre-devel 
+  - ocaml-pcre2 
+  - ocaml-pcre2-devel 
   - ocaml-pp 
   - ocaml-pp-devel 
   - ocaml-ppx_derivers 
@@ -20746,6 +20751,7 @@ unsorted:
   - openmarkup 
   - openmarkup-javadoc 
   - openmarkup-manual 
+  - openmopac 
   - openmpi4 
   - openmpi4-config 
   - openmpi4-devel 
@@ -21267,6 +21273,7 @@ unsorted:
   - parzip 
   - pass-import 
   - pass-otp 
+  - passt-apparmor 
   - passwdqc 
   - passwdqc-devel 
   - password-store 
@@ -23184,7 +23191,6 @@ unsorted:
   - plasma6-activities-tools 
   - plasma6-firewall 
   - plasma6-firewall-lang 
-  - plasma6-kimpanel-scim 
   - plasma6-mobile 
   - plasma6-mobile-lang 
   - plasma6-nano 
@@ -24038,15 +24044,12 @@ unsorted:
   - python3-automaton 
   - python3-avahi-gtk 
   - python3-avocado 
-  - python3-avocado-plugins-glib 
   - python3-avocado-plugins-golang 
-  - python3-avocado-plugins-loader-yaml 
   - python3-avocado-plugins-output-html 
   - python3-avocado-plugins-result-upload 
   - python3-avocado-plugins-resultsdb 
-  - python3-avocado-plugins-runner-docker 
-  - python3-avocado-plugins-runner-remote 
-  - python3-avocado-plugins-runner-vm 
+  - python3-avocado-plugins-robot 
+  - python3-avocado-plugins-varianter-cit 
   - python3-avocado-plugins-varianter-pict 
   - python3-avocado-plugins-varianter-yaml-to-mux 
   - python3-avocado-plugins-vt 
@@ -26435,6 +26438,7 @@ unsorted:
   - python311-nkdfu 
   - python311-nlopt 
   - python311-nltk 
+  - python311-nmcli 
   - python311-nocasedict 
   - python311-nocaselist 
   - python311-node-semver 
@@ -30130,6 +30134,7 @@ unsorted:
   - python312-nkdfu 
   - python312-nlopt 
   - python312-nltk 
+  - python312-nmcli 
   - python312-nocasedict 
   - python312-nocaselist 
   - python312-node-semver 
@@ -33792,6 +33797,7 @@ unsorted:
   - python313-nkdfu 
   - python313-nlopt 
   - python313-nltk 
+  - python313-nmcli 
   - python313-nocasedict 
   - python313-nocaselist 
   - python313-node-semver 
@@ -36098,6 +36104,7 @@ unsorted:
   - rcm 
   - rcs 
   - rcshist 
+  - rdap 
   - rdfind 
   - rdiff 
   - rdiff-backup 
@@ -36271,6 +36278,7 @@ unsorted:
   - rhythmbox-plugin-alternative-toolbar-lang 
   - riff 
   - rime 
+  - rime-plum 
   - rime-schema-all 
   - rime-schema-array 
   - rime-schema-bopomofo 
@@ -36281,6 +36289,7 @@ unsorted:
   - rime-schema-default 
   - rime-schema-double-pinyin 
   - rime-schema-emoji 
+  - rime-schema-emoji-cantonese 
   - rime-schema-essay 
   - rime-schema-essay-simp 
   - rime-schema-extra 
@@ -36842,6 +36851,7 @@ unsorted:
   - rust-bindgen 
   - rust-cbindgen 
   - rust-grass 
+  - rust-stakeholder 
   - rust1.78 
   - rust1.78-src 
   - rust1.79 
@@ -48250,11 +48260,6 @@ unsorted:
   - uhttpmock-devel 
   - uhubctl 
   - uid_wrapper 
-  - uim 
-  - uim-devel 
-  - uim-gtk2 
-  - uim-gtk3 
-  - uim-qt5 
   - uima-parent-pom 
   - uima-pear-maven-plugin 
   - uimaj 
@@ -48453,10 +48458,8 @@ unsorted:
   - vala 
   - vala-cmake-modules 
   - vala-panel 
-  - vala-panel-appmenu-lang 
   - vala-panel-devel 
   - vala-panel-lang 
-  - vala-panel-plugin-appmenu 
   - vala-panel-plugins-base 
   - vala-panel-plugins-wnck 
   - vala-panel-runner 
@@ -49191,7 +49194,6 @@ unsorted:
   - xfce4-notifyd-theme-adapta 
   - xfce4-panel-branding-upstream 
   - xfce4-panel-devel 
-  - xfce4-panel-plugin-appmenu 
   - xfce4-panel-plugin-dict 
   - xfce4-panel-plugin-indicator 
   - xfce4-panel-plugin-indicator-lang 
