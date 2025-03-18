@@ -517,4 +517,14 @@
     <comment></comment>
     <requestid>1221964</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>b754baac300bb7b657f0d244be6b5afe</srcmd5>
+    <version>0.1.112</version>
+    <time>1742316011</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.1.112:
+  - Fix crash for locales using neither '.' nor ',' as decimal
+    seperator.</comment>
+    <requestid>1253759</requestid>
+  </revision>
 </revisionlist>
