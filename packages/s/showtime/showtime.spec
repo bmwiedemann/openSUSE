@@ -1,7 +1,7 @@
 #
 # spec file for package showtime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define appid org.gnome.Showtime
 
 Name:           showtime
-Version:        47.0
+Version:        48.0
 Release:        0
 Summary:        Video player
 License:        GPL-3.0-or-later
@@ -78,4 +79,3 @@ for a straightforward viewing experience.
 %files lang -f %{name}.lang
 
 %changelog
-
