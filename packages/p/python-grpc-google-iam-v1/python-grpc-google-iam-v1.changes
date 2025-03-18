@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 18 08:04:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.14.1
+  * chore(python): Update the python version in docs presubmit to use 3.10 (#131)
+  * chore: remove pb2 file generation during post processing step (#122)
+  * chore: remove obsolete proto files (#123)
+  * chore: add generation of pb2 files via owlbot/bazel (#124)
+  * chore(python): exclude .github/workflows/unittest.yml in renovate config (#132)
+  * build: update README to indicate that source has moved and delete all files (#135)
+
+-------------------------------------------------------------------
 Mon Jan 20 13:24:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.14.0
