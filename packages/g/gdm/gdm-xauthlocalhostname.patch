@@ -1,8 +1,8 @@
-Index: gdm-45.0.1/common/gdm-common.c
-===================================================================
---- gdm-45.0.1.orig/common/gdm-common.c
-+++ gdm-45.0.1/common/gdm-common.c
-@@ -623,6 +623,8 @@ gdm_get_script_environment (const char *
+diff --git a/common/gdm-common.c b/common/gdm-common.c
+index 4f56a05..019971a 100644
+--- a/common/gdm-common.c
++++ b/common/gdm-common.c
+@@ -655,6 +655,8 @@ gdm_get_script_environment (const char *username,
  
          if (display_hostname) {
                  g_hash_table_insert (hash, g_strdup ("REMOTE_HOST"), g_strdup (display_hostname));
@@ -11,7 +11,7 @@ Index: gdm-45.0.1/common/gdm-common.c
          }
  
          /* Runs as root */
-@@ -1088,3 +1090,14 @@ gdm_load_env_d (GdmLoadEnvVarFunc load_e
+@@ -1120,3 +1122,14 @@ gdm_load_env_d (GdmLoadEnvVarFunc load_env_func,
          gdm_load_env_dir (dir, load_env_func, expand_func, user_data);
          g_object_unref (dir);
  }
@@ -26,11 +26,11 @@ Index: gdm-45.0.1/common/gdm-common.c
 +                return g_strdup ("localhost");
 +        }
 +}
-Index: gdm-45.0.1/common/gdm-common.h
-===================================================================
---- gdm-45.0.1.orig/common/gdm-common.h
-+++ gdm-45.0.1/common/gdm-common.h
-@@ -70,6 +70,7 @@ char          *gdm_generate_random_bytes
+diff --git a/common/gdm-common.h b/common/gdm-common.h
+index cffefe1..b769021 100644
+--- a/common/gdm-common.h
++++ b/common/gdm-common.h
+@@ -70,6 +70,7 @@ char          *gdm_generate_random_bytes (gsize          size,
  
  gboolean       gdm_get_login_window_session_id (const char  *seat_id,
                                                  char       **session_id);
@@ -38,32 +38,32 @@ Index: gdm-45.0.1/common/gdm-common.h
  
  gboolean       gdm_goto_login_session     (GCancellable  *cancellable,
                                             GError       **error);
-Index: gdm-45.0.1/daemon/gdm-display-access-file.c
-===================================================================
---- gdm-45.0.1.orig/daemon/gdm-display-access-file.c
-+++ gdm-45.0.1/daemon/gdm-display-access-file.c
-@@ -429,13 +429,10 @@ _get_auth_info_for_display (GdmDisplayAc
+diff --git a/daemon/gdm-display-access-file.c b/daemon/gdm-display-access-file.c
+index 291c163..9a4ed4a 100644
+--- a/daemon/gdm-display-access-file.c
++++ b/daemon/gdm-display-access-file.c
+@@ -432,13 +432,10 @@ _get_auth_info_for_display (GdmDisplayAccessFile *file,
                   *
                   * https://bugs.freedesktop.org/show_bug.cgi?id=43425
                   */
--                char localhost[HOST_NAME_MAX + 1] = "";
+-                char localhost[_POSIX_HOST_NAME_MAX + 1] = "";
                  *family = FamilyLocal;
--                if (gethostname (localhost, HOST_NAME_MAX) == 0) {
+-                if (gethostname (localhost, _POSIX_HOST_NAME_MAX) == 0) {
 -                        *address = g_strdup (localhost);
 -                } else {
 -                        *address = g_strdup ("localhost");
 -                }
 +               /* using the new function we create in the patch, to detect
-+		* changes here, in the original code */
-+		*address = gdm_gethostname ();
++               * changes here, in the original code */
++               *address = gdm_gethostname ();
          } else {
                  *family = FamilyWild;
                  gdm_display_get_remote_hostname (display, address, NULL);
-Index: gdm-45.0.1/daemon/gdm-launch-environment.c
-===================================================================
---- gdm-45.0.1.orig/daemon/gdm-launch-environment.c
-+++ gdm-45.0.1/daemon/gdm-launch-environment.c
-@@ -221,6 +221,11 @@ build_launch_environment (GdmLaunchEnvir
+diff --git a/daemon/gdm-launch-environment.c b/daemon/gdm-launch-environment.c
+index bea2f93..18f8f5a 100644
+--- a/daemon/gdm-launch-environment.c
++++ b/daemon/gdm-launch-environment.c
+@@ -221,6 +221,11 @@ build_launch_environment (GdmLaunchEnvironment *launch_environment,
                  g_hash_table_insert (hash, g_strdup ("GDM_SEAT_ID"), g_strdup (seat_id));
          }
  
@@ -75,11 +75,11 @@ Index: gdm-45.0.1/daemon/gdm-launch-environment.c
          g_hash_table_insert (hash, g_strdup ("RUNNING_UNDER_GDM"), g_strdup ("true"));
  
          /* Now populate XDG_DATA_DIRS from env.d if we're running initial setup; this allows
-Index: gdm-45.0.1/daemon/gdm-session.c
-===================================================================
---- gdm-45.0.1.orig/daemon/gdm-session.c
-+++ gdm-45.0.1/daemon/gdm-session.c
-@@ -2770,6 +2770,14 @@ set_up_session_environment (GdmSession *
+diff --git a/daemon/gdm-session.c b/daemon/gdm-session.c
+index 33dee76..e5a228e 100644
+--- a/daemon/gdm-session.c
++++ b/daemon/gdm-session.c
+@@ -2956,6 +2956,14 @@ set_up_session_environment (GdmSession *self)
                  }
          }
  

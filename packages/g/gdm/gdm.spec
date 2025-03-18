@@ -1,7 +1,7 @@
 #
 # spec file for package gdm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 
 Name:           gdm
-Version:        47.0
+Version:        48.0
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
@@ -70,17 +70,12 @@ Patch4:         gdm-xauthlocalhostname.patch
 Patch5:         gdm-switch-to-tty1.patch
 # PATCH-FIX-OPENSUSE gdm-initial-setup-hardening.patch boo#1140851, glgo#GNOME/gnome-initial-setup#76 fezhang@suse.com -- Prevent gnome-initial-setup running if any regular user has perviously logged into the system
 Patch6:         gdm-initial-setup-hardening.patch
-# PATCH-FIX-UPSTREAM gdm-xvnc-start-session-failed.patch bsc#1219205 glgo#GNOME/gdm#909 xwang@suse.com -- None seat0 session runs without running launcher
-Patch7:         gdm-xvnc-start-session-failed.patch
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
 Patch1000:      gdm-disable-gnome-initial-setup.patch
-## TODO: This patch might need to be rebased/changed after the changes from the 44rc release.
-# PATCH-FIX-SLE gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch bnc#1188912 jsc#SLE-17880 xwang@suse.com -- Add runtime option to start X under root instead of regular user.
-Patch1001:      gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
-# PATCH-FIX-SLE gdm-restart-session-when-X-server-restart.patch bsc#1196974 xwang@suse.com -- Fix blank screen when X restarts with GDM_DISABLE_USER_DISPLAY_SERVER=1.
-Patch1002:      gdm-restart-session-when-X-server-restart.patch
+# PATCH-FIX-SLE gdm-exclude-61-gdm-rules-file.patch jsc#PED-1904 xwang@suse.com -- Exclude 61-gdm.rules file when X is not supported.
+Patch1001:      gdm-exclude-61-gdm-rules-file.patch
 
 BuildRequires:  /usr/bin/dbus-run-session
 BuildRequires:  check-devel
@@ -95,7 +90,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-server
 BuildRequires:  xorg-x11-server-extra
 BuildRequires:  pkgconfig(accountsservice) >= 0.6.35
@@ -130,7 +124,11 @@ Requires:       gnome-shell
 # xdm package ships systemd display-manager service and other common scripts
 # between display managers (bsc#1084655)
 Requires:       (gdm-xdm-integration or gdm-systemd)
+%if !0%{?is_opensuse}
+Suggests:       gdm-systemd
+%else
 Suggests:       gdm-xdm-integration
+%endif
 Requires(post): dconf
 Requires(pre):  group(video)
 Recommends:     iso-codes
@@ -138,12 +136,6 @@ Recommends:     iso-codes
 Recommends:     orca
 # smartcard login
 Recommends:     pam_pkcs11
-Provides:       gdm2 = %{version}
-Obsoletes:      gdm2 < %{version}
-Provides:       gnome-applets-gdm = %{version}
-Obsoletes:      gnome-applets-gdm < %{version}
-Provides:       pulseaudio-gdm-hooks = 16.1
-Obsoletes:      pulseaudio-gdm-hooks <= 16.1
 DocDir:         %{_defaultdocdir}
 %ifnarch s390 s390x
 BuildRequires:  pkgconfig(xorg-server)
@@ -213,11 +205,12 @@ providing graphical log-ins and managing local and remote displays.
 This package provides the upstream default configuration for gdm.
 
 %package xdm-integration
-Summary:        gdm integration into the xdm wrapper script
+Summary:        GDM integration into the xdm wrapper script
 Requires:       gdm
 Requires:       xdm
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+BuildArch:      noarch
 
 %description xdm-integration
 GDM's XDM wrapper integration
@@ -254,7 +247,7 @@ running display manager.
 %autosetup -N
 ### NON-SLE patches start from 0 to 999
 ## Use "autopatch -m 0 -M 999" when there's no need to skip patches.
-%if !0%{?sle_version}
+%if 0%{?is_opensuse}
 %autopatch -p1 -m 1 -M 999
 %else
 %patch -P 1 -p1
@@ -262,7 +255,6 @@ running display manager.
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
-%patch -P 7 -p1
 %endif
 
 %ifarch s390 s390x
@@ -270,11 +262,10 @@ running display manager.
 %endif
 
 ### SLE and Leap only patches start at 1000
-%if 0%{?sle_version}
+%if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
 ## Use this when there's no need to skip patches.
 %patch -P 1000 -p1
 %patch -P 1001 -p1
-%patch -P 1002 -p1
 %endif
 
 %build
@@ -359,13 +350,14 @@ install -m 644 %{SOURCE11} %{buildroot}%{_sysusersdir}/gdm.conf
 
 install -D -m 644 %{SOURCE20} %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.pulse/default.pa
 
+### FIXME ### Needs sec review, so remove for now. (boo#1239719)
+rm -vrf %{buildroot}%{_datadir}/polkit-1/rules.d/20-gdm.rules
+
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}/help
 
 %check
 %meson_test
-
-# FIXME -- Document why we don't use %%service_add_*/%%service_del_* macros.
 
 %pre -f gdm.pre
 
@@ -384,8 +376,35 @@ dconf update
 [ -f %{_prefix}/lib/X11/displaymanagers/gdm ] || %{_sbindir}/update-alternatives \
   --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/gdm
 
-%post -n libgdm1 -p /sbin/ldconfig
-%postun -n libgdm1 -p /sbin/ldconfig
+%pre systemd
+%service_add_pre gdm.service
+
+%post systemd
+%service_add_post gdm.service
+
+%preun systemd
+%service_del_preun gdm.service
+
+%postun systemd
+%dnl do not restart gdm.service, as we might lose the graphical session we're in
+%service_del_postun_without_restart gdm.service
+
+%posttrans systemd
+%dnl migrate a system that still uses xdm abstraction as display manager to gdm
+%dnl part of https://en.opensuse.org/openSUSE:DisplayManagerRework
+if [ "$(systemctl is-enabled display-manager)" = "enabled" ]; then
+  # display-manager is currently 'xdm' - if another display-manager would be running
+  # the above command would return 'alias'
+  if [ -x /usr/sbin/update-alternatives ]; then
+    if [ "$(update-alternatives  --query default-displaymanager | awk '/Value:/ {print $2}')" = "/usr/lib/X11/displaymanagers/xdm" ]; then
+      # the display-manager started by xdm is currently gdm - let's switch to the native service
+      # this only force-enables gdm whenever xdm was enabled AND it was uses as wrapper to start gdm
+      systemctl enable --force gdm.service
+    fi
+  fi
+fi
+
+%ldconfig_scriptlets -n libgdm1
 
 %files
 %license COPYING
@@ -412,7 +431,7 @@ dconf update
 %attr(0700, gdm, gdm) %ghost %dir %{_localstatedir}/lib/gdm/.pulse
 %attr(0600, gdm, gdm) %ghost %{_localstatedir}/lib/gdm/.pulse/default.pa
 %ghost %attr(711,root,gdm) %dir %{_localstatedir}/log/gdm
-%ghost %dir %{_localstatedir}/cache/gdm
+%ghost %attr(1755,root,root) /var/cache/gdm
 %ghost %attr(711,root,gdm) %dir /run/gdm
 %_config_norepl %{_pam_vendordir}/gdm
 %_config_norepl %{_pam_vendordir}/gdm-autologin
@@ -423,7 +442,11 @@ dconf update
 %_config_norepl %{_pam_vendordir}/gdm-password
 %_config_norepl %{_pam_vendordir}/gdm-launch-environment
 %{_datadir}/dbus-1/system.d/gdm.conf
+%if 0%{?is_opensuse}
 %{_udevrulesdir}/61-gdm.rules
+%endif
+### FIXME ### Needs sec review. (boo#1239719)
+%dnl %{_datadir}/polkit-1/rules.d/20-gdm.rules
 %{_tmpfilesdir}/gdm.conf
 %{_sysusersdir}/gdm.conf
 %dir %{_prefix}/lib/systemd/logind.conf.d

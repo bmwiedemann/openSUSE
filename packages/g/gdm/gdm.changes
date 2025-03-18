@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Mar 18 08:18:23 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add systemd scriptlets to gdm-systemd packages. On postun, ensure
+  to NOT restart gdm, as this would cost the graphical session.
+- Fix rpmlint error: zero-perms-ghost. Give /var/cache/gdm some
+  default attributes, matching the attributes in
+  tmpfiles.d/gdm.conf.
+
+-------------------------------------------------------------------
+Tue Mar 18 01:40:45 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Install gdm-systemd by default on SLE (jsc#PED-1904).
+
+-------------------------------------------------------------------
+Mon Mar 17 20:22:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Allow changing global network settings
+  + Updated translations.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Drop obsolete update-desktop-files BuildRequires.
+- Drop old and no longer relevant gdm2, gnome-applets-gdm and
+  pulseaudio-gdm-hooks Provides and Obsoletes.
+- Build gdm-xdm-integration as noarch.
+
+-------------------------------------------------------------------
+Mon Mar 17 18:30:39 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Fix build on SLE 16: remove sle_version in another place, and
+  Patch7 has been removed.
+
+-------------------------------------------------------------------
+Fri Mar 14 01:05:57 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Drop use of sle_version in favor of is_opensuse and suse_version.
+  Sle_version is no longer used in SLE 16.
+
+-------------------------------------------------------------------
+Fri Mar 13 01:00:19 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gdm-exclude-61-gdm-rules-file.patch: Exclude 61-gdm.rules file
+  when X is not supported (jsc#PED-1904).
+- Drop upstream patches:
+  + gdm-xvnc-start-session-failed.patch:
+
+-------------------------------------------------------------------
+Fri Mar  7 01:00:19 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Xorg server is not supported by SLE16:
+  + Remove gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
+  + Remove gdm-restart-session-when-X-server-restart.patch
+  + Update X11-displaymanager-gdm
+
+-------------------------------------------------------------------
+Thu Feb  6 09:00:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Don't require Xwayland if wayland-only
+  + Fix pam_syslog detection
+  + Fix Solaris build
+  + Fix udev rules for disabling wayland
+  + Add 'banner-message-path' and '-source' settings
+- Rebase gdm-xauthlocalhostname.patch.
+
+-------------------------------------------------------------------
+Wed Nov 13 17:55:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add migration code from 'xdm' display-manager wrapper to native
+  gdm systemd service.
+
+-------------------------------------------------------------------
 Mon Sep 16 13:49:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 47.0:
