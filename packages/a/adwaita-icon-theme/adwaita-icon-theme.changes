@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Mar 14 16:10:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + symbolic: pan-* old design was in place for -rtl
+  + cursors: added dnd-ask on gtk request
+
+-------------------------------------------------------------------
+Tue Feb  4 16:50:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Drop spinner (process-working). Libadwaita provides one.
+
+-------------------------------------------------------------------
+Fri Jan  3 13:35:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + cursors: adjust asset sizing to feel more linear.
+  + Build cleanup.
+  + symbolic:
+    - power profile metaphors.
+    - pan icons.
+    - remove emblems.
+
+-------------------------------------------------------------------
 Mon Sep 16 10:17:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 47.0:
