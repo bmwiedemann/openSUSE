@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Mar 17 10:18:04 UTC 2025 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 1.12:
+  * Release v1.12
+  * doc: Regenerate all docs for v1.12
+  * build: ignore PREFER_DEFINED_ATTRIBUTE_MACRO
+  * python, swig: add missing controller attributes
+  * types: add SLM and CP command set indicator values
+  * Makefile: Add new targets and update meson command syntax
+  * build: do not include config.h globally
+  * types: add enum for Identify I/O Command Set Data Structure
+  * libnvme: export nvmf_exat_ptr_next
+  * build: drop support for openssl 1
+  * build: request c++ compiler for host and build machine
+  * build: update min meson dependency
+  * pyproject.toml: allow newer meson version
+  * examples: fix time stamp prefix printf format string
+  * mi: fix nvme_mi_admin_get_log_reachability_groups() parameters order
+  * types: add HDISNS field of Host Behavior Support feature
+  * types: fix nvme_reachability_association_desc member variable name
+  * ioctl: fix nvme_get_log_reachability_groups() parameters order
+  * build: checkpatch limit line length to 100 chars
+  * types,util: add Asynchronous Event Configuration NVMe 2.1 definitions
+  * types,util: Added Enums for missing status codes
+  * ioctl: add libnvme-mi NVMe 2.1 log page APIs
+  * mi: fix indentation errors
+  * test: check the namespace is not cluttered with min/max
+  * util: avoid min macro pollution
+  * build: remove thank you bot
+  * types: Update nvm-id-ns fields based on NVM Command Set Spec 1.1
+  * build: add github token to comment step
+  * types: add NVME_CTRL_OACS definitions
+  * build: add thank you bot
+  * types: Update id-ns fields based on NVM Command Set Spec 1.1
+  * build(deps): bump pypa/gh-action-pypi-publish@release/v1.5
+  * mi: add nvme_mi_admin_get_log_mgmt_addr_list()
+  * types: add spinup control and pls features definition
+  * types: fix enum nvme_psd definitions indentation errors
+  * mi_xfer: Added nvme_mi_mi_xfer API
+  * types: add I/O command fabric commands opcode definition
+  * types: add NVME_FEAT_FDPE_*** definitions
+  * ioctl: add nvme_get_log_pull_model_ddc_req()
+  * ioctl: add nvme_get_log_ave_discover()
+  * ioctl: add nvme_get_log_host_discover()
+  * ioctl: add nvme_get_log_changed_alloc_ns_list()
+  * ioctl: add nvme_get_log_reachability_associations()
+  * ioctl: add nvme_get_log_reachability_groups()
+  * ioctl: add nvme_get_log_mgmt_addr_list()
+  * ioctl: add nvme_get_log_dispersed_ns_participating_nss()
+  * ioctl: add nvme_get_log_rotational_media_info()
+  * ioctl: add nvme_get_endgid_log()
+  * types: add NVMe 2.1 identify command CNS definitions
+  * types: add NVMe 2.1 admin command opcode definitions
+  * types: Add NVMe 2.1 feature ID definitions
+  * types: add NVMe 2.1 identify power state descriptor fields
+  * types: error information log entry status field definitions
+  * types: fix lm data field unsigned values to little endian
+  * build: bump wraps
+  * ioctl: fix io_uring whitespace damages
+  * ioctl: get_log_page by nvme uring cmd
+  * tests: mock io_uring_get_probe
+  * types: add enum for the fields added in TP4058
+  * Update mctp APIs to mctp codeconstruct version 2.0
+  * ioctl: Live Migration
+  * types: Add enum for nvme_id_ctrl.trattr
+  * types: use __le16 instead of __u16 for data fields
+  * types: Update id-ctrl field based on NVMe 2.1 spec
+  * types: Live Migration
+  * mi: telemetry log update based NVMe v2.1
+  * ioctl,types: telemetry log update based NVMe v2.1
+  * types: add enum for the fields added in TP4160
+  * rpm: use defined prefix from meson
+  * tests: do not unconditionally depend on dlsym
+  * types: add NVME_ID_CTRL_NVM_LBAMQF definitions
+  * test/mock: pass thru unknown ioctls
+  * build(deps): bump codecov/codecov-action from 4 to 5
+  * Release v1.11.1
+  * doc: Regenerate all docs for v1.11.1
+  * fabrics: do not attempt to import keys if tls is not enabled (bsc#1216982 bsc#1226216)
+  * linux: do not do any keyring ops when no key is provided (bsc#1216982 bsc#1226216)
+  * types: Add id-ctrl CTRATT.RHII enum
+  * linux: do not return w/o OpenSSL support enabled (bsc#1216982 bsc#1226216)
+  * build: Add token for coverage test
+  * linux: fix derive_psk_digest OpenSSL 1.1 version (bsc#1216982 bsc#1226216)
+- Add liburing dependency
+- Add bugzilla references
+- Remove downstream build fixes
+  * remove 0001-linux-fix-derive_psk_digest-OpenSSL-1.1-version.patch
+  * remove 0002-test-mock-pass-thru-unknown-ioctls.patch
+
+-------------------------------------------------------------------
 Mon Nov 25 13:15:00 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Fix tests on s390
@@ -10,26 +101,26 @@ Thu Oct 31 13:06:35 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
 - Update to version 1.11:
   * prefix: Use Request or Response Length in DLEN and DOFF for MI
   * types: Add ETPVDS and SSI fields of sanitize status log
-  * json: do not escape strings when printing the configuration
-  * tree: do no export tls keys when not provided by user
+  * json: do not escape strings when printing the configuration (bsc#1216982 bsc#1226216)
+  * tree: do no export tls keys when not provided by user (bsc#1216982 bsc#1226216)
   * types: add struct nvme_id_ctrl_nvm ver and lbamqf member variables
   * types: add NVMe 2.1 get log page LIDs
   * type: Added enums for ANSAN and RGCNS bit of OAES field
-  * linux: fixup PSK HMAC type '0' handling
-  * util: added error code for ENOKEY
-  * fabrics: fix map error level in __nvmf_add_ctrl
-  * fabrics: add ctrl connect interface
-  * fabrics: use hex numbers when generating command line options
-  * fabrics: rename first argument for argument macros
-  * linux: handle key import correctly
-  * linux: export keys to config
-  * tree: read tls_configured_key and tls_keyring from sysfs
-  * tree: move dhchap and tls sysfs parser into separate functions
-  * json: move keystore operations out of the JSON parser
-  * tree: add getter/setters for TLS PSK
-  * linux: add import/export function for TLS pre-shared keys
-  * linux: only return the description of a key
-  * linux: use ssize_t as return type for nvme_identity_len
+  * linux: fixup PSK HMAC type '0' handling (bsc#1216982 bsc#1226216)
+  * util: added error code for ENOKEY (bsc#1216982 bsc#1226216)
+  * fabrics: fix map error level in __nvmf_add_ctrl (bsc#1216982 bsc#1226216)
+  * fabrics: add ctrl connect interface (bsc#1216982 bsc#1226216)
+  * fabrics: use hex numbers when generating command line options (bsc#1216982 bsc#1226216)
+  * fabrics: rename first argument for argument macros (bsc#1216982 bsc#1226216)
+  * linux: handle key import correctly (bsc#1216982 bsc#1226216)
+  * linux: export keys to config (bsc#1216982 bsc#1226216)
+  * tree: read tls_configured_key and tls_keyring from sysfs (bsc#1216982 bsc#1226216)
+  * tree: move dhchap and tls sysfs parser into separate functions (bsc#1216982 bsc#1226216)
+  * json: move keystore operations out of the JSON parser (bsc#1216982 bsc#1226216)
+  * tree: add getter/setters for TLS PSK (bsc#1216982 bsc#1226216)
+  * linux: add import/export function for TLS pre-shared keys (bsc#1216982 bsc#1226216)
+  * linux: only return the description of a key (bsc#1216982 bsc#1226216)
+  * linux: use ssize_t as return type for nvme_identity_len (bsc#1216982 bsc#1226216)
   * linux: reorder variable declarations
   * types: Added enum for SMVES event of PEL log
   * libnvme: add lockdown log page support(LID : 0x14)
@@ -84,7 +175,7 @@ Fri Aug 02 08:23:49 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
   * ioctl: fix nvme_get_log_ana_groups() pointer type
   * types: add new filed added in TP4141a
   * mi: Probe quirks on first command submission
-  * tree: optionally skip namespaces during scanning
+  * tree: optionally skip namespaces during scanning (bsc#1232616)
   * ioctl: update nvme_set_var_size_tags() to properly use reftag
   * types: add enum for Protection Information Format
   * libnvme: Introduce functions to generate host identifier and host NQN (bsc#1226216)

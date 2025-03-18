@@ -1,7 +1,7 @@
 #
 # spec file for package libnvme
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,18 @@
 %bcond_without check
 
 Name:           libnvme
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later
 URL:            https://github.com/linux-nvme/libnvme/
 Source0:        libnvme-%{version}.tar.gz
-Patch01:        0001-linux-fix-derive_psk_digest-OpenSSL-1.1-version.patch
-Patch02:        0002-test-mock-pass-thru-unknown-ioctls.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  keyutils-devel
 BuildRequires:  libjson-c-devel
+BuildRequires:  liburing-devel
 BuildRequires:  meson
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
