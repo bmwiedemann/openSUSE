@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 13 12:50:00 CET 2025 - jbeulich@suse.com
+
+- bsc#1219354 - xen channels and domU console
+  67c86fc1-xl-fix-channel-configuration-setting.patch
+- bsc#1227301 - Kernel boot crashes on Thinkpad P14s Gen 3 AMD
+  67c818d4-x86-log-unhandled-mem-accesses-for-PVH-dom0.patch
+  67c818d5-x86-fixup-p2m-page-faults-for-PVH-dom0.patch
+  67c818d6-x86-PVH-dom0-correct-iomem_caps-bound.patch
+  67c818d7-x86-IOMMU-account-for-IOMEM-caps-when-populating.patch
+  67c818d8-x86-Dom0-relax-Interrupt-Address-Range.patch
+- bsc#1237692 - When attempting to start guest vm's libxl fills disk with errors
+  67d2a3fe-libxl-avoid-infinite-loop-in-libxl__remove_directory.patch
+- Upstream bug fixes (bsc#1027519)
+  67cb03e0-x86-vlapic-ESR-write-handling.patch
+  67d17edd-x86-expose-MSR_FAM10H_MMIO_CONF_BASE-on-AMD.patch
+  67d17ede-VT-x-PI-usage-of-msi_desc-msg-field.patch
+
+-------------------------------------------------------------------
 Wed Mar  5 06:18:13 MST 2025 - carnold@suse.com
 
 - Update to Xen 4.20.0 FCS release (jsc#PED-8907)

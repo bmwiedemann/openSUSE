@@ -1,0 +1,126 @@
+
+References: bsc#1227301
+
+# Commit 381caa38850771ae218eb6f6d490dc02e40df964
+# Date 2025-03-05 10:26:46 +0100
+# Author Roger Pau Monne <roger.pau@citrix.com>
+# Committer Roger Pau Monne <roger.pau@citrix.com>
+x86/dom0: be less restrictive with the Interrupt Address Range
+
+Xen currently prevents dom0 from creating CPU or IOMMU page-table mappings
+into the interrupt address range [0xfee00000, 0xfeefffff].  This range has
+two different purposes.  For accesses from the CPU is contains the default
+position of local APIC page at 0xfee00000.  For accesses from devices
+it's the MSI address range, so the address field in the MSI entries
+(usually) point to an address on that range to trigger an interrupt.
+
+There are reports of Lenovo Thinkpad devices placing what seems to be the
+UCSI shared mailbox at address 0xfeec2000 in the interrupt address range.
+Attempting to use that device with a Linux PV dom0 leads to an error when
+Linux kernel maps 0xfeec2000:
+
+RIP: e030:xen_mc_flush+0x1e8/0x2b0
+ xen_leave_lazy_mmu+0x15/0x60
+ vmap_range_noflush+0x408/0x6f0
+ __ioremap_caller+0x20d/0x350
+ acpi_os_map_iomem+0x1a3/0x1c0
+ acpi_ex_system_memory_space_handler+0x229/0x3f0
+ acpi_ev_address_space_dispatch+0x17e/0x4c0
+ acpi_ex_access_region+0x28a/0x510
+ acpi_ex_field_datum_io+0x95/0x5c0
+ acpi_ex_extract_from_field+0x36b/0x4e0
+ acpi_ex_read_data_from_field+0xcb/0x430
+ acpi_ex_resolve_node_to_value+0x2e0/0x530
+ acpi_ex_resolve_to_value+0x1e7/0x550
+ acpi_ds_evaluate_name_path+0x107/0x170
+ acpi_ds_exec_end_op+0x392/0x860
+ acpi_ps_parse_loop+0x268/0xa30
+ acpi_ps_parse_aml+0x221/0x5e0
+ acpi_ps_execute_method+0x171/0x3e0
+ acpi_ns_evaluate+0x174/0x5d0
+ acpi_evaluate_object+0x167/0x440
+ acpi_evaluate_dsm+0xb6/0x130
+ ucsi_acpi_dsm+0x53/0x80
+ ucsi_acpi_read+0x2e/0x60
+ ucsi_register+0x24/0xa0
+ ucsi_acpi_probe+0x162/0x1e3
+ platform_probe+0x48/0x90
+ really_probe+0xde/0x340
+ __driver_probe_device+0x78/0x110
+ driver_probe_device+0x1f/0x90
+ __driver_attach+0xd2/0x1c0
+ bus_for_each_dev+0x77/0xc0
+ bus_add_driver+0x112/0x1f0
+ driver_register+0x72/0xd0
+ do_one_initcall+0x48/0x300
+ do_init_module+0x60/0x220
+ __do_sys_init_module+0x17f/0x1b0
+ do_syscall_64+0x82/0x170
+
+Remove the restrictions to create mappings in the interrupt address range
+for dom0.  Note that the restriction to map the local APIC page is enforced
+separately, and that continues to be present.  Additionally make sure the
+emulated local APIC page is also not mapped, in case dom0 is using it.
+
+Note that even if the interrupt address range entries are populated in the
+IOMMU page-tables no device access will reach those pages.  Device accesses
+to the Interrupt Address Range will always be converted into Interrupt
+Messages and are not subject to DMA remapping.
+
+There's also the following restriction noted in Intel VT-d:
+
+> Software must not program paging-structure entries to remap any address to
+> the interrupt address range. Untranslated requests and translation requests
+> that result in an address in the interrupt range will be blocked with
+> condition code LGN.4 or SGN.8. Translated requests with an address in the
+> interrupt address range are treated as Unsupported Request (UR).
+
+Similarly for AMD-Vi:
+
+> Accesses to the interrupt address range (Table 3) are defined to go through
+> the interrupt remapping portion of the IOMMU and not through address
+> translation processing. Therefore, when a transaction is being processed as
+> an interrupt remapping operation, the transaction attribute of
+> pretranslated or untranslated is ignored.
+>
+> Software Note: The IOMMU should
+> not be configured such that an address translation results in a special
+> address such as the interrupt address range.
+
+However those restrictions don't apply to the identity mappings possibly
+created for dom0, since the interrupt address range is never subject to DMA
+remapping, and hence there's no output address after translation that
+belongs to the interrupt address range.
+
+Reported-by: Jürgen Groß <jgross@suse.com>
+Link: https://lore.kernel.org/xen-devel/baade0a7-e204-4743-bda1-282df74e5f89@suse.com/
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Acked-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/dom0_build.c
++++ b/xen/arch/x86/dom0_build.c
+@@ -554,6 +554,13 @@ int __init dom0_setup_permissions(struct
+         mfn = paddr_to_pfn(mp_lapic_addr);
+         rc |= iomem_deny_access(d, mfn, mfn);
+     }
++    /* If using an emulated local APIC make sure its MMIO is unpopulated. */
++    if ( has_vlapic(d) )
++    {
++        /* Xen doesn't allow changing the local APIC MMIO window position. */
++        mfn = paddr_to_pfn(APIC_DEFAULT_PHYS_BASE);
++        rc |= iomem_deny_access(d, mfn, mfn);
++    }
+     /* I/O APICs. */
+     for ( i = 0; i < nr_ioapics; i++ )
+     {
+@@ -563,10 +570,6 @@ int __init dom0_setup_permissions(struct
+              !rangeset_contains_singleton(mmio_ro_ranges, mfn) )
+             rc |= iomem_deny_access(d, mfn, mfn);
+     }
+-    /* MSI range. */
+-    rc |= iomem_deny_access(d, paddr_to_pfn(MSI_ADDR_BASE_LO),
+-                            paddr_to_pfn(MSI_ADDR_BASE_LO +
+-                                         MSI_ADDR_DEST_ID_MASK));
+     /* HyperTransport range. */
+     if ( boot_cpu_data.x86_vendor & (X86_VENDOR_AMD | X86_VENDOR_HYGON) )
+     {

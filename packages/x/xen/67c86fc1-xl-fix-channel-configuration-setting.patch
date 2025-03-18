@@ -1,0 +1,35 @@
+
+References: bsc#1219354
+
+# Commit e1ccced4afe465d6541c5825a0f8d1b8f5fa4253
+# Date 2025-03-05 16:37:37 +0100
+# Author Juergen Gross <jgross@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+tools/xl: fix channel configuration setting
+
+Channels work differently than other device types: their devid should
+be -1 initially in order to distinguish them from the primary console
+which has the devid of 0.
+
+So when parsing the channel configuration, use
+ARRAY_EXTEND_INIT_NODEVID() in order to avoid overwriting the devid
+set by libxl_device_channel_init().
+
+Fixes: 3a6679634766 ("libxl: set channel devid when not provided by application")
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Reviewed-by: Anthony PERARD <anthony.perard@vates.tech>
+
+--- a/tools/xl/xl_parse.c
++++ b/tools/xl/xl_parse.c
+@@ -2423,8 +2423,9 @@ void parse_config_data(const char *confi
+             char *path = NULL;
+             int len;
+ 
+-            chn = ARRAY_EXTEND_INIT(d_config->channels, d_config->num_channels,
+-                                   libxl_device_channel_init);
++            chn = ARRAY_EXTEND_INIT_NODEVID(d_config->channels,
++                                            d_config->num_channels,
++                                            libxl_device_channel_init);
+ 
+             split_string_into_string_list(buf, ",", &pairs);
+             len = libxl_string_list_length(&pairs);

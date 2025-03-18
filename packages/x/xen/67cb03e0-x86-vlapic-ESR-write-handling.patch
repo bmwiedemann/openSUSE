@@ -1,0 +1,78 @@
+# Commit b28b590d4a23894672f1dd7fb98cdf9926ecb282
+# Date 2025-03-07 14:34:08 +0000
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/vlapic: Fix handling of writes to APIC_ESR
+
+Xen currently presents APIC_ESR to guests as a simple read/write register.
+
+This is incorrect.  The SDM states:
+
+  The ESR is a write/read register. Before attempt to read from the ESR,
+  software should first write to it. (The value written does not affect the
+  values read subsequently; only zero may be written in x2APIC mode.) This
+  write clears any previously logged errors and updates the ESR with any
+  errors detected since the last write to the ESR.
+
+Introduce a new pending_esr field in hvm_hw_lapic.
+
+Update vlapic_error() to accumulate errors here, and extend vlapic_reg_write()
+to discard the written value and transfer pending_esr into APIC_ESR.  Reads
+are still as before.
+
+Importantly, this means that guests no longer destroys the ESR value it's
+looking for in the LVTERR handler when following the SDM instructions.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/hvm/vlapic.c
++++ b/xen/arch/x86/hvm/vlapic.c
+@@ -108,7 +108,7 @@ static void vlapic_error(struct vlapic *
+     uint32_t esr;
+ 
+     spin_lock_irqsave(&vlapic->esr_lock, flags);
+-    esr = vlapic_get_reg(vlapic, APIC_ESR);
++    esr = vlapic->hw.pending_esr;
+     if ( (esr & errmask) != errmask )
+     {
+         uint32_t lvterr = vlapic_get_reg(vlapic, APIC_LVTERR);
+@@ -127,7 +127,7 @@ static void vlapic_error(struct vlapic *
+                  errmask |= APIC_ESR_RECVILL;
+         }
+ 
+-        vlapic_set_reg(vlapic, APIC_ESR, esr | errmask);
++        vlapic->hw.pending_esr |= errmask;
+ 
+         if ( inj )
+             vlapic_set_irq(vlapic, lvterr & APIC_VECTOR_MASK, 0);
+@@ -802,6 +802,19 @@ void vlapic_reg_write(struct vcpu *v, un
+         vlapic_set_reg(vlapic, APIC_ID, val);
+         break;
+ 
++    case APIC_ESR:
++    {
++        unsigned long flags;
++
++        spin_lock_irqsave(&vlapic->esr_lock, flags);
++        val = vlapic->hw.pending_esr;
++        vlapic->hw.pending_esr = 0;
++        spin_unlock_irqrestore(&vlapic->esr_lock, flags);
++
++        vlapic_set_reg(vlapic, APIC_ESR, val);
++        break;
++    }
++
+     case APIC_TASKPRI:
+         vlapic_set_reg(vlapic, APIC_TASKPRI, val & 0xff);
+         break;
+--- a/xen/include/public/arch-x86/hvm/save.h
++++ b/xen/include/public/arch-x86/hvm/save.h
+@@ -394,6 +394,7 @@ struct hvm_hw_lapic {
+     uint32_t             disabled; /* VLAPIC_xx_DISABLED */
+     uint32_t             timer_divisor;
+     uint64_t             tdt_msr;
++    uint32_t             pending_esr;
+ };
+ 
+ DECLARE_HVM_SAVE_TYPE(LAPIC, 5, struct hvm_hw_lapic);

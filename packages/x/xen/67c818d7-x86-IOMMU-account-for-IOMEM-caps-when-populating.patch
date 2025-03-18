@@ -1,0 +1,230 @@
+# Commit 62f3fc5296c452285e81adb50976bde2d68d3181
+# Date 2025-03-05 10:26:46 +0100
+# Author Roger Pau Monne <roger.pau@citrix.com>
+# Committer Roger Pau Monne <roger.pau@citrix.com>
+x86/iommu: account for IOMEM caps when populating dom0 IOMMU page-tables
+
+The current code in arch_iommu_hwdom_init() kind of open-codes the same
+MMIO permission ranges that are added to the hardware domain ->iomem_caps.
+Avoid this duplication and use ->iomem_caps in arch_iommu_hwdom_init() to
+filter which memory regions should be added to the dom0 IOMMU page-tables.
+
+Note the IO-APIC and MCFG page(s) must be set as not accessible for a PVH
+dom0, otherwise the internal Xen emulation for those ranges won't work.
+This requires adjustments in dom0_setup_permissions().
+
+The call to pvh_setup_mmcfg() in dom0_construct_pvh() must now strictly be
+done ahead of setting up dom0 permissions, so take the opportunity to also
+put it inside the existing is_hardware_domain() region.
+
+Also the special casing of E820_UNUSABLE regions no longer needs to be done
+in arch_iommu_hwdom_init(), as those regions are already blocked in
+->iomem_caps and thus would be removed from the rangeset as part of
+->iomem_caps processing in arch_iommu_hwdom_init().  The E820_UNUSABLE
+regions below 1Mb are not removed from ->iomem_caps, that's a slight
+difference for the IOMMU created page-tables, but the aim is to allow
+access to the same memory either from the CPU or the IOMMU page-tables.
+
+Since ->iomem_caps already takes into account the domain max paddr, there's
+no need to remove any regions past the last address addressable by the
+domain, as applying ->iomem_caps would have already taken care of that.
+
+Suggested-by: Jan Beulich <jbeulich@suse.com>
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/dom0_build.c
++++ b/xen/arch/x86/dom0_build.c
+@@ -558,7 +558,9 @@ int __init dom0_setup_permissions(struct
+     for ( i = 0; i < nr_ioapics; i++ )
+     {
+         mfn = paddr_to_pfn(mp_ioapics[i].mpc_apicaddr);
+-        if ( !rangeset_contains_singleton(mmio_ro_ranges, mfn) )
++        /* If emulating IO-APIC(s) make sure the base address is unmapped. */
++        if ( has_vioapic(d) ||
++             !rangeset_contains_singleton(mmio_ro_ranges, mfn) )
+             rc |= iomem_deny_access(d, mfn, mfn);
+     }
+     /* MSI range. */
+@@ -599,6 +601,13 @@ int __init dom0_setup_permissions(struct
+             rc |= rangeset_add_singleton(mmio_ro_ranges, mfn);
+     }
+ 
++    if ( has_vpci(d) )
++        /*
++         * TODO: runtime added MMCFG regions are not checked to make sure they
++         * don't overlap with already mapped regions, thus preventing trapping.
++         */
++        rc |= vpci_mmcfg_deny_access(d);
++
+     return rc;
+ }
+ 
+--- a/xen/arch/x86/hvm/dom0_build.c
++++ b/xen/arch/x86/hvm/dom0_build.c
+@@ -1324,6 +1324,13 @@ int __init dom0_construct_pvh(struct boo
+     if ( is_hardware_domain(d) )
+     {
+         /*
++         * MMCFG initialization must be performed before setting domain
++         * permissions, as the MCFG areas must not be part of the domain IOMEM
++         * accessible regions.
++         */
++        pvh_setup_mmcfg(d);
++
++        /*
+          * Setup permissions early so that calls to add MMIO regions to the
+          * p2m as part of vPCI setup don't fail due to permission checks.
+          */
+@@ -1336,13 +1343,6 @@ int __init dom0_construct_pvh(struct boo
+     }
+ 
+     /*
+-     * NB: MMCFG initialization needs to be performed before iommu
+-     * initialization so the iommu code can fetch the MMCFG regions used by the
+-     * domain.
+-     */
+-    pvh_setup_mmcfg(d);
+-
+-    /*
+      * Craft dom0 physical memory map and set the paging allocation. This must
+      * be done before the iommu initializion, since iommu initialization code
+      * will likely add mappings required by devices to the p2m (ie: RMRRs).
+--- a/xen/arch/x86/hvm/io.c
++++ b/xen/arch/x86/hvm/io.c
+@@ -363,14 +363,14 @@ static const struct hvm_mmcfg *vpci_mmcf
+     return NULL;
+ }
+ 
+-int __hwdom_init vpci_subtract_mmcfg(const struct domain *d, struct rangeset *r)
++int __hwdom_init vpci_mmcfg_deny_access(struct domain *d)
+ {
+     const struct hvm_mmcfg *mmcfg;
+ 
+     list_for_each_entry ( mmcfg, &d->arch.hvm.mmcfg_regions, next )
+     {
+-        int rc = rangeset_remove_range(r, PFN_DOWN(mmcfg->addr),
+-                                       PFN_DOWN(mmcfg->addr + mmcfg->size - 1));
++        int rc = iomem_deny_access(d, PFN_DOWN(mmcfg->addr),
++                                   PFN_DOWN(mmcfg->addr + mmcfg->size - 1));
+ 
+         if ( rc )
+             return rc;
+--- a/xen/arch/x86/include/asm/hvm/io.h
++++ b/xen/arch/x86/include/asm/hvm/io.h
+@@ -132,8 +132,8 @@ int register_vpci_mmcfg_handler(struct d
+ /* Destroy tracked MMCFG areas. */
+ void destroy_vpci_mmcfg(struct domain *d);
+ 
+-/* Remove MMCFG regions from a given rangeset. */
+-int vpci_subtract_mmcfg(const struct domain *d, struct rangeset *r);
++/* Remove MMCFG regions from a domain ->iomem_caps. */
++int vpci_mmcfg_deny_access(struct domain *d);
+ 
+ #endif /* __ASM_X86_HVM_IO_H__ */
+ 
+--- a/xen/drivers/passthrough/x86/iommu.c
++++ b/xen/drivers/passthrough/x86/iommu.c
+@@ -320,6 +320,26 @@ static int __hwdom_init cf_check map_sub
+     return rangeset_remove_range(map, s, e);
+ }
+ 
++struct handle_iomemcap {
++    struct rangeset *r;
++    unsigned long last;
++};
++static int __hwdom_init cf_check map_subtract_iomemcap(unsigned long s,
++                                                       unsigned long e,
++                                                       void *data)
++{
++    struct handle_iomemcap *h = data;
++    int rc = 0;
++
++    if ( h->last != s )
++        rc = rangeset_remove_range(h->r, h->last, s - 1);
++
++    ASSERT(e < ~0UL);
++    h->last = e + 1;
++
++    return rc;
++}
++
+ struct map_data {
+     struct domain *d;
+     unsigned int flush_flags;
+@@ -400,6 +420,7 @@ void __hwdom_init arch_iommu_hwdom_init(
+     unsigned int i;
+     struct rangeset *map;
+     struct map_data map_data = { .d = d };
++    struct handle_iomemcap iomem = {};
+     int rc;
+ 
+     BUG_ON(!is_hardware_domain(d));
+@@ -442,14 +463,6 @@ void __hwdom_init arch_iommu_hwdom_init(
+ 
+         switch ( entry.type )
+         {
+-        case E820_UNUSABLE:
+-            /* Only relevant for inclusive mode, otherwise this is a no-op. */
+-            rc = rangeset_remove_range(map, PFN_DOWN(entry.addr),
+-                                       PFN_DOWN(entry.addr + entry.size - 1));
+-            if ( rc )
+-                panic("IOMMU failed to remove unusable memory: %d\n", rc);
+-            continue;
+-
+         case E820_RESERVED:
+             if ( !iommu_hwdom_inclusive && !iommu_hwdom_reserved )
+                 continue;
+@@ -475,22 +488,13 @@ void __hwdom_init arch_iommu_hwdom_init(
+     if ( rc )
+         panic("IOMMU failed to remove Xen ranges: %d\n", rc);
+ 
+-    /* Remove any overlap with the Interrupt Address Range. */
+-    rc = rangeset_remove_range(map, 0xfee00, 0xfeeff);
++    iomem.r = map;
++    rc = rangeset_report_ranges(d->iomem_caps, 0, ~0UL, map_subtract_iomemcap,
++                                &iomem);
++    if ( !rc && iomem.last < ~0UL )
++        rc = rangeset_remove_range(map, iomem.last, ~0UL);
+     if ( rc )
+-        panic("IOMMU failed to remove Interrupt Address Range: %d\n", rc);
+-
+-    /* If emulating IO-APIC(s) make sure the base address is unmapped. */
+-    if ( has_vioapic(d) )
+-    {
+-        for ( i = 0; i < d->arch.hvm.nr_vioapics; i++ )
+-        {
+-            rc = rangeset_remove_singleton(map,
+-                PFN_DOWN(domain_vioapic(d, i)->base_address));
+-            if ( rc )
+-                panic("IOMMU failed to remove IO-APIC: %d\n", rc);
+-        }
+-    }
++        panic("IOMMU failed to remove forbidden regions: %d\n", rc);
+ 
+     if ( is_pv_domain(d) )
+     {
+@@ -506,23 +510,6 @@ void __hwdom_init arch_iommu_hwdom_init(
+             panic("IOMMU failed to remove read-only regions: %d\n", rc);
+     }
+ 
+-    if ( has_vpci(d) )
+-    {
+-        /*
+-         * TODO: runtime added MMCFG regions are not checked to make sure they
+-         * don't overlap with already mapped regions, thus preventing trapping.
+-         */
+-        rc = vpci_subtract_mmcfg(d, map);
+-        if ( rc )
+-            panic("IOMMU unable to remove MMCFG areas: %d\n", rc);
+-    }
+-
+-    /* Remove any regions past the last address addressable by the domain. */
+-    rc = rangeset_remove_range(map, PFN_DOWN(1UL << domain_max_paddr_bits(d)),
+-                               ~0UL);
+-    if ( rc )
+-        panic("IOMMU unable to remove unaddressable ranges: %d\n", rc);
+-
+     if ( iommu_verbose )
+         printk(XENLOG_INFO "%pd: identity mappings for IOMMU:\n", d);
+ 

@@ -1,0 +1,59 @@
+# Commit 30f0e55a79206702b4e82e86dad6b35033157858
+# Date 2025-03-12 13:32:30 +0100
+# Author Roger Pau Monne <roger.pau@citrix.com>
+# Committer Roger Pau Monne <roger.pau@citrix.com>
+x86/vmx: fix posted interrupts usage of msi_desc->msg field
+
+The current usage of msi_desc->msg in vmx_pi_update_irte() will make the
+field contain a translated MSI message, instead of the expected
+untranslated one.  This breaks dump_msi(), that use the data in
+msi_desc->msg to print the interrupt details.
+
+Fix this by introducing a dummy local msi_msg, and use it with
+iommu_update_ire_from_msi().  vmx_pi_update_irte() relies on the MSI
+message not changing, so there's no need to propagate the resulting msi_msg
+to the hardware, and the contents can be ignored.
+
+Additionally add a comment to clarify that msi_desc->msg must always
+contain the untranslated MSI message.
+
+Fixes: a5e25908d18d ('VT-d: introduce new fields in msi_desc to track binding with guest interrupt')
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/hvm/vmx/vmx.c
++++ b/xen/arch/x86/hvm/vmx/vmx.c
+@@ -396,6 +396,7 @@ static int cf_check vmx_pi_update_irte(c
+     const struct pi_desc *pi_desc = v ? &v->arch.hvm.vmx.pi_desc : NULL;
+     struct irq_desc *desc;
+     struct msi_desc *msi_desc;
++    struct msi_msg msg;
+     int rc;
+ 
+     desc = pirq_spin_lock_irq_desc(pirq, NULL);
+@@ -410,12 +411,13 @@ static int cf_check vmx_pi_update_irte(c
+     }
+     msi_desc->pi_desc = pi_desc;
+     msi_desc->gvec = gvec;
++    msg = msi_desc->msg;
+ 
+     spin_unlock_irq(&desc->lock);
+ 
+     ASSERT_PDEV_LIST_IS_READ_LOCKED(msi_desc->dev->domain);
+ 
+-    return iommu_update_ire_from_msi(msi_desc, &msi_desc->msg);
++    return iommu_update_ire_from_msi(msi_desc, &msg);
+ 
+  unlock_out:
+     spin_unlock_irq(&desc->lock);
+--- a/xen/arch/x86/include/asm/msi.h
++++ b/xen/arch/x86/include/asm/msi.h
+@@ -124,7 +124,7 @@ struct msi_desc {
+     int irq;
+     int remap_index;         /* index in interrupt remapping table */
+ 
+-    struct msi_msg msg;      /* Last set MSI message */
++    struct msi_msg msg;      /* Last set MSI message (untranslated) */
+ };
+ 
+ /*

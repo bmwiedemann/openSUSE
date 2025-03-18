@@ -1,0 +1,31 @@
+
+References: bsc#1237692
+
+# Commit 68baeb5c4852e652b9599e049f40477edac4060e
+# Date 2025-03-13 10:23:10 +0100
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+libxl: avoid infinite loop in libxl__remove_directory()
+
+Infinitely retrying the rmdir() invocation makes little sense. While the
+original observation was the log filling the disk (due to repeated
+"Directory not empty" errors, in turn occurring for unclear reasons),
+the loop wants breaking even if there was no error message being logged
+(much like is done in the similar loops in libxl__remove_file() and
+libxl__remove_file_or_directory()).
+
+Fixes: c4dcbee67e6d ("libxl: provide libxl__remove_file et al")
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Juergen Gross <jgross@suse.com>
+Acked-by: Anthony PERARD <anthony.perard@vates.tech>
+
+--- a/tools/libs/light/libxl_utils.c
++++ b/tools/libs/light/libxl_utils.c
+@@ -577,6 +577,7 @@ int libxl__remove_directory(libxl__gc *g
+         if (errno == EINTR) continue;
+         LOGE(ERROR, "failed to remove emptied directory %s", dirpath);
+         rc = ERROR_FAIL;
++        break;
+     }
+ 
+  out:

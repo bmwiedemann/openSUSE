@@ -1,0 +1,29 @@
+# Commit a00e08799cc7657d2a1aca158f4ad43d4c9103e7
+# Date 2025-03-05 10:26:46 +0100
+# Author Roger Pau Monne <roger.pau@citrix.com>
+# Committer Roger Pau Monne <roger.pau@citrix.com>
+x86/dom0: correctly set the maximum ->iomem_caps bound for PVH
+
+The logic in dom0_setup_permissions() sets the maximum bound in
+->iomem_caps unconditionally using paddr_bits, which is not correct for HVM
+based domains.  Instead use domain_max_paddr_bits() to get the correct
+maximum paddr bits for each possible domain type.
+
+Switch to using PFN_DOWN() instead of PAGE_SHIFT, as that's shorter.
+
+Fixes: 53de839fb409 ('x86: constrain MFN range Dom0 may access')
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/dom0_build.c
++++ b/xen/arch/x86/dom0_build.c
+@@ -481,7 +481,8 @@ int __init dom0_setup_permissions(struct
+ 
+     /* The hardware domain is initially permitted full I/O capabilities. */
+     rc = ioports_permit_access(d, 0, 0xFFFF);
+-    rc |= iomem_permit_access(d, 0UL, (1UL << (paddr_bits - PAGE_SHIFT)) - 1);
++    rc |= iomem_permit_access(d, 0UL,
++                              PFN_DOWN(1UL << domain_max_paddr_bits(d)) - 1);
+     rc |= irqs_permit_access(d, 1, nr_irqs_gsi - 1);
+ 
+     /* Modify I/O port access permissions. */

@@ -3070,4 +3070,12 @@
     <comment>Update to Xen version 4.20.0 FCS release with security fix for bsc#1238043, CVE-2025-1713, XSA-467</comment>
     <requestid>1250427</requestid>
   </revision>
+  <revision rev="362" vrev="1">
+    <srcmd5>29f3223417bae395483d76f6f1bc766d</srcmd5>
+    <version>4.20.0_10</version>
+    <time>1742315847</time>
+    <user>anag+factory</user>
+    <comment>Fixes for bsc#1219354, bsc#1227301, bsc#1237692, and a few other upstream fixes</comment>
+    <requestid>1253904</requestid>
+  </revision>
 </revisionlist>

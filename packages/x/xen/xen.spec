@@ -125,7 +125,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.20.0_08
+Version:        4.20.0_10
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -160,6 +160,16 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
+Patch1:         67c818d4-x86-log-unhandled-mem-accesses-for-PVH-dom0.patch
+Patch2:         67c818d5-x86-fixup-p2m-page-faults-for-PVH-dom0.patch
+Patch3:         67c818d6-x86-PVH-dom0-correct-iomem_caps-bound.patch
+Patch4:         67c818d7-x86-IOMMU-account-for-IOMEM-caps-when-populating.patch
+Patch5:         67c818d8-x86-Dom0-relax-Interrupt-Address-Range.patch
+Patch6:         67c86fc1-xl-fix-channel-configuration-setting.patch
+Patch7:         67cb03e0-x86-vlapic-ESR-write-handling.patch
+Patch8:         67d17edd-x86-expose-MSR_FAM10H_MMIO_CONF_BASE-on-AMD.patch
+Patch9:         67d17ede-VT-x-PI-usage-of-msi_desc-msg-field.patch
+Patch10:        67d2a3fe-libxl-avoid-infinite-loop-in-libxl__remove_directory.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch

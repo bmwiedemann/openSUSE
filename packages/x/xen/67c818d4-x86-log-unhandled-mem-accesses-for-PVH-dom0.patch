@@ -1,0 +1,32 @@
+# Commit 43d8a80a0cccfe3715bb3178b5c15fb983979651
+# Date 2025-03-05 10:26:46 +0100
+# Author Roger Pau Monne <roger.pau@citrix.com>
+# Committer Roger Pau Monne <roger.pau@citrix.com>
+x86/emul: dump unhandled memory accesses for PVH dom0
+
+A PV dom0 can map any host memory as long as it's allowed by the IO
+capability range in d->iomem_caps.  On the other hand, a PVH dom0 has no
+way to populate MMIO region onto it's p2m, so it's limited to what Xen
+initially populates on the p2m based on the host memory map and the enabled
+device BARs.
+
+Introduce a new debug build only printk that reports attempts by dom0 to
+access addresses not populated on the p2m, and not handled by any emulator.
+This is for information purposes only, but might allow getting an idea of
+what MMIO ranges might be missing on the p2m.
+
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Acked-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/hvm/emulate.c
++++ b/xen/arch/x86/hvm/emulate.c
+@@ -337,6 +337,9 @@ static int hvmemul_do_io(
+         /* If there is no suitable backing DM, just ignore accesses */
+         if ( !s )
+         {
++            if ( is_mmio && is_hardware_domain(currd) )
++                gdprintk(XENLOG_DEBUG, "unhandled memory %s %#lx size %u\n",
++                         dir ? "read from" : "write to", addr, size);
+             rc = hvm_process_io_intercept(&null_handler, &p);
+             vio->req.state = STATE_IOREQ_NONE;
+         }
