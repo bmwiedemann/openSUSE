@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 17 18:20:03 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.6.2
+  * This release addresses a major regression in v0.6.1.
+  Support for new devices:
+  * MM700
+  * K70 RGB Pro
+  Bug fixes:
+  * Some keys, bindings, or DPI not working on any of the
+    following devices: M55 Pro, M95, Ironclaw Wireless,
+    Harpoon Wireless, Katar Pro XT, K55 Pro.
+
+-------------------------------------------------------------------
 Mon Mar 10 11:35:11 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.6.1
