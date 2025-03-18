@@ -18,11 +18,12 @@
 
 %bcond_with profiler
 
-%define api_major 15
+%define api_major 16
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
+
 Name:           mutter
-Version:        47.6
+Version:        48.0
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -43,8 +44,6 @@ Patch5:         mutter-implement-text-input-v1.patch
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
 Patch1000:      mutter-SLE-bell.patch
-# PATCH-FIX-SLE mutter-SLE-relax-some-constraints-on-CSD-windows.patch bnc#883491 cxiong@suse.com -- Relax some constraints on window positioning for CSD windows s.t. they can be placed at the very top of the monitor.
-Patch1001:      mutter-SLE-relax-some-constraints-on-CSD-windows.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
@@ -53,8 +52,11 @@ BuildRequires:  (libxcvt if xorg-x11-server > 21)
 %endif
 BuildRequires:  meson >= 1.3.0
 BuildRequires:  pkgconfig
+BuildRequires:  python3-argcomplete
+BuildRequires:  python3-docutils
 BuildRequires:  xorg-x11-server
 BuildRequires:  xvfb-run
+BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(colord) >= 1.4.5
 BuildRequires:  pkgconfig(egl)
@@ -74,7 +76,7 @@ BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
-BuildRequires:  pkgconfig(libeis-1.0) >= 1.0.901
+BuildRequires:  pkgconfig(libeis-1.0) >= 1.3.901
 BuildRequires:  pkgconfig(libinput) >= 1.26.0
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 1.2.0
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.7
@@ -147,18 +149,11 @@ pushd subprojects
 tar xf %{SOURCE1}
 mv gvdb-0.gitmodule gvdb
 popd
-%if !0%{?sle_version}
+%if 0%{?is_opensuse}
 %autopatch -p1 -M 999
 %else
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%endif
-# SLE-only patches and translations.
-%if 0%{?sle_version}
-%patch -P 1000 -p1
-%patch -P 1001 -p1
+# SLE-only patches (apply all patches).
+%autopatch -p1
 %endif
 
 %build
@@ -170,7 +165,6 @@ popd
 	-Dtests=disabled \
 	-Dinstalled_tests=false \
 	-Dxwayland_initfd=auto \
-	-Dlibdisplay_info=true \
 %if %{with profiler}
 	-Dprofiler=true \
 %else
@@ -197,7 +191,6 @@ popd
 
 # These so files are not split out since they are private to mutter
 %{_libdir}/mutter-%{api_major}/libmutter-clutter-%{api_major}.so.*
-%{_libdir}/mutter-%{api_major}/libmutter-cogl-pango-%{api_major}.so.*
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-%{api_major}.so.*
 %{_libdir}/mutter-%{api_major}/libmutter-mtk-%{api_major}.so.*
 %{_libdir}/mutter-%{api_major}/plugins/libdefault.so
@@ -205,7 +198,6 @@ popd
 # These typelibs are not split out since they are private to mutter
 %{_libdir}/mutter-%{api_major}/Clutter-%{api_major}.typelib
 %{_libdir}/mutter-%{api_major}/Cogl-%{api_major}.typelib
-%{_libdir}/mutter-%{api_major}/CoglPango-%{api_major}.typelib
 %{_libdir}/mutter-%{api_major}/Meta-%{api_major}.typelib
 %{_libdir}/mutter-%{api_major}/Mtk-%{api_major}.typelib
 
@@ -225,22 +217,23 @@ popd
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
 
+%{_bindir}/gdctl
+%{_datadir}/bash-completion/completions/gdctl
+%{_mandir}/man1/gdctl.1%{ext_man}
+
 %files devel
 %{_includedir}/mutter-%{api_major}/
 %{_libdir}/mutter-%{api_major}/Meta-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/Clutter-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/Cogl-%{api_major}.gir
-%{_libdir}/mutter-%{api_major}/CoglPango-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/Mtk-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/libmutter-clutter-%{api_major}.so
-%{_libdir}/mutter-%{api_major}/libmutter-cogl-pango-%{api_major}.so
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-%{api_major}.so
 %{_libdir}/mutter-%{api_major}/libmutter-mtk-%{api_major}.so
 %{_libdir}/libmutter-%{api_major}.so
 %{_libdir}/pkgconfig/libmutter-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-clutter-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-cogl-%{api_major}.pc
-%{_libdir}/pkgconfig/mutter-cogl-pango-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-mtk-%{api_major}.pc
 
 %files lang -f %{name}.lang

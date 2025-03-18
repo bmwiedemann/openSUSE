@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Tue Mar 18 01:57:42 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Drop mutter-SLE-relax-some-constraints-on-CSD-windows.patch:
+  sle-classic is not supported.
+
+-------------------------------------------------------------------
+Sun Mar 16 14:49:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Improve wp_color_management_v1 support
+  + Fix cursor brightness not following HDR luminance setting
+  + Fix black screen with nvidia driver
+  + Adjust presentation time feedback for triple buffering
+  + Fix broken overlay cursor damage tracking
+  + Add support for Kana and Compose USB HID LEDs
+  + Fix frequent frame skips under some circumstances
+  + Fix random output freezes
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Rebase patches with quilt and simplyfy conditionals applying
+  patches.
+
+-------------------------------------------------------------------
+Fri Mar 14 14:04:59 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Drop use of sle_version in favor of is_opensuse and suse_version.
+  Sle_version is no longer used in SLE 16.
+
+-------------------------------------------------------------------
+Wed Mar  5 00:48:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Support presentation-time version 2
+  + Honor wl_surface.offset on cursor surfaces
+  + Allow to activate the overview with either Super key
+  + Implement dynamic triple buffering
+  + Implement the cursor_shape_v1 protocol
+  + Improve window placement when centering new windows
+  + Fix sharable surfaces with nvidia as primary
+  + Default to sticky drag lock
+  + Implement a11y keyboard monitoring support
+  + Support wp_color_management_v1 protocol
+  + Fix dma-bufs support for headless sessions
+  + Allow to mark monitors for lease via gdctl
+  + Fixed confused IM focus state after closing some windows
+  + Center new windows by default
+  + Add output luminance settings
+  + Do not use triple buffering when update time fits into refresh
+    interval
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  5 00:48:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Update cursors via the frame clock in virtual monitors
+  + Synchronize device enabled state when adding device
+  + Do not use modifiers if surface should be sharable
+  + Add accessible state tracking in Clutter
+  + Introduce GNOME Display Control (gdctl) utility
+  + Fix notifying shell about modifier-only keyboard layout
+    switches
+  + Configure HDR via DisplayConfig D-Bus API
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+- Add pkgconfig(bash-completion), python3-argcomplete and
+  python3-docutils BuildRequires, new dependencies.
+
+-------------------------------------------------------------------
+Wed Mar  5 00:48:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + gwakeup: Reduce wake-ups to only first item in queue
+  + x11: Reduce chances XPending does recvmsg() syscall
+  + Fix grabbing tablet devices
+  + Improve color-management support
+  + Fix misplaced windows and random resizes on scaled monitors
+  + Improve detecting preferred primary devices
+  + Merge CoglPango into Clutter
+  + Always depend on libdisplay-info for EDID parsing
+  + Fix explicit sync with virtual monitors w/o pipewire streams
+  + Introspect `event` parameter in MetaKeyHandlerFunc
+  + Allow to configure monitors as for-lease
+  + Add support for system bell protocol
+  + Add `configure` signal to allow tweaking original window
+    configuration
+  + Default to high thread instead of realtime priority for KMS
+    thread
+  + Add built-in renderdoc support
+  + Fix maximized X11 when using native Xwayland scaling
+  + Implement xdg-toplevel-drag-v1 protocol
+  + Fix blank screen in remote headless sessions
+  + Query screen cast format modifiers via CoglRenderer
+  + Also request high priority secondary EGL context
+  + Fix Xwayland DND coordinates when using fractional scaling
+  + Remove ClutterImage
+  + Fix applying initial _NET_WM_WINDOW_OPACITY on Xwayland
+  + Implement wp_viewport support for cursor surfaces
+  + Improve input → output latency of cursor movements
+  + Make font-rendering support optional
+  + Improve frame rate on monitors attached to secondary GPUs in
+    copy mode
+  + Add support for commit-timing-v1 and fifo-v1 protocols
+  + Use BT709 coefficients and limited range for YUV conversion by
+    default
+  + Send preferred scales to all surface roles
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+- Stop passing libdisplay_info=true to meson setup, no longer
+  needed nor recognized.
+- Rebase patches.
+- Disable patches needing rebase:
+  + 0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
+  + mutter-implement-text-input-v1.patch
+- Bump api_major to 16 following upstream changes.
+
+-------------------------------------------------------------------
 Tue Mar  4 20:23:07 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.6:

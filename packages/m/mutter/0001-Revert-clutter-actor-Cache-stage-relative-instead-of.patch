@@ -9,11 +9,11 @@ This reverts commit 703bbe0e99dbb688352e0bff396e5cbf2c6af45b.
  clutter/clutter/clutter-actor.c | 67 ++++++++++-----------------------
  1 file changed, 20 insertions(+), 47 deletions(-)
 
-Index: mutter-47.beta/clutter/clutter/clutter-actor.c
+Index: mutter-48.0/clutter/clutter/clutter-actor.c
 ===================================================================
---- mutter-47.beta.orig/clutter/clutter/clutter-actor.c
-+++ mutter-47.beta/clutter/clutter/clutter-actor.c
-@@ -567,7 +567,7 @@ struct _ClutterActorPrivate
+--- mutter-48.0.orig/clutter/clutter/clutter-actor.c
++++ mutter-48.0/clutter/clutter/clutter-actor.c
+@@ -581,7 +581,7 @@ struct _ClutterActorPrivate
    /* the cached transformation matrix; see apply_transform() */
    graphene_matrix_t transform;
  
@@ -22,7 +22,7 @@ Index: mutter-47.beta/clutter/clutter/clutter-actor.c
  
    float resource_scale;
  
-@@ -731,7 +731,7 @@ struct _ClutterActorPrivate
+@@ -747,7 +747,7 @@ struct _ClutterActorPrivate
    guint clear_stage_views_needs_stage_views_changed : 1;
    guint needs_redraw : 1;
    guint needs_finish_layout : 1;
@@ -31,7 +31,7 @@ Index: mutter-47.beta/clutter/clutter/clutter-actor.c
  };
  
  enum
-@@ -2315,7 +2315,7 @@ absolute_geometry_changed (ClutterActor
+@@ -2345,7 +2345,7 @@ absolute_geometry_changed (ClutterActor
  {
    actor->priv->needs_update_stage_views = TRUE;
    actor->priv->needs_visible_paint_volume_update = TRUE;
@@ -40,7 +40,7 @@ Index: mutter-47.beta/clutter/clutter/clutter-actor.c
  
    actor->priv->needs_finish_layout = TRUE;
    /* needs_finish_layout is already TRUE on the whole parent tree thanks
-@@ -2944,9 +2944,8 @@ _clutter_actor_apply_relative_transforma
+@@ -2974,9 +2974,8 @@ _clutter_actor_apply_relative_transforma
                                                       graphene_matrix_t *matrix)
  {
    ClutterActorPrivate *priv = self->priv;
@@ -52,7 +52,7 @@ Index: mutter-47.beta/clutter/clutter/clutter-actor.c
  
    /* Note we terminate before ever calling stage->apply_transform()
     * since that would conceptually be relative to the underlying
-@@ -2955,63 +2954,37 @@ _clutter_actor_apply_relative_transforma
+@@ -2985,63 +2984,37 @@ _clutter_actor_apply_relative_transforma
    if (self == ancestor)
      return;
  
@@ -130,7 +130,7 @@ Index: mutter-47.beta/clutter/clutter/clutter-actor.c
        return;
      }
  
-@@ -7398,7 +7371,7 @@ clutter_actor_init (ClutterActor *self)
+@@ -7535,7 +7508,7 @@ clutter_actor_init (ClutterActor *self)
    priv->enable_model_view_transform = TRUE;
  
    priv->transform_valid = FALSE;
