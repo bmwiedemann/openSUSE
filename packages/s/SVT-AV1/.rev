@@ -221,4 +221,12 @@
   * Switced to system libcpuinfo</comment>
     <requestid>1238706</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0b75c93f1e660d5ac8128f966312428a</srcmd5>
+    <version>3.0.1</version>
+    <time>1742315997</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.0.1</comment>
+    <requestid>1253028</requestid>
+  </revision>
 </revisionlist>

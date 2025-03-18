@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 14 10:08:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.1
+  * Refreshed API cleaning up unused fields
+  * Repositioned the presets and removed one preset resulting in
+    a max preset of M10 in the current version
+  * Added temporal layer and averageQP fields in output picture
+    structure, along with an option to specify a QP offset for
+    the startup gop
+  * Improved mid and high quality presets quality vs speed
+    tradeoffs for fast-decode 2 mode:
+  * ~15-25% speedup for M3-M10 at the same quality levels
+  * ~1% BD-rate improvement for presets M0-M2
+  * A few ARM NEON speedups
+
+-------------------------------------------------------------------
 Fri Jan 17 12:27:35 UTC 2025 - Yoong Jin <solomoncyj@gmail.com>
 
 - Added optimzation flags to Cmake

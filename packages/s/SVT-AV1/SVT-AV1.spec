@@ -1,7 +1,7 @@
 #
 # spec file for package SVT-AV1
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 Name:           SVT-AV1
-Version:        2.3.0
+Version:        3.0.1
 Release:        0
 Summary:        An AV1 decoder/encoder for video streams
 License:        BSD-3-Clause-Clear
 Group:          Productivity/Multimedia/Other
 URL:            https://gitlab.com/AOMediaCodec/SVT-AV1
 Source:         https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v%version/SVT-AV1-v%version.tar.gz
-BuildRequires:  cmake >= 3.5.1
+BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 5.4.0
 BuildRequires:  help2man
 BuildRequires:  pkg-config
-BuildRequires:  yasm >= 1.2.0
+BuildRequires:  pkgconfig(libcpuinfo)
+BuildRequires:  yasm
 # broken package
 # BuildRequires:  cpuinfo-devel
 Provides: bundled(fastfeat)
@@ -44,11 +45,11 @@ a work-in-progress targeting performance levels applicable to both VOD and Live
 encoding / transcoding video applications. The SVT-AV1 decoder implementation
 is targeting future codec research activities.
 
-%package -n libSvtAv1Enc2
+%package -n libSvtAv1Enc3
 Summary:        An AV1 decoder/encoder for video streams
 Group:          System/Libraries
 
-%description -n libSvtAv1Enc2
+%description -n libSvtAv1Enc3
 The Scalable Video Technology for AV1 (SVT-AV1 Encoder and Decoder) is an
 AV1-compliant encoder/decoder library core. The SVT-AV1 encoder development is
 a work-in-progress targeting performance levels applicable to both VOD and Live
@@ -58,7 +59,7 @@ is targeting future codec research activities.
 %package devel
 Summary:        Development files for %name
 Group:          Development/Libraries/C and C++
-Requires:       libSvtAv1Enc2 = %version
+Requires:       libSvtAv1Enc3 = %version
 
 %description devel
 An AV1 encoder for video streams from Intel.
@@ -102,9 +103,9 @@ mkdir -p "$b"
 cp -a Docs README.md "$b/"
 %fdupes %buildroot/%_prefix
 
-%ldconfig_scriptlets -n libSvtAv1Enc2
+%ldconfig_scriptlets -n libSvtAv1Enc3
 
-%files -n libSvtAv1Enc2
+%files -n libSvtAv1Enc3
 %license LICENSE.md PATENTS.md third_party/fastfeat/LICENSE.fastfeat third_party/safestringlib/LICENSE.safestringlib
 %_libdir/libSvtAv1Enc.so.*
 
