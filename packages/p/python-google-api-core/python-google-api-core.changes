@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 18 07:23:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.24.2
+  * **deps:** Allow protobuf 6.x (#804)
+- Update Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Mon Feb  3 09:50:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.24.1
