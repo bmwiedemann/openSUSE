@@ -17,26 +17,21 @@
 
 
 Name:           gnome-mahjongg
-Version:        47.2
+Version:        48.0
 Release:        0
 Summary:        Mahjong Solitaire Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/GnomeMahongg
 Source0:        %{name}-%{version}.tar.zst
+BuildSystem:    meson
 
-BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson
-BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.24.0
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(librsvg-2.0) >= 2.46.0
+BuildRequires:  rpm_macro(meson_buildrequires)
 # Package was renamed to gnome-mahjongg, following upstreams name change during 3.6 development.
 Obsoletes:      mahjongg < %{version}
 Provides:       mahjongg = %{version}
@@ -48,20 +43,12 @@ corresponding tiles and taking them out of play.
 
 %lang_package
 
-%prep
-%autosetup -p1
+%generate_buildrequires
+%meson_buildrequires
 
-%build
-%meson
-%meson_build
-
-%install
-%meson_install
+%install -a
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
-
-%check
-%meson_test
 
 %files
 %license COPYING
