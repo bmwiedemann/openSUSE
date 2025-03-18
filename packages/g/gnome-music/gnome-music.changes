@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 11 13:18:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 48.beta+25:
+  + Detect GIRepostiory version to use, based on glib version.
+    Fixes execution using python-gobject 3.52.
+
+-------------------------------------------------------------------
+Thu Feb  6 17:27:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Use PyGObject asyncio
+  + Support HiDPI covers
+  + Fix styling issues
+  + Improve search reliability
+  + Bugs fixed: Show MRPIS art on delayed retrieval
+
+-------------------------------------------------------------------
 Mon Nov 25 08:35:49 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.1:

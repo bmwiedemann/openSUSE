@@ -697,4 +697,12 @@
     - Show MPRIS albumart on delayed retrieval. (forwarded request 1226206 from iznogood)</comment>
     <requestid>1226297</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>078928e56340266b80c619f90bbc609b</srcmd5>
+    <version>48.beta+25</version>
+    <time>1742315878</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1252132</requestid>
+  </revision>
 </revisionlist>

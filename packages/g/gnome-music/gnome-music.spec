@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-music
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-music
-Version:        47.1
+Version:        48.beta+25
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
@@ -110,7 +110,7 @@ Music player and management application for GNOME.
 %{_datadir}/applications/org.gnome.Music.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.Music.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Music*
-%{_datadir}/metainfo/org.gnome.Music.appdata.xml
+%{_datadir}/metainfo/org.gnome.Music.metainfo.xml
 %{_datadir}/org.gnome.Music/
 %{python3_sitelib}/gnomemusic/
 
