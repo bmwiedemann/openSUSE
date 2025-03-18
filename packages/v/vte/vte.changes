@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Mar 15 22:07:48 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 0.80.0:
+  * emulation: DECSLRM is implemented
+  * emulation: Don't allow BEL termination of the progress sequence
+
+-------------------------------------------------------------------
+Tue Mar 11 08:38:26 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.79.91 / 5b872b78:
+  + build: Typo fix, addressing i586 build failure.
+
+-------------------------------------------------------------------
+Sat Mar 01 21:07:36 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 0.79.91:
+  * build: Use C compiler to check for C flags
+  * build: Add check for excess float precision
+  * app: Rename desktop file same as app ID
+  * widget: gtk4: Fix critical warning on a11y init
+  * lib: Remove custom terminfo
+
+-------------------------------------------------------------------
+Sat Mar 01 21:07:35 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 0.79.90 (Unstable):
+  * all: Remove SIXEL support from stable branch
+  * docs: Typo fixes
+  * widget: Add more (nullable) annotations
+
+-------------------------------------------------------------------
+Sat Mar 01 21:07:34 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 0.79.0 (Unstable):
+  * widget: termprops: Minor docs fixes
+  * docs: Update the debug option's name in README.md
+  * widget: termprops: Add prefix reset
+  * lib: Use resize_and_overwrite
+- Rebase vte-enable-build-flag-pie.patch with quilt.
+- Add fast_float-devel BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Sat Mar 01 21:07:33 UTC 2025 - bjorn.lie@gmail.com
 
 - Update to version 0.78.4:

@@ -27,7 +27,7 @@
 %bcond_with     glade_support
 
 Name:           vte
-Version:        0.78.4
+Version:        0.80.0
 Release:        0
 Summary:        Terminal Emulator Library
 License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
@@ -41,6 +41,7 @@ Patch0:         vte-enable-build-flag-pie.patch
 Patch100:       vte-revert-back-to-c++17.patch
 
 BuildRequires:  c++_compiler
+BuildRequires:  fast_float-devel
 BuildRequires:  fdupes
 %if %{with glade_support}
 BuildRequires:  glade
@@ -225,12 +226,15 @@ mv %{buildroot}%{_datadir}/doc/vte-%{_apiver}-gtk4 %{buildroot}%{_docdir}
 %dir %{_userunitdir}/vte-spawn-.scope.d
 %{_userunitdir}/vte-spawn-.scope.d/defaults.conf
 %{_libexecdir}/vte-urlencode-cwd
+%dir %{_datadir}/xdg-terminals
 
 %files -n typelib-1_0-Vte-%{?_binver}
 %{_libdir}/girepository-1.0/Vte-%{_apiver}.typelib
 
 %files tools
 %{_bindir}/vte-%{?_apiver}
+%{_datadir}/applications/org.gnome.Vte.App.Gtk3.desktop
+%{_datadir}/xdg-terminals/org.gnome.Vte.App.Gtk3.desktop
 
 %if %{with gtk4_support}
 %files -n typelib-1_0-Vte-%{?_binver4}
@@ -238,6 +242,8 @@ mv %{buildroot}%{_datadir}/doc/vte-%{_apiver}-gtk4 %{buildroot}%{_docdir}
 
 %files tools-gtk4
 %{_bindir}/vte-%{?_apiver}-gtk4
+%{_datadir}/applications/org.gnome.Vte.App.Gtk4.desktop
+%{_datadir}/xdg-terminals/org.gnome.Vte.App.Gtk4.desktop
 %endif
 
 %files devel
@@ -246,6 +252,7 @@ mv %{buildroot}%{_datadir}/doc/vte-%{_apiver}-gtk4 %{buildroot}%{_docdir}
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
 %{_includedir}/vte-%{_apiver}/
+
 %{_datadir}/gir-1.0/*.gir
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/vte-%{_apiver}.vapi

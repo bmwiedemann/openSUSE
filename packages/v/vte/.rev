@@ -1351,4 +1351,14 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1249809</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>4fbb6d07af4b7c7ce70d9ea8dd45a533</srcmd5>
+    <version>0.80.0</version>
+    <time>1742315921</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.80.0:
+  * emulation: DECSLRM is implemented
+  * emulation: Don't allow BEL termination of the progress sequence (forwarded request 1253410 from iznogood)</comment>
+    <requestid>1253705</requestid>
+  </revision>
 </revisionlist>
