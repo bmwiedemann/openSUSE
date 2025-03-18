@@ -17,7 +17,7 @@
 
 
 Name:           syft
-Version:        1.20.0
+Version:        1.21.0
 Release:        0
 Summary:        CLI tool and library for generating a Software Bill of Materials
 License:        Apache-2.0
