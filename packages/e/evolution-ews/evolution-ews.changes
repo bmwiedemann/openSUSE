@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Mar 14 12:55:28 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.56.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 28 12:43:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.55.3:
+  + Bug Fixes:
+    - m365: "Empty Trash" does not empty "Deleted Items" folder
+    - m365: Deleted folders should not show under Deleted Items
+  + Miscellaneous:
+    - m365: Fix bugs in calendar permissions dialog
+    - m365: Transform ItemNotFound error to Camel's InvalidUID error in folder's get_message()
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 31 19:04:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.55.2 (Unstable):
+  + Bug Fixes:
+    - m365: Search Organization contacts by default
+    - m365: Contacts: Ignore name part of an EMAIL attribute
+    - Calendar: Import of forwarded meeting as bare event
+  + Miscellaneous:
+    - Check GSettings schemas not owned by the evolution-ews exist
+      before using them
+    - m365: Read "Recent contacts" from the server
+    - m365: Allow edit of calendar permissions
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 10 06:56:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.54.3.0:

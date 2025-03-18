@@ -1308,4 +1308,12 @@
     <comment></comment>
     <requestid>1236897</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>02e56beb4cfdb4f992709475b5e4af35</srcmd5>
+    <version>3.56.0</version>
+    <time>1742315900</time>
+    <user>anag+factory</user>
+    <comment>New stable branch release (forwarded request 1253068 from iznogood)</comment>
+    <requestid>1253077</requestid>
+  </revision>
 </revisionlist>
