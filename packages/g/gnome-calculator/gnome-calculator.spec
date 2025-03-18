@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-calculator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,31 +20,25 @@
 %define gcisover 1-0_0_0
 
 Name:           gnome-calculator
-Version:        47.1
+Version:        48.0
 Release:        0
 Summary:        A GNOME Calculator Application
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wiki.gnome.org/Apps/Calculator
 Source0:        %{name}-%{version}.tar.zst
+BuildSystem:    meson
+BuildOption:    -Ddisable-introspection=true
 
 BuildRequires:  fdupes
+BuildRequires:  itstool
 BuildRequires:  meson >= 0.52.0
 BuildRequires:  mpc-devel
 BuildRequires:  mpfr-devel
-BuildRequires:  pkgconfig
 BuildRequires:  vala
-BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(gee-0.8)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.40
-BuildRequires:  pkgconfig(glib-2.0) >= 2.40
-BuildRequires:  pkgconfig(gmodule-export-2.0)
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.40
-BuildRequires:  pkgconfig(gtk4) >= 4.4.1
-BuildRequires:  pkgconfig(gtksourceview-5) >= 5.2.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.beta
-BuildRequires:  pkgconfig(libsoup-3.0)
-BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  valadoc
+BuildRequires:  valadoc-doclet-devhelp
+BuildRequires:  rpm_macro(meson_buildrequires)
 
 %description
 A GNOME calculator package based on calctool and MP library.
@@ -86,25 +80,15 @@ developing applications that use %{name}.
 
 %lang_package
 
-%prep
-%autosetup -p1
+%generate_buildrequires
+%meson_buildrequires
 
-%build
-%meson
-%meson_build
-
-%install
-%meson_install
+%install -a
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
-#check
-#meson_test
-
-%post -n libgcalc-%{sover} -p /sbin/ldconfig
-%postun -n libgcalc-%{sover} -p /sbin/ldconfig
-%post -n libgci-%{gcisover} -p /sbin/ldconfig
-%postun -n libgci-%{gcisover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgcalc-%{sover}
+%ldconfig_scriptlets -n libgci-%{gcisover}
 
 %files
 %license COPYING
@@ -112,7 +96,7 @@ developing applications that use %{name}.
 %doc %{_datadir}/help/C/%{name}
 %{_bindir}/gnome-calculator
 %{_bindir}/gcalccmd
-%{_datadir}/metainfo/org.gnome.Calculator.appdata.xml
+%{_datadir}/metainfo/org.gnome.Calculator.metainfo.xml
 %{_datadir}/applications/org.gnome.Calculator.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.calculator.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Calculator*.svg
@@ -133,6 +117,10 @@ developing applications that use %{name}.
 %{_libdir}/libgci-1.so.*
 
 %files devel
+%dir %{_datadir}/devhelp
+%dir %{_datadir}/devhelp/books
+%{_datadir}/devhelp/books/GCalc-2/
+%{_datadir}/devhelp/books/GCi-1/
 %{_includedir}/gcalc-2/
 %{_includedir}/gci-2/
 %{_libdir}/libgcalc-2.so

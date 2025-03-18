@@ -515,4 +515,16 @@
     <comment></comment>
     <requestid>1231649</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e200e59b7b50050974d4811fc9dc1081</srcmd5>
+    <version>48.0</version>
+    <time>1742315919</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + Fixed converter context menus not working
+  + Code cleanup and improvements
+  + Improvements in function usage, brackets usage
+  + Updated translations. (forwarded request 1253405 from iznogood)</comment>
+    <requestid>1253702</requestid>
+  </revision>
 </revisionlist>
