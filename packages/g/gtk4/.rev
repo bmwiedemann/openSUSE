@@ -1001,4 +1001,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1235445</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>fc5eac0ef58fc070f5c022b8b72615b4</srcmd5>
+    <version>4.18.2</version>
+    <time>1742315942</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1253610 from iznogood)</comment>
+    <requestid>1253730</requestid>
+  </revision>
 </revisionlist>

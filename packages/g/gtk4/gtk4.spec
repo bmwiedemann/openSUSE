@@ -28,7 +28,7 @@
 %endif
 
 Name:           gtk4
-Version:        4.16.12
+Version:        4.18.2
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -74,9 +74,9 @@ BuildRequires:  pkgconfig(epoxy) >= 1.4
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.80.0
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.53.7
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.80.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.72.0
 BuildRequires:  pkgconfig(graphene-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.10.0
@@ -85,14 +85,14 @@ BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(gstreamer-gl-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 %endif
-BuildRequires:  pkgconfig(harfbuzz) >= 2.6.0
+BuildRequires:  pkgconfig(harfbuzz) >= 8.4
 BuildRequires:  pkgconfig(iso-codes)
 # Disabled until upstream enables ffmpeg support by default
 # BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires:  pkgconfig(pango) >= 1.50.0
+BuildRequires:  pkgconfig(pango) >= 1.55.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.14.0
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
@@ -352,21 +352,18 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_bindir}/gtk4-demo
 %{_bindir}/gtk4-demo-application
 %{_bindir}/gtk4-encode-symbolic-svg
-%{_bindir}/gtk4-icon-browser
 %{_bindir}/gtk4-image-tool
 %{_bindir}/gtk4-node-editor
 %{_bindir}/gtk4-print-editor
 %{_bindir}/gtk4-rendernode-tool
 %{_bindir}/gtk4-widget-factory
 %{_datadir}/applications/org.gtk.Demo4.desktop
-%{_datadir}/applications/org.gtk.IconBrowser4.desktop
 %{_datadir}/applications/org.gtk.gtk4.NodeEditor.desktop
 %{_datadir}/applications/org.gtk.PrintEditor4.desktop
 %{_datadir}/applications/org.gtk.WidgetFactory4.desktop
 %dir %{_datadir}/gtk-4.0
 %{_datadir}/gtk-4.0/gtk4builder.rng
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.Demo4.svg
-%{_datadir}/icons/hicolor/scalable/apps/org.gtk.IconBrowser4.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.gtk4.NodeEditor.Devel.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.gtk4.NodeEditor.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gtk.gtk4.NodeEditor-symbolic.svg
@@ -374,13 +371,11 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.PrintEditor4.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.WidgetFactory4.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gtk.Demo4-symbolic.svg
-%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.IconBrowser4-symbolic.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gtk.PrintEditor4-symbolic.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gtk.WidgetFactory4-symbolic.svg
 # This schemas file stays here and not in the schemas package
 %{_datadir}/glib-2.0/schemas/org.gtk.Demo4.gschema.xml
 %{_datadir}/metainfo/org.gtk.Demo4.appdata.xml
-%{_datadir}/metainfo/org.gtk.IconBrowser4.appdata.xml
 %{_datadir}/metainfo/org.gtk.gtk4.NodeEditor.appdata.xml
 %{_datadir}/metainfo/org.gtk.PrintEditor4.appdata.xml
 %{_datadir}/metainfo/org.gtk.WidgetFactory4.appdata.xml
@@ -388,7 +383,6 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_mandir}/man1/gtk4-demo-application.1%{?ext_man}
 %{_mandir}/man1/gtk4-demo.1%{?ext_man}
 %{_mandir}/man1/gtk4-encode-symbolic-svg.1%{?ext_man}
-%{_mandir}/man1/gtk4-icon-browser.1%{?ext_man}
 %{_mandir}/man1/gtk4-image-tool.1%{?ext_man}
 %{_mandir}/man1/gtk4-node-editor.1%{?ext_man}
 %{_mandir}/man1/gtk4-path-tool.1%{?ext_man}

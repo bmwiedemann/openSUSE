@@ -1,4 +1,327 @@
 -------------------------------------------------------------------
+Mon Mar 17 07:07:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.18.2:
+  + GtkPopoverMenu: Fix a sporatic crash that affected Showtime
+  + X11: Fix interactions between scaling and the cairo renderer
+    that broke the mutter-x11-frame client
+  + Bugs fixed:
+    - Segfault on setting popover child of a MenuButton
+    - Transparent/bugged close button on titlebar in 48.rc
+    - `AdwTabOverview` only works with the vulkan renderer
+    - clipboard: Plug a memory leak
+    - wayland: Avoid leaks in drag surfaces
+    - roaring: Use g_malloc/g_free
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 15 01:08:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.18.1:
+  + Bugs fixed:
+    - Deadkeys using UFDD modifiers do not work under gtk4 apps
+    - recorder.ui's action items made available for translation
+    - Trying to measure GtkPopover 0x42761b0 for height of 277, but
+      it needs at least 313
+    - Nautilus crashes when try to pin any folder as a new bookmark
+      on the side panel
+    - treeview: Drop cell-only states when rendering the empty
+      bottom area
+    - paned: Fix handle jump on drag start
+    - Revamp the portal check
+    - fix: Fix the type conversion (gtk demo) in the gtkgear
+      example
+    - bitset: Fix annotations
+    - Add another font testcase
+    - inspector: Make editing attributes work
+    - docs: Add some a11y references
+    - docs: fix typo
+    - inspector: Don't translate action names
+    - macos: Fix HiDPI rendering on macOS
+    - call nproc once in gdk parallel
+    - docs: Clarify invalidation replacements
+    - android: Introduced partial OpenGL backend
+    - Tweak text layout
+    - inspector: Allow editing PangoTabArrays
+    - egl: modifers must be an array
+    - gpu: Make sure we actually download dmabuf textures again
+    - Make color management opt-in
+    - Improve key event logging
+    - Tweak font rendering more
+    - API: Deprecate gdk_surface_create_cairo_context()
+    - Use gtk_shell version to announce wl_surface.offset support
+      for cursors
+    - gsk: Fix multiple clipping of partial pixels
+    - vulkan: Prepare for Vulkan using wp-color-v1
+    - gsk: Pad text node bounds
+    - window: Fix destroying with transient parent
+    - stack: Fix adjusting child allocation
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  5 08:00:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.17.6 (Unstable):
+  + GSK rendering issues on Asahi Linux are fixed
+  + Buffer sizing issues with fractional scaling are fixed
+  + GtkFontChooser scrolls to the initially selected font
+  + Font rendering with the new default GNOME font is improved
+  + The Wayland cursor shape protocol is supported
+  + Initial focus for popups on Android is fixed
+  + Various bugs fixed
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 24 08:54:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.17.5 (Unstable):
+  + Numeric mode in GtkSpinButtons works again
+  + Client-side dialogs can be made fully modal
+  + Portals work better for unsandboxed apps, by registering
+  + Editable labels have a context menu
+  + GtkListBox size allocation has been improved
+  + We require wayland 1.23 and wayland-protocols 1.41
+  + We use the wp_color_manager_v1 protocol for color management
+    under Wayland
+  + Most screenshots in the documentation have a dark variant
+  + GtkBuilder allows inline definition for GMenu-valued properties
+  + Various bugs fixed
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb  1 14:50:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.17.4 (Unstable):
+  + GtkFileChooser: Stop replacing : (colon) with U+2236 (ratio)
+  + GtkSpinButton: Avoid out-of-bounds values in some cases
+  + GtkWindow:
+    - Send expected a11y events when a window is closed
+    - Change accessible role back to GTK_ACCESSIBLE_ROLE_WINDOW
+  + GtkLabel: Make context menus keyboard-navigatable
+  + GtkVideo: Support rotated videos
+  + GDK:
+    - Add a way to retrieve keyboard layout information
+    - Use libpng api for cicp if available
+  + GSK Drop the old GL renderer
+  + Accessibility: Maintain inverse relations
+  + Deprecations:
+    - The x11 backend
+    - The Broadway backend
+  + Build: Require cairo 1.18.2
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 17 07:05:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.17.3 (Unstable):
+  + GtkText:
+    - Consume Ctrl-A
+    - Handle Cut', Copy, Paste, Undo, and Redo keys
+    - Improve a11y representation
+  + GtkLabel:
+    - Consume Ctrl-A when we handle it
+    - Pass mnemonics to a11y
+  + GtkTextView:
+    - Handle Cut, Copy, Paste, Undo, and Redo keys
+    - Fix disappearing carets after focus changes
+  + GtkFileChooser:
+    - Handle Find keys
+    - Set a11y label on Search button
+    - Set a11y labels on pathbar buttons
+    - Pass key-shortcuts for the "New folder" button
+  + GtkAppChooser: Fix sorting
+  + GtkListBox: Improve a11y representation
+  + GtkColumnView: Fix column dnd in right-to-left context
+  + GtkWindow: Make resize corners gapless with rounded corners
+  + GtkPopoverMenu: Show mnemonics on Alt press
+  + GtkMenuButton: Improve a11y representation
+  + GtkFileDialog:
+    - Fix a crash
+    - Add more text file api variants
+  + GtkSizeGroup: Improve consistency measurements and allocations
+  + GtkBuilder: Parse tab arrays and font descriptions in Pango
+    syntax
+  + Wayland:
+    - Rely on scale events for pointer surfaces
+    - Make idle inhibit work with fullscreen subsurfaces
+  + Accessibility:
+    - Implement GetKeyBinding properly for actions
+    - Set key-shortcuts attribute
+    - Fix state change notification for some states
+    - Set application ID attribute
+  + GSK: Don't double-clip edges for shadows
+  + Demos:
+    - widget-factory: Set alternative text on pictures
+    - gtk-demo: Allow to run as a service
+  + Deprecations:
+    - GtkShortcutsWindow
+    - Loading themes from ~/.themes
+    - <child> in ui files where child properties exist
+  + Updated translations.
+- Rebase 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch.
+
+-------------------------------------------------------------------
+Fri Jan  3 23:18:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.17.2 (Unstable):
+  + GtkWindow: Rework computing the minimum size
+  + GtkPicture: Fix measuring with content-fit = scale-down
+  + GtkStack:
+    - Report constant size request mode in more cases
+    - Avoid measuring children aginst preferred request mode
+    - Fix measuring during size interpolation
+  + GtkFlowBox:
+    - Improve size request mode reporting
+    - Fix measuring minimum height
+    - Fix measuring natural width
+    - Implement hfw vai binary search
+  + GtkScrolledWindow:
+    - Report constant size request mode in more cases
+    - Skip measuring children if we can
+  + GtkBox:
+    - Don't always reserve height for baseline alignment
+    - Rework natural opposite size-for-size computation
+    - Add fast paths for some cases of measurement and allocation
+  + GtkLayoutManager:
+    - Skip invisible children for request mode determination
+    - Prefer hfw, all things being equal
+  + GtkColorPicker: Respect GDK_DEBUG=no-portals
+  + GtkEntry:
+    - Stop guessing text direction from keyboard layout
+    - Add a shortcut and context menu item to change text direction
+  + GtkSpinButton: Make numeric spin buttons always LTR
+  + GtkAboutDialog: Small UI improvements
+  + Accessibility: Add an AccessKit backend. Use accesskit=enabled
+    to build it and GTK_A11Y=accesskit to use it
+  + Wayland:
+    - Always clear exported surface IDs on finalize
+    - Use the correct display for imcontext
+  + Vulkan: Make GdkVulkanContext work with Android armv7
+  + Build:
+    - Require GLib 2.80
+    - Require harfbuzz 8.4
+    - Require pango 1.55
+    - Require C11
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan  3 22:18:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.17.1 (Unstable):
+  + This release switches our portal support from opt-in to
+    opt-out. We will use portals by default, unless you set
+    GDK_DEBUG=no-portals. And we will *always* use portals in
+    flatpaks.
+  + Text rendering: Make error underlines smaller.
+  + GtkText: Avoid selecting inserted Emoji.
+  + GtkPlacesView: Improve accessibility.
+  + GtkFileChooser: Fix a case where search was stealing focus.
+  + GtkEmojiChooser: Update to CLDR 46 / Unicode 16.
+  + Accessibility: Fix DBus signature of ChildrenChanged.
+  + GDK:
+    - Don't recycle threads too aggressively.
+    - Add GDK_DISABLE=threads to disable threaded operations.
+    - Improve parallelization for small tasks.
+  + GSK:
+    - Make occlusion checking more effective.
+    - Clip luminosity when clipping colors (avoiding masking
+      artifacts).
+    - Fix problems with dihedral transforms.
+  + Vulkan:
+    - Streamline Vulkan setup.
+    - Fix blurry rendering at certain scale/size combinations.
+  + OpenGL: Conform to buffer offset alignment requirements.
+  + Windows: Fix pasting certain bitmaps.
+  + Documentation: Revise and modernize some docs.
+  + Debugging:
+    - Inspector: Show surfaces and renderers in the tree.
+    - Inspector: Make the object tree resizable.
+    - Inspector: Add a "Copy for gitlab" button.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan  3 21:18:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.17.0 (Unstable):
+  + GtkScrolledWindow: Fix criticals in size allocation code
+  + GtkFileChooser: Fix a crash in the portal code
+  + GtkFontChoser: Make the dialog more shrinkable
+  + GtkPicture: Avoid unnecessary resizes
+  + GtkVideo: Make dmabufs work without GL
+  + GtkListBox: Add a tab-behavior property to influence keynav
+  + GtkEmojiChooser: Fix problems with insertion and selection
+  + GtkStringList: Add gtk_string_list_find
+  + GtkApplication:
+    - Respect GDK_DEBUG=no-portals
+    - Set default window icon from app ID
+  + GtkTextView:
+    - Vertical and horizontal positioning of the textview is now
+      quantized to the nearest device pixel. This should improve
+      the perceived smoothness of scrolling with fractional scaling
+      and font hinting.
+    - Incorrect re-use of cached styling was fixed
+    - Fix some missing CSS invalidation
+    - Handle charsets in clipboard datatypes
+  + Printing:
+    - Avoid warnings for avahi errors
+    - Fix a segfault in the print dialog setup code
+  + Accessibility:
+    - Always realize non-widget accessibles, to help webkit
+    - Fix list view selection implementation
+    - Handle NULL values in more places
+  + Gstreamer: Make dmabufs works without GL
+  + Gdk:
+    - Add OKLAB and OKLCH color states
+    - GL:
+      . Drop support for GLES 2 and GL < 3.3
+      . Use the ngl dmabuf downloader instead of the GL downloader
+    - Vulkan:
+      . Drop the GDK_VULKAN_DEVICE env var. Use
+        MESA_VK_DEVICE_SELECT instead
+      . Use the swapchain maintenance extension to release swap
+        images
+    - Forbid opening displays before gtk_init()
+  + Gsk:
+    - Many improvements to the dmabuf downloaders
+    - ngl: Avoid glBufferSubData for globals, speeding up llvmpipe
+    - Renderer selection will no longer consider the GL renderer
+    - Allow Vulkan software rendering as fallback
+    - Support gradient interpolation in different color states
+  + Wayland:
+    - Improve settings portal handling
+    - Improve fallback for cursor themes
+    - Make cursor theme changes apply immediately
+    - Use a viewporter for cursor image scaling
+    - Improve cursor size handling
+    - Use the system bell protocol if available
+    - Fix possible deadlock with high-priority sources triggering
+      roundtrips
+  + Windows:
+    - Improve the backend code
+    - Fix some problems with WGL on NVidia
+    - Many testsuite fixes for Windows compatibility
+    - Make all pixbuf loaders builtin in the gdk-pixbuf subproject
+    - Add GDK_DISABLE=aerosnap to disable aerosnap
+    - Improve clipboard handling
+    - Fix behavior or gdk_display_open() on Windows
+    - Numerous papercut fixes
+    - Require Windows 10
+  + Macos:
+    - Fix crashes when dragging libadwaita TabView tabs
+    - Require macOS 10.15
+  + Tools and demos:
+    - gtk4-demo:
+      . Make demos standalone
+      . Drop GL shader demos
+      . Improve scrolling benchmarks
+    - gtk4-builder-tool: Improve separator handling
+    - gtk4-image-tool: Better color state support
+  + Build:
+    - Don't set GSK_RENDERER in our flatpaks
+    - Require meson 1.2
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan  3 21:18:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.16.12:

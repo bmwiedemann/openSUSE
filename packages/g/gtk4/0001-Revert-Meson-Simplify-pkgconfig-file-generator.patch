@@ -15,9 +15,11 @@ This reverts commit 802bf4199911c811938b0454a876089bafa97dba.
 
 Index: gtk-4.15.5/meson.build
 ===================================================================
---- gtk-4.15.5.orig/meson.build
-+++ gtk-4.15.5/meson.build
-@@ -456,6 +456,9 @@ if not os_win32
+diff --git a/meson.build b/meson.build
+index e4006a3f8..2393f6d1e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -478,6 +478,9 @@ if not os_win32
    endif
  endif
  
@@ -27,7 +29,7 @@ Index: gtk-4.15.5/meson.build
  cairo_backends = []
  foreach backend: [ ['cairo-xlib', cairo_req, x11_enabled],
                     ['cairo-win32', cairo_req, win32_enabled],
-@@ -586,14 +589,26 @@ if x11_enabled
+@@ -612,14 +615,26 @@ if x11_enabled
    cdata.set('HAVE_RANDR15', xrandr15_dep.found())
  endif
  
@@ -54,7 +56,7 @@ Index: gtk-4.15.5/meson.build
  
    # Check whether libepoxy is built with EGL support on Windows
  endif
-@@ -878,6 +893,7 @@ pkg_config.generate(libgtk,
+@@ -910,6 +925,7 @@ pkg_config.generate(libgtk,
    name: 'GTK',
    description: 'GTK Graphical UI Library',
    requires: gdk_packages + gsk_packages + gtk_packages,
@@ -62,7 +64,7 @@ Index: gtk-4.15.5/meson.build
    subdirs: ['gtk-@0@'.format(gtk_api_version)],
  )
  meson.override_dependency('gtk4', libgtk_dep)
-@@ -912,10 +928,10 @@ if os_unix
+@@ -944,10 +960,10 @@ if os_unix
      unescaped_variables: common_pc_variables,
      name: 'GTK',
      description: 'GTK Unix print support',
@@ -74,4 +76,4 @@ Index: gtk-4.15.5/meson.build
 -  meson.override_dependency('gtk4-unix-print', libgtk_dep)
  endif
  
- subdir('po')
+ 
