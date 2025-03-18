@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-tour.git</param>
     <param name="scm">git</param>
-    <param name="revision">47.0</param>
+    <param name="revision">48.1</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -18,9 +18,6 @@
   <service name="cargo_vendor" mode="manual">
   <param name="srcdir">gnome-tour</param>
   <param name="update">true</param>
-  </service>
-  <service name="cargo_audit" mode="manual">
-  <param name="srcdir">gnome-tour</param>
   </service>
 </services>
 

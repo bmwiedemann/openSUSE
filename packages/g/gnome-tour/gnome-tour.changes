@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 15 12:21:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Fix gettext-sys pkg name.
+- Drop explicit audit from _service file, no longer needed.
+
+-------------------------------------------------------------------
+Sat Mar 15 09:28:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 16 10:52:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 47.0:

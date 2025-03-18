@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-tour
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           gnome-tour
-Version:        47.0
+Version:        48.1
 Release:        0
 Summary:        GNOME Tour & Greeter
 License:        GPL-3.0-or-later

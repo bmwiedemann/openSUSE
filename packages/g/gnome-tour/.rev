@@ -71,4 +71,17 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205464</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>48253ecab81b8421dc9abe9c626f693a</srcmd5>
+    <version>48.1</version>
+    <time>1742316051</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.1:
+  + Fix gettext-sys pkg name.
+- Drop explicit audit from _service file, no longer needed.
+
+- Update to version 48.0:
+  + Updated translations. (forwarded request 1253348 from iznogood)</comment>
+    <requestid>1253381</requestid>
+  </revision>
 </revisionlist>
