@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar 17 10:56:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: no longer build libmanette-0_2-0-32bit: the
+  only known consumer was webkit2gtk3:gtk3-soup2, which in fact is
+  not built in Tumbleweed, but only in devel projects. As such,
+  there seems to be no real use of this.
+
+-------------------------------------------------------------------
+Fri Mar 14 21:44:59 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.2.11:
+  + Port documentation to gi-docgen
+  + Add support for Steam Deck gamepad:
+    - Add ManetteDeviceType and manette_device_get_device_type()
+    - Add manette_device_supports_mapping()
+  + Deprecate LIBMANETTE_* version check symbols, add MANETTE_*
+    instead
+  + Add runtime version check functions
+  + Make hat to buttons mapping always emit button release (fixes
+    d-pad getting stuck when quickly flipping right->left etc)
+  + Fix paddle keycodes
+  + Fix DualSense motion sensor and touchpad being recognized as
+    gamepads
+  + Fix half-range axis mappings
+  + Build:
+    - Depend on hidapi-hidraw
+    - Specify --doc-format for GIR data
+    - Fix build warnings
+- Add pkgconfig(hidapi-hidraw) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Fri Sep 13 15:18:29 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.2.9:

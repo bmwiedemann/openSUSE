@@ -111,4 +111,15 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205477</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4e1dd16b9ced2764cd377bdab32bf21a</srcmd5>
+    <version>0.2.11</version>
+    <time>1742315964</time>
+    <user>anag+factory</user>
+    <comment>- Drop baselibs.conf: no longer build libmanette-0_2-0-32bit: the
+  only known consumer was webkit2gtk3:gtk3-soup2, which in fact is
+  not built in Tumbleweed, but only in devel projects. As such,
+  there seems to be no real use of this. (forwarded request 1253742 from dimstar)</comment>
+    <requestid>1253751</requestid>
+  </revision>
 </revisionlist>

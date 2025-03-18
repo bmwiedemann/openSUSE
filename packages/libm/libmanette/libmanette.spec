@@ -1,7 +1,7 @@
 #
 # spec file for package libmanette
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,19 @@
 %define package_version 0_2-0
 
 Name:           libmanette
-Version:        0.2.9
+Version:        0.2.11
 Release:        0
 Summary:        A simple GObject game controller library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gnome.pages.gitlab.gnome.org/libmanette/
 Source:         %{name}-%{version}.tar.zst
-Source99:       baselibs.conf
 BuildRequires:  gcc
 BuildRequires:  gobject-introspection-devel >= 0.6.7
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gudev-1.0) >= 1.0
+BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(libevdev) >= 1.4.5
 BuildRequires:  pkgconfig(vapigen)
 
@@ -73,11 +73,10 @@ libmanette allows easy access to game controllers.
 %install
 %meson_install
 
+%ldconfig_scriptlets -n libmanette-%{package_version}
+
 %check
 %meson_test
-
-%post -n libmanette-%{package_version} -p /sbin/ldconfig
-%postun -n libmanette-%{package_version} -p /sbin/ldconfig
 
 %files -n libmanette-%{package_version}
 %license COPYING
