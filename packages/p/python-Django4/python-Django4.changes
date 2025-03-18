@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 18 13:07:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.2.20 (bsc#1239052)
+  * CVE-2025-26699: Potential denial-of-service vulnerability in 
+    django.utils.text.wrap()
+
+-------------------------------------------------------------------
 Tue Feb 11 12:48:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.2.19

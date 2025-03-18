@@ -1,0 +1,65 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+This file contains MD5, SHA1, and SHA256 checksums for the source-code
+tarball and wheel files of Django 4.2.20, released March 6, 2025.
+
+To use this file, you will need a working install of PGP or other
+compatible public-key encryption software. You will also need to have
+the Django release manager's public key in your keyring. This key has
+the ID ``3955B19851EA96EF`` and can be imported from the MIT
+keyserver, for example, if using the open-source GNU Privacy Guard
+implementation of PGP:
+
+    gpg --keyserver pgp.mit.edu --recv-key 3955B19851EA96EF
+
+or via the GitHub API:
+
+    curl https://github.com/sarahboyce.gpg | gpg --import -
+
+Once the key is imported, verify this file:
+
+    gpg --verify Django-4.2.20.checksum.txt
+
+Once you have verified this file, you can use normal MD5, SHA1, or SHA256
+checksumming applications to generate the checksums of the Django
+package and compare them to the checksums listed below.
+
+Release packages
+================
+
+https://www.djangoproject.com/m/releases/4.2/Django-4.2.20.tar.gz
+https://www.djangoproject.com/m/releases/4.2/Django-4.2.20-py3-none-any.whl
+
+MD5 checksums
+=============
+
+39ea6e124195a0a614df95e451d3c9b9  Django-4.2.20.tar.gz
+03ee89e74ff84907e86391f290f689e6  Django-4.2.20-py3-none-any.whl
+
+SHA1 checksums
+==============
+
+29428ec48cf24dfb4910668594034c934f44ee89  Django-4.2.20.tar.gz
+fd766e1aae10027caf8e2e4b19b43800624564f1  Django-4.2.20-py3-none-any.whl
+
+SHA256 checksums
+================
+
+92bac5b4432a64532abb73b2ac27203f485e40225d2640a7fbef2b62b876e789  Django-4.2.20.tar.gz
+213381b6e4405f5c8703fffc29cd719efdf189dec60c67c04f76272b3dc845b9  Django-4.2.20-py3-none-any.whl
+-----BEGIN PGP SIGNATURE-----
+
+iQHhBAEBCABLFiEE6xs4DYrFLQArrNMyOVWxmFHqlu8FAmfJZWItHDQyMjk2NTY2
+K3NhcmFoYm95Y2VAdXNlcnMubm9yZXBseS5naXRodWIuY29tAAoJEDlVsZhR6pbv
+4wEL/iHo6QZPh48PNMy+UseqzO7uNHBj4z0fzzM0KluiTfPlyO3HA6rpjQYuGwzZ
+sxL/NvCGGcsxq9QmX3KoQkNNIprRaCJwNe4gaYhxy6KUDtUVc8UQZfMI1OiT+epJ
+JF6bYjTQf41jce84sS6LlrSRquJL/pxHqYAH3UCwdW6NWorvRcSSoRPfC8vWewxX
+pI6bvgUTg+uMBosyktoauV7EoAJWvotQ77FvySUXS3ypS0Lfq0pGVjBRdoy4JENf
+9naCZraj3KY7TD40d3F9gfuQmnmoUPgcVqT+EeMECGeMQV+T3szQyBfC9v9DaRSu
+oCKGr4wLHwe1KfYL+4tpxK4uTGJr3y4Jln2WcvQqyluiaODZtG1Jnbub4BqW05UN
+92fOnON4U5yrawlW8OjIHk343H1jvAsq/qsm8cxtWlkgc2h7KV1u9noPyV2V1nOf
+R9/K047g4qAUdNWPS85DgynBXHnq2y72twW77VZq8WhT5XKIzQvC+xdJoxz+p8hE
+Eqx5oA==
+=MEML
+-----END PGP SIGNATURE-----

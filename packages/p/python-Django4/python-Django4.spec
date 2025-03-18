@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-Django4
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        4.2.19
+Version:        4.2.20
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -60,14 +60,10 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module backports.zoneinfo if (%python-base with python38-base)}
 Requires:       python
 Requires:       python-Pillow >= 6.2.0
 Requires:       python-argon2-cffi >= 19.1.0
 Requires:       python-asgiref >= 3.6.0
-%if "%{python_flavor}" == "python38"
-Requires:       python-backports.zoneinfo
-%endif
 Requires:       python-bcrypt
 Requires:       python-pytz
 Requires:       python-setuptools
