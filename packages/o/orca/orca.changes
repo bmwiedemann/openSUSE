@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Mar 17 09:39:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + No changes, stable version bump only.
+
+-------------------------------------------------------------------
+Mon Mar  3 14:00:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Web:
+    - Speak/skip blank lines based on the "speak blank lines"
+      setting.
+    - Improve presentation with mouse review.
+    - Improve recovery in response to object destruction in
+      scrollable lists.
+  + Fix looping/getting stuck in Discord inbox.
+  + LibreOffice:
+    - Fix non-responsiveness when using flat review in Calc.
+    - Don't announce "blank" as text for non-text objects.
+  + GNOME Shell: Handle/ignore focus claim which was causing speech
+    to be cut off in certain dialogs.
+  + General:
+    - Fix double-presentation of common ancestor.
+    - Fix bug causing app-specific voice to not be used.
+    - Handle event floods from GTK3 text views.
+    - Fix regression in word echo after whitespace insertion.
+  + Pass Orca's app id to AT-SPI2.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb  5 11:10:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Web:
+    - Work around Brave popup menu bug which causes Orca to not
+      present selection changes.
+    - Ignore caret-moved events from children-presentational roles
+      because they cause Orca to incorrectly update the current
+      location.
+    - Fix ValueError during table navigation.
+  + General:
+    - Add support for the new "switch" role.
+    - Refactor, and improve presentation of, KeyboardEvent events.
+    - When supported by AT-SPI2, use XKB keysyms for grabbing and
+      matching keys.
+    - Do not shadow function arguments when computing modifier mask
+      for the Orca modifiers.
+    - Eliminate speaking "not selected" after every GTK4 list item.
+      (Note that this fix also requires a GTK4 update.)
+    - Prune labels with label-for relation when generating
+      descendants (eliminates some "chattiness").
+    - Don't treat "space" as a mnemonic; insert pause before
+      speaking mnemonic.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jan  6 08:28:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.3:
