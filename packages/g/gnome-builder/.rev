@@ -670,4 +670,12 @@
     <comment></comment>
     <requestid>1241251</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>168250532422af07d2ff9242faf89454</srcmd5>
+    <version>48.0</version>
+    <time>1742316066</time>
+    <user>anag+factory</user>
+    <comment>New stable rel (forwarded request 1253474 from iznogood)</comment>
+    <requestid>1253718</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-builder
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 # Update this on every major/minor bump
-%define basever 47
+%define basever 48
 %define glib_version 2.75
 
 Name:           gnome-builder
-Version:        47.2
+Version:        48.0
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -39,13 +39,12 @@ BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  llvm-clang-devel >= 3.5
-BuildRequires:  meson >= 0.60
+BuildRequires:  meson >= 1.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  python3-gobject
+BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  (pkgconfig(webkit2gtk-5.0) or pkgconfig(webkitgtk-6.0))
-BuildRequires:  pkgconfig(dspy-1) >= 1.4.0
 BuildRequires:  pkgconfig(editorconfig)
 BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(flatpak) >= 1.10.2
@@ -56,7 +55,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.74
 BuildRequires:  pkgconfig(gom-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.10
-BuildRequires:  pkgconfig(gtksourceview-5) >= 5.8
+BuildRequires:  pkgconfig(gtksourceview-5) >= 5.15
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(jsonrpc-glib-1.0) >= 3.43.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.alpha

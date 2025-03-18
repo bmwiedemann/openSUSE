@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Mar 16 09:14:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Various Manuals backports into Builder
+  + Updated icon for manuals
+  + Fixes for B+Tree used in text regions
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 25 10:19:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Updated to version 48.rc:
+  + Remove use of deprecated GtkSourceView API
+  + Add some defensive mechanisms in the recursive file monitor
+  + Various VCS fixes
+  + Treat dot files as ignored when no VCS is in use
+  + Fix `gnome-builder -e` use with home directory
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb  2 09:39:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Style improvements to match libadwaita
+  + Improve various file handling and UTF-8
+  + Updated meson-based application templates
+  + Support for VHDL language server
+  + Various LSP bugfixes
+  + Ensure focus lands on global search entry when used
+  + Various flatpak integration improvements
+  + Clang integration improvements
+  + Better integration with Elementary
+  + Some improved support for BaesApps in Flatpak
+  + Updated translations.
+- Drop pkgconfig(dspy-1) BuildRequires: dspy is now bundled instead
+  instead of wrapped.
+- Bump basever to 48, following upstream.
+
+-------------------------------------------------------------------
 Wed Jan 29 08:59:59 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add python3-sphinx_rtd_theme BuildRequires: No longer pulled in
