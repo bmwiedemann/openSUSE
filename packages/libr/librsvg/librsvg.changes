@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Mar  6 17:47:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.59.91 (Unstable):
+  + Fix linkage on Illumos.
+  + Fix the build of the static library on MinGW.
+  + Fix versioning of library name.
+  + Enable cross-compilation of the gdk-pixbuf loader if meson/qemu
+    can handle it.
+
+-------------------------------------------------------------------
+Tue Feb 11 08:34:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.59.90 (Unstable):
+  + Basic support for the dominant-baseline property.
+  + Report errors correctly from the parsers for attribute values.
+  + Slightly improved test coverage.
+  + Don't use defined() in C macro definitions, since it is not
+    portable.
+  + Parse the white-space property. It is not processed yet; this
+    will come after the Outreachy internship.
+  + Documentation fixes.
+  + Many build fixes.
+  + Improvements for cross builds.
+  + Fix CRLF characters in Python sources.
+
+-------------------------------------------------------------------
 Thu Oct 31 20:40:57 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Change license to LGPL-2.1-or-later AND MIT.
