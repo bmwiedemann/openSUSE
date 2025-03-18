@@ -7,4 +7,17 @@
     <comment>This package provide a script which can create the bridge interface needed in virtualization. This was previously done in post config of &quot;yast2 virtualization&quot;</comment>
     <requestid>1251148</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2d9c80a6d57bf394a94b212e7a4847d7</srcmd5>
+    <version>0.5</version>
+    <time>1742316152</time>
+    <user>anag+factory</user>
+    <comment>    better logging
+    add debug option
+    improve connection modification
+    rename some VAR to avoid confusion
+    bsc#1239445
+</comment>
+    <requestid>1254157</requestid>
+  </revision>
 </revisionlist>

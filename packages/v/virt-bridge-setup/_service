@@ -1,5 +1,0 @@
-<services>
-  <service name="download_url" mode="manual">
-    <param name="url">https://github.com/aginies/virt-bridge-setup/archive/refs/tags/0.3.tar.gz</param>
-  </service>
-</services>
