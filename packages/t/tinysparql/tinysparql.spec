@@ -1,7 +1,7 @@
 #
 # spec file for package tinysparql
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define RPMtinysparqlAPI 3_0
 
 Name:           tinysparql
-Version:        3.8.2
+Version:        3.9.1
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later

@@ -27,4 +27,14 @@
     <comment></comment>
     <requestid>1231506</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>95e8602046cdc32173f06d78e2fab152</srcmd5>
+    <version>3.9.1</version>
+    <time>1742315980</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.9.1:
+  + Many fuzzing fixes
+  + Multiple coverity fixes (forwarded request 1253862 from iznogood)</comment>
+    <requestid>1253866</requestid>
+  </revision>
 </revisionlist>
