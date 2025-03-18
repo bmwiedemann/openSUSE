@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 14 12:46:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 28 13:02:57 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 31 22:14:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + On the network page, the Tab key now navigates between the
+    network list and other widgets, rather than between each
+    network in the list in turn.
+  + As a result of the change above, Gtk ≥ 4.17 is now required.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 31 21:25:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.4:

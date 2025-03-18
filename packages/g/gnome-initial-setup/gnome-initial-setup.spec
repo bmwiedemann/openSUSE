@@ -17,7 +17,7 @@
 
 
 Name:           gnome-initial-setup
-Version:        47.4
+Version:        48.0
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(goa-backend-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.37.1
 BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.10
+BuildRequires:  pkgconfig(gtk4) >= 4.17
 BuildRequires:  pkgconfig(gweather4)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
 BuildRequires:  pkgconfig(iso-codes)
