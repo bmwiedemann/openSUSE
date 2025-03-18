@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Mar 16 17:54:01 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.7.13:
+  * module::get_current_estimated_bpm could return infinity when
+    rows per beat was set to 0. A default of 4 rows per beat is now
+    assumed in this situation. The internal LFO plugin was also
+    affected in Tempo Sync mode.
+  * Instruments that have a MIDI channel assigned and NNA set to
+    “Continue” could cause NNA channel starvation.
+  * In non-compatible linear slide mode, the sample rate could wrap
+    around with portamento slides to extremely low frequencies.
+    This should only happen in compatible mode.
+- Changes in 0.7.12:
+  * [Bug] Fixed various undefined behaviour found with ubsan.
+  * IT: Don’t report files claiming to be made with Impulse Tracker
+    2.08+ as IT-made if they have no edit timer.
+  * IT: Ignore sample data in slots that don’t have the “sample
+    data present” flag set, if the file vaguely looks IT-made to
+    avoid playing garbage caused by an Impulse Tracker bug that
+    should not be audible.
+  * S3M: Detect early Schism Tracker versions.
+  * MOD: When trying to detect MOD files with broken order lists,
+    the file size is now rounded down to an even number. This helps
+    identifying some malformed files (MOD files can technically not
+    have an odd size).
+  * MOD: Also enable ProTracker-compatible tremolo ramp waveform
+    for M!K! modules.
+  * MOD: In ProTracker 1/2 mode, retrigger with instrument-less
+    notes now keeps using the previous sample offset.
+  * Warn when a Startrekker AM file most likely requires an
+    (currently unsupported) external instrument definition file.
+  * DBM / IMF / MED: When merging pattern commands, allow to move
+    offset to volume column at the expense of a lower offset
+    resolution.
+  * MED: Fix correct octave transposition in some MED files that
+    have hardware mixing disabled but sample transpose enabled.
+  * MED: Don’t enable Amiga resampler if any stereo samples are
+    found, as it does not support stereo samples.
+  * MED: Fix tempo in some files using software mixing mode and
+    legacy tempo values.
+  * MED: Avoid importing effect memory for some commands.
+  * MED: Retrigger with instrument-less note now keeps using the
+    previous sample offset.
+  * MED: Disable sample swapping on notes with portamento, and
+    don’t resume stopped notes with portamento.
+  * MED: Only use 7-bit volume commands in MMD3 files made with a
+    new enough version of MED Soundstudio.
+  * STM: Do not sanitize sample loop data. Scream Tracker 2 reads
+    into the next sample’s data when loops exceed the sample
+    length.
+  * When evaluating MIDI macros containing letters “u” or “v”
+    during seeking, the initial global volume was applied to them,
+    rather than the global volume that would be reached at that
+    pattern position.
+
+-------------------------------------------------------------------
 Tue Nov 12 02:51:15 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.7.11:
