@@ -1,7 +1,7 @@
 #
 # spec file for package sysprof
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define glib_version 2.76.0
 
 Name:           sysprof
-Version:        47.2
+Version:        48.0
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -50,7 +50,9 @@ BuildRequires:  pkgconfig(gtk4) >= 4.10
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.30.0
+BuildRequires:  pkgconfig(libdebuginfod)
 BuildRequires:  pkgconfig(libdex-1) >= 0.3
+BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libpanel-1) >= 1.3.0
 BuildRequires:  pkgconfig(libsystemd) >= 222
 BuildRequires:  pkgconfig(libunwind-generic)
@@ -116,9 +118,6 @@ export CXX=g++-11
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
-%check
-%meson_test
-
 %pre
 %service_add_pre sysprof3.service
 
@@ -135,11 +134,15 @@ export CXX=g++-11
 
 %ldconfig_scriptlets -n libsysprof-%{apiver}-%{sover}
 
+%check
+%meson_test
+
 %files
 %license COPYING
 %doc NEWS README.md
 %{_bindir}/sysprof-agent
 %{_bindir}/sysprof-cli
+%{_bindir}/sysprof-cat
 %{_datadir}/dbus-1/interfaces/org.gnome.Sysprof.Agent.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Sysprof3.Profiler.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Sysprof3.Service.xml
@@ -151,6 +154,7 @@ export CXX=g++-11
 %{_libdir}/libsysprof-speedtrack-%{apiver}.so
 %{_libdir}/libsysprof-tracer-%{apiver}.so
 %{_libexecdir}/sysprofd
+%{_libexecdir}/sysprof-live-unwinder
 %{_unitdir}/sysprof3.service
 %dir %{_datadir}/help/C/sysprof
 %doc %{_datadir}/help/C/sysprof/*

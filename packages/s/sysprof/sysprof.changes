@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Mar 16 09:05:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 11 18:03:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Fix drawing of Y-reversed data point markers
+  + Make greeter save environment variables to state file for reuse
+  + Use D-Bus power profiles bus name rather than legacy D-Bus bus
+    name
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  7 13:40:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Ensure local dbus-monitor is reaped after capturing
+  + Modernization for various GTK deprecations
+  + Add new symbolizer for debuginfod which is enabled by default
+  + Many performance improvements for capture loading
+  + Support for unwinding without frame-pointers on distributions
+    lacking -fno-omit-frame-pointer at the toolchain level. This
+    uses a new "sysprof-live-unwinder" elevated helper process
+    which takes data from perf and unwinds the stack as soon as it
+    can without capturing the perf data to disk.
+  + The greeter now persists your settings and restores them the
+    next time you run Sysprof.
+  + Various graph drawing improvements.
+  + Fixes for time display in various formats.
+  + Updated translations.
+- Add pkgconfig(libdebuginfod) and pkgconfig(libdw) BuildRequires:
+  New dependencies.
+
+-------------------------------------------------------------------
 Thu Nov 28 08:55:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 47.2:
