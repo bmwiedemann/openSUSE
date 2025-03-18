@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 16 08:45:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.7:
+  + Fix a potential assertion failure in B+Tree item removal.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jan 27 21:13:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.6:
