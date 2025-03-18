@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-nibbles
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,22 @@
 
 
 Name:           gnome-nibbles
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Worm Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
-URL:            https://live.gnome.org/Lightsoff
+URL:            https://gitlab.gnome.org/GNOME/gnome-nibbles/-/wikis/home
 Source0:        %{name}-%{version}.tar.zst
+BuildSystem:    meson
+BuildOption:    -Duse_libadwaita=true
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  meson >= 0.50.1
-BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(gee-0.8)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.78.0
-BuildRequires:  pkgconfig(gsound) >= 1.0.2
-BuildRequires:  pkgconfig(gtk4) >= 4.6
-BuildRequires:  pkgconfig(libgnome-games-support-2) >= 2.0.0
-BuildRequires:  pkgconfig(pangocairo)
-###FIXME### Test again on next release
-#BuildRequires:  pkgconfig(libadwaita-1)
 
 %description
 Nibbles is a worm game for GNOME. The player controls a 2D worm while
@@ -48,15 +41,10 @@ causes a loss of points. When all points are lost, the player loses.
 
 %lang_package
 
-%prep
-%autosetup -p1
+%generate_buildrequires
+%meson_buildrequires
 
-%build
-%meson
-%meson_build
-
-%install
-%meson_install
+%install -a
 %fdupes %{buildroot}/%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 
