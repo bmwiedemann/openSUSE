@@ -72,6 +72,10 @@ popd
 # Test broken with latest version of MarkupSafe (2.1.4)
 # gh#pallets/jinja#1930, gh#pallets/markupsafe#417
 donttest="test_striptags"
+# Test fails in s390x with maximum recursion depth exceeded during compilation
+%if "%{_arch}" == "s390x"
+donttest+=" or test_elif_deep"
+%endif
 %pytest -W ignore:'Support for nose tests is deprecated' -k "not ($donttest)"
 %endif
 

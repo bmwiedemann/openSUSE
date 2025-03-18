@@ -619,4 +619,12 @@
     <comment></comment>
     <requestid>1251789</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>4ccd84de4a7ea54fffcae20197d671de</srcmd5>
+    <version>3.1.6</version>
+    <time>1742316014</time>
+    <user>anag+factory</user>
+    <comment>- Skip test_elif_deep on s390x arch</comment>
+    <requestid>1253771</requestid>
+  </revision>
 </revisionlist>

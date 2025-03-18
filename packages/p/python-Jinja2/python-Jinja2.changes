@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 17 11:59:32 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip test_elif_deep on s390x arch
+
+-------------------------------------------------------------------
 Mon Mar 10 08:46:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.1.6
