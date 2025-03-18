@@ -1,7 +1,7 @@
 #
 # spec file for package d-spy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sover 1
 
 Name:           d-spy
-Version:        47.0
+Version:        48.0
 Release:        0
 Summary:        A D-Bus explorer for GNOME
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -41,20 +41,6 @@ BuildRequires:  pkgconfig(libadwaita-1) >= 1.0
 %description
 D-Spy is a simple tool to explore D-Bus connections.
 
-%package        -n %{libname}-%{sover}
-Summary:        Shared library for %{name}
-
-%description    -n %{libname}-%{sover}
-Shared library for %{name}.
-
-%package        devel
-Summary:        Development/header files for %{name}
-Requires:       %{libname}-%{sover} = %{version}
-Requires:       %{name} = %{version}
-
-%description    devel
-Development/header files for %{name}.
-
 %lang_package
 
 %prep
@@ -72,8 +58,6 @@ Development/header files for %{name}.
 %check
 %meson_test
 
-%ldconfig_scriptlets -n %{libname}-%{sover}
-
 %files
 %license COPYING COPYING.lgpl3
 %doc NEWS
@@ -83,14 +67,6 @@ Development/header files for %{name}.
 %{_datadir}/glib-2.0/schemas/org.gnome.dspy.gschema.xml
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.dspy.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.dspy-symbolic.svg
-
-%files -n %{libname}-%{sover}
-%{_libdir}/%{libname}.so.*
-
-%files devel
-%{_includedir}/dspy-%{sover}
-%{_libdir}/%{libname}.so
-%{_libdir}/pkgconfig/dspy-1.pc
 
 %files lang -f %{name}.lang
 

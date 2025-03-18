@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Mar 15 21:17:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 25 10:11:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Use AdwAlertDialog
+  + Use + icon for connecting to new bus
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  3 13:25:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 48.beta:
+  + Removal of libdspy. This is no longer used by Builder and will
+    allow future changes to be landed for new designs.
+- Drop devel and shared library sub-packages following upstream
+  changes.
+
+-------------------------------------------------------------------
 Sun Sep 15 12:29:17 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:
