@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sun Mar 16 15:28:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.54.1:
+  + Bugs fixed: Cannot sign in to Google.
+
+-------------------------------------------------------------------
+Sun Mar 16 09:01:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.54.0:
+  + Bugs fixed:
+    - Fix unescaped characters in IMAP and SMTP logins
+    - Nextcloud 'Cannot find WebDAV endpoint' error
+    - goaproviderdialog: don't update the error revealer until set
+    - goaoauth2provider: rewrite the D-Bus helper as a per-task
+      service
+    - goagoogleprovider: drop the client secret and deprecate the
+      option
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  2 08:29:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.53.2 (Unstable):
+  + Bugs fixed:
+    - goaoauth2provider: handle OAuth2 error responses
+    - docs: update README
+    - goabackend: drop GoaHTTPClient
+    - examples: drop g_error() usage
+    - oauth2handler: Replace libsecret with dbus
+  + Updated translations.
+- Drop pkgconfig(javascriptcoregtk-4.1) and
+  pkgconfig(webkit2gtk-4.1) BuildRequires: Not needed nor used
+  (upstream dropped it in version 3.49.0).
+- Add pkgconfig(dbus-1) BuildRequires: Previously pulled in by the
+  above webkit dependency.
+
+-------------------------------------------------------------------
+Sun Feb  2 09:34:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.53.1 (Unstable):
+  + Bugs fixed: onedrive: Use presentation id in OneDrive uri
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jan 12 21:05:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.53.0 (Unstable):
+  + Bugs fixed:
+    - Add GUI field for PresentationIdentity to be able to set a
+      custom name / nickname for an online account
+    - Also offer an oauth2 sign-in link that can be copied instead
+      of only directly opening in external browser.
+    - Non-actionable "Account Action Required" notification when
+      account requires VPN
+    - imap: Remove / Demote "None" encryption option
+    - Unable to Sign In to Microsoft Exchange account on Gnome 46
+      24.04.1
+    - Fix segfault after signing into Fedora account
+    - Fail faster - don't wait 120 seconds to timeout and return an
+      error on initial authentication
+    - goadaemon: add a timeout for credential checks
+    - goaoauthprovider: fix expected NULL GError
+    - docs: add issue templates
+    - goadavclient.c: add WebDAV default candidate to test
+    - ci: add support for new release service
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 11 21:23:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.52.3.1:

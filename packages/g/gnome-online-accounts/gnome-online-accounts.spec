@@ -17,7 +17,7 @@
 
 
 Name:           gnome-online-accounts
-Version:        3.52.3.1
+Version:        3.54.1
 Release:        0
 Summary:        GNOME service to access online accounts
 License:        LGPL-2.0-or-later
@@ -28,6 +28,7 @@ Source0:        %{name}-%{version}.tar.zst
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.52
@@ -36,7 +37,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.52
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.2
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gtk4) >= 4.10
-BuildRequires:  pkgconfig(javascriptcoregtk-4.1)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
@@ -46,7 +46,6 @@ BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(rest-1.0)
 BuildRequires:  pkgconfig(vapigen)
-BuildRequires:  pkgconfig(webkit2gtk-4.1)
 # p11-kit is not 'strictly' seen a requirement, but without it none of the SSL/TLS
 # Certificates are considered valid, which results in a really bad experience.
 Requires:       p11-kit >= 0.16

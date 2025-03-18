@@ -818,4 +818,24 @@
     <comment></comment>
     <requestid>1237896</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>25d6a5b203dec10c4af4dbc6f18c2744</srcmd5>
+    <version>3.54.1</version>
+    <time>1742315937</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.54.1:
+  + Bugs fixed: Cannot sign in to Google.
+
+- Update to version 3.54.0:
+  + Bugs fixed:
+    - Fix unescaped characters in IMAP and SMTP logins
+    - Nextcloud 'Cannot find WebDAV endpoint' error
+    - goaproviderdialog: don't update the error revealer until set
+    - goaoauth2provider: rewrite the D-Bus helper as a per-task
+      service
+    - goagoogleprovider: drop the client secret and deprecate the
+      option
+  + Updated translations. (forwarded request 1253524 from iznogood)</comment>
+    <requestid>1253727</requestid>
+  </revision>
 </revisionlist>
