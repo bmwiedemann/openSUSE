@@ -17,7 +17,7 @@
 
 
 Name:           loupe
-Version:        47.3
+Version:        48.0
 Release:        0
 Summary:        A simple image viewer application
 License:        GPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk4) >= 4.13.6
 BuildRequires:  pkgconfig(gweather4) >= 4.0.0
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.beta
 BuildRequires:  pkgconfig(libheif) >= 1.14.2
 BuildRequires:  pkgconfig(libseccomp) >= 2.5.0
 Requires:       glycin-loaders
@@ -73,7 +73,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Loupe.deskt
 %{_datadir}/dbus-1/services/org.gnome.Loupe.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Loupe.gschema.xml
 %{_datadir}/help/C/%{name}/
-%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Loupe.Devel.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Loupe.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Loupe-symbolic.svg
 %{_datadir}/metainfo/org.gnome.Loupe.metainfo.xml

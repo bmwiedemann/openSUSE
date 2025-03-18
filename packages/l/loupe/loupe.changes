@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Fri Mar 14 14:09:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Fixed: edit/crop: Pre-select the portrait orientation for
+    images that are taller than wide.
+
+-------------------------------------------------------------------
+Fri Feb 28 18:30:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Fixed:
+    - Decide if an image has a format that supports editing based
+      on the reliable mime-type. That way a wrong file extension
+      will not impact the detection of the format being editable.
+    - Set description instead of title for general errors, showing
+      the complete and correct message.
+    - Switch to consitently storing rotation with CCW convention.
+    - editing/crop: Allow do decrease size of crop selection from
+      edges when fixed aspect ratio is used.
+    - editing: Don't show error if saving is aborted. Instead
+      handle actual errors correctly.
+  + Changed:
+    - editing/crop: Change icons for aspect ratio buttons for
+      portrait orientation.
+    - editing/crop: Disambiguate and tweak icons for crop selection
+      aspect ratio buttons.
+
+-------------------------------------------------------------------
+Fri Jan 31 21:04:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Added:
+    - edit/crop:
+      . Add back the selection of the aspect ratio for aspect
+        ratios.
+      . Added keyboard shortcuts for some editing operations.
+      . Allow dragging selection from the edges, not only the
+        corners.
+      . Apply crop selections on operations like rotate/flip or
+        save.
+    - edit:
+      . Add menu with option to "Save As" or overwrite original.
+      . Allow to cancel saving operation via the "Cancel" button.
+      . Give visual feedback while saving image via spinner
+        overlay.
+      . Show saved image after saving.
+      . `Ctrl+S` and `Ctrl+Shift+S` shortcuts save images and `Esc`
+        to exit the editing view.
+  + Fixed:
+    - Disable all zoom buttons and editing button if image fails to
+      load.
+    - Fix allocation warnings by not causing resizes during
+      allocation.
+    - edit/crop:
+      . Set aspect ratio to "Free" on reset.
+      . Work around GTK gesture bug that blocks the drag gesture
+        after clicking the apply button until one additional click
+        has been done.
+    - edit: Disable save actions when saving or no changes have been done.
+  + Changed:
+    - edit/crop:
+      . Enable the "Reset" button when the crop selection change,
+        even if not applied.
+      . Move crop apply button into crop selection as small
+        checkmark.
+      . Refactor a lot of the inner working to make code simpler
+        and more robust.
+    - edit:
+      . Add an "(Edited)" suffix to the suggested filename when
+        using "Save As"
+      . Various design and detail tweaks.
+    - zoom: Allow zoom levels smaller than best fit via the zoom
+      menu.
+
+-------------------------------------------------------------------
+Mon Jan 13 14:31:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + Added:
+    - Display XMP metadata for JPEG images.
+    - Initial support for image editing of JPEGs and PNGs with
+      crop, rotate, and flip.
+    - Show the correct folder name in the properties view inside
+      flatpaks if the file is only accessible via portal.
+    - User comment field in metadata.
+  + Fixed: The sort order is now also following the one found in
+    Files (Nautilus) if the file name contains non-ascii
+    characters.
+  + Changed: The design of the overlay buttons, especially for zoom
+    controls has been reworked. A new menu supports selecting from
+    pre-defined zoom levels as well as entering a specific zoom
+    level.
+
+-------------------------------------------------------------------
 Mon Jan 13 14:31:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.3:
