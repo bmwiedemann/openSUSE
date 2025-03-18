@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 17 20:16:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.50:
+  * General
+    - update schema imports @aabidsofi19 (#14025)
+    - fitz/chore/meetings and archival @fitzergerald (#14036)
+  * Meshery CLI
+    - Notification UI Enhancements @FaheemOnHub (#13878)
+    - chore: add make e2e command @lekaf974 (#14033)
+    - [mesheryctl] 13831: fix environment view orgID param @n2h9
+      (#13833)
+    - feat: mesheryctl components add unit test @lekaf974 (#13912)
+    - docs: add mesheryctl e2e contribution guideline @lekaf974
+      (#14006)
+  * Documentation
+    - Notification UI Enhancements @FaheemOnHub (#13878)
+
+-------------------------------------------------------------------
 Thu Mar 13 12:58:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.49:
