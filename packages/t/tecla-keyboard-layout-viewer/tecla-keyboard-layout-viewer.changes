@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Mar 17 14:34:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0.2:
+  + Stable version bump only.
+
+-------------------------------------------------------------------
+Mon Mar 17 12:55:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 48.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  2 12:57:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Improvements to multi-instance for specific layout previews
+  + Make window modal when run as a dialog
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jan 12 16:28:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + Support spaces and tabs as separator for keymap+variant
+  + A number of new/improved labels for special keys
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct 28 12:47:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update license to GPL-2.0-pr-later, conforming to the license
