@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-xkcdpass
-Version:        1.19.9
+Version:        1.20.0
 Release:        0
 Summary:        A flexible and scriptable password generator which generates strong passphrases
 License:        BSD-3-Clause

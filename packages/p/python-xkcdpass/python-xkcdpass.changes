@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 18 11:17:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.20.0
+  * Add German word lists
+  * Disable setting max word length to min word length
+  * Fix no delimiter being used sometimes
+  * Improvements to DE wordlists, bugfixes
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Feb  5 11:42:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.19.9
