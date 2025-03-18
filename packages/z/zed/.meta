@@ -1,5 +1,0 @@
-<package name="zed" project="openSUSE:Factory">
-  <title>A high-performance, multiplayer code editor</title>
-  <description>Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.</description>
-  <devel project="editors" package="zed"/>
-</package>
