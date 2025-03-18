@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmlsec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xmlsec
-Version:        1.3.14
+Version:        1.3.15
 Release:        0
 Summary:        Python bindings for the XML Security Library
 License:        MIT
 URL:            https://github.com/mehcode/python-xmlsec
 Source:         https://files.pythonhosted.org/packages/source/x/xmlsec/xmlsec-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#xmlsec/python-xmlsec#325
-Patch0:         fix-lxml-incompat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module lxml >= 3.8.0}
