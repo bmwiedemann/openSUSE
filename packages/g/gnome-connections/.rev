@@ -119,4 +119,15 @@
     <comment></comment>
     <requestid>1240847</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0dd9374997bb855f9d975b17134eaeb4</srcmd5>
+    <version>48.0</version>
+    <time>1742316070</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + Update gtk-frdp: Fix keyboard layout in Flatpak.
+  + Request FreeRDP 3.11.0 for Flatpak
+  + Updated translations. (forwarded request 1253780 from dimstar)</comment>
+    <requestid>1253789</requestid>
+  </revision>
 </revisionlist>

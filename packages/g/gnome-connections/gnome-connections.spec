@@ -17,7 +17,7 @@
 
 
 Name:           gnome-connections
-Version:        47.2.1
+Version:        48.0
 Release:        0
 Summary:        A remote desktop client for GNOME
 License:        GPL-3.0-or-later
@@ -73,7 +73,7 @@ rm %{buildroot}%{_datadir}/gnome-connections/vapi/gtk-frdp-0.2.vapi
 %dir %{_libdir}/gnome-connections/girepository-1.0
 %{_libdir}/gnome-connections/girepository-1.0/GtkFrdp-0.2.typelib
 %{_libdir}/gnome-connections/libgtk-frdp-0.2.so
-%{_datadir}/metainfo/org.gnome.Connections.appdata.xml
+%{_datadir}/metainfo/org.gnome.Connections.metainfo.xml
 %{_datadir}/applications/org.gnome.Connections.desktop
 %{_datadir}/dbus-1/services/org.gnome.Connections.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Connections.gschema.xml
