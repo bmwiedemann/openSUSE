@@ -17,7 +17,7 @@
 
 
 Name:           gnome-maps
-Version:        47.4
+Version:        48.0
 Release:        0
 Summary:        Maps Application for GNOME
 License:        Apache-2.0 AND CC-BY-3.0 AND GPL-2.0-or-later AND BSD-3-Clause AND ISC AND MIT
@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(rest-1.0) >= 0.7.90
-BuildRequires:  pkgconfig(shumate-1.0) >= 1.2.alpha
+BuildRequires:  pkgconfig(shumate-1.0) >= 1.4.alpha
 Recommends:     dbus(org.freedesktop.GeoClue2)
 
 %description

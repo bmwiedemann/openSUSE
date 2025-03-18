@@ -814,4 +814,13 @@
     <comment></comment>
     <requestid>1241319</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>ffaaf17d78b174a046bea580f16fb7e6</srcmd5>
+    <version>48.0</version>
+    <time>1742315916</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + Updated translations. (forwarded request 1253324 from iznogood)</comment>
+    <requestid>1253379</requestid>
+  </revision>
 </revisionlist>

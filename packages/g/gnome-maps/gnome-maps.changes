@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Mar 15 09:26:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  1 09:26:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Update OSM edit POI defintions
+  + Update highway shields from OpenStreetMap-Americana
+  + Use Transitous for public transit in Finland, as the old
+    OTP1-based Digitransit API is being deprecated
+  + Show stairs instructions for walking directions with Transitous
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 30 08:47:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Redesigned user location marker, using system accent color.
+  + Redesigned/improved rendering of route markers and public
+    transit route itineraries.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 30 07:47:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha2:
+  + Define release artifact path as a global variable in CI
+- Changes from version 48.alpha:
+  + Moved the Transitous support to use the new MOTIS v2 API
+  + Refreshed headerbar icons for layers and favorites menu buttons
+  + Added animation to favorite star when favoring a place
+  + Use AdwSpinner widgets for all spinners
+  + Close sidebar when pressing Esc
+  + Updated screenshots to reflect new map theme, public transit
+    support, and dark mode
+  + Use an AdwToggleGroup widget for the routing mode switcher
+  + Redesigned POI edit dialog
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jan 30 06:47:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.4:
