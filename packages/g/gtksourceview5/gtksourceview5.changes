@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Mar 16 08:52:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 25 10:16:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.15.1 (Unstable):
+  + Remove use of various GTK deprecations
+  + Testsuite improvements
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  3 12:19:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.15.0 (Unstable):
+  + Various introspection fixes
+  + Improvements to GtkSourceAssistants
+  + Various GtkTextIter performance improvements
+  + Deduplication fixes when sorting
+  + Alter paths for resource:// usage so that resources take
+    priority over system installations other than the current one
+  + Adwaita.xml, Adwaita-dark.xml style updates
+  + Quantize Y position for gutter line numbers
+  + New and updated languages: meson.lang, zig.lang
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 31 12:13:49 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.14.1+61:
+  + Switch to master branch to have pre-5.15.0 release.
+
+-------------------------------------------------------------------
 Mon Jan  6 18:12:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop changes.lang source, request from upstream + gedit no longer
