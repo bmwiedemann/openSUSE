@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 16 17:05:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.46.1:
+  * Documentation
+    - Fix typo in Pane.send_keys (#593)
+
+-------------------------------------------------------------------
 Wed Feb 26 05:43:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.46.0:
