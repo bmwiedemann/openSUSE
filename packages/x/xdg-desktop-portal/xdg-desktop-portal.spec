@@ -19,6 +19,9 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "docs"
+%if 0%{?suse_version} <= 1600
+ExclusiveArch:  do-not-build
+%endif
 %bcond_without  docs
 %define psuffix -devel-docs
 %else

@@ -470,4 +470,13 @@
     <comment></comment>
     <requestid>1248329</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>50e5bd6aef69fa67c2817d0c6f26c164</srcmd5>
+    <version>1.20.0</version>
+    <time>1742315846</time>
+    <user>anag+factory</user>
+    <comment>- Do not build docs on SLE/Leap &lt;= 16. They pull in a lot of
+  additional dependencies. (forwarded request 1253867 from mgorse)</comment>
+    <requestid>1253885</requestid>
+  </revision>
 </revisionlist>
