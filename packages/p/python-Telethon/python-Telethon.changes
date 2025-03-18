@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Mar 17 13:11:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.39.0
+  * fix(session): persist session after `session.set_dc`
+  * Update to layer 195
+  * Avoid error when trying to reset deadline for no msgbox entries
+  * Updated to Layer 196 (#4525)
+  * Add missing parameters to Message constructor (#4529)
+  * Fix IOError with some image modes in photo resize This fixes image
+    compression with mode "P" (potentially others) which is necessary
+    as the server has erroneous alpha color with some types of images
+    (mode "P" for example). This also properly applies the background
+    argument that may be passed to _resize_photo_if_needed by always
+    compressing images with alpha regardless of whether the server
+    will compress the image for us.
+  * Document drop_author and add drop_media_captions drop_author is
+    already supported but is undocumented. drop_media_captions for
+    consistency with drop_author being implemented.
+  * Respect receive_updates=False
+  * Improve edit_message message type hint This also allows
+    utils.get_message_id to get the ID of InputMessageID.
+  * Update to layer 198
+  * Unconditionally match text and link text in markdown Fixes cases
+    where there's a nested [] in the text by matching until "](" is
+    reached. This doesn't match newlines in URLs because that makes
+    no sense.
+  * Fix overlapping URLs and improve overlapping in md Also remove the
+    unused overlap function.
+  * Make markdown URL regex less greedy Fixes multiple URLs in a single
+    message.
+  * fix: support batch sending of image URLs and video URLs in albums
+  * Consider range list-like This allows you to pass range() to things
+    such as get_messages as ids= without first explicitly converting it
+    to a list.
+  * Update to layer 199
+
+-------------------------------------------------------------------
 Mon Jan 13 19:50:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.38.1

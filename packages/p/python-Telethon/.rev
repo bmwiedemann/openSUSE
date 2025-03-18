@@ -360,4 +360,12 @@ Library should now retry on the suddenly-common TimedOutError.
     <comment></comment>
     <requestid>1237650</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>31d4fcee56b562ea23285f155ddce21f</srcmd5>
+    <version>1.39.0</version>
+    <time>1742316136</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1253928</requestid>
+  </revision>
 </revisionlist>
