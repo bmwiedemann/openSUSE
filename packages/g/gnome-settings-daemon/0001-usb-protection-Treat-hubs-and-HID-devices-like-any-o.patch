@@ -20,11 +20,11 @@ gadget, this will require users to "enroll" them the same ways.
  .../gsd-usb-protection-manager.c              | 58 +++++--------------
  1 file changed, 15 insertions(+), 43 deletions(-)
 
-diff --git a/plugins/usb-protection/gsd-usb-protection-manager.c b/plugins/usb-protection/gsd-usb-protection-manager.c
-index 43644408..538b6b1f 100644
---- a/plugins/usb-protection/gsd-usb-protection-manager.c
-+++ b/plugins/usb-protection/gsd-usb-protection-manager.c
-@@ -678,56 +678,28 @@ on_usbguard_signal (GDBusProxy *proxy,
+Index: gnome-settings-daemon-48.alpha.1/plugins/usb-protection/gsd-usb-protection-manager.c
+===================================================================
+--- gnome-settings-daemon-48.alpha.1.orig/plugins/usb-protection/gsd-usb-protection-manager.c
++++ gnome-settings-daemon-48.alpha.1/plugins/usb-protection/gsd-usb-protection-manager.c
+@@ -679,56 +679,28 @@ on_usbguard_signal (GDBusProxy *proxy,
                   * If this device advertises also interfaces outside the HID class, or the
                   * HUB class, it is suspect. It could be a false positive because this could
                   * be a "smart" keyboard for example, but at this stage is better be safe. */
@@ -33,7 +33,7 @@ index 43644408..538b6b1f 100644
 +                if (protection_level == G_DESKTOP_USB_PROTECTION_LOCKSCREEN) {
                          show_notification (manager,
 -                                           _("New device detected"),
--                                           _("Either one of your existing devices has been reconnected or a new one has been plugged in. "
+-                                           _("Either one of your existing devices has been reconnected or a new one has been inserted. "
 -                                             "If you did not do it, check your system for any suspicious device."));
 -                        g_variant_get_child (parameters, POLICY_APPLIED_DEVICE_ID, "u", &device_id);
 -                        authorize_device (manager, device_id);
@@ -85,7 +85,7 @@ index 43644408..538b6b1f 100644
 -                                show_notification (manager,
 -                                                   _("USB device blocked"),
 -                                                   _("The new inserted device has been blocked because the USB protection is active. "
--                                                     "If you want to activate the device, disable the USB protection and re-plug "
+-                                                     "If you want to activate the device, disable the USB protection and re-insert "
 -                                                     "the device."));
 -                        }
 +                        show_notification (manager,
@@ -96,6 +96,3 @@ index 43644408..538b6b1f 100644
                  } else {
                      /* This is protection level == Lockscreen, so we allow everything when the session is unlocked.
                         There should be a USBGuard rule that automatically allows all devices,
--- 
-2.44.0
-

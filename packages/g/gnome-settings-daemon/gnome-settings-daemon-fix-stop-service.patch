@@ -1,11 +1,11 @@
-From afc8df459f6603799a50f221e77dfdf4df1d6d56 Mon Sep 17 00:00:00 2001
+From ebd24abc59b18c09fb21905945e57c03a02caca6 Mon Sep 17 00:00:00 2001
 From: Joan Torres <joan.torres@suse.com>
 Date: Wed, 11 Dec 2024 15:29:17 +0100
 Subject: [PATCH 1/2] sharing: Stop assigned services properly on manager stop
 
 Assigned services are started when sharing status is not offline.
-But they were being stopped only when sharing status is available.
-To fix this, stop assigned services when sharing status is not offline.
+But they were being stopped only when status is available.
+To fix this, stop assigned services when status is not offline too.
 
 This doesn't affect configurable services which weren't already started.
 ---
@@ -13,10 +13,10 @@ This doesn't affect configurable services which weren't already started.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/plugins/sharing/gsd-sharing-manager.c b/plugins/sharing/gsd-sharing-manager.c
-index 8b818c4e..c20b42e6 100644
+index 40b2bcc51..26e31da05 100644
 --- a/plugins/sharing/gsd-sharing-manager.c
 +++ b/plugins/sharing/gsd-sharing-manager.c
-@@ -951,7 +951,7 @@ gsd_sharing_manager_stop (GsdSharingManager *manager)
+@@ -953,7 +953,7 @@ gsd_sharing_manager_shutdown (GApplication *app)
  
          cancel_pending_wait_tasks (manager);
  
@@ -26,97 +26,106 @@ index 8b818c4e..c20b42e6 100644
                  manager->sharing_status = GSD_SHARING_STATUS_OFFLINE;
                  gsd_sharing_manager_sync_services (manager);
 -- 
-2.47.1
+GitLab
 
 
-From 9d92d287218733c5754c853c0a298874eb704754 Mon Sep 17 00:00:00 2001
+From d0b0d3a6971f0174c873c45ae20b5bf3bd91481b Mon Sep 17 00:00:00 2001
 From: Joan Torres <joan.torres@suse.com>
-Date: Wed, 11 Dec 2024 13:22:56 +0100
-Subject: [PATCH 2/2] common: Stop manager before stopping main loop
+Date: Tue, 14 Jan 2025 19:20:10 +0100
+Subject: [PATCH 2/2] sharing: Wait for async service operations during
+ shutdown
 
-When the sharing manager is stopped, some async calls are done to stop
-some services. If the main loop is stopped before, those calls are not
-handled properly and the services are left orphaned.
+Make a synchronization mechanism using a counter and a main loop.
 
-Stop the manager first and wait a few seconds before stopping the
-main loop to allow the async calls to finish successfully.
+This ensures that all systemd service operations are properly handled
+before the sharing manager is fully stopped, preventing services from
+being left in an inconsistent state.
 
 This fixes an issue where the gnome-remote-desktop-handover.service was
-not stopped on logout. Making the session on a new login, use the same old
+not stopped on logout. Making the next user session use the same
 handover daemon which is still listening to the old handover iface with
 the old session id.
 ---
- plugins/common/daemon-skeleton.h | 26 +++++++++++++++++++-------
- 1 file changed, 19 insertions(+), 7 deletions(-)
+ plugins/sharing/gsd-sharing-manager.c | 29 ++++++++++++++++++---------
+ 1 file changed, 20 insertions(+), 9 deletions(-)
 
-diff --git a/plugins/common/daemon-skeleton.h b/plugins/common/daemon-skeleton.h
-index 40b7f149..8fb12422 100644
---- a/plugins/common/daemon-skeleton.h
-+++ b/plugins/common/daemon-skeleton.h
-@@ -30,6 +30,7 @@
+diff --git a/plugins/sharing/gsd-sharing-manager.c b/plugins/sharing/gsd-sharing-manager.c
+index 26e31da05..9e44bd2c6 100644
+--- a/plugins/sharing/gsd-sharing-manager.c
++++ b/plugins/sharing/gsd-sharing-manager.c
+@@ -83,6 +83,9 @@ struct _GsdSharingManager
+         GsdSharingStatus         sharing_status;
  
- #define GNOME_SESSION_DBUS_NAME                     "org.gnome.SessionManager"
- #define GNOME_SESSION_CLIENT_PRIVATE_DBUS_INTERFACE "org.gnome.SessionManager.ClientPrivate"
-+#define WAIT_BEFORE_STOPPING_LOOP 3
+         gboolean                 is_systemd_managed;
++
++        guint                    pending_sync_services;
++        GMainLoop               *wait_sync_services_loop;
+ };
  
- static MANAGER *manager = NULL;
- static int timeout = -1;
-@@ -53,10 +54,24 @@ respond_to_end_session (GDBusProxy *proxy)
-                            -1, NULL, NULL, NULL);
- }
- 
-+static gboolean
-+stop_loop (gpointer user_data)
-+{
-+        GMainLoop *loop = user_data;
-+
-+        if (g_main_loop_is_running (loop))
-+                g_main_loop_quit (loop);
-+
-+        return G_SOURCE_REMOVE;
-+}
-+
- static void
- do_stop (GMainLoop *loop)
+ #define GSD_DBUS_NAME "org.gnome.SettingsDaemon"
+@@ -147,9 +150,9 @@ handle_unit_cb (GObject      *source_object,
+                 GAsyncResult *res,
+                 gpointer      user_data)
  {
--        g_main_loop_quit (loop);
-+        if (manager)
-+                STOP (manager);
-+
-+        g_timeout_add_seconds (WAIT_BEFORE_STOPPING_LOOP, stop_loop, loop);
+-        GError *error = NULL;
+-        GVariant *ret;
+-        const char *operation = user_data;
++        g_autoptr (GError) error = NULL;
++        g_autoptr (GVariant) ret = NULL;
++        GsdSharingManager *manager = user_data;
+ 
+         ret = g_dbus_connection_call_finish (G_DBUS_CONNECTION (source_object),
+                                              res, &error);
+@@ -158,13 +161,13 @@ handle_unit_cb (GObject      *source_object,
+ 
+                 if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED) &&
+                     g_strcmp0 (remote_error, "org.freedesktop.systemd1.NoSuchUnit") != 0)
+-                        g_warning ("Failed to %s service: %s", operation, error->message);
+-                g_error_free (error);
+-                return;
++                        g_warning ("Failed to handle service: %s", error->message);
+         }
+ 
+-        g_variant_unref (ret);
+-
++        manager->pending_sync_services--;
++        if (manager->pending_sync_services == 0 && manager->wait_sync_services_loop) {
++                g_main_loop_quit (manager->wait_sync_services_loop);
++        }
  }
  
  static void
-@@ -149,8 +164,7 @@ handle_sigterm (gpointer user_data)
+@@ -174,6 +177,8 @@ gsd_sharing_manager_handle_service (GsdSharingManager   *manager,
+ {
+         char *service_file;
  
-   g_debug ("Got SIGTERM; shutting down ...");
- 
--  if (g_main_loop_is_running (main_loop))
--    g_main_loop_quit (main_loop);
-+  do_stop (main_loop);
- 
-   return G_SOURCE_REMOVE;
++        manager->pending_sync_services++;
++
+         service_file = g_strdup_printf ("%s.service", service_name);
+         g_dbus_connection_call (manager->connection,
+                                 "org.freedesktop.systemd1",
+@@ -186,7 +191,7 @@ gsd_sharing_manager_handle_service (GsdSharingManager   *manager,
+                                 -1,
+                                 manager->cancellable,
+                                 handle_unit_cb,
+-                                (gpointer) method);
++                                (gpointer) manager);
+         g_free (service_file);
  }
-@@ -229,8 +243,8 @@ main (int argc, char **argv)
  
- 	if (timeout > 0) {
- 		guint id;
--		id = g_timeout_add_seconds (timeout, (GSourceFunc) g_main_loop_quit, loop);
--		g_source_set_name_by_id (id, "[gnome-settings-daemon] g_main_loop_quit");
-+		id = g_timeout_add_seconds (timeout, (GSourceFunc) do_stop, loop);
-+		g_source_set_name_by_id (id, "[gnome-settings-daemon] do_stop");
- 	}
+@@ -959,6 +964,12 @@ gsd_sharing_manager_shutdown (GApplication *app)
+                 gsd_sharing_manager_sync_services (manager);
+         }
  
-         install_signal_handler (loop);
-@@ -255,8 +269,6 @@ main (int argc, char **argv)
- 
-         g_main_loop_run (loop);
- 
--        STOP (manager);
--
-         g_object_unref (manager);
-         g_bus_unown_name (name_own_id);
- 
++        if (manager->pending_sync_services > 0) {
++                manager->wait_sync_services_loop = g_main_loop_new (NULL, FALSE);
++                g_main_loop_run (manager->wait_sync_services_loop);
++                g_clear_pointer (&manager->wait_sync_services_loop, g_main_loop_unref);
++        }
++
+         if (manager->cancellable) {
+                 g_cancellable_cancel (manager->cancellable);
+                 g_clear_object (&manager->cancellable);
 -- 
-2.47.1
+GitLab
 

@@ -27,10 +27,10 @@
 %bcond_without wacom
 %endif
 
-%define base_ver 47
+%define base_ver 48
 
 Name:           gnome-settings-daemon
-Version:        47.2
+Version:        48.0
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -145,7 +145,7 @@ contact the settings daemon via its DBus interface.
 %prep
 %autosetup -N
 
-%if ! 0%{?sle_version}
+%if 0%{?is_opensuse}
 %autopatch -p1 -M 999
 %else
 %autopatch -p1
@@ -245,6 +245,7 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_userunitdir}/org.gnome.SettingsDaemon.XSettings.service
 %{_userunitdir}/org.gnome.SettingsDaemon.XSettings.target
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.enums.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.global-shortcuts.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.peripherals.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.peripherals.wacom.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.color.gschema.xml

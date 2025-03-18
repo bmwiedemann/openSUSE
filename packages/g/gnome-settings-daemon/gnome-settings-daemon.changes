@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Mar 17 17:21:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Port plugins to GApplication classes.
+  + Updated translations.
+- Rebase gnome-settings-daemon-fix-stop-service.patch
+
+-------------------------------------------------------------------
+Fri Mar 14 14:10:47 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Drop use of sle_version in favor of is_opensuse and suse_version.
+  Sle_version is no longer used in SLE 16.
+
+-------------------------------------------------------------------
+Sun Mar  2 12:55:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Add schemas for global shortcuts
+  + Allow usage as subproject
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  4 14:28:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Fix deprecation warnings during build
+  + Media-keys: Allow running custom commands in lock screen
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 13 07:24:28 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha.1:
+  + Media keys: Fix crash on startup
+- Rebase patches.
+
+-------------------------------------------------------------------
+Sun Jan 12 16:30:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + Icon hint improvements to notifications
+  + Media keys:
+    - Improve HIG compliance of notification messages
+    - Add shortcuts for reboot and shutdown actions
+  + Power:
+    - Improve HIG compliance of notification messages
+    - Resolve device paths outside of the backlight helper
+  + Usb protection: Improve strings
+  + Xsettings: Do not notify icon-theme property on high-contrast
+    changes
+  + Updated translations.
+- Bump base_ver define to 48, following upstream changes.
+
+-------------------------------------------------------------------
 Tue Dec 10 09:57:27 UTC 2024 - Joan Torres <joan.torres@suse.com>
 
 - Add gnome-settings-daemon-fix-stop-service.patch

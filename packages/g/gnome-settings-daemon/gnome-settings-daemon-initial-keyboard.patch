@@ -13,10 +13,10 @@ https://bugzilla.suse.com/show_bug.cgi?id=979051
  plugins/keyboard/gsd-keyboard-manager.c | 18 +++++++++++++-----
  1 file changed, 13 insertions(+), 5 deletions(-)
 
-Index: b/plugins/keyboard/gsd-keyboard-manager.c
+Index: gnome-settings-daemon-48.alpha.1/plugins/keyboard/gsd-keyboard-manager.c
 ===================================================================
---- a/plugins/keyboard/gsd-keyboard-manager.c
-+++ b/plugins/keyboard/gsd-keyboard-manager.c
+--- gnome-settings-daemon-48.alpha.1.orig/plugins/keyboard/gsd-keyboard-manager.c
++++ gnome-settings-daemon-48.alpha.1/plugins/keyboard/gsd-keyboard-manager.c
 @@ -207,7 +207,7 @@ settings_changed (GSettings          *se
  }
  
@@ -61,4 +61,4 @@ Index: b/plugins/keyboard/gsd-keyboard-manager.c
 +                get_sources_from_xkb_config (manager, FALSE);
          g_variant_unref (sources);
  
-         options = g_settings_get_strv (settings, KEY_KEYBOARD_OPTIONS);
+         options = g_settings_get_user_value (settings, KEY_KEYBOARD_OPTIONS);
