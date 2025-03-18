@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sun Mar 16 18:35:28 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.53.3:
+  + Remove invalid error check for gi_constant_info_get_value.
+
+-------------------------------------------------------------------
+Wed Mar 12 11:26:02 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.2:
+  + Revert to legacy license definition in pyproject.toml.
+- Drop pygobject-license.patch: variant of this has been merged
+  upstream.
+
+-------------------------------------------------------------------
+Mon Mar 10 12:54:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.1
+  + Use `girepository` 2.0 for GIR mappings.
+  + Use Python's vectorcall protocol internally.
+  + Improved API for asyncio.
+  + Deprecation: The pygtkcompat module now throws an exception
+    when imported.
+  + Method signatures are exposed from PyGObject now.
+  + Use gobject-introspection-tests for testing.
+  + Convenience API for Gdk.RGBA got GDK 4, similar to GDK 3.
+  + Added a [pre-commit](https://pre-commit.com/) configuration.
+  + Use standard `enum` module for enums and flags in PyGObject.
+  + Added an option to skip automatic initialization of GTK and
+    GDK.
+  + PyGObject is no longer automatically tested on i386
+    architecture.
+  + Fixed iterator protocol implementation for properties.
+  + Various code and documentation improvements.
+- Add pythoncapi-compat as subproject.
+- Pass -Dtests=false to meson: disable tests for now, as we do not
+  have the submodule for that.
+- Pass -Dwheel=false to meson, as we use our own python
+  single-spec mechanism to install the python bindings.
+- Add pygobject-license.patch: Fix build by not relying on PE-639
+  yet.
+- Replace pkgconfig(gobject-introspection-1.0) BuildRequires with
+  pkgconfig(girepository-2.0): follow upstreams changes.
+- Drop pkgconfig(gmodule-2.0) BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Wed Feb  5 14:19:09 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.51.0:
+  + Use `girepository` 2.0 for GIR mappings.
+  + Use Python's vectorcall protocol internally.
+  + Improved API for asyncio.
+  + Deprecation: The pygtkcompat module now throws an exception
+    when imported.
+  + Method signatures are exposed from PyGObject now.
+  + Convenience API for Gdk.RGBA got GDK 4, similar to GDK 3.
+  + Use standard `enum` module for enums and flags in PyGObject.
+  + Added an option to skip automatic initialization of GTK and
+    GDK.
+  + Fixed iterator protocol implementation for properties.
+  + Various code and documentation improvements.
+
+-------------------------------------------------------------------
 Wed Oct 30 15:08:11 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
 
 - Add python-pygobject provides: help packages to eliminate rpmlint

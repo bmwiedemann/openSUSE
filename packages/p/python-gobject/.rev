@@ -833,4 +833,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
   'pygobject' is the proper upstream name.</comment>
     <requestid>1227103</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>fbf0524ca195615bd3090f2000345f2a</srcmd5>
+    <version>3.52.3</version>
+    <time>1742315941</time>
+    <user>anag+factory</user>
+    <comment>New stable rel (forwarded request 1253545 from iznogood)</comment>
+    <requestid>1253729</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-gobject
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 # Define these before the call of python_subpackages
-%define introspection_real_package  %(rpm -q --qf '%%{NAME}' -f $(readlink %{_libdir}/libgirepository-1.0.so -f))
+%define introspection_real_package  %(rpm -q --qf '%%{NAME}' -f $(readlink %{_libdir}/libgirepository-2.0.so -f))
 %define cairo_real_package %(rpm -q --qf '%%{NAME}' --whatprovides cairo)
 # Don't BuildRequire pkgconfig(gdk-3.0) to find the real package for libgdk-3!
 # It produces a dependency cycle: avahi - gtk3-devel - python-dbus-python
@@ -28,19 +28,20 @@
 %global __requires_exclude typelib\\(%%namespaces\\)
 %global __requires_exclude_from ^%{_libdir}/python.*/site-packages/gi/__init__.py$
 %define _name   pygobject
-%define glib_version 2.64.0
+%define glib_version 2.80.0
 %define gi_version 1.64.0
 %define pycairo_version 1.16.0
 %define libffi_version 3.0
 %{?sle15_python_module_pythons}
 Name:           python-gobject
-Version:        3.50.0
+Version:        3.52.3
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://wiki.gnome.org/Projects/PyGObject/
 Source0:        %{_name}-%{version}.tar.zst
+Source1:        pythoncapi-compat-vendored.tar.zst
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module meson-python}
@@ -55,10 +56,9 @@ BuildRequires:  pkgconfig(cairo-gobject)
 # build cycle!
 # BuildRequires:  pkgconfig(gdk-3.0) >= 2.38.0
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(girepository-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
-BuildRequires:  pkgconfig(gmodule-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gobject-2.0) >= %{glib_version}
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= %{gi_version}
 BuildRequires:  pkgconfig(libffi) >= %{libffi_version}
 # Trigger an automatic installation of python(2|3.*)-gobject when python and libgirepository are installed.
 Supplements:    (python and %{introspection_real_package})
@@ -125,10 +125,17 @@ addon libraries such as pygtk in both Python2 and Python3.
 
 %prep
 %setup -q -n %{_name}-%{version}
+%autopatch -p1
+pushd subprojects
+tar xf %{SOURCE1} --xform=s/pythoncapi-compat-vendored/pythoncapi-compat/
+pushd pythoncapi-compat
+patch -p1 < ../packagefiles/pythoncapi-compat-meson.diff
+popd
+popd
 
 %build
 export CFLAGS="%{optflags}"
-%meson
+%meson -Dtests=false -Dwheel=false
 %meson_build
 %pyproject_wheel
 
@@ -168,19 +175,17 @@ find %{buildroot}%{python_sitearch}/PyGObject*/ "(" -name 'METADATA' ")" -delete
 %{python_sitearch}/gi/
 # Lives in cairo subpackage
 %exclude %{python_sitearch}/gi/_gi_cairo*.so
-%{python_sitearch}/pygobject-%{version}.dist-info/
+%{python_sitearch}/pygobject-*.dist-info/
 # Lives in Gdk subpackage
 %exclude %{python_sitearch}/gi/_gtktemplate.py
 %exclude %{python_sitearch}/gi/overrides/Gdk.*
 %exclude %{python_sitearch}/gi/overrides/GdkPixbuf.py
 %exclude %{python_sitearch}/gi/overrides/Gtk.*
-%exclude %{python_sitearch}/gi/overrides/keysyms.*
 %exclude %{python_sitearch}/gi/overrides/Pango.*
 %pycache_only %exclude %{python_sitearch}/gi/__pycache__/_gtktemplate*
 %pycache_only %exclude %{python_sitearch}/gi/overrides/__pycache__/Gdk.*
 %pycache_only %exclude %{python_sitearch}/gi/overrides/__pycache__/GdkPixbuf.*
 %pycache_only %exclude %{python_sitearch}/gi/overrides/__pycache__/Gtk.*
-%pycache_only %exclude %{python_sitearch}/gi/overrides/__pycache__/keysyms.*
 %pycache_only %exclude %{python_sitearch}/gi/overrides/__pycache__/Pango.*
 
 %files %{python_files Gdk}
@@ -188,13 +193,11 @@ find %{buildroot}%{python_sitearch}/PyGObject*/ "(" -name 'METADATA' ")" -delete
 %{python_sitearch}/gi/overrides/Gdk.*
 %{python_sitearch}/gi/overrides/GdkPixbuf.py
 %{python_sitearch}/gi/overrides/Gtk.*
-%{python_sitearch}/gi/overrides/keysyms.*
 %{python_sitearch}/gi/overrides/Pango.*
 %pycache_only %{python_sitearch}/gi/__pycache__/_gtktemplate*
 %pycache_only %{python_sitearch}/gi/overrides/__pycache__/Gdk.*
 %pycache_only %{python_sitearch}/gi/overrides/__pycache__/GdkPixbuf.*
 %pycache_only %{python_sitearch}/gi/overrides/__pycache__/Gtk.*
-%pycache_only %{python_sitearch}/gi/overrides/__pycache__/keysyms.*
 %pycache_only %{python_sitearch}/gi/overrides/__pycache__/Pango.*
 
 %files %{python_files cairo}
