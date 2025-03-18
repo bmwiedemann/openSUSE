@@ -771,4 +771,28 @@ Upstream: https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/114 (forwa
     <comment></comment>
     <requestid>1227164</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>821e6534d41bd1b0e9b8ce1f8d454d2c</srcmd5>
+    <version>1.18.4</version>
+    <time>1742315984</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.18.4:
+  + The dependency on LZO has been made optional through a build
+    time configuration toggle.
+  + You can build Cairo against a Freetype installation that does
+    not have the FT_Color type.
+  + Cairo tests now build on Solaris 11.4 with GCC 14.
+  + The DirectWrite backend now builds on MINGW 11.
+  + The DirectWrite backend now supports font variations and proper
+    glyph coverage.
+  + Support for Windows 98 has been removed. The minimum
+    requirement for Windows is now Vista.
+- Use tarball in lieu of source service due to freedesktop gitlab
+  migration, will switch back at next release at the latest.
+- Drop b9eed915f9a67380e7ef9d8746656455c43f67e2.patch: Fixed
+  upstream.
+- Add pkgconfig(lzo2) BuildRequires: New optional dependency, build
+  lzo2 support feature. (forwarded request 1253940 from iznogood)</comment>
+    <requestid>1253991</requestid>
+  </revision>
 </revisionlist>

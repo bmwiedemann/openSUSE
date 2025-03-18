@@ -1,7 +1,7 @@
 #
 # spec file for package cairo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,21 @@
 %define build_xcb_backend 1
 
 Name:           cairo
-Version:        1.18.2
+Version:        1.18.4
 Release:        0
 Summary:        Vector Graphics Library with Cross-Device Output Support
 License:        LGPL-2.1-or-later OR MPL-1.1
 Group:          Development/Libraries/C and C++
 URL:            https://cairographics.org
-Source0:        %{name}-%{version}.tar.zst
+### FIXME ### - Switch back to using source service!
+Source:         %{name}-%{version}.tar.xz
+%dnl #Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 
 # PATCH-FIX-UPSTREAM cairo-xlib-endianness.patch fdo#63461 bnc#882951 fcrozat@suse.com -- Fix crash when client and server have different endianness
 Patch0:         cairo-xlib-endianness.patch
 # PATCH-FIX-UPSTREAM cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff alarrosa@suse.com -- Fix segfault in get_bitmap_surface
 Patch1:         cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff
-# PATCH-FIX-UPSTREAM b9eed915f9a67380e7ef9d8746656455c43f67e2.patch -- cff: Don't fail if no local subs. Fix regression when writing PDFs with fonts
-Patch2:         https://gitlab.freedesktop.org/cairo/cairo/-/commit/b9eed915f9a67380e7ef9d8746656455c43f67e2.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
@@ -44,6 +44,7 @@ BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(pixman-1) >= 0.36.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
