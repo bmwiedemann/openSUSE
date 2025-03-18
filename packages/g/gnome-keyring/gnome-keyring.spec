@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-keyring
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-keyring
-Version:        46.2
+Version:        48.0
 Release:        0
 Summary:        GNOME Keyring
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -37,21 +37,19 @@ Patch1000:      gnome-keyring-bsc932232-use-libgcrypt-allocators.patch
 # PATCH-FIX-SLE gnome-keyring-bsc932232-use-non-fips-md5.patch bsc#932232 hpj@suse.com
 Patch1001:      gnome-keyring-bsc932232-use-non-fips-md5.patch
 
-BuildRequires:  automake
 BuildRequires:  ca-certificates
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  libgcrypt-devel >= 1.2.2
 BuildRequires:  libselinux-devel
-BuildRequires:  libtool
-BuildRequires:  openssh
+BuildRequires:  meson >= 1.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gck-1) >= 3.3.4
-BuildRequires:  pkgconfig(gcr-3) >= 3.27.90
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(gcr-base-3) >= 3.27.90
+BuildRequires:  pkgconfig(glib-2.0) >= 2.80.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 Requires:       libgck-modules-gnome-keyring = %{version}
@@ -125,16 +123,12 @@ The PAM module can be used to unlock the keyring on login.
 %endif
 
 %build
-autoreconf -fi
-%configure\
-        --enable-pam \
-        --enable-ssh-agent \
-        --without-libcap-ng \
-        --with-pam-dir=%{_pam_moduledir}
-%make_build
+%meson \
+	%{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # XFCE team wants gnome-keyring to work by default.
 for i in %{buildroot}%{_sysconfdir}/xdg/autostart/*.desktop ; do
@@ -143,7 +137,6 @@ done
 %find_lang %{name}
 %suse_update_desktop_file gnome-keyring-pkcs11
 %suse_update_desktop_file gnome-keyring-secrets
-%suse_update_desktop_file gnome-keyring-ssh
 %fdupes %{buildroot}%{_datadir}
 
 ###
@@ -173,7 +166,7 @@ fi
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc NEWS README
 %{_bindir}/gnome-keyring
 %{_bindir}/gnome-keyring-3
 %{_bindir}/gnome-keyring-daemon

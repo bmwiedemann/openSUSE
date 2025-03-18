@@ -1,31 +1,55 @@
-diff --git a/pam/Makefile.am b/pam/Makefile.am
-index 5c83c00..9b5bcc8 100644
---- a/pam/Makefile.am
-+++ b/pam/Makefile.am
-@@ -72,3 +72,18 @@ test_pam_CFLAGS = $(pam_CFLAGS)
+commit aca880acf4549a348ecb4fc6754ed30366b5b571
+Author: Dominique Leuenberger <dimstar@opensuse.org>
+Date:   Mon Mar 3 16:07:34 2025 +0100
+
+    HACK: Add pam_gnome_keyring manpage
+
+diff --git a/docs/meson.build b/docs/meson.build
+index 8b2e6ab..acd2b7f 100644
+--- a/docs/meson.build
++++ b/docs/meson.build
+@@ -6,6 +6,10 @@ if get_option('manpage')
+     'gnome-keyring.xml',
+   ]
  
- check_PROGRAMS += $(pam_TESTS)
- TESTS += $(pam_TESTS)
++  xml_8_manfiles = [
++    'pam_gnome_keyring.xml',
++  ]
 +
-+# -----------------------------------------------------------------------------
-+# Man page
+   xsltproc = find_program('xsltproc')
+   foreach xml_man : xml_manfiles
+     custom_target('manpage-@0@'.format(xml_man),
+@@ -27,4 +31,25 @@ if get_option('manpage')
+       ]
+     )
+   endforeach
 +
-+man_MANS = pam_gnome_keyring.8
-+
-+if ENABLE_DOC
-+
-+%.8: pam/%.8.xml
-+	@XSLTPROC@ -nonet http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
-+
-+endif
-+
-+BUILT_EXTRA_DIST = $(man_MANS)
-+EXTRA_DIST += pam_gnome_keyring.8.xml
-diff --git a/pam/pam_gnome_keyring.8.xml b/pam/pam_gnome_keyring.8.xml
++  foreach xml_man : xml_8_manfiles
++    custom_target('manpage-@0@'.format(xml_man),
++      input: xml_man,
++      output: '@BASENAME@.8',
++      install: true,
++      install_dir: get_option('mandir') / 'man8',
++      command: [
++        xsltproc,
++        '--nonet',
++        '--stringparam', 'man.output.quietly', '1',
++        '--stringparam', 'funcsynopsis.style', 'ansi',
++        '--stringparam', 'man.th.extra1.suppress', '1',
++        '--stringparam', 'man.authors.section.enabled', '0',
++        '--stringparam', 'man.copyright.section.enabled', '0',
++        '-o', '@OUTPUT@',
++        'http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl',
++        '@INPUT@'
++      ]
++    )
++  endforeach
+ endif
+diff --git a/docs/pam_gnome_keyring.xml b/docs/pam_gnome_keyring.xml
 new file mode 100644
 index 0000000..d4679a4
 --- /dev/null
-+++ b/pam/pam_gnome_keyring.8.xml
++++ b/docs/pam_gnome_keyring.xml
 @@ -0,0 +1,268 @@
 +<?xml version="1.0" encoding='UTF-8'?>
 +<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"

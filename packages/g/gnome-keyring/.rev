@@ -1113,4 +1113,16 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
     <comment></comment>
     <requestid>1187212</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>56eb5551af71218e5d33db54b54b2660</srcmd5>
+    <version>48.0</version>
+    <time>1742315996</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + build: Disable ssh-agent by default (and related fixes).
+  + Updated translations.
+- Drop openssh BuildRequires: no longer needed, as the ssh-agent
+  comes from gcr-ssh-agent. (forwarded request 1254068 from dimstar)</comment>
+    <requestid>1254091</requestid>
+  </revision>
 </revisionlist>
