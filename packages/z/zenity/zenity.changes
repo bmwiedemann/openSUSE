@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 31 17:55:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.1.90 (Unstable):
+  + forms:
+    - Add --add-multiline-entry option for multi-line text entry.
+    - Don't free unowned strings.
+    - Set hexpand to make more consistent with behaviour of Zenity
+      3.x
+  + css: Give textviews a border
+  + colview: Decrease padding to make more consistent with Zenity
+    3.x
+  + util: Fix typo in macro
+  + Disable AdwMessageDialog deprecation warnings for libadwaita >=
+    1.6
+  + test updates
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 31 15:31:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.0.5:
