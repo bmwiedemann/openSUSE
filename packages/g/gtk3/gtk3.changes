@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  6 08:31:53 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.49:
+  + Fix a crash in GtkIMContext
+  + Fix crashes in DND with GtkPlug/GtkSocket
+  + Wayland:
+    - Fix erroneous crossing events, causing menus to malfunction
+    - Support the cursor-shape protocol
+  + X11: Enforce size limits on windows, preventing lockups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Feb  3 13:27:08 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix %filetriggerpostun for icon cache: ensure the icons that have
