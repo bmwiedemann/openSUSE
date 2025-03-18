@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Mar 16 09:30:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Stable version bump.
+
+-------------------------------------------------------------------
+Fri Jan 10 21:49:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + Fixed deprecations
+  + Snap updates
+  + Add keyboard shortcuts Dialog
+  + Code cleanup
+  + Removed preferences dialog
+  + Menu improvements
+  + Fix icon in Scores Dialog
+  + Migrated to GTK4
+  + Fix duplicated line in Scores
+  + Fix deprecated links
+  + Updated application screenshot
+  + Remove GNOME branding
+  + Update metainfo
+  + Use correct icon
+  + Reset positions when board is changed
+  + Updated translations.
+- Switch to source service for tarball/sources.
+- Replace pkgconfig(gtk+-3.0) with pkgconfig(gtk4) BuildRequires
+  following upstreams port.
+- Add desktop-file-utils BuildRequires and check section where we
+  verify the desktop file.
+
+-------------------------------------------------------------------
 Thu Mar 31 11:46:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.32.3:

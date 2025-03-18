@@ -1,7 +1,7 @@
 #
 # spec file for package five-or-more
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           five-or-more
-Version:        3.32.3
+Version:        48.0
 Release:        0
 Summary:        "Five or More" Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/Five_or_more
-Source0:        https://download.gnome.org/sources/five-or-more/3.32/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  libxml2-tools
@@ -35,7 +36,7 @@ BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32
 BuildRequires:  pkgconfig(gmodule-export-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libgnome-games-support-1)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 Recommends:     %{name}-doc
@@ -75,6 +76,9 @@ This package contains the help documentation for Five or More.
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_datadir}
 
+%check
+desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/*.desktop
+
 %files
 %license COPYING
 %doc NEWS
@@ -84,7 +88,8 @@ This package contains the help documentation for Five or More.
 %{_datadir}/glib-2.0/schemas/org.gnome.five-or-more.gschema.xml
 %{_datadir}/icons/hicolor/
 %{_mandir}/man6/%{name}.6%{?ext_man}
-%{_datadir}/metainfo/org.gnome.five-or-more.appdata.xml
+%{_datadir}/metainfo/org.gnome.five-or-more.metainfo.xml
+%{_datadir}/dbus-1/services/org.gnome.five-or-more.service
 
 %files doc
 %doc %{_datadir}/help/C/%{name}/
