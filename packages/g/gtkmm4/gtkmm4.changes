@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jan 27 22:11:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.17.0 (Unstable):
+  + Gdk:
+    - ColorState: Add get_oklab() and get_oklch().
+    - ContentFormats: Add is_empty().
+  + Gtk:
+    - SearchEntry2: Add signal_activate().
+    - ColorDialogButton, DropDown, Expander, FontDialogButton,
+      MenuButton, PasswordEntry, Text: Add signal_activate().
+    - Snapshot: Add and deprecate render_background().
+    - ApplicationWindow: Deprecate unset/set/get_help_overlay().
+    - ShortcutLabel, ShortcutsGroup, ShortcutsSection,
+      ShortcutsShortcut, ShortcutsWindow: Deprecate these classes.
+    - FileDialog: Add open_text_file(), open_text_file_finish(),
+      open_multiple_text_files(),
+      open_multiple_text_files_finish(), save_text_file(),
+      save_text_file_finish().
+    - ListBox: Add set/get/property_tab_behavior().
+    - StringList: Add find().
+    - TextView: Add get_visible_offset().
+  + Build:
+    + Require gtk4 >= 4.17.3.
+    + Require glibmm >= 2.75.0. Actually required since gtkmm
+      4.15.0.
+    + Meson build: If GTKMM_NO_DIST_TESTS is defined, 'meson dist'
+      does not run test programs.
+
+-------------------------------------------------------------------
 Wed Sep 11 06:22:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.16.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package gtkmm4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define _name gtkmm
 
 Name:           gtkmm4
-Version:        4.16.0
+Version:        4.17.0
 Release:        0
 Summary:        C++ Interface for GTK4 (a GUI Library for X)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/gtkmm/4.16/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtkmm/4.17/%{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
@@ -38,9 +38,9 @@ BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairomm-1.16) >= 1.15.4
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.35.5
-BuildRequires:  pkgconfig(giomm-2.68) >= 2.68.0
-BuildRequires:  pkgconfig(glibmm-2.68)
-BuildRequires:  pkgconfig(gtk4) >= 4.15.5
+BuildRequires:  pkgconfig(giomm-2.68) >= 2.75.0
+BuildRequires:  pkgconfig(glibmm-2.68) >= 2.75.0
+BuildRequires:  pkgconfig(gtk4) >= 4.17.3
 BuildRequires:  pkgconfig(pangomm-2.48) >= 2.50.0
 
 %description

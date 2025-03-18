@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>1204690</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6d7fddc513529d6b8b44f8294078fb0d</srcmd5>
+    <version>4.17.0</version>
+    <time>1742315870</time>
+    <user>anag+factory</user>
+    <comment>Early Staging of GNOME 48.rc</comment>
+    <requestid>1251345</requestid>
+  </revision>
 </revisionlist>
