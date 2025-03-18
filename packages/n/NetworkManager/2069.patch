@@ -1,0 +1,67 @@
+From 5bc38c6c9363e12890cbcad5abe1c557d01030c0 Mon Sep 17 00:00:00 2001
+From: Jordan Petridis <jpetridis@gnome.org>
+Date: Wed, 13 Nov 2024 00:41:43 +0200
+Subject: [PATCH] generate-docs-nm-settings-docs-gir: Support
+ libgirepository-2.0
+
+pygobject 3.52 has switched [1] to using libgirepository-2.0 which
+comes from glib itself now, rather than the 1.0 which came from
+gobject-introspection.
+
+This means that it fails to load the incompatible "GIRepository 2.0"
+and thus must be ported to 3.0 (which is provided by
+libgirepository-2.0).
+
+Migration guide is here [2]
+
+[1]: https://gitlab.gnome.org/GNOME/pygobject/-/merge_requests/320
+[2]: https://docs.gtk.org/girepository/migrating-gi.html
+
+This commit adds suppport for importing with
+"gi.require_version("GIRepository", "3.0") and falling
+back to the existing "GIRepository 2.0" if not found.
+---
+ tools/generate-docs-nm-settings-docs-gir.py | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/tools/generate-docs-nm-settings-docs-gir.py b/tools/generate-docs-nm-settings-docs-gir.py
+index e438d87ad40..dea80625b98 100755
+--- a/tools/generate-docs-nm-settings-docs-gir.py
++++ b/tools/generate-docs-nm-settings-docs-gir.py
+@@ -10,14 +10,22 @@ import os
+ import gi
+ import re
+ 
+-gi.require_version("GIRepository", "2.0")
+-from gi.repository import GIRepository
++try:
++    gi.require_version("GIRepository", "3.0")
++    from gi.repository import GIRepository
++
++    repo = GIRepository.Repository()
++except ValueError:
++    gi.require_version("GIRepository", "2.0")
++    from gi.repository import GIRepository
++
++    repo = GIRepository.Repository
+ 
+ try:
+     libs = os.environ["LD_LIBRARY_PATH"].split(":")
+     libs.reverse()
+     for lib in libs:
+-        GIRepository.Repository.prepend_library_path(lib)
++        repo.prepend_library_path(lib)
+ except AttributeError:
+     # An old GI version, that has no prepend_library_path
+     # It's alright, it probably interprets LD_LIBRARY_PATH
+@@ -386,6 +394,6 @@ if __name__ == "__main__":
+ 
+     if args.lib_path:
+         for lib in args.lib_path:
+-            GIRepository.Repository.prepend_library_path(lib)
++            repo.prepend_library_path(lib)
+ 
+     main(args.gir, args.output, args.target)
+-- 
+GitLab
+

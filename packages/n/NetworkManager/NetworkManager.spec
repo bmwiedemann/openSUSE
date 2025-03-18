@@ -64,7 +64,7 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.50.3
+Version:        1.52.0
 Release:        0
 Summary:        Standard Linux network configuration tool suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -95,6 +95,8 @@ Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 Patch8:         python3.6-in-sle.patch
 # PATCH-FIX-SLE NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch bsc#1225498, glfd#NetworkManager/NetworkManager#1587 -- manager: don't renew dhcp lease when software devices' MAC is empty
 Patch9:         NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch
+# PATCH-FIX-UPSTREAM
+Patch10:        https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2069.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -318,6 +320,7 @@ This package is intended to be installed by default for server deployments.
 %patch -P 8 -p1
 %patch -P 9 -p1
 %endif
+%patch -P 10 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:
@@ -348,7 +351,6 @@ export PYTHON=%{_bindir}/python3
     -Dnetconfig=/sbin/netconfig \
 %endif
     -Dconfig_dhcp_default=internal \
-    -Ddhcpcanon=no \
     -Ddhcpcd=no \
     -Ddhclient=%{_sbindir}/dhclient \
     -Ddocs=true \
