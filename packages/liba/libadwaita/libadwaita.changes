@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Mar 14 21:42:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.0:
+  + Build:  Specify --doc-format for GIR data
+  + AdwDialog: Fix :current-breakpoint notifications
+  + AdwPreferencesDialog/Window:
+    - Exclude hidden pages from search too
+    - Fix the search filter expression
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  2 22:03:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.rc:
+  + Fix build failures on win32
+  + Bump minimum GTK and GLib versions
+  + Adaptive preview:
+    - Fix screenshotting GtkGraphicsOffload
+    - Add a missing translators comment
+  + AdwAboutDialog/Window: Use system monospace font for `<code>`
+    in release notes
+  + AdwDialog: Fix parent window shortcuts propagating into dialogs
+  + AdwPreferencesDialog: Hide pages with visible=false
+  + AdwStyleManager: Document how to handle font names
+  + Stylesheet:
+    - Fix popovers in non-composited environments
+    - Fix GtkPaned drag area
+  + Updated translations.
+- Remove static file now built.
+
+-------------------------------------------------------------------
+Fri Jan 31 19:15:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.beta:
+  + AdwApplicationWindow, AdwWindow:
+    - Add a public property for toggling adaptive preview
+    - Open adaptive preview with Ctrl+Shift+M
+  + AdwBreakpoint: Fix to_string() with locales using comma as
+    decimal separator
+  + AdwComboRow: Fix very short strings not being displayed
+  + AdwDialog:
+    - Fix ::closed emission with window-backed dialogs
+    - Fix a focus-related crash
+  + AdwOverlaySplitView, AdwFlap: Remove an unreachable check
+  + AdwPreferencesDialog: Document navigation.pop action
+  + AdwTabBox, AdwTabGrid:
+    - Fix scrolling to newly appearing tabs
+    - Fix a copy-paste error
+  + AdwToast: Use a lighter opaque style
+  + Adaptive Preview:
+    - Add an outline around the device
+    - Round bezel sizes
+    - Fix bezels with locales using comma as decimal separator
+    - Prevent secondary sidebar style leak into the previewed app
+  + Demo:
+    - Allow opening adaptive preview from menu
+    - Inherit page background color when duplicating tabs
+  + Docs: Switch to Adwaita Sans/Mono 11pt for doc screenshots
+  + Inspector: Provide a list of windows instead of a single button
+    for adaptive preview
+  + Stylesheet:
+    - Add --document-font-family/size and
+      --monospace-font-family/size
+    - Use --monospace-font-family/size for .monospace
+    - Fix disabled style for raised/suggested/destructive
+      menubuttons in toolbars
+    - Drop GtkSourceView support for textview.inline as it didn't
+      work anyway
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 31 19:15:53 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.alpha:
+  + Add AdwToggleGroup and AdwInlineViewSwitcher
+  + Add AdwWrapBox and AdwWrapLayout
+  + Add adaptive preview in inspector
+  + Use EASE easing for timed animations instead of EASE_OUT_CUBIC
+  + Don't warn when setting child in bin-like widgets to itself
+  + Add doc guidelines to HACKING
+  + Various changes all over the source tree
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 31 19:15:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.4:

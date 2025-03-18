@@ -17,7 +17,7 @@
 
 
 Name:           libadwaita
-Version:        1.6.4
+Version:        1.7.0
 Release:        0
 Summary:        Building blocks for modern GNOME applications
 License:        LGPL-2.1-or-later
@@ -25,7 +25,7 @@ URL:            https://gitlab.gnome.org/GNOME/libadwaita
 Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
-BuildRequires:  meson >= 0.59.0
+BuildRequires:  meson >= 0.63.0
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
 BuildRequires:  vala
@@ -89,6 +89,8 @@ This package provides the GObject Introspection bindings for libadwaita.
 %meson_install
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}
+# Nuke static file now built.
+find %{buildroot} -type f -name "*.a" -delete -print
 
 %{ldconfig_scriptlets -n libadwaita-1-0}
 
@@ -98,7 +100,6 @@ This package provides the GObject Introspection bindings for libadwaita.
 %license COPYING
 %doc README.md
 %{_libdir}/libadwaita-1.so.0
-%{_libdir}/libadwaita-1-internal.so.0
 
 %files -n typelib-1_0-Adw-1
 %{_libdir}/girepository-1.0/Adw-1.typelib
@@ -109,7 +110,6 @@ This package provides the GObject Introspection bindings for libadwaita.
 %files devel
 %{_includedir}/libadwaita-1/
 %{_libdir}/libadwaita-1.so
-%{_libdir}/libadwaita-1-internal.so
 %{_libdir}/pkgconfig/libadwaita-1.pc
 %{_datadir}/gir-1.0/Adw-1.gir
 %dir %{_datadir}/vala/vapi

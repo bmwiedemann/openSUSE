@@ -393,4 +393,12 @@
     <comment></comment>
     <requestid>1242896</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6af08b58cfd94a61ad10efa84181652d</srcmd5>
+    <version>1.7.0</version>
+    <time>1742315912</time>
+    <user>anag+factory</user>
+    <comment>New stable branch release (forwarded request 1253257 from iznogood)</comment>
+    <requestid>1253376</requestid>
+  </revision>
 </revisionlist>
