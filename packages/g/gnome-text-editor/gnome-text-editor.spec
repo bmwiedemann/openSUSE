@@ -17,28 +17,22 @@
 
 
 Name:           gnome-text-editor
-Version:        47.3
+Version:        48.1
 Release:        0
 Summary:        GNOME Text Editor
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-text-editor
 Source:         %{name}-%{version}.tar.zst
 
-BuildRequires:  appstream-glib
-BuildRequires:  desktop-file-utils
+BuildSystem:    meson
+BuildOption:    -Ddevelopment=false
+
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.59.1
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(editorconfig)
-BuildRequires:  pkgconfig(enchant-2) >= 2.2.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.73
-BuildRequires:  pkgconfig(gtk4) >= 4.12
-BuildRequires:  pkgconfig(gtksourceview-5) >= 5.10.0
-BuildRequires:  pkgconfig(icu-uc)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.alpha
-BuildRequires:  pkgconfig(libspelling-1) >= 0.3.0
+
+# Optional test dependencies
+BuildRequires:  desktop-file-utils
 
 %description
 Text Editor is a simple text editor that focus on session
@@ -48,23 +42,12 @@ you've never saved it to a file.
 
 %lang_package
 
-%prep
-%autosetup -p1
+%generate_buildrequires
+%meson_buildrequires
 
-%build
-%meson \
-	-Ddevelopment=false \
-	%{nil}
-%meson_build
-
-%install
-%meson_install
-
+%install -a
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
-
-%check
-%meson_test
 
 %files
 %license COPYING
@@ -74,15 +57,8 @@ you've never saved it to a file.
 %{_datadir}/applications/org.gnome.TextEditor.desktop
 %{_datadir}/dbus-1/services/org.gnome.TextEditor.service
 %{_datadir}/glib-2.0/schemas/org.gnome.TextEditor.gschema.xml
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/styles
-%{_datadir}/%{name}/styles/builder-dark.xml
-%{_datadir}/%{name}/styles/builder.xml
-%{_datadir}/%{name}/styles/peninsula-dark.xml
-%{_datadir}/%{name}/styles/peninsula.xml
-%{_datadir}/%{name}/styles/printing.xml
 %{_datadir}/icons/hicolor/*/*/*.svg
-%{_datadir}/metainfo/org.gnome.TextEditor.appdata.xml
+%{_datadir}/metainfo/org.gnome.TextEditor.metainfo.xml
 
 %files lang -f %{name}.lang
 
