@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 # gh#python-pendulum/pendulum#844
-%define skip_python313 1
+
 Name:           python-pendulum
 Version:        3.0.0
 Release:        0
