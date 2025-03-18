@@ -2,7 +2,7 @@
 # spec file for package libidn2
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 
 %define lname	libidn2-0
-%{!?make_build: %define make_build make %{?_smp_mflags}}
 Name:           libidn2
-Version:        2.3.7
+Version:        2.3.8
 Release:        0
 Summary:        Support for Internationalized Domain Names (IDN) based on IDNA2008
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later

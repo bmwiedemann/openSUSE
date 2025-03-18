@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar  9 19:44:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.3.8:
+  * Unicode 15.1.0 table updates
+  * Now U+19DA is DISALLOWED again
+  * The idn2 tool now binds the "gnulib" domain for translations
+
+-------------------------------------------------------------------
 Mon Feb  5 19:15:02 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.3.7:
