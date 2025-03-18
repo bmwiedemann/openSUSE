@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb 24 14:23:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.57.2 (Unstable):
+  + onedrive:
+    - Use presentation id as host to adapt to the change in GOA.
+    - Fix incorrect include path for msgraph header.
+
+-------------------------------------------------------------------
+Mon Feb 24 14:23:45 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.57.1 (Unstable):
+  + nfs: Support libnfs 6.
+  + onedrive: Support Sharepoint drives.
+  + trash/udisks: Port from g_unix_mount_ to g_unix_mount_entry.
+  + afp/mtp/nfs/sftp/smb: Add edit mode implementation.
+  + fuse: Use edit mode when neither O_TRUNC, nor O_APPEND is used.
+  + afp/mtp/nfs/smb: Various output stream related fixes.
+  + udisks2: Update volume when setting/unsetting mount.
+  + Updated translations.
+- Replace pkgconfig(msgraph-0.1) BuildRequires with
+  pkgconfig(msgraph-1), following upstreams changes.
+
+-------------------------------------------------------------------
 Mon Feb 24 14:23:44 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add README.SUSE about security concerns in gvfs (bsc#1205607)

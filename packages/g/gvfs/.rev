@@ -1583,4 +1583,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1248339</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>035218a0f59b0d2ee896eb77141cc3f7</srcmd5>
+    <version>1.57.2</version>
+    <time>1742315872</time>
+    <user>anag+factory</user>
+    <comment>Early Staging of GNOME 48.rc</comment>
+    <requestid>1251347</requestid>
+  </revision>
 </revisionlist>

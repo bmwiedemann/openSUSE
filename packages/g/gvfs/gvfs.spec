@@ -19,7 +19,7 @@
 %bcond_without  cdda
 %bcond_without  onedrive
 Name:           gvfs
-Version:        1.56.1
+Version:        1.57.2
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        GPL-3.0-only AND LGPL-2.0-or-later
@@ -48,7 +48,7 @@ BuildRequires:  pkgconfig(fuse3) >= 3.0.0
 BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.70.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.83.0
 BuildRequires:  pkgconfig(goa-1.0) >= 3.17.1
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.0
@@ -67,7 +67,7 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.21
 BuildRequires:  pkgconfig(libxml-2.0)
 %if %{with onedrive}
-BuildRequires:  pkgconfig(msgraph-0.1)
+BuildRequires:  pkgconfig(msgraph-1) >= 0.3.0
 %endif
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
 BuildRequires:  pkgconfig(smbclient)
