@@ -54,4 +54,27 @@
   * Running go mod tidy</comment>
     <requestid>1186911</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>be76d728efad8b8d752deb5558b2c2c5</srcmd5>
+    <version>0.52.1</version>
+    <time>1742316107</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.52.1:
+  * Make resctrl optional/pluggable
+- update to 0.52.0:
+  * bump containerd related deps: api v1.8.0; errdefs v1.0.0;
+    ttrpc v1.2.6
+  * chore: Update Prometheus libraries
+  * ci: golangci-lint bump, fixes, and cleanups
+  * bump runc to v1.2.4
+  * Add Pressure Stall Information Metrics
+  * Switch to opencontainers/cgroups repository (includes update
+    from golang 1.22 to 1.24)
+  * Bump to newer opencontainers/image-spec @ v1.1.1
+- update to 0.49.2:
+  * Cp fix test
+  * Revert &quot;reduce_logs_for_kubelet_use_crio&quot;
+- add CVE-2025-22868.patch (CVE-2025-22868, bsc#1239291)</comment>
+    <requestid>1253945</requestid>
+  </revision>
 </revisionlist>
