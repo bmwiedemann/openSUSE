@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uharfbuzz
-Version:        0.45.0
+Version:        0.46.0
 Release:        0
 Summary:        Streamlined Cython bindings for the harfbuzz shaping engine
 License:        Apache-2.0
 URL:            https://github.com/trufont/uharfbuzz
 Source:         https://files.pythonhosted.org/packages/source/u/uharfbuzz/uharfbuzz-%{version}.tar.gz
-BuildRequires:  %{python_module cython >= 0.28.1}
+BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module pytest}
