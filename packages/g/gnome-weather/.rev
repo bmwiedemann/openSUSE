@@ -424,4 +424,12 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205467</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>dfca7d4e7a63e733190f9b6e168dd001</srcmd5>
+    <version>48.0</version>
+    <time>1742316049</time>
+    <user>anag+factory</user>
+    <comment>New stable branch release (forwarded request 1253150 from iznogood)</comment>
+    <requestid>1253369</requestid>
+  </revision>
 </revisionlist>

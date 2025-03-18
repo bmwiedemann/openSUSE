@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-weather
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define full_name org.gnome.Weather
 Name:           gnome-weather
-Version:        47.0
+Version:        48.0
 Release:        0
 Summary:        Weather App for GNOME
 License:        GPL-2.0-or-later
