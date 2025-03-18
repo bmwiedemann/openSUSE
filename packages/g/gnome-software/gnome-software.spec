@@ -16,11 +16,11 @@
 #
 
 
-%define gs_plugin_api 21
+%define gs_plugin_api 22
 %bcond_with profiling
 
 Name:           gnome-software
-Version:        47.4
+Version:        48.0
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
@@ -105,7 +105,6 @@ the GNOME software store.
 %meson \
 	-D tests=false \
 	-D malcontent=true \
-	-D soup2=false \
 	-D sysprof=%{?with_profiling:enabled}%{!?with_profiling:disabled} \
 	-D opensuse-distro-upgrade=true \
 	-D hardcoded_curated=true \

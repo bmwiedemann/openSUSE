@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Mar 14 12:42:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Correctly show update detail text not provided in markdown.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 28 14:16:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Minor interface improvements on the updates page
+  + Various minor performance improvements
+  + Improve error handling for app launches and distribution
+    upgrades
+  + Fix a crash on the app review dialog
+  + Fix version checks preventing some firmware updates when
+    historical updates are also listed
+  + Fix a crash when copying error details
+  + Minor interface improvements to search
+  + Improvements to flatpak permissions checking for D-Bus
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 31 17:52:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Support installing flatpaks via a flatpak+https: link.
+  + Fix notifying about outdated updates when in power saver mode
+    or offline.
+  + Prioritise verified apps in source list.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 14 17:51:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + Fix downloads of firmware updates
+  + Fix the release process
+  + Updated translations.
+- Stop passing soup2=false to meson setup, no longer recognized nor
+  needed.
+- Bump gs_plugin_api to 22 following upstream changes.
+
+-------------------------------------------------------------------
 Tue Jan 14 17:50:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.4:
