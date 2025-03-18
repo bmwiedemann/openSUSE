@@ -539,4 +539,23 @@
     <comment></comment>
     <requestid>1239877</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>25a50ac1600d817ddfe7ebf56e8de827</srcmd5>
+    <version>48.0</version>
+    <time>1742315933</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + Turn some exceptions into exiting with a warning
+  + Various CI and build tweaks
+  + Fix gettext string not being parsed correctly
+  + Port the project code from C to the Rust language
+  + Make systemd an optional dependency
+  + Fix a compiling issue for non-gnu C toolchain
+  + Updated translations.
+- Add clang and cargo-packaging BuildRequires and new vendor
+  tarball following upstreams port to rust.
+- Pass buildtype=release to meson setup, ensure we build optimized
+  release and not devel. (forwarded request 1253489 from iznogood)</comment>
+    <requestid>1253724</requestid>
+  </revision>
 </revisionlist>

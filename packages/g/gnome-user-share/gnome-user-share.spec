@@ -17,14 +17,17 @@
 
 
 Name:           gnome-user-share
-Version:        47.2
+Version:        48.0
 Release:        0
 Summary:        GNOME user file sharing
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
 URL:            https://gitlab.gnome.org/GNOME/gnome-user-share
 Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 
+BuildRequires:  cargo-packaging
+BuildRequires:  clang
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
@@ -50,12 +53,13 @@ up in the Network location in GNOME.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a1
 
 %build
 %meson \
-	-Dmodules_path=%{_libdir}/apache2/ \
+	--buildtype=release \
 	--libexecdir=%{_libexecdir}/gnome-user-share \
+	-Dmodules_path=%{_libdir}/apache2/ \
 	-Dsystemduserunitdir=%{_userunitdir} \
 	%{nil}
 %meson_build
