@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 18 09:22:45 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.10.0:
+  * refactor: rollback metadata support until next release
+  * fix boo#1239733 chore(deps): bump github.com/expr-lang/expr from 1.16.9 to 1.17.0 (#985)
+  * test: add MDX case with old configuration
+  * fix: meta -> Meta
+  * feat: add support for frontmatter
+  * chore(deps): bump golang.org/x/net from 0.34.0 to 0.36.0 (#982)
+  * refactor: fix golangci-lint
+  * fix: support non-expressions in `{...}`
+  * refactor: clean up cmd execution
+  * chore: install mdx2vast in CI
+  * feat: add built-in support for MDX
+
+-------------------------------------------------------------------
+Sat Mar 01 23:45:53 UTC 2025  - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.9.6:
+  * fix: support filters through strings or files
+
+-------------------------------------------------------------------
 Thu Feb 06 07:52:50 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.9.5:

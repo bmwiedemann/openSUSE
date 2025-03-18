@@ -829,4 +829,26 @@
   * Update to BuildRequires: golang(API) &gt;= 1.23 matching go.mod (forwarded request 1243568 from jfkw)</comment>
     <requestid>1243572</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>5f666cda73cf066561931ef179523012</srcmd5>
+    <version>3.10.0</version>
+    <time>1742316149</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.10.0:
+  * refactor: rollback metadata support until next release
+  * fix boo#1239733 chore(deps): bump github.com/expr-lang/expr from 1.16.9 to 1.17.0 (#985)
+  * test: add MDX case with old configuration
+  * fix: meta -&gt; Meta
+  * feat: add support for frontmatter
+  * chore(deps): bump golang.org/x/net from 0.34.0 to 0.36.0 (#982)
+  * refactor: fix golangci-lint
+  * fix: support non-expressions in `{...}`
+  * refactor: clean up cmd execution
+  * chore: install mdx2vast in CI
+  * feat: add built-in support for MDX
+
+- Update to version 3.9.6:
+  * fix: support filters through strings or files (forwarded request 1254142 from jfkw)</comment>
+    <requestid>1254153</requestid>
+  </revision>
 </revisionlist>
