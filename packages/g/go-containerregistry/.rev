@@ -140,4 +140,12 @@
   * deps: bump docker dep</comment>
     <requestid>1253057</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ece6aef3aa9caff5a2a35ad5c9ccf23b</srcmd5>
+    <version>0.20.3</version>
+    <time>1742316105</time>
+    <user>anag+factory</user>
+    <comment>- add CVE-2025-22868.patch (bsc#1239277, CVE-2025-22868)</comment>
+    <requestid>1253941</requestid>
+  </revision>
 </revisionlist>

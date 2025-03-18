@@ -26,6 +26,7 @@ Group:          System/Management
 URL:            https://github.com/google/go-containerregistry
 Source:         https://github.com/google/go-containerregistry/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Patch1:         CVE-2025-22868.patch
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.23
 Conflicts:      distribution-registry
@@ -134,6 +135,9 @@ zsh command line completion support for gcrane.
 for i in crane gcrane registry; do
     go build -mod=vendor -buildmode=pie -trimpath ./cmd/$i
 done
+
+%check
+go test ./cmd/crane ./cmd/gcrane
 
 %install
 find -name crane
