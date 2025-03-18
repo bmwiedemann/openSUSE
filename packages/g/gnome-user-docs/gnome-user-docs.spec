@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-user-docs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-user-docs
-Version:        47.2
+Version:        47.5
 Release:        0
 Summary:        GNOME Desktop Documentation
 License:        CC-BY-3.0

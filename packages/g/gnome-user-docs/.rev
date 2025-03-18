@@ -811,4 +811,12 @@ New stable release</comment>
   + Updated translations. (forwarded request 1225740 from iznogood)</comment>
     <requestid>1225813</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>faace270b4d99b4294a2233870f20344</srcmd5>
+    <version>47.5</version>
+    <time>1742315929</time>
+    <user>anag+factory</user>
+    <comment>New stable rel (forwarded request 1253475 from iznogood)</comment>
+    <requestid>1253719</requestid>
+  </revision>
 </revisionlist>
