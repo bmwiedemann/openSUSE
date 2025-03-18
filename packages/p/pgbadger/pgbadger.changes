@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Mon Mar 17 22:20:37 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 13.1
+  This is a maintenance release of pgBadger that fixes issues
+  reported by users since last release and adds some new features:
+
+  - Add new report about vacuum throughput with a graph about
+    vacuum per table that consume the more CPU. The table output
+    reports I/O timing read and write per table as well as the CPU
+    time elapsed on the table. Thanks to Ales Zeleny for the
+    feature request. This patch also adds frozen pages and tuples
+    to the Vacuums per Table report.
+  - Add --no-fork option for debugging purpose to not fork
+    processes at all. Thanks to Ales Zeleny for the feature
+    request.
+  - Add millisecond to the raw csv output. Thanks to Henrietta
+    Dombrovskaya for the feature request.
+  - Add log filename to sample reports when multiple file are
+    processed. Thanks to Adrien Nayrat for the feature request.
+
+  Here is the complete list of changes and acknowledgments:
+
+  - Fix bind parameters parsing. Thanks to Thomas Kotzian for the
+    patch
+  - Apply query filter on multi-lines queries. Thanks to Benjamin
+    Jacobs for the patch
+  - Update test result for log filename storage changes
+  - Fix ERROR vs LOG message level in json output. Thanks to
+    Philippe Viegas for the report.
+  - Remove import of tmpdir not exported method from File::Temp.
+    Thanks to kmoradha for the report.
+
+-------------------------------------------------------------------
+Sun Dec  8 08:36:50 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 13.0
+  This is a major release of pgBadger that fixes issues reported by
+  users since last release and adds some new features:
+
+  - Add two new option to be able to redefined inbound of query and
+    session histogram. Thanks to JosefMachytkaNetApp for the
+    feature request.
+       --histogram-query VAL   : use custom inbound for query
+                                 times histogram.
+                                 Default inbound in milliseconds:
+                                 0,1,5,10,25,50,100,500,1000,10000
+       --histogram-session VAL : use custom inbound for session
+                                 times histogram.
+                                 Default inbound in milliseconds:
+                                 0,500,1000,30000,60000,600000,
+                                 1800000,3600000,28800000
+  - Add support of auto_explain plan for csv and json log formats.
+    Thanks to zxwsbg and to Alexander Rumyantsev for the report.
+  - Add three LOG message that was not reported as events:
+    unexpected EOF, incomplete startup packet and detected deadlock
+    while waiting for. Thanks to dottle for the report.
+
+  Backward compatibility issues:
+  - Change the way LOG level events reported in the Events reports
+    are stored. Some of them was still reported and counted as
+    errors instead as LOG level entries. The fix is to stored and
+    report them as EVENTLOG to differentiate them from queries.
+    This change introduce a backward compatibility break when
+    pgbadger is used in incremental mode. You will just have the
+    double behavior during the week of the upgrade. Thanks to Matti
+    Linnanvuori for the report.
+
+  Bug fixes:
+  - Fix non reported queries generating the most cancellation due
+    to statement_timeout.
+  - Update regression tests
+  - Fix formatting of explain plan when extracted from csv log
+    format.
+  - Fix jsonlog missing autovacuum data reports: Average Autovacuum
+    Duration, Tuples removed per table and vacuums by hour in
+    autovacuum activity report. Thanks to Ales Zeleny for the
+    patch.
+  - Fix orphan line not associated to the time consuming bind
+    queries. Thanks to Henrietta Dombrovskaya for the report. Fix
+    use of uninitialized value in pattern match. Thanks to Junior
+    Dias for the patch.
+  - Apply option --csv-separator to raw export to CSV. Default
+    separator is semicolon (;). Thanks to Henrietta Dombrovskaya
+    for the feature request.
+  - Raw csv output: do not add double quote to parameters and
+    application name if they are empty.
+  - Add double quotes when queries have a semi colon in raw csv
+    output. Thanks to Henrietta Dombrovskaya for the report.
+
+-------------------------------------------------------------------
 Mon Feb 26 11:23:36 UTC 2024 - Emiliano Langella <emiliano.langella@suse.com>
 
 - Disabling cronjobs on any non-systemd distribution. 
