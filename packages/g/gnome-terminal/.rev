@@ -2539,4 +2539,13 @@
     <comment></comment>
     <requestid>1249810</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>07552086750a740ffdd189020351fd30</srcmd5>
+    <version>3.56.0</version>
+    <time>1742315922</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.56.0:
+  * Updated translations. (forwarded request 1253411 from iznogood)</comment>
+    <requestid>1253706</requestid>
+  </revision>
 </revisionlist>
