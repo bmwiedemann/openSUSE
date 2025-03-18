@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>1251799</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eecb22aece56d7b272f01714a9a11e9a</srcmd5>
+    <version>48.0.1</version>
+    <time>1742316060</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0.1:
+  + Updated translations. (forwarded request 1253459 from iznogood)</comment>
+    <requestid>1253707</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           gnome-console
-Version:        48.rc
+Version:        48.0.1
 Release:        0
 Summary:        A minimal terminal for GNOME
 License:        GPL-3.0-only
