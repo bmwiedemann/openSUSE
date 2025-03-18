@@ -57,6 +57,11 @@ Fri Mar 14 06:10:13 UTC 2025 - pgajdos@suse.com
         Fixed bug GH-17745 (zlib extension incorrectly handles object arguments).
         Fix memory leak when encoding check fails.
         Fix zlib support for large files.
+- fixes: CVE-2025-1217 [bsc#1239664]
+         CVE-2024-11235 [bsc#1239666]
+         CVE-2025-1734 [bsc#1239668]
+         CVE-2025-1861 [bsc#1239669]
+         CVE-2025-1736 [bsc#1239670]
 
 -------------------------------------------------------------------
 Fri Feb 14 07:11:17 UTC 2025 - pgajdos@suse.com

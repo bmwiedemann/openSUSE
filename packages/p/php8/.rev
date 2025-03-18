@@ -1172,4 +1172,16 @@
         Fixed bug GH-17868 (Cannot allocate memory with tracing JIT).</comment>
     <requestid>1253013</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>09e89e9a6294abf8ca37acbc973260ed</srcmd5>
+    <version>8.3.19</version>
+    <time>1742316023</time>
+    <user>anag+factory</user>
+    <comment>- fixes: CVE-2025-1217 [bsc#1239664]
+         CVE-2024-11235 [bsc#1239666]
+         CVE-2025-1734 [bsc#1239668]
+         CVE-2025-1861 [bsc#1239669]
+         CVE-2025-1736 [bsc#1239670]</comment>
+    <requestid>1254084</requestid>
+  </revision>
 </revisionlist>
