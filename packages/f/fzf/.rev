@@ -936,4 +936,31 @@ varienvironment able.
     <comment></comment>
     <requestid>1246091</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>46d4170a2ab6a41d003f8bc6ee63aa4b</srcmd5>
+    <version>0.60.3</version>
+    <time>1742316111</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.60.3:
+  * [fish] Enable multiple history commands insertion (#4280) (@bitraid)
+  * [walker] Append '/' to directory entries on MSYS2 (#4281)
+  * Trim trailing whitespaces after processing ANSI sequences (#4282)
+  * Remove temp files before `become` when using `--tmux` option (#4283)
+  * Fix condition for using item numlines cache (#4285)
+  * Make `--accept-nth` compatible with `--select-1` (#4287)
+  * Increase the query length limit from 300 to 1000 (#4292)
+  * [windows] Prevent fzf from consuming user input while paused (#4260)
+- Updates from 0.60.2:
+  * Template for `--with-nth` and `--accept-nth` now supports `{n }`
+    which evaluates to the zero-based ordinal index of the item
+  * Fixed a regression that caused the last field in the &quot;nth&quot;
+    expression to be trimmed when a regular expression delimiter is used
+  * Fixed 'jump' action when the pointer is an empty string
+- Updates from 0.60.1:
+  * Built-in walker now prints directory entries with a trailing slash
+  * Fixed a bug causing unexpected behavior with [fzf-tab](https
+    ://github.com/Aloxaf/fzf-tab). Please upgrade if you use it.
+</comment>
+    <requestid>1253955</requestid>
+  </revision>
 </revisionlist>
