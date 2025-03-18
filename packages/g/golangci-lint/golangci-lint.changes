@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 17 21:11:58 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.64.8:
+  * fix: check version of the configuration (#5564)
+  * docs: update documentation assets (#5527)
+  * docs: update GitHub Action assets (#5528)
+
+-------------------------------------------------------------------
 Fri Mar 14 19:11:59 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.64.7:

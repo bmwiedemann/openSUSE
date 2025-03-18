@@ -638,4 +638,15 @@
   * docs: update GitHub Action assets (#5494) (forwarded request 1253267 from jfkw)</comment>
     <requestid>1253268</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>06eb87f7e5fc0b15b777cb514ac58b2d</srcmd5>
+    <version>1.64.8</version>
+    <time>1742316108</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.64.8:
+  * fix: check version of the configuration (#5564)
+  * docs: update documentation assets (#5527)
+  * docs: update GitHub Action assets (#5528) (forwarded request 1253950 from jfkw)</comment>
+    <requestid>1253951</requestid>
+  </revision>
 </revisionlist>
