@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 17 08:51:26 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Disable sgemmt and dgemmt tests in the test suite on power
+  when gcc-13 is used. It is known (bsc#1239134) that some
+  of these tests fail on this architecture when OpenBLAS
+  is being build with the said compiler version ever since
+  these tests were introduced.
+  With this will essentially restore the situation of the
+  version prior to the adition of these tests (0.3.26) where
+  one was unaware of the problem.
+  This is only a temporary measure and will be removed once
+  the issue with gcc-13 has been resolved.
+- Remove: Link-library-with-z-noexecstack.patch
+  since `-Wa,--noexecstack -Wl,-z,noexecstack` are global options,
+  now.
+
+-------------------------------------------------------------------
 Fri Mar 14 09:24:18 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Use upstream patch for bsc#1239134 which is more friendly to the
@@ -97,7 +114,7 @@ Wed Mar  5 15:47:13 UTC 2025 - Egbert Eich <eich@suse.com>
 -------------------------------------------------------------------
 Wed Mar  5 14:17:26 UTC 2025 - Egbert Eich <eich@suse.com>
 
-- Set gcc versions for ppc64le
+- Set gcc versions for ppc64le (bsc#1239702)
   * on SLE-15-SP6: v13
   * on SLE-15-SP7: v14
 

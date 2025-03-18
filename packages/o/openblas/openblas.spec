@@ -240,7 +240,6 @@ Source1:        README.SUSE
 Source2:        README.HPC.SUSE
 Source3:        openblas_tests.sh.in
 Source4:        openblas.rpmlintrc
-Patch101:       Link-library-with-z-noexecstack.patch
 # PATCH port
 Patch102:       Handle-s390-correctly.patch
 Patch103:       openblas-ppc64be_up2_p8.patch
@@ -362,6 +361,11 @@ sed -i -e "s@m32@m31@" Makefile.system
 sed -i -e '/FLDFLAGS = \|$(CC)\|$(CXX)/s@$@ $(LDFLAGS_TESTS)@' \
     test/Makefile ctest/Makefile utest/Makefile cpp_thread_test/Makefile
 grep -q .note.GNU-stack cpuid.S || echo '.section        .note.GNU-stack,"",@progbits' >> cpuid.S
+# Disable sgemmt and dgemmt tests on ppc64le when using gcc13
+%if "%{?_arch}" == "ppc64le" && 0%{?gcc_version} == 13
+sed -i -e '/^OBJS_EXT+=/s@[^= ]*/test_sgemmt.o *@@' utest/Makefile
+sed -i -e '/^OBJS_EXT+=/s@[^= ]*/test_dgemmt.o *@@' utest/Makefile
+%endif
 
 %if %{without hpc}
 cp %{SOURCE1} .

@@ -871,4 +871,26 @@ Currently, openSUSE:Factory:Staging:E.
   Restore-the-non-vectorized-code-from-before-PR4880-for-POWER8.patch (forwarded request 1253105 from eeich)</comment>
     <requestid>1253107</requestid>
   </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>88739883b82a5946e59b6b4d06317b46</srcmd5>
+    <version>0.3.29</version>
+    <time>1742315849</time>
+    <user>anag+factory</user>
+    <comment>- Disable sgemmt and dgemmt tests in the test suite on power
+  when gcc-13 is used. It is known (bsc#1239134) that some
+  of these tests fail on this architecture when OpenBLAS
+  is being build with the said compiler version ever since
+  these tests were introduced.
+  With this will essentially restore the situation of the
+  version prior to the adition of these tests (0.3.26) where
+  one was unaware of the problem.
+  This is only a temporary measure and will be removed once
+  the issue with gcc-13 has been resolved.
+- Remove: Link-library-with-z-noexecstack.patch
+  since `-Wa,--noexecstack -Wl,-z,noexecstack` are global options,
+  now.
+
+- Set gcc versions for ppc64le (bsc#1239702) (forwarded request 1253917 from eeich)</comment>
+    <requestid>1253922</requestid>
+  </revision>
 </revisionlist>
