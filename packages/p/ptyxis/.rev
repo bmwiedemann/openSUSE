@@ -95,4 +95,21 @@
     <comment></comment>
     <requestid>1246015</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8e68a1bb2f53bdb037061f915946abad</srcmd5>
+    <version>48.0</version>
+    <time>1742316058</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + Reset tab grid size when leaving maximized/fullscreen
+  + Reset RLIMIT_NOFILE from ptyxis-agent subprocess child setup
+  + Fix release of fullscreen controls under no mouse movement
+  + Be more defensive against potential file-system operation
+    failures
+  + Tweak CSS styling for padding/margin to both reduce border
+    padding and increase grip area for selections
+  + Add a generated UUID to suffix to systemd unit scopes
+  + Updated translations. (forwarded request 1253406 from iznogood)</comment>
+    <requestid>1253703</requestid>
+  </revision>
 </revisionlist>
