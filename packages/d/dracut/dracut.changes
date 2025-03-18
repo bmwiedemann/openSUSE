@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 17 10:31:20 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.707.g7b7df177:
+  * fix(dracut.spec): move znet to the main package (bsc#1239632)
+  * feat(lsinitrd.sh): print stored dracut cmdline
+  * feat(lsinitrd.sh): enable unpacking files from squash-root.img
+  * feat(systemd-integritysetup): add remote-integritysetup.target
+  * feat(dmsquash-live): add support for rd.live.overlay.nouserconfirmprompt
+  * fix(systemd-veritysetup): install dm-verity kernel module
+  * fix(dracut-install): install compressed blobs that match wildcard fwpath
+  * fix(dracut): avoid mktemp collisions with find filter
+  * fix(systemd-sysext): install new initrd-specific units
+  * fix(systemd): systemd dlopens libbpf
+  * fix(35network-manager): install nftables kernel modules needed
+  * fix(35network-manager): install nft binary during module installation
+  * perf(systemd): remove crypto API kernel modules
+  * fix(systemd): include dmi-sysfs
+  * feat(dracut-init.sh): give --force-add precedence over --omit
+
+-------------------------------------------------------------------
 Tue Mar 04 13:54:15 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.688.g840b9751:

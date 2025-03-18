@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        059+suse.688.g840b9751
+Version:        059+suse.707.g7b7df177
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -280,8 +280,8 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %ifarch s390 s390x
 # RH-specific s390 modules, we take another approach
 %{dracutlibdir}/modules.d/95dasd
+%{dracutlibdir}/modules.d/95dasd_mod
 %{dracutlibdir}/modules.d/95zfcp
-%{dracutlibdir}/modules.d/95znet
 %endif
 
 %files
@@ -430,7 +430,6 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %endif
 %{dracutlibdir}/modules.d/95cifs
 %ifarch s390 s390x
-%{dracutlibdir}/modules.d/95dasd_mod
 %{dracutlibdir}/modules.d/95dcssblk
 %endif
 %{dracutlibdir}/modules.d/95debug
@@ -449,6 +448,9 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/modules.d/95udev-rules
 %{dracutlibdir}/modules.d/95virtfs
 %{dracutlibdir}/modules.d/95virtiofs
+%ifarch s390 s390x
+%{dracutlibdir}/modules.d/95znet
+%endif
 %{dracutlibdir}/modules.d/97biosdevname
 %ifarch %ix86
 %exclude %{dracutlibdir}/modules.d/96securityfs

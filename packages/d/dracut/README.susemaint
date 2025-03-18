@@ -396,3 +396,16 @@ f30cf46e fix(iscsi): attempt iSCSI login before all interfaces are up
 20cc20d2 fix(90kernel-modules): explicitly include xhci-pci-renesas
 3d5bab81 fix(iscsi): don't require network setup for qedi
 fcde3355 fix(iscsi): make sure services are shut down when switching root
+a0d92d39 feat(dracut-init.sh): give --force-add precedence over --omit
+817dd612 fix(systemd): include dmi-sysfs
+fa45d844 perf(systemd): remove crypto API kernel modules
+a6264d17 fix(35network-manager): install nft binary during module installation
+fca71490 fix(35network-manager): install nftables kernel modules needed
+659c2681 fix(systemd): systemd dlopens libbpf
+68a09b43 fix(systemd-sysext): install new initrd-specific units
+9b822c31 fix(dracut): avoid mktemp collisions with find filter
+57911e76 fix(dracut-install): install compressed blobs that match wildcard fwpath
+f3fffa1e fix(systemd-veritysetup): install dm-verity kernel module
+6ac1033c feat(dmsquash-live): add support for rd.live.overlay.nouserconfirmprompt
+9b12ef98 feat(lsinitrd.sh): enable unpacking files from squash-root.img
+d10455ad feat(lsinitrd.sh): print stored dracut cmdline
