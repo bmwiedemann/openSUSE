@@ -465,4 +465,12 @@
   + Updated translations.</comment>
     <requestid>1205555</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>09cf918c2bf7937acd8a30c259c91c48</srcmd5>
+    <version>48.0</version>
+    <time>1742315906</time>
+    <user>anag+factory</user>
+    <comment>New stable branch release (forwarded request 1253145 from iznogood)</comment>
+    <requestid>1253368</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package baobab
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define glib2_version 2.44
 
 Name:           baobab
-Version:        47.0
+Version:        48.0
 Release:        0
 Summary:        Disk Usage Analyzer
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/DiskUsageAnalyzer
 Source0:        %{name}-%{version}.tar.zst
 
+BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
@@ -65,6 +66,10 @@ also provides a full graphical treemap window for each selected folder.
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
+%check
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.gnome.baobab.metainfo.xml
+desktop-file-validate %{buildroot}/%{_datadir}/applications/org.gnome.baobab.desktop
+
 %files
 %license COPYING
 %doc AUTHORS NEWS README.md
@@ -74,7 +79,7 @@ also provides a full graphical treemap window for each selected folder.
 %{_datadir}/dbus-1/services/org.gnome.baobab.service
 %{_datadir}/glib-2.0/schemas/org.gnome.baobab.gschema.xml
 %{_datadir}/icons/hicolor/
-%{_datadir}/metainfo/org.gnome.baobab.appdata.xml
+%{_datadir}/metainfo/org.gnome.baobab.metainfo.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files lang -f %{name}.lang
