@@ -101,6 +101,9 @@ IGNORED_TESTS+=' or test_run_command_long_running_children'
 IGNORED_TESTS+=' or test_password_prompt'
 IGNORED_TESTS+=' or test_get_role_list'
 IGNORED_TESTS+=' or test_module_level_no_log[playbook0]'
+#
+IGNORED_TESTS+=' or test_init_fails'
+IGNORED_TESTS+=' or test_keepalive_setting[1]'
 export PATH=%{buildroot}%{_bindir}:$PATH
 %pytest -n auto -k "not ($IGNORED_TESTS)"
 

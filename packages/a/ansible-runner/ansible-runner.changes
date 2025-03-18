@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 17 18:40:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- ignore two more flaky tests
+
+-------------------------------------------------------------------
 Tue Dec 10 14:15:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - ignore another test that fails now (possibly with
