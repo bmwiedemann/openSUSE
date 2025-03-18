@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sun Mar 16 17:25:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Reversals: Replace uselocale with Glib gettext variant
+  + Bugfixes:
+    - Generate thumbnails by order in view
+    - Try more icons before using generic fallback
+    - Focus filename entry in save mode by default
+    - Fix tree view and outdated file info crashes introduced in
+      48.rc
+    - Use colored icon for filesystem root properties
+    - Set search popover row heights
+  + Cleanups:
+    - Various performance enhancements around sorting, hidden files
+      and image decoding
+    - Add build summary
+  + Fix shell search result order
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  3 10:32:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.rc:
+  + Enhancements:
+    - Run code formatting in parallel
+    - Rework CI image job to freedesktop template
+    - Rework and speedup adding of files to view
+    - Add basic unit tests for files view
+    - Load thumbnail info separate from other file infos
+  + Reversals: Revert port of properties dialog to AdwDialog due to
+    outstanding issues
+  + Bugfixes:
+    - Fix app chooser widget sizing
+    - Fix free space calculation for archive extraction
+    - Fix shell sesrch result order
+    - Fix floating bar style when unfocused
+  + Cleanups:
+    - Rework view switching code of window-slot
+    - Use AdwSpinner in floating bar
+  + Replace uselocale with Glib gettext variant
+  + Fix opening the wrong directory when launching an instance
+  + Tweak the floating bar background
+  + Various minor UI fixes:
+    - dynamically handle hierarchy changes in the path bar
+    - Still offer rectangular selection when pressing ctrl and
+      shift
+  + Lots of cleanup
+  + Fix occasional stuck grabs when rubberband selecting
+  + Display more info in the progress dialog when preparing
+  + Don't warn about mime-type mismatches if the handler is the
+    same
+  + Add close all windows to spatial window menu
+  + Fixed help buttons in the preferences dialog
+  + Extension system for emblem, property page, menu item
+  + Add a context menu to the tree side pane.
+  + Focus the next item after delete in list view
+  + Improved the gutter-on-the-right problem.
+  + Prefer existing windows from the command line in
+    open-in-new-window view.
+  + Updated translations.
+- Drop pkgconfig(gail-3.0) BuildRequires: Not used nor needed.
+
+-------------------------------------------------------------------
+Wed Feb 12 21:15:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + Enhancements:
+    - Improve directory loading performance
+    - Use AdwDialog for list view column chooser and properties
+      dialog
+    - Change tab behavior for the sidebar
+    - Create about dialog from appdata
+    - Port various dialogs to AdwAlertDialog
+    - Keep mount monitor around for caching in gvfs to work
+    - Adjust to localsearch changes
+    - Hide Trash banner when empty
+    - Ellipsize sidebar labels in the middle
+    - Add a CONTRIBUTING file
+    - Allow removing bookmarks from pathbar
+    - Various UI tweaks and label changes
+    - Various speedups
+  + Bugfixes:
+    - Fix unintended grid relayouting on thumbnail loading
+    - Fix double a11y presentation of the filename in grid view
+    - Keep CI running
+    - Fix query editor translation
+    - Hide empty extensions list in properties
+    - Fix NULL dereference with extensions
+  + Cleanups:
+    - Improve grid selection implementation
+    - Avoid setting up unnecessary directory monitors
+    - Replace setlocale hack with uselocale
+    - Stop setting invisible menu icons
+  + Updated translations.
+- Replace deprecated update-desktop-files with desktop-file-utils
+  BuildRequires, and drop suse-update-desktop macros.
+
+-------------------------------------------------------------------
 Tue Feb  4 09:53:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.2:

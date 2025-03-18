@@ -1715,4 +1715,27 @@ Hence, recommended to be added to 12.3</comment>
     <comment></comment>
     <requestid>1243153</requestid>
   </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>fc8ab696fd7f6ff1742c3761e0788abf</srcmd5>
+    <version>48.0</version>
+    <time>1742315938</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + Reversals: Replace uselocale with Glib gettext variant
+  + Bugfixes:
+    - Generate thumbnails by order in view
+    - Try more icons before using generic fallback
+    - Focus filename entry in save mode by default
+    - Fix tree view and outdated file info crashes introduced in
+      48.rc
+    - Use colored icon for filesystem root properties
+    - Set search popover row heights
+  + Cleanups:
+    - Various performance enhancements around sorting, hidden files
+      and image decoding
+    - Add build summary
+  + Fix shell search result order
+  + Updated translations. (forwarded request 1253534 from iznogood)</comment>
+    <requestid>1253728</requestid>
+  </revision>
 </revisionlist>

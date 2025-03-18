@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        47.2
+Version:        48.0
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -29,15 +29,14 @@ Source2:        set_trusted.sh
 
 # needed for directory ownership
 BuildRequires:  dbus-1
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  (python3-dataclasses if python3-base < 3.7)
 BuildRequires:  pkgconfig(cloudproviders)
-BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gexiv2) >= 0.14.0
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.79.0
@@ -128,8 +127,6 @@ This package contains development files for nautilus.
 
 %install
 %meson_install
-%suse_update_desktop_file org.gnome.Nautilus
-%suse_update_desktop_file nautilus-autorun-software
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}
 %if 0%{?sle_version}
@@ -149,14 +146,11 @@ install -m0755 -D %{SOURCE2} %{buildroot}%{_bindir}/set_trusted.sh
 %{_bindir}/nautilus-autorun-software
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.freedesktop.FileManager1.service
-%{_datadir}/dbus-1/services/org.gnome.Nautilus.Tracker3.Miner.Extract.service
-%{_datadir}/dbus-1/services/org.gnome.Nautilus.Tracker3.Miner.Files.service
 %{_datadir}/dbus-1/services/org.gnome.Nautilus.service
 %{_datadir}/glib-2.0/schemas/org.gnome.nautilus.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Nautilus*
 %{_datadir}/metainfo/org.gnome.Nautilus.metainfo.xml
 %{_datadir}/%{name}/
-%{_datadir}/localsearch3/domain-ontologies/org.gnome.Nautilus.domain.rule
 %{_mandir}/man1/nautilus*.1%{?ext_man}
 %if 0%{?sle_version}
 %{_sysconfdir}/skel/.config/autostart
