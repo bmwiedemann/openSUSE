@@ -64,10 +64,6 @@ A fast and easy-to-use status bar for tilling WM
 %prep
 %autosetup -p1
 
-%if 0%{?sle_version} == 150500 && 0%{?is_opensuse} || 0%{?sle_version} == 150600 && 0%{?is_opensuse}
-    %autopatch -p1
-%endif
-
 %build
 %cmake
 
