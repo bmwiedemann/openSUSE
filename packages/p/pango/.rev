@@ -1259,4 +1259,12 @@ pango-view: When running GraphicsMagick 'gm display' command: Failed to execute 
     - Prefer application fonts even if they are older (forwarded request 1238795 from iznogood)</comment>
     <requestid>1239209</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>edbbce61379863c866dcb6306b1a344e</srcmd5>
+    <version>1.56.3</version>
+    <time>1742315935</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1253499 from iznogood)</comment>
+    <requestid>1253725</requestid>
+  </revision>
 </revisionlist>
