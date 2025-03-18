@@ -2163,4 +2163,13 @@
     <comment>Fix dependency generation for loongarch64.</comment>
     <requestid>1229007</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>240b5348951a92a15cc2fe30380a728f</srcmd5>
+    <version>1.84.0</version>
+    <time>1742315918</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.84.0:
+  + No changes, stable version bump only. (forwarded request 1253354 from iznogood)</comment>
+    <requestid>1253382</requestid>
+  </revision>
 </revisionlist>

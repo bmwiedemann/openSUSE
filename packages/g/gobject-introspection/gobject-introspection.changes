@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Mar 15 14:06:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.84.0:
+  + No changes, stable version bump only.
+
+-------------------------------------------------------------------
+Sat Mar  8 20:49:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.83.4:
+  + Revert support for "static" virtual functions.
+
+-------------------------------------------------------------------
+Sat Mar  1 19:58:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.83.2:
+  + Improve GType inspection helper
+  + Parse C11's _Alignas
+  + Respect custom Python binary
+  + Fix build on the latest Windows SDK
+  + Small performance improvement when looking up a signal
+    information
+  + Use standard imports in the JavaScript templates for
+    g-ir-doctool
+  + Ensure that enumeration members can be marked as deprecated
+  + Add more test coverage for structured union types
+  + Add an option to skip tests when building
+  + Fix various MSVC compatibility issues
+  + Add support for "static" virtual functions
+  + Allow specifying the format of the documentation inside doc
+    blocks
+  + Handle C99's _Complex
+  + Consider UCRT64 and CLANG64 as mingw32 compilers
+  + Handle static NSString syntax
+  + Add instance parameter checks to strict validation
+  + Documentation improvements
+  + Add documentation to the RelaxNG schema
+  + tests: Fix compatibility with Python 3.5
+  + gir: Include C header in cairo gir file
+  + tests: Add functions using flat struct arrays
+
+-------------------------------------------------------------------
 Fri Dec  6 09:18:48 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - Fix dependency generation for loongarch64.
