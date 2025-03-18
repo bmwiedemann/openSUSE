@@ -1,7 +1,7 @@
 #
 # spec file for package libgit2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -18,15 +18,26 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%define pname libgit2
+
+%if "%flavor" == "experimental"
+%define psuffix -%{flavor}
+%bcond_without expt_sha256
+%else
+%bcond_with expt_sha256
+%endif
+
 %define sover 1_9
-Name:           libgit2
+Name:           %{pname}%{?psuffix}
 Version:        1.9.0
 Release:        0
 Summary:        C git library
 License:        GPL-2.0-only WITH GCC-exception-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://libgit2.github.com/
-Source0:        https://github.com/libgit2/libgit2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/libgit2/libgit2/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 Source1:        libgit2-rpmlintrc
 BuildRequires:  cmake >= 3.5.1
 BuildRequires:  pkgconfig
@@ -69,7 +80,7 @@ Group:          Development/Tools/Version Control
 This package contains a git cli based on libgit2.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{pname}-%{version}
 find examples -type f -name ".gitignore" -print -delete
 
 %build
@@ -77,11 +88,17 @@ find examples -type f -name ".gitignore" -print -delete
 	-DUSE_SSH:BOOL=ON \
 	-DREGEX_BACKEND=pcre2 \
 	-DENABLE_REPRODUCIBLE_BUILDS:BOOL=ON \
+	-DEXPERIMENTAL_SHA256:BOOL=%{?with_expt_sha256:ON}%{!?with_expt_sha256:OFF} \
 	%{nil}
 %cmake_build
 
 %install
 %cmake_install
+
+# Move cmake modules to the right dir
+%if "%{name}" != "%{pname}"
+mv %{buildroot}%{_prefix}/lib/cmake/%{pname} %{buildroot}%{_prefix}/lib/cmake/%{name}
+%endif
 
 %ldconfig_scriptlets -n %{name}-%{sover}
 
@@ -95,9 +112,9 @@ find examples -type f -name ".gitignore" -print -delete
 %doc examples
 %{_libdir}/%{name}.so
 %{_includedir}/git2*
-%{_libdir}/pkgconfig/libgit2.pc
+%{_libdir}/pkgconfig/%{name}.pc
 %dir %{_prefix}/lib/cmake
-%{_prefix}/lib/cmake/libgit2
+%{_prefix}/lib/cmake/%{name}/
 
 %files tools
 %license COPYING

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 28 13:30:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Pass -DEXPERIMENTAL_SHA256=ON to cmake to enable sha256
+  integration (already being used by opensuse gitea) in a separate
+  multibuild flavour. This provides downstream libs (like pygit2)
+  to build against the experimental flavour, should they want to.
+
+-------------------------------------------------------------------
 Mon Jan 13 04:45:40 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.9.0
