@@ -1805,4 +1805,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1242895</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>fd81970d05bd636227e4825814975c7e</srcmd5>
+    <version>48.0</version>
+    <time>1742316035</time>
+    <user>anag+factory</user>
+    <comment>New stable branch release (forwarded request 1252803 from iznogood)</comment>
+    <requestid>1252845</requestid>
+  </revision>
 </revisionlist>

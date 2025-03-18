@@ -17,7 +17,7 @@
 
 
 Name:           epiphany
-Version:        47.3.1
+Version:        48.0
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
@@ -33,7 +33,6 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo) >= 1.2
 BuildRequires:  pkgconfig(gck-2)
 BuildRequires:  pkgconfig(gcr-4) >= 3.9.0
-BuildRequires:  pkgconfig(gdk-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36.5
 BuildRequires:  pkgconfig(gio-2.0) >= 2.74.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.74.0
