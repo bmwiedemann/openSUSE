@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Mar 17 09:33:08 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Rename the tarball to %{name}-%{version}.tar.gz
+
+-------------------------------------------------------------------
+Fri Mar 14 10:06:22 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- 0001-Use-CMAKE_INSTALL_LIBDIR-when-installing-cmake-files.patch
+  * Make cmake files to be installed in correct libdir 
+
+-------------------------------------------------------------------
+Fri Mar 14 08:52:18 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Initial creation of the package at version v0.9.5 
