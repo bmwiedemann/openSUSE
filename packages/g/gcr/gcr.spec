@@ -17,7 +17,7 @@
 
 
 Name:           gcr
-Version:        4.3.1
+Version:        4.3.91
 Release:        0
 # FIXME: Verify if the requires in typelib-1_0-Gcr-4 is still correct and required (see bgo#725501).
 Summary:        Library for Crypto UI related tasks
