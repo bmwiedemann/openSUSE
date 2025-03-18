@@ -1,7 +1,7 @@
-Index: glib-2.75.4/glib/gkeyfile.c
+Index: glib-2.83.4/glib/gkeyfile.c
 ===================================================================
---- glib-2.75.4.orig/glib/gkeyfile.c
-+++ glib-2.75.4/glib/gkeyfile.c
+--- glib-2.83.4.orig/glib/gkeyfile.c
++++ glib-2.83.4/glib/gkeyfile.c
 @@ -520,6 +520,7 @@ struct _GKeyFile
    gboolean checked_locales;  /* TRUE if @locales has been initialised */
    gchar **locales;  /* (nullable) */
@@ -31,7 +31,7 @@ Index: glib-2.75.4/glib/gkeyfile.c
    tmp = key_file->groups;
    while (tmp != NULL)
      {
-@@ -817,6 +825,39 @@ find_file_in_data_dirs (const gchar   *f
+@@ -820,6 +828,39 @@ find_file_in_data_dirs (const gchar   *f
    return fd;
  }
  
@@ -71,7 +71,7 @@ Index: glib-2.75.4/glib/gkeyfile.c
  static gboolean
  g_key_file_load_from_fd (GKeyFile       *key_file,
  			 gint            fd,
-@@ -898,6 +939,9 @@ g_key_file_load_from_fd (GKeyFile
+@@ -901,6 +942,9 @@ g_key_file_load_from_fd (GKeyFile
                                                      G_KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN,
                                                      NULL);
  
@@ -81,7 +81,7 @@ Index: glib-2.75.4/glib/gkeyfile.c
    return TRUE;
  }
  
-@@ -954,6 +998,8 @@ g_key_file_load_from_file (GKeyFile
+@@ -957,6 +1001,8 @@ g_key_file_load_from_file (GKeyFile
        return FALSE;
      }
  
@@ -90,7 +90,7 @@ Index: glib-2.75.4/glib/gkeyfile.c
    return TRUE;
  }
  
-@@ -1015,6 +1061,9 @@ g_key_file_load_from_data (GKeyFile
+@@ -1019,6 +1065,9 @@ g_key_file_load_from_data (GKeyFile
                                                      G_KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN,
                                                      NULL);
  
@@ -100,7 +100,7 @@ Index: glib-2.75.4/glib/gkeyfile.c
    return TRUE;
  }
  
-@@ -1119,6 +1168,9 @@ g_key_file_load_from_dirs (GKeyFile
+@@ -1125,6 +1174,9 @@ g_key_file_load_from_dirs (GKeyFile
          }
      }
  
@@ -110,7 +110,7 @@ Index: glib-2.75.4/glib/gkeyfile.c
    if (found_file && full_path)
      *full_path = output_path;
    else
-@@ -2326,14 +2378,40 @@ g_key_file_get_locale_string (GKeyFile
+@@ -2344,14 +2396,40 @@ g_key_file_get_locale_string (GKeyFile
          {
            gboolean codeset_set;
            const gchar *translated;
@@ -156,10 +156,10 @@ Index: glib-2.75.4/glib/gkeyfile.c
  
            g_free (orig_value);
  
-Index: glib-2.75.4/glib/gkeyfile.h
+Index: glib-2.83.4/glib/gkeyfile.h
 ===================================================================
---- glib-2.75.4.orig/glib/gkeyfile.h
-+++ glib-2.75.4/glib/gkeyfile.h
+--- glib-2.83.4.orig/glib/gkeyfile.h
++++ glib-2.83.4/glib/gkeyfile.h
 @@ -322,7 +322,7 @@ gboolean  g_key_file_remove_group
  #define G_KEY_FILE_DESKTOP_KEY_URL              "URL"
  #define G_KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE "DBusActivatable"

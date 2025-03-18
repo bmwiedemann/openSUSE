@@ -1,7 +1,7 @@
-Index: glib-2.75.4/glib/gkeyfile.c
+Index: glib-2.83.4/glib/gkeyfile.c
 ===================================================================
---- glib-2.75.4.orig/glib/gkeyfile.c
-+++ glib-2.75.4/glib/gkeyfile.c
+--- glib-2.83.4.orig/glib/gkeyfile.c
++++ glib-2.83.4/glib/gkeyfile.c
 @@ -519,6 +519,7 @@ struct _GKeyFile
  
    gboolean checked_locales;  /* TRUE if @locales has been initialised */
@@ -31,7 +31,7 @@ Index: glib-2.75.4/glib/gkeyfile.c
    tmp = key_file->groups;
    while (tmp != NULL)
      {
-@@ -885,6 +893,11 @@ g_key_file_load_from_fd (GKeyFile
+@@ -888,6 +896,11 @@ g_key_file_load_from_fd (GKeyFile
        return FALSE;
      }
  
@@ -43,7 +43,7 @@ Index: glib-2.75.4/glib/gkeyfile.c
    return TRUE;
  }
  
-@@ -997,6 +1010,11 @@ g_key_file_load_from_data (GKeyFile
+@@ -1001,6 +1014,11 @@ g_key_file_load_from_data (GKeyFile
        return FALSE;
      }
  
@@ -55,7 +55,7 @@ Index: glib-2.75.4/glib/gkeyfile.c
    return TRUE;
  }
  
-@@ -2246,6 +2264,8 @@ g_key_file_get_locale_string (GKeyFile
+@@ -2261,6 +2279,8 @@ g_key_file_get_locale_string (GKeyFile
    GError *key_file_error;
    gchar **languages;
    gboolean free_languages = FALSE;
@@ -64,7 +64,7 @@ Index: glib-2.75.4/glib/gkeyfile.c
    gint i;
  
    g_return_val_if_fail (key_file != NULL, NULL);
-@@ -2267,6 +2287,23 @@ g_key_file_get_locale_string (GKeyFile
+@@ -2282,6 +2302,23 @@ g_key_file_get_locale_string (GKeyFile
        free_languages = FALSE;
      }
    
@@ -87,8 +87,8 @@ Index: glib-2.75.4/glib/gkeyfile.c
 +
    for (i = 0; languages[i]; i++)
      {
-       candidate_key = g_strdup_printf ("%s[%s]", key, languages[i]);
-@@ -2280,6 +2317,39 @@ g_key_file_get_locale_string (GKeyFile
+       if (g_strcmp0 (languages[i], "C") == 0)
+@@ -2298,6 +2335,39 @@ g_key_file_get_locale_string (GKeyFile
  	break;
     }
  
@@ -128,10 +128,10 @@ Index: glib-2.75.4/glib/gkeyfile.c
    /* Fallback to untranslated key
     */
    if (!translated_value)
-Index: glib-2.75.4/glib/gkeyfile.h
+Index: glib-2.83.4/glib/gkeyfile.h
 ===================================================================
---- glib-2.75.4.orig/glib/gkeyfile.h
-+++ glib-2.75.4/glib/gkeyfile.h
+--- glib-2.83.4.orig/glib/gkeyfile.h
++++ glib-2.83.4/glib/gkeyfile.h
 @@ -322,6 +322,7 @@ gboolean  g_key_file_remove_group
  #define G_KEY_FILE_DESKTOP_KEY_URL              "URL"
  #define G_KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE "DBusActivatable"

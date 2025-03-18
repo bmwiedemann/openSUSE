@@ -37,7 +37,7 @@
 %define libgthread libgthread-%{libver}
 %define libgirepository libgirepository-%{libver}
 Name:           glib2%{psuffix}
-Version:        2.82.5
+Version:        2.84.0
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
@@ -70,7 +70,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libselinux-devel
 BuildRequires:  m4
-BuildRequires:  meson >= 0.60.0
+BuildRequires:  meson >= 1.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.5
 BuildRequires:  python3-docutils

@@ -1,8 +1,8 @@
-diff --git a/gio/gdbus-2.0/codegen/codegen.py b/gio/gdbus-2.0/codegen/codegen.py
-index 2e8ef8e2..772dad77 100644
---- a/gio/gdbus-2.0/codegen/codegen.py
-+++ b/gio/gdbus-2.0/codegen/codegen.py
-@@ -98,8 +98,7 @@ class HeaderCodeGenerator:
+Index: glib-2.83.4/gio/gdbus-2.0/codegen/codegen.py
+===================================================================
+--- glib-2.83.4.orig/gio/gdbus-2.0/codegen/codegen.py
++++ glib-2.83.4/gio/gdbus-2.0/codegen/codegen.py
+@@ -100,8 +100,7 @@ class HeaderCodeGenerator:
      # ----------------------------------------------------------------------------------------------------
  
      def generate_header_preamble(self):
@@ -12,7 +12,7 @@ index 2e8ef8e2..772dad77 100644
          self.outfile.write("\n")
  
          if self.use_pragma:
-@@ -1043,8 +1042,7 @@ class InterfaceInfoHeaderCodeGenerator:
+@@ -1045,8 +1044,7 @@ class InterfaceInfoHeaderCodeGenerator:
      # ----------------------------------------------------------------------------------------------------
  
      def generate_header_preamble(self):
@@ -22,7 +22,7 @@ index 2e8ef8e2..772dad77 100644
          self.outfile.write("\n")
  
          if self.use_pragma:
-@@ -1115,8 +1113,7 @@ class InterfaceInfoBodyCodeGenerator:
+@@ -1117,8 +1115,7 @@ class InterfaceInfoBodyCodeGenerator:
      # ----------------------------------------------------------------------------------------------------
  
      def generate_body_preamble(self):
@@ -32,7 +32,7 @@ index 2e8ef8e2..772dad77 100644
  
          if self.symbol_decoration_define is not None:
              self.outfile.write("\n")
-@@ -1469,7 +1466,7 @@ class CodeGenerator:
+@@ -1471,7 +1468,7 @@ class CodeGenerator:
  
      def generate_body_preamble(self):
          basenames = ", ".join(self.input_files_basenames)

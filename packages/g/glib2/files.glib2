@@ -171,5 +171,6 @@
 %license LICENSES/LGPL-2.1-or-later.txt
 %{_libexecdir}/installed-tests
 %attr(0755 - -) %{_libexecdir}/installed-tests/glib/taptestrunner.py
+%attr(0755 - -) %{_libexecdir}/installed-tests/glib/testprogramrunner.py
 %attr(0755 - -) %{_libexecdir}/installed-tests/glib/x-content/unix-software/autorun.sh
 %{_datadir}/installed-tests
