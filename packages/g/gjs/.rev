@@ -1808,4 +1808,14 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1216798</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>591c282d06ed275f102fba5f3028ceaf</srcmd5>
+    <version>1.84.1</version>
+    <time>1742315987</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.84.1:
+  + tests: Prevent failures when GTK4/DISPLAY is missing
+  + testWarnings: run gc wrapper test only under Gtk4 (forwarded request 1253983 from iznogood)</comment>
+    <requestid>1253993</requestid>
+  </revision>
 </revisionlist>
