@@ -253,4 +253,12 @@
     <comment></comment>
     <requestid>1203598</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ee91f4a8d6ee61adac6db64d3f3b4e81</srcmd5>
+    <version>48.0</version>
+    <time>1742315930</time>
+    <user>anag+factory</user>
+    <comment>New stable rel (forwarded request 1253478 from iznogood)</comment>
+    <requestid>1253721</requestid>
+  </revision>
 </revisionlist>

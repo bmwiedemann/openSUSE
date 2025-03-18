@@ -1,7 +1,7 @@
 #
 # spec file for package lightsoff
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,21 @@
 
 
 Name:           lightsoff
-Version:        46.0
+Version:        48.0
 Release:        0
 Summary:        Lights Out Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Lightsoff
 Source0:        %{name}-%{version}.tar.zst
+BuildSystem:    meson
 
+BuildRequires:  AppStream
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gettext-devel >= 0.19.8
+BuildRequires:  itstool
 BuildRequires:  meson
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.22.0
-BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
-BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
-BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 Obsoletes:      %{name}-doc <= 3.28.0
 
 %description
@@ -46,15 +41,11 @@ adjacent tiles.
 
 %lang_package
 
-%prep
-%autosetup
+%generate_buildrequires
+%meson_buildrequires
 
-%build
-%meson
-%meson_build
+%install -a
 
-%install
-%meson_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
@@ -63,12 +54,11 @@ adjacent tiles.
 %doc NEWS
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
-%{_datadir}/%{name}/
 %{_datadir}/applications/org.gnome.LightsOff.desktop
 %{_datadir}/dbus-1/services/org.gnome.LightsOff.service
 %{_datadir}/glib-2.0/schemas/org.gnome.LightsOff.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.LightsOff*
-%{_datadir}/metainfo/org.gnome.LightsOff.appdata.xml
+%{_datadir}/metainfo/org.gnome.LightsOff.metainfo.xml
 %{_mandir}/man6/lightsoff.6%{?ext_man}
 
 %files lang -f %{name}.lang
