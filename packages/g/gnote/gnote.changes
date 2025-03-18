@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar 16 20:23:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.beta:
+  + New Features: Add actions bar to notes list
+  + Fixes:
+    - Fix underline action not working reliably
+    - Fix fixed width action not working reliably
+    - Better layout for dialogs
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb  3 13:06:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.alpha:
+  + Allow to reorder tabs in main window
+  + Add settings highlight-background-color and
+    highlight-foreground-color
+  + Make notebooks list also have header
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jan  6 08:32:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.2:
