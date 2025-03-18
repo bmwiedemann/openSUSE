@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 18 12:03:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.36.2
+  * Build: Restore missing documentation and tests in sdist
+- from version 1.36.1
+  * Publish PyPI releases using GitHub Actions workflows
+- from version 1.36.0
+  * Add support for Python 3.13, drop support for Python 3.8
+  * Rule ``key-ordering``: add ``ignored-keys`` option
+  * Rule ``quoted-strings``: fix ``only-when-needed`` and escaped special chars
+  * Fix TTY-related tests on Python 3.14
+  * Docs: fix import of ``yamllint.config`` rather than ``yamllint``
+
+-------------------------------------------------------------------
 Sat Mar 16 14:41:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.35.1:
