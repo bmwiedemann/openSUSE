@@ -1,4 +1,213 @@
 -------------------------------------------------------------------
+Mon Mar  3 17:31:18 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.17.1:
+  * build(deps): bump docker/setup-qemu-action from 3.5.0 to 3.6.0 (#1093)
+  * build(deps): bump docker/setup-buildx-action from 3.9.0 to 3.10.0
+  * build(deps): bump docker/build-push-action from 6.14.0 to 6.15.0
+  * build(deps): bump docker/setup-qemu-action from 3.4.0 to 3.5.0
+  * build(deps): bump docker/metadata-action from 5.6.1 to 5.7.0
+  * build(deps): bump actions/upload-artifact from 4.6.0 to 4.6.1
+  * prepare 1.17.1 release
+  * Patch updates (#1082)
+  * build(deps): bump ossf/scorecard-action from 2.4.0 to 2.4.1
+  * build(deps): bump github/codeql-action from 3.28.9 to 3.28.10
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump docker/build-push-action from 6.13.0 to 6.14.0
+  * build(deps): bump step-security/harden-runner from 2.10.4 to 2.11.0
+  * build(deps): bump alpine from 3.21.2 to 3.21.3
+  * build(deps): bump github/codeql-action from 3.28.8 to 3.28.9
+  * build(deps): bump docker/setup-buildx-action from 3.8.0 to 3.9.0
+  * build(deps): bump docker/setup-qemu-action from 3.3.0 to 3.4.0
+  * build(deps): bump lycheeverse/lychee-action from 2.2.0 to 2.3.0
+  * build(deps): bump github/codeql-action from 3.28.7 to 3.28.8
+  * build(deps): bump github.com/spf13/pflag from 1.0.5 to 1.0.6
+  * build(deps): bump github/codeql-action from 3.28.6 to 3.28.7
+  * build(deps): bump github/codeql-action from 3.28.5 to 3.28.6
+  * build(deps): bump github/codeql-action from 3.28.4 to 3.28.5
+  * build(deps): bump docker/build-push-action from 6.12.0 to 6.13.0
+  * build(deps): bump github/codeql-action from 3.28.2 to 3.28.4
+  * build(deps): bump actions/setup-go from 5.2.0 to 5.3.0
+  * build(deps): bump github/codeql-action from 3.28.1 to 3.28.2
+  * build(deps): bump actions/stale from 9.0.0 to 9.1.0
+  * build(deps): bump step-security/harden-runner from 2.10.3 to 2.10.4
+  * build(deps): bump github.com/prometheus/common from 0.61.0 to 0.62.0
+- Packaging improvements:
+  * Rebase patch systemctl-path.patch
+  * Temporarily disable %check kured --help until upstream restores
+    the --help flag following recent migration from viper + cobra +
+    pflags to pflags only. There appear to be no other no-op
+    options for the kured command we could use instead for %check
+
+-------------------------------------------------------------------
+Wed Jan 15 19:02:27 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.17.0:
+  * build(deps): bump docker/build-push-action from 6.11.0 to 6.12.0
+  * update all k8s deps
+  * prepare 1.17.0 release
+  * build(deps): bump github/codeql-action from 3.28.0 to 3.28.1
+  * build(deps): bump docker/build-push-action from 6.10.0 to 6.11.0
+  * build(deps): bump docker/setup-qemu-action from 3.2.0 to 3.3.0
+  * build(deps): bump step-security/harden-runner from 2.10.2 to 2.10.3
+  * build(deps): bump lycheeverse/lychee-action from 2.1.0 to 2.2.0
+  * improve tests (#1021)
+  * build(deps): bump helm/kind-action from 1.10.0 to 1.12.0
+  * build(deps): bump github/codeql-action from 3.27.6 to 3.28.0
+  * build(deps): bump docker/setup-buildx-action from 3.7.1 to 3.8.0
+  * build(deps): bump actions/upload-artifact from 4.4.3 to 4.6.0
+  * build(deps): bump alpine from 3.20.3 to 3.21.2
+  * build(deps): bump actions/setup-go from 5.1.0 to 5.2.0
+  * build(deps): bump github.com/prometheus/common from 0.60.1 to 0.61.0
+  * Fix CVE-2024-45338 and bump k8s.
+  * update test infra as well
+  * build(deps): bump github/codeql-action from 3.27.5 to 3.27.6
+  * build(deps): bump docker/build-push-action from 6.9.0 to 6.10.0
+  * build(deps): bump github.com/stretchr/testify from 1.9.0 to 1.10.0
+  * build(deps): bump actions/dependency-review-action from 4.4.0 to 4.5.0
+  * build(deps): bump github/codeql-action from 3.27.4 to 3.27.5
+  * build(deps): bump aquasecurity/trivy-action from 0.28.0 to 0.29.0
+  * build(deps): bump step-security/harden-runner from 2.10.1 to 2.10.2
+  * build(deps): bump docker/metadata-action from 5.5.1 to 5.6.1
+  * build(deps): bump github/codeql-action from 3.27.3 to 3.27.4
+  * build(deps): bump github/codeql-action from 3.27.1 to 3.27.3
+  * build(deps): bump actions/checkout from 4.1.1 to 4.2.2
+  * build(deps): bump github/codeql-action from 3.27.0 to 3.27.1
+  * [StepSecurity] Apply security best practices
+
+-------------------------------------------------------------------
+Thu Nov  7 21:03:43 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.16.2:
+  * chore: update release
+  * build(deps): bump lycheeverse/lychee-action from 2.0.2 to 2.1.0
+  * Remove reassignment in rebootasrequired loop
+  * Add stdout and stderr to log info
+  * Fix goroutine leak
+  * bootstrap-tools are required for kured bin
+  * build(deps): bump actions/upload-artifact from 3.2.1.pre.node20 to 4.4.3 (#1012)
+  * build(deps): bump ossf/scorecard-action from 2.3.1 to 2.4.0 (#1011)
+  * build(deps): bump actions/upload-artifact (#1010)
+  * Update email address for Hidde Beydals
+  * Create scorecard.yml
+  * Be explicit about toolchain version
+  * Remove security exception
+  * build(deps): bump github.com/prometheus/common from 0.60.0 to 0.60.1 (#1003)
+  * Cleanup dockerfile (#996)
+  * Clarify features for e2e test (#995)
+  * Improve release documentation
+  * Make the internal blockers implementation internal
+  * Make all the internal validations ... internal
+  * Add error to reboot interface
+  * Remove deprecated PollWithContext
+  * Use RegexpValue in plags
+  * Refactor constructors
+  * Make locks more generic
+  * Raise the error levels for wrong flag
+  * Remove viper/cobra deps
+  * Revert to use a constructor again
+  * Remove nodeID from rebooter interface
+  * Cleanup checkers
+  * Rename variable
+  * Move command line validations in pre function
+  * Extract blockers
+  * Add checker interface
+  * Extract privileged command wrapper into util
+  * Cleanup rebooter interface
+  * Cleanup gomod
+
+-------------------------------------------------------------------
+Tue Oct 22 19:13:28 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.16.1:
+  * chore: update release
+  * Remove all mentions of .tmp (#999)
+  * build(deps): bump github.com/prometheus/common from 0.57.0 to 0.60.0
+  * build(deps): bump github.com/prometheus/client_golang
+  * Update k8s deps and images
+  * Increase CI coverage and provide new dev tool (#982)
+  * build(deps): bump aquasecurity/trivy-action from 0.27.0 to 0.28.0
+  * build(deps): bump lycheeverse/lychee-action from 2.0.0 to 2.0.2
+  * build(deps): bump aquasecurity/trivy-action from 0.26.0 to 0.27.0
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump alpine from 3.20.2 to 3.20.3
+  * build(deps): bump aquasecurity/trivy-action from 0.24.0 to 0.26.0
+  * build(deps): bump lycheeverse/lychee-action from 1.10.0 to 2.0.0
+  * Accelerate CI jobs
+  * Add CVE in ignore list
+  * Automatically point to correct repository
+  * update go to 1.22
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump github.com/prometheus/common from 0.55.0 to 0.57.0
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump github.com/prometheus/client_golang
+  * Change relative link to absolute link
+  * Update contributor docs
+  * build(deps): bump github.com/shirou/gopsutil/v4 from 4.25.1 to 4.25.2 (#5486)
+  * build(deps): bump 4d63.com/gocheckcompilerdirectives from 1.2.1 to 1.3.0 (#5485)
+  * build(deps): bump google.golang.org/protobuf from 1.36.4 to 1.36.5 in /pkg/golinters/protogetter/testdata in the linter-testdata group across 1 directory (#5484)
+  * build(deps): bump github.com/kkHAIKE/contextcheck from 1.1.5 to 1.1.6 (#5482)
+  * fix: use commit hash when version is v0.0.0 (#5479)
+  * docs: update goheader.template reference (#5477)
+  * build(deps): bump github.com/rogpeppe/go-internal from 1.14.0 to 1.14.1 (#5476)
+  * build(deps): bump golang.org/x/oauth2 from 0.26.0 to 0.27.0 in /scripts/gen_github_action_config in the scripts group (#5471)
+  * build(deps): bump github.com/rogpeppe/go-internal from 1.13.1 to 1.14.0 (#5469)
+  * build(deps): bump github.com/GaijinEntertainment/go-exhaustruct/v3 from 3.3.0 to 3.3.1 (#5467)
+  * govet: skip fieldalignment test on 32bit platforms (#5463)
+  * build(deps): bump github.com/ldez/exptostd from 0.4.1 to 0.4.2 (#5456)
+  * docs: add arguments to `revive.error-strings` (#5455)
+  * dev: jsonschema support for revive comment directives (#5448)
+  * build(deps): bump github.com/kisielk/errcheck from 1.8.0 to 1.9.0 (#5447)
+  * dev: improve deprecation warning for tenv linter (#5445)
+  * build(deps): bump github.com/catenacyber/perfsprint from 0.8.1 to 0.8.2 (#5441)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.19.0 to 0.19.1 (#5435)
+  * docs: fix a syntax typo (#5434)
+  * dev: add editor/IDE inside issue template (#5433)
+  * build(deps): bump github.com/4meepo/tagalign from 1.4.1 to 1.4.2 (#5430)
+  * build(deps): bump github.com/spf13/cobra from 1.9.0 to 1.9.1 (#5429)
+  * dev: ask about installation inside issue template (#5424)
+  * Require type for oneOf mutual exclusion (#5426)
+  * build(deps): bump github.com/tetafro/godot from 1.4.20 to 1.5.0 (#5420)
+  * build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.0 (#5421)
+  * build(deps): bump github.com/mgechev/revive from 1.6.1 to 1.7.0 (#5422)
+  * build(deps): bump golangci/golangci-lint-action from 6.3.2 to 6.5.0 in the github-actions group (#5419)
+  * build(deps): bump github.com/tdakkota/asciicheck from 0.4.0 to 0.4.1 (#5418)
+  * docs: fix typos in changelog (#5415)
+  * docs: update documentation assets (#5414)
+  * docs: update GitHub Action assets (#5413)
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.22 matching go.mod
+
+-------------------------------------------------------------------
+Wed Jul 24 16:14:49 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.16.0:
+  * chore: update release
+  * chore(deps): k8s dependency updates (#959)
+  * build(deps): bump alpine from 3.20.1 to 3.20.2
+  * build(deps): bump aquasecurity/trivy-action from 0.23.0 to 0.24.0 (#953)
+  * build(deps): bump github.com/prometheus/common from 0.54.0 to 0.55.0
+  * build(deps): bump alpine from 3.20.0 to 3.20.1
+  * build(deps): bump aquasecurity/trivy-action from 0.22.0 to 0.23.0
+  * build(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+  * build(deps): bump docker/build-push-action from 5 to 6
+  * build(deps): bump aquasecurity/trivy-action from 0.21.0 to 0.22.0
+  * build(deps): bump github.com/spf13/viper from 1.18.2 to 1.19.0
+  * build(deps): bump github.com/prometheus/common from 0.53.0 to 0.54.0
+  * build(deps): bump aquasecurity/trivy-action from 0.19.0 to 0.21.0
+  * build(deps): bump alpine from 3.19.1 to 3.20.0
+  * update k8s deps (#926)
+  * build(deps): bump github.com/prometheus/client_golang (#932)
+  * add best practices badge (#927)
+  * update x/net dependency (#925)
+  * build(deps): bump lycheeverse/lychee-action from 1.9.3 to 1.10.0
+  * build(deps): bump helm/kind-action from 1.9.0 to 1.10.0
+  * build(deps): bump github.com/prometheus/common from 0.52.3 to 0.53.0 (#922)
+  * build(deps): bump github.com/prometheus/common from 0.48.0 to 0.52.3 (#921)
+  * build(deps): bump aquasecurity/trivy-action from 0.18.0 to 0.19.0
+
+-------------------------------------------------------------------
 Sun Mar 24 21:49:40 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
