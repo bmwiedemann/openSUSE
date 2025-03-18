@@ -2423,4 +2423,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1235451</requestid>
   </revision>
+  <revision rev="263" vrev="1">
+    <srcmd5>1e7e31a69fa5b94e6489e16088ec23da</srcmd5>
+    <version>3.56.0</version>
+    <time>1742315888</time>
+    <user>anag+factory</user>
+    <comment>New stable branch release (forwarded request 1253066 from iznogood)</comment>
+    <requestid>1253075</requestid>
+  </revision>
 </revisionlist>

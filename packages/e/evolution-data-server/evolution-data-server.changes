@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Mar 14 12:48:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.56.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 28 12:31:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.55.3:
+  + Bug Fixes:
+    - test-book-client-view-operations: Enforce LC_COLLATE for the
+      backend process
+    - alarm-notify: Tasks without DTSTART cause runtime warning
+  + Miscellaneous:
+    - EBackend: Change when adding signal handler for
+      "network-changed"
+    - CI: Use a Fedora image instead of Flatpak build
+    - camel-mime-utils: Correct a compiler warning [-Wpointer-sign]
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 31 18:20:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.55.2 (Unstable):
+  + Bug Fixes:
+    - Contacts: Categories miscalculated in the cache
+    - CamelGpgContext: Verify status buffer read is in buffer
+      boundary
+    - devel-doc: Do not require tests to be build
+    - ESoupSession: Leaked input stream on 503 response
+    - build: Use Heimdal KRB5 implementation when found
+    - camel_content_type_decode: Remove unneeded g_free() call
+    - Calendar: Import of forwarded meeting as bare event
+  + Miscellaneous:
+    - Do not use variable named 'bool' in the code
+    - Camel: Disable photo-loading when used gpg version does not
+      understand it
+    - ESoupSession: Check validity of passed-in URI
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan  4 09:20:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.54.3:
