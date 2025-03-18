@@ -18,7 +18,7 @@
 
 
 Name:           gnome-usage
-Version:        46.1
+Version:        48.rc
 Release:        0
 Summary:        System resources viewer for GNOME
 License:        GPL-3.0-only
@@ -37,7 +37,8 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.12
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 BuildRequires:  pkgconfig(libgtop-2.0)
-BuildRequires:  pkgconfig(tracker-sparql-3.0)
+BuildRequires:  pkgconfig(libnm)
+BuildRequires:  pkgconfig(tinysparql-3.0)
 
 %description
 GNOME Usage is a program to view information about the use of system
@@ -64,7 +65,7 @@ resources, like memory and disk space.
 %{_datadir}/applications/org.gnome.Usage.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.Usage.gschema.xml
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Usage.svg
-%{_datadir}/metainfo/org.gnome.Usage.appdata.xml
+%{_datadir}/metainfo/org.gnome.Usage.metainfo.xml
 
 %files lang -f %{name}.lang
 
