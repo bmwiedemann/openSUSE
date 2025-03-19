@@ -313,4 +313,12 @@
 </comment>
     <requestid>1245108</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>1e35a221f4c15ce81ec4f539fa76ea7b</srcmd5>
+    <version>18.1.2</version>
+    <time>1742419966</time>
+    <user>anag+factory</user>
+    <comment>- Update registry.tar.zst. This fixes build issues after a Rust toolchain update.</comment>
+    <requestid>1254270</requestid>
+  </revision>
 </revisionlist>
