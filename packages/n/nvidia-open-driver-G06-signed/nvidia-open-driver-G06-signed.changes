@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 15 01:45:38 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 570.133.07 (bsc#1239653) 
+
+-------------------------------------------------------------------
 Sat Mar  8 22:58:14 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - removed obsolete kernel-firmware-nvidia-gspx-G06-cuda; firmware

@@ -723,4 +723,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1253420</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>762cd3aaf160d8601ebe3c44970705a4</srcmd5>
+    <version>570.133.07</version>
+    <time>1742420014</time>
+    <user>anag+factory</user>
+    <comment>- update non-CUDA variant to 570.133.07 (bsc#1239653)</comment>
+    <requestid>1254260</requestid>
+  </revision>
 </revisionlist>
