@@ -1,7 +1,7 @@
 #
 # spec file for package info2html
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           info2html
 BuildRequires:  apache2-devel
 BuildRequires:  libapr-util1-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 URL:            http://sourceforge.net/projects/info2html/
 Provides:       inf2htm
 Obsoletes:      inf2htm

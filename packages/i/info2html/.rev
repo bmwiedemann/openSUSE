@@ -176,4 +176,12 @@
     <comment></comment>
     <requestid>1204937</requestid>
   </revision>
+  <revision rev="25" vrev="224">
+    <srcmd5>95c704a68a20bc57642fe9b96631b2c3</srcmd5>
+    <version>2.0</version>
+    <time>1742420047</time>
+    <user>anag+factory</user>
+    <comment>- Switch to PCRE2 (forwarded request 1254383 from anag+factory)</comment>
+    <requestid>1254392</requestid>
+  </revision>
 </revisionlist>
