@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 19 18:08:30 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to version 3.16.2:
+   * make version.cmake more readable (gh#nextcloud/desktop#7986)
+   * remove gcc and clang build checks (gh#nextcloud/desktop#8025)
+   * Bugfix/input pin title too wide (gh#nextcloud/desktop#8042)
+   * explicitly set colours for header items 
+     (gh#nextcloud/desktop#8049)
+   * Bugfix/highlight too bright appimage 
+     (gh#nextcloud/desktop#8051) 
+
+-------------------------------------------------------------------
 Fri Mar 14 14:34:26 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to version 3.16.1:
