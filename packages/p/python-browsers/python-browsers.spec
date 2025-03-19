@@ -1,7 +1,7 @@
 #
 # spec file for package python-browsers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,7 +44,10 @@ BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python3-pyxdg
+Provides:       python-pybrowsers
+%if "%{python_flavor}" == "%primary_python}"
 Provides:       python3-pybrowsers
+%endif
 BuildArch:      noarch
 # Browsers like Chromium are not built for other architectures
 ExclusiveArch:  aarch64 riscv64 x86_64
