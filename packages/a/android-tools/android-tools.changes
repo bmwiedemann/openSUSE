@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar  9 05:32:44 UTC 2025 - munix9@googlemail.com
+
+- Revoke "Use system fmt library for Leap >= 16", as "SLFO_Main"
+  does not appear to provide an fmt library >= 10.2.0
+
+-------------------------------------------------------------------
+Sat Mar  8 19:05:03 UTC 2025 - munix9@googlemail.com
+
+- Fix build for Factory/TW: Add "BuildRequires: python-rpm-macros"
+- Use system fmt library for Leap >= 16
+
+-------------------------------------------------------------------
 Tue Nov  5 05:16:45 UTC 2024 - munix9@googlemail.com
 
 - Exclude ppc ppc64 and ppc64le: Bundled boringssl doesn't support
