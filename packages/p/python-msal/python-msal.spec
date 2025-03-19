@@ -16,17 +16,15 @@
 #
 
 
-%define realversion 1.31.2b1
-
 %{?sle15_python_module_pythons}
 Name:           python-msal
-Version:        1.31.2~b1
+Version:        1.32.0
 Release:        0
 Summary:        Microsoft Authentication Library (MSAL) for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/AzureAD/microsoft-authentication-library-for-python
-Source:         https://files.pythonhosted.org/packages/source/m/msal/msal-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/msal/msal-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -53,7 +51,7 @@ Azure Active Directory accounts (AAD) and Microsoft Accounts (MSA) using industr
 standard OAuth2 and OpenID Connect.
 
 %prep
-%setup -q -n msal-%{realversion}
+%setup -q -n msal-%{version}
 
 %build
 %pyproject_wheel

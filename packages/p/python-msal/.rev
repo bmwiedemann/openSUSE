@@ -353,4 +353,34 @@
 - Override upstream version with 1.31.2~b1 (forwarded request 1245552 from glaubitz)</comment>
     <requestid>1245727</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9a1c52a426fcfa44c688563b1e90e016</srcmd5>
+    <version>1.32.0</version>
+    <time>1742419999</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.32.0
+  * Refactor to allow adding new field into cache key
+    and/or content by @rayluo in (#751)
+  * Warning when obsolete msal-extensions is detected
+    by @rayluo in (#752)
+  * Add msal_cache.bin to .gitignore by @DharshanBJ in (#753)
+  * MSAL will use env var MSAL_FORCE_REGION by default
+    by @rayluo in (#756)
+  * Allow MI endpoint changing through environment variable
+    by @jimdigriz in (#754)
+  * Revert &quot;allow MI endpoint changing through environment
+    variable&quot; by @rayluo in (#769)
+  * Fix document for using SystemAssigned managed identity
+    by @jiasli in (#764)
+  * Suppress a false positive CodeQL alarm by @rayluo in (#783)
+  * Pass Sku and Ver to MsalRuntime by @Ugonnaak1 in (#786)
+  * Try to suppress another verify=False by @rayluo in (#788)
+  * Supports dSTS by ClientApplication(..., authority=
+    &quot;https://...example.com/dstsv2/...&quot;) by @rayluo in (#772)
+  * Add test case to show that OBO supports SP by @rayluo in (#481)
+  * Enable Issue-Sentinel to scan for similar issues by @DharshanBJ in (#790)
+  * Support pod identity by @rayluo in (#795)
+  * Scope to resource by @rayluo in (#785) (forwarded request 1254060 from glaubitz)</comment>
+    <requestid>1254233</requestid>
+  </revision>
 </revisionlist>

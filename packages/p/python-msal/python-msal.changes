@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Mar 18 09:30:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.32.0
+  * Refactor to allow adding new field into cache key
+    and/or content by @rayluo in (#751)
+  * Warning when obsolete msal-extensions is detected
+    by @rayluo in (#752)
+  * Add msal_cache.bin to .gitignore by @DharshanBJ in (#753)
+  * MSAL will use env var MSAL_FORCE_REGION by default
+    by @rayluo in (#756)
+  * Allow MI endpoint changing through environment variable
+    by @jimdigriz in (#754)
+  * Revert "allow MI endpoint changing through environment
+    variable" by @rayluo in (#769)
+  * Fix document for using SystemAssigned managed identity
+    by @jiasli in (#764)
+  * Suppress a false positive CodeQL alarm by @rayluo in (#783)
+  * Pass Sku and Ver to MsalRuntime by @Ugonnaak1 in (#786)
+  * Try to suppress another verify=False by @rayluo in (#788)
+  * Supports dSTS by ClientApplication(..., authority=
+    "https://...example.com/dstsv2/...") by @rayluo in (#772)
+  * Add test case to show that OBO supports SP by @rayluo in (#481)
+  * Enable Issue-Sentinel to scan for similar issues by @DharshanBJ in (#790)
+  * Support pod identity by @rayluo in (#795)
+  * Scope to resource by @rayluo in (#785)
+
+-------------------------------------------------------------------
 Thu Feb 13 07:48:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.31.2b1
