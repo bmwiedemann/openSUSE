@@ -40,7 +40,7 @@
 [[ -z "${CXX}" ]] && CXX="g++"
 [[ -z "${CXXFLAGS}" ]] && CXXFLAGS="-O2 -Wall"
 
-tools_list="ar ag cat g++"
+tools_list="ar cat grep g++"
 tools_missing=""
 for tool in $tools_list; do
     $tool --version > /dev/null 2>&1

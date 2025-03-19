@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 19 08:46:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove dependency on the_silver_searcher (ag)
+
+-------------------------------------------------------------------
 Tue Feb 28 11:22:22 UTC 2023 - pgajdos@suse.com
 
 - do not build documentation with yodl, it can be reached here:

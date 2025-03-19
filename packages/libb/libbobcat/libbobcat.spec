@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package libbobcat
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -36,9 +36,6 @@ Group:          Development/Tools/Building
 URL:            https://gitlab.com/fbb-git/bobcat
 Source0:        https://gitlab.com/fbb-git/bobcat/-/archive/%{version}/bobcat-%{version}.tar.gz
 Source1:        initialbobcatlib
-%if "%{name}" == "%{_lib_name}-light"
-BuildRequires:  the_silver_searcher
-%endif
 #BuildRequires:  libX11-devel
 #BuildRequires:  libopenssl-1_1-devel
 #BuildRequires:  readline-devel
