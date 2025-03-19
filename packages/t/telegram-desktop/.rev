@@ -1381,4 +1381,31 @@
     <comment>- Added 0003-tg_owt-pipewire-1.4.patch to fix build with pipewire 1.4.</comment>
     <requestid>1252738</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>e0bba424c27231783058ab8b6c909724</srcmd5>
+    <version>5.12.5</version>
+    <time>1742420044</time>
+    <user>anag+factory</user>
+    <comment>- Droped unneeded pcre build dependencies.
+- Updated spec-file via spec-cleaner and manual optimizations.
+  * Droped _service, Leap 15 support and a lot of unnecessary garbage.
+  * Limited support only for Tumbleweed and Leap 16 on x86_64 and aarch64.
+  * Enabled _lto_cflags.
+  * Limited debugging information to -g1 level.
+  * Used %cmake and other path macros everywhere possible.
+  * Changed _constraints file to single limit RAM to 16GB.
+- Updated ada to 3.2.1.
+- Updated tg_owt to git20241202.
+  * Changed 0002-tg_owt-h264-dlopen.patch.
+- Updated to 5.12.5
+  * Added messages search in channel comments.
+  * Added option for running in backround on Linux.
+  * Fixed freeze in sound reencoding on macOS and Linux.
+  * Fixed arbitrary cropping support in the image editor.
+  * Fixed crash on round video message playback.
+  * Fixed complex custom keyboard shortcuts.
+  * Fixed some crashes.
+  * Added support swipe navigation on touchscreens.</comment>
+    <requestid>1254428</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Mar 19 13:59:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Droped unneeded pcre build dependencies.
+
+-------------------------------------------------------------------
+Sun Mar 16 06:27:26 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated spec-file via spec-cleaner and manual optimizations.
+  * Droped _service, Leap 15 support and a lot of unnecessary garbage.
+  * Limited support only for Tumbleweed and Leap 16 on x86_64 and aarch64.
+  * Enabled _lto_cflags.
+  * Limited debugging information to -g1 level.
+  * Used %cmake and other path macros everywhere possible.
+  * Changed _constraints file to single limit RAM to 16GB.
+- Updated ada to 3.2.1.
+- Updated tg_owt to git20241202.
+  * Changed 0002-tg_owt-h264-dlopen.patch.
+- Updated to 5.12.5
+  * Added messages search in channel comments.
+  * Added option for running in backround on Linux.
+  * Fixed freeze in sound reencoding on macOS and Linux.
+  * Fixed arbitrary cropping support in the image editor.
+  * Fixed crash on round video message playback.
+  * Fixed complex custom keyboard shortcuts.
+  * Fixed some crashes.
+  * Added support swipe navigation on touchscreens.
+
+-------------------------------------------------------------------
 Thu Mar 13 11:17:09 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Added 0003-tg_owt-pipewire-1.4.patch to fix build with pipewire 1.4.
@@ -789,7 +817,7 @@ Thu Jul 20 08:07:41 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
   neon on armv7 and some armv7 SoC does not include neon anyway
 
 -------------------------------------------------------------------
-Mon Jul 17 13:14:40 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+Mon Jul 17 13:14:40 UTC 2023 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 4.8.4.
   * Added BuildRequires: libboost_program_options-devel, fmt,
@@ -955,7 +983,7 @@ Mon Dec  5 07:58:42 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
   * Fix the build on openSUSE 15.4
 
 -------------------------------------------------------------------
-Tue Nov 29 11:49:02 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+Tue Nov 29 11:49:02 UTC 2022 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 4.3.4.
   * Changed 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch.
@@ -1061,7 +1089,7 @@ Fri Jun  3 08:08:46 UTC 2022 - marec <marec@detebe.org>
 - fix for leap 15.4
 
 -------------------------------------------------------------------
-Tue May 10 19:07:11 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+Tue May 10 19:07:11 UTC 2022 - Илья Индиго <ilya@ilya.top>
 
 - Fixed requirements for Qt6 (boo#1199323).
 
@@ -2422,13 +2450,13 @@ Fri May 25 06:04:47 UTC 2018 - i@xuzhao.net
     Replacement no longer happens when pasting text.
 
 -------------------------------------------------------------------
-Mon Apr 16 18:32:29 UTC 2018 - ilya@ilya.cf
+Mon Apr 16 18:32:29 UTC 2018 - ilya@ilya.top
 
 - Update to 1.2.17
   * Bug fixes and other minor improvements.
 
 -------------------------------------------------------------------
-Wed Mar 28 22:52:16 UTC 2018 - ilya@ilya.cf
+Wed Mar 28 22:52:16 UTC 2018 - ilya@ilya.top
 
 - Update to 1.2.15
   * Discover new stickers. Type one emoji to see suggestions from
@@ -2441,7 +2469,7 @@ Wed Mar 28 22:52:16 UTC 2018 - ilya@ilya.cf
     Ctrl+Down.
 
 -------------------------------------------------------------------
-Tue Mar 20 21:31:30 UTC 2018 - ilya@ilya.cf
+Tue Mar 20 21:31:30 UTC 2018 - ilya@ilya.top
 
 - Refresh spec-file via spec-cleaner and manual optimizations.
   * Add %license and %doc macros.
