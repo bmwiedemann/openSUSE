@@ -53,7 +53,6 @@ BuildRequires:  libqt5-qttools-doc >= %{version}
 BuildRequires:  libtiff-devel
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  openssl-devel
-BuildRequires:  pcre-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel

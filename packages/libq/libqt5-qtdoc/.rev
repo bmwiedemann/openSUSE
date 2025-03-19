@@ -462,4 +462,14 @@
   gh#rpm-software-management/rpm#3126</comment>
     <requestid>1248702</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>fd8c1176fa0f7b6129c700cd09c36c50</srcmd5>
+    <version>5.15.15</version>
+    <time>1742420048</time>
+    <user>anag+factory</user>
+    <comment>Not built yet.
+
+- Remove obsolete BuildRequires on pcre-devel (forwarded request 1254389 from favogt)</comment>
+    <requestid>1254394</requestid>
+  </revision>
 </revisionlist>

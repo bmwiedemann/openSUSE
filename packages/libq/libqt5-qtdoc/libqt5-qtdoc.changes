@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 19 11:21:43 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Remove obsolete BuildRequires on pcre-devel
+
+-------------------------------------------------------------------
 Wed Feb 26 10:14:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Redefine %_libdir on 64 bit archs to work around
