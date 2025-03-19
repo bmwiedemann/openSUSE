@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Wed Mar 19 05:00:32 UTC 2025 - madhankumar.chellamuthu@suse.com
+
+- Update to version 0.20.1:
+  * go.mod: update minimum go version to go1.23
+  * update runc to v1.2.6
+  * don't set go version in golangci-lint config
+  * update containerd to v2.0.4
+  * Update containerd to v2.0.4
+  * create cdi spec folders in buildkit container
+  * dockerfile: fix sbom attestation for windows targets
+  * resolver: fix missing user-agent on layer requests
+  * solver: fix reading secrets from any session
+  * solver: fix parent span for preprocess traces
+  * update RootlessKit to v2.3.4
+  * dockerfile: fix outline cycle on recursive args
+  * apply x/tools/modernize fixes
+  * vendor: github.com/docker/docker, docker/cli v28.0.1
+  * dockerfile: fix mirrored images in tests
+  * integration: simplify test splitting
+  * dockerfile: fix parsing syntax directive from JSON
+  * fix: wcow: pause integration tests on WS2025
+  * update binfmt to v9.2.2
+  * integration: test split for wcow
+  * gha: mitigate cachev2 flakiness
+  * build(deps): bump nick-fields/retry from 3.0.1 to 3.0.2
+  * dockerfile: combine lint error testing into single variable
+  * vendor: update containerd to v2.0.3
+  * vendor: update action-cache with longer azure retries
+  * vendor: update fsutil to 13604323
+  * uploadprovider: remove recursion from uploadprovider write code
+  * testutil: remove go-connections dependency
+  * fix trace blob detected as leaked blob in tests
+  * hack(images): set EXPORT_BASE and BUILDKITD_TAGS args
+  * dockerfile: normalize platform in image config
+  * vendor: update cdi to v0.8.1 for panic fix
+  * testutil: copy slim version of the docker client into testutil
+  * http: Support additional request headers
+  * rootless: update docs and examples
+  * http: Support authentication
+  * http: Refactor `http.Request` construction into common method
+  * fix: util/path: CheckSystemDriveAndRemoveDriveLetter to preserve `/`
+  * feat: wcow: add support for bind and cache mounts
+  * cache(gha): fix missing user-agent for importer
+  * cache(gha): set user-agent for github cache service requests
+  * refactor: avoid unnecessary calls to platforms.DefaultSpec()
+  * test: handle gha cache v2
+  * buildctl: set fallback url for gha cache
+  * build(deps): bump nick-fields/retry from 3.0.0 to 3.0.1
+  * cache(gha): don't require url attr if url_v2 is set
+  * client: test cdi entitlement
+  * cdi: test find devices
+  * cdi: keep auto refresh
+  * mark Windows 2025 tests as non-blockin
+  * add autoallow and entitlements support to CDI devices
+  * dockerfile: update runc to 1.2.5
+  * dockerfile: error out if device feature not used in labs
+  * ci: install latest vagrant
+  * remove unused emulators from exported image
+  * Add back support for azblob cache Signed-off-by: Pranav Pandit <pranavp@microsoft.com>
+  * gha: allow url_v2 input attribute
+  * dockerfile: bring copy --chmod non-octal out of labs
+  * verifier: do not run invalid platforms check when there are no results
+  * exec: check cdi manager not nil
+  * vendor: github.com/package-url/packageurl-go v0.1.1
+  * test: skip cdi feature tests on moby
+  * fix: cdi: add appdefaults.CDISpecDirs for windows
+  * testutil: set cdi spec dir with config
+  * ci: remove image input from qemu action
+  * dockerfile: update binfmt to v9.2.0-50
+  * update go-actions-cache to bd99cf5bbc65 (v2 API)
+  * remove azure remote cache backend
+  * Revert "vendor: github.com/docker/docker/v28.0.0-rc.1"
+  * Revert "vendor: github.com/docker/cli/v28.0.0-rc.1"
+  * cdi: docs
+  * cdi: merge spec and device annotations
+  * cdi: support custom and wildcard class for injection
+  * dockerfile: remove device frontend attr support
+  * contrib: fix build with venus
+  * contrib: add setup definition for virtio-venus device
+  * contrib: remove unused code from nvidia setup
+  * contrib: add on demand setup for nvidia cdi
+  * llbsolver: on-demand CDI devices with automatic setup
+  * dockerfile: support optional cdi devices
+  * cdi: support optional devices
+  * dockerfile: move cdi run device to labs
+  * cdi: use worker cdi manager when generating devices oci spec
+  * cdi: fixes since enabled by default
+  * enable CDI by default for buildkitd
+  * check CDI device error on startup
+  * allow listing devices
+  * worker: cdi manager
+  * buildkitd: update default cdi spec dirs
+  * dockerfile: device flag support
+  * dockerfile: device support with frontend attribute
+  * exec: cdi device support
+  * buildkitd: cdi config
+  * vendor: github.com/containerd/go-cni v1.1.12
+  * dockerfile: maintain osversion/variant from the base image
+  * history: allow git context attribute for repository filters
+  * dockerfile: avoid too eager loading of unreachable named contextes
+  * vendor: github.com/docker/cli/v28.0.0-rc.1
+  * vendor: github.com/docker/docker/v28.0.0-rc.1
+  * vendor: golang.org/x/sys v0.29.0
+  * vendor: google.golang.org/genproto/googleapis/api 324edc3d5d38
+  * vendor: github.com/vishvananda/netns v0.0.5
+  * vendor: github.com/moby/term v0.5.2
+  * vendor: github.com/containerd/cgroups/v3 v3.0.5
+  * llbsolver: add time based filter support to history
+  * llbsolver: add filters to history listen
+  * ci: use main branch for docs upstream validation workflow
+  * github: update setup-qemu image to v9.2.0
+  * fix: docs: windows: enhance the CNI setup instructions
+  * hack: allow passing config file to test and shell script
+  * integration: use credentials for test mirrors
+  * hack: mount docker config on gha
+  * bboltcachestorage: delete links outside of cursor
+  * vendor: github.com/docker/cli v27.5.1
+  * vendor: github.com/docker/docker v27.5.1
+  * vendor: github.com/containerd/fuse-overlayfs-snapshotter v2.1.1
+  * vendor: google.golang.org/grpc v1.69.4
+  * authprovider: Add support for expiring auth cache
+  * [s3 cache] Fix upload of downloaded layer
+  * test: move gha cache to its own suite
+  * tests: frontend/dockerfile: update integration tests for windows/wcow
+
+-------------------------------------------------------------------
 Mon Jan 27 08:25:43 UTC 2025 - madhankumar.chellamuthu@suse.com
 
 - Update to version 0.19.0:
