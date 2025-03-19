@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 18 20:51:11 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1742240999.4ad1bd8:
+  * Check for correct git warning when cloning an empty repository
+  * Adapt check for git error message to new version
+  * Fix regression from 055d2e67 in _set_ip arguments
+  * Ensure full coverage in the project
+  * Create test for script os-autoinst-openvswitch
+  * Retry asset sync in svirt backend after timeouts
+
+-------------------------------------------------------------------
 Sat Mar 15 11:13:43 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1742031910.117e1ea:
