@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Mar 19 04:57:25 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.103.0:
+  * Deleted reproducible.patch - Fixed in appstream.
+  * Changes:
+    + Additions:
+      - `attr` commands.
+      - `random uuid`.
+      - `default --empty`.
+      - Platform-specific `char eol`.
+      - `into string --group-digits`.
+      - `from xml --allow-dtd`.
+      - `to yml`.
+      - `overlay use` completions.
+      - `$env.config.filesize.show_unit`.
+      - Backtraces for Nushell code.
+      - Startup banner theming.
+      - Numeric range padding support in `str expand`.
+    + Breaking changes:
+      - `split list` now keeps empty sublists.
+      - `match` no longer executes closures as if they were a block.
+      - _`PROMPT_\*` environment variables are no longer inherited_
+      - Closure serialization changes.
+      - Filesize unit formatting.
+    + Removals:
+      - `range`.
+      - `into bits`.
+      - `fmt`.
+  * Bug fixes and other changes.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2025-02-04-nushell_0_103_0.html
+
+-------------------------------------------------------------------
 Thu Feb 20 09:48:43 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch for reproducible builds (boo#1062303)

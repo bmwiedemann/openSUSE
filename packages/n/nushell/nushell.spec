@@ -17,14 +17,13 @@
 
 
 Name:           nushell
-Version:        0.102.0
+Version:        0.103.0
 Release:        0
 Summary:        A new type of shell
 License:        MIT
 URL:            https://www.nushell.sh/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.zst
-Patch0:         reproducible.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  git
 BuildRequires:  zstd
