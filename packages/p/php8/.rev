@@ -1184,4 +1184,12 @@
          CVE-2025-1736 [bsc#1239670]</comment>
     <requestid>1254084</requestid>
   </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>280f12a89ffb29df4def8a4baf0286c3</srcmd5>
+    <version>8.3.19</version>
+    <time>1742420007</time>
+    <user>anag+factory</user>
+    <comment>Readding the reference, Sorry.</comment>
+    <requestid>1254303</requestid>
+  </revision>
 </revisionlist>
