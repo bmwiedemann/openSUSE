@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 19 13:51:44 UTC 2025 - Robert Munteanu <rombert@apache.org>
+
+- Revert kubelogin to version 0.1.9. Version 0.2.0 of kubelogin
+  has a breaking change that causes credential flows not implemented
+  by azidentity to not have any caching, requiring reauthentication
+  for each invocation. We should keep using version 0.1.9 until the
+  implementation is fully fleshed out. Note that all 0.2.x versions
+  are marked as pre-releases.
+
+-------------------------------------------------------------------
+Wed Mar 19 05:54:08 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.3:
+  * v0.2.3 release (#629)
+  * use tar to retain executable bit in released assets (#628)
+
+-------------------------------------------------------------------
 Sun Mar 16 12:35:44 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.2:
