@@ -1,7 +1,7 @@
 #
 # spec file for package python-requre
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-requre
-Version:        0.8.4
+Version:        0.9.0
 Release:        0
 Summary:        Python libray for storing and using objects for testing
 License:        MIT
@@ -32,6 +32,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-GitPython
 Requires:       python-PyYAML
 Requires:       python-click
+Requires:       python-httpx
 Requires:       python-requests
 Suggests:       python-pytest
 Requires(post): update-alternatives
@@ -41,6 +42,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module GitPython}
 BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION

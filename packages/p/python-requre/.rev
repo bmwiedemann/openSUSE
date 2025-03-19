@@ -55,4 +55,21 @@
   * class shortcut decorators</comment>
     <requestid>1151858</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d6abbad5017f80ae707bb7ad9806c9dd</srcmd5>
+    <version>0.9.0</version>
+    <time>1742420049</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1254380 from glaubitz
+
+- Update to 0.9.0
+    * Supports recording of the requests done by `httpx` via
+      `record_httpx()` and `recording_httpx()` decorators. (#297)
+  - from version 0.8.6
+    * Trigger a new release to fix the PyPI upload action.
+  - from version 0.8.5
+    * Trigger a new release to confirm the correct SPDX licence.
+  - Update BuildRequires and Requires from pyproject.toml</comment>
+    <requestid>1254399</requestid>
+  </revision>
 </revisionlist>
