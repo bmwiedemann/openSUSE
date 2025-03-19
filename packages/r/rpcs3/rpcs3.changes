@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Mar 18 20:49:50 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update fix-test-files.patch
+
+-------------------------------------------------------------------
+Tue Mar 18 20:31:20 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to rpcs3-0.0.35~git20250318:
+  * SPU: Add Disable SPU GETLLAR Spin Optimization checkbox
+  * Improve BUILDING.md documentation
+  * Fix discord-rpc build when ASLR is enabled
+  * Fix warning
+  * Qt: use white checkmarks in Darker Style
+  * Qt: Simplify hover movie code
+  * Qt/optimization: Don't look for PAM files if the game has a hover gif
+  * Qt: Do not use gamedata icon if game has custom icon
+  * Qt: fix code style of some variables
+  * Qt: Use localized game icons and titles
+  * config: Revert default shader compiler to async with draw-skip
+  * rsx: Fix instancing constants lookup layout when running interpreter
+  * vk: Implement instancing when running in interpreter mode
+  * gl: Reimplement driver capabilities detection in a more sane way
+  * rsx: Always initialize CC register in FP interpreter
+  * gl: Double instancing buffer size to improve frametimes
+  * gl: Support transform instancing in the shader interpreter
+  * gl: Add support for hardware instancing
+  * rsx: Fix cache invalidation when instancing state changes
+  * SPU LLVM: Preserve sign on inf to NaN conversion in spu_re_acc with vfixupimmps
+  * sys_usbd: Fix null pointer deref on destruction
+  * CI: upgrade FreeBSD to 13.5
+  * Always run Actions, we need them for mergesrove build tags
+  * Qt: Detach markup from dialog translations
+  * rsx: Invalidate program cache hint if the current vertex or fragment program is re-evaluated
+  * Fix missing enum in switch case
+  * Fix redundant forward declaration warning
+  * Use named_thread in gui_pad_thread
+  * Qt: Hide interpreter_only unless it is selected or the debug mode is active
+  * main: Fix some warning
+  * android: do not invalidate swapchain on VK_SUBOPTIMAL_KHR
+  * Set vulkan to default renderer whenever we have vulkan support
+  * hid_init: use hid_error in log message
+  * [android] hid: enumerate by vendor/product ids
+  * hid: add support of android devices
+  * fs::file: implement release_handle
+  * Coding style issues fixes
+  * cpu stats: do not try parse /proc/stat on android
+  * android: atomic: do not test SYS_futex_waitv syscall
+  * rsx: implement android swapchain
+  * rsx: reduce shaders_cache::unpacked_type size for android
+  * vm: do not check overcommit_memory on android
+  * vm: removed c_page_size, it cannot be used by globals
+  * android: cfg: vulkan renderer is default
+  * add missed include to PUP.h
+  * android: jit: teach fallback_cpu_detection provide meaningful results for aarch64
+  * cfg: remove string::get()
+  * unpkg: allow package_reader creation with provided fs::file
+  * fs::file: add from_native_handle constructor
+  * llvm: disable extra targets for android
+  * 3rdparty/fusion: Always do build in release mode
+  * Android stuff 2
+  * android stuff
+
+-------------------------------------------------------------------
 Wed Mar 12 07:34:58 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Change glew+egl patch to work under x11
