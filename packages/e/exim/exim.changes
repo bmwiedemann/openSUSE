@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 11 08:41:22 UTC 2025 - Wolfgang Engel <wolfgang.engel@suse.com>
+
+- Adding directory /var/spool/mail/ to permissions file /etc/permissions.d/exim
+  as required by rpmlint (bsc#123625)
+
+-------------------------------------------------------------------
 Mon Nov 18 13:11:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own /srv/www which is no longer owned by the filesystem package.

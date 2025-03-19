@@ -1,2 +1,3 @@
 /usr/sbin/exim			root:root	4755
+/var/spool/mail/		root:root	1777
 
