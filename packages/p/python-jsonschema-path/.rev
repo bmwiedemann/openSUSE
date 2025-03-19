@@ -16,4 +16,12 @@
   * Relax dependency constraint to support referencing 0.35 #138</comment>
     <requestid>1184139</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cc443c24df7f3f755583c827f82fed6b</srcmd5>
+    <version>0.3.4</version>
+    <time>1742420054</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254407</requestid>
+  </revision>
 </revisionlist>
