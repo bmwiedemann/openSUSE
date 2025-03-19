@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 18 14:41:15 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.4
+  * Support query string encoding for control API
+  * Introduce ``vhost_traffic_status_stats_by_upstream``
+
+-------------------------------------------------------------------
 Wed Jan  1 07:42:31 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.2.3

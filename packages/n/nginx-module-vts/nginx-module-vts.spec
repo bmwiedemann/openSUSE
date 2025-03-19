@@ -18,7 +18,7 @@
 
 %define project_name nginx-module-vts
 Name:           nginx-module-vts
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        Nginx virtual host traffic status module
 License:        BSD-2-Clause
