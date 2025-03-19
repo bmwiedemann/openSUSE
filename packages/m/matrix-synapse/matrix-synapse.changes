@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 12 11:57:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- revert previous change as the dependencies are missing in the
+  distro
+
+-------------------------------------------------------------------
+Wed Mar 12 11:31:53 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable redis and sentry support by default so they work out of
+  the box
+
+-------------------------------------------------------------------
 Tue Mar 11 15:21:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - fix file section to use the more portable macro

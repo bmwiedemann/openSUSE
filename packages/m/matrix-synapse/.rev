@@ -1198,4 +1198,12 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.126.0</comment>
     <requestid>1252103</requestid>
   </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>0bb635e43f71acc35f5bccd357445a1b</srcmd5>
+    <version>1.126.0</version>
+    <time>1742420008</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1254393</requestid>
+  </revision>
 </revisionlist>
