@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 18 08:15:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.95.0
+  * Merge main to develop by @aaythapa in (#3676)
+  * chore: schema update by @GavinZZ in (#3680)
+  * fix:downgrade lambda runtime version to nodejs18.x
+    in integ test by @godwingrs22 in (#3687)
+  * Merge main to develop by @aaythapa in (#3689)
+  * Merge main to develop by @godwingrs22 in (#3691)
+  * chore(schema): update by @github-actions in (#3692)
+  * chore(schema): update by @github-actions in (#3693)
+  * Update conditions in tests to fix lint failures
+    by @mbfreder in (#3705)
+  * chore(schema): update by @github-actions in (#3700)
+  * chore(schema): update by @mbfreder in (#3706)
+  * Chore(owner): Add tooling to codeowner
+    by @roger-zhangg in (#3709)
+  * fix(dep): compat.py should import right pydantic class
+    for pydantic >= 1.10.17 by @roger-zhangg in (#3710)
+  * chore(schema): update by @github-actions in (#3708)
+  * Release 1.95.0 (to main) by @mbfreder in (#3723)
+
+-------------------------------------------------------------------
 Thu Jan 16 13:04:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.94.0
