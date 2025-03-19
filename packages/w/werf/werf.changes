@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 19 14:59:40 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.32.2:
+  * chore: release 2.32.2
+  * fix(build, staged): fix cache mounts (#6714)
+  * chore: fix failed lint
+  * refactor(cleanup): do git history based cleanup concurrently
+    (#6708)
+  * fix(run): "docker run" should control output direcly
+  * refactor(run): SyncContextCliWithLogger() is unused
+  * refactor(run): DockerCliOption is deprecated
+  * docs(telemetry): actualize
+  * docs(cr-login): update example (#6711)
+  * refactor(cleanup): add detailed error for invalid regex in
+    config
+  * docs(build): fix header (#6709)
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
 Mon Mar 17 10:03:28 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.32.1:
