@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global modname humanize
 Name:           python-humanize
-Version:        4.12.0
+Version:        4.12.1
 Release:        0
 Summary:        Python humanize utilities
 License:        MIT
