@@ -345,4 +345,13 @@
 - Update to version 0.5.13:</comment>
     <requestid>1252927</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>788e8717957d1d9dfcb1a6d101e44e90</srcmd5>
+    <version>0.6.0</version>
+    <time>1742420006</time>
+    <user>anag+factory</user>
+    <comment>Only require git-core
+because we don't need git-web and the other stuff here (forwarded request 1254170 from bmwiedemann)</comment>
+    <requestid>1254230</requestid>
+  </revision>
 </revisionlist>
