@@ -22,16 +22,13 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.17.1
+Version:        1.0.0
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
 URL:            https://github.com/M0ses/kanku
 Group:          Productivity/Networking/Web/Utilities
 Source:         %{name}-%{version}.tar.xz
-BuildArch:      noarch
-# Build only for supported arch. See 'etc/templates/default-vm.tt2.$ARCH'
-ExclusiveArch:  aarch64 x86_64 %{ix86}
 BuildRequires:  fdupes
 BuildRequires:  perl-macros
 BuildRequires:  systemd-rpm-macros
@@ -39,6 +36,10 @@ BuildRequires:  systemd-rpm-macros
 %if 0%{?suse_version}
 BuildRequires:  sysuser-tools
 %endif
+
+BuildArch:      noarch
+# Build only for supported arch. See 'etc/templates/default-vm.tt2.$ARCH'
+ExclusiveArch:  aarch64 x86_64 %{ix86}
 
 # perl requires for %check
 BuildRequires:  perl(Const::Fast)
@@ -54,7 +55,6 @@ BuildRequires:  perl(Dancer2::Plugin::DBIC)
 BuildRequires:  perl(Dancer2::Plugin::REST)
 BuildRequires:  perl(Dancer2::Plugin::WebSocket)
 BuildRequires:  perl(Expect)
-BuildRequires:  perl(File::HomeDir)
 BuildRequires:  perl(File::LibMagic)
 BuildRequires:  perl(IO::Interactive)
 BuildRequires:  perl(IO::Uncompress::UnXz)
@@ -64,10 +64,10 @@ BuildRequires:  perl(Log::Log4perl)
 BuildRequires:  perl(Moose)
 BuildRequires:  perl(MooseX::App)
 BuildRequires:  perl(MooseX::Singleton)
+BuildRequires:  perl(MooseX::ClassAttribute)
 BuildRequires:  perl(Net::IP)
 BuildRequires:  perl(Net::OBS::Client) >= 0.1.3
 BuildRequires:  perl(Libssh::Session)
-BuildRequires:  perl(Path::Class)
 BuildRequires:  perl(Plack)
 BuildRequires:  perl(Sys::Virt)
 BuildRequires:  perl(Template)
@@ -90,6 +90,7 @@ BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Mail::Sendmail)
 BuildRequires:  perl(Net::AMQP::RabbitMQ)
 BuildRequires:  perl(UUID)
+BuildRequires:  perl(Path::Tiny) >= 0.125
 
 Requires:       kanku-cli = %{version}
 Requires:       kanku-dispatcher = %{version}
@@ -158,7 +159,6 @@ Requires:       perl(Dancer2::Plugin::Auth::Extensible::Provider::DBIC)
 Requires:       perl(Dancer2::Plugin::DBIC)
 Requires:       perl(Dancer2::Plugin::REST)
 Requires:       perl(Expect)
-Requires:       perl(File::HomeDir)
 Requires:       perl(File::LibMagic)
 Requires:       perl(IO::Uncompress::UnXz)
 Requires:       perl(IPC::Run)
@@ -167,10 +167,10 @@ Requires:       perl(Log::Log4perl)
 Requires:       perl(Moose)
 Requires:       perl(MooseX::App)
 Requires:       perl(MooseX::Singleton)
+Requires:       perl(MooseX::ClassAttribute)
 Requires:       perl(Net::IP)
 Requires:       perl(Net::OBS::Client) >= 0.1.2
 Requires:       perl(Libssh::Session)
-Requires:       perl(Path::Class)
 Requires:       perl(Sys::Virt)
 Requires:       perl(Template)
 Requires:       perl(Template::Plugin::Filter::ANSIColor)
@@ -179,6 +179,7 @@ Requires:       perl(Test::Simple)
 Requires:       perl(XML::Structured)
 Requires:       perl(XML::XPath)
 Requires:       perl(YAML::PP)
+Requires:       perl(Path::Tiny) >= 0.125
 # DBD::SQLite is also provided by perl-DBD-SQLite-Amalgamation
 # but perl-DBD-SQLite-Amalgamation is breaks with SQL syntax errors
 # at job_histroy_sub table
@@ -187,6 +188,10 @@ Requires:       perl(Archive::Cpio)
 Requires:       perl(LWP::Protocol::https)
 Requires:       perl(Mail::Sendmail)
 Requires:       perl(UUID)
+Requires:       perl(User::pwent)
+Requires:       tar
+Requires:       bsdtar
+Requires:       procps
 %if 0%{?suse_version}
 Requires:       openssl(cli)
 %else
@@ -223,11 +228,15 @@ common config and lib files used in kanku
 
 %dir /etc/kanku/templates
 %dir /etc/kanku/templates/cmd
+%dir /etc/kanku/templates/cmd/init
 %dir /etc/kanku/templates/cmd/setup
 %config /etc/kanku/templates/default-vm.tt2
+%config /etc/kanku/templates/bios-serial-network.tt2
+%config /etc/kanku/templates/bios-serial-bridge.tt2
 %config /etc/kanku/templates/with-spice.tt2
 %config /etc/kanku/templates/vm-x86_64-uefi-tpm2.0.tt2
-%config /etc/kanku/templates/cmd/init.tt2
+%config /etc/kanku/templates/cmd/init/default.tt2
+%config /etc/kanku/templates/cmd/init/vagrant.tt2
 %config /etc/kanku/templates/cmd/setup/*
 %dir    /etc/kanku/templates/examples-vm/
 %config /etc/kanku/templates/examples-vm/obs-server-26.tt2
@@ -259,6 +268,7 @@ common config and lib files used in kanku
 %dir /usr/lib/kanku/lib/Kanku/Config/
 /usr/lib/kanku/lib/Kanku/Config/Defaults.pm
 /usr/lib/kanku/lib/Kanku/Handler.pod
+/usr/lib/kanku/lib/Kanku/Intro.pod
 /usr/lib/kanku/lib/Kanku/Notifier
 /usr/lib/kanku/lib/Kanku/Job.pm
 /usr/lib/kanku/lib/Kanku/RabbitMQ.pm
@@ -269,6 +279,9 @@ common config and lib files used in kanku
 /usr/lib/kanku/lib/Kanku/NotifyQueue.pm
 /usr/lib/kanku/lib/Kanku/GPG.pm
 /usr/lib/kanku/lib/Kanku/YAML.pm
+/usr/lib/kanku/lib/Kanku/Logger.pm
+/usr/lib/kanku/lib/Kanku/File.pm
+/usr/lib/kanku/lib/Kanku/Helpers.pm
 
 %dir /usr/lib/kanku/lib/Kanku/WebSocket
 /usr/lib/kanku/lib/Kanku/WebSocket/Notification.pm
@@ -284,6 +297,9 @@ common config and lib files used in kanku
 /usr/lib/kanku/lib/Kanku/Dispatch/Local.pm
 
 /usr/lib/kanku/lib/Kanku/Test/
+
+%dir /usr/lib/kanku/lib/MooseX/
+/usr/lib/kanku/lib/Kanku/TypeConstraints.pm
 
 %package cli
 Summary:        Command line client for kanku
@@ -302,20 +318,17 @@ Command line client for kanku, mainly used for setup tasks
 and in developer mode.
 
 %post cli
-    cat >> %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something << EOF
-
-WARNING: kankus iptables/ss/netstat handling changed.
-
-Please re-run "kanku setup --devel" if you are using kanku in developer mode.
-
-
-EOF
 
 %files cli
 %dir /usr/share/kanku/views/cli/
 %dir /usr/share/kanku/views/cli/rjob
+%dir /usr/share/kanku/views/cli/rguest
+%dir /usr/share/kanku/views/cli/rcomment
 /usr/share/kanku/views/cli/*.tt
 /usr/share/kanku/views/cli/rjob/*.tt
+/usr/share/kanku/views/cli/rguest/*.tt
+/usr/share/kanku/views/cli/rcomment/*.tt
+/usr/lib/kanku/lib/MooseX/App/
 /usr/lib/kanku/lib/Kanku/Cli/
 /usr/lib/kanku/lib/Kanku/Cli.pm
 /usr/lib/kanku/iptables_wrapper
@@ -637,6 +650,60 @@ kanku guests which are using the 'autostart' flag.
 %{_unitdir}/kanku-iptables.service
 %{_sbindir}/rckanku-iptables
 
+%package tests
+Summary:        Test cases for kanku
+Requires:       kanku-common = %{version}
+
+%description tests
+Test cases for kanku to run in a installed and configured kanku environment
+SEE README.md for further information.
+
+%files tests
+%dir /usr/share/kanku
+/usr/share/kanku/t/
+
+%package config-example-jobs
+Summary:        Example server job configs
+Requires:       kanku-common = %{version}
+
+%description config-example-jobs
+Example server job configs
+
+%post config-example-jobs
+
+%files config-example-jobs
+%dir /etc/kanku/jobs/include.d
+/etc/kanku/jobs/include.d/mtu-1450.yml
+/etc/kanku/jobs/dki-debian-10.yml
+/etc/kanku/jobs/dki-debian-unstable.yml
+/etc/kanku/jobs/dki-fedora_32.yml
+/etc/kanku/jobs/dki-fedora_33.yml
+/etc/kanku/jobs/dki-fedora_34.yml
+/etc/kanku/jobs/dki-fedora_35.yml
+/etc/kanku/jobs/dki-opensuse-15_0.yml
+/etc/kanku/jobs/dki-opensuse-15_1.yml
+/etc/kanku/jobs/dki-opensuse-15_2.yml
+/etc/kanku/jobs/dki-opensuse-15_3.yml
+/etc/kanku/jobs/dki-opensuse-42_1.yml
+/etc/kanku/jobs/dki-opensuse-42_2.yml
+/etc/kanku/jobs/dki-opensuse-42_3.yml
+/etc/kanku/jobs/dki-opensuse-tumbleweed-btrfs.yml
+/etc/kanku/jobs/dki-opensuse-tumbleweed-ext4.yml
+/etc/kanku/jobs/dki-sles-12_2.yml
+/etc/kanku/jobs/dki-sles-12_3.yml
+/etc/kanku/jobs/dki-sles-12_4.yml
+/etc/kanku/jobs/dki-sles-12_5.yml
+/etc/kanku/jobs/dki-ubuntu-focal.yml
+/etc/kanku/jobs/kanku-devel-debian-unstable.yml
+/etc/kanku/jobs/kanku-devel-fedora.yml
+/etc/kanku/jobs/kanku-devel-ubuntu.yml
+/etc/kanku/jobs/kanku-devel.yml
+/etc/kanku/jobs/kanku-server.yml
+/etc/kanku/jobs/multi-network.yml
+/etc/kanku/jobs/obs-server-26.yml
+/etc/kanku/jobs/obs-server.yml
+/etc/kanku/jobs/sles11sp3.yml
+
 %changelog
 
 %changelog cli
@@ -658,3 +725,7 @@ kanku guests which are using the 'autostart' flag.
 %changelog iptables
 
 %changelog worker
+
+%changelog tests
+
+%changelog config-example-jobs

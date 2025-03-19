@@ -1,3 +1,17 @@
+kanku (1.0.0) unstable; urgency=medium
+
+  * updated to upstream version 1.0.0
+    * FEATURES
+      * [handler] new handler Kanku::Handler::Vagrant
+      * [templates] new VM templates
+        - bios-serial-bridge.tt2
+        - bios-serial-network.tt2
+      * [cli] up - new aliases for option `--skip_all_checks`
+        - `--sac`
+        - `--skip-all-checks`
+
+  -- Frank Schreiner (aka. M0ses) <frank+debian@samaxi.de>  Tue, 18 Mar 2025 09:31:11 +0000
+
 kanku (0.17.1) unstable; urgency=medium
 
   * updated to upstream version 0.17.1

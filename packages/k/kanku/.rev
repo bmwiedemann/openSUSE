@@ -263,4 +263,12 @@
     <comment>* new upstream version 0.17.1</comment>
     <requestid>1174412</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c51fb3becf0b2646d40df9ad26779a9c</srcmd5>
+    <version>1.0.0</version>
+    <time>1742419975</time>
+    <user>anag+factory</user>
+    <comment>update to upstream version 1.0.0</comment>
+    <requestid>1254201</requestid>
+  </revision>
 </revisionlist>
