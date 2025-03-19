@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 17 13:32:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
+
+- Default SELinux Profile prevents configuration of drbd_passive resources in cluster (bsc#1239436)
+  * update spec file to create a new package drbd-selinux
+  * update patch bsc-1233273_drbd.ocf-update-for-OCF-1.1.patch
+    - fix the commit log mistake and typo, no code change
+
+-------------------------------------------------------------------
 Thu Mar 13 07:52:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
 
 - drbd_passive resource times out after 10 minutes and drbd device doesn't exist (bsc#1239437)

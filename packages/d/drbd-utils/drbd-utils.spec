@@ -31,6 +31,10 @@
 # Man pages are included in the released tarball.
 # Only need po4a to build man from git source code
 %bcond_without prebuiltman
+
+%global selinuxtype             targeted
+%global selinuxmodulename       drbd
+
 Name:           drbd-utils
 Version:        9.29.0
 Release:        0
@@ -103,6 +107,7 @@ BuildRequires:  po4a
 Provides:       drbd-control
 Provides:       drbdsetup
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       (drbd-selinux if selinux-policy-%{selinuxtype})
 
 %description
 Drbd is a distributed replicated block device. It mirrors a block
@@ -143,9 +148,12 @@ PATH=/sbin:$PATH ./configure \
     --without-84support
 
 %make_build OPTFLAGS="%{optflags}"
+%make_build selinux
 
 %install
 %make_install
+install -d %{buildroot}%{_datadir}/selinux/packages
+install -m 0644 selinux/drbd.pp.bz2 %{buildroot}%{_datadir}/selinux/packages
 
 %ifnarch %{ix86} x86_64
 rm -rf %{buildroot}%{_sysconfdir}/xen
@@ -153,6 +161,48 @@ rm -rf %{buildroot}%{_sysconfdir}/xen
 
 rm -rf %{buildroot}%{libdir}/drbd/crm-*fence-peer.sh     # bsc#1204276
 
+# following for drbd-selinux
+
+%package -n drbd-selinux
+Summary:        SElinux policy for DRBD
+BuildRequires:  checkpolicy
+BuildRequires:  selinux-policy
+BuildRequires:  selinux-policy-%{selinuxtype}
+BuildRequires:  selinux-policy-devel
+Requires:       policycoreutils
+Requires:       policycoreutils-python-utils
+Requires:       selinux-policy >= %{_selinux_policy_version}
+
+%description -n drbd-selinux
+drbd-selinux contains the SELinux policy meant to be used with this version of DRBD and related tools.
+
+%files -n drbd-selinux
+%attr(0644,root,root) %{_datadir}/selinux/packages/%{selinuxmodulename}.pp.bz2
+%ghost %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{selinuxmodulename}
+
+%pre -n drbd-selinux
+%selinux_relabel_pre -s %{selinuxtype}
+
+%post -n drbd-selinux
+# install selinux policy module with priority 200 to override the default policy
+# maybe we want/need the next line to &> /dev/null
+%selinux_modules_install -s %{selinuxtype} -p 200 %{_datadir}/selinux/packages/%{selinuxmodulename}.pp.bz2
+
+%postun -n drbd-selinux
+if [ $1 -eq 0 ]; then
+    %selinux_modules_uninstall -s %{selinuxtype} -p 200 %{selinuxmodulename}
+fi
+
+# We we want a "rich forward dependency" of drbd-utils to drbd-selinux,
+# we above use
+#  Requires: (drbd-selinux if selinux-policy-targeted)
+# We need to relabel in posttrans, because in post the files to
+# relabel may not be installed yet.
+%posttrans -n drbd-selinux
+# maybe &> /dev/null
+%selinux_relabel_post -s %{selinuxtype}
+
+# below for package drbd-utils
 %pre
 %service_add_pre %{services}
 

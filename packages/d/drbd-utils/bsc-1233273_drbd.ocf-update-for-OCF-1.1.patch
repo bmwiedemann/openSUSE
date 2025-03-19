@@ -7,13 +7,13 @@ According to [1], the commit
 1. bumps drbd ocf version to 1.5
 2. updates the <version> element to 1.1 for declare support OCF 1.1.
 3. uses unique-group attribute but keeps deprecated unique attribute.
-4. advertises new role names 'Unpromoted' and 'Unpromoted' instead of
+4. advertises new role names 'promoted' and 'Unpromoted' instead of
     'Master' and 'Slave'.
 
-Because of change[4], the drbd ocf RA won't be able to support old
+Because of change <4>, the drbd ocf RA won't be able to support old
 names so we need to bump version of the RA.
 
-Links: https://projects.clusterlabs.org/w/development/update_resource_agent_for_ocf_1.1/
+[1] Links: https://projects.clusterlabs.org/w/development/update_resource_agent_for_ocf_1.1/
 Signed-off-by: Su Yue <glass.su@suse.com>
 ---
  scripts/drbd.ocf | 16 ++++++++--------
