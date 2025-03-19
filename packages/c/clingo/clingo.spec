@@ -1,7 +1,7 @@
 #
 # spec file for package clingo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,6 +79,7 @@ BuildRequires:  make
 BuildRequires:  python3
 BuildRequires:  python3-cffi
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 
 %description -n python3-%{name}
 This module provides functions and classes to work with ground terms and to

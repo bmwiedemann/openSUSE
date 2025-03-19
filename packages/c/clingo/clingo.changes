@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 11 10:32:51 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- BuildRequire python3-setuptools to fix build on python 3.13
+
+-------------------------------------------------------------------
 Mon Dec  5 12:55:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.2:
