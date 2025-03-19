@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 18 15:36:24 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.6.4.
+  Changelog: https://github.com/nwg-piotr/nwg-drawer/releases/tag/v0.6.4
+  - Dependencies updated in order to avoid the Memory Exhaustion in Expr Parser with Unrestricted Input vulnerability in github.com/expr-lang/expr.
+- Fixes boo#1239735.
+
+-------------------------------------------------------------------
 Thu Jan 30 00:09:38 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 0.6.3.
