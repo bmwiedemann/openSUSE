@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c92e6389b474a909873d10b6367a14b</srcmd5>
+    <version>4.18.0</version>
+    <time>1742420072</time>
+    <user>anag+factory</user>
+    <comment>new package gitlab-container-registry: Gitlab's fork of the Docker Distribution Registry (now called CNCF Distribution)</comment>
+    <requestid>1254502</requestid>
+  </revision>
+</revisionlist>

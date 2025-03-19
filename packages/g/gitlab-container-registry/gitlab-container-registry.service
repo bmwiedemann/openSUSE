@@ -1,0 +1,10 @@
+[Unit]
+Description=Gitlab container registry
+
+[Service]
+User=gitlab-container-registry
+Group=gitlab-container-registry
+ExecStart=/usr/bin/gitlab-container-registry serve /etc/gitlab-container-registry/config.yml
+
+[Install]
+WantedBy=multi-user.target

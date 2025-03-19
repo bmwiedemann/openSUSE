@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon Mar 17 19:47:58 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.18.0:
+  * Features
+    - api: log tag delete events (045dc26)
+    - datastore: support dedicated redis connection for DB load
+      balancing (98fa3f0)
+  * Bug Fixes
+    - cancel existing multipart uploads when starting new one for
+      the same path for s3_v2 driver (44a0d98)
+  * Build
+    - deps: update module github.com/prometheus/client_golang to
+      v1.21.1 (801010a)
+    - deps: update module golang.org/x/crypto to v0.36.0 (eb38c8c)
+    - deps: update module golang.org/x/oauth2 to v0.28.0 (33c43e9)
+
+-------------------------------------------------------------------
+Fri Mar  7 06:43:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package gitlab-container-registry: Gitlab's fork of the Docker
+  Distribution Registry (now called CNCF Distribution)
