@@ -310,4 +310,12 @@
   See included changes.txt for details (forwarded request 1187230 from olh)</comment>
     <requestid>1187297</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0ea51d23e3928bb713e163b43e00b9a2</srcmd5>
+    <version>1.3.0</version>
+    <time>1742420036</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.3.0 (027b625f9) (forwarded request 1254404 from olh)</comment>
+    <requestid>1254405</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  3 03:03:03 UTC 2025 - ohering@suse.de
+
+- update to version 1.3.0 (027b625f9)
+  See included changes.txt for details
+- use coccinelle.patch to link to ocaml-pcre2 
+- remove unused kill-env.diff
+- add optional testsuite package
+
+-------------------------------------------------------------------
 Fri Jul 12 12:12:12 UTC 2024 - ohering@suse.de
 
 - update to version 1.2

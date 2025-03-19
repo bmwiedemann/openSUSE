@@ -1,17 +1,16 @@
 <services>
   <service name="tar_scm" mode="manual">
-    <param name="url">https://github.com/coccinelle/coccinelle.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">969cb12e9e9b7d4f42c2ff15296fd927f1ba63af</param>
+    <param name="exclude">bundles/menhirLib</param>
+    <param name="exclude">bundles/parmap</param>
+    <param name="exclude">bundles/pcre</param>
+    <param name="exclude">bundles/pyml</param>
+    <param name="exclude">bundles/stdcompat</param>
     <param name="filename">coccinelle</param>
-<param name="exclude">bundles/menhirLib</param>
-<param name="exclude">bundles/parmap</param>
-<param name="exclude">bundles/pcre</param>
-<param name="exclude">bundles/pyml</param>
-<param name="exclude">bundles/stdcompat</param>
-<!--
--->
+    <param name="revision">027b625f9a252deb04bf4950c776dc5a5e0995a1</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://gitlab.inria.fr/coccinelle/coccinelle.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
