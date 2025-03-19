@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 18 16:44:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.2.0
+  * New file structure that perfectly mirrors what you see in
+    the sidebar. Ability to change the color and icon of each item.
+  * New drawing page with more features.
+  * "Copy" button in the code block.
+  * New bottom bar for switching between notes and tasks.
+  * Improved page turn animation.
+  * Pressing V without a modifier while an image is in the
+    clipboard does nothing (as expected).
+  * Preventing the use of a "/" to name an item, as it would
+    create a directory.
+  * Various rendering issues.
+
+-------------------------------------------------------------------
 Fri Oct 11 15:55:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.1.0

@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0
+%define kf6_version 6.4
 %define qt6_version 6.5
 
 %bcond_without released
 Name:           klevernotes
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Note taking and management application
 License:        GPL-3.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
@@ -71,6 +72,9 @@ emoji, etc.
 
 %prep
 %autosetup -p1
+
+# Version bump was forgotten
+sed -i 's#VERSION "1\.1\.1"#VERSION "1\.2\.0"#' CMakeLists.txt
 
 %build
 %cmake_kf6
