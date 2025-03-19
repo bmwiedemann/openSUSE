@@ -1,7 +1,7 @@
 #
 # spec file for package python-msal-extensions
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-msal-extensions
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        Microsoft Authentication Library (MSAL) for Python Extensions
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/AzureAD/microsoft-authentication-library-for-python
 Source:         https://files.pythonhosted.org/packages/source/m/msal-extensions/msal_extensions-%{version}.tar.gz
-Patch:          me_relax-portalocker.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -57,7 +56,6 @@ This packages contains additional extensions.
 
 %prep
 %setup -q -n msal_extensions-%{version}
-%patch -P0 -p1
 
 %build
 %pyproject_wheel

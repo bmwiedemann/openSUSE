@@ -131,4 +131,22 @@
     <comment></comment>
     <requestid>1226187</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d224e2c72119c547b61f79777ee1dc46</srcmd5>
+    <version>1.3.1</version>
+    <time>1742420000</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.1
+  * Do not install tests in site-packages by @musicinmybrain in (#139)
+  * Also dropped Python 3.7 and 3.8 since this release
+- from version 1.3.0
+  * Fix a typo in README.md (persistance/persistence)
+    by @musicinmybrain in (#133)
+  * Maintenance by @rayluo in (#137)
+  * Allow portalocker version 3 by @musicinmybrain in (#136)
+  * Make portalocker optional (opt in by pip install
+    msal-extensions[portalocker]) by @rayluo in (#117)
+- Drop me_relax-portalocker.patch, fixed upstream (forwarded request 1254062 from glaubitz)</comment>
+    <requestid>1254234</requestid>
+  </revision>
 </revisionlist>
