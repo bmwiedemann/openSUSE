@@ -525,4 +525,12 @@
   * Declare Python 3.12 support</comment>
     <requestid>1225387</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>27d726d0540468450010884000e61d5f</srcmd5>
+    <version>5.4.1</version>
+    <time>1742420055</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254409</requestid>
+  </revision>
 </revisionlist>

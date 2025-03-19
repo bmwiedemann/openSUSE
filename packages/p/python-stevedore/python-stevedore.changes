@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 19 11:18:35 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.4.1
+  * Skip installation to speed up pep8
+  * reno: Update master for unmaintained/2023.1
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Nov 20 18:00:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.0:
