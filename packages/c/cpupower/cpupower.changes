@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 18 09:01:50 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Show the first 2 lines of kernel-source sources we build against
+  in the package description.
+  Also show the latest git hash commit ID there to be able to track
+  the exact sources the package has been built against.
+
+-------------------------------------------------------------------
 Thu Mar  6 14:16:27 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Not also adopt the kernel version, but also the exact build release

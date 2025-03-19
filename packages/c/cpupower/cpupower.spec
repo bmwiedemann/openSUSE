@@ -20,6 +20,8 @@
 %define tsdir tools/power/x86/turbostat
 %define pbdir tools/power/x86/x86_energy_perf_policy
 %define ssdir tools/power/x86/intel-speed-select
+%define krl_chlg %(rpm -q --changelog kernel-source |head -n2)
+%define krl_cmt  %(rpm -q --changelog kernel-source |grep -m1 "^- commit [0-9a-f]*")
 # Use this as version when things are in mainline kernel
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
 %define release %(rpm -q --qf '%%{RELEASE}' kernel-source)
@@ -46,6 +48,10 @@ like CPU frequency switching (cpufreq) or CPU sleep states (cpuidle).
 Also part of the package are:
 %turbover
 intel-speed-select %issver
+Kernel changelog:
+%krl_chlg
+...
+%krl_cmt
 
 %package -n libcpupower1
 Summary:        Processor power related C-library
