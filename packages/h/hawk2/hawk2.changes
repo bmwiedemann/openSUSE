@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 18 16:31:42 UTC 2025 - aburlakov@suse.com
+
+- Update to version 2.6.6+git.1742310530.bfcd0e2c (bsc#1182162,bsc#1182164):
+  * Dev: proof code from injections
+  * Fix: enable colocation linking
+
+-------------------------------------------------------------------
 Mon Dec 16 10:32:19 UTC 2024 - aburlakov@suse.com
 
 - Update to version 2.6.6+git.1734344973.d7058a83:
