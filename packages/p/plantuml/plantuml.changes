@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Mar  6 20:41:19 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.25.2
+  * EBNF - Improve the curved line on the EBNF diagram.
+  * SVG - Lost id-attribute (or group).
+  * SVG - Revert SVG fill to "none"; use UParam to indicate hit
+    targets.
+  * SVG - Interactive SVG with namespaced::nodes does not work
+    properly.
+  * SVG - Unable to Click Links in SVGs Due to Overlapping
+    Transparent path Elements.
+- Update to version 1.25.1
+  * Backslash future deprecation and introduction of new functions
+  * %newline() fix
+  * REGEX - Add method to map regex patterns to descriptive names.
+  * SVG - Allow interactive SVG sequence diagram's header to float
+  * XMI - Add support for custom XMI generation.
+  * SVG results with black box in Visio.
+  * PDF export fails.
+  * Problem with <style> and parameter Shadowing for rectangle.
+  * YAML string quotes do not escape comment character.
+  * Style boxless root on mindmap.
+  * Allow colon character (:) on the value of a YAML field.
+  * Unable to define variables on plantuml command line with -D.
+  * Diagram sequence regression.
+  * Improve internal YAML parser with a new parser.
+  * YAML - Display key without label.
+  * YAML - Fix Object attribute hierarchy in the yaml array.
+  * YAML - Cannot render a list contain a key value pair.
+  * YAML - Fix YAML processing if no spaces at start of list.
+  * YAML - Last list entry used instead of showing top level YAML
+    items.
+  * EBNF - None-first style.
+  * Entity names cannot start or end with separator character:
+    fix error message.
+- Update to version 1.25.0
+  * Gantt Chart with closed weekends does not render correctly
+    depending on the theme.
+  * Allow hide closed in the Gantt chart.
+  * Ressources footer is messed when in monthly mode.
+  * Gantt with weekly scale doesn't show named regions.
+  * guillemotleft guillemotright.
+  * Improve head of arrow position.
+  * Smetana throws an ArrayIndexOutOfBoundsException.
+  * Test ExportOnUText.
+  * Extend error message with diagram type.
+  * Allow RoundCorner for object, map and json element.
+  * Update DomainStory to version Delta 0.4.0.
+  * Hiding/showing a specific stereotype hides/shows all of them.
+  * Allow YAML frontmatter on beginning of theme files.
+  * REGEX - Allow to expand a element with the corresponding
+    alternative element.
+
+-------------------------------------------------------------------
 Mon Nov 18 13:47:38 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.24.8
