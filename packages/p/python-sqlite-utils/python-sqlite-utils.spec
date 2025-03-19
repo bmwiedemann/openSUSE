@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlite-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,36 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-sqlite-utils
-Version:        3.36
+Version:        3.38
 Release:        0
 Summary:        Python CLI tool and library for manipulating SQLite databases
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/simonw/sqlite-utils
-Source:         https://files.pythonhosted.org/packages/source/s/sqlite-utils/sqlite-utils-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sqlite_utils/sqlite_utils-%{version}.tar.gz
 BuildRequires:  %{python_module click-default-group}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlite-fts4}
 BuildRequires:  %{python_module tabulate}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-click-default-group
+Requires:       python-dateutil
+Requires:       python-pluggy
 Requires:       python-sqlite-fts4
 Requires:       python-tabulate
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,15 +53,15 @@ BuildArch:      noarch
 CLI tool and Python utility functions for manipulating SQLite databases.
 
 %prep
-%setup -q -n sqlite-utils-%{version}
+%setup -q -n sqlite_utils-%{version}
 # https://github.com/simonw/sqlite-utils/issues/357
 sed -i 's:pytest-runner:pytest:' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/sqlite-utils
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -74,6 +79,7 @@ export LANG=en_US.UTF-8
 %doc README.md docs
 %license LICENSE
 %python_alternative %{_bindir}/sqlite-utils
-%{python_sitelib}/*
+%{python_sitelib}/sqlite_utils
+%{python_sitelib}/sqlite_utils-%{version}*-info
 
 %changelog
