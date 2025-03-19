@@ -15,4 +15,13 @@ It is useful for wayland based window managers like hyprland and sway, where no 
 Therefore it would be important to have the package available in the main repos.</comment>
     <requestid>1239787</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6b47a66bc50940658fe21d9af9ec35fa</srcmd5>
+    <version>0.18.0</version>
+    <time>1742419994</time>
+    <user>anag+factory</user>
+    <comment>- version bump to v0.18.0 
+</comment>
+    <requestid>1254227</requestid>
+  </revision>
 </revisionlist>
