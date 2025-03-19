@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 19 02:17:55 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update vendor.tar.zst. This updates the vendored dependencies that caused
+  a build failure because of a new Rust update.
+
+-------------------------------------------------------------------
 Thu Aug 22 00:11:32 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update vendor tarball and use cargo home cache

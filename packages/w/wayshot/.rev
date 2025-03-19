@@ -139,4 +139,13 @@
     <comment></comment>
     <requestid>1195213</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>7850b3a9e568e6fb6ba91561fa507fbe</srcmd5>
+    <version>1.3.1</version>
+    <time>1742419965</time>
+    <user>anag+factory</user>
+    <comment>- Update vendor.tar.zst. This updates the vendored dependencies that caused
+  a build failure because of a new Rust update.</comment>
+    <requestid>1254269</requestid>
+  </revision>
 </revisionlist>
