@@ -297,4 +297,116 @@
     <comment></comment>
     <requestid>1248069</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d7cf4c2a9b5020b33d7a2cba62f99626</srcmd5>
+    <version>0.42.0</version>
+    <time>1742420041</time>
+    <user>anag+factory</user>
+    <comment>- Include about.wasm plugin to build.
+- Update to version 0.42.0:
+  * fix(plugins): styling in the &quot;about&quot; plugin 
+  * HOTFIX: fix tutorial link in about plugin
+  * Fix compiler warnings
+  * docs(contributing): update PR statement wording
+  * docs(changelog): update 2 recent PRs
+  * fix(selection): add proper multi-click dragging options
+  * fix(stacked): stacked panes can't resize status-bar
+  * docs(changelog): add 3 recent PRs
+  * fix(ui): add split right/down shortcut hints to the status-bar
+  * fix(grid): out of bounds removal when app does not update its scroll region on resize
+  * fix(plugins): prevent paging plugins from cache at runtime
+  * fix(serialization): stacked panes fixes
+  * fix(panes): multiplayer stack issues
+  * fix(panes): when focusing pane off the tab edge, break ties with active_at instead of y
+  * fix(toolchain): Unbreak client startup
+  * fix(panes): various fixes for rendering stacked panes without pane frames
+  * Fix compiler warnings
+  * docs(changelog): verbose about error
+  * fix(about): more verbose config readonly error
+  * docs(changelog): sixel fix
+  * fix(grid): Clear sixels when clearing terminal
+  * docs(changelog): deps update
+  * chore(deps): update some dependencies
+  * fix(stacked-panes): better handling of adding new panes to a stack
+  * feat(plugins): add tab history to the `SessionUpdate` Event
+  * docs(changelog): pin plugin pane fix
+  * fix(pinned-panes): allow pinning floating plugin panes with the mouse
+  * docs(changelog): recent fixes
+  * fix(floating-panes): reset swap floating layouts when closing last floating pane
+  * fix(tiled-panes): recover from full stack
+  * docs(changelog): chrono upgrade
+  * fix(logging): segfault in chrono crate
+  * docs(changelog): clipboard message fixes
+  * fix(clipboard): clipboard message
+  * docs(changelog): filepicker improvements
+  * fix(ux): some filepicker improvements
+  * docs(changelog): resize shortcuts
+  * feat(ui): resize shortcuts
+  * docs(changelog): convert old themes
+  * chore(repo): convert themes to new spec
+  * docs(changelog): mouse double click selection
+  * feat(mouse): double-click to mark word boundaries, triple-click to mark paragraph
+  * docs(changelog): tips on startup
+  * feat(ux): tips on startup
+  * docs(changelog): about plugin
+  * feat(ui): about plugin and release notes
+  * docs(changelog): new theme definition spec
+  * feat(config): new theme definition spec
+  * docs(issue-template): clarify requirements
+  * docs(changelog): logical position fix
+  * fix(break-pane): strip logical position when inserting pane to new tab
+  * docs(changelog): floating pane coordinate fix
+  * fix(floating-panes): when changing coordinates, if a pane is not floating - make it floating
+  * docs(changelog): plugin editor and shell info
+  * feat(plugins): send info about $EDITOR and $SHELL
+  * docs(changelog): plugin apis to open panes near plugin
+  * feat(plugins): Allow opening panes near plugin
+  * docs(changelog): plugins pasted text event
+  * feat(plugins): add `PastedText` Event
+  * fix(tiled-panes): opening panes from the cli
+  * docs(changelog): floating pane coordinate chagne API
+  * feat(plugins): API to change floating pane coordinates
+  * docs(changelog): stacked resize
+  * feat(ui): stacked resize
+  * chore(deps): update to Wasmtime 29.0.1
+  * Update rust toolchain to 1.84
+  * docs(changelog): floating pane fixes
+  * fix(floating-panes): handle uncaught errors
+  * docs(changelog): include PR link
+  * docs(changelog): CSI= fix
+  * fix(terminal): support kitty keyboard protocol setting with &quot;=&quot;
+  * docs(changelog): mouse any event tracking
+  * feat(terminal): mouse AnyEvent tracking (1003)
+  * docs(changelog): stack panes command
+  * feat(ux): stack panes command
+  * docs(changelog): cursor overflow fix
+  * fix(terminal): cursor overflow
+  * docs(changelog): synchronized rendering query response
+  * fix(terminal): mode 2026 feature detection response
+  * docs(changelog): logical index pane sorting
+  * fix(layout-applier): logical index pane sorting
+  * docs(changelog): pin floating panes
+  * feat(ux): pin floating panes
+  * docs(changelog): multiplayer cursor fix
+  * fix(multiuser): properly clear fake cursors
+  * docs(changelog): layout tab focus fix
+  * fix(screen): off by 1 error when focusing layout tab
+  * docs(changelog): plugin hidden focus fix
+  * fix(plugins): properly focus plugin after it was hidden
+  * docs(changelog): slash detach fix
+  * fix(plugins): do not detach if using a slash in a session name
+  * chore(repo): add funding.json
+  * docs(changelog): allow plugins to change host folder
+  * feat(plugins): allow changing the plugin's `/host` folder (under a new permission)
+  * docs(changelog): ui component padding
+  * fix(plugins): properly pad UI elements when they have a background
+  * docs(changelog): focus_pane_with_id fix
+  * fix(plugins): properly focus pane after tab was closed
+  * chore(repo): fix typo in lock file
+- Update _service file.
+  * obsoleted &quot;disabled&quot; run mode now replaced with &quot;manual&quot;.
+  * Use recomprizz instead of recompress.
+</comment>
+    <requestid>1254373</requestid>
+  </revision>
 </revisionlist>

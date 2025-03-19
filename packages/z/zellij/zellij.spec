@@ -22,7 +22,7 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.41.2
+Version:        0.42.0
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
@@ -109,6 +109,9 @@ pushd default-plugins/configuration
 cargo --offline build --release --target=wasm32-wasip1
 popd
 pushd default-plugins/plugin-manager
+cargo --offline build --release --target=wasm32-wasip1
+popd
+pushd default-plugins/about
 cargo --offline build --release --target=wasm32-wasip1
 popd
 
