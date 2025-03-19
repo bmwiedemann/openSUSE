@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 18 16:58:31 UTC 2025 - David Mair <dmair@suse.com>
+
+- Upgrade to crash 8.0.6
+ - Remove patches already in or updated within 8.0.6 base:
+  * 0001-arm64-section_size_bits-compatible-with-macro-defini.patch
+  * 0002-Reflect-__-start-end-_init_task-kernel-symbols-renam.patch
+  * 0003-x86_64-fix-for-adding-top_of_kernel_stack_padding-fo.patch
+  * 0004-Fix-kmem-v-option-on-Linux-6.9-and-later-kernels.patch
+  * 0005-X86-64-fix-for-crash-session-loading-failure.patch
+  * 0006-Fix-for-failing-to-load-kernel-module.patch
+  * 0007-X86-64-fix-a-regression-issue-about-kernel-stack-pad.patch
+  * 0008-Fix-kmem-i-and-swap-commands-on-Linux-6.10-rc1-and-l.patch
+  * 0009-List-enable-LIST_HEAD_FORMAT-for-r-option.patch
+  * 0010-arm64-fix-a-potential-segfault-when-unwind-frame.patch
+  * 0011-arm64-Fix-bt-command-show-wrong-stacktrace-on-ramdum.patch
+ - Added new patch to correct gcore extension use of modified
+   set_context() function with an extra argument
+  * gcore-fix-use-of-set_context.patch
+
+-------------------------------------------------------------------
 Tue Feb 18 09:22:55 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Add fix_extensions_makefile_race_condition.patch
