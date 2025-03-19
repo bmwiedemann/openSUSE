@@ -468,7 +468,6 @@ unsorted:
   - adriconf 
   - adriconf-lang 
   - ads 
-  - adwaita-fonts 
   - adwaita-icon-theme-legacy 
   - adwaita-qt5 
   - adwaita-qt6 
@@ -3109,7 +3108,6 @@ unsorted:
   - d-feet 
   - d-feet-lang 
   - d-spy 
-  - d-spy-devel 
   - d-spy-lang 
   - d0_blind_id 
   - d0_blind_id-devel 
@@ -3758,7 +3756,6 @@ unsorted:
   - eclipse-swt 
   - eclipse-swt-bootstrap 
   - eclipse-swtchart 
-  - ecore_imf-module-scim 
   - ecpint-common 
   - ecryptfs-utils 
   - ecryptfs-utils-devel 
@@ -5070,6 +5067,7 @@ unsorted:
   - gcc15-ada-32bit 
   - gcc15-c++ 
   - gcc15-c++-32bit 
+  - gcc15-cobol 
   - gcc15-d 
   - gcc15-d-32bit 
   - gcc15-devel 
@@ -7475,6 +7473,7 @@ unsorted:
   - gnome-2048 
   - gnome-2048-lang 
   - gnome-autoar-devel 
+  - gnome-autoar-gtk-devel 
   - gnome-backgrounds 
   - gnome-bluetooth-1 
   - gnome-bluetooth-1-devel 
@@ -9047,6 +9046,8 @@ unsorted:
   - igerman98-doc 
   - ignition 
   - igrep 
+  - igsc 
+  - igsc-devel 
   - igwn-cmake-macros 
   - igzip 
   - iio-sensor-proxy-doc 
@@ -12794,7 +12795,6 @@ unsorted:
   - libcpuid-devel 
   - libcpuid-tools 
   - libcpuid17 
-  - libcpuinfo-suse0 
   - libcpuset-devel 
   - libcpuset1 
   - libcrc32c-devel 
@@ -13036,7 +13036,6 @@ unsorted:
   - libdrumstick-widgets2 
   - libdruntime-ldc110 
   - libdrvproxy2 
-  - libdspy-1-1 
   - libdtkcore5 
   - libdtkgui5 
   - libdtkwidget5 
@@ -13521,6 +13520,7 @@ unsorted:
   - libgck-devel 
   - libgck-devel-32bit 
   - libgck1-devel 
+  - libgcobol1 
   - libgcr-3-1-32bit 
   - libgcr-4-4-32bit 
   - libgcr-devel 
@@ -13620,8 +13620,10 @@ unsorted:
   - libgiomm-2_4-1-32bit 
   - libgirara-gtk3-4 
   - libgirepository-1_0-1-32bit 
-  - libgirepository-2_0-0 
   - libgit2-devel 
+  - libgit2-experimental-1_9 
+  - libgit2-experimental-devel 
+  - libgit2-experimental-tools 
   - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
   - libgit2-tools 
@@ -13672,8 +13674,10 @@ unsorted:
   - libgnome-bluetooth13 
   - libgnome-desktop-3-devel 
   - libgnome-desktop-4-devel 
+  - libgnome-games-support-1-3 
   - libgnome-games-support-devel 
   - libgnome-games-support1_3-devel 
+  - libgnome-games-support1_3-lang 
   - libgnome-keyring-devel 
   - libgnomekbd-devel 
   - libgnomekbd-lang 
@@ -14681,7 +14685,6 @@ unsorted:
   - libmaliit-devel 
   - libmaliit-glib2 
   - libmaliit-plugins2 
-  - libmanette-0_2-0-32bit 
   - libmanette-devel 
   - libmapidb-devel 
   - libmapidb1 
@@ -15620,7 +15623,6 @@ unsorted:
   - libppl_c4 
   - libpplite5 
   - libppsdocument4_0-5 
-  - libppsshell4_0-4 
   - libppsview4_0-4 
   - libpq5-32bit 
   - libpqos-devel 
@@ -16201,7 +16203,7 @@ unsorted:
   - librest-0_7-0 
   - librest-devel 
   - librest0_7-devel 
-  - libretro-gtk-1-0 
+  - libretro-gtk-2-0 
   - librevenge-devel 
   - librevenge-doc 
   - librevenge-generators-0_0-0 
@@ -21208,9 +21210,7 @@ unsorted:
   - papers-plugin-comicsdocument 
   - papers-plugin-djvudocument 
   - papers-plugin-pdfdocument 
-  - papers-plugin-psdocument 
   - papers-plugin-tiffdocument 
-  - papers-plugin-xpsdocument 
   - papi 
   - papi-devel 
   - papi-devel-static 
@@ -23917,6 +23917,7 @@ unsorted:
   - python-flake8-doc 
   - python-freezerclient-doc 
   - python-furo-doc 
+  - python-fuse-doc 
   - python-gevent-doc 
   - python-glanceclient-doc 
   - python-gobject-common-devel 
@@ -33989,6 +33990,7 @@ unsorted:
   - python313-pegen 
   - python313-pelican 
   - python313-pem 
+  - python313-pendulum 
   - python313-pep440 
   - python313-pep8-naming 
   - python313-peppercorn 
@@ -48004,7 +48006,6 @@ unsorted:
   - typelib-1_0-GES-1_0 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GFBGraph-0_2 
-  - typelib-1_0-GIRepository-3_0 
   - typelib-1_0-GLibUnix-2_0 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
@@ -48125,7 +48126,7 @@ unsorted:
   - typelib-1_0-Mbim-1_0 
   - typelib-1_0-ModemManager-1_0 
   - typelib-1_0-Modulemd-2_0 
-  - typelib-1_0-Msg-0 
+  - typelib-1_0-Msg-1 
   - typelib-1_0-Muffin-0_0 
   - typelib-1_0-NMA-1_0 
   - typelib-1_0-Nautilus-4_0 
@@ -48145,7 +48146,7 @@ unsorted:
   - typelib-1_0-Qmi-1_0 
   - typelib-1_0-Qrtr-1_0 
   - typelib-1_0-Rest-0_7 
-  - typelib-1_0-Retro-1-0 
+  - typelib-1_0-Retro-2-0 
   - typelib-1_0-RygelCore-2_8 
   - typelib-1_0-RygelRenderer-2_8 
   - typelib-1_0-RygelRendererGst-2_8 
@@ -49667,7 +49668,6 @@ unsorted:
   - zchunk 
   - zdbsp 
   - zeal 
-  - zed 
   - zeitgeist 
   - zeitgeist-devel 
   - zellij 
