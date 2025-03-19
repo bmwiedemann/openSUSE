@@ -20,4 +20,14 @@
 </comment>
     <requestid>1254157</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec1f20a536ebf24b0181ee020e8d2b2f</srcmd5>
+    <version>0.6</version>
+    <time>1742419997</time>
+    <user>anag+factory</user>
+    <comment>- version 0.6:
+  * avoid setting up bridge if no device link to a connection
+  * bridge link to a slave interface</comment>
+    <requestid>1254238</requestid>
+  </revision>
 </revisionlist>
