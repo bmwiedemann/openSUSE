@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 18 15:35:47 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250318.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250318
+  * Add TruffleRuby and TruffleRuby GraalVM 24.2.0 by @eregon in #2512
+
+-------------------------------------------------------------------
 Sat Feb 15 11:24:29 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20250215.
