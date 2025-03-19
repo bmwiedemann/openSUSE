@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 18 12:50:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add numpy22.patch adding compatibility with numpy 2.2
+
+-------------------------------------------------------------------
 Thu Feb  6 19:21:03 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Remove bogus skip-test_noinline_on_main_call.patch, it was fixed

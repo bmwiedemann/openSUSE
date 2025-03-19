@@ -1,0 +1,372 @@
+From 1e2fb1d1c81880a645345991eb48e39b578e119d Mon Sep 17 00:00:00 2001
+From: kc611 <ckaustubhm06@gmail.com>
+Date: Tue, 4 Mar 2025 13:44:28 +0530
+Subject: [PATCH 01/19] Added support for NumPy 2.2
+
+---
+ azure-pipelines.yml                           | 20 +++++++++----------
+ buildscripts/azure/azure-windows.yml          |  4 ++--
+ .../tests/cudadrv/test_cuda_array_slicing.py  |  5 +++--
+ numba/np/arrayobj.py                          |  8 +++++++-
+ numba/np/npdatetime.py                        |  4 ++++
+ numba/np/old_arraymath.py                     | 14 +++++++------
+ numba/tests/test_conditions_as_predicates.py  | 19 ++++++++++++------
+ numba/tests/test_hashing.py                   | 17 +++++++++-------
+ numba/tests/test_np_functions.py              |  8 ++++++--
+ numba/tests/test_npdatetime.py                | 12 ++++++++++-
+ 10 files changed, 74 insertions(+), 37 deletions(-)
+
+Index: numba-0.61.0/numba/cuda/tests/cudadrv/test_cuda_array_slicing.py
+===================================================================
+--- numba-0.61.0.orig/numba/cuda/tests/cudadrv/test_cuda_array_slicing.py
++++ numba-0.61.0/numba/cuda/tests/cudadrv/test_cuda_array_slicing.py
+@@ -186,7 +186,7 @@ class CudaArraySlicing(CUDATestCase):
+         for i in range(darr.shape[0]):
+             np.testing.assert_array_equal(darr[i:i].copy_to_host(), arr[i:i])
+         # empty slice of empty slice
+-        self.assertFalse(darr[:0][:0].copy_to_host())
++        np.testing.assert_array_equal(darr[:0][:0].copy_to_host(), np.empty(0))
+         # out-of-bound slice just produces empty slices
+         np.testing.assert_array_equal(darr[:0][:1].copy_to_host(),
+                                       arr[:0][:1])
+@@ -199,7 +199,8 @@ class CudaArraySlicing(CUDATestCase):
+         np.testing.assert_array_equal(darr[:0].copy_to_host(), arr[:0])
+         np.testing.assert_array_equal(darr[3, :0].copy_to_host(), arr[3, :0])
+         # empty slice of empty slice
+-        self.assertFalse(darr[:0][:0].copy_to_host())
++        np.testing.assert_array_equal(darr[:0][:0].copy_to_host(),
++                                      np.empty((0, 7)))
+         # out-of-bound slice just produces empty slices
+         np.testing.assert_array_equal(darr[:0][:1].copy_to_host(), arr[:0][:1])
+         np.testing.assert_array_equal(darr[:0][-1:].copy_to_host(),
+Index: numba-0.61.0/numba/np/arrayobj.py
+===================================================================
+--- numba-0.61.0.orig/numba/np/arrayobj.py
++++ numba-0.61.0/numba/np/arrayobj.py
+@@ -6782,13 +6782,18 @@ def ol_bool(arr):
+     if isinstance(arr, types.Array):
+         def impl(arr):
+             if arr.size == 0:
+-                return False # this is deprecated
++                if numpy_version < (2, 2):
++                    return False # this is deprecated
++                else:
++                    raise ValueError(("The truth value of an empty array is "
++                                      "ambiguous. Use `array.size > 0` to "
++                                      "check that an array is not empty."))
+             elif arr.size == 1:
+                 return bool(arr.take(0))
+             else:
+-                msg = ("The truth value of an array with more than one element "
+-                       "is ambiguous. Use a.any() or a.all()")
+-                raise ValueError(msg)
++                raise ValueError(("The truth value of an array with more than"
++                                  " one element is ambiguous. Use a.any() or"
++                                  " a.all()"))
+         return impl
+ 
+ 
+Index: numba-0.61.0/numba/np/npdatetime.py
+===================================================================
+--- numba-0.61.0.orig/numba/np/npdatetime.py
++++ numba-0.61.0/numba/np/npdatetime.py
+@@ -810,6 +810,10 @@ def _cast_npdatetime_int64(context, buil
+ @overload_method(types.NPTimedelta, '__hash__')
+ @overload_method(types.NPDatetime, '__hash__')
+ def ol_hash_npdatetime(x):
++    if numpy_support.numpy_version >= (2, 2)\
++          and isinstance(x, types.NPTimedelta) and not x.unit:
++        raise ValueError("Can't hash generic timedelta64")
++
+     if IS_32BITS:
+         def impl(x):
+             x = np.int64(x)
+Index: numba-0.61.0/numba/np/old_arraymath.py
+===================================================================
+--- numba-0.61.0.orig/numba/np/old_arraymath.py
++++ numba-0.61.0/numba/np/old_arraymath.py
+@@ -4818,23 +4818,25 @@ def np_trim_zeros(filt, trim='fb'):
+     if not isinstance(trim, (str, types.UnicodeType)):
+         raise NumbaTypeError('The second argument must be a string')
+ 
++    trim_escapes = numpy_version >= (2, 2)
++
+     def impl(filt, trim='fb'):
+         a_ = np.asarray(filt)
+         first = 0
+         trim = trim.lower()
+         if 'f' in trim:
+             for i in a_:
+-                if i != 0:
+-                    break
+-                else:
++                if i == 0 or (trim_escapes and i == ''):
+                     first = first + 1
++                else:
++                    break
+         last = len(filt)
+         if 'b' in trim:
+             for i in a_[::-1]:
+-                if i != 0:
+-                    break
+-                else:
++                if i == 0 or (trim_escapes and i == ''):
+                     last = last - 1
++                else:
++                    break
+         return a_[first:last]
+ 
+     return impl
+Index: numba-0.61.0/numba/tests/test_conditions_as_predicates.py
+===================================================================
+--- numba-0.61.0.orig/numba/tests/test_conditions_as_predicates.py
++++ numba-0.61.0/numba/tests/test_conditions_as_predicates.py
+@@ -1,4 +1,4 @@
+-from numba.tests.support import TestCase
++from numba.tests.support import TestCase, numpy_support
+ from numba import njit, types
+ from numba.typed import List, Dict
+ import numpy as np
+@@ -178,16 +178,23 @@ class TestConditionsAsPredicates(TestCas
+ 
+         # various problems:
+ 
+-        # empty, NumPy warns
++        # empty, NumPy warns or raises if NumPy >= 2.2
+         z = np.empty(0)
+-        self.assertEqual(foo(z), foo.py_func(z))
+-        self.assertEqual(foo.py_func(z), 20)
++        if numpy_support.numpy_version >= (2, 2):
++            with self.assertRaises(ValueError) as raises:
++                foo(z)
++            msg = ("The truth value of an empty array is ambiguous."
++                   " Use `array.size > 0` to check that an array is not empty.")
++            self.assertIn(msg, str(raises.exception))
++        else:
++            self.assertEqual(foo(z), foo.py_func(z))
++            self.assertEqual(foo.py_func(z), 20)
+ 
+         # nd, NumPy raises
+         z = np.array([1, 2])
+         with self.assertRaises(ValueError) as raises:
+             foo(z)
+ 
+-        msg = ("The truth value of an array with more than one element is "
+-               "ambiguous. Use a.any() or a.all()")
++        msg = ("The truth value of an array with more than one element "
++               "is ambiguous. Use a.any() or a.all()")
+         self.assertIn(msg, str(raises.exception))
+Index: numba-0.61.0/numba/tests/test_hashing.py
+===================================================================
+--- numba-0.61.0.orig/numba/tests/test_hashing.py
++++ numba-0.61.0/numba/tests/test_hashing.py
+@@ -186,6 +186,9 @@ class BaseTest(TestCase):
+             yield range(start, start + 128 * n, 128)
+             yield [-1]
+ 
++    def safe_construct(self, typ, value):
++        return getattr(np, 'int' + str(np.iinfo(typ).bits))(value).view(typ)
++
+     def float_samples(self, typ):
+         info = np.finfo(typ)
+ 
+@@ -228,7 +231,7 @@ class TestNumberHashing(BaseTest):
+     """
+ 
+     def setUp(self):
+-        if numpy_version >= (2, 0):
++        if numpy_version >= (2, 0) and numpy_version <= (2, 1):
+             # Temporarily set promotions state to legacy,
+             # to ensure overflow logic works
+             self.initial_state = np._get_promotion_state()
+@@ -237,7 +240,7 @@ class TestNumberHashing(BaseTest):
+         return super().setUp()
+ 
+     def tearDown(self) -> None:
+-        if numpy_version >= (2, 0):
++        if numpy_version >= (2, 0) and numpy_version <= (2, 1):
+             # Reset numpy promotion state to initial state
+             # since the setting is global
+             np._set_promotion_state(self.initial_state)
+@@ -275,7 +278,7 @@ class TestNumberHashing(BaseTest):
+             info = np.iinfo(ty)
+             # check hash(-1) = -2
+             # check hash(0) = 0
+-            self.check_hash_values([ty(-1)])
++            self.check_hash_values([self.safe_construct(ty, -1)])
+             self.check_hash_values([ty(0)])
+             signed = 'uint' not in str(ty)
+             # check bit shifting patterns from min through to max
+@@ -340,7 +343,7 @@ class TestTupleHashing(BaseTest):
+     """
+ 
+     def setUp(self):
+-        if numpy_version >= (2, 0):
++        if numpy_version >= (2, 0) and numpy_version <= (2, 1):
+             # Temporarily set promotions state to legacy,
+             # to ensure overflow logic works
+             self.initial_state = np._get_promotion_state()
+@@ -349,7 +352,7 @@ class TestTupleHashing(BaseTest):
+         return super().setUp()
+ 
+     def tearDown(self) -> None:
+-        if numpy_version >= (2, 0):
++        if numpy_version >= (2, 0) and numpy_version <= (2, 1):
+             # Reset numpy promotion state to initial state
+             # since the setting is global
+             np._set_promotion_state(self.initial_state)
+@@ -368,7 +371,7 @@ class TestTupleHashing(BaseTest):
+             """
+             Split i's bits into 2 integers.
+             """
+-            i = typ(i)
++            i = self.safe_construct(typ, i)
+             return (i & typ(0x5555555555555555),
+                     i & typ(0xaaaaaaaaaaaaaaaa),
+                     )
+@@ -377,7 +380,7 @@ class TestTupleHashing(BaseTest):
+             """
+             Split i's bits into 3 integers.
+             """
+-            i = typ(i)
++            i = self.safe_construct(typ, i)
+             return (i & typ(0x2492492492492492),
+                     i & typ(0x4924924924924924),
+                     i & typ(0x9249249249249249),
+Index: numba-0.61.0/numba/tests/test_np_functions.py
+===================================================================
+--- numba-0.61.0.orig/numba/tests/test_np_functions.py
++++ numba-0.61.0/numba/tests/test_np_functions.py
+@@ -5694,8 +5694,11 @@ class TestNPFunctions(MemoryLeakMixin, T
+             yield np.array([0, 1, 2]), 'B'
+             yield np.array([np.nan, 0., 1.2, 2.3, 0.]), 'b'
+             yield np.array([0, 0, 1, 2, 5]), 'f'
+-            yield np.array([0, 1, 2, 0]), 'abf'
+-            yield np.array([0, 4, 0]), 'd'
++            if numpy_version < (2, 2):
++                # abf and d are not supported in numpy >= 2.2
++                yield np.array([0, 1, 2, 0]), 'abf'
++                yield np.array([0, 4, 0]), 'd'
++
+             yield np.array(['\0', '1', '2']), 'f'
+ 
+         pyfunc = np_trim_zeros
+Index: numba-0.61.0/numba/tests/test_npdatetime.py
+===================================================================
+--- numba-0.61.0.orig/numba/tests/test_npdatetime.py
++++ numba-0.61.0/numba/tests/test_npdatetime.py
+@@ -541,7 +541,23 @@ class TestTimedeltaArithmetic(TestCase):
+     def test_hash(self):
+         f = self.jit(hash_usecase)
+         def check(a):
+-            self.assertPreciseEqual(f(a), hash(a))
++            if numpy_version >= (2, 2):
++                # Generic timedeltas (those without a unit)
++                # are no longer hashable beyond NumPy 2.2
++                # Non-generic timedeltas will have dtype name
++                # as timedelta64[<unit>]
++                if a.dtype.name == 'timedelta64':
++                    return
++
++                # If the function is not being compiled in objmode
++                # then the hash should be equal to the hash of the
++                # integer representation of the timedelta
++                if self.jitargs.get('nopython', False):
++                    self.assertPreciseEqual(f(a), a.astype(int))
++                else:
++                    self.assertPreciseEqual(f(a), hash(a))
++            else:
++                self.assertPreciseEqual(f(a), hash(a))
+ 
+         TD_CASES = ((3,), (-4,), (3, 'ms'), (-4, 'ms'), (27, 'D'),
+                     (2, 'D'), (2, 'W'), (2, 'Y'), (3, 'W'),
+@@ -558,6 +574,11 @@ class TestTimedeltaArithmetic(TestCase):
+                              (TD,) * len(TD_CASES) + (DT,) * len(TD_CASES)):
+             check(typ(*case))
+ 
++        if numpy_version >= (2, 2):
++            with self.assertRaises(ValueError) as raises:
++                f(TD(3))
++            self.assertIn("Can't hash generic timedelta64", str(raises.exception))
++
+     def _test_min_max(self, usecase):
+         f = self.jit(usecase)
+         def check(a, b):
+Index: numba-0.61.0/docs/upcoming_changes/9919.highlight.rst
+===================================================================
+--- /dev/null
++++ numba-0.61.0/docs/upcoming_changes/9919.highlight.rst
+@@ -0,0 +1,26 @@
++Support for NumPy 2.2
++---------------------
++
++Numba now supports NumPy 2.2. following are some notable changes:
++
++- ``np.empty(0)`` cannot be treated as a boolean value anymore. This is a
++  breaking change for code that relies on this behavior. The following code
++  will raise a ``ValueError``:
++
++  .. code-block:: python
++
++      import numpy as np
++      if np.empty(0):
++          print("This will not be printed")
++
++- Generic timedeltas can no longer be hashed due to undefined time units.
++
++- From NumPy 2.2 onwards, hash values for ``numpy.timedelta64`` and
++  ``numpy.datetime64`` instances computed in Numba compiled code do not match
++  the NumPy hash values of the same. Prior to NumPy 2.2, NumPy hash values for
++  ``numpy.timedelta64`` and ``numpy.datetime64`` instances were equivalent to
++  their integer value representation. From NumPy 2.2 onwards, their hash value
++  is the same as the hash of the equivalent type from the built-in ``datetime``
++  module, Numba does not replicate this behaviour.
++
++- ``np.trimzeros`` now also trims ``\0`` values.
+Index: numba-0.61.0/docs/source/reference/pysupported.rst
+===================================================================
+--- numba-0.61.0.orig/docs/source/reference/pysupported.rst
++++ numba-0.61.0/docs/source/reference/pysupported.rst
+@@ -968,6 +968,14 @@ in CPython under the condition that the
+ The ``PYTHONHASHSEED`` environment variable influences the hashing behavior in
+ precisely the manner described in the CPython documentation.
+ 
++.. note:: From NumPy 2.2 onwards, hash values for ``numpy.timedelta64`` and
++          ``numpy.datetime64`` instances computed in Numba compiled code do not
++          match the NumPy hash values of the same. Prior to NumPy 2.2, NumPy
++          hash values for ``numpy.timedelta64`` and ``numpy.datetime64``
++          instances were equivalent to their integer value representation. From
++          NumPy 2.2 onwards, their hash value is the same as the hash of the
++          equivalent type from the ``datetime`` module, Numba does not replicate
++          this behaviour.
+ 
+ Standard library modules
+ ========================
+Index: numba-0.61.0/setup.py
+===================================================================
+--- numba-0.61.0.orig/setup.py
++++ numba-0.61.0/setup.py
+@@ -23,7 +23,7 @@ min_python_version = "3.10"
+ max_python_version = "3.14"  # exclusive
+ min_numpy_build_version = "2.0.0rc1"
+ min_numpy_run_version = "1.24"
+-max_numpy_run_version = "2.2"
++max_numpy_run_version = "2.3"
+ min_llvmlite_version = "0.44.0dev0"
+ max_llvmlite_version = "0.45"
+ 
+Index: numba-0.61.0/numba/__init__.py
+===================================================================
+--- numba-0.61.0.orig/numba/__init__.py
++++ numba-0.61.0/numba/__init__.py
+@@ -39,8 +39,8 @@ def _ensure_critical_deps():
+                f"{numpy_version[0]}.{numpy_version[1]}.")
+         raise ImportError(msg)
+ 
+-    if numpy_version > (2, 1):
+-        msg = (f"Numba needs NumPy 2.1 or less. Got NumPy "
++    if numpy_version > (2, 2):
++        msg = (f"Numba needs NumPy 2.2 or less. Got NumPy "
+                f"{numpy_version[0]}.{numpy_version[1]}.")
+         raise ImportError(msg)
+ 

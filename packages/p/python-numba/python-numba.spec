@@ -19,7 +19,7 @@
 %define plainpython python
 # upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ver
 %define min_numpy_ver 1.24
-%define max_numpy_ver 2.2
+%define max_numpy_ver 2.3
 
 %{?sle15_python_module_pythons}
 
@@ -63,6 +63,8 @@ URL:            https://numba.pydata.org/
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
+# PATCH-FIX-UPSTREAM https://github.com/numba/numba/pull/9919
+Patch4:         numpy22.patch
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
 BuildRequires:  %{python_module pip}

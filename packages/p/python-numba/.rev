@@ -500,4 +500,12 @@ Python2 support was turned off by accident.  I don't go out of my way to support
     <comment></comment>
     <requestid>1244039</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>b68c3efc5dcf648470c8beab3f19ad2b</srcmd5>
+    <version>0.61.0</version>
+    <time>1742419974</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254196</requestid>
+  </revision>
 </revisionlist>
