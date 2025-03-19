@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Wed Mar 19 05:33:58 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250319.96e9d2ea:
+  * Fix: doc: fix a minor syntax error
+
+-------------------------------------------------------------------
+Tue Mar 18 06:52:54 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250318.919ea162:
+  * Dev: testcases: Adjust original testcases under python3.13
+  * Dev: behave: const: Update output of argparse metavar under python3.13
+  * Dev: run-functional-tests: Stop redirecting the build output to /dev/null
+  * Dev: unittests: Add python 3.13 for unit tests
+  * Dev: Dockerfile: Update python package version to 3.13
+
+-------------------------------------------------------------------
+Sat Mar 15 03:05:24 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250315.4985e9fd:
+  * Dev: Replace 'Master/Slave' with 'Promoted/Unpromoted' in multiple files
+  * Dev: scripts: Use promotable clone instead of ms command
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: ui_configure: Remove 'ms' sub-command (jsc#PED-8231)
+
+-------------------------------------------------------------------
+Fri Mar 14 10:00:16 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250314.a0f51f29:
+  * Dev: behave: Add test case for 'configure upgrade' command
+
+-------------------------------------------------------------------
+Fri Mar 14 06:23:48 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250314.ba91f946:
+  * Dev: ui_configure: Enable -F option for 'configure upgrade'
+  * Dev: doc: Mention that 'configure upgrade' supports -F option
+
+-------------------------------------------------------------------
+Wed Mar 12 08:12:21 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250312.ee7aaf45:
+  * Dev: migration: minor refines in message wording
+  * Refactor: migration: extract a function _migrate_totem_interface (jsc#PED-8252)
+  * Refactor: cibquery: extract a function to get cluster nodes without side effects (jsc#PED-8252)
+  * Dev: migration: fix incorrect bindnetaddr when migrating a multicast cluster (jsc#PED-8252)
+  * Fix: migration: IndexError when there is only one interface (jsc#PED-8252)
+  * Dev: migration: refine the message about unsupported component version (jsc#PED-8252)
+  * Dev: migration: add a message about corosync.conf.bak (jsc#PED-82582)
+  * Fix: migration: should not report need migration when the cluster has some non-fatal problems which need manual fix (jsc#PED-8252)
+  * Dev: migration: no need to check if cluster services is stopped (jsc#PED-8252)
+  * Dev: migration: add a checker for cib schema version (jsc#PED-8252)
+  * Dev: migration: split problem level and is_blocker (jsc#PED-8252)
+  * Dev: migration: check if the cluster is already migrated to SLES 16 (jsc#PED-8252)
+  * Fix: migration: should not show pre-migration check summary when called with `--fix` (jsc#PED-8252)
+  * Dev: behave: add functional tests for pre-migration checks (jsc#PED-8252)
+  * Dev: migration: do not check pacemaker version (jsc#PED-8252)
+  * Dev: migration: refine message wording (jsc#PED-11808)
+  * Dev: pre-migration: add summary section to output (jsc#PED-11808)
+  * Refactor: cibquery: has_primitive_filesystem_ocfs2 to has_primitive_filesystem_with_fstype
+  * Fix: cibquery: grouped primitives is missing from query results (jsc#PED-11808)
+  * Doc: ui_cluster: add document for `crm cluster health hawk2|sles16`
+  * Dev: pre-migration: add message about removing stonith:external/sbd (jsc#PED-11808)
+  * Fix: ui_cluster: fix do_health usage output
+  * Dev: pre-migration: add completer for 'crm cluster health sles16' (jsc#PED-11808)
+  * Dev: pre-migration: do not colorize hostname header (jsc#PED-11808)
+  * Dev: add pre-migration checks for pacemaker version (jsc#PED-11808)
+  * Dev: pre-migration: check if ocfs2 is used (jsc#PED-11808)
+  * Dev: pre-migration: check removed fence agents (jsc#PED-11808)
+  * Dev: pre-migration: check removed resource agents (jsc#PED-11808)
+  * Dev: pre-migration: check SAPHanaSR Classic resource agents (jsc#PED-11808)
+  * Dev: pre-migration: add checks for used corosync features (jsc#PED-11808)
+  * Dev: migration: copy migrated corosync.conf to remote nodes (jsc#PED-8252)
+  * Dev: migration: run checks on remote nodes (jsc#PED-8252)
+  * Dev: prun: create event loop manually
+  * Dev: ui_cluster: add 'crm cluster health sles [--fix]' (jsc#PED-8252)
+  * Dev: profiles: set default crypto_hash to sha256 to follow corosync default
+  * Dev: migration: implement multicast to knet migration (jsc#PED-8252)
+  * Fix: corosync: use os.env instead of os.getenv for consistency (bsc#1205925)
+  * Dev: migration: populate node name in corosync node list for knet multilink (jsc#PED-8252)
+  * Dev: migration: implement corosync.conf migration for corosync 3 (jsc#PED-8252)
+
+-------------------------------------------------------------------
+Wed Mar 12 07:03:56 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250312.e90df9c5:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: utils: Ignore config.core.OCF_1_1_SUPPORT option
+  * Dev: etc: Drop OCF_1_1_SUPPORT option in crm.conf (jsc#PED-8550)
+
+-------------------------------------------------------------------
+Tue Mar 11 09:03:49 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250311.9e0cd40b:
+  * Dev: ssh_key: more robust error handling in KeyFileManager (bsc#1239084)
+
+-------------------------------------------------------------------
+Mon Mar 10 08:35:27 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250310.bab2cdb3:
+  * Dev: doc: Update the doc of 'configure upgrade' command
+  * Dev: ui_configure: Improve 'configure upgrade' command
+
+-------------------------------------------------------------------
+Thu Mar 06 12:47:11 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250306.0f77021d:
+  * Fix: Makefile.am: uninstall-local and clean-local targets
+  * Makefile.am: add uninstall-hook target to clean up data files
+
+-------------------------------------------------------------------
 Mon Mar 03 03:19:35 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250303.149f5b77:
