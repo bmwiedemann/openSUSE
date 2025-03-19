@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 19 09:55:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.26.1
+  * **deps:** Allow protobuf 6.x (#536)
+
+-------------------------------------------------------------------
 Tue Feb 25 20:34:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.26.0:

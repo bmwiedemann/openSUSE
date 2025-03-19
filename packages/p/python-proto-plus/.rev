@@ -137,4 +137,12 @@
 - Explicitly BuildRequires on pytz, the testsuite uses it.</comment>
     <requestid>1248479</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b1ddec9df83a17606a24810ae7632bb8</srcmd5>
+    <version>1.26.1</version>
+    <time>1742420039</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254375</requestid>
+  </revision>
 </revisionlist>
