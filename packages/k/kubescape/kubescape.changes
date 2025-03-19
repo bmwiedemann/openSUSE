@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 19 12:39:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.0.32:
+  * What's Changed
+    - updating prerequisites to support custom kubeconfig bys
+      @matthyx in #1808
+
+-------------------------------------------------------------------
 Mon Mar 10 10:21:42 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.31:
