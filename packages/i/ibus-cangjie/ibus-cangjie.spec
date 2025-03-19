@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-cangjie
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,13 +21,15 @@ Name:           ibus-cangjie
 Version:        2.4
 Release:        0
 Summary:        An IBus engine for users of the Cangjie and Quick input methods
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/I18n/Chinese
-Url:            http://cangjians.github.io/projects/%{name}
+URL:            http://cangjians.github.io/projects/%{name}
 Source:         https://github.com/Cangjians/%{name}/releases/download/v2.4/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE fix_import_version.patch wnereiz@eienteiland.org
 # Use python3 'gi' coding import format to insure it can be built success in openSUSE build env.
 Patch0:         ibus-cangjie-fix_import_version.patch
+# PATCH-FIX-UPSTREAM -- py312 dropped imp module
+Patch1:         ibus-cangjie-py312.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes

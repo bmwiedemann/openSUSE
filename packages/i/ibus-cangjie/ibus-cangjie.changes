@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 19 15:01:17 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- add ibus-cangjie-py312.patch
+  * FTBFS Factory
+  * starting from python 3.12, imp module was deprecated
+    and dropped, port to importlib.util instead
+
+-------------------------------------------------------------------
 Wed Sep 12 06:43:30 UTC 2018 - qzhao@suse.com
 
 - Modify ibus-cangjie.spec: Delete provide local macro, because 
