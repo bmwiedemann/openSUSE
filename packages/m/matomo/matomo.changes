@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 19 05:58:34 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.3.1
+  - #23127 Fix handling of range invalidations during intersecting period check
+  - #23146 Add a note that auth tokens are not revoked when changing password
+
+-------------------------------------------------------------------
 Fri Mar 14 10:35:56 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.3.0
