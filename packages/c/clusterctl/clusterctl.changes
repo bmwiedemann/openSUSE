@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 18 17:54:33 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.6:
+  CLI-related changes from the changelog
+  https://github.com/kubernetes-sigs/cluster-api/releases/tag/v1.9.6
+  * New Features
+    - clusterctl: Add OpenNebula infrastructure provider to
+      clusterctl (#11886)
+  * Others
+    - clusterctl: Add support infrastructure provider for Huawei
+      Cloud (#11876)
+    - clusterctl: Change k0smotron repo location (#11888)
+
+-------------------------------------------------------------------
 Wed Feb 19 05:47:34 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.5:
