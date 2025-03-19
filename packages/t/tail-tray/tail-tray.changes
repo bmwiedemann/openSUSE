@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 19 15:26:43 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.18:
+  * Bump version to 0.2.18
+  * Add Ipn watcher - Issue #57 (#58)
+  * Fix issue where we would not apply setting --accept-routes
+    (#56)
+  * Fix for opening in file manager
+  * Move TailDrive related UI code out to a separate manager
+  * Minor fixes, renames and code correctness (#53)
+  * Make sure to terminate any pending processes when user wants to
+    quit
+
+-------------------------------------------------------------------
 Sat Mar 01 10:42:05 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.17:
