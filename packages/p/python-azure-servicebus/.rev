@@ -415,4 +415,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1246352 from glaubitz)</comment>
     <requestid>1247432</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>62f4f69d8ac147b28a0c04e60f84ac7b</srcmd5>
+    <version>7.14.1</version>
+    <time>1742420000</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.14.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1254065 from glaubitz)</comment>
+    <requestid>1254235</requestid>
+  </revision>
 </revisionlist>
