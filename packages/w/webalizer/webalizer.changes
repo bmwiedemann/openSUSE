@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 19 13:14:12 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Switch to PCRE2
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Feb 20 15:11:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

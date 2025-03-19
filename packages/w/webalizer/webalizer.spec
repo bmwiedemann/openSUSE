@@ -1,7 +1,7 @@
 #
 # spec file for package webalizer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 %define editlvl 08
-
 Name:           webalizer
+Version:        2.23
+Release:        0
 Summary:        A Web Server Log File Analysis Program
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
-Version:        2.23
-Release:        0
 URL:            http://www.mrunix.net/webalizer/
 Source0:        ftp://ftp.mrunix.net/pub/webalizer/%{name}-%{version}-%{editlvl}-src.tar.bz2
 Source1:        flags.tar.bz2
@@ -43,7 +42,6 @@ Patch6:         %{name}-2.23-04-Makefile.patch
 Patch7:         webalizer-overlinking.patch
 # static variables
 Patch8:         webalizer-static.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
@@ -53,7 +51,7 @@ BuildRequires:  libapr-util1-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 Requires:       %{name}-flags
 
 %description
@@ -74,7 +72,7 @@ these which it attempts to handle intelligently.
 Summary:        Flags of the World
 License:        CC-BY-SA-3.0
 Group:          Productivity/Networking/Web/Utilities
-URL:            http://flags.blogpotato.de/
+URL:            https://flags.blogpotato.de/
 BuildArch:      noarch
 
 %description flags
@@ -94,10 +92,11 @@ world set.
 %patch -P 6
 %patch -P 7
 %patch -P 8 -p1
-%{__cp} -a %{S:2} .
+cp -a %{SOURCE2} .
 
 %build
 autoconf
+# FIXME: you should use the %%configure macro
 CFLAGS="%{optflags} -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64" ./configure \
   --prefix=%{_prefix} \
   --mandir=%{_mandir} \
@@ -105,13 +104,13 @@ CFLAGS="%{optflags} -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64" ./configure \
   --enable-bz2 \
   --enable-geoip \
   --with-gdlib=%{_libdir} \
-  --with-gd=/usr/include/gd \
+  --with-gd=%{_includedir}/gd \
   %{_target_cpu}-suse-linux
-make LIBNAME=%{_lib}
+%make_build LIBNAME=%{_lib}
 
 %install
-install -d -m 755 %{buildroot}%{_prefix}/bin
-install -d -m 755 %{buildroot}/etc
+install -d -m 755 %{buildroot}%{_bindir}
+install -d -m 755 %{buildroot}%{_sysconfdir}
 install -d -m 755 %{buildroot}/%{_mandir}/man1
 make "DESTDIR=%{buildroot}" install
 install -d -m 755 %{buildroot}%{apache_serverroot}/htdocs/%{name}
@@ -119,18 +118,15 @@ install -d -m 755 %{buildroot}%{_localstatedir}/lib/%{name}
 mv %{buildroot}/%{_sysconfdir}/%{name}.conf.sample %{buildroot}/%{_sysconfdir}/%{name}.conf
 
 #install flags
-%{__cp} -a flags %{buildroot}%{apache_serverroot}/htdocs/%{name}/
+cp -a flags %{buildroot}%{apache_serverroot}/htdocs/%{name}/
 
 %preun
 #rm -f var/lib/%{name}/*
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
-%doc CHANGES COPYING Copyright README README.FIRST country-codes.txt
-%doc %{_mandir}/man?/*
+%license COPYING
+%doc CHANGES Copyright README README.FIRST country-codes.txt
+%{_mandir}/man?/*
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %dir %{apache_serverroot}/htdocs/%{name}
 %exclude %{apache_serverroot}/htdocs/%{name}/flags
@@ -138,8 +134,7 @@ rm -rf %{buildroot}
 %{_localstatedir}/lib/%{name}
 
 %files flags
-%defattr(-,root,root)
-%doc flags.license.html
+%license flags.license.html
 %dir %{apache_serverroot}/htdocs/%{name}/flags
 %{apache_serverroot}/htdocs/%{name}/flags/*
 

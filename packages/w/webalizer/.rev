@@ -265,4 +265,13 @@
     <comment></comment>
     <requestid>1148541</requestid>
   </revision>
+  <revision rev="36" vrev="28">
+    <srcmd5>be4a65bebfe56089b6ad6b1291cde4a9</srcmd5>
+    <version>2.23</version>
+    <time>1742420058</time>
+    <user>anag+factory</user>
+    <comment>- Switch to PCRE2
+- Spec cleanup (forwarded request 1254415 from anag+factory)</comment>
+    <requestid>1254421</requestid>
+  </revision>
 </revisionlist>
