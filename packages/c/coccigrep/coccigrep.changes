@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 19 05:59:06 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.21:
+  core: python 3.12 support
+- package vim plugin
+- %check section added
+- cleanup
+
+-------------------------------------------------------------------
 Tue Apr 11 09:21:44 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Update ExclusiveArch list

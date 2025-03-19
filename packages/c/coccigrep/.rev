@@ -139,4 +139,16 @@
     <comment>- Update ExclusiveArch list (forwarded request 1078392 from Andreas_Schwab)</comment>
     <requestid>1078555</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f501b356d27b8829e1bcd5a4fe5e3fce</srcmd5>
+    <version>1.21</version>
+    <time>1742420020</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.21:
+  core: python 3.12 support
+- package vim plugin
+- %check section added
+- cleanup</comment>
+    <requestid>1254305</requestid>
+  </revision>
 </revisionlist>
