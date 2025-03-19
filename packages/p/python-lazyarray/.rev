@@ -67,4 +67,14 @@
 - skip python 3.6 (skip scipy)</comment>
     <requestid>1219209</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>adeef1369597d464728507a4722f8ecb</srcmd5>
+    <version>0.6.0</version>
+    <time>1742420040</time>
+    <user>anag+factory</user>
+    <comment>- Skip test_create_with_sparse_array test
+  (gh#NeuralEnsemble/lazyarray#24).
+</comment>
+    <requestid>1254378</requestid>
+  </revision>
 </revisionlist>

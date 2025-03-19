@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazyarray
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,7 +69,8 @@ and memory in cases where:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Skip test_create_with_sparse_array (gh#NeuralEnsemble/lazyarray#24)
+%pytest -k 'not test_create_with_sparse_array'
 
 %files %{python_files}
 %doc README.rst changelog.txt
