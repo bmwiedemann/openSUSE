@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 19 10:09:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.5.0
+  * Add py.typed and "Typing :: Typed" classifier (#476)
+  * Update types and run mypy on GitHub Actions (#478)
+  * Double read timeout to fix 'The read operation timed out' (#477)
+- from version 5.4.0
+  * Add support for Python 3.14 and PyPy3.11 (#473)
+  * Add type hints using autotyping (#463)
+  * Drop support for Python 3.8 (#461)
+  * Replace deprecated classifier with licence expression (PEP 639) (#475)
+  * Generate __version__ at build to avoid slow importlib.metadata (#460)
+  * Remove unnecessary start=0 from range() (#474)
+  * Replace pre-commit/action with faster tox-dev/action-pre-commit-uv (#465)
+
+-------------------------------------------------------------------
 Thu Jun  6 20:24:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.0:
