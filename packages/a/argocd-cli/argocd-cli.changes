@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 19 18:06:20 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.7:
+  * Bump version to 2.14.7 on release-2.14 branch (#22412)
+  * chore(deps): bump gitops engine (#22405)
+
+-------------------------------------------------------------------
+Tue Mar 18 17:50:14 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.6:
+  * chore(deps): Update go-git from 5.12.0 to 5.13.2 to include
+    several CVE fixes (#22313)
+
+-------------------------------------------------------------------
 Tue Mar 11 06:15:34 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.14.5:
