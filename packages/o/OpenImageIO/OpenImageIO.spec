@@ -275,7 +275,10 @@ export disabled_tests="heif|ptex|cmake-consumer|docs-examples-cpp"
 %doc src/doc/CHANGES-0.x.md src/doc/CHANGES-1.x.md
 %license LICENSE.md
 %{_bindir}/*
+# so why are man pages behind the python bindings? because the CMakeLists.txt only renders man pages when python is enabled
+%if %{with python_bindings}
 %{_mandir}/man1/*.1%{ext_man}
+%endif
 
 %if %{with apidocs}
 %files devel-doc

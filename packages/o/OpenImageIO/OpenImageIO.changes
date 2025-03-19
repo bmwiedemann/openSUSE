@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 18 17:02:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- partially revert the previous change:
+  so why are man pages behind the python bindings? because the
+  CMakeLists.txt only renders man pages when python is enabled
+
+-------------------------------------------------------------------
 Mon Mar  3 12:40:34 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
-- Fix build on aarch64 (where imageviewer is disbaled)
+- Fix build on aarch64 (where imageviewer is disabled)
 
 -------------------------------------------------------------------
 Thu Feb 13 03:13:34 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
