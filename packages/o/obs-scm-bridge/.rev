@@ -159,4 +159,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1248998</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>0c79f6c718afa354ff83d211fd535a71</srcmd5>
+    <version>0.6.2</version>
+    <time>1742419990</time>
+    <user>anag+factory</user>
+    <comment>- fix dependency (it is python3-PyYAML) 
+
+- fix missing dependency to PyYAML</comment>
+    <requestid>1254217</requestid>
+  </revision>
 </revisionlist>

@@ -29,6 +29,7 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/obs-scm-bridge
 Source0:        %{name}-%{version}.tar.xz
 Requires:       %{build_pkg_name} >= 20211125
+Requires:       python3-PyYAML >= 6.0.0
 # these are just recommends in build package, but we need it here
 Requires:       perl(Date::Parse)
 Requires:       perl(LWP::UserAgent)
