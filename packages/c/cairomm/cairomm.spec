@@ -23,9 +23,7 @@ Summary:        C++ Interface for Cairo
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.cairographics.org/
-### FIXME ### Upstream down due to freedesktop.org migration
-%dnl Source:         %{url}/releases/%{name}-%{version}.tar.xz
-Source:         %{name}-%{version}.tar.xz
+Source:         %{url}/releases/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
@@ -59,6 +57,7 @@ applications that want to make use of cairomm.
 %package doc
 Summary:        Documentation for the Cairo C++ interface
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 This package provides documentation for the Cairo C++ interface.
@@ -66,7 +65,7 @@ This package provides documentation for the Cairo C++ interface.
 %prep
 %autosetup -p1
 # fix permissions
-chmod 0644 ChangeLog NEWS README.md
+chmod 0644 NEWS
 
 %build
 %meson \
