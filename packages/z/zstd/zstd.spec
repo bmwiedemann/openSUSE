@@ -1,7 +1,7 @@
 #
 # spec file for package zstd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%bcond_without cmake
 
 %define libname libzstd1
 %if 0%{?suse_version} <= 1500
@@ -33,6 +35,9 @@ Source0:        https://github.com/facebook/zstd/releases/download/v%{version}/%
 Source1:        https://github.com/facebook/zstd/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        zstd.keyring
 Source99:       baselibs.conf
+%if %{with cmake}
+BuildRequires:  cmake
+%endif
 BuildRequires:  gcc
 # C++ is needed for pzstd only
 BuildRequires:  gcc-c++
@@ -113,11 +118,16 @@ an optimized deflate/zlib handling.
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags} -std=c++11"
+%if %{with cmake}
+%cmake ./cmake -DZSTD_BUILD_CONTRIB:BOOL=ON -DZSTD_ZLIB_SUPPORT:BOOL=ON
+%cmake_build
+%else
 # lib-mt is alias for multi-threaded library support
 %make_build HAVE_ZLIB=1 prefix=%{_prefix} libdir=%{_libdir} -C lib lib-mt
 for dir in programs contrib/pzstd; do
   %make_build -C "$dir"
 done
+%endif
 
 %check
 export CFLAGS="%{optflags}"
@@ -126,9 +136,14 @@ export CXXFLAGS="%{optflags} -std=c++11"
 #make_build -C contrib/pzstd test-pzstd
 
 %install
+%if %{with cmake}
+%cmake_install
+rm %{buildroot}%{_datadir}/doc/packages/zstd/zstd_manual.html
+%else
 %make_install V=1 VERBOSE=1 prefix=%{_prefix} libdir=%{_libdir}
 install -D -m755 contrib/pzstd/pzstd %{buildroot}%{_bindir}/pzstd
 install -D -m644 programs/zstd.1 %{buildroot}%{_mandir}/man1/pzstd.1
+%endif
 %if %{with_gzip}
 ln -s zstd %{buildroot}/%{_bindir}/gzip
 ln -s zstd %{buildroot}/%{_bindir}/gunzip
@@ -158,6 +173,9 @@ ln -s zstdcat %{buildroot}/%{_bindir}/zcat
 %{_includedir}/*.h
 %{_libdir}/pkgconfig/libzstd.pc
 %{_libdir}/libzstd.so
+%if %{with cmake}
+%{_libdir}/cmake/zstd/
+%endif
 
 %files -n lib%{name}-devel-static
 %license COPYING LICENSE

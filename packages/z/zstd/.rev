@@ -450,4 +450,13 @@
 - Drop pzstd.1.patch - not upstream, but also not needed</comment>
     <requestid>1247255</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>1ffeff4d166879f14ef99a4b304458e2</srcmd5>
+    <version>1.5.7</version>
+    <time>1742495006</time>
+    <user>anag+factory</user>
+    <comment>build with cmake as it is needed for building blender 4.4
+  this should not be a problem any more as cmake:mini is in ring0</comment>
+    <requestid>1254402</requestid>
+  </revision>
 </revisionlist>
