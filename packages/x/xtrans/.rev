@@ -233,4 +233,12 @@ Novell, and NCR are no longer supported.</comment>
 - refreshed p_xauth.diff</comment>
     <requestid>1251486</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>20669a45c3e5c2244bf6dd848e3ee4b6</srcmd5>
+    <version>1.6.0</version>
+    <time>1742495044</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1254507</requestid>
+  </revision>
 </revisionlist>

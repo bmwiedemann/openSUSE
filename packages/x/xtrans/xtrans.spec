@@ -20,7 +20,7 @@ Name:           xtrans
 Version:        1.6.0
 Release:        0
 Summary:        Library to handle network protocol transport in X
-License:        MIT
+License:        X11
 Group:          Development/Libraries/X11
 URL:            https://xorg.freedesktop.org/
 Source:         http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.xz
