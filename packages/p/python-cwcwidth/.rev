@@ -34,4 +34,25 @@
   * Avoid redefinition of `_XOPEN_SOURCE`.</comment>
     <requestid>1124980</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2b92e0aebd69a77281b6b62315d0cd21</srcmd5>
+    <version>0.1.10</version>
+    <time>1742495025</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1254338 from glaubitz
+
+- Update to 0.1.10
+    * Drop support for Python 3.8.
+    * Add support for Python 3.13.
+    * Update Unicode definition to 15.1.
+  - Limit Python files matched in %files section
+  - Switch package to modern Python Stack on SLE-15
+    * Use Python 3.11 on SLE-15 by default
+    * Drop support for older Python versions
+  - Switch build system from setuptools to pyproject.toml
+    * Add python-pip and python-wheel to BuildRequires
+    * Replace %python_build with %pyproject_wheel
+    * Replace %python_install with %pyproject_install</comment>
+    <requestid>1254395</requestid>
+  </revision>
 </revisionlist>

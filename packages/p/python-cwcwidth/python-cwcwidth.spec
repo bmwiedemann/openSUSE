@@ -1,7 +1,7 @@
 #
 # spec file for package python-cwcwidth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-cwcwidth
-Version:        0.1.9
+Version:        0.1.10
 Release:        0
 Summary:        Python bindings for wc(s)width
 License:        MIT
 URL:            https://github.com/sebastinas/cwcwidth
 Source:         https://files.pythonhosted.org/packages/source/c/cwcwidth/cwcwidth-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -38,15 +40,16 @@ Python bindings for wc(s)width
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/cwcwidth
+%{python_sitearch}/cwcwidth-%{version}.dist-info
 
 %changelog
