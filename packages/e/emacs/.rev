@@ -2145,4 +2145,14 @@ Now one could consider building emacs with gsettings support (both debian and fe
   * Fix compilation errors due to insufficient compiler safety</comment>
     <requestid>1252418</requestid>
   </revision>
+  <revision rev="202" vrev="3">
+    <srcmd5>17eac459484fb0b13c3b709e8b60c799</srcmd5>
+    <version>30.1</version>
+    <time>1742495063</time>
+    <user>anag+factory</user>
+    <comment>- Enhance patch emacs-30.1-seccomp.patch
+  * Support seccomp ioctl TCGETS also on ppc64le
+- Use zlib-ng-compat only on opensuse</comment>
+    <requestid>1254695</requestid>
+  </revision>
 </revisionlist>

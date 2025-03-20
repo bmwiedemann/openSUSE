@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 20 11:27:14 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Enhance patch emacs-30.1-seccomp.patch
+  * Support seccomp ioctl TCGETS also on ppc64le
+- Use zlib-ng-compat only on opensuse
+
+-------------------------------------------------------------------
 Wed Mar 12 09:43:04 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch emacs-parallel-compilation-53a5dada.patch

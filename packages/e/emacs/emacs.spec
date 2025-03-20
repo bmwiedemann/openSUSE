@@ -103,7 +103,7 @@ BuildRequires:  update-desktop-files
 #BuildRequires:  xdotool
 #BuildRequires:  xorg-x11-Xvfb
 BuildRequires:  xz
-%if 0%{?suse_version} > 1550
+%if 0%{?suse_version} > 1550 && 0%{is_opensuse}
 BuildRequires:  zlib-ng-compat-devel
 %else
 BuildRequires:  zlib-devel
