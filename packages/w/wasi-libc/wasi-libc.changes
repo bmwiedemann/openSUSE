@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Mar 19 22:56:23 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version (wasi-sdk-)25.
+  * Initial FTS support.
+  * Remove extra lock-taking in preopen setup.
+  * Update `_POSIX_THREAD_XX` macro definitions.
+  * `dlmalloc`: account the footprint of the initial heap.
+  * Ignore the `__tls_base` undefined symbol.
+  * Extend wasi-emulated-mman with `mprotect`.
+  * include pthread.h for all targets.
+  * timezone `__secs_to_zone` stub: guard against null pointer
+    dereference.
+  * `times` should always return 0 for `tms_cutime`.
+  * 0-initialize thread-specific data upon thread creation.
+  * iconv/wctomb: fix memory corruption related to CURRENT_UTF8
+    implementation.
+  * Improve some pthreads stub functions.
+  * `getaddrinfo`: improve the service/port resolution.
+  * Implement a stub pthreads library for `THREAD_MODEL=single`.
+- Drop obsolete patches:
+  * ignore-gcc-con-destructive-size-macros.patch
+  * ignore-norm-max-macros.patch
+  * ignore-stdc-embed-macros.patch
+  * ignore-wasm-macros-indirect-function-table.patch
+- Rebase workaround-broken-makefile.patch.
+- Backport upstream patch ignore-intc-macros.patch to fix build
+  with Clang 20.
+
+-------------------------------------------------------------------
 Sat Sep 21 21:39:37 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version (wasi-sdk-)22.

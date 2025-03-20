@@ -1,11 +1,11 @@
 # Workaround as per https://github.com/WebAssembly/wasi-libc/issues/156
 diff --git a/Makefile b/Makefile
-index 2f9e9fd..8318748 100644
+index 00dd308..fa6a634 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -917,7 +917,7 @@ check-symbols: startup_files libc
- 	# This ignores whitespace because on Windows the output has CRLF line endings.
- 	diff -wur "$(EXPECTED_TARGET_DIR)" "$(SYSROOT_SHARE)"
+@@ -814,7 +814,7 @@ finish: check-symbols
+ endif
+ endif
  
 -install: finish
 +install:
