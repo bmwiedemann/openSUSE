@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 19 15:07:19 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.8
+
+- Update to 2.95.8
+  * #686: Conditionally use syntax highlighting
+  * #697: Adjust color contrast on procedure backgrounds
+  * #698: Improve color contrast when clicking Copy button
+
+-------------------------------------------------------------------
 Wed Mar 12 12:57:54 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.7
 
 - Update to 2.95.7
