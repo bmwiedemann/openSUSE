@@ -1,8 +1,7 @@
-Index: gnome-settings-daemon-45.0/data/gsd-enums.h
-===================================================================
---- gnome-settings-daemon-45.0.orig/data/gsd-enums.h
-+++ gnome-settings-daemon-45.0/data/gsd-enums.h
-@@ -105,6 +105,7 @@ typedef enum
+diff --unified --recursive --text --new-file --color -x subprojects gnome-settings-daemon-48.0.old/data/gnome-settings-daemon/gsd-enums.h gnome-settings-daemon-48.0.new/data/gnome-settings-daemon/gsd-enums.h
+--- gnome-settings-daemon-48.0.old/data/gnome-settings-daemon/gsd-enums.h	2025-03-17 21:08:20.000000000 +0800
++++ gnome-settings-daemon-48.0.new/data/gnome-settings-daemon/gsd-enums.h	2025-03-20 13:04:44.137390428 +0800
+@@ -105,6 +105,7 @@
  typedef enum
  {
    GSD_POWER_BUTTON_ACTION_NOTHING,
@@ -10,11 +9,10 @@ Index: gnome-settings-daemon-45.0/data/gsd-enums.h
    GSD_POWER_BUTTON_ACTION_SUSPEND,
    GSD_POWER_BUTTON_ACTION_HIBERNATE,
    GSD_POWER_BUTTON_ACTION_INTERACTIVE
-Index: gnome-settings-daemon-45.0/plugins/media-keys/gsd-media-keys-manager.c
-===================================================================
---- gnome-settings-daemon-45.0.orig/plugins/media-keys/gsd-media-keys-manager.c
-+++ gnome-settings-daemon-45.0/plugins/media-keys/gsd-media-keys-manager.c
-@@ -2053,6 +2053,9 @@ do_config_power_button_action (GsdMediaK
+diff --unified --recursive --text --new-file --color -x subprojects gnome-settings-daemon-48.0.old/plugins/media-keys/gsd-media-keys-manager.c gnome-settings-daemon-48.0.new/plugins/media-keys/gsd-media-keys-manager.c
+--- gnome-settings-daemon-48.0.old/plugins/media-keys/gsd-media-keys-manager.c	2025-03-17 21:08:20.000000000 +0800
++++ gnome-settings-daemon-48.0.new/plugins/media-keys/gsd-media-keys-manager.c	2025-03-20 13:04:44.143659944 +0800
+@@ -2137,6 +2137,9 @@
          }
  
          switch (action_type) {
