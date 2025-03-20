@@ -1,6 +1,6 @@
 --- resource-agents-4.16.0+git45.646a41d1/heartbeat/Makefile.am	2025-02-25 12:34:45.000000000 +0100
-+++ resource-agents/heartbeat/Makefile.am	2025-03-17 12:10:30.391397664 +0100
-@@ -50,94 +50,60 @@
++++ resource-agents/heartbeat/Makefile.am	2025-03-19 10:05:33.459275593 +0100
+@@ -50,94 +50,61 @@
  send_ua_SOURCES         = send_ua.c IPv6addr_utils.c
  send_ua_LDADD           = $(LIBNETLIBS)
  
@@ -46,7 +46,7 @@
  			Xinetd			\
  			ZFS			\
  			aliyun-vpc-move-ip	\
--			anything		\
+ 			anything		\
  			apache			\
 -			asterisk		\
  			aws-vpc-move-ip		\
@@ -98,7 +98,7 @@
  			named			\
  			nfsnotify		\
  			nfsserver		\
-@@ -145,11 +111,6 @@
+@@ -145,11 +112,6 @@
  			nvmet-subsystem		\
  			nvmet-namespace		\
  			nvmet-port		\
@@ -110,7 +110,7 @@
  			oraasm			\
  			oracle			\
  			oralsnr			\
-@@ -157,38 +118,21 @@
+@@ -157,38 +119,21 @@
  			ovsmonitor		\
  			pgagent			\
  			pgsql			\

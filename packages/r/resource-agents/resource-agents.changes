@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 19 09:06:00 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Readd anything deleted by mistake. (jsc#PED-12354)
+
+-------------------------------------------------------------------
 Mon Mar 17 11:10:58 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Remove conntrackd RA (jsc#PED-12354)

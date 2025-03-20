@@ -1887,4 +1887,12 @@
     <comment>- Remove conntrackd RA (jsc#PED-12354)</comment>
     <requestid>1253756</requestid>
   </revision>
+  <revision rev="138" vrev="3">
+    <srcmd5>2b3205d3c2fe66bf5246c611504a97d0</srcmd5>
+    <version>4.16.0+git45.646a41d1</version>
+    <time>1742495022</time>
+    <user>anag+factory</user>
+    <comment>- Readd anything deleted by mistake. (jsc#PED-12354)</comment>
+    <requestid>1254345</requestid>
+  </revision>
 </revisionlist>
