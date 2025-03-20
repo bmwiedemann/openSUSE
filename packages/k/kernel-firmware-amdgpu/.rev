@@ -70,4 +70,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: update psp 13.0.10 firmware</comment>
     <requestid>1252342</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>79d09470a8423bc54df5421d66895de0</srcmd5>
+    <version>20250318</version>
+    <time>1742495069</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254164</requestid>
+  </revision>
 </revisionlist>
