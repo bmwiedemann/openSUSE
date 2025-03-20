@@ -36,11 +36,8 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        libgxdp-0.gitmodule.tar.zst
 Source99:       %{name}-rpmlintrc
 
-# PATCH-NEEDS-REBASE Patch1
 # PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
-# PATCH-FIX-UPSTREAM gnome-control-center-users-page-Don-t-show-the-system-accounts.patch bsc#1224199 glgo#GNOME/Settings#3066 xwang@suse.com -- not show system account in Users panel
-Patch2:         gnome-control-center-users-page-Don-t-show-the-system-accounts.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-system-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -49,8 +46,6 @@ Patch1001:      gnome-control-center-system-never-use-gnome-software.patch
 Patch1002:      gnome-control-center-more-power-button-actions.patch
 # PATCH-FEATURE-SLE gnome-control-center-bring-back-firewall-zone.patch fate#316719 sckang@suse.com -- network: Bring back the firewall zone combo box to select proper firewall zone for each connection.
 Patch1003:      gnome-control-center-bring-back-firewall-zone.patch
-# PATCH-NEEDS-REBASE gnome-control-center-info-fix-distro-logo.patch boo#1200581 milachew@mail.lv -- Fix the size of logo icon in About system
-Patch1004:      gnome-control-center-info-fix-distro-logo.patch
 
 BuildRequires:  /usr/bin/Xvfb
 BuildRequires:  cups-devel >= 1.4
@@ -206,16 +201,11 @@ pushd subprojects
 tar xf %{SOURCE1}
 mv libgxdp-0.gitmodule libgxdp
 popd
-%patch -P 1 -p1
-%patch -P 2 -p1
+%autopatch -p1 -M 999
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
-%patch -P 1001 -p1
-%patch -P 1002 -p1
-%patch -P 1003 -p1
-# patch needs rebase
-# %%patch -P 1004 -p1
+%autopatch -p1 -m 1000
 %endif
 
 %build

@@ -2294,4 +2294,12 @@ New stable rel</comment>
   Sle_version is no longer used in SLE 16. (forwarded request 1253783 from dimstar)</comment>
     <requestid>1253791</requestid>
   </revision>
+  <revision rev="261" vrev="2">
+    <srcmd5>bfa797f983579f190ee11907c53ee219</srcmd5>
+    <version>48.0</version>
+    <time>1742495038</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254681</requestid>
+  </revision>
 </revisionlist>

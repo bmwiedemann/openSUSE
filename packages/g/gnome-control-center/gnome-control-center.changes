@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 20 01:15:04 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Drop gnome-control-center-users-page-Don-t-show-the-system-accounts.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Wed Mar 19 03:35:30 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Rebase gnome-control-center-bring-back-firewall-zone.patch
+  (bsc#1239711).
+- Drop gnome-control-center-info-fix-distro-logo.patch: not needed
+  any more.
+
+-------------------------------------------------------------------
 Mon Mar 17 12:49:05 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 48.0
