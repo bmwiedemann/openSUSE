@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 20 12:41:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Reintroduce multibuild on Tumbleweed to avoid build cycle
+
+-------------------------------------------------------------------
+Wed Mar 12 13:22:05 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Don't depend on coincidence on SLE/Leap
+
+-------------------------------------------------------------------
 Fri Feb  7 10:44:21 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Fix build for 15.6

@@ -24,6 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{suse_version} <= 1600 && "%{flavor}" == "test"
+# Leap 16.0 doesn't have python-coincidence required for tests
+ExclusiveArch:  do_not_build
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-hatch-requirements-txt%{psuffix}
 Version:        0.4.1
