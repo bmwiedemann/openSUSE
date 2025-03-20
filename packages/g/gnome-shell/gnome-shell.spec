@@ -182,19 +182,10 @@ pushd subprojects
 tar xf %{SOURCE1}
 mv libgnome-volume-control-0.gitmodule gvc
 popd
-%patch -P 1 -p1
-%patch -P 2 -p1
+%autopatch -p1 -M 999
 
 %if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
-%patch -P 1001 -p1
-%patch -P 1002 -p1
-%patch -P 1004 -p1
-%patch -P 1008 -p1
-%patch -P 1009 -p1
-%patch -P 1010 -p1
-%patch -P 1011 -p1
-%patch -P 1012 -p1
-%patch -P 1013 -p1
+%autopatch -p1 -m 1000
 %endif
 
 cp %{SOURCE100} data/theme/

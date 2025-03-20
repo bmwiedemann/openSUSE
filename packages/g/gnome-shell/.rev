@@ -2486,4 +2486,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   Sle_version is no longer used in SLE 16. (forwarded request 1253670 from dimstar)</comment>
     <requestid>1253733</requestid>
   </revision>
+  <revision rev="270" vrev="2">
+    <srcmd5>2adb1d45f72c5792a092de9954d73df8</srcmd5>
+    <version>48.0</version>
+    <time>1742495021</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254330</requestid>
+  </revision>
 </revisionlist>
