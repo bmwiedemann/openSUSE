@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 18 13:01:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1.7 (bsc#1239052)
+  * CVE-2025-26699: Potential denial-of-service vulnerability in
+    django.utils.text.wrap()
+  * Fixed a bug in Django 5.1 where the {% querystring %} template tag 
+    returned an empty string rather than "?"
+  * Fixed a bug in Django 5.1 where FileSystemStorage, with allow_overwrite 
+    set to True, did not truncate the overwritten file content
+  * Fixed a regression in Django 5.1 where the count and exists methods of 
+    ManyToManyField related managers would always return 0 and False when 
+    the intermediary model back references used to_field
+  * Fixed a regression in Django 5.1 where the pre_save and post_save signals 
+    for LogEntry were not sent when deleting a single object in the admin
+
+-------------------------------------------------------------------
 Tue Feb 11 12:52:16 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.1.6
