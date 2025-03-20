@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 19 05:31:40 UTC 2025 - madhankumar.chellamuthu@suse.com
+
+- Update to version 1.14.1:
+  * Release v1.14.1
+  * Release notes for v1.14.0
+  * Fix detect of Firewalld's StrictForwardPorts property
+  * test/001-basic: Make commit test optional
+  * cirrus: do not build debug bins
+  * Makefile: do not rebuild if nothing changed
+  * Makefile: uninstall netavark-firewalld-reload.service
+  * docs/Makefile: several fixes
+  * Makefile: build docs by default
+  * Makefile: do not build twice
+
+-------------------------------------------------------------------
 Fri Feb 14 02:30:40 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
 
 - Remove netavark-1.14.0.obscpio checked-in mistakenly.
