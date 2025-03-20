@@ -17,7 +17,7 @@
 
 
 Name:           gcr
-Version:        4.3.91
+Version:        4.4.0.1
 Release:        0
 # FIXME: Verify if the requires in typelib-1_0-Gcr-4 is still correct and required (see bgo#725501).
 Summary:        Library for Crypto UI related tasks
@@ -87,7 +87,7 @@ gcr-ssh-askpass allows an ssh command to callback for a password.
 %package ssh-agent
 Summary:        SSH agent binary for gcr
 Group:          System/Libraries
-Supplements:    (gpg2 and gnome-shell)
+Supplements:    (openssh-clients and gnome-shell)
 
 %description ssh-agent
 gcr-ssh-agent as a standalone binary, so that it can easily be
