@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 14 13:37:33 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Remove the 'thunderx' multibuild flavor; it was identical to aarch64.
+  It also makes 'Provides: dpdk-any' obsolete. [bsc#1237385]
+
+-------------------------------------------------------------------
 Mon Mar 10 13:21:19 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Update to version 24.11.1

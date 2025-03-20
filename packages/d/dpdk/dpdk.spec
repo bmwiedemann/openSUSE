@@ -17,22 +17,8 @@
 # needssslcertforbuild
 
 
-%define flavor @BUILD_FLAVOR@%{nil}
-%define aarch64_machine armv8-a
-%define exclusive_arch aarch64 x86_64 ppc64le
-%define name_tag %{nil}
-%define summary_tag %{nil}
-%if "%{flavor}" == "thunderx"
-%define name_tag -thunderx
-%define summary_tag (thunderx)
-%define exclusive_arch aarch64
-%endif
-# http://doc.dpdk.org/guides-22.11/linux_gsg/build_dpdk.html#adjusting-build-options
 %define platform generic
 %define machine  auto
-%ifarch aarch64
-%define machine %{aarch64_machine}
-%endif
 # This is in sync with <src>/ABI_VERSION
 # TODO: automate this sync
 %define maj 25
@@ -51,7 +37,7 @@
 %bcond_without examples
 # Add option to build without tools
 %bcond_without tools
-Name:           dpdk%{name_tag}
+Name:           dpdk
 Version:        24.11.1
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
@@ -90,10 +76,12 @@ BuildRequires:  pkgconfig(libmnl)
 BuildRequires:  pkgconfig(libpcap)
 BuildRequires:  pkgconfig(numa)
 BuildRequires:  pkgconfig(zlib)
-Conflicts:      dpdk-any
-Provides:       dpdk-any = %{version}
 Obsoletes:      dpdk-kmp-trace < %{version}
-ExclusiveArch:  %{exclusive_arch}
+%ifarch aarch64
+Provides:       dpdk-thunderx = %{version}-%{release}
+Obsoletes:      dpdk-thunderx < %{version}-%{release}
+%endif
+ExclusiveArch:  aarch64 x86_64 ppc64le
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 # https://bugzilla.opensuse.org/show_bug.cgi?id=1196511
 BuildRequires:  pkgconfig(libbpf)
@@ -104,27 +92,33 @@ The Data Plane Development Kit is a set of libraries and drivers for
 fast packet processing in the user space.
 
 %package devel
-Summary:        Data Plane Development Kit development files %{summary_tag}
+Summary:        Data Plane Development Kit development files
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
-Conflicts:      dpdk-any-devel
-Provides:       dpdk-any-devel = %{version}
+%ifarch aarch64
+Provides:       dpdk-thunderx-devel = %{version}-%{release}
+Obsoletes:      dpdk-thunderx-devel < %{version}-%{release}
+%endif
 
 %description devel
 This package contains the headers and other files needed for developing
 applications with the Data Plane Development Kit.
 
 %package devel-static
-Summary:        Data Plane Development Kit static development files %{summary_tag}
+Summary:        Data Plane Development Kit static development files
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
+%ifarch aarch64
+Provides:       dpdk-thunderx-devel-static = %{version}-%{release}
+Obsoletes:      dpdk-thunderx-devel-static < %{version}-%{release}
+%endif
 
 %description devel-static
 This package contains the static library files needed for developing
 applications with the Data Plane Development Kit.
 
 %package -n %{lname}
-Summary:        Data Plane Development Kit runtime libraries %{summary_tag}
+Summary:        Data Plane Development Kit runtime libraries
 Group:          Development/Libraries/C and C++
 Provides:       %{lname}-any = %{version}
 
@@ -133,26 +127,30 @@ This package contains the runtime libraries needed for 3rd party application
 to use the Data Plane Development Kit.
 
 %package doc
-Summary:        Data Plane Development Kit API documentation %{summary_tag}
+Summary:        Data Plane Development Kit API documentation
 Group:          System/Libraries
-Conflicts:      dpdk-any-doc
-Provides:       dpdk-any-doc = %{version}
 BuildArch:      noarch
+%ifarch aarch64
+Provides:       dpdk-thunderx-doc = %{version}-%{release}
+Obsoletes:      dpdk-thunderx-doc < %{version}-%{release}
+%endif
 
 %description doc
 API programming documentation for the Data Plane Development Kit.
 
 %if %{with tools}
 %package tools
-Summary:        Tools for setting up Data Plane Development Kit environment %{summary_tag}
+Summary:        Tools for setting up Data Plane Development Kit environment
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires:       findutils
 Requires:       iproute
 Requires:       kmod
 Requires:       pciutils
-Conflicts:      dpdk-any-tools
-Provides:       dpdk-any-tools = %{version}
+%ifarch aarch64
+Provides:       dpdk-thunderx-tools = %{version}-%{release}
+Obsoletes:      dpdk-thunderx-tools < %{version}-%{release}
+%endif
 
 %description tools
 This package contains tools for setting up Data Plane Development Kit environment
@@ -160,11 +158,13 @@ This package contains tools for setting up Data Plane Development Kit environmen
 
 %if %{with examples}
 %package examples
-Summary:        Data Plane Development Kit example applications %{summary_tag}
+Summary:        Data Plane Development Kit example applications
 Group:          System/Libraries
 BuildRequires:  libvirt-devel
-Conflicts:      dpdk-any-examples
-Provides:       dpdk-any-examples = %{version}
+%ifarch aarch64
+Provides:       dpdk-thunderx-examples = %{version}-%{release}
+Obsoletes:      dpdk-thunderx-examples < %{version}-%{release}
+%endif
 
 %description examples
 Example applications utilizing the Data Plane Development Kit, such
@@ -177,7 +177,6 @@ as L2 and L3 forwarding.
 %define pmddir %{_libdir}/dpdk-pmds-%{maj}.%{min}
 
 %prep
-# can't use %%{name} because of dpdk-thunderx
 %setup -q -n dpdk-stable-%{version}
 %if 0%{?suse_version} > 1600
 %autopatch -p1

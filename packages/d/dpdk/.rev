@@ -722,4 +722,14 @@
     <comment></comment>
     <requestid>1252003</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>4829267056c085a93dc41f6af2e799b6</srcmd5>
+    <version>24.11.1</version>
+    <time>1742495047</time>
+    <user>anag+factory</user>
+    <comment>- Remove the 'thunderx' multibuild flavor; it was identical to aarch64.
+  It also makes 'Provides: dpdk-any' obsolete. [bsc#1237385]
+</comment>
+    <requestid>1254531</requestid>
+  </revision>
 </revisionlist>
