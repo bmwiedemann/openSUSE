@@ -1,7 +1,7 @@
 #
 # spec file for package libcanberra
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           libcanberra
 Version:        0.30+2
 Release:        0
 Summary:        Portable sound event library
-License:        LGPL-2.0-or-later
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://0pointer.de/lennart/projects/libcanberra
 Source:         %{name}-%{version}.tar.zst
