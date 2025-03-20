@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 18 13:03:40 UTC 2025 - rfrohl@suse.com
+
+- Update to version 20250318:
+  * rebootmgr: Handle config under /etc/rebootmgr (bsc#1239720)
+
+-------------------------------------------------------------------
+Thu Mar 13 12:50:00 UTC 2025 - rfrohl@suse.com
+
+- Update to version 20250313:
+  * health-checker-plugin: Move from dbus to varlink for rebootmgr communication (bsc#1237273)
+  * Introduce rebootmgr_var_run_t for files under run (bsc#1237273)
+  * Adjust to correct new binary path (bsc#1237273)
+  * health-checker: allow snapshot rollback (bsc#1235860)
+  * snapper: add interface to select the next boot snapshot
+
+-------------------------------------------------------------------
 Wed Mar 12 08:31:17 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250312:
