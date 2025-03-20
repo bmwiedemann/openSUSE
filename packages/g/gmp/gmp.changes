@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 19 17:33:11 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Use -std=gnu17 for SLE16 and higher to aovid C23 conformance issues
+  with GCC 15. 
+
+-------------------------------------------------------------------
 Thu Feb 27 08:25:36 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Manually select the z13/z14 architecture level specific assembly routines

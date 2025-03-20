@@ -600,4 +600,13 @@ discover that breaks ...
   [jsc#PED-3270]</comment>
     <requestid>1248867</requestid>
   </revision>
+  <revision rev="64" vrev="5">
+    <srcmd5>22a1649a490ee86a79df2110a06adad5</srcmd5>
+    <version>6.3.0</version>
+    <time>1742498755</time>
+    <user>anag+factory</user>
+    <comment>- Use -std=gnu17 for SLE16 and higher to aovid C23 conformance issues
+  with GCC 15.</comment>
+    <requestid>1254492</requestid>
+  </revision>
 </revisionlist>

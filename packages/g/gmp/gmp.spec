@@ -70,7 +70,7 @@ Group:          Development/Languages/C and C++
 Requires:       libgmp10 = %{version}
 Requires:       libgmpxx4 = %{version}
 Requires(pre):  %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 
 %description devel
 These libraries are needed to develop programs which calculate with
@@ -90,7 +90,11 @@ huge numbers (integer and floating point).
 export MPN_PATH="s390_64/z14 s390_64/z13 s390_64 generic"
 %endif
 %endif
+%if %{suse_version} >= 1600
+export CFLAGS="%{optflags} -fexceptions -std=gnu17"
+%else
 export CFLAGS="%{optflags} -fexceptions"
+%endif
 %configure \
   --disable-static \
   --enable-cxx \
