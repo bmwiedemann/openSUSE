@@ -28,13 +28,13 @@
 %global _soclang 13
 %global _socxx  1
 
-%ifarch x86_64 aarch64 %arm
+%ifarch x86_64 aarch64 %arm riscv64
 %bcond_without libcxx
 %else
 %bcond_with libcxx
 %endif
 
-%ifarch aarch64 ppc64 ppc64le %{ix86} x86_64
+%ifarch aarch64 ppc64 ppc64le %{ix86} x86_64 riscv64
 %bcond_without openmp
 %else
 %bcond_with openmp

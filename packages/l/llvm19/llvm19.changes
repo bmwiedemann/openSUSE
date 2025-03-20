@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 18 18:45:06 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable build of libc++ and openmp for riscv64
+
+-------------------------------------------------------------------
 Fri Feb 21 13:50:04 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Build with GCC 13 on Leap/SLES 15 (bsc#1235697)
