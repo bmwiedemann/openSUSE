@@ -1,7 +1,7 @@
 #
 # spec file for package atftp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ Patch2:         atftp-0.7-default_dir_man.patch
 Patch3:         atftp-drop_privileges_non-daemon.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  readline-devel
 BuildRequires:  tcpd-devel
 Requires(pre):  %fillup_prereq

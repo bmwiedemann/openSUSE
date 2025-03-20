@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 19 10:17:49 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Switch to PCRE2 
+
+-------------------------------------------------------------------
 Tue Sep 24 18:33:26 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete /usr/sbin/rc* symlink & specfile housekeeping
