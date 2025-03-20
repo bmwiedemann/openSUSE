@@ -1,7 +1,7 @@
 #
 # spec file for package libimobiledevice
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,16 @@
 
 
 %define libname libimobiledevice-1_0-6
+# only use primary python on Factory...
+%define pythons python3
+# ... and python311 on SLE 15 derivates
+%{?sle15_python_module_pythons}
 Name:           libimobiledevice
-Version:        1.3.0+190git.20230705
+Version:        1.3.0+263git.20250123
 Release:        0
 Summary:        Native protocols library for iOS devices
 License:        LGPL-2.1-or-later
-URL:            https://www.libimobiledevice.org
+URL:            https://github.com/libimobiledevice/libimobiledevice
 Source:         %{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  doxygen
@@ -31,15 +35,18 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  (python3-Cython >= 0.17 with python3-Cython < 3)
-BuildRequires:  python3-plist
+BuildRequires:  %{python_module plist}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module Cython >= 3.0.0}
 BuildRequires:  readline-devel
-BuildRequires:  pkgconfig(libimobiledevice-glue-1.0) >= 1.0.0
+BuildRequires:  pkgconfig(libimobiledevice-glue-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(libplist-2.0) >= 2.3.0
-BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(libssl) >= 0.9.8
+BuildRequires:  pkgconfig(libtatsu-1.0) >= 1.0.3
 BuildRequires:  pkgconfig(libusbmuxd-2.0) >= 2.0.2
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  python3-setuptools
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 libimobiledevice is a software library that talks the protocols to support
@@ -74,13 +81,13 @@ Obsoletes:      %{name}-tools < %{version}
 libimobiledevice is a software library that talks the protocols to support
 iOS devices. It does not depend on any existing libraries from Apple.
 
-%package -n python3-imobiledevice
+%package -n python-imobiledevice
 Summary:        Python bindings for %{name}
 License:        LGPL-2.1-or-later
 Requires:       %{libname} = %{version}
 Requires:       python3-plist >= 1.11
 
-%description -n python3-imobiledevice
+%description -n python-imobiledevice
 Contains Python bindings for developing applications that use %{name}.
 
 %prep
@@ -90,10 +97,7 @@ sed -i -e 's/-L${libdir}//' src/%{name}-1.0.pc.in
 
 %build
 autoreconf -fvi
-%configure \
-  --disable-silent-rules \
-  --disable-static \
-  PYTHON=%{_bindir}/python3 PACKAGE_VERSION=%{version}
+%{python_expand %configure --disable-silent-rules --disable-static PACKAGE_VERSION=%{version} PYTHON=/usr/bin/python%{$python_bin_suffix}}
 %make_build
 
 %install
@@ -114,6 +118,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n imobiledevice-tools
 %doc AUTHORS NEWS README.md
+%{_bindir}/afcclient
 %{_bindir}/idevice_id
 %{_bindir}/idevicebtlogger
 %{_bindir}/idevicecrashreport
@@ -134,6 +139,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/idevicesetlocation
 %{_bindir}/ideviceprovision
 %{_bindir}/idevicenotificationproxy
+%{_mandir}/man1/afcclient.1%{?ext_man}
 %{_mandir}/man1/idevice_id.1%{?ext_man}
 %{_mandir}/man1/idevicebtlogger.1%{?ext_man}
 %{_mandir}/man1/idevicecrashreport.1%{?ext_man}
@@ -155,7 +161,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/ideviceprovision.1%{?ext_man}
 %{_mandir}/man1/idevicenotificationproxy.1%{?ext_man}
 
-%files -n python3-imobiledevice
-%{python3_sitearch}/imobiledevice.so
+%files %{python_files imobiledevice}
+%{python_sitearch}/imobiledevice.so
 
 %changelog

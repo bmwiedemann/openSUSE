@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Mar 20 08:55:33 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix python packaging
+- Fix libimobiledevice-glue dependency
+
+-------------------------------------------------------------------
+Sat Feb 22 03:10:13 UTC 2025 - sbrabec@suse.com
+
+- Update to version 1.3.0+263git.20250123:
+  * tools: Fix usage output for ideviceimagemounter
+  * tools: Fix afclient compilation by adding libimobiledevice-glue dependency
+  * tools/idevicebackup2: Fix free disk space calculation
+  * Switch to better initializer strategy
+  * tools: Add --insecure option to idevicenotificationproxy tool
+  * docs: Update manpage for idevicecrashreport
+  * idevicecrashreport: Allow removing crash logs without copying.
+  * tools: Fix heap buffer overflow in ideviceimagemounter
+  * Update libimobiledevice-glue dependency to 1.3.0 and use its SHA1 implementation
+  * tools/afcclient: Add missing argument count check for `get` command
+  * tools/afcclient: Prevent too much blank lines from recursive put
+  * docs: Update manpage for afcclient
+  * tools/afcclient: Update get/put options in help message
+  * tools/afcclient: get/put operations use '-f' to allow overwrite, '-r' to allow recursive
+  * tools/afcclient: Allow put directory to device
+  * tools/afcclient: Allow get folder from device to local.
+  * common: Add libimobiledevice-glue to dependencies
+  * tools: Fix memory leak in idevicedevmodectl
+  * tools/afcclient: Allow removing non-empty directories with -r
+  * tools/afcclient: Print human readable description of AFC error code on error
+  * Move LIBIMOBILEDEVICE_API to public headers
+  * tools/idevicedevmodectl: Fix action success check and device reboot detection
+  * tools: Add afcclient utility
+  * idevicesyslog: Allow writing output to a file with command line option
+  * Fix idevicebackup2 man page
+  * Updated README.md to mention libtatsu dependency
+  * Updated README
+- Set URL to a working address.
+
+-------------------------------------------------------------------
 Fri Nov 22 10:07:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add python3-setuptools for python 3.13 support
