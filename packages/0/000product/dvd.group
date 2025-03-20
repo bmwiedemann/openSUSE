@@ -3201,7 +3201,7 @@
     <package name="ntfsprogs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="numlockx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="nvidia-open-driver-G06-signed-cuda-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="nvidia-open-driver-G06-signed-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nvme-cli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nvme-cli-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nvme-cli-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

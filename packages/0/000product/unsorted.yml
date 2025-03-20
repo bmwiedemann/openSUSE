@@ -2382,6 +2382,7 @@ unsorted:
   - cobbler-tests 
   - cobbler-tests-containers 
   - coccigrep 
+  - coccigrep-vim-plugin 
   - coccinelle 
   - cockpit 
   - cockpit-devel 
@@ -2510,9 +2511,6 @@ unsorted:
   - composefs-devel 
   - composefs-experimental 
   - compsize 
-  - compton 
-  - compton-conf 
-  - compton-conf-lang 
   - conan 
   - conauto 
   - conftest 
@@ -3601,6 +3599,7 @@ unsorted:
   - drbd 
   - drbd-formula 
   - drbd-kmp-default 
+  - drbd-selinux 
   - drbd-utils 
   - drc 
   - drc-doc 
@@ -7283,6 +7282,7 @@ unsorted:
   - gitg 
   - gitg-lang 
   - gitk 
+  - gitlab-container-registry 
   - gitleaks 
   - gitleaks-bash-completion 
   - gitleaks-fish-completion 
@@ -10023,10 +10023,12 @@ unsorted:
   - kanku-cli 
   - kanku-common 
   - kanku-common-server 
+  - kanku-config-example-jobs 
   - kanku-dispatcher 
   - kanku-doc 
   - kanku-iptables 
   - kanku-scheduler 
+  - kanku-tests 
   - kanku-triggerd 
   - kanku-urlwrapper 
   - kanku-web 
@@ -20142,10 +20144,10 @@ unsorted:
   - nvidia-libXNVCtrl-devel 
   - nvidia-modprobe 
   - nvidia-open-driver-G06-signed-cuda-default-devel 
+  - nvidia-open-driver-G06-signed-cuda-kmp-default 
   - nvidia-open-driver-G06-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G06-signed-cuda-longterm-devel 
   - nvidia-open-driver-G06-signed-default-devel 
-  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-open-driver-G06-signed-kmp-longterm 
   - nvidia-open-driver-G06-signed-longterm-devel 
   - nvidia-settings 
@@ -20325,8 +20327,6 @@ unsorted:
   - ocaml-ounit-devel 
   - ocaml-parmap 
   - ocaml-parmap-devel 
-  - ocaml-pcre 
-  - ocaml-pcre-devel 
   - ocaml-pcre2 
   - ocaml-pcre2-devel 
   - ocaml-pp 
