@@ -2947,4 +2947,12 @@ Note: I checked the GPG signature with both the expired and the refreshed key, a
     <comment>- add py313-aa-notify.patch to adapt the last bits to python 3.13 (forwarded request 1247658 from mcalabkova)</comment>
     <requestid>1248250</requestid>
   </revision>
+  <revision rev="220" vrev="5">
+    <srcmd5>e01b60422aa171358fa0dc72f819f3eb</srcmd5>
+    <version>4.0.3</version>
+    <time>1742495045</time>
+    <user>anag+factory</user>
+    <comment>- remove unused pcre build dependency (forwarded request 1254508 from AndreasStieger)</comment>
+    <requestid>1254512</requestid>
+  </revision>
 </revisionlist>

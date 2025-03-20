@@ -103,7 +103,6 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  iproute2
 BuildRequires:  libtool
-BuildRequires:  pcre-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3
 BuildRequires:  swig

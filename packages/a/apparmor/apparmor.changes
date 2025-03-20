@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 19 18:51:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove unused pcre build dependency
+
+-------------------------------------------------------------------
 Fri Feb 21 13:29:19 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - add py313-aa-notify.patch to adapt the last bits to python 3.13
