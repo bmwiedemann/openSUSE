@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 19 20:27:59 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 6.9.4
+
+  * hgweb: fix XSS vulnerability in hgweb (CVE-2025-2361)
+
+-------------------------------------------------------------------
 Wed Mar  5 22:29:56 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 6.9.3
