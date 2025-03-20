@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 18 21:16:48 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- build with pcre2 (boo#1201811) - zsh-5.9-pcre2.patch
+
+-------------------------------------------------------------------
 Mon Mar  3 16:12:24 UTC 2025 - Paolo Perego <paolo.perego@suse.com>
 
 - Fix bsc#1226450. Placing skip_global_compinit=1 in your $ZDOTDIR/.zshenv

@@ -46,11 +46,12 @@ Patch4:         pipe-less-and-signals-handling.patch
 Patch5:         zsh-ab4d62eb975a4c4c51dd35822665050e2ddc6918.patch
 Patch6:         zsh-4c89849c98172c951a9def3690e8647dae76308f.patch
 Patch7:         zsh-ac1fd06d7ce073c86f00d50fd74464bcb5194e97.patch
+Patch8:         zsh-5.9-pcre2.patch
 BuildRequires:  autoconf
 BuildRequires:  groff
 BuildRequires:  libcap-devel
 BuildRequires:  ncurses-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 %if 0%{?rhel_version} || 0%{?centos_version} || 0%{?fedora_version}
 Source11:       zlogin.rhs
 Source12:       zlogout.rhs
@@ -123,6 +124,7 @@ Use zsh as /bin/sh implementation.
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
 
 # Remove executable bit
 chmod 0644 Etc/changelog2html.pl
