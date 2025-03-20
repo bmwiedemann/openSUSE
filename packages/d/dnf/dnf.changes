@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Wed Mar 19 12:50:43 UTC 2025 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 4.23.0
+  * automatic: Enhance errors reporting
+  * automatic: Fix incorrect Error class instantiation
+  * doc: `--disableexcludepkgs=all` doesn't affect just file configuration
+  * Update ko.po
+  * Update README.rst started 1
+  * Tests: Avoid the multiprocessing forkserver method
+  * cli: Print a plugin suggestion on installed but expired pgp key
+  * copr: Add Copr build files
+  * Add support for --transient
+  * bootc: Document `--transient` and `persistence`
+  * bootc: Use ostree GObject API to get deployment status
+  * bootc: "Re-locking": use ostree admin unlock --transient
+  * spec: Add dnf-bootc subpackage
+  * Require libdnf >= 0.74.0 with `persistence` option
+  * Derive releasever_{major,minor} in conf, not substitutions
+  * Override releasever_{major,minor} with provides
+  * Add --releasever-major and --releasever-minor options
+  * doc: Document detect_releasevers and update example
+  * tests: Patch detect_releasevers, not detect_releasever
+  * Document how --releasever, --releasever_{major,minor} affect each other
+  * Move releasever_minor setter docstring to the correct function
+  * Enable automatic PR reviews
+  * Usage help: don't mark mandatory option parameters as optional
+
+- New upstream release 4.22.0
+  * doc: Naming of source and debug repos
+  * spec: Fix ownership of /etc/yum tree
+  * Allow --installroot on read-only bootc system
+  * Allow --downloadonly on read-only bootc system
+  * base: Add kernel-core to reboot_needed list
+  * AUTHORS: Add myself
+  * Update need_reboot for dnf-automatic
+  * doc: Example send_error_messages in /etc/dnf/automatic.conf
+  * automatic: Check availability of config file
+  * Updated conf_ref to reflect change in fastestmirror behavior
+  * Fix display issue of a code snippet.
+  * Print rpm package unpack errors to the user (RhBug:2312906)
+  * Fix package location if baseurl is present in the metadata
+
+- Update to 4.21.0
+  * Add detection for ostree-based systems and warn users about losing changes
+  * Fix: No traceback when Python interpreter is running with -P
+  * Allow `%py3_shebang_fix` macro to add `-P` argument to shebang lines
+  * man: Improve upgrade-minimal command docs (RHEL-6417)
+  * Limit queries to nevra forms when provided by command
+  * [doc] Remove provide of spec definition for repoquery command
+  * Update the man page entry for the countme option
+  * Drop collect file for ABRT
+
+- Update to 4.20.0:
+  * repoquery: Fix loading filelists when -f is used (RhBug:2276012)
+  * remove: --duplicates and --oldinstallonly exit with 0 when nothing to do (RHEL-6424)
+  * man: Prepare pages for dnf5 switch
+
+- New upstream release 4.19.1:
+  * Add required `.readthedocs.yaml`, `conf.py` and set `sphinx_rtd_theme`
+  * Drop dnf obsoletion temporarily
+  * doc: Update FAQ entry on filelists
+  * build: Adapt to changes in Fedora packaging of bash-completion
+  * Support RPMTRANS_FLAG_DEPLOOPS
+  * Add all candidates for reinstall to solver
+  * Fix handling installonly packages reasons
+  * Remove confusing sentence from documentation
+  * Remove "leaf" word from documentation
+  * Update documentation of history userinstalled command
+  * Onboard packit tests
+  * doc: Makecache with timer tries only one mirror
+  * ELN: Don't obsolete DNF with DNF5 yet
+  * bash-completion: Complete dnf command only if we own it
+  * bash-completion: Prepare ownerships for dnf5 switch
+
+- New upstream release 4.19:
+  * filelists metadata loading on demand
+  * deltarpm disabled on Fedora by default
+  * conf: Introduce new optional_metadata_types option to load filelists on demand
+  * cli: Add a hint for user on transaction file dependency failure
+  * cli: Setup filelists metadata for commands that need them
+  * util: Add function for detecting file in specs
+  * Fix failing API unit test on rawhide (RhBug:2261066)
+  * automatic: Use add_security_filters, not _update_security_filters
+
+-------------------------------------------------------------------
 Fri Oct 11 13:47:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend -lang package: the lang package has already the

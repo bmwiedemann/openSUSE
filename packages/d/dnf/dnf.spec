@@ -16,12 +16,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%global hawkey_version 0.71.1
+%global hawkey_version 0.74.0
 %global libcomps_version 0.1.8
 %global libmodulemd_version 2.9.3
 %global rpm_version 4.14.0
-%global min_plugins_core 4.0.26
+%global min_plugins_core 4.7.0
 %global min_plugins_extras 4.0.4
 
 %global confdir %{_sysconfdir}/%{name}
@@ -50,7 +49,7 @@
 %bcond_with tests
 
 Name:           dnf
-Version:        4.18.0
+Version:        4.23.0
 Release:        0
 Summary:        Package manager forked from Yum, using libsolv as a dependency resolver
 # For a breakdown of the licensing, see PACKAGE-LICENSING
@@ -79,6 +78,7 @@ Recommends:     %{yum_subpackage_name}
 Recommends:     dnf-plugins-core
 Conflicts:      dnf-plugins-core < %{min_plugins_core}
 Provides:       dnf4 = %{version}-%{release}
+Provides:       dnf-command(alias)
 Provides:       dnf-command(autoremove)
 Provides:       dnf-command(check-update)
 Provides:       dnf-command(clean)
@@ -100,7 +100,6 @@ Provides:       dnf-command(repository-packages)
 Provides:       dnf-command(search)
 Provides:       dnf-command(updateinfo)
 Provides:       dnf-command(upgrade)
-Provides:       dnf-command(upgrade-to)
 BuildArch:      noarch
 %{?systemd_ordering}
 
@@ -232,15 +231,24 @@ mkdir -p %{buildroot}%{_localstatedir}/log
 mkdir -p %{buildroot}%{_var}/cache/dnf
 touch %{buildroot}%{_localstatedir}/log/%{name}.log
 
+
 ln -sr %{buildroot}%{_bindir}/dnf-3 %{buildroot}%{_bindir}/dnf
+ln -sr %{buildroot}%{_datadir}/bash-completion/completions/dnf-3 %{buildroot}%{_datadir}/bash-completion/completions/dnf
+for file in %{buildroot}%{_mandir}/man[578]/dnf4[-.]*; do
+    dir=$(dirname $file)
+    filename=$(basename $file)
+    mv $file $dir/${filename/dnf4/dnf}
+done
+
 ln -sr %{buildroot}%{_bindir}/dnf-3 %{buildroot}%{_bindir}/dnf4
 mv %{buildroot}%{_bindir}/dnf-automatic-3 %{buildroot}%{_bindir}/dnf-automatic
-ln -sr %{buildroot}%{_bindir}/dnf-3 %{buildroot}%{_bindir}/yum
+rm -vf %{buildroot}%{_bindir}/dnf-automatic-*
 
 # Create protected.d file for dnf
 echo "dnf" > %{buildroot}%{confdir}/protected.d/dnf.conf
 
 %if %{with as_yum}
+ln -sr %{buildroot}%{_bindir}/dnf-3 %{buildroot}%{_bindir}/yum
 mkdir -p %{buildroot}%{_sysconfdir}/yum
 ln -sr  %{buildroot}%{confdir}/%{name}.conf %{buildroot}%{_sysconfdir}/yum/yum.conf
 ln -sr  %{buildroot}%{pluginconfpath} %{buildroot}%{_sysconfdir}/yum/pluginconf.d
@@ -308,6 +316,7 @@ popd
 %ghost %{persistdir}/history
 %ghost %{_sharedstatedir}/%{name}
 %{_datadir}/bash-completion/completions/dnf
+%{_datadir}/bash-completion/completions/dnf-3
 %{_mandir}/man5/dnf.conf.5.*
 %{_tmpfilesdir}/dnf.conf
 
