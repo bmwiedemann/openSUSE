@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 18 16:16:08 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Don't generate /etc/nvme/hostnqn in build environments
+  (bsc#1238038)
+
+-------------------------------------------------------------------
 Mon Mar 17 10:49:16 UTC 2025 - Daniel Wagner <dwagner@suse.de>
 
 - Update to version 2.12:

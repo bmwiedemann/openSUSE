@@ -127,13 +127,19 @@ popd
 %service_add_pre %{services} nvmf-connect@.service
 
 %post
-if [ ! -s %{_sysconfdir}/nvme/hostnqn ]; then
+if  [ ! -e /.buildenv ] && [ ! -e /image/config.xml ]; then
+    if [ ! -s %{_sysconfdir}/nvme/hostnqn ]; then
 	%{_bindir}/echo "Generating host NQN."
 	%{_sbindir}/nvme gen-hostnqn > %{_sysconfdir}/nvme/hostnqn
-fi
-if [ ! -s %{_sysconfdir}/nvme/hostid ]; then
+    fi
+
+    if [ ! -s %{_sysconfdir}/nvme/hostid ]; then
 	sed -nr 's/.*:uuid:(.*?)$/\1/p' %{_sysconfdir}/nvme/hostnqn > %{_sysconfdir}/nvme/hostid
+    fi
+else
+    %{_bindir}/echo "Build environment detected, not generating host NQN."
 fi
+
 %service_add_post %{services} nvmf-connect@.service
 
 %preun
