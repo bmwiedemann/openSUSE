@@ -36,4 +36,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * mediatek MT7920: update bluetooth firmware to 20250210151502</comment>
     <requestid>1252349</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>24e64409c47c511cf1a232b0e5e11793</srcmd5>
+    <version>20250319</version>
+    <time>1742495052</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250319 (git commit b8828772e413):
+  * mediatek: Add MT8188 SCP firmware</comment>
+    <requestid>1254645</requestid>
+  </revision>
 </revisionlist>
