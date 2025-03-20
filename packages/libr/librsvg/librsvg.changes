@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 19 07:19:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.60.0:
+  + The minimum supported Rust version (MSRV) is 1.77.2.
+  + Many build fixes for various platforms.
+  + Basic support for the dominant-baseline property.
+  + Parse the white-space property. It is not processed yet; this
+    is part of the work to support SVG2 text layout.
+  + Report errors correctly from the parsers for attribute values.
+  + Portability fixes to the C header files.
+
+-------------------------------------------------------------------
 Thu Mar  6 17:47:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.59.91 (Unstable):
