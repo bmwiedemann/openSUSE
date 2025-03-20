@@ -39,4 +39,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Update firmware file for Intel BlazarI core</comment>
     <requestid>1252347</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>334a49c468b096896cf16c1c3d6c2bb7</srcmd5>
+    <version>20250318</version>
+    <time>1742495070</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254165</requestid>
+  </revision>
 </revisionlist>
