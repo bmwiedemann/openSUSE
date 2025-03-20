@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 19 22:31:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- drop unneeded build dependency on pcre
+
+-------------------------------------------------------------------
 Wed Feb 12 09:30:38 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch procmail-o_nofollow.patch

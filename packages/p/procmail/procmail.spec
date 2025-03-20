@@ -38,7 +38,6 @@ Patch7:         procmail-o_nofollow.patch
 Patch8:         reproducible.patch
 Patch10:        procmail-fix-Werror=return-type.patch
 Patch11:        reproducible2.patch
-BuildRequires:  pcre-devel
 BuildRequires:  postfix
 Requires:       /bin/sed
 Recommends:     %{_bindir}/mimencode
