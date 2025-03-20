@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Mar 19 17:37:53 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#150
+- do not overdo usb device de-duplication (bsc#1239663)
+- 23.4
+
+--------------------------------------------------------------------
 Mon Oct 21 10:50:15 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#148
