@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="filename">edk2-platforms</param>
     <param name="versionformat">0.0~%ci~%h</param>
-    <param name="revision">10e2eb030de3</param>
+    <param name="revision">fece0f1ab19ecbc2b99a5194ac28af1920beade4</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*edk2-platforms*.tar</param>
@@ -16,7 +16,7 @@
     <param name="scm">git</param>
     <param name="filename">edk2-non-osi</param>
     <param name="versionformat">0.0~%ci~%h</param>
-    <param name="revision">1f4d7849f2344aa770f4de5224188654ae5b0e50</param>
+    <param name="revision">ea2040c2d4e2200557e87b9f9fbd4f8fb7a2b6e8</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*edk2-non-osi*.tar</param>
@@ -80,6 +80,18 @@
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*googletest*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/DMTF/libspdm</param>
+    <param name="scm">git</param>
+    <param name="filename">libspdm</param>
+    <param name="versionformat">0.0~%ci~%h</param>
+    <param name="revision">98ef964e1e9a0c39c7efb67143d3a13a819432e0</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*libspdm*.tar</param>
     <param name="compression">xz</param>
   </service>
 

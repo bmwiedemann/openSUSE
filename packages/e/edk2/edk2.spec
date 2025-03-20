@@ -18,14 +18,15 @@
 
 
 %define platform @BUILD_FLAVOR@%{nil}
-%define edk2_platforms_version 0.0~20231122T151253~10e2eb03
-%define edk2_non_osi_version 0.0~20231130T122146~1f4d784
+%define edk2_platforms_version 0.0~20250313T212503~fece0f1a
+%define edk2_non_osi_version 0.0~20250211T163925~ea2040c
 %define brotli_version 0.0~20220110T130810~f4153a0
 %define cmocka_version 0.0~20191205T115639~1cc9cde
 %define public_mipi_sys_t_version 0.0~20230315T074831~370b594
 %define mbedtls_version 0.0~20221214T190639~8c892249
 %define googletest_version 0.0~20220616T131832~86add13
-%global openssl_version 3.0.9
+%define libspdm_version 0.0~20241122T070402~98ef964
+%global openssl_version 3.4.1
 
 # Build with edk2-non-osi
 %bcond_without edk2_non_osi
@@ -39,14 +40,14 @@
 %endif
 
 # This differs on RC
-%define archive_version 202311
+%define archive_version 202502
 
 %if "%{platform}" != "%{nil}"
 Name:           edk2-%{platform}
 %else
 Name:           edk2
 %endif
-Version:        202311
+Version:        202502
 Release:        0
 %if "%{platform}" == "Shell"
 Summary:        Shell EFI application
@@ -64,16 +65,12 @@ Source4:        edk2-cmocka-%{cmocka_version}.tar.xz
 Source5:        public-mipi-sys-t-%{public_mipi_sys_t_version}.tar.xz
 Source6:        mbedtls-%{mbedtls_version}.tar.xz
 Source7:        googletest-%{googletest_version}.tar.xz
+Source8:        libspdm-%{libspdm_version}.tar.xz
 Source10:       https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
 Source11:       https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz.asc
 Source12:       openssl.keyring
-# PATCH-FIX-UPSTREAM - https://github.com/tianocore/edk2/pull/5781
-Patch1:         5781.patch
-Patch999:       edk2-platforms-fix-Hikeys.patch
 #!BuildIgnore:  gcc-PIE
-%if "%{platform}" != "hikey" && "%{platform}" != "hikey960"
 BuildRequires:  acpica
-%endif
 BuildRequires:  bc
 BuildRequires:  dos2unix
 %if "%{platform}" == "Armada80x0McBin" || "%{platform}" == "SG2042"
@@ -120,11 +117,7 @@ Firmware required to run the %{platform}
 %endif
 
 %prep
-%setup -q -n edk2-edk2-stable%{archive_version} -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7
-%patch -P 1 -p1
-pushd edk2-platforms-%{edk2_platforms_version}
-%patch -P 999 -p1
-popd
+%setup -q -n edk2-edk2-stable%{archive_version} -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8
 
 # Fix path of the brotli submodules
 cp -R brotli-%{brotli_version}/* BaseTools/Source/C/BrotliCompress/brotli/
@@ -137,6 +130,8 @@ cp -R public-mipi-sys-t-%{public_mipi_sys_t_version}/* MdePkg/Library/MipiSysTLi
 cp -R mbedtls-%{mbedtls_version}/* CryptoPkg/Library/MbedTlsLib/mbedtls/
 # Fix path for googletest
 cp -R googletest-%{googletest_version}/* UnitTestFrameworkPkg/Library/GoogleTestLib/googletest/
+# Fix path for libspdm
+cp -R libspdm-%{libspdm_version}/* SecurityPkg/DeviceSecurity/SpdmLib/libspdm
 
 ln -sf edk2-platforms-%{edk2_platforms_version} edk2-platforms
 ln -sf edk2-non-osi-%{edk2_non_osi_version} edk2-non-osi
@@ -156,12 +151,6 @@ export PYTHON_COMMAND=python3
 %if "%{platform}" == "ArmVExpress-FVP-AArch64"
 DSC_PATH="edk2-platforms/Platform/ARM/VExpressPkg/ArmVExpress-FVP-AArch64.dsc"
 %endif
-%if "%{platform}" == "hikey"
-DSC_PATH="edk2-platforms/Platform/Hisilicon/HiKey/HiKey.dsc"
-%endif
-%if "%{platform}" == "hikey960"
-DSC_PATH="edk2-platforms/Platform/Hisilicon/HiKey960/HiKey960.dsc"
-%endif
 %if "%{platform}" == "Armada80x0McBin"
 DSC_PATH="edk2-platforms/Platform/SolidRun/Armada80x0McBin/Armada80x0McBin.dsc"
 %endif
@@ -170,9 +159,6 @@ DSC_PATH="edk2-platforms/Platform/RaspberryPi/RPi3/RPi3.dsc"
 %endif
 %if "%{platform}" == "RPi4"
 DSC_PATH="edk2-platforms/Platform/RaspberryPi/RPi4/RPi4.dsc"
-%endif
-%if "%{platform}" == "Overdrive1000Board"
-DSC_PATH="edk2-platforms/Platform/SoftIron/Overdrive1000Board/Overdrive1000Board.dsc"
 %endif
 %if "%{platform}" == "SbsaQemu"
 DSC_PATH="edk2-platforms/Platform/Qemu/SbsaQemu/SbsaQemu.dsc"
@@ -194,30 +180,12 @@ build $BUILD_OPTIONS
 %install
 # default outdir
 %define outdir Build/%{platform}/%{build_mode}_GCC5
-%if "%{platform}" == "hikey"
-%if %{with edk2_non_osi}
-install -D -m 0644 edk2-non-osi/Platform/Hisilicon/HiKey/mcuimage.bin %{buildroot}/boot/mcuimage.bin
-%endif
-%define outdir Build/HiKey/%{build_mode}_GCC5
-%define fd_file BL33_AP_UEFI.fd
-%endif
-%if "%{platform}" == "hikey960"
-%if %{with edk2_non_osi}
-install -D -m 0644 edk2-non-osi/Platform/Hisilicon/HiKey960/lpm3.img %{buildroot}/boot/lpm3.img
-%endif
-%define outdir Build/HiKey960/%{build_mode}_GCC5
-%define fd_file BL33_AP_UEFI.fd
-%endif
 %if "%{platform}" == "ArmVExpress-FVP-AArch64"
 %define fd_file FVP_AARCH64_EFI.fd
 %endif
 %if "%{platform}" == "Armada80x0McBin"
 %define outdir Build/Armada80x0McBin-AARCH64/%{build_mode}_GCC5
 %define fd_file ARMADA_EFI.fd
-%endif
-%if "%{platform}" == "Overdrive1000Board"
-%define outdir Build/Overdrive1000/%{build_mode}_GCC5
-%define fd_file OVERDRIVE1000_ROM.fd
 %endif
 %if "%{platform}" == "RPi3"
 %define fd_file RPI_EFI.fd
@@ -254,14 +222,6 @@ popd
 %dir %{_prefix}/lib/edk2
 %{_prefix}/lib/edk2/Shell.efi
 %else
-%if %{with edk2_non_osi}
-%if "%{platform}" == "hikey"
-/boot/mcuimage.bin
-%endif
-%if "%{platform}" == "hikey960"
-/boot/lpm3.img
-%endif
-%endif
 /boot/*.fd
 %endif
 

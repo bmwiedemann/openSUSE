@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 20 10:02:56 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update edk2 to 202502
+  * changelog: https://github.com/tianocore/edk2/releases/tag/edk2-stable202502
+- Update edk2-platforms to version 0.0~20250313T212503~fece0f1a
+- Update edk2-non-osi to version 0.0~20250211T163925~ea2040c
+- Update openssl to 3.4.1
+- Update openssl.keyring
+- Add libspdm in version 0.0~20241122T070402~98ef964
+- Remove some target as not supported anymore by 202502:
+  * Hikey
+  * Hikey960
+  * Overdrive1000Board
+- Drop upstream patch:
+  * 5781.patch
+- Drop patch related to a removed platform:
+  * edk2-platforms-fix-Hikeys.patch
+
+-------------------------------------------------------------------
 Tue Mar  4 10:56:34 UTC 2025 - JS <obs.coke518@passinbox.com>
 
 - Fix build for loongarch64
