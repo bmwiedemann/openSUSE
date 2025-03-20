@@ -1,0 +1,41 @@
+From ac77a2e4ac4b3e2019efeeb5fce8a61d649b4f6c Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Wed, 12 Mar 2025 14:27:36 +0100
+Subject: [PATCH] Fix DEB822 'NoneType' object has no attribute 'split'
+ (#710)
+
+---
+ salt/modules/aptpkg.py | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
+index 48d2ccb904..8244c639e8 100644
+--- a/salt/modules/aptpkg.py
++++ b/salt/modules/aptpkg.py
+@@ -2807,7 +2807,9 @@ def mod_repo(repo, saltenv="base", aptkey=True, **kwargs):
+             if not invalid:
+                 repos.append(source)
+         else:
+-            if HAS_DEB822 and source.types == [""]:
++            if HAS_DEB822 and (
++                source.types == [""] or not bool(source.types) or not source.type
++            ):
+                 # most probably invalid or comment line
+                 continue
+             repos.append(source)
+@@ -2991,8 +2993,10 @@ def mod_repo(repo, saltenv="base", aptkey=True, **kwargs):
+         kwargs["comments"] = salt.utils.pkg.deb.combine_comments(kwargs["comments"])
+ 
+     if not mod_source:
+-        if HAS_DEB822:
+-            apt_source_file = kwargs.get("file")
++        apt_source_file = kwargs.get("file")
++        if not apt_source_file:
++            raise SaltInvocationError("missing 'file' argument when defining a new repository")
++        if HAS_DEB822 and not apt_source_file.endswith(".list"):
+             section = _deb822.Section("")
+             section["Types"] = repo_type
+             section["URIs"] = repo_uri
+-- 
+2.48.1
+

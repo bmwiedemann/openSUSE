@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 12 13:38:35 UTC 2025 - Marek Czernek <marek.czernek@suse.com>
+
+- Fix aptpkg 'NoneType object has no attribute split' error
+
+- Added:
+  * fix-deb822-nonetype-object-has-no-attribute-split-71.patch
+
+-------------------------------------------------------------------
 Mon Mar 10 13:47:55 UTC 2025 - Victor Zhestkov <vzhestkov@suse.com>
 
 - Detect openEuler as RedHat family OS

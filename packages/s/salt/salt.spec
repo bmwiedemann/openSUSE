@@ -538,6 +538,8 @@ Patch165:       implement-multiple-inventory-for-ansible.targets.patch
 Patch166:       ensure-the-correct-crypt-module-is-loaded.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/67796
 Patch167:       detect-openeuler-as-redhat-family-os.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/710
+Patch168:       fix-deb822-nonetype-object-has-no-attribute-split-71.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
