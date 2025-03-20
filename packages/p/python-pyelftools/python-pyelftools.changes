@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Mar 19 10:02:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.32
+  * Fix minor typos in README.rst (#546)
+  * DW_FORM_implicit_const is an integer const (#547)
+  * Fix for crash on CUs with no lineprograms (#549)
+  * Update action versions (#550)
+  * GNU readelf 2.42, released April 2024 (#551)
+  * Exceptions on malformed ELF header contents (#552)
+  * 24 bit integer support, forms strx3, addrx3 (#553)
+  * cfi: fix not parsing DW_CFA_def_cfa_offset_sf (#555)
+  * Parser performanc test (#556)
+  * Performance enhancements (#557)
+  * Missed some CPU specific section types (#559)
+  * Add missing riscv attributes (#560)
+  * CIEv4 and FDE ahead of its CIE (#563)
+  * Addding relocation type for PPC 32 EABI (#532)
+  * Support for .gnu_debuglink DWARF5 Section (#525)
+  * Clean up whitespace
+  * Added XHASH to ENUM_D_TAG_MIPS (#571)
+  * Section type check on dynamic to strtab link (#573)
+  * Check for SHN_UNDEF during symbol dumping (#574)
+  * PAGESIZE replaced with a constant (#578)
+  * examples: Support DWARF5 filename decoding (#582)
+  * Fix for parsing error encountered when pyelftools tries to parse
+    non GNU notes that conflicting with known GNU note types. (#584)
+  * [RISCV] Add GNU note property and CFI support (#587)
+  * No crash on note with zero length name (#592)
+  * Support for parsing .debug_types section introduced
+    in DWARF version 4 (#520)
+  * DW_FORM_ref_sig8 support (#595)
+  * Describing volatile C++ datatypes (#597)
+  * Stripped file and gnu_debuglink support take 2 (#596)
+
+-------------------------------------------------------------------
 Thu Mar 21 16:59:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.31:
