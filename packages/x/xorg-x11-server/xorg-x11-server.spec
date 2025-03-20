@@ -256,6 +256,7 @@ Patch1237460:   U_CVE-2025-26601-0001-sync-Do-not-let-sync-objects-uninitialized
 Patch1237461:   U_CVE-2025-26601-0002-sync-Check-values-before-applying-changes.patch
 Patch1237462:   U_CVE-2025-26601-0003-sync-Do-not-fail-SyncAddTriggerToSyncObject.patch
 Patch1237463:   U_CVE-2025-26601-0004-sync-Apply-changes-last-in-SyncChangeAlarmAttributes.patch
+Patch1239750:   U_CVE-2022-49737-dix-Hold-input-lock-for-AttachDevice.patch
 
 %description
 This package contains the X.Org Server.
@@ -422,6 +423,8 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1237461 -p1
 %patch -P 1237462 -p1
 %patch -P 1237463 -p1
+
+%patch -P 1239750 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

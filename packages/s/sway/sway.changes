@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 20 03:56:20 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to BuildRequires: pkgconfig(libpcre2-8)
+
+-------------------------------------------------------------------
 Tue Jan 28 13:05:46 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.1:

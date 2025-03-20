@@ -26,6 +26,8 @@ URL:            https://github.com/KDE/snorenotify
 Source:         %{rname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix_desktop_files.patch
 Patch0:         fix_desktop_files.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         snorenotify-cmake4.patch
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes

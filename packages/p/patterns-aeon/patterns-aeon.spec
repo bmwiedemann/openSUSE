@@ -320,6 +320,7 @@ Requires:       noto-coloremoji-fonts
 Requires:       noto-emoji-fonts
 Requires:       noto-sans-fonts
 # So that GNOME keyring works
+Requires:       gcr-ssh-agent
 Requires:       gcr-ssh-askpass
 Requires:       gcr3-ssh-askpass
 # So that GNOME prompt for ssh password works

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-communication-rooms
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Microsoft Communication Rooms Client Library for Python
 License:        MIT

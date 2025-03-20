@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 11 21:34:05 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Mark build recipe as POSIX-sh-incompatible
+- Run mkdir/rm with verbose mode for the build log
+
+-------------------------------------------------------------------
 Tue Feb 18 16:21:23 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Update to release 3.19.1:

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 18 09:21:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.11.4
+  * enhancement:Dependencies: Update the floor version of botocore
+    to 1.37.4 to match imports.
+  * enhancement:Tasks: Pass Botocore context from parent to child
+    threads.
+- from version 0.11.3
+  * bugfix:``awscrt``: Fix urlencoding issues for request signing
+    with the awscrt.
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Feb  3 09:29:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.11.2

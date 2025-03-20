@@ -215,4 +215,12 @@ Similar to SR#785407 in kdb, but I decided to omit the %if completely as 15.1 is
     <comment>- Stop using the optional marble dependency</comment>
     <requestid>1233310</requestid>
   </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>0847ceae1066cd9c07a562674e2113f1</srcmd5>
+    <version>3.2.0</version>
+    <time>1742495183</time>
+    <user>anag+factory</user>
+    <comment>CMake 4 compat fixes</comment>
+    <requestid>1254732</requestid>
+  </revision>
 </revisionlist>

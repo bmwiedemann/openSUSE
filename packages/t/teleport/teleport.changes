@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Mar 20 05:49:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.3.4:
+  * Improved clarity of error logs and address UX edge cases in
+    teleport-update, part 2. #53197
+  * Fixed the teleport-update systemd service in CentOS 7 and
+    distros with older systemd versions. #53196
+  * Fixed panic when trimming audit log entries. #53195
+  * Fixed an issue causing the teleport process to crash on group
+    database errors when host user creation was enabled. #53082
+  * Workload ID: support for attesting Docker workloads. #53069
+  * Added a --join-method flag to the teleport configure command.
+    #53061
+  * Improved clarity of error logs and address UX edge cases in
+    teleport-update. #53048
+  * The event handler can now generate certificates for DNS names
+    that are not resolvable. #53026
+  * Machine ID: Added warning when generated certificates will not
+    last as long as expected. #53019
+  * Improve support for teleport-update on CentOS 7 and distros
+    with older systemd versions. #53017
+  * You can now use == and != operators with integer operands in
+    Teleport predicate language. #52991
+  * Workload ID: support for attesting Podman workloads. #52978
+  * Web UI now properly shows per-session MFA errors in desktop
+    sessions. #52916
+  * Allow specifying the maximum number of PKCS#11 HSM connections.
+    #52870
+  * Resolved an issue where desktop session recordings could have
+    incorrect proportions. #52866
+  * The audit log web UI now renders Teleport Autoupdate Config and
+    Version events properly. #52838
+  * Fixed terraform provider data sources. #52816
+
+-------------------------------------------------------------------
 Fri Mar  7 07:02:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.3.3:

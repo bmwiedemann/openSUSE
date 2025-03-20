@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(json-c) >= 0.13
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libinput) >= 1.21.0
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(wayland-client)

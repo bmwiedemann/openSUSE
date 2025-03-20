@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Mar  8 15:39:00 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.4.9
+  * updated dependencies
+  * bump to go 1.23
+  * fix: convert line endings of Dockerfile to linux
+  * use variables to set container registry and repository in scripts
+
+- Update to version 0.4.8
+  * regexFirstGroup return first group from regexp, useful with .env file…
+
+- Update to version 0.4.7
+  * add a default user-agent header
+  * Add new runtime environment variable to dgoss to copy additional files
+
+- Update to version 0.4.6
+  * "socket" as one more valid filetype for "file" testing
+  * fix outcome label in goss_tests_run_outcomes_total
+  * add more labels to prometheus output
+  * kgoss: fixes issue #868 bei using a simpler chmod command
+  * feat: s390x build option added to build package for IBM Z series
+  * IDE json schema: skip is not mandatory for process tests
+  * Added timeout for mount command in goss
+  * Add uid/gid check in file module
+
+- Update to version 0.4.4
+  * Fixed: Return the error when a command fails to start 
+
+- Update to version 0.4.3
+  * Fix: panic in http test when url is invalid
+  * added DGOSS_TEMP_DIR environment variable
+  * Added: warning when duplicate keys cause tests to be overwritten
+  * Implement log feedback and fix broken CI
+  * Fixed: junit and json output bug causing panic
+  * Added: found-elements to json output
+
+- added %check section
+
+-------------------------------------------------------------------
 Tue Oct 10 18:17:10 UTC 2023 - Jochen Breuer <brejoc@gmail.com> - 0.4.2
 
 - Update to version 0.4.2 with updated dependencies in vendor file

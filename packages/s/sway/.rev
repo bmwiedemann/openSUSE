@@ -692,4 +692,12 @@ changes since last time:
   and libinput-drag-lock-enabled-sticky.patch</comment>
     <requestid>1240828</requestid>
   </revision>
+  <revision rev="50" vrev="8">
+    <srcmd5>94cc3aa1c49a31b295a9eca944bffe5f</srcmd5>
+    <version>unknown</version>
+    <time>1742495095</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254591</requestid>
+  </revision>
 </revisionlist>

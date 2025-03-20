@@ -203,4 +203,36 @@
     <comment>submit new version 12</comment>
     <requestid>1248574</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1ea2ea3bd89c0d02d274573e3a9be7b2</srcmd5>
+    <version>13.pre.devel44</version>
+    <time>1742495129</time>
+    <user>anag+factory</user>
+    <comment>- Import the packages list from an AutoYaST profile
+  (gh#agama-project/agama#2153).
+
+- Copy Agama logs to the installed system (gh#agama/agama-project#2148).
+- Set /var/log/agama-installation permissions to 0700
+  (gh#agama/agama-project#2140).
+
+- Automatically retry package download or repository refresh
+  before reporting an error (gh#agama-project/agama#2117)
+
+- Use the correcty script type allows postPartitioning scripts to run
+  (gh#agama-project/agama#2114).
+
+- Enable again the signature checking for dir:/// repositories
+  (gh#agama-project/agama#2092).
+
+- introduced boot_strategy into storage section of product
+  definition yaml file. It allows to control what boot strategy
+  will be proposed by storage. Currently works only for BLS. 
+
+- Temporarily disable signature checking for dir:// repositories
+  (gh#agama-project/agama#2092).
+
+- Add file system label to the config model (needed for jsc#AGM-122
+  and bsc#1237165).</comment>
+    <requestid>1254594</requestid>
+  </revision>
 </revisionlist>

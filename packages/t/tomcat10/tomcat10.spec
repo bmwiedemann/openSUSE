@@ -29,7 +29,7 @@
 %define elspec %{elspec_major}.%{elspec_minor}
 %define major_version 10
 %define minor_version 1
-%define micro_version 35
+%define micro_version 39
 %define java_major 1
 %define java_minor 11
 %define java_version %{java_major}.%{java_minor}
@@ -337,7 +337,7 @@ ant -Dbase.path="." \
     -Dno.build.dbcp=true \
     -Dversion="%{version}" \
     -Dversion.build="%{micro_version}" \
-    deploy dist-prepare dist-source javadoc package embed-jars
+    deploy javadoc package embed-jars
 
 # remove some jars that we'll replace with symlinks later
 rm output/build/bin/commons-daemon.jar \

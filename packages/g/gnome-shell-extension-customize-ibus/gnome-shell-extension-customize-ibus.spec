@@ -20,7 +20,7 @@
 %global uuid customize-ibus@hollowman.ml
 %global forgeurl https://github.com/openSUSE/Customize-IBus
 Name:           gnome-shell-extension-customize-ibus
-Version:        90
+Version:        91
 Release:        0
 Summary:        IBus customization extension for GNOME Shell
 License:        GPL-3.0-or-later

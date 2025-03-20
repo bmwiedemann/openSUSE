@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 20 09:08:47 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.15.0
+  * fixed LSP crashes when editing code fences and/or working in text files
+    with code fences
+  * new feature to set a group path "by name", in that any directory with the
+    same name can share the same group rules, no matter how deep in the
+    notebook. See references below.
+
+- added _service file to help vendor dependencies
+
+-------------------------------------------------------------------
 Sat Feb 22 15:24:08 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.14.2

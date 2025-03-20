@@ -1,0 +1,62 @@
+From 388870cfef754dd6f23d13abad2f10dc05758384 Mon Sep 17 00:00:00 2001
+From: Miika Alikirri <miika.alikirri@suse.com>
+Date: Wed, 19 Mar 2025 08:50:40 +0200
+Subject: pybridge: Stop hard-coding endian flag in DBusChannel
+
+When you issue sd_bus_read() you'll always get the data returned to in
+the machines native endianness. Therefore the endianness flag can be set
+based on the machines architecture.
+
+This is apparently "undertested" on systemd's end so this may have to
+fixed in the future if we run into real world cases where sd_bus_read()
+doesn't return data in native endianness.
+
+https://github.com/systemd/systemd/pull/36784#issuecomment-2734771532
+---
+ src/cockpit/channels/dbus.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/cockpit/channels/dbus.py b/src/cockpit/channels/dbus.py
+index 5fc52c3a8..3ebc6404a 100644
+--- a/src/cockpit/channels/dbus.py
++++ b/src/cockpit/channels/dbus.py
+@@ -38,6 +38,7 @@ import asyncio
+ import errno
+ import json
+ import logging
++import sys
+ import traceback
+ import xml.etree.ElementTree as ET
+ 
+@@ -48,6 +49,8 @@ from ..channel import Channel, ChannelError
+ 
+ logger = logging.getLogger(__name__)
+ 
++IS_LITTLE_ENDIAN_MACHINE = sys.byteorder == 'little'
++
+ # The dbusjson3 payload
+ #
+ # This channel payload type translates JSON encoded messages on a
+@@ -174,6 +177,7 @@ class DBusChannel(Channel):
+     name = None
+     bus = None
+     owner = None
++    endianness = "<" if IS_LITTLE_ENDIAN_MACHINE else ">"
+ 
+     async def setup_name_owner_tracking(self):
+         def send_owner(owner):
+@@ -346,10 +350,9 @@ class DBusChannel(Channel):
+             # If the method call has kicked off any signals related to
+             # watch processing, wait for that to be done.
+             async with self.watch_processing_lock:
+-                # TODO: stop hard-coding the endian flag here.
+                 self.send_json(
+                     reply=[reply.get_body()], id=cookie,
+-                    flags="<" if flags is not None else None,
++                    flags=self.endianness,
+                     type=reply.get_signature(True))  # noqa: FBT003
+         except BusError as error:
+             # actually, should send the fields from the message body
+-- 
+2.48.1
+

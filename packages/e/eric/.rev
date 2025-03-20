@@ -241,4 +241,41 @@
     <comment></comment>
     <requestid>1173433</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>78a787c49c971b37929ef99bfa7699fb</srcmd5>
+    <version>25.3</version>
+    <time>1742495123</time>
+    <user>anag+factory</user>
+    <comment>- Update to 25.3:
+  * General
+    + Made the code compatible with Qt/PyQt 6.8.
+    + Made the code compatible with Python 3.13.
+    + Drop support for Python 3.8.
+    + Improved the handling of crash sessions.
+    + Improved the internal debug logging system.
+    + Added a `Help` menu entry to generate some version information and copy
+      that to the clipboard (see issue 562).
+  * Debugger
+    + Added a configuration option to not stop at the first executable
+      statement when debugging in passive mode.
+    + Added a configuration option to make 'Show only' the default for the
+      global and local variables viewer.
+  * Editor
+    + Added the capability to sort the entries in the code outline by
+      occurrence or alphabetically.
+    + Changed the editor layout to use a splitter between editor and code
+      layout to enhance the flexibility.
+    + Added a key event handler to make the keypad ',' always insert a '.'
+      character because that is what is needed in programming.
+  * Find In Files
+    + Added the capability to filter the list of files to be searched.
+  * IDE Server
+    + Extended the eric-ide server to be able to check, if received messages
+      have been sent by a valid eric IDE.
+    + Extended the eric-ide server integration in the file browser.
+    + Added functionality to work with remote files and projects via
+      an `eric-ide Server` on a remote computer.
+  * pip Interface</comment>
+    <requestid>1254555</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package kdesvn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        KDE Subversion Client
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kdesvn
 Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         kdesvn-cmake4.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -63,11 +65,11 @@ Obsoletes:      libsvnqt7 < %{version}
 kdesvn is a GUI client for subversion repositories.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
 %kf5_makeinstall -C build

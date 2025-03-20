@@ -487,4 +487,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226905</requestid>
   </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>1dc9050544f08f973065209471dff89e</srcmd5>
+    <version>2.1.0</version>
+    <time>1742495181</time>
+    <user>anag+factory</user>
+    <comment>CMake 4 compat change</comment>
+    <requestid>1254730</requestid>
+  </revision>
 </revisionlist>

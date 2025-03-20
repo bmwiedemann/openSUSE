@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 19 16:18:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove unneeded pcre build dependency
+
+-------------------------------------------------------------------
 Wed Apr 20 08:06:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim duplicate LoadModule [boo#1198570]

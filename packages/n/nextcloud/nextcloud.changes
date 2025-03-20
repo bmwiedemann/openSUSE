@@ -1,8 +1,98 @@
 -------------------------------------------------------------------
+Wed Mar 19 17:09:27 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 30.0.8
+  - [stable30] fix(mime-types): adjust compiled mime types and sign in #51436
+  - [stable30] test: Remove .only() calls in #51303
+  - [stable30] ci: Update 3rdparty actions in #51518
+  - [stable30] fix(base.php): Correct order for booting \OC\Server in #51370
+  - [stable30] fix(files): Make sure file pointer exists in #51535
+  - [stable30] fix(files): also show file list headers on empty views in #51274
+  - [stable30] fix(auth): Allow 2FA challenges for Ephemeral sessions in #51548
+  - 30.0.8 RC1 in #51551
+  - 30.0.8 in #51576
+
+-------------------------------------------------------------------
 Fri Mar 14 06:06:21 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 30.0.7
-  - No changelog from upstream at this time.
+  - [stable30] fix(files): Do not download files with openfile query flag in #50706
+  - [stable30] fix: make sure we process mime extensions as string in #50704
+  - [stable30] fix: don't use cached root info from shared cache if the watcher has detected an update in #50761
+  - [stable30] fix(TaskProcessing\Manager): Always use distributed cache and use PHP serialize in #50682
+  - [stable30] test: re-add object store primary storage phpunit tests in #49802
+  - [stable30] fix(files): Correctly copy the cache information during copy operations in #50804
+  - [stable30] Fix incorrect permissions when copying shared files in #49657
+  - [stable30] fix(repair): PHP8.3 deprecation warning in #50837
+  - [stable30] Bug/48678/restore dav error response in #49481
+  - chore(deps-dev): bump cypress-split from 1.24.9 to 1.24.11 in #50826
+  - chore(deps): bump @nextcloud/files from 3.10.1 to 3.10.2  in #50825
+  - [stable30] fix: Fix regression in calendar invitation sending in #50803
+  - [stable30] fix(SharedStorage): Check if storage ID is set on cache in #50813
+  - [stable30] fix(login): only show error state on login box if user interacted in #50849
+  - [stable30] fix(transferownership): Allow searching new owner by email in #50853
+  - [stable30] perf(files): faster query to fetch incomplete directories in #50796
+  - [stable30] fix(files): Properly reset all file list filters on view change in #50295
+  - [stable30] fix(systemtags): do not hide if no tags in #50888
+  - [stable30] fix(activity): Fix activity parameter types in #50862
+  - [stable30] fix(files_sharing): Fix public share expiration being set when toggle is not enabled in #50891
+  - [stable30] fix(files): properly forward open params from short urls in #50877
+  - [stable30] fix(cron): Keep job class limitation when searching for the next job in #50900
+  - [stable30] fix(files_sharing): Also list deleted team shares in #50925
+  - [stable30] fix(files_external): request strict password auth on credentials enter action in #50931
+  - [stable30] fix(l10n): Fix triple dot in translation in #50948
+  - [stable30] fix: Change UserAgent to *cloud in #50940
+  - [stable30] Update @nextcloud/vue to v8.23.1 in #50914
+  - [stable30] fix(cypress): opendetails tests in #50945
+  - [stable30] ci(autochecks): Run some autochecks also on non-PHP files in #50952
+  - [stable30] fix(files): handle failed node properly in #50947
+  - chore(deps): bump libphonenumber-js from 1.11.19 to 1.11.20 in #50967
+  - [stable30] fix: validate account properties as a repair step in #51004
+  - chore(deps-dev): bump @nextcloud/eslint-config from 8.4.1 to 8.4.2 in #50969
+  - chore(deps-dev): bump cypress-split from 1.24.11 to 1.24.14 in #50965
+  - chore(deps-dev): bump @nextcloud/cypress from 1.0.0-beta.13 to 1.0.0-beta.14 in #50966
+  - [stable30] Fix: NotFoundException for anonymous users in #51002
+  - [stable30] fix: Initialize lastConnectionCheck after first connection in #51016
+  - [stable30] fix(files_versions): Do not expire versions newer than min age  in #51024
+  - [stable30] fix: wipe local storages on log out in #50997
+  - [stable30] fix(security): Update CA certificate bundle in #51046
+  - [stable30] fix: Report duplicated extra files in integrity check in #51061
+  - [stable30] fix(l10n): Improve english source strings in #51057
+  - [stable30] make it possible to run occ as root in #51119
+  - chore(deps-dev): bump @types/dockerode from 3.3.34 to 3.3.35 in #51164
+  - chore(deps): bump @nextcloud/event-bus from 3.3.1 to 3.3.2 in #51165
+  - chore(deps-dev): bump ts-jest from 29.2.5 to 29.2.6 in #51166
+  - [stable30] chore(deps): bump webdav from 5.7.1 to 5.8.0 in #51187
+  - [stable30] Remove space in #51150
+  - [stable30] fix(files_external): Move definition parameter to the correct place in #51105
+  - [stable30] fix(dav): Handle end of stream in File::put in #51127
+  - [stable30] fix(files_sharing): Map sharee information for shared-by-you view in #50934
+  - [stable30] feat: Close sessions created for login flow v2 in #51089
+  - [stable30] fix(files_trashbin): disable bulk download for trashbin in #51209
+  - [stable30] fix(FederatedShareProvider): Delete external shares when groups are deleted or users removed from a group in #51205
+  - [stable30] refactor(TempManager): Simplify and unify implementations and remove legacy behavior in #51202
+  - [stable30] fix(lookup_server_connector): correctly handle account properties in #51238
+  - [stable30] fix(files): Don't do session related work in the constructor of the View in #51277
+  - [stable30] fix(test): Add missing data-cy attribute for file actions in #51281
+  - [stable30] feat: Support deleting metadata from WebDAV in #51222
+  - [stable30] fix(user_ldap): Avoid extra LDAP request when mapping a user for the first time in #50778
+  - [stable30] fix(dav): Handle long absence status earlier in #51272
+  - Revert "Revert "[stable30] fix: Handle copy of folders containing live photos"" in #49840
+  - [stable30] fix: Use case insensitive check when validating login name in #51252
+  - [stable30] fix(login): Properly target public page with attribute in #51294
+  - [stable30] fix(translation): Fix string concatenation in LDAP endpoint in #51285
+  - [stable30] feat: log query for dbal exceptions in #51231
+  - [stable30] fix(dav): Use IUser::getDisplayName directly in #51282
+  - [stable30] chore(deps): update @nextcloud/upload to 1.9.0 in #51261
+  - [stable30] Add LDAP test settings command in #50691
+  - 30.0.7 RC1 in #51241
+  - [stable30] fix(lookup-server): disable when not using global scale in #51406
+  - [stable30] fix(external_storage): fix settings save in #51393
+  - [stable30] fix(AppDiscover): Strip double-quotes from folder name in #51401
+  - [stable30] fix(mimetypes): drop tar.gz and tar.bz2 and adjust tgz in #51412
+  - [stable30] fix(lookup-server): Only flag new users for lookup update / delete in #51416
+  - 30.0.7 RC2 in #51429
+  - 30.0.7 in #51461
 
 -------------------------------------------------------------------
 Fri Feb 14 05:52:11 UTC 2025 - ecsos <ecsos@opensuse.org>

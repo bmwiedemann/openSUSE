@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Tue Mar 11 20:06:05 UTC 2025 - david.mulder@suse.com
+
+- Update to version 0.9.4+git.0.9909238:
+  * Version 0.9.4
+  * bump ring from 0.17.9 to 0.17.13
+  * Entra Id is case insensitive, cache lookup must match
+  * Support CompanionAppsNotification mfa method
+  * Version 0.9.2
+  * QR code for gnome-shell greeter
+  * Allow tasks to start if AccountsService dir missing
+  * Remove invalid python dependency from sso package
+  * Version 0.9.1
+  * himmelblaud-tasks stops due to missing dir
+  * Clear server config when clearing cache
+  * Fix himmelblau.conf man page cn_name_mapping entry
+  * Update workflow versions
+  * Document the requirements for app_id
+  * Properly handle aad error from auth code req
+  * Provide a group gid fallback for rfc2307 id map
+  * Remove option defs from the default debian himmelblau.conf
+  * Ensure tasks daemon creates files w/ correct gid
+  * Isolate the name mapping so it only happens if enabled
+  * Default to request group info via Edge browser
+  * Avoid modifying the cache entries
+  * Utilize systemd notify to avoid tasks started fail
+  * Ubuntu PAM module configuration to change PIN
+  * Resolve migration error `real_gidnumber` missing
+  * deps(rust): bump libc from 0.2.169 to 0.2.170
+  * deps(rust): bump clap_complete from 4.5.45 to 4.5.46
+  * Fix some clippy warnings
+  * Cause tasks daemon to honor configured debug
+  * Fetch user profile photo via tasks daemon
+  * deps(rust): bump clap from 4.5.30 to 4.5.31
+  * deps(rust): bump anyhow from 1.0.95 to 1.0.96
+  * deps(rust): bump cc from 1.2.14 to 1.2.15
+  * Add apparmor whitelisting for nss mapping cache
+  * Dramatically improve debug logging
+  * Move the NixOS CI to a different workflow (w/out main)
+  * Add a sample himmelblau.conf in docs
+  * Resolve missed auth code redirect
+  * Implement mapped name caching in NSS
+  * Add script on-behalf-of flow for logon scripts
+  * Update Cargo.lock deps
+  * Update installation instructions in the README
+  * Donation requests in the issue templates
+  * Update README.md with contribute badge
+  * Update README.md with contributions statement
+  * Create FUNDING.yml
+  * Update README.md
+  * fix failing test expecting /bin/echo to be available
+  * add nixos ci tests
+  * Use sd_notify to signal service readiness, prevent startup failures
+  * Add build command to Makefile
+  * Update documentation
+  * Add NixOS Module
+  * enable build with nix
+  * Implement logon name script mapping
+  * deps(rust): update libnss requirement from 0.8.0 to 0.9.0
+  * Only the himmelblau-sso package should conflict with intune-portal
+  * deps(rust): update gethostname requirement from 0.5.0 to 1.0.0
+  * deps(rust): update lru requirement from ^0.12.3 to ^0.13.0
+  * deps(rust): update rand requirement from ^0.8.5 to ^0.9.0
+  * Fetch the group extension attrs with the group object
+  * Ensure access token has the GroupMember.Read.All scope
+  * Replace the unix attribute option with a rfc2307 idmap
+  * Map the extended attr gidNumber to primary group
+  * Permit configuration of an Application for group fetching
+  * Use posix attributes synchronized from on-prem AD
+  * Fix debug option in himmelblau.conf
+  * Add a span around server initialisation for correct log coalescing
+  * Fix GOA crash when krb5.conf doesn't include /etc/krb5.conf.d
+  * Fix libutf8proc dependency issue on Ubuntu 22.04
+  * Fix Credentials leaking in the debug log
+  * deps(rust): update rusqlite requirement from ^0.32.0 to ^0.33.0 (#345)
+  * Decrease CI build time
+  * Fix CI failure caused by package revision
+  * Support password changes when demanded
+  * Update README.md
+  * Entra Id no longer permits SFA enrollment
+  * Rewrite the sso code in Rust
+  * Add profile photo fetching
+  * Version 0.9.0
+
+-------------------------------------------------------------------
 Mon Jan 27 15:29:44 UTC 2025 - david.mulder@suse.com
 
 - Update to version 0.8.3+git.5.1510f5a:

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Mar 20 12:14:17 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.76.3:
+  * Breaking Changes
+    - find --sort=dag changed to find --dag
+      The experimental find command no longer has a --sort flag.
+      Instead the ability to sort configurations according to their
+      position in the DAG has been replaced with the dedicated
+      --dag flag, which puts the command in "DAG Mode". These
+      changes have been done to allow for closer parity in the
+      behavior of find and list.
+
+        # Before
+        terragrunt find --sort=dag
+        # After
+        terragrunt find --dag
+
+  * New Features
+    - Introduction of the list command
+      As part of the CLI Redesign experiment, the list command has
+      been introduced. As with other new features, usage requires
+      enabling the CLI Redesign experiment.
+      The list command helps you discover and display Terragrunt
+      configurations in your codebase. It provides various output
+      formats and options to help you understand the structure and
+      dependencies of your Terragrunt configurations.
+      The list command is very similar to the find command. It uses
+      the same backend logic for configuration discovery. It also
+      supports very similar flags and configuration options.
+      Generally, the list command is optimized for displaying
+      configurations in a format that is easy for a human to read
+      and understand, so there are more configuration options, and
+      the output is more verbose. Output from the list command can
+      vary significantly depending on the flags used, and the
+      output structure is more variable than that of the find
+      command.
+      Use the list command when you want to visualize your
+      Terragrunt configurations in a human-readable format. Use the
+      find command when you want to programmatically search for
+      configurations in your codebase.
+      Usage
+      Please see the description and screenshots in the release:
+      https://github.com/gruntwork-io/terragrunt/releases/tag/v0.76.3
+  * What's Changed
+    - feat: Adding `list` command (#4034)
+
+-------------------------------------------------------------------
+Thu Mar 20 05:45:44 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.76.2:
+  * New Features
+    - Added --no-stack-generate support in stack run and stack
+      output, allowing users to disable automatic stack
+      regeneration before executing commands. This provides greater
+      control over execution by enabling operations to run using
+      the existing .terragrunt-stack directory, improving
+      efficiency and avoiding unnecessary updates.
+  * What's Changed
+    - feat: Added --no-stack-generate cli flag to skip stack
+      generation by @denis256 in #4039
+    - chroe: Stack tests improvements by @denis256 in #4033
+    - chrore: Adding .cursor to .gitignore by @yhakbar in #4040
+    - docs: Adding docs for --all and --graph by @yhakbar in #4036
+    - docs: Move info to a better location by @yhakbar in #4037
+
+-------------------------------------------------------------------
 Mon Mar 17 18:37:42 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.76.1:

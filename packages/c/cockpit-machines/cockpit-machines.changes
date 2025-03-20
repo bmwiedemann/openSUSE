@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 14 12:49:21 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Patch cockpit-machines to use UEFI as default firmware
+  * added uefi-default-firmware.patch
+
+-------------------------------------------------------------------
+Mon Mar 10 12:45:15 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 328
+  * Translation updates
+
+-------------------------------------------------------------------
+Mon Mar 10 08:49:16 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Remove qemu-spice from SLFO_16 (bsc#1238723)
+
+-------------------------------------------------------------------
 Wed Feb 19 18:01:04 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to 327:

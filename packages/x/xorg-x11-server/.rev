@@ -4241,4 +4241,14 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * Use-after-free in SyncInitTrigger() (CVE-2025-26601, bsc#1237435)</comment>
     <requestid>1248450</requestid>
   </revision>
+  <revision rev="440" vrev="3">
+    <srcmd5>8cab9281d190877c370bbcd61f2794b3</srcmd5>
+    <version>21.1.15</version>
+    <time>1742495075</time>
+    <user>anag+factory</user>
+    <comment>- U_CVE-2022-49737-dix-Hold-input-lock-for-AttachDevice.patch
+  * Xorg may crash when client applications use easystroke for
+    mouse gestures (CVE-2022-49737, bsc#1239750)</comment>
+    <requestid>1254223</requestid>
+  </revision>
 </revisionlist>

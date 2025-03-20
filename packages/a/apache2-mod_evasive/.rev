@@ -117,4 +117,12 @@
     <comment>- Trim duplicate LoadModule [boo#1198570]</comment>
     <requestid>971017</requestid>
   </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>143acf4dc6a9524ab312715d1dee4a90</srcmd5>
+    <version>1.10.1</version>
+    <time>1742495148</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254670</requestid>
+  </revision>
 </revisionlist>

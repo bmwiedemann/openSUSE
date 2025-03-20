@@ -1,7 +1,7 @@
 #
 # spec file for package zziplib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,8 +63,8 @@ sed -i -e 's:docs ::g' Makefile.am
 
 %build
 # Workaround for boo#1225959
-%global optflags %{optflags} -fpermissive
-%cmake -DZZIP_TESTCVE=OFF
+%global optflags %{optflags} -fpermissive %(getconf LFS_CFLAGS) -DPIC
+%cmake -DZZIP_TESTCVE=OFF -DZZIP_LARGEFILE_SENSITIVE=ON -DZZIP_LARGEFILE_RENAME=ON -DPIC=ON
 %cmake_build
 
 %install

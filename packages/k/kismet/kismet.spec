@@ -47,7 +47,7 @@ BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnm)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libwebsockets) >= 3.2.0
@@ -336,7 +336,9 @@ chmod a-x http_data/css/*.css
     --sysconfdir=%{_sysconfdir}/kismet \
     --enable-btgeiger \
     --disable-wifi-coconut \
-    --disable-optimization
+    --disable-optimization \
+    --enable-require-pcre2 \
+    %{nil}
 make %{?_smp_mflags} all
 make %{?_smp_mflags} plugins
 

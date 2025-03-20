@@ -79,4 +79,12 @@
   * Fix search on ADC hubs. (It was accidentally broken in 2.4.1 release.)</comment>
     <requestid>891199</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a4f72fda7aaf0ac9bc3ecef895eecef5</srcmd5>
+    <version>2.4.2</version>
+    <time>1742495142</time>
+    <user>anag+factory</user>
+    <comment>- Added eiskaltdcpp-2.4.2-pcre2.patch to pcre2 support.</comment>
+    <requestid>1254644</requestid>
+  </revision>
 </revisionlist>

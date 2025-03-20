@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 18 16:23:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add numpy22.patch to fix doctests with numpy 2.2
+
+-------------------------------------------------------------------
 Thu May  9 08:36:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:

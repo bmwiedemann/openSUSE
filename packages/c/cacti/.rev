@@ -452,4 +452,12 @@ CVE-2023-51448 boo#1218381
 * CVE-2024-27082: XSS vulnerability when managing trees (boo#1224230)</comment>
     <requestid>1174071</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a3681df70f7f95f96e4daab228ef8189</srcmd5>
+    <version>1.2.29</version>
+    <time>1742495089</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254510</requestid>
+  </revision>
 </revisionlist>

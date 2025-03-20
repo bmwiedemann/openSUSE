@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 20 12:01:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix build failure with CMake 4:
+  * snorenotify-cmake4.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 17:59:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Spec cleanup. Switch to %autosetup

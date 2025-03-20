@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 44740031a34e61a47162f94961e3155c8c8470e2
+%define git_version 588505068c48fe07b1cfa32c5f3acd4395ec9482
 
 Name:           kernel-firmware-sound
-Version:        20250306
+Version:        20250318
 Release:        0
 Summary:        Kernel firmware files for various sound drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
@@ -31,7 +31,7 @@ Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
 # URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250303.tar.xz
+Source1:        kernel-firmware-tools-20250318.tar.xz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases

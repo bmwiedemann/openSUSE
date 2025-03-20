@@ -1,7 +1,7 @@
 #
 # spec file for package kdbg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,8 @@ Summary:        Graphical User Interface for GDB
 License:        GPL-2.0-or-later
 URL:            https://www.kdbg.org/
 Source0:        https://github.com/j6t/kdbg/archive/refs/tags/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 3.3
+# PATCH-FIX-UPSTREAM
+Patch0:         kdbg-cmake4.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem

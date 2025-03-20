@@ -32,4 +32,12 @@
 </comment>
     <requestid>1148320</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>923d0ce337df2b9f651a8429f40411da</srcmd5>
+    <version>0.7.0</version>
+    <time>1742495163</time>
+    <user>anag+factory</user>
+    <comment>CMake 4 compatibility change</comment>
+    <requestid>1254713</requestid>
+  </revision>
 </revisionlist>

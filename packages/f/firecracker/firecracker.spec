@@ -1,7 +1,7 @@
 #
 # spec file for package firecracker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           firecracker
-Version:        1.10.1
+Version:        1.11.0
 Release:        0
 Summary:        Virtual Machine Monitor for creating microVMs
 License:        Apache-2.0
@@ -29,6 +29,7 @@ BuildRequires:  cargo1.82
 BuildRequires:  clang
 BuildRequires:  cmake
 BuildRequires:  rust1.82
+BuildRequires:  pkgconfig(libseccomp)
 ExclusiveArch:  x86_64 aarch64
 
 %description

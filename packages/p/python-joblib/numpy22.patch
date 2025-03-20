@@ -1,0 +1,22 @@
+From 1d9b65db31bfe79c42801d795ea9ebfec1123c44 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lo=C3=AFc=20Est=C3=A8ve?= <loic.esteve@ymail.com>
+Date: Mon, 9 Dec 2024 17:16:23 +0100
+Subject: [PATCH] DOC Make doctest compatible with numpy 2.2 (#1632)
+
+---
+ joblib/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/joblib/__init__.py b/joblib/__init__.py
+index 54f6c8fb4..e9d4c6870 100644
+--- a/joblib/__init__.py
++++ b/joblib/__init__.py
+@@ -63,7 +63,7 @@
+       >>> square = mem.cache(np.square)
+       >>> b = square(a)                                   # doctest: +ELLIPSIS
+       ______________________________________________________________________...
+-      [Memory] Calling square...
++      [Memory] Calling ...square...
+       square(array([[0., 0., 1.],
+              [1., 1., 1.],
+              [4., 2., 1.]]))

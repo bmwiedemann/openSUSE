@@ -163,4 +163,12 @@
     <comment></comment>
     <requestid>1235587</requestid>
   </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>8fcde10a9f3f33a6ed78afa18141c4fc</srcmd5>
+    <version>5.0</version>
+    <time>1742495141</time>
+    <user>anag+factory</user>
+    <comment>- Add gcr-ssh-agent (boo#1239816)</comment>
+    <requestid>1254653</requestid>
+  </revision>
 </revisionlist>

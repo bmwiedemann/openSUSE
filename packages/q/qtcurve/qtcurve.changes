@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 20 12:38:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Redownload archive
+- Add patch:
+  * qtcurve-cmake4.patch
+
+-------------------------------------------------------------------
 Mon Sep 20 07:12:51 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Readded baselibs.conf with qtcurve-gtk2-32bit support.

@@ -620,4 +620,12 @@ better packaging for distros, and various other quirks.
     <comment></comment>
     <requestid>1151829</requestid>
   </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>eebd8c1b1fdcc271b91cd17210aa5be8</srcmd5>
+    <version>2023_07_R1</version>
+    <time>1742495125</time>
+    <user>anag+factory</user>
+    <comment>drop unneeded build requirement on pcre (forwarded request 1254487 from AndreasStieger)</comment>
+    <requestid>1254600</requestid>
+  </revision>
 </revisionlist>

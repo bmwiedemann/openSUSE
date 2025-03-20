@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-machines
-Version:        327
+Version:        328
 Release:        0
 Summary:        Cockpit user interface for virtual machines
 License:        LGPL-2.1-or-later AND MIT
@@ -29,6 +29,7 @@ Source12:       update_version.sh
 %include %_sourcedir/node_modules.spec.inc
 Patch10:        hide-docs.patch
 Patch11:        load-css-overrides.patch
+Patch12:        uefi-default-firmware.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 BuildRequires:  make
@@ -40,7 +41,9 @@ Requires:       libvirt-daemon-kvm
 %endif
 Requires:       libvirt-client
 Requires:       libvirt-dbus >= 1.2.0
+%if 0%{?suse_version} != 1600
 Requires:       qemu-spice
+%endif
 Requires:       virt-install
 # Optional components
 Recommends:     libosinfo

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 20 08:42:51 UTC 2025 - emiliano.langella@suse.com
+
+- Update to version 4.14.3+git0.f2afa97:
+  * prepare for 4.14.3
+  * fix broken offset for TupleDescAttr
+  * update readme.meson_msvc
+  * try to install additional package for compilation of orafce to CI
+
+-------------------------------------------------------------------
 Fri Feb 21 16:15:04 UTC 2025 - emiliano.langella@suse.com
 
 - Update to version 4.14.2+git0.eb0e492:

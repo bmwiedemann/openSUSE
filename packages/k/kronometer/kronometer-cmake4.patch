@@ -1,0 +1,34 @@
+From 1ff7eabd10d44b13a4604b7bfde74badf2dab24b Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Thu, 20 Mar 2025 14:55:27 +0100
+Subject: [PATCH] Make kronometer compatible with CMake 4
+
+Required CMake versions older than 3.5 will throw errors.
+Bump the minimum version to 3.16
+---
+ CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9719e30..780f3d5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,11 +1,11 @@
+-project(kronometer)
++cmake_minimum_required(VERSION 3.16)
++
++set(PROJECT_VERSION 2.3.0)
++project(kronometer VERSION ${PROJECT_VERSION})
+ 
+-cmake_minimum_required(VERSION 3.1)
+ set(QT_MIN_VERSION 5.15.0)
+ set(KF5_MIN_VERSION 5.26.0)
+ 
+-set(PROJECT_VERSION 2.3.0)
+-
+ set(CMAKE_CXX_STANDARD 17)
+ set(CXX_STANDARD_REQUIRED ON)
+ 
+-- 
+2.49.0
+

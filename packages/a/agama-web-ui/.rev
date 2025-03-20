@@ -201,4 +201,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1250608</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>392d2ffac186821b0bff5bdd9d44195d</srcmd5>
+    <version>0</version>
+    <time>1742495130</time>
+    <user>anag+factory</user>
+    <comment>- Fix registration form issue when email is not provided
+  (gh#agama-project/agama#2172)
+
+- Allow updating hostname from web user interface
+  (gh#agama-project/agama#2147)
+
+- Fix a language selector overflow issue in the product license dialog
+  (gh#agama-project/agama#2105)
+
+- Add alpha-label-less leap16.svg
+ (gh#agama-project/agama#2091).
+
+- Allow setting the file system label (related to jsc#AGM-122
+  and bsc#1237165).</comment>
+    <requestid>1254595</requestid>
+  </revision>
 </revisionlist>

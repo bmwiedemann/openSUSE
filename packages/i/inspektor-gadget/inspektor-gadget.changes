@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 20 12:14:36 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.38.1:
+  * Security Improvements
+    - go: bump the golang-x group across 5 directories with 1
+      update by @burak-ok in #4232
+    - go: bump github.com/expr-lang/expr from 1.16.9 to 1.17.1 by
+      @burak-ok in #4231
+    - go: bump github.com/containerd/containerd by @burak-ok in
+      #4233
+  * Bug Fixes
+    - oci: call saveIndexWithLock after importing gadget images by
+      @burak-ok in #4229
+
+-------------------------------------------------------------------
 Wed Mar 05 10:04:55 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.38.0:

@@ -289,4 +289,12 @@
     <comment>Update to 3.1.0</comment>
     <requestid>1160715</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>cc2b7ad9303bfdf8e48dc5cc12824cf7</srcmd5>
+    <version>3.1.0</version>
+    <time>1742495180</time>
+    <user>anag+factory</user>
+    <comment>CMake 4 compat change</comment>
+    <requestid>1254727</requestid>
+  </revision>
 </revisionlist>

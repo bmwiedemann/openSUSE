@@ -1,0 +1,52 @@
+From adfd8535e998d50aff25500bb818640629e3d8d1 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Thu, 20 Mar 2025 13:15:14 +0100
+Subject: [PATCH] Make snorenotify compatible with CMake 4
+
+required versions older than 3.5 will throw errors.
+Bump the minimum version to the ECM one.
+---
+ CMakeLists.txt | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5a6b337..f757c62 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,10 @@
+-project( SnoreNotify )
+-cmake_minimum_required( VERSION 2.8.12 )
++cmake_minimum_required(VERSION 3.16)
++
++set(SNORE_VERSION_MAJOR 0)
++set(SNORE_VERSION_MINOR 7)
++set(SNORE_VERSION_PATCH 0)
++
++project(SnoreNotify VERSION ${SNORE_VERSION_MAJOR}.${SNORE_VERSION_MINOR}.${SNORE_VERSION_PATCH})
+ 
+ include(FeatureSummary)
+ 
+@@ -27,11 +32,6 @@ include(ECMPackageConfigHelpers)
+ include(ECMPoQmTools)
+ include(ECMSetupVersion)
+ 
+-
+-set(SNORE_VERSION_MAJOR 0)
+-set(SNORE_VERSION_MINOR 7)
+-set(SNORE_VERSION_PATCH 0)
+-
+ set(SNORE_SUFFIX "-qt5")
+ set(SNORE_CamelCase_SUFFIX "Qt5")
+ 
+@@ -42,7 +42,7 @@ find_package(Qt5Gui REQUIRED)
+ find_package(Qt5Widgets QUIET)
+ 
+ set_package_properties(Qt5Widgets PROPERTIES
+-                                  PURPOSE "Supprot for the daemon and the settings dialog as well as some backends."
++                                  PURPOSE "Support for the daemon and the settings dialog as well as some backends."
+                                   TYPE OPTIONAL)
+ 
+ 
+-- 
+2.49.0
+

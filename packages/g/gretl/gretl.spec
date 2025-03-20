@@ -1,7 +1,7 @@
 #
 # spec file for package gretl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012, Efstathios Agrapidis (stathisagrapidis@gmail.com)
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define libname libgretl-1_0-48
+%define libname libgretl-1_0-50
 Name:           gretl
-Version:        2024b
+Version:        2024d
 Release:        0
 Summary:        GNU regression, econometrics and time-series library
 License:        GPL-3.0-only
@@ -29,6 +29,7 @@ Source0:        https://downloads.sourceforge.net/gretl/%{name}-%{version}.tar.x
 Source1:        https://downloads.sourceforge.net/gretl/gretl-guide.pdf
 Source2:        https://downloads.sourceforge.net/gretl/gretl-ref.pdf
 BuildRequires:  R-base-devel
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 # Documented build requirements
 BuildRequires:  gcc-c++
@@ -36,7 +37,6 @@ BuildRequires:  gcc-fortran
 BuildRequires:  gnuplot
 # Extra build requirements for openSUSE
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmp)

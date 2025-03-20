@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 18 18:32:17 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_CVE-2022-49737-dix-Hold-input-lock-for-AttachDevice.patch
+  * Xorg may crash when client applications use easystroke for
+    mouse gestures (CVE-2022-49737, bsc#1239750)
+
+-------------------------------------------------------------------
 Tue Feb 25 17:58:08 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_CVE-2025-26594-0001-Cursor-Refuse-to-free-the-root-cursor.patch

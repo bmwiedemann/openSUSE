@@ -17,4 +17,14 @@ It is a dependency of opam, which is used for building some dependencies of the 
     <comment>- Use ocaml-cudf.patch to build with dune instead of oasis</comment>
     <requestid>885103</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dcd4741d3f5d349232cd462b0e315e09</srcmd5>
+    <version>0.10</version>
+    <time>1742495152</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.10
+  see included ChangeLog file for details
+- Remove obsolete ocaml-cudf.patch</comment>
+    <requestid>1254675</requestid>
+  </revision>
 </revisionlist>

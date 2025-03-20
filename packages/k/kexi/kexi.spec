@@ -1,7 +1,7 @@
 #
 # spec file for package kexi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           kexi
 Version:        3.2.0
 Release:        0
 Summary:        Database Application
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.2-only
+License:        GFDL-1.2-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.kexi-project.org/
 Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
@@ -31,6 +31,8 @@ Patch0:         Fix-build-with-Qt-5_13.patch
 Patch1:         0001-Include-glib.h-outside-of-the-extern-block.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         Use-plain-Marble-package-instead-of-KexiMarble.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         kexi-cmake4.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  glib2-devel
 # For dir ownership

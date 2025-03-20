@@ -240,4 +240,18 @@
     * Bug fixes</comment>
     <requestid>1247400</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bc278bae0c4cbe9c136eaafedf20142b</srcmd5>
+    <version>328</version>
+    <time>1742495155</time>
+    <user>anag+factory</user>
+    <comment>- Patch cockpit-machines to use UEFI as default firmware
+  * added uefi-default-firmware.patch
+
+- Update to 328
+  * Translation updates
+
+- Remove qemu-spice from SLFO_16 (bsc#1238723)</comment>
+    <requestid>1254678</requestid>
+  </revision>
 </revisionlist>

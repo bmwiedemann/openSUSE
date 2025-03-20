@@ -1,7 +1,7 @@
 #
 # spec file for package eric
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010-2023 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,17 +23,18 @@
 %bcond_with tools
 
 Name:           eric
-Version:        24.5
+Version:        25.3
 Release:        0
 Summary:        Python IDE based on Qt6
 License:        GPL-3.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://eric-ide.python-projects.org/
-Source:         https://sourceforge.net/projects/eric-ide/files/%{distname}/stable/%{version}/%{distname}-%{version}.tar.gz
+Source:         https://sourceforge.net/projects/eric-ide/files/%{distname}/%{version}/%{distname}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-EditorConfig
+BuildRequires:  python3-base >= 3.9
 BuildRequires:  python3-qscintilla-qt6
 BuildRequires:  python3-qt6
 BuildRequires:  python3-qtcharts-qt6
@@ -140,7 +141,9 @@ ln -sf %{distname}_ide %{buildroot}%{_bindir}/%{name}
 %{_datadir}/icons/eric*
 %{_datadir}/icons/ericWeb.png
 %{_datadir}/icons/hicolor/*/apps/eric*
-%{python3_sitelib}/
+%{python3_sitelib}/%{distname}
+%{python3_sitelib}/%{distname}plugins
+%{python3_sitelib}/%{distname}config.py
 
 %files api
 %license eric/docs/LICENSE.txt

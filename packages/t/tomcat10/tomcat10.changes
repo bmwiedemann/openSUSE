@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Mar 18 21:16:30 UTC 2025 - Ricardo Mestre <ricardo.mestre@suse.com>
+
+- Update to Tomcat 10.1.39
+  * Fixes:
+    + launch with java 17 (bsc#1239676)
+  * Catalina
+    + Fix: 69602: Fix regression in releases from 12-2024 that were too strict
+      and rejected weak etags in the If-Range header with a 400 response.
+      Instead will consider it as a failed match since strong etags are required
+      for If-Range. (remm)
+    + Fix: When looking up class loader resources by resource name, the resource
+      name should not start with '/'. If the resource name does start with '/',
+      Tomcat is lenient and looks it up as if the '/' was not present. When the
+      web application class loader was configured with external repositories and
+      names starting with '/' were used for lookups, it was possible that cached
+      'not found' results could effectively hide lookup results using the
+      correct resource name. (markt)
+    + Fix: Enable the JNDIRealm to validate credentials provided to
+      HttpServletRequest.login(String username, String password) when the realm
+      is configured to use GSSAPI authentication. (markt)
+    + Fix: Fix a bug in the JRE compatibility detection that incorrectly
+      identified Java 19 and Java 20 as supporting Java 21 features. (markt)
+    + Fix: Improve the checks for exposure to and protection against
+      CVE-2024-56337 so that reflection is not used unless required. The checks
+      for whether the file system is case sensitive or not have been removed.
+      (markt)
+    + Add: Add support for logging the connection ID (as returned by
+      ServletRequest.getServletConnection().getConnectionId()) with the
+      AccessLogValve and ExtendedAccessLogValve. Based on pull request #814 by
+      Dmole. (markt)
+    + Fix: Avoid scenarios where temporary files used for partial PUT would not
+      be deleted. (remm)
+    + Fix: 69576: Avoid possible failure initializing JreCompat due to uncaught
+      exception introduced for the check for CVE-2024-56337. (remm)
+  * Cluster
+    + Add: 69598: Add detection of service account token changes to the
+      KubernetesMembershipProvider implementation and reload the token if it
+      changes. Based on a patch by Miroslav Jezbera. (markt)
+  * Coyote
+    + Fix: 69575: Avoid using compression if a response is already compressed
+      using compress, deflate or zstd. (remm)
+    + Update: Use Transfer-Encoding for compression rather than Content-Encoding
+      if the client submits a TE header containing gzip. (remm)
+    + Fix: Fix a race condition in the handling of HTTP/2 stream reset that
+      could cause unexpected 500 responses. (markt)
+  * Other
+    + Add: Add makensis as an option for building the Installer for Windows on
+      non-Windows platforms. (rjung/markt)
+    + Update: Update Byte Buddy to 1.17.1. (markt)
+    + Update: Update Checkstyle to 10.21.3. (markt)
+    + Update: Update SpotBugs to 4.9.1. (markt)
+    + Update: Update JSign to 7.1. (markt)
+    + Add: Improvements to French translations. (remm)
+    + Add: Improvements to Japanese translations by tak7iji. (markt)
+    + Add: Add org.apache.juli.JsonFormatter to format log as one line JSON
+      documents. (remm) 
+
+-------------------------------------------------------------------
 Wed Mar 12 16:42:43 UTC 2025 - Ricardo Mestre <ricardo.mestre@suse.com>
 
 - Update to Tomcat 10.1.35
@@ -109,8 +167,9 @@ Fri Jan  3 18:33:44 UTC 2025 - Ricardo Mestre <ricardo.mestre@suse.com>
 
 - Update to Tomcat 10.1.34
   * Fixed CVEs:
-    + CVE-2024-54677: DoS in examples web application (bsc#1233434)
+    + CVE-2024-54677: DoS in examples web application (bsc#1234664)
     + CVE-2024-50379: RCE due to TOCTOU issue in JSP compilation (bsc#1234663) 
+    + CVE-2024-52317: Request/response mix-up with HTTP/2 (bsc#1233435)
   * Catalina
     + Add: Add option to serve resources from subpath only with WebDAV Servlet
       like with DefaultServlet. (michaelo)

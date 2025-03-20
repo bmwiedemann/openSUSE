@@ -1,0 +1,41 @@
+From a580aa1ee6c24aab29fc7710b82187c15f21e6ec Mon Sep 17 00:00:00 2001
+From: Miika Alikirri <miika.alikirri@suse.com>
+Date: Thu, 6 Mar 2025 09:25:08 +0200
+Subject: Use UEFI as default firmware instead of bios
+
+---
+ src/components/vm/overview/firmware.jsx | 4 ++--
+ src/components/vm/overview/helpers.jsx  | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/components/vm/overview/firmware.jsx b/src/components/vm/overview/firmware.jsx
+index e99c893a..f04dc023 100644
+--- a/src/components/vm/overview/firmware.jsx
++++ b/src/components/vm/overview/firmware.jsx
+@@ -32,8 +32,8 @@ import { supportsUefiXml, labelForFirmwarePath } from './helpers.jsx';
+ 
+ const _ = cockpit.gettext;
+ 
+-const xmlToState = value => value || 'bios';
+-const stateToXml = value => value == 'bios' ? null : value;
++const xmlToState = value => value || 'efi';
++const stateToXml = value => value == 'efi' ? null : value;
+ 
+ class FirmwareModal extends React.Component {
+     static contextType = DialogsContext;
+diff --git a/src/components/vm/overview/helpers.jsx b/src/components/vm/overview/helpers.jsx
+index e0702ac6..582225fd 100644
+--- a/src/components/vm/overview/helpers.jsx
++++ b/src/components/vm/overview/helpers.jsx
+@@ -69,7 +69,7 @@ export function labelForFirmwarePath(path, guest_arch) {
+     };
+     if (!path) {
+         if (["i686", "x86_64"].includes(guest_arch))
+-            return "bios";
++            return "efi";
+         else
+             return "unknown";
+     } else {
+-- 
+2.48.1
+

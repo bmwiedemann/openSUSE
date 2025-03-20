@@ -1,0 +1,17 @@
+--- cacti-1.2.28/service/cactid.service.org	2024-10-06 17:38:13.000000000 -0500
++++ cacti-1.2.28/service/cactid.service	2024-10-09 14:37:35.163614889 -0500
+@@ -25,10 +25,10 @@ After=network.target
+ 
+ [Service]
+ Type=forking
+-User=apache
+-Group=apache
+-EnvironmentFile=/etc/sysconfig/cactid
+-ExecStart=/var/www/html/cacti/cactid.php
++User=__APACHEUSER__
++Group=__APACHEGROUP__
++#EnvironmentFile=/etc/sysconfig/cactid
++ExecStart=__CACTIDIR__/cactid.php
+ Restart=always
+ RestartSec=5s
+ 

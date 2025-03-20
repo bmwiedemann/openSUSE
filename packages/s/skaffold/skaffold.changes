@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 20 10:27:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.2:
+  * fix: port-forward error logs `failed to port forward` (#9728)
+    (#9759)
+
+-------------------------------------------------------------------
 Fri Feb 07 16:58:54 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.14.1:

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 19 07:53:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.8.0
+  * Add full PSVI type labeling in XDM to solve type errors
+    with XSD 1.1 assertions
+  * Add *schema* optional argument to dynamic context
+  * Add a RootToken as a proxy of the parsed token tree for
+    compatibility with xmlschema<=3.4.3
+  * Extend XDM to split ElementTree/lxml processing from
+    schema nodes and to allow future extensions
+
+-------------------------------------------------------------------
 Thu Jan 23 11:40:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.7.0

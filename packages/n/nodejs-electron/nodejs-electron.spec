@@ -207,7 +207,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        33.4.5
+Version:        33.4.6
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -328,11 +328,6 @@ Patch1090:      cr130-absl-base.patch
 
 # PATCHES to fix interaction with third-party software
 Patch2010:      chromium-93-ffmpeg-4.4.patch
-
-#Since ffmpeg 5, there is no longer first_dts member in AVFormat. Chromium upstream (and Tumbleweed) patches ffmpeg to add a av_stream_get_first_dts function.
-#Upstream ref: https://chromium-review.googlesource.com/c/chromium/src/+/3525614
-#This patch is only for Leap which uses ffmpeg 4. It makes chromium use the old api and does not work with ffmpeg 5.
-Patch2012:      chromium-94-ffmpeg-roll.patch
 
 # Fixe builds with older clang versions that do not allow
 # nomerge attributes on declaration. Otherwise, the following error
@@ -770,9 +765,7 @@ patch -R -p1 < %SOURCE470
 
 
 
-%if %{with ffmpeg_6}
-patch -R -p1 < %PATCH2012
-%else
+%if %{without ffmpeg_6}
 patch -R -p1 < %SOURCE403
 patch -R -p1 < %SOURCE402
 patch -R -p1 < %SOURCE400

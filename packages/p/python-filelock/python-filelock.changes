@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 19 07:44:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.18.0
+  * Indicate that locks are exclusive/write locks
+  * Support fcntl check on Emscripten
+
+-------------------------------------------------------------------
 Thu Jan 30 11:22:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.17.0

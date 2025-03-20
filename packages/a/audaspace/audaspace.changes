@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 19 17:07:47 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- instead of disabling pipewire support based on the OS version
+  tie that decision to the pipewire version
+
+-------------------------------------------------------------------
+Mon Mar 17 15:06:29 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable pipewire support on leap 15.x until we find out why the
+  build does not find the development files.
+
+-------------------------------------------------------------------
 Mon Mar  3 01:15:37 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - fix soversion

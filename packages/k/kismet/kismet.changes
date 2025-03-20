@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 19 16:30:35 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- drop unneeded build requirement on pcre, the package used pcre2
+  accidentally
+
+-------------------------------------------------------------------
 Thu Feb 22 12:46:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

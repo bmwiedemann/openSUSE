@@ -38,9 +38,9 @@
 %define build_ceph 1
 %endif
 
-%define talloc_version 2.4.2
-%define tevent_version 0.16.1
-%define tdb_version    1.4.12
+%define talloc_version 2.4.3
+%define tevent_version 0.16.2
+%define tdb_version    1.4.13
 
 # This table represents the possible combinations of build macros.
 # They are defined only if not already defined in the build service
@@ -168,7 +168,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.21.4+git.390.43d401e5b77
+Version:        4.22.0+git.379.98f46fb51c
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -1696,6 +1696,7 @@ exit 0
 %dir %{_sysconfdir}/ctdb
 %{_fillupdir}/sysconfig.ctdb
 %{_sysconfdir}/ctdb/notify.sh
+%{_sysconfdir}/ctdb/ctdb-backup-persistent-tdbs.sh
 %{_sysconfdir}/ctdb/ctdb-crash-cleanup.sh
 %{_sysconfdir}/ctdb/debug-hung-script.sh
 %{_sysconfdir}/ctdb/debug_locks.sh
@@ -1741,7 +1742,7 @@ exit 0
 %{_libdir}/ctdb/ctdb_natgw
 %{_libdir}/ctdb/ctdb_recovery_helper
 %{_libdir}/ctdb/ctdb_takeover_helper
-%{_libdir}/ctdb/smnotify
+%{_libdir}/ctdb/ctdb_smnotify_helper
 %{_libdir}/ctdb/ctdb_killtcp
 %{_libdir}/ctdb/ctdb_lvs
 %{_libdir}/ctdb/ctdb_mutex_fcntl_helper

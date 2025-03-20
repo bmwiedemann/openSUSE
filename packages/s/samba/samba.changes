@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 12 15:03:15 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.22.0
+  * SMB3 Directory Leases are supported. By default, SMB3 Directory
+    Leases are enabled on non-clustered Samba and disabled on
+    clustered Samba, based on the "clustering" option.
+  * Netlogon Ping over LDAP and LDAPS
+  * Experimental Himmelblaud Authentication in Samba
+  * The "nmbd proxy logon" feature was removed.
+  * fruit:posix_rename option of the vfs_fruit VFS module that
+    could be used to enable POSIX directory rename behaviour for
+    OS X clients has been removed as it could result in severe
+    problems for Windows clients.
+
+-------------------------------------------------------------------
 Tue Feb 19 10:42:17 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
 
 - Remove nscd build dependency and usage in RPM scriptlets;

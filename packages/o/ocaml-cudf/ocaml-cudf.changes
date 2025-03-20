@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  3 03:03:03 UTC 2025 - ohering@suse.de
+
+- Update to version 0.10
+  see included ChangeLog file for details
+- Remove obsolete ocaml-cudf.patch
+
+-------------------------------------------------------------------
 Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
 
 - Use ocaml-cudf.patch to build with dune instead of oasis

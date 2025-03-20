@@ -16,6 +16,7 @@
 #
 
 
+%define _buildshell /bin/bash
 %define oname sqlite
 %define tarversion 3490100
 %define docversion 3490100
@@ -66,7 +67,7 @@ application that supports the Qt database plug-ins.
 
 %package -n libsqlite3-0
 Summary:        Shared libraries for the Embeddable SQL Database Engine
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 
 %description -n libsqlite3-0
 This package contains the shared libraries for the Embeddable SQL
@@ -122,13 +123,12 @@ Group:          Documentation/Other
 BuildArch:      noarch
 
 %description doc
-
 Contains HTML documentation for SQLite: SQL Syntax, C/C++ API and
 other documentation found on sqlite.org. The files can be found in
 %{_docdir}/%{name}-doc.
 
 %prep
-# Version and %tarversion need to match, but %docversion might be different,
+# Version and %%tarversion need to match, but %%docversion might be different,
 IFS=. read a b c d <<< "%version"
 if [ "%tarversion" != $(printf "%1d%02d%02d%02d" $a $b $c $d) ]
 then
@@ -188,15 +188,14 @@ export CFLAGS="%{optflags} \
 
 %install
 %make_install
-#mkdir -p %{buildroot}/%{_mandir}/man{1,n}/
-install -Dp -m 0644 -t %{buildroot}/%{_mandir}/man1 sqlite3.1
-install -Dp -m 0644 -t %{buildroot}/%{_mandir}/mann autoconf/tea/doc/sqlite3.n
+#mkdir -pv %{buildroot}/%{_mandir}/man{1,n}/
+install -Dpvm 0644 -t %{buildroot}/%{_mandir}/man1 sqlite3.1
+install -Dpvm 0644 -t %{buildroot}/%{_mandir}/mann autoconf/tea/doc/sqlite3.n
 # tcl bindings are provided by tcl itself
 #rm -rf %{buildroot}%{_libdir}/tcl/tcl8.?/sqlite3*
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libsqlite3-0 -p /sbin/ldconfig
-%postun -n libsqlite3-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsqlite3-0
 
 %files
 %{_bindir}/sqlite3

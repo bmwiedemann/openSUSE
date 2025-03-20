@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.8.3+git.5.1510f5a
+Version:        0.9.4+git.0.9909238
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -121,6 +121,14 @@ Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
 which allows users to sign into a Linux machine using Azure
 Entra Id credentials.
 
+%package -n himmelblau-qr-greeter
+Summary:        Azure Entra Id DAG URL QR code GNOME Shell extension
+Requires:       gnome-shell >= 45
+
+%description -n himmelblau-qr-greeter
+GNOME Shell extension that adds a QR code to authentication prompts
+when a MS DAG URL is detected.
+
 %post   -n libnss_himmelblau2 -p /sbin/ldconfig
 %postun -n libnss_himmelblau2 -p /sbin/ldconfig
 
@@ -193,6 +201,13 @@ install -m 0644 %{_builddir}/%{name}-%{version}/man/man5/himmelblau.conf.5 %{bui
 install -m 0644 %{_builddir}/%{name}-%{version}/man/man8/himmelblaud.8 %{buildroot}%{_mandir}/man8/
 install -m 0644 %{_builddir}/%{name}-%{version}/man/man8/himmelblaud_tasks.8 %{buildroot}%{_mandir}/man8/
 
+# QR Greeter
+install -D -d -m 0755 %{buildroot}%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org
+install -m 0644 %{_builddir}/%{name}-%{version}/src/qr-greeter/src/qr-greeter@himmelblau-idm.org/extension.js %{buildroot}%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/
+install -m 0644 %{_builddir}/%{name}-%{version}/src/qr-greeter/src/qr-greeter@himmelblau-idm.org/metadata.json %{buildroot}%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/
+install -m 0644 %{_builddir}/%{name}-%{version}/src/qr-greeter/src/qr-greeter@himmelblau-idm.org/stylesheet.css %{buildroot}%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/
+install -m 0644 %{_builddir}/%{name}-%{version}/src/qr-greeter/src/msdag.png %{buildroot}%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/
+
 %pre
 %service_add_pre himmelblaud.service himmelblaud-tasks.service
 
@@ -245,5 +260,14 @@ install -m 0644 %{_builddir}/%{name}-%{version}/man/man8/himmelblaud_tasks.8 %{b
 %dir %{_sysconfdir}/firefox
 %dir %{_sysconfdir}/firefox/policies
 %config %{_sysconfdir}/firefox/policies/policies.json
+
+%files -n himmelblau-qr-greeter
+%dir %{_datarootdir}/gnome-shell
+%dir %{_datarootdir}/gnome-shell/extensions
+%dir %{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org
+%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/extension.js
+%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/metadata.json
+%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/stylesheet.css
+%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/msdag.png
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 19 07:56:16 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Fix dumb cmake handling and enable ZZIP_LARGEFILE_RENAME as well
+  and set -DPIC in the CFLAGS to have both 32bit and 64bit file
+  support on 32bit architecures
+
+-------------------------------------------------------------------
+Mon Mar 17 09:16:06 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Support large file access on 32bit architectures as well (boo#1239672) 
+
+-------------------------------------------------------------------
 Thu Aug  8 13:58:23 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Removing patches merged upstream:

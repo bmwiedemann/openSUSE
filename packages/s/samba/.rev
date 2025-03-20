@@ -3836,4 +3836,24 @@ list of changes.</comment>
     <comment></comment>
     <requestid>1250559</requestid>
   </revision>
+  <revision rev="317" vrev="1">
+    <srcmd5>da3978a6f723ef05ef8caa4e7d5cb73a</srcmd5>
+    <version>4.22.0+git.379.98f46fb51c</version>
+    <time>1742495073</time>
+    <user>anag+factory</user>
+    <comment>Please stage together with talloc, tdb and tevent.
+
+- Update to 4.22.0
+  * SMB3 Directory Leases are supported. By default, SMB3 Directory
+    Leases are enabled on non-clustered Samba and disabled on
+    clustered Samba, based on the &quot;clustering&quot; option.
+  * Netlogon Ping over LDAP and LDAPS
+  * Experimental Himmelblaud Authentication in Samba
+  * The &quot;nmbd proxy logon&quot; feature was removed.
+  * fruit:posix_rename option of the vfs_fruit VFS module that
+    could be used to enable POSIX directory rename behaviour for
+    OS X clients has been removed as it could result in severe
+    problems for Windows clients.</comment>
+    <requestid>1254187</requestid>
+  </revision>
 </revisionlist>

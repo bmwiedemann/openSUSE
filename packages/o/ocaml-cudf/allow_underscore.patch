@@ -1,8 +1,10 @@
-Index: cudf-0.7/cudf_type_lexer.mll
-===================================================================
---- cudf-0.7.orig/cudf_type_lexer.mll
-+++ cudf-0.7/cudf_type_lexer.mll
-@@ -24,7 +24,7 @@ let digit = [ '0' - '9' ]
+---
+ lib/cudf_type_lexer.mll |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/lib/cudf_type_lexer.mll
++++ b/lib/cudf_type_lexer.mll
+@@ -24,7 +24,7 @@
  let blank = [ ' ' '\t' ]
  let blanks = blank+
  let ident = lower_letter (lower_letter | digit | '-')*

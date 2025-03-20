@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 18 10:05:31 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.0:
+  Full changelog:
+  https://github.com/kumahq/kuma/releases/tag/2.10.0
+  CLI-related changes mentioned in changelog (other than version
+  updates):
+  * feat(kumactl): update install observability components (#12862)
+  * fix(kumactl): mark valid-for as required for command kumactl
+    generate dataplane-token (#11849)
+  * fix(kumactl): remove metrics, logging, tracing columns in `get
+    meshes` (#11895)
+
+-------------------------------------------------------------------
 Wed Feb 26 05:48:22 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.9.4:

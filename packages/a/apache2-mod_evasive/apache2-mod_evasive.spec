@@ -44,7 +44,6 @@ BuildRequires:  apache2-devel
 BuildRequires:  apache2-prefork
 BuildRequires:  curl-devel
 BuildRequires:  gcc-c++
-BuildRequires:  pcre-devel
 Recommends:     mailx
 Requires:       %apache_mmn
 Requires:       %apache_suse_maintenance_mmn

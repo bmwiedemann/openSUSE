@@ -17,14 +17,14 @@
 
 
 Name:           zk
-Version:        0.14.2
+Version:        0.15.0
 Release:        0
 Summary:        Plain text note-taking assistant for markdown
 License:        BSD-2-Clause
 Group:          System/Shells
 URL:            https://github.com/zk-org/zk
 Source0:        https://github.com/zk-org/zk/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.zst
+Source1:        vendor.tar.gz
 # PATCH-FIX-UPSTREAM fix_test.patch -- based on commit e3c5784fb84a792491724fe4cc1f26e2c9d01b60
 BuildRequires:  c_compiler
 BuildRequires:  zstd

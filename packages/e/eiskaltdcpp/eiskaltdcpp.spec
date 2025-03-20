@@ -1,7 +1,7 @@
 #
 # spec file for package eiskaltdcpp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/%{name}/%{name}
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.firewalld
 Patch0:         ru.ts.patch
+Patch1:         eiskaltdcpp-2.4.2-pcre2.patch
 BuildRequires:  aspell-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -47,7 +48,7 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libidn)
-BuildRequires:  pkgconfig(libpcrecpp)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(lua5.1)
 BuildRequires:  pkgconfig(miniupnpc)
 BuildRequires:  pkgconfig(openssl)

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 20 07:52:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 7.2.10
+  * doc: improve documentation on using pyproject.toml [ci skip] (#2792)
+  * doc: fix typo [ci skip] (#2793)
+  * tests: fix msi test (#2796)
+  * build(deps): update lief requirement from <=0.16.2,>=0.13.2
+    to >=0.13.2,<=0.16.3 (#2795)
+  * hooks: fix shapely [windows] (#2797)
+  * fix: missing dlls in top directory [mingw] (#2799)
+  * build-wheel: use ubuntu 22.04 emulator to build ppc64le (#2805)
+
+-------------------------------------------------------------------
 Mon Feb  3 13:40:37 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.2.9:

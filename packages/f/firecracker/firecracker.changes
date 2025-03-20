@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Mar 18 13:34:58 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.11.0:
+  * Added
+    - #4987: Reset physical counter register (CNTPCT_EL0) on VM
+      startup. This avoids VM reading the host physical counter
+      value. This is only possible on 6.4 and newer kernels. For
+      older kernels physical counter will still be passed to the
+      guest unmodified. See more info here
+    - #5088: Added AMD Genoa as a supported and tested platform for
+      Firecracker.
+  * - Changed
+    - #4913: Removed unnecessary fields (max_connections and
+      max_pending_resets) from the snapshot format, bumping the
+      snapshot version to 5.0.0. Users need to regenerate
+      snapshots.
+    - #4926: Replace underlying implementation for seccompiler from
+      in house one in favor of libseccomp which produces smaller
+      and more optimized BPF code.
+  * - Fixed
+    - #4921: Fixed swagger CpuConfig definition to include missing
+      aarch64-specific fields.
+    - #4916: Fixed IovDeque implementation to work with any host
+      page size. This fixes virtio-net device on non 4K host
+      kernels.
+    - #4991: Fixed mem_size_mib and track_dirty_pages being
+      mandatory for all PATCH /machine-config requests. Now, they
+      can be omitted which leaves these parts of the machine
+      configuration unchanged.
+    - #5007: Fixed watchdog softlockup warning on x86_64 guests
+      when a vCPU is paused during GDB debugging.
+    - #5021 If a balloon device is inflated post UFFD-backed
+      snapshot restore, Firecracker now causes remove UFFD messages
+      to be sent to the UFFD handler. Previously, no such message
+      would be sent.
+    - #5034: Fix an integer underflow in the jailer when computing
+      the value it passes to Firecracker's --parent-cpu-time-us
+      values, which caused development builds of Firecracker to
+      crash (but production builds were unaffected as underflows do
+      not panic in release mode).
+    - #5045: Fixed an issue where firecracker intermittently
+      receives SIGHUP when using jailer with --new-pid-ns but
+      without --daemonize.
+    - #4995: Firecracker no longer overwrites CPUID leaf 0x80000000
+      when running AMD hardware, meaning the guest can now discover
+      a greater range of CPUID leaves in the extended function
+      range (this range is host kernel dependent).
+    - #5046: Retry KVM_CREATE_VM on EINTR that occasionally happen
+      on heavily loaded hosts to improve reliability of microVM
+      creation.
+    - #5052: Build the empty seccomp policy as default for debug
+      builds to avoid crashes on syscalls introduced by debug
+      assertions from Rust 1.80.0.
+
+-------------------------------------------------------------------
 Mon Dec 02 10:04:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.10.1:

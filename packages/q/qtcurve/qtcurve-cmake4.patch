@@ -1,0 +1,49 @@
+From 6e44dbfd9499e466e19c92c64d0538d3d5c4a138 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Thu, 20 Mar 2025 13:41:10 +0100
+Subject: [PATCH] Make qtcurve compatible with CMake 4
+
+Required CMake versions older than 3.5 will throw errors.
+Bump the minimum version to the same as extra-cmake-modules.
+---
+ CMakeLists.txt | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ef6c7f6..0d63091 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,14 @@
+ ## Setup
+-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
+ 
+-project(QtCurve)
++## Version
++set(QTCURVE_VERSION_MAJOR "1")
++set(QTCURVE_VERSION_MINOR "9")
++set(QTCURVE_VERSION_PATCH "0")
++set(QTCURVE_VERSION "${QTCURVE_VERSION_MAJOR}.${QTCURVE_VERSION_MINOR}")
++set(QTCURVE_VERSION_FULL "${QTCURVE_VERSION}.${QTCURVE_VERSION_PATCH}")
++
++project(QtCurve VERSION ${QTCURVE_VERSION})
+ 
+ include(FeatureSummary)
+ 
+@@ -14,13 +21,6 @@ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}"
+ 
+ include(CMakeCMacros)
+ 
+-## Version
+-set(QTCURVE_VERSION_MAJOR "1")
+-set(QTCURVE_VERSION_MINOR "9")
+-set(QTCURVE_VERSION_PATCH "0")
+-set(QTCURVE_VERSION "${QTCURVE_VERSION_MAJOR}.${QTCURVE_VERSION_MINOR}")
+-set(QTCURVE_VERSION_FULL "${QTCURVE_VERSION}.${QTCURVE_VERSION_PATCH}")
+-
+ find_package(Git QUIET)
+ add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/version.cpp"
+   DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tools/gen-version.sh"
+-- 
+2.49.0
+

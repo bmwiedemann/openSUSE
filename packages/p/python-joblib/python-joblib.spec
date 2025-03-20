@@ -1,7 +1,7 @@
 #
 # spec file for package python-joblib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/j/joblib/joblib-%
 # PATCH-FIX-OPENSUSE Also avoid a DeprecationWarning when using fork() under
 # multiprocessing
 Patch1:         also-filter-new-fork-warning.patch
+# PATCH-FIX-UPSTREAM https://github.com/joblib/joblib/pull/1632 DOC Make doctest compatible with numpy 2.2
+Patch2:         numpy22.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy}

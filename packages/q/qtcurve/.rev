@@ -55,4 +55,12 @@ This shall replace qtcurve-kde4 in Factory.</comment>
     <comment></comment>
     <requestid>920476</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>b84119a82946638c9c7f15b7275f3099</srcmd5>
+    <version>1.9.0</version>
+    <time>1742495162</time>
+    <user>anag+factory</user>
+    <comment>cmake 4 compat change</comment>
+    <requestid>1254736</requestid>
+  </revision>
 </revisionlist>

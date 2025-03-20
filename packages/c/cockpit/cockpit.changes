@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 19 06:56:06 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Patch python bridge to handle dbus message endianness correctly
+  - added 0008-pybridge-endian-flag.patch
+  (bsc#1220477)
+
+-------------------------------------------------------------------
 Wed Mar 12 04:23:06 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
 
 - move selinux policies to cockpit-selinux-policies bsc#1236057 

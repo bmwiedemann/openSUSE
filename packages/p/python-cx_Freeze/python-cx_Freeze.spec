@@ -20,7 +20,7 @@
 %define skip_python313 1
 %define oldpython python
 Name:           python-cx_Freeze
-Version:        7.2.9
+Version:        7.2.10
 Release:        0
 Summary:        Scripts to create standalone executables from Python scripts
 License:        Python-2.0

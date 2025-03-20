@@ -1,0 +1,87 @@
+Description: Port to PCRE2.
+Bug-Debian: https://bugs.debian.org/1000100
+Author: Yavor Doganov <yavor@gnu.org>
+Forwarded: no
+Last-Update: 2024-01-02
+---
+
+--- eiskaltdcpp-2.4.2.orig/cmake/FindPCRE.cmake
++++ eiskaltdcpp-2.4.2/cmake/FindPCRE.cmake
+@@ -4,23 +4,22 @@
+ #  PCRE_INCLUDE_DIR - the PCRE include directory
+ #  PCRE_LIBRARIES - link these to use PCRE
+ 
+-if(PCRE_INCLUDE_DIR AND PCRE_LIBRARY AND PCRECPP_LIBRARY)
++if(PCRE_INCLUDE_DIR AND PCRE_LIBRARY)
+   set(PCRE_FIND_QUIETLY TRUE)
+-endif(PCRE_INCLUDE_DIR AND PCRE_LIBRARY AND PCRECPP_LIBRARY)
++endif(PCRE_INCLUDE_DIR AND PCRE_LIBRARY)
+ 
+ # Include dir
+-find_path(PCRE_INCLUDE_DIR NAMES pcre.h)
++find_path(PCRE_INCLUDE_DIR NAMES pcre2.h)
+ 
+ # Libraries
+-find_library(PCRE_LIBRARY NAMES pcre)
+-find_library(PCRECPP_LIBRARY NAMES pcrecpp)
++find_library(PCRE_LIBRARY NAMES pcre2-8)
+ 
+-if(PCRE_LIBRARY AND PCRECPP_LIBRARY)
+-  set(PCRE_LIBRARIES ${PCRECPP_LIBRARY} ${PCRE_LIBRARY})
+-endif(PCRE_LIBRARY AND PCRECPP_LIBRARY)
++if(PCRE_LIBRARY)
++  set(PCRE_LIBRARIES ${PCRE_LIBRARY})
++endif(PCRE_LIBRARY)
+ 
+ INCLUDE(FindPackageHandleStandardArgs)
+ FIND_PACKAGE_HANDLE_STANDARD_ARGS(PCRE DEFAULT_MSG PCRE_LIBRARIES PCRE_INCLUDE_DIR)
+ 
+-MARK_AS_ADVANCED(PCRE_LIBRARIES PCRE_INCLUDE_DIR PCRE_LIBRARY PCRECPP_LIBRARY)
++MARK_AS_ADVANCED(PCRE_LIBRARIES PCRE_INCLUDE_DIR PCRE_LIBRARY)
+ 
+--- eiskaltdcpp-2.4.2.orig/dcpp/ADLSearch.cpp
++++ eiskaltdcpp-2.4.2/dcpp/ADLSearch.cpp
+@@ -32,7 +32,8 @@
+ #include "StringTokenizer.h"
+ 
+ #ifdef USE_PCRE
+-#include "pcrecpp.h"
++#define PCRE2_CODE_UNIT_WIDTH 8
++#include <pcre2.h>
+ #endif
+ 
+ namespace dcpp {
+@@ -172,11 +173,28 @@
+ bool ADLSearch::searchAll(const string& s) {
+ #ifdef USE_PCRE
+     if(bUseRegexp){
+-        pcrecpp::RE_Options options;
+-        options.set_utf8(true);
+-        options.set_caseless(true);
+-        pcrecpp::RE regexp(regexpstring, options);
+-        if(regexp.FullMatch(s))
++        pcre2_code *re;
++        pcre2_match_data *md;
++        PCRE2_SPTR pat, subj;
++        PCRE2_SIZE offset;
++        uint32_t utf = 0, options = 0;
++        int rc;
++
++        pcre2_config(PCRE2_CONFIG_UNICODE, &utf);
++        if(utf)
++            options |= PCRE2_UTF;
++        options |= PCRE2_CASELESS;
++        pat = reinterpret_cast<PCRE2_SPTR>(regexpstring.c_str());
++        subj = reinterpret_cast<PCRE2_SPTR>(s.c_str());
++        re = pcre2_compile(pat, PCRE2_ZERO_TERMINATED, options,
++                           &rc, &offset, nullptr);
++        if(offset != 0)
++            return false;
++        md = pcre2_match_data_create_from_pattern(re, nullptr);
++        rc = pcre2_match(re, subj, s.size(), 0, 0, md, nullptr);
++        pcre2_code_free(re);
++        pcre2_match_data_free(md);
++        if(rc >= 0)
+             return true;
+         else
+             return false;

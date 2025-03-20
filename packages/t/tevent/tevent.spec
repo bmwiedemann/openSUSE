@@ -1,7 +1,7 @@
 #
 # spec file for package tevent
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?py3_soflags:  %global py3_soflags cpython-%{python3_version_nodots}m}
 
-%define talloc_version 2.4.2
+%define talloc_version 2.4.3
 %define build_man 0
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
@@ -55,7 +55,7 @@ BuildRequires:  pkgconfig(cmocka) >= 1.1.3
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
 URL:            https://tevent.samba.org/
-Version:        0.16.1
+Version:        0.16.2
 Release:        0
 Summary:        An event system based on the talloc memory management library
 License:        LGPL-3.0-or-later

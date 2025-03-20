@@ -18,18 +18,21 @@
 
 
 %{!?make_build: %define make_build make %{?_smp_mflags}}
-%if 0%{?suse_version} <= 1210
-%define cacti_dir %{_datadir}/cacti
-%else
-%define cacti_dir %{apache_datadir}/cacti
-%endif
+#%if 0%{?suse_version} <= 1210
+#%define cacti_dir %{_datadir}/cacti
+#%else
+#%define cacti_dir %{apache_datadir}/cacti
+#%endif
+%define datadir /srv/www
+%define cacti_dir %{datadir}/cacti
+
 %if 0%{?suse_version} >= 01230
 %bcond_without systemd
 %else
 %bcond_with systemd
 %endif
 Name:           cacti
-Version:        1.2.27
+Version:        1.2.29
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later
@@ -40,11 +43,12 @@ Source1:        %{name}.cron
 Source2:        %{name}-httpd.conf
 Source3:        %{name}.logrotate
 Source4:        %{name}-httpd.conf.default
-Source5:        %{name}-cron.service
-Source6:        %{name}-cron.timer
+#Source5:        %{name}-cron.service
+#Source6:        %{name}-cron.timer
 Source10:       cacti-rpmlintrc
 # PATCH-FIX-UPSTREAM cacti-config.patch
-Patch0:         %{name}-config.patch
+Patch0:         %{name}-config-dist.patch
+Patch1:         cactid_service.patch
 BuildRequires:  apache-rpm-macros
 Requires:       httpd
 Requires:       logrotate
@@ -117,6 +121,9 @@ This package contains the HTML documentation for Cacti.
 %prep
 %autosetup -p1
 
+# rename patched config file
+mv include/config.php.dist include/config.php
+
 #delete some files
 find . -type f -name "*\.orig" -exec rm {} \;
 find . -type f -name .gitignore -delete
@@ -157,10 +164,12 @@ install -m 0755 cli/* %{buildroot}%{cacti_dir}/cli
 install -m 0644 *.sql %{buildroot}%{cacti_dir}
 
 %if %{with systemd}
-install -Dm644 %{SOURCE6} %{buildroot}%{_unitdir}/%{name}-cron.timer
-sed -e "s;__CACTIDIR__;%{cacti_dir};g" \
-	-e "s;__APACHEUSER__;%{apache_user};g" \
-    %{SOURCE5} > %{buildroot}%{_unitdir}/%{name}-cron.service
+sed -i \
+    -e "s;__CACTIDIR__;%{cacti_dir};g" \
+    -e "s;__APACHEUSER__;%{apache_user};g" \
+    -e "s;__APACHEGROUP__;%{apache_group};g" \
+    service/cactid.service
+install -Dm644 service/cactid.service %{buildroot}%{_unitdir}/cactid.service
 %else
 # cron task
 install -d -m 0755 %{buildroot}%{_sysconfdir}/cron.d
@@ -204,29 +213,52 @@ ln -sf %{_localstatedir}/log/%{name} %{buildroot}%{cacti_dir}/log
 
 %if %{with systemd}
 %post
-%service_add_post %{name}-cron.timer
+%service_add_post cactid.service
+#attempt to remove old way & exit with 0 status if fails
+systemctl --quiet stop %{name}-cron.timer || :
+systemctl --quiet disable %{name}-cron.timer || :
+systemctl --quiet stop %{name}-cron.service || :
+systemctl --quiet disable %{name}-cron.service || :
 
 %pre
-%service_add_pre %{name}-cron.timer
+%service_add_pre cactid.service
+#attempt to remove old way & exit with 0 status if fails
+systemctl --quiet stop %{name}-cron.timer || :
+systemctl --quiet disable %{name}-cron.timer || :
+systemctl --quiet stop %{name}-cron.service || :
+systemctl --quiet disable %{name}-cron.service || :
 
 %preun
-%service_del_preun %{name}-cron.timer
+%service_del_preun cactid.service
 
 %postun
-%service_del_postun  %{name}-cron.timer
+%service_del_postun  cactid.service
 %endif
 
 %files -f %{name}.list
+%dir %{datadir}
+%dir %{cacti_dir}
 %license LICENSE
 %doc README.md
 %attr(-,%{apache_user},%{apache_group}) %dir %{_localstatedir}/lib/%{name}
 %attr(-,%{apache_user},%{apache_group}) %dir %{_localstatedir}/log/%{name}
 %attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/rra
 %attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/log
+
+%attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/resource/snmp_queries
+%attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/resource/script_server
+%attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/resource/script_queries
+%attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/scripts
+%attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/cache/boost
+%attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/cache/mibcache
+%attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/cache/realtime
+%attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/cache/spikekill
+
 %config(noreplace) %{cacti_dir}/include/config.php
 %if %{with systemd}
-%{_unitdir}/%{name}-cron.service
-%{_unitdir}/%{name}-cron.timer
+#%{_unitdir}/%{name}-cron.service
+#%{_unitdir}/%{name}-cron.timer
+%{_unitdir}/cactid.service
 %else
 %config(noreplace) %{_sysconfdir}/cron.d/%{name}
 %endif

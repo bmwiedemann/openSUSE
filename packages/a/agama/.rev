@@ -234,4 +234,28 @@
 </comment>
     <requestid>1250094</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>60d91813c8bd20181b6c17ec3b03b415</srcmd5>
+    <version>0</version>
+    <time>1742495127</time>
+    <user>anag+factory</user>
+    <comment>- Allow selecting individual packages through a configuration file
+  (gh#agama-project/agama#2153).
+
+- Introduced the hostname model in order to start managing it
+  (gh#agama-project/agama#2118).
+
+- Set the extension in the disposition &quot;filename&quot; so Chrome uses
+  the correct name (gh#agama-project/agama#2141).
+
+- Package and install the storage model schema
+  (gh#agama-project/agama#2135).
+
+- Extend agama download to support most of YaST-like URLs
+  (device:, usb:, label:, cd:, dvd: and hd:) (gh#agama-project/agama#2118).
+
+- Extend storage model schema to support file system label (needed
+  for jsc#AGM-122 and bsc#1237165).</comment>
+    <requestid>1254593</requestid>
+  </revision>
 </revisionlist>

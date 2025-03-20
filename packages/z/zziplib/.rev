@@ -331,4 +331,16 @@
     <comment></comment>
     <requestid>1192956</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>c94b3e4270bc9e957975d9a1c6407d4f</srcmd5>
+    <version>0.13.78</version>
+    <time>1742495078</time>
+    <user>anag+factory</user>
+    <comment>- Fix dumb cmake handling and enable ZZIP_LARGEFILE_RENAME as well
+  and set -DPIC in the CFLAGS to have both 32bit and 64bit file
+  support on 32bit architecures
+
+- Support large file access on 32bit architectures as well (boo#1239672)</comment>
+    <requestid>1254316</requestid>
+  </revision>
 </revisionlist>

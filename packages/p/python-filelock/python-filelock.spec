@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-filelock%{?pkg_suffix}
-Version:        3.17.0
+Version:        3.18.0
 Release:        0
 Summary:        Platform Independent File Lock in Python
 License:        Unlicense

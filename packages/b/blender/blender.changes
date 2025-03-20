@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 18 15:53:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.4.0
+  https://developer.blender.org/docs/release_notes/4.4/ 
+  https://www.blender.org/download/releases/4-4/
+- build with python 3.13 on TW but keep python 3.11 on Leap
+- we can build with system audaspace on Leap again
+- refreshed patches cmake_manpage_fix.patch
+- drop patches:
+  Add_missing_system_error_handler.patch
+  ffmpeg-7-1.patch
+- change BR for zstd to cmake(zstd) because the pkgconfig alone was
+  not enough to find the library
+- add pkgconfig(libpipewire-0.3) if we ever switch back to the
+  intree audaspace
+- add support for easily test snapshots
+
+-------------------------------------------------------------------
 Thu Feb 13 10:35:29 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - force gcc 14 on Leap 

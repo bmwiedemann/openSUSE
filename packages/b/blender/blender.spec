@@ -20,6 +20,8 @@
 %define _dwz_low_mem_die_limit  40000000
 %define _dwz_max_die_limit     200000000
 
+%bcond_with is_snapshot
+
 %ifarch x86_64
 %bcond_without embree
 %bcond_without oidn
@@ -40,7 +42,7 @@
 %if 0%{?suse_version} >= 1550
 %bcond_without system_audaspace
 %else
-%bcond_with system_audaspace
+%bcond_without system_audaspace
 %global force_boost_version 1_75_0
 %global force_gcc_version 14
 %endif
@@ -53,11 +55,20 @@
 %define debugbuild 0
 
 # Define the version of python3 that blender is going to build against.
+%if 0%{?suse_version} >= 1550
+%define py3ver 3.13
+%define py3pkg python313
+%else
 %define py3ver 3.11
 %define py3pkg python311
+%endif
 # this is mostly needed on leap for PySound.cpp as we build the intree audaspace
-%if 0%{?suse_version} == 1500
+%if %{without system_audaspace}
+%if 0%{?suse_version} >= 1600
+%define numpy_include_path %{_libdir}/python%{py3ver}/site-packages/numpy/_core/include/
+%else
 %define numpy_include_path %{_libdir}/python%{py3ver}/site-packages/numpy/core/include/
+%endif
 %endif
 
 # Blender version: source/blender/blenkernel/BKE_blender_version.h
@@ -80,15 +91,19 @@
 %global pkg_name blender
 
 Name:           blender
-Version:        4.3.2
+Version:        4.4.0
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/3D Editors
 URL:            https://www.blender.org/
 # Please leave the source url intact
+%if %{with is_snapshot}
+Source0:        %{pkg_name}-%{version}.tar.xz
+%else
 Source0:        https://download.blender.org/source/%{pkg_name}-%{version}.tar.xz
 Source1:        https://download.blender.org/source/%{pkg_name}-%{version}.tar.xz.md5sum
+%endif
 # Unfortunately, the "Essentials" library is only availabe using GIT LFS. https://projects.blender.org/blender/blender/issues/128359
 Source2:        blender-assets-%{version}.tar.xz
 Source4:        geeko.blend
@@ -99,12 +114,8 @@ Source8:        %{pkg_name}-sample
 Source9:        SUSE-NVIDIA-GPU-rendering.txt
 Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
-# PATCH-FIX-OPENSUSE - fix gcc 13 fallout
-Patch1:         Add_missing_system_error_handler.patch
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
-Patch2:         cmake_manpage_fix.patch
-# PATCH-FIX-UPSTREAM https://gitlab.archlinux.org/archlinux/packaging/packages/blender/-/blob/main/ffmpeg-7-1.patch?ref_type=heads
-Patch3:         ffmpeg-7-1.patch
+Patch1:         cmake_manpage_fix.patch
 %if %{with mold}
 BuildRequires:  mold
 %endif
@@ -165,6 +176,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  xz-devel
 BuildRequires:  cmake(pugixml)
+BuildRequires:  cmake(zstd)
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(freetype2)
@@ -180,11 +192,11 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libdecor-0)
 BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(vulkan)
@@ -246,7 +258,7 @@ BuildRequires:  openpgl-devel >= 0.5
 BuildRequires:  OpenSubdiv-devel
 %endif
 %if %{with openvdb}
-BuildRequires:  openvdb-devel < 12
+BuildRequires:  openvdb-devel
 BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(blosc)
 %endif
@@ -257,7 +269,7 @@ BuildRequires:  nvidia-optix-headers
 BuildRequires:  OpenShadingLanguage-devel > 1.13
 %endif
 %if %{with system_audaspace}
-BuildRequires:  pkgconfig(audaspace) >= 1.5
+BuildRequires:  pkgconfig(audaspace) >= 1.6
 Requires:       audaspace-deviceplugin
 Requires:       audaspace-fileplugin
 %endif
@@ -309,9 +321,11 @@ geeko_example_scene: showing raytracing, rigging, animation, curves,
 %lang_package
 
 %prep
+%if %{without is_snapshot}
 pushd "%{_sourcedir}"
 md5sum -c %{SOURCE1}
 popd
+%endif
 
 %autosetup -p1 -n %{pkg_name}-%{version}
 %setup -T -D -a 2 -q -n %{pkg_name}-%{version}

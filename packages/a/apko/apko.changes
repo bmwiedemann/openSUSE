@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 20 05:49:15 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.25.5:
+  * returns structured errors when origins conflict (#1578)
+  * build(deps): bump golangci/golangci-lint-action from 6.5.1 to
+    6.5.2 (#1575)
+
+-------------------------------------------------------------------
 Fri Mar 14 06:28:53 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.25.4:

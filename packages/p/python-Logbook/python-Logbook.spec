@@ -17,14 +17,12 @@
 
 
 Name:           python-Logbook
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        A logging replacement for Python
 License:        BSD-3-Clause
 URL:            https://github.com/getlogbook/logbook
 Source:         https://files.pythonhosted.org/packages/source/l/logbook/logbook-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#getlogbook/logbook#413
-Patch0:         use-pydict-size.patch
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Jinja2}

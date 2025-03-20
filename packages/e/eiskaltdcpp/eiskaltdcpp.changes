@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 19 22:12:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Added eiskaltdcpp-2.4.2-pcre2.patch to pcre2 support.
+
+-------------------------------------------------------------------
 Fri May 07 06:33:56 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to 2.4.2
@@ -14,7 +19,7 @@ Mon Feb  1 12:26:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 - Trim metadata redundancies from descriptions. Fix grammar issues.
 
 -------------------------------------------------------------------
-Mon Feb  1 00:21:02 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Feb  1 00:21:02 UTC 2021 - Илья Индиго <ilya@ilya.top>
 
 - The correct license is GPL-3.0-or-later.
 - Update to 2.4.1.
@@ -26,14 +31,14 @@ Mon Feb  1 00:21:02 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 - Refresh ru.ts.patch.
 
 -------------------------------------------------------------------
-Thu Dec 17 15:27:07 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Thu Dec 17 15:27:07 UTC 2020 - Илья Индиго <ilya@ilya.top>
 
 - Add subpackages: common, libeiskaltdcpp2_4, daemon, cli.
 - Add separate lang subpackages: common-lang, qt-lang.
 - Change all descriptions.
 
 -------------------------------------------------------------------
-Mon Dec 14 10:16:58 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Dec 14 10:16:58 UTC 2020 - Илья Индиго <ilya@ilya.top>
 
 - Update to 2.4.0.
   * Remove _service.
@@ -41,12 +46,12 @@ Mon Dec 14 10:16:58 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
   * Migration from boost to C++14 standard.
 
 -------------------------------------------------------------------
-Mon Oct 12 15:41:01 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Oct 12 15:41:01 UTC 2020 - Илья Индиго <ilya@ilya.top>
 
 - Remove Requires:aspell and add Requires:aspell for -qt package.
 
 -------------------------------------------------------------------
-Tue Oct  6 18:10:12 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Tue Oct  6 18:10:12 UTC 2020 - Илья Индиго <ilya@ilya.top>
 
 - Readd aspell support and add Requires:aspell.
 - Add BuildRequires:git (cmake script checks it).
@@ -74,7 +79,7 @@ Tue Sep 29 09:53:04 UTC 2020 - Fabian Vogt <fvogt@suse.com>
   * Fix race condition in Search::on
 
 -------------------------------------------------------------------
-Thu Sep  3 12:17:51 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Thu Sep  3 12:17:51 UTC 2020 - Илья Индиго <ilya@ilya.top>
 
 - Refresh spec-file via spec-cleaner and manual optimizations.
   * Remove Group tags.

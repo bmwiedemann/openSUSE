@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 20 10:47:25 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 33.4.6
+  * Fixed incorrect titlebar in file save dialogs
+  * Fix type confusion in V8 (CVE-2025-1920 bsc#1239216)
+- Drop chromium-94-ffmpeg-roll.patch to fix ftbfs on Leap
+
+-------------------------------------------------------------------
 Thu Mar 13 19:58:07 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 33.4.5

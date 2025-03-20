@@ -141,4 +141,14 @@
   * Use PyDict_Size rather then PyList_GET_SIZE on a dict object.</comment>
     <requestid>1250522</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4977f3a9496629b02363b04d91bdd91a</srcmd5>
+    <version>1.8.1</version>
+    <time>1742495122</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.1:
+  * Fixed crash on Python 3.12+ in speedups extension module.
+- Drop patch use-pydict-size.patch, included upstream.</comment>
+    <requestid>1254542</requestid>
+  </revision>
 </revisionlist>

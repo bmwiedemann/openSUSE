@@ -492,4 +492,16 @@ the http-&amp;gt;https redirect. (forwarded request 452617 from dmdiss)</comment
     <comment></comment>
     <requestid>1206309</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>da429f526ae5204d6138ca369943a018</srcmd5>
+    <version>1.4.13</version>
+    <time>1742495073</time>
+    <user>anag+factory</user>
+    <comment>Please stage together with https://build.opensuse.org/requests/1254052 and https://build.opensuse.org/requests/1254184
+
+- Update to 1.4.13
+  * Add LGPLv3 LICENSE file
+</comment>
+    <requestid>1254185</requestid>
+  </revision>
 </revisionlist>

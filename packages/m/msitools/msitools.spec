@@ -1,7 +1,7 @@
 #
 # spec file for package msitools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 1_0-0
 
 Name:           msitools
-Version:        0.103
+Version:        0.106
 Release:        0
 Summary:        Tools to inspect and build Windows Installer (.MSI) files
 License:        GPL-2.0-or-later
@@ -94,6 +94,9 @@ cross-compiled Windows applications.
 %find_lang %{name} %{?no_lang_C}
 
 %ldconfig_scriptlets -n libmsi-%{sover}
+
+%check
+%meson_test
 
 %files
 %license copyright

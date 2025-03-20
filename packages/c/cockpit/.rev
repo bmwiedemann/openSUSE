@@ -632,4 +632,14 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
   - Translation updates</comment>
     <requestid>1253644</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>229bcb6733fc3c3537dfb1b7f3af0d4c</srcmd5>
+    <version>334.1</version>
+    <time>1742495081</time>
+    <user>anag+factory</user>
+    <comment>- Patch python bridge to handle dbus message endianness correctly
+  - added 0008-pybridge-endian-flag.patch
+  (bsc#1220477)</comment>
+    <requestid>1254457</requestid>
+  </revision>
 </revisionlist>

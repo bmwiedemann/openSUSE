@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-s3transfer
-Version:        0.11.2
+Version:        0.11.4
 Release:        0
 Summary:        Python S3 transfer manager
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/boto/s3transfer
 Source0:        https://files.pythonhosted.org/packages/source/s/s3transfer/s3transfer-%{version}.tar.gz
-BuildRequires:  %{python_module botocore >= 1.36.0}
+BuildRequires:  %{python_module botocore >= 1.37.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
-Requires:       (python-botocore >= 1.36.0 with python-botocore <= 2.0.0)
+Requires:       (python-botocore >= 1.37.4 with python-botocore <= 2.0.0)
 BuildArch:      noarch
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-s3transfer < %{version}

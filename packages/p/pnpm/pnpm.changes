@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 19 14:58:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.6.5:
+  * Patch Changes
+    - Remove warnings after having explicitly approved no builds
+      #9296.
+    - When installing different dependency packages, should retain
+      the ignoredBuilds field in the .modules.yaml file #9240.
+    - Fix usages of the catalog: protocol in injected local
+      workspace packages. This previously errored with
+      ERR_PNPM_SPEC_NOT_SUPPORTED_BY_ANY_RESOLVER. #8715
+    - Setting workspace-concurrency to less than or equal to 0
+      should work #9297.
+
+-------------------------------------------------------------------
 Mon Mar 17 14:11:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 10.6.4:

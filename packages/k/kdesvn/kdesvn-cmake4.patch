@@ -1,0 +1,50 @@
+From c7dea95d433882d86962747b7394ae87d56ef5d5 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Thu, 20 Mar 2025 14:01:54 +0100
+Subject: [PATCH] Make kdesvn compatible with CMake 4
+
+Required CMake versions older than 3.5 will throw errors.
+---
+ CMakeLists.txt | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8ff612c..f4003d7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,9 +17,17 @@
+  #   Free Software Foundation, Inc.,                                       #
+  #   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         #
+  ####
+-project(kdesvn)
++cmake_minimum_required(VERSION 3.16)
++
++# Set the version
++set(KDESVN_VERSION_MAJOR 2)
++set(KDESVN_VERSION_MINOR 1)
++set(KDESVN_VERSION_PATCH 0)
++set(KDESVN_VERSION_STRING ${KDESVN_VERSION_MAJOR}.${KDESVN_VERSION_MINOR}.${KDESVN_VERSION_PATCH})
++
++project(kdesvn VERSION ${KDESVN_VERSION_STRING})
++
+ set(PACKAGENAME "${CMAKE_PROJECT_NAME}")
+-cmake_minimum_required(VERSION 3.1.0)
+ if(POLICY CMP0063)
+   CMAKE_POLICY(SET CMP0063 NEW) # Honor visibility properties for all target types.
+ endif()
+@@ -57,12 +65,6 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS
+     Core DBus Gui Sql Widgets Xml
+ )
+ 
+-# Set the version
+-set(KDESVN_VERSION_MAJOR 2)
+-set(KDESVN_VERSION_MINOR 1)
+-set(KDESVN_VERSION_PATCH 0)
+-set(KDESVN_VERSION_STRING ${KDESVN_VERSION_MAJOR}.${KDESVN_VERSION_MINOR}.${KDESVN_VERSION_PATCH})
+-
+ # Append the git revision if available
+ # If Git is installed and a '.git' directory is found,
+ # we append the Git revision to KDESVN_VERSION_STRING
+-- 
+2.49.0
+

@@ -40,7 +40,7 @@
 %define ansible_python_executable python3
 %define ansible_python_sitelib %python3_sitelib
 #
-%define python_for_dependencies python311
+%define python_for_dependencies python3
 %endif
 
 Name:           python-pytest-ansible

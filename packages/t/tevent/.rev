@@ -440,4 +440,16 @@ Disable rpath-install and silent-rules while configure.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1176458</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>535376853dd03b6404e0198eb7dcc6e4</srcmd5>
+    <version>0.16.2</version>
+    <time>1742495071</time>
+    <user>anag+factory</user>
+    <comment>Please stage together with https://build.opensuse.org/requests/1254052
+
+- Update to version 0.16.2
+  * Documentation fixes
+  * Add LGPLv3 LICENSE file</comment>
+    <requestid>1254184</requestid>
+  </revision>
 </revisionlist>

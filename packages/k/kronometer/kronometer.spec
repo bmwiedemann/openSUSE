@@ -17,13 +17,14 @@
 
 
 Name:           kronometer
-Version:        2.2.3
+Version:        2.3.0
 Release:        0
 Summary:        A stopwatch application by KDE
 License:        GPL-2.0-or-later
-Group:          Productivity/Other
 URL:            https://apps.kde.org/kronometer
-Source:         https://download.kde.org/stable/kronometer/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/kronometer/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         kronometer-cmake4.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Crash)
@@ -52,24 +53,24 @@ Kronometer's main features are the following:
 * Lap times export: you can export the lap times on a file using the JSON or CSV format
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %make_jobs
+%cmake_kf5 -d build
+%make_jobs
 
 %install
-  %kf5_makeinstall -C build
-  %find_lang %{name} --with-kde --with-man
-  %{kf5_find_htmldocs}
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-kde --with-man
+
+%{kf5_find_htmldocs}
 
 %files -f %{name}.lang
-%license COPYING
-%doc README
+%license LICENSES/*
+%doc README.md CHANGELOG
 %doc %lang(en) %{_kf5_htmldir}/en/%{name}
 %doc %lang(en) %{_kf5_mandir}/man1/%{name}.1.gz
-# kf5-filesystem doesn't own this directory in 15.2
-%dir %{_kf5_configkcfgdir}
 %{_kf5_applicationsdir}/org.kde.kronometer.desktop
 %{_kf5_appstreamdir}/org.kde.kronometer.appdata.xml
 %{_kf5_bindir}/%{name}

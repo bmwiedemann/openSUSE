@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar 17 09:35:06 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2024d:
+  * "append" command: make the help text more explicit
+  * "pca" command: make a $result bundle available
+  * "square" command and square() function: don't skip dummy
+    variables when computing cross-products
+  * xmax() and xmin() functions; consolidate with max, min but
+    retain the "x" variants as aliases until further notice
+  * Fix possible incorrect behavior of "smpl" in some special
+    cases (inside a function, when the dataset is sub-sampled at
+    the caller level)
+  * nelem() function: ensure that it returns the number of bytes
+    in a string argument, as per the documentation
+  * Avoid false positives in detecting markdown in help text for
+    function packages
+  * dbnomics addon: don't fail on database IDs that contain '@'
+    (as some OECD identifiers now do)
+  * gretl_edit: use a scrollable window when displaying stderr
+    output, so it doesn't get truncated
+  * When adding a 1x1 matrix to a bundle via defbundle() or _()
+    don't automatically convert it to a scalar
+  * Tweaks for handling of empty matrices plus a little more
+    documentation
+  * GUI: support Ctrl + mouse-wheel to resize text
+  * GUI: fixes for breakage when resizing plots in some cases
+  * Documentation for addons: avoid collision with hyperref
+- Update gretl-guide.pdf and gretl-ref.pdf.
+- Replace update-desktop-files with desktop-file-utils for
+  BuildRequires.
+
+-------------------------------------------------------------------
 Fri Mar 14 21:26:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(gtksourceview-3.0) with

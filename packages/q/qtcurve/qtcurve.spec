@@ -16,20 +16,19 @@
 #
 
 
-%bcond_with lang
 Name:           qtcurve
 Version:        1.9.0
 Release:        0
 Summary:        QtCurve style for Qt and GTK+
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://invent.kde.org/system/qtcurve
-Source0:        qtcurve-%{version}.tar.gz
-Source1:        baselibs.conf
+Source0:        https://download.kde.org/Attic/qtcurve/qtcurve-1.9.tar.xz
+Source2:        baselibs.conf
 Patch0:         0001-utils-gtkprops-Remove-unnecessary-constexpr-this-is-.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Fix-build-with-Qt-5.15-missing-QPainterPath-include.patch
-BuildRequires:  cmake >= 2.8.12
+# PATCH-FIX-UPSTREAM
+Patch2:         qtcurve-cmake4.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  frameworkintegration-devel
 BuildRequires:  gtk2-devel
@@ -58,7 +57,6 @@ QtCurve is a set of widget styles available for Qt and GTK+.
 
 %package -n libqtcurve-utils2
 Summary:        QtCurve style for Qt and GTK+
-Group:          System/GUI/KDE
 
 %description -n libqtcurve-utils2
 QtCurve is a set of widget styles available for Qt and GTK+.
@@ -66,7 +64,6 @@ This package cointains basic helper library needed for qtcurve.
 
 %package -n libqtcurve-cairo1
 Summary:        QtCurve style for Qt and GTK+
-Group:          System/GUI/KDE
 
 %description -n libqtcurve-cairo1
 QtCurve is a set of widget styles available for Qt and GTK+.
@@ -74,7 +71,6 @@ This package cointains library for common drawing routines.
 
 %package gtk2
 Summary:        QtCurve style for GTK+ 2
-Group:          System/GUI/GNOME
 Requires:       libqtcurve-cairo1 = %{version}
 
 %description gtk2
@@ -83,31 +79,28 @@ of widget styles available for Qt and GTK+.
 
 %package qt5
 Summary:        QtCurve style for Qt 5
-Group:          System/GUI/KDE
 
 %description qt5
 This package contains the QtCurve style for Qt 5. QtCurve is a set
 of widget styles available for Qt and GTK+.
 
+%lang_package -n qtcurve-qt5
+
 %prep
-%autosetup -p1
+%autosetup -p1 -n qtcurve-1.9
 
 %build
-%cmake_kf5 -d build -- -DLIB_INSTALL_DIR=%{_libdir}
+%cmake_kf5 -d build -- -DLIB_INSTALL_DIR=%{_libdir} -DENABLE_QT4=OFF
 
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
 %find_lang %{name}
-%endif
 
-%post -n libqtcurve-utils2   -p /sbin/ldconfig
-%postun -n libqtcurve-utils2 -p /sbin/ldconfig
-%post -n libqtcurve-cairo1   -p /sbin/ldconfig
-%postun -n libqtcurve-cairo1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libqtcurve-utils2
+%ldconfig_scriptlets -n libqtcurve-cairo1
 
 %files -n libqtcurve-utils2
 %{_libdir}/libqtcurve-utils.so.*
@@ -118,10 +111,6 @@ of widget styles available for Qt and GTK+.
 %{_libdir}/libqtcurve-cairo.so.*
 # We don't need the devel symlink
 %exclude %{_libdir}/libqtcurve-cairo.so
-
-%if %{with lang}
-%files lang -f qtcurve.lang
-%endif
 
 %files gtk2
 %license COPYING
@@ -135,5 +124,7 @@ of widget styles available for Qt and GTK+.
 %{_libqt5_plugindir}/
 %{_kf5_sharedir}/kstyle/
 %{_kf5_kxmlguidir}/QtCurve
+
+%files -n qtcurve-qt5-lang -f qtcurve.lang
 
 %changelog

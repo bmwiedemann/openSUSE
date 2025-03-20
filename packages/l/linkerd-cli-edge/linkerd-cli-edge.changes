@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Mar 20 12:16:04 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 25.3.3:
+  no CLI-related changes in the changelog (other than dependencies)
+  * build(deps): bump windows-link from 0.1.0 to 0.1.1 (#13828)
+  * build(deps): bump actions/download-artifact from 4.1.9 to 4.2.0
+    (#13830)
+  * build(deps): bump actions/setup-go from 5.3.0 to 5.4.0 (#13831)
+  * build(deps): bump github.com/containerd/containerd from 1.7.24
+    to 1.7.27 (#13816)
+  * build(deps): bump tj-actions/changed-files (#13820)
+  * build(deps): bump rustls from 0.23.23 to 0.23.25 (#13817)
+  * build(deps): bump http-body-util from 0.1.2 to 0.1.3 (#13818)
+  * build(deps): bump async-trait from 0.1.86 to 0.1.88 (#13819)
+  * build(deps): bump @babel/eslint-plugin in /web/app (#13806)
+  * build(deps): bump libc from 0.2.170 to 0.2.171 (#13811)
+  * build(deps): bump dtoa from 1.0.9 to 1.0.10 (#13810)
+  * build(deps): bump foldhash from 0.1.4 to 0.1.5 (#13809)
+  * build(deps): bump hyper-http-proxy from 1.0.0 to 1.1.0 (#13808)
+  * build(deps): bump rustversion from 1.0.19 to 1.0.20 (#13807)
+  * build(deps): bump extractions/setup-just from 2.0.0 to 3.0.0
+    (#13812)
+  * build(deps): bump github.com/prometheus/common from 0.62.0 to
+    0.63.0 (#13791)
+  * build(deps): bump helm.sh/helm/v3 from 3.17.1 to 3.17.2
+    (#13792)
+  * build(deps): bump itoa from 1.0.14 to 1.0.15 (#13794)
+  * build(deps): bump once_cell from 1.21.0 to 1.21.1 (#13796)
+  * build(deps): bump tj-actions/changed-files from 45.0.7 to
+    45.0.8 (#13798)
+  * build(deps): bump tokio-util from 0.7.13 to 0.7.14 (#13797)
+  * build(deps): bump tokio from 1.43.0 to 1.44.1 (#13793)
+
+-------------------------------------------------------------------
 Fri Mar 14 06:28:49 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 25.3.2:

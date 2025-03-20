@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 20 13:19:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add CMake 4 compatibility changes:
+  * kexi-cmake4.patch
+
+-------------------------------------------------------------------
 Wed Dec 25 10:29:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the optional marble dependency

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 20 13:44:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.3.0
+  * Introduced Qt6 support.
+  * Added option to start the stopwatch automatically
+  * Added support for HiDpi screens.
+  * Fixed wrong times restored from session (kde#421515)
+  * Fixed stopwatch restart after system sleep (kde#439998)
+  * Fixed deletion of sessions (kde#353077)
+  * Fixed wrong usage of Enter key when writing a lap note (kde#438167)
+  * Qt 5.15 and C++17 are now required.
+  * Updated translations.
+- Add patch:
+  * kronometer-cmake4.patch
+
+-------------------------------------------------------------------
 Fri Dec 15 22:03:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require extra-cmake-modules at build time

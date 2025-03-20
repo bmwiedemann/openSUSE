@@ -21,6 +21,12 @@
 %define sover 1_6
 %define soversion 1.6
 
+%if %{pkg_vcmp pipewire-devel >= 1.4.0}
+%bcond_without pipewire
+%else
+%bcond_with    pipewire
+%endif
+
 Name:           audaspace
 Version:        1.6.0
 Release:        0
@@ -93,6 +99,7 @@ Supplements:    (libaudaspace%{sover} and (pulseaudio or pulseaudio-pipewire))
 Audaspace (pronounced "outer space") is a high-level audio library.
 This package contains the Pulseaudio plugin
 
+%if %{with pipewire}
 %package        plugin-pipewire
 Summary:        Pipewire plugin for %{name}
 Group:          System/Libraries
@@ -102,6 +109,7 @@ Supplements:    (libaudaspace%{sover} and pipewire)
 %description    plugin-pipewire
 Audaspace (pronounced "outer space") is a high-level audio library.
 This package contains the Pipewire plugin
+%endif
 
 %package        plugin-sdl2
 Summary:        SDL2 plugin for %{name}
@@ -221,8 +229,10 @@ developing applications that use %{name}.
 %files plugin-pulse
 %{_libdir}/%{name}-%{soversion}/libaudpulseaudio.so
 
+%if %{with pipewire}
 %files plugin-pipewire
 %{_libdir}/%{name}-%{soversion}/libaudpipewire.so
+%endif
 
 %files plugin-sdl2
 %{_libdir}/%{name}-%{soversion}/libaudsdl.so
