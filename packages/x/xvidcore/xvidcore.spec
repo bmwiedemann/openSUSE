@@ -1,7 +1,7 @@
 #
 # spec file for package xvidcore
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        GPL-2.0-or-later
 URL:            https://www.xvid.com/
 Source0:        https://downloads.xvid.com/downloads/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM xvidcore-c23.patch -- Fix build with gcc 15
+Patch0:         xvidcore-c23.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  make

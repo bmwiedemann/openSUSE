@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 19 09:36:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add xvidcore-c23.patch: Fix build with gcc 15 (patch borrowed
+  from fedora).
+
+-------------------------------------------------------------------
 Wed Dec  6 21:30:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add baselibs.conf, build 32bit lib support.
