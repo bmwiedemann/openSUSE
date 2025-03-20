@@ -2,9 +2,11 @@
  include/builddefs.in |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- include/builddefs.in.orig
-+++ include/builddefs.in
-@@ -37,7 +37,7 @@ PKG_ROOT_SBIN_DIR = @root_sbindir@
+Index: xfsdump-3.1.12/include/builddefs.in
+===================================================================
+--- xfsdump-3.1.12.orig/include/builddefs.in
++++ xfsdump-3.1.12/include/builddefs.in
+@@ -39,7 +39,7 @@ PKG_ROOT_SBIN_DIR = @root_sbindir@
  PKG_ROOT_LIB_DIR= @root_libdir@@libdirsuffix@
  PKG_INC_DIR	= @includedir@
  PKG_MAN_DIR	= @mandir@

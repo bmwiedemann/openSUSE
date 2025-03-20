@@ -1,7 +1,7 @@
 #
 # spec file for package xfsdump
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,29 +55,26 @@ be layered on top of the full backup.  Single files and directory
 subtrees may be restored from full or partial backups.
 
 %prep
-%setup -q
-%patch -P 0
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 rm -f configure
 make configure
 export DEBUG=-DNDEBUG
 %configure --bindir=%{_sbindir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 export DIST_ROOT=%{buildroot}
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 %find_lang xfsdump
-mv %{buildroot}/sbin/{xfsdump,xfsrestore} %{buildroot}/%{_sbindir}
+mv %{buildroot}/sbin/xfsdump %{buildroot}/sbin/xfsrestore %{buildroot}/%{_sbindir}/
 %if 0%{?suse_version} < 1550
 ln -s %{_sbindir}/xfsdump %{buildroot}/sbin
 ln -s %{_sbindir}/xfsrestore %{buildroot}/sbin
 %endif
 
 %files -f xfsdump.lang
-%defattr(-,root,root,755)
 %{_sbindir}/*
 %if 0%{?suse_version} < 1550
 /sbin/*

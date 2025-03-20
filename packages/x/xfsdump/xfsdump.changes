@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar  1 10:07:30 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Make build recipe compatible with POSIX sh.
+- Modernize by using %autosetup.
+
+-------------------------------------------------------------------
 Mon Feb 26 12:17:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
