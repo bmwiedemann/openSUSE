@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 20 08:13:12 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250319 (git commit b8828772e413):
+  * qcom: Add DSP firmware for QCS8300 platform
+
+-------------------------------------------------------------------
 Wed Mar 12 08:28:49 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250311 (git commit b69d4b74c986):

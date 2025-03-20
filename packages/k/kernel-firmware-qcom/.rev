@@ -34,4 +34,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update gpu firmwares for qcs8300 chipset</comment>
     <requestid>1252344</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ef23d54f8e72c0cee020cc4f9a4067e1</srcmd5>
+    <version>20250319</version>
+    <time>1742495052</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250319 (git commit b8828772e413):
+  * qcom: Add DSP firmware for QCS8300 platform</comment>
+    <requestid>1254646</requestid>
+  </revision>
 </revisionlist>
