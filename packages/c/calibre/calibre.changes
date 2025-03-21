@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Mar 21 10:15:41 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 8.0.1
+  - Version 8.0.1 fixes a failure to start on systems where the
+    user had previously installed the KoboTouchExtended plugin
+    and disabled the builtin KoboTouch driver
+
+-------------------------------------------------------------------
+Fri Mar 21 06:48:29 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 8.0.0
+  * New Features
+    - Much improved Kobo support
+    - Connect to folder: Allow connecting a specific device
+    - When completing names for fields that contain hierarchical
+      data in prefix mode match prefixes after every period
+    - ToC editor: Allow moving of multiple selected items in the
+      Table of Contents
+    - macOS: The calibre application icons in the dock are now
+      displayed in a white frame to follow Apple's current
+      recommended icon style
+    - Kobo driver: Add support for new firmware on Tolino devices
+    - Book details: Add option in to suppress author search links
+  * Bug Fixes
+    - Fix a regression that broke tabbing to edit cells in the book
+      list when some columns have been hidden or re-ordered
+    - Catalog generation: Allow using templates that access the
+      database for notes
+    - Fix a bug when renaming authors to a name with commas in it
+    - Full text search: Also index text in ZIP and RAR archives as
+      these can be viewed by the calibre viewer
+    - E-book viewer: Fix Table of Contents current entry tracking
+      not working for some books
+    - When reading metadata from HTML also recognize name="subject"
+      meta tags as calibre tags
+    - E-book viewer: Fix viewer not closing on the interrupt signal
+    - Edit book: Download external resources: Fix incorrect
+      filename if the server returns a generic Content-Type header
+    - Metadata download: Publisher/series transform rules:
+      Fix values with commas in them not working
+
+-------------------------------------------------------------------
 Tue Mar 11 12:30:47 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Use pythons instead static python311.

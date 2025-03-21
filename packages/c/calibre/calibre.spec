@@ -26,7 +26,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        7.26.0
+Version:        8.0.1
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -124,10 +124,14 @@ BuildRequires:  pkgconfig(gpg-error) >= 1.43
 BuildRequires:  pkgconfig(hunspell) >= 1.7.0
 ###BuildRequires:  pkgconfig(icu-i18n) < 76.0
 BuildRequires:  pkgconfig(icu-i18n) >= 73.2
-# Upstream use 6.1.2
-BuildRequires:  ffmpeg-7-libavutil-devel >= 7.1
-BuildRequires:  ffmpeg-7-libavcodec-devel >= 7.1
-BuildRequires:  ffmpeg-7-libavformat-devel >= 7.1
+# Upstream use 7.1
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libavfilter)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libswscale)
+#
 BuildRequires:  pkgconfig(libffi) >= 3.4.4
 BuildRequires:  pkgconfig(libgcrypt) >= 1.9.4
 BuildRequires:  pkgconfig(libmspack)
@@ -262,9 +266,9 @@ Requires:       %{python_flavor}-texttable >= 1.6.4
 Requires:       %{python_flavor}-xxhash >= 3.3.0
 #Requires:       %%{python_flavor}-unrardll >= 0.1.5
 Requires:       %{python_flavor}-py7zr >= 0.20.6
-Requires:       %{python_flavor}-zeroconf >= 0.37.0
 Requires:       %{python_flavor}-speechd >= 0.11.5
 Requires:       %{python_flavor}-webencodings >= 0.5.1
+Requires:       %{python_flavor}-zeroconf >= 0.37.0
 #
 Requires:       sqlite3 >= 3.43.0
 Requires:       bzip2 >= 1.0.8
