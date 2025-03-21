@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpeg-6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -117,6 +117,7 @@ Patch12:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
 Patch13:        0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch
 Patch14:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
+Patch16:        0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
 Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch92:        ffmpeg-CVE-2023-50007.patch

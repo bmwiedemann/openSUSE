@@ -167,4 +167,13 @@ I am sorry for the messy submission before. (forwarded request 1139042 from iDes
     <comment></comment>
     <requestid>1234292</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>f2a5f5aa4a659849dd04c75f43f857cf</srcmd5>
+    <version>6.1.2</version>
+    <time>1742584945</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
+  to build with SVT-AV1 3.0.0.</comment>
+    <requestid>1254841</requestid>
+  </revision>
 </revisionlist>
