@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 21 12:21:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.3.0
+  * The --register-unsafely-without-email flag is no longer needed
+    in non-interactive mode.
+  * In interactive mode, pressing Enter at the email prompt will
+    register without an email.
+  * deprecated certbot.crypto_util.dump_pyopenssl_chain
+  * deprecated certbot.crypto_util.pyopenssl_load_certificate
+  * Fixed a bug introduced in Certbot 3.1.0 where OpenSSL environment
+    variables needed in our snap configuration were persisted in calls
+    to external programs like nginx which could cause them to fail to
+    load OpenSSL.
+
+-------------------------------------------------------------------
 Thu Feb 13 11:23:18 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:

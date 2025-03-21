@@ -514,4 +514,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1247394</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>affade860ead121f30c6ca45f3ce10f9</srcmd5>
+    <version>3.3.0</version>
+    <time>1742585004</time>
+    <user>anag+factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>1254987</requestid>
+  </revision>
 </revisionlist>
