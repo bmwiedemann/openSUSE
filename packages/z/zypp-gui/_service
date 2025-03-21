@@ -1,4 +1,17 @@
 <services>
-  <service name="cargo_audit" mode="disabled">
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">zypp-gui*.tar.xz</param>
+     <param name="update">true</param>
+     <param name="filter">true</param>
+  </service>
+  <service name="cargo_audit" mode="manual" />
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/sunwxg/zypp-gui.git</param>
+    <param name="revision">v0.4.1</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">(.*)\+0</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
   </service>
 </services>

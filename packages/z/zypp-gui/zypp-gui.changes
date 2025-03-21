@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 20 01:50:06 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update version to 0.4.1
+  * Adjust repo row bottom margin
+  * update gio glib
+  * fix build error
+  * Use workspace in Cargo.toml
+  * Update specific row when repo is changed.
+  * settings page use Adw.PreferencesGroup
+- Drop 0001-Adapt-to-the-zypper-new-printout-format.patch
+
+-------------------------------------------------------------------
 Wed Feb 26 02:32:51 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add 0001-Adapt-to-the-zypper-new-printout-format.patch: Support

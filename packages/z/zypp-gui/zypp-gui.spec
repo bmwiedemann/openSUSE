@@ -17,22 +17,21 @@
 
 
 Name:           zypp-gui
-Version:        0.3.0
+Version:        0.4.1
 Release:        0%{?dist}
 Summary:        Update the system, search, install and remove the package, configure the repos.
 License:        GPL-2.0-or-later
 Group:          System/GUI
 URL:            https://github.com/sunwxg/zypp-gui
 Source0:        https://github.com/sunwxg/zypp-gui/releases/download/v%{version}/%{name}-%{version}.tar.xz
-Source1:        additional.json
-
-Patch0:         0001-Adapt-to-the-zypper-new-printout-format.patch
+Source1:        vendor.tar.zst
+Source2:        additional.json
 
 BuildRequires:  blueprint-compiler
 BuildRequires:  cargo
 BuildRequires:  meson
-BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.40
+BuildRequires:  rust
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.11.5
@@ -40,6 +39,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(gtk4) >= 4.8
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.alpha
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 1.1.0
 BuildRequires:  pkgconfig(polkit-gobject-1)
 Requires:       PackageKit
@@ -49,7 +49,7 @@ Requires:       pkexec
 Application can update the system, search, install and remove the package, configure the repos. It achieves some functions of command zypper.
 
 %prep
-%autosetup -p1
+%autosetup -a1 -p1
 
 %build
 %meson
@@ -57,7 +57,7 @@ Application can update the system, search, install and remove the package, confi
 
 %install
 %meson_install
-install -D -m 644 %{SOURCE1} %{buildroot}%{_prefix}/share/%{name}/additional.json
+install -D -m 644 %{SOURCE2} %{buildroot}%{_prefix}/share/%{name}/additional.json
 
 %check
 %meson_test
