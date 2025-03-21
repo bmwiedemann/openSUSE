@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 21 06:26:22 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.39.2:
+  * fix: primary-resouce is created in wrong place. by
+    @holyspectral in #6872
+  * docs: Replace memcached-operator in v1.39.0 update instructions
+    by @blu3r4y in #6898
+  * Fix Allow IfNotPresent policy when operator-sdk run bundle
+    #6795 by @kaovilai in #6851
+  * Bump github.com/containerd/containerd from 1.7.23 to 1.7.27 by
+    @dependabot in #6916
+  * updating dependencies to address CVE's by @acornett21 in #6917
+  * Bump github.com/distribution/distribution/v3 from 3.0.0-rc.1 to
+    3.0.0-rc.3 by @dependabot in #6918
+  * adding logic to GHA's to remove unused diskspace by @acornett21
+    in #6920
+  * Release v1.39.2 by @acornett21 in #6919
+
+-------------------------------------------------------------------
 Wed Jan 15 07:07:08 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.39.1:
