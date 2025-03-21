@@ -247,4 +247,12 @@
     <comment>Qt 5.15.16, untested. Try #2. (forwarded request 1226586 from favogt)</comment>
     <requestid>1226598</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>67180b76b867a75ea2070cec4fb40f6a</srcmd5>
+    <version>5.15.16+kde0</version>
+    <time>1742584994</time>
+    <user>anag+factory</user>
+    <comment>- Use pkgconfig(sdl2) (forwarded request 1254962 from favogt)</comment>
+    <requestid>1254963</requestid>
+  </revision>
 </revisionlist>

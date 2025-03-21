@@ -34,7 +34,7 @@ Source1:        baselibs.conf
 BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
 BuildRequires:  libQt5PlatformSupport-devel-static >= %{real_version}
 BuildRequires:  libQt5PlatformSupport-private-headers-devel >= %{real_version}
-BuildRequires:  libSDL2-devel
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  libqt5-qtbase-devel >= %{real_version}
 BuildRequires:  libqt5-qtdeclarative-devel >= %{real_version}
 %if %{qt5_snapshot}
