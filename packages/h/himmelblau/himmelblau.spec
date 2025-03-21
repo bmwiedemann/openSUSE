@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.9.4+git.0.9909238
+Version:        0.9.8+git.0.3f20b1b
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -65,9 +65,6 @@ Provides:       authd
 Provides:       authd-msentraid
 Suggests:       himmelblau-sso
 Requires:       man
-# This is necessary to prevent users from installing Himmelblau along side
-# Microsoft's Broker, as these will conflict.
-Provides:       microsoft-identity-broker
 
 %description
 Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
@@ -79,6 +76,7 @@ Summary:        Azure Entra Id authentication PAM module
 Requires:       %{name} = %{version}
 Provides:       libpam-aad
 Suggests:       himmelblau-sshd-config
+Suggests:       himmelblau-qr-greeter
 
 %description -n pam-himmelblau
 Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
@@ -115,6 +113,9 @@ Summary:        Azure Entra Id Firefox SSO Configuration
 Requires:       %{name} = %{version}
 Requires:       MozillaFirefox
 Provides:       linux-entra-sso
+# This is necessary to prevent users from installing Himmelblau SSO along side
+# Microsoft's Broker, as these will conflict.
+Provides:       microsoft-identity-broker
 
 %description -n himmelblau-sso
 Himmelblau is an interoperability suite for Microsoft Azure Entra Id,

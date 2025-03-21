@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 20 19:30:25 UTC 2025 - david.mulder@suse.com
+
+- Update to version 0.9.8+git.0.3f20b1b:
+  * configure cachix signing and upload in ci
+  * Version 0.9.8
+  * Improve pam error handling and messaging
+  * Version 0.9.7
+  * Terminate linux-entra-sso when browser terminates
+  * On deb, push pam config after install
+  * Increase priority of deb PAM passwd for Himmelblau
+  * Improve offline state handling
+  * QR Greeter also supports gnome-shell 47
+  * Version 0.9.6
+  * Fix profile photo loading
+  * Clarify pam_allow_groups in himmelblau.conf man page
+  * Don't hide debug for pam_allow_groups miss
+  * Version 0.9.5
+  * Handle failures in passwordless auth
+
+-------------------------------------------------------------------
 Tue Mar 11 20:06:05 UTC 2025 - david.mulder@suse.com
 
 - Update to version 0.9.4+git.0.9909238:
