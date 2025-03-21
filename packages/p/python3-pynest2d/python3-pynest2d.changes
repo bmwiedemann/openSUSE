@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 19 13:57:47 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Add missing build requirement python3-setuptools
+
+-------------------------------------------------------------------
 Wed Mar  9 18:41:03 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Restore Retrieve-required-flags-from-Libnest2D-target.patch,

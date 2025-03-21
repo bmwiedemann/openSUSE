@@ -1,7 +1,7 @@
 #
 # spec file for package python3-pynest2d
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch1:         Retrieve-required-flags-from-Libnest2D-target.patch
 BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  libnest2d-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-sip-devel < 5
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 # The PyQt5.sip module. NOT a dependency on (Py)Qt5
