@@ -145,6 +145,12 @@ BuildRequires:  libnuma-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  rdma-core-devel
 %endif
+# ovs-flowviz depends on python3-openvswitch and other python3 modules
+Requires:       python3-openvswitch = %{version}-%{release}
+Requires:       python3-click
+Requires:       python3-netaddr
+Requires:       python3-pyparsing
+Requires:       python3-rich
 
 %description
 Open vSwitch is a multilayer virtual network Ethernet switch. It is
@@ -193,7 +199,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 Requires:       %{ovs_lname} = %{version}
 # Required for ovsdb-ildc
-Requires:       python3-ovs = %{version}
+Requires:       python3-openvswitch = %{version}
 Provides:       %{name}-dpdk-devel = %{version}
 Obsoletes:      %{name}-dpdk-devel < 2.7.0
 
@@ -223,7 +229,7 @@ Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}
 Requires:       %{name}-switch = %{version}
 # Since openvswitch/scripts/ovs-vtep requires various ovs python modules.
-Requires:       python3-ovs = %{version}
+Requires:       python3-openvswitch = %{version}-%{release}
 Provides:       %{name}-dpdk-vtep = %{version}
 Obsoletes:      %{name}-dpdk-vtep < 2.7.0
 
@@ -239,23 +245,23 @@ License:        Apache-2.0
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}
 Requires:       /usr/sbin/ipsec
-Requires:       python3-ovs = %{version}
+Requires:       python3-openvswitch = %{version}-%{release}
 Requires:       strongswan
 
 %description ipsec
 This package provides IPsec tunneling support for OVS tunnels.
 
-%package -n python3-ovs
+%package -n python3-%{name}
 Summary:        Python3 bindings for Open vSwitch
 License:        Apache-2.0
 Group:          Productivity/Networking/System
 Requires:       %{ovs_lname} = %{version}
 Requires:       python3
 Requires:       python3-sortedcontainers
-Provides:       python3-%{name} = %{version}
-Obsoletes:      python3-%{name} < 2.10.1
+Provides:       python3-ovs = %{version}-%{release}
+Obsoletes:      python3-ovs < %{version}-%{release}
 
-%description -n python3-ovs
+%description -n python3-%{name}
 This package contains the Python3 bindings for Open vSwitch database.
 
 %package test
@@ -265,7 +271,7 @@ Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}
 Requires:       python3
 Requires:       python3-Twisted
-Requires:       python3-ovs = %{version}
+Requires:       python3-openvswitch = %{version}-%{release}
 Provides:       python3-%{name}-test = %{version}
 Obsoletes:      python3-%{name}-test < 2.13.0
 
@@ -363,7 +369,7 @@ Group:          Productivity/Networking/System
 URL:            http://ovn.org/
 Requires:       %{name} = %{ovs_version}
 Requires:       ovn = %{ovn_version}
-Requires:       python3-openvswitch = %{ovs_version}
+Requires:       python3-openvswitch = %{ovs_version}-%{release}
 # openvswitch-ovn has been split into openvswitch-ovn-{central,common,docker,host,vtep}
 Provides:       %{name}-dpdk-ovn:%{_bindir}/ovn-docker-overlay-driver
 Provides:       %{name}-ovn-docker = %{ovn_version}
@@ -664,7 +670,7 @@ cp -a %{buildroot}%{_datadir}/openvswitch/python/ovstest \
 
 # Python subpackage
 # Build on a temporary directory.
-mkdir python3-ovs && pushd $_
+mkdir python3-openvswitch && pushd $_
 # Some build files are in sources while others are generated directly on
 # buildroot as part of make_install (dirs.py). Copy them first.
 cp -an ../%{ovs_dir}/python/* $(pwd)/
@@ -1218,7 +1224,7 @@ fi
 %{_sbindir}/rcopenvswitch-ipsec
 %{_unitdir}/openvswitch-ipsec.service
 
-%files -n python3-ovs
+%files -n python3-%{name}
 %{python3_sitearch}/ovs/
 %{python3_sitearch}/ovs-*.egg-info
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 18 14:56:52 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Fix ovs-flowviz python3 dependencies
+- Rename "python3-ovs" to "python3-openvswitch" for distro consistency
+
+-------------------------------------------------------------------
 Mon Mar 10 08:33:01 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 -  Update OVN to 25.03.0 for a list of changes, check 
