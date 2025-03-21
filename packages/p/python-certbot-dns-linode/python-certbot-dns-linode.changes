@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 21 12:30:13 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to version 3.3.0
+  * Removed support for Linode API v3 which was sunset at the end 
+    of July 2023.
+
+-------------------------------------------------------------------
 Mon Jan 27 14:37:51 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to version 3.1.0
