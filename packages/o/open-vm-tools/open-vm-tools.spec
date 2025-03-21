@@ -66,7 +66,6 @@ BuildRequires:  libmspack-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
-BuildRequires:  pcre-devel
 BuildRequires:  procps-devel
 BuildRequires:  update-desktop-files
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
