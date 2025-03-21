@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Feb 24 16:32:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.2.2
+  * New functions matvec and vecmat
+  * Many improved annotations
+  * Improved support for the new StringDType
+  * Improved support for free threaded Python
+  * Fixes for f2py
+  ## Deprecations
+  * _add_newdoc_ufunc is now deprecated. ufunc.__doc__ = newdoc should 
+    be used instead.
+  ## Expired deprecations
+  * bool(np.array([])) and other empty arrays will now raise an error. 
+    Use arr.size > 0 instead to check whether an array has no elements.
+  ## Compatibility notes
+  * numpy.cov now properly transposes single-row (2d array) design 
+    matrices when rowvar=False. Previously, single-row design matrices 
+    would return a scalar in this scenario, which is not correct, so 
+    this is a behavior change and an array of the appropriate shape 
+    will now be returned.
+  ## New Features
+  * New functions for matrix-vector and vector-matrix products
+  * np.complexfloating[T, T] can now also be written as np.complexfloating[T]
+  * UFuncs now support __dict__ attribute and allow overriding __doc__ 
+    (either directly or via ufunc.__dict__["__doc__"]). __dict__ can be 
+    used to also override other properties, such as __module__ or 
+    __qualname__.
+  * The “nbit” type parameter of np.number and its subtypes now defaults 
+    to typing.Any. This way, type-checkers will infer annotations such 
+    as x: np.floating as x: np.floating[Any], even in strict mode.
+
+-------------------------------------------------------------------
 Wed Feb 12 16:55:08 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Avoid writing non-deterministic .pyc files during build

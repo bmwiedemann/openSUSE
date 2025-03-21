@@ -1,7 +1,7 @@
 #
 # spec file for package python-numpy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 2.1.3
-%define _ver 2_1_3
+%define ver 2.2.2
+%define _ver 2_2_2
 %define pname python-numpy
 %define plainpython python
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
