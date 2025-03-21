@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Mar 21 13:34:30 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#85
+- adjust verifymedia to use new initrd unpacking code
+  (bsc#1239528)
+- 3.7
+
+--------------------------------------------------------------------
 Wed Mar 12 16:38:07 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#84
