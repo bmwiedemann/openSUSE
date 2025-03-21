@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 20 19:57:56 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.2.0
+  * Add a vdu-name option for assigning meaningful/user-friendly names 
+    to each VDU.
+  * Implement an order-by-name option that orders lists and tabs by 
+    VDU name.
+  * Hovering over a settings-dialog tab-name or save-button reveals the
+    settings-filename as a tooltip. 
+  * If smart-window is enabled in a Wayland desktop, automatically use
+    XWayland. (Wayland doesn't allow an application to precisely place 
+    it's own windows!)
+  * Altering the smart-window option now requires a restart (due to the 
+    Wayland/XWayland changes).
+  * The smart-window option save/restore of main-window has been made 
+    more consistent.
+  * The COSMIC desktop is treated as GNOME-like (the system-tray 
+    right-mouse menu includes a "control-panel" menu-item).  
+
+-------------------------------------------------------------------
 Sun Mar  9 00:58:46 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.1,4
