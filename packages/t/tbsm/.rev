@@ -15,4 +15,12 @@
     <comment>&quot;Change build dependency to devel package instead of versioned lib&quot; (forwarded request 1045837 from jlkDE)</comment>
     <requestid>1045838</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c83a11bb66cdf0c19d921ef3632257c4</srcmd5>
+    <version>0.7</version>
+    <time>1742584942</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254834</requestid>
+  </revision>
 </revisionlist>

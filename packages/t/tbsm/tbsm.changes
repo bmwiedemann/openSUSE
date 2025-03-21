@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 20 19:01:02 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- drop unneeded pcre build dependency
+
+-------------------------------------------------------------------
 Fri Dec 30 15:55:29 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Change build dependency to devel package instead of versioned lib

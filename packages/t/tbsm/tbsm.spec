@@ -25,7 +25,6 @@ BuildArch:      noarch
 Group:          System/X11/Utilities
 URL:            https://loh-tar.github.io/tbsm
 Source:         https://github.com/loh-tar/tbsm/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  pcre-devel
 
 %description
 tbsm is an application or session launcher, written in pure bash with no ncurses or dialog dependencies. It is inspired by cdm, tdm, in some way by krunner and related.
