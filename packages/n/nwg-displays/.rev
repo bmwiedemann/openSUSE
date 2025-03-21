@@ -75,4 +75,24 @@
     <comment></comment>
     <requestid>1188285</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6d161725debabece62dc766877bd2601</srcmd5>
+    <version>0.3.24</version>
+    <time>1742584949</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.3.24
+  * reverted #71 (requested in #83, only affects NixOS)
+- Updates from 0.3.23
+  * Settings form wrapped into Gtk.ScrolledWindow; closes #82
+  * improved install.sh script
+  * added uninstall.sh script
+  * dependencies enlisted in README.md
+- Updates from 0.3.22
+  * Fixed monitor descriptions with hashes; #75
+- Updates from 0.3.21
+  * added config value for confirmation timeout; #67
+  * fixed logical/physical screen dimensions on Hyprland; #68
+</comment>
+    <requestid>1254884</requestid>
+  </revision>
 </revisionlist>
