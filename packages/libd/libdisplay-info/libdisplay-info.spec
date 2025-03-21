@@ -29,6 +29,7 @@ Source2:        https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releas
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.57.0
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig(hwdata)
 
 %description

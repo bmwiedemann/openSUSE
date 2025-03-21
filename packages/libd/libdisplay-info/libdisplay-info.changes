@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 20 14:42:25 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add BuildRequires: python3-base; building for Leap 15.6 fails
+  otherwise.
+
+-------------------------------------------------------------------
 Thu Feb 27 08:12:11 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Create package libdisplay-info-tools for di-edid-decode

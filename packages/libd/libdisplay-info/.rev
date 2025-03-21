@@ -32,4 +32,13 @@
 - Remode BuildRequires cmake in favour of c_compiler</comment>
     <requestid>1249418</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0e77af9db2b301c76716b7e9862e12da</srcmd5>
+    <version>0.2.0</version>
+    <time>1742584899</time>
+    <user>anag+factory</user>
+    <comment>- Add BuildRequires: python3-base; building for Leap 15.6 fails
+  otherwise.</comment>
+    <requestid>1254778</requestid>
+  </revision>
 </revisionlist>
