@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 21 07:04:23 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.1:
+  * Improve frame callback and commit handling
+  * Stop processing auth requests after success
+  * Exit when password handling subprocess crashes
+  * Only submit password if previous validation completed
+  * Check if keymap is NULL before dereferencing
+  * Better handle subprocess crashes
+  * comm: improve robustness
+  * Revert "comm: improve robustness"
+  * Reapply "comm: improve robustness"
+  * Define _POSIX_C_SOURCE globally
+  * build: use cc.get_supported_arguments() for warnings
+  * Assert that password buffer is NULL-terminated
+  * build: bump version to 1.8.1
+  * Fix potential NULL deference after getpwuid
+
+-------------------------------------------------------------------
 Mon Aug 26 06:54:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.0:

@@ -138,4 +138,26 @@
   * Clear password on ctrl+backpace and ctrl+delete</comment>
     <requestid>1196012</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dfcaa7858d3f4ddc256f880c3c0d5fdd</srcmd5>
+    <version>1.8.1</version>
+    <time>1742584949</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.1:
+  * Improve frame callback and commit handling
+  * Stop processing auth requests after success
+  * Exit when password handling subprocess crashes
+  * Only submit password if previous validation completed
+  * Check if keymap is NULL before dereferencing
+  * Better handle subprocess crashes
+  * comm: improve robustness
+  * Revert &quot;comm: improve robustness&quot;
+  * Reapply &quot;comm: improve robustness&quot;
+  * Define _POSIX_C_SOURCE globally
+  * build: use cc.get_supported_arguments() for warnings
+  * Assert that password buffer is NULL-terminated
+  * build: bump version to 1.8.1
+  * Fix potential NULL deference after getpwuid</comment>
+    <requestid>1254918</requestid>
+  </revision>
 </revisionlist>
