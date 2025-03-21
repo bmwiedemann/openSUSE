@@ -1,0 +1,22 @@
+diff --git a/tests/test_client.py b/tests/test_client.py
+index ada129c..81f66db 100644
+--- a/tests/test_client.py
++++ b/tests/test_client.py
+@@ -1,7 +1,7 @@
+ import os
+ from contextlib import suppress
+ 
+-import mock
++import unittest
+ import pytest
+ from graphql import build_ast_schema, parse
+ 
+@@ -59,7 +59,7 @@ def test_request_async_execute_batch_not_implemented_yet():
+ 
+ 
+ @pytest.mark.requests
+-@mock.patch("urllib3.connection.HTTPConnection._new_conn")
++@unittest.mock.patch("urllib3.connection.HTTPConnection._new_conn")
+ def test_retries_on_transport(execute_mock):
+     """Testing retries on the transport level
+ 

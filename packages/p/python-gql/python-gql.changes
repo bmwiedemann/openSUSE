@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Sun Mar  9 14:41:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.5.2:
+  * Now supporting graphql-core v3.2.4 again (See issue #534)
+    - Allow graphql-core 3.2.4 by retrofitting introspection
+      commits #535
+- update to 3.5.1:
+  Issue #529 reported that by default the AIOHTTPTransport was not
+  validating ssl certificates (a self-certificate was accepted by
+  default).
+  This version adds a warning to warn users (See PR #533).
+  As a workaround, using ssl=True in the transport arguments fix
+  the issue.
+  graphql-core has been restricted to <3.2.4 to fix tests.
+  A new stable version will be made shortly.
+
+-------------------------------------------------------------------
+Tue Sep 24 18:52:04 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.5.0
+- Specfile cleanup
+- Use tarball from github
+- Run tests
+- Add patch
+  * fix-tests.patch
+
+-------------------------------------------------------------------
+Tue Jan  7 09:15:35 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.2.0
