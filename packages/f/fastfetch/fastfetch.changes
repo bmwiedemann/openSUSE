@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Mar 20 19:12:37 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- update to 2.39.1
+  Hot fix:
+   * Fix PublicIP detection fails randomly 
+     (gh#fastfetch-cli/fastfetch#1629)
+- update to 2.39.0
+  Changes:
+   * OSMesa backend for OpenGL detection is removed 
+     (gh#fastfetch-cli/fastfetch#1618)
+   * Fastfetch no longer tries to use the private framework 
+     Apple80211 to acquire SSID for Wifi module, which is only 
+     useful for macOS Sonoma (Wifi, macOS)
+  Features:
+   * Improve accuracy of HDR support on Windows 11 24H2 (Display, 
+     Windows)
+   * Improve performance of SSID detection on macOS Sequoia 
+     (gh#fastfetch-cli/fastfetch#1597)
+   * Support warp terminal version detection on Windows (Terminal, 
+     Windows)
+   * Support default route detection on OpenBSD & DragonFly BSD 
+     (LocalIP, OpenBSD / DragonFly)
+   * Improve bash completion script
+   * Improve performance of networking (PublicIP / Weather)
+   * Support pkgsrc package manager detection on Linux (Packages, 
+     Linux)
+  Logo:
+   * Add Common Torizon OS
+   * Change FoxOS to WolfOS
+   * Add Bredos
+   * Add NetBSD2
+
+-------------------------------------------------------------------
 Mon Mar  3 15:58:00 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - update to 2.38.0
