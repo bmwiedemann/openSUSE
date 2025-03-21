@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Sphinx%{psuffix}
-Version:        8.1.3
+Version:        8.2.3
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -42,10 +42,8 @@ Source3:        requests.inv
 Source4:        readthedocs.inv
 Source5:        update-intersphinx.sh
 Source99:       python-Sphinx.keyring
-# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinx/commit/5ff3740063c1ac57f17ecd697bcd06cc1de4e75c Adapt tests for Pygments 2.19
-Patch:          pygments.patch
 BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -62,6 +60,7 @@ Requires:       python-docutils >= 0.12
 Requires:       python-imagesize
 Requires:       python-packaging
 Requires:       python-requests >= 2.5.0
+Requires:       python-roman-numerals
 Requires:       python-snowballstemmer >= 1.1
 Requires:       python-sphinxcontrib-applehelp
 Requires:       python-sphinxcontrib-devhelp
@@ -235,8 +234,7 @@ This package contains the HTML documentation for Sphinx.
 %endif
 
 %prep
-%setup -q -n sphinx-%{version}
-%autopatch -p1
+%autosetup -p1 -n sphinx-%{version}
 
 %build
 %pyproject_wheel
