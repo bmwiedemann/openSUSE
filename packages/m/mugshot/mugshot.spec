@@ -1,7 +1,7 @@
 #
 # spec file for package mugshot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,7 +84,7 @@ pushd %{buildroot}%{python3_sitelib}/%{name}_lib
 popd
 
 # Fix duplicate files
-%fdupes -s %{buildroot}%{python3_sitelib}/mugshot_lib/__pycache__/
+%fdupes -s %{buildroot}%{python3_sitelib}/
 %fdupes -s %{buildroot}%{_datadir}/icons/hicolor/
 
 %find_lang %{name}
@@ -99,6 +99,9 @@ popd
 %{_bindir}/%{name}
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/applications/org.bluesabre.Mugshot.desktop
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/**/apps/%{name}.svg
 %{_datadir}/glib-2.0/schemas/org.bluesabre.mugshot.gschema.xml
 %{_datadir}/man/man1/mugshot.1.gz
