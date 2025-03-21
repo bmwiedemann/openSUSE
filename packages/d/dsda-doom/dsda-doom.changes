@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 20 21:37:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove unused BuildRequire on libpcre. (The feature using pcre
+  was dropped in 2022 already.)
+- Add BuildRequire on pkgconfig(glu), previously implicitly added
+  by SDL2-devel (but now we have sdl2-compat-devel).
+- Make build recipe POSIX sh compatible.
+
+-------------------------------------------------------------------
 Fri Jan 17 17:25:07 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.28.3

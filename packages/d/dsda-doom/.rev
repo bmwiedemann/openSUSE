@@ -55,4 +55,13 @@
     <comment>- Update to release 0.28.3</comment>
     <requestid>1238567</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>552ec4ae5e595da35264e6e80505b9ba</srcmd5>
+    <version>0.28.3</version>
+    <time>1742584962</time>
+    <user>anag+factory</user>
+    <comment>- Remove unused BuildRequire on libpcre. (The feature using pcre
+  was dropped in 2022 already.)</comment>
+    <requestid>1254852</requestid>
+  </revision>
 </revisionlist>

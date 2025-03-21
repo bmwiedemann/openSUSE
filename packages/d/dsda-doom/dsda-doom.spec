@@ -33,21 +33,27 @@ BuildRequires:  Mesa-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fluidsynth
-BuildRequires:  fluidsynth-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libmad-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libvorbis-devel
-BuildRequires:  libzip-devel
 BuildRequires:  libzip-tools
-BuildRequires:  pcre-devel
-BuildRequires:  portmidi-devel
-BuildRequires:  portmidi-java
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_net)
+BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(mad)
+BuildRequires:  pkgconfig(portmidi)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(vorbis)
+%if 0%{?suse_version} >= 1600
+# CMake Error at [portmidi-devel]:/usr/lib64/cmake/PortMidi/PortMidiTargets.cmake:100 (message):
+#   The imported target "PortMidi::pmjni" references the file
+#      "[portmidi-java]:/usr/lib64/libpmjni.so.2.0.3"
+BuildRequires:  portmidi-java
+%endif
 Suggests:       freedoom
 Provides:       prboom
 
@@ -64,16 +70,16 @@ It features:
 %autosetup -p1
 
 %build
-pushd prboom2/
-%cmake -DDOOMWADDIR="%_datadir/doom" -DDSDAPWADDIR="%_datadir/doom"
+cd prboom2/
+mkdir -p ./usr/%_lib
+touch ./usr/%_lib/libpmjni.so.2.0.3
+%cmake -DDOOMWADDIR="%_datadir/doom" -DDSDAPWADDIR="%_datadir/doom" -D_IMPORT_PREFIX=$PWD/usr
 %cmake_build
-popd
 
 %install
-pushd prboom2/
+cd prboom2/
 %cmake_install
 rm -f "%buildroot/usr/share/doc/dsda-doom/COPYING" # via %%license instead
-popd
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 %post
