@@ -78,7 +78,6 @@ BuildRequires:  python3-pytest-check
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(icu-uc)
-BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(tcl)
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(x11)
