@@ -1,7 +1,7 @@
 #
 # spec file for package atheme
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,21 +24,23 @@ Summary:        Extensible IRC services
 License:        MIT
 Group:          Productivity/Networking/IRC
 URL:            https://atheme.github.io/atheme.html
-
 Source:         https://github.com/atheme/atheme/releases/download/v%version/%name-services-v%version.tar.xz
 Source9:        example.conf
 Patch1:         atheme-lockmodes.diff
 Patch2:         atheme-nodate.diff
+Patch3:         pcre2.diff
+BuildRequires:  automake
 BuildRequires:  cracklib-devel
 BuildRequires:  fdupes
-BuildRequires:  libopenssl-devel
+BuildRequires:  libtool
 BuildRequires:  openldap2-devel
 BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libmowgli-2) >= 2.0.0.g185
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libqrencode)
+BuildRequires:  pkgconfig(libssl)
 %sysusers_requires
 %define atheme_home /var/lib/atheme
 %define atheme_log  /var/log/atheme
@@ -79,7 +81,8 @@ mkdir -p libmowgli-2 modules/contrib
 touch libmowgli-2/Makefile modules/contrib/Makefile
 
 %build
-export RUNDIR="/run"
+export RUNDIR="%atheme_run"
+autoreconf -fi
 %configure \
 	--sysconfdir="%_sysconfdir/%name" \
 	--bindir="%_sbindir" \
@@ -91,7 +94,7 @@ export RUNDIR="/run"
 %make_build
 
 %install
-export RUNDIR="/run"
+export RUNDIR="%atheme_run"
 %make_install DOCDIR="%_docdir/%name"
 b="%buildroot"
 
@@ -111,7 +114,7 @@ cat >"$b/%_unitdir/atheme.service" <<-EOF
 	WantedBy=multi-user.target
 EOF
 cat >"$b/%_prefix/lib/tmpfiles.d/atheme.conf" <<-EOF
-	d /run/atheme 0755 atheme atheme -
+	d %atheme_run 0700 atheme atheme -
 EOF
 echo 'u atheme - "IRC services" %atheme_home' >system-user-atheme.conf
 cp -a system-user-atheme.conf "$b/%_sysusersdir/"

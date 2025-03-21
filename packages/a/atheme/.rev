@@ -240,4 +240,13 @@
     <comment>- Remove rc* symlinks</comment>
     <requestid>1181443</requestid>
   </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>fdf30770e9e4e3a3c0acb620c43fa3ff</srcmd5>
+    <version>7.2.12</version>
+    <time>1742584997</time>
+    <user>anag+factory</user>
+    <comment>- Use /run/atheme not /run to resolve a permission error on startup.
+- Add pcre2.diff.</comment>
+    <requestid>1254964</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,87 @@
+From dcab28a78baa798a4ada3be7a0fd01c1873bfa34 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 20 Mar 2025 23:13:55 +0100
+Subject: [PATCH] PCRE2 support
+References: https://github.com/atheme/atheme/pull/941
+
+---
+ configure.ac          |    2 +-
+ libathemecore/match.c |   20 ++++++++++++--------
+ 2 files changed, 13 insertions(+), 9 deletions(-)
+
+Index: atheme-services-v7.2.12/configure.ac
+===================================================================
+--- atheme-services-v7.2.12.orig/configure.ac
++++ atheme-services-v7.2.12/configure.ac
+@@ -402,7 +402,7 @@ AS_HELP_STRING([--with-pcre],[ Enable PC
+ [with_pcre=no])
+ 
+ if test "x${with_pcre}" != "xno"; then
+-	PKG_CHECK_MODULES([LIBPCRE], [libpcre], [], [AC_MSG_ERROR(PCRE requested, but not found)])
++	PKG_CHECK_MODULES([LIBPCRE], [libpcre2-8], [], [AC_MSG_ERROR(PCRE requested, but not found)])
+ 	AC_SUBST([LIBPCRE_CFLAGS])
+ 	AC_SUBST([LIBPCRE_LIBS])
+ 	AC_DEFINE([HAVE_PCRE], [1], [Define if you want to use PCRE])
+Index: atheme-services-v7.2.12/libathemecore/match.c
+===================================================================
+--- atheme-services-v7.2.12.orig/libathemecore/match.c
++++ atheme-services-v7.2.12/libathemecore/match.c
+@@ -25,7 +25,8 @@
+ 
+ #include <regex.h>
+ #ifdef HAVE_PCRE
+-#include <pcre.h>
++#define PCRE2_CODE_UNIT_WIDTH 8
++#include <pcre2.h>
+ #endif
+ 
+ #define BadPtr(x) (!(x) || (*(x) == '\0'))
+@@ -592,7 +593,7 @@ struct atheme_regex_
+ 	{
+ 		regex_t posix;
+ #ifdef HAVE_PCRE
+-		pcre *pcre;
++		pcre2_code *pcre;
+ #endif
+ 	} un;
+ };
+@@ -616,14 +617,17 @@ atheme_regex_t *regex_create(char *patte
+ 	if (flags & AREGEX_PCRE)
+ 	{
+ #ifdef HAVE_PCRE
+-		const char *errptr;
+-		int erroffset;
++		int errcode = 0;
++		PCRE2_SIZE erroffset;
+ 
+-		preg->un.pcre = pcre_compile(pattern, (flags & AREGEX_ICASE ? PCRE_CASELESS : 0) | PCRE_NO_AUTO_CAPTURE, &errptr, &erroffset, NULL);
++		preg->un.pcre = pcre2_compile(pattern, PCRE2_ZERO_TERMINATED, (flags & AREGEX_ICASE ? PCRE2_CASELESS : 0) | PCRE2_NO_AUTO_CAPTURE, &errcode, &erroffset, NULL);
+ 		if (preg->un.pcre == NULL)
+ 		{
++			char errstr[256];
++			errstr[0] = '\0';
++			pcre2_get_error_message(errcode, errstr, sizeof(errstr));
+ 			slog(LG_ERROR, "regex_match(): %s at offset %d in %s",
+-					errptr, erroffset, pattern);
++					errstr, erroffset, pattern);
+ 			free(preg);
+ 			return NULL;
+ 		}
+@@ -710,7 +714,7 @@ bool regex_match(atheme_regex_t *preg, c
+ 			return regexec(&preg->un.posix, string, 0, NULL, 0) == 0;
+ #ifdef HAVE_PCRE
+ 		case at_pcre:
+-			return pcre_exec(preg->un.pcre, NULL, string, strlen(string), 0, 0, NULL, 0) >= 0;
++			return pcre2_match(preg->un.pcre, string, PCRE2_ZERO_TERMINATED, 0, 0, NULL, NULL) >= 0;
+ #endif
+ 		default:
+ 			slog(LG_ERROR, "regex_match(): we were given a pattern of unknown type %d, bad!", preg->type);
+@@ -731,7 +735,7 @@ bool regex_destroy(atheme_regex_t *preg)
+ 			break;
+ #ifdef HAVE_PCRE
+ 		case at_pcre:
+-			pcre_free(preg->un.pcre);
++			pcre2_code_free(preg->un.pcre);
+ 			break;
+ #endif
+ 		default:
