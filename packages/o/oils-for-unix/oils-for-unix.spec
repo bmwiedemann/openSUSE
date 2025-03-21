@@ -17,7 +17,7 @@
 
 
 Name:           oils-for-unix
-Version:        0.27.0
+Version:        0.28.0
 Release:        0
 Summary:        A bash compatible shell and a new modern shell
 License:        Apache-2.0 AND CNRI-Python-GPL-Compatible
