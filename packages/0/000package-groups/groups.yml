@@ -48,6 +48,8 @@ common_locks:
   - gcc12: [locked]
   - gcc14: [locked]
   - postgresql16-llvmjit: [locked]
+  - postgresql17-llvmjit: [locked]
+  - libstdc++6-devel-gcc14: [locked]
   # The DVDs should never identify as -ftp source
   - openSUSE-release-ftp: [locked]
 
