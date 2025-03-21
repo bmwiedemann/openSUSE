@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 20 23:40:48 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+
+-------------------------------------------------------------------
 Mon Feb 17 08:08:01 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.3.101 (no changelog).
@@ -16,7 +22,7 @@ Mon Nov 11 09:26:06 UTC 2024 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Fri Mar 29 09:33:57 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 5.3.36 (no changelog). 
+- Update to 5.3.36 (no changelog).
 
 -------------------------------------------------------------------
 Wed Mar 27 08:44:43 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>

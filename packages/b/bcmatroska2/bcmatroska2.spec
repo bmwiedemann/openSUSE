@@ -29,7 +29,7 @@ Source1:        baselibs.conf
 Patch0:         bcmatroska2-include-subdir.patch
 Patch1:         fix-cmakelist-version.patch
 BuildRequires:  chrpath
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig(bctoolbox) >= 5.3.20
 
 %description
@@ -58,13 +58,16 @@ applications which will use libbcmatroska2.
 %autosetup -p1
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 %cmake_install
 
 chrpath -d %{buildroot}%{_libdir}/lib%{name}.so.%{sover}*
+
+%check
+%ctest
 
 %post -n lib%{name}-%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}-%{sover} -p /sbin/ldconfig
