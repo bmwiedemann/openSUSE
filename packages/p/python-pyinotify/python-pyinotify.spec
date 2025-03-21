@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyinotify
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,12 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/seb-m/pyinotify
 Source:         https://files.pythonhosted.org/packages/source/p/pyinotify/pyinotify-%{version}.tar.gz
 Source1:        pyinotify
+# PATCH-FIX_UPSTREAM https://github.com/seb-m/pyinotify/pull/205
+Patch0:         make_asyncore_support_optional.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,7 +53,7 @@ to watch, the kind of events to monitor and the actions to execute on these
 notifications.
 
 %prep
-%setup -q -n pyinotify-%{version}
+%autosetup -p1 -n pyinotify-%{version}
 # remove unwanted shebang
 sed -i '/^#!/ d' python2/pyinotify.py
 sed -i "s|#!%{_bindir}/env python|#!%__python2|" python2/examples/*py

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 21 10:42:17 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Make asyncore support optional to fix issue in Python 3.12 and 3.13
+
+- Added:
+  * make_asyncore_support_optional.patch 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
