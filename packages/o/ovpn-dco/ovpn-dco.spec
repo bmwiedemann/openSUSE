@@ -1,7 +1,7 @@
 #
 # spec file for package ovpn-dco
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-only
 URL:            https://github.com/OpenVPN/ovpn-dco
 Source:         ovpn-dco-%{version}.tar.gz
 Source1:        ovpn-dco-preamble
+Patch0:         do-not-redefine-symbols-when-they-are-upstream.patch
 BuildRequires:  %kernel_module_package_buildreqs
 
 # Releases prior to 15.2 don't have a new enough kernel

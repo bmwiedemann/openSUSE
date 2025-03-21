@@ -1,0 +1,58 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Thu, 20 Mar 2025 08:20:18 +0100
+Subject: do not redefine symbols when they are upstream
+References: build-fix
+Patch-mainline: Not yet
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ include/uapi/linux/ovpn_dco.h | 7 +++++++
+ linux-compat.h                | 1 +
+ 2 files changed, 8 insertions(+)
+
+diff --git a/include/uapi/linux/ovpn_dco.h b/include/uapi/linux/ovpn_dco.h
+index 73e19b591cb8..89b2b8f4daf6 100644
+--- a/include/uapi/linux/ovpn_dco.h
++++ b/include/uapi/linux/ovpn_dco.h
+@@ -11,6 +11,8 @@
+ #ifndef _UAPI_LINUX_OVPN_DCO_H_
+ #define _UAPI_LINUX_OVPN_DCO_H_
+ 
++#include <linux/if_link.h>
++
+ #define OVPN_NL_NAME "ovpn-dco-v2"
+ 
+ #define OVPN_NL_MULTICAST_GROUP_PEERS "peers"
+@@ -237,6 +239,7 @@ enum ovpn_netlink_packet_attrs {
+ 	OVPN_PACKET_ATTR_MAX = __OVPN_PACKET_ATTR_AFTER_LAST - 1,
+ };
+ 
++#ifndef IFLA_OVPN_MAX
+ enum ovpn_ifla_attrs {
+ 	IFLA_OVPN_UNSPEC = 0,
+ 	IFLA_OVPN_MODE,
+@@ -252,5 +255,9 @@ enum ovpn_mode {
+ 
+ 	__OVPN_MODE_AFTER_LAST,
+ };
++#else
++#define __OVPN_MODE_FIRST	OVPN_MODE_P2P
++#define __OVPN_MODE_AFTER_LAST	(OVPN_MODE_MP + 1)
++#endif
+ 
+ #endif /* _UAPI_LINUX_OVPN_DCO_H_ */
+diff --git a/linux-compat.h b/linux-compat.h
+index 4e77717b4541..e58348760858 100644
+--- a/linux-compat.h
++++ b/linux-compat.h
+@@ -12,6 +12,7 @@
+ 
+ #include <linux/kconfig.h>
+ #include <linux/version.h>
++#include <linux/udp.h>
+ 
+ /*
+  *  Red Hat Enterprise Linux and SUSE Linux Enterprise kernels provide
+-- 
+2.48.1
+

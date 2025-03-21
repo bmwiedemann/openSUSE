@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 20 07:21:34 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- add: do-not-redefine-symbols-when-they-are-upstream.patch
+
+-------------------------------------------------------------------
 Fri Dec 20 07:40:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.2.20241216~git0.a08b2fd:

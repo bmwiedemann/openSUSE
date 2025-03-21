@@ -23,4 +23,12 @@
     <comment>Needed for kernel 6.12 in Factory (forwarded request 1232776 from dimstar)</comment>
     <requestid>1232780</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>661c3399daee6732a4ce4673a44f3614</srcmd5>
+    <version>0.2.20241216~git0.a08b2fd</version>
+    <time>1742584884</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254955</requestid>
+  </revision>
 </revisionlist>
