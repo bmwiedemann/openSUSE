@@ -2,15 +2,15 @@
 Tue Mar 18 18:15:41 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Fix CVE-2024-45338, CVE-2025-22870, CVE-2024-45337, CVE-2025-22869, CVE-2025-27144 CVE-2024-41110
-  * GO-2024-3333 CVE-2024-45338
-    GO-2025-3503 CVE-2025-22870:
+  * GO-2024-3333 CVE-2024-45338 (bsc#1234794)
+    GO-2025-3503 CVE-2025-22870 (bsc#1238611):
     Update to: golang.org/x/net@v0.36.0
-  * GO-2024-3321 CVE-2024-45337
+  * GO-2024-3321 CVE-2024-45337 (bsc#1234595)
     GO-2025-3487 CVE-2025-22869 (bsc#1239341):
     Update to: golang.org/x/crypto@v0.35.0
   * GO-2025-3485 CVE-2025-27144 (bsc#1237679):
     Update to: github.com/go-jose/go-jose/v3@v3.0.4
-  * GO-2024-3005 CVE-2024-41110:
+  * GO-2024-3005 CVE-2024-41110 (bsc#1228324):
     Update to: github.com/docker/docker@v25.0.6+incompatible
 
 -------------------------------------------------------------------

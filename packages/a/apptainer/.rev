@@ -377,4 +377,12 @@
     Update to: github.com/docker/docker@v25.0.6+incompatible (forwarded request 1254220 from eeich)</comment>
     <requestid>1254221</requestid>
   </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>32ac679e89b366425bb67a8f3664e67b</srcmd5>
+    <version>1.3.6</version>
+    <time>1742584922</time>
+    <user>anag+factory</user>
+    <comment>* GO-2024-3321 CVE-2024-45337 (bsc#1234595) (forwarded request 1254798 from eeich)</comment>
+    <requestid>1254799</requestid>
+  </revision>
 </revisionlist>
