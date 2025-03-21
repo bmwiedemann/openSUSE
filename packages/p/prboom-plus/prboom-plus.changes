@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 20 21:26:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Deactivate libpcre integration. This disables the command line
+  option `-auto`, which was used for for autoloading WADs according
+  to the LMP demo file name.
+
+-------------------------------------------------------------------
 Sun Nov  3 00:28:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add gcc14.diff

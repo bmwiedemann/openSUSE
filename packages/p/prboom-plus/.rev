@@ -179,4 +179,14 @@ Can't really provide infinitely many versions!</comment>
     <comment>- Add gcc14.diff</comment>
     <requestid>1220373</requestid>
   </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>def34664eccc3297ca869e2dfe6622d5</srcmd5>
+    <version>2.6.66</version>
+    <time>1742584944</time>
+    <user>anag+factory</user>
+    <comment>- Deactivate libpcre integration. This disables the command line
+  option `-auto`, which was used for for autoloading WADs according
+  to the LMP demo file name.</comment>
+    <requestid>1254844</requestid>
+  </revision>
 </revisionlist>

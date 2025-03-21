@@ -1,7 +1,7 @@
 #
 # spec file for package prboom-plus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,17 +32,16 @@ Patch5:         gcc14.diff
 BuildRequires:  Mesa-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  fluidsynth-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
-BuildRequires:  libvorbis-devel
-BuildRequires:  pcre-devel
-BuildRequires:  portmidi-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_net)
+BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(portmidi)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(vorbis)
 Suggests:       freedoom
 Provides:       prboom = 2.6um
 Obsoletes:      prboom <= 2.6
