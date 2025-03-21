@@ -253,4 +253,14 @@ I have fixed the issues from the previous submit requests.</comment>
     <comment></comment>
     <requestid>1199596</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>cbcde6ed9ca497a772a636f0a813c71b</srcmd5>
+    <version>1.21.6</version>
+    <time>1742584970</time>
+    <user>anag+factory</user>
+    <comment>- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+
+- Update to 1.21.4 (forwarded request 1254877 from sfalken)</comment>
+    <requestid>1254941</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package blosc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ License:        BSD-2-Clause AND BSD-3-Clause AND MIT
 Group:          Productivity/Archiving/Compression
 URL:            https://www.blosc.org/
 Source:         https://github.com/Blosc/c-blosc/archive/v%{version}.tar.gz#/c-blosc-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
@@ -77,7 +77,8 @@ for %{libname}.
   -DPREFER_EXTERNAL_ZLIB:BOOL=ON \
   -DPREFER_EXTERNAL_ZSTD:BOOL=ON \
   -DPREFER_EXTERNAL_LZ4:BOOL=ON \
-  -DBUILD_STATIC:BOOL=OFF
+  -DBUILD_STATIC:BOOL=OFF \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install

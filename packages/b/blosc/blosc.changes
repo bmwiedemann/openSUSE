@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 21 00:02:12 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+
+-------------------------------------------------------------------
 Sun Sep  8 02:18:11 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 1.21.6
@@ -15,7 +20,7 @@ Mon Sep  4 19:04:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Aug  4 19:02:49 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
 
-- Update to 1.21.4 
+- Update to 1.21.4
   * Upgrade internal-complib zstd from 1.5.2 to 1.5.5.
   * Zlib updated to 1.2.13.
 - remove fix of moving pkgconfig file to correct location, it have been fixed upstrem
