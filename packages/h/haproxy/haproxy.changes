@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Mar 21 13:41:55 UTC 2025 - mrueckert@suse.de
+
+- Update to version 3.1.6+git0.d929ca290:
+  * [RELEASE] Released version 3.1.6
+  * BUILD: tools: avoid a build warning on gcc-4.8 in resolve_sym_name()
+  * MINOR: tools: teach resolve_sym_name() a few more common symbols
+  * MINOR: tools: ease the declaration of known symbols in resolve_sym_name()
+  * MINOR: tools: improve symbol resolution without dl_addr
+  * MINOR: cli: export cli_io_handler() to ease symbol resolution
+  * BUG/MEDIUM: stream: don't use localtime in dumps from a signal handler
+  * MINOR: tinfo: split the signal handler report flags into 3
+  * IMPORT: plock: use cpu_relax() for a shorter time in EBO
+  * IMPORT: plock: lower the slope of the exponential back-off
+  * IMPORT: plock: give higher precedence to W than S
+  * BUG/MINOR: mux-h2: Reset streams with NO_ERROR code if full response was already sent
+  * BUG/MEDIUM: hlua/cli: fix cli applet UAF in hlua_applet_wakeup()
+  * BUG/MINOR: limits: compute_ideal_maxconn: don't cap remain if fd_hard_limit=0
+  * BUILD: tools: silence a build warning when USE_THREAD=0
+  * MINOR: tools: use only opportunistic symbols resolution
+  * BUG/MINOR: stats: fix capabilities and hide settings for some generic metrics
+  * DOC: management: rename some last occurences from domain "dns" to "resolvers"
+  * MINOR: compiler: add a new __decl_thread_var() macro to declare local variables
+  * MINOR: compiler: add a simple macro to concatenate resolved strings
+  * BUG/MEDIUM: thread: use pthread_self() not ha_pthread[tid] in set_affinity
+  * MINOR: startup: adjust alert messages, when capabilities are missed
+  * BUG/MINOR: cfgparse-tcp: relax namespace bind check
+  * MINOR: stream/cli: make "show sess" support filtering on front/back/server
+  * MINOR: stream/cli: rework "show sess" to better consider optional arguments
+  * BUG/MINOR: stream: fix age calculation in "show sess" output
+  * MINOR: cfgparse/peers: provide more info when ignoring invalid "peer" or "server" lines
+  * BUG/MINOR: server: dont return immediately from parse_server() when skipping checks
+  * BUG/MINOR: cfgparse/peers: properly handle ignored local peer case
+  * BUG/MINOR: cfgparse/peers: fix inconsistent check for missing peer server
+  * BUG/MEIDUM: startup: return to initial cwd only after check_config_validity()
+  * BUG/MINOR: log: set proper smp size for balance log-hash
+  * CLEANUP: log: removing "log-balance" references
+  * CI: github: fix h2spec.config proxy names
+  * TESTS: ist: fix wrong array size
+  * BUG/MINOR: server: check for either proxy-protocol v1 or v2 to send hedaer
+  * BUG/MEDIUM: mux-fcgi: Try to fully fill demux buffer on receive if not empty
+  * CLEANUP: h3: fix documentation of h3_rcv_buf()
+  * BUG/MINOR: h3: do not report transfer as aborted on preemptive response
+  * BUG/MINOR: server: fix the "server-template" prefix memory leak
+  * BUG/MEDIUM: server: properly initialize PROXY v2 TLVs
+  * BUG/MINOR: h2: always trim leading and trailing LWS in header values
+  * BUG/MEDIUM: stream: use non-blocking freq_ctr calls from the stream dumper
+  * MINOR: freq_ctr: provide non-blocking read functions
+  * BUG/MEDIUM: stream: never allocate connection addresses from signal handler
+  * MINOR: tinfo: add a new thread flag to indicate a call from a sig handler
+  * BUG/MINOR: mux-h1: always make sure h1s->sd exists in h1_dump_h1s_info()
+  * BUG/MINOR: stream: do not call co_data() from __strm_dump_to_buffer()
+  * MINOR: clock: always use atomic ops for global_now_ms
+  * BUG/MINOR: sink: add tempo between 2 connection attempts for sft servers
+  * BUG/MINOR: log: fix outgoing abns address family
+  * BUG/MEDIUM: uxst: fix outgoing abns address family in connect()
+  * BUG/MINOR: cfgparse: fix NULL ptr dereference in cfg_parse_peers
+
+-------------------------------------------------------------------
 Thu Mar 13 23:12:51 UTC 2025 - mrueckert@suse.de
 
 - Update to version 3.1.5+git0.076df0292:
