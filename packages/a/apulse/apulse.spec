@@ -1,7 +1,7 @@
 #
 # spec file for package apulse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Source3:        %{name}.conf
 # PATCH-FIX-OPENSUSE apulse-fix-pulse-13.patch seife+obs@b1-systems.com -- Fix PulseAudio 13+ compatibility.
 Patch0:         apulse-fix-pulse-13.patch
 %endif
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
@@ -50,7 +50,8 @@ PulseAudio emulation intended to be used with Firefox and Skype.
 %cmake \
   -DUSE_BUNDLED_PULSEAUDIO_HEADERS=OFF \
   -DAPULSEPATH=%{_libdir}/%{name}      \
-  -DCMAKE_SHARED_LINKER_FLAGS="" -LA
+  -DCMAKE_SHARED_LINKER_FLAGS="" -LA \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %make_build
 
 %install
@@ -58,6 +59,9 @@ PulseAudio emulation intended to be used with Firefox and Skype.
 rm %{buildroot}%{_libdir}/%{name}/libpulse*.so
 install -Dpm 0755 %{SOURCE2} %{buildroot}%{_bindir}/%{name}
 install -Dpm 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}.conf
+
+%check
+%ctest
 
 %post -p /sbin/ldconfig
 
