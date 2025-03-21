@@ -2185,7 +2185,6 @@
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia112"/>
-      <repopackage name="libLLVM18"/>
       <repopackage name="libLLVM19"/>
       <repopackage name="liblmdb-0_9_30"/>
       <repopackage name="libloader"/>
@@ -2724,10 +2723,8 @@
       <repopackage name="libsss_idmap0"/>
       <repopackage name="libstaroffice-0_0-0"/>
       <repopackage name="libstartup-notification-1-0"/>
-      <repopackage name="libstdc++-devel"/>
       <repopackage name="libstdc++6"/>
       <repopackage name="libstdc++6-32bit"/>
-      <repopackage name="libstdc++6-devel-gcc14"/>
       <repopackage name="libstdc++6-locale"/>
       <repopackage name="libstdc++6-pp"/>
       <repopackage name="libstdc++6-pp-32bit"/>
@@ -3593,11 +3590,9 @@
       <repopackage name="postfix"/>
       <repopackage name="postgresql"/>
       <repopackage name="postgresql-contrib"/>
-      <repopackage name="postgresql-llvmjit"/>
       <repopackage name="postgresql-server"/>
       <repopackage name="postgresql17"/>
       <repopackage name="postgresql17-contrib"/>
-      <repopackage name="postgresql17-llvmjit"/>
       <repopackage name="postgresql17-server"/>
       <repopackage name="pothana2000-fonts"/>
       <repopackage name="power-profiles-daemon"/>

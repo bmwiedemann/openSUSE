@@ -11436,6 +11436,7 @@ unsorted:
   - libLLVM15-32bit 
   - libLLVM17 
   - libLLVM17-32bit 
+  - libLLVM18 
   - libLLVM18-32bit 
   - libLLVM19-32bit 
   - libLLVMSPIRVLib-devel 
@@ -16548,11 +16549,13 @@ unsorted:
   - libstaroffice-tools 
   - libstatgrab-devel 
   - libstatgrab10 
+  - libstdc++-devel 
   - libstdc++-devel-32bit 
   - libstdc++6-devel-gcc12 
   - libstdc++6-devel-gcc12-32bit 
   - libstdc++6-devel-gcc13 
   - libstdc++6-devel-gcc13-32bit 
+  - libstdc++6-devel-gcc14 
   - libstdc++6-devel-gcc14-32bit 
   - libstdc++6-devel-gcc15 
   - libstdc++6-devel-gcc15-32bit 
@@ -23424,6 +23427,7 @@ unsorted:
   - postgresql-docs 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
+  - postgresql-llvmjit 
   - postgresql-llvmjit-devel 
   - postgresql-plperl 
   - postgresql-plpython 
@@ -23529,6 +23533,7 @@ unsorted:
   - postgresql17-devel-mini 
   - postgresql17-docs 
   - postgresql17-libversion 
+  - postgresql17-llvmjit 
   - postgresql17-llvmjit-devel 
   - postgresql17-orafce 
   - postgresql17-pg_cron 
