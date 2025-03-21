@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 21 07:07:39 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.36.2:
+  * fix: report-style short should not print out diff #1884
+  * fix: fix do not push empty unused suppressions #1882
+  * chore: Remove tree-sitter wasm facade 47b14fe
+  * Revert "chore: Remove tree-sitter wasm facade" a449617
+  * fix: remove optimize 7365a68
+
+-------------------------------------------------------------------
 Wed Mar 12 08:17:25 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.36.1:

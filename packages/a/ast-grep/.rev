@@ -823,4 +823,17 @@
   * perf: remove duplicate pattern match 6eba6d9</comment>
     <requestid>1252318</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>f30fa91096c46066154d64e09de80cbb</srcmd5>
+    <version>0.36.2</version>
+    <time>1742584967</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.36.2:
+  * fix: report-style short should not print out diff #1884
+  * fix: fix do not push empty unused suppressions #1882
+  * chore: Remove tree-sitter wasm facade 47b14fe
+  * Revert &quot;chore: Remove tree-sitter wasm facade&quot; a449617
+  * fix: remove optimize 7365a68</comment>
+    <requestid>1254919</requestid>
+  </revision>
 </revisionlist>
