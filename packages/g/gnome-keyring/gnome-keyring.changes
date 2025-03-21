@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 20 10:17:13 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-enable ssh-agent for now: the switch to gcr-ssh-agent seems
+  not to work without further work from the users. This needs to be
+  analyzed more before disabling this agent here (boo#1239816).
+  + Pass -Dssh-agent=true to meson
+  + Add openssh BuildRequires.
+
+
+-------------------------------------------------------------------
 Tue Mar 18 09:50:49 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 48.0:

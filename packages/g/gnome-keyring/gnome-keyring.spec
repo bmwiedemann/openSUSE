@@ -44,6 +44,7 @@ BuildRequires:  gtk-doc
 BuildRequires:  libgcrypt-devel >= 1.2.2
 BuildRequires:  libselinux-devel
 BuildRequires:  meson >= 1.0
+BuildRequires:  openssh
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -124,6 +125,7 @@ The PAM module can be used to unlock the keyring on login.
 
 %build
 %meson \
+       -Dssh-agent=true \
 	%{nil}
 %meson_build
 

@@ -1125,4 +1125,12 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
   comes from gcr-ssh-agent. (forwarded request 1254068 from dimstar)</comment>
     <requestid>1254091</requestid>
   </revision>
+  <revision rev="150" vrev="2">
+    <srcmd5>35f96f66a0614c37ba2a7fd5161bd033</srcmd5>
+    <version>48.0</version>
+    <time>1742584890</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254710</requestid>
+  </revision>
 </revisionlist>
