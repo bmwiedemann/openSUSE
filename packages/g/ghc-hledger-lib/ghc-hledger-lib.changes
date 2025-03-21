@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 13 07:42:41 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.42.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.42.1/src/CHANGES.md
+
+-------------------------------------------------------------------
 Fri Mar  7 17:17:45 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update hledger-lib to version 1.42.
