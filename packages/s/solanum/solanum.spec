@@ -1,7 +1,7 @@
 #
 # spec file for package solanum
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           solanum
-Version:        0~ch634
+Version:        0~ch670
 Release:        0
 Summary:        Scalable IRCv3.2 compliant chat daemon
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/IRC
 URL:            https://github.com/solanum-ircd/solanum
-
-Source:         %name-%version.tar.xz
+%define rev 1669c6406cea5092f5ac25634136341a92c6373b
+Source:         https://github.com/solanum-ircd/solanum/archive/%rev.tar.gz
+# git tag ch efe1f312b5e7e7fab9f713b92a96d7a2b14a5b64 (charybdis 4.1.2); git describe --tags => version
 Source9:        example.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -47,7 +48,7 @@ Charybdis server and has good documentation and ease of configuration.
 It is used by Libera, the largest (as of 2023) IRC network in the world.
 
 %prep
-%autosetup -p1 -n %name-%version
+%autosetup -p1 -n %name-%rev
 
 %build
 mkdir libltdl
@@ -60,15 +61,15 @@ autoreconf -fiv
 %install
 b="%buildroot"
 %make_install
-mv "$b/%_bindir"/* "$b/%_libexecdir/%name/"
+mv -v "$b/%_bindir"/* "$b/%_libexecdir/%name/"
 find "$b/%_libdir" -type f -name "*.la" -delete
 
 # Move config file samples/documentation out of the way
-mv "$b/%_sysconfdir/%name"/*.conf "$b/%_datadir/%name/"
+mv -v "$b/%_sysconfdir/%name"/*.conf "$b/%_datadir/%name/"
 # Place some config file that will make it run out of the box on localhost
-cp "%{S:9}" "$b/%_sysconfdir/%name/ircd.conf"
+cp -av "%{S:9}" "$b/%_sysconfdir/%name/ircd.conf"
 
-mkdir -p "$b/%_localstatedir/lib/solanum" \
+mkdir -pv "$b/%_localstatedir/lib/solanum" \
 	"$b/%_localstatedir/log/solanum" "$b/%_sbindir" \
 	"$b/%_unitdir" "$b/%_sysusersdir" "$b/%_tmpfilesdir"
 cat >"$b/%_unitdir/solanum.service" <<-EOF
@@ -85,10 +86,10 @@ cat >"$b/%_tmpfilesdir/solanum.conf" <<-EOF
 	d /run/%name 0755 solanum solanum -
 EOF
 echo 'u solanum - "Solanum ircd"' >system-user-solanum.conf
-cp -a system-user-solanum.conf "$b/%_sysusersdir/"
+cp -av system-user-solanum.conf "$b/%_sysusersdir/"
 %sysusers_generate_pre system-user-solanum.conf random system-user-solanum.conf
 # There are no headers installed, so the .pc and devel .so is useless
-rm -Rf "$b/%_libdir/pkgconfig" "$b/%_libdir/libratbox.so"
+rm -Rfv "$b/%_libdir/pkgconfig" "$b/%_libdir/libratbox.so"
 
 %pre -f random.pre
 %service_add_pre %name.service
