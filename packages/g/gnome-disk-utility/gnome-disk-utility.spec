@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-disk-utility
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,9 @@ BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(pwquality) >= 1.0.0
 BuildRequires:  pkgconfig(udisks2) >= 2.7.6
 Requires:       udisks2
+Recommends:     f2fs-tools
+Recommends:     udftools
+Recommends:     (exfatprogs or exfat-utils)
 
 %description
 The gnome-disk-utility project provides the Disks application for

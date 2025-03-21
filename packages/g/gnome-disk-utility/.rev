@@ -700,4 +700,13 @@
     <comment></comment>
     <requestid>1199437</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>4ad2b3c34f7184110eed66966e03e261</srcmd5>
+    <version>46.1</version>
+    <time>1742584902</time>
+    <user>anag+factory</user>
+    <comment>- Add (exfatprogs or exfat-utils), f2fs-tools and udftools
+  Recommends: Support formatting disks to exFAT, F2FS and UDF. (forwarded request 1254920 from iznogood)</comment>
+    <requestid>1254934</requestid>
+  </revision>
 </revisionlist>

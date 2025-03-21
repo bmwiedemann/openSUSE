@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 20 22:32:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add (exfatprogs or exfat-utils), f2fs-tools and udftools
+  Recommends: Support formatting disks to exFAT, F2FS and UDF.
+
+-------------------------------------------------------------------
 Tue Sep  3 12:13:09 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.1:
