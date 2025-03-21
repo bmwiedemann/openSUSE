@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar 20 14:18:31 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to mpfr 4.2.2
+  * In order to resolve a portability issue with the _Float128 fallback to
+    __float128 for binary128 support (e.g. with Clang and glibc 2.41), the
+    prototypes of the corresponding conversion functions had to be changed,
+    with _Float128 replaced by mpfr_float128, where mpfr_float128 is a
+    macro defined as _Float128 by default. This changes neither the ABI nor
+    the API (except that the end user of MPFR would need to define
+    mpfr_float128 as the actual type for the binary128 format if this is not
+    the standard _Float128 type).
+  * Other bug fixes (see the fixed bugs on the MPFR 4.2.1 page and/or the
+    ChangeLog file). In particular, the formatted output functions behaved
+    incorrectly with %c on the value 0; such a use is uncommon, but this bug
+    may have security implications.
+  * Improved MPFR manual.
+  * Detect the use of GMP's buggy vsnprintf replacement at configure time.
+    With it, the tests of "%a" will be disabled to avoid an assertion failure
+    in the MPFR testsuite. A warning will be displayed in the configure output
+    in such a case.
+
+-------------------------------------------------------------------
 Tue Aug 22 11:38:24 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Update to mpfr 4.2.1

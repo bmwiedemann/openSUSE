@@ -1,7 +1,7 @@
 #
 # spec file for package mpfr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mpfr
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        The GNU multiple-precision floating-point library
 License:        LGPL-3.0-or-later
@@ -56,7 +56,7 @@ Group:          Development/Libraries/C and C++
 Requires:       gmp-devel
 Requires:       libmpfr6 = %{version}
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 
 %description devel
 Development files for the GNU multiple-precision floating-point library.

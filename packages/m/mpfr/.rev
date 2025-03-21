@@ -625,4 +625,29 @@
     this is obsolescent in ISO C. The new test should be more robust.</comment>
     <requestid>1105275</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>b325b5bc3a9ef352f6fcbc1f75515730</srcmd5>
+    <version>4.2.2</version>
+    <time>1742584911</time>
+    <user>anag+factory</user>
+    <comment>- Update to mpfr 4.2.2
+  * In order to resolve a portability issue with the _Float128 fallback to
+    __float128 for binary128 support (e.g. with Clang and glibc 2.41), the
+    prototypes of the corresponding conversion functions had to be changed,
+    with _Float128 replaced by mpfr_float128, where mpfr_float128 is a
+    macro defined as _Float128 by default. This changes neither the ABI nor
+    the API (except that the end user of MPFR would need to define
+    mpfr_float128 as the actual type for the binary128 format if this is not
+    the standard _Float128 type).
+  * Other bug fixes (see the fixed bugs on the MPFR 4.2.1 page and/or the
+    ChangeLog file). In particular, the formatted output functions behaved
+    incorrectly with %c on the value 0; such a use is uncommon, but this bug
+    may have security implications.
+  * Improved MPFR manual.
+  * Detect the use of GMP's buggy vsnprintf replacement at configure time.
+    With it, the tests of &quot;%a&quot; will be disabled to avoid an assertion failure
+    in the MPFR testsuite. A warning will be displayed in the configure output
+    in such a case.</comment>
+    <requestid>1254755</requestid>
+  </revision>
 </revisionlist>
