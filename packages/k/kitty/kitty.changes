@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar 18 05:18:29 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.40.1:
+  * Do not count background processes by default for confirm_os_window_close
+    (#8358)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.confirm_os_window_close
+  * A new option clear_selection_on_clipboard_loss to clear selections when
+    they no longer reflect the contents of the clipboard
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.clear_selection_on_clipboard_loss
+  * Fix a regression in the previous release that caused empty lines to be
+    skipped when copying text from a selection (#8435)
+  * Fix flickering of hyperlink underline when client program continuously
+    redraws on mouse movement (#8414)
+  * Wayland: Allow overriding the kitty OS Window icon on compositors that
+    implement the xdg-toplevel-icon protocol
+  * macOS: When the program running in kitty reports progress information for
+    a task, show a progress bar on the kitty dock icon
+  * macOS: Fix a regression causing a crash when using focus_follows_mouse
+    (#8437)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.focus_follows_mouse
+  * OSC 52: Fix specifying both clipboard and primary in OSC 52 requests
+    not supported
+
+-------------------------------------------------------------------
 Sun Mar  9 00:29:14 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.40.0:
