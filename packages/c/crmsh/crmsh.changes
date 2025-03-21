@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 20 23:39:49 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250321.169fb42c:
+  * Update crmsh/idmgmt.py
+  * Dev: behave: Add functional test for previous commit
+  * Fix: idmgmt: Replace hashtag('#') with point('.') in id (bsc#1239782)
+
+-------------------------------------------------------------------
+Wed Mar 19 10:25:54 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250319.39f5be9f:
+  * Dev: testcases: Adjust original testcases for previous changes
+  * Dev: cibverify: Print output of crm_verify directly
+
+-------------------------------------------------------------------
 Wed Mar 19 05:33:58 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250319.96e9d2ea:
