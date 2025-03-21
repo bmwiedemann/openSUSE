@@ -31,7 +31,6 @@ BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 3.0
 BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(seq)
-BuildRequires:  ocamlfind(stdlib-shims)
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(threads)
 BuildRequires:  ocamlfind(unix)
@@ -55,9 +54,11 @@ Requires:       %name = %version
 Development files needed for application based on %name.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
+sed -i~ 's@stdlib-shims@@' src/lib/ounit2/advanced/dune
+diff -u "$_"~ "$_" && exit 1
 dune_release_pkgs='ounit,ounit2'
 %if %{with ocaml_lwt}
 dune_release_pkgs="${dune_release_pkgs},ounit-lwt,ounit2-lwt"
