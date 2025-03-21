@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 20 16:09:49 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Make container-selinux requirement conditional on selinux-policy
+  (bsc#1237367)
+
+-------------------------------------------------------------------
 Wed Feb 19 04:28:34 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 27.5.1-ce. See upstream changelog online at

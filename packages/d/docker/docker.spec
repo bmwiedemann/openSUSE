@@ -141,7 +141,7 @@ Recommends:     apparmor-parser
 Requires:       apparmor-parser
 %endif
 %else
-Requires:       container-selinux
+Requires:       (container-selinux if selinux-policy)
 %endif
 Requires:       ca-certificates-mozilla
 # The docker-proxy binary used to be in a separate package. We obsolete it,
