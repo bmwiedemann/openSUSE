@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-dns-google
-Version:        3.1.0
+Version:        3.3.0
 Release:        0
 Summary:        Google Cloud Authenticator plugin for Certbot
 License:        Apache-2.0
