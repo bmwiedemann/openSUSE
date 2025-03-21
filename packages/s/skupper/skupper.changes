@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Mar 07 17:32:01 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.0.0:
+  * Changelog
+    - Automate secret generation in network-observer chart
+    - Relabeling podman containers to allow v1 and v2 to coexist
+    - Add ensure-secret command to network observer
+    - Added install/uninstall system commands
+    - Site state serialized using flat structure (non-kube
+      platforms)
+    - Add ability to configure labels and annotations on created
+      resources
+    - Improved handing of conflict between multiple controllers
+    - Add means of configuring site sizing
+    - Cache the configured platform
+  * Fixes
+    - https://github.com/skupperproject/skupper/issues/1958
+    - https://github.com/skupperproject/skupper/issues/1897
+    - https://github.com/skupperproject/skupper/issues/1930
+    - https://github.com/skupperproject/skupper/issues/1979
+    - https://github.com/skupperproject/skupper/issues/1862
+    - https://github.com/skupperproject/skupper/issues/1956
+    - https://github.com/skupperproject/skupper/issues/1942
+
+-------------------------------------------------------------------
 Thu Jan 09 06:39:58 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.3:

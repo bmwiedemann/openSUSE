@@ -16,19 +16,18 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           skupper
-Version:        1.8.3
+Version:        2.0.0
 Release:        0
 Summary:        Virtual Application Network, enabling rich hybrid cloud communication
 License:        Apache-2.0
 URL:            https://github.com/skupperproject/skupper
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        generated.tar.gz
-Source3:        PACKAGING_README.md
+BuildRequires:  bash-completion
+BuildRequires:  fish
 BuildRequires:  go >= 1.22
+BuildRequires:  zsh
 
 %description
 Skupper enables cloud communication by enabling you to create a Virtual
@@ -53,9 +52,41 @@ requirements.
 Skupper does not require any special privileges, that is, you do not require
 the cluster-admin role to create networks.
 
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       fish
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
+
 %prep
 %autosetup -p 1 -a 1
-tar xvf %{SOURCE2}
 
 %build
 go build \
@@ -69,12 +100,33 @@ go build \
 # Install the binary.
 install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+%{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+
 %check
-go test -v -count=1 ./client
+%{buildroot}/%{_bindir}/%{name} version | grep 'cli.*%{version}'
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+
+%files -n %{name}-bash-completion
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files -n %{name}-fish-completion
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+%files -n %{name}-zsh-completion
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog
