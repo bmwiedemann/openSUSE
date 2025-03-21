@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 20 20:17:07 UTC 2025 - jason.record@suse.com
+
+- Changes to version 3.2.10
+  + network.txt collect all firewalld zones (pr#233)
+  + Collects gfs2 info (PED-11853, pr#235, pr#236)
+  + Ignore tasks/threads to prevent collecting duplicate fd data in open_files (bsc#1230371, pr#237)
+  + Added openldap2_5 support for SLES (pr#238)
+  + Collects additional hawk details (pr#239)
+  + Optimized filtering D/Z processes (pr#241)
+  + Collect firewalld permanent configuration (pr#243)
+  + ldap_info: support for multiple DBs and sanitize olcRootPW (bsc#1231838, pr#247)
+  + Added dbus_info for dbus.txt (bsc#1222650, pr#248)
+
+-------------------------------------------------------------------
 Tue Dec  3 22:09:11 UTC 2024 - jason.record@suse.com
 
 - Changes to version 3.2.9

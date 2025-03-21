@@ -354,4 +354,12 @@
     <comment>Fixed date order in change log (forwarded request 1228579 from jrecord)</comment>
     <requestid>1228580</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0f6f059571599f459c7c0c8d99b6b82d</srcmd5>
+    <version>3.2.10</version>
+    <time>1742584963</time>
+    <user>anag+factory</user>
+    <comment>PED-11853 bsc#1230371 bsc#1231838 bsc#1222650 (forwarded request 1254880 from jrecord)</comment>
+    <requestid>1254881</requestid>
+  </revision>
 </revisionlist>

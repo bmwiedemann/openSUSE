@@ -1,7 +1,7 @@
 #
 # spec file for package supportutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           supportutils
-Version:        3.2.9
+Version:        3.2.10
 Release:        0
 Summary:        Support Troubleshooting Tools
 License:        GPL-2.0-only
