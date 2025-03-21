@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>877297</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ad6f10f70defe4af44664183b8ee9302</srcmd5>
+    <version>1.1.0</version>
+    <time>1742584895</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * liblastfm-cmake4.patch</comment>
+    <requestid>1254754</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 20 14:33:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * liblastfm-cmake4.patch
+
+-------------------------------------------------------------------
 Thu Mar  4 20:58:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - fix version number (the existing tarball was actually tagged as 1.1.0) 

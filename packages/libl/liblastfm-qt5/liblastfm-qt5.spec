@@ -1,7 +1,7 @@
 #
 # spec file for package liblastfm-qt5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        1.1.0
 Release:        0
 Summary:        A Qt C++ Library for the Last.fm Webservices
 License:        GPL-3.0-or-later
-Group:          System/Libraries
 URL:            https://github.com/lastfm/liblastfm/
 Source:         https://github.com/lastfm/liblastfm/archive/%{version}.tar.gz
 Source1:        baselibs.conf
@@ -31,16 +30,17 @@ Patch0:         0001-Make-Qt5-build-default-and-simplify-logic-add-missin.patch
 Patch1:         0004-Fix-build-with-Qt-5.11_beta3-drop-qt5_use_modules.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-Stick-to-c-14-for-liblastfm.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         liblastfm-cmake4.patch
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  libsamplerate-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Xml)
 
 %description
 liblastfm is a collection of libraries to help you integrate Last.fm services
@@ -49,7 +49,6 @@ by Last.fm staff.
 
 %package -n liblastfm5-1
 Summary:        A Qt C++ Library for the Last.fm Webservices
-Group:          System/Libraries
 
 %description -n liblastfm5-1
 liblastfm is a collection of libraries to help you integrate Last.fm services
@@ -58,7 +57,6 @@ by Last.fm staff.
 
 %package -n liblastfm_fingerprint5-1
 Summary:        A Qt C++ Library for the Last.fm Webservices
-Group:          System/Libraries
 
 %description -n liblastfm_fingerprint5-1
 liblastfm is a collection of libraries to help you integrate Last.fm services
@@ -67,14 +65,12 @@ by Last.fm staff.
 
 %package devel
 Summary:        Development Files for the Last.fm Webservices
-Group:          Development/Libraries/C and C++
 Requires:       liblastfm5-1 = %{version}
 Requires:       liblastfm_fingerprint5-1 = %{version}
-Requires:       pkgconfig
-Requires:       pkgconfig(Qt5Core)
-Requires:       pkgconfig(Qt5DBus)
-Requires:       pkgconfig(Qt5Network)
-Requires:       pkgconfig(Qt5Xml)
+Requires:       cmake(Qt5Core)
+Requires:       cmake(Qt5DBus)
+Requires:       cmake(Qt5Network)
+Requires:       cmake(Qt5Xml)
 
 %description devel
 liblastfm is a collection of libraries to help you integrate Last.fm services
@@ -96,10 +92,8 @@ This package contains development files for liblastfm.
 %install
 %cmake_install
 
-%post -n liblastfm5-1 -p /sbin/ldconfig
-%postun -n liblastfm5-1 -p /sbin/ldconfig
-%post -n liblastfm_fingerprint5-1 -p /sbin/ldconfig
-%postun -n liblastfm_fingerprint5-1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n liblastfm5-1
+%ldconfig_scriptlets -n liblastfm_fingerprint5-1
 
 %files -n liblastfm5-1
 %license COPYING

@@ -1,0 +1,45 @@
+From fa1f755a80d2a52debd4de06c2ff2adcedb737c5 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Thu, 20 Mar 2025 15:29:40 +0100
+Subject: [PATCH] Make lastfm-qt5 compatible with CMake 4
+
+Required CMake versions older than 3.5 will throw errors.
+
+Bump the minimum version to 3.16
+---
+ CMakeLists.txt | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7e881e0..6e4535b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,11 @@
+-cmake_minimum_required(VERSION 2.8.6)
+-project(liblastfm)
++cmake_minimum_required(VERSION 3.16)
++
++set(LASTFM_MAJOR_VERSION "1")
++set(LASTFM_MINOR_VERSION "1")
++set(LASTFM_PATCH_VERSION "0")
++set(LASTFM_VERSION_STRING "${LASTFM_MAJOR_VERSION}.${LASTFM_MINOR_VERSION}.${LASTFM_PATCH_VERSION}")
++
++project(liblastfm VERSION ${LASTFM_VERSION_STRING})
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+ 
+@@ -7,11 +13,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+ set(LASTFM_SOVERSION 1)
+ set(LASTFM_VERSION "0x00010100")
+ 
+-set(LASTFM_MAJOR_VERSION "1")
+-set(LASTFM_MINOR_VERSION "1")
+-set(LASTFM_PATCH_VERSION "0")
+-set(LASTFM_VERSION_STRING "${LASTFM_MAJOR_VERSION}.${LASTFM_MINOR_VERSION}.${LASTFM_PATCH_VERSION}")
+-
+ # options
+ option(BUILD_FINGERPRINT "Build the lastfm-fingerprint library" ON)
+ option(BUILD_DEMOS "Build the lastfm example programs" OFF)
+-- 
+2.49.0
+
