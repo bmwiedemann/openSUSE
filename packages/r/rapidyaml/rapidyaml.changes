@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar  4 19:14:51 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.8.0 (boo#1238562):
+  * deserialization bug fixes
+  * portability improvements
+  * add handling of Byte Order Marks
+  * fix emit of explicit keys when indented
+- includes changes from 0.7.2:
+  * fix test failures with g++14 -O2 in ppc64le
+- includes changes from 0.7.1:
+  * Add version functions and macros
+- includes changes from 0.7.0:
+  * parser refactoring
+  * append-emitting to existing containers in the emitrs_ functions
+  * add depth query methods
+  * add a function to estimate the required tree capacity, based
+    on yaml markup
+- includes changes from 0.6.0:
+  * improved error handling
+
+-------------------------------------------------------------------
 Mon Jan  2 09:28:09 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 0.5.0

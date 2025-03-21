@@ -2,6 +2,7 @@
 # spec file for package rapidyaml
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +17,10 @@
 #
 
 
+%define sover_ryml 0_8_0
+%define sover_c4core 0_2_5
 Name:           rapidyaml
-Version:        0.5.0
+Version:        0.8.0
 Release:        0
 Summary:        A library to parse and emit YAML
 License:        MIT
@@ -32,18 +35,18 @@ BuildRequires:  git
 %description
 ryml is a C++ library to parse and emit YAML.
 
-%package -n libc4core0_1_11
+%package -n libc4core%{sover_c4core}
 Summary:        Utility library of rapidyaml
 Group:          System/Libraries
 
-%description -n libc4core0_1_11
+%description -n libc4core%{sover_c4core}
 ryml is a C++ library to parse and emit YAML.
 
-%package -n libryml0_5_0
+%package -n libryml%{sover_ryml}
 Summary:        A library to parse and emit YAML
 Group:          System/Libraries
 
-%description -n libryml0_5_0
+%description -n libryml%{sover_ryml}
 ryml is a C++ library to parse and emit YAML.
 
 ryml parses both read-only and in-situ source buffers; the resulting
@@ -53,8 +56,8 @@ string copies or duplications are done.
 %package devel
 Summary:        Header files for rapidyaml, a library to parse and emit YAML
 Group:          Development/Libraries/C and C++
-Requires:       libc4core0_1_11 = %{version}-%{release}
-Requires:       libryml0_5_0 = %{version}-%{release}
+Requires:       libc4core%{sover_c4core} = %{version}-%{release}
+Requires:       libryml%{sover_ryml} = %{version}-%{release}
 
 %description devel
 ryml is a C++ library to parse and emit YAML.
@@ -71,21 +74,23 @@ This package contains development headers and examples.
 %install
 %cmake_install
 
-%post   -n libc4core0_1_11 -p /sbin/ldconfig
-%postun -n libc4core0_1_11 -p /sbin/ldconfig
-%post   -n libryml0_5_0 -p /sbin/ldconfig
-%postun -n libryml0_5_0 -p /sbin/ldconfig
+%check
+%ctest
 
-%files -n libc4core0_1_11
+%ldconfig_scriptlets -n libc4core%{sover_c4core}
+%ldconfig_scriptlets -n libryml%{sover_ryml}
+
+%files -n libc4core%{sover_c4core}
 %license LICENSE.txt
 %{_libdir}/libc4core.so.*
 
-%files -n libryml0_5_0
+%files -n libryml%{sover_ryml}
+%license LICENSE.txt
 %{_libdir}/libryml.so.*
 
 %files devel
-%doc README.md
 %license LICENSE.txt
+%doc README.md
 %{_includedir}/*
 %{_libdir}/cmake/c4core
 %{_libdir}/cmake/ryml
