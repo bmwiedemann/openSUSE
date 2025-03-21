@@ -1,7 +1,7 @@
 #
 # spec file for package ldns
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,11 +31,11 @@ Source2:        ldns.keyring
 Patch2:         ldns-1.8.4-swig-3.4.0.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  libopenssl-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  perl-Devel-CheckLib
 BuildRequires:  python3-devel
 BuildRequires:  swig
+BuildRequires:  pkgconfig(libssl)
 
 %description
 ldns is a C library that can be used for domain name system (DNS)
@@ -59,7 +59,7 @@ experimental software for current Internet Drafts.
 Summary:        Development files for ldns
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
-Requires:       openssl-devel
+Requires:       pkgconfig(libssl)
 
 %description devel
 ldns is a C library that can be used for domain name system (DNS)
@@ -119,8 +119,7 @@ LD_LIBRARY_PATH="../../lib:$LD_LIBRARY_PATH" perl \
 popd
 
 %install
-make DESTDIR=%{buildroot} \
-  install \
+%make_install \
   install-drill \
   install-examples
 

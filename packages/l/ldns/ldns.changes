@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  3 00:36:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Allow libressl to satisfy ldns-devel as well
+
+-------------------------------------------------------------------
 Mon Nov  4 11:08:29 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.8.4:

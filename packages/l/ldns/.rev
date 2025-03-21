@@ -409,4 +409,12 @@ Index: ldns-1.7.1.tar.gz.asc
 - ldns-1.8.4-swig-3.4.0.patch: fix build with Swig 3.4.0 [boo#1231584]</comment>
     <requestid>1220578</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5e4ea66057015163047e992c733dddad</srcmd5>
+    <version>1.8.4</version>
+    <time>1742584898</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254768</requestid>
+  </revision>
 </revisionlist>
