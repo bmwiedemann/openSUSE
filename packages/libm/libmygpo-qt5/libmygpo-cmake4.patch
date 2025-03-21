@@ -1,0 +1,43 @@
+From 6c2d3d6b94b469ffa116ec7b9655f89fb83eb469 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Thu, 20 Mar 2025 15:39:04 +0100
+Subject: [PATCH] Fix build with CMake 4
+
+Build fails if the required CMake version is older than 3.5
+---
+ CMakeLists.txt | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fa4b0cb..e82f7c2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,11 @@
+-cmake_minimum_required( VERSION 2.8.9 FATAL_ERROR )
++cmake_minimum_required( VERSION 3.16 FATAL_ERROR )
+ 
+-project( libmygpo-qt )
++set( MYGPO_QT_VERSION_MAJOR "1" )
++set( MYGPO_QT_VERSION_MINOR "1" )
++set( MYGPO_QT_VERSION_PATCH "0" )
++set( MYGPO_QT_VERSION "${MYGPO_QT_VERSION_MAJOR}.${MYGPO_QT_VERSION_MINOR}.${MYGPO_QT_VERSION_PATCH}" )
++
++project( libmygpo-qt VERSION ${MYGPO_QT_VERSION} )
+ 
+ set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+ set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII" )
+@@ -49,11 +54,6 @@ endif()
+ # (This will have no effect with CMake < 2.8)
+ # set(QT_USE_IMPORTED_TARGETS TRUE)
+ 
+-set( MYGPO_QT_VERSION_MAJOR "1" )
+-set( MYGPO_QT_VERSION_MINOR "1" )
+-set( MYGPO_QT_VERSION_PATCH "0" )
+-set( MYGPO_QT_VERSION "${MYGPO_QT_VERSION_MAJOR}.${MYGPO_QT_VERSION_MINOR}.${MYGPO_QT_VERSION_PATCH}" )
+-
+ set( MYGPO_QT_SONAME "${MYGPO_QT_VERSION_MAJOR}")
+ 
+ #Configure Version.h.in with the actual version number
+-- 
+2.49.0
+

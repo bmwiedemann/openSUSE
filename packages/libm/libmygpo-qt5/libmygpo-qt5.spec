@@ -1,7 +1,7 @@
 #
 # spec file for package libmygpo-qt5
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,15 +21,15 @@ Version:        1.1.0
 Release:        0
 Summary:        Qt Library that wraps the gpodder.net Web API
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            http://wiki.gpodder.org/wiki/Libmygpo-qt
 Source0:        http://stefan.derkits.at/files/libmygpo-qt/libmygpo-qt.%{version}.tar.gz
 # PATCH-FIX-UPSTREAM -- fix-build-with-qt-5_11.patch
 Patch0:         fix-build-with-qt-5_11.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         libmygpo-cmake4.patch
 BuildRequires:  cmake
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Network)
 
 %description
 libmygpo-qt5 is a Qt Library that wraps the gpodder.net Web API (http://wiki.gpodder.org/wiki/Web_Services/API_2)
@@ -40,8 +40,6 @@ v1.0 wraps nearly every Request from the gpodder.net API except:
 
 %package -n libmygpo-qt5-1
 Summary:        Qt Library that wraps the gpodder.net Web API
-Group:          Development/Libraries/C and C++
-URL:            http://wiki.gpodder.org/wiki/Libmygpo-qt
 
 %description -n libmygpo-qt5-1
 libmygpo-qt5 is a Qt Library that wraps the gpodder.net Web API (http://wiki.gpodder.org/wiki/Web_Services/API_2)
@@ -52,8 +50,6 @@ v1.0 wraps nearly every Request from the gpodder.net API except:
 
 %package devel
 Summary:        Qt Library that wraps the gpodder.net Web API
-Group:          Development/Libraries/C and C++
-URL:            http://wiki.gpodder.org/wiki/Libmygpo-qt
 Requires:       libmygpo-qt5-1 = %{version}
 
 %description devel
@@ -67,14 +63,14 @@ v1.0 wraps nearly every Request from the gpodder.net API except:
 %autosetup -p1 -n libmygpo-qt.%{version}
 
 %build
-  %cmake -DMYGPO_BUILD_TESTS=OFF -DINCLUDE_INSTALL_DIR=%{_includedir}/mygpo-qt5/
-  %make_jobs
+%cmake -DMYGPO_BUILD_TESTS=OFF -DINCLUDE_INSTALL_DIR=%{_includedir}/mygpo-qt5/
+
+%cmake_build
 
 %install
 %cmake_install
 
-%post -n libmygpo-qt5-1 -p /sbin/ldconfig
-%postun -n libmygpo-qt5-1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libmygpo-qt5-1
 
 %files devel
 %license LICENSE

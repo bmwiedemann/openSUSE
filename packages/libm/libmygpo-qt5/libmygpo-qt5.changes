@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 20 14:39:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * libmygpo-cmake4.patch
+
+-------------------------------------------------------------------
 Thu May 24 20:54:06 UTC 2018 - christophe@krop.fr
 
 - Add fix-build-with-qt-5_11.patch to fix build with Qt >= 5.11
