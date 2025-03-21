@@ -2220,4 +2220,14 @@ New stable rel</comment>
   patches. (forwarded request 1254073 from iznogood)</comment>
     <requestid>1254077</requestid>
   </revision>
+  <revision rev="247" vrev="1">
+    <srcmd5>31b9d9b3ec539039422d5ca65d6d5737</srcmd5>
+    <version>48.0+5</version>
+    <time>1742584905</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-cursor-Unify-prepare_func-for-shape-cursors.patch.
+  Solves the problem of changing the size of the cursor in gtk 
+  applications on HiDPI displays. (forwarded request 1254938 from Dead_Mozay)</comment>
+    <requestid>1254940</requestid>
+  </revision>
 </revisionlist>
