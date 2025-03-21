@@ -24,7 +24,7 @@ Summary:        A Program That Lists Information about Files Opened by Processes
 License:        Zlib
 Group:          System/Monitoring
 URL:            https://github.com/lsof-org/lsof
-Source:         https://github.com/lsof-org/lsof/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/lsof-org/lsof/releases/download/%{version}/lsof-%{version}.tar.gz
 Patch3:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake

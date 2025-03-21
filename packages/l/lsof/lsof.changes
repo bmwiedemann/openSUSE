@@ -2,7 +2,7 @@
 Tue Mar  4 20:17:45 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 4.99.4:
-  * In lsof manapge: mention /etc/services for -P option
+  * In lsof manpage: mention /etc/services for -P option
   * Fix typos in docs
   * Linux 6.9 changed the pidfs appearence in procfs. Try to
     maintain original output in lsof (bsc#1224285)
