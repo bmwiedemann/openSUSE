@@ -390,4 +390,14 @@
     <comment>include version in pdf (forwarded request 1250056 from mslacken)</comment>
     <requestid>1250057</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>4ff9663efe2a393b8d549cdedf49bf73</srcmd5>
+    <version>4.6.0</version>
+    <time>1742584918</time>
+    <user>anag+factory</user>
+    <comment>- added udev-regression.patch to take care of bsc#1226654
+- renamed package warewulf-reference to warewulf-reference-doc
+  for better package description (forwarded request 1254974 from mslacken)</comment>
+    <requestid>1254983</requestid>
+  </revision>
 </revisionlist>

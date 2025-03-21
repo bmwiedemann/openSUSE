@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 19 13:04:30 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- added security-fixes.patch which fixes
+  * CVE-2025-22869 bsc#1239322
+  * CVE-2025-22870 bsc#1238611
+- added udev-regression.patch to take care of bsc#1226654
+- renamed package warewulf-reference to warewulf-reference-doc
+  for better package description
+
+-------------------------------------------------------------------
 Mon Mar 03 09:21:05 UTC 2025 - cgoll@suse.com
 
 - updated to 4.6.0 which is without any functional changes to 4.6.0rc3

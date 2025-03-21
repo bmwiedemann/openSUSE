@@ -43,12 +43,14 @@ Source11:       adjust_overlays.sh
 Source20:       README.dnsmasq
 Source21:       README.RKE2.md
 Patch0:         fixup-pdf-build.patch
+Patch1:         security-fixes.patch
+Patch2:         udev-regression.patch
 
 BuildRequires:  %{python_module Sphinx-latex}
 BuildRequires:  distribution-release
 BuildRequires:  dracut
 BuildRequires:  firewalld
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23
 BuildRequires:  golang-packaging
 BuildRequires:  graphviz
 BuildRequires:  iproute2
@@ -101,12 +103,12 @@ BuildArch:      noarch
 %description man
 Man pages for warewulf4.
 
-%package reference
+%package reference-doc
 Supplements:    %{name} = %version
 Summary:        Warewulf4 Reference book
 BuildArch:      noarch
 
-%description reference
+%description reference-doc
 Reference documentation for warewulf4.
 
 %package overlay-slurm
@@ -332,7 +334,7 @@ fi
 %dir %{_prefix}/lib/dracut/modules.d/90wwinit
 %{_prefix}/lib/dracut/modules.d/90wwinit/*.sh
 
-%files reference
+%files reference-doc
 %doc ./userdocs/_build/latex/warewulfuserguide.pdf
 
 %changelog

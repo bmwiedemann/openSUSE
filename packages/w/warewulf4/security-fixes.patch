@@ -1,0 +1,197 @@
+diff --git a/.github/workflows/check.yml b/.github/workflows/check.yml
+index 9bb395a2..179202ce 100644
+--- a/.github/workflows/check.yml
++++ b/.github/workflows/check.yml
+@@ -20,7 +20,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        go-version: ['1.22', '1.23']
++        go-version: ['1.23', '1.24']
+     steps:
+       - name: Checkout Warewulf
+         uses: actions/checkout@v4
+@@ -34,7 +34,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        go-version: ['1.22', '1.23']
++        go-version: ['1.23', '1.24']
+     steps:
+       - name: Checkout Warewulf
+         uses: actions/checkout@v4
+@@ -48,7 +48,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        go-version: ['1.22', '1.23']
++        go-version: ['1.23', '1.24']
+     steps:
+       - name: Checkout Warewulf
+         uses: actions/checkout@v4
+@@ -62,7 +62,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        go-version: ['1.22', '1.23']
++        go-version: ['1.23', '1.24']
+     steps:
+       - name: Checkout Warewulf
+         uses: actions/checkout@v4
+@@ -85,7 +85,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        go-version: ['1.22', '1.23']
++        go-version: ['1.23', '1.24']
+     steps:
+       - name: Checkout Warewulf
+         uses: actions/checkout@v4
+@@ -99,7 +99,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        go-version: ['1.22', '1.23']
++        go-version: ['1.23', '1.24']
+     steps:
+       - name: Checkout Warewulf
+         uses: actions/checkout@v4
+diff --git a/LICENSE_DEPENDENCIES.md b/LICENSE_DEPENDENCIES.md
+index 67446789..d0a1e5d7 100644
+--- a/LICENSE_DEPENDENCIES.md
++++ b/LICENSE_DEPENDENCIES.md
+@@ -495,7 +495,7 @@ The dependencies and their licenses are as follows:
+ 
+ **License:** BSD-3-Clause
+ 
+-**License URL:** <https://cs.opensource.google/go/x/crypto/+/v0.32.0:LICENSE>
++**License URL:** <https://cs.opensource.google/go/x/crypto/+/v0.35.0:LICENSE>
+ 
+ ## golang.org/x/exp/maps
+ 
+@@ -507,7 +507,7 @@ The dependencies and their licenses are as follows:
+ 
+ **License:** BSD-3-Clause
+ 
+-**License URL:** <https://cs.opensource.google/go/x/net/+/v0.33.0:LICENSE>
++**License URL:** <https://cs.opensource.google/go/x/net/+/v0.36.0:LICENSE>
+ 
+ ## golang.org/x/sync
+ 
+@@ -519,13 +519,13 @@ The dependencies and their licenses are as follows:
+ 
+ **License:** BSD-3-Clause
+ 
+-**License URL:** <https://cs.opensource.google/go/x/sys/+/v0.29.0:LICENSE>
++**License URL:** <https://cs.opensource.google/go/x/sys/+/v0.30.0:LICENSE>
+ 
+ ## golang.org/x/term
+ 
+ **License:** BSD-3-Clause
+ 
+-**License URL:** <https://cs.opensource.google/go/x/term/+/v0.28.0:LICENSE>
++**License URL:** <https://cs.opensource.google/go/x/term/+/v0.29.0:LICENSE>
+ 
+ ## golang.org/x/text
+ 
+diff --git a/Tools.mk b/Tools.mk
+index 924bb2f2..16d39158 100644
+--- a/Tools.mk
++++ b/Tools.mk
+@@ -5,7 +5,7 @@ GO_TOOLS_BIN := $(addprefix $(TOOLS_BIN)/, $(notdir $(GO_TOOLS)))
+ GO_TOOLS_VENDOR := $(addprefix vendor/, $(GO_TOOLS))
+ 
+ GOLANGCI_LINT := $(TOOLS_BIN)/golangci-lint
+-GOLANGCI_LINT_VERSION := v1.63.4
++GOLANGCI_LINT_VERSION := v1.64.8
+ 
+ GOLANG_DEADCODE := $(TOOLS_BIN)/deadcode
+ 
+@@ -39,7 +39,7 @@ $(GOLANGCI_LINT):
+ 	curl -qq -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(TOOLS_BIN) $(GOLANGCI_LINT_VERSION)
+ 
+ $(GOLANG_DEADCODE):
+-	GOBIN="$(PWD)/$(TOOLS_BIN)" go install golang.org/x/tools/cmd/deadcode@v0.24.0
++	GOBIN="$(PWD)/$(TOOLS_BIN)" go install golang.org/x/tools/cmd/deadcode@v0.31.0
+ 
+ $(PROTOC): $(TOOLS_DIR)
+ 	cd $(TOOLS_DIR) && curl -LO $(PROTOC_URL) && unzip -o $(notdir $(PROTOC_URL))
+diff --git a/go.mod b/go.mod
+index 6206cd42..d9e1bafb 100644
+--- a/go.mod
++++ b/go.mod
+@@ -1,8 +1,8 @@
+ module github.com/warewulf/warewulf
+ 
+-go 1.22.0
++go 1.23.0
+ 
+-toolchain go1.22.9
++toolchain go1.24.1
+ 
+ require (
+ 	dario.cat/mergo v1.0.1
+@@ -28,8 +28,8 @@ require (
+ 	github.com/spf13/cobra v1.8.1
+ 	github.com/stretchr/testify v1.10.0
+ 	github.com/talos-systems/go-smbios v0.1.1
+-	golang.org/x/sys v0.29.0
+-	golang.org/x/term v0.28.0
++	golang.org/x/sys v0.30.0
++	golang.org/x/term v0.29.0
+ 	google.golang.org/genproto/googleapis/api v0.0.0-20250204164813-702378808489
+ 	google.golang.org/grpc v1.70.0
+ 	google.golang.org/protobuf v1.36.5
+@@ -137,9 +137,9 @@ require (
+ 	go.opentelemetry.io/otel v1.32.0 // indirect
+ 	go.opentelemetry.io/otel/metric v1.32.0 // indirect
+ 	go.opentelemetry.io/otel/trace v1.32.0 // indirect
+-	golang.org/x/crypto v0.32.0 // indirect
++	golang.org/x/crypto v0.35.0 // indirect
+ 	golang.org/x/exp v0.0.0-20241217172543-b2144cdd0a67 // indirect
+-	golang.org/x/net v0.33.0 // indirect
++	golang.org/x/net v0.36.0 // indirect
+ 	golang.org/x/sync v0.11.0 // indirect
+ 	golang.org/x/text v0.22.0 // indirect
+ 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250204164813-702378808489 // indirect
+diff --git a/go.sum b/go.sum
+index 4138cb41..feaddc95 100644
+--- a/go.sum
++++ b/go.sum
+@@ -418,8 +418,8 @@ golang.org/x/crypto v0.0.0-20190426145343-a29dc8fdc734/go.mod h1:yigFU9vqHzYiE8U
+ golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550/go.mod h1:yigFU9vqHzYiE8UmvKecakEJjdnWj3jj499lnFckfCI=
+ golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=
+ golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=
+-golang.org/x/crypto v0.32.0 h1:euUpcYgM8WcP71gNpTqQCn6rC2t6ULUPiOzfWaXVVfc=
+-golang.org/x/crypto v0.32.0/go.mod h1:ZnnJkOaASj8g0AjIduWNlq2NRxL0PlBrbKVyZ6V/Ugc=
++golang.org/x/crypto v0.35.0 h1:b15kiHdrGCHrP6LvwaQ3c03kgNhhiMgvlhxHQhmg2Xs=
++golang.org/x/crypto v0.35.0/go.mod h1:dy7dXNW32cAb/6/PRuTNsix8T+vJAqvuIy5Bli/x0YQ=
+ golang.org/x/exp v0.0.0-20190121172915-509febef88a4/go.mod h1:CJ0aWSM057203Lf6IL+f9T1iT9GByDxfZKAQTCR3kQA=
+ golang.org/x/exp v0.0.0-20241217172543-b2144cdd0a67 h1:1UoZQm6f0P/ZO0w1Ri+f+ifG/gXhegadRdwBIXEFWDo=
+ golang.org/x/exp v0.0.0-20241217172543-b2144cdd0a67/go.mod h1:qj5a5QZpwLU2NLQudwIN5koi3beDhSAlJwa67PuM98c=
+@@ -437,8 +437,8 @@ golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3/go.mod h1:t9HGtf8HONx5eT2rtn
+ golang.org/x/net v0.0.0-20190620200207-3b0461eec859/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
+ golang.org/x/net v0.0.0-20200226121028-0de0cce0169b/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
+ golang.org/x/net v0.0.0-20201021035429-f5854403a974/go.mod h1:sp8m0HH+o8qH0wwXwYZr8TS3Oi6o0r6Gce1SSxlDquU=
+-golang.org/x/net v0.33.0 h1:74SYHlV8BIgHIFC/LrYkOGIwL19eTYXQ5wc6TBuO36I=
+-golang.org/x/net v0.33.0/go.mod h1:HXLR5J+9DxmrqMwG9qjGCxZ+zKXxBru04zlTvWlWuN4=
++golang.org/x/net v0.36.0 h1:vWF2fRbw4qslQsQzgFqZff+BItCvGFQqKzKIzx1rmoA=
++golang.org/x/net v0.36.0/go.mod h1:bFmbeoIPfrw4sMHNhb4J9f6+tPziuGjq7Jk/38fxi1I=
+ golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod h1:N/0e6XlmueqKjAGxoOufVs8QHGRruUQn6yWY3a++T0U=
+ golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+ golang.org/x/sync v0.0.0-20181108010431-42b317875d0f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+@@ -465,10 +465,10 @@ golang.org/x/sys v0.0.0-20220310020820-b874c991c1a5/go.mod h1:oPkhp1MJrh7nUepCBc
+ golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+-golang.org/x/sys v0.29.0 h1:TPYlXGxvx1MGTn2GiZDhnjPA9wZzZeGKHHmKhHYvgaU=
+-golang.org/x/sys v0.29.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+-golang.org/x/term v0.28.0 h1:/Ts8HFuMR2E6IP/jlo7QVLZHggjKQbhu/7H0LJFr3Gg=
+-golang.org/x/term v0.28.0/go.mod h1:Sw/lC2IAUZ92udQNf3WodGtn4k/XoLyZoh8v/8uiwek=
++golang.org/x/sys v0.30.0 h1:QjkSwP/36a20jFYWkSue1YwXzLmsV5Gfq7Eiy72C1uc=
++golang.org/x/sys v0.30.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
++golang.org/x/term v0.29.0 h1:L6pJp37ocefwRRtYPKSWOWzOtWSxVajvz2ldH/xi3iU=
++golang.org/x/term v0.29.0/go.mod h1:6bl4lRlvVuDgSf3179VpIxBF0o10JUpXWOnI7nErv7s=
+ golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+ golang.org/x/text v0.3.2/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=
+ golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
