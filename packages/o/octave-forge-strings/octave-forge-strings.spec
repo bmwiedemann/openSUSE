@@ -28,7 +28,7 @@ Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 Requires:       octave-cli >= 3.8.0
 
 %description
