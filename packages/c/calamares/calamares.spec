@@ -1,7 +1,7 @@
 #
 # spec file for package calamares
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ Patch8:         3.2-welcome.conf.patch
 Patch9:         3.2-networkcfg.patch
 Provides:       %{name}-libs%{_sover} = %{version}
 Obsoletes:      %{name}-libs%{_sover} < %{version}
-BuildRequires:  cmake >= 3.2
+BuildRequires:  cmake >= 3.5
 BuildRequires:  desktop-file-utils
 BuildRequires:  extra-cmake-modules >= 0.0.13
 BuildRequires:  gettext
@@ -160,7 +160,7 @@ cp -f %{SOURCE3} src/branding/default/
 find . -wholename "./src/modules/*/main.py" -exec sed -re "1s/^#\!\/usr\/bin\/env python3/#\!\/usr\/bin\/python3/" -i {} \;
 
 %build
-%cmake_kf5 -d build --  -DINSTALL_CONFIG=ON -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE:STRING="RelWithDebInfo" -DSKIP_MODULES="plasmalnf" -DBoost_NO_BOOST_CMAKE=ON
+%cmake_kf5 -d build --  -DINSTALL_CONFIG=ON -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE:STRING="RelWithDebInfo" -DSKIP_MODULES="plasmalnf" -DBoost_NO_BOOST_CMAKE=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
 %install
