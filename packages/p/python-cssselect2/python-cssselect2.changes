@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 20 09:11:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.8.0
+  * Drop support of Python 3.8 and 3.9, support 3.12 and 3.13
+  * Handle case-sensitive and case-insensitive attribute selectors
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
