@@ -6928,4 +6928,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.13.6 &amp; microcode loading fixed &amp; other fixes; bugs: bsc#1012628 bsc#1236660 bsc#1237521 bsc#1238209 bsc#1238303 bsc#1238570</comment>
     <requestid>1251716</requestid>
   </revision>
+  <revision rev="772" vrev="1">
+    <srcmd5>4d6ba044364232f839603c02e59d9ad9</srcmd5>
+    <version>6.13.7</version>
+    <time>1742584883</time>
+    <user>anag+factory</user>
+    <comment>6.13.7 &amp; ovpn added (but disabled -- problems indentified, pending fixes, retry next time) &amp; other fixes; bugs: bsc#1012628 bsc#1238204 bsc#1239783</comment>
+    <requestid>1254921</requestid>
+  </revision>
 </revisionlist>

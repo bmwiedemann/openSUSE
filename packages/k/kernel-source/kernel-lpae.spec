@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.13
-%define patchversion 6.13.6
-%define git_commit 495d82a1a03f1d56659b255899b9655e52efb4b0
+%define patchversion 6.13.7
+%define git_commit 5d0d0baed79de79311e5a5001dd4b3e1b8901021
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -39,9 +39,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-lpae
-Version:        6.13.6
+Version:        6.13.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g495d82a
+Release:        <RELEASE>.g5d0d0ba
 %else
 Release:        0
 %endif
