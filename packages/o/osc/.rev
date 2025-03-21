@@ -1979,4 +1979,12 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
   primary_python version</comment>
     <requestid>1252399</requestid>
   </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>0734c53e6e235205ef1ecab5ffe890c1</srcmd5>
+    <version>1.14.0</version>
+    <time>1742584938</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254827</requestid>
+  </revision>
 </revisionlist>
