@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Mar 21 04:27:00 UTC 2025 - madhankumar.chellamuthu@suse.com
+
+- Update to version 0.8.5:
+  * build(deps): bump golang.org/x/net from 0.33.0 to 0.36.0
+  * build(deps): bump golang.org/x/mod from 0.22.0 to 0.24.0
+  * build(deps): bump golang.org/x/crypto from 0.32.0 to 0.36.0
+  * Fix lit error
+  * Upgrade to go '1.23.0'
+  * fix vfkit socket disposal
+  * Trim 'search' list field on macOS
+  * Remove filewatcher package
+  * build: Run go mod tidy
+  * gvproxy: command: Add AddServiceEndpoint
+  * Delete unused files and dependencies.
+  * Revert "Replace multiple "resolver.*" fn cals with single "dns.Exchange()" fn."
+  * OWNERS: Add Yevhen and Luca as approvers
+  * Add make target to enable debugger during test run
+  * build(deps): bump github.com/miekg/dns from 1.1.62 to 1.1.63
+  * test: upload and download tests against vfkit
+  * Use poll based file watcher
+  * doc: update doc with new services option
+  * Add --services flag to start API without using --listen flag
+  * Revert "Update ubuntu runner to 'ubuntu-24.04'"
+  * Watch /etc/resolv.conf changes
+  * Migrate HostFile to use the common filewatcher utility
+  * Extract out filewatcher functionality
+  * add back the generic test command and use it on gh workflow
+  * add build tag to vfkit test files
+  * Allow empty list of nameservers
+  * test: Add a test to check an already exposed port cannot be exposed again
+  * forwarder: Use distinct type for `proxies` map key
+  * Fix `PortsForwarder.Expose()` proxy check
+  * Update ubuntu runner to 'ubuntu-24.04'
+  * test: add basic tests for vfkit
+  * test: move test utils files to the test-utils folder
+  * Warn user and keep executing if Event Log Service is stopped
+  * build(deps): bump golang.org/x/crypto from 0.31.0 to 0.32.0
+  * build(deps): bump github.com/onsi/gomega from 1.36.0 to 1.36.2
+  * ghactions: Run `apt update` before installing packages
+  * build(deps): bump golang.org/x/sys from 0.28.0 to 0.29.0
+  * Fix error "-forward-sock" -> "--forward-sock"
+  * build(deps): bump golang.org/x/crypto from 0.29.0 to 0.31.0
+
+-------------------------------------------------------------------
 Mon Dec 16 07:28:46 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 0.8.1:
