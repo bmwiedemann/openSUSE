@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-sphinxcontrib-jsmath
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,8 @@ via JavaScript.
 
 %if %{with test}
 %check
-%pytest
+# test_disabled_when_equations_not_found fails with Sphinx 8.2 - https://github.com/sphinx-doc/sphinx/issues/13442
+%pytest -k "not test_disabled_when_equations_not_found"
 %endif
 
 %if !%{with test}
