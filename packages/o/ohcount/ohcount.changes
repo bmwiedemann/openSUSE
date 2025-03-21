@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 20 18:20:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- build with pcre2, add pcre2.patch based on Debian's patch
+
+-------------------------------------------------------------------
 Thu Mar 26 18:31:45 UTC 2020 - Erico Mendonca <erico.mendonca@suse.com>
 
 - test_null_pointer.patch: adding extra checks for NULL pointers to avoid segmentation faults.

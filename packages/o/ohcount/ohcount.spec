@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@ Name:           ohcount
 Version:        4.0.0
 Release:        0
 Summary:        The Ohloh source code line counter
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://www.openhub.net/p/ohcount
 
@@ -29,11 +29,12 @@ URL:            https://www.openhub.net/p/ohcount
 Source:         https://github.com/blackducksoftware/ohcount/archive/%version.tar.gz
 Patch0:         test_null_pointer.patch
 Patch1:         cflags.diff
+Patch2:         pcre2.patch
 BuildRequires:  bash
 BuildRequires:  file-devel
 BuildRequires:  gcc >= 4.1.2
 BuildRequires:  gperf
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  ragel >= 7
 BuildRequires:  swig
 BuildRequires:  xz
