@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 20 11:36:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add dropna.patch and timedelta.patch to fix tests with Numpy 2.2
+
+-------------------------------------------------------------------
 Thu Feb 20 11:23:33 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Support pyarrow 19

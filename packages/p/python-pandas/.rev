@@ -795,4 +795,12 @@ All packages broken by this update should be fixed now.</comment>
     string type system. (forwarded request 1247471 from bnavigator)</comment>
     <requestid>1247472</requestid>
   </revision>
+  <revision rev="76" vrev="6">
+    <srcmd5>76d1d36b7f9a6abe22235fb5c18ababf</srcmd5>
+    <version>2.2.3</version>
+    <time>1742584891</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254714</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,316 @@
+From 1e899afbd9ca20f4ce9d6f93e1f62c072be0ed23 Mon Sep 17 00:00:00 2001
+From: Gen Sato <52241300+halogen22@users.noreply.github.com>
+Date: Tue, 18 Mar 2025 01:33:40 +0900
+Subject: [PATCH] BUG: .mode(dropna=False) doesn't work with nullable integers
+ (#61132)
+
+* Fix dropna bug when mode
+
+* Fix test cases
+
+* Fix data type incompatible
+---
+ doc/source/whatsnew/v3.0.0.rst            |  1 +
+ pandas/_libs/hashtable_func_helper.pxi.in |  2 +-
+ pandas/core/algorithms.py                 | 12 +++---
+ pandas/core/arrays/base.py                |  5 ++-
+ pandas/core/arrays/categorical.py         |  2 +-
+ pandas/core/arrays/datetimelike.py        |  2 +-
+ pandas/core/arrays/masked.py              |  8 +---
+ pandas/core/series.py                     |  2 +-
+ pandas/tests/series/test_reductions.py    | 23 +++++++++++
+ pandas/tests/test_algos.py                | 47 +++++++++++++++--------
+ 10 files changed, 71 insertions(+), 33 deletions(-)
+
+Index: pandas-2.2.3/pandas/_libs/hashtable_func_helper.pxi.in
+===================================================================
+--- pandas-2.2.3.orig/pandas/_libs/hashtable_func_helper.pxi.in
++++ pandas-2.2.3/pandas/_libs/hashtable_func_helper.pxi.in
+@@ -443,7 +443,7 @@ def mode(ndarray[htfunc_t] values, bint
+ 
+     if na_counter > 0:
+         res_mask = np.zeros(j+1, dtype=np.bool_)
+-        res_mask[j] = True
++        res_mask[j] = (na_counter == max_count)
+     return modes[:j + 1], res_mask
+ 
+ 
+Index: pandas-2.2.3/pandas/core/algorithms.py
+===================================================================
+--- pandas-2.2.3.orig/pandas/core/algorithms.py
++++ pandas-2.2.3/pandas/core/algorithms.py
+@@ -1022,7 +1022,7 @@ def duplicated(
+ 
+ def mode(
+     values: ArrayLike, dropna: bool = True, mask: npt.NDArray[np.bool_] | None = None
+-) -> ArrayLike:
++) -> tuple[np.ndarray, npt.NDArray[np.bool_]] | ExtensionArray:
+     """
+     Returns the mode(s) of an array.
+ 
+@@ -1035,7 +1035,7 @@ def mode(
+ 
+     Returns
+     -------
+-    np.ndarray or ExtensionArray
++    Union[Tuple[np.ndarray, npt.NDArray[np.bool_]], ExtensionArray]
+     """
+     values = _ensure_arraylike(values, func_name="mode")
+     original = values
+@@ -1049,8 +1049,10 @@ def mode(
+     values = _ensure_data(values)
+ 
+     npresult, res_mask = htable.mode(values, dropna=dropna, mask=mask)
+-    if res_mask is not None:
+-        return npresult, res_mask  # type: ignore[return-value]
++    if res_mask is None:
++        res_mask = np.zeros(npresult.shape, dtype=np.bool_)
++    else:
++        return npresult, res_mask
+ 
+     try:
+         npresult = np.sort(npresult)
+@@ -1061,7 +1063,7 @@ def mode(
+         )
+ 
+     result = _reconstruct_data(npresult, original.dtype, original)
+-    return result
++    return result, res_mask
+ 
+ 
+ def rank(
+Index: pandas-2.2.3/pandas/core/arrays/base.py
+===================================================================
+--- pandas-2.2.3.orig/pandas/core/arrays/base.py
++++ pandas-2.2.3/pandas/core/arrays/base.py
+@@ -2270,8 +2270,9 @@ class ExtensionArray:
+             Sorted, if possible.
+         """
+         # error: Incompatible return value type (got "Union[ExtensionArray,
+-        # ndarray[Any, Any]]", expected "Self")
+-        return mode(self, dropna=dropna)  # type: ignore[return-value]
++        # Tuple[np.ndarray, npt.NDArray[np.bool_]]", expected "Self")
++        result, _ = mode(self, dropna=dropna)
++        return result  # type: ignore[return-value]
+ 
+     def __array_ufunc__(self, ufunc: np.ufunc, method: str, *inputs, **kwargs):
+         if any(
+Index: pandas-2.2.3/pandas/core/arrays/categorical.py
+===================================================================
+--- pandas-2.2.3.orig/pandas/core/arrays/categorical.py
++++ pandas-2.2.3/pandas/core/arrays/categorical.py
+@@ -2435,7 +2435,7 @@ class Categorical(NDArrayBackedExtension
+         if dropna:
+             mask = self.isna()
+ 
+-        res_codes = algorithms.mode(codes, mask=mask)
++        res_codes, _ = algorithms.mode(codes, mask=mask)
+         res_codes = cast(np.ndarray, res_codes)
+         assert res_codes.dtype == codes.dtype
+         res = self._from_backing_data(res_codes)
+Index: pandas-2.2.3/pandas/core/arrays/datetimelike.py
+===================================================================
+--- pandas-2.2.3.orig/pandas/core/arrays/datetimelike.py
++++ pandas-2.2.3/pandas/core/arrays/datetimelike.py
+@@ -1646,7 +1646,7 @@ class DatetimeLikeArrayMixin(  # type: i
+         if dropna:
+             mask = self.isna()
+ 
+-        i8modes = algorithms.mode(self.view("i8"), mask=mask)
++        i8modes, _ = algorithms.mode(self.view("i8"), mask=mask)
+         npmodes = i8modes.view(self._ndarray.dtype)
+         npmodes = cast(np.ndarray, npmodes)
+         return self._from_backing_data(npmodes)
+Index: pandas-2.2.3/pandas/core/arrays/masked.py
+===================================================================
+--- pandas-2.2.3.orig/pandas/core/arrays/masked.py
++++ pandas-2.2.3/pandas/core/arrays/masked.py
+@@ -1105,12 +1105,8 @@ class BaseMaskedArray(OpsMixin, Extensio
+         return Series(arr, index=index, name="count", copy=False)
+ 
+     def _mode(self, dropna: bool = True) -> Self:
+-        if dropna:
+-            result = mode(self._data, dropna=dropna, mask=self._mask)
+-            res_mask = np.zeros(result.shape, dtype=np.bool_)
+-        else:
+-            result, res_mask = mode(self._data, dropna=dropna, mask=self._mask)
+-        result = type(self)(result, res_mask)  # type: ignore[arg-type]
++        result, res_mask = mode(self._data, dropna=dropna, mask=self._mask)
++        result = type(self)(result, res_mask)
+         return result[result.argsort()]
+ 
+     @doc(ExtensionArray.equals)
+Index: pandas-2.2.3/pandas/core/series.py
+===================================================================
+--- pandas-2.2.3.orig/pandas/core/series.py
++++ pandas-2.2.3/pandas/core/series.py
+@@ -2328,7 +2328,7 @@ class Series(base.IndexOpsMixin, NDFrame
+         # TODO: Add option for bins like value_counts()
+         values = self._values
+         if isinstance(values, np.ndarray):
+-            res_values = algorithms.mode(values, dropna=dropna)
++            res_values, _ = algorithms.mode(values, dropna=dropna)
+         else:
+             res_values = values._mode(dropna=dropna)
+ 
+Index: pandas-2.2.3/pandas/tests/series/test_reductions.py
+===================================================================
+--- pandas-2.2.3.orig/pandas/tests/series/test_reductions.py
++++ pandas-2.2.3/pandas/tests/series/test_reductions.py
+@@ -51,6 +51,29 @@ def test_mode_nullable_dtype(any_numeric
+     tm.assert_series_equal(result, expected)
+ 
+ 
++def test_mode_nullable_dtype_edge_case(any_numeric_ea_dtype):
++    # GH##58926
++    ser = Series([1, 2, 3, 1], dtype=any_numeric_ea_dtype)
++    result = ser.mode(dropna=False)
++    expected = Series([1], dtype=any_numeric_ea_dtype)
++    tm.assert_series_equal(result, expected)
++
++    ser2 = Series([1, 1, 2, 3, pd.NA], dtype=any_numeric_ea_dtype)
++    result = ser2.mode(dropna=False)
++    expected = Series([1], dtype=any_numeric_ea_dtype)
++    tm.assert_series_equal(result, expected)
++
++    ser3 = Series([1, pd.NA, pd.NA], dtype=any_numeric_ea_dtype)
++    result = ser3.mode(dropna=False)
++    expected = Series([pd.NA], dtype=any_numeric_ea_dtype)
++    tm.assert_series_equal(result, expected)
++
++    ser4 = Series([1, 1, pd.NA, pd.NA], dtype=any_numeric_ea_dtype)
++    result = ser4.mode(dropna=False)
++    expected = Series([1, pd.NA], dtype=any_numeric_ea_dtype)
++    tm.assert_series_equal(result, expected)
++
++
+ def test_mode_infer_string():
+     # GH#56183
+     pytest.importorskip("pyarrow")
+Index: pandas-2.2.3/pandas/tests/test_algos.py
+===================================================================
+--- pandas-2.2.3.orig/pandas/tests/test_algos.py
++++ pandas-2.2.3/pandas/tests/test_algos.py
+@@ -1840,7 +1840,8 @@ class TestRank:
+ class TestMode:
+     def test_no_mode(self):
+         exp = Series([], dtype=np.float64, index=Index([], dtype=int))
+-        tm.assert_numpy_array_equal(algos.mode(np.array([])), exp.values)
++        result, _ = algos.mode(np.array([]))
++        tm.assert_numpy_array_equal(result, exp.values)
+ 
+     @pytest.mark.parametrize("dt", np.typecodes["AllInteger"] + np.typecodes["Float"])
+     def test_mode_single(self, dt):
+@@ -1853,20 +1854,24 @@ class TestMode:
+ 
+         ser = Series(data_single, dtype=dt)
+         exp = Series(exp_single, dtype=dt)
+-        tm.assert_numpy_array_equal(algos.mode(ser.values), exp.values)
++        result, _ = algos.mode(ser.values)
++        tm.assert_numpy_array_equal(result, exp.values)
+         tm.assert_series_equal(ser.mode(), exp)
+ 
+         ser = Series(data_multi, dtype=dt)
+         exp = Series(exp_multi, dtype=dt)
+-        tm.assert_numpy_array_equal(algos.mode(ser.values), exp.values)
++        result, _ = algos.mode(ser.values)
++        tm.assert_numpy_array_equal(result, exp.values)
+         tm.assert_series_equal(ser.mode(), exp)
+ 
+     def test_mode_obj_int(self):
+         exp = Series([1], dtype=int)
+-        tm.assert_numpy_array_equal(algos.mode(exp.values), exp.values)
++        result, _ = algos.mode(exp.values)
++        tm.assert_numpy_array_equal(result, exp.values)
+ 
+         exp = Series(["a", "b", "c"], dtype=object)
+-        tm.assert_numpy_array_equal(algos.mode(exp.values), exp.values)
++        result, _ = algos.mode(exp.values)
++        tm.assert_numpy_array_equal(result, exp.values)
+ 
+     @pytest.mark.parametrize("dt", np.typecodes["AllInteger"] + np.typecodes["Float"])
+     def test_number_mode(self, dt):
+@@ -1878,12 +1883,14 @@ class TestMode:
+ 
+         ser = Series(data_single, dtype=dt)
+         exp = Series(exp_single, dtype=dt)
+-        tm.assert_numpy_array_equal(algos.mode(ser.values), exp.values)
++        result, _ = algos.mode(ser.values)
++        tm.assert_numpy_array_equal(result, exp.values)
+         tm.assert_series_equal(ser.mode(), exp)
+ 
+         ser = Series(data_multi, dtype=dt)
+         exp = Series(exp_multi, dtype=dt)
+-        tm.assert_numpy_array_equal(algos.mode(ser.values), exp.values)
++        result, _ = algos.mode(ser.values)
++        tm.assert_numpy_array_equal(result, exp.values)
+         tm.assert_series_equal(ser.mode(), exp)
+ 
+     def test_strobj_mode(self):
+@@ -1892,7 +1899,8 @@ class TestMode:
+ 
+         ser = Series(data, dtype="c")
+         exp = Series(exp, dtype="c")
+-        tm.assert_numpy_array_equal(algos.mode(ser.values), exp.values)
++        result, _ = algos.mode(ser.values)
++        tm.assert_numpy_array_equal(result, exp.values)
+         tm.assert_series_equal(ser.mode(), exp)
+ 
+     @pytest.mark.parametrize("dt", [str, object])
+@@ -1902,7 +1910,8 @@ class TestMode:
+ 
+         ser = Series(data, dtype=dt)
+         exp = Series(exp, dtype=dt)
+-        tm.assert_numpy_array_equal(algos.mode(ser.values), exp.values)
++        result, _ = algos.mode(ser.values)
++        tm.assert_numpy_array_equal(result, exp.values)
+         tm.assert_series_equal(ser.mode(), exp)
+ 
+     def test_datelike_mode(self):
+@@ -1936,18 +1945,21 @@ class TestMode:
+     def test_mixed_dtype(self):
+         exp = Series(["foo"], dtype=object)
+         ser = Series([1, "foo", "foo"])
+-        tm.assert_numpy_array_equal(algos.mode(ser.values), exp.values)
++        result, _ = algos.mode(ser.values)
++        tm.assert_numpy_array_equal(result, exp.values)
+         tm.assert_series_equal(ser.mode(), exp)
+ 
+     def test_uint64_overflow(self):
+         exp = Series([2**63], dtype=np.uint64)
+         ser = Series([1, 2**63, 2**63], dtype=np.uint64)
+-        tm.assert_numpy_array_equal(algos.mode(ser.values), exp.values)
++        result, _ = algos.mode(ser.values)
++        tm.assert_numpy_array_equal(result, exp.values)
+         tm.assert_series_equal(ser.mode(), exp)
+ 
+         exp = Series([1, 2**63], dtype=np.uint64)
+         ser = Series([1, 2**63], dtype=np.uint64)
+-        tm.assert_numpy_array_equal(algos.mode(ser.values), exp.values)
++        result, _ = algos.mode(ser.values)
++        tm.assert_numpy_array_equal(result, exp.values)
+         tm.assert_series_equal(ser.mode(), exp)
+ 
+     def test_categorical(self):
+@@ -1969,15 +1981,18 @@ class TestMode:
+     def test_index(self):
+         idx = Index([1, 2, 3])
+         exp = Series([1, 2, 3], dtype=np.int64)
+-        tm.assert_numpy_array_equal(algos.mode(idx), exp.values)
++        result, _ = algos.mode(idx)
++        tm.assert_numpy_array_equal(result, exp.values)
+ 
+         idx = Index([1, "a", "a"])
+         exp = Series(["a"], dtype=object)
+-        tm.assert_numpy_array_equal(algos.mode(idx), exp.values)
++        result, _ = algos.mode(idx)
++        tm.assert_numpy_array_equal(result, exp.values)
+ 
+         idx = Index([1, 1, 2, 3, 3])
+         exp = Series([1, 3], dtype=np.int64)
+-        tm.assert_numpy_array_equal(algos.mode(idx), exp.values)
++        result, _ = algos.mode(idx)
++        tm.assert_numpy_array_equal(result, exp.values)
+ 
+         idx = Index(
+             ["1 day", "1 day", "-1 day", "-1 day 2 min", "2 min", "2 min"],

@@ -76,6 +76,10 @@ Source0:        pandas-%{version}.tar.gz
 Patch0:         https://github.com/pandas-dev/pandas/pull/60545.patch#/pandas-pr60545-arrow-exception.patch
 # PATCH-FIX-UPSTREAM pandas-pr60584-60586-mpl-vert.patch gh#pandas-dev/pandas#60584 gh#pandas-dev/pandas#60586
 Patch1:         https://github.com/pandas-dev/pandas/pull/60586.patch#/pandas-pr60584-60586-mpl-vert.patch
+# PATCH-FIX-UPSTREAM https://github.com/pandas-dev/pandas/pull/61132 BUG: .mode(dropna=False) doesn't work with nullable integers
+Patch2:         dropna.patch
+# PATCH-FIX-UPSTREAM https://github.com/pandas-dev/pandas/pull/60416 TST: Avoid hashing np.timedelta64 without unit
+Patch3:         timedelta.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}
