@@ -71,8 +71,6 @@ BuildRequires:  net-tools
 BuildRequires:  openssl-devel
 BuildRequires:  pari-devel
 BuildRequires:  pari-gp
-BuildRequires:  pcre-devel
-BuildRequires:  pcre2-devel
 BuildRequires:  postgresql-devel
 BuildRequires:  readline-devel
 BuildRequires:  screen
@@ -307,7 +305,6 @@ env -i HOME=$HOME TERM=$TERM PATH=$PATH TMPDIR=$TMPDIR \
     --with-module=gdbm		\
     --with-module=gtk2		\
     --with-module=pari		\
-    --with-module=pcre		\
     --with-module=rawsock	\
     --with-module=zlib		\
     --with-module=libsvm	\

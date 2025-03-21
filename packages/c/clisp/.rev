@@ -447,4 +447,12 @@ you may enable build for SLE &gt;= 10 (forwarded request 96955 from rudi_m)</com
   (note that kernel use UNIX_PATH_MAX)</comment>
     <requestid>1246407</requestid>
   </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>2a750f3566964471d1dba12224da9a34</srcmd5>
+    <version>2.49.93</version>
+    <time>1742584959</time>
+    <user>anag+factory</user>
+    <comment>- disable pcre module (boo#1201805) (forwarded request 1254846 from AndreasStieger)</comment>
+    <requestid>1254923</requestid>
+  </revision>
 </revisionlist>

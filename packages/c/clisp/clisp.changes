@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 20 21:25:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- disable pcre module (boo#1201805)
+
+-------------------------------------------------------------------
 Mon Feb 17 11:44:29 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Shorten path of screen configuration to shorten socket path as
