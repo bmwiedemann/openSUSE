@@ -1,13 +1,12 @@
 # http://pkgs.fedoraproject.org/cgit/perl-OpenGL.git/tree/
 patches:
   0001-Don-t-check-current-display-for-extensions.patch: -p1
-  OpenGL-0.6704-Prefer-system-GL-gl.h-on-non-Win32.patch: -p1
-  OpenGL-0.6704-Delete-functions-removed-from-Mesa.patch: -p1
 preamble: |-
  %if 0%{suse_version} >= 1500
  BuildRequires:  Mesa-dri
  %endif
  BuildRequires:  freeglut-devel
+ BuildRequires:  gcc-c++
  BuildRequires:  xvfb-run
  BuildRequires:  pkgconfig(xi)
  BuildRequires:  pkgconfig(xmu)

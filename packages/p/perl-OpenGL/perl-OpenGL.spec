@@ -1,7 +1,7 @@
 #
 # spec file for package perl-OpenGL
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Release:        0
 #Upstream: CHECK(GPL-1.0+ or Artistic-1.0)
 %define cpan_name OpenGL
 Summary:        Perl bindings to the OpenGL API, GLU, and GLUT/FreeGLUT
-License:        GPL-1.0+ or Artistic-1.0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/OpenGL/
+URL:            http://search.cpan.org/dist/OpenGL/
 #Source0:        http://search.cpan.org/CPAN/authors/id/C/CH/CHM/OpenGL-0.70.tar.gz # modified by pre_checkin.sh
 Source0:        OpenGL-0.70.tar.gz
 Source1:        cpanspec.yml
@@ -60,6 +60,7 @@ find include -type f  \! -name glprocs.h -exec rm {} +
 # implementation, let us just ignore them.
 sed 's/PERL_DL_NONLAZY=1//' -i Makefile
 %{__make} %{?_smp_mflags}
+
 %check
 xvfb-run -a -s "+extension GLX -screen 0 1280x1024x24" %{__make} test
 
