@@ -8767,6 +8767,7 @@ unsorted:
   - himalaya 
   - himeno 
   - himmelblau 
+  - himmelblau-qr-greeter 
   - himmelblau-sshd-config 
   - himmelblau-sso 
   - hiredis 
@@ -10587,8 +10588,6 @@ unsorted:
   - kpeople5 
   - kpeople5-devel 
   - kpeople5-lang 
-  - kpeoplevcard 
-  - kpeoplevcard-devel 
   - kphotoalbum 
   - kphotoalbum-lang 
   - kpimtextedit-devel 
@@ -13822,7 +13821,7 @@ unsorted:
   - libgraphene-devel 
   - libgraphite2-3-32bit 
   - libgravatar-devel 
-  - libgretl-1_0-48 
+  - libgretl-1_0-50 
   - libgromacs9 
   - libgromacs_mpi9 
   - libgrpc++1_70 
@@ -16704,6 +16703,8 @@ unsorted:
   - libtasn1-devel 
   - libtasn1-devel-32bit 
   - libtasn1-tools 
+  - libtatsu-devel 
+  - libtatsu0 
   - libtbbbind_2_5-3 
   - libtbbmalloc2 
   - libtcmalloc4 
@@ -35962,6 +35963,7 @@ unsorted:
   - qt6gtk2 
   - qtcurve-gtk2 
   - qtcurve-qt5 
+  - qtcurve-qt5-lang 
   - qtdbusextended-devel 
   - qtel 
   - qterm 
