@@ -100,7 +100,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 %if %{with_php}
 BuildRequires:  %{php}-devel
 BuildRequires:  %{php}-embed
