@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 21 08:43:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.50.3:
+  * [ENHANCEMENT] allow insecureSkipVerify to be optional
+    defaulting to false (#2803)
+  * [ENHANCEMENT] Support min/max TLS version (#2619)
+  * [ENHANCEMENT] Improve dashboard performance by reducing
+    re-renders (#2770)
+  * [ENHANCEMENT] make proxy authorization optional (#2802)
+  * [ENHANCEMENT] Add OAuth secret type for Datasources (#2631)
+  * [ENHANCEMENT] Update PanelEditorForm by using watched values
+    (#2792)
+  * [ENHANCEMENT] Add Authorization and BasicAuth definitions to
+    cue package (#2643)
+  * [BUGFIX] fix variable grafana migration (#2699)
+  * [BUGFIX] Format expireAt with ISOString to fix
+    EphemeralDashboard view crash (#2778)
+  * [BUGFIX] Fix duplicate query keys in useQueries() (#2779)
+  * [DOC] Fix doc about TLS config and the TLS secret spec (#2685)
+  * [DOC] Fix typo in ListVariable spec (#2691)
+
+-------------------------------------------------------------------
 Thu Mar 13 18:16:04 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.50.2:
