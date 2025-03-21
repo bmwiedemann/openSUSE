@@ -1,4 +1,489 @@
 -------------------------------------------------------------------
+Fri Feb  7 11:48:45 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Update to 1.24.1
+  * aioble: Pass additional connection arguments to gap_connect.
+  * usb-device: Allow signaling capability of remote_wakeup.
+  * lora-sx127x: Fix configuring the implicit header option in the _SX127x.
+  * base64: Remove struct dependency from manifest.
+  * usb: Tidy up the description of TinyUSB callbacks.
+  * usb: Add a note about buffer thread safety.
+  * usb: Fix race if transfers are submitted by a thread.
+  * umqtt.robust: Remove reference to missing example.
+  * CONTRIBUTING: Add extra explanation of "Publish packages for branch".
+  * tools/ci.sh: Add sqlite3 tests to CI.
+  * unix-ffi/sqlite3: Bump version to 0.3.0.
+  * unix-ffi/sqlite3: Add commit and rollback functionality like CPython.
+  * unix-ffi/sqlite3: Change to use close and prepare v2 versions, clean-up.
+  * unix-ffi/sqlite3: Add optional parameter for URI support.
+  * unix-ffi/sqlite3: Fix statements not being finalized.
+  * unix-ffi/sqlite3: Fix bytes to accommodate for different pointer sizes.
+  * tools/build.py: Add "path" entry to index.json.
+  * lora-sx126x: Change to class-level memoryview for _cmd buf.
+  * usb-device-keyboard: Fix ; and ` keycode names.
+  * usb-device-cdc: Fix lost data in read() path if short reads happened.
+  * logging: Fix StreamHandler to call parent constructor.
+  * unittest-discover: Avoid adding test parent dir to sys.path.
+  * github/workflows: Add workflow to run package tests.
+  * hashlib: Only import pure Python hashlib when running test.
+  * fnmatch: Don't require test.support, which no longer exists.
+  * datetime: Skip tests that require the host to be in UTC timezone.
+  * contextlib: Use a list instead of deque for exit callbacks.
+  * quopri: Remove dependency on test.support and subprocess in unit test.
+  * aioble/multitests: Store a reference to tasks and cancel when done.
+  * all: Use non-u versions of built-in modules.
+  * all: Change use of "uasyncio" to "asyncio".
+  * requests: Make possible to override headers and allow raw data upload.
+  * pyusb: Add MicroPython implementation of PyUSB library.
+  * aioble/multitests: Use multitest.output_metric for perf results.
+  * aioble/multitests: Adjust expected output for write capture test.
+  * aioble/multitests: Add test for advertising and scanning services.
+  * aioble/central.py: Fix ScanResult.services when decoding UUIDs.
+  * aioble/peripheral.py: Place multiple UUIDs in single advertisement LTV.
+  * aioble/device.py: Make default timeout None for disconnected() method.
+  * aioble/device.py: Always create connection._event.
+  * aioble/examples/temp_client.py: Check connection before reading temp.
+  * pathlib: Add __rtruediv__ magic method to pathlib.Path.
+  * aioble/examples/temp_sensor.py: Wait forever for client to disconnect.
+  * aioble/examples/temp_sensor.py: Properly notify on update.
+  * aiohttp: Fix type of header's Sec-WebSocket-Key.
+  * all: Enable ruff E401 and E402 import lints.
+  * all: Enable Ruff lint F541 'f-string without any placeholders'.
+  * all: Enable ruff F841 'Local variable is assigned to but never used'.
+  * ntptime: Fix Year 2036 bug.
+  * collections: Remove micropython-lib Python implementation of deque.
+  * mip: Bump minor version.
+  * mip: Add support to mip install from GitLab.
+  * usb: Add USB device support packages.
+  * ssl: Use "from tls import *" to be compatible with axtls.
+  * senml: Use the updated cbor2 API.
+  * cbor2: Deprecate decoder and encoder modules.
+  * json: Move to unix-ffi.
+  * unix-ffi: Remove "unix_ffi" argument from require().
+  * gzip: Fix recursion error in open() function.
+  * lora-sx126x: Clean up some struct formatting.
+  * lora-sx126x: Fix syncword setting.
+  * lora-sx127x: Implement missing syncword support.
+  * lora-sync: Fix race with fast or failed send().
+  * lora-sx126x: Fix invalid default configuration after reset.
+  * tools/ci.sh: Add unix-ffi library when testing unix-ffi subdirectory.
+  * tarfile-write: Fix permissions when adding to archive.
+  * aiohttp: Fix binary data treatment.
+  * hmac: Fix passing in a string for digestmod argument.
+  * ssl: Restructure micropython SSL interface to a new tls module.
+  * umqtt.simple: Simplify check for user being unused.
+  * aiohttp: Add new aiohttp package.
+  * aioble: Fix advertising variable name to use us not ms.
+  * uaiohttpclient: Update example client code.
+  * uaiohttpclient: Update "yield from" to "await".
+  * uaiohttpclient: Make flake8 inspired improvements.
+  * uaiohttpclient: Fix hard coded port 80.
+  * os-path: Implement os.path.isfile().
+  * aiorepl: Add support for raw mode (ctrl-a).
+  * aiorepl: Add cursor left/right support.
+  * aiorepl: Add support for paste mode (ctrl-e).
+  * aiorepl: Update import of asyncio.
+  * base64: Implement custom maketrans and translate methods.
+  * time: Add README to explain the purpose of the time extension library.
+  * lcd160cr: Remove support for options in manifest.
+  * all: Replace "black" with "ruff format".
+  * tools/verifygitlog.py: Add git commit message checking.
+  * unix-ffi/re: Convert to PCRE2.
+  * .github/workflows/ruff.yml: Pin to 0.1.0.
+  * requests: Fix detection of iterators in chunked data requests.
+  * aioble/server.py: Allow BufferedCharacteristic to support all ops.
+  * aioble/server.py: Add data arg for indicate.
+  * __future__: Add "annotations".
+  * all: Remove unnecessary start argument in range.
+  * lora/sx126x: Fix busy timeout handling.
+  * lora: Note known issue with STM32WL5 HP antenna.
+  * lora: Add STM32WL55 subghz LoRa modem class.
+  * lora: Remove the pin parameter from IRQ callback.
+  * wm8960: Bump patch version.
+  * lsm6dsox: Bump patch version.
+  * top: Enable Ruff linter to check undefined-name (F821).
+  * uaiohttpclient: Fix missing name in unreachable example code.
+  * iperf3: Pre-declare some variables set in the loop.
+  * cbor2: Improve decoder to pass Ruff F821 undefined-name.
+  * all: Add missing const imports
+  * wm8960: Add missing self reference for sample table.
+  * lsm6dsox: Add missing time import.
+  * bmm150: Remove broken reset function.
+  * drivers/display/lcd160cr: Use isinstance() for type checking.
+  * iperf3: Add compatibility for servers pre version 3.2.
+  * github/workflows: Split ruff into its own action.
+  * tools/codeformat.py: Fix ruff warnings.
+  * top: Add pre-commit config.
+  * tools/codeformat.py: Remove git state detection.
+  * zlib: Add zlib module.
+  * all: Lint Python code with ruff.
+  * github/workflows: Build all example .py files as part of CI.
+  * all: Standardise x.y.z versioning for all packages.
+  * logging: Bump minor version.
+  * copy: Bump patch version.
+  * xmltok: Bump patch version.
+  * aiorepl: Bump patch version.
+  * requests: Rename urequests to requests.
+  * tarfile: Rename from utarfile.
+  * fnmatch: Fix compatibility with ure -> re.
+  * all: Remove __version__ from .py files.
+  * aiorepl: Replace f-string with str.format.
+  * copy: Declare dependency on types.
+  * logging: Add full support for logging exception tracebacks.
+  * keyword: Add manifest file.
+  * json: Add manifest file.
+  * bisect: Add manifest file.
+  * types: Add manifest file.
+  * aiorepl/README.md: More info about globals.
+  * xmltok: Change StopIteration to EOFError due to PEP-479.
+  * cmd: Remove comments about using the string module.
+  * utarfile: Fix read/write handling of nulls in tar header.
+  * hashlib: Refactor, split, and optimise.
+  * lora: Workaround SX1262 bug with GetStatus.
+  * lora: Add lora modem drivers for SX127x and SX126x.
+  * utarfile: Support creating/appending tar files.
+  * aioespnow: Add library providing asyncio support for espnow module.
+  * aioble: Fix descriptor flag handling.
+  * senml: Allow publishing to PyPI as micropython-senml.
+  * tools/makepyproject.py: Add tool to generate PyPI package.
+  * micropython: Add missing metadata for packages.
+  * python-ecosys: Add pypi= to metadata.
+  * unittest-discover: Print results when no tests are found/run.
+  * iperf3: Support devices without os.urandom().
+  * senml: Fix data record encoding to use binascii instead of base64.
+  * senml: Remove u-module prefix from imports.
+  * cbor2: Remove u-module prefix from imports.
+  * github/workflows: Attach built packages to GitHub workflow artifacts.
+  * tools/ci.sh: Support publishing package and index files to GitHub Pages.
+  * senml: Add SenML library.
+  * cbor2: Add cbor2 library.
+  * aioble: Add short name support to scan results.
+  * unittest: Add subtest usage examples.
+  * bmm150: Add new magnetometer driver.
+  * bmi270: Add new IMU driver.
+  * lsm9ds1: Refactor driver.
+  * lsm6dsox: Refactor driver.
+  * hs3003: Add new relative humidity and temperature sensor driver.
+  * top: Update Python formatting to black "2023 stable style".
+  * github/workflows: Add workflow to build all packages.
+  * bundle-networking: Fix metadata to correctly use "description" field.
+  * glob: Fix require of os-path.
+  * urllib.parse: Fix require of collections-defaultdict.
+  * micropython/bundles: Add a bundle-networking meta-package.
+  * unittest: Remove dependence on sys.exc_info.
+  * aioble/README.md: Demostrate optional args to aioble.scan().
+  * logging: Bump version to 0.5.
+  * logging: Simplify check for strftime.
+  * logging: Fall back to root logger level for unset child.
+  * top: Update top-level docs.
+  * time: Add unit test for time.strftime.
+  * time: Add time module to provide strftime.
+  * logging: Improve the logging module.
+  * pathlib: Add initial pathlib implementation.
+  * nrf24l01: Improve test to add RP2 support, fix ESP32.
+  * sensor/mhz19: Add driver for MH-Z19 (CO2 sensor).
+  * sdcard: Set MISO high before readblocks/writeblocks.
+  * tempfile: Add manifest.py file at version 0.0.1.
+  * tempfile: Add unit tests for tempfile, and don't use os.path.join.
+  * shutil: Add unit tests for shutil.
+  * shutil: Don't allow an empty string in rmtree.
+  * shutil: Fix shutil.rmtree to use os.ilistdir instead of os.walk.
+  * tempfile: Add initial tempfile implementation.
+  * dht: Fix regression importing dht_readinto from pyb.
+  * unittest: Convert to a package.
+  * shutil: Add disk_usage function.
+  * venv: Add a command-line package for creating virtual environments.
+  * mip: Set opt=3 by default.
+  * micropython/mip: Add command-line functionality for the Unix port.
+  * aiorepl: Fix ordering of saving previous character.
+  * aiorepl: Ignore duplicate LFLF after converting CRLF from Windows.
+  * aioble/client.py: Fix default for the `response` arg to char.write().
+  * espflash: Add a minimal ESP32 bootloader protocol implementation.
+  * dht: Change the sequence for importing dht_readinto.
+  * ntptime: Allow overriding default NTP timeout.
+  * aioble: Split into optional components.
+  * umqtt.robust: Fix check_msg blocking after reconnect.
+  * umqtt.simple: Return op from wait_msg() as indication of reception.
+  * unittest: Make AssertRaisesContext store exception for later retrieval.
+  * os.path: Remove external / ffi dependencies in os.path.
+  * tools/build.py: Make build.py work without f-strings.
+  * micropython/mip: Add a new `mip` library for on-device installation.
+  * tools/build.py: Add script for deploying to a static web server.
+  * uu: Fix dependency on os-path.
+  * aioble/server.py: Maintain write order for captured characteristics.
+  * aioble/l2cap: Fix psm variable name.
+  * micropython/aiorepl: Initial version of an asyncio REPL.
+  * os: Import `path` automatically if available.
+  * collections: Rename collections.* to collections-*.
+  * os: Rename os.path to os-path.
+  * unittest: Move back to python-stdlib.
+  * argparse: Move back to python-stdlib.
+  * python-stdlib: Remove pystone (and variants).
+  * aioble/multitests: Add descriptor multitest.
+  * aioble/client.py: Make read/write events work for descriptors.
+  * aioble/server.py: Fix registration for descriptors.
+  * aioble/client.py: Use characteristic end handle (when available).
+  * micropython/net: Add "ntptime" client from main repo.
+  * micropython/net: Add "webrepl" server from main repo.
+  * micropython/drivers: Move "sdcard" driver from main repo.
+  * micropython/drivers: Move "lps22h" sensor driver from main repo.
+  * micropython/drivers: Move "hts221" sensor driver from main repo.
+  * micropython/drivers: Move "dx18x20" sensor driver from main repo.
+  * micropython/drivers: Move "dht" sensor driver from main repo.
+  * micropython/drivers: Move "nrf24l01" radio driver from main repo.
+  * micropython/drivers: Move "neopixel" led driver from main repo.
+  * micropython/drivers: Move "lsm6sox" imu driver from main repo.
+  * micropython/drivers: Move "lsm9ds1" imu driver from main repo.
+  * micropython/drivers: Move "ssd1306" display driver from main repo.
+  * micropython/drivers: Move "lcd160cr" display driver from main repo.
+  * micropython/drivers: Move "wm8960" codec driver from main repo.
+  * micropython/drivers: Move "onewire" bus driver from main repo.
+  * unix-ffi: Move more unix-only packages to unix-ffi.
+  * all: Replace metadata.txt with manifest.py.
+  * micropython/upip: Remove upip library.
+  * all: Remove all setup.py files.
+  * aioble: Make l2cap chunk size configurable to allow optimization by app.
+  * aioble: Fix missing GattError import in server.py.
+  * aioble: Add timeout to device.exchange_mtu.
+  * python-ecosys/pyjwt/jwt.py: Fix missing whitespace.
+  * python-stdlib/hmac: Update to work with built-in hash functions.
+  * python-ecosys/pyjwt: Add pyjwt-compatible module.
+  * urequests: Release 0.7.0.
+  * urequests: Add timeout, passed to underlying socket if supported.
+  * urequests: Raise error when server doesn't respond with valid http.
+  * urequests: Always open sockets in SOCK_STREAM mode.
+  * urequests: Add support for redirects.
+  * urequests: Add support for requests with chunked upload data.
+  * binascii: Implement newline param in function b2a_base64.
+  * urequests: Add Basic Authentication support.
+  * urequests: Fix raising unsupported Transfer-Encoding exception.
+  * urequests: Explicitly add "Connection: close" to request headers.
+  * urequests: Add ability to parse response headers.
+  * unittest: Version 0.9.0
+  * unittest: Add support for specifying custom TestRunner.
+  * unittest: Add setUpClass and tearDownClass handling.
+  * unittest: Improve failure text consistency with cpython.
+  * unittest: Add exception capturing for subTest.
+  * unittest: Reset python env between tests.
+  * unittest: Add test for environment isolation.
+  * unittest: Add discover function.
+  * unittest: Run test_* functions as well as TestCase classes.
+  * unittest: Print module name on result lines.
+  * unittest: Support TestCase subclasses with own runTest() method.
+  * unittest: Add TextTestRunner as alias for TestRunner.
+  * unittest: Print no. of skipped tests in a way compatible with CPython.
+  * unittest: test_unittest: Add tests for expectedFailure decorator.
+  * unittest: Add expectedFailure decorator.
+  * unittest: Support recursive TestSuite's.
+  * unittest: Properly handle failures vs errors.
+  * unittest: Implement basic addCleanup()/doCleanup().
+  * unittest: TestSuite: Add run() method.
+  * unittest: Add dummy TestCase.assertWarns() context manager.
+  * unittest: Add dummy TestCase.subTest() context manager.
+  * unittest: Add TestCase.skipTest() method.
+  * unittest: TestCase: Add (dummy) __init__.
+  * unittest: Support both test classes and class instances.
+  * unittest: Only treat callable fields as test methods.
+  * unittest: TestSuite: Add undescore to internal field, self._tests.
+  * unittest: Reinstate useful debugger helper.
+  * unittest: Add assertLessEqual, assertGreaterEqual methods.
+  * unittest: AssertRaisesContext: Store exception value as self.exception.
+  * unittest: test_unittest: Typo fix.
+  * unittest: test_unittest: Add test for .assertRaises(AssertionError).
+  * unittest: Allow to catch AssertionError with assertRaises().
+  * unittest: test_unittest.py: Fix typo in method name.
+  * unittest: Log failure tracebacks at test end.
+  * unittest: Allow passing module name or instance into unittest.main()
+  * fnmatch: Release 0.6.0.
+  * fnmatch: Remove dependency on os.path.
+  * fnmatch: Add ure compatibility.
+  * micropython/aioble: Prioritise services in advertisement payload.
+  * micropython/upysh: Add the cp() function and improve ls and rm.
+  * tools/codeformat: Fix compatibility running from subfolder in repo.
+  * tools/codeformat: By default only check/update on current git branch.
+  * python-stdlib/datetime: Add new implementation of datetime module.
+  * all: Update formatting for new Black version 22.1.0.
+  * aioble/multitests: Add multitest for shutdown handlers.
+  * aioble: Add a shutdown handler for cleanup.
+  * aioble/README.md: Add l2cap example.
+  * aioble: Add l2cap channel disconnected().
+  * aioble/multitests: Add test for subscription and notification.
+  * aioble: Add support for write-with-update.
+  * aioble: Fix notified/indicated event waiting.
+  * aioble/multitests/ble_write_capture.py: Add multitest for write capture.
+  * aioble/multitests: Fix existing multitests.
+  * aioble: Add a write queue for gatt server.
+  * aioble: Fix docs for subscribe (needs await).
+  * micropython/bluetooth/aioble: subscribe must register the connection.
+  * unix-ffi/datetime: Add tzinfo.__new__ to make the package importable.
+  * python-stdlib/random: Add getrandbits with no limit on number of bits.
+  * micropython/aioble: Add asyncio-based wrapper for ubluetooth.
+  * python-ecosys/iperf3: Add iperf3.
+  * python-stdlib/cgi: Apply Black formatting.
+  * workflows: Add initial GitHub workflows support, with code formatting.
+  * tools: Add code formatting and CI scripts.
+  * top: Remove upip-related scripts.
+  * python-ecosys: Move urequests to python-ecosys.
+  * micropython/uasyncio: Remove uasyncio-v2.
+  * all: Run black over all code.
+  * all: Update READMEs.
+  * top: Move modules into python-stdlib, unix-ffi, or micropython.
+  * binascii/hashlib: Set type to stdlib.
+  * test: Remove PEP380 test (better handled by core testing).
+  * cpython-uasyncio: Remove as new-uasyncio is compatible with CPython.
+  * top: Remove unhelpful packages.
+  * top: Remove all empty packages.
+  * logging: Add "levelno" entry to log record object/dict.
+  * logging: Add support for custom handlers.
+  * fnmatch: Remove dependency on posixpath module.
+  * copy: Support copy and deepcopy of OrderedDict objects.
+  * Revert "README: Add note that repository is unmaintained."
+  * README: Add note that repository is unmaintained.
+  * logging: Release 0.3.
+  * logging: example_logging: Add testcase for exception().
+  * logging: Add exc() and exception() methods.
+  * logging: Add setLevel() method.
+  * logging: Release 0.2.
+  * logging: example_logging: Add more testcases.
+  * logging: Implement isEnabledFor(level) method.
+  * logging: Some performance and memory use optimizations.
+  * unittest: Release 0.3.2.
+  * unittest: Exit with non zero code in case of failures. Fixing #259
+  * uasyncio.udp: Release 0.1.1.
+  * uasyncio.udp: Remove optional flags value in a call to usocket.sendto().
+  * uasyncio: Release 2.0.
+  * uasyncio.core: Release 2.0.
+  * uasyncio: Update __init__() to take runq_len & waitq_len params.
+  * uasyncio.core: test_full_wait: Update for runq/waitq refactor.
+  * uasyncio.core: Switch to separate run and wait queues.
+  * uasyncio: benchmark/boom_uasyncio.py: More assert output.
+  * upip: Release 1.2.4.
+  * upip: Fix upip bootstrap script to use pypi.org.
+  * upip: Use new JSON API pointing to pypi.org.
+  * README: Update links related to new PyPI URL.
+  * uasyncio.udp: Typo fix in debug print.
+  * uasyncio.core: test_full_wait.py: Make easier to debug.
+  * uasyncio.core: example_call_soon.py: Add logging setup.
+  * uasyncio.core: test_fair_schedule.py: More checks and iterations.
+  * uasyncio: Release 1.4.2. Packaging fix.
+  * uasyncio.core: Release 1.7.2. Packaging fix.
+  * uasyncio.websocket.server: Release 0.1.
+  * all: setup.py: Switch to sdist_upip.
+  * make_metadata: Switch to use sdist_upip.
+  * all: setup.py: Consistently update author and maintainer fields.
+  * make_metadata: Support multi-level packages.
+  * uasyncio.websocket.server: Add echo server example.
+  * argparse: Release 0.4.
+  * argparse: Implement parse_known_args
+  * uasyncio.websocket.server: Websocket server implementation for uasyncio.
+  * upip: Release 1.2.3.
+  * upip: Be sure to create socket with params returned by getaddrinfo().
+  * uasyncio: Release 1.4.1.
+  * uasyncio: Be sure to create socket with params returned by getaddrinfo().
+  * urllib.urequest: Release 0.6.
+  * urllib.urequest: Be sure to create socket with params returned by getaddrinfo().
+  * urequests: Release 0.6.
+  * urequests: Be sure to create socket with params returned by getaddrinfo().
+  * pickle: Release 0.1.
+  * pickle: test_pickle.py: Update for bytes being returned/consumed.
+  * pickle: Module produces and consumes bytes.
+  * pickle: test_pickle.py: Turn into real test, add more cases.
+  * pickle: Replace exec() with eval(), smaller surface for security issues.
+  * hashlib: Release 2.4.0-4.
+  * hashlib: Reuse classes available in ushashlib, extend tests.
+  * hashlib: Rename submodules to avoid naming conflicts.
+  * uaiohttpclient: Release 0.5.1.
+  * uaiohttpclient: Support HTTP reply lines without textual description.
+  * urllib.urequest: Release 0.5.1.
+  * urllib.urequest: Support HTTP reply lines without textual description.
+  * urequests: Release 0.5.2.
+  * urequests: Support HTTP reply lines without textual description.
+  * ssl: Release 0.1.
+  * ssl: Wrap ussl.wrap_socket().
+  * ssl: Add more constants.
+  * make_metadata: Use more specific 'micropython-lib Developers'.
+  * upip: Add copyright header.
+  * README: Mention that some modules may require pfalcon's fork.
+  * uasyncio.core: Release 1.7.1.
+  * uasyncio.core: Add test for cancel(coro) function.
+  * uasyncio.core: Add cancel(coro) function.
+  * datetime: Release 3.3.3-1.
+  * datetime: test_datetime: Skip some tests for MicroPython.
+  * datetime: Replace '"%c" % char' with '"%s" % char'.
+  * datetime: Avoid float.as_integer_ratio().
+  * udnspkt: Release 0.1.
+  * udnspkt: Add example.
+  * udnspkt: A module to create/parse DNS packets to resolve hostnames.
+  * uasyncio.udp: Release 0.1.
+  * uasyncio.udp: Add example interacting with dnsmasq DNS.
+  * uasyncio.udp: New functional API, mimicking socket module.
+  * uasyncio: Release 1.4.
+  * uasyncio.core: Release 1.7.
+  * sdist_upip: Don't treat files at the toplevel dir as resources.
+  * sdist_upip: Need to override setuptools' "sdist" command, not distutils'.
+  * uasyncio.core: Add test for wait_for() call.
+  * uasyncio: On scheduling ready coro, unmark it as I/O-waiting.
+  * uasyncio.core: wait_for: Add support for cancelling I/O-bound coros.
+  * math: Add placeholder module.
+  * sdist_upip.py: Replacement for optimize_upip.py.
+  * dis: Add placeholder module.
+  * uasyncio.synchro: Release 0.1.1.
+  * uasyncio.synchro: Update for cur_coro -> cur_task rename in uasyncio.core.
+  * dummy_threading: Add placeholder module.
+  * array: Add placeholder module.
+  * uasyncio: Release 1.3.
+  * uasyncio: open_connection: Initial hackish SSL support.
+  * uasyncio.core: Release 1.6.
+  * uasyncio.core: Implement wait_for() function for CPU-bound coroutines.
+  * uasyncio.core: Store currently executed task as an attribute of event loop.
+  * uasyncio.udp: Initial attempt of UDP support for uasyncio.
+  * uasyncio: README: Mention .awrite() and .aclose() methods vs asyncio.
+  * urequests: Release 0.5.1.
+  * urequests: Set Content-Type to application/json when json param is used.
+  * make_metadata.py: Support plain README files for long_desc.
+  * uaiohttpclient: Release 0.5.
+  * uaiohttpclient: Add User-Agent to request, some sites don't like lack of it.
+  * uaiohttpclient: Switch to use StreamWriter.aclose().
+  * uaiohttpclient: Only http: protocol is supported, fail predictably for others.
+  * uaiohttpclient: Add support for redirects.
+  * uaiohttpclient: Implement support for chunked transfer encoding.
+  * uaiohttpclient: Use "Connection: close" as workaround for broken HTTP 1.0 servers.
+  * uaiohttpclient: Add README.
+  * uaiohttpclient: Add usage example.
+  * uaiohttpclient: Initial implementation of the client.
+  * uasyncio.synchro: Release 0.1.
+  * random: Release 0.2.
+  * random: Add shuffle().
+  * random: Add randint().
+  * random: Release 0.1.
+  * random: Add test_randrange.py.
+  * random: Add randrange() implementation.
+  * pickle: Very rough implementation of pickle loads from imported modules.
+  * test.support: Add dummy @requires_IEEE_754 decorator.
+  * datetime: Add test from CPython 3.3.3.
+  * datatime: Add from CPython 3.3.3.
+  * unicodedata: Release 0.0.3.
+  * unicodedata: add dummy normalize implementation
+  * uasyncio: StreamReader: Separate "poll socket" vs "I/O socket".
+  * uasyncio: Release 1.2.4.
+  * uasyncio: test_http_server_heavy: Close socket with "finally".
+  * uasyncio: Auto-unregister poll objects on POLLHUP/POLLERR.
+  * gettext: Release 0.1.
+  * gettext: implement gettext and ngettext
+  * functools: Release 0.0.7.
+  * functools: add missing arguments to update_wrapper and wraps
+  * venv: Add dummy module.
+  * zlib: Add dummy module.
+  * sys: Add placeholder module.
+  * uasyncio.synchro: Add Lock example.
+  * uasyncio.synchro: New submodule for synchronization primitives, Lock added.
+- Align build process to upstream
+  * Upstream removed the old Makefile and restructured the repo
+  * Build package index locally
+  * Install all packages from local index using mip
+  * Backport access_index_from_local_fs.patch to avoid using http for serving the index
+
+-------------------------------------------------------------------
 Tue Jan 11 00:39:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file.

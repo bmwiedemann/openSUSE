@@ -1,0 +1,60 @@
+From 65adc276a3e76e51b8c9c6770a2611679e607f3f Mon Sep 17 00:00:00 2001
+From: Dominik Heidler <dheidler@suse.de>
+Date: Fri, 14 Mar 2025 14:01:39 +0100
+Subject: [PATCH] micropython/mip: Allow accessing index from local filesystem.
+
+Just set the index to `file://relative/path` or `file:///absolute/path`.
+
+Signed-off-by: Dominik Heidler <dheidler@suse.de>
+---
+ micropython/mip/mip/__init__.py | 29 +++++++++++++++++++++--------
+ 1 file changed, 21 insertions(+), 8 deletions(-)
+
+diff --git a/micropython/mip/mip/__init__.py b/micropython/mip/mip/__init__.py
+index 8920ad8f4..4b4a8c79f 100644
+--- a/micropython/mip/mip/__init__.py
++++ b/micropython/mip/mip/__init__.py
+@@ -91,6 +91,14 @@ def _rewrite_url(url, branch=None):
+ 
+ 
+ def _download_file(url, dest):
++    if url.startswith("file://"):
++        print("Copying:", dest)
++        src = url[7:]
++        _ensure_path_exists(dest)
++        with open(src, "b") as sf:
++            with open(dest, "wb") as f:
++                _chunk(sf, f.write)
++        return True
+     response = requests.get(url)
+     try:
+         if response.status_code != 200:
+@@ -108,15 +116,20 @@ def _download_file(url, dest):
+ 
+ 
+ def _install_json(package_json_url, index, target, version, mpy):
+-    response = requests.get(_rewrite_url(package_json_url, version))
+-    try:
+-        if response.status_code != 200:
+-            print("Package not found:", package_json_url)
+-            return False
++    if package_json_url.startswith("file://"):
++        import json
+ 
+-        package_json = response.json()
+-    finally:
+-        response.close()
++        package_json = json.load(open(package_json_url[7:]))
++    else:
++        response = requests.get(_rewrite_url(package_json_url, version))
++        try:
++            if response.status_code != 200:
++                print("Package not found:", package_json_url)
++                return False
++
++            package_json = response.json()
++        finally:
++            response.close()
+     for target_path, short_hash in package_json.get("hashes", ()):
+         fs_target_path = target + "/" + target_path
+         if _check_exists(fs_target_path, short_hash):
