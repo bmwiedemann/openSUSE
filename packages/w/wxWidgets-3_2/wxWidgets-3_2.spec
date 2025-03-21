@@ -65,10 +65,10 @@ wxString and instead rely on the wxChar pointer API.
 # At most one Name: line to not confuse quilt(1)
 %define base_name wxWidgets-3_2
 %define wx_minor 3.2
-%define psonum 14_0_0
-%define sonum 14.0.0
+%define psonum 15_0_0
+%define sonum 15.0.0
 Name:           %this_spec
-Version:        3.2.6
+Version:        3.2.7
 Release:        0
 Summary:        C++ Library for Cross-Platform Development
 License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
@@ -83,7 +83,6 @@ Source6:        wxpython-mkdiff.sh
 Patch0:         soversion.diff
 Patch1:         autoconf-2_72.diff
 Patch2:         textfiletest-fix-file-exists.diff
-Patch3:         doxygen111.patch
 %if "%flavor" == "doc"
 BuildRequires:  doxygen
 BuildRequires:  fdupes

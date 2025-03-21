@@ -280,4 +280,12 @@
     <comment>- Build with --enable-secretstore [boo#1239137].</comment>
     <requestid>1251607</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0de8d10eef9cd93653d058887fff4392</srcmd5>
+    <version>3.2.7</version>
+    <time>1742584894</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.7</comment>
+    <requestid>1254746</requestid>
+  </revision>
 </revisionlist>

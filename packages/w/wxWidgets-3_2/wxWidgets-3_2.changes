@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 20 12:11:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.7
+  * Fix crash in wxWebRequestCURL when connection was refused
+  * Fix buffer read overflow when compiling RE ending with
+    backslash
+  * Fix crash in wxWebRequest::Close() with recent libcurl
+  * Improve wxPropGrid checkboxes in high DPI
+  * Many fixes to key event generation (#25053, #25199, #25200)
+  * Fix copy-pasting text under more Wayland compositors (Weston,
+    kwin)
+  * Don't consume Ctrl-C when using SDL-based wxSound
+  * Avoid repaint problems when using wxWindow::Update() with
+    Wayland
+- Delete doxygen111.patch (merged)
+
+-------------------------------------------------------------------
 Sun Mar  9 22:04:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Build with --enable-secretstore [boo#1239137].

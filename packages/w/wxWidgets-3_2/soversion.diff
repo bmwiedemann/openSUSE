@@ -22,11 +22,11 @@ signatures.
  build/aclocal/bakefile.m4 |    3 +--
  2 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: wxWidgets-3.2.6/Makefile.in
+Index: wxWidgets-3.2.7/Makefile.in
 ===================================================================
---- wxWidgets-3.2.6.orig/Makefile.in
-+++ wxWidgets-3.2.6/Makefile.in
-@@ -2225,6 +2225,7 @@ LOCALE_LINGUAS = ca cs da de el es fi fr
+--- wxWidgets-3.2.7.orig/Makefile.in
++++ wxWidgets-3.2.7/Makefile.in
+@@ -2226,6 +2226,7 @@ LOCALE_LINGUAS = af an ar ca ca@valencia
  @COND_OFFICIAL_BUILD_0_PLATFORM_WIN32_1@WXCOMPILER = _gcc
  @COND_OFFICIAL_BUILD_1_PLATFORM_WIN32_1@WXCOMPILER \
  @COND_OFFICIAL_BUILD_1_PLATFORM_WIN32_1@	= _gcc$(COMPILER_VERSION)
@@ -34,7 +34,7 @@ Index: wxWidgets-3.2.6/Makefile.in
  @COND_OFFICIAL_BUILD_0_PLATFORM_WIN32_1@VENDORTAG = _$(VENDOR)
  @COND_OFFICIAL_BUILD_1_PLATFORM_WIN32_1@VENDORTAG = 
  @COND_BUILD_debug@WXDEBUGFLAG = d
-@@ -2236,7 +2237,7 @@ LOCALE_LINGUAS = ca cs da de el es fi fr
+@@ -2237,7 +2238,7 @@ LOCALE_LINGUAS = af an ar ca ca@valencia
  @COND_PLATFORM_WIN32_0@WXDLLNAMEPREFIXGUI = wx_$(PORTNAME)$(WXUNIVNAME)
  @COND_PLATFORM_WIN32_1@WXDLLNAMEPREFIXGUI = \
  @COND_PLATFORM_WIN32_1@	wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)
@@ -43,19 +43,19 @@ Index: wxWidgets-3.2.6/Makefile.in
  @COND_PLATFORM_WIN32_1@WXDLLVERSIONTAG = 
  COND_wxUSE_REGEX_builtin___wxregex___depname = \
  	$(LIBDIRNAME)/$(LIBPREFIX)wxregex$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)-$(WX_RELEASE)$(HOST_SUFFIX)$(LIBEXT)
-@@ -13982,7 +13983,7 @@ COND_MONOLITHIC_0_SHARED_1_USE_GUI_1_USE
- @COND_PLATFORM_MACOSX_1_USE_SOVERSION_1@	= .0.3.0.$(SO_SUFFIX)
+@@ -13983,7 +13984,7 @@ COND_MONOLITHIC_0_SHARED_1_USE_GUI_1_USE
+ @COND_PLATFORM_MACOSX_1_USE_SOVERSION_1@	= .0.4.0.$(SO_SUFFIX)
  @COND_USE_SOVERCYGWIN_1_USE_SOVERSION_1@dll___targetsuf3 = -0.$(SO_SUFFIX)
  @COND_USE_SOVERSION_0@dll___targetsuf3 = .$(SO_SUFFIX)
 -@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@dll___targetsuf3 = .$(SO_SUFFIX).0
-+@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@dll___targetsuf3 = .$(SO_SUFFIX).14.0.0
++@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@dll___targetsuf3 = .$(SO_SUFFIX).15.0.0
  @COND_TOOLKIT_MSW@__RCDEFDIR_p = --include-dir \
  @COND_TOOLKIT_MSW@	$(LIBDIRNAME)/wx/include/$(TOOLCHAIN_FULLNAME)
  @COND_USE_GUI_1_wxUSE_LIBTIFF_builtin@__LIB_TIFF_p \
-Index: wxWidgets-3.2.6/build/aclocal/bakefile.m4
+Index: wxWidgets-3.2.7/build/aclocal/bakefile.m4
 ===================================================================
---- wxWidgets-3.2.6.orig/build/aclocal/bakefile.m4
-+++ wxWidgets-3.2.6/build/aclocal/bakefile.m4
+--- wxWidgets-3.2.7.orig/build/aclocal/bakefile.m4
++++ wxWidgets-3.2.7/build/aclocal/bakefile.m4
 @@ -408,8 +408,7 @@ AC_DEFUN([AC_BAKEFILE_SHARED_VERSIONS],
              SONAME_FLAG="-Wl,-soname,"
          fi
