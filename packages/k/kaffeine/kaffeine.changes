@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Mar 20 17:22:11 UTC 2025 - christophe@krop.fr
+
+- Update to version 2.0.19git.20250316T013712~afc3f87:
+  * Changelog: update it with v2.0.19 changes
+  * scantable.dvb: update it to the latest version
+  * Remove use of deprecated QMouseEvent::globalPos() use globalPosition() instead
+  * Remove deprecated use of QHoverEvent.pos(), use position()
+  * Use correct format for qDebug
+  * Remove use of QDesktopWidget and QApplication::desktop()
+  * FileFilter: Adapt to new KFileFilter lists
+  * Decoding: Switch from QTextCodec to QStringConverter
+  * Strings: Replace QStringRef with QStringView
+  * RegEx: Replace QRegExp with QRegularExpression
+  * build: Switch to building with KF6/Qt6
+  * Use KF5/Qt5 for version 2.0.19
+  * Add gitlab CI
+  * Force creating the windowHandle before using it
+  * Remove use of deprecated QMouseEvent::globalPos() use globalPosition() instead
+  * Remove use of QKeyCombination::operator()+, use operator()| instead
+  * Remove deprecated use of QHoverEvent.pos(), use position()
+  * Remove deprecated use od QScopedPtr.take()
+  * Use correct format for qDebug
+  * Remove deprecated iterator usage, use std::prev insted
+  * Remove setting of Attribute AA_UseHighDpiPixmaps
+  * Add missing QActionGroup include
+  * Widgets/Screensaver: Remove X11 screensaver fallback
+  * KShortcuts: Use an persistant instance
+  * Remove use of QDesktopWidget and QApplication::desktop()
+  * FileFilter: Adapt to new KFileFilter lists
+  * Date: Use QLocale for date to string conversion
+  * Add missing QString include
+  * Time: switch from toTime_t() to toSecsSinceEpoch()
+  * Widgets: Switch over Widget.data to .toStongRef().get()
+  * KIO: Switch from generic to TransferJob
+  * Decoding: Switch from QTextCodec to QStringConverter
+  * Switch from QFlags to int implementation
+  * QChar: Wrap to-assign content into QChar where necessary
+  * String: Wrap raw content (string/number) in QLatin1String()/QString()
+  * Strings: Replace QStringRef with QStringView
+  * RegEx: Replace QRegExp with QRegularExpression
+  * I18N: Replace I18N_NOOP() macro with KLazyLocalizedString kli18n()
+  * Streams: Remove setCodec()
+  * StandardPaths: Replace QStandardPaths::DataLocation with AppLocalDataLocation
+  * Widgets: Replace setMargin() with setContentsMargins()
+  * build: Switch to building with KF6/Qt6
+  * Add developer_name and launchable to appdata
+  * Call cmake_minimum_required as first thing (& bump to 3.16)
+  * Add explicit moc includes to sources for moc-covered headers
+- Drop patch:
+  * kaffeine-fixsplitter.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 12:31:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro

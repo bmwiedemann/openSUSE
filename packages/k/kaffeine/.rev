@@ -602,4 +602,12 @@ not do any harm, as the one for amarok has the same entry, I will this. (forward
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226904</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>77bf2db3e4259da0bbe2730fa8e5895e</srcmd5>
+    <version>2.0.19git.20250316T013712~afc3f87</version>
+    <time>1742584927</time>
+    <user>anag+factory</user>
+    <comment>Update snapshot</comment>
+    <requestid>1254809</requestid>
+  </revision>
 </revisionlist>

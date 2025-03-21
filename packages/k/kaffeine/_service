@@ -1,7 +1,7 @@
 <services>
   <service name="obs_scm" mode="disabled">
    <param name="changesgenerate">enable</param>
-   <param name="versionformat">2.0.18git.%ci~%h</param>
+   <param name="versionformat">2.0.19git.%ci~%h</param>
    <param name="url">https://invent.kde.org/multimedia/kaffeine.git</param>
    <param name="scm">git</param>
   </service>
