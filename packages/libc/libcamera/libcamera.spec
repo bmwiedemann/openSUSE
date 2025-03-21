@@ -1,7 +1,7 @@
 #
 # spec file for package libcamera
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,13 @@ Name:           libcamera%extname
 Version:        0.4.0
 Release:        0
 Summary:        A complex camera support library in C++
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND CC-BY-SA-4.0
+License:        CC-BY-SA-4.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://libcamera.org/
 #Git-Web:       https://git.libcamera.org/libcamera/libcamera.git/
-
 Source:         libcamera-%version.tar.xz
 Source1:        baselibs.conf
-
+Patch1:         libcamera-fix-for-gcc15.patch
 BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
 %if 0%{?suse_version} <= 1500
@@ -57,8 +56,8 @@ BuildRequires:  pkgconfig(libevent_pthreads)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(pybind11)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(yaml-0.1)
 %if "@BUILD_FLAVOR@" != ""
 BuildRequires:  pkgconfig(Qt6Core)
@@ -155,26 +154,25 @@ export CC=gcc-11
 export CXX=g++-11
 %endif
 %meson \
-  -Ddocumentation=disabled \
+	-Ddocumentation=disabled \
 %if "@BUILD_FLAVOR@" != ""
-  -Dqcam=enabled \
+	-Dqcam=enabled \
 %else
-  -Dqcam=disabled \
+	-Dqcam=disabled \
 %endif
-  -Dv4l2=false -Dtracing=disabled \
-  -Dpipelines=ipu3,rkisp1,simple,uvcvideo,vimc \
-  -Dlc-compliance=disabled
+	-Dv4l2=false -Dtracing=disabled \
+	-Dpipelines=ipu3,rkisp1,simple,uvcvideo,vimc \
+	-Dlc-compliance=disabled
 %meson_build
 
 %install
 %meson_install
-pushd "%buildroot"
+cd "%buildroot"
 %if "@BUILD_FLAVOR@" != ""
 find . ! -type d ! -path ./usr/bin/cam ! -path ./usr/bin/qcam -print -delete
 %else
 rm -v usr/bin/cam
 %endif
-popd
 
 %ldconfig_scriptlets -n %lname
 %ldconfig_scriptlets -n %lname_base

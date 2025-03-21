@@ -215,4 +215,13 @@
     <comment>- Update to release 0.4.0</comment>
     <requestid>1233212</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>9e2b1e0fb3b4dd1ce7713cd1f0090b10</srcmd5>
+    <version>0.4.0</version>
+    <time>1742584894</time>
+    <user>anag+factory</user>
+    <comment>- Make build recipe POSIX sh compatible
+- Add trivial patch to fix build with gcc15:</comment>
+    <requestid>1254733</requestid>
+  </revision>
 </revisionlist>
