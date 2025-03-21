@@ -47,6 +47,10 @@ Plugin based library to create window decorations.
 
 %package -n libkdecorations3-%{sover}
 Summary:        KDE's window decorations library
+# boo#1239218: Translation files are unversioned and conflict.
+# Needs a redesign, maybe a rename to kdecoration-lang +
+# Provides: kdecoration where necessary.
+Obsoletes:      libkdecorations2-5-lang < %{version}
 
 %description -n libkdecorations3-%{sover}
 Plugin based library to create window decorations.
