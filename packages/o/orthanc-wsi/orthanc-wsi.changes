@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 19 15:54:41 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.1
+  * Upgraded to OpenLayers 10.4.0 (was previously 3.19.0)
+  * The viewer now displays the scale if imaged volume size is available in DICOM
+  * Fix handling of "Image Type" in the viewer for compatibility with other vendors
+  * OrthancWSIDicomizer does not fill anymore the imaged volume width/height
+    tags if no information is available
+  * OrthancWSIDicomizer detects imaged volume size for Aperio files without OpenSlide
+
+-------------------------------------------------------------------
 Sat Dec 21 15:36:00 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - version 3.0

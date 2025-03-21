@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-wsi
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2019-2024 Dr. Axel Braun
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2019-2025 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,12 @@ Name:           orthanc-wsi
 Summary:        Whole Slide Imaging for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        3.0
+Version:        3.1
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancWSI-%{version}.tar.gz
-Source1:        openlayers-3.19.0-dist.zip
+#%%Source1:        openlayers-3.19.0-dist.zip
+Source1:        https://orthanc.uclouvain.be/downloads/third-party-downloads/WSI/openlayers-10.4.0-package.tar.gz
 Source11:       orthanc-wsi-readme.SUSE
 
 BuildRequires:  cmake
