@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gitlab
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,39 @@
 
 
 Name:           python-python-gitlab
-Version:        4.6.0
+Version:        4.13.0
 Release:        0
 Summary:        Python module for interacting with the GitLab API
 License:        LGPL-3.0-only
 URL:            https://github.com/python-gitlab/python-gitlab
-Source:         https://files.pythonhosted.org/packages/source/p/python-gitlab/python-gitlab-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python_gitlab/python_gitlab-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION requirements
+BuildRequires:  %{python_module gql >= 3.5.0 }
+BuildRequires:  %{python_module httpx >= 0.27.2}
+BuildRequires:  %{python_module requests >= 2.23.2}
+BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
+# /SECTION
+# SECTION test requirements
+BuildRequires:  %{python_module httmock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module responses}
+BuildRequires:  %{python_module respx}
+# /SECTION
 Requires:       python-PyYAML >= 6.0.1
 Requires:       python-argcomplete >= 1.10.0
-Requires:       python-requests >= 2.22.0
+Requires:       python-gql >= 3.5.0
+Requires:       python-httpx >= 0.27.2
+Requires:       python-requests >= 2.23.2
 Requires:       python-requests-toolbelt >= 0.9.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module httmock}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.22.0}
-BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
-BuildRequires:  %{python_module responses}
-# /SECTION
 %python_subpackages
 
 %description
@@ -51,7 +58,7 @@ The python-gitlab package provides access to the GitLab server API.
 It supports the v4 API of GitLab, and provides a CLI tool (gitlab).
 
 %prep
-%autosetup -p1 -n python-gitlab-%{version}
+%autosetup -p1 -n python_gitlab-%{version}
 
 %build
 %pyproject_wheel

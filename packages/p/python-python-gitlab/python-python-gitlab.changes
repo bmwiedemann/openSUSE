@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Mar  9 14:56:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.13.0:
+  * https://github.com/python-gitlab/python-gitlab/releases/tag/v4.13.0
+- update to 4.12.2:
+  * https://github.com/python-gitlab/python-gitlab/releases/tag/v4.12.2
+- update to 4.12.1:
+  * https://github.com/python-gitlab/python-gitlab/releases/tag/v4.12.1
+- update to 4.12.0:
+  * https://github.com/python-gitlab/python-gitlab/releases/tag/v4.12.0
+- update to 4.11.1:
+  * https://github.com/python-gitlab/python-gitlab/releases/tag/v4.11.1
+- update to 4.11.0:
+  * https://github.com/python-gitlab/python-gitlab/releases/tag/v4.11.0
+- update to 4.10.0:
+  * https://github.com/python-gitlab/python-gitlab/releases/tag/v4.10.0
+- update to 4.9.0:
+  * https://github.com/python-gitlab/python-gitlab/releases/tag/v4.9.0
+- update to 4.8.0:
+  * https://github.com/python-gitlab/python-gitlab/releases/tag/v4.8.0
+- update to 4.7.0:
+  * https://github.com/python-gitlab/python-gitlab/releases/tag/v4.7.0
+
+-------------------------------------------------------------------
 Mon Jun  3 14:25:21 UTC 2024 - Srinidhi B S <srinidhi.bs@gmail.com>
 
 - Update to 4.6.0:
@@ -178,7 +202,7 @@ Mon Dec 12 17:06:05 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Wed Dec  7 22:07:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v3.12.0 
+- Update to v3.12.0
   * Feature
   Add support for SAML group links (#2367) (1020ce9)
   groups: Add LDAP link manager and deprecate old API endpoints (3a61f60)
@@ -201,7 +225,7 @@ Wed Dec  7 22:07:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Nov  9 18:41:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v3.11.0 
+- Update to v3.11.0
   Feature
   * build: Officially support Python 3.11 (74f66c7)
   * api: Add support for topics merge API (9a6d197)
@@ -321,7 +345,7 @@ Thu Oct  6 22:29:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   usage: Refer to upsteam docs instead of custom attributes (ae7d3b0)
   ext: Fix rendering for RequiredOptional dataclass (4d431e5)
   Documentation updates to reflect addition of mutually exclusive attributes (24b720e)
-  Use as_list=False or all=True in Getting started (de8c6e8)  
+  Use as_list=False or all=True in Getting started (de8c6e8)
 
 -------------------------------------------------------------------
 Wed May  4 06:24:11 UTC 2022 - pgajdos@suse.com
@@ -341,7 +365,7 @@ Thu Jan 14 13:16:51 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
   * add support for Packages API
   * add endpoint for latest ref artifacts
   * wrong reconfirmation parameter when updating user's email
-  * tests fail when using REUSE_CONTAINER option 
+  * tests fail when using REUSE_CONTAINER option
   * implement Gitlab's behavior change for owned=True
 - from v2.4.0
   * do not check if kwargs is none
@@ -361,7 +385,7 @@ Thu Jan 14 13:16:51 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
   * types: add dir to RESTObject to expose attributes
   * use keyset pagination by default for /projects > 50000
   * config: fix duplicate code
-  * project: add missing project parameters 
+  * project: add missing project parameters
 
 -------------------------------------------------------------------
 Mon May  4 18:51:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
