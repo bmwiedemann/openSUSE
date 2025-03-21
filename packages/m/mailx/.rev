@@ -432,4 +432,12 @@ See COPYING. Fedora also uses this license designation (forwarded request 178463
     <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1149835 from pgajdos)</comment>
     <requestid>1149859</requestid>
   </revision>
+  <revision rev="51" vrev="39">
+    <srcmd5>6d5090ac2c436cf19ea7c9af97beee53</srcmd5>
+    <version>12.5</version>
+    <time>1742584903</time>
+    <user>anag+factory</user>
+    <comment>- drop unneeded pcre build dependency (forwarded request 1254797 from AndreasStieger)</comment>
+    <requestid>1254937</requestid>
+  </revision>
 </revisionlist>

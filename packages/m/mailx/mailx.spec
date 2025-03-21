@@ -26,7 +26,6 @@ Name:           mailx
 BuildRequires:  groff
 BuildRequires:  krb5-devel
 BuildRequires:  man
-BuildRequires:  pcre
 BuildRequires:  pkg-config
 BuildRequires:  postfix
 BuildRequires:  update-alternatives

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 20 16:57:22 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- drop unneeded pcre build dependency
+
+-------------------------------------------------------------------
 Fri Feb 23 11:30:48 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.
