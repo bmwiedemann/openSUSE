@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 19 13:36:14 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Switch BuildRequires: pcre-devel to pcre2-devel.
+- Drop deprecated BuildRequires: update-desktop-files (providing
+  %suse_update_desktop_file macro that is no longer used).
+
+-------------------------------------------------------------------
 Mon Jun 10 12:58:50 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.2.0:

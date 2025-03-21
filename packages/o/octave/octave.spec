@@ -1,7 +1,7 @@
 #
 # spec file for package octave
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,13 +83,13 @@ BuildRequires:  libtool
 BuildRequires:  lzip
 # required for help/doc called from the tests
 BuildRequires:  makeinfo
-BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qhull_r-devel
 BuildRequires:  qrupdate-devel
 BuildRequires:  readline-devel
 BuildRequires:  suitesparse-devel
 BuildRequires:  sundials-devel
+BuildRequires:  pkgconfig(libpcre2-8)
 # Tests build requires
 BuildRequires:  unzip
 BuildRequires:  xvfb-run
@@ -111,7 +111,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  qscintilla-qt6-devel
 BuildRequires:  qt6-tools-helpgenerators
 BuildRequires:  qt6-tools-linguist
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6Gui)
