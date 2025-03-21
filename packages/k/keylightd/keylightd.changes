@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Fri Mar 07 14:51:52 UTC 2025 - suse.snooper541@passmail.net
+
+- add suse's boilerplate
+- wrap description at 70 cols
+- use more macros in spec file
+
+-------------------------------------------------------------------
+Fri Mar 07 09:42:12 UTC 2025 - suse.snooper541@passmail.net
+
+- Initial release version 1+git20240806.b7b17e3:
+  * listen to keyboard and touchpad input, and turn on the keyboard backlight while either is being used
+
