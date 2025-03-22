@@ -403,12 +403,13 @@
     <package name="evolution-ews-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="evolution-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="evolution-plugin-spamassassin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="exfat-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="exo-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="exo-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="exo-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="expat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="expect" supportstatus="unsupported"/> <!-- reason: dvd:expect -->
-    <package name="f2fs-tools" supportstatus="unsupported"/> <!-- reason: dvd:f2fs-tools -->
+    <package name="f2fs-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fcitx" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-chewing" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -472,6 +473,7 @@
     <package name="frei0r-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="fribidi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="fuse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="fuse-exfat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fuse3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fwupd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="fwupd-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1956,7 +1958,7 @@
     <package name="libext2fs2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libexttextcat" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libexttextcat-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libf2fs10" supportstatus="unsupported"/> <!-- reason: dvd:f2fs-tools -->
+    <package name="libf2fs10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfa1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfastjson4" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="libfcitx-config4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

@@ -2317,9 +2317,6 @@ unsorted:
   - clpeak 
   - clthreads-devel 
   - clucene-core-devel 
-  - cluster-glue 
-  - cluster-glue-devel 
-  - cluster-glue-libs 
   - clusterctl 
   - clusterctl-bash-completion 
   - clusterctl-fish-completion 
@@ -4031,7 +4028,6 @@ unsorted:
   - exec-maven-plugin-javadoc 
   - execstack 
   - exempi-tools 
-  - exfat-utils 
   - exif 
   - exiftool 
   - exiftran 
@@ -4737,7 +4733,6 @@ unsorted:
   - fuse-devel 
   - fuse-devel-static 
   - fuse-doc 
-  - fuse-exfat 
   - fuse-oscfs 
   - fuse2fs 
   - fuse3-devel 
@@ -10226,6 +10221,7 @@ unsorted:
   - keychain 
   - keyd 
   - keylightctl 
+  - keylightd 
   - keylime-ima-policy 
   - keysmith 
   - keysmith-lang 
@@ -12535,7 +12531,7 @@ unsorted:
   - libc++1 
   - libc++abi-devel 
   - libc++abi1 
-  - libc4core0_1_11 
+  - libc4core0_2_5 
   - libcaca-devel 
   - libcaca-ruby 
   - libcaca0-32bit 
@@ -16259,7 +16255,7 @@ unsorted:
   - librygel-renderer-gst-2_8-0 
   - librygel-ruih-2_8-0 
   - librygel-server-2_8-0 
-  - libryml0_5_0 
+  - libryml0_8_0 
   - libs2n0unstable 
   - libs3-4 
   - libs3-devel 
@@ -16708,6 +16704,7 @@ unsorted:
   - libtasn1-tools 
   - libtatsu-devel 
   - libtatsu0 
+  - libtatsu0-32bit 
   - libtbbbind_2_5-3 
   - libtbbmalloc2 
   - libtcmalloc4 
@@ -17286,61 +17283,61 @@ unsorted:
   - libwv-1_2-4 
   - libwx_base-suse-devel 
   - libwx_base-suse-nostl-devel 
-  - libwx_baseu-suse-nostl14_0_0 
-  - libwx_baseu-suse14_0_0 
-  - libwx_baseu_net-suse-nostl14_0_0 
-  - libwx_baseu_net-suse14_0_0 
-  - libwx_baseu_xml-suse-nostl14_0_0 
-  - libwx_baseu_xml-suse14_0_0 
-  - libwx_gtk2u_adv-suse14_0_0 
-  - libwx_gtk2u_aui-suse14_0_0 
-  - libwx_gtk2u_core-suse14_0_0 
-  - libwx_gtk2u_gl-suse14_0_0 
-  - libwx_gtk2u_html-suse14_0_0 
-  - libwx_gtk2u_media-suse14_0_0 
-  - libwx_gtk2u_propgrid-suse14_0_0 
-  - libwx_gtk2u_qa-suse14_0_0 
-  - libwx_gtk2u_ribbon-suse14_0_0 
-  - libwx_gtk2u_richtext-suse14_0_0 
-  - libwx_gtk2u_stc-suse14_0_0 
-  - libwx_gtk2u_xrc-suse14_0_0 
-  - libwx_gtk3u_adv-suse-nostl14_0_0 
-  - libwx_gtk3u_adv-suse14_0_0 
-  - libwx_gtk3u_aui-suse-nostl14_0_0 
-  - libwx_gtk3u_aui-suse14_0_0 
-  - libwx_gtk3u_core-suse-nostl14_0_0 
-  - libwx_gtk3u_core-suse14_0_0 
-  - libwx_gtk3u_gl-suse-nostl14_0_0 
-  - libwx_gtk3u_gl-suse14_0_0 
-  - libwx_gtk3u_html-suse-nostl14_0_0 
-  - libwx_gtk3u_html-suse14_0_0 
-  - libwx_gtk3u_media-suse-nostl14_0_0 
-  - libwx_gtk3u_media-suse14_0_0 
-  - libwx_gtk3u_propgrid-suse-nostl14_0_0 
-  - libwx_gtk3u_propgrid-suse14_0_0 
-  - libwx_gtk3u_qa-suse-nostl14_0_0 
-  - libwx_gtk3u_qa-suse14_0_0 
-  - libwx_gtk3u_ribbon-suse-nostl14_0_0 
-  - libwx_gtk3u_ribbon-suse14_0_0 
-  - libwx_gtk3u_richtext-suse-nostl14_0_0 
-  - libwx_gtk3u_richtext-suse14_0_0 
-  - libwx_gtk3u_stc-suse-nostl14_0_0 
-  - libwx_gtk3u_stc-suse14_0_0 
-  - libwx_gtk3u_webview-suse14_0_0 
-  - libwx_gtk3u_xrc-suse-nostl14_0_0 
-  - libwx_gtk3u_xrc-suse14_0_0 
-  - libwx_qtu_adv-suse14_0_0 
-  - libwx_qtu_aui-suse14_0_0 
-  - libwx_qtu_core-suse14_0_0 
-  - libwx_qtu_gl-suse14_0_0 
-  - libwx_qtu_html-suse14_0_0 
-  - libwx_qtu_media-suse14_0_0 
-  - libwx_qtu_propgrid-suse14_0_0 
-  - libwx_qtu_qa-suse14_0_0 
-  - libwx_qtu_ribbon-suse14_0_0 
-  - libwx_qtu_richtext-suse14_0_0 
-  - libwx_qtu_stc-suse14_0_0 
-  - libwx_qtu_xrc-suse14_0_0 
+  - libwx_baseu-suse-nostl15_0_0 
+  - libwx_baseu-suse15_0_0 
+  - libwx_baseu_net-suse-nostl15_0_0 
+  - libwx_baseu_net-suse15_0_0 
+  - libwx_baseu_xml-suse-nostl15_0_0 
+  - libwx_baseu_xml-suse15_0_0 
+  - libwx_gtk2u_adv-suse15_0_0 
+  - libwx_gtk2u_aui-suse15_0_0 
+  - libwx_gtk2u_core-suse15_0_0 
+  - libwx_gtk2u_gl-suse15_0_0 
+  - libwx_gtk2u_html-suse15_0_0 
+  - libwx_gtk2u_media-suse15_0_0 
+  - libwx_gtk2u_propgrid-suse15_0_0 
+  - libwx_gtk2u_qa-suse15_0_0 
+  - libwx_gtk2u_ribbon-suse15_0_0 
+  - libwx_gtk2u_richtext-suse15_0_0 
+  - libwx_gtk2u_stc-suse15_0_0 
+  - libwx_gtk2u_xrc-suse15_0_0 
+  - libwx_gtk3u_adv-suse-nostl15_0_0 
+  - libwx_gtk3u_adv-suse15_0_0 
+  - libwx_gtk3u_aui-suse-nostl15_0_0 
+  - libwx_gtk3u_aui-suse15_0_0 
+  - libwx_gtk3u_core-suse-nostl15_0_0 
+  - libwx_gtk3u_core-suse15_0_0 
+  - libwx_gtk3u_gl-suse-nostl15_0_0 
+  - libwx_gtk3u_gl-suse15_0_0 
+  - libwx_gtk3u_html-suse-nostl15_0_0 
+  - libwx_gtk3u_html-suse15_0_0 
+  - libwx_gtk3u_media-suse-nostl15_0_0 
+  - libwx_gtk3u_media-suse15_0_0 
+  - libwx_gtk3u_propgrid-suse-nostl15_0_0 
+  - libwx_gtk3u_propgrid-suse15_0_0 
+  - libwx_gtk3u_qa-suse-nostl15_0_0 
+  - libwx_gtk3u_qa-suse15_0_0 
+  - libwx_gtk3u_ribbon-suse-nostl15_0_0 
+  - libwx_gtk3u_ribbon-suse15_0_0 
+  - libwx_gtk3u_richtext-suse-nostl15_0_0 
+  - libwx_gtk3u_richtext-suse15_0_0 
+  - libwx_gtk3u_stc-suse-nostl15_0_0 
+  - libwx_gtk3u_stc-suse15_0_0 
+  - libwx_gtk3u_webview-suse15_0_0 
+  - libwx_gtk3u_xrc-suse-nostl15_0_0 
+  - libwx_gtk3u_xrc-suse15_0_0 
+  - libwx_qtu_adv-suse15_0_0 
+  - libwx_qtu_aui-suse15_0_0 
+  - libwx_qtu_core-suse15_0_0 
+  - libwx_qtu_gl-suse15_0_0 
+  - libwx_qtu_html-suse15_0_0 
+  - libwx_qtu_media-suse15_0_0 
+  - libwx_qtu_propgrid-suse15_0_0 
+  - libwx_qtu_qa-suse15_0_0 
+  - libwx_qtu_ribbon-suse15_0_0 
+  - libwx_qtu_richtext-suse15_0_0 
+  - libwx_qtu_stc-suse15_0_0 
+  - libwx_qtu_xrc-suse15_0_0 
   - libwxcode_gtk2u_wxsqlite3-3_2-0 
   - libwxlua 
   - libwxlua-wx32-3_1_0_0 
@@ -17686,6 +17683,8 @@ unsorted:
   - limesuite 
   - limesuite-devel 
   - limesuite-udev 
+  - limine 
+  - limine-devel 
   - linbox-devel 
   - link-grammar 
   - link-grammar-devel 
@@ -24225,6 +24224,7 @@ unsorted:
   - python3-openstacksdk 
   - python3-openvino 
   - python3-openvino-telemetry 
+  - python3-openvswitch 
   - python3-openwsman 
   - python3-os-client-config 
   - python3-os-service-types 
@@ -24252,7 +24252,6 @@ unsorted:
   - python3-oslo.vmware 
   - python3-oslotest 
   - python3-osprofiler 
-  - python3-ovs 
   - python3-ovsdbapp 
   - python3-pacemaker 
   - python3-paraview 
@@ -25829,6 +25828,7 @@ unsorted:
   - python311-gpstime 
   - python311-gpt4all 
   - python311-gpxpy 
+  - python311-gql 
   - python311-graphene 
   - python311-graphene-django 
   - python311-graphql-core 
@@ -26477,8 +26477,8 @@ unsorted:
   - python311-numpy1-devel 
   - python311-numpy_1_26_4-gnu-hpc 
   - python311-numpy_1_26_4-gnu-hpc-devel 
-  - python311-numpy_2_1_3-gnu-hpc 
-  - python311-numpy_2_1_3-gnu-hpc-devel 
+  - python311-numpy_2_2_2-gnu-hpc 
+  - python311-numpy_2_2_2-gnu-hpc-devel 
   - python311-numpydoc 
   - python311-nvim-remote 
   - python311-nwdiag 
@@ -29508,6 +29508,7 @@ unsorted:
   - python312-gpstime 
   - python312-gpt4all 
   - python312-gpxpy 
+  - python312-gql 
   - python312-graphene 
   - python312-graphene-django 
   - python312-graphql-core 
@@ -30174,8 +30175,8 @@ unsorted:
   - python312-numpy1-devel 
   - python312-numpy_1_26_4-gnu-hpc 
   - python312-numpy_1_26_4-gnu-hpc-devel 
-  - python312-numpy_2_1_3-gnu-hpc 
-  - python312-numpy_2_1_3-gnu-hpc-devel 
+  - python312-numpy_2_2_2-gnu-hpc 
+  - python312-numpy_2_2_2-gnu-hpc-devel 
   - python312-numpydoc 
   - python312-nvim-remote 
   - python312-nwdiag 
@@ -33195,6 +33196,7 @@ unsorted:
   - python313-gpstime 
   - python313-gpt4all 
   - python313-gpxpy 
+  - python313-gql 
   - python313-graphene 
   - python313-graphene-django 
   - python313-graphql-core 
@@ -33844,8 +33846,8 @@ unsorted:
   - python313-numpy1-devel 
   - python313-numpy_1_26_4-gnu-hpc 
   - python313-numpy_1_26_4-gnu-hpc-devel 
-  - python313-numpy_2_1_3-gnu-hpc 
-  - python313-numpy_2_1_3-gnu-hpc-devel 
+  - python313-numpy_2_2_2-gnu-hpc 
+  - python313-numpy_2_2_2-gnu-hpc-devel 
   - python313-numpydoc 
   - python313-nvim-remote 
   - python313-nwdiag 
@@ -37075,11 +37077,6 @@ unsorted:
   - scidavis 
   - scidavis-lang 
   - scikit-hep-testdata-files 
-  - scim 
-  - scim-devel 
-  - scim-gtk 
-  - scim-gtk3 
-  - scim-lang 
   - scirenderer 
   - scirenderer-javadoc 
   - scite 
@@ -37352,6 +37349,9 @@ unsorted:
   - skrooge 
   - skrooge-lang 
   - skupper 
+  - skupper-bash-completion 
+  - skupper-fish-completion 
+  - skupper-zsh-completion 
   - sl 
   - slade 
   - slang-devel 
@@ -48772,7 +48772,7 @@ unsorted:
   - warewulf4-overlay 
   - warewulf4-overlay-rke2 
   - warewulf4-overlay-slurm 
-  - warewulf4-reference 
+  - warewulf4-reference-doc 
   - warp 
   - warp-lang 
   - warpinator 
