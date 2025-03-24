@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 21 10:20:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.15.1
+  * Fixed an issue in the new :pep:`621` ``pyproject.toml`` layout that
+    prevented Alembic's template files from being included in the ``.whl``
+    file in the distribution.
+
+-------------------------------------------------------------------
 Mon Jan 27 12:29:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.14.1
