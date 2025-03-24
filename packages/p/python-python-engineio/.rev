@@ -93,4 +93,12 @@
     <comment>- Add missing dependency python-simple-websocket</comment>
     <requestid>1222660</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fa47bde88cab2dd35932b336915857f0</srcmd5>
+    <version>4.11.2</version>
+    <time>1742819562</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1255538</requestid>
+  </revision>
 </revisionlist>

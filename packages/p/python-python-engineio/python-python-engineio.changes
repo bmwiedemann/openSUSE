@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 23 17:44:26 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 4,11,2
+  * Fix incorrect disconnection reason reported when browser page is closed (commit)
+  * Remove debugging prints :blush: (commit)
+  * Pass a reason argument to the disconnect handler #393 (commit)
+  * Add maxPayload to connection response #392 (commit) (thanks HeySMMReseller & HeySMMProvider!)
+  * Client option to disable timestamps in connection URLs #386 (commit)
+  * Return disconnected sessions as 400 errors #391 (commit)
+  * Handle unicode errors in ASGI driver #389 (commit)
+  * Replaced deprecated get_event_loop with get_running_loop #384 (commit)
+  * Remove constructs required by older, now unsupported Python versions (commit)
+  * Switched to pyenv-asyncio for async unit tests (commit)
+  * Adopted unittest.mock.AsyncMock in async unit tests instead of homegrown version (commit)
+  * Removed tests dependency on unittest.TestCase base class (commit)
+
+-------------------------------------------------------------------
 Fri Nov  8 07:49:41 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add missing dependency python-simple-websocket

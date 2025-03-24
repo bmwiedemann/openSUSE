@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-engineio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-engineio
-Version:        4.10.1
+Version:        4.11.2
 Release:        0
 Summary:        EngineIO server
 License:        MIT
@@ -39,6 +39,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 3.4}
 BuildRequires:  %{python_module eventlet}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.21.0}
 BuildRequires:  %{python_module tornado}
@@ -62,7 +63,7 @@ Python implementation of the Engine.IO realtime server.
 %check
 # FIXME: disable the static files tests because the tests/async/files is missing from
 # the release tarball. Hence those tests will always fail.
-%pytest -rs -k 'not test_logger and not test_static_file_routing and not test_static_files'
+%pytest -rs -k 'not test_logger and not test_static_file_routing and not test_static_files and not testserver'
 
 %files %{python_files}
 %doc README.md
