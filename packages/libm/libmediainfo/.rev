@@ -1563,4 +1563,12 @@ Dropped CVE-2019-11372_CVE-2019-11373.patch (merged upstream)
 </comment>
     <requestid>1231175</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e7d43d7513e579ad321882cc01e5b864</srcmd5>
+    <version>25.03</version>
+    <time>1742819503</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1255406</requestid>
+  </revision>
 </revisionlist>
