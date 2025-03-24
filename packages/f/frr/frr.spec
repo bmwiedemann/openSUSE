@@ -68,7 +68,7 @@ BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libelf)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-posix)
 BuildRequires:  pkgconfig(libprotobuf-c)
 %if 0%{?sle_version} == 150500
 BuildRequires:  libprotoc25_1_0
@@ -82,7 +82,7 @@ BuildRequires:  pkgconfig(sqlite3)
 Requires(post): %{install_info_prereq}
 Requires(pre):  %{install_info_prereq}
 Requires(pre):  shadow
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 Recommends:     logrotate
 Conflicts:      quagga
 Provides:       zebra = %{version}
@@ -247,6 +247,7 @@ autoreconf -fiv
     --enable-pbrd \
     --enable-pimd \
     --enable-pim6d \
+    --enable-pcre2posix \
     --enable-protobuf \
     --enable-ripd \
     --enable-ripngd \
