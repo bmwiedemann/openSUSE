@@ -1,4 +1,4 @@
-From 14060916576e62654be0db2f614bf8d36f4d2fa6 Mon Sep 17 00:00:00 2001
+From 149f73178b057897ecf8997c17d1ffac32932331 Mon Sep 17 00:00:00 2001
 From: Laurent Rineau <laurent.rineau@cgal.org>
 Date: Sat, 4 Jan 2025 12:27:00 +0100
 Subject: [PATCH 1/5] compatibility with CGAL-6.0 (and 5.6.x)
@@ -197,7 +197,7 @@ index 57dfb8560..e39ec9b64 100644
 2.48.1
 
 
-From 0073b6e72d56ab52d4c513917d2055d69cfc0383 Mon Sep 17 00:00:00 2001
+From ea8535f96fc059ea1c820e13f90aa0a455538629 Mon Sep 17 00:00:00 2001
 From: Laurent Rineau <laurent.rineau@cgal.org>
 Date: Sat, 13 Jul 2024 01:24:10 +0200
 Subject: [PATCH 2/5] missing include
@@ -227,7 +227,7 @@ index e39ec9b64..9e3b74293 100644
  /// projection_center.obj - circle representing center of projection with correct distance
  /// {M} .. model index
 diff --git a/src/slic3r/GUI/UserAccountCommunication.cpp b/src/slic3r/GUI/UserAccountCommunication.cpp
-index ba736891c..8f51f9f0c 100644
+index 8afc58933..712926f23 100644
 --- a/src/slic3r/GUI/UserAccountCommunication.cpp
 +++ b/src/slic3r/GUI/UserAccountCommunication.cpp
 @@ -11,6 +11,7 @@
@@ -237,12 +237,12 @@ index ba736891c..8f51f9f0c 100644
 +#include <boost/nowide/convert.hpp>
  #include <boost/nowide/cstdio.hpp>
  #include <boost/nowide/fstream.hpp>
- #include <curl/curl.h>
+ #include <boost/nowide/convert.hpp>
 -- 
 2.48.1
 
 
-From 4cc656a9841a672282bf423d8e85413b552d1ba2 Mon Sep 17 00:00:00 2001
+From 2f453d3ca3fb36003555ddf2d0640a4c33a0ff44 Mon Sep 17 00:00:00 2001
 From: Laurent Rineau <Laurent.Rineau@cgal.org>
 Date: Mon, 30 Sep 2024 11:05:55 +0200
 Subject: [PATCH 3/5] Update src/libslic3r/CutSurface.cpp
@@ -274,7 +274,7 @@ index 9e3b74293..4bc183747 100644
 2.48.1
 
 
-From 25130451ca9466ffaac96032602d4f6bde5c6e6e Mon Sep 17 00:00:00 2001
+From 0f2236b8c8b608654b36a456d11edcd3b8e93f17 Mon Sep 17 00:00:00 2001
 From: Laurent Rineau <laurent.rineau@cgal.org>
 Date: Sat, 4 Jan 2025 12:57:19 +0100
 Subject: [PATCH 4/5] use std::optional::value_or (according to review)
@@ -315,7 +315,7 @@ index 4bc183747..b21ed0e0c 100644
 2.48.1
 
 
-From 9e8d79b990f06032b68d17d0aa4cd6111e47d273 Mon Sep 17 00:00:00 2001
+From 031727610935627ae3e2ba29907bd6ab9e005231 Mon Sep 17 00:00:00 2001
 From: Andreas Schneider <asn@cryptomilk.org>
 Date: Thu, 6 Feb 2025 12:44:51 +0100
 Subject: [PATCH 5/5] Fix test_emboss with CGAL 6.0
@@ -325,7 +325,7 @@ Subject: [PATCH 5/5] Fix test_emboss with CGAL 6.0
  1 file changed, 12 insertions(+), 4 deletions(-)
 
 diff --git a/tests/libslic3r/test_emboss.cpp b/tests/libslic3r/test_emboss.cpp
-index 40f448f73..5b0750830 100644
+index cdac9b3d7..8b97ff51d 100644
 --- a/tests/libslic3r/test_emboss.cpp
 +++ b/tests/libslic3r/test_emboss.cpp
 @@ -9,6 +9,14 @@

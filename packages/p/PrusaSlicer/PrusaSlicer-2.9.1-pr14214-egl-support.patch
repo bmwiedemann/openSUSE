@@ -1,4 +1,4 @@
-From f988b341402947b6caccbc798a1e86a0cd5aed1c Mon Sep 17 00:00:00 2001
+From b94b7bb1e6e3542594a775df8b5b97170ab6e01e Mon Sep 17 00:00:00 2001
 From: Andreas Schneider <asn@cryptomilk.org>
 Date: Sat, 1 Mar 2025 10:14:57 +0100
 Subject: [PATCH] Allow to build PrusaSlicer with EGL support
@@ -11,12 +11,13 @@ turn that on!
  CMakeLists.txt                  |  4 ++++
  deps/+GLEW/GLEW.cmake           |  3 ++-
  deps/+wxWidgets/wxWidgets.cmake |  2 +-
+ src/CLI/GuiParams.cpp           |  9 ++++++---
+ src/CLI/Setup.cpp               | 10 ++++++----
  src/CMakeLists.txt              |  4 ++++
- src/PrusaSlicer.cpp             | 15 ++++++++++-----
- 5 files changed, 21 insertions(+), 7 deletions(-)
+ 6 files changed, 23 insertions(+), 9 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 25bf56b3f..968cec893 100644
+index 57b60ea62..c7defb8eb 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -35,6 +35,10 @@ endif()
@@ -43,7 +44,7 @@ index c2db9117b..b2382af38 100644
 +    -DGLEW_EGL=${SLIC3R_EGL}
 +)
 diff --git a/deps/+wxWidgets/wxWidgets.cmake b/deps/+wxWidgets/wxWidgets.cmake
-index e09f3d987..a3cded566 100644
+index 5537ff8b5..95f1cd21b 100644
 --- a/deps/+wxWidgets/wxWidgets.cmake
 +++ b/deps/+wxWidgets/wxWidgets.cmake
 @@ -51,7 +51,7 @@ add_cmake_project(wxWidgets
@@ -55,26 +56,37 @@ index e09f3d987..a3cded566 100644
          -DwxUSE_WEBREQUEST=OFF
          ${_wx_webview}
          ${_wx_secretstore}
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index b2d78e5b2..6fdf88ee3 100644
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -111,6 +111,10 @@ if (NOT WIN32 AND NOT APPLE)
-     set_target_properties(PrusaSlicer PROPERTIES OUTPUT_NAME "prusa-slicer")
- endif ()
- 
-+if (SLIC3R_EGL)
-+    target_compile_options(PrusaSlicer PRIVATE -DSLIC3R_EGL=1)
-+endif()
-+
- target_link_libraries(PrusaSlicer libslic3r libcereal slic3r-arrange-wrapper)
- 
- if (APPLE)
-diff --git a/src/PrusaSlicer.cpp b/src/PrusaSlicer.cpp
-index 5eb389344..d5d62da84 100644
---- a/src/PrusaSlicer.cpp
-+++ b/src/PrusaSlicer.cpp
-@@ -90,10 +90,12 @@ int CLI::run(int argc, char **argv)
+diff --git a/src/CLI/GuiParams.cpp b/src/CLI/GuiParams.cpp
+index f44b91651..db746ce6a 100644
+--- a/src/CLI/GuiParams.cpp
++++ b/src/CLI/GuiParams.cpp
+@@ -107,9 +107,12 @@ int start_gui_with_params(GUI::GUI_InitParams& params)
+ #if !defined(_WIN32) && !defined(__APPLE__)
+     // likely some linux / unix system
+     const char* display = boost::nowide::getenv("DISPLAY");
+-    // const char *wayland_display = boost::nowide::getenv("WAYLAND_DISPLAY");
+-    //if (! ((display && *display) || (wayland_display && *wayland_display))) {
++#ifdef SLIC3R_EGL
++    const char *wayland_display = boost::nowide::getenv("WAYLAND_DISPLAY");
++    if (! ((display && *display) || (wayland_display && *wayland_display))) {
++#else // SLIC3R_EGL
+     if (!(display && *display)) {
++#endif // SLIC3R_EGL
+         // DISPLAY not set.
+         boost::nowide::cerr << "DISPLAY not set, GUI mode not available." << std::endl << std::endl;
+         print_help(false);
+@@ -141,4 +144,4 @@ int start_as_gcode_viewer(GUI::GUI_InitParams& gui_params)
+ }
+ #else // SLIC3R_GUI
+     // If there is no GUI, we shall ignore the parameters. Remove them from the list.
+-#endif // SLIC3R_GUI
+\ No newline at end of file
++#endif // SLIC3R_GUI
+diff --git a/src/CLI/Setup.cpp b/src/CLI/Setup.cpp
+index 82e03d466..d04ecfa98 100644
+--- a/src/CLI/Setup.cpp
++++ b/src/CLI/Setup.cpp
+@@ -212,10 +212,12 @@ static bool setup_common()
      save_main_thread_id();
  
  #ifdef __WXGTK__
@@ -90,21 +102,28 @@ index 5eb389344..d5d62da84 100644
  
      // https://github.com/prusa3d/PrusaSlicer/issues/12969
      ::setenv("WEBKIT_DISABLE_COMPOSITING_MODE", "1", /* replace */ false);
-@@ -802,9 +804,12 @@ int CLI::run(int argc, char **argv)
-     #if !defined(_WIN32) && !defined(__APPLE__)
-         // likely some linux / unix system
-         const char *display = boost::nowide::getenv("DISPLAY");
--        // const char *wayland_display = boost::nowide::getenv("WAYLAND_DISPLAY");
--        //if (! ((display && *display) || (wayland_display && *wayland_display))) {
-+#ifdef SLIC3R_EGL
-+        const char *wayland_display = boost::nowide::getenv("WAYLAND_DISPLAY");
-+        if (! ((display && *display) || (wayland_display && *wayland_display))) {
-+#else // SLIC3R_EGL
-         if (! (display && *display)) {
-+#endif // SLIC3R_EGL
-             // DISPLAY not set.
-             boost::nowide::cerr << "DISPLAY not set, GUI mode not available." << std::endl << std::endl;
-             this->print_help(false);
+@@ -338,4 +340,4 @@ bool setup(Data& cli, int argc, char** argv)
+     return true;
+ }
+ 
+-}
+\ No newline at end of file
++}
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c6ddf2e1d..44612b102 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -140,6 +140,10 @@ if (NOT WIN32 AND NOT APPLE)
+     set_target_properties(PrusaSlicer PROPERTIES OUTPUT_NAME "prusa-slicer")
+ endif ()
+ 
++if (SLIC3R_EGL)
++    target_compile_options(PrusaSlicer PRIVATE -DSLIC3R_EGL=1)
++endif()
++
+ 
+ target_link_libraries(PrusaSlicer PRIVATE libslic3r libcereal slic3r-arrange-wrapper libseqarrange stb_image)
+ 
 -- 
 2.48.1
 

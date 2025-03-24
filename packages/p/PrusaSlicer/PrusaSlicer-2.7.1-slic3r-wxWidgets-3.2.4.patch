@@ -4,37 +4,6 @@ Date: Mon, 27 Nov 2023 13:01:55 +0100
 Subject: [PATCH] Make initializers explicit to avoid ambiguous wxArrayString
  overloads
 
----
- src/slic3r/GUI/PhysicalPrinterDialog.cpp | 2 +-
- src/slic3r/GUI/Plater.cpp                | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-Index: PrusaSlicer-version_2.9.0/src/slic3r/GUI/PhysicalPrinterDialog.cpp
-===================================================================
---- PrusaSlicer-version_2.9.0.orig/src/slic3r/GUI/PhysicalPrinterDialog.cpp	2024-12-20 12:54:34.000000000 +0100
-+++ PrusaSlicer-version_2.9.0/src/slic3r/GUI/PhysicalPrinterDialog.cpp	2024-12-20 15:32:12.247773628 +0100
-@@ -607,7 +607,7 @@ void PhysicalPrinterDialog::build_printh
-     // Always fill in the "printhost_port" combo box from the config and select it.
-     {
-         Choice* choice = dynamic_cast<Choice*>(m_optgroup->get_field("printhost_port"));
--        choice->set_values({ m_config->opt_string("printhost_port") });
-+        choice->set_values(std::vector<std::string>({ m_config->opt_string("printhost_port") }));
-         choice->set_selection();
-     }
- 
-Index: PrusaSlicer-version_2.9.0/src/slic3r/GUI/Plater.cpp
-===================================================================
---- PrusaSlicer-version_2.9.0.orig/src/slic3r/GUI/Plater.cpp	2024-12-20 12:54:34.000000000 +0100
-+++ PrusaSlicer-version_2.9.0/src/slic3r/GUI/Plater.cpp	2024-12-20 15:32:12.251106999 +0100
-@@ -4420,7 +4420,7 @@ void Plater::load_project(const wxString
-     s_multiple_beds.set_loading_project_flag(true);
-     ScopeGuard guard([](){ s_multiple_beds.set_loading_project_flag(false);});
- 
--    if (! load_files({ into_path(filename) }).empty()) {
-+    if (! load_files(std::vector<boost::filesystem::path>({ into_path(filename) })).empty()) {
-         // At least one file was loaded.
-         p->set_project_filename(filename);
-         // Save the names of active presets and project specific config into ProjectDirtyStateManager.
 Index: PrusaSlicer-version_2.9.0/src/slic3r/Utils/PrusaConnect.cpp
 ===================================================================
 --- PrusaSlicer-version_2.9.0.orig/src/slic3r/Utils/PrusaConnect.cpp	2024-12-20 12:54:34.000000000 +0100

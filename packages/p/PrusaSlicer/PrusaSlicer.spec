@@ -16,15 +16,27 @@
 #
 
 
+%global base_version 2.9.1
+
+%global prusa_slicer_version %{base_version}
+%global prusa_slicer_tarball_version %{base_version}
+
+# %%define pre_release %%nil
+# FIXME: The source validator has issues handling %%nil
+# %%if "x%%{?pre_release}" != "x"
+# %%global prusa_slicer_version %%{base_version}~%%{pre_release}
+# %%global prusa_slicer_tarball_version %%{base_version}-%%{pre_release}
+# %%endif
+
 Name:           PrusaSlicer
-Version:        2.9.0
+Version:        %{prusa_slicer_version}
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
 Group:          Hardware/Printing
 URL:            https://www.prusa3d.com/prusaslicer/
 # SourceRepository: https://github.com/prusa3d/PrusaSlicer
-Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-version_%{version}.tar.gz
+Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{prusa_slicer_tarball_version}.tar.gz#/%{name}-version_%{prusa_slicer_tarball_version}.tar.gz
 # PATCH-FIX-UPSTREAM PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch gh#prusa3d/PrusaSlicer#11769
 Patch1:         PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch
 # PATCH-FIX-UPSTREAM prusaslicer-2.8.1-boost-1.87.0-asio.patch gh#prusa3d/PrusaSlicer#13799 gentoo#946495
@@ -33,8 +45,6 @@ Patch2:         prusaslicer-2.8.1-boost-1.87.0-asio.patch
 Patch10:        PrusaSlicer-2.8.1-pr13761-fix-occtwrapper.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.6.0-octoprint-name-fix.patch -- cast lambda expression to same type
 Patch11:        PrusaSlicer-2.6.0-octoprint-name-fix.patch
-# PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr13896-static-libs.patch gh#prusa3d/PrusaSlicer#13896
-Patch12:        PrusaSlicer-2.9.0-pr13896-static-libs.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr13885-printconfig-segfault.patch gh#prusa3d/PrusaSlicer#13885
 Patch13:        PrusaSlicer-2.9.0-pr13885-printconfig-segfault.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr14010-fix-curl.patch gh#prusa3d/PrusaSlicer#14010
@@ -43,6 +53,8 @@ Patch14:        PrusaSlicer-2.9.0-pr14010-fix-curl.patch
 Patch15:        PrusaSlicer-2.9.0-pr13081-cgal6.0.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.1-pr14214-egl-support.patch gh#prusa3d/PrusaSlicer#14214
 Patch16:        PrusaSlicer-2.9.1-pr14214-egl-support.patch
+# PATCH-FIX-OPENSUSE PrusaSlicer-2.9.1-pr14263-secretstorage.patch gh#prusa3d/PrusaSlicer#14263
+Patch17:        PrusaSlicer-2.9.1-pr14263-secretstorage.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 5.6
@@ -83,9 +95,10 @@ BuildRequires:  tbb-devel
 BuildRequires:  wxGTK3-devel >= 3.2
 # need the fltk fork, see deps/NanoSVG/NanoSVG.cmake
 BuildRequires:  nanosvg-devel >= 2022.12.22
-BuildRequires:  (cmake(Catch2) >= 2.9 with cmake(Catch2) < 3)
+BuildRequires:  cmake(Catch2) >= 3.8
 BuildRequires:  cmake(LibBGCode)
 BuildRequires:  cmake(Qhull)
+BuildRequires:  cmake(Z3)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
@@ -107,7 +120,7 @@ all those based on the Marlin, Prusa, Sprinter and Repetier firmware.
 It also works with Mach3, LinuxCNC and Machinekit controllers.
 
 %prep
-%autosetup -p1 -n %{name}-version_%{version}
+%autosetup -p1 -n %{name}-version_%{prusa_slicer_tarball_version}
 %if 0%{?suse_version}
 sed -i 's/UNKNOWN/%{release}-%{?is_opensuse:open}SUSE-%{suse_version}/' version.inc
 %endif
@@ -117,6 +130,9 @@ rm resources/udev/90-3dconnexion.rules
 sed -i "s|find_package(Qhull 7.2 REQUIRED)|find_package(Qhull 8.0.2 REQUIRED)|" src/CMakeLists.txt
 # Disable slic3r_jobs_tests.cpp as the test fails sometimes
 sed -i 's|slic3r_jobs_tests.cpp||' tests/slic3rutils/CMakeLists.txt
+# Disable libseqarrange_tests as it looks like they are stuck in an infinite
+# loop somewhere in Z3_solver_get_model
+sed -i 's|SLIC3R_BUILD_TESTS|FALSE|' src/libseqarrange/CMakeLists.txt
 
 %build
 # The build process really acquires that much memory per job. We are
@@ -129,8 +145,8 @@ sed -i 's|slic3r_jobs_tests.cpp||' tests/slic3rutils/CMakeLists.txt
 export CC=gcc-%gcc_ver CXX=g++-%gcc_ver
 %cmake \
   -DCMAKE_CXX_STANDARD=17 \
-  -DSLIC3R_EGL=1 \
-  -DSLIC3R_FHS=1 \
+  -DSLIC3R_EGL=ON \
+  -DSLIC3R_FHS=ON \
   -DSLIC3R_GTK=3 \
   -DOPENVDB_FIND_MODULE_PATH=%{_libdir}/cmake/OpenVDB
 %cmake_build
