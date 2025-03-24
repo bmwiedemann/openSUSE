@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 22 10:04:33 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.16.6:
+  * chore: release 0.16.6 (#2007)
+  * docs: add Zypper to the package managers in which asdf is available (#2031)
+  * fix: remove filtering from latest-stable call (#2032)
+  * chore: ignore case for value of `ASDF_FORCE_PREPEND` environment variable (#2026)
+  * fix: remove install directory for version when install fails (#2024)
+  * fix: improve zsh completion suggestions (#2022)
+  * fix: correct concurrency to align with documentation (#2014)
+  * fix: correct handling of `ASDF_FORCE_PREPEND` environment variable (#2011)
+  * chore(deps): bump golang.org/x/net from 0.33.0 to 0.36.0 (#2017)
+  * fix: correct ASDF_INSTALL_* envvar unset test (#2006)
+
+-------------------------------------------------------------------
 Tue Mar 04 15:57:14 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.16.5:
