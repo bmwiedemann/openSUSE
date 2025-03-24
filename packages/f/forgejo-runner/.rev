@@ -152,4 +152,15 @@
     <comment>- add patch fix-CVE-2025-22869.patch, fixes bsc#1239488 bsc#1234574 (forwarded request 1252445 from rrahl0)</comment>
     <requestid>1252446</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f678307ceecbf1223e62f470d7b58dd6</srcmd5>
+    <version>6.3.0</version>
+    <time>1742819427</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.3.0:
+  * Caches are now correctly scoped to repositories. Require authentication for
+    cache requests, and set up cache proxy to provide authentication
+    transparently and automatically. (forwarded request 1255250 from rrahl0)</comment>
+    <requestid>1255251</requestid>
+  </revision>
 </revisionlist>

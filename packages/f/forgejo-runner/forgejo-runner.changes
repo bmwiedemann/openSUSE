@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 22 12:52:50 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 6.3.0:
+  * Caches are now correctly scoped to repositories. Require authentication for
+    cache requests, and set up cache proxy to provide authentication
+    transparently and automatically.
+
+-------------------------------------------------------------------
 Wed Mar 12 13:14:02 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add patch fix-CVE-2025-22869.patch, fixes bsc#1239488 bsc#1234574
