@@ -1,7 +1,7 @@
 #
 # spec file for package tinyobjloader
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,11 +24,10 @@ Version:        2.0.0rc9
 Release:        0
 Summary:        Wavefront .obj file loader
 License:        MIT
-Group:          Development/Languages/C and C++
 URL:            https://github.com/tinyobjloader/tinyobjloader
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         tinyobjloader-fix-cmake-path.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
@@ -38,7 +37,6 @@ It can parse over 10M polygons with moderate memory and time.
 
 %package -n %{lname}
 Summary:        Wavefront .obj file loader
-Group:          System/Libraries
 
 %description -n %{lname}
 A single-file Wavefront .obj loader written in C++.
@@ -46,7 +44,6 @@ It can parse over 10M polygons with moderate memory and time.
 
 %package devel
 Summary:        Development files for tinyobjloader
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
@@ -62,12 +59,16 @@ applications that want to make use of tinyobjloader.
 
 %build
 %cmake \
-    -DTINYOBJLOADER_COMPILATION_SHARED=ON
+    -DTINYOBJLOADER_COMPILATION_SHARED=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %make_jobs
 
 %install
 %cmake_install
 rm -f %{buildroot}/%{_datadir}/doc/packages/tinyobjloader/LICENSE
+
+%check
+%ctest
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
