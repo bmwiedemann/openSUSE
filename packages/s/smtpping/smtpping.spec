@@ -22,11 +22,10 @@ Version:        1.1.4
 Release:        0
 Summary:        A tool for measuring SMTP server delay, delay variation and throughput
 License:        GPL-2.0-only
-Group:          Productivity/Networking/Other
 URL:            https://github.com/halon/smtpping
 #Git-Clone:     https://github.com/halon/smtpping.git
 Source:         https://github.com/halon/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 
 %description
@@ -37,10 +36,14 @@ A tool for measuring SMTP server delay, delay variation and throughput.
 
 %build
 %cmake \
-    -DMAN_INSTALL_DIR="%{_mandir}"
+    -DMAN_INSTALL_DIR="%{_mandir}" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %license LICENSE
