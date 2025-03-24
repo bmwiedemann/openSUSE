@@ -1937,4 +1937,15 @@ Changes:
 - Fixed --shell option for container builds</comment>
     <requestid>1253058</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>a86bceba478f415607ae640fade91885</srcmd5>
+    <version>20250321</version>
+    <time>1742819122</time>
+    <user>anag+factory</user>
+    <comment>- RemoteAsset support:
+   * Implement automatic packaging of directories into tar balls
+   * Support a 'keepmeta' query parameter in git assets
+   * Support git checkout by commit like with the obs scm bridge</comment>
+    <requestid>1255056</requestid>
+  </revision>
 </revisionlist>
