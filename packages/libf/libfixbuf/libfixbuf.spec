@@ -30,7 +30,6 @@ Source1:        %{name}-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  glib2-devel
 BuildRequires:  libtool
-BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 
 %description
