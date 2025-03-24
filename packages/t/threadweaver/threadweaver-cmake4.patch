@@ -1,0 +1,36 @@
+From 7049a1591d23f6bc2835ad7982c5c6e63985aaa0 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Wed, 19 Feb 2025 22:33:09 +0100
+Subject: [PATCH] Increase required CMake version for example
+
+CMake 4.0 will drop support for min. versions < 3.5, so we need to bump this
+
+3.16 was chosen because it's the current min. for threadweaver itself
+---
+ examples/HelloWorld/CMakeLists.txt | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/examples/HelloWorld/CMakeLists.txt b/examples/HelloWorld/CMakeLists.txt
+index 64c7ae2..8860a5d 100644
+--- a/examples/HelloWorld/CMakeLists.txt
++++ b/examples/HelloWorld/CMakeLists.txt
+@@ -2,15 +2,10 @@
+ # https://cmake.org/documentation/
+ # https://community.kde.org/Guidelines_and_HOWTOs/CMake
+ ##@@snippet_begin(adding_tw_1)
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.16)
+ find_package(ECM 1.1.0 REQUIRED NO_MODULE)
+ ##@@snippet_end
+ 
+-if(POLICY CMP0063)
+-    cmake_policy(SET CMP0063 NEW)
+-endif()
+-
+-
+ if (NOT TARGET KF5ThreadWeaver)
+   # Find the ThreadWeaver framework when we compiling this example stand-alone
+ ##@@snippet_begin(adding_tw_2)
+-- 
+2.49.0
+

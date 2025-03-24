@@ -990,4 +990,12 @@
     <comment>KDE Frameworks 5.116 (forwarded request 1173590 from krop)</comment>
     <requestid>1175188</requestid>
   </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>0248a525af5ee72c023871846ca7f79e</srcmd5>
+    <version>5.116.0</version>
+    <time>1742819120</time>
+    <user>anag+factory</user>
+    <comment>CMake 4 fix</comment>
+    <requestid>1255011</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 21 13:06:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Backport upstream change:
+  * threadweaver-cmake4.patch
+
+-------------------------------------------------------------------
 Mon May  6 11:33:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.116.0

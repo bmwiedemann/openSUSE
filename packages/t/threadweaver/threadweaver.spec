@@ -34,6 +34,8 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-UPSTREAM -- cmake 4 compat
+Patch0:         threadweaver-cmake4.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
