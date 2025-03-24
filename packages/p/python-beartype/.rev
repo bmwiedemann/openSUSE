@@ -266,4 +266,21 @@
 - Drop fix-python313.patch</comment>
     <requestid>1248085</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ab44218b6b856004d62aaba60dcb62b6</srcmd5>
+    <version>0.20.2</version>
+    <time>1742819514</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.20.2:
+  * @beartype `0.20.2` apologizes for the bald-faced
+    transgressions of @beartype `0.20.1`, which tried to resolve
+    issue #512 for @rg936672 but mostly did nothing except sit
+    around and read fantasy books.
+- update to 0.20.1:
+  * @beartype `0.20.1` materializes before your astonished
+    keyboard with an explosive fizzy sizzling not unlike that of
+    a flimsy soda can bursting its aluminum seams all over your
+    astonished keyboard:</comment>
+    <requestid>1255453</requestid>
+  </revision>
 </revisionlist>
