@@ -1,6 +1,7 @@
 #
 # spec file for package xtrx_lms7002m
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +28,7 @@ Group:          Development/Libraries/C and C++
 URL:            http://xtrx.io
 Source:         %{name}-%{version}.tar.xz
 Patch0:         xtrx_lms7002m-set-soversion.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  git-core
 BuildRequires:  pkgconfig
 
@@ -52,7 +53,6 @@ XTRX's fork from myriadrf/LMS7002M-driver.
 This subpackage contains libraries and header files for developing
 applications that want to make use of xtrx_lms7002m.
 
-
 %prep
 %autosetup -p1
 
@@ -60,11 +60,15 @@ applications that want to make use of xtrx_lms7002m.
 %cmake \
     -DLIB_LMS7002M_NAME="xtrx_lms7002m" \
     -DBUILD_SHARED_LIBS=ON \
-    -DCMAKE_SHARED_LINKER_FLAGS=""
+    -DCMAKE_SHARED_LINKER_FLAGS="" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %make_jobs
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
