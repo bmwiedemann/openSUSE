@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.3
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.9
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Supplements:    nautilus
+Requires:       evince-plugin-pdfdocument
 Requires:       (typelib(LOKDocView) if libreoffice)
 Requires:       typelib(WebKit2) = 4.1
 
