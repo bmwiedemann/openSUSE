@@ -20,7 +20,7 @@
 %else
 %bcond_with budgie_10_8
 %endif
-%if %{pkg_vcmp budgie-desktop-devel >= 10.9.2}
+%if %{pkg_vcmp budgie-desktop-devel >= 10.10}
 %bcond_without wayland
 %else
 %bcond_with wayland

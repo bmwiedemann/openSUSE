@@ -208,4 +208,13 @@
 </comment>
     <requestid>1252170</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9c23aae0caa94349e5a5f63634f7db92</srcmd5>
+    <version>1.9.0</version>
+    <time>1742819261</time>
+    <user>anag+factory</user>
+    <comment>- Wayland only from Budgie Desktop 10.10 onwards
+</comment>
+    <requestid>1255073</requestid>
+  </revision>
 </revisionlist>

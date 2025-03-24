@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 21 17:27:09 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Wayland only from Budgie Desktop 10.10 onwards
+
+-------------------------------------------------------------------
 Tue Mar 11 17:16:46 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add patches to fix typelib requires parsing errors:
