@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 22 09:39:16 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.0
+  * Added workaround and warnings for session login when the
+    service incorrectly does not provide the session location in
+    the 'Location' response header.
+  * Minor typo fix in exception message for login failures.
+
+-------------------------------------------------------------------
 Sat Mar  8 10:03:55 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.9
