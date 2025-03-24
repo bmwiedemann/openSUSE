@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 19 05:52:36 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- poco-devel needs to require pcre2-devel, not pcre-devel
+
+-------------------------------------------------------------------
 Mon Feb 24 10:47:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile

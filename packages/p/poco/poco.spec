@@ -70,7 +70,7 @@ Requires:       libexpat-devel
 Requires:       libmysqlclient-devel
 Requires:       libstdc++-devel
 Requires:       openssl-devel
-Requires:       pcre-devel
+Requires:       pcre2-devel
 Requires:       poco-cpspc = %{version}
 Requires:       unixODBC-devel
 Provides:       libpoco-devel = %{version}
