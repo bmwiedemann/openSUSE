@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 23 21:41:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * Fix RFC9207 iss parameter.
+  * Fix token introspection auth method for clients.
+  * Optional typ claim in JWT tokens.
+  * JWT validation leeway.
+  * Implement server-side :rfc:`RFC9207 <9207>`.
+  * generate_id_token can take a kid parameter.
+  * More detailed InvalidClientError.
+  * OpenID Connect Dynamic Client Registration implementation.
+
+-------------------------------------------------------------------
 Thu Feb  6 11:41:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.4.1

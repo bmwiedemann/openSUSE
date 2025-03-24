@@ -182,4 +182,20 @@
     <comment></comment>
     <requestid>1244113</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e5c611f454345eb759dcd7ac849156cb</srcmd5>
+    <version>1.5.1</version>
+    <time>1742819515</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.1:
+  * Fix RFC9207 iss parameter.
+  * Fix token introspection auth method for clients.
+  * Optional typ claim in JWT tokens.
+  * JWT validation leeway.
+  * Implement server-side :rfc:`RFC9207 &lt;9207&gt;`.
+  * generate_id_token can take a kid parameter.
+  * More detailed InvalidClientError.
+  * OpenID Connect Dynamic Client Registration implementation.</comment>
+    <requestid>1255455</requestid>
+  </revision>
 </revisionlist>
