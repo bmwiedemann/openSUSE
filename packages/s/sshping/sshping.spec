@@ -21,10 +21,9 @@ Version:        0.1.4+git20230317
 Release:        0
 Summary:        SSH server auditing
 License:        MIT
-Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/spook/sshping
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libssh)
@@ -40,11 +39,14 @@ dummy file over scp to /dev/null on the remote system.
 %setup -q
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %license LICENSE
