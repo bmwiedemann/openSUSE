@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 21 17:06:43 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.5 (there is no 0.20.4 release):
+  * (cargo-release) version 0.20.5
+  * switch back to ring
+  * (cargo-release) version 0.20.4
+  * Update kube requirement from 0.98 to 0.99 (#254)
+  * add Cargo.lock back
+  * Bump mozilla-actions/sccache-action from 0.0.7 to 0.0.8
+
+-------------------------------------------------------------------
 Thu Jan 09 14:16:36 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.20.3:
