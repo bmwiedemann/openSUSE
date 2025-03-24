@@ -369,4 +369,12 @@
 - update runtime dependencies, according to requirements.txt (forwarded request 1251847 from rrahl0)</comment>
     <requestid>1253358</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d50d7739d5a4364882acca24ff9395f7</srcmd5>
+    <version>1.73.0</version>
+    <time>1742819325</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1255104</requestid>
+  </revision>
 </revisionlist>

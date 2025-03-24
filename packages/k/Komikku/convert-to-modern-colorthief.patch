@@ -1,6 +1,6 @@
 diff -rub komikku/komikku/models/database/mangas.py komikku-patched/komikku/models/database/mangas.py
---- komikku/komikku/models/database/mangas.py	2025-03-02 22:25:37.000000000 +0100
-+++ komikku-patched/komikku/models/database/mangas.py	2025-03-03 14:49:41.439611884 +0100
+--- komikku/komikku/models/database/mangas.py	2025-03-20 23:48:44.000000000 +0100
++++ komikku-patched/komikku/models/database/mangas.py	2025-03-21 17:52:14.256373778 +0100
 @@ -11,7 +11,7 @@
  import shutil
  import time
@@ -10,7 +10,7 @@ diff -rub komikku/komikku/models/database/mangas.py komikku-patched/komikku/mode
  
  from komikku.models.database import create_db_connection
  from komikku.models.database import insert_row
-@@ -135,7 +135,7 @@
+@@ -137,7 +137,7 @@
              return None
  
          colors = [':root {\n']
@@ -20,9 +20,10 @@ diff -rub komikku/komikku/models/database/mangas.py komikku-patched/komikku/mode
          colors.append('\t--backdrop-background-color-2: var(--window-bg-color);\n')
          colors.append('}\n')
 diff -rub komikku/requirements.txt komikku-patched/requirements.txt
---- komikku/requirements.txt	2025-03-02 22:25:37.000000000 +0100
-+++ komikku-patched/requirements.txt	2025-03-03 14:48:27.889567961 +0100
-@@ -1,6 +1,6 @@
+--- komikku/requirements.txt	2025-03-20 23:48:44.000000000 +0100
++++ komikku-patched/requirements.txt	2025-03-21 17:51:09.535367568 +0100
+@@ -4,7 +4,7 @@
+ 
  beautifulsoup4
  brotli >= 1.1.0
 -colorthief

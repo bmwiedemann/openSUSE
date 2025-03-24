@@ -18,15 +18,14 @@
 
 %define         appid info.febvre.Komikku
 Name:           Komikku
-Version:        1.72.0
+Version:        1.73.0
 Release:        0
 Summary:        A manga reader for GNOME
 # appdata.xml is CC-BY-4.0
 License:        CC-BY-4.0 AND GPL-3.0-or-later
 URL:            https://codeberg.org/valos/Komikku
-Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         convert-to-modern-colorthief.patch
-Patch1:         fix-quotes.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -39,7 +38,7 @@ BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(blueprint-compiler)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(python3)
 Requires:       WebKitGTK-6.0
