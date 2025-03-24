@@ -1,7 +1,7 @@
 #
 # spec file for package vncmanager
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ BuildRequires:  libboost_program_options-devel
 %else
 BuildRequires:  boost-devel
 %endif
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libgnutls-devel
 BuildRequires:  pkg-config
@@ -46,7 +46,6 @@ URL:            https://github.com/openSUSE/vncmanager
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Session manager for VNC
 License:        MIT
-Group:          System/X11/Utilities
 Source:         vncmanager-%{version}.tar.gz
 Source1:        tmpfile.conf
 Patch1:         n_use_port_5901.patch
@@ -82,7 +81,7 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
 %autosetup -p1
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_VERBOSE_MAKEFILE=ON
+%cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
 %install
@@ -96,6 +95,9 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/%{name}.conf
 # systemd
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcvncmanager
+
+%check
+%ctest
 
 %files
 %defattr(-,root,root)
