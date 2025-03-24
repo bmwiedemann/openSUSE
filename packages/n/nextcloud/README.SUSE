@@ -8,9 +8,29 @@ opcache.enable=On
 opcache.enable_cli=1
 opcache.interned_strings_buffer=16
 opcache.max_accelerated_files=10000
-opcache.memory_consumption=128
+opcache.memory_consumption=152
 opcache.save_comments=1
 opcache.revalidate_freq=1
 
 Also you should set the memory_limit to somthing like >=512MB in
 /etc/php8/apache2/php.ini and /etc/php8/cli/php.ini
+
+To change table row_format you can use following script:
+
+#!/bin/bash
+
+# Prompt for database credentials
+read -p "Enter Database Name: " DB_NAME
+read -p "Enter Username: " DB_USER
+read -s -p "Enter Password: " DB_PASS
+echo
+
+# Generate ALTER TABLE statements and execute them
+mysql -u "$DB_USER" -p"$DB_PASS" -e "
+SELECT CONCAT('ALTER TABLE \`', TABLE_NAME, '\` ROW_FORMAT=DYNAMIC;')
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_SCHEMA = '$DB_NAME'
+AND ENGINE = 'InnoDB';
+" -B -N | while read -r sql; do
+    mysql -u "$DB_USER" -p"$DB_PASS" -e "$sql" "$DB_NAME"
+done

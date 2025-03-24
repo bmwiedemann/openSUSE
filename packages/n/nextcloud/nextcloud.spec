@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        30.0.8
+Version:        31.0.2
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -86,7 +86,7 @@ Requires:       php-zip
 #
 %if 0%{?fedora_version} || 0%{?rhel} || 0%{?rhel_version} || 0%{?centos_version}
 Requires:       php < 8.4.0
-Requires:       php >= 8.1.0
+Requires:       php >= 8.2.0
 Requires:       php-process
 Requires:       php-xml
 Recommends:     sqlite
@@ -141,7 +141,7 @@ BuildRequires:  apache2 >= 2.4
 Requires:       %{name} = %{version}
 Requires:       apache2
 Requires:       mod_php_any < 8.4.0
-Requires:       mod_php_any >= 8.1.0
+Requires:       mod_php_any >= 8.2.0
 Supplements:    packageand(apache2:%name)
 
 %description apache
@@ -193,8 +193,7 @@ sed -i -e"s|@DATAPATH@|${ncpath}|g" $RPM_BUILD_ROOT/%{apache_confdir}/nextcloud.
 rm -f ${idir}/indie.json
 
 %if 0%{?suse_version}
-# link duplicate doc files
-%fdupes -s $RPM_BUILD_ROOT/%{apache_myserverroot}/%{name}
+%fdupes %buildroot%{apache_myserverroot}/%{name}
 %endif
 
 # CronJob
@@ -275,15 +274,16 @@ fi
 if [ -s %{statedir}/occ_maintenance_mode_during_nextcloud_install ]; then
   echo "o %{name} post-install: occ maintenance:repair (fix possible errors)"
   su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:repair" || true
+  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:repair --include-expensive" || true
+  echo "o %{name} post-install: occ update apps"
+  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ app:update --all" || true
+  echo "o %{name} post-install: occ upgrade"
+  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ upgrade" || true
   echo "o %{name} post-install: occ db:add-missing-* (add missing db things)"
   su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mimetype:update-db" || true
   su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-columns" || true
   su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-indices" || true
   su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-primary-keys" || true
-  echo "o %{name} post-install: occ update apps"
-  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ app:update --all" || true
-  echo "o %{name} post-install: occ upgrade"
-  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ upgrade" || true
   echo "o %{name} post-install: occ maintenance:mode --off"
   su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mode --off" || true
 fi
