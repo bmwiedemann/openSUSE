@@ -1,7 +1,7 @@
 #
 # spec file for package time
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=94790#/%{nam
 # PATCH-FIX-OPENSUSE disable-time-max-rss-test.patch bsc#1211092
 Patch1:         disable-time-max-rss-test.patch
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 
 %description
 The "time" command runs another program, then displays information
@@ -44,6 +44,7 @@ while the program was running.
 %endif
 
 %build
+export CFLAGS="%{optflags} -std=gnu99"
 %configure
 make %{?_smp_mflags}
 

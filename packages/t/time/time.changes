@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 21 12:43:16 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Use -std=gnu99 to avoid traps from C23 made default with GCC 15. 
+
+-------------------------------------------------------------------
 Mon Feb 26 14:48:17 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.
