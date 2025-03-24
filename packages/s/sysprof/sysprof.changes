@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 23 19:15:06 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- Build with PIE when using gcc11. Add conditional gcc11-PIE
+  BuildRequires (bsc#1239964).
+
+-------------------------------------------------------------------
 Sun Mar 16 09:05:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:

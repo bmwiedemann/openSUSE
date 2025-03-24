@@ -35,6 +35,7 @@ Patch1:         explicitly-include-unistd.patch
 BuildRequires:  c++_compiler
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 BuildRequires:  gcc11
+BuildRequires:  gcc11-PIE
 BuildRequires:  gcc11-c++
 %endif
 BuildRequires:  desktop-file-utils

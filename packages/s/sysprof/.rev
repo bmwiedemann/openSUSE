@@ -328,4 +328,14 @@
     <comment>New stable rel (forwarded request 1253470 from iznogood)</comment>
     <requestid>1253716</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>825b2838e525dec656cae30c3b60fbfa</srcmd5>
+    <version>48.0</version>
+    <time>1742819536</time>
+    <user>anag+factory</user>
+    <comment>- Build with PIE when using gcc11. Add conditional gcc11-PIE
+  BuildRequires (bsc#1239964).
+</comment>
+    <requestid>1255503</requestid>
+  </revision>
 </revisionlist>
