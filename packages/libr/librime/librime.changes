@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 22 13:09:45 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- fix Leap 15.6 build
+  * add patch librime-boost166.patch
+
+-------------------------------------------------------------------
 Fri Mar 01 15:20:39 UTC 2024 - rrahl0@proton.me
 
 - remove one of the source downloaders (download_files)

@@ -280,4 +280,14 @@
     <comment>fixed version string</comment>
     <requestid>1154285</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>82a5e9340cb6d445701f0e7508195f16</srcmd5>
+    <version>1.10.0+git20240229.4ee471e</version>
+    <time>1742819432</time>
+    <user>anag+factory</user>
+    <comment>- fix Leap 15.6 build
+  * add patch librime-boost166.patch
+</comment>
+    <requestid>1255257</requestid>
+  </revision>
 </revisionlist>

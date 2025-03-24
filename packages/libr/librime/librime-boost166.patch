@@ -1,0 +1,26 @@
+Index: librime-1.10.0+git20240229.4ee471e/CMakeLists.txt
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/CMakeLists.txt
++++ librime-1.10.0+git20240229.4ee471e/CMakeLists.txt
+@@ -60,7 +60,7 @@ if(MSVC)
+ endif()
+ 
+ if(LINUX)
+-  find_package(Boost 1.74.0 REQUIRED COMPONENTS regex)
++  find_package(Boost 1.66.0 REQUIRED COMPONENTS regex filesystem)
+ else()
+   find_package(Boost 1.77.0)
+ endif()
+Index: librime-1.10.0+git20240229.4ee471e/plugins/plugins_module.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/plugins/plugins_module.cc
++++ librime-1.10.0+git20240229.4ee471e/plugins/plugins_module.cc
+@@ -49,7 +49,7 @@ void PluginManager::LoadPlugins(path plu
+           LOG(INFO) << "loading plugin '" << plugin_name << "' from "
+                     << plugin_file;
+           try {
+-            auto plugin_lib = boost::dll::shared_library(plugin_file);
++            auto plugin_lib = boost::dll::shared_library(boost::filesystem::path(plugin_file));
+             plugin_libs_[plugin_name] = plugin_lib;
+           } catch (const std::exception& ex) {
+             LOG(ERROR) << "error loading plugin " << plugin_name << ": "

@@ -1,7 +1,7 @@
 #
 # spec file for package librime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,15 @@ License:        BSD-3-Clause
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/librime
 Source:         %{name}-%{version}.tar.xz
+#PATCH-FIX-OPENSUSE lower boost requirement to make leap 15.6 happy
+Patch0:         %{name}-boost166.patch
 BuildRequires:  capnproto >= 0.7.0
 BuildRequires:  cmake >= 3.1.0
+%if 0%{suse_version} == 1500
+BuildRequires:  gcc8-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  glog-devel
 BuildRequires:  googletest-devel
 BuildRequires:  leveldb-devel
@@ -93,10 +99,16 @@ Requires:       librime-devel = %{version}
 This package provides private headers of Rime to build plugins.
 
 %prep
-%autosetup -p1
+%setup -q
+%if 0%{?suse_version} == 1500
+%patch -P 0 -p 1
+%endif
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release \
+%if 0%{?suse_version} == 1500
+  -DCMAKE_CXX_COMPILER=%{_bindir}/g++-8 \
+%endif
   -DINSTALL_PRIVATE_HEADERS=On \
   -DENABLE_EXTERNAL_PLUGINS=On \
   -DBUILD_MERGED_PLUGINS=On \
