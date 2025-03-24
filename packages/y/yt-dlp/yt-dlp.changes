@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 22 09:03:31 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.03.21
+  * Fix external downloader availability when using
+    ``--ffmpeg-location``
+  * youtube: fix nsig and signature extraction for player 643afba4.
+
+-------------------------------------------------------------------
 Fri Feb 28 21:01:45 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Require same version between yt-dlp -> python-yt-dlp

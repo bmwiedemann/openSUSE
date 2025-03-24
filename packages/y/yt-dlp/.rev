@@ -486,4 +486,12 @@
     <comment>- Require same version between yt-dlp -&gt; python-yt-dlp</comment>
     <requestid>1249319</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>b3a9175742941aa9295863e5a01972d7</srcmd5>
+    <version>2025.03.21</version>
+    <time>1742819406</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2025.03.21</comment>
+    <requestid>1255227</requestid>
+  </revision>
 </revisionlist>

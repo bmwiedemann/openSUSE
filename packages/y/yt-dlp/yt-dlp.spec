@@ -19,12 +19,12 @@
 %define skip_python2 1
 %define skip_python36 1
 %define skip_python37 1
-%if 0%{?sle_version} == 150600
+%if 0%{?suse_version} < 1600
 %global pythons python312
 %endif
 
 Name:           yt-dlp
-Version:        2025.02.19
+Version:        2025.03.21
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
 License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
@@ -45,7 +45,11 @@ Obsoletes:      yt-dlp-fish-completion < %version-%release
 Provides:       yt-dlp-fish-completion = %version-%release
 Obsoletes:      yt-dlp-zsh-completion < %version-%release
 Provides:       yt-dlp-zsh-completion = %version-%release
+%if 0%{?suse_version} < 1600
+Requires:       python312-yt-dlp = %version
+%else
 Requires:       python3-yt-dlp = %version
+%endif
 %define python_subpackage_only 1
 %python_subpackages
 
