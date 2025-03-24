@@ -65,21 +65,12 @@
 %define node_ver 20.0
 %define node_ver_next 21.0
 %endif
-%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150600
 # LLVM version
 %define llvm_version 19
 # RUST version
-%define rust_version 1.83
+%define rust_version 1.85
 # GCC version
 %define gcc_version 14
-%else
-# LLVM version
-%define llvm_version 17
-# RUST version
-%define rust_version 1.81
-# GCC version
-%define gcc_version 13
-%endif
 # esbuild version
 %define esbuild_version 0.24.0
 %if 0%{?suse_version} <= 1699
@@ -115,7 +106,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        134.0.6998.88
+Version:        134.0.6998.117
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -169,7 +160,6 @@ Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
 # conditionally applied patches
 # patch where ffmpeg < 5
-Patch1001:      chromium-94-ffmpeg-roll.patch
 Patch1002:      chromium-125-ffmpeg-5.x-reordered_opaque.patch
 Patch1003:      Cr122-ffmpeg-new-channel-layout.patch
 Patch1004:      ffmpeg-new-channel-layout.patch
@@ -177,7 +167,7 @@ Patch1005:      chromium-106-ffmpeg-duration.patch
 Patch1006:      chromium-93-ffmpeg-4.4-rest.patch
 # patch where libxml < 2.12
 Patch1010:      chromium-124-system-libxml.patch
-# patch where rust < 1.84
+# patch where rust <= 1.85
 Patch1030:      chromium-134-revert-rust-adler2.patch
 # end conditionally applied patches
 BuildRequires:  SDL-devel
@@ -439,7 +429,6 @@ WebDriver is an open source tool for automated testing of webapps across many br
 
 %if %{without ffmpeg_51}
 # ffmpeg is too old
-%patch -p1 -P 1001
 %patch -p1 -R -P 1002
 %patch -p1 -R -P 1003
 %patch -p1 -R -P 1004
@@ -451,7 +440,7 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %patch -p1 -P 1010
 %endif
 
-%if "%{?rust_version}" == "1.83"
+%if "%{?rust_version}" == "1.85"
 %patch -p1 -R -P 1030
 %endif
 

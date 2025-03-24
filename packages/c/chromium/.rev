@@ -5473,4 +5473,19 @@ boo#1224178</comment>
   chromium-134-type-mismatch-error.patch (from fedora)</comment>
     <requestid>1251996</requestid>
   </revision>
+  <revision rev="454" vrev="1">
+    <srcmd5>d19828911236682a360e753b10a57454</srcmd5>
+    <version>134.0.6998.117</version>
+    <time>1742819135</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 134.0.6998.117
+  (stable released 2025-03-20) (boo#1239819)
+  * CVE-2025-2476: Use after free in Lens 
+
+- use rust1.85 
+
+- drop chromium-94-ffmpeg-roll.patch
+  (build fail after ffmpeg updated from 4.4 to 4.4.5 in code15)</comment>
+    <requestid>1254688</requestid>
+  </revision>
 </revisionlist>
