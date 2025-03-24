@@ -1,7 +1,7 @@
 #
 # spec file for package airspyhf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,7 @@ URL:            http://www.airspy.com/airspy-hf-plus
 #Git-Clone:     https://github.com/airspy/airspyhf.git
 Source:         https://github.com/airspy/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         airspyhf-fix-libm-linking.patch
-BuildRequires:  cmake >= 2.8
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb-1.0)
@@ -71,7 +71,8 @@ sed -i "s/plugdev/airspyhf/g" tools/52-airspyhf.rules
 %if 0%{?suse_version} < 1330
     -DCMAKE_C_FLAGS=-std=c99 \
 %endif
-  -DINSTALL_UDEV_RULES=ON
+  -DINSTALL_UDEV_RULES=ON \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
 %install
@@ -80,6 +81,9 @@ rm %{buildroot}%{_libdir}/libairspyhf.a
 
 mkdir -p %{buildroot}%{_udevrulesdir}
 mv %{buildroot}%{_sysconfdir}/udev/rules.d/52-airspyhf.rules %{buildroot}%{_udevrulesdir}
+
+%check
+%ctest
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun  -n %{libname} -p /sbin/ldconfig
