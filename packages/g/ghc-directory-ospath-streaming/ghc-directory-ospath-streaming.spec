@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-directory-ospath-streaming
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Stream directory entries in constant memory in vanilla IO
 License:        Apache-2.0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 15 15:10:19 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update directory-ospath-streaming to version 0.2.2.
+  # 0.2.2
+
+  - Add `getDirectoryContentsWithFilterRecursive` for recursively listing directory contents with commonly needed filtering
+
+-------------------------------------------------------------------
 Fri Dec 20 00:34:47 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Add directory-ospath-streaming at version 0.2.1.
