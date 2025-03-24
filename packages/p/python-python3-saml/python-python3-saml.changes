@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 22 17:47:32 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update URL and Source tags to new URL.
+
+-------------------------------------------------------------------
+Tue Mar 18 14:11:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.16.0
+  * #364 Improve get_metadata method from Parser, allowing to set headers
+  * Fix WantAuthnRequestsSigned parser
+  * Fix expired payloads used on tests
+  * Updated content from docs folder
+- Drop fix-payloads-tests-dates.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Nov  2 08:34:04 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python3-saml
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python3-saml
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        Python SAML support
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/onelogin/python3-saml
-Source:         https://github.com/onelogin/python3-saml/archive/v%{version}.tar.gz#/python3-saml-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-payloads-tests-dates.patch gh#SAML-Toolkits/python3-saml#271 mcepl@suse.com
-# Fix payloads of tests that had expiration dates on May 2023
-Patch0:         fix-payloads-tests-dates.patch
+URL:            https://github.com/SAML-Toolkits/python3-saml
+Source:         https://github.com/SAML-Toolkits/python3-saml/archive/v%{version}.tar.gz#/python3-saml-%{version}.tar.gz
 BuildRequires:  %{python_module freezegun >= 0.3.11}
 BuildRequires:  %{python_module isodate >= 0.6.1}
 BuildRequires:  %{python_module lxml >= 3.3.5}
