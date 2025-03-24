@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 21 18:12:36 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop man file for not installed stardict-editor binary.
+- Drop a conditional pertaining to EOL openSUSE version.
+
+-------------------------------------------------------------------
 Mon Dec 16 23:31:16 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.7:

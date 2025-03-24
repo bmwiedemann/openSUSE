@@ -1,7 +1,7 @@
 #
 # spec file for package stardict
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,6 @@
 #
 
 
-%if 0%{?suse_version} >= 1500
-%define espeakdev espeak-ng-compat-devel
-%else
-%define espeakdev espeak-devel
-%endif
 Name:           stardict
 Version:        3.0.7
 Release:        0
@@ -35,8 +30,8 @@ Patch0:         stardict-3.0.3-fix-path-for-sounds.patch
 Patch1:         stardict-3.0.3-improve-desktop-file.patch
 # PATCH-FIX-UPSTREAM stardict-drop-autotools-gconf.patch badshah400@gmail.com -- Drop unnecessary and no longer supported autotools gconf macro
 Patch2:         stardict-drop-autotools-gconf.patch
-BuildRequires:  %{espeakdev}
 BuildRequires:  7zip
+BuildRequires:  espeak-ng-compat-devel
 BuildRequires:  fdupes
 BuildRequires:  flite-devel
 BuildRequires:  gcc-c++
@@ -97,6 +92,9 @@ mkdir -p %{buildroot}%{_datadir}/metainfo
 mv %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml \
    %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 
+# Do not package man page for missing binary
+rm %{buildroot}%{_mandir}/man1/stardict-editor.1
+
 # save space, create symlinks for identical files
 %fdupes -s %{buildroot}
 
@@ -104,8 +102,7 @@ mv %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml \
 %license COPYING
 %doc dict/doc/FAQ dict/doc/HACKING dict/doc/HowToCreateDictionary dict/doc/StarDictFileFormat dict/doc/Translation dict/AUTHORS dict/ChangeLog dict/README
 %{_libdir}/stardict
-%{_bindir}/*
-%{_mandir}/man1/stardict-editor.1%{?ext_man}
+%{_bindir}/stardict
 %{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/*.png
 %{_datadir}/stardict/
