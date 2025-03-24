@@ -70,6 +70,8 @@ Patch4:         gdm-xauthlocalhostname.patch
 Patch5:         gdm-switch-to-tty1.patch
 # PATCH-FIX-OPENSUSE gdm-initial-setup-hardening.patch boo#1140851, glgo#GNOME/gnome-initial-setup#76 fezhang@suse.com -- Prevent gnome-initial-setup running if any regular user has perviously logged into the system
 Patch6:         gdm-initial-setup-hardening.patch
+# PATCH-FIX-UPSTREAM gdm-settings-utils_rename-variable.patch -- Rename variable to fix build with gcc 15
+Patch7:         gdm-settings-utils_rename-variable.patch
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
@@ -243,19 +245,9 @@ running display manager.
 %lang_package
 
 %prep
-# -N disables automatic patch application.
 %autosetup -N
 ### NON-SLE patches start from 0 to 999
-## Use "autopatch -m 0 -M 999" when there's no need to skip patches.
-%if 0%{?is_opensuse}
 %autopatch -p1 -m 1 -M 999
-%else
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
-%endif
 
 %ifarch s390 s390x
 %patch -P 0 -p1
@@ -264,8 +256,7 @@ running display manager.
 ### SLE and Leap only patches start at 1000
 %if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
 ## Use this when there's no need to skip patches.
-%patch -P 1000 -p1
-%patch -P 1001 -p1
+%autopatch -p1 -m 1000
 %endif
 
 %build

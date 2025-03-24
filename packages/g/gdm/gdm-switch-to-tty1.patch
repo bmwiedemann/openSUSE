@@ -6,13 +6,13 @@
  
 +#define SHELLSCRIPT "\
 +/bin/bash -c \
-+\'PROCESS=\"X Xwayland plymouth\"\;\
-+R=$(pidof $PROCESS)\;\
-+while [ $? == 0 ]\;\
-+do sleep 1\;\
-+  R=$(pidof $PROCESS)\;\
-+done\;\
-+systemd-cat echo Switch to tty1 Successfully\;\
++\'PROCESS=\"X Xwayland plymouth\";\
++R=$(pidof $PROCESS);\
++while [ $? == 0 ];\
++do sleep 1;\
++  R=$(pidof $PROCESS);\
++done;\
++systemd-cat echo Switch to tty1 Successfully;\
 +/usr/bin/chvt 1\'\
 +"
 +
@@ -37,7 +37,7 @@
  }
  
 +static void
-+on_signal_term_cb ()
++on_signal_term_cb (int signal)
 +{
 +        g_debug ("Received SIGTERM again");
 +}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 21 13:01:10 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rebase/fix gdm-switch-to-tty1.patch to fix build against gcc 15.
+
+-------------------------------------------------------------------
+Thu Mar 20 21:05:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gdm-settings-utils_rename-variable.patch: Rename variable to
+  fix build with gcc 15
+  (https://gitlab.gnome.org/GNOME/gdm/-/merge_requests/273).
+
+-------------------------------------------------------------------
 Tue Mar 18 08:18:23 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add systemd scriptlets to gdm-systemd packages. On postun, ensure
