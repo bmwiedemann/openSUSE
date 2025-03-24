@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Mar 22 14:13:59 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.24.2 (8.24.1 was not released):
+  * Fix platform flag being ignored with gitleaks detect by @rgmz
+    in #1765
+  * Make AddFinding public by @bplaxco in #1767
+  * FIX upgrade x/crypto to 0.31.0 to get rid of CVE-2024-45337 by
+    @cgoessen in #1768
+  * Upgrade rs/zerolog, spf13/cobra, and spf13/viper by @rgmz in
+    #1769
+  * Infer report-format from report-path extension if no value is
+    provided by @rgmz in #1776
+  * generic-api-key: ignore csrf-tokens by @rgmz in #1779
+  * Prevent Yocto/BitBake false positives with generic-api-key rule
+    by @Okeanos in #1783
+  * Fix decoded line allowlist by @zricethezav in #1788
+  * Readme badge revisions by @jessp01 in #1744
+  * feat(regexp): use standard regexp by default, make go-re2
+    opt-in by @twpayne in #1798
+  * gore2 release tags by @zricethezav in #1801
+
+-------------------------------------------------------------------
 Thu Feb 20 08:41:06 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.24.0:
