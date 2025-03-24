@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Mar 22 07:51:26 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.30.1 (there is no 0.30.0):
+  * retract v0.30.0 release
+  * bump minimum required go version
+  * chore(deps): Bump actions/cache from 4.2.2 to 4.2.3 (#542)
+  * chore(deps): Bump actions/cache in /.github/actions/bootstrap
+    (#543)
+  * chore(deps): Bump actions/setup-go from 5.3.0 to 5.4.0 (#541)
+  * chore(deps): Bump github.com/containerd/containerd from 1.7.24
+    to 1.7.27 (#537)
+  * Update grype-db bootstrap tools to latest versions. (#539)
+  * chore(deps): Bump github.com/anchore/grype from 0.89.1 to
+    0.90.0 (#538)
+  * chore(deps): Bump github.com/spf13/afero from 1.12.0 to 1.14.0
+    (#534)
+  * Update grype-db bootstrap tools to latest versions. (#529)
+  * chore(deps): Bump github.com/anchore/grype (#532)
+  * feat: add support for OSV schema (#217)
+  * chore: update grype schema version reference (#533)
+  * chore(deps): Bump golang.org/x/net from 0.35.0 to 0.36.0 (#530)
+  * port msrc transformer to v6 (#531)
+
+-------------------------------------------------------------------
 Fri Mar 07 06:41:59 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.29.0:
