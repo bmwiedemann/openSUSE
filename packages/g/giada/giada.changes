@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar 22 10:54:04 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.1.1:
+  * Render Group Channels audio data to master output only if audible (#709)
+  * Fix MIDI out information not being refreshed properly on MIDI channels (#717)
+  * Fix MIDI actions not being added on the rightmost edge in the Action Editor (#716)
+  * Fix FX buttons not being properly lit (#712)
+  * Fix ChannelShared objects not being deleted on Channel deletion (#695)
+  * Fix wrong play mode for sample channels in one-shot retrig mode
+  * Fix missing last sample when moving or resetting 'end' point in Sample Editor
+  * Fix last audio sample not being played in sample channels
+  * Fix inability to clear Channels' key bindings (#708)
+  * Fix Main Window size not being stored correctly (#713)
+  * Update FLTK dependency to 1.4.0-1
+  * Add basic CMakePresets.json file
+  * Many other minor bugs and typos fixed
+  * Lots of refactoring and code cleanups
+
+-------------------------------------------------------------------
 Sat Nov  9 21:16:40 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update "exlude from all" patch
