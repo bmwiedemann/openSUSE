@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 20 21:45:48 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+
+-------------------------------------------------------------------
 Sun Apr 25 10:10:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to release 1.0.10

@@ -1,7 +1,7 @@
 #
 # spec file for package airspy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 Wojciech Kazubski, wk@ire.pw.edu.pl
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@ License:        GPL-2.0-or-later
 URL:            http://www.airspy.com
 #Git-Clone:     https://github.com/airspy/airspyone_host.git
 Source:         https://github.com/airspy/airspyone_host/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 2.8
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -68,7 +68,8 @@ sed -i "s/plugdev/airspy/g" airspy-tools/52-airspy.rules
 %build
 %define __builder ninja
 %cmake \
-  -DINSTALL_UDEV_RULES=ON
+  -DINSTALL_UDEV_RULES=ON \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
@@ -77,6 +78,9 @@ rm %{buildroot}%{_libdir}/libairspy.a
 
 mkdir -p %{buildroot}%{_udevrulesdir}
 mv %{buildroot}%{_sysconfdir}/udev/rules.d/52-airspy.rules %{buildroot}%{_udevrulesdir}
+
+%check
+%ctest
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun  -n %{libname} -p /sbin/ldconfig
