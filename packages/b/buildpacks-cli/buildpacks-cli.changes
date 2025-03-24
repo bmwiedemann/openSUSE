@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Mar 21 21:03:07 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.37.0:
+  * build(deps): bump golang.org/x/net from 0.35.0 to 0.36.0
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 4 updates
+  * doc: adjusting documentation to include extension
+  * fix: using the KindBuildpack and KindExtension variable instead
+    of hardcoded values
+  * Use unix build constraint
+  * build(deps): bump github.com/spf13/cobra in the go-dependencies
+    group
+  * Remove obsolete // +build lines
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 10 updates
+  * remove unnecessary variable in unit test
+  * remove unnecessary version assignment in unit test
+  * remove negation that was causing tests to fail
+  * fix unit test
+  * add version check
+  * move version check to `before` block
+  * fix acceptance tests
+  * pick up where pglushko left off
+  * build(deps): bump buildpacks/github-actions from 5.8.5 to 5.8.8
+  * running go mod tidy
+  * fix:linting and typos
+  * fix: intentation
+  * feat: Adding targets and path flags when packaging an extension
+  * feat: adding targets on the extension descriptor
+  * feat: Adding functionality on CopyConfigFiles function to copy
+    an extension .toml file
+  * fix: typo on targets description
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 4 updates
+
+-------------------------------------------------------------------
 Sat Jan 18 07:42:00 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.36.4:
