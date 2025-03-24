@@ -309,6 +309,8 @@ Requires:       at-spi2-core
 Requires:       adobe-sourcecodepro-fonts
 Requires:       adobe-sourcesanspro-fonts
 Requires:       adobe-sourceserifpro-fonts
+# Default fonts for Gnome 48
+Requires:       adwaita-fonts
 Requires:       dejavu-fonts
 Requires:       ghostscript-fonts-other
 Requires:       ghostscript-fonts-std
