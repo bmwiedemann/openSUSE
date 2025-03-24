@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 19 20:02:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Require docker or podman, as the latter can be used by setting
+  the DOCKER_HOST and DOCKER_SOCK environment variables
+  e.g. rootless podman:
+    DOCKER_SOCK=/run/user/1000/podman/podman.sock
+    DOCKER_HOST=unix:///run/user/1000/podman/podman.sock
+
+-------------------------------------------------------------------
 Fri Mar 14 09:54:23 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.34.0:

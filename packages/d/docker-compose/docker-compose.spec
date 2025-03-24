@@ -25,7 +25,9 @@ URL:            https://github.com/docker/compose
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang(API) >= 1.23.6
-Requires:       docker
+# can be used with podman by setting
+# DOCKER_SOCK and DOCKER_HOST
+Requires:       (docker or podman)
 
 %description
 Docker Compose is a tool for running multi-container applications on Docker
