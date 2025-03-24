@@ -17,7 +17,7 @@
 
 
 Name:           intel-gpu-tools
-Version:        1.30
+Version:        2.0
 Release:        0
 Summary:        Collection of tools for development and testing of the Intel DRM driver
 License:        MIT
@@ -25,8 +25,6 @@ Group:          Development/Tools/Other
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz
 Source1:        https://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz.sig
-# PATCH-FIX-OPENSUSE fix-procps-ng-4.0.5.patch https://gitlab.com/procps-ng/procps/-/issues/332
-Patch0:         fix-procps-ng-4.0.5.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -77,7 +75,7 @@ Requires:       %{name} = %{version}
 Development files and library headers for %{name}
 
 %prep
-%autosetup -n igt-gpu-tools-%{version} -p1
+%autosetup -n igt-gpu-tools-%{version}
 
 %build
 %meson -Doping="disabled"

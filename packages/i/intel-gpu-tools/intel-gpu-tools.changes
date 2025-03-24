@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 24 03:56:15 UTC 2025 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 2.00.
+- Library changes:
+  * Added GFX1153 to GFX1150 amdgpu family. (Tim Huang)
+  * Improved kernel module un/loading. (Lucas De Marchi)
+  * Added ftrace logs at test boundaries. (Umesh Nerlige Ramappa)
+  * Improved device scanning used in device filters. (Zbigniew Kempczyński)
+  * Add support to check joiner mode limit. (Jeevan B)
+  * Updated PCI ids for DG2/MTL/BMG/PTL. (Matt Atwood)
+  * Added PTL opencl kernels. (Janga Rahul Kumar and Priyanka Dandamudi)
+  * Extended GPGPU compute square kernel for PTL. (Sai Gowtham Ch)
+  * Using Long Running mode for GPGPU compute with Xe. (Francois Dugast)
+  * Make running under Valgrind quiet. (Tvrtko Ursulin)
+- Tools and scripts changes:
+  * New tool for measuring display memory bandwidth utilization (Ville Syrjälä)
+  * New igt_facts tool for displaying GPU related info. (Peter Senna Tschudin)
+  * Power tool renamed to igt_power (Kamil Konieczny)
+  * New --pci-slot option in intel_reg for multi-GPU configs. (Łukasz Łaguna
+    and Kamil Konieczny)
+  * Added kmemleak option to run-tests.sh script. (Peter Senna Tschudin)
+
+- Remove fix-procps-ng-4.0.5.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Mon Jan 27 03:41:04 UTC 2025 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Remove dependency on liboping, remove lazy link arg (fixed upstream)
