@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 21 21:04:18 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 3.1.1
+  * Fixed a compatibility issue causing BibleTime to loop on startup consuming
+    all memory and crashing when reading configuration files written by
+    previous versions of BibleTime based on Qt5.
+  * Fixed compilation against Sword 1.8.1.
+- Drop fix_compilation_against_sword_1_8_1.patch and
+  fixed_grouping_serialization_qt5_compatibility.patch
+
+-------------------------------------------------------------------
 Sat Mar  8 19:21:08 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 3.1.0

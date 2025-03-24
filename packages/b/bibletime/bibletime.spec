@@ -21,7 +21,7 @@
 %global __requires_exclude qmlimport\\(BibleTime.*
 
 Name:           bibletime
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        A Bible study tool
 License:        GPL-2.0-or-later
@@ -29,10 +29,6 @@ Group:          Productivity/Scientific/Other
 URL:            http://www.bibletime.info/
 Source0:        https://github.com/bibletime/bibletime/releases/download/v%{version}/bibletime-%{version}.tar.xz
 Source1:        bibletime-rpmlintrc
-# PATCH-FIX-UPSTREAM https://github.com/bibletime/bibletime/issues/498
-Patch0:         fix_compilation_against_sword_1_8_1.patch
-# PATCH-FIX-UPSTREAM https://github.com/bibletime/bibletime/issues/497
-Patch1:         fixed_grouping_serialization_qt5_compatibility.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
