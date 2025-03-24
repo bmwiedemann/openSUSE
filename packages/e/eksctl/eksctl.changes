@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Mar 23 08:45:23 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.206.0:
+  * Features
+    - Allow specification of IAM permission boundary for Auto
+      Mode's Node Role (#8307)
+  * Improvements
+    - Default to newest k8s 1.32 version (#8300)
+    - Support for EKS internal environments (#8294)
+    - Update goformation from latest schema / Remove unused
+      generated code (#8289)
+    - Reduce blast radius of test that disables api server public
+      access failing (#8288)
+    - Fix failure when VPC CNI is configured to use both
+      iam.withOIDC and useDefaultPodIdentityAssociations (#8268)
+    - Update zz_generated.deepcopy.go, also add new make target for
+      the same (#8267)
+  * Bug Fixes
+    - Skip instance type support validation for custom AMI ID
+      (#8303)
+    - Allow core/default networking addons on auto-mode clusters
+      with mixed node types (#8293)
+    - Standardize on k8s 1.32.2 for go.mod (#8285)
+  * Maintenance
+    - Add support for i8g.48xlarge ec2 instance type (#8301)
+    - Update nvidia-device-plugin to v0.17.1 (#8296)
+    - Update ec2-info (#8297)
+    - Update ec2-info (#8290)
+
+-------------------------------------------------------------------
 Sat Mar 01 11:47:19 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.205.0:
