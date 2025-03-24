@@ -1,7 +1,7 @@
 #
 # spec file for package ttyd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,11 +22,10 @@ Version:        1.7.4
 Release:        0
 Summary:        Share your terminal over the web
 License:        MIT
-Group:          System/Monitoring
 URL:            https://tsl0922.github.io/ttyd/
 #Git-Clone:     https://github.com/tsl0922/ttyd.git
 Source:         https://github.com/tsl0922/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
 # required vim for xxd
@@ -53,11 +52,14 @@ Features include:
 %setup -q
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make VERBOSE=1 %{?_smp_mflags}
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %license LICENSE
