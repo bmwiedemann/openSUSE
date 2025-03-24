@@ -23,11 +23,10 @@ Version:        0.8.0
 Release:        0
 Summary:        Extensible RPKI-RTR-Client C library
 License:        MIT
-Group:          Development/Languages/C and C++
 URL:            https://rpki.realmv6.org/
 Source:         https://github.com/rtrlib/rtrlib/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         rtrlib-disable-tests-that-require-network-connections.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -42,7 +41,6 @@ and is extensible.
 
 %package -n librtr%{sover}
 Summary:        Extensible RPKI-RTR-Client C library
-Group:          System/Libraries
 
 %description -n librtr%{sover}
 RTRlib is a C implementation of the RPKI/Router Protocol
@@ -53,7 +51,6 @@ and is extensible.
 
 %package -n rtr-tools
 Summary:        RPKI-RTR command line tools
-Group:          Productivity/Networking/Routing
 
 %description -n rtr-tools
 rtrclient is command line that connects to an RPKI-RTR server and prints
@@ -63,7 +60,6 @@ allows one to validate given IP prefixes and origin ASes.
 
 %package devel
 Summary:        Header files for librtr
-Group:          Development/Libraries/C and C++
 Requires:       librtr%{sover} = %{version}
 
 %description devel
@@ -71,7 +67,6 @@ Development and header files for librtr.
 
 %package devel-doc
 Summary:        API documentation of the RTRlib
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description devel-doc
@@ -83,7 +78,7 @@ the RPKI/Router Protocol client.
 
 %build
 CFLAGS="%{optflags} -Wno-return-type"
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
 %install
