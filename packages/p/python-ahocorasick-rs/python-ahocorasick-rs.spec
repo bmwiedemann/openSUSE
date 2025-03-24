@@ -1,7 +1,7 @@
 #
 # spec file for package python-ahocorasick-rs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,24 @@
 
 
 Name:           python-ahocorasick-rs
-Version:        0.22.0
+Version:        0.22.2
 Release:        0
 Summary:        Search a string for multiple substrings at once
 License:        Apache-2.0
 URL:            https://github.com/G-Research/ahocorasick_rs
 Source:         https://files.pythonhosted.org/packages/source/a/ahocorasick_rs/ahocorasick_rs-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module maturin >= 1.0}
-BuildRequires:  cargo
-BuildRequires:  zstd
 BuildRequires:  %{python_module pip}
+BuildRequires:  cargo
+BuildRequires:  python-rpm-macros
+BuildRequires:  zstd
 # SECTION test requirements
 BuildRequires:  %{python_module typing_extensions >= 4.6.0}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pyahocorasick}
+BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-typing_extensions >= 4.6.0
