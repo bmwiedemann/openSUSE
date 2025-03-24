@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 24 06:05:32 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.23.1:
+  * fix(qemu): improve debug shell to instantiate a proper terminal
+    (#1861)
+  * build(deps): bump github.com/containerd/containerd/v2 (#1859)
+  * pkg/sca/sca_test.go et al: Implement test for
+    getLdSoConfDLibPaths
+  * pkg/sca/sca.go: Implement getLdSoConfDLibPaths
+
+-------------------------------------------------------------------
 Mon Mar 17 06:01:03 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.23.0:
