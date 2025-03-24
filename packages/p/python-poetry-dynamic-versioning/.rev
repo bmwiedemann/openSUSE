@@ -83,4 +83,17 @@
   * There was an intermittent ValueError in PEP 621 mode (forwarded request 1239921 from rrahl0)</comment>
     <requestid>1239922</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d8ea4c2eeff458fc1c74613a83a1294b</srcmd5>
+    <version>1.8.0</version>
+    <time>1742819267</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.0:
+  * The bump config may now be set to a table, which supports an index field
+  * commit-length option to set a fixed length for commit hashes
+  * {major}, {minor}, and {patch} format placeholders.
+  * Compatibility with other plugins (such as poetry-monoranger-plugin)
+  * Updated Dunamai to 1.23.0+ for the latest features. (forwarded request 1255082 from rrahl0)</comment>
+    <requestid>1255083</requestid>
+  </revision>
 </revisionlist>

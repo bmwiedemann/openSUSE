@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 21 17:10:02 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.8.0:
+  * The bump config may now be set to a table, which supports an index field
+  * commit-length option to set a fixed length for commit hashes
+  * {major}, {minor}, and {patch} format placeholders.
+  * Compatibility with other plugins (such as poetry-monoranger-plugin)
+  * Updated Dunamai to 1.23.0+ for the latest features.
+
+-------------------------------------------------------------------
 Thu Jan 23 15:32:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.7.1:
