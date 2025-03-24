@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 21 22:24:36 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+
+-------------------------------------------------------------------
 Tue Aug  8 20:29:24 UTC 2023 - Dawid Adam <nyslay@gmail.com>
 
-- Initial packaging ydotool v1.0.4 
+- Initial packaging ydotool v1.0.4

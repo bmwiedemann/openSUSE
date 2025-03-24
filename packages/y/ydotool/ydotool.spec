@@ -1,7 +1,7 @@
 #
 # spec file for package ydotool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Generic command-line automation tool (no X!)
 License:        AGPL-3.0-only
 URL:            https://github.com/ReimuNotMoe/ydotool
 Source:         https://github.com/ReimuNotMoe/ydotool/archive/v1.0.4.tar.gz#/ydotool-1.0.4.tar.gz
-BuildRequires:  cmake >= 3.4
+BuildRequires:  cmake >= 3.5
 BuildRequires:  scdoc
 BuildRequires:  systemd-rpm-macros
 
@@ -36,11 +36,14 @@ accepts keyboard/mouse/whatever input. For example, X11, text console,
 %setup -q
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %pre
 %service_add_pre %{name}.service
