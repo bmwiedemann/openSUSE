@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Mar 23 07:24:56 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 25.03
+  Added features:
+  * Italian translation update
+  * I2218, TTML: detect IMSC Rosetta
+  * MXF: support of HDR Vivid Metadata
+  * AVS3 Video: support for AVS3 Video according to T/AI 109.2
+  * MP4: Display of operating system and hardware e.g. Android or
+    iOS
+  * MP4: Handle loci and @xyz metadata
+  * MP4: Handle more metadata
+  * DAT: recording date & misc
+  * 3D Audio: Enable graph also on Linux
+  * Qt GUI: several improvements for matching the current windows
+    version.
+  Fixed bugs:
+  * I2199, MP4: fix moov meta support.
+  * I2213, MXF: better handling of bad LinkedTrackID in descriptors
+  * I2191, PAC: fix crash with some W16 blocs
+  * I2223, DVD-Video: fix crash
+  * AVC: fix GOP computing sometimes half of actual GOP
+  * AC3: Fix wrong read of mixlevel
+  * MPEG-4: Handle correctly mett track format
+  * Fix alignment of text output for CJK languages
+
+-------------------------------------------------------------------
 Sun Dec 15 00:00:00 UTC 2024 - Maxime Gervais <maxime@mediaarea.net>
 
 - Update to version 24.12
