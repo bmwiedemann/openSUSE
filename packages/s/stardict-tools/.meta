@@ -1,6 +1,0 @@
-<package name="stardict-tools" project="openSUSE:Factory">
-  <title>StarDict Editor</title>
-  <description>This package contains the dictionary conversion tools which can convert
-dictionaries of DICT, wquick, mova and pydict to stardict format.</description>
-  <devel project="Education" package="stardict-tools"/>
-</package>
