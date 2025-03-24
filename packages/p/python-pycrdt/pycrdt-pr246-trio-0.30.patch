@@ -1,7 +1,7 @@
-From 238396359d6f4e67db0269c5554ce2701674cc50 Mon Sep 17 00:00:00 2001
+From e23cab275eacdf677baaf9c8ea2f018e56602ec4 Mon Sep 17 00:00:00 2001
 From: Ben Greiner <code@bnavigator.de>
-Date: Thu, 30 Jan 2025 17:49:28 +0100
-Subject: [PATCH] Bump trio upper version to <0.29
+Date: Fri, 21 Mar 2025 21:29:06 +0100
+Subject: [PATCH] Bump trio to <0.30
 
 ---
  .github/workflows/publish.yml | 8 ++++----
@@ -9,15 +9,15 @@ Subject: [PATCH] Bump trio upper version to <0.29
  2 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/.github/workflows/publish.yml b/.github/workflows/publish.yml
-index 39a3a25..8f3f504 100644
+index 8f3f504..f4b071a 100644
 --- a/.github/workflows/publish.yml
 +++ b/.github/workflows/publish.yml
 @@ -31,7 +31,7 @@ jobs:
            args: --release --target universal2-apple-darwin --out dist -i 3.9 3.10 3.11 3.12 3.13 pypy3.9 pypy3.10
        - name: Test built wheel - universal2
          run: |
--          pip install pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.26" "exceptiongroup; python_version<'3.11'"
-+          pip install pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.29" "exceptiongroup; python_version<'3.11'"
+-          pip install pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.29" "exceptiongroup; python_version<'3.11'"
++          pip install pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.30" "exceptiongroup; python_version<'3.11'"
            pip install pycrdt --no-deps --no-index --find-links dist --force-reinstall
            pytest
        - name: Upload wheels
@@ -25,8 +25,8 @@ index 39a3a25..8f3f504 100644
            args: --release --out dist -i ${{ matrix.platform.interpreter }}
        - name: Test built wheel
          run: |
--          pip install pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.26" "exceptiongroup; python_version<'3.11'"
-+          pip install pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.29" "exceptiongroup; python_version<'3.11'"
+-          pip install pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.29" "exceptiongroup; python_version<'3.11'"
++          pip install pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.30" "exceptiongroup; python_version<'3.11'"
            pip install pycrdt --no-deps --no-index --find-links dist --force-reinstall
            pytest
        - name: Upload wheels
@@ -34,8 +34,8 @@ index 39a3a25..8f3f504 100644
        - name: Test built wheel
          if: matrix.target == 'x86_64'
          run: |
--          pip install pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.26" "exceptiongroup; python_version<'3.11'"
-+          pip install pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.29" "exceptiongroup; python_version<'3.11'"
+-          pip install pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.29" "exceptiongroup; python_version<'3.11'"
++          pip install pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.30" "exceptiongroup; python_version<'3.11'"
            pip install pycrdt --no-deps --no-index --find-links dist --force-reinstall
            pytest
        - name: Upload wheels
@@ -43,21 +43,21 @@ index 39a3a25..8f3f504 100644
            install: |
              apt-get update
              apt-get install -y --no-install-recommends python3 python3-pip
--            pip3 install -U pip pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.26" "exceptiongroup; python_version<'3.11'"
-+            pip3 install -U pip pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.29" "exceptiongroup; python_version<'3.11'"
+-            pip3 install -U pip pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.29" "exceptiongroup; python_version<'3.11'"
++            pip3 install -U pip pytest pytest-mypy-testing "pydantic>=2.5.2,<3" "anyio>=4.4.0,<5" "trio>=0.25.1,<0.30" "exceptiongroup; python_version<'3.11'"
            run: |
              pip3 install pycrdt --no-deps --no-index --find-links dist/ --force-reinstall
              pytest
 diff --git a/pyproject.toml b/pyproject.toml
-index a520aa6..65c3a4c 100644
+index eaa19f6..c73d7fd 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -40,7 +40,7 @@ test = [
      "pytest >=7.4.2,<8",
      "pytest-mypy-testing",
      "anyio",
--    "trio >=0.25.1,<0.27",
-+    "trio >=0.25.1,<0.29",
+-    "trio >=0.25.1,<0.29",
++    "trio >=0.25.1,<0.30",
      "pydantic >=2.5.2,<3",
      "mypy",
      "coverage[toml] >=7",

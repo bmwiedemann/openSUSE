@@ -102,4 +102,15 @@
     @ColonelThirtyTwo).</comment>
     <requestid>1241449</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8e1d90e104ec8b59bc5983c58927397b</srcmd5>
+    <version>0.12.9</version>
+    <time>1742819356</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.9 
+  * Upgrade pyo3 to v0.24.0.
+- Refresh pycrdt-pr227-trio0.28.patch to
+          pycrdt-pr246-trio-0.30.patch</comment>
+    <requestid>1255116</requestid>
+  </revision>
 </revisionlist>

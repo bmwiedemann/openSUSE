@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 21 20:24:41 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.9 
+  * Upgrade pyo3 to v0.24.0.
+- Refresh pycrdt-pr227-trio0.28.patch to
+          pycrdt-pr246-trio-0.30.patch
+
+-------------------------------------------------------------------
 Thu Jan 30 16:54:41 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Add pycrdt-pr227-trio0.28.patch gh#jupyter-server/pycrdt#227
