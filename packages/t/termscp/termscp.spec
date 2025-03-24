@@ -1,7 +1,7 @@
 #
 # spec file for package termscp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,14 @@
 
 
 Name:           termscp
-Version:        0.16.1
+Version:        0.17.0
 Release:        0
 Summary:        Feature rich terminal UI file transfer and explorer
 License:        MIT
 URL:            https://github.com/veeso/termscp
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-# PATCH-FIX-UPSTREAM https://github.com/veeso/termscp/issues/313
-Patch1:         https://github.com/veeso/termscp/commit/7dba691ccc001aa720d0ecf1642dda94219a2d21.patch
-# PATCH-FIX-UPSTREAM https://github.com/veeso/termscp/issues/312
-Patch2:         https://github.com/veeso/termscp/commit/099e2154bae9a954aab0569bf048c4d9ae71049e.patch
-BuildRequires:  cargo >= 1.77
+BuildRequires:  cargo >= 1.84
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(dbus-1)

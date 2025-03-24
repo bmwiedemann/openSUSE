@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Mar 23 18:19:50 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.0:
+  * Queuing transfers:
+    - the logic of selecting files has been extended!
+    - From now on selecting file will put the files into a transfer
+      queue, which is shown on the bottom panel.
+    - When a file is selected the file is added to the queue with a
+      destination path, which is the current other explorer path at
+      the moment of selection.
+    - It is possible to navigate to the transfer queue by using P
+      and pressing ENTER or DELETE on a file will remove it from
+      the transfer queue.
+    - Other commands will work as well on the transfer queue, like
+      COPY, MOVE, DELETE, RENAME.
+  * issue 308: added --wno-keyring flag to disable keyring
+  * issue 316: Local directory path is not switching to what's
+    specified in the bookmark. Now the local directory path is
+    correctly set following this hierarchy:
+    - Local directory path specified for the host bridge
+    - Local directory path specified in the bookmark
+    - Working directory
+  * issue 317: the return value of --version should be 0
+  * issue 319: fixed a crash when the local directory specified in
+    the auth form does not exist
+  * issue 327: fixed a panic when trying to go up from local
+    directory on localhost in the auth form
+  * issue 330: add suppaftp/pavao/kube to allowed logs
+  * Dependencies:
+    - argh to 0.1.13
+    - bytesize to 2
+    - dirs to 6
+    - magic-crypt to 4
+    - notify to 8
+    - ssh2-config to 0.4
+    - remotefs-ssh to 0.6
+    - rust edition to 2024
+- drop patches that were included upstream
+  * 7dba691ccc001aa720d0ecf1642dda94219a2d21.patch
+  * 099e2154bae9a954aab0569bf048c4d9ae71049e.patch
+
+-------------------------------------------------------------------
 Wed Nov 13 10:05:53 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.1:
