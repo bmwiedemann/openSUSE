@@ -1,7 +1,7 @@
 #
 # spec file for package descent3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           descent3
-%define commit  ab3f28dc3b288ebeff868787861fc9099dae71fa
-Version:        1.6.0~git397.ab3f28dc
+%define commit  c99e57cfabb16b2b428d4827eedb26b8cc20a1ee
+Version:        1.6.0~git533.c99e57c
 Release:        0
 Summary:        Tunnel–terrain-hybrid ship-based shooter fighting robots
 License:        GPL-3.0-or-later
@@ -28,7 +28,7 @@ Source:         https://github.com/jengelh/descent3/archive/%commit.tar.gz
 Source2:        https://github.com/SergiusTheBest/plog/archive/e21baecd4753f14da64ede979c5a19302618b752.tar.gz
 Patch1:         system-libacm.patch
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc13-c++
 Provides:       bundled(plog)
 %else
 BuildRequires:  c++_compiler
@@ -36,8 +36,9 @@ BuildRequires:  plog-devel
 %endif
 BuildRequires:  cmake
 BuildRequires:  libacm-devel
+BuildRequires:  pkgconfig(cpp-httplib)
 BuildRequires:  pkgconfig(glm)
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(zlib)
 Provides:       bundled(stb_image_write) = 1.16
 
@@ -63,7 +64,7 @@ mv plog-* third_party/plog
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
-export CXX=g++-11
+export CXX=g++-13
 %endif
 %cmake -DCMAKE_INSTALL_BINDIR="%_libexecdir/%name" \
 	-DCMAKE_INSTALL_DATADIR="%_datadir/%name" \

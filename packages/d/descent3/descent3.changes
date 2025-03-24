@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  6 21:20:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.6.0~git533.c99e57c
+  * Internal rewrite for SDL3
+  * Internal rewrite of HTTP client in Descent3 Online
+  * New command line option ``-display``
+
+-------------------------------------------------------------------
 Tue Nov 12 11:16:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 1.6.0~git397.ab3f28dc
