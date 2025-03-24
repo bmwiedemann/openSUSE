@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Mar 21 20:32:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.51:
+  * General
+    - bump schemas and meshkit @aabidsofi19 (#14057)
+  * Meshery CLI
+    - chore: fix broken link for cli reference design export
+      @lekaf974 (#14069)
+    - feat: refactored bats setup @ianrwhitney (#14027)
+    - [mesheryctl] fix: spelling in model command examples and run
+      go mod tidy @n2h9 (#14066)
+    - refactor: mesheryctl model command @lekaf974 (#14034)
+    - [mesheryctl][meshkit] Refactor and move registry utility
+      functions to meshkit @riyaa14 (#13734)
+    - [mod-mesheryctl-e2e]: Implemented helper script to run
+      end-to-end tests locally @gentcod (#14045)
+    - Revert "Add component generation step in the model generate
+      wizard" @amitamrutiya (#14053)
+    - Add component generation step in the model generate wizard
+      @amitamrutiya (#14052)
+  * Maintenance
+    - chore: fix broken link for cli reference design export
+      @lekaf974 (#14069)
+    - Adding Privateer files for security scan @sangramrath
+      (#14065)
+  * Documentation
+    - chore: fix broken link for cli reference design export
+      @lekaf974 (#14069)
+    - [Docs] remove mesheryctl system config for in-cluster Meshery
+      on EKS @riyaa14 (#13372)
+    - [docs] update instructions on running bats e2e tests locally
+      @riyaa14 (#14028)
+
+-------------------------------------------------------------------
 Mon Mar 17 20:16:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.50:
