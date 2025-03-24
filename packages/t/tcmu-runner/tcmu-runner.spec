@@ -1,7 +1,7 @@
 #
 # spec file for package tcmu-runner
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,13 +39,12 @@ Version:        1.6.2
 Release:        0
 Summary:        A userspace daemon that handles the LIO TCM-User backstore
 License:        Apache-2.0
-Group:          System/Management
 URL:            https://github.com/open-iscsi/%{name}
 Source:         %{name}-%{version}.tar.xz
 Patch1:         %{name}-handler_file-add-libtcmu.patch
 Patch3:         %{name}-fix-i586-size_t-error.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  glib2-devel
 BuildRequires:  glibc-devel
 BuildRequires:  gperftools-devel
@@ -93,7 +92,6 @@ and can also link with whatever userspace libraries they like.
 
 %package -n libtcmu2
 Summary:        Runtime libraries for tcmu-runner
-Group:          System/Libraries
 
 %description -n libtcmu2
 This package contains the runtime libraries for tcmu-runner.
@@ -101,7 +99,6 @@ This package contains the runtime libraries for tcmu-runner.
 %if 0%{?build_handler_glusterfs}
 %package handler-glusterfs
 Summary:        GlusterFS handler for tcmu-runner
-Group:          System/Libraries
 Requires:       tcmu-runner = %{version}
 
 %description handler-glusterfs
@@ -113,7 +110,6 @@ storage.
 %if 0%{?build_handler_rbd}
 %package handler-rbd
 Summary:        Ceph RBD handler for tcmu-runner
-Group:          System/Libraries
 Requires:       tcmu-runner = %{version}
 
 %description handler-rbd
@@ -125,7 +121,6 @@ RBD images.
 %if 0%{?build_handler_zbc}
 %package handler-zbc
 Summary:        Ceph ZBC handler for tcmu-runner
-Group:          System/Libraries
 Requires:       tcmu-runner = %{version}
 
 %description handler-zbc
@@ -135,7 +130,6 @@ file backstore in tcmu-runner.
 
 %package -n libtcmu-devel
 Summary:        Development package for libtcmu
-Group:          Development/Libraries
 Requires:       %{name} = %{version}
 Requires:       libtcmu2 = %{version}
 
@@ -148,6 +142,7 @@ Development header(s) and lib(s) for developing against libtcmu.
 %build
 CMAKE_OPTIONS="\
 	-DSUPPORT_SYSTEMD=1 \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 %if 0%{?build_handler_glusterfs}
 	-Dwith-glfs=1 \
 %else
