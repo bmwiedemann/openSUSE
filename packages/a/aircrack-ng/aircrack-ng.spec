@@ -29,6 +29,9 @@ URL:            https://www.aircrack-ng.org/
 Source0:        https://download.aircrack-ng.org/%{name}-%{version}.tar.gz
 Source1:        README.SUSE
 Patch1:         s390x-enablement-cpustats.patch
+Patch2:         aircrack-ng-1.7-pcre2-1-2385.patch
+Patch3:         aircrack-ng-1.7-pcre2-1-2391.patch
+Patch4:         aircrack-ng-1.7-pcre2-1-2397.patch
 BuildRequires:  autoconf
 BuildRequires:  ethtool
 BuildRequires:  expect
@@ -44,7 +47,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(hwloc)
-BuildRequires:  pkgconfig(libpcre) >= 3.0.0
+BuildRequires:  pkgconfig(libpcre2-8)
 %if 0%{?with sqlite}
 BuildRequires:  sqlite3-devel
 %endif

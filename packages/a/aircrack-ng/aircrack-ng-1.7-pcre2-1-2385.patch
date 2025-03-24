@@ -1,0 +1,886 @@
+From 6b05dc10cdcf45d50bc8f9dd74667a3ff399a059 Mon Sep 17 00:00:00 2001
+From: Andras Gemes <andrasgemes@outlook.com>
+Date: Fri, 20 Jan 2023 14:52:12 +0100
+Subject: [PATCH 1/9] autotools: add PCRE2 detection
+
+---
+ build/m4/aircrack_ng_pcre2.m4 | 61 +++++++++++++++++++++++++++++++++++
+ configure.ac                  |  2 ++
+ 2 files changed, 63 insertions(+)
+ create mode 100644 build/m4/aircrack_ng_pcre2.m4
+
+diff --git a/build/m4/aircrack_ng_pcre2.m4 b/build/m4/aircrack_ng_pcre2.m4
+new file mode 100644
+index 0000000000..f61c0f656d
+--- /dev/null
++++ b/build/m4/aircrack_ng_pcre2.m4
+@@ -0,0 +1,61 @@
++dnl Aircrack-ng
++dnl
++dnl Copyright (C) 2023 Andras Gemes <andrasgemes@outlook.com>
++dnl
++dnl Autotool support was written by: Joseph Benden <joe@benden.us>
++dnl
++dnl This program is free software; you can redistribute it and/or modify
++dnl it under the terms of the GNU General Public License as published by
++dnl the Free Software Foundation; either version 2 of the License, or
++dnl (at your option) any later version.
++dnl
++dnl This program is distributed in the hope that it will be useful,
++dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
++dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++dnl GNU General Public License for more details.
++dnl
++dnl You should have received a copy of the GNU General Public License
++dnl along with this program; if not, write to the Free Software
++dnl Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++dnl
++dnl In addition, as a special exception, the copyright holders give
++dnl permission to link the code of portions of this program with the
++dnl OpenSSL library under certain conditions as described in each
++dnl individual source file, and distribute linked combinations
++dnl including the two.
++dnl
++dnl You must obey the GNU General Public License in all respects
++dnl for all of the code used other than OpenSSL.
++dnl
++dnl If you modify file(s) with this exception, you may extend this
++dnl exception to your dnl version of the file(s), but you are not obligated
++dnl to do so.
++dnl
++dnl If you dnl do not wish to do so, delete this exception statement from your
++dnl version.
++dnl
++dnl If you delete this exception statement from all source files in the
++dnl program, then also delete it here.
++
++AC_DEFUN([AIRCRACK_NG_PCRE2], [
++AC_ARG_ENABLE(static-pcre2,
++    AS_HELP_STRING([--enable-static-pcre2],
++		[Enable statically linked PCRE2 libpcre2-8.]),
++    [static_pcre2=$enableval], [static_pcre2=no])
++
++if test "x$static_pcre2" != "xno"; then
++	AC_REQUIRE([AX_EXT_HAVE_STATIC_LIB_DETECT])
++	AX_EXT_HAVE_STATIC_LIB(PCRE2, ${DEFAULT_STATIC_LIB_SEARCH_PATHS}, pcre2 libpcre2-8, pcre2_version)
++	if test "x$PCRE2_FOUND" = xyes; then
++		HAVE_PCRE2=yes
++	else
++		HAVE_PCRE2=no
++	fi
++else
++	PKG_CHECK_MODULES(PCRE2, libpcre2-8, HAVE_PCRE2=yes, HAVE_PCRE2=no)
++fi
++
++AS_IF([test "x$HAVE_PCRE2" = "xyes"], [
++    AC_DEFINE([HAVE_PCRE2], [1], [Define this if you have libpcre2-8 on your system])
++])
++])
+\ No newline at end of file
+diff --git a/configure.ac b/configure.ac
+index 06aca4e466..6d8e0e5677 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -143,6 +143,7 @@ AIRCRACK_NG_EXT_SCRIPTS
+ AIRCRACK_NG_HWLOC
+ AIRCRACK_NG_PCAP
+ AIRCRACK_NG_PCRE
++AIRCRACK_NG_PCRE2
+ AIRCRACK_NG_RFKILL
+ AIRCRACK_NG_SQLITE
+ AIRCRACK_NG_ZLIB
+@@ -319,6 +320,7 @@ ${PACKAGE} ${VERSION}
+     Jemalloc:                    ${JEMALLOC}
+     Pcap:                        ${PCAP_FOUND}
+     Pcre:                        ${HAVE_PCRE}
++    Pcre2:                       ${HAVE_PCRE2}
+     Sqlite:                      ${HAVE_SQLITE3}
+     Tcmalloc:                    ${TCMALLOC}
+     Zlib:                        ${HAVE_ZLIB}
+
+From 37bc38a1749f61f3e54dbebca7b33df844b6de82 Mon Sep 17 00:00:00 2001
+From: Andras Gemes <andrasgemes@outlook.com>
+Date: Fri, 20 Jan 2023 14:53:59 +0100
+Subject: [PATCH 2/9] airodump-ng: add PCRE2 support
+
+---
+ src/airodump-ng/airodump-ng.c | 75 +++++++++++++++++++++++++++++++----
+ 1 file changed, 67 insertions(+), 8 deletions(-)
+
+diff --git a/src/airodump-ng/airodump-ng.c b/src/airodump-ng/airodump-ng.c
+index 9c45a4a298..528373fcde 100644
+--- a/src/airodump-ng/airodump-ng.c
++++ b/src/airodump-ng/airodump-ng.c
+@@ -68,7 +68,10 @@
+ 
+ #include <sys/wait.h>
+ 
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++#define PCRE2_CODE_UNIT_WIDTH 8
++#include <pcre2.h>
++#elif defined HAVE_PCRE
+ #include <pcre.h>
+ #endif
+ 
+@@ -150,7 +153,10 @@ static struct local_options
+ 	unsigned char prev_bssid[6];
+ 	char ** f_essid;
+ 	int f_essid_count;
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++	pcre2_code * f_essid_regex;
++	pcre2_match_data * f_essid_match_data;
++#elif defined HAVE_PCRE
+ 	pcre * f_essid_regex;
+ #endif
+ 	char * dump_prefix;
+@@ -784,7 +790,7 @@ static const char usage[] =
+ 	"      --netmask <netmask>   : Filter APs by mask\n"
+ 	"      --bssid     <bssid>   : Filter APs by BSSID\n"
+ 	"      --essid     <essid>   : Filter APs by ESSID\n"
+-#ifdef HAVE_PCRE
++#if defined HAVE_PCRE2 || defined HAVE_PCRE
+ 	"      --essid-regex <regex> : Filter APs by ESSID using a regular\n"
+ 	"                              expression\n"
+ #endif
+@@ -857,7 +863,22 @@ int is_filtered_essid(const uint8_t * essid)
+ 		ret = 1;
+ 	}
+ 
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++	if (lopt.f_essid_regex)
++	{
++		lopt.f_essid_match_data
++			= pcre2_match_data_create_from_pattern(lopt.f_essid_regex, NULL);
++
++		return pcre2_match(lopt.f_essid_regex,
++						   (PCRE2_SPTR) essid,
++						   (int) strnlen((char *) essid, ESSID_LENGTH),
++						   0,
++						   0,
++						   lopt.f_essid_match_data,
++						   0)
++			   < 0;
++	}
++#elif defined HAVE_PCRE
+ 	if (lopt.f_essid_regex)
+ 	{
+ 		return pcre_exec(lopt.f_essid_regex,
+@@ -5824,7 +5845,10 @@ int main(int argc, char * argv[])
+ 	int wi_read_failed = 0;
+ 	int n = 0;
+ 	int output_format_first_time = 1;
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++	int pcreerror;
++	PCRE2_SIZE pcreerroffset;
++#elif defined HAVE_PCRE
+ 	const char * pcreerror;
+ 	int pcreerroffset;
+ #endif
+@@ -5980,7 +6004,9 @@ int main(int argc, char * argv[])
+ #ifdef CONFIG_LIBNL
+ 	lopt.htval = CHANNEL_NO_HT;
+ #endif
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++	lopt.f_essid_regex = NULL;
++#elif defined HAVE_PCRE
+ 	lopt.f_essid_regex = NULL;
+ #endif
+ 
+@@ -6401,7 +6427,34 @@ int main(int argc, char * argv[])
+ 
+ 			case 'R':
+ 
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++				if (lopt.f_essid_regex != NULL)
++				{
++					printf("Error: ESSID regular expression already given. "
++						   "Aborting\n");
++					exit(EXIT_FAILURE);
++				}
++
++				lopt.f_essid_regex = pcre2_compile((PCRE2_SPTR) optarg,
++												   PCRE2_ZERO_TERMINATED,
++												   0,
++												   &pcreerror,
++												   &pcreerroffset,
++												   NULL);
++
++				if (lopt.f_essid_regex == NULL)
++				{
++					PCRE2_UCHAR pcreerrbuffer[256];
++					pcre2_get_error_message(
++						pcreerror, pcreerrbuffer, sizeof(pcreerrbuffer));
++
++					printf("Error: regular expression compilation failed at "
++						   "offset %lu: %s; aborting\n",
++						   pcreerroffset,
++						   pcreerrbuffer);
++					exit(EXIT_FAILURE);
++				}
++#elif defined HAVE_PCRE
+ 				if (lopt.f_essid_regex != NULL)
+ 				{
+ 					printf("Error: ESSID regular expression already given. "
+@@ -7339,7 +7392,13 @@ int main(int argc, char * argv[])
+ 
+ 	if (lopt.keyout) free(lopt.keyout);
+ 
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++	if (lopt.f_essid_regex)
++	{
++		pcre2_match_data_free(lopt.f_essid_match_data);
++		pcre2_code_free(lopt.f_essid_regex);
++	}
++#elif defined HAVE_PCRE
+ 	if (lopt.f_essid_regex) pcre_free(lopt.f_essid_regex);
+ #endif
+ 
+
+From dbc80d96cfba2dab959ab20bf76f8dd4f517bd29 Mon Sep 17 00:00:00 2001
+From: Andras Gemes <andrasgemes@outlook.com>
+Date: Fri, 20 Jan 2023 14:55:18 +0100
+Subject: [PATCH 3/9] besside-ng: add PCRE2 support
+
+---
+ src/besside-ng/besside-ng.c | 86 ++++++++++++++++++++++++++++++++++---
+ 1 file changed, 79 insertions(+), 7 deletions(-)
+
+diff --git a/src/besside-ng/besside-ng.c b/src/besside-ng/besside-ng.c
+index aea47308f6..07f1ba47e4 100644
+--- a/src/besside-ng/besside-ng.c
++++ b/src/besside-ng/besside-ng.c
+@@ -57,7 +57,10 @@
+ #include <unistd.h>
+ #include <limits.h>
+ 
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++#define PCRE2_CODE_UNIT_WIDTH 8
++#include <pcre2.h>
++#elif defined HAVE_PCRE
+ #include <pcre.h>
+ #endif
+ 
+@@ -155,7 +158,10 @@ static struct conf
+ 	int cf_do_wep;
+ 	int cf_do_wpa;
+ 	char * cf_wpa_server;
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++	pcre2_code * cf_essid_regex;
++	pcre2_match_data * cf_essid_match_data;
++#elif defined HAVE_PCRE
+ 	pcre * cf_essid_regex;
+ #endif
+ } _conf;
+@@ -1116,7 +1122,31 @@ static void attack_ping(void * a)
+ 	timer_in(100 * 1000, attack_ping, n);
+ }
+ 
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++static int is_filtered_essid(char * essid)
++{
++	REQUIRE(essid != NULL);
++
++	int ret = 0;
++
++	if (_conf.cf_essid_regex)
++	{
++		_conf.cf_essid_match_data
++			= pcre2_match_data_create_from_pattern(_conf.cf_essid_regex, NULL);
++
++		return pcre2_match(_conf.cf_essid_regex,
++						   (PCRE2_SPTR) essid,
++						   (int) strnlen((char *) essid, MAX_IE_ELEMENT_SIZE),
++						   0,
++						   0,
++						   _conf.cf_essid_match_data,
++						   0)
++			   < 0;
++	}
++
++	return (ret);
++}
++#elif defined HAVE_PCRE
+ static int is_filtered_essid(char * essid)
+ {
+ 	REQUIRE(essid != NULL);
+@@ -1148,7 +1178,12 @@ static int should_attack(struct network * n)
+ 	if (_conf.cf_bssid && memcmp(_conf.cf_bssid, n->n_bssid, 6) != 0)
+ 		return (0);
+ 
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++	if (is_filtered_essid(n->n_ssid))
++	{
++		return (0);
++	}
++#elif defined HAVE_PCRE
+ 	if (is_filtered_essid(n->n_ssid))
+ 	{
+ 		return (0);
+@@ -3007,7 +3042,13 @@ static void cleanup(int UNUSED(x))
+ 
+ 	print_work();
+ 
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++	if (_conf.cf_essid_regex)
++	{
++		pcre2_match_data_free(_conf.cf_essid_match_data);
++		pcre2_code_free(_conf.cf_essid_regex);
++	}
++#elif defined HAVE_PCRE
+ 	if (_conf.cf_essid_regex) pcre_free(_conf.cf_essid_regex);
+ #endif
+ 
+@@ -3295,7 +3336,10 @@ static void usage(char * prog)
+ int main(int argc, char * argv[])
+ {
+ 	int ch, temp;
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++	int pcreerror;
++	PCRE2_SIZE pcreerroffset;
++#elif defined HAVE_PCRE
+ 	const char * pcreerror;
+ 	int pcreerroffset;
+ #endif
+@@ -3349,7 +3393,35 @@ int main(int argc, char * argv[])
+ 				break;
+ 
+ 			case 'R':
+-#ifdef HAVE_PCRE
++#ifdef HAVE_PCRE2
++				if (_conf.cf_essid_regex != NULL)
++				{
++					printf("Error: ESSID regular expression already given. "
++						   "Aborting\n");
++					exit(EXIT_FAILURE);
++				}
++
++				_conf.cf_essid_regex = pcre2_compile((PCRE2_SPTR) optarg,
++													 PCRE2_ZERO_TERMINATED,
++													 0,
++													 &pcreerror,
++													 &pcreerroffset,
++													 NULL);
++
++				if (_conf.cf_essid_regex == NULL)
++				{
++					PCRE2_UCHAR pcreerrbuffer[256];
++					pcre2_get_error_message(
++						pcreerror, pcreerrbuffer, sizeof(pcreerrbuffer));
++
++					printf("Error: regular expression compilation failed at "
++						   "offset %lu: %s; aborting\n",
++						   pcreerroffset,
++						   pcreerrbuffer);
++					exit(EXIT_FAILURE);
++				}
++				break;
++#elif defined HAVE_PCRE
+ 				if (_conf.cf_essid_regex != NULL)
+ 				{
+ 					printf("Error: ESSID regular expression already given. "
+
+From ca05a44c449be3c433ea67c04f11d544ab62395f Mon Sep 17 00:00:00 2001
+From: Andras Gemes <andrasgemes@outlook.com>
+Date: Fri, 20 Jan 2023 14:57:16 +0100
+Subject: [PATCH 4/9] makefile: add PCRE2 to linker flags
+
+---
+ src/Makefile.inc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile.inc b/src/Makefile.inc
+index b49a210270..181aeda670 100644
+--- a/src/Makefile.inc
++++ b/src/Makefile.inc
+@@ -130,7 +130,7 @@ aireplay_ng_LDADD		= $(COMMON_LDADD) $(LIBAIRCRACK_OSDEP_LIBS) $(LIBACCRYPTO_LIB
+ airodump_ng_SOURCES		= $(SRC_ADU) $(SRC_DWRITE)
+ airodump_ng_CFLAGS		= $(COMMON_CFLAGS) $(PCRE_CFLAGS) $(LIBNL_CFLAGS)
+ airodump_ng_CPPFLAGS	= $(AM_CPPFLAGS) -I$(abs_srcdir)/src/airodump-ng
+-airodump_ng_LDADD			= $(COMMON_LDADD) $(PCRE_LIBS) $(LIBAIRCRACK_OSDEP_LIBS) $(LIBACCRYPTO_LIBS) $(LIBAIRCRACK_CE_WEP_LIBS) $(AIRPCAP_LIBS) $(LIBAIRCRACK_LIBS) $(CRYPTO_LIBS)
++airodump_ng_LDADD			= $(COMMON_LDADD) $(PCRE_LIBS) $(PCRE2_LIBS) $(LIBAIRCRACK_OSDEP_LIBS) $(LIBACCRYPTO_LIBS) $(LIBAIRCRACK_CE_WEP_LIBS) $(AIRPCAP_LIBS) $(LIBAIRCRACK_LIBS) $(CRYPTO_LIBS)
+ 
+ airserv_ng_SOURCES	= $(SRC_AS)
+ airserv_ng_CFLAGS		= $(COMMON_CFLAGS) $(LIBNL_CFLAGS)
+@@ -164,7 +164,7 @@ buddy_ng_LDADD		= $(COMMON_LDADD) $(LIBAIRCRACK_LIBS) $(CRYPTO_LIBS)
+ 
+ besside_ng_SOURCES	= $(SRC_BS)
+ besside_ng_CFLAGS		= $(COMMON_CFLAGS) $(PCRE_CFLAGS) $(LIBNL_CFLAGS)
+-besside_ng_LDADD		= $(COMMON_LDADD) $(PCRE_LIBS) $(LIBAIRCRACK_OSDEP_LIBS) $(LIBACCRYPTO_LIBS) $(LIBPTW_LIBS) $(AIRPCAP_LIBS) $(LIBAIRCRACK_LIBS) $(CRYPTO_LIBS)
++besside_ng_LDADD		= $(COMMON_LDADD) $(PCRE_LIBS) $(PCRE2_LIBS) $(LIBAIRCRACK_OSDEP_LIBS) $(LIBACCRYPTO_LIBS) $(LIBPTW_LIBS) $(AIRPCAP_LIBS) $(LIBAIRCRACK_LIBS) $(CRYPTO_LIBS)
+ 
+ besside_ng_crawler_SOURCES	= $(SRC_BC)
+ besside_ng_crawler_CFLAGS		= $(COMMON_CFLAGS) $(PCAP_CFLAGS)
+
+From fa532b05d48e856c774837b83a3323dafcc8c33e Mon Sep 17 00:00:00 2001
+From: Andras Gemes <andrasgemes@outlook.com>
+Date: Fri, 20 Jan 2023 14:58:35 +0100
+Subject: [PATCH 5/9] airodump-ng/dump_write: remove unused PCRE include
+
+---
+ src/airodump-ng/dump_write.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/airodump-ng/dump_write.c b/src/airodump-ng/dump_write.c
+index 2d08fe49ef..476a574546 100644
+--- a/src/airodump-ng/dump_write.c
++++ b/src/airodump-ng/dump_write.c
+@@ -45,9 +45,6 @@
+ #include <unistd.h> // ftruncate
+ #include <sys/types.h> // ftruncate
+ #include <sys/time.h>
+-#ifdef HAVE_PCRE
+-#include <pcre.h>
+-#endif
+ 
+ #include "aircrack-ng/defs.h"
+ #include "airodump-ng.h"
+
+From bac9b5fed2bb29e13326c90d7c12a6936fe9f04b Mon Sep 17 00:00:00 2001
+From: Andras Gemes <andrasgemes@outlook.com>
+Date: Sat, 21 Jan 2023 19:29:58 +0100
+Subject: [PATCH 7/9] compat-pcre: add compat-type PCRE header
+
+---
+ include/Makefile.inc                   |  1 +
+ include/aircrack-ng/pcre/compat-pcre.h | 90 ++++++++++++++++++++++++++
+ 2 files changed, 91 insertions(+)
+ create mode 100644 include/aircrack-ng/pcre/compat-pcre.h
+
+diff --git a/include/Makefile.inc b/include/Makefile.inc
+index e5a5e9bde8..901f052b4b 100644
+--- a/include/Makefile.inc
++++ b/include/Makefile.inc
+@@ -75,6 +75,7 @@ nobase_aircrack_HEADERS = 	%D%/aircrack-ng/adt/avl_tree.h \
+                             %D%/aircrack-ng/osdep/network.h \
+                             %D%/aircrack-ng/osdep/osdep.h \
+                             %D%/aircrack-ng/osdep/packed.h \
++                            %D%/aircrack-ng/pcre/compat-pcre.h \
+                             %D%/aircrack-ng/ptw/aircrack-ptw-lib.h \
+                             %D%/aircrack-ng/support/common.h \
+                             %D%/aircrack-ng/support/communications.h \
+diff --git a/include/aircrack-ng/pcre/compat-pcre.h b/include/aircrack-ng/pcre/compat-pcre.h
+new file mode 100644
+index 0000000000..e28d72f0e9
+--- /dev/null
++++ b/include/aircrack-ng/pcre/compat-pcre.h
+@@ -0,0 +1,90 @@
++/*
++*  Copyright (C) 2023 Andras Gemes <andrasgemes@outlook.com>
++*
++*  This program is free software; you can redistribute it and/or modify
++*  it under the terms of the GNU General Public License as published by
++*  the Free Software Foundation; either version 2 of the License, or
++*  (at your option) any later version.
++*
++*  This program is distributed in the hope that it will be useful,
++*  but WITHOUT ANY WARRANTY; without even the implied warranty of
++*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++*  GNU General Public License for more details.
++*
++*  You should have received a copy of the GNU General Public License
++*  along with this program; if not, write to the Free Software
++*  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
++*
++*
++*  In addition, as a special exception, the copyright holders give
++*  permission to link the code of portions of this program with the
++*  OpenSSL library under certain conditions as described in each
++*  individual source file, and distribute linked combinations
++*  including the two.
++*  You must obey the GNU General Public License in all respects
++*  for all of the code used other than OpenSSL. *  If you modify
++*  file(s) with this exception, you may extend this exception to your
++*  version of the file(s), but you are not obligated to do so. *  If you
++*  do not wish to do so, delete this exception statement from your
++*  version. *  If you delete this exception statement from all source
++*  files in the program, then also delete it here.
++*/
++
++#ifndef AIRCRACK_NG_COMPAT_PCRE_H
++#define AIRCRACK_NG_COMPAT_PCRE_H
++
++#ifdef HAVE_PCRE2
++#define PCRE2_CODE_UNIT_WIDTH 8
++#include <pcre2.h>
++#elif defined HAVE_PCRE
++#include <pcre.h>
++#endif
++
++#ifdef HAVE_PCRE2
++#define COMPAT_PCRE_COMPILE(pattern, pcreerror, pcreerroffset)                 \
++	pcre2_compile((PCRE2_SPTR) (pattern),                                      \
++				  PCRE2_ZERO_TERMINATED,                                       \
++				  0,                                                           \
++				  (pcreerror),                                                 \
++				  (pcreerroffset),                                             \
++				  NULL)
++#elif defined HAVE_PCRE
++#define COMPAT_PCRE_COMPILE(pattern, pcreerror, pcreerroffset)                 \
++	pcre_compile((pattern), 0, (pcreerror), (pcreerroffset), NULL)
++#endif
++
++#ifdef HAVE_PCRE2
++#define COMPAT_PCRE_MATCH(regex, essid, length, match_data)                    \
++	pcre2_match((regex),                                                       \
++				(PCRE2_SPTR) (essid),                                          \
++				(int) strnlen((char *) (essid), (length)),                     \
++				0,                                                             \
++				0,                                                             \
++				(match_data),                                                  \
++				0)
++#elif defined HAVE_PCRE
++#define COMPAT_PCRE_MATCH(regex, essid, length, match_data)                    \
++	pcre_exec((regex),                                                         \
++			  NULL,                                                            \
++			  (char *) (essid),                                                \
++			  strnlen((char *) (essid), (length)),                             \
++			  0,                                                               \
++			  0,                                                               \
++			  NULL,                                                            \
++			  0)
++#endif
++
++#ifdef HAVE_PCRE2
++#define COMPAT_PCRE_PRINT_ERROR(pcreerroffset, pcreerr)                        \
++	printf("Error: regular expression compilation failed at "                  \
++		   "offset %zu: %s; aborting\n",                                       \
++		   (pcreerroffset),                                                    \
++		   (pcreerr))
++#elif defined HAVE_PCRE
++#define COMPAT_PCRE_PRINT_ERROR(pcreerroffset, pcreerrorbuf)                   \
++	printf("Error: regular expression compilation failed at "                  \
++		   "offset %d: %s; aborting\n",                                        \
++		   (pcreerroffset),                                                    \
++		   (pcreerrorbuf))
++#endif
++#endif //AIRCRACK_NG_COMPAT_PCRE_H
+
+From e7ace80dbcfd2feecbbc6263ce59ce20acdafca0 Mon Sep 17 00:00:00 2001
+From: Andras Gemes <andrasgemes@outlook.com>
+Date: Sat, 21 Jan 2023 19:31:07 +0100
+Subject: [PATCH 8/9] airodump-ng: utilize compat-pcre
+
+---
+ src/airodump-ng/airodump-ng.c | 80 +++++++++--------------------------
+ 1 file changed, 19 insertions(+), 61 deletions(-)
+
+diff --git a/src/airodump-ng/airodump-ng.c b/src/airodump-ng/airodump-ng.c
+index 528373fcde..de922df174 100644
+--- a/src/airodump-ng/airodump-ng.c
++++ b/src/airodump-ng/airodump-ng.c
+@@ -68,13 +68,7 @@
+ 
+ #include <sys/wait.h>
+ 
+-#ifdef HAVE_PCRE2
+-#define PCRE2_CODE_UNIT_WIDTH 8
+-#include <pcre2.h>
+-#elif defined HAVE_PCRE
+-#include <pcre.h>
+-#endif
+-
++#include "aircrack-ng/pcre/compat-pcre.h"
+ #include "aircrack-ng/defs.h"
+ #include "aircrack-ng/version.h"
+ #include "aircrack-ng/support/pcap_local.h"
+@@ -863,33 +857,22 @@ int is_filtered_essid(const uint8_t * essid)
+ 		ret = 1;
+ 	}
+ 
+-#ifdef HAVE_PCRE2
++#if defined HAVE_PCRE2 || defined HAVE_PCRE
+ 	if (lopt.f_essid_regex)
+ 	{
++#ifdef HAVE_PCRE2
+ 		lopt.f_essid_match_data
+ 			= pcre2_match_data_create_from_pattern(lopt.f_essid_regex, NULL);
+ 
+-		return pcre2_match(lopt.f_essid_regex,
+-						   (PCRE2_SPTR) essid,
+-						   (int) strnlen((char *) essid, ESSID_LENGTH),
+-						   0,
+-						   0,
+-						   lopt.f_essid_match_data,
+-						   0)
++		return COMPAT_PCRE_MATCH(lopt.f_essid_regex,
++								 essid,
++								 ESSID_LENGTH,
++								 lopt.f_essid_match_data)
+ 			   < 0;
+-	}
+ #elif defined HAVE_PCRE
+-	if (lopt.f_essid_regex)
+-	{
+-		return pcre_exec(lopt.f_essid_regex,
+-						 NULL,
+-						 (char *) essid,
+-						 (int) strnlen((char *) essid, ESSID_LENGTH),
+-						 0,
+-						 0,
+-						 NULL,
+-						 0)
++		return COMPAT_PCRE_MATCH(lopt.f_essid_regex, essid, ESSID_LENGTH, NULL)
+ 			   < 0;
++#endif
+ 	}
+ #endif
+ 
+@@ -5847,6 +5830,7 @@ int main(int argc, char * argv[])
+ 	int output_format_first_time = 1;
+ #ifdef HAVE_PCRE2
+ 	int pcreerror;
++	PCRE2_UCHAR pcreerrorbuf[256];
+ 	PCRE2_SIZE pcreerroffset;
+ #elif defined HAVE_PCRE
+ 	const char * pcreerror;
+@@ -6004,9 +5988,7 @@ int main(int argc, char * argv[])
+ #ifdef CONFIG_LIBNL
+ 	lopt.htval = CHANNEL_NO_HT;
+ #endif
+-#ifdef HAVE_PCRE2
+-	lopt.f_essid_regex = NULL;
+-#elif defined HAVE_PCRE
++#if defined HAVE_PCRE2 || defined HAVE_PCRE
+ 	lopt.f_essid_regex = NULL;
+ #endif
+ 
+@@ -6427,7 +6409,7 @@ int main(int argc, char * argv[])
+ 
+ 			case 'R':
+ 
+-#ifdef HAVE_PCRE2
++#if defined HAVE_PCRE2 || defined HAVE_PCRE
+ 				if (lopt.f_essid_regex != NULL)
+ 				{
+ 					printf("Error: ESSID regular expression already given. "
+@@ -6435,42 +6417,18 @@ int main(int argc, char * argv[])
+ 					exit(EXIT_FAILURE);
+ 				}
+ 
+-				lopt.f_essid_regex = pcre2_compile((PCRE2_SPTR) optarg,
+-												   PCRE2_ZERO_TERMINATED,
+-												   0,
+-												   &pcreerror,
+-												   &pcreerroffset,
+-												   NULL);
++				lopt.f_essid_regex
++					= COMPAT_PCRE_COMPILE(optarg, &pcreerror, &pcreerroffset);
+ 
+ 				if (lopt.f_essid_regex == NULL)
+ 				{
+-					PCRE2_UCHAR pcreerrbuffer[256];
++#ifdef HAVE_PCRE2
+ 					pcre2_get_error_message(
+-						pcreerror, pcreerrbuffer, sizeof(pcreerrbuffer));
+-
+-					printf("Error: regular expression compilation failed at "
+-						   "offset %lu: %s; aborting\n",
+-						   pcreerroffset,
+-						   pcreerrbuffer);
+-					exit(EXIT_FAILURE);
+-				}
++						pcreerror, pcreerrorbuf, sizeof(pcreerrorbuf));
++					COMPAT_PCRE_PRINT_ERROR(pcreerroffset, pcreerrorbuf);
+ #elif defined HAVE_PCRE
+-				if (lopt.f_essid_regex != NULL)
+-				{
+-					printf("Error: ESSID regular expression already given. "
+-						   "Aborting\n");
+-					exit(EXIT_FAILURE);
+-				}
+-
+-				lopt.f_essid_regex
+-					= pcre_compile(optarg, 0, &pcreerror, &pcreerroffset, NULL);
+-
+-				if (lopt.f_essid_regex == NULL)
+-				{
+-					printf("Error: regular expression compilation failed at "
+-						   "offset %d: %s; aborting\n",
+-						   pcreerroffset,
+-						   pcreerror);
++					COMPAT_PCRE_PRINT_ERROR(pcreerroffset, pcreerror);
++#endif
+ 					exit(EXIT_FAILURE);
+ 				}
+ #else
+
+From d7eb251f945524b419e8c90dd54c640d9922e5d5 Mon Sep 17 00:00:00 2001
+From: Andras Gemes <andrasgemes@outlook.com>
+Date: Sat, 21 Jan 2023 19:31:31 +0100
+Subject: [PATCH 9/9] besside-ng: utilize compat-pcre
+
+---
+ src/besside-ng/besside-ng.c | 94 ++++++++-----------------------------
+ 1 file changed, 20 insertions(+), 74 deletions(-)
+
+diff --git a/src/besside-ng/besside-ng.c b/src/besside-ng/besside-ng.c
+index 07f1ba47e4..96229aca65 100644
+--- a/src/besside-ng/besside-ng.c
++++ b/src/besside-ng/besside-ng.c
+@@ -57,13 +57,7 @@
+ #include <unistd.h>
+ #include <limits.h>
+ 
+-#ifdef HAVE_PCRE2
+-#define PCRE2_CODE_UNIT_WIDTH 8
+-#include <pcre2.h>
+-#elif defined HAVE_PCRE
+-#include <pcre.h>
+-#endif
+-
++#include "aircrack-ng/pcre/compat-pcre.h"
+ #include "aircrack-ng/defs.h"
+ #include "aircrack-ng/aircrack-ng.h"
+ #include "aircrack-ng/version.h"
+@@ -1122,7 +1116,7 @@ static void attack_ping(void * a)
+ 	timer_in(100 * 1000, attack_ping, n);
+ }
+ 
+-#ifdef HAVE_PCRE2
++#if defined HAVE_PCRE2 || defined HAVE_PCRE
+ static int is_filtered_essid(char * essid)
+ {
+ 	REQUIRE(essid != NULL);
+@@ -1131,39 +1125,20 @@ static int is_filtered_essid(char * essid)
+ 
+ 	if (_conf.cf_essid_regex)
+ 	{
++#ifdef HAVE_PCRE2
+ 		_conf.cf_essid_match_data
+ 			= pcre2_match_data_create_from_pattern(_conf.cf_essid_regex, NULL);
+ 
+-		return pcre2_match(_conf.cf_essid_regex,
+-						   (PCRE2_SPTR) essid,
+-						   (int) strnlen((char *) essid, MAX_IE_ELEMENT_SIZE),
+-						   0,
+-						   0,
+-						   _conf.cf_essid_match_data,
+-						   0)
++		return COMPAT_PCRE_MATCH(_conf.cf_essid_regex,
++								 essid,
++								 MAX_IE_ELEMENT_SIZE,
++								 _conf.cf_essid_match_data)
+ 			   < 0;
+-	}
+-
+-	return (ret);
+-}
+ #elif defined HAVE_PCRE
+-static int is_filtered_essid(char * essid)
+-{
+-	REQUIRE(essid != NULL);
+-
+-	int ret = 0;
+-
+-	if (_conf.cf_essid_regex)
+-	{
+-		return pcre_exec(_conf.cf_essid_regex,
+-						 NULL,
+-						 (char *) essid,
+-						 strnlen((char *) essid, MAX_IE_ELEMENT_SIZE),
+-						 0,
+-						 0,
+-						 NULL,
+-						 0)
++		return COMPAT_PCRE_MATCH(
++				   _conf.cf_essid_regex, essid, MAX_IE_ELEMENT_SIZE, NULL)
+ 			   < 0;
++#endif
+ 	}
+ 
+ 	return (ret);
+@@ -1178,12 +1153,7 @@ static int should_attack(struct network * n)
+ 	if (_conf.cf_bssid && memcmp(_conf.cf_bssid, n->n_bssid, 6) != 0)
+ 		return (0);
+ 
+-#ifdef HAVE_PCRE2
+-	if (is_filtered_essid(n->n_ssid))
+-	{
+-		return (0);
+-	}
+-#elif defined HAVE_PCRE
++#if defined HAVE_PCRE2 || defined HAVE_PCRE
+ 	if (is_filtered_essid(n->n_ssid))
+ 	{
+ 		return (0);
+@@ -3338,6 +3308,7 @@ int main(int argc, char * argv[])
+ 	int ch, temp;
+ #ifdef HAVE_PCRE2
+ 	int pcreerror;
++	PCRE2_UCHAR pcreerrorbuf[256];
+ 	PCRE2_SIZE pcreerroffset;
+ #elif defined HAVE_PCRE
+ 	const char * pcreerror;
+@@ -3393,7 +3364,7 @@ int main(int argc, char * argv[])
+ 				break;
+ 
+ 			case 'R':
+-#ifdef HAVE_PCRE2
++#if defined HAVE_PCRE2 || defined HAVE_PCRE
+ 				if (_conf.cf_essid_regex != NULL)
+ 				{
+ 					printf("Error: ESSID regular expression already given. "
+@@ -3401,43 +3372,18 @@ int main(int argc, char * argv[])
+ 					exit(EXIT_FAILURE);
+ 				}
+ 
+-				_conf.cf_essid_regex = pcre2_compile((PCRE2_SPTR) optarg,
+-													 PCRE2_ZERO_TERMINATED,
+-													 0,
+-													 &pcreerror,
+-													 &pcreerroffset,
+-													 NULL);
++				_conf.cf_essid_regex
++					= COMPAT_PCRE_COMPILE(optarg, &pcreerror, &pcreerroffset);
+ 
+ 				if (_conf.cf_essid_regex == NULL)
+ 				{
+-					PCRE2_UCHAR pcreerrbuffer[256];
++#ifdef HAVE_PCRE2
+ 					pcre2_get_error_message(
+-						pcreerror, pcreerrbuffer, sizeof(pcreerrbuffer));
+-
+-					printf("Error: regular expression compilation failed at "
+-						   "offset %lu: %s; aborting\n",
+-						   pcreerroffset,
+-						   pcreerrbuffer);
+-					exit(EXIT_FAILURE);
+-				}
+-				break;
++						pcreerror, pcreerrorbuf, sizeof(pcreerrorbuf));
++					COMPAT_PCRE_PRINT_ERROR(pcreerroffset, pcreerrorbuf);
+ #elif defined HAVE_PCRE
+-				if (_conf.cf_essid_regex != NULL)
+-				{
+-					printf("Error: ESSID regular expression already given. "
+-						   "Aborting\n");
+-					exit(EXIT_FAILURE);
+-				}
+-
+-				_conf.cf_essid_regex
+-					= pcre_compile(optarg, 0, &pcreerror, &pcreerroffset, NULL);
+-
+-				if (_conf.cf_essid_regex == NULL)
+-				{
+-					printf("Error: regular expression compilation failed at "
+-						   "offset %d: %s; aborting\n",
+-						   pcreerroffset,
+-						   pcreerror);
++					COMPAT_PCRE_PRINT_ERROR(pcreerroffset, pcreerror);
++#endif
+ 					exit(EXIT_FAILURE);
+ 				}
+ 				break;
