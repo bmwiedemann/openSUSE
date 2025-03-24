@@ -21,13 +21,12 @@ Version:        2.38
 Release:        0
 Summary:        Clang based source code indexer
 License:        GPL-3.0-or-later
-Group:          Development/Tools/Navigators
 URL:            https://github.com/Andersbakken/rtags
 Source0:        https://github.com/Andersbakken/rtags/releases/download/v%{version}/rtags-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM rtags-2.38-emacs-28.patch -- Fix build with Emacs 28
 Patch0:         rtags-2.38-emacs-28.patch
 BuildRequires:  clang-devel
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  emacs-nox
 BuildRequires:  gcc-c++
 BuildRequires:  llvm-devel
@@ -47,7 +46,8 @@ Rtags is Clang based source file indexer supporting C/C++/Objective-C(++) code.
 
 %build
 %cmake \
-  -DCURSES_CURSES_LIBRARY:FILEPATH="%{_libdir}/libncurses.so"
+  -DCURSES_CURSES_LIBRARY:FILEPATH="%{_libdir}/libncurses.so" \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
@@ -55,6 +55,9 @@ Rtags is Clang based source file indexer supporting C/C++/Objective-C(++) code.
 mkdir -p %{buildroot}%{_sitedir} %{buildroot}%{_scriptdir}
 install -m 0755 -t %{buildroot}%{_scriptdir} bin/*.sh
 chmod 0755 %{buildroot}%{_bindir}/gcc-rtags-wrapper.sh
+
+%check
+%ctest
 
 %files
 %doc README.org CHANGELOG
