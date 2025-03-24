@@ -1,0 +1,11 @@
+--- mozilla/mach~	2025-03-19 05:32:33.217982928 +0000
++++ mozilla/mach	2025-03-19 05:32:42.248303296 +0000
+@@ -87,7 +87,7 @@
+     esac
+     py3executable=$state_dir/_virtualenvs/mach/$bin_path/python
+ else
+-    py3executable=python3
++    py3executable=python3.11
+ fi
+ 
+ # Check whether we need to run with the native Python 3 interpreter.

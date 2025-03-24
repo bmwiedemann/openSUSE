@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 19 23:23:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch mach-use-python-311.patch:
+  * Execute mach with Python 3.11, it does not support Python 3.13.
+
+-------------------------------------------------------------------
 Tue Jan 07 13:14:58 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.20

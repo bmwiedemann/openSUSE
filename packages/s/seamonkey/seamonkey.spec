@@ -48,7 +48,7 @@ BuildRequires:  libwebp-devel >= 1.0.0
 %endif
 BuildRequires:  makeinfo
 BuildRequires:  memory-constraints
-BuildRequires:  python3-base
+BuildRequires:  python311-base
 BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -101,6 +101,7 @@ Patch4:         seamonkey-man-page.patch
 Patch5:         reproducible.patch
 Patch6:         mozilla-bmo531915.patch
 Patch7:         mozilla-bmo1896958.patch
+Patch8:         mach-use-python-311.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh coreutils
 Provides:       seamonkey-mail = %{version}
@@ -237,6 +238,7 @@ cp %{SOURCE12} GNUmakefile
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
 
 cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1
