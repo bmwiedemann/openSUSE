@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 21 12:52:43 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.5:
+  * Add support for nested /etc subvolumes
+  * Log combustion-prepare.service to journal+console
+  * CI: Verify combustion runs only on the first boot
+  * CI: Add some missing SYSTEMD_IGNORE_CHROOT=1 to poweroff calls
+  * CI: Add a test with Minimal-VM
+  * Silence stderr of grep in /proc/*/mountinfo
+
+-------------------------------------------------------------------
 Wed Aug 21 12:12:40 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.4+git8:
