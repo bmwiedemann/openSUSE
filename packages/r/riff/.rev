@@ -252,4 +252,13 @@
   * Accept arguments in PAGER variable</comment>
     <requestid>1237451</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>433bbf047ad3bacaa58fe866ea970085</srcmd5>
+    <version>3.3.9</version>
+    <time>1742819546</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.9:
+  * Don't group Hiragana / Katakana into words</comment>
+    <requestid>1255509</requestid>
+  </revision>
 </revisionlist>
