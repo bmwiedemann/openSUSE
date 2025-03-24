@@ -27,7 +27,7 @@ URL:            https://github.com/xtensor-stack/xtl
 Source0:        https://github.com/xtensor-stack/xtl/archive/refs/tags/%{version}/xtl-%{version}.tar.gz
 BuildRequires:  %{python_module breathe}
 BuildRequires:  %{python_module sphinx_rtd_theme}
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  doctest-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -60,7 +60,9 @@ Basic tools (containers, algorithms) used by other quantstack packages.
 %autosetup
 
 %build
-%cmake -DBUILD_TESTS:BOOL=ON
+%cmake \
+  -DBUILD_TESTS:BOOL=ON \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 #build documentation
