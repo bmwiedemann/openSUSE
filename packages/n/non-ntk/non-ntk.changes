@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 21 15:05:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire: waf. Use the distro-provided waf instead of an own
+  intree copy.
+
+-------------------------------------------------------------------
+Fri Mar 21 10:01:05 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
+
+- update waf (adding it as SOURCE2) to version 2.1.5
+  (fixes Tumbleweed build due to python 3.13/deprecated imp module)
+
+-------------------------------------------------------------------
 Thu Feb 22 14:03:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
