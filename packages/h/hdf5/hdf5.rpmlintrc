@@ -1,0 +1,20 @@
+# Chill out about example dir issues as users may need these for copying and re-use
+addFilter("hdf5.*-examples.*: E: non-executable-script")
+addFilter("hdf5.*-examples.*: E: zero-length")
+addFilter("hdf5.*-examples.*: W: bin-sh-syntax-error")
+
+# Cannot avoid using name in summary for serial flavour
+addFilter("hdf5\..*: W: name-repeated-in-summary")
+
+# Something to investigate with upstream?
+addFilter("W: potential-bashisms")
+
+# Always with these multibuild packages!
+addFilter("hdf5.+\.src: E: invalid-spec-name")
+
+# HPC specific non-issues
+addFilter("hdf5_.*-hpc.*: E: explicit-lib-dependency")
+addFilter("hdf5_.*-hpc-devel.*: E: no-binary")
+addFilter("hdf5_.*-hpc-module.*: E: no-binary")
+addFilter("libhdf5.*-hpc.*: E: no-binary")
+addFilter("hdf5_.*-hpc-module\..*: W: hidden-file-or-dir")

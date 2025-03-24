@@ -11,11 +11,11 @@ Signed-off-by: Egbert Eich <eich@suse.com>
  test/dt_arith.c                |   27 +++++++++++++++++++++++++--
  2 files changed, 41 insertions(+), 2 deletions(-)
 
-Index: hdf5-1.12.3/test/dt_arith.c
+Index: hdf5-1.14.6/test/dt_arith.c
 ===================================================================
---- hdf5-1.12.3.orig/test/dt_arith.c
-+++ hdf5-1.12.3/test/dt_arith.c
-@@ -3035,7 +3035,19 @@ test_conv_flt_1(const char *name, int ru
+--- hdf5-1.14.6.orig/test/dt_arith.c
++++ hdf5-1.14.6/test/dt_arith.c
+@@ -3448,7 +3448,19 @@ test_conv_flt_1(const char *name, int ru
  #if H5_SIZEOF_LONG_DOUBLE != H5_SIZEOF_DOUBLE
              }
              else if (src_type == FLT_LDOUBLE) {
@@ -35,8 +35,8 @@ Index: hdf5-1.12.3/test/dt_arith.c
 +                        buf, saved, nelmts);
  #endif
              }
-             else
-@@ -3735,7 +3747,18 @@ test_conv_int_fp(const char *name, int r
+             else if (src_type == FLT_FLOAT16) {
+@@ -4215,7 +4227,18 @@ test_conv_int_fp(const char *name, int r
                             nelmts);
          }
          else {
@@ -56,10 +56,10 @@ Index: hdf5-1.12.3/test/dt_arith.c
          }
  #endif
      }
-Index: hdf5-1.12.3/config/cmake/ConversionTests.c
+Index: hdf5-1.14.6/config/cmake/ConversionTests.c
 ===================================================================
---- hdf5-1.12.3.orig/config/cmake/ConversionTests.c
-+++ hdf5-1.12.3/config/cmake/ConversionTests.c
+--- hdf5-1.14.6.orig/config/cmake/ConversionTests.c
++++ hdf5-1.14.6/config/cmake/ConversionTests.c
 @@ -34,6 +34,14 @@ int HDF_NO_UBSAN main(void)
      unsigned char       s2[8];
      int                 ret = 1;

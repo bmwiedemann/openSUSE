@@ -1,7 +1,7 @@
 #
 # spec file for package hdf5
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,19 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%if 0%{?sle_version} >= 150200
-%define DisOMPI1 ExclusiveArch:  do_not_build
-%endif
-%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
-%define DisOMPI3 ExclusiveArch:  do_not_build
-%endif
+%bcond_with sz2
 
-%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
-%define DisOMPI4 ExclusiveArch:  do_not_build
-%endif
-
-# Disable until resource issue is resolved.
-%bcond_with check
-
-%define use_sz2 0
-
-%define short_ver 1.12
-%define vers %{short_ver}.3
+%define sonum 310
+%define short_ver 1.14
+%define vers %{short_ver}.6
 %define _vers %( echo %{vers} | tr '.' '_' )
 %define src_ver %{version}
 %define pname hdf5
+%bcond_with static
+
+%if %{with static}
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%endif
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -51,14 +42,12 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "openmpi4"
-%{?DisOMPI4}
 %global mpi_flavor openmpi
 %define mpi_vers 4
 %bcond_with hpc
 %endif
 
 %if "%{flavor}" == "openmpi5"
-%{?DisOMPI5}
 %global mpi_flavor openmpi
 %define mpi_vers 5
 %bcond_with hpc
@@ -76,7 +65,6 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu-openmpi4-hpc"
-%{?DisOMPI4}
 %bcond_without hpc
 %define compiler_family gnu
 %undefine c_f_ver
@@ -85,7 +73,6 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu-openmpi5-hpc"
-%{?DisOMPI5}
 %bcond_without hpc
 %define compiler_family gnu
 %undefine c_f_ver
@@ -115,7 +102,6 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu7-openmpi4-hpc"
-%{?DisOMPI4}
 %bcond_without hpc
 %define compiler_family gnu
 %define c_f_ver 7
@@ -124,7 +110,6 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu7-openmpi5-hpc"
-%{?DisOMPI5}
 %bcond_without hpc
 %define compiler_family gnu
 %define c_f_ver 7
@@ -154,7 +139,6 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu8-openmpi4-hpc"
-%{?DisOMPI4}
 %bcond_without hpc
 %define compiler_family gnu
 %define c_f_ver 8
@@ -163,7 +147,6 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu8-openmpi5-hpc"
-%{?DisOMPI5}
 %bcond_without hpc
 %define compiler_family gnu
 %define c_f_ver 8
@@ -193,7 +176,6 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu9-openmpi4-hpc"
-%{?DisOMPI4}
 %bcond_without hpc
 %define compiler_family gnu
 %define c_f_ver 9
@@ -202,7 +184,6 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu9-openmpi5-hpc"
-%{?DisOMPI5}
 %bcond_without hpc
 %define compiler_family gnu
 %define c_f_ver 9
@@ -232,7 +213,6 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu10-openmpi4-hpc"
-%{?DisOMPI4}
 %bcond_without hpc
 %define compiler_family gnu
 %define c_f_ver 10
@@ -241,7 +221,6 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu10-openmpi5-hpc"
-%{?DisOMPI5}
 %bcond_without hpc
 %define compiler_family gnu
 %define c_f_ver 10
@@ -294,8 +273,8 @@ ExclusiveArch:  do_not_build
   %define my_prefix %{_libdir}/mpi/gcc/%{mpi_flavor}%{?mpi_ext}
   %define my_suffix -%{mpi_flavor}%{?mpi_ext}
   %define my_bindir %{my_prefix}/bin
-  %define my_libdir %{my_prefix}/%{_lib}/
-  %define my_incdir %{my_prefix}/include/
+  %define my_libdir %{my_prefix}/%{_lib}
+  %define my_incdir %{my_prefix}/include
  %endif
  %if 0%{!?package_name:1}
   %define package_name   %pname%{?my_suffix}
@@ -304,8 +283,7 @@ ExclusiveArch:  do_not_build
  %define vname %{pname}
 %endif
 
-# Run 'sh ./update_so_version.sh' when updating hdf5!
-%include %{_sourcedir}/so_versions
+%define __builder ninja
 
 Name:           %{package_name}
 Version:        %vers
@@ -314,49 +292,39 @@ Summary:        Command-line programs for the HDF5 scientific data format
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
 URL:            https://www.hdfgroup.org/HDF5/
-Source0:        https://www.hdfgroup.org/ftp/HDF5/releases/%{pname}-%{short_ver}/%{pname}-%{src_ver}/src/%{pname}-%{src_ver}.tar.bz2
-Source100:      so_versions
-Source1000:     update_so_version.sh
-Patch0:         hdf5-LD_LIBRARY_PATH.patch
+Source0:        https://github.com/HDFGroup/hdf5/releases/download/%{pname}_%{version}/%{pname}-%{version}.tar.gz
+Source100:      %{pname}.rpmlintrc
+# PATCH-FIX-UPSTREAM hdf5-cmake-fix-script-paths.patch badshah400@gmail.com -- Fix paths in scripts when built using cmake
+Patch0:         hdf5-cmake-fix-script-paths.patch
 # not really needed but we want to get noticed if hdf5 doesn' t know our host
 Patch2:         hdf5-1.8.11-abort_unknown_host_config.patch
 %ifarch %arm
 Patch4:         hdf5-1.8.10-tests-arm.patch
 %endif
 Patch5:         PPC64LE-Fix-long-double-handling.patch
-Patch6:         hdf5-Remove-timestamps-from-binaries.patch
-# Could be ported but it's unknown if it's still needed
-Patch7:         hdf5-mpi.patch
-Patch8:         Disable-phdf5-tests.patch
-Patch9:         Fix-error-message-not-the-name-but-the-link-information-is-parsed.patch
-# Imported from Fedora, strip flags from h5cc wrapper
-Patch10:        hdf5-wrappers.patch
-Patch101:       H5O_fsinfo_decode-Make-more-resilient-to-out-of-bounds-read.patch
-Patch104:       Report-error-if-dimensions-of-chunked-storage-in-data-layout-2.patch
-Patch105:       When-evicting-driver-info-block-NULL-the-corresponding-entry.patch
-Patch107:       Validate-location-offset-of-the-accumulated-metadata-when-comparing.patch
-Patch109:       Hot-fix-for-CVE-2020-10812.patch
-Patch110:       reproducible.patch
 
+BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  gcc-fortran
 BuildRequires:  hostname
-%if 0%{?use_sz2}
-BuildRequires:  libsz2-devel
+BuildRequires:  ninja
+%if %{with sz2}
+BuildRequires:  sz2-devel
 %endif
 BuildRequires:  zlib-devel
 %if %{without hpc}
-BuildRequires:  gcc-c++
-BuildRequires:  gcc-fortran
  %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
  %else
-Requires:       lib%{pname}_cpp%{sonum_CXX} = %{version}
-Requires:       lib%{pname}_hl_cpp%{sonum_HL_CXX} = %{version}
+Requires:       lib%{pname}_cpp%{sonum} = %{version}
+Requires:       lib%{pname}_hl_cpp%{sonum} = %{version}
  %endif
 Requires:       lib%{pname}-%{sonum} = %{version}
-Requires:       lib%{pname}_fortran%{sonum_F} = %{version}
-Requires:       lib%{pname}_hl%{sonum_HL} = %{version}
-Requires:       lib%{pname}hl_fortran%{sonum_HL_F} = %{version}
+Requires:       lib%{pname}_fortran%{sonum} = %{version}
+Requires:       lib%{pname}_hl%{sonum} = %{version}
+Requires:       lib%{pname}_hl_fortran%{sonum} = %{version}
+Requires:       lib%{pname}_tools%{sonum} = %{version}
 %else # hpc
 %hpc_requires
 Requires:       %{libname -l _fortran}
@@ -364,8 +332,9 @@ Requires:       %{libname -l _fortran}
 Requires:       %{libname -l _cpp}
 Requires:       %{libname -l _hl_cpp}
 %endif
+Requires:       %{libname -l _hl_fortran}
 Requires:       %{libname -l _hl}
-Requires:       %{libname -l hl_fortran}
+Requires:       %{libname -l _tools}
 Requires:       %{libname}
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  lua-lmod
@@ -374,7 +343,6 @@ BuildRequires:  suse-hpc >= 0.2
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
  %endif
 %endif  # ?hpc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 HDF5 is a data model, library, and file format for storing and
@@ -401,7 +369,7 @@ This package contains the %{flavor} version of the HDF5 runtime libraries.
 
 %{?with_hpc:%{hpc_master_package -l -n lib%{pname}%{hpc_package_name_tail}}}
 
-%package -n     %{libname -l _hl -s %{sonum_HL}}
+%package -n     %{libname -l _hl -s %{sonum}}
 Summary:        High-level shared libraries for the HDF5 scientific data format
 # To avoid unresolvable errors due to multiple providers of the library
 Group:          System/Libraries
@@ -409,7 +377,7 @@ Provides:       %{libname -l _hl} = %{version}
 Obsoletes:      %{libname -l _hl} < %{version}
 %{?with_hpc:Requires:       %{name}-module = %version}
 
-%description -n %{libname -l _hl -s %{sonum_HL}}
+%description -n %{libname -l _hl -s %{sonum}}
 HDF5 is a data model, library, and file format for storing and
 managing data. It supports an unlimited variety of datatypes.
 
@@ -418,7 +386,7 @@ runtime libraries.
 
 %{?with_hpc:%{hpc_master_package -l -n lib%{pname}_hl%{hpc_package_name_tail} -N %{pname}_hl}}
 
-%package -n     %{libname -l _cpp -s %{sonum_CXX}}
+%package -n     %{libname -l _cpp -s %{sonum}}
 Summary:        Shared libraries for the HDF5 scientific data format
 # To avoid unresolvable errors due to multiple providers of the library
 Group:          System/Libraries
@@ -426,7 +394,7 @@ Provides:       %{libname -l _cpp} = %{version}
 Obsoletes:      %{libname -l _cpp} < %{version}
 %{?with_hpc:Requires:       %{name}-module = %version}
 
-%description -n %{libname -l _cpp -s %{sonum_CXX}}
+%description -n %{libname -l _cpp -s %{sonum}}
 HDF5 is a data model, library, and file format for storing and
 managing data. It supports an unlimited variety of datatypes.
 
@@ -434,7 +402,7 @@ This package contains the HDF5 runtime libraries.
 
 %{?with_hpc:%{hpc_master_package -l -n lib%{pname}_cpp%{hpc_package_name_tail} -N %{pname}_cpp}}
 
-%package -n     %{libname -l _hl_cpp -s %{sonum_HL_CXX}}
+%package -n     %{libname -l _hl_cpp -s %{sonum}}
 Summary:        High-level shared libraries for the HDF5 scientific data format
 # To avoid unresolvable errors due to multiple providers of the library
 Group:          System/Libraries
@@ -442,7 +410,7 @@ Provides:       %{libname -l _hl_cpp} = %{version}
 Obsoletes:      %{libname -l _hl_cpp} < %{version}
 %{?with_hpc:Requires:       %{name}-module = %version}
 
-%description -n %{libname -l _hl_cpp -s %{sonum_HL_CXX}}
+%description -n %{libname -l _hl_cpp -s %{sonum}}
 HDF5 is a data model, library, and file format for storing and
 managing data. It supports an unlimited variety of datatypes.
 
@@ -450,7 +418,7 @@ This package contains the the high-level HDF5 runtime libraries.
 
 %{?with_hpc:%{hpc_master_package -l -n lib%{pname}_hl_cpp%{hpc_package_name_tail} -N %{pname}_hl_cpp}}
 
-%package -n     %{libname -l _fortran -s %{sonum_F}}
+%package -n     %{libname -l _fortran -s %{sonum}}
 Summary:        Shared libraries for the HDF5 scientific data format
 # To avoid unresolvable errors due to multiple providers of the library
 Group:          System/Libraries
@@ -458,7 +426,7 @@ Provides:       %{libname -l _fortran} = %{version}
 Obsoletes:      %{libname -l _fortran} < %{version}
 %{?with_hpc:Requires:       %{name}-module = %version}
 
-%description -n %{libname -l _fortran -s %{sonum_F}}
+%description -n %{libname -l _fortran -s %{sonum}}
 HDF5 is a data model, library, and file format for storing and
 managing data. It supports an unlimited variety of datatypes.
 
@@ -466,26 +434,43 @@ This package contains the %{flavor} version of the HDF5 runtime libraries.
 
 %{?with_hpc:%{hpc_master_package -l -n lib%{pname}_fortran%{hpc_package_name_tail} -N %{pname}_fortran}}
 
-%package -n     %{libname -l hl_fortran -s %{sonum_HL_F}}
+%package -n     %{libname -l _hl_fortran -s %{sonum}}
 Summary:        High-level shared libraries for the HDF5 scientific data format
 # To avoid unresolvable errors due to multiple providers of the library
 Group:          System/Libraries
-Provides:       %{libname -l hl_fortran} = %{version}
-Obsoletes:      %{libname -l hl_fortran} < %{version}
+Provides:       %{libname -l _hl_fortran} = %{version}
+Obsoletes:      %{libname -l _hl_fortran} < %{version}
 %{?with_hpc:Requires:       %{name}-module = %version}
 
-%description -n %{libname -l hl_fortran -s %{sonum_HL_F}}
+%description -n %{libname -l _hl_fortran -s %{sonum}}
 HDF5 is a data model, library, and file format for storing and
 managing data. It supports an unlimited variety of datatypes.
 
 This package contains the %{flavor} version of the high-level HDF5
 runtime libraries.
 
-%{?with_hpc:%{hpc_master_package -l -n lib%{pname}_hl_fortran%{hpc_package_name_tail} -N %{pname}hl_fortran}}
+%{?with_hpc:%{hpc_master_package -l -n lib%{pname}_hl_fortran%{hpc_package_name_tail} -N %{pname}_hl_fortran}}
+
+%package -n     %{libname -l _tools -s %{sonum}}
+Summary:        Shared libraries for the HDF5 scientific data format
+# To avoid unresolvable errors due to multiple providers of the library
+Group:          System/Libraries
+Provides:       %{libname -l _tools} = %{version}
+Obsoletes:      %{libname -l _tools} < %{version}
+%{?with_hpc:Requires:       %{name}-module = %version}
+
+%description -n %{libname -l _tools -s %{sonum}}
+HDF5 is a data model, library, and file format for storing and
+managing data. It supports an unlimited variety of datatypes.
+
+This package contains the HDF5 runtime libraries.
+
+%{?with_hpc:%{hpc_master_package -l -n lib%{pname}_tools%{hpc_package_name_tail} -N %{pname}_tools}}
 
 %package -n %{pname}-devel-data
 Summary:        Development data files for %{name}
 Group:          Development/Libraries/Other
+BuildArch:      noarch
 
 %description -n %{pname}-devel-data
 HDF5 is a data model, library, and file format for storing and
@@ -497,8 +482,8 @@ any version of HDF5.
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/Parallel
-Requires:       %{libname -l _cpp -s %{sonum_CXX}} = %{version}
-Requires:       %{libname -l _hl_cpp -s %{sonum_HL_CXX}} = %{version}
+Requires:       %{libname -l _cpp -s %{sonum}} = %{version}
+Requires:       %{libname -l _hl_cpp -s %{sonum}} = %{version}
 Requires:       %{name} = %{version}
 %{!?with_hpc:Requires:       %{pname}-devel-data = %{version}}
 Requires:       zlib-devel
@@ -507,9 +492,10 @@ Requires:       libsz2-devel
 %endif
 Requires:       %{libname -s %{sonum}} = %{version}
 # Required by Fortran programs?
-Requires:       %{libname -l _fortran -s %{sonum_F}} = %{version}
-Requires:       %{libname -l _hl -s %{sonum_HL}} = %{version}
-Requires:       %{libname -l hl_fortran -s %{sonum_HL_F}} = %{version}
+Requires:       %{libname -l _fortran -s %{sonum}} = %{version}
+Requires:       %{libname -l _hl -s %{sonum}} = %{version}
+Requires:       %{libname -l _hl_fortran -s %{sonum}} = %{version}
+Requires:       %{libname -l _tools -s %{sonum}} = %{version}
 %{?with_hpc:%hpc_requires_devel}
 
 %description devel
@@ -535,6 +521,7 @@ This package provides the static libraries for the %{flavor} version of HDF5.
 %package -n %{vname}-examples
 Summary:        Examples for %{name}
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description -n %{vname}-examples
 HDF5 is a data model, library, and file format for storing and
@@ -561,130 +548,129 @@ library packages.
 
 %prep
 %{?with_hpc: %hpc_debug}
-%setup -q -n %{pname}-%{version}
-%patch -P 0 -p1 -b .LD_LIBRARY_PATH
+%autosetup -N -n %{pname}-%{version}
+%patch -P 0 -p1
 %patch -P 2 -p0 -b .abort_unknown_host_config
 %ifarch %arm
 %patch -P 4 -p0 -b .tests-arm
 %endif
 %patch -P 5 -p1
-%patch -P 6 -p1
-# work around bot rejection for unapplied patch
-%if 0
-%patch -P 7 -p1
-%endif
-%patch -P 8 -p1
-%patch -P 9 -p1
-%patch -P 10 -p1
-%patch -P 101 -p1
-%patch -P 104 -p1
-%patch -P 105 -p1
-%patch -P 107 -p1
-%patch -P 109 -p1
 
 %if %{without hpc}
 # baselibs looks different for different flavors - generate it on the fly
-cat >  %{_sourcedir}/baselibs.conf <<EOF
+cat > %{_sourcedir}/baselibs.conf << EOF
 libhdf5-%{sonum}%{?my_suffix}
-libhdf5_hl%{sonum_HL}%{?my_suffix}
-libhdf5_fortran%{sonum_F}%{?my_suffix}
-libhdf5hl_fortran%{sonum_HL_F}%{?my_suffix}
-libhdf5_cpp%{sonum_CXX}%{?my_suffix}
-libhdf5_hl_cpp%{sonum_HL_CXX}%{?my_suffix}
+libhdf5_hl%{sonum}%{?my_suffix}
+libhdf5_fortran%{sonum}%{?my_suffix}
+libhdf5hl_fortran%{sonum}%{?my_suffix}
+libhdf5_cpp%{sonum}%{?my_suffix}
+libhdf5_hl_cpp%{sonum}%{?my_suffix}
+libhdf5_tools%{sonum}%{?my_suffix}
 hdf5%{?my_suffix}-devel
    requires %{?my_suffix}-<targettype>
    requires "libhdf5-%{sonum}%{?my_suffix}-<targettype> = <version>"
-   requires "libhdf5_hl%{sonum_HL}%{?my_suffix}-<targettype> = <version>"
-   requires "libhdf5_fortran%{sonum_F}%{?my_suffix}-<targettype> = <version>"
-   requires "libhdf5hl_fortran%{sonum_HL_F}%{?my_suffix}-<targettype> = <version>"
-   requires "libhdf5_cpp%{sonum_CXX}%{?my_suffix}-<targettype> = <version>"
-   requires "libhdf5_hl_cpp%{sonum_HL_CXX}%{?my_suffix}-<targettype> = <version>"
+   requires "libhdf5_hl%{sonum}%{?my_suffix}-<targettype> = <version>"
+   requires "libhdf5_fortran%{sonum}%{?my_suffix}-<targettype> = <version>"
+   requires "libhdf5hl_fortran%{sonum}%{?my_suffix}-<targettype> = <version>"
+   requires "libhdf5_cpp%{sonum}%{?my_suffix}-<targettype> = <version>"
+   requires "libhdf5_hl_cpp%{sonum}%{?my_suffix}-<targettype> = <version>"
+   requires "libhdf5_tools%{sonum}%{?my_suffix}-<targettype> = <version>"
 EOF
 %endif
-%patch -P110 -p1
 
 %build
-
 %{?with_hpc:%hpc_setup}
 %{?with_hpc:%hpc_debug}
 
-export CC=gcc
-export CXX=g++
-export F9X=gfortran
-# Ouch, how ugly! Upstream configure depends on hacking out Werror manually:
-# > configure.ac:## Strip out -Werror from CFLAGS since that can cause checks to fail when
-# > configure.ac:CFLAGS="`echo $CFLAGS | sed -e 's/-Werror//g'`"
-# We need to clear out -Werror=return-type from our optflags otherwise we leave
-# a bare '=return-type' hanging in the options passed to GCC by configure
-export CFLAGS=`echo "%{optflags}" | sed -e 's/-Werror=return-type //'`
-export CXXFLAGS=`echo "%{optflags}" | sed -e 's/-Werror=return-type //'`
-export FFLAGS=`echo "%{optflags}" | sed -e 's/-Werror=return-type //'`
-export FCFLAGS=`echo "%{optflags}" | sed -e 's/-Werror=return-type //'`
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+export FFLAGS="%{optflags}"
+export FCFLAGS="%{optflags}"
 %ifarch %arm
 # we want to have useful H5_CFLAGS on arm too
 test -e config/linux-gnueabi || cp config/linux-gnu config/linux-gnueabi
 %endif
 
-# NOTE: --enable-unsupported is required when --enable-fortran
-# and/or --enable-cxx is enabled along with --enable-threadsafe.
-# Building with thise combination results in thread-safe C
-# libraries and non-thread-safe fotran and/or C++ libraries. So
-# you have to explicitly allow building the thread-safe C
-# library and the non-thread-safe C++ and fortran libraries in
-# order to make sure people don't assume that their fotran or
-# C++ code is thread-safe.  Since our users are going to be
-# accessing this through other programs, this doesn't matter.
+# SECTION Tests to disable by regex
+## Long lasting tests for MPI
+DISABLED_TEST_REGEX="MPI_TEST_t_.*"
+## Failing tests on 32bit
+%ifarch %ix86
+DISABLED_TEST_REGEX+="|FORTRAN_testhdf5_fortran|MPI_TEST_testphdf5"
+%endif
+## PPC peculiarities
+%ifarch %power64
+DISABLED_TEST_REGEX+="|MPI_TEST_H5DIFF-h5diff_601"
+%endif
+%ifarch %arm64
+DISABLED_TEST_REGEX+="|MPI_TEST_H5DIFF-h5diff_601"
+%endif
+export DISABLED_TEST_REGEX
+# /SECTION
+
+# NOTE 1: -DALLOW_UNSUPPORTED=ON is required when -DHDF5_BUILD_FORTRAN is
+# enabled along with -DHDF5_ENABLE_THREADSAFE=ON.  Building with thise
+# combination results in thread-safe C libraries and non-thread-safe fortran
+# and/or C++ libraries. So you have to explicitly allow building the
+# thread-safe C library and the non-thread-safe C++ and fortran libraries in
+# order to make sure people don't assume that their fortran or C++ code is
+# thread-safe.  Since our users are going to be accessing this through other
+# programs, this doesn't matter.
+
+# NOTE 2: It is absolutely critical to set explicitly the CMAKE_<LANG>_COMPILER
+# options for each flavour of build, even for the serial one, especially when
+# ccache is used to speed up builds. Otherwise, the scripts `h5(p)cc` and
+# libhdf5.settings embed incorrect values of the compiler (e.g. ccache instead
+# of gcc) causing major issues downstream.
 
 %if %{without hpc}
- %if  %{with mpi}
-export CC="%{my_bindir}/mpicc"
-export CXX="%{my_bindir}/mpicxx"
-export FC="%{my_bindir}/mpif90"
-export F77="%{my_bindir}/mpif77"
-export LD_LIBRARY_PATH="%{my_libdir}"
- %endif
-%configure \
+%cmake \
  %if %{with mpi}
-  --prefix=%{my_prefix} \
-  --exec-prefix=%{_prefix} \
-  --bindir=%{my_bindir} \
-  --libdir=%{my_libdir} \
-  --includedir=%{my_incdir} \
-  --datadir=%{_datadir} \
+  -DCMAKE_C_COMPILER:FILEPATH="%{my_bindir}/mpicc" \
+  -DCMAKE_CXX_COMPILER:FILEPATH="%{my_bindir}/mpicxx" \
+  -DCMAKE_Fortran_COMPILER:FILEPATH="%{my_bindir}/mpif90" \
+  -DCMAKE_INSTALL_BINDIR:PATH=%{my_bindir} \
+  -DCMAKE_INSTALL_INCLUDEDIR:PATH=%{my_incdir} \
+  -DCMAKE_INSTALL_LIBDIR:PATH=%{my_libdir} \
+  -DCMAKE_INSTALL_PREFIX:PATH=%{my_prefix} \
+ %else
+  -DCMAKE_C_COMPILER:FILEPATH="%{my_bindir}/cc" \
+  -DCMAKE_CXX_COMPILER:FILEPATH="%{my_bindir}/c++" \
+  -DCMAKE_Fortran_COMPILER:FILEPATH="%{my_bindir}/gfortran" \
  %endif
-  --docdir=%{_docdir}/%{name} \
 %else # hpc
 %global _hpc_exec_prefix %hpc_exec_prefix
 %global hpc_exec_prefix %_prefix
- %if %{with mpi}
-export CC=mpicc
-export CXX=mpicxx
-export F77=mpif77
-export FC=mpif90
-export MPICC=mpicc
-export MPIFC=mpifc
-export MPICXX=mpicxx
- %endif
-%hpc_configure \
+%hpc_cmake \
 %define hpc_exec_prefix %{expand:%_hpc_exec_prefix}
+ %if %{with mpi}
+  -DCMAKE_C_COMPILER:FILEPATH=mpicc \
+  -DCMAKE_CXX_COMPILER:FILEPATH=mpicxx \
+  -DCMAKE_Fortran_COMPILER:FILEPATH=mpif90 \
+ %else
+  -DCMAKE_C_COMPILER:FILEPATH=cc \
+  -DCMAKE_CXX_COMPILER:FILEPATH=c++ \
+  -DCMAKE_Fortran_COMPILER:FILEPATH=gfortran \
+ %endif
 %endif # ?hpc
-  --disable-hltools \
-  --disable-dependency-tracking \
-  --enable-fortran \
-  --enable-unsupported \
-  --enable-hl \
-  --enable-shared \
-  --enable-threadsafe \
-  --enable-build-mode=production \
-%if %{with mpi}
-  --enable-parallel \
-%endif
-  --enable-cxx \
-%if 0%{?use_sz2}
-  --with-szlib \
-%endif
-  --with-pthread \
-  %{nil}
+  -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+  -DALLOW_UNSUPPORTED:BOOL=ON \
+  -DBUILD_STATIC_LIBS:BOOL=%{?with_static:ON}%{!?with_static:OFF} \
+  -DBUILD_TESTING:BOOL=ON \
+  -DHDF5_INSTALL_CMAKE_DIR:PATH=%{_lib}/cmake/hdf5 \
+  -DHDF5_BUILD_CPP_LIB:BOOL=ON \
+  -DHDF5_BUILD_FORTRAN:BOOL=ON \
+  -DHDF5_BUILD_HL_GIF_TOOLS:BOOL=OFF \
+  -DHDF5_BUILD_HL_LIB:BOOL=ON \
+  -DHDF5_BUILD_PARALLEL_TOOLS:BOOL=OFF \
+  -DHDF5_BUILD_TOOLS:BOOL=ON \
+  -DHDF5_DISABLE_TESTS_REGEX:STRING="${DISABLED_TEST_REGEX}" \
+  -DHDF5_ENABLE_DEPRECATED_SYMBOLS:BOOL=ON \
+  -DHDF5_ENABLE_PARALLEL:BOOL=%{?with_mpi:ON}%{!?with_mpi:OFF} \
+  -DHDF5_ENABLE_SZIP_SUPPORT:BOOL=%{?with_sz2:ON}%{!?with_sz2:OFF} \
+  -DHDF5_ENABLE_THREADSAFE:BOOL=ON \
+  -DHDF5_USE_GNU_DIRS:BOOL=ON \
+%{nil}
 
 # Remove timestamp/buildhost/kernel version
 export SDE_DATE=$(date -d @${SOURCE_DATE_EPOCH} -u)
@@ -694,26 +680,50 @@ sed -i -e "s/\(Configured on: \).*/\1 $SDE_DATE/" \
        -e "s/\(Configured by: \).*/\1 abuild@OBS/" \
        src/libhdf5.settings
 
-make V=1 %{?_smp_mflags}
+# Not clear why we need to do this for mvapich2,
+# but linking against libmpi.so.* fails otherwise
+%if "%{?mpi_flavor}" == "mvapich2"
+export LD_LIBRARY_PATH+=":%{my_libdir}"
+%endif
+%cmake_build
 
 %install
 %{?with_hpc:%hpc_setup}
 %{?with_hpc:%hpc_debug}
 
-make install DESTDIR=%{buildroot}
+%cmake_install
 find %{buildroot} -type f -name "*.la" -delete -print
+
+# Incorrect path pointing to package build dir
+sed -Ei "s@(Module Directory: ).*@\1%{my_incdir}/mod@" %{buildroot}%{my_libdir}/libhdf5.settings
+
+chmod -x HDF5Examples/C/H5FLT/tfiles/h5ex_d_*.*
+
+# Delete %%doc files from all possible combinations of dirs
+rm -rf %{buildroot}%{_prefix}/share/COPYING \
+       %{buildroot}%{my_prefix}/share/COPYING \
+       %{buildroot}%{_docdir}/%{name}/ \
+       %{buildroot}%{_docdir}/%{vname}/ \
+       %{buildroot}%{my_prefix}/share/doc/packages/%{name}/ \
+       %{buildroot}%{my_prefix}/share/doc/packages/%{vname}/ \
+%{nil}
+
+sed -Ei "1{s@/usr/bin/env bash@%{my_bindir}/bash@}" %{buildroot}%{my_bindir}/h5fuse
+
+# HACK: We need the _test.so libraries in buildroot for tests
+# to succeed, but we can exclude them from file lists
+cp %{__builddir}/bin/libhdf5_test*.so* %{buildroot}%{my_libdir}
 
 %if %{without mpi}
 
 %if %{with hpc}
-# copy to versioned subdir
-install -m 755 -d %{buildroot}%{_prefix}/share/%{version}
-install -m 755 -d %{buildroot}%{_prefix}/share/hdf5_examples
-mv %{buildroot}%{_prefix}/lib/hpc/*/hdf5/*/share/hdf5_examples/* \
-    %{buildroot}%{_prefix}/share/%{version}/
-mv %{buildroot}%{_prefix}/share/%{version} \
-    %{buildroot}%{_prefix}/share/hdf5_examples
+# Manually install examples as cmake does not do it (versioned dir)
+install -m 0755 -d %{buildroot}%{_datadir}/hdf5_examples/%{version}
+cp -pr HDF5Examples/* %{buildroot}%{_datadir}/hdf5_examples/%{version}/
 %else
+# Manually install examples as cmake does not do it (unversioned dir)
+install -m 0755 -d %{buildroot}%{_datadir}/hdf5_examples
+cp -pr HDF5Examples/* %{buildroot}%{_datadir}/hdf5_examples/
 # rpm macro for version checking
 mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d/
 cat > %{buildroot}%{_rpmconfigdir}/macros.d/macros.hdf5 <<EOF
@@ -728,8 +738,12 @@ EOF
 %else
 # delete examples from parallel builds
 find  %{buildroot} -type d -name "hdf5_examples" -exec rm -rf {} +;
+# fix double / in pkgconfig files
+sed -Ei "s@//@/@g" %{buildroot}%{my_libdir}/pkgconfig/*.pc
+%fdupes %{buildroot}%{my_bindir}/
 %endif
 
+%fdupes %{buildroot}/%{my_incdir}/
 %fdupes -s %{buildroot}/%{_datadir}
 
 %if %{with hpc}
@@ -781,37 +795,28 @@ family "%pname"
 EOF
 %endif
 
-%if %{with check}
 %check
- %if 0%{?qemu_user_space_build}
-# default timeout is 1200 seconds
-export HDF5_ALARM_SECONDS=3600
- %endif
- %if %{with mpi}
-export HDF5_Make_Ignore=yes
- %endif
 %{?with_hpc:%hpc_setup}
- %ifarch ppc ppc64 ppc64le aarch64
-  make %{?_smp_mflags} check || { echo "Ignore transient make check failures for PowerPC or aarch64. boo#1058563"; }
- %else
-  %if "%{?mpi_flavor}" != "mpich" || ("%_arch" != "s390" && "%_arch" != "s390x")
-    make %{?_smp_mflags} check
-  %endif
- %endif
+%if %{with mpi}
+ %{?with_hpc:%hpc_setup_mpi}%{!?with_hpc:source %{my_bindir}/mpivars.sh}
 %endif
 
-%post -n %{libname -l _cpp -s %{sonum_CXX}} -p /sbin/ldconfig
-%postun -n %{libname -l _cpp -s %{sonum_CXX}} -p /sbin/ldconfig
-%post -n %{libname -l _hl_cpp -s %{sonum_HL_CXX}} -p /sbin/ldconfig
-%postun -n %{libname -l _hl_cpp -s %{sonum_HL_CXX}} -p /sbin/ldconfig
-%post -n %{libname -s %{sonum}} -p /sbin/ldconfig
-%postun -n %{libname -s %{sonum}} -p /sbin/ldconfig
-%post -n %{libname -l _hl -s %{sonum_HL}} -p /sbin/ldconfig
-%postun -n %{libname -l _hl -s %{sonum_HL}} -p /sbin/ldconfig
-%post -n %{libname -l _fortran -s %{sonum_F}} -p /sbin/ldconfig
-%postun -n %{libname -l _fortran -s %{sonum_F}} -p /sbin/ldconfig
-%post -n %{libname -l hl_fortran -s %{sonum_HL_F}} -p /sbin/ldconfig
-%postun -n %{libname -l hl_fortran -s %{sonum_HL_F}} -p /sbin/ldconfig
+%if "%{?mpi_flavor}" != "mpich" || ("%_arch" != "s390" && "%_arch" != "s390x")
+ %if "%{?mpi_flavor}" == "mvapich2"
+  export MV2_SMP_USE_CMA=0
+ %endif
+ export LD_LIBRARY_PATH+=":%{buildroot}%{my_libdir}"
+ export TMPDIR=`mktemp -d -p ${PWD}`
+ %ctest
+%endif
+
+%ldconfig_scriptlets -n %{libname -s %{sonum}}
+%ldconfig_scriptlets -n %{libname -l _cpp -s %{sonum}}
+%ldconfig_scriptlets -n %{libname -l _fortran -s %{sonum}}
+%ldconfig_scriptlets -n %{libname -l _hl -s %{sonum}}
+%ldconfig_scriptlets -n %{libname -l _hl_cpp -s %{sonum}}
+%ldconfig_scriptlets -n %{libname -l _hl_fortran -s %{sonum}}
+%ldconfig_scriptlets -n %{libname -l _tools -s %{sonum}}
 
 %if %{with hpc}
 %postun module
@@ -840,9 +845,11 @@ export HDF5_Make_Ignore=yes
 %{my_bindir}/h5clear
 %{my_bindir}/h5copy
 %{my_bindir}/h5debug
+%{my_bindir}/h5delete
 %{my_bindir}/h5diff
 %{my_bindir}/h5dump
 %{my_bindir}/h5format_convert
+%{my_bindir}/h5fuse
 %{my_bindir}/h5import
 %{my_bindir}/h5jam
 %{my_bindir}/h5ls
@@ -850,22 +857,21 @@ export HDF5_Make_Ignore=yes
 %if %{with mpi}
 %{my_bindir}/ph5diff
 %{my_bindir}/h5perf
-%{my_bindir}/perf
 %endif
 %{my_bindir}/h5perf_serial
-%{my_bindir}/h5redeploy
 %{my_bindir}/h5repack
 %{my_bindir}/h5repart
 %{my_bindir}/h5stat
 %{my_bindir}/h5unjam
 %{my_bindir}/h5watch
+%{my_bindir}/mirror_server*
 
 %files -n %{libname -s %{sonum}}
 %doc ACKNOWLEDGMENTS README.md
 %mylicense COPYING
 ##
 %if %{without mpi}
-%doc release_docs/HISTORY-1_10_0-1_12_0.txt
+%doc release_docs/HISTORY-1_14.txt
 %doc release_docs/RELEASE.txt
 %endif
 %defattr(0755,root,root)
@@ -873,40 +879,51 @@ export HDF5_Make_Ignore=yes
 %{my_libdir}/libhdf5.so.%{sonum}
 %{my_libdir}/libhdf5.so.%{sonum}.*
 
-%files -n %{libname -l _hl -s %{sonum_HL}}
+%files -n %{libname -l _hl -s %{sonum}}
 %mylicense COPYING
 %defattr(0755,root,root)
 %{?with_hpc:%hpc_dirs}
-%{my_libdir}/libhdf5_hl.so.%{sonum_HL}
-%{my_libdir}/libhdf5_hl.so.%{sonum_HL}.*
+%{my_libdir}/libhdf5_hl.so.%{sonum}
+%{my_libdir}/libhdf5_hl.so.%{sonum}.*
 
-%files -n %{libname -l _cpp -s %{sonum_CXX}}
+%files -n %{libname -l _cpp -s %{sonum}}
 %mylicense COPYING
 %defattr(0755,root,root)
 %{?with_hpc:%hpc_dirs}
-%{my_libdir}/libhdf5_cpp.so.%{sonum_CXX}
-%{my_libdir}/libhdf5_cpp.so.%{sonum_CXX}.*
+%{my_libdir}/libhdf5_cpp.so.%{sonum}
+%{my_libdir}/libhdf5_cpp.so.%{sonum}.*
 
-%files -n %{libname -l _hl_cpp -s %{sonum_HL_CXX}}
+%files -n %{libname -l _hl_cpp -s %{sonum}}
 %mylicense COPYING
 %defattr(0755,root,root)
 %{?with_hpc:%hpc_dirs}
-%{my_libdir}/libhdf5_hl_cpp.so.%{sonum_HL_CXX}
-%{my_libdir}/libhdf5_hl_cpp.so.%{sonum_HL_CXX}.*
+%{my_libdir}/libhdf5_hl_cpp.so.%{sonum}
+%{my_libdir}/libhdf5_hl_cpp.so.%{sonum}.*
 
-%files -n %{libname -l _fortran -s %{sonum_F}}
+%files -n %{libname -l _fortran -s %{sonum}}
 %mylicense COPYING
 %defattr(0755,root,root)
 %{?with_hpc:%hpc_dirs}
-%{my_libdir}/libhdf5_fortran.so.%{sonum_F}
-%{my_libdir}/libhdf5_fortran.so.%{sonum_F}.*
+%{my_libdir}/libhdf5_fortran.so.%{sonum}
+%{my_libdir}/libhdf5_fortran.so.%{sonum}.*
+%{my_libdir}/libhdf5_f90cstub.so.%{sonum}
+%{my_libdir}/libhdf5_f90cstub.so.%{sonum}.*
 
-%files -n %{libname -l hl_fortran -s %{sonum_HL_F}}
+%files -n %{libname -l _hl_fortran -s %{sonum}}
 %mylicense COPYING
 %defattr(0755,root,root)
 %{?with_hpc:%hpc_dirs}
-%{my_libdir}/libhdf5hl_fortran.so.%{sonum_HL_F}
-%{my_libdir}/libhdf5hl_fortran.so.%{sonum_HL_F}.*
+%{my_libdir}/libhdf5_hl_fortran.so.%{sonum}
+%{my_libdir}/libhdf5_hl_fortran.so.%{sonum}.*
+%{my_libdir}/libhdf5_hl_f90cstub.so.%{sonum}
+%{my_libdir}/libhdf5_hl_f90cstub.so.%{sonum}.*
+
+%files -n %{libname -l _tools -s %{sonum}}
+%mylicense COPYING
+%defattr(0755,root,root)
+%{?with_hpc:%hpc_dirs}
+%{my_libdir}/libhdf5_tools.so.%{sonum}
+%{my_libdir}/libhdf5_tools.so.%{sonum}.*
 
 %if %{with hpc}
 %files module
@@ -916,9 +933,10 @@ export HDF5_Make_Ignore=yes
 %files devel
 ##
 %{?with_hpc:%dir %{my_incdir}}
-%doc release_docs/HISTORY-1_10_0-1_12_0.txt
+%doc release_docs/HISTORY-1_14.txt
 %doc release_docs/RELEASE.txt
 %doc ACKNOWLEDGMENTS README.md
+%doc release_docs/USING_HDF5_CMake.txt
 %{?with_hpc:%{hpc_pkgconfig_file -n hdf5}}
 %{?with_hpc:%{hpc_pkgconfig_file -N -n hdf5_hl}}
 %{?with_hpc:%{hpc_pkgconfig_file -N -n hdf5_fortran}}
@@ -926,19 +944,30 @@ export HDF5_Make_Ignore=yes
 %{?with_hpc:%{hpc_pkgconfig_file -N -n hdf5_cpp}}
 %{?with_hpc:%{hpc_pkgconfig_file -N -n hdf5_hl_cpp}}
 %{my_bindir}/h5c++
-%if %{without mpi}
 %{my_bindir}/h5cc
 %{my_bindir}/h5fc
-%else
+%{my_bindir}/h5hlc++
+%{my_bindir}/h5hlcc
+%{my_bindir}/h5hlfc
+%if %{with mpi}
 %{my_bindir}/h5pcc
 %{my_bindir}/h5pfc
 %endif
 %{my_incdir}/*.h
+%{my_incdir}/H5fortran_types.F90
+%{my_incdir}/H5config_f.inc
+%{my_incdir}/mod/
 %{my_libdir}/*.so
 %{my_libdir}/*.settings
 %{my_incdir}/*.mod
+%{my_libdir}/pkgconfig/*.pc
+%dir %{my_libdir}/cmake
+%{my_libdir}/cmake/hdf5/
+%exclude %{my_libdir}/libhdf5_test*.so*
 
+%if %{with static}
 %files devel-static
 %{my_libdir}/*.a
+%endif
 
 %changelog
