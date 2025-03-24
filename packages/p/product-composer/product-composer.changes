@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 21 15:43:58 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.11
+  * cli: keep creating Source and Debug images when using the baseiso feature
+  * fix crash on missing summary field
+
+-------------------------------------------------------------------
 Fri Feb 28 16:04:33 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.5.10

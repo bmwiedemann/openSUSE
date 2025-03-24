@@ -348,4 +348,14 @@
   * bugfixes and cleanup</comment>
     <requestid>1249282</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ee04ad73e2012b071057555249248311</srcmd5>
+    <version>0.5.11</version>
+    <time>1742819250</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.5.11
+  * cli: keep creating Source and Debug images when using the baseiso feature
+  * fix crash on missing summary field</comment>
+    <requestid>1255051</requestid>
+  </revision>
 </revisionlist>
