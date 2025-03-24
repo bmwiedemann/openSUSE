@@ -1,56 +1,28 @@
 -------------------------------------------------------------------
-Wed Jan 29 14:52:00 UTC 2025 - gmbr3@opensuse.org
+Fri Mar 21 17:11:24 UTC 2025 - gmbr3@opensuse.org
 
-- Update to version 10.9.2+24:
-  * icon-tasklist: Remove last references to xid
-  * Switch session files, leave magpie session in the code
-    for a future release
-  * Center the polkit dialog
-  * Rejig notifications to work with layer-shell positioning
-  * Screen Dimming
-  * Add a root menu for the desktop
-  * Add our wayland compatible screenlocker
-  * Add a bridge between gsettings and labwc
-  * Change our Desktop Current Session ID to Budgie
-    from Budgie:GNOME
-  * Session management
-  * fix: gicon resulting in extremely bright or dim icons when
-    no icon was found (used fallback)
-  * windowing: Remove window mapper class since we don't need
-    it on Wayland
-  * Add support for background handling via swaybg
-- Move everything to wayland
-- Add patches to fix minor issues:
-  * user-config-path.patch
-  * wrong-typelib-version.patch
-
--------------------------------------------------------------------
-Mon Jan 27 09:25:24 UTC 2025 - gmbr3@opensuse.org
-
-- Update to version 10.9.2+5:
-  * Adapt to xf4w v4.19.8
-  * feat: implement initial wayland support in panel,
-    panel manager, popovers, and Raven
-  * fix tasklist indicator line on right panel
+- Update to version 10.9.2+3:
+  * Add override for overlay-key to prevent crash with
+    mutter-common v48-rc
+  * Resolve vala 0.56.18 compact class inheritance removal
+  * Adapt to libxfce4windowing v4.19.7 which includes Window
+    activate API break
   * chore: update default background for 10.9.2 to
     piazza-gae-aulenti from budgie-backgrounds
-  * feat: bump to 10.9.2
-  * icon-tasklist: Fix some pinned launchers not properly'
-    updating when opened
   * icons: Use the correct name for the reboot icon
   * Fix end session dialog blocking authentication dialog
   * Don't show tabswitcher if window is empty
   * budgie-menu: Show terminal applications in the menu
-  * windowing: Set a new last active window when the last
-    active window is closed
   * feat: cli option for focus_quit field
-  * fix: inability for popover pin button to be themed
-  * New windowing tracker and large refactor of IconTasklist
   * Disable C compiler warnings entirely
-  * daemon/notifications: Fix default notification action being
-    performed
+  * Fix default notification action being performed
   * Use Enum DOWN instead of LEFT to scroll in a left-wards
     direction
+  * Add am_cflags to ignore poorly generated C code from vala
+  * vapi: Update libxfce4windowing to 4.19.3
+  * fix: workspace applet window icon click not performing
+    workspace switch
+  * fix: set budgie run dialog to skip pager and taskbar
 
 -------------------------------------------------------------------
 Mon Jan 20 16:06:53 UTC 2025 - asdhio <asdhio@tuta.io>

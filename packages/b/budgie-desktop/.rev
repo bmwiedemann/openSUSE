@@ -515,4 +515,12 @@
     <comment>Budgie on Wayland</comment>
     <requestid>1251131</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>3d93266a17c245c468e6c8bd33b5cf22</srcmd5>
+    <version>10.9.2+3</version>
+    <time>1742819263</time>
+    <user>anag+factory</user>
+    <comment>Undo wayland</comment>
+    <requestid>1255074</requestid>
+  </revision>
 </revisionlist>

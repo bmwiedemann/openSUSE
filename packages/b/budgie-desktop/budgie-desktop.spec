@@ -21,16 +21,21 @@
 %if 0%{?suse_version} < 1550
 %define _distconfdir %{_sysconfdir}
 %endif
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150600
+%bcond_without magpie
+%else
+%bcond_with magpie
+%endif
 Name:           budgie-desktop
-Version:        10.9.2+24
+Version:        10.9.2+3
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/BuddiesOfBudgie/budgie-desktop
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         user-config-path.patch
-Patch1:         wrong-typelib-version.patch
+# Solus stupid 1000
+BuildRequires:  budgie-screensaver
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -48,6 +53,11 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libgnome-menu-3.0)
+%if %{with magpie}
+BuildRequires:  pkgconfig(libmagpie-0)
+%else
+BuildRequires:  (pkgconfig(libmutter-11) or pkgconfig(libmutter-10))
+%endif
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(libpulse)
@@ -61,32 +71,28 @@ BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
-BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.7
+BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.3
 BuildRequires:  pkgconfig(upower-glib) >= 1.0
-BuildRequires:  pkgconfig(gtk-layer-shell-0) >= 0.9.0
 # remove old applet
 Provides:       budgie-trash-applet = 1.7.0
 Obsoletes:      budgie-trash-applet
-# remove X11 stuff
-Obsoletes:      budgie-screensaver
 # flatpak/snap
-BuildRequires:  xdg-desktop-portal
-Requires:       xdg-desktop-portal
 Requires:       xdg-desktop-portal-gtk
+# https://discuss.getsol.us/d/6970-cant-lock-my-screen/3
+Conflicts:      gnome-shell
+#
 # rebrand and gnome porting
 Requires:       (budgie-desktop-view >= 1.3+4 or nemo or desktopfolder)
-Suggests:       budgie-desktop-view >= 1.3+4
-Requires:       gtklock
-Requires:       swaybg
-Requires:       wlopm
-Requires:       swayidle
-Requires:       budgie-session-manager
-Suggests:       budgie-wayland-session
-Requires:       typelib-1_0-Budgie-2_0 >= %{version}
+Suggests:       budgie-desktop-view >= 1.3+0
+Requires:       budgie-screensaver >= 5.1.0+0
+Requires:       typelib-1_0-Budgie-1_0 >= %{version}
 Requires:       typelib-1_0-BudgieRaven-1_0 >= %{version}
-Requires:       budgie-desktop-branding >= 20250305.1
+Requires:       budgie-desktop-branding >= 20240412.1
 Requires:       budgie-control-center >= 1.4.0+2
 Requires:       budgie-session >= 0.9.1
+%if %{with magpie}
+Requires:       magpie >= 0.9.3+0
+%endif
 Requires:       budgie-backgrounds >= 3.0
 #
 # unchanged SOVER but new APIs
@@ -107,17 +113,20 @@ Requires:       libgnomesu
 Requires:       xdg-user-dirs-gtk
 Requires:       zenity
 Requires:       NetworkManager-applet
+Requires:       (lightdm or sddm or gdm)
+Suggests:       lightdm
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %description
-The Budgie Desktop is a feature-rich, modern desktop designed to keep out the way of the user.
+Budgie Desktop is the flagship desktop for the Solus Operating System.
 
-
-%package -n typelib-1_0-Budgie-2_0
+%package -n typelib-1_0-Budgie-1_0
 Summary:        Main Introspection bindings for the Budgie Desktop
 Group:          System/Libraries
 Requires:       typelib-1_0-PeasGtk-1_0
 
-%description -n typelib-1_0-Budgie-2_0
+%description -n typelib-1_0-Budgie-1_0
 This package provides GObject Introspection files required for
 developing Budgie Applets using interpreted languages, such as Python
 GObject Introspection bindings.
@@ -197,28 +206,14 @@ Group:          System/Libraries
 %description -n libbudgie-raven-plugin0
 Shared library for budgie raven plugins to link against.
 
-%package -n budgie-labwc-session
-Summary:        Labwc session files for Budgie
-Group:          System/GUI/Other
-Requires:       python3-systemd
-Requires:       labwc
-Requires:       (sddm or lightdm or gdm)
-Suggests:       sddm
-Provides:       budgie-session-manager = %{version}
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-
-%description -n budgie-labwc-session
-Provides the labwc session files for Budgie
-
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 export CFLAGS="%{optflags} -Wno-pedantic"
-%meson -Dc_std=none -Dxdg-appdir=%{_distconfdir}/xdg/autostart -Dwith-runtime-dependencies=false
+%meson -Dc_std=none -Dxdg-appdir=%{_distconfdir}/xdg/autostart
 %meson_build
 
 %install
@@ -226,18 +221,21 @@ export CFLAGS="%{optflags} -Wno-pedantic"
 
 # update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-touch %{buildroot}%{_sysconfdir}/alternatives/default-waylandsession.desktop
-ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_datadir}/wayland-sessions/default.desktop
+touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
+ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
+
+# handled by budgie-screensaver
+rm %{buildroot}%{_distconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopScreensaver.desktop
 
 %find_lang %{name}
 
-%post -n budgie-labwc-session
-%{_sbindir}/update-alternatives --install %{_datadir}/wayland-sessions/default.desktop \
-  default-waylandsession.desktop %{_datadir}/wayland-sessions/budgie-desktop.desktop 20
+%post
+%{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
+  default-xsession.desktop %{_datadir}/xsessions/budgie-desktop.desktop 20
 
-%postun -n budgie-labwc-session
-[ -f %{_datadir}/wayland-sessions/budgie-desktop.desktop ] || %{_sbindir}/update-alternatives \
-  --remove default-waylandsession.desktop %{_datadir}/wayland-sessions/budgie-desktop.desktop
+%postun
+[ -f %{_datadir}/xsessions/budgie-desktop.desktop ] || %{_sbindir}/update-alternatives \
+  --remove default-xsession.desktop %{_datadir}/xsessions/budgie-desktop.desktop
 
 %ldconfig_scriptlets -n libraven0
 %ldconfig_scriptlets -n libbudgietheme0
@@ -253,18 +251,20 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_libexecdir}/budgie-desktop
 %{_mandir}/man1/*%{?ext_man}
 %{_datadir}/budgie
-%{_datadir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_datadir}/backgrounds
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
 %{_datadir}/glib-2.0/schemas/*.gschema.override
 %{_datadir}/icons/hicolor/scalable/*/*.svg
-%{_datadir}/icons/hicolor/symbolic/*/*.svg
 %{_datadir}/gnome-session
+%{_datadir}/xsessions/default.desktop
+%{_datadir}/xsessions/budgie-desktop.desktop
+%dir %{_datadir}/xdg-desktop-portal
 %{_datadir}/xdg-desktop-portal/budgie-portals.conf
 %{_libdir}/budgie-desktop
 %{_distconfdir}/xdg/autostart/*.desktop
-%exclude %{_distconfdir}/xdg/autostart/org.buddiesofbudgie.labwc-bridge.desktop
+%ghost %{_sysconfdir}/alternatives/default-xsession.desktop
+%ghost %{_sysconfdir}/alternatives/default.desktop
 
 %files -n libraven0
 %{_libdir}/libraven.so.*
@@ -290,24 +290,16 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_includedir}/budgie-desktop
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
-%{_datadir}/gir-1.0/Budgie-2.0.gir
+%{_datadir}/gir-1.0/Budgie-1.0.gir
 %{_datadir}/gir-1.0/BudgieRaven-1.0.gir
-%{_datadir}/vala/vapi/budgie-2.0.*
+%{_datadir}/vala/vapi/budgie-1.0.*
 %{_datadir}/vala/vapi/budgie-raven-plugin-1.0.*
 
-%files -n typelib-1_0-Budgie-2_0
-%{_libdir}/girepository-1.0/Budgie-2.0.typelib
+%files -n typelib-1_0-Budgie-1_0
+%{_libdir}/girepository-1.0/Budgie-1.0.typelib
 
 %files -n typelib-1_0-BudgieRaven-1_0
 %{_libdir}/girepository-1.0/BudgieRaven-1.0.typelib
-
-%files -n budgie-labwc-session
-%{_distconfdir}/xdg/autostart/org.buddiesofbudgie.labwc-bridge.desktop
-%dir %{_datadir}/wayland-sessions
-%{_datadir}/wayland-sessions/default.desktop
-%{_datadir}/wayland-sessions/budgie-desktop.desktop
-%ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop
-%ghost %{_sysconfdir}/alternatives/default.desktop
 
 %files doc
 %{_datadir}/gtk-doc/html/budgie-desktop
