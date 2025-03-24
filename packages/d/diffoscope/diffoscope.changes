@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sun Mar 23 14:10:37 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 291:
+  * Make two required adjustments for the new version of the src:file package:
+    file(1) version 5.46 now emits "XHTML document" for .xhtml files, such as
+    those found nested within our .epub tests. Therefore, match this string
+    when detecting XML files. This was causing an FTBFS due to inconsistent
+    indentation in diffoscope's output.
+  * Require the new, upcoming, version of file(1) for a quine-related
+    testcase after adjusting the expected output. Previous versions of
+    file(1) had a duplicated "last modified, last modified" string for some
+    Zip archives that has now been removed.
+  * Add a missing subprocess import.
+  * Bump Standards-Version to 4.7.2.
+
+- update to version 290:
+  * Also consider .aar files as APK files for the sake of not falling back to a
+    binary diff. (Closes: #1099632)
+  * Ensure all calls to out_check_output in the ELF comparator have the
+    potential CalledProcessError exception caught. (Re: #398)
+  * Ensure a potential CalledProcessError is caught in the OpenSSL comparator
+    as well.
+
+- update to version 289:
+  * Catch CalledProcessError when calling html2text.
+
+- update to version 288:
+  * Add 'asar' to DIFFOSCOPE_FAIL_TESTS_ON_MISSING_TOOLS. (Closes: #1095057)
+  * Update minimal 'black' version.
+
+- update to version 287:
+  * Drop an unused subprocess import.
+  * Update copyright years.
+  * Add ASAR comparator.
+
+- update to version 286:
+  * Bug fixes:
+  - When passing files on the command line, don't call specialize(..) before
+    we've checked that the files are identical. In the worst case, this was
+    resulting in spinning up binwalk and extracting two entire filesystem
+    images merely to confirm that they were indeed filesystem images..
+    before simply concluding that they were identical anyway.
+  - Do not exit with a traceback if paths are inaccessible, either directly,
+    via symbolic links or within a directory. (Closes: #1065498)
+  - Correctly identify changes to only the line-endings of files; don't mark
+    them as "Ordering differences only".
+  - Use the "surrogateescape" mechanism of str.{decode,encode} to avoid a
+    UnicodeDecodeError and crash when decoding zipinfo output that is not
+    valid UTF-8. (Closes: #1093484)
+  * Testsuite changes:
+  - Don't mangle newlines when opening test fixtures; we want them untouched.
+  - Move to assert_diff in test_text.py.
+  * Misc:
+  - Remove unnecessary return value from check_for_ordering_differences in
+    the Difference class.
+  - Drop an unused function in iso9600.py
+  - Inline a call/check of Config().force_details; no need for an additional
+    variable.
+
+- update to version 285:
+  * Validate --css command-line argument. Thanks to Daniel Schmidt @ SRLabs for
+    the report. (Closes: #396)
+  * Prevent XML entity expansion attacks through vulnerable versions of
+    pyexpat. Thanks to Florian Wilkens @ SRLabs for the report. (Closes: #397)
+  * Print a warning if we have disabled XML comparisons due to a potentially
+    vulnerable version of pyexpat.
+  * Remove (unused) logging facility from a few comparators.
+
+-------------------------------------------------------------------
 Sun Dec 22 20:29:42 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 284:

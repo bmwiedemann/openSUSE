@@ -740,4 +740,12 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
 </comment>
     <requestid>1233064</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>df9738c9f18063d3014c1fb6b645df69</srcmd5>
+    <version>291</version>
+    <time>1742819501</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1255405</requestid>
+  </revision>
 </revisionlist>
