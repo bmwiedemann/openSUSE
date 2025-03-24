@@ -78,4 +78,14 @@
   * Clean up some formatting (forwarded request 1224848 from rrahl0)</comment>
     <requestid>1224852</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>741c0f43e93ec101d65e4fa443f06222</srcmd5>
+    <version>1.23.1</version>
+    <time>1742819265</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.23.1:
+  * Fixed: Version.__lt__ checked if all fields were less than the other
+    instance (forwarded request 1255080 from rrahl0)</comment>
+    <requestid>1255081</requestid>
+  </revision>
 </revisionlist>

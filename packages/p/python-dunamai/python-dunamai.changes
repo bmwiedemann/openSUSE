@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 21 17:00:43 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.23.1:
+  * Fixed: Version.__lt__ checked if all fields were less than the other
+    instance
+
+-------------------------------------------------------------------
 Mon Nov 18 11:59:04 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.23.0:
