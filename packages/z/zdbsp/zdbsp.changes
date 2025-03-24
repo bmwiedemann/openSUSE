@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 21 22:10:37 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+
+-------------------------------------------------------------------
 Wed Feb 28 11:10:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete old specfile constructs.

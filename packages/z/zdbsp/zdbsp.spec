@@ -1,7 +1,7 @@
 #
 # spec file for package zdbsp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Source:         https://github.com/rheit/zdbsp/archive/v%version/zdbsp-%version.
 Patch1:         zdbsp-bigendian.diff
 Patch2:         zdbsp-notime.diff
 Patch3:         install-binary.patch
-BuildRequires:  cmake >= 2.4
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  zlib-devel
 
@@ -40,11 +40,14 @@ minimization of polyobject bleeding.
 %autosetup -p1
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %doc zdbsp.html poly_*.png

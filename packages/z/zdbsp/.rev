@@ -53,4 +53,13 @@
     <comment>- Delete old specfile constructs.</comment>
     <requestid>1152905</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>3133a49be6c2b6a55d424d7f79a349e6</srcmd5>
+    <version>1.19</version>
+    <time>1742819402</time>
+    <user>anag+factory</user>
+    <comment>- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section (forwarded request 1255142 from sfalken)</comment>
+    <requestid>1255231</requestid>
+  </revision>
 </revisionlist>
