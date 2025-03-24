@@ -1,7 +1,7 @@
 #
 # spec file for package sword
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define         major 1.8
-%define         libver 1_8_1
-%define         libinstver 1.8.1
+%define         major 1.9
+%define         libver 1_9_0
+%define         libinstver 1.9.0
 Name:           sword
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Framework for manipulating Bible texts
-License:        GPL-2.0-only AND Apache-2.0
+License:        Apache-2.0 AND GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            http://www.crosswire.org/sword
-Source0:        http://crosswire.org/ftpmirror/pub/sword/source/v%{major}/sword-%{version}.tar.gz 
+Source0:        http://crosswire.org/ftpmirror/pub/sword/source/v%{major}/sword-%{version}.tar.gz
 Source1:        sword-rpmlintrc
 Patch1:         sword-1.7.1-curl.patch
-Patch2:         sword_sysdata_changes.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

@@ -1,7 +1,7 @@
-Index: sword-1.7.1/src/mgr/curlftpt.cpp
+Index: sword-1.9.0/src/mgr/curlftpt.cpp
 ===================================================================
---- sword-1.7.1.orig/src/mgr/curlftpt.cpp
-+++ sword-1.7.1/src/mgr/curlftpt.cpp
+--- sword-1.9.0.orig/src/mgr/curlftpt.cpp
++++ sword-1.9.0/src/mgr/curlftpt.cpp
 @@ -129,6 +129,7 @@ CURLFTPTransport::CURLFTPTransport(const
  
  

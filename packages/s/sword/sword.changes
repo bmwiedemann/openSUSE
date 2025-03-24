@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Mar  5 20:06:54 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 1.9.0
+  + Added new compile option USECXX11TIME which will provide a default
+    SWLog::logTimedInformation impl using C++11 facilities
+  + Added new compile options STRIPLOGD and STRIPLOGI which will compile out
+    engine calles to SWLog::logDebug and SWLog::logInformation and
+    SWLog::logTimedInformation for runtime optimization
+  + Extended Cordova plugin to include SWModule::setEntry, SWMgr::getPrefixPath
+  + Isolated all File IO calls to FileMgr
+  + Merged in Xiphos' Windows patch to FileMgr to allow full legal Unicode
+    range in file path names.
+  + Improved TEI -> HTML output path
+  + Completed camelCase of all public non-deprecated API methods
+  + Added the concept of Utility Modules to engine which are intended to assist
+    clients in building a robust user experience but are not intended for
+    exposure to the end user in the same way as traditional SWORD modules.
+  + Added the concept of [Pref Abbrevs] to locale files to assist mobile
+    developers choose a localized abbreviation for Bible book names.
+  + Added facility to set timeouts for SWTransport classes
+  + Many locale updates and new locales added
+  + Improved support for many markup tags
+  + Many bug fixes
+  + Changes to promote safe multi-threaded use
+  + Expanded examples
+  + Added ZipCompress::unTarGZ to provide a library facility to untargz a file
+    on all supported platforms.
+  + Renamed __[su][8,16,32,64] defines to SW_[su][8,16,32,64]
+  + Extended StringMgr to include lowerUTF8, isUpper, isLower, isDigit, isAlpha
+  + Added personalization facility for cipher keys
+  + Added intra-verse search support
+- Refresh sword-1.7.1-curl.patch
+- Drop sword_sysdata_changes.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 13:31:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
