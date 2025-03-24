@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 24 09:42:26 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.5.20:
+  * Fix the issue that learner promotion command doesn't support
+    json output
+  * overwrite the member if already exist
+  * add verification to check whether membership data is in sync
+    between v2store and v3store
+  * fix: grpcproxy can get stuck in and endless loop causing high
+    cpu usage
+  * perf(release3.5): use RLock in Demoted method for read-only
+    access to expiry
+
+-------------------------------------------------------------------
 Thu Mar 06 13:16:47 UTC 2025 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.5.19:
