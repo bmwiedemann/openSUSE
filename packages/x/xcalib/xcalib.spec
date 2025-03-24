@@ -1,7 +1,7 @@
 #
 # spec file for package xcalib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,9 @@ Version:        0.10
 Release:        0
 Summary:        Load ICC profile calibration part to graphics card
 License:        GPL-2.0-or-later
-Group:          System/X11/Utilities
 URL:            https://github.com/OpenICC/xcalib
 Source0:        https://github.com/OpenICC/xcalib/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  color-filesystem
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -45,7 +44,7 @@ They can be used as a free alternative to other calibration loaders.
 
 %package profiles
 Summary:        ICC profiles for testing with xcalib
-Group:          Productivity/Graphics/Other
+BuildArch:      noarch
 
 %description profiles
 The ICC profiles are special for testing xcalib.
@@ -54,12 +53,15 @@ The ICC profiles are special for testing xcalib.
 %setup -q
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 %cmake_install
 rm -fv %{buildroot}%{_datadir}/color/icc/xcalib/test/Adobe*.icm
+
+%check
+%ctest
 
 %files
 %defattr(0644,root,root, 0755)
