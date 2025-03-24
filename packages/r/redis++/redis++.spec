@@ -26,7 +26,7 @@ License:        Apache-2.0
 URL:            https://github.com/sewenew/redis-plus-plus
 Source0:        https://github.com/sewenew/redis-plus-plus/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hiredis)
 BuildRequires:  pkgconfig(hiredis_ssl)
@@ -64,7 +64,8 @@ sed -i -e '/DESTINATION.*/s/lib/%{_lib}/' CMakeLists.txt
   -DREDIS_PLUS_PLUS_BUILD_STATIC=OFF \
   -DREDIS_PLUS_PLUS_USE_TLS=ON \
   -DREDIS_PLUS_PLUS_BUILD_TEST=OFF \
-  -DREDIS_PLUS_PLUS_BUILD_ASYNC="libuv"
+  -DREDIS_PLUS_PLUS_BUILD_ASYNC="libuv" \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
