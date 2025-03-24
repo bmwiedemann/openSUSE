@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 22 00:47:02 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS from cmake4
+- Remove Group: Declarations, no longer used
+
+-------------------------------------------------------------------
 Sat Feb  8 12:56:30 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Fix location of python examples

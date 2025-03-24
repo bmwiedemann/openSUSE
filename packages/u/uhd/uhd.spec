@@ -22,7 +22,6 @@ Version:        4.8.0.0
 Release:        0
 Summary:        The driver for USRP SDR boards
 License:        GPL-3.0-or-later
-Group:          Hardware/Other
 URL:            https://files.ettus.com/manual/
 Source0:        https://github.com/EttusResearch/uhd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{version}/uhd-images_%{version}.tar.xz
@@ -31,7 +30,7 @@ Patch0:         reproducible.patch
 # Patch0:         fix-boost1.85-one.patch
 # PATCH-FIX-UPSTREAM fix-boost1.85-two.patch -- https://github.com/EttusResearch/uhd/commit/c4863b9b9f8b639260f7797157e8ac4dd81fef93
 # Patch1:         fix-boost1.85-two.patch
-BuildRequires:  cmake >= 2.6
+BuildRequires:  cmake >= 3.5
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -64,7 +63,6 @@ UHD driver standalone or with 3rd party applications.
 
 %package     -n %{libname}
 Summary:        The UHD driver
-Group:          Hardware/Other
 Requires:       %{name}-udev >= %{version}
 # PRE script requires /usr/sbin/groupadd, that exists in the "shadow" package
 Requires(pre):  shadow
@@ -77,7 +75,6 @@ UHD driver standalone or with 3rd party applications.
 
 %package        utils
 Summary:        Utility programs for USRP hardware
-Group:          Hardware/Other
 %if 0%{?suse_version} >= 1600
 Requires:       python3-%{name} >= %{version}
 %endif
@@ -92,7 +89,6 @@ This package contains utility programs for handling USRP frontens
 
 %package     -n python3-%{name}
 Summary:        Python bindings for uhd
-Group:          Hardware/Other
 
 %description  -n python3-%{name}
 The UHD is the "Universal Software Radio Peripheral" hardware driver.
@@ -104,7 +100,6 @@ This package contains Python bindings UHD.
 
 %package        udev
 Summary:        UHD udev rules
-Group:          Hardware/Other
 
 %description    udev
 The UHD is the "Universal Software Radio Peripheral" hardware driver.
@@ -116,7 +111,6 @@ This package contains udev rules for UHD.
 
 %package        devel
 Summary:        Development files for uhd
-Group:          Development/Libraries/Other
 Requires:       %{libname} = %{version}
 Recommends:     %{name}-doc
 Requires:       libboost_filesystem-devel
@@ -137,7 +131,6 @@ files for development with the UHD Driver.
 
 %package        doc
 Summary:        Documentation files for uhd
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description    doc
@@ -145,7 +138,6 @@ This package contains the documentation for the Universal Hardware Driver (UHD).
 
 %package        firmware
 Summary:        Firmware images for uhd
-Group:          Hardware/Other
 Requires:       %{libname} = %{version}
 BuildArch:      noarch
 
@@ -167,6 +159,7 @@ cd host
 %cmake \
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
   -DENABLE_TESTS=OFF \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 %ifarch %arm
   -DNEON_SIMD_ENABLE=OFF \
 %endif
