@@ -1,7 +1,7 @@
 #
 # spec file for package thinkfan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ Version:        1.3.1
 Release:        0
 Summary:        A minimalist fan control program
 License:        GPL-3.0-only
-Group:          Productivity/Other
 URL:            https://github.com/vmatare/thinkfan/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        thinkfan-sysconfig
@@ -38,7 +37,7 @@ Patch1:         thinkfan-systemd.patch
 Patch2:         harden_thinkfan-sleep.service.patch
 Patch3:         harden_thinkfan-wakeup.service.patch
 Patch4:         harden_thinkfan.service.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libatasmart-devel
 BuildRequires:  yaml-cpp-devel
@@ -57,7 +56,7 @@ Don't forget to set the desired temperature values in %{_sysconfdir}/thinkfan.co
 %autopatch -p1
 
 %build
-%cmake -DUSE_ATASMART:BOOL=ON -DCMAKE_BUILD_TYPE:STRING=Release
+%cmake -DUSE_ATASMART:BOOL=ON -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %make_build CFLAGS="%{optflags}"
 
 %install
@@ -76,6 +75,9 @@ sed -i "s|%{_prefix}/local/sbin|%{_sbindir}|g" %{buildroot}/%{_unitdir}/*
 
 mkdir -p %{buildroot}%{_modprobedir}
 echo "options thinkpad_acpi fan_control=1" > %{buildroot}%{_modprobedir}/50-thinkfan.conf
+
+%check
+%ctest
 
 %pre
 %service_add_pre %{name}.service
