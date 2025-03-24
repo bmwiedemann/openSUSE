@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar 20 06:48:16 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.17.4:
+  * Revert "lib/, src/: Use local time for human-readable dates"
+  * lib/getdate.y: Ignore time-zone information and use UTC
+  * src/chfn.c: Partially revert "lib/, src/: Use strsep(3) instead of its pattern"
+  * src/chfn.c: Use stpsep() instead of its pattern
+  * src/chfn.c: Add local variable to refer to the separated field
+  * src/chfn.c: copy_field(): Rename local variable
+  * lib/commonio.c: Rely on the POSIX.1-2008 behavior of realpath(3)
+  * lib/fs/readlink/: readlinknul(): Use ssize_t to simplify
+  * autogen.sh: Promote -Wsign-compare to an error
+  * lib/sizeof.h: ssizeof(): Add signed variant of sizeof
+  * src/lastlog.c: Use ssizeof() to avoid a -Wsign-compare diagnostic
+  * tests/unit/test_xasprintf.c: Fix sign-mismatch diagnostic
+  * configure.ac: stop checking for utmp location
+  * configure.ac: be deterministic about passwd location
+  * lib/, src/: update audit messages
+  * lib/: audit function for groups
+  * src/: update group audit messages
+  * doc/: Remove list of distributions
+
+-------------------------------------------------------------------
 Mon Feb 24 15:52:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.17.3:

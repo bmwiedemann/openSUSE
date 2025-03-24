@@ -1208,4 +1208,30 @@
   * src/vipw.c: Restore the original terminal pgrp after editing</comment>
     <requestid>1248228</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>6f413bc67ba33e2469f1765fff75bf44</srcmd5>
+    <version>4.17.4</version>
+    <time>1742819133</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.17.4:
+  * Revert &quot;lib/, src/: Use local time for human-readable dates&quot;
+  * lib/getdate.y: Ignore time-zone information and use UTC
+  * src/chfn.c: Partially revert &quot;lib/, src/: Use strsep(3) instead of its pattern&quot;
+  * src/chfn.c: Use stpsep() instead of its pattern
+  * src/chfn.c: Add local variable to refer to the separated field
+  * src/chfn.c: copy_field(): Rename local variable
+  * lib/commonio.c: Rely on the POSIX.1-2008 behavior of realpath(3)
+  * lib/fs/readlink/: readlinknul(): Use ssize_t to simplify
+  * autogen.sh: Promote -Wsign-compare to an error
+  * lib/sizeof.h: ssizeof(): Add signed variant of sizeof
+  * src/lastlog.c: Use ssizeof() to avoid a -Wsign-compare diagnostic
+  * tests/unit/test_xasprintf.c: Fix sign-mismatch diagnostic
+  * configure.ac: stop checking for utmp location
+  * configure.ac: be deterministic about passwd location
+  * lib/, src/: update audit messages
+  * lib/: audit function for groups
+  * src/: update group audit messages
+  * doc/: Remove list of distributions</comment>
+    <requestid>1254773</requestid>
+  </revision>
 </revisionlist>
