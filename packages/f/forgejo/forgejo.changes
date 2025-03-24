@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Mar 23 17:10:56 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 10.0.3:
+  * fix a regression which caused unnecessary escaping of URLs
+  * update dependencies
+- fix url for the keyring
+
+-------------------------------------------------------------------
+Fri Mar 21 16:23:17 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 10.0.2:
+  * update of translations
+  * When migrating from a Forgejo version lower than v10, the TOTP secrets
+    found to be corrupted are now transparently removed
+  * replies to pending review comments no longer generate a notification
+  * consider public issues for project boards
+  * the rootless Forgejo image version label is not set
+  * do not allow SSH url for migration
+  * setting.Service.EnableInternalSignIn = false is disabling forgotten password
+  * show internal login prompt for account linking
+  * enable ssh mirrors in rootless Forgejo images
+  * render link in heading correctly in wiki TOC
+  * Update module github.com/redis/go-redis/v9
+  * fix: consider issues in repository accessible via access table
+  * fix(api): miss-spelled description, corrected to public
+  * fix: revert issue rendering for <a> element
+  * chore(ci): ensure the manually cached Go can be run
+  * chore(ci): Get Go binary from GOROOT instead of hardcoded path
+  * fix: return 404 for empty repositories
+  * fix: delay deleting authorization token
+  * fix: native parsing of ssh certificate key
+  * fix(ui): hide extra PR property labels on title edit
+  * fix: always set stripped slashes on http request
+  * fix(ui): hide 'New migration' button on org pages with migrations disabled
+  * ui: update language stats layout and click behavior
+  * Update dependency go to v1.23.6
+- add patch fix-CVE-2025-22869.patch, fixing bsc#1239488, bsc#1239276, bsc#1234574
+
+-------------------------------------------------------------------
 Sat Mar 15 00:27:19 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - add README.SUSE to explain SUSE specific things

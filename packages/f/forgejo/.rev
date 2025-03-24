@@ -443,4 +443,15 @@
 - apparmor: forgot to rename the profile in the %post scriptlet (forwarded request 1253274 from darix)</comment>
     <requestid>1253559</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>95ff719b78663a12511877f38478090f</srcmd5>
+    <version>10.0.3</version>
+    <time>1742819287</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.0.3:
+  * fix a regression which caused unnecessary escaping of URLs
+  * update dependencies
+- fix url for the keyring (forwarded request 1255422 from rrahl0)</comment>
+    <requestid>1255423</requestid>
+  </revision>
 </revisionlist>

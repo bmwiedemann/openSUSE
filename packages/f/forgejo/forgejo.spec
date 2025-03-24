@@ -30,16 +30,15 @@
 %endif
 %endif
 Name:           forgejo
-Version:        10.0.1
+Version:        10.0.3
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://forgejo.org
 Source0:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz
-# something is broken with the verification, works fine manually
-#Source1:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz.asc
-#Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xeb114f5e6c0dc2bcdd183550a4b61a2dc5923710#/%{name}.keyring
+Source1:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz.asc
+Source2:        https://keys.openpgp.org/vks/v1/by-fingerprint/EB114F5E6C0DC2BCDD183550A4B61A2DC5923710#/%{name}.keyring
 Source3:        package-lock.json
 Source4:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
@@ -50,14 +49,17 @@ Source8:        %{name}.if
 Source9:        %{name}.te
 Source10:       %{name}.apparmor
 Source11:       %{name}.firewalld
-Source13:       forgejo-hooks-abstraction.apparmor
 Source12:       forgejo-abstraction.apparmor
+Source13:       forgejo-hooks-abstraction.apparmor
+# updated vendored go modules, for fix-CVE-2025-22869.patch
+Source14:       vendor.tar.gz
 Source98:       README.SUSE
 Source99:       get-sources.sh
 Patch0:         custom-app.ini.patch
 Patch1:         dont-strip.patch
+Patch2:         fix-CVE-2025-22869.patch
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.23
+BuildRequires:  golang(API) >= 1.23.6
 ## node >= 20
 %if 0%{?suse_version} == 1500
 BuildRequires:  nodejs-devel-default
@@ -137,6 +139,7 @@ builtin functionality.
 
 %prep
 %autosetup -p1 -n %{name}-src-%{version}
+tar xf %{SOURCE14} -C %{_builddir}/%{name}-src-%{version}/
 local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps
 cp %{SOURCE98} .
 
