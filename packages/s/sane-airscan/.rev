@@ -89,4 +89,14 @@
   * sane-airscan.5 is automatically generated from sane-aircan.5.md (forwarded request 1242008 from rrahl0)</comment>
     <requestid>1242009</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44a17fca92aed5ac2e1dab757a0f4a9f</srcmd5>
+    <version>0.99.33</version>
+    <time>1742819308</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.99.33:
+  * WSD: fixed &quot;scan-intent&quot; option handling on ADF Duplex source
+  * eSCL: support both forms, scan:SupportedIntent and scan:Intent in capabilities (forwarded request 1255084 from rrahl0)</comment>
+    <requestid>1255085</requestid>
+  </revision>
 </revisionlist>

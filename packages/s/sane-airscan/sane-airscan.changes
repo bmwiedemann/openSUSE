@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 17 22:18:46 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 0.99.33:
+  * WSD: fixed "scan-intent" option handling on ADF Duplex source
+  * eSCL: support both forms, scan:SupportedIntent and scan:Intent in capabilities
+
+-------------------------------------------------------------------
 Sat Feb 01 00:18:11 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 0.99.32:
