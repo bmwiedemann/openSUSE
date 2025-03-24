@@ -31,7 +31,7 @@ BuildRequires:  aaa_base
 BuildRequires:  libcap-devel
 BuildRequires:  libselinux-devel >= 1.30.3
 BuildRequires:  libsepol-devel-static
-BuildRequires:  pcre-devel
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(systemd)
 Requires:       aaa_base
 Provides:       setransd

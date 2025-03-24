@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 21 21:40:13 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove unneeded pcre build dependency, builds with pcre2 already
+
+-------------------------------------------------------------------
 Fri Mar  7 14:12:08 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.8.1
