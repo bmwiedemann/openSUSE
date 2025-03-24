@@ -39,6 +39,7 @@ Requires:       python-base >= 3.7
 Requires:       python-getkey
 Requires:       python-pyserial
 Requires:       python-pygame
+Requires:       python-tk
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
