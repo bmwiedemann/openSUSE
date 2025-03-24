@@ -2,6 +2,7 @@
 # spec file for package libkeccak
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define lname libkeccak1
 Name:           libkeccak
-Version:        1.4
+Version:        1.4.2
 Release:        0
 Summary:        Keccak family hashing library, including SHA-3
 License:        ISC
@@ -78,8 +79,10 @@ fi
 # packaged via macro
 rm -rvf %buildroot%_datadir/licenses/%name
 
-%post -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%check
+%make_build check
+
+%ldconfig_scriptlets -n %lname
 
 %files devel
 %doc DEPENDENCIES README TODO
