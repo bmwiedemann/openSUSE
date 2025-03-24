@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 18 14:59:54 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Add udev-rules and python interface as recommended
+- Make udev-rules require main package
+
+-------------------------------------------------------------------
 Tue Dec  3 08:31:30 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - fix source URL

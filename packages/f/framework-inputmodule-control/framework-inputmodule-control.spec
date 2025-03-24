@@ -1,7 +1,7 @@
 #
-# spec file for package inputmodule-control
+# spec file for package framework-inputmodule-control
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,15 @@ Source0:        https://github.com/FrameworkComputer/inputmodule-rs/archive/refs
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(libsystemd)
+Recommends:     framework-inputmodule-udev-rules
+Recommends:     python-framework16_inputmodule
 
 %description
 Framework Laptop 16 Input Module software
 
 %package -n framework-inputmodule-udev-rules
 Summary:        Inputmodule control udev rules
+Requires:       framework-inputmodule-control
 
 %description -n framework-inputmodule-udev-rules
 Udev Rules for the Framework Laptop 16 Inputmodule

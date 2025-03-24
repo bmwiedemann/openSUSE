@@ -7,4 +7,14 @@
     <comment>new package framework-inputmodule-control</comment>
     <requestid>1227936</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c05bed7b8a6bbb233bd08d817c713fc3</srcmd5>
+    <version>0.2.0</version>
+    <time>1742819243</time>
+    <user>anag+factory</user>
+    <comment>- Add udev-rules and python interface as recommended
+- Make udev-rules require main package
+</comment>
+    <requestid>1255027</requestid>
+  </revision>
 </revisionlist>
