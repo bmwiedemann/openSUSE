@@ -47,6 +47,9 @@ Source9:        10-kwin.conf
 Provides:       sddm = %{version}
 Conflicts:      sddm-qt6
 
+Provides:       sddm-greeter-qt6 = %{version}
+Conflicts:      sddm-greeter-qt6
+
 # PATCH-FIX-UPSTREAM sddm-PR1876.patch https://github.com/sddm/sddm/pull/1876
 Patch1:         sddm-PR1876.patch
 # PATCH-FIX-UPSTREAM 0001-Delay-for-logind-and-fallback-to-seat0.patch

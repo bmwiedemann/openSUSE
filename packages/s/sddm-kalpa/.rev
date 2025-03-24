@@ -26,4 +26,12 @@
   * 10-kwin.conf</comment>
     <requestid>1240856</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7c65f8060cdf6bb13239449a279f62ab</srcmd5>
+    <version>0.21.0</version>
+    <time>1742819474</time>
+    <user>anag+factory</user>
+    <comment>- Add Provides:/Conflicts: on sddm-greeter-qt6 in main package</comment>
+    <requestid>1255414</requestid>
+  </revision>
 </revisionlist>
