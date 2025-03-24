@@ -632,4 +632,12 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     fix this issue.</comment>
     <requestid>1234570</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>8f5cbac95e7378ed673a2394d9e048bb</srcmd5>
+    <version>3.3.9</version>
+    <time>1742819117</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1255009</requestid>
+  </revision>
 </revisionlist>

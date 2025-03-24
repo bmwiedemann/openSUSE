@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astroid
-Version:        3.3.8
+Version:        3.3.9
 Release:        0
 Summary:        Representation of Python source as an AST for pylint
 License:        LGPL-2.1-or-later
 URL:            https://github.com/pycqa/astroid
 Source:         https://github.com/PyCQA/astroid/archive/refs/tags/v%{version}.tar.gz#/astroid-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

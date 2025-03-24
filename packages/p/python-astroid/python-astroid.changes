@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 21 10:38:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.3.9
+  * Fix crash when `sys.modules` contains lazy loader objects
+    during checking.
+  * Upload release assets to PyPI via Trusted Publishing.
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Jan  2 14:14:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.8:
