@@ -1,0 +1,30 @@
+Index: data/gnome-screensaver
+===================================================================
+--- a/data/budgie-screensaver
++++ b/data/budgie-screensaver
+@@ -1,15 +1,15 @@
+ #%PAM-1.0
+ 
+ # Fedora Core
+-auth       include	system-auth
+-auth       optional     pam_gnome_keyring.so
+-account    include	system-auth
+-password   include	system-auth
+-session    include	system-auth
++#auth       include	system-auth
++#auth       optional     pam_gnome_keyring.so
++#account    include	system-auth
++#password   include	system-auth
++#session    include	system-auth
+ 
+ # SuSE/Novell
+-#auth       include      common-auth
++auth       include      common-auth
+-#auth       optional     pam_gnome_keyring.so
++auth       optional     pam_gnome_keyring.so
+-#account    include      common-account
+-#password   include      common-password
+-#session    include      common-session
++account    include      common-account
++password   include      common-password
++session    include      common-session
