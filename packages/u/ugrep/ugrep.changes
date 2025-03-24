@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  4 07:34:18 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.3.0:
+  * make options -i (--ignore-case) and -j (--smart-case) respect
+    Unicode letter case conventions
+  * usability improvements
+
+-------------------------------------------------------------------
 Wed Feb  5 14:17:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.2.2:
