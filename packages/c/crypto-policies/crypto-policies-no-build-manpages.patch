@@ -1,21 +1,21 @@
-Index: fedora-crypto-policies-20230420.3d08ae7/Makefile
+Index: fedora-crypto-policies-20250124.4d262e7/Makefile
 ===================================================================
---- fedora-crypto-policies-20230420.3d08ae7.orig/Makefile
-+++ fedora-crypto-policies-20230420.3d08ae7/Makefile
-@@ -28,9 +28,9 @@ install: $(MANPAGES)
- 	mkdir -p $(DESTDIR)$(MANDIR)/man7
- 	mkdir -p $(DESTDIR)$(MANDIR)/man8
+--- fedora-crypto-policies-20250124.4d262e7.orig/Makefile
++++ fedora-crypto-policies-20250124.4d262e7/Makefile
+@@ -34,9 +34,9 @@ install: $(MANPAGES)
  	mkdir -p $(DESTDIR)$(BINDIR)
+ 	mkdir -p $(DESTDIR)$(LIBEXECDIR)
+ 	mkdir -p $(DESTDIR)$(UNITDIR)
 -	install -p -m 644 $(MAN7PAGES) $(DESTDIR)$(MANDIR)/man7
 -	install -p -m 644 $(MAN8PAGES) $(DESTDIR)$(MANDIR)/man8
 -	install -p -m 755 $(SCRIPTS) $(DESTDIR)$(BINDIR)
 +	# install -p -m 644 $(MAN7PAGES) $(DESTDIR)$(MANDIR)/man7
 +	# install -p -m 644 $(MAN8PAGES) $(DESTDIR)$(MANDIR)/man8
 +	# install -p -m 755 $(SCRIPTS) $(DESTDIR)$(BINDIR)
+ 	install -p -m 644 $(UNITS) $(DESTDIR)$(UNITDIR)
+ 	install -p -m 755 $(LIBEXEC_SCRIPTS) $(DESTDIR)$(LIBEXECDIR)
  	mkdir -p $(DESTDIR)$(DIR)/
- 	install -p -m 644 default-config $(DESTDIR)$(DIR)
- 	install -p -m 644 output/reload-cmds.sh $(DESTDIR)$(DIR)
-@@ -114,8 +114,8 @@ clean:
+@@ -133,8 +133,8 @@ clean:
  	rm -rf output
  
  %: %.txt

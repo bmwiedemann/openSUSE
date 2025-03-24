@@ -1,0 +1,55 @@
+diff -PpuriN fedora-crypto-policies-orig/policies/DEFAULT.pol fedora-crypto-policies-20250124.4d262e7/policies/DEFAULT.pol
+--- fedora-crypto-policies-orig/policies/DEFAULT.pol	2025-01-24 18:31:31.000000000 +0100
++++ fedora-crypto-policies-20250124.4d262e7/policies/DEFAULT.pol	2025-03-11 14:09:01.796831654 +0100
+@@ -1,7 +1,6 @@
+ # A reasonable default for today's standards. It should provide
+ # 112-bit security with the exception of SHA1 signatures in DNSSec.
+ # SHA1 is allowed in HMAC where collision attacks do not matter.
+-# OpenSSL distrusts signatures using SHA-1 (Changes/OpenSSLDistrustSHA1SigVer).
+ 
+ # MACs: all HMAC with SHA1 or better + all modern MACs (Poly1305 etc)
+ # Curves: all prime >= 255 bits (including Bernstein curves)
+@@ -88,6 +87,3 @@ etm@SSH = ANY
+ sign@RPM = DSA-SHA1+
+ hash@RPM = SHA1+
+ min_dsa_size@RPM = 1024
+-
+-# https://fedoraproject.org/wiki/Changes/OpenSSLDistrustSHA1SigVer
+-__openssl_block_sha1_signatures = 1
+diff -PpuriN fedora-crypto-policies-orig/tests/alternative-policies/DEFAULT.pol fedora-crypto-policies-20250124.4d262e7/tests/alternative-policies/DEFAULT.pol
+--- fedora-crypto-policies-orig/tests/alternative-policies/DEFAULT.pol	2025-01-24 18:31:31.000000000 +0100
++++ fedora-crypto-policies-20250124.4d262e7/tests/alternative-policies/DEFAULT.pol	2025-03-11 13:53:52.231005482 +0100
+@@ -91,6 +91,3 @@ ssh_etm = 1
+ sign@rpm-sequoia = DSA-SHA1+
+ hash@rpm-sequoia = SHA1+
+ min_dsa_size@rpm-sequoia = 1024
+-
+-# https://fedoraproject.org/wiki/Changes/OpenSSLDistrustSHA1SigVer
+-__openssl_block_sha1_signatures = 1
+diff -PpuriN fedora-crypto-policies-orig/tests/outputs/DEFAULT:GOST-opensslcnf.txt fedora-crypto-policies-20250124.4d262e7/tests/outputs/DEFAULT:GOST-opensslcnf.txt
+--- fedora-crypto-policies-orig/tests/outputs/DEFAULT:GOST-opensslcnf.txt	2025-01-24 18:31:31.000000000 +0100
++++ fedora-crypto-policies-20250124.4d262e7/tests/outputs/DEFAULT:GOST-opensslcnf.txt	2025-03-11 14:10:14.134767876 +0100
+@@ -11,4 +11,4 @@ Groups = X25519:secp256r1:X448:secp521r1
+ alg_section = evp_properties
+ 
+ [evp_properties]
+-rh-allow-sha1-signatures = no
++rh-allow-sha1-signatures = yes
+diff -PpuriN fedora-crypto-policies-orig/tests/outputs/DEFAULT-opensslcnf.txt fedora-crypto-policies-20250124.4d262e7/tests/outputs/DEFAULT-opensslcnf.txt
+--- fedora-crypto-policies-orig/tests/outputs/DEFAULT-opensslcnf.txt	2025-01-24 18:31:31.000000000 +0100
++++ fedora-crypto-policies-20250124.4d262e7/tests/outputs/DEFAULT-opensslcnf.txt	2025-03-11 14:09:55.798784042 +0100
+@@ -11,4 +11,4 @@ Groups = X25519:secp256r1:X448:secp521r1
+ alg_section = evp_properties
+ 
+ [evp_properties]
+-rh-allow-sha1-signatures = no
++rh-allow-sha1-signatures = yes
+diff -PpuriN fedora-crypto-policies-orig/tests/outputs/DEFAULT:TEST-PQ-opensslcnf.txt fedora-crypto-policies-20250124.4d262e7/tests/outputs/DEFAULT:TEST-PQ-opensslcnf.txt
+--- fedora-crypto-policies-orig/tests/outputs/DEFAULT:TEST-PQ-opensslcnf.txt	2025-01-24 18:31:31.000000000 +0100
++++ fedora-crypto-policies-20250124.4d262e7/tests/outputs/DEFAULT:TEST-PQ-opensslcnf.txt	2025-03-11 14:10:42.542742833 +0100
+@@ -11,4 +11,4 @@ Groups = ?x25519_kyber768:?p256_kyber768
+ alg_section = evp_properties
+ 
+ [evp_properties]
+-rh-allow-sha1-signatures = no
++rh-allow-sha1-signatures = yes

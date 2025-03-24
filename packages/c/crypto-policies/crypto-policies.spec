@@ -1,7 +1,7 @@
 #
 # spec file for package crypto-policies
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,9 @@
 # manbuild is disabled by default
 %bcond_with manbuild
 %global _python_bytecompile_extra 0
+
 Name:           crypto-policies
-Version:        20230920.570ea89
+Version:        20250124.4d262e7
 Release:        0
 Summary:        System-wide crypto policies
 License:        LGPL-2.1-or-later
@@ -47,41 +48,34 @@ Patch1:         crypto-policies-no-build-manpages.patch
 Patch2:         crypto-policies-policygenerators.patch
 #PATCH-FIX-OPENSUSE bsc#1209998 Mention the supported back-end policies
 Patch3:         crypto-policies-supported.patch
-#PATCH-FIX-OPENSUSE Revert a breaking change that introduces rh-allow-sha1-signatures
-Patch4:         crypto-policies-revert-rh-allow-sha1-signatures.patch
 #PATCH-FIX-OPENSUSE Remove version for pylint from Makefile
 Patch5:         crypto-policies-pylint.patch
 #PATCH-FIX-OPENSUSE Adpat the fips-mode-setup script for SUSE/openSUSE [jsc#PED-4578]
 Patch6:         crypto-policies-FIPS.patch
 #PATCH-FIX-OPENSUSE Skip NSS policy check if not installed mozilla-nss-tools [bsc#1211301]
 Patch7:         crypto-policies-nss.patch
-BuildRequires:  python3-base >= 3.6
-# The sequoia stuff needs python3-toml, removed until needed
-# BuildRequires:  python3-toml
+#PATCH-FIX-OPENSUSE enable SHA1 sigver in DEFAULT
+Patch8:         crypto-policies-enable-SHA1-sigver-in-DEFAULT.patch
+#PATCH-FIX-OPENSUSE Allow sshd in FIPS mode when using the DEFAULT policy [bsc#1227370]
+Patch9:         crypto-policies-Allow-sshd-in-FIPS-mode-using-DEFAULT.patch
+BuildRequires:  python3-base >= 3.11
 %if %{with manbuild}
 BuildRequires:  asciidoc
 %endif
 %if %{with testsuite}
 # The following packages are needed for the testsuite
 BuildRequires:  bind
-BuildRequires:  codespell
-BuildRequires:  gnutls >= 3.6.0
+BuildRequires:  crypto-policies-scripts
+BuildRequires:  gnutls
 BuildRequires:  java-devel
-BuildRequires:  krb5-devel
 BuildRequires:  libxslt
 BuildRequires:  mozilla-nss-tools
+BuildRequires:  openssh-clients
 BuildRequires:  openssl
-BuildRequires:  perl
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-coverage
-BuildRequires:  python3-devel >= 3.6
-BuildRequires:  python3-flake8
-BuildRequires:  python3-pylint
+BuildRequires:  python3-devel >= 3.11
 BuildRequires:  python3-pytest
-BuildRequires:  perl(File::Copy)
-BuildRequires:  perl(File::Temp)
-BuildRequires:  perl(File::Which)
-BuildRequires:  perl(File::pushd)
+BuildRequires:  systemd-rpm-macros
 %else
 # Avoid cycle with python-rpm-macros
 #!BuildIgnore: python-rpm-packaging python-rpm-macros
@@ -89,10 +83,10 @@ BuildRequires:  perl(File::pushd)
 %if 0%{?primary_python:1}
 Recommends:     crypto-policies-scripts
 %endif
-Conflicts:      gnutls < 3.7.3
-#Conflicts:      libreswan < 3.28
-Conflicts:      nss < 3.90.0
-#Conflicts:      openssh < 8.2p1
+Conflicts:      gnutls < 3.8.8
+Conflicts:      nss < 3.105
+Conflicts:      openssh < 9.9p1
+Conflicts:      openssl < 3.0.2
 #!BuildIgnore:  crypto-policies
 BuildArch:      noarch
 
@@ -105,6 +99,7 @@ such as SSL/TLS libraries.
 Summary:        Tool to switch between crypto policies
 Requires:       %{name} = %{version}-%{release}
 Recommends:     perl-Bootloader
+Provides:       fips-mode-setup = %{version}-%{release}
 
 %description scripts
 This package provides a tool update-crypto-policies, which applies
@@ -121,15 +116,8 @@ to enable or disable the system FIPS mode.
 # Make README.SUSE available for %%doc
 cp -p %{SOURCE1} .
 
-# Remove not needed policy generators
-find -name libreswan.py -delete
-find -name sequoia.py -delete
-
 %build
 export OPENSSL_CONF=''
-sed -i "s/MIN_RSA_DEFAULT = .*/MIN_RSA_DEFAULT = 'RequiredRSASize'/" \
-    python/policygenerators/openssh.py
-grep "MIN_RSA_DEFAULT = 'RequiredRSASize'" python/policygenerators/openssh.py
 %make_build
 
 %install
@@ -162,11 +150,18 @@ install -p -m 755 update-crypto-policies %{buildroot}%{_bindir}/
 install -p -m 755 fips-mode-setup %{buildroot}%{_bindir}/
 install -p -m 755 fips-finish-install %{buildroot}%{_bindir}/
 
-# Drop pre-generated GOST-ONLY policy, we do not need to ship them
+# Drop pre-generated GOST-ONLY and FEDORA policies, we do not need to ship them
 rm -rf %{buildroot}%{_datarootdir}/crypto-policies/GOST-ONLY
-
-# Drop FEDORA policies
 rm -rf %{buildroot}%{_datarootdir}/crypto-policies/*FEDORA*
+
+# Drop libreswan and sequoia config files
+find  %{buildroot} -type f -name 'libreswan.*' -print -delete
+find  %{buildroot} -type f -name 'sequoia.*' -print -delete
+
+# Drop not needed fips bind mount service
+find %{buildroot} -type f -name 'default-fips-config' -print -delete
+find %{buildroot} -type f -name 'fips-setup-helper' -print -delete
+find %{buildroot} -type f -name 'fips-crypto-policy-overlay*' -print -delete
 
 # Create back-end configs for mounting with read-only /etc/
 for d in LEGACY DEFAULT FUTURE FIPS BSI ; do
@@ -229,12 +224,24 @@ if not posix.access("%{_sysconfdir}/crypto-policies/config") then
     end
 end
 
+cfg_path_libreswan = "%{_sysconfdir}/crypto-policies/back-ends/libreswan.config"
+st = posix.stat(cfg_path_libreswan)
+if st and st.type == "link" then
+   posix.unlink(cfg_path_libreswan)
+end
+
+cfg_path_javasystem = "%{_sysconfdir}/crypto-policies/back-ends/javasystem.config"
+st = posix.stat(cfg_path_javasystem)
+if st and st.type == "link" then
+   posix.unlink(cfg_path_javasystem)
+end
+
 %posttrans scripts
 %{_bindir}/update-crypto-policies --no-check >/dev/null 2>/dev/null || :
 
 %files
 %license COPYING.LESSER
-%doc README.md NEWS CONTRIBUTING.md
+%doc README.md CONTRIBUTING.md
 %doc %{_sysconfdir}/crypto-policies/README.SUSE
 
 %dir %{_sysconfdir}/crypto-policies/
@@ -256,12 +263,8 @@ end
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/nss.config
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/bind.config
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/java.config
-%ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/javasystem.config
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/krb5.config
-%ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/libreswan.config
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/libssh.config
-%ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/sequoia.config
-%ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/rpm-sequoia.config
 # %%verify(not mode) comes from the fact that these turn into symlinks and back to regular files at will.
 
 %ghost %{_sysconfdir}/crypto-policies/state/current

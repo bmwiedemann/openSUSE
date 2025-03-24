@@ -1,4 +1,157 @@
 -------------------------------------------------------------------
+Tue Mar 18 13:45:44 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Allow sshd in FIPS mode when using the DEFAULT policy [bsc#1227370]
+  * Add crypto-policies-Allow-sshd-in-FIPS-mode-using-DEFAULT.patch
+
+-------------------------------------------------------------------
+Tue Mar 11 12:40:44 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable SHA1 sigver in the DEFAULT policy.
+  * Add crypto-policies-enable-SHA1-sigver-in-DEFAULT.patch
+
+-------------------------------------------------------------------
+Fri Feb 28 13:18:00 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix fips-mode-setup in EFI or Secure Boot mode. [bsc#1227637]
+  * Rebase crypto-policies-FIPS.patch
+
+-------------------------------------------------------------------
+Wed Feb 12 11:45:57 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove dangling symlink for the libreswan config [bsc#1236858]
+- Remove also sequoia config and generator files
+- Remove not needed fips bind mount service
+
+-------------------------------------------------------------------
+Tue Feb 04 10:18:07 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20250124.4d262e7: [bsc#1239009, bsc#1236165]
+  * openssl: stricter enabling of Ciphersuites
+  * openssl: make use of -CBC and -AESGCM keywords
+  * openssl: add TLS 1.3 Brainpool identifiers
+  * fix warning on using experimental key_exchanges
+  * update-crypto-policies: don't output FIPS warning in fips mode
+  * openssh: map mlkem768x25519-sha256 to KEM-ECDH & MLKEM768-X25519 & SHA2-256
+  * openssh, libssh: refactor kx maps to use tuples
+  * alg_lists: mark MLKEM768/SNTRUP kex experimental
+  * nss: revert enabling mlkem768secp256r1
+  * nss: add mlkem768x25519 and mlkem768secp256r1, remove xyber
+  * gnutls: add GROUP-X25519-MLKEM768 and GROUP-SECP256R1-MLKEM768
+  * openssl: use both names for SecP256r1MLKEM768 / X25519MLKEM768
+  * openssh, TEST-PQ: rename MLKEM key_exchange to MLKEM768
+  * openssh: add support for sntrup761x25519-sha512 and mlkem768x25519-sha256
+  * openssl: map NULL to TLS_SHA256_SHA256:TLS_SHA384_SHA384...
+  * python/update-crypto-policies: pacify pylint
+  * fips-mode-setup: tolerate fips dracut module presence w/o FIPS
+  * fips-mode-setup: small Argon2 detection fix
+  * SHA1: add __openssl_block_sha1_signatures = 0
+  * fips-mode-setup: block if LUKS devices using Argon2 are detected
+  * update-crypto-policies: skip warning on --set=FIPS if bootc
+  * fips-setup-helper: skip warning, BTW
+  * fips-mode-setup: force --no-bootcfg when UKI is detected
+  * fips-setup-helper: add a libexec helper for anaconda
+  * fips-crypto-policy-overlay: automount FIPS policy
+  * openssh: make dss no longer enableble, support is dropped
+  * gnutls: wire GROUP-X25519-KYBER768 to X25519-KYBER768
+  * DEFAULT: switch to rh-allow-sha1-signatures = no...
+  * java: drop unused javasystem backend
+  * java: stop specifying jdk.tls.namedGroups in javasystem
+  * ec_min_size: introduce and use in java, default to 256
+  * java: use and include jdk.disabled.namedCurves
+  * BSI: Update BSI policy for new 2024 minimum recommendations
+  * fips-mode-setup: flashy ticking warning upon use
+  * fips-mode-setup: add another scary "unsupported"
+  * CONTRIBUTING.md: add a small section on updating policies
+  * CONTRIBUTING.md: remove trailing punctuation from headers
+  * BSI: switch to 3072 minimum RSA key size
+  * java: make hash, mac and sign more orthogonal
+  * java: specify jdk.tls.namedGroups system property
+  * java: respect more key size restrictions
+  * java: disable anon ciphersuites, tying them to NULL...
+  * java: start controlling / disable DTLSv1.0
+  * nss: wire KYBER768 to XYBER768D00
+  * nss: unconditionally load p11-kit-proxy.so
+  * gnutls: make DTLS0.9 controllable again
+  * gnutls: retire GNUTLS_NO_TLS_SESSION_HASH
+  * openssh: remove OPENSSH_MIN_RSA_SIZE / OPENSSH_MIN_RSA_SIZE_FORCE
+  * gnutls: remove extraneous newline
+  * sequoia: move away from subprocess.getstatusoutput
+  * python/cryptopolicies/cryptopolicies.py: add trailing commas
+  * python, tests: rename MalformedLine to MalformedLineError
+  * Makefile: introduce SKIP_LINTING flag for packagers to use
+  * Makefile: run ruff
+  * tests: use pathlib
+  * tests: run(check=True) + CalledProcessError where convenient
+  * tests: use subprocess.run
+  * tests/krb5.py: check all generated policies
+  * tests: print to stderr on error paths
+  * tests/nss.py: also use encoding='utf-8'
+  * tests/nss.py: also use removesuffix
+  * tests/nss.py: skip creating tempfiles
+  * tests/java.pl -> tests/java.py
+  * tests/gnutls.pl -> tests/gnutls.py
+  * tests/openssl.pl -> tests/openssl.py
+  * tests/verify-output.pl: remove
+  * libreswan: do not use up pfs= / ikev2= keywords for default behaviour
+  * Rebase patches:
+    - crypto-policies-no-build-manpages.patch
+    - crypto-policies-policygenerators.patch
+    - crypto-policies-supported.patch
+    - crypto-policies-nss.patch
+
+-------------------------------------------------------------------
+Wed Nov 06 12:27:56 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20241010.5930b9a:
+  * LEGACY: enable 192-bit ciphers for nss pkcs12/smime
+  * nss: be stricter with new purposes
+  * nss: rewrite backend for 3.101
+  * cryptopolicies: parent scopes for dumping purposes
+  * policygenerators: move scoping inside generators
+  * TEST-PQ: disable pure Kyber768
+  * nss: wire XYBER768D00 to X25519-KYBER768
+  * TEST-PQ: update
+  * TEST-PQ: also enable sntrup761x25519-sha512@openssh.com
+  * TEST-PQ, alg_lists, openssl: enable more experimental `sign` values
+  * TEST-PQ, python: add more groups, mark experimental
+  * openssl: mark liboqsprovider groups optional with ?
+  * Remove patches:
+    - crypto-policies-revert-rh-allow-sha1-signatures.patch
+
+-------------------------------------------------------------------
+Tue Feb 06 10:29:11 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20240201.9f501f3:
+  * .gitlab-ci.yml: install sequoia-policy-config
+  * java: disable ChaCha20-Poly1305 where applicable
+  * fips-mode-setup: make sure ostree is detected in chroot
+  * fips-finish-install: make sure ostree is detected in chroot
+  * TEST-PQ: enable X25519-KYBER768 / P384-KYBER768 for openssl
+  * TEST-PQ: add a no-op subpolicy
+  * update-crypto-policies: Keep mid-sentence upper case
+  * fips-mode-setup: Write error messages to stderr
+  * fips-mode-setup: Fix some shellcheck warnings
+  * fips-mode-setup: Fix test for empty /boot
+  * fips-mode-setup: Avoid 'boot=UUID=' if /boot == /
+  * Update man pages
+  * Rebase patches:
+    - crypto-policies-FIPS.patch
+    - crypto-policies-revert-rh-allow-sha1-signatures.patch
+
+-------------------------------------------------------------------
+Mon Feb 02 08:34:40 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20231108.adb5572b:
+  * Print matches in syntax deprecation warnings
+  * Restore support for scoped ssh_etm directives
+  * fips-mode-setup: Fix usage with --no-bootcfg
+  * turn ssh_etm into an etm@SSH tri-state
+  * fips-mode-setup: increase chroot-friendliness
+  * bind: fix a typo that led to duplication of ECDSAPxxxSHAxxx
+  * pylintrc: use-implicit-booleaness-not-comparison-to-*
+
+-------------------------------------------------------------------
 Tue Jan 30 18:36:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - avoid the cycle rpm/cmake/crypto-policies/python-rpm-macros:
