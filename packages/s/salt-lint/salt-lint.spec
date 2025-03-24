@@ -1,5 +1,7 @@
 #
-# Copyright (c) 2022 SUSE LLC
+# spec file for package salt-lint
+#
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -11,29 +13,40 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
+
+%if 0%{?suse_version} > 1500
+%global pythons    %{primary_python}
+%else
+%if 0%{?sle_version} >= 150700
+%global pythons    python311
+%else
+%global pythons    python3
+%endif
+%endif
 
 Name:           salt-lint
 Version:        0.9.2
 Release:        0
 License:        MIT
 Summary:        A command-line utility that checks for best practices in SaltStack
-Url:            https://github.com/warpnet/salt-lint
+URL:            https://github.com/warpnet/salt-lint
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/s/salt-lint/salt-lint-%{version}.tar.gz
+BuildRequires:  %{pythons}-devel
+BuildRequires:  %{pythons}-setuptools
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 # SECTION test requirements
-BuildRequires:  python3-pathspec >= 0.6.0
-BuildRequires:  python3-PyYAML
-BuildRequires:  python3-salt
+BuildRequires:  %{pythons}-pathspec >= 0.6.0
+BuildRequires:  %{pythons}-PyYAML
+BuildRequires:  %{pythons}-salt
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python3 >= 3.6
-Requires:       python3-pathspec >= 0.6.0
-Requires:       python3-PyYAML
-Requires:       python3-salt
+Requires:       %{pythons} >= 3.6
+Requires:       %{pythons}-PyYAML
+Requires:       %{pythons}-pathspec >= 0.6.0
+Requires:       %{pythons}-salt
 BuildArch:      noarch
 
 %description
@@ -214,16 +227,16 @@ salt-lint is heavily based on `ansible-lint`_ with the modified work by `Roald N
 %setup -q -n salt-lint-%{version}
 
 %build
-%python3_build
+%python_build
 
 %install
-%python3_install
+%python_install
 
 %files
 %doc *.md
 %license LICENSE*
 %{_bindir}/salt-lint
-%{python3_sitelib}/salt_lint*egg*
-%{python3_sitelib}/saltlint/
+%{python_sitelib}/salt_lint*egg*
+%{python_sitelib}/saltlint/
 
 %changelog
