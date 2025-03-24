@@ -1132,4 +1132,41 @@ run -osc service localrun format_spec_file to fix copyright
     also activated by auto-reload) (#2935)</comment>
     <requestid>1234485</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>35e7c85ff1075fb874d158fef501ea09</srcmd5>
+    <version>2.39</version>
+    <time>1742819543</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.39:
+  Added:
+  * New bind command, which is an improvement on both bind-key and macro.
+    It allows multi-key bindings (that's new!) which execute one or more actions
+    (similar to macros), and can have a description that'll be displayed in the
+    help dialog (that's new too!). It also offers an additional syntax for
+    specifying keys: instead of ^R, one can write &lt;C-r&gt;. Multi-key bindings
+    are slightly limited in that bindings with same prefix must all be the same
+    length to avoid ambiguity when executing them (if I had bindings for and
+    fork, and typed for, Newsboat wouldn't know if that's it or I'm going to
+    type k next) (#1165)
+  * contrib/newsboat-idlefeeds.sh: a script to show feeds that weren't updated in
+    a given amount of time (T3SQ8)
+  Changed:
+  * Highlighting in the help form is now case-insensitive (#2998)
+  * Updated translations: Dutch, German, Italian, Polish, Russian, Ukrainian,
+    Swedish, Turkish
+  * Bumped minimum supported Rust version to 1.81.0
+  Deprecated:
+  * Compilers that don't support C++17. This release compiles with -std=c++17,
+    but only for compatibility with header files of libicu 75+; Newsboat itself
+    only uses C++14 for now. The next release might start using C++17 features,
+    so please open an issue if that'll cause problems for you (#3031)
+  Removed:
+  * Support for Clang 4, because it doesn't accept -std=c++17 (#3031)
+  Fixed:
+  * Crash when setting a non-existent variable (#2989)
+  * Highlights not displayed for searches that contain less-than sign, due to
+    errors in quoting (#3008)
+  * Building with libicu 75+, which requires C++17. libicu is an indirect</comment>
+    <requestid>1255514</requestid>
+  </revision>
 </revisionlist>
