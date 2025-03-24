@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 24 04:49:07 UTC 2025 - zzhou@suse.com
+
+- Update to version 5.0.0+20250324.9041399d:
+  * Dev: behave: add functional test cases for previous changes
+  * minor refactors
+  * Dev: pre-migration: add checks for deprecated resource agents (jsc#PED-11808)
+  * Dev: pre-migration: update the unsupported list
+  * Dev: pre-migration: check lsb or service resource agents (jsc#PED-11808)
+  * Dev: pre-migration: use a unsupported list instead of supported list (jsc#PED-11808)
+
+-------------------------------------------------------------------
+Mon Mar 24 04:20:53 UTC 2025 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20250324.b5d78d9b:
+  * Dev: Dockerfile: Install sudo explicitly
+  * Dev: ui_corosync: fix completer for link remove
+
+-------------------------------------------------------------------
+Fri Mar 21 13:05:00 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250321.dd765c54:
+  * Dev: testcases: Udate testcases for previous commit
+  * Dev: doc: Update the default value of <heartbeat_dir> in the documentation
+  * Dev: ui_resource: Refactor do_trace function
+
+-------------------------------------------------------------------
 Thu Mar 20 23:39:49 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250321.169fb42c:
