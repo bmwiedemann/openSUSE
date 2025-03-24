@@ -52,8 +52,8 @@ BuildRequires:  make
 BuildRequires:  pkgconfig
 # upstream use for qt6-base-devel 6.8.2
 BuildRequires:  qt6-base-devel >= 6.6.3
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  python-rpm-macros
 # not need for build, only check for exists
 # upstream use for python3-Pillow 10.3.0
 BuildRequires:  %{python_module Pillow >= 9.5.0}
@@ -98,7 +98,7 @@ BuildRequires:  cmake(Qt6WebEngineWidgets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(hunspell)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(minizip)
 Requires:       %{python_flavor}-Pillow
@@ -155,8 +155,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
 
 %cmake_qt6 -G "Unix Makefiles" \
-    -DTRY_NEWER_FINDPYTHON3=1
-
+    -DTRY_NEWER_FINDPYTHON3=1 \
+    -DUSE_SYSTEM_LIBS=1 \
+    %{nil}
 %qt6_build
 
 %install
