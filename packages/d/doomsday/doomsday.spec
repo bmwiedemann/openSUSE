@@ -1,7 +1,7 @@
 #
 # spec file for package doomsday
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,7 @@ BuildRequires:  pkgconfig(Qt5OpenGLExtensions)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(assimp)
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(minizip)
@@ -55,11 +56,9 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xxf86vm)
 # Mesa 9.2 has OpenGL 3.1, and doomsday 2.0 needs that.
 Requires:       Mesa-libGL1 >= 9.2
-# Doomsday uses a modified version of assimp, so no pkgconfig(assimp) here :-(
 Provides:       jdoom = %version-%release
 Provides:       jheretic = %version-%release
 Provides:       jhexen = %version-%release
-Provides:       bundled(assimp) = 3.3.1
 Obsoletes:      deng < %version-%release
 Provides:       deng = %version-%release
 
@@ -71,19 +70,20 @@ and Hexen. It does not support BOOM extensions.
 %autosetup -p1 -n Doomsday-Engine-%version
 
 %build
-pushd doomsday
+cd doomsday
 %cmake \
 %ifarch aarch64 %arm
 	-DDENG_OPENGL_API=GLES3 \
 %endif
+	-DDENG_ASSIMP_EMBEDDED:BOOL=OFF \
 	-DCMAKE_SKIP_RPATH:BOOL=ON
 %make_build -O
 
 %install
 b="%buildroot"
-pushd doomsday/
+cd doomsday/
 %cmake_install
-popd
+
 d="$b/%_libdir/doomsday"
 rm -Rf "$b/%_includedir" "$b/%_libdir/cmake" "$b/%_datadir/doc/texc" \
 	"$d/cmake" "$d/pkgconfig" "$d"/*.a

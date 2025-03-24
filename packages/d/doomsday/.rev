@@ -243,4 +243,13 @@
     <comment>- Drop unused launcher subpackage.</comment>
     <requestid>902486</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>3af1aa93cd82364486953d805182de83</srcmd5>
+    <version>2.3.1</version>
+    <time>1742819409</time>
+    <user>anag+factory</user>
+    <comment>- Make build recipe POSIX sh compatible
+- Use system assimp library [boo#1239917]</comment>
+    <requestid>1255238</requestid>
+  </revision>
 </revisionlist>
