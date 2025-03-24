@@ -40,7 +40,6 @@ Provides:       pattern() = kalpa_base
 Provides:       pattern-category() = Kalpa
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9200
-Provides:       pattern-visible()
 %if %{with betatest}
 # need to require it as recommends are off
 Requires:       pattern() = update_test
@@ -301,7 +300,7 @@ Requires:       kwalletmanager
 Requires:       pinentry
 Requires:       plasma5-session
 Requires:       plasma6-pa
-Requires:       sddm-qt6
+Requires:       sddm-kalpa
 
 # Additional Fonts to cover Unicode Symbols not provided by kde_plasma
 Requires:       noto-sans-math-fonts

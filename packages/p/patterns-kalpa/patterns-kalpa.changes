@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 22 23:05:10 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Remove pattern-visible() to stop pattern from showing up in Yast
+
+-------------------------------------------------------------------
 Mon Jan 27 08:46:00 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop kwrited, only worked with utmp

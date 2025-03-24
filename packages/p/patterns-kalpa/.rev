@@ -102,4 +102,12 @@
     <comment></comment>
     <requestid>1240605</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>01959f4e1dcacb36d2a6a11bda00ec24</srcmd5>
+    <version>6.0</version>
+    <time>1742819473</time>
+    <user>anag+factory</user>
+    <comment>- Remove pattern-visible() to stop pattern from showing up in Yast</comment>
+    <requestid>1255343</requestid>
+  </revision>
 </revisionlist>
