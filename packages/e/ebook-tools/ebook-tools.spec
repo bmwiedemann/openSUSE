@@ -1,7 +1,7 @@
 #
 # spec file for package ebook-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,16 +21,16 @@ Version:        0.2.2
 Release:        0
 Summary:        A library for reading ebook files
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://sourceforge.net/projects/ebook-tools/
 Source:         %{name}-%{version}.tar.gz
-Source1:        baselibs.conf
-Patch1:         ebook-tools-64bit-installation.diff
-Patch2:         ebook-tools-visibility-hidden.patch
+Patch0:         ebook-tools-64bit-installation.diff
+Patch1:         ebook-tools-visibility-hidden.patch
 # PATCH-FIX-OPENSUSE - fix https://sourceforge.net/p/ebook-tools/bugs/8/
-Patch3:         0001-Avoid-crash-on-toc.ncx-navPoint-without-navLabel.patch
+Patch2:         0001-Avoid-crash-on-toc.ncx-navPoint-without-navLabel.patch
 # PATCH-FIX-OPENSUSE
-Patch4:         0002-Avoid-crash-on-spine-itemref-without-idref.patch
+Patch3:         0002-Avoid-crash-on-spine-itemref-without-idref.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         ebook-tools-cmake4.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -38,30 +38,24 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzip)
 
 %description
-ebook-tools provides some tools to handle ebook files
+ebook-tools provides some tools to handle ebook files.
 
 %package -n libepub0
 Summary:        A library for reading ebook files
-Group:          Development/Libraries/C and C++
 
 %description -n libepub0
 libepub library is needed for okular to support ebook format.
 
 %package -n libepub-devel
 Summary:        Header files for libepub library
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libepub0 = %{version}
 
 %description -n libepub-devel
-Header files for the libepub library
+Header files for the libepub library.
 
 %prep
-%setup -q
-%patch -P 1 -p1
-%patch -P 2
-%patch -P 3 -p1
-%patch -P 4 -p1
+%autosetup -p1
 
 %build
 %cmake
@@ -70,10 +64,8 @@ Header files for the libepub library
 
 %install
 %cmake_install
-nm -C -D %{buildroot}%{_libdir}/libepub.so.*
 
-%post -n libepub0 -p /sbin/ldconfig
-%postun -n libepub0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libepub0
 
 %files
 %{_bindir}/einfo

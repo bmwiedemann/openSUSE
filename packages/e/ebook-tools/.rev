@@ -182,4 +182,15 @@ Please checkin to 13.1, old version makes Okular crashy</comment>
     <comment></comment>
     <requestid>1149287</requestid>
   </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>865ef07bdc1a22e00b6d58879b7d8aa5</srcmd5>
+    <version>0.2.2</version>
+    <time>1742819114</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * ebook-tools-cmake4.patch
+- Rebase patches
+- Drop unneeded baselibs.conf</comment>
+    <requestid>1255003</requestid>
+  </revision>
 </revisionlist>

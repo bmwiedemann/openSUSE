@@ -1,7 +1,8 @@
-diff -Naur ebook-tools-0.2.2.orig/CMakeLists.txt ebook-tools-0.2.2/CMakeLists.txt
---- ebook-tools-0.2.2.orig/CMakeLists.txt	2012-09-04 16:32:32.000000000 +0200
-+++ ebook-tools-0.2.2/CMakeLists.txt	2013-10-13 00:16:47.779199221 +0200
-@@ -2,6 +2,8 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fc141c2..c2f2b66 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,6 +2,8 @@ project (EBOOK-TOOLS C)
  
  cmake_minimum_required(VERSION 2.4.0)
  
@@ -10,9 +11,10 @@ diff -Naur ebook-tools-0.2.2.orig/CMakeLists.txt ebook-tools-0.2.2/CMakeLists.tx
  #set(CMAKE_CURRENT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
  set(LIBRARY_OUTPUT_PATH ${EBOOK-TOOLS_BINARY_DIR}/libs)
  set(EXECUTABLE_OUTPUT_PATH ${EBOOK-TOOLS_BINARY_DIR}/bin)
-diff -Naur ebook-tools-0.2.2.orig/src/libepub/CMakeLists.txt ebook-tools-0.2.2/src/libepub/CMakeLists.txt
---- ebook-tools-0.2.2.orig/src/libepub/CMakeLists.txt	2012-09-04 16:32:32.000000000 +0200
-+++ ebook-tools-0.2.2/src/libepub/CMakeLists.txt	2013-10-13 00:11:35.694100822 +0200
+diff --git a/src/libepub/CMakeLists.txt b/src/libepub/CMakeLists.txt
+index a3208b7..3bebea7 100644
+--- a/src/libepub/CMakeLists.txt
++++ b/src/libepub/CMakeLists.txt
 @@ -1,4 +1,4 @@
 -include_directories (${EBOOK-TOOLS_SOURCE_DIR}/src/libepub ${LIBXML2_INCLUDE_DIR} ${LIBZIP_INCLUDE_DIR})
 +include_directories (${EBOOK-TOOLS_SOURCE_DIR}/src/libepub ${LIBXML2_INCLUDE_DIR} ${LIBZIP_INCLUDE_DIR} ${ZIP_INCLUDE_DIRS} )

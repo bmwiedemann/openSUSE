@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 21 12:33:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * ebook-tools-cmake4.patch
+- Rebase patches
+- Drop unneeded baselibs.conf
+
+-------------------------------------------------------------------
 Thu Feb 22 11:27:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
