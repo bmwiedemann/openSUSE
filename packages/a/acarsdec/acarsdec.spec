@@ -1,7 +1,7 @@
 #
 # spec file for package acarsdec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@ URL:            https://github.com/TLeconte/acarsdec
 #Git-Clone:     https://github.com/TLeconte/acarsdec.git
 Source:         https://github.com/TLeconte/acarsdec/archive/acarsdec-%{version}.tar.gz#/%{srcname}.tar.gz
 Patch0:         reproducible.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libacars-2) >= 2.0.0
 BuildRequires:  pkgconfig(libairspy)
@@ -46,11 +46,15 @@ It comes with a database backend : acarsserv to store receved acars messages.
 %cmake \
   -DLIBRTL=1 \
   -DLIBAIR=1 \
-  -DMQTT=0
+  -DMQTT=0 \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %make_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %doc README.md
