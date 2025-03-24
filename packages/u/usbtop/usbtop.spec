@@ -1,7 +1,7 @@
 #
 # spec file for package usbtop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,9 @@ Version:        1.0
 Release:        1%{?dist}
 Summary:        Visualizer for estimated instantaneous bandwidth on USB buses and devices
 License:        BSD-3-Clause
-Group:          System/Monitoring
 URL:            https://github.com/aguinet/usbtop
 Source0:        https://github.com/aguinet/usbtop/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel >= 1.48.0
 BuildRequires:  libboost_system-devel >= 1.48.0
@@ -40,11 +39,14 @@ Requires the usbmon kernel module to be loaded.
 %setup -q -n %{name}-release-%{version}
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
 %install
 install -Dm 755 build/src/usbtop %{buildroot}%{_bindir}/usbtop
+
+%check
+%ctest
 
 %files
 %doc README.md
