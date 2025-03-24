@@ -1,7 +1,7 @@
 #
 # spec file for package bladeRF
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013-2015 Wojciech Kazubski, wk@ire.pw.edu.pl
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,7 +35,7 @@ Source0:        https://github.com/Nuand/bladeRF/archive/%{release_name}.tar.gz#
 Source1:        ad9361.tar.xz
 Patch0:         bladeRF-doxygen-no-timestamp.patch
 Patch1:         gcc14-fix-calloc-arg-order.patch
-BuildRequires:  cmake >= 2.8.4
+BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -104,12 +104,16 @@ cd host
   -DENABLE_LIBBLADERF_SYSLOG=ON \
 %endif
   -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/lib%{name} \
-  -DBUILD_DOCUMENTATION=ON
+  -DBUILD_DOCUMENTATION=ON \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 cd host
 %cmake_install
+
+%check
+%ctest
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun  -n %{libname} -p /sbin/ldconfig
