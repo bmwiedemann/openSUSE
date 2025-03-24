@@ -1,7 +1,7 @@
 #
 # spec file for package librtas
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,15 @@ Patch3:         0003-librtas-move-system-parameter-code-to-separate-modul.patch
 Patch4:         0004-librtas-vendor-papr-miscdev.h.patch
 Patch5:         0005-librtas-vpd-prefer-dev-papr-vpd-when-available.patch
 Patch6:         0006-librtas-sysparm-prefer-dev-papr-sysparm-when-availab.patch
+Patch7:         0001-librtas-Move-platform-dump-rtas-call-code-to-separat.patch
+Patch8:         0002-librtas-platform-dump-prefer-dev-papr-platform-dump-.patch
+Patch9:         0003-librtas-move-get-set-indices-RTAS-calls-code-to-sepa.patch
+Patch10:        0004-librtas-Add-kernel-uapi-header-papr-indices.h.patch
+Patch11:        0005-librtas-Use-dev-papr-indices-when-available-for-ibm-.patch
+Patch12:        0006-librtas-Use-dev-papr-indices-when-available-for-get-.patch
+Patch13:        0007-librtas-Use-dev-papr-indices-when-available-for-set-.patch
+Patch14:        0008-librtas-Move-physical-attestation-rtas-call-code-to-.patch
+Patch15:        0009-librtas-Use-kernel-interface-when-available-for-ibm-.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool

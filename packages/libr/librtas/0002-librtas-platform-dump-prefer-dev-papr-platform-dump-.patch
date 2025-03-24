@@ -1,0 +1,248 @@
+From 04fcd8b31f9243cec1cdc138363125cd2105be00 Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Sun, 9 Mar 2025 16:29:08 -0700
+Subject: [PATCH 2/9] librtas/platform-dump: prefer /dev/papr-platform-dump
+ when available
+
+rtas_platform_dump() uses sys_rtas() call to obtain platform dump.
+But it needs /dev/mem access in the user space which is restricted
+under system lockdown. So this patch adds changes to use new kernel
+ABI for system lockdown feature.
+
+Kernel provides new interfaces such as open/ioctl/read with
+/dev/papr-platform-dump char based driver. For the first invocation
+of rtas_platform_dump() call, initialize an internal function
+pointer depends on the presence of above device node. If not
+fallback to the the current implementation. pthread_once() is used
+to this setup is done only once.
+
+Open /dev/papr-platform-dump and obtain FD with
+PAPR_PLATFORM_DUMP_IOC_CREATE_HANDLE ioctl command. This file
+descriptor is reference to the dump sequence obtained with the
+specified dump tag. Then read() call for each rtas_platform_dump()
+with the FD retrieves the dump data as a sequence until the read()
+returns 0.
+
+The hypervisor uses sequence number passed with ibm,platform-dump
+RTAS call to make sure the complete dump is transferred. First
+RTAS call is invoked with sequence number 0 to start obtaining the
+dump and then RTAS advances the sequence number by a fixed interval
+on each call in a sequence until the dump is completed. The current
+implementation in the user space tracks this sequence number
+returned for each RTAS and passes to the next RTAS. Whereas with
+the new ABI, the kernel uses it internally for the corresponding
+dump tag and librtas uses it as a FD for the subsequent read calls.
+
+Also added the copy of kernel uapi header papr-platform-dump.h.
+
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+---
+ Makefile.am                      |   3 +-
+ librtas_src/papr-platform-dump.h |  18 +++++
+ librtas_src/platform-dump.c      | 130 ++++++++++++++++++++++++++++++-
+ 3 files changed, 148 insertions(+), 3 deletions(-)
+ create mode 100644 librtas_src/papr-platform-dump.h
+
+diff --git a/Makefile.am b/Makefile.am
+index 7997e46..156a68b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -40,7 +40,8 @@ noinst_HEADERS += \
+ 	librtas_src/internal.h \
+ 	librtas_src/papr-miscdev.h \
+ 	librtas_src/papr-sysparm.h \
+-	librtas_src/papr-vpd.h
++	librtas_src/papr-vpd.h \
++	librtas_src/papr-platform-dump.h
+ 
+ # See "Updating library version information" in the libtool manual for
+ # how to maintain these values. They are *not* tied to the release
+diff --git a/librtas_src/papr-platform-dump.h b/librtas_src/papr-platform-dump.h
+new file mode 100644
+index 0000000..4ee8ab1
+--- /dev/null
++++ b/librtas_src/papr-platform-dump.h
+@@ -0,0 +1,18 @@
++// SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++#ifndef _UAPI_PAPR_PLATFORM_DUMP_H_
++#define _UAPI_PAPR_PLATFORM_DUMP_H_
++
++#include <asm/ioctl.h>
++#include "papr-miscdev.h"
++
++/*
++ * ioctl for /dev/papr-platform-dump. Returns a platform-dump handle
++ * fd corresponding to the dump tag
++ */
++#define PAPR_PLATFORM_DUMP_IOC_CREATE_HANDLE	_IOW(PAPR_MISCDEV_IOC_ID, 6, __u64)
++/*
++ * ioctl for /dev/papr-platform-dump to invalidate platform dump
++ * after dump completed. Uses FD returned from the above ioctl.
++ */
++#define PAPR_PLATFORM_DUMP_IOC_INVALIDATE	_IOW(PAPR_MISCDEV_IOC_ID, 7, __u64)
++#endif /* _UAPI_PAPR_PLATFORM_DUMP_H_ */
+diff --git a/librtas_src/platform-dump.c b/librtas_src/platform-dump.c
+index a54c4ee..d456445 100644
+--- a/librtas_src/platform-dump.c
++++ b/librtas_src/platform-dump.c
+@@ -5,6 +5,10 @@
+ 
+ #include <errno.h>
+ #include <inttypes.h>
++#include <fcntl.h>
++#include <limits.h>
++#include <pthread.h>
++#include <search.h>
+ #include <stdarg.h>
+ #include <stdbool.h>
+ #include <stdlib.h>
+@@ -13,10 +17,12 @@
+ #include <linux/types.h>
+ #include <linux/unistd.h>
+ #include <sys/syscall.h>
++#include <sys/ioctl.h>
++#include <sys/stat.h>
+ 
+ #include "internal.h"
+ #include "librtas.h"
+-
++#include "papr-platform-dump.h"
+ 
+ /**
+  * rtas_platform_dump
+@@ -30,7 +36,7 @@
+  * @param bytes_ret
+  * @return 0 on success, !0 othwerwise
+  */
+-int rtas_platform_dump(uint64_t dump_tag, uint64_t sequence, void *buffer,
++int platform_dump_user(uint64_t dump_tag, uint64_t sequence, void *buffer,
+ 		       size_t length, uint64_t *seq_next, uint64_t *bytes_ret)
+ {
+ 	uint64_t elapsed = 0;
+@@ -93,3 +99,123 @@ int rtas_platform_dump(uint64_t dump_tag, uint64_t sequence, void *buffer,
+ 	return rc ? rc : status;
+ }
+ 
++static bool platform_dump_can_use_chardev(void)
++{
++	struct stat statbuf;
++
++	if (stat("/dev/papr-platform-dump", &statbuf))
++		return false;
++
++	if (!S_ISCHR(statbuf.st_mode))
++		return false;
++
++	if (close(open("/dev/papr-platform-dump", O_RDONLY)))
++		return false;
++
++	return true;
++}
++
++#define DEVPATH "/dev/papr-platform-dump"
++
++static int platform_dump_fd_new(uint64_t dump_tag)
++{
++	const int devfd = open(DEVPATH, O_WRONLY);
++	int fd = -1;
++
++	if (devfd < 0)
++		return -1;
++
++	fd = ioctl(devfd, PAPR_PLATFORM_DUMP_IOC_CREATE_HANDLE, &dump_tag);
++
++	close(devfd);
++	return fd;
++}
++
++int platform_dump_kernel(uint64_t dump_tag, uint64_t sequence, void *buffer,
++		size_t length, uint64_t *seq_next, uint64_t *bytes_ret)
++{
++	int fd = (sequence == 0) ? platform_dump_fd_new(dump_tag)
++				: (int)sequence;
++	int rtas_status = 0;
++	ssize_t size;
++
++	/* Synthesize ibm,get-platfrom-dump "parameter error" */
++	if (fd < 0)
++		return -3;
++
++	/*
++	 * rtas_platform_dump() is called with buf = NULL and length = 0
++	 * for "dump complete" RTAS call to invalidate dump.
++	 * For kernel interface, read() will be continued until the
++	 * return value = 0. Means kernel API will return this value only
++	 * after the kernel RTAS call returned "dump complete" status
++	 * and the hypervisor expects last RTAS call to invalidate dump.
++	 * So issue the following ioctl API which invalidates the dump
++	 * with the last RTAS call.
++	 */
++	if (buffer == NULL) {
++		rtas_status = ioctl(fd, PAPR_PLATFORM_DUMP_IOC_INVALIDATE,
++				&dump_tag);
++		close(fd);
++		return rtas_status;
++	}
++
++	/*
++	 * Ensure we return a fd > 0 in seq_next.
++	 */
++	if (fd == 0) {
++		int newfd = dup(fd);
++		close(fd);
++		fd = newfd;
++	}
++
++	size = read(fd, buffer, length);
++	if (size < 0) {
++		/* Synthesize ibm,get-platfrom-dump "hardware error" */
++		close(fd);
++		return -1;
++	} else if (size > 0) {
++		rtas_status = 1; /* More data available, call again */
++	}
++
++	if (seq_next)
++		*seq_next = fd;
++	if (bytes_ret)
++		*bytes_ret = size;
++
++	return rtas_status;
++}
++
++static int (*platform_dump_fn)(uint64_t dump_tag, uint64_t sequence,
++				void *buffer, size_t length,
++				uint64_t *seq_next, uint64_t *bytes_ret);
++
++static void platform_dump_fn_setup(void)
++{
++	platform_dump_fn = platform_dump_can_use_chardev() ?
++		platform_dump_kernel : platform_dump_user;
++}
++
++/**
++ * rtas_platform_dump
++ * Interface to the ibm,platform-dump rtas call
++ *
++ * @param dump_tag
++ * @param sequence
++ * @param buffer buffer to write dump to
++ * @param length buffer length
++ * @param next_seq
++ * @param bytes_ret
++ * @return 0 on success, !0 othwerwise
++ */
++int rtas_platform_dump(uint64_t dump_tag, uint64_t sequence, void *buffer,
++			size_t length, uint64_t *seq_next, uint64_t *bytes_ret)
++{
++	static pthread_once_t platform_dump_fn_once = PTHREAD_ONCE_INIT;
++
++	pthread_once(&platform_dump_fn_once, platform_dump_fn_setup);
++
++	return platform_dump_fn(dump_tag, sequence, buffer, length, seq_next,
++			bytes_ret);
++}
++
+-- 
+2.47.1
+

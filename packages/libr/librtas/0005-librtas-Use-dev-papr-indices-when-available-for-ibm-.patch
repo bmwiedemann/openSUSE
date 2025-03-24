@@ -1,0 +1,193 @@
+From ba01abea3ec5cb597b914c734d5ffdf7f6ce08fe Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Sun, 9 Mar 2025 16:29:11 -0700
+Subject: [PATCH 5/9] librtas: Use /dev/papr-indices when available for
+ ibm,get-indices
+
+rtas_get_indices() uses sys_rtas() call to obtain indices
+and location codes for a specified indicator or sensor token.
+But this RTAS function needs RMO buffer allocation which is
+prohibited under system lockdown. This patch adds changes to
+use new kernel interfaces such as open/ioctl/read when
+/dev/papr-indices is available.
+
+For the first execution of rtas_get_indices(), initialize an
+internal function pointer and use the new interfaces depends on
+the presence of above device node.
+
+Open /dev/papr-indices and obtain FD with PAPR_INDICES_IOC_GET
+ioctl command. The kernel obtained all indices data under ioctl()
+and exposed to user space with this file descriptor. The hypervisor
+returns indices data in certain format depends on the RTAS call
+buffer and the kernel expects the user space to parse this data.
+Hence the kernel returns RTAS_GET_INDICES_BUF_SIZE (4096) buffer
+for each read(). Then read() for each rtas_get_indices() continuous
+until the read() returns 0 which means end of kernel buffer.
+
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+---
+ Makefile.am           |   3 +-
+ librtas_src/indices.c | 116 +++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 117 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index b67b93f..02d6184 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -42,7 +42,8 @@ noinst_HEADERS += \
+ 	librtas_src/papr-miscdev.h \
+ 	librtas_src/papr-sysparm.h \
+ 	librtas_src/papr-vpd.h \
+-	librtas_src/papr-platform-dump.h
++	librtas_src/papr-platform-dump.h \
++	librtas_src/papr-indices.h
+ 
+ # See "Updating library version information" in the libtool manual for
+ # how to maintain these values. They are *not* tied to the release
+diff --git a/librtas_src/indices.c b/librtas_src/indices.c
+index 4dff67d..67744c9 100644
+--- a/librtas_src/indices.c
++++ b/librtas_src/indices.c
+@@ -7,12 +7,20 @@
+ #include <string.h>
+ #include <errno.h>
+ #include <inttypes.h>
++#include <fcntl.h>
++#include <pthread.h>
++#include <stdbool.h>
+ #include <linux/unistd.h>
+ #include <linux/types.h>
+ #include <sys/syscall.h>
++#include <sys/ioctl.h>
++#include <sys/stat.h>
+ 
+ #include "internal.h"
+ #include "librtas.h"
++#include "papr-indices.h"
++
++static const char indices_devpath[] = "/dev/papr-indices";
+ 
+ /**
+  * rtas_get_dynamic_sensor
+@@ -108,7 +116,7 @@ int rtas_set_dynamic_indicator(int indicator, int new_value, void *loc_code)
+  * @param next
+  * @return 0 on success, !0 otherwise
+  */
+-int rtas_get_indices(int is_sensor, int type, char *workarea, size_t size,
++int get_indices_fallback(int is_sensor, int type, char *workarea, size_t size,
+ 		     int start, int *next)
+ {
+ 	uint32_t kernbuf_pa;
+@@ -139,3 +147,109 @@ int rtas_get_indices(int is_sensor, int type, char *workarea, size_t size,
+ 	     size, start, next, rc ? rc : status, *next);
+ 	return rc ? rc : status;
+ }
++
++static int get_indices_fd_new(int is_sensor, int type)
++{
++	struct papr_indices_io_block buf = {};
++	const int fd = open(indices_devpath, O_WRONLY);
++	int devfd = -1;
++
++	if (fd < 0)
++		return -1;
++
++	buf.indices.is_sensor = is_sensor;
++	buf.indices.indice_type = type;
++	devfd = ioctl(fd, PAPR_INDICES_IOC_GET, &buf);
++	close(fd);
++
++	return devfd;
++}
++
++static int get_indices_chardev(int is_sensor, int type, char *workarea,
++				size_t size, int start, int *next)
++{
++	int fd, rtas_status = 0;
++	ssize_t res;
++
++	if (size != RTAS_GET_INDICES_BUF_SIZE) {
++		dbg("Invalid buffer size %lu expects %d\n",
++				size, RTAS_GET_INDICES_BUF_SIZE);
++		return -EINVAL;
++	}
++
++	fd = (start == 1) ? get_indices_fd_new(is_sensor, type)
++				: (int)start;
++	/*
++	 * Ensure we return a fd > 0 in seq_next.
++	 */
++	if (fd == 1) {
++		int newfd = dup(fd);
++		close(fd);
++		fd = newfd;
++	}
++
++	if (fd < 0)
++		return -3; /* Synthesize ibm,get-vpd "parameter error" */
++
++	res = read(fd, workarea, size);
++	if (res < 0) {
++		/* Synthesize ibm,get-platfrom-dump "hardware error" */
++		rtas_status = -1;
++		close(fd);
++	} else if (res == 0) {
++		/*
++		 * read() returns 0 at the end of read
++		 * So reset the first 32 bit value (number of indices)
++		 * in the buffer which tells no data available to the
++		 * caller of rtas_get_indices().
++		 */
++		*(uint32_t *)workarea = 0;
++		rtas_status = 0; /* Done with sequence, no more data */
++		close(fd);
++		if (next)
++			*next = 1;
++	} else {
++		rtas_status = 1; /* More data available, call again */
++		if (next)
++			*next = fd;
++	}
++
++	return rtas_status;
++}
++
++static bool indices_can_use_chardev(void)
++{
++	struct stat statbuf;
++
++	if (stat(indices_devpath, &statbuf))
++		return false;
++
++	if (!S_ISCHR(statbuf.st_mode))
++		return false;
++
++	if (close(open(indices_devpath, O_RDONLY)))
++		return false;
++
++	return true;
++}
++
++static int (*get_indices_fn)(int is_sensor, int type, char *workarea,
++				size_t size, int start, int *next);
++
++static void indices_fn_setup(void)
++{
++	const bool use_chardev = indices_can_use_chardev();
++
++	get_indices_fn = use_chardev ?
++		get_indices_chardev : get_indices_fallback;
++}
++
++static pthread_once_t indices_fn_setup_once = PTHREAD_ONCE_INIT;
++
++int rtas_get_indices(int is_sensor, int type, char *workarea, size_t size,
++			int start, int *next)
++{
++	pthread_once(&indices_fn_setup_once, indices_fn_setup);
++	return get_indices_fn(is_sensor, type, workarea, size,
++				start, next);
++}
+-- 
+2.47.1
+

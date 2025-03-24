@@ -1,0 +1,190 @@
+From b213c977f8c5652b89ffe86f5a94d0b94d99a5be Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Sun, 9 Mar 2025 16:29:14 -0700
+Subject: [PATCH 8/9] librtas: Move physical-attestation rtas call code to
+ separate file
+
+New kernel interfaces to support system lockdown will be added for
+this RTAS call. So move the physical-attestation rtas call code to
+separate file to add code for new interfaces.
+
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+---
+ Makefile.am                        |  3 +-
+ librtas_src/physical-attestation.c | 78 ++++++++++++++++++++++++++++++
+ librtas_src/syscall_calls.c        | 63 ------------------------
+ 3 files changed, 80 insertions(+), 64 deletions(-)
+ create mode 100644 librtas_src/physical-attestation.c
+
+diff --git a/Makefile.am b/Makefile.am
+index 02d6184..e605d98 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -34,7 +34,8 @@ librtas_la_SOURCES = \
+ 	librtas_src/syscall_calls.c \
+ 	librtas_src/syscall_rmo.c \
+ 	librtas_src/sysparm.c \
+-	librtas_src/indices.c
++	librtas_src/indices.c \
++	librtas_src/physical-attestation.c
+ 
+ library_include_HEADERS += librtas_src/librtas.h
+ noinst_HEADERS += \
+diff --git a/librtas_src/physical-attestation.c b/librtas_src/physical-attestation.c
+new file mode 100644
+index 0000000..3e36af3
+--- /dev/null
++++ b/librtas_src/physical-attestation.c
+@@ -0,0 +1,78 @@
++// SPDX-License-Identifier: LGPL-2.1-or-later
++  
++// Support for accessing ibm,physical-attestation data
++// via /dev/papr-phy-attestation or the legacy rtas() syscall.
++
++#include <stdarg.h>
++#include <string.h>
++#include <errno.h>
++#include <inttypes.h>
++#include <sys/syscall.h>
++#include <linux/unistd.h>
++#include <linux/types.h>
++#include "internal.h"
++#include "librtas.h"
++
++/**
++ * rtas_physical_attestation
++ * @brief Interface for ibm,physical-attestation rtas call.
++ *
++ * @param workarea input/output work area for rtas call
++ * @param seq_num sequence number of the rtas call
++ * @param next_seq_num next sequence number
++ * @param work_area_bytes size of work area
++ * @return 0 on success, !0 on failure
++ */
++int rtas_physical_attestation(char *workarea, int seq_num, int *next_seq_num,
++			      int *work_area_bytes)
++{
++	uint32_t workarea_pa;
++	uint64_t elapsed = 0;
++	void *kernbuf;
++	int kbuf_sz = WORK_AREA_SIZE;
++	int rc, status;
++	int resp_bytes = *work_area_bytes;
++
++	rc = sanity_check();
++	if (rc)
++		return rc;
++
++	/* Caller provided more data than FW can handle */
++	if (*work_area_bytes == 0 ||
++	    *work_area_bytes > kbuf_sz)
++		return RTAS_IO_ASSERT;
++
++	rc = rtas_get_rmo_buffer(kbuf_sz, &kernbuf, &workarea_pa);
++	if (rc)
++		return rc;
++	memcpy(kernbuf, workarea, *work_area_bytes);
++
++	do {
++		rc = rtas_call("ibm,physical-attestation", 3, 3,
++			       htobe32(workarea_pa), htobe32(kbuf_sz),
++			       htobe32(seq_num),
++			       &status, next_seq_num, &resp_bytes);
++		if (rc < 0)
++			break;
++
++		rc = handle_delay(status, &elapsed);
++	} while (rc == CALL_AGAIN);
++
++	*next_seq_num = be32toh(*next_seq_num);
++
++	/* FW returned more data than we can handle */
++	if (be32toh(resp_bytes) > (unsigned int)*work_area_bytes) {
++		(void)rtas_free_rmo_buffer(kernbuf, workarea_pa, kbuf_sz);
++		return RTAS_IO_ASSERT;
++	}
++
++	*work_area_bytes = be32toh(resp_bytes);
++
++	if (rc == 0)
++		memcpy(workarea, kernbuf, *work_area_bytes);
++
++	(void)rtas_free_rmo_buffer(kernbuf, workarea_pa, kbuf_sz);
++
++	return rc ? rc : status;
++}
++
+diff --git a/librtas_src/syscall_calls.c b/librtas_src/syscall_calls.c
+index 573a4c3..c1d3a9c 100644
+--- a/librtas_src/syscall_calls.c
++++ b/librtas_src/syscall_calls.c
+@@ -990,66 +990,3 @@ int rtas_update_properties(char *workarea, unsigned int scope)
+ 	dbg("(%p) %u = %d\n", workarea, scope, rc ? rc : status);
+ 	return rc ? rc : status;
+ }
+-
+-/**
+- * rtas_physical_attestation
+- * @brief Interface for ibm,physical-attestation rtas call.
+- *
+- * @param workarea input/output work area for rtas call
+- * @param seq_num sequence number of the rtas call
+- * @param next_seq_num next sequence number
+- * @param work_area_bytes size of work area
+- * @return 0 on success, !0 on failure
+- */
+-int rtas_physical_attestation(char *workarea, int seq_num, int *next_seq_num,
+-			      int *work_area_bytes)
+-{
+-	uint32_t workarea_pa;
+-	uint64_t elapsed = 0;
+-	void *kernbuf;
+-	int kbuf_sz = WORK_AREA_SIZE;
+-	int rc, status;
+-	int resp_bytes = *work_area_bytes;
+-
+-	rc = sanity_check();
+-	if (rc)
+-		return rc;
+-
+-	/* Caller provided more data than FW can handle */
+-	if (*work_area_bytes == 0 ||
+-	    *work_area_bytes > kbuf_sz)
+-		return RTAS_IO_ASSERT;
+-
+-	rc = rtas_get_rmo_buffer(kbuf_sz, &kernbuf, &workarea_pa);
+-	if (rc)
+-		return rc;
+-	memcpy(kernbuf, workarea, *work_area_bytes);
+-
+-	do {
+-		rc = rtas_call("ibm,physical-attestation", 3, 3,
+-			       htobe32(workarea_pa), htobe32(kbuf_sz),
+-			       htobe32(seq_num),
+-			       &status, next_seq_num, &resp_bytes);
+-		if (rc < 0)
+-			break;
+-
+-		rc = handle_delay(status, &elapsed);
+-	} while (rc == CALL_AGAIN);
+-
+-	*next_seq_num = be32toh(*next_seq_num);
+-
+-	/* FW returned more data than we can handle */
+-	if (be32toh(resp_bytes) > (unsigned int)*work_area_bytes) {
+-		(void)rtas_free_rmo_buffer(kernbuf, workarea_pa, kbuf_sz);
+-		return RTAS_IO_ASSERT;
+-	}
+-
+-	*work_area_bytes = be32toh(resp_bytes);
+-
+-	if (rc == 0)
+-		memcpy(workarea, kernbuf, *work_area_bytes);
+-
+-	(void)rtas_free_rmo_buffer(kernbuf, workarea_pa, kbuf_sz);
+-
+-	return rc ? rc : status;
+-}
+-- 
+2.47.1
+

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 20 14:41:36 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Add support for more rtas call kernel interfaces (jsc#PED-10917)
+  * 0001-librtas-Move-platform-dump-rtas-call-code-to-separat.patch
+  * 0002-librtas-platform-dump-prefer-dev-papr-platform-dump-.patch
+  * 0003-librtas-move-get-set-indices-RTAS-calls-code-to-sepa.patch
+  * 0004-librtas-Add-kernel-uapi-header-papr-indices.h.patch
+  * 0005-librtas-Use-dev-papr-indices-when-available-for-ibm-.patch
+  * 0006-librtas-Use-dev-papr-indices-when-available-for-get-.patch
+  * 0007-librtas-Use-dev-papr-indices-when-available-for-set-.patch
+  * 0008-librtas-Move-physical-attestation-rtas-call-code-to-.patch
+  * 0009-librtas-Use-kernel-interface-when-available-for-ibm-.patch
+
+-------------------------------------------------------------------
 Thu Feb  1 08:44:01 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Update character device patches to current version.

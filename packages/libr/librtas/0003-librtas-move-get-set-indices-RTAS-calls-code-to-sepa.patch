@@ -1,0 +1,332 @@
+From 40a2b52237cabdfd819e4f49b1161259b4644a8f Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Sun, 9 Mar 2025 16:29:09 -0700
+Subject: [PATCH 3/9] librtas: move get/set indices RTAS calls code to separate
+ file
+
+This code will gain the ability to access indices (indicator and
+sensor) using different interfaces exposed by newer kernels. This
+will involve adding a nontrivial amount of code, so move it out of
+syscall_calls.c.
+
+So moving the following RTAS calls code:
+ibm,get-indices
+ibm,set-dynamic-indicator
+ibm,get-dynamic-sensor-state
+
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+---
+ Makefile.am                 |   3 +-
+ librtas_src/indices.c       | 141 ++++++++++++++++++++++++++++++++++++
+ librtas_src/syscall_calls.c | 126 --------------------------------
+ 3 files changed, 143 insertions(+), 127 deletions(-)
+ create mode 100644 librtas_src/indices.c
+
+diff --git a/Makefile.am b/Makefile.am
+index 156a68b..b67b93f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -33,7 +33,8 @@ librtas_la_SOURCES = \
+ 	librtas_src/ofdt.c \
+ 	librtas_src/syscall_calls.c \
+ 	librtas_src/syscall_rmo.c \
+-	librtas_src/sysparm.c
++	librtas_src/sysparm.c \
++	librtas_src/indices.c
+ 
+ library_include_HEADERS += librtas_src/librtas.h
+ noinst_HEADERS += \
+diff --git a/librtas_src/indices.c b/librtas_src/indices.c
+new file mode 100644
+index 0000000..4dff67d
+--- /dev/null
++++ b/librtas_src/indices.c
+@@ -0,0 +1,141 @@
++// SPDX-License-Identifier: LGPL-2.1-or-later
++
++// Support for accessing IBM Power systems indices (indicator and sensor)
++// data via /dev/papr-indices or the legacy rtas() syscalls.
++
++#include <stdint.h>
++#include <string.h>
++#include <errno.h>
++#include <inttypes.h>
++#include <linux/unistd.h>
++#include <linux/types.h>
++#include <sys/syscall.h>
++
++#include "internal.h"
++#include "librtas.h"
++
++/**
++ * rtas_get_dynamic_sensor
++ * @brief Interface to ibm,get-dynamic-sensor-state rtas call
++ *
++ * On success the variable referenced by the state parameter will contain
++ * the state of the sensor
++ *
++ * @param sensor sensor to retrieve
++ * @param loc_code location code of the sensor
++ * @param state reference to state variable
++ * @return 0 on success, !0 otherwise
++ */
++int rtas_get_dynamic_sensor(int sensor, void *loc_code, int *state)
++{
++	uint32_t loc_pa = 0;
++	void *locbuf;
++	uint32_t size;
++	__be32 be_state;
++	int rc, status;
++
++	rc = sanity_check();
++	if (rc)
++		return rc;
++
++	size = be32toh(*(uint32_t *)loc_code) + sizeof(uint32_t);
++
++	rc = rtas_get_rmo_buffer(size, &locbuf, &loc_pa);
++	if (rc)
++		return rc;
++
++	memcpy(locbuf, loc_code, size);
++
++	rc = rtas_call("ibm,get-dynamic-sensor-state", 2, 2,
++		       htobe32(sensor), htobe32(loc_pa), &status, &be_state);
++
++	(void) rtas_free_rmo_buffer(locbuf, loc_pa, size);
++
++	*state = be32toh(be_state);
++
++	dbg("(%d, %s, %p) = %d, %d\n", sensor, (char *)loc_code, state,
++	    rc ? rc : status, *state);
++	return rc ? rc : status;
++}
++
++/**
++ * rtas_set_dynamic_indicator
++ * @brief Interface to the ibm,set-dynamic-indicator rtas call
++ *
++ * @param indicator indicator to set
++ * @param new_value value to set the indicator to
++ * @param loc_code
++ * @return 0 on success, !0 otherwise
++ */
++int rtas_set_dynamic_indicator(int indicator, int new_value, void *loc_code)
++{
++	uint32_t loc_pa = 0;
++	void *locbuf;
++	uint32_t size;
++	int rc, status;
++
++	rc = sanity_check();
++	if (rc)
++		return rc;
++
++	size = be32toh(*(uint32_t *)loc_code) + sizeof(uint32_t);
++
++	rc = rtas_get_rmo_buffer(size, &locbuf, &loc_pa);
++	if (rc)
++		return rc;
++
++	memcpy(locbuf, loc_code, size);
++
++	rc = rtas_call("ibm,set-dynamic-indicator", 3, 1, htobe32(indicator),
++		       htobe32(new_value), htobe32(loc_pa), &status);
++
++	(void) rtas_free_rmo_buffer(locbuf, loc_pa, size);
++
++	dbg("(%d, %d, %s) = %d\n", indicator, new_value, (char *)loc_code,
++	    rc ? rc : status);
++	return rc ? rc : status;
++}
++
++/**
++ * rtas_get_indices
++ * @brief Interface to the ibm,get-indices rtas call
++ *
++ * @param is_sensor is this index a sensor?
++ * @param type
++ * @param workarea additional args to the rtas call
++ * @param size
++ * @param start
++ * @param next
++ * @return 0 on success, !0 otherwise
++ */
++int rtas_get_indices(int is_sensor, int type, char *workarea, size_t size,
++		     int start, int *next)
++{
++	uint32_t kernbuf_pa;
++	__be32 be_next;
++	void *kernbuf;
++	int rc, status;
++
++	rc = sanity_check();
++	if (rc)
++		return rc;
++
++	rc = rtas_get_rmo_buffer(size, &kernbuf, &kernbuf_pa);
++	if (rc)
++		return rc;
++
++	rc = rtas_call("ibm,get-indices", 5, 2, htobe32(is_sensor),
++		       htobe32(type), htobe32(kernbuf_pa), htobe32(size),
++		       htobe32(start), &status, &be_next);
++
++	if (rc == 0)
++		memcpy(workarea, kernbuf, size);
++
++	(void)rtas_free_rmo_buffer(kernbuf, kernbuf_pa, size);
++
++	*next = be32toh(be_next);
++
++	dbg("(%d, %d, %p, %zu, %d, %p) = %d, %d\n", is_sensor, type, workarea,
++	     size, start, next, rc ? rc : status, *next);
++	return rc ? rc : status;
++}
+diff --git a/librtas_src/syscall_calls.c b/librtas_src/syscall_calls.c
+index 9963588..573a4c3 100644
+--- a/librtas_src/syscall_calls.c
++++ b/librtas_src/syscall_calls.c
+@@ -525,94 +525,6 @@ int rtas_get_config_addr_info2(uint32_t config_addr, uint64_t phb_id,
+ 	return rc ? rc : status;
+ }
+ 
+-/**
+- * rtas_get_dynamic_sensor
+- * @brief Interface to ibm,get-dynamic-sensor-state rtas call
+- *
+- * On success the variable referenced by the state parameter will contain
+- * the state of the sensor
+- *
+- * @param sensor sensor to retrieve
+- * @param loc_code location code of the sensor
+- * @param state reference to state variable
+- * @return 0 on success, !0 otherwise
+- */
+-int rtas_get_dynamic_sensor(int sensor, void *loc_code, int *state)
+-{
+-	uint32_t loc_pa = 0;
+-	void *locbuf;
+-	uint32_t size;
+-	__be32 be_state;
+-	int rc, status;
+-
+-	rc = sanity_check();
+-	if (rc)
+-		return rc;
+-
+-	size = be32toh(*(uint32_t *)loc_code) + sizeof(uint32_t);
+-
+-	rc = rtas_get_rmo_buffer(size, &locbuf, &loc_pa);
+-	if (rc)
+-		return rc;
+-
+-	memcpy(locbuf, loc_code, size);
+-
+-	rc = rtas_call("ibm,get-dynamic-sensor-state", 2, 2,
+-		       htobe32(sensor), htobe32(loc_pa), &status, &be_state);
+-
+-	(void) rtas_free_rmo_buffer(locbuf, loc_pa, size);
+-
+-	*state = be32toh(be_state);
+-
+-	dbg("(%d, %s, %p) = %d, %d\n", sensor, (char *)loc_code, state,
+-	    rc ? rc : status, *state);
+-	return rc ? rc : status;
+-}
+-
+-/**
+- * rtas_get_indices
+- * @brief Interface to the ibm,get-indices rtas call
+- *
+- * @param is_sensor is this index a sensor?
+- * @param type
+- * @param workarea additional args to the rtas call
+- * @param size
+- * @param start
+- * @param next
+- * @return 0 on success, !0 otherwise
+- */
+-int rtas_get_indices(int is_sensor, int type, char *workarea, size_t size,
+-		     int start, int *next)
+-{
+-	uint32_t kernbuf_pa;
+-	__be32 be_next;
+-	void *kernbuf;
+-	int rc, status;
+-
+-	rc = sanity_check();
+-	if (rc)
+-		return rc;
+-
+-	rc = rtas_get_rmo_buffer(size, &kernbuf, &kernbuf_pa);
+-	if (rc)
+-		return rc;
+-
+-	rc = rtas_call("ibm,get-indices", 5, 2, htobe32(is_sensor),
+-		       htobe32(type), htobe32(kernbuf_pa), htobe32(size),
+-		       htobe32(start), &status, &be_next);
+-
+-	if (rc == 0)
+-		memcpy(workarea, kernbuf, size);
+-
+-	(void)rtas_free_rmo_buffer(kernbuf, kernbuf_pa, size);
+-
+-	*next = be32toh(be_next);
+-
+-	dbg("(%d, %d, %p, %zu, %d, %p) = %d, %d\n", is_sensor, type, workarea,
+-	     size, start, next, rc ? rc : status, *next);
+-	return rc ? rc : status;
+-}
+-
+ /**
+  * rtas_get_power_level
+  * @brief Interface to the get-power-level rtas call
+@@ -848,44 +760,6 @@ int rtas_set_debug(int level)
+ 	return 0;
+ }
+ 
+-/**
+- * rtas_set_dynamic_indicator
+- * @brief Interface to the ibm,set-dynamic-indicator rtas call
+- *
+- * @param indicator indicator to set
+- * @param new_value value to set the indicator to
+- * @param loc_code
+- * @return 0 on success, !0 otherwise
+- */
+-int rtas_set_dynamic_indicator(int indicator, int new_value, void *loc_code)
+-{
+-	uint32_t loc_pa = 0;
+-	void *locbuf;
+-	uint32_t size;
+-	int rc, status;
+-
+-	rc = sanity_check();
+-	if (rc)
+-		return rc;
+-
+-	size = be32toh(*(uint32_t *)loc_code) + sizeof(uint32_t);
+-
+-	rc = rtas_get_rmo_buffer(size, &locbuf, &loc_pa);
+-	if (rc)
+-		return rc;
+-
+-	memcpy(locbuf, loc_code, size);
+-
+-	rc = rtas_call("ibm,set-dynamic-indicator", 3, 1, htobe32(indicator),
+-		       htobe32(new_value), htobe32(loc_pa), &status);
+-
+-	(void) rtas_free_rmo_buffer(locbuf, loc_pa, size);
+-
+-	dbg("(%d, %d, %s) = %d\n", indicator, new_value, (char *)loc_code,
+-	    rc ? rc : status);
+-	return rc ? rc : status;
+-}
+-
+ /**
+  * rtas_set_eeh_option
+  * @brief Inerface to the ibm,set-eeh-option rtas call
+-- 
+2.47.1
+
