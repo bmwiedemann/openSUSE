@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 20 10:50:34 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Allow skipping profile fetch errors by setting
+  YAST_SKIP_PROFILE_FETCH_ERROR=1 (see gh#agama-project/agama#2180).
+- 5.0.5
+
+-------------------------------------------------------------------
 Thu Feb 20 14:29:46 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
 
 - Update the partitioning schema to support the pervasive encryption
