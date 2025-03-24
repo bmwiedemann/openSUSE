@@ -1,7 +1,7 @@
 #
 # spec file for package surgescript
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020 Artur Iwicki <fedora@svgames.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@ Summary:        A scripting language for games
 License:        Apache-2.0
 URL:            https://opensurge2d.org
 Source0:        https://github.com/alemart/surgescript/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 BuildRequires:  gcc12
@@ -84,11 +84,15 @@ export CXX="g++-12"
 %cmake \
        -DWANT_SHARED=YES \
        -DWANT_STATIC=NO \
-       -DWANT_EXECUTABLE=YES
+       -DWANT_EXECUTABLE=YES \
+       -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %post -n lib%{name}%{_sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{_sover} -p /sbin/ldconfig
