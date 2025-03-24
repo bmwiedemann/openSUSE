@@ -1,3 +1,10 @@
+gpxsee (13.38) stable; urgency=low
+
+  * Added support for Velocitek VTK files.
+  * Improved Mapsforge maps render theme.
+
+ -- Martin Tuma <tumic@cbox.cz>  Fri, 21 Mar 2025 22:42:28 +0100
+
 gpxsee (13.37) stable; urgency=low
 
   * Added support for 70mai cameras GPS logs.
