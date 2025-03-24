@@ -9,4 +9,12 @@
 As pointed out the cmake macro is used instead of setting flags manually and the binary is not stripped.</comment>
     <requestid>968288</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3b5041fdb9999796b9226baf76615a28</srcmd5>
+    <version>2.7.0</version>
+    <time>1742819434</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1255254</requestid>
+  </revision>
 </revisionlist>

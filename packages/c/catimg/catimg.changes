@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 21 01:30:02 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+
+-------------------------------------------------------------------
 Sun Apr 10 18:51:38 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Do not strip binary on build

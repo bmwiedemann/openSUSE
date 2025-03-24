@@ -1,7 +1,7 @@
 #
 # spec file for package catimg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Summary:        Insanely fast image printing in your terminal
 Group:          Productivity/Graphics/Viewers
 URL:            http://posva.net/shell/retro/bash/2013/05/27/catimg
 Source:         https://github.com/posva/catimg/archive/refs/tags/%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 Requires:       ImageMagick
@@ -44,7 +44,7 @@ The official zsh completion script for catimg.
 %setup -q -n %{name}-%{version}
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %make_build
 
 %install
@@ -53,6 +53,8 @@ cd build
 
 install -Dm 0644 ../completion/_%{name}  %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
 
+%check
+%ctest
 
 %files
 %{_bindir}/*
