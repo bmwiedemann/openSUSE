@@ -111,4 +111,29 @@
   extension tarballs (forwarded request 1253557 from rrahl0)</comment>
     <requestid>1253558</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5bd4c27c0ad5bb1cccc9d57f9fa9305f</srcmd5>
+    <version>0.6.2</version>
+    <time>1742819443</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.2:
+  * comment-dialog: Fix crash on close while loading
+  * extension-row: Use AdwActionRow for description
+  * Fix HTTP responses handling
+  * Adaptability and UI tweaks
+  * po: Update template
+  * Disable install button during installation
+  * po: Update templat
+  * Translations update from Hosted Weblate
+  * Various tweaks
+  * extension-row: Add Session Modes row
+  * installed-page: Save extension's toggle focus on state changes
+  * po: Update template
+  * detail-view: Hide &quot;Show All Reviews&quot; button when unneeded
+  * error-dialog: Refresh style
+  * po: Update template
+  * Translations update
+  * GNOME 48 (forwarded request 1255318 from rrahl0)</comment>
+    <requestid>1255319</requestid>
+  </revision>
 </revisionlist>
