@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1238966</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c20518897d4c5f28d3f4e052996a5e9a</srcmd5>
+    <version>2025.3.1</version>
+    <time>1742819513</time>
+    <user>anag+factory</user>
+    <comment>- update to 2025.3.1:
+  * redoc 2.4.0
+  * swagger ui 5.20.0</comment>
+    <requestid>1255452</requestid>
+  </revision>
 </revisionlist>
