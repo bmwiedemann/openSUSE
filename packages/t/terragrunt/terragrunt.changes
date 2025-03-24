@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Mar 22 20:28:13 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.76.6:
+  * feat: add error throwing in case of absolut path for stack
+    (#4055)
+  * feat: Adding `govet` alignment check (#4057)
+
+-------------------------------------------------------------------
+Fri Mar 21 16:57:41 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.76.5:
+  * fix(docs): Addressing some missed renames of terragrunt.hcl to
+    root.hcl in the docs by @yhakbar in #4058
+  * build(deps): Updated cloud.google.com/go/storage to 1.51.0 by
+    @denis256 in #4059
+  * build(deps): Updated
+    go.opentelemetry.io/otel/exporters/stdout/stdoutmetric to
+    1.35.0 by @denis256 in #4059
+  * build(deps): Updated
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+    to 1.35.0 by @denis256 in #4059
+  * build(deps): Updated golang.org/x/oauth2 to 0.28.0 by @denis256
+    in #4059
+  * build(deps): Updated
+    go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp
+    to 1.35.0 by @denis256 in #4059
+
+-------------------------------------------------------------------
+Fri Mar 21 16:49:20 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.76.4:
+  * feat: Introduced -a alias for the -all flag #4048 by
+    @levkohimins
+  * feat: Implemented detection of nested stacks #4052 by @denis256
+  * fix: Refactored list package structure #4050 by @yhakbar
+  * fix: Updated documentation for list usage #4051 by @yhakbar
+  * fix: Corrected .stack references in generated documentation
+    #4053 by @yhakbar
+
+-------------------------------------------------------------------
 Thu Mar 20 12:14:17 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.76.3:
