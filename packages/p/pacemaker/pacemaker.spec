@@ -266,6 +266,8 @@ Requires:       %{name}-schemas = %{version}-%{release}
 Conflicts:      sbd < 1.5.1
 Provides:       libpacemaker3 = %version-%release
 Obsoletes:      libpacemaker3 < %version-%release
+Provides:       user(%{uname})
+Provides:       group(%{gname})
 
 %description libs
 Pacemaker is an advanced, scalable High-Availability cluster resource

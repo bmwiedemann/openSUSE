@@ -2487,4 +2487,12 @@
     <comment>- tools: Fix memory leak in cli_resource_delete() (gh#ClusterLabs/pacemaker#3835) (forwarded request 1252998 from yan_gao)</comment>
     <requestid>1252999</requestid>
   </revision>
+  <revision rev="164" vrev="2">
+    <srcmd5>06d799fecb519769016be7fa138e74e5</srcmd5>
+    <version>3.0.0+20250310.476dc59612</version>
+    <time>1742819113</time>
+    <user>anag+factory</user>
+    <comment>- spec: Provides user(hacluster) and group(haclient) (forwarded request 1254949 from yan_gao)</comment>
+    <requestid>1254950</requestid>
+  </revision>
 </revisionlist>
