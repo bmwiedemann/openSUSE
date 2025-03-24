@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 24 08:20:18 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to 5.6.1
+  * Fix: Version 5.6.0 uses Exclusive smart card connections, which caused
+    connections to fail if another application was accessing the YubiKey. This
+    version adds a fallback to use non-exclusive connections in case of such a
+    failure.
+  * Bugfix: APDU encoding was slightly incorrect for commands which specify Le,
+    but no data body. This caused issued on some platforms.
+  * CLI: The "fido info" command now shows the YubiKey AAGUID, when available.
+
+-------------------------------------------------------------------
 Mon Mar 17 08:41:27 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to 5.6.0
