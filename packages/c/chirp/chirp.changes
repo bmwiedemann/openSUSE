@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 21 20:02:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250321:
+  * Fix radio prompt disable flag checking
+  * Fix scrolling in "info" tab
+  * fix "cloning from" to cloning to" message
+  * IC-T10: Adding Icom IC-T10 driver
+  * Add Baofeng K61 model alias
+  * Compress F8HP Pro and BFK6 memory maps
+  * baofeng_uv17Pro.py: add Baofeng_K6
+  * baofeng_uv17Pro.py: address 'DeprecationWarning' issues
+  * baofeng_uv17Pro.py: address 'FutureWarning' issues
+  * RT-470X: Adds NAM mode
+  * mml_jc8810: Enables Scramble and Encryption feature
+  * Fix Baofeng K5-Plus marked as unconfirmed for py3
+  * Fix FM-converted D-STAR repeaterbook entries
+  * baofeng_uv17Pro.py: correct DTMF mapping
+  * Add roger beep list for TD-H3
+  * Add Support for Wouxun KG-935H
+  * Fix GMRS negative offset in band plan
+
+-------------------------------------------------------------------
 Sun Mar 16 13:37:04 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250314:
