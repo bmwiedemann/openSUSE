@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Mar 21 17:33:21 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.4.0:
+  Large changelog, please find the full changelog here:
+  https://github.com/cilium/tetragon/releases/tag/v1.4.0
+  * Upgrade notes
+    Read the upgrade notes carefully before upgrading Tetragon.
+    Depending on your setup, changes listed here might require a
+    manual intervention.
+    * Metrics
+      tetragon_map_errors_total metric is replaced by
+      map_errors_update_total and map_errors_delete_total.
+  * Major Changes
+    - feat: include ancestors in process events (#2938) by @t0x01
+    - Add attribute resolution (#3143) by @ScriptSathi
+    - policies: add support for setting a monitoring mode in
+      tracing policies (#3393) by @kkourt
+    - Windows: Build tetragon on Windows (Part -1) (#3445) by
+      @ExceptionalHandler
+  * Minor Changes
+    - Please check the full changelog
+  * Bugfixes
+    - [fix] fix probe_read_str return type (#3236) by @arthur-zhang
+    - tetragon: avoid the agent from hanging in some corner error
+      conditions (#3321) by @kkourt
+    - Fix in_init_tree flag for processes started before Tetragon.
+      (#3338) by @will-isovalent
+    - Fix a bug where unloading programs where detaching them even
+      in the case of unpin false (i.e.) --keep-sensors-on-exit
+      (#3347) by @mtardy
+    - Fix path truncations in event values for cwd and path/file
+      function arguments. The function responsible for reading
+      dentry was upgraded to 4096 but some users were still using
+      the previous limitation of 256. (#3427) by @mtardy
+    - Use BTF to access skb_ext (#3439) by @xabrouck
+    - watcher: Fix K8sWatcher.FindPod (#3409) by @lambdanis
+  * Documentation changes
+    - docs: Add dev setup instructions for Apple silicon Macs
+      (#3231) by @michi-covalent
+    - docs: local dev with Apple Silicon small fixes (#3237) by
+      @mtardy
+    - docs: remove redundance CLI command in tracing policy example
+      (#3256) by @arthur-zhang
+    - docs: enhancements to the troubleshooting section (#3238) by
+      @mtardy
+    - fix: correcting the script path for minikube installation
+      steps in do… (#3111) by @d-cryptic
+    - Add link to Kubecon NA 2024 talk discussing Tetragon (#3303)
+      by @daxmc99
+    - fix: Troubleshooting documentation for System dump (#3325) by
+      @z63d
+    - docs: fix typo referencing kube-system as kubesystem (#3334)
+      by @z63d
+    - docs: fix the Example jq filter in Observability Policies
+      (#3367) by @z63d
+    - fix: returnArg index of TracingPolicy is not specified
+      (#3388) by @z63d
+    - docs: fix tracing policy options (#3470) by @z63d
+    - docs: Remove incorrect event types from field filter docs
+      examples. (#3489) by @will-isovalent
+    - docs: fix typo (#3528) by @jetlime
+  * Dependency updates
+    - fix(deps): update module github.com/cilium/ebpf to v0.17.1
+      (main) (#3206) by @cilium-renovate[bot]
+    - fix(deps): update module google.golang.org/grpc to v1.70.0
+      (main) (#3330) by @cilium-renovate[bot]
+    - chore(deps): update all github action dependencies (main)
+      (#3387) by @cilium-renovate[bot]
+    - chore(deps): update docker.io/golangci/golangci-lint docker
+      tag to v1.64.5 (main) (#3398) by @cilium-renovate[bot]
+  * Misc Changes
+    - Please check the full changelog
+
+-------------------------------------------------------------------
 Fri Dec 13 10:00:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.3.0:
