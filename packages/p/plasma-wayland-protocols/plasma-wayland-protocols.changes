@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 21 14:20:04 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.17.0:
+  * screencast: Allow compositor to choose scale factor for region screencasts
+  * Bump version to 1.17.0
+  * plasma-window-management: Add no border and can set no border states
+  * CI: Add linux-qt6-next build
+  * output device: add a capability for built in color profile
+  * CI: Extend dependency requires to Linux/Qt6Next
+
+-------------------------------------------------------------------
 Thu Jan  9 11:46:49 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.16.0:
