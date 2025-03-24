@@ -841,4 +841,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment>New stable rel (forwarded request 1253545 from iznogood)</comment>
     <requestid>1253729</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>9c94572e814f9273f4c38ed0c13eaade</srcmd5>
+    <version>3.52.3</version>
+    <time>1742819177</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1255103</requestid>
+  </revision>
 </revisionlist>
