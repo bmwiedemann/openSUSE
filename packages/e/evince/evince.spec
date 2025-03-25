@@ -48,6 +48,9 @@ Patch7:         0005-reversed-synctex-Fix-compilation.patch
 # PATCH-FIX-SLE
 Patch8:         0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch
 
+# PATCH-FIX-UPSTREAM evince-kpathsea.patch -- Fix build with gcc 15
+Patch1000:      evince-kpathsea.patch
+
 BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -220,6 +223,7 @@ A plugin for Evince to read XPS documents.
 %patch -P 7 -p1
 %patch -P 8 -p1
 %endif
+%autopatch -p1 -m 1000
 
 %build
 %meson \

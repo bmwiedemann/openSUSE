@@ -1422,4 +1422,13 @@ New stable release</comment>
   + Updated translations. (forwarded request 1253808 from iznogood)</comment>
     <requestid>1253835</requestid>
   </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>f62736f54385fb273903cdb4e8c69c1d</srcmd5>
+    <version>48.0</version>
+    <time>1742936869</time>
+    <user>anag+factory</user>
+    <comment>- Add evince-kpathsea.patch: Fix build with gcc 15 (patch lifted
+  from fedora). (forwarded request 1254821 from iznogood)</comment>
+    <requestid>1255566</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 20 19:29:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add evince-kpathsea.patch: Fix build with gcc 15 (patch lifted
+  from fedora).
+
+-------------------------------------------------------------------
 Sat Mar 15 12:29:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:
