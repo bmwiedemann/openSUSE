@@ -823,4 +823,15 @@
   + Updated translations. (forwarded request 1253324 from iznogood)</comment>
     <requestid>1253379</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>28ca9bbc891809d0e1e2a74471050454</srcmd5>
+    <version>48.1</version>
+    <time>1742936874</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.1:
+  + Fix correctly calculating timezone offsets in MOTIS results, so
+    timestamps gives correct values for daylight savings time.
+  + Updated translations. (forwarded request 1255220 from iznogood)</comment>
+    <requestid>1255570</requestid>
+  </revision>
 </revisionlist>

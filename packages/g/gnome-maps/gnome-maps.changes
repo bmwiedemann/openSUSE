@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 22 08:39:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Fix correctly calculating timezone offsets in MOTIS results, so
+    timestamps gives correct values for daylight savings time.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 15 09:26:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:
