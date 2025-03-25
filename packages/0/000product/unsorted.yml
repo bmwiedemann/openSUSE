@@ -1709,13 +1709,14 @@ unsorted:
   - budgie-hotcorners-applet 
   - budgie-kangaroo-applet 
   - budgie-keyboard-autoswitch-applet 
-  - budgie-labwc-session 
   - budgie-network-manager-applet 
   - budgie-previews 
   - budgie-quickchar 
   - budgie-quicknote-applet 
   - budgie-recentlyused-applet 
   - budgie-rotation-lock-applet 
+  - budgie-screensaver 
+  - budgie-screensaver-lang 
   - budgie-session 
   - budgie-session-lang 
   - budgie-showtime-applet 
@@ -8632,7 +8633,6 @@ unsorted:
   - hdf5 
   - hdf5-devel 
   - hdf5-devel-data 
-  - hdf5-devel-static 
   - hdf5-examples 
   - hdf5-gnu-hpc 
   - hdf5-gnu-hpc-devel 
@@ -8647,34 +8647,26 @@ unsorted:
   - hdf5-hpc-examples 
   - hdf5-mvapich2 
   - hdf5-mvapich2-devel 
-  - hdf5-mvapich2-devel-static 
   - hdf5-openmpi4 
   - hdf5-openmpi4-devel 
-  - hdf5-openmpi4-devel-static 
   - hdf5-openmpi5 
   - hdf5-openmpi5-devel 
-  - hdf5-openmpi5-devel-static 
-  - hdf5_1_12_3-gnu-hpc 
-  - hdf5_1_12_3-gnu-hpc-devel 
-  - hdf5_1_12_3-gnu-hpc-devel-static 
-  - hdf5_1_12_3-gnu-hpc-module 
-  - hdf5_1_12_3-gnu-mpich-hpc 
-  - hdf5_1_12_3-gnu-mpich-hpc-devel 
-  - hdf5_1_12_3-gnu-mpich-hpc-devel-static 
-  - hdf5_1_12_3-gnu-mpich-hpc-module 
-  - hdf5_1_12_3-gnu-mvapich2-hpc 
-  - hdf5_1_12_3-gnu-mvapich2-hpc-devel 
-  - hdf5_1_12_3-gnu-mvapich2-hpc-devel-static 
-  - hdf5_1_12_3-gnu-mvapich2-hpc-module 
-  - hdf5_1_12_3-gnu-openmpi4-hpc 
-  - hdf5_1_12_3-gnu-openmpi4-hpc-devel 
-  - hdf5_1_12_3-gnu-openmpi4-hpc-devel-static 
-  - hdf5_1_12_3-gnu-openmpi4-hpc-module 
-  - hdf5_1_12_3-gnu-openmpi5-hpc 
-  - hdf5_1_12_3-gnu-openmpi5-hpc-devel 
-  - hdf5_1_12_3-gnu-openmpi5-hpc-devel-static 
-  - hdf5_1_12_3-gnu-openmpi5-hpc-module 
-  - hdf5_1_12_3-hpc-examples 
+  - hdf5_1_14_6-gnu-hpc 
+  - hdf5_1_14_6-gnu-hpc-devel 
+  - hdf5_1_14_6-gnu-hpc-module 
+  - hdf5_1_14_6-gnu-mpich-hpc 
+  - hdf5_1_14_6-gnu-mpich-hpc-devel 
+  - hdf5_1_14_6-gnu-mpich-hpc-module 
+  - hdf5_1_14_6-gnu-mvapich2-hpc 
+  - hdf5_1_14_6-gnu-mvapich2-hpc-devel 
+  - hdf5_1_14_6-gnu-mvapich2-hpc-module 
+  - hdf5_1_14_6-gnu-openmpi4-hpc 
+  - hdf5_1_14_6-gnu-openmpi4-hpc-devel 
+  - hdf5_1_14_6-gnu-openmpi4-hpc-module 
+  - hdf5_1_14_6-gnu-openmpi5-hpc 
+  - hdf5_1_14_6-gnu-openmpi5-hpc-devel 
+  - hdf5_1_14_6-gnu-openmpi5-hpc-module 
+  - hdf5_1_14_6-hpc-examples 
   - hdhomerun_config 
   - hdhomerun_config_gui 
   - hdjmod-kmp-default 
@@ -13981,90 +13973,104 @@ unsorted:
   - libhashcat6_2_6 
   - libhasl0 
   - libhavege2 
-  - libhdf5-200 
-  - libhdf5-200-mvapich2 
-  - libhdf5-200-openmpi4 
-  - libhdf5-200-openmpi5 
+  - libhdf5-310 
+  - libhdf5-310-mvapich2 
+  - libhdf5-310-openmpi4 
+  - libhdf5-310-openmpi5 
   - libhdf5-gnu-hpc 
   - libhdf5-gnu-mpich-hpc 
   - libhdf5-gnu-mvapich2-hpc 
   - libhdf5-gnu-openmpi4-hpc 
   - libhdf5-gnu-openmpi5-hpc 
-  - libhdf5_1_12_3-gnu-hpc 
-  - libhdf5_1_12_3-gnu-mpich-hpc 
-  - libhdf5_1_12_3-gnu-mvapich2-hpc 
-  - libhdf5_1_12_3-gnu-openmpi4-hpc 
-  - libhdf5_1_12_3-gnu-openmpi5-hpc 
+  - libhdf5_1_14_6-gnu-hpc 
+  - libhdf5_1_14_6-gnu-mpich-hpc 
+  - libhdf5_1_14_6-gnu-mvapich2-hpc 
+  - libhdf5_1_14_6-gnu-openmpi4-hpc 
+  - libhdf5_1_14_6-gnu-openmpi5-hpc 
   - libhdf5_cpp-gnu-hpc 
   - libhdf5_cpp-gnu-mpich-hpc 
   - libhdf5_cpp-gnu-mvapich2-hpc 
   - libhdf5_cpp-gnu-openmpi4-hpc 
   - libhdf5_cpp-gnu-openmpi5-hpc 
-  - libhdf5_cpp200 
-  - libhdf5_cpp200-mvapich2 
-  - libhdf5_cpp200-openmpi4 
-  - libhdf5_cpp200-openmpi5 
-  - libhdf5_cpp_1_12_3-gnu-hpc 
-  - libhdf5_cpp_1_12_3-gnu-mpich-hpc 
-  - libhdf5_cpp_1_12_3-gnu-mvapich2-hpc 
-  - libhdf5_cpp_1_12_3-gnu-openmpi4-hpc 
-  - libhdf5_cpp_1_12_3-gnu-openmpi5-hpc 
+  - libhdf5_cpp310 
+  - libhdf5_cpp310-mvapich2 
+  - libhdf5_cpp310-openmpi4 
+  - libhdf5_cpp310-openmpi5 
+  - libhdf5_cpp_1_14_6-gnu-hpc 
+  - libhdf5_cpp_1_14_6-gnu-mpich-hpc 
+  - libhdf5_cpp_1_14_6-gnu-mvapich2-hpc 
+  - libhdf5_cpp_1_14_6-gnu-openmpi4-hpc 
+  - libhdf5_cpp_1_14_6-gnu-openmpi5-hpc 
   - libhdf5_fortran-gnu-hpc 
   - libhdf5_fortran-gnu-mpich-hpc 
   - libhdf5_fortran-gnu-mvapich2-hpc 
   - libhdf5_fortran-gnu-openmpi4-hpc 
   - libhdf5_fortran-gnu-openmpi5-hpc 
-  - libhdf5_fortran200 
-  - libhdf5_fortran200-mvapich2 
-  - libhdf5_fortran200-openmpi4 
-  - libhdf5_fortran200-openmpi5 
-  - libhdf5_fortran_1_12_3-gnu-hpc 
-  - libhdf5_fortran_1_12_3-gnu-mpich-hpc 
-  - libhdf5_fortran_1_12_3-gnu-mvapich2-hpc 
-  - libhdf5_fortran_1_12_3-gnu-openmpi4-hpc 
-  - libhdf5_fortran_1_12_3-gnu-openmpi5-hpc 
+  - libhdf5_fortran310 
+  - libhdf5_fortran310-mvapich2 
+  - libhdf5_fortran310-openmpi4 
+  - libhdf5_fortran310-openmpi5 
+  - libhdf5_fortran_1_14_6-gnu-hpc 
+  - libhdf5_fortran_1_14_6-gnu-mpich-hpc 
+  - libhdf5_fortran_1_14_6-gnu-mvapich2-hpc 
+  - libhdf5_fortran_1_14_6-gnu-openmpi4-hpc 
+  - libhdf5_fortran_1_14_6-gnu-openmpi5-hpc 
   - libhdf5_hl-gnu-hpc 
   - libhdf5_hl-gnu-mpich-hpc 
   - libhdf5_hl-gnu-mvapich2-hpc 
   - libhdf5_hl-gnu-openmpi4-hpc 
   - libhdf5_hl-gnu-openmpi5-hpc 
-  - libhdf5_hl200 
-  - libhdf5_hl200-mvapich2 
-  - libhdf5_hl200-openmpi4 
-  - libhdf5_hl200-openmpi5 
-  - libhdf5_hl_1_12_3-gnu-hpc 
-  - libhdf5_hl_1_12_3-gnu-mpich-hpc 
-  - libhdf5_hl_1_12_3-gnu-mvapich2-hpc 
-  - libhdf5_hl_1_12_3-gnu-openmpi4-hpc 
-  - libhdf5_hl_1_12_3-gnu-openmpi5-hpc 
+  - libhdf5_hl310 
+  - libhdf5_hl310-mvapich2 
+  - libhdf5_hl310-openmpi4 
+  - libhdf5_hl310-openmpi5 
+  - libhdf5_hl_1_14_6-gnu-hpc 
+  - libhdf5_hl_1_14_6-gnu-mpich-hpc 
+  - libhdf5_hl_1_14_6-gnu-mvapich2-hpc 
+  - libhdf5_hl_1_14_6-gnu-openmpi4-hpc 
+  - libhdf5_hl_1_14_6-gnu-openmpi5-hpc 
   - libhdf5_hl_cpp-gnu-hpc 
   - libhdf5_hl_cpp-gnu-mpich-hpc 
   - libhdf5_hl_cpp-gnu-mvapich2-hpc 
   - libhdf5_hl_cpp-gnu-openmpi4-hpc 
   - libhdf5_hl_cpp-gnu-openmpi5-hpc 
-  - libhdf5_hl_cpp200 
-  - libhdf5_hl_cpp200-mvapich2 
-  - libhdf5_hl_cpp200-openmpi4 
-  - libhdf5_hl_cpp200-openmpi5 
-  - libhdf5_hl_cpp_1_12_3-gnu-hpc 
-  - libhdf5_hl_cpp_1_12_3-gnu-mpich-hpc 
-  - libhdf5_hl_cpp_1_12_3-gnu-mvapich2-hpc 
-  - libhdf5_hl_cpp_1_12_3-gnu-openmpi4-hpc 
-  - libhdf5_hl_cpp_1_12_3-gnu-openmpi5-hpc 
+  - libhdf5_hl_cpp310 
+  - libhdf5_hl_cpp310-mvapich2 
+  - libhdf5_hl_cpp310-openmpi4 
+  - libhdf5_hl_cpp310-openmpi5 
+  - libhdf5_hl_cpp_1_14_6-gnu-hpc 
+  - libhdf5_hl_cpp_1_14_6-gnu-mpich-hpc 
+  - libhdf5_hl_cpp_1_14_6-gnu-mvapich2-hpc 
+  - libhdf5_hl_cpp_1_14_6-gnu-openmpi4-hpc 
+  - libhdf5_hl_cpp_1_14_6-gnu-openmpi5-hpc 
   - libhdf5_hl_fortran-gnu-hpc 
   - libhdf5_hl_fortran-gnu-mpich-hpc 
   - libhdf5_hl_fortran-gnu-mvapich2-hpc 
   - libhdf5_hl_fortran-gnu-openmpi4-hpc 
   - libhdf5_hl_fortran-gnu-openmpi5-hpc 
-  - libhdf5hl_fortran200 
-  - libhdf5hl_fortran200-mvapich2 
-  - libhdf5hl_fortran200-openmpi4 
-  - libhdf5hl_fortran200-openmpi5 
-  - libhdf5hl_fortran_1_12_3-gnu-hpc 
-  - libhdf5hl_fortran_1_12_3-gnu-mpich-hpc 
-  - libhdf5hl_fortran_1_12_3-gnu-mvapich2-hpc 
-  - libhdf5hl_fortran_1_12_3-gnu-openmpi4-hpc 
-  - libhdf5hl_fortran_1_12_3-gnu-openmpi5-hpc 
+  - libhdf5_hl_fortran310 
+  - libhdf5_hl_fortran310-mvapich2 
+  - libhdf5_hl_fortran310-openmpi4 
+  - libhdf5_hl_fortran310-openmpi5 
+  - libhdf5_hl_fortran_1_14_6-gnu-hpc 
+  - libhdf5_hl_fortran_1_14_6-gnu-mpich-hpc 
+  - libhdf5_hl_fortran_1_14_6-gnu-mvapich2-hpc 
+  - libhdf5_hl_fortran_1_14_6-gnu-openmpi4-hpc 
+  - libhdf5_hl_fortran_1_14_6-gnu-openmpi5-hpc 
+  - libhdf5_tools-gnu-hpc 
+  - libhdf5_tools-gnu-mpich-hpc 
+  - libhdf5_tools-gnu-mvapich2-hpc 
+  - libhdf5_tools-gnu-openmpi4-hpc 
+  - libhdf5_tools-gnu-openmpi5-hpc 
+  - libhdf5_tools310 
+  - libhdf5_tools310-mvapich2 
+  - libhdf5_tools310-openmpi4 
+  - libhdf5_tools310-openmpi5 
+  - libhdf5_tools_1_14_6-gnu-hpc 
+  - libhdf5_tools_1_14_6-gnu-mpich-hpc 
+  - libhdf5_tools_1_14_6-gnu-mvapich2-hpc 
+  - libhdf5_tools_1_14_6-gnu-openmpi4-hpc 
+  - libhdf5_tools_1_14_6-gnu-openmpi5-hpc 
   - libhdhomerun-devel 
   - libhdhomerun2 
   - libhealpix_cxx4 
@@ -16653,7 +16659,7 @@ unsorted:
   - libsvm-java 
   - libsvm3 
   - libswitchboard-3-0 
-  - libsword-1_8_1 
+  - libsword-1_9_0 
   - libswresample3_9-32bit 
   - libswresample4 
   - libswresample5-32bit 
@@ -18342,7 +18348,10 @@ unsorted:
   - magic-wormhole.rs-bash-completion 
   - magic-wormhole.rs-fish-completion 
   - magic-wormhole.rs-zsh-completion 
+  - magpie 
   - magpie-1 
+  - magpie-devel 
+  - magpie-lang 
   - mailcommon-devel 
   - maildir-utils 
   - mailgraph 
@@ -26820,6 +26829,7 @@ unsorted:
   - python311-pycognito 
   - python311-pycomposefile 
   - python311-pycountry 
+  - python311-pycrdt 
   - python311-pycrdt-websocket 
   - python311-pycryptodome 
   - python311-pycryptodomex 
@@ -30529,6 +30539,7 @@ unsorted:
   - python312-pycomposefile 
   - python312-pycountry 
   - python312-pycparser 
+  - python312-pycrdt 
   - python312-pycrdt-websocket 
   - python312-pycryptodome 
   - python312-pycryptodomex 
@@ -34186,6 +34197,7 @@ unsorted:
   - python313-pycognito 
   - python313-pycomposefile 
   - python313-pycountry 
+  - python313-pycrdt 
   - python313-pycrdt-websocket 
   - python313-pycryptodome 
   - python313-pycryptodomex 
@@ -37136,8 +37148,6 @@ unsorted:
   - sddm 
   - sddm-conf 
   - sddm-conf-lang 
-  - sddm-kalpa 
-  - sddm-kalpa-kwin 
   - sddm-kalpa-lang 
   - sddm-kalpa-themes 
   - sddm-kalpa-wayland-generic 
@@ -37419,7 +37429,6 @@ unsorted:
   - smplayer 
   - smplayer-lang 
   - smproxy 
-  - smssend 
   - smtpping 
   - snakeyaml 
   - snakeyaml-javadoc 
@@ -37660,7 +37669,6 @@ unsorted:
   - stardict-dic-enru-engcom 
   - stardict-dic-enru-mueller7 
   - stardict-sounds-wyabdcrealpeopletts 
-  - stardict-tools 
   - starfighter 
   - starfighter-lang 
   - starrydex 
@@ -47960,7 +47968,7 @@ unsorted:
   - typelib-1_0-BlockDev-3_0 
   - typelib-1_0-BraseroBurn-3_2_0 
   - typelib-1_0-BraseroMedia-3_2_0 
-  - typelib-1_0-Budgie-2_0 
+  - typelib-1_0-Budgie-1_0 
   - typelib-1_0-BudgieRaven-1_0 
   - typelib-1_0-CMenu-3_0 
   - typelib-1_0-CScreensaver-1_0 
