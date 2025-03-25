@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 17 01:18:25 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update warp-tls to version 3.4.13.
+  ## 3.4.13
+
+  * Introduced new smart constructor `tlsSettingsSni` to make it more convenient
+    to dynamically change certificates. Deprecates `tlsSettingsRef` and
+    `tlsSettingsChainRef`.
+    [#1025](https://github.com/yesodweb/wai/pull/1025)
+
+-------------------------------------------------------------------
 Tue Nov 19 21:07:10 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update warp-tls to version 3.4.12.
