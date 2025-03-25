@@ -22,10 +22,9 @@ Version:        25.02
 Release:        0
 Summary:        Application turning the RTL2832 dongle into a 433.92MHz generic data receiver
 License:        GPL-2.0-only
-Group:          Productivity/Hamradio/Other
 URL:            https://github.com/merbanan/rtl_433.git
 Source:         https://github.com/merbanan/rtl_433/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SoapySDR)
 BuildRequires:  pkgconfig(librtlsdr)
@@ -38,8 +37,8 @@ wireless temperature sensors (433.92MHz)
 
 %package devel
 Summary:        Header files for the RTL2832 dongle library
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 Turns RTL2832 dongle into a 433.92MHz generic data receiver.
@@ -52,11 +51,15 @@ to make use of rtl_433.
 
 %build
 %cmake \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %license COPYING
