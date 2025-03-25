@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Mar 22 14:24:18 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove superfluous %python_module definition
+
+-------------------------------------------------------------------
+Thu Mar 20 09:09:12 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.3.0
+  * Dropped support for Python 3.7-3.8, added support for
+    Python 3.12-3.13 and PyPy 3.10.
+  * Removed ``_unicode_safe_getattr()``, deprecated in 1.2.0.
+  * Added ``pre-commit`` and formatted the code with ``ruff``.
+  * Many CI additions and improvements.
+- Limit Python files matched in %files section
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
