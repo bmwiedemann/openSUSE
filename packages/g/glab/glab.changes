@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Tue Mar 25 05:40:12 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.55.0:
+  * chore(deps): update module github.com/golang-jwt/jwt/v5 to
+    v5.2.2
+  * refactor(cluster agent): use new client-go testing pkg
+  * refactor(tokens): Add description and refactor token creation
+  * feat(config-edit): add config edit command
+  * build(windows-builds): include installer sha in checksum file
+  * feat: add command for publishing to CI catalog
+  * refactor: move CI/CD catalog publishing to project command
+- change BuildRequires from golang(API), as the latter is
+  unresovable with the constraint >= 1.24.1
+- rebase glab-disable_update_check.patch
+
+-------------------------------------------------------------------
+Thu Mar 20 05:45:46 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.54.0:
+  * chore(deps): update dependency axios to ^1.8.4
+  * build(version): standardize versions accross builds
+  * feat: create project command can skip creating git repository
+  * chore: Updating client-go
+  * feat: Create stack from created branch
+  * chore(deps): update golang to v1.24.1
+  * test: Start using mocks for git tests
+  * feat(ssh-key): add usage-type when creating ssh key
+  * chore(deps): update module github.com/spf13/viper to v1.20.0
+  * chore(deps): adjust for breaking changes in client-go
+  * chore(deps): update module client-go to v0.125.0
+  * fix(issue/mr create): add ability to assign group milestones
+  * feat: Render markdown help text in glamour
+  * chore(deps): update module k8s.io/apimachinery to v0.32.3
+  * chore(deps): update dependency axios to ^1.8.3
+  * chore: update gitlab.com/gitlab-org/api/client-go v0.124.0
+  * feat(dpop): add option to generate DPoP JWTs
+  * chore(deps): update dependency @commitlint/lint to ^19.8.0
+  * fix: goreleaser archives.format is deprecated
+  * chore(deps): update dependency axios to ^1.8.2
+  * chore(deps): update module golang.org/x/oauth2 to v0.28.0
+  * chore(deps): update module golang.org/x/crypto to v0.36.0
+  * chore(deps): update module golang.org/x/text to v0.23.0
+  * chore(docs): use consistent language in flags
+  * chore: Add USERNAME to environment variables cleared for test
+  * fix(formatting): fixed output formatting for commands
+  * chore: Update source of documentation linting image
+  * chore: Update Vale rules from 'gitlab' project
+  * chore(deps): update golang to v1.24.0
+  * chore(deps): update dependency axios to ^1.8.1
+  * feat: give credits in changelog
+  * chore(deps): update module golang.org/x/oauth2 to v0.27.0
+  * chore(deps): update module golang.org/x/crypto to v0.35.0
+  * chore(deps): update module github.com/avast/retry-go/v4 to
+    v4.6.1
+  * feat(var): make count of listed vars configurable
+  * fix(token-list): expiration time can be null
+  * docs(help): document all environment variables
+  * chore: Improve re-auth and self-managed strings
+  * fix(ci status): allow live to loop with NO_PROMPT
+  * chore(snap): update base and fix version
+  * feat(ssh-key): add usage type to output
+  * feat: show help hint on error instead of full usage
+  * docs: improve ci job variable docs
+  * fix(token-list): token list works outside a repository
+  * fix: replace `GetLastPipeline` calls with `GetLatestPipeline`
+  * chore(deps): update module github.com/spf13/cobra to v1.9.1
+  * feat(ci status): return error when pipeline failed
+  * fix(ci status): use GetLatestPipeline API for branches
+  * chore(deps): update gitlab.com/gitlab-org/api/client-go to
+    v0.123.0
+  * feat(ci-run-web): add --web flag to ci run
+  * chore(deps): update module k8s.io/apimachinery to v0.32.2
+  * chore(ca-certificates): include ca-certificates in docker
+  * fix(ci get): do not require branch if pipelineID is given
+  * fix(mr update): multiple draft prefixes
+  * chore(onboarding): update urls
+  * chore(deps): update module golang.org/x/crypto to v0.33.0
+  * test: create with multiple files
+  * fix(table-headers): add table headers to output
+  * fix(parsing): recover from unparsable structs
+  * chore(deps): update module golang.org/x/term to v0.29.0
+  * fix: accept input from stdin when stdin is TTY
+  * fix: print to `Opts.IO` because it can be processed
+  * docs: document multiple files feature
+  * feat(snippets): support uploading multiple files
+  * refactor(snippets): use newer files API
+  * feat(snippets): support multiple files
+  * refactor: remove unnecessary `opts.Lab`
+
+-------------------------------------------------------------------
 Sun Feb 16 09:12:14 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.53.0:
