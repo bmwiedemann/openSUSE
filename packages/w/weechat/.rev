@@ -854,4 +854,12 @@
     <comment>- Re-add update-desktop-files to spec file</comment>
     <requestid>1251644</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>bb489656a43ca35747b8243afcd76816</srcmd5>
+    <version>4.6.0</version>
+    <time>1742937038</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.6.0</comment>
+    <requestid>1255661</requestid>
+  </revision>
 </revisionlist>

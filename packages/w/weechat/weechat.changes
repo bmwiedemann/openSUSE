@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar 24 14:53:08 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 4.6.0:
+
+  Changed
+  * core: add option -v to display upgrades in command /version
+  * api: add property keep_spaces_right in function hook_set to keep trailing spaces in command arguments
+  * core, irc, alias, xfer: keep spaces at the end of some commands, where trailing spaces are important
+  * irc: add option -connected in command /server list|listfull
+  * buflist: apply option buflist.look.nick_prefix_empty also on private and list buffers
+  * xfer: compute speed and ETA with microsecond precision (#665)
+
+  Added
+  * core: add command /pipe
+  * core: add option whitespace in command /debug, add options weechat.look.whitespace_char and weechat.look.tab_whitespace_char (#947)
+  * core: add option weechat.completion.nick_ignore_words (#1143)
+  * spell: add CMake options ASPELL_DICT_DIR and ENCHANT_MYSPELL_DICT_DIR to override dictionaries locations (#1174)
+  * api: add function completion_set
+  * relay/api: add resource POST /api/completion (#2207)
+  * relay/api: add default key Alt+Ctrl+l (L) to toggle between remote and local commands on remote buffers, add option togglecmd in command /remote, add options relay.api.remote_input_cmd_local and relay.api.remote_input_cmd_remote (#2148)
+
+  Fixed
+  * relay: fix crash after /upgrade when relay clients are connected
+  * core: save configuration files as UTF-8 when the locale is wrong
+  * api: fix creation of empty buffer in function infolist_new_var_buffer
+  * core: fix build with gcc 15 (#2229, #2230)
+  * core: fix detection of dl library (#2218)
+  * logger: fix path displayed when the logs directory can not be created
+  * perl: fix build with Perl < 5.7.29 (#2219, #2220)
+  * python: enable subinterpreters (#2222) 
+
+-------------------------------------------------------------------
 Mon Mar 10 06:49:57 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Re-add update-desktop-files to spec file
