@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 21 02:42:12 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Filter out the non-subvolume btrfs mount points when creating the
+  relative path (bsc#1239674)
+  * grub2-btrfs-filter-non-subvol-mount.patch
+
+-------------------------------------------------------------------
 Mon Mar 17 08:27:29 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Refresh PPC NVMEoF ofpath related patches to newer revision
