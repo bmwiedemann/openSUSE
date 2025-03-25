@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 24 09:33:34 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250324:
+  * Allow xenstored_t manage xend_var_lib_t files (bsc#1228540)
+
+-------------------------------------------------------------------
 Tue Mar 18 13:03:40 UTC 2025 - rfrohl@suse.com
 
 - Update to version 20250318:
