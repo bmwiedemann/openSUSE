@@ -83,7 +83,7 @@
 %endif
 
 Name:           velociraptor%{name_suffix}
-Version:        0.7.0.4.git142.862ef23
+Version:        0.7.0.4.git152.fb24dfd
 Release:        0
 %if %{build_server}
 Summary:        Endpoint visibility and collection tool

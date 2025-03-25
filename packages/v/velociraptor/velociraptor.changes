@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 21 14:19:38 UTC 2025 - doreilly@suse.com
+
+- Update to version 0.7.0.4.git152.fb24dfd:
+  * audit: fix watch rules in artifacts
+  * audit: update go-libaudit dependency for pcc64le arch filter fix
+  * Use execsnoop plugin in artifacts when possible
+  * Add execsnoop plugin to capture execve system calls
+  * github-actions: update ubuntu runners to 22.04
+  * Fix failing tls unit test on new go versions
+
+-------------------------------------------------------------------
 Mon Feb 17 13:55:06 UTC 2025 - Darragh O'Reilly <doreilly@suse.com>
 
 - Use the latest llvm/clang on tumbleweed
