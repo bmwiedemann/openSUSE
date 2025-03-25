@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 23 18:15:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 3.7.8:
+  * 7zip reader: add SPARC and POWERPC filter support for non-LZMA compressors
+  * tar reader: Ignore ustar size when pax size is present
+  * tar writer: Fix bug when -s/a/b/ used more than once with b flag
+  * libarchive: Handle ARCHIVE_FILTER_LZOP in archive_read_append_filter
+  * libarchive: Adding missing seeker function to archive_read_open_FILE()
+- inludes the previously patched security fixes, dropping:
+  CVE-2025-1632.patch, CVE-2025-25724.patch, CVE-2024-57970.patch
+
+-------------------------------------------------------------------
 Tue Mar 11 15:54:34 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Fix CVE-2025-1632, null pointer dereference in bsdunzip.c

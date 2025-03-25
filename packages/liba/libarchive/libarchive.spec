@@ -2,6 +2,7 @@
 # spec file for package libarchive
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +31,7 @@
 %bcond_without	ext2fs
 %endif
 Name:           libarchive
-Version:        3.7.7
+Version:        3.7.8
 Release:        0
 Summary:        Utility and C library to create and read several streaming archive formats
 License:        BSD-2-Clause
@@ -41,12 +42,6 @@ Source1:        https://github.com/libarchive/libarchive/releases/download/v%{ve
 Source2:        libarchive.keyring
 Source1000:     baselibs.conf
 Patch1:         lib-suffix.patch
-# PATCH-FIX-UPSTREAM CVE-2024-57970.patch bsc#1237233 antonio.teixeira@suse.com
-Patch2:         CVE-2024-57970.patch
-# PATCH-FIX-UPSTREAM bsc#1238610 marius.grossu@suse.com CVE-2025-25724
-Patch3:         CVE-2025-25724.patch
-# PATCH-FIX-UPSTREAM bsc#1237606 marius.grossu@suse.com CVE-2025-1632
-Patch4:         CVE-2025-1632.patch
 BuildRequires:  cmake
 BuildRequires:  libacl-devel
 BuildRequires:  libbz2-devel
@@ -190,10 +185,10 @@ rm "%{buildroot}%{_libdir}/libarchive.a"
 rm "%{buildroot}%{_mandir}/man5/"{tar,cpio,mtree}.5*
 sed -i -e '/Libs.private/d' %{buildroot}%{_libdir}/pkgconfig/libarchive.pc
 
-%post   -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n bsdtar
+%license COPYING
 %{_bindir}/bsdcat
 %{_bindir}/bsdcpio
 %{_bindir}/bsdtar
@@ -207,6 +202,7 @@ sed -i -e '/Libs.private/d' %{buildroot}%{_libdir}/pkgconfig/libarchive.pc
 %{_libdir}/libarchive.so.*
 
 %files -n libarchive-devel
+%license COPYING
 %doc examples/
 %{_mandir}/man3/*
 %{_libdir}/libarchive.so
@@ -215,6 +211,7 @@ sed -i -e '/Libs.private/d' %{buildroot}%{_libdir}/pkgconfig/libarchive.pc
 
 %if %{with static_libs}
 %files static-devel
+%license COPYING
 %{_libdir}/%{name}.a
 %endif
 
