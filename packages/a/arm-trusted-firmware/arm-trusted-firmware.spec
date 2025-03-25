@@ -1,7 +1,7 @@
 #
 # spec file for package arm-trusted-firmware
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,9 +50,9 @@ Name:           arm-trusted-firmware
 %else
 Name:           arm-trusted-firmware-%{platform}
 %endif
-Version:        2.10.7
+Version:        2.10.14
 Release:        0
-%define srcversion 2.10.7
+%define srcversion 2.10.14
 %define mv_ddr_ver armada-atf-master
 %define mv_bin_ver 10.0.1.0
 %define a3700_utils_ver master
@@ -92,12 +92,6 @@ BuildRequires:  edk2-Armada80x0McBin
 BuildRequires:  dtc
 BuildRequires:  edk2-ArmVExpress-FVP-AArch64
 %endif
-%if "%{platform}" == "hikey"
-BuildRequires:  edk2-hikey
-%endif
-%if "%{platform}" == "hikey960"
-BuildRequires:  edk2-hikey960
-%endif
 %if "%{platform}" == ""
 BuildRequires:  gcc-c++
 %endif
@@ -133,9 +127,6 @@ BuildRequires:  u-boot-mvebuespressobin-88f3720
 %endif
 %if "%{platform}" == "a80x0_mcbin" && 1
 BuildRequires:  u-boot-mvebumcbin-88f8040
-%endif
-%if "%{platform}" == "hikey"
-BuildRequires:  u-boot-hikey
 %endif
 %if "%{platform}" == "poplar"
 BuildRequires:  u-boot-poplar
@@ -358,16 +349,6 @@ done
      BL33=/boot/FVP_AARCH64_EFI.fd \
      all fip
 %else
-%if "%{platform}" == "hikey"
-     SCP_BL2=/boot/mcuimage.bin \
-     BL33=/boot/u-boot.bin \
-     all fip
-%else
-%if "%{platform}" == "hikey960"
-     SCP_BL2=/boot/lpm3.img \
-     BL33=/boot/BL33_AP_UEFI.fd \
-     all fip
-%else
 %if "%{platform}" == "poplar"
      BL33=/boot/u-boot.bin \
      POPLAR_DRAM_SIZE=${dram_size} \
@@ -396,8 +377,6 @@ done
      all fip
 %else
      all
-%endif
-%endif
 %endif
 %endif
 %endif
@@ -466,11 +445,11 @@ install -D -m 0644 %{outdir}/bl31/bl31.elf %{buildroot}%{_datadir}/%{name}/bl31.
 install -D -m 0644 %{outdir}/bl31.bin %{buildroot}%{_datadir}/%{name}/bl31.bin
 %endif
 
-%if "%{platform}" == "a80x0_mcbin" || "%{platform}" == "fvp" || "%{platform}" == "hikey" || "%{platform}" == "hikey960" || "%{platform}" == "qemu" || "%{platform}" == "qemu_sbsa" || "%{platform}" == "rpi3"
+%if "%{platform}" == "a80x0_mcbin" || "%{platform}" == "fvp"  || "%{platform}" == "qemu" || "%{platform}" == "qemu_sbsa" || "%{platform}" == "rpi3"
 install -D -m 0644 %{outdir}/bl1.bin %{buildroot}%{_datadir}/%{name}/bl1.bin
 install -D -m 0644 %{outdir}/fip.bin %{buildroot}%{_datadir}/%{name}/fip.bin
 %endif
-%if "%{platform}" == "a80x0_mcbin" || "%{platform}" == "hikey" || "%{platform}" == "hikey960" || "%{platform}" == "rpi3"
+%if "%{platform}" == "a80x0_mcbin" || "%{platform}" == "rpi3"
 install -D -m 0644 %{outdir}/bl2.bin %{buildroot}%{_datadir}/%{name}/bl2.bin
 %endif
 %if "%{platform}" == "rpi3"

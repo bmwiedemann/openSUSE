@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 24 10:56:17 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.10.14:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.14/docs/change-log.md
+- Skipped 2.10.13:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.13/docs/change-log.md
+- Skipped 2.10.12:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.12/docs/change-log.md
+- Skipped 2.10.11:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.11/docs/change-log.md
+- Skipped 2.10.10:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.10/docs/change-log.md
+- Skipped 2.10.9:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.9/docs/change-log.md
+- Skipped 2.10.8:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.8/docs/change-log.md
+- Remove support for Hikey and Hikey960, since they have been
+  dropped from edk2
+
+-------------------------------------------------------------------
 Wed Oct 16 12:55:13 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.10.7:
