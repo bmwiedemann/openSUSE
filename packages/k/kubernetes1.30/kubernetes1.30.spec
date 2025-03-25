@@ -22,7 +22,7 @@
 %define baseversionminus1 1.29
 
 Name:           kubernetes%{baseversion}
-Version:        1.30.10
+Version:        1.30.11
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,12 +51,12 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.22.12
+BuildRequires:  go >= 1.23.6
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) = 1.22
+BuildRequires:  golang(API) = 1.23
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
 ExcludeArch:    %{ix86} s390 ppc64
 
@@ -66,22 +66,6 @@ management of containerized applications.
 
 It groups containers that make up an application into logical units
 for management and discovery.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
