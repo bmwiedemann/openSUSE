@@ -1,4 +1,4 @@
-From 1046bd52a4725819fd0ab00391b29adeb0d1eeef Mon Sep 17 00:00:00 2001
+From e8c470eb87494ad48f038323e0b2f36d606f1712 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Florian=20sp1rit=E2=80=8B?= <sp1rit@disroot.org>
 Date: Fri, 14 Jun 2024 23:43:46 +0200
 Subject: [PATCH] openSUSE: Use hyprland-devel instead of downloading from
@@ -16,21 +16,35 @@ It also adds a new check to ensure that the subpackage is instealled.
 
 Signed-off-by: Florian "sp1rit"​ <sp1rit@disroot.org>
 ---
- hyprpm/src/core/DataState.cpp     |   2 +-
- hyprpm/src/core/PluginManager.cpp | 138 ++++--------------------------
- 2 files changed, 20 insertions(+), 120 deletions(-)
+ hyprpm/src/core/DataState.cpp     |   5 +-
+ hyprpm/src/core/PluginManager.cpp | 140 ++++--------------------------
+ 2 files changed, 20 insertions(+), 125 deletions(-)
 
 diff --git a/hyprpm/src/core/DataState.cpp b/hyprpm/src/core/DataState.cpp
-index fb8679d..a1c7026 100644
+index 55f148a..2c8f66f 100644
 --- a/hyprpm/src/core/DataState.cpp
 +++ b/hyprpm/src/core/DataState.cpp
-@@ -22,3 +22,3 @@ std::string DataState::getHeadersPath() {
+@@ -20,7 +20,7 @@ std::filesystem::path DataState::getDataStatePath() {
+ }
+ 
  std::string DataState::getHeadersPath() {
 -    return getDataStatePath() / "headersRoot";
 +    return "REPLACE_ME_WITH_PREFIX/";
  }
+ 
+ std::vector<std::filesystem::path> DataState::getPluginStates() {
+@@ -45,9 +45,6 @@ void DataState::ensureStateStoreExists() {
+ 
+     if (!std::filesystem::exists(PATH))
+         std::filesystem::create_directories(PATH);
+-
+-    if (!std::filesystem::exists(getHeadersPath()))
+-        std::filesystem::create_directories(getHeadersPath());
+ }
+ 
+ void DataState::addNewPluginRepo(const SPluginRepository& repo) {
 diff --git a/hyprpm/src/core/PluginManager.cpp b/hyprpm/src/core/PluginManager.cpp
-index 48b108c..b0f590b 100644
+index 3343cbe..b619a85 100644
 --- a/hyprpm/src/core/PluginManager.cpp
 +++ b/hyprpm/src/core/PluginManager.cpp
 @@ -15,6 +15,7 @@
@@ -41,7 +55,7 @@ index 48b108c..b0f590b 100644
  #include <pwd.h>
  #include <unistd.h>
  
-@@ -435,141 +436,27 @@ bool CPluginManager::updateHeaders(bool force) {
+@@ -435,143 +436,27 @@ bool CPluginManager::updateHeaders(bool force) {
      const auto HLVER = getHyprlandVersion(false);
  
      if (!hasDeps()) {
@@ -65,8 +79,9 @@ index 48b108c..b0f590b 100644
 +    progress.m_iMaxSteps        = 1;
      progress.m_iSteps           = 0;
 -    progress.m_szCurrentMessage = "Cloning the hyprland repository";
--    progress.print();
--
++    progress.m_szCurrentMessage = "Checking headers";
+     progress.print();
+ 
 -    const std::string USERNAME   = getpwuid(getuid())->pw_name;
 -    const auto        WORKINGDIR = getTempRoot() + "hyprland-" + USERNAME;
 -
@@ -75,7 +90,9 @@ index 48b108c..b0f590b 100644
 -        return false;
 -    }
 -
--    progress.printMessageAbove(statusString("!", Colors::YELLOW, "Cloning https://github.com/hyprwm/Hyprland, this might take a moment."));
+-    const auto& HL_URL = m_szCustomHlUrl.empty() ? "https://github.com/hyprwm/Hyprland" : m_szCustomHlUrl;
+-
+-    progress.printMessageAbove(statusString("!", Colors::YELLOW, "Cloning {}, this might take a moment.", HL_URL));
 -
 -    const bool bShallow = (HLVER.branch == "main") && !m_bNoShallow;
 -
@@ -86,12 +103,12 @@ index 48b108c..b0f590b 100644
 -    if (m_bVerbose && bShallow)
 -        progress.printMessageAbove(verboseString("will shallow since: {}", SHALLOW_DATE));
 -
--    std::string ret = execAndGet(std::format("cd {} && git clone --recursive https://github.com/hyprwm/Hyprland hyprland-{}{}", getTempRoot(), USERNAME,
--                                             (bShallow ? " --shallow-since='" + SHALLOW_DATE + "'" : "")));
+-    std::string ret =
+-        execAndGet(std::format("cd {} && git clone --recursive {} hyprland-{}{}", getTempRoot(), HL_URL, USERNAME, (bShallow ? " --shallow-since='" + SHALLOW_DATE + "'" : "")));
 -
 -    if (!std::filesystem::exists(WORKINGDIR)) {
 -        progress.printMessageAbove(failureString("Clone failed. Retrying without shallow."));
--        ret = execAndGet(std::format("cd {} && git clone --recursive https://github.com/hyprwm/hyprland hyprland-{}", getTempRoot(), USERNAME));
+-        ret = execAndGet(std::format("cd {} && git clone --recursive {} hyprland-{}", getTempRoot(), HL_URL, USERNAME));
 -    }
 -
 -    if (!std::filesystem::exists(WORKINGDIR + "/.git")) {
@@ -156,9 +173,8 @@ index 48b108c..b0f590b 100644
 -    progress.printMessageAbove(successString("configured Hyprland"));
 -    progress.m_iSteps           = 4;
 -    progress.m_szCurrentMessage = "Installing sources";
-+    progress.m_szCurrentMessage = "Checking headers";
-     progress.print();
- 
+-    progress.print();
+-
 -    const std::string& cmd =
 -        std::format("sed -i -e \"s#PREFIX = /usr/local#PREFIX = {}#\" {}/Makefile && cd {} && make installheaders", DataState::getHeadersPath(), WORKINGDIR, WORKINGDIR);
 -    if (m_bVerbose)
@@ -188,7 +204,7 @@ index 48b108c..b0f590b 100644
          progress.m_szCurrentMessage = "Failed";
          progress.print();
  
-@@ -945,6 +832,19 @@ std::string CPluginManager::headerErrorShort(const eHeadersErrors err) {
+@@ -947,6 +832,19 @@ std::string CPluginManager::headerErrorShort(const eHeadersErrors err) {
  }
  
  bool CPluginManager::hasDeps() {

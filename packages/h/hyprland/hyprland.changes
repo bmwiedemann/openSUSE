@@ -1,4 +1,197 @@
 -------------------------------------------------------------------
+Sun Mar 23 19:33:00 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Updated to version 0.48.0:
+  + After a while, it is my pleasure to release 0.48.0 to everyone!
+    Hyprland is now 3 years old since March 16th, happy birthday! :)
+  + Breaking changes:
+    - opengl:force_introspection has been removed
+    - render:allow_early_buffer_release has been removed
+    - windowrule v1 syntax is gone. windowrule now behaves like
+      windowrulev2, deprecating the windowrulev2 keyword
+  + New features:
+    - animations: add the gnomed animation style for windows
+    - core: add an ANR dialog
+    - desktop: add ability to target pinned windows in workspace
+      rules (#9344)
+    - dispatchers: add cyclenext hist option (#9055)
+    - groupbar: add an option to adjust gap sizes (#9578)
+    - hyprctl: Add IPC support for Hyprsunset (#9315)
+    - hyprpm: add --hl-url for custom forks
+    - input: add flip_x and flip_y for touchpad (#9481)
+    - input: add follow_mouse_threshold (#9392)
+    - keybinds: Added toggleswallow dispatcher (#5548)
+    - master: add option to keep master window position (#9537)
+    - protocols: add version 2 of ext-idle-notify-v1 protocol (#8959)
+    - renderer: add simple color management (#9506)
+    - socket2: add activespecialv2 (#9530)
+    - syncobj: ensure we only add waiters on succesful checks (#9412)
+    - windowrules: add option to allow size persistence between app
+      launches (#9422)
+    - xwayland: add INCR support for clipboard transfers (#9434)
+  + Fixes:
+    - config/descriptions: add enable_anr_dialog
+    - config/hyprctl: fix keyword not updating autoreload
+    - config: fix a possible crash in the monitor config parser
+      (#9460)
+    - core,hyprctl: clang, clang-tidy, typo fixes and dtors changes
+      (#9233)
+    - core/Compositor.hpp: fix non-relative Texture import (#9703)
+    - core/compositor: Fix dropping cursor buffer data early (#9700)
+    - core: Add null activeWorkspace check in moveWorkspaceToMonitor
+      (#9503)
+    - core: fix DS and VRR automation (#9334)
+    - core: add default initializers for ccompositor ptrs
+    - core: add mallopt to modify trim threshold
+    - datadevice: fix wrong param (#9370)
+    - desktop: fix segfault when destroying a partially create layer
+      surface (#9247)
+    - desktop: move popups to UPs and fix missing subsurface resource
+    - groupbar: fix groupbar missing when indicator_height is <= 0
+    - hyprctl/config: fixup config descriptions, fill out missing
+      ones, provide more data
+    - input: Fix clicking through groupbar tabs (#9606)
+    - input: fix touch calibration matrix overriding
+    - input: fixup mouse check for flipping x / y (#9529)
+    - internal: Fix compiler warnings (#9646)
+    - internal: fix include paths (#9500)
+    - keybinds: fix some errors not returning a failure (#9416)
+    - pass/rect: fix bounding / opaque regions
+    - presentation: log a fixme when there is a feedback leak
+    - protocols: Fix IWaylandProtocol onDisplayDestroy m_pGlobal
+      double-free (#9507)
+    - protocols: Fix blocked color management get_information (#9563)
+    - protocols: Fix cursor shape protocol valid shape check (#9547)
+    - protocols: fix wrong iface for xdg_dialog
+    - renderer: add an option to disable cm and auto-skip cm if not
+      necessary
+    - renderer: fix cm_fs_passthrough (#9698)
+    - renderer: fix fade out on silent moves to special
+    - renderer: fix missing null checks to prevent crashes (#9332)
+    - renderer: fix window offset for dragged windows (#9629)
+    - renderer: various fixes towards improving gpu calls robustness
+      (#9188)
+    - subsurface: fix invalid parent typo
+    - toplevelexport: fix transformed origin for shm buffers (#9343)
+    - window: fix missing surface null checks to prevent crashes
+      (#9350)
+    - xwayland: fix a possible clipboard race condition (#9394)
+  + Other:
+    - Meson: include frags in globber
+    - XWayland: restore the abstract socket, and make it optional
+      (#9615)
+    - animation: don't immediately disconnect active vars during tick
+      (#9272)
+    - animations: sync inactive/active border angles when using
+      borderangle animations (#9401)
+    - anr: add a note for no pid dialogs
+    - anr: add xwayland support (#9456)
+    - cmonitor: guard old workspace
+    - compositor: don't iterate over unmapped ls-es in vectorToLS
+    - compositor: guard null ws in updating fade
+    - config/defaultConfig.hpp: windowrulev2 -> windowrule (#9663)
+    - config: actually set initial beziers (#9400)
+    - config: default movefocus_cycles_fullscreen to false
+    - config: nuke windowrule v1 syntax
+    - config: set no_hw_cursors to auto by default and disable on
+      tearing
+    - configWatcher: watch both symlinks and canonical paths (#9219)
+    - configmgr: properly free glob memory
+    - core/compositor: Correctly track SHM buffer damage (#9678)
+    - core: avoid .at() and use [] operator (#9347)
+    - core: begin using CFileDescriptor from hyprutils (#9122)
+    - core: cleanup some smart pointer usage
+    - core: cleanup window properties
+    - core: ignore internal move workspace calls if the workspace
+      doesn't change (#9516)
+    - core: prevent crash when monitor list is empty (#9572)
+    - core: update decorations on lockgroups (#9573)
+    - descriptions: remove allow_early_buffer_release
+    - desktop: move popup and subsurface ctors to factories
+    - dmabuf: pop buffer on failure (#9620)
+    - env: move XDG_SESSION_TYPE to before backend init (#9390)
+    - example/hyprland.conf: windowrulev2 -> windowrule (#9662)
+    - groupbar: pass alpha to title tex render pass
+    - groupbar: remove 2 pixel gap above groupbar (#9664)
+    - groupbar: remove recursive window recalc (#9561)
+    - groupbar: various visual improvements
+    - groups: deactivate unfocused windows in groups (#9354)
+    - hyprctl/layers: print pid for layershell clients (#9468)
+    - hyprctl: Error handling improvements, minor cleanups (#9536)
+    - hyprctl: Extract IPC code to separate method (#9223)
+    - hyprctl: don't return empty str if there are no global shortcuts
+    - hyprpm: return 1 when plugins are outdated (#9694)
+    - ikeyboard: free xkbSymState in clearManuallyAllocd
+    - input: Provide a non-zero time for button release triggered
+      during window unmap. (#9513)
+    - input: change window grab cursor to closed hand (#9196)
+    - internal: redirect exec'd app output to /dev/null (#9411)
+    - internal: remove unused variable (#9402)
+    - internal: use isNumber from hyprutils (#9467)
+    - keybinds): prevent crash when executing movewindoworgroup
+      (#9551)
+    - managers: Use primary backend for cursor swapchain (#9645)
+    - monitor: Optimize direct scanout damage (#9653)
+    - monitor: avoid crash on expired special workspace monitor owner
+    - monitor: preferred mode now tries first 3 modes if preferred
+      fails before erroring (#9246)
+    - monitor: report a scheduled frame when tearing on cursor move
+    - monitor: round refresh rates in sorting modes
+    - opengl: simplify cm pipeline
+    - pass: add input region debug
+    - popup: improve ::at() behavior
+    - popup: stop refocusing at unmap
+    - popup: take xdg geometry into account in input calcs
+    - protocols: Ensure protocol dtors are called in ProtocolManager
+      dtor (#9521)
+    - protocols: Support content-type-v1 proto (#9226)
+    - protocols: Support wp color management proto (#9444)
+    - protocols: implement hyprland-ctm-control rev 2 (#9267)
+    - refactor: clang-tidy in compositor (#9241)
+    - render: enforce framebuffer offloading and remove introspection
+      toggle (#9217)
+    - renderer: calculate UV using both pixel and monitor dimensions
+      (#9210)
+    - renderer: delete now redundant ifdefs (#9651)
+    - renderer: disable explicit if aquamarine output doesn't support
+      it (#9396) (#9398)
+    - renderer: don't crash if cm fails to compile
+    - renderer: remove spammy log
+    - screencopy, render: Use explicit sync for screencopy (#9697)
+    - scripts/generateVersion.sh: convert to posix (#9433)
+    - scripts: don't overwrite generated version if we're not in a
+      git repo
+    - seatmgr: avoid crash on null surfs
+    - session-lock: send locked when in unsafe state (#9399)
+    - splashes: update for three year aniversary
+    - subsurfaces: dont try to access popup surfaces when handling
+      subsurface updates (#9421)
+    - syncobj: dont crash compositor on protocol errors (#9627)
+    - syncobj: refactor point timelines (#9689)
+    - syncobj: restore SHM buffer reset (#9675)
+    - syncobj: use eventfd instead of stalling fd checks (#9437)
+    - tablet: take active_area_size into account when sending tip
+      event (#9325)
+    - touch: reject swipe on locked sessions
+    - types: Upgrade buffer ref from WP to SP (#9677)
+    - window: move size reporting to animation begin callback (#9298)
+    - windowrules: store floating size on close instead of resize
+      (#9569)
+    - windows: respect noinitialfocus with workspace changes (#9586)
+    - workspaces: update persistence on workspace rename (#9368)
+    - xcursor: move config check to sync gsettings (#9473)
+    - xwayland: configure on a configure request and cleanup geometry
+      conversion (#9375)
+    - xwayland: correct pointer coordinate mismatch in X11 windows
+      (#9259)
+    - xwayland: handle window coords correctly (#9238)
+    - xwayland: improve dnd and cleanup (#9405)
+    - xwayland: prevent invalid window configurations for X11 apps
+      (#9253)
+    - xwayland: respect window size set by configure requests (#9190)
+    - xwayland: send synthetic configure events (#9193)
+
+-------------------------------------------------------------------
 Sun Feb  2 17:44:00 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.47.2:

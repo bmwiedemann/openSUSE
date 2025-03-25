@@ -22,7 +22,7 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.47.2
+Version:        0.48.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -39,7 +39,7 @@ BuildRequires:  glaze-devel
 BuildRequires:  glslang-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(aquamarine) >= 0.7.0
+BuildRequires:  pkgconfig(aquamarine) >= 0.8.0
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
