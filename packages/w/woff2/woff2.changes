@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 22 09:39:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Use cmake_build macro.
+
+-------------------------------------------------------------------
+Fri Mar 21 23:04:42 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+- Remove Group: entries, no longer used
+
+-------------------------------------------------------------------
 Mon Feb 17 12:06:09 UTC 2025 - pgajdos@suse.com
 
 - Add patch to fix build with gcc15:

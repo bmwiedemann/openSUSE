@@ -23,17 +23,18 @@ Version:        1.0.2
 Release:        0
 Summary:        Web Open Font Format 2.0 library
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/woff2
 Source0:        https://github.com/google/woff2/archive/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+
 # PATCH-FIX-UPSTREAM woff2-fix-overflow-when-decoding-glyf.patch -- Check for overflow when decoding glyf
 Patch0:         woff2-fix-overflow-when-decoding-glyf.patch
 # PATCH-FIX-OPENSUSE install-executables.patch -- Install woff tools
 Patch1:         install-executables.patch
 # PATCH-FIX-UPSTREAM woff2-gcc15.patch -- Fix build with gcc15 https://github.com/google/woff2/pull/176
 Patch2:         woff2-gcc15.patch
-BuildRequires:  cmake
+
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libbrotlidec) >= 1.0
@@ -48,7 +49,6 @@ efficiently package fonts linked to Web documents by means of CSS
 
 %package -n     libwoff2common%{soname}
 Summary:        Shared library for %{name}
-Group:          System/Libraries
 
 %description -n libwoff2common%{soname}
 Web Open Font Format (WOFF) 2.0 is an update to the existing WOFF
@@ -61,7 +61,6 @@ This package contains the shared library for %{name}.
 
 %package -n     libwoff2dec%{soname}
 Summary:        Shared library for %{name}
-Group:          System/Libraries
 
 %description -n libwoff2dec%{soname}
 Web Open Font Format (WOFF) 2.0 is an update to the existing WOFF
@@ -74,7 +73,6 @@ This package contains the shared library for %{name}.
 
 %package -n     libwoff2enc%{soname}
 Summary:        Shared library for %{name}
-Group:          System/Libraries
 
 %description -n libwoff2enc%{soname}
 Web Open Font Format (WOFF) 2.0 is an update to the existing WOFF
@@ -87,7 +85,6 @@ This package contains the shared library for %{name}.
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       libwoff2common%{soname} = %{version}
 Requires:       libwoff2dec%{soname} = %{version}
 Requires:       libwoff2enc%{soname} = %{version}
@@ -110,20 +107,19 @@ This package contains development files for %{name}.
 	-DBUILD_STATIC_LIBS=OFF \
 	-DCMAKE_INSTALL_PREFIX="%{_prefix}" \
 	-DCMAKE_INSTALL_LIBDIR="%{_libdir}" \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 	%{nil}
-%make_build
+%cmake_build
 
 %install
 %cmake_install
 
-%post -n libwoff2common%{soname} -p /sbin/ldconfig
-%postun -n libwoff2common%{soname} -p /sbin/ldconfig
+%check
+%ctest
 
-%post -n libwoff2dec%{soname} -p /sbin/ldconfig
-%postun -n libwoff2dec%{soname} -p /sbin/ldconfig
-
-%post -n libwoff2enc%{soname} -p /sbin/ldconfig
-%postun -n libwoff2enc%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libwoff2common%{soname}
+%ldconfig_scriptlets -n libwoff2dec%{soname}
+%ldconfig_scriptlets -n libwoff2enc%{soname}
 
 %files
 %license LICENSE
