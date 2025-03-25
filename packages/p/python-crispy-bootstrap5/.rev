@@ -23,4 +23,19 @@
     <comment></comment>
     <requestid>1188227</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c2f6ae294a3ad7920672b653b9686ae6</srcmd5>
+    <version>2024.10</version>
+    <time>1742936973</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.10:
+  * Added support for Django 5.1.
+  * Fixed `accordion.html`, `accordion-group.html` and `tab.html`
+    templates to render `css_class` attribute.
+  * Dropped support for django-crispy-forms 2.2 and earlier.
+  * FormActions template improvements. The template now considers
+    the `css_class` argument and adds the `row` class for
+    Horizontal forms.</comment>
+    <requestid>1255451</requestid>
+  </revision>
 </revisionlist>
