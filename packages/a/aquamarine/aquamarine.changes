@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Mar 23 22:17:25 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to aquamarine-0.8.0:
+  * New major release with various fixes to the infrastructure. ABI
+    break.
+  * Changes:
+    - consolidate EGL init/state
+    - Support setting drm content type property
+    - Compiler fixes and options
+    - drm: only allow multigpu blit to implcit, not all external
+      formats
+    - prioritize gpus with the most internal panels
+    - Get max bpc from drm format
+    - fix atomic reset being skipped, check nullptr elsewhere instead
+    - drm: Use RAII to manage EGL context
+    - Fix multi-GPU support for Nvidia
+    - misc: Add strict typing to attachment manager
+    - drm: only scan connected connectors
+    - backend: Fix Wayland backend idleCallbacks destruction
+    - misc: Fix Attachment shared pointer reinterpret
+    - backend, allocator: Fix multi-GPU format selection
+
+-------------------------------------------------------------------
 Thu Jan 30 08:49:15 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to aquamarine-0.7.2:

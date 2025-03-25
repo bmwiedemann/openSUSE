@@ -16,13 +16,13 @@
 #
 
 
-%define sover   6
+%define sover   7
 %define _description %{expand:
 Aquamarine is a very light linux rendering backend library. It
 provides basic abstractions for an application to render on a Wayland
 session (in a window) or a native DRM session.}
 Name:           aquamarine
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Rendering backend library
 License:        BSD-3-Clause
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hwdata)
-BuildRequires:  pkgconfig(hyprutils) >= 0.1.5
+BuildRequires:  pkgconfig(hyprutils) >= 0.5.2
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libinput) >= 1.26.0
