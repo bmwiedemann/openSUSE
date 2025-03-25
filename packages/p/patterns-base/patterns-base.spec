@@ -445,7 +445,11 @@ Recommends:     pciutils-ids
 Recommends:     perl-Bootloader
 Recommends:     perl-base
 Recommends:     pinentry
+%ifarch s390x
+Recommends:     blog-plymouth
+%else
 Recommends:     plymouth
+%endif
 # fuser (psmisc) by default (#304694)
 Recommends:     psmisc
 Recommends:     rsync
