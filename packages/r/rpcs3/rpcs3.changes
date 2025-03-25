@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 24 13:15:23 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to rpcs3-0.0.35~git20250322:
+  * Utils: Remove AVX10-256 detection (#16904)
+  * overlays: don't check for hdd dirs if we play a disc game
+  * Fix typo
+  * overlays: prefer overlay_picture over content_icon
+  * Qt: Don't fetch ICON0.PNG from game data for disc games
+  * overlays: Look for the overlay in the same dir as the background
+  * overlays: Don't use ICON0.PNG from hdd0 if the game is a disc game
+  * overlays: Simplify game content search
+  * overlays: adjust size and position of overlay image
+  * overlays: add background overlay image
+  * overlays: fix background image logic
+  * overlays: use std::string instead of raw path argument
+  * VS/MSVC: Enable LTCG and GL on release builds
+  * Update libusb to 1.0.28
+  * Qt: Remove supporters from translations
+  * Qt: only show shortcut confirmation once
+  * Remove unnecessary localization
+  * Fix typo
+  * Qt: fix handler not found in pad settings after changing language
+  * Remove some useless translations
+  * Fix typo
+
+-------------------------------------------------------------------
 Tue Mar 18 20:49:50 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update fix-test-files.patch
