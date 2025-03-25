@@ -1,0 +1,18 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/pothosware/SoapySDR.git</param>
+    <param name="revision">master</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">disable</param>
+    <param name="filename">soapy-sdr</param>
+    <param name="versionformat">0.8.1+git%cd.%h</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">soapy-sdr</param>
+  </service>
+</services>
+

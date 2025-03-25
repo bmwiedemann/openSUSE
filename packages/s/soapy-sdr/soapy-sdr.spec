@@ -1,9 +1,8 @@
 #
 # spec file for package soapy-sdr
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2017-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,19 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover 0_8
 Name:           soapy-sdr
-Version:        0.8.1
+Version:        0.8.1+git20250223.6e99da1
 Release:        0
 Summary:        Vendor and platform neutral SDR support library
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/pothosware/SoapySDR.git
-Source:         https://github.com/pothosware/SoapySDR/archive/%{name}-%{version}.tar.gz
+URL:            https://github.com/pothosware/SoapySDR.git
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -49,7 +48,7 @@ A vendor neutral and platform independent SDR support library.
 Summary:        Python bindings for SoapySDR
 Group:          Development/Languages/Python
 Provides:       python-%{name}
-Recommends:     pytnon-numpy
+Recommends:     python-numpy
 
 %description -n python3-SoapySDR
 Python Bindings for SoapySDR.
@@ -65,10 +64,11 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libSoapySDR.
 
 %prep
-%setup -q -n SoapySDR-%{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %cmake \
+  -DSOAPY_SDR_VERSION=%{version} \
   -DBUILD_PYTHON3=ON
 %make_jobs
 
@@ -80,16 +80,14 @@ applications that want to make use of libSoapySDR.
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 %ctest
 
-%post   -n libSoapySDR%{sover} -p /sbin/ldconfig
-%postun -n libSoapySDR%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libSoapySDR%{sover}
 
 %files
-%defattr(-,root,root)
 %{_bindir}/SoapySDRUtil
 
 %files -n libSoapySDR%{sover}
 %doc Changelog.txt README.md
-%license LICENSE_1_0.txt 
+%license LICENSE_1_0.txt
 %{_libdir}/libSoapySDR.so.*
 
 %files -n python3-SoapySDR
