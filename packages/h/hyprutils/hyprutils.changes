@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 23 22:32:57 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.5.2:
+  + A minor release with a new SP pointer-type reinterpret cast.
+
+- Changes from version 0.5.1:
+  + A minor update with some fixes.
+  + Fixes:
+    - os/process: pid is now populated for sync runs as well.
+    - animation: fix end callbacks readding the animation var
+  + Other:
+    - core: clang, clang-tidy fixes and comp options
+    - reenable wreorder
+
+-------------------------------------------------------------------
 Tue Jan 28 18:38:47 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.5.0:
