@@ -1,7 +1,7 @@
 #
 # spec file for package Catch2-2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,8 @@ This package provides version 2.x of Catch2.
 %cmake \
        -DCMAKE_INSTALL_DOCDIR:PATH=%{_defaultdocdir}/%{name} \
        -DPKGCONFIG_INSTALL_DIR:PATH=%{_libdir}/pkgconfig \
-       -DCATCH_BUILD_EXAMPLES:BOOL=ON
+       -DCATCH_BUILD_EXAMPLES:BOOL=ON \
+       -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
