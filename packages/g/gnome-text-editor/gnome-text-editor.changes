@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 25 08:03:53 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.2:
+  + Break out of recursive Policy-Kit authorization requests from
+    user-cancellation.
+  + Do not re-display position label as side-effect of auto-save.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 18 06:24:53 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:
