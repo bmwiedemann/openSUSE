@@ -1,0 +1,57 @@
+diff -rupN med-5.0.0/include/med_hdfi.h med-5.0.0-new/include/med_hdfi.h
+--- med-5.0.0/include/med_hdfi.h	2023-06-05 14:14:43.000000000 +0200
++++ med-5.0.0-new/include/med_hdfi.h	2025-01-24 00:35:16.280413387 +0100
+@@ -411,7 +411,7 @@ extern MEDC_EXPORT
+ med_err _MEDvisit(const med_idt fid, const char * const srcpath, const char * const dstpath,
+ 		  medvisitorfunc);
+ extern MEDC_EXPORT
+-med_err _MEDiterate(const med_idt fid, herr_t (*func)(), void * itdatas );
++med_err _MEDiterate(const med_idt fid, medvisitorfunc, void * itdatas );
+ 
+ extern MEDC_EXPORT
+ med_err
+diff -rupN med-5.0.0/src/ci/_MEDfieldComputingStepCheck236.c med-5.0.0-new/src/ci/_MEDfieldComputingStepCheck236.c
+--- med-5.0.0/src/ci/_MEDfieldComputingStepCheck236.c	2023-06-05 14:14:44.000000000 +0200
++++ med-5.0.0-new/src/ci/_MEDfieldComputingStepCheck236.c	2025-01-24 00:24:05.611844232 +0100
+@@ -146,7 +146,7 @@ med_err _MEDfieldComputingStepCheck236(m
+        * On vérifie que le nom du maillage par défaut est le même pour toutes
+        * les étapes de calcul de tous les couples (entitytype,geotype)
+        */
+-      if (_MEDiterate(_cstpid, _MEDcheckAttributeStringFunc, &_itdatas ) < 0) {
++      if (_MEDiterate(_cstpid, (medvisitorfunc)_MEDcheckAttributeStringFunc, &_itdatas ) < 0) {
+ 	MED_ERR_(_ret,MED_ERR_INVALID,MED_ERR_ATTRIBUTE,MED_ERR_VALUE_MSG);
+ 	SSCRUTE(_itdatas.attvalprec); SSCRUTE(_itdatas.attval); goto ERROR;
+       }
+@@ -157,7 +157,7 @@ med_err _MEDfieldComputingStepCheck236(m
+      * les étapes de calcul de tous les couples (entitytype,geotype)
+      */
+     if (checkmultiplemesh) {
+-      if (_MEDiterate(_cstpid, _MEDchecknSublinkFunc, multiplemesh ) < 0) {
++      if (_MEDiterate(_cstpid, (medvisitorfunc)_MEDchecknSublinkFunc, multiplemesh ) < 0) {
+ 	MED_ERR_(_ret,MED_ERR_COUNT,MED_ERR_DATAGROUP,MED_ERR_NBR_MSG MED_ERR_MESH_MSG);
+ 	SSCRUTE(_path);goto ERROR;
+       }
+diff -rupN med-5.0.0/src/hdfi/_MEDiterate.c med-5.0.0-new/src/hdfi/_MEDiterate.c
+--- med-5.0.0/src/hdfi/_MEDiterate.c	2023-06-05 14:14:45.000000000 +0200
++++ med-5.0.0-new/src/hdfi/_MEDiterate.c	2025-01-24 00:19:16.850962377 +0100
+@@ -25,7 +25,7 @@
+ /* 	  herr_t (*func)( hid_t g_id, const char *name, const H5L_info_t *info, void *op_data) ) */
+ 
+ med_err
+-_MEDiterate(const med_idt fid,  herr_t (*func)(), void * itdatas )
++_MEDiterate(const med_idt fid,  herr_t (*func)(hid_t g_id, const char *name, const H5L_info_t *info, void *op_data), void * itdatas )
+ {
+ 
+   med_err    _ret=-1;
+diff -rupN med-5.0.0/src/hdfi/_MEDvisit.c med-5.0.0-new/src/hdfi/_MEDvisit.c
+--- med-5.0.0/src/hdfi/_MEDvisit.c	2023-06-05 14:14:45.000000000 +0200
++++ med-5.0.0-new/src/hdfi/_MEDvisit.c	2025-01-24 00:19:06.155274807 +0100
+@@ -26,7 +26,7 @@
+ 
+ med_err
+ _MEDvisit(const med_idt fid, const char * const srcpath, const char * const dstpath,
+-	  herr_t (*func)() )
++	  herr_t (*func)(hid_t g_id, const char *name, const H5L_info_t *info, void *op_data) )
+ {
+ 
+   med_err    _ret=-1;

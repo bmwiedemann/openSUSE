@@ -55,4 +55,27 @@
     <comment></comment>
     <requestid>1157218</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>26d8be212f4dbf7afb5436c2f384f263</srcmd5>
+    <version>5.0.0</version>
+    <time>1742937204</time>
+    <user>anag+factory</user>
+    <comment>- Drop full URL for source tarball as the upstream web-server is
+  intermittently unreachable and causes issues with Factory bots
+  (add sha256sum of tarball as comment for optional verification).
+- Add patches taken from Fedora:
+  * med-tools-hdf1_14.patch: Allow compatiblity with HDF5 1.14.
+  * med-tools-python3_13.patch: Compatibility with python 3.13.
+  * med-tools-gcc15.patch: Fix build against GCC 15.
+- Re-enable building against python 3.13. 
+- Update to 5.0.0.
+- Rebase patches:
+  * Fix-no_return_in_nonvoid_function.patch
+- Remove obsolete patches:
+  * hdf5-1.12.patch
+- Add patches:
+  * 0001-Fix-AppendOutput-signature-for-Swig-4.3.patch
+</comment>
+    <requestid>1256027</requestid>
+  </revision>
 </revisionlist>

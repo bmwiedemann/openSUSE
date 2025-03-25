@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Mar 25 09:38:28 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop full URL for source tarball as the upstream web-server is
+  intermittently unreachable and causes issues with Factory bots
+  (add sha256sum of tarball as comment for optional verification).
+
+-------------------------------------------------------------------
+Fri Mar 14 08:52:33 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add patches taken from Fedora:
+  * med-tools-hdf1_14.patch: Allow compatiblity with HDF5 1.14.
+  * med-tools-python3_13.patch: Compatibility with python 3.13.
+  * med-tools-gcc15.patch: Fix build against GCC 15.
+- Re-enable building against python 3.13. 
+
+-------------------------------------------------------------------
+Fri Mar  7 13:09:24 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 5.0.0:
+  * No upstream release notes.
+- Rebase patches:
+  * Fix-no_return_in_nonvoid_function.patch
+- Remove obsolete patches:
+  * hdf5-1.12.patch
+- Add patches:
+  * 0001-Fix-AppendOutput-signature-for-Swig-4.3.patch
+
+-------------------------------------------------------------------
 Mon Mar 11 09:50:57 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - run fdupes during %install

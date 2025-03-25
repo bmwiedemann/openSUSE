@@ -1,7 +1,7 @@
 #
 # spec file for package med-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,13 @@ Name:           med-tools
 Summary:        A library to store and exchange meshed data
 License:        LGPL-3.0-only
 Group:          Productivity/Graphics/Other
-Version:        4.1.1
+Version:        5.0.0
 Release:        0
 URL:            https://www.salome-platform.org/
-Source0:        https://files.salome-platform.org/Salome/other/med-%{version}.tar.gz
+# Download server is unreachable except for specific user-agents, causing issues with bots
+# curl -A MozillaFirefox https://files.salome-platform.org/Salome/medfile/med-%{version}.tar.bz2
+# sha256sum 267e76d0c67ec51c10e3199484ec1508baa8d5ed845c628adf660529dce7a3d4
+Source0:        med-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE
 Patch0:         fix-cmakefiles.patch
 # PATCH-FIX-OPENSUSE
@@ -37,19 +40,25 @@ Patch1:         0003-Avoid-format-warnings-on-64-bit.patch
 Patch2:         use_installed_python_modules_for_tests.patch
 # PATCH-FIX-OPENSUSE
 Patch3:         Fix-no_return_in_nonvoid_function.patch
+# PATCH-FIX-OPENSUSE
+Patch4:         0001-Fix-AppendOutput-signature-for-Swig-4.3.patch
 # PATCH-FIX-UPSTREAM
-Patch4:         hdf5-1.12.patch
+Patch5:         https://src.fedoraproject.org/rpms/med/raw/rawhide/f/hdf5-1.14.patch#/med-tools-hdf1_14.patch
+# PATCH-FIX-UPSTREAM rebase based on ref:https://src.fedoraproject.org/rpms/med/blob/rawhide/f/med-py3.13.patch
+Patch6:         med-tools-python3_13.patch
+# PATCH-FIX-UPSTREAM
+Patch7:         https://src.fedoraproject.org/rpms/med/raw/rawhide/f/med-gcc15.patch#/med-tools-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  hdf5-devel >= 1.10.2
+BuildRequires:  hdf5-devel >= 1.12.1
 BuildRequires:  make
 BuildRequires:  zlib-devel
 %if %{with python_bindings}
 BuildRequires:  python3-devel
-BuildRequires:  swig
+BuildRequires:  swig >= 4.1
 %endif
 # test suite fails and we don't build FreeCAD on 32bit either anymore
 ExcludeArch:    %ix86
@@ -103,7 +112,7 @@ It uses the HDF5 file format to store the data.
 This package contains the python bindings
 
 %package -n libmed-devel
-Requires:       hdf5-devel >= 1.10.2
+Requires:       hdf5-devel >= 1.12.1
 Requires:       libmed%{sover} = %{version}
 Requires:       libmedC%{sover} = %{version}
 Requires:       libmedimport0 = %{version}
@@ -138,7 +147,7 @@ to store and exchange meshed data or computation results.
 It uses the HDF5 file format to store the data.
 
 %prep
-%autosetup -p1 -n med-%{version}_SRC
+%autosetup -p1 -n med-%{version}
 
 # Fix file not utf8
 iconv --from=ISO-8859-1 --to=UTF-8 ChangeLog > ChangeLog.new && \
@@ -151,7 +160,7 @@ mv ChangeLog.new ChangeLog
  -DMEDFILE_USE_MPI:BOOL=%{?with_mpi:ON}%{!?with_mpi:OFF} \
  -DMEDFILE_INSTALL_DOC:BOOL=ON
 
-%make_build
+%cmake_build
 
 %install
 %cmake_install
@@ -181,23 +190,12 @@ cd build
 export LC_ALL=C.utf8
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 export PYTHONPATH=$PYTHONPATH:%{buildroot}%{python3_sitearch}
-make test ARGS="--output-on-failure"
+%make_build test ARGS="--output-on-failure"
 
-%post -n libmed%{sover} -p /sbin/ldconfig
-
-%post -n libmedC%{sover} -p /sbin/ldconfig
-
-%post -n libmedfwrap%{sover} -p /sbin/ldconfig
-
-%postun -n libmed%{sover} -p /sbin/ldconfig
-
-%postun -n libmedC%{sover} -p /sbin/ldconfig
-
-%postun -n libmedfwrap%{sover} -p /sbin/ldconfig
-
-%post -n libmedimport0 -p /sbin/ldconfig
-
-%postun -n libmedimport0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libmed%{sover}
+%ldconfig_scriptlets -n libmedC%{sover}
+%ldconfig_scriptlets -n libmedfwrap%{sover}
+%ldconfig_scriptlets -n libmedimport0
 
 %files
 %{_bindir}/mdump*

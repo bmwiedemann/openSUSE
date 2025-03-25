@@ -1,0 +1,27 @@
+Index: med-5.0.0/python/med_enumtest_typemap.i
+===================================================================
+--- med-5.0.0.orig/python/med_enumtest_typemap.i
++++ med-5.0.0/python/med_enumtest_typemap.i
+@@ -128,7 +128,7 @@ public:
+   if (pclass == NULL) printf("%s\n","Can't get class $1_basetype");
+   Py_DECREF(pmod);
+   pargs  = Py_BuildValue("(i)",*$1);
+-  pinst  = PyEval_CallObject(pclass, pargs);
++  pinst  = PyObject_CallObject(pclass, pargs);
+   if (pinst == NULL) printf("%s\n","Can't instanciate class $1_basetype");
+   $result=SWIG_AppendOutput($result, pinst);
+ }
+Index: med-5.0.0/python/med_enum_typemap.i
+===================================================================
+--- med-5.0.0.orig/python/med_enum_typemap.i
++++ med-5.0.0/python/med_enum_typemap.i
+@@ -109,7 +109,7 @@ Type.__repr__= lambda self: #Type +"("+s
+   if (pclass == NULL) printf("%s\n","Can't get class $1_basetype");
+   Py_DECREF(pmod);
+   pargs  = Py_BuildValue("(i)",*$1);
+-  pinst  = PyEval_CallObject(pclass, pargs);
++  pinst  = PyObject_CallObject(pclass, pargs);
+   if (pinst == NULL) printf("%s\n","Can't instanciate class $1_basetype");
+   $result=SWIG_AppendOutput($result, pinst);
+ }
+

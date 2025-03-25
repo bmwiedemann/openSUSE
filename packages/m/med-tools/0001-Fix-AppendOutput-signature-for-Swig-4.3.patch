@@ -1,0 +1,121 @@
+From 879ed9d8cf54fc46939da1af987d7b5515ecdf98 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 7 Mar 2025 17:34:06 +0100
+Subject: [PATCH] Fix AppendOutput signature for Swig 4.3
+
+Also fix the med_err return value mapping. Older Swig version discarded
+the first "None" value from the resultobj if there were additional
+output parameters. Now, the result has to be discarded (it is handled
+by the %exception specification), and if there is no OUTPUT parameter
+the resultobj has to be initialized with Py_None.
+
+See https://github.com/swig/swig/issues/3084
+---
+ python/med_array_typemap.i    |  4 ++--
+ python/med_bool_typemap.i     |  2 +-
+ python/med_common.i           | 15 ++++++++++-----
+ python/med_enum_typemap.i     |  2 +-
+ python/med_enumtest_typemap.i |  2 +-
+ 5 files changed, 15 insertions(+), 10 deletions(-)
+
+diff --git a/python/med_array_typemap.i b/python/med_array_typemap.i
+index 6712b35..23e784b 100644
+--- a/python/med_array_typemap.i
++++ b/python/med_array_typemap.i
+@@ -181,7 +181,7 @@ Type.__repr__= lambda self: #Type +"("+str([x for x in self])+")"
+ //  TypeMed * const ParamName : OUT 2/4 (l'allocation Type est faite ds Python)
+ %typemap(freearg) TypeMed * const ParamName {
+   Py_INCREF(o$argnum);
+-  $result=SWIG_Python_AppendOutput($result, o$argnum);
++  $result=SWIG_AppendOutput($result, o$argnum);
+ }
+ // TypeMed * const (OUT) 3/4
+ // pour ne pas activer un out du TypeMed * const (par sécurité)
+@@ -290,7 +290,7 @@ Type.__repr__= lambda self: #Type +"("+str([x for x in self])+")"
+ //  unsigned char * const : OUT 2/4 (l'allocation Type est faite ds Python)
+ %typemap(freearg) unsigned char * const {
+   Py_INCREF(o$argnum);
+-  $result=SWIG_Python_AppendOutput($result, o$argnum);
++  $result=SWIG_AppendOutput($result, o$argnum);
+ }
+ // unsigned char * const (OUT) 3/4
+ // pour ne pas activer un out du unsigned char * const (par sécurité)
+diff --git a/python/med_bool_typemap.i b/python/med_bool_typemap.i
+index 73c3660..26bce34 100644
+--- a/python/med_bool_typemap.i
++++ b/python/med_bool_typemap.i
+@@ -22,7 +22,7 @@
+    /*      Py_DECREF(o2); */
+    /*      Py_DECREF(o3); */
+    /*  } */
+-  $result=SWIG_Python_AppendOutput($result, o);
++  $result=SWIG_AppendOutput($result, o);
+ }
+ 
+ %typemap(in,numinputs=0) med_bool *(med_bool temp) {
+diff --git a/python/med_common.i b/python/med_common.i
+index f48a8b0..c458b14 100644
+--- a/python/med_common.i
++++ b/python/med_common.i
+@@ -11,13 +11,11 @@
+   $action
+     if ( result < 0 ) {
+       /* fprintf(stderr,"Code erreur MED : %2d\n",result); */
+-      /* SWIG_exception(SWIG_RuntimeError,"Error returned from MEDfichier API (funcname)."); */
+       PyObject* exobj = PyTuple_New(2);
+       PyTuple_SetItem(exobj,0,PyString_FromString("Error returned from MEDfichier API (funcname)."));
+       PyTuple_SetItem(exobj,1,PyInt_FromLong((long) result));
+       SWIG_Python_SetErrorObj(PyExc_RuntimeError,exobj);
+-      /* PyErr_SetString(PyExc_Exception, str(result));  */
+-      return NULL;
++      SWIG_fail;
+     }
+ }
+ %enddef
+@@ -101,8 +99,15 @@ MEDINT64=None
+ //Désactive toutes les sorties d'erreur
+ //les erreurs sont gérées par les exceptions
+ %typemap(out) med_err {
+-  Py_INCREF(Py_None);
+-  $result=Py_None;
++  // Suppress MyErr output, error codes already handled by %expection
++}
++%typemap(ret) med_err {
++    // In case the wrapped function has not OUTPUT parameters result
++    // is a nullptr, push the requite None object
++    if (!$result) {
++        $result = Py_None;
++        Py_INCREF($result);
++    }
+ }
+ 
+ //Ajoute la fonctionnalité de passage d'arguments par mot clés
+diff --git a/python/med_enum_typemap.i b/python/med_enum_typemap.i
+index 9c14ac5..b5ff5ee 100644
+--- a/python/med_enum_typemap.i
++++ b/python/med_enum_typemap.i
+@@ -111,7 +111,7 @@ Type.__repr__= lambda self: #Type +"("+str(self.val)+")"
+   pargs  = Py_BuildValue("(i)",*$1);
+   pinst  = PyEval_CallObject(pclass, pargs);
+   if (pinst == NULL) printf("%s\n","Can't instanciate class $1_basetype");
+-  $result=SWIG_Python_AppendOutput($result, pinst);
++  $result=SWIG_AppendOutput($result, pinst);
+ }
+ 
+ %typemap(in,numinputs=0) TypeEnum * (TypeEnum temp) {
+diff --git a/python/med_enumtest_typemap.i b/python/med_enumtest_typemap.i
+index 604b700..0c96a8a 100644
+--- a/python/med_enumtest_typemap.i
++++ b/python/med_enumtest_typemap.i
+@@ -130,7 +130,7 @@ public:
+   pargs  = Py_BuildValue("(i)",*$1);
+   pinst  = PyEval_CallObject(pclass, pargs);
+   if (pinst == NULL) printf("%s\n","Can't instanciate class $1_basetype");
+-  $result=SWIG_Python_AppendOutput($result, pinst);
++  $result=SWIG_AppendOutput($result, pinst);
+ }
+ 
+ %typemap(in,numinputs=0) TypeEnum * (TypeEnum temp) {
+-- 
+2.48.1
+

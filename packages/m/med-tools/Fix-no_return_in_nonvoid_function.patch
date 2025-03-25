@@ -56,21 +56,3 @@ diff -auNr med-4.1.0/src/MEDiterators.c med-4.1.0-new/src/MEDiterators.c
    }
  }
  
-diff -auNr med-4.1.0/src/misc/_MEDgetEntityListAttributeIName.c med-4.1.0-new/src/misc/_MEDgetEntityListAttributeIName.c
---- med-4.1.0/src/misc/_MEDgetEntityListAttributeIName.c	2020-03-11 17:40:07.000000000 +0800
-+++ med-4.1.0-new/src/misc/_MEDgetEntityListAttributeIName.c	2021-01-06 12:00:25.822276513 +0800
-@@ -30,6 +30,7 @@
-     case  MED_DESCENDING_EDGE   : return MED_NOM_LGE; break;
-     case  MED_NODE_ELEMENT      : return MED_NOM_LGT; break;
-     case  MED_STRUCT_ELEMENT    : return MED_NOM_LGS; break;
-+  default: return MED_NOM_LEN; break; // MED_UNDEF_ENTITY_TYPE
-   }
- }
- /*ALL : Nombre d'étapes partageant la liste globale des types utilisés dans ttes les étapes .*/
-@@ -42,5 +43,6 @@
-     case  MED_DESCENDING_EDGE   : return MED_NOM_LEA; break;
-     case  MED_NODE_ELEMENT      : return MED_NOM_LTA; break;
-     case  MED_STRUCT_ELEMENT    : return MED_NOM_LSA; break;
-+  default: return MED_NOM_LAA; break; // MED_UNDEF_ENTITY_TYPE
-   }
- }
