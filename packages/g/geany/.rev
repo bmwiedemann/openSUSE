@@ -521,4 +521,13 @@
     <comment></comment>
     <requestid>1170052</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>ea945ab4e908c63fd6c3932b25fb8ab6</srcmd5>
+    <version>2.0</version>
+    <time>1742936882</time>
+    <user>anag+factory</user>
+    <comment>- Add geany-2.0-gcc15.patch: Fix build with gcc 15 (patch lifted
+  from gentoo). (forwarded request 1254849 from iznogood)</comment>
+    <requestid>1255575</requestid>
+  </revision>
 </revisionlist>

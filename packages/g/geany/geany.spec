@@ -1,7 +1,7 @@
 #
 # spec file for package geany
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,14 @@ Group:          Development/Tools/IDE
 URL:            https://geany.org
 Source0:        https://download.geany.org/%{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
+
 # PATCH-FIX-UPSTREAM geany-appstream.patch gh#geany/geany#1142 badshah400@gmail.com -- Downstream created appstream file, submitted upstream
 Patch1:         geany-appstream.patch
+# PATCH-FIX-UPSTREAM reproducible.patch -- Make the build reproducible
 Patch2:         reproducible.patch
+# PATCH-FIX-UPSTREAM geany-2.0-gcc15.patch -- Fix build with gcc 15
+Patch3:         geany-2.0-gcc15.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docutils
