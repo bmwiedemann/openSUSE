@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Mar 21 20:18:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- drop golang-packaging and zstd build dependencies
+- remove '-s -w' to not disable stripping (this make debuginfo
+  unavailable)
+
+-------------------------------------------------------------------
+Fri Mar 14 16:48:22 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Initial release
