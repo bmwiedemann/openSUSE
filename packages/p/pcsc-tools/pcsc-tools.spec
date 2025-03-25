@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pcsc-tools
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        Smart card tools
 License:        GPL-2.0-or-later
