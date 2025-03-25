@@ -1,7 +1,7 @@
 #
-# spec file for package texlive-specs-n.spec
+# spec file for package texlive-specs-n
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2024
+%define texlive_version  2025
 %define texlive_previous 2022
-%define texlive_release  20240311
-%define texlive_noarch   216
-%define biber_version    2.19
+%define texlive_release  20250308
+%define texlive_noarch   218
+%define biber_version    2.20
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-n
-Version:        2024
+Version:        2025
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -111,7 +111,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source1:        latex-web-companion.doc.tar.xz
 
 %description -n texlive-latex-web-companion
@@ -293,7 +293,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-web-companion/ch7/xslexa1.xsl
 
 %package -n texlive-latex2e-help-texinfo
-Version:        %{texlive_version}.%{texlive_noarch}.svn65552
+Version:        %{texlive_version}.%{texlive_noarch}.svn71252
 Release:        0
 License:        LPPL-1.0
 Summary:        Unofficial reference manual covering LaTeX2e
@@ -320,7 +320,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source2:        latex2e-help-texinfo.doc.tar.xz
 
 %description -n texlive-latex2e-help-texinfo
@@ -328,9 +328,10 @@ The manual is provided as Texinfo source (which was originally
 derived from the VMS help file in the DECUS TeX distribution of
 1990, with many subsequent changes). This is a collaborative
 development, and details of getting involved are to be found on
-the package home page. A French translation is available as a
-separate package. All the other formats in the distribution are
-derived from the Texinfo source, as usual.
+the package home page. A Spanish translation is included here,
+and a French translation is available as a separate package.
+All the other formats in the distribution are derived from the
+Texinfo source, as usual.
 
 %preun -n texlive-latex2e-help-texinfo
 if test $1 = 0; then
@@ -406,7 +407,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source3:        latex2e-help-texinfo-fr.doc.tar.xz
 
 %description -n texlive-latex2e-help-texinfo-fr
@@ -480,7 +481,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source4:        latex2e-help-texinfo-spanish.doc.tar.xz
 
 %description -n texlive-latex2e-help-texinfo-spanish
@@ -563,7 +564,7 @@ Requires:       tex(fancyhdr.sty)
 Requires:       tex(fancyheadings.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source5:        latex2man.tar.xz
 Source6:        latex2man.doc.tar.xz
 Source7:        latex2man_tmphandling.dif
@@ -674,7 +675,7 @@ Suggests:       texlive-latex2nemeth-doc >= %{texlive_version}
 Provides:       tex(latex2nemeth.jar)
 Requires:       java
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source8:        latex2nemeth.tar.xz
 Source9:        latex2nemeth.doc.tar.xz
 
@@ -744,7 +745,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/latex2nemeth/latex2nemeth.jar
 
 %package -n texlive-latex2pydata
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn68919
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.0svn74439
 Release:        0
 License:        LPPL-1.0
 Summary:        Write data to file in Python literal format
@@ -776,7 +777,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fvextra.sty)
 Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source10:       latex2pydata.tar.xz
 Source11:       latex2pydata.doc.tar.xz
 
@@ -789,7 +790,7 @@ is possible to check for the existence of external cached
 content generated with the data.
 
 %package -n texlive-latex2pydata-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn68919
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.0svn74439
 Release:        0
 Summary:        Documentation for texlive-latex2pydata
 License:        LPPL-1.0
@@ -818,6 +819,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-latex2pydata-doc
+%{_texmfdistdir}/doc/latex/latex2pydata/CHANGELOG.md
 %{_texmfdistdir}/doc/latex/latex2pydata/README
 %{_texmfdistdir}/doc/latex/latex2pydata/latex2pydata.pdf
 
@@ -852,7 +854,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source12:       latex4musicians.doc.tar.xz
 
 %description -n texlive-latex4musicians
@@ -1023,7 +1025,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source13:       latex4wp.doc.tar.xz
 
 %description -n texlive-latex4wp
@@ -1096,7 +1098,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source14:       latex4wp-it.doc.tar.xz
 
 %description -n texlive-latex4wp-it
@@ -1179,7 +1181,7 @@ Requires:       tex(ucharclasses.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source15:       latexbangla.tar.xz
 Source16:       latexbangla.doc.tar.xz
 
@@ -1232,7 +1234,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/latexbangla/latexbangla.sty
 
 %package -n texlive-latexbug
-Version:        %{texlive_version}.%{texlive_noarch}.1.0nsvn63596
+Version:        %{texlive_version}.%{texlive_noarch}.1.0psvn72762
 Release:        0
 License:        LPPL-1.0
 Summary:        Bug-classification for LaTeX related bugs
@@ -1261,7 +1263,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latexbug-doc >= %{texlive_version}
 Provides:       tex(latexbug.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source17:       latexbug.tar.xz
 Source18:       latexbug.doc.tar.xz
 
@@ -1272,7 +1274,7 @@ it will be loaded in any test file that is intended to be sent
 to the LaTeX bug database as part of a bug report.
 
 %package -n texlive-latexbug-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0nsvn63596
+Version:        %{texlive_version}.%{texlive_noarch}.1.0psvn72762
 Release:        0
 Summary:        Documentation for texlive-latexbug
 License:        LPPL-1.0
@@ -1336,7 +1338,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source19:       latexcheat.doc.tar.xz
 
 %description -n texlive-latexcheat
@@ -1394,7 +1396,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source20:       latexcheat-de.doc.tar.xz
 
 %description -n texlive-latexcheat-de
@@ -1453,7 +1455,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source21:       latexcheat-esmx.doc.tar.xz
 
 %description -n texlive-latexcheat-esmx
@@ -1511,7 +1513,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source22:       latexcheat-ptbr.doc.tar.xz
 
 %description -n texlive-latexcheat-ptbr
@@ -1571,7 +1573,7 @@ Suggests:       texlive-latexcolors-doc >= %{texlive_version}
 Provides:       tex(latexcolors.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source23:       latexcolors.tar.xz
 Source24:       latexcolors.doc.tar.xz
 
@@ -1646,7 +1648,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(epstopdf-sys.cfg)
 Provides:       tex(lualatexiniconfig.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source25:       latexconfig.tar.xz
 
 %description -n texlive-latexconfig
@@ -1701,7 +1703,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source26:       latexcourse-rug.doc.tar.xz
 
 %description -n texlive-latexcourse-rug
@@ -1771,7 +1773,7 @@ Requires:       tex(pdftexcmds.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source27:       latexdemo.tar.xz
 Source28:       latexdemo.doc.tar.xz
 
@@ -1818,7 +1820,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/latexdemo/latexdemo.sty
 
 %package -n texlive-latexdiff
-Version:        %{texlive_version}.%{texlive_noarch}.1.3.3svn64980
+Version:        %{texlive_version}.%{texlive_noarch}.1.3.4svn72099
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Determine and mark up significant differences between LaTeX files
@@ -1880,7 +1882,7 @@ Requires:       perl(vars)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source29:       latexdiff.tar.xz
 Source30:       latexdiff.doc.tar.xz
 Source31:       latexdiff_p2top3.dif
@@ -1898,7 +1900,7 @@ to override this default behaviour and accept or reject
 selected changes only.
 
 %package -n texlive-latexdiff-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3.3svn64980
+Version:        %{texlive_version}.%{texlive_noarch}.1.3.4svn72099
 Release:        0
 Summary:        Documentation for texlive-latexdiff
 License:        GPL-2.0-or-later
@@ -1982,7 +1984,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latexfileinfo-pkgs-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source32:       latexfileinfo-pkgs.tar.xz
 Source33:       latexfileinfo-pkgs.doc.tar.xz
 
@@ -2061,7 +2063,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latexfileversion-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source34:       latexfileversion.tar.xz
 Source35:       latexfileversion.doc.tar.xz
 
@@ -2140,7 +2142,7 @@ Provides:       tex(latexgit.sty)
 Requires:       tex(datetime.sty)
 Requires:       tex(pgfkeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source36:       latexgit.tar.xz
 Source37:       latexgit.doc.tar.xz
 
@@ -2188,7 +2190,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/latexgit/latexgit.sty
 
 %package -n texlive-latexindent
-Version:        %{texlive_version}.%{texlive_noarch}.3.23.6svn69472
+Version:        %{texlive_version}.%{texlive_noarch}.3.24.4svn71840
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Indent a LaTeX document, highlighting the programming structure
@@ -2217,6 +2219,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latexindent-doc >= %{texlive_version}
+Requires:       perl(Config)
+#!BuildIgnore:  perl(Config)
 Requires:       perl(Cwd)
 #!BuildIgnore:  perl(Cwd)
 Requires:       perl(Data::Dumper)
@@ -2247,16 +2251,22 @@ Requires:       perl(Text::Wrap)
 #!BuildIgnore:  perl(Text::Wrap)
 Requires:       perl(YAML::Tiny)
 #!BuildIgnore:  perl(YAML::Tiny)
+Requires:       perl(constant)
+#!BuildIgnore:  perl(constant)
+Requires:       perl(feature)
+#!BuildIgnore:  perl(feature)
 Requires:       perl(lib)
 #!BuildIgnore:  perl(lib)
 Requires:       perl(open)
 #!BuildIgnore:  perl(open)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
+Requires:       perl(utf8)
+#!BuildIgnore:  perl(utf8)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source38:       latexindent.tar.xz
 Source39:       latexindent.doc.tar.xz
 
@@ -2266,7 +2276,7 @@ to highlight the structure for the reader. Included are also
 binary (executable) files for Windows, Ubuntu Linux, and macOS.
 
 %package -n texlive-latexindent-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.23.6svn69472
+Version:        %{texlive_version}.%{texlive_noarch}.3.24.4svn71840
 Release:        0
 Summary:        Documentation for texlive-latexindent
 License:        GPL-2.0-or-later
@@ -2342,6 +2352,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/latexindent/LatexIndent/Switches.pm
 %{_texmfdistdir}/scripts/latexindent/LatexIndent/Tokens.pm
 %{_texmfdistdir}/scripts/latexindent/LatexIndent/TrailingComments.pm
+%{_texmfdistdir}/scripts/latexindent/LatexIndent/UTF8CmdLineArgsFileOperation.pm
 %{_texmfdistdir}/scripts/latexindent/LatexIndent/UnNamedGroupingBracesBrackets.pm
 %{_texmfdistdir}/scripts/latexindent/LatexIndent/Verbatim.pm
 %{_texmfdistdir}/scripts/latexindent/LatexIndent/Version.pm
@@ -2350,7 +2361,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/latexindent/latexindent.pl
 
 %package -n texlive-latexmk
-Version:        %{texlive_version}.%{texlive_noarch}.4.83svn69657
+Version:        %{texlive_version}.%{texlive_noarch}.4.86asvn73224
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Fully automated LaTeX document generation
@@ -2418,7 +2429,7 @@ Requires:       perl(utf8)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source40:       latexmk.tar.xz
 Source41:       latexmk.doc.tar.xz
 Source42:       latexmk_conf.dif
@@ -2435,7 +2446,7 @@ changed. Thus a previewer can offer a display of the document's
 latest state.
 
 %package -n texlive-latexmk-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.83svn69657
+Version:        %{texlive_version}.%{texlive_noarch}.4.86asvn73224
 Release:        0
 Summary:        Documentation for texlive-latexmk
 License:        GPL-2.0-or-later
@@ -2484,6 +2495,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/support/latexmk/example_rcfiles/hyperxmp-latexmkrc
 %{_texmfdistdir}/doc/support/latexmk/example_rcfiles/knitr-latexmkrc
 %{_texmfdistdir}/doc/support/latexmk/example_rcfiles/lualatex_latexmkrc
+%{_texmfdistdir}/doc/support/latexmk/example_rcfiles/memoize_latexmkrc
 %{_texmfdistdir}/doc/support/latexmk/example_rcfiles/minted_latexmkrc
 %{_texmfdistdir}/doc/support/latexmk/example_rcfiles/mpost_latexmkrc
 %{_texmfdistdir}/doc/support/latexmk/example_rcfiles/nomenclature_latexmkrc
@@ -2493,7 +2505,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/support/latexmk/example_rcfiles/pythontex-latexmkrc
 %{_texmfdistdir}/doc/support/latexmk/example_rcfiles/sagetex_latexmkrc
 %{_texmfdistdir}/doc/support/latexmk/example_rcfiles/schulz-texshop-latexmkrc
-%{_texmfdistdir}/doc/support/latexmk/example_rcfiles/splitindex.latexmkrc
+%{_texmfdistdir}/doc/support/latexmk/example_rcfiles/splitindex_latexmkrc
 %{_texmfdistdir}/doc/support/latexmk/example_rcfiles/sweave_latexmkrc
 %{_texmfdistdir}/doc/support/latexmk/example_rcfiles/tex4ht-latexmkrc
 %{_texmfdistdir}/doc/support/latexmk/example_rcfiles/texinfo-latexmkrc
@@ -2552,7 +2564,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latexmp-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source43:       latexmp.tar.xz
 Source44:       latexmp.doc.tar.xz
 
@@ -2645,7 +2657,7 @@ Requires:       perl(open)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source45:       latexpand.tar.xz
 Source46:       latexpand.doc.tar.xz
 Source47:       latexpand_perl.dif
@@ -2724,7 +2736,7 @@ Provides:       tex(latino-sine-flexione.sty)
 Requires:       tex(datetime.sty)
 Requires:       tex(fontenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source48:       latino-sine-flexione.tar.xz
 Source49:       latino-sine-flexione.doc.tar.xz
 
@@ -4623,7 +4635,7 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source50:       lato.tar.xz
 Source51:       lato.doc.tar.xz
 
@@ -6606,7 +6618,7 @@ Requires:       tex(calc.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source52:       layaureo.tar.xz
 Source53:       layaureo.doc.tar.xz
 
@@ -6684,7 +6696,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-layouts-doc >= %{texlive_version}
 Provides:       tex(layouts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source54:       layouts.tar.xz
 Source55:       layouts.doc.tar.xz
 
@@ -6762,7 +6774,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lazylist-doc >= %{texlive_version}
 Provides:       tex(lazylist.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source56:       lazylist.tar.xz
 Source57:       lazylist.doc.tar.xz
 
@@ -6844,7 +6856,7 @@ Requires:       tex(iftex.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(textcase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source58:       lccaps.tar.xz
 Source59:       lccaps.doc.tar.xz
 
@@ -6924,7 +6936,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lcd-doc >= %{texlive_version}
 Provides:       tex(lcd.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source60:       lcd.tar.xz
 Source61:       lcd.doc.tar.xz
 
@@ -7021,7 +7033,7 @@ Provides:       man(t1reencode.1)
 Provides:       man(t1testpage.1)
 Provides:       man(ttftotype42.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source62:       lcdftypetools.doc.tar.xz
 
 %description -n texlive-lcdftypetools
@@ -7107,7 +7119,7 @@ Suggests:       texlive-lcg-doc >= %{texlive_version}
 Provides:       tex(lcg.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source63:       lcg.tar.xz
 Source64:       lcg.doc.tar.xz
 
@@ -7189,7 +7201,7 @@ Provides:       tex(lcywcmtt.fd)
 Provides:       tex(lcywenc.def)
 Requires:       tex(ifpdf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source65:       lcyw.tar.xz
 Source66:       lcyw.doc.tar.xz
 
@@ -7272,7 +7284,7 @@ Suggests:       texlive-leading-doc >= %{texlive_version}
 Provides:       tex(leading.sty)
 Requires:       tex(calc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source67:       leading.tar.xz
 Source68:       leading.doc.tar.xz
 
@@ -7368,7 +7380,7 @@ Requires:       tex(translations.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(zref-totpages.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source69:       leadsheets.tar.xz
 Source70:       leadsheets.doc.tar.xz
 
@@ -7427,7 +7439,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/leadsheets/leadsheets.sty
 
 %package -n texlive-leaflet
-Version:        %{texlive_version}.%{texlive_noarch}.2.1asvn56878
+Version:        %{texlive_version}.%{texlive_noarch}.2.1csvn70652
 Release:        0
 License:        LPPL-1.0
 Summary:        Create small handouts (flyers)
@@ -7460,7 +7472,7 @@ Requires:       tex(etex.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(pifont.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source71:       leaflet.tar.xz
 Source72:       leaflet.doc.tar.xz
 
@@ -7473,7 +7485,7 @@ PostScript and PDF.) This is a complete reimplementation with
 permission of the original author Jurgen Schlegelmilch.
 
 %package -n texlive-leaflet-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1asvn56878
+Version:        %{texlive_version}.%{texlive_noarch}.2.1csvn70652
 Release:        0
 Summary:        Documentation for texlive-leaflet
 License:        LPPL-1.0
@@ -7562,7 +7574,7 @@ Requires:       tex(tikz-cd.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(wrapfig.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source73:       lebhart.tar.xz
 Source74:       lebhart.doc.tar.xz
 
@@ -7652,7 +7664,7 @@ Provides:       tex(ltr-slides.tex)
 Provides:       tex(ltr-steps.tex)
 Provides:       tex(t-lecturer.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source75:       lecturer.tar.xz
 Source76:       lecturer.doc.tar.xz
 
@@ -7739,7 +7751,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/lecturer/t-lecturer.tex
 
 %package -n texlive-lectures
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.5svn53642
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.6svn73727
 Release:        0
 License:        LPPL-1.0
 Summary:        A document class for quickly drafting nice looking lecture notes
@@ -7774,7 +7786,6 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(amsthm.sty)
 Requires:       tex(array.sty)
-Requires:       tex(babel.sty)
 Requires:       tex(biblatex.sty)
 Requires:       tex(bm.sty)
 Requires:       tex(bodegraph.sty)
@@ -7822,7 +7833,7 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xfrac.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source77:       lectures.tar.xz
 Source78:       lectures.doc.tar.xz
 
@@ -7833,7 +7844,7 @@ environments, automatic spacing and alignment of figures and
 much more. More information is available in the package readme.
 
 %package -n texlive-lectures-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.5svn53642
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.6svn73727
 Release:        0
 Summary:        Documentation for texlive-lectures
 License:        LPPL-1.0
@@ -7864,6 +7875,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-lectures-doc
 %{_texmfdistdir}/doc/latex/lectures/LICENSE
 %{_texmfdistdir}/doc/latex/lectures/README.md
+%{_texmfdistdir}/doc/latex/lectures/example.tex
 
 %files -n texlive-lectures
 %{_texmfdistdir}/tex/latex/lectures/lectures.cls
@@ -7899,7 +7911,7 @@ Suggests:       texlive-lectureslides-doc >= %{texlive_version}
 Provides:       tex(lectureslides.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source79:       lectureslides.tar.xz
 Source80:       lectureslides.doc.tar.xz
 
@@ -7977,7 +7989,7 @@ Provides:       tex(ledarab.sty)
 Provides:       tex(ledmac.sty)
 Provides:       tex(ledpar.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source81:       ledmac.tar.xz
 Source82:       ledmac.doc.tar.xz
 
@@ -8089,7 +8101,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-leftidx-doc >= %{texlive_version}
 Provides:       tex(leftidx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source83:       leftidx.tar.xz
 Source84:       leftidx.doc.tar.xz
 
@@ -8165,7 +8177,7 @@ Provides:       tex(leftindex.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source85:       leftindex.tar.xz
 Source86:       leftindex.doc.tar.xz
 
@@ -8246,7 +8258,7 @@ Requires:       tex(glossary-inline.sty)
 Requires:       tex(glossary-mcols.sty)
 Requires:       tex(glossary-tree.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source87:       leipzig.tar.xz
 Source88:       leipzig.doc.tar.xz
 
@@ -8330,7 +8342,7 @@ Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source89:       lengthconvert.tar.xz
 Source90:       lengthconvert.doc.tar.xz
 
@@ -8374,8 +8386,118 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-lengthconvert
 %{_texmfdistdir}/tex/latex/lengthconvert/lengthconvert.sty
 
+%package -n texlive-lete-sans-math
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.45svn73129
+Release:        0
+License:        OFL-1.1
+Summary:        Lato-based OpenType Math font for LuaTeX and XeTeX
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Requires:       texlive-lete-sans-math-fonts >= %{texlive_version}
+Suggests:       texlive-lete-sans-math-doc >= %{texlive_version}
+Provides:       tex(lete-sans-math.sty)
+Requires:       tex(iftex.sty)
+Requires:       tex(unicode-math.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source91:       lete-sans-math.tar.xz
+Source92:       lete-sans-math.doc.tar.xz
+
+%description -n texlive-lete-sans-math
+This package provides a Unicode Math font LeteSansMath.otf
+meant to be used together with Lato sans-serif TrueType Text
+fonts in LuaLaTeX or XeLaTeX documents. Note: "Lato" means
+"Summer" in Polish, same as "l'ete" in French.
+
+%package -n texlive-lete-sans-math-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.45svn73129
+Release:        0
+Summary:        Documentation for texlive-lete-sans-math
+License:        OFL-1.1
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-lete-sans-math and texlive-alldocumentation)
+
+%description -n texlive-lete-sans-math-doc
+This package includes the documentation for texlive-lete-sans-math
+
+%package -n texlive-lete-sans-math-fonts
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.45svn73129
+Release:        0
+Summary:        Severed fonts for texlive-lete-sans-math
+License:        OFL-1.1
+URL:            https://www.tug.org/texlive/
+Group:          Productivity/Publishing/TeX/Fonts
+%reconfigure_fonts_prereq
+Requires(posttrans): fontconfig
+Requires(posttrans): ghostscript-fonts-std
+Suggests:       xorg-x11-fonts-core
+
+%description -n texlive-lete-sans-math-fonts
+The  separated fonts package for texlive-lete-sans-math
+
+%post -n texlive-lete-sans-math
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-lete-sans-math
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-lete-sans-math
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%reconfigure_fonts_scriptlets -n texlive-lete-sans-math-fonts
+
+%files -n texlive-lete-sans-math-doc
+%{_texmfdistdir}/doc/fonts/lete-sans-math/LeteSansMath.ltx
+%{_texmfdistdir}/doc/fonts/lete-sans-math/LeteSansMath.pdf
+%{_texmfdistdir}/doc/fonts/lete-sans-math/README.md
+%{_texmfdistdir}/doc/fonts/lete-sans-math/unimath-lete.ltx
+%{_texmfdistdir}/doc/fonts/lete-sans-math/unimath-lete.pdf
+
+%files -n texlive-lete-sans-math
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/lete-sans-math/LeteSansMath-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/lete-sans-math/LeteSansMath.otf
+%{_texmfdistdir}/tex/latex/lete-sans-math/lete-sans-math.sty
+
+%files -n texlive-lete-sans-math-fonts
+%dir %{_datadir}/fonts/texlive-lete-sans-math
+%{_datadir}/fontconfig/conf.avail/58-texlive-lete-sans-math.conf
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-lete-sans-math/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-lete-sans-math/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-lete-sans-math/fonts.scale
+%{_datadir}/fonts/texlive-lete-sans-math/LeteSansMath-Bold.otf
+%{_datadir}/fonts/texlive-lete-sans-math/LeteSansMath.otf
+
 %package -n texlive-letgut
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.9svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.12svn72713
 Release:        0
 License:        LPPL-1.0
 Summary:        Class for the newsletter "La Lettre GUTenberg" of the French TeX User Group GUTenberg
@@ -8432,7 +8554,6 @@ Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hypcap.sty)
 Requires:       tex(hyperref.sty)
-Requires:       tex(l3keys2e.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(ninecolors.sty)
@@ -8450,9 +8571,9 @@ Requires:       tex(varioref.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xurl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source91:       letgut.tar.xz
-Source92:       letgut.doc.tar.xz
+# from 20250308
+Source93:       letgut.tar.xz
+Source94:       letgut.doc.tar.xz
 
 %description -n texlive-letgut
 The French TeX User Group GUTenberg has been publishing "The
@@ -8480,7 +8601,7 @@ et documentee, a meme d'etre publiee sur le CTAN. C'est
 desormais chose faite avec la presente classe letgut.
 
 %package -n texlive-letgut-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.9svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.12svn72713
 Release:        0
 Summary:        Documentation for texlive-letgut
 License:        LPPL-1.0
@@ -8567,9 +8688,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-letltxmacro-doc >= %{texlive_version}
 Provides:       tex(letltxmacro.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source93:       letltxmacro.tar.xz
-Source94:       letltxmacro.doc.tar.xz
+# from 20250308
+Source95:       letltxmacro.tar.xz
+Source96:       letltxmacro.doc.tar.xz
 
 %description -n texlive-letltxmacro
 TeX's \let assignment does not work for LaTeX macros with
@@ -8645,8 +8766,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(letterspacing.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source95:       letterspacing.tar.xz
+# from 20250308
+Source97:       letterspacing.tar.xz
 
 %description -n texlive-letterspacing
 Space out the letters of text; the command is
@@ -8677,7 +8798,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/letterspacing/letterspacing.tex
 
 %package -n texlive-letterswitharrows
-Version:        %{texlive_version}.%{texlive_noarch}.svn59993
+Version:        %{texlive_version}.%{texlive_noarch}.svn72723
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw arrows over math letters
@@ -8711,9 +8832,9 @@ Requires:       tex(mathtools.sty)
 Requires:       tex(pgf.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source96:       letterswitharrows.tar.xz
-Source97:       letterswitharrows.doc.tar.xz
+# from 20250308
+Source98:       letterswitharrows.tar.xz
+Source99:       letterswitharrows.doc.tar.xz
 
 %description -n texlive-letterswitharrows
 This package provides LaTeX math-mode commands for setting left
@@ -8723,7 +8844,7 @@ arrows over longer strings of symbols, the focus lies on single
 characters.
 
 %package -n texlive-letterswitharrows-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn59993
+Version:        %{texlive_version}.%{texlive_noarch}.svn72723
 Release:        0
 Summary:        Documentation for texlive-letterswitharrows
 License:        LPPL-1.0
@@ -8798,9 +8919,9 @@ Provides:       tex(lettre.cls)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source98:       lettre.tar.xz
-Source99:       lettre.doc.tar.xz
+# from 20250308
+Source100:      lettre.tar.xz
+Source101:      lettre.doc.tar.xz
 
 %description -n texlive-lettre
 Developed from the ancestor of the standard letter class, at
@@ -8876,7 +8997,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lettre/lettre.tpl
 
 %package -n texlive-lettrine
-Version:        %{texlive_version}.%{texlive_noarch}.2.60svn69508
+Version:        %{texlive_version}.%{texlive_noarch}.2.80svn73660
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset dropped capitals
@@ -8915,9 +9036,9 @@ Requires:       tex(minifp.sty)
 Requires:       tex(xfp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source100:      lettrine.tar.xz
-Source101:      lettrine.doc.tar.xz
+# from 20250308
+Source102:      lettrine.tar.xz
+Source103:      lettrine.doc.tar.xz
 
 %description -n texlive-lettrine
 The lettrine package supports various dropped capitals styles,
@@ -8927,7 +9048,7 @@ edge to follow the outline of capitals that have a regular
 shape (such as "A" and "V").
 
 %package -n texlive-lettrine-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.60svn69508
+Version:        %{texlive_version}.%{texlive_noarch}.2.80svn73660
 Release:        0
 Summary:        Documentation for texlive-lettrine
 License:        LPPL-1.0
@@ -8967,7 +9088,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/lettrine/lettrine-demo-fr.tex
 %{_texmfdistdir}/doc/latex/lettrine/lettrine-demo-lua.pdf
 %{_texmfdistdir}/doc/latex/lettrine/lettrine-demo-lua.tex
-%{_texmfdistdir}/doc/latex/lettrine/lettrine-xetex-bidi.def
 %{_texmfdistdir}/doc/latex/lettrine/lettrine.pdf
 
 %files -n texlive-lettrine
@@ -9021,9 +9141,9 @@ Provides:       tex(grreg8.tfm)
 Provides:       tex(grreg9.tfm)
 Provides:       tex(slgreek.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source102:      levy.tar.xz
-Source103:      levy.doc.tar.xz
+# from 20250308
+Source104:      levy.tar.xz
+Source105:      levy.doc.tar.xz
 
 %description -n texlive-levy
 These fonts are derivatives of Kunth's CM fonts. Macros for use
@@ -9153,9 +9273,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lewis-doc >= %{texlive_version}
 Provides:       tex(lewis.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source104:      lewis.tar.xz
-Source105:      lewis.doc.tar.xz
+# from 20250308
+Source106:      lewis.tar.xz
+Source107:      lewis.doc.tar.xz
 
 %description -n texlive-lewis
 The package provides rudimentary support for drawing Lewis
@@ -9232,9 +9352,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source106:      lexend.tar.xz
-Source107:      lexend.doc.tar.xz
+# from 20250308
+Source108:      lexend.tar.xz
+Source109:      lexend.doc.tar.xz
 
 %description -n texlive-lexend
 The purpose of this package is pretty straightforward: The
@@ -9357,9 +9477,9 @@ Suggests:       texlive-lexikon-doc >= %{texlive_version}
 Provides:       tex(lexikon.sty)
 Requires:       tex(ipa.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source108:      lexikon.tar.xz
-Source109:      lexikon.doc.tar.xz
+# from 20250308
+Source110:      lexikon.tar.xz
+Source111:      lexikon.doc.tar.xz
 
 %description -n texlive-lexikon
 The lexikon package
@@ -9439,9 +9559,9 @@ Requires:       tex(stringstrings.sty)
 Requires:       tex(xargs.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source110:      lexref.tar.xz
-Source111:      lexref.doc.tar.xz
+# from 20250308
+Source112:      lexref.tar.xz
+Source113:      lexref.doc.tar.xz
 
 %description -n texlive-lexref
 The package is aimed at continental lawyers (especially those
@@ -9534,9 +9654,9 @@ Provides:       tex(lfbb7.tfm)
 Provides:       tex(lfbb8.tfm)
 Provides:       tex(lfbb9.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source112:      lfb.tar.xz
-Source113:      lfb.doc.tar.xz
+# from 20250308
+Source114:      lfb.tar.xz
+Source115:      lfb.doc.tar.xz
 
 %description -n texlive-lfb
 This is a Greek font written in Metafont, with inspiration from
@@ -9685,9 +9805,9 @@ Provides:       tex(LGcmtt.fd)
 Provides:       tex(LGenc.def)
 Provides:       tex(lgreek.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source114:      lgreek.tar.xz
-Source115:      lgreek.doc.tar.xz
+# from 20250308
+Source116:      lgreek.tar.xz
+Source117:      lgreek.doc.tar.xz
 
 %description -n texlive-lgreek
 A conversion of Silvio Levy's Plain TeX macros for use with
@@ -9764,9 +9884,9 @@ Suggests:       texlive-lgrmath-doc >= %{texlive_version}
 Provides:       tex(lgrmath.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source116:      lgrmath.tar.xz
-Source117:      lgrmath.doc.tar.xz
+# from 20250308
+Source118:      lgrmath.tar.xz
+Source119:      lgrmath.doc.tar.xz
 
 %description -n texlive-lgrmath
 The lgrmath package is a LaTeX package which sets the Greek
@@ -9860,9 +9980,9 @@ Provides:       tex(nfssfox.tex)
 Provides:       tex(testfox.tex)
 Provides:       tex(testkern.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source118:      lh.tar.xz
-Source119:      lh.doc.tar.xz
+# from 20250308
+Source120:      lh.tar.xz
+Source121:      lh.doc.tar.xz
 
 %description -n texlive-lh
 The LH fonts address the problem of the wide variety of
@@ -10600,8 +10720,8 @@ Provides:       tex(pismo.tex)
 Provides:       tex(rusfonts.tex)
 Provides:       tex(statya.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source120:      lhcyr.tar.xz
+# from 20250308
+Source122:      lhcyr.tar.xz
 
 %description -n texlive-lhcyr
 A collection of three LaTeX 2e styles intended for typesetting
@@ -10707,9 +10827,9 @@ Provides:       tex(lhelp.sty)
 Requires:       tex(color.sty)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source121:      lhelp.tar.xz
-Source122:      lhelp.doc.tar.xz
+# from 20250308
+Source123:      lhelp.tar.xz
+Source124:      lhelp.doc.tar.xz
 
 %description -n texlive-lhelp
 This package defines macros which are useful for many
@@ -10759,7 +10879,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lhelp/lhelp.sty
 
 %package -n texlive-libertine
-Version:        %{texlive_version}.%{texlive_noarch}.5.3.0svn68981
+Version:        %{texlive_version}.%{texlive_noarch}.5.3.0svn73037
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Use of Linux Libertine and Biolinum fonts with LaTeX
@@ -10807,10 +10927,6 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-libertine-fonts >= %{texlive_version}
 Suggests:       texlive-libertine-doc >= %{texlive_version}
 Provides:       tex(LKey.tex)
-Provides:       tex(LY1LinuxBiolinumO-LF.fd)
-Provides:       tex(LY1LinuxBiolinumO-OsF.fd)
-Provides:       tex(LY1LinuxBiolinumO-TLF.fd)
-Provides:       tex(LY1LinuxBiolinumO-TOsF.fd)
 Provides:       tex(LY1LinuxBiolinumT-LF.fd)
 Provides:       tex(LY1LinuxBiolinumT-OsF.fd)
 Provides:       tex(LY1LinuxBiolinumT-Sup.fd)
@@ -10827,351 +10943,11 @@ Provides:       tex(LY1LinuxLibertineInitialsT-TLF.fd)
 Provides:       tex(LY1LinuxLibertineMonoT-LF.fd)
 Provides:       tex(LY1LinuxLibertineMonoT-Sup.fd)
 Provides:       tex(LY1LinuxLibertineMonoT-TLF.fd)
-Provides:       tex(LY1LinuxLibertineO-LF.fd)
-Provides:       tex(LY1LinuxLibertineO-OsF.fd)
-Provides:       tex(LY1LinuxLibertineO-TLF.fd)
-Provides:       tex(LY1LinuxLibertineO-TOsF.fd)
 Provides:       tex(LY1LinuxLibertineT-LF.fd)
 Provides:       tex(LY1LinuxLibertineT-OsF.fd)
 Provides:       tex(LY1LinuxLibertineT-Sup.fd)
 Provides:       tex(LY1LinuxLibertineT-TLF.fd)
 Provides:       tex(LY1LinuxLibertineT-TOsF.fd)
-Provides:       tex(LinBiolinumO-lf-ly1--base.tfm)
-Provides:       tex(LinBiolinumO-lf-ly1.tfm)
-Provides:       tex(LinBiolinumO-lf-ly1.vf)
-Provides:       tex(LinBiolinumO-lf-ot1--base.tfm)
-Provides:       tex(LinBiolinumO-lf-ot1.tfm)
-Provides:       tex(LinBiolinumO-lf-ot1.vf)
-Provides:       tex(LinBiolinumO-lf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumO-lf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumO-lf-sc-ly1.vf)
-Provides:       tex(LinBiolinumO-lf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumO-lf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumO-lf-sc-ot1.vf)
-Provides:       tex(LinBiolinumO-lf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumO-lf-sc-t1.tfm)
-Provides:       tex(LinBiolinumO-lf-sc-t1.vf)
-Provides:       tex(LinBiolinumO-lf-t1--base.tfm)
-Provides:       tex(LinBiolinumO-lf-t1.tfm)
-Provides:       tex(LinBiolinumO-lf-t1.vf)
-Provides:       tex(LinBiolinumO-lf-ts1--base.tfm)
-Provides:       tex(LinBiolinumO-lf-ts1.tfm)
-Provides:       tex(LinBiolinumO-lf-ts1.vf)
-Provides:       tex(LinBiolinumO-osf-ly1--base.tfm)
-Provides:       tex(LinBiolinumO-osf-ly1.tfm)
-Provides:       tex(LinBiolinumO-osf-ly1.vf)
-Provides:       tex(LinBiolinumO-osf-ot1--base.tfm)
-Provides:       tex(LinBiolinumO-osf-ot1.tfm)
-Provides:       tex(LinBiolinumO-osf-ot1.vf)
-Provides:       tex(LinBiolinumO-osf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumO-osf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumO-osf-sc-ly1.vf)
-Provides:       tex(LinBiolinumO-osf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumO-osf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumO-osf-sc-ot1.vf)
-Provides:       tex(LinBiolinumO-osf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumO-osf-sc-t1.tfm)
-Provides:       tex(LinBiolinumO-osf-sc-t1.vf)
-Provides:       tex(LinBiolinumO-osf-t1--base.tfm)
-Provides:       tex(LinBiolinumO-osf-t1.tfm)
-Provides:       tex(LinBiolinumO-osf-t1.vf)
-Provides:       tex(LinBiolinumO-osf-ts1--base.tfm)
-Provides:       tex(LinBiolinumO-osf-ts1.tfm)
-Provides:       tex(LinBiolinumO-osf-ts1.vf)
-Provides:       tex(LinBiolinumO-tlf-ly1--base.tfm)
-Provides:       tex(LinBiolinumO-tlf-ly1.tfm)
-Provides:       tex(LinBiolinumO-tlf-ly1.vf)
-Provides:       tex(LinBiolinumO-tlf-ot1--base.tfm)
-Provides:       tex(LinBiolinumO-tlf-ot1.tfm)
-Provides:       tex(LinBiolinumO-tlf-ot1.vf)
-Provides:       tex(LinBiolinumO-tlf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumO-tlf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumO-tlf-sc-ly1.vf)
-Provides:       tex(LinBiolinumO-tlf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumO-tlf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumO-tlf-sc-ot1.vf)
-Provides:       tex(LinBiolinumO-tlf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumO-tlf-sc-t1.tfm)
-Provides:       tex(LinBiolinumO-tlf-sc-t1.vf)
-Provides:       tex(LinBiolinumO-tlf-t1--base.tfm)
-Provides:       tex(LinBiolinumO-tlf-t1.tfm)
-Provides:       tex(LinBiolinumO-tlf-t1.vf)
-Provides:       tex(LinBiolinumO-tlf-ts1--base.tfm)
-Provides:       tex(LinBiolinumO-tlf-ts1.tfm)
-Provides:       tex(LinBiolinumO-tlf-ts1.vf)
-Provides:       tex(LinBiolinumO-tosf-ly1--base.tfm)
-Provides:       tex(LinBiolinumO-tosf-ly1.tfm)
-Provides:       tex(LinBiolinumO-tosf-ly1.vf)
-Provides:       tex(LinBiolinumO-tosf-ot1--base.tfm)
-Provides:       tex(LinBiolinumO-tosf-ot1.tfm)
-Provides:       tex(LinBiolinumO-tosf-ot1.vf)
-Provides:       tex(LinBiolinumO-tosf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumO-tosf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumO-tosf-sc-ly1.vf)
-Provides:       tex(LinBiolinumO-tosf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumO-tosf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumO-tosf-sc-ot1.vf)
-Provides:       tex(LinBiolinumO-tosf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumO-tosf-sc-t1.tfm)
-Provides:       tex(LinBiolinumO-tosf-sc-t1.vf)
-Provides:       tex(LinBiolinumO-tosf-t1--base.tfm)
-Provides:       tex(LinBiolinumO-tosf-t1.tfm)
-Provides:       tex(LinBiolinumO-tosf-t1.vf)
-Provides:       tex(LinBiolinumO-tosf-ts1--base.tfm)
-Provides:       tex(LinBiolinumO-tosf-ts1.tfm)
-Provides:       tex(LinBiolinumO-tosf-ts1.vf)
-Provides:       tex(LinBiolinumOB-lf-ly1--base.tfm)
-Provides:       tex(LinBiolinumOB-lf-ly1.tfm)
-Provides:       tex(LinBiolinumOB-lf-ly1.vf)
-Provides:       tex(LinBiolinumOB-lf-ot1--base.tfm)
-Provides:       tex(LinBiolinumOB-lf-ot1.tfm)
-Provides:       tex(LinBiolinumOB-lf-ot1.vf)
-Provides:       tex(LinBiolinumOB-lf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumOB-lf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumOB-lf-sc-ly1.vf)
-Provides:       tex(LinBiolinumOB-lf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumOB-lf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumOB-lf-sc-ot1.vf)
-Provides:       tex(LinBiolinumOB-lf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumOB-lf-sc-t1.tfm)
-Provides:       tex(LinBiolinumOB-lf-sc-t1.vf)
-Provides:       tex(LinBiolinumOB-lf-t1--base.tfm)
-Provides:       tex(LinBiolinumOB-lf-t1.tfm)
-Provides:       tex(LinBiolinumOB-lf-t1.vf)
-Provides:       tex(LinBiolinumOB-lf-ts1--base.tfm)
-Provides:       tex(LinBiolinumOB-lf-ts1.tfm)
-Provides:       tex(LinBiolinumOB-lf-ts1.vf)
-Provides:       tex(LinBiolinumOB-osf-ly1--base.tfm)
-Provides:       tex(LinBiolinumOB-osf-ly1.tfm)
-Provides:       tex(LinBiolinumOB-osf-ly1.vf)
-Provides:       tex(LinBiolinumOB-osf-ot1--base.tfm)
-Provides:       tex(LinBiolinumOB-osf-ot1.tfm)
-Provides:       tex(LinBiolinumOB-osf-ot1.vf)
-Provides:       tex(LinBiolinumOB-osf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumOB-osf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumOB-osf-sc-ly1.vf)
-Provides:       tex(LinBiolinumOB-osf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumOB-osf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumOB-osf-sc-ot1.vf)
-Provides:       tex(LinBiolinumOB-osf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumOB-osf-sc-t1.tfm)
-Provides:       tex(LinBiolinumOB-osf-sc-t1.vf)
-Provides:       tex(LinBiolinumOB-osf-t1--base.tfm)
-Provides:       tex(LinBiolinumOB-osf-t1.tfm)
-Provides:       tex(LinBiolinumOB-osf-t1.vf)
-Provides:       tex(LinBiolinumOB-osf-ts1--base.tfm)
-Provides:       tex(LinBiolinumOB-osf-ts1.tfm)
-Provides:       tex(LinBiolinumOB-osf-ts1.vf)
-Provides:       tex(LinBiolinumOB-tlf-ly1--base.tfm)
-Provides:       tex(LinBiolinumOB-tlf-ly1.tfm)
-Provides:       tex(LinBiolinumOB-tlf-ly1.vf)
-Provides:       tex(LinBiolinumOB-tlf-ot1--base.tfm)
-Provides:       tex(LinBiolinumOB-tlf-ot1.tfm)
-Provides:       tex(LinBiolinumOB-tlf-ot1.vf)
-Provides:       tex(LinBiolinumOB-tlf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumOB-tlf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumOB-tlf-sc-ly1.vf)
-Provides:       tex(LinBiolinumOB-tlf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumOB-tlf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumOB-tlf-sc-ot1.vf)
-Provides:       tex(LinBiolinumOB-tlf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumOB-tlf-sc-t1.tfm)
-Provides:       tex(LinBiolinumOB-tlf-sc-t1.vf)
-Provides:       tex(LinBiolinumOB-tlf-t1--base.tfm)
-Provides:       tex(LinBiolinumOB-tlf-t1.tfm)
-Provides:       tex(LinBiolinumOB-tlf-t1.vf)
-Provides:       tex(LinBiolinumOB-tlf-ts1--base.tfm)
-Provides:       tex(LinBiolinumOB-tlf-ts1.tfm)
-Provides:       tex(LinBiolinumOB-tlf-ts1.vf)
-Provides:       tex(LinBiolinumOB-tosf-ly1--base.tfm)
-Provides:       tex(LinBiolinumOB-tosf-ly1.tfm)
-Provides:       tex(LinBiolinumOB-tosf-ly1.vf)
-Provides:       tex(LinBiolinumOB-tosf-ot1--base.tfm)
-Provides:       tex(LinBiolinumOB-tosf-ot1.tfm)
-Provides:       tex(LinBiolinumOB-tosf-ot1.vf)
-Provides:       tex(LinBiolinumOB-tosf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumOB-tosf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumOB-tosf-sc-ly1.vf)
-Provides:       tex(LinBiolinumOB-tosf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumOB-tosf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumOB-tosf-sc-ot1.vf)
-Provides:       tex(LinBiolinumOB-tosf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumOB-tosf-sc-t1.tfm)
-Provides:       tex(LinBiolinumOB-tosf-sc-t1.vf)
-Provides:       tex(LinBiolinumOB-tosf-t1--base.tfm)
-Provides:       tex(LinBiolinumOB-tosf-t1.tfm)
-Provides:       tex(LinBiolinumOB-tosf-t1.vf)
-Provides:       tex(LinBiolinumOB-tosf-ts1--base.tfm)
-Provides:       tex(LinBiolinumOB-tosf-ts1.tfm)
-Provides:       tex(LinBiolinumOB-tosf-ts1.vf)
-Provides:       tex(LinBiolinumOBO-lf-ly1--base.tfm)
-Provides:       tex(LinBiolinumOBO-lf-ly1.tfm)
-Provides:       tex(LinBiolinumOBO-lf-ly1.vf)
-Provides:       tex(LinBiolinumOBO-lf-ot1--base.tfm)
-Provides:       tex(LinBiolinumOBO-lf-ot1.tfm)
-Provides:       tex(LinBiolinumOBO-lf-ot1.vf)
-Provides:       tex(LinBiolinumOBO-lf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumOBO-lf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumOBO-lf-sc-ly1.vf)
-Provides:       tex(LinBiolinumOBO-lf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumOBO-lf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumOBO-lf-sc-ot1.vf)
-Provides:       tex(LinBiolinumOBO-lf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumOBO-lf-sc-t1.tfm)
-Provides:       tex(LinBiolinumOBO-lf-sc-t1.vf)
-Provides:       tex(LinBiolinumOBO-lf-t1--base.tfm)
-Provides:       tex(LinBiolinumOBO-lf-t1.tfm)
-Provides:       tex(LinBiolinumOBO-lf-t1.vf)
-Provides:       tex(LinBiolinumOBO-lf-ts1--base.tfm)
-Provides:       tex(LinBiolinumOBO-lf-ts1.tfm)
-Provides:       tex(LinBiolinumOBO-lf-ts1.vf)
-Provides:       tex(LinBiolinumOBO-osf-ly1--base.tfm)
-Provides:       tex(LinBiolinumOBO-osf-ly1.tfm)
-Provides:       tex(LinBiolinumOBO-osf-ly1.vf)
-Provides:       tex(LinBiolinumOBO-osf-ot1--base.tfm)
-Provides:       tex(LinBiolinumOBO-osf-ot1.tfm)
-Provides:       tex(LinBiolinumOBO-osf-ot1.vf)
-Provides:       tex(LinBiolinumOBO-osf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumOBO-osf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumOBO-osf-sc-ly1.vf)
-Provides:       tex(LinBiolinumOBO-osf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumOBO-osf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumOBO-osf-sc-ot1.vf)
-Provides:       tex(LinBiolinumOBO-osf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumOBO-osf-sc-t1.tfm)
-Provides:       tex(LinBiolinumOBO-osf-sc-t1.vf)
-Provides:       tex(LinBiolinumOBO-osf-t1--base.tfm)
-Provides:       tex(LinBiolinumOBO-osf-t1.tfm)
-Provides:       tex(LinBiolinumOBO-osf-t1.vf)
-Provides:       tex(LinBiolinumOBO-osf-ts1--base.tfm)
-Provides:       tex(LinBiolinumOBO-osf-ts1.tfm)
-Provides:       tex(LinBiolinumOBO-osf-ts1.vf)
-Provides:       tex(LinBiolinumOBO-tlf-ly1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-ly1.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-ly1.vf)
-Provides:       tex(LinBiolinumOBO-tlf-ot1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-ot1.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-ot1.vf)
-Provides:       tex(LinBiolinumOBO-tlf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-sc-ly1.vf)
-Provides:       tex(LinBiolinumOBO-tlf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-sc-ot1.vf)
-Provides:       tex(LinBiolinumOBO-tlf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-sc-t1.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-sc-t1.vf)
-Provides:       tex(LinBiolinumOBO-tlf-t1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-t1.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-t1.vf)
-Provides:       tex(LinBiolinumOBO-tlf-ts1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-ts1.tfm)
-Provides:       tex(LinBiolinumOBO-tlf-ts1.vf)
-Provides:       tex(LinBiolinumOBO-tosf-ly1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-ly1.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-ly1.vf)
-Provides:       tex(LinBiolinumOBO-tosf-ot1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-ot1.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-ot1.vf)
-Provides:       tex(LinBiolinumOBO-tosf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-sc-ly1.vf)
-Provides:       tex(LinBiolinumOBO-tosf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-sc-ot1.vf)
-Provides:       tex(LinBiolinumOBO-tosf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-sc-t1.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-sc-t1.vf)
-Provides:       tex(LinBiolinumOBO-tosf-t1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-t1.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-t1.vf)
-Provides:       tex(LinBiolinumOBO-tosf-ts1--base.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-ts1.tfm)
-Provides:       tex(LinBiolinumOBO-tosf-ts1.vf)
-Provides:       tex(LinBiolinumOI-lf-ly1--base.tfm)
-Provides:       tex(LinBiolinumOI-lf-ly1.tfm)
-Provides:       tex(LinBiolinumOI-lf-ly1.vf)
-Provides:       tex(LinBiolinumOI-lf-ot1--base.tfm)
-Provides:       tex(LinBiolinumOI-lf-ot1.tfm)
-Provides:       tex(LinBiolinumOI-lf-ot1.vf)
-Provides:       tex(LinBiolinumOI-lf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumOI-lf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumOI-lf-sc-ly1.vf)
-Provides:       tex(LinBiolinumOI-lf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumOI-lf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumOI-lf-sc-ot1.vf)
-Provides:       tex(LinBiolinumOI-lf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumOI-lf-sc-t1.tfm)
-Provides:       tex(LinBiolinumOI-lf-sc-t1.vf)
-Provides:       tex(LinBiolinumOI-lf-t1--base.tfm)
-Provides:       tex(LinBiolinumOI-lf-t1.tfm)
-Provides:       tex(LinBiolinumOI-lf-t1.vf)
-Provides:       tex(LinBiolinumOI-lf-ts1--base.tfm)
-Provides:       tex(LinBiolinumOI-lf-ts1.tfm)
-Provides:       tex(LinBiolinumOI-lf-ts1.vf)
-Provides:       tex(LinBiolinumOI-osf-ly1--base.tfm)
-Provides:       tex(LinBiolinumOI-osf-ly1.tfm)
-Provides:       tex(LinBiolinumOI-osf-ly1.vf)
-Provides:       tex(LinBiolinumOI-osf-ot1--base.tfm)
-Provides:       tex(LinBiolinumOI-osf-ot1.tfm)
-Provides:       tex(LinBiolinumOI-osf-ot1.vf)
-Provides:       tex(LinBiolinumOI-osf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumOI-osf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumOI-osf-sc-ly1.vf)
-Provides:       tex(LinBiolinumOI-osf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumOI-osf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumOI-osf-sc-ot1.vf)
-Provides:       tex(LinBiolinumOI-osf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumOI-osf-sc-t1.tfm)
-Provides:       tex(LinBiolinumOI-osf-sc-t1.vf)
-Provides:       tex(LinBiolinumOI-osf-t1--base.tfm)
-Provides:       tex(LinBiolinumOI-osf-t1.tfm)
-Provides:       tex(LinBiolinumOI-osf-t1.vf)
-Provides:       tex(LinBiolinumOI-osf-ts1--base.tfm)
-Provides:       tex(LinBiolinumOI-osf-ts1.tfm)
-Provides:       tex(LinBiolinumOI-osf-ts1.vf)
-Provides:       tex(LinBiolinumOI-tlf-ly1--base.tfm)
-Provides:       tex(LinBiolinumOI-tlf-ly1.tfm)
-Provides:       tex(LinBiolinumOI-tlf-ly1.vf)
-Provides:       tex(LinBiolinumOI-tlf-ot1--base.tfm)
-Provides:       tex(LinBiolinumOI-tlf-ot1.tfm)
-Provides:       tex(LinBiolinumOI-tlf-ot1.vf)
-Provides:       tex(LinBiolinumOI-tlf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumOI-tlf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumOI-tlf-sc-ly1.vf)
-Provides:       tex(LinBiolinumOI-tlf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumOI-tlf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumOI-tlf-sc-ot1.vf)
-Provides:       tex(LinBiolinumOI-tlf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumOI-tlf-sc-t1.tfm)
-Provides:       tex(LinBiolinumOI-tlf-sc-t1.vf)
-Provides:       tex(LinBiolinumOI-tlf-t1--base.tfm)
-Provides:       tex(LinBiolinumOI-tlf-t1.tfm)
-Provides:       tex(LinBiolinumOI-tlf-t1.vf)
-Provides:       tex(LinBiolinumOI-tlf-ts1--base.tfm)
-Provides:       tex(LinBiolinumOI-tlf-ts1.tfm)
-Provides:       tex(LinBiolinumOI-tlf-ts1.vf)
-Provides:       tex(LinBiolinumOI-tosf-ly1--base.tfm)
-Provides:       tex(LinBiolinumOI-tosf-ly1.tfm)
-Provides:       tex(LinBiolinumOI-tosf-ly1.vf)
-Provides:       tex(LinBiolinumOI-tosf-ot1--base.tfm)
-Provides:       tex(LinBiolinumOI-tosf-ot1.tfm)
-Provides:       tex(LinBiolinumOI-tosf-ot1.vf)
-Provides:       tex(LinBiolinumOI-tosf-sc-ly1--base.tfm)
-Provides:       tex(LinBiolinumOI-tosf-sc-ly1.tfm)
-Provides:       tex(LinBiolinumOI-tosf-sc-ly1.vf)
-Provides:       tex(LinBiolinumOI-tosf-sc-ot1--base.tfm)
-Provides:       tex(LinBiolinumOI-tosf-sc-ot1.tfm)
-Provides:       tex(LinBiolinumOI-tosf-sc-ot1.vf)
-Provides:       tex(LinBiolinumOI-tosf-sc-t1--base.tfm)
-Provides:       tex(LinBiolinumOI-tosf-sc-t1.tfm)
-Provides:       tex(LinBiolinumOI-tosf-sc-t1.vf)
-Provides:       tex(LinBiolinumOI-tosf-t1--base.tfm)
-Provides:       tex(LinBiolinumOI-tosf-t1.tfm)
-Provides:       tex(LinBiolinumOI-tosf-t1.vf)
-Provides:       tex(LinBiolinumOI-tosf-ts1--base.tfm)
-Provides:       tex(LinBiolinumOI-tosf-ts1.tfm)
-Provides:       tex(LinBiolinumOI-tosf-ts1.vf)
 Provides:       tex(LinBiolinumT-lf-ly1--base.tfm)
 Provides:       tex(LinBiolinumT-lf-ly1.tfm)
 Provides:       tex(LinBiolinumT-lf-ly1.vf)
@@ -11721,502 +11497,6 @@ Provides:       tex(LinLibertineMTO-tlf-t1.vf)
 Provides:       tex(LinLibertineMTO-tlf-ts1--base.tfm)
 Provides:       tex(LinLibertineMTO-tlf-ts1.tfm)
 Provides:       tex(LinLibertineMTO-tlf-ts1.vf)
-Provides:       tex(LinLibertineO-lf-ly1--base.tfm)
-Provides:       tex(LinLibertineO-lf-ly1.tfm)
-Provides:       tex(LinLibertineO-lf-ly1.vf)
-Provides:       tex(LinLibertineO-lf-ot1--base.tfm)
-Provides:       tex(LinLibertineO-lf-ot1.tfm)
-Provides:       tex(LinLibertineO-lf-ot1.vf)
-Provides:       tex(LinLibertineO-lf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineO-lf-sc-ly1.tfm)
-Provides:       tex(LinLibertineO-lf-sc-ly1.vf)
-Provides:       tex(LinLibertineO-lf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineO-lf-sc-ot1.tfm)
-Provides:       tex(LinLibertineO-lf-sc-ot1.vf)
-Provides:       tex(LinLibertineO-lf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineO-lf-sc-t1.tfm)
-Provides:       tex(LinLibertineO-lf-sc-t1.vf)
-Provides:       tex(LinLibertineO-lf-t1--base.tfm)
-Provides:       tex(LinLibertineO-lf-t1.tfm)
-Provides:       tex(LinLibertineO-lf-t1.vf)
-Provides:       tex(LinLibertineO-lf-ts1--base.tfm)
-Provides:       tex(LinLibertineO-lf-ts1.tfm)
-Provides:       tex(LinLibertineO-lf-ts1.vf)
-Provides:       tex(LinLibertineO-osf-ly1--base.tfm)
-Provides:       tex(LinLibertineO-osf-ly1.tfm)
-Provides:       tex(LinLibertineO-osf-ly1.vf)
-Provides:       tex(LinLibertineO-osf-ot1--base.tfm)
-Provides:       tex(LinLibertineO-osf-ot1.tfm)
-Provides:       tex(LinLibertineO-osf-ot1.vf)
-Provides:       tex(LinLibertineO-osf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineO-osf-sc-ly1.tfm)
-Provides:       tex(LinLibertineO-osf-sc-ly1.vf)
-Provides:       tex(LinLibertineO-osf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineO-osf-sc-ot1.tfm)
-Provides:       tex(LinLibertineO-osf-sc-ot1.vf)
-Provides:       tex(LinLibertineO-osf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineO-osf-sc-t1.tfm)
-Provides:       tex(LinLibertineO-osf-sc-t1.vf)
-Provides:       tex(LinLibertineO-osf-t1--base.tfm)
-Provides:       tex(LinLibertineO-osf-t1.tfm)
-Provides:       tex(LinLibertineO-osf-t1.vf)
-Provides:       tex(LinLibertineO-osf-ts1--base.tfm)
-Provides:       tex(LinLibertineO-osf-ts1.tfm)
-Provides:       tex(LinLibertineO-osf-ts1.vf)
-Provides:       tex(LinLibertineO-tlf-ly1--base.tfm)
-Provides:       tex(LinLibertineO-tlf-ly1.tfm)
-Provides:       tex(LinLibertineO-tlf-ly1.vf)
-Provides:       tex(LinLibertineO-tlf-ot1--base.tfm)
-Provides:       tex(LinLibertineO-tlf-ot1.tfm)
-Provides:       tex(LinLibertineO-tlf-ot1.vf)
-Provides:       tex(LinLibertineO-tlf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineO-tlf-sc-ly1.tfm)
-Provides:       tex(LinLibertineO-tlf-sc-ly1.vf)
-Provides:       tex(LinLibertineO-tlf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineO-tlf-sc-ot1.tfm)
-Provides:       tex(LinLibertineO-tlf-sc-ot1.vf)
-Provides:       tex(LinLibertineO-tlf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineO-tlf-sc-t1.tfm)
-Provides:       tex(LinLibertineO-tlf-sc-t1.vf)
-Provides:       tex(LinLibertineO-tlf-t1--base.tfm)
-Provides:       tex(LinLibertineO-tlf-t1.tfm)
-Provides:       tex(LinLibertineO-tlf-t1.vf)
-Provides:       tex(LinLibertineO-tlf-ts1--base.tfm)
-Provides:       tex(LinLibertineO-tlf-ts1.tfm)
-Provides:       tex(LinLibertineO-tlf-ts1.vf)
-Provides:       tex(LinLibertineO-tosf-ly1--base.tfm)
-Provides:       tex(LinLibertineO-tosf-ly1.tfm)
-Provides:       tex(LinLibertineO-tosf-ly1.vf)
-Provides:       tex(LinLibertineO-tosf-ot1--base.tfm)
-Provides:       tex(LinLibertineO-tosf-ot1.tfm)
-Provides:       tex(LinLibertineO-tosf-ot1.vf)
-Provides:       tex(LinLibertineO-tosf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineO-tosf-sc-ly1.tfm)
-Provides:       tex(LinLibertineO-tosf-sc-ly1.vf)
-Provides:       tex(LinLibertineO-tosf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineO-tosf-sc-ot1.tfm)
-Provides:       tex(LinLibertineO-tosf-sc-ot1.vf)
-Provides:       tex(LinLibertineO-tosf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineO-tosf-sc-t1.tfm)
-Provides:       tex(LinLibertineO-tosf-sc-t1.vf)
-Provides:       tex(LinLibertineO-tosf-t1--base.tfm)
-Provides:       tex(LinLibertineO-tosf-t1.tfm)
-Provides:       tex(LinLibertineO-tosf-t1.vf)
-Provides:       tex(LinLibertineO-tosf-ts1--base.tfm)
-Provides:       tex(LinLibertineO-tosf-ts1.tfm)
-Provides:       tex(LinLibertineO-tosf-ts1.vf)
-Provides:       tex(LinLibertineOB-lf-ly1--base.tfm)
-Provides:       tex(LinLibertineOB-lf-ly1.tfm)
-Provides:       tex(LinLibertineOB-lf-ly1.vf)
-Provides:       tex(LinLibertineOB-lf-ot1--base.tfm)
-Provides:       tex(LinLibertineOB-lf-ot1.tfm)
-Provides:       tex(LinLibertineOB-lf-ot1.vf)
-Provides:       tex(LinLibertineOB-lf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOB-lf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOB-lf-sc-ly1.vf)
-Provides:       tex(LinLibertineOB-lf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOB-lf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOB-lf-sc-ot1.vf)
-Provides:       tex(LinLibertineOB-lf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOB-lf-sc-t1.tfm)
-Provides:       tex(LinLibertineOB-lf-sc-t1.vf)
-Provides:       tex(LinLibertineOB-lf-t1--base.tfm)
-Provides:       tex(LinLibertineOB-lf-t1.tfm)
-Provides:       tex(LinLibertineOB-lf-t1.vf)
-Provides:       tex(LinLibertineOB-lf-ts1--base.tfm)
-Provides:       tex(LinLibertineOB-lf-ts1.tfm)
-Provides:       tex(LinLibertineOB-lf-ts1.vf)
-Provides:       tex(LinLibertineOB-osf-ly1--base.tfm)
-Provides:       tex(LinLibertineOB-osf-ly1.tfm)
-Provides:       tex(LinLibertineOB-osf-ly1.vf)
-Provides:       tex(LinLibertineOB-osf-ot1--base.tfm)
-Provides:       tex(LinLibertineOB-osf-ot1.tfm)
-Provides:       tex(LinLibertineOB-osf-ot1.vf)
-Provides:       tex(LinLibertineOB-osf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOB-osf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOB-osf-sc-ly1.vf)
-Provides:       tex(LinLibertineOB-osf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOB-osf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOB-osf-sc-ot1.vf)
-Provides:       tex(LinLibertineOB-osf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOB-osf-sc-t1.tfm)
-Provides:       tex(LinLibertineOB-osf-sc-t1.vf)
-Provides:       tex(LinLibertineOB-osf-t1--base.tfm)
-Provides:       tex(LinLibertineOB-osf-t1.tfm)
-Provides:       tex(LinLibertineOB-osf-t1.vf)
-Provides:       tex(LinLibertineOB-osf-ts1--base.tfm)
-Provides:       tex(LinLibertineOB-osf-ts1.tfm)
-Provides:       tex(LinLibertineOB-osf-ts1.vf)
-Provides:       tex(LinLibertineOB-tlf-ly1--base.tfm)
-Provides:       tex(LinLibertineOB-tlf-ly1.tfm)
-Provides:       tex(LinLibertineOB-tlf-ly1.vf)
-Provides:       tex(LinLibertineOB-tlf-ot1--base.tfm)
-Provides:       tex(LinLibertineOB-tlf-ot1.tfm)
-Provides:       tex(LinLibertineOB-tlf-ot1.vf)
-Provides:       tex(LinLibertineOB-tlf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOB-tlf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOB-tlf-sc-ly1.vf)
-Provides:       tex(LinLibertineOB-tlf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOB-tlf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOB-tlf-sc-ot1.vf)
-Provides:       tex(LinLibertineOB-tlf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOB-tlf-sc-t1.tfm)
-Provides:       tex(LinLibertineOB-tlf-sc-t1.vf)
-Provides:       tex(LinLibertineOB-tlf-t1--base.tfm)
-Provides:       tex(LinLibertineOB-tlf-t1.tfm)
-Provides:       tex(LinLibertineOB-tlf-t1.vf)
-Provides:       tex(LinLibertineOB-tlf-ts1--base.tfm)
-Provides:       tex(LinLibertineOB-tlf-ts1.tfm)
-Provides:       tex(LinLibertineOB-tlf-ts1.vf)
-Provides:       tex(LinLibertineOB-tosf-ly1--base.tfm)
-Provides:       tex(LinLibertineOB-tosf-ly1.tfm)
-Provides:       tex(LinLibertineOB-tosf-ly1.vf)
-Provides:       tex(LinLibertineOB-tosf-ot1--base.tfm)
-Provides:       tex(LinLibertineOB-tosf-ot1.tfm)
-Provides:       tex(LinLibertineOB-tosf-ot1.vf)
-Provides:       tex(LinLibertineOB-tosf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOB-tosf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOB-tosf-sc-ly1.vf)
-Provides:       tex(LinLibertineOB-tosf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOB-tosf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOB-tosf-sc-ot1.vf)
-Provides:       tex(LinLibertineOB-tosf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOB-tosf-sc-t1.tfm)
-Provides:       tex(LinLibertineOB-tosf-sc-t1.vf)
-Provides:       tex(LinLibertineOB-tosf-t1--base.tfm)
-Provides:       tex(LinLibertineOB-tosf-t1.tfm)
-Provides:       tex(LinLibertineOB-tosf-t1.vf)
-Provides:       tex(LinLibertineOB-tosf-ts1--base.tfm)
-Provides:       tex(LinLibertineOB-tosf-ts1.tfm)
-Provides:       tex(LinLibertineOB-tosf-ts1.vf)
-Provides:       tex(LinLibertineOBI-lf-ly1--base.tfm)
-Provides:       tex(LinLibertineOBI-lf-ly1.tfm)
-Provides:       tex(LinLibertineOBI-lf-ly1.vf)
-Provides:       tex(LinLibertineOBI-lf-ot1--base.tfm)
-Provides:       tex(LinLibertineOBI-lf-ot1.tfm)
-Provides:       tex(LinLibertineOBI-lf-ot1.vf)
-Provides:       tex(LinLibertineOBI-lf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOBI-lf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOBI-lf-sc-ly1.vf)
-Provides:       tex(LinLibertineOBI-lf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOBI-lf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOBI-lf-sc-ot1.vf)
-Provides:       tex(LinLibertineOBI-lf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOBI-lf-sc-t1.tfm)
-Provides:       tex(LinLibertineOBI-lf-sc-t1.vf)
-Provides:       tex(LinLibertineOBI-lf-t1--base.tfm)
-Provides:       tex(LinLibertineOBI-lf-t1.tfm)
-Provides:       tex(LinLibertineOBI-lf-t1.vf)
-Provides:       tex(LinLibertineOBI-lf-ts1--base.tfm)
-Provides:       tex(LinLibertineOBI-lf-ts1.tfm)
-Provides:       tex(LinLibertineOBI-lf-ts1.vf)
-Provides:       tex(LinLibertineOBI-osf-ly1--base.tfm)
-Provides:       tex(LinLibertineOBI-osf-ly1.tfm)
-Provides:       tex(LinLibertineOBI-osf-ly1.vf)
-Provides:       tex(LinLibertineOBI-osf-ot1--base.tfm)
-Provides:       tex(LinLibertineOBI-osf-ot1.tfm)
-Provides:       tex(LinLibertineOBI-osf-ot1.vf)
-Provides:       tex(LinLibertineOBI-osf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOBI-osf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOBI-osf-sc-ly1.vf)
-Provides:       tex(LinLibertineOBI-osf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOBI-osf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOBI-osf-sc-ot1.vf)
-Provides:       tex(LinLibertineOBI-osf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOBI-osf-sc-t1.tfm)
-Provides:       tex(LinLibertineOBI-osf-sc-t1.vf)
-Provides:       tex(LinLibertineOBI-osf-t1--base.tfm)
-Provides:       tex(LinLibertineOBI-osf-t1.tfm)
-Provides:       tex(LinLibertineOBI-osf-t1.vf)
-Provides:       tex(LinLibertineOBI-osf-ts1--base.tfm)
-Provides:       tex(LinLibertineOBI-osf-ts1.tfm)
-Provides:       tex(LinLibertineOBI-osf-ts1.vf)
-Provides:       tex(LinLibertineOBI-tlf-ly1--base.tfm)
-Provides:       tex(LinLibertineOBI-tlf-ly1.tfm)
-Provides:       tex(LinLibertineOBI-tlf-ly1.vf)
-Provides:       tex(LinLibertineOBI-tlf-ot1--base.tfm)
-Provides:       tex(LinLibertineOBI-tlf-ot1.tfm)
-Provides:       tex(LinLibertineOBI-tlf-ot1.vf)
-Provides:       tex(LinLibertineOBI-tlf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOBI-tlf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOBI-tlf-sc-ly1.vf)
-Provides:       tex(LinLibertineOBI-tlf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOBI-tlf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOBI-tlf-sc-ot1.vf)
-Provides:       tex(LinLibertineOBI-tlf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOBI-tlf-sc-t1.tfm)
-Provides:       tex(LinLibertineOBI-tlf-sc-t1.vf)
-Provides:       tex(LinLibertineOBI-tlf-t1--base.tfm)
-Provides:       tex(LinLibertineOBI-tlf-t1.tfm)
-Provides:       tex(LinLibertineOBI-tlf-t1.vf)
-Provides:       tex(LinLibertineOBI-tlf-ts1--base.tfm)
-Provides:       tex(LinLibertineOBI-tlf-ts1.tfm)
-Provides:       tex(LinLibertineOBI-tlf-ts1.vf)
-Provides:       tex(LinLibertineOBI-tosf-ly1--base.tfm)
-Provides:       tex(LinLibertineOBI-tosf-ly1.tfm)
-Provides:       tex(LinLibertineOBI-tosf-ly1.vf)
-Provides:       tex(LinLibertineOBI-tosf-ot1--base.tfm)
-Provides:       tex(LinLibertineOBI-tosf-ot1.tfm)
-Provides:       tex(LinLibertineOBI-tosf-ot1.vf)
-Provides:       tex(LinLibertineOBI-tosf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOBI-tosf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOBI-tosf-sc-ly1.vf)
-Provides:       tex(LinLibertineOBI-tosf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOBI-tosf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOBI-tosf-sc-ot1.vf)
-Provides:       tex(LinLibertineOBI-tosf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOBI-tosf-sc-t1.tfm)
-Provides:       tex(LinLibertineOBI-tosf-sc-t1.vf)
-Provides:       tex(LinLibertineOBI-tosf-t1--base.tfm)
-Provides:       tex(LinLibertineOBI-tosf-t1.tfm)
-Provides:       tex(LinLibertineOBI-tosf-t1.vf)
-Provides:       tex(LinLibertineOBI-tosf-ts1--base.tfm)
-Provides:       tex(LinLibertineOBI-tosf-ts1.tfm)
-Provides:       tex(LinLibertineOBI-tosf-ts1.vf)
-Provides:       tex(LinLibertineOI-lf-ly1--base.tfm)
-Provides:       tex(LinLibertineOI-lf-ly1.tfm)
-Provides:       tex(LinLibertineOI-lf-ly1.vf)
-Provides:       tex(LinLibertineOI-lf-ot1--base.tfm)
-Provides:       tex(LinLibertineOI-lf-ot1.tfm)
-Provides:       tex(LinLibertineOI-lf-ot1.vf)
-Provides:       tex(LinLibertineOI-lf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOI-lf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOI-lf-sc-ly1.vf)
-Provides:       tex(LinLibertineOI-lf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOI-lf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOI-lf-sc-ot1.vf)
-Provides:       tex(LinLibertineOI-lf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOI-lf-sc-t1.tfm)
-Provides:       tex(LinLibertineOI-lf-sc-t1.vf)
-Provides:       tex(LinLibertineOI-lf-t1--base.tfm)
-Provides:       tex(LinLibertineOI-lf-t1.tfm)
-Provides:       tex(LinLibertineOI-lf-t1.vf)
-Provides:       tex(LinLibertineOI-lf-ts1--base.tfm)
-Provides:       tex(LinLibertineOI-lf-ts1.tfm)
-Provides:       tex(LinLibertineOI-lf-ts1.vf)
-Provides:       tex(LinLibertineOI-osf-ly1--base.tfm)
-Provides:       tex(LinLibertineOI-osf-ly1.tfm)
-Provides:       tex(LinLibertineOI-osf-ly1.vf)
-Provides:       tex(LinLibertineOI-osf-ot1--base.tfm)
-Provides:       tex(LinLibertineOI-osf-ot1.tfm)
-Provides:       tex(LinLibertineOI-osf-ot1.vf)
-Provides:       tex(LinLibertineOI-osf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOI-osf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOI-osf-sc-ly1.vf)
-Provides:       tex(LinLibertineOI-osf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOI-osf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOI-osf-sc-ot1.vf)
-Provides:       tex(LinLibertineOI-osf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOI-osf-sc-t1.tfm)
-Provides:       tex(LinLibertineOI-osf-sc-t1.vf)
-Provides:       tex(LinLibertineOI-osf-t1--base.tfm)
-Provides:       tex(LinLibertineOI-osf-t1.tfm)
-Provides:       tex(LinLibertineOI-osf-t1.vf)
-Provides:       tex(LinLibertineOI-osf-ts1--base.tfm)
-Provides:       tex(LinLibertineOI-osf-ts1.tfm)
-Provides:       tex(LinLibertineOI-osf-ts1.vf)
-Provides:       tex(LinLibertineOI-tlf-ly1--base.tfm)
-Provides:       tex(LinLibertineOI-tlf-ly1.tfm)
-Provides:       tex(LinLibertineOI-tlf-ly1.vf)
-Provides:       tex(LinLibertineOI-tlf-ot1--base.tfm)
-Provides:       tex(LinLibertineOI-tlf-ot1.tfm)
-Provides:       tex(LinLibertineOI-tlf-ot1.vf)
-Provides:       tex(LinLibertineOI-tlf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOI-tlf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOI-tlf-sc-ly1.vf)
-Provides:       tex(LinLibertineOI-tlf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOI-tlf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOI-tlf-sc-ot1.vf)
-Provides:       tex(LinLibertineOI-tlf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOI-tlf-sc-t1.tfm)
-Provides:       tex(LinLibertineOI-tlf-sc-t1.vf)
-Provides:       tex(LinLibertineOI-tlf-t1--base.tfm)
-Provides:       tex(LinLibertineOI-tlf-t1.tfm)
-Provides:       tex(LinLibertineOI-tlf-t1.vf)
-Provides:       tex(LinLibertineOI-tlf-ts1--base.tfm)
-Provides:       tex(LinLibertineOI-tlf-ts1.tfm)
-Provides:       tex(LinLibertineOI-tlf-ts1.vf)
-Provides:       tex(LinLibertineOI-tosf-ly1--base.tfm)
-Provides:       tex(LinLibertineOI-tosf-ly1.tfm)
-Provides:       tex(LinLibertineOI-tosf-ly1.vf)
-Provides:       tex(LinLibertineOI-tosf-ot1--base.tfm)
-Provides:       tex(LinLibertineOI-tosf-ot1.tfm)
-Provides:       tex(LinLibertineOI-tosf-ot1.vf)
-Provides:       tex(LinLibertineOI-tosf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOI-tosf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOI-tosf-sc-ly1.vf)
-Provides:       tex(LinLibertineOI-tosf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOI-tosf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOI-tosf-sc-ot1.vf)
-Provides:       tex(LinLibertineOI-tosf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOI-tosf-sc-t1.tfm)
-Provides:       tex(LinLibertineOI-tosf-sc-t1.vf)
-Provides:       tex(LinLibertineOI-tosf-t1--base.tfm)
-Provides:       tex(LinLibertineOI-tosf-t1.tfm)
-Provides:       tex(LinLibertineOI-tosf-t1.vf)
-Provides:       tex(LinLibertineOI-tosf-ts1--base.tfm)
-Provides:       tex(LinLibertineOI-tosf-ts1.tfm)
-Provides:       tex(LinLibertineOI-tosf-ts1.vf)
-Provides:       tex(LinLibertineOZ-lf-ly1--base.tfm)
-Provides:       tex(LinLibertineOZ-lf-ly1.tfm)
-Provides:       tex(LinLibertineOZ-lf-ly1.vf)
-Provides:       tex(LinLibertineOZ-lf-ot1--base.tfm)
-Provides:       tex(LinLibertineOZ-lf-ot1.tfm)
-Provides:       tex(LinLibertineOZ-lf-ot1.vf)
-Provides:       tex(LinLibertineOZ-lf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOZ-lf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOZ-lf-sc-ly1.vf)
-Provides:       tex(LinLibertineOZ-lf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOZ-lf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOZ-lf-sc-ot1.vf)
-Provides:       tex(LinLibertineOZ-lf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOZ-lf-sc-t1.tfm)
-Provides:       tex(LinLibertineOZ-lf-sc-t1.vf)
-Provides:       tex(LinLibertineOZ-lf-t1--base.tfm)
-Provides:       tex(LinLibertineOZ-lf-t1.tfm)
-Provides:       tex(LinLibertineOZ-lf-t1.vf)
-Provides:       tex(LinLibertineOZ-lf-ts1--base.tfm)
-Provides:       tex(LinLibertineOZ-lf-ts1.tfm)
-Provides:       tex(LinLibertineOZ-lf-ts1.vf)
-Provides:       tex(LinLibertineOZ-osf-ly1--base.tfm)
-Provides:       tex(LinLibertineOZ-osf-ly1.tfm)
-Provides:       tex(LinLibertineOZ-osf-ly1.vf)
-Provides:       tex(LinLibertineOZ-osf-ot1--base.tfm)
-Provides:       tex(LinLibertineOZ-osf-ot1.tfm)
-Provides:       tex(LinLibertineOZ-osf-ot1.vf)
-Provides:       tex(LinLibertineOZ-osf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOZ-osf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOZ-osf-sc-ly1.vf)
-Provides:       tex(LinLibertineOZ-osf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOZ-osf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOZ-osf-sc-ot1.vf)
-Provides:       tex(LinLibertineOZ-osf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOZ-osf-sc-t1.tfm)
-Provides:       tex(LinLibertineOZ-osf-sc-t1.vf)
-Provides:       tex(LinLibertineOZ-osf-t1--base.tfm)
-Provides:       tex(LinLibertineOZ-osf-t1.tfm)
-Provides:       tex(LinLibertineOZ-osf-t1.vf)
-Provides:       tex(LinLibertineOZ-osf-ts1--base.tfm)
-Provides:       tex(LinLibertineOZ-osf-ts1.tfm)
-Provides:       tex(LinLibertineOZ-osf-ts1.vf)
-Provides:       tex(LinLibertineOZ-tlf-ly1--base.tfm)
-Provides:       tex(LinLibertineOZ-tlf-ly1.tfm)
-Provides:       tex(LinLibertineOZ-tlf-ly1.vf)
-Provides:       tex(LinLibertineOZ-tlf-ot1--base.tfm)
-Provides:       tex(LinLibertineOZ-tlf-ot1.tfm)
-Provides:       tex(LinLibertineOZ-tlf-ot1.vf)
-Provides:       tex(LinLibertineOZ-tlf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOZ-tlf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOZ-tlf-sc-ly1.vf)
-Provides:       tex(LinLibertineOZ-tlf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOZ-tlf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOZ-tlf-sc-ot1.vf)
-Provides:       tex(LinLibertineOZ-tlf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOZ-tlf-sc-t1.tfm)
-Provides:       tex(LinLibertineOZ-tlf-sc-t1.vf)
-Provides:       tex(LinLibertineOZ-tlf-t1--base.tfm)
-Provides:       tex(LinLibertineOZ-tlf-t1.tfm)
-Provides:       tex(LinLibertineOZ-tlf-t1.vf)
-Provides:       tex(LinLibertineOZ-tlf-ts1--base.tfm)
-Provides:       tex(LinLibertineOZ-tlf-ts1.tfm)
-Provides:       tex(LinLibertineOZ-tlf-ts1.vf)
-Provides:       tex(LinLibertineOZ-tosf-ly1--base.tfm)
-Provides:       tex(LinLibertineOZ-tosf-ly1.tfm)
-Provides:       tex(LinLibertineOZ-tosf-ly1.vf)
-Provides:       tex(LinLibertineOZ-tosf-ot1--base.tfm)
-Provides:       tex(LinLibertineOZ-tosf-ot1.tfm)
-Provides:       tex(LinLibertineOZ-tosf-ot1.vf)
-Provides:       tex(LinLibertineOZ-tosf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOZ-tosf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOZ-tosf-sc-ly1.vf)
-Provides:       tex(LinLibertineOZ-tosf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOZ-tosf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOZ-tosf-sc-ot1.vf)
-Provides:       tex(LinLibertineOZ-tosf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOZ-tosf-sc-t1.tfm)
-Provides:       tex(LinLibertineOZ-tosf-sc-t1.vf)
-Provides:       tex(LinLibertineOZ-tosf-t1--base.tfm)
-Provides:       tex(LinLibertineOZ-tosf-t1.tfm)
-Provides:       tex(LinLibertineOZ-tosf-t1.vf)
-Provides:       tex(LinLibertineOZ-tosf-ts1--base.tfm)
-Provides:       tex(LinLibertineOZ-tosf-ts1.tfm)
-Provides:       tex(LinLibertineOZ-tosf-ts1.vf)
-Provides:       tex(LinLibertineOZI-lf-ly1.tfm)
-Provides:       tex(LinLibertineOZI-lf-ot1--base.tfm)
-Provides:       tex(LinLibertineOZI-lf-ot1.tfm)
-Provides:       tex(LinLibertineOZI-lf-ot1.vf)
-Provides:       tex(LinLibertineOZI-lf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOZI-lf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOZI-lf-sc-ly1.vf)
-Provides:       tex(LinLibertineOZI-lf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOZI-lf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOZI-lf-sc-ot1.vf)
-Provides:       tex(LinLibertineOZI-lf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOZI-lf-sc-t1.tfm)
-Provides:       tex(LinLibertineOZI-lf-sc-t1.vf)
-Provides:       tex(LinLibertineOZI-lf-t1--base.tfm)
-Provides:       tex(LinLibertineOZI-lf-t1.tfm)
-Provides:       tex(LinLibertineOZI-lf-t1.vf)
-Provides:       tex(LinLibertineOZI-lf-ts1--base.tfm)
-Provides:       tex(LinLibertineOZI-lf-ts1.tfm)
-Provides:       tex(LinLibertineOZI-lf-ts1.vf)
-Provides:       tex(LinLibertineOZI-osf-ly1.tfm)
-Provides:       tex(LinLibertineOZI-osf-ot1--base.tfm)
-Provides:       tex(LinLibertineOZI-osf-ot1.tfm)
-Provides:       tex(LinLibertineOZI-osf-ot1.vf)
-Provides:       tex(LinLibertineOZI-osf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOZI-osf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOZI-osf-sc-ly1.vf)
-Provides:       tex(LinLibertineOZI-osf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOZI-osf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOZI-osf-sc-ot1.vf)
-Provides:       tex(LinLibertineOZI-osf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOZI-osf-sc-t1.tfm)
-Provides:       tex(LinLibertineOZI-osf-sc-t1.vf)
-Provides:       tex(LinLibertineOZI-osf-t1--base.tfm)
-Provides:       tex(LinLibertineOZI-osf-t1.tfm)
-Provides:       tex(LinLibertineOZI-osf-t1.vf)
-Provides:       tex(LinLibertineOZI-osf-ts1--base.tfm)
-Provides:       tex(LinLibertineOZI-osf-ts1.tfm)
-Provides:       tex(LinLibertineOZI-osf-ts1.vf)
-Provides:       tex(LinLibertineOZI-tlf-ly1.tfm)
-Provides:       tex(LinLibertineOZI-tlf-ot1--base.tfm)
-Provides:       tex(LinLibertineOZI-tlf-ot1.tfm)
-Provides:       tex(LinLibertineOZI-tlf-ot1.vf)
-Provides:       tex(LinLibertineOZI-tlf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOZI-tlf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOZI-tlf-sc-ly1.vf)
-Provides:       tex(LinLibertineOZI-tlf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOZI-tlf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOZI-tlf-sc-ot1.vf)
-Provides:       tex(LinLibertineOZI-tlf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOZI-tlf-sc-t1.tfm)
-Provides:       tex(LinLibertineOZI-tlf-sc-t1.vf)
-Provides:       tex(LinLibertineOZI-tlf-t1--base.tfm)
-Provides:       tex(LinLibertineOZI-tlf-t1.tfm)
-Provides:       tex(LinLibertineOZI-tlf-t1.vf)
-Provides:       tex(LinLibertineOZI-tlf-ts1--base.tfm)
-Provides:       tex(LinLibertineOZI-tlf-ts1.tfm)
-Provides:       tex(LinLibertineOZI-tlf-ts1.vf)
-Provides:       tex(LinLibertineOZI-tosf-ly1.tfm)
-Provides:       tex(LinLibertineOZI-tosf-ot1--base.tfm)
-Provides:       tex(LinLibertineOZI-tosf-ot1.tfm)
-Provides:       tex(LinLibertineOZI-tosf-ot1.vf)
-Provides:       tex(LinLibertineOZI-tosf-sc-ly1--base.tfm)
-Provides:       tex(LinLibertineOZI-tosf-sc-ly1.tfm)
-Provides:       tex(LinLibertineOZI-tosf-sc-ly1.vf)
-Provides:       tex(LinLibertineOZI-tosf-sc-ot1--base.tfm)
-Provides:       tex(LinLibertineOZI-tosf-sc-ot1.tfm)
-Provides:       tex(LinLibertineOZI-tosf-sc-ot1.vf)
-Provides:       tex(LinLibertineOZI-tosf-sc-t1--base.tfm)
-Provides:       tex(LinLibertineOZI-tosf-sc-t1.tfm)
-Provides:       tex(LinLibertineOZI-tosf-sc-t1.vf)
-Provides:       tex(LinLibertineOZI-tosf-t1--base.tfm)
-Provides:       tex(LinLibertineOZI-tosf-t1.tfm)
-Provides:       tex(LinLibertineOZI-tosf-t1.vf)
-Provides:       tex(LinLibertineOZI-tosf-ts1--base.tfm)
-Provides:       tex(LinLibertineOZI-tosf-ts1.tfm)
-Provides:       tex(LinLibertineOZI-tosf-ts1.vf)
 Provides:       tex(LinLibertineT-lf-ly1--base.tfm)
 Provides:       tex(LinLibertineT-lf-ly1.tfm)
 Provides:       tex(LinLibertineT-lf-ly1.vf)
@@ -12755,10 +12035,6 @@ Provides:       tex(LinLibertineTZI-tosf-ts1.tfm)
 Provides:       tex(LinLibertineTZI-tosf-ts1.vf)
 Provides:       tex(LinLibertine_I.tex)
 Provides:       tex(LinLibertine_R.tex)
-Provides:       tex(OT1LinuxBiolinumO-LF.fd)
-Provides:       tex(OT1LinuxBiolinumO-OsF.fd)
-Provides:       tex(OT1LinuxBiolinumO-TLF.fd)
-Provides:       tex(OT1LinuxBiolinumO-TOsF.fd)
 Provides:       tex(OT1LinuxBiolinumT-LF.fd)
 Provides:       tex(OT1LinuxBiolinumT-OsF.fd)
 Provides:       tex(OT1LinuxBiolinumT-Sup.fd)
@@ -12775,19 +12051,11 @@ Provides:       tex(OT1LinuxLibertineInitialsT-TLF.fd)
 Provides:       tex(OT1LinuxLibertineMonoT-LF.fd)
 Provides:       tex(OT1LinuxLibertineMonoT-Sup.fd)
 Provides:       tex(OT1LinuxLibertineMonoT-TLF.fd)
-Provides:       tex(OT1LinuxLibertineO-LF.fd)
-Provides:       tex(OT1LinuxLibertineO-OsF.fd)
-Provides:       tex(OT1LinuxLibertineO-TLF.fd)
-Provides:       tex(OT1LinuxLibertineO-TOsF.fd)
 Provides:       tex(OT1LinuxLibertineT-LF.fd)
 Provides:       tex(OT1LinuxLibertineT-OsF.fd)
 Provides:       tex(OT1LinuxLibertineT-Sup.fd)
 Provides:       tex(OT1LinuxLibertineT-TLF.fd)
 Provides:       tex(OT1LinuxLibertineT-TOsF.fd)
-Provides:       tex(T1LinuxBiolinumO-LF.fd)
-Provides:       tex(T1LinuxBiolinumO-OsF.fd)
-Provides:       tex(T1LinuxBiolinumO-TLF.fd)
-Provides:       tex(T1LinuxBiolinumO-TOsF.fd)
 Provides:       tex(T1LinuxBiolinumT-LF.fd)
 Provides:       tex(T1LinuxBiolinumT-OsF.fd)
 Provides:       tex(T1LinuxBiolinumT-Sup.fd)
@@ -12804,19 +12072,11 @@ Provides:       tex(T1LinuxLibertineInitialsT-TLF.fd)
 Provides:       tex(T1LinuxLibertineMonoT-LF.fd)
 Provides:       tex(T1LinuxLibertineMonoT-Sup.fd)
 Provides:       tex(T1LinuxLibertineMonoT-TLF.fd)
-Provides:       tex(T1LinuxLibertineO-LF.fd)
-Provides:       tex(T1LinuxLibertineO-OsF.fd)
-Provides:       tex(T1LinuxLibertineO-TLF.fd)
-Provides:       tex(T1LinuxLibertineO-TOsF.fd)
 Provides:       tex(T1LinuxLibertineT-LF.fd)
 Provides:       tex(T1LinuxLibertineT-OsF.fd)
 Provides:       tex(T1LinuxLibertineT-Sup.fd)
 Provides:       tex(T1LinuxLibertineT-TLF.fd)
 Provides:       tex(T1LinuxLibertineT-TOsF.fd)
-Provides:       tex(TS1LinuxBiolinumO-LF.fd)
-Provides:       tex(TS1LinuxBiolinumO-OsF.fd)
-Provides:       tex(TS1LinuxBiolinumO-TLF.fd)
-Provides:       tex(TS1LinuxBiolinumO-TOsF.fd)
 Provides:       tex(TS1LinuxBiolinumT-LF.fd)
 Provides:       tex(TS1LinuxBiolinumT-OsF.fd)
 Provides:       tex(TS1LinuxBiolinumT-TLF.fd)
@@ -12830,10 +12090,6 @@ Provides:       tex(TS1LinuxLibertineInitialsT-OsF.fd)
 Provides:       tex(TS1LinuxLibertineInitialsT-TLF.fd)
 Provides:       tex(TS1LinuxLibertineMonoT-LF.fd)
 Provides:       tex(TS1LinuxLibertineMonoT-TLF.fd)
-Provides:       tex(TS1LinuxLibertineO-LF.fd)
-Provides:       tex(TS1LinuxLibertineO-OsF.fd)
-Provides:       tex(TS1LinuxLibertineO-TLF.fd)
-Provides:       tex(TS1LinuxLibertineO-TOsF.fd)
 Provides:       tex(TS1LinuxLibertineT-LF.fd)
 Provides:       tex(TS1LinuxLibertineT-OsF.fd)
 Provides:       tex(TS1LinuxLibertineT-TLF.fd)
@@ -13153,9 +12409,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source123:      libertine.tar.xz
-Source124:      libertine.doc.tar.xz
+# from 20250308
+Source125:      libertine.tar.xz
+Source126:      libertine.doc.tar.xz
 
 %description -n texlive-libertine
 The package provides the Libertine and Biolinum fonts in both
@@ -13166,7 +12422,7 @@ to manage the selection of font weights. The package supersedes
 both the libertineotf and the libertine-legacy packages.
 
 %package -n texlive-libertine-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5.3.0svn68981
+Version:        %{texlive_version}.%{texlive_noarch}.5.3.0svn73037
 Release:        0
 Summary:        Documentation for texlive-libertine
 License:        GPL-2.0-or-later
@@ -13178,7 +12434,7 @@ Supplements:    (texlive-libertine and texlive-alldocumentation)
 This package includes the documentation for texlive-libertine
 
 %package -n texlive-libertine-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.5.3.0svn68981
+Version:        %{texlive_version}.%{texlive_noarch}.5.3.0svn73037
 Release:        0
 Summary:        Severed fonts for texlive-libertine
 License:        GPL-2.0-or-later
@@ -13219,6 +12475,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/libertine/ChangeLogLaTeX.txt
 %{_texmfdistdir}/doc/fonts/libertine/GPL.txt
 %{_texmfdistdir}/doc/fonts/libertine/LICENCE.txt
+%{_texmfdistdir}/doc/fonts/libertine/LinLibertine_R.Glyphs.pdf
 %{_texmfdistdir}/doc/fonts/libertine/README
 %{_texmfdistdir}/doc/fonts/libertine/ToDo.txt
 %{_texmfdistdir}/doc/fonts/libertine/g2ntotex.c
@@ -13548,230 +12805,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/libertine/LinLibertine_RI.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/libertine/LinLibertine_RZ.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/libertine/LinLibertine_RZI.otf
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-osf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumO-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-osf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOB-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-osf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOBO-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-osf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumOI-tosf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumT-lf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumT-lf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertine/LinBiolinumT-lf-ot1--base.tfm
@@ -14143,338 +13176,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineMTO-tlf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineMTO-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineMTO-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-osf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineO-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-osf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOB-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-osf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOBI-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-osf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOI-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-osf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZ-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-osf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineOZI-tosf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineT-lf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineT-lf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertine/LinLibertineT-lf-ot1--base.tfm
@@ -14858,118 +13559,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/public/libertine/LinLibertineTI.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/libertine/LinLibertineTZ.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/libertine/LinLibertineTZI.pfb
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-lf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-lf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-lf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-lf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-lf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-osf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-osf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-osf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-osf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-osf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-osf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-osf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tlf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tosf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumO-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-lf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-lf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-lf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-lf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-lf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-osf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-osf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-osf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-osf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-osf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-osf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-osf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tlf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tosf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOB-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-lf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-lf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-lf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-lf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-lf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-osf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-osf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-osf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-osf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-osf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-osf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-osf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tlf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tosf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOBO-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-lf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-lf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-lf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-lf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-lf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-osf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-osf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-osf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-osf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-osf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-osf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-osf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tlf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tosf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumOI-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumT-lf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumT-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/libertine/LinBiolinumT-lf-sc-ly1.vf
@@ -15146,170 +13735,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineMTO-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineMTO-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineMTO-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-lf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-lf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-lf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-lf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-lf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-osf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-osf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-osf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-osf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-osf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-osf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-osf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tlf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tosf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineO-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-lf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-lf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-lf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-lf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-lf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-osf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-osf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-osf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-osf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-osf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-osf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-osf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tlf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tosf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOB-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-lf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-lf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-lf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-lf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-lf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-osf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-osf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-osf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-osf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-osf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-osf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-osf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tlf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tosf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOBI-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-lf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-lf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-lf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-lf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-lf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-osf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-osf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-osf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-osf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-osf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-osf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-osf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tlf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tosf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOI-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-lf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-lf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-lf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-lf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-lf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-osf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-osf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-osf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-osf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-osf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-osf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-osf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tlf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tosf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZ-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-lf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-lf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-lf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-lf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-lf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-osf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-osf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-osf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-osf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-osf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-osf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-tlf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-tosf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineOZI-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineT-lf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineT-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineT-lf-sc-ly1.vf
@@ -15486,10 +13911,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineTZI-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/libertine/LinLibertineTZI-tosf-ts1.vf
 %{_texmfdistdir}/tex/latex/libertine/LKey.tex
-%{_texmfdistdir}/tex/latex/libertine/LY1LinuxBiolinumO-LF.fd
-%{_texmfdistdir}/tex/latex/libertine/LY1LinuxBiolinumO-OsF.fd
-%{_texmfdistdir}/tex/latex/libertine/LY1LinuxBiolinumO-TLF.fd
-%{_texmfdistdir}/tex/latex/libertine/LY1LinuxBiolinumO-TOsF.fd
 %{_texmfdistdir}/tex/latex/libertine/LY1LinuxBiolinumT-LF.fd
 %{_texmfdistdir}/tex/latex/libertine/LY1LinuxBiolinumT-OsF.fd
 %{_texmfdistdir}/tex/latex/libertine/LY1LinuxBiolinumT-Sup.fd
@@ -15506,10 +13927,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertine/LY1LinuxLibertineMonoT-LF.fd
 %{_texmfdistdir}/tex/latex/libertine/LY1LinuxLibertineMonoT-Sup.fd
 %{_texmfdistdir}/tex/latex/libertine/LY1LinuxLibertineMonoT-TLF.fd
-%{_texmfdistdir}/tex/latex/libertine/LY1LinuxLibertineO-LF.fd
-%{_texmfdistdir}/tex/latex/libertine/LY1LinuxLibertineO-OsF.fd
-%{_texmfdistdir}/tex/latex/libertine/LY1LinuxLibertineO-TLF.fd
-%{_texmfdistdir}/tex/latex/libertine/LY1LinuxLibertineO-TOsF.fd
 %{_texmfdistdir}/tex/latex/libertine/LY1LinuxLibertineT-LF.fd
 %{_texmfdistdir}/tex/latex/libertine/LY1LinuxLibertineT-OsF.fd
 %{_texmfdistdir}/tex/latex/libertine/LY1LinuxLibertineT-Sup.fd
@@ -15519,10 +13936,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertine/LinBiolinum_R.tex
 %{_texmfdistdir}/tex/latex/libertine/LinLibertine_I.tex
 %{_texmfdistdir}/tex/latex/libertine/LinLibertine_R.tex
-%{_texmfdistdir}/tex/latex/libertine/OT1LinuxBiolinumO-LF.fd
-%{_texmfdistdir}/tex/latex/libertine/OT1LinuxBiolinumO-OsF.fd
-%{_texmfdistdir}/tex/latex/libertine/OT1LinuxBiolinumO-TLF.fd
-%{_texmfdistdir}/tex/latex/libertine/OT1LinuxBiolinumO-TOsF.fd
 %{_texmfdistdir}/tex/latex/libertine/OT1LinuxBiolinumT-LF.fd
 %{_texmfdistdir}/tex/latex/libertine/OT1LinuxBiolinumT-OsF.fd
 %{_texmfdistdir}/tex/latex/libertine/OT1LinuxBiolinumT-Sup.fd
@@ -15539,19 +13952,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertine/OT1LinuxLibertineMonoT-LF.fd
 %{_texmfdistdir}/tex/latex/libertine/OT1LinuxLibertineMonoT-Sup.fd
 %{_texmfdistdir}/tex/latex/libertine/OT1LinuxLibertineMonoT-TLF.fd
-%{_texmfdistdir}/tex/latex/libertine/OT1LinuxLibertineO-LF.fd
-%{_texmfdistdir}/tex/latex/libertine/OT1LinuxLibertineO-OsF.fd
-%{_texmfdistdir}/tex/latex/libertine/OT1LinuxLibertineO-TLF.fd
-%{_texmfdistdir}/tex/latex/libertine/OT1LinuxLibertineO-TOsF.fd
 %{_texmfdistdir}/tex/latex/libertine/OT1LinuxLibertineT-LF.fd
 %{_texmfdistdir}/tex/latex/libertine/OT1LinuxLibertineT-OsF.fd
 %{_texmfdistdir}/tex/latex/libertine/OT1LinuxLibertineT-Sup.fd
 %{_texmfdistdir}/tex/latex/libertine/OT1LinuxLibertineT-TLF.fd
 %{_texmfdistdir}/tex/latex/libertine/OT1LinuxLibertineT-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertine/T1LinuxBiolinumO-LF.fd
-%{_texmfdistdir}/tex/latex/libertine/T1LinuxBiolinumO-OsF.fd
-%{_texmfdistdir}/tex/latex/libertine/T1LinuxBiolinumO-TLF.fd
-%{_texmfdistdir}/tex/latex/libertine/T1LinuxBiolinumO-TOsF.fd
 %{_texmfdistdir}/tex/latex/libertine/T1LinuxBiolinumT-LF.fd
 %{_texmfdistdir}/tex/latex/libertine/T1LinuxBiolinumT-OsF.fd
 %{_texmfdistdir}/tex/latex/libertine/T1LinuxBiolinumT-Sup.fd
@@ -15568,19 +13973,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertine/T1LinuxLibertineMonoT-LF.fd
 %{_texmfdistdir}/tex/latex/libertine/T1LinuxLibertineMonoT-Sup.fd
 %{_texmfdistdir}/tex/latex/libertine/T1LinuxLibertineMonoT-TLF.fd
-%{_texmfdistdir}/tex/latex/libertine/T1LinuxLibertineO-LF.fd
-%{_texmfdistdir}/tex/latex/libertine/T1LinuxLibertineO-OsF.fd
-%{_texmfdistdir}/tex/latex/libertine/T1LinuxLibertineO-TLF.fd
-%{_texmfdistdir}/tex/latex/libertine/T1LinuxLibertineO-TOsF.fd
 %{_texmfdistdir}/tex/latex/libertine/T1LinuxLibertineT-LF.fd
 %{_texmfdistdir}/tex/latex/libertine/T1LinuxLibertineT-OsF.fd
 %{_texmfdistdir}/tex/latex/libertine/T1LinuxLibertineT-Sup.fd
 %{_texmfdistdir}/tex/latex/libertine/T1LinuxLibertineT-TLF.fd
 %{_texmfdistdir}/tex/latex/libertine/T1LinuxLibertineT-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertine/TS1LinuxBiolinumO-LF.fd
-%{_texmfdistdir}/tex/latex/libertine/TS1LinuxBiolinumO-OsF.fd
-%{_texmfdistdir}/tex/latex/libertine/TS1LinuxBiolinumO-TLF.fd
-%{_texmfdistdir}/tex/latex/libertine/TS1LinuxBiolinumO-TOsF.fd
 %{_texmfdistdir}/tex/latex/libertine/TS1LinuxBiolinumT-LF.fd
 %{_texmfdistdir}/tex/latex/libertine/TS1LinuxBiolinumT-OsF.fd
 %{_texmfdistdir}/tex/latex/libertine/TS1LinuxBiolinumT-TLF.fd
@@ -15594,10 +13991,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertine/TS1LinuxLibertineInitialsT-TLF.fd
 %{_texmfdistdir}/tex/latex/libertine/TS1LinuxLibertineMonoT-LF.fd
 %{_texmfdistdir}/tex/latex/libertine/TS1LinuxLibertineMonoT-TLF.fd
-%{_texmfdistdir}/tex/latex/libertine/TS1LinuxLibertineO-LF.fd
-%{_texmfdistdir}/tex/latex/libertine/TS1LinuxLibertineO-OsF.fd
-%{_texmfdistdir}/tex/latex/libertine/TS1LinuxLibertineO-TLF.fd
-%{_texmfdistdir}/tex/latex/libertine/TS1LinuxLibertineO-TOsF.fd
 %{_texmfdistdir}/tex/latex/libertine/TS1LinuxLibertineT-LF.fd
 %{_texmfdistdir}/tex/latex/libertine/TS1LinuxLibertineT-OsF.fd
 %{_texmfdistdir}/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd
@@ -15787,9 +14180,9 @@ Requires:       tex(fontenc.sty)
 Requires:       tex(libertine.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source125:      libertinegc.tar.xz
-Source126:      libertinegc.doc.tar.xz
+# from 20250308
+Source127:      libertinegc.tar.xz
+Source128:      libertinegc.doc.tar.xz
 
 %description -n texlive-libertinegc
 The package provides LaTeX support files to access the Greek
@@ -15957,9 +14350,9 @@ Provides:       tex(libertinus.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source127:      libertinus.tar.xz
-Source128:      libertinus.doc.tar.xz
+# from 20250308
+Source129:      libertinus.tar.xz
+Source130:      libertinus.doc.tar.xz
 
 %description -n texlive-libertinus
 This package is only a wrapper for the two packages
@@ -16006,7 +14399,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertinus/libertinus.sty
 
 %package -n texlive-libertinus-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.7.040svn57948
+Version:        %{texlive_version}.%{texlive_noarch}.7.051svn72484
 Release:        0
 License:        OFL-1.1
 Summary:        The Libertinus font family
@@ -16035,9 +14428,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-libertinus-fonts-fonts >= %{texlive_version}
 Suggests:       texlive-libertinus-fonts-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source129:      libertinus-fonts.tar.xz
-Source130:      libertinus-fonts.doc.tar.xz
+# from 20250308
+Source131:      libertinus-fonts.tar.xz
+Source132:      libertinus-fonts.doc.tar.xz
 
 %description -n texlive-libertinus-fonts
 This is a fork of the Linux Libertine and Linux Biolinum fonts
@@ -16050,7 +14443,7 @@ Libertinus Math: an OpenType math font for use in OpenType
 math-capable applications like LuaTeX, XeTeX or MS Word 2007+.
 
 %package -n texlive-libertinus-fonts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.7.040svn57948
+Version:        %{texlive_version}.%{texlive_noarch}.7.051svn72484
 Release:        0
 Summary:        Documentation for texlive-libertinus-fonts
 License:        OFL-1.1
@@ -16062,7 +14455,7 @@ Supplements:    (texlive-libertinus-fonts and texlive-alldocumentation)
 This package includes the documentation for texlive-libertinus-fonts
 
 %package -n texlive-libertinus-fonts-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.7.040svn57948
+Version:        %{texlive_version}.%{texlive_noarch}.7.051svn72484
 Release:        0
 Summary:        Severed fonts for texlive-libertinus-fonts
 License:        OFL-1.1
@@ -16106,10 +14499,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/libertinus-fonts/OFL.txt
 %{_texmfdistdir}/doc/fonts/libertinus-fonts/Opentype-Features.pdf
 %{_texmfdistdir}/doc/fonts/libertinus-fonts/README.md
-%{_texmfdistdir}/doc/fonts/libertinus-fonts/Sample.pdf
 %{_texmfdistdir}/doc/fonts/libertinus-fonts/libertinus.css
-%{_texmfdistdir}/doc/fonts/libertinus-fonts/preview.pdf
 %{_texmfdistdir}/doc/fonts/libertinus-fonts/preview.svg
+%{_texmfdistdir}/doc/fonts/libertinus-fonts/sample.pdf
+%{_texmfdistdir}/doc/fonts/libertinus-fonts/waterfalls.pdf
 
 %files -n texlive-libertinus-fonts
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/libertinus-fonts/LibertinusKeyboard-Regular.otf
@@ -16185,9 +14578,9 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source131:      libertinus-otf.tar.xz
-Source132:      libertinus-otf.doc.tar.xz
+# from 20250308
+Source133:      libertinus-otf.tar.xz
+Source134:      libertinus-otf.doc.tar.xz
 
 %description -n texlive-libertinus-otf
 This package offers LuaLaTeX/XeLaTeX support for the Libertinus
@@ -16235,7 +14628,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertinus-otf/libertinus-otf.sty
 
 %package -n texlive-libertinus-type1
-Version:        %{texlive_version}.%{texlive_noarch}.svn67450
+Version:        %{texlive_version}.%{texlive_noarch}.svn73445
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Support for using Libertinus fonts with LaTeX/pdfLaTeX
@@ -16274,6 +14667,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-libertinus-type1-fonts >= %{texlive_version}
 Suggests:       texlive-libertinus-type1-doc >= %{texlive_version}
+Provides:       tex(LGRLibertinusMono-TLF.fd)
 Provides:       tex(LGRLibertinusSans-LF.fd)
 Provides:       tex(LGRLibertinusSans-OsF.fd)
 Provides:       tex(LGRLibertinusSans-Sup.fd)
@@ -16284,12 +14678,6 @@ Provides:       tex(LGRLibertinusSerif-OsF.fd)
 Provides:       tex(LGRLibertinusSerif-Sup.fd)
 Provides:       tex(LGRLibertinusSerif-TLF.fd)
 Provides:       tex(LGRLibertinusSerif-TOsF.fd)
-Provides:       tex(LGRLibertinusSerifDisplay-LF.fd)
-Provides:       tex(LGRLibertinusSerifDisplay-OsF.fd)
-Provides:       tex(LGRLibertinusSerifDisplay-Sup.fd)
-Provides:       tex(LGRLibertinusSerifDisplay-TLF.fd)
-Provides:       tex(LGRLibertinusSerifDisplay-TOsF.fd)
-Provides:       tex(LGRLibertinusSerifInitials-TLF.fd)
 Provides:       tex(LY1LibertinusMono-TLF.fd)
 Provides:       tex(LY1LibertinusSans-LF.fd)
 Provides:       tex(LY1LibertinusSans-OsF.fd)
@@ -16306,7 +14694,6 @@ Provides:       tex(LY1LibertinusSerifDisplay-OsF.fd)
 Provides:       tex(LY1LibertinusSerifDisplay-Sup.fd)
 Provides:       tex(LY1LibertinusSerifDisplay-TLF.fd)
 Provides:       tex(LY1LibertinusSerifDisplay-TOsF.fd)
-Provides:       tex(LY1LibertinusSerifInitials-TLF.fd)
 Provides:       tex(LibertinusMono-Bold-tlf-ly1--base.tfm)
 Provides:       tex(LibertinusMono-Bold-tlf-ly1.tfm)
 Provides:       tex(LibertinusMono-Bold-tlf-ly1.vf)
@@ -16317,26 +14704,29 @@ Provides:       tex(LibertinusMono-Bold-tlf-t1.vf)
 Provides:       tex(LibertinusMono-Bold-tlf-ts1--base.tfm)
 Provides:       tex(LibertinusMono-Bold-tlf-ts1.tfm)
 Provides:       tex(LibertinusMono-Bold-tlf-ts1.vf)
-Provides:       tex(LibertinusMono-BoldOblique-tlf-ly1--base.tfm)
-Provides:       tex(LibertinusMono-BoldOblique-tlf-ly1.tfm)
-Provides:       tex(LibertinusMono-BoldOblique-tlf-ly1.vf)
-Provides:       tex(LibertinusMono-BoldOblique-tlf-ot1.tfm)
-Provides:       tex(LibertinusMono-BoldOblique-tlf-t1--base.tfm)
-Provides:       tex(LibertinusMono-BoldOblique-tlf-t1.tfm)
-Provides:       tex(LibertinusMono-BoldOblique-tlf-t1.vf)
-Provides:       tex(LibertinusMono-BoldOblique-tlf-ts1--base.tfm)
-Provides:       tex(LibertinusMono-BoldOblique-tlf-ts1.tfm)
-Provides:       tex(LibertinusMono-BoldOblique-tlf-ts1.vf)
-Provides:       tex(LibertinusMono-Oblique-tlf-ly1--base.tfm)
-Provides:       tex(LibertinusMono-Oblique-tlf-ly1.tfm)
-Provides:       tex(LibertinusMono-Oblique-tlf-ly1.vf)
-Provides:       tex(LibertinusMono-Oblique-tlf-ot1.tfm)
-Provides:       tex(LibertinusMono-Oblique-tlf-t1--base.tfm)
-Provides:       tex(LibertinusMono-Oblique-tlf-t1.tfm)
-Provides:       tex(LibertinusMono-Oblique-tlf-t1.vf)
-Provides:       tex(LibertinusMono-Oblique-tlf-ts1--base.tfm)
-Provides:       tex(LibertinusMono-Oblique-tlf-ts1.tfm)
-Provides:       tex(LibertinusMono-Oblique-tlf-ts1.vf)
+Provides:       tex(LibertinusMono-BoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(LibertinusMono-BoldItalic-tlf-ly1.tfm)
+Provides:       tex(LibertinusMono-BoldItalic-tlf-ly1.vf)
+Provides:       tex(LibertinusMono-BoldItalic-tlf-ot1.tfm)
+Provides:       tex(LibertinusMono-BoldItalic-tlf-t1--base.tfm)
+Provides:       tex(LibertinusMono-BoldItalic-tlf-t1.tfm)
+Provides:       tex(LibertinusMono-BoldItalic-tlf-t1.vf)
+Provides:       tex(LibertinusMono-BoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(LibertinusMono-BoldItalic-tlf-ts1.tfm)
+Provides:       tex(LibertinusMono-BoldItalic-tlf-ts1.vf)
+Provides:       tex(LibertinusMono-Italic-tlf-ly1--base.tfm)
+Provides:       tex(LibertinusMono-Italic-tlf-ly1.tfm)
+Provides:       tex(LibertinusMono-Italic-tlf-ly1.vf)
+Provides:       tex(LibertinusMono-Italic-tlf-ot1.tfm)
+Provides:       tex(LibertinusMono-Italic-tlf-t1--base.tfm)
+Provides:       tex(LibertinusMono-Italic-tlf-t1.tfm)
+Provides:       tex(LibertinusMono-Italic-tlf-t1.vf)
+Provides:       tex(LibertinusMono-Italic-tlf-ts1--base.tfm)
+Provides:       tex(LibertinusMono-Italic-tlf-ts1.tfm)
+Provides:       tex(LibertinusMono-Italic-tlf-ts1.vf)
+Provides:       tex(LibertinusMono-Regular-tlf-lgr--base.tfm)
+Provides:       tex(LibertinusMono-Regular-tlf-lgr.tfm)
+Provides:       tex(LibertinusMono-Regular-tlf-lgr.vf)
 Provides:       tex(LibertinusMono-Regular-tlf-ly1--base.tfm)
 Provides:       tex(LibertinusMono-Regular-tlf-ly1.tfm)
 Provides:       tex(LibertinusMono-Regular-tlf-ly1.vf)
@@ -16344,9 +14734,13 @@ Provides:       tex(LibertinusMono-Regular-tlf-ot1.tfm)
 Provides:       tex(LibertinusMono-Regular-tlf-t1--base.tfm)
 Provides:       tex(LibertinusMono-Regular-tlf-t1.tfm)
 Provides:       tex(LibertinusMono-Regular-tlf-t1.vf)
+Provides:       tex(LibertinusMono-Regular-tlf-t2a.tfm)
+Provides:       tex(LibertinusMono-Regular-tlf-t2b.tfm)
+Provides:       tex(LibertinusMono-Regular-tlf-t2c.tfm)
 Provides:       tex(LibertinusMono-Regular-tlf-ts1--base.tfm)
 Provides:       tex(LibertinusMono-Regular-tlf-ts1.tfm)
 Provides:       tex(LibertinusMono-Regular-tlf-ts1.vf)
+Provides:       tex(LibertinusMono.map)
 Provides:       tex(LibertinusSans-Bold-lf-lgr.tfm)
 Provides:       tex(LibertinusSans-Bold-lf-ly1.tfm)
 Provides:       tex(LibertinusSans-Bold-lf-ot1.tfm)
@@ -16480,139 +14874,6 @@ Provides:       tex(LibertinusSans-Bold-tosf-t2c.tfm)
 Provides:       tex(LibertinusSans-Bold-tosf-ts1--base.tfm)
 Provides:       tex(LibertinusSans-Bold-tosf-ts1.tfm)
 Provides:       tex(LibertinusSans-Bold-tosf-ts1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-lf-lgr.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-ly1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-ot1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-lgr.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-ly1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-ly1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-ly1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-ot1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-ot1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-ot1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-t1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-t1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-t1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-t2a--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-t2a.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-t2a.vf)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-t2b--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-t2b.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-t2b.vf)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-t2c--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-t2c.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-sc-t2c.vf)
-Provides:       tex(LibertinusSans-BoldOblique-lf-t1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-t1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-t1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-lf-t2a.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-t2b.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-t2c.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-ts1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-ts1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-lf-ts1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-osf-lgr.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-ly1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-ot1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-lgr.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-ly1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-ly1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-ly1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-ot1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-ot1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-ot1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-t1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-t1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-t1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-t2a--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-t2a.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-t2a.vf)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-t2b--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-t2b.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-t2b.vf)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-t2c--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-t2c.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-sc-t2c.vf)
-Provides:       tex(LibertinusSans-BoldOblique-osf-t1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-t1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-t1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-osf-t2a.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-t2b.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-t2c.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-ts1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-ts1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-osf-ts1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-sup-lgr.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-sup-ly1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-sup-ot1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-sup-t1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-sup-t1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-sup-t1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-sup-t2a.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-sup-t2b.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-sup-t2c.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-lgr.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-ly1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-ot1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-lgr.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-ly1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-ly1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-ly1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-ot1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-ot1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-ot1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-t1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-t1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-t1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-t2a--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-t2a.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-t2a.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-t2b--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-t2b.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-t2b.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-t2c--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-t2c.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-sc-t2c.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-t1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-t1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-t1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-t2a.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-t2b.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-t2c.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-ts1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-ts1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tlf-ts1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-lgr.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-ly1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-ot1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-lgr.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-ly1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-ly1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-ly1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-ot1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-ot1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-ot1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-t1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-t1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-t1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-t2a--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-t2a.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-t2a.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-t2b--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-t2b.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-t2b.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-t2c--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-t2c.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-sc-t2c.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-t1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-t1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-t1.vf)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-t2a.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-t2b.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-t2c.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-ts1--base.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-ts1.tfm)
-Provides:       tex(LibertinusSans-BoldOblique-tosf-ts1.vf)
 Provides:       tex(LibertinusSans-Italic-lf-lgr--base.tfm)
 Provides:       tex(LibertinusSans-Italic-lf-lgr.tfm)
 Provides:       tex(LibertinusSans-Italic-lf-lgr.vf)
@@ -17745,9 +16006,6 @@ Provides:       tex(LibertinusSerif-SemiboldItalic-tosf-t2c.vf)
 Provides:       tex(LibertinusSerif-SemiboldItalic-tosf-ts1--base.tfm)
 Provides:       tex(LibertinusSerif-SemiboldItalic-tosf-ts1.tfm)
 Provides:       tex(LibertinusSerif-SemiboldItalic-tosf-ts1.vf)
-Provides:       tex(LibertinusSerifDisplay-Regular-lf-lgr--base.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-lf-lgr.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-lf-lgr.vf)
 Provides:       tex(LibertinusSerifDisplay-Regular-lf-ly1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-lf-ly1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-lf-ly1.vf)
@@ -17755,15 +16013,9 @@ Provides:       tex(LibertinusSerifDisplay-Regular-lf-ot1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-lf-t1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-lf-t1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-lf-t1.vf)
-Provides:       tex(LibertinusSerifDisplay-Regular-lf-t2a.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-lf-t2b.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-lf-t2c.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-lf-ts1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-lf-ts1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-lf-ts1.vf)
-Provides:       tex(LibertinusSerifDisplay-Regular-osf-lgr--base.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-osf-lgr.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-osf-lgr.vf)
 Provides:       tex(LibertinusSerifDisplay-Regular-osf-ly1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-osf-ly1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-osf-ly1.vf)
@@ -17771,15 +16023,9 @@ Provides:       tex(LibertinusSerifDisplay-Regular-osf-ot1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-osf-t1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-osf-t1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-osf-t1.vf)
-Provides:       tex(LibertinusSerifDisplay-Regular-osf-t2a.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-osf-t2b.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-osf-t2c.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-osf-ts1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-osf-ts1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-osf-ts1.vf)
-Provides:       tex(LibertinusSerifDisplay-Regular-sup-lgr--base.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-sup-lgr.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-sup-lgr.vf)
 Provides:       tex(LibertinusSerifDisplay-Regular-sup-ly1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-sup-ly1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-sup-ly1.vf)
@@ -17787,12 +16033,6 @@ Provides:       tex(LibertinusSerifDisplay-Regular-sup-ot1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-sup-t1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-sup-t1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-sup-t1.vf)
-Provides:       tex(LibertinusSerifDisplay-Regular-sup-t2a.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-sup-t2b.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-sup-t2c.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-tlf-lgr--base.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-tlf-lgr.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-tlf-lgr.vf)
 Provides:       tex(LibertinusSerifDisplay-Regular-tlf-ly1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tlf-ly1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tlf-ly1.vf)
@@ -17800,15 +16040,9 @@ Provides:       tex(LibertinusSerifDisplay-Regular-tlf-ot1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tlf-t1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tlf-t1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tlf-t1.vf)
-Provides:       tex(LibertinusSerifDisplay-Regular-tlf-t2a.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-tlf-t2b.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-tlf-t2c.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tlf-ts1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tlf-ts1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tlf-ts1.vf)
-Provides:       tex(LibertinusSerifDisplay-Regular-tosf-lgr--base.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-tosf-lgr.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-tosf-lgr.vf)
 Provides:       tex(LibertinusSerifDisplay-Regular-tosf-ly1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tosf-ly1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tosf-ly1.vf)
@@ -17816,27 +16050,9 @@ Provides:       tex(LibertinusSerifDisplay-Regular-tosf-ot1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tosf-t1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tosf-t1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tosf-t1.vf)
-Provides:       tex(LibertinusSerifDisplay-Regular-tosf-t2a.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-tosf-t2b.tfm)
-Provides:       tex(LibertinusSerifDisplay-Regular-tosf-t2c.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tosf-ts1--base.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tosf-ts1.tfm)
 Provides:       tex(LibertinusSerifDisplay-Regular-tosf-ts1.vf)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-lgr--base.tfm)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-lgr.tfm)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-lgr.vf)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-ly1--base.tfm)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-ly1.tfm)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-ly1.vf)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-ot1.tfm)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-t1--base.tfm)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-t1.tfm)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-t1.vf)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-t2a.tfm)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-t2b.tfm)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-t2c.tfm)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-ts1.tfm)
-Provides:       tex(LibertinusSerifInitials-Regular-tlf-ts1.vf)
 Provides:       tex(OT1LibertinusMono-TLF.fd)
 Provides:       tex(OT1LibertinusSans-LF.fd)
 Provides:       tex(OT1LibertinusSans-OsF.fd)
@@ -17853,7 +16069,6 @@ Provides:       tex(OT1LibertinusSerifDisplay-OsF.fd)
 Provides:       tex(OT1LibertinusSerifDisplay-Sup.fd)
 Provides:       tex(OT1LibertinusSerifDisplay-TLF.fd)
 Provides:       tex(OT1LibertinusSerifDisplay-TOsF.fd)
-Provides:       tex(OT1LibertinusSerifInitials-TLF.fd)
 Provides:       tex(T1LibertinusMono-TLF.fd)
 Provides:       tex(T1LibertinusSans-LF.fd)
 Provides:       tex(T1LibertinusSans-OsF.fd)
@@ -17870,7 +16085,7 @@ Provides:       tex(T1LibertinusSerifDisplay-OsF.fd)
 Provides:       tex(T1LibertinusSerifDisplay-Sup.fd)
 Provides:       tex(T1LibertinusSerifDisplay-TLF.fd)
 Provides:       tex(T1LibertinusSerifDisplay-TOsF.fd)
-Provides:       tex(T1LibertinusSerifInitials-TLF.fd)
+Provides:       tex(T2ALibertinusMono-TLF.fd)
 Provides:       tex(T2ALibertinusSans-LF.fd)
 Provides:       tex(T2ALibertinusSans-OsF.fd)
 Provides:       tex(T2ALibertinusSans-Sup.fd)
@@ -17881,12 +16096,7 @@ Provides:       tex(T2ALibertinusSerif-OsF.fd)
 Provides:       tex(T2ALibertinusSerif-Sup.fd)
 Provides:       tex(T2ALibertinusSerif-TLF.fd)
 Provides:       tex(T2ALibertinusSerif-TOsF.fd)
-Provides:       tex(T2ALibertinusSerifDisplay-LF.fd)
-Provides:       tex(T2ALibertinusSerifDisplay-OsF.fd)
-Provides:       tex(T2ALibertinusSerifDisplay-Sup.fd)
-Provides:       tex(T2ALibertinusSerifDisplay-TLF.fd)
-Provides:       tex(T2ALibertinusSerifDisplay-TOsF.fd)
-Provides:       tex(T2ALibertinusSerifInitials-TLF.fd)
+Provides:       tex(T2BLibertinusMono-TLF.fd)
 Provides:       tex(T2BLibertinusSans-LF.fd)
 Provides:       tex(T2BLibertinusSans-OsF.fd)
 Provides:       tex(T2BLibertinusSans-Sup.fd)
@@ -17897,12 +16107,7 @@ Provides:       tex(T2BLibertinusSerif-OsF.fd)
 Provides:       tex(T2BLibertinusSerif-Sup.fd)
 Provides:       tex(T2BLibertinusSerif-TLF.fd)
 Provides:       tex(T2BLibertinusSerif-TOsF.fd)
-Provides:       tex(T2BLibertinusSerifDisplay-LF.fd)
-Provides:       tex(T2BLibertinusSerifDisplay-OsF.fd)
-Provides:       tex(T2BLibertinusSerifDisplay-Sup.fd)
-Provides:       tex(T2BLibertinusSerifDisplay-TLF.fd)
-Provides:       tex(T2BLibertinusSerifDisplay-TOsF.fd)
-Provides:       tex(T2BLibertinusSerifInitials-TLF.fd)
+Provides:       tex(T2CLibertinusMono-TLF.fd)
 Provides:       tex(T2CLibertinusSans-LF.fd)
 Provides:       tex(T2CLibertinusSans-OsF.fd)
 Provides:       tex(T2CLibertinusSans-Sup.fd)
@@ -17913,12 +16118,6 @@ Provides:       tex(T2CLibertinusSerif-OsF.fd)
 Provides:       tex(T2CLibertinusSerif-Sup.fd)
 Provides:       tex(T2CLibertinusSerif-TLF.fd)
 Provides:       tex(T2CLibertinusSerif-TOsF.fd)
-Provides:       tex(T2CLibertinusSerifDisplay-LF.fd)
-Provides:       tex(T2CLibertinusSerifDisplay-OsF.fd)
-Provides:       tex(T2CLibertinusSerifDisplay-Sup.fd)
-Provides:       tex(T2CLibertinusSerifDisplay-TLF.fd)
-Provides:       tex(T2CLibertinusSerifDisplay-TOsF.fd)
-Provides:       tex(T2CLibertinusSerifInitials-TLF.fd)
 Provides:       tex(TS1LibertinusMono-TLF.fd)
 Provides:       tex(TS1LibertinusSans-LF.fd)
 Provides:       tex(TS1LibertinusSans-OsF.fd)
@@ -17932,347 +16131,369 @@ Provides:       tex(TS1LibertinusSerifDisplay-LF.fd)
 Provides:       tex(TS1LibertinusSerifDisplay-OsF.fd)
 Provides:       tex(TS1LibertinusSerifDisplay-TLF.fd)
 Provides:       tex(TS1LibertinusSerifDisplay-TOsF.fd)
-Provides:       tex(TS1LibertinusSerifInitials-TLF.fd)
-Provides:       tex(lbts_2dnbtf.enc)
-Provides:       tex(lbts_2fcdyd.enc)
-Provides:       tex(lbts_2ojay3.enc)
-Provides:       tex(lbts_2tlncs.enc)
-Provides:       tex(lbts_2u3q4p.enc)
-Provides:       tex(lbts_2vfnnw.enc)
-Provides:       tex(lbts_2y652m.enc)
-Provides:       tex(lbts_2yds7f.enc)
-Provides:       tex(lbts_35favc.enc)
-Provides:       tex(lbts_36t55i.enc)
-Provides:       tex(lbts_37i5h5.enc)
-Provides:       tex(lbts_3d54jy.enc)
-Provides:       tex(lbts_3j5xjf.enc)
-Provides:       tex(lbts_3jolak.enc)
-Provides:       tex(lbts_3kirmv.enc)
-Provides:       tex(lbts_3kmpct.enc)
-Provides:       tex(lbts_3m644f.enc)
-Provides:       tex(lbts_3qta4x.enc)
-Provides:       tex(lbts_3ssu23.enc)
-Provides:       tex(lbts_3un72f.enc)
-Provides:       tex(lbts_3vqmyw.enc)
-Provides:       tex(lbts_3yrfnt.enc)
-Provides:       tex(lbts_4crdwc.enc)
-Provides:       tex(lbts_4d42wm.enc)
-Provides:       tex(lbts_4gaomz.enc)
-Provides:       tex(lbts_4hcz3c.enc)
-Provides:       tex(lbts_4mrx7q.enc)
-Provides:       tex(lbts_4q6kep.enc)
-Provides:       tex(lbts_4sdcjk.enc)
-Provides:       tex(lbts_4uwsiq.enc)
-Provides:       tex(lbts_4wbnoe.enc)
-Provides:       tex(lbts_4xoyfg.enc)
-Provides:       tex(lbts_4zqa2g.enc)
-Provides:       tex(lbts_57bjkg.enc)
-Provides:       tex(lbts_5acxeg.enc)
-Provides:       tex(lbts_5cy3nd.enc)
-Provides:       tex(lbts_5h7qbk.enc)
-Provides:       tex(lbts_5jnf2k.enc)
-Provides:       tex(lbts_5xa72p.enc)
-Provides:       tex(lbts_63ftwl.enc)
-Provides:       tex(lbts_674lrv.enc)
-Provides:       tex(lbts_6caxtj.enc)
-Provides:       tex(lbts_6ewxxu.enc)
-Provides:       tex(lbts_6gletg.enc)
-Provides:       tex(lbts_6h6srf.enc)
-Provides:       tex(lbts_6hdezz.enc)
-Provides:       tex(lbts_6l4fbc.enc)
-Provides:       tex(lbts_6lk76t.enc)
-Provides:       tex(lbts_6wmeer.enc)
-Provides:       tex(lbts_72youc.enc)
-Provides:       tex(lbts_75t36g.enc)
-Provides:       tex(lbts_76xdns.enc)
-Provides:       tex(lbts_77jah4.enc)
-Provides:       tex(lbts_77t54r.enc)
-Provides:       tex(lbts_7aen2t.enc)
-Provides:       tex(lbts_7bccbz.enc)
-Provides:       tex(lbts_7d2mhk.enc)
-Provides:       tex(lbts_7hmj2z.enc)
-Provides:       tex(lbts_7lwjes.enc)
-Provides:       tex(lbts_7mm7zy.enc)
-Provides:       tex(lbts_7oodvn.enc)
-Provides:       tex(lbts_7vsebg.enc)
-Provides:       tex(lbts_7yclm6.enc)
-Provides:       tex(lbts_a3f66t.enc)
-Provides:       tex(lbts_aidrin.enc)
-Provides:       tex(lbts_arfinu.enc)
-Provides:       tex(lbts_at32ur.enc)
-Provides:       tex(lbts_avlujb.enc)
-Provides:       tex(lbts_avlydd.enc)
-Provides:       tex(lbts_ayzaac.enc)
-Provides:       tex(lbts_b4oezt.enc)
-Provides:       tex(lbts_b5fzbp.enc)
-Provides:       tex(lbts_b7xqh5.enc)
-Provides:       tex(lbts_bgegdt.enc)
-Provides:       tex(lbts_bjbyqz.enc)
-Provides:       tex(lbts_bn2i3n.enc)
-Provides:       tex(lbts_bvhzzu.enc)
-Provides:       tex(lbts_bxwrog.enc)
-Provides:       tex(lbts_c3bv3f.enc)
-Provides:       tex(lbts_c4i7ev.enc)
-Provides:       tex(lbts_c4nx3a.enc)
-Provides:       tex(lbts_c6vmpn.enc)
-Provides:       tex(lbts_c7grr2.enc)
-Provides:       tex(lbts_calslh.enc)
-Provides:       tex(lbts_cb34qf.enc)
-Provides:       tex(lbts_cefqwa.enc)
-Provides:       tex(lbts_ckbdgg.enc)
-Provides:       tex(lbts_ckenly.enc)
-Provides:       tex(lbts_cpinjp.enc)
-Provides:       tex(lbts_cslza4.enc)
-Provides:       tex(lbts_cykel7.enc)
-Provides:       tex(lbts_d2pxsd.enc)
-Provides:       tex(lbts_d37b7c.enc)
-Provides:       tex(lbts_dgc4ye.enc)
-Provides:       tex(lbts_dhtsou.enc)
-Provides:       tex(lbts_dkknmm.enc)
-Provides:       tex(lbts_dn22no.enc)
-Provides:       tex(lbts_dsfsze.enc)
-Provides:       tex(lbts_dzyoth.enc)
-Provides:       tex(lbts_e35iwk.enc)
-Provides:       tex(lbts_e5lu6a.enc)
-Provides:       tex(lbts_ecxtyf.enc)
-Provides:       tex(lbts_ed5ai4.enc)
-Provides:       tex(lbts_eejjqw.enc)
-Provides:       tex(lbts_ep5pfz.enc)
-Provides:       tex(lbts_epdddg.enc)
-Provides:       tex(lbts_ercrba.enc)
-Provides:       tex(lbts_erdvwd.enc)
-Provides:       tex(lbts_esgnlu.enc)
-Provides:       tex(lbts_et5tau.enc)
-Provides:       tex(lbts_exfok6.enc)
-Provides:       tex(lbts_f2r76x.enc)
-Provides:       tex(lbts_f3pcwn.enc)
-Provides:       tex(lbts_fili27.enc)
-Provides:       tex(lbts_fmdp7p.enc)
-Provides:       tex(lbts_fmriqv.enc)
-Provides:       tex(lbts_fph2zj.enc)
-Provides:       tex(lbts_fszxp3.enc)
-Provides:       tex(lbts_fujx3h.enc)
-Provides:       tex(lbts_fuyass.enc)
-Provides:       tex(lbts_fy3had.enc)
-Provides:       tex(lbts_g3dkmi.enc)
-Provides:       tex(lbts_g6etas.enc)
-Provides:       tex(lbts_gazpeh.enc)
-Provides:       tex(lbts_gc5t3w.enc)
-Provides:       tex(lbts_gekugp.enc)
-Provides:       tex(lbts_gh4gmp.enc)
-Provides:       tex(lbts_goqnek.enc)
-Provides:       tex(lbts_gp3nhm.enc)
-Provides:       tex(lbts_gq67ga.enc)
-Provides:       tex(lbts_gr4hit.enc)
-Provides:       tex(lbts_gz554e.enc)
-Provides:       tex(lbts_gz7arp.enc)
-Provides:       tex(lbts_hahfqq.enc)
-Provides:       tex(lbts_hboyu3.enc)
-Provides:       tex(lbts_hej6xm.enc)
-Provides:       tex(lbts_hhbt6z.enc)
-Provides:       tex(lbts_hhmpft.enc)
-Provides:       tex(lbts_hjeuwr.enc)
-Provides:       tex(lbts_hrrrjq.enc)
-Provides:       tex(lbts_hvvyjb.enc)
-Provides:       tex(lbts_hxvdny.enc)
-Provides:       tex(lbts_hzjkgg.enc)
-Provides:       tex(lbts_i52ngl.enc)
-Provides:       tex(lbts_iadd5v.enc)
-Provides:       tex(lbts_iaq24h.enc)
-Provides:       tex(lbts_ibb6ig.enc)
-Provides:       tex(lbts_icmtyb.enc)
-Provides:       tex(lbts_ighl2q.enc)
-Provides:       tex(lbts_igmfoi.enc)
-Provides:       tex(lbts_ihsp6n.enc)
-Provides:       tex(lbts_iknsvo.enc)
-Provides:       tex(lbts_inpbes.enc)
-Provides:       tex(lbts_ipd343.enc)
-Provides:       tex(lbts_is673m.enc)
-Provides:       tex(lbts_iv4zj2.enc)
-Provides:       tex(lbts_j6sgbi.enc)
-Provides:       tex(lbts_jb5pke.enc)
-Provides:       tex(lbts_jdjwkh.enc)
-Provides:       tex(lbts_jfamas.enc)
-Provides:       tex(lbts_jrenuz.enc)
-Provides:       tex(lbts_jwzfsl.enc)
-Provides:       tex(lbts_k62zaj.enc)
-Provides:       tex(lbts_kbhblx.enc)
-Provides:       tex(lbts_kehxxc.enc)
-Provides:       tex(lbts_koaj57.enc)
-Provides:       tex(lbts_komy7m.enc)
-Provides:       tex(lbts_kq3xmd.enc)
-Provides:       tex(lbts_kwkowq.enc)
-Provides:       tex(lbts_l5raak.enc)
-Provides:       tex(lbts_l5ujiv.enc)
-Provides:       tex(lbts_l5vej2.enc)
-Provides:       tex(lbts_l6vzgi.enc)
-Provides:       tex(lbts_l74upk.enc)
-Provides:       tex(lbts_laenbp.enc)
-Provides:       tex(lbts_lafzha.enc)
-Provides:       tex(lbts_lhntva.enc)
-Provides:       tex(lbts_lkanbr.enc)
-Provides:       tex(lbts_llns2d.enc)
-Provides:       tex(lbts_llzec3.enc)
-Provides:       tex(lbts_lsubum.enc)
-Provides:       tex(lbts_lwzthx.enc)
-Provides:       tex(lbts_lyzgu3.enc)
-Provides:       tex(lbts_lzae2z.enc)
-Provides:       tex(lbts_lzywtf.enc)
-Provides:       tex(lbts_m254rf.enc)
-Provides:       tex(lbts_m2klan.enc)
-Provides:       tex(lbts_m3c2oj.enc)
-Provides:       tex(lbts_m3l6fs.enc)
-Provides:       tex(lbts_m5c6xi.enc)
-Provides:       tex(lbts_m7sqdm.enc)
-Provides:       tex(lbts_mbfmc4.enc)
-Provides:       tex(lbts_mfadfl.enc)
-Provides:       tex(lbts_mi54ls.enc)
-Provides:       tex(lbts_mll6fo.enc)
-Provides:       tex(lbts_mlwm27.enc)
-Provides:       tex(lbts_mmgovh.enc)
-Provides:       tex(lbts_mphtgh.enc)
-Provides:       tex(lbts_mrbizy.enc)
-Provides:       tex(lbts_mvzwgg.enc)
-Provides:       tex(lbts_mxiee2.enc)
-Provides:       tex(lbts_mzxlpf.enc)
-Provides:       tex(lbts_n3cifc.enc)
-Provides:       tex(lbts_n3dtgz.enc)
-Provides:       tex(lbts_n4gj6t.enc)
-Provides:       tex(lbts_n4tewx.enc)
-Provides:       tex(lbts_nl47lc.enc)
-Provides:       tex(lbts_nufysp.enc)
-Provides:       tex(lbts_nv3oiw.enc)
-Provides:       tex(lbts_o7mh5o.enc)
-Provides:       tex(lbts_oaaihm.enc)
-Provides:       tex(lbts_obkmrl.enc)
-Provides:       tex(lbts_obzz72.enc)
-Provides:       tex(lbts_of47id.enc)
-Provides:       tex(lbts_of4nbw.enc)
-Provides:       tex(lbts_olw3tj.enc)
-Provides:       tex(lbts_onayya.enc)
-Provides:       tex(lbts_opzo24.enc)
-Provides:       tex(lbts_ork5hb.enc)
-Provides:       tex(lbts_orvmfm.enc)
-Provides:       tex(lbts_osdvzf.enc)
-Provides:       tex(lbts_oxank3.enc)
-Provides:       tex(lbts_p5b3to.enc)
-Provides:       tex(lbts_p7snj6.enc)
-Provides:       tex(lbts_pa7fun.enc)
-Provides:       tex(lbts_pag3gg.enc)
-Provides:       tex(lbts_pb7os7.enc)
-Provides:       tex(lbts_pdot6l.enc)
-Provides:       tex(lbts_peeabe.enc)
-Provides:       tex(lbts_pkzsom.enc)
-Provides:       tex(lbts_poicuj.enc)
-Provides:       tex(lbts_ponsko.enc)
-Provides:       tex(lbts_ppaygs.enc)
-Provides:       tex(lbts_pquqdo.enc)
-Provides:       tex(lbts_ptnx64.enc)
-Provides:       tex(lbts_pydski.enc)
-Provides:       tex(lbts_q2cvbs.enc)
-Provides:       tex(lbts_q2ibpc.enc)
-Provides:       tex(lbts_q4imkx.enc)
-Provides:       tex(lbts_q4q2yp.enc)
-Provides:       tex(lbts_qcfvgl.enc)
-Provides:       tex(lbts_qe2yqv.enc)
-Provides:       tex(lbts_qpph5c.enc)
-Provides:       tex(lbts_qqnp2h.enc)
-Provides:       tex(lbts_qsv3bx.enc)
-Provides:       tex(lbts_quwwcn.enc)
-Provides:       tex(lbts_qylzkl.enc)
-Provides:       tex(lbts_qzwhi6.enc)
-Provides:       tex(lbts_r37ntu.enc)
-Provides:       tex(lbts_r4goj2.enc)
-Provides:       tex(lbts_r7yss2.enc)
-Provides:       tex(lbts_rcarnw.enc)
-Provides:       tex(lbts_rchowm.enc)
-Provides:       tex(lbts_rfuadt.enc)
-Provides:       tex(lbts_ridgvo.enc)
-Provides:       tex(lbts_rlktsf.enc)
-Provides:       tex(lbts_rpeiua.enc)
-Provides:       tex(lbts_rqhkdi.enc)
-Provides:       tex(lbts_rtitj6.enc)
-Provides:       tex(lbts_rv4ogi.enc)
-Provides:       tex(lbts_sceraq.enc)
-Provides:       tex(lbts_segm3u.enc)
-Provides:       tex(lbts_sewfus.enc)
-Provides:       tex(lbts_sfissr.enc)
-Provides:       tex(lbts_sihybe.enc)
-Provides:       tex(lbts_sjlxxx.enc)
-Provides:       tex(lbts_slsqbu.enc)
-Provides:       tex(lbts_snijqp.enc)
-Provides:       tex(lbts_sppvmf.enc)
-Provides:       tex(lbts_srwzhm.enc)
-Provides:       tex(lbts_st5lk5.enc)
-Provides:       tex(lbts_sut3w7.enc)
-Provides:       tex(lbts_szn4yf.enc)
-Provides:       tex(lbts_szwnvb.enc)
-Provides:       tex(lbts_tevnlg.enc)
-Provides:       tex(lbts_tll2u3.enc)
-Provides:       tex(lbts_trmgk4.enc)
-Provides:       tex(lbts_trxlme.enc)
-Provides:       tex(lbts_tzl7op.enc)
-Provides:       tex(lbts_u2zr7g.enc)
-Provides:       tex(lbts_u7nqae.enc)
-Provides:       tex(lbts_ucipzb.enc)
-Provides:       tex(lbts_ucscsg.enc)
-Provides:       tex(lbts_ugujza.enc)
-Provides:       tex(lbts_uhqgc3.enc)
-Provides:       tex(lbts_uhwxqu.enc)
-Provides:       tex(lbts_uoecuf.enc)
-Provides:       tex(lbts_usfuuy.enc)
-Provides:       tex(lbts_usl52j.enc)
-Provides:       tex(lbts_usz5ut.enc)
-Provides:       tex(lbts_utifxg.enc)
-Provides:       tex(lbts_uwmf7x.enc)
-Provides:       tex(lbts_uxbjn5.enc)
-Provides:       tex(lbts_uxf4m5.enc)
-Provides:       tex(lbts_v5z4kv.enc)
-Provides:       tex(lbts_vafbri.enc)
-Provides:       tex(lbts_vejg7h.enc)
-Provides:       tex(lbts_vftr22.enc)
-Provides:       tex(lbts_vgw5na.enc)
-Provides:       tex(lbts_vhmker.enc)
-Provides:       tex(lbts_vizicw.enc)
-Provides:       tex(lbts_vjxogo.enc)
-Provides:       tex(lbts_vkm6ln.enc)
-Provides:       tex(lbts_vmhi4g.enc)
-Provides:       tex(lbts_vmjjgq.enc)
-Provides:       tex(lbts_vtz4pu.enc)
-Provides:       tex(lbts_vu5j2r.enc)
-Provides:       tex(lbts_vvzoei.enc)
-Provides:       tex(lbts_w5ro75.enc)
-Provides:       tex(lbts_waqoej.enc)
-Provides:       tex(lbts_wm6att.enc)
-Provides:       tex(lbts_wogi6j.enc)
-Provides:       tex(lbts_wozmdw.enc)
-Provides:       tex(lbts_wrg6fm.enc)
-Provides:       tex(lbts_x7beke.enc)
-Provides:       tex(lbts_xaezkf.enc)
-Provides:       tex(lbts_xfy7gm.enc)
-Provides:       tex(lbts_xh3iko.enc)
-Provides:       tex(lbts_xhfw3j.enc)
-Provides:       tex(lbts_xjb3td.enc)
-Provides:       tex(lbts_xpehld.enc)
-Provides:       tex(lbts_xrj6hp.enc)
-Provides:       tex(lbts_ya3yeu.enc)
-Provides:       tex(lbts_ya7mbv.enc)
-Provides:       tex(lbts_yaf6wf.enc)
-Provides:       tex(lbts_yahecb.enc)
-Provides:       tex(lbts_ygr64v.enc)
-Provides:       tex(lbts_yki2t7.enc)
-Provides:       tex(lbts_ynfuvy.enc)
-Provides:       tex(lbts_ysaokq.enc)
-Provides:       tex(lbts_yt5vb5.enc)
-Provides:       tex(lbts_yuwgqp.enc)
-Provides:       tex(lbts_yzuq4p.enc)
-Provides:       tex(lbts_z6ew44.enc)
-Provides:       tex(lbts_z6nnva.enc)
-Provides:       tex(lbts_zh5q6t.enc)
-Provides:       tex(lbts_zjhiql.enc)
-Provides:       tex(lbts_znslmj.enc)
-Provides:       tex(lbts_zpwads.enc)
-Provides:       tex(lbts_zqzvht.enc)
+Provides:       tex(lbn1_2dnbtf.enc)
+Provides:       tex(lbn1_2fcdyd.enc)
+Provides:       tex(lbn1_2tlncs.enc)
+Provides:       tex(lbn1_2vfnnw.enc)
+Provides:       tex(lbn1_2y652m.enc)
+Provides:       tex(lbn1_2yds7f.enc)
+Provides:       tex(lbn1_35favc.enc)
+Provides:       tex(lbn1_36t55i.enc)
+Provides:       tex(lbn1_37i5h5.enc)
+Provides:       tex(lbn1_37jtjx.enc)
+Provides:       tex(lbn1_3cokjk.enc)
+Provides:       tex(lbn1_3d54jy.enc)
+Provides:       tex(lbn1_3j5xjf.enc)
+Provides:       tex(lbn1_3jolak.enc)
+Provides:       tex(lbn1_3kirmv.enc)
+Provides:       tex(lbn1_3kmpct.enc)
+Provides:       tex(lbn1_3m644f.enc)
+Provides:       tex(lbn1_3qta4x.enc)
+Provides:       tex(lbn1_3ssu23.enc)
+Provides:       tex(lbn1_3un72f.enc)
+Provides:       tex(lbn1_3vqmyw.enc)
+Provides:       tex(lbn1_3yrfnt.enc)
+Provides:       tex(lbn1_45gf2l.enc)
+Provides:       tex(lbn1_4crdwc.enc)
+Provides:       tex(lbn1_4d42wm.enc)
+Provides:       tex(lbn1_4gaomz.enc)
+Provides:       tex(lbn1_4hcz3c.enc)
+Provides:       tex(lbn1_4mrx7q.enc)
+Provides:       tex(lbn1_4q6kep.enc)
+Provides:       tex(lbn1_4sdcjk.enc)
+Provides:       tex(lbn1_4uwsiq.enc)
+Provides:       tex(lbn1_4wbnoe.enc)
+Provides:       tex(lbn1_4xoyfg.enc)
+Provides:       tex(lbn1_4zqa2g.enc)
+Provides:       tex(lbn1_57bjkg.enc)
+Provides:       tex(lbn1_5acxeg.enc)
+Provides:       tex(lbn1_5cy3nd.enc)
+Provides:       tex(lbn1_5f7tjt.enc)
+Provides:       tex(lbn1_5h7qbk.enc)
+Provides:       tex(lbn1_5jnf2k.enc)
+Provides:       tex(lbn1_63ftwl.enc)
+Provides:       tex(lbn1_667eeu.enc)
+Provides:       tex(lbn1_674lrv.enc)
+Provides:       tex(lbn1_6caxtj.enc)
+Provides:       tex(lbn1_6ewxxu.enc)
+Provides:       tex(lbn1_6gletg.enc)
+Provides:       tex(lbn1_6h6srf.enc)
+Provides:       tex(lbn1_6hdezz.enc)
+Provides:       tex(lbn1_6l4fbc.enc)
+Provides:       tex(lbn1_6lk76t.enc)
+Provides:       tex(lbn1_6muo3k.enc)
+Provides:       tex(lbn1_6wmeer.enc)
+Provides:       tex(lbn1_72youc.enc)
+Provides:       tex(lbn1_75t36g.enc)
+Provides:       tex(lbn1_76vk5v.enc)
+Provides:       tex(lbn1_76xdns.enc)
+Provides:       tex(lbn1_77jah4.enc)
+Provides:       tex(lbn1_77t54r.enc)
+Provides:       tex(lbn1_7aen2t.enc)
+Provides:       tex(lbn1_7bccbz.enc)
+Provides:       tex(lbn1_7d2mhk.enc)
+Provides:       tex(lbn1_7hmj2z.enc)
+Provides:       tex(lbn1_7lwjes.enc)
+Provides:       tex(lbn1_7mm7zy.enc)
+Provides:       tex(lbn1_7np5uz.enc)
+Provides:       tex(lbn1_7oodvn.enc)
+Provides:       tex(lbn1_7vsebg.enc)
+Provides:       tex(lbn1_7yclm6.enc)
+Provides:       tex(lbn1_a3f66t.enc)
+Provides:       tex(lbn1_aidrin.enc)
+Provides:       tex(lbn1_at32ur.enc)
+Provides:       tex(lbn1_avlujb.enc)
+Provides:       tex(lbn1_avlydd.enc)
+Provides:       tex(lbn1_ayzaac.enc)
+Provides:       tex(lbn1_b4oezt.enc)
+Provides:       tex(lbn1_b5fzbp.enc)
+Provides:       tex(lbn1_b5ulzv.enc)
+Provides:       tex(lbn1_b7xqh5.enc)
+Provides:       tex(lbn1_bgegdt.enc)
+Provides:       tex(lbn1_bjbyqz.enc)
+Provides:       tex(lbn1_bn2i3n.enc)
+Provides:       tex(lbn1_bvhzzu.enc)
+Provides:       tex(lbn1_bwr4ko.enc)
+Provides:       tex(lbn1_bxwrog.enc)
+Provides:       tex(lbn1_c3bv3f.enc)
+Provides:       tex(lbn1_c4i7ev.enc)
+Provides:       tex(lbn1_c4nx3a.enc)
+Provides:       tex(lbn1_c6vmpn.enc)
+Provides:       tex(lbn1_c7grr2.enc)
+Provides:       tex(lbn1_calslh.enc)
+Provides:       tex(lbn1_cb34qf.enc)
+Provides:       tex(lbn1_cefqwa.enc)
+Provides:       tex(lbn1_ckbdgg.enc)
+Provides:       tex(lbn1_ckenly.enc)
+Provides:       tex(lbn1_cpinjp.enc)
+Provides:       tex(lbn1_cslza4.enc)
+Provides:       tex(lbn1_cykel7.enc)
+Provides:       tex(lbn1_d2pxsd.enc)
+Provides:       tex(lbn1_d37b7c.enc)
+Provides:       tex(lbn1_d7j3zj.enc)
+Provides:       tex(lbn1_dashch.enc)
+Provides:       tex(lbn1_dgc4ye.enc)
+Provides:       tex(lbn1_dhtsou.enc)
+Provides:       tex(lbn1_dkknmm.enc)
+Provides:       tex(lbn1_dn22no.enc)
+Provides:       tex(lbn1_dprkig.enc)
+Provides:       tex(lbn1_dsfsze.enc)
+Provides:       tex(lbn1_dzyoth.enc)
+Provides:       tex(lbn1_e2cf4v.enc)
+Provides:       tex(lbn1_e35iwk.enc)
+Provides:       tex(lbn1_e5lu6a.enc)
+Provides:       tex(lbn1_eclek4.enc)
+Provides:       tex(lbn1_ecxtyf.enc)
+Provides:       tex(lbn1_ed5ai4.enc)
+Provides:       tex(lbn1_eejjqw.enc)
+Provides:       tex(lbn1_ep5pfz.enc)
+Provides:       tex(lbn1_epdddg.enc)
+Provides:       tex(lbn1_ercrba.enc)
+Provides:       tex(lbn1_erdvwd.enc)
+Provides:       tex(lbn1_esgnlu.enc)
+Provides:       tex(lbn1_et5tau.enc)
+Provides:       tex(lbn1_exfok6.enc)
+Provides:       tex(lbn1_f2r76x.enc)
+Provides:       tex(lbn1_f3pcwn.enc)
+Provides:       tex(lbn1_fafj4h.enc)
+Provides:       tex(lbn1_fili27.enc)
+Provides:       tex(lbn1_fmdp7p.enc)
+Provides:       tex(lbn1_fmriqv.enc)
+Provides:       tex(lbn1_fph2zj.enc)
+Provides:       tex(lbn1_fszxp3.enc)
+Provides:       tex(lbn1_fuyass.enc)
+Provides:       tex(lbn1_fy3had.enc)
+Provides:       tex(lbn1_g3dkmi.enc)
+Provides:       tex(lbn1_g6etas.enc)
+Provides:       tex(lbn1_gazpeh.enc)
+Provides:       tex(lbn1_gh4gmp.enc)
+Provides:       tex(lbn1_gr4hit.enc)
+Provides:       tex(lbn1_gxlsis.enc)
+Provides:       tex(lbn1_gz7arp.enc)
+Provides:       tex(lbn1_hahfqq.enc)
+Provides:       tex(lbn1_hej6xm.enc)
+Provides:       tex(lbn1_hgpggj.enc)
+Provides:       tex(lbn1_hhbt6z.enc)
+Provides:       tex(lbn1_hhmpft.enc)
+Provides:       tex(lbn1_hhyopg.enc)
+Provides:       tex(lbn1_hm3bfr.enc)
+Provides:       tex(lbn1_hrrrjq.enc)
+Provides:       tex(lbn1_hvubca.enc)
+Provides:       tex(lbn1_hvvyjb.enc)
+Provides:       tex(lbn1_hxvdny.enc)
+Provides:       tex(lbn1_hzjkgg.enc)
+Provides:       tex(lbn1_i52ngl.enc)
+Provides:       tex(lbn1_iadd5v.enc)
+Provides:       tex(lbn1_iaq24h.enc)
+Provides:       tex(lbn1_ibb6ig.enc)
+Provides:       tex(lbn1_icmtyb.enc)
+Provides:       tex(lbn1_ighl2q.enc)
+Provides:       tex(lbn1_igmfoi.enc)
+Provides:       tex(lbn1_ihkzot.enc)
+Provides:       tex(lbn1_ihsp6n.enc)
+Provides:       tex(lbn1_iknsvo.enc)
+Provides:       tex(lbn1_inpbes.enc)
+Provides:       tex(lbn1_ipd343.enc)
+Provides:       tex(lbn1_iskk3a.enc)
+Provides:       tex(lbn1_iv4zj2.enc)
+Provides:       tex(lbn1_j6sgbi.enc)
+Provides:       tex(lbn1_jb5pke.enc)
+Provides:       tex(lbn1_jdjwkh.enc)
+Provides:       tex(lbn1_jfamas.enc)
+Provides:       tex(lbn1_jiz4dk.enc)
+Provides:       tex(lbn1_jrenuz.enc)
+Provides:       tex(lbn1_jvtoya.enc)
+Provides:       tex(lbn1_jwzfsl.enc)
+Provides:       tex(lbn1_k62zaj.enc)
+Provides:       tex(lbn1_kbhblx.enc)
+Provides:       tex(lbn1_kehxxc.enc)
+Provides:       tex(lbn1_kirbtk.enc)
+Provides:       tex(lbn1_koaj57.enc)
+Provides:       tex(lbn1_komy7m.enc)
+Provides:       tex(lbn1_kq3xmd.enc)
+Provides:       tex(lbn1_kwkowq.enc)
+Provides:       tex(lbn1_kynajb.enc)
+Provides:       tex(lbn1_l5ujiv.enc)
+Provides:       tex(lbn1_l5vej2.enc)
+Provides:       tex(lbn1_l6vzgi.enc)
+Provides:       tex(lbn1_l74upk.enc)
+Provides:       tex(lbn1_laenbp.enc)
+Provides:       tex(lbn1_lafzha.enc)
+Provides:       tex(lbn1_lhntva.enc)
+Provides:       tex(lbn1_lkanbr.enc)
+Provides:       tex(lbn1_llns2d.enc)
+Provides:       tex(lbn1_llzec3.enc)
+Provides:       tex(lbn1_lsubum.enc)
+Provides:       tex(lbn1_lwzthx.enc)
+Provides:       tex(lbn1_lyzgu3.enc)
+Provides:       tex(lbn1_lzae2z.enc)
+Provides:       tex(lbn1_lzywtf.enc)
+Provides:       tex(lbn1_m254rf.enc)
+Provides:       tex(lbn1_m2klan.enc)
+Provides:       tex(lbn1_m3c2oj.enc)
+Provides:       tex(lbn1_m3l6fs.enc)
+Provides:       tex(lbn1_m5c6xi.enc)
+Provides:       tex(lbn1_m7sqdm.enc)
+Provides:       tex(lbn1_mbfmc4.enc)
+Provides:       tex(lbn1_mfadfl.enc)
+Provides:       tex(lbn1_mi54ls.enc)
+Provides:       tex(lbn1_mll6fo.enc)
+Provides:       tex(lbn1_mlwm27.enc)
+Provides:       tex(lbn1_mmgovh.enc)
+Provides:       tex(lbn1_mphtgh.enc)
+Provides:       tex(lbn1_mrbizy.enc)
+Provides:       tex(lbn1_mru3ev.enc)
+Provides:       tex(lbn1_mvzwgg.enc)
+Provides:       tex(lbn1_mxiee2.enc)
+Provides:       tex(lbn1_myww54.enc)
+Provides:       tex(lbn1_n3cifc.enc)
+Provides:       tex(lbn1_n3dtgz.enc)
+Provides:       tex(lbn1_n4gj6t.enc)
+Provides:       tex(lbn1_n4tewx.enc)
+Provides:       tex(lbn1_nl47lc.enc)
+Provides:       tex(lbn1_nufysp.enc)
+Provides:       tex(lbn1_o7mh5o.enc)
+Provides:       tex(lbn1_oaaihm.enc)
+Provides:       tex(lbn1_obzz72.enc)
+Provides:       tex(lbn1_oe5ee4.enc)
+Provides:       tex(lbn1_of47id.enc)
+Provides:       tex(lbn1_of4nbw.enc)
+Provides:       tex(lbn1_olk76w.enc)
+Provides:       tex(lbn1_olw3tj.enc)
+Provides:       tex(lbn1_onayya.enc)
+Provides:       tex(lbn1_opzo24.enc)
+Provides:       tex(lbn1_or3pzs.enc)
+Provides:       tex(lbn1_ork5hb.enc)
+Provides:       tex(lbn1_orvmfm.enc)
+Provides:       tex(lbn1_osdvzf.enc)
+Provides:       tex(lbn1_oxank3.enc)
+Provides:       tex(lbn1_p2xkqy.enc)
+Provides:       tex(lbn1_p5b3to.enc)
+Provides:       tex(lbn1_p7snj6.enc)
+Provides:       tex(lbn1_pb7os7.enc)
+Provides:       tex(lbn1_pdot6l.enc)
+Provides:       tex(lbn1_peeabe.enc)
+Provides:       tex(lbn1_pkzsom.enc)
+Provides:       tex(lbn1_poicuj.enc)
+Provides:       tex(lbn1_ponsko.enc)
+Provides:       tex(lbn1_pquqdo.enc)
+Provides:       tex(lbn1_ptnx64.enc)
+Provides:       tex(lbn1_pydski.enc)
+Provides:       tex(lbn1_q2cvbs.enc)
+Provides:       tex(lbn1_q2ibpc.enc)
+Provides:       tex(lbn1_q4imkx.enc)
+Provides:       tex(lbn1_q4q2yp.enc)
+Provides:       tex(lbn1_qbwrql.enc)
+Provides:       tex(lbn1_qcfvgl.enc)
+Provides:       tex(lbn1_qe2yqv.enc)
+Provides:       tex(lbn1_qgowik.enc)
+Provides:       tex(lbn1_qpph5c.enc)
+Provides:       tex(lbn1_qqnp2h.enc)
+Provides:       tex(lbn1_qsv3bx.enc)
+Provides:       tex(lbn1_qzwhi6.enc)
+Provides:       tex(lbn1_r37ntu.enc)
+Provides:       tex(lbn1_r4goj2.enc)
+Provides:       tex(lbn1_r7yss2.enc)
+Provides:       tex(lbn1_rcarnw.enc)
+Provides:       tex(lbn1_rchowm.enc)
+Provides:       tex(lbn1_rfuadt.enc)
+Provides:       tex(lbn1_ridgvo.enc)
+Provides:       tex(lbn1_rlktsf.enc)
+Provides:       tex(lbn1_rpeiua.enc)
+Provides:       tex(lbn1_rqhkdi.enc)
+Provides:       tex(lbn1_rt44aj.enc)
+Provides:       tex(lbn1_rtitj6.enc)
+Provides:       tex(lbn1_rvhnvp.enc)
+Provides:       tex(lbn1_rwdf67.enc)
+Provides:       tex(lbn1_s4apdz.enc)
+Provides:       tex(lbn1_sceraq.enc)
+Provides:       tex(lbn1_segm3u.enc)
+Provides:       tex(lbn1_sewfus.enc)
+Provides:       tex(lbn1_sfissr.enc)
+Provides:       tex(lbn1_sihybe.enc)
+Provides:       tex(lbn1_sjlxxx.enc)
+Provides:       tex(lbn1_slsqbu.enc)
+Provides:       tex(lbn1_sncvby.enc)
+Provides:       tex(lbn1_snijqp.enc)
+Provides:       tex(lbn1_sppvmf.enc)
+Provides:       tex(lbn1_srwzhm.enc)
+Provides:       tex(lbn1_st5lk5.enc)
+Provides:       tex(lbn1_sut3w7.enc)
+Provides:       tex(lbn1_szn4yf.enc)
+Provides:       tex(lbn1_szwnvb.enc)
+Provides:       tex(lbn1_t2ckkh.enc)
+Provides:       tex(lbn1_tc5bjz.enc)
+Provides:       tex(lbn1_tevnlg.enc)
+Provides:       tex(lbn1_tg6ewh.enc)
+Provides:       tex(lbn1_tll2u3.enc)
+Provides:       tex(lbn1_trmgk4.enc)
+Provides:       tex(lbn1_trxlme.enc)
+Provides:       tex(lbn1_tvlhp3.enc)
+Provides:       tex(lbn1_tzl7op.enc)
+Provides:       tex(lbn1_tzy66j.enc)
+Provides:       tex(lbn1_u7nqae.enc)
+Provides:       tex(lbn1_ubtjzz.enc)
+Provides:       tex(lbn1_ucipzb.enc)
+Provides:       tex(lbn1_ucscsg.enc)
+Provides:       tex(lbn1_ugujza.enc)
+Provides:       tex(lbn1_uhcuvh.enc)
+Provides:       tex(lbn1_uhqgc3.enc)
+Provides:       tex(lbn1_uhwxqu.enc)
+Provides:       tex(lbn1_uoecuf.enc)
+Provides:       tex(lbn1_usfuuy.enc)
+Provides:       tex(lbn1_usl52j.enc)
+Provides:       tex(lbn1_usz5ut.enc)
+Provides:       tex(lbn1_utifxg.enc)
+Provides:       tex(lbn1_uwmf7x.enc)
+Provides:       tex(lbn1_uxbjn5.enc)
+Provides:       tex(lbn1_uxf4m5.enc)
+Provides:       tex(lbn1_uywzpa.enc)
+Provides:       tex(lbn1_v5z4kv.enc)
+Provides:       tex(lbn1_vejg7h.enc)
+Provides:       tex(lbn1_vftr22.enc)
+Provides:       tex(lbn1_vgw5na.enc)
+Provides:       tex(lbn1_vhmker.enc)
+Provides:       tex(lbn1_vizicw.enc)
+Provides:       tex(lbn1_vjxogo.enc)
+Provides:       tex(lbn1_vmhi4g.enc)
+Provides:       tex(lbn1_vmjjgq.enc)
+Provides:       tex(lbn1_vtz4pu.enc)
+Provides:       tex(lbn1_vu5j2r.enc)
+Provides:       tex(lbn1_vvzoei.enc)
+Provides:       tex(lbn1_w42dre.enc)
+Provides:       tex(lbn1_w5ro75.enc)
+Provides:       tex(lbn1_wbnhrd.enc)
+Provides:       tex(lbn1_wogi6j.enc)
+Provides:       tex(lbn1_wozmdw.enc)
+Provides:       tex(lbn1_wrg6fm.enc)
+Provides:       tex(lbn1_wyvtce.enc)
+Provides:       tex(lbn1_x7beke.enc)
+Provides:       tex(lbn1_xaezkf.enc)
+Provides:       tex(lbn1_xfy7gm.enc)
+Provides:       tex(lbn1_xgmem5.enc)
+Provides:       tex(lbn1_xh3iko.enc)
+Provides:       tex(lbn1_xhfw3j.enc)
+Provides:       tex(lbn1_xrj6hp.enc)
+Provides:       tex(lbn1_y2inml.enc)
+Provides:       tex(lbn1_ya3yeu.enc)
+Provides:       tex(lbn1_yaf6wf.enc)
+Provides:       tex(lbn1_yahecb.enc)
+Provides:       tex(lbn1_yaunjw.enc)
+Provides:       tex(lbn1_ygr64v.enc)
+Provides:       tex(lbn1_yk7y77.enc)
+Provides:       tex(lbn1_yki2t7.enc)
+Provides:       tex(lbn1_ynfuvy.enc)
+Provides:       tex(lbn1_ysaokq.enc)
+Provides:       tex(lbn1_yt5vb5.enc)
+Provides:       tex(lbn1_yuwgqp.enc)
+Provides:       tex(lbn1_yzuq4p.enc)
+Provides:       tex(lbn1_z4iz37.enc)
+Provides:       tex(lbn1_z6nnva.enc)
+Provides:       tex(lbn1_zh5q6t.enc)
+Provides:       tex(lbn1_zjhiql.enc)
+Provides:       tex(lbn1_znslmj.enc)
+Provides:       tex(lbn1_zpwads.enc)
+Provides:       tex(lbn1_zqzvht.enc)
 Provides:       tex(libertinus-type1.sty)
 Provides:       tex(libertinus.map)
 Requires:       tex(fontaxes.sty)
@@ -18282,9 +16503,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source133:      libertinus-type1.tar.xz
-Source134:      libertinus-type1.doc.tar.xz
+# from 20250308
+Source135:      libertinus-type1.tar.xz
+Source136:      libertinus-type1.doc.tar.xz
 
 %description -n texlive-libertinus-type1
 This package provides support for use of Libertinus fonts with
@@ -18292,7 +16513,7 @@ traditional processing engines (LaTeX with dvips or dvipdfmx,
 or pdfLaTeX).
 
 %package -n texlive-libertinus-type1-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn67450
+Version:        %{texlive_version}.%{texlive_noarch}.svn73445
 Release:        0
 Summary:        Documentation for texlive-libertinus-type1
 License:        GPL-2.0-or-later
@@ -18304,7 +16525,7 @@ Supplements:    (texlive-libertinus-type1 and texlive-alldocumentation)
 This package includes the documentation for texlive-libertinus-type1
 
 %package -n texlive-libertinus-type1-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn67450
+Version:        %{texlive_version}.%{texlive_noarch}.svn73445
 Release:        0
 Summary:        Severed fonts for texlive-libertinus-type1
 License:        GPL-2.0-or-later
@@ -18342,352 +16563,377 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-libertinus-type1-doc
 %{_texmfdistdir}/doc/fonts/libertinus-type1/OFL.txt
 %{_texmfdistdir}/doc/fonts/libertinus-type1/README
+%{_texmfdistdir}/doc/fonts/libertinus-type1/autoinst.sh
 %{_texmfdistdir}/doc/fonts/libertinus-type1/libertinus-samples.pdf
 %{_texmfdistdir}/doc/fonts/libertinus-type1/libertinus-samples.tex
 %{_texmfdistdir}/doc/fonts/libertinus-type1/libertinus-type1.pdf
 %{_texmfdistdir}/doc/fonts/libertinus-type1/libertinus-type1.tex
 
 %files -n texlive-libertinus-type1
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_2dnbtf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_2fcdyd.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_2ojay3.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_2tlncs.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_2u3q4p.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_2vfnnw.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_2y652m.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_2yds7f.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_35favc.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_36t55i.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_37i5h5.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_3d54jy.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_3j5xjf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_3jolak.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_3kirmv.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_3kmpct.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_3m644f.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_3qta4x.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_3ssu23.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_3un72f.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_3vqmyw.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_3yrfnt.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_4crdwc.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_4d42wm.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_4gaomz.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_4hcz3c.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_4mrx7q.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_4q6kep.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_4sdcjk.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_4uwsiq.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_4wbnoe.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_4xoyfg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_4zqa2g.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_57bjkg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_5acxeg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_5cy3nd.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_5h7qbk.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_5jnf2k.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_5xa72p.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_63ftwl.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_674lrv.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_6caxtj.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_6ewxxu.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_6gletg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_6h6srf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_6hdezz.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_6l4fbc.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_6lk76t.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_6wmeer.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_72youc.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_75t36g.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_76xdns.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_77jah4.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_77t54r.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_7aen2t.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_7bccbz.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_7d2mhk.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_7hmj2z.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_7lwjes.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_7mm7zy.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_7oodvn.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_7vsebg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_7yclm6.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_a3f66t.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_aidrin.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_arfinu.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_at32ur.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_avlujb.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_avlydd.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ayzaac.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_b4oezt.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_b5fzbp.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_b7xqh5.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_bgegdt.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_bjbyqz.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_bn2i3n.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_bvhzzu.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_bxwrog.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_c3bv3f.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_c4i7ev.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_c4nx3a.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_c6vmpn.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_c7grr2.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_calslh.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_cb34qf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_cefqwa.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ckbdgg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ckenly.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_cpinjp.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_cslza4.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_cykel7.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_d2pxsd.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_d37b7c.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_dgc4ye.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_dhtsou.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_dkknmm.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_dn22no.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_dsfsze.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_dzyoth.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_e35iwk.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_e5lu6a.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ecxtyf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ed5ai4.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_eejjqw.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ep5pfz.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_epdddg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ercrba.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_erdvwd.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_esgnlu.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_et5tau.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_exfok6.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_f2r76x.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_f3pcwn.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_fili27.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_fmdp7p.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_fmriqv.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_fph2zj.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_fszxp3.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_fujx3h.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_fuyass.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_fy3had.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_g3dkmi.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_g6etas.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_gazpeh.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_gc5t3w.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_gekugp.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_gh4gmp.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_goqnek.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_gp3nhm.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_gq67ga.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_gr4hit.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_gz554e.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_gz7arp.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_hahfqq.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_hboyu3.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_hej6xm.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_hhbt6z.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_hhmpft.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_hjeuwr.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_hrrrjq.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_hvvyjb.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_hxvdny.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_hzjkgg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_i52ngl.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_iadd5v.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_iaq24h.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ibb6ig.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_icmtyb.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ighl2q.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_igmfoi.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ihsp6n.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_iknsvo.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_inpbes.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ipd343.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_is673m.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_iv4zj2.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_j6sgbi.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_jb5pke.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_jdjwkh.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_jfamas.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_jrenuz.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_jwzfsl.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_k62zaj.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_kbhblx.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_kehxxc.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_koaj57.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_komy7m.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_kq3xmd.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_kwkowq.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_l5raak.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_l5ujiv.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_l5vej2.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_l6vzgi.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_l74upk.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_laenbp.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_lafzha.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_lhntva.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_lkanbr.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_llns2d.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_llzec3.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_lsubum.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_lwzthx.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_lyzgu3.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_lzae2z.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_lzywtf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_m254rf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_m2klan.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_m3c2oj.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_m3l6fs.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_m5c6xi.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_m7sqdm.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_mbfmc4.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_mfadfl.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_mi54ls.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_mll6fo.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_mlwm27.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_mmgovh.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_mphtgh.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_mrbizy.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_mvzwgg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_mxiee2.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_mzxlpf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_n3cifc.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_n3dtgz.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_n4gj6t.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_n4tewx.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_nl47lc.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_nufysp.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_nv3oiw.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_o7mh5o.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_oaaihm.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_obkmrl.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_obzz72.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_of47id.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_of4nbw.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_olw3tj.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_onayya.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_opzo24.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ork5hb.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_orvmfm.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_osdvzf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_oxank3.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_p5b3to.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_p7snj6.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_pa7fun.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_pag3gg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_pb7os7.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_pdot6l.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_peeabe.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_pkzsom.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_poicuj.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ponsko.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ppaygs.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_pquqdo.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ptnx64.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_pydski.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_q2cvbs.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_q2ibpc.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_q4imkx.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_q4q2yp.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_qcfvgl.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_qe2yqv.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_qpph5c.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_qqnp2h.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_qsv3bx.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_quwwcn.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_qylzkl.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_qzwhi6.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_r37ntu.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_r4goj2.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_r7yss2.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_rcarnw.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_rchowm.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_rfuadt.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ridgvo.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_rlktsf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_rpeiua.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_rqhkdi.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_rtitj6.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_rv4ogi.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_sceraq.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_segm3u.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_sewfus.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_sfissr.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_sihybe.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_sjlxxx.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_slsqbu.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_snijqp.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_sppvmf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_srwzhm.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_st5lk5.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_sut3w7.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_szn4yf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_szwnvb.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_tevnlg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_tll2u3.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_trmgk4.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_trxlme.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_tzl7op.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_u2zr7g.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_u7nqae.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ucipzb.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ucscsg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ugujza.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_uhqgc3.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_uhwxqu.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_uoecuf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_usfuuy.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_usl52j.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_usz5ut.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_utifxg.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_uwmf7x.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_uxbjn5.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_uxf4m5.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_v5z4kv.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vafbri.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vejg7h.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vftr22.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vgw5na.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vhmker.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vizicw.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vjxogo.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vkm6ln.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vmhi4g.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vmjjgq.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vtz4pu.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vu5j2r.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_vvzoei.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_w5ro75.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_waqoej.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_wm6att.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_wogi6j.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_wozmdw.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_wrg6fm.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_x7beke.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_xaezkf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_xfy7gm.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_xh3iko.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_xhfw3j.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_xjb3td.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_xpehld.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_xrj6hp.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ya3yeu.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ya7mbv.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_yaf6wf.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_yahecb.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ygr64v.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_yki2t7.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ynfuvy.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_ysaokq.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_yt5vb5.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_yuwgqp.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_yzuq4p.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_z6ew44.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_z6nnva.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_zh5q6t.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_zjhiql.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_znslmj.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_zpwads.enc
-%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbts_zqzvht.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_2dnbtf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_2fcdyd.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_2tlncs.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_2vfnnw.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_2y652m.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_2yds7f.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_35favc.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_36t55i.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_37i5h5.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_37jtjx.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_3cokjk.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_3d54jy.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_3j5xjf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_3jolak.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_3kirmv.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_3kmpct.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_3m644f.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_3qta4x.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_3ssu23.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_3un72f.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_3vqmyw.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_3yrfnt.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_45gf2l.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_4crdwc.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_4d42wm.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_4gaomz.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_4hcz3c.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_4mrx7q.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_4q6kep.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_4sdcjk.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_4uwsiq.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_4wbnoe.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_4xoyfg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_4zqa2g.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_57bjkg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_5acxeg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_5cy3nd.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_5f7tjt.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_5h7qbk.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_5jnf2k.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_63ftwl.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_667eeu.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_674lrv.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_6caxtj.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_6ewxxu.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_6gletg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_6h6srf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_6hdezz.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_6l4fbc.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_6lk76t.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_6muo3k.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_6wmeer.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_72youc.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_75t36g.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_76vk5v.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_76xdns.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_77jah4.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_77t54r.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_7aen2t.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_7bccbz.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_7d2mhk.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_7hmj2z.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_7lwjes.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_7mm7zy.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_7np5uz.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_7oodvn.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_7vsebg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_7yclm6.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_a3f66t.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_aidrin.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_at32ur.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_avlujb.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_avlydd.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ayzaac.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_b4oezt.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_b5fzbp.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_b5ulzv.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_b7xqh5.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_bgegdt.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_bjbyqz.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_bn2i3n.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_bvhzzu.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_bwr4ko.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_bxwrog.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_c3bv3f.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_c4i7ev.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_c4nx3a.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_c6vmpn.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_c7grr2.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_calslh.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_cb34qf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_cefqwa.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ckbdgg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ckenly.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_cpinjp.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_cslza4.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_cykel7.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_d2pxsd.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_d37b7c.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_d7j3zj.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_dashch.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_dgc4ye.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_dhtsou.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_dkknmm.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_dn22no.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_dprkig.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_dsfsze.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_dzyoth.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_e2cf4v.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_e35iwk.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_e5lu6a.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_eclek4.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ecxtyf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ed5ai4.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_eejjqw.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ep5pfz.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_epdddg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ercrba.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_erdvwd.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_esgnlu.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_et5tau.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_exfok6.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_f2r76x.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_f3pcwn.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_fafj4h.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_fili27.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_fmdp7p.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_fmriqv.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_fph2zj.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_fszxp3.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_fuyass.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_fy3had.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_g3dkmi.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_g6etas.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_gazpeh.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_gh4gmp.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_gr4hit.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_gxlsis.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_gz7arp.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_hahfqq.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_hej6xm.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_hgpggj.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_hhbt6z.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_hhmpft.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_hhyopg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_hm3bfr.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_hrrrjq.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_hvubca.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_hvvyjb.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_hxvdny.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_hzjkgg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_i52ngl.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_iadd5v.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_iaq24h.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ibb6ig.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_icmtyb.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ighl2q.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_igmfoi.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ihkzot.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ihsp6n.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_iknsvo.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_inpbes.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ipd343.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_iskk3a.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_iv4zj2.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_j6sgbi.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_jb5pke.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_jdjwkh.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_jfamas.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_jiz4dk.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_jrenuz.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_jvtoya.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_jwzfsl.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_k62zaj.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_kbhblx.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_kehxxc.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_kirbtk.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_koaj57.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_komy7m.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_kq3xmd.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_kwkowq.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_kynajb.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_l5ujiv.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_l5vej2.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_l6vzgi.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_l74upk.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_laenbp.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_lafzha.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_lhntva.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_lkanbr.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_llns2d.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_llzec3.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_lsubum.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_lwzthx.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_lyzgu3.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_lzae2z.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_lzywtf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_m254rf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_m2klan.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_m3c2oj.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_m3l6fs.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_m5c6xi.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_m7sqdm.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_mbfmc4.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_mfadfl.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_mi54ls.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_mll6fo.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_mlwm27.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_mmgovh.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_mphtgh.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_mrbizy.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_mru3ev.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_mvzwgg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_mxiee2.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_myww54.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_n3cifc.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_n3dtgz.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_n4gj6t.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_n4tewx.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_nl47lc.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_nufysp.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_o7mh5o.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_oaaihm.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_obzz72.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_oe5ee4.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_of47id.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_of4nbw.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_olk76w.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_olw3tj.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_onayya.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_opzo24.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_or3pzs.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ork5hb.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_orvmfm.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_osdvzf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_oxank3.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_p2xkqy.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_p5b3to.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_p7snj6.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_pb7os7.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_pdot6l.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_peeabe.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_pkzsom.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_poicuj.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ponsko.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_pquqdo.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ptnx64.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_pydski.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_q2cvbs.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_q2ibpc.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_q4imkx.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_q4q2yp.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_qbwrql.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_qcfvgl.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_qe2yqv.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_qgowik.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_qpph5c.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_qqnp2h.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_qsv3bx.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_qzwhi6.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_r37ntu.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_r4goj2.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_r7yss2.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_rcarnw.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_rchowm.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_rfuadt.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ridgvo.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_rlktsf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_rpeiua.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_rqhkdi.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_rt44aj.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_rtitj6.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_rvhnvp.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_rwdf67.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_s4apdz.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_sceraq.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_segm3u.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_sewfus.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_sfissr.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_sihybe.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_sjlxxx.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_slsqbu.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_sncvby.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_snijqp.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_sppvmf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_srwzhm.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_st5lk5.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_sut3w7.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_szn4yf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_szwnvb.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_t2ckkh.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_tc5bjz.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_tevnlg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_tg6ewh.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_tll2u3.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_trmgk4.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_trxlme.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_tvlhp3.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_tzl7op.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_tzy66j.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_u7nqae.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ubtjzz.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ucipzb.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ucscsg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ugujza.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_uhcuvh.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_uhqgc3.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_uhwxqu.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_uoecuf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_usfuuy.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_usl52j.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_usz5ut.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_utifxg.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_uwmf7x.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_uxbjn5.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_uxf4m5.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_uywzpa.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_v5z4kv.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_vejg7h.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_vftr22.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_vgw5na.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_vhmker.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_vizicw.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_vjxogo.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_vmhi4g.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_vmjjgq.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_vtz4pu.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_vu5j2r.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_vvzoei.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_w42dre.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_w5ro75.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_wbnhrd.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_wogi6j.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_wozmdw.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_wrg6fm.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_wyvtce.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_x7beke.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_xaezkf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_xfy7gm.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_xgmem5.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_xh3iko.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_xhfw3j.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_xrj6hp.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_y2inml.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ya3yeu.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_yaf6wf.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_yahecb.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_yaunjw.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ygr64v.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_yk7y77.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_yki2t7.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ynfuvy.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_ysaokq.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_yt5vb5.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_yuwgqp.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_yzuq4p.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_z4iz37.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_z6nnva.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_zh5q6t.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_zjhiql.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_znslmj.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_zpwads.enc
+%{_texmfdistdir}/fonts/enc/dvips/libertinus-type1/lbn1_zqzvht.enc
+%{_texmfdistdir}/fonts/map/dvips/libertinus-type1/LibertinusMono.map
 %{_texmfdistdir}/fonts/map/dvips/libertinus-type1/libertinus.map
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Bold-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Bold-tlf-ly1.tfm
@@ -18696,25 +16942,30 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Bold-tlf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Bold-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Bold-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldOblique-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldOblique-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldOblique-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldOblique-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldOblique-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldOblique-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldOblique-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Oblique-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Oblique-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Oblique-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Oblique-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Oblique-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Oblique-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Oblique-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-BoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Italic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Italic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Italic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Italic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Italic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Italic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Italic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-t2a.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-t2b.tfm
+%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-Bold-lf-lgr.tfm
@@ -18817,106 +17068,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-Bold-tosf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-Bold-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-Bold-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-t2a--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-t2b--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-t2c--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-t2c.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-t2c.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-t2a--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-t2b--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-t2c--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-t2c.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-t2c.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-osf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-sup-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-sup-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-sup-t2c.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-t2a--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-t2b--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-t2c--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-t2c.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-t2c.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-t2a--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-t2b--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-t2c--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-t2c.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-t2c.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-Italic-lf-lgr--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-Italic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSans-Italic-lf-ly1--base.tfm
@@ -19751,81 +17902,44 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerif-SemiboldItalic-tosf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerif-SemiboldItalic-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerif-SemiboldItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-t2c.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-t2a.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-t2b.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-t2c.tfm
-%{_texmfdistdir}/fonts/tfm/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-ts1.tfm
 %verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusMono-Bold.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusMono-BoldOblique.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusMono-Oblique.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusMono-BoldItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusMono-Italic.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusMono-Regular.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusSans-Bold.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusSans-BoldOblique.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusSans-Italic.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusSans-Regular.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusSerif-Bold.pfb
@@ -19835,16 +17949,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusSerif-Semibold.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusSerif-SemiboldItalic.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusSerifDisplay-Regular.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/libertinus-type1/LibertinusSerifInitials-Regular.pfb
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Bold-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Bold-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Bold-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-BoldOblique-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-BoldOblique-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-BoldOblique-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Oblique-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Oblique-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Oblique-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-BoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-BoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-BoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Italic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Italic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Italic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Regular-tlf-lgr.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Regular-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Regular-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusMono-Regular-tlf-ts1.vf
@@ -19881,39 +17995,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-Bold-tosf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-Bold-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-Bold-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-t2a.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-t2b.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-lf-sc-t2c.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-lf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-t2a.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-t2b.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-osf-sc-t2c.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-osf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-osf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-t2a.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-t2b.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-sc-t2c.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-t2a.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-t2b.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-sc-t2c.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-BoldOblique-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-Italic-lf-lgr.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-Italic-lf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSans-Italic-lf-sc-lgr.vf
@@ -20212,29 +18293,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerif-SemiboldItalic-tosf-t2b.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerif-SemiboldItalic-tosf-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerif-SemiboldItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-lgr.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-lgr.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-osf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-lgr.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-lgr.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-lgr.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifDisplay-Regular-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/libertinus-type1/LibertinusSerifInitials-Regular-tlf-ts1.vf
+%{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusMono-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusSans-LF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusSans-OsF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusSans-Sup.fd
@@ -20245,12 +18318,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusSerif-Sup.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusSerif-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusSerif-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusSerifDisplay-LF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusSerifDisplay-OsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusSerifDisplay-Sup.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusSerifDisplay-TLF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusSerifDisplay-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/LGRLibertinusSerifInitials-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/LY1LibertinusMono-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/LY1LibertinusSans-LF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/LY1LibertinusSans-OsF.fd
@@ -20267,7 +18334,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertinus-type1/LY1LibertinusSerifDisplay-Sup.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/LY1LibertinusSerifDisplay-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/LY1LibertinusSerifDisplay-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/LY1LibertinusSerifInitials-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/OT1LibertinusMono-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/OT1LibertinusSans-LF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/OT1LibertinusSans-OsF.fd
@@ -20284,7 +18350,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertinus-type1/OT1LibertinusSerifDisplay-Sup.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/OT1LibertinusSerifDisplay-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/OT1LibertinusSerifDisplay-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/OT1LibertinusSerifInitials-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T1LibertinusMono-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T1LibertinusSans-LF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T1LibertinusSans-OsF.fd
@@ -20301,7 +18366,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertinus-type1/T1LibertinusSerifDisplay-Sup.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T1LibertinusSerifDisplay-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T1LibertinusSerifDisplay-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T1LibertinusSerifInitials-TLF.fd
+%{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusMono-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusSans-LF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusSans-OsF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusSans-Sup.fd
@@ -20312,12 +18377,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusSerif-Sup.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusSerif-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusSerif-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusSerifDisplay-LF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusSerifDisplay-OsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusSerifDisplay-Sup.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusSerifDisplay-TLF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusSerifDisplay-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2ALibertinusSerifInitials-TLF.fd
+%{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusMono-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusSans-LF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusSans-OsF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusSans-Sup.fd
@@ -20328,12 +18388,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusSerif-Sup.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusSerif-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusSerif-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusSerifDisplay-LF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusSerifDisplay-OsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusSerifDisplay-Sup.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusSerifDisplay-TLF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusSerifDisplay-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2BLibertinusSerifInitials-TLF.fd
+%{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusMono-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusSans-LF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusSans-OsF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusSans-Sup.fd
@@ -20344,12 +18399,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusSerif-Sup.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusSerif-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusSerif-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusSerifDisplay-LF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusSerifDisplay-OsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusSerifDisplay-Sup.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusSerifDisplay-TLF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusSerifDisplay-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/T2CLibertinusSerifInitials-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/TS1LibertinusMono-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/TS1LibertinusSans-LF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/TS1LibertinusSans-OsF.fd
@@ -20363,7 +18412,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertinus-type1/TS1LibertinusSerifDisplay-OsF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/TS1LibertinusSerifDisplay-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/TS1LibertinusSerifDisplay-TOsF.fd
-%{_texmfdistdir}/tex/latex/libertinus-type1/TS1LibertinusSerifInitials-TLF.fd
 %{_texmfdistdir}/tex/latex/libertinus-type1/libertinus-type1.sty
 
 %files -n texlive-libertinus-type1-fonts
@@ -20373,11 +18421,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-libertinus-type1/fonts.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-libertinus-type1/fonts.scale
 %{_datadir}/fonts/texlive-libertinus-type1/LibertinusMono-Bold.pfb
-%{_datadir}/fonts/texlive-libertinus-type1/LibertinusMono-BoldOblique.pfb
-%{_datadir}/fonts/texlive-libertinus-type1/LibertinusMono-Oblique.pfb
+%{_datadir}/fonts/texlive-libertinus-type1/LibertinusMono-BoldItalic.pfb
+%{_datadir}/fonts/texlive-libertinus-type1/LibertinusMono-Italic.pfb
 %{_datadir}/fonts/texlive-libertinus-type1/LibertinusMono-Regular.pfb
 %{_datadir}/fonts/texlive-libertinus-type1/LibertinusSans-Bold.pfb
-%{_datadir}/fonts/texlive-libertinus-type1/LibertinusSans-BoldOblique.pfb
 %{_datadir}/fonts/texlive-libertinus-type1/LibertinusSans-Italic.pfb
 %{_datadir}/fonts/texlive-libertinus-type1/LibertinusSans-Regular.pfb
 %{_datadir}/fonts/texlive-libertinus-type1/LibertinusSerif-Bold.pfb
@@ -20387,10 +18434,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-libertinus-type1/LibertinusSerif-Semibold.pfb
 %{_datadir}/fonts/texlive-libertinus-type1/LibertinusSerif-SemiboldItalic.pfb
 %{_datadir}/fonts/texlive-libertinus-type1/LibertinusSerifDisplay-Regular.pfb
-%{_datadir}/fonts/texlive-libertinus-type1/LibertinusSerifInitials-Regular.pfb
 
 %package -n texlive-libertinust1math
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.4svn69440
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.6svn71428
 Release:        0
 License:        OFL-1.1
 Summary:        A Type 1 font and LaTeX support for Libertinus Math
@@ -20486,9 +18532,9 @@ Requires:       tex(amsthm.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source135:      libertinust1math.tar.xz
-Source136:      libertinust1math.doc.tar.xz
+# from 20250308
+Source137:      libertinust1math.tar.xz
+Source138:      libertinust1math.doc.tar.xz
 
 %description -n texlive-libertinust1math
 The package provides a Type1 version of Libertinus Math, with a
@@ -20498,7 +18544,7 @@ LaTeX. In addition, with option sansmath, it can function as a
 standalone math font with sans serif Roman and Greek letters.
 
 %package -n texlive-libertinust1math-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.4svn69440
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.6svn71428
 Release:        0
 Summary:        Documentation for texlive-libertinust1math
 License:        OFL-1.1
@@ -20510,7 +18556,7 @@ Supplements:    (texlive-libertinust1math and texlive-alldocumentation)
 This package includes the documentation for texlive-libertinust1math
 
 %package -n texlive-libertinust1math-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.4svn69440
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.6svn71428
 Release:        0
 Summary:        Severed fonts for texlive-libertinust1math
 License:        OFL-1.1
@@ -20691,9 +18737,9 @@ Provides:       tex(libgreek-legacy.sty)
 Provides:       tex(libgreek.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source137:      libgreek.tar.xz
-Source138:      libgreek.doc.tar.xz
+# from 20250308
+Source139:      libgreek.tar.xz
+Source140:      libgreek.doc.tar.xz
 
 %description -n texlive-libgreek
 This package allows LaTeX users (especially if using
@@ -20778,9 +18824,9 @@ Provides:       tex(librarian.sty)
 Provides:       tex(librarian.tex)
 Provides:       tex(t-librarian.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source139:      librarian.tar.xz
-Source140:      librarian.doc.tar.xz
+# from 20250308
+Source141:      librarian.tar.xz
+Source142:      librarian.doc.tar.xz
 
 %description -n texlive-librarian
 The package extracts information in bib files, makes it
@@ -20970,9 +19016,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source141:      librebaskerville.tar.xz
-Source142:      librebaskerville.doc.tar.xz
+# from 20250308
+Source143:      librebaskerville.tar.xz
+Source144:      librebaskerville.doc.tar.xz
 
 %description -n texlive-librebaskerville
 This package provides the Libre Baskerville family of fonts,
@@ -21315,9 +19361,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source143:      librebodoni.tar.xz
-Source144:      librebodoni.doc.tar.xz
+# from 20250308
+Source145:      librebodoni.tar.xz
+Source146:      librebodoni.doc.tar.xz
 
 %description -n texlive-librebodoni
 The Libre Bodoni fonts are designed by Pablo Impallari and
@@ -21828,9 +19874,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source145:      librecaslon.tar.xz
-Source146:      librecaslon.doc.tar.xz
+# from 20250308
+Source147:      librecaslon.tar.xz
+Source148:      librecaslon.doc.tar.xz
 
 %description -n texlive-librecaslon
 The Libre Caslon fonts are designed by Pablo Impallari.
@@ -22659,9 +20705,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source147:      librefranklin.tar.xz
-Source148:      librefranklin.doc.tar.xz
+# from 20250308
+Source149:      librefranklin.tar.xz
+Source150:      librefranklin.doc.tar.xz
 
 %description -n texlive-librefranklin
 Libre Franklin is an interpretation and expansion based on the
@@ -23240,9 +21286,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-librefranklin/LibreFranklin-ThinItalic.pfb
 
 %package -n texlive-libris
-Version:        %{texlive_version}.%{texlive_noarch}.1.007svn19409
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72484
 Release:        0
-License:        GPL-2.0-or-later
+License:        LPPL-1.0
 Summary:        Libris ADF fonts, with LaTeX support
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
@@ -23326,11 +21372,12 @@ Provides:       tex(ylyrw8t.tfm)
 Provides:       tex(ylyrw8t.vf)
 Requires:       tex(fontenc.sty)
 Requires:       tex(nfssext-cfr.sty)
+Requires:       tex(svn-prov.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source149:      libris.tar.xz
-Source150:      libris.doc.tar.xz
+# from 20250308
+Source151:      libris.tar.xz
+Source152:      libris.doc.tar.xz
 
 %description -n texlive-libris
 LibrisADF is a sans-serif family designed to mimic Lydian. The
@@ -23341,10 +21388,10 @@ nfssext-cfr bundle. GPL licensing applies the fonts themselves;
 the support macros are distributed under LPPL licensing.
 
 %package -n texlive-libris-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.007svn19409
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72484
 Release:        0
 Summary:        Documentation for texlive-libris
-License:        GPL-2.0-or-later
+License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Supplements:    (texlive-libris and texlive-alldocumentation)
@@ -23353,10 +21400,10 @@ Supplements:    (texlive-libris and texlive-alldocumentation)
 This package includes the documentation for texlive-libris
 
 %package -n texlive-libris-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.007svn19409
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72484
 Release:        0
 Summary:        Severed fonts for texlive-libris
-License:        GPL-2.0-or-later
+License:        LPPL-1.0
 URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
@@ -23391,64 +21438,71 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-libris-doc
 %{_texmfdistdir}/doc/fonts/libris/COPYING
 %{_texmfdistdir}/doc/fonts/libris/NOTICE.txt
-%{_texmfdistdir}/doc/fonts/libris/README
+%{_texmfdistdir}/doc/fonts/libris/README.md
+%{_texmfdistdir}/doc/fonts/libris/libris-tables.pdf
+%{_texmfdistdir}/doc/fonts/libris/libris-tables.tex
+%{_texmfdistdir}/doc/fonts/libris/librisadf-build.pdf
+%{_texmfdistdir}/doc/fonts/libris/librisadf-example.pdf
+%{_texmfdistdir}/doc/fonts/libris/librisadf-example.tex
 %{_texmfdistdir}/doc/fonts/libris/librisadf.pdf
-%{_texmfdistdir}/doc/fonts/libris/librisadf.tex
 %{_texmfdistdir}/doc/fonts/libris/manifest.txt
+%{_texmfdistdir}/doc/fonts/libris/reglyph-yly.tex
+%{_texmfdistdir}/doc/fonts/libris/yly-drv.tex
+%{_texmfdistdir}/doc/fonts/libris/yly-map.tex
 
 %files -n texlive-libris
-%{_texmfdistdir}/fonts/afm/arkandis/libris/ylyb8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/libris/ylybi8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/libris/ylyr8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/libris/ylyri8a.afm
+%{_texmfdistdir}/fonts/afm/public/libris/ylyb8a.afm
+%{_texmfdistdir}/fonts/afm/public/libris/ylybi8a.afm
+%{_texmfdistdir}/fonts/afm/public/libris/ylyr8a.afm
+%{_texmfdistdir}/fonts/afm/public/libris/ylyri8a.afm
 %{_texmfdistdir}/fonts/enc/dvips/libris/libris-supp.enc
 %{_texmfdistdir}/fonts/enc/dvips/libris/t1-cfr-yly.enc
 %{_texmfdistdir}/fonts/enc/dvips/libris/ts1-euro-yly.enc
 %{_texmfdistdir}/fonts/map/dvips/libris/yly.map
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyb-t1.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyb-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyb8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyb8s.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyb8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylybi-t1.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylybi-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylybi8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylybi8s.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylybi8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylybiw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylybw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyr-t1.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyr-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyr8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyr8s.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyr8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyri-t1.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyri-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyri8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyri8s.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyri8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyriw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/libris/ylyrw8t.tfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/libris/ylyb8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/libris/ylyb8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/libris/ylybi8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/libris/ylybi8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/libris/ylyr8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/libris/ylyr8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/libris/ylyri8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/libris/ylyri8a.pfm
-%{_texmfdistdir}/fonts/vf/arkandis/libris/ylyb8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/libris/ylyb8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/libris/ylybi8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/libris/ylybi8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/libris/ylybiw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/libris/ylybw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/libris/ylyr8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/libris/ylyr8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/libris/ylyri8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/libris/ylyri8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/libris/ylyriw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/libris/ylyrw8t.vf
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyb-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyb-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyb8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyb8s.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyb8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylybi-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylybi-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylybi8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylybi8s.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylybi8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylybiw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylybw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyr-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyr8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyr8s.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyr8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyri-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyri-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyri8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyri8s.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyri8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyriw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/libris/ylyrw8t.tfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/libris/ylyb8a.pfb
+%{_texmfdistdir}/fonts/type1/public/libris/ylyb8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/libris/ylybi8a.pfb
+%{_texmfdistdir}/fonts/type1/public/libris/ylybi8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/libris/ylyr8a.pfb
+%{_texmfdistdir}/fonts/type1/public/libris/ylyr8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/libris/ylyri8a.pfb
+%{_texmfdistdir}/fonts/type1/public/libris/ylyri8a.pfm
+%{_texmfdistdir}/fonts/vf/public/libris/ylyb8c.vf
+%{_texmfdistdir}/fonts/vf/public/libris/ylyb8t.vf
+%{_texmfdistdir}/fonts/vf/public/libris/ylybi8c.vf
+%{_texmfdistdir}/fonts/vf/public/libris/ylybi8t.vf
+%{_texmfdistdir}/fonts/vf/public/libris/ylybiw8t.vf
+%{_texmfdistdir}/fonts/vf/public/libris/ylybw8t.vf
+%{_texmfdistdir}/fonts/vf/public/libris/ylyr8c.vf
+%{_texmfdistdir}/fonts/vf/public/libris/ylyr8t.vf
+%{_texmfdistdir}/fonts/vf/public/libris/ylyri8c.vf
+%{_texmfdistdir}/fonts/vf/public/libris/ylyri8t.vf
+%{_texmfdistdir}/fonts/vf/public/libris/ylyriw8t.vf
+%{_texmfdistdir}/fonts/vf/public/libris/ylyrw8t.vf
 %{_texmfdistdir}/tex/latex/libris/libris.sty
 %{_texmfdistdir}/tex/latex/libris/t1yly.fd
 %{_texmfdistdir}/tex/latex/libris/t1ylyw.fd
@@ -23467,7 +21521,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-libris/ylyri8a.pfb
 
 %package -n texlive-lie-hasse
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn73069
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw Hasse diagrams
@@ -23495,12 +21549,13 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lie-hasse-doc >= %{texlive_version}
 Provides:       tex(lie-hasse.sty)
+Requires:       tex(contour.sty)
 Requires:       tex(dynkin-diagrams.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source151:      lie-hasse.tar.xz
-Source152:      lie-hasse.doc.tar.xz
+# from 20250308
+Source153:      lie-hasse.tar.xz
+Source154:      lie-hasse.doc.tar.xz
 
 %description -n texlive-lie-hasse
 This package draws Hasse diagrams of the partially ordered sets
@@ -23508,7 +21563,7 @@ of the simple roots of any complex simple Lie algebra. It uses
 the Dynkin diagrams package dynkin-diagrams.
 
 %package -n texlive-lie-hasse-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn73069
 Release:        0
 Summary:        Documentation for texlive-lie-hasse
 License:        LPPL-1.0
@@ -23545,11 +21600,119 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-lie-hasse
 %{_texmfdistdir}/tex/latex/lie-hasse/lie-hasse.sty
 
-%package -n texlive-liftarm
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn62981
+%package -n texlive-liederbuch
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn73548
 Release:        0
 License:        LPPL-1.0
-Summary:        Draw liftarms
+Summary:        A LaTeX package for storing songs or other content, and repeated reuse in documents
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-liederbuch-doc >= %{texlive_version}
+Provides:       tex(liederbuch-babel.sty)
+Provides:       tex(liederbuch-listofsongs.sty)
+Provides:       tex(liederbuch.sty)
+Provides:       tex(printliederbuch.sty)
+Requires:       tex(environ.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(pgfmath.sty)
+Requires:       tex(xparse.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source155:      liederbuch.tar.xz
+Source156:      liederbuch.doc.tar.xz
+
+%description -n texlive-liederbuch
+This package is meant for content which you reuse regularly,
+like songs in small booklets. For example the booklets used at
+church, weddings or similar events. It has two major parts: You
+typeset your content once (most likely a song), garnish it with
+some meta data and put it into a sty-file. From there you can
+insert this content into your document with one single line.
+The inserted content can have header and footer that use the
+meta data (i.e. title, composer, lyricist). Inside these
+content fragments, you can use the \notenzeile (stave line)
+command to combine an image of a stave line with song lyrics.
+If correctly used, the lyrics are placed correctly below the
+notes and need most often no or only minor adjustments. With
+that you can combine any stave image with LaTeX fonts. You can
+find resources and inspiration in a demo project.
+
+%package -n texlive-liederbuch-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn73548
+Release:        0
+Summary:        Documentation for texlive-liederbuch
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-liederbuch and texlive-alldocumentation)
+
+%description -n texlive-liederbuch-doc
+This package includes the documentation for texlive-liederbuch
+
+%post -n texlive-liederbuch
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-liederbuch
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-liederbuch
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-liederbuch-doc
+%{_texmfdistdir}/doc/latex/liederbuch/README.md
+%{_texmfdistdir}/doc/latex/liederbuch/liederbuch-demo-project/README_demo-project.txt
+%{_texmfdistdir}/doc/latex/liederbuch/liederbuch-demo-project/TestLiederbuch.sty
+%{_texmfdistdir}/doc/latex/liederbuch/liederbuch-demo-project/TestLiederbuchSnippets/CVLB80-OhAlteBurschenherrlichkeit.ly
+%{_texmfdistdir}/doc/latex/liederbuch/liederbuch-demo-project/TestLiederbuchSnippets/CVLB80-OhAlteBurschenherrlichkeit.pdf
+%{_texmfdistdir}/doc/latex/liederbuch/liederbuch-demo-project/TestLiederbuchSnippets/haenschenKlein.ly
+%{_texmfdistdir}/doc/latex/liederbuch/liederbuch-demo-project/TestLiederbuchSnippets/haenschenKlein.pdf
+%{_texmfdistdir}/doc/latex/liederbuch/liederbuch-demo-project/liederbuch-demo-projekt.pdf
+%{_texmfdistdir}/doc/latex/liederbuch/liederbuch-demo-project/liederbuch-demo-projekt.tex
+%{_texmfdistdir}/doc/latex/liederbuch/liederbuch-demo-project/printTestLiederbuch.pdf
+%{_texmfdistdir}/doc/latex/liederbuch/liederbuch-demo-project/printTestLiederbuch.tex
+%{_texmfdistdir}/doc/latex/liederbuch/liederbuch-documentation.pdf
+%{_texmfdistdir}/doc/latex/liederbuch/liederbuch-documentation.tex
+
+%files -n texlive-liederbuch
+%{_texmfdistdir}/tex/latex/liederbuch/liederbuch-babel.sty
+%{_texmfdistdir}/tex/latex/liederbuch/liederbuch-listofsongs.sty
+%{_texmfdistdir}/tex/latex/liederbuch/liederbuch.sty
+%{_texmfdistdir}/tex/latex/liederbuch/printliederbuch.sty
+
+%package -n texlive-liftarm
+Version:        %{texlive_version}.%{texlive_noarch}.3.0svn71309
+Release:        0
+License:        LPPL-1.0
+Summary:        Geometric constructions with liftarms using TikZ and LaTeX3
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -23574,22 +21737,24 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-liftarm-doc >= %{texlive_version}
 Provides:       tex(liftarm.sty)
-Requires:       tex(etoolbox.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source153:      liftarm.tar.xz
-Source154:      liftarm.doc.tar.xz
+# from 20250308
+Source157:      liftarm.tar.xz
+Source158:      liftarm.doc.tar.xz
 
 %description -n texlive-liftarm
-This package can be used to draw liftarms with TikZ. It
-provides several options for the appearance of the liftarms, a
-command which connects two liftarms and an environment to
-describe a construction.
+This package is based on the package TikZ and can be used to
+draw geometric constructions with liftarms. There are several
+options for the appearance of the liftarms. It provides an
+environment to connect multiple liftarms using the
+Newton-Raphson method and LU decomposition. It also provides an
+environment to describe a construction and a method to animate
+a construction with one or more traces.
 
 %package -n texlive-liftarm-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn62981
+Version:        %{texlive_version}.%{texlive_noarch}.3.0svn71309
 Release:        0
 Summary:        Documentation for texlive-liftarm
 License:        LPPL-1.0
@@ -23656,9 +21821,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-light-latex-make-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source155:      light-latex-make.tar.xz
-Source156:      light-latex-make.doc.tar.xz
+# from 20250308
+Source159:      light-latex-make.tar.xz
+Source160:      light-latex-make.doc.tar.xz
 
 %description -n texlive-light-latex-make
 Light LaTeX Make (llmk) is yet another build tool specific for
@@ -23754,9 +21919,9 @@ Provides:       tex(ligtype.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(luatexbase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source157:      ligtype.tar.xz
-Source158:      ligtype.doc.tar.xz
+# from 20250308
+Source161:      ligtype.tar.xz
+Source162:      ligtype.doc.tar.xz
 
 %description -n texlive-ligtype
 This package suppresses inappropriate ligatures following
@@ -23843,10 +22008,10 @@ Requires:       tex(adjustbox.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(pgf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source159:      lilyglyphs.tar.xz
-Source160:      lilyglyphs.doc.tar.xz
-Source161:      lilyglyphs_p2top3.dif
+# from 20250308
+Source163:      lilyglyphs.tar.xz
+Source164:      lilyglyphs.doc.tar.xz
+Source165:      lilyglyphs_p2top3.dif
 
 %description -n texlive-lilyglyphs
 The package provides the means to include arbitrary elements of
@@ -24082,9 +22247,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(longtable.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source162:      limap.tar.xz
-Source163:      limap.doc.tar.xz
+# from 20250308
+Source166:      limap.tar.xz
+Source167:      limap.doc.tar.xz
 
 %description -n texlive-limap
 The Information Mapping(r) method provides a methodology for
@@ -24192,9 +22357,9 @@ Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source164:      limecv.tar.xz
-Source165:      limecv.doc.tar.xz
+# from 20250308
+Source168:      limecv.tar.xz
+Source169:      limecv.doc.tar.xz
 
 %description -n texlive-limecv
 limecv is a (Xe/Lua)LaTeX document class to write curriculum
@@ -24293,9 +22458,9 @@ Provides:       tex(linearA.map)
 Provides:       tex(linearA.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source166:      lineara.tar.xz
-Source167:      lineara.doc.tar.xz
+# from 20250308
+Source170:      lineara.tar.xz
+Source171:      lineara.doc.tar.xz
 
 %description -n texlive-lineara
 The linearA package provides a simple interface to two fonts
@@ -24376,6 +22541,83 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-lineara/LinearA.pfb
 %{_datadir}/fonts/texlive-lineara/LinearACmplxSigns.pfb
 
+%package -n texlive-linearregression
+Version:        %{texlive_version}.%{texlive_noarch}.svn73123
+Release:        0
+License:        LPPL-1.0
+Summary:        Calculate and display linear regressions
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-linearregression-doc >= %{texlive_version}
+Provides:       tex(linearregression.sty)
+Requires:       tex(pict2e.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source172:      linearregression.tar.xz
+Source173:      linearregression.doc.tar.xz
+
+%description -n texlive-linearregression
+This package provides the definition of some document-level
+commands (and some auxiliary functions) that perform the linear
+regression on a set of data and present the data and the
+results in tabular and in graphic form.
+
+%package -n texlive-linearregression-doc
+Version:        %{texlive_version}.%{texlive_noarch}.svn73123
+Release:        0
+Summary:        Documentation for texlive-linearregression
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-linearregression and texlive-alldocumentation)
+
+%description -n texlive-linearregression-doc
+This package includes the documentation for texlive-linearregression
+
+%post -n texlive-linearregression
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-linearregression
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-linearregression
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-linearregression-doc
+%{_texmfdistdir}/doc/latex/linearregression/README.txt
+%{_texmfdistdir}/doc/latex/linearregression/linearregression.pdf
+
+%files -n texlive-linearregression
+%{_texmfdistdir}/tex/latex/linearregression/linearregression.sty
+
 %package -n texlive-linebreaker
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn66639
 Release:        0
@@ -24407,9 +22649,9 @@ Suggests:       texlive-linebreaker-doc >= %{texlive_version}
 Provides:       tex(linebreaker.sty)
 Requires:       tex(luatexbase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source168:      linebreaker.tar.xz
-Source169:      linebreaker.doc.tar.xz
+# from 20250308
+Source174:      linebreaker.tar.xz
+Source175:      linebreaker.doc.tar.xz
 
 %description -n texlive-linebreaker
 This package tries to prevent overflow lines in paragraphs or
@@ -24489,9 +22731,9 @@ Requires:       tex(etex.sty)
 Requires:       tex(zref-savepos.sty)
 Requires:       tex(zref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source170:      linegoal.tar.xz
-Source171:      linegoal.doc.tar.xz
+# from 20250308
+Source176:      linegoal.tar.xz
+Source177:      linegoal.doc.tar.xz
 
 %description -n texlive-linegoal
 The linegoal package provides a macro \linegoal to be used with
@@ -24540,7 +22782,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/linegoal/linegoal.sty
 
 %package -n texlive-lineno
-Version:        %{texlive_version}.%{texlive_noarch}.5.3svn67171
+Version:        %{texlive_version}.%{texlive_noarch}.5.4svn73638
 Release:        0
 License:        LPPL-1.0
 Summary:        Line numbers on paragraphs
@@ -24579,9 +22821,9 @@ Requires:       tex(longtable.sty)
 Requires:       tex(ltabptch.sty)
 Requires:       tex(varioref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source172:      lineno.tar.xz
-Source173:      lineno.doc.tar.xz
+# from 20250308
+Source178:      lineno.tar.xz
+Source179:      lineno.doc.tar.xz
 
 %description -n texlive-lineno
 Adds line numbers to selected paragraphs with reference
@@ -24590,7 +22832,7 @@ mechanism. Line numbering may be extended to footnote lines,
 using the fnlineno package.
 
 %package -n texlive-lineno-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5.3svn67171
+Version:        %{texlive_version}.%{texlive_noarch}.5.4svn73638
 Release:        0
 Summary:        Documentation for texlive-lineno
 License:        LPPL-1.0
@@ -24678,9 +22920,9 @@ Requires:       tex(stmaryrd.sty)
 Requires:       tex(ulem.sty)
 Requires:       tex(upgreek.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source174:      ling-macros.tar.xz
-Source175:      ling-macros.doc.tar.xz
+# from 20250308
+Source180:      ling-macros.tar.xz
+Source181:      ling-macros.doc.tar.xz
 
 %description -n texlive-ling-macros
 This package contains macros for typesetting glosses and formal
@@ -24759,9 +23001,9 @@ Requires:       tex(cgloss4e.sty)
 Requires:       tex(tree-dvips.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source176:      linguex.tar.xz
-Source177:      linguex.doc.tar.xz
+# from 20250308
+Source182:      linguex.tar.xz
+Source183:      linguex.doc.tar.xz
 
 %description -n texlive-linguex
 This bundle comprises two packages: The linguex package
@@ -25101,9 +23343,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source178:      linguisticspro.tar.xz
-Source179:      linguisticspro.doc.tar.xz
+# from 20250308
+Source184:      linguisticspro.tar.xz
+Source185:      linguisticspro.doc.tar.xz
 
 %description -n texlive-linguisticspro
 The package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -25466,9 +23708,9 @@ Provides:       tex(linop.sty)
 Requires:       tex(bm.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source180:      linop.tar.xz
-Source181:      linop.doc.tar.xz
+# from 20250308
+Source186:      linop.tar.xz
+Source187:      linop.doc.tar.xz
 
 %description -n texlive-linop
 This small package aims to provide two simple commands and many
@@ -25560,9 +23802,9 @@ Requires:       tex(report.cls)
 Requires:       tex(titling.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source182:      lion-msc.tar.xz
-Source183:      lion-msc.doc.tar.xz
+# from 20250308
+Source188:      lion-msc.tar.xz
+Source189:      lion-msc.doc.tar.xz
 
 %description -n texlive-lion-msc
 LaTeX class for B.Sc. and M.Sc. reports at Leiden Institute of
@@ -25659,9 +23901,9 @@ Requires:       tex(babel.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source184:      lipsum.tar.xz
-Source185:      lipsum.doc.tar.xz
+# from 20250308
+Source190:      lipsum.tar.xz
+Source191:      lipsum.doc.tar.xz
 
 %description -n texlive-lipsum
 This package gives you easy access to 150 paragraphs of the
@@ -25714,7 +23956,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lipsum/lipsum.sty
 
 %package -n texlive-lisp-on-tex
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn38722
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn73165
 Release:        0
 License:        BSD-3-Clause
 Summary:        Execute LISP code in a LaTeX document
@@ -25752,11 +23994,12 @@ Provides:       tex(lisp-read.sty)
 Provides:       tex(lisp-simple-alloc.sty)
 Provides:       tex(lisp-string.sty)
 Provides:       tex(lisp-util.sty)
+Requires:       tex(expl3.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source186:      lisp-on-tex.tar.xz
-Source187:      lisp-on-tex.doc.tar.xz
+# from 20250308
+Source192:      lisp-on-tex.tar.xz
+Source193:      lisp-on-tex.doc.tar.xz
 
 %description -n texlive-lisp-on-tex
 The package provides a LISP interpreter written using TeX
@@ -25764,7 +24007,7 @@ macros; it is provided as a LaTeX package. The interpreter
 static scoping, dynamic typing, and eager evaluation.
 
 %package -n texlive-lisp-on-tex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn38722
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn73165
 Release:        0
 Summary:        Documentation for texlive-lisp-on-tex
 License:        BSD-3-Clause
@@ -25808,6 +24051,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/lisp-on-tex/examples/rocket.tex
 %{_texmfdistdir}/doc/latex/lisp-on-tex/examples/showfont.pdf
 %{_texmfdistdir}/doc/latex/lisp-on-tex/examples/showfont.tex
+%{_texmfdistdir}/doc/latex/lisp-on-tex/tug2013/slide.pdf
 
 %files -n texlive-lisp-on-tex
 %{_texmfdistdir}/tex/latex/lisp-on-tex/lisp-arith.sty
@@ -25856,9 +24100,9 @@ Provides:       tex(listbib.cfg)
 Provides:       tex(listbib.sty)
 Provides:       tex(listbib.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source188:      listbib.tar.xz
-Source189:      listbib.doc.tar.xz
+# from 20250308
+Source194:      listbib.tar.xz
+Source195:      listbib.doc.tar.xz
 
 %description -n texlive-listbib
 Generates listings of bibliographic data bases in BibTeX format
@@ -25935,9 +24179,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-listing-doc >= %{texlive_version}
 Provides:       tex(listing.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source190:      listing.tar.xz
-Source191:      listing.doc.tar.xz
+# from 20250308
+Source196:      listing.tar.xz
+Source197:      listing.doc.tar.xz
 
 %description -n texlive-listing
 The listing environment is provided and is similar to figure
@@ -25985,7 +24229,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/listing/listing.sty
 
 %package -n texlive-listings
-Version:        %{texlive_version}.%{texlive_noarch}.1.10svn70045
+Version:        %{texlive_version}.%{texlive_noarch}.1.10csvn72368
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset source code listings using LaTeX
@@ -26028,11 +24272,11 @@ Requires:       tex(keyval.sty)
 Requires:       tex(nameref.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(upquote.sty)
-Requires:       tex(url.sty)
+Requires:       tex(xurl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source192:      listings.tar.xz
-Source193:      listings.doc.tar.xz
+# from 20250308
+Source198:      listings.tar.xz
+Source199:      listings.doc.tar.xz
 
 %description -n texlive-listings
 The package enables the user to typeset programs (programming
@@ -26051,7 +24295,7 @@ listings are also available, using either \lstinline|...| or
 command).
 
 %package -n texlive-listings-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.10svn70045
+Version:        %{texlive_version}.%{texlive_noarch}.1.10csvn72368
 Release:        0
 Summary:        Documentation for texlive-listings
 License:        LPPL-1.0
@@ -26092,6 +24336,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/listings/listings-hansl.prf
 %{_texmfdistdir}/tex/latex/listings/listings-lua.prf
 %{_texmfdistdir}/tex/latex/listings/listings-python.prf
+%{_texmfdistdir}/tex/latex/listings/listings-rexx.prf
 %{_texmfdistdir}/tex/latex/listings/listings.cfg
 %{_texmfdistdir}/tex/latex/listings/listings.sty
 %{_texmfdistdir}/tex/latex/listings/lstdoc.sty
@@ -26135,9 +24380,9 @@ Provides:       tex(listings-ext.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source194:      listings-ext.tar.xz
-Source195:      listings-ext.doc.tar.xz
+# from 20250308
+Source200:      listings-ext.tar.xz
+Source201:      listings-ext.doc.tar.xz
 
 %description -n texlive-listings-ext
 The package provides a means of marking a source, so that
@@ -26234,9 +24479,9 @@ Requires:       tex(listings.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(stringenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source196:      listingsutf8.tar.xz
-Source197:      listingsutf8.doc.tar.xz
+# from 20250308
+Source202:      listingsutf8.tar.xz
+Source203:      listingsutf8.doc.tar.xz
 
 %description -n texlive-listingsutf8
 Package listings does not support files with multi-byte
@@ -26314,9 +24559,9 @@ Suggests:       texlive-listlbls-doc >= %{texlive_version}
 Provides:       tex(listlbls.sty)
 Requires:       tex(translations.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source198:      listlbls.tar.xz
-Source199:      listlbls.doc.tar.xz
+# from 20250308
+Source204:      listlbls.tar.xz
+Source205:      listlbls.doc.tar.xz
 
 %description -n texlive-listlbls
 The package aims to help a LaTeX author to keep track of all
@@ -26397,9 +24642,9 @@ Provides:       tex(listliketab.sty)
 Requires:       tex(array.sty)
 Requires:       tex(calc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source200:      listliketab.tar.xz
-Source201:      listliketab.doc.tar.xz
+# from 20250308
+Source206:      listliketab.tar.xz
+Source207:      listliketab.doc.tar.xz
 
 %description -n texlive-listliketab
 The listliketab package helps the user make list-like tabulars,
@@ -26474,9 +24719,9 @@ Suggests:       texlive-listofitems-doc >= %{texlive_version}
 Provides:       tex(listofitems.sty)
 Provides:       tex(listofitems.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source202:      listofitems.tar.xz
-Source203:      listofitems.doc.tar.xz
+# from 20250308
+Source208:      listofitems.tar.xz
+Source209:      listofitems.doc.tar.xz
 
 %description -n texlive-listofitems
 This simple package is designed to read a list of items whose
@@ -26570,9 +24815,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(nomencl.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source204:      listofsymbols.tar.xz
-Source205:      listofsymbols.doc.tar.xz
+# from 20250308
+Source210:      listofsymbols.tar.xz
+Source211:      listofsymbols.doc.tar.xz
 
 %description -n texlive-listofsymbols
 Listofsymbols provides commands to automatically create a list
@@ -26622,11 +24867,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-listofsymbols
 %{_texmfdistdir}/tex/latex/listofsymbols/listofsymbols.sty
 
-%package -n texlive-litebook
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn70579
+%package -n texlive-listparskip
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn73155
 Release:        0
 License:        LPPL-1.0
-Summary:        A fresh cover and chapter design for books
+Summary:        Adjust vertical space around lists
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -26649,85 +24894,37 @@ Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
-Suggests:       texlive-litebook-doc >= %{texlive_version}
-Provides:       tex(litebook.cls)
-Requires:       tex(amsmath.sty)
-Requires:       tex(amssymb.sty)
-Requires:       tex(amsthm.sty)
-Requires:       tex(anyfontsize.sty)
-Requires:       tex(bm.sty)
-Requires:       tex(book.cls)
-Requires:       tex(booktabs.sty)
-Requires:       tex(cancel.sty)
-Requires:       tex(caption.sty)
-Requires:       tex(datetime.sty)
-Requires:       tex(derivative.sty)
-Requires:       tex(diagbox.sty)
-Requires:       tex(enumitem.sty)
-Requires:       tex(esvect.sty)
-Requires:       tex(etoolbox.sty)
-Requires:       tex(extarrows.sty)
-Requires:       tex(fadingimage.sty)
-Requires:       tex(fancyhdr.sty)
-Requires:       tex(fixdif.sty)
-Requires:       tex(fontawesome5.sty)
-Requires:       tex(fontspec.sty)
-Requires:       tex(geometry.sty)
-Requires:       tex(graphics.sty)
-Requires:       tex(graphicx.sty)
-Requires:       tex(hologo.sty)
-Requires:       tex(hyperref.sty)
-Requires:       tex(ifxetex.sty)
-Requires:       tex(indentfirst.sty)
-Requires:       tex(kvoptions.sty)
-Requires:       tex(lipsum.sty)
-Requires:       tex(mathrsfs.sty)
-Requires:       tex(multicol.sty)
-Requires:       tex(multirow.sty)
-Requires:       tex(newtx.sty)
-Requires:       tex(nicefrac.sty)
-Requires:       tex(nicematrix.sty)
-Requires:       tex(physics2.sty)
-Requires:       tex(refstyle.sty)
-Requires:       tex(siunitx.sty)
-Requires:       tex(tabularx.sty)
-Requires:       tex(tcolorbox.sty)
-Requires:       tex(tikz.sty)
-Requires:       tex(tocloft.sty)
-Requires:       tex(xeCJK.sty)
-Requires:       tex(zhlipsum.sty)
+Suggests:       texlive-listparskip-doc >= %{texlive_version}
+Provides:       tex(listparskip.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source206:      litebook.tar.xz
-Source207:      litebook.doc.tar.xz
+# from 20250308
+Source212:      listparskip.tar.xz
+Source213:      listparskip.doc.tar.xz
 
-%description -n texlive-litebook
-This template provides a fresh cover and chapter design for
-books. It was originally used for the reformatting of the
-textbook General Relativity by R. Wald which you can download
-from
-https://github.com/xiamyphys/LaTeX-General-Relativity-R.Wald
-Welcome to feedback bugs or ideas via email
-xiamyphys@gmail.com.
+%description -n texlive-listparskip
+This package modifies list environments such that they add
+\parskip and \partopsep before or after a list if and only if
+the environment follows or precedes, respectively, a blank line
+(i.e. a \par).
 
-%package -n texlive-litebook-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn70579
+%package -n texlive-listparskip-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn73155
 Release:        0
-Summary:        Documentation for texlive-litebook
+Summary:        Documentation for texlive-listparskip
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Supplements:    (texlive-litebook and texlive-alldocumentation)
+Supplements:    (texlive-listparskip and texlive-alldocumentation)
 
-%description -n texlive-litebook-doc
-This package includes the documentation for texlive-litebook
+%description -n texlive-listparskip-doc
+This package includes the documentation for texlive-listparskip
 
-%post -n texlive-litebook
+%post -n texlive-listparskip
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
 
-%postun -n texlive-litebook
+%postun -n texlive-listparskip
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
@@ -26735,151 +24932,24 @@ if test $1 = 0; then
     exit 0
 fi
 
-%posttrans -n texlive-litebook
+%posttrans -n texlive-listparskip
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
-%files -n texlive-litebook-doc
-%{_texmfdistdir}/doc/latex/litebook/License
-%{_texmfdistdir}/doc/latex/litebook/README.md
-%{_texmfdistdir}/doc/latex/litebook/cha/cha1.tex
-%{_texmfdistdir}/doc/latex/litebook/cha/scha.tex
-%{_texmfdistdir}/doc/latex/litebook/figures/Beautiful-realities.jpeg
-%{_texmfdistdir}/doc/latex/litebook/litebook.pdf
-%{_texmfdistdir}/doc/latex/litebook/litebook.tex
+%files -n texlive-listparskip-doc
+%{_texmfdistdir}/doc/latex/listparskip/README.txt
+%{_texmfdistdir}/doc/latex/listparskip/listparskip_code.pdf
+%{_texmfdistdir}/doc/latex/listparskip/listparskip_example.pdf
+%{_texmfdistdir}/doc/latex/listparskip/listparskip_example.tex
+%{_texmfdistdir}/doc/latex/listparskip/listparskip_heading.tex
+%{_texmfdistdir}/doc/latex/listparskip/listparskip_user_guide.pdf
+%{_texmfdistdir}/doc/latex/listparskip/listparskip_user_guide.tex
 
-%files -n texlive-litebook
-%{_texmfdistdir}/tex/latex/litebook/litebook.cls
-
-%package -n texlive-litesolution
-Version:        %{texlive_version}.%{texlive_noarch}.2.0asvn70595
-Release:        0
-License:        LPPL-1.0
-Summary:        A template providing a light design for solutions of test papers
-Group:          Productivity/Publishing/TeX/Base
-URL:            https://www.tug.org/texlive/
-Requires(pre):  texlive-filesystem >= %{texlive_version}
-Requires(post): coreutils
-Requires(postun): coreutils
-Requires(postun): texlive >= %{texlive_version}
-Requires(postun): texlive-filesystem >= %{texlive_version}
-Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
-Requires(postun): texlive-kpathsea >= %{texlive_version}
-Requires(postun): texlive-scripts-bin >= %{texlive_version}
-Requires(postun): texlive-scripts >= %{texlive_version}
-Requires(posttrans): coreutils
-Requires(posttrans): ed
-Requires(posttrans): findutils
-Requires(posttrans): grep
-Requires(posttrans): sed
-Requires(posttrans): texlive >= %{texlive_version}
-Requires(posttrans): texlive-filesystem >= %{texlive_version}
-Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
-Requires(posttrans): texlive-kpathsea >= %{texlive_version}
-Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
-Requires(posttrans): texlive-scripts >= %{texlive_version}
-Suggests:       texlive-litesolution-doc >= %{texlive_version}
-Provides:       tex(litesolution.cls)
-Requires:       tex(amsmath.sty)
-Requires:       tex(amssymb.sty)
-Requires:       tex(amsthm.sty)
-Requires:       tex(anyfontsize.sty)
-Requires:       tex(bm.sty)
-Requires:       tex(book.cls)
-Requires:       tex(booktabs.sty)
-Requires:       tex(cancel.sty)
-Requires:       tex(caption.sty)
-Requires:       tex(circuitikz.sty)
-Requires:       tex(comment.sty)
-Requires:       tex(datetime.sty)
-Requires:       tex(derivative.sty)
-Requires:       tex(diagbox.sty)
-Requires:       tex(enumitem.sty)
-Requires:       tex(esvect.sty)
-Requires:       tex(etoolbox.sty)
-Requires:       tex(extarrows.sty)
-Requires:       tex(fadingimage.sty)
-Requires:       tex(fancyhdr.sty)
-Requires:       tex(fixdif.sty)
-Requires:       tex(fontawesome5.sty)
-Requires:       tex(fontspec.sty)
-Requires:       tex(geometry.sty)
-Requires:       tex(graphics.sty)
-Requires:       tex(graphicx.sty)
-Requires:       tex(hologo.sty)
-Requires:       tex(hyperref.sty)
-Requires:       tex(ifxetex.sty)
-Requires:       tex(indentfirst.sty)
-Requires:       tex(kvoptions.sty)
-Requires:       tex(lipsum.sty)
-Requires:       tex(mathrsfs.sty)
-Requires:       tex(multicol.sty)
-Requires:       tex(multirow.sty)
-Requires:       tex(newtx.sty)
-Requires:       tex(nicefrac.sty)
-Requires:       tex(nicematrix.sty)
-Requires:       tex(pgfplots.sty)
-Requires:       tex(physics2.sty)
-Requires:       tex(refstyle.sty)
-Requires:       tex(setspace.sty)
-Requires:       tex(siunitx.sty)
-Requires:       tex(tabularx.sty)
-Requires:       tex(tasks.sty)
-Requires:       tex(tcolorbox.sty)
-Requires:       tex(xeCJK.sty)
-Requires:       tex(zhlipsum.sty)
-# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source208:      litesolution.tar.xz
-Source209:      litesolution.doc.tar.xz
-
-%description -n texlive-litesolution
-This template provides a fresh design for typesetting solutions
-of midterm or final exams, textbooks and other exercises.
-Welcome to feedback bugs or ideas via email
-xiamyphys@gmail.com.
-
-%package -n texlive-litesolution-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0asvn70595
-Release:        0
-Summary:        Documentation for texlive-litesolution
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-URL:            https://www.tug.org/texlive/
-Supplements:    (texlive-litesolution and texlive-alldocumentation)
-
-%description -n texlive-litesolution-doc
-This package includes the documentation for texlive-litesolution
-
-%post -n texlive-litesolution
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-
-%postun -n texlive-litesolution
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-if test $1 = 0; then
-    exit 0
-fi
-
-%posttrans -n texlive-litesolution
-test -d /var/run/texlive || exit 0
-VERBOSE=false %{_texmfdistdir}/texconfig/update || :
-
-%files -n texlive-litesolution-doc
-%{_texmfdistdir}/doc/latex/litesolution/Beautiful-realities.jpeg
-%{_texmfdistdir}/doc/latex/litesolution/License
-%{_texmfdistdir}/doc/latex/litesolution/README.md
-%{_texmfdistdir}/doc/latex/litesolution/litesolution.pdf
-%{_texmfdistdir}/doc/latex/litesolution/litesolution.tex
-
-%files -n texlive-litesolution
-%{_texmfdistdir}/tex/latex/litesolution/litesolution.cls
+%files -n texlive-listparskip
+%{_texmfdistdir}/tex/latex/listparskip/listparskip.sty
 
 %package -n texlive-litetable
-Version:        %{texlive_version}.%{texlive_noarch}.2.4csvn70352
+Version:        %{texlive_version}.%{texlive_noarch}.3.3bsvn74391
 Release:        0
 License:        LPPL-1.0
 Summary:        Class schedules with colorful course blocks
@@ -26906,39 +24976,28 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-litetable-doc >= %{texlive_version}
-Provides:       tex(litetable.cls)
-Requires:       tex(etoolbox.sty)
-Requires:       tex(fontawesome5.sty)
-Requires:       tex(fontspec.sty)
-Requires:       tex(helvet.sty)
-Requires:       tex(hyperref.sty)
-Requires:       tex(kvoptions.sty)
-Requires:       tex(libertine.sty)
-Requires:       tex(newtxtext.sty)
-Requires:       tex(standalone.cls)
-Requires:       tex(xeCJK.sty)
+Provides:       tex(litetable.sty)
+Requires:       tex(expl3.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source210:      litetable.tar.xz
-Source211:      litetable.doc.tar.xz
+# from 20250308
+Source214:      litetable.tar.xz
+Source215:      litetable.doc.tar.xz
 
 %description -n texlive-litetable
-This template provides a beautiful design of class schedule
-with colorful course blocks. If you find bugs when using this
-template, or if you have better suggestions or ideas, or want
-to participate in the development of the template or other
-templates by me, welcome to contact me via email
-xiamyphys@gmail.com.
+The litetable class provides a colorful timetable design,
+developed by expl3 based on article and TikZ.
 
 %package -n texlive-litetable-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.4csvn70352
+Version:        %{texlive_version}.%{texlive_noarch}.3.3bsvn74391
 Release:        0
 Summary:        Documentation for texlive-litetable
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Supplements:    (texlive-litetable and texlive-alldocumentation)
-Provides:       locale(texlive-litetable-doc:zh)
+Provides:       locale(texlive-litetable-doc:zh;yue)
 
 %description -n texlive-litetable-doc
 This package includes the documentation for texlive-litetable
@@ -26961,18 +25020,15 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-litetable-doc
-%{_texmfdistdir}/doc/latex/litetable/License
 %{_texmfdistdir}/doc/latex/litetable/README.md
-%{_texmfdistdir}/doc/latex/litetable/favicon.png
-%{_texmfdistdir}/doc/latex/litetable/litetable-cn.pdf
-%{_texmfdistdir}/doc/latex/litetable/litetable-cn.tex
-%{_texmfdistdir}/doc/latex/litetable/litetable-demo.pdf
-%{_texmfdistdir}/doc/latex/litetable/litetable-demo.tex
-%{_texmfdistdir}/doc/latex/litetable/litetable-en.pdf
-%{_texmfdistdir}/doc/latex/litetable/litetable-en.tex
+%{_texmfdistdir}/doc/latex/litetable/litetable-zh-cn.pdf
+%{_texmfdistdir}/doc/latex/litetable/litetable-zh-cn.tex
+%{_texmfdistdir}/doc/latex/litetable/litetable-zh-hk.pdf
+%{_texmfdistdir}/doc/latex/litetable/litetable-zh-hk.tex
+%{_texmfdistdir}/doc/latex/litetable/litetable.pdf
 
 %files -n texlive-litetable
-%{_texmfdistdir}/tex/latex/litetable/litetable.cls
+%{_texmfdistdir}/tex/latex/litetable/litetable.sty
 
 %package -n texlive-lithuanian
 Version:        %{texlive_version}.%{texlive_noarch}.svn66461
@@ -27061,9 +25117,9 @@ Provides:       tex(l7xuzc.fd)
 Provides:       tex(latin7.def)
 Provides:       tex(latin7x.enc)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source212:      lithuanian.tar.xz
-Source213:      lithuanian.doc.tar.xz
+# from 20250308
+Source216:      lithuanian.tar.xz
+Source217:      lithuanian.doc.tar.xz
 
 %description -n texlive-lithuanian
 This language support package provides extra 8-bit encoding
@@ -27196,9 +25252,9 @@ Requires:       tex(color.sty)
 Requires:       tex(ecclesiastic.sty)
 Requires:       tex(lettrine.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source214:      liturg.tar.xz
-Source215:      liturg.doc.tar.xz
+# from 20250308
+Source218:      liturg.tar.xz
+Source219:      liturg.doc.tar.xz
 
 %description -n texlive-liturg
 The packages offers simple macros for typesetting Catholic
@@ -27272,9 +25328,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lkproof-doc >= %{texlive_version}
 Provides:       tex(proof.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source216:      lkproof.tar.xz
-Source217:      lkproof.doc.tar.xz
+# from 20250308
+Source220:      lkproof.tar.xz
+Source221:      lkproof.doc.tar.xz
 
 %description -n texlive-lkproof
 The package defines a pair of commands \infer and \deduce, that
@@ -27318,7 +25374,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lkproof/proof.sty
 
 %package -n texlive-llncs
-Version:        %{texlive_version}.%{texlive_noarch}.2.24svn69629
+Version:        %{texlive_version}.%{texlive_noarch}.2.26svn74287
 Release:        0
 License:        LPPL-1.0
 Summary:        Document class and bibliography style for Lecture Notes in Computer Science (LNCS)
@@ -27350,9 +25406,9 @@ Requires:       tex(aliascnt.sty)
 Requires:       tex(article.cls)
 Requires:       tex(multicol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source218:      llncs.tar.xz
-Source219:      llncs.doc.tar.xz
+# from 20250308
+Source222:      llncs.tar.xz
+Source223:      llncs.doc.tar.xz
 
 %description -n texlive-llncs
 This is Springer's official macro package for typesetting
@@ -27361,7 +25417,7 @@ Computer Science (LNCS) and its related proceedings series
 CCIS, LNBIP, LNICST, and IFIP AICT.
 
 %package -n texlive-llncs-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.24svn69629
+Version:        %{texlive_version}.%{texlive_noarch}.2.26svn74287
 Release:        0
 Summary:        Documentation for texlive-llncs
 License:        LPPL-1.0
@@ -27434,9 +25490,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(rcsinfo.sty)
 Requires:       tex(svninfo.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source220:      llncsconf.tar.xz
-Source221:      llncsconf.doc.tar.xz
+# from 20250308
+Source224:      llncsconf.tar.xz
+Source225:      llncsconf.doc.tar.xz
 
 %description -n texlive-llncsconf
 The package extends Springer's llncs class for adding
@@ -28245,9 +26301,9 @@ Provides:       tex(ts1lmssq.fd)
 Provides:       tex(ts1lmtt.fd)
 Provides:       tex(ts1lmvtt.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source222:      lm.tar.xz
-Source223:      lm.doc.tar.xz
+# from 20250308
+Source226:      lm.tar.xz
+Source227:      lm.doc.tar.xz
 
 %description -n texlive-lm
 The Latin Modern family of fonts consists of 72 text fonts and
@@ -29613,9 +27669,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-lm-math-fonts >= %{texlive_version}
 Suggests:       texlive-lm-math-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source224:      lm-math.tar.xz
-Source225:      lm-math.doc.tar.xz
+# from 20250308
+Source228:      lm-math.tar.xz
+Source229:      lm-math.doc.tar.xz
 
 %description -n texlive-lm-math
 Latin Modern Math is a maths companion for the Latin Modern
@@ -29725,9 +27781,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lmake-doc >= %{texlive_version}
 Provides:       tex(lmake.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source226:      lmake.tar.xz
-Source227:      lmake.doc.tar.xz
+# from 20250308
+Source230:      lmake.tar.xz
+Source231:      lmake.doc.tar.xz
 
 %description -n texlive-lmake
 The package provides commands to simplify processing of
@@ -29771,7 +27827,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lmake/lmake.sty
 
 %package -n texlive-lni
-Version:        %{texlive_version}.%{texlive_noarch}.1.8.1svn69361
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn73766
 Release:        0
 License:        LPPL-1.0
 Summary:        Official class for the "Lecture Notes in Informatics"
@@ -29833,9 +27889,9 @@ Requires:       tex(url.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source228:      lni.tar.xz
-Source229:      lni.doc.tar.xz
+# from 20250308
+Source232:      lni.tar.xz
+Source233:      lni.doc.tar.xz
 
 %description -n texlive-lni
 This is the official version of the class "lni" for submissions
@@ -29845,7 +27901,7 @@ lni-author-template.tex and edit it in your favorite LaTeX
 editor.
 
 %package -n texlive-lni-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.8.1svn69361
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn73766
 Release:        0
 Summary:        Documentation for texlive-lni
 License:        LPPL-1.0
@@ -29883,8 +27939,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/lni/lni.pdf
 
 %files -n texlive-lni
-%{_texmfdistdir}/bibtex/bst/lni/lni.bst
-%{_texmfdistdir}/bibtex/bst/lni/lnig.bst
 %{_texmfdistdir}/tex/latex/lni/lni.cls
 
 %package -n texlive-lobster2
@@ -30005,9 +28059,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source230:      lobster2.tar.xz
-Source231:      lobster2.doc.tar.xz
+# from 20250308
+Source234:      lobster2.tar.xz
+Source235:      lobster2.doc.tar.xz
 
 %description -n texlive-lobster2
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -30206,9 +28260,9 @@ Suggests:       texlive-locality-doc >= %{texlive_version}
 Provides:       tex(locality.sty)
 Requires:       tex(etoolbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source232:      locality.tar.xz
-Source233:      locality.doc.tar.xz
+# from 20250308
+Source236:      locality.tar.xz
+Source237:      locality.doc.tar.xz
 
 %description -n texlive-locality
 A toolbox of macros designed to allow the LaTeX programmer to
@@ -30283,9 +28337,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-localloc-doc >= %{texlive_version}
 Provides:       tex(localloc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source234:      localloc.tar.xz
-Source235:      localloc.doc.tar.xz
+# from 20250308
+Source238:      localloc.tar.xz
+Source239:      localloc.doc.tar.xz
 
 %description -n texlive-localloc
 This package approaches the problem of the shortage of
@@ -30359,9 +28413,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-logbox-doc >= %{texlive_version}
 Provides:       tex(logbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source236:      logbox.tar.xz
-Source237:      logbox.doc.tar.xz
+# from 20250308
+Source240:      logbox.tar.xz
+Source241:      logbox.doc.tar.xz
 
 %description -n texlive-logbox
 The command \logbox does \showbox without stopping the
@@ -30437,9 +28491,9 @@ Suggests:       texlive-logical-markup-utils-doc >= %{texlive_version}
 Provides:       tex(onedash.sty)
 Provides:       tex(quoted.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source238:      logical-markup-utils.tar.xz
-Source239:      logical-markup-utils.doc.tar.xz
+# from 20250308
+Source242:      logical-markup-utils.tar.xz
+Source243:      logical-markup-utils.doc.tar.xz
 
 %description -n texlive-logical-markup-utils
 The bundle contains two packages: quoted, for inserting
@@ -30517,9 +28571,9 @@ Provides:       tex(logicproof.sty)
 Requires:       tex(array.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source240:      logicproof.tar.xz
-Source241:      logicproof.doc.tar.xz
+# from 20250308
+Source244:      logicproof.tar.xz
+Source245:      logicproof.doc.tar.xz
 
 %description -n texlive-logicproof
 A common style of proof used in propositional and predicate
@@ -30602,9 +28656,9 @@ Requires:       tex(ragged2e.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source242:      logicpuzzle.tar.xz
-Source243:      logicpuzzle.doc.tar.xz
+# from 20250308
+Source246:      logicpuzzle.tar.xz
+Source247:      logicpuzzle.doc.tar.xz
 
 %description -n texlive-logicpuzzle
 The package allows the user to typeset various logic puzzles.
@@ -30711,9 +28765,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(unicode-math.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source244:      logix.tar.xz
-Source245:      logix.doc.tar.xz
+# from 20250308
+Source248:      logix.tar.xz
+Source249:      logix.doc.tar.xz
 
 %description -n texlive-logix
 The package provides a Unicode font with over 4,000 symbols to
@@ -30801,7 +28855,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-logix/logixMono.ttf
 
 %package -n texlive-logoetalab
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn68916
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn73069
 Release:        0
 License:        LPPL-1.0
 Summary:        Insert Licence Etalab 2.0 logo
@@ -30835,9 +28889,9 @@ Requires:       tex(simplekv.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source246:      logoetalab.tar.xz
-Source247:      logoetalab.doc.tar.xz
+# from 20250308
+Source250:      logoetalab.tar.xz
+Source251:      logoetalab.doc.tar.xz
 
 %description -n texlive-logoetalab
 This package provides commands to display the "Licence Ouverte
@@ -30845,7 +28899,7 @@ Etalab 2.0" vector logo: vertical or horizontal version; some
 color choice.
 
 %package -n texlive-logoetalab-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn68916
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn73069
 Release:        0
 Summary:        Documentation for texlive-logoetalab
 License:        LPPL-1.0
@@ -30928,9 +28982,9 @@ Provides:       tex(logpap.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source248:      logpap.tar.xz
-Source249:      logpap.doc.tar.xz
+# from 20250308
+Source252:      logpap.tar.xz
+Source253:      logpap.doc.tar.xz
 
 %description -n texlive-logpap
 The logpap package provides four macros for drawing
@@ -31010,9 +29064,9 @@ Provides:       tex(logreq.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source250:      logreq.tar.xz
-Source251:      logreq.doc.tar.xz
+# from 20250308
+Source254:      logreq.tar.xz
+Source255:      logreq.doc.tar.xz
 
 %description -n texlive-logreq
 The package helps to automate a typical LaTeX workflow that
@@ -31140,9 +29194,9 @@ Provides:       tex(lollipop-text.tex)
 Provides:       tex(lollipop-tools.tex)
 Provides:       tex(lollipop.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source252:      lollipop.tar.xz
-Source253:      lollipop.doc.tar.xz
+# from 20250308
+Source256:      lollipop.tar.xz
+Source257:      lollipop.doc.tar.xz
 
 %description -n texlive-lollipop
 Lollipop is "TeX made easy" -- it is a macro package that
@@ -31272,9 +29326,9 @@ Suggests:       texlive-longdivision-doc >= %{texlive_version}
 Provides:       tex(longdivision.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source254:      longdivision.tar.xz
-Source255:      longdivision.doc.tar.xz
+# from 20250308
+Source258:      longdivision.tar.xz
+Source259:      longdivision.doc.tar.xz
 
 %description -n texlive-longdivision
 This package executes the long division algorithm and typesets
@@ -31364,9 +29418,9 @@ Requires:       tex(footnote.sty)
 Requires:       tex(options.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source256:      longfbox.tar.xz
-Source257:      longfbox.doc.tar.xz
+# from 20250308
+Source260:      longfbox.tar.xz
+Source261:      longfbox.doc.tar.xz
 
 %description -n texlive-longfbox
 The longfbox package provides framed boxes that can be
@@ -31443,9 +29497,9 @@ Provides:       tex(longfigure.sty)
 Requires:       tex(tocloft.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source258:      longfigure.tar.xz
-Source259:      longfigure.doc.tar.xz
+# from 20250308
+Source262:      longfigure.tar.xz
+Source263:      longfigure.doc.tar.xz
 
 %description -n texlive-longfigure
 The longfigure package uses and relabels components of the
@@ -31489,6 +29543,99 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-longfigure
 %{_texmfdistdir}/tex/latex/longfigure/longfigure.sty
 
+%package -n texlive-longmath
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn71709
+Release:        0
+License:        LPPL-1.0
+Summary:        Nested delimiter groups extending over multiple array cells or lines
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-longmath-doc >= %{texlive_version}
+Provides:       tex(longmath.sty)
+Requires:       tex(luatexbase.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source264:      longmath.tar.xz
+Source265:      longmath.doc.tar.xz
+
+%description -n texlive-longmath
+This package provides yet another solution to some well known
+typesetting problems solved in a variety of ways: multi line
+formulas with paired and nested delimiters. It tackles the
+problem at the Lua level, which has some advantages over
+solutions implemented in TeX. In particular, the TeX code need
+not be executed multiple times, and there is no interference
+between TeX grouping and the nesting of delimiter groups. As a
+byproduct, delimiters can be scaled in various ways, inner
+delimiters come in different flavours like relational and
+binary operators, punctuation symbols etc., and outer
+delimiters can be selected automatically according to the
+nesting level. Last but not least, delimiter groups can even
+extend across several array cells or across the whole document.
+A special environment is provided as well, which allows multi
+line expressions to be placed inside a displayed equation and
+make TeX do the line splitting and alignment.
+
+%package -n texlive-longmath-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn71709
+Release:        0
+Summary:        Documentation for texlive-longmath
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-longmath and texlive-alldocumentation)
+
+%description -n texlive-longmath-doc
+This package includes the documentation for texlive-longmath
+
+%post -n texlive-longmath
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-longmath
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-longmath
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-longmath-doc
+%{_texmfdistdir}/doc/lualatex/longmath/README
+%{_texmfdistdir}/doc/lualatex/longmath/longmath-doc.cls
+%{_texmfdistdir}/doc/lualatex/longmath/longmath-doc.lua
+%{_texmfdistdir}/doc/lualatex/longmath/longmath-doc.pdf
+%{_texmfdistdir}/doc/lualatex/longmath/longmath-doc.tex
+
+%files -n texlive-longmath
+%{_texmfdistdir}/tex/lualatex/longmath/longmath.lua
+%{_texmfdistdir}/tex/lualatex/longmath/longmath.sty
+
 %package -n texlive-longnamefilelist
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn27889
 Release:        0
@@ -31520,9 +29667,9 @@ Suggests:       texlive-longnamefilelist-doc >= %{texlive_version}
 Provides:       tex(longnamefilelist.sty)
 Requires:       tex(myfilist.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source260:      longnamefilelist.tar.xz
-Source261:      longnamefilelist.doc.tar.xz
+# from 20250308
+Source266:      longnamefilelist.tar.xz
+Source267:      longnamefilelist.doc.tar.xz
 
 %description -n texlive-longnamefilelist
 The package equips LaTeX's \listfiles command with an optional
@@ -31600,9 +29747,9 @@ Suggests:       texlive-loops-doc >= %{texlive_version}
 Provides:       tex(loops.sty)
 Requires:       tex(skeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source262:      loops.tar.xz
-Source263:      loops.doc.tar.xz
+# from 20250308
+Source268:      loops.tar.xz
+Source269:      loops.doc.tar.xz
 
 %description -n texlive-loops
 The package provides efficient looping macros for processing
@@ -31677,9 +29824,9 @@ Suggests:       texlive-lparse-doc >= %{texlive_version}
 Provides:       tex(lparse.sty)
 Provides:       tex(lparse.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source264:      lparse.tar.xz
-Source265:      lparse.doc.tar.xz
+# from 20250308
+Source270:      lparse.tar.xz
+Source271:      lparse.doc.tar.xz
 
 %description -n texlive-lparse
 The name lparse is derived from xparse. The 'x' has been
@@ -31761,9 +29908,9 @@ Suggests:       texlive-lpform-doc >= %{texlive_version}
 Provides:       tex(lpform.sty)
 Requires:       tex(xifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source266:      lpform.tar.xz
-Source267:      lpform.doc.tar.xz
+# from 20250308
+Source272:      lpform.tar.xz
+Source273:      lpform.doc.tar.xz
 
 %description -n texlive-lpform
 The package is designed to aid the author writing linear
@@ -31847,9 +29994,9 @@ Requires:       tex(epsfig.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(rotating.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source268:      lpic.tar.xz
-Source269:      lpic.doc.tar.xz
+# from 20250308
+Source274:      lpic.tar.xz
+Source275:      lpic.doc.tar.xz
 
 %description -n texlive-lpic
 The package defines a convenient interface to put any LaTeX
@@ -31931,9 +30078,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lplfitch-doc >= %{texlive_version}
 Provides:       tex(lplfitch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source270:      lplfitch.tar.xz
-Source271:      lplfitch.doc.tar.xz
+# from 20250308
+Source276:      lplfitch.tar.xz
+Source277:      lplfitch.doc.tar.xz
 
 %description -n texlive-lplfitch
 The package provides macros for typesetting natural deduction
@@ -32014,9 +30161,9 @@ Requires:       tex(mathptmx.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(titletoc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source272:      lps.tar.xz
-Source273:      lps.doc.tar.xz
+# from 20250308
+Source278:      lps.tar.xz
+Source279:      lps.doc.tar.xz
 
 %description -n texlive-lps
 The 'Logic and Philosophy of Science' journal is an online
@@ -32091,9 +30238,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lroundrect-doc >= %{texlive_version}
 Provides:       tex(lroundrect.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source274:      lroundrect.tar.xz
-Source275:      lroundrect.doc.tar.xz
+# from 20250308
+Source280:      lroundrect.tar.xz
+Source281:      lroundrect.doc.tar.xz
 
 %description -n texlive-lroundrect
 This LaTeX package provides ways to use the extremely
@@ -32172,9 +30319,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source276:      lsc.tar.xz
-Source277:      lsc.doc.tar.xz
+# from 20250308
+Source282:      lsc.tar.xz
+Source283:      lsc.doc.tar.xz
 
 %description -n texlive-lsc
 This package is similar to the msc package in that it provides
@@ -32223,6 +30370,83 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/bibtex/bib/lsc/lsc.bib
 %{_texmfdistdir}/tex/latex/lsc/lsc.sty
 
+%package -n texlive-lscapeenhanced
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn70967
+Release:        0
+License:        LPPL-1.0
+Summary:        An enhancement to the lscape and pdflscape packages
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-lscapeenhanced-doc >= %{texlive_version}
+Provides:       tex(lscapeenhanced.sty)
+Requires:       tex(xpatch.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source284:      lscapeenhanced.tar.xz
+Source285:      lscapeenhanced.doc.tar.xz
+
+%description -n texlive-lscapeenhanced
+The package solves an issue with the detection of text height,
+e.g., by package scrlayer or showframe, when using the
+landscape environment of package lscape or pdflscape.
+
+%package -n texlive-lscapeenhanced-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn70967
+Release:        0
+Summary:        Documentation for texlive-lscapeenhanced
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-lscapeenhanced and texlive-alldocumentation)
+
+%description -n texlive-lscapeenhanced-doc
+This package includes the documentation for texlive-lscapeenhanced
+
+%post -n texlive-lscapeenhanced
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-lscapeenhanced
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-lscapeenhanced
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-lscapeenhanced-doc
+%{_texmfdistdir}/doc/latex/lscapeenhanced/LICENSE.md
+%{_texmfdistdir}/doc/latex/lscapeenhanced/README.md
+%{_texmfdistdir}/doc/latex/lscapeenhanced/lscapeenhanced.pdf
+
+%files -n texlive-lscapeenhanced
+%{_texmfdistdir}/tex/latex/lscapeenhanced/lscapeenhanced.sty
+
 %package -n texlive-lshort-bulgarian
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
 Release:        0
@@ -32251,8 +30475,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source278:      lshort-bulgarian.doc.tar.xz
+# from 20250308
+Source286:      lshort-bulgarian.doc.tar.xz
 
 %description -n texlive-lshort-bulgarian
 The source files, PostScript and PDF files of the Bulgarian
@@ -32281,7 +30505,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/lshort-bulgarian/src/lshort-bg.src.zip
 
 %package -n texlive-lshort-chinese
-Version:        %{texlive_version}.%{texlive_noarch}.6.04svn67025
+Version:        %{texlive_version}.%{texlive_noarch}.6.05svn73160
 Release:        0
 License:        GFDL-1.3-or-later
 Summary:        Introduction to LaTeX, in Chinese
@@ -32308,8 +30532,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source279:      lshort-chinese.doc.tar.xz
+# from 20250308
+Source287:      lshort-chinese.doc.tar.xz
 
 %description -n texlive-lshort-chinese
 A Chinese edition of the not so short introduction to LaTeX2e,
@@ -32388,8 +30612,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source280:      lshort-czech.doc.tar.xz
+# from 20250308
+Source288:      lshort-czech.doc.tar.xz
 
 %description -n texlive-lshort-czech
 This is the Czech translation of "A Short Introduction to
@@ -32467,8 +30691,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source281:      lshort-dutch.doc.tar.xz
+# from 20250308
+Source289:      lshort-dutch.doc.tar.xz
 
 %description -n texlive-lshort-dutch
 This is the Dutch (Nederlands) translation of the Short
@@ -32526,8 +30750,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source282:      lshort-english.doc.tar.xz
+# from 20250308
+Source290:      lshort-english.doc.tar.xz
 
 %description -n texlive-lshort-english
 The document derives from a German introduction ('lkurz'),
@@ -32587,8 +30811,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source283:      lshort-estonian.doc.tar.xz
+# from 20250308
+Source291:      lshort-estonian.doc.tar.xz
 
 %description -n texlive-lshort-estonian
 This is the Estonian translation of Short Introduction to
@@ -32663,8 +30887,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source284:      lshort-finnish.doc.tar.xz
+# from 20250308
+Source292:      lshort-finnish.doc.tar.xz
 
 %description -n texlive-lshort-finnish
 This is the Finnish translation of Short Introduction to
@@ -32735,8 +30959,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source285:      lshort-french.doc.tar.xz
+# from 20250308
+Source293:      lshort-french.doc.tar.xz
 
 %description -n texlive-lshort-french
 French version of A Short Introduction to LaTeX2e.
@@ -32765,10 +30989,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/lshort-french/lshort-fr.pdf
 
 %package -n texlive-lshort-german
-Version:        %{texlive_version}.%{texlive_noarch}.3.0csvn55643
+Version:        %{texlive_version}.%{texlive_noarch}.3.0csvn70740
 Release:        0
 License:        LPPL-1.0
-Summary:        German version of A Short Introduction to LaTeX2e: LaTeX2e-Kurzbeschreibung
+Summary:        German version of "A Short Introduction to LaTeX2e": LaTeX2e-Kurzbeschreibung
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -32792,8 +31016,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source286:      lshort-german.doc.tar.xz
+# from 20250308
+Source294:      lshort-german.doc.tar.xz
 
 %description -n texlive-lshort-german
 The lshort-german package
@@ -32866,8 +31090,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source287:      lshort-italian.doc.tar.xz
+# from 20250308
+Source295:      lshort-italian.doc.tar.xz
 
 %description -n texlive-lshort-italian
 This is the Italian translation of the Short Introduction to
@@ -32927,8 +31151,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source288:      lshort-japanese.doc.tar.xz
+# from 20250308
+Source296:      lshort-japanese.doc.tar.xz
 
 %description -n texlive-lshort-japanese
 The lshort-japanese package
@@ -32958,7 +31182,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/lshort-japanese/jlshort.pdf
 
 %package -n texlive-lshort-korean
-Version:        %{texlive_version}.%{texlive_noarch}.svn58468
+Version:        %{texlive_version}.%{texlive_noarch}.svn73814
 Release:        0
 License:        GFDL-1.3-or-later
 Summary:        Korean introduction to LaTeX
@@ -32985,8 +31209,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source289:      lshort-korean.doc.tar.xz
+# from 20250308
+Source297:      lshort-korean.doc.tar.xz
 
 %description -n texlive-lshort-korean
 A translation of Oetiker's original (not so) short
@@ -33011,7 +31235,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-lshort-korean
 %{_texmfdistdir}/doc/latex/lshort-korean/README.md
-%{_texmfdistdir}/doc/latex/lshort-korean/lshort-ko-src-20210316.tar.gz
+%{_texmfdistdir}/doc/latex/lshort-korean/lshort-ko-src-20250208.tar.gz
 %{_texmfdistdir}/doc/latex/lshort-korean/lshort-ko.pdf
 
 %package -n texlive-lshort-mongol
@@ -33042,8 +31266,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source290:      lshort-mongol.doc.tar.xz
+# from 20250308
+Source298:      lshort-mongol.doc.tar.xz
 
 %description -n texlive-lshort-mongol
 A translation of Oetiker's Not so short introduction.
@@ -33122,8 +31346,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source291:      lshort-persian.doc.tar.xz
+# from 20250308
+Source299:      lshort-persian.doc.tar.xz
 
 %description -n texlive-lshort-persian
 A Persian (Farsi) translation of Oetiker's (not so) short
@@ -33197,8 +31421,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source292:      lshort-polish.doc.tar.xz
+# from 20250308
+Source300:      lshort-polish.doc.tar.xz
 
 %description -n texlive-lshort-polish
 This is the Polish translation of A Short Introduction to
@@ -33257,8 +31481,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source293:      lshort-portuguese.doc.tar.xz
+# from 20250308
+Source301:      lshort-portuguese.doc.tar.xz
 
 %description -n texlive-lshort-portuguese
 This is the Portuguese translation of A Short Introduction to
@@ -33313,8 +31537,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source294:      lshort-russian.doc.tar.xz
+# from 20250308
+Source302:      lshort-russian.doc.tar.xz
 
 %description -n texlive-lshort-russian
 Russian version of A Short Introduction to LaTeX2e.
@@ -33682,6 +31906,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Move font files
+    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-lete-sans-math
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/lete-sans-math/*.{pf[ab],[ot]tf}
+    do
+        test -e $font || continue
+        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-lete-sans-math
+        base=${font##*/}
+        ln -sf %{_datadir}/fonts/texlive-lete-sans-math/${base} ${font}
+    done
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-lete-sans-math/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-lete-sans-math/
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-lete-sans-math.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Use this to disable the TeX fonts of the package -->
+	<!--    texlive-lete-sans-math    -->
+	<!-- Be aware that the configurations in the files    -->
+	<!-- 09-texlive*.conf will not be affected by this    -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <rejectfont>
+	    <glob>%{_datadir}/fonts/texlive-lete-sans-math/*</glob>
+	  </rejectfont>
+	</fontconfig>
+	EOF
     tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -33693,6 +31946,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/fonts/levy/makeall \
 	       %{_texmfdistdir}/doc/fonts/levy/makefont \
@@ -33701,10 +31956,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-lexend
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/lexend/*.{pf[ab],[ot]tf}
@@ -33734,8 +31989,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -33751,6 +32004,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-libertine
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/libertine/*.{pf[ab],[ot]tf} \
@@ -33801,12 +32056,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-libertine.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-libertine.conf
-    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-libertinus-fonts
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/libertinus-fonts/*.{pf[ab],[ot]tf}
@@ -33836,10 +32091,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-libertinus-type1
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/libertinus-type1/*.{pf[ab],[ot]tf}
@@ -33869,8 +32124,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-libertinust1math
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/libertinust1math/*.{pf[ab],[ot]tf}
@@ -33900,12 +32155,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-librebaskerville
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/impallari/librebaskerville/*.{pf[ab],[ot]tf} \
@@ -33956,8 +32211,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-librebaskerville.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-librebaskerville.conf
-    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-librebodoni
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/impallari/librebodoni/*.{pf[ab],[ot]tf} \
@@ -34008,8 +32263,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-librebodoni.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-librebodoni.conf
-    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-librecaslon
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/impallari/librecaslon/*.{pf[ab],[ot]tf} \
@@ -34060,8 +32315,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-librecaslon.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-librecaslon.conf
-    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-librefranklin
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/impallari/librefranklin/*.{pf[ab],[ot]tf} \
@@ -34112,11 +32367,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-librefranklin.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-librefranklin.conf
-    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-libris
-    for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/arkandis/libris/*.{pf[ab],[ot]tf}
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/libris/*.{pf[ab],[ot]tf}
     do
         test -e $font || continue
         mv -f $font %{buildroot}%{_datadir}/fonts/texlive-libris
@@ -34143,12 +32398,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/light-latex-make/llmk.lua
     do
@@ -34161,12 +32418,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:161}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:165}
     popd
     # Correct shebang of python3 scripts if any
     for scr in %{_texmfdistdir}/scripts/lilyglyphs/lily-glyph-commands.py \
@@ -34228,12 +32485,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-lineara
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/lineara/*.{pf[ab],[ot]tf}
@@ -34263,10 +32520,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -34275,6 +32528,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-linguisticspro
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/linguisticspro/*.{pf[ab],[ot]tf} \
@@ -34325,34 +32584,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-linguisticspro.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-linguisticspro.conf
-    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/listings-ext/listings-ext.makemake
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -34375,6 +32628,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-lm
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/lm/*.{pf[ab],[ot]tf} \
@@ -34425,8 +32682,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-lm.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-lm.conf
-    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-lm-math
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/lm-math/*.{pf[ab],[ot]tf}
@@ -34456,12 +32713,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-lobster2
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/impallari/lobster2/*.{pf[ab],[ot]tf} \
@@ -34512,10 +32769,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-lobster2.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-lobster2.conf
-    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -34524,14 +32777,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Strip executable bit from non-scripts
     for txt in %{_texmfdistdir}/scripts/logicpuzzle/simple.smc
     do
 	test -e %{buildroot}/$txt || continue
 	chmod 0644 %{buildroot}/$txt
     done
-    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-logix
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/logix/*.{pf[ab],[ot]tf} \
@@ -34562,18 +32819,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -34596,8 +32849,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Remove files
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/lshort-chinese/src/make.bat
     tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -34606,6 +32857,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Remove files
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/lshort-chinese/src/make.bat
     tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -34613,6 +32866,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
