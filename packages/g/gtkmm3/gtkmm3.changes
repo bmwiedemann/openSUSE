@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 24 09:02:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.10:
+  + Documentation:
+    - gtkmm.h: Don't link to library.gnome.org/devel.
+    - Don't link to library.gnome.org or removed parts of
+      developer.gnome.org.
+    - Gtk::AboutDialog: Update the image.
+  + Meson build:
+    - Require meson >= 0.60
+    - Use the Python installation that Meson uses.
+    - If GTKMM_NO_DIST_TESTS is defined, 'meson dist' does not run
+      test programs.
+- Drop gtkmm3-docs-without-timestamp.patch: no longer needed.
+
+-------------------------------------------------------------------
 Mon Mar 18 07:52:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.24.9:
