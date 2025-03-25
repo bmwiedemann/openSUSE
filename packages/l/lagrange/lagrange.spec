@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmpg123)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(ncursesw) >= 6
 BuildRequires:  pkgconfig(openssl)
