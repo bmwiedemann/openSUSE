@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 23 20:15:41 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 25.1
+  * Switching to using Gaia DR3 catalog (extra catalogues with more
+    than 220 milliones stars)
+  * Full 6D astrometry (2D sky positions, 2D proper motion, parallax,
+    radial velocity) compute for most bright stars (V<10.5)
+  * Modelling movement for 15 couples of binary stars
+  * New powerful data format for sky cultures
+  * Many improvements in Core
+  * Improvements in Telescope Control plugin
+  * Updates in sky cultures (include new one)
+  * Incorporated whole GCVS 5.1 catalog
+  * New tool in AstroCalc dialog
+- Add use-local-md4c.patch: use local version of md4c
+- Remove libindi2.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Dec 23 20:57:31 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 24.4

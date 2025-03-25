@@ -1,7 +1,7 @@
 #
 # spec file for package stellarium
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           stellarium
-Version:        24.4
+Version:        25.1
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -32,8 +32,8 @@ URL:            https://stellarium.org/
 Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.xz
 Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM https://github.com/Stellarium/stellarium/issues/4019
-Patch0:         libindi2.patch
+# PATCH-FIX-OPENSUSE
+Patch0:         use-local-md4c.patch
 BuildRequires:  cmake >= 3.16.0
 %if 0%{?suse_version} <= 1600
 BuildRequires:  cmake(FastFloat)
@@ -45,9 +45,9 @@ BuildRequires:  libnova-devel
 BuildRequires:  libxkbcommon-devel >= 0.5.0
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(libindi) >= 2.0.0
+BuildRequires:  pkgconfig(md4c)
 BuildRequires:  pkgconfig(nlopt)
 BuildRequires:  pkgconfig(zlib)
 %if %{with Qt5}
@@ -127,16 +127,6 @@ find %{buildroot}%{_datadir}/%{name}/skycultures -type f -size 0 -delete
 #%%find_lang %%{name}
 #%%find_lang %%{name}-skycultures
 #cat %%{name}-skycultures.lang >> %%{name}.lang
-
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
-%endif
 
 %files
 %defattr(-,root,root,755)

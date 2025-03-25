@@ -1,0 +1,12 @@
+diff -purN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2025-03-23 12:29:18.000000000 +0100
++++ b/CMakeLists.txt	2025-03-23 21:54:54.186283951 +0100
+@@ -847,7 +847,7 @@ IF(ENABLE_XLSX)
+      ENDIF()
+ ENDIF()
+ 
+-CPMAddPackage(NAME md4c
++CPMFindPackage(NAME md4c
+               URL https://github.com/mity/md4c/archive/refs/tags/release-0.4.8.tar.gz
+               URL_HASH SHA256=4a457df853425b6bb6e3457aa1d1a13bccec587a04c38c622b1013a0da41439f
+               EXCLUDE_FROM_ALL yes
