@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Mar 25 09:28:35 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.1:
+  * chore(deps): Bump aws-actions/configure-aws-credentials from
+    4.0.2 to 4.0.3 in the actions group by @dependabot in #724
+  * chore(deps): Bump the gomod group with 2 updates by @dependabot
+    in #725
+  * chore(deps): Bump the actions group with 5 updates by
+    @dependabot in #730
+  * Revert "chore(deps): Bump the gomod group with 2 updates" by
+    @alacuku in #731
+  * chore(deps): Bump golang.org/x/sys from 0.29.0 to 0.30.0 by
+    @dependabot in #729
+  * chore(deps): Bump golang.org/x/crypto from 0.32.0 to 0.33.0 by
+    @dependabot in #728
+  * chore(deps): Bump golang.org/x/oauth2 from 0.25.0 to 0.26.0 by
+    @dependabot in #726
+  * chore(deps): Bump github.com/distribution/distribution/v3 from
+    3.0.0-rc.2 to 3.0.0-rc.3 by @dependabot in #732
+  * chore(deps): Bump golang.org/x/net from 0.34.0 to 0.35.0 by
+    @dependabot in #736
+  * chore(deps): Bump github.com/spf13/cobra from 1.8.1 to 1.9.1 by
+    @dependabot in #735
+  * fix(CI): remove deprecated configuration from .golangci.yml by
+    @alacuku in #739
+  * chore(deps): Bump the actions group with 3 updates by
+    @dependabot in #737
+  * chore(deps): Bump the actions group with 3 updates by
+    @dependabot in #740
+  * chore(deps): Bump github.com/go-jose/go-jose/v4 from 4.0.4 to
+    4.0.5 by @dependabot in #742
+  * chore(deps): Bump github.com/go-jose/go-jose/v3 from 3.0.3 to
+    3.0.4 by @dependabot in #743
+  * chore(deps): Bump the actions group with 5 updates by
+    @dependabot in #744
+  * fix(driver): build specific code only for linux platform by
+    @alacuku in #747
+  * chore(deps): Bump the gomod group across 1 directory with 5
+    updates by @dependabot in #746
+  * chore(deps): Bump golang.org/x/net from 0.35.0 to 0.36.0 by
+    @dependabot in #748
+  * chore(deps): Bump the actions group with 2 updates by
+    @dependabot in #760
+  * chore(toolchain): bump go to version 1.23.7 by @alacuku in #761
+  * chore(deps): bump oauth2 to v0.28.0 by @alacuku in #749
+  * chore(deps): Bump golang.org/x/term from 0.29.0 to 0.30.0 by
+    @dependabot in #750
+  * update(go.mod): bulk deps upgrade by @leogr in #762
+  * chore(deps): Bump github.com/docker/cli from
+    27.5.1+incompatible to 28.0.1+incompatible by @dependabot in
+    #752
+  * chore(deps): Bump github.com/redis/go-redis/v9 from 9.7.0 to
+    9.7.3 by @dependabot in #764
+  * chore(deps): Bump github.com/golang-jwt/jwt/v4 from 4.5.1 to
+    4.5.2 by @dependabot in #766
+  * chore(deps): Bump github.com/golang-jwt/jwt/v5 from 5.2.1 to
+    5.2.2 by @dependabot in #765
+  * chore(deps): Bump the actions group with 3 updates by
+    @dependabot in #767
+  * chore(deps): Bump the gomod group with 5 updates by @dependabot
+    in #768
+  * chore(deps): Bump google.golang.org/api from 0.224.0 to 0.227.0
+    by @dependabot in #770
+  * chore(deps): Bump github.com/distribution/distribution/v3 from
+    3.0.0-rc.3 to 3.0.0-rc.4 by @dependabot in #771
+  * chore(deps): Bump cloud.google.com/go/storage from 1.50.0 to
+    1.51.0 by @dependabot in #772
+  * chore(deps): Bump github.com/spf13/viper from 1.19.0 to 1.20.0
+    by @dependabot in #773
+
+-------------------------------------------------------------------
 Mon Jan 27 16:02:41 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.0:
