@@ -1,7 +1,6 @@
 #
 # spec file for package sscep
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,10 +21,9 @@ Version:        0.10.0
 Release:        0
 Summary:        A command line client for the SCEP protocol
 License:        BSD-3-Clause-Attribution AND OpenSSL
-Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/certnanny/sscep
 Source:         https://github.com/certnanny/sscep/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-devel >= 1.1.0
 
@@ -37,13 +35,16 @@ modifications for engine support & more.
 %setup -q
 
 %build
-%cmake -DENABLE_ENGINES=ON
+%cmake -DENABLE_ENGINES=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 %cmake_install
 install -Dpm 0644 sscep.conf %{buildroot}%{_sysconfdir}/sscep/sscep.conf
 install -Dpm 0755 mkrequest %{buildroot}%{_bindir}
+
+%check
+%ctest
 
 %files
 %license COPYING
