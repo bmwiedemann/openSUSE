@@ -1,6 +1,7 @@
 #
 # spec file for package voro++
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014-2017 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -11,15 +12,15 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
-#
+
 
 Name:           voro++
 Version:        0.4.6
 Release:        0
 Summary:        Voronoi tessellation library
-Group:          Productivity/Scientific/Math
 License:        BSD-3-Clause
 URL:            http://math.lbl.gov/voro++/
 Source0:        http://math.lbl.gov/voro++/download/dir/%{name}-%{version}.tar.gz
@@ -28,8 +29,8 @@ Patch0:         voro++-cmake.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
-BuildRequires:  cmake
 
 %description
 Voro++ is a software library for carrying out three-dimensional computations
@@ -41,7 +42,6 @@ centroid, number of faces) can be used to analyze a system of particles.
 
 %package -n libvoro++0
 Summary:        Voronoi tessellation library
-Group:          System/Libraries
 
 %description -n libvoro++0
 Voro++ is a software library for carrying out three-dimensional computations
@@ -54,9 +54,8 @@ centroid, number of faces) can be used to analyze a system of particles.
 This package contains the voro++ library.
 
 %package devel
-Summary:    Development headers and libraries for voro++
-Group:      Development/Libraries/C and C++
-Requires:   libvoro++0 = %{version}-%{release}
+Summary:        Development headers and libraries for voro++
+Requires:       libvoro++0 = %{version}-%{release}
 
 %description devel
 Voro++ is a software library for carrying out three-dimensional computations
@@ -78,11 +77,15 @@ This package contains development headers and libraries for voro++.
  -DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags}" \
  -DCMAKE_BUILD_TYPE=Release \
  -DCMAKE_SKIP_RPATH=1 \
- -DLIB=%{_lib} ..
+ -DLIB=%{_lib} \
+ -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
 make %{?_smp_mflags}
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %post -n libvoro++0 -p /sbin/ldconfig
 %postun -n libvoro++0 -p /sbin/ldconfig
