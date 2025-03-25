@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Mar 20 06:01:47 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.6:
+  * v0.2.6 release (#639)
+  * remove tenant id validation for azuredevops login (#638)
+  * fixed the unneeded tenant id validation in azurecli login
+    (#637)
+
+-------------------------------------------------------------------
+Thu Mar 20 06:01:32 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.5:
+  * v0.2.5 release (#635)
+  * fixed a bug where server-id flag is always required (#634)
+  * v0.2.4 release (#632)
+  * disable cgo for linux and windows (#631)
+  * v0.2.3 release (#629)
+  * use tar to retain executable bit in released assets (#628)
+  * v0.2.2 release (#626)
+  * fixed broken release assets
+  * v0.2.1 release (#623)
+  * updated artifact actions (#622)
+  * v0.2.0 release (#621)
+  * added missing checkout to fix release (#620)
+  * v0.2.0 release (#619)
+  * Bump golang.org/x/net from 0.33.0 to 0.36.0 (#618)
+  * Changes: (#608)
+
+-------------------------------------------------------------------
 Wed Mar 19 13:51:44 UTC 2025 - Robert Munteanu <rombert@apache.org>
 
 - Revert kubelogin to version 0.1.9. Version 0.2.0 of kubelogin
