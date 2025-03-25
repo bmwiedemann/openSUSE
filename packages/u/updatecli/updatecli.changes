@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Mar 24 08:57:30 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.96.0:
+  * Features
+    - feat: support basic authorization for non-oci private helm
+      repos @alikhil (#4494)
+    - feat: default yaml plugin should also support adding comments
+      @olblak (#4492)
+    - feat(shell): set default shell environments variable @olblak
+      (#4426)
+    - feat: allow to specify assignees & reviewers to github
+      pullrequest @olblak (#4418)
+    - feat(flux): support multiple YAML documents per file @Antvirf
+      (#4429)
+    - feat: gitlab support authorization with bearer token @alikhil
+      (#4432)
+    - feat(golang/autodiscovery): make it easier to restrict to go
+      module orr go version update @olblak (#4427)
+  * Maintenance
+    - chore(deps): Bump github.com/containerd/containerd from
+      1.7.24 to 1.7.27 @dependabot[bot] (#4467)
+    - deps: bump golangci-lint to v1.64.8 @updateclibot[bot]
+      (#4483)
+    - deps(go): bump module github.com/BurntSushi/toml to v1.5.0
+      @updateclibot[bot] (#4471)
+    - deps(go): bump module github.com/goccy/go-yaml to v1.16.0
+      @updateclibot[bot] (#4461)
+    - deps(go): bump module github.com/spf13/afero to v1.14.0
+      @updateclibot[bot] (#4435)
+    - deps(go): bump module helm.sh/helm/v3 to v3.17.2
+      @updateclibot[bot] (#4417)
+    - deps: Bump Golang version to 1.24.1 @olblak (#4410)
+
+-------------------------------------------------------------------
+Wed Mar 12 15:01:59 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.95.1:
+  * ci(release): Create a token for multiple repositories in the
+    current owner's installation (#4367)
+  * chore: deps: bump golangci-lint in GitHub Action to v1.64.7
+    (#4383)
+  * deps: bump updatecli version to v0.95.0 (#4368)
+  * fix: helm changelog tests (#4372)
+
+-------------------------------------------------------------------
 Tue Mar 11 18:13:33 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.95.0:
