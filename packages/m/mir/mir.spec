@@ -36,7 +36,7 @@
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.20.0
+Version:        2.20.1
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
