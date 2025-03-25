@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 07:28:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 14337.patch: get_llvm_tool_names: add llvm 20.
+
+-------------------------------------------------------------------
 Thu Jan 30 11:48:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 14001.patch: Add meson BuildRequires generator.
