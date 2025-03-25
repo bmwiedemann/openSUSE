@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 19 18:26:11 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.21.1:
+  * Update dev version and pyproject.toml
+  * Add feature flag hint to README.md
+  * Upgrade to PyO3 0.23
+  * Fixing the README.md
+  * Fix typo in Split docstrings
+  * Fix typos
+  * Update documentation of Rust feature
+  * Fix panic in DecodeStream::step due to incorrect index usage
+  * Fixing the stream by removing the read_index altogether
+  * Fixing NormalizedString append when normalized is empty
+  * Update metadata as Python3.7 and Python3.8 support was dropped
+  * Add rustls-tls feature
+- Remove define skip_python313 1
+
+-------------------------------------------------------------------
+Wed Mar  5 10:32:02 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- disable python3.13
+
+-------------------------------------------------------------------
 Thu Jan  9 15:52:37 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64
