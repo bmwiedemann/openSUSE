@@ -1,7 +1,7 @@
 #
 # spec file for package python-configshell-fb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,24 @@
 
 
 %{?sle15_python_module_pythons}
+
+%define configshell_service_tag 5.7088593241b4
+
 Name:           python-configshell-fb
-Version:        1.1.30
+Version:        2.0.0
 Release:        0%{?dist}
 Summary:        A Python library for building configuration shells
 License:        Apache-2.0
 Group:          Development/Libraries/Python
 URL:            https://github.com/open-iscsi/configshell-fb
-Source:         %{name}-%{version}.tar.xz
-#PATCH-FIX-UPSTREAM https://github.com/open-iscsi/configshell-fb/pull/74 six is unneeded
-Patch:          no-six.patch
+Source:         %{name}-%{version}-%{configshell_service_tag}.tar.xz
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{pythons}
-BuildRequires:  fdupes
+BuildRequires:  %{python_module wheel}
+BuildRequires:  git
 BuildRequires:  python-rpm-macros
 Requires:       %{_bindir}/env
 Requires:       python-pyparsing
@@ -65,19 +69,18 @@ rtslib, and configshell, or stick with all non-fb versions, since they are
 no longer strictly compatible.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}-%{configshell_service_tag}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install --skip-build
-%fdupes %{buildroot}
+%pyproject_install
 
 %files %{python_files}
-%{python_sitelib}/configshell
-%{python_sitelib}/configshell_fb
-%{python_sitelib}/configshell_fb-%{version}*info
+%license COPYING
 %doc README.md
+%{python_sitelib}/configshell*
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog

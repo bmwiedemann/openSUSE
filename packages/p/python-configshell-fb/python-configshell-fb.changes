@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 24 15:43:17 UTC 2025 - Lee Duncan <lduncan@suse.com>
+
+- Upgrade to current latest upstream, which is a few
+  commits past v2.0.0:
+  * Update pre-commit hooks, ruff rules
+  * Improve backwards configshell-fb compatibility
+  * Fix: log truncated
+  * v2.0.0
+  * Add pypi publish and pre-commit workflows
+  * Add backwards compatibility with _fb module name
+  * Explicitly declare wheel build target dir
+  * Adding -fb suffix to module name
+  * Remove urwid dependency
+  * Adding pre-commit config
+  * Use f-strings
+  * Use Pathlib
+  * Refactoring to Python>=3.9, adding ruff rules
+  * Move to PEP-621; Use configshell module name
+  * six is unneeded, get rid of it
+  * Fix help messages without a trailing newline
+  * Remove usage of six
+
+  Note that the last item means we can do away with the patch:
+  * no-six.patch (removed)
+
+-------------------------------------------------------------------
 Tue Apr 16 12:25:42 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add no-six.patch to get rid of unneeded six dependency

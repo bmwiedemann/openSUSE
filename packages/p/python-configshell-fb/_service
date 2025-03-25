@@ -2,12 +2,14 @@
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/open-iscsi/configshell-fb.git</param>
-    <param name="subdir"></param>
+    <param name="package-meta">yes</param>
     <param name="filename">python-configshell-fb</param>
-    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">master</param>
+    <param name="version">master</param>
+    <param name="versionformat">2.0.0-@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(\d*\.\d*\.)(\d*)</param>
     <param name="versionrewrite-replacement">\1\2</param>
-    <param name="revision">v1.1.30</param>
+    <param name="match-tag">v2.0.0*</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*configshell-fb*.tar</param>
