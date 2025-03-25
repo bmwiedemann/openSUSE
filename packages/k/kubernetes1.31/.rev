@@ -56,4 +56,19 @@
     <comment>Monthly Patch Release – Feb, 2025: Update to version 1.31.6</comment>
     <requestid>1246619</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8ca5457cdd73e573a1ef5e81ea31a9a0</srcmd5>
+    <version>1.31.7</version>
+    <time>1742937147</time>
+    <user>anag+factory</user>
+    <comment>Monthly Patch Release – March, 2025: Update to version 1.31.7
+
+---
+
+CVE-2025-1767: GitRepo Volume Inadvertent Local Repository Access, bsc#1239643
+
+* TL;DR: Please refer to the github issue for details on detecting and mitigating the CVE, if impacted:
+https://github.com/kubernetes/kubernetes/issues/130786</comment>
+    <requestid>1255971</requestid>
+  </revision>
 </revisionlist>
