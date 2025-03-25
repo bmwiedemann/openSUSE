@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 25 09:37:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.52:
+  * Meshery CLI
+    - [mesheryctl] bug fix for 00-config.bats @gourav-k-shaw
+      (#14108)
+    - mesheryctl relationship cleanup @lekaf974 (#13450)
+    - [fix]: added variables for dependencies and more
+      documentation for local e2e tests @gentcod (#14070)
+  * Maintenance
+    - Update mesheryctl-e2e.yaml workflow to use ubuntu-24.04
+      runner @sangramrath (#14103)
+    - Bump github.com/golang-jwt/jwt/v5 from 5.2.1 to 5.2.2
+      @dependabot (#14092)
+  * Documentation
+    - feat: updated testing policy @ianrwhitney (#14102)
+    - [fix]: added variables for dependencies and more
+      documentation for local e2e tests @gentcod (#14070)
+
+-------------------------------------------------------------------
 Fri Mar 21 20:32:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.51:
