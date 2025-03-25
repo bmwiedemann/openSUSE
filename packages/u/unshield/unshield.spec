@@ -1,7 +1,7 @@
 #
 # spec file for package unshield
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover   0
+%define sover   1
 %define libname lib%{name}%{sover}
 Name:           unshield
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        A Program to Extract InstallShield Cabinet Files
 License:        MIT
@@ -27,7 +27,7 @@ URL:            https://github.com/twogood/unshield
 Source0:        https://github.com/twogood/unshield/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM armv7l-fpic.patch matwey.kornilov@gmail.com -- fix armv7l build
 Patch1:         armv7l-fpic.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
@@ -58,7 +58,7 @@ documentation for %{libname}. If you like to develop programs using %{libname},
 you will need to install %{name}-devel.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 %cmake
@@ -67,8 +67,12 @@ you will need to install %{name}-devel.
 %install
 %cmake_install
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%check
+# parallel check is broken
+cd build
+/usr/bin/ctest --output-on-failure --force-new-ctest-process -j1
+
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %license LICENSE
@@ -83,5 +87,6 @@ you will need to install %{name}-devel.
 %{_includedir}/lib%{name}.h
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/lib%{name}.pc
+%{_libdir}/cmake/unshield
 
 %changelog
