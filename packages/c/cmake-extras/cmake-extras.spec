@@ -1,7 +1,7 @@
 #
 # spec file for package cmake-extras
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 Name:           cmake-extras
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        A collection of add-ons for the CMake build tool
 License:        GPL-3.0-or-later

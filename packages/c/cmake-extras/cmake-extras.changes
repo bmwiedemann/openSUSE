@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 24 06:56:18 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- upate to 1.8
+  * GMock: wire dependencies between GMock step and library files
+  * QmlPlugins: Crude support for qt6
+
+-------------------------------------------------------------------
 Sun Mar 24 12:37:46 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Initial package for version 1.7 
