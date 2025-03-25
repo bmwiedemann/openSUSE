@@ -649,4 +649,19 @@
   * docs: update GitHub Action assets (#5528) (forwarded request 1253950 from jfkw)</comment>
     <requestid>1253951</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c88e118bcaad60dec25a85f81e60e2a7</srcmd5>
+    <version>2.0.1</version>
+    <time>1742937057</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.0.1:
+  * chore: prepare release
+  * docs: add example of the field version (#5609)
+  * fix: forbidigo migration (#5606)
+  * fix: copy golines settings during linter settings load (#5607)
+  * fix: validate version before configuration (#5599)
+  * docs: fix displaying GoLand logo on a dark theme (#5598)
+  * docs: update GitHub Action assets (#5595) (forwarded request 1255743 from jfkw)</comment>
+    <requestid>1255745</requestid>
+  </revision>
 </revisionlist>
