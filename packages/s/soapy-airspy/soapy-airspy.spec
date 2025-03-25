@@ -24,11 +24,10 @@ Version:        0.2.0
 Release:        0
 Summary:        SoapySDR Airspy module
 License:        MIT
-Group:          Hardware/Other
 URL:            https://github.com/pothosware/SoapyAirspy/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyAirspy.git
 Source:         https://github.com/pothosware/SoapyAirspy/archive/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(SoapySDR)
@@ -40,7 +39,6 @@ A Soapy module that supports Airspy devices within the Soapy API.
 
 %package -n %{soapy_modname}
 Summary:        SoapySDR Airspy module
-Group:          System/Libraries
 
 %description -n %{soapy_modname}
 Soapy Airspy - Airspy device support for Soapy SDR.
@@ -50,11 +48,14 @@ A Soapy module that supports Airspy devices within the Soapy API.
 %setup -q -n SoapyAirspy-%{name}-%{version}
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make VERBOSE=1 %{?_smp_mflags}
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files -n %{soapy_modname}
 %license LICENSE.txt

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 22 15:47:46 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+- Remove Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Sat Jun 12 07:49:28 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - SoapySDR version bumped to 0.8
