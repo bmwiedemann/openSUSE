@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar 25 18:15:33 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.34.0:
+  * Features
+    - build, imageSpec: support template werf variables (%image%,
+      %project%) for labels (#6724) (bb2dfc4)
+  * Bug Fixes
+    - host-cleanup: fix locking doesn't work as expected #6725
+      (bbd7a55)
+
+-------------------------------------------------------------------
+Tue Mar 25 12:00:58 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.33.0:
+  * Features
+    - deploy: save service annotations inside Helm release
+      (24b47ad)
+  * Bug Fixes
+    - cli: add error handling in case of non-existent command
+      entered (d5c548c)
+    - host-cleanup: don't stop removing werf containers on paused
+      or running ones (3373d0c)
+
+-------------------------------------------------------------------
 Wed Mar 19 14:59:40 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.32.2:
