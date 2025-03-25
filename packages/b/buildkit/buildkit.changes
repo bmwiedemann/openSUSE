@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 25 07:30:43 UTC 2025 - madhankumar.chellamuthu@suse.com
+
+- Update to version 0.20.2:
+  * vendor: tags.cncf.io/container-device-interface v1.0.1
+  * build(deps): bump github.com/golang-jwt/jwt/v5 from 5.2.1 to 5.2.2
+  * containerimage: container image exporter creates dangling images by default
+  * ci: set contents read as default workflow permissions
+  * fix entitlements handling for OnDemand CDI devices
+  * exporter: expose image.name constant for the exported image name
+  * vendor: github.com/docker/cli v28.0.2
+  * vendor: github.com/docker/docker v28.0.2
+  * cache: add tracing spans for layer extraction
+
+-------------------------------------------------------------------
 Wed Mar 19 05:00:32 UTC 2025 - madhankumar.chellamuthu@suse.com
 
 - Update to version 0.20.1:
