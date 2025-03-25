@@ -107,4 +107,12 @@
   * Fix MFC-7460DN PPD file name (forwarded request 1074892 from lnussel)</comment>
     <requestid>1075149</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a97fd821c957e83dfd8ea2436d4c3a3a</srcmd5>
+    <version>6.2.7</version>
+    <time>1742936988</time>
+    <user>anag+factory</user>
+    <comment>Update to 6.2.7 from an actively supported fork (forwarded request 1250265 from etamPL)</comment>
+    <requestid>1255539</requestid>
+  </revision>
 </revisionlist>

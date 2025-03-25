@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Mar  2 09:59:32 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
+
+- Update to 6.2.7
+  - New printer entries:
+    - Brother DCP-7010
+    - Brother DCP-B7500D series
+    - Brother DCP-L2560DW series
+    - Brother HL-2240 series
+    - Brother HL-2260D
+    - Brother HL-5140 series
+    - Brother HL-5370DW series
+    - Brother HL-5450DN series
+    - Brother HL-L2402D
+    - Brother MFC-8440
+    - Brother MFC-L2690DW
+    - Brother HL-L2400DW
+    - Brother HL-L2405W
+  - Added printer entries for "Test Drivers".
+  - Code Changes:
+    - Correct PCFileName for DocuPrint P265 dw
+    - Replaced Duplex normal with Duplex rotated
+    - Both Duplex & Tumble use PLC &l2S
+  - Issues Resolved:
+    - #11 Duplex long-edge actually prints duplex short-edge
+    - #22 All reverse sides are unreadable with artefactsbug (duplex long-edge)
+    - #23 Incorrect Duplex & Tumble Check Statement
+  - Merged pull requests:
+    - #6 Fedora also packages brlaser; Thanks @ondrejbudai
+    - #7 Removed duplicate line from Compatible Issue Template; Thanks @erooke
+    - #8 Added Brother HL-5370DW series; Thanks @erooke
+    - #25 Updated ChangeLog to include releases from 6.1-6.2.6; Thanks @qwertychouskie
+    - #9 Release version is now 6.2.7; Thanks @qwertychouskie
+- Update to 6.2.6
+  - New printer entries:
+    - Brother FAX-2840
+    - Brother HL-2260
+    - Brother HL-L2335D series
+    - Brother MFC-7860DW
+    - Brother MFC-9160
+  - Notes:
+    - The repository has been cleaned up
+      - All entries brlaser.drv.in and README.md both follow a set naming convention
+      - Commits where "rewritten correctly" to follow the standard conventions and then squashed
+- Update to 6.2.5
+  - Merge pull requests:
+    - QORTEC#2 Add Tumble support; Thanks @evanmiller
+    - QORTEC#3 Fix build under Fedora 38; Thanks @ondrejbudai
+  - New printer entries:
+    - Brother FAX-2820
+    - Brother DCP-1610W
+  - Code Changes:
+    - #2 Added \033&l1S for duplex no tumble printing, as well as logic print duplex with and without tumble.
+    - #3 Explicitly include cstdint in test/tempfile.h, so uint8_t is correctly defined.
+  - Issues Resolved:
+    - #3 Fixed building under Fedora 38; error: 'uint8_t' was not declared in this scope.
+
+-------------------------------------------------------------------
 Tue Mar 28 07:11:03 UTC 2023 - lnussel@suse.de
 
 - Update to version 6+git20230220.2a49e32:
