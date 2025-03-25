@@ -1,7 +1,7 @@
 #
 # spec file for package vdt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ URL:            https://github.com/dpiparo/vdt
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM vdt-shared-lib-versioning.patch badshah400@gmail.com -- Implement proper so versioning
 Patch0:         vdt-shared-lib-versioning.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  python3-base
 
@@ -56,6 +56,7 @@ against vdt.
 %cmake \
   -DDIAG:BOOL=ON \
   -DAVX:BOOL=OFF \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 %ifnarch x86_64
   -DSSE:BOOL=OFF \
 %else

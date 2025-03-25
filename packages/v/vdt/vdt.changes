@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 21 23:36:00 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+
+-------------------------------------------------------------------
 Wed Jun 26 14:14:57 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Remove use of invalid compiler option
