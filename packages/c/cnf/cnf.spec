@@ -1,7 +1,7 @@
 #
 # spec file for package cnf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           cnf
 #               This will be set by osc services, that will run after this.
-Version:        0.6.0~0
+Version:        0.7.1~0
 Release:        0
 Summary:        A command-not-found handler for openSUSE
 License:        MIT
