@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Mar 25 08:54:43 UTC 2025 - kukuk@suse.com
+
+- Update to version 20250321.37b55b5:
+  * auxserver: use english as default if no language is set
+  * Remove debug message
+  * Remove broken entries from xref/index
+  * Remove debug message
+  * Make search for update-alternatives in scripts more robust
+  * Merge pkgEntry with PkgMeta
+  * Fix total number of pkgs
+  * Further optimization of building gv.pkgs
+  * Optimize size of pkgs, only store RPMs with manpages
+  * Fallback to io.Reader if gz file is not compressed
+  * Rename suite -> product
+  * Update go dependencies
+  * Remove unused process variable overhead for mandoc
+  * Remove outdated comment
+  * Rewrite to use internal data and not files
+  * Remove debug message
+  * Suites -> Products rename
+  * Unify template.Execute calls/variables
+  * Build package directories from internal data
+  * Use global productList instead of creating it again and again
+  * Rename product Name/URL to project Name/URL
+  * Use MicroOS/Tumbleweed as example for Mapping
+  * Remove unused and outdated tests
+
+-------------------------------------------------------------------
 Wed Mar 05 14:00:53 UTC 2025 - kukuk@suse.com
 
 - Update to version 20250305.e46df41:
