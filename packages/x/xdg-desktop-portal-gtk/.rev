@@ -455,4 +455,14 @@
     <comment></comment>
     <requestid>1236900</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>dc5b68f65dd6b0bfb9ceacea6c769b44</srcmd5>
+    <version>1.15.3</version>
+    <time>1742936871</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.15.3:
+  + Fix build against newer xdg-desktop-portal
+  + Fix return value for the access portal (forwarded request 1255055 from iznogood)</comment>
+    <requestid>1255567</requestid>
+  </revision>
 </revisionlist>
