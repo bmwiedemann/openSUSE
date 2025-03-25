@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 23 21:08:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.3:
+  * cli: Add custom keyring file support
+  * dbus/secret: Workaround gnome-keyring being non-spec compliant
+  * client: Deprecate Keyring::with_broken_item_cleanup
+  * cli: Add a new argument for listing all items
+- disable updating venored dependencies, as the crate `time` has a
+  breaking change
+
+-------------------------------------------------------------------
+Fri Mar 21 18:40:00 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.2:
+  * Relax the condition when validating the file backend keyring secret and
+    provide various APIs to allow the developer to recover the non-broken items
+    in a keyring or delete the broken ones.
+
+-------------------------------------------------------------------
 Sun Feb 16 01:50:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.4.0:

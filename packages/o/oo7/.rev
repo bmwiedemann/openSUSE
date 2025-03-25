@@ -38,4 +38,18 @@
 - disable some tests, as they need dbus (forwarded request 1248437 from rrahl0)</comment>
     <requestid>1248438</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a6b4e87531ba0d66bab882015e66ccd8</srcmd5>
+    <version>0.4.3</version>
+    <time>1742936945</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.3:
+  * cli: Add custom keyring file support
+  * dbus/secret: Workaround gnome-keyring being non-spec compliant
+  * client: Deprecate Keyring::with_broken_item_cleanup
+  * cli: Add a new argument for listing all items
+- disable updating venored dependencies, as the crate `time` has a
+  breaking change (forwarded request 1255542 from rrahl0)</comment>
+    <requestid>1255544</requestid>
+  </revision>
 </revisionlist>

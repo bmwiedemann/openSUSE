@@ -3,5 +3,6 @@
   <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
     <param name="src">*.tar.gz</param>
+    <param name="update">false</param>
   </service>
 </services>
