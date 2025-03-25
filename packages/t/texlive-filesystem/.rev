@@ -601,4 +601,15 @@
     <comment>Update to TeXLive 2024, third</comment>
     <requestid>1160633</requestid>
   </revision>
+  <revision rev="60" vrev="63">
+    <srcmd5>8339afa6ae27f814d440143e85361c84</srcmd5>
+    <version>unknown</version>
+    <time>1742936920</time>
+    <user>anag+factory</user>
+    <comment>- Resolve missing dependcies
+- On the occasion of this use pattern() macros
+
+- Update to TeXLive 2025</comment>
+    <requestid>1255625</requestid>
+  </revision>
 </revisionlist>
