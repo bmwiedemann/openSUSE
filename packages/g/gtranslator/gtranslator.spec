@@ -1,7 +1,7 @@
 #
 # spec file for package gtranslator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gtranslator
-Version:        47.1
+Version:        48.0
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later
@@ -26,13 +26,13 @@ URL:            https://wiki.gnome.org/Apps/Gtranslator
 Source0:        %{name}-%{version}.tar.zst
 Source99:       gtranslator-rpmlintrc
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.36.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.71.3
@@ -64,7 +64,6 @@ Gtranslator is an enhanced gettext PO file editor for the GNOME desktop environm
 %autosetup -p1
 
 %build
-# https://gitlab.gnome.org/GNOME/gtranslator/-/issues/184
 %meson \
 	%{nil}
 %meson_build
@@ -74,6 +73,9 @@ Gtranslator is an enhanced gettext PO file editor for the GNOME desktop environm
 find %{buildroot} -type f -name "gtr-marshal.h" -delete -print
 %find_lang %{name}
 %fdupes %{buildroot}%{_prefix}
+
+%check
+%meson_test
 
 %files
 %license COPYING
