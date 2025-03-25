@@ -23,7 +23,7 @@
 %define polkit_req >= 122
 
 Name:           gnome-remote-desktop
-Version:        48.rc
+Version:        48.0
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
