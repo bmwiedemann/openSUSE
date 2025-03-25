@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 22 08:22:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.14
+  Fixed
+  * Crash if external textures are on and there are no any texture
+    file.
+  * Crash when extracting the sprites.
+  *  Missing path normalization in extractors.
+  * Crash when level to extract is missing.
+
+-------------------------------------------------------------------
 Sat Dec 14 18:32:44 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.13
