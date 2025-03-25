@@ -1,7 +1,7 @@
 #
 # spec file for package k8tz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           k8tz
-Version:        0.17.1
+Version:        0.18.0
 Release:        0
 Summary:        CLI tool to inject timezones into Kubernetes Pods and CronJobs
 License:        Apache-2.0
 URL:            https://github.com/k8tz/k8tz
 Source:         k8tz-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.18
+BuildRequires:  go >= 1.23
 
 %description
 k8tz is a kubernetes admission controller and a CLI tool to inject timezones

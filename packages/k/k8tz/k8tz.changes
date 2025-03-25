@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 25 05:42:44 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.0:
+  * build: release v0.18.0
+  * build: upgrade go to 1.23.0
+  * build(deps): bump golang.org/x/net from 0.23.0 to 0.36.0
+  * build: bump tzdata version to 2025b
+  * build: bump tzdata version to 2025a
+  * build(helm): release helm chart 0.17.1
+
+-------------------------------------------------------------------
 Fri Oct 11 08:25:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.1:
