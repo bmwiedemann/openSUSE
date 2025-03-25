@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 24 13:23:08 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 1.1.2:
+  - compatibility with libcosmos version 0.4.0
+  - Fix occassional crashes upon closing the terminal.
+
+-------------------------------------------------------------------
 Wed Aug 14 08:57:58 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - switch to using the now available upstream source tarball instead of a Git

@@ -1,7 +1,7 @@
 #
 # spec file for package nst
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define version 1.1
+%define version 1.1.2
 
 Name:           nst
 Version:        %{version}
@@ -25,7 +25,7 @@ Summary:        C++ port of suckless.org st (simple-terminal) emulator
 License:        MIT
 Group:          System/X11/Terminals
 URL:            https://github.com/gerstner-hub/nst
-Source0:        nst-v1.1.tar.xz
+Source0:        nst-v%{version}.tar.xz
 Source1:        nst_config.cxx
 Source2:        nst_config.hxx
 Patch0:         usr_etc_lookup.patch
