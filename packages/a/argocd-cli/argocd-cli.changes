@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 25 05:44:10 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.8:
+  * Bug fixes
+    - 9a9e62d: fix(server): fully populate app destination before
+      project checks (#22408) (#22426) (@crenshaw-dev)
+    - 7acdaa9: fix: CVE-2025-26791 upgrading redoc dep to 2.4.0 to
+      avoid DOMPurify b… (#21997) (@nmirasch)
+    - 872319e: fix: handle annotated git tags correctly in repo
+      server cache (#21771) (#22424) (@aali309)
+  * Dependency updates
+    - 9f832cd: chore(deps): bump github.com/golang-jwt/jwt to
+      4.5.2/5.2.2 (#22465) (@crenshaw-dev)
+  * Other work
+    - ec45e33: fix(ui, rbac): project-roles (#21829) (2.14
+      backport) (#22461) (@blakepettersson)
+
+-------------------------------------------------------------------
 Wed Mar 19 18:06:20 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.14.7:
