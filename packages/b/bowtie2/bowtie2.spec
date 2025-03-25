@@ -1,7 +1,7 @@
 #
 # spec file for package bowtie2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Group:          Productivity/Scientific/Other
 URL:            http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 Source0:        https://github.com/BenLangmead/bowtie2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/simd-everywhere/simde/archive/v%{simde_version}.tar.gz#/simde-%{simde_version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -64,7 +64,8 @@ sed -i -e 's/-m64//' CMakeLists.txt
 %ifarch aarch64
   -DNO_POPCNT_CAPABILITY=1 \
 %endif
-  -DCMAKE_BUILD_TYPE=Release
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 %cmake_build
 
