@@ -16,7 +16,7 @@
 #
 
 Name:           virt-bridge-setup
-Version:        0.6
+Version:        0.8
 Release:        1%{?dist}
 Summary:        Script to setup virtual bridges
 License:        GPL-2.0-or-later
@@ -43,5 +43,8 @@ It simplifies the process of creating and managing network bridges for virtualiz
 %license LICENSE
 %doc README.md
 %attr(0755,root,root) %{_sbindir}/%{name}
+%{_sysconfdir}
+#/systemd/network
+%attr(0644,root,root) %{_sysconfdir}/systemd/network/98-default-bridge.link
 
 %changelog

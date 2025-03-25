@@ -30,4 +30,18 @@
   * bridge link to a slave interface</comment>
     <requestid>1254238</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e20ab658f2343a4ef7ba89cdb42336cc</srcmd5>
+    <version>0.8</version>
+    <time>1742937054</time>
+    <user>anag+factory</user>
+    <comment>  * delete the bridge connection will also delete the slave connection
+  * add an option to force using the slave MAC address interface
+  * default method will be complex, as simple doesn't work on TW/16
+  * add a dry run option
+  * typo fixes
+  * add some more debug
+  * Force creating another interface as master</comment>
+    <requestid>1255721</requestid>
+  </revision>
 </revisionlist>

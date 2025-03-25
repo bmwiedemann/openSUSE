@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 24 16:18:14 UTC 2025 - Antoine Ginies <aginies@suse.com>
+
+- version 0.8:
+  * delete the bridge connection will also delete the slave connection
+  * add an option to force using the slave MAC address interface
+  * default method will be complex, as simple doesn't work on TW/16
+  * add a dry run option
+  * typo fixes
+
+-------------------------------------------------------------------
+Mon Mar 24 10:20:33 UTC 2025 - Antoine Ginies <aginies@suse.com>
+
+- version 0.7:
+  * use same MAC address as the master interface
+  * add some more debug
+  * Force creating another interface as master
+
+-------------------------------------------------------------------
 Tue Mar 18 18:35:18 UTC 2025 - Antoine Ginies <aginies@suse.com>
 
 - version 0.6:
