@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Mar 19 11:16:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.4.2
+  This is an ABI-compatible update for the 2.4.x series that
+  includes all fixes and enhancements since the 2.4.1 release.
+
+  With the 2.4.2 release, the "Preview" label is now removed from
+  the ACES 2 implementation. After extensive collaboration with the
+  ACES Output Transform working group, and our own testing, ACES 2
+  support in OCIO is now officially released. We will continue to
+  closely monitor your feedback on this new tech.
+
+  A large part of the work since the 2.4.1 release was an attempt
+  to optimize the ACES 2 algorithms. ACES 2 is still substantially
+  slower than ACES 1 on CPU and somewhat slower on GPU. But the
+  optimization efforts did yield a roughly 25% speedup over the
+  2.4.1 release, along with a simplification of the code. Special
+  thanks to Kevin Wheatley and Remi Achard for leading this work.
+
+  In conjunction with the 2.4.2 release, the OCIO ACES configs
+  working group has released the ACES 2.0 configs for OCIO. Special
+  thanks to Thomas Mansencal for leading this work. The configs are
+  not yet built into the library itself and may be downloaded from
+  this link.
+
+  Bug fixes and enhancements:
+
+  - PR #2127, ACES 2.0 Output Transform performance optimization
+  - PR #2112, Absolute paths not working through ConfigIOProxy
+  - PR #2128, Add missing setConfigIOProxy call to the Python API
+  - PR #2117, Fix metal backend's generated shaders with
+    float/int/constant array performance
+  - PR #2121, Integrate matrix multiplication fix from OSL
+  - PR #2120, Change recommended Imath version to 3.1.12
+  - PR #2109, Fix issue with ocio_depts handling spaces in file
+    paths
+  - PR #2132, NaN fix for the ACES 2 inverse output transforms
+
+-------------------------------------------------------------------
 Sat Feb 15 00:28:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - bump openexr to >= 3 match the rest of the stack

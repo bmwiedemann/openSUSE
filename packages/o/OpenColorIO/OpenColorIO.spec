@@ -32,7 +32,7 @@ Name:           OpenColorIO
 %else
 Name:           OpenColorIO-tools
 %endif
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        Color Management Solution Geared Towards Motion Picture Production
 License:        BSD-3-Clause
