@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Mar 22 12:26:37 UTC 2025 - Aesara Binder <aesara@mailbox.org>
+
+- update to 2.15.0
+  * New devices:
+    - Still more tablet definitions (#841)
+    - add XP Pen Innovator 16 definition & layout
+    - Support for XP-Pen Deco Pro S 
+    - Add Lenovo Slim Pen
+    - Add the XP Pen Deco01 v3
+    - Add 3rd gen Intuos Pro devices
+  * Device fixes:
+    - fix duplicate button listing for the DTI-520
+    - Remove duplicate of the ISDv4 2d1f 0040 tablet
+  * Device other:
+    - Add AliasOf keyword to wacom.stylus
+    - prefix all styli with a vendor ID
+    - prefix the wacom 2d1f ISDv4 devices with wacom
+    - Allow for a bustype of 0 on real devices
+    - Add support for getting the target mode for a modeswitch button
+
+-------------------------------------------------------------------
 Sun Feb 23 12:14:10 UTC 2025 - Aesara Binder <aesara@mailbox.org>
 
 - update to 2.14.0
