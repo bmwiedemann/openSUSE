@@ -6,7 +6,7 @@
 
 --- libs/luajit/configure
 +++ libs/luajit/configure	2020-04-30 15:42:15.998038368 +0000
-@@ -15602,6 +15602,15 @@ fi
+@@ -16442,6 +16442,15 @@ fi
                  if test "x$LJHOST" = xPS3
  then :
    echo '-D PPE -D TOC' >>dynasm_flags
@@ -24,7 +24,7 @@
       ;;
 --- libs/luajit/m4/lj-system.m4
 +++ libs/luajit/m4/lj-system.m4	2020-04-30 15:42:03.782274022 +0000
-@@ -87,7 +87,13 @@ AS_CASE([$LJARCH],
+@@ -93,7 +93,13 @@ AS_CASE([$LJARCH],
                  AS_IF([grep 'LJ_ARCH_PPC64 ' conftest.i >/dev/null 2>&1],
                        [DASM_ARCH=ppc64])
                  AS_IF([test "x$LJHOST" = xPS3],

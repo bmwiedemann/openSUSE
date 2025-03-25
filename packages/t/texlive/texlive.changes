@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Mar 21 10:03:15 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- On 64bit architecures use only zzip_init_io
+
+-------------------------------------------------------------------
+Wed Mar 19 14:06:22 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update source-LuaTeX.dif
+  * Accordingly to mailing list 
+
+-------------------------------------------------------------------
+Tue Mar 18 14:55:23 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Fine tuning asymptote
+  * Really use OSMesa
+  * Use libcurl
+  * Use boost filesystem and boost thread
+
+-------------------------------------------------------------------
+Mon Mar 17 09:39:37 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Autodetect if libzzip support large files on 32bit architectures 
+
+-------------------------------------------------------------------
+Fri Mar 14 14:26:45 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2025 (20250308)
+- Update to biber-2.20
+- Update to luametatex-2.11.05
+- Add patch source-LuaTeX.dif
+  * Latest upstream fix for LuaTeX
+- Remove obsolete patches
+  * 0006-Fix-register-allocation-bug-in-arm64.patch
+  * source-dvipdfm-x.dif
+  * source-mesa24.dif
+  * source-pdftex-gcc14.patch
+- Add patch source-euptex.dif
+  * make eptex and euptex survive their trip tests
+- Port patches
+  * source-64.dif
+  * source-configure.dif
+  * source-dviutils.dif
+  * source-luacore.dif
+  * source-ppc64.dif
+  * source-warns.dif
+  * source.dif
+
+-------------------------------------------------------------------
 Fri Feb 21 08:46:54 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Be prepared for Mesa update to versionm 25.0.0 

@@ -14,7 +14,7 @@
  #include <kpathsea/cnf.h>
  #include <kpathsea/absolute.h>
  #include <kpathsea/concatn.h>
-@@ -1316,13 +1318,23 @@ kpathsea_name_ok (kpathsea kpse, const_s
+@@ -1315,13 +1317,23 @@ kpathsea_name_ok (kpathsea kpse, const_s
             TEXMFSYSVAR.  */
          if (extended) {
            const_string texmfvar = kpathsea_var_value (kpse, "TEXMFVAR");

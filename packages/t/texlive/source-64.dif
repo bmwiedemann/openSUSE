@@ -5,7 +5,7 @@
 
 --- configure
 +++ configure	2018-04-10 08:58:00.463820598 +0000
-@@ -22834,6 +22834,10 @@ fi
+@@ -23874,6 +23874,10 @@ fi
    # most powerpc-linux boxes support dynamic linking these days and
    # people can always --disable-shared, the test was removed, and we
    # assume the GNU/Linux dynamic linker is in use.
@@ -18,7 +18,7 @@
  
 --- m4/libtool.m4
 +++ m4/libtool.m4	2018-04-10 08:58:00.463820598 +0000
-@@ -2904,6 +2904,10 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu
+@@ -2963,6 +2963,10 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu
    # most powerpc-linux boxes support dynamic linking these days and
    # people can always --disable-shared, the test was removed, and we
    # assume the GNU/Linux dynamic linker is in use.

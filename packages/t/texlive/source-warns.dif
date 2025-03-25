@@ -11,7 +11,7 @@
 
 --- libs/gmp/Makefile.in
 +++ libs/gmp/Makefile.in	2016-06-07 13:29:33.925651292 +0000
-@@ -495,7 +495,7 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+@@ -498,7 +498,7 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
  am__v_lt_0 = --silent
  am__v_lt_1 = 
  COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -22,7 +22,7 @@
  am__v_CC_0 = @echo "  CC      " $@;
 --- libs/lua53/Makefile.in
 +++ libs/lua53/Makefile.in	2016-06-07 13:29:33.925651292 +0000
-@@ -238,11 +238,11 @@ am__depfiles_remade = ./$(DEPDIR)/luates
+@@ -239,11 +239,11 @@ am__depfiles_remade = ./$(DEPDIR)/luates
  	@LUA53_TREE@/src/$(DEPDIR)/lzio.Plo
  am__mv = mv -f
  COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -38,7 +38,7 @@
  am__v_CC_0 = @echo "  CC      " $@;
 --- libs/mpfr/Makefile.in
 +++ libs/mpfr/Makefile.in	2016-06-07 13:29:33.925651292 +0000
-@@ -349,7 +349,7 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+@@ -352,7 +352,7 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
  am__v_lt_0 = --silent
  am__v_lt_1 = 
  COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \

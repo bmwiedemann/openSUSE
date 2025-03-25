@@ -1196,4 +1196,41 @@
 - Use zlib-ng-compat only for opensuse builds</comment>
     <requestid>1247593</requestid>
   </revision>
+  <revision rev="100" vrev="103">
+    <srcmd5>67e10a161eca2f6115395338d7fb239b</srcmd5>
+    <version>unknown</version>
+    <time>1742936916</time>
+    <user>anag+factory</user>
+    <comment>- On 64bit architecures use only zzip_init_io
+
+- Update source-LuaTeX.dif
+  * Accordingly to mailing list 
+
+- Fine tuning asymptote
+  * Really use OSMesa
+  * Use libcurl
+  * Use boost filesystem and boost thread
+
+- Autodetect if libzzip support large files on 32bit architectures 
+
+- Update to TeXLive 2025 (20250308)
+- Update to biber-2.20
+- Update to luametatex-2.11.05
+- Add patch source-LuaTeX.dif
+  * Latest upstream fix for LuaTeX
+- Remove obsolete patches
+  * 0006-Fix-register-allocation-bug-in-arm64.patch
+  * source-dvipdfm-x.dif
+  * source-mesa24.dif
+  * source-pdftex-gcc14.patch
+- Add patch source-euptex.dif
+  * make eptex and euptex survive their trip tests
+- Port patches
+  * source-64.dif
+  * source-configure.dif
+  * source-dviutils.dif
+  * source-luacore.dif
+  * source-ppc64.dif</comment>
+    <requestid>1254977</requestid>
+  </revision>
 </revisionlist>

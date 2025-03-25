@@ -1,5 +1,4 @@
 ---
- libs/icu/icu-src/source/common/Makefile.in                  |    2 
  reautoconf                                                  |    2 
  texk/bibtex-x/Makefile.in                                   |    2 
  texk/dviljk/dvi2xx.c                                        |   11 
@@ -15,18 +14,17 @@
  texk/texlive/linked_scripts/texlive/fmtutil-sys.sh          |    1 
  texk/texlive/linked_scripts/texlive/fmtutil.pl              |   24 +-
  texk/texlive/linked_scripts/texlive/updmap-sys.sh           |    1 
- texk/web2c/Makefile.in                                      |    7 
  texk/web2c/uptexdir/tests/gkhugeng.err                      |    8 
  texk/web2c/window/regis.c                                   |    8 
  texk/web2c/window/x11-Xlib.c                                |    8 
  texk/web2c/window/x11-Xt.c                                  |    4 
  texk/xdvik/psgs.c                                           |   22 +
  texk/xdvik/xdvi-sh.in                                       |   19 +
- 23 files changed, 225 insertions(+), 84 deletions(-)
+ 21 files changed, 218 insertions(+), 82 deletions(-)
 
 --- reautoconf
 +++ reautoconf	2024-03-14 14:04:02.738624277 +0000
-@@ -88,7 +88,7 @@ echo "$0: using `aclocal --version | sed
+@@ -89,7 +89,7 @@ echo "$0: using `aclocal --version | sed
  echo "$0:       if you want to use different versions, set PATH."
  
  # Give users a chance to quit here.
@@ -35,17 +33,6 @@
  $do_say "$0: starting at `date`."
  
  do_it () {
---- libs/icu/icu-src/source/common/Makefile.in
-+++ libs/icu/icu-src/source/common/Makefile.in	2021-04-07 10:14:44.202880715 +0000
-@@ -69,7 +69,7 @@ DEFS += -DU_COMMON_IMPLEMENTATION
- LDFLAGS += $(LDFLAGSICUUC)
- 
- # for plugin configuration
--CPPFLAGS += "-DDEFAULT_ICU_PLUGINS=\"$(libdir)/icu\" "
-+CPPFLAGS += "-DDEFAULT_ICU_PLUGINS=\"/usr/lib/icu\" "
- 
- # for icu data location
- ifeq ($(PKGDATA_MODE),common)
 --- texk/bibtex-x/Makefile.in
 +++ texk/bibtex-x/Makefile.in	2023-04-12 13:47:24.619293127 +0000
 @@ -13,7 +13,7 @@
@@ -173,7 +160,7 @@
    sdir_greatgrandparent = xdirname (sdir_grandparent);
    kpathsea_xputenv (kpse, "SELFAUTOGRANDPARENT", fix_selfdir (sdir_greatgrandparent));
 --- texk/kpathsea/texmf.cnf
-+++ texk/kpathsea/texmf.cnf	2024-03-14 14:04:50.821739351 +0000
++++ texk/kpathsea/texmf.cnf	2025-03-12 08:51:54.017920271 +0000
 @@ -65,20 +65,20 @@ TEXMFROOT = $SELFAUTOPARENT
  % They must must all have the TDS directory structure (https://tug.org/tds).
  
@@ -203,11 +190,11 @@
  TEXMFHOME = ~/texmf
  
  % TEXMFVAR, where texconfig/updmap/fmtutil store cached runtime data.
--TEXMFVAR = ~/.texlive2024/texmf-var
+-TEXMFVAR = ~/.texlive2025/texmf-var
 +TEXMFVAR = ${TEXMFSYSVAR}
  
  % TEXMFCONFIG, where texconfig/updmap/fmtutil store configuration data.
--TEXMFCONFIG = ~/.texlive2024/texmf-config
+-TEXMFCONFIG = ~/.texlive2025/texmf-config
 +TEXMFCONFIG = ${TEXMFSYSCONFIG}
  
  % This is the value manipulated by tlmgr's auxtrees subcommand in the
@@ -406,10 +393,10 @@
  %
  % For reference, here is the old brace-using definition:
  %TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
-@@ -940,3 +946,33 @@ guess_input_kanji_encoding.mendex = 1
- % command_line_encoding = none
- % in a texmf.cnf prefered, for example $TEXMFLOCAL/web2c/texmf.cnf.
- command_line_encoding = utf-8
+@@ -954,3 +960,37 @@ command_line_encoding.ptex = none
+ command_line_encoding.eptex = none
+ command_line_encoding.platex = none
+ command_line_encoding.platex-dev = none
 +
 +% These are xmltex specific
 +main_memory.xmltex = 2500000
@@ -440,6 +427,10 @@
 +hash_extra.jadetex = 25000
 +pool_size.jadetex = 500000
 +save_size.jadetex = 15000
++
++%e(u)p-TeX
++font_mem_size.eptex = 50000
++font_mem_size.euptex = 50000
 --- texk/lcdf-typetools/lcdf-typetools-src/otftotfm/otftotfm.cc
 +++ texk/lcdf-typetools/lcdf-typetools-src/otftotfm/otftotfm.cc	2021-04-07 10:14:44.206880772 +0000
 @@ -65,6 +65,9 @@
@@ -552,7 +543,7 @@
      }
    }
    # set up destination directory
-@@ -731,6 +738,7 @@ sub rebuild_one_format {
+@@ -734,6 +741,7 @@ sub rebuild_one_format {
    # check for existence of ini file before doing anything else
    if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
      # we didn't find the ini file, skip
@@ -560,7 +551,7 @@
      print_deferred_warning("inifile $inifile for $fmt/$eng not found.\n");
      # The original script just skipped it but in TeX Live we expect that
      # all activated formats are also buildable, thus return failure.
-@@ -790,11 +798,15 @@ sub rebuild_one_format {
+@@ -793,11 +801,15 @@ sub rebuild_one_format {
          ",$opts{'no-error-if-no-engine'}," =~ m/,$eng,/) {
        return $FMT_NOTAVAIL;
      } else {
@@ -584,29 +575,6 @@
  
 +umask 022
  exec updmap --sys ${1+"$@"}
---- texk/web2c/Makefile.in
-+++ texk/web2c/Makefile.in	2021-04-07 10:14:44.210880832 +0000
-@@ -5662,7 +5662,7 @@ libmd5_a_SOURCES = libmd5/md5.c libmd5/m
- md5main_CPPFLAGS = -I$(srcdir)/libmd5
- md5main_SOURCES = libmd5/md5main.c
- md5main_LDADD = libmd5.a
--all: ff-config.h
-+all: ff-config.h w2c/config.h
- 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
- 
- .SUFFIXES:
-@@ -5709,6 +5709,11 @@ w2c/c-auto.h: w2c/stamp-h1
- w2c/stamp-h1: $(srcdir)/c-auto.in $(top_builddir)/config.status
- 	@rm -f w2c/stamp-h1
- 	cd $(top_builddir) && $(SHELL) ./config.status w2c/c-auto.h
-+.PHONY: w2c/config.h
-+w2c/config.h:
-+	$(MKDIR_P) w2c
-+	cp $(srcdir)/w2c/config.h $@
-+
- $(srcdir)/c-auto.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps) 
- 	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
- 	rm -f w2c/stamp-h1
 --- texk/web2c/uptexdir/tests/gkhugeng.err
 +++ texk/web2c/uptexdir/tests/gkhugeng.err	2021-04-07 10:14:44.214880889 +0000
 @@ -1,3 +1,11 @@

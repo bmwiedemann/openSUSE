@@ -1,0 +1,15 @@
+---
+ texk/web2c/euptexdir/euptrip/texmf.cnf |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- texk/web2c/euptexdir/euptrip/texmf.cnf
++++ texk/web2c/euptexdir/euptrip/texmf.cnf	2025-03-14 11:45:51.711988681 +0000
+@@ -15,7 +15,7 @@ pool_size       = 40000
+ string_vacancies = 8000
+ 
+ % TeX end e-TeX.
+-font_mem_size = 20000
++font_mem_size = 50000
+ font_max = 75
+ stack_size = 200
+ nest_size = 40
