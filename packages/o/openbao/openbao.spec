@@ -16,15 +16,14 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define server_service_name openbao.service
 %define agent_service_name openbao-agent.service
 %define configdir_name openbao
 %define statedir_name openbao
+%define short_executable_name bao
 
 Name:           openbao
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Manage, store, and distribute sensitive data
 License:        MPL-2.0
@@ -32,10 +31,17 @@ URL:            https://github.com/openbao/openbao
 Group:          Productivity/Security
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        ui-%{version}.tar.gz
 Source3:        %{name}-agent.service
 Source4:        %{name}-agent.hcl.sample
-BuildRequires:  go >= 1.22
+#
+Source11:       Makefile
+Source12:       PACKAGING_README.md
+BuildRequires:  fdupes
+BuildRequires:  go >= 1.24
 BuildRequires:  user(openbao)
+#
+Provides:       bao = %{version}
 
 %description
 OpenBao exists to provide a software solution to manage, store, and distribute
@@ -133,8 +139,21 @@ OpenBao database plugin for PostgreSQL
 
 %prep
 %autosetup -p 1 -a 1
+%setup -T -D -q -a 2
+
+# make target static-assets-dir:
+mkdir -p ./http/web_ui
 
 %build
+
+cd api
+API_PACKAGES="$(go list ./... | grep -v vendor/)"
+go generate $API_PACKAGES
+cd ../sdk
+SDK_PACKAGES="$(go list ./... | grep -v vendor/)"
+go generate $SDK_PACKAGES
+cd ..
+
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 
@@ -150,6 +169,7 @@ go build \
    -ldflags=" \
     -X github.com/openbao/openbao/version.GitCommit=v%{version} \
     -X github.com/openbao/openbao/version.BuildDate=${BUILD_DATE}" \
+   -tags="openbao ui" \
    -o bin/openbao .
 
 #
@@ -184,6 +204,7 @@ go build \
 %install
 # Install the binary.
 install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{short_executable_name}
 
 # server systemd unit file
 install -D -m 0644 .release/linux/package/usr/lib/systemd/system/%{server_service_name} %{buildroot}%{_unitdir}/%{server_service_name}
@@ -224,6 +245,8 @@ do
         install -D -m 0755 bin/${plugin} %{buildroot}/%{_bindir}/%{name}-${plugin}
 done
 
+%fdupes %{buildroot}/%{_bindir}/
+
 %pre -n %{name}-server
 %service_add_pre %{server_service_name}
 
@@ -249,11 +272,13 @@ done
 %service_del_postun %{agent_service_name}
 
 %check
+%{buildroot}/%{_bindir}/%{name} version | grep v%{version}
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+%{_bindir}/%{short_executable_name}
 
 %files -n %{name}-server
 %{_unitdir}/%{server_service_name}
