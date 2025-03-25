@@ -834,4 +834,15 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
     <comment>New beta release (forwarded request 1253552 from iznogood)</comment>
     <requestid>1253656</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>c2417acad06cef84e1a760333e2b69b2</srcmd5>
+    <version>48.0</version>
+    <time>1742937007</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + Properly update fixed width menu item state.
+  + Properly update underline menu item state.
+  + Updated translations. (forwarded request 1255448 from iznogood)</comment>
+    <requestid>1255579</requestid>
+  </revision>
 </revisionlist>
