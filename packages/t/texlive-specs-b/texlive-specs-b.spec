@@ -1,7 +1,7 @@
 #
-# spec file for package texlive-specs-b.spec
+# spec file for package texlive-specs-b
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,12 @@
 ##### WARNING: Please do not edit this auto generated spec file.
 #
 
-%define texlive_version  2024
+
+%define texlive_version  2025
 %define texlive_previous 2022
-%define texlive_release  20240311
-%define texlive_noarch   216
-%define biber_version    2.19
+%define texlive_release  20250308
+%define texlive_noarch   218
+%define biber_version    2.20
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -61,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-b
-Version:        2024
+Version:        2025
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -110,7 +111,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source1:        around-the-bend.doc.tar.xz
 
 %description -n texlive-around-the-bend
@@ -937,7 +938,7 @@ Provides:       tex(gkaiu9f.tfm)
 Provides:       tex(gkaiufe.tfm)
 Provides:       tex(gkaiuff.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source2:        arphic.tar.xz
 Source3:        arphic.doc.tar.xz
 
@@ -3009,7 +3010,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-arphic-ttf-fonts >= %{texlive_version}
 Suggests:       texlive-arphic-ttf-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source4:        arphic-ttf.tar.xz
 Source5:        arphic-ttf.doc.tar.xz
 
@@ -3098,7 +3099,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-arphic-ttf/gkai00mp.ttf
 
 %package -n texlive-arraycols
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn68277
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn71168
 Release:        0
 License:        LPPL-1.0
 Summary:        New column types for array and tabular environments
@@ -3131,7 +3132,7 @@ Requires:       tex(cellspace.sty)
 Requires:       tex(makecell.sty)
 Requires:       tex(tabularx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source6:        arraycols.tar.xz
 Source7:        arraycols.doc.tar.xz
 
@@ -3144,7 +3145,7 @@ environments. Macros for drawing vertical and horizontal rules
 of variable thickness are also provided.
 
 %package -n texlive-arraycols-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn68277
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn71168
 Release:        0
 Summary:        Documentation for texlive-arraycols
 License:        LPPL-1.0
@@ -3210,7 +3211,7 @@ Suggests:       texlive-arrayjobx-doc >= %{texlive_version}
 Provides:       tex(arrayjob.sty)
 Provides:       tex(arrayjobx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source8:        arrayjobx.tar.xz
 Source9:        arrayjobx.doc.tar.xz
 
@@ -3301,7 +3302,7 @@ Requires:       tex(macroswap.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(xargs.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source10:       arraysort.tar.xz
 Source11:       arraysort.doc.tar.xz
 
@@ -3381,7 +3382,7 @@ Requires:       tex(classicthesis.sty)
 Requires:       tex(soul.sty)
 Requires:       tex(titlesec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source12:       arsclassica.tar.xz
 Source13:       arsclassica.doc.tar.xz
 
@@ -3479,7 +3480,7 @@ Requires:       tex(iwonamath.sty)
 Requires:       tex(kpfonts-otf.sty)
 Requires:       tex(l3keys2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source14:       arsenal.tar.xz
 Source15:       arsenal.doc.tar.xz
 
@@ -3607,7 +3608,7 @@ Suggests:       texlive-articleingud-doc >= %{texlive_version}
 Provides:       tex(articleingud.cls)
 Requires:       tex(article.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source16:       articleingud.tar.xz
 Source17:       articleingud.doc.tar.xz
 
@@ -3754,7 +3755,7 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source18:       arvo.tar.xz
 Source19:       arvo.doc.tar.xz
 
@@ -3916,7 +3917,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-arydshln-doc >= %{texlive_version}
 Provides:       tex(arydshln.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source20:       arydshln.tar.xz
 Source21:       arydshln.doc.tar.xz
 
@@ -3999,7 +4000,7 @@ Provides:       tex(asaesub.sty)
 Provides:       tex(asaetr.cls)
 Provides:       tex(asaetr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source22:       asaetr.tar.xz
 Source23:       asaetr.doc.tar.xz
 
@@ -4082,7 +4083,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-asana-math-fonts >= %{texlive_version}
 Suggests:       texlive-asana-math-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source24:       asana-math.tar.xz
 Source25:       asana-math.doc.tar.xz
 
@@ -4192,7 +4193,7 @@ Provides:       tex(asapsym.code.tex)
 Provides:       tex(asapsym.sty)
 Requires:       tex(fontspec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source26:       asapsym.tar.xz
 Source27:       asapsym.doc.tar.xz
 
@@ -4303,7 +4304,7 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(lineno.sty)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source28:       ascelike.tar.xz
 Source29:       ascelike.doc.tar.xz
 
@@ -4382,7 +4383,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source30:       ascii-chart.doc.tar.xz
 
 %description -n texlive-ascii-chart
@@ -4457,7 +4458,7 @@ Provides:       tex(ascii.map)
 Provides:       tex(ascii.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source31:       ascii-font.tar.xz
 Source32:       ascii-font.doc.tar.xz
 
@@ -4565,7 +4566,7 @@ Provides:       tex(asciilist.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(trimspaces.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source33:       asciilist.tar.xz
 Source34:       asciilist.doc.tar.xz
 
@@ -4663,7 +4664,7 @@ Provides:       tex(ascmac.map)
 Provides:       tex(ascmac.sty)
 Provides:       tex(tascmac.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source35:       ascmac.tar.xz
 Source36:       ascmac.doc.tar.xz
 
@@ -4785,7 +4786,7 @@ Provides:       tex(askinclude.sty)
 Requires:       tex(kvsetkeys.sty)
 Requires:       tex(makematch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source37:       askinclude.tar.xz
 Source38:       askinclude.doc.tar.xz
 
@@ -4862,7 +4863,7 @@ Suggests:       texlive-askmaps-doc >= %{texlive_version}
 Provides:       tex(askmaps.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source39:       askmaps.tar.xz
 Source40:       askmaps.doc.tar.xz
 
@@ -4911,7 +4912,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/askmaps/askmaps.sty
 
 %package -n texlive-asmeconf
-Version:        %{texlive_version}.%{texlive_noarch}.1.37svn69742
+Version:        %{texlive_version}.%{texlive_noarch}.1.40svn73649
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX template for ASME conference papers
@@ -4971,25 +4972,22 @@ Requires:       tex(lineno.sty)
 Requires:       tex(luatexja-fontspec.sty)
 Requires:       tex(mathalfa.sty)
 Requires:       tex(mathtools.sty)
-Requires:       tex(metalogo.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(newtxmath.sty)
 Requires:       tex(newtxtext.sty)
 Requires:       tex(subcaption.sty)
 Requires:       tex(textcase.sty)
-Requires:       tex(titlesec.sty)
-Requires:       tex(xcoffins.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source41:       asmeconf.tar.xz
 Source42:       asmeconf.doc.tar.xz
 
 %description -n texlive-asmeconf
 The asmeconf class provides a LaTeX template for ASME
 conference papers, following ASME's guidelines for margins,
-fonts, headings, captions, and reference formats as of 2022.
+fonts, headings, captions, and reference formats as of 2025.
 This LaTeX template is intended to be used with the
 asmeconf.bst BibTeX style, for reference formatting, which is
 part of this distribution. Unlike older ASME conference LaTeX
@@ -5005,7 +5003,7 @@ not a publication of ASME, but it does conform to ASME's
 currently published guidelines for conference papers.
 
 %package -n texlive-asmeconf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.37svn69742
+Version:        %{texlive_version}.%{texlive_noarch}.1.40svn73649
 Release:        0
 Summary:        Documentation for texlive-asmeconf
 License:        LPPL-1.0
@@ -5060,7 +5058,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/asmeconf/asmeconf.cls
 
 %package -n texlive-asmejour
-Version:        %{texlive_version}.%{texlive_noarch}.1.22svn69722
+Version:        %{texlive_version}.%{texlive_noarch}.1.24svn73602
 Release:        0
 License:        LPPL-1.0
 Summary:        A template for ASME journal papers
@@ -5104,6 +5102,7 @@ Requires:       tex(flushend.sty)
 Requires:       tex(fnpos.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
+Requires:       tex(footmisc.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(glyphtounicode.tex)
 Requires:       tex(graphicx.sty)
@@ -5118,18 +5117,16 @@ Requires:       tex(kvoptions.sty)
 Requires:       tex(lineno.sty)
 Requires:       tex(mathalfa.sty)
 Requires:       tex(mathtools.sty)
-Requires:       tex(metalogo.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(newtxmath.sty)
 Requires:       tex(newtxtext.sty)
 Requires:       tex(subcaption.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(totcount.sty)
-Requires:       tex(xcoffins.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source43:       asmejour.tar.xz
 Source44:       asmejour.doc.tar.xz
 
@@ -5148,7 +5145,7 @@ pdfLaTeX or LuaLaTeX. This package is not a publication of
 ASME.
 
 %package -n texlive-asmejour-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.22svn69722
+Version:        %{texlive_version}.%{texlive_noarch}.1.24svn73602
 Release:        0
 Summary:        Documentation for texlive-asmejour
 License:        LPPL-1.0
@@ -5258,7 +5255,7 @@ Provides:       tex(arssi10.tfm)
 Provides:       tex(artti10.tfm)
 Provides:       tex(aspectratio.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source45:       aspectratio.tar.xz
 Source46:       aspectratio.doc.tar.xz
 
@@ -5438,7 +5435,7 @@ Provides:       tex(assignment.cls)
 Requires:       tex(article.cls)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source47:       assignment.tar.xz
 Source48:       assignment.doc.tar.xz
 
@@ -5518,7 +5515,7 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source49:       assoccnt.tar.xz
 Source50:       assoccnt.doc.tar.xz
 
@@ -5600,7 +5597,7 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source51:       association-matrix.tar.xz
 Source52:       association-matrix.doc.tar.xz
 
@@ -5684,7 +5681,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-asternote-doc >= %{texlive_version}
 Provides:       tex(asternote.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source53:       asternote.tar.xz
 Source54:       asternote.doc.tar.xz
 
@@ -5760,7 +5757,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-astro-doc >= %{texlive_version}
 Provides:       tex(astrosym.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source55:       astro.tar.xz
 Source56:       astro.doc.tar.xz
 
@@ -5812,6 +5809,94 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/source/public/astro/astrosym.xtr
 %{_texmfdistdir}/fonts/tfm/public/astro/astrosym.tfm
 
+%package -n texlive-asy-overview
+Version:        %{texlive_version}.%{texlive_noarch}.svn72484
+Release:        0
+License:        LPPL-1.0
+Summary:        A brief overview of the Asymptote language for drawing mathematical graphics
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source57:       asy-overview.doc.tar.xz
+
+%description -n texlive-asy-overview
+Asymptote is a programming language for creating mathematical
+graphics. This document gives you a quick overview,
+illustrating with a few familiar Calculus examples. Readers can
+work through it in a couple of hours to get a feel for the
+system's strengths, and if they are interested then go on to a
+full tutorial or the official reference.
+
+%post -n texlive-asy-overview
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-asy-overview
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-asy-overview
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-asy-overview
+%{_texmfdistdir}/doc/latex/asy-overview/README
+%{_texmfdistdir}/doc/latex/asy-overview/asy/jh.asy
+%{_texmfdistdir}/doc/latex/asy-overview/asy_overview.pdf
+%{_texmfdistdir}/doc/latex/asy-overview/asy_sty/asy_tut.sty
+%{_texmfdistdir}/doc/latex/asy-overview/asy_sty/colors.sty
+%{_texmfdistdir}/doc/latex/asy-overview/src/Makefile
+%{_texmfdistdir}/doc/latex/asy-overview/src/appendix/appendix.tex
+%{_texmfdistdir}/doc/latex/asy-overview/src/asy_tut.tex
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter1/asy/unit_circle.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter1/asy/unit_circle_after.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter1/chapter1.tex
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter1/main.tex
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter2/asy/cos.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter2/asy/exponential.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter2/asy/plot.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter2/asy/plot_after.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter2/chapter2.tex
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter3/asy/integral.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter3/asy/zoom.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter3/asy/zoom_iterate.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter3/asy/zoom_times.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter3/chapter3.tex
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter4/asy/planes.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter4/asy/vectors.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter4/asy/washer.asy
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter4/chapter4.tex
+%{_texmfdistdir}/doc/latex/asy-overview/src/chapter4/main_3d.tex
+%{_texmfdistdir}/doc/latex/asy-overview/src/cover/cover.tex
+%{_texmfdistdir}/doc/latex/asy-overview/src/cover/pp.jpg
+%{_texmfdistdir}/doc/latex/asy-overview/src/preface/preface.tex
+
 %package -n texlive-asyfig
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn17512
 Release:        0
@@ -5851,9 +5936,9 @@ Requires:       tex(ifpdf.sty)
 Requires:       tex(ifplatform.sty)
 Requires:       tex(preview.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source57:       asyfig.tar.xz
-Source58:       asyfig.doc.tar.xz
+# from 20250308
+Source58:       asyfig.tar.xz
+Source59:       asyfig.doc.tar.xz
 
 %description -n texlive-asyfig
 The package provides a means of reading Asymptote figures from
@@ -5905,7 +5990,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/asyfig/asyprocess.sty
 
 %package -n texlive-asymptote
-Version:        %{texlive_version}.%{texlive_noarch}.2.88svn70502
+Version:        %{texlive_version}.%{texlive_noarch}.3.01svn74381
 Release:        0
 License:        LGPL-3.0-or-later
 Summary:        2D and 3D TeX-Aware Vector Graphics Language
@@ -5949,9 +6034,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source59:       asymptote.tar.xz
-Source60:       asymptote.doc.tar.xz
+# from 20250308
+Source60:       asymptote.tar.xz
+Source61:       asymptote.doc.tar.xz
 
 %description -n texlive-asymptote
 Asymptote is a powerful descriptive vector graphics language
@@ -5961,7 +6046,7 @@ same high-quality level of typesetting that LaTeX does for
 scientific text.
 
 %package -n texlive-asymptote-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.88svn70502
+Version:        %{texlive_version}.%{texlive_noarch}.3.01svn74381
 Release:        0
 Summary:        Documentation for texlive-asymptote
 License:        LGPL-3.0-or-later
@@ -6361,18 +6446,10 @@ fi
 %{_texmfdistdir}/asymptote/GUI/Widg_editBezier.py
 %{_texmfdistdir}/asymptote/GUI/Window1.py
 %{_texmfdistdir}/asymptote/GUI/__init__.py
+%{_texmfdistdir}/asymptote/GUI/buildtool.py
 %{_texmfdistdir}/asymptote/GUI/configs/xasyconfig.cson
 %{_texmfdistdir}/asymptote/GUI/configs/xasykeymap.cson
-%{_texmfdistdir}/asymptote/GUI/icons_rc.py
 %{_texmfdistdir}/asymptote/GUI/labelEditor.py
-%{_texmfdistdir}/asymptote/GUI/pyUIClass/custMatTransform.py
-%{_texmfdistdir}/asymptote/GUI/pyUIClass/labelTextEditor.py
-%{_texmfdistdir}/asymptote/GUI/pyUIClass/setCustomAnchor.py
-%{_texmfdistdir}/asymptote/GUI/pyUIClass/widg_addLabel.py
-%{_texmfdistdir}/asymptote/GUI/pyUIClass/widg_addPolyOpt.py
-%{_texmfdistdir}/asymptote/GUI/pyUIClass/widg_editBezier.py
-%{_texmfdistdir}/asymptote/GUI/pyUIClass/widgetPointEditor.py
-%{_texmfdistdir}/asymptote/GUI/pyUIClass/window1.py
 %{_texmfdistdir}/asymptote/GUI/res/icons/anchor.svg
 %{_texmfdistdir}/asymptote/GUI/res/icons/android-arrow-back.svg
 %{_texmfdistdir}/asymptote/GUI/res/icons/android-arrow-forward.svg
@@ -6429,7 +6506,16 @@ fi
 %{_texmfdistdir}/asymptote/GUI/xasyTransform.py
 %{_texmfdistdir}/asymptote/GUI/xasyUtils.py
 %{_texmfdistdir}/asymptote/GUI/xasyValidator.py
-%{_texmfdistdir}/asymptote/GUI/xasyVersion.py
+%{_texmfdistdir}/asymptote/GUI/xasyicons/icons_rc.py
+%{_texmfdistdir}/asymptote/GUI/xasyqtui/custMatTransform.py
+%{_texmfdistdir}/asymptote/GUI/xasyqtui/labelTextEditor.py
+%{_texmfdistdir}/asymptote/GUI/xasyqtui/setCustomAnchor.py
+%{_texmfdistdir}/asymptote/GUI/xasyqtui/widg_addLabel.py
+%{_texmfdistdir}/asymptote/GUI/xasyqtui/widg_addPolyOpt.py
+%{_texmfdistdir}/asymptote/GUI/xasyqtui/widg_editBezier.py
+%{_texmfdistdir}/asymptote/GUI/xasyqtui/widgetPointEditor.py
+%{_texmfdistdir}/asymptote/GUI/xasyqtui/window1.py
+%{_texmfdistdir}/asymptote/GUI/xasyversion/version.py
 %{_texmfdistdir}/asymptote/animate.asy
 %{_texmfdistdir}/asymptote/animation.asy
 %{_texmfdistdir}/asymptote/annotate.asy
@@ -6508,6 +6594,7 @@ fi
 %{_texmfdistdir}/asymptote/shaders/vertex.glsl
 %{_texmfdistdir}/asymptote/shaders/zero.glsl
 %{_texmfdistdir}/asymptote/simplex.asy
+%{_texmfdistdir}/asymptote/simplex2.asy
 %{_texmfdistdir}/asymptote/size10.asy
 %{_texmfdistdir}/asymptote/size11.asy
 %{_texmfdistdir}/asymptote/slide.asy
@@ -6566,8 +6653,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source61:       asymptote-by-example-zh-cn.doc.tar.xz
+# from 20250308
+Source62:       asymptote-by-example-zh-cn.doc.tar.xz
 
 %description -n texlive-asymptote-by-example-zh-cn
 This is a tutorial written in Simplified Chinese.
@@ -6643,8 +6730,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source62:       asymptote-faq-zh-cn.doc.tar.xz
+# from 20250308
+Source63:       asymptote-faq-zh-cn.doc.tar.xz
 
 %description -n texlive-asymptote-faq-zh-cn
 This is a Chinese translation of the Asymptote FAQ
@@ -6764,8 +6851,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source63:       asymptote-manual-zh-cn.doc.tar.xz
+# from 20250308
+Source64:       asymptote-manual-zh-cn.doc.tar.xz
 
 %description -n texlive-asymptote-manual-zh-cn
 This is an (incomplete, simplified) Chinese translation of the
@@ -6835,7 +6922,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/support/asymptote-manual-zh-cn/src/winfonts.tex
 
 %package -n texlive-asypictureb
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn33490
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn73611
 Release:        0
 License:        LPPL-1.0
 Summary:        User-friendly integration of Asymptote into LaTeX
@@ -6869,9 +6956,9 @@ Requires:       tex(ifplatform.sty)
 Requires:       tex(pgfkeys.sty)
 Requires:       tex(verbatimcopy.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source64:       asypictureb.tar.xz
-Source65:       asypictureb.doc.tar.xz
+# from 20250308
+Source65:       asypictureb.tar.xz
+Source66:       asypictureb.doc.tar.xz
 
 %description -n texlive-asypictureb
 The package is an unofficial alternative to the package
@@ -6884,7 +6971,7 @@ debugging less of a pain. It also has a more robust mechanism
 for identifying unchanged pictures that need not be recompiled.
 
 %package -n texlive-asypictureb-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn33490
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn73611
 Release:        0
 Summary:        Documentation for texlive-asypictureb
 License:        LPPL-1.0
@@ -6919,6 +7006,93 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-asypictureb
 %{_texmfdistdir}/tex/latex/asypictureb/asypictureB.sty
 
+%package -n texlive-atableau
+Version:        %{texlive_version}.%{texlive_noarch}.2.1.0svn73576
+Release:        0
+License:        LPPL-1.0
+Summary:        A LaTeX package for symmetric group combinatorics
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-atableau-doc >= %{texlive_version}
+Provides:       tex(atableau.sty)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(l3keys2e.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source67:       atableau.tar.xz
+Source68:       atableau.doc.tar.xz
+
+%description -n texlive-atableau
+A LaTeX package for symmetric group combinatorics, with
+commands for Young diagrams, tableaux, tabloids, skew tableaux,
+shifted tableaux, ribbon tableaux, multitableaux, abacuses.
+These commands are intended to be easy to use and easy to
+customise. In particular, TikZ styling can be added to the
+components of these diagrams and common conventions and idioms
+are supported using a key-value interface. All diagrams can be
+used as standalone commands or as part of tikzpicture
+environments.
+
+%package -n texlive-atableau-doc
+Version:        %{texlive_version}.%{texlive_noarch}.2.1.0svn73576
+Release:        0
+Summary:        Documentation for texlive-atableau
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-atableau and texlive-alldocumentation)
+
+%description -n texlive-atableau-doc
+This package includes the documentation for texlive-atableau
+
+%post -n texlive-atableau
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-atableau
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-atableau
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-atableau-doc
+%{_texmfdistdir}/doc/latex/atableau/LICENSE
+%{_texmfdistdir}/doc/latex/atableau/README.md
+%{_texmfdistdir}/doc/latex/atableau/atableau.ini
+%{_texmfdistdir}/doc/latex/atableau/atableau.pdf
+%{_texmfdistdir}/doc/latex/atableau/atableau.tex
+
+%files -n texlive-atableau
+%{_texmfdistdir}/tex/latex/atableau/atableau.sty
+
 %package -n texlive-atbegshi
 Version:        %{texlive_version}.%{texlive_noarch}.1.19svn53051
 Release:        0
@@ -6952,9 +7126,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source66:       atbegshi.tar.xz
-Source67:       atbegshi.doc.tar.xz
+# from 20250308
+Source69:       atbegshi.tar.xz
+Source70:       atbegshi.doc.tar.xz
 
 %description -n texlive-atbegshi
 This package is a modern reimplementation of package everyshi,
@@ -7035,9 +7209,9 @@ Requires:       tex(atbegshi.sty)
 Requires:       tex(zref-abspage.sty)
 Requires:       tex(zref-lastpage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source68:       atenddvi.tar.xz
-Source69:       atenddvi.doc.tar.xz
+# from 20250308
+Source71:       atenddvi.tar.xz
+Source72:       atenddvi.doc.tar.xz
 
 %description -n texlive-atenddvi
 This package is unneeded and does nothing when used with a
@@ -7118,9 +7292,9 @@ Provides:       tex(atendofenv.sty)
 Requires:       tex(amsthm.sty)
 Requires:       tex(letltxmacro.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source70:       atendofenv.tar.xz
-Source71:       atendofenv.doc.tar.xz
+# from 20250308
+Source73:       atendofenv.tar.xz
+Source74:       atendofenv.doc.tar.xz
 
 %description -n texlive-atendofenv
 This package allows adding a custom symbol at the end of an
@@ -7164,7 +7338,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/atendofenv/atendofenv.sty
 
 %package -n texlive-atkinson
-Version:        %{texlive_version}.%{texlive_noarch}.svn64385
+Version:        %{texlive_version}.%{texlive_noarch}.svn71048
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for the Atkinson Hyperlegible family of fonts
@@ -7403,9 +7577,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source72:       atkinson.tar.xz
-Source73:       atkinson.doc.tar.xz
+# from 20250308
+Source75:       atkinson.tar.xz
+Source76:       atkinson.doc.tar.xz
 
 %description -n texlive-atkinson
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -7416,7 +7590,7 @@ focuses on letterform distinction to increase character
 recognition, ultimately improving readability.
 
 %package -n texlive-atkinson-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64385
+Version:        %{texlive_version}.%{texlive_noarch}.svn71048
 Release:        0
 Summary:        Documentation for texlive-atkinson
 License:        LPPL-1.0
@@ -7428,7 +7602,7 @@ Supplements:    (texlive-atkinson and texlive-alldocumentation)
 This package includes the documentation for texlive-atkinson
 
 %package -n texlive-atkinson-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn64385
+Version:        %{texlive_version}.%{texlive_noarch}.svn71048
 Release:        0
 Summary:        Severed fonts for texlive-atkinson
 License:        LPPL-1.0
@@ -7731,9 +7905,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source74:       attachfile.tar.xz
-Source75:       attachfile.doc.tar.xz
+# from 20250308
+Source77:       attachfile.tar.xz
+Source78:       attachfile.doc.tar.xz
 
 %description -n texlive-attachfile
 Starting with PDF 1.3 (Adobe Acrobat 4.0), PDF files can
@@ -7840,9 +8014,9 @@ Requires:       tex(ltxcmds.sty)
 Requires:       tex(pdfescape.sty)
 Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source76:       attachfile2.tar.xz
-Source77:       attachfile2.doc.tar.xz
+# from 20250308
+Source79:       attachfile2.tar.xz
+Source80:       attachfile2.doc.tar.xz
 
 %description -n texlive-attachfile2
 This package can be used to attach files to a PDF document. It
@@ -7895,7 +8069,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/attachfile2/attachfile2.sty
 
 %package -n texlive-atveryend
-Version:        %{texlive_version}.%{texlive_noarch}.1.11svn53108
+Version:        %{texlive_version}.%{texlive_noarch}.1.12svn72507
 Release:        0
 License:        LPPL-1.0
 Summary:        Hooks at the very end of a document
@@ -7924,20 +8098,16 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-atveryend-doc >= %{texlive_version}
 Provides:       tex(atveryend.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source78:       atveryend.tar.xz
-Source79:       atveryend.doc.tar.xz
+# from 20250308
+Source81:       atveryend.tar.xz
+Source82:       atveryend.doc.tar.xz
 
 %description -n texlive-atveryend
-This LaTeX packages provides two hooks for \end{document} that
-are executed after the hook of \AtEndDocument:
-\AfterLastShipout can be used for code that is to be executed
-right after the last \clearpage before the `.aux' file is
-closed. \AtVeryEndDocument is used for code after closing and
-final reading of the `.aux' file.
+This LaTeX package provides some wrapper commands around LaTeX
+end document hooks.
 
 %package -n texlive-atveryend-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.11svn53108
+Version:        %{texlive_version}.%{texlive_noarch}.1.12svn72507
 Release:        0
 Summary:        Documentation for texlive-atveryend
 License:        LPPL-1.0
@@ -8003,9 +8173,9 @@ Suggests:       texlive-aucklandthesis-doc >= %{texlive_version}
 Provides:       tex(aucklandthesis.cls)
 Requires:       tex(memoir.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source80:       aucklandthesis.tar.xz
-Source81:       aucklandthesis.doc.tar.xz
+# from 20250308
+Source83:       aucklandthesis.tar.xz
+Source84:       aucklandthesis.doc.tar.xz
 
 %description -n texlive-aucklandthesis
 A memoir-based class for formatting University of Auckland
@@ -8103,9 +8273,9 @@ Provides:       tex(ot1augie.fd)
 Provides:       tex(t1augie.fd)
 Provides:       tex(ts1augie.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source82:       augie.tar.xz
-Source83:       augie.doc.tar.xz
+# from 20250308
+Source85:       augie.tar.xz
+Source86:       augie.doc.tar.xz
 
 %description -n texlive-augie
 A calligraphic font for simulating American-style informal
@@ -8237,9 +8407,9 @@ Provides:       tex(auncl10.tfm)
 Provides:       tex(aunclb10.tfm)
 Provides:       tex(b1auncl.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source84:       auncial-new.tar.xz
-Source85:       auncial-new.doc.tar.xz
+# from 20250308
+Source87:       auncial-new.tar.xz
+Source88:       auncial-new.doc.tar.xz
 
 %description -n texlive-auncial-new
 The auncial-new bundle provides packages and fonts for a script
@@ -8399,9 +8569,9 @@ Provides:       tex(T1LukasSvatba.fd)
 Provides:       tex(aurical.map)
 Provides:       tex(aurical.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source86:       aurical.tar.xz
-Source87:       aurical.doc.tar.xz
+# from 20250308
+Source89:       aurical.tar.xz
+Source90:       aurical.doc.tar.xz
 
 %description -n texlive-aurical
 The package that implements a set (AuriocusKalligraphicus) of
@@ -8607,9 +8777,9 @@ Suggests:       texlive-aurl-doc >= %{texlive_version}
 Provides:       tex(aurl.sty)
 Requires:       tex(hyperref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source88:       aurl.tar.xz
-Source89:       aurl.doc.tar.xz
+# from 20250308
+Source91:       aurl.tar.xz
+Source92:       aurl.doc.tar.xz
 
 %description -n texlive-aurl
 Semantic Web resource URLs are often abbreviated with prefixes,
@@ -8683,9 +8853,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-authoraftertitle-doc >= %{texlive_version}
 Provides:       tex(authoraftertitle.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source90:       authoraftertitle.tar.xz
-Source91:       authoraftertitle.doc.tar.xz
+# from 20250308
+Source93:       authoraftertitle.tar.xz
+Source94:       authoraftertitle.doc.tar.xz
 
 %description -n texlive-authoraftertitle
 This jiffy package makes the author, title and date of the
@@ -8770,9 +8940,9 @@ Requires:       tex(lastpage.sty)
 Requires:       tex(orcidlink.sty)
 Requires:       tex(qrcode.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source92:       authorarchive.tar.xz
-Source93:       authorarchive.doc.tar.xz
+# from 20250308
+Source95:       authorarchive.tar.xz
+Source96:       authorarchive.doc.tar.xz
 
 %description -n texlive-authorarchive
 This is a LaTeX style for producing author self-archiving
@@ -8871,9 +9041,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-authordate-doc >= %{texlive_version}
 Provides:       tex(authordate1-4.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source94:       authordate.tar.xz
-Source95:       authordate.doc.tar.xz
+# from 20250308
+Source97:       authordate.tar.xz
+Source98:       authordate.doc.tar.xz
 
 %description -n texlive-authordate
 Authordate produces styles loosely based on the recommendations
@@ -8966,9 +9136,9 @@ Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 Provides:       tex(authorindex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source96:       authorindex.tar.xz
-Source97:       authorindex.doc.tar.xz
+# from 20250308
+Source99:       authorindex.tar.xz
+Source100:      authorindex.doc.tar.xz
 
 %description -n texlive-authorindex
 This package allows the user to create an index of all authors
@@ -9059,9 +9229,9 @@ Requires:       tex(ifplatform.sty)
 Requires:       tex(pst-pdf.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source98:       auto-pst-pdf.tar.xz
-Source99:       auto-pst-pdf.doc.tar.xz
+# from 20250308
+Source101:      auto-pst-pdf.tar.xz
+Source102:      auto-pst-pdf.doc.tar.xz
 
 %description -n texlive-auto-pst-pdf
 The package uses --shell-escape to execute pst-pdf when
@@ -9149,9 +9319,9 @@ Requires:       tex(ifplatform.sty)
 Requires:       tex(pst-pdf.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source100:      auto-pst-pdf-lua.tar.xz
-Source101:      auto-pst-pdf-lua.doc.tar.xz
+# from 20250308
+Source103:      auto-pst-pdf-lua.tar.xz
+Source104:      auto-pst-pdf-lua.doc.tar.xz
 
 %description -n texlive-auto-pst-pdf-lua
 This package is a slightly modified version of auto-pst-pdf by
@@ -9230,9 +9400,9 @@ Provides:       tex(autoaligne-fr.tex)
 Provides:       tex(autoaligne.sty)
 Provides:       tex(autoaligne.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source102:      autoaligne.tar.xz
-Source103:      autoaligne.doc.tar.xz
+# from 20250308
+Source105:      autoaligne.tar.xz
+Source106:      autoaligne.doc.tar.xz
 
 %description -n texlive-autoaligne
 This package allows to align terms and members between lines
@@ -9307,9 +9477,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-autoarea-doc >= %{texlive_version}
 Provides:       tex(autoarea.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source104:      autoarea.tar.xz
-Source105:      autoarea.doc.tar.xz
+# from 20250308
+Source107:      autoarea.tar.xz
+Source108:      autoarea.doc.tar.xz
 
 %description -n texlive-autoarea
 This package makes PiCTeX recognize lines and arcs in
@@ -9392,9 +9562,9 @@ Provides:       tex(autobreak.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(catchfile.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source106:      autobreak.tar.xz
-Source107:      autobreak.doc.tar.xz
+# from 20250308
+Source109:      autobreak.tar.xz
+Source110:      autobreak.doc.tar.xz
 
 %description -n texlive-autobreak
 This package implements a simple mechanism of line/page
@@ -9473,9 +9643,9 @@ Provides:       tex(autofancyhdr.sty)
 Requires:       tex(biditools.sty)
 Requires:       tex(fancyhdr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source108:      autofancyhdr.tar.xz
-Source109:      autofancyhdr.doc.tar.xz
+# from 20250308
+Source111:      autofancyhdr.tar.xz
+Source112:      autofancyhdr.doc.tar.xz
 
 %description -n texlive-autofancyhdr
 The package automatically computes headlength for the fancyhdr
@@ -9546,9 +9716,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-automata-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source110:      automata.tar.xz
-Source111:      automata.doc.tar.xz
+# from 20250308
+Source113:      automata.tar.xz
+Source114:      automata.doc.tar.xz
 
 %description -n texlive-automata
 The package offers a collection of macros for MetaPost to make
@@ -9631,9 +9801,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(letltxmacro.sty)
 Requires:       tex(textpos.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source112:      autonum.tar.xz
-Source113:      autonum.doc.tar.xz
+# from 20250308
+Source115:      autonum.tar.xz
+Source116:      autonum.doc.tar.xz
 
 %description -n texlive-autonum
 The package arranges that equation numbers are applied only to
@@ -9715,9 +9885,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(psfrag.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source114:      autopdf.tar.xz
-Source115:      autopdf.doc.tar.xz
+# from 20250308
+Source117:      autopdf.tar.xz
+Source118:      autopdf.doc.tar.xz
 
 %description -n texlive-autopdf
 The package facilitates the on-the-fly conversion of various
@@ -9794,9 +9964,9 @@ Requires:       tex(enumitem.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(luacode.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source116:      autopuncitems.tar.xz
-Source117:      autopuncitems.doc.tar.xz
+# from 20250308
+Source119:      autopuncitems.tar.xz
+Source120:      autopuncitems.doc.tar.xz
 
 %description -n texlive-autopuncitems
 This package provides the autopunc option in the enumitem
@@ -9874,8 +10044,8 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(autosp.1)
 Provides:       man(tex2aspc.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source118:      autosp.doc.tar.xz
+# from 20250308
+Source121:      autosp.doc.tar.xz
 
 %description -n texlive-autosp
 This program simplifies the creation of MusiXTeX scores by
@@ -9952,9 +10122,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-autotype-doc >= %{texlive_version}
 Provides:       tex(autotype.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source119:      autotype.tar.xz
-Source120:      autotype.doc.tar.xz
+# from 20250308
+Source122:      autotype.tar.xz
+Source123:      autotype.doc.tar.xz
 
 %description -n texlive-autotype
 autotype is a LuaLaTeX package for automatic language-specific
@@ -10053,9 +10223,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-auxhook-doc >= %{texlive_version}
 Provides:       tex(auxhook.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source121:      auxhook.tar.xz
-Source122:      auxhook.doc.tar.xz
+# from 20250308
+Source124:      auxhook.tar.xz
+Source125:      auxhook.doc.tar.xz
 
 %description -n texlive-auxhook
 This package auxhook provides hooks for adding stuff at the
@@ -10278,8 +10448,8 @@ Provides:       tex(uagro8r.tfm)
 Provides:       tex(uagro8t.tfm)
 Provides:       tex(uagro8t.vf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source123:      avantgar.tar.xz
+# from 20250308
+Source126:      avantgar.tar.xz
 
 %description -n texlive-avantgar
 A set of fonts for use as "drop-in" replacements for Adobe's
@@ -10505,7 +10675,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-avantgar/uagko8a.pfb
 
 %package -n texlive-avremu
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn35373
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn71991
 Release:        0
 License:        LPPL-1.0
 Summary:        An 8-Bit Microcontroller Simulator written in LaTeX
@@ -10545,9 +10715,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(tabularx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source124:      avremu.tar.xz
-Source125:      avremu.doc.tar.xz
+# from 20250308
+Source127:      avremu.tar.xz
+Source128:      avremu.doc.tar.xz
 
 %description -n texlive-avremu
 A fully working package to simulate a Microprocessor in pure
@@ -10555,7 +10725,7 @@ LaTeX. The simulator is able to calculate complex pictures,
 like Mandelbrot sets.
 
 %package -n texlive-avremu-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn35373
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn71991
 Release:        0
 Summary:        Documentation for texlive-avremu
 License:        LPPL-1.0
@@ -10633,9 +10803,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source126:      awesomebox.tar.xz
-Source127:      awesomebox.doc.tar.xz
+# from 20250308
+Source129:      awesomebox.tar.xz
+Source130:      awesomebox.doc.tar.xz
 
 %description -n texlive-awesomebox
 Awesome Boxes is all about drawing admonition blocks around
@@ -10720,9 +10890,9 @@ Requires:       tex(luacode.sty)
 Requires:       tex(tagpdf.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source128:      axessibility.tar.xz
-Source129:      axessibility.doc.tar.xz
+# from 20250308
+Source131:      axessibility.tar.xz
+Source132:      axessibility.doc.tar.xz
 
 %description -n texlive-axessibility
 PDF documents containing formulas generated by LaTeX are
@@ -10777,7 +10947,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/axessibility/axessibility.sty
 
 %package -n texlive-axodraw2
-Version:        %{texlive_version}.%{texlive_noarch}.2.1.1csvn58155
+Version:        %{texlive_version}.%{texlive_noarch}.2.1.1csvn74430
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Feynman diagrams in a LaTeX document
@@ -10813,9 +10983,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source130:      axodraw2.tar.xz
-Source131:      axodraw2.doc.tar.xz
+# from 20250308
+Source133:      axodraw2.tar.xz
+Source134:      axodraw2.doc.tar.xz
 
 %description -n texlive-axodraw2
 This package defines macros for drawing Feynman graphs in LaTeX
@@ -10832,7 +11002,7 @@ file. The processing involves a run of pdfLaTeX, a run of
 axohelp, and then another run of pdfLaTeX.
 
 %package -n texlive-axodraw2-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1.1csvn58155
+Version:        %{texlive_version}.%{texlive_noarch}.2.1.1csvn74430
 Release:        0
 Summary:        Documentation for texlive-axodraw2
 License:        GPL-2.0-or-later
@@ -10907,9 +11077,9 @@ Provides:       tex(TeXB1.enc)
 Provides:       tex(b1cmr.fd)
 Provides:       tex(b1enc.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source132:      b1encoding.tar.xz
-Source133:      b1encoding.doc.tar.xz
+# from 20250308
+Source135:      b1encoding.tar.xz
+Source136:      b1encoding.doc.tar.xz
 
 %description -n texlive-b1encoding
 The package characterises and defines the author's B1 encoding
@@ -10955,7 +11125,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/b1encoding/b1enc.def
 
 %package -n texlive-babel
-Version:        %{texlive_version}.%{texlive_noarch}.24.2svn69742
+Version:        %{texlive_version}.%{texlive_noarch}.25.4svn73985
 Release:        0
 License:        LPPL-1.0
 Summary:        Multilingual support for LaTeX, LuaLaTeX, XeLaTeX, and Plain TeX
@@ -10996,6 +11166,7 @@ Provides:       tex(babel-aghem.tex)
 Provides:       tex(babel-akan.tex)
 Provides:       tex(babel-akkadian.tex)
 Provides:       tex(babel-albanian.tex)
+Provides:       tex(babel-algerianarabic.tex)
 Provides:       tex(babel-american.tex)
 Provides:       tex(babel-americanenglish.tex)
 Provides:       tex(babel-amharic.tex)
@@ -11057,6 +11228,7 @@ Provides:       tex(babel-belarusian.tex)
 Provides:       tex(babel-bemba.tex)
 Provides:       tex(babel-bena.tex)
 Provides:       tex(babel-bengali.tex)
+Provides:       tex(babel-betawi.tex)
 Provides:       tex(babel-bhojpuri.tex)
 Provides:       tex(babel-blin.tex)
 Provides:       tex(babel-bodo.tex)
@@ -11084,6 +11256,7 @@ Provides:       tex(babel-canadian.tex)
 Provides:       tex(babel-canadianenglish.tex)
 Provides:       tex(babel-canadianfrench.tex)
 Provides:       tex(babel-cantonese.tex)
+Provides:       tex(babel-carian.tex)
 Provides:       tex(babel-catalan.tex)
 Provides:       tex(babel-cebuano.tex)
 Provides:       tex(babel-centralatlastamazight.tex)
@@ -11149,6 +11322,7 @@ Provides:       tex(babel-english.tex)
 Provides:       tex(babel-erzya.tex)
 Provides:       tex(babel-esperanto.tex)
 Provides:       tex(babel-estonian.tex)
+Provides:       tex(babel-etruscan.tex)
 Provides:       tex(babel-europeanportuguese.tex)
 Provides:       tex(babel-ewe.tex)
 Provides:       tex(babel-ewondo.tex)
@@ -11202,6 +11376,7 @@ Provides:       tex(babel-inarisami.tex)
 Provides:       tex(babel-indonesian.tex)
 Provides:       tex(babel-ingush.tex)
 Provides:       tex(babel-interlingua.tex)
+Provides:       tex(babel-interslavic.tex)
 Provides:       tex(babel-inuktitut.tex)
 Provides:       tex(babel-irish.tex)
 Provides:       tex(babel-italian.tex)
@@ -11216,6 +11391,7 @@ Provides:       tex(babel-kako.tex)
 Provides:       tex(babel-kalaallisut.tex)
 Provides:       tex(babel-kalenjin.tex)
 Provides:       tex(babel-kamba.tex)
+Provides:       tex(babel-kangri.tex)
 Provides:       tex(babel-kannada.tex)
 Provides:       tex(babel-kashmiri.tex)
 Provides:       tex(babel-kazakh.tex)
@@ -11229,6 +11405,7 @@ Provides:       tex(babel-korean-hani.tex)
 Provides:       tex(babel-korean.tex)
 Provides:       tex(babel-koyraborosenni.tex)
 Provides:       tex(babel-koyrachiini.tex)
+Provides:       tex(babel-kurdish.tex)
 Provides:       tex(babel-kurmanji.tex)
 Provides:       tex(babel-kwasio.tex)
 Provides:       tex(babel-kyrgyz.tex)
@@ -11255,6 +11432,8 @@ Provides:       tex(babel-lubakatanga.tex)
 Provides:       tex(babel-luo.tex)
 Provides:       tex(babel-luxembourgish.tex)
 Provides:       tex(babel-luyia.tex)
+Provides:       tex(babel-lycian.tex)
+Provides:       tex(babel-lydian.tex)
 Provides:       tex(babel-macedonian.tex)
 Provides:       tex(babel-machame.tex)
 Provides:       tex(babel-magyar.tex)
@@ -11262,6 +11441,7 @@ Provides:       tex(babel-maithili.tex)
 Provides:       tex(babel-makasar-bugi.tex)
 Provides:       tex(babel-makasar-buginese.tex)
 Provides:       tex(babel-makasar.tex)
+Provides:       tex(babel-makhuwa.tex)
 Provides:       tex(babel-makhuwameetto.tex)
 Provides:       tex(babel-makonde.tex)
 Provides:       tex(babel-malagasy.tex)
@@ -11320,9 +11500,13 @@ Provides:       tex(babel-nyankole.tex)
 Provides:       tex(babel-nynorsk.tex)
 Provides:       tex(babel-occitan.tex)
 Provides:       tex(babel-odia.tex)
+Provides:       tex(babel-oldirish.tex)
 Provides:       tex(babel-oldnorse.tex)
+Provides:       tex(babel-oldpersian.tex)
+Provides:       tex(babel-olduighur.tex)
 Provides:       tex(babel-oriya.tex)
 Provides:       tex(babel-oromo.tex)
+Provides:       tex(babel-osage.tex)
 Provides:       tex(babel-ossetic.tex)
 Provides:       tex(babel-papiamento.tex)
 Provides:       tex(babel-pashto.tex)
@@ -11352,6 +11536,7 @@ Provides:       tex(babel-rombo.tex)
 Provides:       tex(babel-rundi.tex)
 Provides:       tex(babel-russian.tex)
 Provides:       tex(babel-rwa.tex)
+Provides:       tex(babel-sabaean.tex)
 Provides:       tex(babel-saho.tex)
 Provides:       tex(babel-sakha.tex)
 Provides:       tex(babel-samaritan.tex)
@@ -11460,6 +11645,7 @@ Provides:       tex(babel-tswana.tex)
 Provides:       tex(babel-turkish.tex)
 Provides:       tex(babel-turkmen.tex)
 Provides:       tex(babel-tyap.tex)
+Provides:       tex(babel-ugaritic.tex)
 Provides:       tex(babel-ukenglish.tex)
 Provides:       tex(babel-ukrainian.tex)
 Provides:       tex(babel-uppersorbian.tex)
@@ -11480,6 +11666,7 @@ Provides:       tex(babel-vai-vai.tex)
 Provides:       tex(babel-vai-vaii.tex)
 Provides:       tex(babel-vai.tex)
 Provides:       tex(babel-venda.tex)
+Provides:       tex(babel-venetian.tex)
 Provides:       tex(babel-vietnamese.tex)
 Provides:       tex(babel-volapuk.tex)
 Provides:       tex(babel-vunjo.tex)
@@ -11494,6 +11681,7 @@ Provides:       tex(babel-yangben.tex)
 Provides:       tex(babel-yiddish.tex)
 Provides:       tex(babel-yoruba.tex)
 Provides:       tex(babel-zarma.tex)
+Provides:       tex(babel-zhuang.tex)
 Provides:       tex(babel-zulu.tex)
 Provides:       tex(babel.def)
 Provides:       tex(babel.sty)
@@ -11554,12 +11742,13 @@ Provides:       tex(welsh.sty)
 Provides:       tex(xebabel.def)
 Requires:       tex(fontspec.sty)
 Requires:       tex(language.def)
+Requires:       tex(load-unicode-xetex-classes.tex)
 Requires:       tex(luatexbase.sty)
 Requires:       tex(rlbabel.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source134:      babel.tar.xz
-Source135:      babel.doc.tar.xz
+# from 20250308
+Source137:      babel.tar.xz
+Source138:      babel.doc.tar.xz
 
 %description -n texlive-babel
 This package manages culturally-determined typographical (and
@@ -11575,7 +11764,7 @@ pdfLaTeX, as well as with XeLaTeX and LuaLaTeX, out of the box.
 A few even work with plain formats.
 
 %package -n texlive-babel-doc
-Version:        %{texlive_version}.%{texlive_noarch}.24.2svn69742
+Version:        %{texlive_version}.%{texlive_noarch}.25.4svn73985
 Release:        0
 Summary:        Documentation for texlive-babel
 License:        LPPL-1.0
@@ -11718,6 +11907,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/arc/babel-arc-Nbat.ini
 %{_texmfdistdir}/tex/generic/babel/locale/arc/babel-arc-Palm.ini
 %{_texmfdistdir}/tex/generic/babel/locale/arc/babel-arc.ini
+%{_texmfdistdir}/tex/generic/babel/locale/arq/babel-algerianarabic.tex
+%{_texmfdistdir}/tex/generic/babel/locale/arq/babel-arq.ini
 %{_texmfdistdir}/tex/generic/babel/locale/arz/babel-arz.ini
 %{_texmfdistdir}/tex/generic/babel/locale/arz/babel-egyptianarabic.tex
 %{_texmfdistdir}/tex/generic/babel/locale/as/babel-as.ini
@@ -11754,6 +11945,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/be/babel-belarusian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/bem/babel-bem.ini
 %{_texmfdistdir}/tex/generic/babel/locale/bem/babel-bemba.tex
+%{_texmfdistdir}/tex/generic/babel/locale/bew/babel-betawi.tex
+%{_texmfdistdir}/tex/generic/babel/locale/bew/babel-bew.ini
 %{_texmfdistdir}/tex/generic/babel/locale/bez/babel-bena.tex
 %{_texmfdistdir}/tex/generic/babel/locale/bez/babel-bez.ini
 %{_texmfdistdir}/tex/generic/babel/locale/bg/babel-bg.ini
@@ -11916,6 +12109,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/es/babel-spanish.tex
 %{_texmfdistdir}/tex/generic/babel/locale/et/babel-estonian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/et/babel-et.ini
+%{_texmfdistdir}/tex/generic/babel/locale/ett/babel-etruscan.tex
+%{_texmfdistdir}/tex/generic/babel/locale/ett/babel-ett.ini
 %{_texmfdistdir}/tex/generic/babel/locale/eu/babel-basque.tex
 %{_texmfdistdir}/tex/generic/babel/locale/eu/babel-eu.ini
 %{_texmfdistdir}/tex/generic/babel/locale/ewo/babel-ewo.ini
@@ -12018,6 +12213,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/inh/babel-inh.ini
 %{_texmfdistdir}/tex/generic/babel/locale/is/babel-icelandic.tex
 %{_texmfdistdir}/tex/generic/babel/locale/is/babel-is.ini
+%{_texmfdistdir}/tex/generic/babel/locale/isv/babel-interslavic.tex
+%{_texmfdistdir}/tex/generic/babel/locale/isv/babel-isv.ini
 %{_texmfdistdir}/tex/generic/babel/locale/it/babel-it.ini
 %{_texmfdistdir}/tex/generic/babel/locale/it/babel-italian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/iu/babel-inuktitut.tex
@@ -12086,6 +12283,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/ksf/babel-ksf.ini
 %{_texmfdistdir}/tex/generic/babel/locale/ksh/babel-colognian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/ksh/babel-ksh.ini
+%{_texmfdistdir}/tex/generic/babel/locale/ku/babel-ku.ini
+%{_texmfdistdir}/tex/generic/babel/locale/ku/babel-kurdish.tex
 %{_texmfdistdir}/tex/generic/babel/locale/kv/babel-komi.tex
 %{_texmfdistdir}/tex/generic/babel/locale/kv/babel-kv.ini
 %{_texmfdistdir}/tex/generic/babel/locale/kw/babel-cornish.tex
@@ -12243,6 +12442,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/or/babel-oriya.tex
 %{_texmfdistdir}/tex/generic/babel/locale/os/babel-os.ini
 %{_texmfdistdir}/tex/generic/babel/locale/os/babel-ossetic.tex
+%{_texmfdistdir}/tex/generic/babel/locale/osa/babel-osa.ini
+%{_texmfdistdir}/tex/generic/babel/locale/osa/babel-osage.tex
+%{_texmfdistdir}/tex/generic/babel/locale/oui/babel-olduighur.tex
+%{_texmfdistdir}/tex/generic/babel/locale/oui/babel-oui.ini
 %{_texmfdistdir}/tex/generic/babel/locale/pa/babel-pa-Arab.ini
 %{_texmfdistdir}/tex/generic/babel/locale/pa/babel-pa-Guru.ini
 %{_texmfdistdir}/tex/generic/babel/locale/pa/babel-pa.ini
@@ -12255,6 +12458,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/pap/babel-papiamento.tex
 %{_texmfdistdir}/tex/generic/babel/locale/pcm/babel-nigerianpidgin.tex
 %{_texmfdistdir}/tex/generic/babel/locale/pcm/babel-pcm.ini
+%{_texmfdistdir}/tex/generic/babel/locale/peo/babel-oldpersian.tex
+%{_texmfdistdir}/tex/generic/babel/locale/peo/babel-peo.ini
 %{_texmfdistdir}/tex/generic/babel/locale/phn/babel-phn.ini
 %{_texmfdistdir}/tex/generic/babel/locale/phn/babel-phoenician.tex
 %{_texmfdistdir}/tex/generic/babel/locale/pl/babel-pl.ini
@@ -12353,6 +12558,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/ses/babel-ses.ini
 %{_texmfdistdir}/tex/generic/babel/locale/sg/babel-sango.tex
 %{_texmfdistdir}/tex/generic/babel/locale/sg/babel-sg.ini
+%{_texmfdistdir}/tex/generic/babel/locale/sga/babel-oldirish.tex
+%{_texmfdistdir}/tex/generic/babel/locale/sga/babel-sga.ini
 %{_texmfdistdir}/tex/generic/babel/locale/shi/babel-shi-Latn.ini
 %{_texmfdistdir}/tex/generic/babel/locale/shi/babel-shi-Tfng.ini
 %{_texmfdistdir}/tex/generic/babel/locale/shi/babel-shi.ini
@@ -12467,6 +12674,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/tzm/babel-tzm.ini
 %{_texmfdistdir}/tex/generic/babel/locale/ug/babel-ug.ini
 %{_texmfdistdir}/tex/generic/babel/locale/ug/babel-uyghur.tex
+%{_texmfdistdir}/tex/generic/babel/locale/uga/babel-uga.ini
+%{_texmfdistdir}/tex/generic/babel/locale/uga/babel-ugaritic.tex
 %{_texmfdistdir}/tex/generic/babel/locale/uk/babel-uk.ini
 %{_texmfdistdir}/tex/generic/babel/locale/uk/babel-ukrainian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/ur/babel-ur.ini
@@ -12492,8 +12701,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/vai/babel-vai.tex
 %{_texmfdistdir}/tex/generic/babel/locale/ve/babel-ve.ini
 %{_texmfdistdir}/tex/generic/babel/locale/ve/babel-venda.tex
+%{_texmfdistdir}/tex/generic/babel/locale/vec/babel-vec.ini
+%{_texmfdistdir}/tex/generic/babel/locale/vec/babel-venetian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/vi/babel-vi.ini
 %{_texmfdistdir}/tex/generic/babel/locale/vi/babel-vietnamese.tex
+%{_texmfdistdir}/tex/generic/babel/locale/vmw/babel-makhuwa.tex
+%{_texmfdistdir}/tex/generic/babel/locale/vmw/babel-vmw.ini
 %{_texmfdistdir}/tex/generic/babel/locale/vo/babel-vo.ini
 %{_texmfdistdir}/tex/generic/babel/locale/vo/babel-volapuk.tex
 %{_texmfdistdir}/tex/generic/babel/locale/vun/babel-vun.ini
@@ -12506,10 +12719,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/war/babel-waray.tex
 %{_texmfdistdir}/tex/generic/babel/locale/wo/babel-wo.ini
 %{_texmfdistdir}/tex/generic/babel/locale/wo/babel-wolof.tex
+%{_texmfdistdir}/tex/generic/babel/locale/xcr/babel-carian.tex
+%{_texmfdistdir}/tex/generic/babel/locale/xcr/babel-xcr.ini
 %{_texmfdistdir}/tex/generic/babel/locale/xh/babel-xh.ini
 %{_texmfdistdir}/tex/generic/babel/locale/xh/babel-xhosa.tex
+%{_texmfdistdir}/tex/generic/babel/locale/xlc/babel-lycian.tex
+%{_texmfdistdir}/tex/generic/babel/locale/xlc/babel-xlc.ini
+%{_texmfdistdir}/tex/generic/babel/locale/xld/babel-lydian.tex
+%{_texmfdistdir}/tex/generic/babel/locale/xld/babel-xld.ini
+%{_texmfdistdir}/tex/generic/babel/locale/xnr/babel-kangri.tex
+%{_texmfdistdir}/tex/generic/babel/locale/xnr/babel-xnr.ini
 %{_texmfdistdir}/tex/generic/babel/locale/xog/babel-soga.tex
 %{_texmfdistdir}/tex/generic/babel/locale/xog/babel-xog.ini
+%{_texmfdistdir}/tex/generic/babel/locale/xsa/babel-sabaean.tex
+%{_texmfdistdir}/tex/generic/babel/locale/xsa/babel-xsa.ini
 %{_texmfdistdir}/tex/generic/babel/locale/yav/babel-yangben.tex
 %{_texmfdistdir}/tex/generic/babel/locale/yav/babel-yav.ini
 %{_texmfdistdir}/tex/generic/babel/locale/yi/babel-yi.ini
@@ -12520,6 +12743,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/yrl/babel-yrl.ini
 %{_texmfdistdir}/tex/generic/babel/locale/yue/babel-cantonese.tex
 %{_texmfdistdir}/tex/generic/babel/locale/yue/babel-yue.ini
+%{_texmfdistdir}/tex/generic/babel/locale/za/babel-za.ini
+%{_texmfdistdir}/tex/generic/babel/locale/za/babel-zhuang.tex
 %{_texmfdistdir}/tex/generic/babel/locale/zgh/babel-standardmoroccantamazight.tex
 %{_texmfdistdir}/tex/generic/babel/locale/zgh/babel-zgh.ini
 %{_texmfdistdir}/tex/generic/babel/locale/zh/babel-chinese-hans-hk.tex
@@ -12604,9 +12829,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-albanian-doc >= %{texlive_version}
 Provides:       tex(albanian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source136:      babel-albanian.tar.xz
-Source137:      babel-albanian.doc.tar.xz
+# from 20250308
+Source139:      babel-albanian.tar.xz
+Source140:      babel-albanian.doc.tar.xz
 
 %description -n texlive-babel-albanian
 The package provides support for typesetting Albanian (as part
@@ -12679,9 +12904,9 @@ Suggests:       texlive-babel-azerbaijani-doc >= %{texlive_version}
 Provides:       tex(azerbaijani.ldf)
 Recommends:     texlive-hyphen-turkish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source138:      babel-azerbaijani.tar.xz
-Source139:      babel-azerbaijani.doc.tar.xz
+# from 20250308
+Source141:      babel-azerbaijani.tar.xz
+Source142:      babel-azerbaijani.doc.tar.xz
 
 %description -n texlive-babel-azerbaijani
 This is the babel style for Azerbaijani. This language poses
@@ -12758,9 +12983,9 @@ Suggests:       texlive-babel-basque-doc >= %{texlive_version}
 Provides:       tex(basque.ldf)
 Recommends:     texlive-hyphen-basque
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source140:      babel-basque.tar.xz
-Source141:      babel-basque.doc.tar.xz
+# from 20250308
+Source143:      babel-basque.tar.xz
+Source144:      babel-basque.doc.tar.xz
 
 %description -n texlive-babel-basque
 The package establishes Basque conventions in a document.
@@ -12830,9 +13055,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-belarusian-doc >= %{texlive_version}
 Provides:       tex(belarusian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source142:      babel-belarusian.tar.xz
-Source143:      babel-belarusian.doc.tar.xz
+# from 20250308
+Source145:      babel-belarusian.tar.xz
+Source146:      babel-belarusian.doc.tar.xz
 
 %description -n texlive-babel-belarusian
 The package provides support for use of Babel in documents
@@ -12905,9 +13130,9 @@ Suggests:       texlive-babel-bosnian-doc >= %{texlive_version}
 Provides:       tex(bosnian.ldf)
 Recommends:     texlive-hyphen-churchslavonic
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source144:      babel-bosnian.tar.xz
-Source145:      babel-bosnian.doc.tar.xz
+# from 20250308
+Source147:      babel-bosnian.tar.xz
+Source148:      babel-bosnian.doc.tar.xz
 
 %description -n texlive-babel-bosnian
 The package provides a language definition file that enables
@@ -12980,9 +13205,9 @@ Suggests:       texlive-babel-breton-doc >= %{texlive_version}
 Provides:       tex(breton.ldf)
 Recommends:     texlive-hyphen-galician
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source146:      babel-breton.tar.xz
-Source147:      babel-breton.doc.tar.xz
+# from 20250308
+Source149:      babel-breton.tar.xz
+Source150:      babel-breton.doc.tar.xz
 
 %description -n texlive-babel-breton
 Breton (being, principally, a spoken language) does not have
@@ -13056,9 +13281,9 @@ Suggests:       texlive-babel-bulgarian-doc >= %{texlive_version}
 Provides:       tex(bulgarian.ldf)
 Recommends:     texlive-hyphen-bulgarian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source148:      babel-bulgarian.tar.xz
-Source149:      babel-bulgarian.doc.tar.xz
+# from 20250308
+Source151:      babel-bulgarian.tar.xz
+Source152:      babel-bulgarian.doc.tar.xz
 
 %description -n texlive-babel-bulgarian
 The package provides support for documents in Bulgarian (or
@@ -13131,9 +13356,9 @@ Suggests:       texlive-babel-catalan-doc >= %{texlive_version}
 Provides:       tex(catalan.ldf)
 Recommends:     texlive-hyphen-catalan
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source150:      babel-catalan.tar.xz
-Source151:      babel-catalan.doc.tar.xz
+# from 20250308
+Source153:      babel-catalan.tar.xz
+Source154:      babel-catalan.doc.tar.xz
 
 %description -n texlive-babel-catalan
 The package establishes Catalan conventions in a document (or a
@@ -13206,9 +13431,9 @@ Suggests:       texlive-babel-croatian-doc >= %{texlive_version}
 Provides:       tex(croatian.ldf)
 Recommends:     texlive-hyphen-croatian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source152:      babel-croatian.tar.xz
-Source153:      babel-croatian.doc.tar.xz
+# from 20250308
+Source155:      babel-croatian.tar.xz
+Source156:      babel-croatian.doc.tar.xz
 
 %description -n texlive-babel-croatian
 The package establishes Croatian conventions in a document (or
@@ -13281,9 +13506,9 @@ Suggests:       texlive-babel-czech-doc >= %{texlive_version}
 Provides:       tex(czech.ldf)
 Recommends:     texlive-hyphen-czech
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source154:      babel-czech.tar.xz
-Source155:      babel-czech.doc.tar.xz
+# from 20250308
+Source157:      babel-czech.tar.xz
+Source158:      babel-czech.doc.tar.xz
 
 %description -n texlive-babel-czech
 The package provides the language definition file for support
@@ -13356,9 +13581,9 @@ Suggests:       texlive-babel-danish-doc >= %{texlive_version}
 Provides:       tex(danish.ldf)
 Recommends:     texlive-hyphen-danish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source156:      babel-danish.tar.xz
-Source157:      babel-danish.doc.tar.xz
+# from 20250308
+Source159:      babel-danish.tar.xz
+Source160:      babel-danish.doc.tar.xz
 
 %description -n texlive-babel-danish
 The package provides a language definition, file for use with
@@ -13434,9 +13659,9 @@ Provides:       tex(afrikaans.ldf)
 Provides:       tex(dutch.ldf)
 Recommends:     texlive-hyphen-dutch
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source158:      babel-dutch.tar.xz
-Source159:      babel-dutch.doc.tar.xz
+# from 20250308
+Source161:      babel-dutch.tar.xz
+Source162:      babel-dutch.doc.tar.xz
 
 %description -n texlive-babel-dutch
 The package provides a language definition, file for use with
@@ -13482,12 +13707,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-dutch/dutch.ldf
 
 %package -n texlive-babel-english
-Version:        %{texlive_version}.%{texlive_noarch}.3.3rsvn44495
+Version:        %{texlive_version}.%{texlive_noarch}.3.3rsvn70799
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for English
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Requires:       texlive-hyphen-english >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-english
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -13519,9 +13746,9 @@ Provides:       tex(english.ldf)
 Provides:       tex(newzealand.ldf)
 Recommends:     texlive-hyphen-english
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source160:      babel-english.tar.xz
-Source161:      babel-english.doc.tar.xz
+# from 20250308
+Source163:      babel-english.tar.xz
+Source164:      babel-english.doc.tar.xz
 
 %description -n texlive-babel-english
 The package provides the language definition file for support
@@ -13530,7 +13757,7 @@ hyphenation patterns for British English and Australian text,
 and default ('american') patterns for Canadian and USA text.
 
 %package -n texlive-babel-english-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.3rsvn44495
+Version:        %{texlive_version}.%{texlive_noarch}.3.3rsvn70799
 Release:        0
 Summary:        Documentation for texlive-babel-english
 License:        LPPL-1.0
@@ -13603,9 +13830,9 @@ Suggests:       texlive-babel-esperanto-doc >= %{texlive_version}
 Provides:       tex(esperanto.ldf)
 Recommends:     texlive-hyphen-esperanto
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source162:      babel-esperanto.tar.xz
-Source163:      babel-esperanto.doc.tar.xz
+# from 20250308
+Source165:      babel-esperanto.tar.xz
+Source166:      babel-esperanto.doc.tar.xz
 
 %description -n texlive-babel-esperanto
 The package provides the language definition file for support
@@ -13678,9 +13905,9 @@ Suggests:       texlive-babel-estonian-doc >= %{texlive_version}
 Provides:       tex(estonian.ldf)
 Recommends:     texlive-hyphen-estonian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source164:      babel-estonian.tar.xz
-Source165:      babel-estonian.doc.tar.xz
+# from 20250308
+Source167:      babel-estonian.tar.xz
+Source168:      babel-estonian.doc.tar.xz
 
 %description -n texlive-babel-estonian
 The package provides the language definition file for support
@@ -13754,9 +13981,9 @@ Suggests:       texlive-babel-finnish-doc >= %{texlive_version}
 Provides:       tex(finnish.ldf)
 Recommends:     texlive-hyphen-finnish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source166:      babel-finnish.tar.xz
-Source167:      babel-finnish.doc.tar.xz
+# from 20250308
+Source169:      babel-finnish.tar.xz
+Source170:      babel-finnish.doc.tar.xz
 
 %description -n texlive-babel-finnish
 The package provides a language description file that enables
@@ -13799,7 +14026,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-finnish/finnish.ldf
 
 %package -n texlive-babel-french
-Version:        %{texlive_version}.%{texlive_noarch}.3.5ssvn70254
+Version:        %{texlive_version}.%{texlive_noarch}.3.6csvn71907
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel contributed support for French
@@ -13833,9 +14060,9 @@ Provides:       tex(french.ldf)
 Provides:       tex(frenchb.ldf)
 Recommends:     texlive-hyphen-french
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source168:      babel-french.tar.xz
-Source169:      babel-french.doc.tar.xz
+# from 20250308
+Source171:      babel-french.tar.xz
+Source172:      babel-french.doc.tar.xz
 
 %description -n texlive-babel-french
 The package, formerly known as frenchb, establishes French
@@ -13843,7 +14070,7 @@ conventions in a document (or a subset of the conventions, if
 French is not the main language of the document).
 
 %package -n texlive-babel-french-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.5ssvn70254
+Version:        %{texlive_version}.%{texlive_noarch}.3.6csvn71907
 Release:        0
 Summary:        Documentation for texlive-babel-french
 License:        LPPL-1.0
@@ -13917,9 +14144,9 @@ Suggests:       texlive-babel-friulan-doc >= %{texlive_version}
 Provides:       tex(friulan.ldf)
 Recommends:     texlive-hyphen-friulan
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source170:      babel-friulan.tar.xz
-Source171:      babel-friulan.doc.tar.xz
+# from 20250308
+Source173:      babel-friulan.tar.xz
+Source174:      babel-friulan.doc.tar.xz
 
 %description -n texlive-babel-friulan
 The package provides a language description file that enables
@@ -13992,9 +14219,9 @@ Suggests:       texlive-babel-galician-doc >= %{texlive_version}
 Provides:       tex(galician.ldf)
 Recommends:     texlive-hyphen-galician
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source172:      babel-galician.tar.xz
-Source173:      babel-galician.doc.tar.xz
+# from 20250308
+Source175:      babel-galician.tar.xz
+Source176:      babel-galician.doc.tar.xz
 
 %description -n texlive-babel-galician
 The package provides a language description file that enables
@@ -14070,9 +14297,9 @@ Provides:       tex(georgian.sty)
 Provides:       tex(georgiancaps.tex)
 Recommends:     texlive-hyphen-georgian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source174:      babel-georgian.tar.xz
-Source175:      babel-georgian.doc.tar.xz
+# from 20250308
+Source177:      babel-georgian.tar.xz
+Source178:      babel-georgian.doc.tar.xz
 
 %description -n texlive-babel-georgian
 The package provides support for use of Babel in documents
@@ -14117,7 +14344,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-georgian/georgiancaps.tex
 
 %package -n texlive-babel-german
-Version:        %{texlive_version}.%{texlive_noarch}.2.14svn69506
+Version:        %{texlive_version}.%{texlive_noarch}.2.15svn73094
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for documents written in German
@@ -14154,9 +14381,9 @@ Provides:       tex(nswissgerman.ldf)
 Provides:       tex(swissgerman.ldf)
 Recommends:     texlive-hyphen-german
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source176:      babel-german.tar.xz
-Source177:      babel-german.doc.tar.xz
+# from 20250308
+Source179:      babel-german.tar.xz
+Source180:      babel-german.doc.tar.xz
 
 %description -n texlive-babel-german
 This bundle is an extension to the babel package for
@@ -14167,7 +14394,7 @@ orthography as well as for the Austrian and Swiss varieties of
 German.
 
 %package -n texlive-babel-german-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.14svn69506
+Version:        %{texlive_version}.%{texlive_noarch}.2.15svn73094
 Release:        0
 Summary:        Documentation for texlive-babel-german
 License:        LPPL-1.0
@@ -14243,9 +14470,9 @@ Provides:       tex(greek.ldf)
 Provides:       tex(grmath.sty)
 Recommends:     texlive-hyphen-greek
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source178:      babel-greek.tar.xz
-Source179:      babel-greek.doc.tar.xz
+# from 20250308
+Source181:      babel-greek.tar.xz
+Source182:      babel-greek.doc.tar.xz
 
 %description -n texlive-babel-greek
 The bundle provides comprehensive support for the Greek
@@ -14346,9 +14573,9 @@ Provides:       tex(rlbabel.def)
 Requires:       tex(babel.sty)
 Requires:       tex(inputenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source180:      babel-hebrew.tar.xz
-Source181:      babel-hebrew.doc.tar.xz
+# from 20250308
+Source183:      babel-hebrew.tar.xz
+Source184:      babel-hebrew.doc.tar.xz
 
 %description -n texlive-babel-hebrew
 The package provides the language definition file for support
@@ -14429,9 +14656,9 @@ Suggests:       texlive-babel-hungarian-doc >= %{texlive_version}
 Provides:       tex(magyar.ldf)
 Recommends:     texlive-hyphen-hungarian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source182:      babel-hungarian.tar.xz
-Source183:      babel-hungarian.doc.tar.xz
+# from 20250308
+Source185:      babel-hungarian.tar.xz
+Source186:      babel-hungarian.doc.tar.xz
 
 %description -n texlive-babel-hungarian
 The package provides a language definition file that enables
@@ -14503,9 +14730,9 @@ Suggests:       texlive-babel-icelandic-doc >= %{texlive_version}
 Provides:       tex(icelandic.ldf)
 Recommends:     texlive-hyphen-icelandic
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source184:      babel-icelandic.tar.xz
-Source185:      babel-icelandic.doc.tar.xz
+# from 20250308
+Source187:      babel-icelandic.tar.xz
+Source188:      babel-icelandic.doc.tar.xz
 
 %description -n texlive-babel-icelandic
 The package provides the language definition file for support
@@ -14582,9 +14809,9 @@ Provides:       tex(indon.ldf)
 Provides:       tex(indonesian.ldf)
 Recommends:     texlive-hyphen-indonesian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source186:      babel-indonesian.tar.xz
-Source187:      babel-indonesian.doc.tar.xz
+# from 20250308
+Source189:      babel-indonesian.tar.xz
+Source190:      babel-indonesian.doc.tar.xz
 
 %description -n texlive-babel-indonesian
 This is the babel style for Indonesian.
@@ -14659,9 +14886,9 @@ Suggests:       texlive-babel-interlingua-doc >= %{texlive_version}
 Provides:       tex(interlingua.ldf)
 Recommends:     texlive-hyphen-interlingua
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source188:      babel-interlingua.tar.xz
-Source189:      babel-interlingua.doc.tar.xz
+# from 20250308
+Source191:      babel-interlingua.tar.xz
+Source192:      babel-interlingua.doc.tar.xz
 
 %description -n texlive-babel-interlingua
 The package provides the language definition file for support
@@ -14737,9 +14964,9 @@ Suggests:       texlive-babel-irish-doc >= %{texlive_version}
 Provides:       tex(irish.ldf)
 Recommends:     texlive-hyphen-irish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source190:      babel-irish.tar.xz
-Source191:      babel-irish.doc.tar.xz
+# from 20250308
+Source193:      babel-irish.tar.xz
+Source194:      babel-irish.doc.tar.xz
 
 %description -n texlive-babel-irish
 The package provides the language definition file for support
@@ -14782,7 +15009,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-irish/irish.ldf
 
 %package -n texlive-babel-italian
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.00svn69298
+Version:        %{texlive_version}.%{texlive_noarch}.1.5.01svn72520
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Italian text
@@ -14812,15 +15039,15 @@ Suggests:       texlive-babel-italian-doc >= %{texlive_version}
 Provides:       tex(italian.ldf)
 Recommends:     texlive-hyphen-italian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source192:      babel-italian.tar.xz
-Source193:      babel-italian.doc.tar.xz
+# from 20250308
+Source195:      babel-italian.tar.xz
+Source196:      babel-italian.doc.tar.xz
 
 %description -n texlive-babel-italian
 The package provides language definitions for use in babel.
 
 %package -n texlive-babel-italian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.00svn69298
+Version:        %{texlive_version}.%{texlive_noarch}.1.5.01svn72520
 Release:        0
 Summary:        Documentation for texlive-babel-italian
 License:        LPPL-1.0
@@ -14885,9 +15112,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-japanese-doc >= %{texlive_version}
 Provides:       tex(japanese.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source194:      babel-japanese.tar.xz
-Source195:      babel-japanese.doc.tar.xz
+# from 20250308
+Source197:      babel-japanese.tar.xz
+Source198:      babel-japanese.doc.tar.xz
 
 %description -n texlive-babel-japanese
 This package provides a japanese option for the babel package.
@@ -14967,9 +15194,9 @@ Suggests:       texlive-babel-kurmanji-doc >= %{texlive_version}
 Provides:       tex(kurmanji.ldf)
 Recommends:     texlive-hyphen-kurmanji
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source196:      babel-kurmanji.tar.xz
-Source197:      babel-kurmanji.doc.tar.xz
+# from 20250308
+Source199:      babel-kurmanji.tar.xz
+Source200:      babel-kurmanji.doc.tar.xz
 
 %description -n texlive-babel-kurmanji
 The package provides the language definition file for support
@@ -15049,9 +15276,9 @@ Provides:       tex(latin.ldf)
 Provides:       tex(medievallatin.ldf)
 Recommends:     texlive-hyphen-latin
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source198:      babel-latin.tar.xz
-Source199:      babel-latin.doc.tar.xz
+# from 20250308
+Source201:      babel-latin.tar.xz
+Source202:      babel-latin.doc.tar.xz
 
 %description -n texlive-babel-latin
 The babel-latin package provides the babel languages latin,
@@ -15100,7 +15327,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-latin/medievallatin.ldf
 
 %package -n texlive-babel-latvian
-Version:        %{texlive_version}.%{texlive_noarch}.2.0bsvn46681
+Version:        %{texlive_version}.%{texlive_noarch}.2.0csvn71108
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Latvian
@@ -15130,16 +15357,16 @@ Suggests:       texlive-babel-latvian-doc >= %{texlive_version}
 Provides:       tex(latvian.ldf)
 Recommends:     texlive-hyphen-latvian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source200:      babel-latvian.tar.xz
-Source201:      babel-latvian.doc.tar.xz
+# from 20250308
+Source203:      babel-latvian.tar.xz
+Source204:      babel-latvian.doc.tar.xz
 
 %description -n texlive-babel-latvian
 The package provides the language definition file for support
 of Latvian in babel.
 
 %package -n texlive-babel-latvian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0bsvn46681
+Version:        %{texlive_version}.%{texlive_noarch}.2.0csvn71108
 Release:        0
 Summary:        Documentation for texlive-babel-latvian
 License:        LPPL-1.0
@@ -15204,9 +15431,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-lithuanian-doc >= %{texlive_version}
 Provides:       tex(lithuanian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source202:      babel-lithuanian.tar.xz
-Source203:      babel-lithuanian.doc.tar.xz
+# from 20250308
+Source205:      babel-lithuanian.tar.xz
+Source206:      babel-lithuanian.doc.tar.xz
 
 %description -n texlive-babel-lithuanian
 Babel support material for documents written in Lithuanian
@@ -15280,9 +15507,9 @@ Suggests:       texlive-babel-macedonian-doc >= %{texlive_version}
 Provides:       tex(macedonian.ldf)
 Recommends:     texlive-hyphen-churchslavonic
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source204:      babel-macedonian.tar.xz
-Source205:      babel-macedonian.doc.tar.xz
+# from 20250308
+Source207:      babel-macedonian.tar.xz
+Source208:      babel-macedonian.doc.tar.xz
 
 %description -n texlive-babel-macedonian
 The package provides support for Macedonian documents written
@@ -15358,9 +15585,9 @@ Provides:       tex(melayu.ldf)
 Provides:       tex(meyalu.ldf)
 Recommends:     texlive-hyphen-indic
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source206:      babel-malay.tar.xz
-Source207:      babel-malay.doc.tar.xz
+# from 20250308
+Source209:      babel-malay.tar.xz
+Source210:      babel-malay.doc.tar.xz
 
 %description -n texlive-babel-malay
 This is the babel style for Malay.
@@ -15405,7 +15632,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-malay/meyalu.ldf
 
 %package -n texlive-babel-norsk
-Version:        %{texlive_version}.%{texlive_noarch}.2.0jsvn69603
+Version:        %{texlive_version}.%{texlive_noarch}.2.0ksvn70691
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Norwegian
@@ -15437,9 +15664,9 @@ Provides:       tex(norwegian.ldf)
 Provides:       tex(nynorsk.ldf)
 Recommends:     texlive-hyphen-norwegian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source208:      babel-norsk.tar.xz
-Source209:      babel-norsk.doc.tar.xz
+# from 20250308
+Source211:      babel-norsk.tar.xz
+Source212:      babel-norsk.doc.tar.xz
 
 %description -n texlive-babel-norsk
 The package provides the language definition file for support
@@ -15447,7 +15674,7 @@ of Norwegian in babel. Some shortcuts are defined, as well as
 translations to Norsk of standard "LaTeX names".
 
 %package -n texlive-babel-norsk-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0jsvn69603
+Version:        %{texlive_version}.%{texlive_noarch}.2.0ksvn70691
 Release:        0
 Summary:        Documentation for texlive-babel-norsk
 License:        LPPL-1.0
@@ -15515,9 +15742,9 @@ Suggests:       texlive-babel-occitan-doc >= %{texlive_version}
 Provides:       tex(occitan.ldf)
 Recommends:     texlive-hyphen-occitan
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source210:      babel-occitan.tar.xz
-Source211:      babel-occitan.doc.tar.xz
+# from 20250308
+Source213:      babel-occitan.tar.xz
+Source214:      babel-occitan.doc.tar.xz
 
 %description -n texlive-babel-occitan
 Occitan language description file with usage instructions.
@@ -15589,9 +15816,9 @@ Suggests:       texlive-babel-piedmontese-doc >= %{texlive_version}
 Provides:       tex(piedmontese.ldf)
 Recommends:     texlive-hyphen-piedmontese
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source212:      babel-piedmontese.tar.xz
-Source213:      babel-piedmontese.doc.tar.xz
+# from 20250308
+Source215:      babel-piedmontese.tar.xz
+Source216:      babel-piedmontese.doc.tar.xz
 
 %description -n texlive-babel-piedmontese
 The package provides the language definition file for support
@@ -15665,9 +15892,9 @@ Provides:       tex(polish-compat.ldf)
 Provides:       tex(polish.ldf)
 Recommends:     texlive-hyphen-polish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source214:      babel-polish.tar.xz
-Source215:      babel-polish.doc.tar.xz
+# from 20250308
+Source217:      babel-polish.tar.xz
+Source218:      babel-polish.doc.tar.xz
 
 %description -n texlive-babel-polish
 The package provides the language definition file for support
@@ -15745,9 +15972,9 @@ Provides:       tex(portuges.ldf)
 Provides:       tex(portuguese.ldf)
 Recommends:     texlive-hyphen-portuguese
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source216:      babel-portuges.tar.xz
-Source217:      babel-portuges.doc.tar.xz
+# from 20250308
+Source219:      babel-portuges.tar.xz
+Source220:      babel-portuges.doc.tar.xz
 
 %description -n texlive-babel-portuges
 The package provides the language definition file for support
@@ -15825,9 +16052,9 @@ Suggests:       texlive-babel-romanian-doc >= %{texlive_version}
 Provides:       tex(romanian.ldf)
 Recommends:     texlive-hyphen-romanian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source218:      babel-romanian.tar.xz
-Source219:      babel-romanian.doc.tar.xz
+# from 20250308
+Source221:      babel-romanian.tar.xz
+Source222:      babel-romanian.doc.tar.xz
 
 %description -n texlive-babel-romanian
 The package provides the language definition file for support
@@ -15901,9 +16128,9 @@ Suggests:       texlive-babel-romansh-doc >= %{texlive_version}
 Provides:       tex(romansh.ldf)
 Recommends:     texlive-hyphen-romansh
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source220:      babel-romansh.tar.xz
-Source221:      babel-romansh.doc.tar.xz
+# from 20250308
+Source223:      babel-romansh.tar.xz
+Source224:      babel-romansh.doc.tar.xz
 
 %description -n texlive-babel-romansh
 The package provides a language description file that enables
@@ -15975,9 +16202,9 @@ Suggests:       texlive-babel-russian-doc >= %{texlive_version}
 Provides:       tex(russianb.ldf)
 Recommends:     texlive-hyphen-russian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source222:      babel-russian.tar.xz
-Source223:      babel-russian.doc.tar.xz
+# from 20250308
+Source225:      babel-russian.tar.xz
+Source226:      babel-russian.doc.tar.xz
 
 %description -n texlive-babel-russian
 The package provides support for use of Babel in documents
@@ -16053,9 +16280,9 @@ Provides:       tex(northernsami.ldf)
 Provides:       tex(samin.ldf)
 Recommends:     texlive-hyphen-norwegian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source224:      babel-samin.tar.xz
-Source225:      babel-samin.doc.tar.xz
+# from 20250308
+Source227:      babel-samin.tar.xz
+Source228:      babel-samin.doc.tar.xz
 
 %description -n texlive-babel-samin
 The package provides the language definition file for support
@@ -16135,9 +16362,9 @@ Provides:       tex(scottish.ldf)
 Provides:       tex(scottishgaelic.ldf)
 Recommends:     texlive-hyphen-galician
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source226:      babel-scottish.tar.xz
-Source227:      babel-scottish.doc.tar.xz
+# from 20250308
+Source229:      babel-scottish.tar.xz
+Source230:      babel-scottish.doc.tar.xz
 
 %description -n texlive-babel-scottish
 The package provides the language definition file for support
@@ -16212,9 +16439,9 @@ Suggests:       texlive-babel-serbian-doc >= %{texlive_version}
 Provides:       tex(serbian.ldf)
 Recommends:     texlive-hyphen-serbian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source228:      babel-serbian.tar.xz
-Source229:      babel-serbian.doc.tar.xz
+# from 20250308
+Source231:      babel-serbian.tar.xz
+Source232:      babel-serbian.doc.tar.xz
 
 %description -n texlive-babel-serbian
 The package provides support for Serbian documents written in
@@ -16287,9 +16514,9 @@ Suggests:       texlive-babel-serbianc-doc >= %{texlive_version}
 Provides:       tex(serbianc.ldf)
 Recommends:     texlive-hyphen-serbian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source230:      babel-serbianc.tar.xz
-Source231:      babel-serbianc.doc.tar.xz
+# from 20250308
+Source233:      babel-serbianc.tar.xz
+Source234:      babel-serbianc.doc.tar.xz
 
 %description -n texlive-babel-serbianc
 The package provides support for Serbian documents written in
@@ -16362,9 +16589,9 @@ Suggests:       texlive-babel-slovak-doc >= %{texlive_version}
 Provides:       tex(slovak.ldf)
 Recommends:     texlive-hyphen-slovak
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source232:      babel-slovak.tar.xz
-Source233:      babel-slovak.doc.tar.xz
+# from 20250308
+Source235:      babel-slovak.tar.xz
+Source236:      babel-slovak.doc.tar.xz
 
 %description -n texlive-babel-slovak
 The package provides the language definition file for support
@@ -16437,9 +16664,9 @@ Suggests:       texlive-babel-slovenian-doc >= %{texlive_version}
 Provides:       tex(slovene.ldf)
 Recommends:     texlive-hyphen-slovenian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source234:      babel-slovenian.tar.xz
-Source235:      babel-slovenian.doc.tar.xz
+# from 20250308
+Source237:      babel-slovenian.tar.xz
+Source238:      babel-slovenian.doc.tar.xz
 
 %description -n texlive-babel-slovenian
 The package provides the language definition file for support
@@ -16514,9 +16741,9 @@ Provides:       tex(lsorbian.ldf)
 Provides:       tex(usorbian.ldf)
 Recommends:     texlive-hyphen-uppersorbian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source236:      babel-sorbian.tar.xz
-Source237:      babel-sorbian.doc.tar.xz
+# from 20250308
+Source239:      babel-sorbian.tar.xz
+Source240:      babel-sorbian.doc.tar.xz
 
 %description -n texlive-babel-sorbian
 The package provides language definitions file for support of
@@ -16594,9 +16821,9 @@ Provides:       tex(romanidx.sty)
 Provides:       tex(spanish.ldf)
 Recommends:     texlive-hyphen-spanish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source238:      babel-spanish.tar.xz
-Source239:      babel-spanish.doc.tar.xz
+# from 20250308
+Source241:      babel-spanish.tar.xz
+Source242:      babel-spanish.doc.tar.xz
 
 %description -n texlive-babel-spanish
 This bundle provides the means to typeset Spanish text, with
@@ -16673,9 +16900,9 @@ Suggests:       texlive-babel-swedish-doc >= %{texlive_version}
 Provides:       tex(swedish.ldf)
 Recommends:     texlive-hyphen-swedish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source240:      babel-swedish.tar.xz
-Source241:      babel-swedish.doc.tar.xz
+# from 20250308
+Source243:      babel-swedish.tar.xz
+Source244:      babel-swedish.doc.tar.xz
 
 %description -n texlive-babel-swedish
 The package provides the language definition file for Swedish.
@@ -16749,9 +16976,9 @@ Provides:       tex(thai.ldf)
 Provides:       tex(tis620.def)
 Recommends:     texlive-hyphen-thai
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source242:      babel-thai.tar.xz
-Source243:      babel-thai.doc.tar.xz
+# from 20250308
+Source245:      babel-thai.tar.xz
+Source246:      babel-thai.doc.tar.xz
 
 %description -n texlive-babel-thai
 The package provides support for typesetting Thai text. within
@@ -16825,9 +17052,9 @@ Suggests:       texlive-babel-turkish-doc >= %{texlive_version}
 Provides:       tex(turkish.ldf)
 Recommends:     texlive-hyphen-turkish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source244:      babel-turkish.tar.xz
-Source245:      babel-turkish.doc.tar.xz
+# from 20250308
+Source247:      babel-turkish.tar.xz
+Source248:      babel-turkish.doc.tar.xz
 
 %description -n texlive-babel-turkish
 The package provides support, within babel, of the Turkish
@@ -16900,9 +17127,9 @@ Suggests:       texlive-babel-ukrainian-doc >= %{texlive_version}
 Provides:       tex(ukraineb.ldf)
 Recommends:     texlive-hyphen-ukrainian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source246:      babel-ukrainian.tar.xz
-Source247:      babel-ukrainian.doc.tar.xz
+# from 20250308
+Source249:      babel-ukrainian.tar.xz
+Source250:      babel-ukrainian.doc.tar.xz
 
 %description -n texlive-babel-ukrainian
 The package provides support for use of babel in documents
@@ -16975,9 +17202,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-vietnamese-doc >= %{texlive_version}
 Provides:       tex(vietnamese.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source248:      babel-vietnamese.tar.xz
-Source249:      babel-vietnamese.doc.tar.xz
+# from 20250308
+Source251:      babel-vietnamese.tar.xz
+Source252:      babel-vietnamese.doc.tar.xz
 
 %description -n texlive-babel-vietnamese
 The package provides the language definition file for support
@@ -17021,7 +17248,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-vietnamese/vietnamese.ldf
 
 %package -n texlive-babel-welsh
-Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn38372
+Version:        %{texlive_version}.%{texlive_noarch}.1.1csvn73855
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Welsh
@@ -17050,9 +17277,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-welsh-doc >= %{texlive_version}
 Provides:       tex(welsh.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source250:      babel-welsh.tar.xz
-Source251:      babel-welsh.doc.tar.xz
+# from 20250308
+Source253:      babel-welsh.tar.xz
+Source254:      babel-welsh.doc.tar.xz
 
 %description -n texlive-babel-welsh
 The package provides the language definition file for Welsh.
@@ -17060,7 +17287,7 @@ The package provides the language definition file for Welsh.
 LaTeX file.)
 
 %package -n texlive-babel-welsh-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn38372
+Version:        %{texlive_version}.%{texlive_noarch}.1.1csvn73855
 Release:        0
 Summary:        Documentation for texlive-babel-welsh
 License:        LPPL-1.0
@@ -17089,7 +17316,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-welsh-doc
-%{_texmfdistdir}/doc/generic/babel-welsh/README
+%{_texmfdistdir}/doc/generic/babel-welsh/README.md
 %{_texmfdistdir}/doc/generic/babel-welsh/welsh.pdf
 
 %files -n texlive-babel-welsh
@@ -17126,9 +17353,9 @@ Suggests:       texlive-babelbib-doc >= %{texlive_version}
 Provides:       tex(babelbib.sty)
 Requires:       tex(babel.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source252:      babelbib.tar.xz
-Source253:      babelbib.doc.tar.xz
+# from 20250308
+Source255:      babelbib.tar.xz
+Source256:      babelbib.doc.tar.xz
 
 %description -n texlive-babelbib
 This package enables the user to generate multilingual
@@ -17258,9 +17485,9 @@ Requires:       tex(everypage.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source254:      background.tar.xz
-Source255:      background.doc.tar.xz
+# from 20250308
+Source257:      background.tar.xz
+Source258:      background.doc.tar.xz
 
 %description -n texlive-background
 The package offers the placement of background material on the
@@ -17336,9 +17563,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-backnaur-doc >= %{texlive_version}
 Provides:       tex(backnaur.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source256:      backnaur.tar.xz
-Source257:      backnaur.doc.tar.xz
+# from 20250308
+Source259:      backnaur.tar.xz
+Source260:      backnaur.doc.tar.xz
 
 %description -n texlive-backnaur
 The package typesets Backus-Naur Form (BNF) definitions. It
@@ -17412,9 +17639,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-baekmuk-fonts >= %{texlive_version}
 Suggests:       texlive-baekmuk-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source258:      baekmuk.tar.xz
-Source259:      baekmuk.doc.tar.xz
+# from 20250308
+Source261:      baekmuk.tar.xz
+Source262:      baekmuk.doc.tar.xz
 
 %description -n texlive-baekmuk
 This bundle consists of four Korean fonts: batang.ttf: serif
@@ -17520,9 +17747,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bagpipe-doc >= %{texlive_version}
 Provides:       tex(bagpipe.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source260:      bagpipe.tar.xz
-Source261:      bagpipe.doc.tar.xz
+# from 20250308
+Source263:      bagpipe.tar.xz
+Source264:      bagpipe.doc.tar.xz
 
 %description -n texlive-bagpipe
 Typesetting bagpipe music in MusixTeX is needlessly tedious.
@@ -17620,9 +17847,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(polyglossia.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source262:      bangla.tar.xz
-Source263:      bangla.doc.tar.xz
+# from 20250308
+Source265:      bangla.tar.xz
+Source266:      bangla.doc.tar.xz
 
 %description -n texlive-bangla
 This package provides all the necessary LaTeX frontends for the
@@ -17695,7 +17922,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-bangla/fontshimanto.ttf
 
 %package -n texlive-bangorcsthesis
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.5svn61770
+Version:        %{texlive_version}.%{texlive_noarch}.1.5.6svn73173
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset a thesis at Bangor University
@@ -17756,9 +17983,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source264:      bangorcsthesis.tar.xz
-Source265:      bangorcsthesis.doc.tar.xz
+# from 20250308
+Source267:      bangorcsthesis.tar.xz
+Source268:      bangorcsthesis.doc.tar.xz
 
 %description -n texlive-bangorcsthesis
 The class typesets thesis/dissertation documents for all levels
@@ -17767,7 +17994,7 @@ class). It also provides macros designed to optimise the
 process of producing a thesis.
 
 %package -n texlive-bangorcsthesis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.5svn61770
+Version:        %{texlive_version}.%{texlive_noarch}.1.5.6svn73173
 Release:        0
 Summary:        Documentation for texlive-bangorcsthesis
 License:        LPPL-1.0
@@ -17850,9 +18077,9 @@ Requires:       tex(totcount.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source266:      bangorexam.tar.xz
-Source267:      bangorexam.doc.tar.xz
+# from 20250308
+Source269:      bangorexam.tar.xz
+Source270:      bangorexam.doc.tar.xz
 
 %description -n texlive-bangorexam
 The package allows typesetting of Bangor Univesity's exam
@@ -17938,9 +18165,9 @@ Provides:       tex(bsize10.clo)
 Provides:       tex(bsize11.clo)
 Provides:       tex(bsize12.clo)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source268:      bangtex.tar.xz
-Source269:      bangtex.doc.tar.xz
+# from 20250308
+Source271:      bangtex.tar.xz
+Source272:      bangtex.doc.tar.xz
 
 %description -n texlive-bangtex
 The bundle provides class files for writing Bangla and Assamese
@@ -18059,9 +18286,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xkvltxp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source270:      bankstatement.tar.xz
-Source271:      bankstatement.doc.tar.xz
+# from 20250308
+Source273:      bankstatement.tar.xz
+Source274:      bankstatement.doc.tar.xz
 
 %description -n texlive-bankstatement
 More and more banks allow their customers to download posting
@@ -18159,9 +18386,9 @@ Provides:       tex(wlc39.tfm)
 Provides:       tex(wlc93.tfm)
 Provides:       tex(wlcr39.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source272:      barcodes.tar.xz
-Source273:      barcodes.doc.tar.xz
+# from 20250308
+Source275:      barcodes.tar.xz
+Source276:      barcodes.doc.tar.xz
 
 %description -n texlive-barcodes
 The package deals with EAN barcodes; Metafont sources for fonts
@@ -18270,9 +18497,9 @@ Requires:       tex(pstricks.sty)
 Requires:       tex(subfigure.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source274:      bardiag.tar.xz
-Source275:      bardiag.doc.tar.xz
+# from 20250308
+Source277:      bardiag.tar.xz
+Source278:      bardiag.doc.tar.xz
 
 %description -n texlive-bardiag
 The main purpose of the package is to make the drawing of bar
@@ -18399,9 +18626,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-barr-doc >= %{texlive_version}
 Provides:       tex(diagxy.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source276:      barr.tar.xz
-Source277:      barr.doc.tar.xz
+# from 20250308
+Source279:      barr.tar.xz
+Source280:      barr.doc.tar.xz
 
 %description -n texlive-barr
 Diagxy is a general diagramming package, useful for diagrams in
@@ -18476,9 +18703,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-barracuda-doc >= %{texlive_version}
 Provides:       tex(barracuda.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source278:      barracuda.tar.xz
-Source279:      barracuda.doc.tar.xz
+# from 20250308
+Source281:      barracuda.tar.xz
+Source282:      barracuda.doc.tar.xz
 
 %description -n texlive-barracuda
 The barracuda library is a modular Lua package for drawing
@@ -18652,9 +18879,9 @@ Provides:       tex(pkelch16.tfm)
 Provides:       tex(pkelch8.tfm)
 Provides:       tex(pkelch9.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source280:      bartel-chess-fonts.tar.xz
-Source281:      bartel-chess-fonts.doc.tar.xz
+# from 20250308
+Source283:      bartel-chess-fonts.tar.xz
+Source284:      bartel-chess-fonts.doc.tar.xz
 
 %description -n texlive-bartel-chess-fonts
 The fonts are provided as Metafont source.
@@ -18831,9 +19058,9 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source282:      bashful.tar.xz
-Source283:      bashful.doc.tar.xz
+# from 20250308
+Source285:      bashful.tar.xz
+Source286:      bashful.doc.tar.xz
 
 %description -n texlive-bashful
 The package makes it possible to execute Unix bash shell
@@ -18913,9 +19140,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-basicarith-doc >= %{texlive_version}
 Provides:       tex(basicarith.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source284:      basicarith.tar.xz
-Source285:      basicarith.doc.tar.xz
+# from 20250308
+Source287:      basicarith.tar.xz
+Source288:      basicarith.doc.tar.xz
 
 %description -n texlive-basicarith
 The package provides macros for typesetting basic arithmetic,
@@ -18964,8 +19191,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-basicarith
 %{_texmfdistdir}/tex/latex/basicarith/basicarith.sty
 
-%package -n texlive-baskervald
-Version:        %{texlive_version}.%{texlive_noarch}.1.016svn19490
+%package -n texlive-baskervaldadf
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72484
 Release:        0
 License:        LPPL-1.0
 Summary:        Baskervald ADF fonts collection with TeX/LaTeX support
@@ -19002,8 +19229,8 @@ Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
-Requires:       texlive-baskervald-fonts >= %{texlive_version}
-Suggests:       texlive-baskervald-doc >= %{texlive_version}
+Requires:       texlive-baskervaldadf-fonts >= %{texlive_version}
+Suggests:       texlive-baskervaldadf-doc >= %{texlive_version}
 Provides:       tex(baskervald.sty)
 Provides:       tex(supp-ybv.enc)
 Provides:       tex(t1ybv.fd)
@@ -19015,12 +19242,14 @@ Provides:       tex(ybvb8c.tfm)
 Provides:       tex(ybvb8c.vf)
 Provides:       tex(ybvb8r.tfm)
 Provides:       tex(ybvb8s.tfm)
+Provides:       tex(ybvb8sr.tfm)
 Provides:       tex(ybvb8t.tfm)
 Provides:       tex(ybvb8t.vf)
 Provides:       tex(ybvbi8c.tfm)
 Provides:       tex(ybvbi8c.vf)
 Provides:       tex(ybvbi8r.tfm)
 Provides:       tex(ybvbi8s.tfm)
+Provides:       tex(ybvbi8sr.tfm)
 Provides:       tex(ybvbi8t.tfm)
 Provides:       tex(ybvbi8t.vf)
 Provides:       tex(ybvbiw8t.tfm)
@@ -19031,12 +19260,14 @@ Provides:       tex(ybvh8c.tfm)
 Provides:       tex(ybvh8c.vf)
 Provides:       tex(ybvh8r.tfm)
 Provides:       tex(ybvh8s.tfm)
+Provides:       tex(ybvh8sr.tfm)
 Provides:       tex(ybvh8t.tfm)
 Provides:       tex(ybvh8t.vf)
 Provides:       tex(ybvho8c.tfm)
 Provides:       tex(ybvho8c.vf)
 Provides:       tex(ybvho8r.tfm)
 Provides:       tex(ybvho8s.tfm)
+Provides:       tex(ybvho8sr.tfm)
 Provides:       tex(ybvho8t.tfm)
 Provides:       tex(ybvho8t.vf)
 Provides:       tex(ybvhow8t.tfm)
@@ -19047,12 +19278,14 @@ Provides:       tex(ybvr8c.tfm)
 Provides:       tex(ybvr8c.vf)
 Provides:       tex(ybvr8r.tfm)
 Provides:       tex(ybvr8s.tfm)
+Provides:       tex(ybvr8sr.tfm)
 Provides:       tex(ybvr8t.tfm)
 Provides:       tex(ybvr8t.vf)
 Provides:       tex(ybvri8c.tfm)
 Provides:       tex(ybvri8c.vf)
 Provides:       tex(ybvri8r.tfm)
 Provides:       tex(ybvri8s.tfm)
+Provides:       tex(ybvri8sr.tfm)
 Provides:       tex(ybvri8t.tfm)
 Provides:       tex(ybvri8t.vf)
 Provides:       tex(ybvriw8t.tfm)
@@ -19061,14 +19294,14 @@ Provides:       tex(ybvrw8t.tfm)
 Provides:       tex(ybvrw8t.vf)
 Requires:       tex(fontenc.sty)
 Requires:       tex(nfssext-cfr.sty)
+Requires:       tex(svn-prov.sty)
 Requires:       tex(textcomp.sty)
-Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source286:      baskervald.tar.xz
-Source287:      baskervald.doc.tar.xz
+# from 20250308
+Source289:      baskervaldadf.tar.xz
+Source290:      baskervaldadf.doc.tar.xz
 
-%description -n texlive-baskervald
+%description -n texlive-baskervaldadf
 Baskervald ADF is a serif family with lining figures designed
 as a substitute for Baskerville. The family currently includes
 upright and italic or oblique shapes in each of regular, bold
@@ -19080,22 +19313,22 @@ two families. One of these primarily provides access to the
 additional ligatures. The included package files provide access
 to these features in LaTeX.
 
-%package -n texlive-baskervald-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.016svn19490
+%package -n texlive-baskervaldadf-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72484
 Release:        0
-Summary:        Documentation for texlive-baskervald
+Summary:        Documentation for texlive-baskervaldadf
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Supplements:    (texlive-baskervald and texlive-alldocumentation)
+Supplements:    (texlive-baskervaldadf and texlive-alldocumentation)
 
-%description -n texlive-baskervald-doc
-This package includes the documentation for texlive-baskervald
+%description -n texlive-baskervaldadf-doc
+This package includes the documentation for texlive-baskervaldadf
 
-%package -n texlive-baskervald-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.016svn19490
+%package -n texlive-baskervaldadf-fonts
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72484
 Release:        0
-Summary:        Severed fonts for texlive-baskervald
+Summary:        Severed fonts for texlive-baskervaldadf
 License:        LPPL-1.0
 URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
@@ -19104,16 +19337,16 @@ Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
 Suggests:       xorg-x11-fonts-core
 
-%description -n texlive-baskervald-fonts
-The  separated fonts package for texlive-baskervald
+%description -n texlive-baskervaldadf-fonts
+The  separated fonts package for texlive-baskervaldadf
 
-%post -n texlive-baskervald
+%post -n texlive-baskervaldadf
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
 echo 'addMap ybv.map' >> /var/run/texlive/run-updmap
 
-%postun -n texlive-baskervald
+%postun -n texlive-baskervaldadf
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
@@ -19122,110 +19355,123 @@ if test $1 = 0; then
     exit 0
 fi
 
-%posttrans -n texlive-baskervald
+%posttrans -n texlive-baskervaldadf
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
-%reconfigure_fonts_scriptlets -n texlive-baskervald-fonts
+%reconfigure_fonts_scriptlets -n texlive-baskervaldadf-fonts
 
-%files -n texlive-baskervald-doc
-%{_texmfdistdir}/doc/fonts/baskervald/COPYING
-%{_texmfdistdir}/doc/fonts/baskervald/NOTICE.txt
-%{_texmfdistdir}/doc/fonts/baskervald/README
-%{_texmfdistdir}/doc/fonts/baskervald/baskervaldadf.pdf
-%{_texmfdistdir}/doc/fonts/baskervald/baskervaldadf.tex
-%{_texmfdistdir}/doc/fonts/baskervald/manifest.txt
+%files -n texlive-baskervaldadf-doc
+%{_texmfdistdir}/doc/fonts/baskervaldadf/COPYING
+%{_texmfdistdir}/doc/fonts/baskervaldadf/NOTICE.txt
+%{_texmfdistdir}/doc/fonts/baskervaldadf/README.md
+%{_texmfdistdir}/doc/fonts/baskervaldadf/baskervald-ybv-example.pdf
+%{_texmfdistdir}/doc/fonts/baskervaldadf/baskervald-ybv-example.tex
+%{_texmfdistdir}/doc/fonts/baskervaldadf/baskervaldadf-build.pdf
+%{_texmfdistdir}/doc/fonts/baskervaldadf/baskervaldadf-tables.pdf
+%{_texmfdistdir}/doc/fonts/baskervaldadf/baskervaldadf-tables.tex
+%{_texmfdistdir}/doc/fonts/baskervaldadf/baskervaldadf.pdf
+%{_texmfdistdir}/doc/fonts/baskervaldadf/manifest.txt
+%{_texmfdistdir}/doc/fonts/baskervaldadf/reglyph-ybv.tex
+%{_texmfdistdir}/doc/fonts/baskervaldadf/ybv-drv.tex
+%{_texmfdistdir}/doc/fonts/baskervaldadf/ybv-map.tex
 
-%files -n texlive-baskervald
-%{_texmfdistdir}/fonts/afm/arkandis/baskervald/ybvb8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/baskervald/ybvbi8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/baskervald/ybvh8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/baskervald/ybvho8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/baskervald/ybvr8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/baskervald/ybvri8a.afm
-%{_texmfdistdir}/fonts/enc/dvips/baskervald/supp-ybv.enc
-%{_texmfdistdir}/fonts/map/dvips/baskervald/ybv.map
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvb8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvb8r.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvb8s.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvb8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvbi8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvbi8r.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvbi8s.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvbi8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvbiw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvbw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvh8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvh8r.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvh8s.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvh8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvho8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvho8r.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvho8s.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvho8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvhow8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvhw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvr8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvr8r.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvr8s.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvr8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvri8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvri8r.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvri8s.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvri8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvriw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/baskervald/ybvrw8t.tfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/baskervald/ybvb8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/baskervald/ybvb8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/baskervald/ybvbi8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/baskervald/ybvbi8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/baskervald/ybvh8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/baskervald/ybvh8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/baskervald/ybvho8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/baskervald/ybvho8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/baskervald/ybvr8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/baskervald/ybvr8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/baskervald/ybvri8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/baskervald/ybvri8a.pfm
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvb8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvb8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvbi8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvbi8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvbiw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvbw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvh8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvh8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvho8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvho8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvhow8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvhw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvr8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvr8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvri8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvri8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvriw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/baskervald/ybvrw8t.vf
-%{_texmfdistdir}/tex/latex/baskervald/baskervald.sty
-%{_texmfdistdir}/tex/latex/baskervald/t1ybv.fd
-%{_texmfdistdir}/tex/latex/baskervald/t1ybvw.fd
-%{_texmfdistdir}/tex/latex/baskervald/ts1ybv.fd
-%{_texmfdistdir}/tex/latex/baskervald/ts1ybvw.fd
+%files -n texlive-baskervaldadf
+%{_texmfdistdir}/fonts/afm/public/baskervaldadf/ybvb8a.afm
+%{_texmfdistdir}/fonts/afm/public/baskervaldadf/ybvbi8a.afm
+%{_texmfdistdir}/fonts/afm/public/baskervaldadf/ybvh8a.afm
+%{_texmfdistdir}/fonts/afm/public/baskervaldadf/ybvho8a.afm
+%{_texmfdistdir}/fonts/afm/public/baskervaldadf/ybvr8a.afm
+%{_texmfdistdir}/fonts/afm/public/baskervaldadf/ybvri8a.afm
+%{_texmfdistdir}/fonts/enc/dvips/baskervaldadf/supp-ybv.enc
+%{_texmfdistdir}/fonts/map/dvips/baskervaldadf/ybv.map
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvb8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvb8r.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvb8s.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvb8sr.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvb8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvbi8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvbi8r.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvbi8s.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvbi8sr.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvbi8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvbiw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvbw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvh8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvh8r.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvh8s.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvh8sr.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvh8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvho8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvho8r.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvho8s.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvho8sr.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvho8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvhow8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvhw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvr8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvr8r.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvr8s.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvr8sr.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvr8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvri8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvri8r.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvri8s.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvri8sr.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvri8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvriw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/baskervaldadf/ybvrw8t.tfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/baskervaldadf/ybvb8a.pfb
+%{_texmfdistdir}/fonts/type1/public/baskervaldadf/ybvb8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/baskervaldadf/ybvbi8a.pfb
+%{_texmfdistdir}/fonts/type1/public/baskervaldadf/ybvbi8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/baskervaldadf/ybvh8a.pfb
+%{_texmfdistdir}/fonts/type1/public/baskervaldadf/ybvh8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/baskervaldadf/ybvho8a.pfb
+%{_texmfdistdir}/fonts/type1/public/baskervaldadf/ybvho8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/baskervaldadf/ybvr8a.pfb
+%{_texmfdistdir}/fonts/type1/public/baskervaldadf/ybvr8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/baskervaldadf/ybvri8a.pfb
+%{_texmfdistdir}/fonts/type1/public/baskervaldadf/ybvri8a.pfm
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvb8c.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvb8t.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvbi8c.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvbi8t.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvbiw8t.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvbw8t.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvh8c.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvh8t.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvho8c.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvho8t.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvhow8t.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvhw8t.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvr8c.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvr8t.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvri8c.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvri8t.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvriw8t.vf
+%{_texmfdistdir}/fonts/vf/public/baskervaldadf/ybvrw8t.vf
+%{_texmfdistdir}/tex/latex/baskervaldadf/baskervald.sty
+%{_texmfdistdir}/tex/latex/baskervaldadf/t1ybv.fd
+%{_texmfdistdir}/tex/latex/baskervaldadf/t1ybvw.fd
+%{_texmfdistdir}/tex/latex/baskervaldadf/ts1ybv.fd
+%{_texmfdistdir}/tex/latex/baskervaldadf/ts1ybvw.fd
 
-%files -n texlive-baskervald-fonts
-%dir %{_datadir}/fonts/texlive-baskervald
-%{_datadir}/fontconfig/conf.avail/58-texlive-baskervald.conf
-%verify(not md5 size mtime) %{_datadir}/fonts/texlive-baskervald/encodings.dir
-%verify(not md5 size mtime) %{_datadir}/fonts/texlive-baskervald/fonts.dir
-%verify(not md5 size mtime) %{_datadir}/fonts/texlive-baskervald/fonts.scale
-%{_datadir}/fonts/texlive-baskervald/ybvb8a.pfb
-%{_datadir}/fonts/texlive-baskervald/ybvbi8a.pfb
-%{_datadir}/fonts/texlive-baskervald/ybvh8a.pfb
-%{_datadir}/fonts/texlive-baskervald/ybvho8a.pfb
-%{_datadir}/fonts/texlive-baskervald/ybvr8a.pfb
-%{_datadir}/fonts/texlive-baskervald/ybvri8a.pfb
+%files -n texlive-baskervaldadf-fonts
+%dir %{_datadir}/fonts/texlive-baskervaldadf
+%{_datadir}/fontconfig/conf.avail/58-texlive-baskervaldadf.conf
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-baskervaldadf/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-baskervaldadf/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-baskervaldadf/fonts.scale
+%{_datadir}/fonts/texlive-baskervaldadf/ybvb8a.pfb
+%{_datadir}/fonts/texlive-baskervaldadf/ybvbi8a.pfb
+%{_datadir}/fonts/texlive-baskervaldadf/ybvh8a.pfb
+%{_datadir}/fonts/texlive-baskervaldadf/ybvho8a.pfb
+%{_datadir}/fonts/texlive-baskervaldadf/ybvr8a.pfb
+%{_datadir}/fonts/texlive-baskervaldadf/ybvri8a.pfb
 
 %package -n texlive-baskervaldx
-Version:        %{texlive_version}.%{texlive_noarch}.1.077svn69273
+Version:        %{texlive_version}.%{texlive_noarch}.1.08svn73362
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Extension and modification of BaskervaldADF with LaTeX support
@@ -19719,6 +19965,9 @@ Provides:       tex(TS1Baskervaldx-TLF.fd)
 Provides:       tex(TS1Baskervaldx-TOsF.fd)
 Provides:       tex(bvalph.enc)
 Provides:       tex(bvtabosf.enc)
+Provides:       tex(ly1minbaskervaldx.fd)
+Provides:       tex(ot1minbaskervaldx.fd)
+Provides:       tex(t1minbaskervaldx.fd)
 Provides:       tex(zbv_23jm4j.enc)
 Provides:       tex(zbv_2445cl.enc)
 Provides:       tex(zbv_2kku7k.enc)
@@ -19825,9 +20074,9 @@ Requires:       tex(scalefnt.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source288:      baskervaldx.tar.xz
-Source289:      baskervaldx.doc.tar.xz
+# from 20250308
+Source291:      baskervaldx.tar.xz
+Source292:      baskervaldx.doc.tar.xz
 
 %description -n texlive-baskervaldx
 Extends and modifies the BaskervaldADF font (a Baskerville
@@ -19836,7 +20085,7 @@ oldstyle figures in all shapes. Includes OpenType and
 PostScript fonts, as well as LaTeX support files.
 
 %package -n texlive-baskervaldx-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.077svn69273
+Version:        %{texlive_version}.%{texlive_noarch}.1.08svn73362
 Release:        0
 Summary:        Documentation for texlive-baskervaldx
 License:        GPL-2.0-or-later
@@ -19848,7 +20097,7 @@ Supplements:    (texlive-baskervaldx and texlive-alldocumentation)
 This package includes the documentation for texlive-baskervaldx
 
 %package -n texlive-baskervaldx-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.077svn69273
+Version:        %{texlive_version}.%{texlive_noarch}.1.08svn73362
 Release:        0
 Summary:        Severed fonts for texlive-baskervaldx
 License:        GPL-2.0-or-later
@@ -20457,6 +20706,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/baskervaldx/TS1Baskervaldx-TLF.fd
 %{_texmfdistdir}/tex/latex/baskervaldx/TS1Baskervaldx-TOsF.fd
 %{_texmfdistdir}/tex/latex/baskervaldx/baskervaldx.fontspec
+%{_texmfdistdir}/tex/latex/baskervaldx/ly1minbaskervaldx.fd
+%{_texmfdistdir}/tex/latex/baskervaldx/ot1minbaskervaldx.fd
+%{_texmfdistdir}/tex/latex/baskervaldx/t1minbaskervaldx.fd
 
 %files -n texlive-baskervaldx-fonts
 %dir %{_datadir}/fonts/texlive-baskervaldx
@@ -20476,7 +20728,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-baskervaldx/Baskervaldx-Reg.pfb
 
 %package -n texlive-baskervillef
-Version:        %{texlive_version}.%{texlive_noarch}.1.051svn55475
+Version:        %{texlive_version}.%{texlive_noarch}.1.052svn73381
 Release:        0
 License:        OFL-1.1
 Summary:        Fry's Baskerville look-alike, with math support
@@ -20931,7 +21183,10 @@ Provides:       tex(TS1BaskervilleF-OsF.fd)
 Provides:       tex(TS1BaskervilleF-TLF.fd)
 Provides:       tex(TS1BaskervilleF-TOsF.fd)
 Provides:       tex(baskervillef.sty)
+Provides:       tex(ly1minbaskervillef.fd)
 Provides:       tex(omlzbami.fd)
+Provides:       tex(ot1minbaskervillef.fd)
+Provides:       tex(t1minbaskervillef.fd)
 Provides:       tex(zba_23ismr.enc)
 Provides:       tex(zba_2hmbf5.enc)
 Provides:       tex(zba_2j2bbt.enc)
@@ -21035,9 +21290,9 @@ Requires:       tex(txmia.tfm)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source290:      baskervillef.tar.xz
-Source291:      baskervillef.doc.tar.xz
+# from 20250308
+Source293:      baskervillef.tar.xz
+Source294:      baskervillef.doc.tar.xz
 
 %description -n texlive-baskervillef
 BaskervilleF is a fork from the Libre Baskerville fonts (Roman,
@@ -21049,7 +21304,7 @@ italic style was added and mathematical support is offered as
 an option to newtxmath.
 
 %package -n texlive-baskervillef-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.051svn55475
+Version:        %{texlive_version}.%{texlive_noarch}.1.052svn73381
 Release:        0
 Summary:        Documentation for texlive-baskervillef
 License:        OFL-1.1
@@ -21061,7 +21316,7 @@ Supplements:    (texlive-baskervillef and texlive-alldocumentation)
 This package includes the documentation for texlive-baskervillef
 
 %package -n texlive-baskervillef-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.051svn55475
+Version:        %{texlive_version}.%{texlive_noarch}.1.052svn73381
 Release:        0
 Summary:        Severed fonts for texlive-baskervillef
 License:        OFL-1.1
@@ -21618,7 +21873,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/baskervillef/TS1BaskervilleF-TOsF.fd
 %{_texmfdistdir}/tex/latex/baskervillef/baskervillef.fontspec
 %{_texmfdistdir}/tex/latex/baskervillef/baskervillef.sty
+%{_texmfdistdir}/tex/latex/baskervillef/ly1minbaskervillef.fd
 %{_texmfdistdir}/tex/latex/baskervillef/omlzbami.fd
+%{_texmfdistdir}/tex/latex/baskervillef/ot1minbaskervillef.fd
+%{_texmfdistdir}/tex/latex/baskervillef/t1minbaskervillef.fd
 
 %files -n texlive-baskervillef-fonts
 %dir %{_datadir}/fonts/texlive-baskervillef
@@ -21668,9 +21926,9 @@ Suggests:       texlive-basque-book-doc >= %{texlive_version}
 Provides:       tex(basque-book.cls)
 Requires:       tex(basque-date.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source292:      basque-book.tar.xz
-Source293:      basque-book.doc.tar.xz
+# from 20250308
+Source295:      basque-book.tar.xz
+Source296:      basque-book.doc.tar.xz
 
 %description -n texlive-basque-book
 The class is derived from the LaTeX book class. The extensions
@@ -21747,9 +22005,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-basque-date-doc >= %{texlive_version}
 Provides:       tex(basque-date.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source294:      basque-date.tar.xz
-Source295:      basque-date.doc.tar.xz
+# from 20250308
+Source297:      basque-date.tar.xz
+Source298:      basque-date.doc.tar.xz
 
 %description -n texlive-basque-date
 The package provides two LaTeX commands to print the current
@@ -21823,9 +22081,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bath-bst-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source296:      bath-bst.tar.xz
-Source297:      bath-bst.doc.tar.xz
+# from 20250308
+Source299:      bath-bst.tar.xz
+Source300:      bath-bst.doc.tar.xz
 
 %description -n texlive-bath-bst
 This package provides a BibTeX style to format reference lists
@@ -21903,9 +22161,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bbcard-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source298:      bbcard.tar.xz
-Source299:      bbcard.doc.tar.xz
+# from 20250308
+Source301:      bbcard.tar.xz
+Source302:      bbcard.doc.tar.xz
 
 %description -n texlive-bbcard
 Three jiffy packages for creating cards of various sorts with
@@ -22290,10 +22548,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:56} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive
     # Make possible scripts usable if any
-    for scr in %{_texmfdistdir}/asymptote/asy-kate.sh \
+    for scr in %{_texmfdistdir}/asymptote/GUI/buildtool.py \
+	       %{_texmfdistdir}/asymptote/asy-kate.sh \
 	       %{_texmfdistdir}/asymptote/asymptote.py
     do
 	test -e %{buildroot}/$scr || continue
@@ -22313,6 +22573,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	       %{_texmfdistdir}/asymptote/GUI/Widg_editBezier.py \
 	       %{_texmfdistdir}/asymptote/GUI/Window1.py \
 	       %{_texmfdistdir}/asymptote/GUI/__init__.py \
+	       %{_texmfdistdir}/asymptote/GUI/buildtool.py \
 	       %{_texmfdistdir}/asymptote/GUI/labelEditor.py \
 	       %{_texmfdistdir}/asymptote/GUI/setup.py \
 	       %{_texmfdistdir}/asymptote/GUI/xasy.py \
@@ -22326,7 +22587,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	       %{_texmfdistdir}/asymptote/GUI/xasyTransform.py \
 	       %{_texmfdistdir}/asymptote/GUI/xasyUtils.py \
 	       %{_texmfdistdir}/asymptote/GUI/xasyValidator.py \
-	       %{_texmfdistdir}/asymptote/GUI/xasyVersion.py \
 	       %{_texmfdistdir}/asymptote/asymptote.py
     do
 	test -e %{buildroot}/$scr || continue
@@ -22352,6 +22612,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	       %{_texmfdistdir}/asymptote/GUI/Widg_editBezier.py \
 	       %{_texmfdistdir}/asymptote/GUI/Window1.py \
 	       %{_texmfdistdir}/asymptote/GUI/__init__.py \
+	       %{_texmfdistdir}/asymptote/GUI/buildtool.py \
 	       %{_texmfdistdir}/asymptote/GUI/labelEditor.py \
 	       %{_texmfdistdir}/asymptote/GUI/setup.py \
 	       %{_texmfdistdir}/asymptote/GUI/xasy.py \
@@ -22365,7 +22626,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	       %{_texmfdistdir}/asymptote/GUI/xasyTransform.py \
 	       %{_texmfdistdir}/asymptote/GUI/xasyUtils.py \
 	       %{_texmfdistdir}/asymptote/GUI/xasyValidator.py \
-	       %{_texmfdistdir}/asymptote/GUI/xasyVersion.py \
 	       %{_texmfdistdir}/asymptote/asymptote.py
     do
 	test -e %{buildroot}/$scr || continue
@@ -22393,7 +22653,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$txt || continue
 	chmod 0644 %{buildroot}/$txt
     done
-    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/asymptote-by-example-zh-cn/src/CLEAN.bat
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/asymptote-by-example-zh-cn/src/MAKEPDF.bat
@@ -22404,8 +22664,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/asymptote-manual-zh-cn/src/CLEAN.bat
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/asymptote-manual-zh-cn/src/MAKEPDF.bat
@@ -22416,7 +22676,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22426,6 +22685,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:71} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:72} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:73} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-atkinson
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/atkinson/*.{pf[ab],[ot]tf} \
@@ -22476,10 +22738,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-atkinson.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-atkinson.conf
-    tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/attachfile2/pdfatfi.pl
     do
@@ -22492,12 +22754,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-augie
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/augie/*.{pf[ab],[ot]tf}
@@ -22527,8 +22789,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-auncial-new
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/auncial-new/*.{pf[ab],[ot]tf}
@@ -22558,8 +22820,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-aurical
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/aurical/*.{pf[ab],[ot]tf}
@@ -22589,16 +22851,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/authorindex/authorindex
     do
@@ -22611,9 +22873,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22631,12 +22890,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-avantgar
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/urw/avantgar/*.{pf[ab],[ot]tf}
@@ -22666,17 +22928,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22802,6 +23061,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-baekmuk
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/baekmuk/*.{pf[ab],[ot]tf}
@@ -22831,10 +23093,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-bangla
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/bangla/*.{pf[ab],[ot]tf}
@@ -22864,9 +23126,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22874,11 +23133,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Remove files
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/barcodes/install.bat
     tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Remove files
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/barcodes/install.bat
     tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22890,37 +23149,40 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
-    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-baskervald
-    for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/arkandis/baskervald/*.{pf[ab],[ot]tf}
+    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-baskervaldadf
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/baskervaldadf/*.{pf[ab],[ot]tf}
     do
         test -e $font || continue
-        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-baskervald
+        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-baskervaldadf
         base=${font##*/}
-        ln -sf %{_datadir}/fonts/texlive-baskervald/${base} ${font}
+        ln -sf %{_datadir}/fonts/texlive-baskervaldadf/${base} ${font}
     done
-    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-baskervald/
-    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-baskervald/
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-baskervaldadf/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-baskervaldadf/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
-    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-baskervald.conf)<<-'EOF'
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-baskervaldadf.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
 	<!-- ************************************************ -->
 	<!-- Use this to disable the TeX fonts of the package -->
-	<!--    texlive-baskervald    -->
+	<!--    texlive-baskervaldadf    -->
 	<!-- Be aware that the configurations in the files    -->
 	<!-- 09-texlive*.conf will not be affected by this    -->
 	<!-- ************************************************ -->
 
 	<fontconfig>
 	  <rejectfont>
-	    <glob>%{_datadir}/fonts/texlive-baskervald/*</glob>
+	    <glob>%{_datadir}/fonts/texlive-baskervaldadf/*</glob>
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-baskervaldx
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/baskervaldx/*.{pf[ab],[ot]tf} \
@@ -22971,8 +23233,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-baskervaldx.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-baskervaldx.conf
-    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-baskervillef
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/baskervillef/*.{pf[ab],[ot]tf} \
@@ -23023,14 +23285,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-baskervillef.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-baskervillef.conf
-    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
