@@ -1,7 +1,7 @@
 #
 # spec file for package python-bitarray
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bitarray
-Version:        3.0.0
+Version:        3.2.0
 Release:        0
 Summary:        Efficient Arrays of Booleans
 License:        Python-2.0
@@ -57,7 +57,7 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-rm examples/growth/.gitignore
+rm examples/resize/.gitignore examples/puff/.gitignore
 
 %check
 # tests don't run from within the source directory
@@ -66,6 +66,7 @@ rm examples/growth/.gitignore
 %files %{python_files}
 %license LICENSE
 %doc examples CHANGE_LOG README.rst
-%{python_sitearch}/bitarray*
+%{python_sitearch}/bitarray
+%{python_sitearch}/bitarray-%{version}*.egg-info
 
 %changelog

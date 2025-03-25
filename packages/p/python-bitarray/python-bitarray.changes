@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 25 12:35:45 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.2.0
+  * add `util.xor_indices()`, #229
+  * add Hamming code example
+- Update to 3.1.1
+  * updated `pythoncapi_compat.h` for pypy3.11 support, see #227
+  * use `__builtin_parityll()` when available in `util.parity()`
+  * add `parity_64()` to header
+  * simplify some tests
+  * add LFSR example
+- Update to 3.1.0
+  * allow mask assignment to bitarrays, see #225
+  * add missing masked operations to pyi-file
+  * refactor `resize()` and avoid overallocation when downsizing buffer
+  * update `build_wheels.yml`
+  * fix some typos
+  * minor simplifications
+  * rename `growth/` example to `resize/` and add tests for `resize()`
+  * update gene example
+  * add comments
+
+-------------------------------------------------------------------
 Mon Oct 28 11:36:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.0:
