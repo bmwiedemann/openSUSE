@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 24 07:00:20 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.2:
+  * main: null-terminate initial password buffer
+  * comm: assert that password size is positive
+
+-------------------------------------------------------------------
 Fri Mar 21 07:04:23 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.1:
