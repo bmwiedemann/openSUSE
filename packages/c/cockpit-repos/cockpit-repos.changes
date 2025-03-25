@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 21 11:53:22 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 3
+  * Better handling of repository refreshes
+  * Improve error handling when deleting repositories
+  * Update node_modules
+
+-------------------------------------------------------------------
+Fri Mar  7 12:02:29 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 2
+  * Complete rewrite of error handling
+  * Handle non-superuser cases
+  * Add handling for noncockpit repo modifications
+  * Add update_version.sh to automate version upgrades
+
+-------------------------------------------------------------------
 Thu Feb  6 07:27:01 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Initial build of the package

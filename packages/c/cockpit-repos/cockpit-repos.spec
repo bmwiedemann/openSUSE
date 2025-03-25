@@ -16,7 +16,7 @@
 #
 
 Name: cockpit-repos
-Version: 1
+Version: 3
 Release: 1%{?dist}
 Summary: A Cockpit module for managing system repositories
 URL: https://github.com/openSUSE/cockpit-repos
@@ -25,6 +25,7 @@ License: LGPL-2.1-or-later
 Source0: %{name}-%{version}.tar.xz
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
+Source12:       update_version.sh
 %include %_sourcedir/node_modules.spec.inc
 
 BuildArch: noarch
@@ -49,15 +50,8 @@ BuildRequires: local-npm-registry
 
 Requires: cockpit-bridge
 
-Provides: bundled(npm(attr-accept)) = 2.2.5
-Provides: bundled(npm(file-selector)) = 2.1.2
-Provides: bundled(npm(focus-trap)) = 7.6.2
-Provides: bundled(npm(js-tokens)) = 4.0.0
-Provides: bundled(npm(lodash)) = 4.17.21
-Provides: bundled(npm(loose-envify)) = 1.4.0
-Provides: bundled(npm(object-assign)) = 4.1.1
 Provides: bundled(npm(@patternfly/patternfly)) = 5.4.2
-Provides: bundled(npm(@patternfly/react-core)) = 5.4.11
+Provides: bundled(npm(@patternfly/react-core)) = 5.4.12
 Provides: bundled(npm(@patternfly/react-core)) = 6.1.0
 Provides: bundled(npm(@patternfly/react-icons)) = 5.4.2
 Provides: bundled(npm(@patternfly/react-icons)) = 6.1.0
@@ -66,11 +60,18 @@ Provides: bundled(npm(@patternfly/react-styles)) = 6.1.0
 Provides: bundled(npm(@patternfly/react-table)) = 6.1.0
 Provides: bundled(npm(@patternfly/react-tokens)) = 5.4.1
 Provides: bundled(npm(@patternfly/react-tokens)) = 6.1.0
+Provides: bundled(npm(attr-accept)) = 2.2.5
+Provides: bundled(npm(file-selector)) = 2.1.2
+Provides: bundled(npm(focus-trap)) = 7.6.2
+Provides: bundled(npm(js-tokens)) = 4.0.0
+Provides: bundled(npm(lodash)) = 4.17.21
+Provides: bundled(npm(loose-envify)) = 1.4.0
+Provides: bundled(npm(object-assign)) = 4.1.1
 Provides: bundled(npm(prop-types)) = 15.8.1
-Provides: bundled(npm(react)) = 18.3.1
 Provides: bundled(npm(react-dom)) = 18.3.1
-Provides: bundled(npm(react-dropzone)) = 14.3.5
+Provides: bundled(npm(react-dropzone)) = 14.3.8
 Provides: bundled(npm(react-is)) = 16.13.1
+Provides: bundled(npm(react)) = 18.3.1
 Provides: bundled(npm(scheduler)) = 0.23.2
 Provides: bundled(npm(tabbable)) = 6.2.0
 Provides: bundled(npm(tslib)) = 2.8.1

@@ -7,4 +7,21 @@
     <comment>Initial submission of cockpit-repos module</comment>
     <requestid>1248128</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a135cf88ade49d2d5c8ae5fd79a04b07</srcmd5>
+    <version>3</version>
+    <time>1742937143</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3
+  * Better handling of repository refreshes
+  * Improve error handling when deleting repositories
+  * Update node_modules
+
+- Update to version 2
+  * Complete rewrite of error handling
+  * Handle non-superuser cases
+  * Add handling for noncockpit repo modifications
+  * Add update_version.sh to automate version upgrades</comment>
+    <requestid>1255948</requestid>
+  </revision>
 </revisionlist>
