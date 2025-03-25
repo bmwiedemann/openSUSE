@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar 22 15:02:49 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.5.1:
+  * mbsync-get-cert now supports STARTTLS; new option -s
+  * Zero-sized messages from IMAP Stores are now accepted
+  * UIDVALIDITY change recovery is now attempted even if both sides of
+  the Channel are affected
+  * The sync summary at the end is more concise again
+  * Cosmetic improvements to some console output
+  * Fixed IMAP INBOX not being properly recognized with some servers
+  * Fixed Maildir INBOX nested into Path not being implicitly listed
+  * Fixed crash when resuming message propagation with MaxMessages
+  * Fixed --list-stores hanging after synchronous error
+  * Fixed --dry-run without --debug-driver not being really dry
+  * Fixed building from pristine git clones
+  * Fixed building from shallow git clones
+
+-------------------------------------------------------------------
 Wed Oct  9 09:28:32 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.5.0
