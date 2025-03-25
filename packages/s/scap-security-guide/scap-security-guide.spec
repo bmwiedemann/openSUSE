@@ -46,12 +46,12 @@ Version:        0.1.76
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
-Group:          Productivity/Security
 URL:            https://github.com/ComplianceAsCode/content
 %if "%{_vendor}" == "debbuild"
 Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
+Patch0:         ssg-fix-python.patch
 
 # explicit require what is needed by the detection logic in the scripts
 Requires:       coreutils
@@ -62,7 +62,7 @@ Requires:       sed
 Requires:       sudo
 Requires:       zypper
 
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 
 %if "%{_vendor}" == "debbuild"
 %{!?_licensedir:%global license %%doc}
@@ -162,7 +162,6 @@ are community supplied and not officially supported by SUSE.
 
 %package redhat
 Summary:        XCCDF files for RHEL, CentOS, Fedora, ScientificLinux and AlmaLinux
-Group:          Productivity/Security
 %if 0%{?fedora} || 0%{?rhel} || 0%{?alma}
 Conflicts:      scap-security-guide
 %endif
@@ -179,7 +178,6 @@ Note that the included profiles are community supplied and not officially suppor
 
 %package debian
 Summary:        XCCDF files for Debian
-Group:          Productivity/Security
 
 %description debian
 Security Content Automation Protocol (SCAP) Security Guide for Debian.
@@ -193,7 +191,6 @@ Note that the included profiles are community supplied and not officially suppor
 
 %package ubuntu
 Summary:        XCCDF files for Ubuntu
-Group:          Productivity/Security
 
 %description ubuntu
 Security Content Automation Protocol (SCAP) Security Guide for Ubuntu.
@@ -207,6 +204,7 @@ Note that the included profiles are community supplied and not officially suppor
 
 %prep
 %setup -q -n content-%version
+%patch -P 0 -p 1
 
 %build
 cd build
@@ -255,6 +253,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
          -DSSG_PRODUCT_WRLINUX1019=OFF \
          -DSSG_PRODUCT_ANOLIS8=OFF \
          -DSSG_PRODUCT_ANOLIS23=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
          ../
 make
 

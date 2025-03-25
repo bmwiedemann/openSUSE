@@ -472,4 +472,33 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
   -  Extend SSG with functions to manage variables</comment>
     <requestid>1252096</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>b0eb5363840c78bbf8160e1bf46f979f</srcmd5>
+    <version>0.1.76</version>
+    <time>1742936967</time>
+    <user>anag+factory</user>
+    <comment>- ssg-fix-python.patch: fix build with older python3.
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Remove Group: declarations, no longer used
+
+- creation of a new request
+- removed tables reference related to almalinux9 builds
+- fix a bug in redhad package description for almalinux9 builds
+- updates redhat package to include almalinux9 builds
+- added build support for almalinux9
+- removed ssg-reproducable.patch: upstream
+  -  Add new product for Ubuntu 24.04 and draft CIS profiles
+  -  Add pyproject.toml for the ssg package
+  -  AlmaLinux OS 9 as a new product
+  -  Documentation for ssg library
+  -  Extend SSG library to more easily collect profile selections
+  -  Extend SSG with functions to manage variables
+  -  Add new product kylinserver10
+  -  Create OL10 product
+  -  Update PCI-DSS control file for version 4.0.1
+  -  Release SLMicro5 product
+  -  Various updates for SLE 12/15</comment>
+    <requestid>1255397</requestid>
+  </revision>
 </revisionlist>
