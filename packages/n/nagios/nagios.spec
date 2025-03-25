@@ -76,7 +76,6 @@ BuildRequires:  mailx
 BuildRequires:  nagios-rpm-macros
 BuildRequires:  net-tools
 BuildRequires:  openssl-devel
-BuildRequires:  pcre-devel
 BuildRequires:  procps
 BuildRequires:  unzip
 BuildRequires:  zlib-devel

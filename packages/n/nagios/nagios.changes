@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 20 22:26:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove unused pcre build dependency
+
+-------------------------------------------------------------------
 Thu Aug 15 15:46:33 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 4.5.4
