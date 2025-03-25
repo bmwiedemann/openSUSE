@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 24 20:05:42 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.3.2:
+  * chore(backport release-1.3): fix(api): further improve branch
+    regex (#3704)
+  * chore(backport release-1.3): fix(api): update Git branch
+    validation (#3702)
+  * chore(backport release-1.3): docs: fix missing .ID after
+    commitFrom() (#3667)
+  * chore(backport release-1.3): fix(directives): compose-output
+    available to task (#3652)
+  * chore(backport release-1.3): fix(api): sort warehouses when
+    listing (#3651)
+  * chore(backport release-1.3): docs: releaseName is now required
+    by `helm-template` (#3648)
+  * chore(backport release-1.3): docs: fix broken docs links
+    (#3637)
+
+-------------------------------------------------------------------
 Fri Mar 07 06:43:15 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.3.1:
