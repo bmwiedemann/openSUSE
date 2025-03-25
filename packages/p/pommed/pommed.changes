@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar  1 11:42:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(libglade-2.0) BuildRequires: gpomme: replaced
+  Glade with hardcoded GTK+ code back in 2011 (version 1.33).
+
+-------------------------------------------------------------------
 Wed Apr 10 07:47:05 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to produce deterministic build results

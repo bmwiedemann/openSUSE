@@ -240,4 +240,13 @@ Update `pommed-dbus_policy.patch` and `pommed-desktop.patch`
   to allow using `%autopatch` (forwarded request 1166592 from bmwiedemann)</comment>
     <requestid>1169622</requestid>
   </revision>
+  <revision rev="35" vrev="19">
+    <srcmd5>459736d109aebc1b3397780acfc0ed63</srcmd5>
+    <version>1.39</version>
+    <time>1742937106</time>
+    <user>anag+factory</user>
+    <comment>- Drop pkgconfig(libglade-2.0) BuildRequires: gpomme: replaced
+  Glade with hardcoded GTK+ code back in 2011 (version 1.33). (forwarded request 1249391 from iznogood)</comment>
+    <requestid>1255876</requestid>
+  </revision>
 </revisionlist>
