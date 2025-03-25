@@ -96,4 +96,13 @@
   * Updated Dunamai to 1.23.0+ for the latest features. (forwarded request 1255082 from rrahl0)</comment>
     <requestid>1255083</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>62f239b6d3a6890b14badf2c57184afd</srcmd5>
+    <version>1.8.1</version>
+    <time>1742937041</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.1:
+  * NameError exception with Python 3.7 (forwarded request 1255707 from rrahl0)</comment>
+    <requestid>1255708</requestid>
+  </revision>
 </revisionlist>
