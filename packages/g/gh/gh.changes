@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 24 11:54:18 UTC 2025 - pdostal@suse.com
+
+- Update to version 2.69.0:
+  * Curly bracket wrapping acceptance tests
+  * Refactor commentable logic
+  * Clean up pr/issue comment test names
+  * Bring issue/PR comment tests up to par, correct
+  * Revert "Merge pull request #10384 from iamazeem/9798-gh-api-encode-package-name"
+  * Initial pass fixing gh issue and gh pr comment
+  * Bump golang.org/x/net from 0.34.0 to 0.36.0
+  * chore: remove redundant word in comment
+  * Make missing workflow regexp aware of GitHub App
+  * Change issueauto and prauto actions to use the cli-automation env
+  * Add environment to prauto and issueauto workflows
+  * Add cli-discuss-automation environment to triage.md
+  * Separate partitioning from globbing in cmdutil/args package and consumers (#3)
+  * Add `exclude` callback function
+  * Add tests for - and label args
+  * Remove slicing
+  * Support globbing for all platforms
+  * Add testing to GlobWindowsPaths (#2)
+  * Fix `gh gist create` for multiple filenames and glob patterns
+  * [gh release create/upload] Expand glob patterns on Windows
+
+-------------------------------------------------------------------
 Wed Mar 12 07:19:25 UTC 2025 - pdostal@suse.com
 
 - Update to version 2.68.1:
