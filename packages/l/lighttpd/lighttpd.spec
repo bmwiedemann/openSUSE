@@ -2,7 +2,7 @@
 # spec file for package lighttpd
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.76
+Version:        1.4.77
 Release:        0
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
@@ -40,28 +40,24 @@ Source3:        %{name}.keyring
 Source7:        lighttpd.logrotate
 Patch0:         harden_lighttpd.service.patch
 BuildRequires:  autoconf
-BuildRequires:  cyrus-sasl-devel
 BuildRequires:  iputils
-BuildRequires:  krb5-devel
-BuildRequires:  libattr-devel
-BuildRequires:  libdbi-devel
 BuildRequires:  libtool
-BuildRequires:  libxml2-devel
-BuildRequires:  lua51-devel
-BuildRequires:  mysql-devel
-BuildRequires:  openldap2-devel
-BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  shadow
-BuildRequires:  sqlite-devel >= 3
-BuildRequires:  zlib-devel
 BuildRequires:  perl(CGI)
+BuildRequires:  pkgconfig(dbi)
+BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libpcre2-posix)
+BuildRequires:  pkgconfig(libsasl2)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(lua5.1)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(zlib)
 Requires:       spawn-fcgi
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
@@ -72,6 +68,17 @@ Provides:       httpd
 Provides:       group(%{name})
 Provides:       user(%{name})
 %{?systemd_requires}
+%if 0%{?suse_version} <= 1600 && 0%{?is_opensuse}
+BuildRequires:  libattr-devel
+BuildRequires:  mysql-devel
+BuildRequires:  openldap2-devel
+BuildRequires:  pam-devel
+%else
+BuildRequires:  pkgconfig(ldap)
+BuildRequires:  pkgconfig(libattr)
+BuildRequires:  pkgconfig(mysqlclient)
+BuildRequires:  pkgconfig(pam)
+%endif
 %if 0%{?suse_version} > 1500
 # pg_config moved to postgresql-server-devel in postgresql11* packages boo#1153722
 BuildRequires:  postgresql-server-devel
@@ -256,7 +263,7 @@ install -D -m 0644 %{SOURCE7} \
 #
 find %{buildroot} -type f -name "*.la" -delete -print
 # remove executable bit from doc scripts to avoid pulling dependencies
-chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
+chmod -v -x doc/scripts/*.sh
 
 %pre
 %{_sbindir}/groupadd -r %{name} >/dev/null 2>&1 ||:
@@ -281,6 +288,7 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %dir %attr(750,root,%{name}) %{_sysconfdir}/%{name}/conf.d
 %dir %attr(750,root,%{name}) %{_sysconfdir}/%{name}/vhosts.d
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/lighttpd.conf
+%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/lighttpd.annotated.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/modules.conf
 # modules config
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/access_log.conf
@@ -326,7 +334,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %{_mandir}/man8/*.8%{?ext_man}
 %doc AUTHORS NEWS README
 #doc doc/*.dot
-%doc doc/scripts/spawn-php.sh
 %doc doc/outdated/accesslog.txt
 %doc doc/outdated/authentication.txt
 %doc doc/outdated/cgi.txt

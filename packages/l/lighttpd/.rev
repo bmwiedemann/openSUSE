@@ -612,4 +612,14 @@ bsc#1181400</comment>
     <comment>lighttpd 1.4.76 (forwarded request 1167562 from AndreasStieger)</comment>
     <requestid>1167563</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>d3c457b500c81d42af3b1659049fa3e4</srcmd5>
+    <version>1.4.77</version>
+    <time>1742937076</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1255375 from AndreasStieger
+
+lighttpd 1.4.77</comment>
+    <requestid>1255751</requestid>
+  </revision>
 </revisionlist>

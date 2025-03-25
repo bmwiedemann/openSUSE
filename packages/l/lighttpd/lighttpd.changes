@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 23 07:49:40 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.77:
+  * stronger TLS defaults: TLSv1.3
+  * defaults t limit TLSv1.3 Groups to the IANA “Recommended” set:
+    “X25519:P-256:P-384:X448”
+  * server.error-handler-404 operates only on 404
+  * lighttpd.conf renamed lighttpd.annotated.conf, lighttpd.conf is
+    now a simpler header which includes lighttpd.annotated.conf.
+ 
+-------------------------------------------------------------------
 Sat Apr 13 11:20:33 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.76:
