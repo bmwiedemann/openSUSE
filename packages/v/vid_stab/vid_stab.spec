@@ -1,7 +1,7 @@
 #
 # spec file for package vid_stab
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,10 @@ Version:        1.1.1
 Release:        0
 Summary:        Video stabilizer
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            http://public.hronopik.de/vid.stab/
 Source0:        https://github.com/georgmartius/vid.stab/archive/refs/tags/v1.1.1.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
@@ -36,14 +35,12 @@ A library to deshake videos, designed to stabilize even strongly jiggled clips.
 
 %package -n libvidstab%{soname}
 Summary:        A library to deshake video
-Group:          System/Libraries
 
 %description -n libvidstab%{soname}
 A library to deshake videos, designed to stabilize even strongly jiggled clips.
 
 %package -n libvidstab-devel
 Summary:        Development files for libvidstab%{soname}
-Group:          Development/Libraries/C and C++
 Requires:       libvidstab%{soname} = %{version}
 
 %description -n libvidstab-devel
@@ -62,11 +59,15 @@ Development (headers and libraries) files for libvidstab%{soname}.
 	-DSSE3_FOUND=FALSE \
 	-DSSSE3_FOUND=FALSE \
 	-DSSE4_1_FOUND=FALSE \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 	%{nil}
 make %{?_smp_mflags}
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %post -n libvidstab%{soname} -p /sbin/ldconfig
 %postun -n libvidstab%{soname} -p /sbin/ldconfig
