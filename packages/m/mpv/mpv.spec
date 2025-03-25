@@ -1,7 +1,7 @@
 #
 # spec file for package mpv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 # Copyright (c) 2012 Jiri Slaby <jslaby@suse.de>
 # Copyright (c) 2011-2012 Pascal Bleser <pascal.bleser@opensuse.org>
@@ -21,7 +21,7 @@
 
 %define lname   libmpv2
 Name:           mpv
-Version:        0.39.0+git20241217.32d103c58072
+Version:        0.40.0+git20250325.97cb16d68340
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.changes
 # PATCH-FIX-OPENSUSE do not require equal libav versions, obs rebuilds as needed
 Patch0:         mpv-make-ffmpeg-version-check-non-fatal.patch
-# PATCH-FIX-UPSTREAM pw.conf setting config.name to client-rt.conf is deprecated (https://github.com/mpv-player/mpv/issues/15914)
-Patch1:         0001-dont-load-client-rt-conf.patch
 BuildRequires:  bash
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  linux-kernel-headers
@@ -66,6 +64,7 @@ BuildRequires:  pkgconfig(libbluray) >= 0.3.0
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libcdio_cdda)
 BuildRequires:  pkgconfig(libcdio_paranoia)
+BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.105
 BuildRequires:  pkgconfig(libiso9660)
 BuildRequires:  pkgconfig(libjpeg)
@@ -145,6 +144,16 @@ BuildArch:      noarch
 %description zsh-completion
 ZSH command line completion support for %{name}.
 
+%package fish-completion
+Summary:        Fish Completion for %{name}
+Group:          Productivity/Multimedia/Video/Players
+Requires:       %{name} = %{version}
+Supplements:    (mpv and fish)
+BuildArch:      noarch
+
+%description fish-completion
+Fish command line completion support for %{name}.
+
 %package devel
 Summary:        A library to link together with mpv player
 Group:          Development/Libraries/C and C++
@@ -211,6 +220,11 @@ mv %{buildroot}/%{_datadir}/doc/%{name}/* %{buildroot}/%{_defaultdocdir}/%{name}
 %{_datadir}/icons/hicolor
 %{_datadir}/metainfo/mpv.metainfo.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/mpv.fish
 
 %files zsh-completion
 %{_datadir}/zsh/site-functions/_mpv

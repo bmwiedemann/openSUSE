@@ -1,4 +1,544 @@
 -------------------------------------------------------------------
+Tue Mar 25 18:24:54 UTC 2025 - llyyr@yukari.in
+
+- Refresh mpv-make-ffmpeg-version-check-non-fatal.patch
+- Remove 0001-dont-load-client-rt-conf.patch: added upstream
+- Update to version 0.40.0+git20250325.97cb16d68340:
+  * RELEASE_NOTES: remove accidental BOM
+  * Update MPV_VERSION
+  * Release 0.40.0
+  * DOCS: refresh some parts of the release policy
+  * m_option: fix string list printing for empty lists
+  * commands.lua: prevent infinite logging with debug log level
+  * ytdl_hook.lua: fix duplicated chapters
+  * Revert "input.conf: bind MBTN_MID to align-to-cursor"
+  * vo: don't burn cpu in paused state for untimed VOs
+  * demux_lavf: disable extension_picky for hls demuxer globally
+  * video/out/kitty: set display_par when drawing osd
+  * vulkan/context: enable VK_KHR_video_maintenance2 if supported
+  * select.lua: display chapters when before the first chapter
+  * wayland: round values instead of implicitly casting float to int
+  * ci/build-win32.ps1: exit on errors from external commands early
+  * Revert "console.lua: disable cursor autohide while selector is open"
+  * console.lua: disable cursor autohide while selector is open
+  * Revert "ao: correctly set state.playing for non-gapless audio after eof"
+  * opengl/utils: use uintptr_t for arithmetics with possible zero value
+  * hwdec_dxva2dxgi: don't lie about the image format
+  * vo_gpu: assume not ordered formats are reversed
+  * hwdec_dxva2dxgi: zero queue_surf on init
+  * ta: add talloc_zero_ptrtype
+  * DOCS/man/input: correct the mode flag of apply-profile command
+  * console.lua: fix crash when pressing Ctrl+c with select
+  * positioning.lua: clamp values within {-1, 1} for video-align-{x,y}
+  * commands.lua: add cache for often queried constant properties
+  * console.lua: cache observed properties to avoid unnecessary fetching
+  * DOCS/man/input: remove stray newline
+  * demux_mkv: add A_ATRAC/AT1 support
+  * demux_mkv: set number of samples correctly for The True Audio
+  * demux_mkv: add sanity checks for RealAudio packet sizes
+  * console.lua: convert cursor_position to number
+  * commands.lua: complete filesystem paths for run
+  * console.lua: default to --osd-font without completions
+  * console.lua: instantly show completions with the type script message
+  * console.lua: fix the line end position to filter completions
+  * console.lua: don't retrieve --input-ime at startup
+  * console.lua: reduce indentation in 2 functions
+  * console.lua: inline log_add()
+  * console.lua: clear the default item on input.get()
+  * console.lua: declare various variables only in free-form text mode
+  * console.lua: don't duplicate the check to add to history
+  * commands.lua: split this script out of console.lua
+  * console.lua: add history_path field to mp.input.get
+  * console.lua: add autoselect_completion field to mp.input.get
+  * console.lua: let the complete callback return a character to append
+  * DOCS/man/lua: update complete docs referencing autocompletion
+  * fish-completion: create the fish completion script
+  * player/command: add `attached-picture` flags to track add command
+  * player/command: add `visual-impaired` flags to track add command
+  * player/command: convert flags to OPT_FLAGS for track add commands
+  * misc/language: parse hi/sdh/cc tags from external subtitle tracks
+  * misc/mp_assert: important fix forgotten before merge
+  * demux_timeline: don't close segments during demuxing
+  * player: only coalesce callbacks from parsed config files
+  * stream_edl: allow opening edl only from local resources
+  * Revert "stream/stream: mark mf:// and edl:// as unsafe protocols"
+  * stream_mpv: restrict only to network links
+  * player/client: adjust log message for client exit
+  * player/scripting: add logging around script un- and reloading
+  * vo: replace driver->frame_owner with VO_CAP_FRAMEOWNER
+  * vo: replace driver->untimed with VO_CAP_UNTIMED
+  * mac/apphub: remove mpv:// protocol handling
+  * player: add `mpv://` protocol
+  * stream/stream: mark mf:// and edl:// as unsafe protocols
+  * etc/mpv.desktop: update safe protocol list
+  * auto_profiles.lua: make profiles apply with higher priority
+  * player/sub: avoid indexing arrays with -1
+  * demux_mkv: add missing invalid value check
+  * stream_dvdnav: cast to int64_t before multiplication
+  * {x11,wayland}_common: convert dead code to static sanity check
+  * stream_cdda: cast to int64_t before multiplication
+  * player/command: remove redundant check
+  * player/loadfile: fix history_file leak
+  * player/sub: check order before using it as an index
+  * stream_cdda: add sanity checks on track numbers
+  * osxbundle: add new vulkan loader homebrew path
+  * build: remove unused dvdread dependency
+  * mac/vulkan: add support for visibility check for rendering
+  * mac/common: fix indentation
+  * options/m_config_frontend: use local depth variable for show_profile
+  * options/m_config_frontend: fix depth variable
+  * github/workflows: don't install recomended packages with apt
+  * DOCS/man/vo: xx-color-management-v4 -> color-management-v1
+  * hwdec_d3d11va: align image mapper dimensions to a multiple of 2
+  * ytdl_hook.lua: fix boolean comparision
+  * ci/tumbleweed: enable NDEBUG with gcc build
+  * ci/tumbleweed: enable thin lto for clang build
+  * tests: use mp_require to allow tests to be run with NDEBUG
+  * various: use mp_assert macro
+  * misc/mp_assert: add mp_assert and mp_require macros
+  * osdep/compiler: use C23 attributes if available
+  * osdep/compiler: add MP_UNUSED macro
+  * osdep/compiler: fix MP_ASSERT_UNREACHABLE macro for clang
+  * common/common: remove assert from MP_HANDLE_OOM
+  * demux_mkv: add `demuxer-mkv-crop-compat` option
+  * Reapply "demux_mkv: PAR should be calculated after applying crop"
+  * f_decoder_wrapper: don't wait on self thread progress on reinit
+  * options/m_config_frontend: don't allow recursive profile inclusion
+  * command: wait until MPV_EVENT_VIDEO_RECONFIG to pretty print hwdec
+  * f_decoder_wrapper: allow VDCTRL_GET_HWDEC to actually fail
+  * misc/codepoint_width: update tables after clustering fix
+  * w32_common: avoid any unsupported VOCTRL to synchronize the GUI thread
+  * demux_mkv: add support for chroma location
+  * common/av_log: make FFmpeg libs ABI mismatch log clearer
+  * common/av_log: show also build version for FFmpeg
+  * DOCS/man/input: add details for chapter property documentation
+  * DOCS/man/input: add note for add command repeatability
+  * options/m_option: fix REL_TIME_CHAPTER printing
+  * osdep/subprocess-win: fix inheritance of NUL handles in child processes
+  * input: add quiet arg to mp_input_set_mouse_pos for wayland
+  * console.lua: fix select memory leak
+  * sub/osd: remove bogus osd redraw notification resetting
+  * vo_gpu_next: use mp_draw_sub_formats const
+  * opengl/context: remove remnants of the external swapchain API
+  * context_drm_egl: remove custom fencing
+  * vo: signal VOCTRL_REDRAW in a less sensitive spot
+  * stats.lua: use fixed naming for single invocation key bindings
+  * stats.lua: change key bindings of toggle page as nonrepeatable
+  * github/issue_template: simplify Windows version command
+  * github/issue_template: set the type of the issue
+  * common/stats: print percentage of elapsed time during sampling time
+  * common/stats: add one more digit to stats timing
+  * common/stats: move formatting code to one place
+  * console.lua: include more characters in selectable items
+  * select.lua: don't quickly close and reopen the menu
+  * input.lua/defaults.js: unregister input-even again
+  * console.lua: add a keep_open flag to mp.input
+  * clipboard: remove --clipboard-enable
+  * clipboard: add --clipboard-backends option
+  * player/loadfile: strip common filename part from external track title
+  * console.lua: rename handle_enter() to submit()
+  * console.lua: replace repl references
+  * console.lua: increase the opacity of the default item background
+  * osc.lua: allow wheel bindings for custom buttons
+  * console.lua: cache the command-list
+  * console.lua: complete multiple flags separated by +
+  * console.lua: highlight matching parts of selectable items
+  * console.lua: separate the log and matching items
+  * options: default to --prefetch-playlist=yes
+  * DOCS/options: ease --prefetch-playlist warning
+  * input.conf: bind MBTN_MID to align-to-cursor
+  * input.conf: bind Ctrl+left click to drag-to-pan
+  * input.conf: bind Ctrl+wheel to cursor-centric-zoom
+  * input.conf: make Alt+BS reset --video-align-{x,y}
+  * input.conf: make Alt+BS print "video-zoom: 0"
+  * positioning.lua: add this script
+  * console.lua: allow persisting the command history
+  * console.lua: preserve font styles in the counter
+  * console.lua: preserve the counter style when searching history
+  * drm: use VOCTRL_REDRAW when flipping buffers
+  * vo: signal VOCTRL_REDRAW to backends
+  * context_drm_egl: simplify and fix delayed rendering with vo_gpu_next
+  * libmpv_gl: remove pointless external_swapchain call
+  * context_dxinterop: remove unneeded empty external_swapchain
+  * context_angle: simplify some swapchain stuff
+  * vo: unify ra_gl_ctx_params and ra_vk_ctx_params into ra_ctx_params
+  * wayland: don't assert if DND fails while checking the fd
+  * wayland: preserve the previously set dnd_offer action if it exists
+  * meson: build libmpv by default
+  * include: move public headers to own directory
+  * libmpv: use correct header directory name
+  * various: reduce the include scope of some public headers
+  * select.lua: fix LSP warning
+  * wayland: add icc support using wp-color-management-v1
+  * vo_dmabuf_wayland: remove unnecessary commit
+  * vo_dmabuf_wayland: commit surfaces in correct order
+  * DOCS/man/mpv: remove bogus --cdrom-device mention
+  * Revert "stream_{bluray,cdda,dvdnav}: deprecate setting device after schema"
+  * console.lua: complete frame-step flags
+  * select.lua: don't add File info to the menu when no file is playing
+  * input.conf: bind Shift+{HOME,END} to go to the first and last file
+  * input.conf: bind HOME to seek to the beginning
+  * demux: use a slightly better hack when seeking with dvd/bd
+  * player: add an optional mute flag when framestepping
+  * DOCS/man/mpv: explain how to select and navigate through cdda
+  * stream_cdda: deprecate undocumented --cdda-span-{a,b} options
+  * stream_{bluray,cdda,dvdnav}: deprecate setting device after schema
+  * ao_pipewire: don't load client-rt.conf properties
+  * DOCS/man/options: remove outdated wid embedding docs for cocoa
+  * DOCS/man/options: fix missing space in hwdec doc
+  * DOCS/man/options: document that --save-position-on-quit affects loadfile
+  * mac/dialog: release all input keys when modal steals key input
+  * mac/dialog: remove delayed becomeFirstResponder() workaround
+  * osdep/io: harden string conversions
+  * win32-console-wrapper: don't use CRT in runtime wrapper
+  * win32-console-wrapper: simplify error printing
+  * f_decoder_wrapper: warn when using video-aspect-override of 0 or -1
+  * command: print "original" also for aspect ratio of "no"
+  * input.conf: use no instead of -1 for video-aspect-override
+  * f_decoder_wrapper: add --video-aspect-method=ignore
+  * Revert "m_option: forbid non -1 negative values for video-aspect-override"
+  * Revert "m_option: deprecate setting -1 to --video-aspect-override"
+  * DOCS/man/options: fix sub-ass-video-aspect-override documentation
+  * DOCS/man/options: use american spelling for "behavior"
+  * wayland: add some sanity checking when setting mastering luminance
+  * wayland: cleanup redundancy and global state in color-management
+  * vd_lavc: add auto-unsafe and auto-copy-unsafe to the opt help
+  * vd_lavc: nuke some mmal remnants
+  * meson: minor simplification in link flags
+  * osdep/timer-win32: add missing guards for ARM64
+  * wayland: unvoid some wayland protocol structs
+  * wayland: update color management protocol to the upstream version
+  * input.conf: add ctrl+p and g-m keybind for menu
+  * builtin.conf: set menu corner_radius to 0 in box profile
+  * console.lua: use the same opacity for menu as for everything else
+  * osdep/threads-win32: add implementation for mp_thread_cpu_time_ns()
+  * common/stats: improve accuracy of quick timed measurements
+  * common/stats: fix incorrect cpu-time value reset
+  * common/stats: report: account for ongoing timed-measuremets
+  * common/stats: don't report cpu-time on unsupported platforms
+  * DOCS/man: add a separate section for optical drive location
+  * stream_bluray: use DEFAULT_OPTICAL_DRIVE
+  * build: use the same default optical drive for all disc streams
+  * README: add direct link to user scripts
+  * DOCS/man/options: fix a typo in the hwdec section
+  * player: run all update handlers on init
+  * player/command: fix flags type in mp_option_run_callback
+  * wayland_vk: use FIFO if fifo and presentation v2 protocols are available
+  * options: replace --wayland-disable-vsync with --wayland-internal-vsync
+  * options: disable --input-ime by default
+  * console.lua: enable/disable IME on demand
+  * video/out/w32_common: support --input-ime
+  * various: upgrade option flags to uint64_t
+  * DOCS/man/{mpv,osc}: say menu instead of selector
+  * console.lua: give a different background color to the selected item
+  * Revert "console.lua: close with right click"
+  * console.lua: always draw a background behind items
+  * console.lua: add a scrollbar
+  * console.lua: close when clicking outside of items horizontally
+  * console.lua: center the select menu in the window
+  * console.lua: improve the hovered item calculation with background-box
+  * console.lua: update the max width calculation
+  * player: store external filenames as normalized
+  * wayland: support xdg-activation
+  * player: coalesce option updates and drop redundant ones
+  * player: put ipc initialization where it belongs
+  * vd_lavc: make auto the same as auto-safe and introduce auto-unsafe
+  * Revert "meson: bump libdrm version to 2.4.109"
+  * wayland: fix implicit modifier selecting mess (again)
+  * dmabuf_interop_wl: simplify modifier logging
+  * {console,input}.lua: allow subsequent mp.input calls
+  * options/path: only log mp_get_user_path if the path expands
+  * demux_disc: remove obsolete is_dvd checks
+  * build: remove ta-leak-report option
+  * etc/restore-osc-bindings.conf: add previously unbound actions
+  * stream_dvdnav: properly cleanup on error and fix some memory leaks
+  * stream_bluray: fix some title info leaks
+  * stream_blurary: consistently cleanup on error
+  * stream_cdda: subtract first sector when calculating chapter times
+  * DOCS/man/input: remove extra quotes
+  * DOCS/man: document options which are object settings list options
+  * demux_cue: only accept TRACK with AUDIO type
+  * DOCS/man/input: fix typo
+  * ci/build-openbsd: don't enable cdda
+  * Revert "build: disable optical media libs by default (DVD/BD/CD)"
+  * test/libmpv_test_track_selection: add a test for os languages
+  * language-posix: replace '_' subtag separator with '-'
+  * mac/menu: add support for initial directory
+  * mac/dialog: add support for title, file selection and initial directory
+  * mac/swift: move isUrl check to String extension
+  * mac/dialog: add file extension filtering for open dialogs
+  * mac/option: add MPOpts root options
+  * mac/dialog: move dialog creation into its own class
+  * DOCS/man/input: adjust ao-volume documentation to state reality
+  * vo_gpu_next: allow to disable error diffusion when changing --dither
+  * demux/stheader: use atomic types for mp_codec_params names
+  * DOCS/man/options: explain the difference between panscan and zoom
+  * DOCS/man/input: fix required protocol docs for wayland clipboard
+  * DOCS/man/input: document the clock property
+  * player/sub: eliminate redundancy when printing terminal subtitles
+  * test/libmpv_common: ensure our atexit clean fires before internal ones
+  * player/loadfile: don't use ta_set_parent directly
+  * test/libmpv_test_track_selection: add another multilang selection test
+  * test/libmpv_test_track_selection: eliminate reloading redundancy
+  * test/libmpv_test_track_selection: remove unneeded option resetting
+  * test: add default track selection testing
+  * test: split libmpv_test into separate files
+  * test: group together all the libmpv tests under the libmpv suite
+  * github/workflows: drop mingw32
+  * video/out/android: don't assert-fail if WinID is not set
+  * demux_lavf: fix demuxer-lavf-format usage
+  * select.lua: change the --save-watch-history warning text
+  * DOCS/man/options: Clarify what --tone-mapping=auto does
+  * Revert "vo_gpu_next: set --target-colorspace-hint to `yes` by default"
+  * player/command: don't synthesize property names with a trailing /
+  * command: disallow trailing / in track-list/N/metadata
+  * player/command: disable input-commands for fuzzing
+  * m_property: fix playlist property parsing
+  * console.lua: fix completion after command prefixes
+  * command: show Loop playlist when changing --loop-playlist at runtime
+  * m_option: deprecate setting -1 to --video-aspect-override
+  * m_option: forbid non -1 negative values for video-aspect-override
+  * command: convert aspect, par, and sar sub-properties to double
+  * build: add early exit if git is not found
+  * github/workflows/lint: show ruff suggested changes
+  * github/workflows/lint: update astral-sh/ruff-action to v3
+  * ci/lint: disable isort checks
+  * build: use a more user-friendly version string for shallow clones
+  * build: prepend version strings with 'v' for release tarball builds
+  * github/workflows/lint: add umpv to Python linting
+  * TOOLS/umpv: add Windows support
+  * TOOLS/umpv: use append-play
+  * TOOLS/umpv: don't wait for mpv after it is run
+  * TOOLS/umpv: use builtin profile for pseudo gui options
+  * TOOLS/umpv: handle the case when mpv disappears during adding files
+  * TOOLS/umpv: minor fixes to style and typing
+  * m_option: fix parsing of OP_APPEND for string lists
+  * player/loadfile: we shouldn't unescape inplace
+  * meson: add disable-packet-pool option
+  * demux: reclaim demux_packets to reduce memory allocator pressure
+  * loadfile: unescape display filenames
+  * DOCS/man/options: document that --d3d11-flip=no enables transparency
+  * osc.lua: bind right clicking the title to show history
+  * TOOLS/mpv_identify.sh: handle forward slash in property names
+  * video/out/kitty: make kitty vo ten times faster by avoiding strlen
+  * command: normalize paths for path and track-list/N/external-filename
+  * command: simplify find_track_with_url handling
+  * options/path: add mp_normalize_user_path shorthand
+  * various: simplify mp_normalize_path usage
+  * misc/path_utils: allow passing NULL to mp_normalize_path
+  * console.lua: stop expanding ~/ in file completion
+  * Revert "DOCS/man/input: document that shutdown is sent when scripts terminate"
+  * DOCS/man/input: document that shutdown is sent when scripts terminate
+  * Revert "console.lua: add pause_on_open script-opt"
+  * console.lua: add user-data/mpv/console/open
+  * DOCS/man/input: reorder user-data's docs
+  * command: expand paths for all commands with path arguments
+  * ci/lint-commit-msg.py: add .rst from allowed extension skips
+  * ci/lint-commit-msg.py: remove .py from allowed extension skips
+  * command: add metadata sub-property for track-list
+  * command: prefix all property functions with mp
+  * player: print secondary subtitles on the terminal
+  * m_option: reallow setting list options to no value to -clr them
+  * osdep/terminal-unix: fix stop_cont_pipe leak
+  * fuzzer_load: don't dup3 fd if it already has a value we want
+  * m_option: add -clr to keyvalue list options
+  * m_option: reintroduce -del to string list and keyvalue list
+  * m_option: undeprecate list option suffixes with multiple items
+  * player/misc: check codec values for overflow
+  * command: don't run UPDATE_{AD,VD} if the {ao,vo}_chain doesn't exist
+  * vd_lavc: separate opts to two structs and reorganize
+  * ad_lavc: flag options with UPDATE_AD
+  * various: expand paths for all file/directory related options
+  * command: fix spammy events when frame stepping forward with seek
+  * clipboard-wayland: initialize offer fd
+  * vo_kitty: unlink shared memory only on vo close
+  * player/command: reinit video decoder when it's options change
+  * DOCS/man/options: correct outdated --ad/--vd documentation
+  * f_decoder_wrapper: allow changing --ad and --vd at runtime
+  * osc.lua: add visibility_modes script opt
+  * osc.lua: deprecate pointless script-messages
+  * DOCS/man/osc: document the second arg in some script commands
+  * vo_kitty: unlink shared memory on vo close
+  * stream_file: allow to open only our fd in case of fuzzing
+  * command: allow frame-step to go through multiple frames and/or seek
+  * DOCS/man/select: document the menu script-binding
+  * osc.lua: add an icon for the miscellaneous menu
+  * TOOLS/mpv-osd-symbols.sfdir: add a menu icon
+  * TOOLS/mpv-osd-symbols.sfdir: document how to add icons
+  * select.lua: add a miscellaneous menu
+  * loadfile: discard prefetched files if demuxer options changed
+  * command: group flag updates together
+  * demux_mkv: limit RealAudio packet size to 128 MiB
+  * DOCS/man/select: add this file
+  * select.lua: select from the watch history with g-h
+  * loadfile: optionally save the watch history
+  * misc: make json_append() non-static
+  * misc: extract mp_find_non_filename_media_title() from command.c
+  * DOCS/man: add documentation of wayland backend and properties
+  * console.lua: use clipboard property for native Wayland backend
+  * console.lua: autocomplete clipboard/text-primary property
+  * command: add current-clipboard-backend property
+  * clipboard: add function to get clipboard backend name
+  * command: add clipboard/text-primary property
+  * clipboard-wayland: add Wayland clipboard backend
+  * clipboard-vo: use clipboard parent log context
+  * clipboard: don't store mpv_global context
+  * video/out/wayland_common: create per-seat objects on seat hotplug
+  * demux/ebml: fix ebml_read_length()
+  * win32: fix menu click failure caused by excessive menu-data updates
+  * ci/linux: enable leak detector
+  * stream_dvb: accept float timeout
+  * various: use mp_poll instead of poll
+  * misc/dispatch: remove mention of select
+  * video/out/wayland_common: remove useless flag
+  * osdep/io: map ftell to int64_t version on win32
+  * osdep/io: add ftruncate for win32
+  * video/out/wayland_common: fix crash with multi-seat drag and drop
+  * Revert "ci/win32: restrict shaderc version to fix build errors"
+  * various: update license headers
+  * ci/mingw: update library versions
+  * console.lua: use the same blur amount as --osd-blur
+  * video/out/wayland_common: support IME usage via text-input-v3
+  * github/workflows/lint: add mypy linting
+  * TOOLS/osxbundle: fix inplace argument type
+  * TOOLS/macos-sdk-version: check if xcodebuild is defined
+  * TOOLS/file2string: use array of tuples to avoid unpacking strings
+  * TOOLS/dylib_unhell: check regex search result
+  * TOOLS/stats-conv: typing fixes
+  * TOOLS/gen-mpv-desktop: don't overlap variable with different types
+  * TOOLS/gen-interface-changes: fix variable type mismatch
+  * m_option: fix float option values <= 0
+  * github/workflows: print meson test log on failure on BSD
+  * select.lua: show the ID of editions without title
+  * console.lua: sort completions
+  * console.lua: preserve the order of items with equal score
+  * console.lua: rename format_table() to format_grid()
+  * console.lua: always say completions instead of suggestions
+  * console.lua: rename update() to render()
+  * m_option: use VAL macro for double type
+  * m_option: fix max/min range comment
+  * m_option: correctly clamp OPT_FLOAT values
+  * various: fix range for float options
+  * loadfile: fix --loop-playlist + --shuffle + --prefetch-playlist
+  * loadfile: return earlier if prefetch already started
+  * loadfile: fix --loop-playlist=N with --prefetch-playlist
+  * console.lua: set a high z in select mode
+  * Revert "osc.lua: draw box layout below console"
+  * DOCS/interface-changes: change rst exts to txt
+  * console.lua: improve the hovered item calculation
+  * console.lua: deduplicate y position calculation in update()
+  * console.lua: refactor some log code
+  * video/out/wayland_common: ignore clipboard offers w/o wanted MIME type
+  * ytdl_hook.lua: fix start and end conditions
+  * m_option: fix scientific notation timestamp parsing
+  * select.lua: select files with watch later files with g-w
+  * command: add current-watch-later-dir property
+  * select.lua: use mp.msg.warn for unavailable messages
+  * ao_pulse: remove unnecessary casts and use the proper print specifier
+  * osc.lua: extract icon_font and icons variables
+  * DOCS/interface-changes: add slim*bar layouts to interface changes
+  * video/out/gpu/video: allow taking transparent screenshots
+  * console.lua: complete screenshot-raw format parameter
+  * player/screenshot: support more formats for screenshot-raw command
+  * player/screenshot: add high depth and format parameters
+  * osc.lua: add slimbottombar and slimtopbar layouts
+  * ao_openal: fix null pointer dereference when creating OpenAL context
+  * ao/pulse: only print server protocol after connection
+  * console.lua: add pause_on_open script-opt
+  * github/workflows/lint: add pre-commit hooks
+  * sub: add sub-scale-signs
+  * stats.lua: only reprint stats on video-reconfig when toggled
+  * osc.lua: allow adding custom buttons
+  * osc.lua: add cache_enabled() helper
+  * vulkan/context_display: implement display fps and resolution info
+  * ci/win32: bump test timeout to 240 seconds
+  * stats.lua: fix page 2 and 0 layout
+  * stats.lua: inherit --osd-shadow-offset
+  * github/workflows/lint: remove -lint suffix from lint workflow job names
+  * DOCS/man/input.rst: mark flags as optional
+  * mac/app: make const char pointers to const pointers
+  * mac/app: make re-assignment of complex macros const
+  * console.lua: complete playlist-play-index none
+  * console.lua: apply --osd-selected-color to selected completions
+  * Revert "demux_edl: disallow nested edl to avoid infinite loop"
+  * options: remove the `player` argument from `--media-controls`
+  * LICENSE.{GPL,LGPL}: update to upstream version
+  * various: fix typos
+  * various: remove double new line at the end of file
+  * mac/remote: use swift closure instead of obj-c selector bridging
+  * ci/build-common: remove executable flag
+  * osc.lua: bind middle clicking play pause to cycle loop-playlist
+  * ao_coreaudio: set kAudioOutputUnitProperty_ChannelMap
+  * console.lua: don't set the cursor color
+  * console.lua: inherit --osd-back-color in the cursor
+  * console.lua: inherit --osd-color in the cursor
+  * console.lua: inherit --osd-shadow-offset
+  * console.lua: inherit --osd-back-color
+  * sub/osd: default to a semitransparent black back color
+  * console.lua: remove useless assignment
+  * console.lua: focus the default item after emptying the input line
+  * version.h.in: bump copyright year
+  * mac/swift: fix global variables for upcoming swift 6 concurrency
+  * mac: add support for --force-window-position
+  * mac/remote: add Quick Look thumbnail as cover fallback
+  * ao_audiounit: add --audio-exclusiv support, make non-exclusive default
+  * osd: remove unused constants
+  * DOCS/man/mpv: document that you can deselect the current track
+  * DOCS/man/input: edition-list/N/id is not writable
+  * subprocess: fix reset_signals_child missing last signo
+  * select.lua: fix select-edition crash on non-MKVs
+  * stream_file: don't allow to open standard streams during fuzzing
+  * DOCS/man/vo.rst: improve dmabuf-wayland documentation
+  * sub/lavc_conv: free avctx correctly on error
+  * m_option: free channels before overriding in parser
+  * demux_mkv: cast to u32 before shift to fix int overflow
+  * x11: allow display sync modes to report no visibility
+  * player/video: fallback to audio sync logic if VO is not visible
+  * vo: change draw_frame API to a boolean
+  * zsh-completion: complete av://lavfi:testsrc and av://lavfi:sine
+  * player/osd: use fixed width for vsync-ratio value in status line
+  * console.lua: don't highlight the first completion with mp.input.get
+  * mac/title: use enum for material values instead of generic integers
+  * mac/title: use enum for appearance values instead of generic integers
+  * options: add --playlist-exts
+  * options: add --archive-exts
+  * console.lua: keep --osd-{,outline}-color's alpha component for styles
+  * DOCS/man/osc: document that {v,h}align only affect box layouts
+  * console.lua: complete clipboard/text
+  * input.conf: bind Ctrl+v to play the path in the clipboard
+  * mac/title: remove old libmpv color setter fallback
+  * mac/title: remove old libmpv material setter fallback
+  * mac/title: remove old libmpv appearance setter fallback
+  * ci/win32: enable tests for dependencies
+  * meson: only build libmpv_helper with cocoa-cb
+  * mac: use isBundle function instead of manually checking bundle usage
+  * video/sws_utils: remove unused mp_image_swscale
+  * console.lua: use native clipboard property on macOS
+  * clipboard-mac: add macOS clipboard backend
+  * osdep/mac/meson.build: dynamically add features to swift build flags
+  * DOCS/ao: add missing documentation for audiounit
+  * libmpv: deprecate MPV_RENDER_PARAM_AMBIENT_LIGHT render parameter
+  * cocoa-cb: use new ambient-light property and remove old libmpv usage
+  * gamma-auto.lua: add this script as replacement for --gamma-auto
+  * command: add ambient-light property
+  * vo: change VOCTRL_GET_AMBIENT_LUX from int to double
+  * DOCS/contribute.md: add guidelines for Swift and Objective-C
+  * x11: simplify --geometry and --auto-window-resize logic
+  * DOCS/man: fix Unicode capitalization
+  * input.conf: use capital letters instead of shift modifiers
+  * video/out/wayland_common: make all XF86 special keys mappable
+  * DOCS/man/input.rst: clarify hexadecimal key names
+  * DOCS/man/input.rst: clarify that caps lock affects produced keycode
+  * DOCS/man/input.rst: clarify shift modifier behavior
+  * DOCS/man/input.rst: fix grammar
+  * stats.lua: enable runtime script-opt changes
+  * console.lua: inherit --osd-color and --osd-outline-color
+  * DOCS: fix description of subtitle delay adjustment
+  * console.lua: color the default item with --osd-selected-color
+  * DOCS/man/console.rst: remove outdated issue
+  * sd_ass: fix fix_margins calculation
+
+-------------------------------------------------------------------
 Fri Feb 28 08:49:14 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Add 0001-dont-load-client-rt-conf.patch:
