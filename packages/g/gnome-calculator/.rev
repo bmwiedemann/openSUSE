@@ -527,4 +527,18 @@
   + Updated translations. (forwarded request 1253405 from iznogood)</comment>
     <requestid>1253702</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>5a96f04cad7a92fee1cffd92b5e2cf29</srcmd5>
+    <version>48.0.2</version>
+    <time>1742936872</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0.2:
+  + Fix building with non-nightly vala.
+
+- Update to version 48.0.1:
+  + Code cleanup and minor improvements.
+  + Allow scrolling the display using scroll wheel.
+  + Fixed conversions not working. (forwarded request 1255205 from iznogood)</comment>
+    <requestid>1255569</requestid>
+  </revision>
 </revisionlist>

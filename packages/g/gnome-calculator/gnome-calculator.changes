@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 22 08:14:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0.2:
+  + Fix building with non-nightly vala.
+
+-------------------------------------------------------------------
+Fri Mar 21 15:48:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0.1:
+  + Code cleanup and minor improvements.
+  + Allow scrolling the display using scroll wheel.
+  + Fixed conversions not working.
+
+-------------------------------------------------------------------
 Sat Mar 15 21:07:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:
