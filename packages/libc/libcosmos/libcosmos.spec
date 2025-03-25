@@ -26,7 +26,8 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/gerstner-hub/libcosmos
 Source0:        libcosmos-v%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM - https://github.com/gerstner-hub/libcosmos/commit/54b144
+Patch0:         libcosmos-fix-aarch64.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  scons
@@ -59,7 +60,7 @@ A library providing a modern C++ API for the Linux operating system.
 Header and development files for libcosmos.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 scons libtype=shared

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 18 15:44:55 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix build on aarch64:
+  * libcosmos-fix-aarch64.patch
+
+-------------------------------------------------------------------
 Fri Mar 14 09:17:46 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - drop no longer needed provides/obsoletes

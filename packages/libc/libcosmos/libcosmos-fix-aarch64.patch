@@ -1,0 +1,129 @@
+From 54b144f95866ba8d54854ac3db31776449af9dab Mon Sep 17 00:00:00 2001
+From: Matthias Gerstner <Matthias.Gerstner@nefkom.net>
+Date: Tue, 18 Mar 2025 15:53:16 +0200
+Subject: [PATCH] ptrace API: exclude more ptrace::Request constants if not
+ available
+
+These constants are not available on aarch64. I don't see a better way
+than to use the preprocessor to exclude them and also the wrappers in
+Tracee at the moment.
+
+Users of these requests likely are pretty low-level themselves, so
+dealing with some #ifdef's will hopefully not be too much of a burden on
+them.
+
+Fixes #1
+---
+ include/proc/Tracee.hxx |  8 ++++++++
+ include/proc/ptrace.hxx | 21 ++++++++++++++++++---
+ 2 files changed, 26 insertions(+), 3 deletions(-)
+
+diff --git a/include/proc/Tracee.hxx b/include/proc/Tracee.hxx
+index a92bd5d..e852bd0 100644
+--- a/include/proc/Tracee.hxx
++++ b/include/proc/Tracee.hxx
+@@ -208,6 +208,7 @@ public: // functions
+ 		this->request(ptrace::Request::POKEUSER, offset, value);
+ 	}
+ 
++#ifdef PTRACE_GETREGS
+ 	/// Copy the tracee's general purpose registers into the provided structure.
+ 	/**
+ 	 * You need to include sys/user.h and check out the data structure
+@@ -222,7 +223,9 @@ public: // functions
+ 		// it, we'd need an #ifdef of some sort.
+ 		this->request(ptrace::Request::GETREGS, nullptr, &out);
+ 	}
++#endif
+ 
++#ifdef PTRACE_SETREGS
+ 	/// Modify the tracee's general purpose registers.
+ 	/**
+ 	 * Some register modifications may be disallowed by the kernel to
+@@ -232,7 +235,9 @@ public: // functions
+ 		// NOTE: see getRegisters() about Sparc architecture
+ 		this->request(ptrace::Request::SETREGS, nullptr, &out);
+ 	}
++#endif
+ 
++#ifdef PTRACE_GETFPREGS
+ 	/// Copy the tracee's floating point registers into the provided structure.
+ 	/**
+ 	 * This is similar to getRegisters() but provides the floating point
+@@ -244,7 +249,9 @@ public: // functions
+ 		// NOTE: see getRegisters() about Sparc architecture
+ 		this->request(ptrace::Request::GETFPREGS, nullptr, &out);
+ 	}
++#endif
+ 
++#ifdef PTRACE_SETFPREGS
+ 	/// Modify the tracee's floating point registers.
+ 	/**
+ 	 * \see setRegisters().
+@@ -252,6 +259,7 @@ public: // functions
+ 	void setFloatRegisters(const struct user_fpregs_struct &out) {
+ 		this->request(ptrace::Request::SETFPREGS, nullptr, &out);
+ 	}
++#endif
+ 
+ 	/// Retrieve a set of registers from the tracee.
+ 	/**
+diff --git a/include/proc/ptrace.hxx b/include/proc/ptrace.hxx
+index 7329f6e..8187d10 100644
+--- a/include/proc/ptrace.hxx
++++ b/include/proc/ptrace.hxx
+@@ -82,9 +82,14 @@ enum class RegisterType {
+ 
+ /// Basic requests that can be passed to the ptrace() system call.
+ /**
++ * \note Some of these requests are only available on some architectures.
++ * Some have also been deprecated by now. This can only be modeled via #ifdefs
++ * currently, which means that client code has to deal with the possibility of
++ * the affected requests not being available.
++ *
+  * \note On system call level this has an actual `enum __ptrace_request` type,
+- *       thus there is no defined underlying type and we keep the compiler's
+- *       default.
++ * thus there is no defined underlying type and we keep the compiler's
++ * default.
+  **/
+ enum class Request {
+ 	/// The tracee asks to be traced by its parent.
+@@ -99,16 +104,24 @@ enum class Request {
+ 	POKEDATA           = PTRACE_POKEDATA,
+ 	/// Write a word at the given offset into the tracee's USER data.
+ 	POKEUSER           = PTRACE_POKEUSER,
++#ifdef PTRACE_GETREGS
+ 	/// Copy the tracee's general-purpose registers to the given address in the tracer.
+ 	GETREGS            = PTRACE_GETREGS,
++#endif
++#ifdef PTRACE_GETFPREGS
+ 	/// Copy the tracee's floating-point registers to the given address in the tracer.
+ 	GETFPREGS          = PTRACE_GETFPREGS,
++#endif
+ 	/// Reg the tracee's registers in an architecture dependent way.
+ 	GETREGSET          = PTRACE_GETREGSET,
++#ifdef PTRACE_SETREGS
+ 	/// Modify the tracee's general-purpose registers (not available on all architectures).
+ 	SETREGS            = PTRACE_SETREGS,
++#endif
++#ifdef PTRACE_SETFPREGS
+ 	/// Modify the tracee's floating-point registers.
+ 	SETFPREGS          = PTRACE_SETFPREGS,
++#endif
+ 	/// Modify the tracee's registers, analogous to GETREGSET.
+ 	SETREGSET          = PTRACE_SETREGSET,
+ 	/// Retrieve information about the signal that cause the tracee to stop. Copies a siginfo_t structure.
+@@ -156,9 +169,11 @@ enum class Request {
+ 	SECCOMP_GET_FILTER = PTRACE_SECCOMP_GET_FILTER,
+ 	/// Restart the stopped tracee, but first detach from it.
+ 	DETACH             = PTRACE_DETACH,
++#ifdef PTRACE_GET_THREAD_AREA
+ 	/// Performs an operation similar to `get_thread_area()`.
+ 	GET_THREAD_AREA    = PTRACE_GET_THREAD_AREA,
+-#if PTRACE_SET_THREAD_AREA
++#endif
++#ifdef PTRACE_SET_THREAD_AREA
+ 	/// Performs an operation similar to `set_thread_area()`.
+ 	SET_THREAD_AREA    = PTRACE_SET_THREAD_AREA,
+ #endif

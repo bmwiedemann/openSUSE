@@ -137,4 +137,13 @@
   ptrace() API</comment>
     <requestid>1253007</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0794af283cd0f98cc25c818d1028c9ca</srcmd5>
+    <version>0.4.0</version>
+    <time>1742937027</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patch to fix build on aarch64:
+  * libcosmos-fix-aarch64.patch (forwarded request 1254181 from Guillaume_G)</comment>
+    <requestid>1255634</requestid>
+  </revision>
 </revisionlist>
