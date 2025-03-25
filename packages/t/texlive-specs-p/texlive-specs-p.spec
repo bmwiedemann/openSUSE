@@ -1,7 +1,7 @@
 #
-# spec file for package texlive-specs-p.spec
+# spec file for package texlive-specs-p
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2024
+%define texlive_version  2025
 %define texlive_previous 2022
-%define texlive_release  20240311
-%define texlive_noarch   216
-%define biber_version    2.19
+%define texlive_release  20250308
+%define texlive_noarch   218
+%define biber_version    2.20
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-p
-Version:        2024
+Version:        2025
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -117,7 +117,7 @@ Requires:       tex(color.sty)
 Requires:       tex(fancybox.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source1:        menu.tar.xz
 Source2:        menu.doc.tar.xz
 
@@ -193,7 +193,7 @@ Provides:       tex(menucard.sty)
 Requires:       tex(soul.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source3:        menucard.tar.xz
 Source4:        menucard.doc.tar.xz
 
@@ -276,7 +276,7 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source5:        menukeys.tar.xz
 Source6:        menukeys.doc.tar.xz
 
@@ -323,7 +323,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/menukeys/menukeys.sty
 
 %package -n texlive-mercatormap
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn56060
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn71976
 Release:        0
 License:        LPPL-1.0
 Summary:        Spherical Mercator coordinate systems and Web Mercator tile integration
@@ -353,14 +353,11 @@ Suggests:       texlive-mercatormap-doc >= %{texlive_version}
 Provides:       tex(mercatormap.sty)
 Provides:       tex(mercatorpy.def)
 Provides:       tex(mercatorsupplier.def)
-Requires:       tex(expl3.sty)
 Requires:       tex(graphicx.sty)
-Requires:       tex(pdftexcmds.sty)
 Requires:       tex(siunitx.sty)
 Requires:       tex(tikz.sty)
-Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source7:        mercatormap.tar.xz
 Source8:        mercatormap.doc.tar.xz
 
@@ -374,7 +371,7 @@ elements like markers, geodetic networks, bar scales, routes,
 orthodrome pieces, and more are part of the package.
 
 %package -n texlive-mercatormap-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn56060
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn71976
 Release:        0
 Summary:        Documentation for texlive-mercatormap
 License:        LPPL-1.0
@@ -403,10 +400,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-mercatormap-doc
-%{_texmfdistdir}/doc/latex/mercatormap/README
+%{_texmfdistdir}/doc/latex/mercatormap/CHANGES.md
+%{_texmfdistdir}/doc/latex/mercatormap/README.md
 %{_texmfdistdir}/doc/latex/mercatormap/mercatormap-example.tex
 %{_texmfdistdir}/doc/latex/mercatormap/mercatormap.bib
 %{_texmfdistdir}/doc/latex/mercatormap/mercatormap.doc.abstract.tex
+%{_texmfdistdir}/doc/latex/mercatormap/mercatormap.doc.animations.tex
 %{_texmfdistdir}/doc/latex/mercatormap/mercatormap.doc.definition.tex
 %{_texmfdistdir}/doc/latex/mercatormap/mercatormap.doc.drawing.tex
 %{_texmfdistdir}/doc/latex/mercatormap/mercatormap.doc.examples.tex
@@ -418,7 +417,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/mercatormap/mercatormap.doc.routes.tex
 %{_texmfdistdir}/doc/latex/mercatormap/mercatormap.doc.scales.tex
 %{_texmfdistdir}/doc/latex/mercatormap/mercatormap.doc.sty
-%{_texmfdistdir}/doc/latex/mercatormap/mercatormap.doc.versionhistory.tex
 %{_texmfdistdir}/doc/latex/mercatormap/mercatormap.pdf
 %{_texmfdistdir}/doc/latex/mercatormap/mercatormap.tex
 
@@ -1759,7 +1757,7 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source9:        merriweather.tar.xz
 Source10:       merriweather.doc.tar.xz
 
@@ -3218,7 +3216,7 @@ Requires:       tex(float.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source11:       messagepassing.tar.xz
 Source12:       messagepassing.doc.tar.xz
 
@@ -3268,7 +3266,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/messagepassing/messagepassing.sty
 
 %package -n texlive-metafont
-Version:        %{texlive_version}.%{texlive_noarch}.2.71828182svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.2.71828182svn73848
 Release:        0
 License:        SUSE-TeX
 Summary:        A system for specifying fonts
@@ -3319,7 +3317,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metafont-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source13:       metafont.tar.xz
 Source14:       metafont.doc.tar.xz
 
@@ -3339,7 +3337,7 @@ discussion of Metafont usage; the tex-k@tug.org list is best
 for bug reports about building the software, etc.
 
 %package -n texlive-metafont-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.71828182svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.2.71828182svn73848
 Release:        0
 Summary:        Documentation for texlive-metafont
 License:        SUSE-TeX
@@ -3423,7 +3421,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source15:       metafont-beginners.doc.tar.xz
 
 %description -n texlive-metafont-beginners
@@ -3482,7 +3480,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metago-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source16:       metago.tar.xz
 Source17:       metago.doc.tar.xz
 
@@ -3572,7 +3570,7 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifxetex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source18:       metalogo.tar.xz
 Source19:       metalogo.doc.tar.xz
 
@@ -3620,7 +3618,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/metalogo/metalogo.sty
 
 %package -n texlive-metalogox
-Version:        %{texlive_version}.%{texlive_noarch}.1.06svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.1.07svn73571
 Release:        0
 License:        LPPL-1.0
 Summary:        Adjust TeX logos, with font detection
@@ -3652,7 +3650,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(metalogo.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source20:       metalogox.tar.xz
 Source21:       metalogox.doc.tar.xz
 
@@ -3665,7 +3663,7 @@ listed at The LaTeX Font Catalogue are supported. The package
 also supports the hologo and hvlogos packages.
 
 %package -n texlive-metalogox-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.06svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.1.07svn73571
 Release:        0
 Summary:        Documentation for texlive-metalogox
 License:        LPPL-1.0
@@ -3740,7 +3738,7 @@ Requires:       tex(ulem.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source22:       metanorma.tar.xz
 Source23:       metanorma.doc.tar.xz
 
@@ -3820,7 +3818,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metaobj-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source24:       metaobj.tar.xz
 Source25:       metaobj.doc.tar.xz
 
@@ -3905,7 +3903,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metaplot-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source26:       metaplot.tar.xz
 Source27:       metaplot.doc.tar.xz
 
@@ -3974,7 +3972,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/metaplot/metaplot.mp
 
 %package -n texlive-metapost
-Version:        %{texlive_version}.%{texlive_noarch}.svn70041
+Version:        %{texlive_version}.%{texlive_noarch}.svn73850
 Release:        0
 License:        LGPL-2.1-or-later
 Summary:        A development of Metafont for creating graphics
@@ -4060,7 +4058,7 @@ Provides:       tex(troff-updmap.map)
 Provides:       tex(troff.map)
 Provides:       tex(zpzdr-reversed.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source28:       metapost.tar.xz
 Source29:       metapost.doc.tar.xz
 
@@ -4070,7 +4068,7 @@ precise technical illustrations. Its output is scalable
 PostScript or SVG, rather than the bitmaps Metafont creates.
 
 %package -n texlive-metapost-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70041
+Version:        %{texlive_version}.%{texlive_noarch}.svn73850
 Release:        0
 Summary:        Documentation for texlive-metapost
 License:        LGPL-2.1-or-later
@@ -4084,7 +4082,7 @@ Provides:       man(mpost.1)
 This package includes the documentation for texlive-metapost
 
 %package -n texlive-metapost-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn70041
+Version:        %{texlive_version}.%{texlive_noarch}.svn73850
 Release:        0
 Summary:        Severed fonts for texlive-metapost
 License:        LGPL-2.1-or-later
@@ -4318,7 +4316,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metapost-colorbrewer-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source30:       metapost-colorbrewer.tar.xz
 Source31:       metapost-colorbrewer.doc.tar.xz
 
@@ -4401,7 +4399,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source32:       metapost-examples.doc.tar.xz
 
 %description -n texlive-metapost-examples
@@ -4469,7 +4467,7 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(hyperxmp.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source33:       metastr.tar.xz
 Source34:       metastr.doc.tar.xz
 
@@ -4548,7 +4546,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metatex-doc >= %{texlive_version}
 Provides:       tex(metatex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source35:       metatex.tar.xz
 Source36:       metatex.doc.tar.xz
 
@@ -4632,7 +4630,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source37:       metatype1.source.tar.xz
 
 %description -n texlive-metatype1
@@ -4695,7 +4693,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metauml-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source38:       metauml.tar.xz
 Source39:       metauml.doc.tar.xz
 
@@ -4855,7 +4853,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-method-doc >= %{texlive_version}
 Provides:       tex(method.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source40:       method.tar.xz
 Source41:       method.doc.tar.xz
 
@@ -4932,7 +4930,7 @@ Suggests:       texlive-metre-doc >= %{texlive_version}
 Provides:       tex(metre.sty)
 Requires:       tex(relsize.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source42:       metre.tar.xz
 Source43:       metre.doc.tar.xz
 
@@ -5030,7 +5028,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source44:       metrix.tar.xz
 Source45:       metrix.doc.tar.xz
 
@@ -5124,7 +5122,7 @@ Provides:       tex(metsymb.sty)
 Provides:       tex(metsymb.tfm)
 Provides:       tex(umetsymb.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source46:       metsymb.tar.xz
 Source47:       metsymb.doc.tar.xz
 
@@ -5299,7 +5297,7 @@ Provides:       tex(mex1.tex)
 Provides:       tex(mex2.tex)
 Provides:       tex(mexconf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source48:       mex.tar.xz
 Source49:       mex.doc.tar.xz
 
@@ -5460,7 +5458,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %config %verify(not md5 mtime size) %{_texmfconfdir}/tex/mex/base/mexconf.tex
 
 %package -n texlive-mf2pt1
-Version:        %{texlive_version}.%{texlive_noarch}.2.7svn61217
+Version:        %{texlive_version}.%{texlive_noarch}.2.8svn71883
 Release:        0
 License:        LPPL-1.0
 Summary:        Convert stylized Metafont to PostScript Type 1
@@ -5506,7 +5504,7 @@ Requires:       perl(strict)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source50:       mf2pt1.tar.xz
 Source51:       mf2pt1.doc.tar.xz
 
@@ -5521,7 +5519,7 @@ points than can be reverse-engineered by TeXtrace, mftrace, and
 other programs which convert bitmaps to outline fonts.
 
 %package -n texlive-mf2pt1-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.7svn61217
+Version:        %{texlive_version}.%{texlive_noarch}.2.8svn71883
 Release:        0
 Summary:        Documentation for texlive-mf2pt1
 License:        LPPL-1.0
@@ -5570,6 +5568,847 @@ fi
 %{_texmfdistdir}/metapost/mf2pt1/mf2pt1.mp
 %{_texmfdistdir}/scripts/mf2pt1/mf2pt1.pl
 
+%package -n texlive-mfb-oldstyle
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn71982
+Release:        0
+License:        LPPL-1.0
+Summary:        MFB Oldstyle serif fonts
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(post): findutils
+Requires(post): grep
+Requires(post): sed
+Requires(post): texlive >= %{texlive_version}
+Requires(post): tex(updmap.cfg)
+#!BuildIgnore:  tex(updmap.cfg)
+Requires(postun): findutils
+Requires(postun): grep
+Requires(postun): sed
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Requires:       texlive-mfb-oldstyle-fonts >= %{texlive_version}
+Suggests:       texlive-mfb-oldstyle-doc >= %{texlive_version}
+Provides:       tex(LY1MFBOldstyle-Dnom.fd)
+Provides:       tex(LY1MFBOldstyle-Inf.fd)
+Provides:       tex(LY1MFBOldstyle-LF.fd)
+Provides:       tex(LY1MFBOldstyle-Numr.fd)
+Provides:       tex(LY1MFBOldstyle-OsF.fd)
+Provides:       tex(LY1MFBOldstyle-Sup.fd)
+Provides:       tex(LY1MFBOldstyle-TLF.fd)
+Provides:       tex(LY1MFBOldstyle-TOsF.fd)
+Provides:       tex(MFBOldstyle-Bold-dnom-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-dnom-ly1.tfm)
+Provides:       tex(MFBOldstyle-Bold-dnom-ly1.vf)
+Provides:       tex(MFBOldstyle-Bold-dnom-ot1.tfm)
+Provides:       tex(MFBOldstyle-Bold-dnom-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-dnom-t1.tfm)
+Provides:       tex(MFBOldstyle-Bold-dnom-t1.vf)
+Provides:       tex(MFBOldstyle-Bold-dnom-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-dnom-t5.tfm)
+Provides:       tex(MFBOldstyle-Bold-dnom-t5.vf)
+Provides:       tex(MFBOldstyle-Bold-inf-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-inf-ly1.tfm)
+Provides:       tex(MFBOldstyle-Bold-inf-ly1.vf)
+Provides:       tex(MFBOldstyle-Bold-inf-ot1.tfm)
+Provides:       tex(MFBOldstyle-Bold-inf-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-inf-t1.tfm)
+Provides:       tex(MFBOldstyle-Bold-inf-t1.vf)
+Provides:       tex(MFBOldstyle-Bold-inf-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-inf-t5.tfm)
+Provides:       tex(MFBOldstyle-Bold-inf-t5.vf)
+Provides:       tex(MFBOldstyle-Bold-lf-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-lf-ly1.tfm)
+Provides:       tex(MFBOldstyle-Bold-lf-ly1.vf)
+Provides:       tex(MFBOldstyle-Bold-lf-ot1.tfm)
+Provides:       tex(MFBOldstyle-Bold-lf-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-lf-t1.tfm)
+Provides:       tex(MFBOldstyle-Bold-lf-t1.vf)
+Provides:       tex(MFBOldstyle-Bold-lf-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-lf-t5.tfm)
+Provides:       tex(MFBOldstyle-Bold-lf-t5.vf)
+Provides:       tex(MFBOldstyle-Bold-lf-ts1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-lf-ts1.tfm)
+Provides:       tex(MFBOldstyle-Bold-lf-ts1.vf)
+Provides:       tex(MFBOldstyle-Bold-numr-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-numr-ly1.tfm)
+Provides:       tex(MFBOldstyle-Bold-numr-ly1.vf)
+Provides:       tex(MFBOldstyle-Bold-numr-ot1.tfm)
+Provides:       tex(MFBOldstyle-Bold-numr-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-numr-t1.tfm)
+Provides:       tex(MFBOldstyle-Bold-numr-t1.vf)
+Provides:       tex(MFBOldstyle-Bold-numr-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-numr-t5.tfm)
+Provides:       tex(MFBOldstyle-Bold-numr-t5.vf)
+Provides:       tex(MFBOldstyle-Bold-sup-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-sup-ly1.tfm)
+Provides:       tex(MFBOldstyle-Bold-sup-ly1.vf)
+Provides:       tex(MFBOldstyle-Bold-sup-ot1.tfm)
+Provides:       tex(MFBOldstyle-Bold-sup-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-sup-t1.tfm)
+Provides:       tex(MFBOldstyle-Bold-sup-t1.vf)
+Provides:       tex(MFBOldstyle-Bold-sup-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-sup-t5.tfm)
+Provides:       tex(MFBOldstyle-Bold-sup-t5.vf)
+Provides:       tex(MFBOldstyle-Bold-tlf-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-tlf-ly1.tfm)
+Provides:       tex(MFBOldstyle-Bold-tlf-ly1.vf)
+Provides:       tex(MFBOldstyle-Bold-tlf-ot1.tfm)
+Provides:       tex(MFBOldstyle-Bold-tlf-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-tlf-t1.tfm)
+Provides:       tex(MFBOldstyle-Bold-tlf-t1.vf)
+Provides:       tex(MFBOldstyle-Bold-tlf-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-tlf-t5.tfm)
+Provides:       tex(MFBOldstyle-Bold-tlf-t5.vf)
+Provides:       tex(MFBOldstyle-Bold-tlf-ts1--base.tfm)
+Provides:       tex(MFBOldstyle-Bold-tlf-ts1.tfm)
+Provides:       tex(MFBOldstyle-Bold-tlf-ts1.vf)
+Provides:       tex(MFBOldstyle-Italic-dnom-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-dnom-ly1.tfm)
+Provides:       tex(MFBOldstyle-Italic-dnom-ly1.vf)
+Provides:       tex(MFBOldstyle-Italic-dnom-ot1.tfm)
+Provides:       tex(MFBOldstyle-Italic-dnom-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-dnom-t1.tfm)
+Provides:       tex(MFBOldstyle-Italic-dnom-t1.vf)
+Provides:       tex(MFBOldstyle-Italic-dnom-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-dnom-t5.tfm)
+Provides:       tex(MFBOldstyle-Italic-dnom-t5.vf)
+Provides:       tex(MFBOldstyle-Italic-inf-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-inf-ly1.tfm)
+Provides:       tex(MFBOldstyle-Italic-inf-ly1.vf)
+Provides:       tex(MFBOldstyle-Italic-inf-ot1.tfm)
+Provides:       tex(MFBOldstyle-Italic-inf-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-inf-t1.tfm)
+Provides:       tex(MFBOldstyle-Italic-inf-t1.vf)
+Provides:       tex(MFBOldstyle-Italic-inf-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-inf-t5.tfm)
+Provides:       tex(MFBOldstyle-Italic-inf-t5.vf)
+Provides:       tex(MFBOldstyle-Italic-lf-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-lf-ly1.tfm)
+Provides:       tex(MFBOldstyle-Italic-lf-ly1.vf)
+Provides:       tex(MFBOldstyle-Italic-lf-ot1.tfm)
+Provides:       tex(MFBOldstyle-Italic-lf-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-lf-t1.tfm)
+Provides:       tex(MFBOldstyle-Italic-lf-t1.vf)
+Provides:       tex(MFBOldstyle-Italic-lf-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-lf-t5.tfm)
+Provides:       tex(MFBOldstyle-Italic-lf-t5.vf)
+Provides:       tex(MFBOldstyle-Italic-lf-ts1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-lf-ts1.tfm)
+Provides:       tex(MFBOldstyle-Italic-lf-ts1.vf)
+Provides:       tex(MFBOldstyle-Italic-numr-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-numr-ly1.tfm)
+Provides:       tex(MFBOldstyle-Italic-numr-ly1.vf)
+Provides:       tex(MFBOldstyle-Italic-numr-ot1.tfm)
+Provides:       tex(MFBOldstyle-Italic-numr-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-numr-t1.tfm)
+Provides:       tex(MFBOldstyle-Italic-numr-t1.vf)
+Provides:       tex(MFBOldstyle-Italic-numr-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-numr-t5.tfm)
+Provides:       tex(MFBOldstyle-Italic-numr-t5.vf)
+Provides:       tex(MFBOldstyle-Italic-sup-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-sup-ly1.tfm)
+Provides:       tex(MFBOldstyle-Italic-sup-ly1.vf)
+Provides:       tex(MFBOldstyle-Italic-sup-ot1.tfm)
+Provides:       tex(MFBOldstyle-Italic-sup-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-sup-t1.tfm)
+Provides:       tex(MFBOldstyle-Italic-sup-t1.vf)
+Provides:       tex(MFBOldstyle-Italic-sup-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-sup-t5.tfm)
+Provides:       tex(MFBOldstyle-Italic-sup-t5.vf)
+Provides:       tex(MFBOldstyle-Italic-tlf-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-tlf-ly1.tfm)
+Provides:       tex(MFBOldstyle-Italic-tlf-ly1.vf)
+Provides:       tex(MFBOldstyle-Italic-tlf-ot1.tfm)
+Provides:       tex(MFBOldstyle-Italic-tlf-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-tlf-t1.tfm)
+Provides:       tex(MFBOldstyle-Italic-tlf-t1.vf)
+Provides:       tex(MFBOldstyle-Italic-tlf-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-tlf-t5.tfm)
+Provides:       tex(MFBOldstyle-Italic-tlf-t5.vf)
+Provides:       tex(MFBOldstyle-Italic-tlf-ts1--base.tfm)
+Provides:       tex(MFBOldstyle-Italic-tlf-ts1.tfm)
+Provides:       tex(MFBOldstyle-Italic-tlf-ts1.vf)
+Provides:       tex(MFBOldstyle-Regular-dnom-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-dnom-ly1.tfm)
+Provides:       tex(MFBOldstyle-Regular-dnom-ly1.vf)
+Provides:       tex(MFBOldstyle-Regular-dnom-ot1.tfm)
+Provides:       tex(MFBOldstyle-Regular-dnom-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-dnom-t1.tfm)
+Provides:       tex(MFBOldstyle-Regular-dnom-t1.vf)
+Provides:       tex(MFBOldstyle-Regular-dnom-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-dnom-t5.tfm)
+Provides:       tex(MFBOldstyle-Regular-dnom-t5.vf)
+Provides:       tex(MFBOldstyle-Regular-inf-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-inf-ly1.tfm)
+Provides:       tex(MFBOldstyle-Regular-inf-ly1.vf)
+Provides:       tex(MFBOldstyle-Regular-inf-ot1.tfm)
+Provides:       tex(MFBOldstyle-Regular-inf-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-inf-t1.tfm)
+Provides:       tex(MFBOldstyle-Regular-inf-t1.vf)
+Provides:       tex(MFBOldstyle-Regular-inf-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-inf-t5.tfm)
+Provides:       tex(MFBOldstyle-Regular-inf-t5.vf)
+Provides:       tex(MFBOldstyle-Regular-lf-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-ly1.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-ly1.vf)
+Provides:       tex(MFBOldstyle-Regular-lf-ot1.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-sc-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-sc-ly1.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-sc-ly1.vf)
+Provides:       tex(MFBOldstyle-Regular-lf-sc-ot1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-sc-ot1.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-sc-ot1.vf)
+Provides:       tex(MFBOldstyle-Regular-lf-sc-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-sc-t1.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-sc-t1.vf)
+Provides:       tex(MFBOldstyle-Regular-lf-sc-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-sc-t5.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-sc-t5.vf)
+Provides:       tex(MFBOldstyle-Regular-lf-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-t1.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-t1.vf)
+Provides:       tex(MFBOldstyle-Regular-lf-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-t5.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-t5.vf)
+Provides:       tex(MFBOldstyle-Regular-lf-ts1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-ts1.tfm)
+Provides:       tex(MFBOldstyle-Regular-lf-ts1.vf)
+Provides:       tex(MFBOldstyle-Regular-numr-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-numr-ly1.tfm)
+Provides:       tex(MFBOldstyle-Regular-numr-ly1.vf)
+Provides:       tex(MFBOldstyle-Regular-numr-ot1.tfm)
+Provides:       tex(MFBOldstyle-Regular-numr-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-numr-t1.tfm)
+Provides:       tex(MFBOldstyle-Regular-numr-t1.vf)
+Provides:       tex(MFBOldstyle-Regular-numr-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-numr-t5.tfm)
+Provides:       tex(MFBOldstyle-Regular-numr-t5.vf)
+Provides:       tex(MFBOldstyle-Regular-osf-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-ly1.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-ly1.vf)
+Provides:       tex(MFBOldstyle-Regular-osf-ot1.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-sc-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-sc-ly1.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-sc-ly1.vf)
+Provides:       tex(MFBOldstyle-Regular-osf-sc-ot1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-sc-ot1.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-sc-ot1.vf)
+Provides:       tex(MFBOldstyle-Regular-osf-sc-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-sc-t1.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-sc-t1.vf)
+Provides:       tex(MFBOldstyle-Regular-osf-sc-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-sc-t5.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-sc-t5.vf)
+Provides:       tex(MFBOldstyle-Regular-osf-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-t1.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-t1.vf)
+Provides:       tex(MFBOldstyle-Regular-osf-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-t5.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-t5.vf)
+Provides:       tex(MFBOldstyle-Regular-osf-ts1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-ts1.tfm)
+Provides:       tex(MFBOldstyle-Regular-osf-ts1.vf)
+Provides:       tex(MFBOldstyle-Regular-sup-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-sup-ly1.tfm)
+Provides:       tex(MFBOldstyle-Regular-sup-ly1.vf)
+Provides:       tex(MFBOldstyle-Regular-sup-ot1.tfm)
+Provides:       tex(MFBOldstyle-Regular-sup-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-sup-t1.tfm)
+Provides:       tex(MFBOldstyle-Regular-sup-t1.vf)
+Provides:       tex(MFBOldstyle-Regular-sup-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-sup-t5.tfm)
+Provides:       tex(MFBOldstyle-Regular-sup-t5.vf)
+Provides:       tex(MFBOldstyle-Regular-tlf-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-ly1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-ly1.vf)
+Provides:       tex(MFBOldstyle-Regular-tlf-ot1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-sc-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-sc-ly1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-sc-ly1.vf)
+Provides:       tex(MFBOldstyle-Regular-tlf-sc-ot1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-sc-ot1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-sc-ot1.vf)
+Provides:       tex(MFBOldstyle-Regular-tlf-sc-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-sc-t1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-sc-t1.vf)
+Provides:       tex(MFBOldstyle-Regular-tlf-sc-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-sc-t5.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-sc-t5.vf)
+Provides:       tex(MFBOldstyle-Regular-tlf-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-t1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-t1.vf)
+Provides:       tex(MFBOldstyle-Regular-tlf-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-t5.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-t5.vf)
+Provides:       tex(MFBOldstyle-Regular-tlf-ts1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-ts1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tlf-ts1.vf)
+Provides:       tex(MFBOldstyle-Regular-tosf-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-ly1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-ly1.vf)
+Provides:       tex(MFBOldstyle-Regular-tosf-ot1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-sc-ly1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-sc-ly1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-sc-ly1.vf)
+Provides:       tex(MFBOldstyle-Regular-tosf-sc-ot1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-sc-ot1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-sc-ot1.vf)
+Provides:       tex(MFBOldstyle-Regular-tosf-sc-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-sc-t1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-sc-t1.vf)
+Provides:       tex(MFBOldstyle-Regular-tosf-sc-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-sc-t5.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-sc-t5.vf)
+Provides:       tex(MFBOldstyle-Regular-tosf-t1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-t1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-t1.vf)
+Provides:       tex(MFBOldstyle-Regular-tosf-t5--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-t5.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-t5.vf)
+Provides:       tex(MFBOldstyle-Regular-tosf-ts1--base.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-ts1.tfm)
+Provides:       tex(MFBOldstyle-Regular-tosf-ts1.vf)
+Provides:       tex(MFBOldstyle.map)
+Provides:       tex(OT1MFBOldstyle-Dnom.fd)
+Provides:       tex(OT1MFBOldstyle-Inf.fd)
+Provides:       tex(OT1MFBOldstyle-LF.fd)
+Provides:       tex(OT1MFBOldstyle-Numr.fd)
+Provides:       tex(OT1MFBOldstyle-OsF.fd)
+Provides:       tex(OT1MFBOldstyle-Sup.fd)
+Provides:       tex(OT1MFBOldstyle-TLF.fd)
+Provides:       tex(OT1MFBOldstyle-TOsF.fd)
+Provides:       tex(T1MFBOldstyle-Dnom.fd)
+Provides:       tex(T1MFBOldstyle-Inf.fd)
+Provides:       tex(T1MFBOldstyle-LF.fd)
+Provides:       tex(T1MFBOldstyle-Numr.fd)
+Provides:       tex(T1MFBOldstyle-OsF.fd)
+Provides:       tex(T1MFBOldstyle-Sup.fd)
+Provides:       tex(T1MFBOldstyle-TLF.fd)
+Provides:       tex(T1MFBOldstyle-TOsF.fd)
+Provides:       tex(T5MFBOldstyle-Dnom.fd)
+Provides:       tex(T5MFBOldstyle-Inf.fd)
+Provides:       tex(T5MFBOldstyle-LF.fd)
+Provides:       tex(T5MFBOldstyle-Numr.fd)
+Provides:       tex(T5MFBOldstyle-OsF.fd)
+Provides:       tex(T5MFBOldstyle-Sup.fd)
+Provides:       tex(T5MFBOldstyle-TLF.fd)
+Provides:       tex(T5MFBOldstyle-TOsF.fd)
+Provides:       tex(TS1MFBOldstyle-LF.fd)
+Provides:       tex(TS1MFBOldstyle-OsF.fd)
+Provides:       tex(TS1MFBOldstyle-TLF.fd)
+Provides:       tex(TS1MFBOldstyle-TOsF.fd)
+Provides:       tex(a_2k4lec.enc)
+Provides:       tex(a_2r5ytu.enc)
+Provides:       tex(a_5lrov3.enc)
+Provides:       tex(a_6mghgo.enc)
+Provides:       tex(a_73nks5.enc)
+Provides:       tex(a_777sfz.enc)
+Provides:       tex(a_7nlkbe.enc)
+Provides:       tex(a_7q6l4s.enc)
+Provides:       tex(a_ahcimn.enc)
+Provides:       tex(a_bgdhbr.enc)
+Provides:       tex(a_cgi3xl.enc)
+Provides:       tex(a_cwrjrk.enc)
+Provides:       tex(a_e5y2zy.enc)
+Provides:       tex(a_fy4cgk.enc)
+Provides:       tex(a_hi6bgi.enc)
+Provides:       tex(a_ikcbof.enc)
+Provides:       tex(a_in623c.enc)
+Provides:       tex(a_jaulpu.enc)
+Provides:       tex(a_kod5rh.enc)
+Provides:       tex(a_kosxnn.enc)
+Provides:       tex(a_nduqlz.enc)
+Provides:       tex(a_nrcrlb.enc)
+Provides:       tex(a_oyw33c.enc)
+Provides:       tex(a_q4fonx.enc)
+Provides:       tex(a_qmdrba.enc)
+Provides:       tex(a_radqz3.enc)
+Provides:       tex(a_rxfd27.enc)
+Provides:       tex(a_s7hq75.enc)
+Provides:       tex(a_sbbrr6.enc)
+Provides:       tex(a_traljt.enc)
+Provides:       tex(a_uyp43f.enc)
+Provides:       tex(a_wvbwpg.enc)
+Provides:       tex(a_x5sf3h.enc)
+Provides:       tex(a_xkajg4.enc)
+Provides:       tex(a_xqrvjh.enc)
+Provides:       tex(a_xx37di.enc)
+Provides:       tex(a_y2ngde.enc)
+Provides:       tex(a_y57hi6.enc)
+Provides:       tex(a_ybcvk5.enc)
+Provides:       tex(a_yjlipp.enc)
+Provides:       tex(a_ztec7x.enc)
+Provides:       tex(mfb-oldstyle.sty)
+Requires:       tex(fontaxes.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(mweights.sty)
+Requires:       tex(textcomp.sty)
+Requires:       tex(xkeyval.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source52:       mfb-oldstyle.tar.xz
+Source53:       mfb-oldstyle.doc.tar.xz
+
+%description -n texlive-mfb-oldstyle
+Oldstyle is a serif font family designed for body text. This
+typeface was originally designed by Morris Fuller Benton and
+released by American Type Founders in 1909 as Century Oldstyle.
+The family contains three fonts: regular, italic and bold.
+(Currently, no bold italic font is provided.) Superior and
+inferior figures are available for all fonts in the family.
+Small capitals and old-style figures are available only for the
+regular font.
+
+%package -n texlive-mfb-oldstyle-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn71982
+Release:        0
+Summary:        Documentation for texlive-mfb-oldstyle
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mfb-oldstyle and texlive-alldocumentation)
+
+%description -n texlive-mfb-oldstyle-doc
+This package includes the documentation for texlive-mfb-oldstyle
+
+%package -n texlive-mfb-oldstyle-fonts
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn71982
+Release:        0
+Summary:        Severed fonts for texlive-mfb-oldstyle
+License:        LPPL-1.0
+URL:            https://www.tug.org/texlive/
+Group:          Productivity/Publishing/TeX/Fonts
+%reconfigure_fonts_prereq
+Requires(posttrans): fontconfig
+Requires(posttrans): ghostscript-fonts-std
+Suggests:       xorg-x11-fonts-core
+
+%description -n texlive-mfb-oldstyle-fonts
+The  separated fonts package for texlive-mfb-oldstyle
+
+%post -n texlive-mfb-oldstyle
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+echo 'addMap MFBOldstyle.map' >> /var/run/texlive/run-updmap
+
+%postun -n texlive-mfb-oldstyle
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    echo 'deleteMap MFBOldstyle.map' >> /var/run/texlive/run-updmap
+    exit 0
+fi
+
+%posttrans -n texlive-mfb-oldstyle
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%reconfigure_fonts_scriptlets -n texlive-mfb-oldstyle-fonts
+
+%files -n texlive-mfb-oldstyle-doc
+%{_texmfdistdir}/doc/fonts/mfb-oldstyle/COPYING
+%{_texmfdistdir}/doc/fonts/mfb-oldstyle/MFBOldStyle-CharacterMap.pdf
+%{_texmfdistdir}/doc/fonts/mfb-oldstyle/README
+%{_texmfdistdir}/doc/fonts/mfb-oldstyle/mfb-oldstyle-doc.pdf
+%{_texmfdistdir}/doc/fonts/mfb-oldstyle/mfb-oldstyle-doc.tex
+
+%files -n texlive-mfb-oldstyle
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_2k4lec.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_2r5ytu.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_5lrov3.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_6mghgo.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_73nks5.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_777sfz.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_7nlkbe.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_7q6l4s.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_ahcimn.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_bgdhbr.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_cgi3xl.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_cwrjrk.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_e5y2zy.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_fy4cgk.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_hi6bgi.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_ikcbof.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_in623c.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_jaulpu.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_kod5rh.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_kosxnn.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_nduqlz.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_nrcrlb.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_oyw33c.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_q4fonx.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_qmdrba.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_radqz3.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_rxfd27.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_s7hq75.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_sbbrr6.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_traljt.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_uyp43f.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_wvbwpg.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_x5sf3h.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_xkajg4.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_xqrvjh.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_xx37di.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_y2ngde.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_y57hi6.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_ybcvk5.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_yjlipp.enc
+%{_texmfdistdir}/fonts/enc/dvips/mfb-oldstyle/a_ztec7x.enc
+%{_texmfdistdir}/fonts/map/dvips/mfb-oldstyle/MFBOldstyle.map
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/mfb-oldstyle/MFBOldstyle-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/mfb-oldstyle/MFBOldstyle-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/mfb-oldstyle/MFBOldstyle-Regular.otf
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-dnom-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-dnom-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-inf-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-inf-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-lf-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-lf-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-numr-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-numr-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-sup-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-sup-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-dnom-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-dnom-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-inf-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-inf-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-lf-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-lf-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-numr-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-numr-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-sup-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-sup-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-dnom-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-dnom-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-inf-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-inf-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-sc-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-sc-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-numr-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-numr-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-sc-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-sc-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-sup-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-sup-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-sc-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-sc-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-sc-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-sc-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-t5--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-t5.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-ts1.tfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/mfb-oldstyle/MFBOldstyle-Bold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/mfb-oldstyle/MFBOldstyle-Italic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/mfb-oldstyle/MFBOldstyle-Regular.pfb
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-dnom-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-inf-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-lf-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-numr-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-sup-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Bold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-dnom-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-inf-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-lf-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-numr-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-sup-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Italic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-dnom-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-inf-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-lf-sc-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-lf-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-numr-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-osf-sc-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-osf-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-sup-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-sc-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-sc-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-t5.vf
+%{_texmfdistdir}/fonts/vf/public/mfb-oldstyle/MFBOldstyle-Regular-tosf-ts1.vf
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/LY1MFBOldstyle-Dnom.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/LY1MFBOldstyle-Inf.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/LY1MFBOldstyle-LF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/LY1MFBOldstyle-Numr.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/LY1MFBOldstyle-OsF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/LY1MFBOldstyle-Sup.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/LY1MFBOldstyle-TLF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/LY1MFBOldstyle-TOsF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/OT1MFBOldstyle-Dnom.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/OT1MFBOldstyle-Inf.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/OT1MFBOldstyle-LF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/OT1MFBOldstyle-Numr.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/OT1MFBOldstyle-OsF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/OT1MFBOldstyle-Sup.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/OT1MFBOldstyle-TLF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/OT1MFBOldstyle-TOsF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T1MFBOldstyle-Dnom.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T1MFBOldstyle-Inf.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T1MFBOldstyle-LF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T1MFBOldstyle-Numr.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T1MFBOldstyle-OsF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T1MFBOldstyle-Sup.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T1MFBOldstyle-TLF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T1MFBOldstyle-TOsF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T5MFBOldstyle-Dnom.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T5MFBOldstyle-Inf.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T5MFBOldstyle-LF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T5MFBOldstyle-Numr.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T5MFBOldstyle-OsF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T5MFBOldstyle-Sup.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T5MFBOldstyle-TLF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/T5MFBOldstyle-TOsF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/TS1MFBOldstyle-LF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/TS1MFBOldstyle-OsF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/TS1MFBOldstyle-TLF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/TS1MFBOldstyle-TOsF.fd
+%{_texmfdistdir}/tex/latex/mfb-oldstyle/mfb-oldstyle.sty
+
+%files -n texlive-mfb-oldstyle-fonts
+%dir %{_datadir}/fonts/texlive-mfb-oldstyle
+%{_datadir}/fontconfig/conf.avail/58-texlive-mfb-oldstyle.conf
+%{_datadir}/fontconfig/conf.avail/55-texlive-mfb-oldstyle.conf
+%config %{_sysconfdir}/fonts/conf.d/55-texlive-mfb-oldstyle.conf
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mfb-oldstyle/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mfb-oldstyle/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mfb-oldstyle/fonts.scale
+%{_datadir}/fonts/texlive-mfb-oldstyle/MFBOldstyle-Bold.otf
+%{_datadir}/fonts/texlive-mfb-oldstyle/MFBOldstyle-Italic.otf
+%{_datadir}/fonts/texlive-mfb-oldstyle/MFBOldstyle-Regular.otf
+%{_datadir}/fonts/texlive-mfb-oldstyle/MFBOldstyle-Bold.pfb
+%{_datadir}/fonts/texlive-mfb-oldstyle/MFBOldstyle-Italic.pfb
+%{_datadir}/fonts/texlive-mfb-oldstyle/MFBOldstyle-Regular.pfb
+
 %package -n texlive-mfirstuc
 Version:        %{texlive_version}.%{texlive_noarch}.2.08svn64743
 Release:        0
@@ -5603,9 +6442,9 @@ Provides:       tex(mfirstuc-english.sty)
 Provides:       tex(mfirstuc.sty)
 Requires:       tex(etoolbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source52:       mfirstuc.tar.xz
-Source53:       mfirstuc.doc.tar.xz
+# from 20250308
+Source54:       mfirstuc.tar.xz
+Source55:       mfirstuc.doc.tar.xz
 
 %description -n texlive-mfirstuc
 The package provides commands \makefirstuc that uppercases the
@@ -5694,9 +6533,9 @@ Provides:       tex(logosl8.tfm)
 Provides:       tex(mflogo.sty)
 Provides:       tex(ulogo.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source54:       mflogo.tar.xz
-Source55:       mflogo.doc.tar.xz
+# from 20250308
+Source56:       mflogo.tar.xz
+Source57:       mflogo.doc.tar.xz
 
 %description -n texlive-mflogo
 LaTeX package and font definition file to access the Knuthian
@@ -5786,9 +6625,9 @@ Requires:       texlive-mflogo-font-fonts >= %{texlive_version}
 Suggests:       texlive-mflogo-font-doc >= %{texlive_version}
 Provides:       tex(mflogo.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source56:       mflogo-font.tar.xz
-Source57:       mflogo-font.doc.tar.xz
+# from 20250308
+Source58:       mflogo-font.tar.xz
+Source59:       mflogo-font.doc.tar.xz
 
 %description -n texlive-mflogo-font
 These fonts were created in Metafont by Knuth, for his own
@@ -5884,7 +6723,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-mflogo-font/logosl9.pfb
 
 %package -n texlive-mflua
-Version:        %{texlive_version}.%{texlive_noarch}.svn62774
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 License:        LPPL-1.0
 Summary:        Configuration and base files for MFLua
@@ -5933,13 +6772,28 @@ Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-mflua-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source58:       mflua.tar.xz
+# from 20250308
+Source60:       mflua.tar.xz
+Source61:       mflua.doc.tar.xz
 
 %description -n texlive-mflua
 For information on this Lua-enabled Metafont, see, for example:
 tug.org/TUGboat/tb32-2/tb101scarso.pdf.
+
+%package -n texlive-mflua-doc
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
+Release:        0
+Summary:        Documentation for texlive-mflua
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mflua and texlive-alldocumentation)
+Provides:       man(mflua.1)
+
+%description -n texlive-mflua-doc
+This package includes the documentation for texlive-mflua
 
 %post -n texlive-mflua
 mkdir -p /var/run/texlive
@@ -5973,6 +6827,9 @@ fi
 %posttrans -n texlive-mflua
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-mflua-doc
+%{_mandir}/man1/mflua.1*
 
 %files -n texlive-mflua
 %{_texmfdistdir}/metafont/mflua/mflua.ini
@@ -6021,9 +6878,9 @@ Provides:       tex(uygoth.fd)
 Provides:       tex(uyinit.fd)
 Provides:       tex(uyswab.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source59:       mfnfss.tar.xz
-Source60:       mfnfss.doc.tar.xz
+# from 20250308
+Source62:       mfnfss.tar.xz
+Source63:       mfnfss.doc.tar.xz
 
 %description -n texlive-mfnfss
 This bundle contains two packages: - oldgerm, a package to
@@ -6111,9 +6968,9 @@ Provides:       tex(mfpic.tex)
 Provides:       tex(mfpicdef.tex)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source61:       mfpic.tar.xz
-Source62:       mfpic.doc.tar.xz
+# from 20250308
+Source64:       mfpic.tar.xz
+Source65:       mfpic.doc.tar.xz
 
 %description -n texlive-mfpic
 Mfpic is a scheme for producing pictures from (La)TeX commands.
@@ -6213,9 +7070,9 @@ Suggests:       texlive-mfpic4ode-doc >= %{texlive_version}
 Provides:       tex(mfpic4ode.sty)
 Provides:       tex(mfpic4ode.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source63:       mfpic4ode.tar.xz
-Source64:       mfpic4ode.doc.tar.xz
+# from 20250308
+Source66:       mfpic4ode.tar.xz
+Source67:       mfpic4ode.doc.tar.xz
 
 %description -n texlive-mfpic4ode
 The package is a small set of macros for drawing direction
@@ -6303,9 +7160,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(lineno.sty)
 Requires:       tex(rawfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source65:       mftinc.tar.xz
-Source66:       mftinc.doc.tar.xz
+# from 20250308
+Source68:       mftinc.tar.xz
+Source69:       mftinc.doc.tar.xz
 
 %description -n texlive-mftinc
 The mft program pretty-prints Metafont source code into a TeX
@@ -6351,7 +7208,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mftinc/mftinc.sty
 
 %package -n texlive-mfware
-Version:        %{texlive_version}.%{texlive_noarch}.svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Supporting tools for use with Metafont
@@ -6381,16 +7238,16 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mfware-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source67:       mfware.tar.xz
-Source68:       mfware.doc.tar.xz
+# from 20250308
+Source70:       mfware.tar.xz
+Source71:       mfware.doc.tar.xz
 
 %description -n texlive-mfware
 A collection of programs (as web source) for processing the
 output of Metafont.
 
 %package -n texlive-mfware-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 Summary:        Documentation for texlive-mfware
 License:        SUSE-Public-Domain
@@ -6474,9 +7331,9 @@ Requires:       tex(ifpdf.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source69:       mgltex.tar.xz
-Source70:       mgltex.doc.tar.xz
+# from 20250308
+Source72:       mgltex.tar.xz
+Source73:       mgltex.doc.tar.xz
 
 %description -n texlive-mgltex
 This package allows you to create high-quality
@@ -6612,9 +7469,9 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source71:       mhchem.tar.xz
-Source72:       mhchem.doc.tar.xz
+# from 20250308
+Source74:       mhchem.tar.xz
+Source75:       mhchem.doc.tar.xz
 
 %description -n texlive-mhchem
 The bundle provides three packages: The mhchem package provides
@@ -6721,9 +7578,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mhequ-doc >= %{texlive_version}
 Provides:       tex(mhequ.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source73:       mhequ.tar.xz
-Source74:       mhequ.doc.tar.xz
+# from 20250308
+Source76:       mhequ.tar.xz
+Source77:       mhequ.doc.tar.xz
 
 %description -n texlive-mhequ
 The mhequ style file simplifies creating multi-column equation
@@ -6805,9 +7662,9 @@ Suggests:       texlive-mi-solns-doc >= %{texlive_version}
 Provides:       tex(mi-solns.sty)
 Requires:       tex(shellesc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source75:       mi-solns.tar.xz
-Source76:       mi-solns.doc.tar.xz
+# from 20250308
+Source78:       mi-solns.tar.xz
+Source79:       mi-solns.doc.tar.xz
 
 %description -n texlive-mi-solns
 This package is designed to mark a solution environment of an
@@ -6858,7 +7715,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mi-solns/mi-solns.sty
 
 %package -n texlive-miama
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn73481
 Release:        0
 License:        OFL-1.1
 Summary:        The Miama Nueva handwriting font with LaTeX support
@@ -6928,9 +7785,9 @@ Provides:       tex(x2-miama.enc)
 Provides:       tex(x2fmm.fd)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source77:       miama.tar.xz
-Source78:       miama.doc.tar.xz
+# from 20250308
+Source80:       miama.tar.xz
+Source81:       miama.doc.tar.xz
 
 %description -n texlive-miama
 Miama Nueva is a handwriting / script font with over 1300
@@ -6938,7 +7795,7 @@ glyphs that supports latin, cyrillic, and greek. It comes
 complete with LaTeX support.
 
 %package -n texlive-miama-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn73481
 Release:        0
 Summary:        Documentation for texlive-miama
 License:        OFL-1.1
@@ -6950,7 +7807,7 @@ Supplements:    (texlive-miama and texlive-alldocumentation)
 This package includes the documentation for texlive-miama
 
 %package -n texlive-miama-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn73481
 Release:        0
 Summary:        Severed fonts for texlive-miama
 License:        OFL-1.1
@@ -7035,12 +7892,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-miama/miama.pfb
 
 %package -n texlive-microtype
-Version:        %{texlive_version}.%{texlive_noarch}.3.1asvn66587
+Version:        %{texlive_version}.%{texlive_noarch}.3.2asvn73928
 Release:        0
 License:        LPPL-1.0
 Summary:        Subliminal refinements towards typographical perfection
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Requires:       texlive-etoolbox >= %{texlive_version}
+#!BuildIgnore: texlive-etoolbox
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -7098,9 +7957,9 @@ Requires:       tex(luaotfload.sty)
 Requires:       tex(luatexbase.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source79:       microtype.tar.xz
-Source80:       microtype.doc.tar.xz
+# from 20250308
+Source82:       microtype.tar.xz
+Source83:       microtype.doc.tar.xz
 
 %description -n texlive-microtype
 The package provides a LaTeX interface to the micro-typographic
@@ -7119,13 +7978,13 @@ The package will by default enable protrusion and expansion if
 they can safely be assumed to work. Disabling ligatures
 requires pdfTeX or LuaTeX, while the adjustment of interword
 spacing and of kerning only works with pdfTeX. Letterspacing is
-available with pdfTeX or LuaTeX. The alternative package
+available with pdfTeX, LuaTeX or XeTeX. The alternative package
 'letterspace', which also works with plain TeX, provides the
 user commands for letterspacing only, omitting support for all
 other extensions.
 
 %package -n texlive-microtype-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.1asvn66587
+Version:        %{texlive_version}.%{texlive_noarch}.3.2asvn73928
 Release:        0
 Summary:        Documentation for texlive-microtype
 License:        LPPL-1.0
@@ -7154,6 +8013,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-microtype-doc
+%{_texmfdistdir}/doc/latex/microtype/DEPENDS.txt
 %{_texmfdistdir}/doc/latex/microtype/README.md
 %{_texmfdistdir}/doc/latex/microtype/microtype-code.pdf
 %{_texmfdistdir}/doc/latex/microtype/microtype.pdf
@@ -7218,8 +8078,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source81:       microtype-de.doc.tar.xz
+# from 20250308
+Source84:       microtype-de.doc.tar.xz
 
 %description -n texlive-microtype-de
 The microtype-de package
@@ -7281,9 +8141,9 @@ Provides:       tex(loop.tex)
 Provides:       tex(quire.tex)
 Provides:       tex(styledef.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source82:       midnight.tar.xz
-Source83:       midnight.doc.tar.xz
+# from 20250308
+Source85:       midnight.tar.xz
+Source86:       midnight.doc.tar.xz
 
 %description -n texlive-midnight
 Included are: quire: making booklets, etc.; gloss: vertically
@@ -7372,9 +8232,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-midpage-doc >= %{texlive_version}
 Provides:       tex(midpage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source84:       midpage.tar.xz
-Source85:       midpage.doc.tar.xz
+# from 20250308
+Source87:       midpage.tar.xz
+Source88:       midpage.doc.tar.xz
 
 %description -n texlive-midpage
 The environment will centre text, if immediately preceded and
@@ -7446,9 +8306,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-miller-doc >= %{texlive_version}
 Provides:       tex(miller.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source86:       miller.tar.xz
-Source87:       miller.doc.tar.xz
+# from 20250308
+Source89:       miller.tar.xz
+Source90:       miller.doc.tar.xz
 
 %description -n texlive-miller
 Typeset miller indices, e.g., <1-20>, that are used in material
@@ -7536,9 +8396,9 @@ Requires:       tex(xifthen.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xkvltxp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source88:       milog.tar.xz
-Source89:       milog.doc.tar.xz
+# from 20250308
+Source91:       milog.tar.xz
+Source92:       milog.doc.tar.xz
 
 %description -n texlive-milog
 Seit dem 1. Januar 2015 gilt in Deutschland grundsatzlich fur
@@ -7649,9 +8509,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source90:       milsymb.tar.xz
-Source91:       milsymb.doc.tar.xz
+# from 20250308
+Source93:       milsymb.tar.xz
+Source94:       milsymb.doc.tar.xz
 
 %description -n texlive-milsymb
 The package offers commands to draw military symbols as per
@@ -7739,9 +8599,9 @@ Requires:       tex(tcolorbox.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source92:       mindflow.tar.xz
-Source93:       mindflow.doc.tar.xz
+# from 20250308
+Source95:       mindflow.tar.xz
+Source96:       mindflow.doc.tar.xz
 
 %description -n texlive-mindflow
 This package provides an environment that has its own line
@@ -7816,9 +8676,9 @@ Suggests:       texlive-minibox-doc >= %{texlive_version}
 Provides:       tex(minibox.sty)
 Requires:       tex(expl3.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source94:       minibox.tar.xz
-Source95:       minibox.doc.tar.xz
+# from 20250308
+Source97:       minibox.tar.xz
+Source98:       minibox.doc.tar.xz
 
 %description -n texlive-minibox
 This small package provides a convenient input syntax for boxes
@@ -7893,9 +8753,9 @@ Suggests:       texlive-minidocument-doc >= %{texlive_version}
 Provides:       tex(minidocument.sty)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source96:       minidocument.tar.xz
-Source97:       minidocument.doc.tar.xz
+# from 20250308
+Source99:       minidocument.tar.xz
+Source100:      minidocument.doc.tar.xz
 
 %description -n texlive-minidocument
 This package can be used to create miniature documents inside
@@ -7971,9 +8831,9 @@ Suggests:       texlive-minifp-doc >= %{texlive_version}
 Provides:       tex(mfpextra.tex)
 Provides:       tex(minifp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source98:       minifp.tar.xz
-Source99:       minifp.doc.tar.xz
+# from 20250308
+Source101:      minifp.tar.xz
+Source102:      minifp.doc.tar.xz
 
 %description -n texlive-minifp
 The package provides basic arithmetic operations to 8 decimal
@@ -8025,7 +8885,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/minifp/minifp.sty
 
 %package -n texlive-minim
-Version:        %{texlive_version}.%{texlive_noarch}.2024_1.5svn70379
+Version:        %{texlive_version}.%{texlive_noarch}.2025_1.7svn73816
 Release:        0
 License:        LPPL-1.0
 Summary:        A modern plain format for the LuaTeX engine
@@ -8055,16 +8915,15 @@ Suggests:       texlive-minim-doc >= %{texlive_version}
 Provides:       tex(minim-alloc.tex)
 Provides:       tex(minim-doc.sty)
 Provides:       tex(minim-etex.tex)
-Provides:       tex(minim-hooks.tex)
 Provides:       tex(minim-lmodern.tex)
 Provides:       tex(minim-pdfresources.tex)
 Provides:       tex(minim-plain.tex)
 Provides:       tex(minim.tex)
 Requires:       tex(luaotfload.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source100:      minim.tar.xz
-Source101:      minim.doc.tar.xz
+# from 20250308
+Source103:      minim.tar.xz
+Source104:      minim.doc.tar.xz
 
 %description -n texlive-minim
 This is a modern plain format for the LuaTeX engine, adding
@@ -8080,7 +8939,7 @@ shared lowest-level programming interface, along with their
 combined format.
 
 %package -n texlive-minim-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2024_1.5svn70379
+Version:        %{texlive_version}.%{texlive_noarch}.2025_1.7svn73816
 Release:        0
 Summary:        Documentation for texlive-minim
 License:        LPPL-1.0
@@ -8121,8 +8980,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/minim/minim-callbacks.lua
 %{_texmfdistdir}/tex/luatex/minim/minim-doc.sty
 %{_texmfdistdir}/tex/luatex/minim/minim-etex.tex
-%{_texmfdistdir}/tex/luatex/minim/minim-hooks.lua
-%{_texmfdistdir}/tex/luatex/minim/minim-hooks.tex
 %{_texmfdistdir}/tex/luatex/minim/minim-lmodern.tex
 %{_texmfdistdir}/tex/luatex/minim/minim-pdfresources.lua
 %{_texmfdistdir}/tex/luatex/minim/minim-pdfresources.tex
@@ -8131,7 +8988,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/minim/minim.tex
 
 %package -n texlive-minim-hatching
-Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn62395
+Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn70885
 Release:        0
 License:        LPPL-1.0
 Summary:        Create tiling patterns with the minim-mp MetaPost processor
@@ -8159,16 +9016,16 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-minim-hatching-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source102:      minim-hatching.tar.xz
-Source103:      minim-hatching.doc.tar.xz
+# from 20250308
+Source105:      minim-hatching.tar.xz
+Source106:      minim-hatching.doc.tar.xz
 
 %description -n texlive-minim-hatching
 This is a small proof-of-concept library of tiling patterns for
 use with the minim-mp MetaPost processor.
 
 %package -n texlive-minim-hatching-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn62395
+Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn70885
 Release:        0
 Summary:        Documentation for texlive-minim-hatching
 License:        LPPL-1.0
@@ -8206,7 +9063,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/minim-hatching/minim-hatching.mp
 
 %package -n texlive-minim-math
-Version:        %{texlive_version}.%{texlive_noarch}.2024_1.4svn69352
+Version:        %{texlive_version}.%{texlive_noarch}.2025_1.5svn73816
 Release:        0
 License:        LPPL-1.0
 Summary:        Extensive maths for LuaTeX
@@ -8235,9 +9092,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-minim-math-doc >= %{texlive_version}
 Provides:       tex(minim-math.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source104:      minim-math.tar.xz
-Source105:      minim-math.doc.tar.xz
+# from 20250308
+Source107:      minim-math.tar.xz
+Source108:      minim-math.doc.tar.xz
 
 %description -n texlive-minim-math
 This package provides a simple and highly configurable way to
@@ -8247,7 +9104,7 @@ mathematical typesetting. Also included are the proper settings
 and definitions for almost all Unicode mathematical characters.
 
 %package -n texlive-minim-math-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2024_1.4svn69352
+Version:        %{texlive_version}.%{texlive_noarch}.2025_1.5svn73816
 Release:        0
 Summary:        Documentation for texlive-minim-math
 License:        LPPL-1.0
@@ -8280,6 +9137,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/luatex/minim-math/README
 %{_texmfdistdir}/doc/luatex/minim-math/minim-math.doc
 %{_texmfdistdir}/doc/luatex/minim-math/minim-math.pdf
+%{_texmfdistdir}/doc/luatex/minim-math/minim-math.sty
 
 %files -n texlive-minim-math
 %{_texmfdistdir}/tex/luatex/minim-math/minim-math-table.lua
@@ -8287,7 +9145,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/minim-math/minim-math.tex
 
 %package -n texlive-minim-mp
-Version:        %{texlive_version}.%{texlive_noarch}.2024_1.5svn70310
+Version:        %{texlive_version}.%{texlive_noarch}.2025_1.7svn73816
 Release:        0
 License:        LPPL-1.0
 Summary:        Low-level mplib integration for LuaTeX
@@ -8317,20 +9175,21 @@ Suggests:       texlive-minim-mp-doc >= %{texlive_version}
 Provides:       tex(minim-mp.sty)
 Provides:       tex(minim-mp.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source106:      minim-mp.tar.xz
-Source107:      minim-mp.doc.tar.xz
+# from 20250308
+Source109:      minim-mp.tar.xz
+Source110:      minim-mp.doc.tar.xz
 
 %description -n texlive-minim-mp
-This package offers low-level mplib integration for plain
-LuaTeX and is designed with the purpose of being easy to
-extend. The use of multiple simultaneous MetaPost instances is
-supported, as well as running TeX or lua code from within
-MetaPost. With the included minim-mp format file, you can even
-use LuaTeX as a stand-alone MetaPost compiler.
+This package offers low-level mplib integration for LuaLaTeX
+and plain LuaTeX. It is designed with the purpose of being easy
+to extend. The use of multiple simultaneous MetaPost instances
+is supported, as well as running TeX or lua code from within
+MetaPost. With the included minim-mp and minim-lamp format
+files, you can even use Lua(La)TeX as a stand-alone MetaPost
+compiler.
 
 %package -n texlive-minim-mp-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2024_1.5svn70310
+Version:        %{texlive_version}.%{texlive_noarch}.2025_1.7svn73816
 Release:        0
 Summary:        Documentation for texlive-minim-mp
 License:        LPPL-1.0
@@ -8375,7 +9234,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/minim-mp/minim-mp.tex
 
 %package -n texlive-minim-pdf
-Version:        %{texlive_version}.%{texlive_noarch}.2024_1.5svn70311
+Version:        %{texlive_version}.%{texlive_noarch}.2025_1.7svn74207
 Release:        0
 License:        LPPL-1.0
 Summary:        Low-level PDF integration for LuaTeX
@@ -8404,9 +9263,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-minim-pdf-doc >= %{texlive_version}
 Provides:       tex(minim-pdf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source108:      minim-pdf.tar.xz
-Source109:      minim-pdf.doc.tar.xz
+# from 20250308
+Source111:      minim-pdf.tar.xz
+Source112:      minim-pdf.doc.tar.xz
 
 %description -n texlive-minim-pdf
 This package adds low-level support to plain LuaTeX for marking
@@ -8415,7 +9274,7 @@ rather basic, but should allow you to make your PDFs fully
 PDF/A-compliant.
 
 %package -n texlive-minim-pdf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2024_1.5svn70311
+Version:        %{texlive_version}.%{texlive_noarch}.2025_1.7svn74207
 Release:        0
 Summary:        Documentation for texlive-minim-pdf
 License:        LPPL-1.0
@@ -8455,7 +9314,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/minim-pdf/minim-pdf.tex
 
 %package -n texlive-minim-xmp
-Version:        %{texlive_version}.%{texlive_noarch}.2024_1.3svn69352
+Version:        %{texlive_version}.%{texlive_noarch}.2025_1.4svn73816
 Release:        0
 License:        LPPL-1.0
 Summary:        Embed XMP metadata in PDF with LuaTeX
@@ -8484,9 +9343,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-minim-xmp-doc >= %{texlive_version}
 Provides:       tex(minim-xmp.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source110:      minim-xmp.tar.xz
-Source111:      minim-xmp.doc.tar.xz
+# from 20250308
+Source113:      minim-xmp.tar.xz
+Source114:      minim-xmp.doc.tar.xz
 
 %description -n texlive-minim-xmp
 This package enables the inclusion of XMP (eXtensible Metadata
@@ -8494,7 +9353,7 @@ Platform) data in the pdf output generated by (plain) LuaTeX.
 The use of XMP is required by PDF standards such as PDF/A.
 
 %package -n texlive-minim-xmp-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2024_1.3svn69352
+Version:        %{texlive_version}.%{texlive_noarch}.2025_1.4svn73816
 Release:        0
 Summary:        Documentation for texlive-minim-xmp
 License:        LPPL-1.0
@@ -8614,9 +9473,9 @@ Requires:       tex(titletoc.sty)
 Requires:       tex(ulem.sty)
 Requires:       tex(wrapfig2.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source112:      minimalist.tar.xz
-Source113:      minimalist.doc.tar.xz
+# from 20250308
+Source115:      minimalist.tar.xz
+Source116:      minimalist.doc.tar.xz
 
 %description -n texlive-minimalist
 This package offers you a LaTeX style file and two classes to
@@ -8709,9 +9568,9 @@ Suggests:       texlive-minipage-marginpar-doc >= %{texlive_version}
 Provides:       tex(minipage-marginpar.sty)
 Provides:       tex(mpgmpar.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source114:      minipage-marginpar.tar.xz
-Source115:      minipage-marginpar.doc.tar.xz
+# from 20250308
+Source117:      minipage-marginpar.tar.xz
+Source118:      minipage-marginpar.doc.tar.xz
 
 %description -n texlive-minipage-marginpar
 This package allows \marginpar-commands inside of minipages and
@@ -8794,9 +9653,9 @@ Requires:       tex(epsfig.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source116:      miniplot.tar.xz
-Source117:      miniplot.doc.tar.xz
+# from 20250308
+Source119:      miniplot.tar.xz
+Source120:      miniplot.doc.tar.xz
 
 %description -n texlive-miniplot
 MiniPlot is a package to help the LaTeX user typeset EPS
@@ -8883,9 +9742,9 @@ Requires:       tex(flafter.sty)
 Requires:       tex(notoccite.sty)
 Requires:       tex(placeins.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source118:      minitoc.tar.xz
-Source119:      minitoc.doc.tar.xz
+# from 20250308
+Source121:      minitoc.tar.xz
+Source122:      minitoc.doc.tar.xz
 
 %description -n texlive-minitoc
 The minitoc package allows you to add mini-tables-of-contents
@@ -9293,9 +10152,9 @@ Requires:       tex(lineno.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source120:      minorrevision.tar.xz
-Source121:      minorrevision.doc.tar.xz
+# from 20250308
+Source123:      minorrevision.tar.xz
+Source124:      minorrevision.doc.tar.xz
 
 %description -n texlive-minorrevision
 The package supports those who publish articles in
@@ -9346,7 +10205,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/minorrevision/minorrevision.sty
 
 %package -n texlive-minted
-Version:        %{texlive_version}.%{texlive_noarch}.2.9svn69163
+Version:        %{texlive_version}.%{texlive_noarch}.3.5.1svn73956
 Release:        0
 License:        LPPL-1.0
 Summary:        Highlighted source code for LaTeX
@@ -9358,28 +10217,24 @@ Requires:       texlive-etoolbox >= %{texlive_version}
 #!BuildIgnore: texlive-etoolbox
 Requires:       texlive-float >= %{texlive_version}
 #!BuildIgnore: texlive-float
-Requires:       texlive-framed >= %{texlive_version}
-#!BuildIgnore: texlive-framed
 Requires:       texlive-fvextra >= %{texlive_version}
 #!BuildIgnore: texlive-fvextra
-Requires:       texlive-graphics >= %{texlive_version}
-#!BuildIgnore: texlive-graphics
-Requires:       texlive-ifplatform >= %{texlive_version}
-#!BuildIgnore: texlive-ifplatform
-Requires:       texlive-kvoptions >= %{texlive_version}
-#!BuildIgnore: texlive-kvoptions
-Requires:       texlive-lineno >= %{texlive_version}
-#!BuildIgnore: texlive-lineno
+Requires:       texlive-latex2pydata >= %{texlive_version}
+#!BuildIgnore: texlive-latex2pydata
+Requires(pre):  texlive-minted-bin >= %{texlive_version}
+#!BuildIgnore: texlive-minted-bin
 Requires:       texlive-newfloat >= %{texlive_version}
 #!BuildIgnore: texlive-newfloat
 Requires:       texlive-pdftexcmds >= %{texlive_version}
 #!BuildIgnore: texlive-pdftexcmds
+Requires:       texlive-pgf >= %{texlive_version}
+#!BuildIgnore: texlive-pgf
+Requires:       texlive-pgfopts >= %{texlive_version}
+#!BuildIgnore: texlive-pgfopts
 Requires:       texlive-tools >= %{texlive_version}
 #!BuildIgnore: texlive-tools
 Requires:       texlive-xcolor >= %{texlive_version}
 #!BuildIgnore: texlive-xcolor
-Requires:       texlive-xstring >= %{texlive_version}
-#!BuildIgnore: texlive-xstring
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -9403,6 +10258,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-minted-doc >= %{texlive_version}
 Provides:       tex(minted.sty)
 Provides:       tex(minted1.sty)
+Provides:       tex(minted2.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(catchfile.sty)
 Requires:       tex(etoolbox.sty)
@@ -9414,16 +10270,19 @@ Requires:       tex(ifplatform.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(kvoptions.sty)
+Requires:       tex(latex2pydata.sty)
 Requires:       tex(lineno.sty)
 Requires:       tex(newfloat.sty)
 Requires:       tex(pdftexcmds.sty)
+Requires:       tex(pgfkeys.sty)
+Requires:       tex(pgfopts.sty)
 Requires:       tex(shellesc.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source122:      minted.tar.xz
-Source123:      minted.doc.tar.xz
+# from 20250308
+Source125:      minted.tar.xz
+Source126:      minted.doc.tar.xz
 
 %description -n texlive-minted
 The package that facilitates expressive syntax highlighting in
@@ -9432,7 +10291,7 @@ provides options to customize the highlighted source code
 output using fancyvrb.
 
 %package -n texlive-minted-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.9svn69163
+Version:        %{texlive_version}.%{texlive_noarch}.3.5.1svn73956
 Release:        0
 Summary:        Documentation for texlive-minted
 License:        LPPL-1.0
@@ -9461,13 +10320,21 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-minted-doc
+%{_texmfdistdir}/doc/latex/minted/CHANGELOG_LATEXMINTED_PYTHON_PACKAGE.md
+%{_texmfdistdir}/doc/latex/minted/CHANGELOG_MINTED_LATEX_PACKAGE.md
 %{_texmfdistdir}/doc/latex/minted/DEPENDS.txt
 %{_texmfdistdir}/doc/latex/minted/README
 %{_texmfdistdir}/doc/latex/minted/minted.pdf
 
 %files -n texlive-minted
+%{_texmfdistdir}/scripts/minted/latex2pydata-0.4.1-py3-none-any.whl
+%{_texmfdistdir}/scripts/minted/latexminted-0.4.0-py3-none-any.whl
+%{_texmfdistdir}/scripts/minted/latexminted.py
+%{_texmfdistdir}/scripts/minted/latexrestricted-0.6.2-py3-none-any.whl
+%{_texmfdistdir}/scripts/minted/pygments-2.19.1-py3-none-any.whl
 %{_texmfdistdir}/tex/latex/minted/minted.sty
 %{_texmfdistdir}/tex/latex/minted/minted1.sty
+%{_texmfdistdir}/tex/latex/minted/minted2.sty
 
 %package -n texlive-mintspirit
 Version:        %{texlive_version}.%{texlive_noarch}.svn64461
@@ -10049,9 +10916,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source124:      mintspirit.tar.xz
-Source125:      mintspirit.doc.tar.xz
+# from 20250308
+Source127:      mintspirit.tar.xz
+Source128:      mintspirit.doc.tar.xz
 
 %description -n texlive-mintspirit
 The package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -10727,9 +11594,9 @@ Requires:       tex(multicol.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source126:      minutes.tar.xz
-Source127:      minutes.doc.tar.xz
+# from 20250308
+Source129:      minutes.tar.xz
+Source130:      minutes.doc.tar.xz
 
 %description -n texlive-minutes
 Supports the creation of a collection of minutes. Features
@@ -10785,7 +11652,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/minutes/minutes.sty
 
 %package -n texlive-mismath
-Version:        %{texlive_version}.%{texlive_noarch}.2.12svn70255
+Version:        %{texlive_version}.%{texlive_noarch}.3.1svn71549
 Release:        0
 License:        LPPL-1.0
 Summary:        Miscellaneous mathematical macros
@@ -10813,7 +11680,6 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mismath-doc >= %{texlive_version}
 Provides:       tex(mismath.sty)
-Requires:       tex(amsmath.sty)
 Requires:       tex(decimalcomma.sty)
 Requires:       tex(esvect.sty)
 Requires:       tex(etoolbox.sty)
@@ -10821,25 +11687,26 @@ Requires:       tex(ibrackets.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(mathtools.sty)
+Requires:       tex(mleftright.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source128:      mismath.tar.xz
-Source129:      mismath.doc.tar.xz
+# from 20250308
+Source131:      mismath.tar.xz
+Source132:      mismath.doc.tar.xz
 
 %description -n texlive-mismath
 The package provides some mathematical macros to typeset:
 mathematical constants e, i, p in upright shape (automatically)
 as recommended by ISO 80000-2, vectors with nice arrows and
-adjusted norm (and tensors), some standard operator names,
-improved spacings in mathematical formulas, systems of
-equations and small matrices, displaymath in double columns for
-lengthy calculations.
+adjusted norm (and tensors), tensors in sans serif bold italic
+shape, some standard operator names, improved spacings in
+mathematical formulas, systems of equations and small matrices,
+displaymath in double columns for lengthy calculations.
 
 %package -n texlive-mismath-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.12svn70255
+Version:        %{texlive_version}.%{texlive_noarch}.3.1svn71549
 Release:        0
 Summary:        Documentation for texlive-mismath
 License:        LPPL-1.0
@@ -10911,9 +11778,9 @@ Requires:       tex(geometry.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(multicol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source130:      missaali.tar.xz
-Source131:      missaali.doc.tar.xz
+# from 20250308
+Source133:      missaali.tar.xz
+Source134:      missaali.doc.tar.xz
 
 %description -n texlive-missaali
 This package contains the free OpenType Textura font Missaali
@@ -11008,7 +11875,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-missaali/Missaali-Regular.otf
 
 %package -n texlive-mitthesis
-Version:        %{texlive_version}.%{texlive_noarch}.1.11svn68732
+Version:        %{texlive_version}.%{texlive_noarch}.1.19svn73622
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX template for an MIT thesis
@@ -11037,6 +11904,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mitthesis-doc >= %{texlive_version}
 Provides:       tex(mitthesis.cls)
 Requires:       tex(bm.sty)
+Requires:       tex(bookmark.sty)
 Requires:       tex(caption.sty)
 Requires:       tex(doi.sty)
 Requires:       tex(etoolbox.sty)
@@ -11051,14 +11919,13 @@ Requires:       tex(lineno.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(report.cls)
 Requires:       tex(subcaption.sty)
-Requires:       tex(titlesec.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source132:      mitthesis.tar.xz
-Source133:      mitthesis.doc.tar.xz
+# from 20250308
+Source135:      mitthesis.tar.xz
+Source136:      mitthesis.doc.tar.xz
 
 %description -n texlive-mitthesis
 This class provides a LaTeX template for an MIT thesis or
@@ -11077,7 +11944,7 @@ version of mitthesis.cls, which was first composed in the
 1980s.
 
 %package -n texlive-mitthesis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.11svn68732
+Version:        %{texlive_version}.%{texlive_noarch}.1.19svn73622
 Release:        0
 Summary:        Documentation for texlive-mitthesis
 License:        LPPL-1.0
@@ -11111,12 +11978,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/abstract.tex
 %{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/acknowledgments.tex
 %{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/appendixa.tex
+%{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/appendixb.tex
 %{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/biography.tex
 %{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/chapter1.tex
+%{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/committee_members.tex
 %{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/fontsets/mitthesis-defaultfonts.tex
 %{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/fontsets/mitthesis-fira-newtxsf.tex
 %{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/fontsets/mitthesis-heros-stix2.tex
-%{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/fontsets/mitthesis-libertine.tex
+%{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/fontsets/mitthesis-libertinus.tex
+%{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/fontsets/mitthesis-lmodern.tex
 %{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/fontsets/mitthesis-lucida.tex
 %{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/fontsets/mitthesis-newtx-sans-text.tex
 %{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/fontsets/mitthesis-newtx.tex
@@ -11128,20 +11998,24 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/mitthesis/README.md
 %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/No_cc_license.pdf
 %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/One_author_one_degree.pdf
+%{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/One_author_one_degree_two_departments.pdf
 %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/One_author_two_degrees.pdf
 %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/One_author_two_degrees_from_one_department.pdf
 %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/Two_authors_one_degree.pdf
 %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/Two_authors_two_degrees.pdf
 %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/latex_sources/No_cc_license.tex
 %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/latex_sources/One_author_one_degree.tex
+%{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/latex_sources/One_author_one_degree_two_departments.tex
 %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/latex_sources/One_author_two_degrees.tex
 %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/latex_sources/One_author_two_degrees_from_one_department.tex
 %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/latex_sources/Two_authors_one_degree.tex
 %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/latex_sources/Two_authors_two_degrees.tex
+%{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/latex_sources/cover_compile.sh
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/Defaultfonts.pdf
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/Fira_Newtxsf.pdf
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/Heros-Stix2.pdf
-%{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/Libertine.pdf
+%{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/Libertinus.pdf
+%{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/Lmodern.pdf
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/Lucida.pdf
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/Newtx-sans-text.pdf
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/Newtx.pdf
@@ -11151,7 +12025,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/Defaultfonts.tex
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/Fira_Newtxsf.tex
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/Heros-Stix2.tex
-%{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/Libertine.tex
+%{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/Libertinus.tex
+%{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/Lmodern.tex
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/Lucida.tex
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/Newtx-sans-text.tex
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/Newtx.tex
@@ -11159,6 +12034,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/Stix2.tex
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/Termes-stix2.tex
 %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/Termes.tex
+%{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources/compile-font-samples.sh
 %{_texmfdistdir}/doc/latex/mitthesis/mitthesis-doc/mitthesis-doc.pdf
 %{_texmfdistdir}/doc/latex/mitthesis/mitthesis-doc/mitthesis-doc.tex
 
@@ -11196,9 +12072,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mkgrkindex-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source134:      mkgrkindex.tar.xz
-Source135:      mkgrkindex.doc.tar.xz
+# from 20250308
+Source137:      mkgrkindex.tar.xz
+Source138:      mkgrkindex.doc.tar.xz
 
 %description -n texlive-mkgrkindex
 Makeindex is resolutely stuck with Latin-based alphabets, so
@@ -11288,9 +12164,9 @@ Requires:       perl(Pod::Usage)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source136:      mkjobtexmf.tar.xz
-Source137:      mkjobtexmf.doc.tar.xz
+# from 20250308
+Source139:      mkjobtexmf.tar.xz
+Source140:      mkjobtexmf.doc.tar.xz
 
 %description -n texlive-mkjobtexmf
 The package provides a Perl script, which runs a program and
@@ -11374,9 +12250,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mkpattern-doc >= %{texlive_version}
 Provides:       tex(mkpatter.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source138:      mkpattern.tar.xz
-Source139:      mkpattern.doc.tar.xz
+# from 20250308
+Source141:      mkpattern.tar.xz
+Source142:      mkpattern.doc.tar.xz
 
 %description -n texlive-mkpattern
 Mkpattern is a general purpose program for the generation of
@@ -11457,9 +12333,9 @@ Suggests:       texlive-mkpic-doc >= %{texlive_version}
 Requires:       perl(Getopt::Long)
 #!BuildIgnore:  perl(Getopt::Long)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source140:      mkpic.tar.xz
-Source141:      mkpic.doc.tar.xz
+# from 20250308
+Source143:      mkpic.tar.xz
+Source144:      mkpic.doc.tar.xz
 
 %description -n texlive-mkpic
 mkpic provides an easy interface for making small pictures with
@@ -11542,9 +12418,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(thumbpdf.sty)
 Requires:       tex(times.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source142:      mla-paper.tar.xz
-Source143:      mla-paper.doc.tar.xz
+# from 20250308
+Source145:      mla-paper.tar.xz
+Source146:      mla-paper.doc.tar.xz
 
 %description -n texlive-mla-paper
 The package formats articles using the MLA style ("MLA" =
@@ -11588,7 +12464,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mla-paper/mla.sty
 
 %package -n texlive-mlacls
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn67201
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72271
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX class for MLA papers
@@ -11634,9 +12510,9 @@ Requires:       tex(ragged2e.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source144:      mlacls.tar.xz
-Source145:      mlacls.doc.tar.xz
+# from 20250308
+Source147:      mlacls.tar.xz
+Source148:      mlacls.doc.tar.xz
 
 %description -n texlive-mlacls
 In the United States, secondary and undergraduate students are
@@ -11647,7 +12523,7 @@ straightforward LaTeX class for composing papers almost
 perfectly adherent to the MLA style guide.
 
 %package -n texlive-mlacls-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn67201
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72271
 Release:        0
 Summary:        Documentation for texlive-mlacls
 License:        LPPL-1.0
@@ -11718,9 +12594,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mlawriter-doc >= %{texlive_version}
 Provides:       tex(mlawriter.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source146:      mlawriter.tar.xz
-Source147:      mlawriter.doc.tar.xz
+# from 20250308
+Source149:      mlawriter.tar.xz
+Source150:      mlawriter.doc.tar.xz
 
 %description -n texlive-mlawriter
 With this Plain TeX extension, papers can be written in MLA
@@ -11795,9 +12671,9 @@ Provides:       tex(mleftright.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source148:      mleftright.tar.xz
-Source149:      mleftright.doc.tar.xz
+# from 20250308
+Source151:      mleftright.tar.xz
+Source152:      mleftright.doc.tar.xz
 
 %description -n texlive-mleftright
 The package defines variants \mleft and \mright of \left and
@@ -11874,9 +12750,9 @@ Provides:       tex(mlist.sty)
 Requires:       tex(ifmtarg.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source150:      mlist.tar.xz
-Source151:      mlist.doc.tar.xz
+# from 20250308
+Source153:      mlist.tar.xz
+Source154:      mlist.doc.tar.xz
 
 %description -n texlive-mlist
 The package defines commands that create macros for typesetting
@@ -12620,9 +13496,9 @@ Provides:       tex(ts1mlmssq.fd)
 Provides:       tex(ts1mlmtt.fd)
 Provides:       tex(ts1mlmvtt.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source152:      mlmodern.tar.xz
-Source153:      mlmodern.doc.tar.xz
+# from 20250308
+Source155:      mlmodern.tar.xz
+Source156:      mlmodern.doc.tar.xz
 
 %description -n texlive-mlmodern
 MLModern is a text and math font family with (La)TeX support,
@@ -13536,7 +14412,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-mlmodern/mlmvtto10.pfb
 
 %package -n texlive-mltex
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn70002
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn71363
 Release:        0
 License:        SUSE-TeX
 Summary:        The MLTeX system
@@ -13616,9 +14492,9 @@ Provides:       tex(lo1enc.def)
 Provides:       tex(mlltxchg.def)
 Provides:       tex(mltex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source154:      mltex.tar.xz
-Source155:      mltex.doc.tar.xz
+# from 20250308
+Source157:      mltex.tar.xz
+Source158:      mltex.doc.tar.xz
 
 %description -n texlive-mltex
 MLTeX is a modification of TeX version >=3.0 that allows the
@@ -13627,7 +14503,7 @@ Computer Modern (CM) fonts. The system is distributed as a TeX
 change file.
 
 %package -n texlive-mltex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn70002
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn71363
 Release:        0
 Summary:        Documentation for texlive-mltex
 License:        SUSE-TeX
@@ -13774,9 +14650,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(totpages.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source156:      mluexercise.tar.xz
-Source157:      mluexercise.doc.tar.xz
+# from 20250308
+Source159:      mluexercise.tar.xz
+Source160:      mluexercise.doc.tar.xz
 
 %description -n texlive-mluexercise
 This package provides a template class for solving weekly
@@ -13859,9 +14735,9 @@ Provides:       tex(mmap.sty)
 Requires:       tex(cmap.sty)
 Requires:       tex(ifpdf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source158:      mmap.tar.xz
-Source159:      mmap.doc.tar.xz
+# from 20250308
+Source161:      mmap.tar.xz
+Source162:      mmap.doc.tar.xz
 
 %description -n texlive-mmap
 The package is an extension of cmap with improved flexibility
@@ -13978,9 +14854,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mnhyphn-doc >= %{texlive_version}
 Provides:       tex(mnhyphn.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source160:      mnhyphn.tar.xz
-Source161:      mnhyphn.doc.tar.xz
+# from 20250308
+Source163:      mnhyphn.tar.xz
+Source164:      mnhyphn.doc.tar.xz
 
 %description -n texlive-mnhyphn
 Serves Mongolian written using Cyrillic letters, using
@@ -14059,9 +14935,9 @@ Requires:       tex(sidenotes.sty)
 Requires:       tex(soul.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source162:      mnotes.tar.xz
-Source163:      mnotes.doc.tar.xz
+# from 20250308
+Source165:      mnotes.tar.xz
+Source166:      mnotes.doc.tar.xz
 
 %description -n texlive-mnotes
 The package provides a flexible mechanism for annotating, and
@@ -14137,9 +15013,9 @@ Requires:       tex(geometry.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(natbib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source164:      mnras.tar.xz
-Source165:      mnras.doc.tar.xz
+# from 20250308
+Source167:      mnras.tar.xz
+Source168:      mnras.doc.tar.xz
 
 %description -n texlive-mnras
 Package for preparing papers in the journal "Monthly Notices of
@@ -14342,9 +15218,9 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(eufrak.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source166:      mnsymbol.tar.xz
-Source167:      mnsymbol.doc.tar.xz
+# from 20250308
+Source169:      mnsymbol.tar.xz
+Source170:      mnsymbol.doc.tar.xz
 
 %description -n texlive-mnsymbol
 MnSymbol is a symbol font family, designed to be used in
@@ -14759,9 +15635,9 @@ Requires:       tex(multirow.sty)
 Requires:       tex(soul.sty)
 Requires:       tex(ulem.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source168:      modeles-factures-belges-assocs.tar.xz
-Source169:      modeles-factures-belges-assocs.doc.tar.xz
+# from 20250308
+Source171:      modeles-factures-belges-assocs.tar.xz
+Source172:      modeles-factures-belges-assocs.doc.tar.xz
 
 %description -n texlive-modeles-factures-belges-assocs
 This package provides templates and a sty file for generating
@@ -14816,16 +15692,24 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/modeles-factures-belges-assocs/modeles-factures-belges-associations.sty
 
 %package -n texlive-moderncv
-Version:        %{texlive_version}.%{texlive_noarch}.2.3.1svn62128
+Version:        %{texlive_version}.%{texlive_noarch}.2.4.1svn71837
 Release:        0
 License:        LPPL-1.0
 Summary:        A modern curriculum vitae class
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Requires:       texlive-academicons >= %{texlive_version}
+#!BuildIgnore: texlive-academicons
+Requires:       texlive-arydshln >= %{texlive_version}
+#!BuildIgnore: texlive-arydshln
+Requires:       texlive-colortbl >= %{texlive_version}
+#!BuildIgnore: texlive-colortbl
 Requires:       texlive-etoolbox >= %{texlive_version}
 #!BuildIgnore: texlive-etoolbox
 Requires:       texlive-fancyhdr >= %{texlive_version}
 #!BuildIgnore: texlive-fancyhdr
+Requires:       texlive-fontawesome5 >= %{texlive_version}
+#!BuildIgnore: texlive-fontawesome5
 Requires:       texlive-graphics >= %{texlive_version}
 #!BuildIgnore: texlive-graphics
 Requires:       texlive-hyperref >= %{texlive_version}
@@ -14836,6 +15720,8 @@ Requires:       texlive-l3packages >= %{texlive_version}
 #!BuildIgnore: texlive-l3packages
 Requires:       texlive-microtype >= %{texlive_version}
 #!BuildIgnore: texlive-microtype
+Requires:       texlive-multirow >= %{texlive_version}
+#!BuildIgnore: texlive-multirow
 Requires:       texlive-tools >= %{texlive_version}
 #!BuildIgnore: texlive-tools
 Requires:       texlive-url >= %{texlive_version}
@@ -14869,15 +15755,18 @@ Provides:       tex(moderncvbodyii.sty)
 Provides:       tex(moderncvbodyiii.sty)
 Provides:       tex(moderncvbodyiv.sty)
 Provides:       tex(moderncvbodyv.sty)
+Provides:       tex(moderncvbodyvi.sty)
 Provides:       tex(moderncvcollection.sty)
 Provides:       tex(moderncvcolorblack.sty)
 Provides:       tex(moderncvcolorblue.sty)
 Provides:       tex(moderncvcolorburgundy.sty)
+Provides:       tex(moderncvcolorcerulean.sty)
 Provides:       tex(moderncvcolorgreen.sty)
 Provides:       tex(moderncvcolorgrey.sty)
 Provides:       tex(moderncvcolororange.sty)
 Provides:       tex(moderncvcolorpurple.sty)
 Provides:       tex(moderncvcolorred.sty)
+Provides:       tex(moderncvcolors.tex)
 Provides:       tex(moderncvcompatibility.sty)
 Provides:       tex(moderncvdebugtools.sty)
 Provides:       tex(moderncvfooti.sty)
@@ -14887,6 +15776,7 @@ Provides:       tex(moderncvheadiii.sty)
 Provides:       tex(moderncvheadiv.sty)
 Provides:       tex(moderncvheadv.sty)
 Provides:       tex(moderncvheadvi.sty)
+Provides:       tex(moderncvheadvii.sty)
 Provides:       tex(moderncviconsacademic.sty)
 Provides:       tex(moderncviconsawesome.sty)
 Provides:       tex(moderncviconsletters.sty)
@@ -14897,9 +15787,11 @@ Provides:       tex(moderncvskillmatrix.sty)
 Provides:       tex(moderncvstylebanking.sty)
 Provides:       tex(moderncvstylecasual.sty)
 Provides:       tex(moderncvstyleclassic.sty)
+Provides:       tex(moderncvstylecontemporary.sty)
 Provides:       tex(moderncvstyleempty.sty)
 Provides:       tex(moderncvstylefancy.sty)
 Provides:       tex(moderncvstyleoldstyle.sty)
+Provides:       tex(moderncvverticaltimeline.sty)
 Provides:       tex(tweaklist.sty)
 Requires:       tex(academicons.sty)
 Requires:       tex(arydshln.sty)
@@ -14910,22 +15802,25 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(fontawesome5.sty)
+Requires:       tex(fontenc.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(kurier.sty)
+Requires:       tex(lmodern.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(multirow.sty)
+Requires:       tex(qrcode.sty)
 Requires:       tex(tgpagella.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source170:      moderncv.tar.xz
-Source171:      moderncv.doc.tar.xz
+# from 20250308
+Source173:      moderncv.tar.xz
+Source174:      moderncv.doc.tar.xz
 
 %description -n texlive-moderncv
 The class provides facilities for typesetting modern
@@ -14935,7 +15830,7 @@ by changing the colours, the fonts, etc. The template.tex file
 can be used as an example.
 
 %package -n texlive-moderncv-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.3.1svn62128
+Version:        %{texlive_version}.%{texlive_noarch}.2.4.1svn71837
 Release:        0
 Summary:        Documentation for texlive-moderncv
 License:        LPPL-1.0
@@ -14973,6 +15868,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/moderncv/picture.eps
 %{_texmfdistdir}/doc/latex/moderncv/picture.jpg
 %{_texmfdistdir}/doc/latex/moderncv/publications.bib
+%{_texmfdistdir}/doc/latex/moderncv/signature.png
 %{_texmfdistdir}/doc/latex/moderncv/template.tex
 
 %files -n texlive-moderncv
@@ -14982,15 +15878,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/moderncv/moderncvbodyiii.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvbodyiv.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvbodyv.sty
+%{_texmfdistdir}/tex/latex/moderncv/moderncvbodyvi.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvcollection.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvcolorblack.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvcolorblue.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvcolorburgundy.sty
+%{_texmfdistdir}/tex/latex/moderncv/moderncvcolorcerulean.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvcolorgreen.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvcolorgrey.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvcolororange.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvcolorpurple.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvcolorred.sty
+%{_texmfdistdir}/tex/latex/moderncv/moderncvcolors.tex
 %{_texmfdistdir}/tex/latex/moderncv/moderncvcompatibility.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvdebugtools.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvfooti.sty
@@ -15000,6 +15899,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/moderncv/moderncvheadiv.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvheadv.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvheadvi.sty
+%{_texmfdistdir}/tex/latex/moderncv/moderncvheadvii.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncviconsacademic.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncviconsawesome.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncviconsletters.sty
@@ -15010,9 +15910,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/moderncv/moderncvstylebanking.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvstylecasual.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvstyleclassic.sty
+%{_texmfdistdir}/tex/latex/moderncv/moderncvstylecontemporary.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvstyleempty.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvstylefancy.sty
 %{_texmfdistdir}/tex/latex/moderncv/moderncvstyleoldstyle.sty
+%{_texmfdistdir}/tex/latex/moderncv/moderncvverticaltimeline.sty
 %{_texmfdistdir}/tex/latex/moderncv/tweaklist.sty
 
 %package -n texlive-modernposter
@@ -15059,9 +15961,9 @@ Requires:       tex(sfmath.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source172:      modernposter.tar.xz
-Source173:      modernposter.doc.tar.xz
+# from 20250308
+Source175:      modernposter.tar.xz
+Source176:      modernposter.doc.tar.xz
 
 %description -n texlive-modernposter
 This class extends the a0poster class in that it adds support
@@ -15143,9 +16045,9 @@ Provides:       tex(moderntimeline.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source174:      moderntimeline.tar.xz
-Source175:      moderntimeline.doc.tar.xz
+# from 20250308
+Source177:      moderntimeline.tar.xz
+Source178:      moderntimeline.doc.tar.xz
 
 %description -n texlive-moderntimeline
 The package provides commands to configure and to draw time
@@ -15217,9 +16119,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-modes-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source176:      modes.tar.xz
-Source177:      modes.doc.tar.xz
+# from 20250308
+Source179:      modes.tar.xz
+Source180:      modes.doc.tar.xz
 
 %description -n texlive-modes
 The modes file collects all known Metafont modes for printing
@@ -15307,9 +16209,9 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source178:      modiagram.tar.xz
-Source179:      modiagram.doc.tar.xz
+# from 20250308
+Source181:      modiagram.tar.xz
+Source182:      modiagram.doc.tar.xz
 
 %description -n texlive-modiagram
 The package provides an environment MOdiagram and some
@@ -15389,9 +16291,9 @@ Suggests:       texlive-modref-doc >= %{texlive_version}
 Provides:       tex(modref.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source180:      modref.tar.xz
-Source181:      modref.doc.tar.xz
+# from 20250308
+Source183:      modref.tar.xz
+Source184:      modref.doc.tar.xz
 
 %description -n texlive-modref
 The package contains macros which allow authors to easily
@@ -15468,9 +16370,9 @@ Provides:       tex(modroman.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source182:      modroman.tar.xz
-Source183:      modroman.doc.tar.xz
+# from 20250308
+Source185:      modroman.tar.xz
+Source186:      modroman.doc.tar.xz
 
 %description -n texlive-modroman
 This package provides only two macros viz. \modromannumeral
@@ -15558,9 +16460,9 @@ Requires:       tex(coseoul.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(import.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source184:      modular.tar.xz
-Source185:      modular.doc.tar.xz
+# from 20250308
+Source187:      modular.tar.xz
+Source188:      modular.doc.tar.xz
 
 %description -n texlive-modular
 LaTeX sections have absolute depth, e.g. \section, \subsection,
@@ -15649,9 +16551,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-modulus-doc >= %{texlive_version}
 Provides:       tex(modulus.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source186:      modulus.tar.xz
-Source187:      modulus.doc.tar.xz
+# from 20250308
+Source189:      modulus.tar.xz
+Source190:      modulus.doc.tar.xz
 
 %description -n texlive-modulus
 The package provides an easy way to take the remainder of a
@@ -15701,10 +16603,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/modulus/modulus.sty
 
 %package -n texlive-moloch
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.0svn73490
 Release:        0
 License:        LPPL-1.0
-Summary:        Beamer based on Metropolis theme
+Summary:        Beamer theme based on Metropolis
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -15728,26 +16630,30 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-moloch-doc >= %{texlive_version}
+Provides:       tex(beamercolorthememoloch-highcontrast.sty)
+Provides:       tex(beamercolorthememoloch-tomorrow.sty)
 Provides:       tex(beamercolorthememoloch.sty)
 Provides:       tex(beamerfontthememoloch.sty)
 Provides:       tex(beamerinnerthememoloch.sty)
 Provides:       tex(beamerouterthememoloch.sty)
 Provides:       tex(beamerthememoloch.sty)
 Requires:       tex(calc.sty)
+Requires:       tex(etoolbox.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source188:      moloch.tar.xz
-Source189:      moloch.doc.tar.xz
+# from 20250308
+Source191:      moloch.tar.xz
+Source192:      moloch.doc.tar.xz
 
 %description -n texlive-moloch
-Moloch is a fork of the Metropolis Theme which fixes some
-outstanding issues of this theme.
+Moloch is a clean and simple beamer theme. It is a fork of the
+Metropolis theme, but has a more minimalistic and slightly less
+opinionated design.
 
 %package -n texlive-moloch-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.0svn73490
 Release:        0
 Summary:        Documentation for texlive-moloch
 License:        LPPL-1.0
@@ -15783,6 +16689,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/moloch/moloch.tex
 
 %files -n texlive-moloch
+%{_texmfdistdir}/tex/latex/moloch/beamercolorthememoloch-highcontrast.sty
+%{_texmfdistdir}/tex/latex/moloch/beamercolorthememoloch-tomorrow.sty
 %{_texmfdistdir}/tex/latex/moloch/beamercolorthememoloch.sty
 %{_texmfdistdir}/tex/latex/moloch/beamerfontthememoloch.sty
 %{_texmfdistdir}/tex/latex/moloch/beamerinnerthememoloch.sty
@@ -15821,9 +16729,9 @@ Provides:       tex(mn.def)
 Provides:       tex(mongolian.ldf)
 Provides:       tex(mongolian.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source190:      mongolian-babel.tar.xz
-Source191:      mongolian-babel.doc.tar.xz
+# from 20250308
+Source193:      mongolian-babel.tar.xz
+Source194:      mongolian-babel.doc.tar.xz
 
 %description -n texlive-mongolian-babel
 This package provides support for Mongolian in a Cyrillic
@@ -15898,9 +16806,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-monofill-doc >= %{texlive_version}
 Provides:       tex(monofill.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source192:      monofill.tar.xz
-Source193:      monofill.doc.tar.xz
+# from 20250308
+Source195:      monofill.tar.xz
+Source196:      monofill.doc.tar.xz
 
 %description -n texlive-monofill
 The package provides horizontal alignment, as in the LaTeX
@@ -16132,9 +17040,9 @@ Requires:       tex(inputenc.sty)
 Requires:       tex(lscape.sty)
 Requires:       tex(rotating.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source194:      montex.tar.xz
-Source195:      montex.doc.tar.xz
+# from 20250308
+Source197:      montex.tar.xz
+Source198:      montex.doc.tar.xz
 
 %description -n texlive-montex
 MonTeX provides Mongolian and Manju support for the TeX/LaTeX
@@ -20485,9 +21393,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source196:      montserrat.tar.xz
-Source197:      montserrat.doc.tar.xz
+# from 20250308
+Source199:      montserrat.tar.xz
+Source200:      montserrat.doc.tar.xz
 
 %description -n texlive-montserrat
 Montserrat is a geometric sans-serif typeface designed by
@@ -24631,9 +25539,9 @@ Requires:       tex(varwidth.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source198:      moodle.tar.xz
-Source199:      moodle.doc.tar.xz
+# from 20250308
+Source201:      moodle.tar.xz
+Source202:      moodle.doc.tar.xz
 
 %description -n texlive-moodle
 A package for writing Moodle quizzes in LaTeX. In addition to
@@ -24866,9 +25774,9 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(fmtcount.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source200:      moreenum.tar.xz
-Source201:      moreenum.doc.tar.xz
+# from 20250308
+Source203:      moreenum.tar.xz
+Source204:      moreenum.doc.tar.xz
 
 %description -n texlive-moreenum
 The package provides the following new enumerate styles: \greek
@@ -24928,7 +25836,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/moreenum/moreenum.sty
 
 %package -n texlive-morefloats
-Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn37927
+Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn73637
 Release:        0
 License:        LPPL-1.0
 Summary:        Increase the number of simultaneous LaTeX floats
@@ -24959,9 +25867,9 @@ Provides:       tex(morefloats.sty)
 Requires:       tex(ifetex.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source202:      morefloats.tar.xz
-Source203:      morefloats.doc.tar.xz
+# from 20250308
+Source205:      morefloats.tar.xz
+Source206:      morefloats.doc.tar.xz
 
 %description -n texlive-morefloats
 LaTeX can, by default, only cope with 18 outstanding floats;
@@ -24973,7 +25881,7 @@ of floats merely delays the arrival of the inevitable error
 message.
 
 %package -n texlive-morefloats-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn37927
+Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn73637
 Release:        0
 Summary:        Documentation for texlive-morefloats
 License:        LPPL-1.0
@@ -25052,9 +25960,9 @@ Requires:       tex(dowith.sty)
 Requires:       tex(fifinddo.sty)
 Requires:       tex(langcode.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source204:      morehype.tar.xz
-Source205:      morehype.doc.tar.xz
+# from 20250308
+Source207:      morehype.tar.xz
+Source208:      morehype.doc.tar.xz
 
 %description -n texlive-morehype
 The bundle provides three packages: texlinks: shorthand macros
@@ -25127,6 +26035,99 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/morehype/texblog.fdf
 %{_texmfdistdir}/tex/latex/morehype/texlinks.sty
 
+%package -n texlive-moremath
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.0svn72072
+Release:        0
+License:        LPPL-1.0
+Summary:        Additional commands for typesetting maths
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-moremath-doc >= %{texlive_version}
+Provides:       tex(moremath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(bm.sty)
+Requires:       tex(mathtools.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source209:      moremath.tar.xz
+Source210:      moremath.doc.tar.xz
+
+%description -n texlive-moremath
+This package provides several document level commands to ease
+typesetting of maths with LaTeX. This package provides
+complementary commands to all operators defined by amsmath
+which typeset the operators together with delimiters (which can
+be scaled manually, automatically or not at all). These
+commands also accept optional sub- and superscripts.
+Additionally, this package provides several commands to typeset
+gradient, divergence, curl, Laplace, and d'Alembert operators.
+Those commands also accept an optional subscript and their
+appearance can be modified using key-value options. Furthermore
+several commands for producing row and column vectors, as well
+as (anti-)diagonal matrices and identity matrices, utilizing
+mathtools' matrix* family of environments, are provided. Most
+of the document level commands defined by this package can also
+be disabled using a package load-time option to avoid clashes
+with commands defined by other packages. The package depends on
+mathtools, bm (optional), and amssymb.
+
+%package -n texlive-moremath-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.0svn72072
+Release:        0
+Summary:        Documentation for texlive-moremath
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-moremath and texlive-alldocumentation)
+
+%description -n texlive-moremath-doc
+This package includes the documentation for texlive-moremath
+
+%post -n texlive-moremath
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-moremath
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-moremath
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-moremath-doc
+%{_texmfdistdir}/doc/latex/moremath/MANIFEST.md
+%{_texmfdistdir}/doc/latex/moremath/README.md
+%{_texmfdistdir}/doc/latex/moremath/moremath-doc.pdf
+
+%files -n texlive-moremath
+%{_texmfdistdir}/tex/latex/moremath/moremath.sty
+
 %package -n texlive-moresize
 Version:        %{texlive_version}.%{texlive_noarch}.1.9svn17513
 Release:        0
@@ -25157,9 +26158,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-moresize-doc >= %{texlive_version}
 Provides:       tex(moresize.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source206:      moresize.tar.xz
-Source207:      moresize.doc.tar.xz
+# from 20250308
+Source211:      moresize.tar.xz
+Source212:      moresize.doc.tar.xz
 
 %description -n texlive-moresize
 A package for using font sizes up to 35.88pt, for example with
@@ -25238,9 +26239,9 @@ Suggests:       texlive-moreverb-doc >= %{texlive_version}
 Provides:       tex(moreverb.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source208:      moreverb.tar.xz
-Source209:      moreverb.doc.tar.xz
+# from 20250308
+Source213:      moreverb.tar.xz
+Source214:      moreverb.doc.tar.xz
 
 %description -n texlive-moreverb
 A collection of verbatim facilities that provide line-numbered
@@ -25318,9 +26319,9 @@ Suggests:       texlive-morewrites-doc >= %{texlive_version}
 Provides:       tex(morewrites.sty)
 Provides:       tex(primargs.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source210:      morewrites.tar.xz
-Source211:      morewrites.doc.tar.xz
+# from 20250308
+Source215:      morewrites.tar.xz
+Source216:      morewrites.doc.tar.xz
 
 %description -n texlive-morewrites
 The package aims to solve the error "No room for a new \write",
@@ -25452,9 +26453,9 @@ Provides:       tex(morisawa5.map)
 Provides:       tex(ryumin-l-v.tfm)
 Provides:       tex(ryumin-l.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source212:      morisawa.tar.xz
-Source213:      morisawa.doc.tar.xz
+# from 20250308
+Source217:      morisawa.tar.xz
+Source218:      morisawa.doc.tar.xz
 
 %description -n texlive-morisawa
 The package enables selection of 5 standard Japanese fonts for
@@ -25577,9 +26578,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source214:      movement-arrows.tar.xz
-Source215:      movement-arrows.doc.tar.xz
+# from 20250308
+Source219:      movement-arrows.tar.xz
+Source220:      movement-arrows.doc.tar.xz
 
 %description -n texlive-movement-arrows
 This package supplies simple support for drawing movement
@@ -25663,9 +26664,9 @@ Requires:       tex(ifpdf.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source216:      movie15.tar.xz
-Source217:      movie15.doc.tar.xz
+# from 20250308
+Source221:      movie15.tar.xz
+Source222:      movie15.doc.tar.xz
 
 %description -n texlive-movie15
 The package provides an interface to embed movies, sounds and
@@ -25726,6 +26727,308 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-movie15
 %{_texmfdistdir}/tex/latex/movie15/movie15.sty
 
+%package -n texlive-mp-geom2d
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn74168
+Release:        0
+License:        LPPL-1.0
+Summary:        Flat geometry with MetaPost
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-mp-geom2d-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source223:      mp-geom2d.tar.xz
+Source224:      mp-geom2d.doc.tar.xz
+
+%description -n texlive-mp-geom2d
+This package was written with the aim of providing MetaPost
+macros for creating a geometry figure that closely matches an
+imperative description: Let A be the point with coordinates
+(2,3). Let B be the point with coordinates (4,5). Draw the line
+(A, B). ...
+
+%package -n texlive-mp-geom2d-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn74168
+Release:        0
+Summary:        Documentation for texlive-mp-geom2d
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mp-geom2d and texlive-alldocumentation)
+Provides:       locale(texlive-mp-geom2d-doc:fr)
+
+%description -n texlive-mp-geom2d-doc
+This package includes the documentation for texlive-mp-geom2d
+
+%post -n texlive-mp-geom2d
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-mp-geom2d
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-mp-geom2d
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-mp-geom2d-doc
+%{_texmfdistdir}/doc/metapost/mp-geom2d/K001-1.dat
+%{_texmfdistdir}/doc/metapost/mp-geom2d/K001-2.dat
+%{_texmfdistdir}/doc/metapost/mp-geom2d/LICENSE
+%{_texmfdistdir}/doc/metapost/mp-geom2d/README.md
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/axessimilitude-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/axessimilitude.1
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/axessimilitude.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/cercles1-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/cercles1-1.png
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/cercles1.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/cercles2-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/cercles2-1.png
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/cercles2.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/cercles3-001.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/cercles3-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/cercles3-2.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/cercles3.001
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/cercles3.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/inter-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/inter.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/pappuschain-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/pappuschain.1
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cercles/pappuschain.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coloriage/coloriage-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coloriage/coloriage.1
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coloriage/coloriage.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/FD-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/FD-2.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/FD.1
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/FD.2
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/FD.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/deuxcorps-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/deuxcorps.1
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/deuxcorps.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/ellipse-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/ellipse-2.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/ellipse-3.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/ellipse-4.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/ellipse.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/hyper-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/hyper.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/coniques/mpxerr.tex
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/construction/ogiveentiers-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/construction/ogiveentiers.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/construction/pandrosion-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/construction/pandrosion.1
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/construction/pandrosion.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp01-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp01.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp02-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp02.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp03-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp03.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp04-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp04.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp05-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp05.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp06-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp06.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp07-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp07.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp08-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/courbes/cp08.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cubiques/K001-1.dat
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cubiques/K001-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cubiques/K001-2.dat
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/cubiques/K001.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/brach-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/brach.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/divers-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/divers.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/epicycloide-const-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/epicycloide-const.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/hachure-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/hachure.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/pascalline-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/pascalline.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/point-0.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/point.0
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/point.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/polygone-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/polygone.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/vecteurs-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/divers/vecteurs.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/fonctions/cos-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/fonctions/cos.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/fonctions/fonction1-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/fonctions/fonction1.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/fonctions/fonction2-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/fonctions/fonction2.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol01-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol01.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol02-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol02.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol03-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol03.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol04-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol04.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol05-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol05.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol06-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol06.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol07-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/polaires/pol07.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/reperes/mptextmp.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/reperes/mpxerr.tex
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/reperes/reperes1-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/reperes/reperes1.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/reperes/reperes2-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/reperes/reperes2.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/svgnames/palette-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/svgnames/palette.1
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/svgnames/palette.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/transformations/homothetie-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/transformations/homothetie.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/transformations/inversion-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/transformations/inversion.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/transformations/symetrie-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/transformations/symetrie.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/transformations/symetrieCentrale-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/transformations/symetrieCentrale.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/triangles/apollonius-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/triangles/apollonius.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/triangles/pedale-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/triangles/pedale.1
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/triangles/pedale.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/triangles/triangles-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/triangles/triangles.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/vecteur/vecteur-1.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/exemples/vecteur/vecteur.mp
+%{_texmfdistdir}/doc/metapost/mp-geom2d/figure.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/fond.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/locctan.bib
+%{_texmfdistdir}/doc/metapost/mp-geom2d/mp-geom2d-doc.pdf
+%{_texmfdistdir}/doc/metapost/mp-geom2d/mp-geom2d-doc.tex
+%{_texmfdistdir}/doc/metapost/mp-geom2d/solution0.dat
+
+%files -n texlive-mp-geom2d
+%{_texmfdistdir}/metapost/mp-geom2d/geom2d-arc.mp
+%{_texmfdistdir}/metapost/mp-geom2d/geom2d-c2d.mp
+%{_texmfdistdir}/metapost/mp-geom2d/geom2d-fct.mp
+%{_texmfdistdir}/metapost/mp-geom2d/geom2d-lbl.mp
+%{_texmfdistdir}/metapost/mp-geom2d/geom2d-main.mp
+%{_texmfdistdir}/metapost/mp-geom2d/geom2d-plt.mp
+%{_texmfdistdir}/metapost/mp-geom2d/geom2d-rep.mp
+%{_texmfdistdir}/metapost/mp-geom2d/geom2d-svgnames.mp
+%{_texmfdistdir}/metapost/mp-geom2d/geom2d-tra.mp
+%{_texmfdistdir}/metapost/mp-geom2d/geom2d.mp
+
+%package -n texlive-mp-neuralnetwork
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73627
+Release:        0
+License:        LPPL-1.0
+Summary:        Drawing artificial neural networks with MetaPost and METAOBJ
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-mp-neuralnetwork-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source225:      mp-neuralnetwork.tar.xz
+Source226:      mp-neuralnetwork.doc.tar.xz
+
+%description -n texlive-mp-neuralnetwork
+This MetaPost package allows to draw artificial neural
+networks. It is based on the METAOBJ package which provides
+many tools to draw and arrange nodes. This package is in beta
+version -- do not hesitate to report bugs, as well as requests
+for improvement.
+
+%package -n texlive-mp-neuralnetwork-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73627
+Release:        0
+Summary:        Documentation for texlive-mp-neuralnetwork
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mp-neuralnetwork and texlive-alldocumentation)
+
+%description -n texlive-mp-neuralnetwork-doc
+This package includes the documentation for texlive-mp-neuralnetwork
+
+%post -n texlive-mp-neuralnetwork
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-mp-neuralnetwork
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-mp-neuralnetwork
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-mp-neuralnetwork-doc
+%{_texmfdistdir}/doc/metapost/mp-neuralnetwork/LICENSE
+%{_texmfdistdir}/doc/metapost/mp-neuralnetwork/README.md
+%{_texmfdistdir}/doc/metapost/mp-neuralnetwork/ctan.bib
+%{_texmfdistdir}/doc/metapost/mp-neuralnetwork/fond.pdf
+%{_texmfdistdir}/doc/metapost/mp-neuralnetwork/mp-neuralnetwork-doc-en.pdf
+%{_texmfdistdir}/doc/metapost/mp-neuralnetwork/mp-neuralnetwork-doc-en.tex
+%{_texmfdistdir}/doc/metapost/mp-neuralnetwork/mp-neuralnetwork-preamble.tex
+
+%files -n texlive-mp-neuralnetwork
+%{_texmfdistdir}/metapost/mp-neuralnetwork/mp-neuralnetwork-metaobj-patch.mp
+%{_texmfdistdir}/metapost/mp-neuralnetwork/mp-neuralnetwork.mp
+
 %package -n texlive-mp3d
 Version:        %{texlive_version}.%{texlive_noarch}.1.34svn29349
 Release:        0
@@ -25755,9 +27058,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mp3d-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source218:      mp3d.tar.xz
-Source219:      mp3d.doc.tar.xz
+# from 20250308
+Source227:      mp3d.tar.xz
+Source228:      mp3d.doc.tar.xz
 
 %description -n texlive-mp3d
 Create animations of 3-dimensional objects (such as polyhedra)
@@ -25867,9 +27170,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mparhack-doc >= %{texlive_version}
 Provides:       tex(mparhack.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source220:      mparhack.tar.xz
-Source221:      mparhack.doc.tar.xz
+# from 20250308
+Source229:      mparhack.tar.xz
+Source230:      mparhack.doc.tar.xz
 
 %description -n texlive-mparhack
 Works around the LaTeX bug that marginpars will sometimes come
@@ -25940,9 +27243,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mparrows-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source222:      mparrows.tar.xz
-Source223:      mparrows.doc.tar.xz
+# from 20250308
+Source231:      mparrows.tar.xz
+Source232:      mparrows.doc.tar.xz
 
 %description -n texlive-mparrows
 A package to provide different types of arrow heads to be used
@@ -26016,9 +27319,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mpattern-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source224:      mpattern.tar.xz
-Source225:      mpattern.doc.tar.xz
+# from 20250308
+Source233:      mpattern.tar.xz
+Source234:      mpattern.doc.tar.xz
 
 %description -n texlive-mpattern
 A package for defining and using patterns in MetaPost, using
@@ -26065,7 +27368,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/mpattern/mpattern.mp
 
 %package -n texlive-mpchess
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn67704
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn73149
 Release:        0
 License:        LPPL-1.0
 Summary:        Drawing chess boards and positions with MetaPost
@@ -26094,9 +27397,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-mpchess-fonts >= %{texlive_version}
 Suggests:       texlive-mpchess-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source226:      mpchess.tar.xz
-Source227:      mpchess.doc.tar.xz
+# from 20250308
+Source235:      mpchess.tar.xz
+Source236:      mpchess.doc.tar.xz
 
 %description -n texlive-mpchess
 This package allows you to draw chess boards and positions. The
@@ -26108,7 +27411,7 @@ not hesitate to report bugs, as well as requests for
 improvement
 
 %package -n texlive-mpchess-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn67704
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn73149
 Release:        0
 Summary:        Documentation for texlive-mpchess
 License:        LPPL-1.0
@@ -26121,7 +27424,7 @@ Provides:       locale(texlive-mpchess-doc:fr)
 This package includes the documentation for texlive-mpchess
 
 %package -n texlive-mpchess-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn67704
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn73149
 Release:        0
 Summary:        Severed fonts for texlive-mpchess
 License:        LPPL-1.0
@@ -26214,9 +27517,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mpcolornames-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source228:      mpcolornames.tar.xz
-Source229:      mpcolornames.doc.tar.xz
+# from 20250308
+Source237:      mpcolornames.tar.xz
+Source238:      mpcolornames.doc.tar.xz
 
 %description -n texlive-mpcolornames
 The MetaPost format plain.mp provides only five built-in colour
@@ -26315,9 +27618,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mpfonts-doc >= %{texlive_version}
 Provides:       tex(mpfonts.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source230:      mpfonts.tar.xz
-Source231:      mpfonts.doc.tar.xz
+# from 20250308
+Source239:      mpfonts.tar.xz
+Source240:      mpfonts.doc.tar.xz
 
 %description -n texlive-mpfonts
 The Computer Modern fonts are available in Type 1 format, but
@@ -26682,9 +27985,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(moreverb.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source232:      mpgraphics.tar.xz
-Source233:      mpgraphics.doc.tar.xz
+# from 20250308
+Source241:      mpgraphics.tar.xz
+Source242:      mpgraphics.doc.tar.xz
 
 %description -n texlive-mpgraphics
 The package allows LaTeX users to typeset MetaPost code inline
@@ -26731,6 +28034,84 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-mpgraphics
 %{_texmfdistdir}/tex/latex/mpgraphics/mpgraphics.sty
 
+%package -n texlive-mpkiviat
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn71319
+Release:        0
+License:        LPPL-1.0
+Summary:        MetaPost package to draw Kiviat diagrams
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-mpkiviat-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source243:      mpkiviat.tar.xz
+Source244:      mpkiviat.doc.tar.xz
+
+%description -n texlive-mpkiviat
+This MetaPost package allows to draw Kiviat diagram (or radar
+chart, web chart, spider chart, etc.).
+
+%package -n texlive-mpkiviat-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn71319
+Release:        0
+Summary:        Documentation for texlive-mpkiviat
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mpkiviat and texlive-alldocumentation)
+
+%description -n texlive-mpkiviat-doc
+This package includes the documentation for texlive-mpkiviat
+
+%post -n texlive-mpkiviat
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-mpkiviat
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-mpkiviat
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-mpkiviat-doc
+%{_texmfdistdir}/doc/metapost/mpkiviat/LICENSE
+%{_texmfdistdir}/doc/metapost/mpkiviat/README.md
+%{_texmfdistdir}/doc/metapost/mpkiviat/ctan.bib
+%{_texmfdistdir}/doc/metapost/mpkiviat/fond.pdf
+%{_texmfdistdir}/doc/metapost/mpkiviat/mpkiviat-doc.pdf
+%{_texmfdistdir}/doc/metapost/mpkiviat/mpkiviat-doc.tex
+%{_texmfdistdir}/doc/metapost/mpkiviat/test-2.pdf
+
+%files -n texlive-mpkiviat
+%{_texmfdistdir}/metapost/mpkiviat/mpkiviat.mp
+
 %package -n texlive-mpman-ru
 Version:        %{texlive_version}.%{texlive_noarch}.1.004svn15878
 Release:        0
@@ -26759,8 +28140,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source234:      mpman-ru.doc.tar.xz
+# from 20250308
+Source245:      mpman-ru.doc.tar.xz
 
 %description -n texlive-mpman-ru
 A translation of the user manual, as distributed with MetaPost
@@ -26832,9 +28213,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source235:      mpostinl.tar.xz
-Source236:      mpostinl.doc.tar.xz
+# from 20250308
+Source246:      mpostinl.tar.xz
+Source247:      mpostinl.doc.tar.xz
 
 %description -n texlive-mpostinl
 This LaTeX2e package enables the embedding of MetaPost figures
@@ -26882,7 +28263,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mpostinl/mpostinl.sty
 
 %package -n texlive-mptopdf
-Version:        %{texlive_version}.%{texlive_noarch}.svn69363
+Version:        %{texlive_version}.%{texlive_noarch}.svn74241
 Release:        0
 License:        LPPL-1.0
 Summary:        Mpost to PDF, native MetaPost graphics inclusion
@@ -26942,9 +28323,9 @@ Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 Provides:       tex(mptopdf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source237:      mptopdf.tar.xz
-Source238:      mptopdf.doc.tar.xz
+# from 20250308
+Source248:      mptopdf.tar.xz
+Source249:      mptopdf.doc.tar.xz
 
 %description -n texlive-mptopdf
 The mptopdf script does standalone conversion from mpost to
@@ -26957,7 +28338,7 @@ do not install the rest of ConTeXt. This can be found on CTAN
 in macros/pdftex/graphics.
 
 %package -n texlive-mptopdf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn69363
+Version:        %{texlive_version}.%{texlive_noarch}.svn74241
 Release:        0
 Summary:        Documentation for texlive-mptopdf
 License:        LPPL-1.0
@@ -27009,7 +28390,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/context/mptopdf/mptopdf.tex
 
 %package -n texlive-mptrees
-Version:        %{texlive_version}.%{texlive_noarch}.24.02svn70112
+Version:        %{texlive_version}.%{texlive_noarch}.24.04svn70887
 Release:        0
 License:        LPPL-1.0
 Summary:        Probability trees with MetaPost
@@ -27037,17 +28418,16 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mptrees-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source239:      mptrees.tar.xz
-Source240:      mptrees.doc.tar.xz
+# from 20250308
+Source250:      mptrees.tar.xz
+Source251:      mptrees.doc.tar.xz
 
 %description -n texlive-mptrees
 This package provides MetaPost tools for drawing simple
-probability trees. One command and several parameters to
-control the output are provided.
+probability trees and graphs (in discrete geometry).
 
 %package -n texlive-mptrees-doc
-Version:        %{texlive_version}.%{texlive_noarch}.24.02svn70112
+Version:        %{texlive_version}.%{texlive_noarch}.24.04svn70887
 Release:        0
 Summary:        Documentation for texlive-mptrees
 License:        LPPL-1.0
@@ -27077,97 +28457,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-mptrees-doc
 %{_texmfdistdir}/doc/metapost/mptrees/README.md
+%{_texmfdistdir}/doc/metapost/mptrees/france-region.jpg
 %{_texmfdistdir}/doc/metapost/mptrees/mptrees-doc.pdf
 %{_texmfdistdir}/doc/metapost/mptrees/mptrees-doc.tex
 
 %files -n texlive-mptrees
 %{_texmfdistdir}/metapost/mptrees/mptrees.mp
-
-%package -n texlive-ms
-Version:        %{texlive_version}.%{texlive_noarch}.svn57473
-Release:        0
-License:        LPPL-1.0
-Summary:        Various LaTeX packages by Martin Schroder
-Group:          Productivity/Publishing/TeX/Base
-URL:            https://www.tug.org/texlive/
-Requires(pre):  texlive-filesystem >= %{texlive_version}
-Requires(post): coreutils
-Requires(postun): coreutils
-Requires(postun): texlive >= %{texlive_version}
-Requires(postun): texlive-filesystem >= %{texlive_version}
-Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
-Requires(postun): texlive-kpathsea >= %{texlive_version}
-Requires(postun): texlive-scripts-bin >= %{texlive_version}
-Requires(postun): texlive-scripts >= %{texlive_version}
-Requires(posttrans): coreutils
-Requires(posttrans): ed
-Requires(posttrans): findutils
-Requires(posttrans): grep
-Requires(posttrans): sed
-Requires(posttrans): texlive >= %{texlive_version}
-Requires(posttrans): texlive-filesystem >= %{texlive_version}
-Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
-Requires(posttrans): texlive-kpathsea >= %{texlive_version}
-Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
-Requires(posttrans): texlive-scripts >= %{texlive_version}
-Suggests:       texlive-ms-doc >= %{texlive_version}
-Provides:       tex(count1to.sty)
-Provides:       tex(multitoc.sty)
-Requires:       tex(everyshi.sty)
-Requires:       tex(ifthen.sty)
-Requires:       tex(multicol.sty)
-# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source241:      ms.tar.xz
-Source242:      ms.doc.tar.xz
-
-%description -n texlive-ms
-The remains of a bundle of LaTeX packages by Martin Schroder;
-the collection still comprises: count1to, make use of TeX
-counters; and multitoc, typeset the table of contents in
-multiple columns. ragged2e, prelim2e, everyshi (obsolete), and
-everysel (obsolete), which used to be part of this bundle, have
-become independent packages.
-
-%package -n texlive-ms-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn57473
-Release:        0
-Summary:        Documentation for texlive-ms
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-URL:            https://www.tug.org/texlive/
-Supplements:    (texlive-ms and texlive-alldocumentation)
-
-%description -n texlive-ms-doc
-This package includes the documentation for texlive-ms
-
-%post -n texlive-ms
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-
-%postun -n texlive-ms
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-if test $1 = 0; then
-    exit 0
-fi
-
-%posttrans -n texlive-ms
-test -d /var/run/texlive || exit 0
-VERBOSE=false %{_texmfdistdir}/texconfig/update || :
-
-%files -n texlive-ms-doc
-%{_texmfdistdir}/doc/latex/ms/README.md
-%{_texmfdistdir}/doc/latex/ms/count1to.pdf
-%{_texmfdistdir}/doc/latex/ms/multitoc.asc
-%{_texmfdistdir}/doc/latex/ms/multitoc.bug
-%{_texmfdistdir}/doc/latex/ms/multitoc.pdf
-
-%files -n texlive-ms
-%{_texmfdistdir}/tex/latex/ms/count1to.sty
-%{_texmfdistdir}/tex/latex/ms/multitoc.sty
 
 %package -n texlive-msc
 Version:        %{texlive_version}.%{texlive_noarch}.2.00svn67718
@@ -27202,9 +28497,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source243:      msc.tar.xz
-Source244:      msc.doc.tar.xz
+# from 20250308
+Source252:      msc.tar.xz
+Source253:      msc.doc.tar.xz
 
 %description -n texlive-msc
 The package should be useful to all people that prepare their
@@ -27289,9 +28584,9 @@ Provides:       tex(msg.sty)
 Provides:       tex(norsk_msg-msg.tex)
 Requires:       tex(inputenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source245:      msg.tar.xz
-Source246:      msg.doc.tar.xz
+# from 20250308
+Source254:      msg.tar.xz
+Source255:      msg.doc.tar.xz
 
 %description -n texlive-msg
 The package is designed to localise any document class or
@@ -27377,9 +28672,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mslapa-doc >= %{texlive_version}
 Provides:       tex(mslapa.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source247:      mslapa.tar.xz
-Source248:      mslapa.doc.tar.xz
+# from 20250308
+Source256:      mslapa.tar.xz
+Source257:      mslapa.doc.tar.xz
 
 %description -n texlive-mslapa
 LaTeX and BibTeX style files for a respectably close
@@ -27427,7 +28722,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mslapa/mslapa.sty
 
 %package -n texlive-msu-thesis
-Version:        %{texlive_version}.%{texlive_noarch}.4.1hsvn68480
+Version:        %{texlive_version}.%{texlive_noarch}.4.3bsvn71883
 Release:        0
 License:        LPPL-1.0
 Summary:        Class for Michigan State University Master's and PhD theses
@@ -27457,14 +28752,15 @@ Suggests:       texlive-msu-thesis-doc >= %{texlive_version}
 Provides:       tex(msu-thesis.cls)
 Requires:       tex(etex.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(expl3.sty)
 Requires:       tex(memoir.cls)
 Requires:       tex(pdflscape.sty)
 Requires:       tex(textpos.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source249:      msu-thesis.tar.xz
-Source250:      msu-thesis.doc.tar.xz
+# from 20250308
+Source258:      msu-thesis.tar.xz
+Source259:      msu-thesis.doc.tar.xz
 
 %description -n texlive-msu-thesis
 This is a class file for producing dissertations and theses
@@ -27476,7 +28772,7 @@ class is based on the memoir document class, and inherits the
 functionality of that class.
 
 %package -n texlive-msu-thesis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.1hsvn68480
+Version:        %{texlive_version}.%{texlive_noarch}.4.3bsvn71883
 Release:        0
 Summary:        Documentation for texlive-msu-thesis
 License:        LPPL-1.0
@@ -27553,9 +28849,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mtgreek-doc >= %{texlive_version}
 Provides:       tex(mtgreek.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source251:      mtgreek.tar.xz
-Source252:      mtgreek.doc.tar.xz
+# from 20250308
+Source260:      mtgreek.tar.xz
+Source261:      mtgreek.doc.tar.xz
 
 %description -n texlive-mtgreek
 This package is an add-on to the MathTime a style to provide
@@ -27649,9 +28945,9 @@ Requires:       tex(scrlayer-scrpage.sty)
 Requires:       tex(txfonts.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source253:      mucproc.tar.xz
-Source254:      mucproc.doc.tar.xz
+# from 20250308
+Source262:      mucproc.tar.xz
+Source263:      mucproc.doc.tar.xz
 
 %description -n texlive-mucproc
 The mucproc.cls is a document class to support the formatting
@@ -27733,9 +29029,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(indentfirst.sty)
 Requires:       tex(memoir.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source255:      mugsthesis.tar.xz
-Source256:      mugsthesis.doc.tar.xz
+# from 20250308
+Source264:      mugsthesis.tar.xz
+Source265:      mugsthesis.doc.tar.xz
 
 %description -n texlive-mugsthesis
 The bundle offers a thesis class, based on memoir, that
@@ -27827,9 +29123,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(leipzig.sty)
 Requires:       tex(tipa.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source257:      muling.tar.xz
-Source258:      muling.doc.tar.xz
+# from 20250308
+Source266:      muling.tar.xz
+Source267:      muling.doc.tar.xz
 
 %description -n texlive-muling
 This is a class file for writing MA thesis as required by the
@@ -27902,9 +29198,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-multenum-doc >= %{texlive_version}
 Provides:       tex(multienum.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source259:      multenum.tar.xz
-Source260:      multenum.doc.tar.xz
+# from 20250308
+Source268:      multenum.tar.xz
+Source269:      multenum.doc.tar.xz
 
 %description -n texlive-multenum
 Defines an environment multienumerate, that produces an
@@ -27983,9 +29279,9 @@ Provides:       tex(multiaudience.sty)
 Requires:       tex(environ.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source261:      multiaudience.tar.xz
-Source262:      multiaudience.doc.tar.xz
+# from 20250308
+Source270:      multiaudience.tar.xz
+Source271:      multiaudience.doc.tar.xz
 
 %description -n texlive-multiaudience
 This package allows to generate several versions of the same
@@ -28065,9 +29361,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-multibbl-doc >= %{texlive_version}
 Provides:       tex(multibbl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source263:      multibbl.tar.xz
-Source264:      multibbl.doc.tar.xz
+# from 20250308
+Source272:      multibbl.tar.xz
+Source273:      multibbl.doc.tar.xz
 
 %description -n texlive-multibbl
 The package multibbl redefines the standard bibliographic
@@ -28140,9 +29436,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-multibib-doc >= %{texlive_version}
 Provides:       tex(multibib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source265:      multibib.tar.xz
-Source266:      multibib.doc.tar.xz
+# from 20250308
+Source274:      multibib.tar.xz
+Source275:      multibib.doc.tar.xz
 
 %description -n texlive-multibib
 The package the creation of references to multiple
@@ -28227,9 +29523,9 @@ Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 Provides:       tex(multibibliography.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source267:      multibibliography.tar.xz
-Source268:      multibibliography.doc.tar.xz
+# from 20250308
+Source276:      multibibliography.tar.xz
+Source277:      multibibliography.doc.tar.xz
 
 %description -n texlive-multibibliography
 Conventional standards for bibliography styles impose a forced
@@ -28315,9 +29611,9 @@ Suggests:       texlive-multicap-doc >= %{texlive_version}
 Provides:       tex(multicap.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source269:      multicap.tar.xz
-Source270:      multicap.doc.tar.xz
+# from 20250308
+Source278:      multicap.tar.xz
+Source279:      multicap.doc.tar.xz
 
 %description -n texlive-multicap
 This is a package for formatting captions of column figures and
@@ -28399,9 +29695,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source271:      multicolrule.tar.xz
-Source272:      multicolrule.doc.tar.xz
+# from 20250308
+Source280:      multicolrule.tar.xz
+Source281:      multicolrule.doc.tar.xz
 
 %description -n texlive-multicolrule
 This package lets you customize the appearance of the vertical
@@ -28482,9 +29778,9 @@ Provides:       tex(multidef.sty)
 Requires:       tex(trimspaces.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source273:      multidef.tar.xz
-Source274:      multidef.doc.tar.xz
+# from 20250308
+Source282:      multidef.tar.xz
+Source283:      multidef.doc.tar.xz
 
 %description -n texlive-multidef
 Multidef provides a simple way of defining several macros
@@ -28558,9 +29854,9 @@ Suggests:       texlive-multido-doc >= %{texlive_version}
 Provides:       tex(multido.sty)
 Provides:       tex(multido.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source275:      multido.tar.xz
-Source276:      multido.doc.tar.xz
+# from 20250308
+Source284:      multido.tar.xz
+Source285:      multido.doc.tar.xz
 
 %description -n texlive-multido
 The package provides the \multido command, which was originally
@@ -28638,9 +29934,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-multienv-doc >= %{texlive_version}
 Provides:       tex(multienv.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source277:      multienv.tar.xz
-Source278:      multienv.doc.tar.xz
+# from 20250308
+Source286:      multienv.tar.xz
+Source287:      multienv.doc.tar.xz
 
 %description -n texlive-multienv
 The package provides a multienv environment which permits easy
@@ -28714,9 +30010,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-multiexpand-doc >= %{texlive_version}
 Provides:       tex(multiexpand.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source279:      multiexpand.tar.xz
-Source280:      multiexpand.doc.tar.xz
+# from 20250308
+Source288:      multiexpand.tar.xz
+Source289:      multiexpand.doc.tar.xz
 
 %description -n texlive-multiexpand
 The package provides two user commands; one that performs
@@ -28767,7 +30063,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/multiexpand/multiexpand.sty
 
 %package -n texlive-multifootnote
-Version:        %{texlive_version}.%{texlive_noarch}.svn63456
+Version:        %{texlive_version}.%{texlive_noarch}.svn70745
 Release:        0
 License:        LPPL-1.0
 Summary:        Multiple numbers for the same footnote
@@ -28795,18 +30091,27 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-multifootnote-doc >= %{texlive_version}
 Provides:       tex(multifootnote.sty)
-Requires:       tex(l3keys2e.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(refcount.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source281:      multifootnote.tar.xz
-Source282:      multifootnote.doc.tar.xz
+# from 20250308
+Source290:      multifootnote.tar.xz
+Source291:      multifootnote.doc.tar.xz
 
 %description -n texlive-multifootnote
 This package provides several commands for generating footnotes
-with multiple numbers (resp. marks).
+which correspond to multiple footnote numbers (resp. marks). In
+some cases, you may wish for certain footnotes to correspond to
+several places in your text. The traditional solution usually
+involves writing the same footnote mark multiple times at the
+corresponding places. However, this approach makes it difficult
+to see at once how many times a footnote has been referred to.
+Therefore, the current package proposes another method: writing
+the footnote marks in linear order, and allowing a footnote
+text to match several of these marks.
 
 %package -n texlive-multifootnote-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn63456
+Version:        %{texlive_version}.%{texlive_noarch}.svn70745
 Release:        0
 Summary:        Documentation for texlive-multifootnote
 License:        LPPL-1.0
@@ -28879,9 +30184,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(pgfkeys.sty)
 Requires:       tex(pgfopts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source283:      multilang.tar.xz
-Source284:      multilang.doc.tar.xz
+# from 20250308
+Source292:      multilang.tar.xz
+Source293:      multilang.doc.tar.xz
 
 %description -n texlive-multilang
 Maintaining a LaTeX document with translations for multiple
@@ -28963,9 +30268,9 @@ Suggests:       texlive-multiobjective-doc >= %{texlive_version}
 Provides:       tex(multiobjective.sty)
 Requires:       tex(amssymb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source285:      multiobjective.tar.xz
-Source286:      multiobjective.doc.tar.xz
+# from 20250308
+Source294:      multiobjective.tar.xz
+Source295:      multiobjective.doc.tar.xz
 
 %description -n texlive-multiobjective
 The package provides a series of operators commonly used in
@@ -29040,9 +30345,9 @@ Suggests:       texlive-multiple-choice-doc >= %{texlive_version}
 Provides:       tex(multiple-choice.sty)
 Requires:       tex(biditools.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source287:      multiple-choice.tar.xz
-Source288:      multiple-choice.doc.tar.xz
+# from 20250308
+Source296:      multiple-choice.tar.xz
+Source297:      multiple-choice.doc.tar.xz
 
 %description -n texlive-multiple-choice
 This package adjusts the choices of the multiple-choice
@@ -29089,7 +30394,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/multiple-choice/multiple-choice.sty
 
 %package -n texlive-multirow
-Version:        %{texlive_version}.%{texlive_noarch}.2.8svn58396
+Version:        %{texlive_version}.%{texlive_noarch}.2.9svn72833
 Release:        0
 License:        LPPL-1.0
 Summary:        Create tabular cells spanning multiple rows
@@ -29120,9 +30425,9 @@ Provides:       tex(bigdelim.sty)
 Provides:       tex(bigstrut.sty)
 Provides:       tex(multirow.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source289:      multirow.tar.xz
-Source290:      multirow.doc.tar.xz
+# from 20250308
+Source298:      multirow.tar.xz
+Source299:      multirow.doc.tar.xz
 
 %description -n texlive-multirow
 The package has a lot of flexibility, including an option for
@@ -29131,7 +30436,7 @@ package is distributed with the bigdelim and bigstrut packages,
 which can be used to advantage with \multirow cells.
 
 %package -n texlive-multirow-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.8svn58396
+Version:        %{texlive_version}.%{texlive_noarch}.2.9svn72833
 Release:        0
 Summary:        Documentation for texlive-multirow
 License:        LPPL-1.0
@@ -29168,6 +30473,84 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/multirow/bigstrut.sty
 %{_texmfdistdir}/tex/latex/multirow/multirow.sty
 
+%package -n texlive-multitoc
+Version:        %{texlive_version}.%{texlive_noarch}.2.02svn71520
+Release:        0
+License:        LPPL-1.0
+Summary:        Set table of contents in multiple columns
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-multitoc-doc >= %{texlive_version}
+Provides:       tex(multitoc.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(multicol.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source300:      multitoc.tar.xz
+Source301:      multitoc.doc.tar.xz
+
+%description -n texlive-multitoc
+The package automatically sets the table of contents, list of
+figures and list of tables in two or more columns (the number
+of columns may be configured). The package uses the multicol
+package.
+
+%package -n texlive-multitoc-doc
+Version:        %{texlive_version}.%{texlive_noarch}.2.02svn71520
+Release:        0
+Summary:        Documentation for texlive-multitoc
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multitoc and texlive-alldocumentation)
+
+%description -n texlive-multitoc-doc
+This package includes the documentation for texlive-multitoc
+
+%post -n texlive-multitoc
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-multitoc
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-multitoc
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-multitoc-doc
+%{_texmfdistdir}/doc/latex/multitoc/README.md
+%{_texmfdistdir}/doc/latex/multitoc/multitoc.pdf
+
+%files -n texlive-multitoc
+%{_texmfdistdir}/tex/latex/multitoc/multitoc.sty
+
 %package -n texlive-munich
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
 Release:        0
@@ -29197,9 +30580,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-munich-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source291:      munich.tar.xz
-Source292:      munich.doc.tar.xz
+# from 20250308
+Source302:      munich.tar.xz
+Source303:      munich.doc.tar.xz
 
 %description -n texlive-munich
 The Munich BibTeX style is produced with custom-bib, as a
@@ -29283,9 +30666,9 @@ Requires:       tex(tcolorbox.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source293:      musical.tar.xz
-Source294:      musical.doc.tar.xz
+# from 20250308
+Source304:      musical.tar.xz
+Source305:      musical.doc.tar.xz
 
 %description -n texlive-musical
 This package is designed to simplify the development and
@@ -29369,9 +30752,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(setspace.sty)
 Requires:       tex(stackengine.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source295:      musicography.tar.xz
-Source296:      musicography.doc.tar.xz
+# from 20250308
+Source306:      musicography.tar.xz
+Source307:      musicography.doc.tar.xz
 
 %description -n texlive-musicography
 This package makes available the most commonly used symbols in
@@ -29451,9 +30834,9 @@ Suggests:       texlive-musikui-doc >= %{texlive_version}
 Provides:       tex(musikui.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source297:      musikui.tar.xz
-Source298:      musikui.doc.tar.xz
+# from 20250308
+Source308:      musikui.tar.xz
+Source309:      musikui.doc.tar.xz
 
 %description -n texlive-musikui
 This package permits to easily typeset arithmetical
@@ -29533,9 +30916,9 @@ Requires:       tex(musixper.tex)
 Requires:       tex(musixtex.sty)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source299:      musixguit.tar.xz
-Source300:      musixguit.doc.tar.xz
+# from 20250308
+Source310:      musixguit.tar.xz
+Source311:      musixguit.doc.tar.xz
 
 %description -n texlive-musixguit
 The package provides commands for typesetting notes for guitar,
@@ -29580,7 +30963,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/musixguit/musixguit.sty
 
 %package -n texlive-musixtex
-Version:        %{texlive_version}.%{texlive_noarch}.1.37svn69742
+Version:        %{texlive_version}.%{texlive_noarch}.1.38svn70804
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Sophisticated music typesetting
@@ -29664,10 +31047,10 @@ Provides:       tex(musixtri.tex)
 Provides:       tex(musixvbm.tex)
 Provides:       tex(tuplet.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source301:      musixtex.tar.xz
-Source302:      musixtex.doc.tar.xz
-Source303:      musixtex_various.dif
+# from 20250308
+Source312:      musixtex.tar.xz
+Source313:      musixtex.doc.tar.xz
+Source314:      musixtex_various.dif
 
 %description -n texlive-musixtex
 MusiXTeX provides a set of macros, based on the earlier
@@ -29685,7 +31068,7 @@ the pmx preprocessor compiles a simpler input language to
 MusiXTeX macros..
 
 %package -n texlive-musixtex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.37svn69742
+Version:        %{texlive_version}.%{texlive_noarch}.1.38svn70804
 Release:        0
 Summary:        Documentation for texlive-musixtex
 License:        GPL-2.0-or-later
@@ -29740,6 +31123,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/musixtex/ChangeLog-135.txt
 %{_texmfdistdir}/doc/generic/musixtex/ChangeLog-136.txt
 %{_texmfdistdir}/doc/generic/musixtex/ChangeLog-137.txt
+%{_texmfdistdir}/doc/generic/musixtex/ChangeLog-138.txt
 %{_texmfdistdir}/doc/generic/musixtex/ChangeLog-musixdoc.txt
 %{_texmfdistdir}/doc/generic/musixtex/README
 %{_texmfdistdir}/doc/generic/musixtex/examples/adagio.tex
@@ -30066,9 +31450,9 @@ Provides:       tex(xslz20.tfm)
 Provides:       tex(xslz20d.tfm)
 Provides:       tex(xtie20.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source304:      musixtex-fonts.tar.xz
-Source305:      musixtex-fonts.doc.tar.xz
+# from 20250308
+Source315:      musixtex-fonts.tar.xz
+Source316:      musixtex-fonts.doc.tar.xz
 
 %description -n texlive-musixtex-fonts
 These are fonts for use with MusixTeX; they are provided both
@@ -30527,9 +31911,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-musixtnt-doc >= %{texlive_version}
 Provides:       tex(musixtnt.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source306:      musixtnt.tar.xz
-Source307:      musixtnt.doc.tar.xz
+# from 20250308
+Source317:      musixtnt.tar.xz
+Source318:      musixtnt.doc.tar.xz
 
 %description -n texlive-musixtnt
 The package includes an archive containing a MusiXTeX extension
@@ -30636,9 +32020,9 @@ Requires:       tex(txfonts.sty)
 Requires:       tex(verse.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source308:      musuos.tar.xz
-Source309:      musuos.doc.tar.xz
+# from 20250308
+Source319:      musuos.tar.xz
+Source320:      musuos.doc.tar.xz
 
 %description -n texlive-musuos
 The package provides a LaTeX class for typesetting term papers
@@ -30718,9 +32102,9 @@ Requires:       tex(report.cls)
 Requires:       tex(setspace.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source310:      muthesis.tar.xz
-Source311:      muthesis.doc.tar.xz
+# from 20250308
+Source321:      muthesis.tar.xz
+Source322:      muthesis.doc.tar.xz
 
 %description -n texlive-muthesis
 The bundle provides thesis and project report document classes
@@ -30793,9 +32177,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mversion-doc >= %{texlive_version}
 Provides:       tex(mVersion.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source312:      mversion.tar.xz
-Source313:      mversion.doc.tar.xz
+# from 20250308
+Source323:      mversion.tar.xz
+Source324:      mversion.doc.tar.xz
 
 %description -n texlive-mversion
 The package enables the user to keep track of different
@@ -30879,9 +32263,9 @@ Provides:       tex(mwbk11.clo)
 Provides:       tex(mwbk12.clo)
 Provides:       tex(mwrep.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source314:      mwcls.tar.xz
-Source315:      mwcls.doc.tar.xz
+# from 20250308
+Source325:      mwcls.tar.xz
+Source326:      mwcls.doc.tar.xz
 
 %description -n texlive-mwcls
 mwcls is a set of document classes for LaTeX 2e designed with
@@ -31003,9 +32387,9 @@ Requires:       tex(blindtext.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(lipsum.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source316:      mwe.tar.xz
-Source317:      mwe.doc.tar.xz
+# from 20250308
+Source327:      mwe.tar.xz
+Source328:      mwe.doc.tar.xz
 
 %description -n texlive-mwe
 The bundle provides several files useful when creating a
@@ -31175,9 +32559,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mweights-doc >= %{texlive_version}
 Provides:       tex(mweights.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source318:      mweights.tar.xz
-Source319:      mweights.doc.tar.xz
+# from 20250308
+Source329:      mweights.tar.xz
+Source330:      mweights.doc.tar.xz
 
 %description -n texlive-mweights
 Many font families available for use with LaTeX are available
@@ -31224,7 +32608,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mweights/mweights.sty
 
 %package -n texlive-mxedruli
-Version:        %{texlive_version}.%{texlive_noarch}.3.3csvn30021
+Version:        %{texlive_version}.%{texlive_noarch}.3.3csvn71991
 Release:        0
 License:        LPPL-1.0
 Summary:        A pair of fonts for different Georgian alphabets
@@ -31274,16 +32658,16 @@ Provides:       tex(uxuc.fd)
 Provides:       tex(xuc10.tfm)
 Provides:       tex(xucuri.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source320:      mxedruli.tar.xz
-Source321:      mxedruli.doc.tar.xz
+# from 20250308
+Source331:      mxedruli.tar.xz
+Source332:      mxedruli.doc.tar.xz
 
 %description -n texlive-mxedruli
 Two Georgian fonts, in both Metafont and Type 1 formats, which
 cover the Mxedruli and the Xucuri alphabets.
 
 %package -n texlive-mxedruli-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.3csvn30021
+Version:        %{texlive_version}.%{texlive_noarch}.3.3csvn71991
 Release:        0
 Summary:        Documentation for texlive-mxedruli
 License:        LPPL-1.0
@@ -31295,7 +32679,7 @@ Supplements:    (texlive-mxedruli and texlive-alldocumentation)
 This package includes the documentation for texlive-mxedruli
 
 %package -n texlive-mxedruli-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.3.3csvn30021
+Version:        %{texlive_version}.%{texlive_noarch}.3.3csvn71991
 Release:        0
 Summary:        Severed fonts for texlive-mxedruli
 License:        LPPL-1.0
@@ -31453,9 +32837,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source322:      mycv.tar.xz
-Source323:      mycv.doc.tar.xz
+# from 20250308
+Source333:      mycv.tar.xz
+Source334:      mycv.doc.tar.xz
 
 %description -n texlive-mycv
 The class provides a set of functionality for writing
@@ -31548,9 +32932,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mylatex-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source324:      mylatex.tar.xz
-Source325:      mylatex.doc.tar.xz
+# from 20250308
+Source335:      mylatex.tar.xz
+Source336:      mylatex.doc.tar.xz
 
 %description -n texlive-mylatex
 The file mylatex.ltx permits you to create a format that
@@ -31627,9 +33011,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mylatexformat-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source326:      mylatexformat.tar.xz
-Source327:      mylatexformat.doc.tar.xz
+# from 20250308
+Source337:      mylatexformat.tar.xz
+Source338:      mylatexformat.doc.tar.xz
 
 %description -n texlive-mylatexformat
 The use of formats helps to speed up compilations: packages
@@ -31721,9 +33105,9 @@ Requires:       tex(titlesec.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source328:      mynsfc.tar.xz
-Source329:      mynsfc.doc.tar.xz
+# from 20250308
+Source339:      mynsfc.tar.xz
+Source340:      mynsfc.doc.tar.xz
 
 %description -n texlive-mynsfc
 The package provides a XeLaTeX template for writing the main
@@ -32036,10 +33420,62 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     done
     tar --use-compress-program=xz -xf %{S:52} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:53} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Move font files
+    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-mfb-oldstyle
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/mfb-oldstyle/*.{pf[ab],[ot]tf} \
+		%{buildroot}/%{_texmfdistdir}/fonts/type1/public/mfb-oldstyle/*.{pf[ab],[ot]tf}
+    do
+        test -e $font || continue
+        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-mfb-oldstyle
+        base=${font##*/}
+        ln -sf %{_datadir}/fonts/texlive-mfb-oldstyle/${base} ${font}
+    done
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-mfb-oldstyle/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-mfb-oldstyle/
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-mfb-oldstyle.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Use this to disable the TeX fonts of the package -->
+	<!--    texlive-mfb-oldstyle    -->
+	<!-- Be aware that the configurations in the files    -->
+	<!-- 09-texlive*.conf will not be affected by this    -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <rejectfont>
+	    <glob>%{_datadir}/fonts/texlive-mfb-oldstyle/*</glob>
+	  </rejectfont>
+	</fontconfig>
+	EOF
+
+    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/55-texlive-mfb-oldstyle.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Disable plain Type1 font to let fontconfig       -->
+	<!-- prefere the OpenType and TrueType fonts          -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <selectfont>
+	    <rejectfont>
+	      <glob>%{_datadir}/fonts/texlive-mfb-oldstyle/*.pf*</glob>
+	    </rejectfont>
+	  </selectfont>
+	</fontconfig>
+	EOF
+    ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-mfb-oldstyle.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-mfb-oldstyle.conf
     tar --use-compress-program=xz -xf %{S:54} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:55} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:56} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-mflogo-font
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/hoekwater/mflogo-font/*.{pf[ab],[ot]tf}
@@ -32069,20 +33505,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:69} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:70} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:71} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:70} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:71} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:72} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:73} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32090,6 +33524,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-miama
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/miama/*.{pf[ab],[ot]tf} \
@@ -32140,9 +33577,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-miama.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-miama.conf
-    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32181,6 +33615,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/minitoc/cmk \
 	       %{_texmfdistdir}/doc/latex/minitoc/emk \
@@ -32194,12 +33631,45 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive
+    # Extend python3 scripts with major version only if any
+    for scr in %{_texmfdistdir}/scripts/minted/latexminted.py
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python3@python%python3_bin_suffix@
+		.
+		w
+		q
+	EOF
+    done
+    # Avoid /usr/bin/env <prog>
+    for scr in %{_texmfdistdir}/scripts/minted/latexminted.py
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@/env[[:blank:]]\+@/@
+		.
+		w
+		q
+	EOF
+    done
+    # Strip executable bit from non-scripts
+    for txt in %{_texmfdistdir}/scripts/minted/latex2pydata-0.4.1-py3-none-any.whl \
+	       %{_texmfdistdir}/scripts/minted/latexminted-0.4.0-py3-none-any.whl \
+	       %{_texmfdistdir}/scripts/minted/latexrestricted-0.6.2-py3-none-any.whl \
+	       %{_texmfdistdir}/scripts/minted/pygments-2.19.1-py3-none-any.whl
+    do
+	test -e %{buildroot}/$txt || continue
+	chmod 0644 %{buildroot}/$txt
+    done
+    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-mintspirit
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/arkandis/mintspirit/*.{pf[ab],[ot]tf} \
@@ -32250,12 +33720,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-mintspirit.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-mintspirit.conf
-    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-missaali
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/missaali/*.{pf[ab],[ot]tf}
@@ -32285,10 +33755,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/mkgrkindex/mkgrkindex
     do
@@ -32301,8 +33771,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/generic/mkjobtexmf/clean-case.pl \
 	       %{_texmfdistdir}/doc/generic/mkjobtexmf/version.pl
@@ -32324,10 +33794,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/mkpic/mkpic
     do
@@ -32340,9 +33810,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32352,6 +33819,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-mlmodern
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/mlmodern/*.{pf[ab],[ot]tf}
@@ -32381,11 +33851,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32395,6 +33862,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-mnsymbol
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/mnsymbol/*.{pf[ab],[ot]tf} \
@@ -32445,9 +33915,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-mnsymbol.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-mnsymbol.conf
-    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32473,6 +33940,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/montex/cyrename.pl \
 	       %{_texmfdistdir}/doc/latex/montex/mfinput/bithe/testfont.sh \
@@ -32511,8 +33981,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-montserrat
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/montserrat/*.{pf[ab],[ot]tf} \
@@ -32563,9 +34033,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-montserrat.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-montserrat.conf
-    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32585,12 +34052,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Make possible scripts usable if any
-    for scr in %{_texmfdistdir}/doc/metapost/mp3d/create_animation.sh
-    do
-	test -e %{buildroot}/$scr || continue
-	chmod 0755 %{buildroot}/$scr
-    done
     tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32599,6 +34060,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Make possible scripts usable if any
+    for scr in %{_texmfdistdir}/doc/metapost/mp3d/create_animation.sh
+    do
+	test -e %{buildroot}/$scr || continue
+	chmod 0755 %{buildroot}/$scr
+    done
+    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-mpchess
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/mpchess/*.{pf[ab],[ot]tf}
@@ -32628,17 +34104,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive
     # Correct wrong perl scripts if any
     for scr in %{_texmfdistdir}/scripts/context/perl/mptopdf.pl
     do
@@ -32655,17 +34133,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32683,8 +34150,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32692,8 +34159,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32717,10 +34184,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:303}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:314}
     popd
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/scripts/musixtex/musixflx.bat
@@ -32744,8 +34222,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-musixtex-fonts
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/musixtex-fonts/*.{pf[ab],[ot]tf} \
@@ -32796,22 +34274,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-musixtex-fonts.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-musixtex-fonts.conf
-    tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:321} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:322} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:323} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:324} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:325} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:326} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:327} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-mxedruli
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/mxedruli/*.{pf[ab],[ot]tf}
@@ -32841,20 +34319,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:322} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:323} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/mycv/checksum.pl
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:324} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:325} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:326} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:327} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:336} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:337} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:338} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:339} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:340} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
