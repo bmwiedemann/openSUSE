@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2hs-buildtools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name gtk2hs-buildtools
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        0.13.11.0
+Version:        0.13.12.0
 Release:        0
 Summary:        Tools to build the Gtk2Hs suite of User Interface libraries
 License:        GPL-2.0-only
