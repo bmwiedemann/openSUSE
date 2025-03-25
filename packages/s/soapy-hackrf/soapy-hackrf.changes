@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 22 15:38:29 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+- Remove Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Tue Dec  6 08:18:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.4:

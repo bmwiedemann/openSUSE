@@ -24,11 +24,10 @@ Version:        0.3.4
 Release:        0
 Summary:        SoapySDR HackRF module
 License:        MIT
-Group:          Hardware/Other
 URL:            https://github.com/pothosware/SoapyHackRF/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyHackRF.git
 Source:         https://github.com/pothosware/SoapyHackRF/archive/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SoapySDR)
@@ -40,7 +39,6 @@ A Soapy module that supports HackRF devices within the Soapy API.
 
 %package -n %{soapy_modname}
 Summary:        SoapySDR HackRF module
-Group:          System/Libraries
 
 %description -n %{soapy_modname}
 Soapy HackRF - HackRF device support for Soapy SDR.
@@ -50,11 +48,14 @@ A Soapy module that supports HackRF devices within the Soapy API.
 %setup -q -n SoapyHackRF-%{name}-%{version}
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make VERBOSE=1 %{?_smp_mflags}
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files -n %{soapy_modname}
 %license LICENSE
