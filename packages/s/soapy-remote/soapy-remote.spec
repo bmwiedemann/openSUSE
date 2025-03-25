@@ -25,12 +25,11 @@ Version:        0.5.2
 Release:        0
 Summary:        Remote device support for Soapy SDR
 License:        BSL-1.0
-Group:          Productivity/Hamradio/Other
 Url:            https://github.com/pothosware/SoapyRemote/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyRemote.git
 Source:         https://github.com/pothosware/SoapyRemote/archive/%{name}-%{version}.tar.gz
 Patch0:	harden_SoapySDRServer.service.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(SoapySDR)
@@ -40,7 +39,6 @@ A Soapy module that supports remote devices within the Soapy API.
 
 %package -n %{soapy_modname}
 Summary:        Remote device support for Soapy SDR
-Group:          System/Libraries
 # soapysdr0.7-module-remote needs to be force dropped
 Conflicts:      soapysdr0.7-module-remote
 # Add 'Provides/Obsoletes' entries for future updates
@@ -52,12 +50,11 @@ A Soapy module that supports remote devices within the Soapy API.
 
 %package server
 Summary:        Server for remote device support for Soapy SDR
-Group:          Productivity/Hamradio/Other
 # The server part was split, a 'Conflicts' line is also needed here.
 Conflicts:      soapysdr0.7-module-remote
 
 %description server
-A server that supports remote devices for the Soapy SDR. 
+A server that supports remote devices for the Soapy SDR.
 This package is intended to run on the system the sdr device is
 connected to.
 
@@ -65,7 +62,7 @@ connected to.
 %autosetup -p1 -n SoapyRemote-%{name}-%{version}
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make VERBOSE=1 %{?_smp_mflags}
 
 %install
@@ -73,6 +70,9 @@ make VERBOSE=1 %{?_smp_mflags}
 
 mkdir %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcSoapySDRServer
+
+%check
+%ctest
 
 %pre server
 %service_add_pre SoapySDRServer.service
