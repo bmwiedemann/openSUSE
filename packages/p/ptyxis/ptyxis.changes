@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 20 07:08:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Unreveal fullscreen topbar upon user input into terminal
+  + Increase timeout for ptyxis-agent to start
+  + Improve shell discovery for safe-directory inheritance
+  + Respect gtk-decoration-layout for tab close buttons
+
+-------------------------------------------------------------------
 Sat Mar 15 21:13:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:

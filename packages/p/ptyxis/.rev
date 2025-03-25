@@ -112,4 +112,16 @@
   + Updated translations. (forwarded request 1253406 from iznogood)</comment>
     <requestid>1253703</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1ab5e4e2050d94b130a24bbc59b97194</srcmd5>
+    <version>48.1</version>
+    <time>1742937001</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.1:
+  + Unreveal fullscreen topbar upon user input into terminal
+  + Increase timeout for ptyxis-agent to start
+  + Improve shell discovery for safe-directory inheritance
+  + Respect gtk-decoration-layout for tab close buttons (forwarded request 1254596 from iznogood)</comment>
+    <requestid>1255562</requestid>
+  </revision>
 </revisionlist>
