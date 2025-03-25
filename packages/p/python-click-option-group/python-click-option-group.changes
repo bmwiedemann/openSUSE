@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 24 16:44:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.5.7
+  * Add return type Decorator
+  * Update CI/CD config and Python versions
+  * Fix tests for click>=8.1.8
+
+-------------------------------------------------------------------
+Wed Feb  5 10:41:08 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- The test doesn't fail anymore with click 8.2.0
+
+-------------------------------------------------------------------
 Thu Jan 16 11:44:42 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Skip test failing with new click and create an issue upstream

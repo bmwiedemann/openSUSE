@@ -18,12 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-option-group
-Version:        0.5.6
+Version:        0.5.7
 Release:        0
 Summary:        Option groups missing in Click
 License:        BSD-3-Clause
 URL:            https://github.com/click-contrib/click-option-group
-Source:         https://files.pythonhosted.org/packages/source/c/click-option-group/click-option-group-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/click-option-group/click_option_group-%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -35,10 +37,6 @@ BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  fdupes
 BuildRequires:  dos2unix
 Requires:       python-click >= 7.0
-Suggests:       python-Sphinx >= 3.0
-Suggests:       python-Pallets-Sphinx-Themes
-Suggests:       python-m2r2
-Suggests:       python-pytest
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,7 +44,7 @@ BuildArch:      noarch
 Option groups missing in Click
 
 %prep
-%setup -q -n click-option-group-%{version}
+%setup -q -n click_option_group-%{version}
 
 %build
 %pyproject_wheel
@@ -57,8 +55,7 @@ dos2unix README.md CHANGELOG.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_missing_group_decl_first_api fails with click 8.1.8 https://github.com/click-contrib/click-option-group/issues/65
-%pytest -k "not test_missing_group_decl_first_api"
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
