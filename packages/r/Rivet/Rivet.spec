@@ -1,7 +1,7 @@
 #
 # spec file for package Rivet
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define ver 3.1.10
+%define ver 3.1.11
 %define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 Name:           Rivet
 Version:        %{ver}
@@ -24,10 +24,10 @@ Release:        0
 Summary:        A toolkit for validation of Monte Carlo event generators
 License:        Apache-2.0 AND GPL-2.0-only AND MPL-2.0 AND LPPL-1.3a AND BSL-1.0
 URL:            https://rivet.hepforge.org/
-Source:         https://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.gz
+Source:         https://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.bz2
 Patch0:         sover.diff
 BuildRequires:  HepMC-devel >= 3.2
-BuildRequires:  YODA-devel >= 1.8.0
+BuildRequires:  YODA-devel >= 1.9.11
 BuildRequires:  bash-completion
 BuildRequires:  fastjet-contrib-devel
 BuildRequires:  fastjet-devel

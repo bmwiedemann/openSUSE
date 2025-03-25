@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 23 15:20:34 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.11:
+  * Streamline parsing of version codes for dependencies
+  * Change Python build to use PY_LDFLAGS rather than
+    LINKFORSHARED variable.
+  * Update Logging to remove non-const static map of color codes,
+    and add support for the CRITICAL level.
+
+-------------------------------------------------------------------
 Mon Feb 19 12:33:40 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.10:
