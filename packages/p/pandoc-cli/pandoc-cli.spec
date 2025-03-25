@@ -17,7 +17,7 @@
 
 
 Name:           pandoc-cli
-Version:        3.6.3
+Version:        3.6.4
 Release:        0
 Summary:        Conversion between documentation formats
 License:        GPL-2.0-or-later
