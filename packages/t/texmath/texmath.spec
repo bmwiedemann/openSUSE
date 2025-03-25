@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.12.8.13
+Version:        0.12.9
 Release:        0
 Summary:        Conversion between math formats
 License:        GPL-2.0-or-later
@@ -142,14 +142,14 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %files
 %license LICENSE
-%doc README.markdown changelog
+%doc README.md changelog.md
 %{_bindir}/texmath
 
 %files -n ghc-%{name} -f ghc-%{name}.files
 %license LICENSE
 
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
-%doc README.markdown changelog
+%doc README.md changelog.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE
