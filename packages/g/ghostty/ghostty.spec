@@ -21,7 +21,7 @@
 %bcond_without  standalone_terminfo
 
 Name:           ghostty
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        Cross-platform terminal emulator
 License:        MIT
