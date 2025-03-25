@@ -1,7 +1,7 @@
 #
-# spec file for package texlive-specs-s.spec
+# spec file for package texlive-specs-s
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2024
+%define texlive_version  2025
 %define texlive_previous 2022
-%define texlive_release  20240311
-%define texlive_noarch   216
-%define biber_version    2.19
+%define texlive_release  20250308
+%define texlive_noarch   218
+%define biber_version    2.20
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-s
-Version:        2024
+Version:        2025
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -114,7 +114,7 @@ Suggests:       texlive-plari-doc >= %{texlive_version}
 Provides:       tex(plari.cls)
 Requires:       tex(report.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source1:        plari.tar.xz
 Source2:        plari.doc.tar.xz
 
@@ -193,7 +193,7 @@ Provides:       tex(endplate.sty)
 Provides:       tex(plates.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source3:        plates.tar.xz
 Source4:        plates.doc.tar.xz
 
@@ -243,7 +243,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/plates/plates.sty
 
 %package -n texlive-platex
-Version:        %{texlive_version}.%{texlive_noarch}.svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 License:        BSD-3-Clause
 Summary:        PLaTeX2e and miscellaneous macros for pTeX
@@ -257,10 +257,16 @@ Requires:       texlive-firstaid >= %{texlive_version}
 #!BuildIgnore: texlive-firstaid
 Requires:       texlive-hyphen-base >= %{texlive_version}
 #!BuildIgnore: texlive-hyphen-base
+Requires:       texlive-knuth-lib >= %{texlive_version}
+#!BuildIgnore: texlive-knuth-lib
 Requires:       texlive-l3backend >= %{texlive_version}
 #!BuildIgnore: texlive-l3backend
+Requires:       texlive-l3backend-dev >= %{texlive_version}
+#!BuildIgnore: texlive-l3backend-dev
 Requires:       texlive-l3kernel >= %{texlive_version}
 #!BuildIgnore: texlive-l3kernel
+Requires:       texlive-l3kernel-dev >= %{texlive_version}
+#!BuildIgnore: texlive-l3kernel-dev
 Requires:       texlive-latex >= %{texlive_version}
 #!BuildIgnore: texlive-latex
 Requires:       texlive-latex-base-dev >= %{texlive_version}
@@ -369,7 +375,7 @@ Requires:       tex(plautopatch.sty)
 Requires:       tex(shortvrb.sty)
 Requires:       tex(tracefnt.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source5:        platex.tar.xz
 Source6:        platex.doc.tar.xz
 
@@ -379,7 +385,7 @@ and e-pTeX. This is a community edition forked from the
 original ASCII edition (ptex-texmf-2.5).
 
 %package -n texlive-platex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 Summary:        Documentation for texlive-platex
 License:        BSD-3-Clause
@@ -429,14 +435,6 @@ fi
 > /var/run/texlive/run-fmtutil.platex
 > /var/run/texlive/run-fmtutil.platex-dev
 
-%triggerin -n texlive-platex -- texlive-firstaid
-> /var/run/texlive/run-fmtutil.platex
-> /var/run/texlive/run-fmtutil.platex-dev
-
-%triggerun -n texlive-platex -- texlive-firstaid
-> /var/run/texlive/run-fmtutil.platex
-> /var/run/texlive/run-fmtutil.platex-dev
-
 %triggerin -n texlive-platex -- texlive-hyphen-base
 > /var/run/texlive/run-fmtutil.platex
 > /var/run/texlive/run-fmtutil.platex-dev
@@ -445,27 +443,27 @@ fi
 > /var/run/texlive/run-fmtutil.platex
 > /var/run/texlive/run-fmtutil.platex-dev
 
-%triggerin -n texlive-platex -- texlive-l3backend
+%triggerin -n texlive-platex -- texlive-knuth-lib
 > /var/run/texlive/run-fmtutil.platex
 > /var/run/texlive/run-fmtutil.platex-dev
 
-%triggerun -n texlive-platex -- texlive-l3backend
+%triggerun -n texlive-platex -- texlive-knuth-lib
 > /var/run/texlive/run-fmtutil.platex
 > /var/run/texlive/run-fmtutil.platex-dev
 
-%triggerin -n texlive-platex -- texlive-l3kernel
+%triggerin -n texlive-platex -- texlive-l3backend-dev
 > /var/run/texlive/run-fmtutil.platex
 > /var/run/texlive/run-fmtutil.platex-dev
 
-%triggerun -n texlive-platex -- texlive-l3kernel
+%triggerun -n texlive-platex -- texlive-l3backend-dev
 > /var/run/texlive/run-fmtutil.platex
 > /var/run/texlive/run-fmtutil.platex-dev
 
-%triggerin -n texlive-platex -- texlive-latex
+%triggerin -n texlive-platex -- texlive-l3kernel-dev
 > /var/run/texlive/run-fmtutil.platex
 > /var/run/texlive/run-fmtutil.platex-dev
 
-%triggerun -n texlive-platex -- texlive-latex
+%triggerun -n texlive-platex -- texlive-l3kernel-dev
 > /var/run/texlive/run-fmtutil.platex
 > /var/run/texlive/run-fmtutil.platex-dev
 
@@ -578,7 +576,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/config/platex.ini
 
 %package -n texlive-platex-tools
-Version:        %{texlive_version}.%{texlive_noarch}.svn66185
+Version:        %{texlive_version}.%{texlive_noarch}.svn72097
 Release:        0
 License:        BSD-3-Clause
 Summary:        PLaTeX standard tools bundle
@@ -632,7 +630,7 @@ Requires:       tex(ptrace.sty)
 Requires:       tex(uptrace.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source7:        platex-tools.tar.xz
 Source8:        platex-tools.doc.tar.xz
 
@@ -643,7 +641,7 @@ pLaTeX2e and upLaTeX2e. Currently patches for the latex-tools
 bundle and Martin Schroder's ms bundle are included.
 
 %package -n texlive-platex-tools-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn66185
+Version:        %{texlive_version}.%{texlive_noarch}.svn72097
 Release:        0
 Summary:        Documentation for texlive-platex-tools
 License:        BSD-3-Clause
@@ -739,7 +737,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source9:        platexcheat.doc.tar.xz
 
 %description -n texlive-platexcheat
@@ -829,7 +827,7 @@ Requires:       tex(pxeveryshi.sty)
 Requires:       tex(siunitx.sty)
 Requires:       tex(stfloats.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source10:       plautopatch.tar.xz
 Source11:       plautopatch.doc.tar.xz
 
@@ -923,7 +921,7 @@ Provides:       tex(play.cls)
 Provides:       tex(play.sty)
 Requires:       tex(book.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source12:       play.tar.xz
 Source13:       play.doc.tar.xz
 
@@ -1001,7 +999,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(simplekv.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source14:       playcards.tar.xz
 Source15:       playcards.doc.tar.xz
 
@@ -1402,7 +1400,7 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source16:       playfair.tar.xz
 Source17:       playfair.doc.tar.xz
 
@@ -1812,7 +1810,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-playfair/PlyfrDisplay-Regular.pfb
 
 %package -n texlive-plex
-Version:        %{texlive_version}.%{texlive_noarch}.svn69154
+Version:        %{texlive_version}.%{texlive_noarch}.svn73028
 Release:        0
 License:        OFL-1.1
 Summary:        Support for IBM Plex fonts
@@ -3334,7 +3332,7 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source18:       plex.tar.xz
 Source19:       plex.doc.tar.xz
 
@@ -3346,7 +3344,7 @@ ExtraLight, Thin, Bold, Text, Medium and SemiBold (with
 corresponding italics).
 
 %package -n texlive-plex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn69154
+Version:        %{texlive_version}.%{texlive_noarch}.svn73028
 Release:        0
 Summary:        Documentation for texlive-plex
 License:        OFL-1.1
@@ -3358,7 +3356,7 @@ Supplements:    (texlive-plex and texlive-alldocumentation)
 This package includes the documentation for texlive-plex
 
 %package -n texlive-plex-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn69154
+Version:        %{texlive_version}.%{texlive_noarch}.svn73028
 Release:        0
 Summary:        Severed fonts for texlive-plex
 License:        OFL-1.1
@@ -3428,6 +3426,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_sebx3h.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_umrhwx.enc
 %{_texmfdistdir}/fonts/map/dvips/plex/plex.map
+%verify(link) %{_texmfdistdir}/fonts/opentype/ibm/plex/IBMPlexMath-Regular.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/ibm/plex/IBMPlexMono-Bold.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/ibm/plex/IBMPlexMono-BoldItalic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/ibm/plex/IBMPlexMono-ExtraLight.otf
@@ -5011,6 +5010,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-plex/encodings.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-plex/fonts.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-plex/fonts.scale
+%{_datadir}/fonts/texlive-plex/IBMPlexMath-Regular.otf
 %{_datadir}/fonts/texlive-plex/IBMPlexMono-Bold.otf
 %{_datadir}/fonts/texlive-plex/IBMPlexMono-BoldItalic.otf
 %{_datadir}/fonts/texlive-plex/IBMPlexMono-ExtraLight.otf
@@ -5141,7 +5141,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-plex/plxSerif-ThinItalic.pfb
 
 %package -n texlive-plex-otf
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.08asvn68238
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn73766
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for the OpenType font IBM Plex
@@ -5169,13 +5169,12 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-plex-otf-doc >= %{texlive_version}
 Provides:       tex(plex-otf.sty)
-Requires:       tex(fontspec.sty)
-Requires:       tex(ifluatex.sty)
-Requires:       tex(ifxetex.sty)
+Requires:       tex(iftex.sty)
 Requires:       tex(textcomp.sty)
+Requires:       tex(unicode-math.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source20:       plex-otf.tar.xz
 Source21:       plex-otf.doc.tar.xz
 
@@ -5184,12 +5183,10 @@ This package supports the free otf fonts from the IBM Plex
 project which are available from GitHub or already part of your
 system (Windows/Linux/...). This package supports only XeLaTeX
 or LuaLaTeX; for pdfLaTeX use plex-mono.sty, plex-sans.sty,
-and/or plex-serif.sty from the plex package. IBM Plex has no
-math symbols. You will have to use one of the existing math
-fonts if you need them.
+and/or plex-serif.sty from the plex package.
 
 %package -n texlive-plex-otf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.08asvn68238
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn73766
 Release:        0
 Summary:        Documentation for texlive-plex-otf
 License:        LPPL-1.0
@@ -5219,19 +5216,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-plex-otf-doc
 %{_texmfdistdir}/doc/fonts/plex-otf/Changes
-%{_texmfdistdir}/doc/fonts/plex-otf/Examples/plex-otf-1.tex
-%{_texmfdistdir}/doc/fonts/plex-otf/Examples/plex-otf-10.tex
-%{_texmfdistdir}/doc/fonts/plex-otf/Examples/plex-otf-11.tex
-%{_texmfdistdir}/doc/fonts/plex-otf/Examples/plex-otf-2.tex
-%{_texmfdistdir}/doc/fonts/plex-otf/Examples/plex-otf-3.tex
-%{_texmfdistdir}/doc/fonts/plex-otf/Examples/plex-otf-4.tex
-%{_texmfdistdir}/doc/fonts/plex-otf/Examples/plex-otf-5.tex
-%{_texmfdistdir}/doc/fonts/plex-otf/Examples/plex-otf-6.tex
-%{_texmfdistdir}/doc/fonts/plex-otf/Examples/plex-otf-7.tex
-%{_texmfdistdir}/doc/fonts/plex-otf/Examples/plex-otf-8.tex
-%{_texmfdistdir}/doc/fonts/plex-otf/Examples/plex-otf-9.tex
 %{_texmfdistdir}/doc/fonts/plex-otf/README.md
 %{_texmfdistdir}/doc/fonts/plex-otf/plex-otf-doc.bib
+%{_texmfdistdir}/doc/fonts/plex-otf/plex-otf-doc.fonts
 %{_texmfdistdir}/doc/fonts/plex-otf/plex-otf-doc.pdf
 %{_texmfdistdir}/doc/fonts/plex-otf/plex-otf-doc.tex
 
@@ -5284,7 +5271,7 @@ Provides:       tex(plimsoll.map)
 Provides:       tex(plimsoll.sty)
 Provides:       tex(plimsoll.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source22:       plimsoll.tar.xz
 Source23:       plimsoll.doc.tar.xz
 
@@ -5401,7 +5388,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-plipsum-doc >= %{texlive_version}
 Provides:       tex(plipsum.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source24:       plipsum.tar.xz
 Source25:       plipsum.doc.tar.xz
 
@@ -5482,7 +5469,7 @@ Suggests:       texlive-plnfss-doc >= %{texlive_version}
 Provides:       tex(MIKmathf.tex)
 Provides:       tex(plnfss.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source26:       plnfss.tar.xz
 Source27:       plnfss.doc.tar.xz
 
@@ -5577,7 +5564,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-plstmary-doc >= %{texlive_version}
 Provides:       tex(stmary.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source28:       plstmary.tar.xz
 Source29:       plstmary.doc.tar.xz
 
@@ -5654,7 +5641,7 @@ Provides:       tex(pcode.sty)
 Provides:       tex(pl.cfg)
 Provides:       tex(pl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source30:       plweb.tar.xz
 Source31:       plweb.doc.tar.xz
 
@@ -5740,7 +5727,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source32:       pm-isomath.tar.xz
 Source33:       pm-isomath.doc.tar.xz
 
@@ -5819,7 +5806,7 @@ Suggests:       texlive-pmboxdraw-doc >= %{texlive_version}
 Provides:       tex(pmboxdraw.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source34:       pmboxdraw.tar.xz
 Source35:       pmboxdraw.doc.tar.xz
 
@@ -5865,10 +5852,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pmboxdraw/pmboxdrawenc.dfu
 
 %package -n texlive-pmdraw
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn69366
+Version:        %{texlive_version}.%{texlive_noarch}.1.7svn73626
 Release:        0
 License:        LPPL-1.0
-Summary:        Draw elements of partition monoids
+Summary:        Draw elements of the diagram monoids
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -5893,21 +5880,22 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pmdraw-doc >= %{texlive_version}
 Provides:       tex(pmdraw.sty)
-Requires:       tex(keyval.sty)
 Requires:       tex(tikz.sty)
+Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source36:       pmdraw.tar.xz
 Source37:       pmdraw.doc.tar.xz
 
 %description -n texlive-pmdraw
-This package allows you to draw elements of Partition Monoids,
-commonly referred to as diagrams. The package provides a lot of
-flexibility to draw most diagrams and can be customised as
-needed.
+This package allows you to draw elements of the diagram
+monoids, commonly referred to as diagrams. The package provides
+a lot of flexibility to draw most diagrams and can be
+customised as needed. It makes use of the TikZ and keyval
+packages.
 
 %package -n texlive-pmdraw-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn69366
+Version:        %{texlive_version}.%{texlive_noarch}.1.7svn73626
 Release:        0
 Summary:        Documentation for texlive-pmdraw
 License:        LPPL-1.0
@@ -5998,7 +5986,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pmgraph-doc >= %{texlive_version}
 Provides:       tex(pmgraph.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source38:       pmgraph.tar.xz
 Source39:       pmgraph.doc.tar.xz
 
@@ -6045,7 +6033,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pmgraph/pmgraph.sty
 
 %package -n texlive-pmhanguljamo
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn66361
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.2svn73884
 Release:        0
 License:        LPPL-1.0
 Summary:        Poor man's Hangul Jamo input method
@@ -6080,7 +6068,7 @@ Provides:       tex(pmhanguljamo.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source40:       pmhanguljamo.tar.xz
 Source41:       pmhanguljamo.doc.tar.xz
 
@@ -6092,7 +6080,7 @@ Method". The use of XeLaTeX is recommended. pdfTeX is not
 supported.
 
 %package -n texlive-pmhanguljamo-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn66361
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.2svn73884
 Release:        0
 Summary:        Documentation for texlive-pmhanguljamo
 License:        LPPL-1.0
@@ -6168,7 +6156,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pmx-doc >= %{texlive_version}
 Provides:       tex(pmx.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source42:       pmx.tar.xz
 Source43:       pmx.doc.tar.xz
 
@@ -6243,7 +6231,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/pmx/pmx.tex
 
 %package -n texlive-pmxchords
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.2svn39249
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.2svn73868
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Produce chord information to go with pmx output
@@ -6275,7 +6263,7 @@ Suggests:       texlive-pmxchords-doc >= %{texlive_version}
 Provides:       tex(chords.tex)
 Provides:       tex(chordsCZ.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source44:       pmxchords.tar.xz
 Source45:       pmxchords.doc.tar.xz
 
@@ -6287,7 +6275,7 @@ to the required key signature; and support scripts for common
 requirements.
 
 %package -n texlive-pmxchords-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.2svn39249
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.2svn73868
 Release:        0
 Summary:        Documentation for texlive-pmxchords
 License:        GPL-2.0-or-later
@@ -6319,25 +6307,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-pmxchords-doc
 %{_mandir}/man1/pmxchords.1*
-%{_texmfdistdir}/doc/pmxchords/README
-%{_texmfdistdir}/doc/pmxchords/chordsRef.pdf
-%{_texmfdistdir}/doc/pmxchords/chordsRef.tex
-%{_texmfdistdir}/doc/pmxchords/chordsRefCZ.pdf
-%{_texmfdistdir}/doc/pmxchords/chordsRefCZ.tex
-%{_texmfdistdir}/doc/pmxchords/examples/jazz/misty/misty.pdf
-%{_texmfdistdir}/doc/pmxchords/examples/jazz/misty/misty.pmx
-%{_texmfdistdir}/doc/pmxchords/examples/jazz/schema/schema.pdf
-%{_texmfdistdir}/doc/pmxchords/examples/jazz/schema/schema.pmx
-%{_texmfdistdir}/doc/pmxchords/examples/jazz/schema/schema_full.pdf
-%{_texmfdistdir}/doc/pmxchords/examples/jazz/schema/schema_full.pmx
-%{_texmfdistdir}/doc/pmxchords/examples/noel/aj_co_to_hlasaju/aj_co_to_hlasaju.pdf
-%{_texmfdistdir}/doc/pmxchords/examples/noel/aj_co_to_hlasaju/aj_co_to_hlasaju.pmx
-%{_texmfdistdir}/doc/pmxchords/examples/noel/pasli_ovce_valasi/README
-%{_texmfdistdir}/doc/pmxchords/examples/noel/pasli_ovce_valasi/pasli_ovce_valasi.pdf
-%{_texmfdistdir}/doc/pmxchords/examples/noel/pasli_ovce_valasi/pasli_ovce_valasi.pmx
-%{_texmfdistdir}/doc/pmxchords/gpl-2.0.txt
-%{_texmfdistdir}/doc/pmxchords/pmxchords-install.pdf
-%{_texmfdistdir}/doc/pmxchords/pmxchords-install.tex
+%{_texmfdistdir}/doc/support/pmxchords/README
+%{_texmfdistdir}/doc/support/pmxchords/chordsRef.pdf
+%{_texmfdistdir}/doc/support/pmxchords/chordsRef.tex
+%{_texmfdistdir}/doc/support/pmxchords/chordsRefCZ.pdf
+%{_texmfdistdir}/doc/support/pmxchords/chordsRefCZ.tex
+%{_texmfdistdir}/doc/support/pmxchords/examples/jazz/misty/misty.pdf
+%{_texmfdistdir}/doc/support/pmxchords/examples/jazz/misty/misty.pmx
+%{_texmfdistdir}/doc/support/pmxchords/examples/jazz/schema/schema.pdf
+%{_texmfdistdir}/doc/support/pmxchords/examples/jazz/schema/schema.pmx
+%{_texmfdistdir}/doc/support/pmxchords/examples/jazz/schema/schema_full.pdf
+%{_texmfdistdir}/doc/support/pmxchords/examples/jazz/schema/schema_full.pmx
+%{_texmfdistdir}/doc/support/pmxchords/examples/noel/aj_co_to_hlasaju/aj_co_to_hlasaju.pdf
+%{_texmfdistdir}/doc/support/pmxchords/examples/noel/aj_co_to_hlasaju/aj_co_to_hlasaju.pmx
+%{_texmfdistdir}/doc/support/pmxchords/examples/noel/pasli_ovce_valasi/README
+%{_texmfdistdir}/doc/support/pmxchords/examples/noel/pasli_ovce_valasi/pasli_ovce_valasi.pdf
+%{_texmfdistdir}/doc/support/pmxchords/examples/noel/pasli_ovce_valasi/pasli_ovce_valasi.pmx
+%{_texmfdistdir}/doc/support/pmxchords/gpl-2.0.txt
+%{_texmfdistdir}/doc/support/pmxchords/pmxchords-install.pdf
+%{_texmfdistdir}/doc/support/pmxchords/pmxchords-install.tex
 
 %files -n texlive-pmxchords
 %{_texmfdistdir}/scripts/pmxchords/ChordsTr.lua
@@ -6373,7 +6361,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source46:       pnas2009.tar.xz
 
 %description -n texlive-pnas2009
@@ -6432,7 +6420,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-poemscol-doc >= %{texlive_version}
 Provides:       tex(poemscol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source47:       poemscol.tar.xz
 Source48:       poemscol.doc.tar.xz
 
@@ -6516,7 +6504,7 @@ Provides:       tex(poetry.sty)
 Requires:       tex(imakeidx.sty)
 Requires:       tex(modulus.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source49:       poetry.tar.xz
 Source50:       poetry.doc.tar.xz
 
@@ -6599,7 +6587,7 @@ Provides:       tex(poetrytex.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(tocloft.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source51:       poetrytex.tar.xz
 Source52:       poetrytex.doc.tar.xz
 
@@ -6724,7 +6712,7 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source53:       poiretone.tar.xz
 Source54:       poiretone.doc.tar.xz
 
@@ -6873,7 +6861,7 @@ Provides:       tex(polexprexpr.tex)
 Provides:       tex(polexprsturm.tex)
 Requires:       tex(xintexpr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source55:       polexpr.tar.xz
 Source56:       polexpr.doc.tar.xz
 
@@ -6991,7 +6979,7 @@ Provides:       tex(polski.sty)
 Provides:       tex(qxenc.def)
 Requires:       tex(ot4enc.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source57:       polski.tar.xz
 Source58:       polski.doc.tar.xz
 
@@ -7752,7 +7740,7 @@ Provides:       tex(ts1-antpri8.tfm)
 Provides:       tex(ts1antp.fd)
 Provides:       tex(ts1antpl.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source59:       poltawski.tar.xz
 Source60:       poltawski.doc.tar.xz
 
@@ -8781,7 +8769,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-poltawski/antpri8.pfb
 
 %package -n texlive-polyglossia
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.2.4svn73666
 Release:        0
 License:        LPPL-1.0
 Summary:        An alternative to babel for XeLaTeX and LuaLaTeX
@@ -8831,7 +8819,7 @@ Provides:       tex(devanagaridigits.map)
 Provides:       tex(devanagaridigits.sty)
 Provides:       tex(farsical.sty)
 Provides:       tex(farsidigits.map)
-Provides:       tex(gloss-acadien.ldf)
+Provides:       tex(gloss-acadian.ldf)
 Provides:       tex(gloss-aeb.ldf)
 Provides:       tex(gloss-af.ldf)
 Provides:       tex(gloss-afb.ldf)
@@ -8885,6 +8873,7 @@ Provides:       tex(gloss-chinese.ldf)
 Provides:       tex(gloss-ckb-Arab.ldf)
 Provides:       tex(gloss-ckb-Latn.ldf)
 Provides:       tex(gloss-ckb.ldf)
+Provides:       tex(gloss-classiclatin.ldf)
 Provides:       tex(gloss-cop.ldf)
 Provides:       tex(gloss-coptic.ldf)
 Provides:       tex(gloss-croatian.ldf)
@@ -8917,6 +8906,7 @@ Provides:       tex(gloss-divehi.ldf)
 Provides:       tex(gloss-dsb.ldf)
 Provides:       tex(gloss-dutch.ldf)
 Provides:       tex(gloss-dv.ldf)
+Provides:       tex(gloss-ecclesiasticlatin.ldf)
 Provides:       tex(gloss-el-monoton.ldf)
 Provides:       tex(gloss-el-polyton.ldf)
 Provides:       tex(gloss-el.ldf)
@@ -8999,9 +8989,6 @@ Provides:       tex(gloss-la.ldf)
 Provides:       tex(gloss-lao.ldf)
 Provides:       tex(gloss-latex.ldf)
 Provides:       tex(gloss-latin.ldf)
-Provides:       tex(gloss-latinclassic.ldf)
-Provides:       tex(gloss-latinecclesiastic.ldf)
-Provides:       tex(gloss-latinmedieval.ldf)
 Provides:       tex(gloss-latvian.ldf)
 Provides:       tex(gloss-lithuanian.ldf)
 Provides:       tex(gloss-lo.ldf)
@@ -9014,6 +9001,7 @@ Provides:       tex(gloss-magyar.ldf)
 Provides:       tex(gloss-malay.ldf)
 Provides:       tex(gloss-malayalam.ldf)
 Provides:       tex(gloss-marathi.ldf)
+Provides:       tex(gloss-medievallatin.ldf)
 Provides:       tex(gloss-mk.ldf)
 Provides:       tex(gloss-ml.ldf)
 Provides:       tex(gloss-mn.ldf)
@@ -9090,10 +9078,8 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(luabidi.sty)
-Requires:       tex(luatexbase.sty)
-Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source61:       polyglossia.tar.xz
 Source62:       polyglossia.doc.tar.xz
 
@@ -9103,7 +9089,7 @@ LuaLaTeX and XeLaTeX; it relies on the fontspec package,
 version 2.0 at least.
 
 %package -n texlive-polyglossia-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.2.4svn73666
 Release:        0
 Summary:        Documentation for texlive-polyglossia
 License:        LPPL-1.0
@@ -9132,25 +9118,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-polyglossia-doc
+%{_texmfdistdir}/doc/latex/polyglossia/LICENSE.txt
 %{_texmfdistdir}/doc/latex/polyglossia/README.md
-%{_texmfdistdir}/doc/latex/polyglossia/example-arabic.pdf
-%{_texmfdistdir}/doc/latex/polyglossia/example-arabic.tex
-%{_texmfdistdir}/doc/latex/polyglossia/example-chinese.pdf
-%{_texmfdistdir}/doc/latex/polyglossia/example-chinese.tex
-%{_texmfdistdir}/doc/latex/polyglossia/example-japanese.pdf
-%{_texmfdistdir}/doc/latex/polyglossia/example-japanese.tex
-%{_texmfdistdir}/doc/latex/polyglossia/example-korean.pdf
-%{_texmfdistdir}/doc/latex/polyglossia/example-korean.tex
-%{_texmfdistdir}/doc/latex/polyglossia/example-odia.pdf
-%{_texmfdistdir}/doc/latex/polyglossia/example-odia.tex
-%{_texmfdistdir}/doc/latex/polyglossia/example-thai.pdf
-%{_texmfdistdir}/doc/latex/polyglossia/example-thai.tex
-%{_texmfdistdir}/doc/latex/polyglossia/examples.pdf
-%{_texmfdistdir}/doc/latex/polyglossia/examples.tex
 %{_texmfdistdir}/doc/latex/polyglossia/polyglossia.pdf
 %{_texmfdistdir}/doc/latex/polyglossia/polyglossia.tex
-%{_texmfdistdir}/doc/latex/polyglossia/test-welsh.pdf
-%{_texmfdistdir}/doc/latex/polyglossia/test-welsh.tex
 
 %files -n texlive-polyglossia
 %{_texmfdistdir}/fonts/misc/xetex/fontmapping/polyglossia/arabicdigits.map
@@ -9174,7 +9145,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polyglossia/cal-util.def
 %{_texmfdistdir}/tex/latex/polyglossia/devanagaridigits.sty
 %{_texmfdistdir}/tex/latex/polyglossia/farsical.sty
-%{_texmfdistdir}/tex/latex/polyglossia/gloss-acadien.ldf
+%{_texmfdistdir}/tex/latex/polyglossia/gloss-acadian.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-aeb.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-af.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-afb.ldf
@@ -9228,6 +9199,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-ckb-Arab.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-ckb-Latn.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-ckb.ldf
+%{_texmfdistdir}/tex/latex/polyglossia/gloss-classiclatin.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-cop.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-coptic.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-croatian.ldf
@@ -9260,6 +9232,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-dsb.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-dutch.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-dv.ldf
+%{_texmfdistdir}/tex/latex/polyglossia/gloss-ecclesiasticlatin.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-el-monoton.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-el-polyton.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-el.ldf
@@ -9342,9 +9315,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-lao.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-latex.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-latin.ldf
-%{_texmfdistdir}/tex/latex/polyglossia/gloss-latinclassic.ldf
-%{_texmfdistdir}/tex/latex/polyglossia/gloss-latinecclesiastic.ldf
-%{_texmfdistdir}/tex/latex/polyglossia/gloss-latinmedieval.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-latvian.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-lithuanian.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-lo.ldf
@@ -9357,6 +9327,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-malay.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-malayalam.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-marathi.ldf
+%{_texmfdistdir}/tex/latex/polyglossia/gloss-medievallatin.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-mk.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-ml.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-mn.ldf
@@ -9421,8 +9392,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polyglossia/hijrical.sty
 %{_texmfdistdir}/tex/latex/polyglossia/nkonumbers.sty
 %{_texmfdistdir}/tex/latex/polyglossia/odiadigits.sty
+%{_texmfdistdir}/tex/latex/polyglossia/polyglossia-cjk-spacing.lua
 %{_texmfdistdir}/tex/latex/polyglossia/polyglossia-french.lua
-%{_texmfdistdir}/tex/latex/polyglossia/polyglossia-korean.lua
 %{_texmfdistdir}/tex/latex/polyglossia/polyglossia-latin.lua
 %{_texmfdistdir}/tex/latex/polyglossia/polyglossia-punct.lua
 %{_texmfdistdir}/tex/latex/polyglossia/polyglossia-sanskrit.lua
@@ -9468,7 +9439,7 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source63:       polyhedra.tar.xz
 Source64:       polyhedra.doc.tar.xz
 
@@ -9546,7 +9517,7 @@ Suggests:       texlive-polynom-doc >= %{texlive_version}
 Provides:       tex(polynom.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source65:       polynom.tar.xz
 Source66:       polynom.doc.tar.xz
 
@@ -9625,7 +9596,7 @@ Suggests:       texlive-polynomial-doc >= %{texlive_version}
 Provides:       tex(polynomial.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source67:       polynomial.tar.xz
 Source68:       polynomial.doc.tar.xz
 
@@ -9673,6 +9644,83 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-polynomial
 %{_texmfdistdir}/tex/latex/polynomial/polynomial.sty
 
+%package -n texlive-polyomino
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn71991
+Release:        0
+License:        LPPL-1.0
+Summary:        Polyominoes using TikZ and LaTeX3
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-polyomino-doc >= %{texlive_version}
+Provides:       tex(polyomino.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source69:       polyomino.tar.xz
+Source70:       polyomino.doc.tar.xz
+
+%description -n texlive-polyomino
+This package is based on the package TikZ and can be used to
+draw polyominoes. It is possible to define custom styles, pics
+and grids.
+
+%package -n texlive-polyomino-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn71991
+Release:        0
+Summary:        Documentation for texlive-polyomino
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-polyomino and texlive-alldocumentation)
+
+%description -n texlive-polyomino-doc
+This package includes the documentation for texlive-polyomino
+
+%post -n texlive-polyomino
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-polyomino
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-polyomino
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-polyomino-doc
+%{_texmfdistdir}/doc/latex/polyomino/README.md
+%{_texmfdistdir}/doc/latex/polyomino/polyomino.pdf
+%{_texmfdistdir}/doc/latex/polyomino/polyomino.tex
+
+%files -n texlive-polyomino
+%{_texmfdistdir}/tex/latex/polyomino/polyomino.sty
+
 %package -n texlive-polytable
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.6svn55837
 Release:        0
@@ -9705,9 +9753,9 @@ Provides:       tex(polytable.sty)
 Requires:       tex(array.sty)
 Requires:       tex(lazylist.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source69:       polytable.tar.xz
-Source70:       polytable.doc.tar.xz
+# from 20250308
+Source71:       polytable.tar.xz
+Source72:       polytable.doc.tar.xz
 
 %description -n texlive-polytable
 This package implements a variant of tabular-like environments
@@ -9783,9 +9831,9 @@ Suggests:       texlive-poormanlog-doc >= %{texlive_version}
 Provides:       tex(poormanlog.sty)
 Provides:       tex(poormanlog.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source71:       poormanlog.tar.xz
-Source72:       poormanlog.doc.tar.xz
+# from 20250308
+Source73:       poormanlog.tar.xz
+Source74:       poormanlog.doc.tar.xz
 
 %description -n texlive-poormanlog
 This small package (usable with Plain e-TeX, LaTeX, or others)
@@ -9870,9 +9918,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source73:       postage.tar.xz
-Source74:       postage.doc.tar.xz
+# from 20250308
+Source75:       postage.tar.xz
+Source76:       postage.doc.tar.xz
 
 %description -n texlive-postage
 The postage package is used for franking letters with
@@ -9950,9 +9998,9 @@ Provides:       tex(postcards.cls)
 Requires:       tex(letter.cls)
 Requires:       tex(mailing.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source75:       postcards.tar.xz
-Source76:       postcards.doc.tar.xz
+# from 20250308
+Source77:       postcards.tar.xz
+Source78:       postcards.doc.tar.xz
 
 %description -n texlive-postcards
 A modification of the standard LaTeX letter class which prints
@@ -10030,9 +10078,9 @@ Suggests:       texlive-poster-mac-doc >= %{texlive_version}
 Provides:       tex(poster.sty)
 Provides:       tex(poster.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source77:       poster-mac.tar.xz
-Source78:       poster-mac.doc.tar.xz
+# from 20250308
+Source79:       poster-mac.tar.xz
+Source80:       poster-mac.doc.tar.xz
 
 %description -n texlive-poster-mac
 The package offers macros for making posters and banners with
@@ -10087,7 +10135,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/poster-mac/poster.tex
 
 %package -n texlive-postit
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn67344
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.4svn74286
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX package for displaying Post-it notes
@@ -10121,9 +10169,9 @@ Requires:       tex(tcolorbox.sty)
 Requires:       tex(varwidth.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source79:       postit.tar.xz
-Source80:       postit.doc.tar.xz
+# from 20250308
+Source81:       postit.tar.xz
+Source82:       postit.doc.tar.xz
 
 %description -n texlive-postit
 This package provides some commands and options for creating
@@ -10132,7 +10180,7 @@ customizations; a command \MiniPostIt to display a simple
 Post-It.
 
 %package -n texlive-postit-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn67344
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.4svn74286
 Release:        0
 Summary:        Documentation for texlive-postit
 License:        LPPL-1.0
@@ -10172,7 +10220,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/postit/postit.sty
 
 %package -n texlive-postnotes
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.8svn69102
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.1svn73045
 Release:        0
 License:        LPPL-1.0
 Summary:        Endnotes for LaTeX
@@ -10201,9 +10249,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-postnotes-doc >= %{texlive_version}
 Provides:       tex(postnotes.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source81:       postnotes.tar.xz
-Source82:       postnotes.doc.tar.xz
+# from 20250308
+Source83:       postnotes.tar.xz
+Source84:       postnotes.doc.tar.xz
 
 %description -n texlive-postnotes
 This is an endnotes package for LaTeX. Its user interface
@@ -10218,7 +10266,7 @@ more elaborate ones can be built. When hyperref is loaded,
 postnotes provides hyperlinked notes, including back links.
 
 %package -n texlive-postnotes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.8svn69102
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.1svn73045
 Release:        0
 Summary:        Documentation for texlive-postnotes
 License:        LPPL-1.0
@@ -10325,9 +10373,9 @@ Requires:       tex(verbatim.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source83:       powerdot.tar.xz
-Source84:       powerdot.doc.tar.xz
+# from 20250308
+Source85:       powerdot.tar.xz
+Source86:       powerdot.doc.tar.xz
 
 %description -n texlive-powerdot
 Powerdot is a presentation class for LaTeX that allows for the
@@ -10447,9 +10495,9 @@ Requires:       tex(powerdot.cls)
 Requires:       tex(ragged2e.sty)
 Requires:       tex(tabularx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source85:       powerdot-fuberlin.tar.xz
-Source86:       powerdot-fuberlin.doc.tar.xz
+# from 20250308
+Source87:       powerdot-fuberlin.tar.xz
+Source88:       powerdot-fuberlin.doc.tar.xz
 
 %description -n texlive-powerdot-fuberlin
 The bundle provides a powerdot-derived class and a package for
@@ -10535,9 +10583,9 @@ Suggests:       texlive-powerdot-tuliplab-doc >= %{texlive_version}
 Provides:       tex(powerdot-tuliplab.sty)
 Requires:       tex(pifont.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source87:       powerdot-tuliplab.tar.xz
-Source88:       powerdot-tuliplab.doc.tar.xz
+# from 20250308
+Source89:       powerdot-tuliplab.tar.xz
+Source90:       powerdot-tuliplab.doc.tar.xz
 
 %description -n texlive-powerdot-tuliplab
 powerdot-tuliplab is the LaTeX package used in TULIP Lab for
@@ -10592,12 +10640,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/powerdot-tuliplab/powerdot-tuliplab.sty
 
 %package -n texlive-ppmcheckpdf
-Version:        %{texlive_version}.%{texlive_noarch}.2024bsvn69527
+Version:        %{texlive_version}.%{texlive_noarch}.2025asvn74165
 Release:        0
 License:        LPPL-1.0
 Summary:        Convert PDF to PNG and compare PNG files after l3build
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-ppmcheckpdf-bin >= %{texlive_version}
+#!BuildIgnore: texlive-ppmcheckpdf-bin
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -10620,9 +10670,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ppmcheckpdf-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source89:       ppmcheckpdf.tar.xz
-Source90:       ppmcheckpdf.doc.tar.xz
+# from 20250308
+Source91:       ppmcheckpdf.tar.xz
+Source92:       ppmcheckpdf.doc.tar.xz
 
 %description -n texlive-ppmcheckpdf
 The build system l3build normally writes the contents of some
@@ -10636,13 +10686,14 @@ PNG files and you can compare the PNG files after l3build has
 finished its work.
 
 %package -n texlive-ppmcheckpdf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2024bsvn69527
+Version:        %{texlive_version}.%{texlive_noarch}.2025asvn74165
 Release:        0
 Summary:        Documentation for texlive-ppmcheckpdf
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Supplements:    (texlive-ppmcheckpdf and texlive-alldocumentation)
+Provides:       man(ppmcheckpdf.1)
 
 %description -n texlive-ppmcheckpdf-doc
 This package includes the documentation for texlive-ppmcheckpdf
@@ -10665,6 +10716,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-ppmcheckpdf-doc
+%{_mandir}/man1/ppmcheckpdf.1*
 %{_texmfdistdir}/doc/support/ppmcheckpdf/README.txt
 %{_texmfdistdir}/doc/support/ppmcheckpdf/ppmcheckpdf.pdf
 %{_texmfdistdir}/doc/support/ppmcheckpdf/ppmcheckpdf.tex
@@ -10712,9 +10764,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(pstricks.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source91:       ppr-prv.tar.xz
-Source92:       ppr-prv.doc.tar.xz
+# from 20250308
+Source93:       ppr-prv.tar.xz
+Source94:       ppr-prv.doc.tar.xz
 
 %description -n texlive-ppr-prv
 This class is used with LaTeX presentations using the prosper
@@ -10760,7 +10812,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ppr-prv/ppr-prv.cls
 
 %package -n texlive-ppt-slides
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.2svn69568
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn72584
 Release:        0
 License:        LPPL-1.0
 Summary:        Good-looking slide decks a la PowerPoint (PPT)
@@ -10832,9 +10884,9 @@ Requires:       tex(tikzpagenodes.sty)
 Requires:       tex(varwidth.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source93:       ppt-slides.tar.xz
-Source94:       ppt-slides.doc.tar.xz
+# from 20250308
+Source95:       ppt-slides.tar.xz
+Source96:       ppt-slides.doc.tar.xz
 
 %description -n texlive-ppt-slides
 This LaTeX package helps you create slide decks as good-looking
@@ -10843,7 +10895,7 @@ strict. Check this series of lectures fully designed with the
 use of this package.
 
 %package -n texlive-ppt-slides-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.2svn69568
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn72584
 Release:        0
 Summary:        Documentation for texlive-ppt-slides
 License:        LPPL-1.0
@@ -10924,9 +10976,9 @@ Requires:       tex(mathpazo.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source95:       pracjourn.tar.xz
-Source96:       pracjourn.doc.tar.xz
+# from 20250308
+Source97:       pracjourn.tar.xz
+Source98:       pracjourn.doc.tar.xz
 
 %description -n texlive-pracjourn
 The pracjourn class is used for typesetting articles in the
@@ -11012,9 +11064,9 @@ Requires:       tex(pgffor.sty)
 Requires:       tex(scrextend.sty)
 Requires:       tex(tikzducks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source97:       practicalreports.tar.xz
-Source98:       practicalreports.doc.tar.xz
+# from 20250308
+Source99:       practicalreports.tar.xz
+Source100:      practicalreports.doc.tar.xz
 
 %description -n texlive-practicalreports
 This package provides a handful of macros for writing up
@@ -11093,9 +11145,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-precattl-doc >= %{texlive_version}
 Provides:       tex(precattl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source99:       precattl.tar.xz
-Source100:      precattl.doc.tar.xz
+# from 20250308
+Source101:      precattl.tar.xz
+Source102:      precattl.doc.tar.xz
 
 %description -n texlive-precattl
 Allow users to write code that contains tokens with unusual
@@ -11169,9 +11221,9 @@ Suggests:       texlive-prelim2e-doc >= %{texlive_version}
 Provides:       tex(prelim2e.sty)
 Requires:       tex(scrtime.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source101:      prelim2e.tar.xz
-Source102:      prelim2e.doc.tar.xz
+# from 20250308
+Source103:      prelim2e.tar.xz
+Source104:      prelim2e.doc.tar.xz
 
 %description -n texlive-prelim2e
 Puts text below the normal page content (the default text marks
@@ -11250,9 +11302,9 @@ Provides:       tex(figcaps.sty)
 Provides:       tex(fullpage.sty)
 Provides:       tex(sublabel.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source103:      preprint.tar.xz
-Source104:      preprint.doc.tar.xz
+# from 20250308
+Source105:      preprint.tar.xz
+Source106:      preprint.doc.tar.xz
 
 %description -n texlive-preprint
 The bundle comprises: authblk, which permits footnote style
@@ -11343,9 +11395,9 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source105:      prerex.tar.xz
-Source106:      prerex.doc.tar.xz
+# from 20250308
+Source107:      prerex.tar.xz
+Source108:      prerex.doc.tar.xz
 
 %description -n texlive-prerex
 This package consists of prerex.sty, a LaTeX package for
@@ -11439,9 +11491,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-present-doc >= %{texlive_version}
 Provides:       tex(present.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source107:      present.tar.xz
-Source108:      present.doc.tar.xz
+# from 20250308
+Source109:      present.tar.xz
+Source110:      present.doc.tar.xz
 
 %description -n texlive-present
 The package offers a collection of simple macros for preparing
@@ -11539,9 +11591,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source109:      pressrelease.tar.xz
-Source110:      pressrelease.doc.tar.xz
+# from 20250308
+Source111:      pressrelease.tar.xz
+Source112:      pressrelease.doc.tar.xz
 
 %description -n texlive-pressrelease
 A configurable class for writing press releases.
@@ -11628,9 +11680,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-prettyref-doc >= %{texlive_version}
 Provides:       tex(prettyref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source111:      prettyref.tar.xz
-Source112:      prettyref.doc.tar.xz
+# from 20250308
+Source113:      prettyref.tar.xz
+Source114:      prettyref.doc.tar.xz
 
 %description -n texlive-prettyref
 Prettyref provides a command \newrefformat, which specifies the
@@ -11715,10 +11767,10 @@ Provides:       tex(prettytok.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(precattl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source113:      prettytok.tar.xz
-Source114:      prettytok.doc.tar.xz
-Source115:      prettytok_pyatusrbin.dif
+# from 20250308
+Source115:      prettytok.tar.xz
+Source116:      prettytok.doc.tar.xz
+Source117:      prettytok_pyatusrbin.dif
 
 %description -n texlive-prettytok
 Pretty-print token lists to HTML file for debugging purposes.
@@ -11768,7 +11820,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/prettytok/prettytok.sty
 
 %package -n texlive-preview
-Version:        %{texlive_version}.%{texlive_noarch}.13.3svn69470
+Version:        %{texlive_version}.%{texlive_noarch}.14.0.6svn71662
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Extract bits of a LaTeX source for output
@@ -11807,9 +11859,9 @@ Provides:       tex(prtightpage.def)
 Provides:       tex(prtracingall.def)
 Requires:       tex(luatex85.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source116:      preview.tar.xz
-Source117:      preview.doc.tar.xz
+# from 20250308
+Source118:      preview.tar.xz
+Source119:      preview.doc.tar.xz
 
 %description -n texlive-preview
 The package is a free-standing part of the preview-latex
@@ -11819,7 +11871,7 @@ reasonably be expected to have other uses, as in html
 translators, etc.
 
 %package -n texlive-preview-doc
-Version:        %{texlive_version}.%{texlive_noarch}.13.3svn69470
+Version:        %{texlive_version}.%{texlive_noarch}.14.0.6svn71662
 Release:        0
 Summary:        Documentation for texlive-preview
 License:        GPL-2.0-or-later
@@ -11893,9 +11945,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-prftree-doc >= %{texlive_version}
 Provides:       tex(prftree.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source118:      prftree.tar.xz
-Source119:      prftree.doc.tar.xz
+# from 20250308
+Source120:      prftree.tar.xz
+Source121:      prftree.doc.tar.xz
 
 %description -n texlive-prftree
 A package to typeset proof trees for natural deduction calculi,
@@ -11939,7 +11991,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/prftree/prftree.sty
 
 %package -n texlive-principia
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn66625
+Version:        %{texlive_version}.%{texlive_noarch}.3.2svn73662
 Release:        0
 License:        LPPL-1.0
 Summary:        Notations for typesetting the "Principia Mathematica"
@@ -11972,9 +12024,9 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(pifont.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source120:      principia.tar.xz
-Source121:      principia.doc.tar.xz
+# from 20250308
+Source122:      principia.tar.xz
+Source123:      principia.doc.tar.xz
 
 %description -n texlive-principia
 This package supports typesetting the Peanese notation in
@@ -11982,7 +12034,7 @@ Volumes I-III of Whitehead and Russell's 1910 "Principia
 Mathematica".
 
 %package -n texlive-principia-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn66625
+Version:        %{texlive_version}.%{texlive_noarch}.3.2svn73662
 Release:        0
 Summary:        Documentation for texlive-principia
 License:        LPPL-1.0
@@ -12011,8 +12063,8 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-principia-doc
-%{_texmfdistdir}/doc/latex/principia/List_of_Definitions.pdf
-%{_texmfdistdir}/doc/latex/principia/List_of_Definitions.tex
+%{_texmfdistdir}/doc/latex/principia/List-of-Definitions.pdf
+%{_texmfdistdir}/doc/latex/principia/List-of-Definitions.tex
 %{_texmfdistdir}/doc/latex/principia/README
 %{_texmfdistdir}/doc/latex/principia/principia.pdf
 %{_texmfdistdir}/doc/latex/principia/principia.tex
@@ -12050,9 +12102,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-printlen-doc >= %{texlive_version}
 Provides:       tex(printlen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source122:      printlen.tar.xz
-Source123:      printlen.doc.tar.xz
+# from 20250308
+Source124:      printlen.tar.xz
+Source125:      printlen.doc.tar.xz
 
 %description -n texlive-printlen
 \printlength{length} prints the value of a LaTeX length in the
@@ -12100,6 +12152,88 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-printlen
 %{_texmfdistdir}/tex/latex/printlen/printlen.sty
 
+%package -n texlive-prisma-flow-diagram
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn73530
+Release:        0
+License:        LPPL-1.0
+Summary:        This package provides an abstraction for creating PRISMA 2009 flow diagrams in LaTeX
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-prisma-flow-diagram-doc >= %{texlive_version}
+Provides:       tex(prisma-flow-diagram.sty)
+Requires:       tex(float.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source126:      prisma-flow-diagram.tar.xz
+Source127:      prisma-flow-diagram.doc.tar.xz
+
+%description -n texlive-prisma-flow-diagram
+This package provides an abstraction for creating PRISMA 2009
+flow diagrams in LaTeX. It simplifies the process of building
+these diagrams by providing intuitive commands while
+maintaining full compatibility with TikZ.
+
+%package -n texlive-prisma-flow-diagram-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn73530
+Release:        0
+Summary:        Documentation for texlive-prisma-flow-diagram
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-prisma-flow-diagram and texlive-alldocumentation)
+
+%description -n texlive-prisma-flow-diagram-doc
+This package includes the documentation for texlive-prisma-flow-diagram
+
+%post -n texlive-prisma-flow-diagram
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-prisma-flow-diagram
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-prisma-flow-diagram
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-prisma-flow-diagram-doc
+%{_texmfdistdir}/doc/latex/prisma-flow-diagram/CITATION.cff
+%{_texmfdistdir}/doc/latex/prisma-flow-diagram/LICENSE
+%{_texmfdistdir}/doc/latex/prisma-flow-diagram/README.md
+%{_texmfdistdir}/doc/latex/prisma-flow-diagram/example.png
+%{_texmfdistdir}/doc/latex/prisma-flow-diagram/example.tex
+
+%files -n texlive-prisma-flow-diagram
+%{_texmfdistdir}/tex/latex/prisma-flow-diagram/prisma-flow-diagram.sty
+
 %package -n texlive-proba
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
 Release:        0
@@ -12131,9 +12265,9 @@ Suggests:       texlive-proba-doc >= %{texlive_version}
 Provides:       tex(proba.sty)
 Requires:       tex(amsfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source124:      proba.tar.xz
-Source125:      proba.doc.tar.xz
+# from 20250308
+Source128:      proba.tar.xz
+Source129:      proba.doc.tar.xz
 
 %description -n texlive-proba
 This package includes some of the most often used commands in
@@ -12212,9 +12346,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source126:      probsoln.tar.xz
-Source127:      probsoln.doc.tar.xz
+# from 20250308
+Source130:      probsoln.tar.xz
+Source131:      probsoln.doc.tar.xz
 
 %description -n texlive-probsoln
 The package is designed for lecturers who have to generate new
@@ -12302,7 +12436,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/probsoln/probsoln.sty
 
 %package -n texlive-prociagssymp
-Version:        %{texlive_version}.%{texlive_noarch}.svn63242
+Version:        %{texlive_version}.%{texlive_noarch}.svn70888
 Release:        0
 License:        LPPL-1.0
 Summary:        Macros for IAG symposium papers
@@ -12331,9 +12465,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-prociagssymp-doc >= %{texlive_version}
 Provides:       tex(procIAGssymp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source128:      prociagssymp.tar.xz
-Source129:      prociagssymp.doc.tar.xz
+# from 20250308
+Source132:      prociagssymp.tar.xz
+Source133:      prociagssymp.doc.tar.xz
 
 %description -n texlive-prociagssymp
 This package provides (re-)definitions of some LaTeX commands
@@ -12342,7 +12476,7 @@ of the proceedings of symposia sponsored by the 'International
 Association of Geodesy (IAG)' published by Springer-Verlag.
 
 %package -n texlive-prociagssymp-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn63242
+Version:        %{texlive_version}.%{texlive_noarch}.svn70888
 Release:        0
 Summary:        Documentation for texlive-prociagssymp
 License:        LPPL-1.0
@@ -12372,8 +12506,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-prociagssymp-doc
 %{_texmfdistdir}/doc/latex/prociagssymp/README.txt
-%{_texmfdistdir}/doc/latex/prociagssymp/TestprocIAGssymp.pdf
-%{_texmfdistdir}/doc/latex/prociagssymp/TestprocIAGssymp.tex
+%{_texmfdistdir}/doc/latex/prociagssymp/TESTprocIAGssymp.tex
+%{_texmfdistdir}/doc/latex/prociagssymp/procIAGssymp.pdf
 
 %files -n texlive-prociagssymp
 %{_texmfdistdir}/tex/latex/prociagssymp/procIAGssymp.sty
@@ -12422,9 +12556,9 @@ Provides:       tex(prodint.map)
 Provides:       tex(prodint.sty)
 Provides:       tex(prodint.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source130:      prodint.tar.xz
-Source131:      prodint.doc.tar.xz
+# from 20250308
+Source134:      prodint.tar.xz
+Source135:      prodint.doc.tar.xz
 
 %description -n texlive-prodint
 Product integrals are to products, as integrals are to sums.
@@ -12539,9 +12673,9 @@ Provides:       tex(productbox.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source132:      productbox.tar.xz
-Source133:      productbox.doc.tar.xz
+# from 20250308
+Source136:      productbox.tar.xz
+Source137:      productbox.doc.tar.xz
 
 %description -n texlive-productbox
 The package enables typesetting of a three-dimensional product
@@ -12590,7 +12724,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/productbox/productbox.sty
 
 %package -n texlive-profcollege
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_z_zsvn69539
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_a_jsvn72198
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX package for French maths teachers in college
@@ -12618,6 +12752,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-profcollege-doc >= %{texlive_version}
 Provides:       tex(PfCAllumettes.tex)
+Provides:       tex(PfCArbreCalcul.tex)
+Provides:       tex(PfCArbreChiffre.tex)
+Provides:       tex(PfCAssemblagesSolides.tex)
 Provides:       tex(PfCAutomatismes.tex)
 Provides:       tex(PfCAutonomie.tex)
 Provides:       tex(PfCBarreNiveaux.tex)
@@ -12629,8 +12766,8 @@ Provides:       tex(PfCCAN.tex)
 Provides:       tex(PfCCafrique.dat)
 Provides:       tex(PfCCalculatrice.tex)
 Provides:       tex(PfCCalculsCroises.tex)
+Provides:       tex(PfCCalculsDetailles.tex)
 Provides:       tex(PfCCalculsFractions.tex)
-Provides:       tex(PfCCalculsFractionsoldv1.tex)
 Provides:       tex(PfCCalisson.tex)
 Provides:       tex(PfCCameriquecentrale.dat)
 Provides:       tex(PfCCameriquenord.dat)
@@ -12642,6 +12779,7 @@ Provides:       tex(PfCCasia.dat)
 Provides:       tex(PfCCasie.dat)
 Provides:       tex(PfCCcaraibes.dat)
 Provides:       tex(PfCCeurope.dat)
+Provides:       tex(PfCCheque.tex)
 Provides:       tex(PfCCible.tex)
 Provides:       tex(PfCCibleQOp.tex)
 Provides:       tex(PfCColorilude.tex)
@@ -12661,6 +12799,7 @@ Provides:       tex(PfCDiagrammeRadar.tex)
 Provides:       tex(PfCDistributivite.tex)
 Provides:       tex(PfCDobble.tex)
 Provides:       tex(PfCDomino.tex)
+Provides:       tex(PfCDontCountDots.tex)
 Provides:       tex(PfCEcrireunQCM.tex)
 Provides:       tex(PfCEcritureLettres.tex)
 Provides:       tex(PfCEcritureUnites.tex)
@@ -12690,6 +12829,7 @@ Provides:       tex(PfCGrimuku.tex)
 Provides:       tex(PfCHiddenMessage.tex)
 Provides:       tex(PfCHorloge.tex)
 Provides:       tex(PfCIle.dat)
+Provides:       tex(PfCInfixRPN.sty)
 Provides:       tex(PfCJeton.tex)
 Provides:       tex(PfCJeuRangement.tex)
 Provides:       tex(PfCKakurasu.tex)
@@ -12722,6 +12862,7 @@ Provides:       tex(PfCPavage.tex)
 Provides:       tex(PfCPavageAvecMotifImage.tex)
 Provides:       tex(PfCPixelArt.tex)
 Provides:       tex(PfCPourcentage.tex)
+Provides:       tex(PfCProbaFrequence.tex)
 Provides:       tex(PfCProbabilites.tex)
 Provides:       tex(PfCProgrammeCalcul.tex)
 Provides:       tex(PfCPropor.tex)
@@ -12738,6 +12879,7 @@ Provides:       tex(PfCRLE.tex)
 Provides:       tex(PfCRangementNombres.tex)
 Provides:       tex(PfCRapido.tex)
 Provides:       tex(PfCRappelsFormules.tex)
+Provides:       tex(PfCRecyclage.tex)
 Provides:       tex(PfCReperage.tex)
 Provides:       tex(PfCRepresentationGraphique.tex)
 Provides:       tex(PfCRepresenterEntier.tex)
@@ -12746,7 +12888,6 @@ Provides:       tex(PfCRepresenterTableur.tex)
 Provides:       tex(PfCReseauxSociaux.tex)
 Provides:       tex(PfCResoudreEquation.tex)
 Provides:       tex(PfCRondeInfernale.tex)
-Provides:       tex(PfCRondeInfernaleold.tex)
 Provides:       tex(PfCRose.tex)
 Provides:       tex(PfCScratch.tex)
 Provides:       tex(PfCSerpent.tex)
@@ -12756,14 +12897,18 @@ Provides:       tex(PfCSolides.tex)
 Provides:       tex(PfCSommeAngles.tex)
 Provides:       tex(PfCSquaro.tex)
 Provides:       tex(PfCStatistiques.tex)
+Provides:       tex(PfCTableauDoubleEntree.tex)
 Provides:       tex(PfCTableauxUnites.tex)
 Provides:       tex(PfCTablesOperations.tex)
 Provides:       tex(PfCTectonic.tex)
 Provides:       tex(PfCThales.tex)
+Provides:       tex(PfCTicketCaisse.tex)
 Provides:       tex(PfCTortueBase.tex)
 Provides:       tex(PfCTrigonometrie.tex)
 Provides:       tex(PfCTrio.tex)
 Provides:       tex(PfCTriominos.tex)
+Provides:       tex(PfCUrneProba.tex)
+Provides:       tex(PfCVisualisationMulDeci.tex)
 Provides:       tex(PfCVueCubes.tex)
 Provides:       tex(PfCYohaku.tex)
 Provides:       tex(PfCafganistan.dat)
@@ -12963,7 +13108,6 @@ Provides:       tex(ProfCollege.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(cancel.sty)
 Requires:       tex(datatool.sty)
-Requires:       tex(environ.sty)
 Requires:       tex(fmtcount.sty)
 Requires:       tex(fontawesome5.sty)
 Requires:       tex(gmp.sty)
@@ -12978,26 +13122,23 @@ Requires:       tex(mathtools.sty)
 Requires:       tex(modulus.sty)
 Requires:       tex(multicol.sty)
 Requires:       tex(multido.sty)
-Requires:       tex(multirow.sty)
 Requires:       tex(nicematrix.sty)
 Requires:       tex(pifont.sty)
 Requires:       tex(simplekv.sty)
 Requires:       tex(siunitx.sty)
 Requires:       tex(stackengine.sty)
-Requires:       tex(suffix.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xcolor.sty)
-Requires:       tex(xfp.sty)
 Requires:       tex(xintexpr.sty)
 Requires:       tex(xinttools.sty)
 Requires:       tex(xlop.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source134:      profcollege.tar.xz
-Source135:      profcollege.doc.tar.xz
+# from 20250308
+Source138:      profcollege.tar.xz
+Source139:      profcollege.doc.tar.xz
 
 %description -n texlive-profcollege
 This package provides some commands to help French mathematics
@@ -13009,7 +13150,7 @@ write the entire calculation of AC with cosine, ... and some
 others.
 
 %package -n texlive-profcollege-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_z_zsvn69539
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_a_jsvn72198
 Release:        0
 Summary:        Documentation for texlive-profcollege
 License:        LPPL-1.0
@@ -13040,9 +13181,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-profcollege-doc
 %{_texmfdistdir}/doc/latex/profcollege/PfCLogoNumberHive.png
-%{_texmfdistdir}/doc/latex/profcollege/ProfCollege-doc.pdf
-%{_texmfdistdir}/doc/latex/profcollege/ProfCollege-doc.zip
 %{_texmfdistdir}/doc/latex/profcollege/README
+%{_texmfdistdir}/doc/latex/profcollege/profcollege-doc.pdf
+%{_texmfdistdir}/doc/latex/profcollege/profcollege-doc.zip
 
 %files -n texlive-profcollege
 %{_texmfdistdir}/metapost/profcollege/PfCAfficheur.mp
@@ -13071,6 +13212,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/profcollege/PfCPseudo.mp
 %{_texmfdistdir}/metapost/profcollege/PfCScratch.mp
 %{_texmfdistdir}/metapost/profcollege/PfCScratchpdf.mp
+%{_texmfdistdir}/metapost/profcollege/PfCSketch.mp
 %{_texmfdistdir}/metapost/profcollege/PfCSolid.mp
 %{_texmfdistdir}/metapost/profcollege/PfCSvgnames.mp
 %{_texmfdistdir}/metapost/profcollege/PfCTurtleTestRemplis.mp
@@ -13268,6 +13410,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/profcollege/PfCzambie.dat
 %{_texmfdistdir}/metapost/profcollege/PfCzimbabwe.dat
 %{_texmfdistdir}/tex/latex/profcollege/PfCAllumettes.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCArbreCalcul.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCArbreChiffre.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCAssemblagesSolides.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCAutomatismes.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCAutonomie.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCBarreNiveaux.tex
@@ -13278,12 +13423,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCCAN.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCCalculatrice.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCCalculsCroises.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCCalculsDetailles.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCCalculsFractions.tex
-%{_texmfdistdir}/tex/latex/profcollege/PfCCalculsFractionsoldv1.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCCalisson.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCCartesJeux.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCCartesMentales.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCCartographie.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCCheque.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCCible.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCCibleQOp.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCColorilude.tex
@@ -13303,6 +13449,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCDistributivite.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCDobble.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCDomino.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCDontCountDots.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCEcrireunQCM.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCEcritureLettres.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCEcritureUnites.tex
@@ -13331,6 +13478,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCGrimuku.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCHiddenMessage.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCHorloge.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCInfixRPN.sty
 %{_texmfdistdir}/tex/latex/profcollege/PfCJeton.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCJeuRangement.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCKakurasu.tex
@@ -13363,6 +13511,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCPavageAvecMotifImage.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCPixelArt.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCPourcentage.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCProbaFrequence.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCProbabilites.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCProgrammeCalcul.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCPropor.tex
@@ -13379,6 +13528,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCRangementNombres.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCRapido.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCRappelsFormules.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCRecyclage.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCReperage.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCRepresentationGraphique.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCRepresenterEntier.tex
@@ -13387,7 +13537,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCReseauxSociaux.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCResoudreEquation.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCRondeInfernale.tex
-%{_texmfdistdir}/tex/latex/profcollege/PfCRondeInfernaleold.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCRose.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCScratch.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCSerpent.tex
@@ -13397,14 +13546,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCSommeAngles.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCSquaro.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCStatistiques.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCTableauDoubleEntree.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCTableauxUnites.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCTablesOperations.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCTectonic.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCThales.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCTicketCaisse.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCTortueBase.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCTrigonometrie.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCTrio.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCTriominos.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCUrneProba.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCVisualisationMulDeci.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCVueCubes.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCYohaku.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCdobble.lua
@@ -13445,9 +13598,9 @@ Requires:       tex(pgf.sty)
 Requires:       tex(simplekv.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source136:      proflabo.tar.xz
-Source137:      proflabo.doc.tar.xz
+# from 20250308
+Source140:      proflabo.tar.xz
+Source141:      proflabo.doc.tar.xz
 
 %description -n texlive-proflabo
 This package was developed to help French chemistry teachers to
@@ -13491,7 +13644,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/proflabo/ProfLabo.sty
 
 %package -n texlive-proflycee
-Version:        %{texlive_version}.%{texlive_noarch}.3.02fsvn70510
+Version:        %{texlive_version}.%{texlive_noarch}.3.11asvn73852
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX package for French maths teachers in high school
@@ -13518,13 +13671,17 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-proflycee-doc >= %{texlive_version}
+Provides:       tex(ProfLycee-Light.sty)
 Provides:       tex(ProfLycee.sty)
 Provides:       tex(proflycee-tools-aleatoire.tex)
 Provides:       tex(proflycee-tools-analyse.tex)
 Provides:       tex(proflycee-tools-arithm.tex)
+Provides:       tex(proflycee-tools-cliparts.tex)
+Provides:       tex(proflycee-tools-competences.tex)
 Provides:       tex(proflycee-tools-complexes.tex)
 Provides:       tex(proflycee-tools-ecritures.tex)
 Provides:       tex(proflycee-tools-espace.tex)
+Provides:       tex(proflycee-tools-exams.tex)
 Provides:       tex(proflycee-tools-geom.tex)
 Provides:       tex(proflycee-tools-graphiques.tex)
 Provides:       tex(proflycee-tools-listings.tex)
@@ -13544,7 +13701,6 @@ Requires:       tex(iftex.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(listofitems.sty)
 Requires:       tex(mathtools.sty)
-Requires:       tex(minted.sty)
 Requires:       tex(nicefrac.sty)
 Requires:       tex(pgf.sty)
 Requires:       tex(pgffor.sty)
@@ -13564,20 +13720,21 @@ Requires:       tex(xinttools.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source138:      proflycee.tar.xz
-Source139:      proflycee.doc.tar.xz
+# from 20250308
+Source142:      proflycee.tar.xz
+Source143:      proflycee.doc.tar.xz
 
 %description -n texlive-proflycee
 This package provides some commands to help French mathematics
-teachers for 15-18 years olds, for example: \SplineTikz to
-create splines with "derivative control";
-\CalculFormelParametres and \CalculFormelLigne in order to
-create an xcas-windows-like; \CodePythonLstFichier to create
-code presentation and code execution with pythontex.
+teachers for 15-18 years olds, for example: solve equations to
+approximation ; calculate an approximate value of an integral ;
+present Python code or pseudocode, a Python execution console ;
+simplify calculations in fractional form, simplify roots ;
+display and use a trigonometric circle ; display a small
+diagram for the sign of an affine function or a trinomial ; ...
 
 %package -n texlive-proflycee-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.02fsvn70510
+Version:        %{texlive_version}.%{texlive_noarch}.3.11asvn73852
 Release:        0
 Summary:        Documentation for texlive-proflycee
 License:        LPPL-1.0
@@ -13608,23 +13765,41 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-proflycee-doc
 %{_texmfdistdir}/doc/latex/proflycee/ProfLycee-doc.pdf
-%{_texmfdistdir}/doc/latex/proflycee/ProfLycee-doc.tex
 %{_texmfdistdir}/doc/latex/proflycee/ProfLycee-docctan.zip
 %{_texmfdistdir}/doc/latex/proflycee/ProfLycee-exemples-pyluatex.pdf
-%{_texmfdistdir}/doc/latex/proflycee/ProfLycee-exemples-pyluatex.tex
 %{_texmfdistdir}/doc/latex/proflycee/ProfLycee-exemples-pythontex.pdf
-%{_texmfdistdir}/doc/latex/proflycee/ProfLycee-exemples-pythontex.tex
 %{_texmfdistdir}/doc/latex/proflycee/README.md
 
 %files -n texlive-proflycee
 %{_texmfdistdir}/metapost/proflycee/PfLEspace.mp
+%{_texmfdistdir}/tex/latex/proflycee/ProfLycee-Light.sty
 %{_texmfdistdir}/tex/latex/proflycee/ProfLycee.sty
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-bronze-cup.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-bronze-medal-flat.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-bronze-medal.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-checked.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-crossed.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-gold-cup.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-gold-medal-flat.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-gold-medal.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-mouse-center.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-mouse-left.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-mouse-right.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-mouse.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-notok.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-ok.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-silver-cup.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-silver-medal-flat.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-silver-medal.pdf
 %{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-aleatoire.tex
 %{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-analyse.tex
 %{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-arithm.tex
+%{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-cliparts.tex
+%{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-competences.tex
 %{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-complexes.tex
 %{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-ecritures.tex
 %{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-espace.tex
+%{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-exams.tex
 %{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-geom.tex
 %{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-graphiques.tex
 %{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-listings.tex
@@ -13638,7 +13813,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-trigo.tex
 
 %package -n texlive-profmaquette
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.88svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_osvn73826
 Release:        0
 License:        LPPL-1.0
 Summary:        Use exercises in different types of documents
@@ -13669,26 +13844,31 @@ Provides:       tex(ProfMaquette.sty)
 Requires:       tex(array.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(datatool.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(fontawesome5.sty)
 Requires:       tex(listofitems.sty)
 Requires:       tex(modulus.sty)
+Requires:       tex(pgfmorepages.sty)
 Requires:       tex(ragged2e.sty)
 Requires:       tex(simplekv.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(varwidth.sty)
 Requires:       tex(verbatim.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xintexpr.sty)
 Requires:       tex(xinttools.sty)
 Requires:       tex(xlop.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source140:      profmaquette.tar.xz
-Source141:      profmaquette.doc.tar.xz
+# from 20250308
+Source144:      profmaquette.tar.xz
+Source145:      profmaquette.doc.tar.xz
 
 %description -n texlive-profmaquette
 This LaTeX package can help French maths teachers to put one
 and the same exercise into different sorts of documents.
 
 %package -n texlive-profmaquette-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.88svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_osvn73826
 Release:        0
 Summary:        Documentation for texlive-profmaquette
 License:        LPPL-1.0
@@ -13718,24 +13898,15 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-profmaquette-doc
-%{_texmfdistdir}/doc/latex/profmaquette/Attention-1.pdf
-%{_texmfdistdir}/doc/latex/profmaquette/Attention-2.pdf
-%{_texmfdistdir}/doc/latex/profmaquette/ProfMaquette-doc.pdf
-%{_texmfdistdir}/doc/latex/profmaquette/ProfMaquette-doc.tex
 %{_texmfdistdir}/doc/latex/profmaquette/README
-%{_texmfdistdir}/doc/latex/profmaquette/TestCAN.pdf
-%{_texmfdistdir}/doc/latex/profmaquette/TestCAN.tex
-%{_texmfdistdir}/doc/latex/profmaquette/TestCANComplement.pdf
-%{_texmfdistdir}/doc/latex/profmaquette/TestCANComplement.tex
-%{_texmfdistdir}/doc/latex/profmaquette/TestParcoursPerso.pdf
-%{_texmfdistdir}/doc/latex/profmaquette/TestParcoursPerso.tex
-%{_texmfdistdir}/doc/latex/profmaquette/pg_0002-crop.pdf
+%{_texmfdistdir}/doc/latex/profmaquette/profmaquette-doc.pdf
+%{_texmfdistdir}/doc/latex/profmaquette/profmaquette-doc.zip
 
 %files -n texlive-profmaquette
 %{_texmfdistdir}/tex/latex/profmaquette/ProfMaquette.sty
 
 %package -n texlive-profsio
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.1svn70198
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn73718
 Release:        0
 License:        LPPL-1.0
 Summary:        Commands (with TikZ) to work with French "BTS SIO" maths themes
@@ -13781,16 +13952,16 @@ Requires:       tex(xintexpr.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source142:      profsio.tar.xz
-Source143:      profsio.doc.tar.xz
+# from 20250308
+Source146:      profsio.tar.xz
+Source147:      profsio.doc.tar.xz
 
 %description -n texlive-profsio
 This package provides some commands (in French) to work with:
 tables of Karnaugh ; MPM graphs ; simple graphs.
 
 %package -n texlive-profsio-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.1svn70198
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn73718
 Release:        0
 Summary:        Documentation for texlive-profsio
 License:        LPPL-1.0
@@ -13820,6 +13991,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-profsio-doc
+%{_texmfdistdir}/doc/latex/profsio/ProfSio-doc-annexe71.pdf
+%{_texmfdistdir}/doc/latex/profsio/ProfSio-doc-annexe71.tex
+%{_texmfdistdir}/doc/latex/profsio/ProfSio-doc-annexe72.pdf
+%{_texmfdistdir}/doc/latex/profsio/ProfSio-doc-annexe72.tex
+%{_texmfdistdir}/doc/latex/profsio/ProfSio-doc-annexe73.pdf
+%{_texmfdistdir}/doc/latex/profsio/ProfSio-doc-annexe73.tex
 %{_texmfdistdir}/doc/latex/profsio/ProfSio-doc-fr.pdf
 %{_texmfdistdir}/doc/latex/profsio/ProfSio-doc-fr.tex
 %{_texmfdistdir}/doc/latex/profsio/README.md
@@ -13857,9 +14034,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-program-doc >= %{texlive_version}
 Provides:       tex(program.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source144:      program.tar.xz
-Source145:      program.doc.tar.xz
+# from 20250308
+Source148:      program.tar.xz
+Source149:      program.doc.tar.xz
 
 %description -n texlive-program
 The main offering is a program environment; a programbox
@@ -13936,9 +14113,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-progress-doc >= %{texlive_version}
 Provides:       tex(progress.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source146:      progress.tar.xz
-Source147:      progress.doc.tar.xz
+# from 20250308
+Source150:      progress.tar.xz
+Source151:      progress.doc.tar.xz
 
 %description -n texlive-progress
 Progress is a package which. when compiling TeX and LaTeX
@@ -14019,9 +14196,9 @@ Requires:       tex(kvoptions.sty)
 Requires:       tex(kvsetkeys.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source148:      progressbar.tar.xz
-Source149:      progressbar.doc.tar.xz
+# from 20250308
+Source152:      progressbar.tar.xz
+Source153:      progressbar.doc.tar.xz
 
 %description -n texlive-progressbar
 This package allows you to easily visualize shares of total
@@ -14069,7 +14246,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/progressbar/progressbar.sty
 
 %package -n texlive-projlib
-Version:        %{texlive_version}.%{texlive_noarch}.svn70305
+Version:        %{texlive_version}.%{texlive_noarch}.svn72789
 Release:        0
 License:        LPPL-1.0
 Summary:        A collection of facilitative tools
@@ -14149,9 +14326,9 @@ Requires:       tex(unicode-math.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(zi4.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source150:      projlib.tar.xz
-Source151:      projlib.doc.tar.xz
+# from 20250308
+Source154:      projlib.tar.xz
+Source155:      projlib.doc.tar.xz
 
 %description -n texlive-projlib
 ProjLib is a collection of tools to help you write LaTeX
@@ -14161,7 +14338,7 @@ configure the appropriate multilingual settings. In addition, a
 series of auxiliary functionalities are introduced.
 
 %package -n texlive-projlib-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70305
+Version:        %{texlive_version}.%{texlive_noarch}.svn72789
 Release:        0
 Summary:        Documentation for texlive-projlib
 License:        LPPL-1.0
@@ -14211,6 +14388,89 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/projlib/projlib-theorem.sty
 %{_texmfdistdir}/tex/latex/projlib/projlib-titlepage.sty
 
+%package -n texlive-pronunciation
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn73701
+Release:        0
+License:        LPPL-1.0
+Summary:        American English Pronunciation
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-pronunciation-doc >= %{texlive_version}
+Provides:       tex(pronunciation.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(tipa.sty)
+Requires:       tex(xparse.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source156:      pronunciation.tar.xz
+Source157:      pronunciation.doc.tar.xz
+
+%description -n texlive-pronunciation
+This style file is designed for automatically typing phonetic
+symbols in American English. The system supports as many as
+21,082 English words all told. The main packages used in
+pronunciation.sty are ifthen, xparse and tipa.
+
+%package -n texlive-pronunciation-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn73701
+Release:        0
+Summary:        Documentation for texlive-pronunciation
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pronunciation and texlive-alldocumentation)
+Provides:       locale(texlive-pronunciation-doc:ja)
+
+%description -n texlive-pronunciation-doc
+This package includes the documentation for texlive-pronunciation
+
+%post -n texlive-pronunciation
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-pronunciation
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-pronunciation
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-pronunciation-doc
+%{_texmfdistdir}/doc/latex/pronunciation/README.txt
+%{_texmfdistdir}/doc/latex/pronunciation/pronunciation-en.pdf
+%{_texmfdistdir}/doc/latex/pronunciation/pronunciation-en.tex
+%{_texmfdistdir}/doc/latex/pronunciation/pronunciation-jp.pdf
+%{_texmfdistdir}/doc/latex/pronunciation/pronunciation-jp.tex
+
+%files -n texlive-pronunciation
+%{_texmfdistdir}/tex/latex/pronunciation/pronunciation.sty
+
 %package -n texlive-proof-at-the-end
 Version:        %{texlive_version}.%{texlive_noarch}.svn69602
 Release:        0
@@ -14249,9 +14509,9 @@ Requires:       tex(thm-restate.sty)
 Requires:       tex(thmtools.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source152:      proof-at-the-end.tar.xz
-Source153:      proof-at-the-end.doc.tar.xz
+# from 20250308
+Source158:      proof-at-the-end.tar.xz
+Source159:      proof-at-the-end.doc.tar.xz
 
 %description -n texlive-proof-at-the-end
 This package aims to provide a way to easily move proofs to the
@@ -14331,9 +14591,9 @@ Requires:       tex(setspace.sty)
 Requires:       tex(soul.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source154:      proofread.tar.xz
-Source155:      proofread.doc.tar.xz
+# from 20250308
+Source160:      proofread.tar.xz
+Source161:      proofread.doc.tar.xz
 
 %description -n texlive-proofread
 This package defines a few LaTeX commands that may be useful
@@ -14393,7 +14653,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/proofread/proofread.sty
 
 %package -n texlive-prooftrees
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8_svn_9582svn67399
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn72665
 Release:        0
 License:        LPPL-1.0
 Summary:        Forest-based proof trees (symbolic logic)
@@ -14423,13 +14683,12 @@ Suggests:       texlive-prooftrees-doc >= %{texlive_version}
 Provides:       tex(prooftrees.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(amstext.sty)
-Requires:       tex(etoolbox.sty)
 Requires:       tex(forest.sty)
 Requires:       tex(svn-prov.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source156:      prooftrees.tar.xz
-Source157:      prooftrees.doc.tar.xz
+# from 20250308
+Source162:      prooftrees.tar.xz
+Source163:      prooftrees.doc.tar.xz
 
 %description -n texlive-prooftrees
 The package supports drawing proof trees of the kind often used
@@ -14447,7 +14706,7 @@ hence, TikZ. The package requires version 2.0.2 of Forest for
 expected results and will not work with version 1.
 
 %package -n texlive-prooftrees-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8_svn_9582svn67399
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn72665
 Release:        0
 Summary:        Documentation for texlive-prooftrees
 License:        LPPL-1.0
@@ -14476,7 +14735,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-prooftrees-doc
-%{_texmfdistdir}/doc/latex/prooftrees/README
+%{_texmfdistdir}/doc/latex/prooftrees/README.md
 %{_texmfdistdir}/doc/latex/prooftrees/manifest.txt
 %{_texmfdistdir}/doc/latex/prooftrees/prooftrees.pdf
 %{_texmfdistdir}/doc/latex/prooftrees/prooftrees.tex
@@ -14516,9 +14775,9 @@ Suggests:       texlive-properties-doc >= %{texlive_version}
 Provides:       tex(properties.sty)
 Requires:       tex(datatool.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source158:      properties.tar.xz
-Source159:      properties.doc.tar.xz
+# from 20250308
+Source164:      properties.tar.xz
+Source165:      properties.doc.tar.xz
 
 %description -n texlive-properties
 The package loads properties (key, value) from a properties
@@ -14626,9 +14885,9 @@ Requires:       tex(wrapfig.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source160:      proposal.tar.xz
-Source161:      proposal.doc.tar.xz
+# from 20250308
+Source166:      proposal.tar.xz
+Source167:      proposal.doc.tar.xz
 
 %description -n texlive-proposal
 The process of preparing a collaborative proposal, to a major
@@ -14806,10 +15065,10 @@ Requires:       tex(semhelv.sty)
 Requires:       tex(seminar.cls)
 Requires:       tex(times.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source162:      prosper.tar.xz
-Source163:      prosper.doc.tar.xz
-Source164:      prosper_utf8.dif
+# from 20250308
+Source168:      prosper.tar.xz
+Source169:      prosper.doc.tar.xz
+Source170:      prosper_utf8.dif
 
 %description -n texlive-prosper
 Prosper is a LaTeX class for writing transparencies. It is
@@ -14982,9 +15241,9 @@ Suggests:       texlive-protex-doc >= %{texlive_version}
 Provides:       tex(AlProTex.sty)
 Provides:       tex(ProTex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source165:      protex.tar.xz
-Source166:      protex.doc.tar.xz
+# from 20250308
+Source171:      protex.tar.xz
+Source172:      protex.doc.tar.xz
 
 %description -n texlive-protex
 ProTeX is a simple but powerful literate programming tool,
@@ -15059,9 +15318,9 @@ Suggests:       texlive-protocol-doc >= %{texlive_version}
 Provides:       tex(protocol.cls)
 Requires:       tex(scrartcl.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source167:      protocol.tar.xz
-Source168:      protocol.doc.tar.xz
+# from 20250308
+Source173:      protocol.tar.xz
+Source174:      protocol.doc.tar.xz
 
 %description -n texlive-protocol
 The present version of the class supports German meeting
@@ -15108,7 +15367,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/protocol/protocol.cls
 
 %package -n texlive-prtec
-Version:        %{texlive_version}.%{texlive_noarch}.1.06svn51919
+Version:        %{texlive_version}.%{texlive_noarch}.1.07svn71883
 Release:        0
 License:        LPPL-1.0
 Summary:        A template for PRTEC conference papers
@@ -15149,11 +15408,8 @@ Requires:       tex(fnpos.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hologo.sty)
-Requires:       tex(hyperxmp.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
-Requires:       tex(inputenc.sty)
-Requires:       tex(kvoptions.sty)
-Requires:       tex(kvsetkeys.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(metalogo.sty)
 Requires:       tex(multicol.sty)
@@ -15162,16 +15418,14 @@ Requires:       tex(newtxmath.sty)
 Requires:       tex(newtxtext.sty)
 Requires:       tex(parskip.sty)
 Requires:       tex(subcaption.sty)
-Requires:       tex(textcase.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(xcoffins.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
-Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source169:      prtec.tar.xz
-Source170:      prtec.doc.tar.xz
+# from 20250308
+Source175:      prtec.tar.xz
+Source176:      prtec.doc.tar.xz
 
 %description -n texlive-prtec
 This package provides a LaTeX class, a BibTeX style, and a
@@ -15181,7 +15435,7 @@ are commented and should be self-explanatory. The package
 depends on newtx.
 
 %package -n texlive-prtec-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.06svn51919
+Version:        %{texlive_version}.%{texlive_noarch}.1.07svn71883
 Release:        0
 Summary:        Documentation for texlive-prtec
 License:        LPPL-1.0
@@ -15210,8 +15464,8 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-prtec-doc
-%{_texmfdistdir}/doc/latex/prtec/PRTEC19-template.pdf
-%{_texmfdistdir}/doc/latex/prtec/PRTEC19-template.tex
+%{_texmfdistdir}/doc/latex/prtec/PRTEC24-template.pdf
+%{_texmfdistdir}/doc/latex/prtec/PRTEC24-template.tex
 %{_texmfdistdir}/doc/latex/prtec/README.md
 %{_texmfdistdir}/doc/latex/prtec/prtec-sample.bib
 %{_texmfdistdir}/doc/latex/prtec/sample-figure.pdf
@@ -15256,9 +15510,9 @@ Requires:       tex(polski.sty)
 Requires:       tex(prelim2e.sty)
 Requires:       tex(report.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source171:      przechlewski-book.tar.xz
-Source172:      przechlewski-book.doc.tar.xz
+# from 20250308
+Source177:      przechlewski-book.tar.xz
+Source178:      przechlewski-book.doc.tar.xz
 
 %description -n texlive-przechlewski-book
 The bundle provides machine-readable copies of the examples
@@ -15376,9 +15630,9 @@ Requires:       perl(Getopt::Long)
 Requires:       perl(POSIX)
 #!BuildIgnore:  perl(POSIX)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source173:      ps2eps.tar.xz
-Source174:      ps2eps.doc.tar.xz
+# from 20250308
+Source179:      ps2eps.tar.xz
+Source180:      ps2eps.doc.tar.xz
 
 %description -n texlive-ps2eps
 Produce Encapsulated PostScript Files (EPS/EPSF) from a
@@ -15476,8 +15730,8 @@ Provides:       man(pfb2pfa.1)
 Provides:       man(pk2bm.1)
 Provides:       man(ps2pk.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source175:      ps2pk.doc.tar.xz
+# from 20250308
+Source181:      ps2pk.doc.tar.xz
 
 %description -n texlive-ps2pk
 Generates a PK file from an Adobe Type 1 font. PK fonts are (or
@@ -15543,9 +15797,9 @@ Requires:       tex(etex.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source176:      psbao.tar.xz
-Source177:      psbao.doc.tar.xz
+# from 20250308
+Source182:      psbao.tar.xz
+Source183:      psbao.doc.tar.xz
 
 %description -n texlive-psbao
 The package draws Bao diagrams in LaTeX. The package is a
@@ -15627,9 +15881,9 @@ Requires:       tex(pgfkeys.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source178:      pseudo.tar.xz
-Source179:      pseudo.doc.tar.xz
+# from 20250308
+Source184:      pseudo.tar.xz
+Source185:      pseudo.doc.tar.xz
 
 %description -n texlive-pseudo
 The package permits writing pseudocode without much fuss and
@@ -15722,9 +15976,9 @@ Provides:       tex(pseudocode.sty)
 Requires:       tex(fancybox.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source180:      pseudocode.tar.xz
-Source181:      pseudocode.doc.tar.xz
+# from 20250308
+Source186:      pseudocode.tar.xz
+Source187:      pseudocode.doc.tar.xz
 
 %description -n texlive-pseudocode
 This package provides the environment "pseudocode" for
@@ -15798,9 +16052,9 @@ Suggests:       texlive-psfrag-doc >= %{texlive_version}
 Provides:       tex(psfrag.sty)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source182:      psfrag.tar.xz
-Source183:      psfrag.doc.tar.xz
+# from 20250308
+Source188:      psfrag.tar.xz
+Source189:      psfrag.doc.tar.xz
 
 %description -n texlive-psfrag
 Allows LaTeX constructions (equations, picture environments,
@@ -15881,8 +16135,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source184:      psfrag-italian.doc.tar.xz
+# from 20250308
+Source190:      psfrag-italian.doc.tar.xz
 
 %description -n texlive-psfrag-italian
 This is a translation of the documentation that comes with the
@@ -15943,9 +16197,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(overpic.sty)
 Requires:       tex(psfrag.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source185:      psfragx.tar.xz
-Source186:      psfragx.doc.tar.xz
+# from 20250308
+Source191:      psfragx.tar.xz
+Source192:      psfragx.doc.tar.xz
 
 %description -n texlive-psfragx
 PSfragX offers a mechanism to embed \psfrag commands, as
@@ -16044,9 +16298,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source187:      psgo.tar.xz
-Source188:      psgo.doc.tar.xz
+# from 20250308
+Source193:      psgo.tar.xz
+Source194:      psgo.doc.tar.xz
 
 %description -n texlive-psgo
 The psgo package
@@ -16120,9 +16374,9 @@ Suggests:       texlive-psizzl-doc >= %{texlive_version}
 Provides:       tex(mypsizzl.tex)
 Provides:       tex(psizzl.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source189:      psizzl.tar.xz
-Source190:      psizzl.doc.tar.xz
+# from 20250308
+Source195:      psizzl.tar.xz
+Source196:      psizzl.doc.tar.xz
 
 %description -n texlive-psizzl
 PSIZZL is a TeX format for physics papers written at SLAC and
@@ -16219,8 +16473,8 @@ Provides:       tex(pcrr8tn.vf)
 Provides:       tex(pslatex.sty)
 Requires:       tex(psyr.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source191:      pslatex.tar.xz
+# from 20250308
+Source197:      pslatex.tar.xz
 
 %description -n texlive-pslatex
 A small package that makes LaTeX default to 'standard'
@@ -16418,9 +16672,9 @@ Provides:       tex(utopia.map)
 Provides:       tex(utopia.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source192:      psnfss.tar.xz
-Source193:      psnfss.doc.tar.xz
+# from 20250308
+Source198:      psnfss.tar.xz
+Source199:      psnfss.doc.tar.xz
 
 %description -n texlive-psnfss
 Font definition files, macros and font metrics for
@@ -16640,9 +16894,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pspicture-doc >= %{texlive_version}
 Provides:       tex(pspicture.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source194:      pspicture.tar.xz
-Source195:      pspicture.doc.tar.xz
+# from 20250308
+Source200:      pspicture.tar.xz
+Source201:      pspicture.doc.tar.xz
 
 %description -n texlive-pspicture
 A replacement for LaTeX's picture macros, that uses PostScript
@@ -16716,9 +16970,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pst-2dplot-doc >= %{texlive_version}
 Provides:       tex(pst-2dplot.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source196:      pst-2dplot.tar.xz
-Source197:      pst-2dplot.doc.tar.xz
+# from 20250308
+Source202:      pst-2dplot.tar.xz
+Source203:      pst-2dplot.doc.tar.xz
 
 %description -n texlive-pst-2dplot
 Pst-2dplot is a pstricks package that offers an easy-to-use and
@@ -16797,9 +17051,9 @@ Provides:       tex(pst-3d.sty)
 Provides:       tex(pst-3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source198:      pst-3d.tar.xz
-Source199:      pst-3d.doc.tar.xz
+# from 20250308
+Source204:      pst-3d.tar.xz
+Source205:      pst-3d.doc.tar.xz
 
 %description -n texlive-pst-3d
 The package provides basic macros that use PSTricks for
@@ -16883,9 +17137,9 @@ Requires:       tex(pst-node.sty)
 Requires:       tex(pst-plot.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source200:      pst-3dplot.tar.xz
-Source201:      pst-3dplot.doc.tar.xz
+# from 20250308
+Source206:      pst-3dplot.tar.xz
+Source207:      pst-3dplot.doc.tar.xz
 
 %description -n texlive-pst-3dplot
 A package using PSTricks to draw a large variety of graphs and
@@ -16967,9 +17221,9 @@ Provides:       tex(pst-abspos.sty)
 Provides:       tex(pst-abspos.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source202:      pst-abspos.tar.xz
-Source203:      pst-abspos.doc.tar.xz
+# from 20250308
+Source208:      pst-abspos.tar.xz
+Source209:      pst-abspos.doc.tar.xz
 
 %description -n texlive-pst-abspos
 The (PSTricks-related) package provides a command
@@ -17052,9 +17306,9 @@ Requires:       tex(pst-plot.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source204:      pst-am.tar.xz
-Source205:      pst-am.doc.tar.xz
+# from 20250308
+Source210:      pst-am.tar.xz
+Source211:      pst-am.doc.tar.xz
 
 %description -n texlive-pst-am
 The package allows the simulation of the modulated and
@@ -17135,9 +17389,9 @@ Provides:       tex(pst-antiprism.tex)
 Requires:       tex(pst-solides3d.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source206:      pst-antiprism.tar.xz
-Source207:      pst-antiprism.doc.tar.xz
+# from 20250308
+Source212:      pst-antiprism.tar.xz
+Source213:      pst-antiprism.doc.tar.xz
 
 %description -n texlive-pst-antiprism
 pst-antiprism is a PSTricks related package which draws an
@@ -17217,9 +17471,9 @@ Provides:       tex(pst-arrow.sty)
 Provides:       tex(pst-arrow.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source208:      pst-arrow.tar.xz
-Source209:      pst-arrow.doc.tar.xz
+# from 20250308
+Source214:      pst-arrow.tar.xz
+Source215:      pst-arrow.doc.tar.xz
 
 %description -n texlive-pst-arrow
 This package has all the code from the package pstricks-add
@@ -17298,9 +17552,9 @@ Provides:       tex(pst-asr.tex)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source210:      pst-asr.tar.xz
-Source211:      pst-asr.doc.tar.xz
+# from 20250308
+Source216:      pst-asr.tar.xz
+Source217:      pst-asr.doc.tar.xz
 
 %description -n texlive-pst-asr
 The package allows the user to typeset autosegmental
@@ -17378,9 +17632,9 @@ Provides:       tex(pst-bar.sty)
 Provides:       tex(pst-bar.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source212:      pst-bar.tar.xz
-Source213:      pst-bar.doc.tar.xz
+# from 20250308
+Source218:      pst-bar.tar.xz
+Source219:      pst-bar.doc.tar.xz
 
 %description -n texlive-pst-bar
 The package uses pstricks to draw bar charts from data stored
@@ -17462,9 +17716,9 @@ Provides:       tex(pst-barcode.sty)
 Provides:       tex(pst-barcode.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source214:      pst-barcode.tar.xz
-Source215:      pst-barcode.doc.tar.xz
+# from 20250308
+Source220:      pst-barcode.tar.xz
+Source221:      pst-barcode.doc.tar.xz
 
 %description -n texlive-pst-barcode
 The pst-barcode package allows printing of barcodes, in a huge
@@ -17730,9 +17984,9 @@ Provides:       tex(pst-bezier.tex)
 Requires:       tex(expl3.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source216:      pst-bezier.tar.xz
-Source217:      pst-bezier.doc.tar.xz
+# from 20250308
+Source222:      pst-bezier.tar.xz
+Source223:      pst-bezier.doc.tar.xz
 
 %description -n texlive-pst-bezier
 The package provides a macro \psbcurve for drawing a Bezier
@@ -17812,9 +18066,9 @@ Provides:       tex(pst-blur.sty)
 Provides:       tex(pst-blur.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source218:      pst-blur.tar.xz
-Source219:      pst-blur.doc.tar.xz
+# from 20250308
+Source224:      pst-blur.tar.xz
+Source225:      pst-blur.doc.tar.xz
 
 %description -n texlive-pst-blur
 Pst-blur is a package built for use with PSTricks. It provides
@@ -17892,9 +18146,9 @@ Provides:       tex(pst-bspline.sty)
 Provides:       tex(pst-bspline.tex)
 Requires:       tex(multido.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source220:      pst-bspline.tar.xz
-Source221:      pst-bspline.doc.tar.xz
+# from 20250308
+Source226:      pst-bspline.tar.xz
+Source227:      pst-bspline.doc.tar.xz
 
 %description -n texlive-pst-bspline
 The package draws uniform, cubic B-spline curves, open and
@@ -17975,9 +18229,9 @@ Requires:       tex(siunitx.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source222:      pst-calculate.tar.xz
-Source223:      pst-calculate.doc.tar.xz
+# from 20250308
+Source228:      pst-calculate.tar.xz
+Source229:      pst-calculate.doc.tar.xz
 
 %description -n texlive-pst-calculate
 This package provides an interface to the LaTeX3 floating point
@@ -18060,9 +18314,9 @@ Requires:       tex(pst-3d.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source224:      pst-calendar.tar.xz
-Source225:      pst-calendar.doc.tar.xz
+# from 20250308
+Source230:      pst-calendar.tar.xz
+Source231:      pst-calendar.doc.tar.xz
 
 %description -n texlive-pst-calendar
 The package uses pstricks and pst-3d to draw tabular calendars,
@@ -18142,9 +18396,9 @@ Provides:       tex(pst-cie.sty)
 Provides:       tex(pst-cie.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source226:      pst-cie.tar.xz
-Source227:      pst-cie.doc.tar.xz
+# from 20250308
+Source232:      pst-cie.tar.xz
+Source233:      pst-cie.doc.tar.xz
 
 %description -n texlive-pst-cie
 pst-cie is a PSTricks related package to show the different CIE
@@ -18193,7 +18447,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-cie/pst-cie.sty
 
 %package -n texlive-pst-circ
-Version:        %{texlive_version}.%{texlive_noarch}.2.19svn60464
+Version:        %{texlive_version}.%{texlive_noarch}.2.20svn72519
 Release:        0
 License:        LPPL-1.0
 Summary:        PSTricks package for drawing electric circuits
@@ -18224,9 +18478,9 @@ Provides:       tex(pst-circ.sty)
 Provides:       tex(pst-circ.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source228:      pst-circ.tar.xz
-Source229:      pst-circ.doc.tar.xz
+# from 20250308
+Source234:      pst-circ.tar.xz
+Source235:      pst-circ.doc.tar.xz
 
 %description -n texlive-pst-circ
 The package is built using PSTricks and in particular pst-node.
@@ -18238,7 +18492,7 @@ relieve the user of purely graphical considerations when
 expressing a circuit.
 
 %package -n texlive-pst-circ-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.19svn60464
+Version:        %{texlive_version}.%{texlive_noarch}.2.20svn72519
 Release:        0
 Summary:        Documentation for texlive-pst-circ
 License:        LPPL-1.0
@@ -18279,7 +18533,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-circ/pst-circ.sty
 
 %package -n texlive-pst-coil
-Version:        %{texlive_version}.%{texlive_noarch}.1.07svn62977
+Version:        %{texlive_version}.%{texlive_noarch}.1.08svn72030
 Release:        0
 License:        LPPL-1.0
 Summary:        A PSTricks package for coils, etcetera
@@ -18310,16 +18564,16 @@ Provides:       tex(pst-coil.sty)
 Provides:       tex(pst-coil.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source230:      pst-coil.tar.xz
-Source231:      pst-coil.doc.tar.xz
+# from 20250308
+Source236:      pst-coil.tar.xz
+Source237:      pst-coil.doc.tar.xz
 
 %description -n texlive-pst-coil
 Pst-coil is a PSTricks based package for coils and zigzags and
 for coil and zigzag node connections.
 
 %package -n texlive-pst-coil-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.07svn62977
+Version:        %{texlive_version}.%{texlive_noarch}.1.08svn72030
 Release:        0
 Summary:        Documentation for texlive-pst-coil
 License:        LPPL-1.0
@@ -18391,9 +18645,9 @@ Provides:       tex(pst-contourplot.sty)
 Provides:       tex(pst-contourplot.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source232:      pst-contourplot.tar.xz
-Source233:      pst-contourplot.doc.tar.xz
+# from 20250308
+Source238:      pst-contourplot.tar.xz
+Source239:      pst-contourplot.doc.tar.xz
 
 %description -n texlive-pst-contourplot
 This package allows to draw implicit functions "f(x,y) = 0"
@@ -18496,9 +18750,9 @@ Provides:       tex(pst-coxeterp.sty)
 Provides:       tex(pst-coxeterp.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source234:      pst-cox.tar.xz
-Source235:      pst-cox.doc.tar.xz
+# from 20250308
+Source240:      pst-cox.tar.xz
+Source241:      pst-cox.doc.tar.xz
 
 %description -n texlive-pst-cox
 Pst-cox is a PSTricks package for drawing 2-dimensional
@@ -18599,9 +18853,9 @@ Requires:       tex(multido.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source236:      pst-dart.tar.xz
-Source237:      pst-dart.doc.tar.xz
+# from 20250308
+Source242:      pst-dart.tar.xz
+Source243:      pst-dart.doc.tar.xz
 
 %description -n texlive-pst-dart
 pst-dart is a PSTricks related package and draws Dart Boards.
@@ -18677,9 +18931,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pst-dbicons-doc >= %{texlive_version}
 Provides:       tex(pst-dbicons.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source238:      pst-dbicons.tar.xz
-Source239:      pst-dbicons.doc.tar.xz
+# from 20250308
+Source244:      pst-dbicons.tar.xz
+Source245:      pst-dbicons.doc.tar.xz
 
 %description -n texlive-pst-dbicons
 The package provides some useful macros in the database area.
@@ -18729,7 +18983,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-dbicons/pst-dbicons.sty
 
 %package -n texlive-pst-diffraction
-Version:        %{texlive_version}.%{texlive_noarch}.2.03svn62977
+Version:        %{texlive_version}.%{texlive_noarch}.2.06asvn71819
 Release:        0
 License:        LPPL-1.0
 Summary:        Print diffraction patterns from various apertures
@@ -18762,9 +19016,9 @@ Requires:       tex(pst-3dplot.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source240:      pst-diffraction.tar.xz
-Source241:      pst-diffraction.doc.tar.xz
+# from 20250308
+Source246:      pst-diffraction.tar.xz
+Source247:      pst-diffraction.doc.tar.xz
 
 %description -n texlive-pst-diffraction
 The package enables the user to draw (using PSTricks) the
@@ -18779,14 +19033,13 @@ the wavelength of the light (the associated color will be
 calculated by the package).
 
 %package -n texlive-pst-diffraction-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.03svn62977
+Version:        %{texlive_version}.%{texlive_noarch}.2.06asvn71819
 Release:        0
 Summary:        Documentation for texlive-pst-diffraction
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Supplements:    (texlive-pst-diffraction and texlive-alldocumentation)
-Provides:       locale(texlive-pst-diffraction-doc:de;en;fr)
 
 %description -n texlive-pst-diffraction-doc
 This package includes the documentation for texlive-pst-diffraction
@@ -18812,12 +19065,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/pst-diffraction/Changes
 %{_texmfdistdir}/doc/generic/pst-diffraction/README
 %{_texmfdistdir}/doc/generic/pst-diffraction/pst-diffraction-doc.bib
-%{_texmfdistdir}/doc/generic/pst-diffraction/pst-diffraction-docDE.pdf
-%{_texmfdistdir}/doc/generic/pst-diffraction/pst-diffraction-docDE.tex
-%{_texmfdistdir}/doc/generic/pst-diffraction/pst-diffraction-docE.pdf
-%{_texmfdistdir}/doc/generic/pst-diffraction/pst-diffraction-docE.tex
-%{_texmfdistdir}/doc/generic/pst-diffraction/pst-diffraction-docFR.pdf
-%{_texmfdistdir}/doc/generic/pst-diffraction/pst-diffraction-docFR.tex
+%{_texmfdistdir}/doc/generic/pst-diffraction/pst-diffraction-doc.pdf
+%{_texmfdistdir}/doc/generic/pst-diffraction/pst-diffraction-doc.tex
 
 %files -n texlive-pst-diffraction
 %{_texmfdistdir}/tex/generic/pst-diffraction/pst-diffraction.tex
@@ -18855,9 +19104,9 @@ Provides:       tex(pst-electricfield.sty)
 Provides:       tex(pst-electricfield.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source242:      pst-electricfield.tar.xz
-Source243:      pst-electricfield.doc.tar.xz
+# from 20250308
+Source248:      pst-electricfield.tar.xz
+Source249:      pst-electricfield.doc.tar.xz
 
 %description -n texlive-pst-electricfield
 The package provides macros to plot electric field and
@@ -18943,9 +19192,9 @@ Provides:       tex(pst-eps.sty)
 Provides:       tex(pst-eps.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source244:      pst-eps.tar.xz
-Source245:      pst-eps.doc.tar.xz
+# from 20250308
+Source250:      pst-eps.tar.xz
+Source251:      pst-eps.doc.tar.xz
 
 %description -n texlive-pst-eps
 Pst-eps is a PSTricks-based package for exporting PSTricks
@@ -19028,9 +19277,9 @@ Requires:       tex(pst-node.sty)
 Requires:       tex(pst-tools.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source246:      pst-eucl.tar.xz
-Source247:      pst-eucl.doc.tar.xz
+# from 20250308
+Source252:      pst-eucl.tar.xz
+Source253:      pst-eucl.doc.tar.xz
 
 %description -n texlive-pst-eucl
 The package allows the drawing of Euclidean geometric figures
@@ -19109,8 +19358,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source248:      pst-eucl-translation-bg.doc.tar.xz
+# from 20250308
+Source254:      pst-eucl-translation-bg.doc.tar.xz
 
 %description -n texlive-pst-eucl-translation-bg
 The pst-eucl package documentation in Bulgarian language -
@@ -19276,9 +19525,9 @@ Requires:       tex(showexpl.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source249:      pst-exa.tar.xz
-Source250:      pst-exa.doc.tar.xz
+# from 20250308
+Source255:      pst-exa.tar.xz
+Source256:      pst-exa.doc.tar.xz
 
 %description -n texlive-pst-exa
 The (PSTricks-related) package provides an environment
@@ -19357,9 +19606,9 @@ Provides:       tex(pst-feyn.sty)
 Provides:       tex(pst-feyn.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source251:      pst-feyn.tar.xz
-Source252:      pst-feyn.doc.tar.xz
+# from 20250308
+Source257:      pst-feyn.tar.xz
+Source258:      pst-feyn.doc.tar.xz
 
 %description -n texlive-pst-feyn
 pst-feyn is a set of drawing graphical elements which are used
@@ -19441,9 +19690,9 @@ Provides:       tex(pst-fill.sty)
 Provides:       tex(pst-fill.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source253:      pst-fill.tar.xz
-Source254:      pst-fill.doc.tar.xz
+# from 20250308
+Source259:      pst-fill.tar.xz
+Source260:      pst-fill.doc.tar.xz
 
 %description -n texlive-pst-fill
 Pst-fill is a PSTricks-based package for filling and tiling
@@ -19490,7 +19739,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-fill/pst-fill.sty
 
 %package -n texlive-pst-fit
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn45109
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.03svn70686
 Release:        0
 License:        LPPL-1.0
 Summary:        Macros for curve fitting
@@ -19519,12 +19768,13 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pst-fit-doc >= %{texlive_version}
 Provides:       tex(pst-fit.sty)
 Provides:       tex(pst-fit.tex)
+Requires:       tex(pst-tools.sty)
 Requires:       tex(pstricks-add.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source255:      pst-fit.tar.xz
-Source256:      pst-fit.doc.tar.xz
+# from 20250308
+Source261:      pst-fit.tar.xz
+Source262:      pst-fit.doc.tar.xz
 
 %description -n texlive-pst-fit
 The package uses PSTricks to fit curves to: Linear Functions;
@@ -19532,7 +19782,7 @@ Power Functions; exp Function; Log_{10} and Log_e functions;
 Recip; Kings Law data; Gaussian; and 4th order Polynomial
 
 %package -n texlive-pst-fit-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn45109
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.03svn70686
 Release:        0
 Summary:        Documentation for texlive-pst-fit
 License:        LPPL-1.0
@@ -19629,9 +19879,9 @@ Requires:       tex(pstricks.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xfp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source257:      pst-flags.tar.xz
-Source258:      pst-flags.doc.tar.xz
+# from 20250308
+Source263:      pst-flags.tar.xz
+Source264:      pst-flags.doc.tar.xz
 
 %description -n texlive-pst-flags
 This package provides a number of macros for rendering flags of
@@ -19772,9 +20022,9 @@ Suggests:       texlive-pst-fr3d-doc >= %{texlive_version}
 Provides:       tex(pst-fr3d.sty)
 Provides:       tex(pst-fr3d.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source259:      pst-fr3d.tar.xz
-Source260:      pst-fr3d.doc.tar.xz
+# from 20250308
+Source265:      pst-fr3d.tar.xz
+Source266:      pst-fr3d.doc.tar.xz
 
 %description -n texlive-pst-fr3d
 A package using PSTricks to draw three dimensional framed boxes
@@ -19851,9 +20101,9 @@ Provides:       tex(pst-fractal.sty)
 Provides:       tex(pst-fractal.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source261:      pst-fractal.tar.xz
-Source262:      pst-fractal.doc.tar.xz
+# from 20250308
+Source267:      pst-fractal.tar.xz
+Source268:      pst-fractal.doc.tar.xz
 
 %description -n texlive-pst-fractal
 The package uses PSTricks to draw the Julia and Mandelbrot
@@ -19939,9 +20189,9 @@ Requires:       tex(pst-grad.sty)
 Requires:       tex(pst-slpe.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source263:      pst-fun.tar.xz
-Source264:      pst-fun.doc.tar.xz
+# from 20250308
+Source269:      pst-fun.tar.xz
+Source270:      pst-fun.doc.tar.xz
 
 %description -n texlive-pst-fun
 This is a PSTricks related package for drawing funny objects,
@@ -19991,7 +20241,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-fun/pst-fun.sty
 
 %package -n texlive-pst-func
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn66845
+Version:        %{texlive_version}.%{texlive_noarch}.1.02asvn70822
 Release:        0
 License:        LPPL-1.0
 Summary:        PSTricks package for plotting mathematical functions
@@ -20029,9 +20279,9 @@ Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks-add.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source265:      pst-func.tar.xz
-Source266:      pst-func.doc.tar.xz
+# from 20250308
+Source271:      pst-func.tar.xz
+Source272:      pst-func.doc.tar.xz
 
 %description -n texlive-pst-func
 The package is built for use with PSTricks. It provides macros
@@ -20055,7 +20305,7 @@ rates; and implicit functions. The plots may be generated as
 volumes of rotation about the X-axis, as well.
 
 %package -n texlive-pst-func-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn66845
+Version:        %{texlive_version}.%{texlive_noarch}.1.02asvn70822
 Release:        0
 Summary:        Documentation for texlive-pst-func
 License:        LPPL-1.0
@@ -20128,9 +20378,9 @@ Provides:       tex(pst-gantt.sty)
 Provides:       tex(pst-gantt.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source267:      pst-gantt.tar.xz
-Source268:      pst-gantt.doc.tar.xz
+# from 20250308
+Source273:      pst-gantt.tar.xz
+Source274:      pst-gantt.doc.tar.xz
 
 %description -n texlive-pst-gantt
 The package uses PSTricks to draw GANTT charts, which are a
@@ -20178,7 +20428,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-gantt/pst-gantt.sty
 
 %package -n texlive-pst-geo
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.07svn60387
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.09svn74247
 Release:        0
 License:        LPPL-1.0
 Summary:        Geographical Projections
@@ -20259,9 +20509,9 @@ Provides:       tex(wfraczon.dat)
 Provides:       tex(wmaglin.dat)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source269:      pst-geo.tar.xz
-Source270:      pst-geo.doc.tar.xz
+# from 20250308
+Source275:      pst-geo.tar.xz
+Source276:      pst-geo.doc.tar.xz
 
 %description -n texlive-pst-geo
 The package offers a set of PSTricks related packages for
@@ -20279,7 +20529,7 @@ printed or converted to PDF format. A Perl script is provided
 for the user to do the decompression, if the need should arise.
 
 %package -n texlive-pst-geo-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.07svn60387
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.09svn74247
 Release:        0
 Summary:        Documentation for texlive-pst-geo
 License:        LPPL-1.0
@@ -20388,7 +20638,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-geo/pst-geo.sty
 
 %package -n texlive-pst-geometrictools
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn61430
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn70953
 Release:        0
 License:        LPPL-1.0
 Summary:        A PSTricks package to draw geometric tools
@@ -20419,23 +20669,22 @@ Provides:       tex(pst-geometrictools.sty)
 Provides:       tex(pst-geometrictools.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source271:      pst-geometrictools.tar.xz
-Source272:      pst-geometrictools.doc.tar.xz
+# from 20250308
+Source277:      pst-geometrictools.tar.xz
+Source278:      pst-geometrictools.doc.tar.xz
 
 %description -n texlive-pst-geometrictools
 This PSTricks package facilitates the drawing of protractors,
 rulers, compasses and pencils.
 
 %package -n texlive-pst-geometrictools-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn61430
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn70953
 Release:        0
 Summary:        Documentation for texlive-pst-geometrictools
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Supplements:    (texlive-pst-geometrictools and texlive-alldocumentation)
-Provides:       locale(texlive-pst-geometrictools-doc:fr)
 
 %description -n texlive-pst-geometrictools-doc
 This package includes the documentation for texlive-pst-geometrictools
@@ -20462,8 +20711,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/pst-geometrictools/README.md
 %{_texmfdistdir}/doc/generic/pst-geometrictools/pst-geometrictools-doc.pdf
 %{_texmfdistdir}/doc/generic/pst-geometrictools/pst-geometrictools-doc.tex
-%{_texmfdistdir}/doc/generic/pst-geometrictools/pst-geometrictools-fr-doc.pdf
-%{_texmfdistdir}/doc/generic/pst-geometrictools/pst-geometrictools-fr-doc.tex
 
 %files -n texlive-pst-geometrictools
 %{_texmfdistdir}/tex/generic/pst-geometrictools/pst-geometrictools.tex
@@ -20501,9 +20748,9 @@ Provides:       tex(pst-gr3d.sty)
 Provides:       tex(pst-gr3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source273:      pst-gr3d.tar.xz
-Source274:      pst-gr3d.doc.tar.xz
+# from 20250308
+Source279:      pst-gr3d.tar.xz
+Source280:      pst-gr3d.doc.tar.xz
 
 %description -n texlive-pst-gr3d
 This PSTricks package provides a command \PstGridThreeD that
@@ -20580,9 +20827,9 @@ Provides:       tex(pst-grad.sty)
 Provides:       tex(pst-grad.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source275:      pst-grad.tar.xz
-Source276:      pst-grad.doc.tar.xz
+# from 20250308
+Source281:      pst-grad.tar.xz
+Source282:      pst-grad.doc.tar.xz
 
 %description -n texlive-pst-grad
 The package fills with colour gradients, using PSTricks. The
@@ -20659,9 +20906,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pst-graphicx-doc >= %{texlive_version}
 Provides:       tex(pst-graphicx.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source277:      pst-graphicx.tar.xz
-Source278:      pst-graphicx.doc.tar.xz
+# from 20250308
+Source283:      pst-graphicx.tar.xz
+Source284:      pst-graphicx.doc.tar.xz
 
 %description -n texlive-pst-graphicx
 The package provides a version of graphicx that avoids loading
@@ -20738,9 +20985,9 @@ Provides:       tex(pst-hsb.sty)
 Provides:       tex(pst-hsb.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source279:      pst-hsb.tar.xz
-Source280:      pst-hsb.doc.tar.xz
+# from 20250308
+Source285:      pst-hsb.tar.xz
+Source286:      pst-hsb.doc.tar.xz
 
 %description -n texlive-pst-hsb
 This is a PSTricks-related package. It can plot lines and/or
@@ -20821,9 +21068,9 @@ Provides:       tex(infix-RPN.tex)
 Provides:       tex(pst-infixplot.sty)
 Provides:       tex(pst-infixplot.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source281:      pst-infixplot.tar.xz
-Source282:      pst-infixplot.doc.tar.xz
+# from 20250308
+Source287:      pst-infixplot.tar.xz
+Source288:      pst-infixplot.doc.tar.xz
 
 %description -n texlive-pst-infixplot
 Plotting functions with pst-plot is very powerful but sometimes
@@ -20909,9 +21156,9 @@ Requires:       tex(pst-node.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source283:      pst-intersect.tar.xz
-Source284:      pst-intersect.doc.tar.xz
+# from 20250308
+Source289:      pst-intersect.tar.xz
+Source290:      pst-intersect.doc.tar.xz
 
 %description -n texlive-pst-intersect
 The package computes the intersections between arbitrary
@@ -20990,9 +21237,9 @@ Suggests:       texlive-pst-jtree-doc >= %{texlive_version}
 Provides:       tex(pst-jtree.sty)
 Provides:       tex(pst-jtree.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source285:      pst-jtree.tar.xz
-Source286:      pst-jtree.doc.tar.xz
+# from 20250308
+Source291:      pst-jtree.tar.xz
+Source292:      pst-jtree.doc.tar.xz
 
 %description -n texlive-pst-jtree
 jTree uses PSTricks to enable linguists to typeset complex
@@ -21072,9 +21319,9 @@ Provides:       tex(pst-knot.sty)
 Provides:       tex(pst-knot.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source287:      pst-knot.tar.xz
-Source288:      pst-knot.doc.tar.xz
+# from 20250308
+Source293:      pst-knot.tar.xz
+Source294:      pst-knot.doc.tar.xz
 
 %description -n texlive-pst-knot
 The package can produce a fair range of knot shapes, with all
@@ -21153,9 +21400,9 @@ Provides:       tex(pst-labo.tex)
 Provides:       tex(pst-laboObj.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source289:      pst-labo.tar.xz
-Source290:      pst-labo.doc.tar.xz
+# from 20250308
+Source295:      pst-labo.tar.xz
+Source296:      pst-labo.doc.tar.xz
 
 %description -n texlive-pst-labo
 Pst-labo is a PSTricks related package for drawing basic and
@@ -21238,9 +21485,9 @@ Requires:       tex(arrayjobx.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source291:      pst-layout.tar.xz
-Source292:      pst-layout.doc.tar.xz
+# from 20250308
+Source297:      pst-layout.tar.xz
+Source298:      pst-layout.doc.tar.xz
 
 %description -n texlive-pst-layout
 The package provides a means of creating elaborate
@@ -21318,9 +21565,9 @@ Provides:       tex(pst-lens.sty)
 Provides:       tex(pst-lens.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source293:      pst-lens.tar.xz
-Source294:      pst-lens.doc.tar.xz
+# from 20250308
+Source299:      pst-lens.tar.xz
+Source300:      pst-lens.doc.tar.xz
 
 %description -n texlive-pst-lens
 This PSTricks package provides a really rather simple command
@@ -21397,9 +21644,9 @@ Provides:       tex(pst-light3d.sty)
 Provides:       tex(pst-light3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source295:      pst-light3d.tar.xz
-Source296:      pst-light3d.doc.tar.xz
+# from 20250308
+Source301:      pst-light3d.tar.xz
+Source302:      pst-light3d.doc.tar.xz
 
 %description -n texlive-pst-light3d
 A PSTricks package for three dimensional lighting effects on
@@ -21479,9 +21726,9 @@ Provides:       tex(pst-lsystem.sty)
 Provides:       tex(pst-lsystem.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source297:      pst-lsystem.tar.xz
-Source298:      pst-lsystem.doc.tar.xz
+# from 20250308
+Source303:      pst-lsystem.tar.xz
+Source304:      pst-lsystem.doc.tar.xz
 
 %description -n texlive-pst-lsystem
 pst-lsystem is a PSTricks based package for creating images
@@ -21564,9 +21811,9 @@ Requires:       tex(multido.sty)
 Requires:       tex(pst-3d.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source299:      pst-magneticfield.tar.xz
-Source300:      pst-magneticfield.doc.tar.xz
+# from 20250308
+Source305:      pst-magneticfield.tar.xz
+Source306:      pst-magneticfield.doc.tar.xz
 
 %description -n texlive-pst-magneticfield
 pst-magneticfield is a PSTricks related package to draw the
@@ -21648,9 +21895,9 @@ Provides:       tex(pst-marble.sty)
 Provides:       tex(pst-marble.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source301:      pst-marble.tar.xz
-Source302:      pst-marble.doc.tar.xz
+# from 20250308
+Source307:      pst-marble.tar.xz
+Source308:      pst-marble.doc.tar.xz
 
 %description -n texlive-pst-marble
 This is a PSTricks package to draw marble-like patterns.
@@ -21768,9 +22015,9 @@ Requires:       tex(pst-calculate.sty)
 Requires:       tex(pstricks.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source303:      pst-math.tar.xz
-Source304:      pst-math.doc.tar.xz
+# from 20250308
+Source309:      pst-math.tar.xz
+Source310:      pst-math.doc.tar.xz
 
 %description -n texlive-pst-math
 PostScript lacks a lot of basic operators such as tan, acos,
@@ -21827,7 +22074,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-math/pst-math.sty
 
 %package -n texlive-pst-mirror
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn60506
+Version:        %{texlive_version}.%{texlive_noarch}.1.02asvn71294
 Release:        0
 License:        LPPL-1.0
 Summary:        Images on a spherical mirror
@@ -21858,9 +22105,9 @@ Provides:       tex(pst-mirror.sty)
 Provides:       tex(pst-mirror.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source305:      pst-mirror.tar.xz
-Source306:      pst-mirror.doc.tar.xz
+# from 20250308
+Source311:      pst-mirror.tar.xz
+Source312:      pst-mirror.doc.tar.xz
 
 %description -n texlive-pst-mirror
 The package provides commands and supporting PostScript
@@ -21868,7 +22115,7 @@ material for drawing images as if reflected by a spherical
 mirror.
 
 %package -n texlive-pst-mirror-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn60506
+Version:        %{texlive_version}.%{texlive_noarch}.1.02asvn71294
 Release:        0
 Summary:        Documentation for texlive-pst-mirror
 License:        LPPL-1.0
@@ -21907,10 +22154,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/test.pdf
 %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/test.sh
 %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/test.tex
+%{_texmfdistdir}/doc/generic/pst-mirror/createEPS/tiger-b.eps
+%{_texmfdistdir}/doc/generic/pst-mirror/createEPS/tiger-c.eps
+%{_texmfdistdir}/doc/generic/pst-mirror/createEPS/tiger.eps
 %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/xa.eps
 %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/xa.tex
 %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/xb.eps
+%{_texmfdistdir}/doc/generic/pst-mirror/createEPS/xb.pdf
 %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/xc.eps
+%{_texmfdistdir}/doc/generic/pst-mirror/createEPS/xc.pdf
 %{_texmfdistdir}/doc/generic/pst-mirror/pst-mirror-doc.bib
 %{_texmfdistdir}/doc/generic/pst-mirror/pst-mirror-doc.pdf
 %{_texmfdistdir}/doc/generic/pst-mirror/pst-mirror-doc.tex
@@ -21952,9 +22204,9 @@ Provides:       tex(pst-moire.sty)
 Provides:       tex(pst-moire.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source307:      pst-moire.tar.xz
-Source308:      pst-moire.doc.tar.xz
+# from 20250308
+Source313:      pst-moire.tar.xz
+Source314:      pst-moire.doc.tar.xz
 
 %description -n texlive-pst-moire
 This is a PSTricks package to draw moire patterns.
@@ -22011,7 +22263,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-moire/pst-moire.sty
 
 %package -n texlive-pst-node
-Version:        %{texlive_version}.%{texlive_noarch}.1.43svn61838
+Version:        %{texlive_version}.%{texlive_noarch}.1.45svn71773
 Release:        0
 License:        LPPL-1.0
 Summary:        Nodes and node connections in PSTricks
@@ -22043,9 +22295,9 @@ Provides:       tex(pst-node.tex)
 Provides:       tex(pst-node97.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source309:      pst-node.tar.xz
-Source310:      pst-node.doc.tar.xz
+# from 20250308
+Source315:      pst-node.tar.xz
+Source316:      pst-node.doc.tar.xz
 
 %description -n texlive-pst-node
 The package enables the user to connect information, and to
@@ -22058,14 +22310,14 @@ the pstricks base distribution; the package serves as an
 extension to PSTricks.
 
 %package -n texlive-pst-node-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.43svn61838
+Version:        %{texlive_version}.%{texlive_noarch}.1.45svn71773
 Release:        0
 Summary:        Documentation for texlive-pst-node
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Supplements:    (texlive-pst-node and texlive-alldocumentation)
-Provides:       locale(texlive-pst-node-doc:en)
+Provides:       locale(texlive-pst-node-doc:de)
 
 %description -n texlive-pst-node-doc
 This package includes the documentation for texlive-pst-node
@@ -22090,6 +22342,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-pst-node-doc
 %{_texmfdistdir}/doc/generic/pst-node/Changes
 %{_texmfdistdir}/doc/generic/pst-node/README
+%{_texmfdistdir}/doc/generic/pst-node/psmatrix-docDE.bib
+%{_texmfdistdir}/doc/generic/pst-node/psmatrix-docDE.pdf
+%{_texmfdistdir}/doc/generic/pst-node/psmatrix-docDE.tex
 %{_texmfdistdir}/doc/generic/pst-node/pst-node-doc.bib
 %{_texmfdistdir}/doc/generic/pst-node/pst-node-doc.pdf
 %{_texmfdistdir}/doc/generic/pst-node/pst-node-doc.tex
@@ -22133,9 +22388,9 @@ Provides:       tex(pst-ob3d.sty)
 Provides:       tex(pst-ob3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source311:      pst-ob3d.tar.xz
-Source312:      pst-ob3d.doc.tar.xz
+# from 20250308
+Source317:      pst-ob3d.tar.xz
+Source318:      pst-ob3d.doc.tar.xz
 
 %description -n texlive-pst-ob3d
 The package uses PSTricks to provide basic three-dimensional
@@ -22213,9 +22468,9 @@ Provides:       tex(pst-ode.sty)
 Provides:       tex(pst-ode.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source313:      pst-ode.tar.xz
-Source314:      pst-ode.doc.tar.xz
+# from 20250308
+Source319:      pst-ode.tar.xz
+Source320:      pst-ode.doc.tar.xz
 
 %description -n texlive-pst-ode
 The package defines \pstODEsolve for solving initial value
@@ -22312,9 +22567,9 @@ Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks-add.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source315:      pst-optexp.tar.xz
-Source316:      pst-optexp.doc.tar.xz
+# from 20250308
+Source321:      pst-optexp.tar.xz
+Source322:      pst-optexp.doc.tar.xz
 
 %description -n texlive-pst-optexp
 The package is a collection of optical components that
@@ -22368,7 +22623,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-optexp/pst-optexp.sty
 
 %package -n texlive-pst-optic
-Version:        %{texlive_version}.%{texlive_noarch}.1.02asvn67052
+Version:        %{texlive_version}.%{texlive_noarch}.1.05svn72694
 Release:        0
 License:        LPPL-1.0
 Summary:        Drawing optics diagrams
@@ -22399,9 +22654,9 @@ Provides:       tex(pst-optic.sty)
 Provides:       tex(pst-optic.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source317:      pst-optic.tar.xz
-Source318:      pst-optic.doc.tar.xz
+# from 20250308
+Source323:      pst-optic.tar.xz
+Source324:      pst-optic.doc.tar.xz
 
 %description -n texlive-pst-optic
 A package for drawing both reflective and refractive optics
@@ -22409,7 +22664,7 @@ diagrams. The package requires pstricks later than version
 1.10.
 
 %package -n texlive-pst-optic-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.02asvn67052
+Version:        %{texlive_version}.%{texlive_noarch}.1.05svn72694
 Release:        0
 Summary:        Documentation for texlive-pst-optic
 License:        LPPL-1.0
@@ -22480,9 +22735,9 @@ Provides:       tex(pst-osci.sty)
 Provides:       tex(pst-osci.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source319:      pst-osci.tar.xz
-Source320:      pst-osci.doc.tar.xz
+# from 20250308
+Source325:      pst-osci.tar.xz
+Source326:      pst-osci.doc.tar.xz
 
 %description -n texlive-pst-osci
 This PSTricks package enables you to produce oscilloscope
@@ -22564,9 +22819,9 @@ Provides:       tex(pst-ovl.sty)
 Provides:       tex(pst-ovl.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source321:      pst-ovl.tar.xz
-Source322:      pst-ovl.doc.tar.xz
+# from 20250308
+Source327:      pst-ovl.tar.xz
+Source328:      pst-ovl.doc.tar.xz
 
 %description -n texlive-pst-ovl
 The package is useful when building an image from assorted
@@ -22647,9 +22902,9 @@ Provides:       tex(pst-pad.sty)
 Provides:       tex(pst-pad.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source323:      pst-pad.tar.xz
-Source324:      pst-pad.doc.tar.xz
+# from 20250308
+Source329:      pst-pad.tar.xz
+Source330:      pst-pad.doc.tar.xz
 
 %description -n texlive-pst-pad
 The package collects a set of graphical elements based on
@@ -23051,6 +23306,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/ppmcheckpdf/ppmcheckpdf.lua
     do
@@ -23063,8 +23320,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23087,8 +23342,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:115}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:117}
     popd
     # Extend python3 scripts with major version only if any
     for scr in %{_texmfdistdir}/tex/latex/prettytok/prettytok-decode-8bit.py
@@ -23102,8 +23359,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23118,6 +23373,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-prodint
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/prodint/*.{pf[ab],[ot]tf}
@@ -23147,10 +23406,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23179,19 +23434,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:164}
-    popd
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    pushd %{buildroot}%{_datadir}/texlive/texmf-dist
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:170}
+    popd
     tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/ps2eps/ps2eps.pl
     do
@@ -23204,13 +23465,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23300,6 +23555,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/generic/pst-geo/pst-geo-compress.pl \
 	       %{_texmfdistdir}/doc/generic/pst-geo/pst-geo-decompress.pl
@@ -23320,12 +23581,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23356,6 +23611,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Add shebang e.g. correct perl wrapper scripts if any
     for scr in %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/make.sh \
 	       %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/make2.sh \
@@ -23371,12 +23632,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23389,6 +23644,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:322} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:323} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:324} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:325} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:326} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:327} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
