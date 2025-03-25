@@ -1,7 +1,7 @@
 #
 # spec file for package AppStream
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,7 @@ BuildRequires:  cairo-devel
 BuildRequires:  docbook-xsl-stylesheets
 %if %{with gcc13}
 BuildRequires:  gcc13
+BuildRequires:  gcc13-PIE
 BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  gdk-pixbuf-loader-rsvg
