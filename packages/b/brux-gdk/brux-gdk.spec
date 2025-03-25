@@ -1,6 +1,7 @@
 #
 # spec file for package brux-gdk
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +25,7 @@ License:        AGPL-3.0-only
 Group:          Development/Languages/Other
 URL:            https://github.com/KelvinShadewing/brux-gdk
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  squirrel-devel
@@ -47,11 +48,16 @@ process.
 
 %build
 cd rte
-%cmake -DBUILD_STATIC_LIBS=OFF
+%cmake \
+  -DBUILD_STATIC_LIBS=OFF \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 install -Dpm 0755 rte/build/brux %{buildroot}%{_bindir}/brux
+
+%check
+%ctest
 
 %files
 %license LICENSE

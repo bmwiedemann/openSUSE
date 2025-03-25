@@ -7,4 +7,12 @@
     <comment>Forward the current version of brux-gdk to Factory</comment>
     <requestid>1250607</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fd4336b7428cd4cd8c653f2a00750f6b</srcmd5>
+    <version>0.2.11+git20250218</version>
+    <time>1742940600</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1256047</requestid>
+  </revision>
 </revisionlist>
