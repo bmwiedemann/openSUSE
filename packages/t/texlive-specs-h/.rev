@@ -549,4 +549,27 @@
     <comment>Catch all python3 shebangs for boo#1212476</comment>
     <requestid>1185303</requestid>
   </revision>
+  <revision rev="55" vrev="58">
+    <srcmd5>9777271f833b74522f9056ec24e05272</srcmd5>
+    <version>unknown</version>
+    <time>1742936922</time>
+    <user>anag+factory</user>
+    <comment>- Add patch eolang_pl.dif
+  * Resolve missing local perl package tools.pm with upstream fix
+
+- Update to TeXLive 2025  
+- Port patches
+  * context_cnf.dif
+  * kpathsea_cnf.dif
+  * latexdiff.doc.tar.xz
+  * latexdiff.tar.xz
+  * latexmk_conf.dif
+  * luatex_cnf.dif
+  * pst-diffraction.doc.tar.xz
+  * pst-diffraction.tar.xz
+  * texdoc_cnf.dif
+  * texlive-scripts-extra_scripts.dif
+  * texlive-scripts_scripts.dif</comment>
+    <requestid>1255654</requestid>
+  </revision>
 </revisionlist>

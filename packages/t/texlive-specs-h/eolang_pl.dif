@@ -1,0 +1,56 @@
+---
+ texmf-dist/scripts/eolang/eolang.pl |   38 ++++++++++++++++++++++++++++++++++--
+ 1 file changed, 36 insertions(+), 2 deletions(-)
+
+--- texmf-dist/scripts/eolang/eolang.pl
++++ texmf-dist/scripts/eolang/eolang.pl	2025-03-24 13:00:29.281180562 +0000
+@@ -26,13 +26,47 @@ package eolang;
+ 
+ use warnings;
+ use strict;
+-use lib('.');
+-use tools;
+ use File::Basename;
+ 
+ # Hash of incoming command line arguments.
+ my %args = map { $_ => 1 } @ARGV;
+ 
++# Read file content.
++sub readfile {
++  my ($path) = @_;
++  open(my $h, '<', $path) or die('Cannot read from file: ' . $path);
++  my $content; { local $/; $content = <$h>; }
++  return $content;
++}
++
++# Save content to file.
++sub savefile {
++  my ($path, $content) = @_;
++  open(my $f, '>', $path) or error('Cannot open file for writing: ' . $path);
++  print $f $content;
++  close($f);
++}
++
++# Print INFO message to the console.
++sub info {
++  my ($txt) = @_;
++  print $txt . "\n";
++}
++
++# Print DEBUG message to the console.
++sub debug {
++  my ($txt) = @_;
++  if (exists $args{'--verbose'}) {
++    print $txt . "\n";
++  }
++}
++
++# Print ERROR message to the console.
++sub error {
++  my ($txt) = @_;
++  print STDERR $txt . "\n";
++}
++
+ if (@ARGV+0 eq 0 or exists $args{'--help'} or exists $args{'-?'}) {
+   info("This script helps embedding \\phiquation and \\phiq into .tex document\n\n" .
+     "Usage:\n" .
