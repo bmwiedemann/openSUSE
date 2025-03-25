@@ -508,4 +508,12 @@
     <comment>Catch all python3 shebangs for boo#1212476</comment>
     <requestid>1185304</requestid>
   </revision>
+  <revision rev="53" vrev="56">
+    <srcmd5>7dcb7d85df38674747a44214a0a8aaaa</srcmd5>
+    <version>unknown</version>
+    <time>1742936894</time>
+    <user>anag+factory</user>
+    <comment>Update to TeXLive 2025</comment>
+    <requestid>1254611</requestid>
+  </revision>
 </revisionlist>
