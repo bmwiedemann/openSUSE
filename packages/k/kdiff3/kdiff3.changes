@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 24 21:44:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.1
+  * Revert to old file load/save code due to missing data issues.
+  * Audit code and remove encoding error fail points - this will
+    not remove the encoding errors themselves.
+
+-------------------------------------------------------------------
 Sat Feb 22 13:16:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.12.1
