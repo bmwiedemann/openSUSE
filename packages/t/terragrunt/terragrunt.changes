@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar 25 13:45:07 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.76.8:
+  * New Features
+    OpenTofu file extension detection
+    OpenTofu-specific file extensions (*.tofu and *.tofu.json) are
+    detected by default, just like generic *.tf, *.tf.json files,
+    which are used by both OpenTofu and Terraform.
+    This ensures that future incompatibility between OpenTofu and
+    Terraform which specifically requires usage of the *.tofu file
+    extension will be supported without additional effort.
+    Thank you to @wazy for contributing this new feature.
+  * What's Changed
+    - Support *.tofu and .*tofu.json file detection by @wazy in
+      #4062
+
+-------------------------------------------------------------------
+Mon Mar 24 12:26:18 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.76.7:
+  * build(deps): bump github.com/golang-jwt/jwt/v5 from 5.2.1 to
+    5.2.2 (#4066)
+
+-------------------------------------------------------------------
 Sat Mar 22 20:28:13 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.76.6:
