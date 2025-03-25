@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 24 12:24:37 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- We're removing all python Qt bindings from SLE16, so don't build
+  the qt backend nor test it there.
+
+-------------------------------------------------------------------
+Fri Mar 21 08:55:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.10.1
+  * Respect array alpha with interpolation_stage='rgba'
+  * Remove md5 usage to prevent issues on FIPS enabled systems
+  * Fix pyplot.matshow figure handling
+  * Fix modifying Axes' position also alters the original Bbox object 
+    used for initialization
+  * Fix title position for polar plots
+  * Add version gate to GTK4 calls when necessary
+  * Raise warning if both c and facecolors are used in scatter plot
+- Drop merged matplotlib-pr29631-install-test-ipynb.patch
+- Skip test failing with texlive 2025
+
+-------------------------------------------------------------------
 Sun Feb 16 20:07:11 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Fix testfiles

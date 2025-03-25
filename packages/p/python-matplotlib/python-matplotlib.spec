@@ -29,9 +29,16 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with test
 %endif
 %bcond_with ringdisabled
+
+%if 0%{?suse_version} == 1600 && !0%{?is_opensuse}
+%bcond_with qt
+%else
+%bcond_without qt
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.10.0
+Version:        3.10.1
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -42,8 +49,6 @@ Source:         https://files.pythonhosted.org/packages/source/m/matplotlib/matp
 Source98:       https://github.com/qhull/qhull/archive/v8.0.2/qhull-8.0.2.tar.gz#/qhull-8.0.2.tgz
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
 Source100:      python-matplotlib.rpmlintrc
-# PATCH-FIX-UPSTREAM matplotlib-pr29631-install-test-ipynb.patch gh#matplotlib/matplotlib#29631
-Patch0:         matplotlib-pr29631-install-test-ipynb.patch
 # PATCH-FEATURE-OPENSUSE matplotlib-meson-options-opensuse.patch code@bnavigator.de -- Custom build options for meson-python
 Patch1:         matplotlib-meson-options-opensuse.patch
 Recommends:     ghostscript
@@ -82,9 +87,6 @@ Requires:       python-numpy >= 1.23
 Requires:       python-packaging >= 20.0
 Requires:       python-pyparsing > 2.3.1
 Requires:       python-python-dateutil >= 2.7
-%if 0%{?python_version_nodots} < 310
-Requires:       python-importlib-resources >= 3.2.0
-%endif
 # /SECTION
 # SECTION test
 %if %{with test}
@@ -92,7 +94,9 @@ BuildRequires:  %{python_module matplotlib = %{version}}
 BuildRequires:  %{python_module matplotlib-cairo = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk3 = %{version}}
 BuildRequires:  %{python_module matplotlib-gtk4 = %{version}}
+%if %{with qt}
 BuildRequires:  %{python_module matplotlib-qt5 = %{version}}
+%endif
 BuildRequires:  %{python_module matplotlib-testdata = %{version}}
 BuildRequires:  %{python_module matplotlib-tk = %{version}}
 BuildRequires:  %{python_module matplotlib-web = %{version}}
@@ -125,12 +129,14 @@ BuildRequires:  %{python_module nbformat if %python-base >= 3.10}
 %endif
 # /SECTION nbagg
 # SECTION qt backends: Only test PyQt5 in Minimal-X
+%if %{with qt}
 BuildRequires:  %{python_module qt5}
 %if %{without ringdisabled}
 %if 0%{?suse_version} > %SLE_VERSION
 BuildRequires:  %{python_module PyQt6}
 BuildRequires:  python3-pyside2
 BuildRequires:  python3-pyside6
+%endif
 %endif
 %endif
 # /SECTION qt
@@ -230,6 +236,7 @@ BuildArch:      noarch
 This package allows %{name} to display latex in plots
 and figures.
 
+%if %{with qt}
 %package        qt
 Summary:        Qt backend for %{name}
 Requires:       %{name} = %{version}
@@ -244,6 +251,7 @@ Obsoletes:      %{name}-qt5 < 3.8.2
 This package includes the Qt-based backend
 for the %{name} plotting package
 PyQt5, PyQt6, Pyside2 or Pyside 6 may be used
+%endif
 
 %package        testdata
 Summary:        Test data for %{name}
@@ -343,6 +351,8 @@ skip_tests+=" or test_compressed1"
 # image comparison failures due to precisions dicrepancies to the x86 produced references
 skip_tests+=" or png or svg or pdf"
 %endif
+# test failure with texlive 2025 https://github.com/matplotlib/matplotlib/issues/29790
+skip_tests+=" or (test_backend_pgf and test_rcupdate)"
 
 # Fails in SLFO:Main
 %if 0%{?suse_version} <= %SLE_VERSION
@@ -469,13 +479,14 @@ $python -m pytest --pyargs matplotlib.tests \
 %{python_sitearch}/matplotlib/backends/_backend_gtk.py
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/_backend_gtk.*.py*
 
-%if 0%{?suse_version} > %SLE_VERSION && 0%{?python_version_nodots} >= 310
+%if 0%{?suse_version} > %SLE_VERSION
 %files %{python_files nbagg}
 %license LICENSE/
 %{python_sitearch}/matplotlib/backends/backend_nbagg.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_nbagg.*.py*
 %endif
 
+%if %{with qt}
 %files %{python_files qt}
 %license LICENSE/
 %{python_sitearch}/matplotlib/backends/backend_qt5.py*
@@ -487,6 +498,7 @@ $python -m pytest --pyargs matplotlib.tests \
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5agg.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5cairo.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/qt_compat.*.py*
+%endif
 
 %files %{python_files testdata}
 %license LICENSE/
