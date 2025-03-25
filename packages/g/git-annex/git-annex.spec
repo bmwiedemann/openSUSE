@@ -17,7 +17,7 @@
 
 
 Name:           git-annex
-Version:        10.20250115
+Version:        10.20250320
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
@@ -93,6 +93,8 @@ BuildRequires:  ghc-fdo-notify-devel
 BuildRequires:  ghc-fdo-notify-prof
 BuildRequires:  ghc-feed-devel
 BuildRequires:  ghc-feed-prof
+BuildRequires:  ghc-file-io-devel
+BuildRequires:  ghc-file-io-prof
 BuildRequires:  ghc-filepath-bytestring-devel
 BuildRequires:  ghc-filepath-bytestring-prof
 BuildRequires:  ghc-filepath-devel
@@ -141,6 +143,8 @@ BuildRequires:  ghc-old-locale-devel
 BuildRequires:  ghc-old-locale-prof
 BuildRequires:  ghc-optparse-applicative-devel
 BuildRequires:  ghc-optparse-applicative-prof
+BuildRequires:  ghc-os-string-devel
+BuildRequires:  ghc-os-string-prof
 BuildRequires:  ghc-path-pieces-devel
 BuildRequires:  ghc-path-pieces-prof
 BuildRequires:  ghc-persistent-devel
