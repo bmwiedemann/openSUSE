@@ -297,4 +297,19 @@
     <comment>Early Staging of GNOME 48.rc</comment>
     <requestid>1251329</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ddb88ba55c6c2fdf559094152071e135</srcmd5>
+    <version>41.2</version>
+    <time>1742936999</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 41.2:
+  + Update dependencies to Gnome SDK 47
+  + Get rid of accidental GTK 3 dependency
+  + Cache scaled textures
+  + Update links to home page
+  + Use TOML for game configs
+  + Updated translation.
+- Drop gtk3-tools BuildRequires, no longer needed. (forwarded request 1254521 from iznogood)</comment>
+    <requestid>1255561</requestid>
+  </revision>
 </revisionlist>

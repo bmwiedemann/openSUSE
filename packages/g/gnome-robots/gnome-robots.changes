@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 19 20:15:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.2:
+  + Update dependencies to Gnome SDK 47
+  + Get rid of accidental GTK 3 dependency
+  + Cache scaled textures
+  + Update links to home page
+  + Use TOML for game configs
+  + Updated translation.
+- Drop gtk3-tools BuildRequires, no longer needed.
+
+-------------------------------------------------------------------
 Sat Dec 28 11:33:36 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.1:
