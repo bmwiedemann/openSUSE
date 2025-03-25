@@ -3,7 +3,7 @@
  1 file changed, 16 insertions(+), 8 deletions(-)
 
 --- texmf-dist/web2c/texmfcnf.lua
-+++ texmf-dist/web2c/texmfcnf.lua	2023-03-24 14:00:29.022032019 +0000
++++ texmf-dist/web2c/texmfcnf.lua	2025-03-12 12:06:40.055138586 +0000
 @@ -41,6 +41,12 @@ return {
              --     "selfautoparent:texmf/web2c",
              -- }
@@ -31,7 +31,7 @@
  
              -- I don't like this texmf under home and texmf-home would make more sense. One never knows
              -- what installers put under texmf anywhere and sorting out problems will be a pain. But on
-@@ -73,13 +78,16 @@ return {
+@@ -73,8 +78,11 @@ return {
  
              -- texlive:
  
@@ -44,14 +44,17 @@
 +            TEXMFCONFIG     = "$TEXMFSYSCONFIG",
  
              -- The texmf-local path is only used for (maybe) some additional configuration file.
- 
-             TEXMFLOCAL      = "selfautoparent:texmf-local",
+ 	    -- Changed texmf-local to use ../ per Bruno Voisin,
+@@ -87,7 +95,7 @@ return {
+ 	    --   https://wiki.contextgarden.net/Use_the_fonts_you_want
+ 	    --   https://wiki.contextgarden.net/Mtxrun#base and #fontsa
+             TEXMFLOCAL      = "selfautoparent:../texmf-local",
 -            TEXMFFONTS      = "selfautoparent:texmf-fonts",
 +            TEXMFFONTS      = "$TEXMFDIST/fonts",
              TEXMFPROJECT    = "selfautoparent:texmf-project",
  
              TEXMFHOME       = "home:texmf",
-@@ -94,7 +102,7 @@ return {
+@@ -102,7 +110,7 @@ return {
  
              -- texlive:
  
