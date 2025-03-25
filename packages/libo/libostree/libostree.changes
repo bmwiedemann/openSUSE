@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 22 17:43:39 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2025.2:
+  + sign: Support generic "spki" type of commit signatures
+  + boot: Drop ostree-finalize-staged.path
+  + bug fixes
+
+-------------------------------------------------------------------
 Fri Jan 31 20:13:41 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - enable building with composefs, as bootc needs libostree with composefs

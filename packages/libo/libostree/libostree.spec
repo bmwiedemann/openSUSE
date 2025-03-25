@@ -24,7 +24,7 @@
 %bcond_without     ed25519
 %bcond_with        tests
 Name:           libostree
-Version:        2025.1
+Version:        2025.2
 Release:        0
 Summary:        Git for operating system binaries
 License:        LGPL-2.0-or-later
@@ -162,7 +162,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %service_add_pre ostree-remount.service
 %service_add_pre ostree-finalize-staged.service
 %service_add_pre ostree-finalize-staged-hold.service
-%service_add_pre ostree-finalize-staged.path
 %service_add_pre ostree-boot-complete.service
 
 %preun
@@ -170,7 +169,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %service_del_preun ostree-remount.service
 %service_del_preun ostree-finalize-staged.service
 %service_del_preun ostree-finalize-staged-hold.service
-%service_del_preun ostree-finalize-staged.path
 %service_del_preun ostree-boot-complete.service
 
 %post
@@ -178,7 +176,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %service_add_post ostree-remount.service
 %service_add_post ostree-finalize-staged.service
 %service_add_post ostree-finalize-staged-hold.service
-%service_add_post ostree-finalize-staged.path
 %service_add_post ostree-boot-complete.service
 %tmpfiles_create %{_tmpfilesdir}/ostree-tmpfiles.conf
 
@@ -187,7 +184,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %service_del_postun ostree-remount.service
 %service_del_postun ostree-finalize-staged.service
 %service_del_postun ostree-finalize-staged-hold.service
-%service_del_postun ostree-finalize-staged.path
 %service_del_postun ostree-boot-complete.service
 
 %files
@@ -209,7 +205,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_unitdir}/ostree-remount.service
 %{_unitdir}/ostree-finalize-staged.service
 %{_unitdir}/ostree-finalize-staged-hold.service
-%{_unitdir}/ostree-finalize-staged.path
 %{_unitdir}/ostree-boot-complete.service
 %{_unitdir}/ostree-state-overlay@.service
 %dir %{_sysconfdir}/dracut.conf.d
