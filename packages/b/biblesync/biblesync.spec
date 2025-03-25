@@ -1,7 +1,7 @@
 #
 # spec file for package biblesync
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/karlkleinpaste/biblesync
 Source0:        https://github.com/karlkleinpaste/biblesync/releases/download/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  libuuid-devel
@@ -72,11 +72,14 @@ that use %{name}.
 %build
 export CFLAGS="%{optflags} -fPIC"
 export CXXFLAGS="%{optflags} -fPIC"
-%cmake -DLIBDIR=%{_libdir} .. -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed" -DBIBLESYNC_SOVERSION=%{_soversion}
+%cmake -DLIBDIR=%{_libdir} .. -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed" -DBIBLESYNC_SOVERSION=%{_soversion} -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
 %install
 %cmake_install DESTDIR=%{buildroot}
+
+%check
+%ctest
 
 %post -n %{_shlibname} -p /sbin/ldconfig
 %postun -n %{_shlibname} -p /sbin/ldconfig
