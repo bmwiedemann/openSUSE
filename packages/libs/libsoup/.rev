@@ -1237,4 +1237,41 @@
     <comment></comment>
     <requestid>1238500</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>2d4f97d6ae67d5dd47ced2ff77281454</srcmd5>
+    <version>3.6.5</version>
+    <time>1742936871</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.6.5:
+  + session: Strip authentication credentials on cross-origin
+    redirects
+  + build: Use pkg-config instead of krb5-config for the gssapi
+    dependency
+  + http1: When using chunked encoding report an error in case of
+    unexpected stream end
+  + http2:
+    - When a message has no content still respect its Content-Type
+    - Revert manual window size management temporarily, as it could
+      stall
+  + sniffer: Fix potential overflows
+  + hsts: Fix minor leak
+  + headers: Fix a few parsing edge cases that could be an out of
+    bound read
+  + connection: Avoid ever calling disconnect twice
+  + auth-digest: Fix handling when a nonce isn't present
+  + cookies:
+    - Limit max size of max-age, path, and domain attributes to
+      1024 bytes
+    - Limit max size of name and value to 4096 bytes
+  + docs: Remove references to old libsoup domain
+  + Reintroduce some thread-safety to SoupSession (see
+    https://libsoup.gnome.org/libsoup-3.0/client-thread-safety.html)
+    Numerous API have been changed which is documented on
+    https://libsoup.gnome.org
+- Replace pkgconfig(krb5) with pkgconfig(krb5-gssapi)
+  BuildRequires: Following upstream changes, and stop passing
+  krb5_config=&quot;$(which krb5-config)&quot; to meson setup, no longer
+  needed nor recognized. (forwarded request 1255109 from iznogood)</comment>
+    <requestid>1255568</requestid>
+  </revision>
 </revisionlist>

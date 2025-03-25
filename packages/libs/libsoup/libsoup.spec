@@ -18,7 +18,7 @@
 
 %define api_version 3.0
 Name:           libsoup
-Version:        3.6.4
+Version:        3.6.5
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.69.1
 BuildRequires:  pkgconfig(gnutls) >= 3.6.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.69.1
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
-BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(krb5-gssapi)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libpsl) >= 0.20
@@ -120,7 +120,6 @@ Features:
 %build
 %meson \
 	-D gssapi=enabled \
-	-D krb5_config="$(which krb5-config)" \
 	-D vapi=enabled \
 	-D docs=enabled \
 	-D ntlm=disabled \
