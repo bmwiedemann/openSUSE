@@ -122,6 +122,7 @@
     %define with_numad     0
     %define with_sanlock   0
     %define with_storage_gluster 0
+    %define with_storage_rbd     0
 %endif
 
 # Prefer nftables if available

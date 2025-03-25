@@ -4816,4 +4816,13 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
     https://libvirt.org/news.html#v11-1-0-2025-03-03</comment>
     <requestid>1249952</requestid>
   </revision>
+  <revision rev="419" vrev="2">
+    <srcmd5>e337b0e56e4bae9d7dccd07975978825</srcmd5>
+    <version>11.1.0</version>
+    <time>1742936840</time>
+    <user>anag+factory</user>
+    <comment>- spec: Disable rbd storage driver for SLFO
+  bsc#1239836</comment>
+    <requestid>1255147</requestid>
+  </revision>
 </revisionlist>

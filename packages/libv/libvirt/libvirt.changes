@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 21 22:21:48 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- spec: Disable rbd storage driver for SLFO
+  bsc#1239836
+
+-------------------------------------------------------------------
 Mon Mar  3 23:48:42 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 11.1.0
