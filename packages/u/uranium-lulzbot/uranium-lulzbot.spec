@@ -1,7 +1,7 @@
 #
 # spec file for package uranium-lulzbot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,10 @@ Version:        3.6.21
 Release:        0
 Summary:        3D printer control software: python UI stack
 License:        AGPL-3.0-only
-Group:          Development/Libraries/C and C++
 URL:            https://code.alephobjects.com/diffusion/U/uranium.git
 Source0:        Uranium-%{version}.tar.xz
 Patch1:         fix-build.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  python311-devel
 Recommends:     python311-numpy-stl
@@ -47,7 +46,7 @@ Uranium is the Python framework for the Cura UI.
 %build
 CFLAGS="%{optflags}"
 export CFLAGS
-%cmake -DPYTHON_EXECUTABLE=/usr/bin/python3.11
+%cmake -DPYTHON_EXECUTABLE=/usr/bin/python3.11 -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
 %install
