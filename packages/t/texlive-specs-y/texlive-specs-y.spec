@@ -1,7 +1,7 @@
 #
-# spec file for package texlive-specs-y.spec
+# spec file for package texlive-specs-y
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2024
+%define texlive_version  2025
 %define texlive_previous 2022
-%define texlive_release  20240311
-%define texlive_noarch   216
-%define biber_version    2.19
+%define texlive_release  20250308
+%define texlive_noarch   218
+%define biber_version    2.20
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-y
-Version:        2024
+Version:        2025
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -113,7 +113,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ucharcat-doc >= %{texlive_version}
 Provides:       tex(ucharcat.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source1:        ucharcat.tar.xz
 Source2:        ucharcat.doc.tar.xz
 
@@ -191,7 +191,7 @@ Suggests:       texlive-ucharclasses-doc >= %{texlive_version}
 Provides:       tex(ucharclasses.sty)
 Requires:       tex(ifxetex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source3:        ucharclasses.tar.xz
 Source4:        ucharclasses.doc.tar.xz
 
@@ -240,7 +240,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/ucharclasses/ucharclasses.sty
 
 %package -n texlive-ucph-revy
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn69750
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn73167
 Release:        0
 License:        LPPL-1.0
 Summary:        Musical script formatting
@@ -275,7 +275,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(varwidth.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source5:        ucph-revy.tar.xz
 Source6:        ucph-revy.doc.tar.xz
 
@@ -286,7 +286,7 @@ student revues (revy) at the Faculties of Science at the
 University of Copenhagen (uchp).
 
 %package -n texlive-ucph-revy-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn69750
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn73167
 Release:        0
 Summary:        Documentation for texlive-ucph-revy
 License:        LPPL-1.0
@@ -592,7 +592,7 @@ Requires:       tex(inputenc.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(utf8.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source7:        ucs.tar.xz
 Source8:        ucs.doc.tar.xz
 
@@ -976,7 +976,7 @@ Requires:       tex(textpos.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source9:        ucsmonograph.tar.xz
 Source10:       ucsmonograph.doc.tar.xz
 
@@ -1056,7 +1056,7 @@ Provides:       tex(uct11.clo)
 Provides:       tex(uct12.clo)
 Provides:       tex(ucthesis.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source11:       ucthesis.tar.xz
 Source12:       ucthesis.doc.tar.xz
 
@@ -1137,7 +1137,7 @@ Suggests:       texlive-udepcolor-doc >= %{texlive_version}
 Provides:       tex(udepcolor.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source13:       udepcolor.tar.xz
 Source14:       udepcolor.doc.tar.xz
 
@@ -1227,7 +1227,7 @@ Requires:       tex(geometry.sty)
 Requires:       tex(parskip.sty)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source15:       udes-genie-these.tar.xz
 Source16:       udes-genie-these.doc.tar.xz
 
@@ -1354,7 +1354,7 @@ Requires:       tex(wallpaper.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source17:       udesoftec.tar.xz
 Source18:       udesoftec.doc.tar.xz
 
@@ -1409,6 +1409,104 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/udesoftec/udesoftec-extra.sty
 %{_texmfdistdir}/tex/latex/udesoftec/udesoftec.cls
 
+%package -n texlive-udiss
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn72466
+Release:        0
+License:        GPL-2.0-or-later
+Summary:        A LaTeX bundle for typesetting dissertations
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-udiss-doc >= %{texlive_version}
+Provides:       tex(udiss.cls)
+Requires:       tex(babel.sty)
+Requires:       tex(csquotes.sty)
+Requires:       tex(expkv-def.sty)
+Requires:       tex(expkv-opt.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(hyperxmp.sty)
+Requires:       tex(iflang.sty)
+Requires:       tex(iftex.sty)
+Requires:       tex(memoir.cls)
+Requires:       tex(unicode-math.sty)
+Requires:       tex(xcolor.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source19:       udiss.tar.xz
+Source20:       udiss.doc.tar.xz
+
+%description -n texlive-udiss
+The udiss bundle is a LaTeX-class-file developed to assist
+students in typesetting their university dissertations. It is a
+collection of multiple support files. Universities often have
+strict requirements regarding the formatting of the
+dissertations/theses submitted to them. This bundle
+pre-supplies a generic style (university-agnostic) for creating
+dissertations. It also supports custom layouts required for
+different universities.
+
+%package -n texlive-udiss-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn72466
+Release:        0
+Summary:        Documentation for texlive-udiss
+License:        GPL-2.0-or-later
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-udiss and texlive-alldocumentation)
+
+%description -n texlive-udiss-doc
+This package includes the documentation for texlive-udiss
+
+%post -n texlive-udiss
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-udiss
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-udiss
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-udiss-doc
+%{_texmfdistdir}/doc/latex/udiss/README.txt
+%{_texmfdistdir}/doc/latex/udiss/udiss-fonts-english.tex
+%{_texmfdistdir}/doc/latex/udiss/udiss-fonts-hindi.tex
+%{_texmfdistdir}/doc/latex/udiss/udiss-fonts-malayalam.tex
+%{_texmfdistdir}/doc/latex/udiss/udiss-fonts-marathi.tex
+%{_texmfdistdir}/doc/latex/udiss/udiss-style-ukerala.tex
+%{_texmfdistdir}/doc/latex/udiss/udiss.pdf
+
+%files -n texlive-udiss
+%{_texmfdistdir}/tex/latex/udiss/logos/udiss-logo-ukerala.png
+%{_texmfdistdir}/tex/latex/udiss/udiss.cls
+
 %package -n texlive-uebungsblatt
 Version:        %{texlive_version}.%{texlive_noarch}.1.5.0svn15878
 Release:        0
@@ -1447,9 +1545,9 @@ Requires:       tex(fancyhdr.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(inputenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source19:       uebungsblatt.tar.xz
-Source20:       uebungsblatt.doc.tar.xz
+# from 20250308
+Source21:       uebungsblatt.tar.xz
+Source22:       uebungsblatt.doc.tar.xz
 
 %description -n texlive-uebungsblatt
 This package implements a LaTeX class for writing exercise
@@ -1562,9 +1660,9 @@ Requires:       tex(tabularx.sty)
 Requires:       tex(texnames.sty)
 Requires:       tex(threeparttable.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source21:       uestcthesis.tar.xz
-Source22:       uestcthesis.doc.tar.xz
+# from 20250308
+Source23:       uestcthesis.tar.xz
+Source24:       uestcthesis.doc.tar.xz
 
 %description -n texlive-uestcthesis
 The class is for typesetting a thesis at the University of
@@ -1645,7 +1743,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/uestcthesis/uestcthesis.cls
 
 %package -n texlive-ufrgscca
-Version:        %{texlive_version}.%{texlive_noarch}.2.7svn70600
+Version:        %{texlive_version}.%{texlive_noarch}.2.11svn72586
 Release:        0
 License:        LPPL-1.0
 Summary:        A bundle for undergraduate students final work/report (tcc) at UFRGS/EE
@@ -1738,9 +1836,9 @@ Provides:       tex(ufrgscca-forms.tex)
 Provides:       tex(ufrgscca-terms-ptBR.tex)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source23:       ufrgscca.tar.xz
-Source24:       ufrgscca.doc.tar.xz
+# from 20250308
+Source25:       ufrgscca.tar.xz
+Source26:       ufrgscca.doc.tar.xz
 
 %description -n texlive-ufrgscca
 This bundle is aimed at producing undergraduate students' final
@@ -1751,7 +1849,7 @@ a main class, ufrgscca, and a set of auxiliary packages, some
 of which can be used independently.
 
 %package -n texlive-ufrgscca-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.7svn70600
+Version:        %{texlive_version}.%{texlive_noarch}.2.11svn72586
 Release:        0
 Summary:        Documentation for texlive-ufrgscca
 License:        LPPL-1.0
@@ -4971,9 +5069,9 @@ Provides:       tex(wmjxo8.vf)
 Provides:       tex(wmjxo9.tfm)
 Provides:       tex(wmjxo9.vf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source25:       uhc.tar.xz
-Source26:       uhc.doc.tar.xz
+# from 20250308
+Source27:       uhc.tar.xz
+Source28:       uhc.doc.tar.xz
 
 %description -n texlive-uhc
 Support for Korean documents written in Korean standard KSC
@@ -8314,9 +8412,9 @@ Requires:       tex(lmodern.sty)
 Requires:       tex(scrlayer-scrpage.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source27:       uhhassignment.tar.xz
-Source28:       uhhassignment.doc.tar.xz
+# from 20250308
+Source29:       uhhassignment.tar.xz
+Source30:       uhhassignment.doc.tar.xz
 
 %description -n texlive-uhhassignment
 This document class was created for typesetting solutions to
@@ -8390,9 +8488,9 @@ Suggests:       texlive-uhrzeit-doc >= %{texlive_version}
 Provides:       tex(uhrzeit.sty)
 Requires:       tex(soul.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source29:       uhrzeit.tar.xz
-Source30:       uhrzeit.doc.tar.xz
+# from 20250308
+Source31:       uhrzeit.tar.xz
+Source32:       uhrzeit.doc.tar.xz
 
 %description -n texlive-uhrzeit
 The primary goal of this package is to facilitate formats and
@@ -8467,9 +8565,9 @@ Suggests:       texlive-uiucredborder-doc >= %{texlive_version}
 Provides:       tex(uiucredborder.cls)
 Requires:       tex(geometry.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source31:       uiucredborder.tar.xz
-Source32:       uiucredborder.doc.tar.xz
+# from 20250308
+Source33:       uiucredborder.tar.xz
+Source34:       uiucredborder.doc.tar.xz
 
 %description -n texlive-uiucredborder
 The class offers a means of filling out the "red-bordered form"
@@ -8544,9 +8642,9 @@ Provides:       tex(uiucthesis.sty)
 Requires:       tex(book.cls)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source33:       uiucthesis.tar.xz
-Source34:       uiucthesis.doc.tar.xz
+# from 20250308
+Source35:       uiucthesis.tar.xz
+Source36:       uiucthesis.doc.tar.xz
 
 %description -n texlive-uiucthesis
 The class produces a document that conforms to the format
@@ -8635,9 +8733,9 @@ Requires:       tex(setspace.sty)
 Requires:       tex(textpos.sty)
 Requires:       tex(titlesec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source35:       ukbill.tar.xz
-Source36:       ukbill.doc.tar.xz
+# from 20250308
+Source37:       ukbill.tar.xz
+Source38:       ukbill.doc.tar.xz
 
 %description -n texlive-ukbill
 This package provides formatting to easily typeset draft UK
@@ -8729,9 +8827,9 @@ Provides:       tex(ukrhypmt.tex)
 Provides:       tex(ukrhypsm.tex)
 Provides:       tex(ukrhypst.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source37:       ukrhyph.tar.xz
-Source38:       ukrhyph.doc.tar.xz
+# from 20250308
+Source39:       ukrhyph.tar.xz
+Source40:       ukrhyph.doc.tar.xz
 
 %description -n texlive-ukrhyph
 A range of patterns, depending on the encoding of the output
@@ -8827,9 +8925,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ulem-doc >= %{texlive_version}
 Provides:       tex(ulem.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source39:       ulem.tar.xz
-Source40:       ulem.doc.tar.xz
+# from 20250308
+Source41:       ulem.tar.xz
+Source42:       ulem.doc.tar.xz
 
 %description -n texlive-ulem
 The package provides an \ul (underline) command which will
@@ -8917,9 +9015,9 @@ Requires:       tex(multicol.sty)
 Requires:       tex(soul.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source41:       ulqda.tar.xz
-Source42:       ulqda.doc.tar.xz
+# from 20250308
+Source43:       ulqda.tar.xz
+Source44:       ulqda.doc.tar.xz
 
 %description -n texlive-ulqda
 The package is for use in Qualitative Data Analysis research.
@@ -8968,7 +9066,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ulqda/ulqda.sty
 
 %package -n texlive-ulthese
-Version:        %{texlive_version}.%{texlive_noarch}.5.3asvn60217
+Version:        %{texlive_version}.%{texlive_noarch}.6.0svn71697
 Release:        0
 License:        LPPL-1.0
 Summary:        Thesis class and templates for Universite Laval
@@ -8997,22 +9095,20 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ulthese-doc >= %{texlive_version}
 Provides:       tex(ulthese.cls)
 Requires:       tex(babel.sty)
-Requires:       tex(chapterbib.sty)
-Requires:       tex(etoolbox.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
-Requires:       tex(ifxetex.sty)
+Requires:       tex(inputenc.sty)
 Requires:       tex(memoir.cls)
+Requires:       tex(microtype.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(numprint.sty)
-Requires:       tex(textcomp.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source43:       ulthese.tar.xz
-Source44:       ulthese.doc.tar.xz
+# from 20250308
+Source45:       ulthese.tar.xz
+Source46:       ulthese.doc.tar.xz
 
 %description -n texlive-ulthese
 The package provides a class based on memoir to prepare theses
@@ -9025,7 +9121,7 @@ comments in the templates are all written in French, the
 language of the target audience.
 
 %package -n texlive-ulthese-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5.3asvn60217
+Version:        %{texlive_version}.%{texlive_noarch}.6.0svn71697
 Release:        0
 Summary:        Documentation for texlive-ulthese
 License:        LPPL-1.0
@@ -9118,9 +9214,9 @@ Requires:       tex(lineno.sty)
 Requires:       tex(mdframed.sty)
 Requires:       tex(xifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source45:       umbclegislation.tar.xz
-Source46:       umbclegislation.doc.tar.xz
+# from 20250308
+Source47:       umbclegislation.tar.xz
+Source48:       umbclegislation.doc.tar.xz
 
 %description -n texlive-umbclegislation
 LaTeX class for building legislation files for UMBC Student
@@ -9199,9 +9295,9 @@ Requires:       tex(geometry.sty)
 Requires:       tex(placeins.sty)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source47:       umich-thesis.tar.xz
-Source48:       umich-thesis.doc.tar.xz
+# from 20250308
+Source49:       umich-thesis.tar.xz
+Source50:       umich-thesis.doc.tar.xz
 
 %description -n texlive-umich-thesis
 A LaTeX2e class to create a University of Michigan dissertation
@@ -9276,9 +9372,9 @@ Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 Requires:       tex(relsize.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source49:       uml.tar.xz
-Source50:       uml.doc.tar.xz
+# from 20250308
+Source51:       uml.tar.xz
+Source52:       uml.doc.tar.xz
 
 %description -n texlive-uml
 A PSTricks related package for writing UML (Unified Modelling
@@ -9363,9 +9459,9 @@ Requires:       tex(cp850.def)
 Requires:       tex(inputenc.sty)
 Requires:       tex(latin1.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source51:       umlaute.tar.xz
-Source52:       umlaute.doc.tar.xz
+# from 20250308
+Source53:       umlaute.tar.xz
+Source54:       umlaute.doc.tar.xz
 
 %description -n texlive-umlaute
 An early package for using alternate input encodings. The
@@ -9445,9 +9541,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-umoline-doc >= %{texlive_version}
 Provides:       tex(umoline.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source53:       umoline.tar.xz
-Source54:       umoline.doc.tar.xz
+# from 20250308
+Source55:       umoline.tar.xz
+Source56:       umoline.doc.tar.xz
 
 %description -n texlive-umoline
 Provides commands \Underline, \Midline and \Overline for
@@ -9525,9 +9621,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source55:       umthesis.tar.xz
-Source56:       umthesis.doc.tar.xz
+# from 20250308
+Source57:       umthesis.tar.xz
+Source58:       umthesis.doc.tar.xz
 
 %description -n texlive-umthesis
 The class loads book class, and makes minimal changes to it;
@@ -9610,9 +9706,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-umtypewriter-fonts >= %{texlive_version}
 Suggests:       texlive-umtypewriter-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source57:       umtypewriter.tar.xz
-Source58:       umtypewriter.doc.tar.xz
+# from 20250308
+Source59:       umtypewriter.tar.xz
+Source60:       umtypewriter.doc.tar.xz
 
 %description -n texlive-umtypewriter
 The UMTypewriter font family is a monospaced font family that
@@ -9744,9 +9840,9 @@ Requires:       tex(subcaption.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source59:       unam-thesis.tar.xz
-Source60:       unam-thesis.doc.tar.xz
+# from 20250308
+Source61:       unam-thesis.tar.xz
+Source62:       unam-thesis.doc.tar.xz
 
 %description -n texlive-unam-thesis
 This is a class for creating dissertation documents according
@@ -9816,8 +9912,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source61:       unamth-template.doc.tar.xz
+# from 20250308
+Source63:       unamth-template.doc.tar.xz
 
 %description -n texlive-unamth-template
 The bundle provides a template for UNAM's College of
@@ -9908,9 +10004,9 @@ Provides:       tex(UNAMThesis.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source62:       unamthesis.tar.xz
-Source63:       unamthesis.doc.tar.xz
+# from 20250308
+Source64:       unamthesis.tar.xz
+Source65:       unamthesis.doc.tar.xz
 
 %description -n texlive-unamthesis
 The package provides a customisable format to typeset Theses
@@ -9971,7 +10067,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/unamthesis/UNAMThesis.sty
 
 %package -n texlive-unbtex
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.1svn70307
+Version:        %{texlive_version}.%{texlive_noarch}.1.5.4svn73390
 Release:        0
 License:        LPPL-1.0
 Summary:        A class for theses at University of Brasilia (UnB)
@@ -10001,8 +10097,7 @@ Suggests:       texlive-unbtex-doc >= %{texlive_version}
 Provides:       tex(unbtex.cls)
 Requires:       tex(abntex2.cls)
 Requires:       tex(abntex2cite.sty)
-Requires:       tex(algorithm.sty)
-Requires:       tex(algpseudocode.sty)
+Requires:       tex(algorithm2e.sty)
 Requires:       tex(amsthm.sty)
 Requires:       tex(backref.sty)
 Requires:       tex(cite.sty)
@@ -10013,8 +10108,11 @@ Requires:       tex(icomma.sty)
 Requires:       tex(inconsolata.sty)
 Requires:       tex(indentfirst.sty)
 Requires:       tex(listings.sty)
+Requires:       tex(longtable.sty)
+Requires:       tex(mathalfa.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(mdframed.sty)
+Requires:       tex(mem11.clo)
 Requires:       tex(microtype.sty)
 Requires:       tex(multirow.sty)
 Requires:       tex(newtxmath.sty)
@@ -10024,12 +10122,13 @@ Requires:       tex(scontents.sty)
 Requires:       tex(stickstootext.sty)
 Requires:       tex(subfig.sty)
 Requires:       tex(tgheros.sty)
+Requires:       tex(tocbasic.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source64:       unbtex.tar.xz
-Source65:       unbtex.doc.tar.xz
+# from 20250308
+Source66:       unbtex.tar.xz
+Source67:       unbtex.doc.tar.xz
 
 %description -n texlive-unbtex
 This package provides a class based on abnTeX and compatible
@@ -10042,7 +10141,7 @@ are all written in Portuguese, the language of the target
 audience.
 
 %package -n texlive-unbtex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.1svn70307
+Version:        %{texlive_version}.%{texlive_noarch}.1.5.4svn73390
 Release:        0
 Summary:        Documentation for texlive-unbtex
 License:        LPPL-1.0
@@ -10076,9 +10175,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example.pdf
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example.tex
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/anexo-a.tex
-%{_texmfdistdir}/doc/latex/unbtex/unbtex-example/anexo-b.tex
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/apendice-a.tex
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/apendice-b.tex
+%{_texmfdistdir}/doc/latex/unbtex/unbtex-example/apendice-c.tex
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/capitulo1.tex
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/capitulo2.tex
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/capitulo3.tex
@@ -10088,11 +10187,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/codigos/blockdiagram.tex
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/codigos/controle.m
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/codigos/controleSmithPredictor.py
-%{_texmfdistdir}/doc/latex/unbtex/unbtex-example/figuras/1280px-LaTeX-logo.png
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/figuras/blockdiagram.eps
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/figuras/blockdiagram.pdf
-%{_texmfdistdir}/doc/latex/unbtex/unbtex-example/figuras/bodediagram.pdf
-%{_texmfdistdir}/doc/latex/unbtex/unbtex-example/figuras/capa_fundo.pdf
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/figuras/circuito.pdf
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/figuras/coresunb.pdf
 %{_texmfdistdir}/doc/latex/unbtex/unbtex-example/figuras/diodocurva.pdf
@@ -10101,6 +10197,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/unbtex/unbtexcite/unbtex-alf-pt.bst
 %{_texmfdistdir}/doc/latex/unbtex/unbtexcite/unbtex-num-en.bst
 %{_texmfdistdir}/doc/latex/unbtex/unbtexcite/unbtex-num-pt.bst
+%{_texmfdistdir}/doc/latex/unbtex/unbtexcover/capa.pdf
+%{_texmfdistdir}/doc/latex/unbtex/unbtexcover/contracapa.pdf
 
 %files -n texlive-unbtex
 %{_texmfdistdir}/tex/latex/unbtex/unbtex.cls
@@ -10142,9 +10240,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source66:       undar-digitacion.tar.xz
-Source67:       undar-digitacion.doc.tar.xz
+# from 20250308
+Source68:       undar-digitacion.tar.xz
+Source69:       undar-digitacion.doc.tar.xz
 
 %description -n texlive-undar-digitacion
 The package provides tools for generating: Pinkullo Huanuqueno
@@ -10219,8 +10317,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source68:       undergradmath.doc.tar.xz
+# from 20250308
+Source70:       undergradmath.doc.tar.xz
 
 %description -n texlive-undergradmath
 This is a cheat sheet for writing mathematics with LaTeX. It is
@@ -10282,9 +10380,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-underlin-doc >= %{texlive_version}
 Provides:       tex(underlin.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source69:       underlin.tar.xz
-Source70:       underlin.doc.tar.xz
+# from 20250308
+Source71:       underlin.tar.xz
+Source72:       underlin.doc.tar.xz
 
 %description -n texlive-underlin
 Defines two pagestyles that provide underlined page heads in
@@ -10358,9 +10456,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source71:       underoverlap.tar.xz
-Source72:       underoverlap.doc.tar.xz
+# from 20250308
+Source73:       underoverlap.tar.xz
+Source74:       underoverlap.doc.tar.xz
 
 %description -n texlive-underoverlap
 The package overcomes TeX's inherent limitations in commands
@@ -10439,9 +10537,9 @@ Provides:       tex(underscore.sty)
 Requires:       tex(chicago.sty)
 Requires:       tex(fontenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source73:       underscore.tar.xz
-Source74:       underscore.doc.tar.xz
+# from 20250308
+Source75:       underscore.tar.xz
+Source76:       underscore.doc.tar.xz
 
 %description -n texlive-underscore
 With the package, \_ in text mode (i.e., \textunderscore)
@@ -10490,7 +10588,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/underscore/underscore.sty
 
 %package -n texlive-undolabl
-Version:        %{texlive_version}.%{texlive_noarch}.1.0msvn65846
+Version:        %{texlive_version}.%{texlive_noarch}.1.0osvn73633
 Release:        0
 License:        LPPL-1.0
 Summary:        Override existing labels
@@ -10519,16 +10617,16 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-undolabl-doc >= %{texlive_version}
 Provides:       tex(undolabl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source75:       undolabl.tar.xz
-Source76:       undolabl.doc.tar.xz
+# from 20250308
+Source77:       undolabl.tar.xz
+Source78:       undolabl.doc.tar.xz
 
 %description -n texlive-undolabl
 The package allows the user to override existing labels (for
 example, those generated automatically).
 
 %package -n texlive-undolabl-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0msvn65846
+Version:        %{texlive_version}.%{texlive_noarch}.1.0osvn73633
 Release:        0
 Summary:        Documentation for texlive-undolabl
 License:        LPPL-1.0
@@ -10595,9 +10693,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-unfonts-core-fonts >= %{texlive_version}
 Suggests:       texlive-unfonts-core-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source77:       unfonts-core.tar.xz
-Source78:       unfonts-core.doc.tar.xz
+# from 20250308
+Source79:       unfonts-core.tar.xz
+Source80:       unfonts-core.doc.tar.xz
 
 %description -n texlive-unfonts-core
 The Un-fonts come from the HLaTeX as type1 fonts in 1998 by
@@ -10724,9 +10822,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-unfonts-extra-fonts >= %{texlive_version}
 Suggests:       texlive-unfonts-extra-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source79:       unfonts-extra.tar.xz
-Source80:       unfonts-extra.doc.tar.xz
+# from 20250308
+Source81:       unfonts-extra.tar.xz
+Source82:       unfonts-extra.doc.tar.xz
 
 %description -n texlive-unfonts-extra
 The Un-fonts come from the HLaTeX as type1 fonts in 1998 by
@@ -10866,9 +10964,9 @@ Provides:       tex(uni-titlepage.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(scrbase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source81:       uni-titlepage.tar.xz
-Source82:       uni-titlepage.doc.tar.xz
+# from 20250308
+Source83:       uni-titlepage.tar.xz
+Source84:       uni-titlepage.doc.tar.xz
 
 %description -n texlive-uni-titlepage
 Creation of title pages is something most authors should not
@@ -10988,9 +11086,9 @@ Provides:       tex(uni-wtal-ger.cbx)
 Requires:       tex(authortitle-dw.bbx)
 Requires:       tex(authortitle-dw.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source83:       uni-wtal-ger.tar.xz
-Source84:       uni-wtal-ger.doc.tar.xz
+# from 20250308
+Source85:       uni-wtal-ger.tar.xz
+Source86:       uni-wtal-ger.doc.tar.xz
 
 %description -n texlive-uni-wtal-ger
 The package defines a BibLaTeX citation style based on the
@@ -11073,9 +11171,9 @@ Provides:       tex(uni-wtal-lin.cbx)
 Requires:       tex(authoryear.bbx)
 Requires:       tex(authoryear.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source85:       uni-wtal-lin.tar.xz
-Source86:       uni-wtal-lin.doc.tar.xz
+# from 20250308
+Source87:       uni-wtal-lin.tar.xz
+Source88:       uni-wtal-lin.doc.tar.xz
 
 %description -n texlive-uni-wtal-lin
 The package defines a BibLaTeX citation style based on the
@@ -11125,6 +11223,87 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/uni-wtal-lin/uni-wtal-lin.bbx
 %{_texmfdistdir}/tex/latex/uni-wtal-lin/uni-wtal-lin.cbx
 
+%package -n texlive-unibidi-lua
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73554
+Release:        0
+License:        GPL-2.0-or-later
+Summary:        Unicode bidi algorithm implementation for various LuaTeX formats
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-unibidi-lua-doc >= %{texlive_version}
+Provides:       tex(unibidi-lua.sty)
+Provides:       tex(unibidi-lua.tex)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source89:       unibidi-lua.tar.xz
+Source90:       unibidi-lua.doc.tar.xz
+
+%description -n texlive-unibidi-lua
+The package adopts the unicode bidi algorithm implementation
+provided in ConTeXt, and adapts it to be used in OpTeX, LaTeX
+and Plain TeX . It works under LuaTeX only.
+
+%package -n texlive-unibidi-lua-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73554
+Release:        0
+Summary:        Documentation for texlive-unibidi-lua
+License:        GPL-2.0-or-later
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-unibidi-lua and texlive-alldocumentation)
+
+%description -n texlive-unibidi-lua-doc
+This package includes the documentation for texlive-unibidi-lua
+
+%post -n texlive-unibidi-lua
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-unibidi-lua
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-unibidi-lua
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-unibidi-lua-doc
+%{_texmfdistdir}/doc/luatex/unibidi-lua/COPYING
+%{_texmfdistdir}/doc/luatex/unibidi-lua/README.md
+%{_texmfdistdir}/doc/luatex/unibidi-lua/unibidi-lua-doc.pdf
+
+%files -n texlive-unibidi-lua
+%{_texmfdistdir}/tex/luatex/unibidi-lua/unibidi-lua-data.lua
+%{_texmfdistdir}/tex/luatex/unibidi-lua/unibidi-lua.lua
+%{_texmfdistdir}/tex/luatex/unibidi-lua/unibidi-lua.opm
+%{_texmfdistdir}/tex/luatex/unibidi-lua/unibidi-lua.sty
+%{_texmfdistdir}/tex/luatex/unibidi-lua/unibidi-lua.tex
+
 %package -n texlive-unicode-alphabets
 Version:        %{texlive_version}.%{texlive_noarch}.svn66225
 Release:        0
@@ -11161,9 +11340,9 @@ Requires:       tex(pgfopts.sty)
 Requires:       tex(stringstrings.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source87:       unicode-alphabets.tar.xz
-Source88:       unicode-alphabets.doc.tar.xz
+# from 20250308
+Source91:       unicode-alphabets.tar.xz
+Source92:       unicode-alphabets.doc.tar.xz
 
 %description -n texlive-unicode-alphabets
 While Unicode supports the vast majority of use cases, there
@@ -11254,9 +11433,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-unicode-bidi-doc >= %{texlive_version}
 Provides:       tex(unicode-bidi.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source89:       unicode-bidi.tar.xz
-Source90:       unicode-bidi.doc.tar.xz
+# from 20250308
+Source93:       unicode-bidi.tar.xz
+Source94:       unicode-bidi.doc.tar.xz
 
 %description -n texlive-unicode-bidi
 The experimental unicode-bidi package allows to mix non-RTL
@@ -11298,7 +11477,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/unicode-bidi/unicode-bidi.sty
 
 %package -n texlive-unicode-data
-Version:        %{texlive_version}.%{texlive_noarch}.1.17svn68311
+Version:        %{texlive_version}.%{texlive_noarch}.1.18svn73362
 Release:        0
 License:        LPPL-1.0
 Summary:        Unicode data and loaders for TeX
@@ -11329,9 +11508,9 @@ Provides:       tex(load-unicode-data.tex)
 Provides:       tex(load-unicode-math-classes.tex)
 Provides:       tex(load-unicode-xetex-classes.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source91:       unicode-data.tar.xz
-Source92:       unicode-data.doc.tar.xz
+# from 20250308
+Source95:       unicode-data.tar.xz
+Source96:       unicode-data.doc.tar.xz
 
 %description -n texlive-unicode-data
 This bundle provides generic access to Unicode Consortium data
@@ -11350,7 +11529,7 @@ co-ordinated by the LaTeX3 Project as a general resource for
 TeX users.
 
 %package -n texlive-unicode-data-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.17svn68311
+Version:        %{texlive_version}.%{texlive_noarch}.1.18svn73362
 Release:        0
 Summary:        Documentation for texlive-unicode-data
 License:        LPPL-1.0
@@ -11445,9 +11624,9 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(lualatex-math.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source93:       unicode-math.tar.xz
-Source94:       unicode-math.doc.tar.xz
+# from 20250308
+Source97:       unicode-math.tar.xz
+Source98:       unicode-math.doc.tar.xz
 
 %description -n texlive-unicode-math
 This package provides a comprehensive implementation of unicode
@@ -11553,9 +11732,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(l3keys2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source95:       unicode-math-input.tar.xz
-Source96:       unicode-math-input.doc.tar.xz
+# from 20250308
+Source99:       unicode-math-input.tar.xz
+Source100:      unicode-math-input.doc.tar.xz
 
 %description -n texlive-unicode-math-input
 This package allows entering Unicode symbols in math formulas.
@@ -11603,7 +11782,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/unicode-math-input/unicode-math-input.sty
 
 %package -n texlive-unicodefonttable
-Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn70353
+Version:        %{texlive_version}.%{texlive_noarch}.1.0isvn71477
 Release:        0
 License:        LPPL-1.0
 Summary:        A Unicode font table generator
@@ -11640,9 +11819,9 @@ Requires:       tex(longtable.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source97:       unicodefonttable.tar.xz
-Source98:       unicodefonttable.doc.tar.xz
+# from 20250308
+Source101:      unicodefonttable.tar.xz
+Source102:      unicodefonttable.doc.tar.xz
 
 %description -n texlive-unicodefonttable
 This package produces font tables for unicode fonts as well as
@@ -11654,7 +11833,7 @@ few questions and then generates the table --- somewhat similar
 to nfssfont.tex for 8-bit fonts.
 
 %package -n texlive-unicodefonttable-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn70353
+Version:        %{texlive_version}.%{texlive_noarch}.1.0isvn71477
 Release:        0
 Summary:        Documentation for texlive-unicodefonttable
 License:        LPPL-1.0
@@ -11686,7 +11865,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/unicodefonttable/README.md
 %{_texmfdistdir}/doc/latex/unicodefonttable/TODO.md
 %{_texmfdistdir}/doc/latex/unicodefonttable/changes.txt
-%{_texmfdistdir}/doc/latex/unicodefonttable/l3doc-TUB.cls
+%{_texmfdistdir}/doc/latex/unicodefonttable/l3doc-TUB2024.cls
 %{_texmfdistdir}/doc/latex/unicodefonttable/unicodefonttable-code.pdf
 %{_texmfdistdir}/doc/latex/unicodefonttable/unicodefonttable-code.tex
 %{_texmfdistdir}/doc/latex/unicodefonttable/unicodefonttable-doc.pdf
@@ -11744,9 +11923,9 @@ Requires:       tex(lmodern.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source99:       unifith.tar.xz
-Source100:      unifith.doc.tar.xz
+# from 20250308
+Source103:      unifith.tar.xz
+Source104:      unifith.doc.tar.xz
 
 %description -n texlive-unifith
 The package provides a class to typeset Ph.D., Master, and
@@ -11827,9 +12006,9 @@ Provides:       tex(unifront.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source101:      unifront.tar.xz
-Source102:      unifront.doc.tar.xz
+# from 20250308
+Source105:      unifront.tar.xz
+Source106:      unifront.doc.tar.xz
 
 %description -n texlive-unifront
 This package can help you format your notes easily and give
@@ -11923,9 +12102,9 @@ Requires:       tex(scrbook.cls)
 Requires:       tex(scrlayer-scrpage.sty)
 Requires:       tex(sourceserifpro.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source103:      unigrazpub.tar.xz
-Source104:      unigrazpub.doc.tar.xz
+# from 20250308
+Source107:      unigrazpub.tar.xz
+Source108:      unigrazpub.doc.tar.xz
 
 %description -n texlive-unigrazpub
 This package provides a LaTeX class matching the preparation
@@ -11981,7 +12160,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/unigrazpub/unigrazpub.cls
 
 %package -n texlive-unimath-plain-xetex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2bsvn66394
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2csvn72498
 Release:        0
 License:        LPPL-1.0
 Summary:        OpenType math support in (plain) XeTeX
@@ -12024,16 +12203,16 @@ Provides:       tex(unimath-sfbfit.map)
 Provides:       tex(unimath-sfit.map)
 Provides:       tex(unimath-tt.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source105:      unimath-plain-xetex.tar.xz
-Source106:      unimath-plain-xetex.doc.tar.xz
+# from 20250308
+Source109:      unimath-plain-xetex.tar.xz
+Source110:      unimath-plain-xetex.doc.tar.xz
 
 %description -n texlive-unimath-plain-xetex
 This package provides OpenType math font support in plain TeX
 format. It only works with the XeTeX engine.
 
 %package -n texlive-unimath-plain-xetex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2bsvn66394
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2csvn72498
 Release:        0
 Summary:        Documentation for texlive-unimath-plain-xetex
 License:        LPPL-1.0
@@ -12063,7 +12242,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-unimath-plain-xetex-doc
 %{_texmfdistdir}/doc/xetex/unimath-plain-xetex/README.md
-%{_texmfdistdir}/doc/xetex/unimath-plain-xetex/unimath-plain-genmap.lua
 %{_texmfdistdir}/doc/xetex/unimath-plain-xetex/unimath-plain-xetex-doc.pdf
 %{_texmfdistdir}/doc/xetex/unimath-plain-xetex/unimath-plain-xetex-doc.tex
 
@@ -12131,9 +12309,9 @@ Requires:       tex(kvoptions.sty)
 Requires:       tex(luacode.sty)
 Requires:       tex(luatexbase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source107:      uninormalize.tar.xz
-Source108:      uninormalize.doc.tar.xz
+# from 20250308
+Source111:      uninormalize.tar.xz
+Source112:      uninormalize.doc.tar.xz
 
 %description -n texlive-uninormalize
 This package provides Unicode normalization (useful for
@@ -12211,9 +12389,9 @@ Provides:       tex(uniquecounter.sty)
 Requires:       tex(bigintcalc.sty)
 Requires:       tex(infwarerr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source109:      uniquecounter.tar.xz
-Source110:      uniquecounter.doc.tar.xz
+# from 20250308
+Source113:      uniquecounter.tar.xz
+Source114:      uniquecounter.doc.tar.xz
 
 %description -n texlive-uniquecounter
 This package provides a kind of counter that provides unique
@@ -12289,9 +12467,9 @@ Provides:       tex(unisc.sty)
 Requires:       tex(pgfparser.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source111:      unisc.tar.xz
-Source112:      unisc.doc.tar.xz
+# from 20250308
+Source115:      unisc.tar.xz
+Source116:      unisc.doc.tar.xz
 
 %description -n texlive-unisc
 LaTeX produces small caps with \textsc{text} or {\scshape
@@ -12371,9 +12549,9 @@ Suggests:       texlive-unisugar-doc >= %{texlive_version}
 Provides:       tex(unisugar.sty)
 Requires:       tex(ifxetex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source113:      unisugar.tar.xz
-Source114:      unisugar.doc.tar.xz
+# from 20250308
+Source117:      unisugar.tar.xz
+Source118:      unisugar.doc.tar.xz
 
 %description -n texlive-unisugar
 The package allows the user to define shorthand aliases for
@@ -12457,9 +12635,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(luacode.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source115:      unitconv.tar.xz
-Source116:      unitconv.doc.tar.xz
+# from 20250308
+Source119:      unitconv.tar.xz
+Source120:      unitconv.doc.tar.xz
 
 %description -n texlive-unitconv
 This package defines two macros to convert a value with unit
@@ -12544,9 +12722,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(libertine.sty)
 Requires:       tex(report.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source117:      unitn-bimrep.tar.xz
-Source118:      unitn-bimrep.doc.tar.xz
+# from 20250308
+Source121:      unitn-bimrep.tar.xz
+Source122:      unitn-bimrep.doc.tar.xz
 
 %description -n texlive-unitn-bimrep
 This package allows to rapidly write the bimonthly report for
@@ -12633,9 +12811,9 @@ Provides:       tex(nicefrac.sty)
 Provides:       tex(units.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source119:      units.tar.xz
-Source120:      units.doc.tar.xz
+# from 20250308
+Source123:      units.tar.xz
+Source124:      units.doc.tar.xz
 
 %description -n texlive-units
 The package is provided as a bundle with the nicefrac package
@@ -12724,9 +12902,9 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(units.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source121:      unitsdef.tar.xz
-Source122:      unitsdef.doc.tar.xz
+# from 20250308
+Source125:      unitsdef.tar.xz
+Source126:      unitsdef.doc.tar.xz
 
 %description -n texlive-unitsdef
 Many packages for typesetting units have been written for use
@@ -12859,9 +13037,9 @@ Provides:       tex(t1uni.fd)
 Provides:       tex(uni.sty)
 Provides:       tex(uuni.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source123:      universa.tar.xz
-Source124:      universa.doc.tar.xz
+# from 20250308
+Source127:      universa.tar.xz
+Source128:      universa.doc.tar.xz
 
 %description -n texlive-universa
 An implementation of the "universal" font by Herbert Bayer of
@@ -13181,9 +13359,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source125:      universalis.tar.xz
-Source126:      universalis.doc.tar.xz
+# from 20250308
+Source129:      universalis.tar.xz
+Source130:      universalis.doc.tar.xz
 
 %description -n texlive-universalis
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -13437,7 +13615,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-universalis/UniversalisADFStd-RegularLCDFJ.pfb
 
 %package -n texlive-univie-ling
-Version:        %{texlive_version}.%{texlive_noarch}.2.4svn66728
+Version:        %{texlive_version}.%{texlive_noarch}.2.9svn72484
 Release:        0
 License:        LPPL-1.0
 Summary:        Papers, theses and research proposals in (Applied) Linguistics at Vienna University
@@ -13498,7 +13676,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(helvet.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
-Requires:       tex(l3keys2e.sty)
+Requires:       tex(isodate.sty)
 Requires:       tex(lastpage.sty)
 Requires:       tex(mathpazo.sty)
 Requires:       tex(mathptmx.sty)
@@ -13519,16 +13697,16 @@ Requires:       tex(sourcesanspro.sty)
 Requires:       tex(sourceserifpro.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(textcase.sty)
+Requires:       tex(tikzpagenodes.sty)
 Requires:       tex(totpages.sty)
 Requires:       tex(translator.sty)
 Requires:       tex(url.sty)
 Requires:       tex(varioref.sty)
 Requires:       tex(xcolor.sty)
-Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source127:      univie-ling.tar.xz
-Source128:      univie-ling.doc.tar.xz
+# from 20250308
+Source131:      univie-ling.tar.xz
+Source132:      univie-ling.doc.tar.xz
 
 %description -n texlive-univie-ling
 This bundle provides LaTeX2e classes, BibLaTeX files, and
@@ -13544,7 +13722,7 @@ Vienna University. In this case, however, some settings may
 have to be adjusted.
 
 %package -n texlive-univie-ling-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.4svn66728
+Version:        %{texlive_version}.%{texlive_noarch}.2.9svn72484
 Release:        0
 Summary:        Documentation for texlive-univie-ling
 License:        LPPL-1.0
@@ -13600,6 +13778,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/univie-ling/templates/template-wlg-article.tex
 %{_texmfdistdir}/doc/latex/univie-ling/templates/template-wlg-review.pdf
 %{_texmfdistdir}/doc/latex/univie-ling/templates/template-wlg-review.tex
+%{_texmfdistdir}/doc/latex/univie-ling/univie-ling-bbx.pdf
+%{_texmfdistdir}/doc/latex/univie-ling/univie-ling-bbx.tex
 %{_texmfdistdir}/doc/latex/univie-ling/univie-ling-expose.pdf
 %{_texmfdistdir}/doc/latex/univie-ling/univie-ling-expose.tex
 %{_texmfdistdir}/doc/latex/univie-ling/univie-ling-handout.pdf
@@ -13670,9 +13850,9 @@ Requires:       tex(titlesec.sty)
 Requires:       tex(tocbibind.sty)
 Requires:       tex(upgreek.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source129:      unizgklasa.tar.xz
-Source130:      unizgklasa.doc.tar.xz
+# from 20250308
+Source133:      unizgklasa.tar.xz
+Source134:      unizgklasa.doc.tar.xz
 
 %description -n texlive-unizgklasa
 This class is intended for generating graduate and final theses
@@ -13751,9 +13931,9 @@ Suggests:       texlive-unravel-doc >= %{texlive_version}
 Provides:       tex(unravel.sty)
 Requires:       tex(gtl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source131:      unravel.tar.xz
-Source132:      unravel.doc.tar.xz
+# from 20250308
+Source135:      unravel.tar.xz
+Source136:      unravel.doc.tar.xz
 
 %description -n texlive-unravel
 The aim of this LaTeX package is to help debug complicated
@@ -13834,9 +14014,9 @@ Requires:       tex(babel.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(pdfpages.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source133:      unswcover.tar.xz
-Source134:      unswcover.doc.tar.xz
+# from 20250308
+Source137:      unswcover.tar.xz
+Source138:      unswcover.doc.tar.xz
 
 %description -n texlive-unswcover
 The package an UNSW cover sheet following the 2011 GRS
@@ -13946,9 +14126,9 @@ Requires:       tex(titlesec.sty)
 Requires:       tex(titling.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source135:      uol-physics-report.tar.xz
-Source136:      uol-physics-report.doc.tar.xz
+# from 20250308
+Source139:      uol-physics-report.tar.xz
+Source140:      uol-physics-report.doc.tar.xz
 
 %description -n texlive-uol-physics-report
 The package provides physics students at the University of
@@ -14044,9 +14224,9 @@ Requires:       tex(todonotes.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source137:      uothesis.tar.xz
-Source138:      uothesis.doc.tar.xz
+# from 20250308
+Source141:      uothesis.tar.xz
+Source142:      uothesis.doc.tar.xz
 
 %description -n texlive-uothesis
 The class generates documents that are suitable for submission
@@ -14130,9 +14310,9 @@ Requires:       tex(nextpage.sty)
 Requires:       tex(report.cls)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source139:      uowthesis.tar.xz
-Source140:      uowthesis.doc.tar.xz
+# from 20250308
+Source143:      uowthesis.tar.xz
+Source144:      uowthesis.doc.tar.xz
 
 %description -n texlive-uowthesis
 A document class for higher degree research theses in
@@ -14216,9 +14396,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(ragged2e.sty)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source141:      uowthesistitlepage.tar.xz
-Source142:      uowthesistitlepage.doc.tar.xz
+# from 20250308
+Source145:      uowthesistitlepage.tar.xz
+Source146:      uowthesistitlepage.doc.tar.xz
 
 %description -n texlive-uowthesistitlepage
 The package redefines \maketitle to generate a title page for a
@@ -14296,9 +14476,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-upca-doc >= %{texlive_version}
 Provides:       tex(upca.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source143:      upca.tar.xz
-Source144:      upca.doc.tar.xz
+# from 20250308
+Source147:      upca.tar.xz
+Source148:      upca.doc.tar.xz
 
 %description -n texlive-upca
 The package defines a single macro \upca, to print UPC-A
@@ -14341,7 +14521,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/upca/upca.tex
 
 %package -n texlive-updatemarks
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2esvn69986
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2fsvn72489
 Release:        0
 License:        LPPL-1.0
 Summary:        Extract and update marks from boxes
@@ -14375,9 +14555,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source145:      updatemarks.tar.xz
-Source146:      updatemarks.doc.tar.xz
+# from 20250308
+Source149:      updatemarks.tar.xz
+Source150:      updatemarks.doc.tar.xz
 
 %description -n texlive-updatemarks
 This package can help you update marks if you put your title in
@@ -14385,7 +14565,7 @@ boxes. It also patches the multicol package to let the new mark
 mechanism of LaTeX work (partially).
 
 %package -n texlive-updatemarks-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2esvn69986
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2fsvn72489
 Release:        0
 Summary:        Documentation for texlive-updatemarks
 License:        LPPL-1.0
@@ -14423,7 +14603,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/updatemarks/updatemarks.sty
 
 %package -n texlive-uplatex
-Version:        %{texlive_version}.%{texlive_noarch}.svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 License:        BSD-3-Clause
 Summary:        PLaTeX2e and miscellaneous macros for upTeX
@@ -14437,10 +14617,16 @@ Requires:       texlive-firstaid >= %{texlive_version}
 #!BuildIgnore: texlive-firstaid
 Requires:       texlive-hyphen-base >= %{texlive_version}
 #!BuildIgnore: texlive-hyphen-base
+Requires:       texlive-knuth-lib >= %{texlive_version}
+#!BuildIgnore: texlive-knuth-lib
 Requires:       texlive-l3backend >= %{texlive_version}
 #!BuildIgnore: texlive-l3backend
+Requires:       texlive-l3backend-dev >= %{texlive_version}
+#!BuildIgnore: texlive-l3backend-dev
 Requires:       texlive-l3kernel >= %{texlive_version}
 #!BuildIgnore: texlive-l3kernel
+Requires:       texlive-l3kernel-dev >= %{texlive_version}
+#!BuildIgnore: texlive-l3kernel-dev
 Requires:       texlive-latex >= %{texlive_version}
 #!BuildIgnore: texlive-latex
 Requires:       texlive-latex-base-dev >= %{texlive_version}
@@ -14527,9 +14713,9 @@ Suggests:       man(latex.1)
 Requires:       tex(plext.sty)
 Requires:       tex(ptrace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source147:      uplatex.tar.xz
-Source148:      uplatex.doc.tar.xz
+# from 20250308
+Source151:      uplatex.tar.xz
+Source152:      uplatex.doc.tar.xz
 
 %description -n texlive-uplatex
 The bundle provides pLaTeX2e macros for upTeX by Takuji Tanaka.
@@ -14537,7 +14723,7 @@ This is a community edition syncing with platex. The bundle
 depends on platex.
 
 %package -n texlive-uplatex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 Summary:        Documentation for texlive-uplatex
 License:        BSD-3-Clause
@@ -14587,14 +14773,6 @@ fi
 > /var/run/texlive/run-fmtutil.uplatex
 > /var/run/texlive/run-fmtutil.uplatex-dev
 
-%triggerin -n texlive-uplatex -- texlive-firstaid
-> /var/run/texlive/run-fmtutil.uplatex
-> /var/run/texlive/run-fmtutil.uplatex-dev
-
-%triggerun -n texlive-uplatex -- texlive-firstaid
-> /var/run/texlive/run-fmtutil.uplatex
-> /var/run/texlive/run-fmtutil.uplatex-dev
-
 %triggerin -n texlive-uplatex -- texlive-hyphen-base
 > /var/run/texlive/run-fmtutil.uplatex
 > /var/run/texlive/run-fmtutil.uplatex-dev
@@ -14603,27 +14781,27 @@ fi
 > /var/run/texlive/run-fmtutil.uplatex
 > /var/run/texlive/run-fmtutil.uplatex-dev
 
-%triggerin -n texlive-uplatex -- texlive-l3backend
+%triggerin -n texlive-uplatex -- texlive-knuth-lib
 > /var/run/texlive/run-fmtutil.uplatex
 > /var/run/texlive/run-fmtutil.uplatex-dev
 
-%triggerun -n texlive-uplatex -- texlive-l3backend
+%triggerun -n texlive-uplatex -- texlive-knuth-lib
 > /var/run/texlive/run-fmtutil.uplatex
 > /var/run/texlive/run-fmtutil.uplatex-dev
 
-%triggerin -n texlive-uplatex -- texlive-l3kernel
+%triggerin -n texlive-uplatex -- texlive-l3backend-dev
 > /var/run/texlive/run-fmtutil.uplatex
 > /var/run/texlive/run-fmtutil.uplatex-dev
 
-%triggerun -n texlive-uplatex -- texlive-l3kernel
+%triggerun -n texlive-uplatex -- texlive-l3backend-dev
 > /var/run/texlive/run-fmtutil.uplatex
 > /var/run/texlive/run-fmtutil.uplatex-dev
 
-%triggerin -n texlive-uplatex -- texlive-latex
+%triggerin -n texlive-uplatex -- texlive-l3kernel-dev
 > /var/run/texlive/run-fmtutil.uplatex
 > /var/run/texlive/run-fmtutil.uplatex-dev
 
-%triggerun -n texlive-uplatex -- texlive-latex
+%triggerun -n texlive-uplatex -- texlive-l3kernel-dev
 > /var/run/texlive/run-fmtutil.uplatex
 > /var/run/texlive/run-fmtutil.uplatex-dev
 
@@ -14727,7 +14905,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/uplatex/config/uplatex.ini
 
 %package -n texlive-upmendex
-Version:        %{texlive_version}.%{texlive_noarch}.1.07svn66381
+Version:        %{texlive_version}.%{texlive_noarch}.1.11svn74401
 Release:        0
 License:        BSD-3-Clause
 Summary:        Multilingual index processor
@@ -14757,8 +14935,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(upmendex.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source149:      upmendex.doc.tar.xz
+# from 20250308
+Source153:      upmendex.doc.tar.xz
 
 %description -n texlive-upmendex
 The package is a multilingual index processor with the
@@ -14794,6 +14972,66 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/upmendex.1*
 %{_texmfdistdir}/doc/support/upmendex/COPYRIGHT
 %{_texmfdistdir}/doc/support/upmendex/README.md
+%{_texmfdistdir}/doc/support/upmendex/present/src/Makefile
+%{_texmfdistdir}/doc/support/upmendex/present/src/ar00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/beamerouterthememyinfolines.sty
+%{_texmfdistdir}/doc/support/upmendex/present/src/beamerthemeTokyo.sty
+%{_texmfdistdir}/doc/support/upmendex/present/src/city0.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/city1.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/city_texconf.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/de00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/el00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/haranoaji-uptex.map
+%{_texmfdistdir}/doc/support/upmendex/present/src/he00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/hi00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/hu00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/hy_pua.dic
+%{_texmfdistdir}/doc/support/upmendex/present/src/jp01.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/jp02.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/jp03.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/jp04.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/jp05.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/ko03.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/lt00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg1.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg2.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg3.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg4.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg5.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg6.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg8.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_ar0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_de0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_de1.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_el0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_he0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_hi0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_hu0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_lt0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_ru0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_sk0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_sk1.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_th0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_tr0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_zh0.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_zh1.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_zh2.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_zh3.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_zh4.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/mlg_zh5.ist
+%{_texmfdistdir}/doc/support/upmendex/present/src/ru00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/sk00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/th00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/tr00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/upmendex-slide-ctan.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/yomi.dic
+%{_texmfdistdir}/doc/support/upmendex/present/src/yomi00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/yomi01.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/yomi1.dic
+%{_texmfdistdir}/doc/support/upmendex/present/src/zh00.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/zh01a.tex
+%{_texmfdistdir}/doc/support/upmendex/present/src/zh01b.tex
 %{_texmfdistdir}/doc/support/upmendex/samples/Makefile
 %{_texmfdistdir}/doc/support/upmendex/samples/alphabet/Makefile
 %{_texmfdistdir}/doc/support/upmendex/samples/alphabet/alpha_es.idx
@@ -14839,7 +15077,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/support/upmendex/samples/option/mdxsty_j00.ist
 %{_texmfdistdir}/doc/support/upmendex/samples/option/mdxsty_j01.ist
 %{_texmfdistdir}/doc/support/upmendex/samples/option/mdxsty_j02.ist
-%{_texmfdistdir}/doc/support/upmendex/samples/option/mdxsty_rule0.ist
 %{_texmfdistdir}/doc/support/upmendex/samples/option/rule0.ist
 %{_texmfdistdir}/doc/support/upmendex/samples/russian.idx
 %{_texmfdistdir}/doc/support/upmendex/upmendex-slide-ctan.pdf
@@ -14914,9 +15151,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source150:      upmethodology.tar.xz
-Source151:      upmethodology.doc.tar.xz
+# from 20250308
+Source154:      upmethodology.tar.xz
+Source155:      upmethodology.doc.tar.xz
 
 %description -n texlive-upmethodology
 The bundle allows the user to create Unified Process
@@ -15046,9 +15283,9 @@ Requires:       tex(ec-lmri7.tfm)
 Requires:       tex(ec-lmri8.tfm)
 Requires:       tex(ec-lmri9.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source152:      uppunctlm.tar.xz
-Source153:      uppunctlm.doc.tar.xz
+# from 20250308
+Source156:      uppunctlm.tar.xz
+Source157:      uppunctlm.doc.tar.xz
 
 %description -n texlive-uppunctlm
 The package provides a mechanism to keep punctuation always in
@@ -15137,9 +15374,9 @@ Suggests:       texlive-upquote-doc >= %{texlive_version}
 Provides:       tex(upquote.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source154:      upquote.tar.xz
-Source155:      upquote.doc.tar.xz
+# from 20250308
+Source158:      upquote.tar.xz
+Source159:      upquote.doc.tar.xz
 
 %description -n texlive-upquote
 Typewriter-style fonts are best for program listings, but
@@ -15191,7 +15428,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/upquote/upquote.sty
 
 %package -n texlive-uptex
-Version:        %{texlive_version}.%{texlive_noarch}.svn66381
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 License:        LPPL-1.0
 Summary:        Unicode version of pTeX
@@ -15273,8 +15510,8 @@ Suggests:       man(ppltotf.1)
 Suggests:       man(ptex.1)
 Suggests:       man(ptftopl.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source156:      uptex.doc.tar.xz
+# from 20250308
+Source160:      uptex.doc.tar.xz
 
 %description -n texlive-uptex
 upTeX is an extension of pTeX, using UTF-8 input and producing
@@ -15374,7 +15611,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/uptftopl.1*
 
 %package -n texlive-uptex-base
-Version:        %{texlive_version}.%{texlive_noarch}.svn68298
+Version:        %{texlive_version}.%{texlive_noarch}.svn73291
 Release:        0
 License:        BSD-3-Clause
 Summary:        Plain TeX formats and documents for upTeX
@@ -15404,16 +15641,16 @@ Suggests:       texlive-uptex-base-doc >= %{texlive_version}
 Provides:       tex(ukinsoku.tex)
 Provides:       tex(uptex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source157:      uptex-base.tar.xz
-Source158:      uptex-base.doc.tar.xz
+# from 20250308
+Source161:      uptex-base.tar.xz
+Source162:      uptex-base.doc.tar.xz
 
 %description -n texlive-uptex-base
 The bundle contains plain TeX format files and documents for
 upTeX and and e-upTeX.
 
 %package -n texlive-uptex-base-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn68298
+Version:        %{texlive_version}.%{texlive_noarch}.svn73291
 Release:        0
 Summary:        Documentation for texlive-uptex-base
 License:        BSD-3-Clause
@@ -15460,7 +15697,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/uptex/uptex-base/samples/aozora-ujreport-utf8.tex
 %{_texmfdistdir}/doc/uptex/uptex-base/samples/aozora-utarticle-utf8.tex
 %{_texmfdistdir}/doc/uptex/uptex-base/samples/aozora-utbook-utf8.tex
-%{_texmfdistdir}/doc/uptex/uptex-base/samples/aozora-utf8.tex
 %{_texmfdistdir}/doc/uptex/uptex-base/samples/aozora-utreport-utf8.tex
 %{_texmfdistdir}/doc/uptex/uptex-base/samples/area-euc-incl.tex
 %{_texmfdistdir}/doc/uptex/uptex-base/samples/area-euc.mp
@@ -15517,6 +15753,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/uptex/uptex-base/samples/simple-u-utf8.tex
 %{_texmfdistdir}/doc/uptex/uptex-base/samples/simple-utf8.tex
 %{_texmfdistdir}/doc/uptex/uptex-base/samples/texxet-jis.tex
+%{_texmfdistdir}/doc/uptex/uptex-base/samples/udhr-algrya.tex
+%{_texmfdistdir}/doc/uptex/uptex-base/samples/udhr-cgrmd.tex
+%{_texmfdistdir}/doc/uptex/uptex-base/samples/udhr-clara.tex
+%{_texmfdistdir}/doc/uptex/uptex-base/samples/udhr-common.tex
+%{_texmfdistdir}/doc/uptex/uptex-base/samples/udhr-dejavu.tex
+%{_texmfdistdir}/doc/uptex/uptex-base/samples/udhr-gntm.tex
+%{_texmfdistdir}/doc/uptex/uptex-base/samples/udhr-kurier.tex
+%{_texmfdistdir}/doc/uptex/uptex-base/samples/udhr-lmdrn.tex
+%{_texmfdistdir}/doc/uptex/uptex-base/samples/udhr-noto.tex
+%{_texmfdistdir}/doc/uptex/uptex-base/samples/udhr-roboto.tex
+%{_texmfdistdir}/doc/uptex/uptex-base/samples/udhr-source.tex
 %{_texmfdistdir}/doc/uptex/uptex-base/samples/umin10x.tfm
 %{_texmfdistdir}/doc/uptex/uptex-base/samples/utfsmpl-uplatex.tex
 %{_texmfdistdir}/doc/uptex/uptex-base/samples/widow.tex
@@ -15531,7 +15778,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/uptex/uptex-base/uptex.tex
 
 %package -n texlive-uptex-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn68297
+Version:        %{texlive_version}.%{texlive_noarch}.svn74119
 Release:        0
 License:        BSD-3-Clause
 Summary:        Fonts for use with upTeX
@@ -15560,6 +15807,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-uptex-fonts-doc >= %{texlive_version}
 Provides:       tex(makejvf-upjis.cnf)
 Provides:       tex(makejvf-upjpn.cnf)
+Provides:       tex(makejvf-upkor.cnf)
+Provides:       tex(makejvf-upsch.cnf)
+Provides:       tex(makejvf-uptch.cnf)
 Provides:       tex(ugbm.tfm)
 Provides:       tex(ugbmv.tfm)
 Provides:       tex(ugoth10.tfm)
@@ -15637,9 +15887,9 @@ Provides:       tex(utmin10.vf)
 Requires:       tex(gbm.tfm)
 Requires:       tex(rml.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source159:      uptex-fonts.tar.xz
-Source160:      uptex-fonts.doc.tar.xz
+# from 20250308
+Source163:      uptex-fonts.tar.xz
+Source164:      uptex-fonts.doc.tar.xz
 
 %description -n texlive-uptex-fonts
 The bundle contains fonts (TFM and VF) for use with upTeX. This
@@ -15647,7 +15897,7 @@ is a redistribution derived from the upTeX distribution by
 Takuji Tanaka.
 
 %package -n texlive-uptex-fonts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn68297
+Version:        %{texlive_version}.%{texlive_noarch}.svn74119
 Release:        0
 Summary:        Documentation for texlive-uptex-fonts
 License:        BSD-3-Clause
@@ -15691,8 +15941,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/source/uptex-fonts/Makefile
 %{_texmfdistdir}/fonts/source/uptex-fonts/makejvf-upjis.cnf
 %{_texmfdistdir}/fonts/source/uptex-fonts/makejvf-upjpn.cnf
+%{_texmfdistdir}/fonts/source/uptex-fonts/makejvf-upkor.cnf
+%{_texmfdistdir}/fonts/source/uptex-fonts/makejvf-upsch.cnf
+%{_texmfdistdir}/fonts/source/uptex-fonts/makejvf-uptch.cnf
 %{_texmfdistdir}/fonts/source/uptex-fonts/makepl.perl
+%{_texmfdistdir}/fonts/source/uptex-fonts/mk_svs_entry.perl
+%{_texmfdistdir}/fonts/source/uptex-fonts/mk_svs_tex.perl
 %{_texmfdistdir}/fonts/source/uptex-fonts/punctuation.md
+%{_texmfdistdir}/fonts/source/uptex-fonts/svs_list_c.txt
+%{_texmfdistdir}/fonts/source/uptex-fonts/svs_list_j.txt
+%{_texmfdistdir}/fonts/source/uptex-fonts/svs_list_jpn.entry
+%{_texmfdistdir}/fonts/source/uptex-fonts/svs_list_k.txt
+%{_texmfdistdir}/fonts/source/uptex-fonts/svs_list_kor.entry
+%{_texmfdistdir}/fonts/source/uptex-fonts/svs_list_sch.entry
+%{_texmfdistdir}/fonts/source/uptex-fonts/svs_list_t.txt
+%{_texmfdistdir}/fonts/source/uptex-fonts/svs_list_tch.entry
 %{_texmfdistdir}/fonts/source/uptex-fonts/upjisr-h-hk.pl
 %{_texmfdistdir}/fonts/source/uptex-fonts/upjisr-h.pl
 %{_texmfdistdir}/fonts/source/uptex-fonts/upjisr-v.pl
@@ -15809,9 +16072,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-upzhkinsoku-doc >= %{texlive_version}
 Provides:       tex(upzhkinsoku.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source161:      upzhkinsoku.tar.xz
-Source162:      upzhkinsoku.doc.tar.xz
+# from 20250308
+Source165:      upzhkinsoku.tar.xz
+Source166:      upzhkinsoku.doc.tar.xz
 
 %description -n texlive-upzhkinsoku
 This package provides supplementary Chinese kinsoku (line
@@ -15907,9 +16170,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source163:      urcls.tar.xz
-Source164:      urcls.doc.tar.xz
+# from 20250308
+Source167:      urcls.tar.xz
+Source168:      urcls.doc.tar.xz
 
 %description -n texlive-urcls
 The bundle provides a beamer-derived class and a theme style
@@ -16004,9 +16267,9 @@ Provides:       tex(uri.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source165:      uri.tar.xz
-Source166:      uri.doc.tar.xz
+# from 20250308
+Source169:      uri.tar.xz
+Source170:      uri.doc.tar.xz
 
 %description -n texlive-uri
 The package provides automatic hyperlinks for URIs of type
@@ -16082,9 +16345,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-url-doc >= %{texlive_version}
 Provides:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source167:      url.tar.xz
-Source168:      url.doc.tar.xz
+# from 20250308
+Source171:      url.tar.xz
+Source172:      url.doc.tar.xz
 
 %description -n texlive-url
 The command \url is a form of verbatim command that allows
@@ -16167,9 +16430,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-urlbst-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source169:      urlbst.tar.xz
-Source170:      urlbst.doc.tar.xz
+# from 20250308
+Source173:      urlbst.tar.xz
+Source174:      urlbst.doc.tar.xz
 
 %description -n texlive-urlbst
 Supports a new BibTeX 'webpage' entry type and 'url',
@@ -16259,9 +16522,9 @@ Provides:       tex(urwchancal.vf)
 Provides:       tex(uurwchancal.fd)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source171:      urwchancal.tar.xz
-Source172:      urwchancal.doc.tar.xz
+# from 20250308
+Source175:      urwchancal.tar.xz
+Source176:      urwchancal.doc.tar.xz
 
 %description -n texlive-urwchancal
 The package allows (the URW clone of) Zapf Chancery to function
@@ -16343,9 +16606,9 @@ Provides:       tex(usebib.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source173:      usebib.tar.xz
-Source174:      usebib.doc.tar.xz
+# from 20250308
+Source177:      usebib.tar.xz
+Source178:      usebib.doc.tar.xz
 
 %description -n texlive-usebib
 The package is described by its author as "a poor person's
@@ -16392,7 +16655,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/usebib/usebib.sty
 
 %package -n texlive-useclass
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn70444
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72455
 Release:        0
 License:        LPPL-1.0
 Summary:        Load classes as packages
@@ -16421,9 +16684,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-useclass-doc >= %{texlive_version}
 Provides:       tex(useclass.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source175:      useclass.tar.xz
-Source176:      useclass.doc.tar.xz
+# from 20250308
+Source179:      useclass.tar.xz
+Source180:      useclass.doc.tar.xz
 
 %description -n texlive-useclass
 This package enables the usage of classes as packages. It was
@@ -16435,7 +16698,7 @@ Therefore, this package provides a simple interface for
 utilizing classes as packages.
 
 %package -n texlive-useclass-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn70444
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72455
 Release:        0
 Summary:        Documentation for texlive-useclass
 License:        LPPL-1.0
@@ -16500,9 +16763,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ushort-doc >= %{texlive_version}
 Provides:       tex(ushort.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source177:      ushort.tar.xz
-Source178:      ushort.doc.tar.xz
+# from 20250308
+Source181:      ushort.tar.xz
+Source182:      ushort.doc.tar.xz
 
 %description -n texlive-ushort
 Some engineers need underlined or twice underlined variables
@@ -16582,9 +16845,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(newunicodechar.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source179:      uspace.tar.xz
-Source180:      uspace.doc.tar.xz
+# from 20250308
+Source183:      uspace.tar.xz
+Source184:      uspace.doc.tar.xz
 
 %description -n texlive-uspace
 LaTeX package that gives meaning to various Unicode space
@@ -16675,9 +16938,9 @@ Requires:       tex(prettyref.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source181:      uspatent.tar.xz
-Source182:      uspatent.doc.tar.xz
+# from 20250308
+Source185:      uspatent.tar.xz
+Source186:      uspatent.doc.tar.xz
 
 %description -n texlive-uspatent
 The package provides a class and other tools for developing a
@@ -16747,7 +17010,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/uspatent/uspatent.cls
 
 %package -n texlive-ut-thesis
-Version:        %{texlive_version}.%{texlive_noarch}.3.1.7svn65767
+Version:        %{texlive_version}.%{texlive_noarch}.3.1.8svn71906
 Release:        0
 License:        LPPL-1.0
 Summary:        University of Toronto thesis style
@@ -16779,9 +17042,9 @@ Requires:       tex(book.cls)
 Requires:       tex(geometry.sty)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source183:      ut-thesis.tar.xz
-Source184:      ut-thesis.doc.tar.xz
+# from 20250308
+Source187:      ut-thesis.tar.xz
+Source188:      ut-thesis.doc.tar.xz
 
 %description -n texlive-ut-thesis
 This LaTeX document class implements the formatting
@@ -16791,7 +17054,7 @@ https://www.sgs.utoronto.ca/academic-progress/program-completio
 n/formatting). For example usage, see the GitHub repository.
 
 %package -n texlive-ut-thesis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.1.7svn65767
+Version:        %{texlive_version}.%{texlive_noarch}.3.1.8svn71906
 Release:        0
 Summary:        Documentation for texlive-ut-thesis
 License:        LPPL-1.0
@@ -16867,9 +17130,9 @@ Requires:       tex(tocbibind.sty)
 Requires:       tex(tocloft.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source185:      utexasthesis.tar.xz
-Source186:      utexasthesis.doc.tar.xz
+# from 20250308
+Source189:      utexasthesis.tar.xz
+Source190:      utexasthesis.doc.tar.xz
 
 %description -n texlive-utexasthesis
 This class file complies with the Digital Submission
@@ -16948,9 +17211,9 @@ Requires:       tex(nicefrac.sty)
 Requires:       tex(upgreek.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source187:      utf8add.tar.xz
-Source188:      utf8add.doc.tar.xz
+# from 20250308
+Source191:      utf8add.tar.xz
+Source192:      utf8add.doc.tar.xz
 
 %description -n texlive-utf8add
 This bundle contains the LaTeX packages utf8add.sty and
@@ -17032,9 +17295,9 @@ Suggests:       texlive-utf8mex-doc >= %{texlive_version}
 Provides:       tex(utf8-pl.tex)
 Provides:       tex(utf8plsq.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source189:      utf8mex.tar.xz
-Source190:      utf8mex.doc.tar.xz
+# from 20250308
+Source193:      utf8mex.tar.xz
+Source194:      utf8mex.doc.tar.xz
 
 %description -n texlive-utf8mex
 The bundle provides files for building formats to read input in
@@ -17121,9 +17384,9 @@ Requires:       tex(newunicodechar.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source191:      utfsym.tar.xz
-Source192:      utfsym.doc.tar.xz
+# from 20250308
+Source195:      utfsym.tar.xz
+Source196:      utfsym.doc.tar.xz
 
 %description -n texlive-utfsym
 This package provides various symbols from the Unicode in order
@@ -18929,9 +19192,9 @@ Provides:       tex(putro8r.tfm)
 Provides:       tex(putro8t.tfm)
 Provides:       tex(putro8t.vf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source193:      utopia.tar.xz
-Source194:      utopia.doc.tar.xz
+# from 20250308
+Source197:      utopia.tar.xz
+Source198:      utopia.doc.tar.xz
 
 %description -n texlive-utopia
 The Adobe Standard Encoding set (upright and italic shapes,
@@ -19102,9 +19365,9 @@ Requires:       tex(setspace.sty)
 Requires:       tex(soul.sty)
 Requires:       tex(times.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source195:      uvaletter.tar.xz
-Source196:      uvaletter.doc.tar.xz
+# from 20250308
+Source199:      uvaletter.tar.xz
+Source200:      uvaletter.doc.tar.xz
 
 %description -n texlive-uvaletter
 This is an unofficial LaTeX package that provides a letterhead
@@ -19181,9 +19444,9 @@ Suggests:       texlive-uwa-colours-doc >= %{texlive_version}
 Provides:       tex(uwa-colours.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source197:      uwa-colours.tar.xz
-Source198:      uwa-colours.doc.tar.xz
+# from 20250308
+Source201:      uwa-colours.tar.xz
+Source202:      uwa-colours.doc.tar.xz
 
 %description -n texlive-uwa-colours
 This package uses the xcolor package to define macros for the
@@ -19265,9 +19528,9 @@ Requires:       tex(textpos.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source199:      uwa-letterhead.tar.xz
-Source200:      uwa-letterhead.doc.tar.xz
+# from 20250308
+Source203:      uwa-letterhead.tar.xz
+Source204:      uwa-letterhead.doc.tar.xz
 
 %description -n texlive-uwa-letterhead
 This package generates the letterhead of the University of
@@ -19350,9 +19613,9 @@ Requires:       tex(titlesec.sty)
 Requires:       tex(uwa-letterhead.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source201:      uwa-pcf.tar.xz
-Source202:      uwa-pcf.doc.tar.xz
+# from 20250308
+Source205:      uwa-pcf.tar.xz
+Source206:      uwa-pcf.doc.tar.xz
 
 %description -n texlive-uwa-pcf
 This LaTeX class generates a Participant Consent Form (PCF) for
@@ -19438,9 +19701,9 @@ Requires:       tex(titlesec.sty)
 Requires:       tex(uwa-letterhead.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source203:      uwa-pif.tar.xz
-Source204:      uwa-pif.doc.tar.xz
+# from 20250308
+Source207:      uwa-pif.tar.xz
+Source208:      uwa-pif.doc.tar.xz
 
 %description -n texlive-uwa-pif
 This package generates a Participant Information Form (PIF) for
@@ -19522,9 +19785,9 @@ Requires:       tex(article.cls)
 Requires:       tex(epsfig.sty)
 Requires:       tex(times.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source205:      uwmslide.tar.xz
-Source206:      uwmslide.doc.tar.xz
+# from 20250308
+Source209:      uwmslide.tar.xz
+Source210:      uwmslide.doc.tar.xz
 
 %description -n texlive-uwmslide
 A slide format which produces slides with a simple Power Point
@@ -19608,9 +19871,9 @@ Provides:       tex(uwthesis.cls)
 Requires:       tex(book.cls)
 Requires:       tex(natbib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source207:      uwthesis.tar.xz
-Source208:      uwthesis.doc.tar.xz
+# from 20250308
+Source211:      uwthesis.tar.xz
+Source212:      uwthesis.doc.tar.xz
 
 %description -n texlive-uwthesis
 The uwthesis package
@@ -19683,9 +19946,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-vak-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source209:      vak.tar.xz
-Source210:      vak.doc.tar.xz
+# from 20250308
+Source213:      vak.tar.xz
+Source214:      vak.doc.tar.xz
 
 %description -n texlive-vak
 The file can be used to format the bibliographies of PhD
@@ -19764,9 +20027,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-vancouver-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source211:      vancouver.tar.xz
-Source212:      vancouver.doc.tar.xz
+# from 20250308
+Source215:      vancouver.tar.xz
+Source216:      vancouver.doc.tar.xz
 
 %description -n texlive-vancouver
 This BibTeX style file is generated with the docstrip utility
@@ -19862,9 +20125,9 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source213:      variablelm.tar.xz
-Source214:      variablelm.doc.tar.xz
+# from 20250308
+Source217:      variablelm.tar.xz
+Source218:      variablelm.doc.tar.xz
 
 %description -n texlive-variablelm
 This package provides a mechanism for scaling a typeface. It is
@@ -19953,9 +20216,9 @@ Suggests:       texlive-variations-doc >= %{texlive_version}
 Provides:       tex(variations.sty)
 Provides:       tex(variations.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source215:      variations.tar.xz
-Source216:      variations.doc.tar.xz
+# from 20250308
+Source219:      variations.tar.xz
+Source220:      variations.doc.tar.xz
 
 %description -n texlive-variations
 The package provides macros for typesetting tables showing
@@ -20034,9 +20297,9 @@ Suggests:       texlive-varindex-doc >= %{texlive_version}
 Provides:       tex(varindex.sty)
 Requires:       tex(toolbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source217:      varindex.tar.xz
-Source218:      varindex.doc.tar.xz
+# from 20250308
+Source221:      varindex.tar.xz
+Source222:      varindex.doc.tar.xz
 
 %description -n texlive-varindex
 Provides a convenient front-end for the \index command. For
@@ -20122,9 +20385,9 @@ Provides:       tex(7point.tex)
 Provides:       tex(8point.tex)
 Provides:       tex(9point.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source219:      varisize.tar.xz
-Source220:      varisize.doc.tar.xz
+# from 20250308
+Source223:      varisize.tar.xz
+Source224:      varisize.doc.tar.xz
 
 %description -n texlive-varisize
 A series of files, each of which defines a size-change macro.
@@ -20207,9 +20470,9 @@ Provides:       tex(varsfromjobname.sty)
 Requires:       tex(currfile.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source221:      varsfromjobname.tar.xz
-Source222:      varsfromjobname.doc.tar.xz
+# from 20250308
+Source225:      varsfromjobname.tar.xz
+Source226:      varsfromjobname.doc.tar.xz
 
 %description -n texlive-varsfromjobname
 The package allows the user to extract information from the job
@@ -20284,9 +20547,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-varwidth-doc >= %{texlive_version}
 Provides:       tex(varwidth.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source223:      varwidth.tar.xz
-Source224:      varwidth.doc.tar.xz
+# from 20250308
+Source227:      varwidth.tar.xz
+Source228:      varwidth.doc.tar.xz
 
 %description -n texlive-varwidth
 The varwidth environment is superficially similar to minipage,
@@ -20376,9 +20639,9 @@ Requires:       tex(pst-plot.sty)
 Requires:       tex(pstricks.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source225:      vaucanson-g.tar.xz
-Source226:      vaucanson-g.doc.tar.xz
+# from 20250308
+Source229:      vaucanson-g.tar.xz
+Source230:      vaucanson-g.doc.tar.xz
 
 %description -n texlive-vaucanson-g
 VauCanSon-G is a package that enables the user to draw automata
@@ -20461,9 +20724,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-vcell-doc >= %{texlive_version}
 Provides:       tex(vcell.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source227:      vcell.tar.xz
-Source228:      vcell.doc.tar.xz
+# from 20250308
+Source231:      vcell.tar.xz
+Source232:      vcell.doc.tar.xz
 
 %description -n texlive-vcell
 This package offers low-level macros to build rows with
@@ -20542,9 +20805,9 @@ Requires:       tex(color.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(times.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source229:      vdmlisting.tar.xz
-Source230:      vdmlisting.doc.tar.xz
+# from 20250308
+Source233:      vdmlisting.tar.xz
+Source234:      vdmlisting.doc.tar.xz
 
 %description -n texlive-vdmlisting
 The package is an extension for the listings package that
@@ -20593,7 +20856,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/vdmlisting/vdmlisting.sty
 
 %package -n texlive-vectorlogos
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn69010
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn73069
 Release:        0
 License:        LPPL-1.0
 Summary:        Vectorial logos (GeoGebra, Emacs, Scratch, ...) with 'inline' support
@@ -20625,9 +20888,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source231:      vectorlogos.tar.xz
-Source232:      vectorlogos.doc.tar.xz
+# from 20250308
+Source235:      vectorlogos.tar.xz
+Source236:      vectorlogos.doc.tar.xz
 
 %description -n texlive-vectorlogos
 With this package you can insert vectorial logos of some
@@ -20636,7 +20899,7 @@ provides macros to insert them inline, with automatic height
 and alignment.
 
 %package -n texlive-vectorlogos-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn69010
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn73069
 Release:        0
 Summary:        Documentation for texlive-vectorlogos
 License:        LPPL-1.0
@@ -20670,16 +20933,23 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/vectorlogos/vectorlogos-doc.tex
 
 %files -n texlive-vectorlogos
+%{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-ctanlion.pdf
 %{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-emacs-alt.pdf
 %{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-emacs.pdf
 %{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-geogebra-icon.pdf
 %{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-geogebra.pdf
+%{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-latexproject.pdf
+%{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-miktex-icon-alt.pdf
+%{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-miktex-icon.pdf
+%{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-miktex.pdf
 %{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-scratch-alt.pdf
 %{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-scratch-cat.pdf
 %{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-scratch.pdf
 %{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-texmaker-alt.pdf
 %{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-texmaker.pdf
 %{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-texstudio.pdf
+%{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-texworks-alt.pdf
+%{_texmfdistdir}/tex/latex/vectorlogos/vectorlogo-texworks.pdf
 %{_texmfdistdir}/tex/latex/vectorlogos/vectorlogos.sty
 
 %package -n texlive-velthuis
@@ -20806,9 +21076,9 @@ Provides:       tex(udnpn.fd)
 Requires:       tex(cite.sty)
 Requires:       tex(ifxetex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source233:      velthuis.tar.xz
-Source234:      velthuis.doc.tar.xz
+# from 20250308
+Source237:      velthuis.tar.xz
+Source238:      velthuis.doc.tar.xz
 
 %description -n texlive-velthuis
 Frans Velthuis' preprocessor for Devanagari text, and fonts and
@@ -21250,9 +21520,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-venn-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source235:      venn.tar.xz
-Source236:      venn.doc.tar.xz
+# from 20250308
+Source239:      venn.tar.xz
+Source240:      venn.doc.tar.xz
 
 %description -n texlive-venn
 MetaPost macros for venn diagrams.
@@ -21325,9 +21595,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source237:      venndiagram.tar.xz
-Source238:      venndiagram.doc.tar.xz
+# from 20250308
+Source241:      venndiagram.tar.xz
+Source242:      venndiagram.doc.tar.xz
 
 %description -n texlive-venndiagram
 The package assists generation of simple two- and three-set
@@ -21374,7 +21644,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/venndiagram/venndiagram.sty
 
 %package -n texlive-venturisadf
-Version:        %{texlive_version}.%{texlive_noarch}.1.005svn19444
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn72484
 Release:        0
 License:        LPPL-1.0
 Summary:        Venturis ADF fonts collection
@@ -21413,8 +21683,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-venturisadf-fonts >= %{texlive_version}
 Suggests:       texlive-venturisadf-doc >= %{texlive_version}
-Provides:       tex(t1-dotalt-f_f-venturisadf.enc)
-Provides:       tex(t1-f_f-venturisadf.enc)
+Provides:       tex(t1-dotalt-f_f-yv.enc)
+Provides:       tex(t1-f_f-yv.enc)
 Provides:       tex(t1-venturis.enc)
 Provides:       tex(t1-venturisold-longs.enc)
 Provides:       tex(t1-yv1b-c.tfm)
@@ -21509,7 +21779,7 @@ Provides:       tex(t1yvtd.fd)
 Provides:       tex(t1yvtj.fd)
 Provides:       tex(t1yvtjw.fd)
 Provides:       tex(t1yvtw.fd)
-Provides:       tex(ts1-euro-venturisadf.enc)
+Provides:       tex(ts1-euro-yv.enc)
 Provides:       tex(ts1-yv1b-c.tfm)
 Provides:       tex(ts1-yv1b-x.tfm)
 Provides:       tex(ts1-yv1b.tfm)
@@ -21989,12 +22259,12 @@ Provides:       tex(yvtrw8tc.tfm)
 Provides:       tex(yvtrw8tc.vf)
 Requires:       tex(fontenc.sty)
 Requires:       tex(nfssext-cfr.sty)
+Requires:       tex(svn-prov.sty)
 Requires:       tex(textcomp.sty)
-Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source239:      venturisadf.tar.xz
-Source240:      venturisadf.doc.tar.xz
+# from 20250308
+Source243:      venturisadf.tar.xz
+Source244:      venturisadf.doc.tar.xz
 
 %description -n texlive-venturisadf
 Serif and sans serif complete text font families, in both Adobe
@@ -22005,7 +22275,7 @@ LaTeX, is also provided (and makes use of the nfssext-cfr
 package).
 
 %package -n texlive-venturisadf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.005svn19444
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn72484
 Release:        0
 Summary:        Documentation for texlive-venturisadf
 License:        LPPL-1.0
@@ -22017,7 +22287,7 @@ Supplements:    (texlive-venturisadf and texlive-alldocumentation)
 This package includes the documentation for texlive-venturisadf
 
 %package -n texlive-venturisadf-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.005svn19444
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn72484
 Release:        0
 Summary:        Severed fonts for texlive-venturisadf
 License:        LPPL-1.0
@@ -22063,837 +22333,962 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-venturisadf-doc
 %{_texmfdistdir}/doc/fonts/venturisadf/LICENSE-utopia.txt
 %{_texmfdistdir}/doc/fonts/venturisadf/LIST-Venturis.txt
-%{_texmfdistdir}/doc/fonts/venturisadf/README
+%{_texmfdistdir}/doc/fonts/venturisadf/README.md
 %{_texmfdistdir}/doc/fonts/venturisadf/manifest.txt
+%{_texmfdistdir}/doc/fonts/venturisadf/venturis-example.pdf
+%{_texmfdistdir}/doc/fonts/venturisadf/venturis-example.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/venturis2-example.pdf
+%{_texmfdistdir}/doc/fonts/venturisadf/venturis2-example.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/venturisadf-imp.pdf
+%{_texmfdistdir}/doc/fonts/venturisadf/venturisadf-tables.pdf
+%{_texmfdistdir}/doc/fonts/venturisadf/venturisadf-tables.tex
 %{_texmfdistdir}/doc/fonts/venturisadf/venturisadf.pdf
-%{_texmfdistdir}/doc/fonts/venturisadf/venturisadf.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/venturisold-example.pdf
+%{_texmfdistdir}/doc/fonts/venturisadf/venturisold-example.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/venturissans-example.pdf
+%{_texmfdistdir}/doc/fonts/venturisadf/venturissans-example.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/venturissans2-example.pdf
+%{_texmfdistdir}/doc/fonts/venturisadf/venturissans2-example.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/yv1-drv.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/yv1-map.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/yv2-drv.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/yv2-map.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/yv3-drv.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/yv3-map.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/yvo-drv.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/yvo-map.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/yvt-drv.tex
+%{_texmfdistdir}/doc/fonts/venturisadf/yvt-map.tex
 
 %files -n texlive-venturisadf
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtb8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtb8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtbc8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtbc8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtbci8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtbci8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtbd8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtbi8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtbi8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvth8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvthi8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtr8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtr8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtrc8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtrc8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtrci8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtrci8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtrdl8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtri8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis/yvtri8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis2/yv2b8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis2/yv2b8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis2/yv2bi8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis2/yv2bi8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis2/yv2m8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis2/yv2mi8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis2/yv2r8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis2/yv2r8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis2/yv2ri8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis2/yv2ri8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis2/yv2x8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturis2/yv2xi8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturisold/yvob8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturisold/yvobi8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturisold/yvodd8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturisold/yvor8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturisold/yvori8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1b8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1b8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1b8ax.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1bd8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1bi8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1bi8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1bi8ax.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1d8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1dd8au.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1di8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1h8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1ho8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1l8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1li8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1r8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1r8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1r8ax.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1ri8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1ri8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans/yv1ri8ax.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans2/yv3b8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans2/yv3b8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans2/yv3b8ax.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans2/yv3bi8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans2/yv3bi8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans2/yv3bi8ax.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans2/yv3r8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans2/yv3r8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans2/yv3r8ax.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans2/yv3ri8a.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans2/yv3ri8ac.afm
-%{_texmfdistdir}/fonts/afm/arkandis/venturissans2/yv3ri8ax.afm
-%{_texmfdistdir}/fonts/enc/dvips/venturisadf/t1-dotalt-f_f-venturisadf.enc
-%{_texmfdistdir}/fonts/enc/dvips/venturisadf/t1-f_f-venturisadf.enc
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1b8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1b8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1b8ax.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1bd8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1bi8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1bi8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1bi8ax.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1d8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1dd8au.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1di8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1h8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1ho8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1l8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1li8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1r8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1r8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1r8ax.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1ri8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1ri8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv1ri8ax.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv2b8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv2b8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv2bi8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv2bi8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv2m8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv2mi8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv2r8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv2r8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv2ri8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv2ri8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv2x8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv2xi8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv3b8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv3b8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv3b8ax.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv3bi8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv3bi8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv3bi8ax.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv3r8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv3r8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv3r8ax.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv3ri8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv3ri8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yv3ri8ax.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvob8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvobi8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvodd8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvor8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvori8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtb8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtb8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtbc8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtbc8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtbci8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtbci8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtbd8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtbi8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtbi8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvth8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvthi8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtr8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtr8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtrc8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtrc8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtrci8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtrci8ac.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtrdl8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtri8a.afm
+%{_texmfdistdir}/fonts/afm/public/venturisadf/yvtri8ac.afm
+%{_texmfdistdir}/fonts/enc/dvips/venturisadf/t1-dotalt-f_f-yv.enc
+%{_texmfdistdir}/fonts/enc/dvips/venturisadf/t1-f_f-yv.enc
 %{_texmfdistdir}/fonts/enc/dvips/venturisadf/t1-venturis.enc
 %{_texmfdistdir}/fonts/enc/dvips/venturisadf/t1-venturisold-longs.enc
-%{_texmfdistdir}/fonts/enc/dvips/venturisadf/ts1-euro-venturisadf.enc
-%{_texmfdistdir}/fonts/map/dvips/venturis/yvt.map
-%{_texmfdistdir}/fonts/map/dvips/venturis2/yv2.map
-%{_texmfdistdir}/fonts/map/dvips/venturisold/yvo.map
-%{_texmfdistdir}/fonts/map/dvips/venturissans/yv1.map
-%{_texmfdistdir}/fonts/map/dvips/venturissans2/yv3.map
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtb-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtb.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtbc-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtbc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtbci-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtbci.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtbd-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtbi-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtbi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvth.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvthi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtr-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtr.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtrc-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtrc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtrci-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtrci.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtrdl.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtri-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1-yvtri.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1alt-yvtbc-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1alt-yvtbc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1alt-yvtbci-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1alt-yvtbci.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1alt-yvtrc-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1alt-yvtrc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1alt-yvtrci-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/t1alt-yvtrci.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtb-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtb.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtbc-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtbc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtbci-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtbci.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtbd-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtbi-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtbi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvth.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvthi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtr-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtr.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtrc-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtrc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtrci-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtrci.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtrdl.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtri-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/ts1-yvtri.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/vent-yvtr.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtb8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtb8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtb8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtb8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbc8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbc8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbc8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbc8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbci8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbci8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbci8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbci8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbcij8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbcij8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbcijw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbcijw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbciw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbciw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbcj8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbcj8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbcjw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbcjw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbcw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbcw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbd8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbd8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbi8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbi8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbi8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbi8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbij8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbij8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbijw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbijw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbiw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbiw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbj8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbj8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbjw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbjw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtbw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvth8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvth8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvthi8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvthi8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtr8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtr8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtr8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtr8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrajw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtraw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrc8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrc8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrc8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrc8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrci8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrci8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrci8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrci8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrcij8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrcij8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrcijw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrcijw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrciw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrciw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrcj8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrcj8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrcjw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrcjw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrcw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrcw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrdl8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrdl8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtri8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtri8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtri8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtri8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrij8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrij8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrijw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrijw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtriw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtriw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrj8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrj8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrjw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrjw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrw8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis/yvtrw8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/t1-yv2b-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/t1-yv2b.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/t1-yv2bi-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/t1-yv2bi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/t1-yv2m.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/t1-yv2mi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/t1-yv2r-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/t1-yv2r.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/t1-yv2ri-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/t1-yv2ri.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/t1-yv2x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/t1-yv2xi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/ts1-yv2b-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/ts1-yv2b.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/ts1-yv2bi-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/ts1-yv2bi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/ts1-yv2m.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/ts1-yv2mi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/ts1-yv2r-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/ts1-yv2r.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/ts1-yv2ri-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/ts1-yv2ri.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/ts1-yv2x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/ts1-yv2xi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2b8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2b8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2b8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2b8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2bi8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2bi8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2bi8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2bi8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2m8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2m8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2mi8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2mi8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2r8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2r8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2r8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2r8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2ri8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2ri8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2ri8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2ri8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2x8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2x8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2xi8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturis2/yv2xi8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/t1-yvob.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/t1-yvobi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/t1-yvodd.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/t1-yvor.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/t1-yvori.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/ts1-yvob.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/ts1-yvobi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/ts1-yvodd.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/ts1-yvor.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/ts1-yvori.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvoab8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvoabi8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvoar8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvoari8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvob8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvob8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvobi8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvobi8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvodd8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvodd8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvor8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvor8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvori8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturisold/yvori8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1b-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1b-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1b.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1bd.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1bi-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1bi-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1bi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1d.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1dd-u.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1di.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1h.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1ho.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1l.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1li.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1r-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1r-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1r.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1ri-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1ri-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/t1-yv1ri.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1b-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1b-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1b.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1bd.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1bi-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1bi-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1bi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1d.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1dd-u.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1di.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1h.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1ho.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1l.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1li.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1r-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1r-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1r.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1ri-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1ri-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/ts1-yv1ri.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1b8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1b8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1b8cx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1b8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1b8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1b8tx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1bd8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1bd8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1bi8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1bi8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1bi8cx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1bi8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1bi8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1bi8tx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1d8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1d8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1dd8cu.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1dd8tu.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1di8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1di8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1h8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1h8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1ho8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1ho8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1l8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1l8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1li8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1li8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1r8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1r8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1r8cx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1r8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1r8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1r8tx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1ri8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1ri8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1ri8cx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1ri8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1ri8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans/yv1ri8tx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/t1-yv3b-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/t1-yv3b-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/t1-yv3b.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/t1-yv3bi-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/t1-yv3bi-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/t1-yv3bi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/t1-yv3r-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/t1-yv3r-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/t1-yv3r.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/t1-yv3ri-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/t1-yv3ri-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/t1-yv3ri.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/ts1-yv3b-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/ts1-yv3b-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/ts1-yv3b.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/ts1-yv3bi-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/ts1-yv3bi-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/ts1-yv3bi.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/ts1-yv3r-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/ts1-yv3r-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/ts1-yv3r.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/ts1-yv3ri-c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/ts1-yv3ri-x.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/ts1-yv3ri.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3b8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3b8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3b8cx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3b8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3b8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3b8tx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3bi8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3bi8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3bi8cx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3bi8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3bi8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3bi8tx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3r8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3r8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3r8cx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3r8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3r8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3r8tx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3ri8c.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3ri8cc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3ri8cx.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3ri8t.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3ri8tc.tfm
-%{_texmfdistdir}/fonts/tfm/arkandis/venturissans2/yv3ri8tx.tfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtb8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtb8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtb8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtb8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbc8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbc8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbc8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbc8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbci8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbci8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbci8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbci8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbd8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbd8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbi8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbi8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbi8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtbi8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvth8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvth8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvthi8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvthi8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtr8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtr8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtr8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtr8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtrc8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtrc8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtrc8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtrc8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtrci8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtrci8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtrci8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtrci8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtrdl8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtrdl8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtri8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtri8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtri8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis/yvtri8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2b8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2b8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2b8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2b8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2bi8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2bi8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2bi8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2bi8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2m8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2m8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2mi8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2mi8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2r8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2r8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2r8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2r8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2ri8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2ri8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2ri8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2ri8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2x8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2x8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2xi8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturis2/yv2xi8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturisold/yvob8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturisold/yvob8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturisold/yvobi8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturisold/yvobi8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturisold/yvodd8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturisold/yvodd8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturisold/yvor8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturisold/yvor8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturisold/yvori8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturisold/yvori8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1b8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1b8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1b8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1b8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1b8ax.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1b8ax.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1bd8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1bd8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1bi8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1bi8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1bi8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1bi8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1bi8ax.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1bi8ax.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1d8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1d8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1dd8au.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1dd8au.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1di8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1di8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1h8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1h8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1ho8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1ho8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1l8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1l8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1li8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1li8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1r8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1r8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1r8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1r8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1r8ax.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1r8ax.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1ri8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1ri8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1ri8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1ri8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1ri8ax.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans/yv1ri8ax.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3b8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3b8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3b8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3b8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3b8ax.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3b8ax.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3bi8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3bi8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3bi8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3bi8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3bi8ax.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3bi8ax.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3r8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3r8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3r8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3r8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3r8ax.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3r8ax.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3ri8a.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3ri8a.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3ri8ac.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3ri8ac.pfm
-%verify(link) %{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3ri8ax.pfb
-%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/yv3ri8ax.pfm
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtb8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtb8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtb8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtb8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbc8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbc8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbc8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbc8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbci8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbci8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbci8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbci8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbcij8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbcij8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbcijw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbcijw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbciw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbciw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbcj8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbcj8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbcjw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbcjw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbcw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbcw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbd8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbd8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbi8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbi8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbi8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbi8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbij8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbij8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbijw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbijw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbiw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbiw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbj8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbj8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbjw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbjw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtbw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvth8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvth8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvthi8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvthi8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtr8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtr8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtr8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtr8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrajw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtraw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrc8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrc8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrc8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrc8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrci8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrci8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrci8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrci8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrcij8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrcij8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrcijw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrcijw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrciw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrciw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrcj8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrcj8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrcjw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrcjw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrcw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrcw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrdl8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrdl8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtri8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtri8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtri8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtri8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrij8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrij8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrijw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrijw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtriw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtriw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrj8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrj8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrjw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrjw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrw8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis/yvtrw8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2b8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2b8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2b8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2b8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2bi8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2bi8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2bi8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2bi8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2m8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2m8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2mi8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2mi8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2r8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2r8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2r8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2r8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2ri8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2ri8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2ri8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2ri8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2x8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2x8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2xi8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturis2/yv2xi8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvoab8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvoabi8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvoar8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvoari8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvob8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvob8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvobi8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvobi8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvodd8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvodd8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvor8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvor8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvori8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturisold/yvori8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1b8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1b8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1b8cx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1b8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1b8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1b8tx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1bd8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1bd8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1bi8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1bi8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1bi8cx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1bi8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1bi8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1bi8tx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1d8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1d8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1dd8cu.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1dd8tu.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1di8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1di8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1h8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1h8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1ho8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1ho8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1l8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1l8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1li8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1li8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1r8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1r8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1r8cx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1r8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1r8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1r8tx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1ri8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1ri8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1ri8cx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1ri8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1ri8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans/yv1ri8tx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3b8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3b8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3b8cx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3b8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3b8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3b8tx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3bi8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3bi8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3bi8cx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3bi8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3bi8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3bi8tx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3r8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3r8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3r8cx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3r8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3r8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3r8tx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3ri8c.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3ri8cc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3ri8cx.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3ri8t.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3ri8tc.vf
-%{_texmfdistdir}/fonts/vf/arkandis/venturissans2/yv3ri8tx.vf
-%{_texmfdistdir}/tex/latex/venturis/t1yvt.fd
-%{_texmfdistdir}/tex/latex/venturis/t1yvtajw.fd
-%{_texmfdistdir}/tex/latex/venturis/t1yvtaw.fd
-%{_texmfdistdir}/tex/latex/venturis/t1yvtd.fd
-%{_texmfdistdir}/tex/latex/venturis/t1yvtj.fd
-%{_texmfdistdir}/tex/latex/venturis/t1yvtjw.fd
-%{_texmfdistdir}/tex/latex/venturis/t1yvtw.fd
-%{_texmfdistdir}/tex/latex/venturis/ts1yvt.fd
-%{_texmfdistdir}/tex/latex/venturis/ts1yvtajw.fd
-%{_texmfdistdir}/tex/latex/venturis/ts1yvtaw.fd
-%{_texmfdistdir}/tex/latex/venturis/ts1yvtd.fd
-%{_texmfdistdir}/tex/latex/venturis/ts1yvtj.fd
-%{_texmfdistdir}/tex/latex/venturis/ts1yvtjw.fd
-%{_texmfdistdir}/tex/latex/venturis/ts1yvtw.fd
-%{_texmfdistdir}/tex/latex/venturis2/t1yv2.fd
-%{_texmfdistdir}/tex/latex/venturis2/ts1yv2.fd
+%{_texmfdistdir}/fonts/enc/dvips/venturisadf/ts1-euro-yv.enc
+%{_texmfdistdir}/fonts/map/dvips/venturisadf/yv1.map
+%{_texmfdistdir}/fonts/map/dvips/venturisadf/yv2.map
+%{_texmfdistdir}/fonts/map/dvips/venturisadf/yv3.map
+%{_texmfdistdir}/fonts/map/dvips/venturisadf/yvo.map
+%{_texmfdistdir}/fonts/map/dvips/venturisadf/yvt.map
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADF-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADF-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADF-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADF-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFCd-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFCd-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFCd-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFCd-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFCdStyle-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFCdStyle-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFCdStyle-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFCdStyle-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFGothTitling.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFHeavy-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFHeavy.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFNo2-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFNo2-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFNo2-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFNo2-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFNo2Cd-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFNo2Cd-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFNo2Cd-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFNo2Cd-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFNo2Med-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFNo2Med-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFNo2Med-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFNo2Med-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFStyle-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFStyle-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFStyle-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFStyle-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFTitlingNo1.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFTitlingNo2.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFTitlingNo3.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisADFTitlingNo4.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisOldADF-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisOldADF-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisOldADF-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisOldADF-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADF-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADF-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADF-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADF-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFCd-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFCd-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFCd-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFCd-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFEx-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFEx-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFEx-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFEx-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFHeavy-Oblique.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFHeavy.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFLt-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFLt-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFLt-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFLt-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFNo2-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFNo2-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFNo2-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFNo2-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFNo2Cd-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFNo2Cd-BoldItal.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFNo2Cd-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFNo2Cd-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFNo2Ex-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFNo2Ex-BoldItal.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFNo2Ex-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/venturisadf/VenturisSansADFNo2Ex-Regular.otf
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1b-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1b-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1b.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1bd.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1bi-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1bi-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1bi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1d.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1dd-u.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1di.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1h.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1ho.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1l.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1li.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1r-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1r-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1r.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1ri-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1ri-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv1ri.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv2b-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv2b.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv2bi-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv2bi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv2m.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv2mi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv2r-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv2r.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv2ri-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv2ri.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv2x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv2xi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv3b-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv3b-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv3b.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv3bi-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv3bi-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv3bi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv3r-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv3r-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv3r.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv3ri-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv3ri-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yv3ri.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvob.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvobi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvodd.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvor.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvori.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtb-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtb.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtbc-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtbc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtbci-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtbci.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtbd-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtbi-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtbi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvth.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvthi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtr-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtr.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtrc-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtrc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtrci-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtrci.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtrdl.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtri-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1-yvtri.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1alt-yvtbc-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1alt-yvtbc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1alt-yvtbci-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1alt-yvtbci.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1alt-yvtrc-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1alt-yvtrc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1alt-yvtrci-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/t1alt-yvtrci.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1b-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1b-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1b.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1bd.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1bi-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1bi-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1bi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1d.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1dd-u.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1di.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1h.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1ho.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1l.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1li.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1r-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1r-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1r.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1ri-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1ri-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv1ri.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv2b-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv2b.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv2bi-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv2bi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv2m.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv2mi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv2r-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv2r.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv2ri-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv2ri.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv2x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv2xi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv3b-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv3b-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv3b.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv3bi-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv3bi-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv3bi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv3r-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv3r-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv3r.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv3ri-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv3ri-x.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yv3ri.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvob.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvobi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvodd.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvor.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvori.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtb-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtb.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtbc-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtbc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtbci-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtbci.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtbd-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtbi-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtbi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvth.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvthi.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtr-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtr.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtrc-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtrc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtrci-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtrci.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtrdl.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtri-c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/ts1-yvtri.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/vent-yvtr.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1b8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1b8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1b8cx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1b8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1b8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1b8tx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1bd8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1bd8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1bi8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1bi8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1bi8cx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1bi8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1bi8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1bi8tx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1d8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1d8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1dd8cu.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1dd8tu.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1di8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1di8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1h8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1h8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1ho8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1ho8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1l8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1l8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1li8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1li8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1r8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1r8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1r8cx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1r8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1r8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1r8tx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1ri8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1ri8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1ri8cx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1ri8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1ri8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv1ri8tx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2b8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2b8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2b8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2b8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2bi8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2bi8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2bi8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2bi8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2m8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2m8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2mi8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2mi8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2r8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2r8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2r8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2r8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2ri8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2ri8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2ri8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2ri8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2x8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2x8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2xi8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv2xi8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3b8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3b8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3b8cx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3b8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3b8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3b8tx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3bi8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3bi8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3bi8cx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3bi8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3bi8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3bi8tx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3r8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3r8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3r8cx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3r8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3r8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3r8tx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3ri8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3ri8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3ri8cx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3ri8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3ri8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yv3ri8tx.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvoab8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvoabi8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvoar8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvoari8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvob8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvob8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvobi8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvobi8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvodd8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvodd8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvor8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvor8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvori8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvori8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtb8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtb8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtb8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtb8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbc8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbc8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbc8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbc8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbci8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbci8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbci8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbci8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbcij8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbcij8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbcijw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbcijw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbciw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbciw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbcj8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbcj8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbcjw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbcjw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbcw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbcw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbd8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbd8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbi8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbi8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbi8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbi8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbij8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbij8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbijw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbijw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbiw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbiw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbj8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbj8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbjw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbjw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtbw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvth8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvth8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvthi8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvthi8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtr8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtr8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtr8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtr8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrajw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtraw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrc8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrc8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrc8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrc8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrci8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrci8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrci8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrci8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrcij8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrcij8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrcijw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrcijw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrciw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrciw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrcj8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrcj8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrcjw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrcjw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrcw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrcw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrdl8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrdl8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtri8c.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtri8cc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtri8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtri8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrij8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrij8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrijw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrijw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtriw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtriw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrj8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrj8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrjw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrjw8tc.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrw8t.tfm
+%{_texmfdistdir}/fonts/tfm/public/venturisadf/yvtrw8tc.tfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1b8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1b8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1b8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1b8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1b8ax.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1b8ax.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1bd8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1bd8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1bi8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1bi8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1bi8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1bi8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1bi8ax.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1bi8ax.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1d8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1d8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1dd8au.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1dd8au.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1di8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1di8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1h8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1h8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1ho8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1ho8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1l8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1l8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1li8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1li8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1r8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1r8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1r8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1r8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1r8ax.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1r8ax.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1ri8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1ri8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1ri8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1ri8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv1ri8ax.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv1ri8ax.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv2b8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv2b8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv2b8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv2b8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv2bi8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv2bi8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv2bi8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv2bi8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv2m8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv2m8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv2mi8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv2mi8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv2r8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv2r8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv2r8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv2r8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv2ri8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv2ri8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv2ri8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv2ri8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv2x8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv2x8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv2xi8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv2xi8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv3b8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv3b8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv3b8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv3b8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv3b8ax.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv3b8ax.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv3bi8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv3bi8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv3bi8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv3bi8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv3bi8ax.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv3bi8ax.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv3r8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv3r8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv3r8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv3r8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv3r8ax.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv3r8ax.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv3ri8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv3ri8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv3ri8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv3ri8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yv3ri8ax.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yv3ri8ax.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvob8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvob8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvobi8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvobi8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvodd8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvodd8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvor8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvor8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvori8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvori8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtb8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtb8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtb8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtb8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbc8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbc8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbc8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbc8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbci8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbci8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbci8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbci8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbd8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbd8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbi8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbi8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbi8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtbi8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvth8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvth8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvthi8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvthi8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtr8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtr8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtr8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtr8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtrc8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtrc8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtrc8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtrc8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtrci8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtrci8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtrci8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtrci8ac.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtrdl8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtrdl8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtri8a.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtri8a.pfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/venturisadf/yvtri8ac.pfb
+%{_texmfdistdir}/fonts/type1/public/venturisadf/yvtri8ac.pfm
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1b8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1b8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1b8cx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1b8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1b8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1b8tx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1bd8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1bd8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1bi8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1bi8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1bi8cx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1bi8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1bi8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1bi8tx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1d8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1d8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1dd8cu.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1dd8tu.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1di8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1di8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1h8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1h8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1ho8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1ho8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1l8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1l8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1li8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1li8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1r8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1r8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1r8cx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1r8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1r8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1r8tx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1ri8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1ri8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1ri8cx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1ri8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1ri8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv1ri8tx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2b8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2b8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2b8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2b8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2bi8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2bi8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2bi8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2bi8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2m8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2m8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2mi8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2mi8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2r8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2r8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2r8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2r8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2ri8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2ri8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2ri8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2ri8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2x8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2x8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2xi8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv2xi8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3b8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3b8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3b8cx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3b8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3b8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3b8tx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3bi8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3bi8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3bi8cx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3bi8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3bi8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3bi8tx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3r8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3r8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3r8cx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3r8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3r8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3r8tx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3ri8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3ri8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3ri8cx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3ri8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3ri8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yv3ri8tx.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvoab8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvoabi8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvoar8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvoari8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvob8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvob8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvobi8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvobi8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvodd8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvodd8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvor8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvor8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvori8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvori8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtb8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtb8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtb8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtb8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbc8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbc8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbc8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbc8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbci8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbci8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbci8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbci8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbcij8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbcij8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbcijw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbcijw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbciw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbciw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbcj8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbcj8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbcjw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbcjw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbcw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbcw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbd8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbd8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbi8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbi8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbi8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbi8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbij8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbij8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbijw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbijw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbiw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbiw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbj8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbj8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbjw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbjw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtbw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvth8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvth8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvthi8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvthi8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtr8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtr8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtr8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtr8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrajw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtraw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrc8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrc8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrc8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrc8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrci8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrci8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrci8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrci8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrcij8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrcij8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrcijw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrcijw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrciw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrciw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrcj8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrcj8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrcjw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrcjw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrcw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrcw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrdl8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrdl8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtri8c.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtri8cc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtri8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtri8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrij8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrij8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrijw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrijw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtriw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtriw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrj8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrj8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrjw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrjw8tc.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrw8t.vf
+%{_texmfdistdir}/fonts/vf/public/venturisadf/yvtrw8tc.vf
+%{_texmfdistdir}/tex/latex/venturisadf/t1yv1.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yv1d.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yv2.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yv3.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yvo.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yvoa.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yvoad.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yvod.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yvt.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yvtajw.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yvtaw.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yvtd.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yvtj.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yvtjw.fd
+%{_texmfdistdir}/tex/latex/venturisadf/t1yvtw.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yv1.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yv1d.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yv2.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yv3.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yvo.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yvoa.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yvoad.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yvod.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yvt.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yvtajw.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yvtaw.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yvtd.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yvtj.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yvtjw.fd
+%{_texmfdistdir}/tex/latex/venturisadf/ts1yvtw.fd
 %{_texmfdistdir}/tex/latex/venturisadf/venturis.sty
 %{_texmfdistdir}/tex/latex/venturisadf/venturis2.sty
 %{_texmfdistdir}/tex/latex/venturisadf/venturisold.sty
-%{_texmfdistdir}/tex/latex/venturisold/t1yvo.fd
-%{_texmfdistdir}/tex/latex/venturisold/t1yvoa.fd
-%{_texmfdistdir}/tex/latex/venturisold/t1yvoad.fd
-%{_texmfdistdir}/tex/latex/venturisold/t1yvod.fd
-%{_texmfdistdir}/tex/latex/venturisold/ts1yvo.fd
-%{_texmfdistdir}/tex/latex/venturisold/ts1yvoa.fd
-%{_texmfdistdir}/tex/latex/venturisold/ts1yvoad.fd
-%{_texmfdistdir}/tex/latex/venturisold/ts1yvod.fd
-%{_texmfdistdir}/tex/latex/venturissans/t1yv1.fd
-%{_texmfdistdir}/tex/latex/venturissans/t1yv1d.fd
-%{_texmfdistdir}/tex/latex/venturissans/ts1yv1.fd
-%{_texmfdistdir}/tex/latex/venturissans/ts1yv1d.fd
-%{_texmfdistdir}/tex/latex/venturissans2/t1yv3.fd
-%{_texmfdistdir}/tex/latex/venturissans2/ts1yv3.fd
 
 %files -n texlive-venturisadf-fonts
 %dir %{_datadir}/fonts/texlive-venturisadf
 %{_datadir}/fontconfig/conf.avail/58-texlive-venturisadf.conf
+%{_datadir}/fontconfig/conf.avail/55-texlive-venturisadf.conf
+%config %{_sysconfdir}/fonts/conf.d/55-texlive-venturisadf.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-venturisadf/encodings.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-venturisadf/fonts.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-venturisadf/fonts.scale
-%{_datadir}/fonts/texlive-venturisadf/yvtb8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtb8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtbc8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtbc8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtbci8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtbci8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtbd8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtbi8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtbi8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvth8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvthi8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtr8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtr8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtrc8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtrc8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtrci8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtrci8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtrdl8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtri8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvtri8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yv2b8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yv2b8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yv2bi8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yv2bi8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yv2m8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yv2mi8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yv2r8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yv2r8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yv2ri8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yv2ri8ac.pfb
-%{_datadir}/fonts/texlive-venturisadf/yv2x8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yv2xi8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvob8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvobi8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvodd8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvor8a.pfb
-%{_datadir}/fonts/texlive-venturisadf/yvori8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/VenturisADF-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADF-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADF-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADF-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFCd-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFCd-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFCd-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFCd-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFCdStyle-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFCdStyle-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFCdStyle-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFCdStyle-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFGothTitling.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFHeavy-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFHeavy.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFNo2-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFNo2-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFNo2-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFNo2-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFNo2Cd-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFNo2Cd-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFNo2Cd-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFNo2Cd-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFNo2Med-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFNo2Med-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFNo2Med-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFNo2Med-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFStyle-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFStyle-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFStyle-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFStyle-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFTitlingNo1.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFTitlingNo2.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFTitlingNo3.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisADFTitlingNo4.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisOldADF-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisOldADF-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisOldADF-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisOldADF-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADF-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADF-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADF-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADF-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFCd-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFCd-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFCd-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFCd-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFEx-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFEx-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFEx-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFEx-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFHeavy-Oblique.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFHeavy.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFLt-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFLt-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFLt-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFLt-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFNo2-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFNo2-BoldItalic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFNo2-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFNo2-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFNo2Cd-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFNo2Cd-BoldItal.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFNo2Cd-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFNo2Cd-Regular.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFNo2Ex-Bold.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFNo2Ex-BoldItal.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFNo2Ex-Italic.otf
+%{_datadir}/fonts/texlive-venturisadf/VenturisSansADFNo2Ex-Regular.otf
 %{_datadir}/fonts/texlive-venturisadf/yv1b8a.pfb
 %{_datadir}/fonts/texlive-venturisadf/yv1b8ac.pfb
 %{_datadir}/fonts/texlive-venturisadf/yv1b8ax.pfb
@@ -22914,6 +23309,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-venturisadf/yv1ri8a.pfb
 %{_datadir}/fonts/texlive-venturisadf/yv1ri8ac.pfb
 %{_datadir}/fonts/texlive-venturisadf/yv1ri8ax.pfb
+%{_datadir}/fonts/texlive-venturisadf/yv2b8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yv2b8ac.pfb
+%{_datadir}/fonts/texlive-venturisadf/yv2bi8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yv2bi8ac.pfb
+%{_datadir}/fonts/texlive-venturisadf/yv2m8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yv2mi8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yv2r8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yv2r8ac.pfb
+%{_datadir}/fonts/texlive-venturisadf/yv2ri8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yv2ri8ac.pfb
+%{_datadir}/fonts/texlive-venturisadf/yv2x8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yv2xi8a.pfb
 %{_datadir}/fonts/texlive-venturisadf/yv3b8a.pfb
 %{_datadir}/fonts/texlive-venturisadf/yv3b8ac.pfb
 %{_datadir}/fonts/texlive-venturisadf/yv3b8ax.pfb
@@ -22926,6 +23333,31 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-venturisadf/yv3ri8a.pfb
 %{_datadir}/fonts/texlive-venturisadf/yv3ri8ac.pfb
 %{_datadir}/fonts/texlive-venturisadf/yv3ri8ax.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvob8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvobi8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvodd8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvor8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvori8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtb8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtb8ac.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtbc8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtbc8ac.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtbci8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtbci8ac.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtbd8ac.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtbi8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtbi8ac.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvth8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvthi8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtr8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtr8ac.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtrc8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtrc8ac.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtrci8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtrci8ac.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtrdl8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtri8a.pfb
+%{_datadir}/fonts/texlive-venturisadf/yvtri8ac.pfb
 
 %package -n texlive-verbasef
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn21922
@@ -22960,9 +23392,9 @@ Requires:       tex(here.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(vrbexin.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source241:      verbasef.tar.xz
-Source242:      verbasef.doc.tar.xz
+# from 20250308
+Source245:      verbasef.tar.xz
+Source246:      verbasef.doc.tar.xz
 
 %description -n texlive-verbasef
 The package allows you to input (subsections of a) file, print
@@ -23042,9 +23474,9 @@ Provides:       tex(verbatimbox.sty)
 Requires:       tex(readarray.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source243:      verbatimbox.tar.xz
-Source244:      verbatimbox.doc.tar.xz
+# from 20250308
+Source247:      verbatimbox.tar.xz
+Source248:      verbatimbox.doc.tar.xz
 
 %description -n texlive-verbatimbox
 The package provides a verbbox environment (which uses
@@ -23126,9 +23558,9 @@ Suggests:       texlive-verbatimcopy-doc >= %{texlive_version}
 Provides:       tex(verbatimcopy.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source245:      verbatimcopy.tar.xz
-Source246:      verbatimcopy.doc.tar.xz
+# from 20250308
+Source249:      verbatimcopy.tar.xz
+Source250:      verbatimcopy.doc.tar.xz
 
 %description -n texlive-verbatimcopy
 This package provides \VerbatimCopy{in}{out} that will enable
@@ -23204,9 +23636,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-verbdef-doc >= %{texlive_version}
 Provides:       tex(verbdef.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source247:      verbdef.tar.xz
-Source248:      verbdef.doc.tar.xz
+# from 20250308
+Source251:      verbdef.tar.xz
+Source252:      verbdef.doc.tar.xz
 
 %description -n texlive-verbdef
 The package defines a single command \verbdef (which has a
@@ -23288,9 +23720,9 @@ Requires:       tex(framed.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source249:      verbments.tar.xz
-Source250:      verbments.doc.tar.xz
+# from 20250308
+Source253:      verbments.tar.xz
+Source254:      verbments.doc.tar.xz
 
 %description -n texlive-verbments
 The package provides an environment for syntax highlighting
@@ -23385,9 +23817,9 @@ Requires:       tex(tabto.sty)
 Requires:       tex(tabularx.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source251:      verifica.tar.xz
-Source252:      verifica.doc.tar.xz
+# from 20250308
+Source255:      verifica.tar.xz
+Source256:      verifica.doc.tar.xz
 
 %description -n texlive-verifica
 This class provides various environments and commands to
@@ -23445,7 +23877,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/verifica/verifica.cls
 
 %package -n texlive-verifiche
-Version:        %{texlive_version}.%{texlive_noarch}.7.1svn69726
+Version:        %{texlive_version}.%{texlive_noarch}.8.0svn72983
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX package to typeset (Italian) high school tests
@@ -23475,15 +23907,17 @@ Suggests:       texlive-verifiche-doc >= %{texlive_version}
 Provides:       tex(verifiche.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(enumitem.sty)
+Requires:       tex(fp.sty)
 Requires:       tex(pgffor.sty)
+Requires:       tex(randomlist.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(ulem.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source253:      verifiche.tar.xz
-Source254:      verifiche.doc.tar.xz
+# from 20250308
+Source257:      verifiche.tar.xz
+Source258:      verifiche.doc.tar.xz
 
 %description -n texlive-verifiche
 The purpose of this package is to manage the exercises for a
@@ -23493,7 +23927,7 @@ exercise "Complete the Text" "True or false" Closed questions
 Open questions "Find the error"
 
 %package -n texlive-verifiche-doc
-Version:        %{texlive_version}.%{texlive_noarch}.7.1svn69726
+Version:        %{texlive_version}.%{texlive_noarch}.8.0svn72983
 Release:        0
 Summary:        Documentation for texlive-verifiche
 License:        LPPL-1.0
@@ -23532,7 +23966,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/verifiche/verifiche.sty
 
 %package -n texlive-verifycommand
-Version:        %{texlive_version}.%{texlive_noarch}.1.00svn69389
+Version:        %{texlive_version}.%{texlive_noarch}.1.10svn72180
 Release:        0
 License:        LPPL-1.0
 Summary:        Verifies definitions are unchanged, such as before patching
@@ -23564,9 +23998,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source255:      verifycommand.tar.xz
-Source256:      verifycommand.doc.tar.xz
+# from 20250308
+Source259:      verifycommand.tar.xz
+Source260:      verifycommand.doc.tar.xz
 
 %description -n texlive-verifycommand
 This package is intended for package authors who patch code
@@ -23578,7 +24012,7 @@ warning is issued. At the end of the compile, a list of all
 changed definitions is displayed.
 
 %package -n texlive-verifycommand-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.00svn69389
+Version:        %{texlive_version}.%{texlive_noarch}.1.10svn72180
 Release:        0
 Summary:        Documentation for texlive-verifycommand
 License:        LPPL-1.0
@@ -23643,9 +24077,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-verse-doc >= %{texlive_version}
 Provides:       tex(verse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source257:      verse.tar.xz
-Source258:      verse.doc.tar.xz
+# from 20250308
+Source261:      verse.tar.xz
+Source262:      verse.doc.tar.xz
 
 %description -n texlive-verse
 The package documentation discusses approaches to the problem;
@@ -23718,9 +24152,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-version-doc >= %{texlive_version}
 Provides:       tex(version.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source259:      version.tar.xz
-Source260:      version.doc.tar.xz
+# from 20250308
+Source263:      version.tar.xz
+Source264:      version.doc.tar.xz
 
 %description -n texlive-version
 Defines macros \includeversion{NAME} and \excludeversion{NAME},
@@ -23796,9 +24230,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-versions-doc >= %{texlive_version}
 Provides:       tex(versions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source261:      versions.tar.xz
-Source262:      versions.doc.tar.xz
+# from 20250308
+Source265:      versions.tar.xz
+Source266:      versions.doc.tar.xz
 
 %description -n texlive-versions
 Stephan Bellantoni's version has provided preamble commands for
@@ -23873,9 +24307,9 @@ Suggests:       texlive-versonotes-doc >= %{texlive_version}
 Provides:       tex(versonotes.sty)
 Requires:       tex(iftex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source263:      versonotes.tar.xz
-Source264:      versonotes.doc.tar.xz
+# from 20250308
+Source267:      versonotes.tar.xz
+Source268:      versonotes.doc.tar.xz
 
 %description -n texlive-versonotes
 This package allows you to place notes on the verso pages of an
@@ -23954,9 +24388,9 @@ Suggests:       texlive-vertbars-doc >= %{texlive_version}
 Provides:       tex(vertbars.sty)
 Requires:       tex(lineno.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source265:      vertbars.tar.xz
-Source266:      vertbars.doc.tar.xz
+# from 20250308
+Source269:      vertbars.tar.xz
+Source270:      vertbars.doc.tar.xz
 
 %description -n texlive-vertbars
 This package is an extension to lineno, replacing that
@@ -24033,9 +24467,9 @@ Requires:       tex(everypage.sty)
 Requires:       tex(ifoddpage.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source267:      vgrid.tar.xz
-Source268:      vgrid.doc.tar.xz
+# from 20250308
+Source271:      vgrid.tar.xz
+Source272:      vgrid.doc.tar.xz
 
 %description -n texlive-vgrid
 The package overlays a grid (whose spacing is \baselineskip,
@@ -24109,9 +24543,9 @@ Provides:       tex(sets.sty)
 Provides:       tex(vhistory.sty)
 Requires:       tex(ltxtable.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source269:      vhistory.tar.xz
-Source270:      vhistory.doc.tar.xz
+# from 20250308
+Source273:      vhistory.tar.xz
+Source274:      vhistory.doc.tar.xz
 
 %description -n texlive-vhistory
 Vhistory simplifies the creation of a history of versions of a
@@ -24204,8 +24638,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source271:      visualfaq.doc.tar.xz
+# from 20250308
+Source275:      visualfaq.doc.tar.xz
 
 %description -n texlive-visualfaq
 Having trouble finding the answer to a LaTeX question? The
@@ -24252,7 +24686,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/visualfaq/visualFAQ.pdf
 
 %package -n texlive-visualfaq-fr
-Version:        %{texlive_version}.%{texlive_noarch}.svn67718
+Version:        %{texlive_version}.%{texlive_noarch}.svn71053
 Release:        0
 License:        LPPL-1.0
 Summary:        FAQ LaTeX visuelle francophone
@@ -24279,8 +24713,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source272:      visualfaq-fr.doc.tar.xz
+# from 20250308
+Source276:      visualfaq-fr.doc.tar.xz
 
 %description -n texlive-visualfaq-fr
 (French version below.) The Visual LaTeX FAQ is an innovative
@@ -24366,8 +24800,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source273:      visualpstricks.doc.tar.xz
+# from 20250308
+Source277:      visualpstricks.doc.tar.xz
 
 %description -n texlive-visualpstricks
 Visual help for PSTricks based on images with minimum text. One
@@ -24500,8 +24934,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source274:      visualtikz.doc.tar.xz
+# from 20250308
+Source278:      visualtikz.doc.tar.xz
 
 %description -n texlive-visualtikz
 Visual help for TikZ based on images with minimum text: an
@@ -24600,7 +25034,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/visualtikz/VisualTikZ.pdf
 
 %package -n texlive-vlna
-Version:        %{texlive_version}.%{texlive_noarch}.svn66186
+Version:        %{texlive_version}.%{texlive_noarch}.svn73908
 Release:        0
 License:        LPPL-1.0
 Summary:        Add ~ after non-syllabic preposition, for Czech/Slovak
@@ -24630,8 +25064,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(vlna.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source275:      vlna.doc.tar.xz
+# from 20250308
+Source279:      vlna.doc.tar.xz
 
 %description -n texlive-vlna
 Preprocessor for TeX source implementing the Czech/Slovak
@@ -24657,7 +25091,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-vlna
 %{_mandir}/man1/vlna.1*
-%{_texmfdistdir}/doc/vlna/vlna.pdf
+%{_texmfdistdir}/doc/support/vlna/vlna.pdf
 
 %package -n texlive-vmargin
 Version:        %{texlive_version}.%{texlive_noarch}.2.5svn15878
@@ -24689,9 +25123,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-vmargin-doc >= %{texlive_version}
 Provides:       tex(vmargin.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source276:      vmargin.tar.xz
-Source277:      vmargin.doc.tar.xz
+# from 20250308
+Source280:      vmargin.tar.xz
+Source281:      vmargin.doc.tar.xz
 
 %description -n texlive-vmargin
 Provides a macro to set various margins as well as dimensions
@@ -25022,9 +25456,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(ucs.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source278:      vntex.tar.xz
-Source279:      vntex.doc.tar.xz
+# from 20250308
+Source282:      vntex.tar.xz
+Source283:      vntex.doc.tar.xz
 
 %description -n texlive-vntex
 The vntex bundle provides fonts, Plain TeX, texinfo and LaTeX
@@ -25772,9 +26206,9 @@ Requires:       tex(multimedia.sty)
 Requires:       tex(pst-coil.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source280:      vocaltract.tar.xz
-Source281:      vocaltract.doc.tar.xz
+# from 20250308
+Source284:      vocaltract.tar.xz
+Source285:      vocaltract.doc.tar.xz
 
 %description -n texlive-vocaltract
 The package enables the user to visualise the vocal tract. The
@@ -25861,9 +26295,9 @@ Provides:       tex(nowtoaux.sty)
 Provides:       tex(volumes.sty)
 Requires:       tex(scrlfile.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source282:      volumes.tar.xz
-Source283:      volumes.doc.tar.xz
+# from 20250308
+Source286:      volumes.tar.xz
+Source287:      volumes.doc.tar.xz
 
 %description -n texlive-volumes
 This package helps you if you want to produce separate printed
@@ -25938,8 +26372,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source284:      voss-mathcol.doc.tar.xz
+# from 20250308
+Source288:      voss-mathcol.doc.tar.xz
 
 %description -n texlive-voss-mathcol
 This is a short paper from the TeXnische Komodie, in German.
@@ -26014,9 +26448,9 @@ Requires:       tex(color.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(pifont.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source285:      vpe.tar.xz
-Source286:      vpe.doc.tar.xz
+# from 20250308
+Source289:      vpe.tar.xz
+Source290:      vpe.doc.tar.xz
 
 %description -n texlive-vpe
 VPE is a system to make the equivalent of "source special"
@@ -26094,9 +26528,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-vruler-doc >= %{texlive_version}
 Provides:       tex(vruler.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source287:      vruler.tar.xz
-Source288:      vruler.doc.tar.xz
+# from 20250308
+Source291:      vruler.tar.xz
+Source292:      vruler.doc.tar.xz
 
 %description -n texlive-vruler
 The package offers facilities for adding a columns of numbering
@@ -26181,9 +26615,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(varwidth.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source289:      vtable.tar.xz
-Source290:      vtable.doc.tar.xz
+# from 20250308
+Source293:      vtable.tar.xz
+Source294:      vtable.doc.tar.xz
 
 %description -n texlive-vtable
 The package allows vertical alignement of table cell by
@@ -26264,9 +26698,9 @@ Requires:       tex(environ.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(ragged2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source291:      vwcol.tar.xz
-Source292:      vwcol.doc.tar.xz
+# from 20250308
+Source295:      vwcol.tar.xz
+Source296:      vwcol.doc.tar.xz
 
 %description -n texlive-vwcol
 The package provides a crude environment (vwcol) for
@@ -27282,9 +27716,9 @@ Provides:       tex(umrj9f.vf)
 Provides:       tex(umrjff.tfm)
 Provides:       tex(umrjff.vf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source293:      wadalab.tar.xz
-Source294:      wadalab.doc.tar.xz
+# from 20250308
+Source297:      wadalab.tar.xz
+Source298:      wadalab.doc.tar.xz
 
 %description -n texlive-wadalab
 These are font bundles for the Japanese Wadalab fonts which
@@ -28914,9 +29348,9 @@ Requires:       tex(wasysym.sty)
 Requires:       tex(xcoffins.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source295:      wallcalendar.tar.xz
-Source296:      wallcalendar.doc.tar.xz
+# from 20250308
+Source299:      wallcalendar.tar.xz
+Source300:      wallcalendar.doc.tar.xz
 
 %description -n texlive-wallcalendar
 This package provides a wall calendar class with custom layouts
@@ -29084,9 +29518,9 @@ Requires:       tex(eso-pic.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source297:      wallpaper.tar.xz
-Source298:      wallpaper.doc.tar.xz
+# from 20250308
+Source301:      wallpaper.tar.xz
+Source302:      wallpaper.doc.tar.xz
 
 %description -n texlive-wallpaper
 This collection contains files to add wallpapers (background
@@ -29135,7 +29569,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/wallpaper/wallpaper.sty
 
 %package -n texlive-wargame
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn69692
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn72903
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX package to prepare hex'n'counter wargames
@@ -29172,9 +29606,9 @@ Requires:       tex(standalone.cls)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source299:      wargame.tar.xz
-Source300:      wargame.doc.tar.xz
+# from 20250308
+Source303:      wargame.tar.xz
+Source304:      wargame.doc.tar.xz
 
 %description -n texlive-wargame
 This package can help make classic Hex'n'Counter wargames using
@@ -29191,7 +29625,7 @@ README.md file for more, and of course the documentation
 (including the tutorial in tutorial/game.pdf).
 
 %package -n texlive-wargame-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn69692
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn72903
 Release:        0
 Summary:        Documentation for texlive-wargame
 License:        LPPL-1.0
@@ -29239,9 +29673,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/wargame/tikzlibrarywargame.util.code.tex
 %{_texmfdistdir}/tex/latex/wargame/wargame.beach.pdf
 %{_texmfdistdir}/tex/latex/wargame/wargame.city.pdf
+%{_texmfdistdir}/tex/latex/wargame/wargame.fields.pdf
 %{_texmfdistdir}/tex/latex/wargame/wargame.light_woods.pdf
 %{_texmfdistdir}/tex/latex/wargame/wargame.mountains.pdf
 %{_texmfdistdir}/tex/latex/wargame/wargame.rough.pdf
+%{_texmfdistdir}/tex/latex/wargame/wargame.speckle.pdf
 %{_texmfdistdir}/tex/latex/wargame/wargame.sty
 %{_texmfdistdir}/tex/latex/wargame/wargame.swamp.pdf
 %{_texmfdistdir}/tex/latex/wargame/wargame.town.pdf
@@ -29249,10 +29685,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/wargame/wargame.woods.pdf
 %{_texmfdistdir}/tex/latex/wargame/wgexport.cls
 %{_texmfdistdir}/tex/latex/wargame/wgexport.py
+%{_texmfdistdir}/tex/latex/wargame/wgmakenato.py
 %{_texmfdistdir}/tex/latex/wargame/wgsvg2tikz.py
 
 %package -n texlive-warning
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.10svn66616
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn73265
 Release:        0
 License:        LPPL-1.0
 Summary:        Global warnings at the end of the logfile
@@ -29281,9 +29718,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-warning-doc >= %{texlive_version}
 Provides:       tex(warning.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source301:      warning.tar.xz
-Source302:      warning.doc.tar.xz
+# from 20250308
+Source305:      warning.tar.xz
+Source306:      warning.doc.tar.xz
 
 %description -n texlive-warning
 This package is obsolete. For LaTeX-format 2020-10-01 and
@@ -29296,7 +29733,7 @@ such as 'Rerun for this or that reason' or 'This is a draft,
 change it before the final run'.
 
 %package -n texlive-warning-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.10svn66616
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn73265
 Release:        0
 Summary:        Documentation for texlive-warning
 License:        LPPL-1.0
@@ -29363,9 +29800,9 @@ Suggests:       texlive-warpcol-doc >= %{texlive_version}
 Provides:       tex(warpcol.sty)
 Requires:       tex(array.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source303:      warpcol.tar.xz
-Source304:      warpcol.doc.tar.xz
+# from 20250308
+Source307:      warpcol.tar.xz
+Source308:      warpcol.doc.tar.xz
 
 %description -n texlive-warpcol
 Defines a tabular column type for formatting numerical columns
@@ -29444,9 +29881,9 @@ Suggests:       texlive-was-doc >= %{texlive_version}
 Provides:       tex(icomma.sty)
 Provides:       tex(upgreek.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source305:      was.tar.xz
-Source306:      was.doc.tar.xz
+# from 20250308
+Source309:      was.tar.xz
+Source310:      was.doc.tar.xz
 
 %description -n texlive-was
 A bundle of packages that arise in the author's area of
@@ -29531,9 +29968,9 @@ Provides:       tex(wasyb10.tfm)
 Provides:       tex(wasyfont.tex)
 Provides:       tex(wasysl10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source307:      wasy.tar.xz
-Source308:      wasy.doc.tar.xz
+# from 20250308
+Source311:      wasy.tar.xz
+Source312:      wasy.doc.tar.xz
 
 %description -n texlive-wasy
 This font contains all lasy characters (by L.Lamport, copyright
@@ -29646,9 +30083,9 @@ Requires:       texlive-wasy-type1-fonts >= %{texlive_version}
 Suggests:       texlive-wasy-type1-doc >= %{texlive_version}
 Provides:       tex(wasy.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source309:      wasy-type1.tar.xz
-Source310:      wasy-type1.doc.tar.xz
+# from 20250308
+Source313:      wasy-type1.tar.xz
+Source314:      wasy-type1.doc.tar.xz
 
 %description -n texlive-wasy-type1
 Converted (Adobe Type 1) outlines of the wasy fonts.
@@ -29770,9 +30207,9 @@ Provides:       tex(uwasy.fd)
 Provides:       tex(uwasyvar.fd)
 Provides:       tex(wasysym.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source311:      wasysym.tar.xz
-Source312:      wasysym.doc.tar.xz
+# from 20250308
+Source315:      wasysym.tar.xz
+Source316:      wasysym.doc.tar.xz
 
 %description -n texlive-wasysym
 The wasy (Waldi Symbol) font by Roland Waldi provides many
@@ -29820,7 +30257,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/wasysym/wasysym.sty
 
 %package -n texlive-web
-Version:        %{texlive_version}.%{texlive_noarch}.4.5svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.4.5svn73848
 Release:        0
 License:        SUSE-TeX
 Summary:        The original literate programming system
@@ -29853,8 +30290,8 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(tangle.1)
 Provides:       man(weave.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source313:      web.doc.tar.xz
+# from 20250308
+Source317:      web.doc.tar.xz
 
 %description -n texlive-web
 The system processes 'web' files in two ways: firstly to
@@ -29911,8 +30348,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source314:      webguide.doc.tar.xz
+# from 20250308
+Source318:      webguide.doc.tar.xz
 
 %description -n texlive-webguide
 The documentation constitutes an example of the package's own
@@ -29989,9 +30426,9 @@ Requires:       tex(pgfopts.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source315:      webquiz.tar.xz
-Source316:      webquiz.doc.tar.xz
+# from 20250308
+Source319:      webquiz.tar.xz
+Source320:      webquiz.doc.tar.xz
 
 %description -n texlive-webquiz
 WebQuiz makes it possible to use LaTeX to write interactive web
@@ -30196,9 +30633,9 @@ Suggests:       texlive-weiqi-doc >= %{texlive_version}
 Provides:       tex(weiqi.sty)
 Requires:       tex(l3draw.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source317:      weiqi.tar.xz
-Source318:      weiqi.doc.tar.xz
+# from 20250308
+Source321:      weiqi.tar.xz
+Source322:      weiqi.doc.tar.xz
 
 %description -n texlive-weiqi
 This package uses LaTeX3 to typeset Weiqi (Go). Shi Yong LaTeX3
@@ -30241,8 +30678,105 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-weiqi
 %{_texmfdistdir}/tex/latex/weiqi/weiqi.sty
 
+%package -n texlive-whatsnote
+Version:        %{texlive_version}.%{texlive_noarch}.3.0bsvn72966
+Release:        0
+License:        LPPL-1.0
+Summary:        A LaTeX class designed for taking notes or writing books
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-whatsnote-doc >= %{texlive_version}
+Provides:       tex(litebook.cls)
+Provides:       tex(litesolution.cls)
+Provides:       tex(thmlist.sty)
+Provides:       tex(whats-cover-module.code.tex)
+Provides:       tex(whats-font-module.code.tex)
+Provides:       tex(whats-layout-module.code.tex)
+Provides:       tex(whats-theorem-module.code.tex)
+Provides:       tex(whatsnote.cls)
+Requires:       tex(minimal.cls)
+Requires:       tex(zhlipsum.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source323:      whatsnote.tar.xz
+Source324:      whatsnote.doc.tar.xz
+
+%description -n texlive-whatsnote
+This class is designed for taking notes or writing books. It is
+based on the standard LaTeX book class and constructed by
+expl3.
+
+%package -n texlive-whatsnote-doc
+Version:        %{texlive_version}.%{texlive_noarch}.3.0bsvn72966
+Release:        0
+Summary:        Documentation for texlive-whatsnote
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-whatsnote and texlive-alldocumentation)
+
+%description -n texlive-whatsnote-doc
+This package includes the documentation for texlive-whatsnote
+
+%post -n texlive-whatsnote
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-whatsnote
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-whatsnote
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-whatsnote-doc
+%{_texmfdistdir}/doc/latex/whatsnote/License
+%{_texmfdistdir}/doc/latex/whatsnote/README.md
+%{_texmfdistdir}/doc/latex/whatsnote/figure/Beautiful-realities.jpeg
+%{_texmfdistdir}/doc/latex/whatsnote/figure/cat.pdf
+%{_texmfdistdir}/doc/latex/whatsnote/figure/universe.pdf
+%{_texmfdistdir}/doc/latex/whatsnote/figure/universe.tex
+%{_texmfdistdir}/doc/latex/whatsnote/whatsnote.pdf
+%{_texmfdistdir}/doc/latex/whatsnote/whatsnote.tex
+
+%files -n texlive-whatsnote
+%{_texmfdistdir}/tex/latex/whatsnote/litebook.cls
+%{_texmfdistdir}/tex/latex/whatsnote/litesolution.cls
+%{_texmfdistdir}/tex/latex/whatsnote/thmlist.sty
+%{_texmfdistdir}/tex/latex/whatsnote/whats-cover-module.code.tex
+%{_texmfdistdir}/tex/latex/whatsnote/whats-font-module.code.tex
+%{_texmfdistdir}/tex/latex/whatsnote/whats-layout-module.code.tex
+%{_texmfdistdir}/tex/latex/whatsnote/whats-theorem-module.code.tex
+%{_texmfdistdir}/tex/latex/whatsnote/whatsnote.cls
+
 %package -n texlive-wheelchart
-Version:        %{texlive_version}.%{texlive_noarch}.3.0svn70505
+Version:        %{texlive_version}.%{texlive_noarch}.4.0svn71928
 Release:        0
 License:        LPPL-1.0
 Summary:        Diagrams with circular or other shapes using TikZ and LaTeX3
@@ -30272,9 +30806,9 @@ Suggests:       texlive-wheelchart-doc >= %{texlive_version}
 Provides:       tex(wheelchart.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source319:      wheelchart.tar.xz
-Source320:      wheelchart.doc.tar.xz
+# from 20250308
+Source325:      wheelchart.tar.xz
+Source326:      wheelchart.doc.tar.xz
 
 %description -n texlive-wheelchart
 This package is based on the package TikZ and can be used to
@@ -30287,7 +30821,7 @@ legend can be added and the table of contents can be displayed
 as one of these diagrams.
 
 %package -n texlive-wheelchart-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.0svn70505
+Version:        %{texlive_version}.%{texlive_noarch}.4.0svn71928
 Release:        0
 Summary:        Documentation for texlive-wheelchart
 License:        LPPL-1.0
@@ -30354,9 +30888,9 @@ Suggests:       texlive-widetable-doc >= %{texlive_version}
 Provides:       tex(widetable.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source321:      widetable.tar.xz
-Source322:      widetable.doc.tar.xz
+# from 20250308
+Source327:      widetable.tar.xz
+Source328:      widetable.doc.tar.xz
 
 %description -n texlive-widetable
 The package defines a new environment that, unlike tabularX,
@@ -30433,9 +30967,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-widows-and-orphans-doc >= %{texlive_version}
 Provides:       tex(widows-and-orphans.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source323:      widows-and-orphans.tar.xz
-Source324:      widows-and-orphans.doc.tar.xz
+# from 20250308
+Source329:      widows-and-orphans.tar.xz
+Source330:      widows-and-orphans.doc.tar.xz
 
 %description -n texlive-widows-and-orphans
 This package identifies all widows and orphans in a document to
@@ -30523,9 +31057,9 @@ Requires:       tex(eepic.sty)
 Requires:       tex(epic.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source325:      williams.tar.xz
-Source326:      williams.doc.tar.xz
+# from 20250308
+Source331:      williams.tar.xz
+Source332:      williams.doc.tar.xz
 
 %description -n texlive-williams
 The bundle provides two packages: antree, which provides macros
@@ -30624,9 +31158,9 @@ Requires:       tex(varioref.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source327:      willowtreebook.tar.xz
-Source328:      willowtreebook.doc.tar.xz
+# from 20250308
+Source333:      willowtreebook.tar.xz
+Source334:      willowtreebook.doc.tar.xz
 
 %description -n texlive-willowtreebook
 The willowtreebook class is a simple book class, which the
@@ -30730,9 +31264,9 @@ Requires:       tex(tocloft.sty)
 Requires:       tex(xltxtra.sty)
 Requires:       tex(xunicode.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source329:      windycity.tar.xz
-Source330:      windycity.doc.tar.xz
+# from 20250308
+Source335:      windycity.tar.xz
+Source336:      windycity.doc.tar.xz
 
 %description -n texlive-windycity
 Windy City is a style for BibLaTeX that formats notes,
@@ -30827,9 +31361,9 @@ Requires:       tex(noindentafter.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source331:      withargs.tar.xz
-Source332:      withargs.doc.tar.xz
+# from 20250308
+Source337:      withargs.tar.xz
+Source338:      withargs.doc.tar.xz
 
 %description -n texlive-withargs
 The \withargs command provides a clean way to populate a
@@ -30880,7 +31414,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/withargs/withargs.sty
 
 %package -n texlive-witharrows
-Version:        %{texlive_version}.%{texlive_noarch}.2.8bsvn69995
+Version:        %{texlive_version}.%{texlive_noarch}.2.9asvn72594
 Release:        0
 License:        LPPL-1.0
 Summary:        "Aligned" math environments with arrows for comments
@@ -30915,9 +31449,9 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(varwidth.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source333:      witharrows.tar.xz
-Source334:      witharrows.doc.tar.xz
+# from 20250308
+Source339:      witharrows.tar.xz
+Source340:      witharrows.doc.tar.xz
 
 %description -n texlive-witharrows
 This package provides an environment WithArrows which is
@@ -30929,7 +31463,7 @@ The package requires the following other LaTeX packages: expl3,
 footnote, l3keys2e, tikz, and xparse.
 
 %package -n texlive-witharrows-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.8bsvn69995
+Version:        %{texlive_version}.%{texlive_noarch}.2.9asvn72594
 Release:        0
 Summary:        Documentation for texlive-witharrows
 License:        LPPL-1.0
@@ -31009,9 +31543,9 @@ Provides:       tex(wnris8.tfm)
 Provides:       tex(wnrit10.tfm)
 Provides:       tex(wnrit8.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source335:      wnri.tar.xz
-Source336:      wnri.doc.tar.xz
+# from 20250308
+Source341:      wnri.tar.xz
+Source342:      wnri.doc.tar.xz
 
 %description -n texlive-wnri
 Fonts (as Metafont source) for Old English, Indic languages in
@@ -31169,9 +31703,9 @@ Provides:       tex(ot1wntt.fd)
 Provides:       tex(wnri.def)
 Provides:       tex(wnri.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source337:      wnri-latex.tar.xz
-Source338:      wnri-latex.doc.tar.xz
+# from 20250308
+Source343:      wnri-latex.tar.xz
+Source344:      wnri-latex.doc.tar.xz
 
 %description -n texlive-wnri-latex
 LaTeX support for the wnri fonts.
@@ -31248,9 +31782,9 @@ Suggests:       texlive-wordcloud-doc >= %{texlive_version}
 Provides:       tex(wordcloud.sty)
 Requires:       tex(luamplib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source339:      wordcloud.tar.xz
-Source340:      wordcloud.doc.tar.xz
+# from 20250308
+Source345:      wordcloud.tar.xz
+Source346:      wordcloud.doc.tar.xz
 
 %description -n texlive-wordcloud
 This MetaPost and LuaLaTeX package allows drawing wordclouds
@@ -31334,9 +31868,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-wordcount-doc >= %{texlive_version}
 Provides:       tex(wordcount.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source341:      wordcount.tar.xz
-Source342:      wordcount.doc.tar.xz
+# from 20250308
+Source347:      wordcount.tar.xz
+Source348:      wordcount.doc.tar.xz
 
 %description -n texlive-wordcount
 The package provides a relatively easy way of estimating the
@@ -31384,7 +31918,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/wordcount/wordcount.tex
 
 %package -n texlive-wordle
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn68170
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn72059
 Release:        0
 License:        LPPL-1.0
 Summary:        Create wordle grids
@@ -31412,14 +31946,12 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-wordle-doc >= %{texlive_version}
 Provides:       tex(wordle.sty)
-Requires:       tex(expl3.sty)
-Requires:       tex(simplekv.sty)
+Requires:       tex(l3keys2e.sty)
 Requires:       tex(tikz.sty)
-Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source343:      wordle.tar.xz
-Source344:      wordle.doc.tar.xz
+# from 20250308
+Source349:      wordle.tar.xz
+Source350:      wordle.doc.tar.xz
 
 %description -n texlive-wordle
 This package provides environments (in French or English) to
@@ -31427,7 +31959,7 @@ display wordle grids: \begin{WordleGrid} for the English
 version, \begin{GrilleSutom} for the French version.
 
 %package -n texlive-wordle-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn68170
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn72059
 Release:        0
 Summary:        Documentation for texlive-wordle
 License:        LPPL-1.0
@@ -31500,9 +32032,9 @@ Requires:       tex(geometry.sty)
 Requires:       tex(helvet.sty)
 Requires:       tex(mathptmx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source345:      wordlike.tar.xz
-Source346:      wordlike.doc.tar.xz
+# from 20250308
+Source351:      wordlike.tar.xz
+Source352:      wordlike.doc.tar.xz
 
 %description -n texlive-wordlike
 The package simulates typical word processor layout: narrow
@@ -31582,9 +32114,9 @@ Suggests:       texlive-worksheet-doc >= %{texlive_version}
 Provides:       tex(worksheet.sty)
 Requires:       tex(scrlayer-scrpage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source347:      worksheet.tar.xz
-Source348:      worksheet.doc.tar.xz
+# from 20250308
+Source353:      worksheet.tar.xz
+Source354:      worksheet.doc.tar.xz
 
 %description -n texlive-worksheet
 This package provides macros and an environment for easy
@@ -31977,9 +32509,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source349:      worldflags.tar.xz
-Source350:      worldflags.doc.tar.xz
+# from 20250308
+Source355:      worldflags.tar.xz
+Source356:      worldflags.doc.tar.xz
 
 %description -n texlive-worldflags
 This is a package for drawing flags using TikZ. Currently the
@@ -32378,11 +32910,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:22} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:23} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:24} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/ufrgscca/ufrgscca-terms-ptBR.tex %{buildroot}%{_texmfdistdir}/tex/latex/ufrgscca/ufrgscca-terms-ptBR.tex
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/ufrgscca/ufrgscca-forms.tex %{buildroot}%{_texmfdistdir}/tex/latex/ufrgscca/ufrgscca-forms.tex
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/ufrgscca/ufrgscca-cover-ptBR.tex %{buildroot}%{_texmfdistdir}/tex/latex/ufrgscca/ufrgscca-forms.tex
     tar --use-compress-program=xz -xf %{S:25} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:26} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/ufrgscca/ufrgscca-cover-ptBR.tex %{buildroot}%{_texmfdistdir}/tex/latex/ufrgscca/ufrgscca-forms.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/ufrgscca/ufrgscca-forms.tex %{buildroot}%{_texmfdistdir}/tex/latex/ufrgscca/ufrgscca-forms.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/ufrgscca/ufrgscca-terms-ptBR.tex %{buildroot}%{_texmfdistdir}/tex/latex/ufrgscca/ufrgscca-terms-ptBR.tex
+    tar --use-compress-program=xz -xf %{S:27} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:28} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-uhc
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/uhc/umj/*.{pf[ab],[ot]tf}
@@ -32412,8 +32946,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:27} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:28} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:29} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:30} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:31} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32426,10 +32958,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:38} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:39} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:40} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:41} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:42} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:43} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:44} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:41} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:42} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:43} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:44} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:45} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:46} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:47} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32444,6 +32976,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:56} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-umtypewriter
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/umtypewriter/*.{pf[ab],[ot]tf}
@@ -32473,8 +33007,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32493,6 +33025,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-unfonts-core
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/unfonts-core/*.{pf[ab],[ot]tf}
@@ -32522,8 +33056,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-unfonts-extra
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/unfonts-extra/*.{pf[ab],[ot]tf}
@@ -32553,8 +33087,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32569,6 +33101,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/unicode-math-input/unicode-math-input-script.py
     do
@@ -32587,10 +33123,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32617,6 +33149,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-universalis
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/arkandis/universalis/*.{pf[ab],[ot]tf} \
@@ -32667,10 +33203,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-universalis.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-universalis.conf
-    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32687,18 +33219,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/uptex/uptex-base/samples/testrun.bat
     # Make possible scripts usable if any
@@ -32719,28 +33255,26 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
-    for scr in %{_texmfdistdir}/fonts/source/uptex-fonts/makepl.perl
+    for scr in %{_texmfdistdir}/fonts/source/uptex-fonts/makepl.perl \
+	       %{_texmfdistdir}/fonts/source/uptex-fonts/mk_svs_entry.perl \
+	       %{_texmfdistdir}/fonts/source/uptex-fonts/mk_svs_tex.perl
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32761,6 +33295,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-utopia
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/adobe/utopia/*.{pf[ab],[ot]tf}
@@ -32790,10 +33328,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32828,8 +33362,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-velthuis
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/velthuis/*.{pf[ab],[ot]tf}
@@ -32859,19 +33397,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-venturisadf
-    for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/arkandis/venturis/*.{pf[ab],[ot]tf} \
-		%{buildroot}/%{_texmfdistdir}/fonts/type1/arkandis/venturis2/*.{pf[ab],[ot]tf} \
-		%{buildroot}/%{_texmfdistdir}/fonts/type1/arkandis/venturisold/*.{pf[ab],[ot]tf} \
-		%{buildroot}/%{_texmfdistdir}/fonts/type1/arkandis/venturissans/*.{pf[ab],[ot]tf} \
-		%{buildroot}/%{_texmfdistdir}/fonts/type1/arkandis/venturissans2/*.{pf[ab],[ot]tf}
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/venturisadf/*.{pf[ab],[ot]tf} \
+		%{buildroot}/%{_texmfdistdir}/fonts/type1/public/venturisadf/*.{pf[ab],[ot]tf}
     do
         test -e $font || continue
         mv -f $font %{buildroot}%{_datadir}/fonts/texlive-venturisadf
@@ -32898,10 +33433,26 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+
+    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/55-texlive-venturisadf.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Disable plain Type1 font to let fontconfig       -->
+	<!-- prefere the OpenType and TrueType fonts          -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <selectfont>
+	    <rejectfont>
+	      <glob>%{_datadir}/fonts/texlive-venturisadf/*.pf*</glob>
+	    </rejectfont>
+	  </selectfont>
+	</fontconfig>
+	EOF
+    ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-venturisadf.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-venturisadf.conf
     tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32932,11 +33483,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/generic/vntex/vntex-update-maps
     do
@@ -32992,13 +33547,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive
     # Correct wrong perl scripts if any
     for scr in %{_texmfdistdir}/scripts/vpe/vpe.pl
     do
@@ -33015,14 +33570,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-wadalab
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/wadalab/dgj/*.{pf[ab],[ot]tf} \
@@ -33057,14 +33612,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Correct shebang of python3 scripts if any
-    for scr in %{_texmfdistdir}/tex/latex/wargame/wgexport.py
+    for scr in %{_texmfdistdir}/tex/latex/wargame/wgexport.py \
+	       %{_texmfdistdir}/tex/latex/wargame/wgmakenato.py
     do
         test -e %{buildroot}/$scr || continue
 	head -n 1 %{buildroot}/$scr | grep -q python%python3_bin_suffix && continue
@@ -33090,6 +33646,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     done
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/tex/latex/wargame/wgexport.py \
+	       %{_texmfdistdir}/tex/latex/wargame/wgmakenato.py \
 	       %{_texmfdistdir}/tex/latex/wargame/wgsvg2tikz.py
     do
 	test -e %{buildroot}/$scr || continue
@@ -33101,16 +33658,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-wasy-type1
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/wasy-type1/*.{pf[ab],[ot]tf}
@@ -33140,12 +33697,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/scripts/webquiz/webquiz.bat
     # Correct wrong python scripts if any
@@ -33202,10 +33759,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$txt || continue
 	chmod 0644 %{buildroot}/$txt
     done
-    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:321} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:322} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:323} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -33226,16 +33779,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:338} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:339} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:340} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:341} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:342} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:341} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:342} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:343} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:344} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:345} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:346} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:347} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:348} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:347} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:348} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:349} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:350} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:351} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:352} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:353} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:354} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:355} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:356} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
