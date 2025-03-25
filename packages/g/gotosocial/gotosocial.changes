@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 21 10:18:28 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+
+- Update to version 0.18.3
+  * [bugfix] Avoid nil ptr if maintenance router can't be started
+    (gh#superseriousbusiness/gotosocial#3919)
+  * [bugfix] Fix set obfuscate = null error in adoptPerm
+    (gh#superseriousbusiness/gotosocial#3922)
+  * [chore] Tweak "nothing here!" message
+    (gh#superseriousbusiness/gotosocial#3907)
+
+-------------------------------------------------------------------
 Tue Mar 11 09:31:24 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
 
 - Update to version 0.18.2:
