@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Tue Mar 25 08:51:21 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 3.3.0
+- Remove unneeded dependencies
+- Enable pytest
+
+-------------------------------------------------------------------
+Mon Mar  3 09:12:47 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 3.1.0
+
+-------------------------------------------------------------------
+Sun Mar 10 14:38:26 UTC 2024 - Javier S. Pedro <dev.rpm@javispedro.com> - 2.9.0
+
+- bump to 2.9.0, regenerated spec file with py2pack 0.9.0 
+
+-------------------------------------------------------------------
+Wed Nov  1 00:23:23 UTC 2023 - Javier S. Pedro <dev.rpm@javispedro.com> - 2.6.0
+
+- bump to 2.6.0, regenerate spec file with py2pack 0.9.0
+
+-------------------------------------------------------------------
+Sun Jan 15 20:05:31 UTC 2023 - Javier S. Pedro <dev.rpm@javispedro.com> - 1.31.0
+
+- bump to 1.31.0 
+- switch to _service for src
+
+-------------------------------------------------------------------
+Tue Aug  2 21:14:34 UTC 2022 - Javier S. Pedro <dev.rpm@javispedro.com>
+
+- update to 1.29.0
+
+-------------------------------------------------------------------
+Thu Apr 21 23:37:08 UTC 2022 - Javier S. Pedro <dev.rpm@javispedro.com>
+
+- update to 1.26.0 
+
+-------------------------------------------------------------------
+Mon Jan 31 15:03:38 UTC 2022 - Javier S. Pedro <dev.rpm@javispedro.com>
+
+- switch to packaging created by py2pack
+- remove -docs package
