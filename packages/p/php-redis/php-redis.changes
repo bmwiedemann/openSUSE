@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 25 04:38:41 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 6.2.0
+  * https://pecl.php.net/package/redis/6.2.0
+  * Fixed arguments order for SET command.
+  * Fixed error length calculation and UB sanity check.
+  * Fixed invalidate slot cache on failed cluster connections.
+  * Fixed don't cast a uint64_t to a long.
+  * Fixed potential NULL dereference.
+  * Fixed print cursor as unsigned 64 bit integer.
+  * Fixed XAUTOCLAIM argc when sending COUNT.
+  * Added serverName() and serverVersion() methods.
+  * Added getWithMeta method.
+  * Added GETDEL command for RedisCluster.
+  * Added Redis::OPT_PACK_IGNORE_NUMBERS option.
+  * Added Valkey >= 8.1 IFEQ SET option.
+  * Added KeyDB's EXPIREMEMBER[AT] commands.
+
+-------------------------------------------------------------------
 Sat Oct  5 07:51:16 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 6.1.0

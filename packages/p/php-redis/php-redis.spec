@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 %define php_cfgdir  %{_sysconfdir}/%{php_name}/conf.d
 %endif
 Name:           %{php_name}-%{pkg_name}
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        API for communicating with Redis servers
 License:        PHP-3.01
@@ -38,7 +38,6 @@ Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        %{pkg_name}.ini
 Source2:        php-%{pkg_name}-rpmlintrc
 BuildRequires:  %{php_name}-devel
-BuildRequires:  re2c
 Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
 Provides:       php-%{pkg_name} = %{version}
