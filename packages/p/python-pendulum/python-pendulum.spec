@@ -17,8 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-# gh#python-pendulum/pendulum#844
-
 Name:           python-pendulum
 Version:        3.0.0
 Release:        0
@@ -34,6 +32,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.6}
 BuildRequires:  %{python_module pytz >= 2022.1}
+# gh#python-pendulum/pendulum#844
 BuildRequires:  %{python_module time-machine >= 2.16.0}
 BuildRequires:  %{python_module tzdata}
 BuildRequires:  cargo-packaging
