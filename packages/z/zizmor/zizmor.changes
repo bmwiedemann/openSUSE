@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 23 18:20:03 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.5.2:
+  * Bug Fixes
+    - Fixed a bug where zizmor would over-eagerly parse invalid and
+      commented-out expressions, resulting in spurious warnings
+      (#570)
+    - Fixed a bug where zizmor would fail to honor # zizmor:
+      ignore[rule] comments in unintuitive cases (#612)
+    - Fixed a regression in zizmor's SARIF output format that
+      caused suboptimal presentation of findings on GitHub (#621)
+
+-------------------------------------------------------------------
 Wed Mar 12 15:29:54 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.5.1:
