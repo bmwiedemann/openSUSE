@@ -1,7 +1,7 @@
 #
 # spec file for package piper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,6 +30,7 @@ Patch1:         shebang-env.patch
 Patch2:         use-python-3.6.patch
 BuildRequires:  AppStream
 BuildRequires:  fdupes
+BuildRequires:  gtk3-tools
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros

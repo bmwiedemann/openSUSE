@@ -202,4 +202,12 @@ changes incompatibly.</comment>
 - Switch osc service file to use manual instead of disabled which</comment>
     <requestid>1203974</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d34ae853c3528a97d542d1961056a39c</srcmd5>
+    <version>0.8</version>
+    <time>1742936970</time>
+    <user>anag+factory</user>
+    <comment>- Add missing build requirement to gtk3-tools</comment>
+    <requestid>1255415</requestid>
+  </revision>
 </revisionlist>
