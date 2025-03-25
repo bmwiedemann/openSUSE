@@ -21,10 +21,9 @@ Version:        0.0~git20200217.9dd189d
 Release:        0
 Summary:        Control software for sd-mux devices
 License:        Apache-2.0
-Group:          Development/Tools
 URL:            https://wiki.tizen.org/SD_MUX
 Source0:        sd-mux-%{version}.tar.xz
-BuildRequires:  cmake >= 2.8.3
+BuildRequires:  cmake >= 3.5
 BuildRequires:  libftdi1-devel >= 1.4
 BuildRequires:  popt-devel
 BuildRequires:  gcc-c++
@@ -36,7 +35,7 @@ Tool for controlling multiple sd-mux devices (SD_MUX, SDWIRE, etc.).
 %setup -q -n sd-mux-%{version}
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
@@ -47,6 +46,9 @@ install -m644 doc/man/%{name}.1 %{buildroot}%{_mandir}/man1
 # Bash completion
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 install etc/bash_completion.d/%{name} %{buildroot}%{_datadir}/bash-completion/completions/
+
+%check
+%ctest
 
 %files
 %{_bindir}/%{name}
