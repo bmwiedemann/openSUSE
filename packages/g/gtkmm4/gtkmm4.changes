@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Mar 23 18:18:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.18.0:
+  + Gdk:
+    - CairoContext: Deprecate cairo_create().
+    - Device: Add get/property_active_layout_index(),
+      get/property_layout_names().
+    - Surface: Add translate_coordinates(), deprecate
+      create_cairo_context().
+  + Gtk:
+    - Accessible: Add update_platform_state().
+    - HeaderBar, WindowControls: Add
+      get/set/property_use_native_controls().
+    - Widget: Add get/set/property_limit_events().
+  + Documentation:
+    - Gtk::SignalListItemFactory: Remove errroneous links.
+    - Gtk::AboutDialog: Update the image.
+    - Gtk::ConstraintLayout: Add a link to the description of
+      GtkConstraintLayout.
+    - Gdk::Pixbuf, PixbufFormat, PixbufLoader: Add class
+      descriptions.
+  + Build:
+    - Require gtk4 >= 4.17.5
+    - Meson build: Use the Python installation that Meson uses.
+
+-------------------------------------------------------------------
 Mon Jan 27 22:11:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.17.0 (Unstable):

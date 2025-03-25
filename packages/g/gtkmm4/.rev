@@ -103,4 +103,12 @@
     <comment>Early Staging of GNOME 48.rc</comment>
     <requestid>1251345</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>825abce23ba8acb0ca20e7c9ea7682e6</srcmd5>
+    <version>4.18.0</version>
+    <time>1742936875</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1255433 from iznogood)</comment>
+    <requestid>1255572</requestid>
+  </revision>
 </revisionlist>
