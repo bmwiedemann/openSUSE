@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 23 17:04:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.4.1:
+  + Update default min-version for bst init to 2.4
+  + Use subprocess umask support
+  + Don't use `preexec_fn` on Python 3.11+
+  + contrib/bst-graph: Escape names when using as node_id
+  + _loader: Use the sort algorithm from Python 3.12 for
+    dependencies
+
+-------------------------------------------------------------------
 Tue Dec 24 11:44:22 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.4.0:

@@ -271,4 +271,18 @@
     <comment></comment>
     <requestid>1235447</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d98d268ab1dcf63660f5533404aa5c2e</srcmd5>
+    <version>2.4.1</version>
+    <time>1742937005</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.4.1:
+  + Update default min-version for bst init to 2.4
+  + Use subprocess umask support
+  + Don't use `preexec_fn` on Python 3.11+
+  + contrib/bst-graph: Escape names when using as node_id
+  + _loader: Use the sort algorithm from Python 3.12 for
+    dependencies (forwarded request 1255420 from iznogood)</comment>
+    <requestid>1255571</requestid>
+  </revision>
 </revisionlist>
