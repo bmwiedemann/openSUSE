@@ -1,7 +1,7 @@
 #
 # spec file for package evemu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ URL:            https://freedesktop.org/wiki/Evemu
 Source:         https://freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
+Patch0:         update-py-compile.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -99,7 +100,10 @@ data, create emulation devices and replay data from kernel evdev
 This package provides the development files.
 
 %prep
-%autosetup
+%autosetup -N
+%if !%{with python2}
+%autopatch -p1
+%endif
 evdev_sover="$(basename "$(readlink -f %{_libdir}/libevdev.so)")"
 sed -i \
   -e 's|\"%{soname}.so\"|\"%{soname}.so.%{sover}\"|' \
