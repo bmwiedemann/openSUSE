@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 25 10:32:44 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Remove obsolete dependency on khtml
+
+-------------------------------------------------------------------
 Wed Nov 20 18:08:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro

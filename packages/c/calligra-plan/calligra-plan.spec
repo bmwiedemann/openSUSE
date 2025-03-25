@@ -1,7 +1,7 @@
 #
 # spec file for package calligra-plan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5Init)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KHtml)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Parts)
