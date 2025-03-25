@@ -1,7 +1,7 @@
 #
-# spec file for package texlive-specs-j.spec
+# spec file for package texlive-specs-j
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2024
+%define texlive_version  2025
 %define texlive_previous 2022
-%define texlive_release  20240311
-%define texlive_noarch   216
-%define biber_version    2.19
+%define texlive_release  20250308
+%define texlive_noarch   218
+%define biber_version    2.20
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-j
-Version:        2024
+Version:        2025
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -113,7 +113,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-float-doc >= %{texlive_version}
 Provides:       tex(float.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source1:        float.tar.xz
 Source2:        float.doc.tar.xz
 
@@ -197,7 +197,7 @@ Requires:       tex(tocbasic.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source3:        floatbytocbasic.tar.xz
 Source4:        floatbytocbasic.doc.tar.xz
 
@@ -284,7 +284,7 @@ Requires:       tex(fancybox.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(longtable.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source5:        floatrow.tar.xz
 Source6:        floatrow.doc.tar.xz
 
@@ -389,7 +389,7 @@ Requires:       tex(floatrow.sty)
 Requires:       tex(tocbasic.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source7:        floatrowbytocbasic.tar.xz
 Source8:        floatrowbytocbasic.doc.tar.xz
 
@@ -469,7 +469,7 @@ Provides:       tex(flowchart.sty)
 Requires:       tex(makeshape.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source9:        flowchart.tar.xz
 Source10:       flowchart.doc.tar.xz
 
@@ -552,7 +552,7 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(xfor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source11:       flowfram.tar.xz
 Source12:       flowfram.doc.tar.xz
 
@@ -666,7 +666,7 @@ Provides:       tex(deccomma.sty)
 Provides:       tex(fltpoint.sty)
 Provides:       tex(fltpoint.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source13:       fltpoint.tar.xz
 Source14:       fltpoint.doc.tar.xz
 
@@ -745,7 +745,7 @@ Provides:       tex(fmp.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source15:       fmp.tar.xz
 Source16:       fmp.doc.tar.xz
 
@@ -789,7 +789,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fmp/fmp.sty
 
 %package -n texlive-fmtcount
-Version:        %{texlive_version}.%{texlive_noarch}.3.07svn53912
+Version:        %{texlive_version}.%{texlive_noarch}.3.10svn73812
 Release:        0
 License:        LPPL-1.0
 Summary:        Display the value of a LaTeX counter in a variety of formats
@@ -821,6 +821,7 @@ Provides:       tex(fc-USenglish.def)
 Provides:       tex(fc-american.def)
 Provides:       tex(fc-brazilian.def)
 Provides:       tex(fc-british.def)
+Provides:       tex(fc-dutch.def)
 Provides:       tex(fc-english.def)
 Provides:       tex(fc-francais.def)
 Provides:       tex(fc-french.def)
@@ -843,7 +844,7 @@ Requires:       tex(itnumpar.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source17:       fmtcount.tar.xz
 Source18:       fmtcount.doc.tar.xz
 
@@ -859,7 +860,7 @@ part of the author's datetime package, but is now distributed
 separately.
 
 %package -n texlive-fmtcount-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.07svn53912
+Version:        %{texlive_version}.%{texlive_noarch}.3.10svn73812
 Release:        0
 Summary:        Documentation for texlive-fmtcount
 License:        LPPL-1.0
@@ -900,6 +901,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fmtcount/fc-american.def
 %{_texmfdistdir}/tex/latex/fmtcount/fc-brazilian.def
 %{_texmfdistdir}/tex/latex/fmtcount/fc-british.def
+%{_texmfdistdir}/tex/latex/fmtcount/fc-dutch.def
 %{_texmfdistdir}/tex/latex/fmtcount/fc-english.def
 %{_texmfdistdir}/tex/latex/fmtcount/fc-francais.def
 %{_texmfdistdir}/tex/latex/fmtcount/fc-french.def
@@ -946,7 +948,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fn2end-doc >= %{texlive_version}
 Provides:       tex(fn2end.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source19:       fn2end.tar.xz
 Source20:       fn2end.doc.tar.xz
 
@@ -1021,7 +1023,7 @@ Suggests:       texlive-fnbreak-doc >= %{texlive_version}
 Provides:       tex(fnbreak.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source21:       fnbreak.tar.xz
 Source22:       fnbreak.doc.tar.xz
 
@@ -1100,7 +1102,7 @@ Suggests:       texlive-fncychap-doc >= %{texlive_version}
 Provides:       tex(fncychap.sty)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source23:       fncychap.tar.xz
 Source24:       fncychap.doc.tar.xz
 
@@ -1192,7 +1194,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fncylab-doc >= %{texlive_version}
 Provides:       tex(fncylab.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source25:       fncylab.tar.xz
 Source26:       fncylab.doc.tar.xz
 
@@ -1273,7 +1275,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fnpara-doc >= %{texlive_version}
 Provides:       tex(fnpara.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source27:       fnpara.tar.xz
 Source28:       fnpara.doc.tar.xz
 
@@ -1357,7 +1359,7 @@ Requires:       tex(scrlfile.sty)
 Requires:       tex(translations.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source29:       fnpct.tar.xz
 Source30:       fnpct.doc.tar.xz
 
@@ -1449,7 +1451,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source31:       fnspe.tar.xz
 Source32:       fnspe.doc.tar.xz
 
@@ -1528,7 +1530,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fntproof-doc >= %{texlive_version}
 Provides:       tex(fntproof.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source33:       fntproof.tar.xz
 Source34:       fntproof.doc.tar.xz
 
@@ -1611,7 +1613,7 @@ Requires:       tex(numprint.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(zahl2string.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source35:       fnumprint.tar.xz
 Source36:       fnumprint.doc.tar.xz
 
@@ -1707,7 +1709,7 @@ Provides:       tex(foekfont.tfm)
 Provides:       tex(ot1foekfont.fd)
 Provides:       tex(t1foekfont.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source37:       foekfont.tar.xz
 Source38:       foekfont.doc.tar.xz
 
@@ -1817,7 +1819,7 @@ Suggests:       texlive-foilhtml-doc >= %{texlive_version}
 Provides:       tex(foilhtml.cfg)
 Provides:       tex(foilhtml.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source39:       foilhtml.tar.xz
 Source40:       foilhtml.doc.tar.xz
 
@@ -1897,7 +1899,7 @@ Suggests:       texlive-foliono-doc >= %{texlive_version}
 Provides:       tex(foliono.sty)
 Requires:       tex(calc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source41:       foliono.tar.xz
 Source42:       foliono.doc.tar.xz
 
@@ -2002,7 +2004,7 @@ Provides:       tex(fonetikasansbold.tfm)
 Provides:       tex(t1fonetika.fd)
 Requires:       tex(fontenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source43:       fonetika.tar.xz
 Source44:       fonetika.doc.tar.xz
 
@@ -2180,7 +2182,7 @@ Provides:       tex(font_palatino.tex)
 Provides:       tex(font_times.tex)
 Provides:       tex(font_utopia.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source45:       font-change.tar.xz
 Source46:       font-change.doc.tar.xz
 
@@ -2310,7 +2312,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-font-change-xetex-doc >= %{texlive_version}
 Provides:       tex(font-change-xetex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source47:       font-change-xetex.tar.xz
 Source48:       font-change-xetex.doc.tar.xz
 
@@ -2422,7 +2424,7 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source49:       fontawesome.tar.xz
 Source50:       fontawesome.doc.tar.xz
 
@@ -2588,7 +2590,7 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(luatexbase.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source51:       fontawesome5.tar.xz
 Source52:       fontawesome5.doc.tar.xz
 
@@ -2737,7 +2739,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fontaxes-doc >= %{texlive_version}
 Provides:       tex(fontaxes.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source53:       fontaxes.tar.xz
 Source54:       fontaxes.doc.tar.xz
 
@@ -2819,7 +2821,7 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(xunicode.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source55:       fontbook.tar.xz
 Source56:       fontbook.doc.tar.xz
 
@@ -2899,7 +2901,7 @@ Provides:       tex(bsymbols.tex)
 Provides:       tex(fontch.tex)
 Provides:       tex(fontch_doc.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source57:       fontch.tar.xz
 Source58:       fontch.doc.tar.xz
 
@@ -2960,7 +2962,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/plain/fontch/fontch_doc.tex
 
 %package -n texlive-fontinst
-Version:        %{texlive_version}.%{texlive_noarch}.1.933svn62517
+Version:        %{texlive_version}.%{texlive_noarch}.1.933svn74240
 Release:        0
 License:        LPPL-1.0
 Summary:        Help with installing fonts for TeX and LaTeX
@@ -3002,7 +3004,7 @@ Provides:       tex(xfntinst.sty)
 Requires:       tex(amstext.sty)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source59:       fontinst.tar.xz
 Source60:       fontinst.doc.tar.xz
 
@@ -3022,7 +3024,7 @@ normally be done manually or with the help of some other tool,
 such as the pltotf and vptovf programs.
 
 %package -n texlive-fontinst-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.933svn62517
+Version:        %{texlive_version}.%{texlive_noarch}.1.933svn74240
 Release:        0
 Summary:        Documentation for texlive-fontinst
 License:        LPPL-1.0
@@ -3225,7 +3227,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source61:       fontinstallationguide.doc.tar.xz
 
 %description -n texlive-fontinstallationguide
@@ -3291,7 +3293,7 @@ Suggests:       texlive-fontmfizz-doc >= %{texlive_version}
 Provides:       tex(fontmfizz.sty)
 Requires:       tex(fontspec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source62:       fontmfizz.tar.xz
 Source63:       fontmfizz.doc.tar.xz
 
@@ -3367,7 +3369,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-fontmfizz/font-mfizz.ttf
 
 %package -n texlive-fontname
-Version:        %{texlive_version}.%{texlive_noarch}.svn64477
+Version:        %{texlive_version}.%{texlive_noarch}.svn74435
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Scheme for naming fonts in TeX
@@ -3394,20 +3396,6 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fontname-doc >= %{texlive_version}
-Provides:       tex(adobe.map)
-Provides:       tex(apple.map)
-Provides:       tex(bitstrea.map)
-Provides:       tex(dtc.map)
-Provides:       tex(itc.map)
-Provides:       tex(linot-cd.map)
-Provides:       tex(linotype-cd.map)
-Provides:       tex(linotype.map)
-Provides:       tex(monotype.map)
-Provides:       tex(skey1250.map)
-Provides:       tex(skey1555.map)
-Provides:       tex(softkey-1250.map)
-Provides:       tex(softkey-1555.map)
-Provides:       tex(softkey.map)
 Provides:       tex(special.map)
 Provides:       tex(supplier.map)
 Provides:       tex(texfonts.map)
@@ -3416,9 +3404,8 @@ Provides:       tex(urw.map)
 Provides:       tex(variant.map)
 Provides:       tex(weight.map)
 Provides:       tex(width.map)
-Provides:       tex(yandy.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source64:       fontname.tar.xz
 Source65:       fontname.doc.tar.xz
 
@@ -3428,7 +3415,7 @@ documentation part of the package), and map files giving the
 relation between foundry name and 'TeX-name' are also provided.
 
 %package -n texlive-fontname-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64477
+Version:        %{texlive_version}.%{texlive_noarch}.svn74435
 Release:        0
 Summary:        Documentation for texlive-fontname
 License:        GPL-2.0-or-later
@@ -3478,6 +3465,7 @@ fi
 %{_texmfdistdir}/doc/fonts/fontname/Filenames-for-fonts.html
 %{_texmfdistdir}/doc/fonts/fontname/Font-legalities.html
 %{_texmfdistdir}/doc/fonts/fontname/Font-name-lists.html
+%{_texmfdistdir}/doc/fonts/fontname/HEADER.html
 %{_texmfdistdir}/doc/fonts/fontname/History.html
 %{_texmfdistdir}/doc/fonts/fontname/ITC-fonts.html
 %{_texmfdistdir}/doc/fonts/fontname/Introduction.html
@@ -3495,7 +3483,6 @@ fi
 %{_texmfdistdir}/doc/fonts/fontname/Variants.html
 %{_texmfdistdir}/doc/fonts/fontname/Weights.html
 %{_texmfdistdir}/doc/fonts/fontname/Widths.html
-%{_texmfdistdir}/doc/fonts/fontname/bitstrea.aka
 %{_texmfdistdir}/doc/fonts/fontname/cork.html
 %{_texmfdistdir}/doc/fonts/fontname/dvips.html
 %{_texmfdistdir}/doc/fonts/fontname/fontname.aux
@@ -3515,20 +3502,6 @@ fi
 %{_infodir}/fontname.info*
 
 %files -n texlive-fontname
-%{_texmfdistdir}/fonts/map/fontname/adobe.map
-%{_texmfdistdir}/fonts/map/fontname/apple.map
-%{_texmfdistdir}/fonts/map/fontname/bitstrea.map
-%{_texmfdistdir}/fonts/map/fontname/dtc.map
-%{_texmfdistdir}/fonts/map/fontname/itc.map
-%{_texmfdistdir}/fonts/map/fontname/linot-cd.map
-%{_texmfdistdir}/fonts/map/fontname/linotype-cd.map
-%{_texmfdistdir}/fonts/map/fontname/linotype.map
-%{_texmfdistdir}/fonts/map/fontname/monotype.map
-%{_texmfdistdir}/fonts/map/fontname/skey1250.map
-%{_texmfdistdir}/fonts/map/fontname/skey1555.map
-%{_texmfdistdir}/fonts/map/fontname/softkey-1250.map
-%{_texmfdistdir}/fonts/map/fontname/softkey-1555.map
-%{_texmfdistdir}/fonts/map/fontname/softkey.map
 %{_texmfdistdir}/fonts/map/fontname/special.map
 %{_texmfdistdir}/fonts/map/fontname/supplier.map
 %{_texmfdistdir}/fonts/map/fontname/texfonts.map
@@ -3537,10 +3510,9 @@ fi
 %{_texmfdistdir}/fonts/map/fontname/variant.map
 %{_texmfdistdir}/fonts/map/fontname/weight.map
 %{_texmfdistdir}/fonts/map/fontname/width.map
-%{_texmfdistdir}/fonts/map/fontname/yandy.map
 
 %package -n texlive-fontools
-Version:        %{texlive_version}.%{texlive_noarch}.svn69241
+Version:        %{texlive_version}.%{texlive_noarch}.svn73362
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Tools to simplify using fonts (especially TT/OTF ones)
@@ -3608,7 +3580,7 @@ Provides:       tex(fontools_t5.enc)
 Provides:       tex(fontools_ts1.enc)
 Provides:       tex(fontools_ts3.enc)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source66:       fontools.tar.xz
 Source67:       fontools.doc.tar.xz
 
@@ -3626,7 +3598,7 @@ OpenType fonts, splitttc - split an OpenType Collection file
 (ttc or otc) into individual fonts.
 
 %package -n texlive-fontools-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn69241
+Version:        %{texlive_version}.%{texlive_noarch}.svn73362
 Release:        0
 Summary:        Documentation for texlive-fontools
 License:        GPL-2.0-or-later
@@ -3661,8 +3633,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/afm2afm.1*
 %{_mandir}/man1/autoinst.1*
 %{_mandir}/man1/ot2kpx.1*
-%{_texmfdistdir}/doc/support/fontools/GPLv2.txt
-%{_texmfdistdir}/doc/support/fontools/README
+%{_texmfdistdir}/doc/support/fontools/LICENSE
+%{_texmfdistdir}/doc/support/fontools/README.md
 %{_texmfdistdir}/doc/support/fontools/splitttc
 
 %files -n texlive-fontools
@@ -3716,7 +3688,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-fonts-churchslavonic-fonts >= %{texlive_version}
 Suggests:       texlive-fonts-churchslavonic-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source68:       fonts-churchslavonic.tar.xz
 Source69:       fonts-churchslavonic.doc.tar.xz
 
@@ -4092,7 +4064,7 @@ Provides:       tex(waree_o.tfm)
 Provides:       tex(waree_o.vf)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source70:       fonts-tlwg.tar.xz
 Source71:       fonts-tlwg.doc.tar.xz
 
@@ -4669,7 +4641,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-fonts-tlwg/waree_o.pfb
 
 %package -n texlive-fontscale
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn70540
+Version:        %{texlive_version}.%{texlive_noarch}.4.0.0svn74414
 Release:        0
 License:        LPPL-1.0
 Summary:        A flexible interface for setting font sizes
@@ -4696,9 +4668,10 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fontscale-doc >= %{texlive_version}
+Provides:       tex(fontscale-v3.sty)
 Provides:       tex(fontscale.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source72:       fontscale.tar.xz
 Source73:       fontscale.doc.tar.xz
 
@@ -4707,7 +4680,7 @@ This package provides an interface for selecting (arbitrary)
 font sizes and associated values.
 
 %package -n texlive-fontscale-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn70540
+Version:        %{texlive_version}.%{texlive_noarch}.4.0.0svn74414
 Release:        0
 Summary:        Documentation for texlive-fontscale
 License:        LPPL-1.0
@@ -4736,19 +4709,138 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-fontscale-doc
+%{_texmfdistdir}/doc/latex/fontscale/CHANGELOG.md
 %{_texmfdistdir}/doc/latex/fontscale/README.txt
 %{_texmfdistdir}/doc/latex/fontscale/beery.cls
-%{_texmfdistdir}/doc/latex/fontscale/fontscale-manual-table-classic.tex
-%{_texmfdistdir}/doc/latex/fontscale/fontscale-manual-table-font-steps.tex
-%{_texmfdistdir}/doc/latex/fontscale/fontscale-manual-table-modular-musical.tex
-%{_texmfdistdir}/doc/latex/fontscale/fontscale-manual.pdf
-%{_texmfdistdir}/doc/latex/fontscale/fontscale-manual.tex
+%{_texmfdistdir}/doc/latex/fontscale/fontscale-code.pdf
+%{_texmfdistdir}/doc/latex/fontscale/fontscale-code.tex
+%{_texmfdistdir}/doc/latex/fontscale/fontscale-table-classic.tex
+%{_texmfdistdir}/doc/latex/fontscale/fontscale-table-font-steps.tex
+%{_texmfdistdir}/doc/latex/fontscale/fontscale-table-musical.tex
+%{_texmfdistdir}/doc/latex/fontscale/fontscale.pdf
+%{_texmfdistdir}/doc/latex/fontscale/fontscale.tex
 
 %files -n texlive-fontscale
+%{_texmfdistdir}/tex/latex/fontscale/fontscale-v3.sty
 %{_texmfdistdir}/tex/latex/fontscale/fontscale.sty
 
+%package -n texlive-fontscripts
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn74247
+Release:        0
+License:        LPPL-1.0
+Summary:        Font encodings, metrics and Lua script fragments for font creation
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-fontscripts-doc >= %{texlive_version}
+Provides:       tex(fntbuild-regression-test.tex)
+Provides:       tex(fntbuild-tables.tex)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source74:       fontscripts.tar.xz
+Source75:       fontscripts.doc.tar.xz
+
+%description -n texlive-fontscripts
+Font encodings, metrics and Lua script fragments for generating
+font support packages for 8-bit engines with l3build. Optional
+template-based system enables the automatic generation of font
+tables and l3build tests. Easy addition of variable scaling to
+fd files (unsupported by some tools). Primarily designed for
+fontinst, but can be adapted for use with other programmes.
+Default configuration is intended to be cross-platform and
+require only tools included in TeX Live, but the documentation
+includes a simple adaption for integration with FontForge and
+GNU make.
+
+%package -n texlive-fontscripts-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn74247
+Release:        0
+Summary:        Documentation for texlive-fontscripts
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-fontscripts and texlive-alldocumentation)
+
+%description -n texlive-fontscripts-doc
+This package includes the documentation for texlive-fontscripts
+
+%post -n texlive-fontscripts
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-fontscripts
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-fontscripts
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-fontscripts-doc
+%{_texmfdistdir}/doc/latex/fontscripts/README.md
+%{_texmfdistdir}/doc/latex/fontscripts/fontscripts-code.pdf
+%{_texmfdistdir}/doc/latex/fontscripts/fontscripts-doc.pdf
+%{_texmfdistdir}/doc/latex/fontscripts/manifest.txt
+
+%files -n texlive-fontscripts
+%{_texmfdistdir}/scripts/fontscripts/fntbuild-build.lua
+%{_texmfdistdir}/scripts/fontscripts/fntbuild-check.lua
+%{_texmfdistdir}/scripts/fontscripts/fntbuild-ctan.lua
+%{_texmfdistdir}/scripts/fontscripts/fntbuild-doc.lua
+%{_texmfdistdir}/scripts/fontscripts/fntbuild-utils.lua
+%{_texmfdistdir}/scripts/fontscripts/fntbuild-vars.lua
+%{_texmfdistdir}/scripts/fontscripts/fntbuild.lua
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-dotoldstyle.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-dotsc2.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-dotscbuild.mtx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-dotscmisc.mtx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-dottaboldstyle.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-lining.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-newlatin-dotsc.mtx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-oldstyle.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-t1-cfr.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-t1-dotalt-f_f.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-t1-dotinf.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-t1-dotinferior.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-t1-dotsup.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-t1-dotsuperior.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-t1-f_f.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-t1j-f_f.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-ts1-dotinf.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-ts1-dotsup.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-ts1-euro.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-ucdotalt.etx
+%{_texmfdistdir}/tex/fontinst/fontscripts/fontscripts-unfakable.mtx
+%{_texmfdistdir}/tex/latex/fontscripts/fntbuild-regression-test.tex
+%{_texmfdistdir}/tex/latex/fontscripts/fntbuild-tables.tex
+%{_texmfdistdir}/tex/latex/fontscripts/fntbuild-test.lvt
+
 %package -n texlive-fontsetup
-Version:        %{texlive_version}.%{texlive_noarch}.2.1.1svn70134
+Version:        %{texlive_version}.%{texlive_noarch}.2.3.0svn72734
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        A front-end to fontspec, for selected fonts with math support
@@ -4789,6 +4881,7 @@ Provides:       tex(fspgfsneohellenicot.tex)
 Provides:       tex(fspkerkisot.tex)
 Provides:       tex(fspolddefault.tex)
 Provides:       tex(fspoldstandard.tex)
+Provides:       tex(fspsansdefault.tex)
 Provides:       tex(fspstixtwoot.tex)
 Provides:       tex(fsptalos.tex)
 Provides:       tex(fsptimesot.tex)
@@ -4802,9 +4895,9 @@ Requires:       tex(ucharclasses.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xcharter-otf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source74:       fontsetup.tar.xz
-Source75:       fontsetup.doc.tar.xz
+# from 20250308
+Source76:       fontsetup.tar.xz
+Source77:       fontsetup.doc.tar.xz
 
 %description -n texlive-fontsetup
 This package facilitates the use of fontspec for users who do
@@ -4812,7 +4905,7 @@ not wish to bother with details, with a special focus on
 quality fonts supporting Mathematics.
 
 %package -n texlive-fontsetup-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1.1svn70134
+Version:        %{texlive_version}.%{texlive_noarch}.2.3.0svn72734
 Release:        0
 Summary:        Documentation for texlive-fontsetup
 License:        GPL-2.0-or-later
@@ -4858,9 +4951,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/fontsetup/fspsample-libertinus.pdf
 %{_texmfdistdir}/doc/latex/fontsetup/fspsample-newdefault.pdf
 %{_texmfdistdir}/doc/latex/fontsetup/fspsample-oldstandard.pdf
+%{_texmfdistdir}/doc/latex/fontsetup/fspsample-sansdefault.pdf
 %{_texmfdistdir}/doc/latex/fontsetup/fspsample-stixtwo.pdf
 %{_texmfdistdir}/doc/latex/fontsetup/fspsample-talos.pdf
 %{_texmfdistdir}/doc/latex/fontsetup/fspsample-times.pdf
+%{_texmfdistdir}/doc/latex/fontsetup/fspsample-withsans.pdf
+%{_texmfdistdir}/doc/latex/fontsetup/fspsample-withsans.tex
 %{_texmfdistdir}/doc/latex/fontsetup/fspsample-xcharter.pdf
 %{_texmfdistdir}/doc/latex/fontsetup/fspsample.pdf
 %{_texmfdistdir}/doc/latex/fontsetup/fspsample.tex
@@ -4886,13 +4982,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fontsetup/fspkerkisot.tex
 %{_texmfdistdir}/tex/latex/fontsetup/fspolddefault.tex
 %{_texmfdistdir}/tex/latex/fontsetup/fspoldstandard.tex
+%{_texmfdistdir}/tex/latex/fontsetup/fspsansdefault.tex
 %{_texmfdistdir}/tex/latex/fontsetup/fspstixtwoot.tex
 %{_texmfdistdir}/tex/latex/fontsetup/fsptalos.tex
 %{_texmfdistdir}/tex/latex/fontsetup/fsptimesot.tex
 %{_texmfdistdir}/tex/latex/fontsetup/fspxcharter.tex
 
 %package -n texlive-fontsize
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.5svn60161
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn73038
 Release:        0
 License:        LPPL-1.0
 Summary:        A small package to set arbitrary sizes for the main font of the document
@@ -4923,16 +5020,16 @@ Provides:       tex(fontsize.sty)
 Requires:       tex(xfp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source76:       fontsize.tar.xz
-Source77:       fontsize.doc.tar.xz
+# from 20250308
+Source78:       fontsize.tar.xz
+Source79:       fontsize.doc.tar.xz
 
 %description -n texlive-fontsize
 The package allows you to set arbitrary sizes for the main font
 of the document, through the fontsize=<size> option.
 
 %package -n texlive-fontsize-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.5svn60161
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn73038
 Release:        0
 Summary:        Documentation for texlive-fontsize
 License:        LPPL-1.0
@@ -4969,7 +5066,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fontsize/fontsize.sty
 
 %package -n texlive-fontspec
-Version:        %{texlive_version}.%{texlive_noarch}.2.9asvn69833
+Version:        %{texlive_version}.%{texlive_noarch}.2.9esvn71237
 Release:        0
 License:        LPPL-1.0
 Summary:        Advanced font selection in XeLaTeX and LuaLaTeX
@@ -5016,9 +5113,9 @@ Requires:       tex(fontenc.sty)
 Requires:       tex(luaotfload.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source78:       fontspec.tar.xz
-Source79:       fontspec.doc.tar.xz
+# from 20250308
+Source80:       fontspec.tar.xz
+Source81:       fontspec.doc.tar.xz
 
 %description -n texlive-fontspec
 Fontspec is a package for XeLaTeX and LuaLaTeX. It provides an
@@ -5028,7 +5125,7 @@ LuaTeX engines. The package requires the l3kernel and xparse
 bundles from the LaTeX3 development team.
 
 %package -n texlive-fontspec-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.9asvn69833
+Version:        %{texlive_version}.%{texlive_noarch}.2.9esvn71237
 Release:        0
 Summary:        Documentation for texlive-fontspec
 License:        LPPL-1.0
@@ -5101,9 +5198,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fonttable-doc >= %{texlive_version}
 Provides:       tex(fonttable.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source80:       fonttable.tar.xz
-Source81:       fonttable.doc.tar.xz
+# from 20250308
+Source82:       fonttable.tar.xz
+Source83:       fonttable.doc.tar.xz
 
 %description -n texlive-fonttable
 This is a package version of nfssfont.tex (part of the LaTeX
@@ -5153,7 +5250,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fonttable/fonttable.sty
 
 %package -n texlive-fontware
-Version:        %{texlive_version}.%{texlive_noarch}.svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 License:        SUSE-TeX
 Summary:        Tools for virtual font metrics
@@ -5186,8 +5283,8 @@ Provides:       man(tftopl.1)
 Provides:       man(vftovp.1)
 Provides:       man(vptovf.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source82:       fontware.doc.tar.xz
+# from 20250308
+Source84:       fontware.doc.tar.xz
 
 %description -n texlive-fontware
 Virtual font metrics are usually created in a textual form, the
@@ -5255,9 +5352,9 @@ Requires:       tex(perltex.sty)
 Requires:       tex(xltxtra.sty)
 Requires:       tex(xunicode.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source83:       fontwrap.tar.xz
-Source84:       fontwrap.doc.tar.xz
+# from 20250308
+Source85:       fontwrap.tar.xz
+Source86:       fontwrap.doc.tar.xz
 
 %description -n texlive-fontwrap
 The package (which runs under XeLaTeX) lets you bind fonts to
@@ -5334,9 +5431,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-footbib-doc >= %{texlive_version}
 Provides:       tex(footbib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source85:       footbib.tar.xz
-Source86:       footbib.doc.tar.xz
+# from 20250308
+Source87:       footbib.tar.xz
+Source88:       footbib.doc.tar.xz
 
 %description -n texlive-footbib
 The package makes bibliographic references appear as footnotes.
@@ -5387,7 +5484,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/footbib/footbib.sty
 
 %package -n texlive-footmisc
-Version:        %{texlive_version}.%{texlive_noarch}.6.0fsvn69890
+Version:        %{texlive_version}.%{texlive_noarch}.6.0gsvn73202
 Release:        0
 License:        LPPL-1.0
 Summary:        A range of footnote options
@@ -5418,9 +5515,9 @@ Provides:       tex(footmisc-2011-06-06.sty)
 Provides:       tex(footmisc.sty)
 Requires:       tex(perpage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source87:       footmisc.tar.xz
-Source88:       footmisc.doc.tar.xz
+# from 20250308
+Source89:       footmisc.tar.xz
+Source90:       footmisc.doc.tar.xz
 
 %description -n texlive-footmisc
 A collection of ways to change the typesetting of footnotes.
@@ -5440,7 +5537,7 @@ by the present package.) The perpage option is also offered by
 footnpag and by the rather more general-purpose perpage
 
 %package -n texlive-footmisc-doc
-Version:        %{texlive_version}.%{texlive_noarch}.6.0fsvn69890
+Version:        %{texlive_version}.%{texlive_noarch}.6.0gsvn73202
 Release:        0
 Summary:        Documentation for texlive-footmisc
 License:        LPPL-1.0
@@ -5510,9 +5607,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-footmisx-doc >= %{texlive_version}
 Provides:       tex(footmisx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source89:       footmisx.tar.xz
-Source90:       footmisx.doc.tar.xz
+# from 20250308
+Source91:       footmisx.tar.xz
+Source92:       footmisx.doc.tar.xz
 
 %description -n texlive-footmisx
 This a fork of footmisc package allowing to use hyperref. Here
@@ -5601,9 +5698,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(letltxmacro.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source91:       footnotebackref.tar.xz
-Source92:       footnotebackref.doc.tar.xz
+# from 20250308
+Source93:       footnotebackref.tar.xz
+Source94:       footnotebackref.doc.tar.xz
 
 %description -n texlive-footnotebackref
 The package provides the means of creating hyperlinks, from a
@@ -5677,9 +5774,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-footnotehyper-doc >= %{texlive_version}
 Provides:       tex(footnotehyper.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source93:       footnotehyper.tar.xz
-Source94:       footnotehyper.doc.tar.xz
+# from 20250308
+Source95:       footnotehyper.tar.xz
+Source96:       footnotehyper.doc.tar.xz
 
 %description -n texlive-footnotehyper
 The footnote package by Mark Wooding dates back to 1997 and has
@@ -5724,7 +5821,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/footnotehyper/footnotehyper.sty
 
 %package -n texlive-footnoterange
-Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn66149
+Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn73642
 Release:        0
 License:        LPPL-1.0
 Summary:        References to ranges of footnotes
@@ -5753,9 +5850,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-footnoterange-doc >= %{texlive_version}
 Provides:       tex(footnoterange.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source95:       footnoterange.tar.xz
-Source96:       footnoterange.doc.tar.xz
+# from 20250308
+Source97:       footnoterange.tar.xz
+Source98:       footnoterange.doc.tar.xz
 
 %description -n texlive-footnoterange
 The package provides the environments footnoterange and
@@ -5768,7 +5865,7 @@ hyperfootnotes-option, then the references are hyperlinked.
 never hyperlinked.)
 
 %package -n texlive-footnoterange-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn66149
+Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn73642
 Release:        0
 Summary:        Documentation for texlive-footnoterange
 License:        LPPL-1.0
@@ -5834,9 +5931,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-footnpag-doc >= %{texlive_version}
 Provides:       tex(footnpag.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source97:       footnpag.tar.xz
-Source98:       footnpag.doc.tar.xz
+# from 20250308
+Source99:       footnpag.tar.xz
+Source100:      footnpag.doc.tar.xz
 
 %description -n texlive-footnpag
 Allows footnotes on individual pages to be numbered from 1,
@@ -5925,9 +6022,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-forarray-doc >= %{texlive_version}
 Provides:       tex(forarray.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source99:       forarray.tar.xz
-Source100:      forarray.doc.tar.xz
+# from 20250308
+Source101:      forarray.tar.xz
+Source102:      forarray.doc.tar.xz
 
 %description -n texlive-forarray
 The package provides functionality for processing lists and
@@ -6013,9 +6110,9 @@ Provides:       tex(foreign.sty)
 Requires:       tex(xpunctuate.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source101:      foreign.tar.xz
-Source102:      foreign.doc.tar.xz
+# from 20250308
+Source103:      foreign.tar.xz
+Source104:      foreign.doc.tar.xz
 
 %description -n texlive-foreign
 The package supports authors' use of consistent typesetting of
@@ -6116,9 +6213,9 @@ Requires:       tex(pgfopts.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source103:      forest.tar.xz
-Source104:      forest.doc.tar.xz
+# from 20250308
+Source105:      forest.tar.xz
+Source106:      forest.doc.tar.xz
 
 %description -n texlive-forest
 The package provides a PGF/TikZ-based mechanism for drawing
@@ -6206,8 +6303,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source105:      forest-quickstart.doc.tar.xz
+# from 20250308
+Source107:      forest-quickstart.doc.tar.xz
 
 %description -n texlive-forest-quickstart
 forest is a PGF/TikZ-based package for drawing linguistic (and
@@ -6268,9 +6365,9 @@ Suggests:       texlive-forloop-doc >= %{texlive_version}
 Provides:       tex(forloop.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source106:      forloop.tar.xz
-Source107:      forloop.doc.tar.xz
+# from 20250308
+Source108:      forloop.tar.xz
+Source109:      forloop.doc.tar.xz
 
 %description -n texlive-forloop
 The package provides a command \forloop for doing iteration in
@@ -6347,9 +6444,9 @@ Requires:       tex(newfloat.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source108:      formal-grammar.tar.xz
-Source109:      formal-grammar.doc.tar.xz
+# from 20250308
+Source110:      formal-grammar.tar.xz
+Source111:      formal-grammar.doc.tar.xz
 
 %description -n texlive-formal-grammar
 This package provides a new environment and associated commands
@@ -6424,9 +6521,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-formation-latex-ul-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source110:      formation-latex-ul.source.tar.xz
-Source111:      formation-latex-ul.doc.tar.xz
+# from 20250308
+Source112:      formation-latex-ul.source.tar.xz
+Source113:      formation-latex-ul.doc.tar.xz
 
 %description -n texlive-formation-latex-ul
 This package contains the supporting documentation, slides,
@@ -6585,9 +6682,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-formlett-doc >= %{texlive_version}
 Provides:       tex(formlett.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source112:      formlett.tar.xz
-Source113:      formlett.doc.tar.xz
+# from 20250308
+Source114:      formlett.tar.xz
+Source115:      formlett.doc.tar.xz
 
 %description -n texlive-formlett
 A package for multiple letters from the same basic source; the
@@ -6662,9 +6759,9 @@ Suggests:       texlive-forms16be-doc >= %{texlive_version}
 Provides:       tex(forms16be.sty)
 Provides:       tex(uni4basic-latin.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source114:      forms16be.tar.xz
-Source115:      forms16be.doc.tar.xz
+# from 20250308
+Source116:      forms16be.tar.xz
+Source117:      forms16be.doc.tar.xz
 
 %description -n texlive-forms16be
 This package provides support for UTF-16BE Unicode character
@@ -6753,9 +6850,9 @@ Suggests:       texlive-formular-doc >= %{texlive_version}
 Provides:       tex(formular.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source116:      formular.tar.xz
-Source117:      formular.doc.tar.xz
+# from 20250308
+Source118:      formular.tar.xz
+Source119:      formular.doc.tar.xz
 
 %description -n texlive-formular
 When typesetting forms there often arises the need for defining
@@ -6919,9 +7016,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source118:      forum.tar.xz
-Source119:      forum.doc.tar.xz
+# from 20250308
+Source120:      forum.tar.xz
+Source121:      forum.doc.tar.xz
 
 %description -n texlive-forum
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -7111,9 +7208,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fouridx-doc >= %{texlive_version}
 Provides:       tex(fouridx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source120:      fouridx.tar.xz
-Source121:      fouridx.doc.tar.xz
+# from 20250308
+Source122:      fouridx.tar.xz
+Source123:      fouridx.doc.tar.xz
 
 %description -n texlive-fouridx
 The package enables left subscripts and superscripts in maths
@@ -7160,7 +7257,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fouridx/fouridx.sty
 
 %package -n texlive-fourier
-Version:        %{texlive_version}.%{texlive_noarch}.2.3svn61937
+Version:        %{texlive_version}.%{texlive_noarch}.2.4svn72243
 Release:        0
 License:        LPPL-1.0
 Summary:        Using Utopia fonts in LaTeX documents
@@ -7432,9 +7529,9 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source122:      fourier.tar.xz
-Source123:      fourier.doc.tar.xz
+# from 20250308
+Source124:      fourier.tar.xz
+Source125:      fourier.doc.tar.xz
 
 %description -n texlive-fourier
 Fourier-GUTenberg is a LaTeX typesetting system which uses
@@ -7445,10 +7542,10 @@ and several other symbols. The system is absolutely
 stand-alone: apart from Utopia and Fourier, no other typefaces
 are required. The fourier fonts will also work with Adobe
 Utopia Expert fonts, which are only available for purchase.
-Utopia is a registered trademark of Adobe Systems Incorporated
+Utopia is a registered trademark of Adobe Systems Incorporated.
 
 %package -n texlive-fourier-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.3svn61937
+Version:        %{texlive_version}.%{texlive_noarch}.2.4svn72243
 Release:        0
 Summary:        Documentation for texlive-fourier
 License:        LPPL-1.0
@@ -7460,7 +7557,7 @@ Supplements:    (texlive-fourier and texlive-alldocumentation)
 This package includes the documentation for texlive-fourier
 
 %package -n texlive-fourier-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.3svn61937
+Version:        %{texlive_version}.%{texlive_noarch}.2.4svn72243
 Release:        0
 Summary:        Severed fonts for texlive-fourier
 License:        LPPL-1.0
@@ -7849,9 +7946,9 @@ Requires:       tex(pncbi8r.tfm)
 Requires:       tex(pncr8r.tfm)
 Requires:       tex(pncri8r.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source124:      fouriernc.tar.xz
-Source125:      fouriernc.doc.tar.xz
+# from 20250308
+Source126:      fouriernc.tar.xz
+Source127:      fouriernc.doc.tar.xz
 
 %description -n texlive-fouriernc
 This package provides a LaTeX mathematics font setup for use
@@ -7976,9 +8073,9 @@ Provides:       tex(fp.sty)
 Provides:       tex(fp.tex)
 Provides:       tex(lfp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source126:      fp.tar.xz
-Source127:      fp.doc.tar.xz
+# from 20250308
+Source128:      fp.tar.xz
+Source129:      fp.doc.tar.xz
 
 %description -n texlive-fp
 An extensive collection of arithmetic operations for fixed
@@ -8064,9 +8161,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-fpl-fonts >= %{texlive_version}
 Suggests:       texlive-fpl-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source128:      fpl.tar.xz
-Source129:      fpl.doc.tar.xz
+# from 20250308
+Source130:      fpl.tar.xz
+Source131:      fpl.doc.tar.xz
 
 %description -n texlive-fpl
 The FPL Fonts provide a set of SC/OsF fonts for URW Palladio L
@@ -8201,9 +8298,9 @@ Requires:       perl(Pod::Usage)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source130:      fragmaster.tar.xz
-Source131:      fragmaster.doc.tar.xz
+# from 20250308
+Source132:      fragmaster.tar.xz
+Source133:      fragmaster.doc.tar.xz
 
 %description -n texlive-fragmaster
 Fragmaster enables you to use psfrag with pdfLaTeX. It takes
@@ -8294,9 +8391,9 @@ Provides:       tex(overrightarrow.sty)
 Provides:       tex(removefr.tex)
 Provides:       tex(subscript.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source132:      fragments.tar.xz
-Source133:      fragments.doc.tar.xz
+# from 20250308
+Source134:      fragments.tar.xz
+Source135:      fragments.doc.tar.xz
 
 %description -n texlive-fragments
 A collection of fragments of LaTeX code, suitable for inclusion
@@ -8375,9 +8472,9 @@ Suggests:       texlive-frame-doc >= %{texlive_version}
 Provides:       tex(frame.sty)
 Provides:       tex(frame.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source134:      frame.tar.xz
-Source135:      frame.doc.tar.xz
+# from 20250308
+Source136:      frame.tar.xz
+Source137:      frame.doc.tar.xz
 
 %description -n texlive-frame
 A jiffy file (taken from fancybox) for placing a frame around a
@@ -8454,9 +8551,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-framed-doc >= %{texlive_version}
 Provides:       tex(framed.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source136:      framed.tar.xz
-Source137:      framed.doc.tar.xz
+# from 20250308
+Source138:      framed.tar.xz
+Source139:      framed.doc.tar.xz
 
 %description -n texlive-framed
 The package creates three environments: framed, which puts an
@@ -8504,6 +8601,86 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-framed
 %{_texmfdistdir}/tex/latex/framed/framed.sty
 
+%package -n texlive-framedsyntax
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.8svn72199
+Release:        0
+License:        LPPL-1.0
+Summary:        Typeset the syntax of commands and environments within coloured boxes
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-framedsyntax-doc >= %{texlive_version}
+Provides:       tex(FramedSyntax.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(pict2e.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xkeyval.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source140:      framedsyntax.tar.xz
+Source141:      framedsyntax.doc.tar.xz
+
+%description -n texlive-framedsyntax
+When creating new packages or user guides, it is necessary to
+describe their syntax. This package helps by creating coloured
+frames with rounded corners, with a colured background
+containing the coloured syntax text.
+
+%package -n texlive-framedsyntax-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.8svn72199
+Release:        0
+Summary:        Documentation for texlive-framedsyntax
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-framedsyntax and texlive-alldocumentation)
+
+%description -n texlive-framedsyntax-doc
+This package includes the documentation for texlive-framedsyntax
+
+%post -n texlive-framedsyntax
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-framedsyntax
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-framedsyntax
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-framedsyntax-doc
+%{_texmfdistdir}/doc/latex/framedsyntax/FramedSyntax.pdf
+%{_texmfdistdir}/doc/latex/framedsyntax/README.txt
+
+%files -n texlive-framedsyntax
+%{_texmfdistdir}/tex/latex/framedsyntax/FramedSyntax.sty
+
 %package -n texlive-francais-bst
 Version:        %{texlive_version}.%{texlive_noarch}.2.0asvn69854
 Release:        0
@@ -8534,9 +8711,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-francais-bst-doc >= %{texlive_version}
 Provides:       tex(francaisbst.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source138:      francais-bst.tar.xz
-Source139:      francais-bst.doc.tar.xz
+# from 20250308
+Source142:      francais-bst.tar.xz
+Source143:      francais-bst.doc.tar.xz
 
 %description -n texlive-francais-bst
 The package provides bibliographies (in French) conforming to
@@ -8630,9 +8807,9 @@ Provides:       tex(titles.sty)
 Requires:       tex(relsize.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source140:      frankenstein.tar.xz
-Source141:      frankenstein.doc.tar.xz
+# from 20250308
+Source144:      frankenstein.tar.xz
+Source145:      frankenstein.doc.tar.xz
 
 %description -n texlive-frankenstein
 Frankenstein is a bundle of LaTeX packages serving various
@@ -8819,9 +8996,9 @@ Provides:       tex(ot1frc.fd)
 Provides:       tex(t1frc.fd)
 Requires:       tex(fontenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source142:      frcursive.tar.xz
-Source143:      frcursive.doc.tar.xz
+# from 20250308
+Source146:      frcursive.tar.xz
+Source147:      frcursive.doc.tar.xz
 
 %description -n texlive-frcursive
 A hand-writing font in the style of the French academic
@@ -9016,9 +9193,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-frederika2016-fonts >= %{texlive_version}
 Suggests:       texlive-frederika2016-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source144:      frederika2016.tar.xz
-Source145:      frederika2016.doc.tar.xz
+# from 20250308
+Source148:      frederika2016.tar.xz
+Source149:      frederika2016.doc.tar.xz
 
 %description -n texlive-frederika2016
 Frederika2016 is an attempt to digitize Hermann Zapf's
@@ -9121,9 +9298,9 @@ Provides:       tex(freealign.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(zref-savepos.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source146:      freealign.tar.xz
-Source147:      freealign.doc.tar.xz
+# from 20250308
+Source150:      freealign.tar.xz
+Source151:      freealign.doc.tar.xz
 
 %description -n texlive-freealign
 This package provides several commands for aligning math
@@ -9199,9 +9376,9 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(bguq.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source148:      frege.tar.xz
-Source149:      frege.doc.tar.xz
+# from 20250308
+Source152:      frege.tar.xz
+Source153:      frege.doc.tar.xz
 
 %description -n texlive-frege
 The package defines a number of new commands for typesetting
@@ -9254,7 +9431,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/frege/frege.sty
 
 %package -n texlive-frenchmath
-Version:        %{texlive_version}.%{texlive_noarch}.2.10svn70158
+Version:        %{texlive_version}.%{texlive_noarch}.3.1svn71205
 Release:        0
 License:        LPPL-1.0
 Summary:        Typesetting mathematics according to French rules
@@ -9283,24 +9460,23 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-frenchmath-doc >= %{texlive_version}
 Provides:       tex(frenchmath.sty)
 Requires:       tex(amsopn.sty)
-Requires:       tex(amssymb.sty)
+Requires:       tex(amstext.sty)
 Requires:       tex(decimalcomma.sty)
 Requires:       tex(dotlessj.sty)
+Requires:       tex(etoolbox.sty)
 Requires:       tex(ibrackets.sty)
-Requires:       tex(lgrmath.sty)
-Requires:       tex(mathptmx.sty)
+Requires:       tex(mathgreeks.sty)
 Requires:       tex(mathrsfs.sty)
-Requires:       tex(upgreek.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source150:      frenchmath.tar.xz
-Source151:      frenchmath.doc.tar.xz
+# from 20250308
+Source154:      frenchmath.tar.xz
+Source155:      frenchmath.doc.tar.xz
 
 %description -n texlive-frenchmath
 The package provides capital letters in roman (upright shape)
 in mathematical mode according to French rule (can be
-optionnally disabled), correct spacing in math mode after
+optionally disabled), correct spacing in math mode after
 commas, before a semicolon and around square brackets, some
 useful macros and aliases for symbols used in France: \infeg,
 \supeg, \paral, ... several macros for writing french operator
@@ -9308,7 +9484,7 @@ names like pgcd, ppcm, Card, rg, Vect, ... optionally lowercase
 Greek letters in upright shape,
 
 %package -n texlive-frenchmath-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.10svn70158
+Version:        %{texlive_version}.%{texlive_noarch}.3.1svn71205
 Release:        0
 Summary:        Documentation for texlive-frenchmath
 License:        LPPL-1.0
@@ -9377,9 +9553,9 @@ Provides:       tex(frimurer.enc)
 Provides:       tex(frimurer.sty)
 Provides:       tex(frimurer.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source152:      frimurer.tar.xz
-Source153:      frimurer.doc.tar.xz
+# from 20250308
+Source156:      frimurer.tar.xz
+Source157:      frimurer.doc.tar.xz
 
 %description -n texlive-frimurer
 This package provides access to the 'frimurer' cipher for use
@@ -9483,9 +9659,9 @@ Suggests:       texlive-frletter-doc >= %{texlive_version}
 Provides:       tex(frletter.cls)
 Requires:       tex(letter.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source154:      frletter.tar.xz
-Source155:      frletter.doc.tar.xz
+# from 20250308
+Source158:      frletter.tar.xz
+Source159:      frletter.doc.tar.xz
 
 %description -n texlive-frletter
 A small class for typesetting letters in France. No assumption
@@ -9566,9 +9742,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source156:      frontespizio.tar.xz
-Source157:      frontespizio.doc.tar.xz
+# from 20250308
+Source160:      frontespizio.tar.xz
+Source161:      frontespizio.doc.tar.xz
 
 %description -n texlive-frontespizio
 Typesetting a frontispiece independently of the layout of the
@@ -9666,9 +9842,9 @@ Requires:       tex(fourier-orns.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source158:      froufrou.tar.xz
-Source159:      froufrou.doc.tar.xz
+# from 20250308
+Source162:      froufrou.tar.xz
+Source163:      froufrou.doc.tar.xz
 
 %description -n texlive-froufrou
 This package provides fancy separators, which are visual cues
@@ -9743,9 +9919,9 @@ Suggests:       texlive-frpseudocode-doc >= %{texlive_version}
 Provides:       tex(frpseudocode.sty)
 Requires:       tex(algpseudocode.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source160:      frpseudocode.tar.xz
-Source161:      frpseudocode.doc.tar.xz
+# from 20250308
+Source164:      frpseudocode.tar.xz
+Source165:      frpseudocode.doc.tar.xz
 
 %description -n texlive-frpseudocode
 This package is intended for use alongside Szasz Janos'
@@ -9856,9 +10032,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source162:      ftc-notebook.tar.xz
-Source163:      ftc-notebook.doc.tar.xz
+# from 20250308
+Source166:      ftc-notebook.tar.xz
+Source167:      ftc-notebook.doc.tar.xz
 
 %description -n texlive-ftc-notebook
 This LaTeX package will greatly simplify filling entries for
@@ -9954,9 +10130,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ftcap-doc >= %{texlive_version}
 Provides:       tex(ftcap.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source164:      ftcap.tar.xz
-Source165:      ftcap.doc.tar.xz
+# from 20250308
+Source168:      ftcap.tar.xz
+Source169:      ftcap.doc.tar.xz
 
 %description -n texlive-ftcap
 For several reasons a \caption may be desirable at the top of a
@@ -10031,9 +10207,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ftnxtra-doc >= %{texlive_version}
 Provides:       tex(ftnxtra.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source166:      ftnxtra.tar.xz
-Source167:      ftnxtra.doc.tar.xz
+# from 20250308
+Source170:      ftnxtra.tar.xz
+Source171:      ftnxtra.doc.tar.xz
 
 %description -n texlive-ftnxtra
 The package treats footnotes in \caption, the tabular
@@ -10106,9 +10282,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fullblck-doc >= %{texlive_version}
 Provides:       tex(fullblck.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source168:      fullblck.tar.xz
-Source169:      fullblck.doc.tar.xz
+# from 20250308
+Source172:      fullblck.tar.xz
+Source173:      fullblck.doc.tar.xz
 
 %description -n texlive-fullblck
 Used with the letter documentclass to set the letter in a
@@ -10182,9 +10358,9 @@ Provides:       tex(fullminipage.sty)
 Requires:       tex(color.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source170:      fullminipage.tar.xz
-Source171:      fullminipage.doc.tar.xz
+# from 20250308
+Source174:      fullminipage.tar.xz
+Source175:      fullminipage.doc.tar.xz
 
 %description -n texlive-fullminipage
 This package provides the environment fullminipage, which
@@ -10265,9 +10441,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(zref-abspage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source172:      fullwidth.tar.xz
-Source173:      fullwidth.doc.tar.xz
+# from 20250308
+Source176:      fullwidth.tar.xz
+Source177:      fullwidth.doc.tar.xz
 
 %description -n texlive-fullwidth
 The package provides the environment fullwidth, which sets the
@@ -10346,9 +10522,9 @@ Suggests:       texlive-functan-doc >= %{texlive_version}
 Provides:       tex(functan.sty)
 Requires:       tex(amsmath.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source174:      functan.tar.xz
-Source175:      functan.doc.tar.xz
+# from 20250308
+Source178:      functan.tar.xz
+Source179:      functan.doc.tar.xz
 
 %description -n texlive-functan
 This package provides a convenient and coherent way to deal
@@ -10395,10 +10571,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/functan/functan.sty
 
 %package -n texlive-functional
-Version:        %{texlive_version}.%{texlive_noarch}.2024asvn69908
+Version:        %{texlive_version}.%{texlive_noarch}.2024csvn73156
 Release:        0
 License:        LPPL-1.0
-Summary:        Provide an intuitive functional programming interface for LaTeX2
+Summary:        An intuitive functional programming interface for LaTeX2
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -10425,9 +10601,9 @@ Suggests:       texlive-functional-doc >= %{texlive_version}
 Provides:       tex(functional.sty)
 Requires:       tex(expl3.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source176:      functional.tar.xz
-Source177:      functional.doc.tar.xz
+# from 20250308
+Source180:      functional.tar.xz
+Source181:      functional.doc.tar.xz
 
 %description -n texlive-functional
 This package provides an intuitive functional programming
@@ -10440,7 +10616,7 @@ which is the same as other programming languages such as Lua.
 In this way, it is rather easy to debug code too.
 
 %package -n texlive-functional-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2024asvn69908
+Version:        %{texlive_version}.%{texlive_noarch}.2024csvn73156
 Release:        0
 Summary:        Documentation for texlive-functional
 License:        LPPL-1.0
@@ -10506,9 +10682,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fundus-calligra-doc >= %{texlive_version}
 Provides:       tex(calligra.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source178:      fundus-calligra.tar.xz
-Source179:      fundus-calligra.doc.tar.xz
+# from 20250308
+Source182:      fundus-calligra.tar.xz
+Source183:      fundus-calligra.doc.tar.xz
 
 %description -n texlive-fundus-calligra
 The package offers support for the calligra handwriting font,
@@ -10579,8 +10755,8 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(cyr.sty)
 Requires:       tex(cyracc.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source180:      fundus-cyr.tar.xz
+# from 20250308
+Source184:      fundus-cyr.tar.xz
 
 %description -n texlive-fundus-cyr
 The package supports the use of the Washington Cyrillic fonts
@@ -10638,9 +10814,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fundus-sueterlin-doc >= %{texlive_version}
 Provides:       tex(suetterl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source181:      fundus-sueterlin.tar.xz
-Source182:      fundus-sueterlin.doc.tar.xz
+# from 20250308
+Source185:      fundus-sueterlin.tar.xz
+Source186:      fundus-sueterlin.doc.tar.xz
 
 %description -n texlive-fundus-sueterlin
 The package supports use, in LaTeX, of the Metafont emulation
@@ -10683,12 +10859,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/fundus-sueterlin/suetterl.sty
 
 %package -n texlive-fvextra
-Version:        %{texlive_version}.%{texlive_noarch}.1.6.1svn69001
+Version:        %{texlive_version}.%{texlive_noarch}.1.12.0svn74460
 Release:        0
 License:        LPPL-1.0
 Summary:        Extensions and patches for fancyvrb
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Requires:       texlive-fancyvrb >= %{texlive_version}
+#!BuildIgnore: texlive-fancyvrb
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -10714,21 +10892,22 @@ Provides:       tex(fvextra.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fancyvrb.sty)
 Requires:       tex(lineno.sty)
+Requires:       tex(pdftexcmds.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(upquote.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source183:      fvextra.tar.xz
-Source184:      fvextra.doc.tar.xz
+# from 20250308
+Source187:      fvextra.tar.xz
+Source188:      fvextra.doc.tar.xz
 
 %description -n texlive-fvextra
-fvextra provides several extensions to fancyvrb, including
+This package provides several extensions to fancyvrb, including
 automatic line breaking and improved math mode. It also patches
 some fancyvrb internals. Parts of fvextra were originally
 developed as part of pythontex and minted.
 
 %package -n texlive-fvextra-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.6.1svn69001
+Version:        %{texlive_version}.%{texlive_noarch}.1.12.0svn74460
 Release:        0
 Summary:        Documentation for texlive-fvextra
 License:        LPPL-1.0
@@ -10757,6 +10936,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-fvextra-doc
+%{_texmfdistdir}/doc/latex/fvextra/CHANGELOG.md
 %{_texmfdistdir}/doc/latex/fvextra/README
 %{_texmfdistdir}/doc/latex/fvextra/fvextra.pdf
 
@@ -10793,9 +10973,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-fwlw-doc >= %{texlive_version}
 Provides:       tex(fwlw.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source185:      fwlw.tar.xz
-Source186:      fwlw.doc.tar.xz
+# from 20250308
+Source189:      fwlw.tar.xz
+Source190:      fwlw.doc.tar.xz
 
 %description -n texlive-fwlw
 The package extracts the first and last words of a page,
@@ -10880,9 +11060,9 @@ Requires:       tex(inputenc.sty)
 Requires:       tex(letter.cls)
 Requires:       tex(marvosym.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source187:      g-brief.tar.xz
-Source188:      g-brief.doc.tar.xz
+# from 20250308
+Source191:      g-brief.tar.xz
+Source192:      g-brief.doc.tar.xz
 
 %description -n texlive-g-brief
 Designed for formatting formless letters in German; can also be
@@ -10972,9 +11152,9 @@ Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source189:      gaceta.tar.xz
-Source190:      gaceta.doc.tar.xz
+# from 20250308
+Source193:      gaceta.tar.xz
+Source194:      gaceta.doc.tar.xz
 
 %description -n texlive-gaceta
 The class will typeset papers for <<La Gaceta de la Real
@@ -11051,9 +11231,9 @@ Suggests:       texlive-galois-doc >= %{texlive_version}
 Provides:       tex(galois.sty)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source191:      galois.tar.xz
-Source192:      galois.doc.tar.xz
+# from 20250308
+Source195:      galois.tar.xz
+Source196:      galois.doc.tar.xz
 
 %description -n texlive-galois
 The package deals with connections in two-dimensional style,
@@ -11133,9 +11313,9 @@ Requires:       tex(prelim2e.sty)
 Requires:       tex(scrtime.sty)
 Requires:       tex(titlesec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source193:      gamebook.tar.xz
-Source194:      gamebook.doc.tar.xz
+# from 20250308
+Source197:      gamebook.tar.xz
+Source198:      gamebook.doc.tar.xz
 
 %description -n texlive-gamebook
 This package provides the means in order to lay-out gamebooks
@@ -11216,9 +11396,9 @@ Requires:       tex(lcg.sty)
 Requires:       tex(macroswap.sty)
 Requires:       tex(silence.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source195:      gamebooklib.tar.xz
-Source196:      gamebooklib.doc.tar.xz
+# from 20250308
+Source199:      gamebooklib.tar.xz
+Source200:      gamebooklib.doc.tar.xz
 
 %description -n texlive-gamebooklib
 This package provides macros and environments to allow the user
@@ -11334,9 +11514,9 @@ Requires:       tex(subdepth.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source197:      gammas.tar.xz
-Source198:      gammas.doc.tar.xz
+# from 20250308
+Source201:      gammas.tar.xz
+Source202:      gammas.doc.tar.xz
 
 %description -n texlive-gammas
 This is the official document class for typesetting journal
@@ -11383,7 +11563,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/gammas/gammas.cls
 
 %package -n texlive-garamond-libre
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn64412
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn71058
 Release:        0
 License:        LPPL-1.0
 Summary:        The Garamond Libre font face
@@ -11951,9 +12131,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source199:      garamond-libre.tar.xz
-Source200:      garamond-libre.doc.tar.xz
+# from 20250308
+Source203:      garamond-libre.tar.xz
+Source204:      garamond-libre.doc.tar.xz
 
 %description -n texlive-garamond-libre
 Garamond Libre is a free and open-source old-style font family.
@@ -11969,7 +12149,7 @@ and inferior figures, historical ligatures, Byzantine musical
 symbols, the IPA and swash capitals.
 
 %package -n texlive-garamond-libre-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn64412
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn71058
 Release:        0
 Summary:        Documentation for texlive-garamond-libre
 License:        LPPL-1.0
@@ -11981,7 +12161,7 @@ Supplements:    (texlive-garamond-libre and texlive-alldocumentation)
 This package includes the documentation for texlive-garamond-libre
 
 %package -n texlive-garamond-libre-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn64412
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn71058
 Release:        0
 Summary:        Severed fonts for texlive-garamond-libre
 License:        LPPL-1.0
@@ -12599,9 +12779,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-garamond-math-fonts >= %{texlive_version}
 Suggests:       texlive-garamond-math-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source201:      garamond-math.tar.xz
-Source202:      garamond-math.doc.tar.xz
+# from 20250308
+Source205:      garamond-math.tar.xz
+Source206:      garamond-math.doc.tar.xz
 
 %description -n texlive-garamond-math
 Garamond-Math is an open type math font matching EB Garamond
@@ -12702,9 +12882,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-garrigues-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source203:      garrigues.tar.xz
-Source204:      garrigues.doc.tar.xz
+# from 20250308
+Source207:      garrigues.tar.xz
+Source208:      garrigues.doc.tar.xz
 
 %description -n texlive-garrigues
 MetaPost macros for the reproduction of Garrigues' Easter
@@ -12795,8 +12975,8 @@ Provides:       tex(fgdo8z.tfm)
 Provides:       tex(fgdr8z.tfm)
 Provides:       tex(garuda-c90.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source205:      garuda-c90.tar.xz
+# from 20250308
+Source209:      garuda-c90.tar.xz
 
 %description -n texlive-garuda-c90
 The garuda-c90 package
@@ -12868,9 +13048,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source206:      gastex.tar.xz
-Source207:      gastex.doc.tar.xz
+# from 20250308
+Source210:      gastex.tar.xz
+Source211:      gastex.doc.tar.xz
 
 %description -n texlive-gastex
 GasTeX is a set of LaTeX macros which enable the user to draw
@@ -12947,9 +13127,9 @@ Provides:       tex(gates.sty)
 Provides:       tex(gates.tex)
 Provides:       tex(t-gates.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source208:      gates.tar.xz
-Source209:      gates.doc.tar.xz
+# from 20250308
+Source212:      gates.tar.xz
+Source213:      gates.doc.tar.xz
 
 %description -n texlive-gates
 The package provides the means of writing code in a modular
@@ -13041,9 +13221,9 @@ Requires:       tex(enumitem.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source210:      gatherenum.tar.xz
-Source211:      gatherenum.doc.tar.xz
+# from 20250308
+Source214:      gatherenum.tar.xz
+Source215:      gatherenum.doc.tar.xz
 
 %description -n texlive-gatherenum
 This package (ab)uses the inline enumeration capabilities of
@@ -13126,9 +13306,9 @@ Suggests:       texlive-gauss-doc >= %{texlive_version}
 Provides:       tex(gauss.sty)
 Requires:       tex(amsmath.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source212:      gauss.tar.xz
-Source213:      gauss.doc.tar.xz
+# from 20250308
+Source216:      gauss.tar.xz
+Source217:      gauss.doc.tar.xz
 
 %description -n texlive-gauss
 The gauss package provides configurable tools for producing row
@@ -13203,9 +13383,9 @@ Suggests:       texlive-gb4e-doc >= %{texlive_version}
 Provides:       tex(cgloss4e.sty)
 Provides:       tex(gb4e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source214:      gb4e.tar.xz
-Source215:      gb4e.doc.tar.xz
+# from 20250308
+Source218:      gb4e.tar.xz
+Source219:      gb4e.doc.tar.xz
 
 %description -n texlive-gb4e
 Provides an environment for linguistic examples, tools for
@@ -13250,6 +13430,84 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/gb4e/cgloss4e.sty
 %{_texmfdistdir}/tex/latex/gb4e/gb4e.sty
 
+%package -n texlive-gb4e-next
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn72692
+Release:        0
+License:        LPPL-1.0
+Summary:        Linguistic tools
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-gb4e-next-doc >= %{texlive_version}
+Provides:       tex(gb4e-next.sty)
+Requires:       tex(gb4e.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source220:      gb4e-next.tar.xz
+Source221:      gb4e-next.doc.tar.xz
+
+%description -n texlive-gb4e-next
+The package provides gb4e users two relative example reference
+commands. \Next refers to the next example in the document and
+\Prev refers to the previous example. No explicit label command
+is required.
+
+%package -n texlive-gb4e-next-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn72692
+Release:        0
+Summary:        Documentation for texlive-gb4e-next
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-gb4e-next and texlive-alldocumentation)
+
+%description -n texlive-gb4e-next-doc
+This package includes the documentation for texlive-gb4e-next
+
+%post -n texlive-gb4e-next
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-gb4e-next
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-gb4e-next
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-gb4e-next-doc
+%{_texmfdistdir}/doc/latex/gb4e-next/README.md
+%{_texmfdistdir}/doc/latex/gb4e-next/gb4e-next.pdf
+%{_texmfdistdir}/doc/latex/gb4e-next/gb4e-next.tex
+
+%files -n texlive-gb4e-next
+%{_texmfdistdir}/tex/latex/gb4e-next/gb4e-next.sty
+
 %package -n texlive-gbt7714
 Version:        %{texlive_version}.%{texlive_noarch}.2.1.5svn64633
 Release:        0
@@ -13288,9 +13546,9 @@ Provides:       tex(gbt7714.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source216:      gbt7714.tar.xz
-Source217:      gbt7714.doc.tar.xz
+# from 20250308
+Source222:      gbt7714.tar.xz
+Source223:      gbt7714.doc.tar.xz
 
 %description -n texlive-gbt7714
 The package provides a BibTeX implementation for the Chinese
@@ -13377,9 +13635,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(textpos.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source218:      gcard.tar.xz
-Source219:      gcard.doc.tar.xz
+# from 20250308
+Source224:      gcard.tar.xz
+Source225:      gcard.doc.tar.xz
 
 %description -n texlive-gcard
 The package provides a simple means of producing greeting
@@ -13458,9 +13716,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-gchords-doc >= %{texlive_version}
 Provides:       tex(gchords.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source220:      gchords.tar.xz
-Source221:      gchords.doc.tar.xz
+# from 20250308
+Source226:      gchords.tar.xz
+Source227:      gchords.doc.tar.xz
 
 %description -n texlive-gchords
 A LaTeX package for typesetting of guitar chord diagrams,
@@ -13539,9 +13797,9 @@ Suggests:       texlive-gcite-doc >= %{texlive_version}
 Provides:       tex(gcite.sty)
 Requires:       tex(biblatex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source222:      gcite.tar.xz
-Source223:      gcite.doc.tar.xz
+# from 20250308
+Source228:      gcite.tar.xz
+Source229:      gcite.doc.tar.xz
 
 %description -n texlive-gcite
 The package allows citations in the German style, which is
@@ -13624,9 +13882,9 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifuptex.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source224:      gckanbun.tar.xz
-Source225:      gckanbun.doc.tar.xz
+# from 20250308
+Source230:      gckanbun.tar.xz
+Source231:      gckanbun.doc.tar.xz
 
 %description -n texlive-gckanbun
 This package provides a Kanbun (Han Wen , "Chinese writing")
@@ -13672,7 +13930,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/gckanbun/gckanbun.sty
 
 %package -n texlive-gelasio
-Version:        %{texlive_version}.%{texlive_noarch}.svn66805
+Version:        %{texlive_version}.%{texlive_noarch}.svn71047
 Release:        0
 License:        OFL-1.1
 Summary:        LaTeX support for the Gelasio family of fonts
@@ -14057,9 +14315,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source226:      gelasio.tar.xz
-Source227:      gelasio.doc.tar.xz
+# from 20250308
+Source232:      gelasio.tar.xz
+Source233:      gelasio.doc.tar.xz
 
 %description -n texlive-gelasio
 This package provides (pdf)LaTeX, XeLaTeX and LuaLaTeX support
@@ -14068,7 +14326,7 @@ metric-compatible with Georgia in its Regular and Bold weights.
 Medium and SemiBold weights have been added.
 
 %package -n texlive-gelasio-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn66805
+Version:        %{texlive_version}.%{texlive_noarch}.svn71047
 Release:        0
 Summary:        Documentation for texlive-gelasio
 License:        OFL-1.1
@@ -14080,7 +14338,7 @@ Supplements:    (texlive-gelasio and texlive-alldocumentation)
 This package includes the documentation for texlive-gelasio
 
 %package -n texlive-gelasio-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn66805
+Version:        %{texlive_version}.%{texlive_noarch}.svn71047
 Release:        0
 Summary:        Severed fonts for texlive-gelasio
 License:        OFL-1.1
@@ -14501,6 +14759,200 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-gelasio/Gelasio-SemiBold.pfb
 %{_datadir}/fonts/texlive-gelasio/Gelasio-SemiBoldItalic.pfb
 
+%package -n texlive-gelasiomath
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn73362
+Release:        0
+License:        OFL-1.1
+Summary:        Math and small cap additions to Gelasio fonts
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(post): findutils
+Requires(post): grep
+Requires(post): sed
+Requires(post): texlive >= %{texlive_version}
+Requires(post): tex(updmap.cfg)
+#!BuildIgnore:  tex(updmap.cfg)
+Requires(postun): findutils
+Requires(postun): grep
+Requires(postun): sed
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Requires:       texlive-gelasiomath-fonts >= %{texlive_version}
+Suggests:       texlive-gelasiomath-doc >= %{texlive_version}
+Provides:       tex(Gelasio-Bold-tlf-ot1G.tfm)
+Provides:       tex(Gelasio-Bold-tlf-ot1G.vf)
+Provides:       tex(Gelasio-BoldItalic-tlf-ot1G.tfm)
+Provides:       tex(Gelasio-BoldItalic-tlf-ot1G.vf)
+Provides:       tex(Gelasio-Italic-tlf-ot1G.tfm)
+Provides:       tex(Gelasio-Italic-tlf-ot1G.vf)
+Provides:       tex(Gelasio-Regular-tlf-ot1G.tfm)
+Provides:       tex(Gelasio-Regular-tlf-ot1G.vf)
+Provides:       tex(GelasioMath.map)
+Provides:       tex(GelasioMathBMI.tfm)
+Provides:       tex(GelasioMathBRM.tfm)
+Provides:       tex(GelasioMathMI.tfm)
+Provides:       tex(GelasioMathRM.tfm)
+Provides:       tex(gelasiomath.sty)
+Provides:       tex(ly1mingelasio.fd)
+Provides:       tex(omlzgelmi.fd)
+Provides:       tex(ot1mingelasio.fd)
+Provides:       tex(t1mingelasio.fd)
+Provides:       tex(zgelbmi.tfm)
+Provides:       tex(zgelbmi.vf)
+Provides:       tex(zgelbmia.tfm)
+Provides:       tex(zgelbmia.vf)
+Provides:       tex(zgelmi.tfm)
+Provides:       tex(zgelmi.vf)
+Provides:       tex(zgelmia.tfm)
+Provides:       tex(zgelmia.vf)
+Requires:       tex(Gelasio-Bold-tlf-ot1.tfm)
+Requires:       tex(Gelasio-BoldItalic-tlf-ot1.tfm)
+Requires:       tex(Gelasio-Italic-tlf-ot1.tfm)
+Requires:       tex(Gelasio-Regular-tlf-ot1.tfm)
+Requires:       tex(XCharter-Bold-tlf-ot1G.tfm)
+Requires:       tex(XCharter-BoldItalic-tlf-ot1.tfm)
+Requires:       tex(XCharter-Italic-tlf-ot1G.tfm)
+Requires:       tex(XCharter-Roman-tlf-ot1G.tfm)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(iftex.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(newtx.sty)
+Requires:       tex(stxscr.tfm)
+Requires:       tex(txbmiaSTbb.tfm)
+Requires:       tex(txbmiaX.tfm)
+Requires:       tex(txmiaSTbb.tfm)
+Requires:       tex(txmiaX.tfm)
+Requires:       tex(xkeyval.sty)
+Requires:       tex(xparse.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source234:      gelasiomath.tar.xz
+Source235:      gelasiomath.doc.tar.xz
+
+%description -n texlive-gelasiomath
+The package offers math support for the gelasio package, using
+symbols from newtxmath, Roman math letters from Gelasio and
+Greek math letters based on XCharter Greek. Also added small
+caps based on XCharter small caps and other minor features to
+Gelasio.
+
+%package -n texlive-gelasiomath-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn73362
+Release:        0
+Summary:        Documentation for texlive-gelasiomath
+License:        OFL-1.1
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-gelasiomath and texlive-alldocumentation)
+
+%description -n texlive-gelasiomath-doc
+This package includes the documentation for texlive-gelasiomath
+
+%package -n texlive-gelasiomath-fonts
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn73362
+Release:        0
+Summary:        Severed fonts for texlive-gelasiomath
+License:        OFL-1.1
+URL:            https://www.tug.org/texlive/
+Group:          Productivity/Publishing/TeX/Fonts
+%reconfigure_fonts_prereq
+Requires(posttrans): fontconfig
+Requires(posttrans): ghostscript-fonts-std
+Suggests:       xorg-x11-fonts-core
+
+%description -n texlive-gelasiomath-fonts
+The  separated fonts package for texlive-gelasiomath
+
+%post -n texlive-gelasiomath
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+echo 'addMap GelasioMath.map' >> /var/run/texlive/run-updmap
+
+%postun -n texlive-gelasiomath
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    echo 'deleteMap GelasioMath.map' >> /var/run/texlive/run-updmap
+    exit 0
+fi
+
+%posttrans -n texlive-gelasiomath
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%reconfigure_fonts_scriptlets -n texlive-gelasiomath-fonts
+
+%files -n texlive-gelasiomath-doc
+%{_texmfdistdir}/doc/fonts/gelasiomath/README
+%{_texmfdistdir}/doc/fonts/gelasiomath/gelasiomath-doc.pdf
+%{_texmfdistdir}/doc/fonts/gelasiomath/gelasiomath-doc.tex
+%{_texmfdistdir}/doc/fonts/gelasiomath/newtx-gel-subs.tex
+
+%files -n texlive-gelasiomath
+%{_texmfdistdir}/fonts/map/dvips/gelasiomath/GelasioMath.map
+%{_texmfdistdir}/fonts/tfm/public/gelasiomath/Gelasio-Bold-tlf-ot1G.tfm
+%{_texmfdistdir}/fonts/tfm/public/gelasiomath/Gelasio-BoldItalic-tlf-ot1G.tfm
+%{_texmfdistdir}/fonts/tfm/public/gelasiomath/Gelasio-Italic-tlf-ot1G.tfm
+%{_texmfdistdir}/fonts/tfm/public/gelasiomath/Gelasio-Regular-tlf-ot1G.tfm
+%{_texmfdistdir}/fonts/tfm/public/gelasiomath/GelasioMathBMI.tfm
+%{_texmfdistdir}/fonts/tfm/public/gelasiomath/GelasioMathBRM.tfm
+%{_texmfdistdir}/fonts/tfm/public/gelasiomath/GelasioMathMI.tfm
+%{_texmfdistdir}/fonts/tfm/public/gelasiomath/GelasioMathRM.tfm
+%{_texmfdistdir}/fonts/tfm/public/gelasiomath/zgelbmi.tfm
+%{_texmfdistdir}/fonts/tfm/public/gelasiomath/zgelbmia.tfm
+%{_texmfdistdir}/fonts/tfm/public/gelasiomath/zgelmi.tfm
+%{_texmfdistdir}/fonts/tfm/public/gelasiomath/zgelmia.tfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/gelasiomath/GelasioMathBMI.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/gelasiomath/GelasioMathBRM.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/gelasiomath/GelasioMathMI.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/gelasiomath/GelasioMathRM.pfb
+%{_texmfdistdir}/fonts/vf/public/gelasiomath/Gelasio-Bold-tlf-ot1G.vf
+%{_texmfdistdir}/fonts/vf/public/gelasiomath/Gelasio-BoldItalic-tlf-ot1G.vf
+%{_texmfdistdir}/fonts/vf/public/gelasiomath/Gelasio-Italic-tlf-ot1G.vf
+%{_texmfdistdir}/fonts/vf/public/gelasiomath/Gelasio-Regular-tlf-ot1G.vf
+%{_texmfdistdir}/fonts/vf/public/gelasiomath/zgelbmi.vf
+%{_texmfdistdir}/fonts/vf/public/gelasiomath/zgelbmia.vf
+%{_texmfdistdir}/fonts/vf/public/gelasiomath/zgelmi.vf
+%{_texmfdistdir}/fonts/vf/public/gelasiomath/zgelmia.vf
+%{_texmfdistdir}/tex/latex/gelasiomath/gelasiomath.sty
+%{_texmfdistdir}/tex/latex/gelasiomath/ly1mingelasio.fd
+%{_texmfdistdir}/tex/latex/gelasiomath/omlzgelmi.fd
+%{_texmfdistdir}/tex/latex/gelasiomath/ot1mingelasio.fd
+%{_texmfdistdir}/tex/latex/gelasiomath/t1mingelasio.fd
+
+%files -n texlive-gelasiomath-fonts
+%dir %{_datadir}/fonts/texlive-gelasiomath
+%{_datadir}/fontconfig/conf.avail/58-texlive-gelasiomath.conf
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-gelasiomath/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-gelasiomath/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-gelasiomath/fonts.scale
+%{_datadir}/fonts/texlive-gelasiomath/GelasioMathBMI.pfb
+%{_datadir}/fonts/texlive-gelasiomath/GelasioMathBRM.pfb
+%{_datadir}/fonts/texlive-gelasiomath/GelasioMathMI.pfb
+%{_datadir}/fonts/texlive-gelasiomath/GelasioMathRM.pfb
+
 %package -n texlive-gender
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn36464
 Release:        0
@@ -14532,9 +14984,9 @@ Suggests:       texlive-gender-doc >= %{texlive_version}
 Provides:       tex(gender.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source228:      gender.tar.xz
-Source229:      gender.doc.tar.xz
+# from 20250308
+Source236:      gender.tar.xz
+Source237:      gender.doc.tar.xz
 
 %description -n texlive-gender
 Many languages -- like German or French -- use masculine and
@@ -14609,9 +15061,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-gene-logic-doc >= %{texlive_version}
 Provides:       tex(gn-logic14.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source230:      gene-logic.tar.xz
-Source231:      gene-logic.doc.tar.xz
+# from 20250308
+Source238:      gene-logic.tar.xz
+Source239:      gene-logic.doc.tar.xz
 
 %description -n texlive-gene-logic
 The package provides a facility to typeset certain logic
@@ -14684,9 +15136,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-genealogy-doc >= %{texlive_version}
 Provides:       tex(drgen10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source232:      genealogy.tar.xz
-Source233:      genealogy.doc.tar.xz
+# from 20250308
+Source240:      genealogy.tar.xz
+Source241:      genealogy.doc.tar.xz
 
 %description -n texlive-genealogy
 A simple compilation of the genealogical symbols found in the
@@ -14735,7 +15187,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/genealogy/drgen10.tfm
 
 %package -n texlive-genealogy-profiles
-Version:        %{texlive_version}.%{texlive_noarch}.svn69580
+Version:        %{texlive_version}.%{texlive_noarch}.svn73043
 Release:        0
 License:        LPPL-1.0
 Summary:        Genealogical profiles for LaTeX
@@ -14767,9 +15219,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(genealogytree.sty)
 Requires:       tex(hyperref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source234:      genealogy-profiles.tar.xz
-Source235:      genealogy-profiles.doc.tar.xz
+# from 20250308
+Source242:      genealogy-profiles.tar.xz
+Source243:      genealogy-profiles.doc.tar.xz
 
 %description -n texlive-genealogy-profiles
 This package enables the presenstation of individual profiles,
@@ -14779,7 +15231,7 @@ environments, and a number of macros are provided to enable
 references and name formatting.
 
 %package -n texlive-genealogy-profiles-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn69580
+Version:        %{texlive_version}.%{texlive_noarch}.svn73043
 Release:        0
 Summary:        Documentation for texlive-genealogy-profiles
 License:        LPPL-1.0
@@ -14871,9 +15323,9 @@ Requires:       tex(tcolorbox.sty)
 Requires:       tex(xfp.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source236:      genealogytree.tar.xz
-Source237:      genealogytree.doc.tar.xz
+# from 20250308
+Source244:      genealogytree.tar.xz
+Source245:      genealogytree.doc.tar.xz
 
 %description -n texlive-genealogytree
 Pedigree and genealogical tree diagrams are proven tools to
@@ -14982,9 +15434,9 @@ Suggests:       texlive-genmpage-doc >= %{texlive_version}
 Provides:       tex(genmpage.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source238:      genmpage.tar.xz
-Source239:      genmpage.doc.tar.xz
+# from 20250308
+Source246:      genmpage.tar.xz
+Source247:      genmpage.doc.tar.xz
 
 %description -n texlive-genmpage
 The GenMPage package generalizes LaTeX's minipages. Keyval
@@ -15059,9 +15511,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-gensymb-doc >= %{texlive_version}
 Provides:       tex(gensymb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source240:      gensymb.tar.xz
-Source241:      gensymb.doc.tar.xz
+# from 20250308
+Source248:      gensymb.tar.xz
+Source249:      gensymb.doc.tar.xz
 
 %description -n texlive-gensymb
 Provides generic commands \degree, \celsius, \perthousand,
@@ -15113,11 +15565,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-gensymb
 %{_texmfdistdir}/tex/latex/gensymb/gensymb.sty
 
-%package -n texlive-gentium-tug
-Version:        %{texlive_version}.%{texlive_noarch}.1.102svn63470
+%package -n texlive-gentium-otf
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn73366
 Release:        0
-License:        OFL-1.1
-Summary:        Gentium fonts (in two formats) and support files
+License:        LPPL-1.0
+Summary:        Support for the TrueType font GentiumPlus
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -15129,17 +15581,6 @@ Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
 Requires(postun): texlive-kpathsea >= %{texlive_version}
 Requires(postun): texlive-scripts-bin >= %{texlive_version}
 Requires(postun): texlive-scripts >= %{texlive_version}
-Requires(post): findutils
-Requires(post): grep
-Requires(post): sed
-Requires(post): texlive >= %{texlive_version}
-Requires(post): tex(updmap.cfg)
-#!BuildIgnore:  tex(updmap.cfg)
-Requires(postun): findutils
-Requires(postun): grep
-Requires(postun): sed
-Requires(postun): texlive >= %{texlive_version}
-Requires(postun): tex(updmap.cfg)
 Requires(posttrans): coreutils
 Requires(posttrans): ed
 Requires(posttrans): findutils
@@ -15151,312 +15592,126 @@ Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
-Requires:       texlive-gentium-tug-fonts >= %{texlive_version}
-Suggests:       texlive-gentium-tug-doc >= %{texlive_version}
-Provides:       tex(agr-gentiumbook-bold.tfm)
-Provides:       tex(agr-gentiumbook-bolditalic.tfm)
-Provides:       tex(agr-gentiumbook-italic.tfm)
-Provides:       tex(agr-gentiumbook-regular.tfm)
-Provides:       tex(agr-gentiumplus-bold.tfm)
-Provides:       tex(agr-gentiumplus-bolditalic.tfm)
-Provides:       tex(agr-gentiumplus-italic.tfm)
-Provides:       tex(agr-gentiumplus-regular.tfm)
-Provides:       tex(ec-gentiumbook-bold-sc.tfm)
-Provides:       tex(ec-gentiumbook-bold.tfm)
-Provides:       tex(ec-gentiumbook-bolditalic-sc.tfm)
-Provides:       tex(ec-gentiumbook-bolditalic.tfm)
-Provides:       tex(ec-gentiumbook-italic-sc.tfm)
-Provides:       tex(ec-gentiumbook-italic.tfm)
-Provides:       tex(ec-gentiumbook-regular-sc.tfm)
-Provides:       tex(ec-gentiumbook-regular.tfm)
-Provides:       tex(ec-gentiumplus-bold-sc.tfm)
-Provides:       tex(ec-gentiumplus-bold.tfm)
-Provides:       tex(ec-gentiumplus-bolditalic-sc.tfm)
-Provides:       tex(ec-gentiumplus-bolditalic.tfm)
-Provides:       tex(ec-gentiumplus-italic-sc.tfm)
-Provides:       tex(ec-gentiumplus-italic.tfm)
-Provides:       tex(ec-gentiumplus-regular-sc.tfm)
-Provides:       tex(ec-gentiumplus-regular.tfm)
-Provides:       tex(gentium-agr.enc)
-Provides:       tex(gentium-ec-sc.enc)
-Provides:       tex(gentium-ec-ttf-sc.enc)
-Provides:       tex(gentium-ec-ttf.enc)
-Provides:       tex(gentium-ec.enc)
-Provides:       tex(gentium-l7x-sc.enc)
-Provides:       tex(gentium-l7x.enc)
-Provides:       tex(gentium-lgr.enc)
-Provides:       tex(gentium-ot1-sc.enc)
-Provides:       tex(gentium-ot1.enc)
-Provides:       tex(gentium-qx-sc.enc)
-Provides:       tex(gentium-qx.enc)
-Provides:       tex(gentium-t2a-sc.enc)
-Provides:       tex(gentium-t2a.enc)
-Provides:       tex(gentium-t2b-sc.enc)
-Provides:       tex(gentium-t2b.enc)
-Provides:       tex(gentium-t2c-sc.enc)
-Provides:       tex(gentium-t2c.enc)
-Provides:       tex(gentium-t5-sc.enc)
-Provides:       tex(gentium-t5-ttf.enc)
-Provides:       tex(gentium-t5.enc)
-Provides:       tex(gentium-texnansi-sc.enc)
-Provides:       tex(gentium-texnansi.enc)
-Provides:       tex(gentium-truetype.map)
-Provides:       tex(gentium-ts1.enc)
-Provides:       tex(gentium-type1.map)
-Provides:       tex(gentium-x2-sc.enc)
-Provides:       tex(gentium-x2.enc)
-Provides:       tex(gentium.sty)
-Provides:       tex(gentiumbook-agr.map)
-Provides:       tex(gentiumbook-ec.map)
-Provides:       tex(gentiumbook-l7x.map)
-Provides:       tex(gentiumbook-lgr.map)
-Provides:       tex(gentiumbook-ot1.map)
-Provides:       tex(gentiumbook-qx.map)
-Provides:       tex(gentiumbook-t2a.map)
-Provides:       tex(gentiumbook-t2b.map)
-Provides:       tex(gentiumbook-t2c.map)
-Provides:       tex(gentiumbook-t5.map)
-Provides:       tex(gentiumbook-texnansi.map)
-Provides:       tex(gentiumbook-truetype.map)
-Provides:       tex(gentiumbook-ts1.map)
-Provides:       tex(gentiumbook-type1.map)
-Provides:       tex(gentiumbook-x2.map)
-Provides:       tex(gentiumbook.sty)
-Provides:       tex(gentiumplus-agr.map)
-Provides:       tex(gentiumplus-ec.map)
-Provides:       tex(gentiumplus-l7x.map)
-Provides:       tex(gentiumplus-lgr.map)
-Provides:       tex(gentiumplus-ot1.map)
-Provides:       tex(gentiumplus-qx.map)
-Provides:       tex(gentiumplus-t2a.map)
-Provides:       tex(gentiumplus-t2b.map)
-Provides:       tex(gentiumplus-t2c.map)
-Provides:       tex(gentiumplus-t5.map)
-Provides:       tex(gentiumplus-texnansi.map)
-Provides:       tex(gentiumplus-truetype.map)
-Provides:       tex(gentiumplus-ts1.map)
-Provides:       tex(gentiumplus-type1.map)
-Provides:       tex(gentiumplus-x2.map)
-Provides:       tex(l7x-gentiumbook-bold-sc.tfm)
-Provides:       tex(l7x-gentiumbook-bold.tfm)
-Provides:       tex(l7x-gentiumbook-bolditalic-sc.tfm)
-Provides:       tex(l7x-gentiumbook-bolditalic.tfm)
-Provides:       tex(l7x-gentiumbook-italic-sc.tfm)
-Provides:       tex(l7x-gentiumbook-italic.tfm)
-Provides:       tex(l7x-gentiumbook-regular-sc.tfm)
-Provides:       tex(l7x-gentiumbook-regular.tfm)
-Provides:       tex(l7x-gentiumplus-bold-sc.tfm)
-Provides:       tex(l7x-gentiumplus-bold.tfm)
-Provides:       tex(l7x-gentiumplus-bolditalic-sc.tfm)
-Provides:       tex(l7x-gentiumplus-bolditalic.tfm)
-Provides:       tex(l7x-gentiumplus-italic-sc.tfm)
-Provides:       tex(l7x-gentiumplus-italic.tfm)
-Provides:       tex(l7x-gentiumplus-regular-sc.tfm)
-Provides:       tex(l7x-gentiumplus-regular.tfm)
-Provides:       tex(l7xgentium.fd)
-Provides:       tex(l7xgentiumbook.fd)
-Provides:       tex(lgr-gentiumbook-bold.tfm)
-Provides:       tex(lgr-gentiumbook-bolditalic.tfm)
-Provides:       tex(lgr-gentiumbook-italic.tfm)
-Provides:       tex(lgr-gentiumbook-regular.tfm)
-Provides:       tex(lgr-gentiumplus-bold.tfm)
-Provides:       tex(lgr-gentiumplus-bolditalic.tfm)
-Provides:       tex(lgr-gentiumplus-italic.tfm)
-Provides:       tex(lgr-gentiumplus-regular.tfm)
-Provides:       tex(lgrgentium.fd)
-Provides:       tex(lgrgentiumbook.fd)
-Provides:       tex(ly1gentium.fd)
-Provides:       tex(ly1gentiumbook.fd)
-Provides:       tex(ot1-gentiumbook-bold-sc.tfm)
-Provides:       tex(ot1-gentiumbook-bold.tfm)
-Provides:       tex(ot1-gentiumbook-bolditalic-sc.tfm)
-Provides:       tex(ot1-gentiumbook-bolditalic.tfm)
-Provides:       tex(ot1-gentiumbook-italic-sc.tfm)
-Provides:       tex(ot1-gentiumbook-italic.tfm)
-Provides:       tex(ot1-gentiumbook-regular-sc.tfm)
-Provides:       tex(ot1-gentiumbook-regular.tfm)
-Provides:       tex(ot1-gentiumplus-bold-sc.tfm)
-Provides:       tex(ot1-gentiumplus-bold.tfm)
-Provides:       tex(ot1-gentiumplus-bolditalic-sc.tfm)
-Provides:       tex(ot1-gentiumplus-bolditalic.tfm)
-Provides:       tex(ot1-gentiumplus-italic-sc.tfm)
-Provides:       tex(ot1-gentiumplus-italic.tfm)
-Provides:       tex(ot1-gentiumplus-regular-sc.tfm)
-Provides:       tex(ot1-gentiumplus-regular.tfm)
-Provides:       tex(ot1gentium.fd)
-Provides:       tex(ot1gentiumbook.fd)
-Provides:       tex(qx-gentiumbook-bold-sc.tfm)
-Provides:       tex(qx-gentiumbook-bold.tfm)
-Provides:       tex(qx-gentiumbook-bolditalic-sc.tfm)
-Provides:       tex(qx-gentiumbook-bolditalic.tfm)
-Provides:       tex(qx-gentiumbook-italic-sc.tfm)
-Provides:       tex(qx-gentiumbook-italic.tfm)
-Provides:       tex(qx-gentiumbook-regular-sc.tfm)
-Provides:       tex(qx-gentiumbook-regular.tfm)
-Provides:       tex(qx-gentiumplus-bold-sc.tfm)
-Provides:       tex(qx-gentiumplus-bold.tfm)
-Provides:       tex(qx-gentiumplus-bolditalic-sc.tfm)
-Provides:       tex(qx-gentiumplus-bolditalic.tfm)
-Provides:       tex(qx-gentiumplus-italic-sc.tfm)
-Provides:       tex(qx-gentiumplus-italic.tfm)
-Provides:       tex(qx-gentiumplus-regular-sc.tfm)
-Provides:       tex(qx-gentiumplus-regular.tfm)
-Provides:       tex(qxgentium.fd)
-Provides:       tex(qxgentiumbook.fd)
-Provides:       tex(t1gentium.fd)
-Provides:       tex(t1gentiumbook.fd)
-Provides:       tex(t2a-gentiumbook-bold-sc.tfm)
-Provides:       tex(t2a-gentiumbook-bold.tfm)
-Provides:       tex(t2a-gentiumbook-bolditalic-sc.tfm)
-Provides:       tex(t2a-gentiumbook-bolditalic.tfm)
-Provides:       tex(t2a-gentiumbook-italic-sc.tfm)
-Provides:       tex(t2a-gentiumbook-italic.tfm)
-Provides:       tex(t2a-gentiumbook-regular-sc.tfm)
-Provides:       tex(t2a-gentiumbook-regular.tfm)
-Provides:       tex(t2a-gentiumplus-bold-sc.tfm)
-Provides:       tex(t2a-gentiumplus-bold.tfm)
-Provides:       tex(t2a-gentiumplus-bolditalic-sc.tfm)
-Provides:       tex(t2a-gentiumplus-bolditalic.tfm)
-Provides:       tex(t2a-gentiumplus-italic-sc.tfm)
-Provides:       tex(t2a-gentiumplus-italic.tfm)
-Provides:       tex(t2a-gentiumplus-regular-sc.tfm)
-Provides:       tex(t2a-gentiumplus-regular.tfm)
-Provides:       tex(t2agentium.fd)
-Provides:       tex(t2agentiumbook.fd)
-Provides:       tex(t2b-gentiumbook-bold-sc.tfm)
-Provides:       tex(t2b-gentiumbook-bold.tfm)
-Provides:       tex(t2b-gentiumbook-bolditalic-sc.tfm)
-Provides:       tex(t2b-gentiumbook-bolditalic.tfm)
-Provides:       tex(t2b-gentiumbook-italic-sc.tfm)
-Provides:       tex(t2b-gentiumbook-italic.tfm)
-Provides:       tex(t2b-gentiumbook-regular-sc.tfm)
-Provides:       tex(t2b-gentiumbook-regular.tfm)
-Provides:       tex(t2b-gentiumplus-bold-sc.tfm)
-Provides:       tex(t2b-gentiumplus-bold.tfm)
-Provides:       tex(t2b-gentiumplus-bolditalic-sc.tfm)
-Provides:       tex(t2b-gentiumplus-bolditalic.tfm)
-Provides:       tex(t2b-gentiumplus-italic-sc.tfm)
-Provides:       tex(t2b-gentiumplus-italic.tfm)
-Provides:       tex(t2b-gentiumplus-regular-sc.tfm)
-Provides:       tex(t2b-gentiumplus-regular.tfm)
-Provides:       tex(t2bgentium.fd)
-Provides:       tex(t2bgentiumbook.fd)
-Provides:       tex(t2c-gentiumbook-bold-sc.tfm)
-Provides:       tex(t2c-gentiumbook-bold.tfm)
-Provides:       tex(t2c-gentiumbook-bolditalic-sc.tfm)
-Provides:       tex(t2c-gentiumbook-bolditalic.tfm)
-Provides:       tex(t2c-gentiumbook-italic-sc.tfm)
-Provides:       tex(t2c-gentiumbook-italic.tfm)
-Provides:       tex(t2c-gentiumbook-regular-sc.tfm)
-Provides:       tex(t2c-gentiumbook-regular.tfm)
-Provides:       tex(t2c-gentiumplus-bold-sc.tfm)
-Provides:       tex(t2c-gentiumplus-bold.tfm)
-Provides:       tex(t2c-gentiumplus-bolditalic-sc.tfm)
-Provides:       tex(t2c-gentiumplus-bolditalic.tfm)
-Provides:       tex(t2c-gentiumplus-italic-sc.tfm)
-Provides:       tex(t2c-gentiumplus-italic.tfm)
-Provides:       tex(t2c-gentiumplus-regular-sc.tfm)
-Provides:       tex(t2c-gentiumplus-regular.tfm)
-Provides:       tex(t2cgentium.fd)
-Provides:       tex(t2cgentiumbook.fd)
-Provides:       tex(t5-gentiumbook-bold-sc.tfm)
-Provides:       tex(t5-gentiumbook-bold.tfm)
-Provides:       tex(t5-gentiumbook-bolditalic-sc.tfm)
-Provides:       tex(t5-gentiumbook-bolditalic.tfm)
-Provides:       tex(t5-gentiumbook-italic-sc.tfm)
-Provides:       tex(t5-gentiumbook-italic.tfm)
-Provides:       tex(t5-gentiumbook-regular-sc.tfm)
-Provides:       tex(t5-gentiumbook-regular.tfm)
-Provides:       tex(t5-gentiumplus-bold-sc.tfm)
-Provides:       tex(t5-gentiumplus-bold.tfm)
-Provides:       tex(t5-gentiumplus-bolditalic-sc.tfm)
-Provides:       tex(t5-gentiumplus-bolditalic.tfm)
-Provides:       tex(t5-gentiumplus-italic-sc.tfm)
-Provides:       tex(t5-gentiumplus-italic.tfm)
-Provides:       tex(t5-gentiumplus-regular-sc.tfm)
-Provides:       tex(t5-gentiumplus-regular.tfm)
-Provides:       tex(t5gentium.fd)
-Provides:       tex(t5gentiumbook.fd)
-Provides:       tex(texnansi-gentiumbook-bold-sc.tfm)
-Provides:       tex(texnansi-gentiumbook-bold.tfm)
-Provides:       tex(texnansi-gentiumbook-bolditalic-sc.tfm)
-Provides:       tex(texnansi-gentiumbook-bolditalic.tfm)
-Provides:       tex(texnansi-gentiumbook-italic-sc.tfm)
-Provides:       tex(texnansi-gentiumbook-italic.tfm)
-Provides:       tex(texnansi-gentiumbook-regular-sc.tfm)
-Provides:       tex(texnansi-gentiumbook-regular.tfm)
-Provides:       tex(texnansi-gentiumplus-bold-sc.tfm)
-Provides:       tex(texnansi-gentiumplus-bold.tfm)
-Provides:       tex(texnansi-gentiumplus-bolditalic-sc.tfm)
-Provides:       tex(texnansi-gentiumplus-bolditalic.tfm)
-Provides:       tex(texnansi-gentiumplus-italic-sc.tfm)
-Provides:       tex(texnansi-gentiumplus-italic.tfm)
-Provides:       tex(texnansi-gentiumplus-regular-sc.tfm)
-Provides:       tex(texnansi-gentiumplus-regular.tfm)
-Provides:       tex(ts1-gentiumbook-bold.tfm)
-Provides:       tex(ts1-gentiumbook-bolditalic.tfm)
-Provides:       tex(ts1-gentiumbook-italic.tfm)
-Provides:       tex(ts1-gentiumbook-regular.tfm)
-Provides:       tex(ts1-gentiumplus-bold.tfm)
-Provides:       tex(ts1-gentiumplus-bolditalic.tfm)
-Provides:       tex(ts1-gentiumplus-italic.tfm)
-Provides:       tex(ts1-gentiumplus-regular.tfm)
-Provides:       tex(ts1gentium.fd)
-Provides:       tex(ts1gentiumbook.fd)
-Provides:       tex(x2-gentiumbook-bold-sc.tfm)
-Provides:       tex(x2-gentiumbook-bold.tfm)
-Provides:       tex(x2-gentiumbook-bolditalic-sc.tfm)
-Provides:       tex(x2-gentiumbook-bolditalic.tfm)
-Provides:       tex(x2-gentiumbook-italic-sc.tfm)
-Provides:       tex(x2-gentiumbook-italic.tfm)
-Provides:       tex(x2-gentiumbook-regular-sc.tfm)
-Provides:       tex(x2-gentiumbook-regular.tfm)
-Provides:       tex(x2-gentiumplus-bold-sc.tfm)
-Provides:       tex(x2-gentiumplus-bold.tfm)
-Provides:       tex(x2-gentiumplus-bolditalic-sc.tfm)
-Provides:       tex(x2-gentiumplus-bolditalic.tfm)
-Provides:       tex(x2-gentiumplus-italic-sc.tfm)
-Provides:       tex(x2-gentiumplus-italic.tfm)
-Provides:       tex(x2-gentiumplus-regular-sc.tfm)
-Provides:       tex(x2-gentiumplus-regular.tfm)
-Provides:       tex(x2gentium.fd)
-Provides:       tex(x2gentiumbook.fd)
+Suggests:       texlive-gentium-otf-doc >= %{texlive_version}
+Provides:       tex(gentium-otf.sty)
+Requires:       tex(fontspec.sty)
+Requires:       tex(iftex.sty)
+Requires:       tex(textcomp.sty)
+Requires:       tex(unicode-math.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source242:      gentium-tug.tar.xz
-Source243:      gentium-tug.doc.tar.xz
+# from 20250308
+Source250:      gentium-otf.tar.xz
+Source251:      gentium-otf.doc.tar.xz
 
-%description -n texlive-gentium-tug
-Gentium is a typeface family designed to enable the diverse
-ethnic groups around the world who use the Latin, Cyrillic and
-Greek scripts to produce readable, high-quality publications.
-It supports a wide range of Latin- and Cyrillic-based
-alphabets. The package consists of: The original (unaltered)
-GentiumPlus, GentiumBook, and other Gentium-family fonts in
-TrueType format, as developed by SIL and released under the OFL
-(see OFL.txt and OFL-FAQ.txt); Converted fonts in PostScript
-Type 1 format, released under the same terms. These incorporate
-the name "Gentium" by permission of SIL given to the TeX Users
-Group; LaTeX and other supporting files; TeX-related
-documentation, and the SIL documentation and other files.
+%description -n texlive-gentium-otf
+This package supports the free fonts GentiumPlus and
+GentiumBookPlus as TrueType (see package gentium-sil) and
+defines missing typefaces. All font features are available by
+special macros.
 
-%package -n texlive-gentium-tug-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.102svn63470
+%package -n texlive-gentium-otf-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn73366
 Release:        0
-Summary:        Documentation for texlive-gentium-tug
+Summary:        Documentation for texlive-gentium-otf
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-gentium-otf and texlive-alldocumentation)
+
+%description -n texlive-gentium-otf-doc
+This package includes the documentation for texlive-gentium-otf
+
+%post -n texlive-gentium-otf
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-gentium-otf
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-gentium-otf
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-gentium-otf-doc
+%{_texmfdistdir}/doc/fonts/gentium-otf/Changes
+%{_texmfdistdir}/doc/fonts/gentium-otf/README.md
+%{_texmfdistdir}/doc/fonts/gentium-otf/gentium-otf-doc.pdf
+%{_texmfdistdir}/doc/fonts/gentium-otf/gentium-otf-doc.tex
+
+%files -n texlive-gentium-otf
+%{_texmfdistdir}/tex/latex/gentium-otf/gentium-otf.sty
+
+%package -n texlive-gentium-sil
+Version:        %{texlive_version}.%{texlive_noarch}.6.200svn73571
+Release:        0
+License:        OFL-1.1
+Summary:        A complete Greek font with Latin and Cyrillic, too
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Requires:       texlive-gentium-sil-fonts >= %{texlive_version}
+Suggests:       texlive-gentium-sil-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source252:      gentium-sil.tar.xz
+Source253:      gentium-sil.doc.tar.xz
+
+%description -n texlive-gentium-sil
+This is a redistribution of the original Gentium release from
+SIL, not altered in any way. Gentium is a typeface family
+designed to enable the diverse ethnic groups around the world
+who use the Latin, Cyrillic and Greek scripts to produce
+readable, high-quality publications. The Gentium family
+includes a complete Greek font, supporting both monotonic and
+polytonic forms. While some Greek characters do closely
+resemble Latin ones, it is a separate design that embraces the
+robust, distinctive character of the Greek script, but does so
+within the design context of the whole typeface. As a result,
+the two scripts can be successfully mixed in a paragraph or
+page of text.
+
+%package -n texlive-gentium-sil-doc
+Version:        %{texlive_version}.%{texlive_noarch}.6.200svn73571
+Release:        0
+Summary:        Documentation for texlive-gentium-sil
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Supplements:    (texlive-gentium-tug and texlive-alldocumentation)
+Supplements:    (texlive-gentium-sil and texlive-alldocumentation)
 
-%description -n texlive-gentium-tug-doc
-This package includes the documentation for texlive-gentium-tug
+%description -n texlive-gentium-sil-doc
+This package includes the documentation for texlive-gentium-sil
 
-%package -n texlive-gentium-tug-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.102svn63470
+%package -n texlive-gentium-sil-fonts
+Version:        %{texlive_version}.%{texlive_noarch}.6.200svn73571
 Release:        0
-Summary:        Severed fonts for texlive-gentium-tug
+Summary:        Severed fonts for texlive-gentium-sil
 License:        OFL-1.1
 URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
@@ -15465,425 +15720,131 @@ Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
 Suggests:       xorg-x11-fonts-core
 
-%description -n texlive-gentium-tug-fonts
-The  separated fonts package for texlive-gentium-tug
+%description -n texlive-gentium-sil-fonts
+The  separated fonts package for texlive-gentium-sil
 
-%post -n texlive-gentium-tug
+%post -n texlive-gentium-sil
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
-echo 'addMap gentium-type1.map' >> /var/run/texlive/run-updmap
 
-%postun -n texlive-gentium-tug
+%postun -n texlive-gentium-sil
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
 if test $1 = 0; then
-    echo 'deleteMap gentium-type1.map' >> /var/run/texlive/run-updmap
     exit 0
 fi
 
-%posttrans -n texlive-gentium-tug
+%posttrans -n texlive-gentium-sil
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
-%reconfigure_fonts_scriptlets -n texlive-gentium-tug-fonts
+%reconfigure_fonts_scriptlets -n texlive-gentium-sil-fonts
 
-%files -n texlive-gentium-tug-doc
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/FONTLOG.txt
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/OFL-FAQ.txt
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/OFL.txt
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/README.txt
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/DOCUMENTATION.txt
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/about.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/assets/css/theme.css
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/assets/css/themepdf.css
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/assets/css/webfonts.css
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/assets/css/webfontsttf.css
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/assets/images/Gentium_design_balance.png
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/charset.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/design.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/developer.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/faq.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/features.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/history.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/index.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/pdf/about.pdf
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/pdf/charset.pdf
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/pdf/design.pdf
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/pdf/developer.pdf
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/pdf/faq.pdf
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/pdf/features.pdf
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/pdf/history.pdf
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/pdf/index.pdf
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/pdf/resources.pdf
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/pdf/support.pdf
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/pdf/versions.pdf
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/resources.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/about.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/announcement.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/charset.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/design.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/developer.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/faq.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/features.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/history.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/index.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pandocfilters/filter-html.lua
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pandocfilters/filter-pdf.lua
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pdftemp/about.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pdftemp/charset.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pdftemp/design.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pdftemp/developer.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pdftemp/faq.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pdftemp/features.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pdftemp/history.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pdftemp/index.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pdftemp/resources.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pdftemp/support.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pdftemp/versions.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/productsite/about.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/productsite/charset.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/productsite/design.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/productsite/developer.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/productsite/faq.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/productsite/features.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/productsite/history.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/productsite/resources.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/productsite/support.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/resources.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/support.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/template.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/templatepdf.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/versions.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/support.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/versions.html
-%{_texmfdistdir}/doc/fonts/gentium-tug/README
-%{_texmfdistdir}/doc/fonts/gentium-tug/gentium-tug/ChangeLog
-%{_texmfdistdir}/doc/fonts/gentium-tug/gentium-tug/FONTLOG.txt
-%{_texmfdistdir}/doc/fonts/gentium-tug/gentium-tug/Makefile
-%{_texmfdistdir}/doc/fonts/gentium-tug/gentium-tug/README
-%{_texmfdistdir}/doc/fonts/gentium-tug/gentium-tug/gentium.pdf
-%{_texmfdistdir}/doc/fonts/gentium-tug/gentium-tug/gentium.tex
+%files -n texlive-gentium-sil-doc
+%{_texmfdistdir}/doc/fonts/gentium-sil/FONTLOG.txt
+%{_texmfdistdir}/doc/fonts/gentium-sil/OFL-FAQ.txt
+%{_texmfdistdir}/doc/fonts/gentium-sil/OFL.txt
+%{_texmfdistdir}/doc/fonts/gentium-sil/README.txt
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/DOCUMENTATION.txt
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/about.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/assets/css/theme.css
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/assets/css/themepdf.css
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/assets/css/webfonts.css
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/assets/css/webfontsttf.css
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/assets/images/Gentium_design_balance.png
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/charset.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/design.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/developer.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/faq.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/features.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/history.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/index.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf/about.pdf
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf/charset.pdf
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf/design.pdf
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf/developer.pdf
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf/faq.pdf
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf/features.pdf
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf/history.pdf
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf/index.pdf
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf/resources.pdf
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf/support.pdf
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf/versions.pdf
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/resources.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/about.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/announcement.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/charset.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/design.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/developer.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/faq.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/features.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/history.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/index.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/makepsmd.py
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/pandocfilters/filter-html.lua
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/pandocfilters/filter-pdf.lua
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/productsite/about.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/productsite/charset.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/productsite/design.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/productsite/developer.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/productsite/faq.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/productsite/features.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/productsite/history.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/productsite/resources.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/productsite/support.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/resources.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/support.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/template.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/templatepdf.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/versions.md
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/support.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/versions.html
+%{_texmfdistdir}/doc/fonts/gentium-sil/fontmanifest.json
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumBookPlus-Bold.woff
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumBookPlus-Bold.woff2
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumBookPlus-BoldItalic.woff
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumBookPlus-BoldItalic.woff2
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumBookPlus-Italic.woff
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumBookPlus-Italic.woff2
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumBookPlus-Regular.woff
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumBookPlus-Regular.woff2
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumPlus-Bold.woff
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumPlus-Bold.woff2
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumPlus-BoldItalic.woff
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumPlus-BoldItalic.woff2
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumPlus-Italic.woff
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumPlus-Italic.woff2
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumPlus-Regular.woff
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumPlus-Regular.woff2
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumPlus-webfont-example.css
+%{_texmfdistdir}/doc/fonts/gentium-sil/web/GentiumPlus-webfont-example.html
 
-%files -n texlive-gentium-tug
-%{_texmfdistdir}/fonts/afm/public/gentium-tug/GentiumBookPlus-Bold.afm
-%{_texmfdistdir}/fonts/afm/public/gentium-tug/GentiumBookPlus-BoldItalic.afm
-%{_texmfdistdir}/fonts/afm/public/gentium-tug/GentiumBookPlus-Italic.afm
-%{_texmfdistdir}/fonts/afm/public/gentium-tug/GentiumBookPlus-Regular.afm
-%{_texmfdistdir}/fonts/afm/public/gentium-tug/GentiumPlus-Bold.afm
-%{_texmfdistdir}/fonts/afm/public/gentium-tug/GentiumPlus-BoldItalic.afm
-%{_texmfdistdir}/fonts/afm/public/gentium-tug/GentiumPlus-Italic.afm
-%{_texmfdistdir}/fonts/afm/public/gentium-tug/GentiumPlus-Regular.afm
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-agr.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-ec-sc.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-ec-ttf-sc.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-ec-ttf.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-ec.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-l7x-sc.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-l7x.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-lgr.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-ot1-sc.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-ot1.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-qx-sc.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-qx.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-t2a-sc.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-t2a.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-t2b-sc.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-t2b.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-t2c-sc.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-t2c.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-t5-sc.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-t5-ttf.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-t5.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-texnansi-sc.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-texnansi.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-ts1.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-x2-sc.enc
-%{_texmfdistdir}/fonts/enc/dvips/gentium-tug/gentium-x2.enc
-%{_texmfdistdir}/fonts/map/dvips/gentium-tug/gentium-type1.map
-%{_texmfdistdir}/fonts/map/dvips/gentium-tug/gentiumbook-type1.map
-%{_texmfdistdir}/fonts/map/dvips/gentium-tug/gentiumplus-type1.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentium-truetype.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-agr.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-ec.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-l7x.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-lgr.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-ot1.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-qx.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-t2a.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-t2b.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-t2c.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-t5.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-texnansi.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-truetype.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-ts1.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumbook-x2.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-agr.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-ec.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-l7x.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-lgr.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-ot1.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-qx.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-t2a.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-t2b.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-t2c.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-t5.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-texnansi.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-truetype.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-ts1.map
-%{_texmfdistdir}/fonts/map/pdftex/gentium-tug/gentiumplus-x2.map
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/agr-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/agr-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/agr-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/agr-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/agr-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/agr-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/agr-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/agr-gentiumplus-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumbook-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumbook-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumbook-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumbook-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumplus-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumplus-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumplus-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumplus-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ec-gentiumplus-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumbook-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumbook-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumbook-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumbook-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumplus-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumplus-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumplus-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumplus-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/l7x-gentiumplus-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/lgr-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/lgr-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/lgr-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/lgr-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/lgr-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/lgr-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/lgr-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/lgr-gentiumplus-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumbook-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumbook-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumbook-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumbook-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumplus-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumplus-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumplus-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumplus-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ot1-gentiumplus-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumbook-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumbook-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumbook-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumbook-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumplus-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumplus-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumplus-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumplus-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/qx-gentiumplus-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumbook-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumbook-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumbook-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumbook-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumplus-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumplus-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumplus-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumplus-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2a-gentiumplus-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumbook-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumbook-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumbook-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumbook-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumplus-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumplus-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumplus-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumplus-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2b-gentiumplus-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumbook-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumbook-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumbook-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumbook-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumplus-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumplus-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumplus-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumplus-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t2c-gentiumplus-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumbook-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumbook-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumbook-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumbook-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumplus-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumplus-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumplus-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumplus-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/t5-gentiumplus-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumbook-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumbook-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumbook-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumbook-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumplus-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumplus-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumplus-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumplus-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/texnansi-gentiumplus-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ts1-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ts1-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ts1-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ts1-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ts1-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ts1-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ts1-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/ts1-gentiumplus-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumbook-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumbook-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumbook-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumbook-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumbook-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumbook-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumbook-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumbook-regular.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumplus-bold-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumplus-bold.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumplus-bolditalic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumplus-bolditalic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumplus-italic-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumplus-italic.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumplus-regular-sc.tfm
-%{_texmfdistdir}/fonts/tfm/public/gentium-tug/x2-gentiumplus-regular.tfm
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/gentium-tug/GentiumBookPlus-Bold.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/gentium-tug/GentiumBookPlus-BoldItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/gentium-tug/GentiumBookPlus-Italic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/gentium-tug/GentiumBookPlus-Regular.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/gentium-tug/GentiumPlus-Bold.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/gentium-tug/GentiumPlus-BoldItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/gentium-tug/GentiumPlus-Italic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/gentium-tug/GentiumPlus-Regular.ttf
-%verify(link) %{_texmfdistdir}/fonts/type1/public/gentium-tug/GentiumBookPlus-Bold.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/gentium-tug/GentiumBookPlus-BoldItalic.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/gentium-tug/GentiumBookPlus-Italic.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/gentium-tug/GentiumBookPlus-Regular.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/gentium-tug/GentiumPlus-Bold.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/gentium-tug/GentiumPlus-BoldItalic.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/gentium-tug/GentiumPlus-Italic.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/gentium-tug/GentiumPlus-Regular.pfb
-%{_texmfdistdir}/tex/latex/gentium-tug/gentium.sty
-%{_texmfdistdir}/tex/latex/gentium-tug/gentiumbook.sty
-%{_texmfdistdir}/tex/latex/gentium-tug/l7xgentium.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/l7xgentiumbook.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/lgrgentium.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/lgrgentiumbook.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/ly1gentium.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/ly1gentiumbook.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/ot1gentium.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/ot1gentiumbook.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/qxgentium.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/qxgentiumbook.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/t1gentium.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/t1gentiumbook.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/t2agentium.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/t2agentiumbook.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/t2bgentium.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/t2bgentiumbook.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/t2cgentium.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/t2cgentiumbook.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/t5gentium.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/t5gentiumbook.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/ts1gentium.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/ts1gentiumbook.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/x2gentium.fd
-%{_texmfdistdir}/tex/latex/gentium-tug/x2gentiumbook.fd
+%files -n texlive-gentium-sil
+%verify(link) %{_texmfdistdir}/fonts/truetype/SIL/gentium-sil/GentiumBookPlus-Bold.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/SIL/gentium-sil/GentiumBookPlus-BoldItalic.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/SIL/gentium-sil/GentiumBookPlus-Italic.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/SIL/gentium-sil/GentiumBookPlus-Regular.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/SIL/gentium-sil/GentiumPlus-Bold.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/SIL/gentium-sil/GentiumPlus-BoldItalic.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/SIL/gentium-sil/GentiumPlus-Italic.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/SIL/gentium-sil/GentiumPlus-Regular.ttf
 
-%files -n texlive-gentium-tug-fonts
-%dir %{_datadir}/fonts/texlive-gentium-tug
-%{_datadir}/fontconfig/conf.avail/58-texlive-gentium-tug.conf
-%{_datadir}/fontconfig/conf.avail/55-texlive-gentium-tug.conf
-%config %{_sysconfdir}/fonts/conf.d/55-texlive-gentium-tug.conf
-%verify(not md5 size mtime) %{_datadir}/fonts/texlive-gentium-tug/encodings.dir
-%verify(not md5 size mtime) %{_datadir}/fonts/texlive-gentium-tug/fonts.dir
-%verify(not md5 size mtime) %{_datadir}/fonts/texlive-gentium-tug/fonts.scale
-%{_datadir}/fonts/texlive-gentium-tug/GentiumBookPlus-Bold.ttf
-%{_datadir}/fonts/texlive-gentium-tug/GentiumBookPlus-BoldItalic.ttf
-%{_datadir}/fonts/texlive-gentium-tug/GentiumBookPlus-Italic.ttf
-%{_datadir}/fonts/texlive-gentium-tug/GentiumBookPlus-Regular.ttf
-%{_datadir}/fonts/texlive-gentium-tug/GentiumPlus-Bold.ttf
-%{_datadir}/fonts/texlive-gentium-tug/GentiumPlus-BoldItalic.ttf
-%{_datadir}/fonts/texlive-gentium-tug/GentiumPlus-Italic.ttf
-%{_datadir}/fonts/texlive-gentium-tug/GentiumPlus-Regular.ttf
-%{_datadir}/fonts/texlive-gentium-tug/GentiumBookPlus-Bold.pfb
-%{_datadir}/fonts/texlive-gentium-tug/GentiumBookPlus-BoldItalic.pfb
-%{_datadir}/fonts/texlive-gentium-tug/GentiumBookPlus-Italic.pfb
-%{_datadir}/fonts/texlive-gentium-tug/GentiumBookPlus-Regular.pfb
-%{_datadir}/fonts/texlive-gentium-tug/GentiumPlus-Bold.pfb
-%{_datadir}/fonts/texlive-gentium-tug/GentiumPlus-BoldItalic.pfb
-%{_datadir}/fonts/texlive-gentium-tug/GentiumPlus-Italic.pfb
-%{_datadir}/fonts/texlive-gentium-tug/GentiumPlus-Regular.pfb
+%files -n texlive-gentium-sil-fonts
+%dir %{_datadir}/fonts/texlive-gentium-sil
+%{_datadir}/fontconfig/conf.avail/58-texlive-gentium-sil.conf
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-gentium-sil/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-gentium-sil/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-gentium-sil/fonts.scale
+%{_datadir}/fonts/texlive-gentium-sil/GentiumBookPlus-Bold.ttf
+%{_datadir}/fonts/texlive-gentium-sil/GentiumBookPlus-BoldItalic.ttf
+%{_datadir}/fonts/texlive-gentium-sil/GentiumBookPlus-Italic.ttf
+%{_datadir}/fonts/texlive-gentium-sil/GentiumBookPlus-Regular.ttf
+%{_datadir}/fonts/texlive-gentium-sil/GentiumPlus-Bold.ttf
+%{_datadir}/fonts/texlive-gentium-sil/GentiumPlus-BoldItalic.ttf
+%{_datadir}/fonts/texlive-gentium-sil/GentiumPlus-Italic.ttf
+%{_datadir}/fonts/texlive-gentium-sil/GentiumPlus-Regular.ttf
 
 %package -n texlive-gentle
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -15913,8 +15874,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source244:      gentle.doc.tar.xz
+# from 20250308
+Source254:      gentle.doc.tar.xz
 
 %description -n texlive-gentle
 The "Gentle Introduction" is the longest-established
@@ -15984,9 +15945,9 @@ Requires:       tex(pxatbegshi.sty)
 Requires:       tex(pxeveryshi.sty)
 Requires:       tex(textpos.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source245:      gentombow.tar.xz
-Source246:      gentombow.doc.tar.xz
+# from 20250308
+Source255:      gentombow.tar.xz
+Source256:      gentombow.doc.tar.xz
 
 %description -n texlive-gentombow
 This bundle provides a LaTeX package for generating
@@ -16089,9 +16050,9 @@ Requires:       tex(atbegshi.sty)
 Requires:       tex(ifvtex.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source247:      geometry.tar.xz
-Source248:      geometry.doc.tar.xz
+# from 20250308
+Source257:      geometry.tar.xz
+Source258:      geometry.doc.tar.xz
 
 %description -n texlive-geometry
 The package provides an easy and flexible user interface to
@@ -16197,9 +16158,9 @@ Requires:       tex(mathrsfs.sty)
 Requires:       tex(multirow.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source249:      geradwp.tar.xz
-Source250:      geradwp.doc.tar.xz
+# from 20250308
+Source259:      geradwp.tar.xz
+Source260:      geradwp.doc.tar.xz
 
 %description -n texlive-geradwp
 This package provides the geradwp class, a class based on
@@ -16279,9 +16240,9 @@ Suggests:       texlive-german-doc >= %{texlive_version}
 Provides:       tex(german.sty)
 Provides:       tex(ngerman.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source251:      german.tar.xz
-Source252:      german.doc.tar.xz
+# from 20250308
+Source261:      german.tar.xz
+Source262:      german.doc.tar.xz
 
 %description -n texlive-german
 Supports the old German orthography (alte deutsche
@@ -16361,9 +16322,9 @@ Provides:       tex(bibgerm.sty)
 Provides:       tex(mynormal.sty)
 Requires:       tex(german.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source253:      germbib.tar.xz
-Source254:      germbib.doc.tar.xz
+# from 20250308
+Source263:      germbib.tar.xz
+Source264:      germbib.doc.tar.xz
 
 %description -n texlive-germbib
 A development of the (old) german.sty, this bundle provides
@@ -16455,9 +16416,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-germkorr-doc >= %{texlive_version}
 Provides:       tex(germkorr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source255:      germkorr.tar.xz
-Source256:      germkorr.doc.tar.xz
+# from 20250308
+Source265:      germkorr.tar.xz
+Source266:      germkorr.doc.tar.xz
 
 %description -n texlive-germkorr
 The package germcorr has to be loaded after the package german.
@@ -16536,9 +16497,9 @@ Provides:       tex(geschichtsfrkl.cbx)
 Provides:       tex(geschichtsfrkldoc.sty)
 Requires:       tex(standard.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source257:      geschichtsfrkl.tar.xz
-Source258:      geschichtsfrkl.doc.tar.xz
+# from 20250308
+Source267:      geschichtsfrkl.tar.xz
+Source268:      geschichtsfrkl.doc.tar.xz
 
 %description -n texlive-geschichtsfrkl
 The package provides a BibLaTeX style, (mostly) meeting the
@@ -16620,9 +16581,9 @@ Requires:       tex(ltxnew.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source259:      getfiledate.tar.xz
-Source260:      getfiledate.doc.tar.xz
+# from 20250308
+Source269:      getfiledate.tar.xz
+Source270:      getfiledate.doc.tar.xz
 
 %description -n texlive-getfiledate
 The package fetches from the system the date of last
@@ -16699,9 +16660,9 @@ Provides:       tex(getitems.sty)
 Requires:       tex(environ.sty)
 Requires:       tex(trimspaces.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source261:      getitems.tar.xz
-Source262:      getitems.doc.tar.xz
+# from 20250308
+Source271:      getitems.tar.xz
+Source272:      getitems.doc.tar.xz
 
 %description -n texlive-getitems
 This package provides a \gatheritems command to parse a list of
@@ -16783,9 +16744,9 @@ Requires:       tex(shellesc.sty)
 Requires:       tex(stringenc.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source263:      getmap.tar.xz
-Source264:      getmap.doc.tar.xz
+# from 20250308
+Source273:      getmap.tar.xz
+Source274:      getmap.doc.tar.xz
 
 %description -n texlive-getmap
 The package provides a simple interface to OpenStreetMap, and
@@ -16870,9 +16831,9 @@ Suggests:       texlive-getoptk-doc >= %{texlive_version}
 Provides:       tex(getoptk.tex)
 Provides:       tex(guide.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source265:      getoptk.tar.xz
-Source266:      getoptk.doc.tar.xz
+# from 20250308
+Source275:      getoptk.tar.xz
+Source276:      getoptk.doc.tar.xz
 
 %description -n texlive-getoptk
 The package provides a means of defining macros whose options
@@ -16951,9 +16912,9 @@ Suggests:       texlive-gettitlestring-doc >= %{texlive_version}
 Provides:       tex(gettitlestring.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source267:      gettitlestring.tar.xz
-Source268:      gettitlestring.doc.tar.xz
+# from 20250308
+Source277:      gettitlestring.tar.xz
+Source278:      gettitlestring.doc.tar.xz
 
 %description -n texlive-gettitlestring
 Cleans up the title string (removing \label commands) for
@@ -17034,9 +16995,9 @@ Requires:       tex(float.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(hyperxmp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source269:      gfdl.tar.xz
-Source270:      gfdl.doc.tar.xz
+# from 20250308
+Source279:      gfdl.tar.xz
+Source280:      gfdl.doc.tar.xz
 
 %description -n texlive-gfdl
 The GFDL (GNU Free Documentation License) is a popular license
@@ -17117,9 +17078,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-gfnotation-doc >= %{texlive_version}
 Provides:       tex(GFnotation.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source271:      gfnotation.tar.xz
-Source272:      gfnotation.doc.tar.xz
+# from 20250308
+Source281:      gfnotation.tar.xz
+Source282:      gfnotation.doc.tar.xz
 
 %description -n texlive-gfnotation
 The package implements macros for plain TeX to typeset the
@@ -17314,9 +17275,9 @@ Requires:       tex(euler.sty)
 Requires:       tex(txfonts.sty)
 Requires:       tex(txmi.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source273:      gfsartemisia.tar.xz
-Source274:      gfsartemisia.doc.tar.xz
+# from 20250308
+Source283:      gfsartemisia.tar.xz
+Source284:      gfsartemisia.doc.tar.xz
 
 %description -n texlive-gfsartemisia
 GFS Artemisia is a relatively modern font, designed as a
@@ -17565,9 +17526,9 @@ Provides:       tex(ggfsbaskervillerg6r.tfm)
 Provides:       tex(gpgfsbaskerville.enc)
 Provides:       tex(lgrgfsbaskerville.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source275:      gfsbaskerville.tar.xz
-Source276:      gfsbaskerville.doc.tar.xz
+# from 20250308
+Source285:      gfsbaskerville.tar.xz
+Source286:      gfsbaskerville.doc.tar.xz
 
 %description -n texlive-gfsbaskerville
 The font is a digital implementation of Baskerville's classic
@@ -17793,9 +17754,9 @@ Provides:       tex(ot1bodoni.fd)
 Provides:       tex(t1bodoni.fd)
 Provides:       tex(ubodoninums.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source277:      gfsbodoni.tar.xz
-Source278:      gfsbodoni.doc.tar.xz
+# from 20250308
+Source287:      gfsbodoni.tar.xz
+Source288:      gfsbodoni.doc.tar.xz
 
 %description -n texlive-gfsbodoni
 Bodoni's Greek fonts in the 18th century broke, for the first
@@ -18041,9 +18002,9 @@ Provides:       tex(gfscomplutum.sty)
 Provides:       tex(gpcomplutum.enc)
 Provides:       tex(lgrcomplutum.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source279:      gfscomplutum.tar.xz
-Source280:      gfscomplutum.doc.tar.xz
+# from 20250308
+Source289:      gfscomplutum.tar.xz
+Source290:      gfscomplutum.doc.tar.xz
 
 %description -n texlive-gfscomplutum
 GFS Complutum derives, via a long development, from a
@@ -18362,9 +18323,9 @@ Requires:       tex(ts1-qplbi.tfm)
 Requires:       tex(ts1-qplr.tfm)
 Requires:       tex(ts1-qplri.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source281:      gfsdidot.tar.xz
-Source282:      gfsdidot.doc.tar.xz
+# from 20250308
+Source291:      gfsdidot.tar.xz
+Source292:      gfsdidot.doc.tar.xz
 
 %description -n texlive-gfsdidot
 The design of Didot's 1805 Greek typeface was influenced by the
@@ -18698,9 +18659,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-gfsdidotclassic-fonts >= %{texlive_version}
 Suggests:       texlive-gfsdidotclassic-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source283:      gfsdidotclassic.tar.xz
-Source284:      gfsdidotclassic.doc.tar.xz
+# from 20250308
+Source293:      gfsdidotclassic.tar.xz
+Source294:      gfsdidotclassic.doc.tar.xz
 
 %description -n texlive-gfsdidotclassic
 The classic version of GFSDidot provided for Unicode TeX
@@ -18910,9 +18871,9 @@ Provides:       tex(t1neohellenic.fd)
 Provides:       tex(uneohellenicnums.fd)
 Requires:       tex(cmbrmi10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source285:      gfsneohellenic.tar.xz
-Source286:      gfsneohellenic.doc.tar.xz
+# from 20250308
+Source295:      gfsneohellenic.tar.xz
+Source296:      gfsneohellenic.doc.tar.xz
 
 %description -n texlive-gfsneohellenic
 The NeoHellenic style evolved in academic circles in the 19th
@@ -19143,9 +19104,9 @@ Provides:       tex(gfsneohellenicot.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(unicode-math.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source287:      gfsneohellenicmath.tar.xz
-Source288:      gfsneohellenicmath.doc.tar.xz
+# from 20250308
+Source297:      gfsneohellenicmath.tar.xz
+Source298:      gfsneohellenicmath.doc.tar.xz
 
 %description -n texlive-gfsneohellenicmath
 The GFSNeohellenic font, a historic font first designed by
@@ -19269,9 +19230,9 @@ Provides:       tex(gporsonrg6r.tfm)
 Provides:       tex(lgrporson.fd)
 Provides:       tex(porsonel.enc)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source289:      gfsporson.tar.xz
-Source290:      gfsporson.doc.tar.xz
+# from 20250308
+Source299:      gfsporson.tar.xz
+Source300:      gfsporson.doc.tar.xz
 
 %description -n texlive-gfsporson
 Porson is an elegant Greek font, originally cut at the turn of
@@ -19406,9 +19367,9 @@ Provides:       tex(gsolomos8a.vf)
 Provides:       tex(gsolomos8r.tfm)
 Provides:       tex(lgrsolomos.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source291:      gfssolomos.tar.xz
-Source292:      gfssolomos.doc.tar.xz
+# from 20250308
+Source301:      gfssolomos.tar.xz
+Source302:      gfssolomos.doc.tar.xz
 
 %description -n texlive-gfssolomos
 Solomos is a font which traces its descent from a
@@ -19524,9 +19485,9 @@ Suggests:       texlive-ghab-doc >= %{texlive_version}
 Provides:       tex(ghab.sty)
 Requires:       tex(biditools.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source293:      ghab.tar.xz
-Source294:      ghab.doc.tar.xz
+# from 20250308
+Source303:      ghab.tar.xz
+Source304:      ghab.doc.tar.xz
 
 %description -n texlive-ghab
 The package defines a command \darghab that will typeset its
@@ -19646,9 +19607,9 @@ Requires:       tex(siunitx.sty)
 Requires:       tex(translations.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source295:      ghsystem.tar.xz
-Source296:      ghsystem.doc.tar.xz
+# from 20250308
+Source305:      ghsystem.tar.xz
+Source306:      ghsystem.doc.tar.xz
 
 %description -n texlive-ghsystem
 The package provides the means to typeset all the hazard and
@@ -19918,9 +19879,9 @@ Provides:       tex(ot1cmg.fd)
 Provides:       tex(t1cmg.fd)
 Provides:       tex(ts1cmg.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source297:      gillcm.tar.xz
-Source298:      gillcm.doc.tar.xz
+# from 20250308
+Source307:      gillcm.tar.xz
+Source308:      gillcm.doc.tar.xz
 
 %description -n texlive-gillcm
 This is a demonstration of the use of virtual fonts for unusual
@@ -20317,9 +20278,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source299:      gillius.tar.xz
-Source300:      gillius.doc.tar.xz
+# from 20250308
+Source309:      gillius.tar.xz
+Source310:      gillius.doc.tar.xz
 
 %description -n texlive-gillius
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -20791,9 +20752,9 @@ Provides:       tex(gincltex.sty)
 Requires:       tex(adjustbox.sty)
 Requires:       tex(svn-prov.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source301:      gincltex.tar.xz
-Source302:      gincltex.doc.tar.xz
+# from 20250308
+Source311:      gincltex.tar.xz
+Source312:      gincltex.doc.tar.xz
 
 %description -n texlive-gincltex
 The package builds on the standard LaTeX packages graphics
@@ -20871,9 +20832,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-gindex-doc >= %{texlive_version}
 Provides:       tex(gindex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source303:      gindex.tar.xz
-Source304:      gindex.doc.tar.xz
+# from 20250308
+Source313:      gindex.tar.xz
+Source314:      gindex.doc.tar.xz
 
 %description -n texlive-gindex
 This package provides a way to generate the format of index
@@ -20948,9 +20909,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ginpenc-doc >= %{texlive_version}
 Provides:       tex(ginpenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source305:      ginpenc.tar.xz
-Source306:      ginpenc.doc.tar.xz
+# from 20250308
+Source315:      ginpenc.tar.xz
+Source316:      ginpenc.doc.tar.xz
 
 %description -n texlive-ginpenc
 If the inputenc is used and German umlauts are input directly,
@@ -21047,9 +21008,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-git-latexdiff-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source307:      git-latexdiff.tar.xz
-Source308:      git-latexdiff.doc.tar.xz
+# from 20250308
+Source317:      git-latexdiff.tar.xz
+Source318:      git-latexdiff.doc.tar.xz
 
 %description -n texlive-git-latexdiff
 git-latexdiff is a tool to graphically visualize differences
@@ -21510,9 +21471,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21529,14 +21490,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/forarray/forarray
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21554,6 +21515,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-forum
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/forum/*.{pf[ab],[ot]tf} \
@@ -21604,10 +21567,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-forum.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-forum.conf
-    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-fourier
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/fourier/*.{pf[ab],[ot]tf} \
@@ -21658,12 +21621,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-fourier.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-fourier.conf
-    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-fpl
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/fpl/*.{pf[ab],[ot]tf}
@@ -21693,10 +21656,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21707,6 +21668,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-frcursive
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/frcursive/*.{pf[ab],[ot]tf}
@@ -21736,8 +21701,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-frederika2016
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/frederika2016/*.{pf[ab],[ot]tf}
@@ -21767,14 +21732,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-frimurer
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/frimurer/*.{pf[ab],[ot]tf}
@@ -21804,10 +21769,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21851,6 +21812,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-garamond-libre
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/garamond-libre/*.{pf[ab],[ot]tf} \
@@ -21901,8 +21866,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-garamond-libre.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-garamond-libre.conf
-    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-garamond-math
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/garamond-math/*.{pf[ab],[ot]tf}
@@ -21932,10 +21897,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21957,6 +21918,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gelasio
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/sorkin/gelasio/*.{pf[ab],[ot]tf} \
@@ -22007,14 +21974,37 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-gelasio.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-gelasio.conf
-    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Move font files
+    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gelasiomath
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/gelasiomath/*.{pf[ab],[ot]tf}
+    do
+        test -e $font || continue
+        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-gelasiomath
+        base=${font##*/}
+        ln -sf %{_datadir}/fonts/texlive-gelasiomath/${base} ${font}
+    done
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-gelasiomath/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-gelasiomath/
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-gelasiomath.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Use this to disable the TeX fonts of the package -->
+	<!--    texlive-gelasiomath    -->
+	<!-- Be aware that the configurations in the files    -->
+	<!-- 09-texlive*.conf will not be affected by this    -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <rejectfont>
+	    <glob>%{_datadir}/fonts/texlive-gelasiomath/*</glob>
+	  </rejectfont>
+	</fontconfig>
+	EOF
     tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22023,58 +22013,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Remove files
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/makepsmd.py
-    # Move font files
-    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gentium-tug
-    for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/gentium-tug/*.{pf[ab],[ot]tf} \
-		%{buildroot}/%{_texmfdistdir}/fonts/type1/public/gentium-tug/*.{pf[ab],[ot]tf}
-    do
-        test -e $font || continue
-        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-gentium-tug
-        base=${font##*/}
-        ln -sf %{_datadir}/fonts/texlive-gentium-tug/${base} ${font}
-    done
-    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-gentium-tug/
-    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-gentium-tug/
-    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
-    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-gentium-tug.conf)<<-'EOF'
-	<?xml version="1.0"?>
-	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-
-	<!-- ************************************************ -->
-	<!-- Use this to disable the TeX fonts of the package -->
-	<!--    texlive-gentium-tug    -->
-	<!-- Be aware that the configurations in the files    -->
-	<!-- 09-texlive*.conf will not be affected by this    -->
-	<!-- ************************************************ -->
-
-	<fontconfig>
-	  <rejectfont>
-	    <glob>%{_datadir}/fonts/texlive-gentium-tug/*</glob>
-	  </rejectfont>
-	</fontconfig>
-	EOF
-
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
-    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/55-texlive-gentium-tug.conf)<<-'EOF'
-	<?xml version="1.0"?>
-	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-
-	<!-- ************************************************ -->
-	<!-- Disable plain Type1 font to let fontconfig       -->
-	<!-- prefere the OpenType and TrueType fonts          -->
-	<!-- ************************************************ -->
-
-	<fontconfig>
-	  <selectfont>
-	    <rejectfont>
-	      <glob>%{_datadir}/fonts/texlive-gentium-tug/*.pf*</glob>
-	    </rejectfont>
-	  </selectfont>
-	</fontconfig>
-	EOF
-    ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-gentium-tug.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-gentium-tug.conf
     tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22085,6 +22023,66 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Correct shebang of python3 scripts if any
+    for scr in %{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/makepsmd.py
+    do
+        test -e %{buildroot}/$scr || continue
+	head -n 1 %{buildroot}/$scr | grep -q python%python3_bin_suffix && continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python[23]\?[^\s]*@python%python3_bin_suffix@
+		.
+		w
+		q
+	EOF
+    done
+    # Make possible scripts usable if any
+    for scr in %{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/makepsmd.py
+    do
+	test -e %{buildroot}/$scr || continue
+	chmod 0755 %{buildroot}/$scr
+    done
+    # Avoid /usr/bin/env <prog>
+    for scr in %{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/makepsmd.py
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@/env[[:blank:]]\+@/@
+		.
+		w
+		q
+	EOF
+    done
+    # Move font files
+    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gentium-sil
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/SIL/gentium-sil/*.{pf[ab],[ot]tf}
+    do
+        test -e $font || continue
+        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-gentium-sil
+        base=${font##*/}
+        ln -sf %{_datadir}/fonts/texlive-gentium-sil/${base} ${font}
+    done
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-gentium-sil/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-gentium-sil/
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-gentium-sil.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Use this to disable the TeX fonts of the package -->
+	<!--    texlive-gentium-sil    -->
+	<!-- Be aware that the configurations in the files    -->
+	<!-- 09-texlive*.conf will not be affected by this    -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <rejectfont>
+	    <glob>%{_datadir}/fonts/texlive-gentium-sil/*</glob>
+	  </rejectfont>
+	</fontconfig>
+	EOF
     tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22094,8 +22092,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/getmap/getmapdl.lua
     do
@@ -22108,16 +22116,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gfsartemisia
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/gfsartemisia/*.{pf[ab],[ot]tf} \
@@ -22168,8 +22176,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-gfsartemisia.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-gfsartemisia.conf
-    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gfsbaskerville
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/gfsbaskerville/*.{pf[ab],[ot]tf} \
@@ -22220,8 +22228,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-gfsbaskerville.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-gfsbaskerville.conf
-    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gfsbodoni
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/gfsbodoni/*.{pf[ab],[ot]tf} \
@@ -22272,8 +22280,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-gfsbodoni.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-gfsbodoni.conf
-    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gfscomplutum
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/gfscomplutum/*.{pf[ab],[ot]tf} \
@@ -22324,8 +22332,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-gfscomplutum.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-gfscomplutum.conf
-    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/fonts/gfsdidot/installDidot.pl
     do
@@ -22382,8 +22390,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-gfsdidot.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-gfsdidot.conf
-    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gfsdidotclassic
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/gfsdidotclassic/*.{pf[ab],[ot]tf}
@@ -22413,8 +22421,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gfsneohellenic
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/gfsneohellenic/*.{pf[ab],[ot]tf} \
@@ -22465,8 +22473,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-gfsneohellenic.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-gfsneohellenic.conf
-    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gfsneohellenicmath
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/gfsneohellenicmath/*.{pf[ab],[ot]tf}
@@ -22496,8 +22504,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gfsporson
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/gfsporson/*.{pf[ab],[ot]tf} \
@@ -22548,8 +22556,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-gfsporson.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-gfsporson.conf
-    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gfssolomos
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/gfssolomos/*.{pf[ab],[ot]tf} \
@@ -22600,14 +22608,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-gfssolomos.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-gfssolomos.conf
-    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gillius
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/arkandis/gillius/*.{pf[ab],[ot]tf} \
@@ -22658,14 +22666,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-gillius.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-gillius.conf
-    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
