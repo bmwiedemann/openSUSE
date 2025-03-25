@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Sat Mar 22 22:31:26 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.21 matching go.mod
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+
+-------------------------------------------------------------------
+Sat Mar 22 14:23:34 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.12.1:
+  * Update expected values
+  * fix swallow build error and added tests
+  * Update TestEvent for go1.24
+  * Bump golang.org/x/term from 0.24.0 to 0.29.0
+  * Remove unused nolint directives
+  * Bump golang.org/x/sys from 0.25.0 to 0.28.0
+  * Fix some typos in README
+  * Bump github.com/fsnotify/fsnotify from 1.7.0 to 1.8.0
+  * fixup! fix(validate): fixes check for test.failfast flag as this is a gotest arg and must be prefixed with test.
+  * fix(validate): fixes check for test.failfast flag as this is a gotest arg and must be prefixed with test.
+  * Update x/text
+  * Update x/tools
+  * Update x/mod
+  * Skip a test that flakes in CI
+  * Fix lint
+  * Update minimum Go version
+  * fix ordering for version at least
+  * Try updated golangci-lint
+  * Remove old Go versions from CI
+  * Bump golang.org/x/term from 0.20.0 to 0.24.0
+  * Skip test that is falky on macos
+  * Bump golang.org/x/sys from 0.20.0 to 0.24.0
+  * Updated expected value for help text
+  * Remove unnecessary empty lines
+  * Fix typo in help text
+  * Fix help text typo
+  * omit empty skipped
+  * add skipped attribute to junit xml testsuite
+  * Bump golang.org/x/term from 0.18.0 to 0.20.0
+  * Bump golang.org/x/sys from 0.18.0 to 0.20.0
+  * Bump github.com/fatih/color from 1.16.0 to 1.17.0
+  * fix: close FailsReportFile
+  * Bump golang.org/x/sync from 0.6.0 to 0.7.0
+
+-------------------------------------------------------------------
+Sat Mar 22 14:20:03 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.12.0:
+  * ci: windows git config
+  * Version check that is go1.21 compatible
+  * go1.22~ added package build errors to the test output
+  * Update ci config
+  * Bump dependencies, update github workflows, add dependabot
+  * Add gofiber/fiber to list of projects
+  * Fix append bug in --rerun-fails with -run flag
+  * Add Woodpecker CI to no-color default autodetection
+  * Fold for loop clauses into the statement
+  * Update README.md
+  * Update gotestsum retries to properly filter out parents when there is a missing gap in the parent tree
+  * Used named constants instead of magic numbers in illumos-specific code
+  * Improve warning message when stdin is not a terminal
+  * Add support for gotestsum on illumos/amd64
+  * Update help text for font icons
+  * filewatcher: Silence warning from os.Stat failures
+  * Add emoticons to the nerdfonts icon formats
+  * Add format icons for nerdfonts instead of unicode
+  * Add support for simple icons using plain text
+  * Add environment variable for setting format icons
+  * Refactor color support for icons and add comments
+  * Prepare for adding more icon options
+
+-------------------------------------------------------------------
 Sat Aug 12 18:04:49 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 1.10.1:

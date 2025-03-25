@@ -31,4 +31,19 @@
   * Add list of projects that use gotestsum (forwarded request 1103623 from jfkw)</comment>
     <requestid>1103624</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>63435e653000b32ef7eb3a07d6af8c9b</srcmd5>
+    <version>1.12.1</version>
+    <time>1742936956</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.12.1:
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.21 matching go.mod
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable (forwarded request 1255348 from jfkw)</comment>
+    <requestid>1255349</requestid>
+  </revision>
 </revisionlist>
