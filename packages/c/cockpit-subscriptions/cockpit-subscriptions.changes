@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 21 11:59:46 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 8
+  * Correct handling for non-superuser cases
+  * Various usability and workflow improvements
+  * Add a confirm dialog before deactivating a subscription
+  * Update node_modules
+
+-------------------------------------------------------------------
 Mon Jan  6 10:56:21 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Initial build of the package

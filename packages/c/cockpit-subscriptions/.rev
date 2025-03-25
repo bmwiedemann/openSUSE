@@ -7,4 +7,16 @@
     <comment>Initial submission of cockpit-subscriptions module</comment>
     <requestid>1248127</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6d9803a3dfc6c74507a63a8506443378</srcmd5>
+    <version>8</version>
+    <time>1742937095</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 8
+  * Correct handling for non-superuser cases
+  * Various usability and workflow improvements
+  * Add a confirm dialog before deactivating a subscription
+  * Update node_modules</comment>
+    <requestid>1255826</requestid>
+  </revision>
 </revisionlist>
