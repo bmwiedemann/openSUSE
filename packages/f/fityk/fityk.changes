@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 23 14:34:14 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable python bindings when building for openSUSE >= 1600 as
+  fityk still makes use of PyEval_* functions deprecated since
+  python 3.9 and unavailable since 3.13. Fixes builds on newer oS.
+
+-------------------------------------------------------------------
 Fri Jan 27 09:10:48 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.3.2

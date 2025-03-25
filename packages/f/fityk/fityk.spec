@@ -1,7 +1,7 @@
 #
 # spec file for package fityk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Uses PyEval_Call* functions deprecated since Python 3.9 and unavailable from 3.13
+%if 0%{?suse_version} >= 1600
+%bcond_with python
+%endif
 
 %define somajor 4
 Name:           fityk
@@ -34,12 +39,14 @@ BuildRequires:  libboost_headers-devel
 BuildRequires:  libtool
 BuildRequires:  lua-devel >= 5.1
 BuildRequires:  nlopt-devel
-BuildRequires:  python3-devel
 BuildRequires:  readline-devel
 BuildRequires:  swig
 BuildRequires:  wxGTK3-devel >= 3
 BuildRequires:  xylib-devel >= 1.0
 BuildRequires:  zlib-devel
+%if %{with python}
+BuildRequires:  python3-devel
+%endif
 
 %description
 Fityk is a program for nonlinear curve-fitting of analytical
@@ -98,18 +105,20 @@ This package contains python bindings to Fityk library.
 export PYTHON=%{_bindir}/python3
 %configure \
     --enable-nlopt \
-    --enable-python
+    %{?with_python:--enable-python} \
+    %{!?with_python:--disable-python}
 
 %make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+%if %{with python}
 %fdupes %{buildroot}%{python3_sitearch}
 %fdupes %{buildroot}%{python3_sitelib}
+%endif
 
-%post   -n lib%{name}%{somajor} -p /sbin/ldconfig
-%postun -n lib%{name}%{somajor} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{somajor}
 
 %files
 %license COPYING
@@ -146,8 +155,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # -> fityk-python
 %{_datadir}/%{name}/samples/*.py*
 
+%if %{with python}
 %files -n python3-fityk
 %{python3_sitearch}/*
 %{python3_sitelib}/*
+%endif
 
 %changelog
