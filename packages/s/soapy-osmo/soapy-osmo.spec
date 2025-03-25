@@ -26,13 +26,12 @@ Version:        0.2.5
 Release:        0
 Summary:        Soapy SDR plugins for Osmo supported SDR devices
 License:        GPL-3.0-only
-Group:          Hardware/Other
 URL:            https://github.com/pothosware/SoapyOsmo/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyOsmo.git
 Source:         https://github.com/pothosware/SoapyOsmo/archive/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         soapy_osmosdr_rfspace_disable.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 %if 0%{with mod_freesrp}
 BuildRequires:  freesrp-devel
 %endif
@@ -53,7 +52,6 @@ Soapy SDR plugins for OsmoSDR devices
 
 %package -n libSoapyOsmoSDR%{sover}
 Summary:        Soapy SDR plugins for Osmo supported SDR devices
-Group:          System/Libraries
 
 %description -n libSoapyOsmoSDR%{sover}
 Soapy Osmo - Osmo SDR module
@@ -61,7 +59,6 @@ Soapy SDR plugins for OsmoSDR devices
 
 %package devel
 Summary:        Development files for the SoapyOsmoSDR library
-Group:          Development/Libraries/C and C++
 Requires:       libSoapyOsmoSDR%{sover} = %{version}
 
 %description devel
@@ -70,7 +67,6 @@ applications that want to make use of libSoapyOsmoSDR.
 
 %package -n soapysdr%{soapy_modver}-module-mirisdr
 Summary:        SoapySDR mirisdr module
-Group:          System/Libraries
 
 %description -n soapysdr%{soapy_modver}-module-mirisdr
 Soapy mirisdr - mirisdr device support for Soapy SDR.
@@ -78,7 +74,6 @@ A Soapy module that supports Mirics SDR devices within the Soapy API.
 
 %package -n soapysdr%{soapy_modver}-module-osmosdr
 Summary:        SoapySDR osmosdr module
-Group:          System/Libraries
 
 %description -n soapysdr%{soapy_modver}-module-osmosdr
 Soapy OsmoSDR - OsmoSDR device support for Soapy SDR.
@@ -87,7 +82,6 @@ A Soapy module that supports OsmoSDR devices within the Soapy API.
 %if 0%{with mod_freesrp}
 %package -n soapysdr%{soapy_modver}-module-freesrp
 Summary:        FreeSRP osmosdr module
-Group:          System/Libraries
 
 %description -n soapysdr%{soapy_modver}-module-freesrp
 Soapy FreeSRP - FreeSRP device support for Soapy SDR.
@@ -98,11 +92,14 @@ A Soapy module that supports FreeSRP devices within the Soapy API.
 %autosetup -p1 -n SoapyOsmo-%{name}-%{version}
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make VERBOSE=1 %{?_smp_mflags}
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %post   -n libSoapyOsmoSDR%{sover} -p /sbin/ldconfig
 %postun -n libSoapyOsmoSDR%{sover} -p /sbin/ldconfig
