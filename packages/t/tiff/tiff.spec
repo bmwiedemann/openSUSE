@@ -37,7 +37,6 @@ Version:        4.7.0
 Release:        0
 Summary:        Tools for Converting from and to the Tagged Image File Format
 License:        HPND
-Group:          Productivity/Graphics/Convertors
 URL:            https://libtiff.gitlab.io/libtiff/
 Source:         https://download.osgeo.org/libtiff/tiff-%{version}.tar.xz
 Source1:        https://download.osgeo.org/libtiff/tiff-%{version}.tar.xz.sig
@@ -50,7 +49,7 @@ Patch1:         tiff-4.7.0-test_directory.patch
 %if %{with tiff_manpages}
 BuildRequires:  python3-Sphinx
 %endif
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel
@@ -67,7 +66,6 @@ image format.
 
 %package -n libtiff6
 Summary:        The Tiff Library (with JPEG and compression support)
-Group:          System/Libraries
 Provides:       libtiff = %{version}
 
 %description -n libtiff6
@@ -77,7 +75,6 @@ libjpeg and libz in the linking process.
 
 %package -n libtiff-devel
 Summary:        Development Tools for Programs which will use the libtiff Library
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libstdc++-devel
 Requires:       libtiff6 = %{version}
@@ -92,7 +89,6 @@ the libtiff library.
 
 %package -n tiff-docs
 Summary:        Development Tools for Programs which will use the libtiff Library
-Group:          Productivity/Graphics/Convertors
 Requires:       tiff = %{version}
 BuildArch:      noarch
 
@@ -105,7 +101,6 @@ This package holds the man pages for the command lint tools.
 
 %package -n libtiff-devel-docs
 Summary:        Development Documentation for Programs which will use the libtiff Library
-Group:          Development/Libraries/C and C++
 Requires:       libtiff-devel = %{version}
 BuildArch:      noarch
 
@@ -126,7 +121,7 @@ CFLAGS="%{optflags} -fPIC"
 CFLAGS="$CFLAGS -O0"
 %endif
 # tools are not enabled for now due to test failure `FAIL: tiffcp-32bpp-None-jpeg.sh`
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %if %{asan_build}
 find -name Makefile | xargs sed -i 's/\(^CFLAGS.*\)/\1 -fsanitize=address/'
 %endif
@@ -143,6 +138,9 @@ rm -rv \
   %{buildroot}%{_bindir} \
   %{buildroot}%{_libdir} \
   %{buildroot}%{_includedir}
+
+%check
+%ctest
 
 %files -n tiff-docs
 %{_mandir}/man1/*
