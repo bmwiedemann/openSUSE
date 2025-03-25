@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Mar 25 12:36:22 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- CVE-2025-1767: GitRepo Volume Inadvertent Local Repository Access, bsc#1239643 
+
+  * TL;DR: Please refer to the github issue for details on detecting and mitigating the CVE, if impacted:
+  https://github.com/kubernetes/kubernetes/issues/130786
+
+  ****Important note to users and administrators****
+
+  * How do I mitigate this vulnerability?
+
+   To mitigate this vulnerability, you must use an init container to perform git clone operation and then mount the directory into the Pod's container. An example of this approach is provided here: https://gist.github.com/tallclair/849601a16cebeee581ef2be50c351841
+
+   Note: You can also restrict the use of gitRepo volumes in your cluster using policies such as ValidatingAdmissionPolicy or through Restricted pod security standard policy. You can use the following Common Expression Language (CEL) expression as part of a policy to reject use of gitRepo volumes:
+  `has(object.spec.volumes) || !object.spec.volumes.exists(v, has(v.gitRepo))`
+
+  * Detection:
+   
+   To detect whether this vulnerability has been exploited, you can use the following command to list all pods that use the in-tree gitRepo volume and clones to a .git subdirectory.
+
+   ```
+   kubectl get pods --all-namespaces -o json | jq '.items[] | select(.spec.volumes[].gitRepo.repository | test("^/")) | {name: .metadata.name, namespace: .metadata.namespace, repository: (.spec.volumes[] | select(.gitRepo) | .gitRepo.repository)}'
+   ```
+ 
+   Please plan and consider migrating to Kubernetes v1.33 (~ Release Date: April 23, 2025).
+   Since starting v1.33, the impacted gitRepo volume plugin will be disabled by default.
+   Refer: https://github.com/kubernetes/kubernetes/pull/129923
+
+   No prior Kubernetes versions (v1.29 - v1.32), will receive any backport fixe patches for this CVE, since there isn't a fully non-code-breaking patch available.
+
+-------------------------------------------------------------------
+Wed Mar 12 05:01:46 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.32.3:
+  * Add the feature gate `OrderedNamespaceDeletion` for apiserver
+  * conntrack reconciler must check the dst port
+  * fix(pod/util): typos in getting pod validation options
+  * Add ControllerRoles Test
+  * Fix Fixture Data
+  * Add Watch to controller roles
+  * Generate register files for all examples
+  * add simpletype pkg in v1 for register-gen test
+  * Add codegen::register to hack/update-codegen.sh
+  * Add missing imports in register-gen
+  * Revert "Add random interval to nodeStatusReport interval every time after an actual node status change"
+  * Remove the feature-gate check before populating serverRunOptions.Flagz
+  * test: Add emulated-version flag verification in flagz test
+  * fix: flagz endpoint to return parsed flags value
+  * kubeadm: fix panic when no UpgradeConfiguration was found in the config file
+  * proxy: should add PingPeriod for websocket translator
+  * Honor KUBE_HACK_TOOLS_GOTOOLCHAIN
+  * Deflake the PodReplacementPolicyFeatureToggling Job integration test
+  * Limit ResourceQuota LIST requests to times when informer is not synced
+  * kubelet: fix DRA registration test
+  * Fix the flaky Job test: TestSuccessPolicy_ReEnabling
+  * bump netlink
+  * DRA CEL: skip estimating the cost in the scheduler
+  * DRA CEL: add missing size estimator
+
+-------------------------------------------------------------------
 Tue Feb 18 09:13:41 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.32.2:
