@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Mar 19 18:44:13 UTC 2025 - lduncan@suse.com
+
+- Update to version 3.0.1:
+  * Drop the _fb suffix from rtslib and configshell imports
+  * Update ui_target.py
+  * feat: Switch to a default portal IP of [::0]
+  * Fix PyPI publish step
+  * Fix shell exit on expected errors
+  * Fix pre-commit trimming linebreaks in markdown
+  * Adding PyPI release workflow
+  * Adding pre-commit check to gh workflow
+  * Add Contribute section to README
+  * Use f-string instead of percent substitute
+  * Update pre-commit hook versions
+  * Use pathlib where appropriate
+  * Codestyle optimizations
+  * Fix RET505 violations and other codestyle fixes
+  * Move to hatchling build backend, dropping `-fb`
+  * Update linting rules
+  * Fix Perflint violations
+  * Fix Pylint violations
+  * Remove unused arguments from signal_handler
+  * Add missing return
+  * Remove unnecessary `start` argument in `range`
+  * Fix string concantenation, using f-strings
+  * Removing unnecessary dict call
+  * Rename built-in shadowding variable "type"
+  * Remove useless statement
+  * Fix flake8-simplify violations
+  * Use explicit conversion flags
+  * Fix exception handling to pass flake8-bandit
+  * Add uppercase variable noqa for BLKROGET
+  * Fix import sorting
+  * Fix pycodestyle violations
+  * Fix pyflakes violations
+  * Remove Python 2 compatibility, require Python 3.9
+  * Add missing general exception error assignment
+  * Rename targetcli.py to prevent import conflicts
+  * Removing Makefile
+  * Handle package-data
+  * Use importlib.metadata for module version
+  * Move executables to project directory
+  * Update README
+  * Add pre-commit configuration
+  * Update packaging
+  * Extending .gitignore
+  * Removing extra trailing whitespace from COPYING
+  * version 2.1.58
+  * Fix mapping the new LUN to the node ACL
+  This included several changes to the SPEC file, as well
+
+-------------------------------------------------------------------
 Wed Jun 19 15:34:16 UTC 2024 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - Update to version 2.1.58:

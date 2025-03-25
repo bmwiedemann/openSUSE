@@ -1,7 +1,7 @@
 #
 # spec file for package targetcli-fb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           targetcli-fb
-Version:        2.1.58
+Version:        3.0.1
 Release:        0
 Summary:        A command shell for managing the Linux LIO kernel target
 License:        Apache-2.0
@@ -28,24 +27,26 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}.service
 BuildRequires:  %{python_module configshell-fb}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module rtslib-fb}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
+BuildRequires:  git
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 Requires:       python-configshell-fb
 Requires:       python-dbus-python
+Requires:       python-gobject
 Requires:       python-rtslib-fb
-Requires:       python-six
 Requires:       targetcli-fb-common
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       targetcli    = %{version}-%{release}
 Provides:       targetcli-fb = %{version}-%{release}
-%endif
 Obsoletes:      targetcli < %{version}-%{release}
 Obsoletes:      targetcli-fb < %{version}-%{release}
 BuildArch:      noarch
@@ -70,16 +71,16 @@ Provides:       %{python_module targetcli-fb-common}
 
 %description -n %{name}-common
 targetcli-fb-common is the invariant base package needed by
-all python-version-dependant packages, such as python3-*-targetcli-fb.
+all python-version-dependant packages, such as python3*-targetcli-fb.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/targetcli
 %python_clone -a %{buildroot}%{_bindir}/targetclid
 install -d -m755 %{buildroot}%{_sysconfdir}/target
@@ -124,7 +125,7 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctargetclid
 %files %{python_files}
 %python_alternative %{_bindir}/targetcli
 %python_alternative %{_bindir}/targetclid
-%{python_sitelib}/*
+%{python_sitelib}/targetcli*
 
 %files -n %{name}-common
 %license COPYING
