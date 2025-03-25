@@ -80,7 +80,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20250312.dd33dd1
+Version:        20250324.7d1bc96
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
