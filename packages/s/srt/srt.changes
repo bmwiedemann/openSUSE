@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 23 18:02:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace gcc-c++ with generic  c++_compiler BuildRequires.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
+Sat Mar 22 14:39:07 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+- Remove Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Fri Dec 20 14:30:42 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - version update to 1.5.4

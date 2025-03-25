@@ -141,4 +141,12 @@
     <comment></comment>
     <requestid>1233590</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>dc299c65ceda218e3b5640b90536025b</srcmd5>
+    <version>1.5.4</version>
+    <time>1742936850</time>
+    <user>anag+factory</user>
+    <comment>cmake and other tweaks</comment>
+    <requestid>1255429</requestid>
+  </revision>
 </revisionlist>

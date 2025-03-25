@@ -1,7 +1,7 @@
 #
 # spec file for package srt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,12 @@ Version:        1.5.4
 Release:        0
 Summary:        Secure Reliable Transport (SRT)
 License:        MPL-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://www.srtalliance.org
 Source0:        https://github.com/Haivision/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  cmake
+BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  tcl
 BuildRequires:  pkgconfig(openssl)
@@ -41,7 +40,6 @@ with secure streams and firewall traversal.
 
 %package -n libsrt%{sover}
 Summary:        Secure Reliable Transport (SRT) library
-Group:          System/Libraries
 
 %description -n libsrt%{sover}
 This package contains a shared system library for Secure Reliable
@@ -49,7 +47,6 @@ Transport (SRT).
 
 %package devel
 Summary:        Development files for the Secure Reliable Transport (SRT) library
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libsrt%{sover} = %{version}
 
@@ -69,8 +66,9 @@ needed to develop applications with Secure Reliable Transport
 	-DCMAKE_INSTALL_INCLUDEDIR=%{_includedir} \
 	-DENABLE_CXX11=ON \
 	-DENABLE_SHARED=ON \
-        -DENABLE_MONOTONIC_CLOCK=ON \
+	-DENABLE_MONOTONIC_CLOCK=ON \
 	-DENABLE_STATIC=OFF \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 	%{nil}
 %cmake_build
 
@@ -78,8 +76,10 @@ needed to develop applications with Secure Reliable Transport
 %cmake_install
 %fdupes %{buildroot}%{_prefix}
 
-%post -n libsrt%{sover} -p /sbin/ldconfig
-%postun -n libsrt%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsrt%{sover}
+
+%check
+%ctest
 
 %files
 %doc CONTRIBUTING.md README.md
