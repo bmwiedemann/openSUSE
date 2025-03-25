@@ -39,6 +39,7 @@ This particular package contains all the Gnome patterns.
 
 
 ################################################################################
+
 %package gnome
 %pattern_graphicalenvironments
 Summary:        GNOME Desktop Environment (Wayland)
@@ -279,9 +280,8 @@ Requires:       at-spi2-core
 # boo#1090117
 Recommends:     gnome-shell-classic
 %endif
+Recommends:     gnome-console
 Recommends:     gnome-extensions
-# gnome-terminal is currently used all around in openQA - but should be removed
-Recommends:     gnome-terminal
 # bnc#879466
 Recommends:     gnome-user-docs
 Recommends:     gpgme
