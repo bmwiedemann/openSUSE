@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package imb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,8 +63,9 @@ ExclusiveArch:  do_not_build
 %{bcond_with hpc}
 %undefine c_f_ver
 %global mpi_flavor openmpi
-%define mpi_vers 4
+%define mpi_vers 5
 %define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+ExcludeArch:    %{ix86} %{arm}
 %{?DisOMPI5}
 %endif
 
