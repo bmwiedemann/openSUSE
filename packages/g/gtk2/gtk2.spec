@@ -341,7 +341,7 @@ ln po/{en,lg,zu}.po po-properties/
 %build
 NOCONFIGURE=1 ./autogen.sh
 export CFLAGS="%{optflags}"
-export CFLAGS="$CFLAGS -fstack-protector"
+export CFLAGS="$CFLAGS -fstack-protector -std=gnu99"
 %ifarch ppc64
 export CFLAGS="$CFLAGS -mminimal-toc"
 %endif

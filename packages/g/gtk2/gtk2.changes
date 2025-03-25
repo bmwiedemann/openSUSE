@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 20 21:53:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Export -std=gnu99 to cflags, fix build with gcc 15. GCC 15
+  defaults to C23. gtk+ 2.x entered maintenance mode upstream prior
+  to C11, is now no longer under development, and therefore should
+  not be expected to compile to newer standards.
+
+-------------------------------------------------------------------
 Wed Feb 26 03:36:57 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream and
