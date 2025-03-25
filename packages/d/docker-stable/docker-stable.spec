@@ -128,9 +128,13 @@ Patch205:       0008-bsc1214855-volume-use-AtomicWriteFile-to-save-volume.patch
 Patch206:       0009-CVE-2024-41110-AuthZ-plugin-securty-fixes.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/46609>. CVE-2024-29018
 Patch207:       0010-CVE-2024-29018-libnet-Don-t-forward-to-upstream-reso.patch
+# UPSTREAM: Backport of <https://go-review.googlesource.com/c/oauth2/+/652155>. CVE-2025-22868
+Patch208:       0011-CVE-2025-22868-vendor-jws-split-token-into-fixed-num.patch
+# UPSTREAM: Backport of <https://go-review.googlesource.com/c/crypto/+/652135>. CVE-2025-22869
+Patch209:       0012-CVE-2025-22869-vendor-ssh-limit-the-size-of-the-inte.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/46307> and
 #                       <https://github.com/moby/moby/pull/49061>.
-Patch299:       0011-TESTS-backport-fixes-for-integration-tests.patch
+Patch299:       0013-TESTS-backport-fixes-for-integration-tests.patch
 # UPSTREAM: Backport of <https://github.com/docker/cli/pull/4228>.
 Patch900:       cli-0001-docs-include-required-tools-in-source-tree.patch
 BuildRequires:  audit
@@ -399,6 +403,10 @@ cp %{SOURCE130} .
 %patch -P206 -p1
 # CVE-2024-29018
 %patch -P207 -p1
+# CVE-2025-22868
+%patch -P208 -p1
+# CVE-2025-22869
+%patch -P209 -p1
 %if %{with integration_tests}
 # integration-tests patches
 %patch -P299 -p1

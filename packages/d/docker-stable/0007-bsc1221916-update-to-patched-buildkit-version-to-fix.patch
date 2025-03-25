@@ -1,7 +1,7 @@
 From b760758157cd0d00f46f37f86a9cbee7810cb666 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Thu, 2 May 2024 22:50:23 +1000
-Subject: [PATCH 07/11] bsc1221916: update to patched buildkit version to fix
+Subject: [PATCH 07/13] bsc1221916: update to patched buildkit version to fix
  symlink resolution
 
 SUSE-Bugs: https://bugzilla.suse.com/show_bug.cgi?id=1221916
@@ -894,5 +894,5 @@ index 9adbc22b99fc..27bc31dfd397 100644
 -# github.com/moby/buildkit => github.com/SUSE/buildkit v0.0.0-20241218053907-cd804dd86389
 +# github.com/moby/buildkit => github.com/SUSE/buildkit v0.0.0-20241218053911-6b814972ef19
 -- 
-2.47.1
+2.48.1
 

@@ -1,7 +1,7 @@
-From 0392c617b8e75f0b59a922f95c691fdd05eaf99f Mon Sep 17 00:00:00 2001
+From 95339a6a838e2b45af819e5492cbb6c7c0fbac0e Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Thu, 21 Nov 2024 20:00:07 +1100
-Subject: [PATCH 11/11] TESTS: backport fixes for integration tests
+Subject: [PATCH 13/13] TESTS: backport fixes for integration tests
 
 We need a couple of patches to make the tests work on SLES:
 
@@ -61,5 +61,5 @@ index 9213db2ba21a..d8bfe17678a4 100644
  	cmd.Stderr = c.stderr
  	if err := cmd.Start(); err != nil {
 -- 
-2.47.1
+2.48.1
 
