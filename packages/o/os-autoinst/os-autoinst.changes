@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 24 12:31:32 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1742623603.20c141b:
+  * Consistently use try/catch instead of 'if ' everywhere
+  * Enable validation of resumed asset downloads in svirt backend
+  * Avoid leftover rsync processes on svirt host
+  * Check for correct git warning when cloning an empty repository
+  * Adapt check for git error message to new version
+  * Ensure full coverage in the project
+
+-------------------------------------------------------------------
 Tue Mar 18 20:51:11 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1742240999.4ad1bd8:
