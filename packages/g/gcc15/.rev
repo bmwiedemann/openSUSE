@@ -26,4 +26,12 @@ since we bumped libgo SONAME as well for 15</comment>
   [bsc#1238491]</comment>
     <requestid>1253653</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ee77d5e10b10f9d776efd8284f6e094a</srcmd5>
+    <version>15.0.1+git8082</version>
+    <time>1742940595</time>
+    <user>anag+factory</user>
+    <comment>- Disable build of glibc cross to loongarch64 and hppa in SLFO.</comment>
+    <requestid>1255621</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 12:03:56 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Disable build of glibc cross to loongarch64 and hppa in SLFO. 
+
+-------------------------------------------------------------------
 Mon Mar 17 07:50:20 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC trunk head, 15.0.1+git8082

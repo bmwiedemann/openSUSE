@@ -209,6 +209,12 @@ BuildRequires:  avr-libc
 %if 0%{?gcc_target_glibc:1}
 %if %{suse_version} < 1600
 ExclusiveArch:  do-not-build
+%else
+%if %{suse_version} < 1699
+%if "%{cross_arch}" == "hppa" || "%{cross_arch}" == "loongarch64"
+ExclusiveArch:  do-not-build
+%endif
+%endif
 %endif
 BuildRequires:  cross-%cross_arch-glibc-devel
 %requires_ge cross-%cross_arch-glibc-devel
