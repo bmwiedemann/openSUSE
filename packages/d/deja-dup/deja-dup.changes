@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Mar 22 11:22:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + Add new Rclone storage location option that can reference
+    existing Rclone remotes, thus allowing backing up to a wide
+    variety of cloud providers.
+  + Keep "backup successful" notifications around (there was a bug
+    where they sometimes disappeared right after the backup, but
+    now they persist).
+  + Add allow-power-saver gsettings key to allow automatic backups
+    even when Power Saver mode is enabled, for folks that live in
+    that mode.
+  + Avoid another possible source of multiple tool tasks running on
+    top of each other when starting up automatic backups.
+  + Restic:
+    - avoid matching multiple files when restoring.
+    - hide noisy "status" messages from the About window debug
+      logs.
+- Add restic BuildRequires and Recommends, and pass
+  enable_restic=true to meson setup, build the new optional restic
+  support.
+
+-------------------------------------------------------------------
 Fri Oct  4 16:11:10 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:

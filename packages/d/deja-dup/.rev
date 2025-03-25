@@ -740,4 +740,12 @@ So preferably for 13.1 as well.</comment>
     <comment>New stable rel (forwarded request 1205731 from iznogood)</comment>
     <requestid>1205807</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>1e67b00e9b14d5542a6694345e5cd256</srcmd5>
+    <version>48.0</version>
+    <time>1742937015</time>
+    <user>anag+factory</user>
+    <comment>Fix build via enabling the new restic support, seems upstream did not test without the new optional support.... (forwarded request 1255595 from iznogood)</comment>
+    <requestid>1255596</requestid>
+  </revision>
 </revisionlist>

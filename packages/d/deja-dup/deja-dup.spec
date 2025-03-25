@@ -1,7 +1,7 @@
 #
 # spec file for package deja-dup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           deja-dup
-Version:        47.0
+Version:        48.0
 Release:        0
 Summary:        Simple backup tool and frontend for duplicity
 License:        GPL-3.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  glib2-tools
 BuildRequires:  libgpg-error-devel
 BuildRequires:  meson >= 0.64
 BuildRequires:  pkgconfig
+BuildRequires:  restic
 BuildRequires:  vala >= 0.16.0
 BuildRequires:  xdg-user-dirs
 BuildRequires:  yelp-tools
@@ -48,6 +49,7 @@ BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 1.2
 Requires:       duplicity >= 0.8.21
 Requires:       python3-oauthlib
+Recommends:     restic
 Obsoletes:      nautilus-deja-dup <= 42.4
 
 %description
@@ -68,7 +70,9 @@ Features:
 %autosetup -p1
 
 %build
-%meson
+%meson \
+	-D enable_restic=true \
+	%{nil}
 %meson_build
 
 %install
