@@ -1,4 +1,154 @@
 -------------------------------------------------------------------
+Fri Mar 21 04:44:26 UTC 2025 - madhankumar.chellamuthu@suse.com
+
+- Update to version 2.0.4:
+  * build(deps): bump actions/setup-go from 5.3.0 to 5.4.0
+  * build(deps): bump actions/cache from 4.2.2 to 4.2.3
+  * build(deps): bump the docker group with 2 updates
+  * update containerd (2.0.4), etc.; verify the git tags with the commit hashes
+  * build(deps): bump github.com/containerd/imgcrypt/v2 from 2.0.0 to 2.0.1
+  * fix:nerdctl ps show nothing when timeout
+  * fix: Return empty network settings for non started containers
+  * build(deps): bump github.com/containerd/containerd/v2
+  * Add support for remaining blkio settings
+  * build(deps): bump docker/login-action from 3.3.0 to 3.4.0
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * Stop sharding cache per containerd version
+  * Dockerfile: update buildkit to 0.20.1
+  * Remove golanci-lint action
+  * fix: none log dirver creating log uri
+  * Update Canary and EL8 titles
+  * update RootlessKit (2.3.4)
+  * ensure logger completion after container exit
+  * add sync syscall before get container diff when commit
+  * Dockerfile: remove "goversion" stage
+  * Move GHA to zstd compression
+  * build(deps): bump the golang-x group across 1 directory with 6 updates
+  * CI: simplify setting up Lima
+  * Replace hack/verify-no-patent.sh with depguard
+  * Adding document analyzing CI/dockerfile
+  * Disable buildx output for dependency stage
+  * Implement updated test matrix
+  * Fix broken lint-license task
+  * Increase wait for ensurecontainerstarted
+  * Fix kubectl download url
+  * Fix referenceutil.FamiliarMatch SIGSEGV
+  * Update containerd/project-checks (1.2.2)
+  * Fix alma ci target
+  * Migrate TestRunDevice test
+  * Quiet out apt-get calls
+  * Use makefile task to install golangci
+  * build(deps): bump github.com/opencontainers/image-spec
+  * build(deps): bump actions/cache from 4.2.1 to 4.2.2
+  * --quiet image pulls in tests
+  * CI: drop Ubuntu 20.04, add AlmaLinux 8
+  * [ci] rollback setup vagrant comment
+  * Fix test TestNoneNetworkHostName
+  * Add golangci and yamllint to tigron
+  * Lint fixes
+  * Move to creack pty
+  * Makefile fixes
+  * Add qemu/rosetta notes
+  * Update containerd v2.0.3
+  * build(deps): bump github.com/containernetworking/plugins
+  * build(deps): bump github.com/containerd/containerd/v2
+  * build(deps): bump github.com/opencontainers/runtime-spec
+  * build(deps): bump docker/setup-qemu-action from 3.5.0 to 3.6.0
+  * Harden test pty error handling
+  * Cleaning variables and function names in cmd
+  * Fix apparmor host check to include aa-parser
+  * build(deps): bump actions/cache from 4.2.1 to 4.2.2
+  * add hostsPath to inspect response
+  * Rename NO_COLORS
+  * Enforce pkg isolation as part of golangci
+  * build(deps): bump the docker group with 2 updates
+  * build(deps): bump docker/metadata-action from 5.6.1 to 5.7.0
+  * build(deps): bump docker/build-push-action from 6.14.0 to 6.15.0
+  * build(deps): bump docker/setup-qemu-action from 3.4.0 to 3.5.0
+  * build(deps): bump docker/setup-buildx-action from 3.9.0 to 3.10.0
+  * Fix kube-hide-dupe docs typo
+  * build(deps): bump golang.org/x/crypto in the golang-x group
+  * Reorg test package
+  * Makefile cleanup
+  * Normalize all command variables to cmd
+  * goimports-reviser: remove hack
+  * Disable golangci preflight config validation
+  * go.mod: set minimum Go version to 1.23
+  * CI: set GOTOOLCHAIN=local
+  * update Go (1.24)
+  * CI: arm64-8core-32gb -> ubuntu-24.04-arm
+  * Increase CI run timeout
+  * Restrict EnsureContent to the requested platform
+  * CI: set fail-fast to false
+  * build(deps): bump github.com/go-jose/go-jose/v4 from 4.0.4 to 4.0.5
+  * feat: add hostConfig to nerdctl inspect response
+  * Rewrite signal tests
+  * Add test tooling for signals
+  * Make subpackage test a separate module
+  * Remove unbuffer from container tests
+  * Prevent acquire from blanking hosts file
+  * Cleanup XDGRuntime logic
+  * Remove forked sysinfo package
+  * Tests to error on timeout
+  * Rewrite detach tests without unbuffer
+  * feat: add signal option to containerRestart
+  * docs: add --log-driver=none to run command reference
+  * Support bind propagation options in Compose volume long syntax
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * build(deps): bump github.com/klauspost/compress from 1.17.11 to 1.18.0
+  * build(deps): bump docker/build-push-action from 6.13.0 to 6.14.0
+  * build(deps): bump actions/cache from 4.2.0 to 4.2.1
+  * add tests
+  * build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+  * build(deps): bump golangci/golangci-lint-action from 6.4.1 to 6.5.0
+  * add signal option to container stop command
+  * feat: add support for 'domainname' option in container create
+  * Fix FATA error when inspecting images in native mode
+  * Cleanup old/unused helpers
+  * Remove require daemon version for >=1.6
+  * build(deps): bump golangci/golangci-lint-action from 6.3.2 to 6.4.1
+  * Add pty support for testing
+  * update runc (1.2.5)
+  * fix: network cleanup called twice
+  * docs(nerdctl-compose): add missing details in command-reference.md
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump gotest.tools/v3 from 3.5.1 to 3.5.2
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * build(deps): bump golangci/golangci-lint-action from 6.3.0 to 6.3.2
+  * enable host name and default resolv.conf and hosts file in none network
+  * build(deps): bump docker/setup-qemu-action from 3.3.0 to 3.4.0
+  * build(deps): bump golang.org/x/crypto in the golang-x group
+  * fix nerdctl-full SHA256SUMS fails
+  * Reduce file permissions
+  * build(deps): bump docker/setup-buildx-action from 3.8.0 to 3.9.0
+  * build(deps): bump golangci/golangci-lint-action from 6.2.0 to 6.3.0
+  * build(deps): bump the golang-x group with 4 updates
+  * Fix apparmor test not running
+  * Prevent reference filter from failing on dangling images
+  * build(deps): bump github.com/spf13/pflag from 1.0.5 to 1.0.6
+  * Harden journald test
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * test: Add a test for container access with 127.0.0.2 specified in -p in rootless mode
+  * fix journald logger exit and wait behavior
+  * Consistently use WithError when logging errors instead of %s
+  * Consistently use %w instead of %s or %v when wrapping errors
+  * fix: prevent panic in nydus snapshotter inspect
+  * Fix socket address not being updated properly
+  * Test portability fix: ensure tini-custom is here
+  * Disable systemd test on arm64
+  * build(deps): bump docker/build-push-action from 6.12.0 to 6.13.0
+  * Fix test time to use UTC
+  * Skip TestRunBindMountPropagation
+  * Fix wrong error comparison
+  * Relax error on annotations read failure
+  * build(deps): bump github.com/ipfs/go-cid from 0.4.1 to 0.5.0
+  * build(deps): bump the docker group with 2 updates
+  * build(deps): bump github.com/rootless-containers/bypass4netns
+  * build(deps): bump actions/setup-go from 5.2.0 to 5.3.0
+  * integration test: specify IPFS_PATH for IPFS service
+  * update Kubo (0.32.1)
+
+-------------------------------------------------------------------
 Mon Jan 27 09:30:43 UTC 2025 - madhankumar.chellamuthu@suse.com
 
 - Update to version 2.0.3:
