@@ -17,13 +17,14 @@
 
 
 Name:           meld
-Version:        3.22.3
+Version:        3.23.0
 Release:        0
 Summary:        Visual diff and merge tool
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://meldmerge.org/
-Source0:        https://download.gnome.org/sources/meld/3.22/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
+
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -91,7 +92,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Meld.deskto
 %{_datadir}/%{name}/
 %{_datadir}/metainfo/org.gnome.Meld.appdata.xml
 %{_datadir}/applications/org.gnome.Meld.desktop
-%{_datadir}/glib-2.0/schemas/org.gnome.meld.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.Meld.gschema.xml
 %doc %{_datadir}/help/C/meld/
 %{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/mime/packages/org.gnome.Meld.xml

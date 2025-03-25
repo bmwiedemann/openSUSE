@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Mar 23 07:39:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.23.0:
+  + Features:
+    - Add new side-by-side image file comparison
+    - Add CI build support for macOS
+    - Add version control support for Git unstaging
+    - Added option to compare folders based on size only
+    - Support starting with blank comparison panes using @blank
+    - Per-pane path labels now accept drag-n-drop to open files
+  + UI Changes:
+    - Icon updates
+    - Use development styling when uninstalled
+    - Shortcut and mnemonic updates and shortcut documentation
+      fixes
+    - Help documentation updates
+    - String updates and translation fixes
+  + Updated translations.
+- For complete overview of changes, please see the included NEWS
+  file.
+- Switch to source service for tarball/sources.
+
+-------------------------------------------------------------------
 Wed Jan  8 08:38:57 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.22.3:
