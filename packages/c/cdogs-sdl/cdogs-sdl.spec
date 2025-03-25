@@ -21,13 +21,12 @@ Version:        2.3.0
 Release:        0
 Summary:        Classic overhead run-and-gun game
 License:        BSD-2-Clause AND GPL-2.0-only AND CC-BY-3.0 AND CC-BY-SA-3.0
-Group:          Amusements/Games/Action/Shoot
 URL:            https://cxong.github.io/cdogs-sdl
 Source:         https://github.com/cxong/cdogs-sdl/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        cdogs-sdl.rpmlintrc
 Patch0:         fix-build.patch
 Patch1:         fix-env-script-interpreter.patch
-BuildRequires:  cmake >= 3.12
+BuildRequires:  cmake >= 3.5
 BuildRequires:  enet-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -56,7 +55,8 @@ rm -rf src/cdogs/enet
 %cmake \
     -DCDOGS_BIN_DIR=%{_bindir}/ \
     -DCDOGS_DATA_DIR=%{_datadir}/%{name}/ \
-    -DUSE_SHARED_ENET=ON
+    -DUSE_SHARED_ENET=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
