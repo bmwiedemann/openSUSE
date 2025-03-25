@@ -1,7 +1,7 @@
 #
-# spec file for package texlive-specs-f.spec
+# spec file for package texlive-specs-f
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,12 @@
 ##### WARNING: Please do not edit this auto generated spec file.
 #
 
-%define texlive_version  2024
+
+%define texlive_version  2025
 %define texlive_previous 2022
-%define texlive_release  20240311
-%define texlive_noarch   216
-%define biber_version    2.19
+%define texlive_release  20250308
+%define texlive_noarch   218
+%define biber_version    2.20
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -61,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-f
-Version:        2024
+Version:        2025
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -130,7 +131,7 @@ Requires:       tex(titletoc.sty)
 Requires:       tex(tocbibind.sty)
 Requires:       tex(xifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source1:        confproc.tar.xz
 Source2:        confproc.doc.tar.xz
 
@@ -315,7 +316,7 @@ Suggests:       texlive-constants-doc >= %{texlive_version}
 Provides:       tex(constants.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source3:        constants.tar.xz
 Source4:        constants.doc.tar.xz
 
@@ -394,7 +395,7 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(environ.sty)
 Requires:       tex(expl3.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source5:        conteq.tar.xz
 Source6:        conteq.doc.tar.xz
 
@@ -443,7 +444,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/conteq/conteq.sty
 
 %package -n texlive-context
-Version:        %{texlive_version}.%{texlive_noarch}.svn70360
+Version:        %{texlive_version}.%{texlive_noarch}.svn74402
 Release:        0
 License:        LPPL-1.0
 Summary:        The ConTeXt macro package
@@ -586,6 +587,7 @@ Provides:       tex(hviezdoslav-vlnka-sk.tex)
 Provides:       tex(i-readme.tex)
 Provides:       tex(jaros-sk.tex)
 Provides:       tex(jaros-vlnka-sk.tex)
+Provides:       tex(jaynes.tex)
 Provides:       tex(jojomayer.tex)
 Provides:       tex(khatt-ar.tex)
 Provides:       tex(khatt-en.tex)
@@ -636,6 +638,7 @@ Provides:       tex(mtx-context-common.tex)
 Provides:       tex(mtx-context-compare.tex)
 Provides:       tex(mtx-context-copy.tex)
 Provides:       tex(mtx-context-domotica.tex)
+Provides:       tex(mtx-context-fixpdf.tex)
 Provides:       tex(mtx-context-fonts.tex)
 Provides:       tex(mtx-context-hashed.tex)
 Provides:       tex(mtx-context-ideas.tex)
@@ -727,7 +730,7 @@ Provides:       tex(weisman.tex)
 Provides:       tex(welcome-to-context.tex)
 Provides:       tex(zapf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source7:        context.tar.xz
 Source8:        context.doc.tar.xz
 Source9:        context_cnf.dif
@@ -739,7 +742,7 @@ supports advanced interactive documents. See the ConTeXt garden
 for a wealth of support information.
 
 %package -n texlive-context-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70360
+Version:        %{texlive_version}.%{texlive_noarch}.svn74402
 Release:        0
 Summary:        Documentation for texlive-context
 License:        LPPL-1.0
@@ -795,7 +798,7 @@ Provides:       man(mtxrun.1)
 This package includes the documentation for texlive-context
 
 %package -n texlive-context-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn70360
+Version:        %{texlive_version}.%{texlive_noarch}.svn74402
 Release:        0
 Summary:        Severed fonts for texlive-context
 License:        LPPL-1.0
@@ -831,6 +834,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-context-fonts
 
 %files -n texlive-context-doc
+%{_texmfdistdir}/doc/context/README.TEXLIVE
 %{_texmfdistdir}/doc/context/context-readme.txt
 %{_texmfdistdir}/doc/context/documents/general/leaflets/leaflet-context.pdf
 %{_texmfdistdir}/doc/context/documents/general/leaflets/leaflet-luametatex.pdf
@@ -846,8 +850,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/documents/general/magazines/mag-1104-mkiv.pdf
 %{_texmfdistdir}/doc/context/documents/general/magazines/mag-1105-mkiv.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/about.pdf
+%{_texmfdistdir}/doc/context/documents/general/manuals/beyond.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/bidi.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/canbedone-periods.pdf
+%{_texmfdistdir}/doc/context/documents/general/manuals/canbedone.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/charts-mkiv.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/cld-mkiv.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/colors-mkiv.pdf
@@ -858,6 +864,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/documents/general/manuals/epub-mkiv-demo.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/epub-mkiv.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/evenmore.pdf
+%{_texmfdistdir}/doc/context/documents/general/manuals/examples-mathmeanings.pdf
+%{_texmfdistdir}/doc/context/documents/general/manuals/examples-naturaltables.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/followingup.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/fonts-mkiv.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/graphics.pdf
@@ -867,6 +875,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/documents/general/manuals/libraries-mkiv.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/lowlevel-accuracy.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/lowlevel-alignments.pdf
+%{_texmfdistdir}/doc/context/documents/general/manuals/lowlevel-balancing.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/lowlevel-boxes.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/lowlevel-buffers.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/lowlevel-characters.pdf
@@ -892,8 +901,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/documents/general/manuals/ma-cb-en.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/math-mkiv.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/math-tweaks.pdf
+%{_texmfdistdir}/doc/context/documents/general/manuals/mathincontext-paper.pdf
+%{_texmfdistdir}/doc/context/documents/general/manuals/mathincontext-screen.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/metafun-p.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/metafun-s.pdf
+%{_texmfdistdir}/doc/context/documents/general/manuals/missingfiles.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/mk.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/mkiv-publications.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/mmlexamp.pdf
@@ -906,7 +918,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/documents/general/manuals/ontarget.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/pagecolumns.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/pdfmerge.pdf
-%{_texmfdistdir}/doc/context/documents/general/manuals/primitives.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/rules-mkiv.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/spacing-mkiv.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/spreadsheets-mkiv.pdf
@@ -915,6 +926,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/documents/general/manuals/still.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/svg-lmtx.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/swiglib-mkiv.pdf
+%{_texmfdistdir}/doc/context/documents/general/manuals/tagging.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/templates-mkiv.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/texit.pdf
 %{_texmfdistdir}/doc/context/documents/general/manuals/tiptrick.pdf
@@ -1081,6 +1093,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/presentations/context/2021/context-2021-paragraphs.tex
 %{_texmfdistdir}/doc/context/presentations/context/2021/context-2021-programming.pdf
 %{_texmfdistdir}/doc/context/presentations/context/2021/context-2021-programming.tex
+%{_texmfdistdir}/doc/context/presentations/context/2022/context-2022-style.tex
+%{_texmfdistdir}/doc/context/presentations/context/2024/context-2024-accessibility.pdf
+%{_texmfdistdir}/doc/context/presentations/context/2024/context-2024-accessibility.tex
+%{_texmfdistdir}/doc/context/presentations/context/2024/context-2024-compactfonts.pdf
+%{_texmfdistdir}/doc/context/presentations/context/2024/context-2024-compactfonts.tex
+%{_texmfdistdir}/doc/context/presentations/context/2024/context-2024-pdf-2.pdf
+%{_texmfdistdir}/doc/context/presentations/context/2024/context-2024-pdf-2.tex
+%{_texmfdistdir}/doc/context/presentations/context/2024/context-2024-segments.pdf
+%{_texmfdistdir}/doc/context/presentations/context/2024/context-2024-segments.tex
+%{_texmfdistdir}/doc/context/presentations/context/2024/context-2024-style.tex
+%{_texmfdistdir}/doc/context/presentations/context/2024/kingjames-001.png
+%{_texmfdistdir}/doc/context/presentations/context/2024/kingjames-002.png
 %{_texmfdistdir}/doc/context/presentations/examples/present-balls-001.pdf
 %{_texmfdistdir}/doc/context/presentations/examples/present-balls-001.tex
 %{_texmfdistdir}/doc/context/presentations/examples/present-colorful-001.pdf
@@ -1310,6 +1334,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/about/still-expanding-7.png
 %{_texmfdistdir}/doc/context/sources/general/manuals/about/still-expanding-8.png
 %{_texmfdistdir}/doc/context/sources/general/manuals/about/still-expanding-9.png
+%{_texmfdistdir}/doc/context/sources/general/manuals/beyond/beyond-contents.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/beyond/beyond-introduction.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/beyond/beyond-namespaces.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/beyond/beyond-style.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/beyond/beyond-titlepage.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/beyond/beyond.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/bidi/bidi-contents.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/bidi/bidi-fonts.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/bidi/bidi-introduction.tex
@@ -1320,6 +1350,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/bidi/bidi-titlepage.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/bidi/bidi-vertical.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/bidi/bidi.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/canbedone/canbedone-clipping.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/canbedone/canbedone-periods.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/canbedone/canbedone-style.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/canbedone/canbedone.tex
@@ -1448,6 +1479,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/evenmore/evenmore-whattex.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/evenmore/evenmore.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/evenmore/mozilla-svg-001.svg
+%{_texmfdistdir}/doc/context/sources/general/manuals/examples/examples-mathmeanings.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/examples/examples-naturaltables.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/examples/examples-style-math.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/examples/examples-style.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/followingup/followingup-bitmaps.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/followingup/followingup-cleanup.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/followingup/followingup-compilation.tex
@@ -1577,10 +1612,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/libraries/libraries-mkiv.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-accuracy.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-alignments.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-balancing.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-boxes.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-buffers.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-characters.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-conditionals.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-debugging.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-expansion.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-grouping.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-inserts.tex
@@ -1589,6 +1626,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-loops.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-macros.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-marks.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-pages.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-paragraphs.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-registers.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel/lowlevel-scope.tex
@@ -1603,6 +1641,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-color.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-contents.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-contour.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-envelope.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-followtext.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-fonts.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-function.tex
@@ -1610,47 +1649,46 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-groups.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-interface.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-introduction.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-lines.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-mesh-examples.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-mesh.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-outline.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-paths.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-placeholder.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-poisson.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-potrace.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-shade.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-style.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-surface.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-svg.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-synchronizers.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-technology.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-text.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun-titlepage.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/luametafun.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/mozilla-svg-001.svg
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun/mozilla-svg-002.svg
-%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-building.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-assumptions.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-callbacks.tex
-%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-codes.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-constructions.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-contents.tex
-%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-enhancements.tex
-%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-firstpage.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-engines.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-fonts.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-internals.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-introduction.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-languages.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-libraries.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-lua.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-math.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-metapost.tex
-%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-modifications.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-nodes.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-pdf.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-primitives.tex
-%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-registers.tex
-%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-rejected.tex
-%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-statistics.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-principles.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-style.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-tex.tex
-%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-titlepage.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex-tokens.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luametatex.tex
-%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luatex-primitives.lua
-%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex/luatex-primitives.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luatex/luatex-contents.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luatex/luatex-enhancements.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/luatex/luatex-firstpage.tex
@@ -1869,6 +1907,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings-perfection.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings-performance.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings-plain.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings-riscv.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings-roadmap.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings-speed.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings-stability.tex
@@ -1879,6 +1918,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings-toocomplex.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings-treasures.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings-unicode.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings-viewers.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings-whytex.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/musings/musings.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/nodes/nodes-sun-pia-03149.jpg
@@ -1938,9 +1978,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-makessense.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-math.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-mathfonts.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-mathml-example.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-mathml-meanings.pdf
+%{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-mathml.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-metapost.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-nostalgic-pgc.pdf
 %{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-nostalgic.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-pdf-2.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-profiles.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-radicals.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/ontarget/ontarget-registers.tex
@@ -1960,7 +2004,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/pagecolumns/pagecolumns.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/pdfmerge/pdfmerge-testfiles.zip
 %{_texmfdistdir}/doc/context/sources/general/manuals/pdfmerge/pdfmerge.tex
-%{_texmfdistdir}/doc/context/sources/general/manuals/primitives/primitives.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/publications/122176.pdf
 %{_texmfdistdir}/doc/context/sources/general/manuals/publications/124484.mol
 %{_texmfdistdir}/doc/context/sources/general/manuals/publications/124484.pdf
@@ -1997,6 +2040,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/publications/publications-titlepage.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/publications/publications-tracing.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/publications/template-clean.bib
+%{_texmfdistdir}/doc/context/sources/general/manuals/readme/missingfiles.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/readme/mreadme.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/rules/rules-mkiv.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/spacing/spacing-contents.tex
@@ -2131,6 +2175,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/swiglib/swiglib-mkiv-gm-1.pdf
 %{_texmfdistdir}/doc/context/sources/general/manuals/swiglib/swiglib-mkiv-gm-1.png
 %{_texmfdistdir}/doc/context/sources/general/manuals/swiglib/swiglib-mkiv.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/tagging/tagging.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/templates/templates-mkiv.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/texit/texit-conditions.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/texit/texit-contents.tex
@@ -2158,6 +2203,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/sources/general/manuals/workflows/workflows-suspects.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/workflows/workflows-synctex.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/workflows/workflows-titlepage.tex
+%{_texmfdistdir}/doc/context/sources/general/manuals/workflows/workflows-userdata.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/workflows/workflows-xml.tex
 %{_texmfdistdir}/doc/context/sources/general/manuals/xml/xml-mkiv-01.xml
 %{_texmfdistdir}/doc/context/sources/general/manuals/xml/xml-mkiv-02.xml
@@ -2426,6 +2472,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/context/base/mpxl/mp-lmtx.mpxl
 %{_texmfdistdir}/metapost/context/base/mpxl/mp-luas.mpxl
 %{_texmfdistdir}/metapost/context/base/mpxl/mp-math.mpxl
+%{_texmfdistdir}/metapost/context/base/mpxl/mp-misc.mpxl
 %{_texmfdistdir}/metapost/context/base/mpxl/mp-miss.mpxl
 %{_texmfdistdir}/metapost/context/base/mpxl/mp-mlib.mpxl
 %{_texmfdistdir}/metapost/context/base/mpxl/mp-node.mpxl
@@ -2484,6 +2531,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/context/lua/mtx-server.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-spell.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-synctex.lua
+%{_texmfdistdir}/scripts/context/lua/mtx-testsuite.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-texworks.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-tools.lua
 %{_texmfdistdir}/scripts/context/lua/mtx-unicode.lua
@@ -2586,6 +2634,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkiv/char-ini.mkiv
 %{_texmfdistdir}/tex/context/base/mkiv/char-map.lua
 %{_texmfdistdir}/tex/context/base/mkiv/char-prv.lua
+%{_texmfdistdir}/tex/context/base/mkiv/char-ran.lua
 %{_texmfdistdir}/tex/context/base/mkiv/char-scr.lua
 %{_texmfdistdir}/tex/context/base/mkiv/char-tex.lua
 %{_texmfdistdir}/tex/context/base/mkiv/char-utf.lua
@@ -2702,6 +2751,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkiv/export-example.css
 %{_texmfdistdir}/tex/context/base/mkiv/export-example.rng
 %{_texmfdistdir}/tex/context/base/mkiv/export-example.tex
+%{_texmfdistdir}/tex/context/base/mkiv/export-mathmlcore.css
 %{_texmfdistdir}/tex/context/base/mkiv/file-ini.lua
 %{_texmfdistdir}/tex/context/base/mkiv/file-ini.mkvi
 %{_texmfdistdir}/tex/context/base/mkiv/file-job.lua
@@ -2978,6 +3028,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkiv/math-act.lua
 %{_texmfdistdir}/tex/context/base/mkiv/math-ali.mkiv
 %{_texmfdistdir}/tex/context/base/mkiv/math-arr.mkiv
+%{_texmfdistdir}/tex/context/base/mkiv/math-con.mkiv
 %{_texmfdistdir}/tex/context/base/mkiv/math-def.mkiv
 %{_texmfdistdir}/tex/context/base/mkiv/math-del.mkiv
 %{_texmfdistdir}/tex/context/base/mkiv/math-dim.lua
@@ -3058,6 +3109,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkiv/mtx-context-compare.tex
 %{_texmfdistdir}/tex/context/base/mkiv/mtx-context-copy.tex
 %{_texmfdistdir}/tex/context/base/mkiv/mtx-context-domotica.tex
+%{_texmfdistdir}/tex/context/base/mkiv/mtx-context-fixpdf.tex
 %{_texmfdistdir}/tex/context/base/mkiv/mtx-context-fonts.tex
 %{_texmfdistdir}/tex/context/base/mkiv/mtx-context-hashed.tex
 %{_texmfdistdir}/tex/context/base/mkiv/mtx-context-ideas.tex
@@ -3580,9 +3632,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/attr-mkr.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/attr-neg.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/attr-neg.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/back-exp-imp-dejavu.lfg
+%{_texmfdistdir}/tex/context/base/mkxl/back-exp-imp-fnt.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/back-exp-imp-mth.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/back-exp-imp-ref.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/back-exp-imp-tag.lmt
+%{_texmfdistdir}/tex/context/base/mkxl/back-exp-imp-texgyre.lfg
 %{_texmfdistdir}/tex/context/base/mkxl/back-exp.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/back-exp.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/back-imp-lua.lmt
@@ -3634,9 +3689,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/cldf-ver.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/colo-ext.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/colo-grp.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/colo-icc.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/colo-ini.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/colo-nod.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/colo-nod.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/compactors-preset.lua
 %{_texmfdistdir}/tex/context/base/mkxl/cont-cs.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/cont-de.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/cont-en.mkxl
@@ -3651,6 +3708,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/cont-ro.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/cont-run.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/cont-run.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/context-libraries.tma
 %{_texmfdistdir}/tex/context/base/mkxl/context.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/core-con.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/core-con.mkxl
@@ -3711,6 +3769,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/font-hsh.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/font-imp-braille.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/font-imp-checks.lmt
+%{_texmfdistdir}/tex/context/base/mkxl/font-imp-compound.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/font-imp-digits.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/font-imp-dimensions.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/font-imp-effects.lmt
@@ -3738,6 +3797,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/font-otl.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/font-oto.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/font-ots.lmt
+%{_texmfdistdir}/tex/context/base/mkxl/font-oup.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/font-phb-imp-binary.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/font-phb-imp-internal.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/font-phb.lmt
@@ -3765,10 +3825,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/grph-epd.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/grph-epd.lua
 %{_texmfdistdir}/tex/context/base/mkxl/grph-epd.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/grph-exp.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/grph-fig.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/grph-inc.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/grph-inc.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/grph-pat.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/grph-raw.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/grph-raw.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/grph-rul.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/grph-rul.mkxl
@@ -3845,6 +3907,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/lpdf-ren.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/lpdf-rul.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/lpdf-sig.lmt
+%{_texmfdistdir}/tex/context/base/mkxl/lpdf-tag-imp-crap.lmt
+%{_texmfdistdir}/tex/context/base/mkxl/lpdf-tag-imp-mkiv.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/lpdf-tag.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/lpdf-u3d.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/lpdf-wid.lmt
@@ -3876,9 +3940,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/math-ali.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/math-brl.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/math-com.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/math-con.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/math-def.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/math-del.mkxl
-%{_texmfdistdir}/tex/context/base/mkxl/math-dif.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/math-dim.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/math-dis.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/math-dld.mklx
@@ -3894,13 +3958,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/math-ini.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/math-ini.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/math-inl.mkxl
-%{_texmfdistdir}/tex/context/base/mkxl/math-int.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/math-lop.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/math-map.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/math-mis.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/math-mps-imp-demo.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/math-mps.lmt
+%{_texmfdistdir}/tex/context/base/mkxl/math-mps.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/math-noa.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/math-pln.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/math-pre.lmt
+%{_texmfdistdir}/tex/context/base/mkxl/math-rad.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/math-rad.mklx
 %{_texmfdistdir}/tex/context/base/mkxl/math-ren.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/math-scr.mkxl
@@ -3934,6 +4001,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/meta-imp-newmath.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/meta-imp-placeholders.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/meta-imp-punk.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/meta-imp-riven.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/meta-imp-segments.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/meta-imp-symbols.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/meta-imp-threesix.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/meta-imp-txt.lmt
@@ -4042,6 +4111,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/page-brk.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/page-col.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/page-com.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/page-cst.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/page-cst.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/page-fac.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/page-ffl.mkxl
@@ -4052,6 +4122,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/page-ini.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/page-ini.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/page-inj.mklx
+%{_texmfdistdir}/tex/context/base/mkxl/page-ins.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/page-ins.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/page-lay.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/page-lin.lmt
@@ -4061,6 +4132,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/page-mcl.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/page-mix.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/page-mrk.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/page-mvl.lmt
+%{_texmfdistdir}/tex/context/base/mkxl/page-mvl.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/page-not.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/page-one.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/page-otr.lmt
@@ -4092,6 +4165,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/scrn-but.mklx
 %{_texmfdistdir}/tex/context/base/mkxl/scrn-fld.mklx
 %{_texmfdistdir}/tex/context/base/mkxl/scrn-hlp.mklx
+%{_texmfdistdir}/tex/context/base/mkxl/scrn-hlt.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/scrn-ini.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/scrn-ini.mklx
 %{_texmfdistdir}/tex/context/base/mkxl/scrn-pag.lmt
@@ -4116,6 +4190,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/spac-hor.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/spac-imp-tests.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/spac-lin.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/spac-ovl.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/spac-pag.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/spac-par.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/spac-par.mkxl
@@ -4123,6 +4198,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/spac-pas.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/spac-prf.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/spac-prf.mklx
+%{_texmfdistdir}/tex/context/base/mkxl/spac-twi.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/spac-ver.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/spac-ver.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/strc-bkm.mkxl
@@ -4143,7 +4219,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/strc-lnt.mklx
 %{_texmfdistdir}/tex/context/base/mkxl/strc-lst.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/strc-lst.mklx
-%{_texmfdistdir}/tex/context/base/mkxl/strc-mar-old.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/strc-mar.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/strc-mar.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/strc-mat.lmt
@@ -4231,6 +4306,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/trac-tim.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/trac-vis.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/trac-vis.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/trac-vsp.lmt
+%{_texmfdistdir}/tex/context/base/mkxl/trac-vsp.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/type-def.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/type-fbk.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/type-ini.lmt
@@ -4242,6 +4319,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/typo-ada.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/typo-adj.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/typo-adj.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/typo-bal.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/typo-bld.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/typo-bld.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/typo-brk.lmt
@@ -4306,8 +4384,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/typo-shp.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/typo-spa.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/typo-spa.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/typo-stc.lmt
+%{_texmfdistdir}/tex/context/base/mkxl/typo-stc.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/typo-sus.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/typo-sus.mkxl
+%{_texmfdistdir}/tex/context/base/mkxl/typo-swp.lmt
+%{_texmfdistdir}/tex/context/base/mkxl/typo-swp.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/typo-syn.lmt
 %{_texmfdistdir}/tex/context/base/mkxl/typo-syn.mkxl
 %{_texmfdistdir}/tex/context/base/mkxl/typo-tal.lmt
@@ -4326,13 +4408,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/base/mkxl/util-sbx.lmt
 %{_texmfdistdir}/tex/context/colors/icc/context/colorprofiles.lua
 %{_texmfdistdir}/tex/context/colors/icc/context/colorprofiles.xml
-%{_texmfdistdir}/tex/context/filenames.pdf
 %{_texmfdistdir}/tex/context/filenames.tex
 %{_texmfdistdir}/tex/context/fonts/mkiv/antykwa-math.lfg
 %{_texmfdistdir}/tex/context/fonts/mkiv/antykwapoltawskiego.lfg
 %{_texmfdistdir}/tex/context/fonts/mkiv/bonum-math.lfg
-%{_texmfdistdir}/tex/context/fonts/mkiv/cambria-math.lfg
-%{_texmfdistdir}/tex/context/fonts/mkiv/cambria.lfg
 %{_texmfdistdir}/tex/context/fonts/mkiv/cc-icons.lfg
 %{_texmfdistdir}/tex/context/fonts/mkiv/ccicons.lfg
 %{_texmfdistdir}/tex/context/fonts/mkiv/color-latin.lfg
@@ -4371,8 +4450,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/fonts/mkiv/mdpus-math.lfg
 %{_texmfdistdir}/tex/context/fonts/mkiv/mdput-math.lfg
 %{_texmfdistdir}/tex/context/fonts/mkiv/mdugm-math.lfg
-%{_texmfdistdir}/tex/context/fonts/mkiv/minion-math.lfg
-%{_texmfdistdir}/tex/context/fonts/mkiv/minion.lfg
 %{_texmfdistdir}/tex/context/fonts/mkiv/modern-math.lfg
 %{_texmfdistdir}/tex/context/fonts/mkiv/modern-text.lfg
 %{_texmfdistdir}/tex/context/fonts/mkiv/newcomputermodern-math.lfg
@@ -4393,11 +4470,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-almfixed.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-antykwa.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-antykwapoltawskiego.mkiv
+%{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-arsenal.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-averia.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-buy.mkiv
-%{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-cambria.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-charter.mkiv
-%{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-cleartype.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-computer-modern-unicode.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-concrete.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-cow.mkiv
@@ -4430,7 +4506,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-mathdesign.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-mathdigits.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-mathtimes.mkiv
-%{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-minion.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-modernlatin.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-mscore.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-newcomputermodern.mkiv
@@ -4444,6 +4519,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-stix.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-texgyre.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-unfonts.mkiv
+%{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-uprightonly.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-xcharter.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-xits.mkiv
 %{_texmfdistdir}/tex/context/fonts/mkiv/type-imp-xitsbidi.mkiv
@@ -4452,6 +4528,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/fonts/mkiv/xcharter-text.lfg
 %{_texmfdistdir}/tex/context/fonts/mkiv/xits-math.lfg
 %{_texmfdistdir}/tex/context/fonts/mkxl/bhai.lfg
+%{_texmfdistdir}/tex/context/fonts/mkxl/notosans-math.lfg
 %{_texmfdistdir}/tex/context/fonts/mkxl/shobhika.lfg
 %{_texmfdistdir}/tex/context/fonts/mkxl/type-imp-bengali.mkxl
 %{_texmfdistdir}/tex/context/fonts/mkxl/type-imp-braille.mkxl
@@ -4461,11 +4538,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/fonts/mkxl/type-imp-indic.mkxl
 %{_texmfdistdir}/tex/context/fonts/mkxl/type-imp-kannada.mkxl
 %{_texmfdistdir}/tex/context/fonts/mkxl/type-imp-malayalam.mkxl
+%{_texmfdistdir}/tex/context/fonts/mkxl/type-imp-noto.mkxl
 %{_texmfdistdir}/tex/context/fonts/mkxl/type-imp-tamil.mkxl
 %{_texmfdistdir}/tex/context/fonts/mkxl/type-imp-telugu.mkxl
 %{_texmfdistdir}/tex/context/interface/mkiv/context-en.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-accent.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-adaptive.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-align.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-alternate.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-anchor.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-attachment.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-attribute.xml
@@ -4476,6 +4556,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/interface/mkiv/i-bleed.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-block.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-bookmark.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-boxanchor.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-boxes.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-buffer.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-button.xml
@@ -4542,6 +4623,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/interface/mkiv/i-grid.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-help.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-hemistich.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-hiding.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-highlight.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-hspace.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-hyphenation.xml
@@ -4574,6 +4656,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/interface/mkiv/i-linetable.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-linewidth.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-list.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-localboxes.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-logo.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-lohi.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-lua.xml
@@ -4584,11 +4667,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/interface/mkiv/i-marker.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-marking.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-math.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-mathaccent.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-mathalignment.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-mathcases.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-mathdelimited.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-mathdelimiter.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-mathfence.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-mathframed.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-mathfunction.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-mathmatrix.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-mathname.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-mathnesting.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-mathoperator.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-mathornament.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-mathradical.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-mathstackers.xml
@@ -4602,10 +4692,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/interface/mkiv/i-object.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-offset.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-opposite.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-optimize.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-orientation.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-ornament.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-output.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-overlay.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-overloads.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-pageblock.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-pagebreak.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-pagecolumns.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-pagecomment.xml
@@ -4625,6 +4718,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/interface/mkiv/i-paragraphs.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-parallel.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-parbuilder.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-parshape.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-parwrapper.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-pdf.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-penalty.xml
@@ -4647,6 +4741,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/interface/mkiv/i-register.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-renderingwindow.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-replacement.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-rivers.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-rotatation.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-rotation.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-ruby.xml
@@ -4666,12 +4761,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/interface/mkiv/i-soundtrack.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-spellchecking.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-spreadsheet.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-stacking.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-startstop.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-steps.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-stream.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-string.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-strut.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-symbol.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-synchronize.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-synctex.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-synonym.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-system.xml
@@ -4681,6 +4778,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/interface/mkiv/i-tagging.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-tex.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-textbackground.xml
+%{_texmfdistdir}/tex/context/interface/mkiv/i-textdisplay.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-textflow.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-textrule.xml
 %{_texmfdistdir}/tex/context/interface/mkiv/i-texts.xml
@@ -4965,15 +5063,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/modules/mkiv/x-udhr.mkiv
 %{_texmfdistdir}/tex/context/modules/mkiv/x-xfdf.mkiv
 %{_texmfdistdir}/tex/context/modules/mkxl/m-barcodes.mkxl
+%{_texmfdistdir}/tex/context/modules/mkxl/m-bibles.lmt
+%{_texmfdistdir}/tex/context/modules/mkxl/m-bibles.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/m-circuitikz.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/m-crappyspec.mkxl
+%{_texmfdistdir}/tex/context/modules/mkxl/m-dirtree.mkxl
+%{_texmfdistdir}/tex/context/modules/mkxl/m-electrons.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/m-gimmicks.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/m-gnuplot.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/m-json.mkxl
+%{_texmfdistdir}/tex/context/modules/mkxl/m-mathfun.mkxl
+%{_texmfdistdir}/tex/context/modules/mkxl/m-oldcolumnsets.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/m-oldmath.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/m-openstreetmap.lmt
 %{_texmfdistdir}/tex/context/modules/mkxl/m-openstreetmap.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/m-polynomial.mkxl
+%{_texmfdistdir}/tex/context/modules/mkxl/m-simulate.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/m-svg.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/m-system-readers.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/m-tikz-pgfplots.tex
@@ -4992,9 +5097,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/modules/mkxl/s-layout-show.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/s-math-atoms.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/s-math-definitions.mkxl
+%{_texmfdistdir}/tex/context/modules/mkxl/s-math-goodriddance.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/s-math-show.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/s-math-tests.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/s-math-tweaks.mkxl
+%{_texmfdistdir}/tex/context/modules/mkxl/s-math-verbatim.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/s-publications-show.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/s-symbols-show.mkxl
 %{_texmfdistdir}/tex/context/modules/mkxl/s-system-macros.mkxl
@@ -5150,6 +5257,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/sample/common/greenfield.tex
 %{_texmfdistdir}/tex/context/sample/common/hacker.jpg
 %{_texmfdistdir}/tex/context/sample/common/hawking.tex
+%{_texmfdistdir}/tex/context/sample/common/jaynes.tex
 %{_texmfdistdir}/tex/context/sample/common/jojomayer.tex
 %{_texmfdistdir}/tex/context/sample/common/klein.tex
 %{_texmfdistdir}/tex/context/sample/common/knuth-gpt.tex
@@ -5318,7 +5426,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-calendar-examples-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source11:       context-calendar-examples.tar.xz
 Source12:       context-calendar-examples.doc.tar.xz
 
@@ -5372,6 +5480,81 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/third/calendar-examples/Photocalendar.mkiv
 %{_texmfdistdir}/tex/context/third/calendar-examples/Sundata-calendar.mkiv
 
+%package -n texlive-context-chat
+Version:        %{texlive_version}.%{texlive_noarch}.svn72010
+Release:        0
+License:        LPPL-1.0
+Summary:        Package context-chat
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires:       texlive-context >= %{texlive_version}
+#!BuildIgnore: texlive-context
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-context-chat-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source13:       context-chat.tar.xz
+Source14:       context-chat.doc.tar.xz
+
+%description -n texlive-context-chat
+The context-chat package
+
+%package -n texlive-context-chat-doc
+Version:        %{texlive_version}.%{texlive_noarch}.svn72010
+Release:        0
+Summary:        Documentation for texlive-context-chat
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-context-chat and texlive-alldocumentation)
+
+%description -n texlive-context-chat-doc
+This package includes the documentation for texlive-context-chat
+
+%post -n texlive-context-chat
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-context-chat
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-context-chat
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-context-chat-doc
+%{_texmfdistdir}/doc/context/third/chat/LICENSE
+%{_texmfdistdir}/doc/context/third/chat/README.md
+%{_texmfdistdir}/doc/context/third/chat/VERSION
+
+%files -n texlive-context-chat
+%{_texmfdistdir}/tex/context/third/chat/t-chat.mkiv
+
 %package -n texlive-context-collating-marks
 Version:        %{texlive_version}.%{texlive_noarch}.svn68696
 Release:        0
@@ -5403,9 +5586,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-collating-marks-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source13:       context-collating-marks.tar.xz
-Source14:       context-collating-marks.doc.tar.xz
+# from 20250308
+Source15:       context-collating-marks.tar.xz
+Source16:       context-collating-marks.doc.tar.xz
 
 %description -n texlive-context-collating-marks
 This module provides a possibility to place collating marks on
@@ -5453,7 +5636,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/third/collating-marks/t-collatingmarks.mkiv
 
 %package -n texlive-context-companion-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn70149
+Version:        %{texlive_version}.%{texlive_noarch}.svn72732
 Release:        0
 License:        LPPL-1.0
 Summary:        Companion fonts with fixes for ConTeXt
@@ -5480,17 +5663,31 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-context-companion-fonts-fonts >= %{texlive_version}
+Suggests:       texlive-context-companion-fonts-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source15:       context-companion-fonts.tar.xz
+# from 20250308
+Source17:       context-companion-fonts.tar.xz
+Source18:       context-companion-fonts.doc.tar.xz
 
 %description -n texlive-context-companion-fonts
 From
 https://github.com/contextgarden/context-distribution-fonts/tre
 e/main/fonts/data/cms/companion Should be on CTAN eventually.
 
+%package -n texlive-context-companion-fonts-doc
+Version:        %{texlive_version}.%{texlive_noarch}.svn72732
+Release:        0
+Summary:        Documentation for texlive-context-companion-fonts
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-context-companion-fonts and texlive-alldocumentation)
+
+%description -n texlive-context-companion-fonts-doc
+This package includes the documentation for texlive-context-companion-fonts
+
 %package -n texlive-context-companion-fonts-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn70149
+Version:        %{texlive_version}.%{texlive_noarch}.svn72732
 Release:        0
 Summary:        Severed fonts for texlive-context-companion-fonts
 License:        LPPL-1.0
@@ -5523,13 +5720,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %reconfigure_fonts_scriptlets -n texlive-context-companion-fonts-fonts
 
+%files -n texlive-context-companion-fonts-doc
+%{_texmfdistdir}/doc/fonts/context-companion-fonts/readme.txt
+
 %files -n texlive-context-companion-fonts
-%verify(link) %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/LatinModernMath-Companion.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/RalphSmithsFormalScript-Companion.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/TeXGyreBonumMath-Companion.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/TeXGyrePagellaMath-Companion.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/TeXGyreTermesMath-Companion.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/XITSMath-Companion.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/LatinModernMathCompanion-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/RalphSmithsFormalScriptCompanion-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/TeXGyreBonumMathCompanion-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/TeXGyrePagellaMathCompanion-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/TeXGyreTermesMathCompanion-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/XITSMathCompanion-Regular.otf
 
 %files -n texlive-context-companion-fonts-fonts
 %dir %{_datadir}/fonts/texlive-context-companion-fonts
@@ -5537,12 +5737,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-context-companion-fonts/encodings.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-context-companion-fonts/fonts.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-context-companion-fonts/fonts.scale
-%{_datadir}/fonts/texlive-context-companion-fonts/LatinModernMath-Companion.otf
-%{_datadir}/fonts/texlive-context-companion-fonts/RalphSmithsFormalScript-Companion.otf
-%{_datadir}/fonts/texlive-context-companion-fonts/TeXGyreBonumMath-Companion.otf
-%{_datadir}/fonts/texlive-context-companion-fonts/TeXGyrePagellaMath-Companion.otf
-%{_datadir}/fonts/texlive-context-companion-fonts/TeXGyreTermesMath-Companion.otf
-%{_datadir}/fonts/texlive-context-companion-fonts/XITSMath-Companion.otf
+%{_datadir}/fonts/texlive-context-companion-fonts/LatinModernMathCompanion-Regular.otf
+%{_datadir}/fonts/texlive-context-companion-fonts/RalphSmithsFormalScriptCompanion-Regular.otf
+%{_datadir}/fonts/texlive-context-companion-fonts/TeXGyreBonumMathCompanion-Regular.otf
+%{_datadir}/fonts/texlive-context-companion-fonts/TeXGyrePagellaMathCompanion-Regular.otf
+%{_datadir}/fonts/texlive-context-companion-fonts/TeXGyreTermesMathCompanion-Regular.otf
+%{_datadir}/fonts/texlive-context-companion-fonts/XITSMathCompanion-Regular.otf
 
 %package -n texlive-context-cyrillicnumbers
 Version:        %{texlive_version}.%{texlive_noarch}.svn47085
@@ -5575,9 +5775,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-cyrillicnumbers-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source16:       context-cyrillicnumbers.tar.xz
-Source17:       context-cyrillicnumbers.doc.tar.xz
+# from 20250308
+Source19:       context-cyrillicnumbers.tar.xz
+Source20:       context-cyrillicnumbers.doc.tar.xz
 
 %description -n texlive-context-cyrillicnumbers
 The package extends ConTeXt's system of number conversion, by
@@ -5656,9 +5856,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-filter-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source18:       context-filter.tar.xz
-Source19:       context-filter.doc.tar.xz
+# from 20250308
+Source21:       context-filter.tar.xz
+Source22:       context-filter.doc.tar.xz
 
 %description -n texlive-context-filter
 The filter module provides a simple interface to run external
@@ -5740,9 +5940,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-gnuplot-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source20:       context-gnuplot.tar.xz
-Source21:       context-gnuplot.doc.tar.xz
+# from 20250308
+Source23:       context-gnuplot.tar.xz
+Source24:       context-gnuplot.doc.tar.xz
 
 %description -n texlive-context-gnuplot
 Enables simple creation and inclusion of graphs with Gnuplot.
@@ -5824,9 +6024,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-handlecsv-doc >= %{texlive_version}
 Provides:       tex(t-handlecsv.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source22:       context-handlecsv.tar.xz
-Source23:       context-handlecsv.doc.tar.xz
+# from 20250308
+Source25:       context-handlecsv.tar.xz
+Source26:       context-handlecsv.doc.tar.xz
 
 %description -n texlive-context-handlecsv
 The package handles csv data merging for automatic document
@@ -5873,7 +6073,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/third/handlecsv/t-handlecsv.tex
 
 %package -n texlive-context-legacy
-Version:        %{texlive_version}.%{texlive_noarch}.svn70191
+Version:        %{texlive_version}.%{texlive_noarch}.svn74403
 Release:        0
 License:        LPPL-1.0
 Summary:        The ConTeXt macro package, MkII
@@ -5946,9 +6146,9 @@ Provides:       tex(type-fsf.dat)
 Provides:       tex(type-ghz.dat)
 Provides:       tex(type-tmf.dat)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source24:       context-legacy.tar.xz
-Source25:       context-legacy.doc.tar.xz
+# from 20250308
+Source27:       context-legacy.tar.xz
+Source28:       context-legacy.doc.tar.xz
 
 %description -n texlive-context-legacy
 In TeX Live, ConTeXt MkII is split from current ConTeXt (MkIV
@@ -5956,7 +6156,7 @@ and newer.) See https://contextgarden.net and
 https://pragma-ade.com for information about ConTeXt.
 
 %package -n texlive-context-legacy-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70191
+Version:        %{texlive_version}.%{texlive_noarch}.svn74403
 Release:        0
 Summary:        Documentation for texlive-context-legacy
 License:        LPPL-1.0
@@ -6554,22 +6754,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/fonts/mkii/type-pre.mkii
 %{_texmfdistdir}/tex/context/fonts/mkii/type-win.mkii
 %{_texmfdistdir}/tex/context/fonts/mkii/type-xtx.mkii
-%{_texmfdistdir}/tex/context/interface/mkii/cont-cs.xml
-%{_texmfdistdir}/tex/context/interface/mkii/cont-de.xml
-%{_texmfdistdir}/tex/context/interface/mkii/cont-fr.xml
-%{_texmfdistdir}/tex/context/interface/mkii/cont-it.xml
-%{_texmfdistdir}/tex/context/interface/mkii/cont-nl.xml
-%{_texmfdistdir}/tex/context/interface/mkii/cont-pe.xml
-%{_texmfdistdir}/tex/context/interface/mkii/cont-ro.xml
-%{_texmfdistdir}/tex/context/interface/mkii/keys-cs.xml
-%{_texmfdistdir}/tex/context/interface/mkii/keys-cz.xml
-%{_texmfdistdir}/tex/context/interface/mkii/keys-de.xml
-%{_texmfdistdir}/tex/context/interface/mkii/keys-en.xml
-%{_texmfdistdir}/tex/context/interface/mkii/keys-fr.xml
-%{_texmfdistdir}/tex/context/interface/mkii/keys-it.xml
-%{_texmfdistdir}/tex/context/interface/mkii/keys-nl.xml
-%{_texmfdistdir}/tex/context/interface/mkii/keys-pe.xml
-%{_texmfdistdir}/tex/context/interface/mkii/keys-ro.xml
 %{_texmfdistdir}/tex/context/modules/mkii/m-arabtex.mkii
 %{_texmfdistdir}/tex/context/modules/mkii/m-chart.mkii
 %{_texmfdistdir}/tex/context/modules/mkii/m-chemic.mkii
@@ -6830,9 +7014,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-letter-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source26:       context-letter.tar.xz
-Source27:       context-letter.doc.tar.xz
+# from 20250308
+Source29:       context-letter.tar.xz
+Source30:       context-letter.doc.tar.xz
 
 %description -n texlive-context-letter
 A means of writing 'vanilla' letters and memos is provided,
@@ -6947,9 +7131,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-mathsets-doc >= %{texlive_version}
 Provides:       tex(t-mathsets.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source28:       context-mathsets.tar.xz
-Source29:       context-mathsets.doc.tar.xz
+# from 20250308
+Source31:       context-mathsets.tar.xz
+Source32:       context-mathsets.doc.tar.xz
 
 %description -n texlive-context-mathsets
 Typeset good-looking set notation (e.g., {x|x \in Y}), as well
@@ -7023,8 +7207,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source30:       context-notes-zh-cn.doc.tar.xz
+# from 20250308
+Source33:       context-notes-zh-cn.doc.tar.xz
 
 %description -n texlive-context-notes-zh-cn
 An introductory tutorial on ConTeXt, in Chinese. The document
@@ -7170,7 +7354,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/zhfonts.tex
 
 %package -n texlive-context-pocketdiary
-Version:        %{texlive_version}.%{texlive_noarch}.svn66953
+Version:        %{texlive_version}.%{texlive_noarch}.svn73164
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        A personal organiser
@@ -7200,9 +7384,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-pocketdiary-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source31:       context-pocketdiary.tar.xz
-Source32:       context-pocketdiary.doc.tar.xz
+# from 20250308
+Source34:       context-pocketdiary.tar.xz
+Source35:       context-pocketdiary.doc.tar.xz
 
 %description -n texlive-context-pocketdiary
 PocketDiary is a calendar module, enabling to prepare various
@@ -7213,7 +7397,7 @@ different templates for notes etc. The module provides sun and
 moon data calculations
 
 %package -n texlive-context-pocketdiary-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn66953
+Version:        %{texlive_version}.%{texlive_noarch}.svn73164
 Release:        0
 Summary:        Documentation for texlive-context-pocketdiary
 License:        SUSE-Public-Domain
@@ -7313,9 +7497,9 @@ Provides:       tex(s-simpleslides-Swoosh.tex)
 Provides:       tex(s-simpleslides-ThickStripes.tex)
 Provides:       tex(s-simpleslides-default.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source33:       context-simpleslides.tar.xz
-Source34:       context-simpleslides.doc.tar.xz
+# from 20250308
+Source36:       context-simpleslides.tar.xz
+Source37:       context-simpleslides.doc.tar.xz
 
 %description -n texlive-context-simpleslides
 This ConTeXt module provides an easy-to-use interface for
@@ -7452,9 +7636,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-squares-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source35:       context-squares.tar.xz
-Source36:       context-squares.doc.tar.xz
+# from 20250308
+Source38:       context-squares.tar.xz
+Source39:       context-squares.doc.tar.xz
 
 %description -n texlive-context-squares
 The package provides typesetting of magic and latin squares.
@@ -7529,9 +7713,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-sudoku-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source37:       context-sudoku.tar.xz
-Source38:       context-sudoku.doc.tar.xz
+# from 20250308
+Source40:       context-sudoku.tar.xz
+Source41:       context-sudoku.doc.tar.xz
 
 %description -n texlive-context-sudoku
 A port of Peter Norvig's sudoku solver to Lua/ConTeXt. It
@@ -7580,7 +7764,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/context/third/sudoku/t-sudoku.mkvi
 
 %package -n texlive-context-texlive
-Version:        %{texlive_version}.%{texlive_noarch}.svn70437
+Version:        %{texlive_version}.%{texlive_noarch}.svn74241
 Release:        0
 License:        LPPL-1.0
 Summary:        TL-specific helpers for ConTeXt (caches, papersize)
@@ -7612,9 +7796,9 @@ Suggests:       texlive-context-texlive-doc >= %{texlive_version}
 Suggests:       man(context.1)
 Suggests:       man(mtxrun.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source39:       context-texlive.tar.xz
-Source40:       context-texlive.doc.tar.xz
+# from 20250308
+Source42:       context-texlive.tar.xz
+Source43:       context-texlive.doc.tar.xz
 
 %description -n texlive-context-texlive
 TL distributes cont-sys.mkxl and cont-sys.mkiv files to update
@@ -7625,7 +7809,7 @@ creates/updates (in tlpkg/TLPaper.pm). TL also includes stubs
 to run the luatools, contextjit, and mtxrunjit scripts.
 
 %package -n texlive-context-texlive-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70437
+Version:        %{texlive_version}.%{texlive_noarch}.svn74241
 Release:        0
 Summary:        Documentation for texlive-context-texlive
 License:        LPPL-1.0
@@ -7711,9 +7895,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-transliterator-doc >= %{texlive_version}
 Provides:       tex(t-transliterator.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source41:       context-transliterator.tar.xz
-Source42:       context-transliterator.doc.tar.xz
+# from 20250308
+Source44:       context-transliterator.tar.xz
+Source45:       context-transliterator.doc.tar.xz
 
 %description -n texlive-context-transliterator
 The package will read text in one alphabet, and provide a
@@ -7801,9 +7985,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-typescripts-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source43:       context-typescripts.tar.xz
-Source44:       context-typescripts.doc.tar.xz
+# from 20250308
+Source46:       context-typescripts.tar.xz
+Source47:       context-typescripts.doc.tar.xz
 
 %description -n texlive-context-typescripts
 The package provides files offering interfaces to 33 publicly
@@ -7912,9 +8096,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-vim-doc >= %{texlive_version}
 Provides:       tex(t-vim.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source45:       context-vim.tar.xz
-Source46:       context-vim.doc.tar.xz
+# from 20250308
+Source48:       context-vim.tar.xz
+Source49:       context-vim.doc.tar.xz
 
 %description -n texlive-context-vim
 ConTeXt has excellent pretty printing capabilities for many
@@ -8001,9 +8185,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-context-visualcounter-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source47:       context-visualcounter.tar.xz
-Source48:       context-visualcounter.doc.tar.xz
+# from 20250308
+Source50:       context-visualcounter.tar.xz
+Source51:       context-visualcounter.doc.tar.xz
 
 %description -n texlive-context-visualcounter
 A typical document usually contains many counters: page
@@ -8081,9 +8265,9 @@ Requires:       tex(picture.sty)
 Requires:       tex(zref-abspage.sty)
 Requires:       tex(zref-lastpage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source49:       continue.tar.xz
-Source50:       continue.doc.tar.xz
+# from 20250308
+Source52:       continue.tar.xz
+Source53:       continue.doc.tar.xz
 
 %description -n texlive-continue
 This package provides for a variety of continuation indicators
@@ -8162,9 +8346,9 @@ Provides:       tex(contour.sty)
 Requires:       tex(color.sty)
 Requires:       tex(trig.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source51:       contour.tar.xz
-Source52:       contour.doc.tar.xz
+# from 20250308
+Source54:       contour.tar.xz
+Source55:       contour.doc.tar.xz
 
 %description -n texlive-contour
 This package generates a coloured contour around a given text
@@ -8254,9 +8438,9 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(tocloft.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source53:       contracard.tar.xz
-Source54:       contracard.doc.tar.xz
+# from 20250308
+Source56:       contracard.tar.xz
+Source57:       contracard.doc.tar.xz
 
 %description -n texlive-contracard
 A package and a class used to typeset traditional country
@@ -8333,9 +8517,9 @@ Provides:       tex(contract.sty)
 Requires:       tex(scrkbase.sty)
 Requires:       tex(tocbasic.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source55:       contract.tar.xz
-Source56:       contract.doc.tar.xz
+# from 20250308
+Source58:       contract.tar.xz
+Source59:       contract.doc.tar.xz
 
 %description -n texlive-contract
 This package enables the typesetting of formalized legal
@@ -8423,9 +8607,9 @@ Suggests:       texlive-conv-xkv-doc >= %{texlive_version}
 Provides:       tex(conv-xkv.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source57:       conv-xkv.tar.xz
-Source58:       conv-xkv.doc.tar.xz
+# from 20250308
+Source60:       conv-xkv.tar.xz
+Source61:       conv-xkv.doc.tar.xz
 
 %description -n texlive-conv-xkv
 This small package supports key-value syntax other than the
@@ -8502,9 +8686,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-convbkmk-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source59:       convbkmk.tar.xz
-Source60:       convbkmk.doc.tar.xz
+# from 20250308
+Source62:       convbkmk.tar.xz
+Source63:       convbkmk.doc.tar.xz
 
 %description -n texlive-convbkmk
 The package provides a small Ruby script that corrects
@@ -8546,6 +8730,87 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-convbkmk
 %{_texmfdistdir}/scripts/convbkmk/convbkmk.rb
 
+%package -n texlive-convert-jpfonts
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn73551
+Release:        0
+License:        LPPL-1.0
+Summary:        Convert half-width Japanese to full-width beautifully
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-convert-jpfonts-doc >= %{texlive_version}
+Provides:       tex(convert-jpfonts.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(xparse.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source64:       convert-jpfonts.tar.xz
+Source65:       convert-jpfonts.doc.tar.xz
+
+%description -n texlive-convert-jpfonts
+This style file is designed for converting Japanese half-width
+characters to full-width characters beautifully. This is useful
+when alphabet characters don't render properly in a Japanese
+font.
+
+%package -n texlive-convert-jpfonts-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn73551
+Release:        0
+Summary:        Documentation for texlive-convert-jpfonts
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-convert-jpfonts and texlive-alldocumentation)
+Provides:       locale(texlive-convert-jpfonts-doc:ja)
+
+%description -n texlive-convert-jpfonts-doc
+This package includes the documentation for texlive-convert-jpfonts
+
+%post -n texlive-convert-jpfonts
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-convert-jpfonts
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-convert-jpfonts
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-convert-jpfonts-doc
+%{_texmfdistdir}/doc/latex/convert-jpfonts/README.txt
+%{_texmfdistdir}/doc/latex/convert-jpfonts/convert-jpfonts.pdf
+%{_texmfdistdir}/doc/latex/convert-jpfonts/convert-jpfonts.tex
+
+%files -n texlive-convert-jpfonts
+%{_texmfdistdir}/tex/latex/convert-jpfonts/convert-jpfonts.sty
+
 %package -n texlive-cooking
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.9bsvn15878
 Release:        0
@@ -8576,9 +8841,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-cooking-doc >= %{texlive_version}
 Provides:       tex(cooking.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source61:       cooking.tar.xz
-Source62:       cooking.doc.tar.xz
+# from 20250308
+Source66:       cooking.tar.xz
+Source67:       cooking.doc.tar.xz
 
 %description -n texlive-cooking
 The package typesets recipes according to the style used in a
@@ -8658,9 +8923,9 @@ Requires:       tex(translations.sty)
 Requires:       tex(xfrac.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source63:       cooking-units.tar.xz
-Source64:       cooking-units.doc.tar.xz
+# from 20250308
+Source68:       cooking-units.tar.xz
+Source69:       cooking-units.doc.tar.xz
 
 %description -n texlive-cooking-units
 The package provides commands to typeset amounts and units
@@ -8707,7 +8972,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/cooking-units/cooking-units.sty
 
 %package -n texlive-cookingsymbols
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn35929
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn74247
 Release:        0
 License:        LPPL-1.0
 Summary:        Symbols for recipes
@@ -8737,9 +9002,9 @@ Suggests:       texlive-cookingsymbols-doc >= %{texlive_version}
 Provides:       tex(cookingsymbols.sty)
 Provides:       tex(cookingsymbols.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source65:       cookingsymbols.tar.xz
-Source66:       cookingsymbols.doc.tar.xz
+# from 20250308
+Source70:       cookingsymbols.tar.xz
+Source71:       cookingsymbols.doc.tar.xz
 
 %description -n texlive-cookingsymbols
 The package provides 11 symbols for typesetting recipes: oven,
@@ -8747,7 +9012,7 @@ gasstove, topheat, fanoven, gloves and dish symbol (among
 others). The symbols are defined using Metafont.
 
 %package -n texlive-cookingsymbols-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn35929
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn74247
 Release:        0
 Summary:        Documentation for texlive-cookingsymbols
 License:        LPPL-1.0
@@ -8821,9 +9086,9 @@ Requires:       tex(coolstr.sty)
 Requires:       tex(forloop.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source67:       cool.tar.xz
-Source68:       cool.doc.tar.xz
+# from 20250308
+Source72:       cool.tar.xz
+Source73:       cool.doc.tar.xz
 
 %description -n texlive-cool
 The package (COntent Oriented LaTeX) gives LaTeX the power to
@@ -8906,9 +9171,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(footmisc.sty)
 Requires:       tex(hanging.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source69:       coolfn.tar.xz
-Source70:       coolfn.doc.tar.xz
+# from 20250308
+Source74:       coolfn.tar.xz
+Source75:       coolfn.doc.tar.xz
 
 %description -n texlive-coolfn
 This package provides formatting for footnotes in long legal
@@ -8986,9 +9251,9 @@ Requires:       tex(coolstr.sty)
 Requires:       tex(forloop.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source71:       coollist.tar.xz
-Source72:       coollist.doc.tar.xz
+# from 20250308
+Source76:       coollist.tar.xz
+Source77:       coollist.doc.tar.xz
 
 %description -n texlive-coollist
 Lists are defined as a sequence of tokens separated by a comma.
@@ -9067,9 +9332,9 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source73:       coolstr.tar.xz
-Source74:       coolstr.doc.tar.xz
+# from 20250308
+Source78:       coolstr.tar.xz
+Source79:       coolstr.doc.tar.xz
 
 %description -n texlive-coolstr
 Coolstr is a subpackage of the cool bundle that deals with the
@@ -9154,9 +9419,9 @@ Requires:       tex(ntheorem.sty)
 Requires:       tex(scrbase.sty)
 Requires:       tex(xargs.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source75:       coolthms.tar.xz
-Source76:       coolthms.doc.tar.xz
+# from 20250308
+Source80:       coolthms.tar.xz
+Source81:       coolthms.doc.tar.xz
 
 %description -n texlive-coolthms
 The package provides the means to directly reference items of
@@ -9232,9 +9497,9 @@ Provides:       tex(cooltooltips.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(luatex85.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source77:       cooltooltips.tar.xz
-Source78:       cooltooltips.doc.tar.xz
+# from 20250308
+Source82:       cooltooltips.tar.xz
+Source83:       cooltooltips.doc.tar.xz
 
 %description -n texlive-cooltooltips
 The cooltooltips package enables a document to contain
@@ -9322,9 +9587,9 @@ Requires:       tex(verbatim.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source79:       coop-writing.tar.xz
-Source80:       coop-writing.doc.tar.xz
+# from 20250308
+Source84:       coop-writing.tar.xz
+Source85:       coop-writing.doc.tar.xz
 
 %description -n texlive-coop-writing
 This package for Cooperative Writing supports editorial
@@ -9714,9 +9979,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source81:       cooperhewitt.tar.xz
-Source82:       cooperhewitt.doc.tar.xz
+# from 20250308
+Source86:       cooperhewitt.tar.xz
+Source87:       cooperhewitt.doc.tar.xz
 
 %description -n texlive-cooperhewitt
 Cooper Hewitt is a contemporary sans serif, with characters
@@ -10159,9 +10424,9 @@ Suggests:       texlive-coordsys-doc >= %{texlive_version}
 Provides:       tex(coordsys.sty)
 Provides:       tex(logsys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source83:       coordsys.tar.xz
-Source84:       coordsys.doc.tar.xz
+# from 20250308
+Source88:       coordsys.tar.xz
+Source89:       coordsys.doc.tar.xz
 
 %description -n texlive-coordsys
 The package provides commands for typesetting number lines
@@ -10244,9 +10509,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source85:       copyedit.tar.xz
-Source86:       copyedit.doc.tar.xz
+# from 20250308
+Source90:       copyedit.tar.xz
+Source91:       copyedit.doc.tar.xz
 
 %description -n texlive-copyedit
 This package implements copyediting support for LaTeX
@@ -10333,9 +10598,9 @@ Provides:       tex(copyrightbox.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source87:       copyrightbox.tar.xz
-Source88:       copyrightbox.doc.tar.xz
+# from 20250308
+Source92:       copyrightbox.tar.xz
+Source93:       copyrightbox.doc.tar.xz
 
 %description -n texlive-copyrightbox
 The package command \copyrightbox[<placement>]{<image
@@ -10380,8 +10645,130 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-copyrightbox
 %{_texmfdistdir}/tex/latex/copyrightbox/copyrightbox.sty
 
+%package -n texlive-cora-macs
+Version:        %{texlive_version}.%{texlive_noarch}.svn73101
+Release:        0
+License:        LPPL-1.0
+Summary:        Macros for continuous sets and neural networks in the context of cyber-physical systems
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-cora-macs-doc >= %{texlive_version}
+Provides:       tex(cora-macs.sty)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(graphics.sty)
+Requires:       tex(keyval.sty)
+Requires:       tex(mathtools.sty)
+Requires:       tex(pgfplots.sty)
+Requires:       tex(tikzscale.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xifthen.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source94:       cora-macs.tar.xz
+Source95:       cora-macs.doc.tar.xz
+
+%description -n texlive-cora-macs
+This LaTeX package has been designed to assist in the
+representation and manipulation of continuous sets, operations,
+neural networks, and color schemes tailored for use in the
+context of cyber-physical systems. It provides a comprehensive
+set of macros that streamline the process of documenting
+complex mathematical objects and operations.
+
+%package -n texlive-cora-macs-doc
+Version:        %{texlive_version}.%{texlive_noarch}.svn73101
+Release:        0
+Summary:        Documentation for texlive-cora-macs
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-cora-macs and texlive-alldocumentation)
+
+%description -n texlive-cora-macs-doc
+This package includes the documentation for texlive-cora-macs
+
+%post -n texlive-cora-macs
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-cora-macs
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-cora-macs
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-cora-macs-doc
+%{_texmfdistdir}/doc/latex/cora-macs/LICENSE
+%{_texmfdistdir}/doc/latex/cora-macs/README.md
+%{_texmfdistdir}/doc/latex/cora-macs/cora-macs-doc.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/cora-macs-doc.tex
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/mymatlabfigure_animated-animate-1.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/mymatlabfigure_animated-animate-2.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/mymatlabfigure_animated-animate-3.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/mymatlabfigure_animated-animate-4.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/mymatlabgroupfigure_animated-animate-1.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/mymatlabgroupfigure_animated-animate-2.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/mymatlabgroupfigure_animated-animate-3.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/mymatlabgroupfigure_animated-animate-4.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/mymatlabgroupfigure_animated-animate-5.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/neural-network_animated-animate-1.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/neural-network_animated-animate-2.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/neural-network_animated-animate-3.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/externalize/figures/neural-network_animated-animate-4.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/mymatlabfigure_animated.tikz
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/mymatlabgroupfigure_animated.tikz
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/mymatlabgroupfigure_animated_11.tikz
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/mymatlabgroupfigure_animated_12.tikz
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/mymatlabgroupfigure_animated_13.tikz
+%{_texmfdistdir}/doc/latex/cora-macs/examples/figures/neural-network_animated.tikz
+%{_texmfdistdir}/doc/latex/cora-macs/examples/presentation.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/examples/presentation.tex
+%{_texmfdistdir}/doc/latex/cora-macs/figures/coraLogo.eps
+%{_texmfdistdir}/doc/latex/cora-macs/figures/externalize/figures/mymatlabfigure.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/figures/externalize/figures/mymatlabgroupfigure.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/figures/externalize/figures/mytikzfigure.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/figures/externalize/figures/neural-network.pdf
+%{_texmfdistdir}/doc/latex/cora-macs/figures/mymatlabfigure.tikz
+%{_texmfdistdir}/doc/latex/cora-macs/figures/mymatlabgroupfigure.tikz
+%{_texmfdistdir}/doc/latex/cora-macs/figures/mymatlabgroupfigure_11.tikz
+%{_texmfdistdir}/doc/latex/cora-macs/figures/mymatlabgroupfigure_12.tikz
+%{_texmfdistdir}/doc/latex/cora-macs/figures/mymatlabgroupfigure_13.tikz
+%{_texmfdistdir}/doc/latex/cora-macs/figures/mytikzfigure.tikz
+%{_texmfdistdir}/doc/latex/cora-macs/figures/neural-network.tikz
+
+%files -n texlive-cora-macs
+%{_texmfdistdir}/tex/latex/cora-macs/cora-macs.sty
+
 %package -n texlive-cormorantgaramond
-Version:        %{texlive_version}.%{texlive_noarch}.3.601svn64411
+Version:        %{texlive_version}.%{texlive_noarch}.3.601svn71057
 Release:        0
 License:        OFL-1.1
 Summary:        Cormorant Garamond family of fonts
@@ -11411,9 +11798,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source89:       cormorantgaramond.tar.xz
-Source90:       cormorantgaramond.doc.tar.xz
+# from 20250308
+Source96:       cormorantgaramond.tar.xz
+Source97:       cormorantgaramond.doc.tar.xz
 
 %description -n texlive-cormorantgaramond
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -11423,7 +11810,7 @@ light, regular, medium, semi-bold, and bold weights, with
 italics.
 
 %package -n texlive-cormorantgaramond-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.601svn64411
+Version:        %{texlive_version}.%{texlive_noarch}.3.601svn71057
 Release:        0
 Summary:        Documentation for texlive-cormorantgaramond
 License:        OFL-1.1
@@ -11435,7 +11822,7 @@ Supplements:    (texlive-cormorantgaramond and texlive-alldocumentation)
 This package includes the documentation for texlive-cormorantgaramond
 
 %package -n texlive-cormorantgaramond-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.3.601svn64411
+Version:        %{texlive_version}.%{texlive_noarch}.3.601svn71057
 Release:        0
 Summary:        Severed fonts for texlive-cormorantgaramond
 License:        OFL-1.1
@@ -12539,9 +12926,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-correctmathalign-doc >= %{texlive_version}
 Provides:       tex(correctmathalign.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source91:       correctmathalign.tar.xz
-Source92:       correctmathalign.doc.tar.xz
+# from 20250308
+Source98:       correctmathalign.tar.xz
+Source99:       correctmathalign.doc.tar.xz
 
 %description -n texlive-correctmathalign
 This package realigns the horizontal spacing of the alignments
@@ -12617,9 +13004,9 @@ Suggests:       texlive-coseoul-doc >= %{texlive_version}
 Provides:       tex(coseoul.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source93:       coseoul.tar.xz
-Source94:       coseoul.doc.tar.xz
+# from 20250308
+Source100:      coseoul.tar.xz
+Source101:      coseoul.doc.tar.xz
 
 %description -n texlive-coseoul
 The package provides "relative" commands that may be used in
@@ -12667,7 +13054,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/coseoul/coseoul.sty
 
 %package -n texlive-couleurs-fr
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn67901
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn73069
 Release:        0
 License:        LPPL-1.0
 Summary:        French version of colour definitions from xcolor
@@ -12697,16 +13084,16 @@ Suggests:       texlive-couleurs-fr-doc >= %{texlive_version}
 Provides:       tex(couleurs-fr.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source95:       couleurs-fr.tar.xz
-Source96:       couleurs-fr.doc.tar.xz
+# from 20250308
+Source102:      couleurs-fr.tar.xz
+Source103:      couleurs-fr.doc.tar.xz
 
 %description -n texlive-couleurs-fr
-This package provides xcolor [svgnames, dvipsnames, x11names]
-in French.
+This package provides provides colours with French names, based
+on xcolor (svgnames, dvipsnames) and xkcd.
 
 %package -n texlive-couleurs-fr-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn67901
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn73069
 Release:        0
 Summary:        Documentation for texlive-couleurs-fr
 License:        LPPL-1.0
@@ -12745,6 +13132,85 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-couleurs-fr
 %{_texmfdistdir}/tex/latex/couleurs-fr/couleurs-fr.sty
 
+%package -n texlive-count1to
+Version:        %{texlive_version}.%{texlive_noarch}.2.11svn71526
+Release:        0
+License:        LPPL-1.0
+Summary:        Make use of count1 to count9
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-count1to-doc >= %{texlive_version}
+Provides:       tex(count1to.sty)
+Requires:       tex(everyshi.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source104:      count1to.tar.xz
+Source105:      count1to.doc.tar.xz
+
+%description -n texlive-count1to
+A LaTeX package which sets count 1 (to 'absolute' page number),
+counts 2-8 to the numbers of the current \part, \chapter
+(always 0 in article class), ... \subparagraph, and count 9 to
+1 or 0, according to whether the page is odd or even. These
+values can be used to select pages with some drivers. The
+package uses the everyshi package.
+
+%package -n texlive-count1to-doc
+Version:        %{texlive_version}.%{texlive_noarch}.2.11svn71526
+Release:        0
+Summary:        Documentation for texlive-count1to
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-count1to and texlive-alldocumentation)
+
+%description -n texlive-count1to-doc
+This package includes the documentation for texlive-count1to
+
+%post -n texlive-count1to
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-count1to
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-count1to
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-count1to-doc
+%{_texmfdistdir}/doc/latex/count1to/README.md
+%{_texmfdistdir}/doc/latex/count1to/count1to.pdf
+
+%files -n texlive-count1to
+%{_texmfdistdir}/tex/latex/count1to/count1to.sty
+
 %package -n texlive-counterz
 Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn67335
 Release:        0
@@ -12777,9 +13243,9 @@ Provides:       tex(counterz.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(makecmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source97:       counterz.tar.xz
-Source98:       counterz.doc.tar.xz
+# from 20250308
+Source106:      counterz.tar.xz
+Source107:      counterz.doc.tar.xz
 
 %description -n texlive-counterz
 The package facilitates the use of stealth prefixes for counter
@@ -12877,9 +13343,9 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source99:       countriesofeurope.tar.xz
-Source100:      countriesofeurope.doc.tar.xz
+# from 20250308
+Source108:      countriesofeurope.tar.xz
+Source109:      countriesofeurope.doc.tar.xz
 
 %description -n texlive-countriesofeurope
 The bundle provides a font "CountriesOfEurope" (in Adobe Type 1
@@ -12994,9 +13460,9 @@ Suggests:       texlive-counttexruns-doc >= %{texlive_version}
 Provides:       tex(counttexruns.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source101:      counttexruns.tar.xz
-Source102:      counttexruns.doc.tar.xz
+# from 20250308
+Source110:      counttexruns.tar.xz
+Source111:      counttexruns.doc.tar.xz
 
 %description -n texlive-counttexruns
 The package counts how often a LaTeX document is compiled,
@@ -13170,8 +13636,8 @@ Provides:       tex(ucrro8r.tfm)
 Provides:       tex(ucrro8t.tfm)
 Provides:       tex(ucrro8t.vf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source103:      courier.tar.xz
+# from 20250308
+Source112:      courier.tar.xz
 
 %description -n texlive-courier
 A set of fonts for use as "drop-in" replacements for Adobe's
@@ -13395,9 +13861,9 @@ Provides:       tex(ts1pcrs.fd)
 Provides:       tex(xl2pcrs.fd)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source104:      courier-scaled.tar.xz
-Source105:      courier-scaled.doc.tar.xz
+# from 20250308
+Source113:      courier-scaled.tar.xz
+Source114:      courier-scaled.doc.tar.xz
 
 %description -n texlive-courier-scaled
 This package sets the default typewriter font to Courier with a
@@ -13568,9 +14034,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source106:      courierten.tar.xz
-Source107:      courierten.doc.tar.xz
+# from 20250308
+Source115:      courierten.tar.xz
+Source116:      courierten.doc.tar.xz
 
 %description -n texlive-courierten
 This is the font Courier 10 Pitch BT, with LaTeX support and an
@@ -13763,9 +14229,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-courseoutline-doc >= %{texlive_version}
 Provides:       tex(courseoutline.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source108:      courseoutline.tar.xz
-Source109:      courseoutline.doc.tar.xz
+# from 20250308
+Source117:      courseoutline.tar.xz
+Source118:      courseoutline.doc.tar.xz
 
 %description -n texlive-courseoutline
 Courseoutline is a class designed to minimise markup in a
@@ -13836,9 +14302,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-coursepaper-doc >= %{texlive_version}
 Provides:       tex(coursepaper.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source110:      coursepaper.tar.xz
-Source111:      coursepaper.doc.tar.xz
+# from 20250308
+Source119:      coursepaper.tar.xz
+Source120:      coursepaper.doc.tar.xz
 
 %description -n texlive-coursepaper
 Coursepaper is a class with which students can provide simple
@@ -13914,9 +14380,9 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(url.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source112:      coverpage.tar.xz
-Source113:      coverpage.doc.tar.xz
+# from 20250308
+Source121:      coverpage.tar.xz
+Source122:      coverpage.doc.tar.xz
 
 %description -n texlive-coverpage
 The package CoverPage was created to supplement scientific
@@ -14009,9 +14475,9 @@ Provides:       tex(covington.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(varwidth.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source114:      covington.tar.xz
-Source115:      covington.doc.tar.xz
+# from 20250308
+Source123:      covington.tar.xz
+Source124:      covington.doc.tar.xz
 
 %description -n texlive-covington
 Numerous minor LaTeX enhancements for linguistics, including
@@ -14088,9 +14554,9 @@ Provides:       tex(cprotect.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(suffix.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source116:      cprotect.tar.xz
-Source117:      cprotect.doc.tar.xz
+# from 20250308
+Source125:      cprotect.tar.xz
+Source126:      cprotect.doc.tar.xz
 
 %description -n texlive-cprotect
 The package defines the macro \cprotect that makes a following
@@ -14167,9 +14633,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-cprotectinside-doc >= %{texlive_version}
 Provides:       tex(cprotectinside.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source118:      cprotectinside.tar.xz
-Source119:      cprotectinside.doc.tar.xz
+# from 20250308
+Source127:      cprotectinside.tar.xz
+Source128:      cprotectinside.doc.tar.xz
 
 %description -n texlive-cprotectinside
 This package extends the cprotect package to allow users to use
@@ -14246,9 +14712,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(perpage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source120:      cqubeamer.tar.xz
-Source121:      cqubeamer.doc.tar.xz
+# from 20250308
+Source129:      cqubeamer.tar.xz
+Source130:      cqubeamer.doc.tar.xz
 
 %description -n texlive-cqubeamer
 This package provides a LaTeX beamer template designed for
@@ -14385,9 +14851,9 @@ Requires:       tex(xeCJKfntef.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source122:      cquthesis.tar.xz
-Source123:      cquthesis.doc.tar.xz
+# from 20250308
+Source131:      cquthesis.tar.xz
+Source132:      cquthesis.doc.tar.xz
 
 %description -n texlive-cquthesis
 CQUThesis stands for Chongqing University Thesis Template for
@@ -14480,9 +14946,9 @@ Suggests:       texlive-crbox-doc >= %{texlive_version}
 Provides:       tex(crbox.sty)
 Requires:       tex(biditools.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source124:      crbox.tar.xz
-Source125:      crbox.doc.tar.xz
+# from 20250308
+Source133:      crbox.tar.xz
+Source134:      crbox.doc.tar.xz
 
 %description -n texlive-crbox
 The package implements a \crbox command which produces boxes
@@ -14526,7 +14992,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/crbox/crbox.sty
 
 %package -n texlive-create-theorem
-Version:        %{texlive_version}.%{texlive_noarch}.svn70177
+Version:        %{texlive_version}.%{texlive_noarch}.svn72830
 Release:        0
 License:        LPPL-1.0
 Summary:        Initializing and configuring theorem-like environments, with multilingual support
@@ -14561,9 +15027,9 @@ Provides:       tex(create-theorem.sty)
 Requires:       tex(amsfonts.sty)
 Requires:       tex(crefthe.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source126:      create-theorem.tar.xz
-Source127:      create-theorem.doc.tar.xz
+# from 20250308
+Source135:      create-theorem.tar.xz
+Source136:      create-theorem.doc.tar.xz
 
 %description -n texlive-create-theorem
 This package provides commands for naming, initializing and
@@ -14574,7 +15040,7 @@ theorem-like environments that can automatically adapt to the
 language settings.
 
 %package -n texlive-create-theorem-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70177
+Version:        %{texlive_version}.%{texlive_noarch}.svn72830
 Release:        0
 Summary:        Documentation for texlive-create-theorem
 License:        LPPL-1.0
@@ -14615,7 +15081,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/create-theorem/create-theorem.sty
 
 %package -n texlive-creationboites
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn68087
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn73443
 Release:        0
 License:        LPPL-1.0
 Summary:        Macros to create simple tcolorbox with some customizations
@@ -14648,9 +15114,9 @@ Requires:       tex(simplekv.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source128:      creationboites.tar.xz
-Source129:      creationboites.doc.tar.xz
+# from 20250308
+Source137:      creationboites.tar.xz
+Source138:      creationboites.doc.tar.xz
 
 %description -n texlive-creationboites
 This package provides provides some macros to create
@@ -14659,7 +15125,7 @@ the box; a macro \ParamBoites to modify some parameters;
 possibility to modify 'deeply' the boxes.
 
 %package -n texlive-creationboites-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn68087
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn73443
 Release:        0
 Summary:        Documentation for texlive-creationboites
 License:        LPPL-1.0
@@ -14727,9 +15193,9 @@ Provides:       tex(crefthe.sty)
 Requires:       tex(cleveref.sty)
 Requires:       tex(regexpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source130:      crefthe.tar.xz
-Source131:      crefthe.doc.tar.xz
+# from 20250308
+Source139:      crefthe.tar.xz
+Source140:      crefthe.doc.tar.xz
 
 %description -n texlive-crefthe
 By default, when using cleveref's \cref to reference
@@ -14779,7 +15245,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/crefthe/crefthe.sty
 
 %package -n texlive-crimson
-Version:        %{texlive_version}.%{texlive_noarch}.svn64559
+Version:        %{texlive_version}.%{texlive_noarch}.svn73074
 Release:        0
 License:        OFL-1.1
 Summary:        Crimson fonts with LaTeX support
@@ -14822,12 +15288,41 @@ Provides:       tex(Crimson-Bold-tlf-ly1--base.tfm)
 Provides:       tex(Crimson-Bold-tlf-ly1.tfm)
 Provides:       tex(Crimson-Bold-tlf-ly1.vf)
 Provides:       tex(Crimson-Bold-tlf-ot1.tfm)
+Provides:       tex(Crimson-Bold-tlf-sc-ly1--base.tfm)
+Provides:       tex(Crimson-Bold-tlf-sc-ly1.tfm)
+Provides:       tex(Crimson-Bold-tlf-sc-ly1.vf)
+Provides:       tex(Crimson-Bold-tlf-sc-ot1--base.tfm)
+Provides:       tex(Crimson-Bold-tlf-sc-ot1.tfm)
+Provides:       tex(Crimson-Bold-tlf-sc-ot1.vf)
+Provides:       tex(Crimson-Bold-tlf-sc-t1--base.tfm)
+Provides:       tex(Crimson-Bold-tlf-sc-t1.tfm)
+Provides:       tex(Crimson-Bold-tlf-sc-t1.vf)
 Provides:       tex(Crimson-Bold-tlf-t1--base.tfm)
 Provides:       tex(Crimson-Bold-tlf-t1.tfm)
 Provides:       tex(Crimson-Bold-tlf-t1.vf)
 Provides:       tex(Crimson-Bold-tlf-ts1--base.tfm)
 Provides:       tex(Crimson-Bold-tlf-ts1.tfm)
 Provides:       tex(Crimson-Bold-tlf-ts1.vf)
+Provides:       tex(Crimson-BoldItalic-lf-ly1--base.tfm)
+Provides:       tex(Crimson-BoldItalic-lf-ly1.tfm)
+Provides:       tex(Crimson-BoldItalic-lf-ly1.vf)
+Provides:       tex(Crimson-BoldItalic-lf-ot1.tfm)
+Provides:       tex(Crimson-BoldItalic-lf-t1--base.tfm)
+Provides:       tex(Crimson-BoldItalic-lf-t1.tfm)
+Provides:       tex(Crimson-BoldItalic-lf-t1.vf)
+Provides:       tex(Crimson-BoldItalic-lf-ts1--base.tfm)
+Provides:       tex(Crimson-BoldItalic-lf-ts1.tfm)
+Provides:       tex(Crimson-BoldItalic-lf-ts1.vf)
+Provides:       tex(Crimson-BoldItalic-osf-ly1--base.tfm)
+Provides:       tex(Crimson-BoldItalic-osf-ly1.tfm)
+Provides:       tex(Crimson-BoldItalic-osf-ly1.vf)
+Provides:       tex(Crimson-BoldItalic-osf-ot1.tfm)
+Provides:       tex(Crimson-BoldItalic-osf-t1--base.tfm)
+Provides:       tex(Crimson-BoldItalic-osf-t1.tfm)
+Provides:       tex(Crimson-BoldItalic-osf-t1.vf)
+Provides:       tex(Crimson-BoldItalic-osf-ts1--base.tfm)
+Provides:       tex(Crimson-BoldItalic-osf-ts1.tfm)
+Provides:       tex(Crimson-BoldItalic-osf-ts1.vf)
 Provides:       tex(Crimson-BoldItalic-tlf-ly1--base.tfm)
 Provides:       tex(Crimson-BoldItalic-tlf-ly1.tfm)
 Provides:       tex(Crimson-BoldItalic-tlf-ly1.vf)
@@ -14838,24 +15333,170 @@ Provides:       tex(Crimson-BoldItalic-tlf-t1.vf)
 Provides:       tex(Crimson-BoldItalic-tlf-ts1--base.tfm)
 Provides:       tex(Crimson-BoldItalic-tlf-ts1.tfm)
 Provides:       tex(Crimson-BoldItalic-tlf-ts1.vf)
+Provides:       tex(Crimson-BoldItalic-tosf-ly1--base.tfm)
+Provides:       tex(Crimson-BoldItalic-tosf-ly1.tfm)
+Provides:       tex(Crimson-BoldItalic-tosf-ly1.vf)
+Provides:       tex(Crimson-BoldItalic-tosf-ot1.tfm)
+Provides:       tex(Crimson-BoldItalic-tosf-t1--base.tfm)
+Provides:       tex(Crimson-BoldItalic-tosf-t1.tfm)
+Provides:       tex(Crimson-BoldItalic-tosf-t1.vf)
+Provides:       tex(Crimson-BoldItalic-tosf-ts1--base.tfm)
+Provides:       tex(Crimson-BoldItalic-tosf-ts1.tfm)
+Provides:       tex(Crimson-BoldItalic-tosf-ts1.vf)
+Provides:       tex(Crimson-Italic-lf-ly1--base.tfm)
+Provides:       tex(Crimson-Italic-lf-ly1.tfm)
+Provides:       tex(Crimson-Italic-lf-ly1.vf)
+Provides:       tex(Crimson-Italic-lf-ot1.tfm)
+Provides:       tex(Crimson-Italic-lf-sc-ly1--base.tfm)
+Provides:       tex(Crimson-Italic-lf-sc-ly1.tfm)
+Provides:       tex(Crimson-Italic-lf-sc-ly1.vf)
+Provides:       tex(Crimson-Italic-lf-sc-ot1--base.tfm)
+Provides:       tex(Crimson-Italic-lf-sc-ot1.tfm)
+Provides:       tex(Crimson-Italic-lf-sc-ot1.vf)
+Provides:       tex(Crimson-Italic-lf-sc-t1--base.tfm)
+Provides:       tex(Crimson-Italic-lf-sc-t1.tfm)
+Provides:       tex(Crimson-Italic-lf-sc-t1.vf)
+Provides:       tex(Crimson-Italic-lf-t1--base.tfm)
+Provides:       tex(Crimson-Italic-lf-t1.tfm)
+Provides:       tex(Crimson-Italic-lf-t1.vf)
+Provides:       tex(Crimson-Italic-lf-ts1--base.tfm)
+Provides:       tex(Crimson-Italic-lf-ts1.tfm)
+Provides:       tex(Crimson-Italic-lf-ts1.vf)
+Provides:       tex(Crimson-Italic-osf-ly1--base.tfm)
+Provides:       tex(Crimson-Italic-osf-ly1.tfm)
+Provides:       tex(Crimson-Italic-osf-ly1.vf)
+Provides:       tex(Crimson-Italic-osf-ot1.tfm)
+Provides:       tex(Crimson-Italic-osf-sc-ly1--base.tfm)
+Provides:       tex(Crimson-Italic-osf-sc-ly1.tfm)
+Provides:       tex(Crimson-Italic-osf-sc-ly1.vf)
+Provides:       tex(Crimson-Italic-osf-sc-ot1--base.tfm)
+Provides:       tex(Crimson-Italic-osf-sc-ot1.tfm)
+Provides:       tex(Crimson-Italic-osf-sc-ot1.vf)
+Provides:       tex(Crimson-Italic-osf-sc-t1--base.tfm)
+Provides:       tex(Crimson-Italic-osf-sc-t1.tfm)
+Provides:       tex(Crimson-Italic-osf-sc-t1.vf)
+Provides:       tex(Crimson-Italic-osf-t1--base.tfm)
+Provides:       tex(Crimson-Italic-osf-t1.tfm)
+Provides:       tex(Crimson-Italic-osf-t1.vf)
+Provides:       tex(Crimson-Italic-osf-ts1--base.tfm)
+Provides:       tex(Crimson-Italic-osf-ts1.tfm)
+Provides:       tex(Crimson-Italic-osf-ts1.vf)
 Provides:       tex(Crimson-Italic-tlf-ly1--base.tfm)
 Provides:       tex(Crimson-Italic-tlf-ly1.tfm)
 Provides:       tex(Crimson-Italic-tlf-ly1.vf)
 Provides:       tex(Crimson-Italic-tlf-ot1.tfm)
+Provides:       tex(Crimson-Italic-tlf-sc-ly1--base.tfm)
+Provides:       tex(Crimson-Italic-tlf-sc-ly1.tfm)
+Provides:       tex(Crimson-Italic-tlf-sc-ly1.vf)
+Provides:       tex(Crimson-Italic-tlf-sc-ot1--base.tfm)
+Provides:       tex(Crimson-Italic-tlf-sc-ot1.tfm)
+Provides:       tex(Crimson-Italic-tlf-sc-ot1.vf)
+Provides:       tex(Crimson-Italic-tlf-sc-t1--base.tfm)
+Provides:       tex(Crimson-Italic-tlf-sc-t1.tfm)
+Provides:       tex(Crimson-Italic-tlf-sc-t1.vf)
 Provides:       tex(Crimson-Italic-tlf-t1--base.tfm)
 Provides:       tex(Crimson-Italic-tlf-t1.tfm)
 Provides:       tex(Crimson-Italic-tlf-t1.vf)
 Provides:       tex(Crimson-Italic-tlf-ts1--base.tfm)
 Provides:       tex(Crimson-Italic-tlf-ts1.tfm)
 Provides:       tex(Crimson-Italic-tlf-ts1.vf)
+Provides:       tex(Crimson-Italic-tosf-ly1--base.tfm)
+Provides:       tex(Crimson-Italic-tosf-ly1.tfm)
+Provides:       tex(Crimson-Italic-tosf-ly1.vf)
+Provides:       tex(Crimson-Italic-tosf-ot1.tfm)
+Provides:       tex(Crimson-Italic-tosf-sc-ly1--base.tfm)
+Provides:       tex(Crimson-Italic-tosf-sc-ly1.tfm)
+Provides:       tex(Crimson-Italic-tosf-sc-ly1.vf)
+Provides:       tex(Crimson-Italic-tosf-sc-ot1--base.tfm)
+Provides:       tex(Crimson-Italic-tosf-sc-ot1.tfm)
+Provides:       tex(Crimson-Italic-tosf-sc-ot1.vf)
+Provides:       tex(Crimson-Italic-tosf-sc-t1--base.tfm)
+Provides:       tex(Crimson-Italic-tosf-sc-t1.tfm)
+Provides:       tex(Crimson-Italic-tosf-sc-t1.vf)
+Provides:       tex(Crimson-Italic-tosf-t1--base.tfm)
+Provides:       tex(Crimson-Italic-tosf-t1.tfm)
+Provides:       tex(Crimson-Italic-tosf-t1.vf)
+Provides:       tex(Crimson-Italic-tosf-ts1--base.tfm)
+Provides:       tex(Crimson-Italic-tosf-ts1.tfm)
+Provides:       tex(Crimson-Italic-tosf-ts1.vf)
+Provides:       tex(Crimson-Roman-lf-ly1.tfm)
+Provides:       tex(Crimson-Roman-lf-ot1.tfm)
+Provides:       tex(Crimson-Roman-lf-sc-ly1--base.tfm)
+Provides:       tex(Crimson-Roman-lf-sc-ly1.tfm)
+Provides:       tex(Crimson-Roman-lf-sc-ly1.vf)
+Provides:       tex(Crimson-Roman-lf-sc-ot1--base.tfm)
+Provides:       tex(Crimson-Roman-lf-sc-ot1.tfm)
+Provides:       tex(Crimson-Roman-lf-sc-ot1.vf)
+Provides:       tex(Crimson-Roman-lf-sc-t1--base.tfm)
+Provides:       tex(Crimson-Roman-lf-sc-t1.tfm)
+Provides:       tex(Crimson-Roman-lf-sc-t1.vf)
+Provides:       tex(Crimson-Roman-lf-t1--base.tfm)
+Provides:       tex(Crimson-Roman-lf-t1.tfm)
+Provides:       tex(Crimson-Roman-lf-t1.vf)
+Provides:       tex(Crimson-Roman-lf-ts1--base.tfm)
+Provides:       tex(Crimson-Roman-lf-ts1.tfm)
+Provides:       tex(Crimson-Roman-lf-ts1.vf)
+Provides:       tex(Crimson-Roman-osf-ly1.tfm)
+Provides:       tex(Crimson-Roman-osf-ot1.tfm)
+Provides:       tex(Crimson-Roman-osf-sc-ly1--base.tfm)
+Provides:       tex(Crimson-Roman-osf-sc-ly1.tfm)
+Provides:       tex(Crimson-Roman-osf-sc-ly1.vf)
+Provides:       tex(Crimson-Roman-osf-sc-ot1--base.tfm)
+Provides:       tex(Crimson-Roman-osf-sc-ot1.tfm)
+Provides:       tex(Crimson-Roman-osf-sc-ot1.vf)
+Provides:       tex(Crimson-Roman-osf-sc-t1--base.tfm)
+Provides:       tex(Crimson-Roman-osf-sc-t1.tfm)
+Provides:       tex(Crimson-Roman-osf-sc-t1.vf)
+Provides:       tex(Crimson-Roman-osf-t1--base.tfm)
+Provides:       tex(Crimson-Roman-osf-t1.tfm)
+Provides:       tex(Crimson-Roman-osf-t1.vf)
+Provides:       tex(Crimson-Roman-osf-ts1--base.tfm)
+Provides:       tex(Crimson-Roman-osf-ts1.tfm)
+Provides:       tex(Crimson-Roman-osf-ts1.vf)
 Provides:       tex(Crimson-Roman-tlf-ly1.tfm)
 Provides:       tex(Crimson-Roman-tlf-ot1.tfm)
+Provides:       tex(Crimson-Roman-tlf-sc-ly1--base.tfm)
+Provides:       tex(Crimson-Roman-tlf-sc-ly1.tfm)
+Provides:       tex(Crimson-Roman-tlf-sc-ly1.vf)
+Provides:       tex(Crimson-Roman-tlf-sc-ot1--base.tfm)
+Provides:       tex(Crimson-Roman-tlf-sc-ot1.tfm)
+Provides:       tex(Crimson-Roman-tlf-sc-ot1.vf)
+Provides:       tex(Crimson-Roman-tlf-sc-t1--base.tfm)
+Provides:       tex(Crimson-Roman-tlf-sc-t1.tfm)
+Provides:       tex(Crimson-Roman-tlf-sc-t1.vf)
 Provides:       tex(Crimson-Roman-tlf-t1--base.tfm)
 Provides:       tex(Crimson-Roman-tlf-t1.tfm)
 Provides:       tex(Crimson-Roman-tlf-t1.vf)
 Provides:       tex(Crimson-Roman-tlf-ts1--base.tfm)
 Provides:       tex(Crimson-Roman-tlf-ts1.tfm)
 Provides:       tex(Crimson-Roman-tlf-ts1.vf)
+Provides:       tex(Crimson-Roman-tosf-ly1.tfm)
+Provides:       tex(Crimson-Roman-tosf-ot1.tfm)
+Provides:       tex(Crimson-Roman-tosf-sc-ly1--base.tfm)
+Provides:       tex(Crimson-Roman-tosf-sc-ly1.tfm)
+Provides:       tex(Crimson-Roman-tosf-sc-ly1.vf)
+Provides:       tex(Crimson-Roman-tosf-sc-ot1--base.tfm)
+Provides:       tex(Crimson-Roman-tosf-sc-ot1.tfm)
+Provides:       tex(Crimson-Roman-tosf-sc-ot1.vf)
+Provides:       tex(Crimson-Roman-tosf-sc-t1--base.tfm)
+Provides:       tex(Crimson-Roman-tosf-sc-t1.tfm)
+Provides:       tex(Crimson-Roman-tosf-sc-t1.vf)
+Provides:       tex(Crimson-Roman-tosf-t1--base.tfm)
+Provides:       tex(Crimson-Roman-tosf-t1.tfm)
+Provides:       tex(Crimson-Roman-tosf-t1.vf)
+Provides:       tex(Crimson-Roman-tosf-ts1--base.tfm)
+Provides:       tex(Crimson-Roman-tosf-ts1.tfm)
+Provides:       tex(Crimson-Roman-tosf-ts1.vf)
+Provides:       tex(Crimson-Semibold-lf-ly1--base.tfm)
+Provides:       tex(Crimson-Semibold-lf-ly1.tfm)
+Provides:       tex(Crimson-Semibold-lf-ly1.vf)
+Provides:       tex(Crimson-Semibold-lf-ot1.tfm)
+Provides:       tex(Crimson-Semibold-lf-t1--base.tfm)
+Provides:       tex(Crimson-Semibold-lf-t1.tfm)
+Provides:       tex(Crimson-Semibold-lf-t1.vf)
+Provides:       tex(Crimson-Semibold-lf-ts1--base.tfm)
+Provides:       tex(Crimson-Semibold-lf-ts1.tfm)
+Provides:       tex(Crimson-Semibold-lf-ts1.vf)
 Provides:       tex(Crimson-Semibold-tlf-ly1--base.tfm)
 Provides:       tex(Crimson-Semibold-tlf-ly1.tfm)
 Provides:       tex(Crimson-Semibold-tlf-ly1.vf)
@@ -14866,6 +15507,16 @@ Provides:       tex(Crimson-Semibold-tlf-t1.vf)
 Provides:       tex(Crimson-Semibold-tlf-ts1--base.tfm)
 Provides:       tex(Crimson-Semibold-tlf-ts1.tfm)
 Provides:       tex(Crimson-Semibold-tlf-ts1.vf)
+Provides:       tex(Crimson-SemiboldItalic-lf-ly1--base.tfm)
+Provides:       tex(Crimson-SemiboldItalic-lf-ly1.tfm)
+Provides:       tex(Crimson-SemiboldItalic-lf-ly1.vf)
+Provides:       tex(Crimson-SemiboldItalic-lf-ot1.tfm)
+Provides:       tex(Crimson-SemiboldItalic-lf-t1--base.tfm)
+Provides:       tex(Crimson-SemiboldItalic-lf-t1.tfm)
+Provides:       tex(Crimson-SemiboldItalic-lf-t1.vf)
+Provides:       tex(Crimson-SemiboldItalic-lf-ts1--base.tfm)
+Provides:       tex(Crimson-SemiboldItalic-lf-ts1.tfm)
+Provides:       tex(Crimson-SemiboldItalic-lf-ts1.vf)
 Provides:       tex(Crimson-SemiboldItalic-tlf-ly1--base.tfm)
 Provides:       tex(Crimson-SemiboldItalic-tlf-ly1.tfm)
 Provides:       tex(Crimson-SemiboldItalic-tlf-ly1.vf)
@@ -14876,34 +15527,92 @@ Provides:       tex(Crimson-SemiboldItalic-tlf-t1.vf)
 Provides:       tex(Crimson-SemiboldItalic-tlf-ts1--base.tfm)
 Provides:       tex(Crimson-SemiboldItalic-tlf-ts1.tfm)
 Provides:       tex(Crimson-SemiboldItalic-tlf-ts1.vf)
+Provides:       tex(LY1Crimson-LF.fd)
+Provides:       tex(LY1Crimson-OsF.fd)
 Provides:       tex(LY1Crimson-TLF.fd)
+Provides:       tex(LY1Crimson-TOsF.fd)
+Provides:       tex(OT1Crimson-LF.fd)
+Provides:       tex(OT1Crimson-OsF.fd)
 Provides:       tex(OT1Crimson-TLF.fd)
+Provides:       tex(OT1Crimson-TOsF.fd)
+Provides:       tex(T1Crimson-LF.fd)
+Provides:       tex(T1Crimson-OsF.fd)
 Provides:       tex(T1Crimson-TLF.fd)
+Provides:       tex(T1Crimson-TOsF.fd)
+Provides:       tex(TS1Crimson-LF.fd)
+Provides:       tex(TS1Crimson-OsF.fd)
 Provides:       tex(TS1Crimson-TLF.fd)
+Provides:       tex(TS1Crimson-TOsF.fd)
 Provides:       tex(crimson.map)
 Provides:       tex(crimson.sty)
+Provides:       tex(crm_25ecww.enc)
+Provides:       tex(crm_2bk2kf.enc)
+Provides:       tex(crm_2vwhzr.enc)
+Provides:       tex(crm_36b5o4.enc)
 Provides:       tex(crm_3bejww.enc)
-Provides:       tex(crm_axwm4k.enc)
+Provides:       tex(crm_47fe7g.enc)
+Provides:       tex(crm_4df3hz.enc)
+Provides:       tex(crm_4wbvex.enc)
+Provides:       tex(crm_5iushh.enc)
+Provides:       tex(crm_64bq2b.enc)
+Provides:       tex(crm_6cvwjz.enc)
+Provides:       tex(crm_7vbuna.enc)
+Provides:       tex(crm_7wq2t4.enc)
 Provides:       tex(crm_ayvnmf.enc)
-Provides:       tex(crm_bchha2.enc)
-Provides:       tex(crm_fllea6.enc)
-Provides:       tex(crm_g4bzis.enc)
-Provides:       tex(crm_izufyi.enc)
+Provides:       tex(crm_b5atsz.enc)
+Provides:       tex(crm_bmqojb.enc)
+Provides:       tex(crm_bsm2ek.enc)
+Provides:       tex(crm_bxc7kq.enc)
+Provides:       tex(crm_cuvbeg.enc)
+Provides:       tex(crm_cxrmm4.enc)
+Provides:       tex(crm_d6nadx.enc)
+Provides:       tex(crm_dcyrwq.enc)
+Provides:       tex(crm_dk7p24.enc)
+Provides:       tex(crm_dl3wd7.enc)
+Provides:       tex(crm_dvqsdk.enc)
+Provides:       tex(crm_efj2rd.enc)
+Provides:       tex(crm_fi53q6.enc)
+Provides:       tex(crm_fvnjct.enc)
+Provides:       tex(crm_g3s64i.enc)
+Provides:       tex(crm_gkepkr.enc)
+Provides:       tex(crm_hbjel3.enc)
+Provides:       tex(crm_hhp6ae.enc)
+Provides:       tex(crm_hnx34u.enc)
+Provides:       tex(crm_hw76il.enc)
+Provides:       tex(crm_ihwzbi.enc)
+Provides:       tex(crm_j3frfl.enc)
+Provides:       tex(crm_j6wyjb.enc)
 Provides:       tex(crm_jdlmpi.enc)
-Provides:       tex(crm_kwsa5r.enc)
-Provides:       tex(crm_myjoho.enc)
-Provides:       tex(crm_n3gbj7.enc)
+Provides:       tex(crm_kigpiz.enc)
+Provides:       tex(crm_kyf4gw.enc)
+Provides:       tex(crm_lienqd.enc)
+Provides:       tex(crm_ltoc2m.enc)
+Provides:       tex(crm_lxm2kp.enc)
+Provides:       tex(crm_m6va3v.enc)
+Provides:       tex(crm_n3yyou.enc)
+Provides:       tex(crm_n44da6.enc)
+Provides:       tex(crm_ndtoxh.enc)
 Provides:       tex(crm_odbuza.enc)
-Provides:       tex(crm_ory2k7.enc)
-Provides:       tex(crm_qrsm2e.enc)
-Provides:       tex(crm_qst7o4.enc)
-Provides:       tex(crm_tyw3ea.enc)
-Provides:       tex(crm_uafi7a.enc)
-Provides:       tex(crm_ue2axx.enc)
-Provides:       tex(crm_vcz7kx.enc)
-Provides:       tex(crm_wef5am.enc)
-Provides:       tex(crm_wsbs26.enc)
-Provides:       tex(crm_wttfgh.enc)
+Provides:       tex(crm_plxyu3.enc)
+Provides:       tex(crm_qvosxj.enc)
+Provides:       tex(crm_qx2olb.enc)
+Provides:       tex(crm_r6xrf3.enc)
+Provides:       tex(crm_r76pbb.enc)
+Provides:       tex(crm_rbmipx.enc)
+Provides:       tex(crm_rybvc4.enc)
+Provides:       tex(crm_st6vdm.enc)
+Provides:       tex(crm_tbj74c.enc)
+Provides:       tex(crm_tlhunq.enc)
+Provides:       tex(crm_tswdwf.enc)
+Provides:       tex(crm_uoxeaf.enc)
+Provides:       tex(crm_uoygek.enc)
+Provides:       tex(crm_uwd2sh.enc)
+Provides:       tex(crm_vd5n6o.enc)
+Provides:       tex(crm_vjfyui.enc)
+Provides:       tex(crm_wp5ef6.enc)
+Provides:       tex(crm_z6yvvc.enc)
+Provides:       tex(crm_zjsegd.enc)
+Provides:       tex(crm_zk5yn7.enc)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
@@ -14913,9 +15622,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source132:      crimson.tar.xz
-Source133:      crimson.doc.tar.xz
+# from 20250308
+Source141:      crimson.tar.xz
+Source142:      crimson.doc.tar.xz
 
 %description -n texlive-crimson
 This package provides LaTeX, pdfLaTeX, XeLaTeX, and LuaLaTeX
@@ -14929,7 +15638,7 @@ Text). Support for small caps and old-style numerals is still
 version of the package.
 
 %package -n texlive-crimson-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64559
+Version:        %{texlive_version}.%{texlive_noarch}.svn73074
 Release:        0
 Summary:        Documentation for texlive-crimson
 License:        OFL-1.1
@@ -14941,7 +15650,7 @@ Supplements:    (texlive-crimson and texlive-alldocumentation)
 This package includes the documentation for texlive-crimson
 
 %package -n texlive-crimson-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn64559
+Version:        %{texlive_version}.%{texlive_noarch}.svn73074
 Release:        0
 Summary:        Severed fonts for texlive-crimson
 License:        OFL-1.1
@@ -14983,28 +15692,74 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/crimson/crimson-samples.tex
 
 %files -n texlive-crimson
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_25ecww.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_2bk2kf.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_2vwhzr.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_36b5o4.enc
 %{_texmfdistdir}/fonts/enc/dvips/crimson/crm_3bejww.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_axwm4k.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_47fe7g.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_4df3hz.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_4wbvex.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_5iushh.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_64bq2b.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_6cvwjz.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_7vbuna.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_7wq2t4.enc
 %{_texmfdistdir}/fonts/enc/dvips/crimson/crm_ayvnmf.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_bchha2.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_fllea6.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_g4bzis.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_izufyi.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_b5atsz.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_bmqojb.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_bsm2ek.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_bxc7kq.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_cuvbeg.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_cxrmm4.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_d6nadx.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_dcyrwq.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_dk7p24.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_dl3wd7.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_dvqsdk.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_efj2rd.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_fi53q6.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_fvnjct.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_g3s64i.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_gkepkr.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_hbjel3.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_hhp6ae.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_hnx34u.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_hw76il.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_ihwzbi.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_j3frfl.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_j6wyjb.enc
 %{_texmfdistdir}/fonts/enc/dvips/crimson/crm_jdlmpi.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_kwsa5r.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_myjoho.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_n3gbj7.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_kigpiz.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_kyf4gw.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_lienqd.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_ltoc2m.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_lxm2kp.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_m6va3v.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_n3yyou.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_n44da6.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_ndtoxh.enc
 %{_texmfdistdir}/fonts/enc/dvips/crimson/crm_odbuza.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_ory2k7.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_qrsm2e.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_qst7o4.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_tyw3ea.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_uafi7a.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_ue2axx.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_vcz7kx.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_wef5am.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_wsbs26.enc
-%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_wttfgh.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_plxyu3.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_qvosxj.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_qx2olb.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_r6xrf3.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_r76pbb.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_rbmipx.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_rybvc4.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_st6vdm.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_tbj74c.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_tlhunq.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_tswdwf.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_uoxeaf.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_uoygek.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_uwd2sh.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_vd5n6o.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_vjfyui.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_wp5ef6.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_z6yvvc.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_zjsegd.enc
+%{_texmfdistdir}/fonts/enc/dvips/crimson/crm_zk5yn7.enc
 %{_texmfdistdir}/fonts/map/dvips/crimson/crimson.map
 %verify(link) %{_texmfdistdir}/fonts/opentype/kosch/crimson/Crimson-Bold.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/kosch/crimson/Crimson-BoldItalic.otf
@@ -15015,10 +15770,30 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Bold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-osf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tlf-ot1.tfm
@@ -15026,19 +15801,120 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tlf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-BoldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-osf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Italic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-osf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tlf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tlf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tlf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tlf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tlf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tlf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tlf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tosf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tosf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tosf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tosf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tosf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tosf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Roman-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-tlf-ot1.tfm
@@ -15046,6 +15922,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-tlf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-Semibold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-SemiboldItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-SemiboldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-SemiboldItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-SemiboldItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-SemiboldItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-SemiboldItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-SemiboldItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-SemiboldItalic-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-SemiboldItalic-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/kosch/crimson/Crimson-SemiboldItalic-tlf-ot1.tfm
@@ -15060,26 +15943,95 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/kosch/crimson/Crimson-Semibold.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/kosch/crimson/Crimson-SemiboldItalic.pfb
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Bold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Bold-tlf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Bold-tlf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Bold-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Bold-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Bold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-BoldItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-BoldItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-BoldItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-BoldItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-BoldItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-BoldItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-BoldItalic-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-BoldItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-BoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-BoldItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-BoldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-BoldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-tlf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-tlf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-tosf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-tosf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-tosf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Italic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-tlf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-tlf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-tosf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-tosf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-tosf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Roman-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Semibold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Semibold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Semibold-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Semibold-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Semibold-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-Semibold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-SemiboldItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-SemiboldItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-SemiboldItalic-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-SemiboldItalic-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-SemiboldItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/kosch/crimson/Crimson-SemiboldItalic-tlf-ts1.vf
+%{_texmfdistdir}/tex/latex/crimson/LY1Crimson-LF.fd
+%{_texmfdistdir}/tex/latex/crimson/LY1Crimson-OsF.fd
 %{_texmfdistdir}/tex/latex/crimson/LY1Crimson-TLF.fd
+%{_texmfdistdir}/tex/latex/crimson/LY1Crimson-TOsF.fd
+%{_texmfdistdir}/tex/latex/crimson/OT1Crimson-LF.fd
+%{_texmfdistdir}/tex/latex/crimson/OT1Crimson-OsF.fd
 %{_texmfdistdir}/tex/latex/crimson/OT1Crimson-TLF.fd
+%{_texmfdistdir}/tex/latex/crimson/OT1Crimson-TOsF.fd
+%{_texmfdistdir}/tex/latex/crimson/T1Crimson-LF.fd
+%{_texmfdistdir}/tex/latex/crimson/T1Crimson-OsF.fd
 %{_texmfdistdir}/tex/latex/crimson/T1Crimson-TLF.fd
+%{_texmfdistdir}/tex/latex/crimson/T1Crimson-TOsF.fd
+%{_texmfdistdir}/tex/latex/crimson/TS1Crimson-LF.fd
+%{_texmfdistdir}/tex/latex/crimson/TS1Crimson-OsF.fd
 %{_texmfdistdir}/tex/latex/crimson/TS1Crimson-TLF.fd
+%{_texmfdistdir}/tex/latex/crimson/TS1Crimson-TOsF.fd
 %{_texmfdistdir}/tex/latex/crimson/crimson.sty
 
 %files -n texlive-crimson-fonts
@@ -16059,9 +17011,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source134:      crimsonpro.tar.xz
-Source135:      crimsonpro.doc.tar.xz
+# from 20250308
+Source143:      crimsonpro.tar.xz
+Source144:      crimsonpro.doc.tar.xz
 
 %description -n texlive-crimsonpro
 The CrimsonPro fonts are designed by Jacques Le Bailly and
@@ -17138,9 +18090,9 @@ Requires:       tex(color.sty)
 Requires:       tex(graphics.sty)
 Requires:       tex(ifluatex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source136:      crop.tar.xz
-Source137:      crop.doc.tar.xz
+# from 20250308
+Source145:      crop.tar.xz
+Source146:      crop.doc.tar.xz
 
 %description -n texlive-crop
 A package providing corner marks for camera alignment as well
@@ -17192,7 +18144,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/crop/crop.sty
 
 %package -n texlive-crossrefenum
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn66014
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn70954
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Smart typesetting of enumerated cross-references for various TeX formats
@@ -17223,9 +18175,9 @@ Provides:       tex(crossrefenum.sty)
 Provides:       tex(crossrefenum.tex)
 Provides:       tex(t-crossrefenum.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source138:      crossrefenum.tar.xz
-Source139:      crossrefenum.doc.tar.xz
+# from 20250308
+Source147:      crossrefenum.tar.xz
+Source148:      crossrefenum.doc.tar.xz
 
 %description -n texlive-crossrefenum
 crossrefenum lets TeX manage the formatting of bunches of
@@ -17243,7 +18195,7 @@ compatible with a wide array of formats. For the moment, it
 works out of the box with ConTeXt and LaTeX.
 
 %package -n texlive-crossrefenum-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn66014
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn70954
 Release:        0
 Summary:        Documentation for texlive-crossrefenum
 License:        GPL-2.0-or-later
@@ -17328,9 +18280,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-crossreference-doc >= %{texlive_version}
 Provides:       tex(crossreference.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source140:      crossreference.tar.xz
-Source141:      crossreference.doc.tar.xz
+# from 20250308
+Source149:      crossreference.tar.xz
+Source150:      crossreference.doc.tar.xz
 
 %description -n texlive-crossreference
 The package defines cross-references (essentially 'grand' label
@@ -17404,9 +18356,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-crossreftools-doc >= %{texlive_version}
 Provides:       tex(crossreftools.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source142:      crossreftools.tar.xz
-Source143:      crossreftools.doc.tar.xz
+# from 20250308
+Source151:      crossreftools.tar.xz
+Source152:      crossreftools.doc.tar.xz
 
 %description -n texlive-crossreftools
 This package extracts information from cross-referencing
@@ -17453,7 +18405,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/crossreftools/crossreftools.sty
 
 %package -n texlive-crossrefware
-Version:        %{texlive_version}.%{texlive_noarch}.svn69700
+Version:        %{texlive_version}.%{texlive_noarch}.svn72217
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Scripts for working with crossref.org
@@ -17519,9 +18471,9 @@ Requires:       perl(warnings)
 Provides:       tex(bibdoiadd.cfg)
 Provides:       tex(ltx2crossrefxml.cfg)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source144:      crossrefware.tar.xz
-Source145:      crossrefware.doc.tar.xz
+# from 20250308
+Source153:      crossrefware.tar.xz
+Source154:      crossrefware.doc.tar.xz
 
 %description -n texlive-crossrefware
 This bundle contains the following scripts: bibdoiadd.pl: add
@@ -17534,7 +18486,7 @@ tool for the creation of XML files for submitting to
 crossref.org. The scripts use bibtexperllibs.
 
 %package -n texlive-crossrefware-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn69700
+Version:        %{texlive_version}.%{texlive_noarch}.svn72217
 Release:        0
 Summary:        Documentation for texlive-crossrefware
 License:        GPL-2.0-or-later
@@ -17592,7 +18544,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/crossrefware/ltx2crossrefxml.cfg
 
 %package -n texlive-crossword
-Version:        %{texlive_version}.%{texlive_noarch}.1.11svn64375
+Version:        %{texlive_version}.%{texlive_noarch}.1.13svn73579
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset crossword puzzles
@@ -17622,9 +18574,9 @@ Suggests:       texlive-crossword-doc >= %{texlive_version}
 Provides:       tex(cwpuzzle.sty)
 Requires:       tex(amssymb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source146:      crossword.tar.xz
-Source147:      crossword.doc.tar.xz
+# from 20250308
+Source155:      crossword.tar.xz
+Source156:      crossword.doc.tar.xz
 
 %description -n texlive-crossword
 An extended grid-based puzzle package, designed to take all
@@ -17645,7 +18597,7 @@ specification of the clues (if they're necessary). The author
 considers this style both 'natural' and robust.
 
 %package -n texlive-crossword-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.11svn64375
+Version:        %{texlive_version}.%{texlive_noarch}.1.13svn73579
 Release:        0
 Summary:        Documentation for texlive-crossword
 License:        LPPL-1.0
@@ -17713,9 +18665,9 @@ Suggests:       texlive-crosswrd-doc >= %{texlive_version}
 Provides:       tex(crosswrd.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source148:      crosswrd.tar.xz
-Source149:      crosswrd.doc.tar.xz
+# from 20250308
+Source157:      crosswrd.tar.xz
+Source158:      crosswrd.doc.tar.xz
 
 %description -n texlive-crosswrd
 The package provides a LaTeX method of typesetting crosswords,
@@ -17804,9 +18756,9 @@ Requires:       tex(catchfile.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source150:      crumbs.tar.xz
-Source151:      crumbs.doc.tar.xz
+# from 20250308
+Source159:      crumbs.tar.xz
+Source160:      crumbs.doc.tar.xz
 
 %description -n texlive-crumbs
 This package adds a navigation path ("breadcrumb trail") at the
@@ -17904,9 +18856,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source152:      cryptocode.tar.xz
-Source153:      cryptocode.doc.tar.xz
+# from 20250308
+Source161:      cryptocode.tar.xz
+Source162:      cryptocode.doc.tar.xz
 
 %description -n texlive-cryptocode
 The cryptocode package provides a set of macros to ease the
@@ -17986,9 +18938,9 @@ Requires:       texlive-cryst-fonts >= %{texlive_version}
 Suggests:       texlive-cryst-doc >= %{texlive_version}
 Provides:       tex(cryst.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source154:      cryst.tar.xz
-Source155:      cryst.doc.tar.xz
+# from 20250308
+Source163:      cryst.tar.xz
+Source164:      cryst.doc.tar.xz
 
 %description -n texlive-cryst
 The font is provided as an Adobe Type 1 font, and as Metafont
@@ -18305,8 +19257,8 @@ Provides:       tex(xl2.enc)
 Provides:       tex(xl2f.enc)
 Provides:       tex(xt2.enc)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source156:      cs.tar.xz
+# from 20250308
+Source165:      cs.tar.xz
 
 %description -n texlive-cs
 The fonts are provided as Metafont source; Type 1 format
@@ -18815,6 +19767,130 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-cs/csu10.pfb
 %{_datadir}/fonts/texlive-cs/csvtt10.pfb
 
+%package -n texlive-cs-techrep
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn73507
+Release:        0
+License:        LPPL-1.0
+Summary:        Technical Reports in Computer Science and Software Engineering
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-cs-techrep-doc >= %{texlive_version}
+Provides:       tex(cs-techrep.cls)
+Requires:       tex(IEEEtran.cls)
+Requires:       tex(acronym.sty)
+Requires:       tex(afterpage.sty)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(babel.sty)
+Requires:       tex(booktabs.sty)
+Requires:       tex(ccicons.sty)
+Requires:       tex(cleveref.sty)
+Requires:       tex(csquotes.sty)
+Requires:       tex(diagbox.sty)
+Requires:       tex(doclicense.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(extdash.sty)
+Requires:       tex(flushend.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hypcap.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(inputenc.sty)
+Requires:       tex(lipsum.sty)
+Requires:       tex(listings.sty)
+Requires:       tex(lmodern.sty)
+Requires:       tex(lscape.sty)
+Requires:       tex(newtxtt.sty)
+Requires:       tex(orcidlink.sty)
+Requires:       tex(paralist.sty)
+Requires:       tex(pbalance.sty)
+Requires:       tex(pdflscape.sty)
+Requires:       tex(relsize.sty)
+Requires:       tex(siunitx.sty)
+Requires:       tex(stfloats.sty)
+Requires:       tex(subcaption.sty)
+Requires:       tex(subfig.sty)
+Requires:       tex(tcolorbox.sty)
+Requires:       tex(times.sty)
+Requires:       tex(todonotes.sty)
+Requires:       tex(upquote.sty)
+Requires:       tex(url.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xspace.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source166:      cs-techrep.tar.xz
+Source167:      cs-techrep.doc.tar.xz
+
+%description -n texlive-cs-techrep
+This package provides a class for the creation of technical
+reports in computer science and software engineering. The style
+is a two-column format similar to IEEE. It is intended for lab
+reports and provides a beginner-friendly template example.
+
+%package -n texlive-cs-techrep-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn73507
+Release:        0
+Summary:        Documentation for texlive-cs-techrep
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-cs-techrep and texlive-alldocumentation)
+
+%description -n texlive-cs-techrep-doc
+This package includes the documentation for texlive-cs-techrep
+
+%post -n texlive-cs-techrep
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-cs-techrep
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-cs-techrep
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-cs-techrep-doc
+%{_texmfdistdir}/doc/latex/cs-techrep/COPYING
+%{_texmfdistdir}/doc/latex/cs-techrep/README
+%{_texmfdistdir}/doc/latex/cs-techrep/_cpn_copyIntoExamplesFolder_cls.cmd
+%{_texmfdistdir}/doc/latex/cs-techrep/cs-techrep.pdf
+%{_texmfdistdir}/doc/latex/cs-techrep/docstrip.cfg
+%{_texmfdistdir}/doc/latex/cs-techrep/template/cpn_all_all.bib
+%{_texmfdistdir}/doc/latex/cs-techrep/template/cs-techrep-example-neumann.pdf
+%{_texmfdistdir}/doc/latex/cs-techrep/template/cs-techrep-example-neumann.tex
+
+%files -n texlive-cs-techrep
+%{_texmfdistdir}/tex/latex/cs-techrep/cs-techrep.cls
+
 %package -n texlive-csassignments
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn63992
 Release:        0
@@ -18873,9 +19949,9 @@ Requires:       tex(tocloft.sty)
 Requires:       tex(totcount.sty)
 Requires:       tex(translations.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source157:      csassignments.tar.xz
-Source158:      csassignments.doc.tar.xz
+# from 20250308
+Source168:      csassignments.tar.xz
+Source169:      csassignments.doc.tar.xz
 
 %description -n texlive-csassignments
 This class wraps the default article and extends it for a
@@ -18968,9 +20044,9 @@ Requires:       tex(mflogo.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(zwpagelayout.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source159:      csbulletin.tar.xz
-Source160:      csbulletin.doc.tar.xz
+# from 20250308
+Source170:      csbulletin.tar.xz
+Source171:      csbulletin.doc.tar.xz
 
 %description -n texlive-csbulletin
 The package provides the class for articles for the CSTUG
@@ -19133,8 +20209,8 @@ Provides:       tex(xl2pzc.fd)
 Requires:       tex(czech.ldf)
 Requires:       tex(slovak.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source161:      cslatex.tar.xz
+# from 20250308
+Source172:      cslatex.tar.xz
 
 %description -n texlive-cslatex
 The cslatex package
@@ -19449,8 +20525,8 @@ Provides:       tex(uni-lcuc.tex)
 Provides:       tex(uni-math.tex)
 Provides:       tex(unifam.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source162:      csplain.tar.xz
+# from 20250308
+Source173:      csplain.tar.xz
 
 %description -n texlive-csplain
 CSplain is a small extension of basic Plain TeX macros, the
@@ -19646,7 +20722,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/csplain/opmac/pdfuni.tex
 
 %package -n texlive-csquotes
-Version:        %{texlive_version}.%{texlive_noarch}.5.2nsvn64389
+Version:        %{texlive_version}.%{texlive_noarch}.5.2osvn71053
 Release:        0
 License:        LPPL-1.0
 Summary:        Context sensitive quotation facilities
@@ -19683,9 +20759,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source163:      csquotes.tar.xz
-Source164:      csquotes.doc.tar.xz
+# from 20250308
+Source174:      csquotes.tar.xz
+Source175:      csquotes.doc.tar.xz
 
 %description -n texlive-csquotes
 This package provides advanced facilities for inline and
@@ -19704,7 +20780,7 @@ package is dependent on e-TeX, and requires the author's
 etoolbox package.
 
 %package -n texlive-csquotes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5.2nsvn64389
+Version:        %{texlive_version}.%{texlive_noarch}.5.2osvn71053
 Release:        0
 Summary:        Documentation for texlive-csquotes
 License:        LPPL-1.0
@@ -19771,8 +20847,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source165:      csquotes-de.doc.tar.xz
+# from 20250308
+Source176:      csquotes-de.doc.tar.xz
 
 %description -n texlive-csquotes-de
 This is a translation of the documentation of csquotes version
@@ -19831,9 +20907,9 @@ Suggests:       texlive-css-colors-doc >= %{texlive_version}
 Provides:       tex(css-colors.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source166:      css-colors.tar.xz
-Source167:      css-colors.doc.tar.xz
+# from 20250308
+Source177:      css-colors.tar.xz
+Source178:      css-colors.doc.tar.xz
 
 %description -n texlive-css-colors
 This package defines web-safe colors for use with D.P.
@@ -19905,8 +20981,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source168:      cstex.doc.tar.xz
+# from 20250308
+Source179:      cstex.doc.tar.xz
 
 %description -n texlive-cstex
 This package mirrors the macros part of the home site's
@@ -19970,6 +21046,99 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/cstex/testlat.tex
 %{_texmfdistdir}/doc/cstex/zmeny.txt
 
+%package -n texlive-csthm
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn73506
+Release:        0
+License:        LPPL-1.0
+Summary:        Customized theorem environments for computer science documents
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-csthm-doc >= %{texlive_version}
+Provides:       tex(csthm.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(amsthm.sty)
+Requires:       tex(cleveref.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(thmtools.sty)
+Requires:       tex(xcolor.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source180:      csthm.tar.xz
+Source181:      csthm.doc.tar.xz
+
+%description -n texlive-csthm
+This package provides customized theorem-like environments
+specifically designed for computer science documents. It offers
+a set of pre-defined theorem styles and environments to
+streamline the creation of theorems, definitions, remarks, and
+other common structures in computer science papers and
+documents. Features: Predefined theorem styles tailored for
+computer science Environments for theorems, lemmas,
+definitions, examples, remarks, and more Special environments
+for cases and axioms Customizable accent color Optional
+cleveref support for enhanced cross-referencing The package
+requires the following packages to be installed: amsmath,
+amssymb, amsthm, enumitem, and thmtools. If using the cleveref
+option, hyperref and cleveref are also required.
+
+%package -n texlive-csthm-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn73506
+Release:        0
+Summary:        Documentation for texlive-csthm
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-csthm and texlive-alldocumentation)
+
+%description -n texlive-csthm-doc
+This package includes the documentation for texlive-csthm
+
+%post -n texlive-csthm
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-csthm
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-csthm
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-csthm-doc
+%{_texmfdistdir}/doc/latex/csthm/README.md
+%{_texmfdistdir}/doc/latex/csthm/csthm-example.pdf
+%{_texmfdistdir}/doc/latex/csthm/csthm-example.tex
+
+%files -n texlive-csthm
+%{_texmfdistdir}/tex/latex/csthm/csthm.sty
+
 %package -n texlive-cstypo
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.03svn41986
 Release:        0
@@ -20002,9 +21171,9 @@ Provides:       tex(cstypo-tex.tex)
 Provides:       tex(cstypo.sty)
 Requires:       tex(ifluatex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source169:      cstypo.tar.xz
-Source170:      cstypo.doc.tar.xz
+# from 20250308
+Source182:      cstypo.tar.xz
+Source183:      cstypo.doc.tar.xz
 
 %description -n texlive-cstypo
 This package provides macros that enforce basic Czech
@@ -20085,9 +21254,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(stringstrings.sty)
 Requires:       tex(trimspaces.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source171:      csvmerge.tar.xz
-Source172:      csvmerge.doc.tar.xz
+# from 20250308
+Source184:      csvmerge.tar.xz
+Source185:      csvmerge.doc.tar.xz
 
 %description -n texlive-csvmerge
 This package provides macros for processing a csv spreadsheet
@@ -20136,7 +21305,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/csvmerge/csvmerge.sty
 
 %package -n texlive-csvsimple
-Version:        %{texlive_version}.%{texlive_noarch}.2.6.0svn69494
+Version:        %{texlive_version}.%{texlive_noarch}.2.7.0svn72484
 Release:        0
 License:        LPPL-1.0
 Summary:        Simple CSV file processing
@@ -20172,9 +21341,9 @@ Requires:       tex(pgfkeys.sty)
 Requires:       tex(pgfrcs.sty)
 Requires:       tex(shellesc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source173:      csvsimple.tar.xz
-Source174:      csvsimple.doc.tar.xz
+# from 20250308
+Source186:      csvsimple.tar.xz
+Source187:      csvsimple.doc.tar.xz
 
 %description -n texlive-csvsimple
 The package provides a simple LaTeX interface for the
@@ -20186,7 +21355,7 @@ sorting or data base storage. The package depends on etoolbox,
 ifthen, pgfrcs, pgfkeys, and shellesc.
 
 %package -n texlive-csvsimple-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.6.0svn69494
+Version:        %{texlive_version}.%{texlive_noarch}.2.7.0svn72484
 Release:        0
 Summary:        Documentation for texlive-csvsimple
 License:        LPPL-1.0
@@ -20280,9 +21449,9 @@ Requires:       tex(transparent.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source175:      ctable.tar.xz
-Source176:      ctable.doc.tar.xz
+# from 20250308
+Source188:      ctable.tar.xz
+Source189:      ctable.doc.tar.xz
 
 %description -n texlive-ctable
 Provides commands to typeset centered, left- or right-aligned
@@ -20389,9 +21558,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ctablestack-doc >= %{texlive_version}
 Provides:       tex(ctablestack.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source177:      ctablestack.tar.xz
-Source178:      ctablestack.doc.tar.xz
+# from 20250308
+Source190:      ctablestack.tar.xz
+Source191:      ctablestack.doc.tar.xz
 
 %description -n texlive-ctablestack
 This package provides a method for defining category code table
@@ -20490,9 +21659,9 @@ Requires:       perl(constant)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source179:      ctan-o-mat.tar.xz
-Source180:      ctan-o-mat.doc.tar.xz
+# from 20250308
+Source192:      ctan-o-mat.tar.xz
+Source193:      ctan-o-mat.doc.tar.xz
 
 %description -n texlive-ctan-o-mat
 This program can be used to automate the upload of a package to
@@ -20580,8 +21749,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source181:      ctan_chk.doc.tar.xz
+# from 20250308
+Source194:      ctan_chk.doc.tar.xz
 
 %description -n texlive-ctan_chk
 Basic gawk program that uses CTAN's published guidelines for
@@ -20644,9 +21813,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ctanbib-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source182:      ctanbib.tar.xz
-Source183:      ctanbib.doc.tar.xz
+# from 20250308
+Source195:      ctanbib.tar.xz
+Source196:      ctanbib.doc.tar.xz
 
 %description -n texlive-ctanbib
 This package provides a Lua script which can be used for
@@ -20748,9 +21917,9 @@ Requires:       perl(strict)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source184:      ctanify.tar.xz
-Source185:      ctanify.doc.tar.xz
+# from 20250308
+Source197:      ctanify.tar.xz
+Source198:      ctanify.doc.tar.xz
 
 %description -n texlive-ctanify
 Given a list of filenames, ctanify creates a tarball (a .tar.gz
@@ -20844,9 +22013,9 @@ Requires:       perl(strict)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source186:      ctanupload.tar.xz
-Source187:      ctanupload.doc.tar.xz
+# from 20250308
+Source199:      ctanupload.tar.xz
+Source200:      ctanupload.doc.tar.xz
 
 %description -n texlive-ctanupload
 The package provides a Perl script that allows the uploads of a
@@ -20894,7 +22063,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/ctanupload/ctanupload.pl
 
 %package -n texlive-ctex
-Version:        %{texlive_version}.%{texlive_noarch}.2.5.10svn66115
+Version:        %{texlive_version}.%{texlive_noarch}.2.5.10svn71527
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX classes and packages for Chinese typesetting
@@ -20938,8 +22107,6 @@ Requires:       texlive-luatexja >= %{texlive_version}
 #!BuildIgnore: texlive-luatexja
 Requires:       texlive-mptopdf >= %{texlive_version}
 #!BuildIgnore: texlive-mptopdf
-Requires:       texlive-ms >= %{texlive_version}
-#!BuildIgnore: texlive-ms
 Requires:       texlive-pdftexcmds >= %{texlive_version}
 #!BuildIgnore: texlive-pdftexcmds
 Requires:       texlive-platex-tools >= %{texlive_version}
@@ -21097,16 +22264,16 @@ Requires:       tex(xunicode-addon.sty)
 Requires:       tex(zhnumber.sty)
 Requires:       tex(zref-base.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source188:      ctex.tar.xz
-Source189:      ctex.doc.tar.xz
+# from 20250308
+Source201:      ctex.tar.xz
+Source202:      ctex.doc.tar.xz
 
 %description -n texlive-ctex
 ctex is a collection of macro packages and document classes for
 LaTeX Chinese typesetting.
 
 %package -n texlive-ctex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.5.10svn66115
+Version:        %{texlive_version}.%{texlive_noarch}.2.5.10svn71527
 Release:        0
 Summary:        Documentation for texlive-ctex
 License:        LPPL-1.0
@@ -21240,8 +22407,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source190:      ctex-faq.doc.tar.xz
+# from 20250308
+Source203:      ctex-faq.doc.tar.xz
 
 %description -n texlive-ctex-faq
 Most questions were collected on the bbs.ctex.org forum, and
@@ -21305,9 +22472,9 @@ Provides:       tex(lctctib.fd)
 Provides:       tex(lctenc.def)
 Requires:       tex(fontenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source191:      ctib.tar.xz
-Source192:      ctib.doc.tar.xz
+# from 20250308
+Source204:      ctib.tar.xz
+Source205:      ctib.doc.tar.xz
 
 %description -n texlive-ctib
 A package using a modified version of Sirlin's Tibetan font. An
@@ -21366,7 +22533,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ctib/lctenc.def
 
 %package -n texlive-ctie
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn73848
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        C version of tie (merging Web change files)
@@ -21398,8 +22565,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(ctie.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source193:      ctie.doc.tar.xz
+# from 20250308
+Source206:      ctie.doc.tar.xz
 
 %description -n texlive-ctie
 This is a version of tie converted for use with cweb.
@@ -21455,9 +22622,9 @@ Suggests:       texlive-cuisine-doc >= %{texlive_version}
 Provides:       tex(cuisine.sty)
 Requires:       tex(nicefrac.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source194:      cuisine.tar.xz
-Source195:      cuisine.doc.tar.xz
+# from 20250308
+Source207:      cuisine.tar.xz
+Source208:      cuisine.doc.tar.xz
 
 %description -n texlive-cuisine
 Typeset recipes with the ingredients lined up with their method
@@ -21786,9 +22953,9 @@ Provides:       tex(yehudab-new.vf)
 Provides:       tex(yehudab.tfm)
 Provides:       tex(yehudab.vf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source196:      culmus.tar.xz
-Source197:      culmus.doc.tar.xz
+# from 20250308
+Source209:      culmus.tar.xz
+Source210:      culmus.doc.tar.xz
 
 %description -n texlive-culmus
 Hebrew fonts from the Culmus Project. Both Type1 and
@@ -22344,9 +23511,9 @@ Provides:       tex(cuprum.map)
 Provides:       tex(cuprum.sty)
 Provides:       tex(t1cpr.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source198:      cuprum.tar.xz
-Source199:      cuprum.doc.tar.xz
+# from 20250308
+Source211:      cuprum.tar.xz
+Source212:      cuprum.doc.tar.xz
 
 %description -n texlive-cuprum
 This package provides support for the Cuprum font family (see
@@ -22467,9 +23634,9 @@ Requires:       tex(siunitx.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source200:      currency.tar.xz
-Source201:      currency.doc.tar.xz
+# from 20250308
+Source213:      currency.tar.xz
+Source214:      currency.doc.tar.xz
 
 %description -n texlive-currency
 The package facilitates the formatting of currencies (amounts
@@ -22514,7 +23681,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/currency/currency.sty
 
 %package -n texlive-currfile
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn64673
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn70650
 Release:        0
 License:        LPPL-1.0
 Summary:        Provide file name and path of input files
@@ -22546,9 +23713,9 @@ Provides:       tex(currfile.sty)
 Requires:       tex(filehook.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source202:      currfile.tar.xz
-Source203:      currfile.doc.tar.xz
+# from 20250308
+Source215:      currfile.tar.xz
+Source216:      currfile.doc.tar.xz
 
 %description -n texlive-currfile
 The package provides macros holding file name information
@@ -22564,7 +23731,7 @@ including files to the root of the tree). The package
 supersedes FiNK.
 
 %package -n texlive-currfile-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn64673
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn70650
 Release:        0
 Summary:        Documentation for texlive-currfile
 License:        LPPL-1.0
@@ -22593,7 +23760,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-currfile-doc
-%{_texmfdistdir}/doc/latex/currfile/README
+%{_texmfdistdir}/doc/latex/currfile/README.txt
 %{_texmfdistdir}/doc/latex/currfile/currfile.pdf
 
 %files -n texlive-currfile
@@ -22632,9 +23799,9 @@ Provides:       tex(curriculum-vitae.cls)
 Requires:       tex(article.cls)
 Requires:       tex(titlesec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source204:      curriculum-vitae.tar.xz
-Source205:      curriculum-vitae.doc.tar.xz
+# from 20250308
+Source217:      curriculum-vitae.tar.xz
+Source218:      curriculum-vitae.doc.tar.xz
 
 %description -n texlive-curriculum-vitae
 This is a lightweight class file that allows you to typeset CVs
@@ -22708,9 +23875,9 @@ Suggests:       texlive-currvita-doc >= %{texlive_version}
 Provides:       tex(currvita.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source206:      currvita.tar.xz
-Source207:      currvita.doc.tar.xz
+# from 20250308
+Source219:      currvita.tar.xz
+Source220:      currvita.doc.tar.xz
 
 %description -n texlive-currvita
 Currvita is a package rather than a class (like most other
@@ -22783,8 +23950,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source208:      cursolatex.doc.tar.xz
+# from 20250308
+Source221:      cursolatex.doc.tar.xz
 
 %description -n texlive-cursolatex
 The tutorial is presented as a set of slides (in Portuguese).
@@ -22863,9 +24030,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(ltxtable.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source209:      curve.tar.xz
-Source210:      curve.doc.tar.xz
+# from 20250308
+Source222:      curve.tar.xz
+Source223:      curve.doc.tar.xz
 
 %description -n texlive-curve
 CurVe is a class for writing a CV, with configuration for the
@@ -22926,7 +24093,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/curve/curve.cls
 
 %package -n texlive-curve2e
-Version:        %{texlive_version}.%{texlive_noarch}.2.3.1svn67599
+Version:        %{texlive_version}.%{texlive_noarch}.2.6.0svn72842
 Release:        0
 License:        LPPL-1.0
 Summary:        Extensions for package pict2e
@@ -22961,9 +24128,9 @@ Requires:       tex(pict2e.sty)
 Requires:       tex(xfp.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source211:      curve2e.tar.xz
-Source212:      curve2e.doc.tar.xz
+# from 20250308
+Source224:      curve2e.tar.xz
+Source225:      curve2e.doc.tar.xz
 
 %description -n texlive-curve2e
 The package extends the drawing capacities of the pict2e that
@@ -22975,7 +24142,7 @@ ends, generic curves specified with their nodes and the tangent
 direction at these nodes.
 
 %package -n texlive-curve2e-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.3.1svn67599
+Version:        %{texlive_version}.%{texlive_noarch}.2.6.0svn72842
 Release:        0
 Summary:        Documentation for texlive-curve2e
 License:        LPPL-1.0
@@ -23044,9 +24211,9 @@ Suggests:       texlive-curves-doc >= %{texlive_version}
 Provides:       tex(curves.sty)
 Provides:       tex(curvesls.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source213:      curves.tar.xz
-Source214:      curves.doc.tar.xz
+# from 20250308
+Source226:      curves.tar.xz
+Source227:      curves.doc.tar.xz
 
 %description -n texlive-curves
 This package draws curves in the standard LaTeX picture
@@ -23128,9 +24295,9 @@ Provides:       tex(geophys.tex)
 Provides:       tex(makebst.tex)
 Provides:       tex(shorthnd.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source215:      custom-bib.tar.xz
-Source216:      custom-bib.doc.tar.xz
+# from 20250308
+Source228:      custom-bib.tar.xz
+Source229:      custom-bib.doc.tar.xz
 
 %description -n texlive-custom-bib
 Package generating customized BibTeX bibliography styles from a
@@ -23230,9 +24397,9 @@ Provides:       tex(customdice.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source217:      customdice.tar.xz
-Source218:      customdice.doc.tar.xz
+# from 20250308
+Source230:      customdice.tar.xz
+Source231:      customdice.doc.tar.xz
 
 %description -n texlive-customdice
 The customdice package for LaTeX, LuaLaTeX and XeTeX that
@@ -23278,7 +24445,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/customdice/customdice.sty
 
 %package -n texlive-customenvs
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn68637
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.1svn73961
 Release:        0
 License:        LPPL-1.0
 Summary:        Custom environments (MCQ, list with picked items, ...)
@@ -23306,27 +24473,32 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-customenvs-doc >= %{texlive_version}
 Provides:       tex(customenvs.sty)
+Requires:       tex(calc.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(fontawesome5.sty)
 Requires:       tex(listofitems.sty)
 Requires:       tex(multicol.sty)
+Requires:       tex(pas-tableur.sty)
 Requires:       tex(randomlist.sty)
 Requires:       tex(simplekv.sty)
 Requires:       tex(tabularray.sty)
+Requires:       tex(tcolorbox.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(varwidth.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xintexpr.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source219:      customenvs.tar.xz
-Source220:      customenvs.doc.tar.xz
+# from 20250308
+Source232:      customenvs.tar.xz
+Source233:      customenvs.doc.tar.xz
 
 %description -n texlive-customenvs
 The package provides some custom environments (Multiple Choice,
 list with chosen items, ...) based on existing environments.
 
 %package -n texlive-customenvs-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn68637
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.1svn73961
 Release:        0
 Summary:        Documentation for texlive-customenvs
 License:        LPPL-1.0
@@ -23361,6 +24533,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/customenvs/customenvs-doc-en.tex
 %{_texmfdistdir}/doc/latex/customenvs/customenvs-doc-fr.pdf
 %{_texmfdistdir}/doc/latex/customenvs/customenvs-doc-fr.tex
+%{_texmfdistdir}/doc/latex/customenvs/envtexo_exemples.pdf
+%{_texmfdistdir}/doc/latex/customenvs/envtexo_exemples.tex
 
 %files -n texlive-customenvs
 %{_texmfdistdir}/tex/latex/customenvs/customenvs.sty
@@ -23395,9 +24569,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-cutwin-doc >= %{texlive_version}
 Provides:       tex(cutwin.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source221:      cutwin.tar.xz
-Source222:      cutwin.doc.tar.xz
+# from 20250308
+Source234:      cutwin.tar.xz
+Source235:      cutwin.doc.tar.xz
 
 %description -n texlive-cutwin
 The package provides facilities to cut windows out of
@@ -23471,9 +24645,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-cv-doc >= %{texlive_version}
 Provides:       tex(CV.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source223:      cv.tar.xz
-Source224:      cv.doc.tar.xz
+# from 20250308
+Source236:      cv.tar.xz
+Source237:      cv.doc.tar.xz
 
 %description -n texlive-cv
 The package is distributed with two example files; they (and
@@ -23577,9 +24751,9 @@ Requires:       tex(realboxes.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source225:      cv4tw.tar.xz
-Source226:      cv4tw.doc.tar.xz
+# from 20250308
+Source238:      cv4tw.tar.xz
+Source239:      cv4tw.doc.tar.xz
 
 %description -n texlive-cv4tw
 The class offers entries for assets and social networks;
@@ -23663,9 +24837,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source227:      cvss.tar.xz
-Source228:      cvss.doc.tar.xz
+# from 20250308
+Source240:      cvss.tar.xz
+Source241:      cvss.doc.tar.xz
 
 %description -n texlive-cvss
 The Common Vulnerability Scoring System (CVSS) is an open
@@ -23715,7 +24889,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/cvss/cvss.sty
 
 %package -n texlive-cweb
-Version:        %{texlive_version}.%{texlive_noarch}.svn70578
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 License:        SUSE-TeX
 Summary:        CWEB for ANSI-C/C++ compilers
@@ -23723,6 +24897,10 @@ Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-cweb-bin >= %{texlive_version}
 #!BuildIgnore: texlive-cweb-bin
+Requires:       texlive-iftex >= %{texlive_version}
+#!BuildIgnore: texlive-iftex
+Requires:       texlive-kpathsea >= %{texlive_version}
+#!BuildIgnore: texlive-kpathsea
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -23766,9 +24944,9 @@ Provides:       tex(pdfwebtocfront.tex)
 Provides:       tex(twimac-web.tex)
 Provides:       tex(twinx-startup.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source229:      cweb.tar.xz
-Source230:      cweb.doc.tar.xz
+# from 20250308
+Source242:      cweb.tar.xz
+Source243:      cweb.doc.tar.xz
 
 %description -n texlive-cweb
 A highly portable and extended version of Levy/Knuth CWEB 3.64c
@@ -23787,7 +24965,7 @@ version and adding new features from CWEBbin. As of November
 the package's github repository for more information.
 
 %package -n texlive-cweb-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70578
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 Summary:        Documentation for texlive-cweb
 License:        SUSE-TeX
@@ -23893,9 +25071,9 @@ Provides:       tex(cwebbase.tex)
 Provides:       tex(keyvald.sty)
 Requires:       tex(array.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source231:      cweb-latex.tar.xz
-Source232:      cweb-latex.doc.tar.xz
+# from 20250308
+Source244:      cweb-latex.tar.xz
+Source245:      cweb-latex.doc.tar.xz
 
 %description -n texlive-cweb-latex
 This bundle allows marking-up of CWEB code in LaTeX. The
@@ -24048,8 +25226,8 @@ Provides:       tex(pdffcwebmac.tex)
 Provides:       tex(pdficwebmac.tex)
 Provides:       tex(pdfwebmac.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source233:      cweb-old.tar.xz
+# from 20250308
+Source246:      cweb-old.tar.xz
 
 %description -n texlive-cweb-old
 The cweb-old package
@@ -24115,9 +25293,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(index.sty)
 Requires:       tex(longtable.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source234:      cyber.tar.xz
-Source235:      cyber.doc.tar.xz
+# from 20250308
+Source247:      cyber.tar.xz
+Source248:      cyber.doc.tar.xz
 
 %description -n texlive-cyber
 This LaTeX package helps you write documents indicating your
@@ -24194,9 +25372,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-cybercic-doc >= %{texlive_version}
 Provides:       tex(cybercic.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source236:      cybercic.tar.xz
-Source237:      cybercic.doc.tar.xz
+# from 20250308
+Source249:      cybercic.tar.xz
+Source250:      cybercic.doc.tar.xz
 
 %description -n texlive-cybercic
 This package is used in concert with the cyber package to make
@@ -24339,9 +25517,9 @@ Provides:       tex(t5-cyklopr-sc.tfm)
 Provides:       tex(t5-cyklopr.tfm)
 Provides:       tex(t5cyklop.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source238:      cyklop.tar.xz
-Source239:      cyklop.doc.tar.xz
+# from 20250308
+Source251:      cyklop.tar.xz
+Source252:      cyklop.doc.tar.xz
 
 %description -n texlive-cyklop
 The Cyclop typeface was designed in the 1920s at the workshop
@@ -24501,7 +25679,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-cyklop/cyklopr.pfb
 
 %package -n texlive-cyrillic
-Version:        %{texlive_version}.%{texlive_noarch}.20220601_pl1svn63613
+Version:        %{texlive_version}.%{texlive_noarch}.svn71408
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for Cyrillic fonts in LaTeX
@@ -24639,9 +25817,9 @@ Provides:       tex(x2lcmss.fd)
 Provides:       tex(x2lcmtt.fd)
 Requires:       tex(fontenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source240:      cyrillic.tar.xz
-Source241:      cyrillic.doc.tar.xz
+# from 20250308
+Source253:      cyrillic.tar.xz
+Source254:      cyrillic.doc.tar.xz
 
 %description -n texlive-cyrillic
 This bundle of macros files provides macro support (including
@@ -24652,7 +25830,7 @@ in a Cyrillic alphabet. This directory is part of the LaTeX
 "required" distribution.
 
 %package -n texlive-cyrillic-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20220601_pl1svn63613
+Version:        %{texlive_version}.%{texlive_noarch}.svn71408
 Release:        0
 Summary:        Documentation for texlive-cyrillic
 License:        LPPL-1.0
@@ -24833,9 +26011,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-cyrillic-bin-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source242:      cyrillic-bin.tar.xz
-Source243:      cyrillic-bin.doc.tar.xz
+# from 20250308
+Source255:      cyrillic-bin.tar.xz
+Source256:      cyrillic-bin.doc.tar.xz
 
 %description -n texlive-cyrillic-bin
 The cyrillic-bin package
@@ -24879,6 +26057,701 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/texlive-extra/rubibtex.sh
 %{_texmfdistdir}/scripts/texlive-extra/rumakeindex.sh
 
+%package -n texlive-cyrillic-modern
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn71183
+Release:        0
+License:        OFL-1.1
+Summary:        Slightly modified computer modern fonts with Cyrillics
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(post): findutils
+Requires(post): grep
+Requires(post): sed
+Requires(post): texlive >= %{texlive_version}
+Requires(post): tex(updmap.cfg)
+#!BuildIgnore:  tex(updmap.cfg)
+Requires(postun): findutils
+Requires(postun): grep
+Requires(postun): sed
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Requires:       texlive-cyrillic-modern-fonts >= %{texlive_version}
+Suggests:       texlive-cyrillic-modern-doc >= %{texlive_version}
+Provides:       tex(ls2-nmb10.tfm)
+Provides:       tex(ls2-nmbx10.tfm)
+Provides:       tex(ls2-nmbx12.tfm)
+Provides:       tex(ls2-nmbx5.tfm)
+Provides:       tex(ls2-nmbx6.tfm)
+Provides:       tex(ls2-nmbx7.tfm)
+Provides:       tex(ls2-nmbx8.tfm)
+Provides:       tex(ls2-nmbx9.tfm)
+Provides:       tex(ls2-nmbxsl10.tfm)
+Provides:       tex(ls2-nmbxti10.tfm)
+Provides:       tex(ls2-nmcsc10.tfm)
+Provides:       tex(ls2-nmr10.tfm)
+Provides:       tex(ls2-nmr12.tfm)
+Provides:       tex(ls2-nmr17.tfm)
+Provides:       tex(ls2-nmr5.tfm)
+Provides:       tex(ls2-nmr6.tfm)
+Provides:       tex(ls2-nmr7.tfm)
+Provides:       tex(ls2-nmr8.tfm)
+Provides:       tex(ls2-nmr9.tfm)
+Provides:       tex(ls2-nmsl10.tfm)
+Provides:       tex(ls2-nmsl12.tfm)
+Provides:       tex(ls2-nmsl8.tfm)
+Provides:       tex(ls2-nmsl9.tfm)
+Provides:       tex(ls2-nmss10.tfm)
+Provides:       tex(ls2-nmss12.tfm)
+Provides:       tex(ls2-nmss17.tfm)
+Provides:       tex(ls2-nmss8.tfm)
+Provides:       tex(ls2-nmss9.tfm)
+Provides:       tex(ls2-nmssbx10.tfm)
+Provides:       tex(ls2-nmssdc10.tfm)
+Provides:       tex(ls2-nmssi10.tfm)
+Provides:       tex(ls2-nmssi12.tfm)
+Provides:       tex(ls2-nmssi17.tfm)
+Provides:       tex(ls2-nmssi8.tfm)
+Provides:       tex(ls2-nmssi9.tfm)
+Provides:       tex(ls2-nmti10.tfm)
+Provides:       tex(ls2-nmti12.tfm)
+Provides:       tex(ls2-nmti7.tfm)
+Provides:       tex(ls2-nmti8.tfm)
+Provides:       tex(ls2-nmti9.tfm)
+Provides:       tex(ls2enc.def)
+Provides:       tex(ls2nmr.fd)
+Provides:       tex(ls2nmss.fd)
+Provides:       tex(nm-7t.enc)
+Provides:       tex(nm-7tsc.enc)
+Provides:       tex(nm-7tti.enc)
+Provides:       tex(nm-ls2.enc)
+Provides:       tex(nm-t2a.enc)
+Provides:       tex(nm-t2asc.enc)
+Provides:       tex(nm-t2ati.enc)
+Provides:       tex(nm.map)
+Provides:       tex(nm.sty)
+Provides:       tex(nmb10.tfm)
+Provides:       tex(nmbx10.tfm)
+Provides:       tex(nmbx12.tfm)
+Provides:       tex(nmbx5.tfm)
+Provides:       tex(nmbx6.tfm)
+Provides:       tex(nmbx7.tfm)
+Provides:       tex(nmbx8.tfm)
+Provides:       tex(nmbx9.tfm)
+Provides:       tex(nmbxsl10.tfm)
+Provides:       tex(nmbxti10.tfm)
+Provides:       tex(nmcsc10.tfm)
+Provides:       tex(nmmi.enc)
+Provides:       tex(nmmi10.tfm)
+Provides:       tex(nmmi12.tfm)
+Provides:       tex(nmmi5.tfm)
+Provides:       tex(nmmi6.tfm)
+Provides:       tex(nmmi7.tfm)
+Provides:       tex(nmmi8.tfm)
+Provides:       tex(nmmi9.tfm)
+Provides:       tex(nmmib10.tfm)
+Provides:       tex(nmmib5.tfm)
+Provides:       tex(nmmib6.tfm)
+Provides:       tex(nmmib7.tfm)
+Provides:       tex(nmmib8.tfm)
+Provides:       tex(nmmib9.tfm)
+Provides:       tex(nmr10.tfm)
+Provides:       tex(nmr12.tfm)
+Provides:       tex(nmr17.tfm)
+Provides:       tex(nmr5.tfm)
+Provides:       tex(nmr6.tfm)
+Provides:       tex(nmr7.tfm)
+Provides:       tex(nmr8.tfm)
+Provides:       tex(nmr9.tfm)
+Provides:       tex(nmsl10.tfm)
+Provides:       tex(nmsl12.tfm)
+Provides:       tex(nmsl8.tfm)
+Provides:       tex(nmsl9.tfm)
+Provides:       tex(nmss10.tfm)
+Provides:       tex(nmss12.tfm)
+Provides:       tex(nmss17.tfm)
+Provides:       tex(nmss8.tfm)
+Provides:       tex(nmss9.tfm)
+Provides:       tex(nmssbx10.tfm)
+Provides:       tex(nmssdc10.tfm)
+Provides:       tex(nmssi10.tfm)
+Provides:       tex(nmssi12.tfm)
+Provides:       tex(nmssi17.tfm)
+Provides:       tex(nmssi8.tfm)
+Provides:       tex(nmssi9.tfm)
+Provides:       tex(nmti10.tfm)
+Provides:       tex(nmti12.tfm)
+Provides:       tex(nmti7.tfm)
+Provides:       tex(nmti8.tfm)
+Provides:       tex(nmti9.tfm)
+Provides:       tex(omlnmm.fd)
+Provides:       tex(ot1-nmb10.tfm)
+Provides:       tex(ot1-nmbx10.tfm)
+Provides:       tex(ot1-nmbx12.tfm)
+Provides:       tex(ot1-nmbx5.tfm)
+Provides:       tex(ot1-nmbx6.tfm)
+Provides:       tex(ot1-nmbx7.tfm)
+Provides:       tex(ot1-nmbx8.tfm)
+Provides:       tex(ot1-nmbx9.tfm)
+Provides:       tex(ot1-nmbxsl10.tfm)
+Provides:       tex(ot1-nmbxti10.tfm)
+Provides:       tex(ot1-nmcsc10.tfm)
+Provides:       tex(ot1-nmr10.tfm)
+Provides:       tex(ot1-nmr12.tfm)
+Provides:       tex(ot1-nmr17.tfm)
+Provides:       tex(ot1-nmr5.tfm)
+Provides:       tex(ot1-nmr6.tfm)
+Provides:       tex(ot1-nmr7.tfm)
+Provides:       tex(ot1-nmr8.tfm)
+Provides:       tex(ot1-nmr9.tfm)
+Provides:       tex(ot1-nmsl10.tfm)
+Provides:       tex(ot1-nmsl12.tfm)
+Provides:       tex(ot1-nmsl8.tfm)
+Provides:       tex(ot1-nmsl9.tfm)
+Provides:       tex(ot1-nmss10.tfm)
+Provides:       tex(ot1-nmss12.tfm)
+Provides:       tex(ot1-nmss17.tfm)
+Provides:       tex(ot1-nmss8.tfm)
+Provides:       tex(ot1-nmss9.tfm)
+Provides:       tex(ot1-nmssbx10.tfm)
+Provides:       tex(ot1-nmssdc10.tfm)
+Provides:       tex(ot1-nmssi10.tfm)
+Provides:       tex(ot1-nmssi12.tfm)
+Provides:       tex(ot1-nmssi17.tfm)
+Provides:       tex(ot1-nmssi8.tfm)
+Provides:       tex(ot1-nmssi9.tfm)
+Provides:       tex(ot1-nmti10.tfm)
+Provides:       tex(ot1-nmti12.tfm)
+Provides:       tex(ot1-nmti7.tfm)
+Provides:       tex(ot1-nmti8.tfm)
+Provides:       tex(ot1-nmti9.tfm)
+Provides:       tex(ot1nmr.fd)
+Provides:       tex(ot1nmss.fd)
+Provides:       tex(t2anmr.fd)
+Provides:       tex(t2anmss.fd)
+Provides:       tex(unmr.fd)
+Provides:       tex(unmss.fd)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source257:      cyrillic-modern.tar.xz
+Source258:      cyrillic-modern.doc.tar.xz
+
+%description -n texlive-cyrillic-modern
+The Cyrillic Modern fonts are based on the Computer Modern
+fonts designed in Metafont by D. E. Knuth and released in Type
+1 format by the American Mathematical Society under the SIL
+Open Font License (OFL). The Cyrillic Modern fonts are intended
+to make the Cyrillic letters with classical shapes typical to
+the modern fonts. Currently, the fonts add support for the
+Russian language, the numero sign and quotation marks required
+for Russian typesetting.
+
+%package -n texlive-cyrillic-modern-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn71183
+Release:        0
+Summary:        Documentation for texlive-cyrillic-modern
+License:        OFL-1.1
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-cyrillic-modern and texlive-alldocumentation)
+
+%description -n texlive-cyrillic-modern-doc
+This package includes the documentation for texlive-cyrillic-modern
+
+%package -n texlive-cyrillic-modern-fonts
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn71183
+Release:        0
+Summary:        Severed fonts for texlive-cyrillic-modern
+License:        OFL-1.1
+URL:            https://www.tug.org/texlive/
+Group:          Productivity/Publishing/TeX/Fonts
+%reconfigure_fonts_prereq
+Requires(posttrans): fontconfig
+Requires(posttrans): ghostscript-fonts-std
+Suggests:       xorg-x11-fonts-core
+
+%description -n texlive-cyrillic-modern-fonts
+The  separated fonts package for texlive-cyrillic-modern
+
+%post -n texlive-cyrillic-modern
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+echo 'addMap nm.map' >> /var/run/texlive/run-updmap
+
+%postun -n texlive-cyrillic-modern
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    echo 'deleteMap nm.map' >> /var/run/texlive/run-updmap
+    exit 0
+fi
+
+%posttrans -n texlive-cyrillic-modern
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%reconfigure_fonts_scriptlets -n texlive-cyrillic-modern-fonts
+
+%files -n texlive-cyrillic-modern-doc
+%{_texmfdistdir}/doc/fonts/cyrillic-modern/FontLog.txt
+%{_texmfdistdir}/doc/fonts/cyrillic-modern/INSTALL
+%{_texmfdistdir}/doc/fonts/cyrillic-modern/OFL-FAQ.txt
+%{_texmfdistdir}/doc/fonts/cyrillic-modern/OFL.txt
+%{_texmfdistdir}/doc/fonts/cyrillic-modern/USAGE
+%{_texmfdistdir}/doc/fonts/cyrillic-modern/cyrillic-modern-sample.pdf
+%{_texmfdistdir}/doc/fonts/cyrillic-modern/cyrillic-modern-sample.tex
+
+%files -n texlive-cyrillic-modern
+%{_texmfdistdir}/dvips/cyrillic-modern/config.nm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmb10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmbx10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmbx12.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmbx5.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmbx6.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmbx7.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmbx8.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmbx9.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmbxsl10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmbxti10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmcsc10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmi10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmi12.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmi5.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmi6.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmi7.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmi8.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmi9.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmib10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmib5.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmib6.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmib7.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmib8.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmmib9.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmr10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmr12.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmr17.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmr5.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmr6.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmr7.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmr8.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmr9.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmsl10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmsl12.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmsl8.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmsl9.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmss10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmss12.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmss17.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmss8.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmss9.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmssbx10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmssdc10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmssi10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmssi12.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmssi17.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmssi8.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmssi9.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmti10.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmti12.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmti7.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmti8.afm
+%{_texmfdistdir}/fonts/afm/public/cyrillic-modern/nmti9.afm
+%{_texmfdistdir}/fonts/enc/dvips/cyrillic-modern/nm-7t.enc
+%{_texmfdistdir}/fonts/enc/dvips/cyrillic-modern/nm-7tsc.enc
+%{_texmfdistdir}/fonts/enc/dvips/cyrillic-modern/nm-7tti.enc
+%{_texmfdistdir}/fonts/enc/dvips/cyrillic-modern/nm-ls2.enc
+%{_texmfdistdir}/fonts/enc/dvips/cyrillic-modern/nm-t2a.enc
+%{_texmfdistdir}/fonts/enc/dvips/cyrillic-modern/nm-t2asc.enc
+%{_texmfdistdir}/fonts/enc/dvips/cyrillic-modern/nm-t2ati.enc
+%{_texmfdistdir}/fonts/enc/dvips/cyrillic-modern/nmmi.enc
+%{_texmfdistdir}/fonts/map/dvips/cyrillic-modern/nm.map
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmb10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmbx10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmbx12.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmbx5.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmbx6.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmbx7.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmbx8.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmbx9.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmbxsl10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmbxti10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmcsc10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmi10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmi12.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmi5.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmi6.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmi7.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmi8.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmi9.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmib10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmib5.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmib6.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmib7.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmib8.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmmib9.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmr10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmr12.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmr17.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmr5.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmr6.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmr7.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmr8.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmr9.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmsl10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmsl12.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmsl8.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmsl9.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmss10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmss12.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmss17.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmss8.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmss9.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmssbx10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmssdc10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmssi10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmssi12.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmssi17.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmssi8.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmssi9.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmti10.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmti12.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmti7.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmti8.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/nmti9.otf
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmb10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmbx10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmbx12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmbx5.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmbx6.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmbx7.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmbx8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmbx9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmbxsl10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmbxti10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmcsc10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmr10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmr12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmr17.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmr5.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmr6.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmr7.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmr8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmr9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmsl10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmsl12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmsl8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmsl9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmss10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmss12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmss17.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmss8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmss9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmssbx10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmssdc10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmssi10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmssi12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmssi17.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmssi8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmssi9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmti10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmti12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmti7.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmti8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ls2-nmti9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmb10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmbx10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmbx12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmbx5.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmbx6.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmbx7.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmbx8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmbx9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmbxsl10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmbxti10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmcsc10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmi10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmi12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmi5.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmi6.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmi7.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmi8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmi9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmib10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmib5.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmib6.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmib7.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmib8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmmib9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmr10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmr12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmr17.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmr5.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmr6.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmr7.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmr8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmr9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmsl10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmsl12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmsl8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmsl9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmss10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmss12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmss17.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmss8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmss9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmssbx10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmssdc10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmssi10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmssi12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmssi17.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmssi8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmssi9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmti10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmti12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmti7.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmti8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/nmti9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmb10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmbx10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmbx12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmbx5.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmbx6.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmbx7.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmbx8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmbx9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmbxsl10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmbxti10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmcsc10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmr10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmr12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmr17.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmr5.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmr6.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmr7.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmr8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmr9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmsl10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmsl12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmsl8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmsl9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmss10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmss12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmss17.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmss8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmss9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmssbx10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmssdc10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmssi10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmssi12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmssi17.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmssi8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmssi9.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmti10.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmti12.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmti7.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmti8.tfm
+%{_texmfdistdir}/fonts/tfm/public/cyrillic-modern/ot1-nmti9.tfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmb10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmbx10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmbx12.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmbx5.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmbx6.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmbx7.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmbx8.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmbx9.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmbxsl10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmbxti10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmcsc10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmi10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmi12.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmi5.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmi6.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmi7.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmi8.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmi9.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmib10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmib5.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmib6.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmib7.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmib8.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmmib9.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmr10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmr12.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmr17.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmr5.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmr6.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmr7.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmr8.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmr9.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmsl10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmsl12.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmsl8.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmsl9.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmss10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmss12.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmss17.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmss8.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmss9.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmssbx10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmssdc10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmssi10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmssi12.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmssi17.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmssi8.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmssi9.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmti10.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmti12.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmti7.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmti8.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/cyrillic-modern/nmti9.pfb
+%{_texmfdistdir}/tex/latex/cyrillic-modern/ls2enc.def
+%{_texmfdistdir}/tex/latex/cyrillic-modern/ls2nmr.fd
+%{_texmfdistdir}/tex/latex/cyrillic-modern/ls2nmss.fd
+%{_texmfdistdir}/tex/latex/cyrillic-modern/nm.sty
+%{_texmfdistdir}/tex/latex/cyrillic-modern/omlnmm.fd
+%{_texmfdistdir}/tex/latex/cyrillic-modern/ot1nmr.fd
+%{_texmfdistdir}/tex/latex/cyrillic-modern/ot1nmss.fd
+%{_texmfdistdir}/tex/latex/cyrillic-modern/t2anmr.fd
+%{_texmfdistdir}/tex/latex/cyrillic-modern/t2anmss.fd
+%{_texmfdistdir}/tex/latex/cyrillic-modern/unmr.fd
+%{_texmfdistdir}/tex/latex/cyrillic-modern/unmss.fd
+
+%files -n texlive-cyrillic-modern-fonts
+%dir %{_datadir}/fonts/texlive-cyrillic-modern
+%{_datadir}/fontconfig/conf.avail/58-texlive-cyrillic-modern.conf
+%{_datadir}/fontconfig/conf.avail/55-texlive-cyrillic-modern.conf
+%config %{_sysconfdir}/fonts/conf.d/55-texlive-cyrillic-modern.conf
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-cyrillic-modern/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-cyrillic-modern/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-cyrillic-modern/fonts.scale
+%{_datadir}/fonts/texlive-cyrillic-modern/nmb10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx12.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx5.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx6.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx7.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx8.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx9.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbxsl10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbxti10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmcsc10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi12.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi5.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi6.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi7.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi8.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi9.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmib10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmib5.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmib6.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmib7.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmib8.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmib9.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr12.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr17.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr5.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr6.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr7.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr8.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr9.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmsl10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmsl12.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmsl8.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmsl9.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmss10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmss12.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmss17.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmss8.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmss9.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssbx10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssdc10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssi10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssi12.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssi17.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssi8.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssi9.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmti10.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmti12.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmti7.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmti8.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmti9.otf
+%{_datadir}/fonts/texlive-cyrillic-modern/nmb10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx12.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx5.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx6.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx7.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx8.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbx9.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbxsl10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmbxti10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmcsc10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi12.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi5.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi6.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi7.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi8.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmi9.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmib10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmib5.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmib6.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmib7.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmib8.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmmib9.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr12.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr17.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr5.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr6.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr7.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr8.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmr9.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmsl10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmsl12.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmsl8.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmsl9.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmss10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmss12.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmss17.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmss8.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmss9.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssbx10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssdc10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssi10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssi12.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssi17.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssi8.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmssi9.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmti10.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmti12.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmti7.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmti8.pfb
+%{_datadir}/fonts/texlive-cyrillic-modern/nmti9.pfb
+
 %package -n texlive-cyrplain
 Version:        %{texlive_version}.%{texlive_noarch}.svn45692
 Release:        0
@@ -24914,9 +26787,9 @@ Provides:       tex(plainenc.tex)
 Provides:       tex(txxdefs.tex)
 Provides:       tex(txxextra.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source244:      cyrplain.tar.xz
-Source245:      cyrplain_plainenc.dif
+# from 20250308
+Source259:      cyrplain.tar.xz
+Source260:      cyrplain_plainenc.dif
 
 %description -n texlive-cyrplain
 The T2 bundle provides a variety of separate support functions
@@ -25009,9 +26882,9 @@ Provides:       tex(dadrealbold.tfm)
 Provides:       tex(dadrealmono.tfm)
 Requires:       tex(luatex85.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source246:      dad.tar.xz
-Source247:      dad.doc.tar.xz
+# from 20250308
+Source261:      dad.tar.xz
+Source262:      dad.doc.tar.xz
 
 %description -n texlive-dad
 This package allows simple typesetting in Arabic script,
@@ -25140,8 +27013,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(dancers.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source248:      dancers.tar.xz
+# from 20250308
+Source263:      dancers.tar.xz
 
 %description -n texlive-dancers
 The (Sherlock Holmes) book contains a code which uses dancing
@@ -25239,9 +27112,9 @@ Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(iftex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source249:      dantelogo.tar.xz
-Source250:      dantelogo.doc.tar.xz
+# from 20250308
+Source264:      dantelogo.tar.xz
+Source265:      dantelogo.doc.tar.xz
 
 %description -n texlive-dantelogo
 The DANTE font for the logo of DANTE (http://www.dante.de), the
@@ -25380,9 +27253,9 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(pagecolor.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source251:      darkmode.tar.xz
-Source252:      darkmode.doc.tar.xz
+# from 20250308
+Source266:      darkmode.tar.xz
+Source267:      darkmode.doc.tar.xz
 
 %description -n texlive-darkmode
 This package provides an API for template and package
@@ -25462,9 +27335,9 @@ Provides:       tex(dashbox.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source253:      dashbox.tar.xz
-Source254:      dashbox.doc.tar.xz
+# from 20250308
+Source268:      dashbox.tar.xz
+Source269:      dashbox.doc.tar.xz
 
 %description -n texlive-dashbox
 The package can draw boxes that perform like \framebox or
@@ -25537,9 +27410,9 @@ Suggests:       texlive-dashrule-doc >= %{texlive_version}
 Provides:       tex(dashrule.sty)
 Requires:       tex(ifmtarg.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source255:      dashrule.tar.xz
-Source256:      dashrule.doc.tar.xz
+# from 20250308
+Source270:      dashrule.tar.xz
+Source271:      dashrule.doc.tar.xz
 
 %description -n texlive-dashrule
 The dashrule package makes it easy to draw a huge variety of
@@ -25589,6 +27462,84 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-dashrule
 %{_texmfdistdir}/tex/latex/dashrule/dashrule.sty
 
+%package -n texlive-dashrulex
+Version:        %{texlive_version}.%{texlive_noarch}.1.02dsvn73736
+Release:        0
+License:        LPPL-1.0
+Summary:        Draw dashed rules
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-dashrulex-doc >= %{texlive_version}
+Provides:       tex(dashrulex.sty)
+Requires:       tex(xparse.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source272:      dashrulex.tar.xz
+Source273:      dashrulex.doc.tar.xz
+
+%description -n texlive-dashrulex
+This package package provides a flexible solution for drawing
+dashed rules in the body. It currently provides two commands,
+\hdashrule and \hanyrule. It is written in LaTeX3 and can be
+used as an alternative to the dashrule package.
+
+%package -n texlive-dashrulex-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.02dsvn73736
+Release:        0
+Summary:        Documentation for texlive-dashrulex
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-dashrulex and texlive-alldocumentation)
+
+%description -n texlive-dashrulex-doc
+This package includes the documentation for texlive-dashrulex
+
+%post -n texlive-dashrulex
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-dashrulex
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-dashrulex
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-dashrulex-doc
+%{_texmfdistdir}/doc/latex/dashrulex/README.md
+%{_texmfdistdir}/doc/latex/dashrulex/dashrulex.pdf
+%{_texmfdistdir}/doc/latex/dashrulex/dashrulex.tex
+
+%files -n texlive-dashrulex
+%{_texmfdistdir}/tex/latex/dashrulex/dashrulex.sty
+
 %package -n texlive-dashundergaps
 Version:        %{texlive_version}.%{texlive_noarch}.2.0hsvn58150
 Release:        0
@@ -25621,9 +27572,9 @@ Provides:       tex(dashundergaps.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(ulem.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source257:      dashundergaps.tar.xz
-Source258:      dashundergaps.doc.tar.xz
+# from 20250308
+Source274:      dashundergaps.tar.xz
+Source275:      dashundergaps.doc.tar.xz
 
 %description -n texlive-dashundergaps
 The package provides commands (\underline, \dotuline and
@@ -25712,9 +27663,9 @@ Requires:       tex(pgf.sty)
 Requires:       tex(xfp.sty)
 Requires:       tex(xtab.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source259:      dataref.tar.xz
-Source260:      dataref.doc.tar.xz
+# from 20250308
+Source276:      dataref.tar.xz
+Source277:      dataref.doc.tar.xz
 
 %description -n texlive-dataref
 The package provides a mechanism that maintains a fixed
@@ -25760,7 +27711,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/dataref/dataref.sty
 
 %package -n texlive-datatool
-Version:        %{texlive_version}.%{texlive_noarch}.2.32svn52663
+Version:        %{texlive_version}.%{texlive_noarch}.3.0.1svn74461
 Release:        0
 License:        LPPL-1.0
 Summary:        Tools to load and manipulate data
@@ -25795,15 +27746,32 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-datatool-doc >= %{texlive_version}
+Provides:       tex(databar-2019-09-27.sty)
 Provides:       tex(databar.sty)
+Provides:       tex(databib-2019-09-27.sty)
 Provides:       tex(databib.sty)
+Provides:       tex(datagidx-2019-09-27.sty)
 Provides:       tex(datagidx.sty)
+Provides:       tex(datapie-2019-09-27.sty)
 Provides:       tex(datapie.sty)
+Provides:       tex(dataplot-2019-09-27.sty)
 Provides:       tex(dataplot.sty)
+Provides:       tex(datatool-2019-09-27.sty)
+Provides:       tex(datatool-base-2019-09-27.sty)
 Provides:       tex(datatool-base.sty)
+Provides:       tex(datatool-fp-2019-09-27.sty)
+Provides:       tex(datatool-fp.def)
 Provides:       tex(datatool-fp.sty)
+Provides:       tex(datatool-l3fp.def)
+Provides:       tex(datatool-latin1.ldf)
+Provides:       tex(datatool-lua.def)
+Provides:       tex(datatool-pgfmath-2019-09-27.sty)
+Provides:       tex(datatool-pgfmath.def)
 Provides:       tex(datatool-pgfmath.sty)
+Provides:       tex(datatool-undetermined.ldf)
+Provides:       tex(datatool-utf8.ldf)
 Provides:       tex(datatool.sty)
+Provides:       tex(person-2019-09-27.sty)
 Provides:       tex(person.sty)
 Requires:       tex(afterpage.sty)
 Requires:       tex(amsmath.sty)
@@ -25818,12 +27786,13 @@ Requires:       tex(pgfrcs.sty)
 Requires:       tex(substr.sty)
 Requires:       tex(textcase.sty)
 Requires:       tex(tikz.sty)
+Requires:       tex(tracklang.sty)
 Requires:       tex(xfor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source261:      datatool.tar.xz
-Source262:      datatool.doc.tar.xz
+# from 20250308
+Source278:      datatool.tar.xz
+Source279:      datatool.doc.tar.xz
 
 %description -n texlive-datatool
 The tools comprise six packages: datatool.sty: databases may be
@@ -25853,9 +27822,42 @@ support for displaying a person's name and pronoun in a
 document, thus avoiding cumbersome use of "he/she", etc. The
 drawing packages make use of PGF/TikZ for their output. The
 bundle supersedes and replaces the author's csvtools bundle.
+The tools comprise the packages: datatool-base.sty: the
+underlying base package used by all the other packages in this
+bundle; datatool.sty: databases may be created using LaTeX
+commands or by importing external files; they may be sorted
+numerically or alphabetically; repetitive operations (such as
+mail merging) may be performed on each row of a database,
+subject to conditions to exclude particular rows; commands are
+provided to examine database elements, and to convert formats
+(for example, to convert a numeric element to a format
+compatible with l3fp or the fp package; datapie.sty: a database
+may be represented as a pie chart; flexible options allow
+colouring of the chart, and annotation hooks are available;
+dataplot.sty: a database may be represented as a 2-dimensional
+scatter or line plot; flexible options control of the plot's
+overall appearance, and of legends and other extra information;
+databar.sty: a database may be represented as a bar chart;
+overall appearance, colouring and annotation are controllable;
+datagidx.sty: provides a way of indexing or creating
+glossaries/lists of abbreviations that uses TeX to do the
+sorting and collating instead of using an external indexing
+application, such as xindy or makeindex (although you may
+prefer \printnoidxglossary now provided by the glossaries
+package); databib.sty: a bibliography may be loaded into a
+datatool database, and manipulated there before being printed
+(this permits a LaTeX-based route to printing bibliographies in
+formats for which no BibTeX style is available, although
+biblatex is now the better route); and person.sty: provides
+support for displaying a person's name and pronoun in a
+document, thus avoiding cumbersome use of "he/she", etc. The
+drawing packages make use of PGF/TikZ for their output.
+Localisation support needs to be installed separately. See
+datatool-regions and datatool-english. The bundle supersedes
+and replaces the author's csvtools bundle.
 
 %package -n texlive-datatool-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.32svn52663
+Version:        %{texlive_version}.%{texlive_noarch}.3.0.1svn74461
 Release:        0
 Summary:        Documentation for texlive-datatool
 License:        LPPL-1.0
@@ -25885,9 +27887,593 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-datatool-doc
 %{_texmfdistdir}/doc/latex/datatool/CHANGES
-%{_texmfdistdir}/doc/latex/datatool/INSTALL
-%{_texmfdistdir}/doc/latex/datatool/README
+%{_texmfdistdir}/doc/latex/datatool/DEPENDS.txt
+%{_texmfdistdir}/doc/latex/datatool/README.md
 %{_texmfdistdir}/doc/latex/datatool/datatool-code.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example001.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example001.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example001.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example002.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example002.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example002.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example003.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example003.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example003.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example004.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example004.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example004.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example005.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example005.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example005.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example006.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example006.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example006.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example007.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example007.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example007.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example008.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example008.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example008.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example009.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example009.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example009.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example010.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example010.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example010.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example011.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example011.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example011.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example012.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example012.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example012.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example013.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example013.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example013.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example014.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example014.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example014.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example015.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example015.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example015.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example016.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example016.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example016.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example017.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example017.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example017.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example018.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example018.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example018.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example019.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example019.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example019.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example020.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example020.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example020.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example021.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example021.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example021.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example022.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example022.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example022.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example023.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example023.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example023.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example024.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example024.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example024.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example025.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example025.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example025.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example026.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example026.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example026.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example027.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example027.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example027.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example028.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example028.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example028.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example029.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example029.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example029.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example030.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example030.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example030.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example031.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example031.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example031.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example032.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example032.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example032.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example033.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example033.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example033.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example034.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example034.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example034.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example035.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example035.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example035.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example036.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example036.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example036.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example037.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example037.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example037.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example038.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example038.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example038.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example039.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example039.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example039.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example040.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example040.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example040.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example041.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example041.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example041.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example042.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example042.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example042.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example043.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example043.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example043.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example044.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example044.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example044.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example045.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example045.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example045.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example046.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example046.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example046.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example047.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example047.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example047.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example048.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example048.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example048.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example049.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example049.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example049.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example050.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example050.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example050.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example051.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example051.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example051.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example052.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example052.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example052.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example053.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example053.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example053.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example054.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example054.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example054.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example055.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example055.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example055.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example056.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example056.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example056.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example057.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example057.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example057.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example058.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example058.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example058.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example059.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example059.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example059.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example060.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example060.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example060.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example061.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example061.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example061.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example062.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example062.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example062.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example063.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example063.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example063.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example064.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example064.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example064.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example065.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example065.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example065.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example066.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example066.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example066.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example067.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example067.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example067.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example068.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example068.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example068.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example069.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example069.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example069.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example070.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example070.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example070.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example071.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example071.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example071.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example072.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example072.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example072.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example073.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example073.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example073.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example074.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example074.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example074.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example075.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example075.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example075.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example076.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example076.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example076.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example077.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example077.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example077.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example078.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example078.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example078.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example079.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example079.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example079.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example080.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example080.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example080.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example081.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example081.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example081.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example082.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example082.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example082.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example083.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example083.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example083.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example084.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example084.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example084.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example085.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example085.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example085.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example086.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example086.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example086.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example087.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example087.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example087.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example088.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example088.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example088.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example089.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example089.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example089.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example090.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example090.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example090.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example091.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example091.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example091.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example092.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example092.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example092.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example093.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example093.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example093.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example094.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example094.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example094.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example095.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example095.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example095.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example096.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example096.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example096.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example097.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example097.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example097.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example098.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example098.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example098.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example099.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example099.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example099.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example100.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example100.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example100.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example101.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example101.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example101.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example102.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example102.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example102.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example103.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example103.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example103.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example104.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example104.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example104.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example105.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example105.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example105.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example106.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example106.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example106.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example107.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example107.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example107.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example108.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example108.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example108.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example109.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example109.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example109.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example110.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example110.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example110.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example111.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example111.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example111.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example112.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example112.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example112.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example113.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example113.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example113.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example114.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example114.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example114.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example115.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example115.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example115.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example116.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example116.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example116.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example117.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example117.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example117.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example118.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example118.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example118.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example119.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example119.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example119.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example120.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example120.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example120.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example121.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example121.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example121.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example122.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example122.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example122.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example123.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example123.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example123.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example124.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example124.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example124.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example125.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example125.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example125.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example126.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example126.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example126.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example127.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example127.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example127.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example128.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example128.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example128.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example129.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example129.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example129.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example130.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example130.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example130.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example131.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example131.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example131.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example132.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example132.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example132.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example133.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example133.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example133.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example134.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example134.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example134.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example135.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example135.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example135.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example136.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example136.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example136.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example137.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example137.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example137.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example138.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example138.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example138.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example139.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example139.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example139.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example140.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example140.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example140.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example141.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example141.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example141.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example142.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example142.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example142.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example143.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example143.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example143.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example144.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example144.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example144.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example145.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example145.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example145.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example146.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example146.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example146.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example147.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example147.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example147.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example148.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example148.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example148.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example149.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example149.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example149.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example150.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example150.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example150.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example151.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example151.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example151.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example152.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example152.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example152.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example153.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example153.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example153.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example154.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example154.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example154.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example155.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example155.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example155.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example156.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example156.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example156.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example157.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example157.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example157.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example158.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example158.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example158.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example159.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example159.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example159.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example160.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example160.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example160.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example161.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example161.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example161.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example162.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example162.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example162.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example163.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example163.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example163.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example164.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example164.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example164.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example165.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example165.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example165.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example166.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example166.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example166.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example167.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example167.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example167.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example168.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example168.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example168.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example169.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example169.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example169.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example170.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example170.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example170.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example171.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example171.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example171.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example172.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example172.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example172.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example173.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example173.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example173.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example174.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example174.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example174.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example175.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example175.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example175.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example176.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example176.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example176.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example177.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example177.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example177.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example178.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example178.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example178.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example179.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example179.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example179.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example180.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example180.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example180.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example181.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example181.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example181.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example182.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example182.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example182.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example183-page1.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example183.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example183.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example184.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example184.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example184.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example185.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example185.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example185.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example186-page1.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example186-page2.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example186.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example186.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example187.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example187.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example187.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example188.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example188.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example188.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example189-page1.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example189-page2.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example189-page3.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example189-page4.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example189.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example189.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example190.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example190.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example190.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example191.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example191.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example191.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example192.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example192.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example192.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example193.pdf
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example193.png
+%{_texmfdistdir}/doc/latex/datatool/datatool-user-examples/datatool-user-example193.tex
+%{_texmfdistdir}/doc/latex/datatool/datatool-user.html
 %{_texmfdistdir}/doc/latex/datatool/datatool-user.pdf
 %{_texmfdistdir}/doc/latex/datatool/datatool-user.tex
 %{_texmfdistdir}/doc/latex/datatool/samples/data-raw.dbtex
@@ -25900,7 +28486,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/datatool/samples/sample-datatooltk.tex
 %{_texmfdistdir}/doc/latex/datatool/samples/sample-dict.pdf
 %{_texmfdistdir}/doc/latex/datatool/samples/sample-dict.tex
-%{_texmfdistdir}/doc/latex/datatool/samples/sample-europecv-bib.pdf
 %{_texmfdistdir}/doc/latex/datatool/samples/sample-europecv-bib.tex
 %{_texmfdistdir}/doc/latex/datatool/samples/sample-gidx.pdf
 %{_texmfdistdir}/doc/latex/datatool/samples/sample-gidx.tex
@@ -25922,16 +28507,261 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-datatool
 %{_texmfdistdir}/bibtex/bst/datatool/databib.bst
+%{_texmfdistdir}/tex/latex/datatool/databar-2019-09-27.sty
 %{_texmfdistdir}/tex/latex/datatool/databar.sty
+%{_texmfdistdir}/tex/latex/datatool/databib-2019-09-27.sty
 %{_texmfdistdir}/tex/latex/datatool/databib.sty
+%{_texmfdistdir}/tex/latex/datatool/datagidx-2019-09-27.sty
 %{_texmfdistdir}/tex/latex/datatool/datagidx.sty
+%{_texmfdistdir}/tex/latex/datatool/datapie-2019-09-27.sty
 %{_texmfdistdir}/tex/latex/datatool/datapie.sty
+%{_texmfdistdir}/tex/latex/datatool/dataplot-2019-09-27.sty
 %{_texmfdistdir}/tex/latex/datatool/dataplot.sty
+%{_texmfdistdir}/tex/latex/datatool/datatool-2019-09-27.sty
+%{_texmfdistdir}/tex/latex/datatool/datatool-base-2019-09-27.sty
 %{_texmfdistdir}/tex/latex/datatool/datatool-base.sty
+%{_texmfdistdir}/tex/latex/datatool/datatool-fp-2019-09-27.sty
+%{_texmfdistdir}/tex/latex/datatool/datatool-fp.def
 %{_texmfdistdir}/tex/latex/datatool/datatool-fp.sty
+%{_texmfdistdir}/tex/latex/datatool/datatool-l3fp.def
+%{_texmfdistdir}/tex/latex/datatool/datatool-latin1.ldf
+%{_texmfdistdir}/tex/latex/datatool/datatool-lua.def
+%{_texmfdistdir}/tex/latex/datatool/datatool-pgfmath-2019-09-27.sty
+%{_texmfdistdir}/tex/latex/datatool/datatool-pgfmath.def
 %{_texmfdistdir}/tex/latex/datatool/datatool-pgfmath.sty
+%{_texmfdistdir}/tex/latex/datatool/datatool-undetermined.ldf
+%{_texmfdistdir}/tex/latex/datatool/datatool-utf8.ldf
 %{_texmfdistdir}/tex/latex/datatool/datatool.sty
+%{_texmfdistdir}/tex/latex/datatool/person-2019-09-27.sty
 %{_texmfdistdir}/tex/latex/datatool/person.sty
+
+%package -n texlive-datatool-english
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn74427
+Release:        0
+License:        LPPL-1.0
+Summary:        English language support for datatool.sty v3.0+
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires:       texlive-datatool >= %{texlive_version}
+#!BuildIgnore: texlive-datatool
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-datatool-english-doc >= %{texlive_version}
+Provides:       tex(databib-english.ldf)
+Provides:       tex(datatool-ang-Latn-utf8.ldf)
+Provides:       tex(datatool-ang-Latn.ldf)
+Provides:       tex(datatool-ang-Runr-utf8.ldf)
+Provides:       tex(datatool-ang-Runr.ldf)
+Provides:       tex(datatool-anglosaxon.ldf)
+Provides:       tex(datatool-en-CA.ldf)
+Provides:       tex(datatool-en-ZA.ldf)
+Provides:       tex(datatool-english-ascii.ldf)
+Provides:       tex(datatool-english-latin1.ldf)
+Provides:       tex(datatool-english-utf8.ldf)
+Provides:       tex(datatool-english.ldf)
+Provides:       tex(person-english.ldf)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source280:      datatool-english.tar.xz
+Source281:      datatool-english.doc.tar.xz
+
+%description -n texlive-datatool-english
+The datatool-english bundle provides English language support
+for the datatool package (v3.0+). The *.ldf files should all be
+placed somewhere on TeX's path. These files don't require any
+explicit loading. They will automatically be input by
+datatool-base.sty (or relevant supplementary package) if they
+are found and required by the tracklang localisation settings.
+See the datatool v3.0+ and tracklang user manuals for further
+details. The English files provide encoding support for UTF-8
+and ISO-8859-1 (Latin 1). Any other encoding will be treated as
+US-ASCII. This bundle also includes limited support for Old
+English (Anglo-Saxon) mainly to provide an example for a
+language that has multiple scripts (in this case, Latin and
+Runic) or for a language that has an extended Latin or
+non-Latin script. The language codes are ang-Latn for
+Anglo-Saxon Latin Script and ang-Runr for Anglo-Saxon Runic
+Script. There's only support for UTF-8 with the Anglo-Saxon
+files.
+
+%package -n texlive-datatool-english-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn74427
+Release:        0
+Summary:        Documentation for texlive-datatool-english
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-datatool-english and texlive-alldocumentation)
+
+%description -n texlive-datatool-english-doc
+This package includes the documentation for texlive-datatool-english
+
+%post -n texlive-datatool-english
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-datatool-english
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-datatool-english
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-datatool-english-doc
+%{_texmfdistdir}/doc/latex/datatool-english/DEPENDS.txt
+%{_texmfdistdir}/doc/latex/datatool-english/README.md
+%{_texmfdistdir}/doc/latex/datatool-english/datatool-english.pdf
+
+%files -n texlive-datatool-english
+%{_texmfdistdir}/tex/latex/datatool-english/databib-english.ldf
+%{_texmfdistdir}/tex/latex/datatool-english/datatool-ang-Latn-utf8.ldf
+%{_texmfdistdir}/tex/latex/datatool-english/datatool-ang-Latn.ldf
+%{_texmfdistdir}/tex/latex/datatool-english/datatool-ang-Runr-utf8.ldf
+%{_texmfdistdir}/tex/latex/datatool-english/datatool-ang-Runr.ldf
+%{_texmfdistdir}/tex/latex/datatool-english/datatool-anglosaxon.ldf
+%{_texmfdistdir}/tex/latex/datatool-english/datatool-en-CA.ldf
+%{_texmfdistdir}/tex/latex/datatool-english/datatool-en-ZA.ldf
+%{_texmfdistdir}/tex/latex/datatool-english/datatool-english-ascii.ldf
+%{_texmfdistdir}/tex/latex/datatool-english/datatool-english-latin1.ldf
+%{_texmfdistdir}/tex/latex/datatool-english/datatool-english-utf8.ldf
+%{_texmfdistdir}/tex/latex/datatool-english/datatool-english.ldf
+%{_texmfdistdir}/tex/latex/datatool-english/person-english.ldf
+
+%package -n texlive-datatool-regions
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn74393
+Release:        0
+License:        LPPL-1.0
+Summary:        Region (Numeric) Support for datatool v3.0+
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires:       texlive-datatool >= %{texlive_version}
+#!BuildIgnore: texlive-datatool
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-datatool-regions-doc >= %{texlive_version}
+Provides:       tex(datatool-AU.ldf)
+Provides:       tex(datatool-BE.ldf)
+Provides:       tex(datatool-CA.ldf)
+Provides:       tex(datatool-FK.ldf)
+Provides:       tex(datatool-GB.ldf)
+Provides:       tex(datatool-GG.ldf)
+Provides:       tex(datatool-GI.ldf)
+Provides:       tex(datatool-IE.ldf)
+Provides:       tex(datatool-IM.ldf)
+Provides:       tex(datatool-JE.ldf)
+Provides:       tex(datatool-NZ.ldf)
+Provides:       tex(datatool-US.ldf)
+Provides:       tex(datatool-ZA.ldf)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source282:      datatool-regions.tar.xz
+Source283:      datatool-regions.doc.tar.xz
+
+%description -n texlive-datatool-regions
+The datatool-regions bundle provides the language-independent
+region ldf files for the datatool package (v3.0+). The *.ldf
+files should all be placed on TeX's path. These files don't
+require any explicit loading. They will automatically be input
+by datatool-base.sty (or relevant supplementary package) if
+they are found and required by the tracklang localisation
+settings. See the datatool v3.0+ and tracklang user manuals for
+further details. The region files deal with defining the
+currency symbol, and may additionally (if not dependent on the
+language) set the number group and decimal characters, and
+provide functions for parsing numeric dates and times. If a
+pre-3.0 version of datatool is installed, these ldf files will
+be ignored.
+
+%package -n texlive-datatool-regions-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn74393
+Release:        0
+Summary:        Documentation for texlive-datatool-regions
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-datatool-regions and texlive-alldocumentation)
+
+%description -n texlive-datatool-regions-doc
+This package includes the documentation for texlive-datatool-regions
+
+%post -n texlive-datatool-regions
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-datatool-regions
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-datatool-regions
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-datatool-regions-doc
+%{_texmfdistdir}/doc/latex/datatool-regions/DEPENDS.txt
+%{_texmfdistdir}/doc/latex/datatool-regions/README.md
+%{_texmfdistdir}/doc/latex/datatool-regions/datatool-regions.pdf
+
+%files -n texlive-datatool-regions
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-AU.ldf
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-BE.ldf
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-CA.ldf
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-FK.ldf
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-GB.ldf
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-GG.ldf
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-GI.ldf
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-IE.ldf
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-IM.ldf
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-JE.ldf
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-NZ.ldf
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-US.ldf
+%{_texmfdistdir}/tex/latex/datatool-regions/datatool-ZA.ldf
 
 %package -n texlive-datax
 Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn61772
@@ -25965,9 +28795,9 @@ Provides:       tex(datax.sty)
 Requires:       tex(pgfkeys.sty)
 Requires:       tex(pgfopts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source263:      datax.tar.xz
-Source264:      datax.doc.tar.xz
+# from 20250308
+Source284:      datax.tar.xz
+Source285:      datax.doc.tar.xz
 
 %description -n texlive-datax
 This LaTeX package uses pgfkeys to retrieve individual data
@@ -26045,9 +28875,9 @@ Requires:       tex(ltxtable.sty)
 Requires:       tex(rcsinfo.sty)
 Requires:       tex(svninfo.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source265:      dateiliste.tar.xz
-Source266:      dateiliste.doc.tar.xz
+# from 20250308
+Source286:      dateiliste.tar.xz
+Source287:      dateiliste.doc.tar.xz
 
 %description -n texlive-dateiliste
 The package provides a file list (similar to that offered by
@@ -26131,9 +28961,9 @@ Provides:       tex(datenumberfrench.ldf)
 Provides:       tex(datenumbergerman.ldf)
 Provides:       tex(datenumberspanish.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source267:      datenumber.tar.xz
-Source268:      datenumber.doc.tar.xz
+# from 20250308
+Source288:      datenumber.tar.xz
+Source289:      datenumber.doc.tar.xz
 
 %description -n texlive-datenumber
 This package provides commands to convert a date into a number
@@ -26218,9 +29048,9 @@ Suggests:       texlive-datestamp-doc >= %{texlive_version}
 Provides:       tex(datestamp.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source269:      datestamp.tar.xz
-Source270:      datestamp.doc.tar.xz
+# from 20250308
+Source290:      datestamp.tar.xz
+Source291:      datestamp.doc.tar.xz
 
 %description -n texlive-datestamp
 Add fixed date-stamps with simple and customizable aux files
@@ -26348,9 +29178,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fmtcount.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source271:      datetime.tar.xz
-Source272:      datetime.doc.tar.xz
+# from 20250308
+Source292:      datetime.tar.xz
+Source293:      datetime.doc.tar.xz
 
 %description -n texlive-datetime
 Provides various different formats for the text created by the
@@ -26500,9 +29330,9 @@ Requires:       tex(pgfkeys.sty)
 Requires:       tex(tracklang.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source273:      datetime2.tar.xz
-Source274:      datetime2.doc.tar.xz
+# from 20250308
+Source294:      datetime2.tar.xz
+Source295:      datetime2.doc.tar.xz
 
 %description -n texlive-datetime2
 This package provides commands for formatting dates, times and
@@ -26599,9 +29429,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-datetime2-bahasai-doc >= %{texlive_version}
 Provides:       tex(datetime2-bahasai.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source275:      datetime2-bahasai.tar.xz
-Source276:      datetime2-bahasai.doc.tar.xz
+# from 20250308
+Source296:      datetime2-bahasai.tar.xz
+Source297:      datetime2-bahasai.doc.tar.xz
 
 %description -n texlive-datetime2-bahasai
 This module provides the "bahasai" style that can be set using
@@ -26743,6 +29573,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:13} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:14} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:15} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:16} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:17} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:18} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-context-companion-fonts
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/context-companion-fonts/*.{pf[ab],[ot]tf}
@@ -26772,8 +29605,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:16} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:17} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:19} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:20} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/tex/context/third/cyrillicnumbers/cyrillicnumbers.lua
     do
@@ -26792,14 +29625,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:18} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:19} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:20} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:21} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:22} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:23} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:24} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:25} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:24} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:25} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:26} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:27} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:28} -C %{buildroot}%{_datadir}/texlive
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/scripts/context/ruby/ctxtools.rb \
 	       %{_texmfdistdir}/scripts/context/ruby/imgtopdf.rb \
@@ -26836,9 +29669,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:26} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:27} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:28} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:29} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:30} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:31} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -26849,10 +29679,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:36} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:37} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:38} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:39} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:40} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:39} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:40} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:41} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:42} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:42} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:43} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:44} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:45} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/tex/context/third/transliterator/transliterator.lua
     do
@@ -26871,9 +29704,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:43} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:44} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:45} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:46} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:47} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:48} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -26887,8 +29717,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:56} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/convbkmk/convbkmk.rb
     do
@@ -26901,9 +29734,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -26923,6 +29753,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cooperhewitt
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/cooperhewitt/*.{pf[ab],[ot]tf} \
@@ -26973,14 +29808,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-cooperhewitt.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-cooperhewitt.conf
-    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cormorantgaramond
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/catharsis/cormorantgaramond/*.{pf[ab],[ot]tf} \
@@ -27031,16 +29868,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-cormorantgaramond.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-cormorantgaramond.conf
-    tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-countriesofeurope
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/countriesofeurope/*.{pf[ab],[ot]tf} \
@@ -27091,9 +29930,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-countriesofeurope.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-countriesofeurope.conf
-    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-courier
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/adobe/courier/*.{pf[ab],[ot]tf} \
@@ -27124,10 +29963,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-courierten
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/courierten/*.{pf[ab],[ot]tf} \
@@ -27178,15 +30017,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-courierten.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-courierten.conf
-    tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -27204,6 +30034,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-crimson
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/kosch/crimson/*.{pf[ab],[ot]tf} \
@@ -27254,8 +30093,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-crimson.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-crimson.conf
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-crimsonpro
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/crimsonpro/*.{pf[ab],[ot]tf} \
@@ -27306,16 +30145,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-crimsonpro.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-crimsonpro.conf
-    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/crossrefware/bbl2bib.pl \
 	       %{_texmfdistdir}/scripts/crossrefware/bibdoiadd.pl \
@@ -27333,16 +30172,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cryst
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/cryst/*.{pf[ab],[ot]tf}
@@ -27372,7 +30211,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cs
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/cs/*.{pf[ab],[ot]tf}
@@ -27402,18 +30241,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Add shebang e.g. correct perl wrapper scripts if any
     for scr in %{_texmfdistdir}/doc/cstex/cspsfonts-gen/fontgen
     do
@@ -27427,18 +30268,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/ctan-o-mat/ctan-o-mat.bat
     # Strip executable bit from non-scripts
@@ -27447,9 +30290,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$txt || continue
 	chmod 0644 %{buildroot}/$txt
     done
-    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/ctanbib/ctanbib
     do
@@ -27462,8 +30305,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/ctanify/ctanify
     do
@@ -27476,20 +30319,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/ctex-faq/src/make.bat
-    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-culmus
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/culmus/*.{pf[ab],[ot]tf} \
@@ -27541,8 +30384,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-culmus.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-culmus.conf
-    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cuprum
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/cuprum/*.{pf[ab],[ot]tf}
@@ -27572,19 +30415,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -27601,16 +30431,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Make possible scripts usable if any
-    for scr in %{_texmfdistdir}/doc/latex/cweb-latex/examples/tex-it
-    do
-	test -e %{buildroot}/$scr || continue
-	chmod 0755 %{buildroot}/$scr
-    done
     tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -27618,6 +30442,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Make possible scripts usable if any
+    for scr in %{_texmfdistdir}/doc/latex/cweb-latex/examples/tex-it
+    do
+	test -e %{buildroot}/$scr || continue
+	chmod 0755 %{buildroot}/$scr
+    done
+    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cyklop
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/cyklop/*.{pf[ab],[ot]tf} \
@@ -27668,13 +30511,65 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-cyklop.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-cyklop.conf
-    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Move font files
+    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-cyrillic-modern
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/cyrillic-modern/*.{pf[ab],[ot]tf} \
+		%{buildroot}/%{_texmfdistdir}/fonts/type1/public/cyrillic-modern/*.{pf[ab],[ot]tf}
+    do
+        test -e $font || continue
+        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-cyrillic-modern
+        base=${font##*/}
+        ln -sf %{_datadir}/fonts/texlive-cyrillic-modern/${base} ${font}
+    done
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-cyrillic-modern/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-cyrillic-modern/
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-cyrillic-modern.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Use this to disable the TeX fonts of the package -->
+	<!--    texlive-cyrillic-modern    -->
+	<!-- Be aware that the configurations in the files    -->
+	<!-- 09-texlive*.conf will not be affected by this    -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <rejectfont>
+	    <glob>%{_datadir}/fonts/texlive-cyrillic-modern/*</glob>
+	  </rejectfont>
+	</fontconfig>
+	EOF
+
+    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/55-texlive-cyrillic-modern.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Disable plain Type1 font to let fontconfig       -->
+	<!-- prefere the OpenType and TrueType fonts          -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <selectfont>
+	    <rejectfont>
+	      <glob>%{_datadir}/fonts/texlive-cyrillic-modern/*.pf*</glob>
+	    </rejectfont>
+	  </selectfont>
+	</fontconfig>
+	EOF
+    ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-cyrillic-modern.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-cyrillic-modern.conf
+    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:245}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:260}
     popd
     # Move configuration files
     mkdir -p %{buildroot}%{_texmfconfdir}/tex/plain/cyrplain
@@ -27689,8 +30584,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-dad
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/dad/*.{pf[ab],[ot]tf}
@@ -27720,9 +30615,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-dantelogo
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/dantelogo/*.{pf[ab],[ot]tf} \
@@ -27773,21 +30668,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-dantelogo.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-dantelogo.conf
-    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -27799,6 +30679,27 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj

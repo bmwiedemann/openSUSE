@@ -557,4 +557,12 @@ Aggregate licenses for spec file without subpackages (forwarded request 131950 f
     <comment>Catch all python3 shebangs for boo#1212476</comment>
     <requestid>1185301</requestid>
   </revision>
+  <revision rev="55" vrev="58">
+    <srcmd5>29767c9ce4b08a4f7ade5007011841a9</srcmd5>
+    <version>unknown</version>
+    <time>1742936892</time>
+    <user>anag+factory</user>
+    <comment>Update to TeXLive 2025</comment>
+    <requestid>1254608</requestid>
+  </revision>
 </revisionlist>

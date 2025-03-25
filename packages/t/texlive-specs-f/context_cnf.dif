@@ -5,7 +5,7 @@
 
 --- texmf-dist/scripts/context/lua/mtxrun.lua
 +++ texmf-dist/scripts/context/lua/mtxrun.lua	2024-03-18 08:53:56.333347801 +0000
-@@ -22471,9 +22471,8 @@ do
+@@ -22505,9 +22505,8 @@ do
   local texroot=environment.texroot
   resolvers.luacnfspec={
    "home:texmf/web2c",
