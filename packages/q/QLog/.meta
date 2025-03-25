@@ -1,0 +1,9 @@
+<package name="QLog" project="openSUSE:Factory">
+  <title>Amateur radio logbook software</title>
+  <description>QLog is an Amateur Radio logging application. It is based on the Qt framework
+and uses SQLite as database backend.
+
+QLogs aims to be as simple as possible, but to provide everything the operator
+expects from the log to be. This log is not currently focused on contests.</description>
+  <url>https://github.com/foldynl/QLog</url>
+</package>
