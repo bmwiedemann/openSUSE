@@ -1,0 +1,16 @@
+<package name="stackit-cli" project="openSUSE:Factory">
+  <title>Command-line interface to manage STACKIT resources</title>
+  <description>Welcome to the STACKIT CLI, a command-line interface for STACKIT - The German business cloud.
+https://www.stackit.de/en
+
+The STACKIT CLI allows you to manage your STACKIT services and resources as well as perform operations using the command-line or in scripts or automation, such as:
+
+* Projects, including permissions
+* STACKIT Kubernetes Engine clusters
+* Servers
+* DNS zones and record-sets
+* Databases such as PostgreSQL Flex, MongoDB Flex and SQLServer Flex
+
+This CLI is in a BETA state. More services and functionality will be supported soon. Your feedback is appreciated! Feel free to open GitHub issues to provide feature requests and bug reports.</description>
+  <url>https://github.com/stackitcloud/stackit-cli</url>
+</package>

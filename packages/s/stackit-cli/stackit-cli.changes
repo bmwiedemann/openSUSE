@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Fri Mar 21 16:50:08 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.0:
+  * replace STACKIT logo on login page (#661)
+  * chore(server): regional adjustment for runcommand (#660)
+  * fix(deps): update module github.com/spf13/viper to v1.20.0
+    (#650)
+  * fix(sqlserverflex): require roles flag on user creation (#657)
+  * chore(loadbalancer): regional adjustment (#652)
+  * fix(deps): update module github.com/goccy/go-yaml to v1.16.0
+    (#651)
+  * fix(sqlserver): remove region configuration from client (#656)
+  * chore(doc): add github issue note and docs link to readme
+    (#655)
+  * feat(serviceenablement): Region adjustment (#649)
+
+-------------------------------------------------------------------
+Fri Mar 14 18:59:51 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.26.0:
+  * feat(postgresql): Region adjustment (#648)
+  * feat(sqlserverflex): region adjustment (#639)
+  * chore(project): Add nil pointer checks and tests for the
+    outputResult functions (#622)
+  * chore (postgresflex): Fix potential nil pointer and add test
+    cases (#626)
+  * Feat/stackitcli 117 move iaa s beta commonds to top level
+    (#611)
+  * Redis: Add nil checks and testcases for output functions (#646)
+  * RabbitMQ: Nil checks and testcases for output functions (#645)
+
+-------------------------------------------------------------------
+Wed Mar 05 09:31:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.25.0:
+  * fix(deps): update stackit sdk modules (#637)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to
+    v6.6.7 (#640)
+  * fix(secrets-manager): add nil pointer checks for cmd outputs
+    (#633)
+  * fix(ske): add nil pointer checks for cmd outputs (#634)
+  * fix(service-account): add nil pointer checks for cmd outputs
+    (#635)
+  * chore(load-balancer): Add nil pointer checks and tests for the
+    outputResult functions (#624)
+  * chore(sqlserverflex): Add nil pointer checks and tests for the
+    outputResult functions (#625)
+  * chore(volume): Add nil pointer checks and tests for
+    outputResult functions (#623)
+  * fix(mariadb): add nil pointer checks for cmd outputs (#628)
+  * Fix/network area and network missing label selector (#627)
+  * fix(deps): update module github.com/google/go-cmp to v0.7.0
+    (#630)
+  * fix(deps): update stackit sdk modules (#631)
+  * chore(iaas): remove unneeded todo comment (#629)
+  * fix: stackit beta network-area commands - add nil pointer
+    checks and tests for the outputResult functions (#606)
+  * fix(logme): add nil pointer checks for cmd outputs (#619)
+  * Allow workaround if no browser can be opened (#603)
+  * chore(curl): Add nil pointer checks and tests for the
+    outputResult functions (#620)
+  * chore(config): Add nil pointer checks and tests for the
+    outputResult functions (#621)
+  * chore(dns): Add nil pointer checks and tests for outputResult
+    functions (#618)
+  * chore(security-group): Add nil pointer checks and tests for the
+    outputResult functions (#613)
+  * fix(observability): add nil pointer checks for cmd outputs
+    (#617)
+  * fix(mongodbflex): add nil pointer checks for cmd outputs (#614)
+  * fix(opensearch): add nil pointer checks for cmd outputs (#616)
+  * fix(organization): add nil pointer checks for cmd outputs
+    (#615)
+  * fix: stackit beta network-interface commands - add nil pointer
+    checks and tests for the outputResult functions (#605)
+  * fix: stackit beta network commands - add nil pointer checks and
+    tests for the outputResult functions (#607)
+  * fix: stackit beta image commands - add nil pointer checks and
+    tests for the outputResult functions (#608)
+  * fix: stackit beta public-ip commands - add nil pointer checks
+    and tests for the outputResult functions (#609)
+  * fix: stackit beta quota command - add nil pointer checks and
+    tests for the outputResult functions (#610)
+  * fix(object-storage): add nil pointer checks for cmd outputs
+    (#612)
+  * fix: `stackit beta server` commands - add nil pointer checks
+    and tests for the outputResult functions (#604)
+  * fix(deps): update module github.com/spf13/cobra to v1.9.1
+    (#602)
+  * fix(deps): update module github.com/goccy/go-yaml to v1.15.23
+    (#601)
+  * feat(auth): add get-access-token cmd (#598)
+
+-------------------------------------------------------------------
+Fri Feb 28 09:53:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package stackit-cli: command-line interface to manage STACKIT
+  resources
