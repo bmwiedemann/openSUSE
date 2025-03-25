@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Mar 21 21:58:59 UTC 2025 - Libor Pechacek <lpechacek@gmx.com>
+
+- update to 9.6.0:
+  o projinfo: display whether an operation is time-dependent
+    (#4255)
+  o Add CMake options EMBED_RESOURCE_FILES and
+    USE_ONLY_EMBEDDED_RESOURCE_FILES for proj.db and proj.ini
+    embedding (#4265, #4274)
+  o Database: ingest deprecated ESRI names to be able to better
+    import old WKT ESRI (#4282)
+  o proj_factors(): enhance speed when called repeatedly on same
+    compound or projected CRS (#4289)
+  o Add Airocean projection (formerly Dymaxion) (#4303)
+  o createOperations(): Optimization by avoiding database lookups
+    for CRS (typically PROJ strings) using unknown datums (#4320)
+  o PROJJSON export: for a Projected CRS, add an explicit
+    type=GeographicCRS/GeodeticCRS members to the base_crs member
+    (#4331)
+  o proj_trans_bounds(): make it work when target CRS is a
+    CompoundCRS (#4333)
+  o createOperations(): do Helmert transformation in 2D when one
+    of source or target CRS is compound (#4337)
+  o Map EPSG method 'Vertical Offset by Grid Interpolation (asc)'
+    to +proj=vgridshift (#4344)
+  o Add support for 'Coordinate Frame rotation full matrix
+    (geocen)' and Coordinate Frame rotation full matrix (geog2D)'
+    methods (#4348)
+  o Add a CMake EMBED_RESOURCE_DIRECTORY option to embed
+    .tif/.json files in to libproj (#4349, #4373)
+  o Take into account new EPSG methods 'Cartesian Grid Offsets by
+    TIN Interpolation (JSON)' and 'Vertical Offset by TIN
+    Interpolation (JSON)' (#4353)
+  o Added an option native_ca to proj.ini and an environment
+    variable PROJ_NATIVE_CA to be able to configure curl to use
+    the operating system CA store. (#4356)
+  o Database: add an optional step_direction column to the
+    concatenated_operation_step table (#4357)
+  o Database: replicate EGM2008 grid transformation record to
+    WGS 84 realizations (#4363)
+  o Improve ETRFxxx to ETRFyyy, and WGS 84 (xxx) to WGS 84 (yyy)
+    (#4364)
+  o Build: Update to C++17 version (#4366, #4369)
+  o Add bash completion script for projinfo (#4371)
+  o Dispatch content of 4D_api.cpp into multiple .cpp files
+    (#4393)
+  o Add proj_trans_bounds_3D() (#4394)
+  o Database: add a engineering_datum and engineering_crs tables;
+    import few related EPSG records (#4396)
+  o NKG transformations: Add support for EUREF-FIN in Finish
+    transformations (#4399)
+  o Add Spilhaus projection (#4401)
+  o Export ESRI:54099 WGS_1984_Spilhaus_Ocean_Map_in_Square as
+    PROJ string (#4402)
+  o Database: update to EPSG v12.004 (#4413)
+  o proj_download_file(): invalidate in-memory caches related to
+    downloaded file (for the current context) (#4414)
+  * createObjectsFromName(): be more tolerant about N/S vs
+    North/South, absence of zone or height (#4318)
+  * createFromPROJString: avoid repeated openings of proj.db and
+    proj.ini and lookup of 'epsg' (#4334)
+  * Debugging/internals: append sub-grid index to grid name when
+    opening a multi-grid TIFF file (#4381)
+  * createOperations(): use more appropriate operation when using
+    a 'PROJ {grid_name}' geoid model, based on matching the
+    vertical datum (#4379)
+  * proj_clone(): properly propagate
+    errorIfBestTransformationNotAvailable and other flags from
+    source object (#4382)
+  * Inverse +proj=cass: fix non-convergence on inputs where
+    easting=false_easting or northing=false_northing (#4386)
+  * Fix typo in parameter for ITRF97 in ITRF2014 file (#4408)
+  * Retry on "SSL connection timeout" (#4419)
+- update data to 1.21:
+  * Finish geoid models (#131)
+  * French grid fr_ign_RGM04versRGM23.tif for RGM04 -> RGM23
+    datum shift (Mayotte) (#132)
+  * Latvian LGIA geoid grid (#134)
+- added patch v9.6.0-fix-build.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 18:16:48 UTC 2024 - Libor Pechacek <lpechacek@gmx.com>
 
 - update to 9.5.1:

@@ -464,4 +464,12 @@ This package is included in Debian.
     <comment></comment>
     <requestid>1227920</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6e517477a7ce5b3c22d33edc8bdbcbaa</srcmd5>
+    <version>9.6.0</version>
+    <time>1742937166</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1256004</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package proj
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define data_version 1.19
+%define data_version 1.21
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.5.1
+Version:        9.6.0
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -28,6 +28,7 @@ URL:            https://proj.org/
 # Download from GitHub, osgeo.org appears to be slow and flaky at the moment
 Source0:        https://github.com/OSGeo/PROJ/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/OSGeo/PROJ-data/releases/download/%{data_version}.0/%{name}-data-%{data_version}.tar.gz
+Patch0:         v9.6.0-fix-build.patch
 BuildRequires:  cmake >= 3.16
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc13-c++
@@ -101,7 +102,9 @@ License:        MIT
 %data_subpkg -c fi -n Finland
 %data_subpkg -c fo -n %{quote:Faroe Island} -e FO -s 1
 %data_subpkg -c fr -n France
+%data_subpkg -c hu -n Hungary
 %data_subpkg -c is -n Island -e ISL
+%data_subpkg -c lv -n Latvia
 %data_subpkg -c jp -n Japan
 %data_subpkg -c mx -n Mexico
 %data_subpkg -c nc -n %{quote:New Caledonia}
@@ -117,7 +120,7 @@ License:        MIT
 %data_subpkg -c za -n %{quote:South Africa}
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} < 1600
@@ -191,6 +194,7 @@ rm -rf %{buildroot}%{_datadir}/doc/${name}
 %{_datadir}/%{name}/world
 %{_datadir}/%{name}/si_gurs_README.txt
 %{_datadir}/%{name}/si_gurs_SLO-VRP2016-Koper.tif
+%{_datadir}/bash-completion/completions/projinfo
 
 %files -n %{libname}
 %license COPYING
