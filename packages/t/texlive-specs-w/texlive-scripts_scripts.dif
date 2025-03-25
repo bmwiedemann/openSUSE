@@ -62,7 +62,7 @@
      }
    }
    # set up destination directory
-@@ -731,6 +738,7 @@ sub rebuild_one_format {
+@@ -734,6 +741,7 @@ sub rebuild_one_format {
    # check for existence of ini file before doing anything else
    if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
      # we didn't find the ini file, skip
@@ -115,7 +115,7 @@
 +++ texmf-dist/scripts/texlive/updmap.pl	2018-06-19 08:49:26.931648791 +0000
 @@ -15,15 +15,17 @@
  
- my $svnid = '$Id: updmap.pl 65932 2023-02-19 20:49:48Z siepo $';
+ my $svnid = '$Id: updmap.pl 70707 2024-03-19 22:03:22Z karl $';
  
 -my $TEXMFROOT;
 +my $TEXMFDIST;
@@ -135,7 +135,7 @@
 +  TeX::Update->import();
  }
  
- my $lastchdate = '$Date: 2023-02-19 21:49:48 +0100 (Sun, 19 Feb 2023) $';
+ my $lastchdate = '$Date: 2024-03-19 23:03:22 +0100 (Tue, 19 Mar 2024) $';
 @@ -45,7 +47,7 @@ use TeXLive::TLUtils qw(mkdirhier mktexu
  # see more comments at the definition of this function.
  reset_root_home();
@@ -145,7 +145,7 @@
  chomp(my $TEXMFVAR = `kpsewhich -var-value=TEXMFVAR`);
  chomp(my $TEXMFSYSVAR = `kpsewhich -var-value=TEXMFSYSVAR`);
  chomp(my $TEXMFCONFIG = `kpsewhich -var-value=TEXMFCONFIG`);
-@@ -397,6 +399,8 @@ sub main {
+@@ -398,6 +400,8 @@ sub main {
        print "in $changes_config_file\n";
        print "Do you really want to continue (y/N)? ";
        my $answer = <STDIN>;

@@ -54,7 +54,7 @@
  needsCleanup=false
  lastUpdatedFile=
  
-@@ -997,21 +997,6 @@ For more information about these \`featu
+@@ -884,21 +884,6 @@ For more information about these \`featu
        ;;
  
      formats)
@@ -76,7 +76,7 @@
        setupTmpDir
        echo "$progname: analyzing old configuration..." >&2
        fmtutil --catcfg > $tmpdir/pre
-@@ -1037,22 +1022,6 @@ EOM
+@@ -924,22 +909,6 @@ EOM
  
      # "hyphen FORMAT"
      hyphen)
@@ -99,7 +99,7 @@
        tcBatchHyphenFormat=$2
        formatsForHyphen=`getFormatsForHyphen`
        formatsForHyphenFmt=`echo "$formatsForHyphen" | myFmt | sed 's@^@  @'`
-@@ -1301,7 +1270,7 @@ Valid PAPER settings:
+@@ -1095,7 +1064,7 @@ Valid PAPER settings:
        ;;
  
      rehash)

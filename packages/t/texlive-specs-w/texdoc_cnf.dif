@@ -5,7 +5,7 @@
 
 --- texmf-dist/scripts/texdoc/texdoclib-search.tlu
 +++ texmf-dist/scripts/texdoc/texdoclib-search.tlu	2020-05-13 14:26:48.218370971 +0000
-@@ -30,7 +30,7 @@ local vanilla -- is this a vanilla TL or
+@@ -31,7 +31,7 @@ local vanilla -- is this a vanilla TL or
  
  -- find the TeX Live root
  local function get_tlroot()
@@ -14,7 +14,7 @@
      get_tlroot = function() return tlroot end
      return tlroot
  end
-@@ -601,7 +601,8 @@ end
+@@ -688,7 +688,8 @@ end
  
  -- get pre-hashed tlpdb info from a cache file
  get_tlpinfo_from_cache = function(filename)
@@ -24,7 +24,7 @@
  end
  
  -- get pre-hashed tlpdb info from a pseudo-cache file
-@@ -711,16 +712,17 @@ local function init_tlp_database()
+@@ -800,16 +801,17 @@ local function init_tlp_database()
          else
              dbg_print('tlpdb',
                  'Getting data from tlpdb file ' .. texlive_tlpdb)

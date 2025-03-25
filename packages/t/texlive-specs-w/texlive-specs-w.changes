@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 14 14:31:33 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2025  
+- Port patches
+  * context_cnf.dif
+  * kpathsea_cnf.dif
+  * latexdiff.doc.tar.xz
+  * latexdiff.tar.xz
+  * latexmk_conf.dif
+  * luatex_cnf.dif
+  * pst-diffraction.doc.tar.xz
+  * pst-diffraction.tar.xz
+  * texdoc_cnf.dif
+  * texlive-scripts-extra_scripts.dif
+  * texlive-scripts_scripts.dif
+
+-------------------------------------------------------------------
 Wed Jul  3 08:09:23 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - More fine tuning to catch all python3 shebangs 
