@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 25 10:49:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Switch to a git snapshot using Qt 6 / KF 6
+- Drop patches:
+  * servicemenus-files.patch
+  * 0001-Support-podofo-0.10.patch
+  * 0002-cmake-Improve-FindPoDoFo.patch
+  * 0001-Fix-build-with-exiv2-0.28-raise-minimum-to-0.27.patch
+  * remove-gplv2-code.diff
+
+-------------------------------------------------------------------
 Wed Nov 20 17:21:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro

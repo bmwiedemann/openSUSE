@@ -362,4 +362,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226956</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1909832656dc94cc2f58356c262112bb</srcmd5>
+    <version>5.0.2git.20250321T014623~262bdbe</version>
+    <time>1742937153</time>
+    <user>anag+factory</user>
+    <comment>Switch to a git snapshot</comment>
+    <requestid>1255951</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package krename
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,79 +15,74 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define kf6_version 6.6.0
+%define qt6_version 6.5.0
 
 Name:           krename
-Version:        5.0.2
+Version:        5.0.2git.20250321T014623~262bdbe
 Release:        0
-Summary:        A Batch Renamer by KDE
+Summary:        A batch renamer by KDE
 License:        GPL-2.0-or-later
-Group:          Productivity/File utilities
 URL:            https://apps.kde.org/krename
-Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
-Source1:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM servicemenus-files.patch asterios.dramis@gmail.com -- Make the desktop files KDE and XDG compatible
-Patch0:         servicemenus-files.patch
-# PATCH-FIX-UPSTREAM remove-gplv2-code.diff dmueller@suse.de -- Remove GPLv2 only code (only used for self-testing)
-Patch1:         remove-gplv2-code.diff
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
-Patch2:         0001-Fix-build-with-exiv2-0.28-raise-minimum-to-0.27.patch
-%endif
-# PATCH-FIX-UPSTREAM -- podofo 0.10 support
-Patch3:         0001-Support-podofo-0.10.patch
-Patch4:         0002-cmake-Improve-FindPoDoFo.patch
-BuildRequires:  extra-cmake-modules
-BuildRequires:  freetype2-devel
-BuildRequires:  libexiv2-devel
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libpodofo-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5JS)
-BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(exiv2) >= 0.27
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(taglib)
 
 %description
-KRename is a batch renamer by KDE. It allows renaming many files in
-one go. The filenames can be constructed from parts of the original
-filename, an increasing number, or accessing file metadata, like
-creation date or Exif information of an image.
+KRename is a powerful batch renamer for KDE. It allows you to easily rename
+hundreds or even more files in one go. The filenames can be created by parts of
+the original filename, numbering the files or accessing hundreds of informations
+about the file, like creation date or Exif informations of an image.
+
+%lang_package
 
 %prep
 %autosetup -p1
 
-# GPLv2 only code, not really needed, lets avoid the license discussion
-rm src/modeltest.*
-
 %build
-%cmake_kf5 -d build
+%cmake_kf6
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name}
 
-%files -f %{name}.lang
-%license COPYING
-%doc AUTHORS README.md TODO
-%{_kf5_applicationsdir}/org.kde.krename.desktop
-%{_kf5_appstreamdir}/org.kde.krename.appdata.xml
-%{_kf5_bindir}/krename
-%{_kf5_iconsdir}/hicolor/*/apps/krename.png
-%{_kf5_servicesdir}/ServiceMenus/
+%files
+%license LICENSES/*
+%doc AUTHORS README.md
+%{_kf6_applicationsdir}/org.kde.krename.desktop
+%{_kf6_appstreamdir}/org.kde.krename.appdata.xml
+%{_kf6_bindir}/krename
+%{_kf6_iconsdir}/hicolor/*/apps/krename.png
+%dir %{_kf6_sharedir}/kio/
+%dir %{_kf6_sharedir}/kio/servicemenus/
+%{_kf6_sharedir}/kio/servicemenus/krename_all_nonrec.desktop
+%{_kf6_sharedir}/kio/servicemenus/krename_dir_rec.desktop
+
+%files lang -f %{name}.lang
 
 %changelog
