@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 23 21:40:26 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 44.0.2:
+  * We now build wheels for PyPy 3.11.
+
+-------------------------------------------------------------------
 Wed Feb 26 09:41:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 44.0.1:

@@ -1229,4 +1229,13 @@
   * We now build manylinux_2_34 wheels and publish them to PyPI.</comment>
     <requestid>1248604</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>5c1ed193f04e66479840c96cab7736f7</srcmd5>
+    <version>44.0.2</version>
+    <time>1742936862</time>
+    <user>anag+factory</user>
+    <comment>- update to 44.0.2:
+  * We now build wheels for PyPy 3.11.</comment>
+    <requestid>1255546</requestid>
+  </revision>
 </revisionlist>
