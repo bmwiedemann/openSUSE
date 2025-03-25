@@ -17,7 +17,7 @@
 
 
 Name:           gnome-calendar
-Version:        48.0
+Version:        48.1
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later

@@ -471,4 +471,14 @@
   + Updated translations. (forwarded request 1253776 from dimstar)</comment>
     <requestid>1253787</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>11fa4e7792ab74093664dce31979868a</srcmd5>
+    <version>48.1</version>
+    <time>1742937003</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.1:
+  + Cleanup some deprecation warnings.
+  + Fix release notes. (forwarded request 1254597 from iznogood)</comment>
+    <requestid>1255563</requestid>
+  </revision>
 </revisionlist>
