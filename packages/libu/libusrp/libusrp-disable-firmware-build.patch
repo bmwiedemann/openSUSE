@@ -1,0 +1,23 @@
+diff -up libusrp-3.4.10/configure.ac.aaaa libusrp-3.4.10/configure.ac
+--- libusrp-3.4.10/configure.ac.aaaa	2025-02-12 11:52:14.000000000 +0100
++++ libusrp-3.4.10/configure.ac	2025-03-01 01:36:51.085575043 +0100
+@@ -83,7 +83,6 @@ AM_CONDITIONAL(HAVE_DOXYGEN, test $DOXYG
+ AC_CHECK_PROG([XMLTO],[xmlto],[yes],[])
+ AM_CONDITIONAL([HAS_XMLTO], [test x$XMLTO = xyes])
+ 
+-USRP_SDCC([3.2.0],[],[passed=no;AC_MSG_ERROR([Unable to find firmware compiler SDCC 3.x.])])
+ 
+ AC_CONFIG_FILES([
+   Makefile
+diff -up libusrp-3.4.10/Makefile.am.aaaa libusrp-3.4.10/Makefile.am
+--- libusrp-3.4.10/Makefile.am.aaaa	2025-03-01 01:39:02.059019711 +0100
++++ libusrp-3.4.10/Makefile.am	2025-03-01 01:39:20.076296429 +0100
+@@ -31,7 +31,7 @@ EXTRA_DIST += \
+ 	debian \
+ 	$(NULL)
+ 
+-SUBDIRS = host fpga doc firmware
++SUBDIRS = host fpga doc
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = \

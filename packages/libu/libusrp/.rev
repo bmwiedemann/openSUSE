@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>1193833</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f7de7eba02885f35c756786229c0c984</srcmd5>
+    <version>3.4.10</version>
+    <time>1742936962</time>
+    <user>anag+factory</user>
+    <comment>Forward the current version of libusrp to Factory</comment>
+    <requestid>1255376</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libusrp
 #
-# Copyright (c) 2021-2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,20 @@
 
 %define sover   1
 %define libname libusrp%{sover}
+%ifarch armv7hl ppc64le x86_64
+%define build_firmware 0
+%else
+%define build_firmware 1
+%endif
 Name:           libusrp
-Version:        3.4.9
+Version:        3.4.10
 Release:        0
 Summary:        Stand-alone libusrp for USRP1 from old gnuradio.git
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://git.osmocom.org/libusrp
 Source:         %{name}-%{version}.tar.xz
+Patch0:         libusrp-disable-firmware-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -34,7 +40,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+%if %{build_firmware}
 BuildRequires:  sdcc
+%endif
 BuildRequires:  pkgconfig(libusb-1.0)
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_date_time-devel
@@ -85,14 +93,15 @@ Firmware files for the USRP1 SDR.
 
 %prep
 %setup -q
+%if !%{build_firmware}
+%patch -P 0 -p1
+%endif
 
 %build
 echo "%{version}" >.tarball-version
 autoreconf -fiv
-%configure
-# parallel build is br0ken
-# -> https://osmocom.org/issues/3970#change-15556
-make V=1 # %{?_smp_mflags}
+%configure  --disable-rpath
+%make_build
 
 %install
 %make_install
@@ -100,6 +109,8 @@ rm -f %{buildroot}%{_libdir}/libusrp.la
 # FIXME: gnuradio swig stuff shouldn't be there
 rm -rf %{buildroot}%{_includedir}/gnuradio/
 %fdupes %{buildroot}%{_datadir}/usrp
+
+%check
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
