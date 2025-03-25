@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Mar 25 13:53:05 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.92:
+  * fix go sum entries (#1920)
+  * automerge failure patch (#1917)
+  * Update module github.com/dineshba/tf-summarize to v0.3.14
+    (#1815)
+  * Update opentofu/setup-opentofu action to v1.0.5 (#1813)
+  * fix(deps): update module github.com/hashicorp/go-getter to
+    v1.7.8 (#1817)
+  * Update docker/login-action digest to 74a5d14 (#1878)
+  * Update github.com/hashicorp/terraform-config-inspect digest to
+    efaa306 (#1893)
+
+-------------------------------------------------------------------
+Mon Mar 24 17:39:59 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.91:
+  * Feat support for managed identity authentication in azure
+    locking (#1896)
+  * Update terragrunt version (#1884)
+  * docs: Fix broken links in GitHub Actions + AWS docs (#1891)
+  * fix: Syntax of the TF_PLUGIN_CACHE_DIR env for
+    cache-dependencies (#1898)
+
+-------------------------------------------------------------------
+Mon Mar 24 17:33:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.90:
+  * patch error while posting comment too large (#1908)
+
+-------------------------------------------------------------------
+Mon Mar 24 14:40:44 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.89:
+  * fix for long status names (#1907)
+
+-------------------------------------------------------------------
 Mon Mar 17 17:55:54 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.88:
