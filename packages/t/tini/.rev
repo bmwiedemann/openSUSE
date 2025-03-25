@@ -24,4 +24,14 @@ https://lists.opensuse.org/opensuse-factory/2018-10/msg00310.html</comment>
     <comment></comment>
     <requestid>1084814</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3c0fa3778a7e095796055a964503a14b</srcmd5>
+    <version>0.19.0</version>
+    <time>1742936953</time>
+    <user>anag+factory</user>
+    <comment>- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+- Remove Group: declarations, no longer used (forwarded request 1255172 from sfalken)</comment>
+    <requestid>1255338</requestid>
+  </revision>
 </revisionlist>

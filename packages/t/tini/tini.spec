@@ -1,7 +1,7 @@
 #
 # spec file for package tini
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,9 @@ Version:        0.19.0
 Release:        0
 Summary:        A tiny but valid init for containers
 License:        MIT
-Group:          System/Management
 URL:            https://github.com/krallin/tini
 Source:         %{URL}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
 BuildRequires:  glibc-devel-static
@@ -39,7 +38,6 @@ libc will be needed inside the container.
 
 %package static
 Summary:        A tiny but valid init for containers, with libc linked statically
-Group:          System/Management
 
 %description static
 Tini is a trivial implementation for an "init" program.
@@ -62,7 +60,7 @@ export CFLAGS
 # Enable DMINIMAL to supress verbosity or any output at all, plus disable
 # argument parsing. You an still set some options via env vars
 # CMAKE_ARGS="-DMINIMAL=ON"
-%cmake .
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .
 %make_build tini
 %make_build tini-static
 
@@ -70,6 +68,9 @@ export CFLAGS
 mkdir -p %{buildroot}/%{_sbindir}
 cp build/tini %{buildroot}/%{_sbindir}/tini
 cp build/tini-static %{buildroot}/%{_sbindir}/tini-static
+
+%check
+%ctest
 
 %files
 %license LICENSE
