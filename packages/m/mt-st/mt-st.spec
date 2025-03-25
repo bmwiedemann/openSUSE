@@ -1,7 +1,7 @@
 #
 # spec file for package mt-st
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mt-st
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Utility for Controlling Magnetic Tape Drives
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ Source2:        stinit.def
 Source3:        61-storage-tape-init.rules
 Source4:        %{name}.keyring
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       mt
 
 %description
