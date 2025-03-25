@@ -1,7 +1,7 @@
 #
-# spec file for package texlive-specs-g.spec
+# spec file for package texlive-specs-g
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2024
+%define texlive_version  2025
 %define texlive_previous 2022
-%define texlive_release  20240311
-%define texlive_noarch   216
-%define biber_version    2.19
+%define texlive_release  20250308
+%define texlive_noarch   218
+%define biber_version    2.20
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-g
-Version:        2024
+Version:        2025
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -113,7 +113,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-datetime2-basque-doc >= %{texlive_version}
 Provides:       tex(datetime2-basque.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source1:        datetime2-basque.tar.xz
 Source2:        datetime2-basque.doc.tar.xz
 
@@ -192,7 +192,7 @@ Provides:       tex(datetime2-breton-ascii.ldf)
 Provides:       tex(datetime2-breton-utf8.ldf)
 Provides:       tex(datetime2-breton.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source3:        datetime2-breton.tar.xz
 Source4:        datetime2-breton.doc.tar.xz
 
@@ -272,7 +272,7 @@ Provides:       tex(datetime2-bulgarian-ascii.ldf)
 Provides:       tex(datetime2-bulgarian-utf8.ldf)
 Provides:       tex(datetime2-bulgarian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source5:        datetime2-bulgarian.tar.xz
 Source6:        datetime2-bulgarian.doc.tar.xz
 
@@ -352,7 +352,7 @@ Provides:       tex(datetime2-catalan-ascii.ldf)
 Provides:       tex(datetime2-catalan-utf8.ldf)
 Provides:       tex(datetime2-catalan.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source7:        datetime2-catalan.tar.xz
 Source8:        datetime2-catalan.doc.tar.xz
 
@@ -432,7 +432,7 @@ Provides:       tex(datetime2-croatian-ascii.ldf)
 Provides:       tex(datetime2-croatian-utf8.ldf)
 Provides:       tex(datetime2-croatian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source9:        datetime2-croatian.tar.xz
 Source10:       datetime2-croatian.doc.tar.xz
 
@@ -510,7 +510,7 @@ Provides:       tex(datetime2-czech-ascii.ldf)
 Provides:       tex(datetime2-czech-utf8.ldf)
 Provides:       tex(datetime2-czech.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source11:       datetime2-czech.tar.xz
 Source12:       datetime2-czech.doc.tar.xz
 
@@ -590,7 +590,7 @@ Provides:       tex(datetime2-danish-ascii.ldf)
 Provides:       tex(datetime2-danish-utf8.ldf)
 Provides:       tex(datetime2-danish.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source13:       datetime2-danish.tar.xz
 Source14:       datetime2-danish.doc.tar.xz
 
@@ -668,7 +668,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-datetime2-dutch-doc >= %{texlive_version}
 Provides:       tex(datetime2-dutch.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source15:       datetime2-dutch.tar.xz
 Source16:       datetime2-dutch.doc.tar.xz
 
@@ -746,7 +746,7 @@ Provides:       tex(datetime2-en-fulltext.sty)
 Requires:       tex(datetime2.sty)
 Requires:       tex(fmtcount.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source17:       datetime2-en-fulltext.tar.xz
 Source18:       datetime2-en-fulltext.doc.tar.xz
 
@@ -840,7 +840,7 @@ Provides:       tex(datetime2-en-US.ldf)
 Provides:       tex(datetime2-english-base.ldf)
 Provides:       tex(datetime2-english.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source19:       datetime2-english.tar.xz
 Source20:       datetime2-english.doc.tar.xz
 
@@ -939,7 +939,7 @@ Provides:       tex(datetime2-esperanto-ascii.ldf)
 Provides:       tex(datetime2-esperanto-utf8.ldf)
 Provides:       tex(datetime2-esperanto.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source21:       datetime2-esperanto.tar.xz
 Source22:       datetime2-esperanto.doc.tar.xz
 
@@ -1019,7 +1019,7 @@ Provides:       tex(datetime2-estonian-ascii.ldf)
 Provides:       tex(datetime2-estonian-utf8.ldf)
 Provides:       tex(datetime2-estonian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source23:       datetime2-estonian.tar.xz
 Source24:       datetime2-estonian.doc.tar.xz
 
@@ -1099,7 +1099,7 @@ Provides:       tex(datetime2-finnish-ascii.ldf)
 Provides:       tex(datetime2-finnish-utf8.ldf)
 Provides:       tex(datetime2-finnish.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source25:       datetime2-finnish.tar.xz
 Source26:       datetime2-finnish.doc.tar.xz
 
@@ -1178,7 +1178,7 @@ Provides:       tex(datetime2-french-ascii.ldf)
 Provides:       tex(datetime2-french-utf8.ldf)
 Provides:       tex(datetime2-french.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source27:       datetime2-french.tar.xz
 Source28:       datetime2-french.doc.tar.xz
 
@@ -1263,7 +1263,7 @@ Provides:       tex(datetime2-galician-ascii.ldf)
 Provides:       tex(datetime2-galician-utf8.ldf)
 Provides:       tex(datetime2-galician.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source29:       datetime2-galician.tar.xz
 Source30:       datetime2-galician.doc.tar.xz
 
@@ -1347,7 +1347,7 @@ Provides:       tex(datetime2-german-base-utf8.ldf)
 Provides:       tex(datetime2-german-base.ldf)
 Provides:       tex(datetime2-german.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source31:       datetime2-german.tar.xz
 Source32:       datetime2-german.doc.tar.xz
 
@@ -1429,7 +1429,7 @@ Provides:       tex(datetime2-greek-ascii.ldf)
 Provides:       tex(datetime2-greek-utf8.ldf)
 Provides:       tex(datetime2-greek.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source33:       datetime2-greek.tar.xz
 Source34:       datetime2-greek.doc.tar.xz
 
@@ -1507,7 +1507,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-datetime2-hebrew-doc >= %{texlive_version}
 Provides:       tex(datetime2-hebrew.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source35:       datetime2-hebrew.tar.xz
 Source36:       datetime2-hebrew.doc.tar.xz
 
@@ -1585,7 +1585,7 @@ Provides:       tex(datetime2-icelandic-ascii.ldf)
 Provides:       tex(datetime2-icelandic-utf8.ldf)
 Provides:       tex(datetime2-icelandic.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source37:       datetime2-icelandic.tar.xz
 Source38:       datetime2-icelandic.doc.tar.xz
 
@@ -1667,7 +1667,7 @@ Provides:       tex(datetime2-irish-ascii.ldf)
 Provides:       tex(datetime2-irish-utf8.ldf)
 Provides:       tex(datetime2-irish.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source39:       datetime2-irish.tar.xz
 Source40:       datetime2-irish.doc.tar.xz
 
@@ -1755,7 +1755,7 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(itnumpar.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source41:       datetime2-it-fulltext.tar.xz
 Source42:       datetime2-it-fulltext.doc.tar.xz
 
@@ -1848,7 +1848,7 @@ Provides:       tex(datetime2-italian-ascii.ldf)
 Provides:       tex(datetime2-italian-utf8.ldf)
 Provides:       tex(datetime2-italian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source43:       datetime2-italian.tar.xz
 Source44:       datetime2-italian.doc.tar.xz
 
@@ -1943,7 +1943,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-datetime2-latin-doc >= %{texlive_version}
 Provides:       tex(datetime2-latin.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source45:       datetime2-latin.tar.xz
 Source46:       datetime2-latin.doc.tar.xz
 
@@ -2021,7 +2021,7 @@ Provides:       tex(datetime2-lsorbian-ascii.ldf)
 Provides:       tex(datetime2-lsorbian-utf8.ldf)
 Provides:       tex(datetime2-lsorbian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source47:       datetime2-lsorbian.tar.xz
 Source48:       datetime2-lsorbian.doc.tar.xz
 
@@ -2101,7 +2101,7 @@ Provides:       tex(datetime2-magyar-ascii.ldf)
 Provides:       tex(datetime2-magyar-utf8.ldf)
 Provides:       tex(datetime2-magyar.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source49:       datetime2-magyar.tar.xz
 Source50:       datetime2-magyar.doc.tar.xz
 
@@ -2181,7 +2181,7 @@ Provides:       tex(datetime2-norsk-ascii.ldf)
 Provides:       tex(datetime2-norsk-utf8.ldf)
 Provides:       tex(datetime2-norsk.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source51:       datetime2-norsk.tar.xz
 Source52:       datetime2-norsk.doc.tar.xz
 
@@ -2261,7 +2261,7 @@ Provides:       tex(datetime2-polish-ascii.ldf)
 Provides:       tex(datetime2-polish-utf8.ldf)
 Provides:       tex(datetime2-polish.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source53:       datetime2-polish.tar.xz
 Source54:       datetime2-polish.doc.tar.xz
 
@@ -2341,7 +2341,7 @@ Provides:       tex(datetime2-portuges-ascii.ldf)
 Provides:       tex(datetime2-portuges-utf8.ldf)
 Provides:       tex(datetime2-portuges.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source55:       datetime2-portuges.tar.xz
 Source56:       datetime2-portuges.doc.tar.xz
 
@@ -2421,7 +2421,7 @@ Provides:       tex(datetime2-romanian-ascii.ldf)
 Provides:       tex(datetime2-romanian-utf8.ldf)
 Provides:       tex(datetime2-romanian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source57:       datetime2-romanian.tar.xz
 Source58:       datetime2-romanian.doc.tar.xz
 
@@ -2506,7 +2506,7 @@ Provides:       tex(datetime2-russian-ascii.ldf)
 Provides:       tex(datetime2-russian-utf8.ldf)
 Provides:       tex(datetime2-russian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source59:       datetime2-russian.tar.xz
 Source60:       datetime2-russian.doc.tar.xz
 
@@ -2586,7 +2586,7 @@ Provides:       tex(datetime2-samin-ascii.ldf)
 Provides:       tex(datetime2-samin-utf8.ldf)
 Provides:       tex(datetime2-samin.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source61:       datetime2-samin.tar.xz
 Source62:       datetime2-samin.doc.tar.xz
 
@@ -2666,7 +2666,7 @@ Provides:       tex(datetime2-scottish-ascii.ldf)
 Provides:       tex(datetime2-scottish-utf8.ldf)
 Provides:       tex(datetime2-scottish.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source63:       datetime2-scottish.tar.xz
 Source64:       datetime2-scottish.doc.tar.xz
 
@@ -2756,7 +2756,7 @@ Provides:       tex(datetime2-sr-Latn-ME.ldf)
 Provides:       tex(datetime2-sr-Latn-RS.ldf)
 Provides:       tex(datetime2-sr-Latn.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source65:       datetime2-serbian.tar.xz
 Source66:       datetime2-serbian.doc.tar.xz
 
@@ -2846,7 +2846,7 @@ Provides:       tex(datetime2-slovak-ascii.ldf)
 Provides:       tex(datetime2-slovak-utf8.ldf)
 Provides:       tex(datetime2-slovak.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source67:       datetime2-slovak.tar.xz
 Source68:       datetime2-slovak.doc.tar.xz
 
@@ -2926,7 +2926,7 @@ Provides:       tex(datetime2-slovene-ascii.ldf)
 Provides:       tex(datetime2-slovene-utf8.ldf)
 Provides:       tex(datetime2-slovene.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source69:       datetime2-slovene.tar.xz
 Source70:       datetime2-slovene.doc.tar.xz
 
@@ -3006,7 +3006,7 @@ Provides:       tex(datetime2-spanish-ascii.ldf)
 Provides:       tex(datetime2-spanish-utf8.ldf)
 Provides:       tex(datetime2-spanish.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source71:       datetime2-spanish.tar.xz
 Source72:       datetime2-spanish.doc.tar.xz
 
@@ -3086,7 +3086,7 @@ Provides:       tex(datetime2-swedish-ascii.ldf)
 Provides:       tex(datetime2-swedish-utf8.ldf)
 Provides:       tex(datetime2-swedish.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source73:       datetime2-swedish.tar.xz
 Source74:       datetime2-swedish.doc.tar.xz
 
@@ -3166,7 +3166,7 @@ Provides:       tex(datetime2-turkish-ascii.ldf)
 Provides:       tex(datetime2-turkish-utf8.ldf)
 Provides:       tex(datetime2-turkish.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source75:       datetime2-turkish.tar.xz
 Source76:       datetime2-turkish.doc.tar.xz
 
@@ -3246,7 +3246,7 @@ Provides:       tex(datetime2-ukrainian-ascii.ldf)
 Provides:       tex(datetime2-ukrainian-utf8.ldf)
 Provides:       tex(datetime2-ukrainian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source77:       datetime2-ukrainian.tar.xz
 Source78:       datetime2-ukrainian.doc.tar.xz
 
@@ -3324,7 +3324,7 @@ Provides:       tex(datetime2-usorbian-ascii.ldf)
 Provides:       tex(datetime2-usorbian-utf8.ldf)
 Provides:       tex(datetime2-usorbian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source79:       datetime2-usorbian.tar.xz
 Source80:       datetime2-usorbian.doc.tar.xz
 
@@ -3404,7 +3404,7 @@ Provides:       tex(datetime2-welsh-ascii.ldf)
 Provides:       tex(datetime2-welsh-utf8.ldf)
 Provides:       tex(datetime2-welsh.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source81:       datetime2-welsh.tar.xz
 Source82:       datetime2-welsh.doc.tar.xz
 
@@ -3483,7 +3483,7 @@ Suggests:       texlive-dblfloatfix-doc >= %{texlive_version}
 Provides:       tex(dblfloatfix.sty)
 Requires:       tex(fixltx2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source83:       dblfloatfix.tar.xz
 Source84:       dblfloatfix.doc.tar.xz
 
@@ -3559,7 +3559,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-dbshow-doc >= %{texlive_version}
 Provides:       tex(dbshow.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source85:       dbshow.tar.xz
 Source86:       dbshow.doc.tar.xz
 
@@ -3612,7 +3612,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/dbshow/dbshow.sty
 
 %package -n texlive-dccpaper
-Version:        %{texlive_version}.%{texlive_noarch}.2.4svn67890
+Version:        %{texlive_version}.%{texlive_noarch}.2.5svn72097
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset papers for the International Journal of Digital Curation
@@ -3670,7 +3670,7 @@ Requires:       tex(titlesec.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source87:       dccpaper.tar.xz
 Source88:       dccpaper.doc.tar.xz
 
@@ -3687,7 +3687,7 @@ submissions to the IJDC and IDCC, but nevertheless they
 continue to be maintained to support existing documents.
 
 %package -n texlive-dccpaper-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.4svn67890
+Version:        %{texlive_version}.%{texlive_noarch}.2.5svn72097
 Release:        0
 Summary:        Documentation for texlive-dccpaper
 License:        LPPL-1.0
@@ -3761,7 +3761,7 @@ Provides:       tex(dcpic.sty)
 Provides:       tex(europroc.cls)
 Requires:       tex(article.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source89:       dcpic.tar.xz
 Source90:       dcpic.doc.tar.xz
 
@@ -3853,7 +3853,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source91:       ddphonism.tar.xz
 Source92:       ddphonism.doc.tar.xz
 
@@ -3933,7 +3933,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-de-macro-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source93:       de-macro.tar.xz
 Source94:       de-macro.doc.tar.xz
 
@@ -4028,7 +4028,7 @@ Requires:       tex(tcolorbox.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source95:       debate.tar.xz
 Source96:       debate.doc.tar.xz
 
@@ -4104,7 +4104,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-decimal-doc >= %{texlive_version}
 Provides:       tex(decimal.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source97:       decimal.tar.xz
 Source98:       decimal.doc.tar.xz
 
@@ -4179,7 +4179,7 @@ Suggests:       texlive-decimalcomma-doc >= %{texlive_version}
 Provides:       tex(decimalcomma.sty)
 Requires:       tex(icomma.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source99:       decimalcomma.tar.xz
 Source100:      decimalcomma.doc.tar.xz
 
@@ -4259,7 +4259,7 @@ Provides:       tex(decision-table.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(nicematrix.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source101:      decision-table.tar.xz
 Source102:      decision-table.doc.tar.xz
 
@@ -4344,7 +4344,7 @@ Provides:       tex(decorule.sty)
 Requires:       tex(fix-cm.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source103:      decorule.tar.xz
 Source104:      decorule.doc.tar.xz
 
@@ -4424,7 +4424,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-defoldfonts-doc >= %{texlive_version}
 Provides:       tex(defoldfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source105:      defoldfonts.tar.xz
 Source106:      defoldfonts.doc.tar.xz
 
@@ -4501,7 +4501,7 @@ Provides:       tex(dehyphn.tex)
 Provides:       tex(dehypht.tex)
 Provides:       tex(dehyphtex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source107:      dehyph.tar.xz
 
 %description -n texlive-dehyph
@@ -4539,7 +4539,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/dehyph/dehyphtex.tex
 
 %package -n texlive-dehyph-exptl
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn70233
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn72949
 Release:        0
 License:        LPPL-1.0
 Summary:        Experimental hyphenation patterns for the German language
@@ -4591,7 +4591,7 @@ Provides:       tex(dehyphn-x-2024-02-28.tex)
 Provides:       tex(dehypht-x-2024-02-28.tex)
 Provides:       tex(dehyphts-x-2024-02-28.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source108:      dehyph-exptl.tar.xz
 Source109:      dehyph-exptl.doc.tar.xz
 
@@ -4607,7 +4607,7 @@ reformierten Rechtschreibung ab und konnen mit den Paketen
 Babel und hyphsubst aus dem Oberdiek-Bundel verwendet werden.
 
 %package -n texlive-dehyph-exptl-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn70233
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn72949
 Release:        0
 Summary:        Documentation for texlive-dehyph-exptl
 License:        LPPL-1.0
@@ -5189,7 +5189,7 @@ Provides:       tex(dejavuserif_ts1.enc)
 Provides:       tex(dejavuserif_x2.enc)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source110:      dejavu.tar.xz
 Source111:      dejavu.doc.tar.xz
 
@@ -5892,7 +5892,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-dejavu/DejaVuSerifCondensed.pfb
 
 %package -n texlive-dejavu-otf
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.04svn45991
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.06svn73003
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for the ttf and otf DejaVu fonts
@@ -5920,22 +5920,22 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-dejavu-otf-doc >= %{texlive_version}
 Provides:       tex(dejavu-otf.sty)
-Requires:       tex(ifluatex.sty)
-Requires:       tex(ifxetex.sty)
+Requires:       tex(fontspec.sty)
+Requires:       tex(iftex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source112:      dejavu-otf.tar.xz
 Source113:      dejavu-otf.doc.tar.xz
 
 %description -n texlive-dejavu-otf
-Package dejavu-otf supports the free ttf-fonts from the DejaVu
+This package supports the free ttf-fonts from the DejaVu
 project which are available from GitHub or already part of your
-system (Windows/Linux/...) and the OpenType version of the
-TeXGyre Math, which is part of any TeX distribution.. Following
-font files are supported: DejaVuSans-BoldOblique.ttf
+system (Windows/Linux/...), and the OpenType version of TeXGyre
+Math, which is part of any TeX distribution. The following font
+files are supported: DejaVuSans-BoldOblique.ttf
 DejaVuSans-Bold.ttf DejaVuSansCondensed-BoldOblique.ttf
 DejaVuSansCondensed-Bold.ttf DejaVuSansCondensed-Oblique.ttf
 DejaVuSansCondensed.ttf DejaVuSans-ExtraLight.ttf
@@ -5949,7 +5949,7 @@ DejaVuSerifCondensed.ttf DejaVuSerif-Italic.ttf DejaVuSerif.ttf
 texgyredejavu-math.otf
 
 %package -n texlive-dejavu-otf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.04svn45991
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.06svn73003
 Release:        0
 Summary:        Documentation for texlive-dejavu-otf
 License:        LPPL-1.0
@@ -6018,7 +6018,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-delim-doc >= %{texlive_version}
 Provides:       tex(delim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source114:      delim.tar.xz
 Source115:      delim.doc.tar.xz
 
@@ -6092,7 +6092,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-delimseasy-doc >= %{texlive_version}
 Provides:       tex(delimseasy.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source116:      delimseasy.tar.xz
 Source117:      delimseasy.doc.tar.xz
 
@@ -6142,7 +6142,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/delimseasy/delimseasy.sty
 
 %package -n texlive-delimset
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn49544
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn74360
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset and declare sets of delimiters with convenient size control
@@ -6170,10 +6170,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-delimset-doc >= %{texlive_version}
 Provides:       tex(delimset.sty)
-Requires:       tex(amsmath.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source118:      delimset.tar.xz
 Source119:      delimset.doc.tar.xz
 
@@ -6183,7 +6182,7 @@ delimiters in math mode whose size can be adjusted
 conveniently.
 
 %package -n texlive-delimset-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn49544
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn74360
 Release:        0
 Summary:        Documentation for texlive-delimset
 License:        LPPL-1.0
@@ -6249,7 +6248,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-delimtxt-doc >= %{texlive_version}
 Provides:       tex(delimtxt.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source120:      delimtxt.tar.xz
 Source121:      delimtxt.doc.tar.xz
 
@@ -6333,7 +6332,7 @@ Provides:       tex(democodetools.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(scontents.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source122:      democodetools.tar.xz
 Source123:      democodetools.doc.tar.xz
 
@@ -6465,7 +6464,7 @@ Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 Requires:       tex(zref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source124:      denisbdoc.tar.xz
 Source125:      denisbdoc.doc.tar.xz
 
@@ -6543,7 +6542,7 @@ Provides:       tex(derivative.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source126:      derivative.tar.xz
 Source127:      derivative.doc.tar.xz
 
@@ -6632,7 +6631,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(detex.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source128:      detex.doc.tar.xz
 
 %description -n texlive-detex
@@ -6695,7 +6694,7 @@ Provides:       tex(dhua.cfg)
 Provides:       tex(dhua.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source129:      dhua.tar.xz
 Source130:      dhua.doc.tar.xz
 
@@ -6791,7 +6790,7 @@ Requires:       tex(pgfplotstable.sty)
 Requires:       tex(polyglossia.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source131:      diabetes-logbook.tar.xz
 Source132:      diabetes-logbook.doc.tar.xz
 
@@ -6900,7 +6899,7 @@ Requires:       tex(tcolorbox.sty)
 Requires:       tex(translations.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source133:      diadia.tar.xz
 Source134:      diadia.doc.tar.xz
 
@@ -7003,7 +7002,7 @@ Requires:       tex(fp.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source135:      diagbox.tar.xz
 Source136:      diagbox.doc.tar.xz
 
@@ -7084,7 +7083,7 @@ Suggests:       texlive-diagmac2-doc >= %{texlive_version}
 Provides:       tex(diagmac2.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source137:      diagmac2.tar.xz
 Source138:      diagmac2.doc.tar.xz
 
@@ -7162,7 +7161,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-diagnose-doc >= %{texlive_version}
 Provides:       tex(diagnose.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source139:      diagnose.tar.xz
 Source140:      diagnose.doc.tar.xz
 
@@ -7243,7 +7242,7 @@ Provides:       tex(grabhedr.sty)
 Provides:       tex(listout.tex)
 Provides:       tex(menus.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source141:      dialogl.tar.xz
 Source142:      dialogl.doc.tar.xz
 
@@ -7330,7 +7329,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-dice-doc >= %{texlive_version}
 Provides:       tex(dice3d.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source143:      dice.tar.xz
 Source144:      dice.doc.tar.xz
 
@@ -7406,7 +7405,7 @@ Provides:       tex(dichokey.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source145:      dichokey.tar.xz
 Source146:      dichokey.doc.tar.xz
 
@@ -7483,7 +7482,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source147:      dickimaw.doc.tar.xz
 
 %description -n texlive-dickimaw
@@ -7725,7 +7724,7 @@ Provides:       tex(dictsym.tfm)
 Requires:       tex(keyval.sty)
 Requires:       tex(pifont.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source148:      dictsym.tar.xz
 Source149:      dictsym.doc.tar.xz
 
@@ -7806,6 +7805,113 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-dictsym/fonts.scale
 %{_datadir}/fonts/texlive-dictsym/dictsym.pfb
 
+%package -n texlive-didactic
+Version:        %{texlive_version}.%{texlive_noarch}.1.7svn70901
+Release:        0
+License:        LPPL-1.0
+Summary:        Tools for writing teaching material
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-didactic-doc >= %{texlive_version}
+Provides:       tex(didactic.sty)
+Requires:       tex(amsthm.sty)
+Requires:       tex(babel.sty)
+Requires:       tex(beramono.sty)
+Requires:       tex(changepage.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(helvet.sty)
+Requires:       tex(marginfix.sty)
+Requires:       tex(mathpazo.sty)
+Requires:       tex(minted.sty)
+Requires:       tex(pythontex.sty)
+Requires:       tex(ragged2e.sty)
+Requires:       tex(tabularx.sty)
+Requires:       tex(thmtools.sty)
+Requires:       tex(translations.sty)
+Requires:       tex(unique.sty)
+Requires:       tex(xkeyval.sty)
+Requires:       tex(xparse.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source150:      didactic.tar.xz
+Source151:      didactic.doc.tar.xz
+
+%description -n texlive-didactic
+This package provides macros and environments useful for
+writing teaching material. It provides more semantic
+environments on top of the standard definition, theorem, and
+friends: for instance, exercise, activity and question. These
+are suitably colour-coded when used with Beamer. They occur as
+"normal" text in handouts produced by beamerarticle (same style
+as definition usually has). It also provides macros for
+typesetting code listings and output side by side. Finally, it
+modifies the appearance of beamer (Berlin-based theme) and
+memoir (Tufte style layout), if loaded. It is designed to be
+used with beamer to produce slides and beamerarticle with
+memoir to produce notes and handouts from the same source.
+
+%package -n texlive-didactic-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.7svn70901
+Release:        0
+Summary:        Documentation for texlive-didactic
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-didactic and texlive-alldocumentation)
+
+%description -n texlive-didactic-doc
+This package includes the documentation for texlive-didactic
+
+%post -n texlive-didactic
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-didactic
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-didactic
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-didactic-doc
+%{_texmfdistdir}/doc/latex/didactic/LICENSE
+%{_texmfdistdir}/doc/latex/didactic/ProvideSemanticEnv.tex
+%{_texmfdistdir}/doc/latex/didactic/README.md
+%{_texmfdistdir}/doc/latex/didactic/didactic.pdf
+%{_texmfdistdir}/doc/latex/didactic/hello.py
+%{_texmfdistdir}/doc/latex/didactic/idea.tex
+%{_texmfdistdir}/doc/latex/didactic/lightblock.tex
+
+%files -n texlive-didactic
+%{_texmfdistdir}/tex/latex/didactic/didactic.sty
+
 %package -n texlive-didec
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn70229
 Release:        0
@@ -7836,9 +7942,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-didec-doc >= %{texlive_version}
 Provides:       tex(didec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source150:      didec.tar.xz
-Source151:      didec.doc.tar.xz
+# from 20250308
+Source152:      didec.tar.xz
+Source153:      didec.doc.tar.xz
 
 %description -n texlive-didec
 This package supports fixed-point arithmetic with two decimal
@@ -7923,9 +8029,9 @@ Requires:       tex(mleftright.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xtemplate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source152:      diffcoeff.tar.xz
-Source153:      diffcoeff.doc.tar.xz
+# from 20250308
+Source154:      diffcoeff.tar.xz
+Source155:      diffcoeff.doc.tar.xz
 
 %description -n texlive-diffcoeff
 This package allows the easy and consistent writing of
@@ -7982,7 +8088,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/diffcoeff/diffcoeff5.def
 
 %package -n texlive-digestif
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.1svn65223
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn72163
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Editor plugin for LaTeX, ConTeXt etcetera
@@ -8012,9 +8118,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-digestif-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source154:      digestif.tar.xz
-Source155:      digestif.doc.tar.xz
+# from 20250308
+Source156:      digestif.tar.xz
+Source157:      digestif.doc.tar.xz
 
 %description -n texlive-digestif
 Digestif is a code analyzer, and a language server, for LaTeX,
@@ -8023,7 +8129,7 @@ completion, documentation, code navigation, and related
 functionality to any text editor that speaks the LSP protocol.
 
 %package -n texlive-digestif-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.1svn65223
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn72163
 Release:        0
 Summary:        Documentation for texlive-digestif
 License:        GPL-2.0-or-later
@@ -8092,9 +8198,9 @@ Suggests:       texlive-digiconfigs-doc >= %{texlive_version}
 Provides:       tex(digiconfigs.sty)
 Requires:       tex(amsmath.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source156:      digiconfigs.tar.xz
-Source157:      digiconfigs.doc.tar.xz
+# from 20250308
+Source158:      digiconfigs.tar.xz
+Source159:      digiconfigs.doc.tar.xz
 
 %description -n texlive-digiconfigs
 In Stochastic Geometry and Digital Image Analysis some problems
@@ -8171,9 +8277,9 @@ Suggests:       texlive-dijkstra-doc >= %{texlive_version}
 Provides:       tex(dijkstra.sty)
 Requires:       tex(simplekv.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source158:      dijkstra.tar.xz
-Source159:      dijkstra.doc.tar.xz
+# from 20250308
+Source160:      dijkstra.tar.xz
+Source161:      dijkstra.doc.tar.xz
 
 %description -n texlive-dijkstra
 This small package uses the Dijkstra algorithm for weighted
@@ -8252,9 +8358,9 @@ Provides:       tex(dimnum.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(xifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source160:      dimnum.tar.xz
-Source161:      dimnum.doc.tar.xz
+# from 20250308
+Source162:      dimnum.tar.xz
+Source163:      dimnum.doc.tar.xz
 
 %description -n texlive-dimnum
 This package simplifies the calling of Dimensionless Numbers in
@@ -8326,9 +8432,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-din1505-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source162:      din1505.tar.xz
-Source163:      din1505.doc.tar.xz
+# from 20250308
+Source164:      din1505.tar.xz
+Source165:      din1505.doc.tar.xz
 
 %description -n texlive-din1505
 A set of bibliography styles that conformt to DIN 1505, and
@@ -8405,9 +8511,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-dinat-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source164:      dinat.tar.xz
-Source165:      dinat.doc.tar.xz
+# from 20250308
+Source166:      dinat.tar.xz
+Source167:      dinat.doc.tar.xz
 
 %description -n texlive-dinat
 Bibliography style files intended for texts in german. They
@@ -8483,9 +8589,9 @@ Provides:       tex(dinbrief.cfg)
 Provides:       tex(dinbrief.cls)
 Provides:       tex(dinbrief.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source166:      dinbrief.tar.xz
-Source167:      dinbrief.doc.tar.xz
+# from 20250308
+Source168:      dinbrief.tar.xz
+Source169:      dinbrief.doc.tar.xz
 
 %description -n texlive-dinbrief
 Implements a document layout for writing letters according to
@@ -8583,9 +8689,9 @@ Provides:       tex(dingbat.tfm)
 Provides:       tex(uark.fd)
 Provides:       tex(udingbat.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source168:      dingbat.tar.xz
-Source169:      dingbat.doc.tar.xz
+# from 20250308
+Source170:      dingbat.tar.xz
+Source171:      dingbat.doc.tar.xz
 
 %description -n texlive-dingbat
 The fonts (ark10 and dingbat) are specified in Metafont;
@@ -8667,9 +8773,9 @@ Suggests:       texlive-directory-doc >= %{texlive_version}
 Provides:       tex(directory.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source170:      directory.tar.xz
-Source171:      directory.doc.tar.xz
+# from 20250308
+Source172:      directory.tar.xz
+Source173:      directory.doc.tar.xz
 
 %description -n texlive-directory
 A package for LaTeX and BibTeX that facilitates the
@@ -8755,9 +8861,9 @@ Suggests:       texlive-dirtree-doc >= %{texlive_version}
 Provides:       tex(dirtree.sty)
 Provides:       tex(dirtree.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source172:      dirtree.tar.xz
-Source173:      dirtree.doc.tar.xz
+# from 20250308
+Source174:      dirtree.tar.xz
+Source175:      dirtree.doc.tar.xz
 
 %description -n texlive-dirtree
 This package is designed to emulate the way windows explorer
@@ -8834,9 +8940,9 @@ Provides:       tex(dirtytalk.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source174:      dirtytalk.tar.xz
-Source175:      dirtytalk.doc.tar.xz
+# from 20250308
+Source176:      dirtytalk.tar.xz
+Source177:      dirtytalk.doc.tar.xz
 
 %description -n texlive-dirtytalk
 The package provides a macro to typeset quotations, using the
@@ -8929,9 +9035,9 @@ Requires:       tex(natbib.sty)
 Requires:       tex(subcaption.sty)
 Requires:       tex(textcase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source176:      disser.tar.xz
-Source177:      disser.doc.tar.xz
+# from 20250308
+Source178:      disser.tar.xz
+Source179:      disser.doc.tar.xz
 
 %description -n texlive-disser
 Disser comprises a document class and set of templates for
@@ -9161,9 +9267,9 @@ Requires:       tex(fancyvrb.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source178:      ditaa.tar.xz
-Source179:      ditaa.doc.tar.xz
+# from 20250308
+Source180:      ditaa.tar.xz
+Source181:      ditaa.doc.tar.xz
 
 %description -n texlive-ditaa
 With this package ditaa (DIagrams Through Ascii Art) diagrams
@@ -9255,9 +9361,9 @@ Requires:       tex(titling.sty)
 Requires:       tex(tocloft.sty)
 Requires:       tex(xifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source180:      dithesis.tar.xz
-Source181:      dithesis.doc.tar.xz
+# from 20250308
+Source182:      dithesis.tar.xz
+Source183:      dithesis.doc.tar.xz
 
 %description -n texlive-dithesis
 The class conforms to the requirements of the Department of
@@ -9340,9 +9446,9 @@ Provides:       tex(dk-bib.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source182:      dk-bib.tar.xz
-Source183:      dk-bib.doc.tar.xz
+# from 20250308
+Source184:      dk-bib.tar.xz
+Source185:      dk-bib.doc.tar.xz
 
 %description -n texlive-dk-bib
 Dk-bib is a translation of the four standard BibTeX style files
@@ -9443,9 +9549,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(ragged2e.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source184:      dlfltxb.tar.xz
-Source185:      dlfltxb.doc.tar.xz
+# from 20250308
+Source186:      dlfltxb.tar.xz
+Source187:      dlfltxb.doc.tar.xz
 
 %description -n texlive-dlfltxb
 The bundle contains various macros either used for creating the
@@ -9546,9 +9652,9 @@ Suggests:       texlive-dnaseq-doc >= %{texlive_version}
 Provides:       tex(dnaseq.sty)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source186:      dnaseq.tar.xz
-Source187:      dnaseq.doc.tar.xz
+# from 20250308
+Source188:      dnaseq.tar.xz
+Source189:      dnaseq.doc.tar.xz
 
 %description -n texlive-dnaseq
 Defines a means of specifying sequences of bases. The bases may
@@ -9621,8 +9727,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source188:      dnp.tar.xz
+# from 20250308
+Source190:      dnp.tar.xz
 
 %description -n texlive-dnp
 part of the CJK package, ctan.org/pkg/cjk
@@ -9675,8 +9781,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source189:      doc-pictex.doc.tar.xz
+# from 20250308
+Source191:      doc-pictex.doc.tar.xz
 
 %description -n texlive-doc-pictex
 A summary of available resources providing (or merely
@@ -9732,9 +9838,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-docbytex-doc >= %{texlive_version}
 Provides:       tex(docby.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source190:      docbytex.tar.xz
-Source191:      docbytex.doc.tar.xz
+# from 20250308
+Source192:      docbytex.tar.xz
+Source193:      docbytex.doc.tar.xz
 
 %description -n texlive-docbytex
 The package creates documentation from C source code, or other
@@ -9894,9 +10000,9 @@ Requires:       tex(xifthen.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source192:      doclicense.tar.xz
-Source193:      doclicense.doc.tar.xz
+# from 20250308
+Source194:      doclicense.tar.xz
+Source195:      doclicense.doc.tar.xz
 
 %description -n texlive-doclicense
 This package allows you to put your document under a license
@@ -10110,9 +10216,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-docmfp-doc >= %{texlive_version}
 Provides:       tex(docmfp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source194:      docmfp.tar.xz
-Source195:      docmfp.doc.tar.xz
+# from 20250308
+Source196:      docmfp.tar.xz
+Source197:      docmfp.doc.tar.xz
 
 %description -n texlive-docmfp
 Extends the doc package to cater for documenting non-LaTeX
@@ -10185,9 +10291,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-docmute-doc >= %{texlive_version}
 Provides:       tex(docmute.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source196:      docmute.tar.xz
-Source197:      docmute.doc.tar.xz
+# from 20250308
+Source198:      docmute.tar.xz
+Source199:      docmute.doc.tar.xz
 
 %description -n texlive-docmute
 Input or include stand-alone LaTeX documents, ignoring
@@ -10279,9 +10385,9 @@ Requires:       tex(pgfopts.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source198:      docshots.tar.xz
-Source199:      docshots.doc.tar.xz
+# from 20250308
+Source200:      docshots.tar.xz
+Source201:      docshots.doc.tar.xz
 
 %description -n texlive-docshots
 This LaTeX package helps you show TeX code next to the
@@ -10327,7 +10433,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/docshots/docshots.sty
 
 %package -n texlive-docsurvey
-Version:        %{texlive_version}.%{texlive_noarch}.svn70442
+Version:        %{texlive_version}.%{texlive_noarch}.svn70729
 Release:        0
 License:        LPPL-1.0
 Summary:        A survey of LaTeX documentation
@@ -10354,8 +10460,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source200:      docsurvey.doc.tar.xz
+# from 20250308
+Source202:      docsurvey.doc.tar.xz
 
 %description -n texlive-docsurvey
 A survey of programming-related documentation for LaTeX.
@@ -10431,9 +10537,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source201:      doctools.tar.xz
-Source202:      doctools.doc.tar.xz
+# from 20250308
+Source203:      doctools.tar.xz
+Source204:      doctools.doc.tar.xz
 
 %description -n texlive-doctools
 The package provides a collection of tools for use either in an
@@ -10505,9 +10611,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-documentation-doc >= %{texlive_version}
 Provides:       tex(documentation.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source203:      documentation.tar.xz
-Source204:      documentation.doc.tar.xz
+# from 20250308
+Source205:      documentation.tar.xz
+Source206:      documentation.doc.tar.xz
 
 %description -n texlive-documentation
 The package provides a simple means of typesetting computer
@@ -10580,9 +10686,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-docutils-doc >= %{texlive_version}
 Provides:       tex(docutils.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source205:      docutils.tar.xz
-Source206:      docutils.doc.tar.xz
+# from 20250308
+Source207:      docutils.tar.xz
+Source208:      docutils.doc.tar.xz
 
 %description -n texlive-docutils
 The package is intended for use with LaTeX documents generated
@@ -10659,9 +10765,9 @@ Suggests:       texlive-doi-doc >= %{texlive_version}
 Provides:       tex(doi.sty)
 Requires:       tex(hyperref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source207:      doi.tar.xz
-Source208:      doi.doc.tar.xz
+# from 20250308
+Source209:      doi.tar.xz
+Source210:      doi.doc.tar.xz
 
 %description -n texlive-doi
 You can hyperlink DOI numbers to doi.org. However, some
@@ -10707,6 +10813,82 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-doi
 %{_texmfdistdir}/tex/latex/doi/doi.sty
 
+%package -n texlive-doibanner
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn71919
+Release:        0
+License:        LPPL-1.0
+Summary:        Generate DOI banners and links
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-doibanner-doc >= %{texlive_version}
+Provides:       tex(doibanner.sty)
+Requires:       tex(adjustbox.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source211:      doibanner.tar.xz
+Source212:      doibanner.doc.tar.xz
+
+%description -n texlive-doibanner
+A LaTeX package to generate DOI banners and links.
+
+%package -n texlive-doibanner-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn71919
+Release:        0
+Summary:        Documentation for texlive-doibanner
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-doibanner and texlive-alldocumentation)
+
+%description -n texlive-doibanner-doc
+This package includes the documentation for texlive-doibanner
+
+%post -n texlive-doibanner
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-doibanner
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-doibanner
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-doibanner-doc
+%{_texmfdistdir}/doc/latex/doibanner/README.md
+%{_texmfdistdir}/doc/latex/doibanner/doibanner.pdf
+
+%files -n texlive-doibanner
+%{_texmfdistdir}/tex/latex/doibanner/doibanner.sty
+
 %package -n texlive-doipubmed
 Version:        %{texlive_version}.%{texlive_noarch}.1.01svn15878
 Release:        0
@@ -10738,9 +10920,9 @@ Suggests:       texlive-doipubmed-doc >= %{texlive_version}
 Provides:       tex(doipubmed.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source209:      doipubmed.tar.xz
-Source210:      doipubmed.doc.tar.xz
+# from 20250308
+Source213:      doipubmed.tar.xz
+Source214:      doipubmed.doc.tar.xz
 
 %description -n texlive-doipubmed
 The package provides the commands \doi, \pubmed and \citeurl.
@@ -10785,6 +10967,97 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-doipubmed
 %{_texmfdistdir}/tex/latex/doipubmed/doipubmed.sty
+
+%package -n texlive-domaincoloring
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.05svn72176
+Release:        0
+License:        LPPL-1.0
+Summary:        Draw colored represenations of complex functions
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-domaincoloring-doc >= %{texlive_version}
+Provides:       tex(domaincoloring.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(shellesc.sty)
+Requires:       tex(xkeyval.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source215:      domaincoloring.tar.xz
+Source216:      domaincoloring.doc.tar.xz
+
+%description -n texlive-domaincoloring
+Domain coloring is a technique to visualize complex functions
+by assigning a color to each point of the complex plane z=x+iy.
+This package calculates with the help of Lua any complex
+function to visualize its behaviour. The value of the complex
+function(z) can be described by radius and angle which can be
+two values of the hsv-color model, which then defines the color
+of each point in the complex plane z=x+iy.
+
+%package -n texlive-domaincoloring-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.05svn72176
+Release:        0
+Summary:        Documentation for texlive-domaincoloring
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-domaincoloring and texlive-alldocumentation)
+Provides:       locale(texlive-domaincoloring-doc:de)
+
+%description -n texlive-domaincoloring-doc
+This package includes the documentation for texlive-domaincoloring
+
+%post -n texlive-domaincoloring
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-domaincoloring
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-domaincoloring
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-domaincoloring-doc
+%{_texmfdistdir}/doc/lualatex/domaincoloring/Changes
+%{_texmfdistdir}/doc/lualatex/domaincoloring/README.md
+%{_texmfdistdir}/doc/lualatex/domaincoloring/domaincoloring-doc.bib
+%{_texmfdistdir}/doc/lualatex/domaincoloring/domaincoloring-doc.pdf
+%{_texmfdistdir}/doc/lualatex/domaincoloring/domaincoloring-doc.tex
+%{_texmfdistdir}/doc/lualatex/domaincoloring/hsv.png
+%{_texmfdistdir}/doc/lualatex/domaincoloring/titleImg.png
+
+%files -n texlive-domaincoloring
+%{_texmfdistdir}/tex/lualatex/domaincoloring/domaincoloring-complex-numbers.lua
+%{_texmfdistdir}/tex/lualatex/domaincoloring/domaincoloring-functions.lua
+%{_texmfdistdir}/tex/lualatex/domaincoloring/domaincoloring.lua
+%{_texmfdistdir}/tex/lualatex/domaincoloring/domaincoloring.sty
 
 %package -n texlive-domitian
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn55286
@@ -11521,9 +11794,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source211:      domitian.tar.xz
-Source212:      domitian.doc.tar.xz
+# from 20250308
+Source217:      domitian.tar.xz
+Source218:      domitian.doc.tar.xz
 
 %description -n texlive-domitian
 The Domitian fonts are a free and open-source OpenType font
@@ -12352,9 +12625,9 @@ Requires:       perl(Pod::Usage)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source213:      dosepsbin.tar.xz
-Source214:      dosepsbin.doc.tar.xz
+# from 20250308
+Source219:      dosepsbin.tar.xz
+Source220:      dosepsbin.doc.tar.xz
 
 %description -n texlive-dosepsbin
 A Encapsulated PostScript (EPS) file may given in a special
@@ -12444,9 +12717,9 @@ Provides:       tex(dot2texi.sty)
 Requires:       tex(moreverb.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source215:      dot2texi.tar.xz
-Source216:      dot2texi.doc.tar.xz
+# from 20250308
+Source221:      dot2texi.tar.xz
+Source222:      dot2texi.doc.tar.xz
 
 %description -n texlive-dot2texi
 The dot2texi package allows you to embed graphs in the DOT
@@ -12532,9 +12805,9 @@ Suggests:       texlive-dotarrow-doc >= %{texlive_version}
 Provides:       tex(DotArrow.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source217:      dotarrow.tar.xz
-Source218:      dotarrow.doc.tar.xz
+# from 20250308
+Source223:      dotarrow.tar.xz
+Source224:      dotarrow.doc.tar.xz
 
 %description -n texlive-dotarrow
 The package can draw dotted arrows that are extendable, in the
@@ -12607,9 +12880,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-dotlessi-doc >= %{texlive_version}
 Provides:       tex(dotlessi.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source219:      dotlessi.tar.xz
-Source220:      dotlessi.doc.tar.xz
+# from 20250308
+Source225:      dotlessi.tar.xz
+Source226:      dotlessi.doc.tar.xz
 
 %description -n texlive-dotlessi
 The package provides two commands: \dotlessi and \dotlessj,
@@ -12681,9 +12954,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-dotseqn-doc >= %{texlive_version}
 Provides:       tex(dotseqn.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source221:      dotseqn.tar.xz
-Source222:      dotseqn.doc.tar.xz
+# from 20250308
+Source227:      dotseqn.tar.xz
+Source228:      dotseqn.doc.tar.xz
 
 %description -n texlive-dotseqn
 The package provides a different format for typesetting
@@ -12761,9 +13034,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(moreverb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source223:      dottex.tar.xz
-Source224:      dottex.doc.tar.xz
+# from 20250308
+Source229:      dottex.tar.xz
+Source230:      dottex.doc.tar.xz
 
 %description -n texlive-dottex
 The dottex package allows you to encapsulate 'dot' and 'neato'
@@ -12863,9 +13136,9 @@ Provides:       tex(dsss12.tfm)
 Provides:       tex(dsss8.tfm)
 Provides:       tex(dstroke.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source225:      doublestroke.tar.xz
-Source226:      doublestroke.doc.tar.xz
+# from 20250308
+Source231:      doublestroke.tar.xz
+Source232:      doublestroke.doc.tar.xz
 
 %description -n texlive-doublestroke
 A font based on Computer Modern Roman useful for typesetting
@@ -12999,9 +13272,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-doulossil-fonts >= %{texlive_version}
 Suggests:       texlive-doulossil-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source227:      doulossil.tar.xz
-Source228:      doulossil.doc.tar.xz
+# from 20250308
+Source233:      doulossil.tar.xz
+Source234:      doulossil.doc.tar.xz
 
 %description -n texlive-doulossil
 This package provides the IPA font Doulos SIL in TrueType
@@ -13100,9 +13373,9 @@ Suggests:       texlive-dowith-doc >= %{texlive_version}
 Provides:       tex(domore.sty)
 Provides:       tex(dowith.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source229:      dowith.tar.xz
-Source230:      dowith.doc.tar.xz
+# from 20250308
+Source235:      dowith.tar.xz
+Source236:      dowith.doc.tar.xz
 
 %description -n texlive-dowith
 The package provides macros for applying a command to all
@@ -13189,9 +13462,9 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source231:      download.tar.xz
-Source232:      download.doc.tar.xz
+# from 20250308
+Source237:      download.tar.xz
+Source238:      download.doc.tar.xz
 
 %description -n texlive-download
 The package allows the user to download files (using cURL or
@@ -13268,9 +13541,9 @@ Suggests:       texlive-dox-doc >= %{texlive_version}
 Provides:       tex(dox.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source233:      dox.tar.xz
-Source234:      dox.doc.tar.xz
+# from 20250308
+Source239:      dox.tar.xz
+Source240:      dox.doc.tar.xz
 
 %description -n texlive-dox
 The doc package provides LaTeX developers with means to
@@ -13384,9 +13657,9 @@ Requires:       tex(ifpdf.sty)
 Requires:       tex(mfirstuc.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source235:      dozenal.tar.xz
-Source236:      dozenal.doc.tar.xz
+# from 20250308
+Source241:      dozenal.tar.xz
+Source242:      dozenal.doc.tar.xz
 
 %description -n texlive-dozenal
 The package supports typesetting documents whose counters are
@@ -13633,9 +13906,9 @@ Provides:       tex(DPcircling.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source237:      dpcircling.tar.xz
-Source238:      dpcircling.doc.tar.xz
+# from 20250308
+Source243:      dpcircling.tar.xz
+Source244:      dpcircling.doc.tar.xz
 
 %description -n texlive-dpcircling
 This simple package provides four types of text decorations
@@ -13715,9 +13988,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-dpfloat-doc >= %{texlive_version}
 Provides:       tex(dpfloat.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source239:      dpfloat.tar.xz
-Source240:      dpfloat.doc.tar.xz
+# from 20250308
+Source245:      dpfloat.tar.xz
+Source246:      dpfloat.doc.tar.xz
 
 %description -n texlive-dpfloat
 Provides fullpage and leftfullpage environments, that may be
@@ -13793,9 +14066,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-dprogress-doc >= %{texlive_version}
 Provides:       tex(dprogress.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source241:      dprogress.tar.xz
-Source242:      dprogress.doc.tar.xz
+# from 20250308
+Source247:      dprogress.tar.xz
+Source248:      dprogress.doc.tar.xz
 
 %description -n texlive-dprogress
 The package logs LaTeX's progress through the file, making the
@@ -13871,9 +14144,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-drac-doc >= %{texlive_version}
 Provides:       tex(drac.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source243:      drac.tar.xz
-Source244:      drac.doc.tar.xz
+# from 20250308
+Source249:      drac.tar.xz
+Source250:      drac.doc.tar.xz
 
 %description -n texlive-drac
 The package provides macros \DeclareRobustActChar and
@@ -13952,9 +14225,9 @@ Suggests:       texlive-draftcopy-doc >= %{texlive_version}
 Provides:       tex(draftcopy.cfg)
 Provides:       tex(draftcopy.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source245:      draftcopy.tar.xz
-Source246:      draftcopy.doc.tar.xz
+# from 20250308
+Source251:      draftcopy.tar.xz
+Source252:      draftcopy.doc.tar.xz
 
 %description -n texlive-draftcopy
 Places the word DRAFT (or other words) in light grey diagonally
@@ -14052,9 +14325,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source247:      draftfigure.tar.xz
-Source248:      draftfigure.doc.tar.xz
+# from 20250308
+Source253:      draftfigure.tar.xz
+Source254:      draftfigure.doc.tar.xz
 
 %description -n texlive-draftfigure
 With this package you can control the outcome of a figure which
@@ -14133,9 +14406,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source249:      draftwatermark.tar.xz
-Source250:      draftwatermark.doc.tar.xz
+# from 20250308
+Source255:      draftwatermark.tar.xz
+Source256:      draftwatermark.doc.tar.xz
 
 %description -n texlive-draftwatermark
 The package provides a means to add a watermark (typically a
@@ -14224,9 +14497,9 @@ Suggests:       texlive-dramatist-doc >= %{texlive_version}
 Provides:       tex(dramatist.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source251:      dramatist.tar.xz
-Source252:      dramatist.doc.tar.xz
+# from 20250308
+Source257:      dramatist.tar.xz
+Source258:      dramatist.doc.tar.xz
 
 %description -n texlive-dramatist
 This package is intended for typesetting drama of any length.
@@ -14305,9 +14578,9 @@ Provides:       tex(DraTex.sty)
 Provides:       tex(TeXProject.sty)
 Provides:       tex(wotree.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source253:      dratex.tar.xz
-Source254:      dratex.doc.tar.xz
+# from 20250308
+Source259:      dratex.tar.xz
+Source260:      dratex.doc.tar.xz
 
 %description -n texlive-dratex
 A low level (DraTex.sty) and a high-level (AlDraTex.sty)
@@ -14353,7 +14626,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/dratex/wotree.sty
 
 %package -n texlive-drawing-with-metapost
-Version:        %{texlive_version}.%{texlive_noarch}.svn66846
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn72705
 Release:        0
 License:        LPPL-1.0
 Summary:        How to draw technical diagrams with MetaPost
@@ -14380,8 +14653,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source255:      drawing-with-metapost.doc.tar.xz
+# from 20250308
+Source261:      drawing-with-metapost.doc.tar.xz
 
 %description -n texlive-drawing-with-metapost
 This project provides a document that discusses how to draw
@@ -14410,113 +14683,46 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/Drawing-with-Metapost.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/README.md
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/Drawing-with-Metapost.tex
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/angles-lines.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/angles-lines.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/apollonius.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/apollonius.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arbelos.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arbelos.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-3-4-3-4.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-3-4-3-4.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-3-4-6-4.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-3-4-6-4.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-4-6-12.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-4-6-12.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-4-8-8-parts.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-4-8-8-parts.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-4-8-8.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-4-8-8.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-hexagon.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-hst.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-hst.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-snub-hex-parts.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-snub-hexagon-unit.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-snub-hexagon-unit.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-snub-hexagon.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-snub-hexagon.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-snub-square.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-snub-square.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-square.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/arch-triangle.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/archimedean-tools.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/archimedes.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/archimedes.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/area-under-graph.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/area-under-graph.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/axis-of-similitude.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/axis-of-similitude.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/automatic-grid.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/basedate.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/bisection-euclidean.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/bisection-euclidean.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/bisection-interior.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/bisection-interior.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/bisection-vector.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/bisection-vector.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/bisection.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/blended-color-circles.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/blended-color-circles.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/border-dashed.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/border-shadow.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/border.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/border.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/braces.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/braces.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/brachisto.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/brachisto.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/brexit-map.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/brexit-map.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/brown3a.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/callout.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/callout.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/circumcircle.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/circumcircle.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/cd-tikzcd-example.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/cd-tikzcd-example.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/cd-xypic-example.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/cd-xypic-example.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/clocks.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-antireuleaux-set.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-antireuleaux-set.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-fixed-polygon.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-fixed-polygon.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-points.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-points.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-polygon-chain.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-polygon-chain.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-polygon-tops.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-polygon-tops.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-polygons.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-polygons.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-reuleaux-geometry.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-reuleaux-geometry.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-reuleaux-set.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-reuleaux-set.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-standards.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-standards.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-triangles.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/closed-triangles.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-blend-toy.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-blend-toy.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-blended-circles.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-blended-circles.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-brexit-map.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-brexit-map.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-grey-escher.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-grey-escher.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-grey-shadows.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-grey-shadows.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-hsv-bathymetric.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-hsv-bathymetric.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-hsv-gamut.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-hsv-gamut.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/color-hsv-macro.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/compass-rose.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/complex-inverse-and-sqrt.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/complex-inverse-and-sqrt.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/complex-operators.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/complex-operators.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/conway.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/conway.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/corners.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/corners.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-astroid-construction.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-astroid-construction.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-astroid-family.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-astroid-family.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-astroid.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-astroid.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-brachisto.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-brachisto.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-cardioid-construction.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-cardioid-construction.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-cardioid-simple.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-cardioid-simple.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-cycloids-extra.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-cycloids-extra.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-cycloids.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-cycloids.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-ellipse-family.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-ellipse-family.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-ellipse-tangents.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-ellipse-tangents.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-ellipse.mp
@@ -14541,27 +14747,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-spiral-gnomon-sq.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-spiral-gnomon-trig.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/curves-spiral-gnomon-trig.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/cycloids-code.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/cycloids-extra-code.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/cycloids-extra.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/cycloids-extra.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/cycloids.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/cycloids.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/desargues.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/desargues.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/dice.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/dice.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/double-angle.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/double-angle.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/double-dragon.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/double-dragon.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/draw-picture.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/draw-picture.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/drawing-circles.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/drawing-circles.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/deco-borders.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/deco-borders.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/dwmpcode.sty
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/dynamic-labels.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/dynamic-labels.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/eggs-357.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/eggs-357.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/eggs-common.mp
@@ -14587,18 +14775,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/eggs-super.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/eggs-thom.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/eggs-thom.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/escher.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/escher.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/euler-sampler.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/euler-sampler.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/excircle.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/excircle.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/explode.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/explode.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/fake-transparency.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/fake-transparency.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-addition-of-sines.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-addition-of-sines.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-angles-lines.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-angles-lines.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-cuberoot.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-cuberoot.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-epi-v-pie.mp
@@ -14607,10 +14787,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-exponential.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-lemniscate.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-lemniscate.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-linear-graph.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-linear-graph.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-maurer-rose.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-maurer-rose.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-numbered-axes.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-numbered-axes.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-parametric.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-parametric.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-plain-axes.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-plain-axes.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-powers.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-powers.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-pulse.mp
@@ -14621,23 +14807,79 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-sines.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-stress.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/func-stress.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/gaussian.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/gaussian.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-apollonius.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-apollonius.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-arbelos.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-arbelos.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-axis-of-similitude.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-axis-of-similitude.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-bisection-euclidean.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-bisection-euclidean.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-bisection-interior.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-bisection-interior.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-bisection-vector.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-bisection-vector.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-bisection.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-circumcircle.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-circumcircle.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-drawing-circles.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-drawing-circles.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-examples-desargues.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-examples-desargues.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-examples-napoleon.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-examples-napoleon.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-examples-projections.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-examples-projections.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-examples-trisections.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-examples-trisections.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-excircle.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-excircle.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-incircle.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-incircle.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-intersection-AB-or-BA.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-intersection-AB-or-BA.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-intersection-algorithm.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-intersection-algorithm.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-intersection-all-three.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-intersection-all-three.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-intersection-only-two.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-intersection-only-two.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-magic-square-14.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-magic-square-14.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-mediation-pitfall.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-mediation-pitfall.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-mediation-sallows.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-mediation-sallows.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-mediation-shapes.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-mediation-shapes.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-nine-point-circle.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-nine-point-circle.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-parallel.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-parallel.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-pole-and-polar.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-pole-and-polar.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-radical-axis.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-radical-axis.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-tangent-times-on-circle.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-tangent-times-on-circle.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-tangent-times.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-tangents-on-path.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-tangents-on-path.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-tangents-point-to-circle.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-tangents-point-to-circle.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-tangents-two-circles-exterior.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-tangents-two-circles-exterior.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-tangents-two-circles-interior.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-tangents-two-circles-interior.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-triangles-on-circle.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-triangles-on-circle.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-trisection-classical.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-trisection-classical.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-trisection-simple.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-trisection-simple.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-whatever.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/geometry-whatever.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/glenshiel.jpg
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/gons.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/gons.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/graph-paper.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/graph-paper.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/greek-default-encoding.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/greek-default-encoding.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/greek-gfs-encoding.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/greek-gfs-encoding.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/greek-homer.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/greek-homer.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/icosahedron.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/icosahedron.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/ifs-heigh-open.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/ifs-heigh-open.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/ifs-heigh.mp
@@ -14645,100 +14887,174 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/ifs-heighway-stages.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/ifs-heighway-stages.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-cafe-wall.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-cafe-wall.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-cubes.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-fraser-spiral.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-impossible-ring.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-cubes.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-fraser-spiral.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-impossible-ring.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-impossible-triangle.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-impossible-triangle.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-pinna.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-pinna.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-shaded-diamonds.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-shaded-diamonds.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-wonky-grid.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/incircle.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/incircle.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/infont-annotated.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/infont-annotated.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/infont-example.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/infont-example.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/intersection-AB-or-BA.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/intersection-AB-or-BA.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/intersection-algorithm.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/intersection-algorithm.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/intersection-all-three.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/intersection-all-three.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/intersection-only-two.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/intersection-only-two.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/illusions-wonky-grid.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/lemniscate-as-function.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/lemniscate-as-function.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/line-caps-and-joins.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/line-caps-and-joins.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/linear-graph.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/linear-graph.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/little-hexagon.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/little-hexagon.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/listex.py
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/london-boroughs.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/magic-square-14.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/magic-square-14.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/marked-up-photo-with-grid.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/marked-up-photo.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/marked-up-photo.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/mediation-pitfall.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/mediation-pitfall.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/mediation-sallows.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/mediation-sallows.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/mediation-shapes.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/mediation-shapes.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/minus.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/minus.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/multi-line-labels.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/multi-line-labels.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-labels-tte.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-labels-tte.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-labels.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-labels.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/nine-point-circle.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/nine-point-circle.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/numbered-axes.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/numbered-axes.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/open-triangle.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/open-triangle.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/overlaps-default-fillers.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/overlaps-default-fillers.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/overlaps-missing-filler.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/overlaps-missing-filler.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/overlaps.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/overlaps.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/parallel.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/parallel.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/penrose-P3.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/penrose-P3.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/penrose-stages.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/penrose-stages.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/penrose.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-marked-up-photo-grid.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-marked-up-photo-grid.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-marked-up-photo.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-marked-up-photo.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-multi-line-labels.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-multi-line-labels.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-reference-grid.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-simple-circle-labels.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-simple-circle-labels.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-simple-number-line.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-simple-number-line.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-unicode.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/neo-unicode.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/new-fangled-transparency.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/new-fangled-transparency.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/new-fangled-trilobe.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/new-fangled-trilobe.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pairs-complex-inverse-and-sqrt.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pairs-complex-inverse-and-sqrt.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pairs-complex-operators.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pairs-complex-operators.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pairs-double-dragon.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pairs-double-dragon.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pairs-random-function.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pairs-random-function.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pairs-random-selection.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pairs-random-selection.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-antireuleaux-set.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-antireuleaux-set.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-area-under-graph.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-area-under-graph.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-fixed-polygon.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-fixed-polygon.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-little-hexagon.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-little-hexagon.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-open-triangle.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-open-triangle.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-overlaps-default-fillers.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-overlaps-default-fillers.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-overlaps-missing-filler.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-overlaps-missing-filler.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-overlaps.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-overlaps.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-points.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-points.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-polygon-chain.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-polygon-chain.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-polygon-tops.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-polygon-tops.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-polygons.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-polygons.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-reuleaux-geometry.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-reuleaux-geometry.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-reuleaux-set.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-reuleaux-set.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-saturn.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-saturn.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-schlafli-polygons.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-schlafli-polygons.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-standards.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-standards.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-superellipses.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-superellipses.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-triangles.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/paths-triangles.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-arrow-styles.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-arrow-styles.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-besides.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-besides.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-crossings.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-crossings.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-curly.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-curly.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-feynmp-styles.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-feynmp-styles.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-fleuron.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-fleuron.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-greek-meander.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-greek-meander.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-highway.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-highway.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-line-caps-and-joins.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-line-caps-and-joins.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-pen-oddity.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-pen-oddity.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-strokes.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-strokes.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-tubes.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pens-tubes.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-border-common.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-border-dashed.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-border-dashed.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-border-rope.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-border-rope.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-border-shadow.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-border-shadow.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-corners.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-corners.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-double-angle.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-double-angle.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-draw-picture.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-draw-picture.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-fake-transparency.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-fake-transparency.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-graph-paper-5mm.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-graph-paper-cm.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-graph-paper-example.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-graph-paper-example.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-graph-paper-inch.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-graph-paper.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-icosahedron.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-icosahedron.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-shady-circles.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-shady-circles.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-twister.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-twister.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-youth.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pics-youth.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/picture_frame.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pinwheel.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pinwheel.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/plain-axes.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/plain-axes.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pole-and-polar.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/pole-and-polar.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/porson.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/porson.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/projections-code.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/projections.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/projections.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/qed.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/qed.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/radical-axis.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/radical-axis.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-dice.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-dice.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-explosions.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-explosions.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-exponential-test.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-exponential-test.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-freehand-circumcircle.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-freehand-circumcircle.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-freehand-through.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-freehand-through.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-function.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-function.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-selection.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-selection.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-gaussian.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-gaussian.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-other-distributions.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-qed.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-qed.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-shapes.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-shapes.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-torn-edge-circle.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-torn-edge-circle.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-torn-edge.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-torn-straight-edge.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-torn-straight-edge.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-two-dimensional-brownian.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-two-dimensional-brownian.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-walks-normal-bridge.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-walks-normal-bridge.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-walks-normal.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-walks-normal.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-walks-red-blue.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/random-walks-red-blue.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-bush.mp
@@ -14751,6 +15067,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-flowsnake-construction.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-flowsnake.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-flowsnake.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-gcd-comparison.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-general-tree-deviate.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-general-tree-deviate.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-general-tree.mp
@@ -14763,8 +15080,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-koch-steps.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-mink-sausage.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-mink-sausage.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-sierpinski-pentagon.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-sierpinski-pentagon.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-sierpinski-garlands.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-sierpinski-garlands.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-sierpinski-triangle.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-sierpinski-triangle.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rec-simple-tree.mp
@@ -14772,88 +15089,120 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/rope.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/ruler-cm.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/ruler-inch.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/ruler-pt.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/ruler.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/saturn-code.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/saturn.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/saturn.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/shadows.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/shadows.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/shady-circles.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/shady-circles.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/simple-circle-labels.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/simple-circle-labels.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/simple-number-line.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/simple-number-line.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/split-labels.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/split-labels.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tangent-times-on-circle.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tangent-times-on-circle.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tangent-times.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tangents-on-path.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tangents-on-path.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tangents-point-to-circle.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tangents-point-to-circle.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tangents-two-circles-exterior.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tangents-two-circles-exterior.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tangents-two-circles-interior.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tangents-two-circles-interior.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tikzcd-example.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tikzcd-example.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/show_name.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-ammann-bounded.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-ammann-bounded.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-ammann-procedures.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-ammann-substitutions-bounded.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-ammann-substitutions-bounded.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-ammann-substitutions-overlapping.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-ammann-substitutions-overlapping.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-ammann.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-ammann.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-3-4-3-4.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-3-4-3-4.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-3-4-6-4.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-3-4-6-4.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-4-6-12.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-4-6-12.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-4-8-8-parts.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-4-8-8-parts.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-4-8-8.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-4-8-8.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-hexagon.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-hexagon.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-hst.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-hst.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-snub-hex-parts.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-snub-hexagon-unit.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-snub-hexagon-unit.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-snub-hexagon.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-snub-hexagon.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-snub-square.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-arch-snub-square.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-archimedes.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-archimedes.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-conway.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-conway.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-hex-trig.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-hex-trig.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-kepler-k.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-kepler-k.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-kepler-x.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-kepler-x.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-kepler-y.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-kepler-y.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-penrose-tatham-p2-kite-dart-construction.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-penrose-tatham-p2-kite-dart-construction.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-penrose-tatham-p2-kite-dart.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-penrose-tatham-p2-kite-dart.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-penrose-tatham-p3-rhombs-construction.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-penrose-tatham-p3-rhombs-construction.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-penrose-tatham-p3-rhombs.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-penrose-tatham-p3-rhombs.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-pinwheel-macro.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-pp48a.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-pp48a.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-simple.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-simple.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/torn-edge-circle.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/torn-edge-circle.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/torn-edge-straight.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/torn-edge-straight.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/torn-edge.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-subs-pinwheel.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-subs-pinwheel.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-subs-triangle.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tiling-subs-triangle.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-braces.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-braces.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-callout.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-callout.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-dynamic-labels.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-dynamic-labels.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-euler-sampler.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-euler-sampler.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-font-changes.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-font-changes.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-font-samples.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-font-samples.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-font-tables.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-font-tables.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trisection-classical.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trisection-classical.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trisection-simple.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trisection-simple.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trisection-triangles.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trisection-triangles.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-greek-default-encoding.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-greek-default-encoding.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-greek-gfs-encoding.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-greek-gfs-encoding.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-greek-homer.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-greek-homer.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-infont-annotated.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-infont-annotated.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-infont-example.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-infont-example.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-minus.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-minus.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-porson.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-porson.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-split-labels.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-split-labels.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-utf8.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-utf8.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-verbatim-listing.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-verbatim-listing.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-verbatim-with-infont.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trad-verbatim-with-infont.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/trigonometry-functions.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tufte-budget.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tufte-budget.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tufte-currency.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tufte-currency.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tufte-manila-paper.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tufte-mpg.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tufte-mpg.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/twister.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/twister.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/unicode.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/unicode.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/utf8.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/utf8.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/verbatim-listing.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/verbatim-listing.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/verbatim-with-infont.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/verbatim-with-infont.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/whatever.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/whatever.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tufte-snow.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tufte-snow.pdf
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tufte-srm-damage.mp
+%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/tufte-srm-damage.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/workflow-plain.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/workflow-plain.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/workflow.mp
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/workflow.pdf
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/xypic-example.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/xypic-example.pdf
 %{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/youth.jpg
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/youth.mp
-%{_texmfdistdir}/doc/metapost/drawing-with-metapost/src/youth.pdf
 
 %package -n texlive-drawmatrix
 Version:        %{texlive_version}.%{texlive_noarch}.1.5.0svn44471
@@ -14886,9 +15235,9 @@ Suggests:       texlive-drawmatrix-doc >= %{texlive_version}
 Provides:       tex(drawmatrix.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source256:      drawmatrix.tar.xz
-Source257:      drawmatrix.doc.tar.xz
+# from 20250308
+Source262:      drawmatrix.tar.xz
+Source263:      drawmatrix.doc.tar.xz
 
 %description -n texlive-drawmatrix
 The package provides macros to visually represent matrices.
@@ -14963,9 +15312,9 @@ Provides:       tex(drawstack.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source258:      drawstack.tar.xz
-Source259:      drawstack.doc.tar.xz
+# from 20250308
+Source264:      drawstack.tar.xz
+Source265:      drawstack.doc.tar.xz
 
 %description -n texlive-drawstack
 This simple LaTeX package provides support for drawing
@@ -15383,9 +15732,9 @@ Requires:       tex(gmp.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(modroman.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source260:      drm.tar.xz
-Source261:      drm.doc.tar.xz
+# from 20250308
+Source266:      drm.tar.xz
+Source267:      drm.doc.tar.xz
 
 %description -n texlive-drm
 The package provides access to the DRM (Don's Revised Modern)
@@ -18286,9 +18635,9 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source262:      droid.tar.xz
-Source263:      droid.doc.tar.xz
+# from 20250308
+Source268:      droid.tar.xz
+Source269:      droid.doc.tar.xz
 
 %description -n texlive-droid
 The Droid typeface family was designed in the fall of 2006 by
@@ -18819,9 +19168,9 @@ Requires:       tex(verbose-ibid.cbx)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source264:      droit-fr.tar.xz
-Source265:      droit-fr.doc.tar.xz
+# from 20250308
+Source270:      droit-fr.tar.xz
+Source271:      droit-fr.doc.tar.xz
 
 %description -n texlive-droit-fr
 The bundle provides a toolkit intended for students writing a
@@ -18917,9 +19266,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-drs-doc >= %{texlive_version}
 Provides:       tex(drs.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source266:      drs.tar.xz
-Source267:      drs.doc.tar.xz
+# from 20250308
+Source272:      drs.tar.xz
+Source273:      drs.doc.tar.xz
 
 %description -n texlive-drs
 The package draws Discourse Representation Structures (DRSs).
@@ -18996,9 +19345,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-drv-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source268:      drv.tar.xz
-Source269:      drv.doc.tar.xz
+# from 20250308
+Source274:      drv.tar.xz
+Source275:      drv.doc.tar.xz
 
 %description -n texlive-drv
 A set of MetaPost macros for typesetting derivation trees (such
@@ -19096,9 +19445,9 @@ Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks-add.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source270:      dsptricks.tar.xz
-Source271:      dsptricks.doc.tar.xz
+# from 20250308
+Source276:      dsptricks.tar.xz
+Source277:      dsptricks.doc.tar.xz
 
 %description -n texlive-dsptricks
 The package provides a set of LaTeX macros (based on PSTricks)
@@ -19199,9 +19548,9 @@ Provides:       tex(dsserif.sty)
 Provides:       tex(udsserif.fd)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source272:      dsserif.tar.xz
-Source273:      dsserif.doc.tar.xz
+# from 20250308
+Source278:      dsserif.tar.xz
+Source279:      dsserif.doc.tar.xz
 
 %description -n texlive-dsserif
 DSSerif is a mathematical font package with double struck
@@ -19296,7 +19645,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-dsserif/DSSerifUni.pfb
 
 %package -n texlive-dtk
-Version:        %{texlive_version}.%{texlive_noarch}.2.10esvn70112
+Version:        %{texlive_version}.%{texlive_noarch}.2.10fsvn71776
 Release:        0
 License:        LPPL-1.0
 Summary:        Document class for the journal of DANTE
@@ -19367,9 +19716,9 @@ Requires:       tex(verbatim.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source274:      dtk.tar.xz
-Source275:      dtk.doc.tar.xz
+# from 20250308
+Source280:      dtk.tar.xz
+Source281:      dtk.doc.tar.xz
 
 %description -n texlive-dtk
 The bundle provides a class and style file for typesetting "Die
@@ -19379,7 +19728,7 @@ be used by article writers to typeset a single article, as well
 as to produce the complete journal.
 
 %package -n texlive-dtk-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.10esvn70112
+Version:        %{texlive_version}.%{texlive_noarch}.2.10fsvn71776
 Release:        0
 Summary:        Documentation for texlive-dtk
 License:        LPPL-1.0
@@ -19430,7 +19779,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/dtk/dtk.dbx
 
 %package -n texlive-dtk-bibliography
-Version:        %{texlive_version}.%{texlive_noarch}.2024_01svn70506
+Version:        %{texlive_version}.%{texlive_noarch}.2024_04svn73293
 Release:        0
 License:        LPPL-1.0
 Summary:        Bibliography of "Die TeXnische Komodie"
@@ -19467,9 +19816,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source276:      dtk-bibliography.tar.xz
-Source277:      dtk-bibliography.doc.tar.xz
+# from 20250308
+Source282:      dtk-bibliography.tar.xz
+Source283:      dtk-bibliography.doc.tar.xz
 
 %description -n texlive-dtk-bibliography
 This package contains the bibliography for "Die TeXnische
@@ -19477,7 +19826,7 @@ Komodie", the journal of the German-speaking TeX User Group. It
 is updated on a quarterly basis.
 
 %package -n texlive-dtk-bibliography-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2024_01svn70506
+Version:        %{texlive_version}.%{texlive_noarch}.2024_04svn73293
 Release:        0
 Summary:        Documentation for texlive-dtk-bibliography
 License:        LPPL-1.0
@@ -19548,8 +19897,8 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(dt2dv.1)
 Provides:       man(dv2dt.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source278:      dtl.doc.tar.xz
+# from 20250308
+Source284:      dtl.doc.tar.xz
 
 %description -n texlive-dtl
 DTL (DVI Text Language) is a means of expressing the content of
@@ -19620,9 +19969,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source279:      dtxdescribe.tar.xz
-Source280:      dtxdescribe.doc.tar.xz
+# from 20250308
+Source285:      dtxdescribe.tar.xz
+Source286:      dtxdescribe.doc.tar.xz
 
 %description -n texlive-dtxdescribe
 The doc package includes tools for describing macros and
@@ -19713,8 +20062,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source281:      dtxgallery.doc.tar.xz
+# from 20250308
+Source287:      dtxgallery.doc.tar.xz
 
 %description -n texlive-dtxgallery
 A collection of files that demonstrate simple things that are
@@ -19783,9 +20132,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-dtxgen-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source282:      dtxgen.tar.xz
-Source283:      dtxgen.doc.tar.xz
+# from 20250308
+Source288:      dtxgen.tar.xz
+Source289:      dtxgen.doc.tar.xz
 
 %description -n texlive-dtxgen
 The bash script dtxgen creates a template for a self-extracting
@@ -19856,8 +20205,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source284:      dtxtut.doc.tar.xz
+# from 20250308
+Source290:      dtxtut.doc.tar.xz
 
 %description -n texlive-dtxtut
 This tutorial is intended for advanced LaTeX2e users who want
@@ -19891,7 +20240,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/dtxtut/skeleton.ins
 
 %package -n texlive-ducksay
-Version:        %{texlive_version}.%{texlive_noarch}.2.6svn64655
+Version:        %{texlive_version}.%{texlive_noarch}.2.7svn70816
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw ASCII art of animals saying a specified message
@@ -19925,9 +20274,9 @@ Provides:       tex(ducksay.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source285:      ducksay.tar.xz
-Source286:      ducksay.doc.tar.xz
+# from 20250308
+Source291:      ducksay.tar.xz
+Source292:      ducksay.doc.tar.xz
 
 %description -n texlive-ducksay
 The package draws ASCII art of animals saying a specified
@@ -19937,7 +20286,7 @@ messages are now fully supported. The package comes with two
 versions, choosable with the version key.
 
 %package -n texlive-ducksay-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.6svn64655
+Version:        %{texlive_version}.%{texlive_noarch}.2.7svn70816
 Release:        0
 Summary:        Documentation for texlive-ducksay
 License:        LPPL-1.0
@@ -20009,9 +20358,9 @@ Requires:       tex(letltxmacro.sty)
 Requires:       tex(tikzducks.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source287:      duckuments.tar.xz
-Source288:      duckuments.doc.tar.xz
+# from 20250308
+Source293:      duckuments.tar.xz
+Source294:      duckuments.doc.tar.xz
 
 %description -n texlive-duckuments
 The package provides facilities to create duckified dummy
@@ -20101,9 +20450,9 @@ Provides:       tex(cdsl10.tfm)
 Provides:       tex(cdss10.tfm)
 Provides:       tex(cdtt10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source289:      duerer.tar.xz
-Source290:      duerer.doc.tar.xz
+# from 20250308
+Source295:      duerer.tar.xz
+Source296:      duerer.doc.tar.xz
 
 %description -n texlive-duerer
 These fonts are designed for titling use, and consist of
@@ -20195,9 +20544,9 @@ Provides:       tex(ot1cdr.fd)
 Provides:       tex(ot1cdss.fd)
 Provides:       tex(ot1cdtt.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source291:      duerer-latex.tar.xz
-Source292:      duerer-latex.doc.tar.xz
+# from 20250308
+Source297:      duerer-latex.tar.xz
+Source298:      duerer-latex.doc.tar.xz
 
 %description -n texlive-duerer-latex
 LaTeX support for Hoenig's Computer Duerer fonts, using their
@@ -20276,9 +20625,9 @@ Provides:       tex(duotenzor.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source293:      duotenzor.tar.xz
-Source294:      duotenzor.doc.tar.xz
+# from 20250308
+Source299:      duotenzor.tar.xz
+Source300:      duotenzor.doc.tar.xz
 
 %description -n texlive-duotenzor
 This is a drawing package for circuit and duotensor diagrams
@@ -20374,9 +20723,9 @@ Provides:       tex(udutchcal.fd)
 Requires:       tex(cmr10.tfm)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source295:      dutchcal.tar.xz
-Source296:      dutchcal.doc.tar.xz
+# from 20250308
+Source301:      dutchcal.tar.xz
+Source302:      dutchcal.doc.tar.xz
 
 %description -n texlive-dutchcal
 This package reworks the mathematical calligraphic font
@@ -20767,8 +21116,10 @@ EOF
     tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/digestif/digestif.texlua \
 	       %{_texmfdistdir}/doc/support/digestif/bin/digestif
@@ -20782,8 +21133,6 @@ EOF
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -20837,14 +21186,20 @@ EOF
     tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/doipubmed/doipubmed.perl
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-domitian
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/domitian/*.{pf[ab],[ot]tf} \
@@ -20895,8 +21250,8 @@ EOF
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-domitian.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-domitian.conf
-    tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/support/dosepsbin/clean-case.pl \
 	       %{_texmfdistdir}/doc/support/dosepsbin/version.pl
@@ -20918,18 +21273,18 @@ EOF
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-doublestroke
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/doublestroke/*.{pf[ab],[ot]tf}
@@ -20959,8 +21314,8 @@ EOF
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-doulossil
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/doulossil/*.{pf[ab],[ot]tf}
@@ -20990,14 +21345,14 @@ EOF
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-dozenal
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/dozenal/*.{pf[ab],[ot]tf}
@@ -21027,12 +21382,6 @@ EOF
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21052,6 +21401,12 @@ EOF
     tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Add shebang e.g. correct perl wrapper scripts if any
     for scr in %{_texmfdistdir}/doc/fonts/drm/convert.sh
     do
@@ -21127,8 +21482,8 @@ EOF
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-drm.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-drm.conf
-    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-droid
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/ascender/droid/droidsans/*.{pf[ab],[ot]tf} \
@@ -21183,16 +21538,16 @@ EOF
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-droid.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-droid.conf
-    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-dsserif
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/dsserif/*.{pf[ab],[ot]tf}
@@ -21222,22 +21577,16 @@ EOF
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21245,6 +21594,12 @@ EOF
     tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-dutchcal
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/dutchcal/*.{pf[ab],[ot]tf}
