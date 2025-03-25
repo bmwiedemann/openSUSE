@@ -26,7 +26,7 @@
 +pdfxmltex pdftex language.dat -translate-file=cp227.tcx *pdfxmltex.ini
 +xmltex pdftex language.dat -translate-file=cp227.tcx *xmltex.ini
 --- texmf-dist/web2c/mktex.opt
-+++ texmf-dist/web2c/mktex.opt	2012-05-14 11:26:00.034911495 +0000
++++ texmf-dist/web2c/mktex.opt	2025-03-12 08:48:45.633828888 +0000
 @@ -38,10 +38,11 @@ if test "$DOSISH" = "no"; then SEP=':';
  # TEMPDIR needs to be unique to each process because of the possibility of two
  # people running dvips (or whatever) simultaneously.
@@ -101,10 +101,10 @@
 +    fi
 +esac
  
- # Cache values that may be useful for recursive calls.
- export MT_MKTEX_OPT MT_MKTEX_CNF 
+ # As of TL24, the --output-directory option sets the
+ # TEXMF_OUTPUT_DIRECTORY envvar, so subprograms can see the value.
 --- texmf-dist/web2c/texmf.cnf
-+++ texmf-dist/web2c/texmf.cnf	2023-03-23 08:35:53.138983942 +0000
++++ texmf-dist/web2c/texmf.cnf	2025-03-12 08:51:54.017920271 +0000
 @@ -65,20 +65,20 @@ TEXMFROOT = $SELFAUTOPARENT
  % They must must all have the TDS directory structure (https://tug.org/tds).
  
@@ -134,11 +134,11 @@
  TEXMFHOME = ~/texmf
  
  % TEXMFVAR, where texconfig/updmap/fmtutil store cached runtime data.
--TEXMFVAR = ~/.texlive2024/texmf-var
+-TEXMFVAR = ~/.texlive2025/texmf-var
 +TEXMFVAR = ${TEXMFSYSVAR}
  
  % TEXMFCONFIG, where texconfig/updmap/fmtutil store configuration data.
--TEXMFCONFIG = ~/.texlive2024/texmf-config
+-TEXMFCONFIG = ~/.texlive2025/texmf-config
 +TEXMFCONFIG = ${TEXMFSYSCONFIG}
  
  % This is the value manipulated by tlmgr's auxtrees subcommand in the
@@ -337,10 +337,10 @@
  %
  % For reference, here is the old brace-using definition:
  %TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
-@@ -940,3 +946,34 @@ guess_input_kanji_encoding.mendex = 1
- % command_line_encoding = none
- % in a texmf.cnf prefered, for example $TEXMFLOCAL/web2c/texmf.cnf.
- command_line_encoding = utf-8
+@@ -954,3 +960,37 @@ command_line_encoding.ptex = none
+ command_line_encoding.eptex = none
+ command_line_encoding.platex = none
+ command_line_encoding.platex-dev = none
 +
 +% These are xmltex specific
 +main_memory.xmltex = 2500000
@@ -372,3 +372,6 @@
 +pool_size.jadetex = 500000
 +save_size.jadetex = 15000
 +
++%e(u)p-TeX
++font_mem_size.eptex = 50000
++font_mem_size.euptex = 50000

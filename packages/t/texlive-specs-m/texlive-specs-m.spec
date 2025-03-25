@@ -1,7 +1,7 @@
 #
-# spec file for package texlive-specs-m.spec
+# spec file for package texlive-specs-m
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2024
+%define texlive_version  2025
 %define texlive_previous 2022
-%define texlive_release  20240311
-%define texlive_noarch   216
-%define biber_version    2.19
+%define texlive_release  20250308
+%define texlive_noarch   218
+%define biber_version    2.20
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-m
-Version:        2024
+Version:        2025
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -114,7 +114,7 @@ Suggests:       texlive-ionumbers-doc >= %{texlive_version}
 Provides:       tex(ionumbers.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source1:        ionumbers.tar.xz
 Source2:        ionumbers.doc.tar.xz
 
@@ -204,7 +204,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-iopart-num-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source3:        iopart-num.tar.xz
 Source4:        iopart-num.doc.tar.xz
 
@@ -281,7 +281,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-ipaex-fonts >= %{texlive_version}
 Suggests:       texlive-ipaex-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source5:        ipaex.tar.xz
 Source6:        ipaex.doc.tar.xz
 
@@ -1745,7 +1745,7 @@ Provides:       tex(t1ipxm.fd)
 Provides:       tex(ts1ipxg.fd)
 Provides:       tex(ts1ipxm.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source7:        ipaex-type1.tar.xz
 Source8:        ipaex-type1.doc.tar.xz
 
@@ -4230,7 +4230,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-ipaex-type1/ipxm-r-uff.pfb
 
 %package -n texlive-ipsum
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn68861
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn73069
 Release:        0
 License:        LPPL-1.0
 Summary:        Insert multilingual placeholder text
@@ -4262,7 +4262,7 @@ Requires:       tex(simplekv.sty)
 Requires:       tex(xintexpr.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source9:        ipsum.tar.xz
 Source10:       ipsum.doc.tar.xz
 
@@ -4271,7 +4271,7 @@ This is a package to work with multilingual Lorem Ipsum dummy
 texts.
 
 %package -n texlive-ipsum-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn68861
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn73069
 Release:        0
 Summary:        Documentation for texlive-ipsum
 License:        LPPL-1.0
@@ -4308,7 +4308,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ipsum/ipsum.sty
 
 %package -n texlive-iran-bibtex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn69347
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.3svn71972
 Release:        0
 License:        LPPL-1.0
 Summary:        Iran Manual of Style Citation Guide for BibTeX
@@ -4338,7 +4338,7 @@ Suggests:       texlive-iran-bibtex-doc >= %{texlive_version}
 Provides:       tex(iran-bibtex.sty)
 Requires:       tex(natbib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source11:       iran-bibtex.tar.xz
 Source12:       iran-bibtex.doc.tar.xz
 
@@ -4359,7 +4359,7 @@ to note that this package relies on the natbib package, which
 is automatically loaded.
 
 %package -n texlive-iran-bibtex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn69347
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.3svn71972
 Release:        0
 Summary:        Documentation for texlive-iran-bibtex
 License:        LPPL-1.0
@@ -4391,8 +4391,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-iran-bibtex-doc
 %{_texmfdistdir}/doc/bibtex/iran-bibtex/LICENSE.txt
 %{_texmfdistdir}/doc/bibtex/iran-bibtex/README.md
-%{_texmfdistdir}/doc/bibtex/iran-bibtex/iran-bibtex-structure.pdf
-%{_texmfdistdir}/doc/bibtex/iran-bibtex/iran-bibtex-structure.tex
+%{_texmfdistdir}/doc/bibtex/iran-bibtex/iran-bibtex-pattern.pdf
+%{_texmfdistdir}/doc/bibtex/iran-bibtex/iran-bibtex-pattern.tex
+%{_texmfdistdir}/doc/bibtex/iran-bibtex/iran-bibtex-userguide-fa.pdf
+%{_texmfdistdir}/doc/bibtex/iran-bibtex/iran-bibtex-userguide-fa.tex
 
 %files -n texlive-iran-bibtex
 %{_texmfdistdir}/bibtex/bst/iran-bibtex/iran-unsrt.bst
@@ -4433,7 +4435,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-is-bst-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source13:       is-bst.tar.xz
 Source14:       is-bst.doc.tar.xz
 
@@ -4527,7 +4529,7 @@ Requires:       tex(titlesec.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source15:       iscram.tar.xz
 Source16:       iscram.doc.tar.xz
 
@@ -4610,7 +4612,7 @@ Provides:       tex(iso9.clo)
 Provides:       tex(isov2.cls)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source17:       iso.tar.xz
 Source18:       iso.doc.tar.xz
 
@@ -4745,7 +4747,7 @@ Provides:       tex(stepman.tex)
 Provides:       tex(stepv13.sty)
 Provides:       tex(stppdlst.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source19:       iso10303.tar.xz
 Source20:       iso10303.doc.tar.xz
 
@@ -4873,7 +4875,7 @@ Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(substr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source21:       isodate.tar.xz
 Source22:       isodate.doc.tar.xz
 
@@ -4984,7 +4986,7 @@ Requires:       tex(textpos.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source23:       isodoc.tar.xz
 Source24:       isodoc.doc.tar.xz
 
@@ -5064,7 +5066,7 @@ Provides:       tex(isomath.sty)
 Requires:       tex(fixmath.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source25:       isomath.tar.xz
 Source26:       isomath.doc.tar.xz
 
@@ -5150,7 +5152,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-isonums-doc >= %{texlive_version}
 Provides:       tex(isonums.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source27:       isonums.tar.xz
 Source28:       isonums.doc.tar.xz
 
@@ -5229,7 +5231,7 @@ Suggests:       texlive-isopt-doc >= %{texlive_version}
 Provides:       tex(isopt.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source29:       isopt.tar.xz
 Source30:       isopt.doc.tar.xz
 
@@ -5309,7 +5311,7 @@ Provides:       tex(isorot.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(lscape.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source31:       isorot.tar.xz
 Source32:       isorot.doc.tar.xz
 
@@ -5357,7 +5359,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/isorot/isorot.sty
 
 %package -n texlive-isosafety
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn68801
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn72227
 Release:        0
 License:        LPPL-1.0
 Summary:        Provides ISO signs and colors according to the standards 7010 and 3864
@@ -5386,9 +5388,11 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-isosafety-doc >= %{texlive_version}
 Provides:       tex(isosafety.sty)
 Requires:       tex(graphicx.sty)
+Requires:       tex(ifthen.sty)
 Requires:       tex(xcolor.sty)
+Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source33:       isosafety.tar.xz
 Source34:       isosafety.doc.tar.xz
 
@@ -5398,7 +5402,7 @@ The package provides safety colors (ISO 3864) and safety signs
 instructions for chemical or physical experiments.
 
 %package -n texlive-isosafety-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn68801
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn72227
 Release:        0
 Summary:        Documentation for texlive-isosafety
 License:        LPPL-1.0
@@ -5428,322 +5432,323 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-isosafety-doc
 %{_texmfdistdir}/doc/latex/isosafety/README.md
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_CV003.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_CV004.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_CV009.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_CV010.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_CV011.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_CV012.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_CV013.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_CV027.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_CV028.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_CV029.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_CV064.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_CV067.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E001.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E002.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E003.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E004.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E007.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E008.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E009.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E010.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E011.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E012.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E013.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E014.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E015.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E016.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E017.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E018.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E019.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E020.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E021.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E022.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E023.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E024.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E025.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E026.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E027.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E028.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E029.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E030.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E031.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E032.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E033.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E034.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E035.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E036.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E037.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E038.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E039.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E040.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E041.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E042.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E043.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E044.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E045.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E046.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E047.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E048.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E049.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E050.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E051.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E052.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E053.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E054.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E055.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E056.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E057.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E058.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E059.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E060.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E061.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E062.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E063.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E064.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E065.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E067.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E068.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E069.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_E070.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F001.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F002.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F003.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F004.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F005.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F006.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F007.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F008.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F009.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F010.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F011.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F012.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F013.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F014.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F015.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F016.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F017.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F018.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_F019.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M001.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M002.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M003.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M004.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M005.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M006.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M007.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M008.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M009.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M010.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M011.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M012.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M013.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M014.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M015.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M016.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M017.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M018.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M019.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M020.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M021.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M022.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M023.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M024.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M025.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M026.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M027.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M028.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M029.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M030.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M031.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M032.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M033.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M034.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M035.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M036.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M037.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M038.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M039.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M040.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M041.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M042.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M043.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M044.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M045.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M046.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M047.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M048.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M049.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M050.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M051.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M052.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M053.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M054.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M055.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M056.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M057.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M058.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M059.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_M060.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P001.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P002.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P003.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P004.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P005.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P006.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P007.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P008.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P009.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P010.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P011.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P012.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P013.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P014.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P015.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P016.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P017.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P018.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P019.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P020.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P021.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P022.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P023.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P024.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P025.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P026.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P027.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P028.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P029.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P030.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P031.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P032.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P033.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P034.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P035.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P036.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P037.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P038.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P039.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P040.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P041.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P042.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P043.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P044.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P045.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P046.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P047.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P048.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P049.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P050.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P051.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P052.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P053.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P054.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P055.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P056.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P057.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P058.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P059.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P060.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P061.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P062.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P063.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P064.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P065.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P066.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P067.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P068.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P069.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P070.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P071.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P072.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P073.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P074.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_P075.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W001.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W002.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W003.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W004.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W005.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W006.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W007.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W008.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W009.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W010.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W011.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W012.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W013.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W014.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W015.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W016.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W017.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W018.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W019.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W020.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W021.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W022.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W023.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W024.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W025.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W026.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W027.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W028.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W029.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W030.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W031.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W032.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W033.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W034.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W035.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W036.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W037.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W038.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W039.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W040.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W041.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W042.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W043.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W044.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W045.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W046.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W047.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W048.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W049.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W050.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W051.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W052.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W053.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W054.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W055.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W056.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W057.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W058.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W059.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W060.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W061.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W062.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W063.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W064.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W065.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W066.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W067.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W068.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W069.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W070.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W071.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W072.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W073.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W074.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W075.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W076.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W077.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W078.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W079.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-pdfs/ISO_7010_W080.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety.pdf
+%{_texmfdistdir}/doc/latex/isosafety/isosafety-docs.pdf
+%{_texmfdistdir}/doc/latex/isosafety/isosafety-docs.tex
 
 %files -n texlive-isosafety
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV003.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV004.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV009.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV010.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV011.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV012.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV013.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV027.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV028.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV029.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV064.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV067.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E001.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E002.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E003.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E004.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E007.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E008.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E009.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E010.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E011.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E012.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E013.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E014.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E015.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E016.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E017.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E018.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E019.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E020.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E021.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E022.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E023.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E024.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E025.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E026.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E027.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E028.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E029.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E030.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E031.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E032.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E033.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E034.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E035.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E036.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E037.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E038.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E039.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E040.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E041.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E042.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E043.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E044.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E045.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E046.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E047.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E048.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E049.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E050.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E051.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E052.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E053.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E054.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E055.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E056.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E057.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E058.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E059.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E060.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E061.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E062.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E063.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E064.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E065.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E067.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E068.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E069.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E070.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F001.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F002.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F003.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F004.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F005.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F006.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F007.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F008.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F009.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F010.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F011.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F012.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F013.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F014.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F015.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F016.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F017.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F018.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F019.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M001.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M002.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M003.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M004.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M005.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M006.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M007.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M008.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M009.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M010.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M011.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M012.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M013.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M014.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M015.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M016.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M017.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M018.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M019.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M020.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M021.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M022.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M023.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M024.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M025.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M026.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M027.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M028.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M029.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M030.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M031.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M032.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M033.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M034.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M035.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M036.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M037.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M038.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M039.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M040.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M041.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M042.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M043.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M044.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M045.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M046.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M047.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M048.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M049.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M050.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M051.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M052.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M053.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M054.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M055.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M056.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M057.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M058.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M059.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M060.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P001.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P002.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P003.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P004.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P005.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P006.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P007.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P008.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P009.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P010.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P011.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P012.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P013.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P014.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P015.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P016.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P017.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P018.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P019.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P020.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P021.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P022.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P023.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P024.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P025.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P026.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P027.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P028.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P029.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P030.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P031.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P032.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P033.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P034.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P035.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P036.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P037.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P038.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P039.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P040.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P041.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P042.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P043.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P044.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P045.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P046.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P047.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P048.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P049.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P050.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P051.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P052.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P053.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P054.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P055.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P056.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P057.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P058.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P059.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P060.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P061.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P062.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P063.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P064.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P065.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P066.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P067.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P068.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P069.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P070.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P071.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P072.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P073.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P074.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P075.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W001.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W002.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W003.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W004.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W005.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W006.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W007.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W008.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W009.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W010.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W011.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W012.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W013.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W014.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W015.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W016.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W017.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W018.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W019.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W020.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W021.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W022.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W023.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W024.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W025.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W026.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W027.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W028.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W029.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W030.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W031.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W032.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W033.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W034.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W035.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W036.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W037.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W038.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W039.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W040.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W041.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W042.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W043.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W044.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W045.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W046.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W047.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W048.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W049.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W050.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W051.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W052.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W053.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W054.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W055.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W056.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W057.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W058.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W059.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W060.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W061.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W062.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W063.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W064.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W065.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W066.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W067.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W068.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W069.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W070.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W071.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W072.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W073.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W074.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W075.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W076.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W077.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W078.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W079.pdf
+%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W080.pdf
 %{_texmfdistdir}/tex/latex/isosafety/isosafety.sty
 
 %package -n texlive-isotope
@@ -5776,7 +5781,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-isotope-doc >= %{texlive_version}
 Provides:       tex(isotope.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source35:       isotope.tar.xz
 Source36:       isotope.doc.tar.xz
 
@@ -5822,7 +5827,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/isotope/isotope.sty
 
 %package -n texlive-isphysicalmath
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn69343
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.0svn73239
 Release:        0
 License:        LPPL-1.0
 Summary:        Simple way to write nice formulas
@@ -5852,17 +5857,20 @@ Suggests:       texlive-isphysicalmath-doc >= %{texlive_version}
 Provides:       tex(isphysicalmath.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source37:       isphysicalmath.tar.xz
 Source38:       isphysicalmath.doc.tar.xz
 
 %description -n texlive-isphysicalmath
-This package provides an easy way to write mathematical and
-physical formulas and arguments in scientific notation in an
-elegant way.
+This package helps users to write mathematical and physical
+contents according to scientific notation (international
+mainly), in an elegant way. It deals with the notation and
+formatting of formulas, quantities, numerical values, factors,
+dimensions, measurement units and also performs its activities
+in complex mathematical environments.
 
 %package -n texlive-isphysicalmath-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn69343
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.0svn73239
 Release:        0
 Summary:        Documentation for texlive-isphysicalmath
 License:        LPPL-1.0
@@ -5928,7 +5936,7 @@ Suggests:       texlive-issuulinks-doc >= %{texlive_version}
 Provides:       tex(issuulinks.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source39:       issuulinks.tar.xz
 Source40:       issuulinks.doc.tar.xz
 
@@ -6015,7 +6023,7 @@ Requires:       tex(expl3.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source41:       istgame.tar.xz
 Source42:       istgame.doc.tar.xz
 
@@ -6099,7 +6107,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-itnumpar-doc >= %{texlive_version}
 Provides:       tex(itnumpar.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source43:       itnumpar.tar.xz
 Source44:       itnumpar.doc.tar.xz
 
@@ -6727,7 +6735,7 @@ Provides:       tex(wncy-iwonami.tfm)
 Provides:       tex(wncy-iwonar.tfm)
 Provides:       tex(wncy-iwonari.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source45:       iwona.tar.xz
 Source46:       iwona.doc.tar.xz
 
@@ -7462,7 +7470,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-iwona/iwonari.pfb
 
 %package -n texlive-iwonamath
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn68144
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn71844
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX support for scaled Iwona math fonts
@@ -7513,7 +7521,7 @@ Provides:       tex(ot1iwonamathlm.fd)
 Provides:       tex(ot1iwonamathm.fd)
 Requires:       tex(l3keys2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source47:       iwonamath.tar.xz
 Source48:       iwonamath.doc.tar.xz
 
@@ -7525,7 +7533,7 @@ package allows font scaling, the choice of light and condensed
 versions, and the creation of multiple math versions.
 
 %package -n texlive-iwonamath-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn68144
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn71844
 Release:        0
 Summary:        Documentation for texlive-iwonamath
 License:        LPPL-1.0
@@ -7613,7 +7621,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-jablantile-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source49:       jablantile.tar.xz
 Source50:       jablantile.doc.tar.xz
 
@@ -7716,7 +7724,7 @@ Requires:       tex(unicode-math.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source51:       jacow.tar.xz
 Source52:       jacow.doc.tar.xz
 
@@ -7772,7 +7780,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jacow/jacow.cls
 
 %package -n texlive-jadetex
-Version:        %{texlive_version}.%{texlive_noarch}.3.13svn70002
+Version:        %{texlive_version}.%{texlive_noarch}.3.13svn71409
 Release:        0
 License:        LPPL-1.0
 Summary:        Macros supporting Jade DSSSL output
@@ -7780,8 +7788,6 @@ Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires:       texlive-amsfonts >= %{texlive_version}
 #!BuildIgnore: texlive-amsfonts
-Requires:       texlive-auxhook >= %{texlive_version}
-#!BuildIgnore: texlive-auxhook
 Requires:       texlive-babel >= %{texlive_version}
 #!BuildIgnore: texlive-babel
 Requires:       texlive-bigintcalc >= %{texlive_version}
@@ -7828,6 +7834,8 @@ Requires:       texlive-intcalc >= %{texlive_version}
 #!BuildIgnore: texlive-intcalc
 Requires(pre):  texlive-jadetex-bin >= %{texlive_version}
 #!BuildIgnore: texlive-jadetex-bin
+Requires:       texlive-knuth-lib >= %{texlive_version}
+#!BuildIgnore: texlive-knuth-lib
 Requires:       texlive-kvdefinekeys >= %{texlive_version}
 #!BuildIgnore: texlive-kvdefinekeys
 Requires:       texlive-kvoptions >= %{texlive_version}
@@ -7842,10 +7850,6 @@ Requires:       texlive-latex >= %{texlive_version}
 #!BuildIgnore: texlive-latex
 Requires:       texlive-latex-fonts >= %{texlive_version}
 #!BuildIgnore: texlive-latex-fonts
-Requires:       texlive-latexconfig >= %{texlive_version}
-#!BuildIgnore: texlive-latexconfig
-Requires:       texlive-letltxmacro >= %{texlive_version}
-#!BuildIgnore: texlive-letltxmacro
 Requires:       texlive-ltxcmds >= %{texlive_version}
 #!BuildIgnore: texlive-ltxcmds
 Requires:       texlive-marvosym >= %{texlive_version}
@@ -7866,6 +7870,8 @@ Requires:       texlive-rerunfilecheck >= %{texlive_version}
 #!BuildIgnore: texlive-rerunfilecheck
 Requires:       texlive-stmaryrd >= %{texlive_version}
 #!BuildIgnore: texlive-stmaryrd
+Requires:       texlive-stringenc >= %{texlive_version}
+#!BuildIgnore: texlive-stringenc
 Requires:       texlive-symbol >= %{texlive_version}
 #!BuildIgnore: texlive-symbol
 Requires:       texlive-tex >= %{texlive_version}
@@ -7944,7 +7950,7 @@ Provides:       tex(dsssl.def)
 Provides:       tex(uentities.sty)
 Provides:       tex(ut1omlgc.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source53:       jadetex.tar.xz
 Source54:       jadetex.doc.tar.xz
 Source55:       jadetex_ini.dif
@@ -7954,7 +7960,7 @@ Macro package on top of LaTeX to typeset TeX output of the Jade
 DSSSL implementation.
 
 %package -n texlive-jadetex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.13svn70002
+Version:        %{texlive_version}.%{texlive_noarch}.3.13svn71409
 Release:        0
 Summary:        Documentation for texlive-jadetex
 License:        LPPL-1.0
@@ -7993,14 +7999,6 @@ fi
 > /var/run/texlive/run-fmtutil.pdfjadetex
 
 %triggerun -n texlive-jadetex -- texlive-amsfonts
-> /var/run/texlive/run-fmtutil.jadetex
-> /var/run/texlive/run-fmtutil.pdfjadetex
-
-%triggerin -n texlive-jadetex -- texlive-auxhook
-> /var/run/texlive/run-fmtutil.jadetex
-> /var/run/texlive/run-fmtutil.pdfjadetex
-
-%triggerun -n texlive-jadetex -- texlive-auxhook
 > /var/run/texlive/run-fmtutil.jadetex
 > /var/run/texlive/run-fmtutil.pdfjadetex
 
@@ -8180,6 +8178,14 @@ fi
 > /var/run/texlive/run-fmtutil.jadetex
 > /var/run/texlive/run-fmtutil.pdfjadetex
 
+%triggerin -n texlive-jadetex -- texlive-knuth-lib
+> /var/run/texlive/run-fmtutil.jadetex
+> /var/run/texlive/run-fmtutil.pdfjadetex
+
+%triggerun -n texlive-jadetex -- texlive-knuth-lib
+> /var/run/texlive/run-fmtutil.jadetex
+> /var/run/texlive/run-fmtutil.pdfjadetex
+
 %triggerin -n texlive-jadetex -- texlive-kvdefinekeys
 > /var/run/texlive/run-fmtutil.jadetex
 > /var/run/texlive/run-fmtutil.pdfjadetex
@@ -8233,22 +8239,6 @@ fi
 > /var/run/texlive/run-fmtutil.pdfjadetex
 
 %triggerun -n texlive-jadetex -- texlive-latex-fonts
-> /var/run/texlive/run-fmtutil.jadetex
-> /var/run/texlive/run-fmtutil.pdfjadetex
-
-%triggerin -n texlive-jadetex -- texlive-latexconfig
-> /var/run/texlive/run-fmtutil.jadetex
-> /var/run/texlive/run-fmtutil.pdfjadetex
-
-%triggerun -n texlive-jadetex -- texlive-latexconfig
-> /var/run/texlive/run-fmtutil.jadetex
-> /var/run/texlive/run-fmtutil.pdfjadetex
-
-%triggerin -n texlive-jadetex -- texlive-letltxmacro
-> /var/run/texlive/run-fmtutil.jadetex
-> /var/run/texlive/run-fmtutil.pdfjadetex
-
-%triggerun -n texlive-jadetex -- texlive-letltxmacro
 > /var/run/texlive/run-fmtutil.jadetex
 > /var/run/texlive/run-fmtutil.pdfjadetex
 
@@ -8321,6 +8311,14 @@ fi
 > /var/run/texlive/run-fmtutil.pdfjadetex
 
 %triggerun -n texlive-jadetex -- texlive-stmaryrd
+> /var/run/texlive/run-fmtutil.jadetex
+> /var/run/texlive/run-fmtutil.pdfjadetex
+
+%triggerin -n texlive-jadetex -- texlive-stringenc
+> /var/run/texlive/run-fmtutil.jadetex
+> /var/run/texlive/run-fmtutil.pdfjadetex
+
+%triggerun -n texlive-jadetex -- texlive-stringenc
 > /var/run/texlive/run-fmtutil.jadetex
 > /var/run/texlive/run-fmtutil.pdfjadetex
 
@@ -8570,7 +8568,7 @@ Requires:       tex(cmsy10.tfm)
 Requires:       tex(eucal.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source56:       jamtimes.tar.xz
 Source57:       jamtimes.doc.tar.xz
 
@@ -8767,7 +8765,7 @@ Requires:       tex(mathtools.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source58:       japanese-mathformulas.tar.xz
 Source59:       japanese-mathformulas.doc.tar.xz
 
@@ -8820,7 +8818,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/lualatex/japanese-mathformulas/japanese-mathformulas.sty
 
 %package -n texlive-japanese-otf
-Version:        %{texlive_version}.%{texlive_noarch}.svn68492
+Version:        %{texlive_version}.%{texlive_noarch}.svn74106
 Release:        0
 License:        BSD-3-Clause
 Summary:        Advanced font selection for platex and its friends
@@ -12493,7 +12491,7 @@ Provides:       tex(utftmrz-v.tfm)
 Provides:       tex(utftmrz-v.vf)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source60:       japanese-otf.tar.xz
 Source61:       japanese-otf.doc.tar.xz
 
@@ -12503,7 +12501,7 @@ supporting a wide variety of fonts in LaTeX using the pTeX
 engine.
 
 %package -n texlive-japanese-otf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn68492
+Version:        %{texlive_version}.%{texlive_noarch}.svn74106
 Release:        0
 Summary:        Documentation for texlive-japanese-otf
 License:        BSD-3-Clause
@@ -12570,9 +12568,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/cjk-mltwght-v.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/cjk-pxbabel-h.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/cjk-pxbabel-v.tex
+%{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/combined_kana_text.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/direction-utf8.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/era.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/exclam.tex
+%{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/ivd_jp_text.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/jotf-psfonts.map
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/otfscale.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/paren0.tex
@@ -12583,9 +12583,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/sp_jp_text.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/sp_jp_utf.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/sp_kr_utf.tex
+%{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_jpn.tex
+%{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_kor.tex
+%{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_min_jpn.tex
+%{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_sch.tex
+%{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_tch.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/uotf-cid-h.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/uotf-cid-v.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/uotf-sp-utf8.tex
+%{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/uotf-vs-utf8.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/uotftest-utf8.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/uotftest.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/upbrsgtest.tex
@@ -16261,7 +16267,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source62:       jbact.tar.xz
 
 %description -n texlive-jbact
@@ -16291,8 +16297,158 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-jbact
 %{_texmfdistdir}/bibtex/bst/jbact/jbact.bst
 
+%package -n texlive-jetbrainsmono-otf
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73401
+Release:        0
+License:        LPPL-1.0
+Summary:        Package (or only fontspec config files) support for the OpenType font JetBrains
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Requires:       texlive-jetbrainsmono-otf-fonts >= %{texlive_version}
+Suggests:       texlive-jetbrainsmono-otf-doc >= %{texlive_version}
+Provides:       tex(jetbrainsmono-otf.sty)
+Requires:       tex(fontspec.sty)
+Requires:       tex(xkeyval.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source63:       jetbrainsmono-otf.tar.xz
+Source64:       jetbrainsmono-otf.doc.tar.xz
+
+%description -n texlive-jetbrainsmono-otf
+Support for the OpenType font JetBrainsMono (so with
+LuaLaTeX/XeTeX and fontspec),with or without ligatures, and
+with weights versions. jetbrainsmono or jetbrainscode for
+regular version, jetbrainsmono-medium or jetbrainscode-medium
+for medium version, jetbrainsmono-light or jetbrainscode-light
+for light version, jetbrainsmono-extralight or
+jetbrainscode-extralight for extralight version,
+jetbrainsmono-thin or jetbrainscode-thin for thin version.
+
+%package -n texlive-jetbrainsmono-otf-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73401
+Release:        0
+Summary:        Documentation for texlive-jetbrainsmono-otf
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-jetbrainsmono-otf and texlive-alldocumentation)
+
+%description -n texlive-jetbrainsmono-otf-doc
+This package includes the documentation for texlive-jetbrainsmono-otf
+
+%package -n texlive-jetbrainsmono-otf-fonts
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73401
+Release:        0
+Summary:        Severed fonts for texlive-jetbrainsmono-otf
+License:        LPPL-1.0
+URL:            https://www.tug.org/texlive/
+Group:          Productivity/Publishing/TeX/Fonts
+%reconfigure_fonts_prereq
+Requires(posttrans): fontconfig
+Requires(posttrans): ghostscript-fonts-std
+Suggests:       xorg-x11-fonts-core
+
+%description -n texlive-jetbrainsmono-otf-fonts
+The  separated fonts package for texlive-jetbrainsmono-otf
+
+%post -n texlive-jetbrainsmono-otf
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-jetbrainsmono-otf
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-jetbrainsmono-otf
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%reconfigure_fonts_scriptlets -n texlive-jetbrainsmono-otf-fonts
+
+%files -n texlive-jetbrainsmono-otf-doc
+%{_texmfdistdir}/doc/fonts/jetbrainsmono-otf/README.md
+%{_texmfdistdir}/doc/fonts/jetbrainsmono-otf/jetbrainsmono-otf-doc.pdf
+%{_texmfdistdir}/doc/fonts/jetbrainsmono-otf/jetbrainsmono-otf-doc.tex
+
+%files -n texlive-jetbrainsmono-otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-ExtraBold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-ExtraBoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-ExtraLight.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-ExtraLightItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-Light.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-LightItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-Medium.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-MediumItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-SemiBold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-SemiBoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-Thin.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/JetBrainsMono-ThinItalic.otf
+%{_texmfdistdir}/tex/latex/jetbrainsmono-otf/jetbrainscode-extralight.fontspec
+%{_texmfdistdir}/tex/latex/jetbrainsmono-otf/jetbrainscode-light.fontspec
+%{_texmfdistdir}/tex/latex/jetbrainsmono-otf/jetbrainscode-medium.fontspec
+%{_texmfdistdir}/tex/latex/jetbrainsmono-otf/jetbrainscode-thin.fontspec
+%{_texmfdistdir}/tex/latex/jetbrainsmono-otf/jetbrainscode.fontspec
+%{_texmfdistdir}/tex/latex/jetbrainsmono-otf/jetbrainsmono-extralight.fontspec
+%{_texmfdistdir}/tex/latex/jetbrainsmono-otf/jetbrainsmono-light.fontspec
+%{_texmfdistdir}/tex/latex/jetbrainsmono-otf/jetbrainsmono-medium.fontspec
+%{_texmfdistdir}/tex/latex/jetbrainsmono-otf/jetbrainsmono-otf.sty
+%{_texmfdistdir}/tex/latex/jetbrainsmono-otf/jetbrainsmono-thin.fontspec
+%{_texmfdistdir}/tex/latex/jetbrainsmono-otf/jetbrainsmono.fontspec
+
+%files -n texlive-jetbrainsmono-otf-fonts
+%dir %{_datadir}/fonts/texlive-jetbrainsmono-otf
+%{_datadir}/fontconfig/conf.avail/58-texlive-jetbrainsmono-otf.conf
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-jetbrainsmono-otf/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-jetbrainsmono-otf/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-jetbrainsmono-otf/fonts.scale
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-Bold.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-BoldItalic.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-ExtraBold.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-ExtraBoldItalic.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-ExtraLight.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-ExtraLightItalic.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-Italic.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-Light.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-LightItalic.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-Medium.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-MediumItalic.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-Regular.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-SemiBold.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-SemiBoldItalic.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-Thin.otf
+%{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-ThinItalic.otf
+
 %package -n texlive-jeuxcartes
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.8svn68266
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.1svn73958
 Release:        0
 License:        LPPL-1.0
 Summary:        Macros to insert playing cards
@@ -16330,9 +16486,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xinttools.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source63:       jeuxcartes.tar.xz
-Source64:       jeuxcartes.doc.tar.xz
+# from 20250308
+Source65:       jeuxcartes.tar.xz
+Source66:       jeuxcartes.doc.tar.xz
 
 %description -n texlive-jeuxcartes
 This package provides macros to insert playing cards, single,
@@ -16340,7 +16496,7 @@ or hand, or random-hand, Poker or French Tarot or Uno, from png
 files.
 
 %package -n texlive-jeuxcartes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.8svn68266
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.1svn73958
 Release:        0
 Summary:        Documentation for texlive-jeuxcartes
 License:        LPPL-1.0
@@ -16944,9 +17100,9 @@ Requires:       perl(constant)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source65:       jfmutil.tar.xz
-Source66:       jfmutil.doc.tar.xz
+# from 20250308
+Source67:       jfmutil.tar.xz
+Source68:       jfmutil.doc.tar.xz
 
 %description -n texlive-jfmutil
 This program provides functionality to process data files (JFM
@@ -17026,9 +17182,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-jieeetran-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source67:       jieeetran.tar.xz
-Source68:       jieeetran.doc.tar.xz
+# from 20250308
+Source69:       jieeetran.tar.xz
+Source70:       jieeetran.doc.tar.xz
 
 %description -n texlive-jieeetran
 This package provides an unofficial BibTeX style for authors
@@ -17077,12 +17233,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/bibtex/bst/jieeetran/jIEEEtran.bst
 
 %package -n texlive-jigsaw
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn66009
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn71923
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw jigsaw pieces with TikZ
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Requires:       texlive-epstopdf-pkg >= %{texlive_version}
+#!BuildIgnore: texlive-epstopdf-pkg
+Requires:       texlive-iftex >= %{texlive_version}
+#!BuildIgnore: texlive-iftex
+Requires:       texlive-pgf >= %{texlive_version}
+#!BuildIgnore: texlive-pgf
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -17109,9 +17271,9 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source69:       jigsaw.tar.xz
-Source70:       jigsaw.doc.tar.xz
+# from 20250308
+Source71:       jigsaw.tar.xz
+Source72:       jigsaw.doc.tar.xz
 
 %description -n texlive-jigsaw
 This is a small LaTeX package to draw jigsaw pieces with TikZ.
@@ -17120,7 +17282,7 @@ shape, create tile patterns or automatically generate complete
 jigsaws.
 
 %package -n texlive-jigsaw-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn66009
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn71923
 Release:        0
 Summary:        Documentation for texlive-jigsaw
 License:        LPPL-1.0
@@ -17149,7 +17311,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-jigsaw-doc
+%{_texmfdistdir}/doc/latex/jigsaw/DEPENDS.txt
 %{_texmfdistdir}/doc/latex/jigsaw/README.md
+%{_texmfdistdir}/doc/latex/jigsaw/jigsaw-doc-settings.sty
 %{_texmfdistdir}/doc/latex/jigsaw/jigsaw-doc.pdf
 %{_texmfdistdir}/doc/latex/jigsaw/jigsaw-doc.tex
 
@@ -17190,9 +17354,9 @@ Requires:       tex(array.sty)
 Requires:       tex(physics.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source71:       jkmath.tar.xz
-Source72:       jkmath.doc.tar.xz
+# from 20250308
+Source73:       jkmath.tar.xz
+Source74:       jkmath.doc.tar.xz
 
 %description -n texlive-jkmath
 Inspired by the physicspackage on CTAN, the package defines
@@ -17285,9 +17449,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source73:       jknapltx.tar.xz
-Source74:       jknapltx.doc.tar.xz
+# from 20250308
+Source75:       jknapltx.tar.xz
+Source76:       jknapltx.doc.tar.xz
 
 %description -n texlive-jknapltx
 Miscellaneous macros by Jorg Knappen, including: represent
@@ -17387,9 +17551,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source75:       jlabels.tar.xz
-Source76:       jlabels.doc.tar.xz
+# from 20250308
+Source77:       jlabels.tar.xz
+Source78:       jlabels.doc.tar.xz
 
 %description -n texlive-jlabels
 The package provides controls for the numbers of rows and
@@ -17433,7 +17597,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jlabels/jlabels.sty
 
 %package -n texlive-jlreq
-Version:        %{texlive_version}.%{texlive_noarch}.svn69911
+Version:        %{texlive_version}.%{texlive_noarch}.svn72460
 Release:        0
 License:        BSD-3-Clause
 Summary:        Japanese document class based on requirements for Japanese text layout
@@ -17569,7 +17733,6 @@ Requires:       tex(everyhook.sty)
 Requires:       tex(filehook.sty)
 Requires:       tex(gbm.tfm)
 Requires:       tex(gbmv.tfm)
-Requires:       tex(l3keys2e.sty)
 Requires:       tex(lmodern.sty)
 Requires:       tex(luatexja-adjust.sty)
 Requires:       tex(luatexja.sty)
@@ -17583,9 +17746,9 @@ Requires:       tex(uprml-h.tfm)
 Requires:       tex(uprml-hq.tfm)
 Requires:       tex(uprml-v.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source77:       jlreq.tar.xz
-Source78:       jlreq.doc.tar.xz
+# from 20250308
+Source79:       jlreq.tar.xz
+Source80:       jlreq.doc.tar.xz
 
 %description -n texlive-jlreq
 This package provides a Japanese document class based on
@@ -17594,7 +17757,7 @@ JFM (Japanese font metric) files for LuaTeX-ja / pLaTeX /
 upLaTeX are provided.
 
 %package -n texlive-jlreq-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn69911
+Version:        %{texlive_version}.%{texlive_noarch}.svn72460
 Release:        0
 Summary:        Documentation for texlive-jlreq
 License:        BSD-3-Clause
@@ -18969,9 +19132,9 @@ Requires:       tex(uphminr-v.tfm)
 Requires:       tex(uphminrn-h.tfm)
 Requires:       tex(uphminrn-v.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source79:       jlreq-deluxe.tar.xz
-Source80:       jlreq-deluxe.doc.tar.xz
+# from 20250308
+Source81:       jlreq-deluxe.tar.xz
+Source82:       jlreq-deluxe.doc.tar.xz
 
 %description -n texlive-jlreq-deluxe
 This package provides multi-weight Japanese font support for
@@ -20166,8 +20329,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(jmb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source81:       jmb.tar.xz
+# from 20250308
+Source83:       jmb.tar.xz
 
 %description -n texlive-jmb
 This BibTeX bibliography style is for the Journal of Molecular
@@ -20255,9 +20418,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xmpincl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source82:       jmlr.tar.xz
-Source83:       jmlr.doc.tar.xz
+# from 20250308
+Source84:       jmlr.tar.xz
+Source85:       jmlr.doc.tar.xz
 
 %description -n texlive-jmlr
 The jmlr bundle provides a class for authors (jmlr) and a class
@@ -20345,8 +20508,8 @@ Provides:       tex(hans.enc)
 Provides:       tex(hans.map)
 Provides:       tex(hans.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source84:       jmn.tar.xz
+# from 20250308
+Source86:       jmn.tar.xz
 
 %description -n texlive-jmn
 The jmn package
@@ -20441,9 +20604,9 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(scalerel.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source85:       jmsdelim.tar.xz
-Source86:       jmsdelim.doc.tar.xz
+# from 20250308
+Source87:       jmsdelim.tar.xz
+Source88:       jmsdelim.doc.tar.xz
 
 %description -n texlive-jmsdelim
 Correctly sizing delimiters is very difficult, particularly in
@@ -20526,9 +20689,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-jneurosci-doc >= %{texlive_version}
 Provides:       tex(jneurosci.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source87:       jneurosci.tar.xz
-Source88:       jneurosci.doc.tar.xz
+# from 20250308
+Source89:       jneurosci.tar.xz
+Source90:       jneurosci.doc.tar.xz
 
 %description -n texlive-jneurosci
 This is a slightly modified version of the namedplus style,
@@ -20575,7 +20738,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jneurosci/jneurosci.sty
 
 %package -n texlive-jnuexam
-Version:        %{texlive_version}.%{texlive_noarch}.2.1.1svn69968
+Version:        %{texlive_version}.%{texlive_noarch}.2024fsvn71883
 Release:        0
 License:        LPPL-1.0
 Summary:        Exam class for Jinan University
@@ -20603,53 +20766,21 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-jnuexam-doc >= %{texlive_version}
 Provides:       tex(jnuexam.cls)
-Requires:       tex(CJKfntef.sty)
-Requires:       tex(CJKnumb.sty)
-Requires:       tex(amsmath.sty)
-Requires:       tex(amssymb.sty)
-Requires:       tex(array.sty)
-Requires:       tex(calc.sty)
-Requires:       tex(cellspace.sty)
-Requires:       tex(comment.sty)
-Requires:       tex(ctexart.cls)
-Requires:       tex(diagbox.sty)
-Requires:       tex(enumitem.sty)
-Requires:       tex(environ.sty)
-Requires:       tex(etoolbox.sty)
 Requires:       tex(everypage.sty)
-Requires:       tex(extarrows.sty)
-Requires:       tex(fancyhdr.sty)
-Requires:       tex(geometry.sty)
-Requires:       tex(iftex.sty)
-Requires:       tex(mathdesign.sty)
-Requires:       tex(mathtools.sty)
-Requires:       tex(multirow.sty)
-Requires:       tex(nccmath.sty)
-Requires:       tex(pdfpages.sty)
-Requires:       tex(pgf.sty)
-Requires:       tex(pgffor.sty)
-Requires:       tex(relsize.sty)
-Requires:       tex(tabu.sty)
-Requires:       tex(tabularx.sty)
+Requires:       tex(functional.sty)
+Requires:       tex(randexam.cls)
 Requires:       tex(tikz.sty)
-Requires:       tex(xcolor.sty)
-Requires:       tex(xeCJK.sty)
-Requires:       tex(xeCJKfntef.sty)
-Requires:       tex(xkeyval.sty)
-Requires:       tex(zref-lastpage.sty)
-Requires:       tex(zref-savepos.sty)
-Requires:       tex(zref-user.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source89:       jnuexam.tar.xz
-Source90:       jnuexam.doc.tar.xz
+# from 20250308
+Source91:       jnuexam.tar.xz
+Source92:       jnuexam.doc.tar.xz
 
 %description -n texlive-jnuexam
 The package provides an exam class for Jinan University
 (China).
 
 %package -n texlive-jnuexam-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1.1svn69968
+Version:        %{texlive_version}.%{texlive_noarch}.2024fsvn71883
 Release:        0
 Summary:        Documentation for texlive-jnuexam
 License:        LPPL-1.0
@@ -20680,14 +20811,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-jnuexam-doc
 %{_texmfdistdir}/doc/latex/jnuexam/README
-%{_texmfdistdir}/doc/latex/jnuexam/exam-a-answer.pdf
-%{_texmfdistdir}/doc/latex/jnuexam/exam-a-answer.tex
-%{_texmfdistdir}/doc/latex/jnuexam/exam-a-empty.pdf
-%{_texmfdistdir}/doc/latex/jnuexam/exam-a-empty.tex
-%{_texmfdistdir}/doc/latex/jnuexam/exam-b-answer.pdf
-%{_texmfdistdir}/doc/latex/jnuexam/exam-b-answer.tex
-%{_texmfdistdir}/doc/latex/jnuexam/exam-b-empty.pdf
-%{_texmfdistdir}/doc/latex/jnuexam/exam-b-empty.tex
+%{_texmfdistdir}/doc/latex/jnuexam/examfc-a-answer.pdf
+%{_texmfdistdir}/doc/latex/jnuexam/examfc-a-answer.tex
+%{_texmfdistdir}/doc/latex/jnuexam/examfc-a-blank.pdf
+%{_texmfdistdir}/doc/latex/jnuexam/examfc-a-blank.tex
+%{_texmfdistdir}/doc/latex/jnuexam/examfc-b-answer.pdf
+%{_texmfdistdir}/doc/latex/jnuexam/examfc-b-answer.tex
+%{_texmfdistdir}/doc/latex/jnuexam/examfc-b-blank.pdf
+%{_texmfdistdir}/doc/latex/jnuexam/examfc-b-blank.tex
+%{_texmfdistdir}/doc/latex/jnuexam/examfe-a-answer.pdf
+%{_texmfdistdir}/doc/latex/jnuexam/examfe-a-answer.tex
+%{_texmfdistdir}/doc/latex/jnuexam/examfe-a-blank.pdf
+%{_texmfdistdir}/doc/latex/jnuexam/examfe-a-blank.tex
+%{_texmfdistdir}/doc/latex/jnuexam/examfe-b-answer.pdf
+%{_texmfdistdir}/doc/latex/jnuexam/examfe-b-answer.tex
+%{_texmfdistdir}/doc/latex/jnuexam/examfe-b-blank.pdf
+%{_texmfdistdir}/doc/latex/jnuexam/examfe-b-blank.tex
 %{_texmfdistdir}/doc/latex/jnuexam/jnuexam.pdf
 %{_texmfdistdir}/doc/latex/jnuexam/jnuexam.tex
 
@@ -20725,9 +20864,9 @@ Suggests:       texlive-jobname-suffix-doc >= %{texlive_version}
 Provides:       tex(jobname-suffix.sty)
 Requires:       tex(expl3.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source91:       jobname-suffix.tar.xz
-Source92:       jobname-suffix.doc.tar.xz
+# from 20250308
+Source93:       jobname-suffix.tar.xz
+Source94:       jobname-suffix.doc.tar.xz
 
 %description -n texlive-jobname-suffix
 This package allows to compile a document differently depending
@@ -20774,7 +20913,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jobname-suffix/jobname-suffix.sty
 
 %package -n texlive-joinbox
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn68003
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn72239
 Release:        0
 License:        LPPL-1.0
 Summary:        Join boxes vertically or horizontally
@@ -20806,9 +20945,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source93:       joinbox.tar.xz
-Source94:       joinbox.doc.tar.xz
+# from 20250308
+Source95:       joinbox.tar.xz
+Source96:       joinbox.doc.tar.xz
 
 %description -n texlive-joinbox
 This package can join boxes vertically or horizontally. When
@@ -20817,7 +20956,7 @@ width, while when using horizontal joined, all boxes to be
 joined keep same height.
 
 %package -n texlive-joinbox-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn68003
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn72239
 Release:        0
 Summary:        Documentation for texlive-joinbox
 License:        LPPL-1.0
@@ -21057,9 +21196,9 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source95:       josefin.tar.xz
-Source96:       josefin.doc.tar.xz
+# from 20250308
+Source97:       josefin.tar.xz
+Source98:       josefin.doc.tar.xz
 
 %description -n texlive-josefin
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -21384,9 +21523,9 @@ Requires:       tex(lipsum.sty)
 Requires:       tex(orcidlink.sty)
 Requires:       tex(parskip.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source97:       jourcl.tar.xz
-Source98:       jourcl.doc.tar.xz
+# from 20250308
+Source99:       jourcl.tar.xz
+Source100:      jourcl.doc.tar.xz
 
 %description -n texlive-jourcl
 Paper submissions to journals are usually accompanied by a
@@ -21488,9 +21627,9 @@ Requires:       tex(parskip.sty)
 Requires:       tex(wasysym.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source99:       jourrr.tar.xz
-Source100:      jourrr.doc.tar.xz
+# from 20250308
+Source101:      jourrr.tar.xz
+Source102:      jourrr.doc.tar.xz
 
 %description -n texlive-jourrr
 This package provides an elegant LaTeX template designed for
@@ -21556,7 +21695,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jourrr/jourrr.cls
 
 %package -n texlive-jpneduenumerate
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn63893
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn72898
 Release:        0
 License:        LPPL-1.0
 Summary:        Enumerative expressions in Japanese education
@@ -21589,9 +21728,9 @@ Requires:       tex(luatexja-otf.sty)
 Requires:       tex(otf.sty)
 Requires:       tex(refcount.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source101:      jpneduenumerate.tar.xz
-Source102:      jpneduenumerate.doc.tar.xz
+# from 20250308
+Source103:      jpneduenumerate.tar.xz
+Source104:      jpneduenumerate.doc.tar.xz
 
 %description -n texlive-jpneduenumerate
 Mathematical equation representation in Japanese education
@@ -21600,7 +21739,7 @@ package introduces enumerative expressions in Japanese
 education.
 
 %package -n texlive-jpneduenumerate-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn63893
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn72898
 Release:        0
 Summary:        Documentation for texlive-jpneduenumerate
 License:        LPPL-1.0
@@ -21638,7 +21777,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jpneduenumerate/jpneduenumerate.sty
 
 %package -n texlive-jpnedumathsymbols
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn63864
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn72959
 Release:        0
 License:        LPPL-1.0
 Summary:        Mathematical equation representation in Japanese education
@@ -21673,9 +21812,9 @@ Requires:       tex(luatexja-otf.sty)
 Requires:       tex(otf.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source103:      jpnedumathsymbols.tar.xz
-Source104:      jpnedumathsymbols.doc.tar.xz
+# from 20250308
+Source105:      jpnedumathsymbols.tar.xz
+Source106:      jpnedumathsymbols.doc.tar.xz
 
 %description -n texlive-jpnedumathsymbols
 Mathematical equation representation in Japanese education
@@ -21684,7 +21823,7 @@ package introduces mathematical equation representation in
 Japanese education.
 
 %package -n texlive-jpnedumathsymbols-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn63864
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn72959
 Release:        0
 Summary:        Documentation for texlive-jpnedumathsymbols
 License:        LPPL-1.0
@@ -21715,8 +21854,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-jpnedumathsymbols-doc
 %{_texmfdistdir}/doc/latex/jpnedumathsymbols/README.md
-%{_texmfdistdir}/doc/latex/jpnedumathsymbols/jpnedumathsymbols.pdf
-%{_texmfdistdir}/doc/latex/jpnedumathsymbols/jpnedumathsymbols.tex
+%{_texmfdistdir}/doc/latex/jpnedumathsymbols/jpnedumathsymbols-doc.pdf
+%{_texmfdistdir}/doc/latex/jpnedumathsymbols/jpnedumathsymbols-doc.tex
 
 %files -n texlive-jpnedumathsymbols
 %{_texmfdistdir}/tex/latex/jpnedumathsymbols/jpnedumathsymbols.sty
@@ -21755,9 +21894,9 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(overcite.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source105:      jpsj.tar.xz
-Source106:      jpsj.doc.tar.xz
+# from 20250308
+Source107:      jpsj.tar.xz
+Source108:      jpsj.doc.tar.xz
 
 %description -n texlive-jpsj
 The jpsj package
@@ -21835,9 +21974,9 @@ Provides:       tex(schild.tex)
 Provides:       tex(sperr.tex)
 Provides:       tex(xfig.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source107:      js-misc.tar.xz
-Source108:      js-misc.doc.tar.xz
+# from 20250308
+Source109:      js-misc.tar.xz
+Source110:      js-misc.doc.tar.xz
 
 %description -n texlive-js-misc
 A bunch of packages, including: idverb.tex, for 'short
@@ -21940,9 +22079,9 @@ Provides:       tex(okuverb.sty)
 Requires:       tex(ts1enc.def)
 Requires:       tex(type1cm.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source109:      jsclasses.tar.xz
-Source110:      jsclasses.doc.tar.xz
+# from 20250308
+Source111:      jsclasses.tar.xz
+Source112:      jsclasses.doc.tar.xz
 
 %description -n texlive-jsclasses
 Classes jsarticle and jsbook are provided, together with
@@ -22001,7 +22140,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/jsclasses/okuverb.sty
 
 %package -n texlive-jslectureplanner
-Version:        %{texlive_version}.%{texlive_noarch}.1.13svn70443
+Version:        %{texlive_version}.%{texlive_noarch}.1.14svn73640
 Release:        0
 License:        LPPL-1.0
 Summary:        Creation and management of university course material
@@ -22040,9 +22179,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source111:      jslectureplanner.tar.xz
-Source112:      jslectureplanner.doc.tar.xz
+# from 20250308
+Source113:      jslectureplanner.tar.xz
+Source114:      jslectureplanner.doc.tar.xz
 
 %description -n texlive-jslectureplanner
 The jslectureplanner package facilitates the generation and
@@ -22057,7 +22196,7 @@ BibLaTeX. The bundle also includes a package jsmembertable.sty
 that helps in generating course member and presence lists.
 
 %package -n texlive-jslectureplanner-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.13svn70443
+Version:        %{texlive_version}.%{texlive_noarch}.1.14svn73640
 Release:        0
 Summary:        Documentation for texlive-jslectureplanner
 License:        LPPL-1.0
@@ -22145,6 +22284,86 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jslectureplanner/jslectureplanner.sty
 %{_texmfdistdir}/tex/latex/jslectureplanner/jsmembertable.sty
 
+%package -n texlive-jsonparse
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.1svn74288
+Release:        0
+License:        LPPL-1.0
+Summary:        Parse, store and access JSON data in LaTeX documents
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-jsonparse-doc >= %{texlive_version}
+Provides:       tex(jsonparse.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source115:      jsonparse.tar.xz
+Source116:      jsonparse.doc.tar.xz
+
+%description -n texlive-jsonparse
+This package provides an easy way to read in JSON data from
+files or strings in LaTeX documents, parse the data and store
+it in a user-defined token variable.
+
+%package -n texlive-jsonparse-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.1svn74288
+Release:        0
+Summary:        Documentation for texlive-jsonparse
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-jsonparse and texlive-alldocumentation)
+
+%description -n texlive-jsonparse-doc
+This package includes the documentation for texlive-jsonparse
+
+%post -n texlive-jsonparse
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-jsonparse
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-jsonparse
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-jsonparse-doc
+%{_texmfdistdir}/doc/latex/jsonparse/LICENCE
+%{_texmfdistdir}/doc/latex/jsonparse/README.md
+%{_texmfdistdir}/doc/latex/jsonparse/jason/jason.pdf
+%{_texmfdistdir}/doc/latex/jsonparse/jason/jason.svg
+%{_texmfdistdir}/doc/latex/jsonparse/jason/jason.tex
+%{_texmfdistdir}/doc/latex/jsonparse/jsonparse-doc.pdf
+%{_texmfdistdir}/doc/latex/jsonparse/jsonparse-doc.tex
+
+%files -n texlive-jsonparse
+%{_texmfdistdir}/tex/latex/jsonparse/jsonparse.sty
+
 %package -n texlive-jumplines
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn37553
 Release:        0
@@ -22186,9 +22405,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source113:      jumplines.tar.xz
-Source114:      jumplines.doc.tar.xz
+# from 20250308
+Source117:      jumplines.tar.xz
+Source118:      jumplines.doc.tar.xz
 
 %description -n texlive-jumplines
 Jumplines is a package for typesetting (newspaper) articles
@@ -22237,7 +22456,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jumplines/jumplines.sty
 
 %package -n texlive-junicode
-Version:        %{texlive_version}.%{texlive_noarch}.2.206svn69355
+Version:        %{texlive_version}.%{texlive_noarch}.2.209svn71871
 Release:        0
 License:        OFL-1.1
 Summary:        A TrueType and OpenType font family for mediaevalists
@@ -22372,9 +22591,7 @@ Provides:       tex(Junicode-BoldItalic-inf-t1.tfm)
 Provides:       tex(Junicode-BoldItalic-inf-t1.vf)
 Provides:       tex(Junicode-BoldItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-BoldItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-BoldItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-BoldItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-BoldItalic-lf-ot1.vf)
 Provides:       tex(Junicode-BoldItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-BoldItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-BoldItalic-lf-sc-ly1.tfm)
@@ -22393,9 +22610,7 @@ Provides:       tex(Junicode-BoldItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-BoldItalic-lf-ts1.vf)
 Provides:       tex(Junicode-BoldItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-BoldItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-BoldItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-BoldItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-BoldItalic-osf-ot1.vf)
 Provides:       tex(Junicode-BoldItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-BoldItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-BoldItalic-osf-sc-ly1.tfm)
@@ -22420,9 +22635,7 @@ Provides:       tex(Junicode-BoldItalic-sup-t1.tfm)
 Provides:       tex(Junicode-BoldItalic-sup-t1.vf)
 Provides:       tex(Junicode-BoldItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-BoldItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-BoldItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-BoldItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-BoldItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-BoldItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-BoldItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-BoldItalic-tlf-sc-ly1.tfm)
@@ -22441,9 +22654,7 @@ Provides:       tex(Junicode-BoldItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-BoldItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-BoldItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-BoldItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-BoldItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-BoldItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-BoldItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-BoldItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-BoldItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-BoldItalic-tosf-sc-ly1.tfm)
@@ -22556,9 +22767,7 @@ Provides:       tex(Junicode-CondItalic-inf-t1.tfm)
 Provides:       tex(Junicode-CondItalic-inf-t1.vf)
 Provides:       tex(Junicode-CondItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-CondItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-CondItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-CondItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-CondItalic-lf-ot1.vf)
 Provides:       tex(Junicode-CondItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-CondItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-CondItalic-lf-sc-ly1.tfm)
@@ -22577,9 +22786,7 @@ Provides:       tex(Junicode-CondItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-CondItalic-lf-ts1.vf)
 Provides:       tex(Junicode-CondItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-CondItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-CondItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-CondItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-CondItalic-osf-ot1.vf)
 Provides:       tex(Junicode-CondItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-CondItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-CondItalic-osf-sc-ly1.tfm)
@@ -22604,9 +22811,7 @@ Provides:       tex(Junicode-CondItalic-sup-t1.tfm)
 Provides:       tex(Junicode-CondItalic-sup-t1.vf)
 Provides:       tex(Junicode-CondItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-CondItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-CondItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-CondItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-CondItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-CondItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-CondItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-CondItalic-tlf-sc-ly1.tfm)
@@ -22625,9 +22830,7 @@ Provides:       tex(Junicode-CondItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-CondItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-CondItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-CondItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-CondItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-CondItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-CondItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-CondItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-CondItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-CondItalic-tosf-sc-ly1.tfm)
@@ -22740,9 +22943,7 @@ Provides:       tex(Junicode-CondLightItalic-inf-t1.tfm)
 Provides:       tex(Junicode-CondLightItalic-inf-t1.vf)
 Provides:       tex(Junicode-CondLightItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-CondLightItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-CondLightItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-CondLightItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-CondLightItalic-lf-ot1.vf)
 Provides:       tex(Junicode-CondLightItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-CondLightItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-CondLightItalic-lf-sc-ly1.tfm)
@@ -22761,9 +22962,7 @@ Provides:       tex(Junicode-CondLightItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-CondLightItalic-lf-ts1.vf)
 Provides:       tex(Junicode-CondLightItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-CondLightItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-CondLightItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-CondLightItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-CondLightItalic-osf-ot1.vf)
 Provides:       tex(Junicode-CondLightItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-CondLightItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-CondLightItalic-osf-sc-ly1.tfm)
@@ -22788,9 +22987,7 @@ Provides:       tex(Junicode-CondLightItalic-sup-t1.tfm)
 Provides:       tex(Junicode-CondLightItalic-sup-t1.vf)
 Provides:       tex(Junicode-CondLightItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-CondLightItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-CondLightItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-CondLightItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-CondLightItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-CondLightItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-CondLightItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-CondLightItalic-tlf-sc-ly1.tfm)
@@ -22809,9 +23006,7 @@ Provides:       tex(Junicode-CondLightItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-CondLightItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-CondLightItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-CondLightItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-CondLightItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-CondLightItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-CondLightItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-CondLightItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-CondLightItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-CondLightItalic-tosf-sc-ly1.tfm)
@@ -22924,9 +23119,7 @@ Provides:       tex(Junicode-CondMediumItalic-inf-t1.tfm)
 Provides:       tex(Junicode-CondMediumItalic-inf-t1.vf)
 Provides:       tex(Junicode-CondMediumItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-CondMediumItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-CondMediumItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-CondMediumItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-CondMediumItalic-lf-ot1.vf)
 Provides:       tex(Junicode-CondMediumItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-CondMediumItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-CondMediumItalic-lf-sc-ly1.tfm)
@@ -22945,9 +23138,7 @@ Provides:       tex(Junicode-CondMediumItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-CondMediumItalic-lf-ts1.vf)
 Provides:       tex(Junicode-CondMediumItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-CondMediumItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-CondMediumItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-CondMediumItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-CondMediumItalic-osf-ot1.vf)
 Provides:       tex(Junicode-CondMediumItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-CondMediumItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-CondMediumItalic-osf-sc-ly1.tfm)
@@ -22972,9 +23163,7 @@ Provides:       tex(Junicode-CondMediumItalic-sup-t1.tfm)
 Provides:       tex(Junicode-CondMediumItalic-sup-t1.vf)
 Provides:       tex(Junicode-CondMediumItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-CondMediumItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-CondMediumItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-CondMediumItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-CondMediumItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-CondMediumItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-CondMediumItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-CondMediumItalic-tlf-sc-ly1.tfm)
@@ -22993,9 +23182,7 @@ Provides:       tex(Junicode-CondMediumItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-CondMediumItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-CondMediumItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-CondMediumItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-CondMediumItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-CondMediumItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-CondMediumItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-CondMediumItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-CondMediumItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-CondMediumItalic-tosf-sc-ly1.tfm)
@@ -23196,9 +23383,7 @@ Provides:       tex(Junicode-ExpBoldItalic-inf-t1.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-inf-t1.vf)
 Provides:       tex(Junicode-ExpBoldItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-ExpBoldItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-ExpBoldItalic-lf-ot1.vf)
 Provides:       tex(Junicode-ExpBoldItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-lf-sc-ly1.tfm)
@@ -23217,9 +23402,7 @@ Provides:       tex(Junicode-ExpBoldItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-lf-ts1.vf)
 Provides:       tex(Junicode-ExpBoldItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-ExpBoldItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-ExpBoldItalic-osf-ot1.vf)
 Provides:       tex(Junicode-ExpBoldItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-osf-sc-ly1.tfm)
@@ -23244,9 +23427,7 @@ Provides:       tex(Junicode-ExpBoldItalic-sup-t1.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-sup-t1.vf)
 Provides:       tex(Junicode-ExpBoldItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-ExpBoldItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-ExpBoldItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-ExpBoldItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-tlf-sc-ly1.tfm)
@@ -23265,9 +23446,7 @@ Provides:       tex(Junicode-ExpBoldItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-ExpBoldItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-ExpBoldItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-ExpBoldItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-ExpBoldItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpBoldItalic-tosf-sc-ly1.tfm)
@@ -23292,9 +23471,7 @@ Provides:       tex(Junicode-ExpItalic-inf-t1.tfm)
 Provides:       tex(Junicode-ExpItalic-inf-t1.vf)
 Provides:       tex(Junicode-ExpItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-ExpItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-ExpItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-ExpItalic-lf-ot1.vf)
 Provides:       tex(Junicode-ExpItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpItalic-lf-sc-ly1.tfm)
@@ -23313,9 +23490,7 @@ Provides:       tex(Junicode-ExpItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-ExpItalic-lf-ts1.vf)
 Provides:       tex(Junicode-ExpItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-ExpItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-ExpItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-ExpItalic-osf-ot1.vf)
 Provides:       tex(Junicode-ExpItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpItalic-osf-sc-ly1.tfm)
@@ -23340,9 +23515,7 @@ Provides:       tex(Junicode-ExpItalic-sup-t1.tfm)
 Provides:       tex(Junicode-ExpItalic-sup-t1.vf)
 Provides:       tex(Junicode-ExpItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-ExpItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-ExpItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-ExpItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-ExpItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpItalic-tlf-sc-ly1.tfm)
@@ -23361,9 +23534,7 @@ Provides:       tex(Junicode-ExpItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-ExpItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-ExpItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-ExpItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-ExpItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-ExpItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-ExpItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpItalic-tosf-sc-ly1.tfm)
@@ -23476,9 +23647,7 @@ Provides:       tex(Junicode-ExpMediumItalic-inf-t1.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-inf-t1.vf)
 Provides:       tex(Junicode-ExpMediumItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-ExpMediumItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-ExpMediumItalic-lf-ot1.vf)
 Provides:       tex(Junicode-ExpMediumItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-lf-sc-ly1.tfm)
@@ -23497,9 +23666,7 @@ Provides:       tex(Junicode-ExpMediumItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-lf-ts1.vf)
 Provides:       tex(Junicode-ExpMediumItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-ExpMediumItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-ExpMediumItalic-osf-ot1.vf)
 Provides:       tex(Junicode-ExpMediumItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-osf-sc-ly1.tfm)
@@ -23524,9 +23691,7 @@ Provides:       tex(Junicode-ExpMediumItalic-sup-t1.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-sup-t1.vf)
 Provides:       tex(Junicode-ExpMediumItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-ExpMediumItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-ExpMediumItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-ExpMediumItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-tlf-sc-ly1.tfm)
@@ -23545,9 +23710,7 @@ Provides:       tex(Junicode-ExpMediumItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-ExpMediumItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-ExpMediumItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-ExpMediumItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-ExpMediumItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpMediumItalic-tosf-sc-ly1.tfm)
@@ -23660,9 +23823,7 @@ Provides:       tex(Junicode-ExpSmBoldItalic-inf-t1.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-inf-t1.vf)
 Provides:       tex(Junicode-ExpSmBoldItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-ExpSmBoldItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-ExpSmBoldItalic-lf-ot1.vf)
 Provides:       tex(Junicode-ExpSmBoldItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-lf-sc-ly1.tfm)
@@ -23681,9 +23842,7 @@ Provides:       tex(Junicode-ExpSmBoldItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-lf-ts1.vf)
 Provides:       tex(Junicode-ExpSmBoldItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-ExpSmBoldItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-ExpSmBoldItalic-osf-ot1.vf)
 Provides:       tex(Junicode-ExpSmBoldItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-osf-sc-ly1.tfm)
@@ -23708,9 +23867,7 @@ Provides:       tex(Junicode-ExpSmBoldItalic-sup-t1.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-sup-t1.vf)
 Provides:       tex(Junicode-ExpSmBoldItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-ExpSmBoldItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-ExpSmBoldItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-ExpSmBoldItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-tlf-sc-ly1.tfm)
@@ -23729,9 +23886,7 @@ Provides:       tex(Junicode-ExpSmBoldItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-ExpSmBoldItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-ExpSmBoldItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-ExpSmBoldItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-ExpSmBoldItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-ExpSmBoldItalic-tosf-sc-ly1.tfm)
@@ -23756,9 +23911,7 @@ Provides:       tex(Junicode-Italic-inf-t1.tfm)
 Provides:       tex(Junicode-Italic-inf-t1.vf)
 Provides:       tex(Junicode-Italic-lf-lgr.tfm)
 Provides:       tex(Junicode-Italic-lf-ly1.tfm)
-Provides:       tex(Junicode-Italic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-Italic-lf-ot1.tfm)
-Provides:       tex(Junicode-Italic-lf-ot1.vf)
 Provides:       tex(Junicode-Italic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-Italic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-Italic-lf-sc-ly1.tfm)
@@ -23777,9 +23930,7 @@ Provides:       tex(Junicode-Italic-lf-ts1.tfm)
 Provides:       tex(Junicode-Italic-lf-ts1.vf)
 Provides:       tex(Junicode-Italic-osf-lgr.tfm)
 Provides:       tex(Junicode-Italic-osf-ly1.tfm)
-Provides:       tex(Junicode-Italic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-Italic-osf-ot1.tfm)
-Provides:       tex(Junicode-Italic-osf-ot1.vf)
 Provides:       tex(Junicode-Italic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-Italic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-Italic-osf-sc-ly1.tfm)
@@ -23804,9 +23955,7 @@ Provides:       tex(Junicode-Italic-sup-t1.tfm)
 Provides:       tex(Junicode-Italic-sup-t1.vf)
 Provides:       tex(Junicode-Italic-tlf-lgr.tfm)
 Provides:       tex(Junicode-Italic-tlf-ly1.tfm)
-Provides:       tex(Junicode-Italic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-Italic-tlf-ot1.tfm)
-Provides:       tex(Junicode-Italic-tlf-ot1.vf)
 Provides:       tex(Junicode-Italic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-Italic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-Italic-tlf-sc-ly1.tfm)
@@ -23825,9 +23974,7 @@ Provides:       tex(Junicode-Italic-tlf-ts1.tfm)
 Provides:       tex(Junicode-Italic-tlf-ts1.vf)
 Provides:       tex(Junicode-Italic-tosf-lgr.tfm)
 Provides:       tex(Junicode-Italic-tosf-ly1.tfm)
-Provides:       tex(Junicode-Italic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-Italic-tosf-ot1.tfm)
-Provides:       tex(Junicode-Italic-tosf-ot1.vf)
 Provides:       tex(Junicode-Italic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-Italic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-Italic-tosf-sc-ly1.tfm)
@@ -23940,9 +24087,7 @@ Provides:       tex(Junicode-LightItalic-inf-t1.tfm)
 Provides:       tex(Junicode-LightItalic-inf-t1.vf)
 Provides:       tex(Junicode-LightItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-LightItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-LightItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-LightItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-LightItalic-lf-ot1.vf)
 Provides:       tex(Junicode-LightItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-LightItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-LightItalic-lf-sc-ly1.tfm)
@@ -23961,9 +24106,7 @@ Provides:       tex(Junicode-LightItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-LightItalic-lf-ts1.vf)
 Provides:       tex(Junicode-LightItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-LightItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-LightItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-LightItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-LightItalic-osf-ot1.vf)
 Provides:       tex(Junicode-LightItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-LightItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-LightItalic-osf-sc-ly1.tfm)
@@ -23988,9 +24131,7 @@ Provides:       tex(Junicode-LightItalic-sup-t1.tfm)
 Provides:       tex(Junicode-LightItalic-sup-t1.vf)
 Provides:       tex(Junicode-LightItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-LightItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-LightItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-LightItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-LightItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-LightItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-LightItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-LightItalic-tlf-sc-ly1.tfm)
@@ -24009,9 +24150,7 @@ Provides:       tex(Junicode-LightItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-LightItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-LightItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-LightItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-LightItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-LightItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-LightItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-LightItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-LightItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-LightItalic-tosf-sc-ly1.tfm)
@@ -24124,9 +24263,7 @@ Provides:       tex(Junicode-MediumItalic-inf-t1.tfm)
 Provides:       tex(Junicode-MediumItalic-inf-t1.vf)
 Provides:       tex(Junicode-MediumItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-MediumItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-MediumItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-MediumItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-MediumItalic-lf-ot1.vf)
 Provides:       tex(Junicode-MediumItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-MediumItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-MediumItalic-lf-sc-ly1.tfm)
@@ -24145,9 +24282,7 @@ Provides:       tex(Junicode-MediumItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-MediumItalic-lf-ts1.vf)
 Provides:       tex(Junicode-MediumItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-MediumItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-MediumItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-MediumItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-MediumItalic-osf-ot1.vf)
 Provides:       tex(Junicode-MediumItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-MediumItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-MediumItalic-osf-sc-ly1.tfm)
@@ -24172,9 +24307,7 @@ Provides:       tex(Junicode-MediumItalic-sup-t1.tfm)
 Provides:       tex(Junicode-MediumItalic-sup-t1.vf)
 Provides:       tex(Junicode-MediumItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-MediumItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-MediumItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-MediumItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-MediumItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-MediumItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-MediumItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-MediumItalic-tlf-sc-ly1.tfm)
@@ -24193,9 +24326,7 @@ Provides:       tex(Junicode-MediumItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-MediumItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-MediumItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-MediumItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-MediumItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-MediumItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-MediumItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-MediumItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-MediumItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-MediumItalic-tosf-sc-ly1.tfm)
@@ -24396,9 +24527,7 @@ Provides:       tex(Junicode-SmBoldItalic-inf-t1.tfm)
 Provides:       tex(Junicode-SmBoldItalic-inf-t1.vf)
 Provides:       tex(Junicode-SmBoldItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-SmBoldItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-SmBoldItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-SmBoldItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-SmBoldItalic-lf-ot1.vf)
 Provides:       tex(Junicode-SmBoldItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmBoldItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmBoldItalic-lf-sc-ly1.tfm)
@@ -24417,9 +24546,7 @@ Provides:       tex(Junicode-SmBoldItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-SmBoldItalic-lf-ts1.vf)
 Provides:       tex(Junicode-SmBoldItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-SmBoldItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-SmBoldItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-SmBoldItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-SmBoldItalic-osf-ot1.vf)
 Provides:       tex(Junicode-SmBoldItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmBoldItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmBoldItalic-osf-sc-ly1.tfm)
@@ -24444,9 +24571,7 @@ Provides:       tex(Junicode-SmBoldItalic-sup-t1.tfm)
 Provides:       tex(Junicode-SmBoldItalic-sup-t1.vf)
 Provides:       tex(Junicode-SmBoldItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-SmBoldItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-SmBoldItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-SmBoldItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-SmBoldItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-SmBoldItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmBoldItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmBoldItalic-tlf-sc-ly1.tfm)
@@ -24465,9 +24590,7 @@ Provides:       tex(Junicode-SmBoldItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-SmBoldItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-SmBoldItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-SmBoldItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-SmBoldItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-SmBoldItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-SmBoldItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-SmBoldItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmBoldItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmBoldItalic-tosf-sc-ly1.tfm)
@@ -24580,9 +24703,7 @@ Provides:       tex(Junicode-SmCondItalic-inf-t1.tfm)
 Provides:       tex(Junicode-SmCondItalic-inf-t1.vf)
 Provides:       tex(Junicode-SmCondItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-SmCondItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-SmCondItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-SmCondItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-SmCondItalic-lf-ot1.vf)
 Provides:       tex(Junicode-SmCondItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmCondItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmCondItalic-lf-sc-ly1.tfm)
@@ -24601,9 +24722,7 @@ Provides:       tex(Junicode-SmCondItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-SmCondItalic-lf-ts1.vf)
 Provides:       tex(Junicode-SmCondItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-SmCondItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-SmCondItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-SmCondItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-SmCondItalic-osf-ot1.vf)
 Provides:       tex(Junicode-SmCondItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmCondItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmCondItalic-osf-sc-ly1.tfm)
@@ -24628,9 +24747,7 @@ Provides:       tex(Junicode-SmCondItalic-sup-t1.tfm)
 Provides:       tex(Junicode-SmCondItalic-sup-t1.vf)
 Provides:       tex(Junicode-SmCondItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-SmCondItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-SmCondItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-SmCondItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-SmCondItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-SmCondItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmCondItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmCondItalic-tlf-sc-ly1.tfm)
@@ -24649,9 +24766,7 @@ Provides:       tex(Junicode-SmCondItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-SmCondItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-SmCondItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-SmCondItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-SmCondItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-SmCondItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-SmCondItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-SmCondItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmCondItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmCondItalic-tosf-sc-ly1.tfm)
@@ -24764,9 +24879,7 @@ Provides:       tex(Junicode-SmCondLightItalic-inf-t1.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-inf-t1.vf)
 Provides:       tex(Junicode-SmCondLightItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-SmCondLightItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-SmCondLightItalic-lf-ot1.vf)
 Provides:       tex(Junicode-SmCondLightItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-lf-sc-ly1.tfm)
@@ -24785,9 +24898,7 @@ Provides:       tex(Junicode-SmCondLightItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-lf-ts1.vf)
 Provides:       tex(Junicode-SmCondLightItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-SmCondLightItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-SmCondLightItalic-osf-ot1.vf)
 Provides:       tex(Junicode-SmCondLightItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-osf-sc-ly1.tfm)
@@ -24812,9 +24923,7 @@ Provides:       tex(Junicode-SmCondLightItalic-sup-t1.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-sup-t1.vf)
 Provides:       tex(Junicode-SmCondLightItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-SmCondLightItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-SmCondLightItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-SmCondLightItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-tlf-sc-ly1.tfm)
@@ -24833,9 +24942,7 @@ Provides:       tex(Junicode-SmCondLightItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-SmCondLightItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-SmCondLightItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-SmCondLightItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-SmCondLightItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmCondLightItalic-tosf-sc-ly1.tfm)
@@ -24948,9 +25055,7 @@ Provides:       tex(Junicode-SmCondMediumItalic-inf-t1.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-inf-t1.vf)
 Provides:       tex(Junicode-SmCondMediumItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-SmCondMediumItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-SmCondMediumItalic-lf-ot1.vf)
 Provides:       tex(Junicode-SmCondMediumItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-lf-sc-ly1.tfm)
@@ -24969,9 +25074,7 @@ Provides:       tex(Junicode-SmCondMediumItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-lf-ts1.vf)
 Provides:       tex(Junicode-SmCondMediumItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-SmCondMediumItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-SmCondMediumItalic-osf-ot1.vf)
 Provides:       tex(Junicode-SmCondMediumItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-osf-sc-ly1.tfm)
@@ -24996,9 +25099,7 @@ Provides:       tex(Junicode-SmCondMediumItalic-sup-t1.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-sup-t1.vf)
 Provides:       tex(Junicode-SmCondMediumItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-SmCondMediumItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-SmCondMediumItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-SmCondMediumItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-tlf-sc-ly1.tfm)
@@ -25017,9 +25118,7 @@ Provides:       tex(Junicode-SmCondMediumItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-SmCondMediumItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-SmCondMediumItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-SmCondMediumItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-SmCondMediumItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmCondMediumItalic-tosf-sc-ly1.tfm)
@@ -25220,9 +25319,7 @@ Provides:       tex(Junicode-SmExpBoldItalic-inf-t1.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-inf-t1.vf)
 Provides:       tex(Junicode-SmExpBoldItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-SmExpBoldItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-SmExpBoldItalic-lf-ot1.vf)
 Provides:       tex(Junicode-SmExpBoldItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-lf-sc-ly1.tfm)
@@ -25241,9 +25338,7 @@ Provides:       tex(Junicode-SmExpBoldItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-lf-ts1.vf)
 Provides:       tex(Junicode-SmExpBoldItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-SmExpBoldItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-SmExpBoldItalic-osf-ot1.vf)
 Provides:       tex(Junicode-SmExpBoldItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-osf-sc-ly1.tfm)
@@ -25268,9 +25363,7 @@ Provides:       tex(Junicode-SmExpBoldItalic-sup-t1.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-sup-t1.vf)
 Provides:       tex(Junicode-SmExpBoldItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-SmExpBoldItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-SmExpBoldItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-SmExpBoldItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-tlf-sc-ly1.tfm)
@@ -25289,9 +25382,7 @@ Provides:       tex(Junicode-SmExpBoldItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-SmExpBoldItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-SmExpBoldItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-SmExpBoldItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-SmExpBoldItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpBoldItalic-tosf-sc-ly1.tfm)
@@ -25316,9 +25407,7 @@ Provides:       tex(Junicode-SmExpItalic-inf-t1.tfm)
 Provides:       tex(Junicode-SmExpItalic-inf-t1.vf)
 Provides:       tex(Junicode-SmExpItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-SmExpItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-SmExpItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-SmExpItalic-lf-ot1.vf)
 Provides:       tex(Junicode-SmExpItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpItalic-lf-sc-ly1.tfm)
@@ -25337,9 +25426,7 @@ Provides:       tex(Junicode-SmExpItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-SmExpItalic-lf-ts1.vf)
 Provides:       tex(Junicode-SmExpItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-SmExpItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-SmExpItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-SmExpItalic-osf-ot1.vf)
 Provides:       tex(Junicode-SmExpItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpItalic-osf-sc-ly1.tfm)
@@ -25364,9 +25451,7 @@ Provides:       tex(Junicode-SmExpItalic-sup-t1.tfm)
 Provides:       tex(Junicode-SmExpItalic-sup-t1.vf)
 Provides:       tex(Junicode-SmExpItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-SmExpItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-SmExpItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-SmExpItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-SmExpItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpItalic-tlf-sc-ly1.tfm)
@@ -25385,9 +25470,7 @@ Provides:       tex(Junicode-SmExpItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-SmExpItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-SmExpItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-SmExpItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-SmExpItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-SmExpItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-SmExpItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpItalic-tosf-sc-ly1.tfm)
@@ -25500,9 +25583,7 @@ Provides:       tex(Junicode-SmExpMediumItalic-inf-t1.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-inf-t1.vf)
 Provides:       tex(Junicode-SmExpMediumItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-SmExpMediumItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-SmExpMediumItalic-lf-ot1.vf)
 Provides:       tex(Junicode-SmExpMediumItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-lf-sc-ly1.tfm)
@@ -25521,9 +25602,7 @@ Provides:       tex(Junicode-SmExpMediumItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-lf-ts1.vf)
 Provides:       tex(Junicode-SmExpMediumItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-SmExpMediumItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-SmExpMediumItalic-osf-ot1.vf)
 Provides:       tex(Junicode-SmExpMediumItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-osf-sc-ly1.tfm)
@@ -25548,9 +25627,7 @@ Provides:       tex(Junicode-SmExpMediumItalic-sup-t1.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-sup-t1.vf)
 Provides:       tex(Junicode-SmExpMediumItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-SmExpMediumItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-SmExpMediumItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-SmExpMediumItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-tlf-sc-ly1.tfm)
@@ -25569,9 +25646,7 @@ Provides:       tex(Junicode-SmExpMediumItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-SmExpMediumItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-SmExpMediumItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-SmExpMediumItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-SmExpMediumItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpMediumItalic-tosf-sc-ly1.tfm)
@@ -25684,9 +25759,7 @@ Provides:       tex(Junicode-SmExpSmBoldItalic-inf-t1.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-inf-t1.vf)
 Provides:       tex(Junicode-SmExpSmBoldItalic-lf-lgr.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-lf-ly1.tfm)
-Provides:       tex(Junicode-SmExpSmBoldItalic-lf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-lf-ot1.tfm)
-Provides:       tex(Junicode-SmExpSmBoldItalic-lf-ot1.vf)
 Provides:       tex(Junicode-SmExpSmBoldItalic-lf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-lf-sc-ly1.tfm)
@@ -25705,9 +25778,7 @@ Provides:       tex(Junicode-SmExpSmBoldItalic-lf-ts1.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-lf-ts1.vf)
 Provides:       tex(Junicode-SmExpSmBoldItalic-osf-lgr.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-osf-ly1.tfm)
-Provides:       tex(Junicode-SmExpSmBoldItalic-osf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-osf-ot1.tfm)
-Provides:       tex(Junicode-SmExpSmBoldItalic-osf-ot1.vf)
 Provides:       tex(Junicode-SmExpSmBoldItalic-osf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-osf-sc-ly1.tfm)
@@ -25732,9 +25803,7 @@ Provides:       tex(Junicode-SmExpSmBoldItalic-sup-t1.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-sup-t1.vf)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tlf-lgr.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tlf-ly1.tfm)
-Provides:       tex(Junicode-SmExpSmBoldItalic-tlf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tlf-ot1.tfm)
-Provides:       tex(Junicode-SmExpSmBoldItalic-tlf-ot1.vf)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tlf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tlf-sc-ly1.tfm)
@@ -25753,9 +25822,7 @@ Provides:       tex(Junicode-SmExpSmBoldItalic-tlf-ts1.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tlf-ts1.vf)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tosf-lgr.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tosf-ly1.tfm)
-Provides:       tex(Junicode-SmExpSmBoldItalic-tosf-ot1--base.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tosf-ot1.tfm)
-Provides:       tex(Junicode-SmExpSmBoldItalic-tosf-ot1.vf)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tosf-sc-lgr.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Junicode-SmExpSmBoldItalic-tosf-sc-ly1.tfm)
@@ -25801,76 +25868,76 @@ Provides:       tex(TS1Junicode-LF.fd)
 Provides:       tex(TS1Junicode-OsF.fd)
 Provides:       tex(TS1Junicode-TLF.fd)
 Provides:       tex(TS1Junicode-TOsF.fd)
+Provides:       tex(jncd_2eszu7.enc)
 Provides:       tex(jncd_2hbdle.enc)
-Provides:       tex(jncd_2jqefy.enc)
+Provides:       tex(jncd_2j6faw.enc)
+Provides:       tex(jncd_2qiiap.enc)
 Provides:       tex(jncd_3erjze.enc)
 Provides:       tex(jncd_4er2ou.enc)
 Provides:       tex(jncd_4nafnj.enc)
+Provides:       tex(jncd_4vrfuq.enc)
+Provides:       tex(jncd_4vsefk.enc)
 Provides:       tex(jncd_535mcm.enc)
 Provides:       tex(jncd_5eobdx.enc)
+Provides:       tex(jncd_5g5vl7.enc)
 Provides:       tex(jncd_5nplrd.enc)
-Provides:       tex(jncd_6kaogf.enc)
 Provides:       tex(jncd_6kirfz.enc)
 Provides:       tex(jncd_6mzsut.enc)
 Provides:       tex(jncd_7lzoym.enc)
 Provides:       tex(jncd_7sifzs.enc)
 Provides:       tex(jncd_7wd7je.enc)
 Provides:       tex(jncd_alnhow.enc)
-Provides:       tex(jncd_ax2xt6.enc)
+Provides:       tex(jncd_atb2gm.enc)
 Provides:       tex(jncd_c4gqgp.enc)
 Provides:       tex(jncd_d7xkyr.enc)
+Provides:       tex(jncd_dbackh.enc)
+Provides:       tex(jncd_dw56zz.enc)
+Provides:       tex(jncd_dxxiiy.enc)
+Provides:       tex(jncd_dydq3d.enc)
 Provides:       tex(jncd_e2angy.enc)
 Provides:       tex(jncd_eb524t.enc)
 Provides:       tex(jncd_fhg7wq.enc)
-Provides:       tex(jncd_fry5nk.enc)
-Provides:       tex(jncd_gk2rxd.enc)
+Provides:       tex(jncd_fjcuys.enc)
 Provides:       tex(jncd_gktvs3.enc)
-Provides:       tex(jncd_i2fv4s.enc)
-Provides:       tex(jncd_ia5u2z.enc)
+Provides:       tex(jncd_hwfs67.enc)
 Provides:       tex(jncd_ifhpre.enc)
 Provides:       tex(jncd_ilb24p.enc)
-Provides:       tex(jncd_jb7ci7.enc)
 Provides:       tex(jncd_jp6lmu.enc)
-Provides:       tex(jncd_jxijto.enc)
 Provides:       tex(jncd_la6rhc.enc)
 Provides:       tex(jncd_ldcvmr.enc)
+Provides:       tex(jncd_m67s2q.enc)
 Provides:       tex(jncd_ncilqg.enc)
 Provides:       tex(jncd_nghkwv.enc)
 Provides:       tex(jncd_nqur7h.enc)
 Provides:       tex(jncd_p7ome7.enc)
 Provides:       tex(jncd_pm4uzf.enc)
 Provides:       tex(jncd_qigq3r.enc)
-Provides:       tex(jncd_qkrvq7.enc)
+Provides:       tex(jncd_qrjy3o.enc)
 Provides:       tex(jncd_qs7fbx.enc)
-Provides:       tex(jncd_r2ngzv.enc)
 Provides:       tex(jncd_r7dcdh.enc)
 Provides:       tex(jncd_rhm4ae.enc)
-Provides:       tex(jncd_rsbn53.enc)
 Provides:       tex(jncd_rvrggq.enc)
 Provides:       tex(jncd_rx5biu.enc)
-Provides:       tex(jncd_s5wjrz.enc)
+Provides:       tex(jncd_sa5d62.enc)
 Provides:       tex(jncd_sct77m.enc)
 Provides:       tex(jncd_soeko7.enc)
 Provides:       tex(jncd_t7d4ag.enc)
-Provides:       tex(jncd_u2clib.enc)
-Provides:       tex(jncd_uqbu3a.enc)
+Provides:       tex(jncd_tbdiwj.enc)
+Provides:       tex(jncd_tugio2.enc)
+Provides:       tex(jncd_u6d4hm.enc)
 Provides:       tex(jncd_uqxpwn.enc)
 Provides:       tex(jncd_vai6ks.enc)
-Provides:       tex(jncd_vp376k.enc)
 Provides:       tex(jncd_vv455d.enc)
-Provides:       tex(jncd_wfh7iu.enc)
 Provides:       tex(jncd_wkwe3q.enc)
+Provides:       tex(jncd_wusj3d.enc)
 Provides:       tex(jncd_wwi77p.enc)
 Provides:       tex(jncd_wydlop.enc)
 Provides:       tex(jncd_y2gbot.enc)
 Provides:       tex(jncd_y74d4a.enc)
-Provides:       tex(jncd_yodvje.enc)
 Provides:       tex(jncd_yql4fv.enc)
 Provides:       tex(jncd_yur7kb.enc)
-Provides:       tex(jncd_yzxamt.enc)
 Provides:       tex(jncd_z4lkq6.enc)
 Provides:       tex(jncd_zbxsaf.enc)
-Provides:       tex(jncd_zdphhk.enc)
 Provides:       tex(junicode.sty)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
@@ -25880,9 +25947,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source115:      junicode.tar.xz
-Source116:      junicode.doc.tar.xz
+# from 20250308
+Source119:      junicode.tar.xz
+Source120:      junicode.doc.tar.xz
 
 %description -n texlive-junicode
 Junicode is a TrueType/OpenType font family with many features
@@ -25892,7 +25959,7 @@ centuries. It works well with Lua(La)TeX or Xe(La)TeX, but the
 basic textual features are also available with (pdf)LaTeX.
 
 %package -n texlive-junicode-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.206svn69355
+Version:        %{texlive_version}.%{texlive_noarch}.2.209svn71871
 Release:        0
 Summary:        Documentation for texlive-junicode
 License:        OFL-1.1
@@ -25904,7 +25971,7 @@ Supplements:    (texlive-junicode and texlive-alldocumentation)
 This package includes the documentation for texlive-junicode
 
 %package -n texlive-junicode-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.206svn69355
+Version:        %{texlive_version}.%{texlive_noarch}.2.209svn71871
 Release:        0
 Summary:        Severed fonts for texlive-junicode
 License:        OFL-1.1
@@ -25960,78 +26027,79 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/junicode/junicode-samples.pdf
 %{_texmfdistdir}/doc/fonts/junicode/junicode-samples.tex
 %{_texmfdistdir}/doc/fonts/junicode/tag_key_ins.tex
+%{_texmfdistdir}/doc/fonts/junicode/upperpua.tex
 
 %files -n texlive-junicode
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_2eszu7.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_2hbdle.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_2jqefy.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_2j6faw.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_2qiiap.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_3erjze.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_4er2ou.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_4nafnj.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_4vrfuq.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_4vsefk.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_535mcm.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_5eobdx.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_5g5vl7.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_5nplrd.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_6kaogf.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_6kirfz.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_6mzsut.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_7lzoym.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_7sifzs.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_7wd7je.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_alnhow.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ax2xt6.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_atb2gm.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_c4gqgp.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_d7xkyr.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_dbackh.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_dw56zz.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_dxxiiy.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_dydq3d.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_e2angy.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_eb524t.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_fhg7wq.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_fry5nk.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_gk2rxd.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_fjcuys.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_gktvs3.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_i2fv4s.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ia5u2z.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_hwfs67.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ifhpre.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ilb24p.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_jb7ci7.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_jp6lmu.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_jxijto.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_la6rhc.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ldcvmr.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_m67s2q.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ncilqg.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_nghkwv.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_nqur7h.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_p7ome7.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_pm4uzf.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_qigq3r.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_qkrvq7.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_qrjy3o.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_qs7fbx.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_r2ngzv.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_r7dcdh.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_rhm4ae.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_rsbn53.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_rvrggq.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_rx5biu.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_s5wjrz.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_sa5d62.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_sct77m.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_soeko7.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_t7d4ag.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_u2clib.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_uqbu3a.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_tbdiwj.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_tugio2.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_u6d4hm.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_uqxpwn.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_vai6ks.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_vp376k.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_vv455d.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_wfh7iu.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_wkwe3q.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_wusj3d.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_wwi77p.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_wydlop.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_y2gbot.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_y74d4a.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_yodvje.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_yql4fv.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_yur7kb.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_yzxamt.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_z4lkq6.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_zbxsaf.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_zdphhk.enc
 %{_texmfdistdir}/fonts/map/dvips/junicode/Junicode.map
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/junicode/Junicode-Bold.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/junicode/Junicode-BoldItalic.otf
@@ -26144,7 +26212,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-lf-sc-ly1--base.tfm
@@ -26159,7 +26226,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-osf-sc-ly1--base.tfm
@@ -26179,7 +26245,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tlf-sc-ly1--base.tfm
@@ -26194,7 +26259,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-BoldItalic-tosf-sc-ly1--base.tfm
@@ -26280,7 +26344,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-lf-sc-ly1--base.tfm
@@ -26295,7 +26358,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-osf-sc-ly1--base.tfm
@@ -26315,7 +26377,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tlf-sc-ly1--base.tfm
@@ -26330,7 +26391,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondItalic-tosf-sc-ly1--base.tfm
@@ -26416,7 +26476,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-lf-sc-ly1--base.tfm
@@ -26431,7 +26490,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-osf-sc-ly1--base.tfm
@@ -26451,7 +26509,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tlf-sc-ly1--base.tfm
@@ -26466,7 +26523,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondLightItalic-tosf-sc-ly1--base.tfm
@@ -26552,7 +26608,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-lf-sc-ly1--base.tfm
@@ -26567,7 +26622,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-osf-sc-ly1--base.tfm
@@ -26587,7 +26641,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tlf-sc-ly1--base.tfm
@@ -26602,7 +26655,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-CondMediumItalic-tosf-sc-ly1--base.tfm
@@ -26754,7 +26806,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-lf-sc-ly1--base.tfm
@@ -26769,7 +26820,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-osf-sc-ly1--base.tfm
@@ -26789,7 +26839,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tlf-sc-ly1--base.tfm
@@ -26804,7 +26853,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpBoldItalic-tosf-sc-ly1--base.tfm
@@ -26824,7 +26872,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-lf-sc-ly1--base.tfm
@@ -26839,7 +26886,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-osf-sc-ly1--base.tfm
@@ -26859,7 +26905,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tlf-sc-ly1--base.tfm
@@ -26874,7 +26919,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpItalic-tosf-sc-ly1--base.tfm
@@ -26960,7 +27004,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-lf-sc-ly1--base.tfm
@@ -26975,7 +27018,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-osf-sc-ly1--base.tfm
@@ -26995,7 +27037,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tlf-sc-ly1--base.tfm
@@ -27010,7 +27051,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpMediumItalic-tosf-sc-ly1--base.tfm
@@ -27096,7 +27136,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-lf-sc-ly1--base.tfm
@@ -27111,7 +27150,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-osf-sc-ly1--base.tfm
@@ -27131,7 +27169,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tlf-sc-ly1--base.tfm
@@ -27146,7 +27183,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-ExpSmBoldItalic-tosf-sc-ly1--base.tfm
@@ -27166,7 +27202,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-lf-sc-ly1--base.tfm
@@ -27181,7 +27216,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-osf-sc-ly1--base.tfm
@@ -27201,7 +27235,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tlf-sc-ly1--base.tfm
@@ -27216,7 +27249,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-Italic-tosf-sc-ly1--base.tfm
@@ -27302,7 +27334,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-lf-sc-ly1--base.tfm
@@ -27317,7 +27348,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-osf-sc-ly1--base.tfm
@@ -27337,7 +27367,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tlf-sc-ly1--base.tfm
@@ -27352,7 +27381,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-LightItalic-tosf-sc-ly1--base.tfm
@@ -27438,7 +27466,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-lf-sc-ly1--base.tfm
@@ -27453,7 +27480,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-osf-sc-ly1--base.tfm
@@ -27473,7 +27499,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tlf-sc-ly1--base.tfm
@@ -27488,7 +27513,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-MediumItalic-tosf-sc-ly1--base.tfm
@@ -27640,7 +27664,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-lf-sc-ly1--base.tfm
@@ -27655,7 +27678,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-osf-sc-ly1--base.tfm
@@ -27675,7 +27697,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tlf-sc-ly1--base.tfm
@@ -27690,7 +27711,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmBoldItalic-tosf-sc-ly1--base.tfm
@@ -27776,7 +27796,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-lf-sc-ly1--base.tfm
@@ -27791,7 +27810,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-osf-sc-ly1--base.tfm
@@ -27811,7 +27829,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tlf-sc-ly1--base.tfm
@@ -27826,7 +27843,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondItalic-tosf-sc-ly1--base.tfm
@@ -27912,7 +27928,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-lf-sc-ly1--base.tfm
@@ -27927,7 +27942,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-osf-sc-ly1--base.tfm
@@ -27947,7 +27961,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tlf-sc-ly1--base.tfm
@@ -27962,7 +27975,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondLightItalic-tosf-sc-ly1--base.tfm
@@ -28048,7 +28060,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-lf-sc-ly1--base.tfm
@@ -28063,7 +28074,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-osf-sc-ly1--base.tfm
@@ -28083,7 +28093,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tlf-sc-ly1--base.tfm
@@ -28098,7 +28107,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmCondMediumItalic-tosf-sc-ly1--base.tfm
@@ -28250,7 +28258,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-lf-sc-ly1--base.tfm
@@ -28265,7 +28272,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-osf-sc-ly1--base.tfm
@@ -28285,7 +28291,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tlf-sc-ly1--base.tfm
@@ -28300,7 +28305,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpBoldItalic-tosf-sc-ly1--base.tfm
@@ -28320,7 +28324,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-lf-sc-ly1--base.tfm
@@ -28335,7 +28338,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-osf-sc-ly1--base.tfm
@@ -28355,7 +28357,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tlf-sc-ly1--base.tfm
@@ -28370,7 +28371,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpItalic-tosf-sc-ly1--base.tfm
@@ -28456,7 +28456,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-lf-sc-ly1--base.tfm
@@ -28471,7 +28470,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-osf-sc-ly1--base.tfm
@@ -28491,7 +28489,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tlf-sc-ly1--base.tfm
@@ -28506,7 +28503,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpMediumItalic-tosf-sc-ly1--base.tfm
@@ -28592,7 +28588,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-lf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-lf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-lf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-lf-sc-ly1--base.tfm
@@ -28607,7 +28602,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-osf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-osf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-osf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-osf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-osf-sc-ly1--base.tfm
@@ -28627,7 +28621,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tlf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tlf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tlf-sc-ly1--base.tfm
@@ -28642,7 +28635,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tosf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tosf-ot1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tosf-sc-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tosf-sc-ly1--base.tfm
@@ -28655,44 +28647,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tosf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/junicode/Junicode-SmExpSmBoldItalic-tosf-ts1.tfm
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-Bold.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-BoldItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-Cond.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-CondItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-CondLight.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-CondLightItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-CondMedium.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-CondMediumItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-Exp.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-ExpBold.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-ExpBoldItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-ExpItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-ExpMedium.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-ExpMediumItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-ExpSmBold.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-ExpSmBoldItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-Italic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-Light.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-LightItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-Medium.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-MediumItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-Regular.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmBold.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmBoldItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmCond.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmCondItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmCondLight.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmCondLightItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmCondMedium.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmCondMediumItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmExp.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmExpBold.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmExpBoldItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmExpItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmExpMedium.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmExpMediumItalic.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmExpSmBold.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/junicode/Junicode-SmExpSmBoldItalic.ttf
 %verify(link) %{_texmfdistdir}/fonts/type1/public/junicode/Junicode-Bold.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/junicode/Junicode-BoldItalic.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/junicode/Junicode-Cond.pfb
@@ -28754,26 +28708,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Bold-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Bold-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-BoldItalic-tosf-sc-t1.vf
@@ -28802,26 +28752,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Cond-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Cond-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondItalic-tosf-sc-t1.vf
@@ -28850,26 +28796,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLight-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLight-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondLightItalic-tosf-sc-t1.vf
@@ -28898,26 +28840,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMedium-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMedium-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-CondMediumItalic-tosf-sc-t1.vf
@@ -28968,52 +28906,44 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBold-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBold-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-tosf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpBoldItalic-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpItalic-tosf-sc-t1.vf
@@ -29042,26 +28972,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMedium-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMedium-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpMediumItalic-tosf-sc-t1.vf
@@ -29090,52 +29016,44 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBold-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBold-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-tosf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-ExpSmBoldItalic-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Italic-tosf-sc-t1.vf
@@ -29164,26 +29082,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Light-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Light-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-LightItalic-tosf-sc-t1.vf
@@ -29212,26 +29126,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Medium-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-Medium-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-MediumItalic-tosf-sc-t1.vf
@@ -29282,26 +29192,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBold-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBold-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmBoldItalic-tosf-sc-t1.vf
@@ -29330,26 +29236,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCond-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCond-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondItalic-tosf-sc-t1.vf
@@ -29378,26 +29280,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLight-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLight-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondLightItalic-tosf-sc-t1.vf
@@ -29426,26 +29324,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMedium-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMedium-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmCondMediumItalic-tosf-sc-t1.vf
@@ -29496,52 +29390,44 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBold-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBold-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-tosf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpBoldItalic-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpItalic-tosf-sc-t1.vf
@@ -29570,26 +29456,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMedium-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMedium-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpMediumItalic-tosf-sc-t1.vf
@@ -29618,26 +29500,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBold-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBold-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-inf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-lf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-osf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-osf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-tosf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/junicode/Junicode-SmExpSmBoldItalic-tosf-sc-t1.vf
@@ -29719,44 +29597,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-junicode/Junicode-SmExpMediumItalic.otf
 %{_datadir}/fonts/texlive-junicode/Junicode-SmExpSmBold.otf
 %{_datadir}/fonts/texlive-junicode/Junicode-SmExpSmBoldItalic.otf
-%{_datadir}/fonts/texlive-junicode/Junicode-Bold.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-BoldItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-Cond.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-CondItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-CondLight.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-CondLightItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-CondMedium.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-CondMediumItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-Exp.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-ExpBold.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-ExpBoldItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-ExpItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-ExpMedium.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-ExpMediumItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-ExpSmBold.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-ExpSmBoldItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-Italic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-Light.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-LightItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-Medium.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-MediumItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-Regular.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmBold.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmBoldItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmCond.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmCondItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmCondLight.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmCondLightItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmCondMedium.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmCondMediumItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmExp.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmExpBold.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmExpBoldItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmExpItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmExpMedium.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmExpMediumItalic.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmExpSmBold.ttf
-%{_datadir}/fonts/texlive-junicode/Junicode-SmExpSmBoldItalic.ttf
 %{_datadir}/fonts/texlive-junicode/Junicode-Bold.pfb
 %{_datadir}/fonts/texlive-junicode/Junicode-BoldItalic.pfb
 %{_datadir}/fonts/texlive-junicode/Junicode-Cond.pfb
@@ -29797,7 +29637,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-junicode/Junicode-SmExpSmBoldItalic.pfb
 
 %package -n texlive-junicodevf
-Version:        %{texlive_version}.%{texlive_noarch}.2.206svn69374
+Version:        %{texlive_version}.%{texlive_noarch}.2.209svn71920
 Release:        0
 License:        OFL-1.1
 Summary:        A TrueType variable font family for mediaevalists
@@ -29830,9 +29670,9 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source117:      junicodevf.tar.xz
-Source118:      junicodevf.doc.tar.xz
+# from 20250308
+Source121:      junicodevf.tar.xz
+Source122:      junicodevf.doc.tar.xz
 
 %description -n texlive-junicodevf
 This package supports the Junicode variable fonts for LuaLaTeX.
@@ -29844,7 +29684,7 @@ characters, but it also provides many OpenType features that
 allow users to access MUFI characters in accessible ways.
 
 %package -n texlive-junicodevf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.206svn69374
+Version:        %{texlive_version}.%{texlive_noarch}.2.209svn71920
 Release:        0
 Summary:        Documentation for texlive-junicodevf
 License:        OFL-1.1
@@ -29856,7 +29696,7 @@ Supplements:    (texlive-junicodevf and texlive-alldocumentation)
 This package includes the documentation for texlive-junicodevf
 
 %package -n texlive-junicodevf-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.206svn69374
+Version:        %{texlive_version}.%{texlive_noarch}.2.209svn71920
 Release:        0
 Summary:        Severed fonts for texlive-junicodevf
 License:        OFL-1.1
@@ -29908,6 +29748,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/junicodevf/junicodevf-samples.pdf
 %{_texmfdistdir}/doc/fonts/junicodevf/junicodevf-samples.tex
 %{_texmfdistdir}/doc/fonts/junicodevf/tag_key_ins.tex
+%{_texmfdistdir}/doc/fonts/junicodevf/upperpua.tex
 
 %files -n texlive-junicodevf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/junicodevf/JunicodeVF-Italic.ttf
@@ -29925,7 +29766,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-junicodevf/JunicodeVF-Roman.ttf
 
 %package -n texlive-jupynotex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn56715
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn72373
 Release:        0
 License:        Apache-1.0
 Summary:        Include whole or partial Jupyter notebooks in LaTeX documents
@@ -29953,11 +29794,12 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-jupynotex-doc >= %{texlive_version}
 Provides:       tex(jupynotex.sty)
+Requires:       tex(pgfopts.sty)
 Requires:       tex(tcolorbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source119:      jupynotex.tar.xz
-Source120:      jupynotex.doc.tar.xz
+# from 20250308
+Source123:      jupynotex.tar.xz
+Source124:      jupynotex.doc.tar.xz
 
 %description -n texlive-jupynotex
 This package provides a python3 script and a LaTeX .sty file
@@ -29967,7 +29809,7 @@ will convert the Jupyter Notebook format to proper LaTeX so it
 gets included seamlessly, supporting text, LaTeX, images, etc.
 
 %package -n texlive-jupynotex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn56715
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn72373
 Release:        0
 Summary:        Documentation for texlive-jupynotex
 License:        Apache-1.0
@@ -29998,13 +29840,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-jupynotex-doc
 %{_texmfdistdir}/doc/latex/jupynotex/LICENSE
 %{_texmfdistdir}/doc/latex/jupynotex/README.md
-%{_texmfdistdir}/doc/latex/jupynotex/example/build
-%{_texmfdistdir}/doc/latex/jupynotex/example/example.tex
-%{_texmfdistdir}/doc/latex/jupynotex/example/notebook.ipynb
-%{_texmfdistdir}/doc/latex/jupynotex/tests/run
-%{_texmfdistdir}/doc/latex/jupynotex/tests/test_cellparser.py
-%{_texmfdistdir}/doc/latex/jupynotex/tests/test_main.py
-%{_texmfdistdir}/doc/latex/jupynotex/tests/test_notebook.py
 
 %files -n texlive-jupynotex
 %{_texmfdistdir}/tex/latex/jupynotex/jupynotex.py
@@ -30042,9 +29877,9 @@ Provides:       tex(alphanum.sty)
 Provides:       tex(jura.cls)
 Requires:       tex(report.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source121:      jura.tar.xz
-Source122:      jura.doc.tar.xz
+# from 20250308
+Source125:      jura.tar.xz
+Source126:      jura.doc.tar.xz
 
 %description -n texlive-jura
 Implements the standard layout for German term papers in law
@@ -30123,9 +29958,9 @@ Suggests:       texlive-juraabbrev-doc >= %{texlive_version}
 Provides:       tex(juraabbrev.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source123:      juraabbrev.tar.xz
-Source124:      juraabbrev.doc.tar.xz
+# from 20250308
+Source127:      juraabbrev.tar.xz
+Source128:      juraabbrev.doc.tar.xz
 
 %description -n texlive-juraabbrev
 This package should be helpful for people working on (German)
@@ -30222,9 +30057,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source125:      jurabib.tar.xz
-Source126:      jurabib.doc.tar.xz
+# from 20250308
+Source129:      jurabib.tar.xz
+Source130:      jurabib.doc.tar.xz
 
 %description -n texlive-jurabib
 This package enables automated citation with BibTeX for legal
@@ -30362,9 +30197,9 @@ Requires:       tex(remreset.sty)
 Requires:       tex(scrartcl.cls)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source127:      juramisc.tar.xz
-Source128:      juramisc.doc.tar.xz
+# from 20250308
+Source131:      juramisc.tar.xz
+Source132:      juramisc.doc.tar.xz
 
 %description -n texlive-juramisc
 A collection of classes for typesetting court sentences, legal
@@ -30453,9 +30288,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source129:      jurarsp.tar.xz
-Source130:      jurarsp.doc.tar.xz
+# from 20250308
+Source133:      jurarsp.tar.xz
+Source134:      jurarsp.doc.tar.xz
 
 %description -n texlive-jurarsp
 This package should be helpful for people working on (German)
@@ -30534,9 +30369,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-jvlisting-doc >= %{texlive_version}
 Provides:       tex(jvlisting.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source131:      jvlisting.tar.xz
-Source132:      jvlisting.doc.tar.xz
+# from 20250308
+Source135:      jvlisting.tar.xz
+Source136:      jvlisting.doc.tar.xz
 
 %description -n texlive-jvlisting
 This package provides a LaTeX environment listing, an
@@ -30588,7 +30423,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jvlisting/jvlisting.sty
 
 %package -n texlive-jwjournal
-Version:        %{texlive_version}.%{texlive_noarch}.svn69162
+Version:        %{texlive_version}.%{texlive_noarch}.svn72788
 Release:        0
 License:        LPPL-1.0
 Summary:        A personal class for writing journals
@@ -30623,16 +30458,16 @@ Requires:       tex(enumitem.sty)
 Requires:       tex(needspace.sty)
 Requires:       tex(tcolorbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source133:      jwjournal.tar.xz
-Source134:      jwjournal.doc.tar.xz
+# from 20250308
+Source137:      jwjournal.tar.xz
+Source138:      jwjournal.doc.tar.xz
 
 %description -n texlive-jwjournal
 This LaTeX document class enables the user to turn simple pure
 text entries into a colorful and nicely formatted journal.
 
 %package -n texlive-jwjournal-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn69162
+Version:        %{texlive_version}.%{texlive_noarch}.svn72788
 Release:        0
 Summary:        Documentation for texlive-jwjournal
 License:        LPPL-1.0
@@ -30666,6 +30501,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/jwjournal/README.md
 %{_texmfdistdir}/doc/latex/jwjournal/jwjournal-demo-cn.pdf
 %{_texmfdistdir}/doc/latex/jwjournal/jwjournal-demo-cn.tex
+%{_texmfdistdir}/doc/latex/jwjournal/jwjournal-demo-de.pdf
+%{_texmfdistdir}/doc/latex/jwjournal/jwjournal-demo-de.tex
 %{_texmfdistdir}/doc/latex/jwjournal/jwjournal-demo-en.pdf
 %{_texmfdistdir}/doc/latex/jwjournal/jwjournal-demo-en.tex
 %{_texmfdistdir}/doc/latex/jwjournal/jwjournal-demo-fr.pdf
@@ -30706,9 +30543,9 @@ Provides:       tex(kalendarium.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source135:      kalendarium.tar.xz
-Source136:      kalendarium.doc.tar.xz
+# from 20250308
+Source139:      kalendarium.tar.xz
+Source140:      kalendarium.doc.tar.xz
 
 %description -n texlive-kalendarium
 kalendarium is a LaTeX3 package that provides several macros
@@ -30785,9 +30622,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kanaparser-doc >= %{texlive_version}
 Provides:       tex(kanaparser.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source137:      kanaparser.tar.xz
-Source138:      kanaparser.doc.tar.xz
+# from 20250308
+Source141:      kanaparser.tar.xz
+Source142:      kanaparser.doc.tar.xz
 
 %description -n texlive-kanaparser
 The package provides a kana parser for LuaTeX. It is a set of 4
@@ -30872,9 +30709,9 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source139:      kanbun.tar.xz
-Source140:      kanbun.doc.tar.xz
+# from 20250308
+Source143:      kanbun.tar.xz
+Source144:      kanbun.doc.tar.xz
 
 %description -n texlive-kanbun
 This package allows users to manually input macros for elements
@@ -30957,9 +30794,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kantlipsum-doc >= %{texlive_version}
 Provides:       tex(kantlipsum.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source141:      kantlipsum.tar.xz
-Source142:      kantlipsum.doc.tar.xz
+# from 20250308
+Source145:      kantlipsum.tar.xz
+Source146:      kantlipsum.doc.tar.xz
 
 %description -n texlive-kantlipsum
 The package spits out sentences in Kantian style; the text is
@@ -31033,9 +30870,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-karnaugh-doc >= %{texlive_version}
 Provides:       tex(kvmacros.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source143:      karnaugh.tar.xz
-Source144:      karnaugh.doc.tar.xz
+# from 20250308
+Source147:      karnaugh.tar.xz
+Source148:      karnaugh.doc.tar.xz
 
 %description -n texlive-karnaugh
 The package provides macros for typesetting Karnaugh-Maps and
@@ -31115,9 +30952,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source145:      karnaugh-map.tar.xz
-Source146:      karnaugh-map.doc.tar.xz
+# from 20250308
+Source149:      karnaugh-map.tar.xz
+Source150:      karnaugh-map.doc.tar.xz
 
 %description -n texlive-karnaugh-map
 This package draws karnaugh maps with 2, 3, 4, 5, and 6
@@ -31197,9 +31034,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source147:      karnaughmap.tar.xz
-Source148:      karnaughmap.doc.tar.xz
+# from 20250308
+Source151:      karnaughmap.tar.xz
+Source152:      karnaughmap.doc.tar.xz
 
 %description -n texlive-karnaughmap
 This package provides an easy to use interface to typeset
@@ -31273,9 +31110,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kastrup-doc >= %{texlive_version}
 Provides:       tex(binhex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source149:      kastrup.tar.xz
-Source150:      kastrup.doc.tar.xz
+# from 20250308
+Source153:      kastrup.tar.xz
+Source154:      kastrup.doc.tar.xz
 
 %description -n texlive-kastrup
 Provides expandable macros for both fixed-width and
@@ -31317,7 +31154,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/kastrup/binhex.tex
 
 %package -n texlive-kaytannollista-latexia
-Version:        %{texlive_version}.%{texlive_noarch}.2024.2svn69843
+Version:        %{texlive_version}.%{texlive_noarch}.2025svn73292
 Release:        0
 License:        LPPL-1.0
 Summary:        Practical manual for LaTeX (Finnish)
@@ -31344,8 +31181,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source151:      kaytannollista-latexia.doc.tar.xz
+# from 20250308
+Source155:      kaytannollista-latexia.doc.tar.xz
 
 %description -n texlive-kaytannollista-latexia
 "Kaytannollista Latexia" is a practical manual for LaTeX
@@ -31418,9 +31255,9 @@ Provides:       tex(kblocks.sty)
 Requires:       tex(circuitikz.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source152:      kblocks.tar.xz
-Source153:      kblocks.doc.tar.xz
+# from 20250308
+Source156:      kblocks.tar.xz
+Source157:      kblocks.doc.tar.xz
 
 %description -n texlive-kblocks
 Kblocks defines a number of commands to make drawing control
@@ -31508,9 +31345,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source154:      kdgdocs.tar.xz
-Source155:      kdgdocs.doc.tar.xz
+# from 20250308
+Source158:      kdgdocs.tar.xz
+Source159:      kdgdocs.doc.tar.xz
 
 %description -n texlive-kdgdocs
 The bundle provides two classes for usage by KdG professors and
@@ -31566,7 +31403,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/kdgdocs/kdgmasterthesis.cls
 
 %package -n texlive-kdpcover
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.1svn65150
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.1svn74392
 Release:        0
 License:        LPPL-1.0
 Summary:        Covers for books published by Kindle Direct Publishing
@@ -31574,26 +31411,24 @@ Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires:       texlive-anyfontsize >= %{texlive_version}
 #!BuildIgnore: texlive-anyfontsize
+Requires:       texlive-etoolbox >= %{texlive_version}
+#!BuildIgnore: texlive-etoolbox
 Requires:       texlive-geometry >= %{texlive_version}
 #!BuildIgnore: texlive-geometry
-Requires:       texlive-graphics >= %{texlive_version}
-#!BuildIgnore: texlive-graphics
+Requires:       texlive-iexec >= %{texlive_version}
+#!BuildIgnore: texlive-iexec
 Requires:       texlive-microtype >= %{texlive_version}
 #!BuildIgnore: texlive-microtype
 Requires:       texlive-pgf >= %{texlive_version}
 #!BuildIgnore: texlive-pgf
+Requires:       texlive-pgfopts >= %{texlive_version}
+#!BuildIgnore: texlive-pgfopts
 Requires:       texlive-setspace >= %{texlive_version}
 #!BuildIgnore: texlive-setspace
 Requires:       texlive-textpos >= %{texlive_version}
 #!BuildIgnore: texlive-textpos
-Requires:       texlive-tools >= %{texlive_version}
-#!BuildIgnore: texlive-tools
 Requires:       texlive-xcolor >= %{texlive_version}
 #!BuildIgnore: texlive-xcolor
-Requires:       texlive-xifthen >= %{texlive_version}
-#!BuildIgnore: texlive-xifthen
-Requires:       texlive-xkeyval >= %{texlive_version}
-#!BuildIgnore: texlive-xkeyval
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -31623,15 +31458,15 @@ Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(iexec.sty)
 Requires:       tex(microtype.sty)
+Requires:       tex(pgfopts.sty)
 Requires:       tex(setspace.sty)
 Requires:       tex(textpos.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
-Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source156:      kdpcover.tar.xz
-Source157:      kdpcover.doc.tar.xz
+# from 20250308
+Source160:      kdpcover.tar.xz
+Source161:      kdpcover.doc.tar.xz
 
 %description -n texlive-kdpcover
 The problem this class solves is the necessity to change the
@@ -31643,7 +31478,7 @@ installed. Also, you must run pdflatex with the --shell-escape
 option, in order to allow LaTeX to run qpdf.
 
 %package -n texlive-kdpcover-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.1svn65150
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.1svn74392
 Release:        0
 Summary:        Documentation for texlive-kdpcover
 License:        LPPL-1.0
@@ -31957,9 +31792,9 @@ Provides:       tex(t1mak.fd)
 Provides:       tex(t1maksf.fd)
 Requires:       tex(txfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source158:      kerkis.tar.xz
-Source159:      kerkis.doc.tar.xz
+# from 20250308
+Source162:      kerkis.tar.xz
+Source163:      kerkis.doc.tar.xz
 
 %description -n texlive-kerkis
 Sans-serif Greek fonts to match the URW Bookman set (which are
@@ -32382,9 +32217,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(longtable.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source160:      kerntest.tar.xz
-Source161:      kerntest.doc.tar.xz
+# from 20250308
+Source164:      kerntest.tar.xz
+Source165:      kerntest.doc.tar.xz
 
 %description -n texlive-kerntest
 This class makes it easy to generate tables that show many
@@ -32506,9 +32341,9 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(color.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source162:      ketcindy.tar.xz
-Source163:      ketcindy.doc.tar.xz
+# from 20250308
+Source166:      ketcindy.tar.xz
+Source167:      ketcindy.doc.tar.xz
 
 %description -n texlive-ketcindy
 KETpic is a macro package designed for computer algebra systems
@@ -33330,9 +33165,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(kvsetkeys.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source164:      keycommand.tar.xz
-Source165:      keycommand.doc.tar.xz
+# from 20250308
+Source168:      keycommand.tar.xz
+Source169:      keycommand.doc.tar.xz
 
 %description -n texlive-keycommand
 The package (which requires e-TeX) provides a natural way to
@@ -33420,9 +33255,9 @@ Requires:       tex(wrapfig.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source166:      keyfloat.tar.xz
-Source167:      keyfloat.doc.tar.xz
+# from 20250308
+Source170:      keyfloat.tar.xz
+Source171:      keyfloat.doc.tar.xz
 
 %description -n texlive-keyfloat
 The keyfloat package provides a key/value user interface for
@@ -33511,9 +33346,9 @@ Suggests:       texlive-keyindex-doc >= %{texlive_version}
 Provides:       tex(keyindex.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source168:      keyindex.tar.xz
-Source169:      keyindex.doc.tar.xz
+# from 20250308
+Source172:      keyindex.tar.xz
+Source173:      keyindex.doc.tar.xz
 
 %description -n texlive-keyindex
 The package provides functionality for producing an index
@@ -33593,9 +33428,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source170:      keyparse.tar.xz
-Source171:      keyparse.doc.tar.xz
+# from 20250308
+Source174:      keyparse.tar.xz
+Source175:      keyparse.doc.tar.xz
 
 %description -n texlive-keyparse
 This LaTeX package provides an interface to define and evaluate
@@ -33669,9 +33504,9 @@ Suggests:       texlive-keyreader-doc >= %{texlive_version}
 Provides:       tex(keyreader.sty)
 Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source172:      keyreader.tar.xz
-Source173:      keyreader.doc.tar.xz
+# from 20250308
+Source176:      keyreader.tar.xz
+Source177:      keyreader.doc.tar.xz
 
 %description -n texlive-keyreader
 The package provides a robust interface to controlling keys in
@@ -33750,9 +33585,9 @@ Suggests:       texlive-keystroke-doc >= %{texlive_version}
 Provides:       tex(keystroke.sty)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source174:      keystroke.tar.xz
-Source175:      keystroke.doc.tar.xz
+# from 20250308
+Source178:      keystroke.tar.xz
+Source179:      keystroke.doc.tar.xz
 
 %description -n texlive-keystroke
 A LaTeX package which provides macros for the graphical
@@ -33801,6 +33636,106 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/keystroke/keystroke_right.eps
 %{_texmfdistdir}/tex/latex/keystroke/keystroke_right.pdf
 
+%package -n texlive-keytheorems
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.5svn74002
+Release:        0
+License:        LPPL-1.0
+Summary:        An l3keys interface to amsthm
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-keytheorems-doc >= %{texlive_version}
+Provides:       tex(keytheorems.sty)
+Provides:       tex(keythms-IEEEtran-support.tex)
+Provides:       tex(keythms-amsart-support.tex)
+Provides:       tex(keythms-amsbook-support.tex)
+Provides:       tex(keythms-amsproc-support.tex)
+Provides:       tex(keythms-beamer-support.tex)
+Provides:       tex(keythms-jlreq-support.tex)
+Provides:       tex(keythms-memoir-support.tex)
+Requires:       tex(aliascnt.sty)
+Requires:       tex(amsthm.sty)
+Requires:       tex(nameref.sty)
+Requires:       tex(refcount.sty)
+Requires:       tex(tcolorbox.sty)
+Requires:       tex(thmtools.sty)
+Requires:       tex(translations.sty)
+Requires:       tex(unique.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source180:      keytheorems.tar.xz
+Source181:      keytheorems.doc.tar.xz
+
+%description -n texlive-keytheorems
+An expl3-implementation of a key-value interface to amsthm,
+implementing most of the functionality provided by thmtools.
+Several issues encountered with thmtools are avoided (see the
+README for a list) and a few new features are added.
+
+%package -n texlive-keytheorems-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.5svn74002
+Release:        0
+Summary:        Documentation for texlive-keytheorems
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-keytheorems and texlive-alldocumentation)
+
+%description -n texlive-keytheorems-doc
+This package includes the documentation for texlive-keytheorems
+
+%post -n texlive-keytheorems
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-keytheorems
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-keytheorems
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-keytheorems-doc
+%{_texmfdistdir}/doc/latex/keytheorems/CHANGELOG.md
+%{_texmfdistdir}/doc/latex/keytheorems/README.md
+%{_texmfdistdir}/doc/latex/keytheorems/keytheorems-doc.pdf
+%{_texmfdistdir}/doc/latex/keytheorems/keytheorems-doc.tex
+
+%files -n texlive-keytheorems
+%{_texmfdistdir}/tex/latex/keytheorems/class-support/keythms-IEEEtran-support.tex
+%{_texmfdistdir}/tex/latex/keytheorems/class-support/keythms-amsart-support.tex
+%{_texmfdistdir}/tex/latex/keytheorems/class-support/keythms-amsbook-support.tex
+%{_texmfdistdir}/tex/latex/keytheorems/class-support/keythms-amsproc-support.tex
+%{_texmfdistdir}/tex/latex/keytheorems/class-support/keythms-beamer-support.tex
+%{_texmfdistdir}/tex/latex/keytheorems/class-support/keythms-jlreq-support.tex
+%{_texmfdistdir}/tex/latex/keytheorems/class-support/keythms-memoir-support.tex
+%{_texmfdistdir}/tex/latex/keytheorems/keytheorems.sty
+
 %package -n texlive-keyval2e
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.2svn23698
 Release:        0
@@ -33832,9 +33767,9 @@ Suggests:       texlive-keyval2e-doc >= %{texlive_version}
 Provides:       tex(keyval2e.sty)
 Requires:       tex(catoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source176:      keyval2e.tar.xz
-Source177:      keyval2e.doc.tar.xz
+# from 20250308
+Source182:      keyval2e.tar.xz
+Source183:      keyval2e.doc.tar.xz
 
 %description -n texlive-keyval2e
 The package provides lightweight and robust facilities for
@@ -33918,9 +33853,9 @@ Requires:       tex(trimspaces.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source178:      keyvaltable.tar.xz
-Source179:      keyvaltable.doc.tar.xz
+# from 20250308
+Source184:      keyvaltable.tar.xz
+Source185:      keyvaltable.doc.tar.xz
 
 %description -n texlive-keyvaltable
 The main goal of this package is to offer means for typesetting
@@ -34015,9 +33950,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source180:      kfupm-math-exam.tar.xz
-Source181:      kfupm-math-exam.doc.tar.xz
+# from 20250308
+Source186:      kfupm-math-exam.tar.xz
+Source187:      kfupm-math-exam.doc.tar.xz
 
 %description -n texlive-kfupm-math-exam
 The package provides commands and environments that simplify
@@ -34095,9 +34030,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-khatalmaqala-fonts >= %{texlive_version}
 Suggests:       texlive-khatalmaqala-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source182:      khatalmaqala.tar.xz
-Source183:      khatalmaqala.doc.tar.xz
+# from 20250308
+Source188:      khatalmaqala.tar.xz
+Source189:      khatalmaqala.doc.tar.xz
 
 %description -n texlive-khatalmaqala
 This font family is a modification of "cm-unicode" fonts, with
@@ -34214,9 +34149,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xpatch.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source184:      kinematikz.tar.xz
-Source185:      kinematikz.doc.tar.xz
+# from 20250308
+Source190:      kinematikz.tar.xz
+Source191:      kinematikz.doc.tar.xz
 
 %description -n texlive-kinematikz
 This package provides functionalities to draw kinematic
@@ -34295,9 +34230,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kix-doc >= %{texlive_version}
 Provides:       tex(kix.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source186:      kix.tar.xz
-Source187:      kix.doc.tar.xz
+# from 20250308
+Source192:      kix.tar.xz
+Source193:      kix.doc.tar.xz
 
 %description -n texlive-kix
 Implements KIX codes as used by the Dutch PTT for bulk mail
@@ -34370,9 +34305,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kixfont-doc >= %{texlive_version}
 Provides:       tex(kix.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source188:      kixfont.tar.xz
-Source189:      kixfont.doc.tar.xz
+# from 20250308
+Source194:      kixfont.tar.xz
+Source195:      kixfont.doc.tar.xz
 
 %description -n texlive-kixfont
 The KIX code is a barcode-like format used by the Dutch PTT to
@@ -34478,9 +34413,9 @@ Requires:       tex(mathptm.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(wasysym.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source190:      kluwer.tar.xz
-Source191:      kluwer.doc.tar.xz
+# from 20250308
+Source196:      kluwer.tar.xz
+Source197:      kluwer.doc.tar.xz
 
 %description -n texlive-kluwer
 Most likely long obsolete, unfortunately.
@@ -34618,9 +34553,9 @@ Provides:       tex(knitwp.tfm)
 Provides:       tex(uknit.fd)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source192:      knitting.tar.xz
-Source193:      knitting.doc.tar.xz
+# from 20250308
+Source198:      knitting.tar.xz
+Source199:      knitting.doc.tar.xz
 
 %description -n texlive-knitting
 The package provides symbol fonts and commands to write charted
@@ -34834,9 +34769,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source194:      knittingpattern.tar.xz
-Source195:      knittingpattern.doc.tar.xz
+# from 20250308
+Source200:      knittingpattern.tar.xz
+Source201:      knittingpattern.doc.tar.xz
 
 %description -n texlive-knittingpattern
 The class provides a simple, effective method for knitters to
@@ -34886,7 +34821,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/knittingpattern/knittingpattern.cls
 
 %package -n texlive-knowledge
-Version:        %{texlive_version}.%{texlive_noarch}.1.29svn70594
+Version:        %{texlive_version}.%{texlive_noarch}.1.30svn74186
 Release:        0
 License:        LPPL-1.0
 Summary:        Displaying, hyperlinking, and indexing notions in a document
@@ -34920,9 +34855,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source196:      knowledge.tar.xz
-Source197:      knowledge.doc.tar.xz
+# from 20250308
+Source202:      knowledge.tar.xz
+Source203:      knowledge.doc.tar.xz
 
 %description -n texlive-knowledge
 The package offers a systematic way to handle
@@ -34932,7 +34867,7 @@ every reference of a concept linked to its introduction. It
 also offers simple notations.
 
 %package -n texlive-knowledge-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.29svn70594
+Version:        %{texlive_version}.%{texlive_noarch}.1.30svn74186
 Release:        0
 Summary:        Documentation for texlive-knowledge
 License:        LPPL-1.0
@@ -34998,8 +34933,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source198:      knuth-errata.doc.tar.xz
+# from 20250308
+Source204:      knuth-errata.doc.tar.xz
 
 %description -n texlive-knuth-errata
 These files record details of problems reported in Knuth's
@@ -35044,7 +34979,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/knuth-errata/tex82.bug
 
 %package -n texlive-knuth-hint
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn67373
+Version:        %{texlive_version}.%{texlive_noarch}.2.5svn72019
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        HINT collection of typeset C/WEB sources in TeX Live
@@ -35071,24 +35006,23 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source199:      knuth-hint.doc.tar.xz
+# from 20250308
+Source205:      knuth-hint.doc.tar.xz
 
 %description -n texlive-knuth-hint
 The knuth-hint package contains the large collection of HINT
 documents for many of the CWEB amd WEB sources of programs in
-the TeX Live distribution (and, for technical reasons, PDF
-documents for CTWILL and XeTeX). Each program is presented in
-its original form as written by the respective authors, and in
-the "changed" form as used in TeX Live. Care has been taken to
-keep the section numbering intact, so that you can study the
-codes and the changes in parallel. Also included are the
-"errata" for Donald Knuth's "Computers & Typesetting". HINT is
-the dynamic document format created by Martin Ruckert's HiTeX
-engine that was added to TeX Live 2022. The HINT files can be
-viewed on Linux, Windows, and Android with the hintview
-application. The knuth-hint package is a showcase of HiTeX's
-capabilities.
+the TeX Live distribution (and, for technical reasons, a PDF
+document for XeTeX). Each program is presented in its original
+form as written by the respective authors, and in the "changed"
+form as used in TeX Live. Care has been taken to keep the
+section numbering intact, so that you can study the codes and
+the changes in parallel. Also included are the "errata" for
+Donald Knuth's "Computers & Typesetting". HINT is the dynamic
+document format created by Martin Ruckert's HiTeX engine that
+was added to TeX Live 2022. The HINT files can be viewed on
+Linux, Windows, and Android with the hintview application. The
+knuth-hint package is a showcase of HiTeX's capabilities.
 
 %post -n texlive-knuth-hint
 mkdir -p /var/run/texlive
@@ -35143,6 +35077,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/knuth-hint/etc/vftovp.hnt
 %{_texmfdistdir}/doc/generic/knuth-hint/etc/vptovf-changes.hnt
 %{_texmfdistdir}/doc/generic/knuth-hint/etc/vptovf.hnt
+%{_texmfdistdir}/doc/generic/knuth-hint/hitex/hitex.hnt
 %{_texmfdistdir}/doc/generic/knuth-hint/index.html
 %{_texmfdistdir}/doc/generic/knuth-hint/index.pdf
 %{_texmfdistdir}/doc/generic/knuth-hint/mf/mf-changes.hnt
@@ -35156,6 +35091,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/knuth-hint/mfware/gftype.hnt
 %{_texmfdistdir}/doc/generic/knuth-hint/mfware/mft-changes.hnt
 %{_texmfdistdir}/doc/generic/knuth-hint/mfware/mft.hnt
+%{_texmfdistdir}/doc/generic/knuth-hint/mp/mp.hnt
+%{_texmfdistdir}/doc/generic/knuth-hint/mp/mpost.hnt
 %{_texmfdistdir}/doc/generic/knuth-hint/other/dvicopy-changes.hnt
 %{_texmfdistdir}/doc/generic/knuth-hint/other/dvicopy.hnt
 %{_texmfdistdir}/doc/generic/knuth-hint/other/patgen-changes.hnt
@@ -35231,8 +35168,8 @@ Provides:       tex(story.tex)
 Provides:       tex(testfont.tex)
 Provides:       tex(webmac.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source200:      knuth-lib.tar.xz
+# from 20250308
+Source206:      knuth-lib.tar.xz
 
 %description -n texlive-knuth-lib
 A collection of core TeX and Metafont macro files from DEK,
@@ -35322,8 +35259,8 @@ Provides:       tex(random.tfm)
 Provides:       tex(snfont.tfm)
 Provides:       tex(xepsf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source201:      knuth-local.tar.xz
+# from 20250308
+Source207:      knuth-local.tar.xz
 
 %description -n texlive-knuth-local
 A collection of experimental programs and developments based
@@ -35381,7 +35318,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/plain/knuth-local/xepsf.tex
 
 %package -n texlive-knuth-pdf
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn67332
+Version:        %{texlive_version}.%{texlive_noarch}.2.5svn72018
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        PDF collection of typeset C/WEB sources in TeX Live
@@ -35408,8 +35345,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source202:      knuth-pdf.doc.tar.xz
+# from 20250308
+Source208:      knuth-pdf.doc.tar.xz
 
 %description -n texlive-knuth-pdf
 Here you find a large collection of PDF documents for many
@@ -35479,6 +35416,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/knuth-pdf/etc/vftovp.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/etc/vptovf-changes.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/etc/vptovf.pdf
+%{_texmfdistdir}/doc/generic/knuth-pdf/hitex/hitex.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/index.html
 %{_texmfdistdir}/doc/generic/knuth-pdf/index.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/mf/mf-changes.pdf
@@ -35492,6 +35430,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/knuth-pdf/mfware/gftype.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/mfware/mft-changes.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/mfware/mft.pdf
+%{_texmfdistdir}/doc/generic/knuth-pdf/mp/mp.pdf
+%{_texmfdistdir}/doc/generic/knuth-pdf/mp/mpost.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/other/dvicopy-changes.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/other/dvicopy.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/other/patgen-changes.pdf
@@ -35555,9 +35495,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-koma-moderncvclassic-doc >= %{texlive_version}
 Provides:       tex(koma-moderncvclassic.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source203:      koma-moderncvclassic.tar.xz
-Source204:      koma-moderncvclassic.doc.tar.xz
+# from 20250308
+Source209:      koma-moderncvclassic.tar.xz
+Source210:      koma-moderncvclassic.doc.tar.xz
 
 %description -n texlive-koma-moderncvclassic
 This package provides an imitation of the moderncv class with
@@ -35606,7 +35546,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/koma-moderncvclassic/koma-moderncvclassic.sty
 
 %package -n texlive-koma-script
-Version:        %{texlive_version}.%{texlive_noarch}.3.41svn69755
+Version:        %{texlive_version}.%{texlive_noarch}.3.43svn72643
 Release:        0
 License:        LPPL-1.0
 Summary:        A bundle of versatile classes and packages
@@ -35639,6 +35579,14 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-koma-script-doc >= %{texlive_version}
 Provides:       tex(authorpart-de.tex)
 Provides:       tex(authorpart-en.tex)
+Provides:       tex(book-remarkbox-nopatch-de.tex)
+Provides:       tex(book-remarkbox-nopatch-de.tex)
+Provides:       tex(book-remarkbox-nopatch-en.tex)
+Provides:       tex(book-remarkbox-nopatch-en.tex)
+Provides:       tex(book-remarkbox-patch-de.tex)
+Provides:       tex(book-remarkbox-patch-de.tex)
+Provides:       tex(book-remarkbox-patch-en.tex)
+Provides:       tex(book-remarkbox-patch-en.tex)
 Provides:       tex(common-compatibility-de.tex)
 Provides:       tex(common-compatibility-en.tex)
 Provides:       tex(common-dictum-de.tex)
@@ -35747,7 +35695,6 @@ Provides:       tex(scrbookreportarticle-experts-en.tex)
 Provides:       tex(scrdate-de.tex)
 Provides:       tex(scrdate-en.tex)
 Provides:       tex(scrdate.sty)
-Provides:       tex(scrdoc.cls)
 Provides:       tex(scrdocstrip.tex)
 Provides:       tex(scrextend-de.tex)
 Provides:       tex(scrextend-en.tex)
@@ -35757,15 +35704,8 @@ Provides:       tex(scrguide-body.tex)
 Provides:       tex(scrguide-de.tex)
 Provides:       tex(scrguide-en.tex)
 Provides:       tex(scrguide.cls)
-Provides:       tex(scrhack-de.tex)
-Provides:       tex(scrhack-en.tex)
-Provides:       tex(scrhack.sty)
 Provides:       tex(scrjura-de.tex)
 Provides:       tex(scrjura-en.tex)
-Provides:       tex(scrjura-example-de.tex)
-Provides:       tex(scrjura-example-de.tex)
-Provides:       tex(scrjura-example-en.tex)
-Provides:       tex(scrjura-example-en.tex)
 Provides:       tex(scrjura.sty)
 Provides:       tex(scrkbase.sty)
 Provides:       tex(scrlayer-de.tex)
@@ -35827,6 +35767,7 @@ Requires:       tex(babelbib.sty)
 Requires:       tex(biblatex.sty)
 Requires:       tex(bookmark.sty)
 Requires:       tex(booktabs.sty)
+Requires:       tex(contract.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(geometry.sty)
@@ -35849,8 +35790,8 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source205:      koma-script.tar.xz
+# from 20250308
+Source211:      koma-script.tar.xz
 
 %description -n texlive-koma-script
 The KOMA-Script bundle provides replacements for the article,
@@ -35868,7 +35809,7 @@ version of scrbook, scrreprt, scrartcl, scrlttr2 and typearea
 (which are the main parts of the bundle).
 
 %package -n texlive-koma-script-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.41svn69755
+Version:        %{texlive_version}.%{texlive_noarch}.3.43svn72643
 Release:        0
 Summary:        Documentation for texlive-koma-script
 License:        LPPL-1.0
@@ -35899,6 +35840,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-koma-script-doc
 %{_texmfdistdir}/doc/latex/koma-script/MANIFEST.md
 %{_texmfdistdir}/doc/latex/koma-script/README.md
+%{_texmfdistdir}/doc/latex/koma-script/book-remarkbox-nopatch-de.pdf
+%{_texmfdistdir}/doc/latex/koma-script/book-remarkbox-nopatch-en.pdf
+%{_texmfdistdir}/doc/latex/koma-script/book-remarkbox-patch-de.pdf
+%{_texmfdistdir}/doc/latex/koma-script/book-remarkbox-patch-en.pdf
+%{_texmfdistdir}/doc/latex/koma-script/examples/book-remarkbox-nopatch-de.tex
+%{_texmfdistdir}/doc/latex/koma-script/examples/book-remarkbox-nopatch-en.tex
+%{_texmfdistdir}/doc/latex/koma-script/examples/book-remarkbox-patch-de.tex
+%{_texmfdistdir}/doc/latex/koma-script/examples/book-remarkbox-patch-en.tex
 %{_texmfdistdir}/doc/latex/koma-script/examples/ich.lco
 %{_texmfdistdir}/doc/latex/koma-script/examples/letter-example-00-de.pdf
 %{_texmfdistdir}/doc/latex/koma-script/examples/letter-example-00-de.tex
@@ -35998,10 +35947,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/koma-script/examples/letter-example-23-en.tex
 %{_texmfdistdir}/doc/latex/koma-script/examples/me.lco
 %{_texmfdistdir}/doc/latex/koma-script/examples/musterlogo.eps
-%{_texmfdistdir}/doc/latex/koma-script/examples/scrjura-example-de.pdf
-%{_texmfdistdir}/doc/latex/koma-script/examples/scrjura-example-de.tex
-%{_texmfdistdir}/doc/latex/koma-script/examples/scrjura-example-en.pdf
-%{_texmfdistdir}/doc/latex/koma-script/examples/scrjura-example-en.tex
 %{_texmfdistdir}/doc/latex/koma-script/examples/scrlayer-notecolumn-example-de.pdf
 %{_texmfdistdir}/doc/latex/koma-script/examples/scrlayer-notecolumn-example-de.tex
 %{_texmfdistdir}/doc/latex/koma-script/examples/scrlayer-notecolumn-example-en.pdf
@@ -36017,7 +35962,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/koma-script/scrextend.html
 %{_texmfdistdir}/doc/latex/koma-script/scrguide-de.pdf
 %{_texmfdistdir}/doc/latex/koma-script/scrguide-en.pdf
-%{_texmfdistdir}/doc/latex/koma-script/scrhack.html
 %{_texmfdistdir}/doc/latex/koma-script/scrjura.html
 %{_texmfdistdir}/doc/latex/koma-script/scrkbase.html
 %{_texmfdistdir}/doc/latex/koma-script/scrlayer-notecolumn.html
@@ -36039,6 +35983,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-koma-script
 %{_texmfdistdir}/source/latex/koma-script/doc/authorpart-de.tex
 %{_texmfdistdir}/source/latex/koma-script/doc/authorpart-en.tex
+%{_texmfdistdir}/source/latex/koma-script/doc/book-remarkbox-nopatch-de.tex
+%{_texmfdistdir}/source/latex/koma-script/doc/book-remarkbox-nopatch-en.tex
+%{_texmfdistdir}/source/latex/koma-script/doc/book-remarkbox-patch-de.tex
+%{_texmfdistdir}/source/latex/koma-script/doc/book-remarkbox-patch-en.tex
 %{_texmfdistdir}/source/latex/koma-script/doc/common-compatibility-de.tex
 %{_texmfdistdir}/source/latex/koma-script/doc/common-compatibility-en.tex
 %{_texmfdistdir}/source/latex/koma-script/doc/common-dictum-de.tex
@@ -36102,12 +36050,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/source/latex/koma-script/doc/scrguide.cls
 %{_texmfdistdir}/source/latex/koma-script/doc/scrguide.gst
 %{_texmfdistdir}/source/latex/koma-script/doc/scrguide.ist
-%{_texmfdistdir}/source/latex/koma-script/doc/scrhack-de.tex
-%{_texmfdistdir}/source/latex/koma-script/doc/scrhack-en.tex
 %{_texmfdistdir}/source/latex/koma-script/doc/scrjura-de.tex
 %{_texmfdistdir}/source/latex/koma-script/doc/scrjura-en.tex
-%{_texmfdistdir}/source/latex/koma-script/doc/scrjura-example-de.tex
-%{_texmfdistdir}/source/latex/koma-script/doc/scrjura-example-en.tex
 %{_texmfdistdir}/source/latex/koma-script/doc/scrlayer-de.tex
 %{_texmfdistdir}/source/latex/koma-script/doc/scrlayer-en.tex
 %{_texmfdistdir}/source/latex/koma-script/doc/scrlayer-notecolumn-de.tex
@@ -36144,7 +36088,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/source/latex/koma-script/koma-script-source-doc.dtx
 %{_texmfdistdir}/source/latex/koma-script/scraddr.dtx
 %{_texmfdistdir}/source/latex/koma-script/scrextend.dtx
-%{_texmfdistdir}/source/latex/koma-script/scrhack.dtx
 %{_texmfdistdir}/source/latex/koma-script/scrjura.dtx
 %{_texmfdistdir}/source/latex/koma-script/scrkernel-addressfiles.dtx
 %{_texmfdistdir}/source/latex/koma-script/scrkernel-basics.dtx
@@ -36202,23 +36145,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/koma-script/SNleft.lco
 %{_texmfdistdir}/tex/latex/koma-script/UScommercial9.lco
 %{_texmfdistdir}/tex/latex/koma-script/UScommercial9DW.lco
-%{_texmfdistdir}/tex/latex/koma-script/float.hak
-%{_texmfdistdir}/tex/latex/koma-script/floatrow.hak
-%{_texmfdistdir}/tex/latex/koma-script/hyperref.hak
 %{_texmfdistdir}/tex/latex/koma-script/koma-script-source-doc.cls
-%{_texmfdistdir}/tex/latex/koma-script/listings.hak
-%{_texmfdistdir}/tex/latex/koma-script/lscape.hak
-%{_texmfdistdir}/tex/latex/koma-script/nomencl.hak
 %{_texmfdistdir}/tex/latex/koma-script/scraddr.sty
 %{_texmfdistdir}/tex/latex/koma-script/scrartcl.cls
 %{_texmfdistdir}/tex/latex/koma-script/scrarticle.cls
 %{_texmfdistdir}/tex/latex/koma-script/scrbase.sty
 %{_texmfdistdir}/tex/latex/koma-script/scrbook.cls
 %{_texmfdistdir}/tex/latex/koma-script/scrdate.sty
-%{_texmfdistdir}/tex/latex/koma-script/scrdoc.cls
 %{_texmfdistdir}/tex/latex/koma-script/scrextend.sty
 %{_texmfdistdir}/tex/latex/koma-script/scrfontsizes.sty
-%{_texmfdistdir}/tex/latex/koma-script/scrhack.sty
 %{_texmfdistdir}/tex/latex/koma-script/scrjura.sty
 %{_texmfdistdir}/tex/latex/koma-script/scrkbase.sty
 %{_texmfdistdir}/tex/latex/koma-script/scrlayer-notecolumn.sty
@@ -36238,8 +36173,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/koma-script/scrsize11pt.clo
 %{_texmfdistdir}/tex/latex/koma-script/scrsize12pt.clo
 %{_texmfdistdir}/tex/latex/koma-script/scrtime.sty
-%{_texmfdistdir}/tex/latex/koma-script/setspace.hak
-%{_texmfdistdir}/tex/latex/koma-script/standardsections.hak
 %{_texmfdistdir}/tex/latex/koma-script/tocbasic.sty
 %{_texmfdistdir}/tex/latex/koma-script/typearea.sty
 %{_texmfdistdir}/tex/latex/koma-script/visualize.lco
@@ -36272,8 +36205,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source206:      koma-script-examples.doc.tar.xz
+# from 20250308
+Source212:      koma-script-examples.doc.tar.xz
 
 %description -n texlive-koma-script-examples
 This package contains some examples from the 6th edition of the
@@ -36425,9 +36358,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-koma-script-sfs-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source207:      koma-script-sfs.tar.xz
-Source208:      koma-script-sfs.doc.tar.xz
+# from 20250308
+Source213:      koma-script-sfs.tar.xz
+Source214:      koma-script-sfs.doc.tar.xz
 
 %description -n texlive-koma-script-sfs
 A koma-script parameter set for letters on A4 paper, complying
@@ -36521,9 +36454,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source209:      komacv.tar.xz
-Source210:      komacv.doc.tar.xz
+# from 20250308
+Source215:      komacv.tar.xz
+Source216:      komacv.doc.tar.xz
 
 %description -n texlive-komacv
 The class simplifies the creation of beautiful CV. The user may
@@ -36618,9 +36551,9 @@ Requires:       tex(multilang.sty)
 Requires:       tex(scrkbase.sty)
 Requires:       tex(translations.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source211:      komacv-rg.tar.xz
-Source212:      komacv-rg.doc.tar.xz
+# from 20250308
+Source217:      komacv-rg.tar.xz
+Source218:      komacv-rg.doc.tar.xz
 
 %description -n texlive-komacv-rg
 The komacv-rg bundle provides packages that aid in creating CVs
@@ -36676,7 +36609,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/komacv-rg/komacv-multilang.sty
 
 %package -n texlive-korigamik
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn68204
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn71991
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Typeset articles using KorigamiK's document class
@@ -36717,9 +36650,9 @@ Requires:       tex(microtype.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source213:      korigamik.tar.xz
-Source214:      korigamik.doc.tar.xz
+# from 20250308
+Source219:      korigamik.tar.xz
+Source220:      korigamik.doc.tar.xz
 
 %description -n texlive-korigamik
 The KorigamiK class is used for typesetting documents for
@@ -36728,7 +36661,7 @@ the article class with modifications to allow for more flexible
 front-matter among other small changes.
 
 %package -n texlive-korigamik-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn68204
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn71991
 Release:        0
 Summary:        Documentation for texlive-korigamik
 License:        GPL-2.0-or-later
@@ -36766,7 +36699,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/korigamik/korigamik.cls
 
 %package -n texlive-kotex-oblivoir
-Version:        %{texlive_version}.%{texlive_noarch}.3.3svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.3.4svn73766
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX document class for typesetting Korean documents
@@ -36870,9 +36803,9 @@ Requires:       tex(xetexko.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source215:      kotex-oblivoir.tar.xz
-Source216:      kotex-oblivoir.doc.tar.xz
+# from 20250308
+Source221:      kotex-oblivoir.tar.xz
+Source222:      kotex-oblivoir.doc.tar.xz
 
 %description -n texlive-kotex-oblivoir
 The class is based on memoir, and is adapted to typesetting
@@ -36881,7 +36814,7 @@ belongs to the ko.TeX bundle. It depends on memoir and
 kotex-utf to function.
 
 %package -n texlive-kotex-oblivoir-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.3svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.3.4svn73766
 Release:        0
 Summary:        Documentation for texlive-kotex-oblivoir
 License:        LPPL-1.0
@@ -36994,9 +36927,9 @@ Provides:       tex(kotexplain.tex)
 Provides:       tex(kotexutf-core.tex)
 Provides:       tex(kotexutf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source217:      kotex-plain.tar.xz
-Source218:      kotex-plain.doc.tar.xz
+# from 20250308
+Source223:      kotex-plain.tar.xz
+Source224:      kotex-plain.doc.tar.xz
 
 %description -n texlive-kotex-plain
 The package provides macros for typesetting Hangul, the native
@@ -37115,9 +37048,9 @@ Requires:       tex(verbatim.sty)
 Requires:       tex(xetexko.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source219:      kotex-utf.tar.xz
-Source220:      kotex-utf.doc.tar.xz
+# from 20250308
+Source225:      kotex-utf.tar.xz
+Source226:      kotex-utf.doc.tar.xz
 
 %description -n texlive-kotex-utf
 The package typesets Hangul, which is the native alphabet of
@@ -37237,9 +37170,9 @@ Requires:       perl(File::Path)
 Requires:       perl(Getopt::Std)
 #!BuildIgnore:  perl(Getopt::Std)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source221:      kotex-utils.tar.xz
-Source222:      kotex-utils.doc.tar.xz
+# from 20250308
+Source227:      kotex-utils.tar.xz
+Source228:      kotex-utils.doc.tar.xz
 
 %description -n texlive-kotex-utils
 The bundle provides scripts and support files for index
@@ -37291,7 +37224,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %package -n texlive-kpathsea
 #!BuildIgnore:   texlive-scripts
 #!BuildIgnore:   texlive-kpathsea
-Version:        %{texlive_version}.%{texlive_noarch}.svn70348
+Version:        %{texlive_version}.%{texlive_noarch}.svn73918
 Release:        0
 License:        LGPL-2.1-or-later
 Summary:        Path searching library for TeX-related files
@@ -37322,10 +37255,10 @@ Provides:       tex(fmtutil.cnf)
 Provides:       tex(mktex.cnf)
 Provides:       tex(texmf.cnf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source223:      kpathsea.tar.xz
-Source224:      kpathsea.doc.tar.xz
-Source225:      kpathsea_cnf.dif
+# from 20250308
+Source229:      kpathsea.tar.xz
+Source230:      kpathsea.doc.tar.xz
+Source231:      kpathsea_cnf.dif
 
 %description -n texlive-kpathsea
 Kpathsea is a library and utility programs which provide path
@@ -37336,7 +37269,7 @@ distributed separately, but rather is released and maintained
 as part of the TeX Live sources.
 
 %package -n texlive-kpathsea-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70348
+Version:        %{texlive_version}.%{texlive_noarch}.svn73918
 Release:        0
 Summary:        Documentation for texlive-kpathsea
 License:        LGPL-2.1-or-later
@@ -37450,7 +37383,7 @@ fi
 %config(noreplace) %verify(not md5 mtime size) %{_texmfconfdir}/web2c/texmf.cnf
 
 %package -n texlive-kpfonts
-Version:        %{texlive_version}.%{texlive_noarch}.3.35svn65583
+Version:        %{texlive_version}.%{texlive_noarch}.3.36svn72680
 Release:        0
 License:        LPPL-1.0
 Summary:        A complete set of fonts for text and mathematics
@@ -39261,9 +39194,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(kpfonts-otf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source226:      kpfonts.tar.xz
-Source227:      kpfonts.doc.tar.xz
+# from 20250308
+Source232:      kpfonts.tar.xz
+Source233:      kpfonts.doc.tar.xz
 
 %description -n texlive-kpfonts
 The family contains text fonts in roman, sans-serif and
@@ -39283,7 +39216,7 @@ though the fonts are very clearly different in appearance from
 their parent.
 
 %package -n texlive-kpfonts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.35svn65583
+Version:        %{texlive_version}.%{texlive_noarch}.3.36svn72680
 Release:        0
 Summary:        Documentation for texlive-kpfonts
 License:        LPPL-1.0
@@ -39296,7 +39229,7 @@ Provides:       locale(texlive-kpfonts-doc:en)
 This package includes the documentation for texlive-kpfonts
 
 %package -n texlive-kpfonts-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.3.35svn65583
+Version:        %{texlive_version}.%{texlive_noarch}.3.36svn72680
 Release:        0
 Summary:        Severed fonts for texlive-kpfonts
 License:        LPPL-1.0
@@ -41348,7 +41281,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-kpfonts/jkpttmne.pfb
 
 %package -n texlive-kpfonts-otf
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.62svn69636
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.66svn74008
 Release:        0
 License:        OFL-1.1
 Summary:        OTF version of the Kp-fonts
@@ -41382,9 +41315,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(realscripts.sty)
 Requires:       tex(unicode-math.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source228:      kpfonts-otf.tar.xz
-Source229:      kpfonts-otf.doc.tar.xz
+# from 20250308
+Source234:      kpfonts-otf.tar.xz
+Source235:      kpfonts-otf.doc.tar.xz
 
 %description -n texlive-kpfonts-otf
 This bundle provides OpenType versions of the Type1 Kp-fonts
@@ -41400,7 +41333,7 @@ AMS'; a full list of available symbols is provided, see the
 'List of glyphs'.
 
 %package -n texlive-kpfonts-otf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.62svn69636
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.66svn74008
 Release:        0
 Summary:        Documentation for texlive-kpfonts-otf
 License:        OFL-1.1
@@ -41413,7 +41346,7 @@ Provides:       locale(texlive-kpfonts-otf-doc:en;fr)
 This package includes the documentation for texlive-kpfonts-otf
 
 %package -n texlive-kpfonts-otf-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.62svn69636
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.66svn74008
 Release:        0
 Summary:        Severed fonts for texlive-kpfonts-otf
 License:        OFL-1.1
@@ -41544,8 +41477,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source230:      ksfh_nat.tar.xz
+# from 20250308
+Source236:      ksfh_nat.tar.xz
 
 %description -n texlive-ksfh_nat
 The package supports bibliographies as standard for KSFH
@@ -41611,9 +41544,9 @@ Requires:       tex(scrbook.cls)
 Requires:       tex(scrlayer-scrpage.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source231:      ksp-thesis.tar.xz
-Source232:      ksp-thesis.doc.tar.xz
+# from 20250308
+Source237:      ksp-thesis.tar.xz
+Source238:      ksp-thesis.doc.tar.xz
 
 %description -n texlive-ksp-thesis
 This package provides a LaTeX class intended for authors who
@@ -41711,9 +41644,9 @@ Provides:       tex(ktv-buildnum.sty)
 Provides:       tex(ktv-texdata.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source233:      ktv-texdata.tar.xz
-Source234:      ktv-texdata.doc.tar.xz
+# from 20250308
+Source239:      ktv-texdata.tar.xz
+Source240:      ktv-texdata.doc.tar.xz
 
 %description -n texlive-ktv-texdata
 The package defines an exercice environment which numbers every
@@ -41796,9 +41729,9 @@ Provides:       tex(ku-template.sty)
 Requires:       tex(titling.sty)
 Requires:       tex(wallpaper.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source235:      ku-template.tar.xz
-Source236:      ku-template.doc.tar.xz
+# from 20250308
+Source241:      ku-template.tar.xz
+Source242:      ku-template.doc.tar.xz
 
 %description -n texlive-ku-template
 A comprehensive package for adding University of Copenhagen or
@@ -41885,9 +41818,9 @@ Suggests:       texlive-kurdishlipsum-doc >= %{texlive_version}
 Provides:       tex(kurdishlipsum.sty)
 Requires:       tex(biditools.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source237:      kurdishlipsum.tar.xz
-Source238:      kurdishlipsum.doc.tar.xz
+# from 20250308
+Source243:      kurdishlipsum.tar.xz
+Source244:      kurdishlipsum.doc.tar.xz
 
 %description -n texlive-kurdishlipsum
 This package provides lipsum-like facilities for the Kurdish
@@ -42513,9 +42446,9 @@ Provides:       tex(wncy-kuriermi.tfm)
 Provides:       tex(wncy-kurierr.tfm)
 Provides:       tex(wncy-kurierri.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source239:      kurier.tar.xz
-Source240:      kurier.doc.tar.xz
+# from 20250308
+Source245:      kurier.tar.xz
+Source246:      kurier.doc.tar.xz
 
 %description -n texlive-kurier
 Kurier is a two-element sans-serif typeface. It was designed
@@ -43276,9 +43209,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kvdefinekeys-doc >= %{texlive_version}
 Provides:       tex(kvdefinekeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source241:      kvdefinekeys.tar.xz
-Source242:      kvdefinekeys.doc.tar.xz
+# from 20250308
+Source247:      kvdefinekeys.tar.xz
+Source248:      kvdefinekeys.doc.tar.xz
 
 %description -n texlive-kvdefinekeys
 The package provides a macro \kv@define@key (analogous to
@@ -43360,9 +43293,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source243:      kvmap.tar.xz
-Source244:      kvmap.doc.tar.xz
+# from 20250308
+Source249:      kvmap.tar.xz
+Source250:      kvmap.doc.tar.xz
 
 %description -n texlive-kvmap
 This LaTeX package allows the creation of (even large) Karnaugh
@@ -43442,9 +43375,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(kvsetkeys.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source245:      kvoptions.tar.xz
-Source246:      kvoptions.doc.tar.xz
+# from 20250308
+Source251:      kvoptions.tar.xz
+Source252:      kvoptions.doc.tar.xz
 
 %description -n texlive-kvoptions
 This package offers support for package authors who want to use
@@ -43519,9 +43452,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kvsetkeys-doc >= %{texlive_version}
 Provides:       tex(kvsetkeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source247:      kvsetkeys.tar.xz
-Source248:      kvsetkeys.doc.tar.xz
+# from 20250308
+Source253:      kvsetkeys.tar.xz
+Source254:      kvsetkeys.doc.tar.xz
 
 %description -n texlive-kvsetkeys
 This package provides \kvsetkeys, a variant of package keyval's
@@ -43596,8 +43529,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source249:      l2picfaq.doc.tar.xz
+# from 20250308
+Source255:      l2picfaq.doc.tar.xz
 
 %description -n texlive-l2picfaq
 The document (in German) is a collection of "how-to" notes
@@ -43656,8 +43589,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source250:      l2tabu.doc.tar.xz
+# from 20250308
+Source256:      l2tabu.doc.tar.xz
 
 %description -n texlive-l2tabu
 The "sins" of LaTeX users, and how to correct them. The
@@ -43716,8 +43649,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source251:      l2tabu-english.doc.tar.xz
+# from 20250308
+Source257:      l2tabu-english.doc.tar.xz
 
 %description -n texlive-l2tabu-english
 English translation of the l2tabu practical guide to LaTeX2e by
@@ -43772,8 +43705,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source252:      l2tabu-french.doc.tar.xz
+# from 20250308
+Source258:      l2tabu-french.doc.tar.xz
 
 %description -n texlive-l2tabu-french
 French translation of l2tabu.
@@ -43828,8 +43761,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source253:      l2tabu-italian.doc.tar.xz
+# from 20250308
+Source259:      l2tabu-italian.doc.tar.xz
 
 %description -n texlive-l2tabu-italian
 Italian translation of the l2tabu practical guide to LaTeX2e (a
@@ -43884,8 +43817,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source254:      l2tabu-spanish.doc.tar.xz
+# from 20250308
+Source260:      l2tabu-spanish.doc.tar.xz
 
 %description -n texlive-l2tabu-spanish
 A Spanish translation of the l2tabu practical guide to LaTeX2e
@@ -43915,7 +43848,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/l2tabu-spanish/l2tabues.tex
 
 %package -n texlive-l3backend
-Version:        %{texlive_version}.%{texlive_noarch}.svn70026
+Version:        %{texlive_version}.%{texlive_noarch}.svn71991
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX3 backend drivers
@@ -43949,9 +43882,9 @@ Provides:       tex(l3backend-luatex.def)
 Provides:       tex(l3backend-pdftex.def)
 Provides:       tex(l3backend-xetex.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source255:      l3backend.tar.xz
-Source256:      l3backend.doc.tar.xz
+# from 20250308
+Source261:      l3backend.tar.xz
+Source262:      l3backend.doc.tar.xz
 
 %description -n texlive-l3backend
 This package forms parts of expl3, and contains the code used
@@ -43962,7 +43895,7 @@ l3kernel to allow this code to be updated on an independent
 schedule.
 
 %package -n texlive-l3backend-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70026
+Version:        %{texlive_version}.%{texlive_noarch}.svn71991
 Release:        0
 Summary:        Documentation for texlive-l3backend
 License:        LPPL-1.0
@@ -44006,8 +43939,97 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/l3backend/l3backend-pdftex.def
 %{_texmfdistdir}/tex/latex/l3backend/l3backend-xetex.def
 
+%package -n texlive-l3backend-dev
+Version:        %{texlive_version}.%{texlive_noarch}.svn71211
+Release:        0
+License:        LPPL-1.0
+Summary:        LaTeX3 backend drivers (dev)
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-l3backend-dev-doc >= %{texlive_version}
+Provides:       texdev(l3backend-dvipdfmx.def)
+Provides:       texdev(l3backend-dvips.def)
+Provides:       texdev(l3backend-dvisvgm.def)
+Provides:       texdev(l3backend-luatex.def)
+Provides:       texdev(l3backend-pdftex.def)
+Provides:       texdev(l3backend-xetex.def)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source263:      l3backend-dev.tar.xz
+Source264:      l3backend-dev.doc.tar.xz
+
+%description -n texlive-l3backend-dev
+This is a pre-release version of the l3backend package. It
+accompanies the pre-testing kernel code (latex-base-dev), and
+is intended for testing by knowledgeable users.
+
+%package -n texlive-l3backend-dev-doc
+Version:        %{texlive_version}.%{texlive_noarch}.svn71211
+Release:        0
+Summary:        Documentation for texlive-l3backend-dev
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-l3backend-dev and texlive-alldocumentation)
+
+%description -n texlive-l3backend-dev-doc
+This package includes the documentation for texlive-l3backend-dev
+
+%post -n texlive-l3backend-dev
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-l3backend-dev
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-l3backend-dev
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-l3backend-dev-doc
+%{_texmfdistdir}/doc/latex-dev/l3backend/CHANGELOG.md
+%{_texmfdistdir}/doc/latex-dev/l3backend/README.md
+%{_texmfdistdir}/doc/latex-dev/l3backend/l3backend-code.pdf
+%{_texmfdistdir}/doc/latex-dev/l3backend/l3backend-code.tex
+
+%files -n texlive-l3backend-dev
+%{_texmfdistdir}/tex/latex-dev/l3backend/l3backend-dvipdfmx.def
+%{_texmfdistdir}/tex/latex-dev/l3backend/l3backend-dvips.def
+%{_texmfdistdir}/tex/latex-dev/l3backend/l3backend-dvips.pro
+%{_texmfdistdir}/tex/latex-dev/l3backend/l3backend-dvisvgm.def
+%{_texmfdistdir}/tex/latex-dev/l3backend/l3backend-luatex.def
+%{_texmfdistdir}/tex/latex-dev/l3backend/l3backend-luatex.lua
+%{_texmfdistdir}/tex/latex-dev/l3backend/l3backend-pdftex.def
+%{_texmfdistdir}/tex/latex-dev/l3backend/l3backend-xetex.def
+
 %package -n texlive-l3build
-Version:        %{texlive_version}.%{texlive_noarch}.svn69748
+Version:        %{texlive_version}.%{texlive_noarch}.svn74229
 Release:        0
 License:        LPPL-1.0
 Summary:        A testing and building system for (La)TeX
@@ -44040,9 +44062,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-l3build-doc >= %{texlive_version}
 Provides:       tex(regression-test.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source257:      l3build.tar.xz
-Source258:      l3build.doc.tar.xz
+# from 20250308
+Source265:      l3build.tar.xz
+Source266:      l3build.doc.tar.xz
 
 %description -n texlive-l3build
 The build system supports testing and building LaTeX3 code, on
@@ -44055,7 +44077,7 @@ material released by the LaTeX3 team, and may be updated on a
 different schedule.
 
 %package -n texlive-l3build-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn69748
+Version:        %{texlive_version}.%{texlive_noarch}.svn74229
 Release:        0
 Summary:        Documentation for texlive-l3build
 License:        LPPL-1.0
@@ -44112,7 +44134,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/l3build/regression-test.tex
 
 %package -n texlive-l3experimental
-Version:        %{texlive_version}.%{texlive_noarch}.svn70026
+Version:        %{texlive_version}.%{texlive_noarch}.svn71991
 Release:        0
 License:        LPPL-1.0
 Summary:        Experimental LaTeX3 concepts
@@ -44147,15 +44169,14 @@ Provides:       tex(l3galley.sty)
 Provides:       tex(l3graphics.sty)
 Provides:       tex(l3opacity.sty)
 Provides:       tex(l3str-format.sty)
-Provides:       tex(l3sys-shell.sty)
 Provides:       tex(xcoffins.sty)
 Provides:       tex(xgalley.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(xtemplate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source259:      l3experimental.tar.xz
-Source260:      l3experimental.doc.tar.xz
+# from 20250308
+Source267:      l3experimental.tar.xz
+Source268:      l3experimental.doc.tar.xz
 
 %description -n texlive-l3experimental
 The l3experimental packages are a collection of experimental
@@ -44168,14 +44189,13 @@ the time taken by TeX to run certain code; l3draw, a code-level
 interface for constructing drawings; l3graphics, an interfaces
 for the inclusion of graphics files; l3opacity, support for
 opacity in PDF output; l3str, support for string manipulation;
-l3sys-shell, which provides abstractions for common shell
-functions like file deletion and copying; xcoffins, which
-allows the alignment of boxes using a series of 'handle'
-positions, supplementing the simple TeX reference point;
-xgalley, which controls boxes receiving text for typesetting.
+xcoffins, which allows the alignment of boxes using a series of
+'handle' positions, supplementing the simple TeX reference
+point; xgalley, which controls boxes receiving text for
+typesetting.
 
 %package -n texlive-l3experimental-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70026
+Version:        %{texlive_version}.%{texlive_noarch}.svn71991
 Release:        0
 Summary:        Documentation for texlive-l3experimental
 License:        LPPL-1.0
@@ -44213,7 +44233,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/l3experimental/l3graphics/l3graphics.pdf
 %{_texmfdistdir}/doc/latex/l3experimental/l3opacity/l3opacity.pdf
 %{_texmfdistdir}/doc/latex/l3experimental/l3str/l3str-format.pdf
-%{_texmfdistdir}/doc/latex/l3experimental/l3sys-shell/l3sys-shell.pdf
 %{_texmfdistdir}/doc/latex/l3experimental/xcoffins/xcoffins.pdf
 %{_texmfdistdir}/doc/latex/l3experimental/xgalley/l3galley.pdf
 %{_texmfdistdir}/doc/latex/l3experimental/xgalley/xgalley.pdf
@@ -44224,13 +44243,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/l3experimental/l3graphics/l3graphics.sty
 %{_texmfdistdir}/tex/latex/l3experimental/l3opacity/l3opacity.sty
 %{_texmfdistdir}/tex/latex/l3experimental/l3str/l3str-format.sty
-%{_texmfdistdir}/tex/latex/l3experimental/l3sys-shell/l3sys-shell.sty
 %{_texmfdistdir}/tex/latex/l3experimental/xcoffins/xcoffins.sty
 %{_texmfdistdir}/tex/latex/l3experimental/xgalley/l3galley.sty
 %{_texmfdistdir}/tex/latex/l3experimental/xgalley/xgalley.sty
 
 %package -n texlive-l3kernel
-Version:        %{texlive_version}.%{texlive_noarch}.svn70026
+Version:        %{texlive_version}.%{texlive_noarch}.svn73651
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX3 programming conventions
@@ -44287,9 +44305,9 @@ Requires:       tex(fontenc.sty)
 Requires:       tex(hypdoc.sty)
 Requires:       tex(lmodern.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source261:      l3kernel.tar.xz
-Source262:      l3kernel.doc.tar.xz
+# from 20250308
+Source269:      l3kernel.tar.xz
+Source270:      l3kernel.doc.tar.xz
 
 %description -n texlive-l3kernel
 The l3kernel bundle provides an implementation of the LaTeX3
@@ -44300,7 +44318,7 @@ TeX programmers. The packages are set up so that the LaTeX3
 conventions can be used with regular LaTeX2e packages.
 
 %package -n texlive-l3kernel-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70026
+Version:        %{texlive_version}.%{texlive_noarch}.svn73651
 Release:        0
 Summary:        Documentation for texlive-l3kernel
 License:        LPPL-1.0
@@ -44401,8 +44419,177 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/l3kernel/l3str-enc-iso88598.def
 %{_texmfdistdir}/tex/latex/l3kernel/l3str-enc-iso88599.def
 
+%package -n texlive-l3kernel-dev
+Version:        %{texlive_version}.%{texlive_noarch}.svn73508
+Release:        0
+License:        LPPL-1.0
+Summary:        Development pre-release of l3kernel
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires:       texlive-l3backend-dev >= %{texlive_version}
+#!BuildIgnore: texlive-l3backend-dev
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-l3kernel-dev-doc >= %{texlive_version}
+Provides:       texdev(expl3-code.tex)
+Provides:       texdev(expl3-generic.tex)
+Provides:       texdev(expl3.sty)
+Provides:       texdev(l3debug.def)
+Provides:       texdev(l3doc.cls)
+Provides:       texdev(l3docstrip.tex)
+Provides:       texdev(l3str-enc-iso88591.def)
+Provides:       texdev(l3str-enc-iso885910.def)
+Provides:       texdev(l3str-enc-iso885911.def)
+Provides:       texdev(l3str-enc-iso885913.def)
+Provides:       texdev(l3str-enc-iso885914.def)
+Provides:       texdev(l3str-enc-iso885915.def)
+Provides:       texdev(l3str-enc-iso885916.def)
+Provides:       texdev(l3str-enc-iso88592.def)
+Provides:       texdev(l3str-enc-iso88593.def)
+Provides:       texdev(l3str-enc-iso88594.def)
+Provides:       texdev(l3str-enc-iso88595.def)
+Provides:       texdev(l3str-enc-iso88596.def)
+Provides:       texdev(l3str-enc-iso88597.def)
+Provides:       texdev(l3str-enc-iso88598.def)
+Provides:       texdev(l3str-enc-iso88599.def)
+Requires:       tex(hypdoc.sty)
+Requires:       tex(lmodern.sty)
+Requires:       texdev(article.cls)
+Requires:       texdev(calc.sty)
+Requires:       texdev(doc.sty)
+Requires:       texdev(fontenc.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source271:      l3kernel-dev.tar.xz
+Source272:      l3kernel-dev.doc.tar.xz
+
+%description -n texlive-l3kernel-dev
+This is a pre-release version of the l3kernel package. It
+accompanies the pre-testing kernel code (latex-base-dev), and
+is intended for testing by knowledgeable users.
+
+%package -n texlive-l3kernel-dev-doc
+Version:        %{texlive_version}.%{texlive_noarch}.svn73508
+Release:        0
+Summary:        Documentation for texlive-l3kernel-dev
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-l3kernel-dev and texlive-alldocumentation)
+
+%description -n texlive-l3kernel-dev-doc
+This package includes the documentation for texlive-l3kernel-dev
+
+%post -n texlive-l3kernel-dev
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-l3kernel-dev
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-l3kernel-dev
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-l3kernel-dev-doc
+%{_texmfdistdir}/doc/latex-dev/l3kernel/CHANGELOG.md
+%{_texmfdistdir}/doc/latex-dev/l3kernel/README.md
+%{_texmfdistdir}/doc/latex-dev/l3kernel/expl3.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/interface3.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/interface3.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3doc.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3docstrip.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news01.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news01.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news02.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news02.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news03.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news03.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news04.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news04.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news05.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news05.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news06.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news06.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news07.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news07.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news08.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news08.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news09.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news09.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news10.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news10.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news11.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news11.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news12.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3news12.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3obsolete.txt
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3prefixes.csv
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3prefixes.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3prefixes.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3styleguide.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3styleguide.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3syntax-changes.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3syntax-changes.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3term-glossary.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/l3term-glossary.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/source3.pdf
+%{_texmfdistdir}/doc/latex-dev/l3kernel/source3.tex
+%{_texmfdistdir}/doc/latex-dev/l3kernel/source3body.tex
+
+%files -n texlive-l3kernel-dev
+%{_texmfdistdir}/tex/latex-dev/l3kernel/expl3-code.tex
+%{_texmfdistdir}/tex/latex-dev/l3kernel/expl3-generic.tex
+%{_texmfdistdir}/tex/latex-dev/l3kernel/expl3.ltx
+%{_texmfdistdir}/tex/latex-dev/l3kernel/expl3.lua
+%{_texmfdistdir}/tex/latex-dev/l3kernel/expl3.sty
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3debug.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3doc.cls
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3docstrip.tex
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso88591.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso885910.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso885911.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso885913.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso885914.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso885915.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso885916.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso88592.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso88593.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso88594.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso88595.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso88596.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso88597.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso88598.def
+%{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso88599.def
+
 %package -n texlive-l3packages
-Version:        %{texlive_version}.%{texlive_noarch}.svn69983
+Version:        %{texlive_version}.%{texlive_noarch}.svn72128
 Release:        0
 License:        LPPL-1.0
 Summary:        High-level LaTeX3 concepts
@@ -44441,9 +44628,9 @@ Provides:       tex(xtemplate-2023-10-10.sty)
 Provides:       tex(xtemplate.sty)
 Requires:       tex(expl3.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source263:      l3packages.tar.xz
-Source264:      l3packages.doc.tar.xz
+# from 20250308
+Source273:      l3packages.tar.xz
+Source274:      l3packages.doc.tar.xz
 
 %description -n texlive-l3packages
 This collection deals with higher-level ideas such as the
@@ -44455,7 +44642,7 @@ the packages here are l3keys2e 2022-06-01 xfp 2022-06-01 xparse
 2020-10-01 xtemplate 2024-06-01
 
 %package -n texlive-l3packages-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn69983
+Version:        %{texlive_version}.%{texlive_noarch}.svn72128
 Release:        0
 Summary:        Documentation for texlive-l3packages
 License:        LPPL-1.0
@@ -44503,6 +44690,96 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/l3packages/xtemplate/xtemplate-2023-10-10.sty
 %{_texmfdistdir}/tex/latex/l3packages/xtemplate/xtemplate.sty
 
+%package -n texlive-l3sys-query
+Version:        %{texlive_version}.%{texlive_noarch}.svn70889
+Release:        0
+License:        LPPL-1.0
+Summary:        System queries for LaTeX using Lua
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-l3sys-query-bin >= %{texlive_version}
+#!BuildIgnore: texlive-l3sys-query-bin
+Requires:       texlive-luatex >= %{texlive_version}
+#!BuildIgnore: texlive-luatex
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-l3sys-query-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source275:      l3sys-query.tar.xz
+Source276:      l3sys-query.doc.tar.xz
+
+%description -n texlive-l3sys-query
+The l3sys-query script provides a method for TeX runs to obtain
+system information via shell escape to Lua. The facilities are
+more limited than the similar Java script texosquery, but since
+it uses Lua, l3sys-query can be used out of the box; with any
+installed TeX system. The script is written taking account of
+TeX Live security requirements; it is therefore suitable for
+use with restricted shell escape, the standard setting when
+installing a TeX system. The supported queries are lsDirectory
+listing supporting a range of options pwdObtaining details of
+the current working directory
+
+%package -n texlive-l3sys-query-doc
+Version:        %{texlive_version}.%{texlive_noarch}.svn70889
+Release:        0
+Summary:        Documentation for texlive-l3sys-query
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-l3sys-query and texlive-alldocumentation)
+Provides:       man(l3sys-query.1)
+
+%description -n texlive-l3sys-query-doc
+This package includes the documentation for texlive-l3sys-query
+
+%post -n texlive-l3sys-query
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-l3sys-query
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-l3sys-query
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-l3sys-query-doc
+%{_mandir}/man1/l3sys-query.1*
+%{_texmfdistdir}/doc/support/l3sys-query/CHANGELOG.md
+%{_texmfdistdir}/doc/support/l3sys-query/README.md
+%{_texmfdistdir}/doc/support/l3sys-query/SECURITY.md
+%{_texmfdistdir}/doc/support/l3sys-query/l3sys-query-tool.pdf
+%{_texmfdistdir}/doc/support/l3sys-query/l3sys-query-tool.tex
+
+%files -n texlive-l3sys-query
+%{_texmfdistdir}/scripts/l3sys-query/l3sys-query.lua
+
 %package -n texlive-labbook
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
 Release:        0
@@ -44535,9 +44812,9 @@ Provides:       tex(labbook.cls)
 Requires:       tex(makeidx.sty)
 Requires:       tex(scrbook.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source265:      labbook.tar.xz
-Source266:      labbook.doc.tar.xz
+# from 20250308
+Source277:      labbook.tar.xz
+Source278:      labbook.doc.tar.xz
 
 %description -n texlive-labbook
 This class is designed to typeset laboratory journals that
@@ -44620,9 +44897,9 @@ Suggests:       texlive-labels-doc >= %{texlive_version}
 Provides:       tex(labels.sty)
 Provides:       tex(olabels.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source267:      labels.tar.xz
-Source268:      labels.doc.tar.xz
+# from 20250308
+Source279:      labels.tar.xz
+Source280:      labels.doc.tar.xz
 
 %description -n texlive-labels
 A LaTeX package to print a regular grid of ragged-right labels
@@ -44738,9 +45015,9 @@ Provides:       tex(labels4easylist.sty)
 Requires:       tex(easylist.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source269:      labels4easylist.tar.xz
-Source270:      labels4easylist.doc.tar.xz
+# from 20250308
+Source281:      labels4easylist.tar.xz
+Source282:      labels4easylist.doc.tar.xz
 
 %description -n texlive-labels4easylist
 This package provides the \itemLabel macro for adding
@@ -44813,9 +45090,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-labelschanged-doc >= %{texlive_version}
 Provides:       tex(labelschanged.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source271:      labelschanged.tar.xz
-Source272:      labelschanged.doc.tar.xz
+# from 20250308
+Source283:      labelschanged.tar.xz
+Source284:      labelschanged.doc.tar.xz
 
 %description -n texlive-labelschanged
 Several conditions can cause LaTeX labels to keep changing, no
@@ -44894,9 +45171,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(picture.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source273:      labyrinth.tar.xz
-Source274:      labyrinth.doc.tar.xz
+# from 20250308
+Source285:      labyrinth.tar.xz
+Source286:      labyrinth.doc.tar.xz
 
 %description -n texlive-labyrinth
 The labyrinth package provides code and an environment for
@@ -44973,8 +45250,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(lacheck.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source275:      lacheck.doc.tar.xz
+# from 20250308
+Source287:      lacheck.doc.tar.xz
 
 %description -n texlive-lacheck
 Lacheck is a tool for finding common mistakes in LaTeX
@@ -45034,9 +45311,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source276:      ladder.tar.xz
-Source277:      ladder.doc.tar.xz
+# from 20250308
+Source288:      ladder.tar.xz
+Source289:      ladder.doc.tar.xz
 
 %description -n texlive-ladder
 This package permits the creation of simple ladder diagrams
@@ -45128,8 +45405,8 @@ Provides:       tex(ot1uctt.fd)
 Provides:       tex(ut1enc.def)
 Requires:       tex(grlccode.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source278:      lambda.tar.xz
+# from 20250308
+Source290:      lambda.tar.xz
 
 %description -n texlive-lambda
 The lambda package
@@ -45211,9 +45488,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lambda-lists-doc >= %{texlive_version}
 Provides:       tex(lambda.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source279:      lambda-lists.tar.xz
-Source280:      lambda-lists.doc.tar.xz
+# from 20250308
+Source291:      lambda-lists.tar.xz
+Source292:      lambda-lists.doc.tar.xz
 
 %description -n texlive-lambda-lists
 These list-processing macros avoid the reassignments employed
@@ -45293,9 +45570,9 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xtemplate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source281:      lambdax.tar.xz
-Source282:      lambdax.doc.tar.xz
+# from 20250308
+Source293:      lambdax.tar.xz
+Source294:      lambdax.doc.tar.xz
 
 %description -n texlive-lambdax
 This package provides Lambda expressions. It is an interface to
@@ -45371,9 +45648,9 @@ Suggests:       texlive-langcode-doc >= %{texlive_version}
 Provides:       tex(langcode.sty)
 Requires:       tex(dowith.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source283:      langcode.tar.xz
-Source284:      langcode.doc.tar.xz
+# from 20250308
+Source295:      langcode.tar.xz
+Source296:      langcode.doc.tar.xz
 
 %description -n texlive-langcode
 The package provides a command \uselangcode{<code>} to adjust
@@ -45458,9 +45735,9 @@ Provides:       tex(ln_langs_glot_native.tex)
 Provides:       tex(ln_langs_wals.tex)
 Provides:       tex(ln_langs_wals_native.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source285:      langnames.tar.xz
-Source286:      langnames.doc.tar.xz
+# from 20250308
+Source297:      langnames.tar.xz
+Source298:      langnames.doc.tar.xz
 
 %description -n texlive-langnames
 This package attempts to make the typing of language names,
@@ -45514,7 +45791,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/langnames/ln_langs_wals_native.tex
 
 %package -n texlive-langsci
-Version:        %{texlive_version}.%{texlive_noarch}.svn70025
+Version:        %{texlive_version}.%{texlive_noarch}.svn73027
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset books for publication with Language Science Press
@@ -45601,9 +45878,9 @@ Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source287:      langsci.tar.xz
-Source288:      langsci.doc.tar.xz
+# from 20250308
+Source299:      langsci.tar.xz
+Source300:      langsci.doc.tar.xz
 
 %description -n texlive-langsci
 This package allows you to typeset monographs and edited
@@ -45614,7 +45891,7 @@ references and indexes. Dust jackets for BoD and Createspace
 (print-on-demand service providers) can also be produced.
 
 %package -n texlive-langsci-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70025
+Version:        %{texlive_version}.%{texlive_noarch}.svn73027
 Release:        0
 Summary:        Documentation for texlive-langsci
 License:        LPPL-1.0
@@ -45646,11 +45923,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/xelatex/langsci/README.md
 %{_texmfdistdir}/doc/xelatex/langsci/documentation/langsci-doc.pdf
 %{_texmfdistdir}/doc/xelatex/langsci/documentation/langsci-doc.tex
-%{_texmfdistdir}/doc/xelatex/langsci/documentation/langsci-gb4.pdf
-%{_texmfdistdir}/doc/xelatex/langsci/documentation/langscitmp.bib
-%{_texmfdistdir}/doc/xelatex/langsci/examples/collection_tmp.bib
+%{_texmfdistdir}/doc/xelatex/langsci/documentation/langsci-gb4e.pdf
 %{_texmfdistdir}/doc/xelatex/langsci/examples/langsci-test.bib
-%{_texmfdistdir}/doc/xelatex/langsci/examples/langscitmp.bib
 %{_texmfdistdir}/doc/xelatex/langsci/examples/samplemonograph.pdf
 %{_texmfdistdir}/doc/xelatex/langsci/examples/samplemonograph.tex
 %{_texmfdistdir}/doc/xelatex/langsci/examples/samplepaper.pdf
@@ -45729,9 +46003,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source289:      langsci-avm.tar.xz
-Source290:      langsci-avm.doc.tar.xz
+# from 20250308
+Source301:      langsci-avm.tar.xz
+Source302:      langsci-avm.doc.tar.xz
 
 %description -n texlive-langsci-avm
 A package for typesetting feature structures, also known as
@@ -45809,9 +46083,9 @@ Suggests:       texlive-lapdf-doc >= %{texlive_version}
 Provides:       tex(lapdf.sty)
 Requires:       tex(calc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source291:      lapdf.tar.xz
-Source292:      lapdf.doc.tar.xz
+# from 20250308
+Source303:      lapdf.tar.xz
+Source304:      lapdf.doc.tar.xz
 
 %description -n texlive-lapdf
 The package provides the means to use PDF drawing primitives to
@@ -45966,9 +46240,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lastbib-doc >= %{texlive_version}
 Provides:       tex(lastbib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source293:      lastbib.tar.xz
-Source294:      lastbib.doc.tar.xz
+# from 20250308
+Source305:      lastbib.tar.xz
+Source306:      lastbib.doc.tar.xz
 
 %description -n texlive-lastbib
 The package records the number of citations in a document, and
@@ -46039,9 +46313,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lastpackage-doc >= %{texlive_version}
 Provides:       tex(lastpackage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source295:      lastpackage.tar.xz
-Source296:      lastpackage.doc.tar.xz
+# from 20250308
+Source307:      lastpackage.tar.xz
+Source308:      lastpackage.doc.tar.xz
 
 %description -n texlive-lastpackage
 This package may be used to define the last point where some
@@ -46086,7 +46360,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lastpackage/lastpackage.sty
 
 %package -n texlive-lastpage
-Version:        %{texlive_version}.%{texlive_noarch}.2.0esvn68557
+Version:        %{texlive_version}.%{texlive_noarch}.2.1esvn73639
 Release:        0
 License:        LPPL-1.0
 Summary:        Reference last page for Page N of M type footers
@@ -46119,9 +46393,9 @@ Provides:       tex(lastpage2e.sty)
 Provides:       tex(lastpageclassic.sty)
 Provides:       tex(lastpagemodern.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source297:      lastpage.tar.xz
-Source298:      lastpage.doc.tar.xz
+# from 20250308
+Source309:      lastpage.tar.xz
+Source310:      lastpage.doc.tar.xz
 
 %description -n texlive-lastpage
 Reference the number of pages in your LaTeX document through
@@ -46131,7 +46405,7 @@ document. It is particularly useful in the page footer that
 says: Page N of M.
 
 %package -n texlive-lastpage-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0esvn68557
+Version:        %{texlive_version}.%{texlive_noarch}.2.1esvn73639
 Release:        0
 Summary:        Documentation for texlive-lastpage
 License:        LPPL-1.0
@@ -46173,7 +46447,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lastpage/lastpagemodern.sty
 
 %package -n texlive-latex
-Version:        %{texlive_version}.%{texlive_noarch}.20231101_pl1svn69959
+Version:        %{texlive_version}.%{texlive_noarch}.svn73643
 Release:        0
 License:        LPPL-1.0
 Summary:        A TeX macro package that defines LaTeX
@@ -46215,6 +46489,7 @@ Provides:       tex(bk11.clo)
 Provides:       tex(bk12.clo)
 Provides:       tex(book.cls)
 Provides:       tex(book.sty)
+Provides:       tex(checkencodingsubset.tex)
 Provides:       tex(cp1250.def)
 Provides:       tex(cp1252.def)
 Provides:       tex(cp1257.def)
@@ -46354,9 +46629,9 @@ Requires:       tex(l3doc.cls)
 Requires:       tex(multicol.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source299:      latex.tar.xz
-Source300:      latex.doc.tar.xz
+# from 20250308
+Source311:      latex.tar.xz
+Source312:      latex.doc.tar.xz
 
 %description -n texlive-latex
 LaTeX is a widely-used macro package for TeX, providing many
@@ -46376,7 +46651,7 @@ of LaTeX. For downloading details, see the linked catalogue
 entries above.
 
 %package -n texlive-latex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20231101_pl1svn69959
+Version:        %{texlive_version}.%{texlive_noarch}.svn73643
 Release:        0
 Summary:        Documentation for texlive-latex
 License:        LPPL-1.0
@@ -46543,6 +46818,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/base/ltnews37.tex
 %{_texmfdistdir}/doc/latex/base/ltnews38.pdf
 %{_texmfdistdir}/doc/latex/base/ltnews38.tex
+%{_texmfdistdir}/doc/latex/base/ltnews39.pdf
+%{_texmfdistdir}/doc/latex/base/ltnews39.tex
+%{_texmfdistdir}/doc/latex/base/ltnews40.pdf
+%{_texmfdistdir}/doc/latex/base/ltnews40.tex
 %{_texmfdistdir}/doc/latex/base/ltpara-code.pdf
 %{_texmfdistdir}/doc/latex/base/ltpara-code.tex
 %{_texmfdistdir}/doc/latex/base/ltpara-doc.pdf
@@ -46559,6 +46838,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/base/ltsockets-code.tex
 %{_texmfdistdir}/doc/latex/base/ltsockets-doc.pdf
 %{_texmfdistdir}/doc/latex/base/ltsockets-doc.tex
+%{_texmfdistdir}/doc/latex/base/lttemplates-code.pdf
+%{_texmfdistdir}/doc/latex/base/lttemplates-code.tex
+%{_texmfdistdir}/doc/latex/base/lttemplates-doc.pdf
+%{_texmfdistdir}/doc/latex/base/lttemplates-doc.tex
 %{_texmfdistdir}/doc/latex/base/ltx3info.pdf
 %{_texmfdistdir}/doc/latex/base/ltx3info.tex
 %{_texmfdistdir}/doc/latex/base/ltxdoc.pdf
@@ -46603,6 +46886,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/base/bk12.clo
 %{_texmfdistdir}/tex/latex/base/book.cls
 %{_texmfdistdir}/tex/latex/base/book.sty
+%{_texmfdistdir}/tex/latex/base/checkencodingsubset.tex
 %{_texmfdistdir}/tex/latex/base/cp1250.def
 %{_texmfdistdir}/tex/latex/base/cp1252.def
 %{_texmfdistdir}/tex/latex/base/cp1257.def
@@ -46756,7 +47040,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/base/x2enc.dfu
 
 %package -n texlive-latex-bin
-Version:        %{texlive_version}.%{texlive_noarch}.svn70501
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX executables and man pages
@@ -46779,6 +47063,8 @@ Requires:       texlive-hyph-utf8 >= %{texlive_version}
 #!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
 #!BuildIgnore: texlive-hyphen-base
+Requires:       texlive-knuth-lib >= %{texlive_version}
+#!BuildIgnore: texlive-knuth-lib
 Requires:       texlive-l3backend >= %{texlive_version}
 #!BuildIgnore: texlive-l3backend
 Requires:       texlive-l3kernel >= %{texlive_version}
@@ -46862,8 +47148,8 @@ Provides:       man(lualatex.1)
 Provides:       man(pdflatex.1)
 Suggests:       man(pdftex.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source301:      latex-bin.doc.tar.xz
+# from 20250308
+Source313:      latex-bin.doc.tar.xz
 
 %description -n texlive-latex-bin
 The latex-bin package
@@ -46969,6 +47255,18 @@ fi
 > /var/run/texlive/run-fmtutil.lualatex
 > /var/run/texlive/run-fmtutil.pdflatex
 
+%triggerin -n texlive-latex-bin -- texlive-knuth-lib
+> /var/run/texlive/run-fmtutil.dvilualatex
+> /var/run/texlive/run-fmtutil.latex
+> /var/run/texlive/run-fmtutil.lualatex
+> /var/run/texlive/run-fmtutil.pdflatex
+
+%triggerun -n texlive-latex-bin -- texlive-knuth-lib
+> /var/run/texlive/run-fmtutil.dvilualatex
+> /var/run/texlive/run-fmtutil.latex
+> /var/run/texlive/run-fmtutil.lualatex
+> /var/run/texlive/run-fmtutil.pdflatex
+
 %triggerin -n texlive-latex-bin -- texlive-l3backend
 > /var/run/texlive/run-fmtutil.dvilualatex
 > /var/run/texlive/run-fmtutil.latex
@@ -47017,18 +47315,6 @@ fi
 > /var/run/texlive/run-fmtutil.lualatex
 > /var/run/texlive/run-fmtutil.pdflatex
 
-%triggerin -n texlive-latex-bin -- texlive-latexconfig
-> /var/run/texlive/run-fmtutil.dvilualatex
-> /var/run/texlive/run-fmtutil.latex
-> /var/run/texlive/run-fmtutil.lualatex
-> /var/run/texlive/run-fmtutil.pdflatex
-
-%triggerun -n texlive-latex-bin -- texlive-latexconfig
-> /var/run/texlive/run-fmtutil.dvilualatex
-> /var/run/texlive/run-fmtutil.latex
-> /var/run/texlive/run-fmtutil.lualatex
-> /var/run/texlive/run-fmtutil.pdflatex
-
 %triggerin -n texlive-latex-bin -- texlive-tex-ini-files
 > /var/run/texlive/run-fmtutil.dvilualatex
 > /var/run/texlive/run-fmtutil.latex
@@ -47064,7 +47350,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/pdflatex.1*
 
 %package -n texlive-latex-amsmath-dev
-Version:        %{texlive_version}.%{texlive_noarch}.20240601_pre_release_0svn68730
+Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
 Release:        0
 License:        LPPL-1.0
 Summary:        Development pre-release of the LaTeX amsmath bundle
@@ -47101,9 +47387,9 @@ Provides:       texdev(amstex.sty)
 Provides:       texdev(amstext.sty)
 Provides:       texdev(amsxtra.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source302:      latex-amsmath-dev.tar.xz
-Source303:      latex-amsmath-dev.doc.tar.xz
+# from 20250308
+Source314:      latex-amsmath-dev.tar.xz
+Source315:      latex-amsmath-dev.doc.tar.xz
 
 %description -n texlive-latex-amsmath-dev
 This is a pre-release version of the standard LaTeX amsmath
@@ -47112,7 +47398,7 @@ bundle. It accompanies the pre-testing kernel code
 users.
 
 %package -n texlive-latex-amsmath-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20240601_pre_release_0svn68730
+Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
 Release:        0
 Summary:        Documentation for texlive-latex-amsmath-dev
 License:        LPPL-1.0
@@ -47176,7 +47462,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/amsmath/amsxtra.sty
 
 %package -n texlive-latex-base-dev
-Version:        %{texlive_version}.%{texlive_noarch}.20240601_pre_release_1svn69860
+Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
 Release:        0
 License:        LPPL-1.0
 Summary:        Development pre-release of the LaTeX kernel
@@ -47353,13 +47639,13 @@ Provides:       texdev(utf8-2018.def)
 Provides:       texdev(utf8.def)
 Requires:       tex(hypdoc.sty)
 Requires:       tex(hyperref.sty)
-Requires:       tex(l3doc.cls)
 Requires:       tex(url.sty)
+Requires:       texdev(l3doc.cls)
 Requires:       texdev(multicol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source304:      latex-base-dev.tar.xz
-Source305:      latex-base-dev.doc.tar.xz
+# from 20250308
+Source316:      latex-base-dev.tar.xz
+Source317:      latex-base-dev.doc.tar.xz
 
 %description -n texlive-latex-base-dev
 This package provides a testing release for upcoming LaTeX2e
@@ -47371,7 +47657,7 @@ to create dedicated formats, for example pdflatex-dev, which
 can then be used explicitly for testing.
 
 %package -n texlive-latex-base-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20240601_pre_release_1svn69860
+Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
 Release:        0
 Summary:        Documentation for texlive-latex-base-dev
 License:        LPPL-1.0
@@ -47540,6 +47826,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex-dev/base/ltnews38.tex
 %{_texmfdistdir}/doc/latex-dev/base/ltnews39.pdf
 %{_texmfdistdir}/doc/latex-dev/base/ltnews39.tex
+%{_texmfdistdir}/doc/latex-dev/base/ltnews40.pdf
+%{_texmfdistdir}/doc/latex-dev/base/ltnews40.tex
+%{_texmfdistdir}/doc/latex-dev/base/ltnews41.pdf
+%{_texmfdistdir}/doc/latex-dev/base/ltnews41.tex
 %{_texmfdistdir}/doc/latex-dev/base/ltpara-code.pdf
 %{_texmfdistdir}/doc/latex-dev/base/ltpara-code.tex
 %{_texmfdistdir}/doc/latex-dev/base/ltpara-doc.pdf
@@ -47556,6 +47846,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex-dev/base/ltsockets-code.tex
 %{_texmfdistdir}/doc/latex-dev/base/ltsockets-doc.pdf
 %{_texmfdistdir}/doc/latex-dev/base/ltsockets-doc.tex
+%{_texmfdistdir}/doc/latex-dev/base/lttemplates-code.pdf
+%{_texmfdistdir}/doc/latex-dev/base/lttemplates-code.tex
+%{_texmfdistdir}/doc/latex-dev/base/lttemplates-doc.pdf
+%{_texmfdistdir}/doc/latex-dev/base/lttemplates-doc.tex
 %{_texmfdistdir}/doc/latex-dev/base/ltx3info.pdf
 %{_texmfdistdir}/doc/latex-dev/base/ltx3info.tex
 %{_texmfdistdir}/doc/latex-dev/base/ltxdoc.pdf
@@ -47752,7 +48046,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/base/x2enc.dfu
 
 %package -n texlive-latex-bin-dev
-Version:        %{texlive_version}.%{texlive_noarch}.svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX pre-release executables and formats
@@ -47764,18 +48058,16 @@ Requires:       texlive-cm >= %{texlive_version}
 #!BuildIgnore: texlive-cm
 Requires:       texlive-dehyph >= %{texlive_version}
 #!BuildIgnore: texlive-dehyph
-Requires:       texlive-firstaid >= %{texlive_version}
-#!BuildIgnore: texlive-firstaid
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
 #!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
 #!BuildIgnore: texlive-hyphen-base
-Requires:       texlive-l3backend >= %{texlive_version}
-#!BuildIgnore: texlive-l3backend
-Requires:       texlive-l3kernel >= %{texlive_version}
-#!BuildIgnore: texlive-l3kernel
-Requires:       texlive-latex >= %{texlive_version}
-#!BuildIgnore: texlive-latex
+Requires:       texlive-knuth-lib >= %{texlive_version}
+#!BuildIgnore: texlive-knuth-lib
+Requires:       texlive-l3backend-dev >= %{texlive_version}
+#!BuildIgnore: texlive-l3backend-dev
+Requires:       texlive-l3kernel-dev >= %{texlive_version}
+#!BuildIgnore: texlive-l3kernel-dev
 Requires:       texlive-latex-base-dev >= %{texlive_version}
 #!BuildIgnore: texlive-latex-base-dev
 Requires(pre):  texlive-latex-bin-dev-bin >= %{texlive_version}
@@ -47847,8 +48139,8 @@ Provides:       man(platex-dev.1)
 Provides:       man(uplatex-dev.1)
 Provides:       man(xelatex-dev.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source306:      latex-bin-dev.doc.tar.xz
+# from 20250308
+Source318:      latex-bin-dev.doc.tar.xz
 
 %description -n texlive-latex-bin-dev
 See the latex-base-dev package for information.
@@ -47918,18 +48210,6 @@ fi
 > /var/run/texlive/run-fmtutil.lualatex-dev
 > /var/run/texlive/run-fmtutil.pdflatex-dev
 
-%triggerin -n texlive-latex-bin-dev -- texlive-firstaid
-> /var/run/texlive/run-fmtutil.dvilualatex-dev
-> /var/run/texlive/run-fmtutil.latex-dev
-> /var/run/texlive/run-fmtutil.lualatex-dev
-> /var/run/texlive/run-fmtutil.pdflatex-dev
-
-%triggerun -n texlive-latex-bin-dev -- texlive-firstaid
-> /var/run/texlive/run-fmtutil.dvilualatex-dev
-> /var/run/texlive/run-fmtutil.latex-dev
-> /var/run/texlive/run-fmtutil.lualatex-dev
-> /var/run/texlive/run-fmtutil.pdflatex-dev
-
 %triggerin -n texlive-latex-bin-dev -- texlive-hyph-utf8
 > /var/run/texlive/run-fmtutil.dvilualatex-dev
 > /var/run/texlive/run-fmtutil.latex-dev
@@ -47954,37 +48234,37 @@ fi
 > /var/run/texlive/run-fmtutil.lualatex-dev
 > /var/run/texlive/run-fmtutil.pdflatex-dev
 
-%triggerin -n texlive-latex-bin-dev -- texlive-l3backend
+%triggerin -n texlive-latex-bin-dev -- texlive-knuth-lib
 > /var/run/texlive/run-fmtutil.dvilualatex-dev
 > /var/run/texlive/run-fmtutil.latex-dev
 > /var/run/texlive/run-fmtutil.lualatex-dev
 > /var/run/texlive/run-fmtutil.pdflatex-dev
 
-%triggerun -n texlive-latex-bin-dev -- texlive-l3backend
+%triggerun -n texlive-latex-bin-dev -- texlive-knuth-lib
 > /var/run/texlive/run-fmtutil.dvilualatex-dev
 > /var/run/texlive/run-fmtutil.latex-dev
 > /var/run/texlive/run-fmtutil.lualatex-dev
 > /var/run/texlive/run-fmtutil.pdflatex-dev
 
-%triggerin -n texlive-latex-bin-dev -- texlive-l3kernel
+%triggerin -n texlive-latex-bin-dev -- texlive-l3backend-dev
 > /var/run/texlive/run-fmtutil.dvilualatex-dev
 > /var/run/texlive/run-fmtutil.latex-dev
 > /var/run/texlive/run-fmtutil.lualatex-dev
 > /var/run/texlive/run-fmtutil.pdflatex-dev
 
-%triggerun -n texlive-latex-bin-dev -- texlive-l3kernel
+%triggerun -n texlive-latex-bin-dev -- texlive-l3backend-dev
 > /var/run/texlive/run-fmtutil.dvilualatex-dev
 > /var/run/texlive/run-fmtutil.latex-dev
 > /var/run/texlive/run-fmtutil.lualatex-dev
 > /var/run/texlive/run-fmtutil.pdflatex-dev
 
-%triggerin -n texlive-latex-bin-dev -- texlive-latex
+%triggerin -n texlive-latex-bin-dev -- texlive-l3kernel-dev
 > /var/run/texlive/run-fmtutil.dvilualatex-dev
 > /var/run/texlive/run-fmtutil.latex-dev
 > /var/run/texlive/run-fmtutil.lualatex-dev
 > /var/run/texlive/run-fmtutil.pdflatex-dev
 
-%triggerun -n texlive-latex-bin-dev -- texlive-latex
+%triggerun -n texlive-latex-bin-dev -- texlive-l3kernel-dev
 > /var/run/texlive/run-fmtutil.dvilualatex-dev
 > /var/run/texlive/run-fmtutil.latex-dev
 > /var/run/texlive/run-fmtutil.lualatex-dev
@@ -48021,18 +48301,6 @@ fi
 > /var/run/texlive/run-fmtutil.pdflatex-dev
 
 %triggerun -n texlive-latex-bin-dev -- texlive-latex-fonts
-> /var/run/texlive/run-fmtutil.dvilualatex-dev
-> /var/run/texlive/run-fmtutil.latex-dev
-> /var/run/texlive/run-fmtutil.lualatex-dev
-> /var/run/texlive/run-fmtutil.pdflatex-dev
-
-%triggerin -n texlive-latex-bin-dev -- texlive-latexconfig
-> /var/run/texlive/run-fmtutil.dvilualatex-dev
-> /var/run/texlive/run-fmtutil.latex-dev
-> /var/run/texlive/run-fmtutil.lualatex-dev
-> /var/run/texlive/run-fmtutil.pdflatex-dev
-
-%triggerun -n texlive-latex-bin-dev -- texlive-latexconfig
 > /var/run/texlive/run-fmtutil.dvilualatex-dev
 > /var/run/texlive/run-fmtutil.latex-dev
 > /var/run/texlive/run-fmtutil.lualatex-dev
@@ -48115,8 +48383,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source307:      latex-brochure.doc.tar.xz
+# from 20250308
+Source319:      latex-brochure.doc.tar.xz
 
 %description -n texlive-latex-brochure
 The document is designed as a publicity flyer for LaTeX, but
@@ -48196,9 +48464,9 @@ Suggests:       texlive-latex-context-ppchtex-doc >= %{texlive_version}
 Provides:       tex(m-pictex.sty)
 Requires:       tex(pictex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source308:      latex-context-ppchtex.tar.xz
-Source309:      latex-context-ppchtex.doc.tar.xz
+# from 20250308
+Source320:      latex-context-ppchtex.tar.xz
+Source321:      latex-context-ppchtex.doc.tar.xz
 
 %description -n texlive-latex-context-ppchtex
 m-pictex.sty was a wrapper for a ConTeXt module making picTeX
@@ -48270,8 +48538,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source310:      latex-course.doc.tar.xz
+# from 20250308
+Source322:      latex-course.doc.tar.xz
 
 %description -n texlive-latex-course
 A brief Beamer-based slide presentation on LaTeX, based on
@@ -48306,7 +48574,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-course/beamercolorthemeross.sty
 
 %package -n texlive-latex-doc-ptr
-Version:        %{texlive_version}.%{texlive_noarch}.svn57311
+Version:        %{texlive_version}.%{texlive_noarch}.svn72417
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        A direction-finder for LaTeX resources available online
@@ -48333,8 +48601,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source311:      latex-doc-ptr.doc.tar.xz
+# from 20250308
+Source323:      latex-doc-ptr.doc.tar.xz
 
 %description -n texlive-latex-doc-ptr
 A brief set of recommendations for users who need online
@@ -48366,7 +48634,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-doc-ptr/README
 %{_texmfdistdir}/doc/latex/latex-doc-ptr/dash.sty
 %{_texmfdistdir}/doc/latex/latex-doc-ptr/latex-doc-ptr.css
-%{_texmfdistdir}/doc/latex/latex-doc-ptr/latex-doc-ptr.css.replacement
 %{_texmfdistdir}/doc/latex/latex-doc-ptr/latex-doc-ptr.html
 %{_texmfdistdir}/doc/latex/latex-doc-ptr/latex-doc-ptr.pdf
 %{_texmfdistdir}/doc/latex/latex-doc-ptr/latex-doc-ptr.sty
@@ -48374,7 +48641,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-doc-ptr/massage_html.awk
 
 %package -n texlive-latex-firstaid-dev
-Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn68730
+Version:        %{texlive_version}.%{texlive_noarch}.1.1msvn74211
 Release:        0
 License:        LPPL-1.0
 Summary:        Development pre-release of the LaTeX firstaid package
@@ -48404,9 +48671,9 @@ Suggests:       texlive-latex-firstaid-dev-doc >= %{texlive_version}
 Provides:       texdev(filehook-ltx.sty)
 Provides:       texdev(underscore-ltx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source312:      latex-firstaid-dev.tar.xz
-Source313:      latex-firstaid-dev.doc.tar.xz
+# from 20250308
+Source324:      latex-firstaid-dev.tar.xz
+Source325:      latex-firstaid-dev.doc.tar.xz
 
 %description -n texlive-latex-firstaid-dev
 This is a pre-release version of the standard LaTeX firstaid
@@ -48415,7 +48682,7 @@ package. It accompanies the pre-testing kernel code
 users.
 
 %package -n texlive-latex-firstaid-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn68730
+Version:        %{texlive_version}.%{texlive_noarch}.1.1msvn74211
 Release:        0
 Summary:        Documentation for texlive-latex-firstaid-dev
 License:        LPPL-1.0
@@ -48505,9 +48772,9 @@ Provides:       tex(lcmssi8.tfm)
 Provides:       tex(line10.tfm)
 Provides:       tex(linew10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source314:      latex-fonts.tar.xz
-Source315:      latex-fonts.doc.tar.xz
+# from 20250308
+Source326:      latex-fonts.tar.xz
+Source327:      latex-fonts.doc.tar.xz
 
 %description -n texlive-latex-fonts
 This is a collection of fonts for use with standard LaTeX
@@ -48635,8 +48902,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source316:      latex-for-undergraduates.doc.tar.xz
+# from 20250308
+Source328:      latex-for-undergraduates.doc.tar.xz
 
 %description -n texlive-latex-for-undergraduates
 A tutorial aimed at introducing undergraduate students to
@@ -48679,7 +48946,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-for-undergraduates/images/whiteboard.jpeg
 
 %package -n texlive-latex-git-log
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn54010
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn71402
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Typeset git log information
@@ -48710,6 +48977,8 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latex-git-log-doc >= %{texlive_version}
 Requires:       perl(Cwd)
 #!BuildIgnore:  perl(Cwd)
+Requires:       perl(English)
+#!BuildIgnore:  perl(English)
 Requires:       perl(File::Basename)
 #!BuildIgnore:  perl(File::Basename)
 Requires:       perl(Getopt::Long)
@@ -48733,9 +49002,9 @@ Requires:       perl(utf8)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source317:      latex-git-log.tar.xz
-Source318:      latex-git-log.doc.tar.xz
+# from 20250308
+Source329:      latex-git-log.tar.xz
+Source330:      latex-git-log.doc.tar.xz
 
 %description -n texlive-latex-git-log
 The program is run within a git repository, and outputs the
@@ -48744,7 +49013,7 @@ typically be redirected to a file; the author recommends
 typesetting in landscape orientation.
 
 %package -n texlive-latex-git-log-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn54010
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn71402
 Release:        0
 Summary:        Documentation for texlive-latex-git-log
 License:        GPL-2.0-or-later
@@ -48812,8 +49081,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source319:      latex-graphics-companion.doc.tar.xz
+# from 20250308
+Source331:      latex-graphics-companion.doc.tar.xz
 
 %description -n texlive-latex-graphics-companion
 The source of the examples printed in the book, together with
@@ -49276,7 +49545,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-graphics-companion/yearw.dat
 
 %package -n texlive-latex-graphics-dev
-Version:        %{texlive_version}.%{texlive_noarch}.20240601_pre_release_0svn68730
+Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
 Release:        0
 License:        LPPL-1.0
 Summary:        Development pre-release of the LaTeX graphics bundle
@@ -49327,9 +49596,9 @@ Provides:       texdev(trig.sty)
 Provides:       texdev(truetex.def)
 Requires:       texdev(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source320:      latex-graphics-dev.tar.xz
-Source321:      latex-graphics-dev.doc.tar.xz
+# from 20250308
+Source332:      latex-graphics-dev.tar.xz
+Source333:      latex-graphics-dev.doc.tar.xz
 
 %description -n texlive-latex-graphics-dev
 This is a pre-release version of the standard LaTeX graphics
@@ -49338,7 +49607,7 @@ bundle. It accompanies the pre-testing kernel code
 users.
 
 %package -n texlive-latex-graphics-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20240601_pre_release_0svn68730
+Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
 Release:        0
 Summary:        Documentation for texlive-latex-graphics-dev
 License:        LPPL-1.0
@@ -49409,7 +49678,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/graphics/truetex.def
 
 %package -n texlive-latex-lab
-Version:        %{texlive_version}.%{texlive_noarch}.svn68720
+Version:        %{texlive_version}.%{texlive_noarch}.20241101_pl2svn73665
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX laboratory
@@ -49443,6 +49712,7 @@ Provides:       tex(latex-lab-testphase-block.sty)
 Provides:       tex(latex-lab-testphase-firstaid.sty)
 Provides:       tex(latex-lab-testphase-float.sty)
 Provides:       tex(latex-lab-testphase-graphic.sty)
+Provides:       tex(latex-lab-testphase-marginpar.sty)
 Provides:       tex(latex-lab-testphase-math.sty)
 Provides:       tex(latex-lab-testphase-minipage.sty)
 Provides:       tex(latex-lab-testphase-new-or-1.sty)
@@ -49450,17 +49720,17 @@ Provides:       tex(latex-lab-testphase-new-or-2.sty)
 Provides:       tex(latex-lab-testphase-sec.sty)
 Provides:       tex(latex-lab-testphase-table.sty)
 Provides:       tex(latex-lab-testphase-text.sty)
+Provides:       tex(latex-lab-testphase-title.sty)
 Provides:       tex(latex-lab-testphase-toc.sty)
 Provides:       tex(tagpdf-ns-latex-lab.def)
 Requires:       tex(array.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(l3opacity.sty)
-Requires:       tex(xtemplate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source322:      latex-lab.tar.xz
-Source323:      latex-lab.doc.tar.xz
+# from 20250308
+Source334:      latex-lab.tar.xz
+Source335:      latex-lab.doc.tar.xz
 
 %description -n texlive-latex-lab
 This bundle holds optional files that are loaded in certain
@@ -49475,7 +49745,7 @@ documents (i.e., they aren't packages), so the process is
 transparent to documents already using the new functionality.
 
 %package -n texlive-latex-lab-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn68720
+Version:        %{texlive_version}.%{texlive_noarch}.20241101_pl2svn73665
 Release:        0
 Summary:        Documentation for texlive-latex-lab
 License:        LPPL-1.0
@@ -49521,6 +49791,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-float.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-footnotes.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-graphic.pdf
+%{_texmfdistdir}/doc/latex/latex-lab/latex-lab-marginpar.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-math.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-mathpkg.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-mathtools.pdf
@@ -49532,6 +49803,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-table.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-testphase.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-text.pdf
+%{_texmfdistdir}/doc/latex/latex-lab/latex-lab-title.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-toc-hyperref-changes.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-toc-kernel-changes.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-toc.pdf
@@ -49556,6 +49828,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-firstaid.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-float.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-graphic.sty
+%{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-marginpar.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-math.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-minipage.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-new-or-1.sty
@@ -49563,7 +49836,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-sec.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-table.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-text.sty
+%{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-title.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-toc.sty
+%{_texmfdistdir}/tex/latex/latex-lab/marginpar-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/math-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/minipage-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/new-or-1-latex-lab-testphase.ltx
@@ -49573,13 +49848,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/latex-lab/phase-III-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/sec-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/table-latex-lab-testphase.ltx
+%{_texmfdistdir}/tex/latex/latex-lab/tabular-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/tagpdf-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/tagpdf-ns-latex-lab.def
 %{_texmfdistdir}/tex/latex/latex-lab/text-latex-lab-testphase.ltx
+%{_texmfdistdir}/tex/latex/latex-lab/title-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/toc-latex-lab-testphase.ltx
 
 %package -n texlive-latex-lab-dev
-Version:        %{texlive_version}.%{texlive_noarch}.20240601_pre_release_1svn69860
+Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX laboratory: Development pre-release
@@ -49624,14 +49901,13 @@ Provides:       texdev(latex-lab-testphase-text.sty)
 Provides:       texdev(latex-lab-testphase-title.sty)
 Provides:       texdev(latex-lab-testphase-toc.sty)
 Provides:       texdev(tagpdf-ns-latex-lab.def)
-Requires:       tex(etoolbox.sty)
 Requires:       tex(l3opacity.sty)
 Requires:       texdev(array.sty)
 Requires:       texdev(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source324:      latex-lab-dev.tar.xz
-Source325:      latex-lab-dev.doc.tar.xz
+# from 20250308
+Source336:      latex-lab-dev.tar.xz
+Source337:      latex-lab-dev.doc.tar.xz
 
 %description -n texlive-latex-lab-dev
 This package provides a testing release for upcoming changes to
@@ -49641,7 +49917,7 @@ pre-testing kernel code (latex-base-dev), and is intended for
 testing by knowledgeable users.
 
 %package -n texlive-latex-lab-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20240601_pre_release_1svn69860
+Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
 Release:        0
 Summary:        Documentation for texlive-latex-lab-dev
 License:        LPPL-1.0
@@ -49689,6 +49965,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-graphic.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-marginpar.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-math.pdf
+%{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-mathintent.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-mathpkg.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-mathtools.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-minipage.pdf
@@ -49703,6 +49980,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-toc-hyperref-changes.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-toc-kernel-changes.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-toc.pdf
+%{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-unicode-math.pdf
 
 %files -n texlive-latex-lab-dev
 %{_texmfdistdir}/tex/latex-dev/latex-lab/bib-latex-lab-testphase.ltx
@@ -49717,6 +49995,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-footnotes.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-kernel-changes.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-math.ltx
+%{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-mathintent.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-mathpkg.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-mathtools.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-bib.sty
@@ -49734,6 +50013,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-text.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-title.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-toc.sty
+%{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-unicode-math.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/marginpar-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/math-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/minipage-latex-lab-testphase.ltx
@@ -49798,9 +50078,9 @@ Requires:       tex(thumbpdf.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source326:      latex-make.tar.xz
-Source327:      latex-make.doc.tar.xz
+# from 20250308
+Source338:      latex-make.tar.xz
+Source339:      latex-make.doc.tar.xz
 
 %description -n texlive-latex-make
 This package provides several tools that aim to simplify the
@@ -49892,8 +50172,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source328:      latex-mr.doc.tar.xz
+# from 20250308
+Source340:      latex-mr.doc.tar.xz
 
 %description -n texlive-latex-mr
 The package provides a short guide to LaTeX and specifically to
@@ -49956,8 +50236,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source329:      latex-notes-zh-cn.doc.tar.xz
+# from 20250308
+Source341:      latex-notes-zh-cn.doc.tar.xz
 
 %description -n texlive-latex-notes-zh-cn
 The document is an introduction to TeX/LaTeX, in Chinese. It
@@ -50069,9 +50349,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latex-papersize-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source330:      latex-papersize.tar.xz
-Source331:      latex-papersize.doc.tar.xz
+# from 20250308
+Source342:      latex-papersize.tar.xz
+Source343:      latex-papersize.doc.tar.xz
 
 %description -n texlive-latex-papersize
 The package is a Python script, whose typical use is when
@@ -50144,8 +50424,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source332:      latex-refsheet.doc.tar.xz
+# from 20250308
+Source344:      latex-refsheet.doc.tar.xz
 
 %description -n texlive-latex-refsheet
 This LaTeX Reference Sheet is for writing a thesis using the
@@ -50184,7 +50464,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-refsheet/thesis.tex
 
 %package -n texlive-latex-tools-dev
-Version:        %{texlive_version}.%{texlive_noarch}.20240601_pre_release_1svn69860
+Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
 Release:        0
 License:        LPPL-1.0
 Summary:        Development pre-release of the LaTeX tools bundle
@@ -50228,11 +50508,13 @@ Provides:       texdev(ftnright.sty)
 Provides:       texdev(h.tex)
 Provides:       texdev(hhline.sty)
 Provides:       texdev(indentfirst.sty)
+Provides:       texdev(l3sys-query.sty)
 Provides:       texdev(layout.sty)
 Provides:       texdev(longtable-2020-01-07.sty)
 Provides:       texdev(longtable.sty)
 Provides:       texdev(multicol-2017-04-11.sty)
 Provides:       texdev(multicol-2019-10-01.sty)
+Provides:       texdev(multicol-2024-05-23.sty)
 Provides:       texdev(multicol.sty)
 Provides:       texdev(q.tex)
 Provides:       texdev(r.tex)
@@ -50256,13 +50538,14 @@ Provides:       texdev(varioref.sty)
 Provides:       texdev(verbatim.sty)
 Provides:       texdev(verbtest.tex)
 Provides:       texdev(x.tex)
+Provides:       texdev(xr-2023-07-04.sty)
 Provides:       texdev(xr.sty)
 Provides:       texdev(xspace.sty)
 Requires:       texdev(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source333:      latex-tools-dev.tar.xz
-Source334:      latex-tools-dev.doc.tar.xz
+# from 20250308
+Source345:      latex-tools-dev.tar.xz
+Source346:      latex-tools-dev.doc.tar.xz
 
 %description -n texlive-latex-tools-dev
 This is a pre-release version of the standard LaTeX tools
@@ -50271,7 +50554,7 @@ bundle. It accompanies the pre-testing kernel code
 users.
 
 %package -n texlive-latex-tools-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20240601_pre_release_1svn69860
+Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
 Release:        0
 Summary:        Documentation for texlive-latex-tools-dev
 License:        LPPL-1.0
@@ -50314,6 +50597,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex-dev/tools/ftnright.pdf
 %{_texmfdistdir}/doc/latex-dev/tools/hhline.pdf
 %{_texmfdistdir}/doc/latex-dev/tools/indentfirst.pdf
+%{_texmfdistdir}/doc/latex-dev/tools/l3sys-query.pdf
 %{_texmfdistdir}/doc/latex-dev/tools/layout.pdf
 %{_texmfdistdir}/doc/latex-dev/tools/longtable.pdf
 %{_texmfdistdir}/doc/latex-dev/tools/manifest.txt
@@ -50351,11 +50635,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/tools/h.tex
 %{_texmfdistdir}/tex/latex-dev/tools/hhline.sty
 %{_texmfdistdir}/tex/latex-dev/tools/indentfirst.sty
+%{_texmfdistdir}/tex/latex-dev/tools/l3sys-query.sty
 %{_texmfdistdir}/tex/latex-dev/tools/layout.sty
 %{_texmfdistdir}/tex/latex-dev/tools/longtable-2020-01-07.sty
 %{_texmfdistdir}/tex/latex-dev/tools/longtable.sty
 %{_texmfdistdir}/tex/latex-dev/tools/multicol-2017-04-11.sty
 %{_texmfdistdir}/tex/latex-dev/tools/multicol-2019-10-01.sty
+%{_texmfdistdir}/tex/latex-dev/tools/multicol-2024-05-23.sty
 %{_texmfdistdir}/tex/latex-dev/tools/multicol.sty
 %{_texmfdistdir}/tex/latex-dev/tools/q.tex
 %{_texmfdistdir}/tex/latex-dev/tools/r.tex
@@ -50379,6 +50665,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/tools/verbatim.sty
 %{_texmfdistdir}/tex/latex-dev/tools/verbtest.tex
 %{_texmfdistdir}/tex/latex-dev/tools/x.tex
+%{_texmfdistdir}/tex/latex-dev/tools/xr-2023-07-04.sty
 %{_texmfdistdir}/tex/latex-dev/tools/xr.sty
 %{_texmfdistdir}/tex/latex-dev/tools/xspace.sty
 
@@ -50422,9 +50709,9 @@ Requires:       tex(tgheros.sty)
 Requires:       tex(tgtermes.sty)
 Requires:       tex(unicode-math.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source335:      latex-uni8.tar.xz
-Source336:      latex-uni8.doc.tar.xz
+# from 20250308
+Source347:      latex-uni8.tar.xz
+Source348:      latex-uni8.doc.tar.xz
 
 %description -n texlive-latex-uni8
 This package provides a LaTeX style file which makes it easy to
@@ -50512,8 +50799,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source337:      latex-veryshortguide.doc.tar.xz
+# from 20250308
+Source349:      latex-veryshortguide.doc.tar.xz
 
 %description -n texlive-latex-veryshortguide
 This is a 4-page reminder of what LaTeX does. It is designed
@@ -50553,9 +50840,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-veryshortguide/vsg.tex
 
 %package -n texlive-latex-via-exemplos
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.10svn68627
+Version:        %{texlive_version}.%{texlive_noarch}.svn73369
 Release:        0
-License:        GPL-2.0-or-later
+License:        LPPL-1.0
 Summary:        A LaTeX course written in brazilian portuguese language
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
@@ -50580,8 +50867,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source338:      latex-via-exemplos.doc.tar.xz
+# from 20250308
+Source350:      latex-via-exemplos.doc.tar.xz
 
 %description -n texlive-latex-via-exemplos
 This is a LaTeX2e course written in brazilian portuguese
@@ -50607,21 +50894,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-latex-via-exemplos
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/README.md
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/changelog.txt
+%{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-abntex2.tex
+%{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-abntexto.tex
+%{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-certificado-lista-nomes.csv
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-certificado.tex
+%{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-cracha-lista-participantes.csv
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-cracha.tex
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-fig.tex
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-folder.tex
-%{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-lista-nomes.csv
-%{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-lista-participantes.csv
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-poster.tex
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-slides.tex
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-todonotes.tex
-%{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-twosides.pdf
-%{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-twosides.tex
+%{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-twoside.tex
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos.bib
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos.pdf
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos.tex
-%{_texmfdistdir}/doc/latex/latex-via-exemplos/makeaux.sh
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/makedoc.sh
 
 %prep
@@ -50814,8 +51101,39 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive
+    # Move font files
+    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-jetbrainsmono-otf
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf/*.{pf[ab],[ot]tf}
+    do
+        test -e $font || continue
+        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-jetbrainsmono-otf
+        base=${font##*/}
+        ln -sf %{_datadir}/fonts/texlive-jetbrainsmono-otf/${base} ${font}
+    done
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-jetbrainsmono-otf/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-jetbrainsmono-otf/
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-jetbrainsmono-otf.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Use this to disable the TeX fonts of the package -->
+	<!--    texlive-jetbrainsmono-otf    -->
+	<!-- Be aware that the configurations in the files    -->
+	<!-- 09-texlive*.conf will not be affected by this    -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <rejectfont>
+	    <glob>%{_datadir}/fonts/texlive-jetbrainsmono-otf/*</glob>
+	  </rejectfont>
+	</fontconfig>
+	EOF
+    tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/jfmutil/jfmutil.pl
     do
@@ -50828,8 +51146,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:69} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:70} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:71} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -50846,6 +51162,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-jmn
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/jmn/hans/*.{pf[ab],[ot]tf}
@@ -50875,8 +51193,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -50887,6 +51203,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-josefin
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/josefin/*.{pf[ab],[ot]tf} \
@@ -50937,8 +51255,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-josefin.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-josefin.conf
-    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -50957,10 +51273,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-junicode
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/junicode/*.{pf[ab],[ot]tf} \
-		%{buildroot}/%{_texmfdistdir}/fonts/truetype/public/junicode/*.{pf[ab],[ot]tf} \
 		%{buildroot}/%{_texmfdistdir}/fonts/type1/public/junicode/*.{pf[ab],[ot]tf}
     do
         test -e $font || continue
@@ -51008,8 +51327,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-junicode.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-junicode.conf
-    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-junicodevf
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/junicodevf/*.{pf[ab],[ot]tf}
@@ -51039,20 +51358,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/jura/jura2html
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -51086,6 +51401,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-kerkis
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/kerkis/*.{pf[ab],[ot]tf} \
@@ -51136,10 +51455,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-kerkis.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-kerkis.conf
-    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/ketcindy/forWindows/setketcindykettex.bat
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/ketcindy/forWindows/setketcindyothertex.bat
@@ -51180,10 +51499,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$txt || continue
 	chmod 0644 %{buildroot}/$txt
     done
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -51200,6 +51515,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-khatalmaqala
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/khatalmaqala/*.{pf[ab],[ot]tf}
@@ -51229,16 +51550,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-knitting
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/knitting/*.{pf[ab],[ot]tf}
@@ -51268,29 +51589,23 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script
-    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc
-    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc/bin
-    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc/english
-    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc/ngerman
     tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script
+    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc
+    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc/bin
+    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc/english
+    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc/ngerman
     tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -51300,8 +51615,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/kotex-utils/jamo-normalize.pl \
 	       %{_texmfdistdir}/scripts/kotex-utils/komkindex.pl \
@@ -51316,10 +51637,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:225}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:231}
     popd
     # Move configuration files
     mkdir -p %{buildroot}%{_texmfconfdir}/web2c
@@ -51332,8 +51653,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     mv -f  %{buildroot}%{_texmfdistdir}/web2c/texmf.cnf %{buildroot}%{_texmfconfdir}/web2c/
     rm -f  %{buildroot}%{_texmfdistdir}/web2c/texmf.cnf
     ln -sf %{_texmfconfdir}/web2c/texmf.cnf %{buildroot}%{_texmfdistdir}/web2c/texmf.cnf
-    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-kpfonts
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/kpfonts/*.{pf[ab],[ot]tf}
@@ -51363,8 +51684,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-kpfonts-otf
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/kpfonts-otf/*.{pf[ab],[ot]tf}
@@ -51394,17 +51715,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-kurier
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/nowacki/kurier/*.{pf[ab],[ot]tf} \
@@ -51455,12 +51776,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-kurier.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-kurier.conf
-    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -51471,8 +51786,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/l3build/l3build.lua
     do
@@ -51485,14 +51808,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -51502,14 +51817,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive
+    # Avoid /usr/bin/env <prog>
+    for scr in %{_texmfdistdir}/scripts/l3sys-query/l3sys-query.lua
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@/env[[:blank:]]\+@/@
+		.
+		w
+		q
+	EOF
+    done
     tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Move configuration files
-    mkdir -p %{buildroot}%{_texmfconfdir}/tex/lambda/config
-    mv -f  %{buildroot}%{_texmfdistdir}/tex/lambda/config/language.dat %{buildroot}%{_texmfconfdir}/tex/lambda/config/
-    rm -f  %{buildroot}%{_texmfdistdir}/tex/lambda/config/language.dat
-    ln -sf %{_texmfconfdir}/tex/lambda/config/language.dat %{buildroot}%{_texmfdistdir}/tex/lambda/config/language.dat
     tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -51518,10 +51840,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Move configuration files
+    mkdir -p %{buildroot}%{_texmfconfdir}/tex/lambda/config
+    mv -f  %{buildroot}%{_texmfdistdir}/tex/lambda/config/language.dat %{buildroot}%{_texmfconfdir}/tex/lambda/config/
+    rm -f  %{buildroot}%{_texmfdistdir}/tex/lambda/config/language.dat
+    ln -sf %{_texmfconfdir}/tex/lambda/config/language.dat %{buildroot}%{_texmfdistdir}/tex/lambda/config/language.dat
     tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -51532,24 +51859,36 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:321} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:322} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:323} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:324} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:325} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:326} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:327} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/latex-git-log/latex-git-log
     do
@@ -51562,15 +51901,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:321} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:322} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:323} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:324} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:325} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:326} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:327} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:336} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:337} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:338} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:339} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Extend python3 scripts with major version only if any
     for scr in %{_texmfdistdir}/scripts/latex-make/figdepth.py \
 	       %{_texmfdistdir}/scripts/latex-make/gensubfig.py \
@@ -51603,10 +51942,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:340} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:341} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:342} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:343} -C %{buildroot}%{_datadir}/texlive
     # Correct shebang of python3 scripts if any
     for scr in %{_texmfdistdir}/scripts/latex-papersize/latex-papersize.py
     do
@@ -51632,13 +51971,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:336} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:337} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:338} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:344} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:345} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:346} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:347} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:348} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:349} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:350} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
