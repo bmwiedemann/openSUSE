@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>06d9aa50315259e17dc12696b8d52083</srcmd5>
+    <version>0.5.1</version>
+    <time>1742937144</time>
+    <user>anag+factory</user>
+    <comment>GUI for the ALSA controls presented by Linux kernel Focusrite USB drivers.
+
+Already included in Arch Linux, Debian and Ubuntu. ( https://repology.org/project/alsa-scarlett-gui/versions )
+</comment>
+    <requestid>1255922</requestid>
+  </revision>
+</revisionlist>

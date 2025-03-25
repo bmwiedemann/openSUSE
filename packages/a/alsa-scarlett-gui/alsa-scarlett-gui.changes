@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Sat Mar 22 15:31:44 UTC 2025 - Mikhail Paulyshka <me@mixaill.net>
+
+- add suuplements for Focusrite 1st Gen
+- v0.5.1
+  * Make alsactl (Load/Save Config) work in flatpak (thanks @runiq !!)
+  * Add support for rebooting devices using the FCP socket interface
+  * Fix some warnings
+  * Add support for hot-plug of FCP-driver supported interfaces
+- v0.5.0
+  * Added 1st Gen (6i6, 8i6, 18i6, 18i8, 18i20) and big 4th Gen (16i16, 18i16, 18i20) support.
+  * Added 3rd Gen 18i8/18i20 S/PDIF/Digital I/O Mode startup controls.
+  * Added peak value display to the level meters.
+  * Highlight useful things on hover in the routing and mixer windows.
+  * Fix issue with dial double-click not staying on -inf/0dB.
+
+-------------------------------------------------------------------
+Fri Oct  4 20:13:28 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
+
+- add supplements for Focusrite USB devices
+- v0.4.1.test1
+  * Move 4th Gen Solo 48V switch above the Air switch
+  * Add 4rd Gen models to window-hardware.c
+  * Fix widget-boolean.c to free data on button destruction
+  * Add Arch package dependency
+  * Fix Sample Rate button to be insensitive
+  * Override focus and colour CSS button styles
+  * Search $PATH and /usr/sbin for alsactl
+  * Add support for volatile buttons to widget-boolean.c
+  * Allow for boolean controls that are backwards
+  * Update widget-boolean to cache the icon widgets
+  * Switch to embedded SVG icons
+  * Add missing GTK and ALSA dependencies on deb package
+  * Add -fPIE and -pie build flags to fix flatpak build under Fedora
+  * Download and include scarlett2 firmware in flatpak
+  * Make flatpak build faster
+  * Fix up deb and RPM package description & add docs
+  * Move level meter fields out of struct alsa_card
+  * Add peak display to the level meters
+  * Use snprintf() in widget-gain.c when printing floats
+  * Add peak value display to the level meters
+
+-------------------------------------------------------------------
+Sun Sep 29 21:10:50 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
+
+- updated .spec file according to the review 
+
+-------------------------------------------------------------------
+Thu May  9 18:49:44 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
+
+- Initial release. 
