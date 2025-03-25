@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 21 14:16:43 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update http-client to version 0.7.19.
+  ## 0.7.19
+
+  * Make mockable via `Network.HTTP.Client.Internal.requestAction` [#554](https://github.com/snoyberg/http-client/pull/554)
+
+-------------------------------------------------------------------
 Thu Dec 19 07:03:21 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update http-client to version 0.7.18.
