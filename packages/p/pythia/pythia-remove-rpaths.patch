@@ -1,7 +1,15 @@
-Index: pythia8311/Makefile
+---
+ Makefile                |   10 +++++++++-
+ configure               |    5 ++++-
+ examples/Makefile       |    2 +-
+ plugins/mg5mes/Makefile |    6 +++++-
+ plugins/python/Makefile |   12 +++++++++++-
+ 5 files changed, 30 insertions(+), 5 deletions(-)
+
+Index: pythia8313/Makefile
 ===================================================================
---- pythia8311.orig/Makefile
-+++ pythia8311/Makefile
+--- pythia8313.orig/Makefile
++++ pythia8313/Makefile
 @@ -36,7 +36,11 @@ LOCAL_TMP=tmp
  LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(LOCAL_LIB))
  CXX_COMMON:=-I$(LOCAL_INCLUDE) $(CXX_COMMON)
@@ -15,22 +23,22 @@ Index: pythia8311/Makefile
  
  # PYTHIA.
  OBJECTS=$(patsubst $(LOCAL_SRC)/%.cc,$(LOCAL_TMP)/%.o,\
-@@ -124,7 +128,11 @@ $(LOCAL_LIB)/libpythia8powheg%.so: $(POW
+@@ -125,7 +129,11 @@ $(LOCAL_LIB)/libpythia8powheg%.so: $(POW
  	$(LOCAL_TMP)/LHAPowheg.o $(LOCAL_LIB)/libpythia8$(LIB_SUFFIX)
  	$(CXX) $(LOCAL_TMP)/LHAPowheg.o -o $@ $(CXX_COMMON) $(CXX_SHARED)\
  	 $(CXX_SONAME)$(notdir $@) -Llib -lpythia8\
 +ifneq ($(DISABLE_RPATH),true)
- 	 -Wl,-rpath,../lib:$(POWHEG_BIN) -L$(POWHEG_BIN) -l$*
+ 	 -Wl,-rpath,../lib:$(POWHEG_DIR) -L$(POWHEG_DIR) -l$*
 +else
-+	 -L$(POWHEG_BIN) -l$*
++	 -L$(POWHEG_DIR) -l$*
 +endif
  $(LOCAL_LIB)/libpythia8powhegHooks.so: $(LOCAL_TMP)/PowhegHooks.o\
  	$(LOCAL_LIB)/libpythia8$(LIB_SUFFIX)
  	$(CXX) $< -o $@ $(CXX_COMMON) $(CXX_SHARED) $(CXX_SONAME)$(notdir $@)\
-Index: pythia8311/configure
+Index: pythia8313/configure
 ===================================================================
---- pythia8311.orig/configure
-+++ pythia8311/configure
+--- pythia8313.orig/configure
++++ pythia8313/configure
 @@ -30,6 +30,7 @@ Configuration options.
  --help            : Print this help message (also -h, --h, and -help).
  --enable-debug    : Turn on debugging and disable optimization.
@@ -39,7 +47,7 @@ Index: pythia8311/configure
  --lcg=PLATFORM    : Specify the LCG platform to use when the
                      --with-PACKAGE-version option, described below,
                      is set for a given optional package
-@@ -95,7 +96,7 @@ Advanced options.
+@@ -96,7 +97,7 @@ Advanced options.
  --obj-common='FLAGS' : Set the common C++ flags used for object (.o) compilation
                         only (not linking).
  BLOCKTEXT
@@ -47,8 +55,8 @@ Index: pythia8311/configure
 +OPTIONS="-h --h -help --help --enable-debug --enable-optdebug --disable-rpath --lcg --lcg-ver"
  OPTIONS+=" --prefix --prefix-bin --prefix-lib --prefix-include --prefix-share"
  for PKG in "evtgen" "fastjet3" "hepmc2" "hepmc3" "lhapdf5" "lhapdf6" "powheg"\
-     "rivet" "root" "gzip" "python" "mg5mes" "openmp" "mpich" "hdf5"\
-@@ -320,6 +321,7 @@ done
+     "rivet" "yoda" "root" "gzip" "python" "mg5mes" "openmp" "mpich" "hdf5"\
+@@ -321,6 +322,7 @@ done
  # Set the compilation flags and options (order matters).
  [ "$ENABLE_DEBUG_SET"    = true ] && ENABLE_DEBUG="-g "   || ENABLE_DEBUG="-O2 "
  [ "$ENABLE_OPTDEBUG_SET" = true ] && ENABLE_DEBUG="-g -O "
@@ -56,18 +64,18 @@ Index: pythia8311/configure
  if [ -z "$ARCH" ]; then ARCH=$(uname | grep -i -o -e Linux -e Darwin); fi
  ARCH=$(echo $ARCH | awk '{print toupper($0)}')
  if [ "$ARCH" != "LINUX" ] && [ "$ARCH" != "DARWIN" ]; then
-@@ -453,6 +455,7 @@ PREFIX_LIB=$PREFIX_LIB
+@@ -464,6 +466,7 @@ PREFIX_LIB=$PREFIX_LIB
  PREFIX_SHARE=$PREFIX_SHARE
  
  # Compilation flags (see ./configure --help for further documentation).
 +DISABLE_RPATH=$DISABLE_RPATH
  CXX=$CXX
+ CXX_DTAGS=$CXX_DTAGS
  CXX_COMMON=$CXX_COMMON
- CXX_SHARED=$CXX_SHARED
-Index: pythia8311/plugins/mg5mes/Makefile
+Index: pythia8313/plugins/mg5mes/Makefile
 ===================================================================
---- pythia8311.orig/plugins/mg5mes/Makefile
-+++ pythia8311/plugins/mg5mes/Makefile
+--- pythia8313.orig/plugins/mg5mes/Makefile
++++ pythia8313/plugins/mg5mes/Makefile
 @@ -28,7 +28,11 @@ LOCAL_DIRS:=$(subst $(LOCAL_TMP)/,,$(wil
  LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(TOP_LIB))
  LOCAL_MKDIRS:=$(foreach DIR,$(LOCAL_DIRS),$(shell mkdir -p $(LOCAL_TMP)/$(DIR)))
@@ -81,10 +89,10 @@ Index: pythia8311/plugins/mg5mes/Makefile
  PYTHIA=$(TOP_LIB)/libpythia8$(LIB_SUFFIX)
  
  # Set the wrapper, determine the objects and targets.
-Index: pythia8311/plugins/python/Makefile
+Index: pythia8313/plugins/python/Makefile
 ===================================================================
---- pythia8311.orig/plugins/python/Makefile
-+++ pythia8311/plugins/python/Makefile
+--- pythia8313.orig/plugins/python/Makefile
++++ pythia8313/plugins/python/Makefile
 @@ -27,7 +27,11 @@ LOCAL_TMP=tmp
  LOCAL_INCLUDE=include
  LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(TOP_LIB))
@@ -114,10 +122,10 @@ Index: pythia8311/plugins/python/Makefile
  
  # Clean.
  clean:
-Index: pythia8311/examples/Makefile
+Index: pythia8313/examples/Makefile
 ===================================================================
---- pythia8311.orig/examples/Makefile
-+++ pythia8311/examples/Makefile
+--- pythia8313.orig/examples/Makefile
++++ pythia8313/examples/Makefile
 @@ -26,7 +26,7 @@ ifneq ("$(wildcard ../lib/libpythia8.*)"
    PREFIX_INCLUDE=../include
  endif
@@ -126,4 +134,4 @@ Index: pythia8311/examples/Makefile
 +CXX_COMMON+= -L$(PREFIX_LIB) -lpythia8 -ldl
  PYTHIA=$(PREFIX_LIB)/libpythia8$(LIB_SUFFIX)
  
- # Fix missing runtime paths from RIVET and determine C++ standard used.
+ # Define RIVET options and fix C++ version, rpath, missing HDF5.

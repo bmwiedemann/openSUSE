@@ -1,8 +1,8 @@
-Index: pythia8311/configure
+Index: pythia8313/configure
 ===================================================================
---- pythia8311.orig/configure
-+++ pythia8311/configure
-@@ -326,7 +326,7 @@ if [ "$ARCH" != "LINUX" ] && [ "$ARCH" !
+--- pythia8313.orig/configure
++++ pythia8313/configure
+@@ -327,7 +327,7 @@ if [ "$ARCH" != "LINUX" ] && [ "$ARCH" !
      warn "Unknown architecture $ARCH, set as LINUX."; ARCH="LINUX"; fi
  if [ -z "$CXX" ]; then warn "CXX not set, using g++."; CXX="g++"; fi
  if [ -z "$CXX_COMMON" ]; then

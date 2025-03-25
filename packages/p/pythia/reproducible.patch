@@ -1,10 +1,24 @@
 a variant was sent via mail to phil...@cern.ch
 
-Index: pythia8311/configure
+---
+ Makefile  |    7 +++----
+ configure |    4 ++--
+ 2 files changed, 5 insertions(+), 6 deletions(-)
+
+Index: pythia8313/configure
 ===================================================================
---- pythia8311.orig/configure
-+++ pythia8311/configure
-@@ -304,7 +304,7 @@ done
+--- pythia8313.orig/configure
++++ pythia8313/configure
+@@ -294,7 +294,7 @@ function error() {
+ ################################################################################
+ 
+ # Check if help requested.
+-bold "Running PYTHIA configuration script. Now is `date`"
++bold "Running PYTHIA configuration script"
+ for VAR in "$@"; do
+     if [ "$VAR" = "-h" ] || [ "$VAR" = "--h" ] || [ "$VAR" = "-help" ] \
+ 	   || [ "$VAR" = "--help" ]; then
+@@ -305,7 +305,7 @@ done
  
  # Parse the user arguments and evaluate each as a global variable.
  echo "# PYTHIA configuration file." > $CFG_FILE
@@ -13,21 +27,21 @@ Index: pythia8311/configure
  for VAR in "$@"; do
      if [[ $OPTIONS =~ (^| )${VAR%%=*}($| ) ]]; then
  	echo "# $VAR" >> $CFG_FILE;
-Index: pythia8311/Makefile
+Index: pythia8313/Makefile
 ===================================================================
---- pythia8311.orig/Makefile
-+++ pythia8311/Makefile
-@@ -128,11 +128,10 @@ $(LOCAL_LIB)/libpythia8powheg%.so: $(POW
+--- pythia8313.orig/Makefile
++++ pythia8313/Makefile
+@@ -129,11 +129,10 @@ $(LOCAL_LIB)/libpythia8powheg%.so: $(POW
  	$(LOCAL_TMP)/LHAPowheg.o $(LOCAL_LIB)/libpythia8$(LIB_SUFFIX)
  	$(CXX) $(LOCAL_TMP)/LHAPowheg.o -o $@ $(CXX_COMMON) $(CXX_SHARED)\
  	 $(CXX_SONAME)$(notdir $@) -Llib -lpythia8\
 -ifneq ($(DISABLE_RPATH),true)
--	 -Wl,-rpath,../lib:$(POWHEG_BIN) -L$(POWHEG_BIN) -l$*
+-	 -Wl,-rpath,../lib:$(POWHEG_DIR) -L$(POWHEG_DIR) -l$*
 -else
-+	 ifneq($(DISABLE_RPATH),true)
-+	 -Wl,-rpath,../lib:$(POWHEG_BIN)\
-+	 endif
- 	 -L$(POWHEG_BIN) -l$*
++   ifneq ($(DISABLE_RPATH),true)
++	 -Wl,-rpath,../lib:$(POWHEG_DIR)\
++   endif
+ 	 -L$(POWHEG_DIR) -l$*
 -endif
  $(LOCAL_LIB)/libpythia8powhegHooks.so: $(LOCAL_TMP)/PowhegHooks.o\
  	$(LOCAL_LIB)/libpythia8$(LIB_SUFFIX)

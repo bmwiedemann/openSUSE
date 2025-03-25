@@ -1,8 +1,8 @@
-Index: pythia8310/Makefile
+Index: pythia8313/Makefile
 ===================================================================
---- pythia8310.orig/Makefile
-+++ pythia8310/Makefile
-@@ -140,12 +140,12 @@ python: $(LOCAL_LIB)/libpythia8$(LIB_SUF
+--- pythia8313.orig/Makefile
++++ pythia8313/Makefile
+@@ -141,12 +141,12 @@ python: $(LOCAL_LIB)/libpythia8$(LIB_SUF
  
  # Install.
  install: all

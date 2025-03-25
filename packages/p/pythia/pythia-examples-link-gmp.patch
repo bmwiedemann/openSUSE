@@ -1,31 +1,17 @@
-Index: pythia8311/examples/Makefile
+---
+ examples/Makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: pythia8313/examples/Makefile
 ===================================================================
---- pythia8311.orig/examples/Makefile
-+++ pythia8311/examples/Makefile
-@@ -119,7 +119,7 @@ endif
- # FASTJET3.
- main71 main72 main75 main81 main82 main83: $(PYTHIA) $$@.cc
- ifeq ($(FASTJET3_USE),true)
--	$(CXX) $@.cc -o $@ -w $(CXX_COMMON) $(FASTJET3_INCLUDE) $(FASTJET3_LIB)
-+	$(CXX) $@.cc -o $@ -w $(CXX_COMMON) $(FASTJET3_INCLUDE) $(FASTJET3_LIB) -lgmp
- else
- 	$(error Error: $@ requires FASTJET3)
- endif
-@@ -128,7 +128,7 @@ endif
- main74: $(PYTHIA) $$@.cc
- ifeq ($(FASTJET3_USE),true)
- 	$(CXX) $@.cc -o $@ -w $(CXX_COMMON) $(FASTJET3_INCLUDE)\
--	 $(FASTJET3_LIB) -lfastjettools -lRecursiveTools
-+	 $(FASTJET3_LIB) -lfastjettools -lRecursiveTools -lgmp
- else
- 	$(error Error: $@ requires FASTJET3)
- endif
-@@ -137,7 +137,7 @@ endif
- main84: $(PYTHIA) $$@.cc
- ifeq ($(FASTJET3_USE)$(HEPMC3_USE),truetrue)
- 	$(CXX) $@.cc -o $@ -w $(CXX_COMMON) $(FASTJET3_INCLUDE)\
--	 $(HEPMC3_INCLUDE) $(FASTJET3_LIB) $(HEPMC3_LIB)
-+	 $(HEPMC3_INCLUDE) $(FASTJET3_LIB) $(HEPMC3_LIB) -lgmp
- else
- 	$(error Error: $@ requires FASTJET3 and HEPMC3)
+--- pythia8313.orig/examples/Makefile
++++ pythia8313/examples/Makefile
+@@ -55,7 +55,7 @@ HEPMC2_OPTS=$(HEPMC2_INCLUDE) $(HEPMC2_L
+ HEPMC3_OPTS=$(HEPMC3_INCLUDE) $(HEPMC3_LIB) -DHEPMC3
+ HDF5_OPTS=$(HDF5_INCLUDE) $(HIGHFIVE_INCLUDE) $(MPICH_INCLUDE)
+ HDF5_OPTS+= $(HDF5_LIB) -DHDF5
+-FASTJET3_OPTS=$(FASTJET3_INCLUDE) $(FASTJET3_LIB)
++FASTJET3_OPTS=$(FASTJET3_INCLUDE) $(FASTJET3_LIB) -lgmp
+ ifeq ($(ROOT_USE),true)
+   ROOT_OPTS=$(ROOT_LIB) $(shell $(ROOT_CONFIG) --cflags --glibs) -DPY8ROOT
  endif

@@ -1,7 +1,7 @@
 #
 # spec file for package pythia
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define ver 8311
+%define ver 8313
 %define soname lib%{name}8
 Name:           pythia
-Version:        8.311
+Version:        8.313
 Release:        0
 Summary:        A simulation program for particle collisions at very high energies
 License:        GPL-2.0-or-later
@@ -49,6 +49,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  pkgconfig(lhapdf)
 BuildRequires:  pkgconfig(rivet)
+BuildRequires:  pkgconfig(yoda)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -125,7 +126,6 @@ rm include/Pythia8Plugins/MixMax.h
 # FIX EOF ENCODINGS
 sed -i 's/\r$//' share/Pythia8/pdfdata/mrstlostarstar.00.dat
 sed -i 's/\r$//' share/Pythia8/htmldoc/pythia.css
-sed -i 's/\r$//' examples/main29.cc
 
 sed -E -i "s|%{_bindir}/env bash|/bin/bash|" examples/runmains
 
@@ -184,17 +184,17 @@ sed -E -i "s|%{_bindir}/env bash|/bin/bash|" %{buildroot}%{_bindir}/pythia8-conf
 export ncpus=%(echo %{?_smp_mflags} | sed "s/^\-j//")
 pushd examples
 # SECTION Disabled examples:
-# 23: MixMax header deleted as it is non-free
-# 46, 48: Require evtgen which oS does not have packaged
-# 91, 92, 93: Require root6 which is not avaliable in Factory
-./runmains --skip="23 46 48 91 92 93" --threads="${ncpus}"
+## 114: needs yoda2
+## 136, 164: need highfive library
+## 141-143: need ROOT
+## 245: needs MixMax
+## 364: needs evtgen
+./runmains --skip="114 136 141 142 143 164 245 364" --threads="${ncpus}"
 # /SECTION
 popd
 
-%post -n %{soname} -p /sbin/ldconfig
-%postun -n %{soname} -p /sbin/ldconfig
-%post -n %{soname}lhapdf6 -p /sbin/ldconfig
-%postun -n %{soname}lhapdf6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{soname}
+%ldconfig_scriptlets -n %{soname}lhapdf6
 
 %files -n %{soname}
 %{_libdir}/%{soname}.so
@@ -210,7 +210,7 @@ popd
 %{_includedir}/Pythia8/
 %{_includedir}/Pythia8Plugins/
 %{_docdir}/%{name}/pdfdata/
-%{_docdir}/%{name}/settings/
+%{_docdir}/%{name}/tunes/
 %{_docdir}/%{name}/xmldoc/
 
 %files doc
