@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 24 07:57:00 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 3.88.18:
+  * fix(deps): update module github.com/golang-jwt/jwt/v5 to v5.2.2 [security] (#3992)
+  * Add tenant_id to MS Teams source proto definition (#3986)
+  * [Feat] Detector implementation for Azure SAS Tokens (#3963)
+  * optimized ipquality detector (#3971)
+  * (fix) Preserve Newline Characters in Multi-line PrivateKeys in Analyzer (#3988)
+  * Optimized twitch detectors (#3987)
+  * added sentry org token detector (#3985)
+  * Update sentry endpoint (#3983)
+  * updated storyblok detector (#3981)
+  * [fix] - Sonarcloud detector (#3982)
+  * Update results help text (#3978)
+
+-------------------------------------------------------------------
 Thu Mar 13 21:12:47 UTC 2025 - felix.niederwanger@suse.com
 
 - Update to version 3.88.17:
