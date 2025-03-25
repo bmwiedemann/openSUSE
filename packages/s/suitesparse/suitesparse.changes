@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 23 21:53:38 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to version 7.10.1
+  * GraphBLAS v10.0.1: bug fix, when using user-defined monoids
+    in GrB_mxm
+- update to version 7.10
+  * GraphBLAS v10.0.0: major upgrade, now supporting 32-bit/
+    64-bit integer indices.
+- update to version 7.9
+  * GraphBLAS v9.4.5: Added the GxB_IndexBinaryOp.
+    Added new JIT kernels.
+
+-------------------------------------------------------------------
 Mon Feb 24 10:43:23 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile

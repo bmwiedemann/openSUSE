@@ -29,7 +29,7 @@
 Name:           suitesparse
 Summary:        A collection of sparse matrix libraries
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Version:        7.8.3
+Version:        7.10.1
 Release:        0
 Group:          Development/Libraries/C and C++
 URL:            https://people.engr.tamu.edu/davis/suitesparse.html
@@ -110,7 +110,7 @@ BuildRequires:  blas-devel
 %define config_sover               7
 %define csparse_sover              4
 %define cxsparse_sover             4
-%define graphblas_sover            9
+%define graphblas_sover            10
 %define klu_sover                  2
 %define ldl_sover                  3
 %define lagraph_sover              1
