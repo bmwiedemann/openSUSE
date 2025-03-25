@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 24 12:16:14 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.3.0:
+  * Update python bindings with binder 1.4.2
+  * Update bxzstr to bxzstr 1.2.2 + patches
+  * Explicitly return for inf-generating eta / massless rapidity
+    along pz, to avoid FPE triggering.
+  * Suppress cross-section/weight count-mismatch warning if only
+    one cross-section.
+  * Add support for reading with uproot
+  * Drop Python2 support
+  * Fix compilation with Python 3.13.0a1.
+  * Major update of the build system, removed most of the custom
+    modules.
+  * Removed functions that operate on raw pointers.
+- Update shared lib name in accordance with upstream so version
+  bump.
+- Drop HepMC-disable-doxygen-html-timestamp.patch: no longer
+  needed as HTML_TIMESTAMP is not set by Doxyfile.
+
+-------------------------------------------------------------------
 Fri Oct 13 00:23:04 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.2.7:

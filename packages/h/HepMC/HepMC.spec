@@ -1,7 +1,7 @@
 #
 # spec file for package HepMC
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,14 @@
 
 %bcond_with rootio
 
-%define so_main 3
+%define so_main 4
 %define libmain libHepMC3-%{so_main}
 %define so_search 5
 %define libsearch libHepMC3search%{so_search}
 Name:           HepMC
-Version:        3.2.7
+Version:        3.3.0
 Release:        0
 Summary:        An event record for High Energy Physics Monte Carlo Generators in C++
-# PATCH-FEATURE-OPENSUSE HepMC-disable-doxygen-html-timestamp.patch badshah400@gmail.com -- Disable timestamps in doxygen generated HTML footers
-Patch0:         HepMC-disable-doxygen-html-timestamp.patch
 # Note: pybind11 (BSD-3-Clause) is bundled but not used because we use the system packaged pybind11
 # bxzstr (bundled) uses MPL-2.0
 License:        LGPL-3.0-or-later AND MPL-2.0
@@ -155,10 +153,8 @@ pushd ../${PYTHON}_build
 popd
 }
 
-%post   -n %{libmain} -p /sbin/ldconfig
-%postun -n %{libmain} -p /sbin/ldconfig
-%post   -n %{libsearch} -p /sbin/ldconfig
-%postun -n %{libsearch} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libmain}
+%ldconfig_scriptlets -n %{libsearch}
 
 %files -n %{libmain}
 %license LICENCE COPYING
