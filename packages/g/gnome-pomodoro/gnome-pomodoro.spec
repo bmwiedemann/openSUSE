@@ -33,7 +33,7 @@ BuildRequires:  gnome-common
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28
-BuildRequires:  (gnome-shell >= 46 with gnome-shell <= 48)
+BuildRequires:  (gnome-shell >= 46 with gnome-shell < 49)
 BuildRequires:  pkgconfig(appstream-glib) >= 0.7.3
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(sqlite3)
 Requires:       gstreamer
 Requires:       gtk3 >= 3.20.0
 Requires:       hicolor-icon-theme
-Requires:       (gnome-shell >= 46 with gnome-shell < 48)
+Requires:       (gnome-shell >= 46 with gnome-shell < 49)
 Recommends:     gstreamer-plugins-base
 
 %description

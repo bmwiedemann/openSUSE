@@ -1,10 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 21 20:45:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix gnome-shell BuildRequires/Requires max version.
+
+-------------------------------------------------------------------
 Sun Feb 23 18:28:23 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.27.0:
   * Support for GNOME Shell 48
   * Split time spent across midnight
-  * Added Telugu translation
+  * Updated translations.
 
 -------------------------------------------------------------------
 Fri Oct 11 10:28:36 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>

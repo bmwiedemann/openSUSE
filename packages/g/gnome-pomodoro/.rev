@@ -413,4 +413,14 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
     <comment></comment>
     <requestid>1248111</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>825828469f68321053de319b923922bb</srcmd5>
+    <version>0.27.0</version>
+    <time>1742937009</time>
+    <user>anag+factory</user>
+    <comment>- Fix gnome-shell BuildRequires/Requires max version.
+
+  * Updated translations.</comment>
+    <requestid>1255605</requestid>
+  </revision>
 </revisionlist>
