@@ -1854,4 +1854,34 @@
    Ruff 0.11.0 now includes this change as well as the stabilization of the preview behavior for PGH004.</comment>
     <requestid>1253416</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>7279d8caabe45234a5fbd7bc3df21724</srcmd5>
+    <version>0.11.2</version>
+    <time>1742936843</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.11.2
+ * Preview features
+   * [syntax-errors] Fix false-positive syntax errors emitted for annotations on variadic parameters before Python 3.11 
+   * [airflow] Add chain, chain_linear and cross_downstream for AIR302 
+   * [syntax-errors] Improve error message and range for pre-PEP-614 decorator syntax errors 
+   * [syntax-errors] PEP 701 f-strings before Python 3.12 
+   * [syntax-errors] Parenthesized context managers before Python 3.9 
+   * [syntax-errors] Star annotations before Python 3.11 
+   * [syntax-errors] Star expression in index before Python 3.11 
+   * [syntax-errors] Unparenthesized assignment expressions in sets and indexes 
+ * Bug fixes
+   * Server: Allow FixAll action in presence of version-specific syntax errors 
+   * [flake8-bandit] Allow raw strings in suspicious-mark-safe-usage (S308)
+   * [refurb] Avoid panicking unwrap in verbose-decimal-constructor (FURB157) 
+   * [refurb] Fix starred expressions fix (FURB161) 
+   * Fix --statistics reporting for unsafe fixes 
+ * Rule changes
+   * [flake8-executables] Allow uv run in shebang line for shebang-missing-python (EXE003)
+ * CLI
+   * Add --exit-non-zero-on-format 
+ * Documentation
+   * Update Ruff tutorial to avoid non-existent fix in __init__.py 
+   * [flake8-gettext] Swap format- and printf-in-get-text-func-call examples (INT002, INT003)</comment>
+    <requestid>1255264</requestid>
+  </revision>
 </revisionlist>
