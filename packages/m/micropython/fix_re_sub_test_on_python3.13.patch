@@ -1,0 +1,46 @@
+From e73cf71a246ee456aac0f4d16167e0856846db6b Mon Sep 17 00:00:00 2001
+From: Alessandro Gatti <a.gatti@frob.it>
+Date: Sat, 4 Jan 2025 15:00:28 +0100
+Subject: [PATCH] tests/extmod/re_sub.py: Fix test execution on Python 3.13.
+
+This commit fixes a test failure for `extmod/re_sub.py` where the code,
+whilst being correct, would not make the test pass due to a newer
+Python version than expected.
+
+On Python 3.13, running `tests/extmod/re_sub.py` would yield a
+deprecation warning about `re.sub` not providing the match count as a
+keyword parameter.  This warning would be embedded in the expected test
+result and thus the test would always fail.
+
+Co-authored-by: stijn <stijn@ignitron.net>
+Signed-off-by: Alessandro Gatti <a.gatti@frob.it>
+---
+ tests/extmod/re_sub.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/tests/extmod/re_sub.py b/tests/extmod/re_sub.py
+index 2c7c6c10f1a49..ecaa66d83d8a7 100644
+--- a/tests/extmod/re_sub.py
++++ b/tests/extmod/re_sub.py
+@@ -10,6 +10,8 @@
+     print("SKIP")
+     raise SystemExit
+ 
++import sys
++
+ 
+ def multiply(m):
+     return str(int(m.group(0)) * 2)
+@@ -47,7 +49,11 @@ def A():
+ print(re.sub("a", "b", "c"))
+ 
+ # with maximum substitution count specified
+-print(re.sub("a", "b", "1a2a3a", 2))
++if sys.implementation.name != "micropython":
++    # On CPython 3.13 and later the substitution count must be a keyword argument.
++    print(re.sub("a", "b", "1a2a3a", count=2))
++else:
++    print(re.sub("a", "b", "1a2a3a", 2))
+ 
+ # invalid group
+ try:

@@ -26,6 +26,7 @@ Summary:        Implementation of Python 3 with very low memory footprint
 License:        MIT
 URL:            https://micropython.org/
 Source:         https://micropython.org/resources/source/%{name}-%{version}.tar.xz
+Patch1:         fix_re_sub_test_on_python3.13.patch
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  python3
