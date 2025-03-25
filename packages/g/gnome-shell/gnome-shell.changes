@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 20 15:47:47 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 48.0+6:
+  * slider: Align handle size with with pixel grid
+  * slider: Use correct handle size when calculating rightmost
+    position
+  * Revert "ci: Disable container building temporarily"
+  * Revert "ci: Disable sysext temporarily"
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 18 19:20:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Clean up conditionals and use autopatch.
