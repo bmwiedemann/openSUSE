@@ -1,7 +1,7 @@
 #
 # spec file for package unittest-cpp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        2.0.0
 Release:        0
 Summary:        A unit testing framework for C++
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/unittest-cpp
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM correct lib64 install pathes
@@ -30,7 +29,7 @@ Patch1:         fix-install.patch
 Patch2:         shared.patch
 # PATCH-FIX-UPSTREAM unittest-cpp-2.0.0-gcc12.patch -- Fix build with GCC 12 (https://github.com/unittest-cpp/unittest-cpp/pull/185)
 Patch3:         unittest-cpp-2.0.0-gcc12.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
@@ -42,7 +41,6 @@ advanced library and language features.
 
 %package -n %{lname}
 Summary:        A unit testing framework for C++
-Group:          System/Libraries
 
 %description -n %{lname}
 UnitTest++ is a unit testing framework for C++. It was designed
@@ -52,7 +50,6 @@ advanced library and language features.
 
 %package devel
 Summary:        Development files for unittest-cpp
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
@@ -65,7 +62,7 @@ application that use %{name}.
 %autosetup -p1
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 %install
 export LD_LIBRARY_PATH=. # tests want this
@@ -74,6 +71,9 @@ export LD_LIBRARY_PATH=. # tests want this
 ln -s libUnitTest++-%{version}.so "%{buildroot}/%{_libdir}/libUnitTest++.so"
 # replace broken .pc file
 perl -i -lpe 's{^Version:\s*$}{Version: %{version}}' "%{buildroot}/%{_libdir}/pkgconfig"/*.pc
+
+%check
+%ctest
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig

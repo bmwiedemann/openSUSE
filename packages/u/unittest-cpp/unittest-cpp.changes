@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 22 00:28:12 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+- Remove Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Sun Aug 28 14:52:43 UTC 2022 - antoine.belvire@opensuse.org
 
 - Add unittest-cpp-2.0.0-gcc12.patch: Fix build with GCC 12.
