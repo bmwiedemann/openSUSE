@@ -1,7 +1,7 @@
 #
-# spec file for package texlive-specs-r.spec
+# spec file for package texlive-specs-r
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2024
+%define texlive_version  2025
 %define texlive_previous 2022
-%define texlive_release  20240311
-%define texlive_noarch   216
-%define biber_version    2.19
+%define texlive_release  20250308
+%define texlive_noarch   218
+%define biber_version    2.20
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-r
-Version:        2024
+Version:        2025
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -116,7 +116,7 @@ Requires:       tex(environ.sty)
 Requires:       tex(pgffor.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source1:        overlays.tar.xz
 Source2:        overlays.doc.tar.xz
 
@@ -450,7 +450,7 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source3:        overlock.tar.xz
 Source4:        overlock.doc.tar.xz
 
@@ -829,7 +829,7 @@ Requires:       tex(epic.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source5:        overpic.tar.xz
 Source6:        overpic.doc.tar.xz
 
@@ -912,7 +912,7 @@ Provides:       tex(ot1cpc.fd)
 Provides:       tex(pacioli.sty)
 Provides:       tex(t1cpc.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source7:        pacioli.tar.xz
 Source8:        pacioli.doc.tar.xz
 
@@ -971,13 +971,37 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pacioli/pacioli.sty
 %{_texmfdistdir}/tex/latex/pacioli/t1cpc.fd
 
-%package -n texlive-padauk
-Version:        %{texlive_version}.%{texlive_noarch}.3.002svn42617
+%package -n texlive-packdoc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73661
 Release:        0
-License:        OFL-1.1
-Summary:        A high-quality TrueType font that supports the many diverse languages that use the Myanmar script
+License:        LPPL-1.0
+Summary:        Document LaTeX packages in a consistent way
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Requires:       texlive-enumitem >= %{texlive_version}
+#!BuildIgnore: texlive-enumitem
+Requires:       texlive-etoolbox >= %{texlive_version}
+#!BuildIgnore: texlive-etoolbox
+Requires:       texlive-geometry >= %{texlive_version}
+#!BuildIgnore: texlive-geometry
+Requires:       texlive-hyperref >= %{texlive_version}
+#!BuildIgnore: texlive-hyperref
+Requires:       texlive-marginnote >= %{texlive_version}
+#!BuildIgnore: texlive-marginnote
+Requires:       texlive-minted >= %{texlive_version}
+#!BuildIgnore: texlive-minted
+Requires:       texlive-nowidow >= %{texlive_version}
+#!BuildIgnore: texlive-nowidow
+Requires:       texlive-pgfopts >= %{texlive_version}
+#!BuildIgnore: texlive-pgfopts
+Requires:       texlive-ragged2e >= %{texlive_version}
+#!BuildIgnore: texlive-ragged2e
+Requires:       texlive-snaptodo >= %{texlive_version}
+#!BuildIgnore: texlive-snaptodo
+Requires:       texlive-tcolorbox >= %{texlive_version}
+#!BuildIgnore: texlive-tcolorbox
+Requires:       texlive-tools >= %{texlive_version}
+#!BuildIgnore: texlive-tools
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -998,50 +1022,52 @@ Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
-Requires:       texlive-padauk-fonts >= %{texlive_version}
-Suggests:       texlive-padauk-doc >= %{texlive_version}
+Suggests:       texlive-packdoc-doc >= %{texlive_version}
+Provides:       tex(packdoc.sty)
+Requires:       tex(cleveref.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(makeidx.sty)
+Requires:       tex(marginnote.sty)
+Requires:       tex(minted.sty)
+Requires:       tex(multicol.sty)
+Requires:       tex(nowidow.sty)
+Requires:       tex(pgfopts.sty)
+Requires:       tex(ragged2e.sty)
+Requires:       tex(snaptodo.sty)
+Requires:       tex(tcolorbox.sty)
+Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source9:        padauk.tar.xz
-Source10:       padauk.doc.tar.xz
+# from 20250308
+Source9:        packdoc.tar.xz
+Source10:       packdoc.doc.tar.xz
 
-%description -n texlive-padauk
-Padauk is a Unicode-based font family with broad support for
-writing systems that use the Myanmar script.
+%description -n texlive-packdoc
+This package offers a variety of features for documenting LaTeX
+packages, ensuring consistent presentation, cross-referencing,
+and index generation. It also supports version and change
+tracking to maintain a consistent change history.
 
-%package -n texlive-padauk-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.002svn42617
+%package -n texlive-packdoc-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73661
 Release:        0
-Summary:        Documentation for texlive-padauk
-License:        OFL-1.1
+Summary:        Documentation for texlive-packdoc
+License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Supplements:    (texlive-padauk and texlive-alldocumentation)
+Supplements:    (texlive-packdoc and texlive-alldocumentation)
 
-%description -n texlive-padauk-doc
-This package includes the documentation for texlive-padauk
+%description -n texlive-packdoc-doc
+This package includes the documentation for texlive-packdoc
 
-%package -n texlive-padauk-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.3.002svn42617
-Release:        0
-Summary:        Severed fonts for texlive-padauk
-License:        OFL-1.1
-URL:            https://www.tug.org/texlive/
-Group:          Productivity/Publishing/TeX/Fonts
-%reconfigure_fonts_prereq
-Requires(posttrans): fontconfig
-Requires(posttrans): ghostscript-fonts-std
-Suggests:       xorg-x11-fonts-core
-
-%description -n texlive-padauk-fonts
-The  separated fonts package for texlive-padauk
-
-%post -n texlive-padauk
+%post -n texlive-packdoc
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
 
-%postun -n texlive-padauk
+%postun -n texlive-packdoc
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
@@ -1049,35 +1075,20 @@ if test $1 = 0; then
     exit 0
 fi
 
-%posttrans -n texlive-padauk
+%posttrans -n texlive-packdoc
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
-%reconfigure_fonts_scriptlets -n texlive-padauk-fonts
+%files -n texlive-packdoc-doc
+%{_texmfdistdir}/doc/latex/packdoc/DEPENDS.txt
+%{_texmfdistdir}/doc/latex/packdoc/README.md
+%{_texmfdistdir}/doc/latex/packdoc/license
+%{_texmfdistdir}/doc/latex/packdoc/packdoc-change-history-example.tex
+%{_texmfdistdir}/doc/latex/packdoc/packdoc-doc.pdf
+%{_texmfdistdir}/doc/latex/packdoc/packdoc-doc.tex
 
-%files -n texlive-padauk-doc
-%{_texmfdistdir}/doc/fonts/padauk/FONTLOG.txt
-%{_texmfdistdir}/doc/fonts/padauk/OFL-FAQ.txt
-%{_texmfdistdir}/doc/fonts/padauk/OFL.txt
-%{_texmfdistdir}/doc/fonts/padauk/README
-%{_texmfdistdir}/doc/fonts/padauk/README.TEXLIVE
-
-%files -n texlive-padauk
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/padauk/Padauk-Bold.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/padauk/Padauk-Regular.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/padauk/PadaukBook-Bold.ttf
-%verify(link) %{_texmfdistdir}/fonts/truetype/public/padauk/PadaukBook-Regular.ttf
-
-%files -n texlive-padauk-fonts
-%dir %{_datadir}/fonts/texlive-padauk
-%{_datadir}/fontconfig/conf.avail/58-texlive-padauk.conf
-%verify(not md5 size mtime) %{_datadir}/fonts/texlive-padauk/encodings.dir
-%verify(not md5 size mtime) %{_datadir}/fonts/texlive-padauk/fonts.dir
-%verify(not md5 size mtime) %{_datadir}/fonts/texlive-padauk/fonts.scale
-%{_datadir}/fonts/texlive-padauk/Padauk-Bold.ttf
-%{_datadir}/fonts/texlive-padauk/Padauk-Regular.ttf
-%{_datadir}/fonts/texlive-padauk/PadaukBook-Bold.ttf
-%{_datadir}/fonts/texlive-padauk/PadaukBook-Regular.ttf
+%files -n texlive-packdoc
+%{_texmfdistdir}/tex/latex/packdoc/packdoc.sty
 
 %package -n texlive-padcount
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn47621
@@ -1109,7 +1120,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-padcount-doc >= %{texlive_version}
 Provides:       tex(padcount.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source11:       padcount.tar.xz
 Source12:       padcount.doc.tar.xz
 
@@ -1160,7 +1171,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/padcount/padcount.sty
 
 %package -n texlive-pagecolor
-Version:        %{texlive_version}.%{texlive_noarch}.1.2csvn66885
+Version:        %{texlive_version}.%{texlive_noarch}.1.2dsvn73636
 Release:        0
 License:        LPPL-1.0
 Summary:        Interrogate page color
@@ -1189,10 +1200,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pagecolor-doc >= %{texlive_version}
 Provides:       tex(pagecolor.sty)
 Requires:       tex(color.sty)
-Requires:       tex(kvoptions.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source13:       pagecolor.tar.xz
 Source14:       pagecolor.doc.tar.xz
 
@@ -1213,7 +1223,7 @@ are provided. For use with the crop package
 are provided.
 
 %package -n texlive-pagecolor-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2csvn66885
+Version:        %{texlive_version}.%{texlive_noarch}.1.2dsvn73636
 Release:        0
 Summary:        Documentation for texlive-pagecolor
 License:        LPPL-1.0
@@ -1282,7 +1292,7 @@ Suggests:       texlive-pagecont-doc >= %{texlive_version}
 Provides:       tex(pagecont.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source15:       pagecont.tar.xz
 Source16:       pagecont.doc.tar.xz
 
@@ -1360,7 +1370,7 @@ Requires:       tex(atbegshi.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source17:       pagegrid.tar.xz
 Source18:       pagegrid.doc.tar.xz
 
@@ -1412,7 +1422,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pagegrid/pagegrid.sty
 
 %package -n texlive-pagelayout
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn69486
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn71937
 Release:        0
 License:        LPPL-1.0
 Summary:        Layout graphic rich documents
@@ -1447,7 +1457,7 @@ Requires:       tex(standalone.cls)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source19:       pagelayout.tar.xz
 Source20:       pagelayout.doc.tar.xz
 
@@ -1462,11 +1472,11 @@ export web, print or preview versions of your document.
 Parallelized image optimization, caching, and a draft mode
 enable fast PDF creation and a responsive workflow, even for
 large documents with lots of photos and graphics. The
-pagelayout class also integrates the Pgf/TikZ and tcolorbox
+pagelayout class also integrates the PGF/TikZ and tcolorbox
 LaTeX packages.
 
 %package -n texlive-pagelayout-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn69486
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn71937
 Release:        0
 Summary:        Documentation for texlive-pagelayout
 License:        LPPL-1.0
@@ -1572,7 +1582,7 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source21:       pagella-otf.tar.xz
 Source22:       pagella-otf.doc.tar.xz
 
@@ -1651,7 +1661,7 @@ Suggests:       texlive-pagenote-doc >= %{texlive_version}
 Provides:       tex(pagenote.sty)
 Requires:       tex(ifmtarg.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source23:       pagenote.tar.xz
 Source24:       pagenote.doc.tar.xz
 
@@ -1729,7 +1739,7 @@ Provides:       tex(pagerange.sty)
 Requires:       tex(lastpage.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source25:       pagerange.tar.xz
 Source26:       pagerange.doc.tar.xz
 
@@ -1808,7 +1818,7 @@ Provides:       tex(pagesel-2016-05-16.sty)
 Provides:       tex(pagesel.sty)
 Requires:       tex(everyshi.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source27:       pagesel.tar.xz
 Source28:       pagesel.doc.tar.xz
 
@@ -1855,7 +1865,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pagesel/pagesel.sty
 
 %package -n texlive-pageslts
-Version:        %{texlive_version}.%{texlive_noarch}.1.2fsvn39164
+Version:        %{texlive_version}.%{texlive_noarch}.2.0dsvn73400
 Release:        0
 License:        LPPL-1.0
 Summary:        Variants of last page labels
@@ -1884,31 +1894,28 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pageslts-doc >= %{texlive_version}
 Provides:       tex(pageslts.sty)
 Requires:       tex(alphalph.sty)
-Requires:       tex(atveryend.sty)
-Requires:       tex(everyshi.sty)
-Requires:       tex(kvoptions.sty)
-Requires:       tex(letltxmacro.sty)
-Requires:       tex(ltxcmds.sty)
-Requires:       tex(rerunfilecheck.sty)
 Requires:       tex(undolabl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source29:       pageslts.tar.xz
 Source30:       pageslts.doc.tar.xz
 
 %description -n texlive-pageslts
 The package was designed as an extension of the lastpage
-package -- as well as that package's LastPage label (created
-\AtEndDocument) it adds a VeryLastPage (created
+package -- as well as that package's LastPage label (created in
+hook enddocument/afterlastpage, formerly \AtEndDocument) it
+adds a VeryLastPage (created in the same hook, but formerly
 \AfterLastShipout). When more than one page numbering scheme is
 in operation (as in a book class document with frontmatter),
 the labels above do not give the total number of pages, so the
 package also provides labels pagesLTS.<numbering scheme>, where
 the numbering scheme is arabic, roman, etc. The package relies
-on the undolabl package.
+on the undolabl package. Note: The "LTS" of the package name
+stands for: "L" = number of Last page, "T" = Total number of
+pages, "S" = page numbering Schemes (roman, arabic, ...)
 
 %package -n texlive-pageslts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2fsvn39164
+Version:        %{texlive_version}.%{texlive_noarch}.2.0dsvn73400
 Release:        0
 Summary:        Documentation for texlive-pageslts
 License:        LPPL-1.0
@@ -2205,7 +2212,7 @@ Requires:       tex(fplmr.tfm)
 Requires:       tex(fplmri.tfm)
 Requires:       tex(psyr.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source31:       palatino.tar.xz
 
 %description -n texlive-palatino
@@ -2522,7 +2529,7 @@ Provides:       tex(symbolpalette.sty)
 Requires:       tex(macrolist.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source32:       palette.tar.xz
 Source33:       palette.doc.tar.xz
 
@@ -2604,7 +2611,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pangram-doc >= %{texlive_version}
 Provides:       tex(pangram.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source34:       pangram.tar.xz
 Source35:       pangram.doc.tar.xz
 
@@ -2649,7 +2656,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pangram/pangram.sty
 
 %package -n texlive-panneauxroute
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn67951
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn73069
 Release:        0
 License:        LPPL-1.0
 Summary:        Commands to display French road signs (vector graphics)
@@ -2679,17 +2686,17 @@ Suggests:       texlive-panneauxroute-doc >= %{texlive_version}
 Provides:       tex(PanneauxRoute.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source36:       panneauxroute.tar.xz
 Source37:       panneauxroute.doc.tar.xz
 
 %description -n texlive-panneauxroute
 The package provides commands to insert French road signs as
-vector graphics: \AffPanneau[graphicx options]{} \pr[graphicx
-options]
+vector graphics: \AffPanneau[graphicx options]{code}
+\prcode[graphicx options]
 
 %package -n texlive-panneauxroute-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn67951
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn73069
 Release:        0
 Summary:        Documentation for texlive-panneauxroute
 License:        LPPL-1.0
@@ -2774,6 +2781,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/panneauxroute/Indication/PanneauRouteC20a.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Indication/PanneauRouteC20c.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Indication/PanneauRouteC23.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Indication/PanneauRouteC24a.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Indication/PanneauRouteC24a1.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Indication/PanneauRouteC24a4.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Indication/PanneauRouteC24b1.pdf
@@ -2816,6 +2824,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB14_30.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB14_50.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB14_70.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB14_80.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB14_90.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB15.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB16.pdf
@@ -2824,10 +2833,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB18b.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB18c.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB19.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB1j.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB2a.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB2b.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB2c.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB3.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB30_30.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB31.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB33_110.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB33_130.pdf
@@ -2848,6 +2859,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB6a1.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB6a2.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB6a3.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB6b1.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB6b2.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB6b3.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB6b4.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB6b5.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB6d.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB7a.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Interdiction/PanneauRouteB7b.pdf
@@ -2895,6 +2911,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB44.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB45a.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB49.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB49VL.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB50a.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB50b.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB50c.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB50d.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB50e.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB51_30.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB52.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB53.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB54.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB55.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB56.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB57.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB58.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Obligation/PanneauRouteB59.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/PanneauxRoute.sty
 %{_texmfdistdir}/tex/latex/panneauxroute/Services/PanneauRouteCE1.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Services/PanneauRouteCE10.pdf
@@ -2933,6 +2964,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/panneauxroute/Services/PanneauRouteCE7.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Services/PanneauRouteCE8.pdf
 %{_texmfdistdir}/tex/latex/panneauxroute/Services/PanneauRouteCE9.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Temporaire/PanneauRouteAK14.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Temporaire/PanneauRouteAK17.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Temporaire/PanneauRouteAK2.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Temporaire/PanneauRouteAK22.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Temporaire/PanneauRouteAK3.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Temporaire/PanneauRouteAK30.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Temporaire/PanneauRouteAK31.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Temporaire/PanneauRouteAK32.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Temporaire/PanneauRouteAK4.pdf
+%{_texmfdistdir}/tex/latex/panneauxroute/Temporaire/PanneauRouteAK5.pdf
 
 %package -n texlive-paper
 Version:        %{texlive_version}.%{texlive_noarch}.1.0lsvn34521
@@ -2967,7 +3008,7 @@ Provides:       tex(journal.sty)
 Provides:       tex(paper.cls)
 Provides:       tex(paper.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source38:       paper.tar.xz
 Source39:       paper.doc.tar.xz
 
@@ -3056,7 +3097,7 @@ Provides:       tex(papercdcase.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source40:       papercdcase.tar.xz
 Source41:       papercdcase.doc.tar.xz
 
@@ -3133,7 +3174,7 @@ Provides:       tex(papermas.sty)
 Requires:       tex(intcalc.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source42:       papermas.tar.xz
 Source43:       papermas.doc.tar.xz
 
@@ -3228,7 +3269,7 @@ Requires:       tex(setspace.sty)
 Requires:       tex(textpos.sty)
 Requires:       tex(wrapfig.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source44:       papertex.tar.xz
 Source45:       papertex.doc.tar.xz
 
@@ -3283,7 +3324,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/papertex/papertex.cls
 
 %package -n texlive-papiergurvan
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn68239
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn73069
 Release:        0
 License:        LPPL-1.0
 Summary:        Commands to work with Gurvan Paper
@@ -3316,7 +3357,7 @@ Requires:       tex(simplekv.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source46:       papiergurvan.tar.xz
 Source47:       papiergurvan.doc.tar.xz
 
@@ -3327,7 +3368,7 @@ The source for the design of the paper can be found at
 http://www.sos-ecriture.fr/2014/10/papier-gurvan.html.
 
 %package -n texlive-papiergurvan-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn68239
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn73069
 Release:        0
 Summary:        Documentation for texlive-papiergurvan
 License:        LPPL-1.0
@@ -3370,7 +3411,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/papiergurvan/PapierGurvan.sty
 
 %package -n texlive-paracol
-Version:        %{texlive_version}.%{texlive_noarch}.1.35svn49560
+Version:        %{texlive_version}.%{texlive_noarch}.1.36svn72651
 Release:        0
 License:        LPPL-1.0
 Summary:        Multiple columns with texts "in parallel"
@@ -3397,9 +3438,10 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-paracol-doc >= %{texlive_version}
+Provides:       tex(paracol-2018-12-31.sty)
 Provides:       tex(paracol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source48:       paracol.tar.xz
 Source49:       paracol.doc.tar.xz
 
@@ -3410,7 +3452,7 @@ document switching and sychronizing each corresponding part in
 "parallel".
 
 %package -n texlive-paracol-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.35svn49560
+Version:        %{texlive_version}.%{texlive_noarch}.1.36svn72651
 Release:        0
 Summary:        Documentation for texlive-paracol
 License:        LPPL-1.0
@@ -3445,6 +3487,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/paracol/paracol.pdf
 
 %files -n texlive-paracol
+%{_texmfdistdir}/tex/latex/paracol/paracol-2018-12-31.sty
 %{_texmfdistdir}/tex/latex/paracol/paracol.sty
 
 %package -n texlive-parades
@@ -3477,7 +3520,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-parades-doc >= %{texlive_version}
 Provides:       tex(paravesp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source50:       parades.tar.xz
 Source51:       parades.doc.tar.xz
 
@@ -3562,7 +3605,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-paralist-doc >= %{texlive_version}
 Provides:       tex(paralist.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source52:       paralist.tar.xz
 Source53:       paralist.doc.tar.xz
 
@@ -3638,7 +3681,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-parallel-doc >= %{texlive_version}
 Provides:       tex(parallel.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source54:       parallel.tar.xz
 Source55:       parallel.doc.tar.xz
 
@@ -4413,7 +4456,7 @@ Provides:       tex(ptserif_ts1.enc)
 Provides:       tex(ptserif_x2.enc)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source56:       paratype.tar.xz
 Source57:       paratype.doc.tar.xz
 
@@ -5330,7 +5373,7 @@ Requires:       tex(iftex.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source58:       paresse.tar.xz
 Source59:       paresse.doc.tar.xz
 
@@ -5386,7 +5429,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/paresse/paresse.sty
 
 %package -n texlive-parnotes
-Version:        %{texlive_version}.%{texlive_noarch}.3bsvn51720
+Version:        %{texlive_version}.%{texlive_noarch}.3csvn71505
 Release:        0
 License:        LPPL-1.0
 Summary:        Notes after every paragraph (or elsewhere)
@@ -5415,7 +5458,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-parnotes-doc >= %{texlive_version}
 Provides:       tex(parnotes.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source60:       parnotes.tar.xz
 Source61:       parnotes.doc.tar.xz
 
@@ -5425,7 +5468,7 @@ The package provides the \parnote command. The notes are set as
 paragraph, or manually, using the \parnotes command.
 
 %package -n texlive-parnotes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3bsvn51720
+Version:        %{texlive_version}.%{texlive_noarch}.3csvn71505
 Release:        0
 Summary:        Documentation for texlive-parnotes
 License:        LPPL-1.0
@@ -5454,7 +5497,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-parnotes-doc
+%{_texmfdistdir}/doc/latex/parnotes/CHANGELOG-from-2016.md
 %{_texmfdistdir}/doc/latex/parnotes/README.md
+%{_texmfdistdir}/doc/latex/parnotes/changes.txt
 %{_texmfdistdir}/doc/latex/parnotes/parnotes.pdf
 %{_texmfdistdir}/doc/latex/parnotes/parnotes.tex
 
@@ -5493,7 +5538,7 @@ Provides:       tex(parrun.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source62:       parrun.tar.xz
 Source63:       parrun.doc.tar.xz
 
@@ -5573,7 +5618,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(multirow.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source64:       parsa.tar.xz
 Source65:       parsa.doc.tar.xz
 
@@ -5651,7 +5696,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-parselines-doc >= %{texlive_version}
 Provides:       tex(parselines.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source66:       parselines.tar.xz
 Source67:       parselines.doc.tar.xz
 
@@ -5697,7 +5742,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/parselines/parselines.sty
 
 %package -n texlive-parsimatn
-Version:        %{texlive_version}.%{texlive_noarch}.2.1asvn69090
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn70775
 Release:        0
 License:        OFL-1.1
 Summary:        Contemporary Persian font for scientific and formal writings
@@ -5726,7 +5771,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-parsimatn-fonts >= %{texlive_version}
 Suggests:       texlive-parsimatn-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source68:       parsimatn.tar.xz
 Source69:       parsimatn.doc.tar.xz
 
@@ -5739,7 +5784,7 @@ innovative, the letters be familiar to the average
 Persian/Arabic viewer.
 
 %package -n texlive-parsimatn-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1asvn69090
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn70775
 Release:        0
 Summary:        Documentation for texlive-parsimatn
 License:        OFL-1.1
@@ -5751,7 +5796,7 @@ Supplements:    (texlive-parsimatn and texlive-alldocumentation)
 This package includes the documentation for texlive-parsimatn
 
 %package -n texlive-parsimatn-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.1asvn69090
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn70775
 Release:        0
 Summary:        Severed fonts for texlive-parsimatn
 License:        OFL-1.1
@@ -5808,7 +5853,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-parsimatn/ParsiMatn-Regular.ttf
 
 %package -n texlive-parsinevis
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn68395
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn70776
 Release:        0
 License:        OFL-1.1
 Summary:        "Scheherazade New" adapted for Persian typesetting and scientific writings
@@ -5837,7 +5882,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-parsinevis-fonts >= %{texlive_version}
 Suggests:       texlive-parsinevis-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source70:       parsinevis.tar.xz
 Source71:       parsinevis.doc.tar.xz
 
@@ -5847,7 +5892,7 @@ making it more suitable for Persian typesetting. (Scheherazade
 New has SIL OFL license.)
 
 %package -n texlive-parsinevis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn68395
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn70776
 Release:        0
 Summary:        Documentation for texlive-parsinevis
 License:        OFL-1.1
@@ -5859,7 +5904,7 @@ Supplements:    (texlive-parsinevis and texlive-alldocumentation)
 This package includes the documentation for texlive-parsinevis
 
 %package -n texlive-parsinevis-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn68395
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn70776
 Release:        0
 Summary:        Severed fonts for texlive-parsinevis
 License:        OFL-1.1
@@ -5948,7 +5993,7 @@ Provides:       tex(parskip.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source72:       parskip.tar.xz
 Source73:       parskip.doc.tar.xz
 
@@ -6043,7 +6088,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source74:       pas-cours.tar.xz
 Source75:       pas-cours.doc.tar.xz
 
@@ -6134,7 +6179,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source76:       pas-crosswords.tar.xz
 Source77:       pas-crosswords.doc.tar.xz
 
@@ -6232,7 +6277,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source78:       pas-cv.tar.xz
 Source79:       pas-cv.doc.tar.xz
 
@@ -6328,7 +6373,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pas-cv/pas-cv.sty
 
 %package -n texlive-pas-tableur
-Version:        %{texlive_version}.%{texlive_noarch}.2.05svn66860
+Version:        %{texlive_version}.%{texlive_noarch}.2.06svn72283
 Release:        0
 License:        LPPL-1.0
 Summary:        Create a spreadsheet layout
@@ -6360,7 +6405,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source80:       pas-tableur.tar.xz
 Source81:       pas-tableur.doc.tar.xz
 
@@ -6370,7 +6415,7 @@ rectangles, and commands for populating locations in the grid.
 PGF/TikZ is used for placement and population of the cells.
 
 %package -n texlive-pas-tableur-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.05svn66860
+Version:        %{texlive_version}.%{texlive_noarch}.2.06svn72283
 Release:        0
 Summary:        Documentation for texlive-pas-tableur
 License:        LPPL-1.0
@@ -6399,8 +6444,8 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-pas-tableur-doc
-%{_texmfdistdir}/doc/latex/pas-tableur/README
 %{_texmfdistdir}/doc/latex/pas-tableur/README.TEXLIVE
+%{_texmfdistdir}/doc/latex/pas-tableur/README.txt
 %{_texmfdistdir}/doc/latex/pas-tableur/doc.codes.tex
 %{_texmfdistdir}/doc/latex/pas-tableur/doc.styles.tex
 %{_texmfdistdir}/doc/latex/pas-tableur/pas-tableur.tex
@@ -6443,7 +6488,7 @@ Requires:       tex(expl3.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source82:       pascaltriangle.tar.xz
 Source83:       pascaltriangle.doc.tar.xz
 
@@ -6552,7 +6597,7 @@ Requires:       tex(ulem.sty)
 Requires:       tex(url.sty)
 Requires:       tex(wasysym.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
+# from 20250308
 Source84:       passivetex.tar.xz
 
 %description -n texlive-passivetex
@@ -6589,6 +6634,82 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xmltex/passivetex/ucharacters.sty
 %{_texmfdistdir}/tex/xmltex/passivetex/unicode.sty
 
+%package -n texlive-passopt
+Version:        %{texlive_version}.%{texlive_noarch}.1.01csvn72638
+Release:        0
+License:        LPPL-1.0
+Summary:        Passing options to packages or classes
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-passopt-doc >= %{texlive_version}
+Provides:       tex(passopt.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source85:       passopt.tar.xz
+Source86:       passopt.doc.tar.xz
+
+%description -n texlive-passopt
+This package allows to reset the global options of a loaded
+macro package or document class, or to change the position of
+the pre-passed options in the list to the right.
+
+%package -n texlive-passopt-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.01csvn72638
+Release:        0
+Summary:        Documentation for texlive-passopt
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-passopt and texlive-alldocumentation)
+
+%description -n texlive-passopt-doc
+This package includes the documentation for texlive-passopt
+
+%post -n texlive-passopt
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-passopt
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-passopt
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-passopt-doc
+%{_texmfdistdir}/doc/latex/passopt/README.md
+%{_texmfdistdir}/doc/latex/passopt/passopt.pdf
+%{_texmfdistdir}/doc/latex/passopt/passopt.tex
+
+%files -n texlive-passopt
+%{_texmfdistdir}/tex/latex/passopt/passopt.sty
+
 %package -n texlive-patch
 Version:        %{texlive_version}.%{texlive_noarch}.svn42428
 Release:        0
@@ -6617,8 +6738,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source85:       patch.source.tar.xz
+# from 20250308
+Source87:       patch.source.tar.xz
 
 %description -n texlive-patch
 The package defines macros that allow patching of existing
@@ -6680,9 +6801,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-patchcmd-doc >= %{texlive_version}
 Provides:       tex(patchcmd.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source86:       patchcmd.tar.xz
-Source87:       patchcmd.doc.tar.xz
+# from 20250308
+Source88:       patchcmd.tar.xz
+Source89:       patchcmd.doc.tar.xz
 
 %description -n texlive-patchcmd
 The package provides a command \patchcommand that can be used
@@ -6728,7 +6849,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/patchcmd/patchcmd.sty
 
 %package -n texlive-patgen
-Version:        %{texlive_version}.%{texlive_noarch}.2.4svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.2.4svn73848
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Generate hyphenation patterns
@@ -6760,8 +6881,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(patgen.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source88:       patgen.doc.tar.xz
+# from 20250308
+Source90:       patgen.doc.tar.xz
 
 %description -n texlive-patgen
 Patgen takes a list of hyphenated words and generates a set of
@@ -6823,8 +6944,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source89:       patgen2-tutorial.doc.tar.xz
+# from 20250308
+Source91:       patgen2-tutorial.doc.tar.xz
 
 %description -n texlive-patgen2-tutorial
 This document describes the use of Patgen 2 to create
@@ -6883,9 +7004,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-path-doc >= %{texlive_version}
 Provides:       tex(path.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source90:       path.tar.xz
-Source91:       path.doc.tar.xz
+# from 20250308
+Source92:       path.tar.xz
+Source93:       path.doc.tar.xz
 
 %description -n texlive-path
 Defines a macro \path|...|, similar to the LaTeX \verb|...|,
@@ -6963,9 +7084,9 @@ Requires:       tex(babel.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(inputenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source92:       pauldoc.tar.xz
-Source93:       pauldoc.doc.tar.xz
+# from 20250308
+Source94:       pauldoc.tar.xz
+Source95:       pauldoc.doc.tar.xz
 
 %description -n texlive-pauldoc
 The package provides helpers for German language package
@@ -7038,9 +7159,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pawpict-doc >= %{texlive_version}
 Provides:       tex(pawpict.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source94:       pawpict.tar.xz
-Source95:       pawpict.doc.tar.xz
+# from 20250308
+Source96:       pawpict.tar.xz
+Source97:       pawpict.doc.tar.xz
 
 %description -n texlive-pawpict
 Support for the easy inclusion of graphics made by PAW (Physics
@@ -7129,9 +7250,9 @@ Requires:       tex(kvoptions.sty)
 Requires:       tex(kvsetkeys.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source96:       pax.tar.xz
-Source97:       pax.doc.tar.xz
+# from 20250308
+Source98:       pax.tar.xz
+Source99:       pax.doc.tar.xz
 
 %description -n texlive-pax
 If PDF files are included using pdfTeX, PDF annotations are
@@ -7214,9 +7335,9 @@ Provides:       tex(pb-diagram.sty)
 Provides:       tex(pb-lams.sty)
 Provides:       tex(pb-xy.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source98:       pb-diagram.tar.xz
-Source99:       pb-diagram.doc.tar.xz
+# from 20250308
+Source100:      pb-diagram.tar.xz
+Source101:      pb-diagram.doc.tar.xz
 
 %description -n texlive-pb-diagram
 The pb-diagram package
@@ -7300,9 +7421,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(filehook.sty)
 Requires:       tex(zref-abspage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source100:      pbalance.tar.xz
-Source101:      pbalance.doc.tar.xz
+# from 20250308
+Source102:      pbalance.tar.xz
+Source103:      pbalance.doc.tar.xz
 
 %description -n texlive-pbalance
 This package balances the columns on the last page of a
@@ -7377,9 +7498,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pbibtex-base-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source102:      pbibtex-base.tar.xz
-Source103:      pbibtex-base.doc.tar.xz
+# from 20250308
+Source104:      pbibtex-base.tar.xz
+Source105:      pbibtex-base.doc.tar.xz
 
 %description -n texlive-pbibtex-base
 These are miscellaneous files, including bibliography styles
@@ -7465,8 +7586,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source104:      pbibtex-manual.doc.tar.xz
+# from 20250308
+Source106:      pbibtex-manual.doc.tar.xz
 
 %description -n texlive-pbibtex-manual
 The bundle contains documentation files for Japanese pBibTeX
@@ -7535,9 +7656,9 @@ Provides:       tex(pbox.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source105:      pbox.tar.xz
-Source106:      pbox.doc.tar.xz
+# from 20250308
+Source107:      pbox.tar.xz
+Source108:      pbox.doc.tar.xz
 
 %description -n texlive-pbox
 Defines a command \pbox{<max width>}{<text>} which adjusts its
@@ -7634,9 +7755,9 @@ Requires:       tex(rotating.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source107:      pbsheet.tar.xz
-Source108:      pbsheet.doc.tar.xz
+# from 20250308
+Source109:      pbsheet.tar.xz
+Source110:      pbsheet.doc.tar.xz
 
 %description -n texlive-pbsheet
 This class is designed to simplify the typesetting of problem
@@ -7725,9 +7846,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pdf-trans-doc >= %{texlive_version}
 Provides:       tex(pdf-trans.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source109:      pdf-trans.tar.xz
-Source110:      pdf-trans.doc.tar.xz
+# from 20250308
+Source111:      pdf-trans.tar.xz
+Source112:      pdf-trans.doc.tar.xz
 
 %description -n texlive-pdf-trans
 pdf-trans is a set of macros offering various transformations
@@ -7800,9 +7921,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pdf14-doc >= %{texlive_version}
 Provides:       tex(pdf14.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source111:      pdf14.tar.xz
-Source112:      pdf14.doc.tar.xz
+# from 20250308
+Source113:      pdf14.tar.xz
+Source114:      pdf14.doc.tar.xz
 
 %description -n texlive-pdf14
 Starting with TeX Live 2010, the various formats, that directly
@@ -7889,9 +8010,9 @@ Requires:       tex(pdfpages.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source113:      pdfannotations.tar.xz
-Source114:      pdfannotations.doc.tar.xz
+# from 20250308
+Source115:      pdfannotations.tar.xz
+Source116:      pdfannotations.doc.tar.xz
 
 %description -n texlive-pdfannotations
 This is a package for annotating PDF slides with LaTeX
@@ -7996,9 +8117,9 @@ Requires:       tex(varwidth.sty)
 Requires:       tex(wrapfig.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source115:      pdfarticle.tar.xz
-Source116:      pdfarticle.doc.tar.xz
+# from 20250308
+Source117:      pdfarticle.tar.xz
+Source118:      pdfarticle.doc.tar.xz
 
 %description -n texlive-pdfarticle
 pdfArticle is simple document class dedicated for creating pdf
@@ -8072,9 +8193,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pdfbook2-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source117:      pdfbook2.tar.xz
-Source118:      pdfbook2.doc.tar.xz
+# from 20250308
+Source119:      pdfbook2.tar.xz
+Source120:      pdfbook2.doc.tar.xz
 
 %description -n texlive-pdfbook2
 This python program creates print-ready PDF files from some
@@ -8158,9 +8279,9 @@ Suggests:       texlive-pdfcol-doc >= %{texlive_version}
 Provides:       tex(pdfcol.sty)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source119:      pdfcol.tar.xz
-Source120:      pdfcol.doc.tar.xz
+# from 20250308
+Source121:      pdfcol.tar.xz
+Source122:      pdfcol.doc.tar.xz
 
 %description -n texlive-pdfcol
 Since version 1.40 pdfTeX supports colour stacks. The driver
@@ -8236,9 +8357,9 @@ Suggests:       texlive-pdfcolfoot-doc >= %{texlive_version}
 Provides:       tex(pdfcolfoot.sty)
 Requires:       tex(pdfcol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source121:      pdfcolfoot.tar.xz
-Source122:      pdfcolfoot.doc.tar.xz
+# from 20250308
+Source123:      pdfcolfoot.tar.xz
+Source124:      pdfcolfoot.doc.tar.xz
 
 %description -n texlive-pdfcolfoot
 Since version 1.40 pdfTeX supports several colour stacks. This
@@ -8311,9 +8432,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pdfcolmk-doc >= %{texlive_version}
 Provides:       tex(pdfcolmk.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source123:      pdfcolmk.tar.xz
-Source124:      pdfcolmk.doc.tar.xz
+# from 20250308
+Source125:      pdfcolmk.tar.xz
+Source126:      pdfcolmk.doc.tar.xz
 
 %description -n texlive-pdfcolmk
 The package used to provide macros that emulated the 'colour
@@ -8408,9 +8529,9 @@ Requires:       tex(soulpos.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(zref-savepos.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source125:      pdfcomment.tar.xz
-Source126:      pdfcomment.doc.tar.xz
+# from 20250308
+Source127:      pdfcomment.tar.xz
+Source128:      pdfcomment.doc.tar.xz
 
 %description -n texlive-pdfcomment
 For a long time pdfLaTeX has offered the command \pdfannot for
@@ -8514,9 +8635,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source127:      pdfcprot.tar.xz
-Source128:      pdfcprot.doc.tar.xz
+# from 20250308
+Source129:      pdfcprot.tar.xz
+Source130:      pdfcprot.doc.tar.xz
 
 %description -n texlive-pdfcprot
 This package provides an easy interface to adjust the character
@@ -8614,9 +8735,9 @@ Requires:       perl(Getopt::Long)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source129:      pdfcrop.tar.xz
-Source130:      pdfcrop.doc.tar.xz
+# from 20250308
+Source131:      pdfcrop.tar.xz
+Source132:      pdfcrop.doc.tar.xz
 
 %description -n texlive-pdfcrop
 A Perl script that can either trim pages of any whitespace
@@ -8689,9 +8810,9 @@ Provides:       tex(pdfescape.sty)
 Requires:       tex(ltxcmds.sty)
 Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source131:      pdfescape.tar.xz
-Source132:      pdfescape.doc.tar.xz
+# from 20250308
+Source133:      pdfescape.tar.xz
+Source134:      pdfescape.doc.tar.xz
 
 %description -n texlive-pdfescape
 This package implements pdfTeX's escape features
@@ -8765,9 +8886,9 @@ Suggests:       texlive-pdfextra-doc >= %{texlive_version}
 Provides:       tex(pdfextra.sty)
 Provides:       tex(pdfextra.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source133:      pdfextra.tar.xz
-Source134:      pdfextra.doc.tar.xz
+# from 20250308
+Source135:      pdfextra.tar.xz
+Source136:      pdfextra.doc.tar.xz
 
 %description -n texlive-pdfextra
 This package provides extra PDF features for OpTeX (or in
@@ -8823,7 +8944,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/optex/pdfextra/pdfextra.opm
 
 %package -n texlive-pdfjam
-Version:        %{texlive_version}.%{texlive_noarch}.3.10svn68597
+Version:        %{texlive_version}.%{texlive_noarch}.4.1svn73677
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Shell scripts interfacing to pdfpages
@@ -8854,22 +8975,23 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pdfjam-doc >= %{texlive_version}
 Requires:       texlive-pdfpages >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source135:      pdfjam.tar.xz
-Source136:      pdfjam.doc.tar.xz
+# from 20250308
+Source137:      pdfjam.tar.xz
+Source138:      pdfjam.doc.tar.xz
 
 %description -n texlive-pdfjam
 The package makes available the pdfjam shell script that
 provides a simple interface to much of the functionality of the
 excellent pdfpages package (by Andreas Matthias) for LaTeX. The
-pdfjam script takes one or more PDF files (and/or JPG/PNG
-graphics files) as input, and produces one or more PDF files as
-output. It is useful for joining files together, selecting
-pages, reducing several source pages onto one output page,
-etc., etc.
+pdfjam script takes one or more PDF (and/or JPG/PNG) files as
+input, and produces one or more PDF files as output. It is
+useful for joining files together, selecting pages, reducing
+several source pages onto one output page, etc., etc. The
+package contains no PDF documentation, but a comprehensive
+--help output instead.
 
 %package -n texlive-pdfjam-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.10svn68597
+Version:        %{texlive_version}.%{texlive_noarch}.4.1svn73677
 Release:        0
 Summary:        Documentation for texlive-pdfjam
 License:        GPL-2.0-or-later
@@ -8902,15 +9024,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/pdfjam.1*
 %{_texmfdistdir}/doc/support/pdfjam/COPYING
 %{_texmfdistdir}/doc/support/pdfjam/README.md
-%{_texmfdistdir}/doc/support/pdfjam/VERSION
+%{_texmfdistdir}/doc/support/pdfjam/VERSION-4.1
 %{_texmfdistdir}/doc/support/pdfjam/pdfjam.conf
-%{_texmfdistdir}/doc/support/pdfjam/tests.zip
+%{_texmfdistdir}/doc/support/pdfjam/zsh/_pdfjam
 
 %files -n texlive-pdfjam
 %{_texmfdistdir}/scripts/pdfjam/pdfjam
 
 %package -n texlive-pdflatexpicscale
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.32svn46617
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.50svn72650
 Release:        0
 License:        LPPL-1.0
 Summary:        Support software for downscaling graphics to be included by pdfLaTeX
@@ -8945,21 +9067,25 @@ Requires:       perl(File::Copy)
 #!BuildIgnore:  perl(File::Copy)
 Requires:       perl(File::Spec)
 #!BuildIgnore:  perl(File::Spec)
+Requires:       perl(GD)
+#!BuildIgnore:  perl(GD)
 Requires:       perl(Getopt::Long)
 #!BuildIgnore:  perl(Getopt::Long)
+Requires:       perl(Image::ExifTool)
+#!BuildIgnore:  perl(Image::ExifTool)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source137:      pdflatexpicscale.tar.xz
-Source138:      pdflatexpicscale.doc.tar.xz
+# from 20250308
+Source139:      pdflatexpicscale.tar.xz
+Source140:      pdflatexpicscale.doc.tar.xz
 
 %description -n texlive-pdflatexpicscale
 The package provides a script to scale pictures down to a
 target resolution before creating a PDF document with pdfLaTeX.
 
 %package -n texlive-pdflatexpicscale-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.32svn46617
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.50svn72650
 Release:        0
 Summary:        Documentation for texlive-pdflatexpicscale
 License:        LPPL-1.0
@@ -9029,9 +9155,9 @@ Provides:       tex(pdflscape.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(lscape.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source139:      pdflscape.tar.xz
-Source140:      pdflscape.doc.tar.xz
+# from 20250308
+Source141:      pdflscape.tar.xz
+Source142:      pdflscape.doc.tar.xz
 
 %description -n texlive-pdflscape
 The package adds PDF support to the landscape environment of
@@ -9077,7 +9203,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pdflscape/pdflscape.sty
 
 %package -n texlive-pdfmanagement-testphase
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.96fsvn70303
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.96psvn74001
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX PDF management testphase bundle
@@ -9123,9 +9249,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(l3draw.sty)
 Requires:       tex(tagpdf-base.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source141:      pdfmanagement-testphase.tar.xz
-Source142:      pdfmanagement-testphase.doc.tar.xz
+# from 20250308
+Source143:      pdfmanagement-testphase.tar.xz
+Source144:      pdfmanagement-testphase.doc.tar.xz
 
 %description -n texlive-pdfmanagement-testphase
 This is a temporary package, which is used during a test phase
@@ -9140,7 +9266,7 @@ parts into permanent support packages), and the current
 testphase bundle will be removed.
 
 %package -n texlive-pdfmanagement-testphase-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.96fsvn70303
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.96psvn74001
 Release:        0
 Summary:        Documentation for texlive-pdfmanagement-testphase
 License:        LPPL-1.0
@@ -9241,9 +9367,9 @@ Suggests:       texlive-pdfmarginpar-doc >= %{texlive_version}
 Provides:       tex(pdfmarginpar.sty)
 Requires:       tex(pgfkeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source143:      pdfmarginpar.tar.xz
-Source144:      pdfmarginpar.doc.tar.xz
+# from 20250308
+Source145:      pdfmarginpar.tar.xz
+Source146:      pdfmarginpar.doc.tar.xz
 
 %description -n texlive-pdfmarginpar
 The package provides the \pdfmarginpar command which is similar
@@ -9327,9 +9453,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pdfmsym-doc >= %{texlive_version}
 Provides:       tex(pdfmsym.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source145:      pdfmsym.tar.xz
-Source146:      pdfmsym.doc.tar.xz
+# from 20250308
+Source147:      pdfmsym.tar.xz
+Source148:      pdfmsym.doc.tar.xz
 
 %description -n texlive-pdfmsym
 This package defines a handful of mathematical symbols many of
@@ -9407,9 +9533,9 @@ Suggests:       texlive-pdfoverlay-doc >= %{texlive_version}
 Provides:       tex(pdfoverlay.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source147:      pdfoverlay.tar.xz
-Source148:      pdfoverlay.doc.tar.xz
+# from 20250308
+Source149:      pdfoverlay.tar.xz
+Source150:      pdfoverlay.doc.tar.xz
 
 %description -n texlive-pdfoverlay
 It is often desirable to take an exisiting PDF and easily add
@@ -9496,9 +9622,9 @@ Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(substr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source149:      pdfpagediff.tar.xz
-Source150:      pdfpagediff.doc.tar.xz
+# from 20250308
+Source151:      pdfpagediff.tar.xz
+Source152:      pdfpagediff.doc.tar.xz
 
 %description -n texlive-pdfpagediff
 Find difference between two PDF's
@@ -9551,7 +9677,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pdfpagediff/pdfpagediff.sty
 
 %package -n texlive-pdfpages
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5ysvn69524
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6esvn73673
 Release:        0
 License:        LPPL-1.0
 Summary:        Include PDF documents in LaTeX
@@ -9598,13 +9724,14 @@ Requires:       tex(calc.sty)
 Requires:       tex(count1to.sty)
 Requires:       tex(dvipdfmx.def)
 Requires:       tex(eso-pic.sty)
+Requires:       tex(etoolbox.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(pdflscape.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source151:      pdfpages.tar.xz
-Source152:      pdfpages.doc.tar.xz
+# from 20250308
+Source153:      pdfpages.tar.xz
+Source154:      pdfpages.doc.tar.xz
 
 %description -n texlive-pdfpages
 This package simplifies the inclusion of external multi-page
@@ -9617,7 +9744,7 @@ even possible to use this package to insert PostScript files,
 in addition to PDF files.
 
 %package -n texlive-pdfpages-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5ysvn69524
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6esvn73673
 Release:        0
 Summary:        Documentation for texlive-pdfpages
 License:        LPPL-1.0
@@ -9699,9 +9826,9 @@ Requires:       tex(pdftexcmds.sty)
 Requires:       tex(stringenc.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source153:      pdfpc.tar.xz
-Source154:      pdfpc.doc.tar.xz
+# from 20250308
+Source155:      pdfpc.tar.xz
+Source156:      pdfpc.doc.tar.xz
 
 %description -n texlive-pdfpc
 This packages allows to define additional meta data within the
@@ -9779,9 +9906,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(pgfkeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source155:      pdfpc-movie.tar.xz
-Source156:      pdfpc-movie.doc.tar.xz
+# from 20250308
+Source157:      pdfpc-movie.tar.xz
+Source158:      pdfpc-movie.doc.tar.xz
 
 %description -n texlive-pdfpc-movie
 This LaTeX2e package provides a command \pdfpcmovie for
@@ -9860,9 +9987,9 @@ Provides:       tex(pdfprivacy.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source157:      pdfprivacy.tar.xz
-Source158:      pdfprivacy.doc.tar.xz
+# from 20250308
+Source159:      pdfprivacy.tar.xz
+Source160:      pdfprivacy.doc.tar.xz
 
 %description -n texlive-pdfprivacy
 Creating pdfs with pdfLaTeX populates several pdf meta-data
@@ -9940,9 +10067,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pdfrender-doc >= %{texlive_version}
 Provides:       tex(pdfrender.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source159:      pdfrender.tar.xz
-Source160:      pdfrender.doc.tar.xz
+# from 20250308
+Source161:      pdfrender.tar.xz
+Source162:      pdfrender.doc.tar.xz
 
 %description -n texlive-pdfrender
 The package provides interfaces for the user to control PDF
@@ -10021,9 +10148,9 @@ Requires:       tex(grffile.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ulem.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source161:      pdfreview.tar.xz
-Source162:      pdfreview.doc.tar.xz
+# from 20250308
+Source163:      pdfreview.tar.xz
+Source164:      pdfreview.doc.tar.xz
 
 %description -n texlive-pdfreview
 This package lets you add comments in the page margins of PDF
@@ -10126,9 +10253,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(shortvrb.sty)
 Requires:       tex(truncate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source163:      pdfscreen.tar.xz
-Source164:      pdfscreen.doc.tar.xz
+# from 20250308
+Source165:      pdfscreen.tar.xz
+Source166:      pdfscreen.doc.tar.xz
 
 %description -n texlive-pdfscreen
 An extension of the hyperref package to provide a screen-based
@@ -10239,9 +10366,9 @@ Requires:       tex(fancybox.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source165:      pdfslide.tar.xz
-Source166:      pdfslide.doc.tar.xz
+# from 20250308
+Source167:      pdfslide.tar.xz
+Source168:      pdfslide.doc.tar.xz
 
 %description -n texlive-pdfslide
 This is a package for use with pdfTeX, to make nice
@@ -10331,9 +10458,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pdfsync-doc >= %{texlive_version}
 Provides:       tex(pdfsync.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source167:      pdfsync.tar.xz
-Source168:      pdfsync.doc.tar.xz
+# from 20250308
+Source169:      pdfsync.tar.xz
+Source170:      pdfsync.doc.tar.xz
 
 %description -n texlive-pdfsync
 The package runs with pdfTeX or XeTeX, and creates an auxiliary
@@ -10379,7 +10506,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pdfsync/pdfsync.sty
 
 %package -n texlive-pdftex
-Version:        %{texlive_version}.%{texlive_noarch}.svn70501
+Version:        %{texlive_version}.%{texlive_noarch}.svn74113
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        A TeX extension for direct creation of PDF
@@ -10468,10 +10595,10 @@ Provides:       tex(pdfcolor.tex)
 Provides:       tex(pdftex-dvi.tex)
 Provides:       tex(pdftexspace.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source169:      pdftex.tar.xz
-Source170:      pdftex.doc.tar.xz
-Source171:      pdftex_pdflatex.dif
+# from 20250308
+Source171:      pdftex.tar.xz
+Source172:      pdftex.doc.tar.xz
+Source173:      pdftex_pdflatex.dif
 
 %description -n texlive-pdftex
 An extension of TeX which can directly generate PDF documents
@@ -10481,7 +10608,7 @@ TeX) and pdfLaTeX (LaTeX), among many other formats based on
 the pdfTeX engine.
 
 %package -n texlive-pdftex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70501
+Version:        %{texlive_version}.%{texlive_noarch}.svn74113
 Release:        0
 Summary:        Documentation for texlive-pdftex
 License:        GPL-2.0-or-later
@@ -10495,7 +10622,7 @@ Provides:       man(pdftex.1)
 This package includes the documentation for texlive-pdftex
 
 %package -n texlive-pdftex-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn70501
+Version:        %{texlive_version}.%{texlive_noarch}.svn74113
 Release:        0
 Summary:        Severed fonts for texlive-pdftex
 License:        GPL-2.0-or-later
@@ -10774,6 +10901,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/pdftex/tests/27-late-shipout/test-shipout.tex
 %{_texmfdistdir}/doc/pdftex/tests/28-fake-interword-space-updated/Makefile
 %{_texmfdistdir}/doc/pdftex/tests/28-fake-interword-space-updated/fake-interword-space.tex
+%{_texmfdistdir}/doc/pdftex/tests/28-fake-interword-space-updated/pdftexspace.pfb
+%{_texmfdistdir}/doc/pdftex/tests/28-fake-interword-space-updated/pdftexspace.tfm
 %{_texmfdistdir}/doc/pdftex/tests/28-fake-interword-space-updated/pdftexspace/Makefile
 %{_texmfdistdir}/doc/pdftex/tests/28-fake-interword-space-updated/pdftexspace/pdftexspace.pfb
 %{_texmfdistdir}/doc/pdftex/tests/28-fake-interword-space-updated/pdftexspace/pdftexspace.pl
@@ -10796,6 +10925,60 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/pdftex/tests/34-pdf-inclusion/Makefile
 %{_texmfdistdir}/doc/pdftex/tests/34-pdf-inclusion/doc.tex
 %{_texmfdistdir}/doc/pdftex/tests/34-pdf-inclusion/shadowbox.pdf
+%{_texmfdistdir}/doc/pdftex/tests/35-space-chars-lost-overfull/Makefile
+%{_texmfdistdir}/doc/pdftex/tests/35-space-chars-lost-overfull/f.tex
+%{_texmfdistdir}/doc/pdftex/tests/35-space-chars-lost-overfull/pdftexspace.pfb
+%{_texmfdistdir}/doc/pdftex/tests/35-space-chars-lost-overfull/pdftexspace.tfm
+%{_texmfdistdir}/doc/pdftex/tests/36-ptex-use-underscore/Makefile
+%{_texmfdistdir}/doc/pdftex/tests/36-ptex-use-underscore/f.tex
+%{_texmfdistdir}/doc/pdftex/tests/36-ptex-use-underscore/f2.tex
+%{_texmfdistdir}/doc/pdftex/tests/37-ignore-tiny-image-resolutions/i.pdf
+%{_texmfdistdir}/doc/pdftex/tests/37-ignore-tiny-image-resolutions/i.tex
+%{_texmfdistdir}/doc/pdftex/tests/37-ignore-tiny-image-resolutions/test-1.jpg
+%{_texmfdistdir}/doc/pdftex/tests/37-ignore-tiny-image-resolutions/test-2.jpg
+%{_texmfdistdir}/doc/pdftex/tests/37-ignore-tiny-image-resolutions/test-3.jpg
+%{_texmfdistdir}/doc/pdftex/tests/37-ignore-tiny-image-resolutions/test-4.jpg
+%{_texmfdistdir}/doc/pdftex/tests/37-ignore-tiny-image-resolutions/test-5.jpg
+%{_texmfdistdir}/doc/pdftex/tests/37-ignore-tiny-image-resolutions/test-6.jpg
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/Makefile
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/a.bib
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/a1.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/a2.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/a3.bbl
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/a3.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/advanced-lnx.png
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/basic-w32.png
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/beamersam.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/changefontspace.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/compare_pdfs.rb
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/examples/ex5.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/examples/ex6.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/examples/ex6a.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/examples/ex6b.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/examples/ex6c.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/f.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/f2.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/f3.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/from-latex-tagged-pdf/arXiv-2401.05361v1.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/from-latex-tagged-pdf/arXiv-2401.09965v1.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/from-latex-tagged-pdf/glosuba.bbl
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/from-latex-tagged-pdf/glosuba.bib
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/from-latex-tagged-pdf/glosuba.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/mathspace.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/nsis_installer.png
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/postpdf.sh
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/sample2e.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/stdcoll.png
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/test-plain.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/tex-live.sty
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/texlive-en.tex
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/tlcockpit-packages.png
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/tlmgr-gui.png
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/tlshell-linux.png
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/tlshell-macos.png
+%{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/tray-menu.png
+%{_texmfdistdir}/doc/pdftex/tests/39-ignore-primitive-error/Makefile
+%{_texmfdistdir}/doc/pdftex/tests/39-ignore-primitive-error/f.tex
 %{_texmfdistdir}/doc/pdftex/tests/Common.mak
 
 %files -n texlive-pdftex
@@ -10850,9 +11033,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pdftex-quiet-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source172:      pdftex-quiet.tar.xz
-Source173:      pdftex-quiet.doc.tar.xz
+# from 20250308
+Source174:      pdftex-quiet.tar.xz
+Source175:      pdftex-quiet.doc.tar.xz
 
 %description -n texlive-pdftex-quiet
 This package provides a bash script aiming at reducing pdfTeX's
@@ -10930,9 +11113,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source174:      pdftexcmds.tar.xz
-Source175:      pdftexcmds.doc.tar.xz
+# from 20250308
+Source176:      pdftexcmds.tar.xz
+Source177:      pdftexcmds.doc.tar.xz
 
 %description -n texlive-pdftexcmds
 LuaTeX provides most of the commands of pdfTeX 1.40. However, a
@@ -10979,7 +11162,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/pdftexcmds/pdftexcmds.sty
 
 %package -n texlive-pdftosrc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70015
+Version:        %{texlive_version}.%{texlive_noarch}.svn73848
 Release:        0
 License:        LPPL-1.0
 Summary:        Extract source file or stream from PDF file
@@ -11011,8 +11194,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(pdftosrc.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source176:      pdftosrc.doc.tar.xz
+# from 20250308
+Source178:      pdftosrc.doc.tar.xz
 
 %description -n texlive-pdftosrc
 Extracts an embedded source file, or extracts and uncompresses
@@ -11073,9 +11256,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(moreverb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source177:      pdftricks.tar.xz
-Source178:      pdftricks.doc.tar.xz
+# from 20250308
+Source179:      pdftricks.tar.xz
+Source180:      pdftricks.doc.tar.xz
 
 %description -n texlive-pdftricks
 The PSTricks macros cannot be used (directly) with pdfTeX,
@@ -11164,9 +11347,9 @@ Requires:       tex(ifplatform.sty)
 Requires:       tex(moreverb.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source179:      pdftricks2.tar.xz
-Source180:      pdftricks2.doc.tar.xz
+# from 20250308
+Source181:      pdftricks2.tar.xz
+Source182:      pdftricks2.doc.tar.xz
 
 %description -n texlive-pdftricks2
 The package provides the means of processing documents (that
@@ -11246,9 +11429,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(truncate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source181:      pdfwin.tar.xz
-Source182:      pdfwin.doc.tar.xz
+# from 20250308
+Source183:      pdfwin.tar.xz
+Source184:      pdfwin.doc.tar.xz
 
 %description -n texlive-pdfwin
 Inspired by the pdfscreen package.
@@ -11301,7 +11484,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pdfwin/pdfwin.sty
 
 %package -n texlive-pdfx
-Version:        %{texlive_version}.%{texlive_noarch}.1.6.3svn50338
+Version:        %{texlive_version}.%{texlive_noarch}.1.6.5fsvn71681
 Release:        0
 License:        LPPL-1.0
 Summary:        PDF/X and PDF/A support for pdfTeX, LuaTeX and XeTeX
@@ -11360,9 +11543,9 @@ Requires:       tex(stringenc.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xmpincl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source183:      pdfx.tar.xz
-Source184:      pdfx.doc.tar.xz
+# from 20250308
+Source185:      pdfx.tar.xz
+Source186:      pdfx.doc.tar.xz
 
 %description -n texlive-pdfx
 The package helps LaTeX users to create PDF/X, PFD/A and other
@@ -11370,7 +11553,7 @@ standards-compliant PDF documents with pdfTeX, LuaTeX and
 XeTeX.
 
 %package -n texlive-pdfx-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.6.3svn50338
+Version:        %{texlive_version}.%{texlive_noarch}.1.6.5fsvn71681
 Release:        0
 Summary:        Documentation for texlive-pdfx
 License:        LPPL-1.0
@@ -11414,7 +11597,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/pdfx/manifest.txt
 %{_texmfdistdir}/doc/latex/pdfx/math-assign5.png
 %{_texmfdistdir}/doc/latex/pdfx/pdfx.pdf
-%{_texmfdistdir}/doc/latex/pdfx/pdfx.xmpdata
 %{_texmfdistdir}/doc/latex/pdfx/sample.tex
 %{_texmfdistdir}/doc/latex/pdfx/small2e-pdfx.tex
 %{_texmfdistdir}/doc/latex/pdfx/usage-meta.png
@@ -11444,7 +11626,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pdfx/text89.def
 
 %package -n texlive-pdfxup
-Version:        %{texlive_version}.%{texlive_noarch}.2.10svn59001
+Version:        %{texlive_version}.%{texlive_noarch}.2.12svn71513
 Release:        0
 License:        LPPL-1.0
 Summary:        Create n-up PDF pages with minimal margins
@@ -11475,9 +11657,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pdfxup-doc >= %{texlive_version}
 Provides:       tex(pdfxup-template.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source185:      pdfxup.tar.xz
-Source186:      pdfxup.doc.tar.xz
+# from 20250308
+Source187:      pdfxup.tar.xz
+Source188:      pdfxup.doc.tar.xz
 
 %description -n texlive-pdfxup
 pdfxup is a Unix/Linux shell script that creates a PDF document
@@ -11488,7 +11670,7 @@ and then uses pdflatex (with the graphicx package) in order to
 produce the new document.
 
 %package -n texlive-pdfxup-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.10svn59001
+Version:        %{texlive_version}.%{texlive_noarch}.2.12svn71513
 Release:        0
 Summary:        Documentation for texlive-pdfxup
 License:        LPPL-1.0
@@ -11521,12 +11703,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/pdfxup.1*
 %{_texmfdistdir}/doc/support/pdfxup/README
 %{_texmfdistdir}/doc/support/pdfxup/RELEASES
-%{_texmfdistdir}/doc/support/pdfxup/pdfxup.pdf
+%{_texmfdistdir}/doc/support/pdfxup/doc/Makefile
+%{_texmfdistdir}/doc/support/pdfxup/doc/pdfxup-doc.pdf
+%{_texmfdistdir}/doc/support/pdfxup/doc/pdfxup-doc.tex
+%{_texmfdistdir}/doc/support/pdfxup/doc/pdfxup.pdf
 
 %files -n texlive-pdfxup
 %{_texmfdistdir}/scripts/pdfxup/pdfxup
 %{_texmfdistdir}/tex/latex/pdfxup/beamer2.xup
 %{_texmfdistdir}/tex/latex/pdfxup/beamer4.xup
+%{_texmfdistdir}/tex/latex/pdfxup/lipics.xup
+%{_texmfdistdir}/tex/latex/pdfxup/llncs.xup
 %{_texmfdistdir}/tex/latex/pdfxup/pdfxup-template.tex
 
 %package -n texlive-pecha
@@ -11566,9 +11753,9 @@ Requires:       tex(rotating.sty)
 Requires:       tex(times.sty)
 Requires:       tex(twoopt.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source187:      pecha.tar.xz
-Source188:      pecha.doc.tar.xz
+# from 20250308
+Source189:      pecha.tar.xz
+Source190:      pecha.doc.tar.xz
 
 %description -n texlive-pecha
 The pecha class provides an environment for writing Tibetan on
@@ -11678,9 +11865,9 @@ Requires:       perl(strict)
 Requires:       perl(vars)
 #!BuildIgnore:  perl(vars)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source189:      pedigree-perl.tar.xz
-Source190:      pedigree-perl.doc.tar.xz
+# from 20250308
+Source191:      pedigree-perl.tar.xz
+Source192:      pedigree-perl.doc.tar.xz
 
 %description -n texlive-pedigree-perl
 This program generates TeX commands to typeset pedigrees --
@@ -11772,8 +11959,86 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/pedigree-perl/Pedigree/TwinsNode.pm
 %{_texmfdistdir}/scripts/pedigree-perl/pedigree.pl
 
+%package -n texlive-pegmatch
+Version:        %{texlive_version}.%{texlive_noarch}.2025bsvn74035
+Release:        0
+License:        LPPL-1.0
+Summary:        Parsing Expression Grammars for TeX
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-pegmatch-doc >= %{texlive_version}
+Provides:       tex(pegmatch.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source193:      pegmatch.tar.xz
+Source194:      pegmatch.doc.tar.xz
+
+%description -n texlive-pegmatch
+This package ports PEG (Parsing Expression Grammars) to TeX.
+Following the design in LPEG (Parsing Expression Grammars for
+Lua), it defines patterns as LaTeX3 variables, and offers
+several operators to compose patterns. In general, PEG matching
+is much more powerful than RE (Regular Expressions) matching.
+
+%package -n texlive-pegmatch-doc
+Version:        %{texlive_version}.%{texlive_noarch}.2025bsvn74035
+Release:        0
+Summary:        Documentation for texlive-pegmatch
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pegmatch and texlive-alldocumentation)
+
+%description -n texlive-pegmatch-doc
+This package includes the documentation for texlive-pegmatch
+
+%post -n texlive-pegmatch
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-pegmatch
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-pegmatch
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-pegmatch-doc
+%{_texmfdistdir}/doc/latex/pegmatch/README.md
+%{_texmfdistdir}/doc/latex/pegmatch/pegmatch.pdf
+%{_texmfdistdir}/doc/latex/pegmatch/pegmatch.tex
+
+%files -n texlive-pegmatch
+%{_texmfdistdir}/tex/latex/pegmatch/pegmatch.sty
+
 %package -n texlive-penlight
-Version:        %{texlive_version}.%{texlive_noarch}.svn67716
+Version:        %{texlive_version}.%{texlive_noarch}.svn73362
 Release:        0
 License:        LPPL-1.0
 Summary:        Penlight Lua libraries made available to LuaLaTeX users
@@ -11802,9 +12067,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-penlight-doc >= %{texlive_version}
 Provides:       tex(penlight.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source191:      penlight.tar.xz
-Source192:      penlight.doc.tar.xz
+# from 20250308
+Source195:      penlight.tar.xz
+Source196:      penlight.doc.tar.xz
 
 %description -n texlive-penlight
 This LuaLaTeX package provides a wrapper to use the penlight
@@ -11812,7 +12077,7 @@ Lua libraries with LuaLaTeX, with some extra functionality
 added.
 
 %package -n texlive-penlight-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn67716
+Version:        %{texlive_version}.%{texlive_noarch}.svn73362
 Release:        0
 Summary:        Documentation for texlive-penlight
 License:        LPPL-1.0
@@ -11850,7 +12115,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/penlight/penlight.sty
 
 %package -n texlive-penlightplus
-Version:        %{texlive_version}.%{texlive_noarch}.svn70312
+Version:        %{texlive_version}.%{texlive_noarch}.svn74000
 Release:        0
 License:        LPPL-1.0
 Summary:        Additions to the Penlight Lua libraries
@@ -11882,17 +12147,18 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(luacode.sty)
 Requires:       tex(luakeys.sty)
 Requires:       tex(penlight.sty)
+Requires:       tex(tokcycle.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source193:      penlightplus.tar.xz
-Source194:      penlightplus.doc.tar.xz
+# from 20250308
+Source197:      penlightplus.tar.xz
+Source198:      penlightplus.doc.tar.xz
 
 %description -n texlive-penlightplus
 This package extends the penlight package by adding useful
 functions for interfacing with LaTeX.
 
 %package -n texlive-penlightplus-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70312
+Version:        %{texlive_version}.%{texlive_noarch}.svn74000
 Release:        0
 Summary:        Documentation for texlive-penlightplus
 License:        LPPL-1.0
@@ -11958,9 +12224,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-perception-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source195:      perception.tar.xz
-Source196:      perception.doc.tar.xz
+# from 20250308
+Source199:      perception.tar.xz
+Source200:      perception.doc.tar.xz
 
 %description -n texlive-perception
 A product of custom-bib, provided simply to save others' time.
@@ -12034,9 +12300,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(mathstyle.sty)
 Requires:       tex(scalerel.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source197:      perfectcut.tar.xz
-Source198:      perfectcut.doc.tar.xz
+# from 20250308
+Source201:      perfectcut.tar.xz
+Source202:      perfectcut.doc.tar.xz
 
 %description -n texlive-perfectcut
 This package defines the command \perfectcut#1#2 which displays
@@ -12089,7 +12355,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/perfectcut/perfectcut.sty
 
 %package -n texlive-perltex
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn52162
+Version:        %{texlive_version}.%{texlive_noarch}.2.3svn73044
 Release:        0
 License:        LPPL-1.0
 Summary:        Define LaTeX macros in terms of Perl code
@@ -12142,9 +12408,9 @@ Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 Provides:       tex(perltex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source199:      perltex.tar.xz
-Source200:      perltex.doc.tar.xz
+# from 20250308
+Source203:      perltex.tar.xz
+Source204:      perltex.doc.tar.xz
 
 %description -n texlive-perltex
 PerlTeX is a combination Perl script (perltex.pl) and LaTeX2e
@@ -12161,7 +12427,7 @@ distributing a document to places where PerlTeX is not
 available.
 
 %package -n texlive-perltex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn52162
+Version:        %{texlive_version}.%{texlive_noarch}.2.3svn73044
 Release:        0
 Summary:        Documentation for texlive-perltex
 License:        LPPL-1.0
@@ -12230,9 +12496,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-permute-doc >= %{texlive_version}
 Provides:       tex(permute.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source201:      permute.tar.xz
-Source202:      permute.doc.tar.xz
+# from 20250308
+Source205:      permute.tar.xz
+Source206:      permute.doc.tar.xz
 
 %description -n texlive-permute
 A package for symmetric groups, allowing you to input, output,
@@ -12302,9 +12568,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-persian-bib-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source203:      persian-bib.tar.xz
-Source204:      persian-bib.doc.tar.xz
+# from 20250308
+Source207:      persian-bib.tar.xz
+Source208:      persian-bib.doc.tar.xz
 
 %description -n texlive-persian-bib
 Currently 9 files: acm-fa.bst, asa-fa.bst, chicago-fa.bst,
@@ -12398,9 +12664,9 @@ Provides:       tex(petiteannonce.cls)
 Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source205:      petiteannonce.tar.xz
-Source206:      petiteannonce.doc.tar.xz
+# from 20250308
+Source209:      petiteannonce.tar.xz
+Source210:      petiteannonce.doc.tar.xz
 
 %description -n texlive-petiteannonce
 The class enables you to create the sort of adverts that you
@@ -12493,9 +12759,9 @@ Requires:       tex(amsfonts.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifpdf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source207:      petri-nets.tar.xz
-Source208:      petri-nets.doc.tar.xz
+# from 20250308
+Source211:      petri-nets.tar.xz
+Source212:      petri-nets.doc.tar.xz
 
 %description -n texlive-petri-nets
 Petri-nets offers a set of TeX/LaTeX packages about Petri nets
@@ -12587,9 +12853,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(pdfpages.sty)
 Requires:       tex(x.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source209:      pfarrei.tar.xz
-Source210:      pfarrei.doc.tar.xz
+# from 20250308
+Source213:      pfarrei.tar.xz
+Source214:      pfarrei.doc.tar.xz
 
 %description -n texlive-pfarrei
 In "Die TeXnische Komodie" (issue 1/2013) Christian Justen
@@ -12674,9 +12940,9 @@ Provides:       tex(pfdicons.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source211:      pfdicons.tar.xz
-Source212:      pfdicons.doc.tar.xz
+# from 20250308
+Source215:      pfdicons.tar.xz
+Source216:      pfdicons.doc.tar.xz
 
 %description -n texlive-pfdicons
 This package provides TikZ shapes to represent commonly
@@ -12728,7 +12994,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pfdicons/pfdicons.sty
 
 %package -n texlive-pgf
-Version:        %{texlive_version}.%{texlive_noarch}.3.1.10svn65553
+Version:        %{texlive_version}.%{texlive_noarch}.3.1.10svn71527
 Release:        0
 License:        LPPL-1.0
 Summary:        Create PostScript and PDF graphics in TeX
@@ -12740,8 +13006,6 @@ Requires:       texlive-fp >= %{texlive_version}
 #!BuildIgnore: texlive-fp
 Requires:       texlive-graphics >= %{texlive_version}
 #!BuildIgnore: texlive-graphics
-Requires:       texlive-ms >= %{texlive_version}
-#!BuildIgnore: texlive-ms
 Requires:       texlive-pdftexcmds >= %{texlive_version}
 #!BuildIgnore: texlive-pdftexcmds
 Requires:       texlive-xcolor >= %{texlive_version}
@@ -13054,9 +13318,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source213:      pgf.tar.xz
-Source214:      pgf.doc.tar.xz
+# from 20250308
+Source217:      pgf.tar.xz
+Source218:      pgf.doc.tar.xz
 
 %description -n texlive-pgf
 PGF is a macro package for creating graphics. It is platform-
@@ -13069,7 +13333,7 @@ Unlike pstricks, it can produce either PostScript or PDF
 output.
 
 %package -n texlive-pgf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.1.10svn65553
+Version:        %{texlive_version}.%{texlive_noarch}.3.1.10svn71527
 Release:        0
 Summary:        Documentation for texlive-pgf
 License:        LPPL-1.0
@@ -13773,9 +14037,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pgf-blur-doc >= %{texlive_version}
 Provides:       tex(tikzlibraryshadows.blur.code.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source215:      pgf-blur.tar.xz
-Source216:      pgf-blur.doc.tar.xz
+# from 20250308
+Source219:      pgf-blur.tar.xz
+Source220:      pgf-blur.doc.tar.xz
 
 %description -n texlive-pgf-blur
 The package adds blurred/faded/fuzzy shadows to PGF/TikZ
@@ -13850,9 +14114,9 @@ Suggests:       texlive-pgf-interference-doc >= %{texlive_version}
 Provides:       tex(pgf-interference.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source217:      pgf-interference.tar.xz
-Source218:      pgf-interference.doc.tar.xz
+# from 20250308
+Source221:      pgf-interference.tar.xz
+Source222:      pgf-interference.doc.tar.xz
 
 %description -n texlive-pgf-interference
 This LaTeX package makes it possible to simulate interference
@@ -13901,7 +14165,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pgf-interference/pgf-interference.sty
 
 %package -n texlive-pgf-periodictable
-Version:        %{texlive_version}.%{texlive_noarch}.2.1.0svn69913
+Version:        %{texlive_version}.%{texlive_noarch}.2.1.5svn73886
 Release:        0
 License:        LPPL-1.0
 Summary:        Create custom periodic tables of elements
@@ -13937,29 +14201,36 @@ Provides:       tex(pgfPT.drawing.keys.tex)
 Provides:       tex(pgfPT.formatNumbers.tex)
 Provides:       tex(pgfPT.input.library.tex)
 Provides:       tex(pgfPT.labels.tex)
+Provides:       tex(pgfPT.lang.nl.tex)
+Provides:       tex(pgfPT.lang.undefined.tex)
+Provides:       tex(pgfPT.lang.zh.tex)
 Provides:       tex(pgfPT.library.colorschemes.tex)
 Provides:       tex(pgfPT.names.tex)
 Provides:       tex(pgfPT.process.language.tex)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
+Requires:       tex(lmodern.sty)
+Requires:       tex(silence.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(zhnumber.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source219:      pgf-periodictable.tar.xz
-Source220:      pgf-periodictable.doc.tar.xz
+# from 20250308
+Source223:      pgf-periodictable.tar.xz
+Source224:      pgf-periodictable.doc.tar.xz
 
 %description -n texlive-pgf-periodictable
 The purpose of this package is to provide the Periodic Table of
 Elements in a simple way. It relies on PGF/TikZ to offer a full
 or partial periodic table with a variety of options and
 displaying the desired data for all the 118 elements. It can be
-done in six languages: English, French, German, Portuguese
-(from Portugal and from Brazil), Spanish and Italian.
-Compatible with pdfLaTeX, LuaLaTeX and XeLaTeX engines.
+done in different languages: English, French, German,
+Portuguese (from Portugal and from Brazil), Spanish, Italian
+and translations provided by user contributions -- currently in
+Dutch and Chinese. Compatible with pdfLaTeX, LuaLaTeX and
+XeLaTeX engines.
 
 %package -n texlive-pgf-periodictable-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1.0svn69913
+Version:        %{texlive_version}.%{texlive_noarch}.2.1.5svn73886
 Release:        0
 Summary:        Documentation for texlive-pgf-periodictable
 License:        LPPL-1.0
@@ -13995,12 +14266,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_DesignCS.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_DiscY.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_Examples.tex
+%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_O.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_OtherCont.tex
+%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_TipsTricks.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_TitleLegend.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_Z.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_blocksfamilies.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_buildCelll.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_commands.tex
+%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_decSep.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_density.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_eDist.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_exerciselayout.tex
@@ -14012,6 +14286,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgf-PeriodicTableManual_variations.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPT_nl.pdf
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPT_nl_en.pdf
+%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPT_user_compactPT.pdf
+%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPT_zh_1.pdf
+%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPT_zh_1.tex
+%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPT_zh_2.pdf
+%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPT_zh_2.tex
+%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPT_zh_3.pdf
+%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPT_zh_3.tex
+%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPT_zh_fonts.pdf
+%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPT_zh_fonts.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPTcolorSchemes_html_color.pdf
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPTcolorSchemes_html_colorPicker.pdf
 %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles/pgfPTcolorSchemes_html_general.pdf
@@ -14035,8 +14318,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/pgf-periodictable/pgfPT.colorSchemes.info.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/pgfPT_radio_symbol.tex
 %{_texmfdistdir}/doc/latex/pgf-periodictable/pgfPTcolorSchemes.html
-%{_texmfdistdir}/doc/latex/pgf-periodictable/translations/lang.nl.tex
-%{_texmfdistdir}/doc/latex/pgf-periodictable/translations/lang.undefined.tex
 
 %files -n texlive-pgf-periodictable
 %{_texmfdistdir}/tex/latex/pgf-periodictable/flags/pgfPT_flag0.pdf
@@ -14190,6 +14471,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pgf-periodictable/spectra/pgfPT_spec97.pdf
 %{_texmfdistdir}/tex/latex/pgf-periodictable/spectra/pgfPT_spec98.pdf
 %{_texmfdistdir}/tex/latex/pgf-periodictable/spectra/pgfPT_spec99.pdf
+%{_texmfdistdir}/tex/latex/pgf-periodictable/translations/pgfPT.lang.nl.tex
+%{_texmfdistdir}/tex/latex/pgf-periodictable/translations/pgfPT.lang.undefined.tex
+%{_texmfdistdir}/tex/latex/pgf-periodictable/translations/pgfPT.lang.zh.tex
 
 %package -n texlive-pgf-pie
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn63603
@@ -14229,9 +14513,9 @@ Provides:       tex(pgf-pie.sty)
 Provides:       tex(tikzlibrarypie.code.tex)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source221:      pgf-pie.tar.xz
-Source222:      pgf-pie.doc.tar.xz
+# from 20250308
+Source225:      pgf-pie.tar.xz
+Source226:      pgf-pie.doc.tar.xz
 
 %description -n texlive-pgf-pie
 The package provides the means to draw pie (and variant)
@@ -14336,9 +14620,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source223:      pgf-soroban.tar.xz
-Source224:      pgf-soroban.doc.tar.xz
+# from 20250308
+Source227:      pgf-soroban.tar.xz
+Source228:      pgf-soroban.doc.tar.xz
 
 %description -n texlive-pgf-soroban
 The package makes it possible to create pictures of the soroban
@@ -14384,7 +14668,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pgf-soroban/pgf-soroban.sty
 
 %package -n texlive-pgf-spectra
-Version:        %{texlive_version}.%{texlive_noarch}.3.0.1svn66961
+Version:        %{texlive_version}.%{texlive_noarch}.3.0.1asvn71883
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw continuous or discrete spectra using PGF/TikZ
@@ -14421,21 +14705,27 @@ Provides:       tex(pgf-spectra.library.tempercolor.tex)
 Provides:       tex(pgf-spectra.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source225:      pgf-spectra.tar.xz
-Source226:      pgf-spectra.doc.tar.xz
+# from 20250308
+Source229:      pgf-spectra.tar.xz
+Source230:      pgf-spectra.doc.tar.xz
 
 %description -n texlive-pgf-spectra
-The purpose of this package is to draw the spectra of elements
-in a simple way. It is based on the package pst-spectra, but
-with some extra options. It relies on PGF/TikZ for drawing the
-desired spectrum, continuous or discrete. There are data
-available for the spectra of 98 elements and their ions (from
-the NASA database and from NIST). It also allows the user to
-draw spectra using their own data.
+The purpose of this package is to draw the spectrum of elements
+in a simple way. It relies on PGF/TikZ to draw the desired
+spectrum, continuous or discrete. Data for the spectra of 98
+elements and their ions are available (from the NASA database
+and from NIST). Lines data ranges from Extreme UV to Near IR
+(from 10 to 4000 nanometers). It also allows the user to draw
+spectra using their own data. It is possible to redshift the
+lines of a spectrum, by directly entering the redshift value or
+the velocity and the angle to compute the redshift value.
+Spectral lines data can be presented in a table or exported to
+a file. The package also provides color conversion (correlated
+color temperature), shadings for use with TikZ and/or pgfplots
+and color maps for use with pgfplots.
 
 %package -n texlive-pgf-spectra-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.0.1svn66961
+Version:        %{texlive_version}.%{texlive_noarch}.3.0.1asvn71883
 Release:        0
 Summary:        Documentation for texlive-pgf-spectra
 License:        LPPL-1.0
@@ -14521,9 +14811,9 @@ Provides:       tex(pgf-umlcd.sty)
 Provides:       tex(tikzlibraryumlcd.code.tex)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source227:      pgf-umlcd.tar.xz
-Source228:      pgf-umlcd.doc.tar.xz
+# from 20250308
+Source231:      pgf-umlcd.tar.xz
+Source232:      pgf-umlcd.doc.tar.xz
 
 %description -n texlive-pgf-umlcd
 Some LaTeX macros for UML Class Diagrams.
@@ -14626,9 +14916,9 @@ Provides:       tex(pgf-umlsd.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source229:      pgf-umlsd.tar.xz
-Source230:      pgf-umlsd.doc.tar.xz
+# from 20250308
+Source233:      pgf-umlsd.tar.xz
+Source234:      pgf-umlsd.doc.tar.xz
 
 %description -n texlive-pgf-umlsd
 LaTeX macros to draw UML diagrams using pgf
@@ -14695,7 +14985,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pgf-umlsd/pgf-umlsd.sty
 
 %package -n texlive-pgfgantt
-Version:        %{texlive_version}.%{texlive_noarch}.5.0svn52662
+Version:        %{texlive_version}.%{texlive_noarch}.5.0asvn71565
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw Gantt charts with TikZ
@@ -14728,9 +15018,9 @@ Provides:       tex(pgfgantt.sty)
 Requires:       tex(pgfcalendar.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source231:      pgfgantt.tar.xz
-Source232:      pgfgantt.doc.tar.xz
+# from 20250308
+Source235:      pgfgantt.tar.xz
+Source236:      pgfgantt.doc.tar.xz
 
 %description -n texlive-pgfgantt
 The package provides an environment for drawing Gantt charts
@@ -14739,7 +15029,7 @@ and links). Several keys customize the appearance of the chart
 elements.
 
 %package -n texlive-pgfgantt-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5.0svn52662
+Version:        %{texlive_version}.%{texlive_noarch}.5.0asvn71565
 Release:        0
 Summary:        Documentation for texlive-pgfgantt
 License:        LPPL-1.0
@@ -14769,7 +15059,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-pgfgantt-doc
 %{_texmfdistdir}/doc/latex/pgfgantt/README
-%{_texmfdistdir}/doc/latex/pgfgantt/pgfgantt.pdf
+%{_texmfdistdir}/doc/latex/pgfgantt/pgfgantt-doc.pdf
 
 %files -n texlive-pgfgantt
 %{_texmfdistdir}/tex/latex/pgfgantt/pgfgantt.sty
@@ -14804,9 +15094,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pgfkeysearch-doc >= %{texlive_version}
 Provides:       tex(pgfkeysearch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source233:      pgfkeysearch.tar.xz
-Source234:      pgfkeysearch.doc.tar.xz
+# from 20250308
+Source237:      pgfkeysearch.tar.xz
+Source238:      pgfkeysearch.doc.tar.xz
 
 %description -n texlive-pgfkeysearch
 The command \pgfkeysvalueof unlike other \pgfkeys commands,
@@ -14882,9 +15172,9 @@ Suggests:       texlive-pgfkeyx-doc >= %{texlive_version}
 Provides:       tex(pgfkeyx.sty)
 Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source235:      pgfkeyx.tar.xz
-Source236:      pgfkeyx.doc.tar.xz
+# from 20250308
+Source239:      pgfkeyx.tar.xz
+Source240:      pgfkeyx.doc.tar.xz
 
 %description -n texlive-pgfkeyx
 The package extends and improves the robustness of the pgfkeys
@@ -14931,7 +15221,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pgfkeyx/pgfkeyx.sty
 
 %package -n texlive-pgfmath-xfp
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn59268
+Version:        %{texlive_version}.%{texlive_noarch}.1.0asvn73423
 Release:        0
 License:        LPPL-1.0
 Summary:        Define pgfmath functions using xfp
@@ -14962,9 +15252,9 @@ Provides:       tex(pgfmath-xfp.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(pgfmath.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source237:      pgfmath-xfp.tar.xz
-Source238:      pgfmath-xfp.doc.tar.xz
+# from 20250308
+Source241:      pgfmath-xfp.tar.xz
+Source242:      pgfmath-xfp.doc.tar.xz
 
 %description -n texlive-pgfmath-xfp
 This package allows to define pgfmath functions that use the
@@ -14979,7 +15269,7 @@ meant as a temporary stopgap until a more dedicated solution is
 available to use xfp in pgf.
 
 %package -n texlive-pgfmath-xfp-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn59268
+Version:        %{texlive_version}.%{texlive_noarch}.1.0asvn73423
 Release:        0
 Summary:        Documentation for texlive-pgfmath-xfp
 License:        LPPL-1.0
@@ -15015,7 +15305,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pgfmath-xfp/pgfmath-xfp.sty
 
 %package -n texlive-pgfmolbio
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.21svn35152
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.21asvn71551
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw graphs typically found in molecular biology texts
@@ -15051,9 +15341,9 @@ Requires:       tex(luatexbase-modutils.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source239:      pgfmolbio.tar.xz
-Source240:      pgfmolbio.doc.tar.xz
+# from 20250308
+Source243:      pgfmolbio.tar.xz
+Source244:      pgfmolbio.doc.tar.xz
 
 %description -n texlive-pgfmolbio
 The package draws graphs typically found in molecular biology
@@ -15061,7 +15351,7 @@ texts. Currently, the package contains modules for drawing DNA
 sequencing chromatograms and protein domain diagrams.
 
 %package -n texlive-pgfmolbio-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.21svn35152
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.21asvn71551
 Release:        0
 Summary:        Documentation for texlive-pgfmolbio
 License:        LPPL-1.0
@@ -15094,14 +15384,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/lualatex/pgfmolbio/SampleGff.gff
 %{_texmfdistdir}/doc/lualatex/pgfmolbio/SampleScf.scf
 %{_texmfdistdir}/doc/lualatex/pgfmolbio/SampleUniprot.txt
-%{_texmfdistdir}/doc/lualatex/pgfmolbio/pgfmolbio.pdf
+%{_texmfdistdir}/doc/lualatex/pgfmolbio/pgfmolbio-doc.pdf
 
 %files -n texlive-pgfmolbio
+%{_texmfdistdir}/scripts/pgfmolbio/pgfmolbio.chromatogram.lua
+%{_texmfdistdir}/scripts/pgfmolbio/pgfmolbio.domains.lua
 %{_texmfdistdir}/scripts/pgfmolbio/pgfmolbio.lua
-%{_texmfdistdir}/tex/lualatex/pgfmolbio/pgfmolbio.chromatogram.lua
 %{_texmfdistdir}/tex/lualatex/pgfmolbio/pgfmolbio.chromatogram.tex
 %{_texmfdistdir}/tex/lualatex/pgfmolbio/pgfmolbio.convert.tex
-%{_texmfdistdir}/tex/lualatex/pgfmolbio/pgfmolbio.domains.lua
 %{_texmfdistdir}/tex/lualatex/pgfmolbio/pgfmolbio.domains.tex
 %{_texmfdistdir}/tex/lualatex/pgfmolbio/pgfmolbio.sty
 
@@ -15138,9 +15428,9 @@ Provides:       tex(pgfmorepageslayouts.code.tex)
 Requires:       tex(calc.sty)
 Requires:       tex(pgfcore.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source241:      pgfmorepages.tar.xz
-Source242:      pgfmorepages.doc.tar.xz
+# from 20250308
+Source245:      pgfmorepages.tar.xz
+Source246:      pgfmorepages.doc.tar.xz
 
 %description -n texlive-pgfmorepages
 This package replaces and extends the pgfpages sub-package of
@@ -15219,9 +15509,9 @@ Suggests:       texlive-pgfopts-doc >= %{texlive_version}
 Provides:       tex(pgfopts.sty)
 Requires:       tex(pgfkeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source243:      pgfopts.tar.xz
-Source244:      pgfopts.doc.tar.xz
+# from 20250308
+Source247:      pgfopts.tar.xz
+Source248:      pgfopts.doc.tar.xz
 
 %description -n texlive-pgfopts
 The pgfkeys package (part of the pgf distribution) is a
@@ -15270,7 +15560,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pgfopts/pgfopts.sty
 
 %package -n texlive-pgfornament
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn55326
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn72029
 Release:        0
 License:        LPPL-1.0
 Summary:        Drawing of Vectorian ornaments with PGF/TikZ
@@ -15306,9 +15596,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source245:      pgfornament.tar.xz
-Source246:      pgfornament.doc.tar.xz
+# from 20250308
+Source249:      pgfornament.tar.xz
+Source250:      pgfornament.doc.tar.xz
 
 %description -n texlive-pgfornament
 This package allows the drawing of Vectorian ornaments (196)
@@ -15316,7 +15606,7 @@ with PGF/TikZ. The documentation presents the syntax and
 parameters of the macro "pgfornament".
 
 %package -n texlive-pgfornament-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn55326
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn72029
 Release:        0
 Summary:        Documentation for texlive-pgfornament
 License:        LPPL-1.0
@@ -15639,7 +15929,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pgfornament/tikzrput.sty
 
 %package -n texlive-pgfornament-han
-Version:        %{texlive_version}.%{texlive_noarch}.svn68704
+Version:        %{texlive_version}.%{texlive_noarch}.svn72640
 Release:        0
 License:        LPPL-1.0
 Summary:        Pgfornament library for Chinese traditional motifs and patterns
@@ -15685,9 +15975,9 @@ Requires:       tex(unicode-math.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source247:      pgfornament-han.tar.xz
-Source248:      pgfornament-han.doc.tar.xz
+# from 20250308
+Source251:      pgfornament-han.tar.xz
+Source252:      pgfornament-han.doc.tar.xz
 
 %description -n texlive-pgfornament-han
 This package provides a pgfornament library for Chinese
@@ -15695,15 +15985,19 @@ traditional motifs and patterns. The command \pgfornamenthan
 takes the same options as \pgfornament from the pgfornament
 package, but renders Chinese traditional motifs instead. The
 list of supported motifs, as well as some examples, can be
-found in the accompanying documentation. Yi pgfornament Hong
-Bao De Ji Zhi ,Shi Xian Hui Zhi Yi Feng Tu Wen .
-\pgfornamenthan He \pgfornament De Can Shu Shi Yi Yang De ;Bian
-Yi De Chu Lai De Dang Ran Shi Yi Feng Wen Yang Liao . Hong Bao
-Shou Ce Li You Wan Zheng De Wen Yang Lie Biao Yi Ji Shi Yong
-Fan Li .
+found in the accompanying documentation. This bundle also
+provides three beamer themes incorporating these motifs; sample
+.tex files for creating beamer presentations and posters are
+included. Yi pgfornament Hong Bao De Ji Zhi ,Shi Xian Hui Zhi
+Yi Feng Tu Wen . \pgfornamenthan He \pgfornament De Can Shu Shi
+Yi Yang De ; Bian Yi De Chu Lai De Dang Ran Shi Yi Feng Wen
+Yang Liao . Hong Bao Shou Ce Li You Wan Zheng De Wen Yang Lie
+Biao Yi Ji Shi Yong Fan Li . Wo Men Ye Ji Yu Zhe Xie Wen Yang
+,Kai Fa Liao San Kuan beamerZhu Ti , Bing Fu Shang Zhi Zuo
+beamerHuan Deng Pian He Hai Bao De Shi Fan .texWen Dang .
 
 %package -n texlive-pgfornament-han-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn68704
+Version:        %{texlive_version}.%{texlive_noarch}.svn72640
 Release:        0
 Summary:        Documentation for texlive-pgfornament-han
 License:        LPPL-1.0
@@ -15734,15 +16028,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-pgfornament-han-doc
 %{_texmfdistdir}/doc/latex/pgfornament-han/README.md
-%{_texmfdistdir}/doc/latex/pgfornament-han/heavenlyclouds-sample.pdf
-%{_texmfdistdir}/doc/latex/pgfornament-han/heavenlyclouds-sample.tex
 %{_texmfdistdir}/doc/latex/pgfornament-han/lppl-1-3c.txt
 %{_texmfdistdir}/doc/latex/pgfornament-han/pgfornament-han-doc.pdf
 %{_texmfdistdir}/doc/latex/pgfornament-han/pgfornament-han-doc.tex
-%{_texmfdistdir}/doc/latex/pgfornament-han/tianqing-sample.pdf
-%{_texmfdistdir}/doc/latex/pgfornament-han/tianqing-sample.tex
-%{_texmfdistdir}/doc/latex/pgfornament-han/xiaoshan-sample.pdf
-%{_texmfdistdir}/doc/latex/pgfornament-han/xiaoshan-sample.tex
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/Cloud_types_en.pdf
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/SiO2.jpg
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/hangzhou-arch.jpg
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/heavenlyclouds-beamer-sample.pdf
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/heavenlyclouds-beamer-sample.tex
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/heavenlyclouds-poster-sample.pdf
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/heavenlyclouds-poster-sample.tex
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/sample-refs.bib
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/tianqing-beamer-sample.pdf
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/tianqing-beamer-sample.tex
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/tianqing-poster-sample.pdf
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/tianqing-poster-sample.tex
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/xiaoshan-beamer-sample.pdf
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/xiaoshan-beamer-sample.tex
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/xiaoshan-poster-sample.pdf
+%{_texmfdistdir}/doc/latex/pgfornament-han/samples/xiaoshan-poster-sample.tex
 
 %files -n texlive-pgfornament-han
 %{_texmfdistdir}/tex/latex/pgfornament-han/beamerthemeHeavenlyClouds.sty
@@ -15961,9 +16265,9 @@ Requires:       tex(pgfsys-common-pdf.def)
 Requires:       tex(pgfsys-pdftex.def)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source249:      pgfplots.tar.xz
-Source250:      pgfplots.doc.tar.xz
+# from 20250308
+Source253:      pgfplots.tar.xz
+Source254:      pgfplots.doc.tar.xz
 
 %description -n texlive-pgfplots
 PGFPlots draws high-quality function plots in normal or
@@ -16132,6 +16436,92 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/plain/pgfplots/pgfplots.tex
 %{_texmfdistdir}/tex/plain/pgfplots/pgfplotstable.tex
 
+%package -n texlive-pgfplotsthemebeamer
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn71954
+Release:        0
+License:        LPPL-1.0
+Summary:        Use colours from the current beamer theme in pgfplots
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires:       texlive-beamer >= %{texlive_version}
+#!BuildIgnore: texlive-beamer
+Requires:       texlive-pgfopts >= %{texlive_version}
+#!BuildIgnore: texlive-pgfopts
+Requires:       texlive-pgfplots >= %{texlive_version}
+#!BuildIgnore: texlive-pgfplots
+Requires:       texlive-tools >= %{texlive_version}
+#!BuildIgnore: texlive-tools
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-pgfplotsthemebeamer-doc >= %{texlive_version}
+Provides:       tex(pgfplotsthemebeamer.sty)
+Requires:       tex(pgfplots.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source255:      pgfplotsthemebeamer.tar.xz
+Source256:      pgfplotsthemebeamer.doc.tar.xz
+
+%description -n texlive-pgfplotsthemebeamer
+A LaTeX package for using colours from the current beamer theme
+in pgfplots diagrams.
+
+%package -n texlive-pgfplotsthemebeamer-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn71954
+Release:        0
+Summary:        Documentation for texlive-pgfplotsthemebeamer
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pgfplotsthemebeamer and texlive-alldocumentation)
+
+%description -n texlive-pgfplotsthemebeamer-doc
+This package includes the documentation for texlive-pgfplotsthemebeamer
+
+%post -n texlive-pgfplotsthemebeamer
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-pgfplotsthemebeamer
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-pgfplotsthemebeamer
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-pgfplotsthemebeamer-doc
+%{_texmfdistdir}/doc/latex/pgfplotsthemebeamer/DEPENDS.txt
+%{_texmfdistdir}/doc/latex/pgfplotsthemebeamer/README.md
+%{_texmfdistdir}/doc/latex/pgfplotsthemebeamer/pgfplotsthemebeamer-doc-settings.sty
+%{_texmfdistdir}/doc/latex/pgfplotsthemebeamer/pgfplotsthemebeamer-doc.pdf
+%{_texmfdistdir}/doc/latex/pgfplotsthemebeamer/pgfplotsthemebeamer-doc.tex
+
+%files -n texlive-pgfplotsthemebeamer
+%{_texmfdistdir}/tex/latex/pgfplotsthemebeamer/pgfplotsthemebeamer.sty
+
 %package -n texlive-phaistos
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn18651
 Release:        0
@@ -16176,9 +16566,9 @@ Provides:       tex(phaistos.map)
 Provides:       tex(phaistos.sty)
 Provides:       tex(phaistos.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source251:      phaistos.tar.xz
-Source252:      phaistos.doc.tar.xz
+# from 20250308
+Source257:      phaistos.tar.xz
+Source258:      phaistos.doc.tar.xz
 
 %description -n texlive-phaistos
 A font that contains all the symbols of the famous Disc of
@@ -16299,9 +16689,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source253:      phfcc.tar.xz
-Source254:      phfcc.doc.tar.xz
+# from 20250308
+Source259:      phfcc.tar.xz
+Source260:      phfcc.doc.tar.xz
 
 %description -n texlive-phfcc
 Easily define helper macros to insert comments in a LaTeX
@@ -16386,9 +16776,9 @@ Requires:       tex(phfthm.sty)
 Requires:       tex(revtex4-2.cls)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source255:      phfextendedabstract.tar.xz
-Source256:      phfextendedabstract.doc.tar.xz
+# from 20250308
+Source261:      phfextendedabstract.tar.xz
+Source262:      phfextendedabstract.doc.tar.xz
 
 %description -n texlive-phfextendedabstract
 Several conferences in various fields (such as quantum
@@ -16476,9 +16866,9 @@ Requires:       tex(ifoddpage.sty)
 Requires:       tex(pdfpages.sty)
 Requires:       tex(placeins.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source257:      phffullpagefigure.tar.xz
-Source258:      phffullpagefigure.doc.tar.xz
+# from 20250308
+Source263:      phffullpagefigure.tar.xz
+Source264:      phffullpagefigure.doc.tar.xz
 
 %description -n texlive-phffullpagefigure
 This package defines a figure environment which provides the
@@ -16586,9 +16976,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source259:      phfnote.tar.xz
-Source260:      phfnote.doc.tar.xz
+# from 20250308
+Source265:      phfnote.tar.xz
+Source266:      phfnote.doc.tar.xz
 
 %description -n texlive-phfnote
 This package provides basic formatting for short documents such
@@ -16673,9 +17063,9 @@ Requires:       tex(mathtools.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source261:      phfparen.tar.xz
-Source262:      phfparen.doc.tar.xz
+# from 20250308
+Source267:      phfparen.tar.xz
+Source268:      phfparen.doc.tar.xz
 
 %description -n texlive-phfparen
 This package provides a more condensed and flexible syntax for
@@ -16762,9 +17152,9 @@ Requires:       tex(mathtools.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source263:      phfqit.tar.xz
-Source264:      phfqit.doc.tar.xz
+# from 20250308
+Source269:      phfqit.tar.xz
+Source270:      phfqit.doc.tar.xz
 
 %description -n texlive-phfqit
 This package provides macros to typeset some general
@@ -16843,9 +17233,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-phfquotetext-doc >= %{texlive_version}
 Provides:       tex(phfquotetext.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source265:      phfquotetext.tar.xz
-Source266:      phfquotetext.doc.tar.xz
+# from 20250308
+Source271:      phfquotetext.tar.xz
+Source272:      phfquotetext.doc.tar.xz
 
 %description -n texlive-phfquotetext
 This package provides an environment for displaying block text
@@ -16930,9 +17320,9 @@ Requires:       tex(svn-multi.sty)
 Requires:       tex(svn.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source267:      phfsvnwatermark.tar.xz
-Source268:      phfsvnwatermark.doc.tar.xz
+# from 20250308
+Source273:      phfsvnwatermark.tar.xz
+Source274:      phfsvnwatermark.doc.tar.xz
 
 %description -n texlive-phfsvnwatermark
 This package allows you to add version control information as a
@@ -17014,9 +17404,9 @@ Requires:       tex(amsthm.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source269:      phfthm.tar.xz
-Source270:      phfthm.doc.tar.xz
+# from 20250308
+Source275:      phfthm.tar.xz
+Source276:      phfthm.doc.tar.xz
 
 %description -n texlive-phfthm
 This package provides enhanced theorem and proof environments
@@ -17098,9 +17488,9 @@ Requires:       tex(linguex.sty)
 Requires:       tex(suffix.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source271:      philex.tar.xz
-Source272:      philex.doc.tar.xz
+# from 20250308
+Source277:      philex.tar.xz
+Source278:      philex.doc.tar.xz
 
 %description -n texlive-philex
 Philex provides means for creating and cross-referencing named
@@ -17182,9 +17572,9 @@ Provides:       tex(tuplk.fd)
 Requires:       tex(lettrine.sty)
 Requires:       tex(xltxtra.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source273:      philokalia.tar.xz
-Source274:      philokalia.doc.tar.xz
+# from 20250308
+Source279:      philokalia.tar.xz
+Source280:      philokalia.doc.tar.xz
 
 %description -n texlive-philokalia
 The philokalia package has been designed to ease the use of the
@@ -17298,9 +17688,9 @@ Requires:       tex(microtype.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(trajan.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source275:      philosophersimprint.tar.xz
-Source276:      philosophersimprint.doc.tar.xz
+# from 20250308
+Source281:      philosophersimprint.tar.xz
+Source282:      philosophersimprint.doc.tar.xz
 
 %description -n texlive-philosophersimprint
 In its mission statement we read "Philosophers' Imprint is a
@@ -17391,9 +17781,9 @@ Provides:       tex(phonenumbers-US.def)
 Provides:       tex(phonenumbers.sty)
 Requires:       tex(l3keys2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source277:      phonenumbers.tar.xz
-Source278:      phonenumbers.doc.tar.xz
+# from 20250308
+Source283:      phonenumbers.tar.xz
+Source284:      phonenumbers.doc.tar.xz
 
 %description -n texlive-phonenumbers
 The phonenumbers package makes it possible to typeset telephone
@@ -17494,9 +17884,9 @@ Provides:       tex(cmphi8.tfm)
 Provides:       tex(cmphi9.tfm)
 Provides:       tex(phonetic.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source279:      phonetic.tar.xz
-Source280:      phonetic.doc.tar.xz
+# from 20250308
+Source285:      phonetic.tar.xz
+Source286:      phonetic.doc.tar.xz
 
 %description -n texlive-phonetic
 The fonts are based on Computer Modern, and specified in
@@ -17602,9 +17992,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-phonrule-doc >= %{texlive_version}
 Provides:       tex(phonrule.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source281:      phonrule.tar.xz
-Source282:      phonrule.doc.tar.xz
+# from 20250308
+Source287:      phonrule.tar.xz
+Source288:      phonrule.doc.tar.xz
 
 %description -n texlive-phonrule
 The package provides macros for typesetting phonological rules
@@ -17678,9 +18068,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-photo-doc >= %{texlive_version}
 Provides:       tex(photo.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source283:      photo.tar.xz
-Source284:      photo.doc.tar.xz
+# from 20250308
+Source289:      photo.tar.xz
+Source290:      photo.doc.tar.xz
 
 %description -n texlive-photo
 This package introduces a new float type called photo which
@@ -17730,7 +18120,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/photo/photo.sty
 
 %package -n texlive-photobook
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.29svn68313
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.31svn71843
 Release:        0
 License:        BSD-3-Clause
 Summary:        A document class for typesetting photo books
@@ -17842,9 +18232,9 @@ Requires:       tex(xint.sty)
 Requires:       tex(xinttools.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source285:      photobook.tar.xz
-Source286:      photobook.doc.tar.xz
+# from 20250308
+Source291:      photobook.tar.xz
+Source292:      photobook.doc.tar.xz
 
 %description -n texlive-photobook
 The photobook LaTeX document class extends the book class
@@ -17853,7 +18243,7 @@ environments with reasonable defaults to help typeset, build
 and print books mainly based on visual/image content.
 
 %package -n texlive-photobook-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.29svn68313
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.31svn71843
 Release:        0
 Summary:        Documentation for texlive-photobook
 License:        BSD-3-Clause
@@ -17926,9 +18316,9 @@ Suggests:       texlive-physconst-doc >= %{texlive_version}
 Provides:       tex(physconst.sty)
 Requires:       tex(physunits.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source287:      physconst.tar.xz
-Source288:      physconst.doc.tar.xz
+# from 20250308
+Source293:      physconst.tar.xz
+Source294:      physconst.doc.tar.xz
 
 %description -n texlive-physconst
 This package consists of several macros that are shorthand for
@@ -17986,7 +18376,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/physconst/physconst.sty
 
 %package -n texlive-physics
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn28590
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn74247
 Release:        0
 License:        LPPL-1.0
 Summary:        Macros supporting the Mathematics of Physics
@@ -18017,9 +18407,9 @@ Provides:       tex(physics.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source289:      physics.tar.xz
-Source290:      physics.doc.tar.xz
+# from 20250308
+Source295:      physics.tar.xz
+Source296:      physics.doc.tar.xz
 
 %description -n texlive-physics
 The package defines simple and flexible macros for typesetting
@@ -18027,7 +18417,7 @@ equations in the languages of vector calculus and linear
 algebra, using Dirac notation.
 
 %package -n texlive-physics-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn28590
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn74247
 Release:        0
 Summary:        Documentation for texlive-physics
 License:        LPPL-1.0
@@ -18062,6 +18452,106 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-physics
 %{_texmfdistdir}/tex/latex/physics/physics.sty
+
+%package -n texlive-physics-patch
+Version:        %{texlive_version}.%{texlive_noarch}.2.4svn74066
+Release:        0
+License:        LPPL-1.0
+Summary:        Patches for the physics package, and integration of physics and siunitx packages
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-physics-patch-doc >= %{texlive_version}
+Provides:       tex(physics-patch.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(physics.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xparse.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20250308
+Source297:      physics-patch.tar.xz
+Source298:      physics-patch.doc.tar.xz
+
+%description -n texlive-physics-patch
+This package requires the amsmath, etoolbox, xcolor, xparse,
+and xstring packages. Commands that have different definitions
+come with PT in the beginning of their name (e.g. \PTmqty).
+physics-patch has covered all commands in physics since version
+2.0, so there's no need to load physics. It is ok to load
+physics before this package. This package will silently
+overrides macros in physics with an improved version. To use
+the original version provided by physics, load physics before
+this package and use the nooverride option (not recommended).
+This package pretends that physics package is loaded so that
+this package won't be overriden if loading physics is called
+afterward and packages loaded afterward that checks whether
+physics is loaded to determine its behavior (e.g. siunitx) work
+correctly. To disable this, use the nopretend option (not
+recommended). If siuitx is loaded before this package, this
+package will define \ITquantity and \ITqty as the integration
+of the improved definition of physics's \qty (in \PHquantity
+and \PHqty) and siuitx's \SI. You can optionally set the
+siintegrate option to override \PTquantity and \PTqty with
+\ITqty (not recommended).
+
+%package -n texlive-physics-patch-doc
+Version:        %{texlive_version}.%{texlive_noarch}.2.4svn74066
+Release:        0
+Summary:        Documentation for texlive-physics-patch
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-physics-patch and texlive-alldocumentation)
+
+%description -n texlive-physics-patch-doc
+This package includes the documentation for texlive-physics-patch
+
+%post -n texlive-physics-patch
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-physics-patch
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-physics-patch
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-physics-patch-doc
+%{_texmfdistdir}/doc/latex/physics-patch/LICENSE.txt
+%{_texmfdistdir}/doc/latex/physics-patch/README.txt
+%{_texmfdistdir}/doc/latex/physics-patch/physics-patch.pdf
+%{_texmfdistdir}/doc/latex/physics-patch/physics-patch.tex
+
+%files -n texlive-physics-patch
+%{_texmfdistdir}/tex/latex/physics-patch/physics-patch.sty
 
 %package -n texlive-physics2
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn69369
@@ -18108,9 +18598,9 @@ Requires:       tex(amstext.sty)
 Requires:       tex(fixdif.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source291:      physics2.tar.xz
-Source292:      physics2.doc.tar.xz
+# from 20250308
+Source299:      physics2.tar.xz
+Source300:      physics2.doc.tar.xz
 
 %description -n texlive-physics2
 The physics2 package defines commands for typesetting maths
@@ -18204,9 +18694,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-physunits-doc >= %{texlive_version}
 Provides:       tex(physunits.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source293:      physunits.tar.xz
-Source294:      physunits.doc.tar.xz
+# from 20250308
+Source301:      physunits.tar.xz
+Source302:      physunits.doc.tar.xz
 
 %description -n texlive-physunits
 This package provides a collection of macros to simplify using
@@ -18285,9 +18775,9 @@ Requires:       tex(color.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(xargs.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source295:      piano.tar.xz
-Source296:      piano.doc.tar.xz
+# from 20250308
+Source303:      piano.tar.xz
+Source304:      piano.doc.tar.xz
 
 %description -n texlive-piano
 This package adds the \keyboard[1][2]..[7] command to your
@@ -18362,9 +18852,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-picinpar-doc >= %{texlive_version}
 Provides:       tex(picinpar.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source297:      picinpar.tar.xz
-Source298:      picinpar.doc.tar.xz
+# from 20250308
+Source305:      picinpar.tar.xz
+Source306:      picinpar.doc.tar.xz
 
 %description -n texlive-picinpar
 A legacy package for creating 'windows' in paragraphs, for
@@ -18454,9 +18944,9 @@ Provides:       tex(pict2e.cfg)
 Provides:       tex(pict2e.sty)
 Requires:       tex(trig.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source299:      pict2e.tar.xz
-Source300:      pict2e.doc.tar.xz
+# from 20250308
+Source307:      pict2e.tar.xz
+Source308:      pict2e.doc.tar.xz
 
 %description -n texlive-pict2e
 This package was described in the 2nd edition of 'LaTeX: A
@@ -18562,9 +19052,9 @@ Provides:       tex(prepictex.tex)
 Provides:       tex(texpictex.tex)
 Provides:       tex(tree.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source301:      pictex.tar.xz
-Source302:      pictex.doc.tar.xz
+# from 20250308
+Source309:      pictex.tar.xz
+Source310:      pictex.doc.tar.xz
 
 %description -n texlive-pictex
 PicTeX is an early and very comprehensive drawing package that
@@ -18652,8 +19142,8 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(pictex2.sty)
 Requires:       tex(pictex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source303:      pictex2.tar.xz
+# from 20250308
+Source311:      pictex2.tar.xz
 
 %description -n texlive-pictex2
 Adds two user commands to standard PiCTeX. One command uses
@@ -18710,8 +19200,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source304:      pictexsum.doc.tar.xz
+# from 20250308
+Source312:      pictexsum.doc.tar.xz
 
 %description -n texlive-pictexsum
 The document summarises the commands of PicTeX. While it is no
@@ -18745,7 +19235,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/pictexsum/useful.sty
 
 %package -n texlive-pictochrono
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn69855
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn73069
 Release:        0
 License:        LPPL-1.0
 Summary:        Insert "chronometer pictograms" with a duration
@@ -18779,9 +19269,9 @@ Requires:       tex(simplekv.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source305:      pictochrono.tar.xz
-Source306:      pictochrono.doc.tar.xz
+# from 20250308
+Source313:      pictochrono.tar.xz
+Source314:      pictochrono.doc.tar.xz
 
 %description -n texlive-pictochrono
 Small package to insert, inline with automatic height and
@@ -18789,7 +19279,7 @@ vertical offset, small "pictogram chronometers" to indicate a
 duration.
 
 %package -n texlive-pictochrono-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn69855
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn73069
 Release:        0
 Summary:        Documentation for texlive-pictochrono
 License:        LPPL-1.0
@@ -18856,9 +19346,9 @@ Suggests:       texlive-picture-doc >= %{texlive_version}
 Provides:       tex(picture.sty)
 Requires:       tex(calc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source307:      picture.tar.xz
-Source308:      picture.doc.tar.xz
+# from 20250308
+Source315:      picture.tar.xz
+Source316:      picture.doc.tar.xz
 
 %description -n texlive-picture
 There are macro and environment arguments that expect numbers
@@ -18932,9 +19422,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-piechartmp-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source309:      piechartmp.tar.xz
-Source310:      piechartmp.doc.tar.xz
+# from 20250308
+Source317:      piechartmp.tar.xz
+Source318:      piechartmp.doc.tar.xz
 
 %description -n texlive-piechartmp
 The piechartmp package is an easy way to draw pie-charts with
@@ -19021,9 +19511,9 @@ Provides:       tex(onepagem.sty)
 Provides:       tex(time.sty)
 Requires:       tex(amsfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source311:      piff.tar.xz
-Source312:      piff.doc.tar.xz
+# from 20250308
+Source319:      piff.tar.xz
+Source320:      piff.doc.tar.xz
 
 %description -n texlive-piff
 The set (now) consists of: a small package for dealing with
@@ -19123,9 +19613,9 @@ Provides:       tex(pigpen.sty)
 Provides:       tex(pigpen.tex)
 Provides:       tex(pigpen.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source313:      pigpen.tar.xz
-Source314:      pigpen.doc.tar.xz
+# from 20250308
+Source321:      pigpen.tar.xz
+Source322:      pigpen.doc.tar.xz
 
 %description -n texlive-pigpen
 The Pigpen cipher package provides the font and the necessary
@@ -19234,9 +19724,9 @@ Suggests:       texlive-pinlabel-doc >= %{texlive_version}
 Provides:       tex(pinlabel.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source315:      pinlabel.tar.xz
-Source316:      pinlabel.doc.tar.xz
+# from 20250308
+Source323:      pinlabel.tar.xz
+Source324:      pinlabel.doc.tar.xz
 
 %description -n texlive-pinlabel
 Pinlabel is a labelling package for attaching perfectly
@@ -19332,9 +19822,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(upquote.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source317:      pinoutikz.tar.xz
-Source318:      pinoutikz.doc.tar.xz
+# from 20250308
+Source325:      pinoutikz.tar.xz
+Source326:      pinoutikz.doc.tar.xz
 
 %description -n texlive-pinoutikz
 The package provides a set of macros for typesetting electronic
@@ -19410,9 +19900,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pitex-doc >= %{texlive_version}
 Provides:       tex(pitex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source319:      pitex.tar.xz
-Source320:      pitex.doc.tar.xz
+# from 20250308
+Source327:      pitex.tar.xz
+Source328:      pitex.doc.tar.xz
 
 %description -n texlive-pitex
 The bundle provides macros that the author uses when writing
@@ -19473,10 +19963,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/plain/pitex/verbatim.ptx
 
 %package -n texlive-piton
-Version:        %{texlive_version}.%{texlive_noarch}.2.6asvn70445
+Version:        %{texlive_version}.%{texlive_noarch}.4.2csvn74437
 Release:        0
 License:        LPPL-1.0
-Summary:        Typeset Python listings with LPEG
+Summary:        Typeset informatic listings with LPEG of LuaLaTeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -19501,24 +19991,25 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-piton-doc >= %{texlive_version}
 Provides:       tex(piton.sty)
+Requires:       tex(amstext.sty)
 Requires:       tex(footnote.sty)
 Requires:       tex(footnotehyper.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(luacode.sty)
 Requires:       tex(luatexbase.sty)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source321:      piton.tar.xz
-Source322:      piton.doc.tar.xz
+# from 20250308
+Source329:      piton.tar.xz
+Source330:      piton.doc.tar.xz
 
 %description -n texlive-piton
 This package uses the Lua library LPEG to typeset and highlight
-informatic listings in several languages (Python, OCaml, SQL
-and C++). It requires the use of LuaLaTeX. It won't work with
-XeLaTeX, nor pdfLaTeX.
+informatic listings in several languages. It requires the use
+of LuaLaTeX. It won't work with XeLaTeX, nor pdfLaTeX.
 
 %package -n texlive-piton-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.6asvn70445
+Version:        %{texlive_version}.%{texlive_noarch}.4.2csvn74437
 Release:        0
 Summary:        Documentation for texlive-piton
 License:        LPPL-1.0
@@ -19591,9 +20082,9 @@ Provides:       tex(pitetd12.clo)
 Provides:       tex(pittetd.cls)
 Requires:       tex(hyperref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source323:      pittetd.tar.xz
-Source324:      pittetd.doc.tar.xz
+# from 20250308
+Source331:      pittetd.tar.xz
+Source332:      pittetd.doc.tar.xz
 
 %description -n texlive-pittetd
 A document class for theses and dissertations. Provides patch
@@ -19681,9 +20172,9 @@ Requires:       tex(pgfkeys.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source325:      pixelart.tar.xz
-Source326:      pixelart.doc.tar.xz
+# from 20250308
+Source333:      pixelart.tar.xz
+Source334:      pixelart.doc.tar.xz
 
 %description -n texlive-pixelart
 A LuaLaTeX package to draw pixel-art pictures using TikZ.
@@ -19732,7 +20223,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pixelart/pixelart0.sty
 
 %package -n texlive-pixelarttikz
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn68520
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.6svn73309
 Release:        0
 License:        LPPL-1.0
 Summary:        Work with PixelArts, with TikZ
@@ -19761,25 +20252,28 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pixelarttikz-doc >= %{texlive_version}
 Provides:       tex(PixelArtTikz.sty)
 Requires:       tex(csvsimple.sty)
+Requires:       tex(datatool.sty)
 Requires:       tex(expl3.sty)
+Requires:       tex(ifthen.sty)
 Requires:       tex(listofitems.sty)
+Requires:       tex(multicol.sty)
 Requires:       tex(simplekv.sty)
+Requires:       tex(tabularray.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xintexpr.sty)
 Requires:       tex(xinttools.sty)
-Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source327:      pixelarttikz.tar.xz
-Source328:      pixelarttikz.doc.tar.xz
+# from 20250308
+Source335:      pixelarttikz.tar.xz
+Source336:      pixelarttikz.doc.tar.xz
 
 %description -n texlive-pixelarttikz
 The package defines commands and an environment for displaying
 pixel arts.
 
 %package -n texlive-pixelarttikz-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn68520
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.6svn73309
 Release:        0
 Summary:        Documentation for texlive-pixelarttikz
 License:        LPPL-1.0
@@ -19809,6 +20303,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-pixelarttikz-doc
+%{_texmfdistdir}/doc/latex/pixelarttikz/PAkoala.csv
+%{_texmfdistdir}/doc/latex/pixelarttikz/PAsorciere.csv
+%{_texmfdistdir}/doc/latex/pixelarttikz/PAyoda.csv
 %{_texmfdistdir}/doc/latex/pixelarttikz/PixelArtTikz-doc-en.pdf
 %{_texmfdistdir}/doc/latex/pixelarttikz/PixelArtTikz-doc-en.tex
 %{_texmfdistdir}/doc/latex/pixelarttikz/PixelArtTikz-doc-fr.pdf
@@ -19817,6 +20314,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/pixelarttikz/base.csv
 %{_texmfdistdir}/doc/latex/pixelarttikz/cap.csv
 %{_texmfdistdir}/doc/latex/pixelarttikz/test1.csv
+%{_texmfdistdir}/doc/latex/pixelarttikz/testlist.csv
 
 %files -n texlive-pixelarttikz
 %{_texmfdistdir}/tex/latex/pixelarttikz/PixelArtTikz.sty
@@ -19856,9 +20354,9 @@ Requires:       perl(Getopt::Long)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source329:      pkfix.tar.xz
-Source330:      pkfix.doc.tar.xz
+# from 20250308
+Source337:      pkfix.tar.xz
+Source338:      pkfix.doc.tar.xz
 
 %description -n texlive-pkfix
 The perl script pkfix looks for DVIPSBitmapFont comments in
@@ -19945,9 +20443,9 @@ Requires:       perl(strict)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source331:      pkfix-helper.tar.xz
-Source332:      pkfix-helper.doc.tar.xz
+# from 20250308
+Source339:      pkfix-helper.tar.xz
+Source340:      pkfix-helper.doc.tar.xz
 
 %description -n texlive-pkfix-helper
 Pkfix is a useful utility for replacing resolution-dependent
@@ -20047,9 +20545,9 @@ Requires:       tex(lt3graph.sty)
 Requires:       tex(withargs.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source333:      pkgloader.tar.xz
-Source334:      pkgloader.doc.tar.xz
+# from 20250308
+Source341:      pkgloader.tar.xz
+Source342:      pkgloader.doc.tar.xz
 
 %description -n texlive-pkgloader
 The package seeks to address the frustration caused by package
@@ -20162,9 +20660,9 @@ Requires:       tex(tocloft.sty)
 Requires:       tex(ulem.sty)
 Requires:       tex(unicode-math.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source335:      pkuthss.tar.xz
-Source336:      pkuthss.doc.tar.xz
+# from 20250308
+Source343:      pkuthss.tar.xz
+Source344:      pkuthss.doc.tar.xz
 
 %description -n texlive-pkuthss
 The package provides a simple, clear and flexible LaTeX
@@ -20381,9 +20879,9 @@ Provides:       tex(pltt9.tfm)
 Provides:       tex(plu10.tfm)
 Provides:       tex(plvtt10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source337:      pl.tar.xz
-Source338:      pl.doc.tar.xz
+# from 20250308
+Source345:      pl.tar.xz
+Source346:      pl.doc.tar.xz
 
 %description -n texlive-pl
 The Polish extension of the Computer Modern fonts (compatible
@@ -20988,9 +21486,9 @@ Requires:       tex(luacode.sty)
 Requires:       tex(luatexbase.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source339:      placeat.tar.xz
-Source340:      placeat.doc.tar.xz
+# from 20250308
+Source347:      placeat.tar.xz
+Source348:      placeat.doc.tar.xz
 
 %description -n texlive-placeat
 The package provides commands so that the user of LuaLaTeX may
@@ -21067,9 +21565,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-placeins-doc >= %{texlive_version}
 Provides:       tex(placeins.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source341:      placeins.tar.xz
-Source342:      placeins.doc.tar.xz
+# from 20250308
+Source349:      placeins.tar.xz
+Source350:      placeins.doc.tar.xz
 
 %description -n texlive-placeins
 Defines a \FloatBarrier command, beyond which floats may not
@@ -21142,8 +21640,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(placeins.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source343:      placeins-plain.tar.xz
+# from 20250308
+Source351:      placeins-plain.tar.xz
 
 %description -n texlive-placeins-plain
 This TeX file provides various mechanisms (for plain TeX and
@@ -21214,8 +21712,8 @@ Provides:       tex(picmac.tex)
 Provides:       tex(plain.tex)
 Provides:       tex(wlist.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source344:      plain.tar.xz
+# from 20250308
+Source352:      plain.tar.xz
 
 %description -n texlive-plain
 Contains files used to build the Plain TeX format, as described
@@ -21289,8 +21787,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source345:      plain-doc.doc.tar.xz
+# from 20250308
+Source353:      plain-doc.doc.tar.xz
 
 %description -n texlive-plain-doc
 The document constitutes a list of every control sequence name
@@ -21348,9 +21846,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-plainpkg-doc >= %{texlive_version}
 Provides:       tex(plainpkg.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source346:      plainpkg.tar.xz
-Source347:      plainpkg.doc.tar.xz
+# from 20250308
+Source354:      plainpkg.tar.xz
+Source355:      plainpkg.doc.tar.xz
 
 %description -n texlive-plainpkg
 The package provides a minimal method for making generic (i.e.,
@@ -21427,8 +21925,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source348:      plainyr.tar.xz
+# from 20250308
+Source356:      plainyr.tar.xz
 
 %description -n texlive-plainyr
 This is a version of the standard plain BibTeX style, modified
@@ -21488,9 +21986,9 @@ Provides:       tex(plantslabels.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(labels.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source349:      plantslabels.tar.xz
-Source350:      plantslabels.doc.tar.xz
+# from 20250308
+Source357:      plantslabels.tar.xz
+Source358:      plantslabels.doc.tar.xz
 
 %description -n texlive-plantslabels
 The package defines a command \plant, which has three mandatory
@@ -21540,7 +22038,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/plantslabels/plantslabels.sty
 
 %package -n texlive-plantuml
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.2svn67097
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn73377
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for rendering UML diagrams using PlantUML
@@ -21578,9 +22076,9 @@ Requires:       tex(pythontex.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20240311
-Source351:      plantuml.tar.xz
-Source352:      plantuml.doc.tar.xz
+# from 20250308
+Source359:      plantuml.tar.xz
+Source360:      plantuml.doc.tar.xz
 
 %description -n texlive-plantuml
 PlantUML is a program which transforms text into UML diagrams.
@@ -21589,7 +22087,7 @@ the PlantUML source. Currently, this project runs with LuaLaTeX
 only.
 
 %package -n texlive-plantuml-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.2svn67097
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn73377
 Release:        0
 Summary:        Documentation for texlive-plantuml
 License:        LPPL-1.0
@@ -21626,6 +22124,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/lualatex/plantuml/example-component-diagram.tex
 %{_texmfdistdir}/doc/lualatex/plantuml/example-minimal.png
 %{_texmfdistdir}/doc/lualatex/plantuml/example-minimal.tex
+%{_texmfdistdir}/doc/lualatex/plantuml/example-multiple-diagrams-svg.tex
 %{_texmfdistdir}/doc/lualatex/plantuml/plantuml.pdf
 %{_texmfdistdir}/doc/lualatex/plantuml/release.sh
 
@@ -21709,35 +22208,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:8} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:9} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:10} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Move font files
-    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-padauk
-    for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/padauk/*.{pf[ab],[ot]tf}
-    do
-        test -e $font || continue
-        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-padauk
-        base=${font##*/}
-        ln -sf %{_datadir}/fonts/texlive-padauk/${base} ${font}
-    done
-    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-padauk/
-    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-padauk/
-    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
-    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-padauk.conf)<<-'EOF'
-	<?xml version="1.0"?>
-	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-
-	<!-- ************************************************ -->
-	<!-- Use this to disable the TeX fonts of the package -->
-	<!--    texlive-padauk    -->
-	<!-- Be aware that the configurations in the files    -->
-	<!-- 09-texlive*.conf will not be affected by this    -->
-	<!-- ************************************************ -->
-
-	<fontconfig>
-	  <rejectfont>
-	    <glob>%{_datadir}/fonts/texlive-padauk/*</glob>
-	  </rejectfont>
-	</fontconfig>
-	EOF
     tar --use-compress-program=xz -xf %{S:11} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:12} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:13} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21944,9 +22414,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:73} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-patrons.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-patrons.tex
     mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-solides.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-solides.tex
     mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-calculs.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-calculs.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-patrons.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-patrons.tex
     mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-styles.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-styles.tex
     tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21960,16 +22430,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/pax/pdfannotextractor.pl
     do
@@ -21982,20 +22454,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/ptex/pbibtex/generate.sh
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22007,8 +22477,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive
     # Extend python3 scripts with major version only if any
     for scr in %{_texmfdistdir}/scripts/pdfbook2/pdfbook2
     do
@@ -22033,8 +22505,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22043,8 +22513,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/pdfcrop/pdfcrop.pl
     do
@@ -22057,16 +22529,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22095,16 +22565,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:171}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:173}
     popd
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/pdftex/tests/14-pdfadjustinterwordglue-segfault/.gdb_history
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/pdftex/tests/14-pdfadjustinterwordglue-segfault/.gdbinit
     # Avoid /usr/bin/env <prog>
-    for scr in %{_texmfdistdir}/doc/pdftex/manual/syntaxform.pl
+    for scr in %{_texmfdistdir}/doc/pdftex/manual/syntaxform.pl \
+	       %{_texmfdistdir}/doc/pdftex/tests/38-interword-space-at-font-switch/compare_pdfs.rb
     do
 	test -e %{buildroot}/$scr || continue
 	ed %{buildroot}/${scr} <<-'EOF'
@@ -22144,25 +22617,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/pedigree-perl/pedigree.pl
     do
@@ -22175,16 +22648,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/perltex/perltex.pl
     do
@@ -22197,16 +22672,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/pfarrei/a5toa4.tlu \
 	       %{_texmfdistdir}/scripts/pfarrei/pfarrei.tlu
@@ -22220,10 +22695,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22250,8 +22721,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Correct wrong luaTeX scripts if any
-    for scr in %{_texmfdistdir}/scripts/pgfmolbio/pgfmolbio.lua
+    for scr in %{_texmfdistdir}/scripts/pgfmolbio/pgfmolbio.chromatogram.lua \
+	       %{_texmfdistdir}/scripts/pgfmolbio/pgfmolbio.domains.lua \
+	       %{_texmfdistdir}/scripts/pgfmolbio/pgfmolbio.lua
     do
 	test -e %{buildroot}/$scr || continue
 	ed %{buildroot}/${scr} <<-'EOF'
@@ -22263,10 +22740,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22275,6 +22748,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-phaistos
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/phaistos/*.{pf[ab],[ot]tf} \
@@ -22325,12 +22804,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-phaistos.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-phaistos.conf
-    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22347,6 +22820,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-philokalia
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/philokalia/*.{pf[ab],[ot]tf}
@@ -22376,18 +22855,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/photobook/scripts/make-spreads.sh
     do
@@ -22407,12 +22886,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22435,6 +22908,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:321} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:322} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-pigpen
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/pigpen/*.{pf[ab],[ot]tf}
@@ -22464,22 +22945,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:321} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:322} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:323} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:324} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:325} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:326} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:327} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:336} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:337} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:338} -C %{buildroot}%{_datadir}/texlive
     # Correct wrong perl scripts if any
     for scr in %{_texmfdistdir}/scripts/pkfix/pkfix.pl
     do
@@ -22496,8 +22977,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:339} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:340} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/pkfix-helper/pkfix-helper
     do
@@ -22510,14 +22991,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:336} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:341} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:342} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:343} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:344} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/pkuthss/example/Make.bat
-    tar --use-compress-program=xz -xf %{S:337} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:338} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:345} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:346} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-pl
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/pl/*.{pf[ab],[ot]tf}
@@ -22547,8 +23028,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:339} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:340} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:347} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:348} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Correct wrong luaTeX scripts if any
     for scr in %{_texmfdistdir}/scripts/placeat/placeat.lua
     do
@@ -22562,18 +23043,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:341} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:342} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:343} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:344} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:345} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:346} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:347} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:348} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:349} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:350} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:351} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:352} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:353} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:354} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:355} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:356} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:357} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:358} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:359} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:360} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
