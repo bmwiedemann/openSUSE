@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Sat Mar 22 17:00:08 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.1230
+- refresh vim-7.3-sh_is_bash.patch
+ *  patch 9.1.1230: inconsistent CTRL-C behaviour for popup windows
+ *  patch 9.1.1229: the comment plugin can be improved
+ *  runtime(sh): consider sh as POSIX shell by default
+ *  patch 9.1.1228: completion: current position column wrong after got a match
+ *  runtime(hlyank): add the hlyank package
+ *  patch 9.1.1227: no tests for the comment package
+ *  patch 9.1.1226: "shellcmdline" completion doesn't work with input()
+ *  patch 9.1.1225: extra NULL check in VIM_CLEAR()
+ *  runtime(sh): remove invalid commented out line in syntax script
+ *  runtime(sh): update sh indent script
+ *  patch 9.1.1224: cannot :put while keeping indent
+ *  runtime(go): use :term for keywordprg for nvim/gvim
+ *  patch 9.1.1223: wrong translation used for encoding failures
+ *  patch 9.1.1222: using wrong length for last inserted string
+ *  patch 9.1.1221: Wrong cursor pos when leaving Insert mode just after 'autoindent'
+ *  patch 9.1.1220: filetype: uv.lock file not recognized
+ *  patch 9.1.1219: Strange error with wrong type for matchfuzzy() "camelcase"
+ *  patch 9.1.1218: missing out-of-memory check in filepath.c
+ *  patch 9.1.1217: tests: typos in test_matchfuzzy.vim
+ *  patch 9.1.1216: Pasting the '.' register multiple times may not work
+ *  runtime(keymap) Add forward slash (/) to russian-jcukenwin keymap
+ *  runtime(vim): Update base-syntax, match multiline return types
+ *  patch 9.1.1215: Patch 9.1.1213 has some issues
+ *  patch 9.1.1214: matchfuzzy() can be improved for camel case matches
+ *  patch 9.1.1213: cannot :put while keeping indent
+ *  runtime(syntax-tests): Support "wait-free" test failure
+ *  patch 9.1.1212: too many strlen() calls in edit.c
+ *  patch 9.1.1212: filetype: logrotate'd pacmanlogs are not recognized
+ *  runtime(prql): include prql syntax script
+ *  patch 9.1.1211: TabClosedPre is triggered just before the tab is being freed
+ *  patch 9.1.1210: translation(ru): missing Russian translation for the new tutor
+ *  patch 9.1.1209: colorcolumn not drawn after virtual text lines
+ *  patch 9.1.1208: MS-Windows: not correctly restoring alternate screen on Win 10
+ *  patch 9.1.1207: MS-Windows: build warning in filepath.c
+ *  translation(ru): include Russian translation for chapter two of the tutorial
+ *  runtime(matchparen): line continuation causes failure in CI
+ *  patch 9.1.1206: tests: test_filetype fails when a file is a directory
+ *  runtime(doc): symlinking netrw.txt causes problems during install on Windows
+ *  patch 9.1.1205: completion: preinserted text not removed when closing pum
+ *  runtime(tutor): updated Russian translation for tutor chapter 1
+ *  runtime(cs): Update C# runtime files
+ *  patch 9.1.1203: matchparen keeps cursor on case label in sh filetype
+ *  runtime(doc): fix a typo in gitrebase filetype
+ *  runtime(doc): Tweak documentation style a bit
+ *  runtime(vim): Sync syntax generator base file with output file.
+ *  runtime(doc): update a few minor omissions from 5876016 and 4d2c4b9
+ *  patch 9.1.1202: Missing TabClosedPre autocommand
+ *  patch 9.1.1201: 'completefuzzycollect' does not handle dictionary correctly
+ *  runtime(doc): make :h 'completefuzzycollect' a bit clearer
+ *  runtime(doc): document gitrebase filetype
+ *  translation(it): update menu_it
+ *  translation(sr): Add chapter two of the new tutor
+ *  patch 9.1.1200: cmdline pum not cleared for input() completion
+ *  patch 9.1.1199: gvim uses hardcoded xpm icon file
+ *  runtime(indent-tests): GitHub Actions doesn't show why indent tests failed
+ *  patch 9.1.1198: [security]: potential data loss with zip.vim
+ *  patch 9.1.1197: process_next_cpt_value() uses wrong condition
+ *  patch 9.1.1196: filetype: config files for container tools are not recognized
+ *  runtime(doc): remove unnecessary "an"
+ *  patch 9.1.1195: inside try-block: fn body executed with default arg undefined
+ *  runtime(doc): Update doc 52.6
+ *  runtime(compiler): allow customizing exe and args for tsc
+ *  runtime(compiler): add comment for Dispatch
+ *  runtime(tera): remove unwanted code and fix issues in syntax script
+ *  runtime(doc): clarify that a umask is applied to mkdir()
+ *  patch 9.1.1194: filetype: false positive help filetype detection
+ *  runtime(man): improve :Man completion for man-db
+ *  patch 9.1.1193: Unnecessary use of STRCAT() in au_event_disable()
+ *  translation(sr): Update Serbian messages translation
+ *  runtime(doc): document vim syntax switches
+ *  runtime(vim): Update base-syntax, improve :syntax highlighting
+ *  patch 9.1.1192: Vim crashes with term response debug logging enabled
+ *  runtime(vim): Update base-syntax and generator, only match valid predefined variables
+ *  runtime(plsql): move fold option from syntax to filetype plugin
+ *  patch 9.1.1191: tests: test for patch 9.1.1186 doesn't fail without the patch
+ *  patch 9.1.1190: C indentation does not detect multibyte labels
+ *  runtime(sh): set b:match_skip to ignore matches for matchit
+ *  patch 9.1.1189: if_python: build error due to incompatible pointer types
+ *  patch 9.1.1188: runtime(tera): tera support can be improved
+ *  patch 9.1.1187: matchparen plugin wrong highlights shell case statement
+ *  runtime(doc): use GNOME instead of Gnome
+ *  patch 9.1.1186: filetype: help files in git repos are not detected
+ *  runtime(nohlsearch): fix CursorHold loop
+ *  runtime(doc): warn users about potentially risky hotkey
+ *  runtime(syntax-tests): Improve parts of "runtest.vim"
+ *  patch 9.1.1185: endless loop with completefuzzycollect and no match found
+ *  runtime(doc): CmdUndefined and FuncUndefined can always be nested
+ *  patch 9.1.1184: Unnecessary use of vim_tolower() in vim_strnicmp_asc()
+ *  patch 9.1.1083: "above" virtual text breaks cursorlineopt=number
+ *  runtime(go): add 'keywordprg' and 'formatprg' to ftplugin
+ *  runtime(syntax-tests): Re-introduce support for "phoney" languages
+ *  patch 9.1.1182: No cmdline completion for 'completefuzzycollect'
+ *  patch 9.1.1181: Unnecessary STRLEN() calls in insexpand.c
+ *  patch 9.1.1180: short-description
+ *  runtime(vim): Update base-syntax, bug fixes
+ *  patch 9.1.1179: too many strlen() calls in misc2.c
+ *  patch 9.1.1178: not possible to generate completion candidates using fuzzy matching
+ *  editorconfig: set editing style for comment and hlsearch package
+ *  patch 9.1.1177: filetype: tera files not detected
+ *  runtime(doc): revert modeline change in vim9.txt
+ *  runtime(new-tutor): add chapter two to the interactive tutorial
+ *  patch 9.1.1176: wrong indent when expanding multiple lines
+ *  test(runtime/syntax): improve syntax tests
+ *  editorconfig: set indent config for *.vim files
+ *  runtime(doc): mention alternative check for vim9script
+ *  patch 9.1.1175: inconsistent behaviour with exclusive selection and motion commands
+ *  runtime(man): don't add jumps when loading a manpage
+ *  runtime(vim): recognize <...> strings (and keys) for 'keywordprg'
+ *  patch 9.1.1174: tests: Test_complete_cmdline() may fail
+ *  runtime(doc): mention bzip3 in gzip plugin documentation
+
+-------------------------------------------------------------------
 Thu Mar  6 20:26:27 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Introduce patch to fix bsc#1235751 (regression).

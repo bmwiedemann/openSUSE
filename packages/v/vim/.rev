@@ -7923,4 +7923,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1251073</requestid>
   </revision>
+  <revision rev="381" vrev="1">
+    <srcmd5>eb42084161ad216370d32078e439a219</srcmd5>
+    <version>9.1.1230</version>
+    <time>1742936845</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.1.1230
+- refresh vim-7.3-sh_is_bash.patch
+ *  patch 9.1.1230: inconsistent CTRL-C behaviour for popup windows
+ *  patch 9.1.1229: the comment plugin can be improved
+ *  runtime(sh): consider sh as POSIX shell by default
+ *  patch 9.1.1228: completion: current position column wrong after got a match
+ *  runtime(hlyank): add the hlyank package
+ *  patch 9.1.1227: no tests for the comment package
+ *  patch 9.1.1226: &quot;shellcmdline&quot; completion doesn't work with input()
+ *  patch 9.1.1225: extra NULL check in VIM_CLEAR()
+ *  runtime(sh): remove invalid commented out line in syntax script
+ *  runtime(sh): update sh indent script
+ *  patch 9.1.1224: cannot :put while keeping indent
+ *  runtime(go): use :term for keywordprg for nvim/gvim
+ *  patch 9.1.1223: wrong translation used for encoding failures
+ *  patch 9.1.1222: using wrong length for last inserted string
+ *  patch 9.1.1221: Wrong cursor pos when leaving Insert mode just after 'autoindent'
+ *  patch 9.1.1220: filetype: uv.lock file not recognized
+ *  patch 9.1.1219: Strange error with wrong type for matchfuzzy() &quot;camelcase&quot;
+ *  patch 9.1.1218: missing out-of-memory check in filepath.c
+ *  patch 9.1.1217: tests: typos in test_matchfuzzy.vim
+ *  patch 9.1.1216: Pasting the '.' register multiple times may not work
+ *  runtime(keymap) Add forward slash (/) to russian-jcukenwin keymap
+ *  runtime(vim): Update base-syntax, match multiline return types
+ *  patch 9.1.1215: Patch 9.1.1213 has some issues
+ *  patch 9.1.1214: matchfuzzy() can be improved for camel case matches
+ *  patch 9.1.1213: cannot :put while keeping indent
+ *  runtime(syntax-tests): Support &quot;wait-free&quot; test failure
+ *  patch 9.1.1212: too many strlen() calls in edit.c
+ *  patch 9.1.1212: filetype: logrotate'd pacmanlogs are not recognized</comment>
+    <requestid>1255305</requestid>
+  </revision>
 </revisionlist>
