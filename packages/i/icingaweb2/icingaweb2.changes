@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 26 17:19:21 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.12.4
+  - Database login broken after upgrade #5343
+
+-------------------------------------------------------------------
+Wed Mar 26 11:21:51 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.12.3
+  - XSS in embedded content CVE-2025-27405
+  - DOM-based XSS CVE-2025-27404
+  - Open redirect on login page CVE-2025-30164
+  - Reflected XSS CVE-2025-27609
+  - Login against Postgres DB is case-sensitive #5223
+  - Role list has no functioning quick search #5300
+  - After clicking on Check now, the page does not refresh itself #5293
+  - Service States display wrong since update to 2.12.2 #5290
+
+-------------------------------------------------------------------
 Sun Jan 26 10:29:40 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Set right version for icinga-php-library.
