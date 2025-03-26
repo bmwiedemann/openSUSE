@@ -132,4 +132,29 @@
   * build(deps): bump actions/attest-build-provenance (forwarded request 1243217 from pjbgf)</comment>
     <requestid>1243218</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08a2af4e9b91eca67aa3531e7ddac9eb</srcmd5>
+    <version>0.0.10</version>
+    <time>1743020380</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.0.10, add ref to CVE-2025-22869 boo#1239390 fixed in 0.0.9:
+  * profiles: Add --detach/-d flag This new flag makes the detached mode opt-in, allowing for better user experience.
+  * build(deps): bump golang.org/x/term in the golang-org group
+  * profiles: Add interactive flag to start subcommand For improved debugging and troubleshooting, a new -i flag was added so that the profile container is started with all its dependencies, but the user has to then start the Window Manager.
+  * profiles: Skip image pull preemption for daemonised starts
+  * profiles: Inform user when pulling profile image
+  * flatpak: Add install subcommand To make it easier to install all flatpaks for a given profile, enumerate through all the linked Flatpaks installing one by one.
+  * build: Bump protoc to v29.3
+  * build: Bump golangci-list to v1.64.5
+  * build: Bump to Go 1.24
+  * start: Disable self-daemon call when debug is enabled
+  * Add support to run host Flatpaks A new subcommand flatpak run has been added to enable execution of Flatpaks installed on the host. The flatpak must be within an allow list of the Profile in order for it to be executed, however, no other HostAccess primitives are enforced.
+  * deps: List missing container images The deps subcommand now lists all workload (and profile) images, which are not present. To check the images across different runners, use the --runner flag:
+  * build(deps): bump golang.org/x/sys in the golang-org group
+  * build(deps): bump google.golang.org/protobuf from 1.36.4 to 1.36.5
+  * profiles: Daemonise profile start When a profile is started, it starts an inception server so that the containerised Windows Manager is able to execute new container workloads. The previous implementation required the start command to hold the process running for as long as the profile was running.
+  * Fix mime handling post mTLS implementation Workloads allowed to trigger mime handling require access to the inception server. Since the mTLS implementation, this feature stopped working as that connection could no longer be established due to the missing client mTLS credentials.
+  * Fix qubesome version (forwarded request 1256082 from jfkw)</comment>
+    <requestid>1256083</requestid>
+  </revision>
 </revisionlist>

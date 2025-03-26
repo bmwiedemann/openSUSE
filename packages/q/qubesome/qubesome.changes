@@ -1,7 +1,29 @@
 -------------------------------------------------------------------
+Mon Feb 24 08:53:41 UTC 2025 - pjbgf@linux.com
+
+- Update to version 0.0.10:
+  * profiles: Add --detach/-d flag This new flag makes the detached mode opt-in, allowing for better user experience.
+  * build(deps): bump golang.org/x/term in the golang-org group
+  * profiles: Add interactive flag to start subcommand For improved debugging and troubleshooting, a new -i flag was added so that the profile container is started with all its dependencies, but the user has to then start the Window Manager.
+  * profiles: Skip image pull preemption for daemonised starts
+  * profiles: Inform user when pulling profile image
+  * flatpak: Add install subcommand To make it easier to install all flatpaks for a given profile, enumerate through all the linked Flatpaks installing one by one.
+  * build: Bump protoc to v29.3
+  * build: Bump golangci-list to v1.64.5
+  * build: Bump to Go 1.24
+  * start: Disable self-daemon call when debug is enabled
+  * Add support to run host Flatpaks A new subcommand flatpak run has been added to enable execution of Flatpaks installed on the host. The flatpak must be within an allow list of the Profile in order for it to be executed, however, no other HostAccess primitives are enforced.
+  * deps: List missing container images The deps subcommand now lists all workload (and profile) images, which are not present. To check the images across different runners, use the --runner flag:
+  * build(deps): bump golang.org/x/sys in the golang-org group
+  * build(deps): bump google.golang.org/protobuf from 1.36.4 to 1.36.5
+  * profiles: Daemonise profile start When a profile is started, it starts an inception server so that the containerised Windows Manager is able to execute new container workloads. The previous implementation required the start command to hold the process running for as long as the profile was running.
+  * Fix mime handling post mTLS implementation Workloads allowed to trigger mime handling require access to the inception server. Since the mTLS implementation, this feature stopped working as that connection could no longer be established due to the missing client mTLS credentials.
+
+-------------------------------------------------------------------
 Tue Feb 04 20:39:46 UTC 2025 - pjbgf@linux.com
 
 - Update to version 0.0.9:
+  CVE-2025-22869
   * build: Remove .obs integration
   * build: Bump go-git to latest from main
   * Fix inception startup stutter During profile startup an inception server is initiated, with a socket file created at ~/.qubesome/run/<profile>/qube.sock. The profile dir was not present at the first attempt of starting a profile, which meant that a profile would need to be started, closed and started again for it to work.
@@ -25,7 +47,7 @@ Tue Feb 04 20:39:46 UTC 2025 - pjbgf@linux.com
   * build(deps): bump github.com/cyphar/filepath-securejoin
   * Add Leap to README
   * Add support for AMD GPU sharing AMD GPU sharing is based on ROCm, for Tumbleweed the installation can be done via:
-  * build(deps): bump golang.org/x/crypto in the go_modules group
+  * build(deps): bump golang.org/x/crypto in the go_modules group fixes CVE-2025-22869 boo#1239390
   * build(deps): bump google.golang.org/grpc from 1.68.1 to 1.69.0
   * build(deps): bump google.golang.org/grpc from 1.68.0 to 1.68.1
   * build(deps): bump github.com/cyphar/filepath-securejoin

@@ -17,7 +17,7 @@
 
 
 Name:           qubesome
-Version:        0.0.9
+Version:        0.0.10
 Release:        0
 Summary:        Containerize Window Managers, apps and config from a declarative state in Git
 License:        Apache-2.0
@@ -37,11 +37,11 @@ Define your Window Manager and Workloads in Git and run them as containers. Just
 %ifnarch ppc64
 export GOFLAGS="-buildmode=pie"
 %endif
-go build -o %{name} cmd/qubesome/main.go
+go build -o %{name} -ldflags='-X github.com/qubesome/cli/cmd/cli.version=%{version}' cmd/qubesome/main.go
 
 %check
 # execute the binary as a basic check
-./%{name} deps
+./%{name} version
 
 %install
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
