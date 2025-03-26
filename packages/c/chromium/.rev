@@ -5488,4 +5488,16 @@ boo#1224178</comment>
   (build fail after ffmpeg updated from 4.4 to 4.4.5 in code15)</comment>
     <requestid>1254688</requestid>
   </revision>
+  <revision rev="455" vrev="1">
+    <srcmd5>9f3ca010cda649f3aace563eddfe1224</srcmd5>
+    <version>134.0.6998.165</version>
+    <time>1743020300</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 134.0.6998.165
+  * stability fixes (boo#1240022)
+
+- disable not needed chromium-120-make_unique-struct.patch
+  (context boo#1239780)</comment>
+    <requestid>1255957</requestid>
+  </revision>
 </revisionlist>

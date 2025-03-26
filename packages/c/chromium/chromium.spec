@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Callum Farmer <gmbr3@opensuse.org>
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -106,7 +106,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        134.0.6998.117
+Version:        134.0.6998.165
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -143,7 +143,7 @@ Patch98:        chromium-102-regex_pattern-array.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
 Patch240:       chromium-117-string-convert.patch
-Patch256:       chromium-120-make_unique-struct.patch
+#Patch256:       chromium-120-make_unique-struct.patch
 Patch261:       chromium-121-rust-clang_lib.patch
 Patch337:       chromium-123-missing-QtGui.patch
 Patch359:       chromium-126-quiche-interator.patch
