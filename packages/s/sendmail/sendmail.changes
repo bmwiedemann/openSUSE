@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 17 14:24:06 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update keyring 
+
+-------------------------------------------------------------------
 Wed Feb 12 11:42:54 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Skip /var/spool/mail/ from  permissons files of sendmail (boo#1236847)

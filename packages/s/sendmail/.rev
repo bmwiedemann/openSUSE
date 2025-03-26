@@ -1311,4 +1311,12 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
 - Skip sysvinit</comment>
     <requestid>1245380</requestid>
   </revision>
+  <revision rev="127" vrev="6">
+    <srcmd5>6f3d10a46dcc26b3ba65d69338017a96</srcmd5>
+    <version>8.18.1</version>
+    <time>1743020204</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1255660</requestid>
+  </revision>
 </revisionlist>
