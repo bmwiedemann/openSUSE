@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 26 11:43:32 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.34.1:
+  * Bug Fixes
+    - build, buildah, staged: fix panic in run instruction (#6733)
+      (579de54)
+    - build, imageSpec: keep essential werf labels (469a065)
+    - cleanup: handle fromImage properly by kubernetes and
+      builtWithinLastNHours policies (7cffc4b)
+
+-------------------------------------------------------------------
 Tue Mar 25 18:15:33 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.34.0:
