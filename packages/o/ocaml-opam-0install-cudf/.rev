@@ -7,4 +7,12 @@
     <comment>new dependency of opam</comment>
     <requestid>1249864</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3f7d3a75d2475d657e510e792b21a2fd</srcmd5>
+    <version>0.5.0</version>
+    <time>1743020648</time>
+    <user>anag+factory</user>
+    <comment>- allow only 64bit to follow other packages</comment>
+    <requestid>1256259</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,5 @@
 <package name="ocaml-opam-0install-cudf" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="devel:languages:ocaml" package="ocaml-opam-0install-cudf"/>
 </package>
