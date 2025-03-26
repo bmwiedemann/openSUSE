@@ -2213,4 +2213,12 @@ General:
 - Add qoi-devel BuildRequires: enable QOI format support</comment>
     <requestid>1253919</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>d094a4b9a84602622079df537092b49e</srcmd5>
+    <version>3.0.2</version>
+    <time>1743020272</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.2 (forwarded request 1255755 from darix)</comment>
+    <requestid>1255848</requestid>
+  </revision>
 </revisionlist>
