@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-SocketIO
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-SocketIO
-Version:        5.4.1
+Version:        5.5.1
 Release:        0
 Summary:        SocketIO integration for Flask applications
 License:        MIT
@@ -26,13 +26,13 @@ URL:            https://github.com/miguelgrinberg/Flask-SocketIO/
 Source:         https://files.pythonhosted.org/packages/source/f/flask-socketio/flask_socketio-%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 0.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module python-socketio >= 5.0.2}
+BuildRequires:  %{python_module python-socketio >= 5.12.0}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 Requires:       python-Flask >= 0.9
-Requires:       python-python-socketio >= 5.0.2
+Requires:       python-python-socketio >= 5.12.0
 BuildArch:      noarch
 %python_subpackages
 
