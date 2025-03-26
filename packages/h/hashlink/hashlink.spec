@@ -17,24 +17,16 @@
 
 
 Name:           hashlink
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        A virtual machine for Haxe
 License:        MIT
 URL:            https://hashlink.haxe.org/
 Source0:        https://github.com/HaxeFoundation/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch01:        0001-cmake-Install-hlc_main.c-with-hl.h-and-hlc.h.patch
-# PATCH-FIX-UPSTREAM
-Patch02:        0001-Disable-the-JIT-tests-on-arm-architectures.patch
-# PATCH-FIX-UPSTREAM
-Patch03:        0001-cmake-Don-t-build-the-interpreter-on-ARM.patch
-# PATCH-FIX-UPSTREAM
-Patch04:        0001-cmake-Don-t-run-the-version-test-if-the-interpreter-.patch
 # PATCH-FIX-OPENSUSE
-Patch05:        0001-fix-rpath.patch
-# PATCH-FIX-UPSTREAM https://github.com/HaxeFoundation/hashlink/pull/686
-Patch06:        fix_incompatible-pointer-types.patch
+Patch0:         0001-fix-rpath.patch
+# PATCH-FIX-OPENSUSE https://github.com/HaxeFoundation/hashlink/issues/764 Revert for ARM the change in https://github.com/HaxeFoundation/hashlink/pull/695
+Patch1:         fix_arm_compilation.patch
 BuildRequires:  cmake
 BuildRequires:  haxe >= 4.0
 BuildRequires:  mbedtls-devel < 3

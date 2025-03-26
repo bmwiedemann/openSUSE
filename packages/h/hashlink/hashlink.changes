@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 24 21:01:32 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 1.15
+  * added more GL functions
+  * added heaps.hdll (contains mikkt, meshtools, convex hull)
+  * added GUID type support (int64 with debugger string representation)
+  * fixes in UI8/F32 handling
+  * GC bug fixes
+  * some other bugfixes and minor improvements
+- Refresh 0001-fix-rpath.patch
+- Add fix_arm_compilation.patch
+- Drop 0001-cmake-Install-hlc_main.c-with-hl.h-and-hlc.h.patch,
+  0001-Disable-the-JIT-tests-on-arm-architectures.patch,
+  0001-cmake-Don-t-build-the-interpreter-on-ARM.patch,
+  0001-cmake-Don-t-run-the-version-test-if-the-interpreter-.patch,
+  fix_incompatible-pointer-types.patch
+
+-------------------------------------------------------------------
 Fri Mar 14 15:26:21 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add depenedncy on pkgconfig(glu)

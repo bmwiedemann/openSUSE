@@ -1,8 +1,8 @@
-Index: hashlink-1.14/CMakeLists.txt
+Index: hashlink-1.15/CMakeLists.txt
 ===================================================================
---- hashlink-1.14.orig/CMakeLists.txt
-+++ hashlink-1.14/CMakeLists.txt
-@@ -181,7 +181,7 @@ if(INTERPRETER_ENABLED)
+--- hashlink-1.15.orig/CMakeLists.txt
++++ hashlink-1.15/CMakeLists.txt
+@@ -188,7 +188,7 @@ if (WITH_VM)
      )
  
      if (UNIX AND NOT APPLE)
