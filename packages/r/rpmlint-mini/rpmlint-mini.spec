@@ -59,6 +59,7 @@ BuildRequires:  glib2-devel-static
 BuildRequires:  libedit-devel
 BuildRequires:  libtool
 BuildRequires:  meson
+BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  rpmlint >= 2
@@ -96,6 +97,8 @@ cp -a %{_vpath_builddir}/src/desktop-file-validate %{buildroot}/opt/testing/bin
 cp -a %{_bindir}/dash %{_bindir}/checkbashisms %{buildroot}/opt/testing/bin
 cp -a %{_bindir}/{tar,gzip} %{buildroot}/opt/testing/bin
 cp -a %{_libdir}/libedit.so.0* %{buildroot}/opt/testing/lib
+# We need libcrypto
+cp -a %{_libdir}/libcrypto*.so.* %{buildroot}/opt/testing/lib
 # Install config files
 install -d -m 755 %{buildroot}/opt/testing/share
 cp -a %{_sysconfdir}/xdg/rpmlint %{buildroot}/opt/testing/share

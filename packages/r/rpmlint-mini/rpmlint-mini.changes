@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 20 09:42:04 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add libcrypto.so to the bundle
+
+-------------------------------------------------------------------
 Thu Jan 23 11:14:32 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use %primary_python macro instead hardcode python version
