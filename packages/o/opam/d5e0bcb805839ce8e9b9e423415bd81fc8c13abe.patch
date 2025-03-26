@@ -1,0 +1,24 @@
+From: Kate <kit-ty-kate@outlook.com>
+Date: Mon, 24 Mar 2025 17:06:09 +0000
+Subject: depexts: Allow detection of installed packages through their virtual names on ALT Linux, RHEL-based and SUSE-based distributions
+
+---
+ src/state/opamSysInteract.ml | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/state/opamSysInteract.ml b/src/state/opamSysInteract.ml
+index fb0686bc643..94871b108c8 100644
+--- a/src/state/opamSysInteract.ml
++++ b/src/state/opamSysInteract.ml
+@@ -700,7 +700,10 @@ let packages_status ?(env=OpamVariable.Map.empty) config packages =
+        >python3-pip-wheel
+     *)
+     let sys_installed =
+-      run_query_command "rpm" ["-qa"; "--qf"; "%{NAME}\\n"]
++      (* NOTE: In practice %{PROVIDES} seems to always contains %{NAME}
++         but this behaviour isn't documented, so just to be sure, it is
++         safer to add %{NAME} anyway. *)
++      run_query_command "rpm" ["-qa"; "--qf"; "%{NAME}\\n[%{PROVIDES}\\n]"]
+       |> List.map OpamSysPkg.of_string
+       |> OpamSysPkg.Set.of_list
+     in

@@ -1,0 +1,24 @@
+From: Kate <kit-ty-kate@outlook.com>
+Date: Mon, 24 Mar 2025 17:22:46 +0000
+Subject: depexts: Speedup the installed package detection by 2% on ALT Linux, RHEL and SUSE based distributions
+
+---
+ src/state/opamSysInteract.ml | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/state/opamSysInteract.ml b/src/state/opamSysInteract.ml
+index 94871b108c8..99b1a438852 100644
+--- a/src/state/opamSysInteract.ml
++++ b/src/state/opamSysInteract.ml
+@@ -704,8 +704,9 @@ let packages_status ?(env=OpamVariable.Map.empty) config packages =
+          but this behaviour isn't documented, so just to be sure, it is
+          safer to add %{NAME} anyway. *)
+       run_query_command "rpm" ["-qa"; "--qf"; "%{NAME}\\n[%{PROVIDES}\\n]"]
+-      |> List.map OpamSysPkg.of_string
+-      |> OpamSysPkg.Set.of_list
++      |> List.fold_left (fun acc name ->
++          OpamSysPkg.Set.add (OpamSysPkg.of_string name) acc)
++        OpamSysPkg.Set.empty
+     in
+     compute_sets sys_installed
+   | Cygwin ->

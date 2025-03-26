@@ -133,4 +133,16 @@
   see included CHANGES file for details</comment>
     <requestid>1249867</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>eee9492da4aea10a218c5dcb3e9ea192</srcmd5>
+    <version>2.3.0</version>
+    <time>1743020516</time>
+    <user>anag+factory</user>
+    <comment>- support Provides as depext (issue#6426)
+  add 5ffd07705853a7d6516b65db08d3f0a47aa421ab.patch
+  add d5e0bcb805839ce8e9b9e423415bd81fc8c13abe.patch
+  add 2532248d70b14a137164194e6c0eb3459b50de0f.patch
+- allow only 64bit to follow other packages</comment>
+    <requestid>1256188</requestid>
+  </revision>
 </revisionlist>

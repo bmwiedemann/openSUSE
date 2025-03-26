@@ -21,15 +21,18 @@ Version:        2.3.0
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
-Group:          System/Packages
 URL:            https://opam.ocaml.org/
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 Source:         %name-%version.tar.xz
+Patch0:         5ffd07705853a7d6516b65db08d3f0a47aa421ab.patch
+Patch1:         d5e0bcb805839ce8e9b9e423415bd81fc8c13abe.patch
+Patch2:         2532248d70b14a137164194e6c0eb3459b50de0f.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 2.8
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  ocamlfind(base64)
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(cmdliner)
@@ -75,7 +78,6 @@ Git-friendly development workflow.
 
 %package installer
 Summary:        Standalone tool for opam install files
-Group:          System/Packages
 Requires:       %name = %version-%release
 
 %description installer
@@ -84,7 +86,6 @@ OPAM *.install files.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
 Requires:       %name = %version
 
 %description    devel
