@@ -23,7 +23,7 @@ Summary:        Yet another unofficial speedtest.net client cli interface
 License:        MIT
 URL:            https://github.com/taganaka/SpeedTest
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
@@ -43,11 +43,14 @@ sed -e '/add_executable/s/SpeedTest/%{name}/' \
     -i CMakeLists.txt
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %doc README.md
