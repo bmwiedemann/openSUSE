@@ -30,8 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250228.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250325.tar.gz#/kernel-firmware-tools-20250325.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -48,8 +47,8 @@ BuildArch:      noarch
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
-Supplements:    modalias(of:N*T*Cqcom,ipq4019-wifi)
-Supplements:    modalias(of:N*T*Cqcom,ipq4019-wifiC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cipq4019-wifi)
+Supplements:    modalias(of:N*T*Cqcom%2Cipq4019-wifiC*)
 Supplements:    modalias(pci:v00000777d000011ACsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v0000168Cd0000003Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v0000168Cd0000003Esv*sd*bc*sc*i*)
@@ -67,7 +66,8 @@ Supplements:    modalias(usb:v13B1p0042d*dc*dsc*dp*ic*isc*ip*in*)
 This package contains kernel firmware files for Atheros QCA988x WiFi drivers.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh ath10k < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE

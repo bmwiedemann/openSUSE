@@ -1,5 +1,5 @@
-ath10k_pci: of:N*T*Cqcom,ipq4019-wifi
-ath10k_pci: of:N*T*Cqcom,ipq4019-wifiC*
+ath10k_pci: of:N*T*Cqcom%2Cipq4019-wifi
+ath10k_pci: of:N*T*Cqcom%2Cipq4019-wifiC*
 ath10k_pci: pci:v00000777d000011ACsv*sd*bc*sc*i*
 ath10k_pci: pci:v0000168Cd0000003Csv*sd*bc*sc*i*
 ath10k_pci: pci:v0000168Cd0000003Esv*sd*bc*sc*i*
