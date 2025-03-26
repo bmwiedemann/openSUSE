@@ -21,7 +21,6 @@ Version:        0.9.6
 Release:        0
 Summary:        Run Time Type Reflection for C++
 License:        MIT
-Group:          Development/Languages/C and C++
 URL:            http://www.rttr.org/releases/rttr-%{version}-src.tar.gz
 Source0:        %{name}-%{version}-src.tar.gz
 #PATCH-FIX-OPENSUSE cxx11_compiler_flags.patch force c++11 mode on gcc4.8 (for Leap 42.3)
@@ -38,7 +37,7 @@ Patch4:         fix-include-permissions.patch
 Patch5:         lp64.patch
 #PATCH-FIX-UPSTREAM remove_pessimizing_moves.patch remove pessimizing move calls (https://github.com/rttrorg/rttr/pull/243)
 Patch6:         remove_pessimizing_moves.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  dos2unix
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -67,7 +66,7 @@ library itself, which is written in C++.
 %build
 find . -type f -exec chmod a-x "{}" +
 dos2unix README.md
-%cmake -DBUILD_BENCHMARKS=OFF -DCMAKE_INSTALL_CMAKEDIR=cmake -DBUILD_UNIT_TESTS=OFF
+%cmake -DBUILD_BENCHMARKS=OFF -DCMAKE_INSTALL_CMAKEDIR=cmake -DBUILD_UNIT_TESTS=OFF -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 #make unit tests pass
 export LD_LIBRARY_PATH=%{_builddir}/rttr-%{version}/build/lib/
 %make_jobs
@@ -78,9 +77,11 @@ export LD_LIBRARY_PATH=%{_builddir}/rttr-%{version}/build/lib/
 %cmake_install rttr_core
 rm -Rf %{buildroot}/%{_datadir}/rttr
 
+%check
+%ctest
+
 %package -n lib%{name}_core0_9_6
 Summary:        Run Time Type Reflection for C++
-Group:          System/Libraries
 
 %description -n lib%{name}_core0_9_6
 Run Time Type Reflection is the the ability of a computer program to
@@ -96,7 +97,6 @@ library itself, which is written in C++.
 
 %package  devel
 Summary:        Header files for the C++ Run Time Type Reflection library
-Group:          Development/Languages/C and C++
 Requires:       librttr_core0_9_6 = %{version}
 
 %description  devel
@@ -111,7 +111,6 @@ library itself, which is written in C++.
 
 %package devel-doc
 Summary:        Documentation for rttr
-Group:          Documentation/Other
 
 %description devel-doc
 API Documentation for rttr
