@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 24 16:51:39 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add 42ad1741.patch: prevent crash when the host has no voice
+  provider installed.
+
+-------------------------------------------------------------------
 Tue May  7 07:48:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.0.1:

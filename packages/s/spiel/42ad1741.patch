@@ -1,0 +1,42 @@
+From 42ad1741875e5b0ab1a1cfbc34e4ffaabc029e2f Mon Sep 17 00:00:00 2001
+From: Philippe Normand <philn@igalia.com>
+Date: Wed, 18 Sep 2024 11:28:41 +0100
+Subject: [PATCH] spiel-registry: Prevent crash when the host has no voice
+ provider installed
+
+The error was not propagated from the providers collector to the registry which
+then was attempting to use a NULL providers hash table.
+
+The `object == G_OBJECT (sRegistry)` assert was removed from
+spiel_registry_finalize() because sRegistry is set only when the initialization
+succeeded, which is not the case when no provider was found.
+---
+ libspiel/spiel-collect-providers.c | 2 +-
+ libspiel/spiel-registry.c          | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/libspiel/spiel-collect-providers.c b/libspiel/spiel-collect-providers.c
+index 6817ca6..a03aba5 100644
+--- a/libspiel/spiel-collect-providers.c
++++ b/libspiel/spiel-collect-providers.c
+@@ -158,7 +158,7 @@ _on_list_names (GObject *source, GAsyncResult *result, gpointer user_data)
+ 
+   if (!closure->providers_to_process)
+     {
+-      g_task_return_pointer (task, NULL, NULL);
++      g_task_return_new_error (task, G_IO_ERROR, G_IO_ERROR_FAILED, "No voice provider found");
+       g_object_unref (task);
+     }
+   else
+diff --git a/libspiel/spiel-registry.c b/libspiel/spiel-registry.c
+index ff33f91..cc46277 100644
+--- a/libspiel/spiel-registry.c
++++ b/libspiel/spiel-registry.c
+@@ -432,7 +432,6 @@ spiel_registry_finalize (GObject *object)
+     }
+ 
+   G_OBJECT_CLASS (spiel_registry_parent_class)->finalize (object);
+-  g_assert (object == G_OBJECT (sRegistry));
+   sRegistry = NULL;
+ }
+ 

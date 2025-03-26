@@ -1,7 +1,7 @@
 #
 # spec file for package spiel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Speech synthesis API and framework for free desktops
 License:        LGPL-2.1-or-later
 URL:            https://eeejay.github.io/spiel/
 Source:         %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM https://github.com/project-spiel/libspiel/commit/42ad1741.patch boo#1239950 mgorse@suse.com -- prevent crash when the host has no voice provider installed.
+Patch0:         https://github.com/project-spiel/libspiel/commit/42ad1741.patch
 BuildRequires:  meson >= 0.64.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gi-docgen)
@@ -82,7 +84,7 @@ Spiel provides a speech synthesis API for desktop Linux and beyond.
 It consists of two parts, a speech provider interface specification and a client library.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson
