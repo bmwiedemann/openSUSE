@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(libbsd)
 BuildRequires:  pkgconfig(libpci)
-BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(zlib)
 Requires:       bash-completion
 Recommends:     acpica

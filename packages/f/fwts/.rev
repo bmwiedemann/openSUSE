@@ -1237,4 +1237,12 @@
   * acpi/wmi: Stop directing users to outdated LWN article</comment>
     <requestid>1245584</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>60c02589c8e20eea2c3f29475d4726ce</srcmd5>
+    <version>25.01.00</version>
+    <time>1743020480</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1256149</requestid>
+  </revision>
 </revisionlist>
