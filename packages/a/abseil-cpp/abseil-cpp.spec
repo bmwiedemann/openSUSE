@@ -23,7 +23,7 @@
 %global with_gcc 7
 %endif
 Name:           abseil-cpp
-Version:        20250127.0
+Version:        20250127.1
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0

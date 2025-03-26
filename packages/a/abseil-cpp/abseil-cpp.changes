@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 22 22:02:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 20250127.1:
+  * Improved Bazel support
+  * Added ABSL_ATTRIBUTE_VIEW and ABSL_ATTRIBUTE_OWNER for
+    diagnosing certain lifetime issues
+  * Many performance improvements
+  * potential integer overflow in hash container create/resize
+    fixed again - boo#1236438
+
+-------------------------------------------------------------------
 Mon Feb 17 18:35:03 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - do not obsolete the shared libary package
