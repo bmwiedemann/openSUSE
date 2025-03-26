@@ -1,0 +1,42 @@
+From fb44b0405440a30e78c54e0dd4e7dd1a6c5d41c3 Mon Sep 17 00:00:00 2001
+From: Richard Lyu <richard.lyu@suse.com>
+Date: Fri, 14 Mar 2025 00:10:12 +0800
+Subject: [PATCH] Remove unsupported GCC flag mstack protector guard
+
+---
+ BaseTools/Conf/tools_def.template | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/BaseTools/Conf/tools_def.template b/BaseTools/Conf/tools_def.template
+index b35fb77bbb..d300c3b582 100755
+--- a/BaseTools/Conf/tools_def.template
++++ b/BaseTools/Conf/tools_def.template
+@@ -921,11 +921,11 @@ NOOPT_*_*_OBJCOPY_ADDDEBUGFLAG     = --add-gnu-debuglink="$(DEBUG_DIR)/$(MODULE_
+ 
+ # All supported GCC archs except LOONGARCH64 support -mstack-protector-guard=global, so set that on everything except LOONGARCH64
+ DEFINE GCC_ALL_CC_FLAGS            = -g -Os -fshort-wchar -fno-builtin -fno-strict-aliasing -Wall -Werror -Wno-array-bounds -include AutoGen.h -fno-common -fstack-protector
+-DEFINE GCC_IA32_X64_CC_FLAGS       = -mstack-protector-guard=global
+-DEFINE GCC_ARM_CC_FLAGS            = DEF(GCC_ALL_CC_FLAGS) -mlittle-endian -mabi=aapcs -fno-short-enums -funsigned-char -ffunction-sections -fdata-sections -fomit-frame-pointer -Wno-address -mthumb -fno-pic -fno-pie -mstack-protector-guard=global
++# DEFINE GCC_IA32_X64_CC_FLAGS       = -mstack-protector-guard=global
++DEFINE GCC_ARM_CC_FLAGS            = DEF(GCC_ALL_CC_FLAGS) -mlittle-endian -mabi=aapcs -fno-short-enums -funsigned-char -ffunction-sections -fdata-sections -fomit-frame-pointer -Wno-address -mthumb -fno-pic -fno-pie
+ DEFINE GCC_LOONGARCH64_CC_FLAGS    = DEF(GCC_ALL_CC_FLAGS) -mabi=lp64d -fno-asynchronous-unwind-tables -Wno-address -fno-short-enums -fsigned-char -ffunction-sections -fdata-sections
+ DEFINE GCC_ARM_CC_XIPFLAGS         = -mno-unaligned-access
+-DEFINE GCC_AARCH64_CC_FLAGS        = DEF(GCC_ALL_CC_FLAGS) -mlittle-endian -fno-short-enums -fverbose-asm -funsigned-char  -ffunction-sections -fdata-sections -Wno-address -fno-asynchronous-unwind-tables -fno-unwind-tables -fno-pic -fno-pie -ffixed-x18 -mstack-protector-guard=global
++DEFINE GCC_AARCH64_CC_FLAGS        = DEF(GCC_ALL_CC_FLAGS) -mlittle-endian -fno-short-enums -fverbose-asm -funsigned-char  -ffunction-sections -fdata-sections -Wno-address -fno-asynchronous-unwind-tables -fno-unwind-tables -fno-pic -fno-pie -ffixed-x18
+ DEFINE GCC_AARCH64_CC_XIPFLAGS     = -mstrict-align -mgeneral-regs-only
+ DEFINE GCC_RISCV64_CC_XIPFLAGS     = -mstrict-align -mgeneral-regs-only
+ DEFINE GCC_DLINK2_FLAGS_COMMON     = -Wl,--script=$(EDK_TOOLS_PATH)/Scripts/GccBase.lds
+@@ -961,8 +961,8 @@ DEFINE GCC_DEPS_FLAGS              = -MMD -MF $@.deps
+ 
+ DEFINE GCC48_ALL_CC_FLAGS            = DEF(GCC_ALL_CC_FLAGS) -ffunction-sections -fdata-sections -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings
+ DEFINE GCC48_IA32_X64_DLINK_COMMON   = -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x20
+-DEFINE GCC48_IA32_CC_FLAGS           = DEF(GCC48_ALL_CC_FLAGS) DEF(GCC_IA32_X64_CC_FLAGS) -m32 -march=i586 -malign-double -D EFI32 -fno-asynchronous-unwind-tables -Wno-address -fno-omit-frame-pointer -fno-pic -fno-pie
+-DEFINE GCC48_X64_CC_FLAGS            = DEF(GCC48_ALL_CC_FLAGS) DEF(GCC_IA32_X64_CC_FLAGS) -m64 "-DEFIAPI=__attribute__((ms_abi))" -maccumulate-outgoing-args -mno-red-zone -Wno-address -mcmodel=small -fpie -fno-asynchronous-unwind-tables -Wno-address  -fno-omit-frame-pointer
++DEFINE GCC48_IA32_CC_FLAGS           = DEF(GCC48_ALL_CC_FLAGS) -m32 -march=i586 -malign-double -D EFI32 -fno-asynchronous-unwind-tables -Wno-address -fno-omit-frame-pointer -fno-pic -fno-pie
++DEFINE GCC48_X64_CC_FLAGS            = DEF(GCC48_ALL_CC_FLAGS) -m64 "-DEFIAPI=__attribute__((ms_abi))" -maccumulate-outgoing-args -mno-red-zone -Wno-address -mcmodel=small -fpie -fno-asynchronous-unwind-tables -Wno-address  -fno-omit-frame-pointer
+ DEFINE GCC48_IA32_X64_ASLDLINK_FLAGS = DEF(GCC48_IA32_X64_DLINK_COMMON) -Wl,--entry,ReferenceAcpiTable -u ReferenceAcpiTable
+ DEFINE GCC48_IA32_X64_DLINK_FLAGS    = DEF(GCC48_IA32_X64_DLINK_COMMON) -Wl,--entry,$(IMAGE_ENTRY_POINT) -u $(IMAGE_ENTRY_POINT) -Wl,-Map,$(DEST_DIR_DEBUG)/$(BASE_NAME).map,--whole-archive
+ DEFINE GCC48_IA32_DLINK2_FLAGS       = -Wl,--defsym=PECOFF_HEADER_SIZE=0x220 DEF(GCC_DLINK2_FLAGS_COMMON)
+-- 
+2.43.0
+

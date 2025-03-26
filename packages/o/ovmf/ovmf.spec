@@ -18,7 +18,7 @@
 
 
 %undefine _build_create_debug
-%global openssl_version 3.0.15
+%global openssl_version 3.4.1
 %global softfloat_version b64af41c3276f
 %if 0%{?suse_version} < 1599
 %bcond_with build_riscv64
@@ -27,7 +27,7 @@
 %endif
 
 Name:           ovmf
-Version:        202411
+Version:        202502
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -42,8 +42,7 @@ Source114:      descriptors.tar.xz.README
 Source2:        README
 Source3:        SLES-UEFI-CA-Certificate-2048.crt
 Source4:        openSUSE-UEFI-CA-Certificate-2048.crt
-# berkeley-softfloat-3: https://github.com/ucb-bar/berkeley-softfloat-3
-Source6:        berkeley-softfloat-3-%{softfloat_version}.tar.xz
+
 Source7:        descriptors.tar.xz
 # oniguruma: https://github.com/kkos/oniguruma,  "src" directory only
 Source8:        oniguruma-v6.9.4_mark1-src.tar.xz
@@ -70,13 +69,14 @@ Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.pat
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
 Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
 # Bug 1236009 - Build failure on Leap 15.5/15.6 due to unsupported GCC flag -mstack-protector-guard for aarch64 cross-compiler
-Patch10:        %{name}-Revert-Add-Stack-Cookie-Support-to-MSVC-and-GCC.patch
-
+Patch10:        %{name}-Remove-unsupported-GCC-flag-mstack-protector-guard.patch
 %ifarch x86_64
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} <= 150700
 Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
 %endif
 %endif
+Patch12:        %{name}-Increase-FVMAIN-Size-for-Compatibility-with-2MB-Size.patch
+
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -217,11 +217,6 @@ rm -rf $PKG_TO_REMOVE
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
 tar -xf %{SOURCE1} --strip 1
-popd
-
-# add berkeley-softfloat-3
-pushd ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3
-tar -xf %{SOURCE6} --strip 1
 popd
 
 # prepare the firmware descriptors for qemu

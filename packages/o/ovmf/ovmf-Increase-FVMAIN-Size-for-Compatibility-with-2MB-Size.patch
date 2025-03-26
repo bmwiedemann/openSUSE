@@ -1,0 +1,39 @@
+From 95dec3e148d6ac27fc19e5a5c2396a3c3cf01633 Mon Sep 17 00:00:00 2001
+From: Richard Lyu <richard.lyu@suse.com>
+Date: Mon, 17 Mar 2025 12:07:48 +0800
+Subject: [PATCH] Increase FVMAIN Size for Compatibility with 2MB Size Limit
+
+In edk2-stable202502, the increase in code space caused an increase in
+size, leading to build failures for OVMF under the 2MB size limit due
+to insufficient space, because FVMAIN_COMPACT had insufficient space.
+
+This patch adjusts the memory layout by reducing SEVFV size by 0x10000,
+as its usage is below 50%, and reallocates the freed 0x10000 space to
+FVMAIN_COMPACT. This ensures sufficient space to accommodate all code
+within the FD_SIZE_2MB.
+
+Signed-off-by: Richard Lyu <richard.lyu@suse.com>
+---
+ OvmfPkg/Include/Fdf/OvmfPkgDefines.fdf.inc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/OvmfPkg/Include/Fdf/OvmfPkgDefines.fdf.inc b/OvmfPkg/Include/Fdf/OvmfPkgDefines.fdf.inc
+index 6170c5993c..e2543a1535 100644
+--- a/OvmfPkg/Include/Fdf/OvmfPkgDefines.fdf.inc
++++ b/OvmfPkg/Include/Fdf/OvmfPkgDefines.fdf.inc
+@@ -45,9 +45,9 @@ DEFINE FW_BLOCKS         = 0x200
+ DEFINE CODE_BASE_ADDRESS = 0xFFE20000
+ DEFINE CODE_SIZE         = 0x001E0000
+ DEFINE CODE_BLOCKS       = 0x1E0
+-DEFINE FVMAIN_SIZE       = 0x001AC000
+-DEFINE SECFV_OFFSET      = 0x001CC000
+-DEFINE SECFV_SIZE        = 0x34000
++DEFINE FVMAIN_SIZE       = 0x001BC000
++DEFINE SECFV_OFFSET      = 0x001DC000
++DEFINE SECFV_SIZE        = 0x24000
+ !endif
+ 
+ !if $(FD_SIZE_IN_KB) == 4096
+-- 
+2.43.0
+

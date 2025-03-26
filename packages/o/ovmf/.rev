@@ -902,4 +902,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1240486</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>13822c8d3b2aab5582959fe1beaed037</srcmd5>
+    <version>202502</version>
+    <time>1743020181</time>
+    <user>anag+factory</user>
+    <comment>Update to edk2-stable202502</comment>
+    <requestid>1255591</requestid>
+  </revision>
 </revisionlist>
