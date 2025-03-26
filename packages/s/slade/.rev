@@ -136,4 +136,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1234416</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>06424fbb712d2a1f09f7e2b7f005eb61</srcmd5>
+    <version>3.2.7</version>
+    <time>1743020681</time>
+    <user>anag+factory</user>
+    <comment>- Switch to wxGTK3 backend</comment>
+    <requestid>1256275</requestid>
+  </revision>
 </revisionlist>

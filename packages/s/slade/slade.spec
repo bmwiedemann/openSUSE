@@ -1,7 +1,7 @@
 #
 # spec file for package slade
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildRequires:  gcc-c++ >= 8
 BuildRequires:  pkg-config
 BuildRequires:  strip-nondeterminism
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-devel
+BuildRequires:  wxGTK3-devel
 BuildRequires:  zip
 BuildRequires:  pkgconfig(clzma)
 BuildRequires:  pkgconfig(fluidsynth)
@@ -48,7 +48,7 @@ BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(sfml-all)
 BuildRequires:  pkgconfig(x11)
 %if 0%{?suse_version} >= 1600
-BuildRequires:  fmt-10-devel
+BuildRequires:  fmt-devel
 %else
 Provides:       bundled(fmt) = 10
 %endif
