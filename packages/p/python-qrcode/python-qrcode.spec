@@ -24,20 +24,17 @@ Summary:        QR Code image generator
 License:        BSD-3-Clause
 URL:            https://github.com/lincolnloop/python-qrcode
 Source:         %{url}/archive/v%{version}.tar.gz#/qrcode-%{version}.tar.gz
-BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module Pillow >= 9.1.0}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pypng}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-extensions}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pillow
-Requires:       python-pypng
-Requires:       python-setuptools
-Requires:       python-typing-extensions
+Recommends:     python-Pillow >= 9.1.0
+Recommends:     python-pypng
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
