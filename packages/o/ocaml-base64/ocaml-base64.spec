@@ -21,10 +21,13 @@
 %if "%build_flavor" == "testsuite"
 %if %{without ocaml_base64_testsuite}
 ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
 %define nsuffix %nil
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 
 %define     pkg ocaml-base64
@@ -40,8 +43,6 @@ Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.3
 BuildRequires:  ocaml-rpm-macros >= 20230101
-%if 1
-%endif
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(alcotest)

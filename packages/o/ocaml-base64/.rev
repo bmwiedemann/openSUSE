@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1071155</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>248a2778eabe363c05f8c766e39ce05a</srcmd5>
+    <version>3.5.1</version>
+    <time>1743020636</time>
+    <user>anag+factory</user>
+    <comment>- allow only 64bit to follow other packages</comment>
+    <requestid>1256253</requestid>
+  </revision>
 </revisionlist>
