@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 21 01:44:59 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS on cmake4
+
+-------------------------------------------------------------------
 Fri Dec 20 06:07:43 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.5.0:
@@ -7,7 +12,7 @@ Fri Dec 20 06:07:43 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
   * Bug fix for case of bit column output in string format on
     clang compilers with high optimization.
   * Added compiler macro support to improve builds on loongarch64
-    and on Gnu/Hurd kernels. 
+    and on Gnu/Hurd kernels.
   * Bug fix to fitsverify utility.
 - Drop upstreamed patches:
   * cfitsio-cmake-allow-user-specified-incdir.patch

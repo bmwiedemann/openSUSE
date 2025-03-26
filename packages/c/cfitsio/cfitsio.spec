@@ -1,7 +1,7 @@
 #
 # spec file for package cfitsio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            https://heasarc.gsfc.nasa.gov/fitsio/
 Source0:        https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM cfitsio-cmake-devel-scripts-destination.patch badshah400@gmail.com -- Fix installation dir for pkgconfig and cmake scripts
 Patch1:         cfitsio-cmake-devel-scripts-destination.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  ninja
@@ -89,6 +89,7 @@ in FITS files.
   -DUSE_BZIP2=ON \
   -DTESTS=ON \
   -DUTILS=ON \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 %ifarch x86_64
   -DUSE_SSE2=ON \
 %endif
