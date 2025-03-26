@@ -23,12 +23,11 @@ Version:        0.1.3
 Release:        0
 Summary:        The SoX Resampler library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Url:            http://soxr.sourceforge.net/
 Source:         http://downloads.sf.net/%{name}/%{name}-%{version}-Source.tar.xz#/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc
 BuildRequires:  pkg-config
 
@@ -39,7 +38,6 @@ audio.
 
 %package -n %{lname}
 Summary:        The SoX Resampler library
-Group:          System/Libraries
 
 %description -n %{lname}
 The SoX Resampler library performs one-dimensional sample-rate
@@ -48,14 +46,12 @@ audio.
 
 %package -n %{lname_lsr}
 Summary:        Compatibility layer with libsamplerate
-Group:          System/Libraries
 
 %description -n %{lname_lsr}
 soxr libsamplerate API compatibility layer (to some extent).
 
 %package devel
 Summary:        Development files of soxr
-Group:          Development/Libraries/C and C++
 Requires:       %{lname_lsr} = %{version}
 Requires:       %{lname} = %{version}
 
@@ -74,11 +70,15 @@ application which will use libsoxr/libsoxr-lsr.
 %endif
 
 %cmake \
-  -DDOC_INSTALL_DIR=%{_docdir}/%{name}
+  -DDOC_INSTALL_DIR=%{_docdir}/%{name} \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %post -n %{lname} -p /sbin/ldconfig
 
