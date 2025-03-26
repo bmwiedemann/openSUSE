@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-vfs2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,39 +18,39 @@
 
 %global base_name vfs2
 %global short_name commons-%{base_name}
-%bcond_with tests
-%bcond_with hadoop
-%bcond_without ftp
+%bcond_with cifs
+%bcond_with mina
 %bcond_without ssh
 Name:           apache-%{short_name}
-Version:        2.2
+Version:        2.10.0
 Release:        0
 Summary:        Commons Virtual File System
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/vfs/
-Source0:        https://archive.apache.org/dist/commons/vfs/source/%{short_name}-distribution-%{version}-src.tar.gz
+Source0:        https://archive.apache.org/dist/commons/vfs/source/commons-vfs-%{version}-src.tar.gz
 Source1:        %{short_name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  apache-commons-collections4
 BuildRequires:  apache-commons-compress
 BuildRequires:  apache-commons-httpclient
+BuildRequires:  apache-commons-io
+BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-logging
 BuildRequires:  apache-commons-net > 2
 BuildRequires:  fdupes
+BuildRequires:  httpcomponents-client
+BuildRequires:  httpcomponents-core
 BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
-%if %{with hadoop}
-BuildRequires:  mvn(org.apache.hadoop:hadoop-common)
-BuildRequires:  mvn(org.apache.hadoop:hadoop-hdfs)
+%if %{with cifs}
+BuildRequires:  jcifs
+%endif
+%if %{with mina}
+BuildRequires:  mvn(org.apache.mina:mina-core)
 %endif
 %if %{with ssh}
 BuildRequires:  jsch
-%endif
-%if %{with ftp}
-%if %{with tests}
-BuildRequires:  mvn(org.apache.ftpserver:ftpserver-core)
-%endif
 %endif
 
 %description
@@ -98,64 +98,58 @@ This package contains javadoc for %{name}.
 %prep
 %setup -q -n commons-vfs-%{version} -a1
 
-# Convert from dos to unix line ending
-for file in LICENSE.txt NOTICE.txt README.txt RELEASE-NOTES.txt; do
- sed -i.orig 's|\r||g' $file
- touch -r $file.orig $file
- rm $file.orig
-done
-
 # Disable unwanted module
 %pom_disable_module commons-vfs2-distribution
 
 # Fix ant gId
 %pom_change_dep -r :ant org.apache.ant:
-# Upadate bouncycastle aId
-%pom_change_dep -r :bcprov-jdk16 :bcprov-jdk15on
 
-# Remove unwanted dependency jackrabbit-{standalone,webdav}
+# Remove webdav client
 %pom_remove_dep -r org.apache.jackrabbit:
+%pom_disable_module commons-vfs2-jackrabbit1
+%pom_disable_module commons-vfs2-jackrabbit2
 
-rm -rf commons-vfs2/src/{main,test}/java/org/apache/commons/vfs2/provider/webdav
+# Remove http5 client
+%pom_remove_dep -r org.apache.httpcomponents.client5:httpclient5
+rm -r commons-vfs2/src/{main,test}/java/org/apache/commons/vfs2/provider/http5
+rm -r commons-vfs2/src/{main,test}/java/org/apache/commons/vfs2/provider/http5s
 
-# Use old version of sshd-core
-%pom_remove_dep -r :sshd-core
-
-# hadoop has been retired
-%if %{without hadoop}
-%pom_remove_dep -r org.apache.hadoop
-rm -r commons-vfs2/src/{main,test}/java/org/apache/commons/vfs2/provider/hdfs
-%endif
-
-# not really needed
-%pom_remove_plugin :maven-checkstyle-plugin
-%pom_remove_plugin :findbugs-maven-plugin
-
-%if %{without ssh}
-%pom_remove_dep -r :jsch
-rm -r commons-vfs2/src/{main,test}/java/org/apache/commons/vfs2/provider/sftp
-rm commons-vfs2-examples/src/main/java/org/apache/commons/vfs2/libcheck/SftpCheck.java
-%endif
-
+# ftpserver is not available
 %if %{without ftp}
 %pom_remove_dep -r :ftpserver-core
 rm -r commons-vfs2/src/{main,test}/java/org/apache/commons/vfs2/provider/ftps
 %endif
 
+# jcifs not packaged and also export controlled in the US
+%if %{without cifs}
+%pom_remove_dep :jcifs
+%endif
+
+# mina is not available
+%if %{without mina}
+%pom_remove_dep :mina-core
+%endif
+
 %build
 mkdir -p lib
-build-jar-repository -s lib ant commons-httpclient commons-logging commons-compress commons-collections4 commons-net
-%if %{with hadoop}
-build-jar-repository -s lib hadoop/common hadoop/hdfs
-%endif
+build-jar-repository -s lib \
+  ant \
+  commons-collections4 \
+  commons-compress \
+  commons-httpclient \
+  commons-io \
+  commons-lang3 \
+  commons-logging \
+  commons-net \
+  httpcomponents/httpclient \
+  httpcomponents/httpcore
 %if %{with ssh}
-build-jar-repository -s lib jsch
+build-jar-repository -s lib \
+  jsch
 %endif
 
 ant \
-%if %{without tests}
   -Dtest.skip=true \
-%endif
   package javadoc
 
 %install
@@ -182,7 +176,7 @@ echo "ant commons-logging commons-vfs" > commons-vfs
 install -p -m 644 commons-vfs %{buildroot}%{_sysconfdir}/ant.d/commons-vfs
 
 %files -f .mfiles
-%doc README.txt RELEASE-NOTES.txt
+%doc README.md RELEASE-NOTES.txt
 %license LICENSE.txt NOTICE.txt
 %{_javadir}/%{name}.jar
 

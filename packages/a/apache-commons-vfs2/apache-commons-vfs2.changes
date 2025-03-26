@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 25 11:15:55 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.10.0
+  * Fixes bsc#1239973, CVE-2025-27553: Possible path traversal
+    issue when using NameScope.DESCENDENT
+  * Fixes bsc#1239974, CVE-2025-30474: Failing to find an FTP file
+    can reveal the URI's password in an error message
+  * For detailed list of all changes, see RELEASE-NOTES.txt file
+    distributed with the package
+
+-------------------------------------------------------------------
 Wed Oct  2 15:33:47 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Spec file cleanup

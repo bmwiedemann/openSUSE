@@ -23,4 +23,12 @@
     <comment>Spec file cleanup</comment>
     <requestid>1205239</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ad8727cf5379301b9e30771fcee5d470</srcmd5>
+    <version>2.10.0</version>
+    <time>1743020283</time>
+    <user>anag+factory</user>
+    <comment>bsc#1239973, CVE-2025-27553 and bsc#1239974, CVE-2025-30474</comment>
+    <requestid>1255928</requestid>
+  </revision>
 </revisionlist>
