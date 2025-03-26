@@ -183,4 +183,13 @@
     <comment>KDE release gear 24.12.3 (forwarded request 1250391 from krop)</comment>
     <requestid>1250850</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>264249d24a0ef4628e80d40e1d07078d</srcmd5>
+    <version>24.12.3</version>
+    <time>1743020444</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream fix:
+  * 0001-AlarmForm-create-duration-and-snooze-models-correctl.patch</comment>
+    <requestid>1256132</requestid>
+  </revision>
 </revisionlist>
