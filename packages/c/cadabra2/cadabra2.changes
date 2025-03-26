@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 26 07:10:51 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop no longer needed pcre-devel dependency.
+
+-------------------------------------------------------------------
 Mon Mar  3 09:03:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.10:

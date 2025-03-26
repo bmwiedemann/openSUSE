@@ -60,7 +60,6 @@ BuildRequires:  libboost_python3-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libuuid-devel
-BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(gtk+-3.0)
