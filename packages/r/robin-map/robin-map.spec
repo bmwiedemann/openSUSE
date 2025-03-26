@@ -23,7 +23,7 @@ Summary:        C++ implementation of a fast hash map and hash set using robin h
 License:        MIT
 URL:            https://github.com/Tessil/robin-map
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildArch:      noarch
 
@@ -61,10 +61,13 @@ implementations in the tsl namespace).
 chmod 0644 %{SOURCE0}
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files devel
 %license LICENSE
