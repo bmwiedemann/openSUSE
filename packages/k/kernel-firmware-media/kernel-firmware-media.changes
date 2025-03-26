@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 25 07:22:29 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Fix a typo in download URL
+
+-------------------------------------------------------------------
+Sat Mar 22 08:49:37 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Correct aliases with comma (bsc#1239877)
+- Update spec to make kernel-firmware-tools downloadable
+
+-------------------------------------------------------------------
 Tue Feb 11 09:26:37 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix license description for kernel-firmware-tools package
