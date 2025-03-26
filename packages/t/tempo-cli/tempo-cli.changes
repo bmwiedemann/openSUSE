@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 25 20:38:07 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.7.2:
+  * Bugfixes
+    - [BUGFIX] Fix rare panic that occurred when a querier modified
+      results from ingesters/generators while they were being
+      marshalled to proto. #4790 (@joe-elliott)
+    - This bug also impacted query correctness on recent trace data
+      by returning incomplete results before they were ready.
+
+-------------------------------------------------------------------
 Sun Feb 16 10:00:10 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.7.1:
