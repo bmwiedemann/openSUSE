@@ -1,9 +1,9 @@
-btusb: of:N*T*Cusb1286,204e
-btusb: of:N*T*Cusb1286,204eC*
-btusb: of:N*T*Cusb4ca,301a
-btusb: of:N*T*Cusb4ca,301aC*
-btusb: of:N*T*Cusbcf3,e300
-btusb: of:N*T*Cusbcf3,e300C*
+btusb: of:N*T*Cusb1286%2C204e
+btusb: of:N*T*Cusb1286%2C204eC*
+btusb: of:N*T*Cusb4ca%2C301a
+btusb: of:N*T*Cusb4ca%2C301aC*
+btusb: of:N*T*Cusbcf3%2Ce300
+btusb: of:N*T*Cusbcf3%2Ce300C*
 btusb: usb:v*p*d*dc*dsc*dp*icE0isc01ip01in*
 btusb: usb:v*p*d*dcE0dsc01dp01ic*isc*ip*in*
 btusb: usb:v*p*d*dcE0dsc01dp04ic*isc*ip*in*

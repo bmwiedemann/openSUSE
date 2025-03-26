@@ -47,4 +47,15 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment></comment>
     <requestid>1254165</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5ff9b8fe1a20ec6b448076092e9f5d42</srcmd5>
+    <version>20250318</version>
+    <time>1743020229</time>
+    <user>anag+factory</user>
+    <comment>- Fix a typo in download URL
+
+- Correct aliases with comma (bsc#1239877)
+- Update spec to make kernel-firmware-tools downloadable</comment>
+    <requestid>1255831</requestid>
+  </revision>
 </revisionlist>

@@ -30,8 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250318.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250325.tar.gz#/kernel-firmware-tools-20250325.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -48,12 +47,12 @@ BuildArch:      noarch
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
-Supplements:    modalias(of:N*T*Cusb1286,204e)
-Supplements:    modalias(of:N*T*Cusb1286,204eC*)
-Supplements:    modalias(of:N*T*Cusb4ca,301a)
-Supplements:    modalias(of:N*T*Cusb4ca,301aC*)
-Supplements:    modalias(of:N*T*Cusbcf3,e300)
-Supplements:    modalias(of:N*T*Cusbcf3,e300C*)
+Supplements:    modalias(of:N*T*Cusb1286%2C204e)
+Supplements:    modalias(of:N*T*Cusb1286%2C204eC*)
+Supplements:    modalias(of:N*T*Cusb4ca%2C301a)
+Supplements:    modalias(of:N*T*Cusb4ca%2C301aC*)
+Supplements:    modalias(of:N*T*Cusbcf3%2Ce300)
+Supplements:    modalias(of:N*T*Cusbcf3%2Ce300C*)
 Supplements:    modalias(usb:v*p*d*dc*dsc*dp*icE0isc01ip01in*)
 Supplements:    modalias(usb:v*p*d*dcE0dsc01dp01ic*isc*ip*in*)
 Supplements:    modalias(usb:v*p*d*dcE0dsc01dp04ic*isc*ip*in*)
@@ -90,7 +89,8 @@ Supplements:    modalias(usb:v8087p0A5Ad*dc*dsc*dp*ic*isc*ip*in*)
 This package contains kernel firmware files for various Bluetooth drivers.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh bluetooth < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE
