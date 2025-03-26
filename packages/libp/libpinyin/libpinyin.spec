@@ -1,7 +1,7 @@
 #
 # spec file for package libpinyin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define sover 15
-
 Name:           libpinyin
-Version:        2.8.1
+Version:        2.10.1
 Release:        0
 Summary:        Intelligent Pinyin IME
 License:        GPL-3.0-or-later
@@ -117,7 +116,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}/%{_prefix}
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
@@ -125,21 +124,17 @@ make %{?_smp_mflags} check
 %postun -n libzhuyin%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
-%defattr(-,root,root)
 %{_libdir}/%{name}.so.*
 
 %files -n libzhuyin%{sover}
-%defattr(-,root,root)
 %{_libdir}/libzhuyin.so.*
 
 %files data
-%defattr(-,root,root)
 %doc ChangeLog AUTHORS README NEWS
 %license COPYING
 %{_libdir}/%{name}
 
 %files tools
-%defattr(-,root,root)
 %doc ChangeLog AUTHORS README NEWS
 %license COPYING
 %{_bindir}/gen_binary_files
@@ -147,7 +142,6 @@ make %{?_smp_mflags} check
 %{_bindir}/import_interpolation
 
 %files devel
-%defattr(-,root,root)
 %doc ChangeLog AUTHORS README NEWS
 %license COPYING
 %{_includedir}/%{name}-*/
@@ -155,6 +149,6 @@ make %{?_smp_mflags} check
 %{_libdir}/libzhuyin.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/pkgconfig/libzhuyin.pc
-%{_mandir}/man1/libpinyin.1%{ext_man}
+%{_mandir}/man1/libpinyin.1%{?ext_man}
 
 %changelog
