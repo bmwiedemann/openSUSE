@@ -16,37 +16,25 @@
 #
 
 
-%define build_flavor @BUILD_FLAVOR@%nil
-%if "%build_flavor" == "testsuite"
-%define nsuffix -testsuite
-%else
-%define nsuffix %nil
-%endif
-
-%define     pkg ocaml-swhid_core
-Name:           %pkg%nsuffix
+Name:           ocaml-swhid_core
 Version:        0.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        library to work with swhids
 License:        ISC
-Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/swhid_core
-Source0:        %pkg-%version.tar.xz
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20231101
 
-%if "%build_flavor" == "testsuite"
-BuildRequires:  ocamlfind(swhid_core)
-%endif
 %description
 swhid_core is an OCaml library to with with Software Heritage
 persistent identifiers (swhids).
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
 Requires:       %name = %version
 
 %description    devel
@@ -54,32 +42,22 @@ The %name-devel package contains libraries and signature files for
 developing applications that use %name.
 
 %prep
-%autosetup -p1 -n %pkg-%version
+%autosetup -p1
 
 %build
 dune_release_pkgs='swhid_core'
 %ocaml_dune_setup
-%if "%build_flavor" == ""
 %ocaml_dune_build
-%endif
 
 %install
-%if "%build_flavor" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
-%endif
 
-%if "%build_flavor" == "testsuite"
 %check
 %ocaml_dune_test
-%endif
 
-%if "%build_flavor" == ""
 %files -f %name.files
-%doc README.md
 
 %files devel -f %name.files.devel
-
-%endif
 
 %changelog

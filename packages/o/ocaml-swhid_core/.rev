@@ -7,4 +7,12 @@
     <comment>new dependency for opam</comment>
     <requestid>1249862</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2eefc7c1f38edd4bb44d395e01a48b2d</srcmd5>
+    <version>0.1</version>
+    <time>1743020651</time>
+    <user>anag+factory</user>
+    <comment>- Relax ocaml-rpm-macros requirement</comment>
+    <requestid>1256262</requestid>
+  </revision>
 </revisionlist>
