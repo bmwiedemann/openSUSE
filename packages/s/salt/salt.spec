@@ -55,7 +55,11 @@
 %define service_del_preun echo %{*}
 %endif
 
+%if 0%{?sle_version} >= 150700
+%{?sle15_python_module_pythons}
+%else
 %{?sle15allpythons}
+%endif
 %define skip_python2 1
 %if 0%{?rhel} == 8 || (0%{?suse_version} == 1500 && 0%{?sle_version} < 150400)
 %define singlespec_compat 1
@@ -557,6 +561,11 @@ Requires:       python3-%{name} = %{version}-%{release}
 %endif
 Obsoletes:      python2-%{name}
 
+# The "salt" package obsoletes "python3-salt" in SLE15SP7+
+%if 0%{?sle_version} >= 150700
+Obsoletes:      python3-%{name}
+%endif
+
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 Provides:       user(salt)
@@ -789,7 +798,16 @@ Requires:       iputils
 Requires:       sudo
 Requires:       file
 Recommends:     man
+%if 0%{?rhel} || 0%{?fedora}
 Recommends:     python3-passlib
+%endif
+%if 0%{?suse_version}
+%if 0%{?singlespec_compat}
+Recommends:     %{python_module passlib}
+%else
+Recommends:     python-passlib
+%endif
+%endif
 
 %if 0%{?singlespec_compat}
 Provides:       bundled(%{python_module tornado}) = 4.5.3
@@ -1606,7 +1624,6 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %config(noreplace) %attr(0640, root, salt) %{_sysconfdir}/salt/cloud.profiles
 %config(noreplace) %attr(0640, root, salt) %{_sysconfdir}/salt/cloud.providers
 %dir               %attr(0750, root, salt) %{_localstatedir}/cache/salt/cloud
-%attr(755,root,root)%{python3_sitelib}/salt/cloud/deploy/bootstrap-salt.sh
 %{_mandir}/man1/salt-cloud.1.*
 
 %files ssh
@@ -1754,7 +1771,6 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %dir %{python_sitelib}/salt-*.egg-info
 %{python_sitelib}/salt/*
 %{python_sitelib}/salt-*.egg-info/*
-%exclude %{python_sitelib}/salt/cloud/deploy/*.sh
 
 %if %{with docs}
 %files doc

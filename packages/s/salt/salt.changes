@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 25 10:17:35 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Make "salt" package to obsolete "python3-salt" package on SLE15SP7+ 
+- Fix issue requiring proper Python flavor for dependencies
+  and recommended package.
+- Do not build "python3-salt" anymore for SLE15SP7+ 
+
+-------------------------------------------------------------------
 Wed Mar 12 13:38:35 UTC 2025 - Marek Czernek <marek.czernek@suse.com>
 
 - Fix aptpkg 'NoneType object has no attribute split' error
