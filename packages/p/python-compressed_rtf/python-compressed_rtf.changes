@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 25 19:16:40 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.7
+  * Fix: resolve circular import in setup.py.
+  * Fix url.
+- Add patch:
+   * 0001-fix-pyproject.toml-license-format.patch
+
+-------------------------------------------------------------------
 Tue Sep 24 19:10:37 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Enable sle15_python_module_pythons. 

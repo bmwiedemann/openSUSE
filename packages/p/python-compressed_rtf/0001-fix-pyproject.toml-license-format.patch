@@ -1,0 +1,25 @@
+From b241c705251b245257ad2c8bdd99cecf0c1d731f Mon Sep 17 00:00:00 2001
+From: Stuart Henderson <sthen@users.noreply.github.com>
+Date: Tue, 25 Mar 2025 16:34:36 +0000
+Subject: [PATCH] fix pyproject.toml license format
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index d6728d3..0659e91 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -7,7 +7,7 @@ name = "compressed-rtf"
+ dynamic = ["version"]
+ description = "Compressed Rich Text Format (RTF) compression and decompression package"
+ readme = "README.md"
+-license = "MIT"
++license = {text = "MIT"}
+ authors = [
+     { name = "Dmitry Alimov" },
+ ]
+-- 
+2.49.0
+

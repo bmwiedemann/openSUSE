@@ -1,14 +1,14 @@
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/delimitry/compressed_rtf.git</param>
     <param name="scm">git</param>
-    <param name="revision">ad93a504ca6a09aff9561eac586ff6d91861d147</param>
-    <param name="versionformat">1.0.6</param>
-    <param name="changesgenerate">enable</param>
+    <param name="revision">1.0.7</param>
+    <param name="versionformat">1.0.7</param>
+    <param name="changesgenerate">disable</param>
   </service>
-  <service mode="disabled" name="recompress">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
 </services>
