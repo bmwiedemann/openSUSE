@@ -220,6 +220,11 @@ Patch1222040:   u_mesa-CVE-2023-45913-s390x.patch
 Patch1222041:   u_mesa-CVE-2023-45919.patch
 Patch1222042:   u_mesa-CVE-2023-45922.patch
 
+# Reverts a possible regression
+# https://gitlab.freedesktop.org/mesa/mesa/-/commit/8c91624614c1f939974fe0d2d1a3baf83335cecb
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1239657
+Patch2000000:   revert_8c91624614c1f939974fe0d2d1a3baf83335cecb.patch
+
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers >= 1.613.0
 %endif
@@ -902,6 +907,7 @@ cp %{SOURCE6} subprojects/packagecache/
 %patch -P 1222040 -p1
 %patch -P 1222041 -p1
 %patch -P 1222042 -p1
+%patch -P 2000000 -p1
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
 %if 0%{?with_vulkan} == 0

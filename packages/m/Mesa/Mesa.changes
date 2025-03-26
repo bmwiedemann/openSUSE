@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 25 09:07:24 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Fix regression in winsys/amdgpu (boo#1239657)
+  revert_8c91624614c1f939974fe0d2d1a3baf83335cecb.patch
+  https://gitlab.freedesktop.org/mesa/mesa/-/issues/12809
+  https://gitlab.freedesktop.org/mesa/mesa/-/commit/8c91624614c1f939974fe0d2d1a3baf83335cecb
+
+-------------------------------------------------------------------
 Thu Mar 20 15:10:52 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 25.0.2
