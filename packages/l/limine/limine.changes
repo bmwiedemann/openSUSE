@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 25 23:35:00 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 9.2.1:
+  * Fix potential buffer overflow bug with stb_image support code.
+  * Print the name of unresolved symbols on panic.
+  * Dynamically allocate volume index instead of relying on a hard coded
+    limit and a fixed allocation.
+
+-------------------------------------------------------------------
 Thu Mar 20 15:41:42 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Correct docdir install location 
