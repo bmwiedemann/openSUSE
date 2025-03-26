@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 18 08:33:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.1
+  * CrossProcess lock -- don't unlock, just close fd by @TingDaoK in (#1192)
+
+-------------------------------------------------------------------
 Fri Mar 14 08:58:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.12.0
