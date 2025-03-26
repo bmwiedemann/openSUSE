@@ -1,0 +1,11 @@
+diff -ubr isocline-1.0.9-orig/isocline.cabal isocline-1.0.9-new/isocline.cabal
+--- isocline-1.0.9-orig/isocline.cabal	2001-09-09 03:46:40.000000000 +0200
++++ isocline-1.0.9-new/isocline.cabal	2025-03-26 13:27:09.711020761 +0100
+@@ -72,6 +72,7 @@
+   default-language: Haskell2010
+ 
+ executable example
++  buildable: False
+   main-is: Example.hs
+   other-modules:
+       Paths_isocline

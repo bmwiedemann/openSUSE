@@ -1,5 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 26 12:30:46 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Apply "dont-install-example-exe.patch" to disable installing
+  the "example" executable from this package.
+
+-------------------------------------------------------------------
 Sun Jan 16 01:39:27 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Add isocline at version 1.0.9.
-

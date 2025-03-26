@@ -26,6 +26,7 @@ Summary:        A portable alternative to GNU Readline
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Patch01:        dont-install-example-exe.patch
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
@@ -93,7 +94,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %files -f %{name}.files
 %license LICENSE
-%{_bindir}/example
 
 %files devel -f %{name}-devel.files
 
