@@ -344,4 +344,12 @@
 - Readd compat symlink of rebootmgrctl for tukit</comment>
     <requestid>1245720</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>954bfbd4582ab7687822b266263c8587</srcmd5>
+    <version>3.2+git20250317.27192cc</version>
+    <time>1743020201</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1255659</requestid>
+  </revision>
 </revisionlist>

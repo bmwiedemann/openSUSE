@@ -17,7 +17,7 @@
 
 
 Name:           rebootmgr
-Version:        3.2+git20250213.bff65b1
+Version:        3.2+git20250317.27192cc
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later
