@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 18 08:24:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.31.1
+  * Fix ARM-based CI steps by @DmitriyMusatkin in (#713)
+  * HTTP/1: Support streaming requests of unknown length
+    by @graebm in (#714)
+
+-------------------------------------------------------------------
 Thu Feb 27 12:24:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.31.0

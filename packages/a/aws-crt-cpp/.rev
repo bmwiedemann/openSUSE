@@ -207,4 +207,12 @@
 - Run %ldconfig_scriptlets in %install section</comment>
     <requestid>1250050</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c89fc9651228128051634b1ee0312bc7</srcmd5>
+    <version>0.31.1</version>
+    <time>1743020584</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1256217</requestid>
+  </revision>
 </revisionlist>
