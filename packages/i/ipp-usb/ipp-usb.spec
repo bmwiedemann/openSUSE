@@ -18,7 +18,7 @@
 
 %define         import_path github.com/OpenPrinting/ipp-usb
 Name:           ipp-usb
-Version:        0.9.29
+Version:        0.9.30
 Release:        0
 Summary:        HTTP reverse proxy, backed by IPP-over-USB connection to device
 License:        BSD-2-Clause

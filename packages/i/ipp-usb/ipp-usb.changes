@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 17 22:22:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.9.30:
+  * Ensure printer-uri Adheres to RFC 3510 – Must Start with "ipp:" Scheme
+  * added quirks file to make Brother QL-810W work properly
+  * correct typo in TestAddPDL error message
+  * Fix typo extected to expected
+  * Added "usb-send-delay" quirk
+  * Fixed possibly panic on certain error conditions
+  * Name QuirkNmUsbSendDelay consistent with QuirkNmUsbMaxInterfaces
+  * More refactoring around QuirkNmUsbSendDelay
+  * usb-send-delay quirk documented
+  * Added the usb-send-delay-threshold quirk
+  * Fixed typo in usb-send-delay-threshold on the man page
+  * Cosmetic (removed stalled, now meaningless comment)
+  * Added quirks for HP X677
+  * Add rockcraft support for ipp-usb
+  * Cosmetic (removed the blank line from the ..gitignore file)
+
+-------------------------------------------------------------------
 Fri Feb 28 23:00:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.9.29:

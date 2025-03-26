@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/OpenPrinting/ipp-usb.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/0.9.29</param>
+    <param name="revision">refs/tags/0.9.30</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service name="tar" mode="buildtime" />
