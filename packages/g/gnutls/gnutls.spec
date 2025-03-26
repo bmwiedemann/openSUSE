@@ -73,6 +73,10 @@ Patch103:       gnutls-FIPS-jitterentropy-deinit-threads.patch
 %endif
 Patch104:       gnutls-set-cligen-python-interp.patch
 Patch105:       gnutls-skip-pqx-test.patch
+Patch106:       gnutls-fips-sonames-check.patch
+# PATCH-FIX-SUSE jsc#jsc#PED-12224 FIPS: Mark SHA1 as unapproved in the SLI
+Patch107:       gnutls-FIPS-disable-mac-sha1.patch
+
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
