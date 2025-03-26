@@ -590,4 +590,12 @@
     <comment>- drop unmaintained apache-rex usage</comment>
     <requestid>1181894</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2c5f093f5349efb0e0c4141abb068791</srcmd5>
+    <version>5.0.2</version>
+    <time>1743020530</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1256210</requestid>
+  </revision>
 </revisionlist>
