@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           python-linux-procfs
 Version:        0.7.3
 Release:        0
@@ -29,8 +35,13 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -38,7 +49,7 @@ BuildArch:      noarch
 Abstractions to extract information from the Linux kernel /proc files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %pyproject_wheel
@@ -50,6 +61,10 @@ Abstractions to extract information from the Linux kernel /proc files.
 
 %check
 %python_exec bitmasklist_test.py
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pflags
 
 %post
 %python_install_alternative pflags

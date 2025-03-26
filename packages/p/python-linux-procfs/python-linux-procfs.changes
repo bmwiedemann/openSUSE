@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 26 12:30:06 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Use libalternatives instead of update-alternatives, bsc#1240096
+
+-------------------------------------------------------------------
 Wed Jan 29 00:41:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

@@ -69,4 +69,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1241014</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>3f225a826ecd4b641e5fd2df23db4fad</srcmd5>
+    <version>0.7.3</version>
+    <time>1743020619</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1256229</requestid>
+  </revision>
 </revisionlist>
