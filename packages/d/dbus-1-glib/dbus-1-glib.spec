@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1-glib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -103,6 +103,9 @@ This package contains bash-completion support for %{name}.
 %autosetup -p1 -n dbus-glib-%{version}
 
 %build
+# Workaround gcc 15
+export CFLAGS="%{optflags}"
+export CFLAGS="$CFLAGS -std=gnu17"
 %configure \
 	--libexecdir=%{_libexecdir}/%{name}	\
 %if 0%{?_crossbuild}

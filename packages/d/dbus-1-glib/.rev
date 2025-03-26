@@ -463,4 +463,12 @@
     <comment>- Own %{_datadir}/gtk-doc and %{_datadir}/gtk-doc/html directories. (forwarded request 1159607 from dimstar)</comment>
     <requestid>1159608</requestid>
   </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>dbad89c3206784a7a6931c5443f34d71</srcmd5>
+    <version>0.112</version>
+    <time>1743020261</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1255759</requestid>
+  </revision>
 </revisionlist>

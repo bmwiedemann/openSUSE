@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 20 20:10:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix build with GCC 15 via exporting -std=gnu17 to cflags. GCC 15
+  defaults to C23, but the latest release is from 2021, and this is
+  deprecated upstream and no longer under development.
+
+-------------------------------------------------------------------
 Tue Mar 19 15:23:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own %{_datadir}/gtk-doc and %{_datadir}/gtk-doc/html directories.
