@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Mar 25 16:09:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 0.6.9
+  BREAKING CHANGES:
+  * Create main.py instead of hello.py in uv init
+  * Respect UV_PYTHON in uv python install
+  * Set UV to the uv executable path
+  * Error on non-existent extras, e.g., in uv sync
+  * Error on missing dependency groups when --frozen is provided
+  * Change -p to a --python alias in uv pip compile
+  OTHER:
+  * uv publish is no longer in preview
+  * Allow users to mark platforms as "required" for wheel coverage
+  * Use an Arc for index URLs
+  * Add support for constraining build dependencies with 
+    tool.uv.build-constraint-dependencies
+  * Allow quotes around command-line options in requirement.txt files
+  * Reduce overhead in converting resolutions
+  * Migrate to zlib-rs (again)
+  * Use SmallString for filenames and URLs
+  * Move the uv build backend into a separate, minimal uv_build package
+  * Allow --constraints and --overrides in uvx
+  * Add support for dynamic musl Python distributions on x86-64 Linux
+  * Upgrade the build toolchain to LLVM 20, improving performance
+  * Add --marker flag to uv add
+  * Allow overriding module name for uv build backend
+  * Sync latest Python releases
+  * Update BaseClientBuild to accept custom proxies
+  * Enable FTS3 enhanced query syntax for SQLite
+  * Add simpler --managed-python and --no-managed-python flags for
+    toggling Python preference
+  * Use keyring --mode creds when authenticate = "always"
+  * Add boolish value parser for UV_MANAGED_PYTHON flags
+  * Automatically infer the PyTorch index via --torch-backend=auto
+  * More changes, see upstream changelog
+
+-------------------------------------------------------------------
 Tue Feb 11 07:57:46 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.5.30:
