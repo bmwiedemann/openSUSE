@@ -622,7 +622,6 @@
     <package name="gnome-shell-search-provider-gnome-characters" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-search-provider-gnome-clocks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-search-provider-gnome-photos" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gnome-shell-search-provider-gnome-terminal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-search-provider-gnome-weather" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-search-provider-nautilus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-search-provider-seahorse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -633,8 +632,6 @@
     <package name="gnome-sudoku-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-system-monitor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-system-monitor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gnome-terminal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gnome-terminal-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-text-editor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-text-editor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-themes-accessibility" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3163,7 +3160,6 @@
     <package name="nano-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="nautilus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nautilus-extension-seahorse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="nautilus-extension-terminal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nautilus-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nautilus-sendto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nautilus-sendto-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
