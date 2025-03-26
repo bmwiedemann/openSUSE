@@ -796,4 +796,12 @@
     <comment>- Update to kernel headers 6.13 (forwarded request 1239202 from Andreas_Schwab)</comment>
     <requestid>1239203</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>f6dddb0b624c847de2f467981d02f723</srcmd5>
+    <version>6.14</version>
+    <time>1743020171</time>
+    <user>anag+factory</user>
+    <comment>- Update to kernel headers 6.14 (forwarded request 1256018 from Andreas_Schwab)</comment>
+    <requestid>1256020</requestid>
+  </revision>
 </revisionlist>
