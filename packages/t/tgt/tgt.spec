@@ -1,7 +1,7 @@
 #
 # spec file for package tgt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,16 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
-#Compat macro for make_build macro (needed in SLE12-SP5)
-%if ! %{defined make_build}
-  %define make_build %{__make} %{?_smp_mflags}
-%endif
+%define tgt_service_tag 0.2b6396622346
+
 Name:           tgt
-Version:        1.0.94
+Version:        1.0.95
 Release:        0
 Summary:        Generic Linux target framework (tgt)
 License:        GPL-2.0-only
 Group:          System/Daemons
 URL:            https://github.com/fujita/tgt
-Source:         https://github.com/fujita/tgt/archive/refs/tags/v%{version}.tar.gz
+Source:         %{name}-%{version}+%{tgt_service_tag}.tar.xz
 Source1:        sysconfig.%{name}
 Patch1:         %{name}-fix-build
 Patch2:         %{name}-install-examples-in-documentation-dir.patch
@@ -58,7 +52,7 @@ tools. Some target drivers uses all of them and some use only
 user-space daemon and tools (i.e. they completely runs in user space).
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{version}+%{tgt_service_tag}
 
 %build
 %ifarch ppc ppc64 ppc64le

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 25 23:32:28 UTC 2025 - lduncan@suse.com
+
+- Update to version 1.0.95+0.2b6396622346:
+  * tgt 1.0.95
+  * Fix IP and initiator ACL testing logic to allow undefined initiator name ACL
+  * tgt 1.0.94
+  * Fix returning data from virtual tape when the output is bigger than the tape block
+  * tgt 1.0.93
+  * chap: Use proper entropy source
+  * tgt 1.0.92
+  * CI: build on Alpine Linux
+  * usr: do not rely on LFS64 interfaces
+  * usr: do not rely on non-portable __WORDSIZE
+
+- Update patch that partially duplicates upstream:
+  * tgt-install-examples-in-documentation-dir.patch
+
+- Starting using _service file to fetch code
+
+-------------------------------------------------------------------
 Thu Dec 19 03:27:04 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version v1.0.94 (from 1.0.92):
