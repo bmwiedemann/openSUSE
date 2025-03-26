@@ -1,0 +1,44 @@
+From 4677e05cf54eab01bde48dcf3ae1488b6a8241b4 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Mon, 10 Mar 2025 09:50:53 +0200
+Subject: [PATCH] Install targetctl as an entrypoint
+
+scripts = ['scripts/targetctl'] didn't survive the transition to hatch,
+readd it with required modifications.
+
+Bug: https://bugs.gentoo.org/950964
+Fixes: 9eea9a306f83b039629350dace0983f65fa9c64f
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+---
+ pyproject.toml                           | 5 ++++-
+ scripts/targetctl => rtslib/targetctl.py | 0
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+ rename scripts/targetctl => rtslib/targetctl.py (100%)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index c07186aa007c..adebb9f104ea 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -31,6 +31,9 @@ paths = ["COPYING"]
+ [project.urls]
+ Homepage = "http://github.com/open-iscsi/rtslib-fb"
+ 
++[project.scripts]
++targetctl = "rtslib.targetctl:main"
++
+ [tool.hatch.version]
+ source = "vcs"
+ 
+@@ -90,4 +93,4 @@ ignore = [
+ ]
+ [tool.ruff.lint.per-file-ignores]
+ # Magic value used in comparison
+-"scripts/targetctl" = ["PLR2004"]
++"rtslib/targetctl.py" = ["PLR2004"]
+diff --git a/scripts/targetctl b/rtslib/targetctl.py
+similarity index 100%
+rename from scripts/targetctl
+rename to rtslib/targetctl.py
+-- 
+2.43.0
+

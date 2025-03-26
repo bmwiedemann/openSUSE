@@ -1,0 +1,26 @@
+From 631685f400d3bd170a449503ce062a82c58d823a Mon Sep 17 00:00:00 2001
+From: Lee Duncan <lduncan@suse.com>
+Date: Mon, 24 Mar 2025 10:00:21 -0700
+Subject: [PATCH] Remove use of /usr/bin/python
+
+The targetctl.py script was using /usr/bin/python, even
+though this package has been ported to python3.
+
+This makes installing it on modern systems fail.
+---
+ rtslib/targetctl.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rtslib/targetctl.py b/rtslib/targetctl.py
+index e304be0d2f38..124d03f3c1fb 100755
+--- a/rtslib/targetctl.py
++++ b/rtslib/targetctl.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ '''
+ targetctl
+ 
+-- 
+2.43.0
+

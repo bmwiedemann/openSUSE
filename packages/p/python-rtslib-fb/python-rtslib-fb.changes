@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Mar 22 15:35:05 UTC 2025 - lduncan@suse.com
+
+- Update to version v2.2.2:
+  * Explicitly set build target wheel packages
+  * Fix the program name in pyproject.toml
+  * Fix and update pre-commit ruf check
+  * Add PyPA publish and pre-commit check workflows
+  * Add rtslib_fb import compability
+  * Silently ignore OSError on close
+  * fixup! Fix various issues found by ruff linter rules
+  * Add ruff rules, pre-commit config
+  * Convert codebase to pathlib
+  * Fix various issues found by ruff linter rules
+  * Refactor code to Python>=3.9 to pass pyupgrade
+  * Fix issues found by ruff pep8-naming rules
+  * Fix issues found by ruff pycodestyle rules
+  * Use f-strings
+  * Fixing issues found by ruff Pyflakes rules
+  * Move to PEP-621; Drop -fb from module name
+  * rtslib: explicitely import "kmod.error" and "kmod.Kmod"
+  * rtslib/LUN: add some ALUA property
+
+  Also, updated the SPEC file, and removed patch no longer needed,
+  since the problem is no longer present:
+  * rtslib-Fix-handling-of-sysfs-RW-attrs-that-are-actually-RO.patch
+
+  Added three commits, one from upstream, the others submitted there:
+  * Install-targetctl-as-an-entrypoint.patch (added from upstream)
+  * Remove-use-of-usr-bin-python.patch (submitted upstream)
+  * Fix-issue-with-Path-open-needs-parenthesis.patch (submitted upstream)
+
+-------------------------------------------------------------------
 Mon Jun 17 16:09:09 UTC 2024 - Lee Duncan <lduncan@suse.com>
 
 - Revert rtslib-refactor-to-python3.patch, which breaks targetcli

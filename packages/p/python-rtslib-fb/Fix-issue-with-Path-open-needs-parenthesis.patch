@@ -1,0 +1,85 @@
+From e70542fec8f78d156cee101bc8680ddabbbbd7f6 Mon Sep 17 00:00:00 2001
+From: Lee Duncan <lduncan@suse.com>
+Date: Mon, 24 Mar 2025 11:21:59 -0700
+Subject: [PATCH] Fix issue with Path(...).open: needs parenthesis
+
+There are places where the code does this pattern:
+
+   with Path(some_path).open as f:
+       ... (do stuff)
+
+But that generates an error message like:
+
+    /> restoreconfig temp.json
+    Traceback (most recent call last):
+      File "/usr/bin/targetcli", line 8, in <module>
+	sys.exit(main())
+		 ~~~~^^
+      File "/usr/lib/python3.13/site-packages/targetcli/targetcli_shell.py", line 313, in main
+	shell.run_interactive()
+	~~~~~~~~~~~~~~~~~~~~~^^
+      File "/usr/lib/python3.13/site-packages/configshell/shell.py", line 899, in run_interactive
+	self._cli_loop()
+	~~~~~~~~~~~~~~^^
+      File "/usr/lib/python3.13/site-packages/configshell/shell.py", line 728, in _cli_loop
+	self.run_cmdline(cmdline)
+	~~~~~~~~~~~~~~~~^^^^^^^^^
+      File "/usr/lib/python3.13/site-packages/configshell/shell.py", line 842, in run_cmdline
+	self._execute_command(path, command, pparams, kparams)
+	~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/usr/lib/python3.13/site-packages/configshell/shell.py", line 817, in _execute_command
+	result = target.execute_command(command, pparams, kparams)
+      File "/usr/lib/python3.13/site-packages/configshell/node.py", line 1405, in execute_command
+	return method(*pparams, **kparams)
+      File "/usr/lib/python3.13/site-packages/targetcli/ui_root.py", line 207, in ui_command_restoreconfig
+	errors = self.rtsroot.restore_from_file(savefile, clear_existing,
+						target, storage_object)
+      File "/usr/lib/python3.13/site-packages/rtslib/root.py", line 490, in restore_from_file
+	with Path(restore_file).open as f:
+	     ^^^^^^^^^^^^^^^^^^^^^^^
+    TypeError: 'method' object does not support the context manager protocol
+
+Adding empty parenthesis after the "open" fixes the issue.
+---
+ rtslib/root.py          | 4 ++--
+ scripts/convert-to-json | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/rtslib/root.py b/rtslib/root.py
+index 749a80620e65..b05d380a6c50 100644
+--- a/rtslib/root.py
++++ b/rtslib/root.py
+@@ -190,7 +190,7 @@ class RTSRoot(CFSNode):
+         current = self.dump()
+ 
+         try:
+-            with Path(save_file).open as f:
++            with Path(save_file).open() as f:
+                 saveconf = json.loads(f.read())
+         except OSError as e:
+             if e.errno == errno.ENOENT:
+@@ -487,7 +487,7 @@ class RTSRoot(CFSNode):
+         if not restore_file:
+             restore_file = default_save_file
+ 
+-        with Path(restore_file).open as f:
++        with Path(restore_file).open() as f:
+             config = json.loads(f.read())
+             return self.restore(config, target, storage_object,
+                                 clear_existing=clear_existing,
+diff --git a/scripts/convert-to-json b/scripts/convert-to-json
+index daa82daf705b..7677350f3040 100755
+--- a/scripts/convert-to-json
++++ b/scripts/convert-to-json
+@@ -318,7 +318,7 @@ def parse(txt, cur):
+         elif txt[cur] == "fabric":
+             cur = parse_fabric(txt, cur)
+ 
+-with Path("/etc/target/scsi_target.lio").open as f:
++with Path("/etc/target/scsi_target.lio").open() as f:
+     txt = f.read()
+     txt = split(txt)
+     cur = parse(txt, 0)
+-- 
+2.43.0
+

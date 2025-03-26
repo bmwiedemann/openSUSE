@@ -1,7 +1,7 @@
 #
 # spec file for package python-rtslib-fb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,40 +19,40 @@
 %define dbdir %{_sysconfdir}/target
 %define oldpython python
 %define cpkg %{oldpython}-rtslib-fb-common
-%if 0%{?suse_version} > 1500
-%bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
+
 %{?sle15_python_module_pythons}
+
 Name:           python-rtslib-fb
-Version:        2.1.76
+Version:        2.2.2
 Release:        0%{?dist}
 Summary:        API for Linux kernel SCSI target (aka LIO)
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/open-iscsi/rtslib-fb.git
 Source:         python-rtslib-fb-v%{version}.tar.xz
-Patch2:         rtslib-Fix-handling-of-sysfs-RW-attrs-that-are-actually-RO.patch
-Patch3:         rtslib-target-service-for-suse.patch
+Patch1:         rtslib-target-service-for-suse.patch
+Patch2:         Install-targetctl-as-an-entrypoint.patch
+Patch3:         Remove-use-of-usr-bin-python.patch
+Patch4:         Fix-issue-with-Path-open-needs-parenthesis.patch
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyudev}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  git
 BuildRequires:  python-rpm-macros >= 20210929
+BuildRequires:  pkgconfig(systemd)
 Requires:       %{cpkg}
 Requires:       python-pyudev
 Provides:       python-rtslib = %{version}-%{release}
 Obsoletes:      python-rtslib < %{version}
 BuildArch:      noarch
-%if %{with libalternatives}
-BuildRequires:  alts
-Requires:       alts
-%else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
-%endif
+Requires(postun): update-alternatives
+
 %python_subpackages
 
 %description
@@ -61,13 +61,13 @@ SCSI target, present in 3.x Linux kernel versions. rtslib-fb is licensed under
 the Apache 2.0 license. Contributions are welcome
 
 %package -n %{cpkg}
-Summary:        Common python-rtslib-fb subpackage for Python 2 or 3
+Summary:        Common python-rtslib-fb subpackage for all Python 3 versions
 Group:          Development/Languages/Python
 Obsoletes:      %{name} < %{version}-%{release}
 
 %description -n %{cpkg}
-python-rtslib-fb-common is the invariant base package needed by both
-python2-rtslib-fb and python3-rtslib-fb.
+python-rtslib-fb-common is the invariant base package needed by all
+version of python3*-rtslib-fb.
 
 %prep
 %autosetup -p1 -n python-rtslib-fb-v%{version}
@@ -78,7 +78,6 @@ python2-rtslib-fb and python3-rtslib-fb.
 %install
 %pyproject_install
 %python_clone -a %{buildroot}/%{_bindir}/targetctl
-%fdupes %{buildroot}
 install -d -m755 %{buildroot}%{_mandir}/man5
 install -m644 doc/saveconfig.json.5 %{buildroot}%{_mandir}/man5
 install -d -m755 %{buildroot}%{_mandir}/man8
@@ -89,6 +88,7 @@ install -d -m755 %{buildroot}/%{dbdir}/alua
 mkdir -p %{buildroot}/%{_unitdir}/
 install -m644 systemd/target.service %{buildroot}/%{_unitdir}
 install -d -m755 %{buildroot}%{_sbindir}
+%fdupes %{buildroot}
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctarget
 
 %post
@@ -101,8 +101,6 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctarget
 
 %pre
 %{service_add_pre target.service}
-# If libalternatives is used: Removing old update-alternatives entries.
-%python_libalternatives_reset_alternative targetctl
 
 %preun
 %{stop_on_removal target}
@@ -122,9 +120,8 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctarget
 
 %files %{python_files}
 %python_alternative %{_bindir}/targetctl
-%{python_sitelib}/rtslib
-%{python_sitelib}/rtslib_fb
-%{python_sitelib}/rtslib_fb-%{version}*-info
+%{python_sitelib}/rtslib*
+%pycache_only %{python_sitelib}/__pycache__
 
 %files -n %{cpkg}
 %license COPYING
