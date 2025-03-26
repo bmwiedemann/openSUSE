@@ -43,4 +43,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Add DSP firmware for QCS8300 platform</comment>
     <requestid>1254646</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>aa8f7b3f24551f2cd3f760a80f26b05f</srcmd5>
+    <version>20250319</version>
+    <time>1743020244</time>
+    <user>anag+factory</user>
+    <comment>- Fix a typo in download URL
+
+- Correct aliases with comma (bsc#1239877)
+- Update spec to make kernel-firmware-tools downloadable</comment>
+    <requestid>1255836</requestid>
+  </revision>
 </revisionlist>
