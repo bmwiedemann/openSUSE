@@ -523,4 +523,12 @@
     <comment>Undo wayland</comment>
     <requestid>1255074</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>1b58a5762a7ac33d37655eafb846d276</srcmd5>
+    <version>10.9.2+3</version>
+    <time>1743020537</time>
+    <user>anag+factory</user>
+    <comment>Un-conflict gnome-shell</comment>
+    <requestid>1256242</requestid>
+  </revision>
 </revisionlist>

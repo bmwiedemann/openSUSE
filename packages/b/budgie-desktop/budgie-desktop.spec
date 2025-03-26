@@ -77,12 +77,11 @@ BuildRequires:  pkgconfig(upower-glib) >= 1.0
 Provides:       budgie-trash-applet = 1.7.0
 Obsoletes:      budgie-trash-applet
 # flatpak/snap
+BuildRequires:  xdg-desktop-portal
+Requires:       xdg-desktop-portal
 Requires:       xdg-desktop-portal-gtk
-# https://discuss.getsol.us/d/6970-cant-lock-my-screen/3
-Conflicts:      gnome-shell
-#
 # rebrand and gnome porting
-Requires:       (budgie-desktop-view >= 1.3+4 or nemo or desktopfolder)
+Requires:       (budgie-desktop-view >= 1.3+0 or nemo or desktopfolder)
 Suggests:       budgie-desktop-view >= 1.3+0
 Requires:       budgie-screensaver >= 5.1.0+0
 Requires:       typelib-1_0-Budgie-1_0 >= %{version}
@@ -259,7 +258,6 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopSc
 %{_datadir}/gnome-session
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/budgie-desktop.desktop
-%dir %{_datadir}/xdg-desktop-portal
 %{_datadir}/xdg-desktop-portal/budgie-portals.conf
 %{_libdir}/budgie-desktop
 %{_distconfdir}/xdg/autostart/*.desktop
