@@ -78,4 +78,17 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment></comment>
     <requestid>1254164</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a0ec8f0f059200fc2f707c13b5787e94</srcmd5>
+    <version>20250322</version>
+    <time>1743020222</time>
+    <user>anag+factory</user>
+    <comment>- Fix a typo in download URL
+
+- Update to version 20250322 (git commit 710a336b3198):
+  * amdgpu: update dcn 4.01 firmware to 0.1.3.0
+  * amdgpu: update dcn 3.5 firmware to 0.1.0.0
+- Update kernel-firmware-tools scripts to be downloadable</comment>
+    <requestid>1255829</requestid>
+  </revision>
 </revisionlist>

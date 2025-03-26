@@ -20,18 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 588505068c48fe07b1cfa32c5f3acd4395ec9482
+%define git_version 710a336b31981773a3a16e7909fd83daeaec9db1
 
 Name:           kernel-firmware-amdgpu
-Version:        20250318
+Version:        20250322
 Release:        0
 Summary:        Kernel firmware files for AMDGPU graphics driver
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250318.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250325.tar.gz#/kernel-firmware-tools-20250325.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -359,7 +358,8 @@ Supplements:    modalias(pci:v00001002d000098E4sv*sd*bc*sc*i*)
 This package contains kernel firmware files for AMDGPU graphics driver.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh amdgpu < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE
