@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 25 01:37:52 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 14.2.0:
+  See https://github.com/PyAV-Org/PyAV/compare/v13.1.0...v14.2.0
+
+-------------------------------------------------------------------
 Tue Nov 19 15:35:30 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Disable tests because most of them have to be skipped due to

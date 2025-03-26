@@ -1,7 +1,7 @@
 #
 # spec file for package python-av
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-av
-Version:        13.1.0
+Version:        14.2.0
 Release:        0
 Summary:        Python bindings for FFmpeg's libraries
 License:        BSD-3-Clause
@@ -53,6 +53,7 @@ Pythonic bindings for FFmpeg's libraries.
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/pyav
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand rm %{buildroot}%{$python_sitearch}/av/filter/*.{c,h}
 
 %post
 %python_install_alternative pyav
