@@ -1,7 +1,7 @@
 #
 # spec file for package cpio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,7 @@ This package includes the 'mt', a local tape drive control program.
 %build
 gettextize -f --no-changelog
 autoreconf -fiv
-export CFLAGS="%{optflags} -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fcommon"
+export CFLAGS="%{optflags} -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fcommon -std=gnu11"
 %configure \
   --with-rmt="%{_bindir}/rmt" \
   --enable-mt \

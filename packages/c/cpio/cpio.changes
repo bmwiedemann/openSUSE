@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 21 12:15:31 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Use -std=gnu11 to avoid extra diagnostics when calling an
+  unprototyped function which is no longer possible with C23,
+  the new default with GCC 15.
+
+-------------------------------------------------------------------
 Fri Apr  5 11:02:45 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix build with gcc14, bsc#1221712
