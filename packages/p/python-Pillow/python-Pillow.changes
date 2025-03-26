@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 24 12:38:24 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add patch libwebp150.patch to skip tests failing on s390x
+  * reported: https://github.com/python-pillow/Pillow/issues/8831
+
+-------------------------------------------------------------------
 Mon Jan 13 08:31:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 11.1.0

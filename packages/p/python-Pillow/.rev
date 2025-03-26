@@ -817,4 +817,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>1237367</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>33f6ca54ada904a8f086e2889cf69dc7</srcmd5>
+    <version>11.1.0</version>
+    <time>1743020189</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1255622</requestid>
+  </revision>
 </revisionlist>

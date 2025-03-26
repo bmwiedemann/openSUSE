@@ -24,6 +24,8 @@ Summary:        Python Imaging Library (Fork)
 License:        HPND
 URL:            https://python-pillow.org/
 Source:         https://files.pythonhosted.org/packages/source/p/pillow/pillow-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM as per https://github.com/python-pillow/Pillow/issues/8831
+Patch:          libwebp150.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module olefile}
 BuildRequires:  %{python_module pip}
