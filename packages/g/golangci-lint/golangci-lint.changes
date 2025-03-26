@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 25 22:03:25 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.0.2:
+  * chore: prepare release
+  * fix: use absolute filepath inside base rule source (#5629)
+  * docs: clean old configuration examples (#5626)
+  * docs: fix flags example
+  * docs: fix flags example
+  * docs: info about the logo
+  * fix: formatter validation message (#5624)
+  * docs: update reference comment for errchkjson (#5623)
+  * docs: replace 'disable-all' with 'default: none' (#5622)
+  * docs: add section about flags migration (#5621)
+  * fix: enable formatters with flags (#5620)
+  * docs: adaptive stargazers image (#5613)
+  * docs: update GitHub Action assets (#5611)
+
+-------------------------------------------------------------------
 Mon Mar 24 21:02:50 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.0.1:

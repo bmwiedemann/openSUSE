@@ -664,4 +664,25 @@
   * docs: update GitHub Action assets (#5595) (forwarded request 1255743 from jfkw)</comment>
     <requestid>1255745</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>29aa6848ad6d4333fac13be4e403c7ea</srcmd5>
+    <version>2.0.2</version>
+    <time>1743020404</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.0.2:
+  * chore: prepare release
+  * fix: use absolute filepath inside base rule source (#5629)
+  * docs: clean old configuration examples (#5626)
+  * docs: fix flags example
+  * docs: fix flags example
+  * docs: info about the logo
+  * fix: formatter validation message (#5624)
+  * docs: update reference comment for errchkjson (#5623)
+  * docs: replace 'disable-all' with 'default: none' (#5622)
+  * docs: add section about flags migration (#5621)
+  * fix: enable formatters with flags (#5620)
+  * docs: adaptive stargazers image (#5613)
+  * docs: update GitHub Action assets (#5611) (forwarded request 1256079 from jfkw)</comment>
+    <requestid>1256080</requestid>
+  </revision>
 </revisionlist>
