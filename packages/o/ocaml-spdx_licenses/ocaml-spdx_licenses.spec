@@ -42,7 +42,7 @@ URL:            https://opam.ocaml.org/packages/spdx_licenses
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 2.3
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20231101
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(alcotest)
