@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 26 02:01:15 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.03.26
+  * youtube: fix signature and nsig extraction for player 4fcd6e4a
+
+-------------------------------------------------------------------
 Sat Mar 22 09:03:31 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.03.21
