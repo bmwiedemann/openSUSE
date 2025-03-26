@@ -18,7 +18,6 @@
 #!BuildTag: opensuse/kubectl:%%kubectl_version%%-%RELEASE%
 #!BuildTag: opensuse/kubectl:%%kubectl_version%%
 #!BuildTag: opensuse/kubectl:1.31
-#!BuildTag: opensuse/kubectl:1.31
 
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder
