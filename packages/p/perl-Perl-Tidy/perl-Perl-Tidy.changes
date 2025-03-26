@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Mar 12 05:43:42 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20250311.0.0 (20250311)
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+
+  ## 2025 03 11
+      - The options --want-call-parens and --nowant-call-parens were accidentally
+        being skipped in version 20250214. This has been fixed.
+      - Fixed git #32, a tokenization error with message "hit EOF seeking end of
+        quote/pattern" for a function call without paren or arg before a
+        ternary operator.
+      - A new option --dump-similar-keys will dump hash keys which are
+        similar but slightly different to standard output and then exit.
+        A related option --warn-similar-keys will report keys with are similar
+        to the error output while formatting. Both of these can be controlled
+        by parameters which are described in the input manual.
+      - A new option --dump-hash-keys will dump all hash keys found by
+        perltidy to standard output.
+      - The output table for --dump-block-summary has an additional field.
+        It is an alternate McCabe complexity count which is the same as
+        the previous count except for subs. For subs, the complexity number
+        is reduced by the values for any contained anonymous subs.
+      - Fix git #181, remove continuation indentation from closing brace
+        of an anonymous sub which terminates an input stream.
+
+-------------------------------------------------------------------
 Thu Feb 13 16:25:55 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20250214.0.0 (20250214)
