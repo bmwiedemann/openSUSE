@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Mar 20 14:38:07 UTC 2025 - dcermak@suse.com
+
+- Update to version 20250320.32f6212:
+  * Makefile: Enable -Wformat-security
+  * conf: Include libgen.h for basename(), fix build against musl
+  * tcp: Flush socket before checking for more data in active close state
+  * migrate: Bump migration version number
+  * migrate, tcp: Migrate RFC 7323 timestamp
+  * migrate, tcp: More careful marshalling of mss parameter during migration
+  * passt-repair: Fix build with -Werror=format-security
+  * tcp, flow: Better use flow specific logging heleprs
+  * conf: Unify several paths in conf_ports()
+  * test/perf: Simplify iperf3 server lifetime management
+  * conf: Limit maximum MTU based on backend frame size
+  * pcap: Correctly set snaplen based on tap backend type
+  * Simplify sizing of pkt_buf
+  * tap: Use explicit defines for maximum length of L2 frame
+  * packet: Remove redundant TAP_BUF_BYTES define
+  * packet: Give explicit name to maximum packet size
+  * conf: Detect vhost-user mode earlier
+  * conf: Move mode detection into helper function
+  * conf: Use the same optstring for passt and pasta modes
+  * flow, repair: Wait for a short while for passt-repair to connect
+  * passt-repair: Add directory watch
+  * cppcheck: Add suppressions for "logically" exported functions
+  * vhost_user: Don't export several functions
+  * tcp: Don't export tcp_update_csum()
+  * checksum: Don't export various functions
+  * log: Don't export passt_vsyslog()
+  * treewide: Mark assorted functions static
+  * udp: create and send ICMPv6 to local peer when applicable
+  * tap: break out building of udp header from tap_udp6_send function
+  * udp: create and send ICMPv4 to local peer when applicable
+  * tap: break out building of udp header from tap_udp4_send function
+  * conf: Be more precise about minimum MTUs
+  * tcp: Send RST in response to guest packets that match no connection
+  * tap: Consider IPv6 flow label when building packet sequences
+  * ip: Helpers to access IPv6 flow label
+  * migrate, tcp: Don't flow_alloc_cancel() during incoming migration
+  * tcp: Unconditionally move to CLOSED state on tcp_rst()
+  * tcp: Correct error code handling from tcp_flow_repair_socket()
+  * migrate, flow: Don't attempt to migrate TCP flows without passt-repair
+  * migrate, flow: Trivially succeed if migrating with no flows
+  * selinux: Fixes/workarounds for passt and passt-repair, mostly for libvirt usage
+  * seccomp.sh: Silence stty errors
+  * tap: always set the no_frag flag in IPv4 headers
+  * contrib/fedora: Actually install passt-repair SELinux policy file
+  * dhcp: Add option code byte in calculation for OPT_MAX boundary check
+  * Makefile: Use mmap2() as alternative for mmap() in valgrind extra syscalls
+  * conf: Use 0 instead of -1 as "unassigned" mtu value
+  * conf: More thorough error checking when parsing --mtu option
+  * flow: Clean up and generalise flow traversal macros
+  * flow: Remove unneeded bound parameter from flow traversal macros
+  * flow: Remove unneeded index from foreach_* macros
+  * flow: Add flow_perror() helper
+  * tcp: Don't pass both flow pointer and flow index
+  * tcp: Remove spurious prototype for tcp_flow_migrate_shrink_window
+  * tcp: More type safety for tcp_flow_migrate_target_ext()
+  * tcp_vu: head_cnt need not be global
+  * tap: Remove unused ETH_HDR_INIT() macro
+  * packet: Don't pass start and offset separately to packet_check_range()
+  * packet: Use flexible array member in struct pool
+  * dhcp: Remove option 255 length byte
+
+-------------------------------------------------------------------
 Thu Mar  6 10:50:13 UTC 2025 - Dan Čermák <dcermak@suse.com>
 
 - Introduce apparmor subpackage, fixes bsc#1238597

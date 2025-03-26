@@ -184,4 +184,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment>Introduce apparmor subpackage, fixes bsc#1238597 (forwarded request 1250603 from dancermak)</comment>
     <requestid>1253616</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>26acb9b7135e5133ffc9d25fedad4c4e</srcmd5>
+    <version>20250320.32f6212</version>
+    <time>1743020195</time>
+    <user>anag+factory</user>
+    <comment>Update to version 20250320.32f6212 (forwarded request 1254759 from dancermak)</comment>
+    <requestid>1255645</requestid>
+  </revision>
 </revisionlist>
