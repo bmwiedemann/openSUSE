@@ -91,4 +91,12 @@ Update: Package LICENSE files as %license.</comment>
   see included CHANGES.md file for details</comment>
     <requestid>1249877</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>116c637fc7f2596ff8b7bbdf2fc0419d</srcmd5>
+    <version>1.1+19</version>
+    <time>1743020646</time>
+    <user>anag+factory</user>
+    <comment>- allow only 64bit to follow other packages</comment>
+    <requestid>1256258</requestid>
+  </revision>
 </revisionlist>
