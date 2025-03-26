@@ -1,7 +1,7 @@
 #
 # spec file for package libzypp-testsuite-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2007-2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-
-Name:           libzypp-testsuite-tools
-Version:        5.0.5
-Release:        0
-License:        GPL-2.0-only
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Name:		libzypp-testsuite-tools
+Version:	5.0.6
+Release:	0
+License:	GPL-2.0
+BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 Summary:        Package, Patch, Pattern, and Product Management - testsuite-tools
 Group:          System/Packages
-Source:         %{name}-%{version}.tar.bz2
-BuildRequires:  cmake >= 3.1
-BuildRequires:  gcc-c++ >= 7
-BuildRequires:  libzypp-devel >= 17.25.3
+Source:		%{name}-%{version}.tar.bz2
+BuildRequires:	cmake >= 3.1
+BuildRequires:	gcc-c++ >= 7
+BuildRequires:	libzypp-devel >= 17.25.3
 
 %description
 Package, Patch, Pattern, and Product Management - testsuite-tools

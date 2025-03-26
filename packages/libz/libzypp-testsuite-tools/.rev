@@ -393,4 +393,12 @@ Contains files with GPL-2.0 (i.e. &quot;only&quot;) licenses - see e.g. src/XmlN
     <comment>Softwarestack update</comment>
     <requestid>990961</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>34ee29e42dcda76e6d5d7b034739b15d</srcmd5>
+    <version>5.0.6</version>
+    <time>1743020498</time>
+    <user>anag+factory</user>
+    <comment>Softwarestack update</comment>
+    <requestid>1256175</requestid>
+  </revision>
 </revisionlist>

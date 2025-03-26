@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 20 12:53:36 CET 2025 - ma@suse.com
+
+- Fixes to build with libzypp-17.35.17 and newer
+- version 5.0.6
+
+-------------------------------------------------------------------
 Fri Jul 22 16:43:12 CEST 2022 - ma@suse.com
 
 - Fixes to build with libzypp newer than 17.31.0.
