@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 23 19:42:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.75:
+  * go related fixes
+- includes changes from 1.2.74:
+  * Group syntax parsing bugfix for pam_cap
+  * Doc typo fix for cap_get_proc.3
+  * Fix transitive include in capsh.c
+  * go related changes
+
+-------------------------------------------------------------------
 Mon Dec  9 14:15:56 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Disable psx_test and b219174 tests in qemu emulation
