@@ -27,4 +27,12 @@ It is a dependency of opam, which is used for building some dependencies of the 
 - Remove obsolete ocaml-cudf.patch</comment>
     <requestid>1254675</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c504323b9440c6de6a0ff55750d5be64</srcmd5>
+    <version>0.10</version>
+    <time>1743020639</time>
+    <user>anag+factory</user>
+    <comment>- Relax ocaml-rpm-macros requirement</comment>
+    <requestid>1256255</requestid>
+  </revision>
 </revisionlist>

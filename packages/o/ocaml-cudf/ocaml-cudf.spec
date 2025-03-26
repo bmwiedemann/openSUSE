@@ -43,7 +43,7 @@ Source0:        %pkg-%version.tar.xz
 Patch0:         allow_underscore.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  ocamlfind(extlib)
 
 %if "%build_flavor" == "testsuite"
