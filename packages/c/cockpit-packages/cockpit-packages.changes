@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Mar 06 06:39:24 UTC 2025 - miika.alikirri@suse.com
+
+- Update to version 2:
+  * pkg: Release version 2
+  * pkg: Add copyright to spec file
+  * misc: Updated README
+  * pkg: Remove unused spec file
+  * src: Add translation to Uninstall word
+  * src: Show loading indicator while searching packages
+  * src: Require superuser to view the page
+  * src: Make search more responsive
+  * src: Show "Reinstall" button on already installed pacakges
+  * pkg: Add packages spec file
+
+-------------------------------------------------------------------
+Thu Feb 20 10:32:24 UTC 2025 - miika.alikirri@suse.com
+
+- Update to version 1:
+  * pkg: Add packages spec file
+  * misc: Display app as Packages instead of Starter Kit
+
+-------------------------------------------------------------------
+Thu Feb 20 09:51:19 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Initial cockpit-packages package

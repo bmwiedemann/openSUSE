@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/openSUSE/cockpit-packages</param>
+              <param name="changesrevision">7525a0bb1cc5292daadf624769fb84a10623e1ea</param></service></servicedata>
