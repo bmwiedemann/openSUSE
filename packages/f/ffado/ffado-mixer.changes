@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 24 12:00:44 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build ffado-mixer in SLFO/SLE16 since we don't have
+  python-qt5 there.
+
+-------------------------------------------------------------------
 Thu Jan 23 13:24:09 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - BuildRequires python3-setuptools, distutils is deprecated and is

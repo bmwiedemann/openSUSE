@@ -406,4 +406,12 @@ Update to release 2.4.1 Fix build with ffado-mixer-fixbuild.patch. Removed uneed
     <comment></comment>
     <requestid>1240031</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>e27ed8db53ce38a5f3fcf37f1553c829</srcmd5>
+    <version>2.4.9</version>
+    <time>1743020187</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1255607</requestid>
+  </revision>
 </revisionlist>

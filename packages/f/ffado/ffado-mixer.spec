@@ -19,6 +19,11 @@
 %define gcc7 0
 %define docs 0
 %define tname libffado
+
+%if 0%{?suse_version} == 1600 && !0%{?is_opensuse}
+ExclusiveArch:  do_not_build
+%endif
+
 Name:           ffado-mixer
 Version:        2.4.9
 Release:        0
