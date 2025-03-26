@@ -10,9 +10,11 @@ Subject: [PATCH] pull, push: try reading git-bug.remote config value before
  repository/config.go |   11 +++++++++++
  3 files changed, 33 insertions(+), 10 deletions(-)
 
---- a/commands/pull.go
-+++ b/commands/pull.go
-@@ -8,6 +8,7 @@ import (
+Index: git-bug-0.8.0+git.1742269202.0ab94c9/commands/pull.go
+===================================================================
+--- git-bug-0.8.0+git.1742269202.0ab94c9.orig/commands/pull.go	2025-03-18 04:40:02.000000000 +0100
++++ git-bug-0.8.0+git.1742269202.0ab94c9/commands/pull.go	2025-03-25 16:36:27.048924722 +0100
+@@ -8,6 +8,7 @@
  	"github.com/git-bug/git-bug/commands/completion"
  	"github.com/git-bug/git-bug/commands/execenv"
  	"github.com/git-bug/git-bug/entity"
@@ -20,7 +22,7 @@ Subject: [PATCH] pull, push: try reading git-bug.remote config value before
  )
  
  func newPullCommand(env *execenv.Env) *cobra.Command {
-@@ -25,13 +26,18 @@ func newPullCommand(env *execenv.Env) *c
+@@ -25,13 +26,18 @@
  }
  
  func runPull(env *execenv.Env, args []string) error {
@@ -44,9 +46,11 @@ Subject: [PATCH] pull, push: try reading git-bug.remote config value before
  	}
  
  	env.Out.Println("Fetching remote ...")
---- a/commands/push.go
-+++ b/commands/push.go
-@@ -7,6 +7,7 @@ import (
+Index: git-bug-0.8.0+git.1742269202.0ab94c9/commands/push.go
+===================================================================
+--- git-bug-0.8.0+git.1742269202.0ab94c9.orig/commands/push.go	2025-03-18 04:40:02.000000000 +0100
++++ git-bug-0.8.0+git.1742269202.0ab94c9/commands/push.go	2025-03-25 16:36:27.049118817 +0100
+@@ -7,6 +7,7 @@
  
  	"github.com/git-bug/git-bug/commands/completion"
  	"github.com/git-bug/git-bug/commands/execenv"
@@ -54,7 +58,7 @@ Subject: [PATCH] pull, push: try reading git-bug.remote config value before
  )
  
  func newPushCommand(env *execenv.Env) *cobra.Command {
-@@ -24,13 +25,18 @@ func newPushCommand(env *execenv.Env) *c
+@@ -24,13 +25,18 @@
  }
  
  func runPush(env *execenv.Env, args []string) error {
@@ -78,9 +82,11 @@ Subject: [PATCH] pull, push: try reading git-bug.remote config value before
  	}
  
  	stdout, err := env.Backend.Push(remote)
---- a/repository/config.go
-+++ b/repository/config.go
-@@ -60,6 +60,17 @@ type ConfigWrite interface {
+Index: git-bug-0.8.0+git.1742269202.0ab94c9/repository/config.go
+===================================================================
+--- git-bug-0.8.0+git.1742269202.0ab94c9.orig/repository/config.go	2025-03-18 04:40:02.000000000 +0100
++++ git-bug-0.8.0+git.1742269202.0ab94c9/repository/config.go	2025-03-25 16:36:27.049354801 +0100
+@@ -60,6 +60,17 @@
  	RemoveAll(keyPrefix string) error
  }
  

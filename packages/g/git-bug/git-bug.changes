@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 25 15:29:50 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 0.8.0+git.1742269202.0ab94c9:
+  * deps(crypto): bump golang.org/x/crypto from v0.26.0 to v0.31.0 (fix for CVE-2024-45337) (#1312)
+- Remove upstreamed CVE-2024-45337-bump-go-crypto.patch
+  (apparently upstream still didn’t see the other one).
+
+-------------------------------------------------------------------
+Thu Mar 13 17:02:33 UTC 2025 - mcepl@cepl.eu
+
+- Add CVE-2025-22869-bump-go-crypto-ssh.patch to update
+  golang.org/x/crypto/ssh to v0.35.0 (bsc#1239494,
+  CVE-2025-22869).
+
+-------------------------------------------------------------------
 Wed Jan 22 16:32:25 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing Requires to completion subpackages.

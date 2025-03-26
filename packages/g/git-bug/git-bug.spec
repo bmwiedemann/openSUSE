@@ -17,7 +17,7 @@
 
 
 Name:           git-bug
-Version:        0.8.0+git.1733745604.d499b6e
+Version:        0.8.0+git.1742269202.0ab94c9
 Release:        0
 Summary:        Distributed, offline-first bug tracker embedded in git, with bridges
 License:        MIT
@@ -28,10 +28,10 @@ Source1:        vendor.tar.gz
 # PATCH-FIX-UPSTREAM remote-config.patch gh#MichaelMure/git-bug!1076 mcepl@suse.com
 # try reading git-bug.remote config value before defaulting to 'origin' when no explicit REMOTE argument
 Patch0:         remote-config.patch
-# PATCH-FIX-UPSTREAM CVE-2024-45337-bump-go-crypto.patch bsc#1234565 mcepl@suse.com
-# bump golang.org/x/crypto from v0.26.0 to v0.31.0
-Patch1:         CVE-2024-45337-bump-go-crypto.patch
-BuildRequires:  golang(API) = 1.22
+# PATCH-FIX-UPSTREAM CVE-2025-22869-bump-go-crypto-ssh.patch bsc#1239494 mcepl@suse.com
+# bump golang.org/x/crypto to v0.35.0
+Patch2:         CVE-2025-22869-bump-go-crypto-ssh.patch
+BuildRequires:  golang(API) = 1.23
 # # PATCH-FEATURE-UPSTREAM 501-export.patch gh#MichaelMure/git-bug!501 mcepl@suse.com
 # # add a command to export bugs as raw operations
 # Patch0:         501-export.patch

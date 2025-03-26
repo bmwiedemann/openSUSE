@@ -1,7 +1,7 @@
 <services>
     <service name="obs_scm" mode="manual">
         <param name="versionprefix">0.8.0+git</param>
-        <param name="url">https://github.com/MichaelMure/git-bug.git</param>
+        <param name="url">https://github.com/git-bug/git-bug.git</param>
         <param name="scm">git</param>
         <param name="changesgenerate">enable</param>
         <param name="changesauthor">mcepl@cepl.eu</param>
