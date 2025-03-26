@@ -110,7 +110,7 @@ cd ..
 	#
 	# Generated from:
 	EOF
-   awk '$2 = "NSS_BUILTINS_LIBRARY_VERSION" {print "# " $2 " " $3}';
+   awk '$2 == "NSS_BUILTINS_LIBRARY_VERSION" {print "# " $2 " " $3}' %{SOURCE1}
    echo '#';
    ls -1 certs/*.tmp-p11-kit | sort | xargs cat
 ) > %{name}.trust.p11-kit

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 25 09:45:30 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- Fix awk to compare (missing a =) and give the following output:
+  # NSS_BUILTINS_LIBRARY_VERSION "2.74"
+
+-------------------------------------------------------------------
+Tue Mar 25 08:11:46 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- pass file argument to awk (bsc#1240009)
+
+-------------------------------------------------------------------
 Tue Feb  4 15:24:38 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.74 state of Mozilla SSL root CAs:

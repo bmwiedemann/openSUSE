@@ -873,4 +873,13 @@
   openssl-3 (forwarded request 1243202 from dirkmueller)</comment>
     <requestid>1243275</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>f938491f008ed70b0e7ce3f9d64c52b9</srcmd5>
+    <version>2.74</version>
+    <time>1743020279</time>
+    <user>anag+factory</user>
+    <comment>- Fix awk to compare (missing a =) and give the following output:
+  # NSS_BUILTINS_LIBRARY_VERSION &quot;2.74&quot; (forwarded request 1255880 from eroca)</comment>
+    <requestid>1255908</requestid>
+  </revision>
 </revisionlist>
