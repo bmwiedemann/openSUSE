@@ -1500,4 +1500,29 @@ Mon Feb  13 15:52:19 GMT 2012 - aspiers@suse.com
 They are not in common use these days. (forwarded request 1191834 from iznogood)</comment>
     <requestid>1192607</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>ba7383981904eb576455619fbd4eca40</srcmd5>
+    <version>0.10.49</version>
+    <time>1743020253</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.10.49:
+  * add test case to exclude with regex
+  * disable partial clone if started by osc
+  * refactor TarSCM.archive to unify exclude mechanism
+  * fix testsuite
+  * Sync spec file with the one in package
+  * improve doc in *.service
+  * change python version for github workflow
+  * fix KankuFile
+  * disabling test cases for bzr and hg
+  * fix excludes for obscpio
+  * Add test for the new changes entry format
+  * Include real name in generated changelog entries
+  * unset git global configs
+  * fix syntax of spec file
+
+- use the python-flavor for requires, not python3 so that
+  build service can determine dependencies properly</comment>
+    <requestid>1255662</requestid>
+  </revision>
 </revisionlist>
