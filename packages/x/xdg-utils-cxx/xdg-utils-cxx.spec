@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-utils-cxx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/xdg-utils-cxx-%{ver
 Patch0:         https://salsa.debian.org/qt-kde-team/3rdparty/xdg-utils-cxx/-/raw/master/debian/patches/fix_so_version.patch
 Patch1:         https://salsa.debian.org/qt-kde-team/3rdparty/xdg-utils-cxx/-/raw/master/debian/patches/fix_install_path.patch
 BuildRequires:  binutils
-BuildRequires:  cmake >= 3.0
 BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 3.5
 BuildRequires:  libstdc++-devel
 
 %description
@@ -69,11 +69,15 @@ Development files for %{name}.
 %cmake \
 	-DXDG_UTILS_SHARED=ON \
 	-DXDG_UTILS_TESTS=OFF \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 	%{nil}
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %if %{suse_version} >= 1599
 %ldconfig_scriptlets -n %{soname1}

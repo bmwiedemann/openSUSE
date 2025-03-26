@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 21 22:53:25 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+
+-------------------------------------------------------------------
 Sun Oct  9 06:11:21 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add LICENSE to library packages
