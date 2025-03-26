@@ -1,7 +1,7 @@
 #
 # spec file for package websocketpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,12 @@ Version:        0.8.2
 Release:        0
 Summary:        C++ WebSocket Protocol Library
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            http://www.zaphoyd.com/websocketpp
 Source0:        https://github.com/zaphoyd/websocketpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        websocketpp.pc
 # PATCH-FIX-UPSTREAM - https://github.com/zaphoyd/websocketpp/pull/888
 Patch0:         Update-websocketpp-configVersion.cmake.patch
-BuildRequires:  cmake >= 2.6
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildArch:      noarch
@@ -46,7 +45,6 @@ iostreams and one based on Boost Asio.
 
 %package devel
 Summary:        Development files for websocketpp, a C++ WebSocket Protocol Library
-Group:          Development/Libraries/C and C++
 
 %description devel
 WebSocket++ is a header-only C++ library
@@ -60,7 +58,7 @@ iostreams and one based on Boost Asio.
 
 %build
 %if 0%{?suse_version} >= 1310
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %else
 mkdir build
 pushd build
@@ -79,6 +77,9 @@ pushd build
 %make_install
 %endif
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/pkgconfig/websocketpp.pc
+
+%check
+%ctest
 
 %files devel
 %license COPYING
