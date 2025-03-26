@@ -191,4 +191,13 @@
     <comment></comment>
     <requestid>1252757</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>2fa8b66691d34f37e744a3134f8acd19</srcmd5>
+    <version>24.12.3</version>
+    <time>1743020442</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream change (kde#501876)
+  * 0001-Fix-dialog-boxes-after-recent-Kirigami-updates.patch</comment>
+    <requestid>1256131</requestid>
+  </revision>
 </revisionlist>
