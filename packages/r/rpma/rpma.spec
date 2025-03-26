@@ -22,10 +22,9 @@ Version:        1.3.0
 Release:        0
 Summary:        Remote Persistent Memory Access
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            http://pmem.io/pmdk/
 Source:         https://github.com/pmem/rpma/archive/%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc
 BuildRequires:  libibverbs-devel
 BuildRequires:  pkg-config
@@ -38,7 +37,6 @@ remote hosts over Remote Direct Memory Access (RDMA).
 
 %package -n %{lname}
 Summary:        Remote Persistent Memory Access
-Group:          System/Libraries
 
 %description -n %{lname}
 librpma is a C library for accessing persistent memory (PMem) devices on
@@ -52,7 +50,6 @@ Remote Persistent Memory Accessing (RPMA) applications.
 
 %package devel
 Summary:        Development files for librpma
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
@@ -62,7 +59,9 @@ Development files for librpma
 %autosetup -p1
 
 %build
-%cmake -DBUILD_TESTS=OFF
+%cmake \
+  -DBUILD_TESTS=OFF \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
@@ -70,6 +69,9 @@ Development files for librpma
 # Fix install dir for cmake files
 mkdir -p %{buildroot}/%{_libdir}/cmake/librpma
 mv  %{buildroot}/%{_libdir}/librpma/cmake/*.cmake %{buildroot}/%{_libdir}/cmake/librpma
+
+%check
+%ctest
 
 %post -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
