@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 20 23:11:50 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to clear FTBFS with cmake4
+
+-------------------------------------------------------------------
 Tue Oct  4 08:18:56 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix test on aarch64:

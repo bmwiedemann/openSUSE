@@ -26,7 +26,7 @@ URL:            https://github.com/bombela/backward-cpp
 Source:         https://github.com/bombela/backward-cpp/archive/v%{version}.tar.gz#/backward-cpp-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - https://github.com/bombela/backward-cpp/commit/84bc203529c8f355308f13defe1b86e862f0ce0d
 Patch1:         fix-test-on-aarch64.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 
 %description
@@ -48,7 +48,7 @@ Development files for backward-cpp, a stack trace printer for C++.
 %build
 # LIBDIR is only used for the CMake Config files, and
 # <prefix>/share/<name*> is a valid location
-%cmake -DCMAKE_INSTALL_LIBDIR=%{_datadir}
+%cmake -DCMAKE_INSTALL_LIBDIR=%{_datadir} -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
