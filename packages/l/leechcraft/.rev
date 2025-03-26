@@ -622,4 +622,25 @@ Touchstreams plugin was enabled for Factory. (forwarded request 178518 from Dark
     <comment></comment>
     <requestid>1161246</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>b9765d31afaf4cab4efc9f5615b92232</srcmd5>
+    <version>0.6.70+git.17335.ge406ffdcaf</version>
+    <time>1743020455</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.6.70-17335-ge406ffdcaf snapshot:
+  * Boost fix;
+  * Qt6 instead of Qt5:
+    + LastFM-Qt6 &amp; ProjectM-Qt6 build conditions introduced
+      since respective Qt6 libraries are not available now;
+    + Azoth-juick, krigstask, poshuku-qrd became obsoleted;
+    + Qt5WebKit build condition removed;
+    + Since Qt6WebEngine is available only for x86_64 &amp; aarch64
+      azoth, lhtr &amp; poshuku became obsoleted for ppc, ppc64,
+      ppc64le, s390, s390x, i586, armv6l &amp; armv7l;
+- Dropped obsoletions for unsupported distibutions;
+- Removed leechcraft-0.6.70-16373-g319c272718-build.patch;
+- Removed lc_plugin_wrapper-qt5.1.
+</comment>
+    <requestid>1256144</requestid>
+  </revision>
 </revisionlist>

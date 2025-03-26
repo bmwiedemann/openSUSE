@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,35 +20,37 @@
 %global __requires_exclude (org.LC.common.1)|(org.LC.Blasq.1)|(SB2.1)|(Mellonetray.1)|(org.LC.Ooronee.1)
 
 %bcond_without ffmpeg
-%bcond_with QtWebKit
+%bcond_with LastFM-Qt6
+%bcond_with ProjectM-Qt6
 
-%define plugin_dir %{_libdir}/leechcraft/plugins-qt5
+%define plugin_dir %{_libdir}/leechcraft/plugins-qt6
 %define translations_dir %{_datadir}/leechcraft/translations
 %define settings_dir %{_datadir}/leechcraft/settings
-%define qml_dir %{_datadir}/leechcraft/qml5
+%define qml_dir %{_datadir}/leechcraft/qml6
 
-%define so_ver -qt5-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-16373-g319c272718
+%define so_ver -qt6-0_6_75
+%define LEECHCRAFT_VERSION 0.6.70-17335-ge406ffdcaf
 
-%define db_postfix %{so_ver}_1
-%define gui_postfix %{so_ver}_1
-%define models_postfix %{so_ver}_1
+%define db_postfix %{so_ver}
+%define gui_postfix %{so_ver}
+%define lmp_postfix %{so_ver}
+%define models_postfix %{so_ver}
 %define monocle_postfix %{so_ver}
-%define network_postfix %{so_ver}_1
-%define qml_postfix %{so_ver}_2
+%define network_postfix %{so_ver}
+%define qml_postfix %{so_ver}
 %define shortcuts_postfix %{so_ver}
-%define sll_postfix %{so_ver}_1
+%define sll_postfix %{so_ver}
 %define svcauth_postfix %{so_ver}
-%define sys_postfix %{so_ver}_1
-%define tags_postfix %{so_ver}_1
+%define sys_postfix %{so_ver}
+%define tags_postfix %{so_ver}
 %define threads_postfix %{so_ver}
 %define x11_postfix %{so_ver}
 %define xdg_postfix %{so_ver}
-%define xpc_postfix %{so_ver}_2
+%define xpc_postfix %{so_ver}
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.16373.g319c272718
+Version:        0.6.70+git.17335.ge406ffdcaf
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -57,18 +59,12 @@ URL:            https://leechcraft.org
 Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
-Source9:        lc_plugin_wrapper-qt5.1
-# PATCH-FIX-UPSTREAM vs. Azoth plugin' compilation error.
-Patch0:         leechcraft-0.6.70-16373-g319c272718-build.patch
 
-# BuildRequires:  clang
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  gcc-c++ >= 8
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.13
-BuildRequires:  libQt5Sql5-sqlite >= 5.13
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_container-devel >= 1.76.0
@@ -79,44 +75,26 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  liblastfm-qt5-devel
-BuildRequires:  libqt5-qtbase-common-devel >= 5.13
-BuildRequires:  libquazip-qt5-devel
-BuildRequires:  libqxmpp-qt5-devel >= 1.1
+%if %{with LastFM-Qt6}
+BuildRequires:  liblastfm-qt6-devel
+%endif
 BuildRequires:  libsensors4-devel
 BuildRequires:  libtidy-devel
-# BuildRequires:  llvm-gold-provider
 BuildRequires:  pkgconfig
 BuildRequires:  wt-devel
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.13
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.13
-BuildRequires:  pkgconfig(Qt5Core) >= 5.13
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.13
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.13
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.13
-BuildRequires:  pkgconfig(Qt5Network) >= 5.13
-BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.13
-BuildRequires:  pkgconfig(Qt5Positioning) >= 5.13
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.13
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.13
-BuildRequires:  pkgconfig(Qt5Quick) >= 5.13
-BuildRequires:  pkgconfig(Qt5QuickWidgets) >= 5.13
-BuildRequires:  pkgconfig(Qt5Qwt6) >= 6.2
-BuildRequires:  pkgconfig(Qt5Script) >= 5.13
-BuildRequires:  pkgconfig(Qt5Sensors) >= 5.13
-BuildRequires:  pkgconfig(Qt5Sql) >= 5.13
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.13
-BuildRequires:  pkgconfig(Qt5WebChannel) >= 5.13
-%ifnarch ppc ppc64 ppc64le s390 s390x
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.13
+BuildRequires:  cmake(Qca-qt6)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6QuickWidgets)
+BuildRequires:  pkgconfig(Qt6Qwt6)
+BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6StateMachine)
+%ifarch x86_64 aarch64
+BuildRequires:  cmake(Qt6WebEngineWidgets)
 %endif
-%if %{with QtWebKit}
-BuildRequires:  pkgconfig(Qt5WebKitWidgets) >= 5.13
-%endif
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.13
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.13
-BuildRequires:  pkgconfig(Qt5Xml) >= 5.13
-BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.13
+BuildRequires:  pkgconfig(Qt6Xml)
+BuildRequires:  pkgconfig(QXmppQt6)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(ddjvuapi)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
@@ -130,18 +108,18 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libchromaprint)
 %endif
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libguess)
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libotr)
-BuildRequires:  pkgconfig(libpcre)
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libpostproc)
 %endif
 %ifarch %ix86 x86_64 ppc64 ppc64le
-BuildRequires:  pkgconfig(libprojectM) >= 3
+%if %{with ProjectM-Qt6}
+BuildRequires:  projectM-qt6-devel
+%endif
 %endif
 BuildRequires:  pkgconfig(libqrencode)
 %if %{with ffmpeg}
@@ -152,10 +130,10 @@ BuildRequires:  pkgconfig(libtcmalloc)
 BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.2
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(poppler-cpp)
-BuildRequires:  pkgconfig(poppler-qt5)
+BuildRequires:  pkgconfig(poppler-qt6)
 BuildRequires:  pkgconfig(purple)
-BuildRequires:  pkgconfig(qca2-qt5)
-BuildRequires:  pkgconfig(qtermwidget5)
+BuildRequires:  pkgconfig(qtermwidget6)
+BuildRequires:  pkgconfig(quazip1-qt6)
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(taglib) >= 1.6
 BuildRequires:  pkgconfig(xcb-renderutil)
@@ -164,6 +142,7 @@ BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xscrnsaver)
+BuildRequires:  qt6-sql-sqlite
 
 BuildConflicts: gstreamer-0_10-devel
 BuildConflicts: gstreamer-0_10-plugins-base-devel
@@ -190,19 +169,12 @@ Recommends:     %{name}-secman-simplestorage
 Recommends:     %{name}-visualnotifications
 Suggests:       %{name}-lastfmscrobble
 
-%ifarch ppc ppc64 ppc64le s390 s390x
+%ifarch ppc ppc64 ppc64le s390 s390x i586 armv6l armv7l
 Obsoletes:      %{name}-azoth
-%endif
-%if %{without QtWebKit}
-Obsoletes:      %{name}-blogique
-%endif
-%if %{without QtWebKit}
 Obsoletes:      %{name}-lhtr
-%endif
-%ifarch ppc ppc64 ppc64le s390 s390x
 Obsoletes:      %{name}-poshuku
 %endif
-Obsoletes:      %{name}-vgrabber
+Obsoletes:      %{name}-krigstask
 
 %description
 LeechCraft is a modular "Internet client" application.
@@ -236,11 +208,8 @@ License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-http = %{version}
-Requires:       libQt5Sql5-sqlite
+Requires:       qt6-sql-sqlite
 Recommends:     %{name}-poshuku = %{version}
-%if %{without QtWebKit}
-Obsoletes:      %{name}-aggregator-bodyfetch
-%endif
 
 %description aggregator
 This package provides a RSS/Atom feed reader plugin for LeechCraft.
@@ -257,25 +226,6 @@ It features:
 
 A web browser plugin is recommended to show the news in a fancy way.
 
-
-%if %{with QtWebKit}
-%package aggregator-bodyfetch
-Summary:        LeechCraft Aggregator Bodyfetch Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-Requires:       %{name}-aggregator
-
-%description aggregator-bodyfetch
-This package provides a LeechCraft Aggregator plugin to automatically
-fetch full bodies of news items and replace the original teasers from
-RSS feeds with them, so that it appears like the full news stories
-were originally there.
-
-Fetching is done according to little scripts called recipes. For this to
-work, a script provider like Qrosp should be installed. Please refer to the
-guide to writing recipes if you are interested in writing your own.
-%endif
 
 %package aggregator-webaccess
 Summary:        LeechCraft Aggregator Web Interface Module
@@ -313,7 +263,7 @@ LeechCraft and then either save them locally or upload them to an
 imagebin.
 
 
-%ifnarch ppc ppc64 ppc64le s390 s390x
+%ifarch x86_64 aarch64
 %package azoth
 Summary:        LeechCraft Instant messenger Module
 License:        BSL-1.0
@@ -323,7 +273,7 @@ Requires:       %{name}-azoth-chatstyler = %{version}
 Requires:       %{name}-azoth-protocolplugin
 Requires:       %{name}-securestorage = %{version}
 Suggests:       %{name}-azoth-standardstyles
-Obsoletes:      %{name}-azoth-vader
+Obsoletes:      %{name}-azoth-juick
 
 %description azoth
 This package provides a modular, multi-protocol IM client for LeechCraft.
@@ -410,7 +360,7 @@ Summary:        LeechCraft Azoth Chat history Module
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name}-azoth = %{version}
-Requires:       libQt5Sql5-sqlite
+Requires:       qt6-sql-sqlite
 
 %description azoth-chathistory
 This package provides a chat history plugin for LeechCraft Azoth.
@@ -467,15 +417,6 @@ Requires:       %{name}-azoth = %{version}
 This package provides a plugin for LeechCraft Azoth which
 can remove excessive CAPS usage from incoming messages.
 
-%package azoth-juick
-Summary:        LeechCraft Azoth Juick.com service Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-azoth = %{version}
-
-%description azoth-juick
-This package contains a plugin for LeechCraft Azoth which
-provides an enhanced experience with the juick.com microblogging service.
 
 %package azoth-keeso
 Summary:        LeechCraft Azoth Text transform Module
@@ -722,7 +663,6 @@ This package provides a Picasa image storage client subplugin
 for LeechCraft Blasq.
 
 
-%if %{with QtWebKit}
 %package blogique
 Summary:        LeechCraft Blogging client Module
 License:        BSL-1.0
@@ -757,7 +697,6 @@ Provides:       %{name}-blogique-subplugin = %{version}
 
 %description blogique-metida
 This package provides a LiveJournal subplugin for LeechCraft Blogique.
-%endif
 
 %package certmgr
 Summary:        LeechCraft SSL certificate Module
@@ -826,9 +765,9 @@ License:        BSL-1.0
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
 Requires:       cmake >= 3.8
-Requires:       libQt5Gui-private-headers-devel
 Requires:       libleechcraft-util-db%{db_postfix}               = %{version}
 Requires:       libleechcraft-util-gui%{gui_postfix}             = %{version}
+Requires:       libleechcraft-util-lmp%{lmp_postfix}             = %{version}
 Requires:       libleechcraft-util-models%{models_postfix}       = %{version}
 Requires:       libleechcraft-util-monocle%{monocle_postfix}     = %{version}
 Requires:       libleechcraft-util-network%{network_postfix}     = %{version}
@@ -842,15 +781,14 @@ Requires:       libleechcraft-util-x11%{x11_postfix}             = %{version}
 Requires:       libleechcraft-util-xdg%{xdg_postfix}             = %{version}
 Requires:       libleechcraft-util-xpc%{xpc_postfix}             = %{version}
 Requires:       libleechcraft-util-xsd%{xsd_postfix}             = %{version}
-Requires:       libqt5-linguist-devel >= 5.13
-Requires:       pkgconfig(Qt5Concurrent) >= 5.13
-Requires:       pkgconfig(Qt5DBus) >= 5.13
-Requires:       pkgconfig(Qt5OpenGL) >= 5.13
-Requires:       pkgconfig(Qt5PrintSupport) >= 5.13
-Requires:       pkgconfig(Qt5Script) >= 5.13
-Requires:       pkgconfig(Qt5Svg) >= 5.13
-Requires:       pkgconfig(Qt5X11Extras) >= 5.13
-Requires:       pkgconfig(Qt5XmlPatterns) >= 5.13
+Requires:       cmake(Qt6LinguistTools)
+Requires:       pkgconfig(Qt6Network)
+Requires:       pkgconfig(Qt6Test)
+Requires:       pkgconfig(Qt6QuickWidgets)
+Requires:       pkgconfig(Qt6Qwt6)
+Requires:       pkgconfig(Qt6Sql)
+Requires:       pkgconfig(Qt6StateMachine)
+Requires:       pkgconfig(Qt6Xml)
 Recommends:     leechcraft-azoth-doc
 Recommends:     leechcraft-doc
 Recommends:     leechcraft-monocle-doc
@@ -911,7 +849,6 @@ Provides:       %{name}-fenet-compton = %{version}
 Recommends:     %{name}-cpuload
 Recommends:     %{name}-hotsensors
 Recommends:     %{name}-kbswitch
-Recommends:     %{name}-krigstask
 Recommends:     %{name}-laughty
 Recommends:     %{name}-launchy
 Recommends:     %{name}-lemon
@@ -1086,15 +1023,6 @@ Requires:       %{name} = %{version}
 This package provides a tips plugin for LeechCraft which
 displays a "tip of the day" window after launching LeechCraft.
 
-%package krigstask
-Summary:        LeechCraft Applications Switcher Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-Requires:       %{name}-sb2 = %{version}
-
-%description krigstask
-This package provides an applications switcher quark for LeechCraft SB2.
 
 %package lackman
 Summary:        LeechCraft Package manager Module
@@ -1120,6 +1048,7 @@ Features:
  * Supports dependencies between packages.
  * Operates in user's home directory.
 
+%if %{with LastFM-Qt6}
 %package lastfmscrobble
 Summary:        LeechCraft Last.FM Scrobble Module
 License:        BSL-1.0
@@ -1144,6 +1073,7 @@ Features:
  * Fetching recent releases of artists that are in the user's collection.
  * Fetching artists biography.
  * Configurable language of the fetched information.
+%endif
 
 %package laughty
 Summary:        LeechCraft Notification Server Module
@@ -1176,7 +1106,7 @@ Requires:       %{name}-sb = %{version}
 This package provides another Network Monitor plugin for Leechcraft.
 
 
-%if %{with QtWebKit}
+%ifarch x86_64 aarch64
 %package lhtr
 Summary:        LeechCraft HTML WYSIWYG editor Module
 License:        BSL-1.0
@@ -1224,8 +1154,6 @@ Recommends:     %{name}-musiczombie = %{version}
 Recommends:     ffmpeg
 Requires:       gstreamer-plugins-base >= 1.0
 Requires:       gstreamer-plugins-good >= 1.0
-Requires:       libqt5-qtgraphicaleffects >= 5.13
-Requires:       libqt5-qtquickcontrols >= 5.13
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-libav
 Provides:       %{name}-audioplayer
@@ -1320,6 +1248,7 @@ This package allows to synchronize with MTP devices via LeechCraft.
 
 
 %ifarch %ix86 x86_64 ppc64 ppc64le
+%if %{with ProjectM-Qt6}
 %package lmp-potorchu
 Summary:        LeechCraft Visualization Effects Module
 License:        BSL-1.0
@@ -1328,6 +1257,7 @@ Requires:       %{name}-lmp = %{version}
 
 %description lmp-potorchu
 This package provides visualization effects for the LeechCraft audio player.
+%endif
 %endif
 
 %package lmp-ppl
@@ -1557,7 +1487,7 @@ This package provides a LeechCraft plugin to do a Google search
 with some selected text.
 
 
-%ifnarch ppc ppc64 ppc64le s390 s390x
+%ifarch x86_64 aarch64
 %package poshuku
 Summary:        LeechCraft Web Browser Module
 License:        BSL-1.0
@@ -1566,14 +1496,7 @@ Requires:       %{name} = %{version}
 Requires:       %{name}-poshuku-backend = %{version}
 Recommends:     %{name}-imgaste = %{version}
 Recommends:     %{name}-intermutko = %{version}
-%if %{without QtWebKit}
-Obsoletes:      %{name}-poshuku-dcac
-%endif
-Obsoletes:      %{name}-poshuku-foc
-%if %{without QtWebKit}
-Obsoletes:      %{name}-poshuku-speeddial
-%endif
-Obsoletes:      %{name}-poshuku-webkitview
+Obsoletes:      %{name}-poshuku-qrd
 
 %description poshuku
 This package provides a WebEngine-based web browser plugin for LeechCraft.
@@ -1611,18 +1534,6 @@ Features:
  * Support for replacing Adobe Flash objects with a "Load flash" button.
  * Whitelists for the Flash blocker.
 
-
-%if %{with QtWebKit}
-%package poshuku-dcac
-Summary:        LeechCraft Poshuku DC/AC Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-poshuku = %{version}
-
-%description poshuku-dcac
-This package provides the DC/AC plugin for LeechCraft Poshuku
-which inverts colors on web pages.
-%endif
 
 %package poshuku-fatape
 Summary:        LeechCraft Poshuku Greasemonkey Module
@@ -1711,18 +1622,6 @@ Requires:       %{name}-poshuku-onlinebookmarks = %{version}
 This package contains a plugin for LeechCraft Poshuku Online Bookmarks
 to support the Read it Later service.
 
-%package poshuku-qrd
-Summary:        LeechCraft Poshuku QR coDe Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-poshuku = %{version}
-
-%description poshuku-qrd
-This package provides a QR coDe support plugin for LeechCraft Poshuku
-which can represent the URL of a web page as a QR code.
-
-
-%if %{with QtWebKit}
 %package poshuku-speeddial
 Summary:        LeechCraft Poshuku Speed Dial Module
 License:        BSL-1.0
@@ -1731,7 +1630,6 @@ Requires:       %{name}-poshuku = %{version}
 
 %description poshuku-speeddial
 This package provides the Speed Dial support plugin for LeechCraft Poshuku.
-%endif
 
 %package poshuku-webengineview
 Summary:        LeechCraft Poshuku WebEngine-based backend Module
@@ -1761,7 +1659,6 @@ License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Provides:       %{name}-sb = %{version}
-Requires:       libqt5-qtquickcontrols >= 5.13
 
 %description sb2
 This package provides another side bar plugin for Leechcraft.
@@ -1984,6 +1881,15 @@ Group:          Productivity/Networking/Other
 A library providing some commonly used GUI-related
 widgets, classes and functions.
 
+%package -n libleechcraft-util-lmp%{lmp_postfix}
+Summary:        Utility library for LeechCraft Media Player
+License:        BSL-1.0
+Group:          Productivity/Networking/Other
+
+%description -n libleechcraft-util-lmp%{lmp_postfix}
+A library providing some commonly used lmp plugin' models,
+as well as model-related classes and functions.
+
 %package -n libleechcraft-util-models%{models_postfix}
 Summary:        MVC utility library for LeechCraft
 License:        BSL-1.0
@@ -2113,7 +2019,6 @@ XmlSettingsDialog LeechCraft subsystem.
 
 %prep
 %setup -q -n leechcraft-%{LEECHCRAFT_VERSION}
-%patch -p1 0
 
 #removing non-free icons
 rm -r src/plugins/azoth/share/azoth/iconsets/clients/default
@@ -2144,19 +2049,14 @@ cmake ../src \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DSTRICT_LICENSING=True \
         -DWITH_DBUS_LOADERS=False \
-        -DWITH_PCRE=True \
         -DWITH_QWT=True \
         -DENABLE_UTIL_TESTS=True \
         -DENABLE_ADVANCEDNOTIFICATIONS=True \
         -DENABLE_AGGREGATOR=True \
-%if %{with QtWebKit}
-                -DENABLE_AGGREGATOR_BODYFETCH=True \
-%else
                 -DENABLE_AGGREGATOR_BODYFETCH=False \
-%endif
                 -DENABLE_AGGREGATOR_WEBACCESS=True \
         -DENABLE_AUSCRIE=True \
-%ifnarch ppc ppc64 ppc64le s390 s390x
+%ifarch x86_64 aarch64
         -DENABLE_AZOTH=True \
                 -DENABLE_AZOTH_ABBREV=True \
                 -DENABLE_AZOTH_ACETAMIDE=True \
@@ -2171,7 +2071,6 @@ cmake ../src \
                 -DENABLE_AZOTH_HERBICIDE=True \
                 -DENABLE_AZOTH_HILI=True \
                 -DENABLE_AZOTH_ISTERIQUE=True \
-                -DENABLE_AZOTH_JUICK=True \
                 -DENABLE_AZOTH_KEESO=True \
                 -DENABLE_AZOTH_LASTSEEN=True \
                 -DENABLE_AZOTH_METACONTACTS=True \
@@ -2199,13 +2098,9 @@ cmake ../src \
                 -DENABLE_BLASQ_RAPPOR=True \
                 -DENABLE_BLASQ_SPEGNERSI=False \
                 -DENABLE_BLASQ_VANGOG=True \
-%if %{with QtWebKit}
         -DENABLE_BLOGIQUE=True \
                 -DENABLE_BLOGIQUE_HESTIA=True \
                 -DENABLE_BLOGIQUE_METIDA=True \
-%else
-        -DENABLE_BLOGIQUE=False \
-%endif
         -DENABLE_CERTMGR=True \
         -DENABLE_CHOROID=False \
         -DENABLE_CPULOAD=True \
@@ -2225,15 +2120,19 @@ cmake ../src \
         -DENABLE_INTERMUTKO=True \
         -DENABLE_KBSWITCH=True \
         -DENABLE_KNOWHOW=True \
-        -DENABLE_KRIGSTASK=True \
+        -DENABLE_KRIGSTASK=False \
         -DENABLE_LACKMAN=True \
                 -DTESTS_LACKMAN=True \
         -DENABLE_LADS=False \
+%if %{with LastFM-Qt6}
         -DENABLE_LASTFMSCROBBLE=True \
+%else
+        -DENABLE_LASTFMSCROBBLE=False \
+%endif
         -DENABLE_LAUGHTY=True \
         -DENABLE_LAUNCHY=True \
         -DENABLE_LEMON=True \
-%if %{with QtWebKit}
+%ifarch x86_64 aarch64
         -DENABLE_LHTR=True \
                 -DWITH_LHTR_HTML=True \
 %else
@@ -2245,11 +2144,14 @@ cmake ../src \
                 -DENABLE_LMP_FRADJ=True \
                 -DENABLE_LMP_GRAFFITI=True \
                 -DENABLE_LMP_HTTSTREAM=True \
-                -DENABLE_LMP_LIBGUESS=True \
                 -DENABLE_LMP_MPRIS=True \
                 -DENABLE_LMP_MTPSYNC=True \
 %ifarch %ix86 x86_64 ppc64 ppc64le
+%if %{with ProjectM-Qt6}
                 -DENABLE_LMP_POTORCHU=True \
+%else
+                -DENABLE_LMP_POTORCHU=False \
+%endif
 %else
                 -DENABLE_LMP_POTORCHU=False \
 %endif
@@ -2283,17 +2185,12 @@ cmake ../src \
         -DENABLE_POGOOGLUE=True \
         -DENABLE_POLEEMERY=False \
         -DENABLE_POPISHU=False \
-%ifnarch ppc ppc64 ppc64le s390 s390x
+%ifarch x86_64 aarch64
         -DENABLE_POSHUKU=True \
                 -DENABLE_IDN=True \
                 -DENABLE_POSHUKU_AUTOSEARCH=True \
                 -DENABLE_POSHUKU_CLEANWEB=True \
-%if %{with QtWebKit}
-                -DENABLE_POSHUKU_DCAC=True \
-                        -DENABLE_POSHUKU_DCAC_TESTS=True \
-%else
                 -DENABLE_POSHUKU_DCAC=False \
-%endif
                 -DENABLE_POSHUKU_FATAPE=True \
                 -DENABLE_POSHUKU_FILESCHEME=True \
                 -DENABLE_POSHUKU_FUA=True \
@@ -2301,14 +2198,9 @@ cmake ../src \
                 -DENABLE_POSHUKU_ONLINEBOOKMARKS=True \
                         -DENABLE_POSHUKU_ONLINEBOOKMARKS_DELICIOUS=True \
                         -DENABLE_POSHUKU_ONLINEBOOKMARKS_READITLATER=True \
-                -DENABLE_POSHUKU_QRD=True \
-%if %{with QtWebKit}
+                -DENABLE_POSHUKU_QRD=False \
                 -DENABLE_POSHUKU_SPEEDDIAL=True \
-%else
-                -DENABLE_POSHUKU_SPEEDDIAL=False \
-%endif
                 -DENABLE_POSHUKU_WEBENGINEVIEW=True \
-                -DENABLE_POSHUKU_WEBKITVIEW=False \
 %else
         -DENABLE_POSHUKU=False \
 %endif
@@ -2339,7 +2231,7 @@ cmake ../src \
 cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 
 %fdupes -s %{buildroot}%{_datadir}/%{name}/translations
-%ifnarch ppc ppc64 ppc64le s390 s390x
+%ifarch x86_64 aarch64
 %fdupes -s %{buildroot}%{_datadir}/%{name}/azoth
 %endif
 %fdupes -s %{buildroot}%{_datadir}/%{name}/global_icons/flags
@@ -2354,6 +2246,8 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %postun -n libleechcraft-util-db%{db_postfix} -p /sbin/ldconfig
 %post   -n libleechcraft-util-gui%{gui_postfix} -p /sbin/ldconfig
 %postun -n libleechcraft-util-gui%{gui_postfix} -p /sbin/ldconfig
+%post   -n libleechcraft-util-lmp%{lmp_postfix} -p /sbin/ldconfig
+%postun -n libleechcraft-util-lmp%{lmp_postfix} -p /sbin/ldconfig
 %post   -n libleechcraft-util-models%{models_postfix} -p /sbin/ldconfig
 %postun -n libleechcraft-util-models%{models_postfix} -p /sbin/ldconfig
 %post   -n libleechcraft-util-monocle%{monocle_postfix} -p /sbin/ldconfig
@@ -2386,16 +2280,14 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %files
 %doc CHANGELOG README.md
 %license LICENSE
-%{_bindir}/%{name}-qt5
-%{_mandir}/man1/%{name}-qt5.1%{?ext_man}
-%{_bindir}/%{name}-add-file
-%{_mandir}/man1/%{name}-add-file.1%{?ext_man}
-%{_bindir}/%{name}-handle-file
-%{_mandir}/man1/%{name}-handle-file.1%{?ext_man}
-# %%{_bindir}/lc_plugin_wrapper-qt5
-# %%{_mandir}/man1/lc_plugin_wrapper-qt5.1%%{?ext_man}
+%{_bindir}/%{name}-qt6
+%{_mandir}/man1/%{name}-qt6.1%{?ext_man}
+%{_bindir}/%{name}*-add-file
+%{_mandir}/man1/%{name}*-add-file.1%{?ext_man}
+%{_bindir}/%{name}*-handle-file
+%{_mandir}/man1/%{name}*-handle-file.1%{?ext_man}
 %{settings_dir}/coresettings.xml
-%{_datadir}/applications/%{name}-qt5.desktop
+%{_datadir}/applications/%{name}-qt6.desktop
 %{_datadir}/icons/hicolor/*/*/*
 %dir %{_datadir}/icons/hicolor/14x14
 %dir %{_datadir}/icons/hicolor/14x14/apps
@@ -2407,8 +2299,8 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_??_??.qm
 %dir %{_libdir}/%{name}
 %dir %{plugin_dir}
-%{_libdir}/libleechcraft-util-qt5.so.*
-%{_libdir}/lib%{name}-xsd-qt5.so.*
+%{_libdir}/libleechcraft-util-qt6.so.*
+%{_libdir}/lib%{name}-xsd-qt6.so.*
 %{_datadir}/leechcraft/global_icons/
 %dir %{_datadir}/leechcraft/themes
 %dir %{_datadir}/leechcraft/themes/*
@@ -2431,11 +2323,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_aggregator.so
 %dir %{_datadir}/leechcraft/scripts
 
-%if %{with QtWebKit}
-%files aggregator-bodyfetch
-%{plugin_dir}/*craft_aggregator_bodyfetch.so
-%{_datadir}/leechcraft/scripts/aggregator
-%endif
 
 %files aggregator-webaccess
 %{plugin_dir}/*craft_aggregator_webaccess.so
@@ -2452,7 +2339,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_auscrie_*.qm
 %{plugin_dir}/lib%{name}_auscrie.so
 
-%ifnarch ppc ppc64 ppc64le s390 s390x
+%ifarch x86_64 aarch64
 %files azoth
 %dir %{_datadir}/leechcraft/azoth
 %dir %{_datadir}/leechcraft/azoth/styles
@@ -2472,7 +2359,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{settings_dir}/azothacetamidesettings.xml
 %{translations_dir}/*craft_azoth_acetamide*
 %{plugin_dir}/*craft_azoth_acetamide.so
-%{_datadir}/applications/%{name}-azoth-acetamide-qt5.desktop
+%{_datadir}/applications/%{name}-azoth-acetamide-qt6.desktop
 
 %files azoth-adiumstyles
 %defattr(644,root,root,755)
@@ -2506,7 +2393,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 
 %files azoth-embedmedia
 %{plugin_dir}/*craft_azoth_embedmedia.so
-%{_datadir}/leechcraft/azoth/embedmedia
 
 %files azoth-herbicide
 %{plugin_dir}/*craft_azoth_herbicide.so
@@ -2523,9 +2409,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{settings_dir}/azothisteriquesettings.xml
 %{translations_dir}/*craft_azoth_isterique*
 
-%files azoth-juick
-%{plugin_dir}/*craft_azoth_juick.so
-%{translations_dir}/*craft_azoth_juick_*.qm
 
 %files azoth-keeso
 %{plugin_dir}/*craft_azoth_keeso.so
@@ -2584,7 +2467,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %files azoth-xoox
 %{translations_dir}/*craft_azoth_xoox*
 %{plugin_dir}/*craft_azoth_xoox.so
-%{_datadir}/applications/%{name}-azoth-xoox-qt5.desktop
+%{_datadir}/applications/%{name}-azoth-xoox-qt6.desktop
 %{settings_dir}/azothxooxsettings.xml
 
 %files azoth-xtazy
@@ -2597,7 +2480,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{settings_dir}/torrentsettings.xml
 %{translations_dir}/*craft_bittorrent_*.qm
 %{plugin_dir}/*craft_bittorrent.so
-%{_datadir}/applications/%{name}-bittorrent-qt5.desktop
+%{_datadir}/applications/%{name}-bittorrent-qt6.desktop
 
 %files blasq
 %{plugin_dir}/lib%{name}_blasq.so
@@ -2618,7 +2501,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/lib%{name}_blasq_vangog.so
 %{translations_dir}/*craft_blasq_vangog*.qm
 
-%if %{with QtWebKit}
 %files blogique
 %{plugin_dir}/lib%{name}_blogique.so
 %{translations_dir}/*craft_blogique_??.qm
@@ -2626,6 +2508,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %dir %{qml_dir}/blogique
 %{qml_dir}/blogique/*.qml
 %{qml_dir}/blogique/*.js
+%{settings_dir}/blogiquesettings.xml
 
 %files blogique-hestia
 %{plugin_dir}/lib%{name}_blogique_hestia.so
@@ -2636,7 +2519,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/lib%{name}_blogique_metida.so
 %{settings_dir}/blogiquemetidasettings.xml
 %{translations_dir}/*craft_blogique_metida*.qm
-%endif
 
 %files certmgr
 %{plugin_dir}/lib%{name}_certmgr.so
@@ -2769,20 +2651,18 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_knowhow.so
 %{settings_dir}/knowhowsettings.xml
 
-%files krigstask
-%{plugin_dir}/lib%{name}_krigstask.so
-%{qml_dir}/krigstask
-%{translations_dir}/*craft_krigstask_*.qm
 
 %files lackman
 %{plugin_dir}/*craft_lackman.so
 %{settings_dir}/lackmansettings.xml
 %{translations_dir}/*craft_lackman*
 
+%if %{with LastFM-Qt6}
 %files lastfmscrobble
 %{plugin_dir}/lib%{name}_lastfmscrobble.so
 %{settings_dir}/lastfmscrobblesettings.xml
 %{translations_dir}/*craft_lastfmscrobble_*.qm
+%endif
 
 %files laughty
 %{plugin_dir}/lib%{name}_laughty.so
@@ -2799,7 +2679,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_lemon_*.qm
 %{settings_dir}/lemonsettings.xml
 
-%if %{with QtWebKit}
+%ifarch x86_64 aarch64
 %files lhtr
 %{plugin_dir}/lib%{name}_lhtr.so
 %{translations_dir}/*craft_lhtr_*.qm
@@ -2818,7 +2698,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_lmp_??.qm
 %{translations_dir}/*craft_lmp_??_??.qm
 %{plugin_dir}/*craft_lmp.so
-%{_datadir}/applications/%{name}-lmp*-qt5.desktop
+%{_datadir}/applications/%{name}-lmp*-qt6.desktop
 %dir %{qml_dir}/lmp
 %{qml_dir}/lmp/*.qml
 %exclude %{qml_dir}/lmp/brainslugz
@@ -2859,10 +2739,12 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_lmp_mtpsync.so
 
 %ifarch %ix86 x86_64 ppc64 ppc64le
+%if %{with ProjectM-Qt6}
 %files lmp-potorchu
 %{plugin_dir}/*craft_lmp_potorchu.so
 %{translations_dir}/*craft_lmp_potorchu_??.qm
 %{translations_dir}/*craft_lmp_potorchu_??_??.qm
+%endif
 %endif
 
 %files lmp-ppl
@@ -2882,10 +2764,13 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 
 %files monocle-boop
 %{plugin_dir}/lib%{name}_monocle_boop.so
+%{_datadir}/applications/%{name}-monocle-boop-qt6.desktop
+%{translations_dir}/*craft_monocle_boop_??.qm
+%{translations_dir}/*craft_monocle_boop_??_??.qm
 
 %files monocle-fxb
 %{plugin_dir}/lib%{name}_monocle_fxb.so
-%{_datadir}/applications/%{name}-monocle-fxb-qt5.desktop
+%{_datadir}/applications/%{name}-monocle-fxb-qt6.desktop
 %{settings_dir}/monoclefxbsettings.xml
 %{translations_dir}/*craft_monocle_fxb_??.qm
 %{translations_dir}/*craft_monocle_fxb_??_??.qm
@@ -2897,20 +2782,20 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 
 %files monocle-pdf
 %{plugin_dir}/lib%{name}_monocle_pdf.so
-%{_datadir}/applications/%{name}-monocle-pdf-qt5.desktop
+%{_datadir}/applications/%{name}-monocle-pdf-qt6.desktop
 %{settings_dir}/monoclepdfsettings.xml
 %{translations_dir}/*craft_monocle_pdf_??.qm
 %{translations_dir}/*craft_monocle_pdf_??_??.qm
 
 %files monocle-postrus
 %{plugin_dir}/lib%{name}_monocle_postrus.so
-%{_datadir}/applications/%{name}-monocle-postrus-qt5.desktop
+%{_datadir}/applications/%{name}-monocle-postrus-qt6.desktop
 %{translations_dir}/*craft_monocle_postrus_??.qm
 %{translations_dir}/*craft_monocle_postrus_??_??.qm
 
 %files monocle-seen
 %{plugin_dir}/lib%{name}_monocle_seen.so
-%{_datadir}/applications/%{name}-monocle-seen-qt5.desktop
+%{_datadir}/applications/%{name}-monocle-seen-qt6.desktop
 %{translations_dir}/*craft_monocle_seen_??.qm
 %{translations_dir}/*craft_monocle_seen_??_??.qm
 
@@ -2964,7 +2849,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_pogooglue*
 %{translations_dir}/*craft_pogooglue*
 
-%ifnarch ppc ppc64 ppc64le s390 s390x
+%ifarch x86_64 aarch64
 %files poshuku
 %{settings_dir}/poshukusettings.xml
 %{translations_dir}/*craft_poshuku_??.qm
@@ -2980,13 +2865,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_poshuku_cleanweb*.qm
 %{plugin_dir}/*craft_poshuku_cleanweb.so
 
-%if %{with QtWebKit}
-%files poshuku-dcac
-%{plugin_dir}/*craft_poshuku_dcac.so
-%{translations_dir}/*craft_poshuku_dcac_??.qm
-%{translations_dir}/*craft_poshuku_dcac_??_??.qm
-%{settings_dir}/poshukudcacsettings.xml
-%endif
 
 %files poshuku-fatape
 %{settings_dir}/poshukufatapesettings.xml
@@ -3018,18 +2896,11 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %files poshuku-onlinebookmarks-readitlater
 %{plugin_dir}/*craft_poshuku_onlinebookmarks_readitlater.*
 
-%files poshuku-qrd
-%{plugin_dir}/lib%{name}_poshuku_qrd.so
-%{translations_dir}/*craft_poshuku_qrd_??.qm
-%{translations_dir}/*craft_poshuku_qrd_??_??.qm
-
-%if %{with QtWebKit}
 %files poshuku-speeddial
 %{plugin_dir}/lib%{name}_poshuku_speeddial.so
 %{settings_dir}/poshukuspeeddialsettings.xml
 %{translations_dir}/*craft_poshuku_speeddial_??.qm
 %{translations_dir}/*craft_poshuku_speeddial_??_??.qm
-%endif
 
 %files poshuku-webengineview
 %{plugin_dir}/*craft_poshuku_webengineview.so
@@ -3118,6 +2989,9 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 
 %files -n libleechcraft-util-gui%{gui_postfix}
 %{_libdir}/*-util-gui*.so.*
+
+%files -n libleechcraft-util-lmp%{lmp_postfix}
+%{_libdir}/*lmp-util*.so.*
 
 %files -n libleechcraft-util-models%{models_postfix}
 %{_libdir}/*-util-models*.so.*

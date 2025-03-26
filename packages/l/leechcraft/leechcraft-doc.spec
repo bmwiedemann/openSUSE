@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft-doc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define LEECHCRAFT_VERSION 0.6.70-16373-g319c272718
+%define LEECHCRAFT_VERSION 0.6.70-17335-ge406ffdcaf
 
 Name:           leechcraft-doc
-Version:        0.6.70+git.16373.g319c272718
+Version:        0.6.70+git.17335.ge406ffdcaf
 Release:        0
 Summary:        Modular Internet Client Documentation
 License:        BSL-1.0

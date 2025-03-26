@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 13 13:13:30 UTC 2025 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-17335-ge406ffdcaf snapshot:
+  * Boost fix;
+  * Qt6 instead of Qt5:
+    + LastFM-Qt6 & ProjectM-Qt6 build conditions introduced
+      since respective Qt6 libraries are not available now;
+    + Azoth-juick, krigstask, poshuku-qrd became obsoleted;
+    + Qt5WebKit build condition removed;
+    + Since Qt6WebEngine is available only for x86_64 & aarch64
+      azoth, lhtr & poshuku became obsoleted for ppc, ppc64,
+      ppc64le, s390, s390x, i586, armv6l & armv7l;
+- Dropped obsoletions for unsupported distibutions;
+- Removed leechcraft-0.6.70-16373-g319c272718-build.patch;
+- Removed lc_plugin_wrapper-qt5.1.
+
+-------------------------------------------------------------------
 Fri Mar 22 05:07:19 UTC 2024 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Updated to 0.6.70-16373-g319c272718 snapshot:
