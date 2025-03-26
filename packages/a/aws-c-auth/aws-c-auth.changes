@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 18 08:28:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.7
+  * Only forbid `X-Amz-S3session-Token` when signing with s3 express
+    by @TingDaoK in (#268)
+
+-------------------------------------------------------------------
 Wed Mar 12 07:25:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.6
