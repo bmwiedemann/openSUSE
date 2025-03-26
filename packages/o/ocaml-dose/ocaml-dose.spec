@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-dose
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,38 +17,39 @@
 
 
 %bcond_with ocaml_dose_testsuite
-%define build_flavor @BUILD_FLAVOR@%{nil}
-%if "%{build_flavor}" == "testsuite"
+%define build_flavor @BUILD_FLAVOR@%nil
+%if "%build_flavor" == "testsuite"
 %if %{without ocaml_dose_testsuite}
 ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
-%define nsuffix %{nil}
+%define nsuffix %nil
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 
 %define     pkg ocaml-dose
-Name:           %{pkg}%{nsuffix}
+Name:           %pkg%nsuffix
 Version:        7.0.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        An OCaml dependency toolkit
 License:        LGPL-3.0-or-later
 URL:            https://opam.ocaml.org/packages/dose3
-Source0:        %{pkg}-%{version}.tar.xz
+Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20210911
-%if 1
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  ocamlfind(base64)
 BuildRequires:  ocamlfind(cudf)
 BuildRequires:  ocamlfind(extlib)
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(ocamlgraph)
-BuildRequires:  ocamlfind(re.pcre)
-%endif
+BuildRequires:  ocamlfind(re)
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 BuildRequires:  dctrl-tools
 BuildRequires:  dpkg
 BuildRequires:  git-core
@@ -72,42 +73,42 @@ uninstallability checks).
 
 %package devel
 Summary:        An OCaml dependency toolkit -- Development files
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description devel
-This package contains development files for package %{name}.
+This package contains development files for package %name.
 
 %prep
-%autosetup -p1 -n %{pkg}-%{version}
+%autosetup -p1 -n %pkg-%version
 
 %build
 dune_release_pkgs='dose3'
 %ocaml_dune_setup
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_build
 %endif
 
 %install
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
 %endif
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 %check
 git --no-pager config --global user.email 'you@example.com'
 git --no-pager config --global user.name  'Your Name'
 git --no-pager init .
 git --no-pager add .
-git --no-pager commit -m '%{version}'
-git --no-pager tag '%{version}'
+git --no-pager commit -m '%version'
+git --no-pager tag '%version'
 %ocaml_dune_test
 %endif
 
-%if "%{build_flavor}" == ""
-%files -f %{name}.files
+%if "%build_flavor" == ""
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %endif
 

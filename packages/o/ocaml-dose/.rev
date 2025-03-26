@@ -45,4 +45,12 @@ It is a dependency of opam.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>921265</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>931dff8ac4fc346328e50e75fcfb803e</srcmd5>
+    <version>7.0.0</version>
+    <time>1743020641</time>
+    <user>anag+factory</user>
+    <comment>- allow only 64bit to follow other packages</comment>
+    <requestid>1256256</requestid>
+  </revision>
 </revisionlist>
