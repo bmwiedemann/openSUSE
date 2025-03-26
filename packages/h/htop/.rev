@@ -626,4 +626,41 @@
   * default color preset: use bold blue for better visibility</comment>
     <requestid>1138063</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>adfed4052edc5f63df9ba211d91784ae</srcmd5>
+    <version>3.4.0</version>
+    <time>1743020466</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.4.0:
+  * Improve Darwin support for ARM-based systems
+  * Fix static linking with libsystemd
+  * Various build fixes for DragonFlyBSD, Darwin, NetBSD, OpenBSD &amp; Solaris
+  * Fix running task display (count)
+  * Fix sort order handling in tree mode
+  * Add warning when exiting with a signal (not saving .htoprc)
+  * Add Disk I/O and Network I/O meter for DragonFlyBSD
+  * Improve handling of invalid Unicode strings
+  * Disable basename checking for kernel tasks
+  * Updated documentation for pcp-htop
+  * Disable FOCUS_IN/FOCUS_OUT event handling
+  * Add GPU meter for Linux and PCP
+  * Add colum for GPU time per process on Linux and PCP
+  * Avoid glibc FILE API voodoo
+  * Ignore previously unhandled signals USR1 and USR2
+  * Force locating the config file to only use absolute paths
+  * Prefer reading htoprc from ~/.config/htop/htoprc over legacy ~/.htoprc
+  * Force writing the configuration to a regular file
+  * Use distinct config files for htop and pcp-htop
+  * Link libnl3 at runtime
+  * Gather permitted capabilities via capget(2)
+  * Avoid fetching certain process information for each thread on Linux (speed up)
+  * Improved handling for invalid data in /proc/tty/drivers on Linux
+  * Various changes to avoid memory allocations inside signal handlers
+  * Add single column header layout
+  * Fix DivByZero bug on startup on Darwin
+  * Include thread information on Darwin
+  * Show process state on Darwin
+  * Update compat check for C23 compilers</comment>
+    <requestid>1256151</requestid>
+  </revision>
 </revisionlist>

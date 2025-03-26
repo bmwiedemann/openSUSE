@@ -1,7 +1,7 @@
 #
 # spec file for package htop
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           htop
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        An Interactive text-mode Process Viewer for Linux
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ URL:            https://htop.dev
 Source0:        https://github.com/htop-dev/htop/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  libsensors4-devel
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(hwloc)
@@ -34,9 +35,6 @@ BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(ncurses)
 Recommends:     lsof
 Recommends:     strace
-%ifnarch        s390 s390x
-BuildRequires:  libsensors4-devel
-%endif
 
 %description
 htop is an interactive text-mode process viewer for Linux. It aims to be a
