@@ -68,6 +68,7 @@ Requires:       python3-pypresence
 %endif
 %if %{with moddb}
 Requires:       python3-moddb
+Requires:       (selinux-policy-targeted-gaming if selinux-policy-targeted)
 %endif
 %else
 BuildRequires:  apparmor-abstractions

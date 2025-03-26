@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 13:01:47 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Fix gaming under selinux (bsc#1206292)
+
+-------------------------------------------------------------------
 Fri Feb 28 10:54:48 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Fix wrong placement of lang_package macro in spec file
