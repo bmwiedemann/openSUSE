@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 21 21:57:39 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to clear FTBFS with cmake4
+
+-------------------------------------------------------------------
 Wed Mar 19 07:56:16 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Fix dumb cmake handling and enable ZZIP_LARGEFILE_RENAME as well
@@ -8,7 +13,7 @@ Wed Mar 19 07:56:16 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Mon Mar 17 09:16:06 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
-- Support large file access on 32bit architectures as well (boo#1239672) 
+- Support large file access on 32bit architectures as well (boo#1239672)
 
 -------------------------------------------------------------------
 Thu Aug  8 13:58:23 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>

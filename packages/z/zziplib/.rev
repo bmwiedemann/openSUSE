@@ -343,4 +343,12 @@
 - Support large file access on 32bit architectures as well (boo#1239672)</comment>
     <requestid>1254316</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>978eff1d839d432e422fb6e7c5096fc3</srcmd5>
+    <version>0.13.78</version>
+    <time>1743020177</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1255583</requestid>
+  </revision>
 </revisionlist>

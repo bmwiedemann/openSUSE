@@ -26,7 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            http://zziplib.sourceforge.net
 Source0:        https://github.com/gdraheim/zziplib/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
 BuildRequires:  zip
@@ -64,7 +64,7 @@ sed -i -e 's:docs ::g' Makefile.am
 %build
 # Workaround for boo#1225959
 %global optflags %{optflags} -fpermissive %(getconf LFS_CFLAGS) -DPIC
-%cmake -DZZIP_TESTCVE=OFF -DZZIP_LARGEFILE_SENSITIVE=ON -DZZIP_LARGEFILE_RENAME=ON -DPIC=ON
+%cmake -DZZIP_TESTCVE=OFF -DZZIP_LARGEFILE_SENSITIVE=ON -DZZIP_LARGEFILE_RENAME=ON -DPIC=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
