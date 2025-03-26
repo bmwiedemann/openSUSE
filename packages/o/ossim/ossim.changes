@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 26 12:45:49 UTC 2025 - Atri <badshah400@gmail.com>
+
+- Fix devel package requirement on shared lib after the latter's
+  so version bump.
+
+-------------------------------------------------------------------
+Sat Mar  8 12:43:02 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.12.0:
+  * No release notes.
+- Add ossim-long-int-cast.patch: explicitly cast hsize_t to
+  u_int64 to avoid compilation problem with hdf5 >= 1.14.0
+  [gh#ossimlabs/ossim#301].
+- Pass INSTALL_LIBRARY_DIR=%{_libdir} to avoid having to move
+  installed arch-specific library dirs after install.
+- Use %ldconfig_scriptlets instead of `post(un) -p
+  /sbin/ldconfig`.
+
+-------------------------------------------------------------------
 Thu Feb 20 11:11:55 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to 2.11.1

@@ -1,7 +1,7 @@
 #
 # spec file for package ossim
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 Angelos Tzotsos <tzotsos@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,15 +17,17 @@
 #
 
 
-%define _release_name OrchidIsland
+%define so_ver 2
 Name:           ossim
-Version:        2.11.1
+Version:        2.12.0
 Release:        0
 Summary:        Open Source Software Image Map (OSSIM)
 License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            http://trac.osgeo.org/ossim/
-Source0:        https://github.com/ossimlabs/ossim/archive/%{_release_name}-%{version}.tar.gz#/%{name}-%{_release_name}-%{version}.tar.gz
+Source0:        https://github.com/ossimlabs/ossim/releases/download/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM ossim-long-int-cast.patch gh#ossimlabs/ossim#301 badshah400@gmail.com -- Explicitly cast hsize_t into u_int64 to avoid compilation problems with hdf5 >= 1.14.0
+Patch0:         ossim-long-int-cast.patch
 BuildRequires:  cmake >= 2.8.0
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
@@ -49,7 +51,7 @@ photogrammetry.
 %package devel
 Summary:        Header files for the Open Source Software Image Map
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}1 = %{version}-%{release}
+Requires:       lib%{name}%{so_ver} = %{version}-%{release}
 Provides:       lib%{name}-devel
 
 %description devel
@@ -58,11 +60,11 @@ Open Source Software Image Map (OSSIM) is an engine for
 remote sensing, image processing, geographical information systems and
 photogrammetry.
 
-%package -n lib%{name}1
+%package -n lib%{name}%{so_ver}
 Summary:        Open Source Software Image Map libraries
 Group:          System/Libraries
 
-%description -n lib%{name}1
+%description -n lib%{name}%{so_ver}
 The OSSIM shared library files.
 Open Source Software Image Map (OSSIM) is an engine for
 remote sensing, image processing, geographical information systems and
@@ -71,16 +73,17 @@ photogrammetry.
 %package sample-data
 Summary:        OSSIM data samples files
 Group:          Development/Libraries/C and C++
+BuildArch:      noarch
 
 %description sample-data
 The OSSIM data samples files for tests.
 
 %prep
-%setup -q -n %{name}-%{_release_name}-%{version}
+%autosetup -p1
 
 %build
-export CXXFLAGS=" -std=c++03"
 %cmake \
+  -DINSTALL_LIBRARY_DIR=%{_libdir} \
   -DBUILD_OSSIM_FRAMEWORKS=ON \
   -DBUILD_OSSIM_FREETYPE_SUPPORT=ON \
   -DBUILD_OSSIM_MPI_SUPPORT=OFF \
@@ -91,39 +94,26 @@ export CXXFLAGS=" -std=c++03"
   -DBUILD_OSSIM_HDF5_SUPPORT=ON \
   -DBUILD_SHARED_LIBS=ON
 
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
 
-# Fix lib folder for 32-bits
-# Beware don't let spec-cleaner playing with this
-%if "%{_lib}" == "lib"
-mkdir -p %{buildroot}/usr/lib
-mv %{buildroot}/usr/lib64/* %{buildroot}/usr/lib/
-%endif
-
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n lib%{name}1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{so_ver}
 
-%postun -n lib%{name}1 -p /sbin/ldconfig
-
-%files -n lib%{name}1
-%defattr(644,root,root,755)
-%{_libdir}/*.so.*
+%files -n lib%{name}%{so_ver}
+%{_libdir}/*.so.%{so_ver}*
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/*
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/*
 %{_libdir}/lib*.so
 
 %files sample-data
-%dir %{_datadir}/ossim
-%{_datadir}/ossim/*
+%{_datadir}/ossim/
 
 %changelog
