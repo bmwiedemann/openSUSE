@@ -27,6 +27,9 @@ Source0:        https://github.com/baldurk/renderdoc/archive/v%{version}/renderd
 Source1:        https://github.com/baldurk/swig/archive/renderdoc-modified-7.zip
 Patch0:         0001-Fix-install-rpaths.patch
 Patch1:         0002-Add-debugger-as-desktop-menu-category.patch
+# Applies to the extracted renderdoc-modified-7.zip.
+# Created with git format-patch --src-prefix=a/swig-renderdoc-modified-7/ --dst-prefix=b/swig-renderdoc-modified-7/
+Patch2:         0001-PCRE2.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -41,8 +44,9 @@ BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  memory-constraints
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  python3-devel
+BuildRequires:  unzip
 BuildRequires:  vulkan-devel
 BuildRequires:  xcb-util-keysyms-devel
 
@@ -60,7 +64,7 @@ RenderDoc is a frame-capture based graphics debugger, currently
 available for Vulkan, D3D11, D3D12, OpenGL, and OpenGL ES development.
 
 %prep
-%autosetup -p1 -n renderdoc-%{version}
+%autosetup -p1 -n renderdoc-%{version} -a 1
 
 %build
 %limit_build -m 1750
@@ -71,7 +75,7 @@ mkdir %{_builddir}/%{name}-%{version}/build && cd %{_builddir}/%{name}-%{version
         -DLIB_SUFFIX=64 \
 %endif
   -DQMAKE_QT5_COMMAND=qmake-qt5 \
-  -DRENDERDOC_SWIG_PACKAGE=%{_sourcedir}/renderdoc-modified-7.zip \
+  -DRENDERDOC_SWIG_PACKAGE=%{_builddir}/%{name}-%{version}/swig-renderdoc-modified-7 \
   -DENABLE_GL=YES \
   -DENABLE_VULKAN=YES \
   -DENABLE_XCB=YES \
