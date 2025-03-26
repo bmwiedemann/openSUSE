@@ -7,4 +7,12 @@
     <comment>new dependency of ocaml-opam-0install-cudf</comment>
     <requestid>1249865</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>680a998e1364a9bed6a3cf17e308e691</srcmd5>
+    <version>2.18</version>
+    <time>1743020632</time>
+    <user>anag+factory</user>
+    <comment>- allow only 64bit to follow other packages</comment>
+    <requestid>1256252</requestid>
+  </revision>
 </revisionlist>
