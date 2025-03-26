@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Mon Mar 10 08:45:27 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Some tests fails when PSGI dependencies is not prevent, revert source commit
+  8cf322e allows skipping them.
+  See https://github.com/ddclient/ddclient/issues/815
+  [+ Revert-tests-only-skip-HTTPD-tests.patch]
+
+-------------------------------------------------------------------
+Fri Mar  7 17:03:56 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to 4.0.0
+  * BREAKING CHANGES: ddclient now looks for `ddclient.conf` in
+    `${sysconfdir}/ddclient` by default instead of `${sysconfdir}`.
+  * To retain the previous behavior, pass `'--with-confdir=${sysconfdir}'` to
+    `configure`.
+  * The `--ssl` option is now enabled by default.
+  * Unencrypted (plain) HTTP is now used instead of encrypted (TLS) HTTP if the
+    URL uses `http://` instead of `https://`, even if the `--ssl` option is
+    enabled.
+  * The string argument to `--cmdv4` or `--cmdv6` is now executed as-is by the
+    system's shell, matching the behavior of the deprecated `--cmd` option.
+    This makes it possible to pass command-line arguments, which reduces the
+    need for a custom wrapper script.  Beware that the string is also subject to
+    the shell's command substitution, quote handling, variable expansion, field
+    splitting, etc., so you may need to add extra escaping to ensure that any
+    special characters are preserved literally.
+  * The default web service for `--webv4` and `--webv6` has changed from Google
+    Domains (which has shut down) to ipify.
+  * Invalid command-line options or values are now fatal errors (instead of
+    discarded with a warning).
+  * All log messages are now written to STDERR, not a mix of STDOUT and STDERR.
+  * For `--protocol=freedns` and `--protocol=nfsn`, the core module
+    `Digest::SHA` is now required.  Previously, `Digest::SHA1` was used (if
+    available) as an alternative to `Digest::SHA`.
+  * The `he` built-in web IP discovery service (`--webv4=he`, `--webv6=he`, and
+    `--web=he`) was renamed to `he.net` for consistency with the new `he.net`
+    protocol.  The old name is still accepted but is deprecated and will be
+    removed in a future version of ddclient.
+  * Deprecated built-in web IP discovery services are not listed in the output
+    of `--list-web-services`.
+  * `dyndns2`: Support for "wait" response lines has been removed.  The Dyn
+    documentation does not mention such responses, and the code to handle them,
+    untouched since at least 2006, is believed to be obsolete.
+  * `dyndns2`: The obsolete `static` and `custom` options have been removed.
+    Setting the options may produce a warning.
+  * The diagnostic `--geturl` command-line argument was removed.
+  * `easydns`: The default value for `min-interval` was increased from 5m to 10m
+    to match easyDNS documentation.
+  * `woima`: The dyn.woima.fi service appears to be defunct so support was
+    removed.
+  * `googledomains`: Support was removed because the service shut down.
+  * The `--retry` option was removed.
+  * New `--mail-from` option to control the "From:" header of email messages.
+  * Simultaneous/separate updating of IPv4 (A) records and IPv6 (AAAA) records
+    is now supported in the following services: `gandi`
+  * `porkbun`: Added support for subdomains.
+  * `gandi`: Added support for personal access tokens.
+  * Comments after the `\` line continuation character are now supported.
+  * Minor improvements to `--help` output.
+  * Improved formatting of ddclient's version number.
+  * Updated sample systemd service unit file to improve logging in the systemd
+    journal.
+  * The second and subsequent lines in a multi-line log message now have a
+    different prefix to distinguish them from separate log messages.
+  * Log messages now include context, making it easier to troubleshoot issues.
+  * `emailonly`: New `protocol` option that simply emails you when your IP
+    address changes.
+  * `he.net`: Added support for updating Hurricane Electric records.
+  * `dyndns2`, `domeneshop`, `dnsmadeeasy`, `keysystems`: The `server` option
+    can now include `http://` or `https://` to control the use of TLS.  If
+    omitted, the value of the `ssl` option is used to determine the scheme.
+  * `ddns.fm`: New `protocol` option for updating [DDNS.FM](https://ddns.fm/)
+    records.
+  * `inwx`: New `protocol` option for updating [INWX](https://www.inwx.com/)
+    records.
+  * `domeneshop`: Add IPv6 support.
+  * `duckdns`: Multiple hosts with the same IP address are now updated together.
+  * `directnic`: Added support for updatng Directnic records.
+  * `porkbun`: The update URL hostname is now configurable via the `server`
+    option.
+  * `dnsexit2`: Multiple hosts are updated in a single API call when possible.
+  * Fixed numerous bugs in cache file (recap) handling.
+  * Fixed numerous bugs in command-line option and configuration file
+    processing.
+  * `noip`: Fixed failure to honor IP discovery settings in some circumstances.
+  * Fixed `--usev6` with providers that have not yet been updated to use the new
+    separate IPv4/IPv6 logic.
+  * HTTP redirects (301, 302) are now followed.
+  * `keysystems`: Fixed update URL.
+  * `dondominio`: Fixed response parsing.
+  * Fixed `--web-ssl-validate` and `--fw-ssl-validate` options, which were
+    ignored in some cases (defaulting to validate).
+  * Explicitly setting `--web-skip`, `--webv4-skip`, `--webv6-skip`,
+    `--fw-skip`, `--fwv4-skip`, and `--fwv6-skip` to the empty string now
+    disables any built-in default skip.  Before, setting to the empty string had
+    no effect.
+  * `--use=disabled` now works.
+  * `--retry` and `--daemon` are incompatible with each other; ddclient now
+    errors out if both are provided.
+  * `--usev4=cisco` and `--usev4=cisco-asa` now work.
+  * Fixed "Scalar value better written as" Perl warning.
+  * Fixed "Invalid Value for keyword 'wtime' = ''" warning.
+  * Fixed unnecessary repeated updates for some services.
+  * Fixed DNSExit provider when configured with a zone and non-identical
+    hostname.
+  * `infomaniak`: Fixed frequent forced updates after 25 days (`max-interval`).
+  * `infomaniak`: Fixed incorrect parsing of server response.
+  * `infomaniak`: Fixed incorrect handling of `nochg` responses.
+  * `regfishde`: Fixed IPv6 support.
+  * `easydns`: IPv4 and IPv6 addresses are now updated separately to be
+    consistent with the easyDNS documentation.
+  * `easydns`: Fixed parsing of result code from server response.
+  * `easydns`: Fixed successful updates treated as failed updates.
+  * Any IP addresses in an HTTP response's headers or in an HTTP error
+    response's body are now ignored when obtaining the IP address from a
+    web-based IP discovery service (`--usev4=webv4`, `--usev6=webv6`) or from a
+    router/firewall device.
+  * `yandex`: Errors are now retried.
+  * `gandi`: Fixed handling of error responses.
+  * `dyndns2`: Fixed handling of responses for multi-host updates.
+  * `porkbun`: The default update URL was updated from `porkbun.com` to
+    `api.porkbun.com`.
+- specfile: 
+  * Update the buildrequires to get corresponding dependencies for
+  Tumbleweed.
+  * ddclient.conf is now installing in /etc/ddclient/ddclient.conf
+-Addapt patches with new version
+  * ddclient-config.patch
+  * ddclient-delay-main-process-for-systemd.patch
+  * disable-ip-test.patch
+- Removing patch deal upstream
+  * ddclient-disable-automake-treating-warnings-as-error.patch
+
+-------------------------------------------------------------------
 Thu Jan  9 19:44:26 UTC 2025 - chris@computersalat.de
 
 - sync spec and changes file with SUSE_SLE-15_Update

@@ -471,4 +471,12 @@ I can't fix it as I don't know sysvinit scripts (forwarded request 204930 from p
     <comment>sync spec and changes file, remove obsolete deps (forwarded request 1236718 from computersalat)</comment>
     <requestid>1236720</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>cf5fc0b02ea10990b4da9c1f10bf93dc</srcmd5>
+    <version>4.0.0</version>
+    <time>1743020598</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1256218</requestid>
+  </revision>
 </revisionlist>

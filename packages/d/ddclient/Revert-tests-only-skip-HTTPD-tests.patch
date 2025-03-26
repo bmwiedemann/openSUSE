@@ -1,0 +1,283 @@
+From 1cd1de937f329d9bcf510ffe2ae1f5f02b626b51 Mon Sep 17 00:00:00 2001
+From: vlefebvre <valentin.lefebvre@suse.com>
+Date: Mon, 10 Mar 2025 09:42:06 +0100
+Subject: [PATCH] Revert tests only skip HTTPD tests
+
+This reverts commit 8cf322e1628723c4ad15c378d68dfe52d44729c4.
+---
+ configure.ac              |  3 +--
+ t/geturl_connectivity.pl  |  7 ++++---
+ t/lib/ddclient/t/HTTPD.pm | 35 +++++------------------------------
+ t/protocol_directnic.pl   |  7 ++++---
+ t/protocol_dnsexit2.pl    |  7 ++++---
+ t/protocol_dyndns2.pl     |  6 ++++--
+ t/skip.pl                 |  7 ++++---
+ t/ssl-validate.pl         |  6 ++++--
+ t/update_nics.pl          |  7 ++++---
+ t/use_web.pl              |  7 ++++---
+ 10 files changed, 38 insertions(+), 54 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4ccecc8..49daf65 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -87,7 +87,6 @@ m4_foreach_w([_m], [
+ # then some tests will fail. Only prints a warning if not installed.
+ m4_foreach_w([_m], [
+     B
+-    Exporter
+     File::Spec::Functions
+     File::Temp
+     List::Util
+@@ -101,6 +100,7 @@ m4_foreach_w([_m], [
+ # prints a warning if not installed.
+ m4_foreach_w([_m], [
+     Carp
++    Exporter
+     HTTP::Daemon=6.12
+     HTTP::Daemon::SSL
+     HTTP::Message::PSGI
+@@ -112,7 +112,6 @@ m4_foreach_w([_m], [
+     Test::Warnings
+     Time::HiRes
+     URI
+-    parent
+   ], [AX_PROG_PERL_MODULES([_m], [],
+          [AC_MSG_WARN([some tests may be skipped due to missing module _m])])])
+ 
+diff --git a/t/geturl_connectivity.pl b/t/geturl_connectivity.pl
+index d3f2033..b0dd94d 100644
+--- a/t/geturl_connectivity.pl
++++ b/t/geturl_connectivity.pl
+@@ -1,11 +1,12 @@
+ use Test::More;
+ BEGIN { SKIP: { eval { require Test::Warnings; 1; } or skip($@, 1); } }
+ BEGIN { eval { require 'ddclient'; } or BAIL_OUT($@); }
+-use ddclient::t::HTTPD;
++BEGIN {
++    eval { require ddclient::t::HTTPD; 1; } or plan(skip_all => $@);
++    ddclient::t::HTTPD->import();
++}
+ use ddclient::t::ip;
+ 
+-httpd_required();
+-
+ $ddclient::globals{'ssl_ca_file'} = $ca_file;
+ 
+ for my $ipv ('4', '6') {
+diff --git a/t/lib/ddclient/t/HTTPD.pm b/t/lib/ddclient/t/HTTPD.pm
+index 997e451..6879372 100644
+--- a/t/lib/ddclient/t/HTTPD.pm
++++ b/t/lib/ddclient/t/HTTPD.pm
+@@ -7,42 +7,21 @@ use warnings;
+ use parent qw(ddclient::Test::Fake::HTTPD);
+ 
+ use Exporter qw(import);
++use JSON::PP;
+ use Test::More;
+ BEGIN { require 'ddclient'; }
+ use ddclient::t::ip;
+ 
+ our @EXPORT = qw(
+     httpd
+-    httpd_ok httpd_required $httpd_supported $httpd_support_error
+     httpd_ipv6_ok httpd_ipv6_required $httpd_ipv6_supported $httpd_ipv6_support_error
+     httpd_ssl_ok httpd_ssl_required $httpd_ssl_supported $httpd_ssl_support_error
+     $ca_file $certdir $other_ca_file
+     $textplain
+ );
+ 
+-our $httpd_supported;
+-our $httpd_support_error;
+-BEGIN {
+-    $httpd_supported = eval {
+-        require parent; parent->import(qw(ddclient::Test::Fake::HTTPD));
+-        require JSON::PP; JSON::PP->import();
+-        1;
+-    } or $httpd_support_error = $@;
+-}
+-
+-sub httpd_ok {
+-    ok($httpd_supported, "HTTPD is supported") or diag($httpd_support_error);
+-}
+-
+-sub httpd_required {
+-    plan(skip_all => $httpd_support_error) if !$httpd_supported;
+-}
+-
+-our $httpd_ssl_supported = $httpd_supported;
+-our $httpd_ssl_support_error = $httpd_support_error;
+-$httpd_ssl_supported = eval { require HTTP::Daemon::SSL; 1; }
+-    or $httpd_ssl_support_error = $@
+-    if $httpd_ssl_supported;
++our $httpd_ssl_support_error;
++our $httpd_ssl_supported = eval { require HTTP::Daemon::SSL; 1; } or $httpd_ssl_support_error = $@;
+ 
+ sub httpd_ssl_ok {
+     ok($httpd_ssl_supported, "SSL is supported") or diag($httpd_ssl_support_error);
+@@ -52,11 +31,8 @@ sub httpd_ssl_required {
+     plan(skip_all => $httpd_ssl_support_error) if !$httpd_ssl_supported;
+ }
+ 
+-our $httpd_ipv6_supported = $httpd_supported;
+-our $httpd_ipv6_support_error = $httpd_support_error;
+-$httpd_ipv6_supported = $ipv6_supported
+-    or $httpd_ipv6_support_error = $ipv6_support_error
+-    if $httpd_ipv6_supported;
++our $httpd_ipv6_support_error;
++our $httpd_ipv6_supported = $ipv6_supported or $httpd_ipv6_support_error = $ipv6_support_error;
+ $httpd_ipv6_supported = eval { require HTTP::Daemon; HTTP::Daemon->VERSION(6.12); }
+     or $httpd_ipv6_support_error = $@
+     if $httpd_ipv6_supported;
+@@ -136,7 +112,6 @@ sub httpd {
+     my ($ipv, $ssl) = @_;
+     $ipv //= '';
+     $ssl = !!$ssl;
+-    return undef if !$httpd_supported;
+     return undef if $ipv eq '6' && !$httpd_ipv6_supported;
+     return undef if $ssl && !$httpd_ssl_supported;
+     if (!defined($daemons{$ipv}{$ssl})) {
+diff --git a/t/protocol_directnic.pl b/t/protocol_directnic.pl
+index bc96152..e2675dc 100644
+--- a/t/protocol_directnic.pl
++++ b/t/protocol_directnic.pl
+@@ -2,11 +2,12 @@ use Test::More;
+ BEGIN { SKIP: { eval { require Test::Warnings; 1; } or skip($@, 1); } }
+ BEGIN { eval { require JSON::PP; 1; } or plan(skip_all => $@); JSON::PP->import(); }
+ BEGIN { eval { require 'ddclient'; } or BAIL_OUT($@); }
+-use ddclient::t::HTTPD;
++BEGIN {
++    eval { require ddclient::t::HTTPD; 1; } or plan(skip_all => $@);
++    ddclient::t::HTTPD->import();
++}
+ use ddclient::t::Logger;
+ 
+-httpd_required();
+-
+ ddclient::load_json_support('directnic');
+ 
+ httpd()->run(sub {
+diff --git a/t/protocol_dnsexit2.pl b/t/protocol_dnsexit2.pl
+index 9991e7c..37a9210 100644
+--- a/t/protocol_dnsexit2.pl
++++ b/t/protocol_dnsexit2.pl
+@@ -2,11 +2,12 @@ use Test::More;
+ BEGIN { SKIP: { eval { require Test::Warnings; 1; } or skip($@, 1); } }
+ BEGIN { eval { require JSON::PP; 1; } or plan(skip_all => $@); JSON::PP->import(); }
+ BEGIN { eval { require 'ddclient'; } or BAIL_OUT($@); }
+-use ddclient::t::HTTPD;
++BEGIN {
++    eval { require ddclient::t::HTTPD; 1; } or plan(skip_all => $@);
++    ddclient::t::HTTPD->import();
++}
+ use ddclient::t::Logger;
+ 
+-httpd_required();
+-
+ local $ddclient::globals{debug} = 1;
+ local $ddclient::globals{verbose} = 1;
+ 
+diff --git a/t/protocol_dyndns2.pl b/t/protocol_dyndns2.pl
+index a5091cb..c481efb 100644
+--- a/t/protocol_dyndns2.pl
++++ b/t/protocol_dyndns2.pl
+@@ -2,10 +2,12 @@ use Test::More;
+ BEGIN { SKIP: { eval { require Test::Warnings; 1; } or skip($@, 1); } }
+ use MIME::Base64;
+ BEGIN { eval { require 'ddclient'; } or BAIL_OUT($@); }
+-use ddclient::t::HTTPD;
++BEGIN {
++    eval { require ddclient::t::HTTPD; 1; } or plan(skip_all => $@);
++    ddclient::t::HTTPD->import();
++}
+ use ddclient::t::Logger;
+ 
+-httpd_required();
+ 
+ httpd()->run(sub {
+     my ($req) = @_;
+diff --git a/t/skip.pl b/t/skip.pl
+index 3f0ba3a..1ee68a3 100644
+--- a/t/skip.pl
++++ b/t/skip.pl
+@@ -1,11 +1,12 @@
+ use Test::More;
+ BEGIN { SKIP: { eval { require Test::Warnings; 1; } or skip($@, 1); } }
+ BEGIN { eval { require 'ddclient'; } or BAIL_OUT($@); }
+-use ddclient::t::HTTPD;
++BEGIN {
++    eval { require ddclient::t::HTTPD; 1; } or plan(skip_all => $@);
++    ddclient::t::HTTPD->import();
++}
+ use ddclient::t::ip;
+ 
+-httpd_required();
+-
+ httpd('4')->run(
+     sub { return [200, ['Content-Type' => 'text/plain'], ['127.0.0.1 skip 127.0.0.2']]; });
+ httpd('6')->run(
+diff --git a/t/ssl-validate.pl b/t/ssl-validate.pl
+index 6bea9a3..ac5f58f 100644
+--- a/t/ssl-validate.pl
++++ b/t/ssl-validate.pl
+@@ -1,13 +1,15 @@
+ use Test::More;
+ BEGIN { SKIP: { eval { require Test::Warnings; 1; } or skip($@, 1); } }
+ BEGIN { eval { require 'ddclient'; } or BAIL_OUT($@); }
+-use ddclient::t::HTTPD;
++BEGIN {
++    eval { require ddclient::t::HTTPD; 1; } or plan(skip_all => $@);
++    ddclient::t::HTTPD->import();
++}
+ use ddclient::t::ip;
+ 
+ local $ddclient::globals{debug} = 1;
+ local $ddclient::globals{verbose} = 1;
+ 
+-httpd_required();
+ httpd_ssl_required();
+ 
+ httpd('4', 1)->run(sub { return [200, $textplain, ['127.0.0.1']]; });
+diff --git a/t/update_nics.pl b/t/update_nics.pl
+index e0fe679..d656c0f 100644
+--- a/t/update_nics.pl
++++ b/t/update_nics.pl
+@@ -6,11 +6,12 @@ BEGIN { eval { require JSON::PP; 1; } or plan(skip_all => $@); JSON::PP->import(
+ use List::Util qw(max);
+ use Scalar::Util qw(refaddr);
+ BEGIN { eval { require 'ddclient'; } or BAIL_OUT($@); }
+-use ddclient::t::HTTPD;
++BEGIN {
++    eval { require ddclient::t::HTTPD; 1; } or plan(skip_all => $@);
++    ddclient::t::HTTPD->import();
++}
+ use ddclient::t::ip;
+ 
+-httpd_required();
+-
+ httpd('4')->run();
+ httpd('6')->run() if httpd('6');
+ local %ddclient::builtinweb = (
+diff --git a/t/use_web.pl b/t/use_web.pl
+index 130034a..9411ae8 100644
+--- a/t/use_web.pl
++++ b/t/use_web.pl
+@@ -1,11 +1,12 @@
+ use Test::More;
+ BEGIN { SKIP: { eval { require Test::Warnings; 1; } or skip($@, 1); } }
+ BEGIN { eval { require 'ddclient'; } or BAIL_OUT($@); }
+-use ddclient::t::HTTPD;
++BEGIN {
++    eval { require ddclient::t::HTTPD; 1; } or plan(skip_all => $@);
++    ddclient::t::HTTPD->import();
++}
+ use ddclient::t::ip;
+ 
+-httpd_required();
+-
+ my $builtinweb = 't/use_web.pl builtinweb';
+ my $h = 't/use_web.pl hostname';
+ 
+-- 
+2.47.0
+

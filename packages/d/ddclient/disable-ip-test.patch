@@ -1,10 +1,10 @@
---- ddclient-3.10.0/Makefile.am.bak	2022-12-27 13:47:28.996235989 +0100
-+++ ddclient-3.10.0/Makefile.am	2022-12-27 13:47:34.848264936 +0100
-@@ -62,7 +62,6 @@
- 	-I'$(abs_top_srcdir)'/t/lib \
- 	-MDevel::Autoflush
+--- ddclient-4.0.0/Makefile.am	2025-01-19 20:31:09.000000000 +0100
++++ ddclient-4.0.0-new/Makefile.am	2025-03-07 17:24:07.447374713 +0100
+@@ -59,7 +59,6 @@ AM_PL_LOG_FLAGS = -Mstrict -w \
  handwritten_tests = \
+ 	t/builtinfw_query.pl \
+ 	t/check_value.pl \
 -	t/get_ip_from_if.pl \
- 	t/is-and-extract-ipv4.pl \
- 	t/is-and-extract-ipv6.pl \
- 	t/is-and-extract-ipv6-global.pl \
+ 	t/geturl_connectivity.pl \
+ 	t/geturl_response.pl \
+ 	t/group_hosts_by.pl \

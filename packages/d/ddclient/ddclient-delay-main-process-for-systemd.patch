@@ -1,8 +1,8 @@
---- ddclient-3.10.0/ddclient.in.bak	2022-12-27 12:47:57.318599529 +0100
-+++ ddclient-3.10.0/ddclient.in	2022-12-27 12:48:06.902647037 +0100
-@@ -1051,6 +1051,7 @@
-             print STDERR "${program}: can not fork ($!)\n";
-             exit -1;
+--- ddclient-4.0.0/ddclient.in	2025-01-19 20:31:09.000000000 +0100
++++ ddclient-4.0.0-new/ddclient.in	2025-03-07 17:20:48.303727503 +0100
+@@ -1473,6 +1473,7 @@ sub main {
+         if ($pid < 0) {
+             fatal("failed to fork: %s", $!);
          } elsif ($pid) {
 +            sleep(1);
              exit 0;

@@ -17,7 +17,7 @@
 
 
 Name:           ddclient
-Version:        3.11.2
+Version:        4.0.0
 Release:        0
 Summary:        A Perl Client to Update Dynamic DNS Entries
 License:        GPL-2.0-or-later
@@ -30,15 +30,21 @@ Source3:        %{name}-tmpfiles.conf
 Patch0:         %{name}-config.patch
 Patch1:         %{name}-delay-main-process-for-systemd.patch
 Patch2:         disable-ip-test.patch
-Patch3:         %{name}-disable-automake-treating-warnings-as-error.patch
+Patch3:         Revert-tests-only-skip-HTTPD-tests.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl
 BuildRequires:  make
 BuildRequires:  sysuser-tools
 BuildRequires:  perl(HTTP::Daemon)
+# For Leap 15.X
 %if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
 BuildRequires:  perl(HTTP::Message::PSGI)
+%else
+# For Leap 16 and TW
+%if 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
+BuildRequires:  perl(HTTP::Message::PSGI)
+%endif
 %endif
 BuildRequires:  perl(Test::MockModule)
 BuildRequires:  perl(Test::Warnings)
@@ -81,7 +87,7 @@ make
 find examples -name *exe -delete
 mkdir -p %{buildroot}%{_sbindir}/
 mv %{buildroot}%{_bindir}/%{name} %{buildroot}%{_sbindir}/%{name}
-sed -i -e "s,%{_localstatedir}/run/,/run/%{name}/," %{buildroot}%{_sysconfdir}/%{name}.conf
+sed -i -e "s,%{_localstatedir}/run/,/run/%{name}/," %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
 install -D -m 644 %{SOURCE1} %{buildroot}/%{_unitdir}/%{name}.service
 install -D -m 644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 ln -s service %{buildroot}%{_sbindir}/rc%{name}
@@ -110,7 +116,8 @@ make VERBOSE=1 check
 
 %files
 %doc COPY* README* examples
-%config(noreplace) %attr(600,%{name},root) %{_sysconfdir}/%{name}.conf
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %attr(600,%{name},root) %{_sysconfdir}/%{name}/%{name}.conf
 %{_unitdir}/%{name}.service
 %{_tmpfilesdir}/ddclient.conf
 %ghost %dir %attr(755,%{name},%{name}) /run/%{name}
