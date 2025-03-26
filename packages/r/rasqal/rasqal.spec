@@ -2,6 +2,7 @@
 # spec file for package rasqal
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +17,29 @@
 #
 
 
+%define sonum   3
 Name:           rasqal
 Version:        0.9.33
 Release:        0
-%define sonum   3
 Summary:        RDF Parser Toolkit for Redland
 License:        Apache-2.0+ OR GPL-2.0-or-later OR LGPL-2.1-or-later
 Group:          Productivity/Other
 URL:            http://librdf.org/%{name}/
 Source0:        http://download.librdf.org/source/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         rasqal-0.9.33-pcre2.patch
 BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  gtk-doc
 BuildRequires:  libraptor-devel
+BuildRequires:  libtool
 BuildRequires:  mpfr-devel
-BuildRequires:  pcre-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       lib%{name}%{sonum} = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Rasqal is a library providing full support for querying Resource
@@ -75,50 +78,48 @@ This package contains the documentation and help files to aid with
 developing software using the Rasqal RDF query language library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+autoreconf -fiv
 %configure --enable-release \
            --disable-static \
            --with-pic \
-           --with-regex-library=pcre \
+           --with-regex-library=pcre2 \
            --with-html-dir=%{_docdir}/lib%{name}-devel/
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
-rm -f %{buildroot}%{_libdir}/*.la
-
-%post   -n lib%{name}%{sonum} -p /sbin/ldconfig
-
-%postun -n lib%{name}%{sonum} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{sonum}
 
 %files -n lib%{name}%{sonum}
-%defattr(-,root,root,-)
-%doc AUTHORS ChangeLog
 %license COPYING COPYING.LIB
-%doc LICENSE-2.0.txt LICENSE.html LICENSE.txt
+%doc AUTHORS ChangeLog
+%license LICENSE.html LICENSE.txt
+%doc LICENSE-2.0.txt
 %doc NEWS NEWS.html NOTICE README README.html RELEASE.html
 %{_libdir}/lib%{name}.so.%{sonum}*
-%{_mandir}/man1/%{name}-config.1%{ext_man}
+%{_mandir}/man1/%{name}-config.1%{?ext_man}
 
 %files -n lib%{name}-devel
-%defattr(-,root,root,-)
+%license COPYING COPYING.LIB
 %{_bindir}/%{name}-config
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
-%{_mandir}/man3/lib%{name}.3%{ext_man}
+%{_mandir}/man3/lib%{name}.3%{?ext_man}
 
 %files -n lib%{name}-devel-doc
-%defattr(-,root,root,-)
+%license COPYING COPYING.LIB
 %{_docdir}/lib%{name}-devel/
 
 %files
-%defattr(-,root,root,-)
+%license COPYING COPYING.LIB
 %{_bindir}/roqet
-%{_mandir}/man1/roqet.1%{ext_man}
+%{_mandir}/man1/roqet.1%{?ext_man}
 
 %changelog
