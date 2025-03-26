@@ -2,6 +2,7 @@
 # spec file for package librist
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +22,7 @@
 # BRs would expand rings
 %bcond_with unbundle
 Name:           librist
-Version:        0.2.10
+Version:        0.2.11
 Release:        0
 Summary:        Reliable Internet Stream Transport protocol
 License:        BSD-2-Clause
@@ -87,9 +88,11 @@ chmod -x docs/*
 %{_bindir}/rist*
 
 %files -n %{libname}
+%license COPYING
 %{_libdir}/*.so.*
 
 %files devel
+%license COPYING
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc

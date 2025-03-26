@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 22 21:46:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.2.11:
+  * Adds support for ephemeral listening ports, which allows for
+    adding or taking down ports, primarily for new connections,
+    after initialization
+  * Adds a sender function rist_sender_npd_get to obtain current
+    status of null_packet_deletion in client code
+  * Adds a new function rist_peer_get_cname to allow for the
+    extraction of the private cname property of a peer
+  * various bug fixes and code improvements
+
+-------------------------------------------------------------------
 Sun Nov 12 17:00:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.10:
