@@ -1,7 +1,7 @@
 #
 # spec file for package python-plaster
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,7 @@ entrypoint.
 %pytest
 
 %files %{python_files}
-%license %{python_sitelib}/plaster-%{version}.dist-info/LICENSE.txt
+%license LICENSE.txt
 %{python_sitelib}/plaster-%{version}.dist-info/
 %{python_sitelib}/plaster/
 

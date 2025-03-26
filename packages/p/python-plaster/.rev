@@ -49,4 +49,12 @@
   documentation.</comment>
     <requestid>1173987</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>c74b6457608b32b0e067656c3a54b2bf</srcmd5>
+    <version>1.1.2</version>
+    <time>1743020427</time>
+    <user>anag+factory</user>
+    <comment>- Don't use license in the dist-info directory.</comment>
+    <requestid>1256108</requestid>
+  </revision>
 </revisionlist>
