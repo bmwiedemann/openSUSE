@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 18 08:40:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.7
+  * Fix missed define in the code by @DmitriyMusatkin in (#209)
+
+-------------------------------------------------------------------
 Fri Mar 14 09:18:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.6
