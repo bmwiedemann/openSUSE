@@ -3,7 +3,7 @@
 #!BuildTag: opensuse/distrobox-bpftrace:%OS_VERSION_ID%
 #!BuildTag: opensuse/distrobox-bpftrace:%OS_VERSION_ID%.%RELEASE%
 
-#!ExclusiveArch: x86_64
+#!ExclusiveArch: x86_64 aarch64
 
 FROM opensuse/distrobox:latest
 LABEL maintainer="Alessio Biancalana <dottorblaster@opensuse.org>"

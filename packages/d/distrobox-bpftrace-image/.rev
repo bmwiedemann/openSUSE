@@ -7,4 +7,12 @@
     <comment>A container image based on the openSUSE Distrobox one to allow for easy usage of bpftrace on atomic systems - namely Aeon.</comment>
     <requestid>1254331</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f0d03979ed2b3638d9bfc54023da66fe</srcmd5>
+    <version>unknown</version>
+    <time>1743020671</time>
+    <user>anag+factory</user>
+    <comment>Build bpftrace image also on aarch64</comment>
+    <requestid>1256269</requestid>
+  </revision>
 </revisionlist>
