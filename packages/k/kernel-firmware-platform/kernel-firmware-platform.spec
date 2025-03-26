@@ -26,12 +26,11 @@ Name:           kernel-firmware-platform
 Version:        20250220
 Release:        0
 Summary:        Kernel firmware files for various platform drivers
-License:        GPL-2.0-only AND GPL-2.0-or-later AND SUSE-Firmware AND MPL-1.0 AND GPL-3.0-only AND MIT
+License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only AND MPL-1.0 AND GPL-3.0-only AND MIT
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250218.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250325.tar.gz#/kernel-firmware-tools-20250325.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -40,8 +39,8 @@ Source12:       extrawhence
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
-Requires(postun):%{_bindir}/mkdir
-Requires(postun):%{_bindir}/touch
+Requires(postun): %{_bindir}/mkdir
+Requires(postun): %{_bindir}/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Conflicts:      kernel-firmware-uncompressed
@@ -58,58 +57,58 @@ Supplements:    modalias(acpi*:AMDI0107%3A*)
 Supplements:    modalias(acpi*:AMDI0C00%3A*)
 Supplements:    modalias(eisa:sABP7401*)
 Supplements:    modalias(eisa:sABP7501*)
-Supplements:    modalias(of:N*T*Camd,ccp-seattle-v1a)
-Supplements:    modalias(of:N*T*Camd,ccp-seattle-v1aC*)
-Supplements:    modalias(of:N*T*Carm,mali-valhall-csf)
-Supplements:    modalias(of:N*T*Carm,mali-valhall-csfC*)
-Supplements:    modalias(of:N*T*Cfsl,imx25-sdma)
-Supplements:    modalias(of:N*T*Cfsl,imx25-sdmaC*)
-Supplements:    modalias(of:N*T*Cfsl,imx31-sdma)
-Supplements:    modalias(of:N*T*Cfsl,imx31-sdmaC*)
-Supplements:    modalias(of:N*T*Cfsl,imx35-sdma)
-Supplements:    modalias(of:N*T*Cfsl,imx35-sdmaC*)
-Supplements:    modalias(of:N*T*Cfsl,imx51-sdma)
-Supplements:    modalias(of:N*T*Cfsl,imx51-sdmaC*)
-Supplements:    modalias(of:N*T*Cfsl,imx53-sdma)
-Supplements:    modalias(of:N*T*Cfsl,imx53-sdmaC*)
-Supplements:    modalias(of:N*T*Cfsl,imx6q-sdma)
-Supplements:    modalias(of:N*T*Cfsl,imx6q-sdmaC*)
-Supplements:    modalias(of:N*T*Cfsl,imx6ul-sdma)
-Supplements:    modalias(of:N*T*Cfsl,imx6ul-sdmaC*)
-Supplements:    modalias(of:N*T*Cfsl,imx7d-sdma)
-Supplements:    modalias(of:N*T*Cfsl,imx7d-sdmaC*)
-Supplements:    modalias(of:N*T*Cfsl,imx8mq-sdma)
-Supplements:    modalias(of:N*T*Cfsl,imx8mq-sdmaC*)
-Supplements:    modalias(of:N*T*Cimg,img-axe)
-Supplements:    modalias(of:N*T*Cimg,img-axeC*)
-Supplements:    modalias(of:N*T*Cinside-secure,safexcel-eip197)
-Supplements:    modalias(of:N*T*Cinside-secure,safexcel-eip197C*)
-Supplements:    modalias(of:N*T*Cinside-secure,safexcel-eip197b)
-Supplements:    modalias(of:N*T*Cinside-secure,safexcel-eip197bC*)
-Supplements:    modalias(of:N*T*Cinside-secure,safexcel-eip197c-mxl)
-Supplements:    modalias(of:N*T*Cinside-secure,safexcel-eip197c-mxlC*)
-Supplements:    modalias(of:N*T*Cinside-secure,safexcel-eip197d)
-Supplements:    modalias(of:N*T*Cinside-secure,safexcel-eip197dC*)
-Supplements:    modalias(of:N*T*Cinside-secure,safexcel-eip97)
-Supplements:    modalias(of:N*T*Cinside-secure,safexcel-eip97C*)
-Supplements:    modalias(of:N*T*Cinside-secure,safexcel-eip97ies)
-Supplements:    modalias(of:N*T*Cinside-secure,safexcel-eip97iesC*)
-Supplements:    modalias(of:N*T*Clontium,lt9611uxc)
-Supplements:    modalias(of:N*T*Clontium,lt9611uxcC*)
-Supplements:    modalias(of:N*T*Cnxp,88w8987-bt)
-Supplements:    modalias(of:N*T*Cnxp,88w8987-btC*)
-Supplements:    modalias(of:N*T*Cnxp,88w8997-bt)
-Supplements:    modalias(of:N*T*Cnxp,88w8997-btC*)
-Supplements:    modalias(of:N*T*Crockchip,rk3588-mali)
-Supplements:    modalias(of:N*T*Crockchip,rk3588-maliC*)
-Supplements:    modalias(of:N*T*Csilabs,brd4001a)
-Supplements:    modalias(of:N*T*Csilabs,brd4001aC*)
-Supplements:    modalias(of:N*T*Csilabs,brd8022a)
-Supplements:    modalias(of:N*T*Csilabs,brd8022aC*)
-Supplements:    modalias(of:N*T*Csilabs,brd8023a)
-Supplements:    modalias(of:N*T*Csilabs,brd8023aC*)
-Supplements:    modalias(of:N*T*Csilabs,wf200)
-Supplements:    modalias(of:N*T*Csilabs,wf200C*)
+Supplements:    modalias(of:N*T*Camd%2Cccp-seattle-v1a)
+Supplements:    modalias(of:N*T*Camd%2Cccp-seattle-v1aC*)
+Supplements:    modalias(of:N*T*Carm%2Cmali-valhall-csf)
+Supplements:    modalias(of:N*T*Carm%2Cmali-valhall-csfC*)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx25-sdma)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx25-sdmaC*)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx31-sdma)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx31-sdmaC*)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx35-sdma)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx35-sdmaC*)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx51-sdma)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx51-sdmaC*)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx53-sdma)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx53-sdmaC*)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx6q-sdma)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx6q-sdmaC*)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx6ul-sdma)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx6ul-sdmaC*)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx7d-sdma)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx7d-sdmaC*)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx8mq-sdma)
+Supplements:    modalias(of:N*T*Cfsl%2Cimx8mq-sdmaC*)
+Supplements:    modalias(of:N*T*Cimg%2Cimg-axe)
+Supplements:    modalias(of:N*T*Cimg%2Cimg-axeC*)
+Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip197)
+Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip197C*)
+Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip197b)
+Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip197bC*)
+Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip197c-mxl)
+Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip197c-mxlC*)
+Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip197d)
+Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip197dC*)
+Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip97)
+Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip97C*)
+Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip97ies)
+Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip97iesC*)
+Supplements:    modalias(of:N*T*Clontium%2Clt9611uxc)
+Supplements:    modalias(of:N*T*Clontium%2Clt9611uxcC*)
+Supplements:    modalias(of:N*T*Cnxp%2C88w8987-bt)
+Supplements:    modalias(of:N*T*Cnxp%2C88w8987-btC*)
+Supplements:    modalias(of:N*T*Cnxp%2C88w8997-bt)
+Supplements:    modalias(of:N*T*Cnxp%2C88w8997-btC*)
+Supplements:    modalias(of:N*T*Crockchip%2Crk3588-mali)
+Supplements:    modalias(of:N*T*Crockchip%2Crk3588-maliC*)
+Supplements:    modalias(of:N*T*Csilabs%2Cbrd4001a)
+Supplements:    modalias(of:N*T*Csilabs%2Cbrd4001aC*)
+Supplements:    modalias(of:N*T*Csilabs%2Cbrd8022a)
+Supplements:    modalias(of:N*T*Csilabs%2Cbrd8022aC*)
+Supplements:    modalias(of:N*T*Csilabs%2Cbrd8023a)
+Supplements:    modalias(of:N*T*Csilabs%2Cbrd8023aC*)
+Supplements:    modalias(of:N*T*Csilabs%2Cwf200)
+Supplements:    modalias(of:N*T*Csilabs%2Cwf200C*)
 Supplements:    modalias(pci:v0000100Bd00000035sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001022d00001456sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001022d00001468sv*sd*bc*sc*i*)
@@ -524,7 +523,8 @@ Supplements:    modalias(usb:v1943pA250d*dc*dsc*dp*ic*isc*ip*in*)
 This package contains kernel firmware files for various platform drivers.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh platform < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE
