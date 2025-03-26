@@ -1,4 +1,648 @@
 -------------------------------------------------------------------
+Tue Mar 25 01:39:15 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.28.1~0:
+  * dist(rustup-init/sh): update commit shasum
+  * Update changelog for 1.28.1
+  * fix!(config): re-enable implicit toolchain installation in `Cfg::local_toolchain()` with optional opt-out
+  * refactor(test/clitools): extract `Config::expect_err_env()`
+  * Use relative symlinks when possible
+  * dist(rustup-init/sh): update commit shasum
+  * docs: update CHANGELOG for v1.28.1 release
+  * fix!(config): re-enable active toolchain installation in `Cfg::find_active_toolchain()` with optional opt-out
+  * config: make Config::find_active_toolchain() async
+  * Use terse output for rustup show active-toolchain
+  * Use read_timeout for reqwest instead of timeout
+  * chore(deps): lock file maintenance
+  * test: turn set_current_dist_date() into a Config method
+  * test: privatize clitools module
+  * test: remove function wrappers for cmd() and env()
+  * test: privatize mock module
+  * test: move create_mock_dist_server() to Scenario::write_to()
+  * test: move Release into dist
+  * test: turn channel builders into constructors
+  * test: move mock channel builders into dist
+  * test: move arch consts into top-level module
+  * test: turn build_*_installer() functions into constructors
+  * test: move installer builders into mock module
+  * test: privatize items in clitools
+  * test: keep Config impl close to type definition
+  * test: privatize dist module
+  * test: privatize items in test::dist
+  * test: inline short module topical_doc_data
+  * Remove level of nesting in test module
+  * dist(rustup-init/sh): update commit shasum
+  * Tweak SanitizedOutput style
+  * docs: update `CHANGELOG` for v1.28.0 release
+  * Have mocked cargo better adhere to cargo conventions
+  * Do not append `EXE_SUFFIX` in `Config::cmd`
+  * Add `TryFrom<Output>` for `SanitizedOutput`
+  * refactor(test): replace `(before|after)_test_async()` with `TestProcess::_telemetry_guard`
+  * style(rustup-init): reorganize imports
+  * refactor(log): introduce `GlobalTelemetryGuard`
+  * refactor(process): rename `TestProcess::_guard` to `_tracing_guard`
+  * chore(deps): update opentelemetry
+  * fix(deps): update rust crate windows-registry to 0.5.0
+  * chore(deps): lock file maintenance
+  * refactor: improve binary suffix stripping
+  * build: bump the codebase Language Edition to 2024
+  * style(cli/job): fix `unsafe-op-in-unsafe-fn`
+  * style(cli/log): use precise capturing when necessary
+  * chore: use unsafe versions of `(add|remove)_var()`
+  * style: remove redundant `ref` keywords
+  * style: partially migrate away from `if-let`
+  * style: format sources with the 2024 Style Edition
+  * chore: fix new `clippy` warnings
+  * fix(deps): update rust crate pulldown-cmark to 0.13
+  * chore(deps): lock file maintenance
+  * feat(rustup-init/sh): add env var to print arch detection result
+  * refactor(component): reduce allocations in `ComponentPart::encode()`
+  * refactor(component)!: extract `ComponentPartKind`
+  * style(component): reduce right drift in `ComponentPart::decode()`
+  * refactor(component)!: turn `ComponentPart`'s fields into named ones
+  * fix(dist/prefix): normalize path separators in `REL_MANIFEST_DIR`
+  * fix(component): normalize path separators during `ComponentPart::(en|de)code()`
+  * chore(deps): lock file maintenance
+  * chore(deps): lock file maintenance
+  * Upgrade to rand 0.9
+  * chore(deps): lock file maintenance
+  * fix(ci/doc): fix typo in renovate `datasource`
+  * ci(doc): make `renovatebot` bump locked `mdbook`
+  * ci(doc): pin `mdbook` to `0.4.43`
+  * chore(deps): lock file maintenance
+  * ci(schedule): run cron tasks more times per week
+  * ci(schedule): promote to use the `stable` job list
+  * ci(doc): fix stable build of `user-guide`
+  * ci(linux): enable the full test suite for `aarch64-unknown-linux-gnu`
+  * ci(linux): use public ARM64 Linux runners
+  * ci(deploy-docs): merge with `test-docs`
+  * ci(deploy-docs): enable on PR without uploads
+  * ci(deploy-docs): build one book per workflow step
+  * ci(deploy-docs): install `mdbook` with `install-action`
+  * Change installation of dependencies for Aarch64 Dockerfile
+  * Run Aarch64 jobs on PRs
+  * Use ARM based runners for ARM CI targets
+  * chore(deps): lock file maintenance
+  * style: fix `clippy` warnings
+  * docs(user-guide/components): add deprecation notice for `wasm32-wasi`
+  * Update Windows dependencies
+  * feat(cli/rustup-mode)!: simplify error message for `rustup show active-toolchain`
+  * fix(cli/rustup-mode): make `rustup show active-toolchain` exit with `1` when none is active
+  * fix(cli/rustup-mode): make `rustup default` exit with `1` when there's no default
+  * chore(deps): lock file maintenance
+  * fix(cli/rustup-mode)!: change `rustup doc --error_codes` to `--error-codes`
+  * fix(deps): update rust crate itertools to 0.14
+  * fix(cli): align `rustup show`'s `--verbose` behavior with `rustup show active-toolchain`
+  * feat(cli): show the toolchain path with `rustup show active-toolchain --verbose`
+  * feat(test): accept more than one args in `for_host*!()`
+  * chore(deps): lock file maintenance
+  * fix(ci): fix installation of `cargo-all-features`
+  * docs(user-guide/installation): update "General tips"
+  * chore(deps): lock file maintenance
+  * move deps around
+  * fix(deps): update rust crate rustls-platform-verifier to 0.5
+  * fix(rustup-init/sh): don't emit "unknown macOS major version" for macOS v11+
+  * refactor(rustup-init/sh): extract `$_os_major`
+  * refactor(rustup-init/sh): extract `$_os_version`
+  * ci(linux): move `bindgen-cli` installation into `run.bash`
+  * ci(stable): enable `loongarch64-unknown-linux-musl` builds
+  * ci(linux): disable `reqwest-rustls-tls` for unsupported platforms
+  * ci(linux): configure `gcc-multilib` and `libclang` for some *nix builds
+  * chore(deps): bump `aws-lc-rs` and `aws-lc-sys`
+  * download: clean up TLS feature guards
+  * download: simplify feature guards
+  * download: attach download functions to Backend type
+  * download: remove intermediate reqwest-backend feature
+  * Implement more complete backend selection
+  * Simplify logic for download backend notification
+  * chore(deps): lock file maintenance
+  * chore(deps): lock file maintenance
+  * docs(dev-guide/tracing): make "Adding instrumentation" a level-2 title
+  * ci(windows): don't install `awscli` via `choco`
+  * test(mock/topical-doc-data): add test cases with both a flag and a topic
+  * refactor(test/mock): use tuples for `topical_doc_data::TEST_CASES`
+  * feat(cli/rustup-mode): allow `rustup doc` with both a flag and a topic
+  * refactor(toolchain): allow passing a fragment in `Toolchain::doc_path()`
+  * refactor(toolchain): allow absolute paths in `Toolchain::doc_path()`
+  * refactor(toolchain): simplify `Toolchain::doc_path()`
+  * refactor(cli/rustup-mode): rename `doc_url` to `doc_path`
+  * refactor(cli/rustup-mode): make `DocPage::path()` return `Option<&Path>`
+  * refactor(cli/rustup-mode): move `DocPage::name()` to a separate `impl` block
+  * refactor(cli/topical-doc): clean up some funtions
+  * refactor(cli/rustup-mode): use early return in `doc()`
+  * chore(deps): lock file maintenance
+  * Update semver-compatible dependencies
+  * fix: make sure no overflow on small screens
+  * feat: make the box white
+  * feat: use the color form the rust website for tags, hr and copy button
+  * Add the main element and header to setup new layout
+  * chore: remove the old pitch first
+  * Apply clippy suggestions
+  * Append to 1.28.0 changelog
+  * Bump version, commit and date in rustup-init.sh
+  * Clean up trailing whitespace in rustup-init.sh
+  * Add changelog for 1.28.0
+  * Bump version to 1.28.0
+  * chore(deps): lock file maintenance
+  * chore(deps): update remove-dir-all to 1.0
+  * Add aliases for remove/uninstall/unset commands
+  * feat: add nushell support
+  * Upgrade to opentelemetry 0.27
+  * fix: add missing close body tag
+  * Upgrade thiserror to 2
+  * Upgrade to rustls-platform-verifier 0.4
+  * chore(deps): lock file maintenance
+  * fix(cli/rustup-mode): remove `.num_args()` when `.value_delimiter(',')` is present
+  * refactor(cli/rustup-mode): remove deprecated `.use_value_delimiter()`
+  * chore(config): migrate config .github/renovate.json
+  * docs: update channel toolchain syntax
+  * feat(cli/rustup-mode): support more books in `rustup doc`
+  * style(cli/rustup-mode): reorder items in `docs_data![]`
+  * fix: add powerpc64 and s390x to known target_arch values for tests
+  * chore(deps): lock file maintenance
+  * style(utils): put the `mod` declarations below the imports
+  * style: regroup some imports
+  * refactor(utils): hoist `utils::utils` into `utils`
+  * feat(rustup-init): detect and warn about existing `settings.toml`
+  * fix: fix typo in `check_existence_of_rustc_or_cargo_in_path()`
+  * style: allow using `dbg!()` across `rustup::test`
+  * refactor(diskio): replace `eprintln!()` with `debug!()`
+  * style: enable `clippy::(dbg_macro|todo)` across the workspace
+  * style: enable `clippy::print_std(err|out)` when applicable
+  * style: introduce workspace-wide lint tables
+  * build: use `workspace.package` properties in `Cargo.toml`
+  * fix(config): improve error when overridden active custom toolchain isn't installed
+  * fix(config): print special error for invalid toolchain name in override file
+  * Update semver-compatible dependencies, except openssl-src
+  * style(rustup-init/sh): ignore `shellcheck` SC2086 false positives
+  * chore(deps): lock file maintenance
+  * fix(rustup-init/sh): fix incorrect TLS warning with curl v8.10
+  * chore(deps): update opentelemetry
+  * Update semver-compatible dependencies
+  * tests:  rust-toolchain + profile in settings
+  * chore(deps): lock file maintenance
+  * Remove unnecessary methods
+  * replace `winreg` dependency
+  * Update remove_dir_all
+  * Update semver-compatible dependencies
+  * refactor(cli/common)!: deny installing a host-incompatible toolchain w/o `--force-non-host`
+  * refactor(cli/common)!: take in `toolchain: String` in `warn_if_host_is_incompatible()`
+  * feat(cli/rustup-mode): add `--force-non-host` to `rustup default`
+  * refactor(config)!: pass the `force_non_host` flag to `Cfg::ensure_installed()`
+  * refactor(cli/rustup-mode): rename `forced` to `force_non_host`
+  * docs(README): Point out where to find nightly/master docs.
+  * Note that selecting VS lang packs is optional
+  * Make symlink_or_hardlink_file remove dest
+  * Try symlinking proxies first
+  * Update semver-compatible dependencies, except openssl-src
+  * chore(deps): update opentelemetry
+  * Update semver-compatible dependencies, except openssl-src
+  * Apply clippy suggestions from 1.81
+  * feat(cli/rustup-mode)!: set log level to `INFO`/`DEBUG` on `--quiet`/`--verbose` if `RUSTUP_LOG` is unset
+  * refactor(cli/setup-mode): extract `update_console_logger()`
+  * fix(cli/setup-mode): simplify description for `--quiet`
+  * feat(cli/setup-mode)!: set log level to `DEBUG` on `--verbose` if `RUSTUP_LOG` is unset
+  * refactor(common)!: remove `verbose` flag in several places
+  * refactor(config): simplify `find_or_install_active_toolchain()`
+  * refactor(config)!: return `LocalToolchainName` from `find_or_install_active_toolchain()`
+  * refactor(config): simplify `resolve_toolchain()`
+  * refactor(config): simplify `toolchain_from_partial()`
+  * chore(deps): lock file maintenance
+  * chore(triage): allow transferring issues to other org repos
+  * chore(deps): lock file maintenance
+  * Allow `rustup doc` to search for unions
+  * docs(user-guide): add a link to the latest "Previous components" section
+  * test(cli_v2): introduce `update_removed_component_toolchain()`
+  * feat(dist): add notes for `stable` and `beta` in `components_missing_msg()`
+  * refactor(dist): inline some const strings in `components_missing_msg()`
+  * refactor(dist): extract "nightly tips" out of the match block in `components_missing_msg()`
+  * fix: fix typo in several places
+  * Upgrade pulldown-cmark to 0.12
+  * fix(manifest): consider possible renames in `Component::try_new()`
+  * chore(deps): lock file maintenance
+  * ci(macos): install `awscli` from `brew`
+  * chore(deps): lock file maintenance
+  * refactor(config)!: make `toolchain_from_partial()` sync
+  * feat(config)!: remove implicit installation from `toolchain_from_partial()`
+  * refactor(config)!: make `resolve_toolchain()` sync
+  * feat(config)!: remove implicit installation from `resolve_toolchain()`
+  * test(cli-rustup): remove `heal_damaged_toolchain()`
+  * refactor(config): extract `local_toolchain()` from `resolve_local_toolchain()`
+  * refactor(config): extract `toolchain` variable from `resolve_local_toolchain()`
+  * refactor(config)!: make `resolve_local_toolchain()` sync
+  * feat(config)!: remove implicit installation from `resolve_local_toolchain()`
+  * refactor(config)!: rename `local_toolchain()` to `resolve_local_toolchain()`
+  * feat(rustup-mode): install the active toolchain by default on `rustup toolchain install`
+  * fix(rustup-mode): adjust descriptions for `rustup toolchain uninstall`
+  * feat(rustup-mode)!: add `ensure_active_toolchain` flag to `update()`
+  * feat(config)!: add `verbose` flag to `find_or_install_active_toolchain()`
+  * style(config): replace `dist::Profile` with `Profile`
+  * style(config): replace `dist::TargetTriple` with `TargetTriple`
+  * fix(config): call `warn_if_host_is_incompatible()` in `ensure_installed()`
+  * refactor(common): use early return in `warn_if_host_is_incompatible()`
+  * refactor(rustup-mode): extract `warn_if_host_is_incompatible()`
+  * style(common): merge imports
+  * refactor(distributable)!: avoid unnecessary clones
+  * refactor(distributable)!: replace `install_if_not_installed()` with `ensure_installed()`
+  * feat(config)!: add `verbose` flag to `ensure_installed()`
+  * feat(config)!: return `UpdateStatus` from `ensure_installed()`
+  * feat(config)!: use `Cfg::get_profile()` for unspecified profile in `ensure_installed()`
+  * chore(config): add `#[tracing::instrument]` to `ensure_installed()`
+  * chore(deps): lock file maintenance
+  * ci(freebsd): fix build failure related to `aws-lc`
+  * ci(windows): don't install OpenSSL via `choco`
+  * ci(run): remove redundant `if` predicate
+  * ci(run): use the detected number of test threads
+  * feat(download/rustls): use `aws-lc` instead of `ring`
+  * style(taplo): enable `reorder_keys` for `*dependencies` in `Cargo.toml`
+  * Upgrade windows-sys to 0.59
+  * fix: fix unreachable code lints on Android
+  * docs(dev-guide): remove descriptions of `rustup_macros`
+  * docs(dev-guide): update description of `rustup::process`
+  * Remove `once_cell` dependency
+  * docs(dev-guide): add guideline for atomic commits to the developer guide
+  * chore(deps): lock file maintenance
+  * chore(deps): lock file maintenance
+  * fix: fix `clippy` lints
+  * docs(user-guide): use `brew install rustup` instead of `rustup-init`
+  * Bump fs_at to 0.2.1
+  * chore(deps/renovate): disable `automerge`
+  * Upgrade to opentelemetry 0.24
+  * chore(deps): lock file maintenance
+  * build(windows): don't link against `powrprof`
+  * build(windows): fix typo in `build.rs`
+  * fix(utils): make `ExitCode` `#[must_use]`
+  * refactor(rustup-mode): introduce `ExitCode::bitand*()`
+  * fix(rustup-mode): return `ExitCode(1)` when `update()` fails
+  * refactor(rustup-mode)!: remove redundant `ExitCode` in `self_update()`'s callback
+  * test(cli-misc): simplify `version_mentions_rustc_version_confusion()`
+  * fix(rustup-mode): refine output for `rustup --version`
+  * fix(rustup-mode)!: don't install toolchain on `rustup --version`
+  * chore(deps/renovate): update `automerge` schedule for `lockFileMaintenance`
+  * chore(deps): lock file maintenance
+  * chore(deps): lock file maintenance
+  * ci(check): add `taplo fmt` test for TOMLs
+  * style: reformat all TOMLs with `taplo`
+  * ci(gen-workflows): remove `--quiet` from `git diff`
+  * refactor: use `#[cfg()]` instead of `cfg!()` when possible
+  * refactor(self-update): remove outdated `do_pre_install_sanity_checks`
+  * Add help message for missing toolchain
+  * Rename OSProcess to OsProcess
+  * Rename currentprocess to process
+  * Forward to Process::var_os() directly
+  * Fix home_dir() and current_dir() regression
+  * feat(log): set level of `#[tracing::instrument(err)]` to `TRACE`
+  * feat(log): unhide `tracing::instrument` from behind `feature = "otel"`
+  * ci(windows): increase stack size to 16MiB
+  * Upload Windows artifacts into correct subdirectory
+  * Fix uploading of Windows build artifacts
+  * Prepare deployment on master branch
+  * Grant GitHub Actions workflows access to OIDC token
+  * chore(deps): update aws-actions/configure-aws-credentials action to v4
+  * Authenticate CI uploads with OIDC
+  * Upload release artifacts to new S3 bucket
+  * chore(deps/renovate): set `prCreation` to `immediate`
+  * chore(deps): lock file maintenance
+  * feat(dist): refine suggestions regarding manifest checksum mismatches
+  * refactor(config): extract `dist_root_server()`
+  * refactor(dist): use `let-else` in `dl_v2_manifest()`
+  * refactor(dist/notifications)!: inline usages of `Notification::ManifestChecksumFailedHack`
+  * refactor(install): avoid extra clone in `InstallMethod::install`
+  * Reorder operations in order to simplify
+  * Deduplicate handling of environnment variables
+  * Move if_not_empty() to calling module
+  * feat(cli): warn when removing the default/active toolchain
+  * feat(cli): improve warning when removing the last/host target for a toolchain
+  * docs(ci): simplify the target policy in the README
+  * Add loongarch64-unknown-linux-musl support
+  * fix(download): fix build error with `--no-default-features --features=curl-backend`
+  * feat(rustup-init): set log level to `WARN` on `-q` if `RUSTUP_LOG` is unset
+  * implements quiet flag in `rustup-init.sh`
+  * test(manifestation): introduce and migrate tests to `TestContext`
+  * chore(manifestation): organize imports
+  * chore(deps): lock file maintenance
+  * chore(deps): lock file maintenance
+  * chore(deps): lock file maintenance
+  * add regression tests for smart guess
+  * apply smart guess to `rustup update/uninstall self`
+  * Disable automatic self updates in CI environments
+  * feat(download/rustls): use `rustls-platform-verifier`
+  * ci(windows): run `cargo all-features`
+  * fix(self-update/windows): address some `unused_imports` warnings
+  * fix(rustup-mode): improve `clap` error format
+  * Add period in warning while checking existing rust installations
+  * Move Windows-only test code into windows module
+  * Asyncify CLI tests
+  * Use guard type to replace with_saved_path()
+  * Refactor test registry state to be more type safe
+  * Inline single-use with_saved_global_state() function
+  * Privatize with_saved_global_state()
+  * Move change_dir() into CliTestContext
+  * Move with_update_server() into CliTestContext
+  * Remove Config::with_scenario()
+  * Port cli_v2 to CliTestContext
+  * Port cli_v1 to CliTestContext
+  * Port cli_self_upd to CliTestContext
+  * Port cli_rustup to CliTestContext
+  * Port cli_paths to CliTestContext
+  * Port cli_misc to CliTestContext
+  * Port cli_inst_interactive to CliTestContext
+  * Port cli_exact to CliTestContext
+  * Use CliTestContext directly in self_update_setup()
+  * Start CliTestContext type wrapper
+  * docs(dev-guide/tracing): mention `RUSTUP_LOG` and console-based tracing
+  * docs(dev-guide/linting): improve wording
+  * test(dist): add simple tests for `PartialVersion`
+  * chore(dist): add some doc comments
+  * fix(dist): throw an error when a `PartialVersion` string doesn't start with an ASCII digit
+  * ci(all-features): add `-D warnings` to `cargo check-all-features`
+  * fix(currentprocess/filesource): address some `unused_imports` warnings
+  * fix(currentprocess): address some `unused_imports` warnings
+  * fix(regex): replace `\d` to `[0-9]` to avoid matching non-ASCII digits
+  * refactor(toolchain/names): replace `toolchain_sort` with `ToolchainName`'s `Ord` instance
+  * refactor(dist)!: make `ToolchainDesc.channel` more strongly typed
+  * Remove unnecessary lint suppressions
+  * Use local suppression for clippy::too_many_arguments
+  * Rename desc fields to toolchain
+  * Remove intermediate state from error handling
+  * Remove indirection in update error handling
+  * Inline wrapper function
+  * Reduce rightward drift
+  * Propagate use of DistOptions
+  * Avoid unnecessary unwrapping
+  * Extract struct from InstallMethods::Dist variant
+  * refactor(log): replace the `TELEMETRY_DEFAULT_TARCER` singleton with a function
+  * test(clitools): revive `run_inprocess()`
+  * fix(dist/arm): don't assume `armv7` if `/proc/cpuinfo` is unavailable
+  * fix(dist): add fallbacks to `/proc/self/exe` in `rustup-init.sh`
+  * Rename default-tls to native-tls
+  * Inline small errors module
+  * Inline addition/removal to programs
+  * Move windows-only self_update code into windows module
+  * Reorganize platform-dependent imports in self_update
+  * refactor(log): replace `[Ww]arning:` log line prefix with `warn:`
+  * refactor(log): rename `NotificationLevel::Debug` to `Trace` and `Verbose` to `Debug`
+  * Remove unused code
+  * Hoist Toolchain up into top-level toolchain module
+  * Remove unused derived sorting implementations
+  * Privatize internal organization of toolchain module
+  * Inline argument
+  * Inline trivial wrapper
+  * Move toolchain resolution into Cfg method
+  * Check settings version on Cfg construction
+  * Move proxy toolchain resolution logic into Cfg method
+  * Move rustc_version() function into Cfg
+  * Expose higher-level interface in Toolchain
+  * Move DistributableToolchain::installed_paths() into Cfg
+  * No need to store cfg in DistributableToolchain
+  * Reduce indirection in Cfg::from_partial()
+  * Move Toolchain::from_partial() to Cfg
+  * Take owned LocalToolchainName in Toolchain::from_local()
+  * Simplify Toolchain::from_local()
+  * refactor(dist): hoist `dist::dist` into `dist`
+  * refactor(dist): privatize imports from `dist::dist`
+  * Fix the `TODO` in `src\toolchain\toolchain.rs`
+  * Use tracing macros directly
+  * Inline single-caller maybe_trace_rustup()
+  * Remove rustup test wrapper macros
+  * Use tokio::main attribute
+  * Attach Process-dependent utils to Process
+  * Remove with_runtime()
+  * fix(config): fix typo in `ActiveReason`
+  * fix(log): use `RUSTUP_LOG` for internal `tracing` instead of `RUST_LOG`
+  * refactor(currentprocess): make use of `Arc::default()`
+  * refactor(currentprocess): rename `TestProcess.guard` to `_guard`
+  * Remove currentprocess::with()
+  * Privatize most TestProcess fields
+  * Remove unused TestProcess::id
+  * Pass Process around explicitly
+  * Let argument parser handle SelfUpdateMode conversion
+  * Let argument parser handle Profile conversion
+  * Use simpler form for string concatenation
+  * Reduce rightward drift by duplicating some Ok-wrapping
+  * Rename _install_selection() to IInstallOpts::install()
+  * Inline async closure
+  * Move error mapping out of validation function
+  * Rename do_pre_install_options_sanity_checks() to InstallOpts::validate()
+  * Rename customize_install() to InstallOpts::customize()
+  * Pass InstallOpts around directly
+  * refactor(terminalsource): use `.eq_ignore_ascii_case()` in `ColorableTerminal::new`
+  * chore(notify): sort logging macros and `NotificationLevel` on verbosity
+  * chore(env): retire `RUSTUP_DEBUG` in favor of `RUST_LOG`
+  * feat(log): make `console_logger()` accept `RUSTUP_TERM_COLOR` and `NO_COLOR`
+  * refactor(log): reimplement `log` using `tracing`
+  * refactor(test): clean up `before_test_async()`
+  * chore(deps): make `tracing-subscriber` a hard requirement
+  * refactor(test): setup `tracing` subscriber in `before_test_async()`
+  * test(clitools): disable `run_inprocess()`
+  * refactor(test): execute all `#[rustup_macros::unit_test]`s within a `tokio` context
+  * refactor(log): extract `telemetry()`
+  * Remove noop functions in favor of conditional compilation
+  * Avoid trivial wrapper functions
+  * Store process name in error variant directly
+  * Inline trivial wrapper function
+  * Fix misleading "uninstalled toolchain" notification
+  * refactor(ci/run): use more `target_cargo()` in `run.bash`
+  * Remove trivial new() implementation
+  * Use serde to encode/decode mock manifests
+  * Use serde to encode/decode rustup manifests
+  * Use serde to encode/decode config
+  * Represent config version as an enum
+  * Use serde to encode/decode manifests
+  * Represent manifest version as enum
+  * Use serde to encode/decode settings
+  * Add tests for settings encoding
+  * Derive Default for Settings
+  * Represent metadata version as an enum
+  * Use Default impl for Settings::profile default
+  * Derive Default for Profile
+  * Discard unnecessary layer of Arc
+  * Externalize wrapping of DownloadTracker
+  * Inline NotifyOnConsole
+  * Internalize interior mutability for Notifier
+  * Decouple Cfg from Notifier initialization
+  * fix(dist/triple): ensure `dist::triple::known` is up to date with `platforms`
+  * refactor(toolchain): reuse `dist::triple::known` in `toolchain::names`
+  * refactor(dist/triple): move known triples to `dist::triple::known`
+  * refactor(build): use `platforms` to verify `RUSTUP_OVERRIDE_BUILD_TRIPLE`
+  * refactor(build): simplify the code obtaining the current triple
+  * feat(cli): add `--quiet` to `rustup (target|component) list`
+  * feat(cli): add `--quiet` to `rustup toolchain list`
+  * Inline trivial single-use function utils::to_absolute()
+  * Inline trivial single-use function Cfg::which_binary()
+  * Inline short single-use function direct_proxy()
+  * Rename new_toolchain_with_reason() to Toolchain::with_reason()
+  * Move Cfg::maybe_do_cargo_fallback() to Toolchain
+  * Move Cfg::create_command_for_toolchain() to Toolchain::command()
+  * Extract common usage of Cfg::create_command_for_toolchain()
+  * Inline trivial single-use function Cfg::create_command_for_dir()
+  * Inline simple function Cfg::create_command_for_toolchain()
+  * Move toolchain construction out of Cfg::create_command_for_toolchain()
+  * Inline single-use function
+  * Improve error message for failing .rustup creation
+  * Inline trivial single-use function
+  * Inline trivial single-use function
+  * Inline utils::current_dir()
+  * Take explicit current_dir argument in to_absolute()
+  * Pass current_dir down from main()
+  * Update rustup.rs website to offer Rustup on Windows on Arm
+  * Use Cfg::current_dir in override_remove()
+  * Use Cfg::current_dir in override_add()
+  * Use Cfg::current_dir in find_or_install_active_toolchain()
+  * Use Cfg::current_dir for create_command_for_dir()
+  * Use Cfg::current_dir for find_or_install_active_toolchain()
+  * Store current_dir in Cfg for use in find_active_toolchain()
+  * Enable building Rustup win-aarch64 on PR
+  * Add aarch64-apple-darwin and aarch64-pc-windows-msvc to cloudfront-invalidation.txt
+  * Update Other installation methods page to include aarch64-pc-windows-msvc
+  * Remove unnecessary trait abstraction
+  * Simplify process access to current_dir
+  * Simplify process access to environment variables
+  * Remove unnecessary trait bound for home::Env
+  * Simplify process access to pid
+  * Simplify process access to stdin
+  * Simplify process access to stderr
+  * Simplify process access to stdout
+  * Simplify process access to argument iterator
+  * fix(download): work around `hyper` hang issue by adjusting `reqwest` config
+  * test(download): fix clippy warnings regarding `Mutex` in `async`
+  * test(dist): add regression tests for parsing beta versions with tags
+  * test(dist): introduce scenario `BetaTag` with mock test data
+  * feat(dist): add support for parsing beta versions with tags in the toolchain
+  * refactor(utils): move `run_future()` under `manifestation`
+  * feat(config): make `create_command_for_toolchain()` async
+  * refactor(config): make `update_all_channels()` async
+  * refactor(self_update): make `maybe_install_rust()` async
+  * refactor(config): make `ensure_installed` async
+  * fix expected path-separators on windows
+  * add a regression test
+  * consistently add context with file path when parsing fails
+  * ci(windows/gnu): install `mingw` via `bwoodsend/setup-winlibs-action`
+  * ci(windows): enable CI on `x86_64-pc-windows-gnu`
+  * Make manifestation test update_from_dist async
+  * Make update async
+  * Make default_ async
+  * Make check_updates async
+  * Make target_add async
+  * Make target_remove async
+  * Make component_add async
+  * Make component_remove async
+  * Make update_all_channels async
+  * Make toolchain_link async
+  * Make override_add async
+  * Make DistributableToolchain::remove_component async
+  * Make DistributableToolchain::add_component async
+  * Make DistributableTool::install_if_not_installed async
+  * Make DistributableToolChain::install async
+  * Make toolchain.update async
+  * Make update_extra async
+  * Make show_dist_version async
+  * Make InstallMethod::install async
+  * Make InstallMethod::run async
+  * Make update_from_dist async
+  * Make update_from_dist_ async
+  * Make try_update_from_dist_ async
+  * Make update_v1 async
+  * Make dist::dl_*_manifest async
+  * Make common::self_update async
+  * Make manifestation::update async
+  * Make download retries async
+  * Make DownloadCfg::download_and_check async
+  * Make DownloadCfg::download_hash async
+  * Make self_update::update async
+  * Make check_rustup_update async
+  * Make prepare_update async
+  * Make get_available_rustup_version async
+  * Make setup_mode::main async
+  * Make self_update::install async
+  * Make try_install_msvc async
+  * Make download_file async
+  * Make DownloadCfg::download async
+  * Make download_file_with_resume async
+  * Make download_file_ async
+  * Make download_to_path_with_backend async
+  * Make download_with_backend async
+  * Make rustup_mode::main async
+  * Convert run_rustup_inner to async
+  * Make run_rustup async
+  * Remove maybe_trace_rustup runtime setup
+  * Make maybe_trace_rustup async
+  * Convert main to using a tokio runtime always
+  * chore(deps): update opentelemetry
+  * Ring 0.17.x support Windows on ARM
+  * ci(macos): use `macos-latest` instead of `macos-14`
+  * chore(deps): lock file maintenance
+  * fix(deps): update rust crate itertools to 0.13
+  * fix(deps): update rust crate pulldown-cmark to 0.11
+  * chore(deps): lock file maintenance
+  * Inline trivial single-use function
+  * Inline trivial single-use function
+  * Avoid unnecessary allocations
+  * Inline trivial single-use function
+  * Inline trivial single-use function
+  * Attempt to reduce duplication by adding a little abstraction
+  * Move explicit_desc_or_dir_toolchain() to Toolchain::from_partial()
+  * Inline trivial single-use function
+  * Inline trivial single-use function
+  * Inline single-use function
+  * Propagate ExitStatus instead of custom ExitCode
+  * Inline single-use function
+  * Use precise internal imports
+  * Inline trivial single-use function
+  * Use idiomatic way to proxy str data
+  * Inline trivial single-use function
+  * Inline RustupSubcmd::dispatch()
+  * refactor(filesource): replace repetitive `#[cfg()]` usages with a new `mod`
+  * Fix ETA display after regression
+  * Stop showing ETA after download is complete
+  * refactor(cli): hoist the `handle_epipe()` call out of the `match`
+  * refactor(cli): rewrite `rustup` itself with `clap-derive`
+  * refactor(cli): rewrite `rustup (self|set)` with `clap-derive`
+  * refactor(cli): rewrite `rustup (man|completions)` with `clap-derive`
+  * refactor(cli): rewrite `rustup doc` with `clap-derive`
+  * refactor(cli): rewrite `rustup (run|which|dump-testament)` with `clap-derive`
+  * refactor(cli): rewrite `rustup override` with `clap-derive`
+  * refactor(cli): rewrite `rustup component` with `clap-derive`
+  * refactor(cli): rewrite `rustup target` with `clap-derive`
+  * refactor(cli): rewrite `rustup (check|default)` with `clap-derive`
+  * refactor(cli): rewrite `rustup (toolchain|update|(un)?install)` with `clap-derive`
+  * refactor(cli): remove `deprecated()`
+  * refactor(cli): rewrite `rustup show` with `clap_derive`
+  * fix(rustup-init): fix typo in `rustup-init[.sh]` args
+  * feat(download): reflect the download/TLS backends in the user agent
+  * Make find_override_from_dir_walk return OverrideCfg
+  * Make settings file allow multiple borrows
+  * Fix doc error with `rust-toolchain.toml` custom TC
+  * Make `rustup default` not error if no default
+  * Update format of `toolchain list`
+  * Update format of `show` and `show active-toolchain`
+  * Redesign OverrideCfg to be more type-driven
+  * Pull match statement out in OverrideCfg::from_file()
+  * Change find_override to find_active_toolchain
+  * Pull out `new_toolchain_with_reason()`
+  * Pull out `ensure_installed()`
+  * refactor(cli): reorder `if` statement in `cli::setup_mode::main()`
+  * refactor(cli): rewrite `rustup-init` with `clap_derive`
+  * Avoid code duplication for printing target/component items
+  * Deduplicate code to get components from distributable
+  * Merge list_{,installed_}targets
+  * Merge list_{,installed_}components functions
+  * fix(filesource): make some constructs only available via the `test` feature
+  * fix(ci/freebsd): install ca certs to prevent `invalid peer certificate: UnknownIssuer`
+  * feat(download-backend)!: make `reqwest/rustls` the new default
+  * feat(download-backend)!: refine selection logic
+  * chore(deps): lock file maintenance
+  * Update MSVC requirements to VS 2017 to match Rust repo
+  * refactor(download): use `DownloadCallBack` in `download_with_backend()`
+  * ci: don't build for `i686-linux-android` due to OpenSSL v3 atomic issues
+  * ci(android): update NDK version
+  * fix(deps): update rust crate openssl-src to v300
+  * ci(linux-gnu): install `perl-IPC-Cmd` to make OpenSSL v3 happy
+  * chore(deps): update ubuntu docker tag to v24
+  * docs(dev-guide): remove “pushing to master” in the release process
+  * Replace remaining winapi usage with windows-sys
+
+-------------------------------------------------------------------
 Wed Sep 04 01:15:21 UTC 2024 - william.brown@suse.com
 
 - bsc#1230032 - RUSTSEC-2024-0006 - rust-shlex: Multiple issues involving quote API
