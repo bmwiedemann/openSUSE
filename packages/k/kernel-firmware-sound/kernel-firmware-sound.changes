@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 25 07:22:34 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Fix a typo in download URL
+
+-------------------------------------------------------------------
+Sat Mar 22 08:49:56 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Correct aliases with comma (bsc#1239877)
+
+-------------------------------------------------------------------
+Sat Mar 22 08:17:26 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250321 (git commit e61b8981aeef):
+  * cirrus: cs35l41: Add Firmware for various HP Laptops using CS35L41 HDA
+
+-------------------------------------------------------------------
+Fri Mar 21 11:19:27 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250320 (git commit a60087f7c925):
+  * cirrus: Add cs35l56 firmware symlinks for Asus UM5606KA
+- Update kernel-firmware-tools scripts to be downloadable
+
+-------------------------------------------------------------------
 Tue Mar 18 14:10:53 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250318 (git commit 588505068c48):
