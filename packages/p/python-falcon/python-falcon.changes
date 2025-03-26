@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 25 15:51:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add websockets.patch to fix test failure
+
+-------------------------------------------------------------------
 Thu Jan  9 11:57:38 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build doc package just for tumbleweed to remove

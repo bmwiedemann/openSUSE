@@ -30,6 +30,8 @@ Summary:        A web framework for building APIs and app backends
 License:        Apache-2.0
 URL:            http://falconframework.org
 Source:         https://files.pythonhosted.org/packages/source/f/falcon/falcon-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/falconry/falcon/pull/2406 chore(tests/asgi): migrate to the new websockets async client
+Patch:          websockets.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.8}
@@ -56,7 +58,7 @@ BuildRequires:  %{python_module testtools}
 %if 0%{?suse_version} >= 1550
 BuildRequires:  %{python_module httpx if (%python-base without python36-base)}
 BuildRequires:  %{python_module uvicorn if (%python-base without python36-base)}
-BuildRequires:  %{python_module websockets if (%python-base without python36-base)}
+BuildRequires:  %{python_module websockets >= 13.1 if (%python-base without python36-base)}
 %endif
 %if %{with doc}
 BuildRequires:  %{python_module pydata-sphinx-theme}
