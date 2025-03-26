@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 26 14:13:32 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.28.0:
+  * fix(deps): update stackit sdk modules (#658)
+  * fix(deps): update module github.com/golang-jwt/jwt/v5 to v5.2.2
+    [security] (#663)
+
+-------------------------------------------------------------------
 Fri Mar 21 16:50:08 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.27.0:
