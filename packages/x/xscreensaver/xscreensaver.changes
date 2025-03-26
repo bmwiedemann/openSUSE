@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 17:37:04 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove dependency on unused unix2_chkpwd
+
+-------------------------------------------------------------------
 Tue Jun 11 16:54:38 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 6.09:

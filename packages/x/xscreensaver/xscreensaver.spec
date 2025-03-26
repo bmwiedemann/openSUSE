@@ -1,7 +1,7 @@
 #
 # spec file for package xscreensaver
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -83,7 +83,6 @@ BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xxf86vm)
 #
 Requires:       %{name}-data
-Requires:       /sbin/unix2_chkpwd
 Requires:       desktop-data
 Recommends:     %{name}-lang = %{version}
 #
