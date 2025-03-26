@@ -251,13 +251,13 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/warewulfd.conf %{buildroot}/%{_syscon
 
 %post
 %service_add_post warewulfd.service
-if [$1 -eq 1 ] ; then
-cp %{_sysconfdir}/warewulf/nodes.conf %{_sysconfdir}/warewulf/nodes.conf.4.5.x
-cp %{_sysconfdir}/warewulf/warewulf.conf %{_sysconfdir}/warewulf/warewulf.conf.4.5.x
-%{_bindir}/wwctl upgrade nodes --replace-overlay --add-defaults
-%{_bindir}/wwctl upgrade config
+if [ $1 -eq 1 ] ; then
+    cp %{_sysconfdir}/warewulf/nodes.conf %{_sysconfdir}/warewulf/nodes.conf.4.5.x
+    cp %{_sysconfdir}/warewulf/warewulf.conf %{_sysconfdir}/warewulf/warewulf.conf.4.5.x
+    %{_bindir}/wwctl upgrade nodes --replace-overlay --add-defaults
+    %{_bindir}/wwctl upgrade config
 else
-%{_datadir}/warewulf/scripts/config-warewulf.sh
+    %{_datadir}/warewulf/scripts/config-warewulf.sh
 fi
 
 %preun

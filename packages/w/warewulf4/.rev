@@ -400,4 +400,12 @@
   for better package description (forwarded request 1254974 from mslacken)</comment>
     <requestid>1254983</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>118f53f2d08a31a54e9f43ba4648eb83</srcmd5>
+    <version>4.6.0</version>
+    <time>1743020608</time>
+    <user>anag+factory</user>
+    <comment>- Fix typo in %post script.</comment>
+    <requestid>1256226</requestid>
+  </revision>
 </revisionlist>
