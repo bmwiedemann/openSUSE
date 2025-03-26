@@ -1,7 +1,7 @@
 #
 # spec file for package python-hupper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,8 +68,9 @@ When files are changed the process is restarted.
 %python_uninstall_alternative hupper
 
 %files %{python_files}
+%doc README.rst
+%license LICENSE.txt
 %python_alternative %{_bindir}/hupper
-%license %{python_sitelib}/hupper-%{version}.dist-info/LICENSE.txt
 %{python_sitelib}/hupper-%{version}.dist-info/
 %{python_sitelib}/hupper/
 

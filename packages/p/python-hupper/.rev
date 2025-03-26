@@ -89,4 +89,12 @@
     spinning the CPU needlessly.</comment>
     <requestid>1177531</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>28131883f3dfc07fa31c453ef442d899</srcmd5>
+    <version>1.12.1</version>
+    <time>1743020425</time>
+    <user>anag+factory</user>
+    <comment>- Don't use license in the dist-info directory.</comment>
+    <requestid>1256107</requestid>
+  </revision>
 </revisionlist>
