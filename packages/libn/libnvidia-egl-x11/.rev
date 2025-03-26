@@ -35,4 +35,16 @@
   * X11: Check for duplicate native drawables</comment>
     <requestid>1228783</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>847443fde579a1d73c3cc1573bf8f4e5</srcmd5>
+    <version>1.0.1</version>
+    <time>1743020486</time>
+    <user>anag+factory</user>
+    <comment>- 0001-Increment-version-number-to-1.0.1.patch
+  0002-Fall-back-to-gbm_bo_create_with_modifiers.patch  
+  0003-Fix-the-passthrough-call-in-eplX11SwapInterval.patch
+  0004-base-Add-a-hook-function-for-eglQueryDisplayAttrib.patch
+* added latest patches from github project</comment>
+    <requestid>1256165</requestid>
+  </revision>
 </revisionlist>

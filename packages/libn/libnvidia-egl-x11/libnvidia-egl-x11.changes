@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 26 02:58:24 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-Increment-version-number-to-1.0.1.patch
+  0002-Fall-back-to-gbm_bo_create_with_modifiers.patch  
+  0003-Fix-the-passthrough-call-in-eplX11SwapInterval.patch
+  0004-base-Add-a-hook-function-for-eglQueryDisplayAttrib.patch
+* added latest patches from github project 
+
+-------------------------------------------------------------------
 Fri Dec  6 13:32:30 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to self-tagged version 1.0.1

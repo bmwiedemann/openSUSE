@@ -1,7 +1,7 @@
 #
 # spec file for package libnvidia-egl-x11
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/sndirsch/egl-x11
 Source0:        https://github.com/sndirsch/egl-x11/archive/%{version}/%{rname}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch1:         0001-Increment-version-number-to-1.0.1.patch
+Patch2:         0002-Fall-back-to-gbm_bo_create_with_modifiers.patch
+Patch3:         0003-Fix-the-passthrough-call-in-eplX11SwapInterval.patch
+Patch4:         0004-base-Add-a-hook-function-for-eglQueryDisplayAttrib.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja

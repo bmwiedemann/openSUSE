@@ -1,0 +1,33 @@
+From af9c8b38f35b00a0029f52432b55bb23dbad7146 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 18 Mar 2025 12:41:55 -0600
+Subject: [PATCH 3/4] Fix the passthrough call in eplX11SwapInterval.
+
+In eplX11SwapInterval, if we don't recognize the surface, then pass the
+internal EGLDisplay when we forward the call to the driver, not the
+external EGLDisplay.
+
+Passing the external EGLDisplay would cause the driver to call back into
+the platform library.
+
+Fixes https://github.com/NVIDIA/egl-x11/issues/12
+---
+ src/x11/x11-window.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/x11/x11-window.c b/src/x11/x11-window.c
+index 57c1727..ae7bc17 100644
+--- a/src/x11/x11-window.c
++++ b/src/x11/x11-window.c
+@@ -2382,7 +2382,7 @@ EGLBoolean eplX11SwapInterval(EGLDisplay edpy, EGLint interval)
+         {
+             // If we don't recognize he current EGLSurface, then just pass the
+             // call through to the driver.
+-            ret = pdpy->platform->priv->egl.SwapInterval(edpy, interval);
++            ret = pdpy->platform->priv->egl.SwapInterval(pdpy->internal_display, interval);
+         }
+     }
+     else
+-- 
+2.43.0
+

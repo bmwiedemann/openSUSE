@@ -1,0 +1,141 @@
+From 87c2eb423ade6a22be286358f513090f0dfb57bb Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Mon, 10 Mar 2025 15:37:44 -0600
+Subject: [PATCH 2/4] Fall back to gbm_bo_create_with_modifiers.
+
+If we're running with an older verison of libgbm that doesn't have
+gbm_bo_create_with_modifiers2, then fall back to using
+gbm_bo_create_with_modifiers instead.
+
+To check for whether libgbm is new enough, check if gbm_bo_get_bpp is
+available. We don't use that function, but it's the first symbol added
+after GBM_BO_IMPORT_FD_MODIFIER, which we do require.
+
+Change the README to specify libgbm 21.2 as a requirement, to match the
+egl-gbm platform library.
+---
+ README.md              |  2 +-
+ src/x11/x11-pixmap.c   |  2 +-
+ src/x11/x11-platform.c | 30 +++++++++++++++++++++++++++---
+ src/x11/x11-platform.h | 10 ++++++++++
+ src/x11/x11-window.c   |  2 +-
+ 5 files changed, 40 insertions(+), 6 deletions(-)
+
+diff --git a/README.md b/README.md
+index 0ec8335..ba58cf6 100644
+--- a/README.md
++++ b/README.md
+@@ -12,7 +12,7 @@ Building and Installing
+ 
+ This library depends on:
+ - libxcb, libxcb-present, and libxcb-dri3, version 1.17.0
+-- libgbm, version 21.3.0
++- libgbm, version 21.2.0
+ - libdrm, version 2.4.99
+ - libx11 (only if building the xlib library)
+ - EGL headers
+diff --git a/src/x11/x11-pixmap.c b/src/x11/x11-pixmap.c
+index b156a8a..e86cece 100644
+--- a/src/x11/x11-pixmap.c
++++ b/src/x11/x11-pixmap.c
+@@ -90,7 +90,7 @@ static EGLPlatformColorBufferNVX AllocInternalBuffer(X11DisplayInstance *inst,
+     struct gbm_bo *gbo = NULL;
+     int fd = -1;
+ 
+-    gbo = gbm_bo_create_with_modifiers2(inst->gbmdev,
++    gbo = inst->platform->priv->gbm.bo_create_with_modifiers2(inst->gbmdev,
+             width, height, fmt->fourcc, fmt->modifiers, fmt->num_modifiers, 0);
+     if (gbo == NULL)
+     {
+diff --git a/src/x11/x11-platform.c b/src/x11/x11-platform.c
+index 2ccaa40..c1fa162 100644
+--- a/src/x11/x11-platform.c
++++ b/src/x11/x11-platform.c
+@@ -127,6 +127,16 @@ static EGLBoolean LoadProcHelper(EplPlatformData *plat, void *handle, void **ptr
+     return EGL_TRUE;
+ }
+ 
++static struct gbm_bo *fallback_gbo_create_with_modifiers2(struct gbm_device *gbm,
++        uint32_t width, uint32_t height,
++        uint32_t format,
++        const uint64_t *modifiers,
++        const unsigned int count,
++        uint32_t flags)
++{
++    return gbm_bo_create_with_modifiers(gbm, width, height, format, modifiers, count);
++}
++
+ EGLBoolean eplX11LoadEGLExternalPlatformCommon(int major, int minor,
+         const EGLExtDriver *driver, EGLExtPlatform *extplatform,
+         EGLint platform_enum)
+@@ -135,9 +145,15 @@ EGLBoolean eplX11LoadEGLExternalPlatformCommon(int major, int minor,
+     EGLBoolean timelineSupported = EGL_TRUE;
+     pfn_eglPlatformGetVersionNVX ptr_eglPlatformGetVersionNVX;
+ 
+-    // Before we do anything else, make sure that we've got a recent enough
+-    // version of libgbm.
+-    if (dlsym(RTLD_DEFAULT, "gbm_bo_create_with_modifiers2") == NULL)
++    /*
++     * Before we do anything else, make sure that we've got a recent enough
++     * version of libgbm. The most recent thing we depend on is
++     * GBM_BO_IMPORT_FD_MODIFIER, which we can't check directly.
++     *
++     * But, gbm_bo_get_bpp was added at about the same time, so we can check
++     * for that instead.
++     */
++    if (dlsym(RTLD_DEFAULT, "gbm_bo_get_bpp") == NULL)
+     {
+         return EGL_FALSE;
+     }
+@@ -226,6 +242,14 @@ EGLBoolean eplX11LoadEGLExternalPlatformCommon(int major, int minor,
+ 
+ #undef LOAD_PROC
+ 
++    // Load gbm_bo_create_with_modifiers2 if it's available. If it's not, then
++    // we'll fall back to using gbm_bo_create_with_modifiers.
++    plat->priv->gbm.bo_create_with_modifiers2 = dlsym(RTLD_DEFAULT, "gbm_bo_create_with_modifiers2");
++    if (plat->priv->gbm.bo_create_with_modifiers2 == NULL)
++    {
++        plat->priv->gbm.bo_create_with_modifiers2 = fallback_gbo_create_with_modifiers2;
++    }
++
+     eplPlatformBaseInitFinish(plat);
+     return EGL_TRUE;
+ }
+diff --git a/src/x11/x11-platform.h b/src/x11/x11-platform.h
+index fff3d8d..26c6178 100644
+--- a/src/x11/x11-platform.h
++++ b/src/x11/x11-platform.h
+@@ -129,6 +129,16 @@ struct _EplImplPlatform
+                           uint32_t flags);
+     } drm;
+ 
++    struct
++    {
++        struct gbm_bo * (* bo_create_with_modifiers2) (struct gbm_device *gbm,
++                uint32_t width, uint32_t height,
++                uint32_t format,
++                const uint64_t *modifiers,
++                const unsigned int count,
++                uint32_t flags);
++    } gbm;
++
+     EGLBoolean timeline_funcs_supported;
+ };
+ 
+diff --git a/src/x11/x11-window.c b/src/x11/x11-window.c
+index 25de867..57c1727 100644
+--- a/src/x11/x11-window.c
++++ b/src/x11/x11-window.c
+@@ -362,7 +362,7 @@ static X11ColorBuffer *AllocOneColorBuffer(X11DisplayInstance *inst,
+     glvnd_list_init(&buffer->entry);
+     buffer->fd = -1;
+ 
+-    buffer->gbo = gbm_bo_create_with_modifiers2(inst->gbmdev,
++    buffer->gbo = inst->platform->priv->gbm.bo_create_with_modifiers2(inst->gbmdev,
+             width, height, fmt->fourcc, modifiers, num_modifiers, flags);
+ 
+     if (buffer->gbo == NULL)
+-- 
+2.43.0
+

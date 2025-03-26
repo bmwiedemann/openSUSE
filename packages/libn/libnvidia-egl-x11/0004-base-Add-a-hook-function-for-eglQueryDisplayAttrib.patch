@@ -1,0 +1,104 @@
+From f6cc6456bfc98d1507aee55e0b608badd00f6ae5 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 18 Mar 2025 16:53:42 -0600
+Subject: [PATCH 4/4] base: Add a hook function for eglQueryDisplayAttrib.
+
+Add a hook function for eglQueryDisplayAttribEXT/KHR/NV.
+
+The hook function will handle the EGL_TRACK_REFERENCES_KHR attribute on
+its own, and then it'll forward either to a new optional
+EplImplFuncs::QueryDisplayAttrib function, or directly to the driver.
+
+Since the driver will handle EGL_DEVICE_EXT queries, most platforms
+won't need to provide their own QueryDisplayAttrib implementation.
+---
+ src/base/platform-base.c | 37 +++++++++++++++++++++++++++++++++++++
+ src/base/platform-impl.h | 17 +++++++++++++++++
+ 2 files changed, 54 insertions(+)
+
+diff --git a/src/base/platform-base.c b/src/base/platform-base.c
+index 9f4455a..8710d10 100644
+--- a/src/base/platform-base.c
++++ b/src/base/platform-base.c
+@@ -1163,6 +1163,40 @@ static EGLBoolean HookWaitNative(void)
+     return ret;
+ }
+ 
++static EGLBoolean HookQueryDisplayAttrib(EGLDisplay edpy, EGLint attribute, EGLAttrib *value)
++{
++    EplDisplay *pdpy = eplDisplayAcquire(edpy);
++    EGLBoolean ret = EGL_FALSE;
++
++    if (pdpy == NULL)
++    {
++        return EGL_FALSE;
++    }
++    if (value == NULL)
++    {
++        eplSetError(pdpy->platform, EGL_BAD_PARAMETER, "value pointer must not be NULL");
++        eplDisplayRelease(pdpy);
++        return EGL_FALSE;
++    }
++
++    if (attribute == EGL_TRACK_REFERENCES_KHR)
++    {
++        *value = (EGLAttrib) pdpy->track_references;
++        ret = EGL_TRUE;
++    }
++    else if (pdpy->platform->impl->QueryDisplayAttrib != NULL)
++    {
++        ret = pdpy->platform->impl->QueryDisplayAttrib(pdpy, attribute, value);
++    }
++    else
++    {
++        ret = pdpy->platform->egl.QueryDisplayAttribEXT(pdpy->internal_display, attribute, value);
++    }
++
++    eplDisplayRelease(pdpy);
++    return ret;
++}
++
+ static const EplHookFunc BASE_HOOK_FUNCTIONS[] =
+ {
+     { "eglCreatePbufferSurface", HookCreatePbufferSurface },
+@@ -1172,6 +1206,9 @@ static const EplHookFunc BASE_HOOK_FUNCTIONS[] =
+     { "eglCreateWindowSurface", HookCreateWindowSurface },
+     { "eglDestroySurface", HookDestroySurface },
+     { "eglInitialize", HookInitialize },
++    { "eglQueryDisplayAttribEXT", HookQueryDisplayAttrib },
++    { "eglQueryDisplayAttribKHR", HookQueryDisplayAttrib },
++    { "eglQueryDisplayAttribNV", HookQueryDisplayAttrib },
+     { "eglSwapBuffers", HookSwapBuffers },
+     { "eglSwapBuffersWithDamageEXT", HookSwapBuffersWithDamage },
+     { "eglSwapBuffersWithDamageKHR", HookSwapBuffersWithDamage },
+diff --git a/src/base/platform-impl.h b/src/base/platform-impl.h
+index 83fd9e4..abd74be 100644
+--- a/src/base/platform-impl.h
++++ b/src/base/platform-impl.h
+@@ -276,6 +276,23 @@ typedef struct _EplImplFuncs
+      * \return EGL_TRUE on success, EGL_FALSE on failure.
+      */
+     EGLBoolean (*WaitNative) (EplDisplay *pdpy, EplSurface *psurf);
++
++    /**
++     * Implements eglQueryDisplayAttribKHR/EXT/NV.
++     *
++     * This function is optional, if it's NULL, then the base library will
++     * handle any attributes that it implements internally, and forward the
++     * rest to the driver.
++     *
++     * If the platform doesn't recognize \p attrib, then it should forward the
++     * function to the driver.
++     *
++     * \param pdpy The EplDisplay struct
++     * \param attrib The attribute to look up.
++     * \param[out] value Returns the value of the attribute.
++     * \return EGL_TRUE on success, EGL_FALSE on failure.
++     */
++    EGLBoolean (*QueryDisplayAttrib) (EplDisplay *pdpy, EGLint attrib, EGLAttrib *ret_value);
+ } EplImplFuncs;
+ 
+ #ifdef __cplusplus
+-- 
+2.43.0
+

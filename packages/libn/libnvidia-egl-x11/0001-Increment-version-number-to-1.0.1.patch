@@ -1,0 +1,25 @@
+From 7663659937a329ba3a143386345edf3665b0364c Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Wed, 11 Dec 2024 14:13:56 -0700
+Subject: [PATCH 1/4] Increment version number to 1.0.1.
+
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index c7df6ee..b8680c0 100644
+--- a/meson.build
++++ b/meson.build
+@@ -14,7 +14,7 @@
+ # limitations under the License.
+ 
+ project('egl-x11', 'c',
+-  version : '1.0.0',
++  version : '1.0.1',
+   default_options : ['c_std=gnu99'],
+ )
+ 
+-- 
+2.43.0
+
