@@ -1,7 +1,7 @@
 #
 # spec file for package libhangul
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname 1
 Name:           libhangul
-Version:        0.1.1~git20180606.42f7640
+Version:        0.1.1~git20230415.154a5e0
 Release:        0
 Summary:        The Hangul input library
 License:        LGPL-2.1-or-later
