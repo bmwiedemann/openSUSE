@@ -2215,4 +2215,27 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1244072</requestid>
   </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>a1c7b6a3b811d3944eb5a62dec397ce0</srcmd5>
+    <version>25.03.0</version>
+    <time>1743020198</time>
+    <user>anag+factory</user>
+    <comment>- version update to 25.03.0
+    core:
+     * Fix opening some slightly malformed files
+     * Signing: Support custom PGP signing
+     * Signing: Do not embed fonts in the case of signatures
+       without appearance
+     * Signing: Improve error handling on bad passphrase
+     * Signing-GPGME: more correct validation handling
+     * Internal code improvements
+    glib:
+     * Fix default signature colors
+     * Check file attachment annotation for this class before
+       casting
+- gcc12: build with PIE [bsc#1239939]
+- Bump poppler sover following upstream changes.
+</comment>
+    <requestid>1255646</requestid>
+  </revision>
 </revisionlist>

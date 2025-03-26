@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 24 09:33:35 UTC 2025 - pgajdos@suse.com
+
+- version update to 25.03.0
+    core:
+     * Fix opening some slightly malformed files
+     * Signing: Support custom PGP signing
+     * Signing: Do not embed fonts in the case of signatures
+       without appearance
+     * Signing: Improve error handling on bad passphrase
+     * Signing-GPGME: more correct validation handling
+     * Internal code improvements
+    glib:
+     * Fix default signature colors
+     * Check file attachment annotation for this class before
+       casting
+- gcc12: build with PIE [bsc#1239939]
+- Bump poppler sover following upstream changes.
+
+-------------------------------------------------------------------
 Thu Feb  6 13:01:53 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 25.02.0:
