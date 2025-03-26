@@ -30,7 +30,6 @@ Version:        3.2
 Release:        0
 Summary:        A high level imperative/OO programming language
 License:        MIT
-Group:          Development/Languages/Other
 URL:            https://squirrel-lang.org/
 Source:         https://downloads.sourceforge.net/squirrel/squirrel_%{tarver}_stable.tar.gz
 Source1:        squirrel-config.cmake.in
@@ -39,7 +38,7 @@ Source11:       squirrel.rpmlintrc
 Patch1:         c++11.patch
 # Generated from S:10 in %%prep, so update that if patch no longer applies
 Patch10:        sover.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  sed
 
@@ -89,7 +88,8 @@ cp %SOURCE1 .
 %build
 %cmake \
     -DDISABLE_STATIC=1 \
-    -DLONG_OUTPUT_NAMES=1
+    -DLONG_OUTPUT_NAMES=1 \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
 %install
@@ -98,6 +98,9 @@ make %{?_smp_mflags}
 %if %suse_version < 1599
 ln -s /usr/bin/squirrel3 %{buildroot}%{_bindir}/sqrl
 %endif
+
+%check
+%ctest
 
 %post -n libsquirrel%{sover} -p /sbin/ldconfig
 %postun -n libsquirrel%{sover} -p /sbin/ldconfig
