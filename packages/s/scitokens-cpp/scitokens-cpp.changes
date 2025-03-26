@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 22 16:07:27 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+- Remove Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Wed Apr 12 09:34:32 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - disable error on deprecated warnings of openssl

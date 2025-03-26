@@ -21,10 +21,9 @@ Version:        0.6.3
 Release:        0
 Summary:        C++ Implementation of the SciTokens Library
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/scitokens/scitokens-cpp
 Source0:        https://github.com/scitokens/scitokens-cpp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libuuid-devel
@@ -65,11 +64,14 @@ want to delegate trust for an issuer for managing a storage allocation.
 
 %build
 export CFLAGS="%optflags -Wno-error=deprecated-declarations"
-%{cmake}
+%{cmake} -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %{cmake_build}
 
 %install
 %{cmake_install}
+
+%check
+%ctest
 
 %post -n libSciTokens0 -p /sbin/ldconfig
 %postun -n libSciTokens0 -p /sbin/ldconfig
