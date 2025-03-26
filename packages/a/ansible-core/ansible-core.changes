@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 25 20:40:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.4:
+  * Bugfixes
+    - Windows - add support for running on system where WDAC is in
+      audit mode with Dynamic Code Security enabled.
+    - dnf5 - fix is_installed check for packages that are not
+      installed but listed as provided by an installed package
+      (#84578)
+    - dnf5 - libdnf5 - use conf.pkg_gpgcheck instead of deprecated
+      conf.gpgcheck which is used only as a fallback
+    - facts - gather pagesize and calculate respective values
+      depending upon architecture (#84773).
+    - module respawn - limit to supported Python versions
+
+-------------------------------------------------------------------
 Fri Mar  7 08:09:45 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Add patch unarchive-test-fix.patch for unarchive: Clamp zip
