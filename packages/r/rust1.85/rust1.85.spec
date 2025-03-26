@@ -18,8 +18,8 @@
 
 
 %global version_suffix 1.85
-%global version_current 1.85.0
-%global version_previous 1.84.0
+%global version_current 1.85.1
+%global version_previous 1.85.0
 
 %if 0%{?gcc_version} < 13
 # We may need a minimum gcc version for some linker flags
