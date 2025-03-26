@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 21 10:47:51 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update fsnotify to version 0.4.2.0.
+  * Bump hfsevents constraint to >= 0.1.8 to pick up race condition fix (see
+    https://github.com/luite/hfsevents/pull/19).
+  * Compatibility with text-2.1.2 and an upper bound of 2.2.
+  * Lots of CI and test improvements.
+  * Document polling interval units (#111).
+  * Fix compat with text-2.1.2 (closes #116).
+  * Remove some redundant cleanup code paths.
+
+- Apply "dont-install-example-exe.patch" to disable installing
+  the "example" executable from this package.
+
+-------------------------------------------------------------------
 Tue Oct 29 12:52:15 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update fsnotify to version 0.4.1.0 revision 1.

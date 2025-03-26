@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-fsnotify
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,14 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.1.0
+Version:        0.4.2.0
 Release:        0
 Summary:        Cross platform library for file change notification
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
+Patch01:        dont-install-example-exe.patch
+BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-async-prof
@@ -38,15 +39,27 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-exceptions-devel
+BuildRequires:  ghc-exceptions-prof
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-hinotify-devel
 BuildRequires:  ghc-hinotify-prof
 BuildRequires:  ghc-monad-control-devel
 BuildRequires:  ghc-monad-control-prof
+BuildRequires:  ghc-monad-logger-devel
+BuildRequires:  ghc-monad-logger-prof
+BuildRequires:  ghc-random-devel
+BuildRequires:  ghc-random-prof
+BuildRequires:  ghc-retry-devel
+BuildRequires:  ghc-retry-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-exceptions-devel
 BuildRequires:  ghc-safe-exceptions-prof
+BuildRequires:  ghc-string-interpolate-devel
+BuildRequires:  ghc-string-interpolate-prof
+BuildRequires:  ghc-temporary-devel
+BuildRequires:  ghc-temporary-prof
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel
@@ -55,20 +68,12 @@ BuildRequires:  ghc-unix-compat-devel
 BuildRequires:  ghc-unix-compat-prof
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
-ExcludeArch:    %{ix86}
-%if %{with tests}
-BuildRequires:  ghc-exceptions-devel
-BuildRequires:  ghc-exceptions-prof
-BuildRequires:  ghc-random-devel
-BuildRequires:  ghc-random-prof
-BuildRequires:  ghc-retry-devel
-BuildRequires:  ghc-retry-prof
-BuildRequires:  ghc-sandwich-devel
-BuildRequires:  ghc-sandwich-prof
-BuildRequires:  ghc-temporary-devel
-BuildRequires:  ghc-temporary-prof
 BuildRequires:  ghc-unliftio-devel
 BuildRequires:  ghc-unliftio-prof
+ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-sandwich-devel
+BuildRequires:  ghc-sandwich-prof
 %endif
 
 %description
@@ -103,14 +108,14 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
+%autosetup -n %{pkg_name}-%{version} -p1
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
+%ghc_fix_rpath %{pkg_name}-%{version}
 
 %check
 %cabal_test
