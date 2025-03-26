@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 25 20:38:44 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.18.4:
+  * add fest banner (#2464) (#2466)
+  * Update module developement (#2427) (#2461)
+  * union filter documented incorrectly (#2403) (#2458)
+  * fixes and updates to inventory intro (#2416) (#2455)
+  * Update playbooks_error_handling.rst (#2095) (#2454)
+  *  Introduce a new section for managing z/OS UNIX mainframe hosts
+     with Ansible. (#2424) (#2451)
+  * Remove thaumos from SC (#2440) (#2450)
+  * testing_sanity.rst: improvement (#2441) (#2447)
+  * Involuntarily leaving SC: Allow PM on forum (#2393) (#2445)
+  * pr_labeler: fix error in pyproject.toml (#2432) (#2435)
+  * Update Ansible 11 porting guide for 11.3.0 release (#2425)
+    (#2426)
+
+-------------------------------------------------------------------
 Tue Feb 25 06:39:56 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.18.3:
