@@ -27,7 +27,7 @@ License:        MIT
 URL:            https://github.com/socketio/socket.io-client-cpp
 Source:         https://github.com/socketio/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(RapidJSON)
 BuildRequires:  cmake(websocketpp)
@@ -56,6 +56,7 @@ chmod -x README.md LICENSE
 %build
 %cmake \
 	-DCMAKE_BUILD_TYPE="Release" \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 	%{nil}
 %cmake_build
 
