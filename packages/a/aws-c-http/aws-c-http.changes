@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 18 08:27:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.5
+  * HTTP/1: Support streaming requests of unknown length
+    by @graebm in (#506)
+
+-------------------------------------------------------------------
 Wed Mar 12 06:54:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.4
