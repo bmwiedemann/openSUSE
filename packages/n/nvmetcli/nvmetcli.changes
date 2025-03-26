@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 20 08:46:34 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Drop dependency on unmaintained kmodpy
+  * When-kmodpy-is-not-available-call-kmod-binary-directly.patch
+
+-------------------------------------------------------------------
 Sun Mar 10 22:58:35 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Migrate from kmod to kmodpy -- both are supported, kmodpy is now
-  packaged. 
+  packaged.
 
 -------------------------------------------------------------------
 Tue Feb 27 22:17:04 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>

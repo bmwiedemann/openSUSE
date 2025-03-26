@@ -1,7 +1,7 @@
 #
 # spec file for package nvmetcli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://git.infradead.org/users/hch/nvmetcli.git
 Source:         nvmetcli-v%{version}.tar.gz
 Patch1:         nvmetcli-update-python-to-python3.patch
 Patch2:         harden_nvmet.service.patch
+Patch3:         When-kmodpy-is-not-available-call-kmod-binary-directly.patch
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python3-pip
@@ -33,10 +34,9 @@ BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 Requires:       python3-configshell-fb
-Requires:       python3-kmodpy
 Requires(post): systemd
-Requires(postun): systemd
-Requires(preun): systemd
+Requires(postun):systemd
+Requires(preun):systemd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 

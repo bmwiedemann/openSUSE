@@ -1,0 +1,47 @@
+From c2f8f2713398bbecc398ac4e3c1b99adbe893c45 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Thu, 20 Mar 2025 09:34:10 +0100
+Subject: [PATCH] When kmodpy is not available call kmod binary directly
+
+kmodpy is an unmaintained project. Python is not really good at
+backwards compatibility. With the upstream project not keeping up with
+python churn using the library is a maintenance burden.
+
+nvmet does not use the python library in any substantial way, it only
+loads a module once. This can be easily accomplished without any library
+using the modprobe tool directly.
+---
+ nvmet/nvme.py | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/nvmet/nvme.py b/nvmet/nvme.py
+index 59efdb5b7c1b..397f103abcdb 100644
+--- a/nvmet/nvme.py
++++ b/nvmet/nvme.py
+@@ -256,9 +256,20 @@ class Root(CFSNode):
+             # Try the ctypes library included with the libkmod itself.
+             try:
+                 import kmod
+-                kmod.Kmod().modprobe(modname)
+-            except Exception as e:
+-                pass
++
++                try:
++                    kmod.Kmod().modprobe(modname)
++                except Exception as e:
++                    pass
++            except ImportError:
++                # Try the binary specified in /proc
++                try:
++                    kmod = None
++                    with open('/proc/sys/kernel/modprobe', 'r') as f:
++                        kmod = f.read().rstrip()
++                    os.system(kmod + ' ' + modname)
++                except Exception as e:
++                    pass
+ 
+     def _list_subsystems(self):
+         self._check_self()
+-- 
+2.47.1
+
