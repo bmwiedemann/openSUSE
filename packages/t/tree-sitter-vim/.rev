@@ -27,4 +27,13 @@
 - enable devel package</comment>
     <requestid>1230240</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dfc733cd87dd7055b995e2cc7e4fa6bf</srcmd5>
+    <version>0.5.0</version>
+    <time>1743111132</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.0:
+  * fix(grammar): remove unnecessary choice wrapper (forwarded request 1256333 from rrahl0)</comment>
+    <requestid>1256334</requestid>
+  </revision>
 </revisionlist>
