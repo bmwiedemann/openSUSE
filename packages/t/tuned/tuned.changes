@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 26 22:30:46 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Add BuildRequires:
+  * gobject-introspection-devel for test in check section to succeed
+  * pyinotify in ppd
+
+-------------------------------------------------------------------
 Fri Mar 14 13:22:08 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - tuned-ppd: add missing requirement on `asyncore` python library

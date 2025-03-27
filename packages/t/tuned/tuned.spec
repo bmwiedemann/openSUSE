@@ -33,6 +33,7 @@ Patch0:         fix-allow-receive_sender-default.patch
 Patch1:         0001-tuned-consts-Fix-grub.cfg-path-in-SLE.patch
 BuildRequires:  bash-completion
 BuildRequires:  desktop-file-utils
+BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-dbus-python
@@ -177,6 +178,7 @@ Additional tuned profile(s) optimized for IBM Spectrum Scale.
 Summary:        PPD compatibility daemon
 Requires:       %{name} = %{version}
 Requires:       python3-pyasyncore
+Requires:       python3-pyinotify
 Conflicts:      ppd-service
 # The compatibility daemon is swappable for power-profiles-daemon
 Provides:       ppd-service
