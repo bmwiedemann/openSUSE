@@ -23,4 +23,12 @@
     <comment>o not require maven plugins that we don't use</comment>
     <requestid>1112247</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>140901c8c7c80fb3f2987d75245a0331</srcmd5>
+    <version>1.1</version>
+    <time>1743111240</time>
+    <user>anag+factory</user>
+    <comment>allow building with the upcoming maven-plugin-tools 4.x</comment>
+    <requestid>1263973</requestid>
+  </revision>
 </revisionlist>

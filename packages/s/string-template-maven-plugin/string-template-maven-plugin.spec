@@ -1,7 +1,7 @@
 #
 # spec file for package string-template-maven-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,12 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/kevinbirch/%{name}
 Source0:        https://github.com/kevinbirch/%{name}/archive/%{name}-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/kevinbirch/%{name}/master/LICENSE
+Patch0:         string-template-maven-plugin-mpt4.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.antlr:ST4)
+BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
@@ -54,6 +56,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%patch -P 0 -p1
 cp %{SOURCE1} .
 %pom_change_dep :stringtemplate :ST4
 %pom_change_dep org.sonatype.aether: org.eclipse.aether:
@@ -63,6 +66,8 @@ perl -pi -e 's#org\.sonatype\.aether#org.eclipse.aether#g' \
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-javadoc-plugin
 %pom_remove_plugin :maven-source-plugin
+
+%pom_add_dep org.apache.maven.plugin-tools:maven-plugin-annotations:3.15.1:provided
 
 %build
 %{mvn_build} -f -- \

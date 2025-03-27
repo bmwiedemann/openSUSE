@@ -1,0 +1,71 @@
+--- string-template-maven-plugin-string-template-maven-plugin-1.1/src/main/java/com/webguys/maven/plugin/st/StringTemplateMojo.java	2025-03-27 07:49:33.275833066 +0100
++++ string-template-maven-plugin-string-template-maven-plugin-1.1/src/main/java/com/webguys/maven/plugin/st/StringTemplateMojo.java	2025-03-27 08:02:43.532207750 +0100
+@@ -28,6 +28,11 @@
+ 
+ import org.apache.maven.ProjectDependenciesResolver;
+ import org.apache.maven.execution.MavenSession;
++
++import org.apache.maven.plugins.annotations.Component;
++import org.apache.maven.plugins.annotations.Mojo;
++import org.apache.maven.plugins.annotations.Parameter;
++
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.BuildPluginManager;
+ import org.apache.maven.plugin.MojoExecutionException;
+@@ -47,49 +52,43 @@
+ /**
+  * Executes string template using a given controller.
+  *
+- * @goal render
+  */
++@Mojo( name = "render" ) 
+ public class StringTemplateMojo extends AbstractMojo
+ {
+     /**
+      * The Maven Project Object
+      *
+-     * @parameter property="project"
+-     * @required
+-     * @readonly
+      */
++    @Component 
+     private MavenProject project;
+ 
+     /**
+      * The Maven Session Object
+      *
+-     * @parameter property="session"
+-     * @required
+-     * @readonly
+      */
++    @Component
+     private MavenSession session;
+ 
+     /**
+      * The Maven PluginManager Object
+      *
+-     * @component
+-     * @required
+      */
++    @Component
+     private BuildPluginManager pluginManager;
+ 
+     /**
+      * The Maven ProjectDependenciesResolver Object
+      *
+-     * @component
+-     * @required
+      */
++    @Component
+     private ProjectDependenciesResolver dependenciesResolver;
+ 
+     /**
+      * The collection of templates to render.
+-     * @parameter
+-     * @required
++     *
+      */
++    @Parameter( required = true )
+     private List<Template> templates;
+ 
+     @Override
