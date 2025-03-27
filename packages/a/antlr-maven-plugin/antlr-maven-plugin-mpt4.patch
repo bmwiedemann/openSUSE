@@ -1,0 +1,226 @@
+--- antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AbstractAntlrMojo.java	2025-03-27 08:54:38.467620775 +0100
++++ antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AbstractAntlrMojo.java	2025-03-27 15:26:47.173470385 +0100
+@@ -44,6 +44,8 @@
+ import org.apache.maven.artifact.Artifact;
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.MojoExecutionException;
++import org.apache.maven.plugins.annotations.Component;
++import org.apache.maven.plugins.annotations.Parameter;
+ import org.apache.maven.project.MavenProject;
+ import org.apache.maven.project.MavenProjectHelper;
+ import org.apache.commons.exec.DefaultExecutor;
+@@ -74,24 +76,23 @@
+     /**
+      * Specifies the Antlr directory containing grammar files.
+      * 
+-     * @parameter default-value="${basedir}/src/main/antlr"
+      */
++    @Parameter( defaultValue = "${basedir}/src/main/antlr" )
+     protected File sourceDirectory;
+ 
+     /**
+      * The Maven Project Object
+      * 
+-     * @parameter expression="${project}"
+-     * @readonly
+      */
++    @Parameter( property = "project",
++                readonly = true )
+     protected MavenProject project;
+ 
+     /**
+      * The maven project's helper.
+      * 
+-     * @component role="org.apache.maven.project.MavenProjectHelper"
+-     * @readonly
+      */
++    @Component( role = MavenProjectHelper.class )
+     private MavenProjectHelper projectHelper;
+ 
+     // ----------------------------------------------------------------------
+@@ -103,8 +104,8 @@
+      * Specifies the destination directory where Antlr should generate files. <br/>
+      * See <a href="http://www.antlr2.org/doc/options.html#Command%20Line%20Options">Command Line Options</a>
+      * 
+-     * @parameter default-value="${project.build.directory}/generated-sources/antlr"
+      */
++    @Parameter( defaultValue = "${project.build.directory}/generated-sources/antlr" )
+     protected File outputDirectory;
+ 
+     /**
+@@ -112,8 +113,8 @@
+      * directory. <br/>
+      * See <a href="http://www.antlr2.org/doc/options.html#Command%20Line%20Options">Command Line Options</a>
+      * 
+-     * @parameter expression="${grammars}"
+      */
++    @Parameter( property = "grammars" )
+     protected String grammars;
+ 
+     /**
+@@ -130,56 +131,62 @@
+      * &lt;/grammarDefs&gt;
+      * </pre>
+      * 
+-     * @parameter expression="${grammarDefs}"
+      */
++    @Parameter( property = "grammarDefs" )
+     protected Grammar[] grammarDefs;
+ 
+     /**
+      * Launch the ParseView debugger upon parser invocation. <br/>
+      * See <a href="http://www.antlr2.org/doc/options.html#Command%20Line%20Options">Command Line Options</a>
+      * 
+-     * @parameter expression="${debug}" default-value="false"
+      */
++    @Parameter( property = "debug",
++                defaultValue = "false" )
+     private boolean debug;
+ 
+     /**
+      * Generate a text file from your grammar with a lot of debugging info. <br/>
+      * See <a href="http://www.antlr2.org/doc/options.html#Command%20Line%20Options">Command Line Options</a>
+      * 
+-     * @parameter expression="${diagnostic}" default-value="false"
+      */
++    @Parameter( property = "diagnostic",
++                defaultValue = "false" )
+     private boolean diagnostic;
+ 
+     /**
+      * Have all rules call traceIn/traceOut. <br/>
+      * See <a href="http://www.antlr2.org/doc/options.html#Command%20Line%20Options">Command Line Options</a>
+      * 
+-     * @parameter expression="${trace}" default-value="false"
+      */
++    @Parameter( property = "trace",
++                defaultValue = "false" )
+     private boolean trace;
+ 
+     /**
+      * Have parser rules call traceIn/traceOut. <br/>
+      * See <a href="http://www.antlr2.org/doc/options.html#Command%20Line%20Options">Command Line Options</a>
+      * 
+-     * @parameter expression="${traceParser}" default-value="false"
+      */
++    @Parameter( property = "traceParser",
++                defaultValue = "false" )
+     private boolean traceParser;
+ 
+     /**
+      * Have lexer rules call traceIn/traceOut. <br/>
+      * See <a href="http://www.antlr2.org/doc/options.html#Command%20Line%20Options">Command Line Options</a>
+      * 
+-     * @parameter expression="${traceLexer}" default-value="false"
+      */
++    @Parameter( property = "traceLexer",
++                defaultValue = "false" )
+     private boolean traceLexer;
+ 
+     /**
+      * Have tree rules call traceIn/traceOut. <br/>
+      * See <a href="http://www.antlr2.org/doc/options.html#Command%20Line%20Options">Command Line Options</a>
+      * 
+-     * @parameter expression="${traceTreeParser}" default-value="false"
+      */
++    @Parameter( property = "traceTreeParser",
++                defaultValue = "false" )
+     private boolean traceTreeParser;
+ 
+     public File getSourceDirectory()
+--- antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AntlrHtmlReport.java	2025-03-27 08:54:38.467721722 +0100
++++ antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AntlrHtmlReport.java	2025-03-27 15:28:14.917992058 +0100
+@@ -30,6 +30,9 @@
+ import org.apache.maven.doxia.siterenderer.sink.SiteRendererSink;
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.plugin.MojoFailureException;
++import org.apache.maven.plugins.annotations.Component;
++import org.apache.maven.plugins.annotations.Mojo;
++import org.apache.maven.plugins.annotations.Parameter;
+ import org.apache.maven.reporting.AbstractMavenReportRenderer;
+ import org.apache.maven.reporting.MavenReport;
+ import org.apache.maven.reporting.MavenReportException;
+@@ -44,9 +47,9 @@
+  * 
+  * @author <a href="mailto:vincent.siveton@gmail.com">Vincent Siveton</a>
+  * @version $Id: AntlrHtmlReport.java 13111 2010-11-16 22:16:36Z pgier $
+- * @goal html
+  * @see <a href="http://www.antlr2.org/doc/options.html#Command%20Line%20Options">Command Line Options</a>
+  */
++@Mojo( name = "html" )
+ public class AntlrHtmlReport
+     extends AbstractAntlrMojo
+     implements MavenReport
+@@ -58,36 +61,38 @@
+     /**
+      * Generates the site report
+      * 
+-     * @component
+      */
++    @Component
+     private Renderer siteRenderer;
+ 
+     /**
+      * Internationalization.
+      * 
+-     * @component
+      */
++    @Component
+     protected I18N i18n;
+ 
+     /**
+      * Specifies the destination directory where Antlr generates HTML files.
+      * 
+-     * @parameter default-value="${project.build.directory}/generated-site/antlr"
+      */
++    @Parameter( defaultValue = "${project.build.directory}/generated-site/antlr" )
+     private File reportOutputDirectory;
+ 
+     /**
+      * The name of the Antlr report.
+      * 
+-     * @parameter expression="${name}" default-value="Antlr Grammars"
+      */
++    @Parameter( property = "name",
++                defaultValue = "Antlr Grammars" )
+     private String name;
+ 
+     /**
+      * The description of the Antlr report.
+      * 
+-     * @parameter expression="${description}" default-value="Generated Antlr report from grammars."
+      */
++    @Parameter( property = "description",
++                defaultValue = "Generated Antlr report from grammars." )
+     private String description;
+ 
+     /**
+--- antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AntlrPlugin.java	2025-03-27 08:54:38.467763399 +0100
++++ antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AntlrPlugin.java	2025-03-27 08:59:20.158846210 +0100
+@@ -23,6 +23,10 @@
+ 
+ import org.apache.maven.plugin.MojoExecutionException;
+ 
++import org.apache.maven.plugins.annotations.LifecyclePhase;
++import org.apache.maven.plugins.annotations.Mojo;
++import org.apache.maven.plugins.annotations.ResolutionScope;
++
+ //----------------------------------------------------------------------
+ // Don't remove this snippet
+ //----------------------------------------------------------------------
+@@ -30,12 +34,12 @@
+ /**
+  * Generates files based on grammar files with Antlr tool.
+  * 
+- * @goal generate
+- * @phase generate-sources
+- * @requiresDependencyResolution compile
+  * @author <a href="mailto:vincent.siveton@gmail.com">Vincent Siveton</a>
+  * @version $Id: AntlrPlugin.java 13111 2010-11-16 22:16:36Z pgier $
+  */
++@Mojo( name = "generate",
++       defaultPhase = LifecyclePhase.GENERATE_SOURCES,
++       requiresDependencyResolution = ResolutionScope.COMPILE )
+ public class AntlrPlugin
+     extends AbstractAntlrMojo
+ {

@@ -1,7 +1,7 @@
 #
 # spec file for package antlr-maven-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,11 +32,13 @@ Patch2:         maven-antlr-plugin-2.1-sinkfix.patch
 Patch3:         0001-MANTLR-34-Fix-NPE-when-building-Jenkins.patch
 Patch4:         new-reporting-api.patch
 Patch5:         jdk18plus.patch
+Patch6:         antlr-maven-plugin-mpt4.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.commons:commons-exec)
+BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-impl)
 BuildRequires:  mvn(org.apache.maven.wagon:wagon-provider-api)
@@ -68,8 +70,11 @@ This package contains the API documentation for %{name}.
 %patch -P 3 -p1 -b .fixnpe
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 
-%pom_change_dep :maven-project :maven-core:3.9.3
+%pom_change_dep :maven-project :maven-core:3.9.9
+
+%pom_add_dep org.apache.maven.plugin-tools:maven-plugin-annotations:3.15.1:provided
 
 # reporting eventually pulls in another antlr and we'd break with weird errors
 %pom_xpath_inject "pom:dependency[pom:artifactId[text()='maven-reporting-impl']]/pom:exclusions" "

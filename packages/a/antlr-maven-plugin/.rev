@@ -55,4 +55,12 @@
     <comment>port to changes in maven-doxia-sitetools 2.0.0</comment>
     <requestid>1208219</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>cc14d6fcd393eeea879936403abd2dec</srcmd5>
+    <version>2.2</version>
+    <time>1743111241</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1261017</requestid>
+  </revision>
 </revisionlist>
