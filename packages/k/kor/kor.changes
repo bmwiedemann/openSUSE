@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Mar 27 10:08:29 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.0:
+  * Docs: Create ADOPTERS.md by @yonahd in #266
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.32.1 to
+    0.32.2 by @dependabot in #410
+  * chore(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.0 by
+    @dependabot in #406
+  * added Ataccama to adopters file by @nemcikjan in #413
+  * feat: Added --namespaced flag to filter
+    namespaced/non-namespaced resources by @doronkg in #411
+  * chore(deps): bump github.com/spf13/cobra from 1.9.0 to 1.9.1 by
+    @dependabot in #414
+  * chore(deps): bump github.com/prometheus/client_golang from
+    1.20.5 to 1.21.0 by @dependabot in #415
+  * feat: discover unused volumeattachments by @Yuni-sa in #417
+  * fix VolumeAttachment pluralisation in all.go by @Yuni-sa in
+    #421
+  * chore(deps): bump github.com/prometheus/client_golang from
+    1.21.0 to 1.21.1 by @dependabot in #420
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.32.2 to
+    0.32.3 by @dependabot in #425
+  * feat: support finding non-namespaced resources stuck by
+    finalizers by @Yuni-sa in #419
+  * chore(deps): bump golang.org/x/net from 0.34.0 to 0.36.0 by
+    @dependabot in #428
+  * Fix: slack webhooks by @yonahd in #429
+
+-------------------------------------------------------------------
 Fri Feb 07 17:02:33 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.9:
