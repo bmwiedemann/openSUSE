@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 24 14:13:47 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Use the primary python for building
+- Run tests
+- Add PyYAML as a runtime dependency
+
+-------------------------------------------------------------------
 Fri Jul 28 18:31:35 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to python 3.11 as the internal build tool.

@@ -1,7 +1,7 @@
 #
 # spec file for package artifacts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define timestamp 20221219
+%define pythons %{primary_python}
 Name:           artifacts
 Version:        %{timestamp}
 Release:        0
@@ -29,11 +30,12 @@ Source1:        https://github.com/ForensicArtifacts/artifacts/releases/download
 # Key 0xD9625E5D7AD0177E by Joachim Metz https://github.com/joachimmetz
 Source2:        %{name}.keyring
 BuildRequires:  fdupes
-#BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros
 #BuildRequires:  python3-packaging
 # security:forensics is now only supporting python 3.7 or newer
-BuildRequires:  python311-setuptools
-BuildRequires:  python311-base
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module base}
 
 BuildArch:      noarch
 
@@ -54,6 +56,7 @@ from the GRR team.
 Summary:        Digital Forensics Artifact Repository Validator
 Group:          Productivity/Security
 Requires:       artifacts
+Requires:       python3-PyYAML
 
 %description validator
 Python modules and program to validate the artifact data. It is
@@ -65,16 +68,19 @@ themselves and not use these Python modules.
 %setup -q -n artifacts-%{timestamp}
 
 %build
-%python311_build
+%python_build
 
 %install
-%python311_install
-%fdupes %{buildroot}%{python3_sitelib}
+%python_install
+%fdupes %{buildroot}%{python_sitelib}
 # these are installed to the wrong dir by %{name}
 rm %{buildroot}/usr/share/doc/%{name}/ACKNOWLEDGEMENTS
 rm %{buildroot}/usr/share/doc/%{name}/AUTHORS
 rm %{buildroot}/usr/share/doc/%{name}/LICENSE
 rm %{buildroot}/usr/share/doc/%{name}/README
+
+%check
+%python_expand $python run_tests.py
 
 %files
 %doc ACKNOWLEDGEMENTS AUTHORS README
@@ -83,7 +89,7 @@ rm %{buildroot}/usr/share/doc/%{name}/README
 
 %files validator
 %license LICENSE
-%{python311_sitelib}/artifacts*
+%{python_sitelib}/artifacts*
 %{_bindir}/validator.py
 %{_bindir}/stats.py
 

@@ -74,4 +74,14 @@
     <comment></comment>
     <requestid>1101248</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d2141119034cef7cb64664a26740a317</srcmd5>
+    <version>20221219</version>
+    <time>1743111136</time>
+    <user>anag+factory</user>
+    <comment>- Use the primary python for building
+- Run tests
+- Add PyYAML as a runtime dependency (forwarded request 1255648 from jaimeMF)</comment>
+    <requestid>1256346</requestid>
+  </revision>
 </revisionlist>
