@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 27 13:28:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to version 9.0:
+    * f3read/f3write: Avoid the execution stack to list files
+    * f3read/f3write: Add dynamic buffers
+    * f3read/f3write: chroot(2) to source/target dir if allowed
+    * Portability improvements for Ubuntu, ARM, OpenBSD, and Apple
+    * Automated test of the code with GitHub Actions
+    * Improved documentation
+
+-------------------------------------------------------------------
 Wed Nov 18 20:13:35 UTC 2020 - Olav Reinert <seroton10@gmail.com>
 
 - Upgrade to version 8.0:
