@@ -1,7 +1,7 @@
 #
 # spec file for package glow
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Disable LTO flags to stop builds failing on some architectures
 %global _lto_cflags %nil
 Name:           glow
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Render markdown on the CLI
 License:        MIT
@@ -32,7 +32,7 @@ Source1:        vendor.tar.zst
 Source2:        README.suse-maint.md
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.17
+BuildRequires:  golang(API) >= 1.23
 
 %description
 Glow is a terminal based markdown reader designed from the ground up to bring

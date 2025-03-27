@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Mar 22 07:30:15 UTC 2025 - munix9@googlemail.com
+
+- Update to 2.1.0:
+  * At last: Glow will watch your markdown files and reload ’em
+    as they change. No knobs and no settings: it just works.
+    Also, there is a new flag available to open files with the
+    built-in pager: glow --tui README.md
+  New
+  * add new --tui / -t flag
+  * make --all configurable globally
+  * support GLAMOUR_STYLE for custom pager styles
+  * watch for file changes and reload automatically
+  Fixes
+  * correct abs to rel path conversion
+  * ensure r key works when filtering files
+  * fallback to the current directory if no argument was given
+  * make all setting false by default
+  * make pipeline for tui work
+  * remove more stash-related stuff
+  * restore hint for e / edit on the footer
+
+-------------------------------------------------------------------
 Tue Oct  8 09:51:23 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Enable actual go tests instead of just checking version
