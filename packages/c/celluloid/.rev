@@ -169,4 +169,14 @@
     <comment></comment>
     <requestid>1182972</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3b6fc2ba7032b93844138c8a3961c391</srcmd5>
+    <version>0.27</version>
+    <time>1743111200</time>
+    <user>anag+factory</user>
+    <comment>- Add celluloid-fix_segfault_gnome48.patch to prevent segmentation
+  fault upon exit when using gnome 48 (fixes boo#1239802)
+</comment>
+    <requestid>1256418</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 27 09:13:10 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add celluloid-fix_segfault_gnome48.patch to prevent segmentation
+  fault upon exit when using gnome 48 (fixes boo#1239802)
+
+-------------------------------------------------------------------
 Mon Jun 24 08:12:23 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.27

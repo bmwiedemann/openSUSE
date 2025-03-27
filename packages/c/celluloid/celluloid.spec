@@ -1,7 +1,7 @@
 #
 # spec file for package celluloid
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Simple GTK+ frontend for MPV
 License:        GPL-3.0-or-later
 URL:            https://celluloid-player.github.io/
 Source:         https://github.com/celluloid-player/celluloid/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM celluloid-fix_segfault_gnome48.patch
+Patch0:         celluloid-fix_segfault_gnome48.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool >= 0.40.6
 BuildRequires:  meson >= 0.49.0
