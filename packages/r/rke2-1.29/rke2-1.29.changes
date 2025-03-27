@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 26 14:34:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.29.15+rke2r1:
+  * This release updates Kubernetes to v1.29.15, and upgrades
+    rke2-ingress-nginx to controller v1.12.1-hardened1 (chart
+    version 4.12.1). This addresses CVE-2025-1974 as well as all
+    other recently announced vulnerabilities in ingress-nginx.
+  * Details see
+    https://github.com/rancher/rke2/releases/tag/v1.29.15+rke2r1
+
+-------------------------------------------------------------------
 Fri Feb 28 05:54:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.29.14+rke2r1:
