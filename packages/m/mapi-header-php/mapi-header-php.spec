@@ -19,14 +19,17 @@
 %define _empty_manifest_terminate_build 0
 
 Name:           mapi-header-php
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Common PHP MAPI header files for grommunio
 License:        AGPL-3.0-or-later
 Group:          Productivity/Networking/Email/Servers
 URL:            https://grommunio.com/
 #Git-Clone:     https://github.com/grommunio/mapi-header-php
-Source:         https://github.com/grommunio/mapi-header-php/archive/refs/tags/%version.tar.gz
+Source:         https://github.com/grommunio/mapi-header-php/releases/download/%version/mapi-header-php-%version.tar.zst
+Source2:        https://github.com/grommunio/mapi-header-php/releases/download/%version/mapi-header-php-%version.tar.asc
+Source3:        %name.keyring
+BuildRequires:  zstd
 BuildArch:      noarch
 
 %description
