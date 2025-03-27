@@ -1,7 +1,7 @@
 #
 # spec file for package apache-sshd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -205,7 +205,7 @@ rm $SSHD_HOME/bin/*.bat
 
 install -d -m 0755 %{buildroot}%{homedir}
 cp -a $SSHD_HOME/{bin,dependencies,extras,lib} %{buildroot}%{homedir}/
-xmvn-subst -s -R %{buildroot} -s %{buildroot}%{homedir}
+xmvn-subst -s -R %{buildroot} %{buildroot}%{homedir}
 %endif
 
 %files -f .mfiles
