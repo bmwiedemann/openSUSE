@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 25 04:02:26 UTC 2025 - me@levitati.ng
+
+- Update to version 0.6.2:
+  * Multiple images are now supported in Gemma 3
+  * Fixed issue where running Gemma 3 would consume a large amount
+    of system memory
+  * ollama create --quantize now works when converting Gemma 3
+    from safetensors
+  * Fixed issue where /save would not work if running a model
+    with / in the name
+  * Add support for AMD Strix Halo GPUs
+
+
+-------------------------------------------------------------------
 Tue Mar 18 14:22:27 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Only require git-core

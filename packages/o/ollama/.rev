@@ -354,4 +354,20 @@
 because we don't need git-web and the other stuff here (forwarded request 1254170 from bmwiedemann)</comment>
     <requestid>1254230</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0ad59922613e212b6730acf5c8d49220</srcmd5>
+    <version>0.6.2</version>
+    <time>1743111113</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.2:
+  * Multiple images are now supported in Gemma 3
+  * Fixed issue where running Gemma 3 would consume a large amount
+    of system memory
+  * ollama create --quantize now works when converting Gemma 3
+    from safetensors
+  * Fixed issue where /save would not work if running a model
+    with / in the name
+  * Add support for AMD Strix Halo GPUs</comment>
+    <requestid>1256309</requestid>
+  </revision>
 </revisionlist>
